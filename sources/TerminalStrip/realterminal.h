@@ -71,6 +71,7 @@ class RealTerminal
 		QColor stripeColor() const;
 		qreal section() const;
 		qreal widthMm() const;
+		QString catalogEntry() const;
 		bool hasSeparatorAfter() const;
 
 		//Keys used to store the cable data in the element informations
@@ -82,8 +83,12 @@ class RealTerminal
 		static QString sectionInfoKey()   { return QStringLiteral("terminal_section"); }
 		//Key used to store the width (mm) of the terminal, drawn in the terminal strip
 		static QString widthInfoKey()     { return QStringLiteral("terminal_width"); }
+		//Key used to store the terminal chosen in the catalog (TerminalCatalog::WidthEntry::label)
+		static QString catalogEntryInfoKey() { return QStringLiteral("terminal_catalog_entry"); }
 		//Key used to store if a separator plate is mounted after the terminal
 		static QString separatorInfoKey() { return QStringLiteral("terminal_separator"); }
+
+		static void applyCatalogEntry(DiagramContext &informations, const QString &entry_label);
 
 		QString conductor() const;
 

@@ -32,6 +32,8 @@
 #include "../physicalterminal.h"
 #include "../terminalstripbridge.h"
 #include "../terminalcolor.h"
+#include "../terminalcatalog.h"
+#include "../realterminal.h"
 
 #include <QApplication>
 #include <QClipboard>
@@ -52,7 +54,18 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	ui->m_table_widget->setItemDelegate(new TerminalStripModelDelegate{this});
+	auto delegate_ = new TerminalStripModelDelegate{this};
+	ui->m_table_widget->setItemDelegate(delegate_);
+
+		//Manufacturer of the terminals proposed in the Width column
+	ui->m_manufacturer_cb->addItem(tr("All manufacturers"), QString());
+	for (const auto &name_ : TerminalCatalog::manufacturers()) {
+		ui->m_manufacturer_cb->addItem(name_, name_);
+	}
+	connect(ui->m_manufacturer_cb, QOverload<int>::of(&QComboBox::currentIndexChanged),
+			this, [this, delegate_]() {
+		delegate_->setManufacturer(ui->m_manufacturer_cb->currentData().toString());
+	});
 
 		//Copy, paste and delete of the cells with the keyboard
 	ui->m_table_widget->installEventFilter(this);
@@ -222,6 +235,10 @@ void TerminalStripEditor::apply()
 					set_info(RealTerminal::colorInfoKey(), TerminalColor::toSpec(data_.color_, data_.stripe_color_));
 					set_info(RealTerminal::sectionInfoKey(), data_.section_ > 0 ? QString::number(data_.section_, 'g', 6) : QString());
 					set_info(RealTerminal::widthInfoKey(), data_.width_mm_ > 0 ? QString::number(data_.width_mm_, 'g', 6) : QString());
+					//The terminal chosen in the catalog, its manufacturer and its reference
+					//(only written when the user didn't type them)
+					RealTerminal::applyCatalogEntry(current_data.m_informations,
+													data_.width_mm_ > 0 ? data_.catalog_entry_ : QString());
 					set_info(RealTerminal::separatorInfoKey(), data_.separator_ ? QStringLiteral("true") : QString());
 
 					if (element->elementData() != current_data)

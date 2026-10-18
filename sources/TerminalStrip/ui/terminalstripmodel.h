@@ -72,6 +72,10 @@ class TerminalStripModel : public QAbstractTableModel
 		static int levelForColumn(TerminalStripModel::Column column);
 		static TerminalStripModel::Column columnTypeForIndex(const QModelIndex &index);
 
+			///Role of the Width column : the label of the terminal chosen in the catalog.
+			///setData() with this role takes a QVariantMap {"mm": width, "entry": label}
+		static constexpr int CatalogEntryRole = Qt::UserRole + 1;
+
 		Q_OBJECT
 	public:
 		TerminalStripModel(TerminalStrip *terminal_strip, QObject *parent = nullptr);
@@ -137,6 +141,12 @@ class TerminalStripModelDelegate : public QStyledItemDelegate
 				const QModelIndex &index) const override;
 
 		void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
+
+		void setManufacturer(const QString &manufacturer);
+
+	private:
+			///Manufacturer of the terminals proposed in the Width column, empty = all
+		QString m_manufacturer;
 };
 
 #endif // TERMINALSTRIPMODEL_H

@@ -160,6 +160,42 @@ QString colorSpec(const QComboBox *cb)
 	return cb->property("origSpec").toString();
 }
 
+/// Role of the width combo items holding the label of the catalog entry
+const int CatalogEntryRole = Qt::UserRole + 1;
+
+/// Label of the catalog entry selected in the width combo,
+/// empty if the width was typed or "None" is selected.
+QString catalogEntry(const QComboBox *cb)
+{
+	const auto index = cb->findText(cb->currentText());
+	return index > 0 ? cb->itemData(index, CatalogEntryRole).toString() : QString();
+}
+
+/// Select the item of the catalog entry @a label in the width combo.
+/// @return false if the combo has no such item
+bool selectCatalogEntry(QComboBox *cb, const QString &label)
+{
+	if (label.isEmpty())
+		return false;
+	const auto index = cb->findData(label, CatalogEntryRole);
+	if (index < 0)
+		return false;
+	cb->setCurrentIndex(index);
+	return true;
+}
+
+/// Set a width not tied to a terminal of the catalog (typed, or stored before
+/// the catalog entry was) : written as text, so that it doesn't take the first
+/// terminal of the catalog with the same width.
+void setPlainWidth(QComboBox *cb, double width, const QString &suffix)
+{
+	if (width <= 0) {
+		cb->setCurrentIndex(0);
+		return;
+	}
+	cb->setCurrentText(QLocale().toString(width, 'g', 6) + suffix);
+}
+
 /// Set the text of an editable combo : select the item with this value or write the value.
 void setComboValue(QComboBox *cb, double value, const QString &suffix)
 {
@@ -287,7 +323,8 @@ void ElementPropertiesEditorWidget::upDateInterface()
 		//Section (mm2) and width (mm), stored with the dot as decimal separator
 		populateTerminalSizeCombos(
 			info.value(RealTerminal::sectionInfoKey()).toString().toDouble(),
-			info.value(RealTerminal::widthInfoKey()).toString().toDouble());
+			info.value(RealTerminal::widthInfoKey()).toString().toDouble(),
+			info.value(RealTerminal::catalogEntryInfoKey()).toString());
 		populateTerminalColorCombo(info.value(RealTerminal::colorInfoKey()).toString());
 	}
 
@@ -477,9 +514,12 @@ void ElementPropertiesEditorWidget::populateTree()
 	@brief ElementPropertiesEditorWidget::populateTerminalSizeCombos
 	Fill the section and width combo boxes of the terminal group box
 	and select @a section (mm2) and @a width (mm), 0 means "none".
+	If the width was chosen in the catalog, @a catalog_entry is the label
+	of the entry : its manufacturer and the entry itself are selected,
+	not only the first terminal of the catalog with the same width.
 	The combo boxes are editable : a value not in the list can be typed.
 */
-void ElementPropertiesEditorWidget::populateTerminalSizeCombos(double section, double width)
+void ElementPropertiesEditorWidget::populateTerminalSizeCombos(double section, double width, const QString &catalog_entry)
 {
 	QSignalBlocker blocker(ui->m_terminal_section_cb);
 	ui->m_terminal_section_cb->clear();
@@ -506,6 +546,10 @@ void ElementPropertiesEditorWidget::populateTerminalSizeCombos(double section, d
 		for (const auto &name_ : TerminalCatalog::manufacturers()) {
 			man_cb->addItem(name_, name_);
 		}
+			//Select the manufacturer of the terminal chosen in the catalog
+		const auto *entry_ = TerminalCatalog::entryByLabel(catalog_entry);
+		const auto entry_index_ = entry_ ? man_cb->findData(QString::fromUtf8(entry_->manufacturer)) : -1;
+		man_cb->setCurrentIndex(entry_index_ > 0 ? entry_index_ : 0);
 	}
 	connect(ui->m_terminal_section_cb, QOverload<int>::of(&QComboBox::currentIndexChanged),
 			this, [this]() { refreshTerminalWidthCombo(); });
@@ -513,7 +557,9 @@ void ElementPropertiesEditorWidget::populateTerminalSizeCombos(double section, d
 			this, [this]() { refreshTerminalWidthCombo(); });
 
 	refreshTerminalWidthCombo();
-	setComboValue(ui->m_terminal_width_cb, width, tr(" mm"));
+	if (!selectCatalogEntry(ui->m_terminal_width_cb, catalog_entry)) {
+		setPlainWidth(ui->m_terminal_width_cb, width, tr(" mm"));
+	}
 }
 
 /**
@@ -562,6 +608,7 @@ void ElementPropertiesEditorWidget::populateTerminalColorCombo(const QString &sp
 void ElementPropertiesEditorWidget::refreshTerminalWidthCombo()
 {
 	const auto current_width = comboValue(ui->m_terminal_width_cb);
+	const auto current_entry = catalogEntry(ui->m_terminal_width_cb);
 	const auto section = comboValue(ui->m_terminal_section_cb);
 
 	auto item_text = [](const TerminalCatalog::WidthEntry &entry) {
@@ -593,9 +640,13 @@ void ElementPropertiesEditorWidget::refreshTerminalWidthCombo()
 		if (manufacturer_ok(entry)
 			&& (!has_compatible_entry || qFuzzyCompare(1 + entry.section, 1 + section))) {
 			ui->m_terminal_width_cb->addItem(item_text(entry), entry.mm);
+			ui->m_terminal_width_cb->setItemData(ui->m_terminal_width_cb->count() - 1,
+												  QString::fromUtf8(entry.label), CatalogEntryRole);
 		}
 	}
-	setComboValue(ui->m_terminal_width_cb, current_width, tr(" mm"));
+	if (!selectCatalogEntry(ui->m_terminal_width_cb, current_entry)) {
+		setPlainWidth(ui->m_terminal_width_cb, current_width, tr(" mm"));
+	}
 }
 
 /**
@@ -674,6 +725,11 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 			m_data.m_informations.addValue(RealTerminal::widthInfoKey(), QString::number(width_, 'g', 6));
 		else
 			m_data.m_informations.remove(RealTerminal::widthInfoKey());
+
+			//The terminal chosen in the catalog, its manufacturer and its reference
+			//(written only if the user didn't type them, after the tree is read)
+		RealTerminal::applyCatalogEntry(m_data.m_informations,
+										width_ > 0 ? catalogEntry(ui->m_terminal_width_cb) : QString());
 
 		const auto color_ = colorSpec(ui->m_terminal_color_cb);
 		if (!color_.isEmpty())

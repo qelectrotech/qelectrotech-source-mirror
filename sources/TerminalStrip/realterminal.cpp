@@ -20,7 +20,9 @@
 #include "../qetgraphicsitem/terminalelement.h"
 #include "physicalterminal.h"
 #include "terminalcolor.h"
+#include "terminalcatalog.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetinformation.h"
 
 /**
  * @brief RealTerminal
@@ -262,6 +264,67 @@ qreal RealTerminal::widthMm() const
 		}
 	}
 	return 0;
+}
+
+/**
+ * @brief RealTerminal::catalogEntry
+ * @return the label of the terminal chosen in the catalog
+ * (TerminalCatalog::WidthEntry::label), for example "Phoenix Contact ST 4",
+ * or an empty string if the width was typed or not set.
+ * Several terminals of the catalog can have the same width,
+ * the width alone doesn't say which one was chosen.
+ */
+QString RealTerminal::catalogEntry() const
+{
+	if (m_element) {
+		return m_element->elementData().m_informations.value(catalogEntryInfoKey()).toString();
+	}
+	return QString();
+}
+
+/**
+ * @brief RealTerminal::applyCatalogEntry
+ * Store in @a informations the terminal chosen in the catalog,
+ * and write its manufacturer and its reference in the manufacturer and
+ * manufacturer reference informations (used by the bill of materials).
+ * These two informations are only written when they are empty,
+ * or when they still hold what the previous entry of the catalog wrote :
+ * a value typed by the user is never overwritten.
+ * @param informations : the informations of the element
+ * @param entry_label : label of an entry of the catalog,
+ * an empty string (or a label unknown by the catalog) removes the entry.
+ */
+void RealTerminal::applyCatalogEntry(DiagramContext &informations, const QString &entry_label)
+{
+	const auto *old_entry = TerminalCatalog::entryByLabel(
+				informations.value(catalogEntryInfoKey()).toString());
+	const auto *new_entry = TerminalCatalog::entryByLabel(entry_label);
+
+	if (new_entry) {
+		informations.addValue(catalogEntryInfoKey(), QString::fromUtf8(new_entry->label));
+	} else if (informations.contains(catalogEntryInfoKey())) {
+		informations.remove(catalogEntryInfoKey());
+	}
+
+	const auto update_ = [&informations](const QString &key, const QString &old_value, const QString &new_value)
+	{
+		const auto current_ = informations.value(key).toString();
+		if (!current_.isEmpty() && current_ != old_value) {
+			return;	//Typed by the user, keep it
+		}
+		if (!new_value.isEmpty()) {
+			informations.addValue(key, new_value);
+		} else if (!current_.isEmpty()) {
+			informations.addValue(key, QString());
+		}
+	};
+
+	update_(QETInformation::ELMT_MANUFACTURER,
+			old_entry ? QString::fromUtf8(old_entry->manufacturer) : QString(),
+			new_entry ? QString::fromUtf8(new_entry->manufacturer) : QString());
+	update_(QETInformation::ELMT_MANUFACTURER_REF,
+			old_entry ? TerminalCatalog::modelName(*old_entry) : QString(),
+			new_entry ? TerminalCatalog::modelName(*new_entry) : QString());
 }
 
 /**

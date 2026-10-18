@@ -136,6 +136,41 @@ namespace TerminalCatalog
 		}
 		return list_;
 	}
+
+	/**
+	 * @brief entryByLabel
+	 * @param label : the label of an entry, as stored in the element
+	 * informations (RealTerminal::catalogEntryInfoKey())
+	 * @return the entry of the catalog with this label, or nullptr
+	 */
+	inline const WidthEntry *entryByLabel(const QString &label)
+	{
+		if (label.isEmpty()) {
+			return nullptr;
+		}
+		for (const auto &entry : widthEntries()) {
+			if (label == QString::fromUtf8(entry.label)) {
+				return &entry;
+			}
+		}
+		return nullptr;
+	}
+
+	/**
+	 * @brief modelName
+	 * @param entry
+	 * @return the label of @a entry without the name of its manufacturer :
+	 * "ST 4" for "Phoenix Contact ST 4"
+	 */
+	inline QString modelName(const WidthEntry &entry)
+	{
+		const auto label_ = QString::fromUtf8(entry.label);
+		const auto manufacturer_ = QString::fromUtf8(entry.manufacturer);
+		if (label_.startsWith(manufacturer_ + QLatin1Char(' '))) {
+			return label_.mid(manufacturer_.size() + 1);
+		}
+		return label_;
+	}
 }
 
 #endif // TERMINALCATALOG_H
