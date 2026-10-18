@@ -44,18 +44,7 @@ class TerminalStripEditorWindow : public QMainWindow
 		static QPointer<TerminalStripEditorWindow> window_;
 
     public:
-        static TerminalStripEditorWindow* instance(QETProject *project, QWidget *parent = nullptr) {
-            static QMutex mutex_;
-            if (!window_) {
-                mutex_.lock();
-                if (!window_)
-                    window_ = new TerminalStripEditorWindow{project, parent};
-                mutex_.unlock();
-            } else {
-                window_->setProject(project);
-            }
-            return window_;
-        }
+		static TerminalStripEditorWindow* instance(QETProject *project, QWidget *parent = nullptr);
 
 		static void dropInstance () {
 			static QMutex mutex;

@@ -29,7 +29,47 @@
 #include "terminalstripeditorwindow.h"
 #include "terminalstriptreedockwidget.h"
 
+#include <QApplication>
+#include <QProgressDialog>
+
 QPointer<TerminalStripEditorWindow> TerminalStripEditorWindow::window_;
+
+/**
+ * @brief TerminalStripEditorWindow::instance
+ * @param project : the project to edit
+ * @param parent : parent widget of the window, when it is created
+ * @return the terminal block manager window, created the first time,
+ * showing the terminal strips of @a project.
+ * Opening it reads every terminal of the project (and builds the folios
+ * not built yet) : it can take a while on a big project. A message and a
+ * busy cursor say that it is opening, so that the user does not think
+ * that nothing happens.
+ */
+TerminalStripEditorWindow *TerminalStripEditorWindow::instance(QETProject *project, QWidget *parent)
+{
+	QProgressDialog busy_(tr("Opening the terminal block manager..."), QString(), 0, 0, parent);
+	busy_.setWindowTitle(tr("Terminal block manager"));
+	busy_.setWindowModality(Qt::ApplicationModal);
+	busy_.setCancelButton(nullptr);
+	busy_.setMinimumDuration(0);
+	busy_.show();
+		//Paint the message before the long work starts
+	QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+	QApplication::setOverrideCursor(Qt::WaitCursor);
+
+	static QMutex mutex_;
+	if (!window_) {
+		mutex_.lock();
+		if (!window_)
+			window_ = new TerminalStripEditorWindow{project, parent};
+		mutex_.unlock();
+	} else {
+		window_->setProject(project);
+	}
+
+	QApplication::restoreOverrideCursor();
+	return window_;
+}
 
 static const int EMPTY_PAGE = 0;
 static const int FREE_TERMINAL_PAGE = 1;
