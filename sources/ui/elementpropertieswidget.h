@@ -61,6 +61,7 @@ class ElementPropertiesWidget : public AbstractElementPropertiesEditorWidget
 		QTabWidget *m_tab;
 		QList <AbstractElementPropertiesEditorWidget *> m_list_editor;
 		QWidget *m_general_widget;
+		bool m_text_tab_wanted = false;
 };
 
 #endif // ELEMENTPROPERTIESWIDGET_H

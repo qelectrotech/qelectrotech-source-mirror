@@ -36,6 +36,11 @@
 #include <QUndoStack>
 #include <QVBoxLayout>
 
+namespace {
+	//The tab last picked in the selection properties panel
+QString s_live_tab;
+}
+
 /**
 	@brief ElementPropertiesWidget::ElementPropertiesWidget
 	Default constructor
@@ -149,6 +154,7 @@ void ElementPropertiesWidget::setDynamicText(DynamicElementTextItem *text)
 			{
 				DynamicElementTextItemEditor *detie = static_cast<DynamicElementTextItemEditor *>(aepew);
 				m_tab->setCurrentWidget(detie);
+				m_text_tab_wanted = true;
 				detie->setCurrentText(text);
 			}
 		}
@@ -175,6 +181,7 @@ void ElementPropertiesWidget::setTextsGroup(ElementTextItemGroup *group)
 			{
 				DynamicElementTextItemEditor *detie = static_cast<DynamicElementTextItemEditor *>(aepew);
 				m_tab->setCurrentWidget(detie);
+				m_text_tab_wanted = true;
 				detie->setCurrentGroup(group);
 			}
 		}
@@ -225,6 +232,18 @@ bool ElementPropertiesWidget::setLiveEdit(bool live_edit)
 	foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
 		aepew->setLiveEdit(m_live_edit);
 
+	if (m_live_edit && !m_text_tab_wanted && !s_live_tab.isEmpty())
+	{
+		for (int i = 0 ; i < m_tab->count() ; ++i)
+		{
+			if (m_tab->tabText(i) == s_live_tab)
+			{
+				m_tab->setCurrentIndex(i);
+				break;
+			}
+		}
+	}
+
 	return true;
 }
 
@@ -262,6 +281,14 @@ void ElementPropertiesWidget::editElement()
 void ElementPropertiesWidget::buildGui()
 {
 	m_tab = new QTabWidget(this);
+		//The selection properties panel builds a new editor each time
+		//the selection goes from one element to something else and back:
+		//it opens on the tab last picked there (#1439)
+	connect(m_tab, &QTabWidget::tabBarClicked, this, [this](int index) {
+		if (m_live_edit && index >= 0) {
+			s_live_tab = m_tab->tabText(index);
+		}
+	});
 	QVBoxLayout *main_layout = new QVBoxLayout(this);
 	main_layout -> addWidget(m_tab);
 	setLayout(main_layout);
