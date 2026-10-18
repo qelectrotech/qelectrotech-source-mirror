@@ -64,6 +64,7 @@
 #include "factory/qetgraphicstablefactory.h"
 #include "print/projectprintwindow.h"
 #include "project/projectpropertieshandler.h"
+#include "ui/multielementinfowidget.h"
 #include "ui/projectpropertiesdialog.h"
 #include "projectview.h"
 #include "qetproject.h"
@@ -3085,6 +3086,21 @@ void QETDiagramEditor::slot_updateUndoStack()
 		undo_group.setActiveStack(currentProjectView()->project()->undoStack());
 }
 
+namespace {
+/**
+	@return the elements of @p diagram's selection which take information
+*/
+QList<Element *> selectedInformationElements(Diagram *diagram)
+{
+	QList<Element *> list;
+	for (Element *element : DiagramContent(diagram).m_elements) {
+		if (MultiElementInfoWidget::takesInformations(element))
+			list << element;
+	}
+	return list;
+}
+} // namespace
+
 /**
 	@brief QETDiagramEditor::slot_updateComplexActions
 	Manage the actions that need some conditions to be enabled or not.
@@ -3211,7 +3227,16 @@ void QETDiagramEditor::slot_updateComplexActions()
 			+ selected_conductors_count
 			+ selected_cables;
 
-	if (selected_editable == 1)
+		//Several elements and nothing else: edit their information together (#1439)
+	if (!ro && selected_editable > 1 && selected_editable == selected_elements_count
+			&& selectedInformationElements(diagram_).size() > 1)
+	{
+		m_edit_selection -> setEnabled(true);
+		m_edit_selection -> setText(tr("Edit the information of the elements",
+					       "edit several elements"));
+		m_edit_selection -> setIcon(QET::Icons::ElementEdit);
+	}
+	else if (selected_editable == 1)
 	{
 		m_edit_selection -> setEnabled(true);
 		//edit element
@@ -3322,39 +3347,6 @@ void QETDiagramEditor::slot_updateModeActions()
 		m_conductor_color_button->updateEnabledState();
 	}
 }
-
-namespace {
-/**
-	@return true if @p element has information the user can edit, the
-	same element kinds ElementPropertiesWidget gives an ElementInfoWidget.
-	Plain slaves and folio reports take theirs from what they are linked to.
-*/
-bool takesElementInformations(const Element *element)
-{
-	switch (element->linkType()) {
-		case Element::Simple:
-		case Element::Thumbnail:
-		case Element::Master:
-		case Element::Terminale:
-			return true;
-		default:
-			return false;
-	}
-}
-
-/**
-	@return the elements of @p diagram's selection which take information
-*/
-QList<Element *> selectedInformationElements(Diagram *diagram)
-{
-	QList<Element *> list;
-	for (Element *element : DiagramContent(diagram).m_elements) {
-		if (takesElementInformations(element))
-			list << element;
-	}
-	return list;
-}
-} // namespace
 
 /**
 	@brief QETDiagramEditor::slot_updatePasteAction

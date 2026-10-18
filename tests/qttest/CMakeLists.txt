@@ -267,6 +267,13 @@ endfunction()
 # alone and with a group.
 qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 
+# Editing the information of several elements at once (#1439): kept, set
+# and cleared fields, restore and reset, one undo step, the selection
+# panel's editor and the Edit action.
+qet_add_app_test(tst_multielementinfo tst_multielementinfo.cpp)
+target_compile_definitions(tst_multielementinfo PRIVATE
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # Accepting the settings dialog writes qet-assistant.json with the
 # collection paths just chosen, not the ones they replace.
 qet_add_app_test(tst_assistantinfopaths tst_assistantinfopaths.cpp)

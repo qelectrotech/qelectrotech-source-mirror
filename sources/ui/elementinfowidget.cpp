@@ -112,6 +112,18 @@ void ElementInfoWidget::apply()
 }
 
 /**
+	@brief ElementInfoWidget::reset
+	Forget the edits not applied yet: show again the information
+	the element has.
+*/
+void ElementInfoWidget::reset()
+{
+	if (m_element) {
+		updateUi();
+	}
+}
+
+/**
 	@brief ElementInfoWidget::associatedUndo
 	If the edited info is different of the actual element info,
 	return a QUndoCommand with the change.

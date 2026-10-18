@@ -39,6 +39,7 @@
 #include "../ui/conductorpropertieseditorwidget.h"
 #include "../ui/imagepropertieswidget.h"
 #include "../ui/inditextpropertieswidget.h"
+#include "../ui/multielementinfowidget.h"
 #include "../ui/shapegraphicsitempropertieswidget.h"
 
 #include <QGraphicsItem>
@@ -115,7 +116,7 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 			mapped << qgi;
 		}
 	}
-	items = mapped;
+	items = MultiElementInfoWidget::withoutOwnTexts(mapped);
 
 	const int count_ = items.size();
 	if (count_ == 0) {
@@ -124,17 +125,35 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 	QGraphicsItem *item = items.first();
 	const int type_ = item->type();
 
-		//The editor widget can only edit one item
-		//or several items of the same type
-	for (auto qgi : items) {
-		if (qgi->type() != type_) {
-			return nullptr;
-		}
-	}
-
 	QString class_name;
 	if (editor) {
 		class_name = editor->metaObject()->className();
+	}
+
+		//The editor widget can only edit one item
+		//or several items of the same type,
+		//or the information of several elements (#1439)
+	bool same_type = true;
+	for (auto qgi : items) {
+		if (qgi->type() != type_) {
+			same_type = false;
+			break;
+		}
+	}
+	if (!same_type || (type_ == Element::Type && count_ > 1))
+	{
+		const QList<Element *> elements =
+				MultiElementInfoWidget::informationElements(items);
+		if (elements.isEmpty()) {
+			return nullptr;
+		}
+		const int other_items = count_ - elements.size();
+		if (class_name == MultiElementInfoWidget::staticMetaObject.className())
+		{
+			static_cast<MultiElementInfoWidget *>(editor)->setElements(elements, other_items);
+			return editor;
+		}
+		return new MultiElementInfoWidget(elements, other_items, parent);
 	}
 
 	switch (type_)
@@ -162,9 +181,6 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 		}
 		case Element::Type: //1000
 		{
-			if (count_ > 1) {
-				return nullptr;
-			}
 			auto elmt = static_cast<Element*>(item);
 			//auto created_editor = new ElementPropertiesWidget(elmt, parent);
 

@@ -39,7 +39,9 @@
 #include "qeticons.h"
 #include "qetpalette.h"
 #include "titleblock/integrationmovetemplateshandler.h"
+#include "PropertiesEditor/propertieseditordialog.h"
 #include "ui/diagrampropertiesdialog.h"
+#include "ui/multielementinfowidget.h"
 #include "ui/multipastedialog.h"
 #include "undocommand/changetitleblockcommand.h"
 #include "utils/conductorcreator.h"
@@ -2080,9 +2082,33 @@ bool DiagramView::selectedItemHasFocus()
 */
 void DiagramView::editSelection()
 {
-	if (m_diagram -> isReadOnly() || m_diagram -> selectedItems().size() != 1 ) return;
+	if (m_diagram -> isReadOnly()) return;
 
-	QGraphicsItem *item = m_diagram->selectedItems().first();
+		//Several elements and nothing else: edit their information together (#1439)
+	const QList<QGraphicsItem *> selection =
+			MultiElementInfoWidget::withoutOwnTexts(m_diagram -> selectedItems());
+	if (selection.size() > 1)
+	{
+		bool only_elements = true;
+		for (QGraphicsItem *qgi : selection) {
+			if (qgi->type() != Element::Type) {
+				only_elements = false;
+				break;
+			}
+		}
+		const QList<Element *> elements = MultiElementInfoWidget::informationElements(selection);
+		if (only_elements && elements.size() > 1)
+		{
+			PropertiesEditorDialog dialog(
+						new MultiElementInfoWidget(elements, selection.size() - elements.size()),
+						this);
+			dialog.exec();
+		}
+		return;
+	}
+	if (selection.size() != 1) return;
+
+	QGraphicsItem *item = selection.first();
 
 		//We use dynamic_cast instead of qgraphicsitem_cast for QetGraphicsItem
 		//because they haven't got their own type().

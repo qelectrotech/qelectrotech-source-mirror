@@ -53,6 +53,7 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 
 		void setElement(Element *element) override;
 		void apply() override;
+		void reset() override;
 		QUndoCommand *associatedUndo () const override;
 		QString title() const override {return tr("Information");}
 		bool setLiveEdit(bool live_edit) override;
