@@ -4119,9 +4119,24 @@ bool projectDataBase::savedLinks(const Element *element, QList<std::pair<QUuid, 
 	@brief projectDataBase::waitingSymbols
 	@return the symbols on folios not built yet (lazy folios) and not
 	built alone as partners either (Diagram::buildSymbols()): partners a
-	symbol keeps its rows to until they are built
+	symbol keeps its rows to until they are built; and the symbols a built
+	folio could not build and keeps as read (Diagram::keptSymbolUuids())
 */
 QSet<QUuid> projectDataBase::waitingSymbols() const
+{
+	QSet<QUuid> kept;
+	if (m_project)
+		for (Diagram *diagram : m_project->folios())
+			if (diagram->isLoaded()) kept.unite(diagram->keptSymbolUuids());
+	return unbuiltSymbols().unite(kept);
+}
+
+/**
+	@brief projectDataBase::unbuiltSymbols
+	@return the symbols on folios not built yet and not built alone
+	(waitingSymbols())
+*/
+QSet<QUuid> projectDataBase::unbuiltSymbols() const
 {
 	if (!m_project || !m_project->unloadedFolioCount()) {
 		return QSet<QUuid>();

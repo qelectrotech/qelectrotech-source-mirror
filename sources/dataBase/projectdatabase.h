@@ -165,6 +165,7 @@ class projectDataBase : public QObject
 		QList<std::pair<QUuid, int>> linkRowsOf(const QUuid &element) const;
 		QSet<QUuid> waitingPartners(const QUuid &element, const QSet<QUuid> &waiting);
 		QSet<QUuid> waitingSymbols() const;
+		QSet<QUuid> unbuiltSymbols() const;
 
 			//Fill the three stores from a project's document before its
 			//folios are built, then, once

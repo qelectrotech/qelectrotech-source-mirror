@@ -1,0 +1,374 @@
+<titleblocktemplate name="ESKD_Form2_text">
+    <information>ЕСКД ГОСТ 2.104-2006</information>
+    <logos/>
+    <grid cols="r100%;28px;40px;92px;60px;40px;280px;20px;20px;20px;60px;80px;" rows="20;20;20;20;20;20;20;20;">
+        <field align="center" col="1" displaylabel="false" fontsize="11" hadjust="true" name="" row="0" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="2" displaylabel="false" fontsize="11" hadjust="true" name="" row="0" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="3" displaylabel="false" fontsize="11" hadjust="true" name="" row="0" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="4" displaylabel="false" fontsize="11" hadjust="true" name="" row="0" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="5" displaylabel="false" fontsize="11" hadjust="true" name="" row="0" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="6" colspan="5" displaylabel="false" fontsize="40" hadjust="true" name="oboz" row="0" rowspan="2" valign="center">
+            <value>
+                <translation lang="ru">%{oboz}</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="1" displaylabel="false" fontsize="11" hadjust="true" name="" row="1" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="2" displaylabel="false" fontsize="11" hadjust="true" name="" row="1" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="3" displaylabel="false" fontsize="11" hadjust="true" name="" row="1" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="4" displaylabel="false" fontsize="11" hadjust="true" name="" row="1" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="5" displaylabel="false" fontsize="11" hadjust="true" name="" row="1" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="1" displaylabel="false" fontsize="11" hadjust="true" name="" row="2" valign="center">
+            <value>
+                <translation lang="ru">Изм.</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="2" displaylabel="false" fontsize="11" hadjust="true" name="" row="2" valign="center">
+            <value>
+                <translation lang="ru">Лист</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="3" displaylabel="false" fontsize="11" hadjust="true" name="" row="2" valign="center">
+            <value>
+                <translation lang="ru">№ докум.</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="4" displaylabel="false" fontsize="11" hadjust="true" name="" row="2" valign="center">
+            <value>
+                <translation lang="ru">Подп.</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="5" displaylabel="false" fontsize="11" hadjust="true" name="" row="2" valign="center">
+            <value>
+                <translation lang="ru">Дата</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="left" col="1" colspan="1" displaylabel="false" fontsize="11" hadjust="true" name="" row="3" valign="center">
+            <value>
+                <translation lang="ru">Разраб.</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="left" col="3" displaylabel="false" fontsize="11" hadjust="true" name="" row="3" valign="center">
+            <value>
+                <translation lang="ru">%author</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="4" displaylabel="false" fontsize="11" hadjust="true" name="" row="3" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="5" displaylabel="false" fontsize="10" hadjust="true" name="" row="3" valign="center">
+            <value>
+                <translation lang="ru">%date</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="6" displaylabel="false" fontsize="28" hadjust="true" name="izd" row="3" rowspan="4" valign="center">
+            <value>
+                <translation lang="ru">%{izd}</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="7" colspan="2" displaylabel="false" fontsize="11" hadjust="true" name="" row="3" valign="center">
+            <value>
+                <translation lang="ru">Лит.</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="10" displaylabel="false" fontsize="11" hadjust="true" name="" row="3" valign="center">
+            <value>
+                <translation lang="ru">Лист</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="11" displaylabel="false" fontsize="11" hadjust="true" name="" row="3" valign="center">
+            <value>
+                <translation lang="ru">Листов</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="left" col="1" colspan="1" displaylabel="false" fontsize="11" hadjust="true" name="" row="4" valign="center">
+            <value>
+                <translation lang="ru">Пров.</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="left" col="3" displaylabel="false" fontsize="11" hadjust="true" name="" row="4" valign="center">
+            <value>
+                <translation lang="ru">%{proveril}</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="4" displaylabel="false" fontsize="11" hadjust="true" name="" row="4" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="5" displaylabel="false" fontsize="11" hadjust="true" name="" row="4" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="7" displaylabel="false" fontsize="11" hadjust="true" name="" row="4" valign="center">
+            <value>
+                <translation lang="ru">%{lit1}</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="8" displaylabel="false" fontsize="11" hadjust="true" name="" row="4" valign="center">
+            <value>
+                <translation lang="ru">%{lit2}</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="9" displaylabel="false" fontsize="11" hadjust="true" name="" row="4" valign="center">
+            <value>
+                <translation lang="ru">%{lit3}</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="10" displaylabel="false" fontsize="11" hadjust="true" name="" row="4" valign="center">
+            <value>
+                <translation lang="ru">%{folio-id}</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="11" displaylabel="false" fontsize="11" hadjust="true" name="" row="4" valign="center">
+            <value>
+                <translation lang="ru">%{folio-total}</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="1" colspan="1" displaylabel="false" fontsize="11" hadjust="true" name="" row="5" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="3" displaylabel="false" fontsize="11" hadjust="true" name="" row="5" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="4" displaylabel="false" fontsize="11" hadjust="true" name="" row="5" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="5" displaylabel="false" fontsize="11" hadjust="true" name="" row="5" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="7" colspan="4" displaylabel="false" fontsize="20" hadjust="true" name="firma" row="5" rowspan="2" valign="center">
+            <value>
+                <translation lang="ru">%{firma}</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="left" col="1" colspan="1" displaylabel="false" fontsize="11" hadjust="true" name="" row="6" valign="center">
+            <value>
+                <translation lang="ru">Н.контр.</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="left" col="3" displaylabel="false" fontsize="11" hadjust="true" name="" row="6" valign="center">
+            <value>
+                <translation lang="ru">%{nkontr}</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="4" displaylabel="false" fontsize="11" hadjust="true" name="" row="6" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="5" displaylabel="false" fontsize="11" hadjust="true" name="" row="6" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="left" col="1" colspan="1" displaylabel="false" fontsize="11" hadjust="true" name="" row="7" valign="center">
+            <value>
+                <translation lang="ru">Утв.</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="left" col="3" displaylabel="false" fontsize="11" hadjust="true" name="" row="7" valign="center">
+            <value>
+                <translation lang="ru">%{utv}</translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="4" displaylabel="false" fontsize="11" hadjust="true" name="" row="7" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+        <field align="center" col="5" displaylabel="false" fontsize="11" hadjust="true" name="" row="7" valign="center">
+            <value>
+                <translation lang="ru"> </translation>
+            </value>
+            <label>
+                <translation lang="ru"> </translation>
+            </label>
+        </field>
+    </grid>
+</titleblocktemplate>

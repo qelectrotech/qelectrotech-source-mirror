@@ -920,6 +920,101 @@ private slots:
 					 QStringLiteral("<property [^>]*name=\"accents\"[^>]*>Armoire façade été</property>"))),
 				 "the accented value changed");
 	}
+
+	// What a folio cannot load is saved back as it was read (F127, F128).
+	// fixtures/coil_contact_wired.qet: a coil K1 and its contact, linked,
+	// two wires between them. Each row damages it as an uploaded project
+	// can be: the coil's definition missing from the file, or the
+	// contact's definition redrawn (terminals moved, other uuids). A save
+	// keeps both symbols, both wires and both links, a second save changes
+	// nothing, and once the coil's definition is back the save is the
+	// undamaged project's again.
+	void unloadableItemsKept_data()
+	{
+		QTest::addColumn<QString>("damage");
+		QTest::newRow("definition missing") << QStringLiteral("coil");
+		QTest::newRow("terminals redrawn") << QStringLiteral("contact");
+	}
+	void unloadableItemsKept()
+	{
+		QFETCH(QString, damage);
+		const QString fixture = QFINDTESTDATA("fixtures/coil_contact_wired.qet");
+		const QString whole = resave(fixture);
+		QVERIFY2(!whole.isEmpty(), "--resave of the fixture failed");
+		const QString xml = QString::fromUtf8(read(whole));
+		static const QRegularExpression coil_definition(QStringLiteral(
+			"<element name=\"bobine3\\.elmt\">.*?</element>\\s*"),
+			QRegularExpression::DotMatchesEverythingOption);
+		const QString coil = coil_definition.match(xml).captured(0);
+		QVERIFY(!coil.isEmpty());
+		QString damaged = xml;
+		if (damage == QLatin1String("coil")) {
+			damaged.remove(coil);
+		} else {
+				//The contact's terminals 40 further right, with new uuids
+			static const QRegularExpression contact_definition(QStringLiteral(
+				"<element name=\"con_simple\\.elmt\">.*?</element>"),
+				QRegularExpression::DotMatchesEverythingOption);
+			QString contact = contact_definition.match(xml).captured(0);
+			QVERIFY(!contact.isEmpty());
+			const QString before = contact;
+			static const QRegularExpression terminal(QStringLiteral(
+				"(<terminal [^>]*uuid=\"\\{)[0-9a-f]{8}([^>]*\\bx=\")(-?[0-9.]+)"));
+			int n = 0;
+			for (auto it = terminal.globalMatch(before); it.hasNext() ; ++n) {
+				const auto m = it.next();
+				contact.replace(m.captured(0), m.captured(1) + QStringLiteral("%1").arg(n, 8, 10, QLatin1Char('0'))
+								+ m.captured(2) + QString::number(m.captured(3).toDouble() + 40));
+			}
+			QCOMPARE(n, 2);
+			damaged.replace(before, contact);
+		}
+		const QString damaged_path = m_dir.filePath(QStringLiteral("damaged%1.qet").arg(m_run));
+		QFile out(damaged_path);
+		QVERIFY(out.open(QIODevice::WriteOnly));
+		out.write(damaged.toUtf8());
+		out.close();
+
+		auto count = [](const QString &text, const char *pattern) {
+			return int(text.count(QRegularExpression(QString::fromLatin1(pattern))));
+		};
+		const QString first = resave(damaged_path);
+		QVERIFY2(!first.isEmpty(), "--resave of the damaged project failed");
+		const QString saved = QString::fromUtf8(read(first));
+		QCOMPARE(count(saved, "<element [^>]*\\btype="), 2);
+		QCOMPARE(count(saved, "<conductor "), 2);
+		QCOMPARE(count(saved, "<link_uuid "), 2);
+		const QString second = resave(first);
+		QVERIFY2(!second.isEmpty(), "second --resave failed");
+		QVERIFY2(read(second) == read(first), "the second save changed the file");
+
+		if (damage != QLatin1String("coil")) return;
+			//The definition back: the coil and its wires are built again
+		static const QRegularExpression collection_category(QStringLiteral(
+			"(<category name=\"01_coils\">\\s*<names>.*?</names>\\s*)"),
+			QRegularExpression::DotMatchesEverythingOption);
+		QString mended = saved;
+		QVERIFY(collection_category.match(mended).hasMatch());
+		mended.replace(collection_category, QStringLiteral("\\1") + coil);
+		const QString mended_path = m_dir.filePath(QStringLiteral("mended%1.qet").arg(m_run));
+		QFile mend(mended_path);
+		QVERIFY(mend.open(QIODevice::WriteOnly));
+		mend.write(mended.toUtf8());
+		mend.close();
+		const QString back = resave(mended_path);
+		QVERIFY2(!back.isEmpty(), "--resave of the mended project failed");
+		auto items = [](const QString &text, const char *tag) {
+			QStringList found;
+			static const QRegularExpression noise(QStringLiteral(" (element[12]_(label|linked|name)|terminalname[12])=\"[^\"]*\""));
+			auto it = QRegularExpression(QStringLiteral("<%1 [^>]*>").arg(QLatin1String(tag))).globalMatch(text);
+			while (it.hasNext()) found << it.next().captured(0).remove(noise);
+			found.sort();
+			return found;
+		};
+		const QString again = QString::fromUtf8(read(back));
+		QCOMPARE(items(again, "element"), items(xml, "element"));
+		QCOMPARE(items(again, "conductor"), items(xml, "conductor"));
+	}
 };
 
 QTEST_APPLESS_MAIN(tst_resaveunchanged)

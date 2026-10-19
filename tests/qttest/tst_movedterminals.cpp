@@ -155,10 +155,12 @@ class tst_movedterminals : public QObject
 	QTemporaryDir m_dir;
 	int m_run = 0;
 
-	struct Result { int wires = -1; QString log; QStringList pairs; };
+	// wires: those joined to their terminals; saved: those in the saved
+	// file, which keeps a wire it could not join as it was read (F128)
+	struct Result { int wires = -1; int saved = -1; QString log; QStringList pairs; };
 
 	// Open and save the project in a sandbox of its own (so a running
-	// QElectroTech cannot answer instead): the wires that survive.
+	// QElectroTech cannot answer instead): the wires that are joined.
 	Result resave(const QString &xml)
 	{
 		const QString in = m_dir.filePath(QStringLiteral("in%1.qet").arg(m_run));
@@ -184,8 +186,13 @@ class tst_movedterminals : public QObject
 		QDomDocument doc;
 		QFile saved(out);
 		if (!saved.open(QIODevice::ReadOnly) || !doc.setContent(&saved)) return {};
-		r.wires = doc.elementsByTagName(QStringLiteral("conductor")).size();
-		for (int i = 0; i < r.wires; ++i) {
+		r.saved = doc.elementsByTagName(QStringLiteral("conductor")).size();
+		int not_joined = 0;
+		static const QRegularExpression not_loaded(QStringLiteral("(\\d+) wire\\(s\\) not loaded"));
+		for (auto it = not_loaded.globalMatch(r.log); it.hasNext() ; )
+			not_joined += it.next().captured(1).toInt();
+		r.wires = r.saved - not_joined;
+		for (int i = 0; i < r.saved; ++i) {
 			const QDomElement c = doc.elementsByTagName(QStringLiteral("conductor")).at(i).toElement();
 			r.pairs << c.attribute(QStringLiteral("terminal1")) + QLatin1Char('>') + c.attribute(QStringLiteral("terminal2"));
 		}
@@ -236,8 +243,12 @@ private slots:
 
 	void movedSixUnitsDoesNot()
 	{
-		QCOMPARE(resave(project({16}, byId())).wires, 0);
-		QCOMPARE(resave(project({16}, byUuid(10))).wires, 0);
+		const Result legacy = resave(project({16}, byId()));
+		QCOMPARE(legacy.wires, 0);
+		QCOMPARE(legacy.saved, 1);
+		const Result uuid = resave(project({16}, byUuid(10)));
+		QCOMPARE(uuid.wires, 0);
+		QCOMPARE(uuid.saved, 1);
 	}
 
 	// Two live terminals in reach of one saved one: no way to tell which.
@@ -245,6 +256,7 @@ private slots:
 	{
 		const Result legacy = resave(project({13, 14}, byId()));
 		QCOMPARE(legacy.wires, 0);
+		QCOMPARE(legacy.saved, 1);
 		QVERIFY(!said(legacy));
 		QCOMPARE(resave(project({13, 14}, byUuid(10))).wires, 0);
 	}
@@ -296,8 +308,10 @@ private slots:
 	// one, and no single shift maps both.
 	void ambiguousStillRefuses()
 	{
-		QCOMPARE(resave(multiProject({{'n', 0, -10}, {'n', 4, -10}},
-									 {{'n', 2, -10}, {'n', 6, -10}, {'n', -2, -10}})).wires, 0);
+		const Result r = resave(multiProject({{'n', 0, -10}, {'n', 4, -10}},
+											 {{'n', 2, -10}, {'n', 6, -10}, {'n', -2, -10}}));
+		QCOMPARE(r.wires, 0);
+		QCOMPARE(r.saved, 2);
 	}
 };
 
