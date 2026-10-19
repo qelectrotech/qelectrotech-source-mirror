@@ -69,6 +69,8 @@ namespace autonum
 	{
 			/// border_and_titleblock.folio(), folioIndex(), folioTotal()...
 		QString folio;
+			/// the folio's title, %T
+		QString folio_title;
 		int folio_index = 0;
 		int folio_total = 0;
 		QString plant;

@@ -1143,7 +1143,12 @@ void DynamicElementTextItem::elementInfoChanged()
 		if (m_composite_text.contains("%{label}"))
 			setupFormulaConnection();
 		
-		final_text = autonum::AssignVariables::replaceVariable(m_composite_text, dc);
+			//A report's %{label} is where its partner is, not its own
+			//label: the same text updateReportText() builds
+		if (m_parent_element && (m_parent_element.data()->linkType() & Element::AllReport))
+			final_text = reportReplacedCompositeText();
+		else
+			final_text = autonum::AssignVariables::replaceVariable(m_composite_text, dc);
 	}
 	else if (m_text_from  == UserText)
 		final_text = m_text;
@@ -1261,6 +1266,8 @@ void DynamicElementTextItem::setConnectionForReportFormula(const QString &formul
 		connect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
 		connect(other_diagram->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::updateReportText);
 	}
+	if (other_diagram && string.contains("%T"))
+		connect(&other_diagram->border_and_titleblock, &BorderTitleBlock::informationChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%l"))
 		connect(other_elmt, &Element::yChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%c"))
@@ -1286,6 +1293,8 @@ void DynamicElementTextItem::removeConnectionForReportFormula(const QString &for
 	
 	if (other_diagram && (string.contains("%f") || string.contains("%id")))
 		disconnect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
+	if (other_diagram && string.contains("%T"))
+		disconnect(&other_diagram->border_and_titleblock, &BorderTitleBlock::informationChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%l"))
 		disconnect(other_element, &Element::yChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%c"))
@@ -1580,6 +1589,13 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 			if(string.contains("%{conductor_section}"))
 				string.replace("%{conductor_section}", "");
 		}
+
+			//What is left is the report's own information, as in the
+			//composite text of any other element: a report can then say
+			//which device and terminal it leads to (%{comment}), the way
+			//EPLAN prints "-XS27:N 2 UG Raum - 1.1"
+		string = autonum::AssignVariables::replaceVariable(
+					string, m_parent_element.data()->elementInformations());
 	}
 	
 	return string;

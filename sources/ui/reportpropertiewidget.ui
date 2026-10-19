@@ -38,6 +38,7 @@ Create your own text using the following variables:
 %F: the sheet number
 %M: the installation
 %LM: the location
+%T: the sheet title
 %l: the row number
 %c: the column number</string>
           </property>
