@@ -785,6 +785,9 @@ void DynamicElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 
 void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+	if (m_jump_highlight)
+		painter->fillRect(boundingRect(), QColor(69, 137, 255, 90));
+
 	DiagramTextItem::paint(painter, option, widget);
 
 	if (m_frame)
@@ -1635,8 +1638,16 @@ void DynamicElementTextItem::zoomToLinkedElement()
 		setSelected(false);
 		ungrabMouse();
 
-		QetGraphicsItem::showItem(zoomed_element);
+		Element::jumpTo(zoomed_element);
 	}
+}
+
+void DynamicElementTextItem::setJumpHighlight(bool on)
+{
+	if (on == m_jump_highlight)
+		return;
+	m_jump_highlight = on;
+	update();
 }
 
 /**

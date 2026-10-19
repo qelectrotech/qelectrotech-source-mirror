@@ -50,6 +50,8 @@
 #include <QCollator>
 #include <QScreen>
 #include <QTimer>
+#include <QPointer>
+#include "../diagramview.h"
 
 static const QString plcTerminalKeys[] = {
 	QETInformation::ELMT_PLC_T1,
@@ -263,13 +265,56 @@ void Element::setHighlighted(bool hl)
 */
 void Element::showAsJumpTarget()
 {
+		//The symbol and its texts, so that the label jumped to is seen too
+	QList<DynamicElementTextItem *> texts = dynamicTextItems();
+	for (ElementTextItemGroup *group : textGroups())
+		texts.append(group->texts());
+	for (DynamicElementTextItem *text : std::as_const(texts))
+		text->setJumpHighlight(true);
+
 	++m_jump_highlight;
 	update();
-	QTimer::singleShot(2000, this, [this]() {
-		if (m_jump_highlight > 0)
-			--m_jump_highlight;
-		update();
+	QPointer<Element> self(this);
+	QTimer::singleShot(3000, this, [self]() {
+		if (!self) return;
+		if (self->m_jump_highlight > 0)
+			--self->m_jump_highlight;
+		if (self->m_jump_highlight == 0) {
+			QList<DynamicElementTextItem *> texts = self->dynamicTextItems();
+			for (ElementTextItemGroup *group : self->textGroups())
+				texts.append(group->texts());
+			for (DynamicElementTextItem *text : std::as_const(texts))
+				text->setJumpHighlight(false);
+		}
+		self->update();
 	});
+}
+
+/**
+	@brief Element::jumpTo
+	Go to @a target, the other end of a folio report or the master of a
+	cross reference: its folio is shown whole, as a page, without zooming
+	in on it, and the target and its texts are shaded blue for a moment,
+	so that the eye finds it on the page.
+	(The mouse pointer cannot be put on it: Wayland does not let a program
+	move the pointer.)
+*/
+void Element::jumpTo(Element *target)
+{
+	if (!target || !target->diagram())
+		return;
+	Diagram *diagram = target->diagram();
+	diagram->showMe();
+	diagram->clearSelection();
+	target->setSelected(true);
+	for (QGraphicsView *view : diagram->views())
+	{
+		if (auto *diagram_view = qobject_cast<DiagramView *>(view))
+			diagram_view->zoomFit();
+		else
+			view->fitInView(diagram->sceneRect(), Qt::KeepAspectRatio);
+	}
+	target->showAsJumpTarget();
 }
 
 /**
@@ -2402,7 +2447,7 @@ void Element::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 			//move when the target is in the same scene as this.
 		setSelected(false);
 		ungrabMouse();
-		QetGraphicsItem::showItem(target);
+		jumpTo(target);
 		return;
 	}
 	QetGraphicsItem::mouseDoubleClickEvent(event);

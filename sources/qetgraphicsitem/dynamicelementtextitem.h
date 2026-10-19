@@ -106,6 +106,9 @@ class DynamicElementTextItem : public DiagramTextItem
 		void setInfoName(const QString &info_name);
 		QString infoName() const;
 		Element *linkedElementShown() const;
+			/// Shaded blue for a moment: its symbol is where a jump landed
+		void setJumpHighlight(bool on);
+		bool isJumpHighlighted() const {return m_jump_highlight;}
 		void setCompositeText(const QString &text);
 		QString compositeText() const;
 		void setFrame(const bool frame);
@@ -197,6 +200,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		CrossRefItem *m_Xref_item = nullptr;
 		QGraphicsTextItem *m_slave_Xref_item = nullptr;
 		qreal m_text_width = -1;
+		bool m_jump_highlight = false;
 			/// The text was emptied with its alignment kept (setPlainText())
 		bool m_emptied_aligned = false;
 		QPointF m_initial_position;

@@ -5,7 +5,7 @@
 // A linked folio report shows a pointing hand under the mouse, on its
 // arrow and on the text that shows its label, and a double click on
 // either goes to the other end. The end jumped to is highlighted for a
-// moment, independently of the hover highlight, which the mouse leaving
+// moment, its texts too, independently of the hover highlight, which the mouse leaving
 // the end jumped from would clear at once. An unlinked report shows no
 // hand and has nowhere to jump to.
 #include <QApplication>
@@ -112,10 +112,22 @@ int main(int argc, char **argv)
 		doubleClick(one, going);
 		check(coming->isSelected(), "the end jumped to is selected");
 		check(coming->isShownAsJumpTarget(), "the end jumped to is highlighted");
+		{
+			bool texts_shaded = !coming->dynamicTextItems().isEmpty();
+			for (DynamicElementTextItem *text : coming->dynamicTextItems())
+				texts_shaded &= text->isJumpHighlighted();
+			check(texts_shaded, "and its texts are shaded too");
+		}
 		hover(one, going, QEvent::GraphicsSceneHoverLeave);
 		check(coming->isShownAsJumpTarget(), "leaving the report keeps the jump highlight");
-		wait(2300);
+		wait(3300);
 		check(!coming->isShownAsJumpTarget(), "the jump highlight goes after a moment");
+		{
+			bool texts_plain = true;
+			for (DynamicElementTextItem *text : coming->dynamicTextItems())
+				texts_plain &= !text->isJumpHighlighted();
+			check(texts_plain, "and so does the shading of its texts");
+		}
 
 		// The text showing the label: a pointing hand, and a double click
 		// jumps back.
