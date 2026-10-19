@@ -102,6 +102,10 @@
 #include <QDir>
 #include <QDomDocument>
 #include <QFileInfo>
+#include "../cable/addcablecommand.h"
+#include "../cable/cable.h"
+#include "../cable/cablemanager.h"
+#include "../cable/cablepart.h"
 #include <QFont>
 #include <QImage>
 #include <QPixmap>
@@ -2260,6 +2264,108 @@ int QetScriptApi::addShape(int folioIndex, const QString &type,
 	auto *shape = new QetShapeItem(QPointF(x1, y1), QPointF(x2, y2), shape_type);
 	diagram->undoStack().push(new AddGraphicsObjectCommand(shape, diagram, QPointF(0, 0)));
 	return sortedShapes(folioIndex).indexOf(shape);
+}
+
+/**
+	@brief QetScriptApi::addCable
+	Draw a cable across conductors, as the cable tool does: the line from
+	(x1, y1) to (x2, y2) on the folio becomes the cable's trunk, every
+	conductor it crosses gets the next core, in order along the line, and
+	with it the colour @p coreColors lists at that place. The cable is a
+	new one, named @p designation (the next free name when empty), of
+	type @p type, as long as @p length says. One undo step, through the
+	same AddCableCommand the tool pushes.
+	A conductor another cable already holds is not taken away from it:
+	the call is refused instead, since a script cannot be asked, as the
+	tool's dialog asks, whether to move it.
+	@return the cable's uuid, or an empty string
+*/
+QString QetScriptApi::addCable(int folioIndex, const QString &designation,
+							   const QString &type, const QStringList &coreColors,
+							   const QString &length,
+							   double x1, double y1, double x2, double y2)
+{
+	if (!m_project) return QString();
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addCable: project is read-only"));
+		return QString();
+	}
+	const QList<Diagram *> diagrams = m_project->folios();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
+	Diagram *diagram = built(diagrams.at(folioIndex));
+
+	const QLineF line(QPointF(x1, y1), QPointF(x2, y2));
+	const QList<CableCrossing> crossings = CableManager::crossedConductors(diagram, line);
+	if (crossings.isEmpty()) {
+		log(QStringLiteral("qet.addCable: the line crosses no conductor"));
+		return QString();
+	}
+	for (const CableCrossing &crossing : crossings) {
+		if (crossing.conductor && !crossing.conductor->properties().m_cable_uuid.isNull()) {
+			log(QStringLiteral("qet.addCable: a crossed conductor already belongs to a cable"));
+			return QString();
+		}
+	}
+
+	Cable *cable = m_project->newCable();
+	cable->setType(type);
+	cable->setCoreCount(qMax(int(coreColors.size()), int(crossings.size())));
+	cable->setCoreColors(coreColors);
+	cable->setLength(length);
+	if (designation.trimmed().isEmpty()) {
+		cable->setDesignation(CableManager::nextDesignation(m_project, diagram));
+	} else {
+		cable->setDesignation(designation.trimmed());
+		cable->setDesignationByHand(true);
+	}
+
+	CablePartData part;
+	part.uuid = QUuid::createUuid();
+	part.diagram = diagram->uuid();
+	part.p1 = line.p1();
+	part.p2 = line.p2();
+	cable->addPart(part);
+
+	int core_number = 0;
+	for (const CableCrossing &crossing : crossings)
+	{
+		Conductor *conductor = crossing.conductor;
+		if (!conductor) continue;
+		CableManager::claimConductor(m_project, conductor, cable);
+			//A cable binds a conductor by its identity (@see
+			//CableCreateDialog::assignCrossings)
+		conductor->setUuid(conductor->uuid());
+		CableCore core;
+		core.core = core_number++;
+		core.part = part.uuid;
+		core.conductor = conductor->uuid();
+		core.position = crossing.position;
+		cable->setCore(core);
+	}
+
+	auto *item = new CablePart(part);
+	item->setCable(cable);
+	diagram->addItem(item);
+	m_project->undoStack()->push(new AddCableCommand(cable, item, diagram, true));
+	return cable->uuid().toString();
+}
+
+/**
+	@brief QetScriptApi::cables
+	@return one line per cable of the project: designation, type, cores
+	used of cores, length and uuid
+*/
+QStringList QetScriptApi::cables() const
+{
+	QStringList out;
+	if (!m_project) return out;
+	for (Cable *cable : m_project->cables()) {
+		out << QStringLiteral("%1: %2, %3/%4 cores, %5 %6")
+				.arg(cable->designation(), cable->type())
+				.arg(cable->usedCoreCount()).arg(cable->coreCount())
+				.arg(cable->length(), cable->uuid().toString());
+	}
+	return out;
 }
 
 namespace {

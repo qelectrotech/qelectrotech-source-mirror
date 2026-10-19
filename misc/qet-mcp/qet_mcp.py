@@ -1581,6 +1581,13 @@ OPS = {
     "remove_folio":     ("removeFolio",         [("folio", "folio")]),
     "set_folio":        ("setFolioProperty",    [("folio", "folio"), ("property", "str"),
                                                  ("value", "str")]),
+    # A cable drawn across conductors, as the cable tool draws it: every
+    # conductor the line crosses gets the next core and its colour.
+    "add_cable":             ("addCable",            [("folio", "folio"), ("designation", "str"),
+                                                      ("type", "str"), ("core_colors", "list"),
+                                                      ("length", "str"),
+                                                      ("x1", "num"), ("y1", "num"),
+                                                      ("x2", "num"), ("y2", "num")]),
     "add_terminal_strip":    ("addTerminalStrip",    [("installation", "str"), ("location", "str"),
                                                       ("name", "str")]),
     "remove_terminal_strip": ("removeTerminalStrip", [("strip", "folio")]),
@@ -5142,7 +5149,7 @@ TOOLS = [
                         "it to one element AFTER it is placed (add_element does not number "
                         "what it places); slaves and reports are refused, since they take "
                         "their label from their master. "
-                        "Terminal strips: add_terminal_strip returns an index (name "
+                        "Cables: add_cable (folio, designation -- empty for the next free name --, type, core_colors, length, x1, y1, x2, y2) draws a new cable's trunk line across the conductors between the two points, as the cable tool does: each crossed conductor, in order along the line, gets the next core and the colour core_colors lists at that place; a conductor another cable already holds makes the op fail. Returns the cable's uuid. Terminal strips: add_terminal_strip returns an index (name "
                         "it \"$id\"); add_to_strip puts a terminal-type element on "
                         "it, and refuses any other kind. group_terminals/bridge_terminals "
                         "take \"indices\" (at least two) into that strip's real-terminal "
