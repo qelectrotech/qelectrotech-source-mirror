@@ -437,6 +437,9 @@ class EditValidation(unittest.TestCase):
             "set_element_text": el + [{"op": "set_element_text", "folio": "$f", "element": "$e", "index": 0,
                                        "property": "x", "value": "5"}],
             "delete_element_text": el + [{"op": "delete_element_text", "folio": "$f", "element": "$e", "index": 0}],
+            "add_cable": [f, {"op": "add_cable", "id": "k", "folio": "$f", "designation": "-W1",
+                              "type": "NYM-J 3x1,5", "core_colors": ["BN", "BU", "GNYE"],
+                              "length": "2 m", "x1": 0, "y1": 0, "x2": 100, "y2": 0}],
             "add_terminal_strip": [{"op": "add_terminal_strip", "installation": "a", "location": "b", "name": "c"}],
             "remove_terminal_strip": [{"op": "remove_terminal_strip", "strip": 0}],
             "add_to_strip": el + [{"op": "add_to_strip", "strip": 0, "folio": "$f", "element": "$e"}],
@@ -4534,11 +4537,27 @@ class Integration(unittest.TestCase):
               for i in range(4)],
             {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e1", "to_terminal": 0},
             {"op": "add_conductor", "folio": "$f", "from": "$e2", "from_terminal": 0, "to": "$e3", "to_terminal": 0},
+            {"op": "set_conductor", "folio": "$f", "element": "$e2", "terminal": 0, "property": "num", "value": "W2"},
             {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e2", "to_terminal": 0},
         ], self.sb.p("conflict.qet"), elements_dir=ELEMENTS, timeout=60)
         self.assertFalse(r.get("timed_out"), "the call hung on a modal dialog")
         self.assertFalse(r["ok"])
         self.assertEqual(r["operations"][-1]["result"], False)
+
+    def test_joining_two_agreeing_potentials_asks_nothing(self):
+        """Two potentials with the same properties leave nothing to choose:
+        the wire joining them is drawn, headless as well."""
+        base = self.sb.new()
+        r = self.ok(self.sb.edit(base, [
+            {"op": "add_folio", "id": "f"},
+            *[{"op": "add_element", "id": f"e{i}", "folio": "$f", "path": COIL, "x": 100 + i * 200, "y": 100}
+              for i in range(4)],
+            {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e1", "to_terminal": 0},
+            {"op": "set_conductor", "folio": "$f", "element": "$e0", "terminal": 0, "property": "num", "value": "N"},
+            {"op": "add_conductor", "folio": "$f", "from": "$e2", "from_terminal": 0, "to": "$e3", "to_terminal": 0},
+            {"op": "set_conductor", "folio": "$f", "element": "$e2", "terminal": 0, "property": "num", "value": "N"},
+            {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e2", "to_terminal": 0}]))
+        self.assertEqual([c["num"] for c in m.tool_conductors(r["output"])["conductors"]], ["N"] * 3)
 
     # ---- edit: conductor properties, potentials ----
 
@@ -4554,6 +4573,34 @@ class Integration(unittest.TestCase):
         r = self.ok(self.sb.edit(base, hub))
         rows = m.tool_conductors(r["output"])["conductors"]
         self.assertEqual([c["num"] for c in rows], ["W7", "W7"])
+
+    def test_new_conductor_inherits_a_potential_through_terminal_and_report(self):
+        """A wire drawn to the free side of a terminal element, or to a
+        report linked to a wired one, is on that potential already: it
+        takes the potential's number and line style, not the folio's
+        defaults (ConductorCreator::existingPotential)."""
+        base = self.sb.new()
+        ops = [{"op": "add_folio", "id": "f"}, {"op": "add_folio", "id": "g"},
+               {"op": "add_element", "id": "a", "folio": "$f", "path": COIL, "x": 100, "y": 100},
+               {"op": "add_element", "id": "t", "folio": "$f", "path": TERMINAL, "x": 300, "y": 300},
+               {"op": "add_element", "id": "b", "folio": "$f", "path": COIL, "x": 500, "y": 100},
+               {"op": "add_element", "id": "go", "folio": "$f", "path": NEXT_REPORT, "x": 700, "y": 100},
+               {"op": "add_element", "id": "in", "folio": "$g", "path": PREVIOUS_REPORT, "x": 100, "y": 100},
+               {"op": "add_element", "id": "c", "folio": "$g", "path": COIL, "x": 300, "y": 100},
+               {"op": "link_elements", "folio": "$f", "element": "$go", "to_folio": "$g", "to": "$in"},
+               {"op": "add_conductor", "folio": "$f", "from": "$a", "from_terminal": 0, "to": "$t", "to_terminal": 0},
+               {"op": "set_conductor", "folio": "$f", "element": "$a", "terminal": 0, "property": "num", "value": "W7"},
+               {"op": "set_conductor", "folio": "$f", "element": "$a", "terminal": 0, "property": "style", "value": "dashed"},
+               # the terminal's other side, then on through the report
+               {"op": "add_conductor", "folio": "$f", "from": "$t", "from_terminal": 1, "to": "$b", "to_terminal": 0},
+               {"op": "add_conductor", "folio": "$f", "from": "$b", "from_terminal": 0, "to": "$go", "to_terminal": 0},
+               {"op": "add_conductor", "folio": "$g", "from": "$in", "from_terminal": 0, "to": "$c", "to_terminal": 0}]
+        r = self.ok(self.sb.edit(base, ops))
+        rows = m.tool_conductors(r["output"])["conductors"]
+        self.assertEqual([c["num"] for c in rows], ["W7"] * 4)
+        styles = {c["value"] for c in m.tool_conductors(r["output"], attribute="style")["conductors"]}
+        self.assertEqual(len(styles), 1, styles)
+        self.assertIn("dash", styles.pop())
 
     # ---- conductor manual routing ----
 
@@ -5828,6 +5875,22 @@ class Integration(unittest.TestCase):
         line = [l for l in (out["stdout"] + out["stderr"]).splitlines() if l.startswith("DB ")][0]
         self.assertEqual(json.loads(line[3:]), [{"wire_number": "W1"}])
 
+    def test_duplicate_labels_are_counted_per_location(self):
+        """-F1 in two distribution boards is two devices: the folio's
+        location (+UV1, +UV2) is part of the name, as %LM shows it. KM1 on
+        +UV1 and +UV2 is fine, a second KM1 on +UV2 is the finding."""
+        base = self.sb.new(folios=3)
+        ops = []
+        for folio, ort in enumerate(("UV1", "UV2", "UV2")):
+            ops += [{"op": "set_folio", "folio": folio, "property": "locmach", "value": ort},
+                    {"op": "add_element", "id": f"k{folio}", "folio": folio, "path": COIL,
+                     "x": 100, "y": 100},
+                    {"op": "set_label", "folio": folio, "element": f"$k{folio}", "label": "KM1"}]
+        r = self.ok(self.sb.edit(base, ops))
+        found = {f["check"]: f for f in m.tool_check(BINARY, r["output"])["findings"]}
+        self.assertEqual(found["duplicate_master_labels"]["rows"],
+                         [{"label": "KM1", "plant": "", "location": "UV2", "n": 2}])
+
     def test_check_fires_on_a_project_with_known_defects(self):
         """Newly placed elements store NULL where a loaded file stores '', and
         `col = ''` matches only the second: the first version of these checks
@@ -6624,6 +6687,23 @@ class ZippedProjects(unittest.TestCase):
         rotated = m.tool_diff(str(self.qetz), str(out))["elements"]["rotated"]
         self.assertEqual([r["uuid"] for r in rotated], [first["uuid"]])
         self.assertNotEqual(*rotated[0]["orientation"])
+
+
+class TestKeepTail(unittest.TestCase):
+    """A large edit logs more than the kept tail; the script's own report
+    lines must survive the cut, or qet_edit says the script never ran."""
+
+    def test_short_output_is_untouched(self):
+        self.assertEqual(m._keep_tail("a\nb", 100), "a\nb")
+
+    def test_marker_lines_survive_the_cut(self):
+        first = 'QETEDIT {"kind": "capabilities", "missing": []}'
+        text = first + "\n" + "x" * 1000 + "\n" + 'QETEDIT {"kind": "save", "result": true}'
+        kept = m._keep_tail(text, 100)
+        self.assertIn(first, kept)
+        self.assertIn('"kind": "save"', kept)
+        self.assertEqual(kept.count('"kind": "save"'), 1)
+        self.assertEqual(m._parse_script_output(kept).get("missing_methods"), [])
 
 
 if __name__ == "__main__":

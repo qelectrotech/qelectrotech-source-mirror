@@ -490,6 +490,13 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool setTextRotation(int folioIndex, int textIndex, double angle);
 		Q_INVOKABLE bool deleteText(int folioIndex, int textIndex);
 
+		// -- cables --
+		Q_INVOKABLE QString addCable(int folioIndex, const QString &designation,
+									 const QString &type, const QStringList &coreColors,
+									 const QString &length,
+									 double x1, double y1, double x2, double y2);
+		Q_INVOKABLE QStringList cables() const;
+
 		Q_INVOKABLE QStringList shapes(int folioIndex) const;
 		Q_INVOKABLE int shapeIndex(int folioIndex, const QString &uuid) const;
 		Q_INVOKABLE int addShape(int folioIndex, const QString &type,

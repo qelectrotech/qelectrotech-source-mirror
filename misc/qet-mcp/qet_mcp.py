@@ -1072,6 +1072,23 @@ def _user_collections() -> dict:
     return found
 
 
+def _keep_tail(text: str, tail: int) -> str:
+    """The last `tail` characters of a run's output, but every line an edit
+    script reported through its marker kept whole, wherever it stands.
+
+    A large qet_edit logs far more than `tail` characters; cut from the
+    front, it lost the capability report the script makes first, and the
+    tool then said the binary had never run the script."""
+    if len(text) <= tail:
+        return text
+    marked = [ln for ln in text.splitlines() if "QETEDIT " in ln]
+    rest = text[-tail:]
+    if not marked:
+        return rest
+    kept = set(rest.splitlines())
+    return "\n".join([ln for ln in marked if ln not in kept] + [rest])
+
+
 def _run_qet(binary: str, args: list[str], timeout: int = 180,
              elements_dir: str | None = None,
              script: str | None = None, tail: int = 4000,
@@ -1150,7 +1167,7 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
                     "hint": "a modal dialog during load will hang a headless "
                             "run; check the project's format version"}
         result = {"ok": p.returncode == 0, "exit_code": p.returncode,
-                  "stdout": p.stdout[-tail:], "stderr": p.stderr[-tail:]}
+                  "stdout": _keep_tail(p.stdout, tail), "stderr": _keep_tail(p.stderr, tail)}
         # QElectroTech refuses --run when scripting is switched off, which
         # it is by default. Its own message is clear but French, and it
         # names a settings dialog that nobody driving this server is
@@ -1581,6 +1598,13 @@ OPS = {
     "remove_folio":     ("removeFolio",         [("folio", "folio")]),
     "set_folio":        ("setFolioProperty",    [("folio", "folio"), ("property", "str"),
                                                  ("value", "str")]),
+    # A cable drawn across conductors, as the cable tool draws it: every
+    # conductor the line crosses gets the next core and its colour.
+    "add_cable":             ("addCable",            [("folio", "folio"), ("designation", "str"),
+                                                      ("type", "str"), ("core_colors", "list"),
+                                                      ("length", "str"),
+                                                      ("x1", "num"), ("y1", "num"),
+                                                      ("x2", "num"), ("y2", "num")]),
     "add_terminal_strip":    ("addTerminalStrip",    [("installation", "str"), ("location", "str"),
                                                       ("name", "str")]),
     "remove_terminal_strip": ("removeTerminalStrip", [("strip", "folio")]),
@@ -2772,22 +2796,34 @@ def tool_element_search(directory: str, query: str = "", link_type: str | None =
 #   either would bury the real findings.
 # - "simple" elements are checked for duplicates too but only as a warning:
 #   industrial.qet reuses V1..V6 across folios on purpose.
+#
+# A label names one device per place: the same "-F1" in two distribution
+# boards (+UV1-F1, +UV2-F1) is two devices, as in IEC 81346 / EPLAN. The
+# place is the element's own plant/location, else its folio's -- what the
+# label formulas %M/%LM show. element_nomenclature_view carries only the
+# element's, so these two checks read the tables.
+_LABELS_PER_PLACE_SQL = (
+    "SELECT ei.label AS label, "
+    "COALESCE(NULLIF(ei.plant,''), di.plant, '') AS plant, "
+    "COALESCE(NULLIF(ei.location,''), di.locmach, '') AS location, COUNT(*) AS n "
+    "FROM element_info ei JOIN element e ON ei.element_uuid = e.uuid "
+    "JOIN diagram_info di ON di.diagram_uuid = e.diagram_uuid "
+    "WHERE COALESCE(ei.label,'') <> '' AND e.type = '{type}' "
+    "AND COALESCE(LOWER(TRIM(ei.exclude_from_bom)), '') NOT IN ('true', '1', 'yes', 'on') "
+    "GROUP BY ei.label, 2, 3 HAVING n > 1 ORDER BY n DESC, ei.label")
+
 CHECKS = {
     "duplicate_master_labels": {
         "severity": "error",
         "note": "Two master elements with the same label are ambiguous in every "
                 "report that keys on it (BOM, cross-references, wiring list).",
-        "sql": "SELECT label, COUNT(*) AS n FROM element_nomenclature_view "
-               "WHERE COALESCE(label,'') <> '' AND element_type = 'master' "
-               "GROUP BY label HAVING n > 1 ORDER BY n DESC, label",
+        "sql": _LABELS_PER_PLACE_SQL.format(type="master"),
     },
     "duplicate_simple_labels": {
         "severity": "warning",
         "note": "Legitimate when a label is reused on purpose across folios "
                 "(industrial.qet does); worth a look otherwise.",
-        "sql": "SELECT label, COUNT(*) AS n FROM element_nomenclature_view "
-               "WHERE COALESCE(label,'') <> '' AND element_type = 'simple' "
-               "GROUP BY label HAVING n > 1 ORDER BY n DESC, label",
+        "sql": _LABELS_PER_PLACE_SQL.format(type="simple"),
     },
     "unlabelled_masters": {
         "severity": "warning",
@@ -5142,7 +5178,7 @@ TOOLS = [
                         "it to one element AFTER it is placed (add_element does not number "
                         "what it places); slaves and reports are refused, since they take "
                         "their label from their master. "
-                        "Terminal strips: add_terminal_strip returns an index (name "
+                        "Cables: add_cable (folio, designation -- empty for the next free name --, type, core_colors, length, x1, y1, x2, y2) draws a new cable's trunk line across the conductors between the two points, as the cable tool does: each crossed conductor, in order along the line, gets the next core and the colour core_colors lists at that place; a conductor another cable already holds makes the op fail. Returns the cable's uuid. Terminal strips: add_terminal_strip returns an index (name "
                         "it \"$id\"); add_to_strip puts a terminal-type element on "
                         "it, and refuses any other kind. group_terminals/bridge_terminals "
                         "take \"indices\" (at least two) into that strip's real-terminal "
