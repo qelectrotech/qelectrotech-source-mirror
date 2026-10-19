@@ -213,6 +213,8 @@ class DynamicElementTextItem : public DiagramTextItem
 		qreal m_resize_original_width = -1;
 		qreal m_resize_baseline_width = -1;
 		qreal m_resize_start_local_x = 0;
+		QPointF m_resize_start_pos,
+				m_resize_fixed_parent;
 		QMetaObject::Connection m_resize_handles_con;
 };
 

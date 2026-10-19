@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextitem.h"
+#include "../QetGraphicsItemModeler/textresizehandles.h"
 #include "../shownkinds.h"
 #include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
@@ -1040,8 +1041,6 @@ void DynamicElementTextItem::updateResizeHandlesPos()
 */
 void DynamicElementTextItem::handlerMousePressEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event)
 {
-	Q_UNUSED(handle)
-
 		//The actual property value, kept as-is (possibly -1, meaning "auto")
 		//so a later undo restores the exact original state rather than a
 		//synthesized fixed width.
@@ -1050,6 +1049,14 @@ void DynamicElementTextItem::handlerMousePressEvent(QetGraphicsHandlerItem *hand
 		//start from -1.
 	m_resize_baseline_width = (m_resize_original_width < 0) ? frameRect().width() : m_resize_original_width;
 	m_resize_start_local_x = mapFromScene(event->scenePos()).x();
+
+		//The edge opposite the dragged handle stays where it is, as in a
+		//drawing program: remember it in the parent's coordinates, which
+		//take the text's rotation into account
+	m_resize_start_pos = pos();
+	const QRectF br = boundingRect();
+	m_resize_fixed_parent = mapToParent(QPointF(handle == m_left_resize_handle ? br.right() : br.left(),
+												br.center().y()));
 }
 
 /**
@@ -1071,14 +1078,23 @@ void DynamicElementTextItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *handl
 
 	qreal new_width = qMax(m_resize_baseline_width + delta, qreal(10));
 	setTextWidth(new_width);
+
+		//The text grows and shrinks on its right side: dragging the left
+		//handle moves the text so that its right edge stays in place
+	if (handle == m_left_resize_handle)
+	{
+		const QRectF br = boundingRect();
+		setPos(pos() + m_resize_fixed_parent - mapToParent(QPointF(br.right(), br.center().y())));
+	}
 	updateResizeHandlesPos();
 }
 
 /**
 	@brief DynamicElementTextItem::handlerMouseReleaseEvent
-	Push the same QPropertyUndoCommand the properties-panel width spinbox
-	already pushes (sources/ui/dynamicelementtextmodel.cpp) -- the value is
-	already applied live from the drag, so this only makes it undoable.
+	Make the drag undoable with a TextResizeCommand, as the corner handles
+	of a free text do: the width and, after a drag on the left handle, the
+	position that kept the right edge in place. Both are already applied,
+	live from the drag.
 	@param handle
 	@param event
 */
@@ -1088,10 +1104,13 @@ void DynamicElementTextItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *ha
 	Q_UNUSED(event)
 
 	qreal new_width = textWidth();
-	if (!qFuzzyCompare(m_resize_original_width, new_width) && m_parent_element && m_parent_element->diagram())
+	if ((!qFuzzyCompare(m_resize_original_width, new_width) || pos() != m_resize_start_pos)
+			&& m_parent_element && m_parent_element->diagram())
 	{
-		auto *undo = new QPropertyUndoCommand(this, "textWidth", QVariant(m_resize_original_width), QVariant(new_width));
-		undo->setAnimated(true, false);
+			//Width and position together: undoing a drag on the left
+			//handle puts the text back where it was
+		auto *undo = new TextResizeCommand(this, m_resize_original_width, new_width,
+										   m_resize_start_pos, pos());
 		undo->setText(tr("Resize an element text"));
 		m_parent_element->diagram()->undoStack().push(undo);
 	}
