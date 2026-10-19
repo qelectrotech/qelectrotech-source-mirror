@@ -64,6 +64,7 @@ namespace TerminalStripDrawer
 			QString cable() const override;
 			QString cableWire() const override;
 			bool isShield() const override;
+			QVector<QString> cableTarget() const override;
 			QColor color() const override;
 			QColor stripeColor() const override;
 			qreal widthMm() const override;

@@ -332,6 +332,11 @@ target_link_libraries(tst_textresizehandles PRIVATE Qt::Test Qt::Widgets)
 # rectangle's does; a pivot placed by hand stays.
 qet_add_app_test(tst_linepivotresize tst_linepivotresize.cpp)
 
+# The strip graphic names where a cable goes at its far end -- Installation,
+# Location and Label of the first piece its wires land on past the strip, in
+# plan order, the same three fields the cable list computes for a target.
+qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
+
 # legacyelementtypes.h is header-only: the rewrite of element type names in
 # nomenclature queries saved before June 2022.
 add_executable(tst_legacyelementtypes tst_legacyelementtypes.cpp)

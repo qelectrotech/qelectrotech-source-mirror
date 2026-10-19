@@ -74,6 +74,7 @@ class RealTerminal
 		QString cable() const;
 		QString cableWire() const;
 		bool isShield() const;
+		QVector<QString> cableTarget() const;
 		QColor color() const;
 		QColor stripeColor() const;
 		qreal section() const;

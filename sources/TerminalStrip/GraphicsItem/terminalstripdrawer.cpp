@@ -270,14 +270,18 @@ struct CableCell
 	QString cable;       ///< name of the cable (hose)
 	QString wire;        ///< color / number of the wire
 	bool shield{false};  ///< true if the terminal is the shield of the cable
+	QSharedPointer<AbstractRealTerminalInterface> terminal; ///< to ask where the cable goes
 };
 
 /**
  * @brief drawCables
  * Draw the cables under the terminals. Consecutive terminals who have the same cable name
- * share the same cable: the wires go down from the terminals, join in the cable,
- * and leave the cable with the same wire marks. The shield is linked to a dashed ellipse
- * drawn around the cable.
+ * share the same cable: the wires go down from the terminals and join in the cable.
+ * The cable ends together -- a short stub, then a box naming where the cable goes
+ * (Installation, Location and Label of the piece it lands on). It does not fan out
+ * again after the cable: the wires drawn there suggested each core went its own way
+ * towards the target, which said nothing about where that target is.
+ * The shield is linked to a dashed ellipse drawn around the cable.
  * @param painter : the pen and the font must be set
  * @param cells : one cell per terminal, in the drawing order
  * @param pattern
@@ -350,7 +354,6 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 		const qreal cable_x{(min_x + max_x) / 2};
 		const qreal bar_1_y{max_bottom + wire_length};
 		const qreal bar_2_y{bar_1_y + cable_length};
-		const qreal end_y{bar_2_y + end_length};
 
 			//Wires between the terminals and the cable
 		for (const auto &wire : std::as_const(wires))
@@ -363,12 +366,51 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 			//The cable
 		painter->drawLine(QPointF{cable_x, bar_1_y}, QPointF{cable_x, bar_2_y});
 
-			//Wires after the cable
+			//The bundle stays together at the end: the cross bar, a short
+			//stub, and a box naming where the cable goes -- the Installation,
+			//Location and Label (BMK) of the piece it lands on, the same
+			//three fields the cable list shows. The lines shrink to the end
+			//zone the settings leave, so the box never grows past the strip.
 		painter->drawLine(QPointF{min_x, bar_2_y}, QPointF{max_x, bar_2_y});
-		for (const auto &wire : std::as_const(wires))
+		const qreal stub{qMin<qreal>(6, end_length)};
+		painter->drawLine(QPointF{cable_x, bar_2_y}, QPointF{cable_x, bar_2_y + stub});
+
+		const auto target_lines{wires.first().terminal ? wires.first().terminal->cableTarget()
+														: QVector<QString>()};
+		if (!target_lines.isEmpty() && end_length - stub > 4)
 		{
-			painter->drawLine(QPointF{wire.x, bar_2_y}, QPointF{wire.x, end_y});
-			draw_wire_mark(wire.x, qMin(bar_2_y + 10, end_y), wire.wire, false);
+			QFont box_font{painter->font()};
+			if (box_font.pixelSize() <= 0 && box_font.pointSizeF() > 0) {
+				box_font.setPixelSize(qMax(4, qRound(box_font.pointSizeF() * 96.0 / 72.0)));
+			}
+			const qreal room{end_length - stub};
+			const auto fits_the_end_zone = [&target_lines, room](const QFont &font_) {
+				return QFontMetricsF{font_}.height() * target_lines.size() + 4 <= room;
+			};
+			while (!fits_the_end_zone(box_font) && box_font.pixelSize() > 4) {
+				box_font.setPixelSize(box_font.pixelSize() - 1);
+			}
+
+			const QFontMetricsF box_metrics{box_font};
+			qreal box_width{6};
+			for (const QString &line_ : target_lines) {
+				box_width = qMax(box_width, box_metrics.horizontalAdvance(line_) + 6);
+			}
+			const qreal box_height{box_metrics.height() * target_lines.size() + 4};
+			const QRectF box{cable_x - box_width / 2, bar_2_y + stub, box_width, box_height};
+
+			painter->save();
+			painter->setFont(box_font);
+			painter->drawRect(box);
+			for (auto i = 0 ; i < target_lines.size() ; ++i)
+			{
+				painter->drawText(QRectF{box.left() + 1,
+										 box.top() + 2 + i * box_metrics.height(),
+										 box.width() - 2, box_metrics.height()},
+								  Qt::AlignCenter,
+								  target_lines.at(i));
+			}
+			painter->restore();
 		}
 
 			//The shield, linked to an ellipse around the cable
@@ -1037,6 +1079,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
 					cable_cell.cable = real_terminal_vector[i]->cable();
 					cable_cell.wire = real_terminal_vector[i]->cableWire();
 					cable_cell.shield = real_terminal_vector[i]->isShield();
+					cable_cell.terminal = real_terminal_vector[i];
 				}
 				const bool have_cable{m_pattern->m_cable_wire_length > 0 && !cable_cell.cable.isEmpty()};
 				cable_cells.append(cable_cell);

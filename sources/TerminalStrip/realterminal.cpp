@@ -22,7 +22,15 @@
 #include "terminalcolor.h"
 #include "terminalcatalog.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
+#include "../qetproject.h"
+#include "../cable/cable.h"
+#include "../diagram.h"
+
+#include <QHash>
+#include <QSet>
 
 /**
  * @brief RealTerminal
@@ -320,6 +328,144 @@ bool RealTerminal::isShield() const {
 			terminalData().m_informations.value(shieldInfoKey()).toString());
 	}
 	return false;
+}
+
+/**
+ * @brief RealTerminal::cableTarget
+ * Where the cable of this terminal goes at its far end: the
+ * Installation, Location and Label (BMK) of the first piece the
+ * wires of the cable land on, past the strip's own terminals, in
+ * plan order -- the same three fields the cable list shows for a
+ * target, in the same order. An empty field is left out; a terminal
+ * with no cable, or a cable which lands on nothing else, gives no
+ * lines at all.
+ *
+ * The cable is the one the wires drawn to this terminal carry; a
+ * cable name typed by hand, with no wire behind it, is looked up by
+ * its name among the cables of the project.
+ * @return the lines to write in the box under the cable
+ */
+QVector<QString> RealTerminal::cableTarget() const
+{
+	if (m_spare || m_element.isNull()) {
+		return QVector<QString>();
+	}
+	TerminalStrip *strip_ = parentStrip();
+	if (!strip_ || !strip_->project()) {
+		return QVector<QString>();
+	}
+	QETProject *project_{strip_->project()};
+
+		//The cable the wires drawn to this terminal are part of
+	QUuid cable_uuid_;
+	for (Terminal *terminal_ : m_element->terminals())
+	{
+		if (!terminal_) {
+			continue;
+		}
+		for (Conductor *conductor_ : terminal_->conductors())
+		{
+			if (conductor_ && !conductor_->properties().m_cable_uuid.isNull()) {
+				cable_uuid_ = conductor_->properties().m_cable_uuid;
+				break;
+			}
+		}
+		if (!cable_uuid_.isNull()) {
+			break;
+		}
+	}
+	if (cable_uuid_.isNull())
+	{
+			//A cable name typed by hand, no wire behind it: the first
+			//cable of the project drawn under that name
+		const auto name_{cable()};
+		if (name_.isEmpty()) {
+			return QVector<QString>();
+		}
+		for (Cable *cable_ : project_->cables())
+		{
+			if (cable_ && cable_->designation() == name_) {
+				cable_uuid_ = cable_->uuid();
+				break;
+			}
+		}
+		if (cable_uuid_.isNull()) {
+			return QVector<QString>();
+		}
+	}
+
+		//The own side: this strip's terminals never are the target
+	QSet<QUuid> own_;
+	for (const auto &physical_ : strip_->physicalTerminal())
+	{
+		if (!physical_) {
+			continue;
+		}
+		for (const auto &real_ : physical_->realTerminals()) {
+			if (real_ && real_->element()) {
+				own_.insert(real_->element()->uuid());
+			}
+		}
+	}
+
+		//Where the wires of the cable land: one piece whatever the
+		//number of its cores, never a report (the cable continues on
+		//the sheet the report points to) and never the strip's own
+		//terminals. Same rule as the cable list (cablelistrows.cpp).
+	QHash<QUuid, Element *> landed_;
+	for (Diagram *diagram_ : project_->diagrams())
+	{
+		for (Conductor *conductor_ : diagram_->conductors())
+		{
+			if (!conductor_ || conductor_->properties().m_cable_uuid != cable_uuid_) {
+				continue;
+			}
+			Terminal *ends_[2] = {conductor_->terminal1, conductor_->terminal2};
+			for (Terminal *terminal_ : ends_)
+			{
+				if (!terminal_) {
+					continue;
+				}
+				Element *element_ = terminal_->parentElement();
+				if (!element_ || (element_->linkType() & Element::AllReport)) {
+					continue;
+				}
+				if (own_.contains(element_->uuid())) {
+					continue;
+				}
+				landed_.insert(element_->uuid(), element_);
+			}
+		}
+	}
+	if (landed_.isEmpty()) {
+		return QVector<QString>();
+	}
+
+		//The first piece in plan order is the target, as the cable
+		//list chooses it
+	Element *target_{nullptr};
+	for (Element *element_ : std::as_const(landed_)) {
+		if (!target_ || comparPos(element_, target_)) {
+			target_ = element_;
+		}
+	}
+
+	const DiagramContext informations_{target_->elementInformations()};
+	const auto installation_{informations_.value(QETInformation::ELMT_PLANT).toString()};
+	const auto location_{informations_.value(QETInformation::ELMT_LOCATION).toString()};
+	const auto label_{informations_.value(QETInformation::ELMT_LABEL).toString()};
+
+	QVector<QString> lines_;
+	if (!installation_.isEmpty()) {
+		lines_ << installation_;
+	}
+	if (!location_.isEmpty()) {
+		lines_ << location_;
+	}
+	if (!label_.isEmpty()) {
+		lines_ << label_;
+	}
+	return lines_;
 }
 
 /**
