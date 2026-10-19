@@ -148,12 +148,12 @@ QIcon SymbolTextPlacement::icon(Qt::Alignment where)
 			//The symbol
 		painter.setPen(Qt::NoPen);
 		painter.setBrush(palette.color(QPalette::Mid));
-		painter.drawRect(QRectF(7, 7, 10, 10));
+		painter.drawRect(QRectF(8, 8, 8, 8));
 
 			//Two lines of text, a long one over a short one
-		const qreal right = (where & Qt::AlignLeft) ? 5.5 : (where & Qt::AlignRight) ? 24 : 18.5;
-		const qreal left = (where & Qt::AlignLeft) ? 0 : (where & Qt::AlignRight) ? 18.5 : 5.5;
-		const qreal top = (where & Qt::AlignTop) ? 0 : (where & Qt::AlignBottom) ? 18.5 : 9.25;
+		const qreal right = (where & Qt::AlignLeft) ? 6.8 : (where & Qt::AlignRight) ? 24 : 19;
+		const qreal left = (where & Qt::AlignLeft) ? 0 : (where & Qt::AlignRight) ? 17.2 : 5;
+		const qreal top = (where & Qt::AlignTop) ? 0 : (where & Qt::AlignBottom) ? 16.6 : 8.3;
 		painter.setBrush(palette.color(QPalette::WindowText));
 		for (int i = 0; i < 2; ++i)
 		{
@@ -161,7 +161,7 @@ QIcon SymbolTextPlacement::icon(Qt::Alignment where)
 			const qreal x = lines == Qt::AlignRight ? right - width
 						  : lines == Qt::AlignLeft  ? left
 						  : (left + right - width) / 2;
-			painter.drawRect(QRectF(x, top + i * 3, width, 2.5));
+			painter.drawRect(QRectF(x, top + i * 4.2, width, 3.2));
 		}
 		painter.end();
 		icon.addPixmap(pixmap);

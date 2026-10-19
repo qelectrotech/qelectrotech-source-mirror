@@ -523,10 +523,10 @@ void QETDiagramEditor::setUpActions()
 		{
 			auto *button = new QToolButton(grid_widget);
 			button->setIcon(SymbolTextPlacement::icon(point.where));
-			button->setIconSize(QSize(24, 24));
+			button->setIconSize(QSize(32, 32));
 			button->setToolTip(tr(point.tip));
 			button->setObjectName(QStringLiteral("place_texts_%1").arg(n));
-			button->setFixedSize(28, 28);
+			button->setFixedSize(38, 38);
 			button->setAutoRaise(true);
 			const Qt::Alignment where = point.where;
 			connect(button, &QToolButton::clicked, this, [this, menu, where]() {
