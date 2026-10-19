@@ -590,6 +590,19 @@ void QETDiagramEditor::setUpActions()
 			}
 	});
 
+		//A crosshair across the whole folio under the mouse, to see
+		//whether symbols and terminals are in line
+	m_crosshair = new QAction(tr("Folio-wide crosshair"), this);
+	ShortcutManager::instance().registerAction(m_crosshair, "diagrameditor.crosshair", tr("Diagram editors"), QKeySequence());
+	m_crosshair->setStatusTip(tr("Show two lines across the whole folio under the mouse, to see whether parts are in line"));
+	m_crosshair->setCheckable(true);
+	m_crosshair->setChecked(DiagramView::crosshairShown());
+	connect(m_crosshair, &QAction::triggered, [this](bool checked) {
+		DiagramView::setCrosshairShown(checked);
+		for (DiagramView *view : findChildren<DiagramView *>())
+			view->viewport()->update();
+	});
+
 		//Snap step for dragged texts, as a fraction of the folio grid
 	m_text_grid_menu = new QMenu(tr("Text grid"), this);
 	m_text_grid_menu->setIcon(QET::Icons::Grid);
@@ -1703,6 +1716,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_mode_visualise);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(m_draw_grid);
+	menu_affichage -> addAction(m_crosshair);
 	menu_affichage -> addMenu(m_text_grid_menu);
 	menu_affichage -> addAction(m_draw_guides);
 	menu_affichage -> addAction(m_cell_rulers);

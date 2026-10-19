@@ -47,6 +47,7 @@
 #include "utils/conductorcreator.h"
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "diagram.h"
+#include <QSettings>
 #include "foliogrid.h"
 #include "diagramcontexttoolbar.h"
 #include "imagedrop.h"
@@ -1040,6 +1041,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 {
 	m_last_mouse_pos = e->pos();
 	setToolTip(tr("X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
+	moveCrosshair(e->pos());
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) return;
 
 	if (m_gesture_tracking)
@@ -1840,6 +1842,117 @@ void DiagramView::setCellLinesShown(bool shown)
 	viewport()->update();
 }
 
+namespace {
+		/// The setting, read once and then kept here for every view
+	int s_crosshair = -1;
+}
+
+/**
+	@brief DiagramView::crosshairShown
+	@return true when the folio-wide crosshair follows the mouse: two thin
+	lines across the whole folio, through the grid point under the mouse,
+	to see at a glance whether symbols and terminals are in line. Drawn
+	on screen only, never exported nor printed.
+*/
+bool DiagramView::crosshairShown()
+{
+	if (s_crosshair < 0) {
+		QSettings settings;
+		s_crosshair = settings.value(QStringLiteral("diagrameditor/crosshair"), false).toBool();
+	}
+	return s_crosshair;
+}
+
+/**
+	@brief DiagramView::setCrosshairShown
+	@param shown : show the folio-wide crosshair in every view; kept in
+	the settings. The views repaint themselves at the next mouse move.
+*/
+void DiagramView::setCrosshairShown(bool shown)
+{
+	s_crosshair = shown;
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/crosshair"), shown);
+}
+
+/**
+	@brief DiagramView::crosshairArea
+	@return the part of the viewport the two lines through @a scene_pos
+	cover, a little wider than the lines
+*/
+QRect DiagramView::crosshairArea(const QPointF &scene_pos) const
+{
+	const QPoint p = mapFromScene(scene_pos);
+	const QRect all = viewport()->rect();
+	return QRect(all.left(), p.y() - 2, all.width(), 5)
+			| QRect(p.x() - 2, all.top(), 5, all.height());
+}
+
+/**
+	@brief DiagramView::moveCrosshair
+	Follow the mouse with the crosshair, on the grid, repainting only the
+	lines it leaves and the lines it draws.
+	@param viewport_pos : the mouse, in viewport coordinates
+*/
+void DiagramView::moveCrosshair(const QPoint &viewport_pos)
+{
+	if (!crosshairShown()) {
+		hideCrosshair();
+		return;
+	}
+	const QPointF pos = Diagram::snapToGrid(mapToScene(viewport_pos));
+	if (m_crosshair_visible && pos == m_crosshair_pos)
+		return;
+	if (m_crosshair_visible)
+		viewport()->update(crosshairArea(m_crosshair_pos));
+	m_crosshair_pos = pos;
+	m_crosshair_visible = true;
+	viewport()->update(crosshairArea(m_crosshair_pos));
+}
+
+/**
+	@brief DiagramView::hideCrosshair
+	Take the crosshair away, when the mouse leaves the view or the
+	setting is switched off.
+*/
+void DiagramView::hideCrosshair()
+{
+	if (!m_crosshair_visible)
+		return;
+	m_crosshair_visible = false;
+	viewport()->update(crosshairArea(m_crosshair_pos));
+}
+
+/**
+	@brief DiagramView::drawForeground
+	Over everything else, the folio-wide crosshair, inside the folio's
+	border only.
+	@param painter
+	@param rect
+*/
+void DiagramView::drawForeground(QPainter *painter, const QRectF &rect)
+{
+	PaletteGraphicsView::drawForeground(painter, rect);
+	if (!m_crosshair_visible || !crosshairShown() || !m_diagram)
+		return;
+
+	const QRectF area = m_diagram->border_and_titleblock.insideBorderRect();
+	if (!area.contains(m_crosshair_pos))
+		return;
+
+	QPainter *p = scenePainter(painter);
+	p->save();
+	QPen pen(Diagram::background_color == Qt::darkGray ? QColor(Qt::lightGray)
+													   : QColor(0, 120, 215));
+	pen.setCosmetic(true);
+	pen.setWidthF(0);
+	p->setPen(pen);
+	p->setRenderHint(QPainter::Antialiasing, false);
+	p->drawLine(QLineF(area.left(), m_crosshair_pos.y(), area.right(), m_crosshair_pos.y()));
+	p->drawLine(QLineF(m_crosshair_pos.x(), area.top(), m_crosshair_pos.x(), area.bottom()));
+	p->restore();
+}
+
 /**
 	@brief DiagramView::drawBackground
 	Reimplemented from PaletteGraphicsView: over the folio background, the
@@ -1975,6 +2088,9 @@ bool DiagramView::viewportEvent(QEvent *event)
 {
 	if (event->type() == QEvent::Resize) {
 		placeCellRulers();
+	}
+	if (event->type() == QEvent::Leave) {
+		hideCrosshair();
 	}
 	return PaletteGraphicsView::viewportEvent(event);
 }
