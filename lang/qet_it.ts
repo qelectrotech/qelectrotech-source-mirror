@@ -12027,6 +12027,62 @@ Ecco gli ultimi messaggi registrati prima della chiusura — puoi salvarli per i
 <context>
     <name>QETDiagramEditor</name>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
+        <source>Place symbol texts</source>
+        <translation>Posiziona i testi del simbolo</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="498"/>
+        <source>Place the label and the notes of the selected symbols as one block beside them</source>
+        <comment>status bar tip</comment>
+        <translation>Posiziona la sigla e le note dei simboli selezionati come un unico blocco accanto a essi</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="507"/>
+        <source>Above, left</source>
+        <translation>In alto a sinistra</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="508"/>
+        <source>Above</source>
+        <translation>In alto</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="509"/>
+        <source>Above, right</source>
+        <translation>In alto a destra</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="510"/>
+        <source>Left</source>
+        <translation>A sinistra</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="511"/>
+        <source>On the symbol</source>
+        <translation>Sul simbolo</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="512"/>
+        <source>Right</source>
+        <translation>A destra</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
+        <source>Below, left</source>
+        <translation>In basso a sinistra</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
+        <source>Below</source>
+        <translation>In basso</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
+        <source>Below, right</source>
+        <translation>In basso a destra</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="313"/>
         <source>No modification</source>
         <translation>Nessuna modifica</translation>
@@ -24777,6 +24833,14 @@ si possono utilizzare le seguenti variabili:
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="79"/>
         <source>Conductor</source>
         <translation>Conduttore</translation>
+    </message>
+</context>
+<context>
+    <name>SymbolTextPlacement</name>
+    <message>
+        <location filename="../sources/symboltextplacement.cpp" line="120"/>
+        <source>Place symbol texts</source>
+        <translation>Posiziona i testi del simbolo</translation>
     </message>
 </context>
 </TS>

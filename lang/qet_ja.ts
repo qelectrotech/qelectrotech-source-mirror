@@ -11954,6 +11954,62 @@ Available options:
 <context>
     <name>QETDiagramEditor</name>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
+        <source>Place symbol texts</source>
+        <translation>シンボルのテキストを配置</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="498"/>
+        <source>Place the label and the notes of the selected symbols as one block beside them</source>
+        <comment>status bar tip</comment>
+        <translation>選択したシンボルのラベルと注記を1つのブロックとして横に配置します</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="507"/>
+        <source>Above, left</source>
+        <translation>左上</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="508"/>
+        <source>Above</source>
+        <translation>上</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="509"/>
+        <source>Above, right</source>
+        <translation>右上</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="510"/>
+        <source>Left</source>
+        <translation>左</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="511"/>
+        <source>On the symbol</source>
+        <translation>シンボル上</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="512"/>
+        <source>Right</source>
+        <translation>右</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
+        <source>Below, left</source>
+        <translation>左下</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
+        <source>Below</source>
+        <translation>下</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
+        <source>Below, right</source>
+        <translation>右下</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4218"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4221"/>
@@ -24640,6 +24696,14 @@ The following variables can be used:
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>What:</source>
         <translation>項目 :</translation>
+    </message>
+</context>
+<context>
+    <name>SymbolTextPlacement</name>
+    <message>
+        <location filename="../sources/symboltextplacement.cpp" line="120"/>
+        <source>Place symbol texts</source>
+        <translation>シンボルのテキストを配置</translation>
     </message>
 </context>
 </TS>

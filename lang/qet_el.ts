@@ -12013,6 +12013,62 @@ Available options:
 <context>
     <name>QETDiagramEditor</name>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
+        <source>Place symbol texts</source>
+        <translation>Τοποθέτηση κειμένων συμβόλου</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="498"/>
+        <source>Place the label and the notes of the selected symbols as one block beside them</source>
+        <comment>status bar tip</comment>
+        <translation>Τοποθετεί την ετικέτα και τις σημειώσεις των επιλεγμένων συμβόλων ως ένα μπλοκ δίπλα τους</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="507"/>
+        <source>Above, left</source>
+        <translation>Πάνω, αριστερά</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="508"/>
+        <source>Above</source>
+        <translation>Πάνω</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="509"/>
+        <source>Above, right</source>
+        <translation>Πάνω, δεξιά</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="510"/>
+        <source>Left</source>
+        <translation>Αριστερά</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="511"/>
+        <source>On the symbol</source>
+        <translation>Πάνω στο σύμβολο</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="512"/>
+        <source>Right</source>
+        <translation>Δεξιά</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
+        <source>Below, left</source>
+        <translation>Κάτω, αριστερά</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
+        <source>Below</source>
+        <translation>Κάτω</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
+        <source>Below, right</source>
+        <translation>Κάτω, δεξιά</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1542"/>
         <source>Displ&amp;ay</source>
         <translation>Προβο&amp;λή</translation>
@@ -24745,6 +24801,14 @@ The following variables can be used:
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>What:</source>
         <translation>Τι:</translation>
+    </message>
+</context>
+<context>
+    <name>SymbolTextPlacement</name>
+    <message>
+        <location filename="../sources/symboltextplacement.cpp" line="120"/>
+        <source>Place symbol texts</source>
+        <translation>Τοποθέτηση κειμένων συμβόλου</translation>
     </message>
 </context>
 </TS>

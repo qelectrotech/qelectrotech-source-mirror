@@ -11801,6 +11801,62 @@ Opțiuni disponibile:
 <context>
     <name>QETDiagramEditor</name>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
+        <source>Place symbol texts</source>
+        <translation>Plasează textele simbolului</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="498"/>
+        <source>Place the label and the notes of the selected symbols as one block beside them</source>
+        <comment>status bar tip</comment>
+        <translation>Plasează eticheta și notele simbolurilor selectate ca un singur bloc lângă ele</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="507"/>
+        <source>Above, left</source>
+        <translation>Sus, stânga</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="508"/>
+        <source>Above</source>
+        <translation>Sus</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="509"/>
+        <source>Above, right</source>
+        <translation>Sus, dreapta</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="510"/>
+        <source>Left</source>
+        <translation>Stânga</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="511"/>
+        <source>On the symbol</source>
+        <translation>Pe simbol</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="512"/>
+        <source>Right</source>
+        <translation>Dreapta</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
+        <source>Below, left</source>
+        <translation>Jos, stânga</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
+        <source>Below</source>
+        <translation>Jos</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
+        <source>Below, right</source>
+        <translation>Jos, dreapta</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4218"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4221"/>
@@ -24402,6 +24458,14 @@ asociind numele &quot;volta&quot; cu valoarea &quot;1745&quot; se va înlocui %{
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>What:</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SymbolTextPlacement</name>
+    <message>
+        <location filename="../sources/symboltextplacement.cpp" line="120"/>
+        <source>Place symbol texts</source>
+        <translation>Plasează textele simbolului</translation>
     </message>
 </context>
 </TS>
