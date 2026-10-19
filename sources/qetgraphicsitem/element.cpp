@@ -1440,16 +1440,14 @@ QDomElement Element::toXml(
 
 	//if this element is linked to other elements, save the uuid of each:
 	//as the project database's link rows list them (QETZ-DB-FIRST stage
-	//2a), or, for a symbol the database does not hold, as it lists them
-	//itself (linksToSave())
+	//2a), or, for a symbol the database does not hold, its partners
 	QList<std::pair<QUuid, int>> links;
 	projectDataBase *database = diagram() && diagram()->project()
 			? diagram()->project()->dataBase() : nullptr;
 	if (!database || !database->savedLinks(this, &links)) {
 		links.clear();
-		for (const SavedLink &link : linksToSave(diagram() && diagram()->project()
-												 ? diagram()->project()->waitingLinkTargets() : QSet<QUuid>()))
-			links.append({link.uuid, link.group_index});
+		for (Element *elmt : std::as_const(connected_elements))
+			links.append({elmt->uuid(), m_group_index_map.value(elmt, -1)});
 	}
 	if (!links.isEmpty()) {
 		QDomElement links_uuids = document.createElement(QStringLiteral("links_uuids"));
@@ -1817,10 +1815,14 @@ QList <QPair <Terminal *, Terminal *> > Element::AlignedFreeTerminals() const
 
 /**
 	@brief Element::initLink
-	Initialise the link between this element and other elements.
-	This method can be call once because init the link according to
-	uuid store in a private list, after link, the list is clear, so
-	call another time do nothing.
+	Link this symbol, just read, to its partners already built. Once the
+	project database holds the link rows, the partners are those its rows
+	name (QETZ-DB-FIRST stage 2a-3): its own rows, in their order, then the
+	symbols whose rows name it, then any its file names that the rows miss.
+	A partner not built yet (lazy folios) is linked when it is, from the
+	rows, which keep it until then. While a project opens, before the
+	database is filled, the partners are those its file names, and the list
+	is kept for the fill.
 
 	@param prj :
 	ownership project of this element and other element to be linked
@@ -1830,88 +1832,84 @@ void Element::initLink(QETProject *prj)
 		// if nothing to link return now
 	if (tmp_uuids_link.isEmpty()) return;
 
+	projectDataBase *database = prj->dataBase();
+	const bool from_rows = database->holdsLinks();
+	QList<LinkInfo> links;
+	QSet<QUuid> listed;
+	const QList<std::pair<QUuid, int>> rows = from_rows ? database->partnersToLink(uuid())
+														: QList<std::pair<QUuid, int>>();
+	const QList<std::pair<QUuid, int>> own_rows = from_rows ? database->linkRowsOf(uuid())
+															: QList<std::pair<QUuid, int>>();
+		//Its own rows first, then its file's list, then the symbols whose
+		//rows name it: a partner's row gives no contact group, so it
+		//comes after the lists that do
+	for (const auto &row : own_rows) {
+		if (!listed.contains(row.first)) {
+			listed.insert(row.first);
+			links << LinkInfo(row.first, row.second);
+		}
+	}
+	for (const auto &link_info : std::as_const(tmp_uuids_link)) {
+		if (!listed.contains(link_info.uuid)) {
+			listed.insert(link_info.uuid);
+			links << link_info;
+		}
+	}
+	for (const auto &row : rows) {
+		if (!listed.contains(row.first)) {
+			listed.insert(row.first);
+			links << LinkInfo(row.first, row.second);
+		}
+	}
+
 		//The symbols built: on the folios built, and those built alone as
-		//partners on folios not built (Diagram::buildSymbols()). A partner
-		//not built yet (lazy folios) is linked when it is, and the
-		//saved list is kept until then, for the order it gives
+		//partners on folios not built (Diagram::buildSymbols())
 	ElementProvider ep(prj->folios());
 	QList<QUuid> uuids;
-	for (const auto &linkInfo : tmp_uuids_link) {
+	for (const auto &linkInfo : std::as_const(links)) {
 		uuids.append(linkInfo.uuid);
 	}
 	QList<Element *> elements = ep.fromUuids(uuids);
-	for (int i = 0; i < tmp_uuids_link.size(); ++i) {
+	for (const auto &link_info : std::as_const(links)) {
 		for (Element *elmt : elements) {
-			if (elmt->uuid() == tmp_uuids_link[i].uuid) {
+			if (elmt->uuid() == link_info.uuid) {
 				elmt->linkToElement(this);
-				if (tmp_uuids_link[i].group_index >= 0) {
-					m_group_index_map[elmt] = tmp_uuids_link[i].group_index;
+				if (link_info.group_index >= 0) {
+					m_group_index_map[elmt] = link_info.group_index;
 				}
 				break;
 			}
 		}
 	}
-	restoreSavedLinkOrder();
-	if (pendingLinks().isEmpty() || !prj->unloadedFolioCount()) {
+	restoreLinkOrder(uuids);
+	if (from_rows) {
+			//Each partner puts its partners back in the order of its rows:
+			//this one was linked last
+		for (Element *partner : std::as_const(connected_elements)) {
+			QList<QUuid> order;
+			for (const auto &row : database->partnersToLink(partner->uuid()))
+				order << row.first;
+			partner->restoreLinkOrder(order);
+		}
 		tmp_uuids_link.clear();
 	}
+		//Otherwise the project opens: the list is kept for the database's
+		//fill, which takes its order and its partners not built from it
+		//(QETProject::readProjectXml() drops it after)
 }
 
 /**
-	@brief Element::linksToSave
-	The partners this symbol saves, in the order it saves them: the order
-	it was saved with (tmp_uuids_link), then partners linked since. A
-	partner on a folio not built yet (lazy folios), which this symbol will
-	be linked to, is in the list too: saving needs no partner built (stage
-	D5a). toXml() writes this list, and the project database's link rows
-	are written from it, so the two are the same (QETZ-DB-FIRST stage 2a).
-	@param waiting the symbols on folios not built: a saved partner among
-	them is kept (QETProject::symbolsOnUnbuiltFolios())
-	@return each partner's uuid, its contact group (-1 if none), and the
-	partner itself when it is built (nullptr for one waiting)
+	@brief Element::savedLinkList
+	@return the links this symbol was read with and keeps (initLink()):
+	each partner's uuid and contact group (-1 if none), in its file's order
 */
-QList<Element::SavedLink> Element::linksToSave(const QSet<QUuid> &waiting) const
+QList<std::pair<QUuid, int>> Element::savedLinkList() const
 {
-	QList<SavedLink> links;
-	if (keepsSavedLinks() && diagram() && diagram()->project()) {
-		QSet<Element *> written;
-		for (const auto &link_info : std::as_const(tmp_uuids_link)) {
-			Element *linked = nullptr;
-			for (Element *elmt : std::as_const(connected_elements))
-				if (elmt->uuid() == link_info.uuid && !written.contains(elmt)) { linked = elmt; break; }
-			if (linked) {
-				written.insert(linked);
-				links.append({linked->uuid(), m_group_index_map.value(linked, -1), linked});
-			} else if (waiting.contains(link_info.uuid)) {
-				links.append({link_info.uuid, link_info.group_index, nullptr});
-			}
-		}
-		for (Element *elmt : std::as_const(connected_elements))
-			if (!written.contains(elmt))
-				links.append({elmt->uuid(), m_group_index_map.value(elmt, -1), elmt});
-	} else {
-		for (Element *elmt : std::as_const(connected_elements))
-			links.append({elmt->uuid(), m_group_index_map.value(elmt, -1), elmt});
-	}
-	return links;
-}
-
-/**
-	@brief Element::pendingLinks
-	@return the uuids of the partners this symbol was saved linked to and
-	is not linked to yet: those on a folio not built yet (lazy folios),
-	until initLink() runs again once it is
-*/
-QSet<QUuid> Element::pendingLinks() const
-{
-	QSet<QUuid> pending;
+	QList<std::pair<QUuid, int>> list;
 	for (const auto &link_info : tmp_uuids_link) {
-		pending.insert(link_info.uuid);
+		list.append({link_info.uuid, link_info.group_index});
 	}
-	for (Element *elmt : connected_elements) {
-		pending.remove(elmt->uuid());
-	}
-	return pending;
+	return list;
 }
 
 /**
@@ -1938,41 +1936,27 @@ void Element::initLink(const QList<Element *> &candidates)
 			}
 		}
 	}
-	restoreSavedLinkOrder();
+	QList<QUuid> order;
+	for (const auto &link_info : std::as_const(tmp_uuids_link))
+		order << link_info.uuid;
+	restoreLinkOrder(order);
 	tmp_uuids_link.clear();
 }
 
 /**
-	@brief Element::waitingLinks
-	@return pendingLinks() in the order this symbol was saved with them,
-	each with its group index (-1 for none)
+	@brief Element::restoreLinkOrder
+	Put connected_elements back in the order @p order gives (the order this
+	symbol saves its partners in). Partners link in the order the folios'
+	items are visited, and for items at the same height that order changes
+	from run to run, so a master's contacts were saved in a different order
+	each time. Linked elements missing from @p order keep their place after it.
 */
-QList<std::pair<QUuid, int>> Element::waitingLinks() const
-{
-	const QSet<QUuid> pending = pendingLinks();
-	QList<std::pair<QUuid, int>> list;
-	for (const auto &link_info : tmp_uuids_link) {
-		if (pending.contains(link_info.uuid)) {
-			list.append({link_info.uuid, link_info.group_index});
-		}
-	}
-	return list;
-}
-
-/**
-	@brief Element::restoreSavedLinkOrder
-	Put connected_elements back in the order tmp_uuids_link saved them.
-	Partners link in the order the folios' items are visited, and for
-	items at the same height that order changes from run to run, so a
-	master's contacts were saved in a different order each time.
-	Linked elements missing from the saved list keep their place after it.
-*/
-void Element::restoreSavedLinkOrder()
+void Element::restoreLinkOrder(const QList<QUuid> &order)
 {
 	QList<Element *> ordered;
-	for (const auto &link_info : std::as_const(tmp_uuids_link)) {
+	for (const QUuid &uuid : order) {
 		for (Element *elmt : std::as_const(connected_elements)) {
-			if (elmt->uuid() == link_info.uuid && !ordered.contains(elmt)) {
+			if (elmt->uuid() == uuid && !ordered.contains(elmt)) {
 				ordered << elmt;
 				break;
 			}

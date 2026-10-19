@@ -522,6 +522,97 @@ private slots:
 		QCOMPARE(dangling, 0);
 	}
 
+	// Each placed symbol's saved links in the .qetz @p path, as "symbol
+	// partner" lines, sorted: the link table of its database
+	static QStringList qetzLinks(const QString &path)
+	{
+		QList<QetZip::Entry> entries;
+		if (!QetZip::fromBytes(read(path), &entries)) return {QStringLiteral("not a zip")};
+		QByteArray database;
+		for (const QetZip::Entry &entry : std::as_const(entries))
+			if (entry.name == QLatin1String("project.sqlite")) database = entry.data;
+		sqlite3 *db = nullptr;
+		sqlite3_open(":memory:", &db);
+		unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(database.size())));
+		memcpy(copy, database.constData(), size_t(database.size()));
+		sqlite3_deserialize(db, "main", copy, database.size(), database.size(), SQLITE_DESERIALIZE_FREEONCLOSE);
+		sqlite3_stmt *list = nullptr;
+		QStringList links;
+		sqlite3_prepare_v2(db, "SELECT element_uuid, linked_uuid FROM link", -1, &list, nullptr);
+		while (list && sqlite3_step(list) == SQLITE_ROW)
+			links << QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(list, 0)))
+					 + QLatin1Char(' ')
+					 + QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(list, 1)));
+		sqlite3_finalize(list);
+		sqlite3_close(db);
+		links.sort();
+		return links;
+	}
+
+	// Removing a symbol or a folio and undoing it, with lazy folios, gives
+	// back every link, also those to symbols on folios not built, which
+	// only the project database's link rows hold (QETZ-DB-FIRST stage
+	// 2a-3). m_000 as a .qetz saved with every folio built; a contact of
+	// its middle folio, its folio, or its coil's folio (not built: the coil
+	// is built alone) removed, then undone.
+	void undoKeepsLinksToUnbuiltFolios_data()
+	{
+		QTest::addColumn<QString>("edit");
+		QTest::newRow("symbol") << QStringLiteral("qet.deleteElement(f, u)");
+		QTest::newRow("folio") << QStringLiteral("qet.removeFolio(f)");
+		QTest::newRow("coil folio") << QStringLiteral("qet.removeFolio(folio_of[m])");
+	}
+	void undoKeepsLinksToUnbuiltFolios()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		QFETCH(QString, edit);
+			//Each symbol's folio, from the file: asking QElectroTech would
+			//build the folios
+		QFile source(QStringLiteral(QET_EXAMPLES_DIR "/m_000.qet"));
+		QVERIFY(source.open(QIODevice::ReadOnly));
+		const QStringList folios = QString::fromUtf8(source.readAll()).split(QStringLiteral("<diagram "));
+		QStringList folio_of;
+		static const QRegularExpression placed(QStringLiteral("<element [^>]*\\buuid=\"(\\{[0-9a-f-]+\\})\""));
+		for (int i = 1 ; i < folios.size() ; ++i) {
+			auto it = placed.globalMatch(folios.at(i));
+			while (it.hasNext()) folio_of << QStringLiteral("'%1': %2").arg(it.next().captured(1)).arg(i - 1);
+		}
+		const QString qetz = m_dir.filePath(QStringLiteral("undo%1.qetz").arg(m_run));
+		QVERIFY(!runChecked({QStringLiteral("--resave"),
+							 QStringLiteral(QET_EXAMPLES_DIR "/m_000.qet"), qetz}, true).isEmpty());
+		auto save = [&](const QString &name, const QString &body) {
+			const QString saved = m_dir.filePath(name + QString::number(m_run) + QStringLiteral(".qetz"));
+			const QString js = m_dir.filePath(name + QString::number(m_run) + QStringLiteral(".js"));
+			QFile script(js);
+			if (!script.open(QIODevice::WriteOnly)) return std::pair<QString, QString>();
+			script.write(QStringLiteral(
+				"var folio_of = {%3};\n"
+				"var n = qet.folioCount(), f = -1, u = '', m = '';\n"
+				"for (var k = 0 ; k < n && !u ; ++k) {\n"
+				"  var g = (Math.floor(n / 2) + k) % n;\n"
+				"  var all = qet.elementUuids(g).slice().sort();\n"
+				"  for (var i = 0 ; i < all.length && !u ; ++i)\n"
+				"    if (qet.elementLinkType(g, all[i]) == 'slave' && qet.linkedElements(g, all[i]).length) { f = g; u = all[i]; m = qet.linkedElements(g, u)[0]; }\n"
+				"}\n"
+				"%1\n"
+				"qet.save('%2');\n").arg(body, saved, folio_of.join(QStringLiteral(", "))).toUtf8());
+			script.close();
+			return std::pair<QString, QString>(saved, runChecked({QStringLiteral("--run"), js, qetz}, false,
+																  "QET_CHECK_LINK_ROWS"));
+		};
+		const auto plain = save(QStringLiteral("undo-plain"), QStringLiteral("qet.log('FOUND ' + !!u);"));
+		QVERIFY2(plain.second.contains(QStringLiteral("FOUND true")), qPrintable(plain.second.right(600)));
+		const auto undone = save(QStringLiteral("undo-undone"),
+								 QStringLiteral("qet.log('UNDONE ' + (%1) + ' ' + qet.undo());").arg(edit));
+		QVERIFY2(undone.second.contains(QStringLiteral("UNDONE true true")), qPrintable(undone.second.right(600)));
+		QVERIFY2(undone.second.contains(QStringLiteral("link rows: 0 differ")), qPrintable(undone.second.right(600)));
+		const QStringList before = qetzLinks(plain.first);
+		QVERIFY(before.size() > 10);
+		QCOMPARE(qetzLinks(undone.first), before);
+	}
+
 	// The stores filled from the document before the folios are built
 	// hold what building them gives, for a
 	// project saved by this version (every symbol, folio and wire carries

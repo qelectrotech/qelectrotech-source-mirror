@@ -22,6 +22,7 @@
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminalelement.h"
 #include "qetproject.h"
+#include "dataBase/projectdatabase.h"
 
 #include <QAbstractItemModel>
 
@@ -111,7 +112,8 @@ QVector <QPointer<Element>> ElementProvider::freeElement(ElementData::Types filt
 		{
 			if (filter & elmt_->elementData().m_type &&
 				elmt_->isFree() &&
-				!elmt_->pendingLinks().intersects(waiting))
+				(waiting.isEmpty()
+				 || m_project->dataBase()->waitingPartners(elmt_->uuid(), waiting).isEmpty()))
 			{
 				free_elmt << elmt_;
 			}
