@@ -89,7 +89,9 @@ namespace QetContainer
 	void inlinePicture(QDomElement image, const QByteArray &bytes);
 
 		/// Take what QElectroTech computes out of a folio (format 4)
-	void dropComputed(QDomElement diagram, bool terminal_lists);
+	void dropComputed(QDomElement diagram, bool terminal_lists, const QSet<QString> &defined);
+		/// The symbol definitions a project holds, by path after embed://
+	QSet<QString> embeddedDefinitions(const QDomElement &project);
 		/// true if every folio, symbol and wire has a uuid of its own
 	bool ownUuids(const QDomElement &project);
 		/// Parse @p xml as a .qet is read (QETProject::openFile)

@@ -976,6 +976,41 @@ bool Element::valideXml(QDomElement &e)
 }
 
 /**
+	@brief Element::savedTerminalUuid
+	@return the uuid TerminalUuids derives for the terminal saved as
+	@p records [@p index] (a symbol's saved terminals, in file order) at the
+	place it was saved: its docking point less the stub Terminal::init()
+	adds, and its rank among the records at that place, as the project
+	counted it when it gave the terminals their uuids
+*/
+QUuid Element::savedTerminalUuid(const QList<QDomElement> &records, int index)
+{
+	const auto dock_of = [](const QDomElement &r) {
+		return QPointF(r.attribute(QStringLiteral("x")).toDouble(),
+					   r.attribute(QStringLiteral("y")).toDouble());
+	};
+	const QDomElement &record = records.at(index);
+	const int orientation = record.attribute(QStringLiteral("orientation")).toInt();
+	const QPointF dock = dock_of(record);
+	QPointF old_pos = dock;
+	switch (orientation) {
+		case Qet::North: old_pos -= QPointF(0, Terminal::terminalSize);  break;
+		case Qet::East : old_pos -= QPointF(-Terminal::terminalSize, 0); break;
+		case Qet::West : old_pos -= QPointF(Terminal::terminalSize, 0);  break;
+		case Qet::South: old_pos -= QPointF(0, -Terminal::terminalSize); break;
+	}
+	int rank = 0;
+	for (int j = 0; j < index; ++j) {
+		const QPointF other = dock_of(records.at(j));
+		if (records.at(j).attribute(QStringLiteral("orientation")).toInt() == orientation
+			&& qAbs(other.x() - dock.x()) < 1e-6
+			&& qAbs(other.y() - dock.y()) < 1e-6)
+			++rank;
+	}
+	return TerminalUuids::derived(old_pos.x(), old_pos.y(), orientation, rank);
+}
+
+/**
 	@brief Element::matchMovedTerminals
 	Pair the saved terminals that no live terminal matched exactly with the
 	live terminals that moved a little: the definition of the symbol was
@@ -1033,32 +1068,8 @@ void Element::matchMovedTerminals(const QList<QDomElement> &records,
 		//Pair a record with a live terminal: register its legacy id, and the
 		//uuid derived for the terminal at its old place
 	const auto pair_up = [&](int index, Terminal *t) {
-		const QDomElement &record = records.at(index);
-		const QPointF dock = dock_of(record);
-
-			//The old place of the terminal: its docking point less the
-			//stub that Terminal::init() added
-		QPointF old_pos = dock;
-		switch (orientation_of(record)) {
-			case Qet::North: old_pos -= QPointF(0, Terminal::terminalSize);  break;
-			case Qet::East : old_pos -= QPointF(-Terminal::terminalSize, 0); break;
-			case Qet::West : old_pos -= QPointF(Terminal::terminalSize, 0);  break;
-			case Qet::South: old_pos -= QPointF(0, -Terminal::terminalSize); break;
-		}
-			//The rank among the records at the same place, as the project
-			//counted it when it gave the terminals their uuids
-		int rank = 0;
-		for (int j = 0; j < index; ++j) {
-			const QPointF other = dock_of(records.at(j));
-			if (orientation_of(records.at(j)) == orientation_of(record)
-				&& qAbs(other.x() - dock.x()) < 1e-6
-				&& qAbs(other.y() - dock.y()) < 1e-6)
-				++rank;
-		}
-
-		id_adr.insert(record.attribute(QStringLiteral("id")).toInt(), t);
-		m_old_place_terminals.insert(TerminalUuids::derived(old_pos.x(), old_pos.y(),
-															orientation_of(record), rank), t);
+		id_adr.insert(records.at(index).attribute(QStringLiteral("id")).toInt(), t);
+		m_old_place_terminals.insert(savedTerminalUuid(records, index), t);
 		m_moved_terminals << t;
 	};
 	const auto same_place = [](const QPointF &a, const QPointF &b) {

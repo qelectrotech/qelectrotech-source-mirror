@@ -183,6 +183,7 @@ class Element : public QetGraphicsItem
 		QPoint hotspot() const;
 		void editProperty() override;
 		static bool valideXml(QDomElement &);
+		static QUuid savedTerminalUuid(const QList<QDomElement> &records, int index);
 		virtual bool fromXml(
 				QDomElement &,
 				QHash<int,
