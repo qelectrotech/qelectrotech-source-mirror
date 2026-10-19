@@ -3875,6 +3875,31 @@ Bu metni tek başına taşımak için Shift tuşunu basılı tutup sürükleyin<
 <context>
     <name>DynamicElementTextModel</name>
     <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="309"/>
+        <source>Width (fixed)</source>
+        <translation>Genişlik (sabit)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="325"/>
+        <source>Height (fixed)</source>
+        <translation>Yükseklik (sabit)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="311"/>
+        <source>Ticked, the text field keeps this width and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>İşaretliyse metin alanı bu genişliği korur ve metin içinde kaydırılır. İşaretli değilse metin kadar geniştir.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
+        <source>Ticked, the text field keeps this height and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>İşaretliyse metin alanı bu yüksekliği korur ve sığmayan satırlar kesilir. İşaretli değilse metin kadar yüksektir.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>
+        <source>Change the height of an element text</source>
+        <translation>Bir öğe metninin yüksekliğini değiştir</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="70"/>
         <source>Property</source>
         <translation>Özellik</translation>

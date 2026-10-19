@@ -3896,6 +3896,31 @@ Maintenir Maj et faire glisser pour déplacer ce texte seul</translation>
 <context>
     <name>DynamicElementTextModel</name>
     <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="309"/>
+        <source>Width (fixed)</source>
+        <translation>Largeur (fixe)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="325"/>
+        <source>Height (fixed)</source>
+        <translation>Hauteur (fixe)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="311"/>
+        <source>Ticked, the text field keeps this width and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>Cochée, le champ de texte garde cette largeur et le texte y passe à la ligne. Non cochée, il est aussi large que le texte.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
+        <source>Ticked, the text field keeps this height and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>Cochée, le champ de texte garde cette hauteur et les lignes qui ne tiennent pas sont coupées. Non cochée, il est aussi haut que le texte.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>
+        <source>Change the height of an element text</source>
+        <translation>Modifier la hauteur d&apos;un texte d&apos;élément</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="70"/>
         <source>Property</source>
         <translation>Propriété</translation>

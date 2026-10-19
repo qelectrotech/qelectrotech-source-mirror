@@ -3923,6 +3923,31 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>DynamicElementTextModel</name>
     <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="309"/>
+        <source>Width (fixed)</source>
+        <translation>Ширина (фіксована)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="325"/>
+        <source>Height (fixed)</source>
+        <translation>Висота (фіксована)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="311"/>
+        <source>Ticked, the text field keeps this width and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>Якщо позначено, текстове поле зберігає цю ширину, і текст переноситься всередині. Якщо ні, поле за шириною тексту.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
+        <source>Ticked, the text field keeps this height and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>Якщо позначено, текстове поле зберігає цю висоту, а рядки, що не вміщуються, обрізаються. Якщо ні, поле за висотою тексту.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>
+        <source>Change the height of an element text</source>
+        <translation>Змінити висоту тексту елемента</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="70"/>
         <source>Property</source>
         <translation>Властивість</translation>

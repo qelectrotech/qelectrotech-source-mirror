@@ -3875,6 +3875,31 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>DynamicElementTextModel</name>
     <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="309"/>
+        <source>Width (fixed)</source>
+        <translation>Szélesség (rögzített)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="325"/>
+        <source>Height (fixed)</source>
+        <translation>Magasság (rögzített)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="311"/>
+        <source>Ticked, the text field keeps this width and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>Bejelölve a szövegmező megtartja ezt a szélességet, és a szöveg benne tördelődik. Bejelöletlenül olyan széles, mint a szöveg.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
+        <source>Ticked, the text field keeps this height and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>Bejelölve a szövegmező megtartja ezt a magasságot, és a bele nem férő sorok levágódnak. Bejelöletlenül olyan magas, mint a szöveg.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>
+        <source>Change the height of an element text</source>
+        <translation>Elemszöveg magasságának módosítása</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="70"/>
         <source>Property</source>
         <translation>Tulajdonság</translation>

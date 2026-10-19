@@ -3936,6 +3936,31 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>DynamicElementTextModel</name>
     <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="309"/>
+        <source>Width (fixed)</source>
+        <translation>Szerokość (stała)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="325"/>
+        <source>Height (fixed)</source>
+        <translation>Wysokość (stała)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="311"/>
+        <source>Ticked, the text field keeps this width and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>Zaznaczone: pole tekstowe zachowuje tę szerokość, a tekst jest w nim zawijany. Niezaznaczone: jest tak szerokie jak tekst.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
+        <source>Ticked, the text field keeps this height and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>Zaznaczone: pole tekstowe zachowuje tę wysokość, a wiersze, które się nie mieszczą, są obcinane. Niezaznaczone: jest tak wysokie jak tekst.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>
+        <source>Change the height of an element text</source>
+        <translation>Zmień wysokość tekstu elementu</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="70"/>
         <source>Property</source>
         <translation>Właściwości</translation>
