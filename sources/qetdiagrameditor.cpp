@@ -2262,14 +2262,37 @@ bool QETDiagramEditor::openAndAddProject(
 		);
 	}
 
-		//Report wires left out of the load because a terminal they join
-		//was not found: they would otherwise vanish on the next save
-		//without the user ever being told.
-	QStringList lost_wires;
+		//Report the elements and wires left out of the load: an element
+		//whose definition is missing, a wire whose terminal was not found.
+		//They are kept in the file as they were (F127, F128), but are not
+		//shown.
+	QStringList lost_elements, lost_wires;
+	for (Diagram *diagram : project->folios()) {
+		if (!diagram->isLoaded()) continue;
+		for (const QString &element : diagram->symbolsNotLoaded())
+			lost_elements << tr("Sheet %1: %2").arg(diagram->folioIndex() + 1).arg(element);
+	}
 	for (Diagram *diagram : project->foliosWithWiresNotReconnected()) {
 		for (const QString &wire : diagram->wiresNotReconnected()) {
 			lost_wires << tr("Sheet %1: %2").arg(diagram->folioIndex() + 1).arg(wire);
 		}
+	}
+	if (interactive && !lost_elements.isEmpty())
+	{
+		QMessageBox box(QMessageBox::Warning,
+						tr("Elements not loaded", "message box title"),
+						tr("%n elements could not be loaded: their definition is "
+						   "missing from the project and from the collections.\n"
+						   "\n"
+						   "They are not shown, but they are kept in the file as they "
+						   "are, with their conductors, and come back once their "
+						   "definition is available again.",
+						   "message box content",
+						   lost_elements.size()),
+						QMessageBox::Ok,
+						this);
+		box.setDetailedText(lost_elements.join(QLatin1Char('\n')));
+		box.exec();
 	}
 	if (interactive && !lost_wires.isEmpty())
 	{
@@ -2280,9 +2303,9 @@ bool QETDiagramEditor::openAndAddProject(
 						   "was probably replaced by another one with different "
 						   "terminals.\n"
 						   "\n"
-						   "If you save the project, these conductors will disappear "
-						   "from the file. Close it without saving to keep the file as "
-						   "it is.",
+						   "They are not shown, but they are kept in the file as they "
+						   "are, and join their terminals again once the definition "
+						   "has them where they were.",
 						   "message box content",
 						   lost_wires.size()),
 						QMessageBox::Ok,

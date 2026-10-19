@@ -945,6 +945,132 @@ QStringList Diagram::wiresNotReconnected() const
 }
 
 /**
+	@brief Diagram::symbolsNotLoaded
+	@return one line per symbol of the loaded file that could not be built,
+	its definition missing from the project and the collections: kept as
+	read and saved back (F127). Empty for a folio that built every symbol.
+*/
+QStringList Diagram::symbolsNotLoaded() const
+{
+	return m_symbols_not_loaded;
+}
+
+/**
+	@brief Diagram::keptSymbolUuids
+	@return the uuids of the symbols this folio could not build and keeps
+	as read: a partner linked to one of them keeps its link
+*/
+QSet<QUuid> Diagram::keptSymbolUuids() const
+{
+	QSet<QUuid> uuids;
+	for (const QDomElement &symbol : m_kept_symbols)
+		uuids.insert(QUuid(symbol.attribute(QStringLiteral("uuid"))));
+	return uuids;
+}
+
+/**
+	@brief Diagram::keepWire
+	Keep @p wire, which could not be joined to its terminals, to save it
+	back (F127, F128). An end found (@p found1, @p found2) is written from
+	that terminal at save; an end not found keeps the symbol and terminal
+	it names, as uuids: for a wire saved by legacy terminal ids, the
+	symbol among @p symbols (uuid and XML of each symbol read) holding that
+	id and the uuid derived for that terminal where it was saved
+	(Element::savedTerminalUuid()), so the wire joins it again once the
+	symbol's definition has it there. An end naming no terminal of the
+	file at all pointed nowhere when it was saved: written as the null
+	uuid, so it names no symbol and is read back as a wire whose ends
+	cannot be read, kept unchanged and joining nothing (never a legacy id,
+	which the next save gives to another terminal).
+*/
+void Diagram::keepWire(const QDomElement &wire, Terminal *found1, Terminal *found2,
+					   const QList<QPair<QUuid, QDomElement>> &symbols)
+{
+	KeptWire kept;
+	Terminal *found[2] = {found1, found2};
+	for (int i = 0 ; i < 2 ; ++i) {
+		const QString index = QString::number(i + 1);
+		if (found[i]) {
+			kept.end[i] = found[i];
+			kept.found[i] = true;
+			continue;
+		}
+		if (wire.hasAttribute(QStringLiteral("element") + index)) {
+			kept.element[i] = QUuid(wire.attribute(QStringLiteral("element") + index));
+			kept.terminal[i] = QUuid(wire.attribute(QStringLiteral("terminal") + index));
+		} else {
+			const QString id = wire.attribute(QStringLiteral("terminal") + index);
+			for (const auto &symbol : symbols) {
+				const QList<QDomElement> records = QET::findInDomElement(
+							symbol.second, QStringLiteral("terminals"), QStringLiteral("terminal"));
+				for (int r = 0 ; r < records.size() && kept.element[i].isNull() ; ++r)
+					if (records.at(r).attribute(QStringLiteral("id")) == id) {
+						kept.element[i] = symbol.first;
+						kept.terminal[i] = Element::savedTerminalUuid(records, r);
+					}
+				if (!kept.element[i].isNull()) break;
+			}
+		}
+	}
+	kept.xml = m_kept_document.importNode(wire, true).toElement();
+	if (QUuid(kept.xml.attribute(QStringLiteral("uuid"))).isNull() && m_project) {
+		QStringList ends;
+		for (int i = 0 ; i < 2 ; ++i)
+			ends << (kept.found[i]
+					 ? kept.end[i]->parentElement()->uuid().toString() + QLatin1Char('/')
+					   + kept.end[i]->stableUuid().toString()
+					 : kept.element[i].toString() + QLatin1Char('/') + kept.terminal[i].toString());
+		ends.sort();
+		kept.xml.setAttribute(QStringLiteral("uuid"),
+							  m_project->derivedItemUuid(QStringLiteral("conductor"),
+														 ends.join(QLatin1Char('\n'))).toString());
+	}
+	m_kept_wires << kept;
+}
+
+/**
+	@brief Diagram::writeKept
+	Write what this folio could not load, as it was read, into @p elements
+	and @p conductors of @p document: the symbols, their terminals given ids
+	after those of @p table_adr_id so none is read twice, and the wires, an
+	end found written from its terminal as Conductor::toXml() does. A wire
+	whose found end was deleted since goes with it.
+*/
+void Diagram::writeKept(QDomDocument &document, QDomElement &elements,
+						QDomElement &conductors, const QHash<Terminal *, int> &table_adr_id) const
+{
+	int next_id = 0;
+	for (int id : table_adr_id) next_id = qMax(next_id, id + 1);
+	for (const QDomElement &symbol : m_kept_symbols) {
+		QDomElement copy = document.importNode(symbol, true).toElement();
+		for (QDomElement record : QET::findInDomElement(copy, QStringLiteral("terminals"),
+														QStringLiteral("terminal")))
+			record.setAttribute(QStringLiteral("id"), next_id++);
+		elements.appendChild(copy);
+	}
+	for (const KeptWire &kept : m_kept_wires) {
+		if ((kept.found[0] && !kept.end[0]) || (kept.found[1] && !kept.end[1])) continue;
+		QDomElement copy = document.importNode(kept.xml, true).toElement();
+		for (int i = 0 ; i < 2 && !kept.as_read ; ++i) {
+			const QString index = QString::number(i + 1);
+			const QString element = QStringLiteral("element") + index;
+			const QString terminal = QStringLiteral("terminal") + index;
+			if (!kept.found[i]) {
+				copy.setAttribute(element, kept.element[i].toString());
+				copy.setAttribute(terminal, kept.terminal[i].toString());
+			} else if (kept.end[i]->uuid().isNull()) {
+				copy.removeAttribute(element);
+				copy.setAttribute(terminal, table_adr_id.value(kept.end[i]));
+			} else {
+				copy.setAttribute(element, kept.end[i]->parentElement()->uuid().toString());
+				copy.setAttribute(terminal, kept.end[i]->uuid().toString());
+			}
+		}
+		conductors.appendChild(copy);
+	}
+}
+
+/**
 	@brief Diagram::uuidUsedByOtherDiagram
 	A hand-edited or merged project file can contain two folios with the same
 	uuid. The uuid is used as a key (e.g. in the project database), so the
@@ -1268,7 +1394,10 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	}
 	document.appendChild(dom_root);
 
-	if (items().isEmpty())
+		//What the folio could not load is written back with a whole folio
+	const bool write_kept = whole_content && !is_copy_command
+			&& (!m_kept_symbols.isEmpty() || !m_kept_wires.isEmpty());
+	if (items().isEmpty() && !write_kept)
 		return(document);
 
 	QVector<Element *> list_elements;
@@ -1375,8 +1504,8 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	// table de correspondance entre les adresses des bornes et leurs ids
 	QHash<Terminal *, int> table_adr_id;
 
-	if (!list_elements.isEmpty()) {
-		auto dom_elements = document.createElement(QStringLiteral("elements"));
+	auto dom_elements = document.createElement(QStringLiteral("elements"));
+	if (!list_elements.isEmpty() || write_kept) {
 		for (auto elmt : list_elements) {
 			QDomElement dom_element = elmt->toXml(document, table_adr_id);
 			ItemGroups::write(dom_element, elmt);
@@ -1388,6 +1517,7 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 		dom_root.appendChild(dom_elements);
 	}
 
+	auto dom_conductors = document.createElement(QStringLiteral("conductors"));
 	if (!list_conductors.isEmpty()) {
 			//Symbols copied in old versions can share one uuid. A wire
 			//saved by that uuid would reopen on the first of them (#1408).
@@ -1397,13 +1527,17 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 				shared_uuids.insert(elmt->uuid());
 			seen_uuids.insert(elmt->uuid());
 		}
-		auto dom_conductors = document.createElement(QStringLiteral("conductors"));
 		for (auto cond : list_conductors) {
 			dom_conductors.appendChild(cond->toXml(document,
 							       table_adr_id,
 							       shared_uuids));
 		}
 		dom_root.appendChild(dom_conductors);
+	}
+	if (write_kept) {
+		writeKept(document, dom_elements, dom_conductors, table_adr_id);
+		if (dom_conductors.hasChildNodes() && dom_conductors.parentNode().isNull())
+			dom_root.insertAfter(dom_conductors, dom_elements);
 	}
 
 		// A rect query, unlike items(), returns true stacking order (z, then
@@ -1603,6 +1737,23 @@ void Diagram::folioSequentialsToXml(QHash<QString,
 	fromXml() does for each symbol it reads.
 	@return the symbol, or nullptr if it could not be made (said in the log)
 */
+/**
+	@brief Diagram::derivedSymbolUuid
+	@return the uuid of the symbol @p element_xml, saved without one:
+	derived from what it is and where it sits on its folio, never from the
+	folio's index (see buildElement())
+*/
+QUuid Diagram::derivedSymbolUuid(const QDomElement &element_xml) const
+{
+	return m_project->derivedItemUuid(
+				QStringLiteral("element"),
+				QStringList{element_xml.attribute(QStringLiteral("type")),
+							element_xml.attribute(QStringLiteral("x")),
+							element_xml.attribute(QStringLiteral("y")),
+							element_xml.attribute(QStringLiteral("orientation"))}
+				.join(QLatin1Char('\n')));
+}
+
 Element *Diagram::buildElement(QDomElement element_xml, QHash<int, Terminal *> &table_adr_id,
 							   bool consider_informations)
 {
@@ -1650,13 +1801,7 @@ Element *Diagram::buildElement(QDomElement element_xml, QHash<int, Terminal *> &
 			//uuids anyway.
 		if (consider_informations && m_project
 			&& QUuid(element_xml.attribute(QStringLiteral("uuid"))).isNull()) {
-			nvel_elmt->setUuid(m_project->derivedItemUuid(
-								   QStringLiteral("element"),
-								   QStringList{type_id,
-											   element_xml.attribute(QStringLiteral("x")),
-											   element_xml.attribute(QStringLiteral("y")),
-											   element_xml.attribute(QStringLiteral("orientation"))}
-								   .join(QLatin1Char('\n'))));
+			nvel_elmt->setUuid(derivedSymbolUuid(element_xml));
 		}
 		ItemGroups::setGroup(nvel_elmt, ItemGroups::read(element_xml));
 		return nvel_elmt;
@@ -2093,6 +2238,14 @@ bool Diagram::fromXml(QDomElement &document,
 	if (m_loading_deferred) {
 		table_adr_id = m_partial_table;   //the terminals of symbols built already
 	}
+		//Each symbol read, by uuid: the ends of a wire kept (keepWire())
+	QList<QPair<QUuid, QDomElement>> read_symbols;
+	if (consider_informations) {
+		m_kept_document = QDomDocument();
+		m_kept_symbols.clear();
+		m_kept_wires.clear();
+		m_symbols_not_loaded.clear();
+	}
 	for (auto element_xml :
 		 QET::findInDomElement(root, QStringLiteral("elements"), QStringLiteral("element")))
 	{
@@ -2102,11 +2255,30 @@ bool Diagram::fromXml(QDomElement &document,
 			Element *built = m_partial_elements.value(QUuid(element_xml.attribute(QStringLiteral("uuid"))));
 			if (built) {
 				added_elements << built;
+				read_symbols.append({built->uuid(), element_xml});
 				continue;
 			}
 		}
-		if (Element *nvel_elmt = buildElement(element_xml, table_adr_id, consider_informations))
+		if (Element *nvel_elmt = buildElement(element_xml, table_adr_id, consider_informations)) {
 			added_elements << nvel_elmt;
+			if (consider_informations) read_symbols.append({nvel_elmt->uuid(), element_xml});
+		} else if (consider_informations) {
+				//Its definition is missing: kept as read, saved back, so a
+				//save loses nothing (F127)
+			QDomElement kept = m_kept_document.importNode(element_xml, true).toElement();
+			if (QUuid(kept.attribute(QStringLiteral("uuid"))).isNull() && m_project)
+				kept.setAttribute(QStringLiteral("uuid"), derivedSymbolUuid(element_xml).toString());
+			m_kept_symbols << kept;
+			read_symbols.append({QUuid(kept.attribute(QStringLiteral("uuid"))), element_xml});
+			QString label;
+			for (const QDomElement &info : QET::findInDomElement(
+					 element_xml, QStringLiteral("elementInformations"), QStringLiteral("elementInformation")))
+				if (info.attribute(QStringLiteral("name")) == QLatin1String("label")) label = info.text();
+			const QString type = element_xml.attribute(QStringLiteral("type"));
+			m_symbols_not_loaded << (label.isEmpty()
+									 ? type.section(QLatin1Char('/'), -1)
+									 : QStringLiteral("%1 (%2)").arg(label, type.section(QLatin1Char('/'), -1)));
+		}
 	}
 
 		//Texts, images and shapes written before they carried a uuid (or
@@ -2262,7 +2434,17 @@ bool Diagram::fromXml(QDomElement &document,
 										QStringLiteral("conductors"),
 										QStringLiteral("conductor")))
 	{
-		if (!Conductor::valideXml(f)) continue;
+		if (!Conductor::valideXml(f)) {
+				//Its ends cannot be read: kept and written back unchanged
+				//(F128), it can join nothing
+			if (consider_informations) {
+				KeptWire kept;
+				kept.xml = m_kept_document.importNode(f, true).toElement();
+				kept.as_read = true;
+				m_kept_wires << kept;
+			}
+			continue;
+		}
 
 			   //Check if terminal that conductor must be linked is know
 
@@ -2297,6 +2479,8 @@ bool Diagram::fromXml(QDomElement &document,
 			if (!num.isEmpty() && num != QLatin1String("_"))
 				wire += QStringLiteral(" (%1)").arg(num);
 			m_wires_not_reconnected << wire;
+				//Kept as read, saved back (F128)
+			keepWire(f, p1, p2, read_symbols);
 		}
 
 		if (p1 && p2 && p1 != p2)

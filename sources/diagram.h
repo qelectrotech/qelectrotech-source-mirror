@@ -39,6 +39,7 @@ class DiagramContent;
 class DiagramPosition;
 class DiagramTextItem;
 class Element;
+class Terminal;
 class ElementsLocation;
 class DiagramImageItem;
 class DiagramEventInterface;
@@ -165,6 +166,28 @@ class Diagram : public QGraphicsScene
 
 			//Wires of the loaded file whose ends could not be found
 		QStringList m_wires_not_reconnected;
+			//Symbols of the loaded file that could not be built
+		QStringList m_symbols_not_loaded;
+
+			//What the folio could not load, written back as it was read
+			//(F127, F128): symbols whose definition is missing, and wires
+			//to a terminal not found
+		struct KeptWire {
+			QDomElement xml;
+			QPointer<Terminal> end[2]; ///< an end found, null if not
+			bool found[2] = {false, false};
+			QUuid element[2];          ///< an end not found: its symbol
+			QUuid terminal[2];         ///< and its terminal
+			bool as_read = false;      ///< no end can be read: written unchanged
+		};
+		QDomDocument m_kept_document;
+		QList<QDomElement> m_kept_symbols;
+		QList<KeptWire> m_kept_wires;
+		QUuid derivedSymbolUuid(const QDomElement &element_xml) const;
+		void keepWire(const QDomElement &wire, Terminal *found1, Terminal *found2,
+					  const QList<QPair<QUuid, QDomElement>> &symbols);
+		void writeKept(QDomDocument &document, QDomElement &elements,
+					   QDomElement &conductors, const QHash<Terminal *, int> &table_adr_id) const;
 
 	// METHODS
 	protected:
@@ -189,6 +212,8 @@ class Diagram : public QGraphicsScene
 		void restoreText(Element* elmt);
 		QUuid uuid();
 		QStringList wiresNotReconnected() const;
+		QStringList symbolsNotLoaded() const;
+		QSet<QUuid> keptSymbolUuids() const;
 		void setEventInterface (DiagramEventInterface *event_interface);
 		void clearEventInterface();
 
