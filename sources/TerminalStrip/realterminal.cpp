@@ -23,6 +23,50 @@
 #include "terminalcatalog.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetinformation.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../diagram.h"
+#include "../cable/cable.h"
+#include "../cable/cablemanager.h"
+
+namespace
+{
+		/**
+		 * The cable cores wired to one terminal element, worked out from
+		 * the cables of the project (PR #1438). A core knows its
+		 * conductor, and CableManager::refreshLabels() writes the cable
+		 * and the core into the properties of that conductor, so reading
+		 * the conductors of the element is enough.
+		 * Each pair is (cable designation, core colour or number).
+		 */
+	QList<QPair<QString, QString>> wiredCores(Element *element)
+	{
+		QList<QPair<QString, QString>> cores;
+		if (!element || !element->diagram()) {
+			return cores;
+		}
+		const auto project = element->diagram()->project();
+		for (const auto terminal : element->terminals())
+		{
+			for (const auto conductor : terminal->conductors())
+			{
+				const auto properties = conductor->ownProperties();
+				const auto cable = CableManager::cableByUuid(project, properties.m_cable_uuid);
+				if (!cable || cable->designation().isEmpty()) {
+					continue;
+				}
+				auto wire = cable->colorOfCore(properties.m_cable_slot);
+				if (wire.isEmpty() && properties.m_cable_slot >= 0) {
+					wire = QString::number(properties.m_cable_slot + 1);
+				}
+				const QPair<QString, QString> core(cable->designation(), wire);
+				if (!cores.contains(core)) {
+					cores.append(core);
+				}
+			}
+		}
+		return cores;
+	}
+}
 
 /**
  * @brief RealTerminal
@@ -291,7 +335,20 @@ QString RealTerminal::Xref() const
  * @return The name of the cable (hose) connected to this terminal.
  * The value is stored in the informations of the element.
  */
-QString RealTerminal::cable() const {
+QString RealTerminal::cable() const
+{
+	const auto cores = wiredCores(m_element.data());
+	if (!cores.isEmpty())
+	{
+		QStringList cables;
+		for (const auto &core : cores) {
+			if (!cables.contains(core.first)) {
+				cables.append(core.first);
+			}
+		}
+		return cables.join(QStringLiteral(", "));
+	}
+
 	if (hasData()) {
 		return terminalData().m_informations.value(cableInfoKey()).toString();
 	}
@@ -299,10 +356,31 @@ QString RealTerminal::cable() const {
 }
 
 /**
+ * @brief RealTerminal::cableIsAutomatic
+ * @return true when the cable and the core of this terminal come from
+ * a cable of the project wired to it, false when they are the values
+ * typed in by the user in the terminal strip editor.
+ */
+bool RealTerminal::cableIsAutomatic() const {
+	return !wiredCores(m_element.data()).isEmpty();
+}
+
+/**
  * @brief RealTerminal::cableWire
  * @return The color / number of the wire of the cable, connected to this terminal.
  */
-QString RealTerminal::cableWire() const {
+QString RealTerminal::cableWire() const
+{
+	const auto cores = wiredCores(m_element.data());
+	if (!cores.isEmpty())
+	{
+		QStringList wires;
+		for (const auto &core : cores) {
+			wires.append(core.second);
+		}
+		return wires.join(QStringLiteral(", "));
+	}
+
 	if (hasData()) {
 		return terminalData().m_informations.value(cableWireInfoKey()).toString();
 	}

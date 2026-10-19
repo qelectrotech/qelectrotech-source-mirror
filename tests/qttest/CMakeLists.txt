@@ -290,6 +290,11 @@ qet_add_app_test(tst_assistantinfopaths tst_assistantinfopaths.cpp)
 # %T in a report or cross reference formula is the target folio's title.
 qet_add_app_test(tst_reportfoliotitle tst_reportfoliotitle.cpp)
 
+# The cable cells of a terminal strip are worked out from the cables of
+# the project: wired shows the cable and its core read only, unwired keeps
+# what was typed in, and nothing stale is written into the element.
+qet_add_app_test(tst_terminalcableauto tst_terminalcableauto.cpp)
+
 # Escape during a picture's resize, rotate or pivot drag puts it back, keeps
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)

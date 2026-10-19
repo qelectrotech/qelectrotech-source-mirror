@@ -35,6 +35,7 @@
 #include "../terminalcatalog.h"
 #include "../realterminal.h"
 #include "../../qetinformation.h"
+#include "../../cable/cable.h"
 
 #include <QApplication>
 #include <QCheckBox>
@@ -95,6 +96,10 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 			}
 		}
 	});
+
+		//The cable cells are worked out from the cables of the project,
+		//so the table follows them while the user wires the drawing
+	watchCableChanges();
 }
 
 /**
@@ -107,7 +112,86 @@ TerminalStripEditor::~TerminalStripEditor() {
 void TerminalStripEditor::setProject(QETProject *project)
 {
     m_project = project;
+	watchCableChanges();
     setCurrentStrip(nullptr);
+}
+
+/**
+ * @brief TerminalStripEditor::watchCableChanges
+ * Follow the cables of the project: the cable cells are worked out from
+ * them, so a cable renamed, given cores or taken away changes what the
+ * cells say, and the window stays open while the user wires the drawing.
+ * The project the editor followed before is let go first, since the
+ * window may be shown on another project.
+ */
+void TerminalStripEditor::watchCableChanges()
+{
+	if (m_watched_project) {
+			//Only the connections made here go to the project
+		m_watched_project->disconnect(nullptr, this);
+		for (Cable *cable : m_watched_project->cables()) {
+			cable->disconnect(nullptr, this);
+		}
+	}
+	m_watched_project = m_project;
+	if (!m_project) {
+		return;
+	}
+
+	connect(m_project, &QETProject::cableAdded, this, [this](Cable *cable) {
+		watchCable(cable);
+	});
+	connect(m_project, &QETProject::cableRemoved, this, [this](Cable *cable) {
+			//The project stopped feeding its labels already, so the
+			//cells show what is left: the typed in value, or nothing
+		if (cable) {
+			cable->disconnect(nullptr, this);
+		}
+		reloadOnCableChange();
+	});
+	for (Cable *cable : m_project->cables()) {
+		watchCable(cable);
+	}
+}
+
+/**
+ * @brief TerminalStripEditor::watchCable
+ * Reload the table when @a cable changes. The project runs its own
+ * connection first (made when the cable entered it), so the labels of
+ * the conductors are worked out again before this reload reads them.
+ * @param cable
+ */
+void TerminalStripEditor::watchCable(Cable *cable)
+{
+	if (!cable) {
+		return;
+	}
+	cable->disconnect(nullptr, this);
+	connect(cable, &Cable::changed, this, &TerminalStripEditor::reloadOnCableChange);
+}
+
+/**
+ * @brief TerminalStripEditor::reloadOnCableChange
+ * Take up a change of the cables: reload so the cable cells say what
+ * they now must, never at the price of the user's own work -- cell
+ * edits not applied yet, or a cell being typed in, are kept and catch
+ * up with the next reload of any kind.
+ */
+void TerminalStripEditor::reloadOnCableChange()
+{
+	if (!m_current_strip || !m_model) {
+		return;
+	}
+	if (!m_model->modifiedmodelRealTerminalData().isEmpty()) {
+		return;
+	}
+		//A cell being typed in keeps its editor: the reload would close
+		//it under the fingers of the user (the edit itself is picked up
+		//by the next reload once it has been made)
+	if (ui->m_table_widget->isAncestorOf(QApplication::focusWidget())) {
+		return;
+	}
+	reload();
 }
 
 /**
@@ -245,8 +329,13 @@ void TerminalStripEditor::apply()
 						current_data.m_informations.addValue(key, value);
 					}
 				};
-				set_info(RealTerminal::cableInfoKey(), data_.cable_);
-				set_info(RealTerminal::cableWireInfoKey(), data_.cable_wire);
+					//A cable worked out from the cables of the project is
+					//never written in the element: it would stay there,
+					//out of date, once the cable is renamed or removed
+				if (!data_.cable_auto_) {
+					set_info(RealTerminal::cableInfoKey(), data_.cable_);
+					set_info(RealTerminal::cableWireInfoKey(), data_.cable_wire);
+				}
 				set_info(RealTerminal::shieldInfoKey(), data_.shield_ ? QStringLiteral("true") : QString());
 				//The color and the section are stored with the dot as decimal separator, whatever the locale
 				set_info(RealTerminal::colorInfoKey(), TerminalColor::toSpec(data_.color_, data_.stripe_color_));
