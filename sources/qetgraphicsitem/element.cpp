@@ -2715,22 +2715,32 @@ bool Element::definitionGeometryMatches(const QDomElement &definition) const
 
 /**
  * @brief Element::updateConductorTexts
- *Slot that is triggered when a cable is                           *
- *connected to or disconnected from a terminal on this component.
- */
-/**
- * @brief Element::updateConductorTexts
+ * Refresh the texts of this symbol that show the properties of the wire
+ * it is on: a wire label's own, and a folio report's (its function,
+ * section...). Slot triggered when a wire is connected to or
+ * disconnected from a terminal of this symbol.
  */
 void Element::updateConductorTexts()
 {
-	if (m_link_type != Element::ConductorDefinition) {
-		return;
+	if (m_link_type == Element::ConductorDefinition)
+	{
+		for (DynamicElementTextItem *deti : m_dynamic_text_list) {
+			if (deti) {
+				deti->setPotentialConductor();
+				deti->updateLabel();
+			}
+		}
 	}
-
-	for (DynamicElementTextItem *deti : m_dynamic_text_list) {
-		if (deti) {
-			deti->setPotentialConductor();
-			deti->updateLabel();
+	else if (m_link_type & Element::AllReport)
+	{
+		//setPotentialConductor() ends on conductorPropertiesChanged(),
+		//which fills those texts. No updateLabel() here: a report's
+		//"label" text is not its own information but the linked
+		//folio's, refreshed by updateReportText().
+		for (DynamicElementTextItem *deti : m_dynamic_text_list) {
+			if (deti) {
+				deti->setPotentialConductor();
+			}
 		}
 	}
 }
