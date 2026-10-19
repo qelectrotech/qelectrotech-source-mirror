@@ -458,27 +458,27 @@
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="30"/>
         <source>Drawing style :</source>
-        <translation type="unfinished"></translation>
+        <translation>描画スタイル:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="37"/>
         <source>How the terminals are drawn. The realistic styles draw the strip at scale, seen from above, with the real width of each terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>端子の描き方です。リアルなスタイルでは、端子台を上から見た縮尺どおりに、各端子の実際の幅で描きます。</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="41"/>
         <source>Schematic</source>
-        <translation type="unfinished"></translation>
+        <translation>回路図記号</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="46"/>
         <source>Realistic (push-in)</source>
-        <translation type="unfinished"></translation>
+        <translation>リアル (スプリング式、プッシュイン)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="51"/>
         <source>Realistic (screw)</source>
-        <translation type="unfinished"></translation>
+        <translation>リアル (ねじ式)</translation>
     </message>
 </context>
 <context>
@@ -4914,17 +4914,17 @@ Continue?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="265"/>
         <source>Section (mm²)</source>
-        <translation type="unfinished"></translation>
+        <translation>断面積 (mm²)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="282"/>
         <source>Width / manufacturer</source>
-        <translation type="unfinished"></translation>
+        <translation>幅 / メーカー</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="299"/>
         <source>Color</source>
-        <translation type="unfinished">色</translation>
+        <translation>色</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="320"/>
@@ -5116,27 +5116,27 @@ Continue?</source>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="576"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="638"/>
         <source>None (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>なし (既定)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="529"/>
         <source>%1 mm²</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm²</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="532"/>
         <source> mm²</source>
-        <translation type="unfinished"></translation>
+        <translation> mm²</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="545"/>
         <source>All manufacturers</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのメーカー</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="615"/>
         <source>%1 mm</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="855"/>
@@ -7073,12 +7073,12 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="343"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
-        <translation type="unfinished"></translation>
+        <translation>プロジェクトの横に置かれる小さな隠しファイルで、誰が開いているかを示します。後から開いた人には通知され、読み取り専用で開くことができます。共有ドライブがこれに対応していない場合はオフにしてください。</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="346"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
-        <translation type="unfinished"></translation>
+        <translation>プロジェクトを開いている人を他の人に知らせる (プロジェクトの横のロックファイル)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="360"/>
@@ -7103,18 +7103,18 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
         <source>Previous versions kept when saving a project</source>
-        <translation type="unfinished"></translation>
+        <translation>プロジェクトの保存時に保持する以前のバージョン</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>プロジェクトを保存する前に、保存前のファイルが、プロジェクト名に「-backups」を付けた隣のフォルダーにコピーされます。最新のものだけが保持されます。</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
         <source>None</source>
-        <translation type="unfinished">なし</translation>
+        <translation>なし</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="455"/>
@@ -7412,7 +7412,7 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1261"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl キーを使ったキーボード移動: 1 - 9</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1347"/>
@@ -7652,7 +7652,7 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="628"/>
         <source>Chinese (Traditional)</source>
-        <translation type="unfinished"></translation>
+        <translation>中国語 (繁体字)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="629"/>
@@ -9636,54 +9636,54 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="450"/>
         <source>Exclude from the bill of materials</source>
-        <translation type="unfinished">部品表から除外</translation>
+        <translation>部品表から除外</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="451"/>
         <source>Function separation</source>
-        <translation type="unfinished">機能による分離</translation>
+        <translation>機能による分離</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="452"/>
         <source>Exclude from automatic numbering</source>
-        <translation type="unfinished">自動採番から除外</translation>
+        <translation>自動採番から除外</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="462"/>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="503"/>
         <source>Restore the values the elements had</source>
-        <translation type="unfinished"></translation>
+        <translation>要素が持っていた値に戻す</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="499"/>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="771"/>
         <source>Delete this text</source>
-        <translation type="unfinished">このテキストを削除</translation>
+        <translation>このテキストを削除</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="509"/>
         <source>Decimal number with a dot as separator (e.g. 80.5)</source>
-        <translation type="unfinished">小数点にドットを使った数値 (例: 80.5)</translation>
+        <translation>小数点にドットを使った数値 (例: 80.5)</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="617"/>
         <source>Elements edited: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>変更された要素: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="620"/>
         <source>Other selected items, left unchanged: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>変更されなかったその他の選択項目: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="773"/>
         <source>Multiple values</source>
-        <translation type="unfinished"></translation>
+        <translation>複数の値</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.h" line="62"/>
         <source>Information</source>
-        <translation type="unfinished">情報</translation>
+        <translation>情報</translation>
     </message>
 </context>
 <context>
@@ -11397,12 +11397,12 @@ Do you want to save changes?</source>
         <location filename="../sources/projectview.cpp" line="412"/>
         <source>Project in use</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>使用中のプロジェクト</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="413"/>
         <source>%1 is open by %2 on %3. Choose another file name, or save again once it has been closed there.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 は %3 上の %2 が開いています。別のファイル名を選ぶか、そちらで閉じられてから再度保存してください。</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="425"/>
@@ -11449,24 +11449,26 @@ To write a file for a version of QElectroTech that cannot open %2, use File &gt;
         <location filename="../sources/projectview.cpp" line="800"/>
         <source>File changed on disk</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>ディスク上でファイルが変更されました</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="801"/>
         <source>Someone else changed %1 on disk at %2 since you opened it.
 
 Saving over it would lose their changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>あなたが開いた後、%2 に他の人がディスク上の %1 を変更しました。
+
+上書き保存すると、その人の変更が失われます。</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="805"/>
         <source>Save as a copy</source>
-        <translation type="unfinished"></translation>
+        <translation>コピーとして保存</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="806"/>
         <source>Overwrite</source>
-        <translation type="unfinished"></translation>
+        <translation>上書き</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="869"/>
@@ -12218,24 +12220,24 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="480"/>
         <source>Copy text format</source>
-        <translation type="unfinished"></translation>
+        <translation>テキスト書式をコピー</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="481"/>
         <source>Apply text format</source>
-        <translation type="unfinished"></translation>
+        <translation>テキスト書式を適用</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="486"/>
         <source>Copy the text format of the selected element as a template</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>選択した要素のテキスト書式をテンプレートとしてコピー</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="487"/>
         <source>Apply the copied text format to the selected elements</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>コピーしたテキスト書式を選択した要素に適用</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="499"/>
@@ -13290,45 +13292,45 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1925"/>
         <source>%1 is being opened by another session of QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 は QElectroTech の別のセッションで開かれています。</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1928"/>
         <source>%1 is open by %2 on %3 since %4</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 は %4 から %3 上の %2 が開いています</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1934"/>
         <source> (active just now).</source>
-        <translation type="unfinished"></translation>
+        <translation> (たった今アクティブ)。</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="1935"/>
         <source> (active %n minute(s) ago).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> (%n 分前にアクティブ)。</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1941"/>
         <source>Project in use</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>使用中のプロジェクト</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1942"/>
         <source>Open it read-only to look at it without changing it. Open it anyway only if you know that session is not using it any more: both of you could then save over each other.</source>
-        <translation type="unfinished"></translation>
+        <translation>変更せずに見るだけなら読み取り専用で開いてください。そのセッションがもう使っていないと分かっている場合にのみ、そのまま開いてください。そうしないと、お互いの変更を上書きしてしまう可能性があります。</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1945"/>
         <source>Open read-only</source>
-        <translation type="unfinished"></translation>
+        <translation>読み取り専用で開く</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1946"/>
         <source>Open anyway</source>
-        <translation type="unfinished"></translation>
+        <translation>そのまま開く</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1972"/>
@@ -13336,64 +13338,66 @@ Hold Ctrl while moving to place freely.</source>
         <location filename="../sources/qetdiagrameditor.cpp" line="2011"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2054"/>
         <source>Cannot open %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 を開けません</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1974"/>
         <source>The file %1 cannot be read as a QElectroTech project.</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル %1 は QElectroTech プロジェクトとして読み込めません。</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1975"/>
         <source>The project file is damaged:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>プロジェクトファイルが破損しています:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1980"/>
         <source>Open the version saved %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 に保存されたバージョンを開く</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1985"/>
         <source>Recover what can be read</source>
-        <translation type="unfinished"></translation>
+        <translation>読み込める部分を復元</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1987"/>
         <source>Either opens as a new project, &quot;%1&quot;; %2 is left as it is.</source>
-        <translation type="unfinished"></translation>
+        <translation>どちらの場合も新しいプロジェクト「%1」として開きます。%2 はそのまま残ります。</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2001"/>
         <source>Nothing can be recovered from it:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>何も復元できません:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2015"/>
         <source>Project recovered</source>
-        <translation type="unfinished"></translation>
+        <translation>プロジェクトを復元しました</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2016"/>
         <source>What could be read of %1 is open as a new project. Some parts could not be read and were left out: see the details.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 から読み込めた部分を新しいプロジェクトとして開きました。読み込めなかった部分は省かれています。詳細を参照してください。</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2036"/>
         <source>%1 (recovered)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (復元)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2039"/>
         <source>%1 (recovered %2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (復元 %2)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2223"/>
         <source>%1 on %2 has taken over %3. Save your changes with Save As to keep them.</source>
-        <translation type="unfinished"></translation>
+        <translation>%2 上の %1 が %3 を引き継ぎました。変更を残すには「名前を付けて保存」で保存してください。</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2238"/>
@@ -13404,7 +13408,7 @@ Hold Ctrl while moving to place freely.</source>
         <location filename="../sources/qetdiagrameditor.cpp" line="2297"/>
         <source>Elements not loaded</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>読み込まれなかった要素</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2298"/>
@@ -13412,8 +13416,10 @@ Hold Ctrl while moving to place freely.</source>
 
 They are not shown, but they are kept in the file as they are, with their conductors, and come back once their definition is available again.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n 個の要素を読み込めませんでした: その定義がプロジェクトにもコレクションにもありません。
+
+これらは表示されませんが、導体とともにそのままファイルに保持され、定義が再び利用可能になると元に戻ります。</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -13422,8 +13428,10 @@ They are not shown, but they are kept in the file as they are, with their conduc
 
 They are not shown, but they are kept in the file as they are, and join their terminals again once the definition has them where they were.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n 本の導体を端子に接続できず、読み込まれませんでした。要素の定義がないか、端子の異なる別の定義に置き換えられています。
+
+これらは表示されませんが、そのままファイルに保持され、定義の端子が元の位置に戻ると再び端子に接続されます。</numerusform>
         </translation>
     </message>
     <message>
@@ -13470,7 +13478,7 @@ You can also number the cables automatically later: the rule is set at any time 
         <location filename="../sources/qetdiagrameditor.cpp" line="3271"/>
         <source>Edit the information of the elements</source>
         <comment>edit several elements</comment>
-        <translation type="unfinished"></translation>
+        <translation>要素の情報を編集</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3302"/>
@@ -13486,13 +13494,13 @@ You can also number the cables automatically later: the rule is set at any time 
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5009"/>
         <source>Text format of &quot;%1&quot; copied</source>
-        <translation type="unfinished"></translation>
+        <translation>「%1」のテキスト書式をコピーしました</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="5037"/>
         <source>Text format applied to %n element(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n 個の要素にテキスト書式を適用しました</numerusform>
         </translation>
     </message>
     <message>
@@ -14160,12 +14168,12 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="401"/>
         <source>Zoom content</source>
-        <translation type="unfinished">内容に合わせてズーム</translation>
+        <translation>内容に合わせてズーム</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="404"/>
         <source>Adjusts the zoom to display the whole symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>シンボル全体が表示されるようにズームを調整します</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="420"/>
@@ -15054,7 +15062,7 @@ the conditions are not valid</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="2869"/>
         <source>%1 was opened read-only because someone else has it open. Use Save As to keep your changes in another file.</source>
-        <translation type="unfinished"></translation>
+        <translation>他の人が開いているため、%1 は読み取り専用で開かれました。変更を別のファイルに残すには「名前を付けて保存」を使ってください。</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2874"/>
@@ -15064,7 +15072,7 @@ the conditions are not valid</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="2894"/>
         <source>someone else changed the file on disk at %1 since it was opened, and saving would overwrite that. Save to another name, or set QET_OVERWRITE_CHANGED=1 to overwrite it.</source>
-        <translation type="unfinished"></translation>
+        <translation>開いた後の %1 に他の人がディスク上のファイルを変更しており、保存するとその変更を上書きしてしまいます。別の名前で保存するか、上書きするには QET_OVERWRITE_CHANGED=1 を設定してください。</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="3087"/>
@@ -15949,7 +15957,7 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="434"/>
         <source>Apply text format</source>
-        <translation type="unfinished"></translation>
+        <translation>テキスト書式を適用</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="787"/>
@@ -17403,21 +17411,21 @@ Please download it by following the link and unzip it in the installation folder
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="258"/>
         <source>Add %n spare terminals</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>予備端子を %n 個追加</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="259"/>
         <source>Add %n spare terminals to terminal group %1</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>端子グループ %1 に予備端子を %n 個追加</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="297"/>
         <source>Modify the spare terminal %1</source>
-        <translation type="unfinished"></translation>
+        <translation>予備端子 %1 を変更</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/alignselectioncommand.cpp" line="144"/>
@@ -18643,7 +18651,15 @@ Create your own text using the following variables:
 %T: the sheet title
 %l: the row number
 %c: the column number</source>
-        <translation type="unfinished"></translation>
+        <translation>フォリオ参照のカスタムラベルを定義できます。
+次の変数を使って独自のテキストを作成します:
+%f: プロジェクト内のフォリオの位置
+%F: フォリオ番号
+%M: 設備
+%LM: 場所
+%T: フォリオのタイトル
+%l: 行番号
+%c: 列番号</translation>
     </message>
     <message>
         <source>You can define a custom label for sheet references.
@@ -19881,841 +19897,841 @@ The other fields are not used.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="55"/>
         <source>Pink: Pink</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>ピンク: Pink</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Pink : LightPink</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>ピンク : LightPink</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Pink : HotPink</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>ピンク : HotPink</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Pink : DeepPink</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>ピンク : DeepPink</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Pink : PaleVioletRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>ピンク : PaleVioletRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Pink : MediumVioletRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>ピンク : MediumVioletRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Red : LightSalmon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : LightSalmon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="62"/>
         <source>Red : Salmon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : Salmon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="63"/>
         <source>Red : DarkSalmon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : DarkSalmon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="64"/>
         <source>Red : LightCoral</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : LightCoral</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="65"/>
         <source>Red : IndianRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : IndianRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="66"/>
         <source>Red : Crimson</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : Crimson</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="67"/>
         <source>Red : Firebrick</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : Firebrick</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="68"/>
         <source>Red : DarkRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : DarkRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="69"/>
         <source>Red : Red</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : Red</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="70"/>
         <source>Orange : OrangeRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>オレンジ : OrangeRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="71"/>
         <source>Orange : Tomato</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>オレンジ : Tomato</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="72"/>
         <source>Orange : Coral</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>オレンジ : Coral</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Orange : DarkOrange</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>オレンジ : DarkOrange</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Orange : Orange</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>オレンジ : Orange</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="75"/>
         <source>Yellow : Yellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : Yellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="76"/>
         <source>Yellow : LightYellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : LightYellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="77"/>
         <source>Yellow : LemonChiffon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : LemonChiffon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="78"/>
         <source>Yellow : LightGoldenrodYellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : LightGoldenrodYellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="79"/>
         <source>Yellow : PapayaWhip</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : PapayaWhip</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="80"/>
         <source>Yellow : Moccasin</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : Moccasin</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Yellow : PeachPuff</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : PeachPuff</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="82"/>
         <source>Yellow : PaleGoldenrod</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : PaleGoldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Yellow : Khaki</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : Khaki</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="84"/>
         <source>Yellow : DarkKhaki</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : DarkKhaki</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="85"/>
         <source>Yellow : Gold</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : Gold</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="86"/>
         <source>Brown : Cornsilk</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Cornsilk</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="87"/>
         <source>Brown : BlanchedAlmond</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : BlanchedAlmond</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="88"/>
         <source>Brown : Bisque</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Bisque</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="89"/>
         <source>Brown : NavajoWhite</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : NavajoWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="90"/>
         <source>Brown : Wheat</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Wheat</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="91"/>
         <source>Brown : Burlywood</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Burlywood</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="92"/>
         <source>Brown : Tan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Tan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="93"/>
         <source>Brown : RosyBrown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : RosyBrown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="94"/>
         <source>Brown : SandyBrown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : SandyBrown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="95"/>
         <source>Brown : Goldenrod</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Goldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="96"/>
         <source>Brown : DarkGoldenrod</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : DarkGoldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="97"/>
         <source>Brown : Peru</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Peru</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="98"/>
         <source>Brown : Chocolate</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Chocolate</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="99"/>
         <source>Brown : SaddleBrown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : SaddleBrown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="100"/>
         <source>Brown : Sienna</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Sienna</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="101"/>
         <source>Brown : Brown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Brown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="102"/>
         <source>Brown : Maroon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Maroon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="103"/>
         <source>Green : DarkOliveGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : DarkOliveGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="104"/>
         <source>Green : Olive</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : Olive</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="105"/>
         <source>Green : OliveDrab</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : OliveDrab</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="106"/>
         <source>Green : YellowGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : YellowGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="107"/>
         <source>Green : LimeGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : LimeGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="108"/>
         <source>Green : Lime</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : Lime</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="109"/>
         <source>Green : LawnGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : LawnGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="110"/>
         <source>Green : Chartreuse</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : Chartreuse</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="111"/>
         <source>Green : GreenYellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : GreenYellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="112"/>
         <source>Green : SpringGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : SpringGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="113"/>
         <source>Green : MediumSpringGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : MediumSpringGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="114"/>
         <source>Green : LightGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : LightGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="115"/>
         <source>Green : PaleGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : PaleGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="116"/>
         <source>Green : DarkSeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : DarkSeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="117"/>
         <source>Green : MediumAquamarine</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : MediumAquamarine</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="118"/>
         <source>Green : MediumSeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : MediumSeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="119"/>
         <source>Green : SeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : SeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="120"/>
         <source>Green : ForestGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : ForestGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="121"/>
         <source>Green : Green</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : Green</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="122"/>
         <source>Green : DarkGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : DarkGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="123"/>
         <source>Cyan : Aqua</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : Aqua</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="124"/>
         <source>Cyan : Cyan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : Cyan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="125"/>
         <source>Cyan : LightCyan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : LightCyan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="126"/>
         <source>Cyan : PaleTurquoise</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : PaleTurquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="127"/>
         <source>Cyan : Aquamarine</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : Aquamarine</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="128"/>
         <source>Cyan : Turquoise</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : Turquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="129"/>
         <source>Cyan : MediumTurquoise</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : MediumTurquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="130"/>
         <source>Cyan : DarkTurquoise</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : DarkTurquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="131"/>
         <source>Cyan : LightSeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : LightSeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
         <source>Cyan : CadetBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : CadetBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="133"/>
         <source>Cyan : DarkCyan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : DarkCyan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="134"/>
         <source>Cyan : Teal</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : Teal</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="135"/>
         <source>Blue : LightSteelBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : LightSteelBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="136"/>
         <source>Blue : PowderBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : PowderBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="137"/>
         <source>Blue : LightBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : LightBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="138"/>
         <source>Blue : SkyBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : SkyBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="139"/>
         <source>Blue : LightSkyBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : LightSkyBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="140"/>
         <source>Blue : DeepSkyBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : DeepSkyBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="141"/>
         <source>Blue : DodgerBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : DodgerBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="142"/>
         <source>Blue : CornflowerBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : CornflowerBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="143"/>
         <source>Blue : SteelBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : SteelBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="144"/>
         <source>Blue : RoyalBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : RoyalBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="145"/>
         <source>Blue : Blue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : Blue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="146"/>
         <source>Blue : MediumBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : MediumBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="147"/>
         <source>Blue : DarkBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : DarkBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="148"/>
         <source>Blue : Navy</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : Navy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="149"/>
         <source>Blue : MidnightBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : MidnightBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="150"/>
         <source>Purple : Lavender</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Lavender</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="151"/>
         <source>Purple : Thistle</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Thistle</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="152"/>
         <source>Purple : Plum</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Plum</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="153"/>
         <source>Purple : Violet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Violet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="154"/>
         <source>Purple : Orchid</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Orchid</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="155"/>
         <source>Purple : Fuchsia</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Fuchsia</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="156"/>
         <source>Purple : Magenta</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Magenta</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="157"/>
         <source>Purple : MediumOrchid</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : MediumOrchid</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="158"/>
         <source>Purple : MediumPurple</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : MediumPurple</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="159"/>
         <source>Purple : BlueViolet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : BlueViolet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="160"/>
         <source>Purple : DarkViolet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : DarkViolet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="161"/>
         <source>Purple : DarkOrchid</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : DarkOrchid</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="162"/>
         <source>Purple : DarkMagenta</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : DarkMagenta</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="163"/>
         <source>Purple : Purple</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Purple</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="164"/>
         <source>Purple : Indigo</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Indigo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="165"/>
         <source>Purple : DarkSlateBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : DarkSlateBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="166"/>
         <source>Purple : SlateBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : SlateBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="167"/>
         <source>Purple : MediumSlateBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : MediumSlateBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="168"/>
         <source>White : White</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : White</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="169"/>
         <source>White : Snow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Snow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="170"/>
         <source>White : Honeydew</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Honeydew</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="171"/>
         <source>White : MintCream</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : MintCream</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="172"/>
         <source>White : Azure</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Azure</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="173"/>
         <source>White : AliceBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : AliceBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="174"/>
         <source>White : GhostWhite</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : GhostWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="175"/>
         <source>White : WhiteSmoke</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : WhiteSmoke</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="176"/>
         <source>White : Seashell</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Seashell</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="177"/>
         <source>White : Beige</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Beige</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="178"/>
         <source>White : OldLace</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : OldLace</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="179"/>
         <source>White : FloralWhite</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : FloralWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="180"/>
         <source>White : Ivory</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Ivory</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="181"/>
         <source>White : AntiqueWhite</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : AntiqueWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="182"/>
         <source>White : Linen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Linen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="183"/>
         <source>White : LavenderBlush</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : LavenderBlush</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="184"/>
         <source>White : MistyRose</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : MistyRose</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="185"/>
         <source>Gray : Gainsboro</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : Gainsboro</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="186"/>
         <source>Gray : LightGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : LightGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="187"/>
         <source>Gray : Silver</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : Silver</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="188"/>
         <source>Gray : DarkGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : DarkGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="189"/>
         <source>Gray : Gray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : Gray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="190"/>
         <source>Gray : DimGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : DimGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="191"/>
         <source>Gray : LightSlateGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : LightSlateGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="192"/>
         <source>Gray : SlateGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : SlateGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="193"/>
         <source>Gray : DarkSlateGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : DarkSlateGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="194"/>
         <source>Gray : Black</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : Black</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="196"/>
@@ -20865,841 +20881,841 @@ The other fields are not used.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="231"/>
         <source>Pink: Pink</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>ピンク: Pink</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="232"/>
         <source>Pink : LightPink</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>ピンク : LightPink</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="233"/>
         <source>Pink : HotPink</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>ピンク : HotPink</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="234"/>
         <source>Pink : DeepPink</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>ピンク : DeepPink</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="235"/>
         <source>Pink : PaleVioletRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>ピンク : PaleVioletRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="236"/>
         <source>Pink : MediumVioletRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>ピンク : MediumVioletRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="237"/>
         <source>Red : LightSalmon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : LightSalmon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="238"/>
         <source>Red : Salmon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : Salmon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="239"/>
         <source>Red : DarkSalmon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : DarkSalmon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="240"/>
         <source>Red : LightCoral</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : LightCoral</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="241"/>
         <source>Red : IndianRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : IndianRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="242"/>
         <source>Red : Crimson</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : Crimson</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="243"/>
         <source>Red : Firebrick</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : Firebrick</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="244"/>
         <source>Red : DarkRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : DarkRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="245"/>
         <source>Red : Red</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>赤 : Red</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="246"/>
         <source>Orange : OrangeRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>オレンジ : OrangeRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="247"/>
         <source>Orange : Tomato</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>オレンジ : Tomato</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="248"/>
         <source>Orange : Coral</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>オレンジ : Coral</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="249"/>
         <source>Orange : DarkOrange</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>オレンジ : DarkOrange</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="250"/>
         <source>Orange : Orange</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>オレンジ : Orange</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="251"/>
         <source>Yellow : Yellow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : Yellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="252"/>
         <source>Yellow : LightYellow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : LightYellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="253"/>
         <source>Yellow : LemonChiffon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : LemonChiffon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="254"/>
         <source>Yellow : LightGoldenrodYellow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : LightGoldenrodYellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="255"/>
         <source>Yellow : PapayaWhip</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : PapayaWhip</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="256"/>
         <source>Yellow : Moccasin</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : Moccasin</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="257"/>
         <source>Yellow : PeachPuff</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : PeachPuff</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="258"/>
         <source>Yellow : PaleGoldenrod</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : PaleGoldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="259"/>
         <source>Yellow : Khaki</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : Khaki</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="260"/>
         <source>Yellow : DarkKhaki</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : DarkKhaki</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="261"/>
         <source>Yellow : Gold</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>黄 : Gold</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="262"/>
         <source>Brown : Cornsilk</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Cornsilk</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="263"/>
         <source>Brown : BlanchedAlmond</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : BlanchedAlmond</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="264"/>
         <source>Brown : Bisque</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Bisque</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="265"/>
         <source>Brown : NavajoWhite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : NavajoWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="266"/>
         <source>Brown : Wheat</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Wheat</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="267"/>
         <source>Brown : Burlywood</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Burlywood</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="268"/>
         <source>Brown : Tan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Tan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="269"/>
         <source>Brown : RosyBrown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : RosyBrown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="270"/>
         <source>Brown : SandyBrown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : SandyBrown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="271"/>
         <source>Brown : Goldenrod</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Goldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="272"/>
         <source>Brown : DarkGoldenrod</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : DarkGoldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="273"/>
         <source>Brown : Peru</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Peru</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="274"/>
         <source>Brown : Chocolate</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Chocolate</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="275"/>
         <source>Brown : SaddleBrown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : SaddleBrown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="276"/>
         <source>Brown : Sienna</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Sienna</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="277"/>
         <source>Brown : Brown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Brown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="278"/>
         <source>Brown : Maroon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>茶 : Maroon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="279"/>
         <source>Green : DarkOliveGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : DarkOliveGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="280"/>
         <source>Green : Olive</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : Olive</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="281"/>
         <source>Green : OliveDrab</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : OliveDrab</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="282"/>
         <source>Green : YellowGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : YellowGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="283"/>
         <source>Green : LimeGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : LimeGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="284"/>
         <source>Green : Lime</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : Lime</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="285"/>
         <source>Green : LawnGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : LawnGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="286"/>
         <source>Green : Chartreuse</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : Chartreuse</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="287"/>
         <source>Green : GreenYellow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : GreenYellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="288"/>
         <source>Green : SpringGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : SpringGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="289"/>
         <source>Green : MediumSpringGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : MediumSpringGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="290"/>
         <source>Green : LightGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : LightGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="291"/>
         <source>Green : PaleGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : PaleGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="292"/>
         <source>Green : DarkSeaGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : DarkSeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="293"/>
         <source>Green : MediumAquamarine</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : MediumAquamarine</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="294"/>
         <source>Green : MediumSeaGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : MediumSeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="295"/>
         <source>Green : SeaGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : SeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="296"/>
         <source>Green : ForestGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : ForestGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="297"/>
         <source>Green : Green</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : Green</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="298"/>
         <source>Green : DarkGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>緑 : DarkGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="299"/>
         <source>Cyan : Aqua</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : Aqua</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="300"/>
         <source>Cyan : Cyan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : Cyan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="301"/>
         <source>Cyan : LightCyan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : LightCyan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="302"/>
         <source>Cyan : PaleTurquoise</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : PaleTurquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="303"/>
         <source>Cyan : Aquamarine</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : Aquamarine</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="304"/>
         <source>Cyan : Turquoise</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : Turquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="305"/>
         <source>Cyan : MediumTurquoise</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : MediumTurquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="306"/>
         <source>Cyan : DarkTurquoise</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : DarkTurquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="307"/>
         <source>Cyan : LightSeaGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : LightSeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="308"/>
         <source>Cyan : CadetBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : CadetBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="309"/>
         <source>Cyan : DarkCyan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : DarkCyan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="310"/>
         <source>Cyan : Teal</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>シアン : Teal</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="311"/>
         <source>Blue : LightSteelBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : LightSteelBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="312"/>
         <source>Blue : PowderBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : PowderBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="313"/>
         <source>Blue : LightBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : LightBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="314"/>
         <source>Blue : SkyBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : SkyBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="315"/>
         <source>Blue : LightSkyBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : LightSkyBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="316"/>
         <source>Blue : DeepSkyBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : DeepSkyBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="317"/>
         <source>Blue : DodgerBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : DodgerBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="318"/>
         <source>Blue : CornflowerBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : CornflowerBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="319"/>
         <source>Blue : SteelBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : SteelBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="320"/>
         <source>Blue : RoyalBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : RoyalBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="321"/>
         <source>Blue : Blue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : Blue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="322"/>
         <source>Blue : MediumBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : MediumBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="323"/>
         <source>Blue : DarkBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : DarkBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="324"/>
         <source>Blue : Navy</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : Navy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="325"/>
         <source>Blue : MidnightBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>青 : MidnightBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="326"/>
         <source>Purple : Lavender</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Lavender</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="327"/>
         <source>Purple : Thistle</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Thistle</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="328"/>
         <source>Purple : Plum</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Plum</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="329"/>
         <source>Purple : Violet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Violet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="330"/>
         <source>Purple : Orchid</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Orchid</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="331"/>
         <source>Purple : Fuchsia</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Fuchsia</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="332"/>
         <source>Purple : Magenta</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Magenta</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="333"/>
         <source>Purple : MediumOrchid</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : MediumOrchid</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="334"/>
         <source>Purple : MediumPurple</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : MediumPurple</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="335"/>
         <source>Purple : BlueViolet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : BlueViolet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="336"/>
         <source>Purple : DarkViolet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : DarkViolet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="337"/>
         <source>Purple : DarkOrchid</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : DarkOrchid</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="338"/>
         <source>Purple : DarkMagenta</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : DarkMagenta</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="339"/>
         <source>Purple : Purple</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Purple</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="340"/>
         <source>Purple : Indigo</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : Indigo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="341"/>
         <source>Purple : DarkSlateBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : DarkSlateBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="342"/>
         <source>Purple : SlateBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : SlateBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="343"/>
         <source>Purple : MediumSlateBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>紫 : MediumSlateBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="344"/>
         <source>White : White</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : White</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="345"/>
         <source>White : Snow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Snow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="346"/>
         <source>White : Honeydew</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Honeydew</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="347"/>
         <source>White : MintCream</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : MintCream</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="348"/>
         <source>White : Azure</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Azure</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="349"/>
         <source>White : AliceBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : AliceBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="350"/>
         <source>White : GhostWhite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : GhostWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="351"/>
         <source>White : WhiteSmoke</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : WhiteSmoke</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="352"/>
         <source>White : Seashell</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Seashell</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="353"/>
         <source>White : Beige</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Beige</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="354"/>
         <source>White : OldLace</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : OldLace</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="355"/>
         <source>White : FloralWhite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : FloralWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="356"/>
         <source>White : Ivory</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Ivory</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="357"/>
         <source>White : AntiqueWhite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : AntiqueWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="358"/>
         <source>White : Linen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : Linen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="359"/>
         <source>White : LavenderBlush</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : LavenderBlush</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="360"/>
         <source>White : MistyRose</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>白 : MistyRose</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="361"/>
         <source>Gray : Gainsboro</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : Gainsboro</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="362"/>
         <source>Gray : LightGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : LightGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="363"/>
         <source>Gray : Silver</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : Silver</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="364"/>
         <source>Gray : DarkGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : DarkGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="365"/>
         <source>Gray : Gray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : Gray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="366"/>
         <source>Gray : DimGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : DimGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="367"/>
         <source>Gray : LightSlateGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : LightSlateGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="368"/>
         <source>Gray : SlateGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : SlateGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="369"/>
         <source>Gray : DarkSlateGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : DarkSlateGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="370"/>
         <source>Gray : Black</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>グレー : Black</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="372"/>
@@ -22016,7 +22032,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="91"/>
         <source>No effect unless &quot;Function separation&quot; is checked (all terminals of the block then stay connected). When it is checked, terminals sharing the same value stay connected to each other and the others are isolated.</source>
-        <translation type="unfinished"></translation>
+        <translation>「機能による分離」がオンでない場合は効果がありません (その場合、ブロックのすべての端子は接続されたままです)。オンの場合、同じ値を持つ端子どうしは接続されたままで、それ以外は絶縁されます。</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="98"/>
@@ -22147,12 +22163,12 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="243"/>
         <source>Re-group all terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>すべての端子を再グループ化</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="245"/>
         <source>Assign free terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>フリー端子を割り当て</translation>
     </message>
 </context>
 <context>
@@ -22334,22 +22350,22 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="204"/>
         <source>Manufacturer :</source>
-        <translation type="unfinished"></translation>
+        <translation>メーカー:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="211"/>
         <source>Manufacturer of the terminals proposed in the Width column</source>
-        <translation type="unfinished"></translation>
+        <translation>幅の列で提案される端子のメーカー</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="218"/>
         <source>Add spare terminals, on no folio, after the selected terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>選択した端子の後に、どのフォリオにも属さない予備端子を追加</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="221"/>
         <source>Add spare terminals...</source>
-        <translation type="unfinished"></translation>
+        <translation>予備端子を追加...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="251"/>
@@ -22404,7 +22420,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="69"/>
         <source>All manufacturers</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのメーカー</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="142"/>
@@ -22419,37 +22435,37 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1144"/>
         <source>Add spare terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>予備端子を追加</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1150"/>
         <source>Number of terminals :</source>
-        <translation type="unfinished"></translation>
+        <translation>端子数:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1152"/>
         <source>Number the terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>端子に番号を付ける</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1157"/>
         <source>Prefix :</source>
-        <translation type="unfinished"></translation>
+        <translation>接頭辞:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1162"/>
         <source>First number :</source>
-        <translation type="unfinished"></translation>
+        <translation>最初の番号:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1167"/>
         <source>Same terminal as %1 (type, section, width, color, manufacturer...)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 と同じ端子 (種類、断面積、幅、色、メーカー...)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1169"/>
         <source>the selected terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>選択した端子</translation>
     </message>
 </context>
 <context>
@@ -22498,48 +22514,48 @@ The other fields are not used.</source>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="95"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="209"/>
         <source>Assign free terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>フリー端子を割り当て</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="98"/>
         <source>Add the free terminals to the terminal strips named after their labels (&quot;X1:2&quot; goes to the strip &quot;X1&quot;), creating the strips when needed. Terminals already assigned to a strip are never touched. Asks for confirmation.</source>
-        <translation type="unfinished"></translation>
+        <translation>フリー端子を、そのラベルの名前が付いた端子台に追加します (「X1:2」は端子台「X1」へ)。必要に応じて端子台を作成します。すでに端子台に割り当てられている端子は変更されません。確認を求めます。</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="106"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="208"/>
         <source>Re-group all terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>すべての端子を再グループ化</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="109"/>
         <source>Assign the free terminals and also move every terminal whose label prefix or plant and location no longer match its strip. Existing strips are never re-sorted. Asks for confirmation.</source>
-        <translation type="unfinished"></translation>
+        <translation>フリー端子を割り当て、さらにラベルの接頭辞、または設備と場所が端子台と一致しなくなった端子もすべて移動します。既存の端子台は並べ替えられません。確認を求めます。</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="55"/>
         <source>Opening the terminal block manager...</source>
-        <translation type="unfinished"></translation>
+        <translation>端子台マネージャーを開いています...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="56"/>
         <source>Terminal block manager</source>
-        <translation type="unfinished"></translation>
+        <translation>端子台マネージャー</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="92"/>
         <source>Reading folio %1 of %2...</source>
-        <translation type="unfinished"></translation>
+        <translation>フォリオ %1 / %2 を読み込んでいます...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="202"/>
         <source>Unapplied edits</source>
-        <translation type="unfinished"></translation>
+        <translation>適用されていない変更</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="203"/>
         <source>Apply or discard the pending edits of the free terminals table first.</source>
-        <translation type="unfinished"></translation>
+        <translation>先にフリー端子の表で保留中の変更を適用するか破棄してください。</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="211"/>
@@ -22548,7 +22564,11 @@ The other fields are not used.</source>
 Terminals you placed by hand in a strip whose name does not match their label will be moved too. Existing strips are never re-sorted.
 
 This action can be undone with a single Undo.</source>
-        <translation type="unfinished"></translation>
+        <translation>フリー端子はラベルの名前が付いた端子台に追加され、ラベルの接頭辞、または設備と場所が端子台と一致しなくなった端子はすべて正しい端子台に移動されます。
+
+名前がラベルと一致しない端子台に手作業で置いた端子も移動されます。既存の端子台は並べ替えられません。
+
+この操作は 1 回の「元に戻す」で取り消せます。</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="219"/>
@@ -22557,20 +22577,24 @@ This action can be undone with a single Undo.</source>
 Terminals that already belong to a strip are not touched and no strip is re-sorted.
 
 This action can be undone with a single Undo.</source>
-        <translation type="unfinished"></translation>
+        <translation>各フリー端子は、そのラベルの名前が付いた端子台に追加されます (「X1:2」は端子台「X1」へ)。必要に応じて端子台が作成されます。
+
+すでに端子台に属している端子は変更されず、どの端子台も並べ替えられません。
+
+この操作は 1 回の「元に戻す」で取り消せます。</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="242"/>
         <source>%1 terminal(s) assigned or moved to a terminal strip.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 個の端子を端子台に割り当てまたは移動しました。</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="247"/>
         <source>%1 free terminal(s) added to the terminal strips.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 個のフリー端子を端子台に追加しました。</numerusform>
         </translation>
     </message>
 </context>
@@ -22585,7 +22609,8 @@ This action can be undone with a single Undo.</source>
         <location filename="../sources/TerminalStrip/GraphicsItem/terminalstripitem.cpp" line="183"/>
         <source>%1 : %2
 Double-click to go to the element</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 : %2
+ダブルクリックで要素に移動</translation>
     </message>
 </context>
 <context>
@@ -22713,52 +22738,52 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="546"/>
         <source>Preview style</source>
-        <translation type="unfinished"></translation>
+        <translation>プレビューのスタイル</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="553"/>
         <source>Style of the preview only. The style of a terminal strip plan is chosen when it is added to a folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>プレビューのスタイルのみです。端子台図のスタイルは、フォリオに追加するときに選択します。</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="557"/>
         <source>Schematic</source>
-        <translation type="unfinished"></translation>
+        <translation>回路図記号</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="562"/>
         <source>Realistic (push-in)</source>
-        <translation type="unfinished"></translation>
+        <translation>リアル (スプリング式、プッシュイン)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="567"/>
         <source>Realistic (screw)</source>
-        <translation type="unfinished"></translation>
+        <translation>リアル (ねじ式)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="575"/>
         <source>Scale (px/mm) / length (mm)</source>
-        <translation type="unfinished"></translation>
+        <translation>縮尺 (px/mm) / 長さ (mm)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="582"/>
         <source>Number of pixels for one millimeter of terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>端子 1 mm あたりのピクセル数。</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="601"/>
         <source>Length of a terminal along the wires, in millimeter.</source>
-        <translation type="unfinished"></translation>
+        <translation>電線に沿った端子の長さ (mm)。</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="614"/>
         <source>End stops</source>
-        <translation type="unfinished"></translation>
+        <translation>エンドストップ</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="621"/>
         <source>Group marker</source>
-        <translation type="unfinished"></translation>
+        <translation>グループマーカー</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="687"/>
@@ -22831,7 +22856,7 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="215"/>
         <source>Spare</source>
-        <translation type="unfinished"></translation>
+        <translation>予備</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="468"/>
@@ -22886,22 +22911,22 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="483"/>
         <source>Color</source>
-        <translation type="unfinished">色</translation>
+        <translation>色</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="484"/>
         <source>Section (mm²)</source>
-        <translation type="unfinished"></translation>
+        <translation>断面積 (mm²)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="485"/>
         <source>Width (mm)</source>
-        <translation type="unfinished"></translation>
+        <translation>幅 (mm)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="486"/>
         <source>Separator plate after</source>
-        <translation type="unfinished"></translation>
+        <translation>後ろにセパレーター板</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="475"/>
@@ -22914,20 +22939,20 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="984"/>
         <source>%1 mm</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1032"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1043"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1076"/>
         <source>None (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>なし (既定)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1035"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1133"/>
         <source>%1 mm²</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm²</translation>
     </message>
 </context>
 <context>
@@ -24284,7 +24309,14 @@ The following variables can be used:
 %M: the installation
 %LM: the location
 %T: the sheet title</source>
-        <translation type="unfinished"></translation>
+        <translation>次の変数を使って独自のテキストを作成します:
+%f: フォリオ番号
+%F: フォリオのラベル
+%l: 行番号
+%c: 列番号
+%M: 設備
+%LM: 場所
+%T: フォリオのタイトル</translation>
     </message>
     <message>
         <source>Create your own text using the following variables:

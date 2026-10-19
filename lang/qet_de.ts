@@ -458,27 +458,27 @@
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="30"/>
         <source>Drawing style :</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeichenstil:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="37"/>
         <source>How the terminals are drawn. The realistic styles draw the strip at scale, seen from above, with the real width of each terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wie die Klemmen gezeichnet werden. Die realistischen Stile zeichnen die Klemmleiste maßstäblich, von oben gesehen, mit der tatsächlichen Breite jeder Klemme.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="41"/>
         <source>Schematic</source>
-        <translation type="unfinished"></translation>
+        <translation>Schematisch</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="46"/>
         <source>Realistic (push-in)</source>
-        <translation type="unfinished"></translation>
+        <translation>Realistisch (Federzug, Push-in)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="51"/>
         <source>Realistic (screw)</source>
-        <translation type="unfinished"></translation>
+        <translation>Realistisch (Schraubklemme)</translation>
     </message>
 </context>
 <context>
@@ -4628,7 +4628,7 @@ Der angezeigte Name des Elements lässt sich separat in den Eigenschaften des El
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="330"/>
         <source>Function separation</source>
-        <translation type="unfinished"></translation>
+        <translation>Funktionstrennung</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="334"/>
@@ -4944,22 +4944,22 @@ Fortfahren?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="258"/>
         <source>Function separation</source>
-        <translation type="unfinished"></translation>
+        <translation>Funktionstrennung</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="265"/>
         <source>Section (mm²)</source>
-        <translation type="unfinished"></translation>
+        <translation>Querschnitt (mm²)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="282"/>
         <source>Width / manufacturer</source>
-        <translation type="unfinished"></translation>
+        <translation>Breite / Hersteller</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="299"/>
         <source>Color</source>
-        <translation type="unfinished">Farbe</translation>
+        <translation>Farbe</translation>
     </message>
     <message>
         <source>Potential separation</source>
@@ -5155,27 +5155,27 @@ Fortfahren?</translation>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="576"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="638"/>
         <source>None (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine (Standard)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="529"/>
         <source>%1 mm²</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm²</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="532"/>
         <source> mm²</source>
-        <translation type="unfinished"></translation>
+        <translation> mm²</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="545"/>
         <source>All manufacturers</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Hersteller</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="615"/>
         <source>%1 mm</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="855"/>
@@ -6562,12 +6562,12 @@ Mit dem Import dieser Datei bestätigen Sie, dass:
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="243"/>
         <source>SVG: smaller pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG: kleinere Bilder</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="244"/>
         <source>Pictures are stored at four times the size they have on the folio instead of their full resolution: a much smaller file, still sharp when printed</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilder werden in vierfacher Größe ihrer Darstellung auf der Seite statt in voller Auflösung gespeichert: eine viel kleinere Datei, die beim Drucken trotzdem scharf bleibt</translation>
     </message>
 </context>
 <context>
@@ -7168,12 +7168,12 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="343"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Eine kleine versteckte Datei neben dem Projekt zeigt an, wer es geöffnet hat. Wer es danach öffnet, wird darauf hingewiesen und kann es schreibgeschützt öffnen. Schalten Sie dies aus, wenn Ihr Netzlaufwerk damit nicht zurechtkommt.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="346"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
-        <translation type="unfinished"></translation>
+        <translation>Anderen mitteilen, wer ein Projekt geöffnet hat (Sperrdatei neben dem Projekt)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="360"/>
@@ -7198,18 +7198,18 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
         <source>Previous versions kept when saving a project</source>
-        <translation type="unfinished"></translation>
+        <translation>Frühere Versionen, die beim Speichern eines Projekts aufbewahrt werden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bevor ein Projekt gespeichert wird, wird die Datei in ihrem bisherigen Zustand in einen Ordner daneben kopiert, der nach dem Projekt mit „-backups“ benannt ist. Nur die neuesten werden aufbewahrt.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="455"/>
@@ -7461,7 +7461,7 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1261"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewegung mit der Tastatur mit der Strg-Taste: 1 - 9</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1347"/>
@@ -7711,7 +7711,7 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="628"/>
         <source>Chinese (Traditional)</source>
-        <translation type="unfinished"></translation>
+        <translation>Chinesisch (traditionell)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="629"/>
@@ -9721,54 +9721,54 @@ Möchten Sie diesen Slave-Kontakt trotzdem verbinden?</translation>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="450"/>
         <source>Exclude from the bill of materials</source>
-        <translation type="unfinished">Aus Materialliste ausschließen</translation>
+        <translation>Von der Materialliste ausschließen</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="451"/>
         <source>Function separation</source>
-        <translation type="unfinished"></translation>
+        <translation>Funktionstrennung</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="452"/>
         <source>Exclude from automatic numbering</source>
-        <translation type="unfinished">Sperre der automatischen Nummerierung</translation>
+        <translation>Von der automatischen Nummerierung ausschließen</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="462"/>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="503"/>
         <source>Restore the values the elements had</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Werte wiederherstellen, die die Bauteile hatten</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="499"/>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="771"/>
         <source>Delete this text</source>
-        <translation type="unfinished">Diesen Text löschen</translation>
+        <translation>Diesen Text löschen</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="509"/>
         <source>Decimal number with a dot as separator (e.g. 80.5)</source>
-        <translation type="unfinished">Dezimalzahl mit einem Punkt als Trennzeichen (z. B. 80.5)</translation>
+        <translation>Dezimalzahl mit einem Punkt als Trennzeichen (z. B. 80.5)</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="617"/>
         <source>Elements edited: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Geänderte Bauteile: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="620"/>
         <source>Other selected items, left unchanged: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Weitere ausgewählte Objekte, unverändert gelassen: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="773"/>
         <source>Multiple values</source>
-        <translation type="unfinished"></translation>
+        <translation>Mehrere Werte</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.h" line="62"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Informationen</translation>
     </message>
 </context>
 <context>
@@ -11495,7 +11495,7 @@ Do you want to save changes?</source>
         <location filename="../sources/projectview.cpp" line="345"/>
         <source>Zipped project QElectroTech (*.qetz)</source>
         <comment>filetypes allowed when saving a project file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Komprimiertes QElectroTech-Projekt (*.qetz)</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="352"/>
@@ -11507,12 +11507,12 @@ Do you want to save changes?</source>
         <location filename="../sources/projectview.cpp" line="412"/>
         <source>Project in use</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projekt in Benutzung</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="413"/>
         <source>%1 is open by %2 on %3. Choose another file name, or save again once it has been closed there.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ist von %2 auf %3 geöffnet. Wählen Sie einen anderen Dateinamen, oder speichern Sie erneut, sobald es dort geschlossen wurde.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="448"/>
@@ -11530,30 +11530,32 @@ Do you want to save changes?</source>
         <location filename="../sources/projectview.cpp" line="773"/>
         <source>Save a copy for an older QElectroTech</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Eine Kopie für ein älteres QElectroTech speichern</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="800"/>
         <source>File changed on disk</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Datei auf dem Datenträger geändert</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="801"/>
         <source>Someone else changed %1 on disk at %2 since you opened it.
 
 Saving over it would lose their changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jemand anderes hat %1 um %2 auf dem Datenträger geändert, seit Sie es geöffnet haben.
+
+Wenn Sie darüber speichern, gehen seine Änderungen verloren.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="805"/>
         <source>Save as a copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Als Kopie speichern</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="806"/>
         <source>Overwrite</source>
-        <translation type="unfinished"></translation>
+        <translation>Überschreiben</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="869"/>
@@ -12997,13 +12999,13 @@ Halten Sie während des Verschiebens die Strg-Taste gedrückt, um die Texte frei
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1015"/>
         <source>Save a copy for an older QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Eine Kopie für ein älteres QElectroTech speichern</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1029"/>
         <source>Writes a copy of the current project as a .qet file, which versions of QElectroTech that cannot open a .qetz open</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Schreibt eine Kopie des aktuellen Projekts als .qet-Datei, die von QElectroTech-Versionen geöffnet werden kann, die keine .qetz öffnen können</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1080"/>
@@ -13356,51 +13358,51 @@ Halten Sie während des Verschiebens die Strg-Taste gedrückt, um die Texte frei
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1869"/>
         <source>XML Files (*.xml);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>XML-Dateien (*.xml);;Alle Dateien (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1925"/>
         <source>%1 is being opened by another session of QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 wird von einer anderen QElectroTech-Sitzung geöffnet.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1928"/>
         <source>%1 is open by %2 on %3 since %4</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ist von %2 auf %3 geöffnet, seit %4</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1934"/>
         <source> (active just now).</source>
-        <translation type="unfinished"></translation>
+        <translation> (gerade eben aktiv).</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="1935"/>
         <source> (active %n minute(s) ago).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> (vor %n Minute aktiv).</numerusform>
+            <numerusform> (vor %n Minuten aktiv).</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1941"/>
         <source>Project in use</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projekt in Benutzung</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1942"/>
         <source>Open it read-only to look at it without changing it. Open it anyway only if you know that session is not using it any more: both of you could then save over each other.</source>
-        <translation type="unfinished"></translation>
+        <translation>Öffnen Sie es schreibgeschützt, um es anzusehen, ohne es zu ändern. Öffnen Sie es trotzdem nur, wenn Sie wissen, dass diese Sitzung es nicht mehr verwendet: sonst könnten Sie sich gegenseitig die Änderungen überschreiben.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1945"/>
         <source>Open read-only</source>
-        <translation type="unfinished"></translation>
+        <translation>Schreibgeschützt öffnen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1946"/>
         <source>Open anyway</source>
-        <translation type="unfinished"></translation>
+        <translation>Trotzdem öffnen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1972"/>
@@ -13408,75 +13410,77 @@ Halten Sie während des Verschiebens die Strg-Taste gedrückt, um die Texte frei
         <location filename="../sources/qetdiagrameditor.cpp" line="2011"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2054"/>
         <source>Cannot open %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 kann nicht geöffnet werden</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1974"/>
         <source>The file %1 cannot be read as a QElectroTech project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Datei %1 kann nicht als QElectroTech-Projekt gelesen werden.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1975"/>
         <source>The project file is damaged:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Projektdatei ist beschädigt:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1980"/>
         <source>Open the version saved %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Die am %1 gespeicherte Version öffnen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1985"/>
         <source>Recover what can be read</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiederherstellen, was gelesen werden kann</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1987"/>
         <source>Either opens as a new project, &quot;%1&quot;; %2 is left as it is.</source>
-        <translation type="unfinished"></translation>
+        <translation>In beiden Fällen wird es als neues Projekt „%1“ geöffnet; %2 bleibt unverändert.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2001"/>
         <source>Nothing can be recovered from it:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Daraus kann nichts wiederhergestellt werden:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2015"/>
         <source>Project recovered</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt wiederhergestellt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2016"/>
         <source>What could be read of %1 is open as a new project. Some parts could not be read and were left out: see the details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Was von %1 gelesen werden konnte, ist als neues Projekt geöffnet. Einige Teile konnten nicht gelesen werden und wurden weggelassen: siehe Details.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2036"/>
         <source>%1 (recovered)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (wiederhergestellt)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2039"/>
         <source>%1 (recovered %2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (wiederhergestellt %2)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2223"/>
         <source>%1 on %2 has taken over %3. Save your changes with Save As to keep them.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 auf %2 hat %3 übernommen. Speichern Sie Ihre Änderungen mit „Speichern unter“, um sie zu behalten.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2238"/>
         <source>This project was saved by a later version of QElectroTech. It is opened read-only, so that saving it cannot lose what this version does not know. Use Save As to keep a copy in this version&apos;s format.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Projekt wurde mit einer neueren Version von QElectroTech gespeichert. Es wird schreibgeschützt geöffnet, damit beim Speichern nichts verloren geht, was diese Version nicht kennt. Verwenden Sie „Speichern unter“, um eine Kopie im Format dieser Version zu behalten.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2297"/>
         <source>Elements not loaded</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bauteile nicht geladen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2298"/>
@@ -13484,9 +13488,13 @@ Halten Sie während des Verschiebens die Strg-Taste gedrückt, um die Texte frei
 
 They are not shown, but they are kept in the file as they are, with their conductors, and come back once their definition is available again.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n Bauteil konnte nicht geladen werden: seine Definition fehlt im Projekt und in den Sammlungen.
+
+Es wird nicht angezeigt, bleibt aber unverändert in der Datei erhalten, mit seinen Leitern, und erscheint wieder, sobald seine Definition wieder verfügbar ist.</numerusform>
+            <numerusform>%n Bauteile konnten nicht geladen werden: ihre Definition fehlt im Projekt und in den Sammlungen.
+
+Sie werden nicht angezeigt, bleiben aber unverändert in der Datei erhalten, mit ihren Leitern, und erscheinen wieder, sobald ihre Definition wieder verfügbar ist.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -13495,9 +13503,13 @@ They are not shown, but they are kept in the file as they are, with their conduc
 
 They are not shown, but they are kept in the file as they are, and join their terminals again once the definition has them where they were.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n Leiter konnte nicht mit seinen Klemmen verbunden werden und wurde nicht geladen. Die Definition des Bauteils fehlt oder wurde durch eine andere mit anderen Klemmen ersetzt.
+
+Er wird nicht angezeigt, bleibt aber unverändert in der Datei erhalten und wird wieder mit seinen Klemmen verbunden, sobald die Definition sie wieder dort hat, wo sie waren.</numerusform>
+            <numerusform>%n Leiter konnten nicht mit ihren Klemmen verbunden werden und wurden nicht geladen. Die Definition des Bauteils fehlt oder wurde durch eine andere mit anderen Klemmen ersetzt.
+
+Sie werden nicht angezeigt, bleiben aber unverändert in der Datei erhalten und werden wieder mit ihren Klemmen verbunden, sobald die Definition sie wieder dort hat, wo sie waren.</numerusform>
         </translation>
     </message>
     <message>
@@ -13544,7 +13556,7 @@ Sie können die Kabel auch später automatisch nummerieren: Die Regel lässt sic
         <location filename="../sources/qetdiagrameditor.cpp" line="3271"/>
         <source>Edit the information of the elements</source>
         <comment>edit several elements</comment>
-        <translation type="unfinished"></translation>
+        <translation>Die Informationen der Bauteile bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3302"/>
@@ -14268,12 +14280,12 @@ Um daraus ein Skript zu machen, bitten Sie Ihren KI-Assistenten: Die Schaltfläc
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="401"/>
         <source>Zoom content</source>
-        <translation type="unfinished">Auf Inhalt einpassen</translation>
+        <translation>Auf Inhalt einpassen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="404"/>
         <source>Adjusts the zoom to display the whole symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Passt den Zoom an, damit das ganze Symbol sichtbar ist</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="420"/>
@@ -15160,22 +15172,22 @@ Die erforderlichen Bedingungen wurden nicht erfüllt</translation>
     <message>
         <location filename="../sources/qetproject.cpp" line="2738"/>
         <source>QElectroTech project (*.qet *.qetz)</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech-Projekt (*.qet *.qetz)</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2869"/>
         <source>%1 was opened read-only because someone else has it open. Use Save As to keep your changes in another file.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 wurde schreibgeschützt geöffnet, weil es jemand anderes geöffnet hat. Verwenden Sie „Speichern unter“, um Ihre Änderungen in einer anderen Datei zu behalten.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2874"/>
         <source>Cannot save %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 kann nicht gespeichert werden: %2</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2894"/>
         <source>someone else changed the file on disk at %1 since it was opened, and saving would overwrite that. Save to another name, or set QET_OVERWRITE_CHANGED=1 to overwrite it.</source>
-        <translation type="unfinished"></translation>
+        <translation>jemand anderes hat die Datei um %1 auf dem Datenträger geändert, seit sie geöffnet wurde, und Speichern würde dies überschreiben. Speichern Sie unter einem anderen Namen, oder setzen Sie QET_OVERWRITE_CHANGED=1, um sie zu überschreiben.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="3087"/>
@@ -16261,7 +16273,7 @@ Was möchten Sie tun?</translation>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="132"/>
         <source>Change the information of the element</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Informationen des Bauteils ändern</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="92"/>
@@ -17534,23 +17546,23 @@ Bitte laden Sie diese über den Link herunter und entpacken Sie sie in den Insta
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="258"/>
         <source>Add %n spare terminals</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n Reserveklemme hinzufügen</numerusform>
+            <numerusform>%n Reserveklemmen hinzufügen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="259"/>
         <source>Add %n spare terminals to terminal group %1</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n Reserveklemme zur Klemmengruppe %1 hinzufügen</numerusform>
+            <numerusform>%n Reserveklemmen zur Klemmengruppe %1 hinzufügen</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="297"/>
         <source>Modify the spare terminal %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Reserveklemme %1 ändern</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/alignselectioncommand.cpp" line="144"/>
@@ -18788,7 +18800,15 @@ Create your own text using the following variables:
 %T: the sheet title
 %l: the row number
 %c: the column number</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie können eine eigene Bezeichnung für Seitenverweise festlegen.
+Erstellen Sie Ihren eigenen Text mit den folgenden Variablen:
+%f: die Position der Seite im Projekt
+%F: die Seitennummer
+%M: die Anlage
+%LM: der Ort
+%T: der Seitentitel
+%l: die Zeilennummer
+%c: die Spaltennummer</translation>
     </message>
     <message>
         <source>You can define a custom label for sheet references.
@@ -22243,7 +22263,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="91"/>
         <source>No effect unless &quot;Function separation&quot; is checked (all terminals of the block then stay connected). When it is checked, terminals sharing the same value stay connected to each other and the others are isolated.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Wirkung, außer wenn „Funktionstrennung“ aktiviert ist (alle Klemmen des Blocks bleiben dann verbunden). Ist sie aktiviert, bleiben Klemmen mit demselben Wert untereinander verbunden und die anderen werden getrennt.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="98"/>
@@ -22374,12 +22394,12 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="243"/>
         <source>Re-group all terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Klemmen neu gruppieren</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="245"/>
         <source>Assign free terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Freie Klemmen zuordnen</translation>
     </message>
 </context>
 <context>
@@ -22561,22 +22581,22 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="204"/>
         <source>Manufacturer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Hersteller:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="211"/>
         <source>Manufacturer of the terminals proposed in the Width column</source>
-        <translation type="unfinished"></translation>
+        <translation>Hersteller der in der Spalte Breite vorgeschlagenen Klemmen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="218"/>
         <source>Add spare terminals, on no folio, after the selected terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Reserveklemmen hinzufügen, auf keiner Seite, nach der ausgewählten Klemme</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="221"/>
         <source>Add spare terminals...</source>
-        <translation type="unfinished"></translation>
+        <translation>Reserveklemmen hinzufügen...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="251"/>
@@ -22631,7 +22651,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="69"/>
         <source>All manufacturers</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Hersteller</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="142"/>
@@ -22646,37 +22666,37 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1144"/>
         <source>Add spare terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Reserveklemmen hinzufügen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1150"/>
         <source>Number of terminals :</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl der Klemmen:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1152"/>
         <source>Number the terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Klemmen nummerieren</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1157"/>
         <source>Prefix :</source>
-        <translation type="unfinished"></translation>
+        <translation>Präfix:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1162"/>
         <source>First number :</source>
-        <translation type="unfinished"></translation>
+        <translation>Erste Nummer:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1167"/>
         <source>Same terminal as %1 (type, section, width, color, manufacturer...)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gleiche Klemme wie %1 (Typ, Querschnitt, Breite, Farbe, Hersteller...)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1169"/>
         <source>the selected terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>die ausgewählte Klemme</translation>
     </message>
 </context>
 <context>
@@ -22725,48 +22745,48 @@ Andere Felder werden nicht verwendet.</translation>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="95"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="209"/>
         <source>Assign free terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Freie Klemmen zuordnen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="98"/>
         <source>Add the free terminals to the terminal strips named after their labels (&quot;X1:2&quot; goes to the strip &quot;X1&quot;), creating the strips when needed. Terminals already assigned to a strip are never touched. Asks for confirmation.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fügt die freien Klemmen den Klemmleisten hinzu, die nach ihrer Bezeichnung benannt sind („X1:2“ kommt in die Klemmleiste „X1“), und legt die Klemmleisten bei Bedarf an. Klemmen, die bereits einer Klemmleiste zugeordnet sind, werden nie verändert. Fragt nach Bestätigung.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="106"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="208"/>
         <source>Re-group all terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Klemmen neu gruppieren</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="109"/>
         <source>Assign the free terminals and also move every terminal whose label prefix or plant and location no longer match its strip. Existing strips are never re-sorted. Asks for confirmation.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordnet die freien Klemmen zu und verschiebt außerdem jede Klemme, deren Bezeichnungspräfix oder Anlage und Ort nicht mehr zu ihrer Klemmleiste passen. Bestehende Klemmleisten werden nie neu sortiert. Fragt nach Bestätigung.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="55"/>
         <source>Opening the terminal block manager...</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmleisten-Manager wird geöffnet...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="56"/>
         <source>Terminal block manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmleisten-Manager</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="92"/>
         <source>Reading folio %1 of %2...</source>
-        <translation type="unfinished"></translation>
+        <translation>Seite %1 von %2 wird gelesen...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="202"/>
         <source>Unapplied edits</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht übernommene Änderungen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="203"/>
         <source>Apply or discard the pending edits of the free terminals table first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Übernehmen oder verwerfen Sie zuerst die ausstehenden Änderungen der Tabelle der freien Klemmen.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="211"/>
@@ -22775,7 +22795,11 @@ Andere Felder werden nicht verwendet.</translation>
 Terminals you placed by hand in a strip whose name does not match their label will be moved too. Existing strips are never re-sorted.
 
 This action can be undone with a single Undo.</source>
-        <translation type="unfinished"></translation>
+        <translation>Freie Klemmen werden den Klemmleisten hinzugefügt, die nach ihrer Bezeichnung benannt sind, und jede Klemme, deren Bezeichnungspräfix oder Anlage und Ort nicht mehr zu ihrer Klemmleiste passen, wird in die richtige Klemmleiste verschoben.
+
+Klemmen, die Sie von Hand in eine Klemmleiste gesetzt haben, deren Name nicht zu ihrer Bezeichnung passt, werden ebenfalls verschoben. Bestehende Klemmleisten werden nie neu sortiert.
+
+Diese Aktion kann mit einem einzigen Rückgängig zurückgenommen werden.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="219"/>
@@ -22784,22 +22808,26 @@ This action can be undone with a single Undo.</source>
 Terminals that already belong to a strip are not touched and no strip is re-sorted.
 
 This action can be undone with a single Undo.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jede freie Klemme wird der Klemmleiste hinzugefügt, die nach ihrer Bezeichnung benannt ist („X1:2“ kommt in die Klemmleiste „X1“), wobei die Klemmleisten bei Bedarf angelegt werden.
+
+Klemmen, die bereits zu einer Klemmleiste gehören, werden nicht verändert, und keine Klemmleiste wird neu sortiert.
+
+Diese Aktion kann mit einem einzigen Rückgängig zurückgenommen werden.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="242"/>
         <source>%1 terminal(s) assigned or moved to a terminal strip.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 Klemme einer Klemmleiste zugeordnet oder dorthin verschoben.</numerusform>
+            <numerusform>%1 Klemmen Klemmleisten zugeordnet oder dorthin verschoben.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="247"/>
         <source>%1 free terminal(s) added to the terminal strips.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 freie Klemme den Klemmleisten hinzugefügt.</numerusform>
+            <numerusform>%1 freie Klemmen den Klemmleisten hinzugefügt.</numerusform>
         </translation>
     </message>
 </context>
@@ -22814,7 +22842,8 @@ This action can be undone with a single Undo.</source>
         <location filename="../sources/TerminalStrip/GraphicsItem/terminalstripitem.cpp" line="183"/>
         <source>%1 : %2
 Double-click to go to the element</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 : %2
+Doppelklick, um zum Bauteil zu gehen</translation>
     </message>
 </context>
 <context>
@@ -22942,52 +22971,52 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="546"/>
         <source>Preview style</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorschaustil</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="553"/>
         <source>Style of the preview only. The style of a terminal strip plan is chosen when it is added to a folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nur der Stil der Vorschau. Der Stil eines Klemmenplans wird gewählt, wenn er einer Seite hinzugefügt wird.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="557"/>
         <source>Schematic</source>
-        <translation type="unfinished"></translation>
+        <translation>Schematisch</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="562"/>
         <source>Realistic (push-in)</source>
-        <translation type="unfinished"></translation>
+        <translation>Realistisch (Federzug, Push-in)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="567"/>
         <source>Realistic (screw)</source>
-        <translation type="unfinished"></translation>
+        <translation>Realistisch (Schraubklemme)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="575"/>
         <source>Scale (px/mm) / length (mm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Maßstab (px/mm) / Länge (mm)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="582"/>
         <source>Number of pixels for one millimeter of terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl der Pixel für einen Millimeter Klemme.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="601"/>
         <source>Length of a terminal along the wires, in millimeter.</source>
-        <translation type="unfinished"></translation>
+        <translation>Länge einer Klemme entlang der Drähte, in Millimetern.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="614"/>
         <source>End stops</source>
-        <translation type="unfinished"></translation>
+        <translation>Endhalter</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="621"/>
         <source>Group marker</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppenmarkierung</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="687"/>
@@ -23060,7 +23089,7 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="215"/>
         <source>Spare</source>
-        <translation type="unfinished"></translation>
+        <translation>Reserve</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="468"/>
@@ -23115,22 +23144,22 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="483"/>
         <source>Color</source>
-        <translation type="unfinished">Farbe</translation>
+        <translation>Farbe</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="484"/>
         <source>Section (mm²)</source>
-        <translation type="unfinished"></translation>
+        <translation>Querschnitt (mm²)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="485"/>
         <source>Width (mm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Breite (mm)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="486"/>
         <source>Separator plate after</source>
-        <translation type="unfinished"></translation>
+        <translation>Trennplatte danach</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="475"/>
@@ -23143,20 +23172,20 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="984"/>
         <source>%1 mm</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1032"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1043"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1076"/>
         <source>None (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine (Standard)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1035"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1133"/>
         <source>%1 mm²</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm²</translation>
     </message>
 </context>
 <context>
@@ -24515,7 +24544,14 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
 %M: the installation
 %LM: the location
 %T: the sheet title</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstellen Sie Ihren eigenen Text mit den folgenden Variablen:
+%f: die Seitennummer
+%F: die Seitenbezeichnung
+%l: die Zeilennummer
+%c: die Spaltennummer
+%M: die Anlage
+%LM: der Ort
+%T: der Seitentitel</translation>
     </message>
     <message>
         <source>Create your own text using the following variables:

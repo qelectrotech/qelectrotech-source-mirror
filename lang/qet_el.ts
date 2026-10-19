@@ -46,7 +46,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="508"/>
         <source>Licenses</source>
-        <translation type="unfinished"></translation>
+        <translation>Άδειες χρήσης</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="532"/>
@@ -204,37 +204,37 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="131"/>
         <source>Serbian Translation</source>
-        <translation type="unfinished"></translation>
+        <translation>Σερβική μετάφραση</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="132"/>
         <source>Ukrainian translation</source>
-        <translation type="unfinished"></translation>
+        <translation>Ουκρανική μετάφραση</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="133"/>
         <source>Norwegian Translation</source>
-        <translation type="unfinished"></translation>
+        <translation>Νορβηγική μετάφραση</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
         <source>Japanese translation</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιαπωνική μετάφραση</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="135"/>
         <source>Translation into Korean</source>
-        <translation type="unfinished"></translation>
+        <translation>Κορεατική μετάφραση</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="136"/>
         <source>Mongolian Translation</source>
-        <translation type="unfinished"></translation>
+        <translation>Μογγολική μετάφραση</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="137"/>
         <source>Slovenian translation</source>
-        <translation type="unfinished"></translation>
+        <translation>Σλοβενική μετάφραση</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="145"/>
@@ -304,25 +304,25 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="178"/>
         <source>Elements  resizer</source>
         <comment>Element scaler</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή μεγέθους στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="180"/>
         <source>Lambda element generator</source>
         <comment>Lambda element generator</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γεννήτρια στοιχείων Lambda</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="182"/>
         <source>DXF Element Converter</source>
         <comment>Dxf2elmt</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μετατροπέας στοιχείων DXF</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="184"/>
         <source>Elements translation tool</source>
         <comment>Qet_translate</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εργαλείο μετάφρασης στοιχείων</translation>
     </message>
 </context>
 <context>
@@ -448,37 +448,37 @@
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Διάλογος</translation>
+        <translation>Διάλογος</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="20"/>
         <source>Add the following terminal plan :</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη του ακόλουθου σχεδίου ακροδεκτών :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="30"/>
         <source>Drawing style :</source>
-        <translation type="unfinished"></translation>
+        <translation>Στυλ σχεδίασης:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="37"/>
         <source>How the terminals are drawn. The realistic styles draw the strip at scale, seen from above, with the real width of each terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο τρόπος σχεδίασης των ακροδεκτών. Τα ρεαλιστικά στυλ σχεδιάζουν τη σειρά ακροδεκτών υπό κλίμακα, σε κάτοψη, με το πραγματικό πλάτος κάθε ακροδέκτη.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="41"/>
         <source>Schematic</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχηματικό</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="46"/>
         <source>Realistic (push-in)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρεαλιστικό (ελατηρίου, push-in)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="51"/>
         <source>Realistic (screw)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρεαλιστικό (βιδωτό)</translation>
     </message>
 </context>
 <context>
@@ -486,127 +486,127 @@
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="47"/>
         <source>Connect an AI assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνδεση βοηθού τεχνητής νοημοσύνης</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="62"/>
         <source>An AI assistant (Claude, GitHub Copilot, Gemini…) can open, check and edit your diagrams through QElectroTech&apos;s MCP server, which runs on this computer. Copy the text below into your assistant&apos;s configuration. &lt;a href=&quot;%1&quot;&gt;Detailed guide&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ένας βοηθός τεχνητής νοημοσύνης (Claude, GitHub Copilot, Gemini…) μπορεί να ανοίγει, να ελέγχει και να επεξεργάζεται τα σχέδιά σας μέσω του διακομιστή MCP του QElectroTech, που εκτελείται σε αυτόν τον υπολογιστή. Αντιγράψτε το παρακάτω κείμενο στις ρυθμίσεις του βοηθού σας. &lt;a href=&quot;%1&quot;&gt;Αναλυτικός οδηγός&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="73"/>
         <source>&lt;b&gt;The MCP server is not installed with this version of QElectroTech.&lt;/b&gt; The guide explains how to get it.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Ο διακομιστής MCP δεν εγκαθίσταται με αυτή την έκδοση του QElectroTech.&lt;/b&gt; Ο οδηγός εξηγεί πώς να τον αποκτήσετε.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="84"/>
         <source>&lt;b&gt;Python may not be installed.&lt;/b&gt; Only the Microsoft Store “python” shortcut was found: without Python, it opens the Store instead of starting the server.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Η Python ίσως δεν είναι εγκατεστημένη.&lt;/b&gt; Βρέθηκε μόνο η συντόμευση «python» του Microsoft Store: χωρίς Python, ανοίγει το Store αντί να εκκινήσει τον διακομιστή.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="88"/>
         <source>&lt;b&gt;Python was not found on this computer&lt;/b&gt; (command “%1”). The server needs it.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Η Python δεν βρέθηκε σε αυτόν τον υπολογιστή&lt;/b&gt; (εντολή «%1»). Ο διακομιστής τη χρειάζεται.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="91"/>
         <source>Run the QElectroTech installer again and tick “Python for the AI assistant”, or install Python from python.org.</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκτελέστε ξανά το πρόγραμμα εγκατάστασης του QElectroTech και επιλέξτε «Python για τον βοηθό τεχνητής νοημοσύνης», ή εγκαταστήστε την Python από το python.org.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="95"/>
         <source>Install Python 3 with your system&apos;s package manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Εγκαταστήστε την Python 3 με τον διαχειριστή πακέτων του συστήματός σας.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="111"/>
         <source>Assistant:</source>
-        <translation type="unfinished"></translation>
+        <translation>Βοηθός:</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="115"/>
         <source>Your diagrams folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο φάκελος των σχεδίων σας</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="116"/>
         <source>Browse…</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση…</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="119"/>
         <source>Folder it can use:</source>
-        <translation type="unfinished"></translation>
+        <translation>Φάκελος που μπορεί να χρησιμοποιήσει:</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="121"/>
         <source>Allow the assistant to edit diagrams</source>
-        <translation type="unfinished"></translation>
+        <translation>Να επιτρέπεται στον βοηθό η επεξεργασία των σχεδίων</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="126"/>
         <source>The assistant can only read and write in this folder. Without editing allowed, it can only read, compare and export. An assistant reads the text in projects (labels, notes…): text written as an instruction can influence it. Leave editing off for diagrams you received from other people.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο βοηθός μπορεί να διαβάζει και να γράφει μόνο σε αυτόν τον φάκελο. Χωρίς άδεια επεξεργασίας, μπορεί μόνο να διαβάζει, να συγκρίνει και να εξάγει. Ο βοηθός διαβάζει το κείμενο των έργων (ετικέτες, σημειώσεις…): κείμενο γραμμένο ως οδηγία μπορεί να τον επηρεάσει. Αφήστε την επεξεργασία απενεργοποιημένη για σχέδια που λάβατε από άλλους.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="147"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγραφή</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="167"/>
         <source>If the file already lists other servers, add only the “qet” entry.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αν το αρχείο περιέχει ήδη άλλους διακομιστές, προσθέστε μόνο την καταχώριση «qet».</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="176"/>
         <source>Choose your diagrams folder first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε πρώτα τον φάκελο των σχεδίων σας.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="185"/>
         <source>Folder the assistant can use</source>
-        <translation type="unfinished"></translation>
+        <translation>Φάκελος που μπορεί να χρησιμοποιήσει ο βοηθός</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="193"/>
         <source>Copied</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγράφηκε</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="200"/>
         <source>In Claude Desktop: Settings → Developer → Edit Config. Then quit and restart Claude.</source>
-        <translation type="unfinished"></translation>
+        <translation>Στο Claude Desktop: Settings → Developer → Edit Config. Στη συνέχεια κλείστε και επανεκκινήστε το Claude.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="203"/>
         <source>Save it as .mcp.json in your diagrams folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθηκεύστε το ως .mcp.json στον φάκελο των σχεδίων σας.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="205"/>
         <source>Save it as .vscode/mcp.json in the folder open in VS Code. Copilot uses the tools in agent mode.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθηκεύστε το ως .vscode/mcp.json στον φάκελο που είναι ανοιχτός στο VS Code. Το Copilot χρησιμοποιεί τα εργαλεία σε λειτουργία agent.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="208"/>
         <source>Add it to the .cursor/mcp.json file in your home folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθέστε το στο αρχείο .cursor/mcp.json στον προσωπικό σας φάκελο.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="210"/>
         <source>Add it to the .gemini/settings.json file in your home folder. Gemini CLI asks you to trust the folder the first time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθέστε το στο αρχείο .gemini/settings.json στον προσωπικό σας φάκελο. Το Gemini CLI σας ζητά να εμπιστευτείτε τον φάκελο την πρώτη φορά.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="213"/>
         <source>Add it to the .codex/config.toml file in your home folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθέστε το στο αρχείο .codex/config.toml στον προσωπικό σας φάκελο.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="215"/>
         <source>In LM Studio: Program tab → Install → Edit mcp.json.</source>
-        <translation type="unfinished"></translation>
+        <translation>Στο LM Studio: καρτέλα Program → Install → Edit mcp.json.</translation>
     </message>
 </context>
 <context>
@@ -652,17 +652,17 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="175"/>
         <source>Change the start angle of an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή της αρχικής γωνίας ενός τόξου</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="200"/>
         <source>Change the angle of an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή της γωνίας ενός τόξου</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="243"/>
         <source>Change an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή ενός τόξου</translation>
     </message>
 </context>
 <context>
@@ -670,32 +670,32 @@
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="86"/>
         <source>The numbering name cannot be empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το όνομα της αρίθμησης δεν μπορεί να είναι κενό.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="90"/>
         <source>A numbering named “%1” already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>Υπάρχει ήδη αρίθμηση με όνομα «%1».</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="137"/>
         <source>Create numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία αρίθμησης %1</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="187"/>
         <source>Rename numbering %1 to %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετονομασία αρίθμησης %1 σε %2</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="190"/>
         <source>Modify numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Τροποποίηση αρίθμησης %1</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="213"/>
         <source>Delete numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή αρίθμησης %1</translation>
     </message>
 </context>
 <context>
@@ -708,45 +708,45 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="21"/>
         <source>Value</source>
-        <translation type="unfinished">Τιμή</translation>
+        <translation>Τιμή</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="31"/>
         <source>Increment</source>
-        <translation type="unfinished"></translation>
+        <translation>Βήμα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
         <source>Next</source>
-        <translation type="unfinished">Επόμενο</translation>
+        <translation>Επόμενο</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="70"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="157"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="233"/>
         <source>Reset to the default value</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφορά στην προεπιλεγμένη τιμή</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="89"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="176"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="252"/>
         <source>Current meter reading. Enter a new value and press ‘Confirm’ to change it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Τρέχουσα τιμή του μετρητή. Εισαγάγετε νέα τιμή και πατήστε «Επιβεβαίωση» για να την αλλάξετε.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="102"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="189"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="265"/>
         <source>Increment: the value added to the counter each time a new number is dialled</source>
-        <translation type="unfinished"></translation>
+        <translation>Βήμα: η τιμή που προστίθεται στον μετρητή κάθε φορά που δίνεται νέος αριθμός</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="124"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="211"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="287"/>
         <source>The next value to be applied using this increment</source>
-        <translation type="unfinished"></translation>
+        <translation>Η επόμενη τιμή που θα εφαρμοστεί με αυτό το βήμα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="137"/>
@@ -777,84 +777,84 @@
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="66"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="385"/>
         <source>Apply this numbering to the selected elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή αυτής της αρίθμησης στα επιλεγμένα στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="96"/>
         <source>Apply numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή αρίθμησης</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="102"/>
         <source>Choose an element numbering from the project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε μια αρίθμηση στοιχείων από το έργο.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="115"/>
         <source>First select elements in the sheet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε πρώτα στοιχεία στο φύλλο.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="122"/>
         <source>(frozen)</source>
-        <translation type="unfinished"></translation>
+        <translation>(παγωμένο)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="125"/>
         <source>(other numbering)</source>
-        <translation type="unfinished"></translation>
+        <translation>(άλλη αρίθμηση)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="133"/>
         <source>Nothing to apply: the selected elements already follow the “%1” numbering, or take their name from another element.</source>
-        <translation type="unfinished"></translation>
+        <translation>Τίποτα προς εφαρμογή: τα επιλεγμένα στοιχεία ακολουθούν ήδη την αρίθμηση «%1» ή παίρνουν το όνομά τους από άλλο στοιχείο.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="139"/>
         <source>%n elements will receive the “%1” numbering, in sheet and position order.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο θα λάβει την αρίθμηση «%1», με σειρά φύλλου και θέσης.</numerusform>
+            <numerusform>%n στοιχεία θα λάβουν την αρίθμηση «%1», με σειρά φύλλου και θέσης.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="140"/>
         <source>No element can receive the “%1” numbering without replacing what it already has.</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανένα στοιχείο δεν μπορεί να λάβει την αρίθμηση «%1» χωρίς να αντικατασταθεί αυτό που ήδη έχει.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="147"/>
         <source>Also replace the %n elements left as they are</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Αντικατάσταση και του %n στοιχείου που έμεινε ως έχει</numerusform>
+            <numerusform>Αντικατάσταση και των %n στοιχείων που έμειναν ως έχουν</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="168"/>
         <source>%n elements numbered.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο αριθμήθηκε.</numerusform>
+            <numerusform>%n στοιχεία αριθμήθηκαν.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="170"/>
         <source>%n selected elements were left as they are.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n επιλεγμένο στοιχείο έμεινε ως έχει.</numerusform>
+            <numerusform>%n επιλεγμένα στοιχεία έμειναν ως έχουν.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="294"/>
         <source>Auto Numbering</source>
-        <translation type="unfinished">Αυτόματη αρίθμηση</translation>
+        <translation>Αυτόματη αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="386"/>
         <source>First select elements in the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε πρώτα στοιχεία στο φύλλο</translation>
     </message>
 </context>
 <context>
@@ -944,7 +944,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="311"/>
         <source>Renumber element(s)…</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναρίθμηση στοιχείων…</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="348"/>
@@ -977,48 +977,48 @@
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="148"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="163"/>
         <source>Renumber elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναρίθμηση στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="133"/>
         <source>Renumber elements (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναρίθμηση στοιχείων (%1)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="139"/>
         <source>No element follows this numbering.</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανένα στοιχείο δεν ακολουθεί αυτή την αρίθμηση.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="140"/>
         <source>The %n elements following this numbering have a frozen name: nothing is renumbered.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Το %n στοιχείο που ακολουθεί αυτή την αρίθμηση έχει παγωμένο όνομα: τίποτα δεν επαναριθμείται.</numerusform>
+            <numerusform>Τα %n στοιχεία που ακολουθούν αυτή την αρίθμηση έχουν παγωμένο όνομα: τίποτα δεν επαναριθμείται.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="149"/>
         <source>%n elements will be renumbered, starting from the first number, in sheet and position order.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο θα επαναριθμηθεί, ξεκινώντας από τον πρώτο αριθμό, με σειρά φύλλου και θέσης.</numerusform>
+            <numerusform>%n στοιχεία θα επαναριθμηθούν, ξεκινώντας από τον πρώτο αριθμό, με σειρά φύλλου και θέσης.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="157"/>
         <source>%n elements renumbered, %1 of them with a new name.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο επαναριθμήθηκε, %1 από αυτά με νέο όνομα.</numerusform>
+            <numerusform>%n στοιχεία επαναριθμήθηκαν, %1 από αυτά με νέο όνομα.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="160"/>
         <source>%n elements with a frozen name were not touched, and their numbers were not given out again.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο με παγωμένο όνομα δεν άλλαξε και ο αριθμός του δεν δόθηκε ξανά.</numerusform>
+            <numerusform>%n στοιχεία με παγωμένο όνομα δεν άλλαξαν και οι αριθμοί τους δεν δόθηκαν ξανά.</numerusform>
         </translation>
     </message>
     <message>
@@ -1068,17 +1068,17 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="46"/>
         <source>Terminals with no label, designation, manufacturer or manufacturer reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτες χωρίς ετικέτα, ονομασία, κατασκευαστή ή κωδικό κατασκευαστή</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="49"/>
         <source>Leave out junctions</source>
-        <translation type="unfinished"></translation>
+        <translation>Παράλειψη συνδέσεων</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="77"/>
         <source>Preview</source>
-        <translation type="unfinished">Προεπισκόπηση</translation>
+        <translation>Προεπισκόπηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="78"/>
@@ -1105,7 +1105,8 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/bomexportdialog.cpp" line="87"/>
         <source>Unable to save the parts list to %1.
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η αποθήκευση της λίστας υλικών στο %1.
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="127"/>
@@ -1121,18 +1122,19 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/bomexportdialog.cpp" line="131"/>
         <source>Designation quantity</source>
         <comment>Special field with name : designation quantity</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ποσότητα ονομασίας</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="173"/>
         <source>Request refused</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αίτημα απορρίφθηκε</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="180"/>
         <source>Error in the request:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Σφάλμα στο αίτημα:
+%1</translation>
     </message>
 </context>
 <context>
@@ -1141,25 +1143,25 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/backupdialog.cpp" line="33"/>
         <source>Create a backup copy?</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία αντιγράφου ασφαλείας;</translation>
     </message>
     <message>
         <location filename="../sources/ui/backupdialog.cpp" line="39"/>
         <source>Would you like to create a backup copy?</source>
         <comment>dialog message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Θέλετε να δημιουργήσετε αντίγραφο ασφαλείας;</translation>
     </message>
     <message>
         <location filename="../sources/ui/backupdialog.cpp" line="49"/>
         <source>Yes</source>
         <comment>yes button</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ναι</translation>
     </message>
     <message>
         <location filename="../sources/ui/backupdialog.cpp" line="50"/>
         <source>No</source>
         <comment>no button</comment>
-        <translation type="unfinished"></translation>
+        <translation>Όχι</translation>
     </message>
 </context>
 <context>
@@ -1168,19 +1170,19 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/backuprestoredialog.cpp" line="48"/>
         <source>Recovery files</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία ανάκτησης</translation>
     </message>
     <message>
         <location filename="../sources/ui/backuprestoredialog.cpp" line="53"/>
         <source>&lt;b&gt;Recovery files were found,&lt;br&gt;do you want to open them?&lt;/b&gt;&lt;br&gt;For a project with several recovery versions, the newest is selected by default.</source>
         <comment>dialog message</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Βρέθηκαν αρχεία ανάκτησης,&lt;br&gt;θέλετε να τα ανοίξετε;&lt;/b&gt;&lt;br&gt;Για ένα έργο με πολλές εκδόσεις ανάκτησης, η πιο πρόσφατη επιλέγεται από προεπιλογή.</translation>
     </message>
     <message>
         <location filename="../sources/ui/backuprestoredialog.cpp" line="83"/>
         <source>%1 (newest)</source>
         <comment>recovery generation label</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (πιο πρόσφατο)</translation>
     </message>
 </context>
 <context>
@@ -1189,15 +1191,15 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/cable/cablepart.cpp" line="1948"/>
         <source>Move %n cable(s)</source>
         <comment>Un geste déplace plusieurs lignes à la fois.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Μετακίνηση %n καλωδίου</numerusform>
+            <numerusform>Μετακίνηση %n καλωδίων</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="38"/>
         <source>Delete</source>
-        <translation type="unfinished">Διαγραφή</translation>
+        <translation>Διαγραφή</translation>
     </message>
 </context>
 <context>
@@ -1224,12 +1226,12 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="86"/>
         <source>Format:</source>
-        <translation type="unfinished">Μορφή:</translation>
+        <translation>Μορφή:</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="93"/>
         <source>Sets the columns and rows so the sheet, title block included, has the size of this paper format, at 96 dots per inch like the PDF export.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορίζει τις στήλες και τις γραμμές ώστε το φύλλο, μαζί με την πινακίδα, να έχει το μέγεθος αυτής της μορφής χαρτιού, στις 96 κουκκίδες ανά ίντσα όπως η εξαγωγή PDF.</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="62"/>
@@ -1255,17 +1257,17 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="116"/>
         <source>Custom</source>
-        <translation type="unfinished">Προσαρμοσμένο</translation>
+        <translation>Προσαρμοσμένο</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="119"/>
         <source>Landscape</source>
-        <translation type="unfinished">Οριζόντια</translation>
+        <translation>Οριζόντια</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="120"/>
         <source>Portrait</source>
-        <translation type="unfinished">Κάθετα</translation>
+        <translation>Κάθετα</translation>
     </message>
 </context>
 <context>
@@ -1274,12 +1276,12 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/diagramview.cpp" line="754"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="437"/>
         <source>Paste a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Επικόλληση καλωδίου</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="878"/>
         <source>Duplicate a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναπαραγωγή καλωδίου</translation>
     </message>
 </context>
 <context>
@@ -1289,182 +1291,182 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/cable/cablecreatedialog.cpp" line="928"/>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1180"/>
         <source>Cable</source>
-        <translation type="unfinished">Καλώδιο</translation>
+        <translation>Καλώδιο</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="189"/>
         <source>(no type)</source>
-        <translation type="unfinished"></translation>
+        <translation>(χωρίς τύπο)</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablecreatedialog.cpp" line="190"/>
         <source>Change the type: %1, %n core(s)</source>
         <comment>which type this window changes, and how many cores that cable has now</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Αλλαγή του τύπου: %1, %n κλώνος</numerusform>
+            <numerusform>Αλλαγή του τύπου: %1, %n κλώνοι</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablecreatedialog.cpp" line="196"/>
         <source>%n recognized core(s)</source>
         <comment>how many cores the line just crossed</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n αναγνωρισμένος κλώνος</numerusform>
+            <numerusform>%n αναγνωρισμένοι κλώνοι</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="269"/>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="378"/>
         <source>Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="272"/>
         <source>Filter cable types</source>
-        <translation type="unfinished"></translation>
+        <translation>Φιλτράρισμα τύπων καλωδίου</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="281"/>
         <source>Hide types which have fewer cores than this cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Απόκρυψη τύπων με λιγότερους κλώνους από αυτό το καλώδιο</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="283"/>
         <source>Hide types which have fewer cores than recognized conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Απόκρυψη τύπων με λιγότερους κλώνους από τους αναγνωρισμένους αγωγούς</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="292"/>
         <source>Uncheck to also see the types which have fewer cores: taking them makes the cores beyond their number leave the cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποεπιλέξτε για να δείτε και τους τύπους με λιγότερους κλώνους: αν επιλέξετε κάποιον, οι κλώνοι πέρα από τον αριθμό του βγαίνουν από το καλώδιο.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="295"/>
         <source>A struck through line is a type which has fewer cores than recognized conductors: it cannot carry this cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μια διαγραμμένη γραμμή είναι τύπος με λιγότερους κλώνους από τους αναγνωρισμένους αγωγούς: δεν μπορεί να φέρει αυτό το καλώδιο.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="329"/>
         <source>New entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέα καταχώριση</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="330"/>
         <source>Add a new cable type to the list</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη νέου τύπου καλωδίου στη λίστα</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="335"/>
         <source>Edit entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία καταχώρισης</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="336"/>
         <source>Edit the cable type selected in the list.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του τύπου καλωδίου που είναι επιλεγμένος στη λίστα.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="345"/>
         <source>New cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέο καλώδιο</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="381"/>
         <source>Filter existing cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Φιλτράρισμα υπαρχόντων καλωδίων</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="385"/>
         <source>Hide cables which have fewer free cores than recognized conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Απόκρυψη καλωδίων με λιγότερους ελεύθερους κλώνους από τους αναγνωρισμένους αγωγούς</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="392"/>
         <source>A struck through line is a cable which has fewer free cores than recognized conductors: it cannot receive them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μια διαγραμμένη γραμμή είναι καλώδιο με λιγότερους ελεύθερους κλώνους από τους αναγνωρισμένους αγωγούς: δεν μπορεί να τους δεχτεί.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="418"/>
         <source>Existing cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Υπάρχοντα καλώδια</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="458"/>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="541"/>
         <source>Designation</source>
-        <translation type="unfinished"></translation>
+        <translation>Ονομασία</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="459"/>
         <source>Plant (=)</source>
-        <translation type="unfinished">Εγκατάσταση (=)</translation>
+        <translation>Εγκατάσταση (=)</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="460"/>
         <source>Location (+)</source>
-        <translation type="unfinished">Τοποθεσία (+)</translation>
+        <translation>Τοποθεσία (+)</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="542"/>
         <source>Type</source>
-        <translation type="unfinished">Τύπος</translation>
+        <translation>Τύπος</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="543"/>
         <source>Cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλώνοι</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="544"/>
         <source>Plant</source>
-        <translation type="unfinished">Εγκατάσταση</translation>
+        <translation>Εγκατάσταση</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="545"/>
         <source>Location</source>
-        <translation type="unfinished">Θέση</translation>
+        <translation>Τοποθεσία</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="557"/>
         <source>%1 / %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 / %2</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="619"/>
         <source>This type has fewer cores than this cable: %1 instead of %2. The cores beyond %1 leave the cable and their marks disappear from the drawing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτός ο τύπος έχει λιγότερους κλώνους από αυτό το καλώδιο: %1 αντί για %2. Οι κλώνοι πέρα από τον %1 βγαίνουν από το καλώδιο και τα σημάδια τους εξαφανίζονται από το σχέδιο.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="626"/>
         <source>Too many cores selected: the type offers only %1, %2 conductors are recognized</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέχθηκαν πάρα πολλοί κλώνοι: ο τύπος προσφέρει μόνο %1, αναγνωρίστηκαν %2 αγωγοί</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="633"/>
         <source>Only %1 free cores, %2 requested</source>
-        <translation type="unfinished"></translation>
+        <translation>Μόνο %1 ελεύθεροι κλώνοι, ζητήθηκαν %2</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="662"/>
         <source>No cable type available: configure the cable type file in the preferences.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν υπάρχει διαθέσιμος τύπος καλωδίου: ρυθμίστε το αρχείο τύπων καλωδίων στις προτιμήσεις.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="677"/>
         <source>Choose a cable type.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε έναν τύπο καλωδίου.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="678"/>
         <source>Choose an existing cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε ένα υπάρχον καλώδιο.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="691"/>
         <source>%1 cores instead of %2: the extra cores stay unplaced.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 κλώνοι αντί για %2: οι επιπλέον κλώνοι μένουν χωρίς τοποθέτηση.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablecreatedialog.cpp" line="922"/>
@@ -1472,16 +1474,20 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 
 If you confirm, the other cable will lose these cores. Do you want to continue?</source>
         <comment>ask before taking cores away from another cable</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n διασταυρούμενος αγωγός είναι ήδη συνδεδεμένος σε άλλο καλώδιο
+
+Αν επιβεβαιώσετε, το άλλο καλώδιο θα χάσει αυτούς τους κλώνους. Θέλετε να συνεχίσετε;</numerusform>
+            <numerusform>%n διασταυρούμενοι αγωγοί είναι ήδη συνδεδεμένοι σε άλλο καλώδιο
+
+Αν επιβεβαιώσετε, το άλλο καλώδιο θα χάσει αυτούς τους κλώνους. Θέλετε να συνεχίσετε;</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1026"/>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1092"/>
         <source>Cannot be written</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η εγγραφή</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1027"/>
@@ -1489,15 +1495,17 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
         <source>Cannot write to the file:
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η εγγραφή στο αρχείο:
+%1
+%2</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1173"/>
         <source>%n core(s) of this cable bound to a conductor. With the chosen type, they leave this cable and their mark disappears from the drawing. Continue?</source>
         <comment>ask before cores lose the mark they show on the drawing</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n κλώνος αυτού του καλωδίου είναι συνδεδεμένος σε αγωγό. Με τον επιλεγμένο τύπο, βγαίνει από αυτό το καλώδιο και το σημάδι του εξαφανίζεται από το σχέδιο. Συνέχεια;</numerusform>
+            <numerusform>%n κλώνοι αυτού του καλωδίου είναι συνδεδεμένοι σε αγωγό. Με τον επιλεγμένο τύπο, βγαίνουν από αυτό το καλώδιο και τα σημάδια τους εξαφανίζονται από το σχέδιο. Συνέχεια;</numerusform>
         </translation>
     </message>
 </context>
@@ -1506,48 +1514,49 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="49"/>
         <source>Export the cable list as CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή της λίστας καλωδίων σε CSV</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="59"/>
         <source>Layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Διάταξη</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="61"/>
         <source>include headers</source>
-        <translation type="unfinished">Συμπερίληψη επικεφαλίδων</translation>
+        <translation>Συμπερίληψη επικεφαλίδων</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="68"/>
         <source>Preview</source>
-        <translation type="unfinished">Προεπισκόπηση</translation>
+        <translation>Προεπισκόπηση</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="108"/>
         <source>cable_list_</source>
-        <translation type="unfinished"></translation>
+        <translation>λίστα_καλωδίων_</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="111"/>
         <source>Save As... </source>
-        <translation type="unfinished">Αποθήκευση ως...</translation>
+        <translation>Αποθήκευση ως...</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="112"/>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished">Αρχεία csv (*.csv) </translation>
+        <translation>Αρχεία CSV (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="121"/>
         <source>Error</source>
-        <translation type="unfinished">Σφάλμα</translation>
+        <translation>Σφάλμα</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="122"/>
         <source>Cannot save the cable list to %1.
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η αποθήκευση της λίστας καλωδίων στο %1.
+%2</translation>
     </message>
 </context>
 <context>
@@ -1555,77 +1564,77 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="153"/>
         <source>No.</source>
-        <translation type="unfinished"></translation>
+        <translation>Α/Α</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="154"/>
         <source>Plant (cable)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εγκατάσταση (καλώδιο)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="155"/>
         <source>Location (cable)</source>
-        <translation type="unfinished"></translation>
+        <translation>Τοποθεσία (καλώδιο)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="156"/>
         <source>Label (cable)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ετικέτα (καλώδιο)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="157"/>
         <source>Plant (start)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εγκατάσταση (αρχή)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="158"/>
         <source>Location (start)</source>
-        <translation type="unfinished"></translation>
+        <translation>Τοποθεσία (αρχή)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="159"/>
         <source>Label (start)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ετικέτα (αρχή)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="160"/>
         <source>Sheet (start)</source>
-        <translation type="unfinished"></translation>
+        <translation>Φύλλο (αρχή)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="161"/>
         <source>Plant (end)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εγκατάσταση (τέλος)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="162"/>
         <source>Location (end)</source>
-        <translation type="unfinished"></translation>
+        <translation>Τοποθεσία (τέλος)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="163"/>
         <source>Label (end)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ετικέτα (τέλος)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="164"/>
         <source>Sheet (end)</source>
-        <translation type="unfinished"></translation>
+        <translation>Φύλλο (τέλος)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="165"/>
         <source>Cable type</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος καλωδίου</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="166"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήκος</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="167"/>
         <source>Used cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρησιμοποιούμενοι κλώνοι</translation>
     </message>
 </context>
 <context>
@@ -1633,17 +1642,17 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
     <message>
         <location filename="../sources/cablelist/cablelistmodelpropertieswidget.cpp" line="40"/>
         <source>Edit columns...</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία στηλών...</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistmodelpropertieswidget.cpp" line="41"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανανέωση</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistmodelpropertieswidget.cpp" line="76"/>
         <source>Cable list columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Στήλες λίστας καλωδίων</translation>
     </message>
 </context>
 <context>
@@ -1658,95 +1667,99 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="342"/>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="361"/>
         <source>Cable numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρίθμηση καλωδίων</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="57"/>
         <source>This window shows the automatic numbering rule for the cables of this project and edits it. A rule changed here is the one the project keeps: it is written into the project when you apply it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το παράθυρο εμφανίζει και επεξεργάζεται τον κανόνα αυτόματης αρίθμησης των καλωδίων αυτού του έργου. Ο κανόνας που αλλάζει εδώ είναι αυτός που κρατά το έργο: γράφεται στο έργο όταν τον εφαρμόσετε.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="71"/>
         <source>Axis priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Προτεραιότητα αξόνων</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="73"/>
         <source>Priority to the X axis (horizontal)</source>
-        <translation type="unfinished"></translation>
+        <translation>Προτεραιότητα στον άξονα X (οριζόντια)</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="74"/>
         <source>Priority to the Y axis (vertical)</source>
-        <translation type="unfinished"></translation>
+        <translation>Προτεραιότητα στον άξονα Y (κατακόρυφα)</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="79"/>
         <source>The chosen axis decides the order in which the cables are renumbered: X numbers them from left to right, Y numbers them from top to bottom.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο επιλεγμένος άξονας καθορίζει τη σειρά επαναρίθμησης των καλωδίων: ο X τα αριθμεί από αριστερά προς τα δεξιά, ο Y από πάνω προς τα κάτω.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="87"/>
         <source>Renumber all cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναρίθμηση όλων των καλωδίων</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="88"/>
         <source>Sets the number of each cable of the project again from the rule, starting at the beginning: a number left missing after a cable is deleted is filled in this way.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορίζει ξανά τον αριθμό κάθε καλωδίου του έργου από τον κανόνα, ξεκινώντας από την αρχή: έτσι συμπληρώνεται ένας αριθμός που έμεινε κενός μετά τη διαγραφή ενός καλωδίου.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="103"/>
         <source>Cancel</source>
-        <translation type="unfinished">Αναίρεση</translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="174"/>
         <source>The rule is not complete yet: there is still an empty field in it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο κανόνας δεν είναι ακόμη πλήρης: υπάρχει ακόμη ένα κενό πεδίο.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="264"/>
         <source>%n cable(s) of this project were entered by hand.
 
 Do you want to renumber them too?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n καλώδιο αυτού του έργου εισήχθη με το χέρι.
+
+Θέλετε να επαναριθμηθεί κι αυτό;</numerusform>
+            <numerusform>%n καλώδια αυτού του έργου εισήχθησαν με το χέρι.
+
+Θέλετε να επαναριθμηθούν κι αυτά;</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="269"/>
         <source>Yes</source>
         <comment>Les noms saisis à la main sont remplacés eux aussi.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ναι</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="272"/>
         <source>No</source>
         <comment>Les noms saisis à la main sont laissés tels quels.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Όχι</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="275"/>
         <source>Cancel</source>
         <comment>Ne renumérote rien du tout.</comment>
-        <translation type="unfinished">Αναίρεση</translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="309"/>
         <source>The rule is not complete yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο κανόνας δεν είναι ακόμη πλήρης.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="343"/>
         <source>No cable to renumber in this project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν υπάρχει καλώδιο για επαναρίθμηση σε αυτό το έργο.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="362"/>
         <source>All the cables already carry the number that the rule gives them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Όλα τα καλώδια φέρουν ήδη τον αριθμό που τους δίνει ο κανόνας.</translation>
     </message>
 </context>
 <context>
@@ -1755,66 +1768,66 @@ Do you want to renumber them too?</source>
         <location filename="../sources/cable/cablepart.cpp" line="2660"/>
         <source>Yes</source>
         <comment>Prendre le conducteur à l&apos;autre câble.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ναι</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2663"/>
         <source>No</source>
         <comment>Laisser le conducteur à l&apos;autre câble, on ne change rien.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Όχι</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2666"/>
         <source>Cancel</source>
         <comment>Annuler le geste entier : rien n&apos;est écrit, la ligne et ses couleurs reviennent où elles étaient.</comment>
-        <translation type="unfinished">Αναίρεση</translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2702"/>
         <location filename="../sources/cable/cablepart.cpp" line="2760"/>
         <source>This conductor is already described by another cable. Do you want to assign it to cable %1?</source>
         <comment>Un conducteur ne peut appartenir qu&apos;à un câble : on demande avant de le prendre à l&apos;autre.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτός ο αγωγός περιγράφεται ήδη από άλλο καλώδιο. Θέλετε να τον αντιστοιχίσετε στο καλώδιο %1;</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2704"/>
         <location filename="../sources/cable/cablepart.cpp" line="2762"/>
         <source>This conductor is already described by cable %1. Do you want to assign it to cable %2?</source>
         <comment>Un conducteur ne peut appartenir qu&apos;à un câble : on demande avant de le prendre à l&apos;autre.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτός ο αγωγός περιγράφεται ήδη από το καλώδιο %1. Θέλετε να τον αντιστοιχίσετε στο καλώδιο %2;</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2713"/>
         <location filename="../sources/cable/cablepart.cpp" line="2755"/>
         <source>Conductor already assigned</source>
         <comment>Un conducteur ne peut appartenir qu&apos;à un câble.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ο αγωγός έχει ήδη αντιστοιχιστεί</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepart.cpp" line="2756"/>
         <source>Conductors already assigned</source>
         <comment>Plusieurs conducteurs sont pris en une seule fois.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ο αγωγός έχει ήδη αντιστοιχιστεί</numerusform>
+            <numerusform>Οι αγωγοί έχουν ήδη αντιστοιχιστεί</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepart.cpp" line="2765"/>
         <source>%n conductors are already described by other cables. Do you want to assign them to cable %1?</source>
         <comment>On prend plusieurs conducteurs à la fois : on demande avant de les prendre aux autres câbles.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n αγωγός περιγράφεται ήδη από άλλα καλώδια. Θέλετε να τον αντιστοιχίσετε στο καλώδιο %1;</numerusform>
+            <numerusform>%n αγωγοί περιγράφονται ήδη από άλλα καλώδια. Θέλετε να τους αντιστοιχίσετε στο καλώδιο %1;</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepart.cpp" line="2767"/>
         <source>%n conductors are already described by cable %1. Do you want to assign them to cable %2?</source>
         <comment>On prend plusieurs conducteurs à la fois : on demande avant de les prendre à l&apos;autre câble.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n αγωγός περιγράφεται ήδη από το καλώδιο %1. Θέλετε να τον αντιστοιχίσετε στο καλώδιο %2;</numerusform>
+            <numerusform>%n αγωγοί περιγράφονται ήδη από το καλώδιο %1. Θέλετε να τους αντιστοιχίσετε στο καλώδιο %2;</numerusform>
         </translation>
     </message>
 </context>
@@ -1823,46 +1836,46 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="54"/>
         <source>Cable</source>
-        <translation type="unfinished">Καλώδιο</translation>
+        <translation>Καλώδιο</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="73"/>
         <source>Unplaced cores:</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλώνοι χωρίς τοποθέτηση:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="77"/>
         <source>Double-click a core to place it on the line: the line follows the mouse and a click leaves it where you aimed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάντε διπλό κλικ σε έναν κλώνο για να τον τοποθετήσετε στη γραμμή: η γραμμή ακολουθεί το ποντίκι και ένα κλικ την αφήνει εκεί που στοχεύσατε.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="117"/>
         <source>No cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Χωρίς καλώδιο.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="121"/>
         <source>%1 of %2 cores wired to a conductor</source>
         <comment>how many cores of this cable are wired</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 από %2 κλώνους συνδεδεμένοι σε αγωγό</numerusform>
+            <numerusform>%1 από %2 κλώνους συνδεδεμένοι σε αγωγό</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="171"/>
         <source>Core %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλώνος %1</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="172"/>
         <source>Core %1 — %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλώνος %1 — %2</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="233"/>
         <source>Place this core on the line</source>
-        <translation type="unfinished"></translation>
+        <translation>Τοποθέτηση αυτού του κλώνου στη γραμμή</translation>
     </message>
 </context>
 <context>
@@ -1870,41 +1883,41 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="59"/>
         <source>Unplaced cores:</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλώνοι χωρίς τοποθέτηση:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="64"/>
         <source>Double-click a core to place it on the line: the line follows the mouse and a click leaves it where you aimed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάντε διπλό κλικ σε έναν κλώνο για να τον τοποθετήσετε στη γραμμή: η γραμμή ακολουθεί το ποντίκι και ένα κλικ την αφήνει εκεί που στοχεύσατε.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="258"/>
         <source>%1 of %2 cores wired to a conductor</source>
         <comment>how many cores of this cable are wired</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 από %2 κλώνους συνδεδεμένοι σε αγωγό</numerusform>
+            <numerusform>%1 από %2 κλώνους συνδεδεμένοι σε αγωγό</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="292"/>
         <source>Core %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλώνος %1</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="293"/>
         <source>Core %1 — %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλώνος %1 — %2</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="345"/>
         <source>Place this core on the line</source>
-        <translation type="unfinished"></translation>
+        <translation>Τοποθέτηση αυτού του κλώνου στη γραμμή</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="388"/>
         <source>Cable</source>
-        <translation type="unfinished">Καλώδιο</translation>
+        <translation>Καλώδιο</translation>
     </message>
 </context>
 <context>
@@ -1913,109 +1926,109 @@ Do you want to renumber them too?</source>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="52"/>
         <source>Drawing</source>
         <comment>column header: the drawing shows this field</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σχέδιο</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="55"/>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="137"/>
         <source>Tick to write this field on the drawing.</source>
         <comment>tooltip of the tick before each field</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε για να γράφεται αυτό το πεδίο στο σχέδιο.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="61"/>
         <source>Designation</source>
-        <translation type="unfinished"></translation>
+        <translation>Ονομασία</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="64"/>
         <source>Type</source>
-        <translation type="unfinished">Τύπος</translation>
+        <translation>Τύπος</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="74"/>
         <source>Choose the type of this cable from the list of cable types…</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε τον τύπο αυτού του καλωδίου από τη λίστα τύπων καλωδίων…</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="81"/>
         <source>Plant (=)</source>
-        <translation type="unfinished">Εγκατάσταση (=)</translation>
+        <translation>Εγκατάσταση (=)</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="83"/>
         <source>Location (+)</source>
-        <translation type="unfinished">Τοποθεσία (+)</translation>
+        <translation>Τοποθεσία (+)</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="85"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήκος</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="90"/>
         <source>Core colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρώματα κλώνων</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="92"/>
         <source>The font of the colors of all the cores of this cable, written along the line.</source>
-        <translation type="unfinished"></translation>
+        <translation>Η γραμματοσειρά των χρωμάτων όλων των κλώνων αυτού του καλωδίου, γραμμένων κατά μήκος της γραμμής.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="101"/>
         <source>Text position</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέση κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="102"/>
         <source>Shifts all the cable text: plant, location and designation on one side, type and length on the other. The line, the slashes and the wiring stay in place. 10 px make one grid cell.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετατοπίζει όλο το κείμενο του καλωδίου: εγκατάσταση, τοποθεσία και ονομασία από τη μία πλευρά, τύπος και μήκος από την άλλη. Η γραμμή, οι πλάγιες γραμμές και οι συνδέσεις μένουν στη θέση τους. 10 px αντιστοιχούν σε ένα κελί πλέγματος.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="109"/>
         <source>Core colors position</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέση χρωμάτων κλώνων</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="110"/>
         <source>Shifts the core colors relative to their slashes. The slashes, the entries and the wiring stay in place. 10 px make one grid cell.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετατοπίζει τα χρώματα των κλώνων σε σχέση με τις πλάγιες γραμμές τους. Οι πλάγιες γραμμές, οι καταχωρίσεις και οι συνδέσεις μένουν στη θέση τους. 10 px αντιστοιχούν σε ένα κελί πλέγματος.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="228"/>
         <source>X :</source>
-        <translation type="unfinished">X :</translation>
+        <translation>X :</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="230"/>
         <source>Y :</source>
-        <translation type="unfinished">Y :</translation>
+        <translation>Y :</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="284"/>
         <source>%1 pt</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 pt</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="287"/>
         <source>Font, size and style of the core colors.</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά, μέγεθος και στυλ των χρωμάτων κλώνων.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="288"/>
         <source>Font, size, style and alignment of this text.</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά, μέγεθος, στυλ και στοίχιση αυτού του κειμένου.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="292"/>
         <source>Set for this cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορίστηκε για αυτό το καλώδιο.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="293"/>
         <source>Value defined in the preferences.</source>
-        <translation type="unfinished"></translation>
+        <translation>Τιμή που ορίζεται στις προτιμήσεις.</translation>
     </message>
 </context>
 <context>
@@ -2023,32 +2036,32 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="50"/>
         <source>Available columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμες στήλες</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="62"/>
         <source>Add the selected column</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη της επιλεγμένης στήλης</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="63"/>
         <source>Remove the selected column</source>
-        <translation type="unfinished"></translation>
+        <translation>Αφαίρεση της επιλεγμένης στήλης</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="64"/>
         <source>Move the selected column up</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση της επιλεγμένης στήλης προς τα πάνω</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="65"/>
         <source>Move the selected column down</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση της επιλεγμένης στήλης προς τα κάτω</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="73"/>
         <source>Table columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Στήλες πίνακα</translation>
     </message>
 </context>
 <context>
@@ -2056,37 +2069,37 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="112"/>
         <source>No project is open.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν υπάρχει ανοιχτό έργο.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="118"/>
         <source>This project is read-only: its cables cannot be renumbered.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το έργο είναι μόνο για ανάγνωση: τα καλώδιά του δεν μπορούν να επαναριθμηθούν.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="137"/>
         <source>No cable numbering rule is defined for this project. Define one in this window before renumbering its cables.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν έχει οριστεί κανόνας αρίθμησης καλωδίων για αυτό το έργο. Ορίστε έναν σε αυτό το παράθυρο πριν επαναριθμήσετε τα καλώδιά του.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="222"/>
         <source>A cable is not on any sheet of the project: nothing was changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ένα καλώδιο δεν βρίσκεται σε κανένα φύλλο του έργου: δεν άλλαξε τίποτα.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="242"/>
         <source>The current rule gives no number here: nothing was changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο τρέχων κανόνας δεν δίνει αριθμό εδώ: δεν άλλαξε τίποτα.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="253"/>
         <source>The current rule gives the same number (%1) twice: it must count to renumber a whole project. Nothing was changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο τρέχων κανόνας δίνει τον ίδιο αριθμό (%1) δύο φορές: πρέπει να μετρά για να επαναριθμήσει ολόκληρο έργο. Δεν άλλαξε τίποτα.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="265"/>
         <source>Number %1 is already used by a cable whose name is left as it is: nothing was changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο αριθμός %1 χρησιμοποιείται ήδη από καλώδιο του οποίου το όνομα μένει ως έχει: δεν άλλαξε τίποτα.</translation>
     </message>
 </context>
 <context>
@@ -2094,87 +2107,87 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="94"/>
         <source>Core colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρώματα κλώνων</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="95"/>
         <source>Text format</source>
-        <translation type="unfinished"></translation>
+        <translation>Μορφή κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="148"/>
         <source>Font:</source>
-        <translation type="unfinished">Γραμματοσειρά:</translation>
+        <translation>Γραμματοσειρά:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="154"/>
         <source> pt</source>
-        <translation type="unfinished"></translation>
+        <translation> pt</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="155"/>
         <source>Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="158"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανονικό</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="159"/>
         <source>Bold</source>
-        <translation type="unfinished">Έντονα</translation>
+        <translation>Έντονα</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="160"/>
         <source>Italic</source>
-        <translation type="unfinished">Πλάγια</translation>
+        <translation>Πλάγια</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="161"/>
         <source>Bold italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Έντονα πλάγια</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="162"/>
         <source>Style:</source>
-        <translation type="unfinished">Τεχνοτροπία: </translation>
+        <translation>Στυλ:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="169"/>
         <source>Right aligned</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση δεξιά</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="170"/>
         <source>Centred</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση στο κέντρο</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="171"/>
         <source>Left aligned</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση αριστερά</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="172"/>
         <source>Alignment:</source>
-        <translation type="unfinished">Στοίχιση:</translation>
+        <translation>Στοίχιση:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="175"/>
         <source>15W1 · H07V-K 3G1.5</source>
-        <translation type="unfinished"></translation>
+        <translation>15W1 · H07V-K 3G1.5</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="179"/>
         <source>Preview:</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπισκόπηση:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="183"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφορά</translation>
     </message>
 </context>
 <context>
@@ -2182,52 +2195,52 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1264"/>
         <source>New entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέα καταχώριση</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1268"/>
         <source>Enter the cable type to add. Fields left empty stay empty in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγάγετε τον τύπο καλωδίου προς προσθήκη. Τα πεδία που μένουν κενά μένουν κενά και στο αρχείο.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1288"/>
         <source>How many cores this type has. The dash means the file does not specify.</source>
-        <translation type="unfinished"></translation>
+        <translation>Πόσους κλώνους έχει αυτός ο τύπος. Η παύλα σημαίνει ότι το αρχείο δεν το καθορίζει.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1299"/>
         <source>The color of each core, separated by a comma and in the order of the cores.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το χρώμα κάθε κλώνου, χωρισμένο με κόμμα και με τη σειρά των κλώνων.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1314"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1315"/>
         <source>Cancel</source>
-        <translation type="unfinished">Αναίρεση</translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1375"/>
         <source>Edit entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία καταχώρισης</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1378"/>
         <source>Edit the cable type selected in the list. Fields left empty stay empty in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργαστείτε τον τύπο καλωδίου που είναι επιλεγμένος στη λίστα. Τα πεδία που μένουν κενά μένουν κενά και στο αρχείο.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1410"/>
         <source>No details</source>
-        <translation type="unfinished"></translation>
+        <translation>Χωρίς στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1411"/>
         <source>Enter at least one detail to create an entry.</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγάγετε τουλάχιστον ένα στοιχείο για να δημιουργήσετε καταχώριση.</translation>
     </message>
 </context>
 <context>
@@ -2235,53 +2248,53 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="273"/>
         <source>Designation</source>
-        <translation type="unfinished"></translation>
+        <translation>Ονομασία</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="275"/>
         <source>Number of cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός κλώνων</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="277"/>
         <source>Core colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρώματα κλώνων</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="279"/>
         <source>Cable section</source>
-        <translation type="unfinished"></translation>
+        <translation>Διατομή καλωδίου</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="281"/>
         <source>Sheath color</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρώμα μανδύα</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="538"/>
         <source>No receiver for the cable types file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν υπάρχει παραλήπτης για το αρχείο τύπων καλωδίων.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="665"/>
         <source>Cannot create the folder %1 for the cable types file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η δημιουργία του φακέλου %1 για το αρχείο τύπων καλωδίων.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="716"/>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="761"/>
         <source>The file contains no header: missing columns.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο δεν περιέχει κεφαλίδα: λείπουν στήλες.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="779"/>
         <source>This entry no longer exists in the file: it may have been modified in the meantime.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή η καταχώριση δεν υπάρχει πλέον στο αρχείο: ίσως τροποποιήθηκε στο μεταξύ.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="805"/>
         <source>The file already exists and is not empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο υπάρχει ήδη και δεν είναι κενό.</translation>
     </message>
 </context>
 <context>
@@ -2289,17 +2302,17 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2233"/>
         <source>Place a cable core</source>
-        <translation type="unfinished"></translation>
+        <translation>Τοποθέτηση κλώνου καλωδίου</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2278"/>
         <source>Remove a core from the line</source>
-        <translation type="unfinished"></translation>
+        <translation>Αφαίρεση κλώνου από τη γραμμή</translation>
     </message>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="332"/>
         <source>Move a cable core</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση κλώνου καλωδίου</translation>
     </message>
 </context>
 <context>
@@ -2307,7 +2320,7 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="163"/>
         <source>Edit the properties of a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων ενός καλωδίου</translation>
     </message>
 </context>
 <context>
@@ -2316,7 +2329,7 @@ Do you want to renumber them too?</source>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1221"/>
         <location filename="../sources/cable/editcablecommand.cpp" line="285"/>
         <source>Change the cable type</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του τύπου καλωδίου</translation>
     </message>
 </context>
 <context>
@@ -2324,7 +2337,7 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="58"/>
         <source>Click to choose a color</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάντε κλικ για να επιλέξετε χρώμα</translation>
     </message>
 </context>
 <context>
@@ -2332,12 +2345,12 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/commandsearchpopup.cpp" line="45"/>
         <source>Search for a command…</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση εντολής…</translation>
     </message>
     <message>
         <location filename="../sources/commandsearchpopup.cpp" line="52"/>
         <source>Enter to launch · Esc to close</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter για εκτέλεση · Esc για κλείσιμο</translation>
     </message>
 </context>
 <context>
@@ -2379,82 +2392,82 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="51"/>
         <source>Black</source>
-        <translation type="unfinished">Μαύρο</translation>
+        <translation>Μαύρο</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="52"/>
         <source>Brown</source>
-        <translation type="unfinished">Καφέ</translation>
+        <translation>Καφέ</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="53"/>
         <source>Gray</source>
-        <translation type="unfinished">Γκρι</translation>
+        <translation>Γκρι</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="54"/>
         <source>Blue</source>
-        <translation type="unfinished">Γαλάζιο</translation>
+        <translation>Μπλε</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="55"/>
         <source>Green</source>
-        <translation type="unfinished">Πράσινο</translation>
+        <translation>Πράσινο</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="56"/>
         <source>Red</source>
-        <translation type="unfinished">Κόκκινο</translation>
+        <translation>Κόκκινο</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="57"/>
         <source>Orange</source>
-        <translation type="unfinished">Πορτοκαλί</translation>
+        <translation>Πορτοκαλί</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="58"/>
         <source>Purple</source>
-        <translation type="unfinished">Βιολετί</translation>
+        <translation>Μωβ</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="59"/>
         <source>White</source>
-        <translation type="unfinished">Λευκό</translation>
+        <translation>Λευκό</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="76"/>
         <source>Conductor color</source>
-        <translation type="unfinished">Χρώμα αγωγού</translation>
+        <translation>Χρώμα αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="77"/>
         <source>Applies a color to the selected conductors, and uses it for the next conductors drawn</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμόζει ένα χρώμα στους επιλεγμένους αγωγούς και το χρησιμοποιεί για τους επόμενους αγωγούς που θα σχεδιαστούν</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="131"/>
         <source>Recently used</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόσφατα χρησιμοποιημένα</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="141"/>
         <source>Other color…</source>
-        <translation type="unfinished"></translation>
+        <translation>Άλλο χρώμα…</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="188"/>
         <source>Change the colour of %n conductors</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Αλλαγή του χρώματος %n αγωγού</numerusform>
+            <numerusform>Αλλαγή του χρώματος %n αγωγών</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="222"/>
         <source>Choose a conductor color</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε χρώμα αγωγού</translation>
     </message>
 </context>
 <context>
@@ -2487,33 +2500,33 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="71"/>
         <source>Apply properties to all conductors of this potential</source>
-        <translation type="unfinished">Εφαρμογή ιδιοτήτων σε όλους τους αγωγούς αυτού του δυναμικού</translation>
+        <translation>Εφαρμογή ιδιοτήτων σε όλους τους αγωγούς αυτού του δυναμικού</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="171"/>
         <source>%n conductors selected: only the fields you change are applied to them.</source>
         <comment>selection properties panel</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n αγωγός επιλεγμένος: μόνο τα πεδία που αλλάζετε εφαρμόζονται σε αυτόν.</numerusform>
+            <numerusform>%n αγωγοί επιλεγμένοι: μόνο τα πεδία που αλλάζετε εφαρμόζονται σε αυτούς.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/conductormultiedit.h" line="189"/>
         <source>Edit conductor properties</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία ιδιοτήτων αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/conductormultiedit.h" line="191"/>
         <source>Edit the properties of several conductors</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Επεξεργασία των ιδιοτήτων πολλών αγωγών</translation>
+        <translation>Επεξεργασία των ιδιοτήτων πολλών αγωγών</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="380"/>
         <source>Conductor</source>
-        <translation type="unfinished">Αγωγός</translation>
+        <translation>Αγωγός</translation>
     </message>
 </context>
 <context>
@@ -2610,18 +2623,19 @@ Do you want to renumber them too?</source>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="222"/>
         <source>Several values</source>
         <comment>several conductors, different values</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πολλαπλές τιμές</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="237"/>
         <source>Several conductors selected: the text is changed on one conductor at a time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέχθηκαν πολλοί αγωγοί: το κείμενο αλλάζει σε έναν αγωγό κάθε φορά.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="250"/>
         <source>Visible text
 Locked by this sheet&apos;s “Show one potential text per sheet” option, in Sheet properties.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορατό κείμενο
+Κλειδωμένο από την επιλογή «Εμφάνιση ενός κειμένου δυναμικού ανά φύλλο» αυτού του φύλλου, στις Ιδιότητες φύλλου.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="288"/>
@@ -2800,124 +2814,124 @@ Locked by this sheet&apos;s “Show one potential text per sheet” option, in S
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="38"/>
         <source>Select a group of contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή ομάδας επαφών</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="43"/>
         <source>Select the contact group to assign to this slave element :</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε την ομάδα επαφών που θα αντιστοιχιστεί σε αυτό το εξαρτημένο στοιχείο :</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="55"/>
         <source>#</source>
-        <translation type="unfinished"></translation>
+        <translation>#</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="56"/>
         <source>Type</source>
-        <translation type="unfinished">Τύπος</translation>
+        <translation>Τύπος</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="57"/>
         <source>Subtype</source>
-        <translation type="unfinished"></translation>
+        <translation>Υποτύπος</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="58"/>
         <source>Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαφές</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="59"/>
         <source>Terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτες</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="61"/>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="100"/>
         <source>T%1</source>
-        <translation type="unfinished"></translation>
+        <translation>T%1</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="119"/>
         <source>(already assigned)</source>
-        <translation type="unfinished"></translation>
+        <translation>(ήδη αντιστοιχισμένη)</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="124"/>
         <source>(status does not match)</source>
-        <translation type="unfinished"></translation>
+        <translation>(η κατάσταση δεν ταιριάζει)</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="127"/>
         <source>(subtype does not match)</source>
-        <translation type="unfinished"></translation>
+        <translation>(ο υποτύπος δεν ταιριάζει)</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="130"/>
         <source>(number of contacts does not match)</source>
-        <translation type="unfinished"></translation>
+        <translation>(ο αριθμός επαφών δεν ταιριάζει)</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="189"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="192"/>
         <source>Undo</source>
-        <translation type="unfinished">Αναίρεση</translation>
+        <translation>Αναίρεση</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="224"/>
         <source>Switch normally open</source>
-        <translation type="unfinished">Κανονικά ανοικτή</translation>
+        <translation>Κανονικά ανοικτή</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="225"/>
         <source>Switch normally closed</source>
-        <translation type="unfinished">Κανονικά κλειστή</translation>
+        <translation>Κανονικά κλειστή</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="226"/>
         <source>switch</source>
-        <translation type="unfinished">Μεταγωγική</translation>
+        <translation>Μεταγωγική</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="227"/>
         <source>Other</source>
-        <translation type="unfinished">Άλλο</translation>
+        <translation>Άλλο</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="228"/>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="240"/>
         <source>Unknown</source>
-        <translation type="unfinished">Άγνωστο</translation>
+        <translation>Άγνωστο</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="235"/>
         <source>Simple</source>
-        <translation type="unfinished">Απλό</translation>
+        <translation>Απλό</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="236"/>
         <source>Power switch</source>
-        <translation type="unfinished">Ισχύος</translation>
+        <translation>Ισχύος</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="237"/>
         <source>Switch-on delayed</source>
-        <translation type="unfinished">Καθυστέρηση ενεργοποίησης</translation>
+        <translation>Καθυστέρηση ενεργοποίησης</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="238"/>
         <source>Switch-off delayed</source>
-        <translation type="unfinished">Καθυστέρηση απενεργοποίησης</translation>
+        <translation>Καθυστέρηση απενεργοποίησης</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="239"/>
         <source>Switch-on  and off delayed</source>
-        <translation type="unfinished">Καθυστέρηση ενεργοποίησης &amp; απενεργοποίησης</translation>
+        <translation>Καθυστέρηση ενεργοποίησης &amp; απενεργοποίησης</translation>
     </message>
 </context>
 <context>
@@ -2925,14 +2939,14 @@ Locked by this sheet&apos;s “Show one potential text per sheet” option, in S
     <message>
         <location filename="../sources/autoNum/ui/counterwarning.cpp" line="41"/>
         <source>Numbering counter</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετρητής αρίθμησης</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/counterwarning.cpp" line="42"/>
         <source>The next number would be %1, but %n elements of the “%2” numbering already have an equal or higher number (up to %3).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ο επόμενος αριθμός θα ήταν %1, αλλά %n στοιχείο της αρίθμησης «%2» έχει ήδη ίσο ή μεγαλύτερο αριθμό (έως %3).</numerusform>
+            <numerusform>Ο επόμενος αριθμός θα ήταν %1, αλλά %n στοιχεία της αρίθμησης «%2» έχουν ήδη ίσο ή μεγαλύτερο αριθμό (έως %3).</numerusform>
         </translation>
     </message>
     <message>
@@ -2941,7 +2955,10 @@ Locked by this sheet&apos;s “Show one potential text per sheet” option, in S
 New elements will skip numbers that are already taken: they will not necessarily receive numbers starting from %1.
 
 Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Τα νέα στοιχεία θα παραλείπουν αριθμούς που έχουν ήδη δοθεί: δεν θα λάβουν απαραίτητα αριθμούς ξεκινώντας από %1.
+
+Συνέχεια;</translation>
     </message>
 </context>
 <context>
@@ -2957,17 +2974,17 @@ Continue?</source>
     <message>
         <location filename="../sources/ui/customelementinfopartwidget.cpp" line="43"/>
         <source>name_of_the_property</source>
-        <translation type="unfinished"></translation>
+        <translation>ονομα_ιδιοτητας</translation>
     </message>
     <message>
         <location filename="../sources/ui/customelementinfopartwidget.cpp" line="44"/>
         <source>Lower-case letters, numbers, hyphens and underscores only</source>
-        <translation type="unfinished"></translation>
+        <translation>Μόνο πεζά γράμματα, αριθμοί, παύλες και κάτω παύλες</translation>
     </message>
     <message>
         <location filename="../sources/ui/customelementinfopartwidget.cpp" line="48"/>
         <source>Delete this property</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή αυτής της ιδιότητας</translation>
     </message>
 </context>
 <context>
@@ -2976,7 +2993,7 @@ Continue?</source>
         <location filename="../sources/ui/customizedialog.cpp" line="30"/>
         <source>Customize</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμογή</translation>
     </message>
 </context>
 <context>
@@ -2984,27 +3001,27 @@ Continue?</source>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="56"/>
         <source>Save...</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση...</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="75"/>
         <source>Save the diagnostic report</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση της αναφοράς διάγνωσης</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="77"/>
         <source>Text files (*.txt);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία κειμένου (*.txt);;Όλα τα αρχεία (*)</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="87"/>
         <source>Error</source>
-        <translation type="unfinished">Σφάλμα</translation>
+        <translation>Σφάλμα</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="88"/>
         <source>Unable to write to the file « %1 ».</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η εγγραφή στο αρχείο « %1 ».</translation>
     </message>
 </context>
 <context>
@@ -3020,64 +3037,64 @@ Continue?</source>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="40"/>
         <source>White</source>
-        <translation type="unfinished">Λευκό</translation>
+        <translation>Λευκό</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="41"/>
         <source>Off-white</source>
-        <translation type="unfinished"></translation>
+        <translation>Υπόλευκο</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="42"/>
         <source>Light gray</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανοιχτό γκρι</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="43"/>
         <source>Gray</source>
-        <translation type="unfinished">Γκρι</translation>
+        <translation>Γκρι</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="44"/>
         <source>Dark gray</source>
-        <translation type="unfinished"></translation>
+        <translation>Σκούρο γκρι</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="45"/>
         <source>Black</source>
-        <translation type="unfinished">Μαύρο</translation>
+        <translation>Μαύρο</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="62"/>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="88"/>
         <source>Sheet background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρώμα φόντου φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="63"/>
         <source>Choose the sheet background color</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε το χρώμα φόντου του φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="101"/>
         <source>System color</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρώμα συστήματος</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="116"/>
         <source>Recently used</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόσφατα χρησιμοποιημένα</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="126"/>
         <source>Other color…</source>
-        <translation type="unfinished"></translation>
+        <translation>Άλλο χρώμα…</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="191"/>
         <source>Choose a background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε χρώμα φόντου</translation>
     </message>
 </context>
 <context>
@@ -3119,17 +3136,17 @@ Continue?</source>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="31"/>
         <source>x 0.25</source>
-        <translation type="unfinished"></translation>
+        <translation>x 0,25</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="36"/>
         <source>x 0.5</source>
-        <translation type="unfinished"></translation>
+        <translation>x 0,5</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="41"/>
         <source>x 0.75</source>
-        <translation type="unfinished"></translation>
+        <translation>x 0,75</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="46"/>
@@ -3152,15 +3169,15 @@ Continue?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddcable.cpp" line="160"/>
         <source>Left click: place the cable start; drag or second click: finish; right click: cancel; Esc: quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριστερό κλικ: τοποθέτηση της αρχής του καλωδίου· σύρσιμο ή δεύτερο κλικ: ολοκλήρωση· δεξί κλικ: ακύρωση· Esc: έξοδος</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramevent/diagrameventaddcable.cpp" line="167"/>
         <source>Left click or release: finish the line (%n core(s) recognized; always horizontal or vertical); right click: cancel the line</source>
         <comment>how many conductors the line being drawn already crosses</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Αριστερό κλικ ή απελευθέρωση: ολοκλήρωση της γραμμής (%n κλώνος αναγνωρίστηκε· πάντα οριζόντια ή κατακόρυφα)· δεξί κλικ: ακύρωση της γραμμής</numerusform>
+            <numerusform>Αριστερό κλικ ή απελευθέρωση: ολοκλήρωση της γραμμής (%n κλώνοι αναγνωρίστηκαν· πάντα οριζόντια ή κατακόρυφα)· δεξί κλικ: ακύρωση της γραμμής</numerusform>
         </translation>
     </message>
 </context>
@@ -3177,7 +3194,7 @@ Continue?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="95"/>
         <source>Click: position at original size. Click-drag: position and resize. Right-click: rotate 90°. Ctrl+wheel: adjust size.</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλικ: τοποθέτηση στο αρχικό μέγεθος. Κλικ και σύρσιμο: τοποθέτηση και αλλαγή μεγέθους. Δεξί κλικ: περιστροφή 90°. Ctrl+ροδέλα: ρύθμιση μεγέθους.</translation>
     </message>
 </context>
 <context>
@@ -3186,7 +3203,7 @@ Continue?</source>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="290"/>
         <source>Click to place the pasted content, Esc or right-click to cancel</source>
         <comment>status bar tip while positioning a paste</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κάντε κλικ για να τοποθετήσετε το επικολλημένο περιεχόμενο, Esc ή δεξί κλικ για ακύρωση</translation>
     </message>
 </context>
 <context>
@@ -3194,7 +3211,7 @@ Continue?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpath.cpp" line="92"/>
         <source>Click: corner point. Click-drag: curve point. Click on the first point: close. Esc/Enter: finish. Right-click: undo the last point.</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλικ: γωνιακό σημείο. Κλικ και σύρσιμο: σημείο καμπύλης. Κλικ στο πρώτο σημείο: κλείσιμο. Esc/Enter: ολοκλήρωση. Δεξί κλικ: αναίρεση του τελευταίου σημείου.</translation>
     </message>
 </context>
 <context>
@@ -3202,47 +3219,47 @@ Continue?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="487"/>
         <source>Left click: position the starting point (Ctrl = free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριστερό κλικ: τοποθέτηση του σημείου εκκίνησης (Ctrl = ελεύθερη θέση)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="491"/>
         <source>Left click: place one end of the arc (Ctrl = free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριστερό κλικ: τοποθέτηση του ενός άκρου του τόξου (Ctrl = ελεύθερη θέση)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="492"/>
         <source>Left click: position the first corner (Ctrl = center point, free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριστερό κλικ: τοποθέτηση της πρώτης γωνίας (Ctrl = κεντρικό σημείο, ελεύθερη θέση)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="494"/>
         <source>Left click: position the first point (Ctrl = free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριστερό κλικ: τοποθέτηση του πρώτου σημείου (Ctrl = ελεύθερη θέση)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="505"/>
         <source>Left click: position the end point (Ctrl = free position); right click: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριστερό κλικ: τοποθέτηση του τελικού σημείου (Ctrl = ελεύθερη θέση)· δεξί κλικ: ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="507"/>
         <source>Left click: position the opposite corner (Shift = square, Ctrl = from center + free position, Ctrl+Shift = centered square); right click: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριστερό κλικ: τοποθέτηση της απέναντι γωνίας (Shift = τετράγωνο, Ctrl = από το κέντρο + ελεύθερη θέση, Ctrl+Shift = κεντραρισμένο τετράγωνο)· δεξί κλικ: ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="511"/>
         <source>Left click: place the other end and the height of the arc (Shift = half circle, Ctrl = free position); right click: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριστερό κλικ: τοποθέτηση του άλλου άκρου και του ύψους του τόξου (Shift = ημικύκλιο, Ctrl = ελεύθερη θέση)· δεξί κλικ: ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="513"/>
         <source>Left click: position the opposite corner (Shift = circle, Ctrl = from center + free position, Ctrl+Shift = centered circle); right click: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριστερό κλικ: τοποθέτηση της απέναντι γωνίας (Shift = κύκλος, Ctrl = από το κέντρο + ελεύθερη θέση, Ctrl+Shift = κεντραρισμένος κύκλος)· δεξί κλικ: ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="516"/>
         <source>Left click: next point; double-click or Enter: finish; right click: undo the last point</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριστερό κλικ: επόμενο σημείο· διπλό κλικ ή Enter: ολοκλήρωση· δεξί κλικ: αναίρεση του τελευταίου σημείου</translation>
     </message>
 </context>
 <context>
@@ -3250,57 +3267,57 @@ Continue?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="144"/>
         <source>No line here: click a line drawn on the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν υπάρχει γραμμή εδώ: κάντε κλικ σε μια γραμμή σχεδιασμένη στο φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="159"/>
         <source>Click the second line; right click: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάντε κλικ στη δεύτερη γραμμή· δεξί κλικ: ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="166"/>
         <source>Click another line; right click: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάντε κλικ σε άλλη γραμμή· δεξί κλικ: ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="225"/>
         <source>These two lines are parallel: no fillet possible</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτές οι δύο γραμμές είναι παράλληλες: δεν είναι δυνατή η στρογγύλευση</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="257"/>
         <source>One of the lines stops at the corner: nothing to round on that side</source>
-        <translation type="unfinished"></translation>
+        <translation>Μία από τις γραμμές σταματά στη γωνία: δεν υπάρχει κάτι να στρογγυλευτεί από εκείνη την πλευρά</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="265"/>
         <source>These two lines are almost in line: no fillet possible</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτές οι δύο γραμμές είναι σχεδόν στην ίδια ευθεία: δεν είναι δυνατή η στρογγύλευση</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="272"/>
         <source>Fillet</source>
-        <translation type="unfinished"></translation>
+        <translation>Στρογγύλευση</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="272"/>
         <source>Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακτίνα:</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="280"/>
         <source>Radius too large for these lines (%1 at most)</source>
-        <translation type="unfinished"></translation>
+        <translation>Η ακτίνα είναι πολύ μεγάλη για αυτές τις γραμμές (το πολύ %1)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="315"/>
         <source>Add a fillet</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη στρογγύλευσης</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="341"/>
         <source>Fillet: click two lines, or once where they meet; Esc or right click: finish</source>
-        <translation type="unfinished"></translation>
+        <translation>Στρογγύλευση: κάντε κλικ σε δύο γραμμές ή μία φορά εκεί που συναντώνται· Esc ή δεξί κλικ: ολοκλήρωση</translation>
     </message>
 </context>
 <context>
@@ -3308,159 +3325,159 @@ Continue?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="694"/>
         <source>resize</source>
-        <translation type="unfinished"></translation>
+        <translation>αλλαγή μεγέθους</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="695"/>
         <source>rotate/skew</source>
-        <translation type="unfinished"></translation>
+        <translation>περιστροφή/κλίση</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="696"/>
         <source>crop</source>
-        <translation type="unfinished"></translation>
+        <translation>περικοπή</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="714"/>
         <source>Click: mode %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλικ: λειτουργία %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="752"/>
         <source>Crop: drag the handles or the frame -- Enter, double-click or click elsewhere: apply; Escape: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Περικοπή: σύρετε τις λαβές ή το πλαίσιο -- Enter, διπλό κλικ ή κλικ αλλού: εφαρμογή· Escape: ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="754"/>
         <source>Drag a corner/edge: resize (Ctrl = from center, Shift = keep proportions)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε μια γωνία/πλευρά: αλλαγή μεγέθους (Ctrl = από το κέντρο, Shift = διατήρηση αναλογιών)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="755"/>
         <source>Drag a corner: rotate (Shift = 15° steps); drag an edge: skew (Shift = 15° steps); red point: move the rotation center</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε μια γωνία: περιστροφή (Shift = βήματα 15°)· σύρετε μια πλευρά: κλίση (Shift = βήματα 15°)· κόκκινο σημείο: μετακίνηση του κέντρου περιστροφής</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="756"/>
         <source> -- %1: mode %2</source>
-        <translation type="unfinished"></translation>
+        <translation> -- %1: λειτουργία %2</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="756"/>
         <source>Click</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλικ</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="828"/>
         <source>Drag: resize (Shift = keep proportions, Ctrl = from center)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: αλλαγή μεγέθους (Shift = διατήρηση αναλογιών, Ctrl = από το κέντρο)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="829"/>
         <source>Drag: rotate (Shift = 15° steps)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: περιστροφή (Shift = βήματα 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="830"/>
         <source>Drag: skew (Shift = 15° steps)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: κλίση (Shift = βήματα 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="831"/>
         <source>Drag: move the rotation center</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: μετακίνηση του κέντρου περιστροφής</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="832"/>
         <source>Drag: crop (Enter = apply, Escape = cancel)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: περικοπή (Enter = εφαρμογή, Escape = ακύρωση)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1111"/>
         <source>Resize an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή μεγέθους εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1118"/>
         <source>Rotate an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1128"/>
         <source>Skew an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλίση εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1134"/>
         <source>Move an image&apos;s rotation center</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση του κέντρου περιστροφής μιας εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1158"/>
         <source>Edit an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1450"/>
         <source>Restore an image&apos;s proportions</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφορά των αναλογιών μιας εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1463"/>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2171"/>
         <source>Save image as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση εικόνας ως...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1477"/>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2174"/>
         <source>Save original image as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση αρχικής εικόνας ως...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1506"/>
         <source>PNG image (*.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εικόνα PNG (*.png)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1507"/>
         <source>JPEG image (*.jpg *.jpeg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εικόνα JPEG (*.jpg *.jpeg)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1508"/>
         <source>BMP image (*.bmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εικόνα BMP (*.bmp)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1516"/>
         <source>SVG image (*.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εικόνα SVG (*.svg)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1521"/>
         <source>All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Όλα τα αρχεία (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1568"/>
         <source>Transparency not preserved</source>
-        <translation type="unfinished"></translation>
+        <translation>Η διαφάνεια δεν διατηρείται</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1569"/>
         <source>This format does not support transparency: the image will be saved as it was before the transparent colour was applied. Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή η μορφή δεν υποστηρίζει διαφάνεια: η εικόνα θα αποθηκευτεί όπως ήταν πριν εφαρμοστεί το διαφανές χρώμα. Συνέχεια;</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1586"/>
         <source>Saving failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Η αποθήκευση απέτυχε</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1587"/>
         <source>Unable to save the image to this location.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η αποθήκευση της εικόνας σε αυτή τη θέση.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1771"/>
@@ -3470,92 +3487,92 @@ Continue?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2168"/>
         <source>Replace the image...</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντικατάσταση εικόνας...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2177"/>
         <source>Transparent color...</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαφανές χρώμα...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2181"/>
         <source>Crop on the folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Περικοπή στο φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2185"/>
         <source>Crop...</source>
-        <translation type="unfinished"></translation>
+        <translation>Περικοπή...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2189"/>
         <source>Reset crop</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφορά περικοπής</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2193"/>
         <source>Horizontal mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Οριζόντιος κατοπτρισμός</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2195"/>
         <source>Vertical mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατακόρυφος κατοπτρισμός</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2200"/>
         <source>Restore proportions</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφορά αναλογιών</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2205"/>
         <source>Properties...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιδιότητες...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2236"/>
         <source>Select an image ...</source>
-        <translation type="unfinished">Επιλογή εικόνας...</translation>
+        <translation>Επιλογή εικόνας...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2237"/>
         <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία εικόνας (*.png *.jpg *.jpeg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2244"/>
         <source>Error</source>
-        <translation type="unfinished">Σφάλμα</translation>
+        <translation>Σφάλμα</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2244"/>
         <source>Unable to load the image.</source>
-        <translation type="unfinished">Αδυναμία φόρτωσης της εικόνας</translation>
+        <translation>Αδυναμία φόρτωσης της εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2258"/>
         <source>Replace an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντικατάσταση εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2299"/>
         <source>Horizontal mirror of an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Οριζόντιος κατοπτρισμός εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2299"/>
         <source>Vertical mirror of an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατακόρυφος κατοπτρισμός εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2332"/>
         <source>Set a transparent color</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός διαφανούς χρώματος</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2520"/>
         <source>Crop an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Περικοπή εικόνας</translation>
     </message>
 </context>
 <context>
@@ -3578,7 +3595,8 @@ Continue?</source>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="660"/>
         <source>
 Hold Shift and drag to move this text on its own</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Κρατήστε πατημένο το Shift και σύρετε για να μετακινήσετε μόνο αυτό το κείμενο</translation>
     </message>
 </context>
 <context>
@@ -3586,22 +3604,22 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="271"/>
         <source>Handle size</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος λαβών</translation>
     </message>
     <message>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="273"/>
         <source>Text grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλέγμα κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="275"/>
         <source>Sheet background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρώμα φόντου φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="277"/>
         <source>Conductor color</source>
-        <translation type="unfinished">Χρώμα αγωγού</translation>
+        <translation>Χρώμα αγωγού</translation>
     </message>
 </context>
 <context>
@@ -3627,46 +3645,46 @@ Hold Shift and drag to move this text on its own</source>
         <location filename="../sources/diagramview.cpp" line="148"/>
         <source>Create a template</source>
         <comment>context menu action</comment>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία προτύπου</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="152"/>
         <source>Make a cabinet thumbnail</source>
         <comment>context menu action</comment>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία μικρογραφίας πίνακα</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="156"/>
         <source>Sheet reference</source>
-        <translation type="unfinished">Αναφορά σελίδας</translation>
+        <translation>Αναφορά σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="488"/>
         <source>%1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="529"/>
         <source>Add an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη εικόνας</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramview.cpp" line="530"/>
         <source>Add %n image(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Προσθήκη %n εικόνας</numerusform>
+            <numerusform>Προσθήκη %n εικόνων</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="537"/>
         <source>Images not added</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι εικόνες δεν προστέθηκαν</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="538"/>
         <source>These files could not be added:</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν ήταν δυνατή η προσθήκη αυτών των αρχείων:</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1043"/>
@@ -3687,28 +3705,29 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/diagramview.cpp" line="2360"/>
         <source>Remove this core from the line</source>
-        <translation type="unfinished"></translation>
+        <translation>Αφαίρεση αυτού του κλώνου από τη γραμμή</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="2645"/>
         <source>Registered template</source>
-        <translation type="unfinished"></translation>
+        <translation>Το πρότυπο καταχωρίστηκε</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="2646"/>
         <source>The template has been successfully saved as :
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Το πρότυπο αποθηκεύτηκε επιτυχώς ως:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="2649"/>
         <source>Error</source>
-        <translation type="unfinished">Σφάλμα</translation>
+        <translation>Σφάλμα</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="2649"/>
         <source>The file could not be written.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν ήταν δυνατή η εγγραφή του αρχείου.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="212"/>
@@ -3745,42 +3764,42 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="38"/>
         <source>Duplicate</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναπαραγωγή</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="44"/>
         <source> no grid</source>
-        <translation type="unfinished"></translation>
+        <translation> χωρίς πλέγμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="45"/>
         <source>Spacing:</source>
-        <translation type="unfinished"></translation>
+        <translation>Απόσταση:</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="50"/>
         <source>Top</source>
-        <translation type="unfinished">Επάνω</translation>
+        <translation>Επάνω</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="51"/>
         <source>Bottom</source>
-        <translation type="unfinished">Κάτω</translation>
+        <translation>Κάτω</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="52"/>
         <source>Left</source>
-        <translation type="unfinished">Αριστερά</translation>
+        <translation>Αριστερά</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="53"/>
         <source>Right</source>
-        <translation type="unfinished">Δεξιά</translation>
+        <translation>Δεξιά</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="54"/>
         <source>Direction:</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατεύθυνση:</translation>
     </message>
 </context>
 <context>
@@ -3798,7 +3817,7 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1094"/>
         <source>Resize an element text</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή μεγέθους κειμένου στοιχείου</translation>
     </message>
 </context>
 <context>
@@ -3965,7 +3984,7 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="629"/>
         <source>Change the way item text stays rotated</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του τρόπου με τον οποίο το κείμενο του στοιχείου παραμένει περιστραμμένο</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="640"/>
@@ -4145,17 +4164,17 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="79"/>
         <source>Rotate about its own centre</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή γύρω από το δικό του κέντρο</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="105"/>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματο</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="108"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="128"/>
@@ -4202,12 +4221,12 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="515"/>
         <source>Modify the conservation of the angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Τροποποίηση της διατήρησης της γωνίας</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="528"/>
         <source>Change the rotation point of a text field</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του σημείου περιστροφής ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="357"/>
@@ -4273,12 +4292,12 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="71"/>
         <source>e.g. 80.5</source>
-        <translation type="unfinished"></translation>
+        <translation>π.χ. 80.5</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="72"/>
         <source>Decimal number with a dot as separator (e.g. 80.5)</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεκαδικός αριθμός με τελεία ως διαχωριστικό (π.χ. 80.5)</translation>
     </message>
 </context>
 <context>
@@ -4286,32 +4305,32 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="41"/>
         <source>File not found: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο δεν βρέθηκε: %1</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="50"/>
         <source>Cannot read %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η ανάγνωση του %1</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="58"/>
         <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το .edz είναι πακέτο μορφής zip, που δεν υποστηρίζεται ακόμη (μόνο αρχεία .edz 7-Zip μπορούν να εισαχθούν).</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="62"/>
         <source>Not a valid .edz package (unrecognised archive format).</source>
-        <translation type="unfinished"></translation>
+        <translation>Μη έγκυρο πακέτο .edz (μη αναγνωρισμένη μορφή αρχειοθέτησης).</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="70"/>
         <source>Could not create a temporary directory: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν ήταν δυνατή η δημιουργία προσωρινού καταλόγου: %1</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="80"/>
         <source>No *.part.xml found inside the .edz</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν βρέθηκε *.part.xml μέσα στο .edz</translation>
     </message>
 </context>
 <context>
@@ -4320,7 +4339,7 @@ Hold Shift and drag to move this text on its own</source>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="2504"/>
         <source>Automatically number an element</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση στοιχείου</translation>
     </message>
 </context>
 <context>
@@ -4328,72 +4347,72 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="58"/>
         <source>The numbering name cannot be empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το όνομα της αρίθμησης δεν μπορεί να είναι κενό.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="65"/>
         <source>A numbering named “%1” already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>Υπάρχει ήδη αρίθμηση με όνομα «%1».</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="625"/>
         <source>This element is not in any sheet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το στοιχείο δεν βρίσκεται σε κανένα φύλλο.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="631"/>
         <source>This element does not follow any numbering.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το στοιχείο δεν ακολουθεί καμία αρίθμηση.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="636"/>
         <source>The “%1” numbering does not have a single number: one cannot be chosen by hand.</source>
-        <translation type="unfinished"></translation>
+        <translation>Η αρίθμηση «%1» δεν έχει έναν μοναδικό αριθμό: δεν μπορεί να επιλεγεί αριθμός με το χέρι.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="639"/>
         <source>The number must be at least 1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο αριθμός πρέπει να είναι τουλάχιστον 1.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="642"/>
         <source>Number %1 is not free.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο αριθμός %1 δεν είναι ελεύθερος.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="672"/>
         <source>Assign number %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανάθεση αριθμού %1</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="836"/>
         <source>Apply numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή αρίθμησης %1</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1085"/>
         <source>Number pasted elements (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρίθμηση επικολλημένων στοιχείων (%1)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1121"/>
         <source>Create element numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία αρίθμησης στοιχείων %1</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1223"/>
         <source>Rename element numbering %1 to %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετονομασία αρίθμησης στοιχείων %1 σε %2</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1226"/>
         <source>Modify element numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Τροποποίηση αρίθμησης στοιχείων %1</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1258"/>
         <source>Delete element numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή αρίθμησης στοιχείων %1</translation>
     </message>
 </context>
 <context>
@@ -4445,13 +4464,13 @@ Hold Shift and drag to move this text on its own</source>
         <location filename="../sources/elementdialog.cpp" line="81"/>
         <source>Save a template</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση προτύπου</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="82"/>
         <source>Select the location where you want to save your template.</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε τη θέση όπου θέλετε να αποθηκεύσετε το πρότυπό σας.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="85"/>
@@ -4471,19 +4490,19 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/elementdialog.cpp" line="128"/>
         <source>Name of the new template</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα του νέου προτύπου</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="252"/>
         <source>Overwrite the template?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αντικατάσταση του προτύπου;</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="253"/>
         <source>The template already exists. Do you want to overwrite it?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Το πρότυπο υπάρχει ήδη. Θέλετε να το αντικαταστήσετε;</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="268"/>
@@ -4501,14 +4520,15 @@ Hold Shift and drag to move this text on its own</source>
         <location filename="../sources/elementdialog.cpp" line="134"/>
         <source>Element file name</source>
         <comment>placeholder: the element&apos;s file name, not its display name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα αρχείου στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="137"/>
         <source>The element&apos;s file name: digits, lowercase letters, &apos;-&apos;, &apos;_&apos; and &apos;.&apos; only.
 The element&apos;s display name is edited separately in the element properties.</source>
         <comment>tooltip for the element file-name field</comment>
-        <translation type="unfinished"></translation>
+        <translation>Το όνομα αρχείου του στοιχείου: μόνο ψηφία, πεζά γράμματα, &apos;-&apos;, &apos;_&apos; και &apos;.&apos;.
+Το εμφανιζόμενο όνομα του στοιχείου επεξεργάζεται ξεχωριστά στις ιδιότητες του στοιχείου.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="233"/>
@@ -4563,17 +4583,17 @@ The element&apos;s display name is edited separately in the element properties.<
         <location filename="../sources/ui/elementinfopartwidget.ui" line="71"/>
         <source>Choose an item from the materials list</source>
         <extracomment>tooltip of the button opening the material file; it fills the fields of this block from a catalogue entry</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε ένα είδος από τη λίστα υλικών</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.cpp" line="63"/>
         <source>e.g. 80.5</source>
-        <translation type="unfinished"></translation>
+        <translation>π.χ. 80.5</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.cpp" line="64"/>
         <source>Decimal number with a dot as separator (e.g. 80.5)</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεκαδικός αριθμός με τελεία ως διαχωριστικό (π.χ. 80.5)</translation>
     </message>
 </context>
 <context>
@@ -4586,7 +4606,7 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="35"/>
         <source>Exclude from automatic numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαίρεση από την αυτόματη αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="58"/>
@@ -4596,22 +4616,22 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="322"/>
         <source>Add a custom property</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη προσαρμοσμένης ιδιότητας</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="330"/>
         <source>Function separation</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαχωρισμός λειτουργιών</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="334"/>
         <source>Exclude from the bill of materials</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαίρεση από τη λίστα υλικών</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="499"/>
         <source>No materials list</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν υπάρχει λίστα υλικών</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="500"/>
@@ -4620,95 +4640,100 @@ The element&apos;s display name is edited separately in the element properties.<
 
 Create it?</source>
         <comment>message asking to create the material file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Δεν υπάρχει αρχείο λίστας υλικών σε αυτή τη θέση:
+%1
+
+Να δημιουργηθεί;</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="515"/>
         <source>Cannot create</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η δημιουργία</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="516"/>
         <source>Cannot create the file:
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η δημιουργία του αρχείου:
+%1
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="790"/>
         <source>Automatic numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="797"/>
         <source>…</source>
-        <translation type="unfinished"></translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="798"/>
         <source>Open the project&apos;s element numberings</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα των αριθμήσεων στοιχείων του έργου</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="826"/>
         <source>Freeze name</source>
-        <translation type="unfinished"></translation>
+        <translation>Πάγωμα ονόματος</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="827"/>
         <source>A frozen name is not changed by automatic numbering, and its number is not given to another element.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ένα παγωμένο όνομα δεν αλλάζει από την αυτόματη αρίθμηση και ο αριθμός του δεν δίνεται σε άλλο στοιχείο.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="863"/>
         <source>Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="867"/>
         <location filename="../sources/ui/elementinfowidget.cpp" line="931"/>
         <source>Only free numbers are offered: an element that must keep its real number can get it back if nobody else has it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσφέρονται μόνο ελεύθεροι αριθμοί: ένα στοιχείο που πρέπει να κρατήσει τον πραγματικό του αριθμό μπορεί να τον πάρει πίσω αν δεν τον έχει κανείς άλλος.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="901"/>
         <source>%1  (current)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1  (τρέχων)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="903"/>
         <source>— (unknown number)</source>
-        <translation type="unfinished"></translation>
+        <translation>— (άγνωστος αριθμός)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="907"/>
         <source>%1  →  %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1  →  %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="929"/>
         <source>The name is frozen: unfreeze it to change its number.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το όνομα είναι παγωμένο: ξεπαγώστε το για να αλλάξετε τον αριθμό του.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="930"/>
         <source>The number can be chosen when the element keeps its numbering.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο αριθμός μπορεί να επιλεγεί όταν το στοιχείο διατηρεί την αρίθμησή του.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="995"/>
         <source>None (name entered by hand)</source>
-        <translation type="unfinished"></translation>
+        <translation>Καμία (όνομα εισαγμένο με το χέρι)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="1014"/>
         <source>Custom formula: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμοσμένος τύπος: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="1054"/>
         <source>Frozen name</source>
-        <translation type="unfinished"></translation>
+        <translation>Παγωμένο όνομα</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="1055"/>
@@ -4716,7 +4741,10 @@ Create it?</source>
 Changing its numbering will replace or erase it.
 
 Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Το όνομα αυτού του στοιχείου είναι παγωμένο.
+Η αλλαγή της αρίθμησής του θα το αντικαταστήσει ή θα το διαγράψει.
+
+Συνέχεια;</translation>
     </message>
 </context>
 <context>
@@ -4725,80 +4753,80 @@ Continue?</source>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="105"/>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="454"/>
         <source>Customize the bar…</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμογή της γραμμής…</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="116"/>
         <source>Drag commands and elements into the bar, out of the bar, or from one place to another. Double-clicking moves a command or an element from one list to the other.</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε εντολές και στοιχεία μέσα στη γραμμή, έξω από αυτή ή από μια θέση σε άλλη. Το διπλό κλικ μετακινεί μια εντολή ή ένα στοιχείο από τη μία λίστα στην άλλη.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="186"/>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="235"/>
         <source>Search for an element…</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση στοιχείου…</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="194"/>
         <source>Elements:</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχεία:</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="207"/>
         <source>Default values</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπιλεγμένες τιμές</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="208"/>
         <source>Undo</source>
-        <translation type="unfinished">Αναίρεση</translation>
+        <translation>Αναίρεση</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="209"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Τέλος</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="222"/>
         <source>In the bar:</source>
-        <translation type="unfinished"></translation>
+        <translation>Στη γραμμή:</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="226"/>
         <source>Other commands:</source>
-        <translation type="unfinished"></translation>
+        <translation>Άλλες εντολές:</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="248"/>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="769"/>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="897"/>
         <source>Enter to insert · Esc to close</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter για εισαγωγή · Esc για κλείσιμο</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="256"/>
         <source>Drag to change the width of the bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε για να αλλάξετε το πλάτος της γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="599"/>
         <source>Customize the shortcut bar: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμογή της γραμμής συντομεύσεων: %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="768"/>
         <source>No results</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανένα αποτέλεσμα</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="873"/>
         <source>Type to search for an element · Esc to close</source>
-        <translation type="unfinished"></translation>
+        <translation>Πληκτρολογήστε για αναζήτηση στοιχείου · Esc για κλείσιμο</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="894"/>
         <source>Empty palette — drag elements into your personal collection, or type to search</source>
-        <translation type="unfinished"></translation>
+        <translation>Κενή παλέτα — σύρετε στοιχεία στην προσωπική σας συλλογή ή πληκτρολογήστε για αναζήτηση</translation>
     </message>
 </context>
 <context>
@@ -4827,12 +4855,12 @@ Continue?</source>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="245"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="255"/>
         <source>margin: 5px; font-weight: bold;</source>
-        <translation type="unfinished"></translation>
+        <translation>margin: 5px; font-weight: bold;</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="63"/>
         <source>Exclude from the bill of materials</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαίρεση από τη λίστα υλικών</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="70"/>
@@ -4867,27 +4895,27 @@ Continue?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="150"/>
         <source>Set the maximum number of slaves</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός του μέγιστου αριθμού εξαρτημένων</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="167"/>
         <source>Define the slave elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός των εξαρτημένων στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="198"/>
         <source>Contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαφή</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="203"/>
         <source>No. of contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρ. επαφών</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="208"/>
         <source>No. of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρ. ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="219"/>
@@ -4904,27 +4932,27 @@ Continue?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="248"/>
         <source>Lock automatic numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλείδωμα αυτόματης αρίθμησης</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="258"/>
         <source>Function separation</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαχωρισμός λειτουργιών</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="265"/>
         <source>Section (mm²)</source>
-        <translation type="unfinished"></translation>
+        <translation>Διατομή (mm²)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="282"/>
         <source>Width / manufacturer</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλάτος / κατασκευαστής</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="299"/>
         <source>Color</source>
-        <translation type="unfinished">Χρώμα</translation>
+        <translation>Χρώμα</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="320"/>
@@ -4981,7 +5009,7 @@ Continue?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="350"/>
         <source>Conductor definition</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="353"/>
@@ -5009,7 +5037,7 @@ Continue?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="357"/>
         <source>PLC slave</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαρτημένο PLC</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="359"/>
@@ -5053,7 +5081,7 @@ Continue?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="368"/>
         <source>PLC module</source>
-        <translation type="unfinished"></translation>
+        <translation>Μονάδα PLC</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="372"/>
@@ -5069,7 +5097,7 @@ Continue?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="374"/>
         <source>Sectionable</source>
-        <translation type="unfinished"></translation>
+        <translation>Με δυνατότητα απομόνωσης</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="375"/>
@@ -5079,27 +5107,27 @@ Continue?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="377"/>
         <source>Anti-parallel diodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιπαράλληλες δίοδοι</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="378"/>
         <source>Resistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντίσταση</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="379"/>
         <source>Varistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Βαρίστορ</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="380"/>
         <source>Test socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Υποδοχή δοκιμής</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="381"/>
         <source>Diode (reversed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Δίοδος (ανάστροφη)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="384"/>
@@ -5116,27 +5144,27 @@ Continue?</source>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="576"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="638"/>
         <source>None (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανένα (προεπιλογή)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="529"/>
         <source>%1 mm²</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm²</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="532"/>
         <source> mm²</source>
-        <translation type="unfinished"></translation>
+        <translation> mm²</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="545"/>
         <source>All manufacturers</source>
-        <translation type="unfinished"></translation>
+        <translation>Όλοι οι κατασκευαστές</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="615"/>
         <source>%1 mm</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="855"/>
@@ -5145,101 +5173,101 @@ Continue?</source>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1012"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1555"/>
         <source>T%1</source>
-        <translation type="unfinished"></translation>
+        <translation>T%1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="876"/>
         <source>Other</source>
         <comment>fr: Autre</comment>
-        <translation type="unfinished">Άλλο</translation>
+        <translation>Άλλο</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1027"/>
         <source>PLC Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρύθμιση PLC</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1032"/>
         <source>+</source>
-        <translation type="unfinished"></translation>
+        <translation>+</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1033"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1055"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1192"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Διεύθυνση</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1056"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1193"/>
         <source>Annotation</source>
-        <translation type="unfinished">Σχόλιο</translation>
+        <translation>Σχόλιο</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1056"/>
         <source>Cross-reference</source>
-        <translation type="unfinished">Διασταυρούμενη αναφορά</translation>
+        <translation>Διασταυρούμενη αναφορά</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1075"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1553"/>
         <source>Nb.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρ.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1075"/>
         <source>T1</source>
-        <translation type="unfinished"></translation>
+        <translation>T1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1142"/>
         <source>Header font</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά κεφαλίδων</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1143"/>
         <source>Set the font for column headers</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός της γραμματοσειράς των κεφαλίδων στηλών</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1147"/>
         <source>Text font</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1148"/>
         <source>Set the text font in the cells</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός της γραμματοσειράς κειμένου στα κελιά</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1152"/>
         <source>Show headers on the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση κεφαλίδων στο φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1153"/>
         <source>Show or hide the column headings of the PLC table on the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση ή απόκρυψη των κεφαλίδων στηλών του πίνακα PLC στο φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1165"/>
         <source>Jump to %1 after:</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετάβαση στο %1 μετά από:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1171"/>
         <source>None</source>
-        <translation type="unfinished">Κανένα</translation>
+        <translation>Κανένα</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1179"/>
         <source>Line H:</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμμή Υ:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="561"/>
@@ -5247,49 +5275,49 @@ Continue?</source>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1184"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1213"/>
         <source> mm</source>
-        <translation type="unfinished"></translation>
+        <translation> mm</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1193"/>
         <source>Ref.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναφ.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1200"/>
         <source>Custom column name (blank = default)</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμοσμένο όνομα στήλης (κενό = προεπιλογή)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1204"/>
         <source>Visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορατή</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1237"/>
         <source>Paste from the clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Επικόλληση από το πρόχειρο</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1329"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1706"/>
         <source>Heading font size: %1 %2pt</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος γραμματοσειράς κεφαλίδας: %1 %2pt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1331"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1722"/>
         <source>Font size: %1 %2pt</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος γραμματοσειράς: %1 %2pt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1703"/>
         <source>Column header formatting</source>
-        <translation type="unfinished"></translation>
+        <translation>Μορφοποίηση κεφαλίδων στηλών</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1719"/>
         <source>Cell text font</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά κειμένου κελιών</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="376"/>
@@ -5371,31 +5399,36 @@ Continue?</source>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="417"/>
         <source>Maximum number of slave contacts defined:  not defined
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγιστος αριθμός εξαρτημένων επαφών που έχει οριστεί:  μη ορισμένος
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="418"/>
         <source>Maximum number of slave contacts defined:  %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγιστος αριθμός εξαρτημένων επαφών που έχει οριστεί:  %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="423"/>
         <source>Number of slave contacts used : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός εξαρτημένων επαφών σε χρήση : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="438"/>
         <source>    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8
 </source>
-        <translation type="unfinished"></translation>
+        <translation>    Επαφές : NO : %1/%2, NC : %3/%4, μεταγωγικές : %5/%6, άλλες : %7/%8
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="447"/>
         <source>    Contacts : NO : %1, NC : %2, changeover : %3, other : %4
 </source>
-        <translation type="unfinished"></translation>
+        <translation>    Επαφές : NO : %1, NC : %2, μεταγωγικές : %3, άλλες : %4
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="454"/>
@@ -5407,7 +5440,7 @@ Continue?</source>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="469"/>
         <source>Lock Position</source>
-        <translation type="unfinished">Κλείδωμα της θέσης</translation>
+        <translation>Κλείδωμα της θέσης</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="485"/>
@@ -5541,12 +5574,12 @@ Continue?</source>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="314"/>
         <source>PLCs (MAE/SPS)</source>
-        <translation type="unfinished"></translation>
+        <translation>PLC (MAE/SPS)</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="324"/>
         <source>Slave contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαρτημένες επαφές</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="347"/>
@@ -5566,22 +5599,22 @@ Continue?</source>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="398"/>
         <source>Import reports from a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή αναφορών από αρχείο</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="401"/>
         <source>Import...</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή...</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="408"/>
         <source>Export all saved reports to a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή όλων των αποθηκευμένων αναφορών σε αρχείο</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="411"/>
         <source>Export...</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή...</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="433"/>
@@ -5617,24 +5650,24 @@ Continue?</source>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="815"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="822"/>
         <source>Export</source>
-        <translation type="unfinished">Εξαγωγή</translation>
+        <translation>Εξαγωγή</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="815"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="822"/>
         <source>No saved report to export.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν υπάρχει αποθηκευμένη αναφορά για εξαγωγή.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="827"/>
         <source>Export reports</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή αναφορών</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="828"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="848"/>
         <source>JSON files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία JSON (*.json)</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="835"/>
@@ -5642,58 +5675,58 @@ Continue?</source>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="865"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="908"/>
         <source>Error</source>
-        <translation type="unfinished">Σφάλμα</translation>
+        <translation>Σφάλμα</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="835"/>
         <source>Unable to write to %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η εγγραφή στο %1.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="848"/>
         <source>Import reports</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή αναφορών</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="855"/>
         <source>Unable to read %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η ανάγνωση του %1.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="866"/>
         <source>%1 does not contain valid QElectroTech reports.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το %1 δεν περιέχει έγκυρες αναφορές QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="872"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="916"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="872"/>
         <source>This file does not contain any report.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το αρχείο δεν περιέχει καμία αναφορά.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="889"/>
         <source>Report already exists</source>
-        <translation type="unfinished"></translation>
+        <translation>Η αναφορά υπάρχει ήδη</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="890"/>
         <source>A report named &quot;%1&quot; already exists. Replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Υπάρχει ήδη αναφορά με όνομα «%1». Να αντικατασταθεί;</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="908"/>
         <source>Unable to write the local configuration.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η εγγραφή της τοπικής ρύθμισης.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="917"/>
         <source>%1 report(s) imported, %2 skipped.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 αναφορές εισήχθησαν, %2 παραλείφθηκαν.</translation>
     </message>
 </context>
 <context>
@@ -5874,7 +5907,7 @@ Continue?</source>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="219"/>
         <source>Import an EPLAN part (.edz)…</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή εξαρτήματος EPLAN (.edz)…</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="221"/>
@@ -5946,7 +5979,7 @@ All the elements and contents file in this folder will be deleted.</source>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="787"/>
         <source>Warning — Importing an EPLAN file (.edz)</source>
-        <translation type="unfinished"></translation>
+        <translation>Προειδοποίηση — Εισαγωγή αρχείου EPLAN (.edz)</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="790"/>
@@ -5958,38 +5991,46 @@ By importing this file, you confirm that:
 • you are aware of its source and are authorised to use it in this context, in accordance with the terms and conditions applicable to that source;
 • this import is carried out at your own risk and responsibility;
 • neither QElectroTech, nor its maintainers, nor its contributors can be held liable for any unauthorised use of this data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Η μορφή αρχείου .edz μπορεί να προέρχεται από δύο διαφορετικές πηγές:
+• Το EPLAN Data Portal (dataportal.eplan.com), που υπόκειται στους όρους χρήσης του περιβάλλοντος EPLAN Cloud·
+• Τον ιστότοπο ενός κατασκευαστή (ή διανομέα) εξαρτημάτων, που διαθέτει απευθείας τα αρχεία .edz του, υπό τους δικούς του όρους και προϋποθέσεις.
+Το QElectroTech δεν μπορεί να προσδιορίσει αυτόματα την προέλευση του αρχείου που εισάγετε ούτε τους όρους και τις προϋποθέσεις που ισχύουν γι&apos; αυτό.
+Εισάγοντας αυτό το αρχείο, επιβεβαιώνετε ότι:
+• γνωρίζετε την πηγή του και έχετε δικαίωμα να το χρησιμοποιήσετε σε αυτό το πλαίσιο, σύμφωνα με τους όρους και τις προϋποθέσεις που ισχύουν για την πηγή αυτή·
+• η εισαγωγή γίνεται με δική σας ευθύνη και κίνδυνο·
+• ούτε το QElectroTech, ούτε οι συντηρητές του, ούτε οι συνεισφέροντές του φέρουν ευθύνη για οποιαδήποτε μη εξουσιοδοτημένη χρήση αυτών των δεδομένων.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="812"/>
         <source>I have read and accept these terms and conditions.</source>
-        <translation type="unfinished"></translation>
+        <translation>Έχω διαβάσει και αποδέχομαι αυτούς τους όρους και τις προϋποθέσεις.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="817"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="858"/>
         <source>Import an EPLAN part</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή εξαρτήματος EPLAN</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="859"/>
         <source>EPLAN parts (*.edz)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαρτήματα EPLAN (*.edz)</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="867"/>
         <source>Import EPLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή EPLAN</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="868"/>
         <source>Could not import this part:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν ήταν δυνατή η εισαγωγή αυτού του εξαρτήματος:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="954"/>
@@ -6025,17 +6066,17 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="240"/>
         <source>Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση...</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="267"/>
         <source>Collections</source>
-        <translation type="unfinished">Συλλογές</translation>
+        <translation>Συλλογές</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="268"/>
         <source>Templates</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρότυπα</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="964"/>
@@ -6084,13 +6125,13 @@ By importing this file, you confirm that:
         <location filename="../sources/elementspanel.cpp" line="276"/>
         <source>Double-click to collapse or expand the title block company collection</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διπλό κλικ για αναδίπλωση ή ανάπτυξη της συλλογής πινακίδων της εταιρείας</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="277"/>
         <source>This is the title block company collection -- use it to create, store and edit your own title blocks.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή είναι η συλλογή πινακίδων της εταιρείας -- χρησιμοποιήστε τη για να δημιουργείτε, να αποθηκεύετε και να επεξεργάζεστε τις δικές σας πινακίδες.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="284"/>
@@ -6155,17 +6196,17 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Insert a sheet number above</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή αριθμού φύλλου από πάνω</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Insert a sheet number below</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή αριθμού φύλλου από κάτω</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Copy and paste</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγραφή και επικόλληση</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
@@ -6222,7 +6263,7 @@ By importing this file, you confirm that:
         <location filename="../sources/elementspanelwidget.cpp" line="94"/>
         <location filename="../sources/elementspanelwidget.cpp" line="95"/>
         <source>Elements panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Πίνακας στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="102"/>
@@ -6270,7 +6311,7 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.cpp" line="152"/>
         <source>Change an ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή μιας έλλειψης</translation>
     </message>
 </context>
 <context>
@@ -6370,13 +6411,13 @@ By importing this file, you confirm that:
         <location filename="../sources/exportdialog.cpp" line="517"/>
         <source>Images not included in the DXF export</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Οι εικόνες δεν περιλαμβάνονται στην εξαγωγή DXF</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="518"/>
         <source>The DXF format used here (AC1006) cannot embed images. Images will only be represented by an outline rectangle (position, size, rotation and skew are preserved), without the image content.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Η μορφή DXF που χρησιμοποιείται εδώ (AC1006) δεν μπορεί να ενσωματώσει εικόνες. Οι εικόνες θα αναπαρίστανται μόνο με ένα ορθογώνιο περίγραμμα (θέση, μέγεθος, περιστροφή και κλίση διατηρούνται), χωρίς το περιεχόμενο της εικόνας.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="563"/>
@@ -6452,7 +6493,7 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="220"/>
         <source>Draw the names of the terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχεδίαση των ονομάτων των ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="224"/>
@@ -6462,37 +6503,37 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="228"/>
         <source>SVG-background transparent</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG: διαφανές φόντο</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="232"/>
         <source>DXF: symbols as blocks</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF: σύμβολα ως μπλοκ</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="233"/>
         <source>Each symbol becomes a DXF block, selectable with one click in CAD software</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάθε σύμβολο γίνεται ένα μπλοκ DXF, που επιλέγεται με ένα κλικ σε λογισμικό CAD</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="237"/>
         <source>DXF: symbol texts as attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF: κείμενα συμβόλων ως χαρακτηριστικά</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="238"/>
         <source>A symbol&apos;s texts (label, function...) become attributes of its block. LibreCAD does not show attributes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Τα κείμενα ενός συμβόλου (ετικέτα, λειτουργία...) γίνονται χαρακτηριστικά (attributes) του μπλοκ του. Το LibreCAD δεν εμφανίζει χαρακτηριστικά.</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="243"/>
         <source>SVG: smaller pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG: μικρότερες εικόνες</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="244"/>
         <source>Pictures are stored at four times the size they have on the folio instead of their full resolution: a much smaller file, still sharp when printed</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι εικόνες αποθηκεύονται στο τετραπλάσιο του μεγέθους που έχουν στο φύλλο αντί για την πλήρη ανάλυσή τους: πολύ μικρότερο αρχείο, που παραμένει ευκρινές στην εκτύπωση</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="204"/>
@@ -6671,7 +6712,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="20"/>
         <source>Filter by label (e.g. Z1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Φιλτράρισμα κατά ετικέτα (π.χ. Z1)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="30"/>
@@ -6691,7 +6732,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="84"/>
         <source>LED :</source>
-        <translation type="unfinished"></translation>
+        <translation>LED :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="91"/>
@@ -6712,7 +6753,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="122"/>
         <source>Sectionable</source>
-        <translation type="unfinished"></translation>
+        <translation>Με δυνατότητα απομόνωσης</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="127"/>
@@ -6727,27 +6768,27 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="137"/>
         <source>Anti-parallel diodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιπαράλληλες δίοδοι</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="142"/>
         <source>Resistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντίσταση</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="147"/>
         <source>Varistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Βαρίστορ</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="152"/>
         <source>Test socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Υποδοχή δοκιμής</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="157"/>
         <source>Diode (reversed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Δίοδος (ανάστροφη)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="171"/>
@@ -6777,22 +6818,22 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="328"/>
         <source>The project has no terminal strip: create one with the + button</source>
-        <translation type="unfinished"></translation>
+        <translation>Το έργο δεν έχει σειρά ακροδεκτών: δημιουργήστε μία με το κουμπί +</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="330"/>
         <source>Apply or cancel the current changes before moving</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμόστε ή ακυρώστε τις τρέχουσες αλλαγές πριν από τη μετακίνηση</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="332"/>
         <source>Select the terminals to move in the table</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε στον πίνακα τους ακροδέκτες προς μετακίνηση</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="334"/>
         <source>Move the selected terminals to the chosen terminal block</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση των επιλεγμένων ακροδεκτών στην επιλεγμένη σειρά ακροδεκτών</translation>
     </message>
 </context>
 <context>
@@ -6820,7 +6861,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="232"/>
         <source>led</source>
-        <translation type="unfinished"></translation>
+        <translation>led</translation>
     </message>
 </context>
 <context>
@@ -6993,97 +7034,97 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="39"/>
         <source>Application color</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρώμα εφαρμογής</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση των ιδιοτήτων ενός επιλεγμένου αγωγού στον πίνακα Ιδιότητες επιλογής</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
         <source>When unticked, no conductors-per-terminal rule applies, whatever the projects&apos; settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Όταν δεν είναι επιλεγμένο, δεν εφαρμόζεται κανένας κανόνας αγωγών ανά ακροδέκτη, ανεξάρτητα από τις ρυθμίσεις των έργων.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="79"/>
         <source>Apply the projects&apos; conductors-per-terminal rules</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή των κανόνων αγωγών ανά ακροδέκτη των έργων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="94"/>
         <source>Maximum conductors per terminal:</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγιστος αριθμός αγωγών ανά ακροδέκτη:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="107"/>
         <source>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
-        <translation type="unfinished"></translation>
+        <translation>Για όλα τα έργα εκτός από όσα έχουν δικές τους ρυθμίσεις. Ένας νέος αγωγός που θα ξεπερνούσε αυτόν τον αριθμό σε έναν ακροδέκτη απορρίπτεται· οι αγωγοί που έχουν ήδη σχεδιαστεί δεν αλλάζουν. Το 4 σημαίνει δύο διπλά ακροχιτώνια, ένα σε κάθε πλευρά της βίδας.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="110"/>
         <source>No limit</source>
-        <translation type="unfinished"></translation>
+        <translation>Χωρίς όριο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="134"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μια αναφορά φύλλου είναι ένα εικονικό σημείο: δέχεται μόνο έναν αγωγό, αυτόν που συνεχίζει στο άλλο φύλλο.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="137"/>
         <source>Only one conductor per sheet reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Μόνο ένας αγωγός ανά αναφορά φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="153"/>
         <source>Show the default grid (applied the next time the programme is launched)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση του προεπιλεγμένου πλέγματος (εφαρμόζεται στην επόμενη εκκίνηση του προγράμματος)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="160"/>
         <source>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Από προεπιλογή, το διπλό κλικ εισάγει το στοιχείο στο φύλλο· η επεξεργασία παραμένει διαθέσιμη από το μενού περιβάλλοντος.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="163"/>
         <source>Double-clicking in the collection opens the element editor instead of inserting it</source>
-        <translation type="unfinished"></translation>
+        <translation>Το διπλό κλικ στη συλλογή ανοίγει τον επεξεργαστή στοιχείων αντί να εισάγει το στοιχείο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="170"/>
         <source>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλεγμένο: μία ενιαία λίστα, με την καλύτερη αντιστοιχία πρώτη. Μη επιλεγμένο: το δέντρο της συλλογής, φιλτραρισμένο από την αναζήτηση.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="173"/>
         <source>Show search results as a sorted list</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση των αποτελεσμάτων αναζήτησης ως ταξινομημένη λίστα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
         <source>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετά από ένα κλικ που επιλέγει ένα στοιχείο ή έναν αγωγό, οι εντολές της γραμμής συντομεύσεων εμφανίζονται κοντά στον δρομέα και σβήνουν όταν το ποντίκι απομακρύνεται.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="183"/>
         <source>Show commands near the selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση εντολών κοντά στην επιλογή</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="190"/>
         <source>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</source>
-        <translation type="unfinished"></translation>
+        <translation>Κρατώντας πατημένο το δεξί κουμπί και σύροντας προς μια κατεύθυνση εκτελείται μια εντολή της γραμμής συντομεύσεων. Ένα απλό δεξί κλικ εξακολουθεί να ανοίγει το μενού περιβάλλοντος, όταν αφήσετε το κουμπί.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="193"/>
         <source>Right-button mouse gestures</source>
-        <translation type="unfinished"></translation>
+        <translation>Κινήσεις ποντικιού με το δεξί κουμπί</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="200"/>
         <source>Show default guides (applies from the next time the programme is launched)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση των προεπιλεγμένων οδηγών (εφαρμόζεται από την επόμενη εκκίνηση του προγράμματος)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="214"/>
@@ -7103,96 +7144,96 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="333"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση των επικολλημένων ή αντιγραμμένων στοιχείων που ακολουθούν μια αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="336"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ένα επικολλημένο στοιχείο λαμβάνει τον επόμενο αριθμό της αρίθμησής του αντί για το όνομα του αντιγραμμένου στοιχείου, και η αρίθμηση προχωρά.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="343"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ένα μικρό κρυφό αρχείο δίπλα στο έργο δείχνει ποιος το έχει ανοιχτό. Όποιος άλλος το ανοίξει ειδοποιείται και μπορεί να το ανοίξει μόνο για ανάγνωση. Απενεργοποιήστε το αν ο κοινόχρηστος δίσκος σας δεν το υποστηρίζει.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="346"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ενημέρωση των άλλων για το ποιος έχει ανοιχτό ένα έργο (αρχείο κλειδώματος δίπλα στο έργο)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="360"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
-        <translation type="unfinished"></translation>
+        <translation>Να επιτρέπεται η εκτέλεση σεναρίων JavaScript (Έργο &gt; Εκτέλεση σεναρίου, και --run)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="363"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ένα σενάριο εκτελείται με τα δικαιώματά σας: μπορεί να διαβάζει και να τροποποιεί το ανοιχτό έργο και να γράφει αρχεία. Απενεργοποιημένο από προεπιλογή· εκτελείτε μόνο σενάρια των οποίων γνωρίζετε την προέλευση.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="370"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
-        <translation type="unfinished"></translation>
+        <translation>Να επιτρέπεται σε βοηθό τεχνητής νοημοσύνης να ενεργεί στο ανοιχτό έργο (ζωντανή λειτουργία)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="373"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ένας βοηθός συνδεδεμένος μέσω του διακομιστή MCP μπορεί τότε να εκτελεί σενάρια στο ανοιχτό έργο, ενώ εσείς παρακολουθείτε. Σε κάθε εκκίνηση εμφανίζεται προειδοποίηση όσο η ρύθμιση είναι ενεργή. Ισχύει από την επόμενη εκκίνηση· η απενεργοποίησή της κλείνει αμέσως τη σύνδεση.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
         <source>Previous versions kept when saving a project</source>
-        <translation type="unfinished"></translation>
+        <translation>Προηγούμενες εκδόσεις που διατηρούνται κατά την αποθήκευση ενός έργου</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>Πριν από την αποθήκευση ενός έργου, το αρχείο όπως ήταν αντιγράφεται σε έναν φάκελο δίπλα του, με το όνομα του έργου και την κατάληξη «-backups». Διατηρούνται μόνο οι πιο πρόσφατες.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
         <source>None</source>
-        <translation type="unfinished">Κανένα</translation>
+        <translation>Καμία</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="455"/>
         <source>Company collection directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατάλογος συλλογής της εταιρείας</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
         <source>Create or change the prefix of the user collection&apos;s folders (qet_labels.xml file)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the user collection</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία ή αλλαγή του προθέματος των φακέλων της συλλογής χρήστη (αρχείο qet_labels.xml)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
         <source>Configure prefixes…</source>
         <extracomment>button opening the dialog where the folder prefixes of the user collection are configured</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ρύθμιση προθεμάτων…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="507"/>
         <source>Company title-block directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατάλογος πινακίδων της εταιρείας</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
         <source>User Macro Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατάλογος μακροεντολών χρήστη</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="598"/>
         <source>Materials list file</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχείο λίστας υλικών</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="607"/>
         <source>Materials list used to fill in a symbol&apos;s items</source>
         <extracomment>tooltip of the material file path field</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Λίστα υλικών που χρησιμοποιείται για τη συμπλήρωση των ειδών ενός συμβόλου</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="613"/>
@@ -7201,36 +7242,36 @@ that you create. Text and number inputs are
         <extracomment>hint shown when no material file is configured yet
 ----------
 hint shown when no cable type file is configured yet</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Δεν έχει οριστεί</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="627"/>
         <source>Create the list file with its headers</source>
         <extracomment>tooltip of the button creating the material file with its header line</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία του αρχείου λίστας με τις κεφαλίδες του</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="630"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="671"/>
         <source>Create...</source>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία...</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="639"/>
         <source>Cable type list file</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχείο λίστας τύπων καλωδίων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="648"/>
         <source>Directory of the cable types used to define a cable (number of cores, colors, cross-section)</source>
         <extracomment>tooltip of the cable type file path field</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Κατάλογος των τύπων καλωδίων που χρησιμοποιούνται για τον ορισμό ενός καλωδίου (αριθμός κλώνων, χρώματα, διατομή)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="668"/>
         <source>Create the cable type list file with its header line</source>
         <extracomment>tooltip of the button creating the cable type file with its header line</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία του αρχείου λίστας τύπων καλωδίων με τη γραμμή κεφαλίδας του</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
@@ -7284,52 +7325,52 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="944"/>
         <source>Cable texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενα καλωδίων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="950"/>
         <source>Designation, type, plant, location, length :</source>
-        <translation type="unfinished"></translation>
+        <translation>Ονομασία, τύπος, εγκατάσταση, τοποθεσία, μήκος :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="973"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά των κειμένων που γράφονται κατά μήκος της γραμμής του καλωδίου· ένα καλώδιο που έχει δική του τη διατηρεί.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="983"/>
         <source>Core colors (all of them) :</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρώματα κλώνων (όλα) :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1006"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά των χρωμάτων κλώνων που γράφονται κατά μήκος της γραμμής· ένα καλώδιο που έχει δική του τη διατηρεί.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1016"/>
         <source>Text alignment :</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση κειμένου :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1026"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Πού σταματούν τα κείμενα ενός καλωδίου σε σχέση με την αρχή της γραμμής του· ένα καλώδιο που έχει δική του ρύθμιση τη διατηρεί.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1030"/>
         <source>Right aligned</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση δεξιά</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1035"/>
         <source>Centred</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση στο κέντρο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1040"/>
         <source>Left aligned</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση αριστερά</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1112"/>
@@ -7339,12 +7380,12 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1158"/>
         <source>Grid for texts moved with the mouse</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλέγμα για κείμενα που μετακινούνται με το ποντίκι</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1161"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλάσμα του πλέγματος του φύλλου. Κρατήστε πατημένο το Ctrl κατά τη μετακίνηση για ελεύθερη τοποθέτηση.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1181"/>
@@ -7380,54 +7421,54 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1341"/>
         <source>View grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση πλέγματος</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1438"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1445"/>
         <source>max:</source>
-        <translation type="unfinished"></translation>
+        <translation>μέγ.:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1526"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατά την αποθήκευση ενός συμβόλου: απόρριψη δύο ακροδεκτών με το ίδιο όνομα και αναφορά ακροδεκτών χωρίς όνομα (IEC 61666).</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1529"/>
         <source>Check terminal names when saving</source>
-        <translation type="unfinished"></translation>
+        <translation>Έλεγχος ονομάτων ακροδεκτών κατά την αποθήκευση</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1399"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος σημείου στον επεξεργαστή σχεδίων: 1 - 5</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1261"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση με το πληκτρολόγιο με το πλήκτρο Ctrl: 1 - 9</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1347"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1452"/>
         <source>min:</source>
-        <translation type="unfinished"></translation>
+        <translation>ελάχ.:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1459"/>
         <source>Point-size in element-editor: 1 - 5</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος σημείου στον επεξεργαστή στοιχείων: 1 - 5</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1483"/>
         <source>Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργαστής</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1491"/>
         <source>Max. parts in Element Editor List</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγ. αριθμός τμημάτων στη λίστα του επεξεργαστή στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="353"/>
@@ -7442,22 +7483,22 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="61"/>
         <source>Bold italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Έντονα πλάγια</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="63"/>
         <source>Bold</source>
-        <translation type="unfinished">Έντονα</translation>
+        <translation>Έντονα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="65"/>
         <source>Italic</source>
-        <translation type="unfinished">Πλάγια</translation>
+        <translation>Πλάγια</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="67"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανονικά</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="88"/>
@@ -7488,24 +7529,24 @@ hint shown when no cable type file is configured yet</extracomment>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="123"/>
         <source>Disabled</source>
         <comment>fr: Désactivée</comment>
-        <translation type="unfinished">Απενεργοποιημένο</translation>
+        <translation>Απενεργοποιημένο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="174"/>
         <source>Enabled by the QET_ENABLE_SCRIPTING environment variable; this setting has no effect while it is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ενεργοποιήθηκε από τη μεταβλητή περιβάλλοντος QET_ENABLE_SCRIPTING· η ρύθμιση αυτή δεν έχει αποτέλεσμα όσο είναι ορισμένη.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="314"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
-        <translation type="unfinished"></translation>
+        <translation>Δεν έχει οριστεί (προεπιλογή: %1)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="325"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
-        <translation type="unfinished"></translation>
+        <translation>Δεν έχει οριστεί (προεπιλογή: %1)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="579"/>
@@ -7586,7 +7627,7 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="614"/>
         <source>Korean</source>
-        <translation type="unfinished"></translation>
+        <translation>Κορεατικά</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="615"/>
@@ -7646,97 +7687,102 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="626"/>
         <source>Ukrainian</source>
-        <translation type="unfinished"></translation>
+        <translation>Ουκρανικά</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="627"/>
         <source>Chinese</source>
-        <translation type="unfinished"></translation>
+        <translation>Κινεζικά</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="628"/>
         <source>Chinese (Traditional)</source>
-        <translation type="unfinished"></translation>
+        <translation>Κινεζικά (Παραδοσιακά)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="629"/>
         <source>Swedish</source>
-        <translation type="unfinished"></translation>
+        <translation>Σουηδικά</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="703"/>
         <source>Cable text font</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά κειμένων καλωδίων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="721"/>
         <source>Core colors font</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά χρωμάτων κλώνων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="750"/>
         <source>Company collection path</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαδρομή συλλογής της εταιρείας</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="778"/>
         <source>Company title-blocks</source>
-        <translation type="unfinished"></translation>
+        <translation>Πινακίδες της εταιρείας</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="806"/>
         <source>User macro path</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαδρομή μακροεντολών χρήστη</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="848"/>
         <source>Folder not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο φάκελος δεν βρέθηκε</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="849"/>
         <source>The user collection folder:
 %1
 does not exist and could not be created.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο φάκελος της συλλογής χρήστη:
+%1
+δεν υπάρχει και δεν ήταν δυνατή η δημιουργία του.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="857"/>
         <source>No subfolder</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν υπάρχει υποφάκελος</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="858"/>
         <source>The user collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
-        <translation type="unfinished"></translation>
+        <translation>Η συλλογή χρήστη:
+%1
+δεν έχει υποφάκελο, οπότε δεν υπάρχει πρόθεμα προς ρύθμιση.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="866"/>
         <source>Prefix file cannot be read</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η ανάγνωση του αρχείου προθεμάτων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="875"/>
         <source>Prefix file damaged</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο προθεμάτων είναι κατεστραμμένο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="876"/>
         <source>The file %1 is not a valid XML file:
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο %1 δεν είναι έγκυρο αρχείο XML:
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="880"/>
         <source>Fix the file</source>
-        <translation type="unfinished"></translation>
+        <translation>Διόρθωση του αρχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="881"/>
         <source>Rebuild</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναδημιουργία</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="882"/>
@@ -7745,17 +7791,21 @@ has no subfolder, so there is no prefix to configure.</source>
 “Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
 
 “Rebuild”: the folder tree is made again, but all the current prefixes are lost. The current file is kept as qet_labels.xml.bak before it is replaced.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν έχει αλλάξει τίποτα ακόμη.
+
+«Διόρθωση του αρχείου»: αυτό το παράθυρο κλείνει χωρίς να αλλάξει τίποτα. Ανοίξτε το αρχείο σε έναν επεξεργαστή κειμένου στο σημείο που εμφανίζεται, διορθώστε το και εκτελέστε ξανά αυτή την εντολή.
+
+«Αναδημιουργία»: το δέντρο φακέλων δημιουργείται ξανά, αλλά χάνονται όλα τα τρέχοντα προθέματα. Το τρέχον αρχείο διατηρείται ως qet_labels.xml.bak πριν αντικατασταθεί.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="891"/>
         <source>File: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχείο: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="915"/>
         <source>Select the materials list file</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε το αρχείο λίστας υλικών</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="917"/>
@@ -7763,17 +7813,17 @@ has no subfolder, so there is no prefix to configure.</source>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="981"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1004"/>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished">Αρχεία csv (*.csv) </translation>
+        <translation>Αρχεία CSV (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="938"/>
         <source>Create the materials list file</source>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία του αρχείου λίστας υλικών</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="956"/>
         <source>Cannot create</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η δημιουργία</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="957"/>
@@ -7781,32 +7831,34 @@ has no subfolder, so there is no prefix to configure.</source>
         <source>Cannot create the file:
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η δημιουργία του αρχείου:
+%1
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="979"/>
         <source>Select the cable types file</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε το αρχείο τύπων καλωδίων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1002"/>
         <source>Create the cable types file</source>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία του αρχείου τύπων καλωδίων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1020"/>
         <source>Cannot be created</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν ήταν δυνατή η δημιουργία</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1050"/>
         <source>Values that are too high might cause the application to crash</source>
-        <translation type="unfinished"></translation>
+        <translation>Πολύ υψηλές τιμές μπορεί να προκαλέσουν κατάρρευση της εφαρμογής</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1085"/>
         <source>Experimental feature</source>
-        <translation type="unfinished"></translation>
+        <translation>Πειραματική λειτουργία</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1086"/>
@@ -7816,7 +7868,12 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 1 - the selected setting 
 2 - the screen&apos;s dpi 
 3 - editing the project on another computer and/or screen that does not have the same settings as in points 1 and 2.</source>
-        <translation type="unfinished"></translation>
+        <translation>ΠΡΟΣΟΧΗ:
+Οποιαδήποτε ρύθμιση εκτός από «Χωρίς στρογγυλοποίηση» μπορεί να προκαλέσει σφάλματα απόδοσης στο έργο, ανάλογα με:
+
+1 - την επιλεγμένη ρύθμιση 
+2 - τα dpi της οθόνης 
+3 - την επεξεργασία του έργου σε άλλον υπολογιστή ή/και οθόνη που δεν έχει τις ίδιες ρυθμίσεις με τα σημεία 1 και 2.</translation>
     </message>
 </context>
 <context>
@@ -7824,59 +7881,59 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="114"/>
         <source>Left</source>
-        <translation type="unfinished">Αριστερά</translation>
+        <translation>Αριστερά</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="115"/>
         <source>Right</source>
-        <translation type="unfinished">Δεξιά</translation>
+        <translation>Δεξιά</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="116"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Πάνω</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="117"/>
         <source>Bottom</source>
-        <translation type="unfinished">Κάτω</translation>
+        <translation>Κάτω</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="154"/>
         <source>Cannot read &quot;%1&quot;: use one {n}, {zn} or {a-b} per name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η ανάγνωση του &quot;%1&quot;: χρησιμοποιήστε ένα {n}, {zn} ή {a-b} ανά όνομα.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="163"/>
         <source>Cannot read &quot;%1&quot;: z does not go with a range.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η ανάγνωση του &quot;%1&quot;: το z δεν συνδυάζεται με εύρος.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="176"/>
         <source>&quot;%1&quot; gives no terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το &quot;%1&quot; δεν δίνει κανέναν ακροδέκτη.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="181"/>
         <source>&quot;%1&quot; gives %2 terminals; at most %3 at once.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το &quot;%1&quot; δίνει %2 ακροδέκτες· το πολύ %3 κάθε φορά.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="600"/>
         <source>At a pitch of 1 grid square the names of neighbouring terminals overlap.</source>
-        <translation type="unfinished"></translation>
+        <translation>Με βήμα 1 τετραγώνου πλέγματος, τα ονόματα γειτονικών ακροδεκτών επικαλύπτονται.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="605"/>
         <source>Repeated terminal names: %1. Fine if the device really repeats them, as N or PE often are.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναλαμβανόμενα ονόματα ακροδεκτών: %1. Είναι εντάξει αν η συσκευή πράγματι τα επαναλαμβάνει, όπως συχνά τα N ή PE.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/genericdevice/genericdevice.cpp" line="608"/>
         <source>%n terminal(s) without a name.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n ακροδέκτης χωρίς όνομα.</numerusform>
+            <numerusform>%n ακροδέκτες χωρίς όνομα.</numerusform>
         </translation>
     </message>
 </context>
@@ -7885,52 +7942,52 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="645"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Πληροφορίες</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="646"/>
         <source>The name is how the symbol is listed in the project&apos;s collection; the rest can be changed later on the placed device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το όνομα είναι ο τρόπος με τον οποίο εμφανίζεται το σύμβολο στη συλλογή του έργου· τα υπόλοιπα μπορούν να αλλάξουν αργότερα στη συσκευή που τοποθετήθηκε.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="650"/>
         <source>Generic device</source>
-        <translation type="unfinished"></translation>
+        <translation>Γενική συσκευή</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="652"/>
         <source>e.g. -U1</source>
-        <translation type="unfinished"></translation>
+        <translation>π.χ. -U1</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="656"/>
         <source>Show the manufacturer reference in the box</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση του κωδικού κατασκευαστή στο πλαίσιο</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="659"/>
         <source>Name:</source>
-        <translation type="unfinished">Όνομα:</translation>
+        <translation>Όνομα:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="660"/>
         <source>Label:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ετικέτα:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="661"/>
         <source>Manufacturer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατασκευαστής:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="662"/>
         <source>Manufacturer reference:</source>
-        <translation type="unfinished"></translation>
+        <translation>Κωδικός κατασκευαστή:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="663"/>
         <source>Description:</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιγραφή:</translation>
     </message>
 </context>
 <context>
@@ -7938,79 +7995,79 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="168"/>
         <source>Layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Διάταξη</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="171"/>
         <source>How many terminals on each side, 0 for none. They are numbered 1…n; name them on the next page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Πόσοι ακροδέκτες σε κάθε πλευρά, 0 για κανέναν. Αριθμούνται 1…n· ονομάστε τους στην επόμενη σελίδα.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="175"/>
         <source>Terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτες</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="176"/>
         <source>Group every</source>
-        <translation type="unfinished"></translation>
+        <translation>Ομαδοποίηση ανά</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="184"/>
         <source>no groups</source>
-        <translation type="unfinished"></translation>
+        <translation>χωρίς ομάδες</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="185"/>
         <source>Leave a gap after every this many terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Αφήστε ένα κενό μετά από τόσους ακροδέκτες</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="194"/>
         <source>Mark gaps with a divider</source>
-        <translation type="unfinished"></translation>
+        <translation>Σήμανση των κενών με διαχωριστικό</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="195"/>
         <source>Line up groups across opposite sides</source>
-        <translation type="unfinished"></translation>
+        <translation>Ευθυγράμμιση ομάδων σε απέναντι πλευρές</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="196"/>
         <source>Adds blank rows to the shorter group, so that the gaps on facing sides fall on the same row</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθέτει κενές γραμμές στη μικρότερη ομάδα, ώστε τα κενά στις απέναντι πλευρές να πέφτουν στην ίδια γραμμή</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="201"/>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="204"/>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="207"/>
         <source> grid squares</source>
-        <translation type="unfinished"></translation>
+        <translation> τετράγωνα πλέγματος</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="210"/>
         <source>Space between terminals:</source>
-        <translation type="unfinished"></translation>
+        <translation>Απόσταση μεταξύ ακροδεκτών:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="211"/>
         <source>Extra width:</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιπλέον πλάτος:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="212"/>
         <source>Extra height:</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιπλέον ύψος:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="283"/>
         <source>Group terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Ομαδοποίηση ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="284"/>
         <source>Grouping replaces the gaps you made on the %1 side. Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Η ομαδοποίηση αντικαθιστά τα κενά που δημιουργήσατε στην πλευρά %1. Συνέχεια;</translation>
     </message>
 </context>
 <context>
@@ -8018,130 +8075,130 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="327"/>
         <source>Terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτες</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="330"/>
         <source>Name the terminals. A side can be typed as one line: In{4} gives In1 to In4, Q{z4} Q0 to Q3, X{3-6} X3 to X6, and an empty entry is a gap.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ονομάστε τους ακροδέκτες. Μια πλευρά μπορεί να γραφτεί ως μία γραμμή: In{4} δίνει In1 έως In4, Q{z4} Q0 έως Q3, X{3-6} X3 έως X6, και μια κενή καταχώριση είναι κενό.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="340"/>
         <source>As a line:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ως γραμμή:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="342"/>
         <source>e.g. L1,L2,L3,,PE</source>
-        <translation type="unfinished"></translation>
+        <translation>π.χ. L1,L2,L3,,PE</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="352"/>
         <source>Name</source>
-        <translation type="unfinished">Όνομα</translation>
+        <translation>Όνομα</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="352"/>
         <source>Function</source>
-        <translation type="unfinished">Λειτουργία</translation>
+        <translation>Λειτουργία</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="352"/>
         <source>Type</source>
-        <translation type="unfinished">Τύπος</translation>
+        <translation>Τύπος</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="364"/>
         <source>Add terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="365"/>
         <source>Add gap</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη κενού</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="366"/>
         <source>Delete</source>
-        <translation type="unfinished">Διαγραφή</translation>
+        <translation>Διαγραφή</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="367"/>
         <source>Up</source>
-        <translation type="unfinished">Επάνω</translation>
+        <translation>Επάνω</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="368"/>
         <source>Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάτω</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="374"/>
         <source>Number pins 1…n</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρίθμηση ακίδων 1…n</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="375"/>
         <source>Rename every terminal by its pin number, counter-clockwise from the top of the left side</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετονομασία κάθε ακροδέκτη με τον αριθμό ακίδας του, αριστερόστροφα από την κορυφή της αριστερής πλευράς</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="377"/>
         <source>Paste table</source>
-        <translation type="unfinished"></translation>
+        <translation>Επικόλληση πίνακα</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="378"/>
         <source>Rows of side, name, function and type, copied from a spreadsheet or a CSV file. Side is left, right, top, bottom or L, R, T, B; an empty name is a gap.</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμμές με πλευρά, όνομα, λειτουργία και τύπο, αντιγραμμένες από υπολογιστικό φύλλο ή αρχείο CSV. Η πλευρά είναι left, right, top, bottom ή L, R, T, B· ένα κενό όνομα είναι κενό.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="449"/>
         <source>gap</source>
-        <translation type="unfinished"></translation>
+        <translation>κενό</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="461"/>
         <source>Generic</source>
-        <translation type="unfinished">Γενικό</translation>
+        <translation>Γενικό</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="462"/>
         <source>Inner</source>
-        <translation type="unfinished"></translation>
+        <translation>Εσωτερικός</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="463"/>
         <source>Outer</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξωτερικός</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="498"/>
         <source>This name is used more than once. Fine if the device repeats it, as N or PE often are.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το όνομα χρησιμοποιείται περισσότερες από μία φορές. Είναι εντάξει αν η συσκευή το επαναλαμβάνει, όπως συχνά τα N ή PE.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="513"/>
         <source>A name holds a comma or a brace, which a line cannot say: edit this side in the table.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ένα όνομα περιέχει κόμμα ή άγκιστρο, που μια γραμμή δεν μπορεί να εκφράσει: επεξεργαστείτε αυτή την πλευρά στον πίνακα.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="598"/>
         <source>Nothing to paste: copy rows of side, name, function from a spreadsheet or a CSV file first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Τίποτα για επικόλληση: αντιγράψτε πρώτα γραμμές με πλευρά, όνομα, λειτουργία από υπολογιστικό φύλλο ή αρχείο CSV.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="609"/>
         <source>Pasted %n row(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Επικολλήθηκε %n γραμμή.</numerusform>
+            <numerusform>Επικολλήθηκαν %n γραμμές.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="611"/>
         <source>Pasted %1 rows; skipped these, which could not be read: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Επικολλήθηκαν %1 γραμμές· παραλείφθηκαν αυτές που δεν ήταν δυνατό να διαβαστούν: %2</translation>
     </message>
 </context>
 <context>
@@ -8149,13 +8206,13 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="95"/>
         <source>Box: %1 × %2 grid squares</source>
-        <translation type="unfinished"></translation>
+        <translation>Κουτί: %1 × %2 τετράγωνα πλέγματος</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="723"/>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="750"/>
         <source>Generic device</source>
-        <translation type="unfinished"></translation>
+        <translation>Γενική συσκευή</translation>
     </message>
 </context>
 <context>
@@ -8213,73 +8270,73 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="303"/>
         <source>Drag with the right mouse button on a sheet: a ring of commands opens, release towards the one to run. Until you change the ring for a context, it shows the commands of the shortcut bar. Gestures are turned on or off in the General page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε με το δεξί κουμπί του ποντικιού σε ένα φύλλο: ανοίγει ένας δακτύλιος εντολών, αφήστε το κουμπί προς αυτή που θέλετε να εκτελέσετε. Μέχρι να αλλάξετε τον δακτύλιο για ένα πλαίσιο, εμφανίζει τις εντολές της γραμμής συντομεύσεων. Οι κινήσεις ενεργοποιούνται ή απενεργοποιούνται στη σελίδα Γενικά.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="312"/>
         <source>8 directions</source>
-        <translation type="unfinished"></translation>
+        <translation>8 κατευθύνσεις</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="313"/>
         <source>4 directions</source>
-        <translation type="unfinished"></translation>
+        <translation>4 κατευθύνσεις</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="347"/>
         <source>Place →</source>
-        <translation type="unfinished"></translation>
+        <translation>Τοποθέτηση →</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="349"/>
         <source>Clear the direction</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκκαθάριση της κατεύθυνσης</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="350"/>
         <source>Same as the shortcut bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Ίδιο με τη γραμμή συντομεύσεων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="360"/>
         <source>Available commands</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμες εντολές</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="361"/>
         <source>Ring, the chosen direction highlighted</source>
-        <translation type="unfinished"></translation>
+        <translation>Δακτύλιος, με επισημασμένη την επιλεγμένη κατεύθυνση</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="369"/>
         <source>Directions:</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατευθύνσεις:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="372"/>
         <source>Context:</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλαίσιο:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="425"/>
         <source>Mouse gestures</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κινήσεις ποντικιού</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="470"/>
         <source>(empty direction)</source>
-        <translation type="unfinished"></translation>
+        <translation>(κενή κατεύθυνση)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="473"/>
         <source>Custom ring for this context.</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμοσμένος δακτύλιος για αυτό το πλαίσιο.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="474"/>
         <source>This ring follows the shortcut bar.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτός ο δακτύλιος ακολουθεί τη γραμμή συντομεύσεων.</translation>
     </message>
 </context>
 <context>
@@ -8444,38 +8501,38 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="23"/>
         <source>Orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσανατολισμός</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="23"/>
         <source>Position</source>
-        <translation type="unfinished">Θέση</translation>
+        <translation>Θέση</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="23"/>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="93"/>
         <source>Color</source>
-        <translation type="unfinished">Χρώμα</translation>
+        <translation>Χρώμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="27"/>
         <source>Add</source>
-        <translation type="unfinished">Προσθήκη</translation>
+        <translation>Προσθήκη</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="28"/>
         <source>Delete</source>
-        <translation type="unfinished">Διαγραφή</translation>
+        <translation>Διαγραφή</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="84"/>
         <source>Horizontal</source>
-        <translation type="unfinished">Οριζόντια</translation>
+        <translation>Οριζόντια</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="84"/>
         <source>Vertical</source>
-        <translation type="unfinished">Κάθετα</translation>
+        <translation>Κάθετα</translation>
     </message>
 </context>
 <context>
@@ -8483,22 +8540,22 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/ui/imagecropdialog.cpp" line="257"/>
         <source>Crop the image</source>
-        <translation type="unfinished"></translation>
+        <translation>Περικοπή της εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagecropdialog.cpp" line="261"/>
         <source>Drag the handles, or the inside of the frame, to adjust the area to keep.</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε τις λαβές ή το εσωτερικό του πλαισίου για να προσαρμόσετε την περιοχή που θα διατηρηθεί.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagecropdialog.cpp" line="264"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφορά</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagecropdialog.cpp" line="265"/>
         <source>Return to the full image, without cropping</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιστροφή στην πλήρη εικόνα, χωρίς περικοπή</translation>
     </message>
 </context>
 <context>
@@ -8506,22 +8563,22 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/imagedrop.cpp" line="72"/>
         <source>not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>δεν είναι αρχείο</translation>
     </message>
     <message>
         <location filename="../sources/imagedrop.cpp" line="74"/>
         <source>the file is larger than 10 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>το αρχείο είναι μεγαλύτερο από 10 MB</translation>
     </message>
     <message>
         <location filename="../sources/imagedrop.cpp" line="79"/>
         <source>the image has too many pixels</source>
-        <translation type="unfinished"></translation>
+        <translation>η εικόνα έχει πάρα πολλά pixel</translation>
     </message>
     <message>
         <location filename="../sources/imagedrop.cpp" line="83"/>
         <source>unable to read the image</source>
-        <translation type="unfinished"></translation>
+        <translation>δεν είναι δυνατή η ανάγνωση της εικόνας</translation>
     </message>
 </context>
 <context>
@@ -8534,61 +8591,61 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
         <source>Width</source>
-        <translation type="unfinished">Πλάτος</translation>
+        <translation>Πλάτος</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="66"/>
         <source> %</source>
-        <translation type="unfinished"></translation>
+        <translation> %</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="46"/>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="299"/>
         <source>Locked: changing the width or height adjusts the other to keep proportions. Click to unlock.</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλειδωμένο: η αλλαγή του πλάτους ή του ύψους προσαρμόζει το άλλο για να διατηρηθούν οι αναλογίες. Κάντε κλικ για ξεκλείδωμα.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="59"/>
         <source>Height</source>
-        <translation type="unfinished"></translation>
+        <translation>Ύψος</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="82"/>
         <source>Restore proportions</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφορά αναλογιών</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="89"/>
         <source>Angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Γωνία</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="96"/>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="119"/>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="142"/>
         <source> °</source>
-        <translation type="unfinished"></translation>
+        <translation> °</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="112"/>
         <source>X skew</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλίση X</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="135"/>
         <source>Y skew</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλίση Y</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="158"/>
         <source>Label</source>
-        <translation type="unfinished">Ετικέτα</translation>
+        <translation>Ετικέτα</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="165"/>
         <source>Text displayed under the image. It follows the image when it is moved, copied or rotated.</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενο που εμφανίζεται κάτω από την εικόνα. Ακολουθεί την εικόνα όταν αυτή μετακινείται, αντιγράφεται ή περιστρέφεται.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="172"/>
@@ -8598,48 +8655,48 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="179"/>
         <source>Adapt the picture to the dark theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμογή της εικόνας στο σκούρο θέμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="182"/>
         <source>Adapts the colors for the dark display only. The original picture, exports and printouts stay unchanged.</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμόζει τα χρώματα μόνο για τη σκούρα εμφάνιση. Η αρχική εικόνα, οι εξαγωγές και οι εκτυπώσεις παραμένουν αμετάβλητες.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="223"/>
         <source>Change the width of an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του πλάτους μιας εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="224"/>
         <source>Change the height of an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του ύψους μιας εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="225"/>
         <source>Change the angle of an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή της γωνίας μιας εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="226"/>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="227"/>
         <source>Change the skew of an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή της κλίσης μιας εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="238"/>
         <source>Edit an image label</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία της ετικέτας μιας εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="246"/>
         <source>Change a picture&apos;s dark theme adaptation</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή της προσαρμογής μιας εικόνας στο σκούρο θέμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="300"/>
         <source>Unlocked: width and height can be changed independently. Click to lock.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ξεκλείδωτο: το πλάτος και το ύψος μπορούν να αλλάζουν ανεξάρτητα. Κάντε κλικ για κλείδωμα.</translation>
     </message>
 </context>
 <context>
@@ -8647,42 +8704,42 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="104"/>
         <source>Transparent color</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαφανές χρώμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="122"/>
         <source>Source image</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχική εικόνα</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="123"/>
         <source>Preview</source>
-        <translation type="unfinished">Προεπισκόπηση</translation>
+        <translation>Προεπισκόπηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="261"/>
         <source>rgb(%1, %2, %3)</source>
-        <translation type="unfinished"></translation>
+        <translation>rgb(%1, %2, %3)</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="266"/>
         <source>Tolerance for this color</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανοχή για αυτό το χρώμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="271"/>
         <source>Remove this color</source>
-        <translation type="unfinished"></translation>
+        <translation>Αφαίρεση αυτού του χρώματος</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="282"/>
         <source>Click on the image to add a color. Adjust each color&apos;s tolerance with its slider, or click × to remove it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάντε κλικ στην εικόνα για να προσθέσετε ένα χρώμα. Ρυθμίστε την ανοχή κάθε χρώματος με τον ολισθητή του ή κάντε κλικ στο × για να το αφαιρέσετε.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="281"/>
         <source>Click on the image to choose a color</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάντε κλικ στην εικόνα για να επιλέξετε χρώμα</translation>
     </message>
 </context>
 <context>
@@ -8820,7 +8877,7 @@ Please use the advanced editor for this.</source>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="226"/>
         <source>Change the width of a text field</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του πλάτους ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="266"/>
@@ -8840,7 +8897,7 @@ Please use the advanced editor for this.</source>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="311"/>
         <source>Change the width of several text fields</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του πλάτους πολλών πεδίων κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="323"/>
@@ -8865,7 +8922,7 @@ Please use the advanced editor for this.</source>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="85"/>
         <source>An error occurred with the template %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Παρουσιάστηκε σφάλμα με το πρότυπο %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="88"/>
@@ -8915,27 +8972,27 @@ Please use the advanced editor for this.</source>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="43"/>
         <source>Navigate to an element</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μετάβαση σε στοιχείο</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="46"/>
         <source>Name, label or information of the element, or cell (e.g. B13 or 3-B13)…</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα, ετικέτα ή πληροφορίες του στοιχείου, ή κελί (π.χ. B13 ή 3-B13)…</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="240"/>
         <source>Cell %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Κελί %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="244"/>
         <source>Sheet %1, cell %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Φύλλο %1, κελί %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="245"/>
         <source>Sheet %1 (%2), cell %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Φύλλο %1 (%2), κελί %3</translation>
     </message>
 </context>
 <context>
@@ -9043,7 +9100,7 @@ Please use the advanced editor for this.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="70"/>
         <source>Hide full master elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Απόκρυψη πλήρων κύριων στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="516"/>
@@ -9118,17 +9175,17 @@ Please use the advanced editor for this.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="623"/>
         <source> (already used)</source>
-        <translation type="unfinished"></translation>
+        <translation> (ήδη σε χρήση)</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="630"/>
         <source>Select a PLC I/O</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε μια είσοδο/έξοδο PLC</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="631"/>
         <source>Available I/O:</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμες είσοδοι/έξοδοι:</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
@@ -9181,7 +9238,7 @@ Please use the advanced editor for this.</source>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="196"/>
         <source>Live mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Ζωντανή λειτουργία</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="197"/>
@@ -9190,92 +9247,96 @@ Please use the advanced editor for this.</source>
 Each action is undone with one Ctrl+Z, and the “Stop” button in the status bar closes the connection.
 
 This setting is in Configure QElectroTech &gt; General &gt; Projects.</source>
-        <translation type="unfinished"></translation>
+        <translation>Η ζωντανή λειτουργία είναι ενεργή: ένας συνδεδεμένος βοηθός τεχνητής νοημοσύνης θα μπορεί να εκτελεί σενάρια στο ανοιχτό έργο.
+
+Κάθε ενέργεια αναιρείται με ένα Ctrl+Z, και το κουμπί «Διακοπή» στη γραμμή κατάστασης κλείνει τη σύνδεση.
+
+Αυτή η ρύθμιση βρίσκεται στο Ρύθμιση QElectroTech &gt; Γενικά &gt; Έργα.</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="206"/>
         <source>&amp;Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Συνέχεια</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="207"/>
         <source>&amp;Not this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Ό&amp;χι σε αυτή τη συνεδρία</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="208"/>
         <source>&amp;Turn off</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Απενεργοποίηση</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="210"/>
         <source>Don&apos;t ask again at start</source>
-        <translation type="unfinished"></translation>
+        <translation>Να μην ερωτώμαι ξανά κατά την εκκίνηση</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="211"/>
         <source>Live mode will open at every start. To be warned again, turn it off and back on in Configure QElectroTech &gt; General &gt; Projects.</source>
-        <translation type="unfinished"></translation>
+        <translation>Η ζωντανή λειτουργία θα ανοίγει σε κάθε εκκίνηση. Για να ειδοποιηθείτε ξανά, απενεργοποιήστε την και ενεργοποιήστε την πάλι στο Ρύθμιση QElectroTech &gt; Γενικά &gt; Έργα.</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="500"/>
         <location filename="../sources/scripting/liveserver.cpp" line="1031"/>
         <source>script</source>
-        <translation type="unfinished"></translation>
+        <translation>σενάριο</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="850"/>
         <source>Print</source>
-        <translation type="unfinished">Εκτύπωση</translation>
+        <translation>Εκτύπωση</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/scripting/liveserver.cpp" line="851"/>
         <source>The assistant wants to print %n folios of “%1” on “%2”.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ο βοηθός θέλει να εκτυπώσει %n φύλλο του «%1» στον «%2».</numerusform>
+            <numerusform>Ο βοηθός θέλει να εκτυπώσει %n φύλλα του «%1» στον «%2».</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="854"/>
         <source>&amp;Print</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Εκτύπωση</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="855"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Ακύρωση</translation>
+        <translation>&amp;Ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="946"/>
         <location filename="../sources/scripting/liveserver.cpp" line="979"/>
         <source>Assistant: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Βοηθός: %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="1027"/>
         <source>The assistant wants to run a script</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο βοηθός θέλει να εκτελέσει ένα σενάριο</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="1030"/>
         <source>“%1” on the open project. Once it has run, Ctrl+Z undoes it.</source>
-        <translation type="unfinished"></translation>
+        <translation>«%1» στο ανοιχτό έργο. Μετά την εκτέλεσή του, το Ctrl+Z το αναιρεί.</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="1038"/>
         <source>&amp;Run</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Εκτέλεση</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="1039"/>
         <source>&amp;Decline</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Απόρριψη</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="1040"/>
         <source>&amp;Always</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Πάντα</translation>
     </message>
 </context>
 <context>
@@ -9283,20 +9344,22 @@ This setting is in Configure QElectroTech &gt; General &gt; Projects.</source>
     <message>
         <location filename="../sources/scripting/macrorecorder.cpp" line="198"/>
         <source>Macro of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Μακροεντολή του %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/macrorecorder.cpp" line="206"/>
         <source>project closed during the recording: no after.qet</source>
-        <translation type="unfinished"></translation>
+        <translation>το έργο έκλεισε κατά την εγγραφή: δεν υπάρχει after.qet</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/scripting/macrorecorder.cpp" line="232"/>
         <source>I recorded a macro in QElectroTech: “%1”, %n steps (id %2, folder %3).
 With the qet MCP server: read it with qet_recording_read, write a script that does the same thing in general (for example on the selected elements rather than on those exact ones), check it with qet_recording_check until it matches, then offer it as a button with qet_script_install.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ηχογράφησα μια μακροεντολή στο QElectroTech: «%1», %n βήμα (αναγνωριστικό %2, φάκελος %3).
+Με τον διακομιστή MCP qet: διάβασέ την με το qet_recording_read, γράψε ένα σενάριο που κάνει το ίδιο γενικά (για παράδειγμα στα επιλεγμένα στοιχεία αντί για εκείνα ακριβώς), έλεγξέ το με το qet_recording_check μέχρι να ταιριάζει, και μετά πρόσφερέ το ως κουμπί με το qet_script_install.</numerusform>
+            <numerusform>Ηχογράφησα μια μακροεντολή στο QElectroTech: «%1», %n βήματα (αναγνωριστικό %2, φάκελος %3).
+Με τον διακομιστή MCP qet: διάβασέ την με το qet_recording_read, γράψε ένα σενάριο που κάνει το ίδιο γενικά (για παράδειγμα στα επιλεγμένα στοιχεία αντί για εκείνα ακριβώς), έλεγξέ το με το qet_recording_check μέχρι να ταιριάζει, και μετά πρόσφερέ το ως κουμπί με το qet_script_install.</numerusform>
         </translation>
     </message>
 </context>
@@ -9411,49 +9474,51 @@ With the qet MCP server: read it with qet_recording_read, write a script that do
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="320"/>
         <source>Maximum number of slaves reached.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιτεύχθηκε ο μέγιστος αριθμός εξαρτημένων.</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="321"/>
         <source>The limit set for this master element has been reached (Limit: %1).
 
 Do you still want to link this slave contact?</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιτεύχθηκε το όριο που έχει οριστεί για αυτό το κύριο στοιχείο (Όριο: %1).
+
+Θέλετε παρ&apos; όλα αυτά να συνδέσετε αυτή την εξαρτημένη επαφή;</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="540"/>
         <source>Type</source>
-        <translation type="unfinished">Τύπος</translation>
+        <translation>Τύπος</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="540"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Διεύθυνση</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="540"/>
         <source>Function</source>
-        <translation type="unfinished">Λειτουργία</translation>
+        <translation>Λειτουργία</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="541"/>
         <source>Annotation</source>
-        <translation type="unfinished">Σχόλιο</translation>
+        <translation>Σχόλιο</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="541"/>
         <source>Cross-reference</source>
-        <translation type="unfinished">Διασταυρούμενη αναφορά</translation>
+        <translation>Διασταυρούμενη αναφορά</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="541"/>
         <source>Terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτες</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="1078"/>
         <source>Paste from the clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Επικόλληση από το πρόχειρο</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="67"/>
@@ -9466,32 +9531,32 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="41"/>
         <source>New entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέα καταχώριση</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="51"/>
         <source>Fill in the item to add. Fields left empty stay empty in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Συμπληρώστε το είδος προς προσθήκη. Τα πεδία που μένουν κενά μένουν κενά και στο αρχείο.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="87"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="88"/>
         <source>Cancel</source>
-        <translation type="unfinished">Αναίρεση</translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="140"/>
         <source>Nothing filled in</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν συμπληρώθηκε τίποτα</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="141"/>
         <source>Fill in at least one field to create an entry.</source>
-        <translation type="unfinished"></translation>
+        <translation>Συμπληρώστε τουλάχιστον ένα πεδίο για να δημιουργήσετε καταχώριση.</translation>
     </message>
 </context>
 <context>
@@ -9500,22 +9565,22 @@ Do you still want to link this slave contact?</source>
         <location filename="../sources/materiallist/materiallist.cpp" line="329"/>
         <location filename="../sources/materiallist/materiallist.cpp" line="377"/>
         <source>Auxiliary block</source>
-        <translation type="unfinished"></translation>
+        <translation>Βοηθητικό μπλοκ</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="623"/>
         <source>Nothing to receive the materials list.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν υπάρχει παραλήπτης για τη λίστα υλικών.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="794"/>
         <source>The file has no header: columns are missing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο δεν έχει κεφαλίδα: λείπουν στήλες.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="825"/>
         <source>The file already exists and is not empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο υπάρχει ήδη και δεν είναι κενό.</translation>
     </message>
 </context>
 <context>
@@ -9523,94 +9588,98 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="20"/>
         <source>Materials list</source>
-        <translation type="unfinished"></translation>
+        <translation>Λίστα υλικών</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="31"/>
         <source>Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση:</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="38"/>
         <source>Every word typed must appear somewhere in the row</source>
         <extracomment>placeholder of the search field of the material list; several words narrow the results down (AND)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Κάθε λέξη που πληκτρολογείται πρέπει να εμφανίζεται κάπου στη γραμμή</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="44"/>
         <source>Search all columns</source>
         <extracomment>placeholder of the search field of the material list</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση σε όλες τις στήλες</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="75"/>
         <source>Entries: 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Καταχωρίσεις: 0</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="84"/>
         <source>Add a new item to the list</source>
         <extracomment>button adding a new row to the material list file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη νέου είδους στη λίστα</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="87"/>
         <source>New entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέα καταχώριση</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="259"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="260"/>
         <source>Cancel</source>
-        <translation type="unfinished">Αναίρεση</translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="450"/>
         <source>Cannot read</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η ανάγνωση</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="451"/>
         <source>Cannot read the file:
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η ανάγνωση του αρχείου:
+%1
+%2</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="471"/>
         <source>Entries: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Καταχωρίσεις: %1</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="473"/>
         <source>Entries: %1 of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Καταχωρίσεις: %1 από %2</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="606"/>
         <source>Nothing selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν επιλέχθηκε τίποτα</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="607"/>
         <source>Select an item in the list first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε πρώτα ένα είδος από τη λίστα.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="637"/>
         <source>Cannot write</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η εγγραφή</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="638"/>
         <source>Cannot write to the file:
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η εγγραφή στο αρχείο:
+%1
+%2</translation>
     </message>
 </context>
 <context>
@@ -9618,7 +9687,7 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="116"/>
         <source>Move a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση καλωδίου</translation>
     </message>
 </context>
 <context>
@@ -9626,54 +9695,54 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="450"/>
         <source>Exclude from the bill of materials</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαίρεση από τη λίστα υλικών</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="451"/>
         <source>Function separation</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαχωρισμός λειτουργιών</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="452"/>
         <source>Exclude from automatic numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαίρεση από την αυτόματη αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="462"/>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="503"/>
         <source>Restore the values the elements had</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφορά των τιμών που είχαν τα στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="499"/>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="771"/>
         <source>Delete this text</source>
-        <translation type="unfinished">Διαγραφή του κειμένου</translation>
+        <translation>Διαγραφή αυτού του κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="509"/>
         <source>Decimal number with a dot as separator (e.g. 80.5)</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεκαδικός αριθμός με τελεία ως διαχωριστικό (π.χ. 80.5)</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="617"/>
         <source>Elements edited: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχεία που τροποποιήθηκαν: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="620"/>
         <source>Other selected items, left unchanged: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Άλλα επιλεγμένα αντικείμενα, χωρίς αλλαγή: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="773"/>
         <source>Multiple values</source>
-        <translation type="unfinished"></translation>
+        <translation>Πολλαπλές τιμές</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.h" line="62"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Πληροφορίες</translation>
     </message>
 </context>
 <context>
@@ -9732,7 +9801,7 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/ui/multipastedialog.cpp" line="164"/>
         <source>Number pasted elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρίθμηση επικολλημένων στοιχείων</translation>
     </message>
 </context>
 <context>
@@ -9801,37 +9870,37 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="168"/>
         <source>Guides</source>
-        <translation type="unfinished"></translation>
+        <translation>Οδηγοί</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="174"/>
         <source>Set the default automatic numbering rules for new projects:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορίστε τους προεπιλεγμένους κανόνες αυτόματης αρίθμησης για νέα έργα:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="176"/>
         <source>Conductors</source>
-        <translation type="unfinished">Αγωγοί</translation>
+        <translation>Αγωγοί</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="177"/>
         <source>Elements</source>
-        <translation type="unfinished">Στοιχεία</translation>
+        <translation>Στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="178"/>
         <source>Sheets</source>
-        <translation type="unfinished">Σελίδες</translation>
+        <translation>Σελίδες</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="179"/>
         <source>Cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Καλώδια</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="181"/>
         <source>Auto Numbering</source>
-        <translation type="unfinished">Αυτόματη αρίθμηση</translation>
+        <translation>Αυτόματη αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="325"/>
@@ -9947,27 +10016,27 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="79"/>
         <source>Set to 0 for a number that only increases by carrying over the next digit in the cycle (e.g. the ‘0’ in ‘0.7’)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορίστε 0 για αριθμό που μόνο αυξάνεται μεταφέροντας στο επόμενο ψηφίο του κύκλου (π.χ. το «0» στο «0.7»)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="110"/>
         <source>The value at which this figure returns to 0 when the previous figure is incremented (0 = no cycle)</source>
-        <translation type="unfinished"></translation>
+        <translation>Η τιμή στην οποία αυτό το ψηφίο επιστρέφει στο 0 όταν αυξάνεται το προηγούμενο ψηφίο (0 = χωρίς κύκλο)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="119"/>
         <source>mod. </source>
-        <translation type="unfinished"></translation>
+        <translation>mod. </translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="141"/>
         <source>Display format: a sequence of zeros specifies the minimum number of digits (00 = 07, 000 = 007). Blank = the natural width of the type.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μορφή εμφάνισης: μια ακολουθία μηδενικών καθορίζει τον ελάχιστο αριθμό ψηφίων (00 = 07, 000 = 007). Κενό = το φυσικό πλάτος του τύπου.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="144"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="137"/>
@@ -10003,7 +10072,7 @@ Do you still want to link this slave contact?</source>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="320"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="514"/>
         <source>Cyclic (modulo)</source>
-        <translation type="unfinished"></translation>
+        <translation>Κυκλικό (modulo)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="141"/>
@@ -10012,7 +10081,7 @@ Do you still want to link this slave contact?</source>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="322"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="496"/>
         <source>Alphabetical</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλφαβητικό</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="142"/>
@@ -10147,7 +10216,7 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="671"/>
         <source>Change a PLC table</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή ενός πίνακα PLC</translation>
     </message>
 </context>
 <context>
@@ -10183,7 +10252,7 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/editor/graphicspart/partrectangle.cpp" line="519"/>
         <source>Change a rectangle</source>
-        <translation type="unfinished">Επεξεργασία ορθογωνίου</translation>
+        <translation>Επεξεργασία ορθογωνίου</translation>
     </message>
 </context>
 <context>
@@ -10191,7 +10260,7 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/editor/graphicspart/partterminal.cpp" line="588"/>
         <source>Move the label to a terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση της ετικέτας σε ακροδέκτη</translation>
     </message>
 </context>
 <context>
@@ -10212,16 +10281,20 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/autoNum/ui/pastenumberingimport.cpp" line="84"/>
         <source>Numbering missing from this project</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρίθμηση που λείπει από αυτό το έργο</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/pastenumberingimport.cpp" line="85"/>
         <source>The pasted elements follow %n numberings that do not exist in this project: %1.
 
 Import them? The elements will then receive the next numbers, starting from 1. Otherwise they will be pasted without numbering.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Τα επικολλημένα στοιχεία ακολουθούν %n αρίθμηση που δεν υπάρχει σε αυτό το έργο: %1.
+
+Να εισαχθεί; Τα στοιχεία θα λάβουν τότε τους επόμενους αριθμούς, ξεκινώντας από το 1. Διαφορετικά θα επικολληθούν χωρίς αρίθμηση.</numerusform>
+            <numerusform>Τα επικολλημένα στοιχεία ακολουθούν %n αριθμήσεις που δεν υπάρχουν σε αυτό το έργο: %1.
+
+Να εισαχθούν; Τα στοιχεία θα λάβουν τότε τους επόμενους αριθμούς, ξεκινώντας από το 1. Διαφορετικά θα επικολληθούν χωρίς αρίθμηση.</numerusform>
         </translation>
     </message>
 </context>
@@ -10230,45 +10303,45 @@ Import them? The elements will then receive the next numbers, starting from 1. O
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="51"/>
         <source>Select a page</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε σελίδα</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="62"/>
         <source>This PDF document contains %n pages</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Αυτό το έγγραφο PDF περιέχει %n σελίδα</numerusform>
+            <numerusform>Αυτό το έγγραφο PDF περιέχει %n σελίδες</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="71"/>
         <source>Page to import:</source>
-        <translation type="unfinished"></translation>
+        <translation>Σελίδα προς εισαγωγή:</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="84"/>
         <source>Resolution:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανάλυση:</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="88"/>
         <source>150 DPI (screen)</source>
-        <translation type="unfinished"></translation>
+        <translation>150 DPI (οθόνη)</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="89"/>
         <source>300 DPI (print)</source>
-        <translation type="unfinished"></translation>
+        <translation>300 DPI (εκτύπωση)</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="90"/>
         <source>600 DPI (high quality)</source>
-        <translation type="unfinished"></translation>
+        <translation>600 DPI (υψηλή ποιότητα)</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="97"/>
         <source>Preview :</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπισκόπηση :</translation>
     </message>
 </context>
 <context>
@@ -10276,77 +10349,77 @@ Import them? The elements will then receive the next numbers, starting from 1. O
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="53"/>
         <source>This element is already linked</source>
-        <translation type="unfinished">Αυτό το στοιχείο είναι ήδη συνδεδεμένο</translation>
+        <translation>Αυτό το στοιχείο είναι ήδη συνδεδεμένο</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="54"/>
         <source>Unlink</source>
-        <translation type="unfinished">Αποσύνδεση</translation>
+        <translation>Αποσύνδεση</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="55"/>
         <source>View this item</source>
-        <translation type="unfinished">Προβολή αυτού του στοιχείου</translation>
+        <translation>Προβολή αυτού του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="62"/>
         <source>Hide connected elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Απόκρυψη συνδεδεμένων στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="67"/>
         <source>Search</source>
-        <translation type="unfinished">Αναζήτηση</translation>
+        <translation>Αναζήτηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="73"/>
         <source>Label</source>
-        <translation type="unfinished">Ετικέτα</translation>
+        <translation>Ετικέτα</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="73"/>
         <source>Type</source>
-        <translation type="unfinished">Τύπος</translation>
+        <translation>Τύπος</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="73"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Διεύθυνση</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="74"/>
         <source>Function</source>
-        <translation type="unfinished">Λειτουργία</translation>
+        <translation>Λειτουργία</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="74"/>
         <source>Annotation</source>
-        <translation type="unfinished">Σχόλιο</translation>
+        <translation>Σχόλιο</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="74"/>
         <source>Terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτες</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="91"/>
         <source>Note: Master elements that have reached their maximum number of slaves are hidden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Σημείωση: τα κύρια στοιχεία που έχουν φτάσει τον μέγιστο αριθμό εξαρτημένων αποκρύπτονται.</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="156"/>
         <source>Programmable Logic Controller (PLC)</source>
-        <translation type="unfinished"></translation>
+        <translation>Προγραμματιζόμενος λογικός ελεγκτής (PLC)</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="274"/>
         <source>Related to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχετίζεται με: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="380"/>
         <source>Log in</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνδεση</translation>
     </message>
 </context>
 <context>
@@ -10522,95 +10595,101 @@ The following variables are incompatible:
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="48"/>
         <source>User collection prefixes</source>
         <comment>title of the dialog configuring the prefixes of the user collection</comment>
-        <translation type="unfinished"></translation>
+        <translation>Προθέματα συλλογής χρήστη</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="56"/>
         <source>Each folder of the collection has a prefix: it is added in front of the label of the symbols in the folder.
 An empty field means the folder takes the prefix of its parent folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάθε φάκελος της συλλογής έχει ένα πρόθεμα: προστίθεται μπροστά από την ετικέτα των συμβόλων του φακέλου.
+Ένα κενό πεδίο σημαίνει ότι ο φάκελος παίρνει το πρόθεμα του γονικού φακέλου.</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="61"/>
         <source>Folder</source>
         <comment>column header of the folder tree</comment>
-        <translation type="unfinished"></translation>
+        <translation>Φάκελος</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="61"/>
         <source>Prefix</source>
         <comment>column header of the prefix column</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πρόθεμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="69"/>
         <source>Expand all</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανάπτυξη όλων</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="70"/>
         <source>Collapse all</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύμπτυξη όλων</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="110"/>
         <source>Entries without a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Καταχωρίσεις χωρίς φάκελο</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="111"/>
         <source>%n entries of qet_labels.xml match no folder of the collection:
 keep them or delete them?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n καταχώριση του qet_labels.xml δεν αντιστοιχεί σε κανέναν φάκελο της συλλογής:
+να διατηρηθεί ή να διαγραφεί;</numerusform>
+            <numerusform>%n καταχωρίσεις του qet_labels.xml δεν αντιστοιχούν σε κανέναν φάκελο της συλλογής:
+να διατηρηθούν ή να διαγραφούν;</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="115"/>
         <source>Keep</source>
-        <translation type="unfinished"></translation>
+        <translation>Διατήρηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="116"/>
         <source>Delete</source>
-        <translation type="unfinished">Διαγραφή</translation>
+        <translation>Διαγραφή</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="168"/>
         <source>no prefix: does not take the parent&apos;s</source>
         <comment>placeholder of an empty prefix field whose folder explicitly has no prefix, which cancels the inheritance</comment>
-        <translation type="unfinished"></translation>
+        <translation>χωρίς πρόθεμα: δεν παίρνει του γονικού</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="170"/>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="177"/>
         <source>take the parent folder&apos;s</source>
         <comment>placeholder of an empty prefix field</comment>
-        <translation type="unfinished"></translation>
+        <translation>παίρνει του γονικού φακέλου</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="223"/>
         <source>Cannot save</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η αποθήκευση</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="224"/>
         <source>The file %1 could not be saved:
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν ήταν δυνατή η αποθήκευση του αρχείου %1:
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="231"/>
         <source>Damaged file replaced</source>
-        <translation type="unfinished"></translation>
+        <translation>Το κατεστραμμένο αρχείο αντικαταστάθηκε</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="232"/>
         <source>The file %1 could not be read: it has been replaced.
 Its copy was kept as:
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν ήταν δυνατή η ανάγνωση του αρχείου %1: αντικαταστάθηκε.
+Το αντίγραφό του διατηρήθηκε ως:
+%2</translation>
     </message>
 </context>
 <context>
@@ -10643,38 +10722,38 @@ Its copy was kept as:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="548"/>
         <source>No.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρ.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="548"/>
         <source>Name</source>
-        <translation type="unfinished">Όνομα</translation>
+        <translation>Όνομα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="548"/>
         <source>Sheet</source>
-        <translation type="unfinished">Φύλλο</translation>
+        <translation>Φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="548"/>
         <source>Element</source>
-        <translation type="unfinished">Στοιχείο</translation>
+        <translation>Στοιχείο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="548"/>
         <source>Frozen</source>
-        <translation type="unfinished"></translation>
+        <translation>Παγωμένο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="555"/>
         <source>Assign a free number…</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανάθεση ελεύθερου αριθμού…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="556"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="860"/>
         <source>Give the selected element a number nobody has: it keeps its numbering, only its number changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δώστε στο επιλεγμένο στοιχείο έναν αριθμό που δεν έχει κανείς: διατηρεί την αρίθμησή του, αλλάζει μόνο ο αριθμός του.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="564"/>
@@ -10691,7 +10770,7 @@ Its copy was kept as:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="575"/>
         <source>Cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Καλώδια</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="579"/>
@@ -10701,97 +10780,97 @@ Its copy was kept as:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="582"/>
         <source>Import from another project...</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή από άλλο έργο...</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="584"/>
         <source>Reuse the automatic numbering saved in another project</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναχρησιμοποίηση της αυτόματης αρίθμησης που είναι αποθηκευμένη σε άλλο έργο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="807"/>
         <source>frozen</source>
-        <translation type="unfinished"></translation>
+        <translation>παγωμένο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="815"/>
         <source>— free —</source>
-        <translation type="unfinished"></translation>
+        <translation>— ελεύθερο —</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="816"/>
         <source>no element has this number (deleted or renumbered)</source>
-        <translation type="unfinished"></translation>
+        <translation>κανένα στοιχείο δεν έχει αυτόν τον αριθμό (διαγράφηκε ή επαναριθμήθηκε)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="833"/>
         <source>No element follows this numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανένα στοιχείο δεν ακολουθεί αυτή την αρίθμηση</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="834"/>
         <source>%n elements follow this numbering, %1 with a frozen name</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο ακολουθεί αυτή την αρίθμηση, %1 με παγωμένο όνομα</numerusform>
+            <numerusform>%n στοιχεία ακολουθούν αυτή την αρίθμηση, %1 με παγωμένο όνομα</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="836"/>
         <source>; %n numbers without an element</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>· %n αριθμός χωρίς στοιχείο</numerusform>
+            <numerusform>· %n αριθμοί χωρίς στοιχείο</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="858"/>
         <source>This numbering has several numbers (or one number per sheet): one cannot be chosen by hand.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή η αρίθμηση έχει πολλούς αριθμούς (ή έναν αριθμό ανά φύλλο): δεν μπορεί να επιλεγεί αριθμός με το χέρι.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="875"/>
         <source>Assign a free number</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανάθεση ελεύθερου αριθμού</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="881"/>
         <source>This element&apos;s name is frozen: unfreeze it first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το όνομα αυτού του στοιχείου είναι παγωμένο: ξεπαγώστε το πρώτα.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="886"/>
         <source>No number is free.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν υπάρχει ελεύθερος αριθμός.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="891"/>
         <source>%1  →  %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1  →  %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="897"/>
         <source>Free number for element “%1” (%2):</source>
-        <translation type="unfinished"></translation>
+        <translation>Ελεύθερος αριθμός για το στοιχείο «%1» (%2):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="948"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1643"/>
         <source>Numbering name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα αρίθμησης:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="977"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1067"/>
         <source>Modify numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Τροποποίηση αρίθμησης</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="978"/>
         <source>%n elements follow this numbering and will change formula and name.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο ακολουθεί αυτή την αρίθμηση και θα αλλάξει τύπο και όνομα.</numerusform>
+            <numerusform>%n στοιχεία ακολουθούν αυτή την αρίθμηση και θα αλλάξουν τύπο και όνομα.</numerusform>
         </translation>
     </message>
     <message>
@@ -10800,93 +10879,99 @@ Its copy was kept as:
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1665"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1716"/>
         <source>New numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέα αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1024"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1687"/>
         <source>Rename numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετονομασία αρίθμησης</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1068"/>
         <source>The “%1” numbering cannot be modified: %n elements with a frozen name follow it.
 Unfreeze them first (see the list), or just rename the numbering.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Η αρίθμηση «%1» δεν μπορεί να τροποποιηθεί: την ακολουθεί %n στοιχείο με παγωμένο όνομα.
+Ξεπαγώστε το πρώτα (δείτε τη λίστα) ή απλώς μετονομάστε την αρίθμηση.</numerusform>
+            <numerusform>Η αρίθμηση «%1» δεν μπορεί να τροποποιηθεί: την ακολουθούν %n στοιχεία με παγωμένο όνομα.
+Ξεπαγώστε τα πρώτα (δείτε τη λίστα) ή απλώς μετονομάστε την αρίθμηση.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1382"/>
         <source>%n numberings followed by elements with a frozen name were not replaced.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n αρίθμηση που ακολουθείται από στοιχεία με παγωμένο όνομα δεν αντικαταστάθηκε.</numerusform>
+            <numerusform>%n αριθμήσεις που ακολουθούνται από στοιχεία με παγωμένο όνομα δεν αντικαταστάθηκαν.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1386"/>
         <source>%n elements changed formula.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο άλλαξε τύπο.</numerusform>
+            <numerusform>%n στοιχεία άλλαξαν τύπο.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1403"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1745"/>
         <source>Delete numbering</source>
-        <translation type="unfinished">Διαγραφή της αρίθμησης</translation>
+        <translation>Διαγραφή της αρίθμησης</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1404"/>
         <source>%n elements follow the “%1” numbering, so it cannot be deleted.
 Give them another numbering or a fixed name first.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Την αρίθμηση «%1» την ακολουθεί %n στοιχείο, οπότε δεν μπορεί να διαγραφεί.
+Δώστε του πρώτα άλλη αρίθμηση ή σταθερό όνομα.</numerusform>
+            <numerusform>Την αρίθμηση «%1» την ακολουθούν %n στοιχεία, οπότε δεν μπορεί να διαγραφεί.
+Δώστε τους πρώτα άλλη αρίθμηση ή σταθερό όνομα.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1628"/>
         <source>No sheet names this numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανένα φύλλο δεν ονομάζει αυτή την αρίθμηση</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1629"/>
         <source>%n sheets name this numbering</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n φύλλο ονομάζει αυτή την αρίθμηση</numerusform>
+            <numerusform>%n φύλλα ονομάζουν αυτή την αρίθμηση</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1632"/>
         <source>No sheet follows this numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανένα φύλλο δεν ακολουθεί αυτή την αρίθμηση</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1633"/>
         <source>%n sheets follow this numbering</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n φύλλο ακολουθεί αυτή την αρίθμηση</numerusform>
+            <numerusform>%n φύλλα ακολουθούν αυτή την αρίθμηση</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1746"/>
         <source>%n sheets follow the “%1” numbering, so it cannot be deleted.
 Give them another numbering first.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Την αρίθμηση «%1» την ακολουθεί %n φύλλο, οπότε δεν μπορεί να διαγραφεί.
+Δώστε του πρώτα άλλη αρίθμηση.</numerusform>
+            <numerusform>Την αρίθμηση «%1» την ακολουθούν %n φύλλα, οπότε δεν μπορεί να διαγραφεί.
+Δώστε τους πρώτα άλλη αρίθμηση.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1167"/>
         <source>Import numbering from a project</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή αρίθμησης από έργο</translation>
     </message>
     <message>
         <source>Project QElectroTech (*.qet)</source>
@@ -10896,69 +10981,69 @@ Give them another numbering first.</source>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1176"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1183"/>
         <source>Import not possible</source>
-        <translation type="unfinished"></translation>
+        <translation>Η εισαγωγή δεν είναι δυνατή</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1177"/>
         <source>Unable to open %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατό το άνοιγμα του %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1184"/>
         <source>%1 is not a valid QElectroTech project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το %1 δεν είναι έγκυρο έργο QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1193"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1275"/>
         <source>No numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Καμία αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1194"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1276"/>
         <source>This project does not contain any automatic numbering.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το έργο δεν περιέχει καμία αυτόματη αρίθμηση.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1215"/>
         <source>Numbering to import</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρίθμηση προς εισαγωγή</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1218"/>
         <source>Numbering found in %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρίθμηση που βρέθηκε στο %1:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1256"/>
         <source>%1: %2 (already exists)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: %2 (υπάρχει ήδη)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1281"/>
         <source>Replace numbering with the same name</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντικατάσταση αρίθμησης με το ίδιο όνομα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1295"/>
         <source>Import numberings</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή αριθμήσεων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1376"/>
         <source>Import complete</source>
-        <translation type="unfinished"></translation>
+        <translation>Η εισαγωγή ολοκληρώθηκε</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1377"/>
         <source>%1 numbering(s) imported, %2 kept unchanged.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 αριθμήσεις εισήχθησαν, %2 έμειναν αμετάβλητες.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1380"/>
         <source>%1 numbering(s) imported.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 αριθμήσεις εισήχθησαν.</translation>
     </message>
 </context>
 <context>
@@ -11019,122 +11104,122 @@ Give them another numbering first.</source>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="242"/>
         <source>Time spent on this project:</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Χρόνος που αφιερώθηκε σε αυτό το έργο:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="244"/>
         <source>Track the time spent on this project (recorded locally in this file only)</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καταγραφή του χρόνου που αφιερώνεται σε αυτό το έργο (καταγράφεται τοπικά μόνο σε αυτό το αρχείο)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="245"/>
         <source>Reset</source>
         <comment>button label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφορά</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="249"/>
         <source>Conductor crossings:</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διασταυρώσεις αγωγών:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="251"/>
         <source>No hop</source>
         <comment>wire crossings</comment>
-        <translation type="unfinished"></translation>
+        <translation>Χωρίς γέφυρα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="253"/>
         <source>Hop on horizontal conductors</source>
         <comment>wire crossings</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γέφυρα στους οριζόντιους αγωγούς</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="255"/>
         <source>Hop on vertical conductors</source>
         <comment>wire crossings</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γέφυρα στους κατακόρυφους αγωγούς</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="257"/>
         <source>Draws a small arc where two conductors cross without being connected. Only the drawing changes: no element is added and no conductor is cut.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σχεδιάζει ένα μικρό τόξο εκεί όπου διασταυρώνονται δύο αγωγοί χωρίς να είναι συνδεδεμένοι. Αλλάζει μόνο το σχέδιο: δεν προστίθεται κανένα στοιχείο και δεν κόβεται κανένας αγωγός.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="262"/>
         <source>Keep the texts of rotated elements horizontal</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διατήρηση των κειμένων των περιστραμμένων στοιχείων οριζόντια</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="264"/>
         <source>Texts drawn in an element and the names of its terminals stay readable when the element is rotated: their frame turns with the element, not the text. Uncheck to make them turn with the element, as before.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Τα κείμενα που σχεδιάζονται σε ένα στοιχείο και τα ονόματα των ακροδεκτών του παραμένουν ευανάγνωστα όταν το στοιχείο περιστρέφεται: περιστρέφεται το πλαίσιό τους μαζί με το στοιχείο, όχι το κείμενο. Αποεπιλέξτε για να περιστρέφονται μαζί με το στοιχείο, όπως πριν.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="270"/>
         <source>Conductors per terminal</source>
         <comment>group box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αγωγοί ανά ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="271"/>
         <source>Use the application settings</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Χρήση των ρυθμίσεων της εφαρμογής</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="272"/>
         <source>The settings in Configure QElectroTech &gt; General apply. Untick to give this project its own settings, saved in the project.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ισχύουν οι ρυθμίσεις στο Ρύθμιση QElectroTech &gt; Γενικά. Αποεπιλέξτε για να δώσετε σε αυτό το έργο τις δικές του ρυθμίσεις, αποθηκευμένες στο έργο.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="285"/>
         <source>Maximum conductors per terminal:</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μέγιστος αριθμός αγωγών ανά ακροδέκτη:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="288"/>
         <source>No limit</source>
         <comment>wires per terminal</comment>
-        <translation type="unfinished"></translation>
+        <translation>Χωρίς όριο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="289"/>
         <source>A new conductor that would take a terminal past this number is refused. Conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ένας νέος αγωγός που θα ξεπερνούσε αυτόν τον αριθμό σε έναν ακροδέκτη απορρίπτεται. Οι αγωγοί που έχουν ήδη σχεδιαστεί δεν αλλάζουν. Το 4 σημαίνει δύο διπλά ακροχιτώνια, ένα σε κάθε πλευρά της βίδας.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="293"/>
         <source>Only one conductor per sheet reference</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μόνο ένας αγωγός ανά αναφορά φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="294"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μια αναφορά φύλλου είναι ένα εικονικό σημείο: δέχεται μόνο έναν αγωγό, αυτόν που συνεχίζει στο άλλο φύλλο.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="297"/>
         <source>These rules are turned off for every project (Configure QElectroTech &gt; General).</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτοί οι κανόνες είναι απενεργοποιημένοι για όλα τα έργα (Ρύθμιση QElectroTech &gt; Γενικά).</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="364"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="413"/>
         <source>%1 h %2 min</source>
         <comment>hours and minutes of time spent on a project</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 ώ %2 λεπ.</translation>
     </message>
 </context>
 <context>
@@ -11142,7 +11227,7 @@ Give them another numbering first.</source>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="20"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>MainWindow</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="31"/>
@@ -11202,12 +11287,12 @@ Give them another numbering first.</source>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="188"/>
         <source>Draw the names of the terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχεδίαση των ονομάτων των ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="198"/>
         <source>Enter the component details</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγάγετε τα στοιχεία του εξαρτήματος</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="211"/>
@@ -11237,7 +11322,7 @@ Give them another numbering first.</source>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="278"/>
         <source>toolBar</source>
-        <translation type="unfinished"></translation>
+        <translation>toolBar</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="310"/>
@@ -11388,18 +11473,18 @@ Do you want to save changes?</source>
         <location filename="../sources/projectview.cpp" line="345"/>
         <source>Zipped project QElectroTech (*.qetz)</source>
         <comment>filetypes allowed when saving a project file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Συμπιεσμένο έργο QElectroTech (*.qetz)</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="412"/>
         <source>Project in use</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Έργο σε χρήση</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="413"/>
         <source>%1 is open by %2 on %3. Choose another file name, or save again once it has been closed there.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το %1 είναι ανοιχτό από τον/την %2 στον υπολογιστή %3. Επιλέξτε άλλο όνομα αρχείου ή αποθηκεύστε ξανά όταν κλείσει εκεί.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="448"/>
@@ -11411,13 +11496,13 @@ Do you want to save changes?</source>
         <location filename="../sources/projectview.cpp" line="449"/>
         <source>Are you sure you want to delete this sheet from the project?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το φύλλο από το έργο;</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="773"/>
         <source>Save a copy for an older QElectroTech</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση αντιγράφου για παλαιότερο QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="869"/>
@@ -11460,12 +11545,12 @@ Do you want to save changes?</source>
     <message>
         <location filename="../sources/projectview.cpp" line="934"/>
         <source>go one page left</source>
-        <translation type="unfinished"></translation>
+        <translation>μετάβαση μία σελίδα αριστερά</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="938"/>
         <source>go one page right</source>
-        <translation type="unfinished"></translation>
+        <translation>μετάβαση μία σελίδα δεξιά</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="953"/>
@@ -11489,24 +11574,26 @@ Do you want to save changes?</source>
         <location filename="../sources/projectview.cpp" line="800"/>
         <source>File changed on disk</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο άλλαξε στον δίσκο</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="801"/>
         <source>Someone else changed %1 on disk at %2 since you opened it.
 
 Saving over it would lose their changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Από τότε που το ανοίξατε, κάποιος άλλος άλλαξε το %1 στον δίσκο στις %2.
+
+Η αποθήκευση από πάνω θα χάσει τις αλλαγές του.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="805"/>
         <source>Save as a copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση ως αντίγραφο</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="806"/>
         <source>Overwrite</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντικατάσταση</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="1068"/>
@@ -11546,7 +11633,7 @@ Saving over it would lose their changes.</source>
         <location filename="../sources/qetapp.cpp" line="544"/>
         <source>Company title-blocks</source>
         <comment>title of the company&apos;s 					title block templates collection</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πινακίδες της εταιρείας</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="564"/>
@@ -11559,44 +11646,44 @@ Saving over it would lose their changes.</source>
         <location filename="../sources/qetapp.cpp" line="2495"/>
         <source>Save settings as...</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση ρυθμίσεων ως...</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2497"/>
         <location filename="../sources/qetapp.cpp" line="2539"/>
         <source>QElectroTech settings (*.conf)</source>
         <comment>file dialog filter</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμίσεις QElectroTech (*.conf)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2512"/>
         <location filename="../sources/qetapp.cpp" line="2552"/>
         <source>Error</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Σφάλμα</translation>
+        <translation>Σφάλμα</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2513"/>
         <source>Cannot save the settings to “%1”.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η αποθήκευση των ρυθμίσεων στο «%1».</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2537"/>
         <source>Load settings...</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Φόρτωση ρυθμίσεων...</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2553"/>
         <source>“%1” is not a settings file saved by QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το «%1» δεν είναι αρχείο ρυθμίσεων αποθηκευμένο από το QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2589"/>
         <location filename="../sources/qetapp.cpp" line="2602"/>
         <source>Load settings</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Φόρτωση ρυθμίσεων</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2561"/>
@@ -11605,64 +11692,70 @@ Saving over it would lose their changes.</source>
 QElectroTech will then close. Start it again to use the new settings.
 
 Do you want to continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτές οι ρυθμίσεις θα αντικαταστήσουν τις τρέχουσες, εκτός από τη διάταξη των παραθύρων και τη λίστα των πρόσφατων αρχείων.
+
+Το QElectroTech θα κλείσει στη συνέχεια. Εκκινήστε το ξανά για να χρησιμοποιήσετε τις νέες ρυθμίσεις.
+
+Θέλετε να συνεχίσετε;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2400"/>
         <source>Toolbars, keyboard shortcuts, mouse and trackpad gestures</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμμές εργαλείων, συντομεύσεις πληκτρολογίου, κινήσεις ποντικιού και trackpad</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2402"/>
         <source>Defaults for new projects: folio, title block, wires, numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπιλογές για νέα έργα: φύλλο, πινακίδα, αγωγοί, αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2405"/>
         <source>All other settings: appearance, grid, language...</source>
-        <translation type="unfinished"></translation>
+        <translation>Όλες οι άλλες ρυθμίσεις: εμφάνιση, πλέγμα, γλώσσα...</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2407"/>
         <source>Folders of the collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Φάκελοι των συλλογών</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2424"/>
         <source>Settings to save:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμίσεις προς αποθήκευση:</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2434"/>
         <source>The folders of your collections are saved only when every part is ticked.</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι φάκελοι των συλλογών σας αποθηκεύονται μόνο όταν είναι επιλεγμένα όλα τα τμήματα.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2573"/>
         <source>These settings will replace your current ones for:
 %1
 All your other settings are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτές οι ρυθμίσεις θα αντικαταστήσουν τις τρέχουσες για:
+%1
+Όλες οι άλλες ρυθμίσεις σας διατηρούνται.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2579"/>
         <source>QElectroTech will then close. Start it again to use the new settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το QElectroTech θα κλείσει στη συνέχεια. Εκκινήστε το ξανά για να χρησιμοποιήσετε τις νέες ρυθμίσεις.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2581"/>
         <source>Projects already open keep their own defaults.</source>
-        <translation type="unfinished"></translation>
+        <translation>Τα έργα που είναι ήδη ανοιχτά διατηρούν τις δικές τους προεπιλογές.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2582"/>
         <source>Do you want to continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέλετε να συνεχίσετε;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2603"/>
         <source>The settings are loaded. They are used for the next new project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι ρυθμίσεις φορτώθηκαν. Θα χρησιμοποιηθούν για το επόμενο νέο έργο.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="3010"/>
@@ -11755,23 +11848,24 @@ All your other settings are kept.</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="3320"/>
         <source>Crash report</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναφορά κατάρρευσης</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="3321"/>
         <source>QElectroTech did not close correctly the last time it was run.
 Here are the last messages logged before it closed — you can save them to include them in a bug report.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το QElectroTech δεν έκλεισε σωστά την τελευταία φορά που εκτελέστηκε.
+Ακολουθούν τα τελευταία μηνύματα που καταγράφηκαν πριν κλείσει — μπορείτε να τα αποθηκεύσετε για να τα επισυνάψετε σε μια αναφορά σφάλματος.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="3343"/>
         <source>Diagnostic report</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναφορά διάγνωσης</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="3344"/>
         <source>This contains the latest log entries for this session. Please check the contents before attaching it to a public bug report.</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιέχει τις πιο πρόσφατες καταχωρίσεις καταγραφής αυτής της συνεδρίας. Ελέγξτε το περιεχόμενο πριν το επισυνάψετε σε μια δημόσια αναφορά σφάλματος.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="3424"/>
@@ -11834,7 +11928,8 @@ Available options:
         <location filename="../sources/qetapp.cpp" line="3443"/>
         <source>  --data-dir=DIR                Define data directory
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --data-dir=DIR                Ορισμός του καταλόγου δεδομένων
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="3445"/>
@@ -12374,150 +12469,151 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="417"/>
         <source>Paste at the original position</source>
-        <translation type="unfinished"></translation>
+        <translation>Επικόλληση στην αρχική θέση</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="418"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="3491"/>
         <source>Paste element information</source>
-        <translation type="unfinished"></translation>
+        <translation>Επικόλληση πληροφοριών στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="430"/>
         <source>Places the clipboard&apos;s items at their original position and moves the cursor to that point</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Τοποθετεί τα στοιχεία του προχείρου στην αρχική τους θέση και μετακινεί τον δρομέα σε εκείνο το σημείο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="431"/>
         <source>Copies the filled-in information of the element on the clipboard to the selected elements</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγράφει τις συμπληρωμένες πληροφορίες του στοιχείου του προχείρου στα επιλεγμένα στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="480"/>
         <source>Copy text format</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγραφή μορφής κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="481"/>
         <source>Apply text format</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή μορφής κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="486"/>
         <source>Copy the text format of the selected element as a template</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγραφή της μορφής κειμένου του επιλεγμένου στοιχείου ως πρότυπο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="487"/>
         <source>Apply the copied text format to the selected elements</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή της αντιγραμμένης μορφής κειμένου στα επιλεγμένα στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="499"/>
         <source>&amp;Duplicate</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Αναπαραγωγή</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
         <source>Copies the selection, offset by the configured spacing</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγράφει την επιλογή, μετατοπισμένη κατά την καθορισμένη απόσταση</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="523"/>
         <source>Configure duplication...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρύθμιση αναπαραγωγής...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="525"/>
         <source>Choose the spacing and direction used by Duplicate</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε την απόσταση και την κατεύθυνση που χρησιμοποιεί η Αναπαραγωγή</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="607"/>
         <source>Text grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλέγμα κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="614"/>
         <source>Snap grid for texts moved with the mouse.
 Hold Ctrl while moving to place freely.</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλέγμα έλξης για κείμενα που μετακινούνται με το ποντίκι.
+Κρατήστε πατημένο το Ctrl κατά τη μετακίνηση για ελεύθερη τοποθέτηση.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="620"/>
         <source>Disabled</source>
-        <translation type="unfinished">Απενεργοποιημένο</translation>
+        <translation>Απενεργοποιημένο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="648"/>
         <source>Keep headers visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Διατήρηση των κεφαλίδων ορατών</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="650"/>
         <source>Keeps the sheet&apos;s column numbers and row letters visible at the edge of the view</source>
-        <translation type="unfinished"></translation>
+        <translation>Διατηρεί τους αριθμούς στηλών και τα γράμματα γραμμών του φύλλου ορατά στην άκρη της προβολής</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="661"/>
         <source>Show cell boundaries</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση των ορίων των κελιών</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="663"/>
         <source>Draws the boundaries of the sheet&apos;s columns and rows on the diagram, on screen only</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχεδιάζει τα όρια των στηλών και των γραμμών του φύλλου στο σχέδιο, μόνο στην οθόνη</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="674"/>
         <source>Show</source>
-        <translation type="unfinished">Προβολή</translation>
+        <translation>Προβολή</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="676"/>
         <source>Element texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενα στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="677"/>
         <source>Conductor texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενα αγωγών</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="678"/>
         <source>Text fields</source>
-        <translation type="unfinished">Πεδία κειμένου</translation>
+        <translation>Πεδία κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="679"/>
         <source>Shapes</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχήματα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="680"/>
         <source>Pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Εικόνες</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="681"/>
         <source>Tables</source>
-        <translation type="unfinished"></translation>
+        <translation>Πίνακες</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="682"/>
         <source>Cross-references</source>
-        <translation type="unfinished">Διασταυρούμενες αναφορές</translation>
+        <translation>Διασταυρούμενες αναφορές</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="699"/>
         <source>See Display &gt; Show</source>
-        <translation type="unfinished"></translation>
+        <translation>Δείτε Προβολή &gt; Εμφάνιση</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="758"/>
@@ -12527,74 +12623,74 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="791"/>
         <source>Add a cable list</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη λίστας καλωδίων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
         <source>Export the cable list to CSV format</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή της λίστας καλωδίων σε μορφή CSV</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="853"/>
         <source>Cable numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρίθμηση καλωδίων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="855"/>
         <source>Shows the cable numbering rule of the project and renumbers its cables with it</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφανίζει τον κανόνα αρίθμησης καλωδίων του έργου και επαναριθμεί τα καλώδιά του σύμφωνα με αυτόν</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="860"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4601"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4617"/>
         <source>Reload element drawings</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφόρτωση σχεδίων στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="863"/>
         <source>Redraws each placed element from its current definition, without having to close and reopen the project (action cannot be undone)</source>
-        <translation type="unfinished"></translation>
+        <translation>Επανασχεδιάζει κάθε τοποθετημένο στοιχείο από τον τρέχοντα ορισμό του, χωρίς να χρειάζεται να κλείσετε και να ανοίξετε ξανά το έργο (η ενέργεια δεν αναιρείται)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="869"/>
         <source>Run a script...</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκτέλεση σεναρίου...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="872"/>
         <source>Runs a JavaScript script on the current project (see qet.* in the script for the available API)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκτελεί ένα σενάριο JavaScript στο τρέχον έργο (δείτε το qet.* στο σενάριο για το διαθέσιμο API)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="886"/>
         <source>Record a macro</source>
-        <translation type="unfinished"></translation>
+        <translation>Εγγραφή μακροεντολής</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="889"/>
         <source>Records what you do on the project, for an AI assistant to make a script of; click again to stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Καταγράφει ό,τι κάνετε στο έργο, ώστε ένας βοηθός τεχνητής νοημοσύνης να φτιάξει από αυτό ένα σενάριο· κάντε ξανά κλικ για διακοπή</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="902"/>
         <source>Manage scripts…</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαχείριση σεναρίων…</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="903"/>
         <source>Write a script and make it a button with an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Γράψτε ένα σενάριο και κάντε το κουμπί με εικονίδιο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="920"/>
         <source>Open the scripts folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα του φακέλου σεναρίων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="923"/>
         <source>Every .js file in this folder that starts with a // ==QETScript== header becomes a button</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάθε αρχείο .js αυτού του φακέλου που ξεκινά με κεφαλίδα // ==QETScript== γίνεται κουμπί</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="942"/>
@@ -12611,254 +12707,254 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1015"/>
         <source>Save a copy for an older QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση αντιγράφου για παλαιότερο QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1029"/>
         <source>Writes a copy of the current project as a .qet file, which versions of QElectroTech that cannot open a .qetz open</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γράφει ένα αντίγραφο του τρέχοντος έργου ως αρχείο .qet, το οποίο ανοίγουν οι εκδόσεις του QElectroTech που δεν ανοίγουν .qetz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1082"/>
         <source>Horizontal mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Οριζόντιος κατοπτρισμός</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1083"/>
         <source>Vertical mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατακόρυφος κατοπτρισμός</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1087"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1619"/>
         <source>Group</source>
         <comment>fr: Grouper</comment>
-        <translation type="unfinished">Ομάδα</translation>
+        <translation>Ομάδα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1088"/>
         <source>Ungroup</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατάργηση ομαδοποίησης</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1109"/>
         <source>Insert the last element</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή του τελευταίου στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1111"/>
         <source>Places the last inserted element again</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Τοποθετεί ξανά το τελευταίο στοιχείο που εισήχθη</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1123"/>
         <source>Search for a command…</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση εντολής…</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1125"/>
         <source>Type part of a command name and press Enter to launch it</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πληκτρολογήστε μέρος του ονόματος μιας εντολής και πατήστε Enter για να την εκτελέσετε</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1145"/>
         <source>Insert an element…</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή στοιχείου…</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1147"/>
         <source>Opens the element picker at the cursor position</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ανοίγει τον επιλογέα στοιχείων στη θέση του δρομέα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1160"/>
         <source>Shortcut bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμμή συντομεύσεων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1162"/>
         <source>Opens, at the cursor position, the commands useful for the selection, and the element picker</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ανοίγει, στη θέση του δρομέα, τις εντολές που είναι χρήσιμες για την επιλογή και τον επιλογέα στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1174"/>
         <source>Repeat the last command</source>
-        <translation type="unfinished"></translation>
+        <translation>Επανάληψη της τελευταίας εντολής</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1176"/>
         <source>Relaunches the last drawing tool or element insertion (Enter on the sheet)</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εκκινεί ξανά το τελευταίο εργαλείο σχεδίασης ή την τελευταία εισαγωγή στοιχείου (Enter στο φύλλο)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1190"/>
         <source>Flips the selected elements from left to right</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αναστρέφει τα επιλεγμένα στοιχεία από αριστερά προς τα δεξιά</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1191"/>
         <source>Flips the selected elements from top to bottom</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αναστρέφει τα επιλεγμένα στοιχεία από πάνω προς τα κάτω</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1209"/>
         <source>Groups the selected elements, texts, shapes and images: they are selected, moved and copied together</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ομαδοποιεί τα επιλεγμένα στοιχεία, κείμενα, σχήματα και εικόνες: επιλέγονται, μετακινούνται και αντιγράφονται μαζί</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1210"/>
         <source>Breaks up the selected groups</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καταργεί τις επιλεγμένες ομάδες</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1217"/>
         <source>Align to grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Ευθυγράμμιση στο πλέγμα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1219"/>
         <source>Puts the selected elements, images and texts back on the grid</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφέρει τα επιλεγμένα στοιχεία, εικόνες και κείμενα στο πλέγμα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1228"/>
         <source>Align left</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση αριστερά</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1228"/>
         <source>Aligns the left edges of the selected items</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχίζει τα αριστερά άκρα των επιλεγμένων αντικειμένων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
         <source>Centre horizontally</source>
-        <translation type="unfinished"></translation>
+        <translation>Κεντράρισμα οριζόντια</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
         <source>Aligns the selected items on one vertical line, by their origin point for elements</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχίζει τα επιλεγμένα αντικείμενα σε μία κατακόρυφη γραμμή, με βάση το σημείο αναφοράς τους για τα στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1230"/>
         <source>Align right</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση δεξιά</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1230"/>
         <source>Aligns the right edges of the selected items</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχίζει τα δεξιά άκρα των επιλεγμένων αντικειμένων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1231"/>
         <source>Align top</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση πάνω</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1231"/>
         <source>Aligns the top edges of the selected items</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχίζει τα πάνω άκρα των επιλεγμένων αντικειμένων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1232"/>
         <source>Centre vertically</source>
-        <translation type="unfinished"></translation>
+        <translation>Κεντράρισμα κατακόρυφα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1232"/>
         <source>Aligns the selected items on one horizontal line, by their origin point for elements</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχίζει τα επιλεγμένα αντικείμενα σε μία οριζόντια γραμμή, με βάση το σημείο αναφοράς τους για τα στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1233"/>
         <source>Align bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση κάτω</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1233"/>
         <source>Aligns the bottom edges of the selected items</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχίζει τα κάτω άκρα των επιλεγμένων αντικειμένων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1248"/>
         <source>Select all conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή όλων των αγωγών</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1249"/>
         <source>Select all text fields</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή όλων των πεδίων κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1262"/>
         <source>Selects all conductors on the sheet, deselects the rest</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέγει όλους τους αγωγούς του φύλλου και αποεπιλέγει τα υπόλοιπα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1263"/>
         <source>Selects all text fields on the sheet, deselects the rest</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέγει όλα τα πεδία κειμένου του φύλλου και αποεπιλέγει τα υπόλοιπα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1279"/>
         <source>Centre on the cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Κεντράρισμα στον δρομέα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1294"/>
         <source>Centres the sheet on the point under the mouse cursor, without changing the zoom</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κεντράρει το φύλλο στο σημείο κάτω από τον δρομέα του ποντικιού, χωρίς να αλλάζει το ζουμ</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1327"/>
         <source>Add an arc</source>
-        <translation type="unfinished">Προσθήκη τόξου</translation>
+        <translation>Προσθήκη τόξου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1329"/>
         <source>Add a curve</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη καμπύλης</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1330"/>
         <source>Add a fillet</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη στρογγύλευσης</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1331"/>
         <source>Add a terminal plan</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη σχεδίου ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1332"/>
         <source>Add a generic device…</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη γενικής συσκευής…</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1335"/>
         <source>Draw a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχεδίαση καλωδίου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1337"/>
@@ -12873,7 +12969,7 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1340"/>
         <source>Adds a PDF page to the current sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθέτει μια σελίδα PDF στο τρέχον φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1342"/>
@@ -12893,7 +12989,7 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1345"/>
         <source>Adds an arc on the current sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθέτει ένα τόξο στο τρέχον φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1346"/>
@@ -12903,97 +12999,97 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1347"/>
         <source>Adds a Bézier curve to the current sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθέτει μια καμπύλη Bézier στο τρέχον φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1348"/>
         <source>Rounds the corner between two lines of the current sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Στρογγυλεύει τη γωνία μεταξύ δύο γραμμών του τρέχοντος φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1349"/>
         <source>Adds a terminal plan to the current sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθέτει ένα σχέδιο ακροδεκτών στο τρέχον φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1350"/>
         <source>Makes a box symbol with terminals on any side and places it on the current sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργεί ένα σύμβολο κουτιού με ακροδέκτες σε οποιαδήποτε πλευρά και το τοποθετεί στο τρέχον φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1351"/>
         <source>Draws the main line of a cable: every conductor crossed becomes one of its cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχεδιάζει την κύρια γραμμή ενός καλωδίου: κάθε αγωγός που διασταυρώνεται γίνεται ένας από τους κλώνους του</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1408"/>
         <source>Navigate to an element</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετάβαση σε στοιχείο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1410"/>
         <source>Quickly search for and select an element in the sheet</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αναζητά γρήγορα και επιλέγει ένα στοιχείο στο φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1540"/>
         <source>Numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1541"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Λίστες</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1869"/>
         <source>XML Files (*.xml);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία XML (*.xml);;Όλα τα αρχεία (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1925"/>
         <source>%1 is being opened by another session of QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το %1 ανοίγει από άλλη συνεδρία του QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1928"/>
         <source>%1 is open by %2 on %3 since %4</source>
-        <translation type="unfinished"></translation>
+        <translation>Το %1 είναι ανοιχτό από τον/την %2 στον υπολογιστή %3 από %4</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1934"/>
         <source> (active just now).</source>
-        <translation type="unfinished"></translation>
+        <translation> (ενεργός μόλις τώρα).</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="1935"/>
         <source> (active %n minute(s) ago).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> (ενεργός πριν από %n λεπτό).</numerusform>
+            <numerusform> (ενεργός πριν από %n λεπτά).</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1941"/>
         <source>Project in use</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Έργο σε χρήση</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1942"/>
         <source>Open it read-only to look at it without changing it. Open it anyway only if you know that session is not using it any more: both of you could then save over each other.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανοίξτε το μόνο για ανάγνωση για να το δείτε χωρίς να το αλλάξετε. Ανοίξτε το παρ&apos; όλα αυτά μόνο αν ξέρετε ότι εκείνη η συνεδρία δεν το χρησιμοποιεί πια: αλλιώς ο καθένας μπορεί να αντικαταστήσει τις αποθηκεύσεις του άλλου.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1945"/>
         <source>Open read-only</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα μόνο για ανάγνωση</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1946"/>
         <source>Open anyway</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα παρ&apos; όλα αυτά</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1972"/>
@@ -13001,75 +13097,77 @@ Hold Ctrl while moving to place freely.</source>
         <location filename="../sources/qetdiagrameditor.cpp" line="2011"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2054"/>
         <source>Cannot open %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατό το άνοιγμα του %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1974"/>
         <source>The file %1 cannot be read as a QElectroTech project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο %1 δεν μπορεί να διαβαστεί ως έργο QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1975"/>
         <source>The project file is damaged:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο του έργου είναι κατεστραμμένο:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1980"/>
         <source>Open the version saved %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα της έκδοσης που αποθηκεύτηκε %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1985"/>
         <source>Recover what can be read</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανάκτηση όσων μπορούν να διαβαστούν</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1987"/>
         <source>Either opens as a new project, &quot;%1&quot;; %2 is left as it is.</source>
-        <translation type="unfinished"></translation>
+        <translation>Και στις δύο περιπτώσεις ανοίγει ως νέο έργο, «%1»· το %2 μένει ως έχει.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2001"/>
         <source>Nothing can be recovered from it:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η ανάκτηση οποιουδήποτε περιεχομένου:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2015"/>
         <source>Project recovered</source>
-        <translation type="unfinished"></translation>
+        <translation>Το έργο ανακτήθηκε</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2016"/>
         <source>What could be read of %1 is open as a new project. Some parts could not be read and were left out: see the details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Όσα μπόρεσαν να διαβαστούν από το %1 άνοιξαν ως νέο έργο. Ορισμένα τμήματα δεν μπόρεσαν να διαβαστούν και παραλείφθηκαν: δείτε τις λεπτομέρειες.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2036"/>
         <source>%1 (recovered)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (ανακτήθηκε)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2039"/>
         <source>%1 (recovered %2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (ανακτήθηκε %2)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2223"/>
         <source>%1 on %2 has taken over %3. Save your changes with Save As to keep them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το %1 στον υπολογιστή %2 ανέλαβε το %3. Αποθηκεύστε τις αλλαγές σας με «Αποθήκευση ως» για να τις διατηρήσετε.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2238"/>
         <source>This project was saved by a later version of QElectroTech. It is opened read-only, so that saving it cannot lose what this version does not know. Use Save As to keep a copy in this version&apos;s format.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το έργο αποθηκεύτηκε από νεότερη έκδοση του QElectroTech. Ανοίγει μόνο για ανάγνωση, ώστε η αποθήκευση να μην χάσει ό,τι δεν γνωρίζει αυτή η έκδοση. Χρησιμοποιήστε την Αποθήκευση ως για να κρατήσετε ένα αντίγραφο στη μορφή αυτής της έκδοσης.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2297"/>
         <source>Elements not loaded</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Τα στοιχεία δεν φορτώθηκαν</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2298"/>
@@ -13077,9 +13175,13 @@ Hold Ctrl while moving to place freely.</source>
 
 They are not shown, but they are kept in the file as they are, with their conductors, and come back once their definition is available again.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο δεν ήταν δυνατό να φορτωθεί: ο ορισμός του δεν υπάρχει ούτε στο έργο ούτε στις συλλογές.
+
+Δεν εμφανίζεται, αλλά διατηρείται στο αρχείο ως έχει, μαζί με τους αγωγούς του, και επανεμφανίζεται μόλις ο ορισμός του γίνει ξανά διαθέσιμος.</numerusform>
+            <numerusform>%n στοιχεία δεν ήταν δυνατό να φορτωθούν: ο ορισμός τους δεν υπάρχει ούτε στο έργο ούτε στις συλλογές.
+
+Δεν εμφανίζονται, αλλά διατηρούνται στο αρχείο ως έχουν, μαζί με τους αγωγούς τους, και επανεμφανίζονται μόλις ο ορισμός τους γίνει ξανά διαθέσιμος.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -13088,22 +13190,26 @@ They are not shown, but they are kept in the file as they are, with their conduc
 
 They are not shown, but they are kept in the file as they are, and join their terminals again once the definition has them where they were.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n αγωγός δεν ήταν δυνατό να συνδεθεί στους ακροδέκτες του και δεν φορτώθηκε. Ο ορισμός του στοιχείου λείπει ή αντικαταστάθηκε από άλλον με διαφορετικούς ακροδέκτες.
+
+Δεν εμφανίζεται, αλλά διατηρείται στο αρχείο ως έχει και συνδέεται ξανά στους ακροδέκτες του μόλις ο ορισμός τούς έχει ξανά εκεί όπου ήταν.</numerusform>
+            <numerusform>%n αγωγοί δεν ήταν δυνατό να συνδεθούν στους ακροδέκτες τους και δεν φορτώθηκαν. Ο ορισμός του στοιχείου λείπει ή αντικαταστάθηκε από άλλον με διαφορετικούς ακροδέκτες.
+
+Δεν εμφανίζονται, αλλά διατηρούνται στο αρχείο ως έχουν και συνδέονται ξανά στους ακροδέκτες τους μόλις ο ορισμός τούς έχει ξανά εκεί όπου ήταν.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2651"/>
         <source>Automatic numbering</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2652"/>
         <source>No automatic cable numbering is defined.</source>
         <comment>shown when a project has no cable numbering rule</comment>
-        <translation type="unfinished"></translation>
+        <translation>Δεν έχει οριστεί αυτόματη αρίθμηση καλωδίων.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2656"/>
@@ -13111,54 +13217,56 @@ They are not shown, but they are kept in the file as they are, and join their te
 
 You can also number the cables automatically later: the rule is set at any time in the project properties, on the &quot;Auto Numbering&quot; page.</source>
         <comment>ask whether a cable numbering rule should be defined now</comment>
-        <translation type="unfinished"></translation>
+        <translation>Θέλετε να ορίσετε μία τώρα;
+
+Μπορείτε επίσης να αριθμήσετε τα καλώδια αυτόματα αργότερα: ο κανόνας ορίζεται οποιαδήποτε στιγμή στις ιδιότητες του έργου, στη σελίδα «Αυτόματη αρίθμηση».</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2662"/>
         <source>Yes</source>
         <comment>yes</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ναι</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2663"/>
         <source>No</source>
         <comment>no</comment>
-        <translation type="unfinished"></translation>
+        <translation>Όχι</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2664"/>
         <source>Cancel</source>
         <comment>cancel</comment>
-        <translation type="unfinished">Αναίρεση</translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3271"/>
         <source>Edit the information of the elements</source>
         <comment>edit several elements</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των πληροφοριών των στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3302"/>
         <source>Edit the cable</source>
         <comment>edit cable</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του καλωδίου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4866"/>
         <source>Remembered after a restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Απομνημονεύεται μετά από επανεκκίνηση</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5009"/>
         <source>Text format of &quot;%1&quot; copied</source>
-        <translation type="unfinished"></translation>
+        <translation>Η μορφή κειμένου του «%1» αντιγράφηκε</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="5037"/>
         <source>Text format applied to %n element(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Η μορφή κειμένου εφαρμόστηκε σε %n στοιχείο</numerusform>
+            <numerusform>Η μορφή κειμένου εφαρμόστηκε σε %n στοιχεία</numerusform>
         </translation>
     </message>
     <message>
@@ -13171,123 +13279,124 @@ You can also number the cables automatically later: the rule is set at any time 
         <location filename="../sources/qetdiagrameditor.cpp" line="1467"/>
         <source>Scripts</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σενάρια</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1600"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Προσθήκη</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1608"/>
         <source>Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1624"/>
         <source>Align</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1638"/>
         <source>Rows and columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμμές και στήλες</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1641"/>
         <source>Depth</source>
-        <translation type="unfinished">Βάθος</translation>
+        <translation>Βάθος</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1669"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4731"/>
         <source>Scripts</source>
-        <translation type="unfinished"></translation>
+        <translation>Σενάρια</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2259"/>
         <source>%n font descriptions written in a foreign or corrupted format have been restored. They will be rewritten in a stable format the next time the project is saved.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n περιγραφή γραμματοσειράς γραμμένη σε ξένη ή κατεστραμμένη μορφή αποκαταστάθηκε. Θα ξαναγραφτεί σε σταθερή μορφή την επόμενη φορά που θα αποθηκευτεί το έργο.</numerusform>
+            <numerusform>%n περιγραφές γραμματοσειρών γραμμένες σε ξένη ή κατεστραμμένη μορφή αποκαταστάθηκαν. Θα ξαναγραφτούν σε σταθερή μορφή την επόμενη φορά που θα αποθηκευτεί το έργο.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2267"/>
         <source>%n font descriptions could not be read; the default font will be used for these texts.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n περιγραφή γραμματοσειράς δεν ήταν δυνατό να διαβαστεί· θα χρησιμοποιηθεί η προεπιλεγμένη γραμματοσειρά για αυτά τα κείμενα.</numerusform>
+            <numerusform>%n περιγραφές γραμματοσειρών δεν ήταν δυνατό να διαβαστούν· θα χρησιμοποιηθεί η προεπιλεγμένη γραμματοσειρά για αυτά τα κείμενα.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2274"/>
         <source>Project fonts</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρές έργου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2287"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2291"/>
         <source>Sheet %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Φύλλο %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2314"/>
         <source>Conductors not loaded</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Οι αγωγοί δεν φορτώθηκαν</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2847"/>
         <source>Unable to delete the terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η διαγραφή του ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2848"/>
         <source>The deletion cannot be performed because the selection contains one or more terminals that are bridged and/or belong to a multi-level terminal.
 Unbridge and/or remove the levels from the affected terminals so that they can be deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Η διαγραφή δεν μπορεί να γίνει επειδή η επιλογή περιέχει έναν ή περισσότερους ακροδέκτες που είναι γεφυρωμένοι ή/και ανήκουν σε ακροδέκτη πολλών επιπέδων.
+Αφαιρέστε τις γέφυρες ή/και τα επίπεδα από τους σχετικούς ακροδέκτες ώστε να μπορούν να διαγραφούν</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2983"/>
         <source>%n items put back on the grid</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n αντικείμενο επανήλθε στο πλέγμα</numerusform>
+            <numerusform>%n αντικείμενα επανήλθαν στο πλέγμα</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2984"/>
         <source>%n items aligned</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n αντικείμενο στοιχίστηκε</numerusform>
+            <numerusform>%n αντικείμενα στοιχίστηκαν</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2990"/>
         <source>The selection is already on the grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Η επιλογή βρίσκεται ήδη στο πλέγμα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2992"/>
         <source>Select at least two unlocked elements, images, texts, shapes or groups</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε τουλάχιστον δύο ξεκλείδωτα στοιχεία, εικόνες, κείμενα, σχήματα ή ομάδες</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2994"/>
         <source>The selection is already aligned, to the nearest grid step</source>
-        <translation type="unfinished"></translation>
+        <translation>Η επιλογή είναι ήδη στοιχισμένη, στο πλησιέστερο βήμα πλέγματος</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2998"/>
         <source>(%n locked objects left in place)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>(%n κλειδωμένο αντικείμενο έμεινε στη θέση του)</numerusform>
+            <numerusform>(%n κλειδωμένα αντικείμενα έμειναν στη θέση τους)</numerusform>
         </translation>
     </message>
     <message>
@@ -13334,22 +13443,22 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3914"/>
         <source>Are you sure you want to delete this sheet?</source>
-        <translation type="unfinished"></translation>
+        <translation>Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το φύλλο;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3919"/>
         <source>Delete the sheets</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή των φύλλων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3920"/>
         <source>Are you sure you want to delete the selected %1 sheets ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Είστε βέβαιοι ότι θέλετε να διαγράψετε τα %1 επιλεγμένα φύλλα;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3937"/>
         <source>Delete %1 sheets</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή %1 φύλλων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3975"/>
@@ -13360,7 +13469,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <location filename="../sources/qetdiagrameditor.cpp" line="4065"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4083"/>
         <source>Move the sheets</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση των φύλλων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4158"/>
@@ -13371,52 +13480,52 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4284"/>
         <source>Repeat: insert &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Επανάληψη: εισαγωγή «%1»</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
         <source>Repeat: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Επανάληψη: %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4582"/>
         <source>sheet %1</source>
-        <translation type="unfinished"></translation>
+        <translation>φύλλο %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4590"/>
         <source>%n elements redrawn.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο επανασχεδιάστηκε.</numerusform>
+            <numerusform>%n στοιχεία επανασχεδιάστηκαν.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4594"/>
         <source>%n elements for which no definition could be found or which were illegible: their current design has been retained.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο για το οποίο δεν βρέθηκε ορισμός ή που ήταν δυσανάγνωστο: διατηρήθηκε το τρέχον σχέδιό του.</numerusform>
+            <numerusform>%n στοιχεία για τα οποία δεν βρέθηκε ορισμός ή που ήταν δυσανάγνωστα: διατηρήθηκε το τρέχον σχέδιό τους.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4606"/>
         <source>%n elements not redrawn: their size, grip point or terminals have changed (a terminal was added, removed or moved).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο δεν επανασχεδιάστηκε: άλλαξε το μέγεθος, το σημείο λαβής ή οι ακροδέκτες του (προστέθηκε, αφαιρέθηκε ή μετακινήθηκε ακροδέκτης).</numerusform>
+            <numerusform>%n στοιχεία δεν επανασχεδιάστηκαν: άλλαξε το μέγεθος, το σημείο λαβής ή οι ακροδέκτες τους (προστέθηκε, αφαιρέθηκε ή μετακινήθηκε ακροδέκτης).</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4610"/>
         <source>To update them, they must be deleted then reinserted. Warning: this operation removes the conductors already connected to these elements, which will need to be redrawn.</source>
-        <translation type="unfinished"></translation>
+        <translation>Για να ενημερωθούν, πρέπει να διαγραφούν και να εισαχθούν ξανά. Προσοχή: αυτή η ενέργεια αφαιρεί τους αγωγούς που είναι ήδη συνδεδεμένοι σε αυτά τα στοιχεία, οι οποίοι θα πρέπει να σχεδιαστούν ξανά.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4639"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4643"/>
         <source>Run a script</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκτέλεση σεναρίου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4668"/>
@@ -13425,111 +13534,119 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
 A script runs with your permissions: it can read and modify the open project and write files. Only run scripts whose origin you know.
 
 Enable scripts? This setting can be changed in Configure QElectroTech &gt; General &gt; Projects.</source>
-        <translation type="unfinished"></translation>
+        <translation>Τα σενάρια είναι απενεργοποιημένα.
+
+Ένα σενάριο εκτελείται με τα δικαιώματά σας: μπορεί να διαβάζει και να τροποποιεί το ανοιχτό έργο και να γράφει αρχεία. Εκτελείτε μόνο σενάρια των οποίων γνωρίζετε την προέλευση.
+
+Να ενεργοποιηθούν τα σενάρια; Αυτή η ρύθμιση μπορεί να αλλάξει στο Ρύθμιση QElectroTech &gt; Γενικά &gt; Έργα.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4645"/>
         <source>JavaScript scripts (*.js);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σενάρια JavaScript (*.js);;Όλα τα αρχεία (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4745"/>
         <source>Ignored: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Αγνοήθηκε: %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4780"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4841"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Διακοπή</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4781"/>
         <source>Stop recording the macro</source>
-        <translation type="unfinished"></translation>
+        <translation>Διακοπή της εγγραφής της μακροεντολής</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4791"/>
         <source>● Recording: %n steps</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>● Εγγραφή: %n βήμα</numerusform>
+            <numerusform>● Εγγραφή: %n βήματα</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4806"/>
         <source>Macro recorded</source>
-        <translation type="unfinished"></translation>
+        <translation>Η μακροεντολή καταγράφηκε</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4807"/>
         <source>“%1”: %n steps.
 
 To make a script of it, ask your AI assistant: the button below copies the request, just paste it into its window.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>«%1»: %n βήμα.
+
+Για να φτιάξετε σενάριο από αυτήν, ζητήστε το από τον βοηθό τεχνητής νοημοσύνης σας: το παρακάτω κουμπί αντιγράφει το αίτημα, απλώς επικολλήστε το στο παράθυρό του.</numerusform>
+            <numerusform>«%1»: %n βήματα.
+
+Για να φτιάξετε σενάριο από αυτήν, ζητήστε το από τον βοηθό τεχνητής νοημοσύνης σας: το παρακάτω κουμπί αντιγράφει το αίτημα, απλώς επικολλήστε το στο παράθυρό του.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4816"/>
         <source>&amp;Copy the request for the assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Αντιγραφή του αιτήματος για τον βοηθό</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4817"/>
         <source>&amp;Open the folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα του &amp;φακέλου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4823"/>
         <source>Request copied: paste it into the assistant&apos;s window</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αίτημα αντιγράφηκε: επικολλήστε το στο παράθυρο του βοηθού</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4842"/>
         <source>Close the assistant&apos;s connection for the rest of the session</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλείσιμο της σύνδεσης του βοηθού για την υπόλοιπη συνεδρία</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4851"/>
         <source>Live mode: assistant connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Ζωντανή λειτουργία: ο βοηθός είναι συνδεδεμένος</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4852"/>
         <source>Live mode: waiting for an assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Ζωντανή λειτουργία: αναμονή βοηθού</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4860"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4904"/>
         <source>Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Βοηθός</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4864"/>
         <source>Ask before running a script the assistant wrote</source>
-        <translation type="unfinished"></translation>
+        <translation>Ερώτηση πριν από την εκτέλεση σεναρίου που έγραψε ο βοηθός</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4921"/>
         <source>Live mode: %1 %2 at %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Ζωντανή λειτουργία: %1 %2 στις %3</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4963"/>
         <source>%n kinds of items hidden</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n είδος αντικειμένων κρυφό</numerusform>
+            <numerusform>%n είδη αντικειμένων κρυφά</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4979"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4984"/>
         <source>Texts %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενα %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="959"/>
@@ -13646,7 +13763,7 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <location filename="../sources/qetdiagrameditor.cpp" line="1398"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1409"/>
         <source>Diagram editors</source>
-        <translation type="unfinished">Επεξεργαστές διαγραμμάτων</translation>
+        <translation>Επεξεργαστές διαγραμμάτων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="386"/>
@@ -13663,13 +13780,13 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <location filename="../sources/qetdiagrameditor.cpp" line="559"/>
         <source>Automatic disconnection of conductor(s)</source>
         <comment>Tool tip of auto break conductor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αποσύνδεση αγωγού(ών)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="561"/>
         <source>Automatically cut existing conductors when placing an element</source>
         <comment>Status tip of auto break conductor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόβει αυτόματα τους υπάρχοντες αγωγούς κατά την τοποθέτηση ενός στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="578"/>
@@ -13694,12 +13811,12 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="634"/>
         <source>View the guides</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση των οδηγών</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="636"/>
         <source>Shows or hides the guides</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφανίζει ή αποκρύπτει τους οδηγούς</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="706"/>
@@ -13736,17 +13853,17 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="823"/>
         <source>Export the wiring diagram</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή του σχεδίου καλωδίωσης</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="835"/>
         <source>Wiring list (database)</source>
-        <translation type="unfinished"></translation>
+        <translation>Λίστα καλωδίωσης (βάση δεδομένων)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="847"/>
         <source>Automatic numbering of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="932"/>
@@ -13827,7 +13944,7 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1080"/>
         <source>Rotate the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή της ομάδας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1186"/>
@@ -13839,7 +13956,7 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <location filename="../sources/qetdiagrameditor.cpp" line="1188"/>
         <source>Rotates the selection as a group around its centre, rather than each element in place</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Περιστρέφει την επιλογή ως ομάδα γύρω από το κέντρο της, αντί να περιστρέφει κάθε στοιχείο στη θέση του</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1259"/>
@@ -13879,7 +13996,7 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1322"/>
         <source>Add a PDF</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη PDF</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1324"/>
@@ -14055,17 +14172,17 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="262"/>
         <source>Export as SVG</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή ως SVG</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="278"/>
         <source>&amp;Close this editor</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Κλείσιμο αυτού του επεξεργαστή</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="281"/>
         <source>Close this editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλείσιμο αυτού του επεξεργαστή</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="289"/>
@@ -14100,12 +14217,12 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="401"/>
         <source>Zoom content</source>
-        <translation type="unfinished">Εστίαση στο περιεχόμενο</translation>
+        <translation>Προσαρμογή στο περιεχόμενο</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="404"/>
         <source>Adjusts the zoom to display the whole symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμόζει το ζουμ ώστε να εμφανίζεται ολόκληρο το σύμβολο</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="420"/>
@@ -14165,17 +14282,17 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="483"/>
         <source>Fine-Rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Λεπτή περιστροφή</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="491"/>
         <source>Mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατοπτρισμός</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="499"/>
         <source>Flip</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναστροφή</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="507"/>
@@ -14186,7 +14303,7 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="515"/>
         <source>Import an element to resize</source>
         <comment>fr: importer un élément à redimensionner</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή στοιχείου προς αλλαγή μεγέθους</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1170"/>
@@ -14493,39 +14610,39 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="529"/>
         <source>Too many primitives, list not generated: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Πάρα πολλά βασικά σχήματα, η λίστα δεν δημιουργήθηκε: %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="840"/>
         <source>Incorrect number of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Λανθασμένος αριθμός ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="841"/>
         <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Conductor definitions can only have one terminal.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Verify that the element has only one terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Σφάλμα&lt;/b&gt;:&lt;br&gt;Οι ορισμοί αγωγών μπορούν να έχουν μόνο έναν ακροδέκτη.&lt;br&gt;&lt;b&gt;Λύση&lt;/b&gt;:&lt;br&gt;Βεβαιωθείτε ότι το στοιχείο έχει μόνο έναν ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="862"/>
         <source>Duplicate terminal names</source>
-        <translation type="unfinished"></translation>
+        <translation>Διπλότυπα ονόματα ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="863"/>
         <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Several terminals have the same name: %1.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Give each terminal a unique name, for example N.1 and N.2. The terminals concerned are selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Σφάλμα&lt;/b&gt;:&lt;br&gt;Πολλοί ακροδέκτες έχουν το ίδιο όνομα: %1.&lt;br&gt;&lt;b&gt;Λύση&lt;/b&gt;:&lt;br&gt;Δώστε σε κάθε ακροδέκτη ένα μοναδικό όνομα, για παράδειγμα N.1 και N.2. Οι σχετικοί ακροδέκτες είναι επιλεγμένοι.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="884"/>
         <source>Terminals without a name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτες χωρίς όνομα</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="885"/>
         <source>&lt;br&gt;%n terminals without a name. Without unique terminal names, the wiring list (what connects to what) cannot name each terminal, so it cannot be used to wire the cabinet in the workshop.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>&lt;br&gt;%n ακροδέκτης χωρίς όνομα. Χωρίς μοναδικά ονόματα ακροδεκτών, η λίστα καλωδίωσης (τι συνδέεται με τι) δεν μπορεί να ονομάσει κάθε ακροδέκτη, οπότε δεν μπορεί να χρησιμοποιηθεί για την καλωδίωση του πίνακα στο εργαστήριο.</numerusform>
+            <numerusform>&lt;br&gt;%n ακροδέκτες χωρίς όνομα. Χωρίς μοναδικά ονόματα ακροδεκτών, η λίστα καλωδίωσης (τι συνδέεται με τι) δεν μπορεί να ονομάσει κάθε ακροδέκτη, οπότε δεν μπορεί να χρησιμοποιηθεί για την καλωδίωση του πίνακα στο εργαστήριο.</numerusform>
         </translation>
     </message>
     <message>
@@ -14561,70 +14678,70 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1209"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1240"/>
         <source>Element editors</source>
-        <translation type="unfinished">Επεξεργαστές στοιχείων</translation>
+        <translation>Επεξεργαστές στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1155"/>
         <source>Scale the element...</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλιμάκωση του στοιχείου...</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1205"/>
         <source>Show the background frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση του πλαισίου φόντου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1213"/>
         <source>Background frame size...</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος πλαισίου φόντου...</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1216"/>
         <source>Background frame size</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος πλαισίου φόντου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1221"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1227"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1223"/>
         <source>Width</source>
-        <translation type="unfinished">Πλάτος</translation>
+        <translation>Πλάτος</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1229"/>
         <source>Height</source>
-        <translation type="unfinished"></translation>
+        <translation>Ύψος</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1391"/>
         <source>X: %1  Y: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>X: %1  Y: %2</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1598"/>
         <source>Export as SVG</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή ως SVG</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1600"/>
         <source>SVG image (*.svg)</source>
         <comment>filetypes allowed when exporting an element to SVG</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εικόνα SVG (*.svg)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1611"/>
         <source>Export failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Η εξαγωγή απέτυχε</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1612"/>
         <source>Unable to write to the file « %1 ».</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η εγγραφή στο αρχείο « %1 ».</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1796"/>
@@ -14641,12 +14758,12 @@ please wait while importing...</source>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1837"/>
         <source>Import an element to resize</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή στοιχείου προς αλλαγή μεγέθους</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1839"/>
         <source>QElectroTech elements (*.elmt)</source>
-        <translation type="unfinished">Στοιχεία του QElectroTech (*.elmt)</translation>
+        <translation>Στοιχεία του QElectroTech (*.elmt)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="967"/>
@@ -14821,13 +14938,13 @@ the conditions are not valid</source>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="101"/>
         <source>Save settings as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση ρυθμίσεων ως...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="102"/>
         <source>Saves QElectroTech&apos;s settings to a file</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αποθηκεύει τις ρυθμίσεις του QElectroTech σε ένα αρχείο</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="72"/>
@@ -14846,40 +14963,40 @@ the conditions are not valid</source>
         <location filename="../sources/qetmainwindow.cpp" line="183"/>
         <location filename="../sources/qetmainwindow.cpp" line="280"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Γενικά</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="96"/>
         <source>&amp;Customize...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Προσαρμογή...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="98"/>
         <source>Toolbars, shortcut bar, keyboard and mouse gestures, in one window</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γραμμές εργαλείων, γραμμή συντομεύσεων, κινήσεις πληκτρολογίου και ποντικιού, σε ένα παράθυρο</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="106"/>
         <source>Load settings...</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρτωση ρυθμίσεων...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="107"/>
         <source>Replaces QElectroTech&apos;s settings with those of a file, then closes QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αντικαθιστά τις ρυθμίσεις του QElectroTech με εκείνες ενός αρχείου και μετά κλείνει το QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="133"/>
         <source>Connect an AI assistant...</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνδεση βοηθού τεχνητής νοημοσύνης...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="135"/>
         <source>Shows the setup that lets an AI assistant use QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εμφανίζει τη ρύθμιση που επιτρέπει σε έναν βοηθό τεχνητής νοημοσύνης να χρησιμοποιεί το QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="143"/>
@@ -14919,13 +15036,13 @@ the conditions are not valid</source>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="182"/>
         <source>Save a diagnostic report...</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση αναφοράς διάγνωσης...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="184"/>
         <source>Generates a report containing the latest log entries, to be included in a bug report</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργεί μια αναφορά με τις πιο πρόσφατες καταχωρίσεις καταγραφής, για επισύναψη σε αναφορά σφάλματος</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="195"/>
@@ -15015,37 +15132,37 @@ the conditions are not valid</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="1628"/>
         <source>Renumber elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναρίθμηση στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1629"/>
         <source>Renumber elements (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναρίθμηση στοιχείων (%1)</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2738"/>
         <source>QElectroTech project (*.qet *.qetz)</source>
-        <translation type="unfinished"></translation>
+        <translation>Έργο QElectroTech (*.qet *.qetz)</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2869"/>
         <source>%1 was opened read-only because someone else has it open. Use Save As to keep your changes in another file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το %1 άνοιξε μόνο για ανάγνωση επειδή το έχει ανοιχτό κάποιος άλλος. Χρησιμοποιήστε «Αποθήκευση ως» για να κρατήσετε τις αλλαγές σας σε άλλο αρχείο.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2874"/>
         <source>Cannot save %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η αποθήκευση του %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2894"/>
         <source>someone else changed the file on disk at %1 since it was opened, and saving would overwrite that. Save to another name, or set QET_OVERWRITE_CHANGED=1 to overwrite it.</source>
-        <translation type="unfinished"></translation>
+        <translation>από τότε που άνοιξε το αρχείο, κάποιος άλλος το άλλαξε στον δίσκο στις %1 και η αποθήκευση θα αντικαθιστούσε αυτή την αλλαγή. Αποθηκεύστε με άλλο όνομα ή ορίστε QET_OVERWRITE_CHANGED=1 για αντικατάσταση.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="3087"/>
         <source>Modified contact system</source>
-        <translation type="unfinished"></translation>
+        <translation>Τροποποιημένο σύστημα επαφών</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="3088"/>
@@ -15053,21 +15170,28 @@ the conditions are not valid</source>
 Existing slave elements will not be automatically assigned. You will need to link the slaves manually and assign the contact groups.
 
 Do you wish to continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Το νέο στοιχείο ορίζει ομάδες εξαρτημένων επαφών.
+Τα υπάρχοντα εξαρτημένα στοιχεία δεν θα αντιστοιχιστούν αυτόματα. Θα χρειαστεί να συνδέσετε τα εξαρτημένα με το χέρι και να αντιστοιχίσετε τις ομάδες επαφών.
+
+Θέλετε να συνεχίσετε;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="3446"/>
         <source>This document appears to have been saved with version %1
  which is later than your version ! 
 You are currently using QElectroTech in version %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το έγγραφο φαίνεται ότι αποθηκεύτηκε με την έκδοση %1
+ η οποία είναι νεότερη από τη δική σας! 
+Χρησιμοποιείτε αυτή τη στιγμή το QElectroTech στην έκδοση %2</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="3450"/>
         <source>.
  It is then possible that the opening of all or part of this document fails.
 What do you wish to do ?</source>
-        <translation type="unfinished"></translation>
+        <translation>.
+ Είναι επομένως πιθανό να αποτύχει το άνοιγμα ολόκληρου ή μέρους αυτού του εγγράφου.
+Τι θέλετε να κάνετε;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="3471"/>
@@ -15079,13 +15203,15 @@ What do you wish to do ?</source>
         <location filename="../sources/qetproject.cpp" line="3472"/>
         <source>The project you are trying to open is partially compatible with your version %1 of QElectroTech.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Το έργο που προσπαθείτε να ανοίξετε είναι εν μέρει συμβατό με την έκδοση %1 του QElectroTech.
+</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="3475"/>
         <source>In order to make it fully compatible please open this same project with version 0.8, or 0.80 of QElectroTech and save the project and open it again with this version.
 What do you wish to do ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Για να γίνει πλήρως συμβατό, ανοίξτε το ίδιο έργο με την έκδοση 0.8 ή 0.80 του QElectroTech, αποθηκεύστε το έργο και ανοίξτε το ξανά με αυτή την έκδοση.
+Τι θέλετε να κάνετε;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="3668"/>
@@ -15103,17 +15229,17 @@ What do you wish to do ?</source>
     <message>
         <location filename="../sources/dataBase/sqlreadonly.cpp" line="80"/>
         <source>Unable to verify the query: the database cannot be set to read-only.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η επαλήθευση του ερωτήματος: η βάση δεδομένων δεν μπορεί να οριστεί μόνο για ανάγνωση.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/sqlreadonly.cpp" line="105"/>
         <source>Only read-only queries are allowed: this query would modify the database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιτρέπονται μόνο ερωτήματα ανάγνωσης: αυτό το ερώτημα θα τροποποιούσε τη βάση δεδομένων.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/sqlreadonly.cpp" line="109"/>
         <source>Invalid SQL query: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Μη έγκυρο ερώτημα SQL: %1</translation>
     </message>
 </context>
 <context>
@@ -15289,7 +15415,7 @@ What do you wish to do ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="424"/>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="425"/>
         <source>Title block template editors</source>
-        <translation type="unfinished">Επεξεργαστές πινακίδων</translation>
+        <translation>Επεξεργαστές πινακίδων</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="454"/>
@@ -15380,13 +15506,13 @@ What do you wish to do ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="930"/>
         <source>Error</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Σφάλμα</translation>
+        <translation>Σφάλμα</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="814"/>
         <source>Unable to save the template  ‘%1’.</source>
         <comment>message box content - %1 is a title block template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η αποθήκευση του προτύπου ‘%1’.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="852"/>
@@ -15416,7 +15542,7 @@ What do you wish to do ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="931"/>
         <source>The name ‘%1’ is invalid: it must not contain the following characters: \ / : * ? &quot; &lt; &gt; |</source>
         <comment>message box content - %1 is the rejected template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Το όνομα ‘%1’ δεν είναι έγκυρο: δεν πρέπει να περιέχει τους ακόλουθους χαρακτήρες: \ / : * ? &quot; &lt; &gt; |</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="954"/>
@@ -15628,19 +15754,19 @@ What do you wish to do ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="693"/>
         <source>Mirror selection</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κατοπτρισμός επιλογής</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="742"/>
         <source>Flip selection</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αναστροφή επιλογής</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="801"/>
         <source>scale the element</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>κλιμάκωση του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
@@ -15682,7 +15808,7 @@ What do you wish to do ?</source>
         <location filename="../sources/qet.cpp" line="354"/>
         <source>%n elements</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n στοιχείο</numerusform>
             <numerusform>%n στοιχεία</numerusform>
         </translation>
@@ -15691,7 +15817,7 @@ What do you wish to do ?</source>
         <location filename="../sources/qet.cpp" line="364"/>
         <source>%n conductors</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n αγωγός</numerusform>
             <numerusform>%n αγωγοί</numerusform>
         </translation>
@@ -15700,34 +15826,34 @@ What do you wish to do ?</source>
         <location filename="../sources/qet.cpp" line="374"/>
         <source>%n textfields</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n πεδίο κειμένου</numerusform>
-            <numerusform>%n πεδία κειμένων</numerusform>
+            <numerusform>%n πεδία κειμένου</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="384"/>
         <source>%n images</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n εικόνα</numerusform>
+            <numerusform>%n εικόνες</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="394"/>
         <source>%n shapes</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
-            <numerusform>%n φόρμα</numerusform>
-            <numerusform>%n φόρμες</numerusform>
+        <translation>
+            <numerusform>%n σχήμα</numerusform>
+            <numerusform>%n σχήματα</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="404"/>
         <source>%n texts of element</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n κείμενο στοιχείου</numerusform>
             <numerusform>%n κείμενα στοιχείου</numerusform>
         </translation>
@@ -15736,7 +15862,7 @@ What do you wish to do ?</source>
         <location filename="../sources/qet.cpp" line="414"/>
         <source>%n tables</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n πίνακας</numerusform>
             <numerusform>%n πίνακες</numerusform>
         </translation>
@@ -15745,9 +15871,9 @@ What do you wish to do ?</source>
         <location filename="../sources/qet.cpp" line="424"/>
         <source>%n layouts of terminal blocks</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n διάταξη σειράς ακροδεκτών</numerusform>
+            <numerusform>%n διατάξεις σειρών ακροδεκτών</numerusform>
         </translation>
     </message>
     <message>
@@ -15810,7 +15936,7 @@ What do you wish to do ?</source>
         <location filename="../sources/qet.cpp" line="898"/>
         <location filename="../sources/qet.cpp" line="899"/>
         <source>Depth</source>
-        <translation type="unfinished">Βάθος</translation>
+        <translation>Βάθος</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="77"/>
@@ -16102,7 +16228,7 @@ What do you wish to do ?</source>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="132"/>
         <source>Change the information of the element</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή των πληροφοριών του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="92"/>
@@ -16127,7 +16253,7 @@ What do you wish to do ?</source>
         <location filename="../sources/conductorautonumerotation.cpp" line="270"/>
         <source>Automatically number a conductor</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="53"/>
@@ -16171,7 +16297,7 @@ What do you wish to do ?</source>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="162"/>
         <source>Company collection</source>
-        <translation type="unfinished"></translation>
+        <translation>Συλλογή της εταιρείας</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="164"/>
@@ -16181,7 +16307,7 @@ What do you wish to do ?</source>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="166"/>
         <source>Macros</source>
-        <translation type="unfinished"></translation>
+        <translation>Μακροεντολές</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="168"/>
@@ -16192,7 +16318,8 @@ What do you wish to do ?</source>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="422"/>
         <source>The file &quot;%1&quot; is missing or unreadable:
 the translated name of this folder could not be read, so its folder name is displayed instead.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο &quot;%1&quot; λείπει ή δεν είναι αναγνώσιμο:
+δεν ήταν δυνατή η ανάγνωση του μεταφρασμένου ονόματος αυτού του φακέλου, οπότε εμφανίζεται το όνομα του φακέλου.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="89"/>
@@ -16207,7 +16334,7 @@ the translated name of this folder could not be read, so its folder name is disp
     <message>
         <location filename="../sources/elementsmover.cpp" line="100"/>
         <source>This group cannot be moved: the position of one of its elements is locked.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή η ομάδα δεν μπορεί να μετακινηθεί: η θέση ενός από τα στοιχεία της είναι κλειδωμένη.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/elementsmover.cpp" line="332"/>
@@ -16267,21 +16394,21 @@ the translated name of this folder could not be read, so its folder name is disp
     <message>
         <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="38"/>
         <source>Rotate the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή της ομάδας</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="108"/>
         <source>%n texts</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n κείμενο</numerusform>
+            <numerusform>%n κείμενα</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="111"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="932"/>
         <source>Rotate %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή %1</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="174"/>
@@ -16335,7 +16462,7 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="434"/>
         <source>Apply text format</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή μορφής κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.cpp" line="75"/>
@@ -16457,12 +16584,12 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="189"/>
         <source>PLC Table</source>
-        <translation type="unfinished"></translation>
+        <translation>Πίνακας PLC</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="197"/>
         <source>PLC table (empty)</source>
-        <translation type="unfinished"></translation>
+        <translation>Πίνακας PLC (κενός)</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="209"/>
@@ -16470,7 +16597,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1734"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="2791"/>
         <source>Type</source>
-        <translation type="unfinished">Τύπος</translation>
+        <translation>Τύπος</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="210"/>
@@ -16478,7 +16605,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1735"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="2792"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Διεύθυνση</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="314"/>
@@ -16496,7 +16623,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1738"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="2795"/>
         <source>Cross-reference</source>
-        <translation type="unfinished">Διασταυρούμενη αναφορά</translation>
+        <translation>Διασταυρούμενη αναφορά</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="315"/>
@@ -16511,17 +16638,17 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="324"/>
         <source>Width [mm]</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλάτος [mm]</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="325"/>
         <source>Height [mm]</source>
-        <translation type="unfinished"></translation>
+        <translation>Ύψος [mm]</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="326"/>
         <source>Depth [mm]</source>
-        <translation type="unfinished"></translation>
+        <translation>Βάθος [mm]</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="334"/>
@@ -16531,42 +16658,42 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="335"/>
         <source>Auxiliary 1 text description</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιγραφή κειμένου βοηθητικού 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="336"/>
         <source>Auxiliary 1 article number</source>
-        <translation type="unfinished"></translation>
+        <translation>Κωδικός είδους βοηθητικού 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="337"/>
         <source>Manufacturer of auxiliary 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατασκευαστής βοηθητικού 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="338"/>
         <source>Order number auxiliary 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός παραγγελίας βοηθητικού 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="339"/>
         <source>Internal number of auxiliary 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Εσωτερικός αριθμός βοηθητικού 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="340"/>
         <source>supplier of auxiliary 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Προμηθευτής βοηθητικού 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="341"/>
         <source>Quantity of auxiliary 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ποσότητα βοηθητικού 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="342"/>
         <source>Unity of auxiliary 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Μονάδα βοηθητικού 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="343"/>
@@ -16576,157 +16703,157 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="344"/>
         <source>Auxiliary 2 text description</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιγραφή κειμένου βοηθητικού 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="345"/>
         <source>Auxiliary 2 article number</source>
-        <translation type="unfinished"></translation>
+        <translation>Κωδικός είδους βοηθητικού 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="346"/>
         <source>Manufacturer of auxiliary 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατασκευαστής βοηθητικού 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="347"/>
         <source>Order number auxiliary 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός παραγγελίας βοηθητικού 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="348"/>
         <source>Internal number of auxiliary 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Εσωτερικός αριθμός βοηθητικού 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="349"/>
         <source>supplier of auxiliary 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Προμηθευτής βοηθητικού 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="350"/>
         <source>Quantity of auxiliary 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ποσότητα βοηθητικού 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="351"/>
         <source>Unity of auxiliary 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Μονάδα βοηθητικού 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="352"/>
         <source>Auxiliary block 3</source>
-        <translation type="unfinished">Βοηθητικό μπλοκ 3</translation>
+        <translation>Βοηθητικό μπλοκ 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="353"/>
         <source>Auxiliary 3 text description</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιγραφή κειμένου βοηθητικού 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="354"/>
         <source>Auxiliary 3 article number</source>
-        <translation type="unfinished"></translation>
+        <translation>Κωδικός είδους βοηθητικού 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="355"/>
         <source>Manufacturer of auxiliary 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατασκευαστής βοηθητικού 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="356"/>
         <source>Order number auxiliary 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός παραγγελίας βοηθητικού 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="357"/>
         <source>Internal number of auxiliary 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Εσωτερικός αριθμός βοηθητικού 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="358"/>
         <source>supplier of auxiliary 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Προμηθευτής βοηθητικού 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="359"/>
         <source>Quantity of auxiliary 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Ποσότητα βοηθητικού 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="360"/>
         <source>Unity of auxiliary 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Μονάδα βοηθητικού 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="361"/>
         <source>Auxiliary block 4</source>
-        <translation type="unfinished">Βοηθητικό μπλοκ 4</translation>
+        <translation>Βοηθητικό μπλοκ 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="362"/>
         <source>Auxiliary 4 text description</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιγραφή κειμένου βοηθητικού 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="363"/>
         <source>Auxiliary 4 article number</source>
-        <translation type="unfinished"></translation>
+        <translation>Κωδικός είδους βοηθητικού 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="364"/>
         <source>Manufacturer of auxiliary 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατασκευαστής βοηθητικού 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="365"/>
         <source>Order number auxiliary 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός παραγγελίας βοηθητικού 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="366"/>
         <source>Internal number of auxiliary 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Εσωτερικός αριθμός βοηθητικού 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="367"/>
         <source>supplier of auxiliary 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Προμηθευτής βοηθητικού 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="368"/>
         <source>Quantity of auxiliary 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Ποσότητα βοηθητικού 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="369"/>
         <source>Unity of auxiliary 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Μονάδα βοηθητικού 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="370"/>
         <source>Type PLC</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος PLC</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="371"/>
         <source>PLC address</source>
-        <translation type="unfinished"></translation>
+        <translation>Διεύθυνση PLC</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="372"/>
         <source>PLC function</source>
-        <translation type="unfinished"></translation>
+        <translation>Λειτουργία PLC</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="373"/>
         <source>PLC comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχόλιο PLC</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="374"/>
         <source>PLC cross-reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Διασταύρωση PLC</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="316"/>
@@ -16736,27 +16863,27 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Model</source>
-        <translation type="unfinished"></translation>
+        <translation>Μοντέλο</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Category</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατηγορία</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Rated voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Ονομαστική τάση</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="287"/>
         <source>Rated current</source>
-        <translation type="unfinished"></translation>
+        <translation>Ονομαστικό ρεύμα</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Σημειώσεις</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="317"/>
@@ -16847,7 +16974,7 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4452"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Για να εγκαταστήσετε το πρόσθετο qet_tb_generator&lt;br&gt;Επισκεφθείτε :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Πρώτη εγκατάσταση σε macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Εγκαταστήστε, αν χρειάζεται, μόνο το πακέτο python 3.11, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Εκτελέστε το σενάριο Profile.command&lt;br&gt;επειδή το πρόγραμμα χρησιμοποιεί σταθερή διαδρομή (PATH) για τον εντοπισμό του πρόσθετου qet-tb-generator &lt;br&gt; Επισκεφθείτε :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Ενημέρωση σε macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4471"/>
@@ -16872,12 +16999,12 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="88"/>
         <source>Add a cable list</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη λίστας καλωδίων</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="89"/>
         <source>Cable list</source>
-        <translation type="unfinished"></translation>
+        <translation>Λίστα καλωδίων</translation>
     </message>
     <message>
         <location filename="../sources/editor/UndoCommand/pastepartscommand.cpp" line="62"/>
@@ -16940,7 +17067,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/properties/elementdata.cpp" line="895"/>
         <source>Sectionable</source>
         <comment>sectional terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Με δυνατότητα απομόνωσης</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="897"/>
@@ -16958,31 +17085,31 @@ Do you want to replace it ?</source>
         <location filename="../sources/properties/elementdata.cpp" line="901"/>
         <source>Anti-parallel diodes</source>
         <comment>anti-parallel diodes terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αντιπαράλληλες δίοδοι</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="903"/>
         <source>Resistor</source>
         <comment>resistor terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αντίσταση</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="905"/>
         <source>Varistor</source>
         <comment>varistor terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Βαρίστορ</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="907"/>
         <source>Test socket</source>
         <comment>test socket terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Υποδοχή δοκιμής</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="909"/>
         <source>Diode (reversed)</source>
         <comment>reversed diode terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Δίοδος (ανάστροφη)</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="946"/>
@@ -17007,32 +17134,32 @@ Do you want to replace it ?</source>
         <location filename="../sources/properties/elementdata.cpp" line="1217"/>
         <location filename="../sources/properties/elementdata.cpp" line="1229"/>
         <source>Digital input</source>
-        <translation type="unfinished"></translation>
+        <translation>Ψηφιακή είσοδος</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1219"/>
         <source>Digital output</source>
-        <translation type="unfinished"></translation>
+        <translation>Ψηφιακή έξοδος</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1221"/>
         <source>Analogue input</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναλογική είσοδος</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1223"/>
         <source>Analogue output</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναλογική έξοδος</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1225"/>
         <source>Universal input</source>
-        <translation type="unfinished"></translation>
+        <translation>Γενική είσοδος</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1227"/>
         <source>Universal output</source>
-        <translation type="unfinished"></translation>
+        <translation>Γενική έξοδος</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/changeelementdatacommand.cpp" line="27"/>
@@ -17052,182 +17179,186 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/TerminalStrip/GraphicsItem/properties/terminalstriplayoutshandler.cpp" line="27"/>
         <source>Default layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπιλεγμένη διάταξη</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/bridgeterminalscommand.cpp" line="28"/>
         <source>Bridging terminals together</source>
-        <translation type="unfinished"></translation>
+        <translation>Γεφύρωση ακροδεκτών μεταξύ τους</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/bridgeterminalscommand.cpp" line="57"/>
         <source>Delete terminal bridges</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή γεφυρών ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/changeterminalstripcolor.cpp" line="37"/>
         <source>Change the color of a terminal bridge</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του χρώματος μιας γέφυρας ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="28"/>
         <source>Sort terminal block %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ταξινόμηση της σειράς ακροδεκτών %1</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="43"/>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="52"/>
         <source>Enter the scale factor</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγάγετε τον συντελεστή κλίμακας</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="44"/>
         <source>X Factor:</source>
-        <translation type="unfinished"></translation>
+        <translation>Συντελεστής X:</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="53"/>
         <source>Y Factor:</source>
-        <translation type="unfinished"></translation>
+        <translation>Συντελεστής Y:</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="61"/>
         <source>none</source>
-        <translation type="unfinished"></translation>
+        <translation>κανένας</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="62"/>
         <source>horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>οριζόντια</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="63"/>
         <source>vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>κατακόρυφα</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="64"/>
         <source>horizontal + vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>οριζόντια + κατακόρυφα</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="66"/>
         <source>Mirror element :</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατοπτρισμός στοιχείου :</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="67"/>
         <source>direction</source>
-        <translation type="unfinished"></translation>
+        <translation>κατεύθυνση</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="100"/>
         <source>QET_ElementScaler: 
 additional information about %1 import / scaling</source>
-        <translation type="unfinished"></translation>
+        <translation>QET_ElementScaler: 
+πρόσθετες πληροφορίες για την εισαγωγή / κλιμάκωση του %1</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="149"/>
         <source>The QET_ElementScaler software is required to scale elements.
 Please download it from the link below and unzip it into the installation folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Για την κλιμάκωση στοιχείων απαιτείται το λογισμικό QET_ElementScaler.
+Κατεβάστε το από τον παρακάτω σύνδεσμο και αποσυμπιέστε το στον φάκελο εγκατάστασης</translation>
     </message>
     <message>
         <location filename="../sources/dxf/dxftoelmt.cpp" line="58"/>
         <source>Dxf2elmt: 
 Error: Make sure the file %1 is a valid .dxf file</source>
-        <translation type="unfinished"></translation>
+        <translation>Dxf2elmt: 
+Σφάλμα: Βεβαιωθείτε ότι το αρχείο %1 είναι έγκυρο αρχείο .dxf</translation>
     </message>
     <message>
         <location filename="../sources/dxf/dxftoelmt.cpp" line="59"/>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="101"/>
         <source>See details here:</source>
-        <translation type="unfinished"></translation>
+        <translation>Δείτε λεπτομέρειες εδώ:</translation>
     </message>
     <message>
         <location filename="../sources/dxf/dxftoelmt.cpp" line="106"/>
         <source>Importing dxf requires the dxf2elmt software.
 Please download it by following the link and unzip it in the installation folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Η εισαγωγή dxf απαιτεί το λογισμικό dxf2elmt.
+Κατεβάστε το ακολουθώντας τον σύνδεσμο και αποσυμπιέστε το στον φάκελο εγκατάστασης</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.cpp" line="233"/>
         <source>Automatic terminal numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.h" line="46"/>
         <source>PLC Table</source>
         <comment>element part name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πίνακας PLC</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/adddiagramcommand.cpp" line="36"/>
         <source>Add a sheet</source>
         <comment>undo command text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/movediagramcommand.cpp" line="39"/>
         <source>Moving a sheet</source>
         <comment>undo command text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/removediagramcommand.cpp" line="35"/>
         <source>Delete a sheet</source>
         <comment>undo command text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="196"/>
         <source>Select a PDF file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή αρχείου PDF...</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="198"/>
         <source>PDF files (*.pdf)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία PDF (*.pdf)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="212"/>
         <source>Unable to load the PDF file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η φόρτωση του αρχείου PDF.</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="223"/>
         <source>The PDF file does not contain any pages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο PDF δεν περιέχει καμία σελίδα.</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="246"/>
         <source>It is not possible to determine the size of the PDF page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατός ο προσδιορισμός του μεγέθους της σελίδας PDF.</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="258"/>
         <source>Unable to render the PDF page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η απόδοση της σελίδας PDF.</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/promoteshapecommand.cpp" line="26"/>
         <source>Transform %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετασχηματισμός %1</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="95"/>
         <source>Text grid %1. Release Shift and hold Ctrl to place freely.</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλέγμα κειμένου %1. Αφήστε το Shift και κρατήστε πατημένο το Ctrl για ελεύθερη τοποθέτηση.</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="97"/>
         <source>Text grid disabled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το πλέγμα κειμένου απενεργοποιήθηκε.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/elementtextsmover.cpp" line="165"/>
         <source>%n texts of element</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n κείμενο στοιχείου</numerusform>
             <numerusform>%n κείμενα στοιχείου</numerusform>
         </translation>
@@ -17236,9 +17367,9 @@ Please download it by following the link and unzip it in the installation folder
         <location filename="../sources/elementtextsmover.cpp" line="167"/>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="110"/>
         <source>%n groups of texts</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n ομάδα κειμένων</numerusform>
+            <numerusform>%n ομάδες κειμένων</numerusform>
         </translation>
     </message>
     <message>
@@ -17246,257 +17377,257 @@ Please download it by following the link and unzip it in the installation folder
         <location filename="../sources/scripting/qetscriptapi.cpp" line="861"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="3530"/>
         <source>Move %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="42"/>
         <source>Add a terminal to a group of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη ακροδέκτη σε ομάδα ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="43"/>
         <source>Add terminal %1 to a group of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη του ακροδέκτη %1 σε ομάδα ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="46"/>
         <source>Add a terminal to terminal group %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη ακροδέκτη στην ομάδα ακροδεκτών %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="47"/>
         <source>Add terminal %1 to terminal group %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη του ακροδέκτη %1 στην ομάδα ακροδεκτών %2</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="61"/>
         <source>Add %n terminals to a group of terminals</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Προσθήκη %n ακροδέκτη σε ομάδα ακροδεκτών</numerusform>
+            <numerusform>Προσθήκη %n ακροδεκτών σε ομάδα ακροδεκτών</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="62"/>
         <source>Add %n terminals to terminal group %1</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Προσθήκη %n ακροδέκτη στην ομάδα ακροδεκτών %1</numerusform>
+            <numerusform>Προσθήκη %n ακροδεκτών στην ομάδα ακροδεκτών %1</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="145"/>
         <source>Remove %n terminals from a group of terminals</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Αφαίρεση %n ακροδέκτη από ομάδα ακροδεκτών</numerusform>
+            <numerusform>Αφαίρεση %n ακροδεκτών από ομάδα ακροδεκτών</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="146"/>
         <source>Remove %n terminals from terminal group %1</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Αφαίρεση %n ακροδέκτη από την ομάδα ακροδεκτών %1</numerusform>
+            <numerusform>Αφαίρεση %n ακροδεκτών από την ομάδα ακροδεκτών %1</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="175"/>
         <source>Move a terminal from a group of terminals to another group of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση ακροδέκτη από μια ομάδα ακροδεκτών σε άλλη ομάδα ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="177"/>
         <source>Move a terminal from a group of terminals to terminal group %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση ακροδέκτη από μια ομάδα ακροδεκτών στην ομάδα ακροδεκτών %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="179"/>
         <source>Move a terminal from terminal group %1 to another group of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση ακροδέκτη από την ομάδα ακροδεκτών %1 σε άλλη ομάδα ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="181"/>
         <source>Move a terminal from terminal group %1 to terminal group %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση ακροδέκτη από την ομάδα ακροδεκτών %1 στην ομάδα ακροδεκτών %2</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="184"/>
         <source>Move terminal %1 from a group of terminals to another group of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση του ακροδέκτη %1 από μια ομάδα ακροδεκτών σε άλλη ομάδα ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="186"/>
         <source>Move terminal %1 from a group of terminals to terminal group %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση του ακροδέκτη %1 από μια ομάδα ακροδεκτών στην ομάδα ακροδεκτών %2</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="188"/>
         <source>Move terminal %1 from terminal group %2 to another group of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση του ακροδέκτη %1 από την ομάδα ακροδεκτών %2 σε άλλη ομάδα ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="190"/>
         <source>Move terminal %1 from terminal group %2 to terminal group %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση του ακροδέκτη %1 από την ομάδα ακροδεκτών %2 στην ομάδα ακροδεκτών %3</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="209"/>
         <source>Move %n terminals from one group of terminals to another group of terminals</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Μετακίνηση %n ακροδέκτη από μια ομάδα ακροδεκτών σε άλλη ομάδα ακροδεκτών</numerusform>
+            <numerusform>Μετακίνηση %n ακροδεκτών από μια ομάδα ακροδεκτών σε άλλη ομάδα ακροδεκτών</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="211"/>
         <source>Move %n terminals from a group of terminals to the %1 group of terminals</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Μετακίνηση %n ακροδέκτη από μια ομάδα ακροδεκτών στην ομάδα ακροδεκτών %1</numerusform>
+            <numerusform>Μετακίνηση %n ακροδεκτών από μια ομάδα ακροδεκτών στην ομάδα ακροδεκτών %1</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="213"/>
         <source>Move %n terminals from terminal group %1 to another terminal group</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Μετακίνηση %n ακροδέκτη από την ομάδα ακροδεκτών %1 σε άλλη ομάδα ακροδεκτών</numerusform>
+            <numerusform>Μετακίνηση %n ακροδεκτών από την ομάδα ακροδεκτών %1 σε άλλη ομάδα ακροδεκτών</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="215"/>
         <source>Move %n terminals from terminal group %1 to terminal group %2</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Μετακίνηση %n ακροδέκτη από την ομάδα ακροδεκτών %1 στην ομάδα ακροδεκτών %2</numerusform>
+            <numerusform>Μετακίνηση %n ακροδεκτών από την ομάδα ακροδεκτών %1 στην ομάδα ακροδεκτών %2</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="258"/>
         <source>Add %n spare terminals</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Προσθήκη %n εφεδρικού ακροδέκτη</numerusform>
+            <numerusform>Προσθήκη %n εφεδρικών ακροδεκτών</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="259"/>
         <source>Add %n spare terminals to terminal group %1</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Προσθήκη %n εφεδρικού ακροδέκτη στην ομάδα ακροδεκτών %1</numerusform>
+            <numerusform>Προσθήκη %n εφεδρικών ακροδεκτών στην ομάδα ακροδεκτών %1</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="297"/>
         <source>Modify the spare terminal %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Τροποποίηση του εφεδρικού ακροδέκτη %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/alignselectioncommand.cpp" line="144"/>
         <source>Align %n objects to the grid</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ευθυγράμμιση %n αντικειμένου στο πλέγμα</numerusform>
+            <numerusform>Ευθυγράμμιση %n αντικειμένων στο πλέγμα</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/alignselectioncommand.cpp" line="188"/>
         <source>Align %n items</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Στοίχιση %n αντικειμένου</numerusform>
+            <numerusform>Στοίχιση %n αντικειμένων</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="840"/>
         <source>insert %1</source>
-        <translation type="unfinished">Προσθήκη %1</translation>
+        <translation>Προσθήκη %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="1312"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="1377"/>
         <source>Edit the conductor properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2153"/>
         <source>Edit a text</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2176"/>
         <source>Change the color of a text</source>
-        <translation type="unfinished">Επεξεργασία του χρώματος ενός κειμένου</translation>
+        <translation>Επεξεργασία του χρώματος ενός κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2194"/>
         <source>Rotate a text</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2455"/>
         <source>Edit line of a form</source>
-        <translation type="unfinished">Επεξεργασία της γραμμής μιας φόρμας</translation>
+        <translation>Επεξεργασία της γραμμής ενός σχήματος</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2467"/>
         <source>Edit filling a form</source>
-        <translation type="unfinished">Επεξεργασία του γεμίσματος μιας φόρμας</translation>
+        <translation>Επεξεργασία του γεμίσματος ενός σχήματος</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2475"/>
         <source>Rotate a shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή σχήματος</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2682"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2804"/>
         <source>Change the shape of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του σχήματος του %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2832"/>
         <source>Close/Open %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλείσιμο/Άνοιγμα %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="3912"/>
         <source>Resize an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή μεγέθους εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="3938"/>
         <source>Rotate an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="4314"/>
         <source>Edit element text</source>
-        <translation type="unfinished">Επεξεργασία κειμένου του στοιχείου</translation>
+        <translation>Επεξεργασία κειμένου του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="4396"/>
         <source>Automatically number an element</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="4438"/>
         <source>Renumber elements (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναρίθμηση στοιχείων (%1)</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="5379"/>
         <source>Search and replace</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση και αντικατάσταση</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="5670"/>
         <location filename="../sources/scripting/qetscripting.cpp" line="147"/>
         <location filename="../sources/scripting/qetscripting.cpp" line="232"/>
         <source>Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Σενάριο</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscripting.cpp" line="63"/>
@@ -17505,68 +17636,72 @@ Please download it by following the link and unzip it in the installation folder
 A script has access to the entire project and can write files, so this feature is disabled by default.
 
 To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_ENABLE_SCRIPTING=1 environment variable for headless execution (CI, batch processing).</source>
-        <translation type="unfinished"></translation>
+        <translation>Τα σενάρια είναι απενεργοποιημένα.
+
+Ένα σενάριο έχει πρόσβαση σε ολόκληρο το έργο και μπορεί να γράφει αρχεία, γι&apos; αυτό η λειτουργία αυτή είναι απενεργοποιημένη από προεπιλογή.
+
+Για να την ενεργοποιήσετε: Ρύθμιση QElectroTech &gt; Γενικά &gt; Έργα, ή ορίστε τη μεταβλητή περιβάλλοντος QET_ENABLE_SCRIPTING=1 για εκτέλεση χωρίς γραφικό περιβάλλον (CI, μαζική επεξεργασία).</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscripting.cpp" line="188"/>
         <source>Assistant: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Βοηθός: %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscripting.cpp" line="189"/>
         <source>Script: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Σενάριο: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/groupitemscommand.cpp" line="55"/>
         <source>Group %n items</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ομαδοποίηση %n αντικειμένου</numerusform>
+            <numerusform>Ομαδοποίηση %n αντικειμένων</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/groupitemscommand.cpp" line="75"/>
         <source>Ungroup %n items</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Κατάργηση ομαδοποίησης %n αντικειμένου</numerusform>
+            <numerusform>Κατάργηση ομαδοποίησης %n αντικειμένων</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/undocommand/freezeelementlabelcommand.cpp" line="26"/>
         <source>Freeze element name</source>
-        <translation type="unfinished"></translation>
+        <translation>Πάγωμα ονόματος στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/freezeelementlabelcommand.cpp" line="27"/>
         <source>Unfreeze element name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ξεπάγωμα ονόματος στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="505"/>
         <source>Sheet</source>
-        <translation type="unfinished">Φύλλο</translation>
+        <translation>Φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/groupterminalscommand.cpp" line="37"/>
         <source>Group a set of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Ομαδοποίηση συνόλου ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/groupterminalscommand.cpp" line="59"/>
         <source>Ungroup a set of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατάργηση ομαδοποίησης συνόλου ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/mirrorselectioncommand.cpp" line="58"/>
         <source>Horizontal mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Οριζόντιος κατοπτρισμός</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/mirrorselectioncommand.cpp" line="59"/>
         <source>Vertical mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατακόρυφος κατοπτρισμός</translation>
     </message>
 </context>
 <context>
@@ -17581,7 +17716,7 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
         <location filename="../sources/qtextorientationwidget.cpp" line="39"/>
         <source>Example</source>
         <comment>Longer example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Παράδειγμα</translation>
     </message>
 </context>
 <context>
@@ -17590,13 +17725,15 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="119"/>
         <source>The information to be displayed is greater than the maximum quantity that can be displayed by the tables.
 Please add a new table or adjust the existing tables to show all information.</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι πληροφορίες προς εμφάνιση υπερβαίνουν τη μέγιστη ποσότητα που μπορούν να εμφανίσουν οι πίνακες.
+Προσθέστε νέο πίνακα ή προσαρμόστε τους υπάρχοντες πίνακες ώστε να εμφανίζονται όλες οι πληροφορίες.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="122"/>
         <source>The information to be displayed is greater than the maximum quantity that can be displayed by the table.
 Please add a new table or adjust the existing table to display all information.</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι πληροφορίες προς εμφάνιση υπερβαίνουν τη μέγιστη ποσότητα που μπορεί να εμφανίσει ο πίνακας.
+Προσθέστε νέο πίνακα ή προσαρμόστε τον υπάρχοντα πίνακα ώστε να εμφανίζονται όλες οι πληροφορίες.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="125"/>
@@ -17616,22 +17753,23 @@ Please add a new table or adjust the existing table to display all information.<
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="194"/>
         <source>syntax error at line %1, column %2:
 %3</source>
-        <translation type="unfinished"></translation>
+        <translation>συντακτικό σφάλμα στη γραμμή %1, στήλη %2:
+%3</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="231"/>
         <source>No collection folder was given.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν δόθηκε φάκελος συλλογής.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="251"/>
         <source>the root element &lt;%1&gt; is not &lt;labels&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>το ριζικό στοιχείο &lt;%1&gt; δεν είναι &lt;labels&gt;.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="256"/>
         <source>the file could not be opened: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>δεν ήταν δυνατό το άνοιγμα του αρχείου: %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="288"/>
@@ -17641,23 +17779,29 @@ folder&apos;s prefix, unless they carry a label of their own. A folder
 without a prefix takes its parent folder&apos;s.
 QElectroTech creates and changes this file (Settings:
 Configure prefixes…), but it can still be edited by hand.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχείο προθεμάτων (ετικετών) της συλλογής χρήστη.
+Κάθε φάκελος έχει ένα πρόθεμα: τα σύμβολα ενός φακέλου παίρνουν το
+πρόθεμα του φακέλου, εκτός αν έχουν δική τους ετικέτα. Ένας φάκελος
+χωρίς πρόθεμα παίρνει του γονικού του.
+Το QElectroTech δημιουργεί και αλλάζει αυτό το αρχείο (Ρυθμίσεις:
+Ρύθμιση προθεμάτων…), αλλά μπορεί και να επεξεργαστεί με το χέρι.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="615"/>
         <source>No prefix file to save.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν υπάρχει αρχείο προθεμάτων για αποθήκευση.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="626"/>
         <source>The folder %1 could not be created.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν ήταν δυνατή η δημιουργία του φακέλου %1.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="638"/>
         <source>The file %1 could not be copied beside itself before being replaced:
 nothing has been changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν ήταν δυνατή η αντιγραφή του αρχείου %1 δίπλα του πριν αντικατασταθεί:
+δεν άλλαξε τίποτα.</translation>
     </message>
 </context>
 <context>
@@ -17686,207 +17830,207 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="923"/>
         <source>Deform a curve</source>
-        <translation type="unfinished"></translation>
+        <translation>Παραμόρφωση καμπύλης</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1128"/>
         <source>Nearest node</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλησιέστερος κόμβος</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1129"/>
         <source>Smooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Ομαλός</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1130"/>
         <source>Symmetric</source>
-        <translation type="unfinished"></translation>
+        <translation>Συμμετρικός</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1131"/>
         <source>Corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Γωνία</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1150"/>
         <source>Delete the nearest node</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή του πλησιέστερου κόμβου</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1167"/>
         <source>Convert to polyline</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετατροπή σε πολυγραμμή</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1167"/>
         <source>Convert to Bézier curve</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετατροπή σε καμπύλη Bézier</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1180"/>
         <source>Horizontal mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Οριζόντιος κατοπτρισμός</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1182"/>
         <source>Vertical mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατακόρυφος κατοπτρισμός</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1257"/>
         <source>Size</source>
-        <translation type="unfinished">Μέγεθος</translation>
+        <translation>Μέγεθος</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1258"/>
         <source>Rounded corners</source>
-        <translation type="unfinished"></translation>
+        <translation>Στρογγυλεμένες γωνίες</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1259"/>
         <source>Node editing</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία κόμβων</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1260"/>
         <source>Rotation/Skew</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή/Κλίση</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1278"/>
         <source>Click: mode %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλικ: λειτουργία %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1358"/>
         <source>Drag a corner/edge: resize (Ctrl = from center, Shift = proportions, Alt = detach into a polyline)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε μια γωνία/πλευρά: αλλαγή μεγέθους (Ctrl = από το κέντρο, Shift = αναλογίες, Alt = διαχωρισμός σε πολυγραμμή)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1361"/>
         <source> ; turquoise point: arc</source>
-        <translation type="unfinished"></translation>
+        <translation> · τιρκουάζ σημείο: τόξο</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1365"/>
         <source>Drag an endpoint: move it</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε ένα άκρο: μετακίνηση</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1369"/>
         <source>Drag a point: move it</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε ένα σημείο: μετακίνηση</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1374"/>
         <source>Drag the purple point: round the corners</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε το μωβ σημείο: στρογγύλευση των γωνιών</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1378"/>
         <source>Drag a handle or the curve: deform (Alt = break the tangent); Alt+drag a corner point: create handles; right click: nearest node menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε μια λαβή ή την καμπύλη: παραμόρφωση (Alt = σπάσιμο της εφαπτομένης)· Alt+σύρσιμο γωνιακού σημείου: δημιουργία λαβών· δεξί κλικ: μενού πλησιέστερου κόμβου</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1388"/>
         <source>an endpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>ένα άκρο</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1389"/>
         <source>a corner</source>
-        <translation type="unfinished"></translation>
+        <translation>μια γωνία</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1390"/>
         <source>a point</source>
-        <translation type="unfinished"></translation>
+        <translation>ένα σημείο</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1391"/>
         <source>Drag %1: rotation (Shift = 15°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε %1: περιστροφή (Shift = 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1393"/>
         <source> ; an edge: skew</source>
-        <translation type="unfinished"></translation>
+        <translation> · μια πλευρά: κλίση</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1394"/>
         <source> ; red point: drag to reposition the rotation center</source>
-        <translation type="unfinished"></translation>
+        <translation> · κόκκινο σημείο: σύρετε για επανατοποθέτηση του κέντρου περιστροφής</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1406"/>
         <source> (Ctrl while dragging = free position, no grid snapping)</source>
-        <translation type="unfinished"></translation>
+        <translation> (Ctrl κατά το σύρσιμο = ελεύθερη θέση, χωρίς έλξη στο πλέγμα)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1407"/>
         <source> — Click: mode %1</source>
-        <translation type="unfinished"></translation>
+        <translation> — Κλικ: λειτουργία %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1437"/>
         <source>Drag: move this point</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: μετακίνηση αυτού του σημείου</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1438"/>
         <source>Drag: resize (Ctrl = from center + free position, Shift = proportions</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: αλλαγή μεγέθους (Ctrl = από το κέντρο + ελεύθερη θέση, Shift = αναλογίες</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1440"/>
         <source>, Alt = detach into a polyline</source>
-        <translation type="unfinished"></translation>
+        <translation>, Alt = διαχωρισμός σε πολυγραμμή</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1445"/>
         <source>Drag: rotation (Ctrl = free position, Shift = 15°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: περιστροφή (Ctrl = ελεύθερη θέση, Shift = 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1447"/>
         <source>Drag: skew (Ctrl = free position, Shift = 15°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: κλίση (Ctrl = ελεύθερη θέση, Shift = 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1449"/>
         <source>Drag: reposition the rotation center (Ctrl = free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: επανατοποθέτηση του κέντρου περιστροφής (Ctrl = ελεύθερη θέση)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1451"/>
         <source>Drag: round the corners (Ctrl = free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: στρογγύλευση των γωνιών (Ctrl = ελεύθερη θέση)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1453"/>
         <source>Drag: adjust the arc (Ctrl = free position, Shift = 15°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: ρύθμιση του τόξου (Ctrl = ελεύθερη θέση, Shift = 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1455"/>
         <source>Drag: deepen or flatten the arc, its ends stay in place (Ctrl = free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: βάθυνση ή ισοπέδωση του τόξου, τα άκρα του μένουν στη θέση τους (Ctrl = ελεύθερη θέση)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1458"/>
         <source>Drag: move the point (Ctrl = free position</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: μετακίνηση του σημείου (Ctrl = ελεύθερη θέση</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1460"/>
         <source>, Alt = create handles</source>
-        <translation type="unfinished"></translation>
+        <translation>, Alt = δημιουργία λαβών</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1466"/>
         <source>Drag: deform the curve (Ctrl = free position, Alt = break the tangent)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρσιμο: παραμόρφωση της καμπύλης (Ctrl = ελεύθερη θέση, Alt = σπάσιμο της εφαπτομένης)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1815"/>
@@ -17901,88 +18045,88 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2017"/>
         <source>Add a point to a curve</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη σημείου σε καμπύλη</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2046"/>
         <source>Delete a point from a curve</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή σημείου από καμπύλη</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2137"/>
         <source>Convert %1 to a Bézier curve</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετατροπή του %1 σε καμπύλη Bézier</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2138"/>
         <source>Convert %1 to a polyline</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετατροπή του %1 σε πολυγραμμή</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2325"/>
         <source>Mirror not possible: skew too extreme for this shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο κατοπτρισμός δεν είναι δυνατός: η κλίση είναι υπερβολική για αυτό το σχήμα</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2340"/>
         <source>Horizontal mirror of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Οριζόντιος κατοπτρισμός του %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2340"/>
         <source>Vertical mirror of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατακόρυφος κατοπτρισμός του %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2413"/>
         <source>Change the type of a node</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του τύπου ενός κόμβου</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2895"/>
         <source>Resize %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή μεγέθους του %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2902"/>
         <source>Rotate %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή του %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2912"/>
         <source>Skew %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλίση του %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2918"/>
         <source>Move the rotation center</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση του κέντρου περιστροφής</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2934"/>
         <source>Round the corners of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Στρογγύλευση των γωνιών του %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2957"/>
         <source>Change the angle of an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή της γωνίας ενός τόξου</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2963"/>
         <source>Change the curve of an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή της καμπυλότητας ενός τόξου</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2974"/>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2989"/>
         <source>Change the shape of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του σχήματος του %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3003"/>
         <source>Change the curvature of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή της καμπυλότητας του %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3018"/>
@@ -18002,7 +18146,7 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3387"/>
         <source>an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>ένα τόξο</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3388"/>
@@ -18012,7 +18156,7 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3389"/>
         <source>a curve</source>
-        <translation type="unfinished"></translation>
+        <translation>μια καμπύλη</translation>
     </message>
 </context>
 <context>
@@ -18064,7 +18208,7 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="369"/>
         <source>Delete a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή καλωδίου</translation>
     </message>
 </context>
 <context>
@@ -18110,9 +18254,9 @@ nothing has been changed.</source>
     <message numerus="yes">
         <location filename="../sources/cable/editcablecommand.cpp" line="216"/>
         <source>Renumber %n cable(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Επαναρίθμηση %n καλωδίου</numerusform>
+            <numerusform>Επαναρίθμηση %n καλωδίων</numerusform>
         </translation>
     </message>
 </context>
@@ -18121,27 +18265,27 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/autoNum/ui/renumberelementsdialog.cpp" line="35"/>
         <source>Renumber element(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναρίθμηση στοιχείου(ων)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberelementsdialog.cpp" line="40"/>
         <source>Scope</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμβέλεια</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberelementsdialog.cpp" line="42"/>
         <source>All schemes</source>
-        <translation type="unfinished"></translation>
+        <translation>Όλα τα σχήματα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberelementsdialog.cpp" line="43"/>
         <source>One scheme</source>
-        <translation type="unfinished"></translation>
+        <translation>Ένα σχήμα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberelementsdialog.cpp" line="51"/>
         <source>Scheme:</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχήμα:</translation>
     </message>
 </context>
 <context>
@@ -18149,43 +18293,43 @@ nothing has been changed.</source>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="90"/>
         <source>%n elements keep the name they have.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο διατηρεί το όνομα που έχει.</numerusform>
+            <numerusform>%n στοιχεία διατηρούν το όνομα που έχουν.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="93"/>
         <source>%n elements stay as they are.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο μένει ως έχει.</numerusform>
+            <numerusform>%n στοιχεία μένουν ως έχουν.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="101"/>
         <source>Sheet</source>
-        <translation type="unfinished">Φύλλο</translation>
+        <translation>Φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="101"/>
         <source>Element</source>
-        <translation type="unfinished">Στοιχείο</translation>
+        <translation>Στοιχείο</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="101"/>
         <source>Current name</source>
-        <translation type="unfinished"></translation>
+        <translation>Τρέχον όνομα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="101"/>
         <source>New name</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέο όνομα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="184"/>
         <source>(frozen)</source>
-        <translation type="unfinished"></translation>
+        <translation>(παγωμένο)</translation>
     </message>
 </context>
 <context>
@@ -18610,7 +18754,15 @@ Create your own text using the following variables:
 %T: the sheet title
 %l: the row number
 %c: the column number</source>
-        <translation type="unfinished"></translation>
+        <translation>Μπορείτε να ορίσετε μια προσαρμοσμένη ετικέτα για τις αναφορές φύλλων.
+Δημιουργήστε το δικό σας κείμενο χρησιμοποιώντας τις ακόλουθες μεταβλητές:
+%f: η θέση του φύλλου στο έργο
+%F: ο αριθμός φύλλου
+%M: η εγκατάσταση
+%LM: η τοποθεσία
+%T: ο τίτλος του φύλλου
+%l: ο αριθμός γραμμής
+%c: ο αριθμός στήλης</translation>
     </message>
     <message>
         <source>You can define a custom label for sheet references.
@@ -18636,38 +18788,38 @@ Create your own text using the following variables:
     <message>
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="40"/>
         <source>Scale the element</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλιμάκωση του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="55"/>
         <source>Factor:</source>
-        <translation type="unfinished"></translation>
+        <translation>Συντελεστής:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="57"/>
         <source>Also scale the texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλιμάκωση και των κειμένων</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="64"/>
         <source>%n terminals of this element are not on the grid, and no factor brings them there.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n ακροδέκτης αυτού του στοιχείου δεν βρίσκεται στο πλέγμα και κανένας συντελεστής δεν τον φέρνει εκεί.</numerusform>
+            <numerusform>%n ακροδέκτες αυτού του στοιχείου δεν βρίσκονται στο πλέγμα και κανένας συντελεστής δεν τους φέρνει εκεί.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="67"/>
         <source>%n terminals of this element are not on the grid. Only the factors that bring them there are offered.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n ακροδέκτης αυτού του στοιχείου δεν βρίσκεται στο πλέγμα. Προσφέρονται μόνο οι συντελεστές που τον φέρνουν εκεί.</numerusform>
+            <numerusform>%n ακροδέκτες αυτού του στοιχείου δεν βρίσκονται στο πλέγμα. Προσφέρονται μόνο οι συντελεστές που τους φέρνουν εκεί.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="70"/>
         <source>Only the factors that keep the terminals on the grid are offered. The element is scaled around its grab point.</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσφέρονται μόνο οι συντελεστές που διατηρούν τους ακροδέκτες στο πλέγμα. Το στοιχείο κλιμακώνεται γύρω από το σημείο λαβής του.</translation>
     </message>
 </context>
 <context>
@@ -18677,117 +18829,117 @@ Create your own text using the following variables:
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="375"/>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="382"/>
         <source>Manage scripts</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαχείριση σεναρίων</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="54"/>
         <source>&amp;New</source>
-        <translation type="unfinished">&amp;Νέο</translation>
+        <translation>&amp;Νέο</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="55"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished">&amp;Διαγραφή</translation>
+        <translation>&amp;Διαγραφή</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="64"/>
         <source>The button&apos;s text</source>
-        <translation type="unfinished"></translation>
+        <translation>Το κείμενο του κουμπιού</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="66"/>
         <source>empty: the name&apos;s initials; builtin:&lt;name&gt;: an icon of the theme</source>
-        <translation type="unfinished"></translation>
+        <translation>κενό: τα αρχικά του ονόματος· builtin:&lt;όνομα&gt;: ένα εικονίδιο του θέματος</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="69"/>
         <source>Choose an image (SVG or PNG)…</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε μια εικόνα (SVG ή PNG)…</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="76"/>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>Πάντα</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="77"/>
         <source>With a selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Με επιλογή</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="78"/>
         <source>With a conductor selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Με επιλεγμένο αγωγό</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="81"/>
         <source>Name:</source>
-        <translation type="unfinished">Όνομα:</translation>
+        <translation>Όνομα:</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="82"/>
         <source>Icon:</source>
-        <translation type="unfinished"></translation>
+        <translation>Εικονίδιο:</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="83"/>
         <source>Tooltip:</source>
-        <translation type="unfinished"></translation>
+        <translation>Συμβουλή εργαλείου:</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="84"/>
         <source>Shortcut:</source>
-        <translation type="unfinished"></translation>
+        <translation>Συντόμευση:</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="85"/>
         <source>Enabled:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ενεργό:</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="96"/>
         <source>&amp;Test</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Δοκιμή</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="97"/>
         <source>Saves, then runs the script on the current project (Ctrl+Z undoes the run)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθηκεύει και μετά εκτελεί το σενάριο στο τρέχον έργο (το Ctrl+Z αναιρεί την εκτέλεση)</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="99"/>
         <source>&amp;Save</source>
-        <translation type="unfinished">&amp;Αποθήκευση</translation>
+        <translation>&amp;Αποθήκευση</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="100"/>
         <source>Open the &amp;folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα του &amp;φακέλου</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="101"/>
         <source>&amp;Close</source>
-        <translation type="unfinished">&amp;Κλείσιμο</translation>
+        <translation>&amp;Κλείσιμο</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="113"/>
         <source>Script (the qet object; qet.currentFolio() is the sheet shown):</source>
-        <translation type="unfinished"></translation>
+        <translation>Σενάριο (το αντικείμενο qet· το qet.currentFolio() είναι το φύλλο που εμφανίζεται):</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="186"/>
         <source>No button: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Χωρίς κουμπί: %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="216"/>
         <source>No button for this file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Χωρίς κουμπί για αυτό το αρχείο: %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="243"/>
         <source>New script</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέο σενάριο</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="244"/>
@@ -18796,57 +18948,61 @@ Create your own text using the following variables:
 var f = qet.currentFolio();
 qet.addText(f, &quot;Text&quot;, 40, 40);
 </source>
-        <translation type="unfinished"></translation>
+        <translation>// το qet.currentFolio() είναι το φύλλο που εμφανίζεται· ένα κλικ αναιρείται
+// με ένα μόνο Ctrl+Z. Λίστα κλήσεων: qet.apiSignatures()
+var f = qet.currentFolio();
+qet.addText(f, &quot;Κείμενο&quot;, 40, 40);
+</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="251"/>
         <source>Not saved yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν έχει αποθηκευτεί ακόμη</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="265"/>
         <source>The script needs a name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το σενάριο χρειάζεται όνομα.</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="284"/>
         <source>Not saved: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν αποθηκεύτηκε: %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="292"/>
         <source>Cannot write %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η εγγραφή του %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="308"/>
         <source>Delete the script</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή του σεναρίου</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="309"/>
         <source>Delete “%1” and its button?</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή του «%1» και του κουμπιού του;</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="342"/>
         <source>Script icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Εικονίδιο σεναρίου</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="343"/>
         <source>Images (*.svg *.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εικόνες (*.svg *.png)</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="352"/>
         <source>Cannot copy %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η αντιγραφή του %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="383"/>
         <source>The script shown is not saved. Save it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Το σενάριο που εμφανίζεται δεν έχει αποθηκευτεί. Να αποθηκευτεί;</translation>
     </message>
 </context>
 <context>
@@ -19019,17 +19175,17 @@ qet.addText(f, &quot;Text&quot;, 40, 40);
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="466"/>
         <source>Select the elements of this sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή των στοιχείων αυτού του φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="467"/>
         <source>Select the conductors of this sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή των αγωγών αυτού του φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="468"/>
         <source>Select the texts of this sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή των κειμένων αυτού του φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1141"/>
@@ -19115,7 +19271,7 @@ qet.addText(f, &quot;Text&quot;, 40, 40);
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="205"/>
         <source>For a number: the next number to be assigned. For text: the fixed text.</source>
-        <translation type="unfinished"></translation>
+        <translation>Για αριθμό: ο επόμενος αριθμός που θα δοθεί. Για κείμενο: το σταθερό κείμενο.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="208"/>
@@ -19130,37 +19286,37 @@ qet.addText(f, &quot;Text&quot;, 40, 40);
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="60"/>
         <source>Cancel</source>
-        <translation type="unfinished">Αναίρεση</translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="62"/>
         <source>Revert to the saved definition</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφορά στον αποθηκευμένο ορισμό</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="176"/>
         <source>Move this variable up</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση αυτής της μεταβλητής προς τα πάνω</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="177"/>
         <source>Move this variable down</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση αυτής της μεταβλητής προς τα κάτω</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="178"/>
         <source>Delete this variable</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή αυτής της μεταβλητής</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="341"/>
         <source>Delete the rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή του κανόνα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="342"/>
         <source>Delete the cable numbering rule: cables are numbered again as before, and the question of defining one comes back on the next drawing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή του κανόνα αρίθμησης καλωδίων: τα καλώδια αριθμούνται ξανά όπως πριν, και η ερώτηση για τον ορισμό κανόνα επανέρχεται στην επόμενη σχεδίαση.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="408"/>
@@ -19238,7 +19394,7 @@ The other fields are not used.</source>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="460"/>
         <source>Cable Auto Numbering</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση καλωδίων</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="462"/>
@@ -19260,13 +19416,29 @@ The other fields are not used.
 -The &quot;Sheet&quot; type represents the name of the current sheet.
 The other fields are not used.</source>
         <comment>help dialog about the cable autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εδώ μπορείτε να ορίσετε πώς θα αριθμούνται τα νέα καλώδια.
+-Μια αρίθμηση αποτελείται από τουλάχιστον μία μεταβλητή.
+-Μπορείτε να προσθέσετε ή να διαγράψετε μια μεταβλητή αρίθμησης με τα κουμπιά - και +.
+-Μια μεταβλητή αρίθμησης περιλαμβάνει: έναν τύπο, μια τιμή και ένα βήμα.
+
+-Οι τύποι &quot;Digit 1&quot;, &quot;Digit 01&quot; και &quot;Digit 001&quot; αντιπροσωπεύουν έναν αριθμητικό τύπο που ορίζεται στο πεδίο &quot;Τιμή&quot;, ο οποίος αυξάνεται σε κάθε νέο καλώδιο κατά την τιμή του πεδίου &quot;Βήμα&quot;.
+-Οι &quot;Digit 01&quot; και &quot;Digit 001&quot; αναπαρίστανται στο σχέδιο με τουλάχιστον δύο και τρία ψηφία αντίστοιχα.
+Αν ο αριθμός που ορίζεται στο πεδίο Τιμή έχει λιγότερα ψηφία από τον επιλεγμένο τύπο, θα προηγείται ένα ή δύο 0 ώστε να τηρείται ο τύπος.
+
+-Ο τύπος &quot;Text&quot; αντιπροσωπεύει ένα σταθερό κείμενο.
+Το πεδίο &quot;Βήμα&quot; δεν χρησιμοποιείται.
+
+-Ο τύπος &quot;Sheet no.&quot; αντιπροσωπεύει τον αριθμό του τρέχοντος φύλλου.
+Τα άλλα πεδία δεν χρησιμοποιούνται.
+
+-Ο τύπος &quot;Sheet&quot; αντιπροσωπεύει το όνομα του τρέχοντος φύλλου.
+Τα άλλα πεδία δεν χρησιμοποιούνται.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="486"/>
         <source>Element Auto Numbering</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="488"/>
@@ -19288,17 +19460,33 @@ The other fields are not used.
 -The &quot;Sheet&quot; type represents the name of the current sheet.
 The other fields are not used.</source>
         <comment>help dialog about the element autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εδώ μπορείτε να ορίσετε πώς θα αριθμούνται τα νέα στοιχεία.
+-Μια αρίθμηση αποτελείται από τουλάχιστον μία μεταβλητή.
+-Μπορείτε να προσθέσετε ή να διαγράψετε μια μεταβλητή αρίθμησης με τα κουμπιά - και +.
+Μια μεταβλητή αρίθμησης περιλαμβάνει: έναν τύπο, μια τιμή και ένα βήμα.
+
+Οι τύποι &quot;Digit 1&quot;, &quot;Digit 01&quot; και &quot;Digit 001&quot; αντιπροσωπεύουν έναν αριθμητικό τύπο που ορίζεται στο πεδίο &quot;Τιμή&quot;, ο οποίος αυξάνεται σε κάθε νέο αγωγό κατά την τιμή του πεδίου &quot;Βήμα&quot;.
+- Οι &quot;Digit 01&quot; και &quot;Digit 001&quot; αναπαρίστανται στο σχέδιο με τουλάχιστον δύο και τρία ψηφία αντίστοιχα.
+Αν ο αριθμός που ορίζεται στο πεδίο Τιμή έχει λιγότερα ψηφία από τον επιλεγμένο τύπο, θα προηγείται ένα ή δύο 0 ώστε να τηρείται ο τύπος.
+
+-Ο τύπος &quot;Text&quot; αντιπροσωπεύει ένα σταθερό κείμενο.
+Το πεδίο &quot;Βήμα&quot; δεν χρησιμοποιείται.
+
+-Ο τύπος &quot;sheet&quot; αντιπροσωπεύει τον αριθμό του τρέχοντος φύλλου.
+Τα άλλα πεδία δεν χρησιμοποιούνται.
+
+-Ο τύπος &quot;Sheet&quot; αντιπροσωπεύει το όνομα του τρέχοντος φύλλου.
+Τα άλλα πεδία δεν χρησιμοποιούνται.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="595"/>
         <source>New numbering…</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέα αρίθμηση…</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="599"/>
         <source>Rename numbering…</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετονομασία αρίθμησης…</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="431"/>
@@ -19383,29 +19571,29 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
         <source>Geometry</source>
-        <translation type="unfinished"></translation>
+        <translation>Γεωμετρία</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="442"/>
         <source>Width</source>
-        <translation type="unfinished">Πλάτος</translation>
+        <translation>Πλάτος</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="46"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="443"/>
         <source>Height</source>
-        <translation type="unfinished"></translation>
+        <translation>Ύψος</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="66"/>
         <source>Angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Γωνία</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="82"/>
         <source> °</source>
-        <translation type="unfinished"></translation>
+        <translation> °</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="205"/>
@@ -19485,7 +19673,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="305"/>
         <source>Closed shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλειστό σχήμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="50"/>
@@ -19495,17 +19683,17 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="183"/>
         <source>Change the length of a line</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του μήκους μιας γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="202"/>
         <source>Change the size of a shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του μεγέθους ενός σχήματος</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="215"/>
         <source>Change the angle of a shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή της γωνίας ενός σχήματος</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="236"/>
@@ -19536,17 +19724,17 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="433"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήκος</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="442"/>
         <source>X radius</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακτίνα X</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="443"/>
         <source>Y radius</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακτίνα Y</translation>
     </message>
 </context>
 <context>
@@ -19554,53 +19742,53 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="52"/>
         <source>The shortcut bar opens at the cursor position (S key by default). It shows the commands chosen here based on what is selected, then the element picker.</source>
-        <translation type="unfinished"></translation>
+        <translation>Η γραμμή συντομεύσεων ανοίγει στη θέση του δρομέα (πλήκτρο S από προεπιλογή). Εμφανίζει τις εντολές που επιλέγονται εδώ ανάλογα με την επιλογή και μετά τον επιλογέα στοιχείων.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="69"/>
         <source>Add →</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη →</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="70"/>
         <source>← Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>← Αφαίρεση</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="71"/>
         <source>Move up</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση πάνω</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="72"/>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση κάτω</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="73"/>
         <source>Default values</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπιλεγμένες τιμές</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="85"/>
         <source>Available commands</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμες εντολές</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="86"/>
         <source>In the bar, in order</source>
-        <translation type="unfinished"></translation>
+        <translation>Στη γραμμή, με σειρά</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="92"/>
         <source>Context:</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλαίσιο:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="130"/>
         <source>Shortcut bar</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γραμμή συντομεύσεων</translation>
     </message>
 </context>
 <context>
@@ -19608,17 +19796,17 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/shortcutbarsettings.cpp" line="77"/>
         <source>Sheet, nothing selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Φύλλο, χωρίς επιλογή</translation>
     </message>
     <message>
         <location filename="../sources/shortcutbarsettings.cpp" line="79"/>
         <source>Selected elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλεγμένα στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/shortcutbarsettings.cpp" line="81"/>
         <source>Selected conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλεγμένοι αγωγοί</translation>
     </message>
 </context>
 <context>
@@ -19626,109 +19814,109 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="85"/>
         <source>Filter shortcuts…</source>
-        <translation type="unfinished"></translation>
+        <translation>Φιλτράρισμα συντομεύσεων…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="90"/>
         <source>all</source>
-        <translation type="unfinished">Όλα</translation>
+        <translation>Όλα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="91"/>
         <source>Awarded exclusively</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποκλειστικά ανατεθειμένες</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="92"/>
         <source>Unallocated only</source>
-        <translation type="unfinished"></translation>
+        <translation>Μόνο μη ανατεθειμένες</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="93"/>
         <source>Conflicts only</source>
-        <translation type="unfinished"></translation>
+        <translation>Μόνο συγκρούσεις</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="99"/>
         <source>All categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Όλες οι κατηγορίες</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="117"/>
         <source>Press a key combination to see which command uses it</source>
-        <translation type="unfinished"></translation>
+        <translation>Πατήστε έναν συνδυασμό πλήκτρων για να δείτε ποια εντολή τον χρησιμοποιεί</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="125"/>
         <source>Clear the searched key</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκκαθάριση του πλήκτρου αναζήτησης</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="130"/>
         <source>Search by key:</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση κατά πλήκτρο:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="137"/>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="490"/>
         <source>Action</source>
-        <translation type="unfinished"></translation>
+        <translation>Ενέργεια</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="137"/>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="490"/>
         <source>Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Συντόμευση</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="137"/>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="490"/>
         <source>Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Μενού</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="146"/>
         <source>Reset everything</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφορά όλων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="149"/>
         <source>Copy list</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγραφή λίστας</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="150"/>
         <source>Copies the shortcuts shown, to paste into a spreadsheet or a document</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγράφει τις συντομεύσεις που εμφανίζονται, για επικόλληση σε υπολογιστικό φύλλο ή έγγραφο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="217"/>
         <source>Reset this shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφορά αυτής της συντόμευσης</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="337"/>
         <source>%n actions</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n ενέργεια</numerusform>
+            <numerusform>%n ενέργειες</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="395"/>
         <source>This shortcut is also used by : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή η συντόμευση χρησιμοποιείται επίσης από : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="490"/>
         <source>Category</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατηγορία</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="514"/>
         <source>Shortcuts</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Συντομεύσεις</translation>
     </message>
 </context>
 <context>
@@ -19849,61 +20037,61 @@ The other fields are not used.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Pink : PaleVioletRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ροζ : PaleVioletRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Pink : MediumVioletRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ροζ : MediumVioletRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Red : LightSalmon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : LightSalmon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="62"/>
         <source>Red : Salmon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : Salmon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="63"/>
         <source>Red : DarkSalmon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : DarkSalmon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="64"/>
         <source>Red : LightCoral</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : LightCoral</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="65"/>
         <source>Red : IndianRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : IndianRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="66"/>
         <source>Red : Crimson</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : Crimson</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="67"/>
         <source>Red : Firebrick</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : Firebrick</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="68"/>
         <source>Red : DarkRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : DarkRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="69"/>
@@ -19915,745 +20103,745 @@ The other fields are not used.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="70"/>
         <source>Orange : OrangeRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πορτοκαλί : OrangeRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="71"/>
         <source>Orange : Tomato</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πορτοκαλί : Tomato</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="72"/>
         <source>Orange : Coral</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πορτοκαλί : Coral</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Orange : DarkOrange</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πορτοκαλί : DarkOrange</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Orange : Orange</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πορτοκαλί : Orange</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="75"/>
         <source>Yellow : Yellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : Yellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="76"/>
         <source>Yellow : LightYellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : LightYellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="77"/>
         <source>Yellow : LemonChiffon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : LemonChiffon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="78"/>
         <source>Yellow : LightGoldenrodYellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : LightGoldenrodYellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="79"/>
         <source>Yellow : PapayaWhip</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : PapayaWhip</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="80"/>
         <source>Yellow : Moccasin</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : Moccasin</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Yellow : PeachPuff</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : PeachPuff</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="82"/>
         <source>Yellow : PaleGoldenrod</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : PaleGoldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Yellow : Khaki</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : Khaki</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="84"/>
         <source>Yellow : DarkKhaki</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : DarkKhaki</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="85"/>
         <source>Yellow : Gold</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : Gold</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="86"/>
         <source>Brown : Cornsilk</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Cornsilk</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="87"/>
         <source>Brown : BlanchedAlmond</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : BlanchedAlmond</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="88"/>
         <source>Brown : Bisque</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Bisque</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="89"/>
         <source>Brown : NavajoWhite</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : NavajoWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="90"/>
         <source>Brown : Wheat</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Wheat</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="91"/>
         <source>Brown : Burlywood</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Burlywood</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="92"/>
         <source>Brown : Tan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Tan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="93"/>
         <source>Brown : RosyBrown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : RosyBrown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="94"/>
         <source>Brown : SandyBrown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : SandyBrown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="95"/>
         <source>Brown : Goldenrod</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Goldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="96"/>
         <source>Brown : DarkGoldenrod</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : DarkGoldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="97"/>
         <source>Brown : Peru</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Peru</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="98"/>
         <source>Brown : Chocolate</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Chocolate</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="99"/>
         <source>Brown : SaddleBrown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : SaddleBrown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="100"/>
         <source>Brown : Sienna</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Sienna</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="101"/>
         <source>Brown : Brown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Brown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="102"/>
         <source>Brown : Maroon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Maroon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="103"/>
         <source>Green : DarkOliveGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : DarkOliveGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="104"/>
         <source>Green : Olive</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : Olive</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="105"/>
         <source>Green : OliveDrab</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : OliveDrab</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="106"/>
         <source>Green : YellowGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : YellowGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="107"/>
         <source>Green : LimeGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : LimeGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="108"/>
         <source>Green : Lime</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : Lime</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="109"/>
         <source>Green : LawnGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : LawnGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="110"/>
         <source>Green : Chartreuse</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : Chartreuse</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="111"/>
         <source>Green : GreenYellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : GreenYellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="112"/>
         <source>Green : SpringGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : SpringGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="113"/>
         <source>Green : MediumSpringGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : MediumSpringGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="114"/>
         <source>Green : LightGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : LightGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="115"/>
         <source>Green : PaleGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : PaleGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="116"/>
         <source>Green : DarkSeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : DarkSeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="117"/>
         <source>Green : MediumAquamarine</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : MediumAquamarine</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="118"/>
         <source>Green : MediumSeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : MediumSeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="119"/>
         <source>Green : SeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : SeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="120"/>
         <source>Green : ForestGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : ForestGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="121"/>
         <source>Green : Green</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : Green</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="122"/>
         <source>Green : DarkGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : DarkGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="123"/>
         <source>Cyan : Aqua</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : Aqua</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="124"/>
         <source>Cyan : Cyan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : Cyan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="125"/>
         <source>Cyan : LightCyan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : LightCyan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="126"/>
         <source>Cyan : PaleTurquoise</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : PaleTurquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="127"/>
         <source>Cyan : Aquamarine</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : Aquamarine</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="128"/>
         <source>Cyan : Turquoise</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : Turquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="129"/>
         <source>Cyan : MediumTurquoise</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : MediumTurquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="130"/>
         <source>Cyan : DarkTurquoise</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : DarkTurquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="131"/>
         <source>Cyan : LightSeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : LightSeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
         <source>Cyan : CadetBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : CadetBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="133"/>
         <source>Cyan : DarkCyan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : DarkCyan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="134"/>
         <source>Cyan : Teal</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : Teal</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="135"/>
         <source>Blue : LightSteelBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : LightSteelBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="136"/>
         <source>Blue : PowderBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : PowderBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="137"/>
         <source>Blue : LightBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : LightBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="138"/>
         <source>Blue : SkyBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : SkyBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="139"/>
         <source>Blue : LightSkyBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : LightSkyBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="140"/>
         <source>Blue : DeepSkyBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : DeepSkyBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="141"/>
         <source>Blue : DodgerBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : DodgerBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="142"/>
         <source>Blue : CornflowerBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : CornflowerBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="143"/>
         <source>Blue : SteelBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : SteelBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="144"/>
         <source>Blue : RoyalBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : RoyalBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="145"/>
         <source>Blue : Blue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : Blue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="146"/>
         <source>Blue : MediumBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : MediumBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="147"/>
         <source>Blue : DarkBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : DarkBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="148"/>
         <source>Blue : Navy</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : Navy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="149"/>
         <source>Blue : MidnightBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : MidnightBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="150"/>
         <source>Purple : Lavender</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Lavender</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="151"/>
         <source>Purple : Thistle</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Thistle</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="152"/>
         <source>Purple : Plum</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Plum</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="153"/>
         <source>Purple : Violet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Violet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="154"/>
         <source>Purple : Orchid</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Orchid</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="155"/>
         <source>Purple : Fuchsia</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Fuchsia</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="156"/>
         <source>Purple : Magenta</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Magenta</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="157"/>
         <source>Purple : MediumOrchid</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : MediumOrchid</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="158"/>
         <source>Purple : MediumPurple</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : MediumPurple</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="159"/>
         <source>Purple : BlueViolet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : BlueViolet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="160"/>
         <source>Purple : DarkViolet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : DarkViolet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="161"/>
         <source>Purple : DarkOrchid</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : DarkOrchid</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="162"/>
         <source>Purple : DarkMagenta</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : DarkMagenta</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="163"/>
         <source>Purple : Purple</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Purple</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="164"/>
         <source>Purple : Indigo</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Indigo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="165"/>
         <source>Purple : DarkSlateBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : DarkSlateBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="166"/>
         <source>Purple : SlateBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : SlateBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="167"/>
         <source>Purple : MediumSlateBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : MediumSlateBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="168"/>
         <source>White : White</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : White</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="169"/>
         <source>White : Snow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Snow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="170"/>
         <source>White : Honeydew</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Honeydew</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="171"/>
         <source>White : MintCream</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : MintCream</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="172"/>
         <source>White : Azure</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Azure</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="173"/>
         <source>White : AliceBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : AliceBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="174"/>
         <source>White : GhostWhite</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : GhostWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="175"/>
         <source>White : WhiteSmoke</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : WhiteSmoke</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="176"/>
         <source>White : Seashell</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Seashell</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="177"/>
         <source>White : Beige</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Beige</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="178"/>
         <source>White : OldLace</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : OldLace</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="179"/>
         <source>White : FloralWhite</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : FloralWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="180"/>
         <source>White : Ivory</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Ivory</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="181"/>
         <source>White : AntiqueWhite</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : AntiqueWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="182"/>
         <source>White : Linen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Linen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="183"/>
         <source>White : LavenderBlush</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : LavenderBlush</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="184"/>
         <source>White : MistyRose</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : MistyRose</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="185"/>
         <source>Gray : Gainsboro</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : Gainsboro</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="186"/>
         <source>Gray : LightGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : LightGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="187"/>
         <source>Gray : Silver</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : Silver</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="188"/>
         <source>Gray : DarkGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : DarkGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="189"/>
         <source>Gray : Gray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : Gray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="190"/>
         <source>Gray : DimGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : DimGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="191"/>
         <source>Gray : LightSlateGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : LightSlateGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="192"/>
         <source>Gray : SlateGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : SlateGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="193"/>
         <source>Gray : DarkSlateGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : DarkSlateGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="194"/>
@@ -20833,61 +21021,61 @@ The other fields are not used.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="235"/>
         <source>Pink : PaleVioletRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ροζ : PaleVioletRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="236"/>
         <source>Pink : MediumVioletRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ροζ : MediumVioletRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="237"/>
         <source>Red : LightSalmon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : LightSalmon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="238"/>
         <source>Red : Salmon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : Salmon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="239"/>
         <source>Red : DarkSalmon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : DarkSalmon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="240"/>
         <source>Red : LightCoral</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : LightCoral</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="241"/>
         <source>Red : IndianRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : IndianRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="242"/>
         <source>Red : Crimson</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : Crimson</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="243"/>
         <source>Red : Firebrick</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : Firebrick</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="244"/>
         <source>Red : DarkRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κόκκινο : DarkRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="245"/>
@@ -20899,745 +21087,745 @@ The other fields are not used.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="246"/>
         <source>Orange : OrangeRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πορτοκαλί : OrangeRed</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="247"/>
         <source>Orange : Tomato</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πορτοκαλί : Tomato</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="248"/>
         <source>Orange : Coral</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πορτοκαλί : Coral</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="249"/>
         <source>Orange : DarkOrange</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πορτοκαλί : DarkOrange</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="250"/>
         <source>Orange : Orange</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πορτοκαλί : Orange</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="251"/>
         <source>Yellow : Yellow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : Yellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="252"/>
         <source>Yellow : LightYellow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : LightYellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="253"/>
         <source>Yellow : LemonChiffon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : LemonChiffon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="254"/>
         <source>Yellow : LightGoldenrodYellow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : LightGoldenrodYellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="255"/>
         <source>Yellow : PapayaWhip</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : PapayaWhip</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="256"/>
         <source>Yellow : Moccasin</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : Moccasin</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="257"/>
         <source>Yellow : PeachPuff</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : PeachPuff</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="258"/>
         <source>Yellow : PaleGoldenrod</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : PaleGoldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="259"/>
         <source>Yellow : Khaki</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : Khaki</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="260"/>
         <source>Yellow : DarkKhaki</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : DarkKhaki</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="261"/>
         <source>Yellow : Gold</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κίτρινο : Gold</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="262"/>
         <source>Brown : Cornsilk</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Cornsilk</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="263"/>
         <source>Brown : BlanchedAlmond</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : BlanchedAlmond</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="264"/>
         <source>Brown : Bisque</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Bisque</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="265"/>
         <source>Brown : NavajoWhite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : NavajoWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="266"/>
         <source>Brown : Wheat</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Wheat</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="267"/>
         <source>Brown : Burlywood</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Burlywood</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="268"/>
         <source>Brown : Tan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Tan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="269"/>
         <source>Brown : RosyBrown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : RosyBrown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="270"/>
         <source>Brown : SandyBrown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : SandyBrown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="271"/>
         <source>Brown : Goldenrod</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Goldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="272"/>
         <source>Brown : DarkGoldenrod</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : DarkGoldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="273"/>
         <source>Brown : Peru</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Peru</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="274"/>
         <source>Brown : Chocolate</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Chocolate</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="275"/>
         <source>Brown : SaddleBrown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : SaddleBrown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="276"/>
         <source>Brown : Sienna</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Sienna</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="277"/>
         <source>Brown : Brown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Brown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="278"/>
         <source>Brown : Maroon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Καφέ : Maroon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="279"/>
         <source>Green : DarkOliveGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : DarkOliveGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="280"/>
         <source>Green : Olive</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : Olive</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="281"/>
         <source>Green : OliveDrab</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : OliveDrab</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="282"/>
         <source>Green : YellowGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : YellowGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="283"/>
         <source>Green : LimeGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : LimeGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="284"/>
         <source>Green : Lime</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : Lime</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="285"/>
         <source>Green : LawnGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : LawnGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="286"/>
         <source>Green : Chartreuse</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : Chartreuse</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="287"/>
         <source>Green : GreenYellow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : GreenYellow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="288"/>
         <source>Green : SpringGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : SpringGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="289"/>
         <source>Green : MediumSpringGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : MediumSpringGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="290"/>
         <source>Green : LightGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : LightGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="291"/>
         <source>Green : PaleGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : PaleGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="292"/>
         <source>Green : DarkSeaGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : DarkSeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="293"/>
         <source>Green : MediumAquamarine</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : MediumAquamarine</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="294"/>
         <source>Green : MediumSeaGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : MediumSeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="295"/>
         <source>Green : SeaGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : SeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="296"/>
         <source>Green : ForestGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : ForestGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="297"/>
         <source>Green : Green</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : Green</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="298"/>
         <source>Green : DarkGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πράσινο : DarkGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="299"/>
         <source>Cyan : Aqua</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : Aqua</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="300"/>
         <source>Cyan : Cyan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : Cyan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="301"/>
         <source>Cyan : LightCyan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : LightCyan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="302"/>
         <source>Cyan : PaleTurquoise</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : PaleTurquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="303"/>
         <source>Cyan : Aquamarine</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : Aquamarine</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="304"/>
         <source>Cyan : Turquoise</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : Turquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="305"/>
         <source>Cyan : MediumTurquoise</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : MediumTurquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="306"/>
         <source>Cyan : DarkTurquoise</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : DarkTurquoise</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="307"/>
         <source>Cyan : LightSeaGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : LightSeaGreen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="308"/>
         <source>Cyan : CadetBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : CadetBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="309"/>
         <source>Cyan : DarkCyan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : DarkCyan</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="310"/>
         <source>Cyan : Teal</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κυανό : Teal</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="311"/>
         <source>Blue : LightSteelBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : LightSteelBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="312"/>
         <source>Blue : PowderBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : PowderBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="313"/>
         <source>Blue : LightBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : LightBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="314"/>
         <source>Blue : SkyBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : SkyBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="315"/>
         <source>Blue : LightSkyBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : LightSkyBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="316"/>
         <source>Blue : DeepSkyBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : DeepSkyBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="317"/>
         <source>Blue : DodgerBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : DodgerBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="318"/>
         <source>Blue : CornflowerBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : CornflowerBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="319"/>
         <source>Blue : SteelBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : SteelBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="320"/>
         <source>Blue : RoyalBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : RoyalBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="321"/>
         <source>Blue : Blue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : Blue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="322"/>
         <source>Blue : MediumBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : MediumBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="323"/>
         <source>Blue : DarkBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : DarkBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="324"/>
         <source>Blue : Navy</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : Navy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="325"/>
         <source>Blue : MidnightBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπλε : MidnightBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="326"/>
         <source>Purple : Lavender</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Lavender</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="327"/>
         <source>Purple : Thistle</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Thistle</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="328"/>
         <source>Purple : Plum</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Plum</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="329"/>
         <source>Purple : Violet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Violet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="330"/>
         <source>Purple : Orchid</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Orchid</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="331"/>
         <source>Purple : Fuchsia</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Fuchsia</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="332"/>
         <source>Purple : Magenta</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Magenta</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="333"/>
         <source>Purple : MediumOrchid</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : MediumOrchid</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="334"/>
         <source>Purple : MediumPurple</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : MediumPurple</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="335"/>
         <source>Purple : BlueViolet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : BlueViolet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="336"/>
         <source>Purple : DarkViolet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : DarkViolet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="337"/>
         <source>Purple : DarkOrchid</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : DarkOrchid</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="338"/>
         <source>Purple : DarkMagenta</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : DarkMagenta</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="339"/>
         <source>Purple : Purple</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Purple</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="340"/>
         <source>Purple : Indigo</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : Indigo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="341"/>
         <source>Purple : DarkSlateBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : DarkSlateBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="342"/>
         <source>Purple : SlateBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : SlateBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="343"/>
         <source>Purple : MediumSlateBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μωβ : MediumSlateBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="344"/>
         <source>White : White</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : White</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="345"/>
         <source>White : Snow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Snow</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="346"/>
         <source>White : Honeydew</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Honeydew</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="347"/>
         <source>White : MintCream</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : MintCream</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="348"/>
         <source>White : Azure</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Azure</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="349"/>
         <source>White : AliceBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : AliceBlue</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="350"/>
         <source>White : GhostWhite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : GhostWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="351"/>
         <source>White : WhiteSmoke</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : WhiteSmoke</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="352"/>
         <source>White : Seashell</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Seashell</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="353"/>
         <source>White : Beige</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Beige</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="354"/>
         <source>White : OldLace</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : OldLace</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="355"/>
         <source>White : FloralWhite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : FloralWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="356"/>
         <source>White : Ivory</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Ivory</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="357"/>
         <source>White : AntiqueWhite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : AntiqueWhite</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="358"/>
         <source>White : Linen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : Linen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="359"/>
         <source>White : LavenderBlush</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : LavenderBlush</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="360"/>
         <source>White : MistyRose</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λευκό : MistyRose</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="361"/>
         <source>Gray : Gainsboro</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : Gainsboro</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="362"/>
         <source>Gray : LightGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : LightGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="363"/>
         <source>Gray : Silver</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : Silver</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="364"/>
         <source>Gray : DarkGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : DarkGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="365"/>
         <source>Gray : Gray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : Gray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="366"/>
         <source>Gray : DimGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : DimGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="367"/>
         <source>Gray : LightSlateGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : LightSlateGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="368"/>
         <source>Gray : SlateGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : SlateGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="369"/>
         <source>Gray : DarkSlateGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γκρι : DarkSlateGray</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="370"/>
@@ -21759,9 +21947,9 @@ The other fields are not used.</source>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="654"/>
         <source>This terminal already has %n conductors, the project&apos;s limit. Add a terminal to connect one more conductor.</source>
         <comment>wire refused by the wires-per-terminal limit</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Αυτός ο ακροδέκτης έχει ήδη %n αγωγό, το όριο του έργου. Προσθέστε έναν ακροδέκτη για να συνδέσετε έναν ακόμη αγωγό.</numerusform>
+            <numerusform>Αυτός ο ακροδέκτης έχει ήδη %n αγωγούς, το όριο του έργου. Προσθέστε έναν ακροδέκτη για να συνδέσετε έναν ακόμη αγωγό.</numerusform>
         </translation>
     </message>
 </context>
@@ -21803,7 +21991,7 @@ The other fields are not used.</source>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="541"/>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="579"/>
         <source>T%1</source>
-        <translation type="unfinished"></translation>
+        <translation>T%1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="183"/>
@@ -21823,17 +22011,17 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="186"/>
         <source>NO (contact SW)</source>
-        <translation type="unfinished"></translation>
+        <translation>NO (επαφή διακόπτη)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="187"/>
         <source>NC (contact SW)</source>
-        <translation type="unfinished"></translation>
+        <translation>NC (επαφή διακόπτη)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="188"/>
         <source>Common (contact SW)</source>
-        <translation type="unfinished"></translation>
+        <translation>Κοινή (επαφή διακόπτη)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="261"/>
@@ -21843,7 +22031,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="279"/>
         <source>Change the potential of a terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του δυναμικού ενός ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="298"/>
@@ -21853,61 +22041,61 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="319"/>
         <source>Show/hide the terminal name</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση/απόκρυψη του ονόματος του ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="334"/>
         <source>Change the position of the label</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή της θέσης της ετικέτας</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="354"/>
         <source>Change the label font</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή της γραμματοσειράς της ετικέτας</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="369"/>
         <source>Change the font size of the label</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του μεγέθους γραμματοσειράς της ετικέτας</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="383"/>
         <source>Change the rotation of the label</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή της περιστροφής της ετικέτας</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="401"/>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="407"/>
         <source>Change the alignment of the label</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή της στοίχισης της ετικέτας</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="421"/>
         <source>Show/hide the label border</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση/απόκρυψη του περιγράμματος της ετικέτας</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="437"/>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="444"/>
         <source>Change the label colour</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του χρώματος της ετικέτας</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="535"/>
         <source>Edit the master label</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία της κύριας ετικέτας</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="547"/>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="555"/>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="584"/>
         <source>Change the name of the terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του ονόματος του ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="574"/>
         <source>Change the master label index</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή του δείκτη της κύριας ετικέτας</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="14"/>
@@ -21917,7 +22105,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="20"/>
         <source>y :</source>
-        <translation type="unfinished"></translation>
+        <translation>y :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="47"/>
@@ -21927,7 +22115,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="60"/>
         <source>x:</source>
-        <translation type="unfinished"></translation>
+        <translation>x:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="67"/>
@@ -21942,77 +22130,77 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="84"/>
         <source>Potential:</source>
-        <translation type="unfinished"></translation>
+        <translation>Δυναμικό:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="91"/>
         <source>No effect unless &quot;Function separation&quot; is checked (all terminals of the block then stay connected). When it is checked, terminals sharing the same value stay connected to each other and the others are isolated.</source>
-        <translation type="unfinished"></translation>
+        <translation>Χωρίς επίδραση αν δεν είναι επιλεγμένο το «Διαχωρισμός λειτουργιών» (τότε όλοι οι ακροδέκτες του μπλοκ παραμένουν συνδεδεμένοι). Όταν είναι επιλεγμένο, οι ακροδέκτες με την ίδια τιμή παραμένουν συνδεδεμένοι μεταξύ τους και οι υπόλοιποι απομονώνονται.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="98"/>
         <source>Terminal name</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="104"/>
         <source>Show name</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση ονόματος</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="111"/>
         <source>Text properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιδιότητες κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="117"/>
         <source>Font</source>
-        <translation type="unfinished">Γραμματοσειρά</translation>
+        <translation>Γραμματοσειρά</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="137"/>
         <source>X :</source>
-        <translation type="unfinished">X :</translation>
+        <translation>X :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="154"/>
         <source>Y :</source>
-        <translation type="unfinished">Y :</translation>
+        <translation>Y :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="171"/>
         <source>Rotation :</source>
-        <translation type="unfinished">Περιστροφή:</translation>
+        <translation>Περιστροφή:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="181"/>
         <source>°</source>
-        <translation type="unfinished">°</translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="197"/>
         <source>Alignment</source>
-        <translation type="unfinished">Στοίχιση</translation>
+        <translation>Στοίχιση</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="204"/>
         <source>Color :</source>
-        <translation type="unfinished">Χρώμα:</translation>
+        <translation>Χρώμα:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="221"/>
         <source>Frame the text</source>
-        <translation type="unfinished">Πλαίσιο στο κείμενο</translation>
+        <translation>Πλαίσιο στο κείμενο</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="234"/>
         <source>Master’s label</source>
-        <translation type="unfinished"></translation>
+        <translation>Ετικέτα του κύριου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="243"/>
         <source>Learning from the master</source>
-        <translation type="unfinished"></translation>
+        <translation>Μάθηση από τον κύριο</translation>
     </message>
 </context>
 <context>
@@ -22020,57 +22208,57 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="14"/>
         <source>Automatic numbering of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="20"/>
         <source>This function numbers the terminals in the project according to their position. Empty or locked terminals are ignored. Terminal labelling must be configured in advance as follows : &apos;-X:AB&apos;. The part before the colon (the terminal block) can be named as desired. &apos;AB&apos; can consist of numbers or letters.&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή η λειτουργία αριθμεί τους ακροδέκτες του έργου σύμφωνα με τη θέση τους. Οι κενοί ή κλειδωμένοι ακροδέκτες αγνοούνται. Η σήμανση των ακροδεκτών πρέπει να έχει ρυθμιστεί εκ των προτέρων ως εξής: &apos;-X:AB&apos;. Το τμήμα πριν από την άνω και κάτω τελεία (η σειρά ακροδεκτών) μπορεί να ονομαστεί όπως επιθυμείτε. Το &apos;AB&apos; μπορεί να αποτελείται από αριθμούς ή γράμματα.&quot;</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="34"/>
         <source>Priority of axes</source>
-        <translation type="unfinished"></translation>
+        <translation>Προτεραιότητα αξόνων</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="40"/>
         <source>Priority to the X-axis (horizontal)</source>
-        <translation type="unfinished"></translation>
+        <translation>Προτεραιότητα στον άξονα X (οριζόντια)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="50"/>
         <source>Priority to the Y-axis (vertical)</source>
-        <translation type="unfinished"></translation>
+        <translation>Προτεραιότητα στον άξονα Y (κατακόρυφα)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="60"/>
         <source>Type of numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος αρίθμησης</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="66"/>
         <source>Numeric only (1, 2, 3...)</source>
-        <translation type="unfinished"></translation>
+        <translation>Μόνο αριθμητική (1, 2, 3...)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="76"/>
         <source>Alphanumeric (A, B, C... 1, 2...)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλφαριθμητική (A, B, C... 1, 2...)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="101"/>
         <source>Number the letters as well</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρίθμηση και των γραμμάτων</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="118"/>
         <source>Terminal blocks</source>
-        <translation type="unfinished">Ακροδέκτες</translation>
+        <translation>Σειρές ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="124"/>
         <source>Uncheck the terminal blocks whose numbering is to be excluded</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποεπιλέξτε τις σειρές ακροδεκτών των οποίων η αρίθμηση πρέπει να εξαιρεθεί</translation>
     </message>
 </context>
 <context>
@@ -22078,12 +22266,12 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="243"/>
         <source>Re-group all terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανακατανομή όλων των ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="245"/>
         <source>Assign free terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανάθεση ελεύθερων ακροδεκτών</translation>
     </message>
 </context>
 <context>
@@ -22185,12 +22373,12 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="24"/>
         <source>Disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Διάταξη</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="60"/>
         <source>Make the move</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκτέλεση της μετακίνησης</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="96"/>
@@ -22205,7 +22393,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="117"/>
         <source>Sectionable</source>
-        <translation type="unfinished"></translation>
+        <translation>Με δυνατότητα απομόνωσης</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="122"/>
@@ -22220,72 +22408,72 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="132"/>
         <source>Anti-parallel diodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιπαράλληλες δίοδοι</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="137"/>
         <source>Resistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντίσταση</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="142"/>
         <source>Varistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Βαρίστορ</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="147"/>
         <source>Test socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Υποδοχή δοκιμής</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="152"/>
         <source>Diode (reversed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Δίοδος (ανάστροφη)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="160"/>
         <source>LED :</source>
-        <translation type="unfinished"></translation>
+        <translation>LED :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="170"/>
         <source>Cable :</source>
-        <translation type="unfinished"></translation>
+        <translation>Καλώδιο :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="180"/>
         <source>Name of the cable of the selected terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα του καλωδίου των επιλεγμένων ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="187"/>
         <source>Set the cable name to all the selected terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός του ονόματος καλωδίου σε όλους τους επιλεγμένους ακροδέκτες</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="190"/>
         <source>Apply the cable to the selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή του καλωδίου στην επιλογή</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="204"/>
         <source>Manufacturer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατασκευαστής:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="211"/>
         <source>Manufacturer of the terminals proposed in the Width column</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατασκευαστής των ακροδεκτών που προτείνονται στη στήλη Πλάτος</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="218"/>
         <source>Add spare terminals, on no folio, after the selected terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη εφεδρικών ακροδεκτών, εκτός φύλλου, μετά τον επιλεγμένο ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="221"/>
         <source>Add spare terminals...</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη εφεδρικών ακροδεκτών...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="251"/>
@@ -22335,7 +22523,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="69"/>
         <source>All manufacturers</source>
-        <translation type="unfinished"></translation>
+        <translation>Όλοι οι κατασκευαστές</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="142"/>
@@ -22350,37 +22538,37 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1144"/>
         <source>Add spare terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη εφεδρικών ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1150"/>
         <source>Number of terminals :</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός ακροδεκτών:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1152"/>
         <source>Number the terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρίθμηση των ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1157"/>
         <source>Prefix :</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόθεμα:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1162"/>
         <source>First number :</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρώτος αριθμός:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1167"/>
         <source>Same terminal as %1 (type, section, width, color, manufacturer...)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ίδιος ακροδέκτης με τον %1 (τύπος, διατομή, πλάτος, χρώμα, κατασκευαστής...)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1169"/>
         <source>the selected terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>τον επιλεγμένο ακροδέκτη</translation>
     </message>
 </context>
 <context>
@@ -22393,7 +22581,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="43"/>
         <source>toolBar</source>
-        <translation type="unfinished"></translation>
+        <translation>toolBar</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="62"/>
@@ -22429,48 +22617,48 @@ The other fields are not used.</source>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="95"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="209"/>
         <source>Assign free terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανάθεση ελεύθερων ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="98"/>
         <source>Add the free terminals to the terminal strips named after their labels (&quot;X1:2&quot; goes to the strip &quot;X1&quot;), creating the strips when needed. Terminals already assigned to a strip are never touched. Asks for confirmation.</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθέτει τους ελεύθερους ακροδέκτες στις σειρές ακροδεκτών που ονομάζονται σύμφωνα με την ετικέτα τους («X1:2» πηγαίνει στη σειρά «X1»), δημιουργώντας τις σειρές όταν χρειάζεται. Οι ακροδέκτες που ανήκουν ήδη σε σειρά δεν αλλάζουν ποτέ. Ζητά επιβεβαίωση.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="106"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="208"/>
         <source>Re-group all terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανακατανομή όλων των ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="109"/>
         <source>Assign the free terminals and also move every terminal whose label prefix or plant and location no longer match its strip. Existing strips are never re-sorted. Asks for confirmation.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναθέτει τους ελεύθερους ακροδέκτες και μετακινεί επίσης κάθε ακροδέκτη του οποίου το πρόθεμα ετικέτας ή η εγκατάσταση και η τοποθεσία δεν αντιστοιχούν πλέον στη σειρά του. Οι υπάρχουσες σειρές δεν αναταξινομούνται ποτέ. Ζητά επιβεβαίωση.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="55"/>
         <source>Opening the terminal block manager...</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα της διαχείρισης σειρών ακροδεκτών...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="56"/>
         <source>Terminal block manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαχείριση σειρών ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="92"/>
         <source>Reading folio %1 of %2...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανάγνωση φύλλου %1 από %2...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="202"/>
         <source>Unapplied edits</source>
-        <translation type="unfinished"></translation>
+        <translation>Μη εφαρμοσμένες αλλαγές</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="203"/>
         <source>Apply or discard the pending edits of the free terminals table first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμόστε ή απορρίψτε πρώτα τις εκκρεμείς αλλαγές του πίνακα ελεύθερων ακροδεκτών.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="211"/>
@@ -22479,7 +22667,11 @@ The other fields are not used.</source>
 Terminals you placed by hand in a strip whose name does not match their label will be moved too. Existing strips are never re-sorted.
 
 This action can be undone with a single Undo.</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι ελεύθεροι ακροδέκτες θα προστεθούν στις σειρές ακροδεκτών που ονομάζονται σύμφωνα με την ετικέτα τους, και κάθε ακροδέκτης του οποίου το πρόθεμα ετικέτας ή η εγκατάσταση και η τοποθεσία δεν αντιστοιχούν πλέον στη σειρά του θα μετακινηθεί στη σωστή σειρά.
+
+Θα μετακινηθούν επίσης οι ακροδέκτες που τοποθετήσατε χειροκίνητα σε σειρά της οποίας το όνομα δεν αντιστοιχεί στην ετικέτα τους. Οι υπάρχουσες σειρές δεν αναταξινομούνται ποτέ.
+
+Αυτή η ενέργεια μπορεί να αναιρεθεί με μία μόνο Αναίρεση.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="219"/>
@@ -22488,22 +22680,26 @@ This action can be undone with a single Undo.</source>
 Terminals that already belong to a strip are not touched and no strip is re-sorted.
 
 This action can be undone with a single Undo.</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάθε ελεύθερος ακροδέκτης θα προστεθεί στη σειρά ακροδεκτών που ονομάζεται σύμφωνα με την ετικέτα του («X1:2» πηγαίνει στη σειρά «X1»), με δημιουργία των σειρών όταν χρειάζεται.
+
+Οι ακροδέκτες που ανήκουν ήδη σε σειρά δεν αλλάζουν και καμία σειρά δεν αναταξινομείται.
+
+Αυτή η ενέργεια μπορεί να αναιρεθεί με μία μόνο Αναίρεση.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="242"/>
         <source>%1 terminal(s) assigned or moved to a terminal strip.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 ακροδέκτης ανατέθηκε ή μετακινήθηκε σε σειρά ακροδεκτών.</numerusform>
+            <numerusform>%1 ακροδέκτες ανατέθηκαν ή μετακινήθηκαν σε σειρές ακροδεκτών.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="247"/>
         <source>%1 free terminal(s) added to the terminal strips.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 ελεύθερος ακροδέκτης προστέθηκε στις σειρές ακροδεκτών.</numerusform>
+            <numerusform>%1 ελεύθεροι ακροδέκτες προστέθηκαν στις σειρές ακροδεκτών.</numerusform>
         </translation>
     </message>
 </context>
@@ -22512,13 +22708,14 @@ This action can be undone with a single Undo.</source>
     <message>
         <location filename="../sources/TerminalStrip/GraphicsItem/terminalstripitem.cpp" line="99"/>
         <source>plan of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>σχέδιο ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/GraphicsItem/terminalstripitem.cpp" line="183"/>
         <source>%1 : %2
 Double-click to go to the element</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 : %2
+Διπλό κλικ για μετάβαση στο στοιχείο</translation>
     </message>
 </context>
 <context>
@@ -22526,237 +22723,237 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Φόρμα</translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="65"/>
         <source>Level 0 terminal:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτης επιπέδου 0:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="645"/>
         <source>Headser :</source>
-        <translation type="unfinished"></translation>
+        <translation>Κεφαλίδα :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="694"/>
         <source>Bridge point</source>
-        <translation type="unfinished"></translation>
+        <translation>Σημείο γέφυρας</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="44"/>
         <source>Vertical offset</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατακόρυφη μετατόπιση</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="145"/>
         <source>Show help</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση βοήθειας</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="155"/>
         <source>Width</source>
-        <translation type="unfinished">Πλάτος</translation>
+        <translation>Πλάτος</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="252"/>
         <source>Orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσανατολισμός</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="259"/>
         <source>Alignment</source>
-        <translation type="unfinished">Στοίχιση</translation>
+        <translation>Στοίχιση</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="281"/>
         <source>Police :</source>
-        <translation type="unfinished">Γραμματοσειρά:</translation>
+        <translation>Γραμματοσειρά:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="291"/>
         <source>Size :</source>
-        <translation type="unfinished">Μέγεθος:</translation>
+        <translation>Μέγεθος:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="321"/>
         <source>Header text</source>
-        <translation type="unfinished">Κείμενο επικεφαλίδας</translation>
+        <translation>Κείμενο επικεφαλίδας</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="331"/>
         <source>Vertical origin</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατακόρυφη αρχή</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="338"/>
         <source>Maximum length</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγιστο μήκος</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="395"/>
         <source>Text terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενο ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="405"/>
         <source>Cross-reference</source>
-        <translation type="unfinished">Διασταυρούμενη αναφορά</translation>
+        <translation>Διασταυρούμενη αναφορά</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="465"/>
         <source>Symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύμβολο</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="482"/>
         <source>Height of the terminal type symbol (fuse, ground, led...). 0 disable the symbol.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ύψος του συμβόλου τύπου ακροδέκτη (ασφάλεια, γείωση, led...). Το 0 απενεργοποιεί το σύμβολο.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="492"/>
         <source>Connection length</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήκος σύνδεσης</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="499"/>
         <source>Length of the connections drawn above and under each terminal. 0 disable the connections.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήκος των συνδέσεων που σχεδιάζονται πάνω και κάτω από κάθε ακροδέκτη. Το 0 απενεργοποιεί τις συνδέσεις.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="509"/>
         <source>Cable: wires / cable / end</source>
-        <translation type="unfinished"></translation>
+        <translation>Καλώδιο: αγωγοί / καλώδιο / άκρο</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="516"/>
         <source>Length of the wires between the terminals and the cable. 0 disable the drawing of the cables.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήκος των αγωγών μεταξύ των ακροδεκτών και του καλωδίου. Το 0 απενεργοποιεί τη σχεδίαση των καλωδίων.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="526"/>
         <source>Length of the cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήκος του καλωδίου.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="536"/>
         <source>Length of the wires after the cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήκος των αγωγών μετά το καλώδιο.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="546"/>
         <source>Preview style</source>
-        <translation type="unfinished"></translation>
+        <translation>Στυλ προεπισκόπησης</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="553"/>
         <source>Style of the preview only. The style of a terminal strip plan is chosen when it is added to a folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μόνο το στυλ της προεπισκόπησης. Το στυλ ενός σχεδίου σειράς ακροδεκτών επιλέγεται κατά την προσθήκη του σε φύλλο.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="557"/>
         <source>Schematic</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχηματικό</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="562"/>
         <source>Realistic (push-in)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρεαλιστικό (ελατηρίου, push-in)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="567"/>
         <source>Realistic (screw)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρεαλιστικό (βιδωτό)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="575"/>
         <source>Scale (px/mm) / length (mm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλίμακα (px/mm) / μήκος (mm)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="582"/>
         <source>Number of pixels for one millimeter of terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός pixel για ένα χιλιοστό ακροδέκτη.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="601"/>
         <source>Length of a terminal along the wires, in millimeter.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήκος ενός ακροδέκτη κατά μήκος των συρμάτων, σε χιλιοστά.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="614"/>
         <source>End stops</source>
-        <translation type="unfinished"></translation>
+        <translation>Τερματικά στοπ</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="621"/>
         <source>Group marker</source>
-        <translation type="unfinished"></translation>
+        <translation>Δείκτης ομάδας</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="687"/>
         <source>Height</source>
-        <translation type="unfinished"></translation>
+        <translation>Ύψος</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="708"/>
         <source>Preview:</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπισκόπηση:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="234"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="363"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="430"/>
         <source>Left</source>
-        <translation type="unfinished">Αριστερά</translation>
+        <translation>Αριστερά</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="239"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="368"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="435"/>
         <source>Middle</source>
-        <translation type="unfinished">Κέντρο</translation>
+        <translation>Κέντρο</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="244"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="373"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="440"/>
         <source>Right</source>
-        <translation type="unfinished">Δεξιά</translation>
+        <translation>Δεξιά</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="220"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="382"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="416"/>
         <source>Horizontal</source>
-        <translation type="unfinished">Οριζόντια</translation>
+        <translation>Οριζόντια</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="225"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="387"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="421"/>
         <source>Vertical</source>
-        <translation type="unfinished">Κάθετα</translation>
+        <translation>Κάθετα</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="117"/>
         <source>Level 2 terminal:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτης επιπέδου 2:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="169"/>
         <source>Space :</source>
-        <translation type="unfinished"></translation>
+        <translation>Διάστημα :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="110"/>
         <source>Level 3 terminal:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτης επιπέδου 3:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="197"/>
         <source>Level 1 terminal:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτης επιπέδου 1:</translation>
     </message>
 </context>
 <context>
@@ -22764,7 +22961,7 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="215"/>
         <source>Spare</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφεδρικός</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="468"/>
@@ -22784,7 +22981,7 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="475"/>
         <source>Number wire</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="476"/>
@@ -22814,32 +23011,32 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="481"/>
         <source>led</source>
-        <translation type="unfinished"></translation>
+        <translation>led</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="482"/>
         <source>Shield</source>
-        <translation type="unfinished"></translation>
+        <translation>Θωράκιση</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="483"/>
         <source>Color</source>
-        <translation type="unfinished">Χρώμα</translation>
+        <translation>Χρώμα</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="484"/>
         <source>Section (mm²)</source>
-        <translation type="unfinished"></translation>
+        <translation>Διατομή (mm²)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="485"/>
         <source>Width (mm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλάτος (mm)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="486"/>
         <source>Separator plate after</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαχωριστική πλάκα μετά</translation>
     </message>
 </context>
 <context>
@@ -22847,20 +23044,20 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="984"/>
         <source>%1 mm</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1032"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1043"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1076"/>
         <source>None (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανένα (προεπιλογή)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1035"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1133"/>
         <source>%1 mm²</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm²</translation>
     </message>
 </context>
 <context>
@@ -22868,7 +23065,7 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/ConfigPage/terminalstripprojectconfigpage.cpp" line="33"/>
         <source>Terminal plan</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχέδιο ακροδεκτών</translation>
     </message>
 </context>
 <context>
@@ -22886,7 +23083,7 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.ui" line="14"/>
         <source>Terminal strip explorer</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξερεύνηση σειρών ακροδεκτών</translation>
     </message>
 </context>
 <context>
@@ -22921,7 +23118,7 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="296"/>
         <source>Form</source>
-        <translation type="unfinished">Φόρμα</translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="307"/>
@@ -22961,17 +23158,17 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="375"/>
         <source>Alignment</source>
-        <translation type="unfinished">Στοίχιση</translation>
+        <translation>Στοίχιση</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="376"/>
         <source>ext anchor point and alignment of lines relative to one another</source>
-        <translation type="unfinished"></translation>
+        <translation>Σημείο αγκύρωσης κειμένου και στοίχιση των γραμμών μεταξύ τους</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="393"/>
         <source>Modify the alignment of a text field</source>
-        <translation type="unfinished">Επεξεργασία της στοίχισης  ενός πεδίου κειμένου</translation>
+        <translation>Επεξεργασία της στοίχισης ενός πεδίου κειμένου</translation>
     </message>
 </context>
 <context>
@@ -22979,7 +23176,7 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/QetGraphicsItemModeler/textresizehandles.cpp" line="235"/>
         <source>Resize a text</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή μεγέθους κειμένου</translation>
     </message>
 </context>
 <context>
@@ -22987,7 +23184,7 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/QetGraphicsItemModeler/textresizehandles.cpp" line="48"/>
         <source>Drag to change the text width, double-click for automatic width</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε για να αλλάξετε το πλάτος του κειμένου, διπλό κλικ για αυτόματο πλάτος</translation>
     </message>
 </context>
 <context>
@@ -23380,7 +23577,7 @@ The following variables can be used:
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="445"/>
         <source>By default, the following variables are available: &lt;ul&gt;&lt;li&gt;%{author}: author of the sheet&lt;/li&gt;&lt;li&gt;%{date}: sheet date&lt;/li&gt;&lt;li&gt;%{title}: sheet title&lt;/li&gt;&lt;li&gt;%{filename}: filename of file&lt;/li&gt; &lt;li&gt;%{plant}: name of the installation (=) in which the sheet is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) where the sheet is located&lt;/li&gt;&lt;li&gt;%{indexrev}: sheet revision index&lt;/li&gt;&lt;li&gt;%{version}: version number&lt;/li&gt;&lt;li&gt;%{folio}: sheet number&lt;/li&gt;&lt;li&gt;%{folio-id}: position of sheet in the project&lt;/li&gt;&lt;li&gt;%{folio-total }: total number of sheets in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous sheet&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the next sheet&lt; / li&gt;&lt;li&gt;%{projecttitle}: title of the project&lt;/li&gt;&lt;li&gt;%{projectpath}: path of the project&lt;/li&gt;&lt;li&gt;%{projectfilename}: filename of the projectfile&lt;/li&gt;&lt;li &gt;%{saveddate}: date of saving the file in local format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: date of saving the file in format DD-MM-YYYY&lt;/li&gt; &lt;li&gt;%{ saveddate-us}: date of saving the file in format YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: time of saving the file&lt;/li&gt;&lt;li&gt;%{savedfilename}: name of the file saved&lt;/li&gt;&lt;li&gt;%{savedfilepath}: path of the saved file&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Από προεπιλογή, είναι διαθέσιμες οι ακόλουθες μεταβλητές: &lt;ul&gt;&lt;li&gt;%{author}: συντάκτης του φύλλου&lt;/li&gt;&lt;li&gt;%{date}: ημερομηνία του φύλλου&lt;/li&gt;&lt;li&gt;%{title}: τίτλος του φύλλου&lt;/li&gt;&lt;li&gt;%{filename}: όνομα του αρχείου&lt;/li&gt; &lt;li&gt;%{plant}: όνομα της εγκατάστασης (=) στην οποία βρίσκεται το φύλλο&lt;/li&gt;&lt;li&gt;%{locmach}: όνομα της τοποθεσίας (+) όπου βρίσκεται το φύλλο&lt;/li&gt;&lt;li&gt;%{indexrev}: δείκτης αναθεώρησης του φύλλου&lt;/li&gt;&lt;li&gt;%{version}: αριθμός έκδοσης&lt;/li&gt;&lt;li&gt;%{folio}: αριθμός φύλλου&lt;/li&gt;&lt;li&gt;%{folio-id}: θέση του φύλλου στο έργο&lt;/li&gt;&lt;li&gt;%{folio-total }: συνολικός αριθμός φύλλων στο έργο&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: αριθμός του προηγούμενου φύλλου&lt;/li&gt;&lt;li&gt;%{next-folio-num}: αριθμός του επόμενου φύλλου&lt; / li&gt;&lt;li&gt;%{projecttitle}: τίτλος του έργου&lt;/li&gt;&lt;li&gt;%{projectpath}: διαδρομή του έργου&lt;/li&gt;&lt;li&gt;%{projectfilename}: όνομα του αρχείου του έργου&lt;/li&gt;&lt;li &gt;%{saveddate}: ημερομηνία αποθήκευσης του αρχείου σε τοπική μορφή&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: ημερομηνία αποθήκευσης του αρχείου σε μορφή DD-MM-YYYY&lt;/li&gt; &lt;li&gt;%{ saveddate-us}: ημερομηνία αποθήκευσης του αρχείου σε μορφή YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: ώρα αποθήκευσης του αρχείου&lt;/li&gt;&lt;li&gt;%{savedfilename}: όνομα του αποθηκευμένου αρχείου&lt;/li&gt;&lt;li&gt;%{savedfilepath}: διαδρομή του αποθηκευμένου αρχείου&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="472"/>
@@ -23651,7 +23848,7 @@ The following variables can be used:
         <location filename="../sources/titleblock/templateview.cpp" line="660"/>
         <source>[%1px]</source>
         <comment>content of the extra helper cell added when the total width of cells is greater than the preview width</comment>
-        <translation type="unfinished">[%1px]</translation>
+        <translation>[%1px]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="714"/>
@@ -23679,14 +23876,16 @@ The following variables can be used:
         <source>Please note: the sum of the relative widths exceeds 100 per cent of the total width; this cartouche template cannot be accommodated by any width.
 </source>
         <comment>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σημείωση: το άθροισμα των σχετικών πλατών υπερβαίνει το 100 τοις εκατό του συνολικού πλάτους· αυτό το πρότυπο πινακίδας δεν μπορεί να χωρέσει σε κανένα πλάτος.
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1008"/>
         <source>Please note: fixed-width columns cannot fit within the remaining width; this cartouche template cannot be accommodated by any width.
 </source>
         <comment>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σημείωση: οι στήλες σταθερού πλάτους δεν χωρούν στο υπόλοιπο πλάτος· αυτό το πρότυπο πινακίδας δεν μπορεί να χωρέσει σε κανένα πλάτος.
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1016"/>
@@ -23701,14 +23900,16 @@ The following variables can be used:
         <source>Maximum length: %1px
 </source>
         <comment>tooltip showing the maximum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μέγιστο μήκος: %1px
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1031"/>
         <source>Unrestricted length.
 </source>
         <comment>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</comment>
-        <translation type="unfinished"></translation>
+        <translation>Απεριόριστο μήκος.
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1088"/>
@@ -23737,99 +23938,99 @@ The following variables can be used:
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="51"/>
         <source>Choose the commands of each toolbar of the diagram editor. Drag a command from the list on the left to the bar, or double-click it; Delete removes it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε τις εντολές κάθε γραμμής εργαλείων του επεξεργαστή σχεδίων. Σύρετε μια εντολή από τη λίστα αριστερά στη γραμμή ή κάντε διπλό κλικ σε αυτήν· το Delete την αφαιρεί.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="58"/>
         <source>New bar…</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέα γραμμή…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="60"/>
         <source>Rename…</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετονομασία…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="61"/>
         <source>Delete the bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή της γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="63"/>
         <source>Defaults</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπιλογές</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="67"/>
         <source>Search for a command</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση εντολής</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="83"/>
         <source>Add →</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη →</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="84"/>
         <source>Separator</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαχωριστικό</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="86"/>
         <source>← Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>← Αφαίρεση</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="87"/>
         <source>Move up</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση πάνω</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="88"/>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση κάτω</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="101"/>
         <source>Available commands</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμες εντολές</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="102"/>
         <source>In the bar, in order</source>
-        <translation type="unfinished"></translation>
+        <translation>Στη γραμμή, με σειρά</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="109"/>
         <source>Toolbar:</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμμή εργαλείων:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="173"/>
         <source>Toolbar contents</source>
         <comment>configuration page title: what each toolbar holds</comment>
-        <translation type="unfinished"></translation>
+        <translation>Περιεχόμενα γραμμών εργαλείων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="351"/>
         <source>New toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέα γραμμή εργαλείων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="352"/>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="373"/>
         <source>Toolbar name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα γραμμής εργαλείων:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="372"/>
         <source>Rename the toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετονομασία της γραμμής εργαλείων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="411"/>
         <source>─── Separator ───</source>
-        <translation type="unfinished"></translation>
+        <translation>─── Διαχωριστικό ───</translation>
     </message>
 </context>
 <context>
@@ -23837,68 +24038,68 @@ The following variables can be used:
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="41"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπιλογή</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="42"/>
         <source>Small (16 px)</source>
-        <translation type="unfinished"></translation>
+        <translation>Μικρό (16 px)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="43"/>
         <source>Medium (24 px)</source>
-        <translation type="unfinished"></translation>
+        <translation>Μεσαίο (24 px)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="44"/>
         <source>Large (32 px)</source>
-        <translation type="unfinished"></translation>
+        <translation>Μεγάλο (32 px)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="45"/>
         <source>Very large (48 px)</source>
-        <translation type="unfinished"></translation>
+        <translation>Πολύ μεγάλο (48 px)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="51"/>
         <source>Icon only</source>
-        <translation type="unfinished"></translation>
+        <translation>Μόνο εικονίδιο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="52"/>
         <source>Text beside the icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενο δίπλα στο εικονίδιο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="53"/>
         <source>Text under the icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενο κάτω από το εικονίδιο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="56"/>
         <source>Lock the toolbars (they can no longer be moved)</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλείδωμα των γραμμών εργαλείων (δεν μπορούν πλέον να μετακινηθούν)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="61"/>
         <source>Icon size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος εικονιδίων:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="62"/>
         <source>Buttons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Κουμπιά:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="66"/>
         <source>To show or hide a toolbar, right-click on a toolbar.</source>
-        <translation type="unfinished"></translation>
+        <translation>Για να εμφανίσετε ή να αποκρύψετε μια γραμμή εργαλείων, κάντε δεξί κλικ σε μια γραμμή εργαλείων.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="82"/>
         <source>Toolbars</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γραμμές εργαλείων</translation>
     </message>
 </context>
 <context>
@@ -23907,61 +24108,61 @@ The following variables can be used:
         <location filename="../sources/ui/wiringlistdialog.cpp" line="40"/>
         <source>Wiring list</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λίστα καλωδίωσης</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="66"/>
         <source>Wire</source>
         <comment>column title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αγωγός</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="67"/>
         <source>Component 1</source>
         <comment>column title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εξάρτημα 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="68"/>
         <source>Terminal 1</source>
         <comment>column title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτης 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="69"/>
         <source>Component 2</source>
         <comment>column title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εξάρτημα 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="70"/>
         <source>Terminal 2</source>
         <comment>column title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτης 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="71"/>
         <source>Sheet</source>
         <comment>column title</comment>
-        <translation type="unfinished">Φύλλο</translation>
+        <translation>Φύλλο</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/wiringlistdialog.cpp" line="92"/>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="99"/>
         <source>%n conductors listed.</source>
         <comment>wiring list summary</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n αγωγός στη λίστα.</numerusform>
+            <numerusform>%n αγωγοί στη λίστα.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/wiringlistdialog.cpp" line="94"/>
         <source>%n conductors excluded: one end is not attached to any element.</source>
         <comment>wiring list exclusion warning</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n αγωγός εξαιρέθηκε: ένα άκρο δεν είναι συνδεδεμένο σε κανένα στοιχείο.</numerusform>
+            <numerusform>%n αγωγοί εξαιρέθηκαν: ένα άκρο δεν είναι συνδεδεμένο σε κανένα στοιχείο.</numerusform>
         </translation>
     </message>
 </context>
@@ -23971,97 +24172,97 @@ The following variables can be used:
         <location filename="../sources/wiringlistexport.cpp" line="254"/>
         <location filename="../sources/wiringlistexport.cpp" line="269"/>
         <source>Error</source>
-        <translation type="unfinished">Σφάλμα</translation>
+        <translation>Σφάλμα</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="254"/>
         <source>Unable to read the project&apos;s in-memory structure.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατή η ανάγνωση της δομής του έργου στη μνήμη.</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="260"/>
         <source>Export the wiring diagram</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή του σχεδίου καλωδίωσης</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="262"/>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished">Αρχεία csv (*.csv) </translation>
+        <translation>Αρχεία CSV (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="269"/>
         <source>Unable to open the file for writing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατό το άνοιγμα του αρχείου για εγγραφή.</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="455"/>
         <source>Page</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="456"/>
         <source>Component 1</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εξάρτημα 1</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="457"/>
         <source>Terminal 1</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτης 1</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="458"/>
         <source>Component 2</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εξάρτημα 2</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="459"/>
         <source>Terminal 2</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτης 2</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="460"/>
         <source>Voltage / Protocol</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Τάση / πρωτόκολλο</translation>
+        <translation>Τάση / πρωτόκολλο</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="461"/>
         <source>Wire color</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Χρώμα αγωγού</translation>
+        <translation>Χρώμα αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="462"/>
         <source>Wire section</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Τμήμα αγωγού</translation>
+        <translation>Διατομή αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="463"/>
         <source>Function</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Λειτουργία</translation>
+        <translation>Λειτουργία</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="464"/>
         <source>Cable</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Καλώδιο</translation>
+        <translation>Καλώδιο</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="275"/>
         <source>Export successful</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιτυχής εξαγωγή</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="275"/>
         <source>The wiring diagram has been successfully exported !</source>
-        <translation type="unfinished"></translation>
+        <translation>Το σχέδιο καλωδίωσης εξήχθη με επιτυχία!</translation>
     </message>
 </context>
 <context>
@@ -24069,12 +24270,12 @@ The following variables can be used:
     <message>
         <location filename="../sources/ui/wiringruleswarning.cpp" line="37"/>
         <source>Warning</source>
-        <translation type="unfinished">Προειδοποίηση</translation>
+        <translation>Προειδοποίηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringruleswarning.cpp" line="38"/>
         <source>&lt;b&gt;The conductors-per-terminal rules are an experimental feature.&lt;/b&gt;&lt;br&gt;&lt;br&gt;They count conductors as QElectroTech represents them today. They may change, and your settings may need redoing, if wires and conductors become separate objects in a future version.&lt;br&gt;&lt;br&gt;All these rules can be turned off in Configure QElectroTech &gt; General.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Οι κανόνες αγωγών ανά ακροδέκτη είναι πειραματική λειτουργία.&lt;/b&gt;&lt;br&gt;&lt;br&gt;Μετρούν τους αγωγούς όπως τους αναπαριστά σήμερα το QElectroTech. Μπορεί να αλλάξουν, και οι ρυθμίσεις σας μπορεί να χρειαστεί να γίνουν ξανά, αν τα σύρματα και οι αγωγοί γίνουν ξεχωριστά αντικείμενα σε μελλοντική έκδοση.&lt;br&gt;&lt;br&gt;Όλοι αυτοί οι κανόνες μπορούν να απενεργοποιηθούν στο Ρύθμιση QElectroTech &gt; Γενικά.</translation>
     </message>
 </context>
 <context>
@@ -24117,47 +24318,47 @@ The following variables can be used:
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="69"/>
         <source>Default - Fit to XRef height</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπιλογή - Προσαρμογή στο ύψος της παραπομπής</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="96"/>
         <source>When the texts of two cross-references overlap, the one of the higher element is placed above the other.</source>
-        <translation type="unfinished"></translation>
+        <translation>Όταν τα κείμενα δύο παραπομπών επικαλύπτονται, αυτό του υψηλότερου στοιχείου τοποθετείται πάνω από το άλλο.</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="99"/>
         <source>Stack references whose texts overlap</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίβαξη των παραπομπών των οποίων τα κείμενα επικαλύπτονται</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
         <source>XRef slave position</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέση εξαρτημένων παραπομπών</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="122"/>
         <source>Distance label - slave :</source>
-        <translation type="unfinished"></translation>
+        <translation>Απόσταση ετικέτας - εξαρτημένου :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="129"/>
         <source>Distance in pixels between the label and the slave cross reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Απόσταση σε pixel μεταξύ της ετικέτας και της εξαρτημένης παραπομπής</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="160"/>
         <source>Display terminal numbers in Xrefs</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση αριθμών ακροδεκτών στις παραπομπές</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="167"/>
         <source>Show in the contact comb all slave contacts defined by the master, even those not yet connected, in the order defined by the master</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση στη χτένα επαφών όλων των εξαρτημένων επαφών που ορίζονται από το κύριο στοιχείο, ακόμη και όσων δεν έχουν συνδεθεί ακόμη, με τη σειρά που ορίζει το κύριο στοιχείο</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="170"/>
         <source>Show all slaves defined by the master</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση όλων των εξαρτημένων που ορίζονται από το κύριο στοιχείο</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="177"/>
@@ -24187,12 +24388,12 @@ The following variables can be used:
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="237"/>
         <source>Choose the font and size of the cable cross-reference text</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε τη γραμματοσειρά και το μέγεθος του κειμένου της παραπομπής καλωδίου</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="240"/>
         <source>Font…</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά…</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="263"/>
@@ -24214,7 +24415,14 @@ The following variables can be used:
 %M: the installation
 %LM: the location
 %T: the sheet title</source>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργήστε το δικό σας κείμενο χρησιμοποιώντας τις ακόλουθες μεταβλητές:
+%f: ο αριθμός φύλλου
+%F: η ετικέτα του φύλλου
+%l: ο αριθμός γραμμής
+%c: ο αριθμός στήλης
+%M: η εγκατάσταση
+%LM: η τοποθεσία
+%T: ο τίτλος του φύλλου</translation>
     </message>
     <message>
         <source>Create your own text using the following variables:
@@ -24275,12 +24483,12 @@ The following variables can be used:
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="142"/>
         <source>Programmable Logic Controller (PLC)</source>
-        <translation type="unfinished"></translation>
+        <translation>Προγραμματιζόμενος λογικός ελεγκτής (PLC)</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="145"/>
         <source>Cable</source>
-        <translation type="unfinished">Καλώδιο</translation>
+        <translation>Καλώδιο</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="147"/>
@@ -24310,7 +24518,7 @@ The following variables can be used:
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="153"/>
         <source>Right</source>
-        <translation type="unfinished">Δεξιά</translation>
+        <translation>Δεξιά</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="154"/>
@@ -24320,28 +24528,28 @@ The following variables can be used:
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="155"/>
         <source>Text field</source>
-        <translation type="unfinished"></translation>
+        <translation>Πεδίο κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="296"/>
         <source>Text:</source>
-        <translation type="unfinished">Κείμενο:</translation>
+        <translation>Κείμενο:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="304"/>
         <source>Font and size: those of the cable texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά και μέγεθος: αυτά των κειμένων καλωδίου</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="310"/>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="373"/>
         <source>Font and size: %1, %2 pt</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά και μέγεθος: %1, %2 pt</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="369"/>
         <source>Font of the cross-reference text</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά του κειμένου παραπομπής</translation>
     </message>
 </context>
 <context>
@@ -24349,17 +24557,17 @@ The following variables can be used:
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="1494"/>
         <source>The query is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το ερώτημα είναι κενό.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="1501"/>
         <source>Only a single SELECT query is allowed (the &apos;;&apos; character may only appear at the very end).</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιτρέπεται μόνο ένα ερώτημα SELECT (ο χαρακτήρας &apos;;&apos; μπορεί να εμφανίζεται μόνο στο τέλος).</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="1512"/>
         <source>Only read-only queries (SELECT or WITH ... SELECT) are allowed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιτρέπονται μόνο ερωτήματα ανάγνωσης (SELECT ή WITH ... SELECT).</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="4791"/>
@@ -24428,7 +24636,7 @@ The following variables can be used:
         <location filename="../sources/richtext/richtexteditor.cpp" line="528"/>
         <location filename="../sources/richtext/richtexteditor.cpp" line="534"/>
         <source>Text editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργαστής κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="527"/>

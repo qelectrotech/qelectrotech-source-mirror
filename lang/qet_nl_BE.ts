@@ -458,27 +458,27 @@
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="30"/>
         <source>Drawing style :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekenstijl:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="37"/>
         <source>How the terminals are drawn. The realistic styles draw the strip at scale, seen from above, with the real width of each terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoe de klemmen getekend worden. De realistische stijlen tekenen de klemmenstrook op schaal, van bovenaf gezien, met de echte breedte van elke klem.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="41"/>
         <source>Schematic</source>
-        <translation type="unfinished"></translation>
+        <translation>Schematisch</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="46"/>
         <source>Realistic (push-in)</source>
-        <translation type="unfinished"></translation>
+        <translation>Realistisch (veerklem, push-in)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="51"/>
         <source>Realistic (screw)</source>
-        <translation type="unfinished"></translation>
+        <translation>Realistisch (schroefklem)</translation>
     </message>
 </context>
 <context>
@@ -486,127 +486,127 @@
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="47"/>
         <source>Connect an AI assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Een AI-assistent verbinden</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="62"/>
         <source>An AI assistant (Claude, GitHub Copilot, Gemini…) can open, check and edit your diagrams through QElectroTech&apos;s MCP server, which runs on this computer. Copy the text below into your assistant&apos;s configuration. &lt;a href=&quot;%1&quot;&gt;Detailed guide&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Een AI-assistent (Claude, GitHub Copilot, Gemini…) kan uw schema&apos;s openen, controleren en bewerken via de MCP-server van QElectroTech, die op deze computer draait. Kopieer de onderstaande tekst naar de configuratie van uw assistent. &lt;a href=&quot;%1&quot;&gt;Uitgebreide handleiding&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="73"/>
         <source>&lt;b&gt;The MCP server is not installed with this version of QElectroTech.&lt;/b&gt; The guide explains how to get it.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;De MCP-server wordt niet meegeleverd met deze versie van QElectroTech.&lt;/b&gt; De handleiding legt uit hoe u hem kunt verkrijgen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="84"/>
         <source>&lt;b&gt;Python may not be installed.&lt;/b&gt; Only the Microsoft Store “python” shortcut was found: without Python, it opens the Store instead of starting the server.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Python is mogelijk niet geïnstalleerd.&lt;/b&gt; Alleen de “python”-snelkoppeling van de Microsoft Store werd gevonden: zonder Python opent die de Store in plaats van de server te starten.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="88"/>
         <source>&lt;b&gt;Python was not found on this computer&lt;/b&gt; (command “%1”). The server needs it.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Python werd niet gevonden op deze computer&lt;/b&gt; (opdracht “%1”). De server heeft het nodig.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="91"/>
         <source>Run the QElectroTech installer again and tick “Python for the AI assistant”, or install Python from python.org.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voer het installatieprogramma van QElectroTech opnieuw uit en vink “Python voor de AI-assistent” aan, of installeer Python via python.org.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="95"/>
         <source>Install Python 3 with your system&apos;s package manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Installeer Python 3 met de pakketbeheerder van uw systeem.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="111"/>
         <source>Assistant:</source>
-        <translation type="unfinished"></translation>
+        <translation>Assistent:</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="115"/>
         <source>Your diagrams folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Uw map met schema&apos;s</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="116"/>
         <source>Browse…</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladeren…</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="119"/>
         <source>Folder it can use:</source>
-        <translation type="unfinished"></translation>
+        <translation>Map die hij mag gebruiken:</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="121"/>
         <source>Allow the assistant to edit diagrams</source>
-        <translation type="unfinished"></translation>
+        <translation>De assistent toestaan schema&apos;s te bewerken</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="126"/>
         <source>The assistant can only read and write in this folder. Without editing allowed, it can only read, compare and export. An assistant reads the text in projects (labels, notes…): text written as an instruction can influence it. Leave editing off for diagrams you received from other people.</source>
-        <translation type="unfinished"></translation>
+        <translation>De assistent kan alleen in deze map lezen en schrijven. Zonder toestemming om te bewerken kan hij alleen lezen, vergelijken en exporteren. Een assistent leest de tekst in projecten (labels, notities…): tekst die als instructie geschreven is, kan hem beïnvloeden. Laat bewerken uitgeschakeld voor schema&apos;s die u van anderen hebt ontvangen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="147"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiëren</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="167"/>
         <source>If the file already lists other servers, add only the “qet” entry.</source>
-        <translation type="unfinished"></translation>
+        <translation>Als het bestand al andere servers bevat, voeg dan alleen het item “qet” toe.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="176"/>
         <source>Choose your diagrams folder first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies eerst uw map met schema&apos;s.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="185"/>
         <source>Folder the assistant can use</source>
-        <translation type="unfinished"></translation>
+        <translation>Map die de assistent mag gebruiken</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="193"/>
         <source>Copied</source>
-        <translation type="unfinished"></translation>
+        <translation>Gekopieerd</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="200"/>
         <source>In Claude Desktop: Settings → Developer → Edit Config. Then quit and restart Claude.</source>
-        <translation type="unfinished"></translation>
+        <translation>In Claude Desktop: Settings → Developer → Edit Config. Sluit Claude daarna af en start het opnieuw.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="203"/>
         <source>Save it as .mcp.json in your diagrams folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewaar het als .mcp.json in uw map met schema&apos;s.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="205"/>
         <source>Save it as .vscode/mcp.json in the folder open in VS Code. Copilot uses the tools in agent mode.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewaar het als .vscode/mcp.json in de map die in VS Code geopend is. Copilot gebruikt de tools in agentmodus.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="208"/>
         <source>Add it to the .cursor/mcp.json file in your home folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg het toe aan het bestand .cursor/mcp.json in uw thuismap.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="210"/>
         <source>Add it to the .gemini/settings.json file in your home folder. Gemini CLI asks you to trust the folder the first time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg het toe aan het bestand .gemini/settings.json in uw thuismap. Gemini CLI vraagt de eerste keer om de map te vertrouwen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="213"/>
         <source>Add it to the .codex/config.toml file in your home folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg het toe aan het bestand .codex/config.toml in uw thuismap.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="215"/>
         <source>In LM Studio: Program tab → Install → Edit mcp.json.</source>
-        <translation type="unfinished"></translation>
+        <translation>In LM Studio: tabblad Program → Install → Edit mcp.json.</translation>
     </message>
 </context>
 <context>
@@ -652,17 +652,17 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="175"/>
         <source>Change the start angle of an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>De beginhoek van een boog wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="200"/>
         <source>Change the angle of an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>De hoek van een boog wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="243"/>
         <source>Change an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Een boog wijzigen</translation>
     </message>
 </context>
 <context>
@@ -670,32 +670,32 @@
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="86"/>
         <source>The numbering name cannot be empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>De naam van de nummering mag niet leeg zijn.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="90"/>
         <source>A numbering named “%1” already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>Er bestaat al een nummering met de naam “%1”.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="137"/>
         <source>Create numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering %1 aanmaken</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="187"/>
         <source>Rename numbering %1 to %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering %1 hernoemen naar %2</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="190"/>
         <source>Modify numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering %1 wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="213"/>
         <source>Delete numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering %1 verwijderen</translation>
     </message>
 </context>
 <context>
@@ -777,73 +777,73 @@
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="66"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="385"/>
         <source>Apply this numbering to the selected elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze nummering toepassen op de geselecteerde elementen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="96"/>
         <source>Apply numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering toepassen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="102"/>
         <source>Choose an element numbering from the project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies een elementnummering uit het project.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="115"/>
         <source>First select elements in the sheet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer eerst elementen op het blad.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="122"/>
         <source>(frozen)</source>
-        <translation type="unfinished"></translation>
+        <translation>(bevroren)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="125"/>
         <source>(other numbering)</source>
-        <translation type="unfinished"></translation>
+        <translation>(andere nummering)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="133"/>
         <source>Nothing to apply: the selected elements already follow the “%1” numbering, or take their name from another element.</source>
-        <translation type="unfinished"></translation>
+        <translation>Niets toe te passen: de geselecteerde elementen volgen al de nummering “%1” of nemen hun naam over van een ander element.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="139"/>
         <source>%n elements will receive the “%1” numbering, in sheet and position order.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element krijgt de nummering “%1”, in volgorde van blad en positie.</numerusform>
+            <numerusform>%n elementen krijgen de nummering “%1”, in volgorde van blad en positie.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="140"/>
         <source>No element can receive the “%1” numbering without replacing what it already has.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen enkel element kan de nummering “%1” krijgen zonder te vervangen wat het al heeft.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="147"/>
         <source>Also replace the %n elements left as they are</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ook het %n element vervangen dat ongewijzigd werd gelaten</numerusform>
+            <numerusform>Ook de %n elementen vervangen die ongewijzigd werden gelaten</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="168"/>
         <source>%n elements numbered.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element genummerd.</numerusform>
+            <numerusform>%n elementen genummerd.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="170"/>
         <source>%n selected elements were left as they are.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n geselecteerd element werd ongewijzigd gelaten.</numerusform>
+            <numerusform>%n geselecteerde elementen werden ongewijzigd gelaten.</numerusform>
         </translation>
     </message>
     <message>
@@ -854,7 +854,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="386"/>
         <source>First select elements in the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer eerst elementen op het blad</translation>
     </message>
 </context>
 <context>
@@ -944,7 +944,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="311"/>
         <source>Renumber element(s)…</source>
-        <translation type="unfinished"></translation>
+        <translation>Element(en) hernummeren…</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="348"/>
@@ -977,48 +977,48 @@
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="148"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="163"/>
         <source>Renumber elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementen hernummeren</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="133"/>
         <source>Renumber elements (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementen hernummeren (%1)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="139"/>
         <source>No element follows this numbering.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen enkel element volgt deze nummering.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="140"/>
         <source>The %n elements following this numbering have a frozen name: nothing is renumbered.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Het %n element dat deze nummering volgt, heeft een bevroren naam: er wordt niets hernummerd.</numerusform>
+            <numerusform>De %n elementen die deze nummering volgen, hebben een bevroren naam: er wordt niets hernummerd.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="149"/>
         <source>%n elements will be renumbered, starting from the first number, in sheet and position order.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element wordt hernummerd, vanaf het eerste nummer, in volgorde van blad en positie.</numerusform>
+            <numerusform>%n elementen worden hernummerd, vanaf het eerste nummer, in volgorde van blad en positie.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="157"/>
         <source>%n elements renumbered, %1 of them with a new name.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element hernummerd, waarvan %1 met een nieuwe naam.</numerusform>
+            <numerusform>%n elementen hernummerd, waarvan %1 met een nieuwe naam.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="160"/>
         <source>%n elements with a frozen name were not touched, and their numbers were not given out again.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element met een bevroren naam werd niet aangeraakt en zijn nummer werd niet opnieuw uitgedeeld.</numerusform>
+            <numerusform>%n elementen met een bevroren naam werden niet aangeraakt en hun nummers werden niet opnieuw uitgedeeld.</numerusform>
         </translation>
     </message>
     <message>
@@ -1068,17 +1068,17 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="46"/>
         <source>Terminals with no label, designation, manufacturer or manufacturer reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmen zonder label, benaming, fabrikant of fabrikantreferentie</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="49"/>
         <source>Leave out junctions</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbindingspunten weglaten</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="77"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Voorbeeld</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="78"/>
@@ -1105,7 +1105,8 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/ui/bomexportdialog.cpp" line="87"/>
         <source>Unable to save the parts list to %1.
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan de stuklijst niet opslaan in %1.
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="127"/>
@@ -1126,13 +1127,14 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="173"/>
         <source>Request refused</source>
-        <translation type="unfinished"></translation>
+        <translation>Verzoek geweigerd</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="180"/>
         <source>Error in the request:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout in het verzoek:
+%1</translation>
     </message>
 </context>
 <context>
@@ -1168,19 +1170,19 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/ui/backuprestoredialog.cpp" line="48"/>
         <source>Recovery files</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Herstelbestanden</translation>
     </message>
     <message>
         <location filename="../sources/ui/backuprestoredialog.cpp" line="53"/>
         <source>&lt;b&gt;Recovery files were found,&lt;br&gt;do you want to open them?&lt;/b&gt;&lt;br&gt;For a project with several recovery versions, the newest is selected by default.</source>
         <comment>dialog message</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Er werden herstelbestanden gevonden,&lt;br&gt;wilt u ze openen?&lt;/b&gt;&lt;br&gt;Voor een project met meerdere herstelversies wordt standaard de nieuwste geselecteerd.</translation>
     </message>
     <message>
         <location filename="../sources/ui/backuprestoredialog.cpp" line="83"/>
         <source>%1 (newest)</source>
         <comment>recovery generation label</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (nieuwste)</translation>
     </message>
 </context>
 <context>
@@ -1189,15 +1191,15 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/cable/cablepart.cpp" line="1948"/>
         <source>Move %n cable(s)</source>
         <comment>Un geste déplace plusieurs lignes à la fois.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n kabel verplaatsen</numerusform>
+            <numerusform>%n kabels verplaatsen</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="38"/>
         <source>Delete</source>
-        <translation type="unfinished">Verwijderen</translation>
+        <translation>Verwijderen</translation>
     </message>
 </context>
 <context>
@@ -1225,12 +1227,12 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="86"/>
         <source>Format:</source>
-        <translation type="unfinished">Formaat:</translation>
+        <translation>Formaat:</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="93"/>
         <source>Sets the columns and rows so the sheet, title block included, has the size of this paper format, at 96 dots per inch like the PDF export.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stelt de kolommen en rijen zo in dat het blad, titelblok inbegrepen, de grootte van dit papierformaat heeft, aan 96 punten per inch zoals bij de PDF-export.</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="62"/>
@@ -1256,17 +1258,17 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="116"/>
         <source>Custom</source>
-        <translation type="unfinished">Gebruiker</translation>
+        <translation>Aangepast</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="119"/>
         <source>Landscape</source>
-        <translation type="unfinished">Landschap</translation>
+        <translation>Liggend</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="120"/>
         <source>Portrait</source>
-        <translation type="unfinished">Portret</translation>
+        <translation>Staand</translation>
     </message>
 </context>
 <context>
@@ -1275,12 +1277,12 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/diagramview.cpp" line="754"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="437"/>
         <source>Paste a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Een kabel plakken</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="878"/>
         <source>Duplicate a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Een kabel dupliceren</translation>
     </message>
 </context>
 <context>
@@ -1290,182 +1292,182 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/cable/cablecreatedialog.cpp" line="928"/>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1180"/>
         <source>Cable</source>
-        <translation type="unfinished">Kabel</translation>
+        <translation>Kabel</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="189"/>
         <source>(no type)</source>
-        <translation type="unfinished"></translation>
+        <translation>(geen type)</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablecreatedialog.cpp" line="190"/>
         <source>Change the type: %1, %n core(s)</source>
         <comment>which type this window changes, and how many cores that cable has now</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Het type wijzigen: %1, %n ader</numerusform>
+            <numerusform>Het type wijzigen: %1, %n aders</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablecreatedialog.cpp" line="196"/>
         <source>%n recognized core(s)</source>
         <comment>how many cores the line just crossed</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n herkende ader</numerusform>
+            <numerusform>%n herkende aders</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="269"/>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="378"/>
         <source>Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="272"/>
         <source>Filter cable types</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabeltypes filteren</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="281"/>
         <source>Hide types which have fewer cores than this cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Types met minder aders dan deze kabel verbergen</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="283"/>
         <source>Hide types which have fewer cores than recognized conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Types met minder aders dan herkende geleiders verbergen</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="292"/>
         <source>Uncheck to also see the types which have fewer cores: taking them makes the cores beyond their number leave the cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vink uit om ook de types met minder aders te zien: als u er een kiest, verlaten de aders voorbij hun aantal de kabel.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="295"/>
         <source>A struck through line is a type which has fewer cores than recognized conductors: it cannot carry this cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een doorgehaalde regel is een type met minder aders dan herkende geleiders: het kan deze kabel niet dragen.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="329"/>
         <source>New entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw item</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="330"/>
         <source>Add a new cable type to the list</source>
-        <translation type="unfinished"></translation>
+        <translation>Een nieuw kabeltype aan de lijst toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="335"/>
         <source>Edit entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Item bewerken</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="336"/>
         <source>Edit the cable type selected in the list.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het in de lijst geselecteerde kabeltype bewerken.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="345"/>
         <source>New cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe kabel</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="381"/>
         <source>Filter existing cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestaande kabels filteren</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="385"/>
         <source>Hide cables which have fewer free cores than recognized conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabels met minder vrije aders dan herkende geleiders verbergen</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="392"/>
         <source>A struck through line is a cable which has fewer free cores than recognized conductors: it cannot receive them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een doorgehaalde regel is een kabel met minder vrije aders dan herkende geleiders: hij kan ze niet opnemen.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="418"/>
         <source>Existing cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestaande kabels</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="458"/>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="541"/>
         <source>Designation</source>
-        <translation type="unfinished"></translation>
+        <translation>Benaming</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="459"/>
         <source>Plant (=)</source>
-        <translation type="unfinished">Installatie (=)</translation>
+        <translation>Installatie (=)</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="460"/>
         <source>Location (+)</source>
-        <translation type="unfinished">Locatie (+)</translation>
+        <translation>Locatie (+)</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="542"/>
         <source>Type</source>
-        <translation type="unfinished">Type</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="543"/>
         <source>Cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Aders</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="544"/>
         <source>Plant</source>
-        <translation type="unfinished">Installatie</translation>
+        <translation>Installatie</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="545"/>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="557"/>
         <source>%1 / %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 / %2</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="619"/>
         <source>This type has fewer cores than this cable: %1 instead of %2. The cores beyond %1 leave the cable and their marks disappear from the drawing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit type heeft minder aders dan deze kabel: %1 in plaats van %2. De aders voorbij %1 verlaten de kabel en hun markering verdwijnt van de tekening.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="626"/>
         <source>Too many cores selected: the type offers only %1, %2 conductors are recognized</source>
-        <translation type="unfinished"></translation>
+        <translation>Te veel aders geselecteerd: het type biedt er slechts %1, er zijn %2 geleiders herkend</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="633"/>
         <source>Only %1 free cores, %2 requested</source>
-        <translation type="unfinished"></translation>
+        <translation>Slechts %1 vrije aders, %2 gevraagd</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="662"/>
         <source>No cable type available: configure the cable type file in the preferences.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen kabeltype beschikbaar: stel het bestand met kabeltypes in bij de voorkeuren.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="677"/>
         <source>Choose a cable type.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies een kabeltype.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="678"/>
         <source>Choose an existing cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies een bestaande kabel.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="691"/>
         <source>%1 cores instead of %2: the extra cores stay unplaced.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 aders in plaats van %2: de extra aders blijven ongeplaatst.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablecreatedialog.cpp" line="922"/>
@@ -1473,16 +1475,20 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
 
 If you confirm, the other cable will lose these cores. Do you want to continue?</source>
         <comment>ask before taking cores away from another cable</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n gekruiste geleider is al aan een andere kabel gekoppeld
+
+Als u bevestigt, verliest de andere kabel deze aders. Wilt u doorgaan?</numerusform>
+            <numerusform>%n gekruiste geleiders zijn al aan een andere kabel gekoppeld
+
+Als u bevestigt, verliest de andere kabel deze aders. Wilt u doorgaan?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1026"/>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1092"/>
         <source>Cannot be written</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan niet worden geschreven</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1027"/>
@@ -1490,15 +1496,17 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
         <source>Cannot write to the file:
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan niet naar het bestand schrijven:
+%1
+%2</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1173"/>
         <source>%n core(s) of this cable bound to a conductor. With the chosen type, they leave this cable and their mark disappears from the drawing. Continue?</source>
         <comment>ask before cores lose the mark they show on the drawing</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n ader van deze kabel is aan een geleider gekoppeld. Met het gekozen type verlaat ze deze kabel en verdwijnt haar markering van de tekening. Doorgaan?</numerusform>
+            <numerusform>%n aders van deze kabel zijn aan een geleider gekoppeld. Met het gekozen type verlaten ze deze kabel en verdwijnen hun markeringen van de tekening. Doorgaan?</numerusform>
         </translation>
     </message>
 </context>
@@ -1507,48 +1515,49 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="49"/>
         <source>Export the cable list as CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>De kabellijst als CSV exporteren</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="59"/>
         <source>Layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Opmaak</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="61"/>
         <source>include headers</source>
-        <translation type="unfinished">Kopteksten overnemen</translation>
+        <translation>Kopregels opnemen</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="68"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Voorbeeld</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="108"/>
         <source>cable_list_</source>
-        <translation type="unfinished"></translation>
+        <translation>kabellijst_</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="111"/>
         <source>Save As... </source>
-        <translation type="unfinished">Bewaren als ... </translation>
+        <translation>Bewaren als...</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="112"/>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation>CSV-bestanden (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="121"/>
         <source>Error</source>
-        <translation type="unfinished">Fout</translation>
+        <translation>Fout</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="122"/>
         <source>Cannot save the cable list to %1.
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan de kabellijst niet opslaan in %1.
+%2</translation>
     </message>
 </context>
 <context>
@@ -1556,77 +1565,77 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="153"/>
         <source>No.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nr.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="154"/>
         <source>Plant (cable)</source>
-        <translation type="unfinished"></translation>
+        <translation>Installatie (kabel)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="155"/>
         <source>Location (cable)</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie (kabel)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="156"/>
         <source>Label (cable)</source>
-        <translation type="unfinished"></translation>
+        <translation>Label (kabel)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="157"/>
         <source>Plant (start)</source>
-        <translation type="unfinished"></translation>
+        <translation>Installatie (begin)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="158"/>
         <source>Location (start)</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie (begin)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="159"/>
         <source>Label (start)</source>
-        <translation type="unfinished"></translation>
+        <translation>Label (begin)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="160"/>
         <source>Sheet (start)</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad (begin)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="161"/>
         <source>Plant (end)</source>
-        <translation type="unfinished"></translation>
+        <translation>Installatie (einde)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="162"/>
         <source>Location (end)</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie (einde)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="163"/>
         <source>Label (end)</source>
-        <translation type="unfinished"></translation>
+        <translation>Label (einde)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="164"/>
         <source>Sheet (end)</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad (einde)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="165"/>
         <source>Cable type</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabeltype</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="166"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Lengte</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="167"/>
         <source>Used cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikte aders</translation>
     </message>
 </context>
 <context>
@@ -1634,17 +1643,17 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
     <message>
         <location filename="../sources/cablelist/cablelistmodelpropertieswidget.cpp" line="40"/>
         <source>Edit columns...</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolommen bewerken...</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistmodelpropertieswidget.cpp" line="41"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Vernieuwen</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistmodelpropertieswidget.cpp" line="76"/>
         <source>Cable list columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolommen van de kabellijst</translation>
     </message>
 </context>
 <context>
@@ -1659,95 +1668,99 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="342"/>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="361"/>
         <source>Cable numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabelnummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="57"/>
         <source>This window shows the automatic numbering rule for the cables of this project and edits it. A rule changed here is the one the project keeps: it is written into the project when you apply it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit venster toont en bewerkt de regel voor de automatische nummering van de kabels van dit project. Een hier gewijzigde regel is de regel die het project bewaart: hij wordt in het project geschreven wanneer u hem toepast.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="71"/>
         <source>Axis priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Asprioriteit</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="73"/>
         <source>Priority to the X axis (horizontal)</source>
-        <translation type="unfinished"></translation>
+        <translation>Prioriteit aan de X-as (horizontaal)</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="74"/>
         <source>Priority to the Y axis (vertical)</source>
-        <translation type="unfinished"></translation>
+        <translation>Prioriteit aan de Y-as (verticaal)</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="79"/>
         <source>The chosen axis decides the order in which the cables are renumbered: X numbers them from left to right, Y numbers them from top to bottom.</source>
-        <translation type="unfinished"></translation>
+        <translation>De gekozen as bepaalt de volgorde waarin de kabels hernummerd worden: X nummert ze van links naar rechts, Y van boven naar beneden.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="87"/>
         <source>Renumber all cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle kabels hernummeren</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="88"/>
         <source>Sets the number of each cable of the project again from the rule, starting at the beginning: a number left missing after a cable is deleted is filled in this way.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stelt het nummer van elke kabel van het project opnieuw in volgens de regel, vanaf het begin: een nummer dat ontbreekt nadat een kabel werd verwijderd, wordt zo opgevuld.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="103"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="174"/>
         <source>The rule is not complete yet: there is still an empty field in it.</source>
-        <translation type="unfinished"></translation>
+        <translation>De regel is nog niet volledig: er is nog een leeg veld in.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="264"/>
         <source>%n cable(s) of this project were entered by hand.
 
 Do you want to renumber them too?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n kabel van dit project werd met de hand ingevoerd.
+
+Wilt u die ook hernummeren?</numerusform>
+            <numerusform>%n kabels van dit project werden met de hand ingevoerd.
+
+Wilt u die ook hernummeren?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="269"/>
         <source>Yes</source>
         <comment>Les noms saisis à la main sont remplacés eux aussi.</comment>
-        <translation type="unfinished">Ja</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="272"/>
         <source>No</source>
         <comment>Les noms saisis à la main sont laissés tels quels.</comment>
-        <translation type="unfinished">Neen</translation>
+        <translation>Neen</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="275"/>
         <source>Cancel</source>
         <comment>Ne renumérote rien du tout.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="309"/>
         <source>The rule is not complete yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>De regel is nog niet volledig.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="343"/>
         <source>No cable to renumber in this project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen kabel om te hernummeren in dit project.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="362"/>
         <source>All the cables already carry the number that the rule gives them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle kabels dragen al het nummer dat de regel hen geeft.</translation>
     </message>
 </context>
 <context>
@@ -1756,66 +1769,66 @@ Do you want to renumber them too?</source>
         <location filename="../sources/cable/cablepart.cpp" line="2660"/>
         <source>Yes</source>
         <comment>Prendre le conducteur à l&apos;autre câble.</comment>
-        <translation type="unfinished">Ja</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2663"/>
         <source>No</source>
         <comment>Laisser le conducteur à l&apos;autre câble, on ne change rien.</comment>
-        <translation type="unfinished">Neen</translation>
+        <translation>Neen</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2666"/>
         <source>Cancel</source>
         <comment>Annuler le geste entier : rien n&apos;est écrit, la ligne et ses couleurs reviennent où elles étaient.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2702"/>
         <location filename="../sources/cable/cablepart.cpp" line="2760"/>
         <source>This conductor is already described by another cable. Do you want to assign it to cable %1?</source>
         <comment>Un conducteur ne peut appartenir qu&apos;à un câble : on demande avant de le prendre à l&apos;autre.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Deze geleider wordt al beschreven door een andere kabel. Wilt u hem toewijzen aan kabel %1?</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2704"/>
         <location filename="../sources/cable/cablepart.cpp" line="2762"/>
         <source>This conductor is already described by cable %1. Do you want to assign it to cable %2?</source>
         <comment>Un conducteur ne peut appartenir qu&apos;à un câble : on demande avant de le prendre à l&apos;autre.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Deze geleider wordt al beschreven door kabel %1. Wilt u hem toewijzen aan kabel %2?</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2713"/>
         <location filename="../sources/cable/cablepart.cpp" line="2755"/>
         <source>Conductor already assigned</source>
         <comment>Un conducteur ne peut appartenir qu&apos;à un câble.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Geleider al toegewezen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepart.cpp" line="2756"/>
         <source>Conductors already assigned</source>
         <comment>Plusieurs conducteurs sont pris en une seule fois.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Geleider al toegewezen</numerusform>
+            <numerusform>Geleiders al toegewezen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepart.cpp" line="2765"/>
         <source>%n conductors are already described by other cables. Do you want to assign them to cable %1?</source>
         <comment>On prend plusieurs conducteurs à la fois : on demande avant de les prendre aux autres câbles.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n geleider wordt al beschreven door andere kabels. Wilt u hem toewijzen aan kabel %1?</numerusform>
+            <numerusform>%n geleiders worden al beschreven door andere kabels. Wilt u ze toewijzen aan kabel %1?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepart.cpp" line="2767"/>
         <source>%n conductors are already described by cable %1. Do you want to assign them to cable %2?</source>
         <comment>On prend plusieurs conducteurs à la fois : on demande avant de les prendre à l&apos;autre câble.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n geleider wordt al beschreven door kabel %1. Wilt u hem toewijzen aan kabel %2?</numerusform>
+            <numerusform>%n geleiders worden al beschreven door kabel %1. Wilt u ze toewijzen aan kabel %2?</numerusform>
         </translation>
     </message>
 </context>
@@ -1824,46 +1837,46 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="54"/>
         <source>Cable</source>
-        <translation type="unfinished">Kabel</translation>
+        <translation>Kabel</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="73"/>
         <source>Unplaced cores:</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet-geplaatste aders:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="77"/>
         <source>Double-click a core to place it on the line: the line follows the mouse and a click leaves it where you aimed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dubbelklik op een ader om ze op de lijn te plaatsen: de lijn volgt de muis en een klik laat ze achter waar u mikte.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="117"/>
         <source>No cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen kabel.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="121"/>
         <source>%1 of %2 cores wired to a conductor</source>
         <comment>how many cores of this cable are wired</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 van %2 aders aan een geleider gekoppeld</numerusform>
+            <numerusform>%1 van %2 aders aan een geleider gekoppeld</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="171"/>
         <source>Core %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ader %1</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="172"/>
         <source>Core %1 — %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ader %1 — %2</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="233"/>
         <source>Place this core on the line</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze ader op de lijn plaatsen</translation>
     </message>
 </context>
 <context>
@@ -1871,41 +1884,41 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="59"/>
         <source>Unplaced cores:</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet-geplaatste aders:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="64"/>
         <source>Double-click a core to place it on the line: the line follows the mouse and a click leaves it where you aimed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dubbelklik op een ader om ze op de lijn te plaatsen: de lijn volgt de muis en een klik laat ze achter waar u mikte.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="258"/>
         <source>%1 of %2 cores wired to a conductor</source>
         <comment>how many cores of this cable are wired</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 van %2 aders aan een geleider gekoppeld</numerusform>
+            <numerusform>%1 van %2 aders aan een geleider gekoppeld</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="292"/>
         <source>Core %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ader %1</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="293"/>
         <source>Core %1 — %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ader %1 — %2</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="345"/>
         <source>Place this core on the line</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze ader op de lijn plaatsen</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="388"/>
         <source>Cable</source>
-        <translation type="unfinished">Kabel</translation>
+        <translation>Kabel</translation>
     </message>
 </context>
 <context>
@@ -1914,109 +1927,109 @@ Do you want to renumber them too?</source>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="52"/>
         <source>Drawing</source>
         <comment>column header: the drawing shows this field</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tekening</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="55"/>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="137"/>
         <source>Tick to write this field on the drawing.</source>
         <comment>tooltip of the tick before each field</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aanvinken om dit veld op de tekening te schrijven.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="61"/>
         <source>Designation</source>
-        <translation type="unfinished"></translation>
+        <translation>Benaming</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="64"/>
         <source>Type</source>
-        <translation type="unfinished">Type</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="74"/>
         <source>Choose the type of this cable from the list of cable types…</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies het type van deze kabel uit de lijst van kabeltypes…</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="81"/>
         <source>Plant (=)</source>
-        <translation type="unfinished">Installatie (=)</translation>
+        <translation>Installatie (=)</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="83"/>
         <source>Location (+)</source>
-        <translation type="unfinished">Locatie (+)</translation>
+        <translation>Locatie (+)</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="85"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Lengte</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="90"/>
         <source>Core colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Aderkleuren</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="92"/>
         <source>The font of the colors of all the cores of this cable, written along the line.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het lettertype van de kleuren van alle aders van deze kabel, langs de lijn geschreven.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="101"/>
         <source>Text position</source>
-        <translation type="unfinished"></translation>
+        <translation>Positie van de tekst</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="102"/>
         <source>Shifts all the cable text: plant, location and designation on one side, type and length on the other. The line, the slashes and the wiring stay in place. 10 px make one grid cell.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verschuift alle kabeltekst: installatie, locatie en benaming aan de ene kant, type en lengte aan de andere. De lijn, de schuine strepen en de bedrading blijven op hun plaats. 10 px is één rastervak.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="109"/>
         <source>Core colors position</source>
-        <translation type="unfinished"></translation>
+        <translation>Positie van de aderkleuren</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="110"/>
         <source>Shifts the core colors relative to their slashes. The slashes, the entries and the wiring stay in place. 10 px make one grid cell.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verschuift de aderkleuren ten opzichte van hun schuine strepen. De schuine strepen, de items en de bedrading blijven op hun plaats. 10 px is één rastervak.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="228"/>
         <source>X :</source>
-        <translation type="unfinished">X :</translation>
+        <translation>X :</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="230"/>
         <source>Y :</source>
-        <translation type="unfinished">Y :</translation>
+        <translation>Y :</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="284"/>
         <source>%1 pt</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 pt</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="287"/>
         <source>Font, size and style of the core colors.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettertype, grootte en stijl van de aderkleuren.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="288"/>
         <source>Font, size, style and alignment of this text.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettertype, grootte, stijl en uitlijning van deze tekst.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="292"/>
         <source>Set for this cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingesteld voor deze kabel.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="293"/>
         <source>Value defined in the preferences.</source>
-        <translation type="unfinished"></translation>
+        <translation>Waarde gedefinieerd in de voorkeuren.</translation>
     </message>
 </context>
 <context>
@@ -2024,32 +2037,32 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="50"/>
         <source>Available columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschikbare kolommen</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="62"/>
         <source>Add the selected column</source>
-        <translation type="unfinished"></translation>
+        <translation>De geselecteerde kolom toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="63"/>
         <source>Remove the selected column</source>
-        <translation type="unfinished"></translation>
+        <translation>De geselecteerde kolom verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="64"/>
         <source>Move the selected column up</source>
-        <translation type="unfinished"></translation>
+        <translation>De geselecteerde kolom omhoog verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="65"/>
         <source>Move the selected column down</source>
-        <translation type="unfinished"></translation>
+        <translation>De geselecteerde kolom omlaag verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="73"/>
         <source>Table columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabelkolommen</translation>
     </message>
 </context>
 <context>
@@ -2057,37 +2070,37 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="112"/>
         <source>No project is open.</source>
-        <translation type="unfinished"></translation>
+        <translation>Er is geen project geopend.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="118"/>
         <source>This project is read-only: its cables cannot be renumbered.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit project is alleen-lezen: de kabels kunnen niet hernummerd worden.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="137"/>
         <source>No cable numbering rule is defined for this project. Define one in this window before renumbering its cables.</source>
-        <translation type="unfinished"></translation>
+        <translation>Er is geen regel voor kabelnummering gedefinieerd voor dit project. Definieer er een in dit venster voordat u de kabels hernummert.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="222"/>
         <source>A cable is not on any sheet of the project: nothing was changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een kabel staat op geen enkel blad van het project: er werd niets gewijzigd.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="242"/>
         <source>The current rule gives no number here: nothing was changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>De huidige regel geeft hier geen nummer: er werd niets gewijzigd.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="253"/>
         <source>The current rule gives the same number (%1) twice: it must count to renumber a whole project. Nothing was changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>De huidige regel geeft twee keer hetzelfde nummer (%1): hij moet tellen om een volledig project te hernummeren. Er werd niets gewijzigd.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="265"/>
         <source>Number %1 is already used by a cable whose name is left as it is: nothing was changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer %1 wordt al gebruikt door een kabel waarvan de naam ongewijzigd blijft: er werd niets gewijzigd.</translation>
     </message>
 </context>
 <context>
@@ -2095,87 +2108,87 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="94"/>
         <source>Core colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Aderkleuren</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="95"/>
         <source>Text format</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstopmaak</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="148"/>
         <source>Font:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettertype:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="154"/>
         <source> pt</source>
-        <translation type="unfinished"></translation>
+        <translation> pt</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="155"/>
         <source>Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Grootte:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="158"/>
         <source>Normal</source>
-        <translation type="unfinished">Normaal</translation>
+        <translation>Normaal</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="159"/>
         <source>Bold</source>
-        <translation type="unfinished">Dik</translation>
+        <translation>Vet</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="160"/>
         <source>Italic</source>
-        <translation type="unfinished">Cursief</translation>
+        <translation>Cursief</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="161"/>
         <source>Bold italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Vet cursief</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="162"/>
         <source>Style:</source>
-        <translation type="unfinished">Stijl:</translation>
+        <translation>Stijl:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="169"/>
         <source>Right aligned</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechts uitgelijnd</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="170"/>
         <source>Centred</source>
-        <translation type="unfinished"></translation>
+        <translation>Gecentreerd</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="171"/>
         <source>Left aligned</source>
-        <translation type="unfinished"></translation>
+        <translation>Links uitgelijnd</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="172"/>
         <source>Alignment:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitlijning:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="175"/>
         <source>15W1 · H07V-K 3G1.5</source>
-        <translation type="unfinished"></translation>
+        <translation>15W1 · H07V-K 3G1.5</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="179"/>
         <source>Preview:</source>
-        <translation type="unfinished">Voorbeeld :</translation>
+        <translation>Voorbeeld :</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="183"/>
         <source>Reset</source>
-        <translation type="unfinished">Reset</translation>
+        <translation>Herstellen</translation>
     </message>
 </context>
 <context>
@@ -2183,52 +2196,52 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1264"/>
         <source>New entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw item</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1268"/>
         <source>Enter the cable type to add. Fields left empty stay empty in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voer het toe te voegen kabeltype in. Velden die leeg blijven, blijven ook leeg in het bestand.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1288"/>
         <source>How many cores this type has. The dash means the file does not specify.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoeveel aders dit type heeft. Het streepje betekent dat het bestand dit niet vermeldt.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1299"/>
         <source>The color of each core, separated by a comma and in the order of the cores.</source>
-        <translation type="unfinished"></translation>
+        <translation>De kleur van elke ader, gescheiden door een komma en in de volgorde van de aders.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1314"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Opslaan</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1315"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1375"/>
         <source>Edit entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Item bewerken</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1378"/>
         <source>Edit the cable type selected in the list. Fields left empty stay empty in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewerk het in de lijst geselecteerde kabeltype. Velden die leeg blijven, blijven ook leeg in het bestand.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1410"/>
         <source>No details</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen gegevens</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1411"/>
         <source>Enter at least one detail to create an entry.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vul ten minste één gegeven in om een item aan te maken.</translation>
     </message>
 </context>
 <context>
@@ -2236,53 +2249,53 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="273"/>
         <source>Designation</source>
-        <translation type="unfinished"></translation>
+        <translation>Benaming</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="275"/>
         <source>Number of cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Aantal aders</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="277"/>
         <source>Core colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Aderkleuren</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="279"/>
         <source>Cable section</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabeldoorsnede</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="281"/>
         <source>Sheath color</source>
-        <translation type="unfinished"></translation>
+        <translation>Kleur van de mantel</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="538"/>
         <source>No receiver for the cable types file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen ontvanger voor het bestand met kabeltypes.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="665"/>
         <source>Cannot create the folder %1 for the cable types file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan de map %1 voor het bestand met kabeltypes niet aanmaken.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="716"/>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="761"/>
         <source>The file contains no header: missing columns.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het bestand bevat geen kopregel: er ontbreken kolommen.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="779"/>
         <source>This entry no longer exists in the file: it may have been modified in the meantime.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit item bestaat niet meer in het bestand: het is intussen misschien gewijzigd.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="805"/>
         <source>The file already exists and is not empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het bestand bestaat al en is niet leeg.</translation>
     </message>
 </context>
 <context>
@@ -2290,17 +2303,17 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2233"/>
         <source>Place a cable core</source>
-        <translation type="unfinished"></translation>
+        <translation>Een kabelader plaatsen</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2278"/>
         <source>Remove a core from the line</source>
-        <translation type="unfinished"></translation>
+        <translation>Een ader van de lijn verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="332"/>
         <source>Move a cable core</source>
-        <translation type="unfinished"></translation>
+        <translation>Een kabelader verplaatsen</translation>
     </message>
 </context>
 <context>
@@ -2308,7 +2321,7 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="163"/>
         <source>Edit the properties of a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>De eigenschappen van een kabel bewerken</translation>
     </message>
 </context>
 <context>
@@ -2317,7 +2330,7 @@ Do you want to renumber them too?</source>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1221"/>
         <location filename="../sources/cable/editcablecommand.cpp" line="285"/>
         <source>Change the cable type</source>
-        <translation type="unfinished"></translation>
+        <translation>Het kabeltype wijzigen</translation>
     </message>
 </context>
 <context>
@@ -2325,7 +2338,7 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="58"/>
         <source>Click to choose a color</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik om een kleur te kiezen</translation>
     </message>
 </context>
 <context>
@@ -2333,12 +2346,12 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/commandsearchpopup.cpp" line="45"/>
         <source>Search for a command…</source>
-        <translation type="unfinished"></translation>
+        <translation>Een opdracht zoeken…</translation>
     </message>
     <message>
         <location filename="../sources/commandsearchpopup.cpp" line="52"/>
         <source>Enter to launch · Esc to close</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter om uit te voeren · Esc om te sluiten</translation>
     </message>
 </context>
 <context>
@@ -2380,82 +2393,82 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="51"/>
         <source>Black</source>
-        <translation type="unfinished">Zwart</translation>
+        <translation>Zwart</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="52"/>
         <source>Brown</source>
-        <translation type="unfinished">Bruin</translation>
+        <translation>Bruin</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="53"/>
         <source>Gray</source>
-        <translation type="unfinished">Grijs</translation>
+        <translation>Grijs</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="54"/>
         <source>Blue</source>
-        <translation type="unfinished">Blauw</translation>
+        <translation>Blauw</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="55"/>
         <source>Green</source>
-        <translation type="unfinished">Groen</translation>
+        <translation>Groen</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="56"/>
         <source>Red</source>
-        <translation type="unfinished">Rood</translation>
+        <translation>Rood</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="57"/>
         <source>Orange</source>
-        <translation type="unfinished">Oranje</translation>
+        <translation>Oranje</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="58"/>
         <source>Purple</source>
-        <translation type="unfinished">Purper</translation>
+        <translation>Purper</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="59"/>
         <source>White</source>
-        <translation type="unfinished">Wit</translation>
+        <translation>Wit</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="76"/>
         <source>Conductor color</source>
-        <translation type="unfinished"></translation>
+        <translation>Kleur geleider</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="77"/>
         <source>Applies a color to the selected conductors, and uses it for the next conductors drawn</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Past een kleur toe op de geselecteerde geleiders en gebruikt ze voor de volgende getekende geleiders</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="131"/>
         <source>Recently used</source>
-        <translation type="unfinished"></translation>
+        <translation>Recent gebruikt</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="141"/>
         <source>Other color…</source>
-        <translation type="unfinished"></translation>
+        <translation>Andere kleur…</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="188"/>
         <source>Change the colour of %n conductors</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>De kleur van %n geleider wijzigen</numerusform>
+            <numerusform>De kleur van %n geleiders wijzigen</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="222"/>
         <source>Choose a conductor color</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies een kleur voor de geleider</translation>
     </message>
 </context>
 <context>
@@ -2488,33 +2501,33 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="71"/>
         <source>Apply properties to all conductors of this potential</source>
-        <translation type="unfinished">Toepassen van deze eigenschappen op alle gelieders met hetzelfde potentiaal</translation>
+        <translation>Eigenschappen toepassen op alle geleiders van dit potentiaal</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="171"/>
         <source>%n conductors selected: only the fields you change are applied to them.</source>
         <comment>selection properties panel</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n geleider geselecteerd: alleen de velden die u wijzigt, worden erop toegepast.</numerusform>
+            <numerusform>%n geleiders geselecteerd: alleen de velden die u wijzigt, worden erop toegepast.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/conductormultiedit.h" line="189"/>
         <source>Edit conductor properties</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschappen van de geleider bewerken</translation>
     </message>
     <message>
         <location filename="../sources/conductormultiedit.h" line="191"/>
         <source>Edit the properties of several conductors</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Wijzig de eigenschappen van meerdere geleiders</translation>
+        <translation>Wijzig de eigenschappen van meerdere geleiders</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="380"/>
         <source>Conductor</source>
-        <translation type="unfinished">Geleider</translation>
+        <translation>Geleider</translation>
     </message>
 </context>
 <context>
@@ -2611,18 +2624,19 @@ Do you want to renumber them too?</source>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="222"/>
         <source>Several values</source>
         <comment>several conductors, different values</comment>
-        <translation type="unfinished"></translation>
+        <translation>Meerdere waarden</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="237"/>
         <source>Several conductors selected: the text is changed on one conductor at a time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Meerdere geleiders geselecteerd: de tekst wordt per geleider gewijzigd.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="250"/>
         <source>Visible text
 Locked by this sheet&apos;s “Show one potential text per sheet” option, in Sheet properties.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zichtbare tekst
+Vergrendeld door de optie “Eén potentiaaltekst per blad tonen” van dit blad, in de bladeigenschappen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="288"/>
@@ -2926,14 +2940,14 @@ Locked by this sheet&apos;s “Show one potential text per sheet” option, in S
     <message>
         <location filename="../sources/autoNum/ui/counterwarning.cpp" line="41"/>
         <source>Numbering counter</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummeringsteller</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/counterwarning.cpp" line="42"/>
         <source>The next number would be %1, but %n elements of the “%2” numbering already have an equal or higher number (up to %3).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Het volgende nummer zou %1 zijn, maar %n element van de nummering “%2” heeft al een gelijk of hoger nummer (tot %3).</numerusform>
+            <numerusform>Het volgende nummer zou %1 zijn, maar %n elementen van de nummering “%2” hebben al een gelijk of hoger nummer (tot %3).</numerusform>
         </translation>
     </message>
     <message>
@@ -2942,7 +2956,10 @@ Locked by this sheet&apos;s “Show one potential text per sheet” option, in S
 New elements will skip numbers that are already taken: they will not necessarily receive numbers starting from %1.
 
 Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Nieuwe elementen slaan reeds gebruikte nummers over: ze krijgen niet noodzakelijk nummers vanaf %1.
+
+Doorgaan?</translation>
     </message>
 </context>
 <context>
@@ -2977,7 +2994,7 @@ Continue?</source>
         <location filename="../sources/ui/customizedialog.cpp" line="30"/>
         <source>Customize</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aanpassen</translation>
     </message>
 </context>
 <context>
@@ -3021,64 +3038,64 @@ Continue?</source>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="40"/>
         <source>White</source>
-        <translation type="unfinished">Wit</translation>
+        <translation>Wit</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="41"/>
         <source>Off-white</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebroken wit</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="42"/>
         <source>Light gray</source>
-        <translation type="unfinished">Licht grijs</translation>
+        <translation>Licht grijs</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="43"/>
         <source>Gray</source>
-        <translation type="unfinished">Grijs</translation>
+        <translation>Grijs</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="44"/>
         <source>Dark gray</source>
-        <translation type="unfinished"></translation>
+        <translation>Donkergrijs</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="45"/>
         <source>Black</source>
-        <translation type="unfinished">Zwart</translation>
+        <translation>Zwart</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="62"/>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="88"/>
         <source>Sheet background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Achtergrondkleur van het blad</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="63"/>
         <source>Choose the sheet background color</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kies de achtergrondkleur van het blad</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="101"/>
         <source>System color</source>
-        <translation type="unfinished"></translation>
+        <translation>Systeemkleur</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="116"/>
         <source>Recently used</source>
-        <translation type="unfinished"></translation>
+        <translation>Recent gebruikt</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="126"/>
         <source>Other color…</source>
-        <translation type="unfinished"></translation>
+        <translation>Andere kleur…</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="191"/>
         <source>Choose a background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies een achtergrondkleur</translation>
     </message>
 </context>
 <context>
@@ -3120,17 +3137,17 @@ Continue?</source>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="31"/>
         <source>x 0.25</source>
-        <translation type="unfinished"></translation>
+        <translation>x 0,25</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="36"/>
         <source>x 0.5</source>
-        <translation type="unfinished"></translation>
+        <translation>x 0,5</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="41"/>
         <source>x 0.75</source>
-        <translation type="unfinished"></translation>
+        <translation>x 0,75</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="46"/>
@@ -3153,15 +3170,15 @@ Continue?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddcable.cpp" line="160"/>
         <source>Left click: place the cable start; drag or second click: finish; right click: cancel; Esc: quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkerklik: begin van de kabel plaatsen; slepen of tweede klik: afronden; rechterklik: annuleren; Esc: afsluiten</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramevent/diagrameventaddcable.cpp" line="167"/>
         <source>Left click or release: finish the line (%n core(s) recognized; always horizontal or vertical); right click: cancel the line</source>
         <comment>how many conductors the line being drawn already crosses</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Linkerklik of loslaten: de lijn afronden (%n ader herkend; altijd horizontaal of verticaal); rechterklik: de lijn annuleren</numerusform>
+            <numerusform>Linkerklik of loslaten: de lijn afronden (%n aders herkend; altijd horizontaal of verticaal); rechterklik: de lijn annuleren</numerusform>
         </translation>
     </message>
 </context>
@@ -3178,7 +3195,7 @@ Continue?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="95"/>
         <source>Click: position at original size. Click-drag: position and resize. Right-click: rotate 90°. Ctrl+wheel: adjust size.</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik: plaatsen op oorspronkelijke grootte. Klikken en slepen: plaatsen en van grootte veranderen. Rechterklik: 90° draaien. Ctrl+wieltje: grootte aanpassen.</translation>
     </message>
 </context>
 <context>
@@ -3187,7 +3204,7 @@ Continue?</source>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="290"/>
         <source>Click to place the pasted content, Esc or right-click to cancel</source>
         <comment>status bar tip while positioning a paste</comment>
-        <translation type="unfinished"></translation>
+        <translation>Klik om de geplakte inhoud te plaatsen, Esc of rechterklik om te annuleren</translation>
     </message>
 </context>
 <context>
@@ -3195,7 +3212,7 @@ Continue?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpath.cpp" line="92"/>
         <source>Click: corner point. Click-drag: curve point. Click on the first point: close. Esc/Enter: finish. Right-click: undo the last point.</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik: hoekpunt. Klikken en slepen: krommepunt. Klik op het eerste punt: sluiten. Esc/Enter: afronden. Rechterklik: laatste punt ongedaan maken.</translation>
     </message>
 </context>
 <context>
@@ -3203,47 +3220,47 @@ Continue?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="487"/>
         <source>Left click: position the starting point (Ctrl = free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkerklik: het beginpunt plaatsen (Ctrl = vrije positie)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="491"/>
         <source>Left click: place one end of the arc (Ctrl = free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkerklik: één uiteinde van de boog plaatsen (Ctrl = vrije positie)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="492"/>
         <source>Left click: position the first corner (Ctrl = center point, free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkerklik: de eerste hoek plaatsen (Ctrl = middelpunt, vrije positie)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="494"/>
         <source>Left click: position the first point (Ctrl = free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkerklik: het eerste punt plaatsen (Ctrl = vrije positie)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="505"/>
         <source>Left click: position the end point (Ctrl = free position); right click: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkerklik: het eindpunt plaatsen (Ctrl = vrije positie); rechterklik: annuleren</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="507"/>
         <source>Left click: position the opposite corner (Shift = square, Ctrl = from center + free position, Ctrl+Shift = centered square); right click: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkerklik: de tegenoverliggende hoek plaatsen (Shift = vierkant, Ctrl = vanuit het midden + vrije positie, Ctrl+Shift = gecentreerd vierkant); rechterklik: annuleren</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="511"/>
         <source>Left click: place the other end and the height of the arc (Shift = half circle, Ctrl = free position); right click: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkerklik: het andere uiteinde en de hoogte van de boog plaatsen (Shift = halve cirkel, Ctrl = vrije positie); rechterklik: annuleren</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="513"/>
         <source>Left click: position the opposite corner (Shift = circle, Ctrl = from center + free position, Ctrl+Shift = centered circle); right click: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkerklik: de tegenoverliggende hoek plaatsen (Shift = cirkel, Ctrl = vanuit het midden + vrije positie, Ctrl+Shift = gecentreerde cirkel); rechterklik: annuleren</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="516"/>
         <source>Left click: next point; double-click or Enter: finish; right click: undo the last point</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkerklik: volgend punt; dubbelklik of Enter: afronden; rechterklik: laatste punt ongedaan maken</translation>
     </message>
 </context>
 <context>
@@ -3251,57 +3268,57 @@ Continue?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="144"/>
         <source>No line here: click a line drawn on the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Hier is geen lijn: klik op een lijn die op het blad getekend is</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="159"/>
         <source>Click the second line; right click: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik op de tweede lijn; rechterklik: annuleren</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="166"/>
         <source>Click another line; right click: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik op een andere lijn; rechterklik: annuleren</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="225"/>
         <source>These two lines are parallel: no fillet possible</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze twee lijnen zijn evenwijdig: afronden is niet mogelijk</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="257"/>
         <source>One of the lines stops at the corner: nothing to round on that side</source>
-        <translation type="unfinished"></translation>
+        <translation>Een van de lijnen stopt in de hoek: aan die kant valt niets af te ronden</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="265"/>
         <source>These two lines are almost in line: no fillet possible</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze twee lijnen liggen bijna in elkaars verlengde: afronden is niet mogelijk</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="272"/>
         <source>Fillet</source>
-        <translation type="unfinished"></translation>
+        <translation>Afronding</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="272"/>
         <source>Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation>Straal:</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="280"/>
         <source>Radius too large for these lines (%1 at most)</source>
-        <translation type="unfinished"></translation>
+        <translation>Straal te groot voor deze lijnen (maximaal %1)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="315"/>
         <source>Add a fillet</source>
-        <translation type="unfinished"></translation>
+        <translation>Een afronding toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="341"/>
         <source>Fillet: click two lines, or once where they meet; Esc or right click: finish</source>
-        <translation type="unfinished"></translation>
+        <translation>Afronden: klik op twee lijnen, of één keer waar ze samenkomen; Esc of rechterklik: afsluiten</translation>
     </message>
 </context>
 <context>
@@ -3309,159 +3326,159 @@ Continue?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="694"/>
         <source>resize</source>
-        <translation type="unfinished"></translation>
+        <translation>formaat wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="695"/>
         <source>rotate/skew</source>
-        <translation type="unfinished"></translation>
+        <translation>draaien/schuintrekken</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="696"/>
         <source>crop</source>
-        <translation type="unfinished"></translation>
+        <translation>bijsnijden</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="714"/>
         <source>Click: mode %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik: modus %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="752"/>
         <source>Crop: drag the handles or the frame -- Enter, double-click or click elsewhere: apply; Escape: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijsnijden: sleep de grepen of het kader -- Enter, dubbelklik of ergens anders klikken: toepassen; Escape: annuleren</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="754"/>
         <source>Drag a corner/edge: resize (Ctrl = from center, Shift = keep proportions)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sleep een hoek/rand: formaat wijzigen (Ctrl = vanuit het midden, Shift = verhoudingen behouden)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="755"/>
         <source>Drag a corner: rotate (Shift = 15° steps); drag an edge: skew (Shift = 15° steps); red point: move the rotation center</source>
-        <translation type="unfinished"></translation>
+        <translation>Sleep een hoek: draaien (Shift = stappen van 15°); sleep een rand: schuintrekken (Shift = stappen van 15°); rood punt: het draaipunt verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="756"/>
         <source> -- %1: mode %2</source>
-        <translation type="unfinished"></translation>
+        <translation> -- %1: modus %2</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="756"/>
         <source>Click</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="828"/>
         <source>Drag: resize (Shift = keep proportions, Ctrl = from center)</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: formaat wijzigen (Shift = verhoudingen behouden, Ctrl = vanuit het midden)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="829"/>
         <source>Drag: rotate (Shift = 15° steps)</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: draaien (Shift = stappen van 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="830"/>
         <source>Drag: skew (Shift = 15° steps)</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: schuintrekken (Shift = stappen van 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="831"/>
         <source>Drag: move the rotation center</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: het draaipunt verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="832"/>
         <source>Drag: crop (Enter = apply, Escape = cancel)</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: bijsnijden (Enter = toepassen, Escape = annuleren)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1111"/>
         <source>Resize an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Het formaat van een afbeelding wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1118"/>
         <source>Rotate an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Een afbeelding draaien</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1128"/>
         <source>Skew an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Een afbeelding schuintrekken</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1134"/>
         <source>Move an image&apos;s rotation center</source>
-        <translation type="unfinished"></translation>
+        <translation>Het draaipunt van een afbeelding verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1158"/>
         <source>Edit an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Een afbeelding bewerken</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1450"/>
         <source>Restore an image&apos;s proportions</source>
-        <translation type="unfinished"></translation>
+        <translation>De verhoudingen van een afbeelding herstellen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1463"/>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2171"/>
         <source>Save image as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeelding opslaan als...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1477"/>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2174"/>
         <source>Save original image as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Oorspronkelijke afbeelding opslaan als...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1506"/>
         <source>PNG image (*.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>PNG-afbeelding (*.png)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1507"/>
         <source>JPEG image (*.jpg *.jpeg)</source>
-        <translation type="unfinished"></translation>
+        <translation>JPEG-afbeelding (*.jpg *.jpeg)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1508"/>
         <source>BMP image (*.bmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>BMP-afbeelding (*.bmp)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1516"/>
         <source>SVG image (*.svg)</source>
-        <translation type="unfinished">SVG-afbeelding (*.svg)</translation>
+        <translation>SVG-afbeelding (*.svg)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1521"/>
         <source>All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle bestanden (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1568"/>
         <source>Transparency not preserved</source>
-        <translation type="unfinished"></translation>
+        <translation>Transparantie niet behouden</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1569"/>
         <source>This format does not support transparency: the image will be saved as it was before the transparent colour was applied. Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit formaat ondersteunt geen transparantie: de afbeelding wordt opgeslagen zoals ze was voordat de transparante kleur werd toegepast. Doorgaan?</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1586"/>
         <source>Saving failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Opslaan mislukt</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1587"/>
         <source>Unable to save the image to this location.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan de afbeelding niet op deze locatie opslaan.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1771"/>
@@ -3471,92 +3488,92 @@ Continue?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2168"/>
         <source>Replace the image...</source>
-        <translation type="unfinished"></translation>
+        <translation>De afbeelding vervangen...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2177"/>
         <source>Transparent color...</source>
-        <translation type="unfinished"></translation>
+        <translation>Transparante kleur...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2181"/>
         <source>Crop on the folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijsnijden op het blad</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2185"/>
         <source>Crop...</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijsnijden...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2189"/>
         <source>Reset crop</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijsnijden herstellen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2193"/>
         <source>Horizontal mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontaal spiegelen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2195"/>
         <source>Vertical mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Verticaal spiegelen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2200"/>
         <source>Restore proportions</source>
-        <translation type="unfinished"></translation>
+        <translation>Verhoudingen herstellen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2205"/>
         <source>Properties...</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschappen...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2236"/>
         <source>Select an image ...</source>
-        <translation type="unfinished">Selecteer een afbeelding...</translation>
+        <translation>Selecteer een afbeelding...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2237"/>
         <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingsbestanden (*.png *.jpg *.jpeg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2244"/>
         <source>Error</source>
-        <translation type="unfinished">Fout</translation>
+        <translation>Fout</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2244"/>
         <source>Unable to load the image.</source>
-        <translation type="unfinished">Onmogelijk om de afbeelding op te halen.</translation>
+        <translation>Onmogelijk om de afbeelding op te halen.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2258"/>
         <source>Replace an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Een afbeelding vervangen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2299"/>
         <source>Horizontal mirror of an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Een afbeelding horizontaal spiegelen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2299"/>
         <source>Vertical mirror of an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Een afbeelding verticaal spiegelen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2332"/>
         <source>Set a transparent color</source>
-        <translation type="unfinished"></translation>
+        <translation>Een transparante kleur instellen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2520"/>
         <source>Crop an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Een afbeelding bijsnijden</translation>
     </message>
 </context>
 <context>
@@ -3588,22 +3605,22 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="271"/>
         <source>Handle size</source>
-        <translation type="unfinished"></translation>
+        <translation>Grootte van de grepen</translation>
     </message>
     <message>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="273"/>
         <source>Text grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstraster</translation>
     </message>
     <message>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="275"/>
         <source>Sheet background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Achtergrondkleur van het blad</translation>
     </message>
     <message>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="277"/>
         <source>Conductor color</source>
-        <translation type="unfinished"></translation>
+        <translation>Kleur geleider</translation>
     </message>
 </context>
 <context>
@@ -3635,40 +3652,40 @@ Hold Shift and drag to move this text on its own</source>
         <location filename="../sources/diagramview.cpp" line="152"/>
         <source>Make a cabinet thumbnail</source>
         <comment>context menu action</comment>
-        <translation type="unfinished"></translation>
+        <translation>Een kastminiatuur maken</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="156"/>
         <source>Sheet reference</source>
-        <translation type="unfinished">Rapport pagina</translation>
+        <translation>Bladverwijzing</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="488"/>
         <source>%1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="529"/>
         <source>Add an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Een afbeelding toevoegen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramview.cpp" line="530"/>
         <source>Add %n image(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n afbeelding toevoegen</numerusform>
+            <numerusform>%n afbeeldingen toevoegen</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="537"/>
         <source>Images not added</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingen niet toegevoegd</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="538"/>
         <source>These files could not be added:</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze bestanden konden niet worden toegevoegd:</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1043"/>
@@ -3689,7 +3706,7 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/diagramview.cpp" line="2360"/>
         <source>Remove this core from the line</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze ader van de lijn verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="2645"/>
@@ -3748,42 +3765,42 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="38"/>
         <source>Duplicate</source>
-        <translation type="unfinished"></translation>
+        <translation>Dupliceren</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="44"/>
         <source> no grid</source>
-        <translation type="unfinished"></translation>
+        <translation> geen raster</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="45"/>
         <source>Spacing:</source>
-        <translation type="unfinished"></translation>
+        <translation>Afstand:</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="50"/>
         <source>Top</source>
-        <translation type="unfinished">Boven</translation>
+        <translation>Boven</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="51"/>
         <source>Bottom</source>
-        <translation type="unfinished">Onder</translation>
+        <translation>Onder</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="52"/>
         <source>Left</source>
-        <translation type="unfinished">Links</translation>
+        <translation>Links</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="53"/>
         <source>Right</source>
-        <translation type="unfinished">Rechts</translation>
+        <translation>Rechts</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="54"/>
         <source>Direction:</source>
-        <translation type="unfinished"></translation>
+        <translation>Richting:</translation>
     </message>
 </context>
 <context>
@@ -3801,7 +3818,7 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1094"/>
         <source>Resize an element text</source>
-        <translation type="unfinished"></translation>
+        <translation>Een elementtekst van grootte veranderen</translation>
     </message>
 </context>
 <context>
@@ -4133,12 +4150,12 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="105"/>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="108"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="175"/>
@@ -4276,12 +4293,12 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="71"/>
         <source>e.g. 80.5</source>
-        <translation type="unfinished"></translation>
+        <translation>bv. 80.5</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="72"/>
         <source>Decimal number with a dot as separator (e.g. 80.5)</source>
-        <translation type="unfinished"></translation>
+        <translation>Decimaal getal met een punt als scheidingsteken (bv. 80.5)</translation>
     </message>
 </context>
 <context>
@@ -4331,72 +4348,72 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="58"/>
         <source>The numbering name cannot be empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>De naam van de nummering mag niet leeg zijn.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="65"/>
         <source>A numbering named “%1” already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>Er bestaat al een nummering met de naam “%1”.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="625"/>
         <source>This element is not in any sheet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit element staat op geen enkel blad.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="631"/>
         <source>This element does not follow any numbering.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit element volgt geen enkele nummering.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="636"/>
         <source>The “%1” numbering does not have a single number: one cannot be chosen by hand.</source>
-        <translation type="unfinished"></translation>
+        <translation>De nummering “%1” heeft geen enkelvoudig nummer: er kan er geen met de hand gekozen worden.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="639"/>
         <source>The number must be at least 1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het nummer moet minstens 1 zijn.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="642"/>
         <source>Number %1 is not free.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer %1 is niet vrij.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="672"/>
         <source>Assign number %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer %1 toekennen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="836"/>
         <source>Apply numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering %1 toepassen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1085"/>
         <source>Number pasted elements (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Geplakte elementen nummeren (%1)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1121"/>
         <source>Create element numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementnummering %1 aanmaken</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1223"/>
         <source>Rename element numbering %1 to %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementnummering %1 hernoemen naar %2</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1226"/>
         <source>Modify element numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementnummering %1 wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1258"/>
         <source>Delete element numbering %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementnummering %1 verwijderen</translation>
     </message>
 </context>
 <context>
@@ -4567,17 +4584,17 @@ De weergavenaam van het element kan afzonderlijk worden gewijzigd in de eigensch
         <location filename="../sources/ui/elementinfopartwidget.ui" line="71"/>
         <source>Choose an item from the materials list</source>
         <extracomment>tooltip of the button opening the material file; it fills the fields of this block from a catalogue entry</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Kies een item uit de materiaallijst</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.cpp" line="63"/>
         <source>e.g. 80.5</source>
-        <translation type="unfinished"></translation>
+        <translation>bv. 80.5</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.cpp" line="64"/>
         <source>Decimal number with a dot as separator (e.g. 80.5)</source>
-        <translation type="unfinished"></translation>
+        <translation>Decimaal getal met een punt als scheidingsteken (bv. 80.5)</translation>
     </message>
 </context>
 <context>
@@ -4609,7 +4626,7 @@ De weergavenaam van het element kan afzonderlijk worden gewijzigd in de eigensch
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="330"/>
         <source>Function separation</source>
-        <translation type="unfinished"></translation>
+        <translation>Functiescheiding</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="334"/>
@@ -4619,7 +4636,7 @@ De weergavenaam van het element kan afzonderlijk worden gewijzigd in de eigensch
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="499"/>
         <source>No materials list</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen materiaallijst</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="500"/>
@@ -4628,95 +4645,100 @@ De weergavenaam van het element kan afzonderlijk worden gewijzigd in de eigensch
 
 Create it?</source>
         <comment>message asking to create the material file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Er is geen materiaallijstbestand op deze locatie:
+%1
+
+Aanmaken?</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="515"/>
         <source>Cannot create</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan niet aanmaken</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="516"/>
         <source>Cannot create the file:
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan het bestand niet aanmaken:
+%1
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="790"/>
         <source>Automatic numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische nummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="797"/>
         <source>…</source>
-        <translation type="unfinished"></translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="798"/>
         <source>Open the project&apos;s element numberings</source>
-        <translation type="unfinished"></translation>
+        <translation>De elementnummeringen van het project openen</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="826"/>
         <source>Freeze name</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam bevriezen</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="827"/>
         <source>A frozen name is not changed by automatic numbering, and its number is not given to another element.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een bevroren naam wordt niet gewijzigd door de automatische nummering, en zijn nummer wordt niet aan een ander element gegeven.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="863"/>
         <source>Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="867"/>
         <location filename="../sources/ui/elementinfowidget.cpp" line="931"/>
         <source>Only free numbers are offered: an element that must keep its real number can get it back if nobody else has it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen vrije nummers worden aangeboden: een element dat zijn echte nummer moet behouden, kan het terugkrijgen als niemand anders het heeft.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="901"/>
         <source>%1  (current)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1  (huidig)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="903"/>
         <source>— (unknown number)</source>
-        <translation type="unfinished"></translation>
+        <translation>— (onbekend nummer)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="907"/>
         <source>%1  →  %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1  →  %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="929"/>
         <source>The name is frozen: unfreeze it to change its number.</source>
-        <translation type="unfinished"></translation>
+        <translation>De naam is bevroren: ontdooi hem om zijn nummer te wijzigen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="930"/>
         <source>The number can be chosen when the element keeps its numbering.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het nummer kan gekozen worden wanneer het element zijn nummering behoudt.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="995"/>
         <source>None (name entered by hand)</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen (naam met de hand ingevoerd)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="1014"/>
         <source>Custom formula: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Aangepaste formule: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="1054"/>
         <source>Frozen name</source>
-        <translation type="unfinished"></translation>
+        <translation>Bevroren naam</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="1055"/>
@@ -4724,7 +4746,10 @@ Create it?</source>
 Changing its numbering will replace or erase it.
 
 Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>De naam van dit element is bevroren.
+Als u de nummering wijzigt, wordt hij vervangen of gewist.
+
+Doorgaan?</translation>
     </message>
 </context>
 <context>
@@ -4733,80 +4758,80 @@ Continue?</source>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="105"/>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="454"/>
         <source>Customize the bar…</source>
-        <translation type="unfinished"></translation>
+        <translation>De balk aanpassen…</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="116"/>
         <source>Drag commands and elements into the bar, out of the bar, or from one place to another. Double-clicking moves a command or an element from one list to the other.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sleep opdrachten en elementen in de balk, uit de balk of van de ene plaats naar de andere. Dubbelklikken verplaatst een opdracht of element van de ene lijst naar de andere.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="186"/>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="235"/>
         <source>Search for an element…</source>
-        <translation type="unfinished"></translation>
+        <translation>Een element zoeken…</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="194"/>
         <source>Elements:</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementen:</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="207"/>
         <source>Default values</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaardwaarden</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="208"/>
         <source>Undo</source>
-        <translation type="unfinished"></translation>
+        <translation>Ongedaan maken</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="209"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Klaar</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="222"/>
         <source>In the bar:</source>
-        <translation type="unfinished"></translation>
+        <translation>In de balk:</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="226"/>
         <source>Other commands:</source>
-        <translation type="unfinished"></translation>
+        <translation>Andere opdrachten:</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="248"/>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="769"/>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="897"/>
         <source>Enter to insert · Esc to close</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter om in te voegen · Esc om te sluiten</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="256"/>
         <source>Drag to change the width of the bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen om de breedte van de balk te wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="599"/>
         <source>Customize the shortcut bar: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>De sneltoetsbalk aanpassen: %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="768"/>
         <source>No results</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen resultaten</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="873"/>
         <source>Type to search for an element · Esc to close</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ om een element te zoeken · Esc om te sluiten</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="894"/>
         <source>Empty palette — drag elements into your personal collection, or type to search</source>
-        <translation type="unfinished"></translation>
+        <translation>Leeg palet — sleep elementen naar uw persoonlijke collectie of typ om te zoeken</translation>
     </message>
 </context>
 <context>
@@ -4835,12 +4860,12 @@ Continue?</source>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="245"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="255"/>
         <source>margin: 5px; font-weight: bold;</source>
-        <translation type="unfinished"></translation>
+        <translation>margin: 5px; font-weight: bold;</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="63"/>
         <source>Exclude from the bill of materials</source>
-        <translation type="unfinished">Uitsluiten van de nomenclatuur</translation>
+        <translation>Uitsluiten van de stuklijst</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="70"/>
@@ -4912,27 +4937,27 @@ Continue?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="248"/>
         <source>Lock automatic numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische nummering vergrendelen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="258"/>
         <source>Function separation</source>
-        <translation type="unfinished"></translation>
+        <translation>Functiescheiding</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="265"/>
         <source>Section (mm²)</source>
-        <translation type="unfinished"></translation>
+        <translation>Doorsnede (mm²)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="282"/>
         <source>Width / manufacturer</source>
-        <translation type="unfinished"></translation>
+        <translation>Breedte / fabrikant</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="299"/>
         <source>Color</source>
-        <translation type="unfinished">Kleur</translation>
+        <translation>Kleur</translation>
     </message>
     <message>
         <source>Potential separation</source>
@@ -5091,27 +5116,27 @@ Continue?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="377"/>
         <source>Anti-parallel diodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Antiparallelle diodes</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="378"/>
         <source>Resistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Weerstand</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="379"/>
         <source>Varistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Varistor</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="380"/>
         <source>Test socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Testaansluiting</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="381"/>
         <source>Diode (reversed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Diode (omgekeerd)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="384"/>
@@ -5128,27 +5153,27 @@ Continue?</source>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="576"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="638"/>
         <source>None (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen (standaard)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="529"/>
         <source>%1 mm²</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm²</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="532"/>
         <source> mm²</source>
-        <translation type="unfinished"></translation>
+        <translation> mm²</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="545"/>
         <source>All manufacturers</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle fabrikanten</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="615"/>
         <source>%1 mm</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="855"/>
@@ -5382,7 +5407,8 @@ Continue?</source>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="417"/>
         <source>Maximum number of slave contacts defined:  not defined
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Maximaal aantal gedefinieerde slavecontacten:  niet gedefinieerd
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="418"/>
@@ -5402,13 +5428,15 @@ Continue?</source>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="438"/>
         <source>    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8
 </source>
-        <translation type="unfinished"></translation>
+        <translation>    Contacten : NO : %1/%2, NC : %3/%4, wissel : %5/%6, andere : %7/%8
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="447"/>
         <source>    Contacts : NO : %1, NC : %2, changeover : %3, other : %4
 </source>
-        <translation type="unfinished"></translation>
+        <translation>    Contacten : NO : %1, NC : %2, wissel : %3, andere : %4
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="454"/>
@@ -5420,7 +5448,7 @@ Continue?</source>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="469"/>
         <source>Lock Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Positie vergrendelen</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="485"/>
@@ -5559,7 +5587,7 @@ Continue?</source>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="324"/>
         <source>Slave contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Slavecontacten</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="347"/>
@@ -5579,22 +5607,22 @@ Continue?</source>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="398"/>
         <source>Import reports from a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Rapporten importeren uit een bestand</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="401"/>
         <source>Import...</source>
-        <translation type="unfinished"></translation>
+        <translation>Importeren...</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="408"/>
         <source>Export all saved reports to a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle opgeslagen rapporten naar een bestand exporteren</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="411"/>
         <source>Export...</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporteren...</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="433"/>
@@ -5630,24 +5658,24 @@ Continue?</source>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="815"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="822"/>
         <source>Export</source>
-        <translation type="unfinished">Export</translation>
+        <translation>Exporteren</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="815"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="822"/>
         <source>No saved report to export.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen opgeslagen rapport om te exporteren.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="827"/>
         <source>Export reports</source>
-        <translation type="unfinished"></translation>
+        <translation>Rapporten exporteren</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="828"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="848"/>
         <source>JSON files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON-bestanden (*.json)</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="835"/>
@@ -5655,58 +5683,58 @@ Continue?</source>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="865"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="908"/>
         <source>Error</source>
-        <translation type="unfinished">Fout</translation>
+        <translation>Fout</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="835"/>
         <source>Unable to write to %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan niet schrijven naar %1.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="848"/>
         <source>Import reports</source>
-        <translation type="unfinished"></translation>
+        <translation>Rapporten importeren</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="855"/>
         <source>Unable to read %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan %1 niet lezen.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="866"/>
         <source>%1 does not contain valid QElectroTech reports.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 bevat geen geldige QElectroTech-rapporten.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="872"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="916"/>
         <source>Import</source>
-        <translation type="unfinished">Importeren</translation>
+        <translation>Importeren</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="872"/>
         <source>This file does not contain any report.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit bestand bevat geen enkel rapport.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="889"/>
         <source>Report already exists</source>
-        <translation type="unfinished"></translation>
+        <translation>Rapport bestaat al</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="890"/>
         <source>A report named &quot;%1&quot; already exists. Replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Er bestaat al een rapport met de naam &quot;%1&quot;. Vervangen?</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="908"/>
         <source>Unable to write the local configuration.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan de lokale configuratie niet schrijven.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="917"/>
         <source>%1 report(s) imported, %2 skipped.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 rapport(en) geïmporteerd, %2 overgeslagen.</translation>
     </message>
 </context>
 <context>
@@ -6298,7 +6326,7 @@ Door dit bestand te importeren, bevestigt u dat:
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.cpp" line="152"/>
         <source>Change an ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Een ellips wijzigen</translation>
     </message>
 </context>
 <context>
@@ -6399,13 +6427,13 @@ Door dit bestand te importeren, bevestigt u dat:
         <location filename="../sources/exportdialog.cpp" line="517"/>
         <source>Images not included in the DXF export</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingen niet opgenomen in de DXF-export</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="518"/>
         <source>The DXF format used here (AC1006) cannot embed images. Images will only be represented by an outline rectangle (position, size, rotation and skew are preserved), without the image content.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Het hier gebruikte DXF-formaat (AC1006) kan geen afbeeldingen insluiten. Afbeeldingen worden alleen weergegeven door een omtrekrechthoek (positie, grootte, rotatie en schuintrekking blijven behouden), zonder de inhoud van de afbeelding.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="563"/>
@@ -6496,32 +6524,32 @@ Door dit bestand te importeren, bevestigt u dat:
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="232"/>
         <source>DXF: symbols as blocks</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF: symbolen als blokken</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="233"/>
         <source>Each symbol becomes a DXF block, selectable with one click in CAD software</source>
-        <translation type="unfinished"></translation>
+        <translation>Elk symbool wordt een DXF-blok, met één klik te selecteren in CAD-software</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="237"/>
         <source>DXF: symbol texts as attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF: symboolteksten als attributen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="238"/>
         <source>A symbol&apos;s texts (label, function...) become attributes of its block. LibreCAD does not show attributes.</source>
-        <translation type="unfinished"></translation>
+        <translation>De teksten van een symbool (label, functie...) worden attributen van zijn blok. LibreCAD toont geen attributen.</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="243"/>
         <source>SVG: smaller pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG: kleinere afbeeldingen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="244"/>
         <source>Pictures are stored at four times the size they have on the folio instead of their full resolution: a much smaller file, still sharp when printed</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingen worden opgeslagen op vier keer de grootte die ze op het blad hebben in plaats van hun volledige resolutie: een veel kleiner bestand, nog steeds scherp bij het afdrukken</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="204"/>
@@ -6700,7 +6728,7 @@ Tkest en cijfers zijn ook beschikbaar
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="20"/>
         <source>Filter by label (e.g. Z1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Filteren op label (bv. Z1)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="30"/>
@@ -6756,27 +6784,27 @@ Tkest en cijfers zijn ook beschikbaar
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="137"/>
         <source>Anti-parallel diodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Antiparallelle diodes</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="142"/>
         <source>Resistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Weerstand</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="147"/>
         <source>Varistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Varistor</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="152"/>
         <source>Test socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Testaansluiting</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="157"/>
         <source>Diode (reversed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Diode (omgekeerd)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="171"/>
@@ -6806,22 +6834,22 @@ Tkest en cijfers zijn ook beschikbaar
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="328"/>
         <source>The project has no terminal strip: create one with the + button</source>
-        <translation type="unfinished"></translation>
+        <translation>Het project heeft geen klemmenstrook: maak er een aan met de knop +</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="330"/>
         <source>Apply or cancel the current changes before moving</source>
-        <translation type="unfinished"></translation>
+        <translation>Pas de huidige wijzigingen toe of annuleer ze voordat u verplaatst</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="332"/>
         <source>Select the terminals to move in the table</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer in de tabel de klemmen die verplaatst moeten worden</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="334"/>
         <source>Move the selected terminals to the chosen terminal block</source>
-        <translation type="unfinished"></translation>
+        <translation>De geselecteerde klemmen naar de gekozen klemmenstrook verplaatsen</translation>
     </message>
 </context>
 <context>
@@ -7023,47 +7051,47 @@ Hier kunt u de standaardwaarde voor dit veld opgeven voor de items die u gaat ma
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="39"/>
         <source>Application color</source>
-        <translation type="unfinished"></translation>
+        <translation>Kleur van de toepassing</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
-        <translation type="unfinished"></translation>
+        <translation>De eigenschappen van een geselecteerde geleider tonen in het paneel Eigenschappen van de selectie</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
         <source>When unticked, no conductors-per-terminal rule applies, whatever the projects&apos; settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Indien uitgevinkt, geldt geen enkele regel voor geleiders per klem, ongeacht de instellingen van de projecten.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="79"/>
         <source>Apply the projects&apos; conductors-per-terminal rules</source>
-        <translation type="unfinished"></translation>
+        <translation>De regels voor geleiders per klem van de projecten toepassen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="94"/>
         <source>Maximum conductors per terminal:</source>
-        <translation type="unfinished"></translation>
+        <translation>Maximaal aantal geleiders per klem:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="107"/>
         <source>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voor elk project behalve die met eigen instellingen. Een nieuwe geleider die een klem boven dit aantal zou brengen, wordt geweigerd; reeds getekende geleiders worden niet gewijzigd. 4 betekent twee dubbele adereindhulzen, één aan elke kant van de schroef.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="110"/>
         <source>No limit</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen limiet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="134"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een bladverwijzing is een virtueel punt: ze neemt slechts één geleider, die welke op het andere blad verdergaat.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="137"/>
         <source>Only one conductor per sheet reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Slechts één geleider per bladverwijzing</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="153"/>
@@ -7073,42 +7101,42 @@ Hier kunt u de standaardwaarde voor dit veld opgeven voor de items die u gaat ma
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="160"/>
         <source>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard voegt een dubbelklik het element in op het blad; bewerken blijft beschikbaar via het contextmenu.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="163"/>
         <source>Double-clicking in the collection opens the element editor instead of inserting it</source>
-        <translation type="unfinished"></translation>
+        <translation>Dubbelklikken in de collectie opent de elementeditor in plaats van het element in te voegen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="170"/>
         <source>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aangevinkt: één enkele lijst, beste overeenkomst eerst. Uitgevinkt: de collectieboom, gefilterd door de zoekopdracht.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="173"/>
         <source>Show search results as a sorted list</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoekresultaten als gesorteerde lijst tonen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
         <source>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</source>
-        <translation type="unfinished"></translation>
+        <translation>Na een klik die een element of een geleider selecteert, verschijnen de opdrachten van de sneltoetsbalk bij de cursor en vervagen ze wanneer de muis zich verwijdert.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="183"/>
         <source>Show commands near the selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Opdrachten bij de selectie tonen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="190"/>
         <source>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</source>
-        <translation type="unfinished"></translation>
+        <translation>De rechtermuisknop ingedrukt houden en in een richting slepen start een opdracht van de sneltoetsbalk. Een eenvoudige rechterklik opent nog steeds het contextmenu, bij het loslaten van de knop.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="193"/>
         <source>Right-button mouse gestures</source>
-        <translation type="unfinished"></translation>
+        <translation>Muisgebaren met de rechterknop</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="200"/>
@@ -7133,58 +7161,58 @@ Hier kunt u de standaardwaarde voor dit veld opgeven voor de items die u gaat ma
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="333"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Geplakte of gedupliceerde elementen die een nummering volgen automatisch nummeren</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="336"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een geplakt element krijgt het volgende nummer van zijn nummering in plaats van de naam van het gekopieerde element, en de nummering schuift op.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="343"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een klein verborgen bestand naast het project toont wie het open heeft. Iemand anders die het opent, wordt gewaarschuwd en kan het alleen-lezen openen. Schakel dit uit als uw gedeelde schijf er niet mee overweg kan.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="346"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
-        <translation type="unfinished"></translation>
+        <translation>Anderen laten weten wie een project open heeft (vergrendelingsbestand naast het project)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="360"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
-        <translation type="unfinished"></translation>
+        <translation>Het uitvoeren van JavaScript-scripts toestaan (Project &gt; Een script uitvoeren, en --run)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="363"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een script draait met uw rechten: het kan het geopende project lezen en wijzigen en bestanden schrijven. Standaard uitgeschakeld; voer alleen scripts uit waarvan u de herkomst kent.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="370"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
-        <translation type="unfinished"></translation>
+        <translation>Een AI-assistent toestaan op het geopende project te handelen (live-modus)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="373"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een assistent die via de MCP-server verbonden is, kan dan scripts uitvoeren op het geopende project, terwijl u meekijkt. Bij elke start wordt een waarschuwing getoond zolang deze instelling aan staat. Wordt van kracht bij de volgende start; uitvinken sluit de verbinding onmiddellijk.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
         <source>Previous versions kept when saving a project</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorige versies die bewaard worden bij het opslaan van een project</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voordat een project bewaard wordt, wordt het bestand zoals het was gekopieerd naar een map ernaast, genoemd naar het project met “-backups”. Alleen de nieuwste worden bewaard.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="455"/>
@@ -7196,13 +7224,13 @@ Hier kunt u de standaardwaarde voor dit veld opgeven voor de items die u gaat ma
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
         <source>Create or change the prefix of the user collection&apos;s folders (qet_labels.xml file)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the user collection</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>De prefix van de mappen van de gebruikerscollectie aanmaken of wijzigen (bestand qet_labels.xml)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
         <source>Configure prefixes…</source>
         <extracomment>button opening the dialog where the folder prefixes of the user collection are configured</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Prefixen instellen…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="507"/>
@@ -7217,13 +7245,13 @@ Hier kunt u de standaardwaarde voor dit veld opgeven voor de items die u gaat ma
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="598"/>
         <source>Materials list file</source>
-        <translation type="unfinished"></translation>
+        <translation>Materiaallijstbestand</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="607"/>
         <source>Materials list used to fill in a symbol&apos;s items</source>
         <extracomment>tooltip of the material file path field</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Materiaallijst die gebruikt wordt om de items van een symbool in te vullen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="613"/>
@@ -7232,36 +7260,36 @@ Hier kunt u de standaardwaarde voor dit veld opgeven voor de items die u gaat ma
         <extracomment>hint shown when no material file is configured yet
 ----------
 hint shown when no cable type file is configured yet</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Niet ingesteld</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="627"/>
         <source>Create the list file with its headers</source>
         <extracomment>tooltip of the button creating the material file with its header line</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Het lijstbestand met zijn kopregels aanmaken</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="630"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="671"/>
         <source>Create...</source>
-        <translation type="unfinished"></translation>
+        <translation>Aanmaken...</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="639"/>
         <source>Cable type list file</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestand met kabeltypes</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="648"/>
         <source>Directory of the cable types used to define a cable (number of cores, colors, cross-section)</source>
         <extracomment>tooltip of the cable type file path field</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Lijst van de kabeltypes die gebruikt worden om een kabel te definiëren (aantal aders, kleuren, doorsnede)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="668"/>
         <source>Create the cable type list file with its header line</source>
         <extracomment>tooltip of the button creating the cable type file with its header line</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Het bestand met kabeltypes aanmaken met zijn kopregel</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
@@ -7315,52 +7343,52 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="944"/>
         <source>Cable texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabelteksten</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="950"/>
         <source>Designation, type, plant, location, length :</source>
-        <translation type="unfinished"></translation>
+        <translation>Benaming, type, installatie, locatie, lengte :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="973"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettertype van de teksten die langs de kabellijn geschreven worden; een kabel met een eigen lettertype behoudt het.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="983"/>
         <source>Core colors (all of them) :</source>
-        <translation type="unfinished"></translation>
+        <translation>Aderkleuren (allemaal) :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1006"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettertype van de aderkleuren die langs de lijn geschreven worden; een kabel met een eigen lettertype behoudt het.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1016"/>
         <source>Text alignment :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstuitlijning :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1026"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Waar de teksten van een kabel stoppen ten opzichte van het begin van zijn lijn; een kabel met een eigen instelling behoudt die.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1030"/>
         <source>Right aligned</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechts uitgelijnd</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1035"/>
         <source>Centred</source>
-        <translation type="unfinished"></translation>
+        <translation>Gecentreerd</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1040"/>
         <source>Left aligned</source>
-        <translation type="unfinished"></translation>
+        <translation>Links uitgelijnd</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1112"/>
@@ -7370,12 +7398,12 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1158"/>
         <source>Grid for texts moved with the mouse</source>
-        <translation type="unfinished"></translation>
+        <translation>Raster voor teksten die met de muis verplaatst worden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1161"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fractie van het raster van het blad. Houd Ctrl ingedrukt tijdens het verplaatsen om vrij te plaatsen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1181"/>
@@ -7422,12 +7450,12 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1526"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
-        <translation type="unfinished"></translation>
+        <translation>Bij het opslaan van een symbool: twee klemmen met dezelfde naam weigeren en klemmen zonder naam melden (IEC 61666).</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1529"/>
         <source>Check terminal names when saving</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemnamen controleren bij het opslaan</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1399"/>
@@ -7437,7 +7465,7 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1261"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
-        <translation type="unfinished"></translation>
+        <translation>Verplaatsen met het toetsenbord met de Ctrl-toets: 1 - 9</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1347"/>
@@ -7473,22 +7501,22 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="61"/>
         <source>Bold italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Vet cursief</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="63"/>
         <source>Bold</source>
-        <translation type="unfinished">Dik</translation>
+        <translation>Vet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="65"/>
         <source>Italic</source>
-        <translation type="unfinished">Cursief</translation>
+        <translation>Cursief</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="67"/>
         <source>Normal</source>
-        <translation type="unfinished">Normaal</translation>
+        <translation>Normaal</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="88"/>
@@ -7519,24 +7547,24 @@ hint shown when no cable type file is configured yet</extracomment>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="123"/>
         <source>Disabled</source>
         <comment>fr: Désactivée</comment>
-        <translation type="unfinished">Uitgeschakeld</translation>
+        <translation>Uitgeschakeld</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="174"/>
         <source>Enabled by the QET_ENABLE_SCRIPTING environment variable; this setting has no effect while it is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingeschakeld door de omgevingsvariabele QET_ENABLE_SCRIPTING; deze instelling heeft geen effect zolang die is ingesteld.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="314"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
-        <translation type="unfinished"></translation>
+        <translation>Niet ingesteld (standaard: %1)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="325"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
-        <translation type="unfinished"></translation>
+        <translation>Niet ingesteld (standaard: %1)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="579"/>
@@ -7687,7 +7715,7 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="628"/>
         <source>Chinese (Traditional)</source>
-        <translation type="unfinished"></translation>
+        <translation>Chinees (traditioneel)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="629"/>
@@ -7697,12 +7725,12 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="703"/>
         <source>Cable text font</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettertype van de kabelteksten</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="721"/>
         <source>Core colors font</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettertype van de aderkleuren</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="750"/>
@@ -7722,52 +7750,57 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="848"/>
         <source>Folder not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Map niet gevonden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="849"/>
         <source>The user collection folder:
 %1
 does not exist and could not be created.</source>
-        <translation type="unfinished"></translation>
+        <translation>De map van de gebruikerscollectie:
+%1
+bestaat niet en kon niet worden aangemaakt.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="857"/>
         <source>No subfolder</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen submap</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="858"/>
         <source>The user collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
-        <translation type="unfinished"></translation>
+        <translation>De gebruikerscollectie:
+%1
+heeft geen submap, dus er is geen prefix in te stellen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="866"/>
         <source>Prefix file cannot be read</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefixbestand kan niet worden gelezen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="875"/>
         <source>Prefix file damaged</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefixbestand beschadigd</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="876"/>
         <source>The file %1 is not a valid XML file:
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Het bestand %1 is geen geldig XML-bestand:
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="880"/>
         <source>Fix the file</source>
-        <translation type="unfinished"></translation>
+        <translation>Het bestand herstellen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="881"/>
         <source>Rebuild</source>
-        <translation type="unfinished"></translation>
+        <translation>Opnieuw opbouwen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="882"/>
@@ -7776,17 +7809,21 @@ has no subfolder, so there is no prefix to configure.</source>
 “Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
 
 “Rebuild”: the folder tree is made again, but all the current prefixes are lost. The current file is kept as qet_labels.xml.bak before it is replaced.</source>
-        <translation type="unfinished"></translation>
+        <translation>Er is nog niets gewijzigd.
+
+“Het bestand herstellen”: dit venster sluit zonder iets te wijzigen. Open het bestand in een teksteditor op de aangegeven plaats, herstel het en voer deze opdracht daarna opnieuw uit.
+
+“Opnieuw opbouwen”: de mappenboom wordt opnieuw opgebouwd, maar alle huidige prefixen gaan verloren. Het huidige bestand wordt bewaard als qet_labels.xml.bak voordat het vervangen wordt.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="891"/>
         <source>File: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestand: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="915"/>
         <source>Select the materials list file</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer het materiaallijstbestand</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="917"/>
@@ -7794,17 +7831,17 @@ has no subfolder, so there is no prefix to configure.</source>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="981"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1004"/>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished">Bestanden csv (*.csv)</translation>
+        <translation>CSV-bestanden (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="938"/>
         <source>Create the materials list file</source>
-        <translation type="unfinished"></translation>
+        <translation>Het materiaallijstbestand aanmaken</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="956"/>
         <source>Cannot create</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan niet aanmaken</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="957"/>
@@ -7812,22 +7849,24 @@ has no subfolder, so there is no prefix to configure.</source>
         <source>Cannot create the file:
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan het bestand niet aanmaken:
+%1
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="979"/>
         <source>Select the cable types file</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer het bestand met kabeltypes</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1002"/>
         <source>Create the cable types file</source>
-        <translation type="unfinished"></translation>
+        <translation>Het bestand met kabeltypes aanmaken</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1020"/>
         <source>Cannot be created</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan niet worden aangemaakt</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1050"/>
@@ -7860,59 +7899,59 @@ Alle andere waarden dan &apos;Geen afronding&apos; kunnen projectweergavefouten 
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="114"/>
         <source>Left</source>
-        <translation type="unfinished">Links</translation>
+        <translation>Links</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="115"/>
         <source>Right</source>
-        <translation type="unfinished">Rechts</translation>
+        <translation>Rechts</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="116"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Boven</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="117"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Onder</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="154"/>
         <source>Cannot read &quot;%1&quot;: use one {n}, {zn} or {a-b} per name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan &quot;%1&quot; niet lezen: gebruik één {n}, {zn} of {a-b} per naam.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="163"/>
         <source>Cannot read &quot;%1&quot;: z does not go with a range.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan &quot;%1&quot; niet lezen: z gaat niet samen met een bereik.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="176"/>
         <source>&quot;%1&quot; gives no terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; geeft geen enkele klem.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="181"/>
         <source>&quot;%1&quot; gives %2 terminals; at most %3 at once.</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; geeft %2 klemmen; maximaal %3 tegelijk.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="600"/>
         <source>At a pitch of 1 grid square the names of neighbouring terminals overlap.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bij een steek van 1 rastervak overlappen de namen van naburige klemmen.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="605"/>
         <source>Repeated terminal names: %1. Fine if the device really repeats them, as N or PE often are.</source>
-        <translation type="unfinished"></translation>
+        <translation>Herhaalde klemnamen: %1. Geen probleem als het apparaat ze echt herhaalt, zoals vaak N of PE.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/genericdevice/genericdevice.cpp" line="608"/>
         <source>%n terminal(s) without a name.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n klem zonder naam.</numerusform>
+            <numerusform>%n klemmen zonder naam.</numerusform>
         </translation>
     </message>
 </context>
@@ -7921,52 +7960,52 @@ Alle andere waarden dan &apos;Geen afronding&apos; kunnen projectweergavefouten 
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="645"/>
         <source>Information</source>
-        <translation type="unfinished">Informatie</translation>
+        <translation>Informatie</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="646"/>
         <source>The name is how the symbol is listed in the project&apos;s collection; the rest can be changed later on the placed device.</source>
-        <translation type="unfinished"></translation>
+        <translation>De naam is hoe het symbool in de collectie van het project vermeld wordt; de rest kan later op het geplaatste apparaat gewijzigd worden.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="650"/>
         <source>Generic device</source>
-        <translation type="unfinished"></translation>
+        <translation>Algemeen apparaat</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="652"/>
         <source>e.g. -U1</source>
-        <translation type="unfinished"></translation>
+        <translation>bv. -U1</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="656"/>
         <source>Show the manufacturer reference in the box</source>
-        <translation type="unfinished"></translation>
+        <translation>De fabrikantreferentie in het kader tonen</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="659"/>
         <source>Name:</source>
-        <translation type="unfinished">Naam:</translation>
+        <translation>Naam:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="660"/>
         <source>Label:</source>
-        <translation type="unfinished"></translation>
+        <translation>Label:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="661"/>
         <source>Manufacturer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fabrikant:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="662"/>
         <source>Manufacturer reference:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fabrikantreferentie:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="663"/>
         <source>Description:</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschrijving:</translation>
     </message>
 </context>
 <context>
@@ -7974,79 +8013,79 @@ Alle andere waarden dan &apos;Geen afronding&apos; kunnen projectweergavefouten 
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="168"/>
         <source>Layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Indeling</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="171"/>
         <source>How many terminals on each side, 0 for none. They are numbered 1…n; name them on the next page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoeveel klemmen aan elke kant, 0 voor geen. Ze worden genummerd 1…n; geef ze een naam op de volgende pagina.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="175"/>
         <source>Terminals</source>
-        <translation type="unfinished">Klemmen</translation>
+        <translation>Klemmen</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="176"/>
         <source>Group every</source>
-        <translation type="unfinished"></translation>
+        <translation>Groeperen per</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="184"/>
         <source>no groups</source>
-        <translation type="unfinished"></translation>
+        <translation>geen groepen</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="185"/>
         <source>Leave a gap after every this many terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Na elk zoveel klemmen een tussenruimte laten</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="194"/>
         <source>Mark gaps with a divider</source>
-        <translation type="unfinished"></translation>
+        <translation>Tussenruimtes markeren met een scheidingslijn</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="195"/>
         <source>Line up groups across opposite sides</source>
-        <translation type="unfinished"></translation>
+        <translation>Groepen aan tegenoverliggende zijden uitlijnen</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="196"/>
         <source>Adds blank rows to the shorter group, so that the gaps on facing sides fall on the same row</source>
-        <translation type="unfinished"></translation>
+        <translation>Voegt lege rijen toe aan de kortere groep, zodat de tussenruimtes aan tegenoverliggende zijden op dezelfde rij vallen</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="201"/>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="204"/>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="207"/>
         <source> grid squares</source>
-        <translation type="unfinished"></translation>
+        <translation> rastervakken</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="210"/>
         <source>Space between terminals:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruimte tussen klemmen:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="211"/>
         <source>Extra width:</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra breedte:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="212"/>
         <source>Extra height:</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra hoogte:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="283"/>
         <source>Group terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmen groeperen</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="284"/>
         <source>Grouping replaces the gaps you made on the %1 side. Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Groeperen vervangt de tussenruimtes die u aan de %1-zijde hebt gemaakt. Doorgaan?</translation>
     </message>
 </context>
 <context>
@@ -8054,130 +8093,130 @@ Alle andere waarden dan &apos;Geen afronding&apos; kunnen projectweergavefouten 
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="327"/>
         <source>Terminals</source>
-        <translation type="unfinished">Klemmen</translation>
+        <translation>Klemmen</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="330"/>
         <source>Name the terminals. A side can be typed as one line: In{4} gives In1 to In4, Q{z4} Q0 to Q3, X{3-6} X3 to X6, and an empty entry is a gap.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geef de klemmen een naam. Een zijde kan als één regel getypt worden: In{4} geeft In1 tot In4, Q{z4} Q0 tot Q3, X{3-6} X3 tot X6, en een leeg item is een tussenruimte.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="340"/>
         <source>As a line:</source>
-        <translation type="unfinished"></translation>
+        <translation>Als regel:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="342"/>
         <source>e.g. L1,L2,L3,,PE</source>
-        <translation type="unfinished"></translation>
+        <translation>bv. L1,L2,L3,,PE</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="352"/>
         <source>Name</source>
-        <translation type="unfinished">Naam</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="352"/>
         <source>Function</source>
-        <translation type="unfinished">Functie</translation>
+        <translation>Functie</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="352"/>
         <source>Type</source>
-        <translation type="unfinished">Type</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="364"/>
         <source>Add terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Klem toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="365"/>
         <source>Add gap</source>
-        <translation type="unfinished"></translation>
+        <translation>Tussenruimte toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="366"/>
         <source>Delete</source>
-        <translation type="unfinished">Verwijderen</translation>
+        <translation>Verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="367"/>
         <source>Up</source>
-        <translation type="unfinished">Bovedn</translation>
+        <translation>Omhoog</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="368"/>
         <source>Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Omlaag</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="374"/>
         <source>Number pins 1…n</source>
-        <translation type="unfinished"></translation>
+        <translation>Pinnen nummeren 1…n</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="375"/>
         <source>Rename every terminal by its pin number, counter-clockwise from the top of the left side</source>
-        <translation type="unfinished"></translation>
+        <translation>Elke klem hernoemen naar zijn pinnummer, tegen de klok in vanaf de bovenkant van de linkerzijde</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="377"/>
         <source>Paste table</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabel plakken</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="378"/>
         <source>Rows of side, name, function and type, copied from a spreadsheet or a CSV file. Side is left, right, top, bottom or L, R, T, B; an empty name is a gap.</source>
-        <translation type="unfinished"></translation>
+        <translation>Rijen met zijde, naam, functie en type, gekopieerd uit een rekenblad of een CSV-bestand. De zijde is left, right, top, bottom of L, R, T, B; een lege naam is een tussenruimte.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="449"/>
         <source>gap</source>
-        <translation type="unfinished"></translation>
+        <translation>tussenruimte</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="461"/>
         <source>Generic</source>
-        <translation type="unfinished">Algemeen</translation>
+        <translation>Algemeen</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="462"/>
         <source>Inner</source>
-        <translation type="unfinished"></translation>
+        <translation>Binnen</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="463"/>
         <source>Outer</source>
-        <translation type="unfinished"></translation>
+        <translation>Buiten</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="498"/>
         <source>This name is used more than once. Fine if the device repeats it, as N or PE often are.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze naam wordt meer dan eens gebruikt. Geen probleem als het apparaat hem herhaalt, zoals vaak N of PE.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="513"/>
         <source>A name holds a comma or a brace, which a line cannot say: edit this side in the table.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een naam bevat een komma of accolade, wat een regel niet kan uitdrukken: bewerk deze zijde in de tabel.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="598"/>
         <source>Nothing to paste: copy rows of side, name, function from a spreadsheet or a CSV file first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Niets te plakken: kopieer eerst rijen met zijde, naam, functie uit een rekenblad of een CSV-bestand.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="609"/>
         <source>Pasted %n row(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n rij geplakt.</numerusform>
+            <numerusform>%n rijen geplakt.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="611"/>
         <source>Pasted %1 rows; skipped these, which could not be read: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 rijen geplakt; deze werden overgeslagen omdat ze niet gelezen konden worden: %2</translation>
     </message>
 </context>
 <context>
@@ -8185,13 +8224,13 @@ Alle andere waarden dan &apos;Geen afronding&apos; kunnen projectweergavefouten 
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="95"/>
         <source>Box: %1 × %2 grid squares</source>
-        <translation type="unfinished"></translation>
+        <translation>Kader: %1 × %2 rastervakken</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="723"/>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="750"/>
         <source>Generic device</source>
-        <translation type="unfinished"></translation>
+        <translation>Algemeen apparaat</translation>
     </message>
 </context>
 <context>
@@ -8249,73 +8288,73 @@ Alle andere waarden dan &apos;Geen afronding&apos; kunnen projectweergavefouten 
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="303"/>
         <source>Drag with the right mouse button on a sheet: a ring of commands opens, release towards the one to run. Until you change the ring for a context, it shows the commands of the shortcut bar. Gestures are turned on or off in the General page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sleep met de rechtermuisknop op een blad: er opent een ring van opdrachten, laat los in de richting van de opdracht die u wilt uitvoeren. Zolang u de ring voor een context niet wijzigt, toont hij de opdrachten van de sneltoetsbalk. Gebaren worden in- of uitgeschakeld op de pagina Algemeen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="312"/>
         <source>8 directions</source>
-        <translation type="unfinished"></translation>
+        <translation>8 richtingen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="313"/>
         <source>4 directions</source>
-        <translation type="unfinished"></translation>
+        <translation>4 richtingen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="347"/>
         <source>Place →</source>
-        <translation type="unfinished"></translation>
+        <translation>Plaatsen →</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="349"/>
         <source>Clear the direction</source>
-        <translation type="unfinished"></translation>
+        <translation>De richting wissen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="350"/>
         <source>Same as the shortcut bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Zelfde als de sneltoetsbalk</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="360"/>
         <source>Available commands</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschikbare opdrachten</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="361"/>
         <source>Ring, the chosen direction highlighted</source>
-        <translation type="unfinished"></translation>
+        <translation>Ring, met de gekozen richting gemarkeerd</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="369"/>
         <source>Directions:</source>
-        <translation type="unfinished"></translation>
+        <translation>Richtingen:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="372"/>
         <source>Context:</source>
-        <translation type="unfinished"></translation>
+        <translation>Context:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="425"/>
         <source>Mouse gestures</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Muisgebaren</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="470"/>
         <source>(empty direction)</source>
-        <translation type="unfinished"></translation>
+        <translation>(lege richting)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="473"/>
         <source>Custom ring for this context.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aangepaste ring voor deze context.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="474"/>
         <source>This ring follows the shortcut bar.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze ring volgt de sneltoetsbalk.</translation>
     </message>
 </context>
 <context>
@@ -8519,22 +8558,22 @@ Alle andere waarden dan &apos;Geen afronding&apos; kunnen projectweergavefouten 
     <message>
         <location filename="../sources/ui/imagecropdialog.cpp" line="257"/>
         <source>Crop the image</source>
-        <translation type="unfinished"></translation>
+        <translation>De afbeelding bijsnijden</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagecropdialog.cpp" line="261"/>
         <source>Drag the handles, or the inside of the frame, to adjust the area to keep.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sleep de grepen of de binnenkant van het kader om het te behouden gebied aan te passen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagecropdialog.cpp" line="264"/>
         <source>Reset</source>
-        <translation type="unfinished">Reset</translation>
+        <translation>Herstellen</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagecropdialog.cpp" line="265"/>
         <source>Return to the full image, without cropping</source>
-        <translation type="unfinished"></translation>
+        <translation>Terug naar de volledige afbeelding, zonder bijsnijden</translation>
     </message>
 </context>
 <context>
@@ -8542,22 +8581,22 @@ Alle andere waarden dan &apos;Geen afronding&apos; kunnen projectweergavefouten 
     <message>
         <location filename="../sources/imagedrop.cpp" line="72"/>
         <source>not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>geen bestand</translation>
     </message>
     <message>
         <location filename="../sources/imagedrop.cpp" line="74"/>
         <source>the file is larger than 10 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>het bestand is groter dan 10 MB</translation>
     </message>
     <message>
         <location filename="../sources/imagedrop.cpp" line="79"/>
         <source>the image has too many pixels</source>
-        <translation type="unfinished"></translation>
+        <translation>de afbeelding heeft te veel pixels</translation>
     </message>
     <message>
         <location filename="../sources/imagedrop.cpp" line="83"/>
         <source>unable to read the image</source>
-        <translation type="unfinished"></translation>
+        <translation>kan de afbeelding niet lezen</translation>
     </message>
 </context>
 <context>
@@ -8570,61 +8609,61 @@ Alle andere waarden dan &apos;Geen afronding&apos; kunnen projectweergavefouten 
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Breedte</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="66"/>
         <source> %</source>
-        <translation type="unfinished"></translation>
+        <translation> %</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="46"/>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="299"/>
         <source>Locked: changing the width or height adjusts the other to keep proportions. Click to unlock.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vergrendeld: het wijzigen van de breedte of hoogte past de andere aan om de verhoudingen te behouden. Klik om te ontgrendelen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="59"/>
         <source>Height</source>
-        <translation type="unfinished">Hoogte</translation>
+        <translation>Hoogte</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="82"/>
         <source>Restore proportions</source>
-        <translation type="unfinished"></translation>
+        <translation>Verhoudingen herstellen</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="89"/>
         <source>Angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoek</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="96"/>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="119"/>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="142"/>
         <source> °</source>
-        <translation type="unfinished"></translation>
+        <translation> °</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="112"/>
         <source>X skew</source>
-        <translation type="unfinished"></translation>
+        <translation>Schuintrekking X</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="135"/>
         <source>Y skew</source>
-        <translation type="unfinished"></translation>
+        <translation>Schuintrekking Y</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="158"/>
         <source>Label</source>
-        <translation type="unfinished">Etiket</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="165"/>
         <source>Text displayed under the image. It follows the image when it is moved, copied or rotated.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst die onder de afbeelding getoond wordt. Hij volgt de afbeelding wanneer die verplaatst, gekopieerd of gedraaid wordt.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="172"/>
@@ -8635,48 +8674,48 @@ Positie vergrendelen</translation>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="179"/>
         <source>Adapt the picture to the dark theme</source>
-        <translation type="unfinished"></translation>
+        <translation>De afbeelding aanpassen aan het donkere thema</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="182"/>
         <source>Adapts the colors for the dark display only. The original picture, exports and printouts stay unchanged.</source>
-        <translation type="unfinished"></translation>
+        <translation>Past de kleuren alleen aan voor de donkere weergave. De oorspronkelijke afbeelding, exports en afdrukken blijven ongewijzigd.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="223"/>
         <source>Change the width of an image</source>
-        <translation type="unfinished"></translation>
+        <translation>De breedte van een afbeelding wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="224"/>
         <source>Change the height of an image</source>
-        <translation type="unfinished"></translation>
+        <translation>De hoogte van een afbeelding wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="225"/>
         <source>Change the angle of an image</source>
-        <translation type="unfinished"></translation>
+        <translation>De hoek van een afbeelding wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="226"/>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="227"/>
         <source>Change the skew of an image</source>
-        <translation type="unfinished"></translation>
+        <translation>De schuintrekking van een afbeelding wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="238"/>
         <source>Edit an image label</source>
-        <translation type="unfinished"></translation>
+        <translation>Het label van een afbeelding bewerken</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="246"/>
         <source>Change a picture&apos;s dark theme adaptation</source>
-        <translation type="unfinished"></translation>
+        <translation>De aanpassing van een afbeelding aan het donkere thema wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="300"/>
         <source>Unlocked: width and height can be changed independently. Click to lock.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ontgrendeld: breedte en hoogte kunnen onafhankelijk gewijzigd worden. Klik om te vergrendelen.</translation>
     </message>
 </context>
 <context>
@@ -8684,42 +8723,42 @@ Positie vergrendelen</translation>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="104"/>
         <source>Transparent color</source>
-        <translation type="unfinished"></translation>
+        <translation>Transparante kleur</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="122"/>
         <source>Source image</source>
-        <translation type="unfinished"></translation>
+        <translation>Bronafbeelding</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="123"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Voorbeeld</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="261"/>
         <source>rgb(%1, %2, %3)</source>
-        <translation type="unfinished"></translation>
+        <translation>rgb(%1, %2, %3)</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="266"/>
         <source>Tolerance for this color</source>
-        <translation type="unfinished"></translation>
+        <translation>Tolerantie voor deze kleur</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="271"/>
         <source>Remove this color</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze kleur verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="282"/>
         <source>Click on the image to add a color. Adjust each color&apos;s tolerance with its slider, or click × to remove it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik op de afbeelding om een kleur toe te voegen. Stel de tolerantie van elke kleur in met zijn schuifregelaar, of klik op × om ze te verwijderen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="281"/>
         <source>Click on the image to choose a color</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik op de afbeelding om een kleur te kiezen</translation>
     </message>
 </context>
 <context>
@@ -8857,7 +8896,7 @@ Gebruik hiervoor de geavanceerde editor.</translation>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="226"/>
         <source>Change the width of a text field</source>
-        <translation type="unfinished"></translation>
+        <translation>De breedte van een tekstveld wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="266"/>
@@ -8877,7 +8916,7 @@ Gebruik hiervoor de geavanceerde editor.</translation>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="311"/>
         <source>Change the width of several text fields</source>
-        <translation type="unfinished"></translation>
+        <translation>De breedte van meerdere tekstvelden wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="323"/>
@@ -8903,7 +8942,7 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="85"/>
         <source>An error occurred with the template %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Er is een fout opgetreden met het sjabloon %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="88"/>
@@ -8959,22 +8998,22 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="46"/>
         <source>Name, label or information of the element, or cell (e.g. B13 or 3-B13)…</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam, label of informatie van het element, of cel (bv. B13 of 3-B13)…</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="240"/>
         <source>Cell %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Cel %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="244"/>
         <source>Sheet %1, cell %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad %1, cel %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="245"/>
         <source>Sheet %1 (%2), cell %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad %1 (%2), cel %3</translation>
     </message>
 </context>
 <context>
@@ -9082,7 +9121,7 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="70"/>
         <source>Hide full master elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Volledige master-elementen verbergen</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="516"/>
@@ -9220,7 +9259,7 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="196"/>
         <source>Live mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Live-modus</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="197"/>
@@ -9229,92 +9268,96 @@ Geen toegang tot de bovenliggende categorie</translation>
 Each action is undone with one Ctrl+Z, and the “Stop” button in the status bar closes the connection.
 
 This setting is in Configure QElectroTech &gt; General &gt; Projects.</source>
-        <translation type="unfinished"></translation>
+        <translation>De live-modus staat aan: een verbonden AI-assistent zal scripts kunnen uitvoeren op het geopende project.
+
+Elke actie wordt ongedaan gemaakt met één Ctrl+Z, en de knop “Stoppen” in de statusbalk sluit de verbinding.
+
+Deze instelling staat in QElectroTech configureren &gt; Algemeen &gt; Projecten.</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="206"/>
         <source>&amp;Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Doorgaan</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="207"/>
         <source>&amp;Not this session</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Niet in deze sessie</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="208"/>
         <source>&amp;Turn off</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Uitschakelen</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="210"/>
         <source>Don&apos;t ask again at start</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet meer vragen bij het opstarten</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="211"/>
         <source>Live mode will open at every start. To be warned again, turn it off and back on in Configure QElectroTech &gt; General &gt; Projects.</source>
-        <translation type="unfinished"></translation>
+        <translation>De live-modus wordt bij elke start geopend. Om opnieuw gewaarschuwd te worden, schakelt u hem uit en weer in via QElectroTech configureren &gt; Algemeen &gt; Projecten.</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="500"/>
         <location filename="../sources/scripting/liveserver.cpp" line="1031"/>
         <source>script</source>
-        <translation type="unfinished"></translation>
+        <translation>script</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="850"/>
         <source>Print</source>
-        <translation type="unfinished">Afdrukken</translation>
+        <translation>Afdrukken</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/scripting/liveserver.cpp" line="851"/>
         <source>The assistant wants to print %n folios of “%1” on “%2”.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>De assistent wil %n blad van “%1” afdrukken op “%2”.</numerusform>
+            <numerusform>De assistent wil %n bladen van “%1” afdrukken op “%2”.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="854"/>
         <source>&amp;Print</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Afdrukken</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="855"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Afbreken</translation>
+        <translation>&amp;Annuleren</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="946"/>
         <location filename="../sources/scripting/liveserver.cpp" line="979"/>
         <source>Assistant: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Assistent: %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="1027"/>
         <source>The assistant wants to run a script</source>
-        <translation type="unfinished"></translation>
+        <translation>De assistent wil een script uitvoeren</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="1030"/>
         <source>“%1” on the open project. Once it has run, Ctrl+Z undoes it.</source>
-        <translation type="unfinished"></translation>
+        <translation>“%1” op het geopende project. Na uitvoering maakt Ctrl+Z het ongedaan.</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="1038"/>
         <source>&amp;Run</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Uitvoeren</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="1039"/>
         <source>&amp;Decline</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Weigeren</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="1040"/>
         <source>&amp;Always</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Altijd</translation>
     </message>
 </context>
 <context>
@@ -9322,20 +9365,22 @@ This setting is in Configure QElectroTech &gt; General &gt; Projects.</source>
     <message>
         <location filename="../sources/scripting/macrorecorder.cpp" line="198"/>
         <source>Macro of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Macro van %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/macrorecorder.cpp" line="206"/>
         <source>project closed during the recording: no after.qet</source>
-        <translation type="unfinished"></translation>
+        <translation>project gesloten tijdens de opname: geen after.qet</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/scripting/macrorecorder.cpp" line="232"/>
         <source>I recorded a macro in QElectroTech: “%1”, %n steps (id %2, folder %3).
 With the qet MCP server: read it with qet_recording_read, write a script that does the same thing in general (for example on the selected elements rather than on those exact ones), check it with qet_recording_check until it matches, then offer it as a button with qet_script_install.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ik heb een macro opgenomen in QElectroTech: “%1”, %n stap (id %2, map %3).
+Met de qet MCP-server: lees hem met qet_recording_read, schrijf een script dat in het algemeen hetzelfde doet (bijvoorbeeld op de geselecteerde elementen in plaats van precies die), controleer het met qet_recording_check tot het overeenkomt, en bied het daarna aan als knop met qet_script_install.</numerusform>
+            <numerusform>Ik heb een macro opgenomen in QElectroTech: “%1”, %n stappen (id %2, map %3).
+Met de qet MCP-server: lees hem met qet_recording_read, schrijf een script dat in het algemeen hetzelfde doet (bijvoorbeeld op de geselecteerde elementen in plaats van precies die), controleer het met qet_recording_check tot het overeenkomt, en bied het daarna aan als knop met qet_script_install.</numerusform>
         </translation>
     </message>
 </context>
@@ -9457,7 +9502,9 @@ With the qet MCP server: read it with qet_recording_read, write a script that do
         <source>The limit set for this master element has been reached (Limit: %1).
 
 Do you still want to link this slave contact?</source>
-        <translation type="unfinished"></translation>
+        <translation>De voor dit master-element ingestelde limiet is bereikt (Limiet: %1).
+
+Wilt u dit slavecontact toch koppelen?</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="540"/>
@@ -9505,32 +9552,32 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="41"/>
         <source>New entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw item</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="51"/>
         <source>Fill in the item to add. Fields left empty stay empty in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vul het toe te voegen item in. Velden die leeg blijven, blijven ook leeg in het bestand.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="87"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Opslaan</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="88"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="140"/>
         <source>Nothing filled in</source>
-        <translation type="unfinished"></translation>
+        <translation>Niets ingevuld</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="141"/>
         <source>Fill in at least one field to create an entry.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vul ten minste één veld in om een item aan te maken.</translation>
     </message>
 </context>
 <context>
@@ -9539,22 +9586,22 @@ Do you still want to link this slave contact?</source>
         <location filename="../sources/materiallist/materiallist.cpp" line="329"/>
         <location filename="../sources/materiallist/materiallist.cpp" line="377"/>
         <source>Auxiliary block</source>
-        <translation type="unfinished"></translation>
+        <translation>Hulpblok</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="623"/>
         <source>Nothing to receive the materials list.</source>
-        <translation type="unfinished"></translation>
+        <translation>Niets om de materiaallijst te ontvangen.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="794"/>
         <source>The file has no header: columns are missing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het bestand heeft geen kopregel: er ontbreken kolommen.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="825"/>
         <source>The file already exists and is not empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het bestand bestaat al en is niet leeg.</translation>
     </message>
 </context>
 <context>
@@ -9562,94 +9609,98 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="20"/>
         <source>Materials list</source>
-        <translation type="unfinished"></translation>
+        <translation>Materiaallijst</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="31"/>
         <source>Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken:</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="38"/>
         <source>Every word typed must appear somewhere in the row</source>
         <extracomment>placeholder of the search field of the material list; several words narrow the results down (AND)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Elk getypt woord moet ergens in de rij voorkomen</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="44"/>
         <source>Search all columns</source>
         <extracomment>placeholder of the search field of the material list</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>In alle kolommen zoeken</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="75"/>
         <source>Entries: 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Items: 0</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="84"/>
         <source>Add a new item to the list</source>
         <extracomment>button adding a new row to the material list file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Een nieuw item aan de lijst toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="87"/>
         <source>New entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw item</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="259"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Toepassen</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="260"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="450"/>
         <source>Cannot read</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan niet lezen</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="451"/>
         <source>Cannot read the file:
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan het bestand niet lezen:
+%1
+%2</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="471"/>
         <source>Entries: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Items: %1</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="473"/>
         <source>Entries: %1 of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Items: %1 van %2</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="606"/>
         <source>Nothing selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Niets geselecteerd</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="607"/>
         <source>Select an item in the list first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer eerst een item in de lijst.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="637"/>
         <source>Cannot write</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan niet schrijven</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="638"/>
         <source>Cannot write to the file:
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan niet naar het bestand schrijven:
+%1
+%2</translation>
     </message>
 </context>
 <context>
@@ -9657,7 +9708,7 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="116"/>
         <source>Move a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Een kabel verplaatsen</translation>
     </message>
 </context>
 <context>
@@ -9665,54 +9716,54 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="450"/>
         <source>Exclude from the bill of materials</source>
-        <translation type="unfinished">Uitsluiten van de nomenclatuur</translation>
+        <translation>Uitsluiten van de stuklijst</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="451"/>
         <source>Function separation</source>
-        <translation type="unfinished"></translation>
+        <translation>Functiescheiding</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="452"/>
         <source>Exclude from automatic numbering</source>
-        <translation type="unfinished">Uitsluiten van automatische nummering</translation>
+        <translation>Uitsluiten van automatische nummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="462"/>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="503"/>
         <source>Restore the values the elements had</source>
-        <translation type="unfinished"></translation>
+        <translation>De waarden herstellen die de elementen hadden</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="499"/>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="771"/>
         <source>Delete this text</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze tekst verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="509"/>
         <source>Decimal number with a dot as separator (e.g. 80.5)</source>
-        <translation type="unfinished"></translation>
+        <translation>Decimaal getal met een punt als scheidingsteken (bv. 80.5)</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="617"/>
         <source>Elements edited: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Gewijzigde elementen: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="620"/>
         <source>Other selected items, left unchanged: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Andere geselecteerde items, ongewijzigd gelaten: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="773"/>
         <source>Multiple values</source>
-        <translation type="unfinished"></translation>
+        <translation>Meerdere waarden</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.h" line="62"/>
         <source>Information</source>
-        <translation type="unfinished">Informatie</translation>
+        <translation>Informatie</translation>
     </message>
 </context>
 <context>
@@ -9771,7 +9822,7 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/ui/multipastedialog.cpp" line="164"/>
         <source>Number pasted elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Geplakte elementen nummeren</translation>
     </message>
 </context>
 <context>
@@ -9845,32 +9896,32 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="174"/>
         <source>Set the default automatic numbering rules for new projects:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stel de standaardregels voor automatische nummering in voor nieuwe projecten:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="176"/>
         <source>Conductors</source>
-        <translation type="unfinished">Geleiders</translation>
+        <translation>Geleiders</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="177"/>
         <source>Elements</source>
-        <translation type="unfinished">Elementen</translation>
+        <translation>Elementen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="178"/>
         <source>Sheets</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="179"/>
         <source>Cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabels</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="181"/>
         <source>Auto Numbering</source>
-        <translation type="unfinished">Automatisch nummering</translation>
+        <translation>Automatische nummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="325"/>
@@ -10186,7 +10237,7 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="671"/>
         <source>Change a PLC table</source>
-        <translation type="unfinished"></translation>
+        <translation>Een PLC-tabel wijzigen</translation>
     </message>
 </context>
 <context>
@@ -10222,7 +10273,7 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/editor/graphicspart/partrectangle.cpp" line="519"/>
         <source>Change a rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Een rechthoek wijzigen</translation>
     </message>
 </context>
 <context>
@@ -10251,16 +10302,20 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/autoNum/ui/pastenumberingimport.cpp" line="84"/>
         <source>Numbering missing from this project</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering ontbreekt in dit project</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/pastenumberingimport.cpp" line="85"/>
         <source>The pasted elements follow %n numberings that do not exist in this project: %1.
 
 Import them? The elements will then receive the next numbers, starting from 1. Otherwise they will be pasted without numbering.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>De geplakte elementen volgen %n nummering die niet bestaat in dit project: %1.
+
+Importeren? De elementen krijgen dan de volgende nummers, vanaf 1. Anders worden ze zonder nummering geplakt.</numerusform>
+            <numerusform>De geplakte elementen volgen %n nummeringen die niet bestaan in dit project: %1.
+
+Importeren? De elementen krijgen dan de volgende nummers, vanaf 1. Anders worden ze zonder nummering geplakt.</numerusform>
         </translation>
     </message>
 </context>
@@ -10330,7 +10385,7 @@ Import them? The elements will then receive the next numbers, starting from 1. O
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="62"/>
         <source>Hide connected elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbonden elementen verbergen</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="67"/>
@@ -10563,95 +10618,101 @@ De volgende items zijn niet compatibel :
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="48"/>
         <source>User collection prefixes</source>
         <comment>title of the dialog configuring the prefixes of the user collection</comment>
-        <translation type="unfinished"></translation>
+        <translation>Prefixen van de gebruikerscollectie</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="56"/>
         <source>Each folder of the collection has a prefix: it is added in front of the label of the symbols in the folder.
 An empty field means the folder takes the prefix of its parent folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Elke map van de collectie heeft een prefix: die wordt voor het label van de symbolen in de map geplaatst.
+Een leeg veld betekent dat de map de prefix van de bovenliggende map overneemt.</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="61"/>
         <source>Folder</source>
         <comment>column header of the folder tree</comment>
-        <translation type="unfinished"></translation>
+        <translation>Map</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="61"/>
         <source>Prefix</source>
         <comment>column header of the prefix column</comment>
-        <translation type="unfinished"></translation>
+        <translation>Prefix</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="69"/>
         <source>Expand all</source>
-        <translation type="unfinished"></translation>
+        <translation>Alles uitvouwen</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="70"/>
         <source>Collapse all</source>
-        <translation type="unfinished"></translation>
+        <translation>Alles samenvouwen</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="110"/>
         <source>Entries without a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Items zonder map</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="111"/>
         <source>%n entries of qet_labels.xml match no folder of the collection:
 keep them or delete them?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n item van qet_labels.xml komt met geen enkele map van de collectie overeen:
+behouden of verwijderen?</numerusform>
+            <numerusform>%n items van qet_labels.xml komen met geen enkele map van de collectie overeen:
+behouden of verwijderen?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="115"/>
         <source>Keep</source>
-        <translation type="unfinished"></translation>
+        <translation>Behouden</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="116"/>
         <source>Delete</source>
-        <translation type="unfinished">Verwijderen</translation>
+        <translation>Verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="168"/>
         <source>no prefix: does not take the parent&apos;s</source>
         <comment>placeholder of an empty prefix field whose folder explicitly has no prefix, which cancels the inheritance</comment>
-        <translation type="unfinished"></translation>
+        <translation>geen prefix: neemt die van de bovenliggende map niet over</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="170"/>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="177"/>
         <source>take the parent folder&apos;s</source>
         <comment>placeholder of an empty prefix field</comment>
-        <translation type="unfinished"></translation>
+        <translation>die van de bovenliggende map overnemen</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="223"/>
         <source>Cannot save</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan niet opslaan</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="224"/>
         <source>The file %1 could not be saved:
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Het bestand %1 kon niet worden opgeslagen:
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="231"/>
         <source>Damaged file replaced</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschadigd bestand vervangen</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="232"/>
         <source>The file %1 could not be read: it has been replaced.
 Its copy was kept as:
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Het bestand %1 kon niet worden gelezen: het werd vervangen.
+De kopie werd bewaard als:
+%2</translation>
     </message>
 </context>
 <context>
@@ -10684,38 +10745,38 @@ Its copy was kept as:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="548"/>
         <source>No.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nr.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="548"/>
         <source>Name</source>
-        <translation type="unfinished">Naam</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="548"/>
         <source>Sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="548"/>
         <source>Element</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="548"/>
         <source>Frozen</source>
-        <translation type="unfinished"></translation>
+        <translation>Bevroren</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="555"/>
         <source>Assign a free number…</source>
-        <translation type="unfinished"></translation>
+        <translation>Een vrij nummer toekennen…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="556"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="860"/>
         <source>Give the selected element a number nobody has: it keeps its numbering, only its number changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geef het geselecteerde element een nummer dat niemand heeft: het behoudt zijn nummering, alleen zijn nummer verandert.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="564"/>
@@ -10732,7 +10793,7 @@ Its copy was kept as:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="575"/>
         <source>Cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabels</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="579"/>
@@ -10742,97 +10803,97 @@ Its copy was kept as:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="582"/>
         <source>Import from another project...</source>
-        <translation type="unfinished"></translation>
+        <translation>Importeren uit een ander project...</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="584"/>
         <source>Reuse the automatic numbering saved in another project</source>
-        <translation type="unfinished"></translation>
+        <translation>De automatische nummering hergebruiken die in een ander project is opgeslagen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="807"/>
         <source>frozen</source>
-        <translation type="unfinished"></translation>
+        <translation>bevroren</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="815"/>
         <source>— free —</source>
-        <translation type="unfinished"></translation>
+        <translation>— vrij —</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="816"/>
         <source>no element has this number (deleted or renumbered)</source>
-        <translation type="unfinished"></translation>
+        <translation>geen enkel element heeft dit nummer (verwijderd of hernummerd)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="833"/>
         <source>No element follows this numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen enkel element volgt deze nummering</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="834"/>
         <source>%n elements follow this numbering, %1 with a frozen name</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element volgt deze nummering, waarvan %1 met een bevroren naam</numerusform>
+            <numerusform>%n elementen volgen deze nummering, waarvan %1 met een bevroren naam</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="836"/>
         <source>; %n numbers without an element</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>; %n nummer zonder element</numerusform>
+            <numerusform>; %n nummers zonder element</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="858"/>
         <source>This numbering has several numbers (or one number per sheet): one cannot be chosen by hand.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze nummering heeft meerdere nummers (of één nummer per blad): er kan er geen met de hand gekozen worden.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="875"/>
         <source>Assign a free number</source>
-        <translation type="unfinished"></translation>
+        <translation>Een vrij nummer toekennen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="881"/>
         <source>This element&apos;s name is frozen: unfreeze it first.</source>
-        <translation type="unfinished"></translation>
+        <translation>De naam van dit element is bevroren: ontdooi hem eerst.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="886"/>
         <source>No number is free.</source>
-        <translation type="unfinished"></translation>
+        <translation>Er is geen vrij nummer.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="891"/>
         <source>%1  →  %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1  →  %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="897"/>
         <source>Free number for element “%1” (%2):</source>
-        <translation type="unfinished"></translation>
+        <translation>Vrij nummer voor element “%1” (%2):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="948"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1643"/>
         <source>Numbering name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam van de nummering:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="977"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1067"/>
         <source>Modify numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering wijzigen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="978"/>
         <source>%n elements follow this numbering and will change formula and name.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element volgt deze nummering en zal van formule en naam veranderen.</numerusform>
+            <numerusform>%n elementen volgen deze nummering en zullen van formule en naam veranderen.</numerusform>
         </translation>
     </message>
     <message>
@@ -10841,93 +10902,99 @@ Its copy was kept as:
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1665"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1716"/>
         <source>New numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe nummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1024"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1687"/>
         <source>Rename numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering hernoemen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1068"/>
         <source>The “%1” numbering cannot be modified: %n elements with a frozen name follow it.
 Unfreeze them first (see the list), or just rename the numbering.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>De nummering “%1” kan niet gewijzigd worden: %n element met een bevroren naam volgt ze.
+Ontdooi het eerst (zie de lijst), of hernoem gewoon de nummering.</numerusform>
+            <numerusform>De nummering “%1” kan niet gewijzigd worden: %n elementen met een bevroren naam volgen ze.
+Ontdooi ze eerst (zie de lijst), of hernoem gewoon de nummering.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1382"/>
         <source>%n numberings followed by elements with a frozen name were not replaced.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n nummering die gevolgd wordt door elementen met een bevroren naam werd niet vervangen.</numerusform>
+            <numerusform>%n nummeringen die gevolgd worden door elementen met een bevroren naam werden niet vervangen.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1386"/>
         <source>%n elements changed formula.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element veranderde van formule.</numerusform>
+            <numerusform>%n elementen veranderden van formule.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1403"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1745"/>
         <source>Delete numbering</source>
-        <translation type="unfinished">Verwijder de nummering</translation>
+        <translation>Verwijder de nummering</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1404"/>
         <source>%n elements follow the “%1” numbering, so it cannot be deleted.
 Give them another numbering or a fixed name first.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element volgt de nummering “%1”, dus ze kan niet verwijderd worden.
+Geef het eerst een andere nummering of een vaste naam.</numerusform>
+            <numerusform>%n elementen volgen de nummering “%1”, dus ze kan niet verwijderd worden.
+Geef ze eerst een andere nummering of een vaste naam.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1628"/>
         <source>No sheet names this numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen enkel blad noemt deze nummering</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1629"/>
         <source>%n sheets name this numbering</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n blad noemt deze nummering</numerusform>
+            <numerusform>%n bladen noemen deze nummering</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1632"/>
         <source>No sheet follows this numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen enkel blad volgt deze nummering</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1633"/>
         <source>%n sheets follow this numbering</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n blad volgt deze nummering</numerusform>
+            <numerusform>%n bladen volgen deze nummering</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1746"/>
         <source>%n sheets follow the “%1” numbering, so it cannot be deleted.
 Give them another numbering first.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n blad volgt de nummering “%1”, dus ze kan niet verwijderd worden.
+Geef het eerst een andere nummering.</numerusform>
+            <numerusform>%n bladen volgen de nummering “%1”, dus ze kan niet verwijderd worden.
+Geef ze eerst een andere nummering.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1167"/>
         <source>Import numbering from a project</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering importeren uit een project</translation>
     </message>
     <message>
         <source>Project QElectroTech (*.qet)</source>
@@ -10937,69 +11004,69 @@ Give them another numbering first.</source>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1176"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1183"/>
         <source>Import not possible</source>
-        <translation type="unfinished"></translation>
+        <translation>Importeren niet mogelijk</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1177"/>
         <source>Unable to open %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan %1 niet openen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1184"/>
         <source>%1 is not a valid QElectroTech project.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 is geen geldig QElectroTech-project.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1193"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1275"/>
         <source>No numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen nummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1194"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1276"/>
         <source>This project does not contain any automatic numbering.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit project bevat geen enkele automatische nummering.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1215"/>
         <source>Numbering to import</source>
-        <translation type="unfinished"></translation>
+        <translation>Te importeren nummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1218"/>
         <source>Numbering found in %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering gevonden in %1:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1256"/>
         <source>%1: %2 (already exists)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: %2 (bestaat al)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1281"/>
         <source>Replace numbering with the same name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering met dezelfde naam vervangen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1295"/>
         <source>Import numberings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummeringen importeren</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1376"/>
         <source>Import complete</source>
-        <translation type="unfinished"></translation>
+        <translation>Importeren voltooid</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1377"/>
         <source>%1 numbering(s) imported, %2 kept unchanged.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 nummering(en) geïmporteerd, %2 ongewijzigd gelaten.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1380"/>
         <source>%1 numbering(s) imported.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 nummering(en) geïmporteerd.</translation>
     </message>
 </context>
 <context>
@@ -11078,97 +11145,97 @@ Give them another numbering first.</source>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="249"/>
         <source>Conductor crossings:</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kruisingen van geleiders:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="251"/>
         <source>No hop</source>
         <comment>wire crossings</comment>
-        <translation type="unfinished"></translation>
+        <translation>Geen brug</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="253"/>
         <source>Hop on horizontal conductors</source>
         <comment>wire crossings</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brug op horizontale geleiders</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="255"/>
         <source>Hop on vertical conductors</source>
         <comment>wire crossings</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brug op verticale geleiders</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="257"/>
         <source>Draws a small arc where two conductors cross without being connected. Only the drawing changes: no element is added and no conductor is cut.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tekent een kleine boog waar twee geleiders elkaar kruisen zonder verbonden te zijn. Alleen de tekening verandert: er wordt geen element toegevoegd en geen geleider onderbroken.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="262"/>
         <source>Keep the texts of rotated elements horizontal</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>De teksten van gedraaide elementen horizontaal houden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="264"/>
         <source>Texts drawn in an element and the names of its terminals stay readable when the element is rotated: their frame turns with the element, not the text. Uncheck to make them turn with the element, as before.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Teksten die in een element getekend zijn en de namen van zijn klemmen blijven leesbaar wanneer het element gedraaid wordt: hun kader draait mee met het element, niet de tekst. Vink uit om ze zoals vroeger met het element mee te laten draaien.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="270"/>
         <source>Conductors per terminal</source>
         <comment>group box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Geleiders per klem</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="271"/>
         <source>Use the application settings</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>De instellingen van de toepassing gebruiken</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="272"/>
         <source>The settings in Configure QElectroTech &gt; General apply. Untick to give this project its own settings, saved in the project.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>De instellingen in QElectroTech configureren &gt; Algemeen zijn van toepassing. Vink uit om dit project eigen instellingen te geven, opgeslagen in het project.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="285"/>
         <source>Maximum conductors per terminal:</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Maximaal aantal geleiders per klem:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="288"/>
         <source>No limit</source>
         <comment>wires per terminal</comment>
-        <translation type="unfinished"></translation>
+        <translation>Geen limiet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="289"/>
         <source>A new conductor that would take a terminal past this number is refused. Conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Een nieuwe geleider die een klem boven dit aantal zou brengen, wordt geweigerd. Reeds getekende geleiders worden niet gewijzigd. 4 betekent twee dubbele adereindhulzen, één aan elke kant van de schroef.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="293"/>
         <source>Only one conductor per sheet reference</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Slechts één geleider per bladverwijzing</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="294"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Een bladverwijzing is een virtueel punt: ze neemt slechts één geleider, die welke op het andere blad verdergaat.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="297"/>
         <source>These rules are turned off for every project (Configure QElectroTech &gt; General).</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Deze regels zijn uitgeschakeld voor alle projecten (QElectroTech configureren &gt; Algemeen).</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="364"/>
@@ -11429,18 +11496,18 @@ Wilt u wijzigingen bewaren?</translation>
         <location filename="../sources/projectview.cpp" line="345"/>
         <source>Zipped project QElectroTech (*.qetz)</source>
         <comment>filetypes allowed when saving a project file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gecomprimeerd QElectroTech-project (*.qetz)</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="412"/>
         <source>Project in use</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Project in gebruik</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="413"/>
         <source>%1 is open by %2 on %3. Choose another file name, or save again once it has been closed there.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 is geopend door %2 op %3. Kies een andere bestandsnaam, of bewaar opnieuw zodra het daar gesloten is.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="448"/>
@@ -11458,7 +11525,7 @@ Wilt u wijzigingen bewaren?</translation>
         <location filename="../sources/projectview.cpp" line="773"/>
         <source>Save a copy for an older QElectroTech</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Een kopie bewaren voor een oudere QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="869"/>
@@ -11530,24 +11597,26 @@ Wilt u wijzigingen bewaren?</translation>
         <location filename="../sources/projectview.cpp" line="800"/>
         <source>File changed on disk</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bestand gewijzigd op schijf</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="801"/>
         <source>Someone else changed %1 on disk at %2 since you opened it.
 
 Saving over it would lose their changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Iemand anders heeft %1 op schijf gewijzigd om %2 sinds u het opende.
+
+Erover bewaren zou zijn wijzigingen verloren laten gaan.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="805"/>
         <source>Save as a copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Als kopie bewaren</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="806"/>
         <source>Overwrite</source>
-        <translation type="unfinished"></translation>
+        <translation>Overschrijven</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="1068"/>
@@ -11601,44 +11670,44 @@ Saving over it would lose their changes.</source>
         <location filename="../sources/qetapp.cpp" line="2495"/>
         <source>Save settings as...</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Instellingen bewaren als...</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2497"/>
         <location filename="../sources/qetapp.cpp" line="2539"/>
         <source>QElectroTech settings (*.conf)</source>
         <comment>file dialog filter</comment>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech-instellingen (*.conf)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2512"/>
         <location filename="../sources/qetapp.cpp" line="2552"/>
         <source>Error</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Fout</translation>
+        <translation>Fout</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2513"/>
         <source>Cannot save the settings to “%1”.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan de instellingen niet bewaren in “%1”.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2537"/>
         <source>Load settings...</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Instellingen laden...</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2553"/>
         <source>“%1” is not a settings file saved by QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation>“%1” is geen instellingenbestand dat door QElectroTech bewaard werd.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2589"/>
         <location filename="../sources/qetapp.cpp" line="2602"/>
         <source>Load settings</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Instellingen laden</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2561"/>
@@ -11647,64 +11716,70 @@ Saving over it would lose their changes.</source>
 QElectroTech will then close. Start it again to use the new settings.
 
 Do you want to continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze instellingen vervangen uw huidige instellingen, behalve de vensterindeling en de lijst met recente bestanden.
+
+QElectroTech wordt daarna afgesloten. Start het opnieuw om de nieuwe instellingen te gebruiken.
+
+Wilt u doorgaan?</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2400"/>
         <source>Toolbars, keyboard shortcuts, mouse and trackpad gestures</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalken, sneltoetsen, muis- en trackpadgebaren</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2402"/>
         <source>Defaults for new projects: folio, title block, wires, numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaardwaarden voor nieuwe projecten: blad, titelblok, geleiders, nummering</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2405"/>
         <source>All other settings: appearance, grid, language...</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle andere instellingen: weergave, raster, taal...</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2407"/>
         <source>Folders of the collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Mappen van de collecties</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2424"/>
         <source>Settings to save:</source>
-        <translation type="unfinished"></translation>
+        <translation>Te bewaren instellingen:</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2434"/>
         <source>The folders of your collections are saved only when every part is ticked.</source>
-        <translation type="unfinished"></translation>
+        <translation>De mappen van uw collecties worden alleen bewaard als elk onderdeel aangevinkt is.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2573"/>
         <source>These settings will replace your current ones for:
 %1
 All your other settings are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze instellingen vervangen uw huidige instellingen voor:
+%1
+Al uw andere instellingen blijven behouden.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2579"/>
         <source>QElectroTech will then close. Start it again to use the new settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech wordt daarna afgesloten. Start het opnieuw om de nieuwe instellingen te gebruiken.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2581"/>
         <source>Projects already open keep their own defaults.</source>
-        <translation type="unfinished"></translation>
+        <translation>Reeds geopende projecten behouden hun eigen standaardwaarden.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2582"/>
         <source>Do you want to continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wilt u doorgaan?</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2603"/>
         <source>The settings are loaded. They are used for the next new project.</source>
-        <translation type="unfinished"></translation>
+        <translation>De instellingen zijn geladen. Ze worden gebruikt voor het volgende nieuwe project.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="3010"/>
@@ -12781,69 +12856,69 @@ Deselecteert alle geselecteerde elementen en selecteert de niet-geselecteerde el
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="417"/>
         <source>Paste at the original position</source>
-        <translation type="unfinished"></translation>
+        <translation>Plakken op de oorspronkelijke positie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="418"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="3491"/>
         <source>Paste element information</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementinformatie plakken</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="430"/>
         <source>Places the clipboard&apos;s items at their original position and moves the cursor to that point</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Plaatst de items van het klembord op hun oorspronkelijke positie en verplaatst de cursor naar dat punt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="431"/>
         <source>Copies the filled-in information of the element on the clipboard to the selected elements</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kopieert de ingevulde informatie van het element op het klembord naar de geselecteerde elementen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="480"/>
         <source>Copy text format</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstopmaak kopiëren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="481"/>
         <source>Apply text format</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstopmaak toepassen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="486"/>
         <source>Copy the text format of the selected element as a template</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>De tekstopmaak van het geselecteerde element als sjabloon kopiëren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="487"/>
         <source>Apply the copied text format to the selected elements</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>De gekopieerde tekstopmaak toepassen op de geselecteerde elementen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="499"/>
         <source>&amp;Duplicate</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Dupliceren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
         <source>Copies the selection, offset by the configured spacing</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kopieert de selectie, verschoven met de ingestelde afstand</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="523"/>
         <source>Configure duplication...</source>
-        <translation type="unfinished"></translation>
+        <translation>Dupliceren instellen...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="525"/>
         <source>Choose the spacing and direction used by Duplicate</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kies de afstand en de richting die Dupliceren gebruikt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="559"/>
@@ -12860,83 +12935,84 @@ Deselecteert alle geselecteerde elementen en selecteert de niet-geselecteerde el
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="607"/>
         <source>Text grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstraster</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="614"/>
         <source>Snap grid for texts moved with the mouse.
 Hold Ctrl while moving to place freely.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vangraster voor teksten die met de muis verplaatst worden.
+Houd Ctrl ingedrukt tijdens het verplaatsen om vrij te plaatsen.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="620"/>
         <source>Disabled</source>
-        <translation type="unfinished">Uitgeschakeld</translation>
+        <translation>Uitgeschakeld</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="648"/>
         <source>Keep headers visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopteksten zichtbaar houden</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="650"/>
         <source>Keeps the sheet&apos;s column numbers and row letters visible at the edge of the view</source>
-        <translation type="unfinished"></translation>
+        <translation>Houdt de kolomnummers en rijletters van het blad zichtbaar aan de rand van de weergave</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="661"/>
         <source>Show cell boundaries</source>
-        <translation type="unfinished"></translation>
+        <translation>Celgrenzen tonen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="663"/>
         <source>Draws the boundaries of the sheet&apos;s columns and rows on the diagram, on screen only</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekent de grenzen van de kolommen en rijen van het blad op het schema, alleen op het scherm</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="674"/>
         <source>Show</source>
-        <translation type="unfinished">Weergeven</translation>
+        <translation>Weergeven</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="676"/>
         <source>Element texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementteksten</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="677"/>
         <source>Conductor texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Geleiderteksten</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="678"/>
         <source>Text fields</source>
-        <translation type="unfinished">Tekst veld</translation>
+        <translation>Tekstvelden</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="679"/>
         <source>Shapes</source>
-        <translation type="unfinished"></translation>
+        <translation>Vormen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="680"/>
         <source>Pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="681"/>
         <source>Tables</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabellen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="682"/>
         <source>Cross-references</source>
-        <translation type="unfinished">Kruisverwijzing</translation>
+        <translation>Kruisverwijzingen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="699"/>
         <source>See Display &gt; Show</source>
-        <translation type="unfinished"></translation>
+        <translation>Zie Weergave &gt; Tonen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="758"/>
@@ -12946,79 +13022,79 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="791"/>
         <source>Add a cable list</source>
-        <translation type="unfinished"></translation>
+        <translation>Een kabellijst toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
         <source>Export the cable list to CSV format</source>
-        <translation type="unfinished"></translation>
+        <translation>De kabellijst naar CSV-formaat exporteren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="835"/>
         <source>Wiring list (database)</source>
-        <translation type="unfinished"></translation>
+        <translation>Een PDF toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="853"/>
         <source>Cable numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabelnummering</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="855"/>
         <source>Shows the cable numbering rule of the project and renumbers its cables with it</source>
-        <translation type="unfinished"></translation>
+        <translation>Toont de regel voor de kabelnummering van het project en hernummert de kabels ermee</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="860"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4601"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4617"/>
         <source>Reload element drawings</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementtekeningen opnieuw laden</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="863"/>
         <source>Redraws each placed element from its current definition, without having to close and reopen the project (action cannot be undone)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hertekent elk geplaatst element vanuit zijn huidige definitie, zonder het project te moeten sluiten en opnieuw te openen (actie kan niet ongedaan gemaakt worden)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="869"/>
         <source>Run a script...</source>
-        <translation type="unfinished"></translation>
+        <translation>Een script uitvoeren...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="872"/>
         <source>Runs a JavaScript script on the current project (see qet.* in the script for the available API)</source>
-        <translation type="unfinished"></translation>
+        <translation>Voert een JavaScript-script uit op het huidige project (zie qet.* in het script voor de beschikbare API)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="886"/>
         <source>Record a macro</source>
-        <translation type="unfinished"></translation>
+        <translation>Een macro opnemen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="889"/>
         <source>Records what you do on the project, for an AI assistant to make a script of; click again to stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Neemt op wat u in het project doet, zodat een AI-assistent er een script van kan maken; klik opnieuw om te stoppen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="902"/>
         <source>Manage scripts…</source>
-        <translation type="unfinished"></translation>
+        <translation>Scripts beheren…</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="903"/>
         <source>Write a script and make it a button with an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Een script schrijven en er een knop met een pictogram van maken</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="920"/>
         <source>Open the scripts folder</source>
-        <translation type="unfinished"></translation>
+        <translation>De scriptmap openen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="923"/>
         <source>Every .js file in this folder that starts with a // ==QETScript== header becomes a button</source>
-        <translation type="unfinished"></translation>
+        <translation>Elk .js-bestand in deze map dat begint met een // ==QETScript==-kop wordt een knop</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="942"/>
@@ -13036,13 +13112,13 @@ Selecteert elementen</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1015"/>
         <source>Save a copy for an older QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Een kopie bewaren voor een oudere QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1029"/>
         <source>Writes a copy of the current project as a .qet file, which versions of QElectroTech that cannot open a .qetz open</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Schrijft een kopie van het huidige project als .qet-bestand, dat versies van QElectroTech die geen .qetz kunnen openen wel openen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1080"/>
@@ -13052,79 +13128,79 @@ Selecteert elementen</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1082"/>
         <source>Horizontal mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontaal spiegelen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1083"/>
         <source>Vertical mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Verticaal spiegelen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1087"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1619"/>
         <source>Group</source>
         <comment>fr: Grouper</comment>
-        <translation type="unfinished">Groep</translation>
+        <translation>Groep</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1088"/>
         <source>Ungroup</source>
-        <translation type="unfinished"></translation>
+        <translation>Groep opheffen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1109"/>
         <source>Insert the last element</source>
-        <translation type="unfinished"></translation>
+        <translation>Het laatste element invoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1111"/>
         <source>Places the last inserted element again</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Plaatst het laatst ingevoegde element opnieuw</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1123"/>
         <source>Search for a command…</source>
-        <translation type="unfinished"></translation>
+        <translation>Een opdracht zoeken…</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1125"/>
         <source>Type part of a command name and press Enter to launch it</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Typ een deel van de naam van een opdracht en druk op Enter om ze uit te voeren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1145"/>
         <source>Insert an element…</source>
-        <translation type="unfinished"></translation>
+        <translation>Een element invoegen…</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1147"/>
         <source>Opens the element picker at the cursor position</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Opent de elementkiezer op de cursorpositie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1160"/>
         <source>Shortcut bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Sneltoetsbalk</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1162"/>
         <source>Opens, at the cursor position, the commands useful for the selection, and the element picker</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Opent, op de cursorpositie, de opdrachten die nuttig zijn voor de selectie, en de elementkiezer</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1174"/>
         <source>Repeat the last command</source>
-        <translation type="unfinished"></translation>
+        <translation>De laatste opdracht herhalen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1176"/>
         <source>Relaunches the last drawing tool or element insertion (Enter on the sheet)</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Start het laatste tekengereedschap of de laatste elementinvoeging opnieuw (Enter op het blad)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1188"/>
@@ -13136,135 +13212,135 @@ Selecteert elementen</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="1190"/>
         <source>Flips the selected elements from left to right</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Spiegelt de geselecteerde elementen van links naar rechts</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1191"/>
         <source>Flips the selected elements from top to bottom</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Spiegelt de geselecteerde elementen van boven naar beneden</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1209"/>
         <source>Groups the selected elements, texts, shapes and images: they are selected, moved and copied together</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Groepeert de geselecteerde elementen, teksten, vormen en afbeeldingen: ze worden samen geselecteerd, verplaatst en gekopieerd</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1210"/>
         <source>Breaks up the selected groups</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Heft de geselecteerde groepen op</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1217"/>
         <source>Align to grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitlijnen op het raster</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1219"/>
         <source>Puts the selected elements, images and texts back on the grid</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zet de geselecteerde elementen, afbeeldingen en teksten terug op het raster</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1228"/>
         <source>Align left</source>
-        <translation type="unfinished"></translation>
+        <translation>Links uitlijnen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1228"/>
         <source>Aligns the left edges of the selected items</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lijnt de linkerranden van de geselecteerde items uit</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
         <source>Centre horizontally</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontaal centreren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
         <source>Aligns the selected items on one vertical line, by their origin point for elements</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lijnt de geselecteerde items uit op één verticale lijn, voor elementen op hun oorsprongspunt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1230"/>
         <source>Align right</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechts uitlijnen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1230"/>
         <source>Aligns the right edges of the selected items</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lijnt de rechterranden van de geselecteerde items uit</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1231"/>
         <source>Align top</source>
-        <translation type="unfinished"></translation>
+        <translation>Boven uitlijnen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1231"/>
         <source>Aligns the top edges of the selected items</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lijnt de bovenranden van de geselecteerde items uit</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1232"/>
         <source>Centre vertically</source>
-        <translation type="unfinished"></translation>
+        <translation>Verticaal centreren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1232"/>
         <source>Aligns the selected items on one horizontal line, by their origin point for elements</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lijnt de geselecteerde items uit op één horizontale lijn, voor elementen op hun oorsprongspunt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1233"/>
         <source>Align bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Onder uitlijnen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1233"/>
         <source>Aligns the bottom edges of the selected items</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lijnt de onderranden van de geselecteerde items uit</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1248"/>
         <source>Select all conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle geleiders selecteren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1249"/>
         <source>Select all text fields</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle tekstvelden selecteren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1262"/>
         <source>Selects all conductors on the sheet, deselects the rest</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Selecteert alle geleiders op het blad en deselecteert de rest</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1263"/>
         <source>Selects all text fields on the sheet, deselects the rest</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Selecteert alle tekstvelden op het blad en deselecteert de rest</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1279"/>
         <source>Centre on the cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Centreren op de cursor</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1294"/>
         <source>Centres the sheet on the point under the mouse cursor, without changing the zoom</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Centreert het blad op het punt onder de muiscursor, zonder de zoom te wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1322"/>
@@ -13274,17 +13350,17 @@ Selecteert elementen</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1327"/>
         <source>Add an arc</source>
-        <translation type="unfinished">Voeg boog toe</translation>
+        <translation>Een boog toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1329"/>
         <source>Add a curve</source>
-        <translation type="unfinished"></translation>
+        <translation>Een kromme toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1330"/>
         <source>Add a fillet</source>
-        <translation type="unfinished"></translation>
+        <translation>Een afronding toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1331"/>
@@ -13294,12 +13370,12 @@ Selecteert elementen</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1332"/>
         <source>Add a generic device…</source>
-        <translation type="unfinished"></translation>
+        <translation>Een algemeen apparaat toevoegen…</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1335"/>
         <source>Draw a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Een kabel tekenen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1337"/>
@@ -13334,7 +13410,7 @@ Selecteert elementen</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1345"/>
         <source>Adds an arc on the current sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Voegt een boog toe aan het huidige blad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1346"/>
@@ -13344,12 +13420,12 @@ Selecteert elementen</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1347"/>
         <source>Adds a Bézier curve to the current sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Voegt een Bézierkromme toe aan het huidige blad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1348"/>
         <source>Rounds the corner between two lines of the current sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Rondt de hoek tussen twee lijnen van het huidige blad af</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1349"/>
@@ -13359,12 +13435,12 @@ Selecteert elementen</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1350"/>
         <source>Makes a box symbol with terminals on any side and places it on the current sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Maakt een kadersymbool met klemmen aan elke zijde en plaatst het op het huidige blad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1351"/>
         <source>Draws the main line of a cable: every conductor crossed becomes one of its cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekent de hoofdlijn van een kabel: elke gekruiste geleider wordt een van zijn aders</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1408"/>
@@ -13380,61 +13456,61 @@ Selecteert elementen</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1540"/>
         <source>Numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1541"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Lijsten</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1869"/>
         <source>XML Files (*.xml);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>XML-bestanden (*.xml);;Alle bestanden (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1925"/>
         <source>%1 is being opened by another session of QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 wordt geopend door een andere sessie van QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1928"/>
         <source>%1 is open by %2 on %3 since %4</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 is geopend door %2 op %3 sinds %4</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1934"/>
         <source> (active just now).</source>
-        <translation type="unfinished"></translation>
+        <translation> (zojuist actief).</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="1935"/>
         <source> (active %n minute(s) ago).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> (%n minuut geleden actief).</numerusform>
+            <numerusform> (%n minuten geleden actief).</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1941"/>
         <source>Project in use</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Project in gebruik</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1942"/>
         <source>Open it read-only to look at it without changing it. Open it anyway only if you know that session is not using it any more: both of you could then save over each other.</source>
-        <translation type="unfinished"></translation>
+        <translation>Open het alleen-lezen om het te bekijken zonder het te wijzigen. Open het toch alleen als u weet dat die sessie het niet meer gebruikt: anders kunnen jullie elkaars wijzigingen overschrijven.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1945"/>
         <source>Open read-only</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen-lezen openen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1946"/>
         <source>Open anyway</source>
-        <translation type="unfinished"></translation>
+        <translation>Toch openen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1972"/>
@@ -13442,75 +13518,77 @@ Selecteert elementen</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="2011"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2054"/>
         <source>Cannot open %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan %1 niet openen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1974"/>
         <source>The file %1 cannot be read as a QElectroTech project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het bestand %1 kan niet gelezen worden als een QElectroTech-project.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1975"/>
         <source>The project file is damaged:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Het projectbestand is beschadigd:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1980"/>
         <source>Open the version saved %1</source>
-        <translation type="unfinished"></translation>
+        <translation>De versie openen die bewaard werd op %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1985"/>
         <source>Recover what can be read</source>
-        <translation type="unfinished"></translation>
+        <translation>Herstellen wat gelezen kan worden</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1987"/>
         <source>Either opens as a new project, &quot;%1&quot;; %2 is left as it is.</source>
-        <translation type="unfinished"></translation>
+        <translation>In beide gevallen wordt het geopend als een nieuw project, “%1”; %2 blijft zoals het is.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2001"/>
         <source>Nothing can be recovered from it:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Er kan niets uit hersteld worden:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2015"/>
         <source>Project recovered</source>
-        <translation type="unfinished"></translation>
+        <translation>Project hersteld</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2016"/>
         <source>What could be read of %1 is open as a new project. Some parts could not be read and were left out: see the details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wat van %1 gelezen kon worden, is geopend als een nieuw project. Sommige delen konden niet gelezen worden en werden weggelaten: zie de details.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2036"/>
         <source>%1 (recovered)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (hersteld)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2039"/>
         <source>%1 (recovered %2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (hersteld %2)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2223"/>
         <source>%1 on %2 has taken over %3. Save your changes with Save As to keep them.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 op %2 heeft %3 overgenomen. Bewaar uw wijzigingen met Bewaren als om ze te behouden.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2238"/>
         <source>This project was saved by a later version of QElectroTech. It is opened read-only, so that saving it cannot lose what this version does not know. Use Save As to keep a copy in this version&apos;s format.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit project werd bewaard door een nieuwere versie van QElectroTech. Het wordt alleen-lezen geopend, zodat bewaren niet verliest wat deze versie niet kent. Gebruik Bewaren als om een kopie in het formaat van deze versie te houden.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2297"/>
         <source>Elements not loaded</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elementen niet geladen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2298"/>
@@ -13518,9 +13596,13 @@ Selecteert elementen</translation>
 
 They are not shown, but they are kept in the file as they are, with their conductors, and come back once their definition is available again.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element kon niet geladen worden: de definitie ervan ontbreekt in het project en in de collecties.
+
+Het wordt niet getoond, maar blijft zoals het is in het bestand bewaard, met zijn geleiders, en verschijnt opnieuw zodra de definitie weer beschikbaar is.</numerusform>
+            <numerusform>%n elementen konden niet geladen worden: hun definitie ontbreekt in het project en in de collecties.
+
+Ze worden niet getoond, maar blijven zoals ze zijn in het bestand bewaard, met hun geleiders, en verschijnen opnieuw zodra de definitie weer beschikbaar is.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -13529,22 +13611,26 @@ They are not shown, but they are kept in the file as they are, with their conduc
 
 They are not shown, but they are kept in the file as they are, and join their terminals again once the definition has them where they were.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n geleider kon niet aan zijn klemmen verbonden worden en werd niet geladen. De definitie van het element ontbreekt, of werd vervangen door een andere met andere klemmen.
+
+Hij wordt niet getoond, maar blijft zoals hij is in het bestand bewaard, en wordt opnieuw aan zijn klemmen verbonden zodra de definitie ze weer heeft waar ze waren.</numerusform>
+            <numerusform>%n geleiders konden niet aan hun klemmen verbonden worden en werden niet geladen. De definitie van het element ontbreekt, of werd vervangen door een andere met andere klemmen.
+
+Ze worden niet getoond, maar blijven zoals ze zijn in het bestand bewaard, en worden opnieuw aan hun klemmen verbonden zodra de definitie ze weer heeft waar ze waren.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2651"/>
         <source>Automatic numbering</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatische nummering</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2652"/>
         <source>No automatic cable numbering is defined.</source>
         <comment>shown when a project has no cable numbering rule</comment>
-        <translation type="unfinished"></translation>
+        <translation>Er is geen automatische kabelnummering gedefinieerd.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2656"/>
@@ -13552,54 +13638,56 @@ They are not shown, but they are kept in the file as they are, and join their te
 
 You can also number the cables automatically later: the rule is set at any time in the project properties, on the &quot;Auto Numbering&quot; page.</source>
         <comment>ask whether a cable numbering rule should be defined now</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wilt u er nu een definiëren?
+
+U kunt de kabels ook later automatisch nummeren: de regel wordt op elk moment ingesteld in de projecteigenschappen, op de pagina &quot;Automatische nummering&quot;.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2662"/>
         <source>Yes</source>
         <comment>yes</comment>
-        <translation type="unfinished">Ja</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2663"/>
         <source>No</source>
         <comment>no</comment>
-        <translation type="unfinished">Neen</translation>
+        <translation>Neen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2664"/>
         <source>Cancel</source>
         <comment>cancel</comment>
-        <translation type="unfinished"></translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3271"/>
         <source>Edit the information of the elements</source>
         <comment>edit several elements</comment>
-        <translation type="unfinished"></translation>
+        <translation>De informatie van de elementen bewerken</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3302"/>
         <source>Edit the cable</source>
         <comment>edit cable</comment>
-        <translation type="unfinished"></translation>
+        <translation>De kabel bewerken</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4866"/>
         <source>Remembered after a restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Onthouden na een herstart</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5009"/>
         <source>Text format of &quot;%1&quot; copied</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstopmaak van “%1” gekopieerd</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="5037"/>
         <source>Text format applied to %n element(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Tekstopmaak toegepast op %n element</numerusform>
+            <numerusform>Tekstopmaak toegepast op %n elementen</numerusform>
         </translation>
     </message>
     <message>
@@ -13612,38 +13700,38 @@ You can also number the cables automatically later: the rule is set at any time 
         <location filename="../sources/qetdiagrameditor.cpp" line="1467"/>
         <source>Scripts</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Scripts</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1600"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1608"/>
         <source>Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1624"/>
         <source>Align</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitlijnen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1638"/>
         <source>Rows and columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Rijen en kolommen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1641"/>
         <source>Depth</source>
-        <translation type="unfinished">Diepte</translation>
+        <translation>Diepte</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1669"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4731"/>
         <source>Scripts</source>
-        <translation type="unfinished"></translation>
+        <translation>Scripts</translation>
     </message>
     <message>
         <source>QElectroTech project(*.qet);;XML Files (*.xml);;All files (*)</source>
@@ -13698,13 +13786,13 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
         <location filename="../sources/qetdiagrameditor.cpp" line="2287"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2291"/>
         <source>Sheet %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2314"/>
         <source>Conductors not loaded</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Geleiders niet geladen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2847"/>
@@ -13722,40 +13810,40 @@ Ontkoppel en/of verwijder de niveaus van de betreffende terminals om ze te kunne
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2983"/>
         <source>%n items put back on the grid</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n item teruggezet op het raster</numerusform>
+            <numerusform>%n items teruggezet op het raster</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2984"/>
         <source>%n items aligned</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n item uitgelijnd</numerusform>
+            <numerusform>%n items uitgelijnd</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2990"/>
         <source>The selection is already on the grid</source>
-        <translation type="unfinished"></translation>
+        <translation>De selectie staat al op het raster</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2992"/>
         <source>Select at least two unlocked elements, images, texts, shapes or groups</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer ten minste twee niet-vergrendelde elementen, afbeeldingen, teksten, vormen of groepen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2994"/>
         <source>The selection is already aligned, to the nearest grid step</source>
-        <translation type="unfinished"></translation>
+        <translation>De selectie is al uitgelijnd, op de dichtstbijzijnde rasterstap</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2998"/>
         <source>(%n locked objects left in place)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>(%n vergrendeld object op zijn plaats gelaten)</numerusform>
+            <numerusform>(%n vergrendelde objecten op hun plaats gelaten)</numerusform>
         </translation>
     </message>
     <message>
@@ -13839,52 +13927,52 @@ Ontkoppel en/of verwijder de niveaus van de betreffende terminals om ze te kunne
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4284"/>
         <source>Repeat: insert &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Herhalen: “%1” invoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
         <source>Repeat: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Herhalen: %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4582"/>
         <source>sheet %1</source>
-        <translation type="unfinished"></translation>
+        <translation>blad %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4590"/>
         <source>%n elements redrawn.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element opnieuw getekend.</numerusform>
+            <numerusform>%n elementen opnieuw getekend.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4594"/>
         <source>%n elements for which no definition could be found or which were illegible: their current design has been retained.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element waarvoor geen definitie gevonden werd of dat onleesbaar was: de huidige tekening werd behouden.</numerusform>
+            <numerusform>%n elementen waarvoor geen definitie gevonden werd of die onleesbaar waren: de huidige tekening werd behouden.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4606"/>
         <source>%n elements not redrawn: their size, grip point or terminals have changed (a terminal was added, removed or moved).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element niet opnieuw getekend: de grootte, het grijppunt of de klemmen zijn gewijzigd (een klem werd toegevoegd, verwijderd of verplaatst).</numerusform>
+            <numerusform>%n elementen niet opnieuw getekend: de grootte, het grijppunt of de klemmen zijn gewijzigd (een klem werd toegevoegd, verwijderd of verplaatst).</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4610"/>
         <source>To update them, they must be deleted then reinserted. Warning: this operation removes the conductors already connected to these elements, which will need to be redrawn.</source>
-        <translation type="unfinished"></translation>
+        <translation>Om ze bij te werken, moeten ze verwijderd en opnieuw ingevoegd worden. Opgelet: deze bewerking verwijdert de geleiders die al met deze elementen verbonden zijn en die opnieuw getekend moeten worden.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4639"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4643"/>
         <source>Run a script</source>
-        <translation type="unfinished"></translation>
+        <translation>Een script uitvoeren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4668"/>
@@ -13893,111 +13981,119 @@ Ontkoppel en/of verwijder de niveaus van de betreffende terminals om ze te kunne
 A script runs with your permissions: it can read and modify the open project and write files. Only run scripts whose origin you know.
 
 Enable scripts? This setting can be changed in Configure QElectroTech &gt; General &gt; Projects.</source>
-        <translation type="unfinished"></translation>
+        <translation>Scripts zijn uitgeschakeld.
+
+Een script draait met uw rechten: het kan het geopende project lezen en wijzigen en bestanden schrijven. Voer alleen scripts uit waarvan u de herkomst kent.
+
+Scripts inschakelen? Deze instelling kan gewijzigd worden in QElectroTech configureren &gt; Algemeen &gt; Projecten.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4645"/>
         <source>JavaScript scripts (*.js);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>JavaScript-scripts (*.js);;Alle bestanden (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4745"/>
         <source>Ignored: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Genegeerd: %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4780"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4841"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Stoppen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4781"/>
         <source>Stop recording the macro</source>
-        <translation type="unfinished"></translation>
+        <translation>De macro-opname stoppen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4791"/>
         <source>● Recording: %n steps</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>● Opname: %n stap</numerusform>
+            <numerusform>● Opname: %n stappen</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4806"/>
         <source>Macro recorded</source>
-        <translation type="unfinished"></translation>
+        <translation>Macro opgenomen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4807"/>
         <source>“%1”: %n steps.
 
 To make a script of it, ask your AI assistant: the button below copies the request, just paste it into its window.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>“%1”: %n stap.
+
+Vraag uw AI-assistent om er een script van te maken: de knop hieronder kopieert het verzoek, plak het gewoon in zijn venster.</numerusform>
+            <numerusform>“%1”: %n stappen.
+
+Vraag uw AI-assistent om er een script van te maken: de knop hieronder kopieert het verzoek, plak het gewoon in zijn venster.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4816"/>
         <source>&amp;Copy the request for the assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Het verzoek voor de assistent &amp;kopiëren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4817"/>
         <source>&amp;Open the folder</source>
-        <translation type="unfinished"></translation>
+        <translation>De &amp;map openen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4823"/>
         <source>Request copied: paste it into the assistant&apos;s window</source>
-        <translation type="unfinished"></translation>
+        <translation>Verzoek gekopieerd: plak het in het venster van de assistent</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4842"/>
         <source>Close the assistant&apos;s connection for the rest of the session</source>
-        <translation type="unfinished"></translation>
+        <translation>De verbinding van de assistent sluiten voor de rest van de sessie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4851"/>
         <source>Live mode: assistant connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Live-modus: assistent verbonden</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4852"/>
         <source>Live mode: waiting for an assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Live-modus: wachten op een assistent</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4860"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4904"/>
         <source>Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>Assistent</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4864"/>
         <source>Ask before running a script the assistant wrote</source>
-        <translation type="unfinished"></translation>
+        <translation>Vragen voordat een script wordt uitgevoerd dat de assistent geschreven heeft</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4921"/>
         <source>Live mode: %1 %2 at %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Live-modus: %1 %2 om %3</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4963"/>
         <source>%n kinds of items hidden</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n soort items verborgen</numerusform>
+            <numerusform>%n soorten items verborgen</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4979"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4984"/>
         <source>Texts %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Teksten %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="959"/>
@@ -14154,12 +14250,12 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="401"/>
         <source>Zoom content</source>
-        <translation type="unfinished">Zoom op de inhoud</translation>
+        <translation>Inzoomen op de inhoud</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="404"/>
         <source>Adjusts the zoom to display the whole symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Past de zoom aan zodat het hele symbool zichtbaar is</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="420"/>
@@ -14564,24 +14660,24 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="862"/>
         <source>Duplicate terminal names</source>
-        <translation type="unfinished"></translation>
+        <translation>Dubbele klemnamen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="863"/>
         <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Several terminals have the same name: %1.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Give each terminal a unique name, for example N.1 and N.2. The terminals concerned are selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Fout&lt;/b&gt;:&lt;br&gt;Meerdere klemmen hebben dezelfde naam: %1.&lt;br&gt;&lt;b&gt;Oplossing&lt;/b&gt;:&lt;br&gt;Geef elke klem een unieke naam, bijvoorbeeld N.1 en N.2. De betrokken klemmen zijn geselecteerd.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="884"/>
         <source>Terminals without a name</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmen zonder naam</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="885"/>
         <source>&lt;br&gt;%n terminals without a name. Without unique terminal names, the wiring list (what connects to what) cannot name each terminal, so it cannot be used to wire the cabinet in the workshop.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>&lt;br&gt;%n klem zonder naam. Zonder unieke klemnamen kan de bedradingslijst (wat met wat verbonden is) niet elke klem benoemen, en kan ze dus niet gebruikt worden om de kast in het atelier te bedraden.</numerusform>
+            <numerusform>&lt;br&gt;%n klemmen zonder naam. Zonder unieke klemnamen kan de bedradingslijst (wat met wat verbonden is) niet elke klem benoemen, en kan ze dus niet gebruikt worden om de kast in het atelier te bedraden.</numerusform>
         </translation>
     </message>
     <message>
@@ -14622,38 +14718,38 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1155"/>
         <source>Scale the element...</source>
-        <translation type="unfinished"></translation>
+        <translation>Het element schalen...</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1205"/>
         <source>Show the background frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Het achtergrondkader tonen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1213"/>
         <source>Background frame size...</source>
-        <translation type="unfinished"></translation>
+        <translation>Grootte van het achtergrondkader...</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1216"/>
         <source>Background frame size</source>
-        <translation type="unfinished"></translation>
+        <translation>Grootte van het achtergrondkader</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1221"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1227"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1223"/>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Breedte</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1229"/>
         <source>Height</source>
-        <translation type="unfinished">Hoogte</translation>
+        <translation>Hoogte</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1391"/>
@@ -14876,13 +14972,13 @@ the conditions are not valid</source>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="101"/>
         <source>Save settings as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Instellingen bewaren als...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="102"/>
         <source>Saves QElectroTech&apos;s settings to a file</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bewaart de instellingen van QElectroTech in een bestand</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="72"/>
@@ -14906,35 +15002,35 @@ the conditions are not valid</source>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="96"/>
         <source>&amp;Customize...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Aanpassen...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="98"/>
         <source>Toolbars, shortcut bar, keyboard and mouse gestures, in one window</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalken, sneltoetsbalk, toetsenbord- en muisgebaren, in één venster</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="106"/>
         <source>Load settings...</source>
-        <translation type="unfinished"></translation>
+        <translation>Instellingen laden...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="107"/>
         <source>Replaces QElectroTech&apos;s settings with those of a file, then closes QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vervangt de instellingen van QElectroTech door die van een bestand en sluit QElectroTech daarna af</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="133"/>
         <source>Connect an AI assistant...</source>
-        <translation type="unfinished"></translation>
+        <translation>Een AI-assistent verbinden...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="135"/>
         <source>Shows the setup that lets an AI assistant use QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Toont de configuratie waarmee een AI-assistent QElectroTech kan gebruiken</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="143"/>
@@ -15064,32 +15160,32 @@ the conditions are not valid</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="1628"/>
         <source>Renumber elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementen hernummeren</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1629"/>
         <source>Renumber elements (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementen hernummeren (%1)</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2738"/>
         <source>QElectroTech project (*.qet *.qetz)</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech-project (*.qet *.qetz)</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2869"/>
         <source>%1 was opened read-only because someone else has it open. Use Save As to keep your changes in another file.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 werd alleen-lezen geopend omdat iemand anders het open heeft. Gebruik Bewaren als om uw wijzigingen in een ander bestand te bewaren.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2874"/>
         <source>Cannot save %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan %1 niet bewaren: %2</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2894"/>
         <source>someone else changed the file on disk at %1 since it was opened, and saving would overwrite that. Save to another name, or set QET_OVERWRITE_CHANGED=1 to overwrite it.</source>
-        <translation type="unfinished"></translation>
+        <translation>iemand anders heeft het bestand op schijf gewijzigd om %1 sinds het geopend werd, en bewaren zou die wijziging overschrijven. Bewaar onder een andere naam, of stel QET_OVERWRITE_CHANGED=1 in om te overschrijven.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="3087"/>
@@ -15167,17 +15263,17 @@ Wat wil je doen?</translation>
     <message>
         <location filename="../sources/dataBase/sqlreadonly.cpp" line="80"/>
         <source>Unable to verify the query: the database cannot be set to read-only.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan de query niet controleren: de database kan niet op alleen-lezen gezet worden.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/sqlreadonly.cpp" line="105"/>
         <source>Only read-only queries are allowed: this query would modify the database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen leesquery&apos;s zijn toegestaan: deze query zou de database wijzigen.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/sqlreadonly.cpp" line="109"/>
         <source>Invalid SQL query: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ongeldige SQL-query: %1</translation>
     </message>
 </context>
 <context>
@@ -15656,7 +15752,7 @@ Wat wil je doen?</translation>
         <location filename="../sources/qet.cpp" line="354"/>
         <source>%n elements</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n element</numerusform>
             <numerusform>%n elementen</numerusform>
         </translation>
@@ -15665,7 +15761,7 @@ Wat wil je doen?</translation>
         <location filename="../sources/qet.cpp" line="364"/>
         <source>%n conductors</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n geleider</numerusform>
             <numerusform>%n geleiders</numerusform>
         </translation>
@@ -15674,7 +15770,7 @@ Wat wil je doen?</translation>
         <location filename="../sources/qet.cpp" line="374"/>
         <source>%n textfields</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n tekstveld</numerusform>
             <numerusform>%n tekstvelden</numerusform>
         </translation>
@@ -15683,16 +15779,16 @@ Wat wil je doen?</translation>
         <location filename="../sources/qet.cpp" line="384"/>
         <source>%n images</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n afbeelding</numerusform>
+            <numerusform>%n afbeeldingen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="394"/>
         <source>%n shapes</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n vorm</numerusform>
             <numerusform>%n vormen</numerusform>
         </translation>
@@ -15701,27 +15797,27 @@ Wat wil je doen?</translation>
         <location filename="../sources/qet.cpp" line="404"/>
         <source>%n texts of element</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
-            <numerusform>%n symbool tekt</numerusform>
-            <numerusform>%n symbool teksten</numerusform>
+        <translation>
+            <numerusform>%n elementtekst</numerusform>
+            <numerusform>%n elementteksten</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="414"/>
         <source>%n tables</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
-            <numerusform>%n tabel(len)</numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n tabel</numerusform>
+            <numerusform>%n tabellen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="424"/>
         <source>%n layouts of terminal blocks</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n klemmenstrookindeling</numerusform>
+            <numerusform>%n klemmenstrookindelingen</numerusform>
         </translation>
     </message>
     <message>
@@ -15887,7 +15983,7 @@ Wat wil je doen?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="801"/>
         <source>scale the element</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>het element schalen</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partrectangle.h" line="62"/>
@@ -16167,7 +16263,7 @@ Wat wil je doen?</translation>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="132"/>
         <source>Change the information of the element</source>
-        <translation type="unfinished"></translation>
+        <translation>De informatie van het element wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="92"/>
@@ -16246,7 +16342,7 @@ Wat wil je doen?</translation>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="166"/>
         <source>Macros</source>
-        <translation type="unfinished"></translation>
+        <translation>Macro&apos;s</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="168"/>
@@ -16272,7 +16368,7 @@ the translated name of this folder could not be read, so its folder name is disp
     <message>
         <location filename="../sources/elementsmover.cpp" line="100"/>
         <source>This group cannot be moved: the position of one of its elements is locked.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze groep kan niet verplaatst worden: de positie van een van zijn elementen is vergrendeld.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/elementsmover.cpp" line="332"/>
@@ -16337,16 +16433,16 @@ the translated name of this folder could not be read, so its folder name is disp
     <message numerus="yes">
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="108"/>
         <source>%n texts</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n tekst</numerusform>
+            <numerusform>%n teksten</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="111"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="932"/>
         <source>Rotate %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 roteren</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="174"/>
@@ -16400,7 +16496,7 @@ Wilt u deze vervangen?</translation>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="434"/>
         <source>Apply text format</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstopmaak toepassen</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.cpp" line="75"/>
@@ -16576,17 +16672,17 @@ Wilt u deze vervangen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="324"/>
         <source>Width [mm]</source>
-        <translation type="unfinished"></translation>
+        <translation>Breedte [mm]</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="325"/>
         <source>Height [mm]</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoogte [mm]</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="326"/>
         <source>Depth [mm]</source>
-        <translation type="unfinished"></translation>
+        <translation>Diepte [mm]</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="334"/>
@@ -16801,27 +16897,27 @@ Wilt u deze vervangen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Model</source>
-        <translation type="unfinished"></translation>
+        <translation>Model</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Category</source>
-        <translation type="unfinished"></translation>
+        <translation>Categorie</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Rated voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Nominale spanning</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="287"/>
         <source>Rated current</source>
-        <translation type="unfinished"></translation>
+        <translation>Nominale stroom</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Opmerkingen</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="317"/>
@@ -16937,12 +17033,12 @@ Wilt u deze vervangen?</translation>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="88"/>
         <source>Add a cable list</source>
-        <translation type="unfinished"></translation>
+        <translation>Een kabellijst toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="89"/>
         <source>Cable list</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabellijst</translation>
     </message>
     <message>
         <location filename="../sources/editor/UndoCommand/pastepartscommand.cpp" line="62"/>
@@ -17008,31 +17104,31 @@ Wilt u deze vervangen?</translation>
         <location filename="../sources/properties/elementdata.cpp" line="901"/>
         <source>Anti-parallel diodes</source>
         <comment>anti-parallel diodes terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Antiparallelle diodes</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="903"/>
         <source>Resistor</source>
         <comment>resistor terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Weerstand</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="905"/>
         <source>Varistor</source>
         <comment>varistor terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Varistor</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="907"/>
         <source>Test socket</source>
         <comment>test socket terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Testaansluiting</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="909"/>
         <source>Diode (reversed)</source>
         <comment>reversed diode terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Diode (omgekeerd)</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="946"/>
@@ -17282,33 +17378,33 @@ Download deze door de onderstaande link te volgen en pak het uit in de installat
     <message>
         <location filename="../sources/undocommand/promoteshapecommand.cpp" line="26"/>
         <source>Transform %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 transformeren</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="95"/>
         <source>Text grid %1. Release Shift and hold Ctrl to place freely.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstraster %1. Laat Shift los en houd Ctrl ingedrukt om vrij te plaatsen.</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="97"/>
         <source>Text grid disabled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstraster uitgeschakeld.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/elementtextsmover.cpp" line="165"/>
         <source>%n texts of element</source>
-        <translation type="unfinished">
-            <numerusform>%n symbool tekt</numerusform>
-            <numerusform>%n symbool teksten</numerusform>
+        <translation>
+            <numerusform>%n elementtekst</numerusform>
+            <numerusform>%n elementteksten</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/elementtextsmover.cpp" line="167"/>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="110"/>
         <source>%n groups of texts</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n tekstgroep</numerusform>
+            <numerusform>%n tekstgroepen</numerusform>
         </translation>
     </message>
     <message>
@@ -17316,257 +17412,257 @@ Download deze door de onderstaande link te volgen en pak het uit in de installat
         <location filename="../sources/scripting/qetscriptapi.cpp" line="861"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="3530"/>
         <source>Move %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="42"/>
         <source>Add a terminal to a group of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Een klem aan een klemmengroep toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="43"/>
         <source>Add terminal %1 to a group of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Klem %1 aan een klemmengroep toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="46"/>
         <source>Add a terminal to terminal group %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Een klem aan klemmengroep %1 toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="47"/>
         <source>Add terminal %1 to terminal group %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Klem %1 aan klemmengroep %2 toevoegen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="61"/>
         <source>Add %n terminals to a group of terminals</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n klem aan een klemmengroep toevoegen</numerusform>
+            <numerusform>%n klemmen aan een klemmengroep toevoegen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="62"/>
         <source>Add %n terminals to terminal group %1</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n klem aan klemmengroep %1 toevoegen</numerusform>
+            <numerusform>%n klemmen aan klemmengroep %1 toevoegen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="145"/>
         <source>Remove %n terminals from a group of terminals</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n klem uit een klemmengroep verwijderen</numerusform>
+            <numerusform>%n klemmen uit een klemmengroep verwijderen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="146"/>
         <source>Remove %n terminals from terminal group %1</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n klem uit klemmengroep %1 verwijderen</numerusform>
+            <numerusform>%n klemmen uit klemmengroep %1 verwijderen</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="175"/>
         <source>Move a terminal from a group of terminals to another group of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Een klem van een klemmengroep naar een andere klemmengroep verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="177"/>
         <source>Move a terminal from a group of terminals to terminal group %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Een klem van een klemmengroep naar klemmengroep %1 verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="179"/>
         <source>Move a terminal from terminal group %1 to another group of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Een klem van klemmengroep %1 naar een andere klemmengroep verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="181"/>
         <source>Move a terminal from terminal group %1 to terminal group %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Een klem van klemmengroep %1 naar klemmengroep %2 verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="184"/>
         <source>Move terminal %1 from a group of terminals to another group of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Klem %1 van een klemmengroep naar een andere klemmengroep verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="186"/>
         <source>Move terminal %1 from a group of terminals to terminal group %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Klem %1 van een klemmengroep naar klemmengroep %2 verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="188"/>
         <source>Move terminal %1 from terminal group %2 to another group of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Klem %1 van klemmengroep %2 naar een andere klemmengroep verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="190"/>
         <source>Move terminal %1 from terminal group %2 to terminal group %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Klem %1 van klemmengroep %2 naar klemmengroep %3 verplaatsen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="209"/>
         <source>Move %n terminals from one group of terminals to another group of terminals</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n klem van een klemmengroep naar een andere klemmengroep verplaatsen</numerusform>
+            <numerusform>%n klemmen van een klemmengroep naar een andere klemmengroep verplaatsen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="211"/>
         <source>Move %n terminals from a group of terminals to the %1 group of terminals</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n klem van een klemmengroep naar klemmengroep %1 verplaatsen</numerusform>
+            <numerusform>%n klemmen van een klemmengroep naar klemmengroep %1 verplaatsen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="213"/>
         <source>Move %n terminals from terminal group %1 to another terminal group</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n klem van klemmengroep %1 naar een andere klemmengroep verplaatsen</numerusform>
+            <numerusform>%n klemmen van klemmengroep %1 naar een andere klemmengroep verplaatsen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="215"/>
         <source>Move %n terminals from terminal group %1 to terminal group %2</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n klem van klemmengroep %1 naar klemmengroep %2 verplaatsen</numerusform>
+            <numerusform>%n klemmen van klemmengroep %1 naar klemmengroep %2 verplaatsen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="258"/>
         <source>Add %n spare terminals</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n reserveklem toevoegen</numerusform>
+            <numerusform>%n reserveklemmen toevoegen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="259"/>
         <source>Add %n spare terminals to terminal group %1</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n reserveklem toevoegen aan klemmengroep %1</numerusform>
+            <numerusform>%n reserveklemmen toevoegen aan klemmengroep %1</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="297"/>
         <source>Modify the spare terminal %1</source>
-        <translation type="unfinished"></translation>
+        <translation>De reserveklem %1 wijzigen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/alignselectioncommand.cpp" line="144"/>
         <source>Align %n objects to the grid</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n object op het raster uitlijnen</numerusform>
+            <numerusform>%n objecten op het raster uitlijnen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/alignselectioncommand.cpp" line="188"/>
         <source>Align %n items</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n item uitlijnen</numerusform>
+            <numerusform>%n items uitlijnen</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="840"/>
         <source>insert %1</source>
-        <translation type="unfinished">Toevoegen %1</translation>
+        <translation>%1 invoegen</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="1312"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="1377"/>
         <source>Edit the conductor properties</source>
-        <translation type="unfinished"></translation>
+        <translation>De eigenschappen van de geleider bewerken</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2153"/>
         <source>Edit a text</source>
-        <translation type="unfinished"></translation>
+        <translation>Een tekst bewerken</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2176"/>
         <source>Change the color of a text</source>
-        <translation type="unfinished">Bewerken tekst kleur</translation>
+        <translation>De kleur van een tekst wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2194"/>
         <source>Rotate a text</source>
-        <translation type="unfinished"></translation>
+        <translation>Een tekst draaien</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2455"/>
         <source>Edit line of a form</source>
-        <translation type="unfinished">Wijzig de eigenschappen van een vorm</translation>
+        <translation>De lijn van een vorm bewerken</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2467"/>
         <source>Edit filling a form</source>
-        <translation type="unfinished">Wijzig en vervang de eigenschappen van een vorm</translation>
+        <translation>De vulling van een vorm bewerken</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2475"/>
         <source>Rotate a shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Een vorm draaien</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2682"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2804"/>
         <source>Change the shape of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>De vorm van %1 wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2832"/>
         <source>Close/Open %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 sluiten/openen</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="3912"/>
         <source>Resize an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Het formaat van een afbeelding wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="3938"/>
         <source>Rotate an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Een afbeelding draaien</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="4314"/>
         <source>Edit element text</source>
-        <translation type="unfinished">Wijzig een symbool tekst</translation>
+        <translation>Elementtekst bewerken</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="4396"/>
         <source>Automatically number an element</source>
-        <translation type="unfinished">Een element automatisch nummeren</translation>
+        <translation>Een element automatisch nummeren</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="4438"/>
         <source>Renumber elements (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementen hernummeren (%1)</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="5379"/>
         <source>Search and replace</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken en vervangen</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="5670"/>
         <location filename="../sources/scripting/qetscripting.cpp" line="147"/>
         <location filename="../sources/scripting/qetscripting.cpp" line="232"/>
         <source>Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Script</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscripting.cpp" line="63"/>
@@ -17575,68 +17671,72 @@ Download deze door de onderstaande link te volgen en pak het uit in de installat
 A script has access to the entire project and can write files, so this feature is disabled by default.
 
 To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_ENABLE_SCRIPTING=1 environment variable for headless execution (CI, batch processing).</source>
-        <translation type="unfinished"></translation>
+        <translation>Scripts zijn uitgeschakeld.
+
+Een script heeft toegang tot het hele project en kan bestanden schrijven, daarom is deze functie standaard uitgeschakeld.
+
+Om ze in te schakelen: QElectroTech configureren &gt; Algemeen &gt; Projecten, of stel de omgevingsvariabele QET_ENABLE_SCRIPTING=1 in voor uitvoering zonder grafische omgeving (CI, batchverwerking).</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscripting.cpp" line="188"/>
         <source>Assistant: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Assistent: %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscripting.cpp" line="189"/>
         <source>Script: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Script: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/groupitemscommand.cpp" line="55"/>
         <source>Group %n items</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n item groeperen</numerusform>
+            <numerusform>%n items groeperen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/groupitemscommand.cpp" line="75"/>
         <source>Ungroup %n items</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Groep van %n item opheffen</numerusform>
+            <numerusform>Groep van %n items opheffen</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/undocommand/freezeelementlabelcommand.cpp" line="26"/>
         <source>Freeze element name</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementnaam bevriezen</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/freezeelementlabelcommand.cpp" line="27"/>
         <source>Unfreeze element name</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementnaam ontdooien</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="505"/>
         <source>Sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/groupterminalscommand.cpp" line="37"/>
         <source>Group a set of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Een set klemmen groeperen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/groupterminalscommand.cpp" line="59"/>
         <source>Ungroup a set of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Groep van een set klemmen opheffen</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/mirrorselectioncommand.cpp" line="58"/>
         <source>Horizontal mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontaal spiegelen</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/mirrorselectioncommand.cpp" line="59"/>
         <source>Vertical mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Verticaal spiegelen</translation>
     </message>
 </context>
 <context>
@@ -17688,22 +17788,23 @@ Voeg een nieuwe tafel toe of pas de bestaande tabel aan om alle informatie weer 
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="194"/>
         <source>syntax error at line %1, column %2:
 %3</source>
-        <translation type="unfinished"></translation>
+        <translation>syntaxfout op regel %1, kolom %2:
+%3</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="231"/>
         <source>No collection folder was given.</source>
-        <translation type="unfinished"></translation>
+        <translation>Er werd geen collectiemap opgegeven.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="251"/>
         <source>the root element &lt;%1&gt; is not &lt;labels&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>het root-element &lt;%1&gt; is niet &lt;labels&gt;.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="256"/>
         <source>the file could not be opened: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>het bestand kon niet worden geopend: %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="288"/>
@@ -17713,23 +17814,29 @@ folder&apos;s prefix, unless they carry a label of their own. A folder
 without a prefix takes its parent folder&apos;s.
 QElectroTech creates and changes this file (Settings:
 Configure prefixes…), but it can still be edited by hand.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefixbestand (labels) van de gebruikerscollectie.
+Elke map krijgt een prefix: de symbolen van een map nemen de
+prefix van die map, tenzij ze een eigen label hebben. Een map
+zonder prefix neemt die van de bovenliggende map.
+QElectroTech maakt en wijzigt dit bestand (Instellingen:
+Prefixen instellen…), maar het kan nog altijd met de hand bewerkt worden.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="615"/>
         <source>No prefix file to save.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen prefixbestand om te bewaren.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="626"/>
         <source>The folder %1 could not be created.</source>
-        <translation type="unfinished"></translation>
+        <translation>De map %1 kon niet worden aangemaakt.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="638"/>
         <source>The file %1 could not be copied beside itself before being replaced:
 nothing has been changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het bestand %1 kon niet naast zichzelf gekopieerd worden voordat het vervangen werd:
+er werd niets gewijzigd.</translation>
     </message>
 </context>
 <context>
@@ -17758,207 +17865,207 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="923"/>
         <source>Deform a curve</source>
-        <translation type="unfinished"></translation>
+        <translation>Een kromme vervormen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1128"/>
         <source>Nearest node</source>
-        <translation type="unfinished"></translation>
+        <translation>Dichtstbijzijnde knooppunt</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1129"/>
         <source>Smooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Vloeiend</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1130"/>
         <source>Symmetric</source>
-        <translation type="unfinished"></translation>
+        <translation>Symmetrisch</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1131"/>
         <source>Corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoek</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1150"/>
         <source>Delete the nearest node</source>
-        <translation type="unfinished"></translation>
+        <translation>Het dichtstbijzijnde knooppunt verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1167"/>
         <source>Convert to polyline</source>
-        <translation type="unfinished"></translation>
+        <translation>Omzetten naar polylijn</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1167"/>
         <source>Convert to Bézier curve</source>
-        <translation type="unfinished"></translation>
+        <translation>Omzetten naar Bézierkromme</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1180"/>
         <source>Horizontal mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontaal spiegelen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1182"/>
         <source>Vertical mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Verticaal spiegelen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1257"/>
         <source>Size</source>
-        <translation type="unfinished">Dikte</translation>
+        <translation>Grootte</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1258"/>
         <source>Rounded corners</source>
-        <translation type="unfinished"></translation>
+        <translation>Afgeronde hoeken</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1259"/>
         <source>Node editing</source>
-        <translation type="unfinished"></translation>
+        <translation>Knooppunten bewerken</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1260"/>
         <source>Rotation/Skew</source>
-        <translation type="unfinished"></translation>
+        <translation>Draaien/Schuintrekken</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1278"/>
         <source>Click: mode %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik: modus %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1358"/>
         <source>Drag a corner/edge: resize (Ctrl = from center, Shift = proportions, Alt = detach into a polyline)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sleep een hoek/rand: formaat wijzigen (Ctrl = vanuit het midden, Shift = verhoudingen, Alt = losmaken als polylijn)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1361"/>
         <source> ; turquoise point: arc</source>
-        <translation type="unfinished"></translation>
+        <translation> ; turquoise punt: boog</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1365"/>
         <source>Drag an endpoint: move it</source>
-        <translation type="unfinished"></translation>
+        <translation>Sleep een eindpunt: verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1369"/>
         <source>Drag a point: move it</source>
-        <translation type="unfinished"></translation>
+        <translation>Sleep een punt: verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1374"/>
         <source>Drag the purple point: round the corners</source>
-        <translation type="unfinished"></translation>
+        <translation>Sleep het paarse punt: de hoeken afronden</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1378"/>
         <source>Drag a handle or the curve: deform (Alt = break the tangent); Alt+drag a corner point: create handles; right click: nearest node menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Sleep een greep of de kromme: vervormen (Alt = de raaklijn breken); Alt+slepen van een hoekpunt: grepen maken; rechterklik: menu van het dichtstbijzijnde knooppunt</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1388"/>
         <source>an endpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>een eindpunt</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1389"/>
         <source>a corner</source>
-        <translation type="unfinished"></translation>
+        <translation>een hoek</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1390"/>
         <source>a point</source>
-        <translation type="unfinished"></translation>
+        <translation>een punt</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1391"/>
         <source>Drag %1: rotation (Shift = 15°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sleep %1: draaien (Shift = 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1393"/>
         <source> ; an edge: skew</source>
-        <translation type="unfinished"></translation>
+        <translation> ; een rand: schuintrekken</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1394"/>
         <source> ; red point: drag to reposition the rotation center</source>
-        <translation type="unfinished"></translation>
+        <translation> ; rood punt: slepen om het draaipunt te verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1406"/>
         <source> (Ctrl while dragging = free position, no grid snapping)</source>
-        <translation type="unfinished"></translation>
+        <translation> (Ctrl tijdens het slepen = vrije positie, geen uitlijning op het raster)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1407"/>
         <source> — Click: mode %1</source>
-        <translation type="unfinished"></translation>
+        <translation> — Klik: modus %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1437"/>
         <source>Drag: move this point</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: dit punt verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1438"/>
         <source>Drag: resize (Ctrl = from center + free position, Shift = proportions</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: formaat wijzigen (Ctrl = vanuit het midden + vrije positie, Shift = verhoudingen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1440"/>
         <source>, Alt = detach into a polyline</source>
-        <translation type="unfinished"></translation>
+        <translation>, Alt = losmaken als polylijn</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1445"/>
         <source>Drag: rotation (Ctrl = free position, Shift = 15°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: draaien (Ctrl = vrije positie, Shift = 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1447"/>
         <source>Drag: skew (Ctrl = free position, Shift = 15°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: schuintrekken (Ctrl = vrije positie, Shift = 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1449"/>
         <source>Drag: reposition the rotation center (Ctrl = free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: het draaipunt verplaatsen (Ctrl = vrije positie)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1451"/>
         <source>Drag: round the corners (Ctrl = free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: de hoeken afronden (Ctrl = vrije positie)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1453"/>
         <source>Drag: adjust the arc (Ctrl = free position, Shift = 15°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: de boog aanpassen (Ctrl = vrije positie, Shift = 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1455"/>
         <source>Drag: deepen or flatten the arc, its ends stay in place (Ctrl = free position)</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: de boog dieper of vlakker maken, de uiteinden blijven op hun plaats (Ctrl = vrije positie)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1458"/>
         <source>Drag: move the point (Ctrl = free position</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: het punt verplaatsen (Ctrl = vrije positie</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1460"/>
         <source>, Alt = create handles</source>
-        <translation type="unfinished"></translation>
+        <translation>, Alt = grepen maken</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1466"/>
         <source>Drag: deform the curve (Ctrl = free position, Alt = break the tangent)</source>
-        <translation type="unfinished"></translation>
+        <translation>Slepen: de kromme vervormen (Ctrl = vrije positie, Alt = de raaklijn breken)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1815"/>
@@ -17973,88 +18080,88 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2017"/>
         <source>Add a point to a curve</source>
-        <translation type="unfinished"></translation>
+        <translation>Een punt aan een kromme toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2046"/>
         <source>Delete a point from a curve</source>
-        <translation type="unfinished"></translation>
+        <translation>Een punt van een kromme verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2137"/>
         <source>Convert %1 to a Bézier curve</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 omzetten naar een Bézierkromme</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2138"/>
         <source>Convert %1 to a polyline</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 omzetten naar een polylijn</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2325"/>
         <source>Mirror not possible: skew too extreme for this shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Spiegelen niet mogelijk: schuintrekking te groot voor deze vorm</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2340"/>
         <source>Horizontal mirror of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontaal spiegelen van %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2340"/>
         <source>Vertical mirror of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Verticaal spiegelen van %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2413"/>
         <source>Change the type of a node</source>
-        <translation type="unfinished"></translation>
+        <translation>Het type van een knooppunt wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2895"/>
         <source>Resize %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 van grootte veranderen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2902"/>
         <source>Rotate %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 draaien</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2912"/>
         <source>Skew %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 schuintrekken</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2918"/>
         <source>Move the rotation center</source>
-        <translation type="unfinished"></translation>
+        <translation>Het draaipunt verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2934"/>
         <source>Round the corners of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>De hoeken van %1 afronden</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2957"/>
         <source>Change the angle of an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>De hoek van een boog wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2963"/>
         <source>Change the curve of an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>De kromming van een boog wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2974"/>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2989"/>
         <source>Change the shape of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>De vorm van %1 wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3003"/>
         <source>Change the curvature of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>De kromming van %1 wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3018"/>
@@ -18074,7 +18181,7 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3387"/>
         <source>an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>een boog</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3388"/>
@@ -18084,7 +18191,7 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3389"/>
         <source>a curve</source>
-        <translation type="unfinished"></translation>
+        <translation>een kromme</translation>
     </message>
 </context>
 <context>
@@ -18136,7 +18243,7 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="369"/>
         <source>Delete a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Een kabel verwijderen</translation>
     </message>
 </context>
 <context>
@@ -18182,9 +18289,9 @@ nothing has been changed.</source>
     <message numerus="yes">
         <location filename="../sources/cable/editcablecommand.cpp" line="216"/>
         <source>Renumber %n cable(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n kabel hernummeren</numerusform>
+            <numerusform>%n kabels hernummeren</numerusform>
         </translation>
     </message>
 </context>
@@ -18193,27 +18300,27 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/autoNum/ui/renumberelementsdialog.cpp" line="35"/>
         <source>Renumber element(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Element(en) hernummeren</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberelementsdialog.cpp" line="40"/>
         <source>Scope</source>
-        <translation type="unfinished"></translation>
+        <translation>Bereik</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberelementsdialog.cpp" line="42"/>
         <source>All schemes</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle schema&apos;s</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberelementsdialog.cpp" line="43"/>
         <source>One scheme</source>
-        <translation type="unfinished"></translation>
+        <translation>Eén schema</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberelementsdialog.cpp" line="51"/>
         <source>Scheme:</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema:</translation>
     </message>
 </context>
 <context>
@@ -18221,43 +18328,43 @@ nothing has been changed.</source>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="90"/>
         <source>%n elements keep the name they have.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element behoudt de naam die het heeft.</numerusform>
+            <numerusform>%n elementen behouden de naam die ze hebben.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="93"/>
         <source>%n elements stay as they are.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element blijft zoals het is.</numerusform>
+            <numerusform>%n elementen blijven zoals ze zijn.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="101"/>
         <source>Sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="101"/>
         <source>Element</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="101"/>
         <source>Current name</source>
-        <translation type="unfinished"></translation>
+        <translation>Huidige naam</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="101"/>
         <source>New name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe naam</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="184"/>
         <source>(frozen)</source>
-        <translation type="unfinished"></translation>
+        <translation>(bevroren)</translation>
     </message>
 </context>
 <context>
@@ -18682,7 +18789,15 @@ Create your own text using the following variables:
 %T: the sheet title
 %l: the row number
 %c: the column number</source>
-        <translation type="unfinished"></translation>
+        <translation>U kunt een aangepast label instellen voor bladverwijzingen.
+Maak uw eigen tekst met de volgende variabelen:
+%f: de positie van het blad in het project
+%F: het bladnummer
+%M: de installatie
+%LM: de locatie
+%T: de bladtitel
+%l: het rijnummer
+%c: het kolomnummer</translation>
     </message>
     <message>
         <source>You can define a custom label for sheet references.
@@ -18708,38 +18823,38 @@ Maak uw eigen tekst met behulp van de volgende variabelen:
     <message>
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="40"/>
         <source>Scale the element</source>
-        <translation type="unfinished"></translation>
+        <translation>Het element schalen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="55"/>
         <source>Factor:</source>
-        <translation type="unfinished"></translation>
+        <translation>Factor:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="57"/>
         <source>Also scale the texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Ook de teksten schalen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="64"/>
         <source>%n terminals of this element are not on the grid, and no factor brings them there.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n klem van dit element staat niet op het raster, en geen enkele factor brengt hem daar.</numerusform>
+            <numerusform>%n klemmen van dit element staan niet op het raster, en geen enkele factor brengt ze daar.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="67"/>
         <source>%n terminals of this element are not on the grid. Only the factors that bring them there are offered.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n klem van dit element staat niet op het raster. Alleen de factoren die hem daar brengen worden aangeboden.</numerusform>
+            <numerusform>%n klemmen van dit element staan niet op het raster. Alleen de factoren die ze daar brengen worden aangeboden.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="70"/>
         <source>Only the factors that keep the terminals on the grid are offered. The element is scaled around its grab point.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen de factoren die de klemmen op het raster houden worden aangeboden. Het element wordt geschaald rond zijn grijppunt.</translation>
     </message>
 </context>
 <context>
@@ -18749,117 +18864,117 @@ Maak uw eigen tekst met behulp van de volgende variabelen:
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="375"/>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="382"/>
         <source>Manage scripts</source>
-        <translation type="unfinished"></translation>
+        <translation>Scripts beheren</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="54"/>
         <source>&amp;New</source>
-        <translation type="unfinished">&amp;Nieuw</translation>
+        <translation>&amp;Nieuw</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="55"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished">&amp;Verwijderen</translation>
+        <translation>&amp;Verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="64"/>
         <source>The button&apos;s text</source>
-        <translation type="unfinished"></translation>
+        <translation>De tekst van de knop</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="66"/>
         <source>empty: the name&apos;s initials; builtin:&lt;name&gt;: an icon of the theme</source>
-        <translation type="unfinished"></translation>
+        <translation>leeg: de initialen van de naam; builtin:&lt;naam&gt;: een pictogram van het thema</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="69"/>
         <source>Choose an image (SVG or PNG)…</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies een afbeelding (SVG of PNG)…</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="76"/>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>Altijd</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="77"/>
         <source>With a selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Met een selectie</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="78"/>
         <source>With a conductor selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Met een geselecteerde geleider</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="81"/>
         <source>Name:</source>
-        <translation type="unfinished">Naam:</translation>
+        <translation>Naam:</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="82"/>
         <source>Icon:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogram:</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="83"/>
         <source>Tooltip:</source>
-        <translation type="unfinished"></translation>
+        <translation>Knopinfo:</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="84"/>
         <source>Shortcut:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sneltoets:</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="85"/>
         <source>Enabled:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingeschakeld:</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="96"/>
         <source>&amp;Test</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Testen</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="97"/>
         <source>Saves, then runs the script on the current project (Ctrl+Z undoes the run)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewaart en voert daarna het script uit op het huidige project (Ctrl+Z maakt de uitvoering ongedaan)</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="99"/>
         <source>&amp;Save</source>
-        <translation type="unfinished">B&amp;ewaren</translation>
+        <translation>B&amp;ewaren</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="100"/>
         <source>Open the &amp;folder</source>
-        <translation type="unfinished"></translation>
+        <translation>De &amp;map openen</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="101"/>
         <source>&amp;Close</source>
-        <translation type="unfinished">&amp;Sluiten</translation>
+        <translation>&amp;Sluiten</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="113"/>
         <source>Script (the qet object; qet.currentFolio() is the sheet shown):</source>
-        <translation type="unfinished"></translation>
+        <translation>Script (het object qet; qet.currentFolio() is het getoonde blad):</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="186"/>
         <source>No button: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen knop: %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="216"/>
         <source>No button for this file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen knop voor dit bestand: %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="243"/>
         <source>New script</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw script</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="244"/>
@@ -18868,57 +18983,61 @@ Maak uw eigen tekst met behulp van de volgende variabelen:
 var f = qet.currentFolio();
 qet.addText(f, &quot;Text&quot;, 40, 40);
 </source>
-        <translation type="unfinished"></translation>
+        <translation>// qet.currentFolio() is het getoonde blad; één klik wordt ongedaan gemaakt
+// met één enkele Ctrl+Z. Lijst van aanroepen: qet.apiSignatures()
+var f = qet.currentFolio();
+qet.addText(f, &quot;Tekst&quot;, 40, 40);
+</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="251"/>
         <source>Not saved yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Nog niet bewaard</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="265"/>
         <source>The script needs a name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het script heeft een naam nodig.</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="284"/>
         <source>Not saved: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet bewaard: %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="292"/>
         <source>Cannot write %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan %1 niet schrijven</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="308"/>
         <source>Delete the script</source>
-        <translation type="unfinished"></translation>
+        <translation>Het script verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="309"/>
         <source>Delete “%1” and its button?</source>
-        <translation type="unfinished"></translation>
+        <translation>“%1” en zijn knop verwijderen?</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="342"/>
         <source>Script icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Scriptpictogram</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="343"/>
         <source>Images (*.svg *.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingen (*.svg *.png)</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="352"/>
         <source>Cannot copy %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan %1 niet kopiëren</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="383"/>
         <source>The script shown is not saved. Save it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Het getoonde script is niet bewaard. Bewaren?</translation>
     </message>
 </context>
 <context>
@@ -19187,7 +19306,7 @@ qet.addText(f, &quot;Text&quot;, 40, 40);
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="205"/>
         <source>For a number: the next number to be assigned. For text: the fixed text.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voor een getal: het volgende toe te kennen nummer. Voor tekst: de vaste tekst.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="208"/>
@@ -19202,37 +19321,37 @@ qet.addText(f, &quot;Text&quot;, 40, 40);
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="60"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="62"/>
         <source>Revert to the saved definition</source>
-        <translation type="unfinished"></translation>
+        <translation>Terugzetten naar de bewaarde definitie</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="176"/>
         <source>Move this variable up</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze variabele omhoog verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="177"/>
         <source>Move this variable down</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze variabele omlaag verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="178"/>
         <source>Delete this variable</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze variabele verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="341"/>
         <source>Delete the rule</source>
-        <translation type="unfinished"></translation>
+        <translation>De regel verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="342"/>
         <source>Delete the cable numbering rule: cables are numbered again as before, and the question of defining one comes back on the next drawing.</source>
-        <translation type="unfinished"></translation>
+        <translation>De regel voor kabelnummering verwijderen: kabels worden weer genummerd zoals vroeger, en de vraag om er een te definiëren komt terug bij de volgende tekening.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="408"/>
@@ -19310,7 +19429,7 @@ De andere velden worden niet gebruikt.</translation>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="460"/>
         <source>Cable Auto Numbering</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatische kabelnummering</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="462"/>
@@ -19332,7 +19451,23 @@ The other fields are not used.
 -The &quot;Sheet&quot; type represents the name of the current sheet.
 The other fields are not used.</source>
         <comment>help dialog about the cable autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hier kunt u bepalen hoe nieuwe kabels genummerd worden.
+-Een nummering bestaat uit minstens één variabele.
+-U kunt een nummeringsvariabele toevoegen of verwijderen met de knoppen - en +.
+-Een nummeringsvariabele bestaat uit: een type, een waarde en een increment.
+
+-De types &quot;Digit 1&quot;, &quot;Digit 01&quot; en &quot;Digit 001&quot; stellen een numeriek type voor dat in het veld &quot;Waarde&quot; gedefinieerd wordt en bij elke nieuwe kabel verhoogd wordt met de waarde van het veld &quot;Increment&quot;.
+-&quot;Digit 01&quot; en &quot;Digit 001&quot; worden op het schema respectievelijk met minstens twee en drie cijfers weergegeven.
+Als het getal in het veld Waarde minder cijfers heeft dan het gekozen type, wordt het voorafgegaan door één of twee 0&apos;en om het type te respecteren.
+
+-Het type &quot;Text&quot; stelt een vaste tekst voor.
+Het veld &quot;Increment&quot; wordt niet gebruikt.
+
+-Het type &quot;Sheet no.&quot; stelt het nummer van het huidige blad voor.
+De andere velden worden niet gebruikt.
+
+-Het type &quot;Sheet&quot; stelt de naam van het huidige blad voor.
+De andere velden worden niet gebruikt.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="486"/>
@@ -19381,12 +19516,12 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="595"/>
         <source>New numbering…</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe nummering…</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="599"/>
         <source>Rename numbering…</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummering hernoemen…</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="431"/>
@@ -19471,29 +19606,29 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
         <source>Geometry</source>
-        <translation type="unfinished"></translation>
+        <translation>Geometrie</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="442"/>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Breedte</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="46"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="443"/>
         <source>Height</source>
-        <translation type="unfinished">Hoogte</translation>
+        <translation>Hoogte</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="66"/>
         <source>Angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoek</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="82"/>
         <source> °</source>
-        <translation type="unfinished"></translation>
+        <translation> °</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="205"/>
@@ -19573,7 +19708,7 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="305"/>
         <source>Closed shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Gesloten vorm</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="50"/>
@@ -19583,17 +19718,17 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="183"/>
         <source>Change the length of a line</source>
-        <translation type="unfinished"></translation>
+        <translation>De lengte van een lijn wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="202"/>
         <source>Change the size of a shape</source>
-        <translation type="unfinished"></translation>
+        <translation>De grootte van een vorm wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="215"/>
         <source>Change the angle of a shape</source>
-        <translation type="unfinished"></translation>
+        <translation>De hoek van een vorm wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="236"/>
@@ -19624,17 +19759,17 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="433"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Lengte</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="442"/>
         <source>X radius</source>
-        <translation type="unfinished"></translation>
+        <translation>Straal X</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="443"/>
         <source>Y radius</source>
-        <translation type="unfinished"></translation>
+        <translation>Straal Y</translation>
     </message>
 </context>
 <context>
@@ -19642,53 +19777,53 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="52"/>
         <source>The shortcut bar opens at the cursor position (S key by default). It shows the commands chosen here based on what is selected, then the element picker.</source>
-        <translation type="unfinished"></translation>
+        <translation>De sneltoetsbalk opent op de cursorpositie (standaard toets S). Ze toont de hier gekozen opdrachten afhankelijk van wat geselecteerd is, en daarna de elementkiezer.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="69"/>
         <source>Add →</source>
-        <translation type="unfinished"></translation>
+        <translation>Toevoegen →</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="70"/>
         <source>← Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>← Verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="71"/>
         <source>Move up</source>
-        <translation type="unfinished"></translation>
+        <translation>Omhoog</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="72"/>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
+        <translation>Omlaag</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="73"/>
         <source>Default values</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaardwaarden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="85"/>
         <source>Available commands</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschikbare opdrachten</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="86"/>
         <source>In the bar, in order</source>
-        <translation type="unfinished"></translation>
+        <translation>In de balk, in volgorde</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="92"/>
         <source>Context:</source>
-        <translation type="unfinished"></translation>
+        <translation>Context:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutbarconfigpage.cpp" line="130"/>
         <source>Shortcut bar</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sneltoetsbalk</translation>
     </message>
 </context>
 <context>
@@ -19696,17 +19831,17 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/shortcutbarsettings.cpp" line="77"/>
         <source>Sheet, nothing selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad, niets geselecteerd</translation>
     </message>
     <message>
         <location filename="../sources/shortcutbarsettings.cpp" line="79"/>
         <source>Selected elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Geselecteerde elementen</translation>
     </message>
     <message>
         <location filename="../sources/shortcutbarsettings.cpp" line="81"/>
         <source>Selected conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Geselecteerde geleiders</translation>
     </message>
 </context>
 <context>
@@ -19739,22 +19874,22 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="99"/>
         <source>All categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen niet-toegewezen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="117"/>
         <source>Press a key combination to see which command uses it</source>
-        <translation type="unfinished"></translation>
+        <translation>Druk op een toetscombinatie om te zien welke opdracht ze gebruikt</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="125"/>
         <source>Clear the searched key</source>
-        <translation type="unfinished"></translation>
+        <translation>De gezochte toets wissen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="130"/>
         <source>Search by key:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken op toets:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="137"/>
@@ -19772,7 +19907,7 @@ De overige velden worden niet gebruikt.</translation>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="137"/>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="490"/>
         <source>Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Menu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="146"/>
@@ -19782,12 +19917,12 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="149"/>
         <source>Copy list</source>
-        <translation type="unfinished"></translation>
+        <translation>Lijst kopiëren</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="150"/>
         <source>Copies the shortcuts shown, to paste into a spreadsheet or a document</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopieert de getoonde sneltoetsen, om in een rekenblad of document te plakken</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="217"/>
@@ -19810,7 +19945,7 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="490"/>
         <source>Category</source>
-        <translation type="unfinished"></translation>
+        <translation>Categorie</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="514"/>
@@ -21854,9 +21989,9 @@ De overige velden worden niet gebruikt.</translation>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="654"/>
         <source>This terminal already has %n conductors, the project&apos;s limit. Add a terminal to connect one more conductor.</source>
         <comment>wire refused by the wires-per-terminal limit</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Deze klem heeft al %n geleider, de limiet van het project. Voeg een klem toe om nog een geleider aan te sluiten.</numerusform>
+            <numerusform>Deze klem heeft al %n geleiders, de limiet van het project. Voeg een klem toe om nog een geleider aan te sluiten.</numerusform>
         </translation>
     </message>
 </context>
@@ -21920,7 +22055,7 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="279"/>
         <source>Change the potential of a terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Het potentiaal van een klem wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="298"/>
@@ -22037,12 +22172,12 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="84"/>
         <source>Potential:</source>
-        <translation type="unfinished"></translation>
+        <translation>Potentiaal:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="91"/>
         <source>No effect unless &quot;Function separation&quot; is checked (all terminals of the block then stay connected). When it is checked, terminals sharing the same value stay connected to each other and the others are isolated.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen effect tenzij “Functiescheiding” aangevinkt is (alle klemmen van het blok blijven dan verbonden). Indien aangevinkt, blijven klemmen met dezelfde waarde onderling verbonden en worden de andere geïsoleerd.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="98"/>
@@ -22173,12 +22308,12 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="243"/>
         <source>Re-group all terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle klemmen hergroeperen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="245"/>
         <source>Assign free terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Vrije klemmen toewijzen</translation>
     </message>
 </context>
 <context>
@@ -22305,27 +22440,27 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="132"/>
         <source>Anti-parallel diodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Antiparallelle diodes</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="137"/>
         <source>Resistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Weerstand</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="142"/>
         <source>Varistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Varistor</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="147"/>
         <source>Test socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Testaansluiting</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="152"/>
         <source>Diode (reversed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Diode (omgekeerd)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="160"/>
@@ -22335,42 +22470,42 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="170"/>
         <source>Cable :</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabel :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="180"/>
         <source>Name of the cable of the selected terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam van de kabel van de geselecteerde klemmen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="187"/>
         <source>Set the cable name to all the selected terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>De kabelnaam aan alle geselecteerde klemmen toekennen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="190"/>
         <source>Apply the cable to the selection</source>
-        <translation type="unfinished"></translation>
+        <translation>De kabel op de selectie toepassen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="204"/>
         <source>Manufacturer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Fabrikant:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="211"/>
         <source>Manufacturer of the terminals proposed in the Width column</source>
-        <translation type="unfinished"></translation>
+        <translation>Fabrikant van de klemmen die voorgesteld worden in de kolom Breedte</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="218"/>
         <source>Add spare terminals, on no folio, after the selected terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Reserveklemmen toevoegen, op geen enkel blad, na de geselecteerde klem</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="221"/>
         <source>Add spare terminals...</source>
-        <translation type="unfinished"></translation>
+        <translation>Reserveklemmen toevoegen...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="251"/>
@@ -22430,7 +22565,7 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="69"/>
         <source>All manufacturers</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle fabrikanten</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="142"/>
@@ -22445,37 +22580,37 @@ De overige velden worden niet gebruikt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1144"/>
         <source>Add spare terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Reserveklemmen toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1150"/>
         <source>Number of terminals :</source>
-        <translation type="unfinished"></translation>
+        <translation>Aantal klemmen:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1152"/>
         <source>Number the terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>De klemmen nummeren</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1157"/>
         <source>Prefix :</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefix:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1162"/>
         <source>First number :</source>
-        <translation type="unfinished"></translation>
+        <translation>Eerste nummer:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1167"/>
         <source>Same terminal as %1 (type, section, width, color, manufacturer...)</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezelfde klem als %1 (type, doorsnede, breedte, kleur, fabrikant...)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1169"/>
         <source>the selected terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>de geselecteerde klem</translation>
     </message>
 </context>
 <context>
@@ -22524,48 +22659,48 @@ De overige velden worden niet gebruikt.</translation>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="95"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="209"/>
         <source>Assign free terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Vrije klemmen toewijzen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="98"/>
         <source>Add the free terminals to the terminal strips named after their labels (&quot;X1:2&quot; goes to the strip &quot;X1&quot;), creating the strips when needed. Terminals already assigned to a strip are never touched. Asks for confirmation.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voegt de vrije klemmen toe aan de klemmenstroken die naar hun label genoemd zijn (“X1:2” gaat naar strook “X1”), en maakt de stroken aan indien nodig. Klemmen die al tot een strook behoren, worden nooit gewijzigd. Vraagt om bevestiging.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="106"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="208"/>
         <source>Re-group all terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle klemmen hergroeperen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="109"/>
         <source>Assign the free terminals and also move every terminal whose label prefix or plant and location no longer match its strip. Existing strips are never re-sorted. Asks for confirmation.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijst de vrije klemmen toe en verplaatst ook elke klem waarvan het labelprefix of de installatie en locatie niet meer overeenkomen met zijn strook. Bestaande stroken worden nooit opnieuw gesorteerd. Vraagt om bevestiging.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="55"/>
         <source>Opening the terminal block manager...</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmenbeheer wordt geopend...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="56"/>
         <source>Terminal block manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmenbeheer</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="92"/>
         <source>Reading folio %1 of %2...</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad %1 van %2 wordt gelezen...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="202"/>
         <source>Unapplied edits</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet-toegepaste wijzigingen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="203"/>
         <source>Apply or discard the pending edits of the free terminals table first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pas de openstaande wijzigingen in de tabel met vrije klemmen eerst toe of verwerp ze.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="211"/>
@@ -22574,7 +22709,11 @@ De overige velden worden niet gebruikt.</translation>
 Terminals you placed by hand in a strip whose name does not match their label will be moved too. Existing strips are never re-sorted.
 
 This action can be undone with a single Undo.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vrije klemmen worden toegevoegd aan de klemmenstroken die naar hun label genoemd zijn, en elke klem waarvan het labelprefix of de installatie en locatie niet meer overeenkomen met zijn strook, wordt naar de juiste strook verplaatst.
+
+Klemmen die u met de hand in een strook plaatste waarvan de naam niet overeenkomt met hun label, worden ook verplaatst. Bestaande stroken worden nooit opnieuw gesorteerd.
+
+Deze actie kan met één enkele Ongedaan maken teruggedraaid worden.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="219"/>
@@ -22583,22 +22722,26 @@ This action can be undone with a single Undo.</source>
 Terminals that already belong to a strip are not touched and no strip is re-sorted.
 
 This action can be undone with a single Undo.</source>
-        <translation type="unfinished"></translation>
+        <translation>Elke vrije klem wordt toegevoegd aan de klemmenstrook die naar zijn label genoemd is (“X1:2” gaat naar strook “X1”), waarbij de stroken aangemaakt worden indien nodig.
+
+Klemmen die al tot een strook behoren, worden niet gewijzigd en geen enkele strook wordt opnieuw gesorteerd.
+
+Deze actie kan met één enkele Ongedaan maken teruggedraaid worden.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="242"/>
         <source>%1 terminal(s) assigned or moved to a terminal strip.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 klem toegewezen of verplaatst naar een klemmenstrook.</numerusform>
+            <numerusform>%1 klemmen toegewezen of verplaatst naar klemmenstroken.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="247"/>
         <source>%1 free terminal(s) added to the terminal strips.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 vrije klem toegevoegd aan de klemmenstroken.</numerusform>
+            <numerusform>%1 vrije klemmen toegevoegd aan de klemmenstroken.</numerusform>
         </translation>
     </message>
 </context>
@@ -22613,7 +22756,8 @@ This action can be undone with a single Undo.</source>
         <location filename="../sources/TerminalStrip/GraphicsItem/terminalstripitem.cpp" line="183"/>
         <source>%1 : %2
 Double-click to go to the element</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 : %2
+Dubbelklik om naar het element te gaan</translation>
     </message>
 </context>
 <context>
@@ -22701,92 +22845,92 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="465"/>
         <source>Symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbool</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="482"/>
         <source>Height of the terminal type symbol (fuse, ground, led...). 0 disable the symbol.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoogte van het symbool van het klemtype (zekering, aarde, led...). 0 schakelt het symbool uit.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="492"/>
         <source>Connection length</source>
-        <translation type="unfinished"></translation>
+        <translation>Aansluitlengte</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="499"/>
         <source>Length of the connections drawn above and under each terminal. 0 disable the connections.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lengte van de aansluitingen die boven en onder elke klem getekend worden. 0 schakelt de aansluitingen uit.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="509"/>
         <source>Cable: wires / cable / end</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabel: draden / kabel / einde</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="516"/>
         <source>Length of the wires between the terminals and the cable. 0 disable the drawing of the cables.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lengte van de draden tussen de klemmen en de kabel. 0 schakelt het tekenen van de kabels uit.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="526"/>
         <source>Length of the cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lengte van de kabel.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="536"/>
         <source>Length of the wires after the cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lengte van de draden na de kabel.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="546"/>
         <source>Preview style</source>
-        <translation type="unfinished"></translation>
+        <translation>Voorbeeldstijl</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="553"/>
         <source>Style of the preview only. The style of a terminal strip plan is chosen when it is added to a folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen de stijl van het voorbeeld. De stijl van een klemmenplan wordt gekozen wanneer het aan een blad toegevoegd wordt.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="557"/>
         <source>Schematic</source>
-        <translation type="unfinished"></translation>
+        <translation>Schematisch</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="562"/>
         <source>Realistic (push-in)</source>
-        <translation type="unfinished"></translation>
+        <translation>Realistisch (veerklem, push-in)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="567"/>
         <source>Realistic (screw)</source>
-        <translation type="unfinished"></translation>
+        <translation>Realistisch (schroefklem)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="575"/>
         <source>Scale (px/mm) / length (mm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Schaal (px/mm) / lengte (mm)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="582"/>
         <source>Number of pixels for one millimeter of terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aantal pixels voor één millimeter klem.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="601"/>
         <source>Length of a terminal along the wires, in millimeter.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lengte van een klem langs de draden, in millimeter.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="614"/>
         <source>End stops</source>
-        <translation type="unfinished"></translation>
+        <translation>Eindsteunen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="621"/>
         <source>Group marker</source>
-        <translation type="unfinished"></translation>
+        <translation>Groepsmarkering</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="687"/>
@@ -22859,7 +23003,7 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="215"/>
         <source>Spare</source>
-        <translation type="unfinished"></translation>
+        <translation>Reserve</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="468"/>
@@ -22914,27 +23058,27 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="482"/>
         <source>Shield</source>
-        <translation type="unfinished"></translation>
+        <translation>Afscherming</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="483"/>
         <source>Color</source>
-        <translation type="unfinished">Kleur</translation>
+        <translation>Kleur</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="484"/>
         <source>Section (mm²)</source>
-        <translation type="unfinished"></translation>
+        <translation>Doorsnede (mm²)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="485"/>
         <source>Width (mm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Breedte (mm)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="486"/>
         <source>Separator plate after</source>
-        <translation type="unfinished"></translation>
+        <translation>Scheidingsplaat erna</translation>
     </message>
 </context>
 <context>
@@ -22942,20 +23086,20 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="984"/>
         <source>%1 mm</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1032"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1043"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1076"/>
         <source>None (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen (standaard)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1035"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1133"/>
         <source>%1 mm²</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mm²</translation>
     </message>
 </context>
 <context>
@@ -23074,7 +23218,7 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/QetGraphicsItemModeler/textresizehandles.cpp" line="235"/>
         <source>Resize a text</source>
-        <translation type="unfinished"></translation>
+        <translation>Een tekst van grootte veranderen</translation>
     </message>
 </context>
 <context>
@@ -23082,7 +23226,7 @@ Double-click to go to the element</source>
     <message>
         <location filename="../sources/QetGraphicsItemModeler/textresizehandles.cpp" line="48"/>
         <source>Drag to change the text width, double-click for automatic width</source>
-        <translation type="unfinished"></translation>
+        <translation>Sleep om de tekstbreedte te wijzigen, dubbelklik voor automatische breedte</translation>
     </message>
 </context>
 <context>
@@ -23837,99 +23981,99 @@ De volgende variabelen kunnen gebruikt worden:
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="51"/>
         <source>Choose the commands of each toolbar of the diagram editor. Drag a command from the list on the left to the bar, or double-click it; Delete removes it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies de opdrachten van elke werkbalk van de schema-editor. Sleep een opdracht van de lijst links naar de balk, of dubbelklik erop; Delete verwijdert ze.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="58"/>
         <source>New bar…</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe balk…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="60"/>
         <source>Rename…</source>
-        <translation type="unfinished"></translation>
+        <translation>Hernoemen…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="61"/>
         <source>Delete the bar</source>
-        <translation type="unfinished"></translation>
+        <translation>De balk verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="63"/>
         <source>Defaults</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaardwaarden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="67"/>
         <source>Search for a command</source>
-        <translation type="unfinished"></translation>
+        <translation>Een opdracht zoeken</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="83"/>
         <source>Add →</source>
-        <translation type="unfinished"></translation>
+        <translation>Toevoegen →</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="84"/>
         <source>Separator</source>
-        <translation type="unfinished"></translation>
+        <translation>Scheidingsteken</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="86"/>
         <source>← Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>← Verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="87"/>
         <source>Move up</source>
-        <translation type="unfinished"></translation>
+        <translation>Omhoog</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="88"/>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
+        <translation>Omlaag</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="101"/>
         <source>Available commands</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschikbare opdrachten</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="102"/>
         <source>In the bar, in order</source>
-        <translation type="unfinished"></translation>
+        <translation>In de balk, in volgorde</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="109"/>
         <source>Toolbar:</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalk:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="173"/>
         <source>Toolbar contents</source>
         <comment>configuration page title: what each toolbar holds</comment>
-        <translation type="unfinished"></translation>
+        <translation>Inhoud van de werkbalken</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="351"/>
         <source>New toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe werkbalk</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="352"/>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="373"/>
         <source>Toolbar name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam van de werkbalk:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="372"/>
         <source>Rename the toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>De werkbalk hernoemen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="411"/>
         <source>─── Separator ───</source>
-        <translation type="unfinished"></translation>
+        <translation>─── Scheidingsteken ───</translation>
     </message>
 </context>
 <context>
@@ -23937,68 +24081,68 @@ De volgende variabelen kunnen gebruikt worden:
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="41"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="42"/>
         <source>Small (16 px)</source>
-        <translation type="unfinished"></translation>
+        <translation>Klein (16 px)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="43"/>
         <source>Medium (24 px)</source>
-        <translation type="unfinished"></translation>
+        <translation>Middel (24 px)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="44"/>
         <source>Large (32 px)</source>
-        <translation type="unfinished"></translation>
+        <translation>Groot (32 px)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="45"/>
         <source>Very large (48 px)</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeer groot (48 px)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="51"/>
         <source>Icon only</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen pictogram</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="52"/>
         <source>Text beside the icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst naast het pictogram</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="53"/>
         <source>Text under the icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst onder het pictogram</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="56"/>
         <source>Lock the toolbars (they can no longer be moved)</source>
-        <translation type="unfinished"></translation>
+        <translation>De werkbalken vergrendelen (ze kunnen niet meer verplaatst worden)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="61"/>
         <source>Icon size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Grootte van de pictogrammen:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="62"/>
         <source>Buttons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Knoppen:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="66"/>
         <source>To show or hide a toolbar, right-click on a toolbar.</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik met de rechtermuisknop op een werkbalk om een werkbalk te tonen of te verbergen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="82"/>
         <source>Toolbars</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalken</translation>
     </message>
 </context>
 <context>
@@ -24007,61 +24151,61 @@ De volgende variabelen kunnen gebruikt worden:
         <location filename="../sources/ui/wiringlistdialog.cpp" line="40"/>
         <source>Wiring list</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bedradingslijst</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="66"/>
         <source>Wire</source>
         <comment>column title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Draad</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="67"/>
         <source>Component 1</source>
         <comment>column title</comment>
-        <translation type="unfinished">Onderdeel 1</translation>
+        <translation>Onderdeel 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="68"/>
         <source>Terminal 1</source>
         <comment>column title</comment>
-        <translation type="unfinished">Klem 1</translation>
+        <translation>Klem 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="69"/>
         <source>Component 2</source>
         <comment>column title</comment>
-        <translation type="unfinished">Onderdeel 2</translation>
+        <translation>Onderdeel 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="70"/>
         <source>Terminal 2</source>
         <comment>column title</comment>
-        <translation type="unfinished">Klem 2</translation>
+        <translation>Klem 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="71"/>
         <source>Sheet</source>
         <comment>column title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blad</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/wiringlistdialog.cpp" line="92"/>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="99"/>
         <source>%n conductors listed.</source>
         <comment>wiring list summary</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n geleider opgesomd.</numerusform>
+            <numerusform>%n geleiders opgesomd.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/wiringlistdialog.cpp" line="94"/>
         <source>%n conductors excluded: one end is not attached to any element.</source>
         <comment>wiring list exclusion warning</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n geleider uitgesloten: één uiteinde is aan geen enkel element verbonden.</numerusform>
+            <numerusform>%n geleiders uitgesloten: één uiteinde is aan geen enkel element verbonden.</numerusform>
         </translation>
     </message>
 </context>
@@ -24151,7 +24295,7 @@ De volgende variabelen kunnen gebruikt worden:
         <location filename="../sources/wiringlistexport.cpp" line="464"/>
         <source>Cable</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Kabel</translation>
+        <translation>Kabel</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="275"/>
@@ -24169,12 +24313,12 @@ De volgende variabelen kunnen gebruikt worden:
     <message>
         <location filename="../sources/ui/wiringruleswarning.cpp" line="37"/>
         <source>Warning</source>
-        <translation type="unfinished">Aankondiging</translation>
+        <translation>Waarschuwing</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringruleswarning.cpp" line="38"/>
         <source>&lt;b&gt;The conductors-per-terminal rules are an experimental feature.&lt;/b&gt;&lt;br&gt;&lt;br&gt;They count conductors as QElectroTech represents them today. They may change, and your settings may need redoing, if wires and conductors become separate objects in a future version.&lt;br&gt;&lt;br&gt;All these rules can be turned off in Configure QElectroTech &gt; General.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;De regels voor geleiders per klem zijn een experimentele functie.&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ze tellen geleiders zoals QElectroTech ze vandaag voorstelt. Ze kunnen veranderen, en uw instellingen moeten misschien opnieuw gedaan worden, als draden en geleiders in een toekomstige versie aparte objecten worden.&lt;br&gt;&lt;br&gt;Al deze regels kunnen uitgeschakeld worden in QElectroTech configureren &gt; Algemeen.</translation>
     </message>
 </context>
 <context>
@@ -24222,12 +24366,12 @@ De volgende variabelen kunnen gebruikt worden:
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="96"/>
         <source>When the texts of two cross-references overlap, the one of the higher element is placed above the other.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wanneer de teksten van twee kruisverwijzingen elkaar overlappen, wordt die van het hoogste element boven de andere geplaatst.</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="99"/>
         <source>Stack references whose texts overlap</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijzingen waarvan de teksten overlappen stapelen</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
@@ -24237,12 +24381,12 @@ De volgende variabelen kunnen gebruikt worden:
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="122"/>
         <source>Distance label - slave :</source>
-        <translation type="unfinished"></translation>
+        <translation>Afstand label - slave :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="129"/>
         <source>Distance in pixels between the label and the slave cross reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Afstand in pixels tussen het label en de slave-kruisverwijzing</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="160"/>
@@ -24252,12 +24396,12 @@ De volgende variabelen kunnen gebruikt worden:
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="167"/>
         <source>Show in the contact comb all slave contacts defined by the master, even those not yet connected, in the order defined by the master</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon in de contactkam alle slavecontacten die door de master gedefinieerd zijn, ook die nog niet verbonden zijn, in de volgorde die de master bepaalt</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="170"/>
         <source>Show all slaves defined by the master</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle slaves tonen die door de master gedefinieerd zijn</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="177"/>
@@ -24287,12 +24431,12 @@ De volgende variabelen kunnen gebruikt worden:
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="237"/>
         <source>Choose the font and size of the cable cross-reference text</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies het lettertype en de grootte van de kruisverwijzingstekst van de kabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="240"/>
         <source>Font…</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettertype…</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="263"/>
@@ -24314,7 +24458,14 @@ De volgende variabelen kunnen gebruikt worden:
 %M: the installation
 %LM: the location
 %T: the sheet title</source>
-        <translation type="unfinished"></translation>
+        <translation>Maak uw eigen tekst met de volgende variabelen:
+%f: het bladnummer
+%F: het bladlabel
+%l: het rijnummer
+%c: het kolomnummer
+%M: de installatie
+%LM: de locatie
+%T: de bladtitel</translation>
     </message>
     <message>
         <source>Create your own text using the following variables:
@@ -24380,7 +24531,7 @@ De volgende variabelen kunnen gebruikt worden:
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="145"/>
         <source>Cable</source>
-        <translation type="unfinished">Kabel</translation>
+        <translation>Kabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="147"/>
@@ -24421,28 +24572,28 @@ De volgende variabelen kunnen gebruikt worden:
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="155"/>
         <source>Text field</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="296"/>
         <source>Text:</source>
-        <translation type="unfinished">Tekst:</translation>
+        <translation>Tekst:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="304"/>
         <source>Font and size: those of the cable texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettertype en grootte: die van de kabelteksten</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="310"/>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="373"/>
         <source>Font and size: %1, %2 pt</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettertype en grootte: %1, %2 pt</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="369"/>
         <source>Font of the cross-reference text</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettertype van de kruisverwijzingstekst</translation>
     </message>
 </context>
 <context>
@@ -24450,17 +24601,17 @@ De volgende variabelen kunnen gebruikt worden:
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="1494"/>
         <source>The query is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>De query is leeg.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="1501"/>
         <source>Only a single SELECT query is allowed (the &apos;;&apos; character may only appear at the very end).</source>
-        <translation type="unfinished"></translation>
+        <translation>Er is maar één SELECT-query toegestaan (het teken &apos;;&apos; mag alleen helemaal aan het einde staan).</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="1512"/>
         <source>Only read-only queries (SELECT or WITH ... SELECT) are allowed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen leesquery&apos;s (SELECT of WITH ... SELECT) zijn toegestaan.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="4791"/>
