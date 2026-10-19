@@ -2299,9 +2299,8 @@ bool QETDiagramEditor::openAndAddProject(
 		QMessageBox box(QMessageBox::Warning,
 						tr("Conductors not loaded", "message box title"),
 						tr("%n conductors could not be joined to their terminals and "
-						   "were not loaded. The element's definition in the project "
-						   "was probably replaced by another one with different "
-						   "terminals.\n"
+						   "were not loaded. The element's definition is missing, or "
+						   "was replaced by another one with different terminals.\n"
 						   "\n"
 						   "They are not shown, but they are kept in the file as they "
 						   "are, and join their terminals again once the definition "
