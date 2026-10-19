@@ -786,6 +786,14 @@ qet.log('PROBE ' + JSON.stringify({saves: saves}));
 		QVERIFY(xml.contains("title=\"Rows renamed folio\""));
 		QCOMPARE(diagramAttributes(xml, QStringLiteral("conductorAutonum")).value(0),
 				 QStringLiteral("Rows renamed conductor"));
+		// and the save, which writes the numbering from the rows (2b-2),
+		// has every scheme and the ones made current
+		const Saved numbering = parse(xml);
+		QCOMPARE(numbering.current, QStringLiteral("Rows renamed element"));
+		QCOMPARE(numbering.scheme_formula.value(QStringLiteral("Rows renamed element")),
+				 QStringLiteral("R-%sequ_1"));
+		QCOMPARE(QUuid(numbering.current_id), numbering.scheme_id.value(QStringLiteral("Rows renamed element")));
+		QVERIFY(xml.contains("current_autonum=\"Rows renamed conductor\""));
 	}
 
 	void conductorNumberings()

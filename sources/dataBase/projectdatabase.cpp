@@ -2697,8 +2697,9 @@ bool projectDataBase::createDataBase()
 
 		//The numbering tables (QETZ-DB-FIRST stage 2b): the project's
 		//schemes, one row per part of each in its order, and the settings
-		//saved with them. Not filled from the folios: QETProject writes
-		//them when it reads its file and whenever its numbering changes.
+		//saved with them; the save writes the numbering from them. Not
+		//filled from the folios: QETProject writes them when it reads its
+		//file and whenever its numbering changes.
 	for (const char *table : {
 			 "CREATE TABLE numbering_scheme ("
 			 "kind VARCHAR(20) NOT NULL, title TEXT NOT NULL, uuid VARCHAR(50), "

@@ -4247,10 +4247,13 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	}
 	xml_element.appendChild(xrefs_elmt);
 
-	writeNumberingXml(numberingOfProject(), xml_element);
+		//The numbering is written from the project database's rows
+		//(QETZ-DB-FIRST stage 2b-2), which the project keeps in step
+		//(writeNumberingRows())
+	writeNumberingXml(m_data_base.numbering(), xml_element);
 		//QET_CHECK_NUMBERING_ROWS=1: say whether the project database's
-		//numbering rows write what the project writes (QETZ-DB-FIRST stage
-		//2b-1). A test and debugging aid; it changes nothing.
+		//numbering rows write what the project holds. A test and
+		//debugging aid; it changes nothing.
 	if (qEnvironmentVariableIntValue("QET_CHECK_NUMBERING_ROWS") == 1) {
 		QDomDocument from_project, from_rows;
 		QDomElement project_root = from_project.createElement(QStringLiteral("numbering"));
@@ -4308,8 +4311,9 @@ projectDataBase::Numbering QETProject::numberingOfProject() const
 	@brief QETProject::writeNumberingRows
 	Write the project's numbering into the project database's numbering
 	tables (QETZ-DB-FIRST stage 2b-1): after reading the file and after
-	each change of the numbering, so the rows are always what the save
-	writes (QET_CHECK_NUMBERING_ROWS checks it)
+	each change of the numbering. The save writes the numbering from
+	them (2b-2); QET_CHECK_NUMBERING_ROWS says whether they hold what
+	the project does
 */
 void QETProject::writeNumberingRows()
 {
