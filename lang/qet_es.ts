@@ -2883,7 +2883,7 @@ Bloqueado por la opción «Mostrar un texto de potencial por folio» de este fol
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="192"/>
         <source>Undo</source>
-        <translation>Cancelar</translation>
+        <translation>Deshacer</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="224"/>
@@ -4788,7 +4788,7 @@ Si cambia su numeración, se sustituirá o se borrará.
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="208"/>
         <source>Undo</source>
-        <translation>Cancelar</translation>
+        <translation>Deshacer</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="209"/>
@@ -11603,7 +11603,7 @@ Para escribir un archivo para una versión de QElectroTech que no puede abrir %2
         <location filename="../sources/projectview.cpp" line="351"/>
         <source>Save as</source>
         <comment>dialog title</comment>
-        <translation>Guarda como</translation>
+        <translation>Guardar como</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="425"/>
@@ -16004,7 +16004,7 @@ What do you wish to do ?</source>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="77"/>
         <source>Terminal</source>
         <comment>tooltip</comment>
-        <translation>Conector</translation>
+        <translation>Borne</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="109"/>
