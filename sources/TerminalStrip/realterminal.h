@@ -73,6 +73,7 @@ class RealTerminal
 		QString Xref() const;
 		QString cable() const;
 		QString cableWire() const;
+		bool cableIsAutomatic() const;
 		bool isShield() const;
 		QColor color() const;
 		QColor stripeColor() const;

@@ -35,6 +35,7 @@ struct modelRealTerminalData
 				mrtd.Xref_ = real_t->Xref();
 				mrtd.cable_ = real_t->cable();
 				mrtd.cable_wire = real_t->cableWire();
+				mrtd.cable_auto_ = real_t->cableIsAutomatic();
 				mrtd.conductor_ = real_t->conductor();
 				mrtd.led_ = real_t->isLed();
 				mrtd.shield_ = real_t->isShield();
@@ -60,6 +61,7 @@ struct modelRealTerminalData
 		QString Xref_;
 		QString cable_;
 		QString cable_wire;
+		bool cable_auto_ = false;	//True when cable_ and cable_wire come from the cables of the project
 		QString conductor_;
 		bool led_ = false;
 		bool shield_ = false;

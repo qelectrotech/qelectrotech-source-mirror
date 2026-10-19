@@ -245,8 +245,13 @@ void TerminalStripEditor::apply()
 						current_data.m_informations.addValue(key, value);
 					}
 				};
-				set_info(RealTerminal::cableInfoKey(), data_.cable_);
-				set_info(RealTerminal::cableWireInfoKey(), data_.cable_wire);
+					//A cable worked out from the cables of the project is
+					//never written in the element: it would stay there,
+					//out of date, once the cable is renamed or removed
+				if (!data_.cable_auto_) {
+					set_info(RealTerminal::cableInfoKey(), data_.cable_);
+					set_info(RealTerminal::cableWireInfoKey(), data_.cable_wire);
+				}
 				set_info(RealTerminal::shieldInfoKey(), data_.shield_ ? QStringLiteral("true") : QString());
 				//The color and the section are stored with the dot as decimal separator, whatever the locale
 				set_info(RealTerminal::colorInfoKey(), TerminalColor::toSpec(data_.color_, data_.stripe_color_));

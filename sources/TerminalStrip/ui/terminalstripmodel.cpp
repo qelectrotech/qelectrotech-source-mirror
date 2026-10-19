@@ -497,8 +497,12 @@ Qt::ItemFlags TerminalStripModel::flags(const QModelIndex &index) const
 	Qt::ItemFlags flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 
 	auto c = index.column();
+		//The cable cells are only edited by hand when no cable
+		//of the project is wired to the terminal
+	if ((c == CABLE_CELL || c == CABLE_WIRE_CELL)
+		&& !dataAtRow(index.row()).cable_auto_)
+		flags = flags | Qt::ItemIsEditable;
 	if (c == LABEL_CELL || c == TYPE_CELL || c == FUNCTION_CELL
-		|| c == CABLE_CELL || c == CABLE_WIRE_CELL
 		|| c == COLOR_CELL || c == SECTION_CELL || c == WIDTH_CELL)
 		flags = flags | Qt::ItemIsEditable;
 	if (c == LED_CELL || c == SHIELD_CELL || c == SEPARATOR_CELL) {
