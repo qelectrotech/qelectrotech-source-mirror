@@ -55,10 +55,10 @@ private slots:
 		QVERIFY(QFile::exists(QStringLiteral(QET_TEST_BINARY_PATH)));
 		const QString qet = m_dir.filePath(QStringLiteral("p.qet"));
 		QVERIFY(QFile::copy(QStringLiteral(QET_EXAMPLES_DIR "/741.qet"), qet));
-		// a .qet is saved as a .qetz beside it; that .qetz is the project below
-		const QString out = run(QStringLiteral("qet.log('R ' + qet.save(''));\n"), qet);
-		QVERIFY2(out.contains(QStringLiteral("R true")), qPrintable(out));
+		// the .qet saved as a .qetz is the project below
 		m_project = m_dir.filePath(QStringLiteral("p.qetz"));
+		const QString out = run(QStringLiteral("qet.log('R ' + qet.save('%1'));\n").arg(m_project), qet);
+		QVERIFY2(out.contains(QStringLiteral("R true")), qPrintable(out));
 		QVERIFY(QFile::exists(m_project));
 	}
 
