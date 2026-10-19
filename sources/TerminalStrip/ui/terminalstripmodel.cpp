@@ -302,6 +302,14 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 	int modified_cell = -1;
 	auto column_ = index.column();
 
+		//A cell worked out from the cables of the project is read only:
+		//the element never holds that value, so writing one in would only
+		//show something the next reload takes away again
+	if ((column_ == CABLE_CELL || column_ == CABLE_WIRE_CELL)
+		&& mrtd.cable_auto_) {
+		return false;
+	}
+
 	if (column_ == LEVEL_CELL &&
 		role == Qt::EditRole)
 	{

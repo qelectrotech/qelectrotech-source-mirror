@@ -19,12 +19,15 @@
 #include "qetapptest.h"
 #include "TerminalStrip/realterminal.h"
 #include "TerminalStrip/terminalstrip.h"
+#include "TerminalStrip/ui/terminalstripeditor.h"
 #include "TerminalStrip/ui/terminalstripmodel.h"
 #include "cable/cable.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
+
+#include <QAbstractItemView>
 
 /**
 	The Cable and Color / wire number columns of the terminal strip editor
@@ -58,32 +61,44 @@ class tst_terminalcableauto : public QObject
 		return {};
 	}
 
-	static Conductor *conductorOf(const QSharedPointer<RealTerminal> &real_t)
+	static QList<Conductor *> conductorsOf(const QSharedPointer<RealTerminal> &real_t)
 	{
-		Element *element = real_t->element();
-		if (!element) return nullptr;
+		QList<Conductor *> conductors;
+		Element *element = real_t ? real_t->element() : nullptr;
+		if (!element) return conductors;
 		for (Terminal *terminal : element->terminals()) {
 			if (!terminal) continue;
-			const QList<Conductor *> conductors = terminal->conductors();
-			if (!conductors.isEmpty()) return conductors.first();
+			for (Conductor *conductor : terminal->conductors()) {
+				if (conductor && !conductors.contains(conductor))
+					conductors.append(conductor);
+			}
 		}
-		return nullptr;
+		return conductors;
+	}
+
+	static Conductor *conductorOf(const QSharedPointer<RealTerminal> &real_t)
+	{
+		const QList<Conductor *> conductors = conductorsOf(real_t);
+		return conductors.isEmpty() ? nullptr : conductors.first();
 	}
 
 	// The cable the create dialog hands over: owned by the project, four
-	// cores, core 1 (blue) wired to the terminal's conductor.
+	// cores, one core wired to the terminal's conductor (or to @p on).
 	static Cable *wireCable(QETProject &project,
 							const QSharedPointer<RealTerminal> &real_t,
-							int core = 1)
+							int core = 1,
+							const QString &designation = QStringLiteral("15W1"),
+							Conductor *on = nullptr)
 	{
+		if (!on) on = conductorOf(real_t);
 		Cable *cable = project.newCable();
-		cable->setDesignation(QStringLiteral("15W1"));
+		cable->setDesignation(designation);
 		cable->setCoreCount(4);
 		cable->setCoreColors({QStringLiteral("bn"), QStringLiteral("bl"),
 							  QStringLiteral("gn/ye"), QStringLiteral("gy")});
 		CableCore assignment;
 		assignment.core = core;
-		assignment.conductor = conductorOf(real_t)->uuid();
+		assignment.conductor = on->uuid();
 		cable->setCore(assignment);
 		return cable;
 	}
@@ -193,6 +208,61 @@ private slots:
 		TerminalStripModel model(project.terminalStrip().first());
 		QVERIFY(model.flags(model.index(0, TerminalStripModel::Cable))
 				& Qt::ItemIsEditable);
+	}
+
+	// The window stays open while the user wires the drawing: the cells
+	// follow a cable wired, renamed or taken away without any reload by
+	// hand.
+	void openEditorFollowsCableChanges()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		const auto real_t = wiredTerminal(project);
+		QVERIFY(!real_t.isNull());
+
+		TerminalStripEditor editor(&project);
+		editor.setCurrentStrip(project.terminalStrip().first());
+		const QAbstractItemView *table = editor.findChild<QAbstractItemView *>(
+			QStringLiteral("m_table_widget"));
+		QVERIFY2(table && table->model(), "the editor has its table");
+		const QAbstractItemModel *model = table->model();
+		const QModelIndex cable_cell = model->index(0, TerminalStripModel::Cable);
+		QVERIFY(model->data(cable_cell).toString().isEmpty());
+
+		//A cable wired to the terminal fills the cell in
+		Cable *cable = wireCable(project, real_t);
+		QCOMPARE(model->data(cable_cell).toString(), QStringLiteral("15W1"));
+
+		//Renaming it follows at once, the drawing is not stale behind
+		cable->setDesignation(QStringLiteral("16W1"));
+		QCOMPARE(model->data(cable_cell).toString(), QStringLiteral("16W1"));
+
+		//Taking it away empties the cell: nothing stale stays behind
+		QVERIFY(project.removeCable(cable));
+		QVERIFY(model->data(cable_cell).toString().isEmpty());
+	}
+
+	// A terminal wired to two cables shows them both, comma separated.
+	void twoCablesOnOneTerminalAreBothShown()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		const auto real_t = wiredTerminal(project);
+		QVERIFY(!real_t.isNull());
+		const QList<Conductor *> conductors = conductorsOf(real_t);
+		QVERIFY2(conductors.size() >= 2,
+				 "the fixture terminal carries two wires");
+
+		wireCable(project, real_t, 1, QStringLiteral("15W1"), conductors.at(0));
+		wireCable(project, real_t, 1, QStringLiteral("16W1"), conductors.at(1));
+
+		QCOMPARE(real_t->cable(), QStringLiteral("15W1, 16W1"));
+		QCOMPARE(real_t->cableWire(), QStringLiteral("bl, bl"));
+		QVERIFY(real_t->cableIsAutomatic());
 	}
 };
 
