@@ -47,3 +47,25 @@ ProjectOrigin::Mode ProjectOrigin::fromString(const QString& string)
 	if (string == QLatin1String("bottom-right")) return Mode::BottomRight;
 	return Mode::TopLeft;
 }
+
+/**
+	@brief ProjectOrigin::reversedIsColumns
+	@return true, for the sake of order, from right to left
+*/
+bool ProjectOrigin::reversedIsColumns(Mode mode)
+{
+	return (
+		mode == ProjectOrigin::Mode::TopRight
+		|| mode == ProjectOrigin::Mode::BottomRight);
+}
+
+/**
+	@brief ProjectOrigin::reversedIsRows
+	@return true, for the sake of order, from bottom to top
+*/
+bool ProjectOrigin::reversedIsRows(Mode mode)
+{
+	return (
+		mode == ProjectOrigin::Mode::BottomLeft
+		|| mode == ProjectOrigin::Mode::BottomRight);
+}

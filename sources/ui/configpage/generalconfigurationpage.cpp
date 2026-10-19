@@ -191,13 +191,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_use_folio_label->setChecked(settings.value("genericpanel/folio", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
-<<<<<<< HEAD
 	ui->m_project_lock->setChecked(settings.value("projectlock/enabled", true).toBool());
 	ui->m_previous_versions_sb->setValue(PreviousVersions::count());
-=======
-	ui->m_reverse_order_col->setChecked(settings.value("reverse_order_col", false).toBool());
-	ui->m_reverse_order_row->setChecked(settings.value("reverse_order_row", false).toBool());
->>>>>>> 5f0dfffc3 (Added: configuration of the order of columns and rows.)
 	
 	QString fontInfos = settings.value("diagramitemfont", "Liberation Sans").toString() + " " +
 			settings.value("diagramitemsize", "9").toString() + " (" +
@@ -367,8 +362,6 @@ void GeneralConfigurationPage::applyConf()
 	}
 	settings.setValue("border-columns_0",ui->m_border_0->isChecked());
 	settings.setValue("lang", ui->m_lang_cb->itemData(ui->m_lang_cb->currentIndex()).toString());
-	settings.setValue("reverse_order_col",ui->m_reverse_order_col->isChecked());
-	settings.setValue("reverse_order_row", ui->m_reverse_order_row->isChecked());
 
 		//hdpi
 	QetSettings::setHdpiScaleFactorRoundingPolicy(ui->m_hdpi_round_policy_cb->currentData().toString());

@@ -31,13 +31,11 @@
 #include "wirehops.h"
 #include "wiringrules.h"
 #include "diagram.h"
-<<<<<<< HEAD
 #include "autoNum/assignvariables.h"
 #include "container/qetcontainerdb.h"
 #include "projectlock.h"
-=======
 #include "projectorigin.h"
->>>>>>> dfbec9275 (Saving and reading the origin point setting)
+
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else

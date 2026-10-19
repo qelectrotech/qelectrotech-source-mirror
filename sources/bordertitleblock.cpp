@@ -614,6 +614,8 @@ void BorderTitleBlock::draw(QPainter *painter)
 	if (display_border_ && display_columns_) {
 		const bool columns_start_at_zero =
 				settings.value("border-columns_0", true).toBool();
+		const bool reversedIsColumns = 
+			ProjectOrigin::reversedIsColumns(m_owner_folio->project()->Origin());
 		for (int i = 1 ; i <= columns_count_ ; ++ i) {
 			QRectF numbered_rectangle = QRectF(
 				diagram_rect_.topLeft().x()
@@ -628,13 +630,15 @@ void BorderTitleBlock::draw(QPainter *painter)
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
 				BorderCellLabels::columnLabel(
-					reversedIsColumns() ? columns_count_ - i + 1 : i,
+					reversedIsColumns ? columns_count_ - i + 1 : i,
 					columns_start_at_zero));
 		}
 	}
 
 		//Draw the nums of rows
 	if (display_border_ && display_rows_) {
+		const bool reversedIsRows = 
+			ProjectOrigin::reversedIsRows(m_owner_folio->project()->Origin());
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			QRectF lettered_rectangle = QRectF(
 				diagram_rect_.topLeft().x(),
@@ -650,7 +654,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> drawText(lettered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-				BorderCellLabels::rowLabel(reversedIsRows() ? rows_count_ - i + 1 : i));
+				BorderCellLabels::rowLabel(reversedIsRows ? rows_count_ - i + 1 : i));
 		}
 	}
 
@@ -721,6 +725,8 @@ void BorderTitleBlock::drawDxf(
 	if (display_border_ &&
 		display_columns_) {
 	int offset = settings.value("border-columns_0", true).toBool() ? -1 : 0;
+		const bool reversedIsColumns = ProjectOrigin::reversedIsColumns(
+			m_owner_folio->project()->Origin());
 		for (int i = 1 ; i <= columns_count_ ; ++ i) {
 	    double xCoord = diagram_rect_.topLeft().x() * Createdxf::xScale +
 					(rows_header_width_ + ((i - 1) *
@@ -734,7 +740,7 @@ void BorderTitleBlock::drawDxf(
 						 recWidth, recHeight, color);
 
 			Createdxf::drawTextAligned(file_path,
-				QString::number((reversedIsColumns() ? columns_count_ - i + 1 : i) + offset),
+				QString::number((reversedIsColumns ? columns_count_ - i + 1 : i) + offset),
 			   xCoord+recWidth/4,
 			   yCoord + recHeight*0.5,
 						   recHeight*0.7,
@@ -751,6 +757,8 @@ void BorderTitleBlock::drawDxf(
 	// draw line numbering
 	// dessine la numerotation des lignes
 	if (display_border_ && display_rows_) {
+		const bool reversedIsRows =
+			ProjectOrigin::reversedIsRows(m_owner_folio->project()->Origin());
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			double xCoord = diagram_rect_.topLeft().x()
 					* Createdxf::xScale;
@@ -768,7 +776,7 @@ void BorderTitleBlock::drawDxf(
 						 recWidth, recHeight, color);
 			Createdxf::drawTextAligned(file_path,
 				BorderCellLabels::rowLabel(
-					reversedIsRows() ? rows_count_ - i + 1 : i),
+					reversedIsRows ? rows_count_ - i + 1 : i),
 			   xCoord+recWidth*0.1,
 			   yCoord + recHeight*0.4,
 						   recWidth*0.7,
@@ -952,8 +960,12 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 	int row_number    = int(ceil(relative_pos.x() / columnsWidth()));
 	int column_number = int(ceil(relative_pos.y() / rowsHeight()));
 
-	if (reversedIsColumns()) row_number = columnsCount() - row_number + 1;
-	if (reversedIsRows()) column_number = rowsCount() - column_number + 1;
+	if(m_owner_folio && m_owner_folio->project()){
+		if (ProjectOrigin::reversedIsColumns(m_owner_folio->project()->Origin()))
+			row_number = columnsCount() - row_number + 1;
+		if (ProjectOrigin::reversedIsRows(m_owner_folio->project()->Origin()))
+			column_number = rowsCount() - column_number + 1;
+	}
 
 	return(DiagramPosition(BorderCellLabels::rowLabel(column_number), row_number));
 }
@@ -1165,27 +1177,4 @@ void BorderTitleBlock::setNextFolioNum(const QString &next)
 	DiagramContext context = m_titleblock_template_renderer->context();
 	context.addValue("next-folio-num", m_next_folio_num);
 	m_titleblock_template_renderer->setContext(context);
-}
-
-/**
-	@brief BorderTitleBlock::reversedIsColumns
-	@return true, for the sake of order, from right to left
-*/
-bool BorderTitleBlock::reversedIsColumns() const {
-	ProjectOrigin::Mode origin = m_owner_folio->project()->Origin();
-	return (
-		origin == ProjectOrigin::Mode::TopRight
-		|| origin == ProjectOrigin::Mode::BottomRight);
-}
-
-/**
-	@brief BorderTitleBlock::reversedIsRows
-	@return true, for the sake of order, from bottom to top
-*/
-bool BorderTitleBlock::reversedIsRows() const
-{
-	ProjectOrigin::Mode origin = m_owner_folio->project()->Origin();
-	return (
-		origin == ProjectOrigin::Mode::BottomLeft
-		|| origin == ProjectOrigin::Mode::BottomRight);
 }

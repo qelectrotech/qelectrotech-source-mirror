@@ -20,6 +20,8 @@
 #include "bordercelllabels.h"
 #include "diagram.h"
 #include "diagramview.h"
+#include "projectorigin.h"
+#include "qetproject.h"
 
 #include <QPainter>
 #include <QSettings>
@@ -129,6 +131,9 @@ void CellRuler::paintEvent(QPaintEvent *event)
 		}
 	}
 
+	bool reversedOrder = horizontal
+		? ProjectOrigin::reversedIsColumns(diagram->project()->Origin())
+		: ProjectOrigin::reversedIsRows(diagram->project()->Origin());
 	for (int i = 1 ; i <= count ; ++i) {
 		const qreal start = offset + (first + (i - 1) * cell_size) * scale;
 		const qreal end = start + cell_pixels;
@@ -161,7 +166,7 @@ void CellRuler::paintEvent(QPaintEvent *event)
 		const QRectF text_rect = horizontal
 				? QRectF(centre - label_room / 2.0, 0, label_room, depth - 1)
 				: QRectF(0, centre - label_room / 2.0, depth - 1, label_room);
-		painter.drawText(text_rect, Qt::AlignCenter | Qt::TextDontClip, label(i));
+		painter.drawText(text_rect, Qt::AlignCenter | Qt::TextDontClip, label(reversedOrder ? count - i + 1 : i));
 	}
 
 		//Keep the corner empty: the other ruler's labels do not belong there

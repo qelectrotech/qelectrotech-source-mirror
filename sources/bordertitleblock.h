@@ -154,10 +154,6 @@ class BorderTitleBlock : public QObject
 		bool rowsAreDisplayed() const { return(display_rows_); }
 		/// @return true si la bordure est affichee, false sinon
 		bool borderIsDisplayed() const { return(display_border_); }
-		// @return reverse_order_col
-		bool reversedIsColumns() const;
-		// @return reverse_order_row
-		bool reversedIsRows() const;
 
 		// methods to set dimensions
 		void setColumnsCount(int);

@@ -38,7 +38,9 @@ namespace ProjectOrigin
 	};
 
 	QString toString(Mode mode);
-	Mode	fromString(const QString& string);
+	Mode fromString(const QString& string);
+	bool reversedIsColumns(Mode mode);
+	bool reversedIsRows(Mode mode);
 } // namespace ProjectOrigin
 
 #endif // PROJECTORIGIN_H
