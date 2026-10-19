@@ -156,9 +156,11 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project,
 
 	if (first_add){
 		qtwi_project -> setExpanded(true);
-		// on adding an project select first diagram
-		setCurrentItem(qtwi_project -> child(0));
-		qtwi_project -> child(0)->setSelected(true);
+		// on adding a project select first diagram, once the project item is attached
+		if (qtwi_project -> treeWidget()) {
+			setCurrentItem(qtwi_project -> child(0));
+			qtwi_project -> child(0)->setSelected(true);
+		}
 	}
 	else {
 		// 2. Check whether we can restore the previous selection
