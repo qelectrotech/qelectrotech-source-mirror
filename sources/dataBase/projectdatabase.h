@@ -155,6 +155,7 @@ class projectDataBase : public QObject
 		void conductorUuidChanged(Conductor *conductor, const QUuid &old_uuid);
 		QStringList conductorPropertiesMismatches() const;
 		QStringList linkRowMismatches();
+		bool savedLinks(const Element *element, QList<std::pair<QUuid, int>> *links);
 
 			//Fill the three stores from a project's document before its
 			//folios are built, then, once
@@ -332,6 +333,7 @@ class projectDataBase : public QObject
 			//written: a link is made first and its contact group set after,
 			//so the rows are written when next read, as drawing items are.
 		QList<QPointer<Element>> m_dirty_link_elements;
+		QSqlQuery m_saved_links_query;
 			//Elements moved since their folio cell was last written: a move
 			//sends xChanged and yChanged for every step of a drag, so the
 			//cell is written when next read, as drawing items are.

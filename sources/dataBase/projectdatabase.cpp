@@ -4062,6 +4062,39 @@ QStringList projectDataBase::linkRowMismatches()
 }
 
 /**
+	@brief projectDataBase::savedLinks
+	The links @p element saves, read from its link rows, in their order
+	(insertLinkRows()): what Element::toXml() writes (QETZ-DB-FIRST stage
+	2a). A partner the project no longer has, on a removed folio, has no
+	row, so it is not saved.
+	@return false if the database does not hold @p element (not placed in
+	this project): the caller then takes the links from the symbol itself
+*/
+bool projectDataBase::savedLinks(const Element *element, QList<std::pair<QUuid, int>> *links)
+{
+	if (!element || !m_placed_elements.contains(element->uuid(), const_cast<Element *>(element))) {
+		return false;
+	}
+	flushLinks();
+	if (m_saved_links_query.lastQuery().isEmpty()) {
+		m_saved_links_query = QSqlQuery(m_data_base);
+		m_saved_links_query.prepare(QStringLiteral("SELECT linked_uuid, group_index FROM link "
+												   "WHERE element_uuid = :uuid ORDER BY ord, rowid"));
+	}
+	m_saved_links_query.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+	if (!m_saved_links_query.exec()) {
+		qDebug() << "projectDataBase::savedLinks error : " << m_saved_links_query.lastError();
+		return false;
+	}
+	links->clear();
+	while (m_saved_links_query.next()) {
+		links->append({QUuid(m_saved_links_query.value(0).toString()),
+					   m_saved_links_query.value(1).isNull() ? -1 : m_saved_links_query.value(1).toInt()});
+	}
+	return true;
+}
+
+/**
 	@brief projectDataBase::waitingSymbols
 	@return the symbols on folios not built yet (lazy folios): partners a
 	symbol keeps its saved links to until they are built

@@ -1438,12 +1438,19 @@ QDomElement Element::toXml(
 	QDomElement inputs = document.createElement(QStringLiteral("inputs"));
 	element.appendChild(inputs);
 
-	//if this element is linked to other elements,
-	//save the uuid of each other elements (linksToSave())
+	//if this element is linked to other elements, save the uuid of each:
+	//as the project database's link rows list them (QETZ-DB-FIRST stage
+	//2a), or, for a symbol the database does not hold, as it lists them
+	//itself (linksToSave())
 	QList<std::pair<QUuid, int>> links;
-	for (const SavedLink &link : linksToSave(diagram() && diagram()->project()
-											 ? diagram()->project()->waitingLinkTargets() : QSet<QUuid>()))
-		links.append({link.uuid, link.group_index});
+	projectDataBase *database = diagram() && diagram()->project()
+			? diagram()->project()->dataBase() : nullptr;
+	if (!database || !database->savedLinks(this, &links)) {
+		links.clear();
+		for (const SavedLink &link : linksToSave(diagram() && diagram()->project()
+												 ? diagram()->project()->waitingLinkTargets() : QSet<QUuid>()))
+			links.append({link.uuid, link.group_index});
+	}
 	if (!links.isEmpty()) {
 		QDomElement links_uuids = document.createElement(QStringLiteral("links_uuids"));
 		for (const auto &link : std::as_const(links)) {
