@@ -12032,6 +12032,16 @@ Dostupné možnosti:
         <translation>Zobraziť/Schovať mriežku listov</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Zameriavací kríž cez celý list</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Zobrazí pod myšou dve čiary cez celý list, aby bolo vidieť, či sú prvky zarovnané</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="693"/>
         <source>Sheet properties</source>
         <translation>Vlastnosti listu</translation>

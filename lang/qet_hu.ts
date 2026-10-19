@@ -12020,6 +12020,16 @@ Elérhető lehetőségek:
         <translation>Megjeleníti vagy elrejti a tervlap rácsát</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Szálkereszt a teljes lapon</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Két vonalat mutat a teljes lapon az egér alatt, hogy látszódjon, egy vonalban vannak-e az elemek</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="693"/>
         <source>Sheet properties</source>
         <translation>Tervlap tulajdonsága</translation>

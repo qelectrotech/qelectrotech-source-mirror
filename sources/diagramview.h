@@ -74,6 +74,11 @@ class DiagramView : public PaletteGraphicsView
 		QPoint            m_gesture_origin;
 		DiagramGestureOverlay *m_gesture_overlay = nullptr;
 		QPoint            m_last_mouse_pos = QPoint(-1, -1);
+		QPointF           m_crosshair_pos;
+		bool              m_crosshair_visible = false;
+		void moveCrosshair(const QPoint &viewport_pos);
+		void hideCrosshair();
+		QRect crosshairArea(const QPointF &scene_pos) const;
 		QPointF           m_drag_last_pos;
 		bool              m_fresh_focus_in,
 						  m_first_activation = true;
@@ -111,6 +116,12 @@ class DiagramView : public PaletteGraphicsView
 		QPointF defaultPlacementPos() const;
 		void setCellRulersShown(bool shown);
 		void setCellLinesShown(bool shown);
+			/// The folio-wide crosshair under the mouse (Display menu),
+			/// one setting for every view
+		static bool crosshairShown();
+		static void setCrosshairShown(bool shown);
+		bool crosshairVisible() const { return m_crosshair_visible; }
+		QPointF crosshairPos() const { return m_crosshair_pos; }
 
 	protected:
 		void mouseDoubleClickEvent(QMouseEvent *) override;
@@ -127,6 +138,7 @@ class DiagramView : public PaletteGraphicsView
 		void paintEvent(QPaintEvent *event) override;
 		bool viewportEvent(QEvent *event) override;
 		void drawBackground(QPainter *painter, const QRectF &rect) override;
+		void drawForeground(QPainter *painter, const QRectF &rect) override;
 		void paintingInverted(bool inverted) override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;

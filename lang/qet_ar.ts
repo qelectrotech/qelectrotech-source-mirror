@@ -12280,6 +12280,16 @@ Available options:
         <translation>عرض أو إخفاء شبكة الصفخات</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>تقاطع خطين على كامل الورقة</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>يعرض خطين عبر الورقة بأكملها تحت مؤشر الفأرة لمعرفة ما إذا كانت العناصر على استقامة واحدة</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
         <source>Text grid</source>
         <translation type="unfinished"></translation>

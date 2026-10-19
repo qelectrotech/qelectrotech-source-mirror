@@ -12174,6 +12174,16 @@ Opções disponíveis:
         <translation>Mostrar ou ocultar a grade das páginas</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Mira em toda a folha</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Mostra duas linhas em toda a folha sob o mouse, para ver se os elementos estão alinhados</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="693"/>
         <source>Sheet properties</source>
         <translation>Propriedades da página</translation>

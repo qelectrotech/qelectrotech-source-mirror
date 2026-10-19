@@ -103,6 +103,15 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --source ${CMAKE_CURRENT_SOURCE_DIR}/cable_undo_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
   set_tests_properties(tst_cableundointegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
+  # The folio-wide crosshair follows the mouse on the grid, on screen
+  # only, and goes when the mouse leaves or the option is off.
+  add_test(NAME tst_crosshairintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_crosshair_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/crosshair_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_crosshairintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
   add_test(NAME tst_darkimageintegration

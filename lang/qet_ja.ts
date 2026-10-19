@@ -12304,6 +12304,16 @@ Available options:
         <translation>フォリオのグリッドの表示/非表示</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>シート全体の十字カーソル</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>マウス位置にシート全体を横切る2本の線を表示し、部品が揃っているか確認します</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
         <source>Text grid</source>
         <translation>テキスト用グリッド</translation>
