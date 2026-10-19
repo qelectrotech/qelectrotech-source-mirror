@@ -1,0 +1,114 @@
+<titleblocktemplate name="ESKD_Form2a">
+    <information>ЕСКД ГОСТ 2.104-2006</information>
+    <logos/>
+    <grid cols="r100%;28px;40px;92px;60px;40px;440px;40px;" rows="20;20;20;">
+        <field valign="center" row="2" col="1" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru">Изм.</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="2" col="2" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru">Лист</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="2" col="3" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru">№ докум.</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="2" col="4" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru">Подп.</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="2" col="5" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru">Дата</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="0" col="6" fontsize="40" hadjust="true" name="oboz" displaylabel="false" align="center" rowspan="2">
+            <value>
+                <translation lang="ru">%{oboz}</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="0" col="7" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru">Лист</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="1" col="7" fontsize="11" hadjust="true" name="" displaylabel="false" align="center" rowspan="1">
+            <value>
+                <translation lang="ru">%{folio-id}</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="0" col="1" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru"></translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="0" col="2" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru"></translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="0" col="3" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru"></translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="0" col="4" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru"></translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="0" col="5" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru"></translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="1" col="1" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru"></translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="1" col="2" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru"></translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="1" col="3" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru"></translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="1" col="4" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru"></translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="1" col="5" fontsize="11" hadjust="true" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="ru"></translation>
+            </value>
+            <label/>
+        </field>
+    </grid>
+</titleblocktemplate>
