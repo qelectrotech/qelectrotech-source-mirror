@@ -5,7 +5,8 @@
 // its right edge in place; dragging the right handle keeps its left edge,
 // as in a drawing program. Before, the text always kept its left edge, so
 // a drag on the left handle moved the right edge and the text jumped.
-// Undo puts back the width and the position together. Checked for an
+// Undo puts back the width and the position together. A text narrowed
+// until it wraps grows downwards from its top corner. Checked for an
 // upright and a rotated text.
 #include <QApplication>
 #include <QFontDatabase>
@@ -56,10 +57,11 @@ static QetGraphicsHandlerItem *handle(DynamicElementTextItem *text, bool left)
 	return found;
 }
 
+/// The top corner of the text on the left or right, in the folio.
 static QPointF edge(DynamicElementTextItem *text, bool left)
 {
 	const QRectF br = text->boundingRect();
-	return text->mapToScene(QPointF(left ? br.left() : br.right(), br.center().y()));
+	return text->mapToScene(QPointF(left ? br.left() : br.right(), br.top()));
 }
 
 /// Drag one handle by dx along the text's own baseline.
@@ -101,6 +103,16 @@ static void checkText(Diagram *scene, Element *element, DynamicElementTextItem *
 	check(near(edge(text, true), left), "dragging the right handle keeps the left edge in place");
 	scene->undoStack().undo();
 	check(near(text->pos(), pos), "undo of the right handle leaves the position alone");
+
+	// Narrowed until it wraps onto more lines with the left handle: the
+	// text grows downwards from its top right corner, it does not move up
+	// into what stands above it.
+	const qreal height = text->boundingRect().height();
+	drag(scene, text, true, width - 25);
+	check(text->boundingRect().height() > height + 5, "narrowing the text wraps it onto more lines");
+	check(near(edge(text, false), right), "a text that wraps keeps its top right corner in place");
+	scene->undoStack().undo();
+	check(near(text->pos(), pos), "undo puts the wrapped text back");
 	element->setSelected(false);
 }
 
@@ -130,6 +142,9 @@ int main(int argc, char **argv)
 			for (DynamicElementTextItem *t : e->dynamicTextItems())
 				if (!text) { text = t; element = e; }
 		check(text, "the fixture has a symbol with a text");
+			// Several words, so that narrowing it makes it wrap
+		text->setTextFrom(DynamicElementTextItem::UserText);
+		text->setText(QStringLiteral("Sockets bathroom first floor, 5"));
 
 		checkText(scene, element, text);
 		// The same on a text turned by 90 degrees: the fixed edge is

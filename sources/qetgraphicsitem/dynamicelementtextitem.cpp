@@ -1054,9 +1054,26 @@ void DynamicElementTextItem::handlerMousePressEvent(QetGraphicsHandlerItem *hand
 		//drawing program: remember it in the parent's coordinates, which
 		//take the text's rotation into account
 	m_resize_start_pos = pos();
+	m_resize_fixed_parent = mapToParent(resizeAnchor(handle == m_left_resize_handle));
+}
+
+/**
+	@brief DynamicElementTextItem::resizeAnchor
+	@param left_handle : the left width handle is dragged
+	@return the point of the text, in its own coordinates, that a drag on
+	a width handle keeps in place: on the opposite edge, and at the top,
+	the middle or the bottom as the text is aligned. A text that wraps onto
+	more lines while it narrows then grows away from that point, down for
+	a text aligned at the top, instead of moving into its neighbours.
+*/
+QPointF DynamicElementTextItem::resizeAnchor(bool left_handle) const
+{
 	const QRectF br = boundingRect();
-	m_resize_fixed_parent = mapToParent(QPointF(handle == m_left_resize_handle ? br.right() : br.left(),
-												br.center().y()));
+	const Qt::Alignment v = alignment() & Qt::AlignVertical_Mask;
+	const qreal y = (v & Qt::AlignBottom) ? br.bottom()
+				  : (v & Qt::AlignVCenter) ? br.center().y()
+				  : br.top();
+	return QPointF(left_handle ? br.right() : br.left(), y);
 }
 
 /**
@@ -1079,13 +1096,10 @@ void DynamicElementTextItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *handl
 	qreal new_width = qMax(m_resize_baseline_width + delta, qreal(10));
 	setTextWidth(new_width);
 
-		//The text grows and shrinks on its right side: dragging the left
-		//handle moves the text so that its right edge stays in place
-	if (handle == m_left_resize_handle)
-	{
-		const QRectF br = boundingRect();
-		setPos(pos() + m_resize_fixed_parent - mapToParent(QPointF(br.right(), br.center().y())));
-	}
+		//Keep the opposite edge in place, and the top, middle or bottom
+		//as the text is aligned, whatever the new number of lines
+	setPos(pos() + m_resize_fixed_parent
+		   - mapToParent(resizeAnchor(handle == m_left_resize_handle)));
 	updateResizeHandlesPos();
 }
 
