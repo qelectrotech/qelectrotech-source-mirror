@@ -1041,6 +1041,8 @@ void DynamicElementTextItem::updateResizeHandlesPos()
 */
 void DynamicElementTextItem::handlerMousePressEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event)
 {
+	Q_UNUSED(handle)
+
 		//The actual property value, kept as-is (possibly -1, meaning "auto")
 		//so a later undo restores the exact original state rather than a
 		//synthesized fixed width.
@@ -1050,30 +1052,33 @@ void DynamicElementTextItem::handlerMousePressEvent(QetGraphicsHandlerItem *hand
 	m_resize_baseline_width = (m_resize_original_width < 0) ? frameRect().width() : m_resize_original_width;
 	m_resize_start_local_x = mapFromScene(event->scenePos()).x();
 
-		//The edge opposite the dragged handle stays where it is, as in a
-		//drawing program: remember it in the parent's coordinates, which
-		//take the text's rotation into account
+		//The point the text is aligned on stays where it is: remember it
+		//in the parent's coordinates, which take the text's rotation
+		//into account
 	m_resize_start_pos = pos();
-	m_resize_fixed_parent = mapToParent(resizeAnchor(handle == m_left_resize_handle));
+	m_resize_fixed_parent = mapToParent(resizeAnchor());
 }
 
 /**
 	@brief DynamicElementTextItem::resizeAnchor
-	@param left_handle : the left width handle is dragged
 	@return the point of the text, in its own coordinates, that a drag on
-	a width handle keeps in place: on the opposite edge, and at the top,
-	the middle or the bottom as the text is aligned. A text that wraps onto
-	more lines while it narrows then grows away from that point, down for
-	a text aligned at the top, instead of moving into its neighbours.
+	a width handle keeps in place: the point it is aligned on, one of the
+	nine of its alignment (left, centre or right; top, middle or bottom).
+	A text aligned top right keeps its top right corner whichever handle
+	is dragged, and a text that wraps onto more lines while it narrows
+	grows away from that point instead of moving into its neighbours.
 */
-QPointF DynamicElementTextItem::resizeAnchor(bool left_handle) const
+QPointF DynamicElementTextItem::resizeAnchor() const
 {
 	const QRectF br = boundingRect();
-	const Qt::Alignment v = alignment() & Qt::AlignVertical_Mask;
-	const qreal y = (v & Qt::AlignBottom) ? br.bottom()
-				  : (v & Qt::AlignVCenter) ? br.center().y()
+	const Qt::Alignment a = alignment();
+	const qreal x = (a & Qt::AlignRight) ? br.right()
+				  : (a & Qt::AlignHCenter) ? br.center().x()
+				  : br.left();
+	const qreal y = (a & Qt::AlignBottom) ? br.bottom()
+				  : (a & Qt::AlignVCenter) ? br.center().y()
 				  : br.top();
-	return QPointF(left_handle ? br.right() : br.left(), y);
+	return QPointF(x, y);
 }
 
 /**
@@ -1096,10 +1101,9 @@ void DynamicElementTextItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *handl
 	qreal new_width = qMax(m_resize_baseline_width + delta, qreal(10));
 	setTextWidth(new_width);
 
-		//Keep the opposite edge in place, and the top, middle or bottom
-		//as the text is aligned, whatever the new number of lines
-	setPos(pos() + m_resize_fixed_parent
-		   - mapToParent(resizeAnchor(handle == m_left_resize_handle)));
+		//Keep the point the text is aligned on in place, whatever the new
+		//width and number of lines
+	setPos(pos() + m_resize_fixed_parent - mapToParent(resizeAnchor()));
 	updateResizeHandlesPos();
 }
 

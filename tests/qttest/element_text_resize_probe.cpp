@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Width handles of a symbol's text, linked against the application's objects.
 //
-// Dragging the left handle of a symbol's text changes its width and keeps
-// its right edge in place; dragging the right handle keeps its left edge,
-// as in a drawing program. Before, the text always kept its left edge, so
-// a drag on the left handle moved the right edge and the text jumped.
-// Undo puts back the width and the position together. A text narrowed
-// until it wraps grows downwards from its top corner. Checked for an
-// upright and a rotated text.
+// Dragging a width handle of a symbol's text changes its width and keeps
+// the point the text is aligned on in place, one of the nine of its
+// alignment: a text aligned top right keeps its top right corner, one
+// centred its middle. Before, the text always kept its left edge, so a
+// drag on the left handle moved the right edge and the text jumped. A
+// text narrowed until it wraps grows away from that point. Undo puts back
+// the width and the position together. Checked for four alignments, on
+// an upright and on a rotated text.
 #include <QApplication>
 #include <QFontDatabase>
 #include <QGraphicsSceneMouseEvent>
@@ -57,11 +58,14 @@ static QetGraphicsHandlerItem *handle(DynamicElementTextItem *text, bool left)
 	return found;
 }
 
-/// The top corner of the text on the left or right, in the folio.
-static QPointF edge(DynamicElementTextItem *text, bool left)
+/// The point the text is aligned on, one of its nine, in the folio.
+static QPointF anchor(DynamicElementTextItem *text)
 {
 	const QRectF br = text->boundingRect();
-	return text->mapToScene(QPointF(left ? br.left() : br.right(), br.top()));
+	const Qt::Alignment a = text->alignment();
+	const qreal x = (a & Qt::AlignRight) ? br.right() : (a & Qt::AlignHCenter) ? br.center().x() : br.left();
+	const qreal y = (a & Qt::AlignBottom) ? br.bottom() : (a & Qt::AlignVCenter) ? br.center().y() : br.top();
+	return text->mapToScene(QPointF(x, y));
 }
 
 /// Drag one handle by dx along the text's own baseline.
@@ -76,44 +80,53 @@ static void drag(Diagram *scene, DynamicElementTextItem *text, bool left, qreal 
 	mouse(scene, h, QEvent::GraphicsSceneMouseRelease, end);
 }
 
-static void checkText(Diagram *scene, Element *element, DynamicElementTextItem *text)
+static void checkText(Diagram *scene, Element *element, DynamicElementTextItem *text, Qt::Alignment alignment)
 {
+	text->setTextWidth(-1);
+	text->setAlignment(alignment);
 	element->setSelected(true);
 	const QPointF pos = text->pos();
 	const qreal width = text->boundingRect().width();
-	const QPointF right = edge(text, false);
+	const QPointF fixed = anchor(text);
 
-	// Left handle 30 to the left: wider, right edge where it was.
+	// Left handle 30 outwards: wider, the alignment point where it was.
 	drag(scene, text, true, -30);
 	check(text->boundingRect().width() > width + 10, "the left handle widens the text");
-	check(near(edge(text, false), right), "dragging the left handle keeps the right edge in place");
-
+	check(near(anchor(text), fixed), "dragging the left handle keeps the alignment point in place");
 	scene->undoStack().undo();
 	check(near(text->pos(), pos), "undo puts the text back where it was");
 	check(qAbs(text->boundingRect().width() - width) < 0.01, "undo puts the width back");
 	scene->undoStack().redo();
-	check(near(edge(text, false), right), "redo keeps the right edge in place");
+	check(near(anchor(text), fixed), "redo keeps the alignment point in place");
 	scene->undoStack().undo();
 
-	// Right handle 30 to the right: wider, left edge where it was.
+	// Right handle 30 outwards: the same point stays.
 	element->setSelected(true);
-	const QPointF left = edge(text, true);
 	drag(scene, text, false, 30);
 	check(text->boundingRect().width() > width + 10, "the right handle widens the text");
-	check(near(edge(text, true), left), "dragging the right handle keeps the left edge in place");
+	check(near(anchor(text), fixed), "dragging the right handle keeps the alignment point in place");
 	scene->undoStack().undo();
-	check(near(text->pos(), pos), "undo of the right handle leaves the position alone");
+	check(near(text->pos(), pos), "undo of the right handle puts the text back");
 
-	// Narrowed until it wraps onto more lines with the left handle: the
-	// text grows downwards from its top right corner, it does not move up
-	// into what stands above it.
+	// Narrowed until it wraps onto more lines: it grows away from the
+	// alignment point, a text aligned at the top downwards, so that it
+	// does not move into what stands above it.
+	element->setSelected(true);
 	const qreal height = text->boundingRect().height();
-	drag(scene, text, true, width - 25);
+	drag(scene, text, false, 25 - width);
 	check(text->boundingRect().height() > height + 5, "narrowing the text wraps it onto more lines");
-	check(near(edge(text, false), right), "a text that wraps keeps its top right corner in place");
+	check(near(anchor(text), fixed), "a text that wraps keeps its alignment point in place");
 	scene->undoStack().undo();
 	check(near(text->pos(), pos), "undo puts the wrapped text back");
 	element->setSelected(false);
+}
+
+static void checkAll(Diagram *scene, Element *element, DynamicElementTextItem *text)
+{
+	checkText(scene, element, text, Qt::AlignLeft | Qt::AlignTop);
+	checkText(scene, element, text, Qt::AlignRight | Qt::AlignTop);
+	checkText(scene, element, text, Qt::AlignHCenter | Qt::AlignVCenter);
+	checkText(scene, element, text, Qt::AlignRight | Qt::AlignBottom);
 }
 
 int main(int argc, char **argv)
@@ -146,13 +159,13 @@ int main(int argc, char **argv)
 		text->setTextFrom(DynamicElementTextItem::UserText);
 		text->setText(QStringLiteral("Sockets bathroom first floor, 5"));
 
-		checkText(scene, element, text);
-		// The same on a text turned by 90 degrees: the fixed edge is
+		checkAll(scene, element, text);
+		// The same on a text turned by 90 degrees: the fixed point is
 		// found along the text's own baseline, not the folio's x axis.
 		text->setRotation(90);
-		checkText(scene, element, text);
+		checkAll(scene, element, text);
 
-		std::puts("PASS: a symbol text's width handles keep the opposite edge in place, undo restores both");
+		std::puts("PASS: a symbol text's width handles keep its alignment point in place, undo restores both");
 	}
 	catch (const std::exception &error)
 	{
