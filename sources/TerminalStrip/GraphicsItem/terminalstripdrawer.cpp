@@ -299,19 +299,45 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 	const qreal text_height{font_metrics.height()};
 
 		//Draw a mark (small oblique line) on a wire and the number of the wire next to it.
-		//The text is written from the bottom to the top, at the left of the wire.
-	const auto draw_wire_mark = [&](qreal x, qreal mark_y, const QString &text, bool text_above)
+		//The text is written from the bottom to the top, at the left of the wire, starting
+		//above the mark and running towards the terminal: the font shrinks while the text
+		//is longer than the room left between the mark and the terminal, and what still
+		//does not fit is clipped away, so a long number never runs into the drawing of
+		//the terminal. The room left is @a terminal_bottom the bottom of that terminal.
+	const auto draw_wire_mark = [&](qreal x, qreal mark_y, qreal terminal_bottom, const QString &text)
 	{
 		painter->drawLine(QPointF{x - 3, mark_y + 3}, QPointF{x + 3, mark_y - 3});
 		if (text.isEmpty()) {
 			return;
 		}
 
-		const qreal text_width{font_metrics.horizontalAdvance(text)};
+			//Room left between the mark and the terminal
+		const qreal room{mark_y - 4 - (terminal_bottom + 2)};
+		if (room <= 0) {
+			return;
+		}
+
+		QFont text_font{painter->font()};
+		if (text_font.pixelSize() <= 0 && text_font.pointSizeF() > 0) {
+			text_font.setPixelSize(qMax(4, qRound(text_font.pointSizeF() * 96.0 / 72.0)));
+		}
+		while (QFontMetricsF{text_font}.horizontalAdvance(text) > room &&
+			   text_font.pixelSize() > 4) {
+			text_font.setPixelSize(text_font.pixelSize() - 1);
+		}
+
+		const QFontMetricsF fitted_metrics{text_font};
+		const qreal fitted_width{fitted_metrics.horizontalAdvance(text)};
+		const qreal fitted_height{fitted_metrics.height()};
 		painter->save();
-		painter->translate(x - 1, text_above ? mark_y - 4 : mark_y + 4 + text_width);
+		painter->setFont(text_font);
+			//The clip keeps the text under the terminal even when a number is
+			//so long that the smallest font does not fit it any more
+		painter->setClipRect(QRectF{x - 1 - fitted_height, terminal_bottom + 2,
+									fitted_height + 1, room});
+		painter->translate(x - 1, mark_y - 4);
 		painter->rotate(270);
-		painter->drawText(QRectF{0, -text_height, text_width + 2, text_height},
+		painter->drawText(QRectF{0, -fitted_height, fitted_width + 2, fitted_height},
 						  Qt::AlignLeft | Qt::AlignVCenter,
 						  text);
 		painter->restore();
@@ -359,7 +385,7 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 		for (const auto &wire : std::as_const(wires))
 		{
 			painter->drawLine(QPointF{wire.x, wire.bottom}, QPointF{wire.x, bar_1_y});
-			draw_wire_mark(wire.x, qMax(wire.bottom + 4, bar_1_y - 10), wire.wire, true);
+			draw_wire_mark(wire.x, qMax(wire.bottom + 4, bar_1_y - 10), wire.bottom, wire.wire);
 		}
 		painter->drawLine(QPointF{min_x, bar_1_y}, QPointF{max_x, bar_1_y});
 

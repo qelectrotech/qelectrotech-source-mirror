@@ -43,6 +43,10 @@
 	The graphic draws them in a small box under the cable, the bundle
 	staying together (RealTerminal::cableTarget()).
 
+	Also here: the number of a wire must stay in the room left between
+	its mark and the terminal -- it shrinks, and what does not fit is
+	clipped, so it never runs into the drawing of the terminal.
+
 	fixtures/every_feature.qet has the strip X1 (elements 891b70f2 and
 	4861e268) and the contact fc9cc920 wired to 891b70f2 by the
 	conductor 8bd16d7a; the test gives the contact the Installation,
@@ -159,6 +163,7 @@ private slots:
 	void ownStripIsNoTarget();
 	void spareHasNoTarget();
 	void paintsWithTargetBox();
+	void wireLabelStaysOutOfTheTerminal();
 };
 
 void tst_cabletarget::init()
@@ -296,6 +301,74 @@ void tst_cabletarget::paintsWithTargetBox()
 
 	const QImage without_box{render()};
 	QVERIFY(with_box != without_box);
+}
+
+/**
+	The number of a wire is written next to its mark, in the room left
+	between the mark and the terminal: it shrinks to fit there, and what
+	still does not fit is clipped away, so a long number never runs into
+	the drawing of the terminal. The two pictures -- one with a number
+	long enough to reach into the terminal, one without any -- must be
+	the same above the bottom of the terminal, and differ below it (the
+	number is drawn somewhere).
+*/
+void tst_cabletarget::wireLabelStaysOutOfTheTerminal()
+{
+	QVERIFY(wireCableToTheContact());
+
+	auto pattern_ = QSharedPointer<TerminalStripLayoutPattern>{new TerminalStripLayoutPattern};
+	const auto strips_ = m_project->terminalStrip();
+	QVERIFY(!strips_.isEmpty());
+	TerminalStripDrawer::TerminalStripDrawer drawer{
+		QSharedPointer<TerminalStripDrawer::TrueTerminalStrip>{
+			new TerminalStripDrawer::TrueTerminalStrip{strips_.first()}},
+		pattern_};
+
+	const QRectF bounds{drawer.boundingRect()};
+	QVERIFY(!bounds.isEmpty());
+
+	const auto render = [&drawer, &bounds]() {
+		QImage image{bounds.size().toSize() + QSize{4, 4},
+					 QImage::Format_ARGB32_Premultiplied};
+		image.fill(Qt::transparent);
+		QPainter painter{&image};
+		painter.translate(-bounds.topLeft() + QPointF{2, 2});
+		drawer.paint(&painter);
+		return image;
+	};
+
+		//A number much longer than the room left over the mark
+	Element *terminal_ = element(
+		QStringLiteral("{891b70f2-2822-41c3-9f94-28efb448b5c4}"));
+	QVERIFY(terminal_);
+	ElementData terminal_data_{terminal_->elementData()};
+	terminal_data_.m_informations.addValue(
+		RealTerminal::cableWireInfoKey(),
+		QStringLiteral("gnge-gnge-gnge-gnge-gnge"));
+	terminal_->setElementData(terminal_data_);
+	const QImage with_label{render()};
+
+		//The same strip, the wire carries no number at all
+	terminal_data_.m_informations.addValue(RealTerminal::cableWireInfoKey(),
+										   QString());
+	terminal_->setElementData(terminal_data_);
+	const QImage without_label{render()};
+
+		//The number is drawn: the two pictures differ
+	QVERIFY(with_label != without_label);
+
+		//The terminals of this strip all stand on the last level of the
+		//pattern, so their bottom is the same rectangle
+	const qreal terminal_bottom{pattern_->m_terminal_rect.at(3).bottom()};
+	const auto rows_to_check{qMin(qRound(terminal_bottom - bounds.topLeft().y() + 2),
+								  with_label.height())};
+	for (auto y = 0 ; y < rows_to_check ; ++y)
+	{
+		for (auto x = 0 ; x < with_label.width() ; ++x)
+		{
+			QCOMPARE(with_label.pixel(x, y), without_label.pixel(x, y));
+		}
+	}
 }
 
 int main(int argc, char **argv)
