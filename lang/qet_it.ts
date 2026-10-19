@@ -3895,6 +3895,31 @@ Tieni premuto Maiusc e trascina per spostare solo questo testo</translation>
 <context>
     <name>DynamicElementTextModel</name>
     <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="309"/>
+        <source>Width (fixed)</source>
+        <translation>Larghezza (fissa)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="325"/>
+        <source>Height (fixed)</source>
+        <translation>Altezza (fissa)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="311"/>
+        <source>Ticked, the text field keeps this width and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>Spuntato, il campo di testo mantiene questa larghezza e il testo va a capo al suo interno. Non spuntato, è largo quanto il testo.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
+        <source>Ticked, the text field keeps this height and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>Spuntato, il campo di testo mantiene questa altezza e le righe che non entrano vengono tagliate. Non spuntato, è alto quanto il testo.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>
+        <source>Change the height of an element text</source>
+        <translation>Modifica l&apos;altezza di un testo dell&apos;elemento</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="269"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="824"/>
         <source>Frame</source>

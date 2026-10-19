@@ -53,6 +53,7 @@ class DynamicElementTextModel : public QStandardItemModel
 		rotation,
 		keepVisualRotation,
 		textWidth,
+		textHeight,
 		grpAlignment,
 		grpPos,
 		grpRotation,
