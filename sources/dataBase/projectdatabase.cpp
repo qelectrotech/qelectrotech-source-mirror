@@ -2695,6 +2695,25 @@ bool projectDataBase::createDataBase()
 		qDebug() << " link_table query : " << query_.lastError();
 	}
 
+		//The numbering tables (QETZ-DB-FIRST stage 2b): the project's
+		//schemes, one row per part of each in its order, and the settings
+		//saved with them. Not filled from the folios: QETProject writes
+		//them when it reads its file and whenever its numbering changes.
+	for (const char *table : {
+			 "CREATE TABLE numbering_scheme ("
+			 "kind VARCHAR(20) NOT NULL, title TEXT NOT NULL, uuid VARCHAR(50), "
+			 "PRIMARY KEY (kind, title))",
+			 "CREATE TABLE numbering_part ("
+			 "kind VARCHAR(20) NOT NULL, title TEXT NOT NULL, ord INTEGER NOT NULL, "
+			 "type TEXT, value TEXT, increase TEXT, initialvalue TEXT, modulus TEXT, format TEXT, "
+			 "PRIMARY KEY (kind, title, ord), "
+			 "FOREIGN KEY (kind, title) REFERENCES numbering_scheme (kind, title))",
+			 "CREATE TABLE numbering_setting (name VARCHAR(50) PRIMARY KEY NOT NULL, value TEXT)"}) {
+		if (!query_.exec(QLatin1String(table))) {
+			qDebug() << " numbering table query : " << query_.lastError();
+		}
+	}
+
 	//Create the terminal table.
 	//Terminal::uuid() is the terminal-position id baked into the catalog
 	//.elmt definition (e.g. "the top terminal") -- identical across every
@@ -4089,6 +4108,120 @@ QStringList projectDataBase::linkRowMismatches()
 		}
 	}
 	return mismatches;
+}
+
+/**
+	@brief projectDataBase::setNumbering
+	The numbering tables hold @p numbering from now on, and nothing else
+	(QETZ-DB-FIRST stage 2b-1: QETProject writes them after reading its
+	file and after each change of its numbering)
+*/
+void projectDataBase::setNumbering(const Numbering &numbering)
+{
+	QSqlQuery query(m_data_base);
+	bool ok = true;
+	for (const char *table : {"numbering_part", "numbering_scheme", "numbering_setting"})
+		ok = ok && query.exec(QStringLiteral("DELETE FROM %1").arg(QLatin1String(table)));
+
+	QSqlQuery scheme(m_data_base);
+	scheme.prepare(QStringLiteral("INSERT INTO numbering_scheme (kind, title, uuid) "
+								  "VALUES (:kind, :title, :uuid)"));
+	QSqlQuery part(m_data_base);
+	part.prepare(QStringLiteral("INSERT INTO numbering_part (kind, title, ord, type, value, "
+								"increase, initialvalue, modulus, format) VALUES (:kind, :title, "
+								":ord, :type, :value, :increase, :initialvalue, :modulus, :format)"));
+	for (const NumberingScheme &item : numbering.schemes)
+	{
+		scheme.bindValue(QStringLiteral(":kind"), item.kind);
+		scheme.bindValue(QStringLiteral(":title"), item.title);
+		scheme.bindValue(QStringLiteral(":uuid"), item.uuid.isNull() ? QVariant()
+																	 : QVariant(item.uuid.toString()));
+		ok = ok && scheme.exec();
+		for (int i = 0 ; i < item.context.size() ; ++i)
+		{
+			const QStringList fields = item.context.itemAt(i);
+			part.bindValue(QStringLiteral(":kind"), item.kind);
+			part.bindValue(QStringLiteral(":title"), item.title);
+			part.bindValue(QStringLiteral(":ord"), i);
+			int field = 0;
+			for (const char *name : {":type", ":value", ":increase", ":initialvalue", ":modulus", ":format"}) {
+				part.bindValue(QLatin1String(name), field < fields.size() ? QVariant(fields.at(field))
+																		  : QVariant());
+				++field;
+			}
+			ok = ok && part.exec();
+		}
+	}
+
+	QSqlQuery setting(m_data_base);
+	setting.prepare(QStringLiteral("INSERT INTO numbering_setting (name, value) VALUES (:name, :value)"));
+	auto set = [&setting, &ok](const QString &name, const QString &value) {
+		setting.bindValue(QStringLiteral(":name"), name);
+		setting.bindValue(QStringLiteral(":value"), value);
+		ok = ok && setting.exec();
+	};
+	auto flag = [](bool value) { return value ? QStringLiteral("true") : QStringLiteral("false"); };
+	set(QStringLiteral("conductor_current"), numbering.current_conductor);
+	set(QStringLiteral("element_current"), numbering.current_element);
+	set(QStringLiteral("cable_current"), numbering.current_cable);
+	set(QStringLiteral("freeze_new_conductors"), flag(numbering.freeze_new_conductors));
+	set(QStringLiteral("freeze_new_elements"), flag(numbering.freeze_new_elements));
+	set(QStringLiteral("auto_break_conductors"), flag(numbering.auto_break_conductors));
+	set(QStringLiteral("cable_x_axis_first"), flag(numbering.cable_x_axis_first));
+	set(QStringLiteral("cable_ask_numbering"), flag(numbering.cable_ask_numbering));
+
+	if (!ok) {
+		qDebug() << "projectDataBase::setNumbering error : " << query.lastError()
+				 << scheme.lastError() << part.lastError() << setting.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::numbering
+	@return the numbering the numbering tables hold (setNumbering()); the
+	schemes in no particular order
+*/
+projectDataBase::Numbering projectDataBase::numbering() const
+{
+	Numbering numbering;
+	QSqlQuery query(m_data_base);
+	query.exec(QStringLiteral("SELECT kind, title, uuid FROM numbering_scheme"));
+	QHash<std::pair<QString, QString>, int> index;
+	while (query.next()) {
+		NumberingScheme scheme;
+		scheme.kind = query.value(0).toString();
+		scheme.title = query.value(1).toString();
+		scheme.uuid = QUuid(query.value(2).toString());
+		index.insert({scheme.kind, scheme.title}, numbering.schemes.size());
+		numbering.schemes << scheme;
+	}
+	query.exec(QStringLiteral("SELECT kind, title, type, value, increase, initialvalue, modulus, "
+							  "format FROM numbering_part ORDER BY kind, title, ord"));
+	while (query.next()) {
+		const int at = index.value({query.value(0).toString(), query.value(1).toString()}, -1);
+		if (at < 0) {
+			continue;
+		}
+		numbering.schemes[at].context.addValue(query.value(2).toString(), query.value(3).toString(),
+											   query.value(4).toInt(), query.value(5).toInt(),
+											   query.value(6).toInt(), query.value(7).toString());
+	}
+	query.exec(QStringLiteral("SELECT name, value FROM numbering_setting"));
+	while (query.next())
+	{
+		const QString name = query.value(0).toString();
+		const QString value = query.value(1).toString();
+		const bool flag = value == QLatin1String("true");
+		if (name == QLatin1String("conductor_current")) numbering.current_conductor = value;
+		else if (name == QLatin1String("element_current")) numbering.current_element = value;
+		else if (name == QLatin1String("cable_current")) numbering.current_cable = value;
+		else if (name == QLatin1String("freeze_new_conductors")) numbering.freeze_new_conductors = flag;
+		else if (name == QLatin1String("freeze_new_elements")) numbering.freeze_new_elements = flag;
+		else if (name == QLatin1String("auto_break_conductors")) numbering.auto_break_conductors = flag;
+		else if (name == QLatin1String("cable_x_axis_first")) numbering.cable_x_axis_first = flag;
+		else if (name == QLatin1String("cable_ask_numbering")) numbering.cable_ask_numbering = flag;
+	}
+	return numbering;
 }
 
 /**

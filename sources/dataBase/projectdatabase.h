@@ -36,6 +36,7 @@
 #include "../titleblockproperties.h"
 #include "../conductorproperties.h"
 #include "../autoNum/assignvariables.h"
+#include "../autoNum/numerotationcontext.h"
 
 class Element;
 class QETProject;
@@ -156,6 +157,28 @@ class projectDataBase : public QObject
 		void conductorUuidChanged(Conductor *conductor, const QUuid &old_uuid);
 		QStringList conductorPropertiesMismatches() const;
 		QStringList linkRowMismatches();
+			/// A numbering scheme of the project (QETZ-DB-FIRST stage 2b)
+		struct NumberingScheme {
+			QString kind;   ///< conductor, element, folio or cable
+			QString title;
+			QUuid uuid;     ///< element schemes only
+			NumerotationContext context;
+		};
+			/// The project's numbering: its schemes of every kind and the
+			/// settings saved with them
+		struct Numbering {
+			QList<NumberingScheme> schemes;
+			QString current_conductor;
+			QString current_element;
+			QString current_cable;
+			bool freeze_new_conductors = false;
+			bool freeze_new_elements = false;
+			bool auto_break_conductors = false;
+			bool cable_x_axis_first = true;
+			bool cable_ask_numbering = true;
+		};
+		void setNumbering(const Numbering &numbering);
+		Numbering numbering() const;
 		bool savedLinks(const Element *element, QList<std::pair<QUuid, int>> *links);
 			//The link rows are written (opening filled them): a symbol
 			//built links from them (Element::initLink())
