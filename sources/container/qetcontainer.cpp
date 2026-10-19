@@ -388,34 +388,39 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 	for (QDomElement diagram : childElements(root, QStringLiteral("diagram")))
 		dropComputed(diagram, own_uuids, defined);
 
-		//The parts of the folios kept as they were, and their pictures
+		//The parts of the folios, in the order of the folios whether they
+		//were kept as they were or built: which folios were built must not
+		//change the file. The names of the parts kept are taken first, so a
+		//folio built cannot take one.
 	QMap<QString, QByteArray> pictures;   //name -> png, once each
-	for (QDomElement diagram : childElements(root, QStringLiteral("diagram")))
-	{
+	const QList<QDomElement> diagrams = childElements(root, QStringLiteral("diagram"));
+	for (const QDomElement &diagram : diagrams) {
 		const QString kept = diagram.attribute(QStringLiteral("qetz-kept-part"));
-		if (kept.isEmpty()) continue;
-		if (!kept_from.contains(kept)) {
-			setError(error, QStringLiteral("the part \"%1\" of a folio kept as it was is missing").arg(kept));
-			return {};
-		}
-		taken.insert(kept);
-		const QByteArray part = kept_from.value(kept);
-		static const QRegularExpression image_file(QStringLiteral("%1=\"(images/[^\"]+)\"").arg(ImageFileAttribute));
-		for (const auto &match : image_file.globalMatch(QString::fromUtf8(part))) {
-			const QString name = match.captured(1);
-			if (!kept_from.contains(name)) {
-				setError(error, QStringLiteral("the picture \"%1\" of a folio kept as it was is missing").arg(name));
-				return {};
-			}
-			pictures.insert(name, kept_from.value(name));
-		}
-		parts.append(QetZip::Entry{kept, part, true});
-		root.replaceChild(placeholder(document, kept), diagram);
+		if (!kept.isEmpty()) taken.insert(kept);
 	}
-
-	for (QDomElement diagram : childElements(root, QStringLiteral("diagram")))
+	for (QDomElement diagram : diagrams)
 	{
 		++folio;
+		const QString kept = diagram.attribute(QStringLiteral("qetz-kept-part"));
+		if (!kept.isEmpty()) {
+			if (!kept_from.contains(kept)) {
+				setError(error, QStringLiteral("the part \"%1\" of a folio kept as it was is missing").arg(kept));
+				return {};
+			}
+			const QByteArray part = kept_from.value(kept);
+			static const QRegularExpression image_file(QStringLiteral("%1=\"(images/[^\"]+)\"").arg(ImageFileAttribute));
+			for (const auto &match : image_file.globalMatch(QString::fromUtf8(part))) {
+				const QString name = match.captured(1);
+				if (!kept_from.contains(name)) {
+					setError(error, QStringLiteral("the picture \"%1\" of a folio kept as it was is missing").arg(name));
+					return {};
+				}
+				pictures.insert(name, kept_from.value(name));
+			}
+			parts.append(QetZip::Entry{kept, part, true});
+			root.replaceChild(placeholder(document, kept), diagram);
+			continue;
+		}
 		for (QDomElement images : childElements(diagram, QStringLiteral("images"))) {
 			for (QDomElement image : childElements(images, QStringLiteral("image"))) {
 				const QDomText text = image.firstChild().toText();
