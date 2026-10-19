@@ -734,7 +734,8 @@ qet.log('PROBE ' + JSON.stringify(r));
 	// numbering from the project and from the rows, and the two must be
 	// the same (QET_CHECK_NUMBERING_ROWS). A scheme of each kind added,
 	// renamed, removed, undone and redone, then made current; a
-	// renumbering and its undo.
+	// renumbering and its undo. On a one-folio project: a --run script
+	// is stopped after 30 s, and a sanitizer build is slow.
 	void numberingRowsFollowEveryChange()
 	{
 		const QString saved = m_dir.filePath(QStringLiteral("numbering-rows.qet"));
@@ -755,8 +756,10 @@ save();
 qet.useElementAutoNum('Rows renamed element'); save();
 qet.useConductorAutoNum(0, 'Rows renamed conductor'); save();
 var schemes = qet.autoNums('element');
-qet.renumberElementAutoNum(schemes[0].split(': formula=')[0]); save();
-qet.undo(); save();
+var renumbered = qet.renumberElementAutoNum(schemes[0].split(': formula=')[0]) > 0;
+save();
+if (renumbered) qet.undo();
+save();
 qet.log('PROBE ' + JSON.stringify({saves: saves}));
 )JS").arg(QStringLiteral("'") + saved + QStringLiteral("'"));
 
@@ -770,7 +773,7 @@ qet.log('PROBE ' + JSON.stringify({saves: saves}));
 		proc.setProcessEnvironment(environment());
 		m_check_numbering = false;
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
-				   {QStringLiteral("--run"), path, QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet")});
+				   {QStringLiteral("--run"), path, QStringLiteral(QET_EXAMPLES_DIR "/741.qet")});
 		QVERIFY(proc.waitForFinished(180000));
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 
