@@ -2,6 +2,7 @@
 #include <QtTest>
 #include <QSet>
 
+#include <QCryptographicHash>
 #include <QDir>
 #include <QFile>
 #include <QProcess>
@@ -35,7 +36,8 @@ class tst_resaveunchanged : public QObject
 
 	// --resave @p in to a new file, in a sandbox of its own (so a running
 	// QElectroTech cannot answer instead); returns the new file's path.
-	QString resave(const QString &in, const QString &suffix = QStringLiteral(".qet"))
+	QString resave(const QString &in, const QString &suffix = QStringLiteral(".qet"),
+				   bool eager = false)
 	{
 			//Always p.qet, in its own folder: an untitled project takes its
 			//file name as title, so two names would make two projects.
@@ -48,6 +50,11 @@ class tst_resaveunchanged : public QObject
 		env.insert(QStringLiteral("HOME"), home);
 		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
 		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
+		if (eager) {
+			env.insert(QStringLiteral("QET_EAGER_FOLIOS"), QStringLiteral("1")); //every folio built on opening
+		} else {
+			env.remove(QStringLiteral("QET_EAGER_FOLIOS"));
+		}
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--resave"), in, out});
@@ -383,6 +390,117 @@ private slots:
 			return QString::fromUtf8(xml).remove(stamp);
 		};
 		QCOMPARE(without_save_stamps(read(back)), without_save_stamps(read(straight)));
+	}
+
+	// The round trip between the formats (#1512): every example, and
+	// fixtures/every_feature.qet, a project using every feature
+	// QElectroTech saves (built through its script API, the few things the
+	// API cannot set added in the form QElectroTech saves them, then opened
+	// and saved by QElectroTech). For each, the save stamps aside:
+	//  - a .qetz saved again is the same file;
+	//  - a .qetz saved as a .qet is the project saved straight as a .qet;
+	//  - that .qet saved as a .qetz is the project saved straight as a
+	//    .qetz, part by part, its database row by row;
+	//  - lazy folios save what every folio built saves, in both formats.
+	void roundTripBetweenFormats_data()
+	{
+		QTest::addColumn<QString>("project");
+		const QDir examples(QStringLiteral(QET_EXAMPLES_DIR));
+		for (const QString &name : examples.entryList({QStringLiteral("*.qet")}, QDir::Files, QDir::Name))
+			QTest::newRow(name.toUtf8().constData()) << examples.filePath(name);
+		QTest::newRow("every_feature.qet") << QFINDTESTDATA("fixtures/every_feature.qet");
+	}
+	void roundTripBetweenFormats()
+	{
+		QFETCH(QString, project);
+		const QString qet = resave(project);
+		QVERIFY2(!qet.isEmpty(), "--resave as .qet failed");
+		const QString qetz = resave(project, QStringLiteral(".qetz"));
+		QVERIFY2(!qetz.isEmpty(), "--resave as .qetz failed");
+
+		const QString qetz_again = resave(qetz, QStringLiteral(".qetz"));
+		QVERIFY2(!qetz_again.isEmpty(), "--resave of the .qetz failed");
+		QVERIFY2(read(qetz_again) == read(qetz), "a .qetz saved again changed");
+
+		const QString back = resave(qetz);
+		QVERIFY2(!back.isEmpty(), "--resave of the .qetz as .qet failed");
+		QCOMPARE(withoutSaveStamps(read(back)), withoutSaveStamps(read(qet)));
+
+		const QString zipped = resave(qet, QStringLiteral(".qetz"));
+		QVERIFY2(!zipped.isEmpty(), "--resave of the .qet as .qetz failed");
+		QCOMPARE(containerContent(zipped), containerContent(qetz));
+
+		const QString eager = resave(project, QStringLiteral(".qet"), true);
+		QVERIFY2(!eager.isEmpty(), "--resave with every folio built failed");
+		QCOMPARE(withoutSaveStamps(read(eager)), withoutSaveStamps(read(qet)));
+		const QString eager_zipped = resave(project, QStringLiteral(".qetz"), true);
+		QVERIFY2(!eager_zipped.isEmpty(), "--resave as .qetz with every folio built failed");
+		QCOMPARE(containerContent(eager_zipped), containerContent(qetz));
+	}
+
+	static QString withoutSaveStamps(const QByteArray &xml)
+	{
+		static const QRegularExpression stamp(QStringLiteral(
+			"\\s*<property [^>]*name=\"saved(filename|filepath|filenamedir|date|date-us|date-eu|time)\"[^>]*>[^<]*</property>"));
+		return QString::fromUtf8(xml).remove(stamp);
+	}
+
+	// What the .qetz @p path holds, its save stamps aside: one line per
+	// part, an XML part as its text, project.sqlite as its rows
+	static QStringList containerContent(const QString &path)
+	{
+		QList<QetZip::Entry> entries;
+		if (!QetZip::fromBytes(read(path), &entries)) return {QStringLiteral("not a zip")};
+		QStringList content;
+		for (const QetZip::Entry &entry : std::as_const(entries)) {
+			if (entry.name == QLatin1String("project.sqlite")) {
+				for (const QString &row : databaseRows(entry.data))
+					content << entry.name + QLatin1Char(' ') + row;
+			} else if (entry.name.endsWith(QLatin1String(".xml"))) {
+				content << entry.name + QLatin1Char(' ') + withoutSaveStamps(entry.data);
+			} else {
+				content << entry.name + QLatin1Char(' ')
+						   + QString::fromLatin1(QCryptographicHash::hash(entry.data, QCryptographicHash::Sha1).toHex());
+			}
+		}
+		return content;
+	}
+
+	// Every row of every table of the SQLite database @p database, but the
+	// save stamps, as text
+	static QStringList databaseRows(const QByteArray &database)
+	{
+		sqlite3 *db = nullptr;
+		sqlite3_open(":memory:", &db);
+		unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(database.size())));
+		memcpy(copy, database.constData(), size_t(database.size()));
+		sqlite3_deserialize(db, "main", copy, database.size(), database.size(), SQLITE_DESERIALIZE_FREEONCLOSE);
+		QStringList tables;
+		sqlite3_stmt *list = nullptr;
+		sqlite3_prepare_v2(db, "SELECT name FROM sqlite_master WHERE type = 'table' ORDER BY name", -1, &list, nullptr);
+		while (list && sqlite3_step(list) == SQLITE_ROW)
+			tables << QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(list, 0)));
+		sqlite3_finalize(list);
+		static const QRegularExpression stamp(QStringLiteral(
+			"\\bsaved(filename|filepath|filenamedir|date|date-us|date-eu|time)\\b"));
+		QStringList rows;
+		for (const QString &table : std::as_const(tables)) {
+			sqlite3_stmt *select = nullptr;
+			sqlite3_prepare_v2(db, QStringLiteral("SELECT * FROM \"%1\"").arg(table).toUtf8().constData(),
+							   -1, &select, nullptr);
+			while (select && sqlite3_step(select) == SQLITE_ROW) {
+				QStringList values;
+				for (int c = 0 ; c < sqlite3_column_count(select) ; ++c) {
+					const unsigned char *text = sqlite3_column_text(select, c);
+					values << (text ? QString::fromUtf8(reinterpret_cast<const char *>(text)) : QStringLiteral("NULL"));
+				}
+				const QString row = table + QLatin1Char('|') + values.join(QLatin1Char('|'));
+				if (!row.contains(stamp)) rows << row;
+			}
+			sqlite3_finalize(select);
+		}
+		sqlite3_close(db);
+		return rows;
 	}
 
 	// The tables of the database in the .qetz @p path: the document's
