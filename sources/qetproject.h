@@ -457,8 +457,6 @@ class QETProject : public QObject
 
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
-		projectDataBase::Numbering numberingOfProject() const;
-		void writeNumberingRows();
 		static void writeNumberingXml(const projectDataBase::Numbering &numbering,
 									  QDomElement &xml_element);
 		void writeUsageXml(QDomElement &);
@@ -531,26 +529,6 @@ class QETProject : public QObject
 		DiagramContext m_project_properties;
 			/// undo stack for this project
 		QUndoStack *m_undo_stack;
-			/// Conductor auto numerotation
-		QHash <QString, NumerotationContext> m_conductor_autonum;//Title and NumContext hash
-		QString m_current_conductor_autonum;
-			/// Folio auto numbering
-		QHash <QString, NumerotationContext> m_folio_autonum;
-			/// Element Auto Numbering
-		QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
-			/// Title -> uuid of each element numbering scheme
-		QHash <QString, QUuid> m_element_autonum_id;
-		QString m_current_element_autonum;
-			/// Cable auto numbering: exactly one rule, kept the same way
-			/// the others are so it stores and travels with the project
-			/// alike, but never a list to choose from.
-		QHash <QString, NumerotationContext> m_cable_autonum;
-		QString m_current_cable_autonum;
-			///< which axis the cables are numbered along (see cableXAxisFirst)
-		bool m_cable_axis_x_first = true;
-			///< whether the cable tool still asks about a numbering rule
-			///< for this project (see cableAskNumbering)
-		bool m_cable_ask_numbering = true;
 			/// True when the loaded file had element numbering schemes
 			/// saved without an id (written before ids existed)
 		bool m_legacy_element_autonums = false;
@@ -598,10 +576,7 @@ class QETProject : public QObject
 			/// project, off for one saved without it), see uprightSymbolTexts()
 		bool m_upright_symbol_texts = false;
 		WiringRules::Settings m_wiring_rules;
-	bool m_auto_break_conductor = false;
 		XmlElementCollection *m_elements_collection = nullptr;
-		bool m_freeze_new_elements = false;
-		bool m_freeze_new_conductors = false;
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
 		QFuture<bool> m_backup_future;

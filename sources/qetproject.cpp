@@ -93,7 +93,7 @@ m_project_properties_handler{this}
 	QSettings settings;
 
 		//Read auto break conductor default from global settings
-	m_auto_break_conductor = settings.value(QStringLiteral("diagrameditor/auto_break_conductor"), false).toBool();
+	setAutoBreakConductor(settings.value(QStringLiteral("diagrameditor/auto_break_conductor"), false).toBool());
 
 	int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
 	for (int i = 0; i < size; ++i) {
@@ -140,8 +140,6 @@ m_project_properties_handler{this}
 			setCurrentCableAutoNum(cableData.second);
 		}
 	}
-		//m_auto_break_conductor above is read from the settings directly
-	writeNumberingRows();
 }
 
 ProjectPropertiesHandler &QETProject::projectPropertiesHandler()
@@ -1446,7 +1444,7 @@ void QETProject::setDefaultXRefProperties(QHash<QString, XRefProperties> hash)
 */
 QHash <QString, NumerotationContext> QETProject::conductorAutoNum() const
 {
-	return m_conductor_autonum;
+	return m_data_base.numberingSchemes(QStringLiteral("conductor"));
 }
 
 /**
@@ -1455,7 +1453,7 @@ QHash <QString, NumerotationContext> QETProject::conductorAutoNum() const
 */
 QHash <QString, NumerotationContext> QETProject::elementAutoNum() const
 {
-	return m_element_autonum;
+	return m_data_base.numberingSchemes(QStringLiteral("element"));
 }
 
 /**
@@ -1465,7 +1463,7 @@ QHash <QString, NumerotationContext> QETProject::elementAutoNum() const
 */
 QHash <QString, NumerotationContext> QETProject::cableAutoNum() const
 {
-	return m_cable_autonum;
+	return m_data_base.numberingSchemes(QStringLiteral("cable"));
 }
 
 /**
@@ -1475,8 +1473,8 @@ QHash <QString, NumerotationContext> QETProject::cableAutoNum() const
 */
 QString QETProject::elementAutoNumFormula (const QString& key) const
 {
-	if (m_element_autonum.contains(key)) {
-		return autonum::numerotationContextToFormula(m_element_autonum[key]);
+	if (m_data_base.hasNumberingScheme(QStringLiteral("element"), key)) {
+		return autonum::numerotationContextToFormula(m_data_base.numberingScheme(QStringLiteral("element"), key));
 	}
 
 	return QString();
@@ -1488,7 +1486,7 @@ QString QETProject::elementAutoNumFormula (const QString& key) const
 */
 QString QETProject::elementAutoNumCurrentFormula() const
 {
-	return elementAutoNumFormula(m_current_element_autonum);
+	return elementAutoNumFormula(elementCurrentAutoNum());
 }
 
 /**
@@ -1497,7 +1495,7 @@ QString QETProject::elementAutoNumCurrentFormula() const
 */
 QString QETProject::elementCurrentAutoNum () const
 {
-	return m_current_element_autonum;
+	return m_data_base.numberingSetting(QStringLiteral("element_current"));
 }
 
 /**
@@ -1505,8 +1503,7 @@ QString QETProject::elementCurrentAutoNum () const
 	@param autoNum : set the current element autonum to autonum
 */
 void QETProject::setCurrrentElementAutonum(QString autoNum) {
-	m_current_element_autonum = std::move(autoNum);
-	writeNumberingRows();
+	m_data_base.setNumberingSetting(QStringLiteral("element_current"), autoNum);
 }
 
 /**
@@ -1516,8 +1513,8 @@ void QETProject::setCurrrentElementAutonum(QString autoNum) {
 */
 QString QETProject::cableAutoNumFormula(const QString& key) const
 {
-	if (m_cable_autonum.contains(key)) {
-		return autonum::numerotationContextToFormula(m_cable_autonum.value(key));
+	if (m_data_base.hasNumberingScheme(QStringLiteral("cable"), key)) {
+		return autonum::numerotationContextToFormula(m_data_base.numberingScheme(QStringLiteral("cable"), key));
 	}
 
 	return QString();
@@ -1532,8 +1529,9 @@ QString QETProject::cableAutoNumFormula(const QString& key) const
 */
 bool QETProject::hasCableAutoNum() const
 {
-	if (m_current_cable_autonum.isEmpty()) return false;
-	return !cableAutoNum(m_current_cable_autonum).isEmpty();
+	const QString current = cableCurrentAutoNum();
+	if (current.isEmpty()) return false;
+	return !cableAutoNum(current).isEmpty();
 }
 
 /**
@@ -1542,7 +1540,7 @@ bool QETProject::hasCableAutoNum() const
 */
 QString QETProject::cableCurrentAutoNum() const
 {
-	return m_current_cable_autonum;
+	return m_data_base.numberingSetting(QStringLiteral("cable_current"));
 }
 
 /**
@@ -1551,8 +1549,7 @@ QString QETProject::cableCurrentAutoNum() const
 */
 void QETProject::setCurrentCableAutoNum(QString autoNum)
 {
-	m_current_cable_autonum = std::move(autoNum);
-	writeNumberingRows();
+	m_data_base.setNumberingSetting(QStringLiteral("cable_current"), autoNum);
 }
 
 /**
@@ -1572,7 +1569,7 @@ QString QETProject::cableAutoNumRuleName()
 */
 bool QETProject::cableXAxisFirst() const
 {
-	return m_cable_axis_x_first;
+	return m_data_base.numberingFlag(QStringLiteral("cable_x_axis_first"), true);
 }
 
 /**
@@ -1584,8 +1581,7 @@ bool QETProject::cableXAxisFirst() const
 */
 void QETProject::setCableXAxisFirst(bool x_axis_first)
 {
-	m_cable_axis_x_first = x_axis_first;
-	writeNumberingRows();
+	m_data_base.setNumberingFlag(QStringLiteral("cable_x_axis_first"), x_axis_first);
 }
 
 /**
@@ -1598,7 +1594,7 @@ void QETProject::setCableXAxisFirst(bool x_axis_first)
 */
 bool QETProject::cableAskNumbering() const
 {
-	return m_cable_ask_numbering;
+	return m_data_base.numberingFlag(QStringLiteral("cable_ask_numbering"), true);
 }
 
 /**
@@ -1611,8 +1607,7 @@ bool QETProject::cableAskNumbering() const
 */
 void QETProject::setCableAskNumbering(bool ask)
 {
-	m_cable_ask_numbering = ask;
-	writeNumberingRows();
+	m_data_base.setNumberingFlag(QStringLiteral("cable_ask_numbering"), ask);
 }
 
 /**
@@ -1645,8 +1640,8 @@ void QETProject::renumberElementsBySchemeTitle(const QString &scheme_title)
 */
 QString QETProject::conductorAutoNumFormula (const QString& key) const
 {
-	if (m_conductor_autonum.contains(key))
-		return autonum::numerotationContextToFormula(m_conductor_autonum.value(key));
+	if (m_data_base.hasNumberingScheme(QStringLiteral("conductor"), key))
+		return autonum::numerotationContextToFormula(m_data_base.numberingScheme(QStringLiteral("conductor"), key));
 	else
 		return QString();
 }
@@ -1657,7 +1652,7 @@ QString QETProject::conductorAutoNumFormula (const QString& key) const
 */
 QString QETProject::conductorCurrentAutoNum () const
 {
-	return m_current_conductor_autonum;
+	return m_data_base.numberingSetting(QStringLiteral("conductor_current"));
 }
 
 /**
@@ -1665,8 +1660,7 @@ QString QETProject::conductorCurrentAutoNum () const
 	@param autoNum set the current conductor autonum to autonum
 */
 void QETProject::setCurrentConductorAutoNum(QString autoNum) {
-	m_current_conductor_autonum = std::move(autoNum);
-	writeNumberingRows();
+	m_data_base.setNumberingSetting(QStringLiteral("conductor_current"), autoNum);
 }
 
 /**
@@ -1675,7 +1669,7 @@ void QETProject::setCurrentConductorAutoNum(QString autoNum) {
 */
 QHash <QString, NumerotationContext> QETProject::folioAutoNum() const
 {
-	return  m_folio_autonum;
+	return m_data_base.numberingSchemes(QStringLiteral("folio"));
 }
 
 /**
@@ -1686,8 +1680,7 @@ QHash <QString, NumerotationContext> QETProject::folioAutoNum() const
 	@param context
 */
 void QETProject::addConductorAutoNum(const QString& key, const NumerotationContext& context) {
-	m_conductor_autonum.insert(key, context);
-	writeNumberingRows();
+	m_data_base.setNumberingScheme(QStringLiteral("conductor"), key, context);
 	emit autoNumContextUpdated();
 }
 
@@ -1725,14 +1718,12 @@ void QETProject::addElementAutoNum(const QString &key,
 		}
 	}
 	if (scheme_id.isNull()) {
-		scheme_id = m_element_autonum_id.value(key);
+		scheme_id = elementAutoNumId(key);
 	}
 	if (scheme_id.isNull()) {
 		scheme_id = QUuid::createUuid();
 	}
-	m_element_autonum_id.insert(key, scheme_id);
-	m_element_autonum.insert(key, context);
-	writeNumberingRows();
+	m_data_base.setNumberingScheme(QStringLiteral("element"), key, context, scheme_id);
 	emit elementAutoNumAdded(key);
 	emit autoNumContextUpdated();
 }
@@ -1744,7 +1735,7 @@ void QETProject::addElementAutoNum(const QString &key,
 */
 QUuid QETProject::elementAutoNumId(const QString &title) const
 {
-	return m_element_autonum_id.value(title);
+	return m_data_base.numberingSchemeUuid(QStringLiteral("element"), title);
 }
 
 /**
@@ -1754,16 +1745,7 @@ QUuid QETProject::elementAutoNumId(const QString &title) const
 */
 QString QETProject::elementAutoNumTitle(const QUuid &id) const
 {
-	if (id.isNull()) {
-		return QString();
-	}
-	for (auto it = m_element_autonum_id.constBegin();
-		 it != m_element_autonum_id.constEnd(); ++it) {
-		if (it.value() == id) {
-			return it.key();
-		}
-	}
-	return QString();
+	return m_data_base.numberingSchemeTitle(QStringLiteral("element"), id);
 }
 
 /**
@@ -1779,18 +1761,17 @@ QString QETProject::elementAutoNumTitle(const QUuid &id) const
 bool QETProject::renameElementAutoNum(const QString &old_title, const QString &new_title)
 {
 	if (old_title == new_title) {
-		return m_element_autonum.contains(old_title);
+		return m_data_base.hasNumberingScheme(QStringLiteral("element"), old_title);
 	}
-	if (!m_element_autonum.contains(old_title)
-			|| m_element_autonum.contains(new_title)
+	if (!m_data_base.hasNumberingScheme(QStringLiteral("element"), old_title)
+			|| m_data_base.hasNumberingScheme(QStringLiteral("element"), new_title)
 			|| new_title.isEmpty()) {
 		return false;
 	}
 
-	m_element_autonum.insert(new_title, m_element_autonum.take(old_title));
-	m_element_autonum_id.insert(new_title, m_element_autonum_id.take(old_title));
-	if (m_current_element_autonum == old_title) {
-		m_current_element_autonum = new_title;
+	m_data_base.renameNumberingScheme(QStringLiteral("element"), old_title, new_title);
+	if (elementCurrentAutoNum() == old_title) {
+		m_data_base.setNumberingSetting(QStringLiteral("element_current"), new_title);
 	}
 
 	for (Diagram *d : std::as_const(m_diagrams_list)) {
@@ -1804,7 +1785,6 @@ bool QETProject::renameElementAutoNum(const QString &old_title, const QString &n
 		}
 	}
 
-	writeNumberingRows();
 	emit elementAutoNumRemoved(old_title);
 	emit elementAutoNumAdded(new_title);
 	emit autoNumContextUpdated();
@@ -1835,8 +1815,8 @@ QString QETProject::elementAutoNumNameClash(const QString &name,
 											const QString &ignored_title) const
 {
 	const QString wanted = normalizedAutoNumName(name);
-	for (auto it = m_element_autonum.constBegin();
-		 it != m_element_autonum.constEnd(); ++it) {
+	const QHash<QString, NumerotationContext> schemes = m_data_base.numberingSchemes(QStringLiteral("element"));
+	for (auto it = schemes.constBegin(); it != schemes.constEnd(); ++it) {
 		if (it.key() == ignored_title) {
 			continue;
 		}
@@ -1926,8 +1906,8 @@ void QETProject::linkElementsToElementAutoNums(Diagram *folio)
 QHash<QString, QStringList> QETProject::elementAutoNumTitlesByFormula() const
 {
 	QHash<QString, QStringList> titles_by_formula;
-	for (auto it = m_element_autonum.constBegin();
-		 it != m_element_autonum.constEnd(); ++it) {
+	const QHash<QString, NumerotationContext> schemes = m_data_base.numberingSchemes(QStringLiteral("element"));
+	for (auto it = schemes.constBegin(); it != schemes.constEnd(); ++it) {
 		titles_by_formula[autonum::numerotationContextToFormula(it.value())] << it.key();
 	}
 	return titles_by_formula;
@@ -2032,8 +2012,7 @@ QList<QETProject::SymbolNumbering> QETProject::symbolNumbering() const
 	@param context
 */
 void QETProject::addFolioAutoNum(const QString& key, const NumerotationContext& context) {
-	m_folio_autonum.insert(key, context);
-	writeNumberingRows();
+	m_data_base.setNumberingScheme(QStringLiteral("folio"), key, context);
 	emit autoNumContextUpdated();
 }
 
@@ -2048,19 +2027,19 @@ void QETProject::addFolioAutoNum(const QString& key, const NumerotationContext& 
 void QETProject::addCableAutoNum(const QString& key, const NumerotationContext& context)
 {
 	if (!key.isEmpty()) {
-		const QStringList others = m_cable_autonum.keys();
+		const QStringList others = cableAutoNum().keys();
 		for (const QString &other : others) {
-			if (other != key) m_cable_autonum.remove(other);
+			if (other != key) m_data_base.removeNumberingScheme(QStringLiteral("cable"), other);
 		}
 	}
-	m_cable_autonum.insert(key, context);
+	m_data_base.setNumberingScheme(QStringLiteral("cable"), key, context);
 		//The rule in use must always be one which exists: after a save
 		//under another name the old entry is gone, so follow the new one.
-	if (!key.isEmpty() && (m_current_cable_autonum.isEmpty()
-						   || !m_cable_autonum.contains(m_current_cable_autonum))) {
-		m_current_cable_autonum = key;
+	const QString current = cableCurrentAutoNum();
+	if (!key.isEmpty() && (current.isEmpty()
+						   || !m_data_base.hasNumberingScheme(QStringLiteral("cable"), current))) {
+		m_data_base.setNumberingSetting(QStringLiteral("cable_current"), key);
 	}
-	writeNumberingRows();
 	emit autoNumContextUpdated();
 }
 
@@ -2070,8 +2049,7 @@ void QETProject::addCableAutoNum(const QString& key, const NumerotationContext& 
 	@param key
 */
 void QETProject::removeConductorAutoNum(const QString& key) {
-	m_conductor_autonum.remove(key);
-	writeNumberingRows();
+	m_data_base.removeNumberingScheme(QStringLiteral("conductor"), key);
 }
 
 /**
@@ -2081,9 +2059,7 @@ void QETProject::removeConductorAutoNum(const QString& key) {
 */
 void QETProject::removeElementAutoNum(const QString& key)
 {
-	m_element_autonum.remove(key);
-	m_element_autonum_id.remove(key);
-	writeNumberingRows();
+	m_data_base.removeNumberingScheme(QStringLiteral("element"), key);
 	emit elementAutoNumRemoved(key);
 }
 
@@ -2093,8 +2069,7 @@ void QETProject::removeElementAutoNum(const QString& key)
 	@param key
 */
 void QETProject::removeFolioAutoNum(const QString& key) {
-	m_folio_autonum.remove(key);
-	writeNumberingRows();
+	m_data_base.removeNumberingScheme(QStringLiteral("folio"), key);
 }
 
 /**
@@ -2104,12 +2079,12 @@ void QETProject::removeFolioAutoNum(const QString& key) {
 */
 void QETProject::removeCableAutoNum(const QString& key)
 {
-	m_cable_autonum.remove(key);
-	if (m_current_cable_autonum == key) {
-		m_current_cable_autonum = m_cable_autonum.isEmpty()
-				? QString() : m_cable_autonum.keys().first();
+	m_data_base.removeNumberingScheme(QStringLiteral("cable"), key);
+	if (cableCurrentAutoNum() == key) {
+		const QStringList left = cableAutoNum().keys();
+		m_data_base.setNumberingSetting(QStringLiteral("cable_current"),
+										left.isEmpty() ? QString() : left.first());
 	}
-	writeNumberingRows();
 	emit autoNumContextUpdated();
 }
 
@@ -2121,8 +2096,7 @@ void QETProject::removeCableAutoNum(const QString& key)
 */
 NumerotationContext QETProject::conductorAutoNum (const QString &key) const
 {
-	if (m_conductor_autonum.contains(key)) return m_conductor_autonum[key];
-	else return NumerotationContext();
+	return m_data_base.numberingScheme(QStringLiteral("conductor"), key);
 }
 
 /**
@@ -2132,8 +2106,7 @@ NumerotationContext QETProject::conductorAutoNum (const QString &key) const
 	@param key
 */
 NumerotationContext QETProject::elementAutoNum (const QString &key) {
-	if (m_element_autonum.contains(key)) return m_element_autonum[key];
-	else return NumerotationContext();
+	return m_data_base.numberingScheme(QStringLiteral("element"), key);
 }
 
 /**
@@ -2144,8 +2117,7 @@ NumerotationContext QETProject::elementAutoNum (const QString &key) {
 */
 NumerotationContext QETProject::folioAutoNum (const QString &key) const
 {
-	if (m_folio_autonum.contains(key)) return m_folio_autonum[key];
-	else return NumerotationContext();
+	return m_data_base.numberingScheme(QStringLiteral("folio"), key);
 }
 
 /**
@@ -2156,8 +2128,7 @@ NumerotationContext QETProject::folioAutoNum (const QString &key) const
 */
 NumerotationContext QETProject::cableAutoNum(const QString &key) const
 {
-	if (m_cable_autonum.contains(key)) return m_cable_autonum.value(key);
-	else return NumerotationContext();
+	return m_data_base.numberingScheme(QStringLiteral("cable"), key);
 }
 
 /**
@@ -2193,7 +2164,7 @@ void QETProject::freezeNewConductorLabel(bool freeze, int from, int to) {
 */
 bool QETProject::isFreezeNewConductors()
 {
-	return m_freeze_new_conductors;
+	return m_data_base.numberingFlag(QStringLiteral("freeze_new_conductors"), false);
 }
 
 /**
@@ -2201,8 +2172,7 @@ bool QETProject::isFreezeNewConductors()
 	Set Project Wide freeze new conductors
 */
 void QETProject::setFreezeNewConductors(bool set) {
-	m_freeze_new_conductors = set;
-	writeNumberingRows();
+	m_data_base.setNumberingFlag(QStringLiteral("freeze_new_conductors"), set);
 }
 
 /**
@@ -2238,7 +2208,7 @@ void QETProject::freezeNewElementLabel(bool freeze, int from, int to) {
 */
 bool QETProject::isFreezeNewElements()
 {
-	return m_freeze_new_elements;
+	return m_data_base.numberingFlag(QStringLiteral("freeze_new_elements"), false);
 }
 
 /**
@@ -2246,8 +2216,7 @@ bool QETProject::isFreezeNewElements()
 	Set Project Wide freeze new elements
 */
 void QETProject::setFreezeNewElements(bool set) {
-	m_freeze_new_elements = set;
-	writeNumberingRows();
+	m_data_base.setNumberingFlag(QStringLiteral("freeze_new_elements"), set);
 }
 
 /**
@@ -2368,7 +2337,7 @@ void QETProject::setWiringRules(const WiringRules::Settings &rules)
 */
 bool QETProject::autoBreakConductor() const
 {
-	return m_auto_break_conductor;
+	return m_data_base.numberingFlag(QStringLiteral("auto_break_conductors"), false);
 }
 
 /**
@@ -2379,9 +2348,7 @@ bool QETProject::autoBreakConductor() const
 */
 void QETProject::setAutoBreakConductor(bool abc)
 {
-	if (abc != m_auto_break_conductor)
-		m_auto_break_conductor = abc;
-	writeNumberingRows();
+	m_data_base.setNumberingFlag(QStringLiteral("auto_break_conductors"), abc);
 }
 
 /**
@@ -3970,16 +3937,39 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			m_default_xref_properties.insert(elmt.attribute(QStringLiteral("type")), xrp);
 		}
 	}
+		//The numbering read here goes to the project database, its only
+		//home (QETZ-DB-FIRST stage 2b-3), in one go once it is all read
+	QHash<QString, NumerotationContext> conductor_autonum = conductorAutoNum();
+	QHash<QString, NumerotationContext> folio_autonum = folioAutoNum();
+	QHash<QString, NumerotationContext> element_autonum = elementAutoNum();
+	QHash<QString, QUuid> element_autonum_id;
+	for (auto it = element_autonum.cbegin() ; it != element_autonum.cend() ; ++it) {
+		element_autonum_id.insert(it.key(), elementAutoNumId(it.key()));
+	}
+	QHash<QString, NumerotationContext> cable_autonum = cableAutoNum();
+	projectDataBase::Numbering numbering;
+	numbering.current_conductor = conductorCurrentAutoNum();
+	numbering.current_element = elementCurrentAutoNum();
+	numbering.current_cable = cableCurrentAutoNum();
+	numbering.freeze_new_conductors = isFreezeNewConductors();
+	numbering.freeze_new_elements = isFreezeNewElements();
+	numbering.auto_break_conductors = autoBreakConductor();
+	numbering.cable_x_axis_first = cableXAxisFirst();
+	numbering.cable_ask_numbering = cableAskNumbering();
+	auto element_title = [&element_autonum_id](const QUuid &id) {
+		return id.isNull() ? QString() : element_autonum_id.key(id);
+	};
+
 	if (!conds_autonums.isNull())
 	{
-		m_current_conductor_autonum = conds_autonums.attribute(QStringLiteral("current_autonum"));
-		m_freeze_new_conductors = conds_autonums.attribute(QStringLiteral("freeze_new_conductors")) == QLatin1String("true");
-		m_auto_break_conductor = conds_autonums.attribute(QStringLiteral("auto_break_conductors")) == QLatin1String("true");
+		numbering.current_conductor = conds_autonums.attribute(QStringLiteral("current_autonum"));
+		numbering.freeze_new_conductors = conds_autonums.attribute(QStringLiteral("freeze_new_conductors")) == QLatin1String("true");
+		numbering.auto_break_conductors = conds_autonums.attribute(QStringLiteral("auto_break_conductors")) == QLatin1String("true");
 		for (auto elmt : QET::findInDomElement(conds_autonums, QStringLiteral("conductor_autonum")))
 		{
 			NumerotationContext nc;
 			nc.fromXml(elmt);
-			m_conductor_autonum.insert(elmt.attribute("title"), nc);
+			conductor_autonum.insert(elmt.attribute("title"), nc);
 		}
 	}
 	if (!folio_autonums.isNull())
@@ -3988,20 +3978,20 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 		{
 			NumerotationContext nc;
 			nc.fromXml(elmt);
-			m_folio_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
+			folio_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
 		}
 	}
 	if (!element_autonums.isNull())
 	{
-		m_current_element_autonum = element_autonums.attribute(QStringLiteral("current_autonum"));
-		m_freeze_new_elements = element_autonums.attribute(QStringLiteral("freeze_new_elements")) == QLatin1String("true");
+		numbering.current_element = element_autonums.attribute(QStringLiteral("current_autonum"));
+		numbering.freeze_new_elements = element_autonums.attribute(QStringLiteral("freeze_new_elements")) == QLatin1String("true");
 		for (auto elmt : QET::findInDomElement(element_autonums, QStringLiteral("element_autonum")))
 		{
 			NumerotationContext nc;
 			nc.fromXml(elmt);
 			const QString title = elmt.attribute(QStringLiteral("title"));
 			QUuid id(elmt.attribute(QStringLiteral("id")));
-			if (id.isNull() || !elementAutoNumTitle(id).isEmpty()) {
+			if (id.isNull() || !element_title(id).isEmpty()) {
 					//Saved before schemes had an id: derive one, the
 					//same on every load of the file.
 				m_legacy_element_autonums = true;
@@ -4010,30 +4000,30 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 				id = derivedItemUuid(QStringLiteral("element_autonum"),
 									 m_uuid.toString() + QLatin1Char('\n') + title);
 			}
-			m_element_autonum.insert(title, nc);
-			m_element_autonum_id.insert(title, id);
+			element_autonum.insert(title, nc);
+			element_autonum_id.insert(title, id);
 		}
 			//The id is authoritative, the title is kept for older versions
-		const QString current_title = elementAutoNumTitle(
+		const QString current_title = element_title(
 					QUuid(element_autonums.attribute(QStringLiteral("current_autonum_id"))));
 		if (!current_title.isEmpty()) {
-			m_current_element_autonum = current_title;
+			numbering.current_element = current_title;
 		}
 	}
 	if (!cable_autonums.isNull())
 	{
-		m_current_cable_autonum = cable_autonums.attribute(QStringLiteral("current_autonum"));
+		numbering.current_cable = cable_autonums.attribute(QStringLiteral("current_autonum"));
 			//Which axis the cables are numbered along. A file written
 			//before this existed has no say in it and stays with the
 			//axis the terminals have always started from.
-		m_cable_axis_x_first = cable_autonums.attribute(
+		numbering.cable_x_axis_first = cable_autonums.attribute(
 			QStringLiteral("axis_priority"), QStringLiteral("x"))
 			!= QLatin1String("y");
 			//Whether the numbering question was already answered with
 			//no in this project. A file which does not hold the answer
 			//yet asks again rather than staying silent: it is his own
 			//answer per project which is kept, not a default saying no.
-		m_cable_ask_numbering = cable_autonums.attribute(
+		numbering.cable_ask_numbering = cable_autonums.attribute(
 			QStringLiteral("ask_numbering_rule"), QStringLiteral("true"))
 			!= QLatin1String("false");
 		for (auto elmt : QET::findInDomElement(cable_autonums, QStringLiteral("cable_autonum")))
@@ -4041,16 +4031,27 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			NumerotationContext nc;
 			nc.fromXml(elmt);
 			if (elmt.attribute(QStringLiteral("title")).isEmpty()) continue;
-			m_cable_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
+			cable_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
 		}
 			//A file written by hand, or written before this rule existed,
 			//may name a rule which is not in the list: the numbering must
 			//never be left pointing at something which is not there.
-		if (!m_cable_autonum.contains(m_current_cable_autonum)) {
-			m_current_cable_autonum = m_cable_autonum.isEmpty()
-					? QString() : m_cable_autonum.keys().first();
+		if (!cable_autonum.contains(numbering.current_cable)) {
+			numbering.current_cable = cable_autonum.isEmpty()
+					? QString() : cable_autonum.keys().first();
 		}
 	}
+	auto add = [&numbering](const QString &kind, const QHash<QString, NumerotationContext> &schemes,
+							const QHash<QString, QUuid> &ids) {
+		for (auto it = schemes.cbegin() ; it != schemes.cend() ; ++it)
+			numbering.schemes << projectDataBase::NumberingScheme{kind, it.key(), ids.value(it.key()), it.value()};
+	};
+	add(QStringLiteral("conductor"), conductor_autonum, {});
+	add(QStringLiteral("folio"), folio_autonum, {});
+	add(QStringLiteral("element"), element_autonum, element_autonum_id);
+	add(QStringLiteral("cable"), cable_autonum, {});
+	m_data_base.setNumbering(numbering);
+
 	// Read guides from XML (if missing, e.g. in old projects, list stays empty)
 	m_default_guides.clear();
 
@@ -4063,7 +4064,6 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			m_default_guides.append(g);
 		}
 	}
-	writeNumberingRows();
 }
 
 /**
@@ -4247,24 +4247,9 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	}
 	xml_element.appendChild(xrefs_elmt);
 
-		//The numbering is written from the project database's rows
-		//(QETZ-DB-FIRST stage 2b-2), which the project keeps in step
-		//(writeNumberingRows())
+		//The numbering is written from the project database, its only
+		//home (QETZ-DB-FIRST stage 2b)
 	writeNumberingXml(m_data_base.numbering(), xml_element);
-		//QET_CHECK_NUMBERING_ROWS=1: say whether the project database's
-		//numbering rows write what the project holds. A test and
-		//debugging aid; it changes nothing.
-	if (qEnvironmentVariableIntValue("QET_CHECK_NUMBERING_ROWS") == 1) {
-		QDomDocument from_project, from_rows;
-		QDomElement project_root = from_project.createElement(QStringLiteral("numbering"));
-		QDomElement rows_root = from_rows.createElement(QStringLiteral("numbering"));
-		from_project.appendChild(project_root);
-		from_rows.appendChild(rows_root);
-		writeNumberingXml(numberingOfProject(), project_root);
-		writeNumberingXml(m_data_base.numbering(), rows_root);
-		const bool same = from_project.toString() == from_rows.toString();
-		qWarning().noquote() << "numbering rows:" << (same ? 0 : 1) << "differ";
-	}
 
 	// Export default guides
 	QDomElement guides_elmt = xml_document.createElement("guides");
@@ -4276,48 +4261,6 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 		guides_elmt.appendChild(guide_elmt);
 	}
 	xml_element.appendChild(guides_elmt);
-}
-
-/**
-	@brief QETProject::numberingOfProject
-	@return the project's numbering schemes and their settings, as the
-	project holds them, for the project database's numbering tables
-	(QETZ-DB-FIRST stage 2b) and for the save
-*/
-projectDataBase::Numbering QETProject::numberingOfProject() const
-{
-	projectDataBase::Numbering numbering;
-	auto add = [&numbering](const QString &kind, const QHash<QString, NumerotationContext> &schemes,
-							const QHash<QString, QUuid> &ids) {
-		for (auto it = schemes.cbegin() ; it != schemes.cend() ; ++it)
-			numbering.schemes << projectDataBase::NumberingScheme{kind, it.key(), ids.value(it.key()), it.value()};
-	};
-	add(QStringLiteral("conductor"), m_conductor_autonum, {});
-	add(QStringLiteral("folio"), m_folio_autonum, {});
-	add(QStringLiteral("element"), m_element_autonum, m_element_autonum_id);
-	add(QStringLiteral("cable"), m_cable_autonum, {});
-	numbering.current_conductor = m_current_conductor_autonum;
-	numbering.current_element = m_current_element_autonum;
-	numbering.current_cable = m_current_cable_autonum;
-	numbering.freeze_new_conductors = m_freeze_new_conductors;
-	numbering.freeze_new_elements = m_freeze_new_elements;
-	numbering.auto_break_conductors = m_auto_break_conductor;
-	numbering.cable_x_axis_first = m_cable_axis_x_first;
-	numbering.cable_ask_numbering = m_cable_ask_numbering;
-	return numbering;
-}
-
-/**
-	@brief QETProject::writeNumberingRows
-	Write the project's numbering into the project database's numbering
-	tables (QETZ-DB-FIRST stage 2b-1): after reading the file and after
-	each change of the numbering. The save writes the numbering from
-	them (2b-2); QET_CHECK_NUMBERING_ROWS says whether they hold what
-	the project does
-*/
-void QETProject::writeNumberingRows()
-{
-	m_data_base.setNumbering(numberingOfProject());
 }
 
 /**

@@ -42,7 +42,6 @@ class tst_elementautonumids : public QObject
 	int m_run = 0;
 
 	QString m_preferences;   // contents of the settings file of the next run
-	bool m_check_numbering = false;   // QET_CHECK_NUMBERING_ROWS for the runs
 
 	QProcessEnvironment environment()
 	{
@@ -62,9 +61,6 @@ class tst_elementautonumids : public QObject
 		env.insert(QStringLiteral("QET_SETTINGS_DIR"), settings_dir);
 		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
 		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
-		if (m_check_numbering) {
-			env.insert(QStringLiteral("QET_CHECK_NUMBERING_ROWS"), QStringLiteral("1"));
-		}
 		env.insert(QStringLiteral("HOME"), home);
 		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
 		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
@@ -729,29 +725,45 @@ qet.log('PROBE ' + JSON.stringify(r));
 	// the folios which read the numbering with it (26 folios of
 	// industrial.qet read "Wire"), a numbering which folios read cannot be
 	// removed, an unused one can, and every step is one undo.
-	// The project database's numbering rows (QETZ-DB-FIRST stage 2b-1)
-	// follow every change of the numbering: each save below writes the
-	// numbering from the project and from the rows, and the two must be
-	// the same (QET_CHECK_NUMBERING_ROWS). A scheme of each kind added,
-	// renamed, removed, undone and redone, then made current; a
-	// renumbering and its undo. On a one-folio project: a --run script
-	// is stopped after 30 s, and a sanitizer build is slow.
+	// The project database is the only home of the numbering (QETZ-DB-FIRST
+	// stage 2b): every change of it is read back, and saved, from there.
+	// A scheme of each kind added, renamed, removed, undone and redone,
+	// then made current; a renumbering and its undo; the scheme list is
+	// checked after each step and the project saved. On a one-folio
+	// project: a --run script is stopped after 30 s, and a sanitizer
+	// build is slow.
 	void numberingRowsFollowEveryChange()
 	{
 		const QString saved = m_dir.filePath(QStringLiteral("numbering-rows.qet"));
 		const QString script = QStringLiteral(R"JS(
-var saves = 0;
+var saves = 0, wrong = [];
 function save() { if (qet.save(%1)) saves++; }
+function has(k, title) {
+	return qet.autoNums(k).some(function (n) { return n.split(': formula=')[0] === title; });
+}
+function formula(k, title) {
+	var found = qet.autoNums(k).filter(function (n) { return n.split(': formula=')[0] === title; });
+	return found.length ? found[0].split(': formula=')[1].replace(/^'|'$/g, '') : null;
+}
+function expect(step, k, present, absent) {
+	if (present && !has(k, present)) wrong.push(step + ' ' + k + ': no ' + present);
+	if (present && !formula(k, present)) wrong.push(step + ' ' + k + ': ' + present + ' has no parts');
+	if (absent && has(k, absent)) wrong.push(step + ' ' + k + ': still ' + absent);
+	var left = qet.query('SELECT COUNT(*) AS n FROM numbering_part p WHERE NOT EXISTS (SELECT 1 '
+			+ 'FROM numbering_scheme s WHERE s.kind = p.kind AND s.title = p.title)');
+	if (!left.length || left[0].n !== 0) wrong.push(step + ' ' + k + ': parts of no scheme');
+}
 save();
 ['conductor', 'element', 'folio'].forEach(function (k) {
-	qet.addAutoNum(k, 'Rows ' + k, ['string:R-', 'unit:7:2']); save();
-	qet.renameAutoNum(k, 'Rows ' + k, 'Rows renamed ' + k); save();
-	qet.undo(); save();
-	qet.redo(); save();
+	var first = 'Rows ' + k, renamed = 'Rows renamed ' + k;
+	qet.addAutoNum(k, first, ['string:R-', 'unit:7:2']); expect('add', k, first); save();
+	qet.renameAutoNum(k, first, renamed); expect('rename', k, renamed, first); save();
+	qet.undo(); expect('undo', k, first, renamed); save();
+	qet.redo(); expect('redo', k, renamed, first); save();
 });
 ['conductor', 'element', 'folio'].forEach(function (k) {
-	qet.removeAutoNum(k, 'Rows renamed ' + k); save();
-	qet.undo(); save();
+	qet.removeAutoNum(k, 'Rows renamed ' + k); expect('remove', k, null, 'Rows renamed ' + k); save();
+	qet.undo(); expect('undo remove', k, 'Rows renamed ' + k); save();
 });
 qet.useElementAutoNum('Rows renamed element'); save();
 qet.useConductorAutoNum(0, 'Rows renamed conductor'); save();
@@ -760,10 +772,9 @@ var renumbered = qet.renumberElementAutoNum(schemes[0].split(': formula=')[0]) >
 save();
 if (renumbered) qet.undo();
 save();
-qet.log('PROBE ' + JSON.stringify({saves: saves}));
+qet.log('PROBE ' + JSON.stringify({saves: saves, wrong: wrong}));
 )JS").arg(QStringLiteral("'") + saved + QStringLiteral("'"));
 
-		m_check_numbering = true;
 		const QString path = m_dir.filePath(QStringLiteral("probe%1.js").arg(m_run));
 		QFile f(path);
 		QVERIFY(f.open(QIODevice::WriteOnly));
@@ -771,22 +782,19 @@ qet.log('PROBE ' + JSON.stringify({saves: saves}));
 		f.close();
 		QProcess proc;
 		proc.setProcessEnvironment(environment());
-		m_check_numbering = false;
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), path, QStringLiteral(QET_EXAMPLES_DIR "/741.qet")});
 		QVERIFY(proc.waitForFinished(180000));
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 
-		QVERIFY2(out.contains(QLatin1String("PROBE {\"saves\":23}")), qPrintable(out.right(2000)));
-		QCOMPARE(out.count(QLatin1String("numbering rows: 0 differ")), 23);
-		QCOMPARE(out.count(QLatin1String("numbering rows:")), 23);
+		QVERIFY2(out.contains(QLatin1String("PROBE {\"saves\":23,\"wrong\":[]}")), qPrintable(out.right(2000)));
 		// the changes are in the file: the folio numbering's removal was
 		// undone, the wires of the first folio follow the new numbering
 		const QByteArray xml = read(saved);
 		QVERIFY(xml.contains("title=\"Rows renamed folio\""));
 		QCOMPARE(diagramAttributes(xml, QStringLiteral("conductorAutonum")).value(0),
 				 QStringLiteral("Rows renamed conductor"));
-		// and the save, which writes the numbering from the rows (2b-2),
+		// and the save, which writes the numbering from the database,
 		// has every scheme and the ones made current
 		const Saved numbering = parse(xml);
 		QCOMPARE(numbering.current, QStringLiteral("Rows renamed element"));

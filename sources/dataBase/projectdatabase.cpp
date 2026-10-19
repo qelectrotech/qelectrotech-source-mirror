@@ -4113,68 +4113,28 @@ QStringList projectDataBase::linkRowMismatches()
 
 /**
 	@brief projectDataBase::setNumbering
-	The numbering tables hold @p numbering from now on, and nothing else
-	(QETZ-DB-FIRST stage 2b-1: QETProject writes them after reading its
-	file and after each change of its numbering)
+	The numbering tables hold @p numbering from now on, and nothing else:
+	what QETProject reads from its file (QETZ-DB-FIRST stage 2b)
 */
 void projectDataBase::setNumbering(const Numbering &numbering)
 {
 	QSqlQuery query(m_data_base);
-	bool ok = true;
-	for (const char *table : {"numbering_part", "numbering_scheme", "numbering_setting"})
-		ok = ok && query.exec(QStringLiteral("DELETE FROM %1").arg(QLatin1String(table)));
-
-	QSqlQuery scheme(m_data_base);
-	scheme.prepare(QStringLiteral("INSERT INTO numbering_scheme (kind, title, uuid) "
-								  "VALUES (:kind, :title, :uuid)"));
-	QSqlQuery part(m_data_base);
-	part.prepare(QStringLiteral("INSERT INTO numbering_part (kind, title, ord, type, value, "
-								"increase, initialvalue, modulus, format) VALUES (:kind, :title, "
-								":ord, :type, :value, :increase, :initialvalue, :modulus, :format)"));
-	for (const NumberingScheme &item : numbering.schemes)
-	{
-		scheme.bindValue(QStringLiteral(":kind"), item.kind);
-		scheme.bindValue(QStringLiteral(":title"), item.title);
-		scheme.bindValue(QStringLiteral(":uuid"), item.uuid.isNull() ? QVariant()
-																	 : QVariant(item.uuid.toString()));
-		ok = ok && scheme.exec();
-		for (int i = 0 ; i < item.context.size() ; ++i)
-		{
-			const QStringList fields = item.context.itemAt(i);
-			part.bindValue(QStringLiteral(":kind"), item.kind);
-			part.bindValue(QStringLiteral(":title"), item.title);
-			part.bindValue(QStringLiteral(":ord"), i);
-			int field = 0;
-			for (const char *name : {":type", ":value", ":increase", ":initialvalue", ":modulus", ":format"}) {
-				part.bindValue(QLatin1String(name), field < fields.size() ? QVariant(fields.at(field))
-																		  : QVariant());
-				++field;
-			}
-			ok = ok && part.exec();
+	for (const char *table : {"numbering_part", "numbering_scheme", "numbering_setting"}) {
+		if (!query.exec(QStringLiteral("DELETE FROM %1").arg(QLatin1String(table)))) {
+			qDebug() << "projectDataBase::setNumbering error : " << query.lastError();
 		}
 	}
-
-	QSqlQuery setting(m_data_base);
-	setting.prepare(QStringLiteral("INSERT INTO numbering_setting (name, value) VALUES (:name, :value)"));
-	auto set = [&setting, &ok](const QString &name, const QString &value) {
-		setting.bindValue(QStringLiteral(":name"), name);
-		setting.bindValue(QStringLiteral(":value"), value);
-		ok = ok && setting.exec();
-	};
-	auto flag = [](bool value) { return value ? QStringLiteral("true") : QStringLiteral("false"); };
-	set(QStringLiteral("conductor_current"), numbering.current_conductor);
-	set(QStringLiteral("element_current"), numbering.current_element);
-	set(QStringLiteral("cable_current"), numbering.current_cable);
-	set(QStringLiteral("freeze_new_conductors"), flag(numbering.freeze_new_conductors));
-	set(QStringLiteral("freeze_new_elements"), flag(numbering.freeze_new_elements));
-	set(QStringLiteral("auto_break_conductors"), flag(numbering.auto_break_conductors));
-	set(QStringLiteral("cable_x_axis_first"), flag(numbering.cable_x_axis_first));
-	set(QStringLiteral("cable_ask_numbering"), flag(numbering.cable_ask_numbering));
-
-	if (!ok) {
-		qDebug() << "projectDataBase::setNumbering error : " << query.lastError()
-				 << scheme.lastError() << part.lastError() << setting.lastError();
+	for (const NumberingScheme &item : numbering.schemes) {
+		setNumberingScheme(item.kind, item.title, item.context, item.uuid);
 	}
+	setNumberingSetting(QStringLiteral("conductor_current"), numbering.current_conductor);
+	setNumberingSetting(QStringLiteral("element_current"), numbering.current_element);
+	setNumberingSetting(QStringLiteral("cable_current"), numbering.current_cable);
+	setNumberingFlag(QStringLiteral("freeze_new_conductors"), numbering.freeze_new_conductors);
+	setNumberingFlag(QStringLiteral("freeze_new_elements"), numbering.freeze_new_elements);
+	setNumberingFlag(QStringLiteral("auto_break_conductors"), numbering.auto_break_conductors);
+	setNumberingFlag(QStringLiteral("cable_x_axis_first"), numbering.cable_x_axis_first);
+	setNumberingFlag(QStringLiteral("cable_ask_numbering"), numbering.cable_ask_numbering);
 }
 
 /**
@@ -4223,6 +4183,248 @@ projectDataBase::Numbering projectDataBase::numbering() const
 		else if (name == QLatin1String("cable_ask_numbering")) numbering.cable_ask_numbering = flag;
 	}
 	return numbering;
+}
+
+/**
+	@brief projectDataBase::numberingSchemes
+	@return the numbering schemes of @p kind (conductor, element, folio or
+	cable) by title
+*/
+QHash<QString, NumerotationContext> projectDataBase::numberingSchemes(const QString &kind) const
+{
+	QHash<QString, NumerotationContext> schemes;
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT title FROM numbering_scheme WHERE kind = :kind"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.exec();
+	while (query.next()) {
+		schemes.insert(query.value(0).toString(), NumerotationContext());
+	}
+	query.prepare(QStringLiteral("SELECT title, type, value, increase, initialvalue, modulus, format "
+								 "FROM numbering_part WHERE kind = :kind ORDER BY title, ord"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.exec();
+	while (query.next()) {
+		const QString title = query.value(0).toString();
+		if (!schemes.contains(title)) {
+			continue;
+		}
+		schemes[title].addValue(query.value(1).toString(), query.value(2).toString(),
+								query.value(3).toInt(), query.value(4).toInt(),
+								query.value(5).toInt(), query.value(6).toString());
+	}
+	return schemes;
+}
+
+/**
+	@brief projectDataBase::hasNumberingScheme
+	@return true if there is a numbering scheme of @p kind titled @p title
+*/
+bool projectDataBase::hasNumberingScheme(const QString &kind, const QString &title) const
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT 1 FROM numbering_scheme WHERE kind = :kind AND title = :title"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.bindValue(QStringLiteral(":title"), title);
+	return query.exec() && query.next();
+}
+
+/**
+	@brief projectDataBase::numberingScheme
+	@return the numbering scheme of @p kind titled @p title, empty if there
+	is none
+*/
+NumerotationContext projectDataBase::numberingScheme(const QString &kind, const QString &title) const
+{
+	NumerotationContext context;
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT type, value, increase, initialvalue, modulus, format "
+								 "FROM numbering_part WHERE kind = :kind AND title = :title ORDER BY ord"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.bindValue(QStringLiteral(":title"), title);
+	query.exec();
+	while (query.next()) {
+		context.addValue(query.value(0).toString(), query.value(1).toString(),
+						 query.value(2).toInt(), query.value(3).toInt(),
+						 query.value(4).toInt(), query.value(5).toString());
+	}
+	return context;
+}
+
+/**
+	@brief projectDataBase::numberingSchemeUuid
+	@return the uuid of the numbering scheme of @p kind titled @p title,
+	null if there is no such scheme or it has none (only element schemes
+	have one)
+*/
+QUuid projectDataBase::numberingSchemeUuid(const QString &kind, const QString &title) const
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT uuid FROM numbering_scheme WHERE kind = :kind AND title = :title"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.bindValue(QStringLiteral(":title"), title);
+	if (query.exec() && query.next()) {
+		return QUuid(query.value(0).toString());
+	}
+	return QUuid();
+}
+
+/**
+	@brief projectDataBase::numberingSchemeTitle
+	@return the title of the numbering scheme of @p kind whose uuid is
+	@p uuid, empty if there is none
+*/
+QString projectDataBase::numberingSchemeTitle(const QString &kind, const QUuid &uuid) const
+{
+	if (uuid.isNull()) {
+		return QString();
+	}
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT title FROM numbering_scheme WHERE kind = :kind AND uuid = :uuid"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.bindValue(QStringLiteral(":uuid"), uuid.toString());
+	if (query.exec() && query.next()) {
+		return query.value(0).toString();
+	}
+	return QString();
+}
+
+/**
+	@brief projectDataBase::setNumberingScheme
+	Add the numbering scheme of @p kind titled @p title, or replace it:
+	its parts are those of @p context, its uuid @p uuid
+*/
+void projectDataBase::setNumberingScheme(const QString &kind, const QString &title,
+										 const NumerotationContext &context, const QUuid &uuid)
+{
+	QSqlQuery query(m_data_base);
+	bool ok = true;
+	query.prepare(QStringLiteral("DELETE FROM numbering_part WHERE kind = :kind AND title = :title"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.bindValue(QStringLiteral(":title"), title);
+	ok = ok && query.exec();
+	query.prepare(QStringLiteral("INSERT OR REPLACE INTO numbering_scheme (kind, title, uuid) "
+								 "VALUES (:kind, :title, :uuid)"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.bindValue(QStringLiteral(":title"), title);
+	query.bindValue(QStringLiteral(":uuid"), uuid.isNull() ? QVariant() : QVariant(uuid.toString()));
+	ok = ok && query.exec();
+
+	query.prepare(QStringLiteral("INSERT INTO numbering_part (kind, title, ord, type, value, "
+								 "increase, initialvalue, modulus, format) VALUES (:kind, :title, "
+								 ":ord, :type, :value, :increase, :initialvalue, :modulus, :format)"));
+	for (int i = 0 ; i < context.size() ; ++i)
+	{
+		const QStringList fields = context.itemAt(i);
+		query.bindValue(QStringLiteral(":kind"), kind);
+		query.bindValue(QStringLiteral(":title"), title);
+		query.bindValue(QStringLiteral(":ord"), i);
+		int field = 0;
+		for (const char *name : {":type", ":value", ":increase", ":initialvalue", ":modulus", ":format"}) {
+			query.bindValue(QLatin1String(name), field < fields.size() ? QVariant(fields.at(field))
+																	   : QVariant());
+			++field;
+		}
+		ok = ok && query.exec();
+	}
+	if (!ok) {
+		qDebug() << "projectDataBase::setNumberingScheme error : " << query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::removeNumberingScheme
+	Remove the numbering scheme of @p kind titled @p title
+*/
+void projectDataBase::removeNumberingScheme(const QString &kind, const QString &title)
+{
+	QSqlQuery query(m_data_base);
+	for (const char *table : {"numbering_part", "numbering_scheme"})
+	{
+		query.prepare(QStringLiteral("DELETE FROM %1 WHERE kind = :kind AND title = :title")
+					  .arg(QLatin1String(table)));
+		query.bindValue(QStringLiteral(":kind"), kind);
+		query.bindValue(QStringLiteral(":title"), title);
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::removeNumberingScheme error : " << query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::renameNumberingScheme
+	The numbering scheme of @p kind titled @p old_title is titled
+	@p new_title from now on, with the same parts and uuid. The caller
+	makes sure no scheme of @p kind is titled @p new_title.
+*/
+void projectDataBase::renameNumberingScheme(const QString &kind, const QString &old_title,
+											const QString &new_title)
+{
+	QSqlQuery query(m_data_base);
+	for (const char *table : {"numbering_scheme", "numbering_part"})
+	{
+		query.prepare(QStringLiteral("UPDATE %1 SET title = :new_title "
+									 "WHERE kind = :kind AND title = :old_title")
+					  .arg(QLatin1String(table)));
+		query.bindValue(QStringLiteral(":new_title"), new_title);
+		query.bindValue(QStringLiteral(":kind"), kind);
+		query.bindValue(QStringLiteral(":old_title"), old_title);
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::renameNumberingScheme error : " << query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::numberingSetting
+	@return the numbering setting @p name (setNumbering() lists them),
+	@p default_value if it was never set
+*/
+QString projectDataBase::numberingSetting(const QString &name, const QString &default_value) const
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT value FROM numbering_setting WHERE name = :name"));
+	query.bindValue(QStringLiteral(":name"), name);
+	if (query.exec() && query.next()) {
+		return query.value(0).toString();
+	}
+	return default_value;
+}
+
+/**
+	@brief projectDataBase::numberingFlag
+	@return numberingSetting() @p name as a flag, @p default_value if it
+	was never set
+*/
+bool projectDataBase::numberingFlag(const QString &name, bool default_value) const
+{
+	return numberingSetting(name, default_value ? QStringLiteral("true") : QStringLiteral("false"))
+			== QLatin1String("true");
+}
+
+/**
+	@brief projectDataBase::setNumberingSetting
+	The numbering setting @p name is @p value from now on
+*/
+void projectDataBase::setNumberingSetting(const QString &name, const QString &value)
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("INSERT OR REPLACE INTO numbering_setting (name, value) "
+								 "VALUES (:name, :value)"));
+	query.bindValue(QStringLiteral(":name"), name);
+	query.bindValue(QStringLiteral(":value"), value);
+	if (!query.exec()) {
+		qDebug() << "projectDataBase::setNumberingSetting error : " << query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::setNumberingFlag
+	setNumberingSetting() for a flag
+*/
+void projectDataBase::setNumberingFlag(const QString &name, bool value)
+{
+	setNumberingSetting(name, value ? QStringLiteral("true") : QStringLiteral("false"));
 }
 
 /**
