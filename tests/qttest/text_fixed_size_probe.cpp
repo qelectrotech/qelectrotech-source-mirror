@@ -2,9 +2,10 @@
 // Width and height of a symbol's text, each fixed or not, linked against
 // the application's objects.
 //
-// In the text's properties, "Width (fixed)" and "Height (fixed)" each
-// carry a tick box. Not ticked, the field follows the text and shows the
-// size it has now; ticked, it keeps the size beside the box. A fixed
+// In the text's properties, width and height each take two rows: the
+// value, and "fixed" with a tick box. Not fixed, the field follows the
+// text, and the value shows the size it has now and cannot be edited;
+// fixed, the field keeps the value, which can then be edited. A fixed
 // height cuts off the lines that do not fit, to shorten a text where
 // room is short: they are neither drawn nor picked. Both are saved with
 // the text and undone as any other change.
@@ -70,29 +71,35 @@ int main(int argc, char **argv)
 		text->setTextWidth(-1);
 		text->setTextHeight(-1);
 
-		// The properties: not ticked, the size the field has now.
+		// The properties: not fixed, the size the field has now, read only.
 		DynamicElementTextModel model(element);
 		QStandardItem *width = cell(model, text, DynamicElementTextModel::textWidth);
+		QStandardItem *width_fixed = cell(model, text, DynamicElementTextModel::textWidthFixed);
 		QStandardItem *height = cell(model, text, DynamicElementTextModel::textHeight);
-		check(width->isCheckable() && width->checkState() == Qt::Unchecked, "width not fixed: not ticked");
-		check(height->isCheckable() && height->checkState() == Qt::Unchecked, "height not fixed: not ticked");
+		QStandardItem *height_fixed = cell(model, text, DynamicElementTextModel::textHeightFixed);
+		check(width_fixed->isCheckable() && width_fixed->checkState() == Qt::Unchecked, "width not fixed: not ticked");
+		check(height_fixed->isCheckable() && height_fixed->checkState() == Qt::Unchecked, "height not fixed: not ticked");
+		check(!width->isCheckable() && !height->isCheckable(), "the values are rows of their own, without a tick box");
 		check(qAbs(width->data(Qt::EditRole).toDouble() - text->boundingRect().width()) <= 1,
-			  "it shows the width the field has now");
+			  "the width shows the size the field has now");
+		check(!(width->flags() & Qt::ItemIsEditable) && !(height->flags() & Qt::ItemIsEditable),
+			  "and cannot be edited while not fixed");
 
-		// Fix the width at 50: the text wraps onto more lines.
+		// Fix the width: the value can be edited at once; at 50 the text wraps.
 		const qreal one_line = text->boundingRect().height();
+		width_fixed->setCheckState(Qt::Checked);
+		check(width->flags() & Qt::ItemIsEditable, "ticking fixed makes the width editable at once");
 		width->setData(50, Qt::EditRole);
-		width->setCheckState(Qt::Checked);
 		scene->undoStack().push(model.undoForEditedText(text));
-		check(qFuzzyCompare(text->textWidth(), 50), "ticked, the width is fixed at the value beside it");
+		check(qFuzzyCompare(text->textWidth(), 50), "fixed, the width is the value above");
 		const qreal wrapped = text->boundingRect().height();
 		check(wrapped > one_line * 2, "the text wraps inside it");
 
 		// Fix the height at one line: the other lines are cut off.
+		height_fixed->setCheckState(Qt::Checked);
 		height->setData(qRound(one_line), Qt::EditRole);
-		height->setCheckState(Qt::Checked);
 		scene->undoStack().push(model.undoForEditedText(text));
-		check(qFuzzyCompare(text->textHeight(), qRound(one_line)), "ticked, the height is fixed");
+		check(qFuzzyCompare(text->textHeight(), qRound(one_line)), "fixed, the height is the value above");
 		check(qAbs(text->boundingRect().height() - qRound(one_line)) < 0.01, "the field keeps that height");
 		const QPointF below(text->boundingRect().center().x(), wrapped - 2);
 		check(!text->contains(below) && !text->shape().contains(below), "the lines cut off are not picked");
@@ -110,9 +117,10 @@ int main(int argc, char **argv)
 		scene->undoStack().undo();
 		check(text->textHeight() < 0 && qAbs(text->boundingRect().height() - wrapped) < 0.01,
 			  "undo gives the text its full height back");
-		check(cell(model, text, DynamicElementTextModel::textHeight)->checkState() == Qt::Unchecked,
+		check(cell(model, text, DynamicElementTextModel::textHeightFixed)->checkState() == Qt::Unchecked
+			  && !(cell(model, text, DynamicElementTextModel::textHeight)->flags() & Qt::ItemIsEditable),
 			  "and the properties show it not fixed");
-		width->setCheckState(Qt::Unchecked);
+		width_fixed->setCheckState(Qt::Unchecked);
 		scene->undoStack().push(model.undoForEditedText(text));
 		check(text->textWidth() < 0, "not ticked, the width follows the text again");
 		check(!text->toXml(doc).hasAttribute("text_height"), "a height that follows the text is not written");

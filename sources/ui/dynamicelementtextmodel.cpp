@@ -48,12 +48,14 @@ static int font_txt_row  = 5;
 static int color_txt_row = 6;
 static int frame_txt_row = 7;
 static int width_txt_row = 8;
-static int height_txt_row = 9;
-static int x_txt_row     = 10;
-static int y_txt_row     = 11;
-static int rot_txt_row   = 12;
-static int keep_rot_row  = 13;
-static int align_txt_row = 14;
+static int width_fix_row = 9;
+static int height_txt_row = 10;
+static int height_fix_row = 11;
+static int x_txt_row     = 12;
+static int y_txt_row     = 13;
+static int rot_txt_row   = 14;
+static int keep_rot_row  = 15;
+static int align_txt_row = 16;
 
 static int align_grp_row          = 0;
 static int x_grp_row              = 1;
@@ -98,24 +100,36 @@ DynamicElementTextModel::~DynamicElementTextModel()
 }
 
 /**
-	@brief setSizeItems
-	Show the width and the height of @a deti: ticked with the size set
-	when it is fixed, not ticked with the size the field has now when it
-	follows the text, so that ticking it fixes what one sees.
+	@brief setSizeItem
+	Show one size of a text, width or height, on two rows: the value, and
+	whether it is fixed. Fixed, the value is the size set, and it can be
+	edited. Not fixed, the field follows the text: the value shows the
+	size it has now, ready to be fixed, and cannot be edited.
+	@param value : the row of the value
+	@param fixed : the row of the tick box
+	@param size : the size set, -1 when not fixed
+	@param now : the size the field has now
 */
-static void setSizeItems(QStandardItem *width, QStandardItem *height, DynamicElementTextItem *deti)
+static void setSizeItem(QStandardItem *value, QStandardItem *fixed, qreal size, qreal now)
+{
+	if (!value || !fixed)
+		return;
+	const bool is_fixed = size > 0;
+	fixed->setCheckState(is_fixed ? Qt::Checked : Qt::Unchecked);
+	value->setData(qRound(is_fixed ? size : now), Qt::EditRole);
+	Qt::ItemFlags flags = Qt::ItemIsSelectable | Qt::ItemIsEnabled;
+	if (is_fixed)
+		flags |= Qt::ItemIsEditable;
+	value->setFlags(flags);
+}
+
+static void setSizeItems(QStandardItem *text_qsi, DynamicElementTextItem *deti)
 {
 	const QRectF box = deti->boundingRect();
-	if (width) {
-		const bool fixed = deti->textWidth() > 0;
-		width->setCheckState(fixed ? Qt::Checked : Qt::Unchecked);
-		width->setData(qRound(fixed ? deti->textWidth() : box.width()), Qt::EditRole);
-	}
-	if (height) {
-		const bool fixed = deti->textHeight() > 0;
-		height->setCheckState(fixed ? Qt::Checked : Qt::Unchecked);
-		height->setData(qRound(fixed ? deti->textHeight() : box.height()), Qt::EditRole);
-	}
+	setSizeItem(text_qsi->child(width_txt_row, 1), text_qsi->child(width_fix_row, 1),
+				deti->textWidth(), box.width());
+	setSizeItem(text_qsi->child(height_txt_row, 1), text_qsi->child(height_fix_row, 1),
+				deti->textHeight(), box.height());
 }
 
 /**
@@ -303,41 +317,45 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 	qsi_list << frame << frame_a;
 	qsi->appendRow(qsi_list);
 	
-		//Width and height: ticked, the field keeps the size given beside
-		//it; not ticked, it follows the text, and the size shown is the
-		//one it has now, ready to be fixed
-	QStandardItem *width = new QStandardItem(tr("Width (fixed)"));
-	width->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-	width->setToolTip(tr("Ticked, the text field keeps this width and the text wraps inside it. Not ticked, it is as wide as the text."));
-	
-	QStandardItem *width_a = new QStandardItem;
-	width_a->setCheckable(true);
-	width_a->setData(DynamicElementTextModel::textWidth, Qt::UserRole+1);
-	width_a->setFlags(Qt::ItemIsSelectable
-			  | Qt::ItemIsEnabled
-			  | Qt::ItemIsEditable
-			  | Qt::ItemIsUserCheckable);
-	
-	qsi_list.clear();
-	qsi_list << width << width_a;
-	qsi->appendRow(qsi_list);
+		//Width and height, each on two rows: the value, and whether it
+		//is fixed. Not fixed, the field follows the text and the value
+		//only shows the size it has now.
+	const struct {
+		QString name, fixed_name, tip;
+		int value_type, fixed_type;
+	} sizes[] = {
+		{tr("Width"), tr("Width fixed"),
+		 tr("Ticked, the text field keeps the width above and the text wraps inside it. Not ticked, it is as wide as the text."),
+		 DynamicElementTextModel::textWidth, DynamicElementTextModel::textWidthFixed},
+		{tr("Height"), tr("Height fixed"),
+		 tr("Ticked, the text field keeps the height above and the lines that do not fit are cut off. Not ticked, it is as high as the text."),
+		 DynamicElementTextModel::textHeight, DynamicElementTextModel::textHeightFixed}
+	};
+	for (const auto &size : sizes)
+	{
+		QStandardItem *name = new QStandardItem(size.name);
+		name->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		QStandardItem *value = new QStandardItem;
+		value->setData(size.value_type, Qt::UserRole+1);
+		qsi_list.clear();
+		qsi_list << name << value;
+		qsi->appendRow(qsi_list);
 
-	QStandardItem *height = new QStandardItem(tr("Height (fixed)"));
-	height->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-	height->setToolTip(tr("Ticked, the text field keeps this height and the lines that do not fit are cut off. Not ticked, it is as high as the text."));
-
-	QStandardItem *height_a = new QStandardItem;
-	height_a->setCheckable(true);
-	height_a->setData(DynamicElementTextModel::textHeight, Qt::UserRole+1);
-	height_a->setFlags(Qt::ItemIsSelectable
-			  | Qt::ItemIsEnabled
-			  | Qt::ItemIsEditable
-			  | Qt::ItemIsUserCheckable);
-
-	qsi_list.clear();
-	qsi_list << height << height_a;
-	qsi->appendRow(qsi_list);
-	setSizeItems(width_a, height_a, deti);
+		QStandardItem *fixed_name = new QStandardItem(size.fixed_name);
+		fixed_name->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		fixed_name->setToolTip(size.tip);
+		QStandardItem *fixed = new QStandardItem;
+		fixed->setCheckable(true);
+		fixed->setToolTip(size.tip);
+		fixed->setData(size.fixed_type, Qt::UserRole+1);
+		fixed->setFlags(Qt::ItemIsSelectable
+				  | Qt::ItemIsEnabled
+				  | Qt::ItemIsUserCheckable);
+		qsi_list.clear();
+		qsi_list << fixed_name << fixed;
+		qsi->appendRow(qsi_list);
+	}
+	setSizeItems(qsi, deti);
 	
 	if(deti->parentGroup() == nullptr)
 	{
@@ -630,9 +648,8 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(
 		quc->setText(tr("Modify the frame of an element text"));
 	}
 	
-	QStandardItem *width_item = text_qsi->child(width_txt_row, 1);
-	qreal text_width = width_item->checkState() == Qt::Checked
-			? width_item->data(Qt::EditRole).toDouble() : -1;
+	qreal text_width = text_qsi->child(width_fix_row, 1)->checkState() == Qt::Checked
+			? text_qsi->child(width_txt_row, 1)->data(Qt::EditRole).toDouble() : -1;
 	if(text_width != deti->textWidth())
 	{
 		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "textWidth", QVariant(deti->textWidth()), QVariant(text_width), undo);
@@ -640,9 +657,8 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(
 		quc->setText(tr("Change the width of an element text"));
 	}
 
-	QStandardItem *height_item = text_qsi->child(height_txt_row, 1);
-	qreal text_height = height_item->checkState() == Qt::Checked
-			? height_item->data(Qt::EditRole).toDouble() : -1;
+	qreal text_height = text_qsi->child(height_fix_row, 1)->checkState() == Qt::Checked
+			? text_qsi->child(height_txt_row, 1)->data(Qt::EditRole).toDouble() : -1;
 	if(text_height != deti->textHeight())
 	{
 		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "textHeight", QVariant(deti->textHeight()), QVariant(text_height), undo);
@@ -1394,6 +1410,18 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 			QString text = qsi->data(Qt::DisplayRole).toString();
 			text_qsi->setData(text, Qt::DisplayRole);
 		}
+		else if (qsi->data().toInt() == textWidthFixed || qsi->data().toInt() == textHeightFixed)
+		{
+				//The value can be edited as soon as it is fixed
+			const int row = qsi->data().toInt() == textWidthFixed ? width_txt_row : height_txt_row;
+			if (QStandardItem *value = text_qsi->child(row, 1)) {
+				Qt::ItemFlags flags = Qt::ItemIsSelectable | Qt::ItemIsEnabled;
+				if (qsi->checkState() == Qt::Checked)
+					flags |= Qt::ItemIsEditable;
+				if (value->flags() != flags)
+					value->setFlags(flags);
+			}
+		}
 		else if (qsi->data().toInt() == infoText && deti->elementUseForInfo())
 		{
 			QString info = qsi->data(Qt::UserRole+2).toString();
@@ -1582,7 +1610,7 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti,
 		case textWidth:
 		case textHeight:
 		{
-			setSizeItems(qsi->child(width_txt_row,1), qsi->child(height_txt_row,1), deti);
+			setSizeItems(qsi, deti);
 			break;
 		}
 	default:break;

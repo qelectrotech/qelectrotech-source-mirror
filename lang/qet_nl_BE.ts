@@ -3896,24 +3896,29 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>DynamicElementTextModel</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="309"/>
-        <source>Width (fixed)</source>
-        <translation>Breedte (vast)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="325"/>
-        <source>Height (fixed)</source>
-        <translation>Hoogte (vast)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="311"/>
-        <source>Ticked, the text field keeps this width and the text wraps inside it. Not ticked, it is as wide as the text.</source>
-        <translation>Aangevinkt houdt het tekstveld deze breedte en loopt de tekst erin door. Niet aangevinkt is het zo breed als de tekst.</translation>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height</source>
+        <translation>Hoogte</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
-        <source>Ticked, the text field keeps this height and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
-        <translation>Aangevinkt houdt het tekstveld deze hoogte en worden regels die niet passen afgesneden. Niet aangevinkt is het zo hoog als de tekst.</translation>
+        <source>Width fixed</source>
+        <translation>Vaste breedte</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height fixed</source>
+        <translation>Vaste hoogte</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="328"/>
+        <source>Ticked, the text field keeps the width above and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>Aangevinkt houdt het tekstveld de breedte hierboven en loopt de tekst erin door. Niet aangevinkt is het zo breed als de tekst.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="331"/>
+        <source>Ticked, the text field keeps the height above and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>Aangevinkt houdt het tekstveld de hoogte hierboven en worden regels die niet passen afgesneden. Niet aangevinkt is het zo hoog als de tekst.</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>

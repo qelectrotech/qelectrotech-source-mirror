@@ -3895,24 +3895,29 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>DynamicElementTextModel</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="309"/>
-        <source>Width (fixed)</source>
-        <translation>Lățime (fixă)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="325"/>
-        <source>Height (fixed)</source>
-        <translation>Înălțime (fixă)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="311"/>
-        <source>Ticked, the text field keeps this width and the text wraps inside it. Not ticked, it is as wide as the text.</source>
-        <translation>Bifat, câmpul de text păstrează această lățime și textul se încadrează în el. Nebifat, este cât textul de lat.</translation>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height</source>
+        <translation>Înălțime</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
-        <source>Ticked, the text field keeps this height and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
-        <translation>Bifat, câmpul de text păstrează această înălțime și rândurile care nu încap sunt tăiate. Nebifat, este cât textul de înalt.</translation>
+        <source>Width fixed</source>
+        <translation>Lățime fixă</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height fixed</source>
+        <translation>Înălțime fixă</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="328"/>
+        <source>Ticked, the text field keeps the width above and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>Bifat, câmpul de text păstrează lățimea de deasupra și textul se încadrează în el. Nebifat, este cât textul de lat.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="331"/>
+        <source>Ticked, the text field keeps the height above and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>Bifat, câmpul de text păstrează înălțimea de deasupra și rândurile care nu încap sunt tăiate. Nebifat, este cât textul de înalt.</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>
