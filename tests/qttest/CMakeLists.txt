@@ -1445,3 +1445,11 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 endif()
+
+# Closing a modified project with Discard left it in the project tree, with
+# items for its freed sheets; a click on one crashed (forum topic 3215).
+qet_add_app_test(tst_elementspanelclosedproject tst_elementspanelclosedproject.cpp)
+
+# A project closed before the element collection panel's first load, or during
+# a load, stayed in the collection and the next reload read the freed project.
+qet_add_app_test(tst_collectionclosedproject tst_collectionclosedproject.cpp)
