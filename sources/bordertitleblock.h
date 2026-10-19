@@ -201,6 +201,8 @@ class BorderTitleBlock : public QObject
 		void displayColumns(bool);
 		void displayRows(bool);
 		void displayBorder(bool);
+		void reverseOrderCol(bool);
+		void reverseOrderRow(bool);
 	
 	private:
 		void updateRectangles();
@@ -294,6 +296,8 @@ class BorderTitleBlock : public QObject
 		bool display_columns_ = false;
 		bool display_rows_ = false;
 		bool display_border_ = false;
+		bool reverse_order_col_ = false;
+		bool reverse_order_row_ = false;
 		TitleBlockTemplateRenderer *m_titleblock_template_renderer;
 		Diagram *m_owner_folio = nullptr;
 		TitleBlockProperties current() const;

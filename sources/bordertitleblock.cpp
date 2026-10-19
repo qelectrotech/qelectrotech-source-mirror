@@ -70,6 +70,9 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 
 	display_titleblock_ = true;
 	display_border_ = true;
+	QSettings settings;
+	reverse_order_col_ = settings.value("reverse_order_col", false).toBool();
+	reverse_order_row_ = settings.value("reverse_order_row", false).toBool();
 	setFolioData(1, 1);
 	updateRectangles();
 }
@@ -560,6 +563,28 @@ void BorderTitleBlock::displayBorder(bool db) {
 }
 
 /**
+	@brief BorderTitleBlock::reverseOrderCol
+	@param db : true — counting direction inverted, false — otherwise
+*/
+void BorderTitleBlock::reverseOrderCol(bool db)
+{
+	bool change = (db != reverse_order_col_);
+	reverse_order_col_ = db;
+	if (change) emit(displayChanged());
+}
+
+/**
+	@brief BorderTitleBlock::reverseOrderRow
+	@param db : true — counting direction inverted, false — otherwise
+*/
+void BorderTitleBlock::reverseOrderRow(bool db)
+{
+	bool change = (db != reverse_order_row_);
+	reverse_order_row_ = db;
+	if (change) emit(displayChanged());
+}
+
+/**
 	@brief BorderTitleBlock::updateRectangles
 	This method update the diagram rect according
 	to the value of rows and columns (number and size)
@@ -592,6 +617,10 @@ void BorderTitleBlock::draw(QPainter *painter)
 	painter -> setBrush(Qt::NoBrush);
 
 	QSettings settings;
+
+	//Update columns and rows order settings
+	reverseOrderCol(settings.value("reverse_order_col", false).toBool());
+	reverseOrderRow(settings.value("reverse_order_row", false).toBool());
 
 	//Draw the borer
 	if (display_border_) painter -> drawRect(diagram_rect_);
