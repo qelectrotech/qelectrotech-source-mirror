@@ -332,6 +332,12 @@ target_link_libraries(tst_textresizehandles PRIVATE Qt::Test Qt::Widgets)
 # rectangle's does; a pivot placed by hand stays.
 qet_add_app_test(tst_linepivotresize tst_linepivotresize.cpp)
 
+# The terminal strip sorts into the plan's own order -- folio by folio, then
+# left to right -- instead of by label; the auto import and
+# SortTerminalStripCommand share one comparator for it, so a strip the import
+# creates cannot come out in another order than the sort it then pushes.
+qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
+
 # legacyelementtypes.h is header-only: the rewrite of element type names in
 # nomenclature queries saved before June 2022.
 add_executable(tst_legacyelementtypes tst_legacyelementtypes.cpp)
