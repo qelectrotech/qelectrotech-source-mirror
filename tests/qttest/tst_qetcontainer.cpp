@@ -77,9 +77,10 @@ class tst_qetcontainer : public QObject
 	{
 		QDomDocument copy = document.cloneNode(true).toDocument();
 		const bool own_uuids = QetContainer::ownUuids(copy.documentElement());
+		const QSet<QString> defined = QetContainer::embeddedDefinitions(copy.documentElement());
 		for (QDomElement diagram = copy.documentElement().firstChildElement(QStringLiteral("diagram"));
 			 !diagram.isNull() ; diagram = diagram.nextSiblingElement(QStringLiteral("diagram")))
-			QetContainer::dropComputed(diagram, own_uuids);
+			QetContainer::dropComputed(diagram, own_uuids, defined);
 		return copy;
 	}
 
