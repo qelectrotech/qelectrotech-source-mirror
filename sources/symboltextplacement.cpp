@@ -22,7 +22,11 @@
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
 
+#include <QApplication>
 #include <QCoreApplication>
+#include <QPainter>
+#include <QPalette>
+#include <QPixmap>
 #include <QUndoCommand>
 
 namespace {
@@ -126,4 +130,41 @@ QUndoCommand *SymbolTextPlacement::place(const QList<Element *> &elements, Qt::A
 		return nullptr;
 	}
 	return undo;
+}
+
+QIcon SymbolTextPlacement::icon(Qt::Alignment where)
+{
+	const Qt::Alignment lines = linesFor(where);
+	const QPalette palette = QApplication::palette();
+	QIcon icon;
+	for (int size : {16, 22, 24, 32, 48})
+	{
+		QPixmap pixmap(size, size);
+		pixmap.fill(Qt::transparent);
+		QPainter painter(&pixmap);
+		painter.setRenderHint(QPainter::Antialiasing);
+		painter.scale(size / 24.0, size / 24.0);
+
+			//The symbol
+		painter.setPen(Qt::NoPen);
+		painter.setBrush(palette.color(QPalette::Mid));
+		painter.drawRect(QRectF(7, 7, 10, 10));
+
+			//Two lines of text, a long one over a short one
+		const qreal right = (where & Qt::AlignLeft) ? 5.5 : (where & Qt::AlignRight) ? 24 : 18.5;
+		const qreal left = (where & Qt::AlignLeft) ? 0 : (where & Qt::AlignRight) ? 18.5 : 5.5;
+		const qreal top = (where & Qt::AlignTop) ? 0 : (where & Qt::AlignBottom) ? 18.5 : 9.25;
+		painter.setBrush(palette.color(QPalette::WindowText));
+		for (int i = 0; i < 2; ++i)
+		{
+			const qreal width = i == 0 ? right - left : (right - left) * 0.6;
+			const qreal x = lines == Qt::AlignRight ? right - width
+						  : lines == Qt::AlignLeft  ? left
+						  : (left + right - width) / 2;
+			painter.drawRect(QRectF(x, top + i * 3, width, 2.5));
+		}
+		painter.end();
+		icon.addPixmap(pixmap);
+	}
+	return icon;
 }

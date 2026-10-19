@@ -494,7 +494,12 @@ void QETDiagramEditor::setUpActions()
 		//The texts of the selected symbols, label and notes, as one block at
 		//one of nine points around the symbol: the nine points of the text
 		//alignment dialog. A click places them at the point chosen last.
-	m_place_texts = new QAction(QET::Icons::AlignRight, tr("Place symbol texts"), this);
+	const auto chosen_point = []() {
+		return Qt::Alignment(QSettings().value(QStringLiteral("diagrameditor/place_texts_point"),
+											   int(Qt::AlignLeft | Qt::AlignVCenter)).toInt());
+	};
+		//The button shows where its click will put the texts
+	m_place_texts = new QAction(SymbolTextPlacement::icon(chosen_point()), tr("Place symbol texts"), this);
 	m_place_texts->setStatusTip(tr("Place the label and the notes of the selected symbols as one block beside them", "status bar tip"));
 	ShortcutManager::instance().registerAction(m_place_texts, "diagrameditor.place_symbol_texts", tr("Diagram editors"), QKeySequence());
 	{
@@ -503,21 +508,22 @@ void QETDiagramEditor::setUpActions()
 		auto *grid = new QGridLayout(grid_widget);
 		grid->setContentsMargins(6, 6, 6, 6);
 		grid->setSpacing(2);
-		const struct { Qt::Alignment where; const char *arrow; const char *tip; } points[] = {
-			{Qt::AlignLeft | Qt::AlignTop,        "\u2196", QT_TR_NOOP("Above, left")},
-			{Qt::AlignHCenter | Qt::AlignTop,     "\u2191", QT_TR_NOOP("Above")},
-			{Qt::AlignRight | Qt::AlignTop,       "\u2197", QT_TR_NOOP("Above, right")},
-			{Qt::AlignLeft | Qt::AlignVCenter,    "\u2190", QT_TR_NOOP("Left")},
-			{Qt::AlignCenter,                     "\u25CF", QT_TR_NOOP("On the symbol")},
-			{Qt::AlignRight | Qt::AlignVCenter,   "\u2192", QT_TR_NOOP("Right")},
-			{Qt::AlignLeft | Qt::AlignBottom,     "\u2199", QT_TR_NOOP("Below, left")},
-			{Qt::AlignHCenter | Qt::AlignBottom,  "\u2193", QT_TR_NOOP("Below")},
-			{Qt::AlignRight | Qt::AlignBottom,    "\u2198", QT_TR_NOOP("Below, right")}};
+		const struct { Qt::Alignment where; const char *tip; } points[] = {
+			{Qt::AlignLeft | Qt::AlignTop,        QT_TR_NOOP("Above, left")},
+			{Qt::AlignHCenter | Qt::AlignTop,     QT_TR_NOOP("Above")},
+			{Qt::AlignRight | Qt::AlignTop,       QT_TR_NOOP("Above, right")},
+			{Qt::AlignLeft | Qt::AlignVCenter,    QT_TR_NOOP("Left")},
+			{Qt::AlignCenter,                     QT_TR_NOOP("On the symbol")},
+			{Qt::AlignRight | Qt::AlignVCenter,   QT_TR_NOOP("Right")},
+			{Qt::AlignLeft | Qt::AlignBottom,     QT_TR_NOOP("Below, left")},
+			{Qt::AlignHCenter | Qt::AlignBottom,  QT_TR_NOOP("Below")},
+			{Qt::AlignRight | Qt::AlignBottom,    QT_TR_NOOP("Below, right")}};
 		int n = 0;
 		for (const auto &point : points)
 		{
 			auto *button = new QToolButton(grid_widget);
-			button->setText(QString::fromUtf8(point.arrow));
+			button->setIcon(SymbolTextPlacement::icon(point.where));
+			button->setIconSize(QSize(24, 24));
 			button->setToolTip(tr(point.tip));
 			button->setObjectName(QStringLiteral("place_texts_%1").arg(n));
 			button->setFixedSize(28, 28);
@@ -526,6 +532,7 @@ void QETDiagramEditor::setUpActions()
 			connect(button, &QToolButton::clicked, this, [this, menu, where]() {
 				menu->close();
 				QSettings().setValue(QStringLiteral("diagrameditor/place_texts_point"), int(where));
+				m_place_texts->setIcon(SymbolTextPlacement::icon(where));
 				placeSymbolTexts(where);
 			});
 			grid->addWidget(button, n / 3, n % 3);
@@ -536,10 +543,8 @@ void QETDiagramEditor::setUpActions()
 		menu->addAction(grid_action);
 		m_place_texts->setMenu(menu);
 	}
-	connect(m_place_texts, &QAction::triggered, this, [this]() {
-		const int where = QSettings().value(QStringLiteral("diagrameditor/place_texts_point"),
-											int(Qt::AlignLeft | Qt::AlignVCenter)).toInt();
-		placeSymbolTexts(Qt::Alignment(where));
+	connect(m_place_texts, &QAction::triggered, this, [this, chosen_point]() {
+		placeSymbolTexts(chosen_point());
 	});
 
 		//Duplicate: copy the selection and place it at a configured,

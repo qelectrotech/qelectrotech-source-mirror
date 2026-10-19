@@ -18,6 +18,7 @@
 #ifndef SYMBOLTEXTPLACEMENT_H
 #define SYMBOLTEXTPLACEMENT_H
 
+#include <QIcon>
 #include <QList>
 #include <Qt>
 
@@ -47,6 +48,13 @@ namespace SymbolTextPlacement
 		nullptr when none of the symbols has a text
 	*/
 	QUndoCommand *place(const QList<Element *> &elements, Qt::Alignment where);
+
+	/**
+		@return a picture of @a where: a grey square for the symbol, and
+		two bars for the lines of text where they will go, lined up as
+		they will be (left of the symbol, aligned right)
+	*/
+	QIcon icon(Qt::Alignment where);
 }
 
 #endif // SYMBOLTEXTPLACEMENT_H

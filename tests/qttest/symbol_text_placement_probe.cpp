@@ -11,6 +11,8 @@
 // placed in the folio's directions, and one undo puts everything back.
 #include <QApplication>
 #include <QFontDatabase>
+#include <QImage>
+#include <QPainter>
 #include <QSettings>
 #include <QTemporaryDir>
 #include <QUndoCommand>
@@ -141,6 +143,37 @@ int main(int argc, char **argv)
 			for (DynamicElementTextItem *t : other->dynamicTextItems()) t->setVisible(false);
 			check(SymbolTextPlacement::place({other}, Qt::AlignLeft) == nullptr, "a symbol without texts gives no undo step");
 		}
+		// The icons show where the texts go: bars left of the grey square
+		// for "left", right of it for "right", above it for "above".
+		auto dark = [](const QImage &img, const QRect &r) {
+			int n = 0;
+			for (int y = r.top(); y <= r.bottom(); ++y)
+				for (int x = r.left(); x <= r.right(); ++x) {
+					const QColor c = img.pixelColor(x, y);
+					if (c.alpha() > 128 && c.lightness() < 60) ++n;
+				}
+			return n;
+		};
+		const QImage left = SymbolTextPlacement::icon(Qt::AlignLeft | Qt::AlignVCenter).pixmap(24, 24).toImage();
+		const QImage right = SymbolTextPlacement::icon(Qt::AlignRight | Qt::AlignVCenter).pixmap(24, 24).toImage();
+		const QImage above = SymbolTextPlacement::icon(Qt::AlignHCenter | Qt::AlignTop).pixmap(24, 24).toImage();
+		check(dark(left, QRect(0, 8, 7, 8)) > 10 && dark(left, QRect(17, 0, 7, 24)) == 0, "the icon for left has its bars left of the symbol");
+		check(dark(right, QRect(17, 8, 7, 8)) > 10 && dark(right, QRect(0, 0, 7, 24)) == 0, "the icon for right has them right of it");
+		check(dark(above, QRect(6, 0, 12, 7)) > 10 && dark(above, QRect(0, 17, 24, 7)) == 0, "the icon for above has them above it");
+
+			//All nine side by side, to look at
+		QImage sheet(3 * 52, 3 * 52, QImage::Format_ARGB32);
+		sheet.fill(Qt::white);
+		QPainter p(&sheet);
+		const Qt::Alignment nine[] = {
+			Qt::AlignLeft | Qt::AlignTop, Qt::AlignHCenter | Qt::AlignTop, Qt::AlignRight | Qt::AlignTop,
+			Qt::AlignLeft | Qt::AlignVCenter, Qt::AlignCenter, Qt::AlignRight | Qt::AlignVCenter,
+			Qt::AlignLeft | Qt::AlignBottom, Qt::AlignHCenter | Qt::AlignBottom, Qt::AlignRight | Qt::AlignBottom};
+		for (int i = 0; i < 9; ++i)
+			p.drawPixmap((i % 3) * 52 + 2, (i / 3) * 52 + 2, SymbolTextPlacement::icon(nine[i]).pixmap(48, 48));
+		p.end();
+		if (argc > 3) sheet.save(QString::fromLocal8Bit(argv[3]) + "/icons.png");
+
 		std::puts("PASS");
 	}
 	catch (const std::exception &error)
