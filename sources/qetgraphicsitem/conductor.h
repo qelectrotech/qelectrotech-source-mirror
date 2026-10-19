@@ -186,6 +186,8 @@ class Conductor : public QGraphicsObject
 
 	public:
 		void setFreezeLabel(bool freeze);
+		bool isAutomatic() const { return m_automatic; }
+		void setAutomatic(bool automatic) { m_automatic = automatic; }
 	
 	public slots:
 		void displayedTextChanged();
@@ -249,6 +251,8 @@ class Conductor : public QGraphicsObject
 		Highlight must_highlight_;
 		bool m_valid;
 		bool m_freeze_label = false;
+			/// Made by AutoConnect: removed again when its ends leave the line
+		bool m_automatic = false;
 		QUuid m_uuid;
 			/// false when m_uuid was synthesized by fromXml() because the
 			/// file had none -- toXml() must not persist that value, or

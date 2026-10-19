@@ -1165,6 +1165,7 @@ bool Conductor::fromXml(QDomElement &dom_element)
 		m_autoNum_seq.fromXml(dom_element.firstChildElement("sequentialNumbers"));
 
 	m_freeze_label = dom_element.attribute("freezeLabel") == "true" ? true : false;
+	m_automatic = dom_element.attribute(QStringLiteral("automatic")) == QLatin1String("true");
 
 		//Changed through the project database while its folio was not
 		//built (lazy folios): the change, not what the file says
@@ -1240,6 +1241,8 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 		dom_element.setAttribute("terminalname2", terminal2->name());
 	}
 	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
+	if (m_automatic)
+		dom_element.setAttribute(QStringLiteral("automatic"), QStringLiteral("true"));
 
 	// on n'exporte les segments du conducteur que si ceux-ci ont
 	// ete modifies par l'utilisateur

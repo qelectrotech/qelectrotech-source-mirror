@@ -354,6 +354,7 @@ class projectDataBase : public QObject
 			bool freeze_new_conductors = false;
 			bool freeze_new_elements = false;
 			bool auto_break_conductors = false;
+			bool live_auto_connect = false;    ///< see AutoConnect
 			bool cable_x_axis_first = true;
 			bool cable_ask_numbering = true;
 		};

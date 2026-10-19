@@ -341,6 +341,8 @@ class QETProject : public QObject
 		WiringRules::Settings projectWiringRules() const;
 		void setWiringRules(const WiringRules::Settings &rules);
 		void setAutoBreakConductor (bool abc);
+		bool liveAutoConnect() const;
+		void setLiveAutoConnect(bool on);
 		void setAutoElement (bool ae);
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, const QString&);

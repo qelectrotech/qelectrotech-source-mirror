@@ -29,6 +29,7 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../qet.h"
 #include "../autobreakconductor.h"
+#include "../autoconnect.h"
 #include <QPainterPath>
 #include <limits>
 
@@ -272,7 +273,9 @@ void DiagramEventAddElement::addElement()
 
 		//Auto-connect: collect all aligned pairs first, then filter and process.
 	QList<QPair<Terminal *, Terminal *>> aligned_pairs;
-	if (m_diagram->project()->autoConductor())
+	if (AutoConnect::isOn(m_diagram))
+		AutoConnect::update(m_diagram, {element}, {}, undo_object);
+	else if (m_diagram->project()->autoConductor())
 		aligned_pairs = element->AlignedFreeTerminals();
 
 	for (const QPair<Terminal *, Terminal *> &pair : aligned_pairs)

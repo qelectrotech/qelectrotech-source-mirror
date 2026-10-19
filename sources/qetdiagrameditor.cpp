@@ -21,6 +21,7 @@
 #include "utils/previousversions.h"
 #include "shownkinds.h"
 #include "symboltextplacement.h"
+#include "autoconnect.h"
 #ifdef QET_HAS_SCRIPTING
 #include "scripting/qetscripting.h"
 #include "scripting/scriptlibrary.h"
@@ -709,6 +710,32 @@ void QETDiagramEditor::setUpActions()
 		settings.setValue("diagrameditor/auto_break_conductor", abc);
 		if (ProjectView *pv = currentProjectView())
 			pv->project()->setAutoBreakConductor(abc);
+	});
+
+		//Live AutoConnect: automatic wires are removed and found again as
+		//symbols move, see AutoConnect
+	m_live_auto_connect = new QAction(QET::Icons::Autoconnect, tr("Keep automatic connections up to date"), this);
+	m_live_auto_connect->setStatusTip(tr("Terminals in line connect to the next free terminal they face, and are disconnected again when moved out of line"));
+	m_live_auto_connect->setCheckable(true);
+	ShortcutManager::instance().registerAction(m_live_auto_connect, "diagrameditor.live_auto_connect", tr("Diagram editors"), QKeySequence());
+	connect(m_live_auto_connect, &QAction::triggered, [this](bool on) {
+		if (ProjectView *pv = currentProjectView())
+			pv->project()->setLiveAutoConnect(on);
+	});
+
+	m_connect_aligned = new QAction(QET::Icons::Autoconnect, tr("Connect aligned terminals on this folio"), this);
+	m_connect_aligned->setStatusTip(tr("Connect every free terminal of the folio to the next free terminal it faces"));
+	ShortcutManager::instance().registerAction(m_connect_aligned, "diagrameditor.connect_aligned", tr("Diagram editors"), QKeySequence());
+	connect(m_connect_aligned, &QAction::triggered, [this]() {
+		DiagramView *dv = currentDiagramView();
+		if (!dv || !dv->diagram())
+			return;
+		Diagram *diagram = dv->diagram();
+		auto *undo = new QUndoCommand(tr("Connect aligned terminals"));
+		if (AutoConnect::connectWholeDiagram(diagram, undo))
+			diagram->undoStack().push(undo);
+		else
+			delete undo;
 	});
 
 		//Diagram background color picker
@@ -1899,6 +1926,8 @@ void QETDiagramEditor::setUpMenu()
 		//Sits beside m_auto_conductor, the setting it pairs with. It was
 		//toolbar-only and so had no keyboard route at all.
 	menu_project -> addAction(m_auto_break_conductor);
+	menu_project -> addAction(m_live_auto_connect);
+	menu_project -> addAction(m_connect_aligned);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_project_add_diagram);
 	menu_project -> addAction(m_remove_diagram_from_project);
@@ -3111,7 +3140,17 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 
                 diagram->clearSelection();
 
-				if (cable_parts.isEmpty()) {
+				if (cable_parts.isEmpty() && AutoConnect::isOn(diagram)) {
+						//The terminals the removed symbols stood between, or
+						//were wired to, look for a new partner in the same step
+					auto *undo = new QUndoCommand(QObject::tr("Delete"));
+					auto *del = new DeleteQGraphicsItemCommand(diagram, dc, undo);
+					undo->setText(del->text());
+					const QList<Element *> elements = dc.m_elements;
+					AutoConnect::update(diagram, {}, {}, undo,
+										QSet<Element *>(elements.begin(), elements.end()));
+					diagram->undoStack().push(undo);
+				} else if (cable_parts.isEmpty()) {
 					diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
 				} else if (!other_items) {
 					diagram->undoStack().push(new RemoveCableCommand(diagram, cable_parts));
@@ -3624,11 +3663,16 @@ void QETDiagramEditor::slot_updateModeActions()
 		m_auto_conductor -> setChecked (pv -> project() -> autoConductor());
 		m_auto_break_conductor -> setEnabled (true);
 		m_auto_break_conductor -> setChecked (pv -> project() -> autoBreakConductor());
+		m_live_auto_connect -> setEnabled (true);
+		m_live_auto_connect -> setChecked (pv -> project() -> liveAutoConnect());
+		m_connect_aligned -> setEnabled (true);
 	}
 	else
 	{
 		m_auto_conductor -> setDisabled(true);
 		m_auto_break_conductor -> setDisabled(true);
+		m_live_auto_connect -> setDisabled(true);
+		m_connect_aligned -> setDisabled(true);
 	}
 
 	if (m_conductor_color_button) {

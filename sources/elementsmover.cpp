@@ -18,6 +18,7 @@
 #include "elementsmover.h"
 #include "qetproject.h"
 #include "autobreakconductor.h"
+#include "autoconnect.h"
 #include "conductorautonumerotation.h"
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
@@ -307,10 +308,24 @@ void ElementsMover::endMovement()
 		}
 	}
 
+		//Live AutoConnect: automatic wires the move left out of line go,
+		//the terminals moved, freed or no longer stood between look for a
+		//partner. It takes the place of the one-shot auto conductor below.
+	typedef DiagramContent dc;
+	const bool live = AutoConnect::isOn(m_diagram);
+	if (live && !m_current_movement.isNull() && !m_moved_content.m_elements.isEmpty())
+	{
+		QList<QRectF> old_rects;
+		for (Element *e : std::as_const(m_moved_content.m_elements))
+			old_rects << e->sceneBoundingRect().translated(-m_current_movement);
+		AutoConnect::update(m_diagram, m_moved_content.m_elements, old_rects, undo_object);
+		if (undo_object->text().isEmpty() && undo_object->childCount())
+			undo_object->setText(QObject::tr("Update automatic connections"));
+	}
+
 		//There is only one element moved, and project authorize auto conductor,
 		//we try auto connection of conductor;
-	typedef DiagramContent dc;
-	if (m_moved_content.items(dc::TextFields
+	if (!live && m_moved_content.items(dc::TextFields
 								| dc::Images
 								| dc::Shapes
 								| dc::TerminalStrip).isEmpty()

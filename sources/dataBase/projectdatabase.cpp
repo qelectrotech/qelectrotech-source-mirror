@@ -7029,6 +7029,7 @@ void projectDataBase::setNumbering(const Numbering &numbering)
 	setNumberingFlag(QStringLiteral("freeze_new_conductors"), numbering.freeze_new_conductors);
 	setNumberingFlag(QStringLiteral("freeze_new_elements"), numbering.freeze_new_elements);
 	setNumberingFlag(QStringLiteral("auto_break_conductors"), numbering.auto_break_conductors);
+	setNumberingFlag(QStringLiteral("live_auto_connect"), numbering.live_auto_connect);
 	setNumberingFlag(QStringLiteral("cable_x_axis_first"), numbering.cable_x_axis_first);
 	setNumberingFlag(QStringLiteral("cable_ask_numbering"), numbering.cable_ask_numbering);
 }
@@ -7084,6 +7085,7 @@ projectDataBase::Numbering projectDataBase::numberingOf(const QSqlDatabase &db)
 		else if (name == QLatin1String("freeze_new_conductors")) numbering.freeze_new_conductors = flag;
 		else if (name == QLatin1String("freeze_new_elements")) numbering.freeze_new_elements = flag;
 		else if (name == QLatin1String("auto_break_conductors")) numbering.auto_break_conductors = flag;
+		else if (name == QLatin1String("live_auto_connect")) numbering.live_auto_connect = flag;
 		else if (name == QLatin1String("cable_x_axis_first")) numbering.cable_x_axis_first = flag;
 		else if (name == QLatin1String("cable_ask_numbering")) numbering.cable_ask_numbering = flag;
 	}

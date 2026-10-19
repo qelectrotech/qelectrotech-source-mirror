@@ -275,6 +275,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
 		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
 		*m_crosshair,			///< Show the folio-wide crosshair
+		*m_live_auto_connect,		///< Keep automatic wires up to date (AutoConnect)
+		*m_connect_aligned,		///< Connect the aligned free terminals of the folio
 		*m_add_cable = nullptr,		///< Draw the trunk line of a cable
 		*m_draw_grid,			///< Switch the background grid display or not
 		*m_draw_guides = nullptr,	///< Switch the custom guides display or not
