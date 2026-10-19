@@ -3866,24 +3866,29 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>DynamicElementTextModel</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="309"/>
-        <source>Width (fixed)</source>
-        <translation>寬度（固定）</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="325"/>
-        <source>Height (fixed)</source>
-        <translation>高度（固定）</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="311"/>
-        <source>Ticked, the text field keeps this width and the text wraps inside it. Not ticked, it is as wide as the text.</source>
-        <translation>勾選後文字框保持此寬度，文字在其中換行。不勾選時與文字同寬。</translation>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height</source>
+        <translation>高度</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
-        <source>Ticked, the text field keeps this height and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
-        <translation>勾選後文字框保持此高度，放不下的行會被截斷。不勾選時與文字同高。</translation>
+        <source>Width fixed</source>
+        <translation>固定寬度</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height fixed</source>
+        <translation>固定高度</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="328"/>
+        <source>Ticked, the text field keeps the width above and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>勾選後文字框保持上方的寬度，文字在其中換行。不勾選時與文字同寬。</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="331"/>
+        <source>Ticked, the text field keeps the height above and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>勾選後文字框保持上方的高度，放不下的行會被截斷。不勾選時與文字同高。</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>

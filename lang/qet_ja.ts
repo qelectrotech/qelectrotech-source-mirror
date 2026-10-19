@@ -3867,24 +3867,29 @@ Shift を押しながらドラッグすると、このテキストだけを移�
 <context>
     <name>DynamicElementTextModel</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="309"/>
-        <source>Width (fixed)</source>
-        <translation>幅（固定）</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="325"/>
-        <source>Height (fixed)</source>
-        <translation>高さ（固定）</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="311"/>
-        <source>Ticked, the text field keeps this width and the text wraps inside it. Not ticked, it is as wide as the text.</source>
-        <translation>チェックするとテキスト欄はこの幅を保ち、テキストはその中で折り返します。チェックしないとテキストの幅になります。</translation>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height</source>
+        <translation>高さ</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
-        <source>Ticked, the text field keeps this height and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
-        <translation>チェックするとテキスト欄はこの高さを保ち、収まらない行は切り捨てられます。チェックしないとテキストの高さになります。</translation>
+        <source>Width fixed</source>
+        <translation>幅を固定</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height fixed</source>
+        <translation>高さを固定</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="328"/>
+        <source>Ticked, the text field keeps the width above and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>チェックするとテキスト欄は上の幅を保ち、テキストはその中で折り返します。チェックしないとテキストの幅になります。</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="331"/>
+        <source>Ticked, the text field keeps the height above and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>チェックするとテキスト欄は上の高さを保ち、収まらない行は切り捨てられます。チェックしないとテキストの高さになります。</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>
