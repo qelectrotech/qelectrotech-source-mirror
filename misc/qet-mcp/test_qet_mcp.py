@@ -4534,11 +4534,27 @@ class Integration(unittest.TestCase):
               for i in range(4)],
             {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e1", "to_terminal": 0},
             {"op": "add_conductor", "folio": "$f", "from": "$e2", "from_terminal": 0, "to": "$e3", "to_terminal": 0},
+            {"op": "set_conductor", "folio": "$f", "element": "$e2", "terminal": 0, "property": "num", "value": "W2"},
             {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e2", "to_terminal": 0},
         ], self.sb.p("conflict.qet"), elements_dir=ELEMENTS, timeout=60)
         self.assertFalse(r.get("timed_out"), "the call hung on a modal dialog")
         self.assertFalse(r["ok"])
         self.assertEqual(r["operations"][-1]["result"], False)
+
+    def test_joining_two_agreeing_potentials_asks_nothing(self):
+        """Two potentials with the same properties leave nothing to choose:
+        the wire joining them is drawn, headless as well."""
+        base = self.sb.new()
+        r = self.ok(self.sb.edit(base, [
+            {"op": "add_folio", "id": "f"},
+            *[{"op": "add_element", "id": f"e{i}", "folio": "$f", "path": COIL, "x": 100 + i * 200, "y": 100}
+              for i in range(4)],
+            {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e1", "to_terminal": 0},
+            {"op": "set_conductor", "folio": "$f", "element": "$e0", "terminal": 0, "property": "num", "value": "N"},
+            {"op": "add_conductor", "folio": "$f", "from": "$e2", "from_terminal": 0, "to": "$e3", "to_terminal": 0},
+            {"op": "set_conductor", "folio": "$f", "element": "$e2", "terminal": 0, "property": "num", "value": "N"},
+            {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e2", "to_terminal": 0}]))
+        self.assertEqual([c["num"] for c in m.tool_conductors(r["output"])["conductors"]], ["N"] * 3)
 
     # ---- edit: conductor properties, potentials ----
 
@@ -4554,6 +4570,34 @@ class Integration(unittest.TestCase):
         r = self.ok(self.sb.edit(base, hub))
         rows = m.tool_conductors(r["output"])["conductors"]
         self.assertEqual([c["num"] for c in rows], ["W7", "W7"])
+
+    def test_new_conductor_inherits_a_potential_through_terminal_and_report(self):
+        """A wire drawn to the free side of a terminal element, or to a
+        report linked to a wired one, is on that potential already: it
+        takes the potential's number and line style, not the folio's
+        defaults (ConductorCreator::existingPotential)."""
+        base = self.sb.new()
+        ops = [{"op": "add_folio", "id": "f"}, {"op": "add_folio", "id": "g"},
+               {"op": "add_element", "id": "a", "folio": "$f", "path": COIL, "x": 100, "y": 100},
+               {"op": "add_element", "id": "t", "folio": "$f", "path": TERMINAL, "x": 300, "y": 300},
+               {"op": "add_element", "id": "b", "folio": "$f", "path": COIL, "x": 500, "y": 100},
+               {"op": "add_element", "id": "go", "folio": "$f", "path": NEXT_REPORT, "x": 700, "y": 100},
+               {"op": "add_element", "id": "in", "folio": "$g", "path": PREVIOUS_REPORT, "x": 100, "y": 100},
+               {"op": "add_element", "id": "c", "folio": "$g", "path": COIL, "x": 300, "y": 100},
+               {"op": "link_elements", "folio": "$f", "element": "$go", "to_folio": "$g", "to": "$in"},
+               {"op": "add_conductor", "folio": "$f", "from": "$a", "from_terminal": 0, "to": "$t", "to_terminal": 0},
+               {"op": "set_conductor", "folio": "$f", "element": "$a", "terminal": 0, "property": "num", "value": "W7"},
+               {"op": "set_conductor", "folio": "$f", "element": "$a", "terminal": 0, "property": "style", "value": "dashed"},
+               # the terminal's other side, then on through the report
+               {"op": "add_conductor", "folio": "$f", "from": "$t", "from_terminal": 1, "to": "$b", "to_terminal": 0},
+               {"op": "add_conductor", "folio": "$f", "from": "$b", "from_terminal": 0, "to": "$go", "to_terminal": 0},
+               {"op": "add_conductor", "folio": "$g", "from": "$in", "from_terminal": 0, "to": "$c", "to_terminal": 0}]
+        r = self.ok(self.sb.edit(base, ops))
+        rows = m.tool_conductors(r["output"])["conductors"]
+        self.assertEqual([c["num"] for c in rows], ["W7"] * 4)
+        styles = {c["value"] for c in m.tool_conductors(r["output"], attribute="style")["conductors"]}
+        self.assertEqual(len(styles), 1, styles)
+        self.assertIn("dash", styles.pop())
 
     # ---- conductor manual routing ----
 

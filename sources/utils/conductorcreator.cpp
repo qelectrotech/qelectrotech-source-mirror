@@ -128,7 +128,50 @@ bool ConductorCreator::needsPotentialChoice(const QList<Terminal *> &terminals_l
 	if (terminals_list.size() <= 1) {
 		return false;
 	}
-	return existingPotential(terminals_list).size() >= 2;
+	return distinctProperties(existingPotential(terminals_list)).size() >= 2;
+}
+
+/**
+	@brief ConductorCreator::inheritedProperties
+	The properties a new wire takes from @p conductor's potential. A
+	cable's core names the cable and the core in m_cable, m_cable_uuid
+	and m_cable_slot (written by CableManager): none of that belongs to a
+	new wire, which is in no cable yet. The text is the potential's wire
+	number and is kept, unless it only repeats the core label.
+	@param conductor : a conductor of the potential
+	@return the properties for a new conductor of that potential
+*/
+ConductorProperties ConductorCreator::inheritedProperties(const Conductor *conductor)
+{
+	ConductorProperties properties = conductor->properties();
+	if (!properties.m_cable_uuid.isNull())
+	{
+		if (properties.text == properties.m_cable)
+			properties.text.clear();
+		properties.m_cable.clear();
+		properties.m_cable_uuid = QUuid();
+		properties.m_cable_slot = -1;
+	}
+	return properties;
+}
+
+/**
+	@brief ConductorCreator::distinctProperties
+	@param potentials : one conductor of each potential (existingPotential())
+	@return the properties a new wire could inherit from them, each once:
+	two potentials that agree leave nothing to choose
+*/
+QList<ConductorProperties> ConductorCreator::distinctProperties(const QList<Conductor *> &potentials)
+{
+	QList<ConductorProperties> list;
+	for (const Conductor *c : potentials)
+	{
+		const ConductorProperties properties = inheritedProperties(c);
+		if (!list.contains(properties)) {
+			list.append(properties);
+		}
+	}
+	return list;
 }
 
 /**
@@ -146,28 +189,24 @@ bool ConductorCreator::setUpPropertieToUse()
 		//we get one of them
 	if (!potentials.isEmpty())
 	{
-		if (potentials.size() >= 2)
+		const QList<ConductorProperties> cp_list = distinctProperties(potentials);
+		if (cp_list.size() >= 2)
 		{
-			QList <ConductorProperties> cp_list;
-			for(Conductor *c : potentials) {
-				cp_list.append(c->properties());
-			}
-
 			bool cancelled = false;
 			m_properties = PotentialSelectorDialog::chosenProperties(cp_list, nullptr, &cancelled);
 			if (cancelled) {
 				return false;
 			}
-			for (Conductor *c : potentials) {
-				if (c->properties() == m_properties) {
-					m_sequential_number = c->sequenceNum();
-				}
-			}
 		}
-		else if (potentials.size() == 1)
+		else
 		{
-			m_properties = potentials.first()->properties();
-			m_sequential_number = potentials.first()->sequenceNum();
+			m_properties = cp_list.first();
+		}
+		for (Conductor *c : potentials) {
+			if (inheritedProperties(c) == m_properties) {
+				m_sequential_number = c->sequenceNum();
+				break;
+			}
 		}
 		return true;
 	}
@@ -179,46 +218,65 @@ bool ConductorCreator::setUpPropertieToUse()
 
 /**
 	@brief ConductorCreator::existingPotential
-	Return the list of existing potential of
-	the terminal list
+	Return one conductor of each existing potential the terminals of
+	@p terminals_list are on.
+
+	A terminal without a wire of its own can still be on a potential: the
+	other side of a terminal element, a folio report linked to one that is
+	wired. Such a terminal is followed through relatedPotentialTerminal()
+	until a wired terminal is found -- the rule Conductor::
+	relatedPotentialConductors() applies, so that a wire drawn to the
+	free side of a terminal takes the properties (number, colour, line
+	style...) of the potential the terminal already carries instead of the
+	folio's defaults.
+	Two terminals on the same potential give that potential once.
 	@param terminals_list the terminals to inspect
 	@return c_list QList<Conductor *>
 */
 QList<Conductor *> ConductorCreator::existingPotential(const QList<Terminal *> &terminals_list)
 {
 	QList<Conductor *> c_list;
-	QList<Terminal *> t_exclude;
-	
+	QList<QSet<Conductor *>> potentials;
+
 	for (Terminal *t : terminals_list)
 	{
-		if (t_exclude.contains(t)) {
+		Conductor *seed = nullptr;
+		QList<Terminal *> to_visit {t};
+		QSet<const Terminal *> visited;
+		while (!to_visit.isEmpty() && !seed)
+		{
+			Terminal *current = to_visit.takeFirst();
+			if (visited.contains(current)) {
+				continue;
+			}
+			visited.insert(current);
+			if (!current->conductors().isEmpty()) {
+				seed = current->conductors().first();
+			} else {
+				to_visit += relatedPotentialTerminal(current, true);
+			}
+		}
+		if (!seed) {
 			continue;
 		}
-		
-		if (!t->conductors().isEmpty())
-		{
-			c_list.append(t->conductors().first());
-			
-				//We must check if m_terminals_list contains a terminal
-				//in the same potential of c, and if true, exclude this terminal from the search.
-			for (Conductor *c : t->conductors().first()->relatedPotentialConductors(false))
-			{
-				if (terminals_list.contains(c->terminal1)) {
-					t_exclude.append(c->terminal1);
-				} else if (terminals_list.contains(c->terminal2)) {
-					t_exclude.append(c->terminal2);
-				}
+
+		bool known = false;
+		for (const QSet<Conductor *> &potential : std::as_const(potentials)) {
+			if (potential.contains(seed)) {
+				known = true;
+				break;
 			}
 		}
-		else if (t->parentElement()->linkType() & Element::AllReport && !t->parentElement()->isFree())
-		{
-			Element *linked_report = t->parentElement()->linkedElements().first();
-			if (!linked_report->conductors().isEmpty()) {
-				c_list.append(linked_report->conductors().first());
-			}
+		if (known) {
+			continue;
 		}
+
+		QSet<Conductor *> potential = seed->relatedPotentialConductors(true);
+		potential.insert(seed);
+		potentials.append(potential);
+		c_list.append(seed);
 	}
-	
+
 	return c_list;
 }
 
