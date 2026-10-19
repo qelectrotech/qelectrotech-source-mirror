@@ -42,7 +42,7 @@ namespace {
 	constexpr qint64 MAX_BITS = 1 << 20;
 
 		//3D mice sold under Logitech's vendor id, for the ones whose
-		//interface does not report a usage.
+		//interface does not report a usage, and for scanIds().
 	const QSet<unsigned short> LOGITECH_3D_MICE = {
 		0xc603, 0xc605, 0xc606, 0xc621, 0xc623, 0xc625,
 		0xc626, 0xc627, 0xc628, 0xc629, 0xc62b
@@ -93,6 +93,19 @@ bool SpaceMouseHid::isSpaceMouse(unsigned short vendor, unsigned short product,
 		return multi_axis || (usage_unknown && LOGITECH_3D_MICE.contains(product));
 	}
 	return false;
+}
+
+QList<SpaceMouseHid::DeviceId> SpaceMouseHid::scanIds()
+{
+	QList<DeviceId> ids;
+	ids.append({VENDOR_3DCONNEXION, 0});
+
+	QList<unsigned short> logitech(LOGITECH_3D_MICE.cbegin(), LOGITECH_3D_MICE.cend());
+	std::sort(logitech.begin(), logitech.end());
+	for (const unsigned short product : std::as_const(logitech)) {
+		ids.append({VENDOR_LOGITECH, product});
+	}
+	return ids;
 }
 
 bool SpaceMouseHid::Layout::hasAxes() const
