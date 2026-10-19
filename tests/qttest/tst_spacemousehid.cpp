@@ -74,6 +74,8 @@ class TstSpaceMouseHid : public QObject
 	private slots:
 		void recognisesOnly3DMice_data();
 		void recognisesOnly3DMice();
+		void scanAsksOnlyFor3DMice_data();
+		void scanAsksOnlyFor3DMice();
 		void parsesTheClassicDescriptor();
 		void parsesADescriptorWithoutReportIds();
 		void survivesBrokenDescriptors_data();
@@ -113,6 +115,41 @@ void TstSpaceMouseHid::recognisesOnly3DMice()
 	QFETCH(int, usage);
 	QFETCH(bool, match);
 	QCOMPARE(isSpaceMouse(vendor, product, page, usage), match);
+}
+
+	// Where hidapi reads the name strings of every device a scan asks for
+	// from the device itself, as on Windows, the other devices on the PC
+	// must never be asked for at all (issue #1553).
+void TstSpaceMouseHid::scanAsksOnlyFor3DMice_data()
+{
+	QTest::addColumn<int>("vendor");
+	QTest::addColumn<int>("product");
+	QTest::addColumn<bool>("asked");
+	QTest::newRow("3Dconnexion SpaceMouse Compact") << 0x256f << 0xc635 << true;
+	QTest::newRow("3Dconnexion receiver") << 0x256f << 0xc652 << true;
+	QTest::newRow("Logitech SpaceNavigator") << 0x046d << 0xc626 << true;
+	QTest::newRow("Logitech SpacePilot Pro") << 0x046d << 0xc629 << true;
+	QTest::newRow("Logitech receiver") << 0x046d << 0xc52b << false;
+	QTest::newRow("Logitech mouse") << 0x046d << 0xc077 << false;
+	QTest::newRow("Microsoft keyboard") << 0x045e << 0x07f8 << false;
+	QTest::newRow("HP mouse") << 0x03f0 << 0x094a << false;
+}
+
+void TstSpaceMouseHid::scanAsksOnlyFor3DMice()
+{
+	QFETCH(int, vendor);
+	QFETCH(int, product);
+	QFETCH(bool, asked);
+
+		// hid_enumerate()'s own rule: an id of 0 matches every id.
+	bool matched = false;
+	for (const DeviceId &id : scanIds()) {
+		if ((id.vendor == 0 || id.vendor == vendor)
+				&& (id.product == 0 || id.product == product)) {
+			matched = true;
+		}
+	}
+	QCOMPARE(matched, asked);
 }
 
 void TstSpaceMouseHid::parsesTheClassicDescriptor()
