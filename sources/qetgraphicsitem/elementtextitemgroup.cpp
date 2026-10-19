@@ -200,6 +200,33 @@ void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 }
 
 /**
+	@brief ElementTextItemGroup::anchorX
+	@param width : the width of the group's texts
+	@return where, along the group, the point it is aligned on lies
+*/
+qreal ElementTextItemGroup::anchorX(qreal width) const
+{
+	if (m_alignment == Qt::AlignRight)
+		return width;
+	if (m_alignment == Qt::AlignVCenter)
+		return width / 2;
+	return 0;
+}
+
+/**
+	@brief ElementTextItemGroup::rememberLayout
+	Keep the texts and the width the group has now, so that the next
+	layout knows where its alignment point was.
+*/
+void ElementTextItemGroup::rememberLayout()
+{
+	m_layout_texts = texts();
+	m_layout_width = 0;
+	for (QGraphicsItem *item : m_layout_texts)
+		m_layout_width = qMax(m_layout_width, item->boundingRect().width());
+}
+
+/**
 	@brief ElementTextItemGroup::blockAlignmentUpdate
 	If true, the texts in this group are never aligned, moved, rotated etc...
 	the texts stay as it was, until blockAlignmentUpdate is set to false.
@@ -241,6 +268,15 @@ void ElementTextItemGroup::updateAlignment()
 	prepareGeometryChange();
 	
 	QList <DynamicElementTextItem *> texts = this->texts();
+
+		//The point the group is aligned on -- its right edge when aligned
+		//right, its middle when centred -- stays where it is when a text
+		//grows or shrinks, as a reference point does: the group grows away
+		//from it. Only when the texts are the ones laid out last time: a
+		//group being built or read keeps its position.
+	const bool keep_anchor = m_layout_width >= 0 && texts == m_layout_texts;
+	const QPointF anchor_before = keep_anchor ? mapToParent(QPointF(anchorX(m_layout_width), 0))
+											  : QPointF();
 
 		//The mirror of a mirrored element's group depends on the size of
 		//the group: drop it while the texts are laid out, set it back after
@@ -317,6 +353,17 @@ void ElementTextItemGroup::updateAlignment()
 	setRotation(rotation_);
 	if (m_parent_element)
 		m_parent_element->keepReadable(this);
+
+	if (keep_anchor)
+	{
+		qreal width = 0;
+		for (QGraphicsItem *item : texts)
+			width = qMax(width, item->boundingRect().width());
+		const QPointF anchor_after = mapToParent(QPointF(anchorX(width), 0));
+		if (anchor_after != anchor_before)
+			setPos(pos() + anchor_before - anchor_after);
+	}
+	rememberLayout();
 	
 	if(m_Xref_item)
 		m_Xref_item->autoPos();
@@ -563,6 +610,8 @@ void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 				parentElement()->addTextToGroup(deti, this);
 		}
 		m_block_alignment_update = false;
+			//As read: the next change keeps the group's alignment point
+		rememberLayout();
 	}
 }
 

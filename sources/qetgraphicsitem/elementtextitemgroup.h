@@ -118,6 +118,12 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		m_frame = false;
 		QPointF m_initial_position;
 		int m_vertical_adjustment = 0;
+			/// The texts and the width of the last layout, to keep the point
+			/// the group is aligned on in place at the next one
+		QList<DynamicElementTextItem *> m_layout_texts;
+		qreal m_layout_width = -1;
+		qreal anchorX(qreal width) const;
+		void rememberLayout();
 		CrossRefItem *m_Xref_item = nullptr;
 		Element *m_parent_element = nullptr;
 		QList<QMetaObject::Connection> m_update_slave_Xref_connection;
