@@ -11840,6 +11840,16 @@ Available options:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Hiusristikko koko arkin yli</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Näyttää hiiren kohdalla kaksi viivaa koko arkin yli, jotta näkee, ovatko osat linjassa</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="693"/>
         <source>Sheet properties</source>
         <translation type="unfinished"></translation>

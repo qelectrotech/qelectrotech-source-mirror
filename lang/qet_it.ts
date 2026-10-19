@@ -12172,6 +12172,16 @@ Ecco gli ultimi messaggi registrati prima della chiusura — puoi salvarli per i
         <translation>Visualizzare o nasacondere la griglia delle pagina</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Mirino su tutta la pagina</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Mostra due linee su tutta la pagina sotto il mouse, per vedere se gli elementi sono allineati</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="955"/>
         <source>Select</source>
         <translation>Modalità selezione</translation>

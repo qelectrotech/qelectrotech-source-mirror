@@ -12275,6 +12275,16 @@ Tillgängliga alternativ :
         <translation>Visar eller döljer rutnät på blad</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Hårkors över hela bladet</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Visar två linjer över hela bladet under musen för att se om delarna är i linje</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
         <source>Text grid</source>
         <translation type="unfinished"></translation>

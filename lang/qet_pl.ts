@@ -12239,6 +12239,16 @@ Dostępne opcje:
         <translation>Pokaż lub ukryj sietkę arkuszy</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Krzyż celowniczy na całym arkuszu</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Pokazuje dwie linie przez cały arkusz pod kursorem, aby sprawdzić, czy elementy są wyrównane</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="693"/>
         <source>Sheet properties</source>
         <translation>Właściwości arkusza</translation>

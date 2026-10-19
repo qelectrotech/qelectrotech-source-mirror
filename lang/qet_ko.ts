@@ -11936,6 +11936,16 @@ Available options:
         <translation>시트의 격자를 표시하거나 숨깁니다</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>시트 전체 십자선</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>마우스 아래에 시트 전체를 가로지르는 두 선을 표시하여 부품이 정렬되었는지 확인합니다</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="693"/>
         <source>Sheet properties</source>
         <translation>시트 속성</translation>

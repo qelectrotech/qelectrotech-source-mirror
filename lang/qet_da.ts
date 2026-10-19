@@ -12034,6 +12034,16 @@ Kommandovalg:
         <translation>Vis eller skjul ark gitter</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Trådkors over hele arket</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Viser to linjer over hele arket under musen for at se, om delene flugter</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="693"/>
         <source>Sheet properties</source>
         <translation>Ark egenskab</translation>

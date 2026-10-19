@@ -12459,6 +12459,16 @@ Opțiuni disponibile:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Reticul pe toată foaia</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Afișează două linii pe toată foaia sub mouse, pentru a vedea dacă elementele sunt aliniate</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
         <source>Text grid</source>
         <translation type="unfinished"></translation>

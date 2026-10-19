@@ -12304,6 +12304,16 @@ Opcions disponibles:
         <translation>Mostra o oculta la quadrícula</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Retícula a tot el full</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Mostra dues línies a tot el full sota el ratolí, per veure si els elements estan alineats</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
         <source>Text grid</source>
         <translation>Graella de text</translation>

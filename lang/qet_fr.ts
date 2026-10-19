@@ -12243,6 +12243,16 @@ Options disponibles :
         <translation>Affiche ou masque la grille des folios</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Réticule sur tout le folio</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Affiche deux lignes sur tout le folio sous la souris, pour voir si les éléments sont alignés</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="693"/>
         <source>Sheet properties</source>
         <translation>Propriétés du folio</translation>

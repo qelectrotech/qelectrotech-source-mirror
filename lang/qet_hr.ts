@@ -12102,6 +12102,16 @@ Dostupne opcije:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Križić preko cijelog lista</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Prikazuje dvije linije preko cijelog lista ispod miša, kako bi se vidjelo jesu li dijelovi poravnati</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
         <source>Text grid</source>
         <translation type="unfinished"></translation>

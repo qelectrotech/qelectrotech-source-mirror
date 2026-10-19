@@ -12091,6 +12091,16 @@ Available options:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Nišanski krst preko celog lista</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Prikazuje dve linije preko celog lista ispod miša, da bi se videlo da li su delovi poravnati</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
         <source>Text grid</source>
         <translation type="unfinished"></translation>

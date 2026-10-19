@@ -12081,6 +12081,16 @@ Mevcut seçenekler:
         <translation>Sayfaların ızgarasını göster veya gizle</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Tüm sayfa boyunca artı imleç</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Parçaların hizalı olup olmadığını görmek için farenin altında tüm sayfa boyunca iki çizgi gösterir</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="693"/>
         <source>Sheet properties</source>
         <translation>Sayfa Özelikkleri</translation>

@@ -12558,6 +12558,16 @@ Verfügbare Optionen:
         <translation>Zeige den Hintergrundsraster der Seiten an</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Folio-wide crosshair</source>
+        <translation>Fadenkreuz über die ganze Seite</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
+        <translation>Zeigt unter dem Mauszeiger zwei Linien über die ganze Seite, um zu sehen, ob Teile fluchten</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1043"/>
         <source>Add row</source>
         <comment>Add row</comment>
