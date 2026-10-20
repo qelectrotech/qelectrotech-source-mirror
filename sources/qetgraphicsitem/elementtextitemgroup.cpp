@@ -214,16 +214,50 @@ qreal ElementTextItemGroup::anchorX(qreal width) const
 }
 
 /**
+	@brief ElementTextItemGroup::layoutAnchor
+	Where the point the group is aligned on lay at its last layout, read
+	from a text whose width has not changed since: that text still stands
+	where the layout put it. The text that grew or shrank cannot tell, and
+	neither can a text read from the file whose content is filled in only
+	after the group was read (an element's label): its width then differs.
+	@param anchor : the point, in the parent's coordinates
+	@return false when the group is not aligned right or centred, its texts
+	are not the ones laid out last time (a group being built), or every
+	one of them changed: the group then keeps its position.
+*/
+bool ElementTextItemGroup::layoutAnchor(QPointF *anchor) const
+{
+	if (m_alignment != Qt::AlignRight && m_alignment != Qt::AlignVCenter)
+		return false;
+	const QList<DynamicElementTextItem *> texts = this->texts();
+	if (texts.size() < 2 || texts.size() != m_layout_widths.size())
+		return false;
+	for (DynamicElementTextItem *text : texts)
+		if (!m_layout_widths.contains(text))
+			return false;
+
+	for (DynamicElementTextItem *text : texts)
+	{
+		const qreal width = text->boundingRect().width();
+		if (!qFuzzyCompare(m_layout_widths.value(text), width))
+			continue;
+		const qreal x = text->pos().x() + (m_alignment == Qt::AlignRight ? width : width / 2);
+		*anchor = mapToParent(QPointF(x, 0));
+		return true;
+	}
+	return false;
+}
+
+/**
 	@brief ElementTextItemGroup::rememberLayout
-	Keep the texts and the width the group has now, so that the next
-	layout knows where its alignment point was.
+	Keep the width each text has now, so that the next layout can find
+	where the group's alignment point was.
 */
 void ElementTextItemGroup::rememberLayout()
 {
-	m_layout_texts = texts();
-	m_layout_width = 0;
-	for (QGraphicsItem *item : m_layout_texts)
-		m_layout_width = qMax(m_layout_width, item->boundingRect().width());
+	m_layout_widths.clear();
+	for (DynamicElementTextItem *text : texts())
+		m_layout_widths.insert(text, text->boundingRect().width());
 }
 
 /**
@@ -272,11 +306,9 @@ void ElementTextItemGroup::updateAlignment()
 		//The point the group is aligned on -- its right edge when aligned
 		//right, its middle when centred -- stays where it is when a text
 		//grows or shrinks, as a reference point does: the group grows away
-		//from it. Only when the texts are the ones laid out last time: a
-		//group being built or read keeps its position.
-	const bool keep_anchor = m_layout_width >= 0 && texts == m_layout_texts;
-	const QPointF anchor_before = keep_anchor ? mapToParent(QPointF(anchorX(m_layout_width), 0))
-											  : QPointF();
+		//from it.
+	QPointF anchor_before;
+	const bool keep_anchor = layoutAnchor(&anchor_before);
 
 		//The mirror of a mirrored element's group depends on the size of
 		//the group: drop it while the texts are laid out, set it back after
