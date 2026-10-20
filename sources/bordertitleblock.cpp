@@ -27,7 +27,7 @@
 #include "qetversion.h"
 #include "titleblocktemplate.h"
 #include "titleblocktemplaterenderer.h"
-
+#include "projectorigin.h"
 
 #include "diagram.h"
 #include "qetproject.h"
@@ -627,7 +627,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> drawText(numbered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-					    BorderCellLabels::columnLabel(i, columns_start_at_zero));
+				BorderCellLabels::columnLabel(columnNumberByIndex(i), columns_start_at_zero));
 		}
 	}
 
@@ -648,7 +648,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> drawText(lettered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-					    BorderCellLabels::rowLabel(i));
+				BorderCellLabels::rowLabel(rowNumberByIndex(i)));
 		}
 	}
 
@@ -732,7 +732,7 @@ void BorderTitleBlock::drawDxf(
 						 recWidth, recHeight, color);
 
 			Createdxf::drawTextAligned(file_path,
-			   QString::number(i + offset),
+				QString::number(columnNumberByIndex(i) + offset),
 			   xCoord+recWidth/4,
 			   yCoord + recHeight*0.5,
 						   recHeight*0.7,
@@ -749,7 +749,6 @@ void BorderTitleBlock::drawDxf(
 	// draw line numbering
 	// dessine la numerotation des lignes
 	if (display_border_ && display_rows_) {
-		QString row_string("A");
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			double xCoord = diagram_rect_.topLeft().x()
 					* Createdxf::xScale;
@@ -766,7 +765,7 @@ void BorderTitleBlock::drawDxf(
 			Createdxf::drawRectangle(file_path, xCoord, yCoord,
 						 recWidth, recHeight, color);
 			Createdxf::drawTextAligned(file_path,
-						   row_string,
+				BorderCellLabels::rowLabel(rowNumberByIndex(i)),
 			   xCoord+recWidth*0.1,
 			   yCoord + recHeight*0.4,
 						   recWidth*0.7,
@@ -777,7 +776,6 @@ void BorderTitleBlock::drawDxf(
 						   xCoord+recWidth/2,
 			   1,
 			   color);
-			row_string = incrementLetters(row_string);
 		}
 	}
 
@@ -951,11 +949,7 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 	int row_number    = int(ceil(relative_pos.x() / columnsWidth()));
 	int column_number = int(ceil(relative_pos.y() / rowsHeight()));
 
-	QString letter = "A";
-	for (int i = 1 ; i < column_number ; ++ i)
-		letter = incrementLetters(letter);
-
-	return(DiagramPosition(letter, row_number));
+	return(DiagramPosition(BorderCellLabels::rowLabel(rowNumberByIndex(column_number)), columnNumberByIndex(row_number)));
 }
 
 /**
@@ -1068,8 +1062,8 @@ QRectF BorderTitleBlock::cellRect(const QString &cell) const
 		return QRectF();
 
 	const QPointF top_left = insideBorderRect().topLeft();
-	return QRectF(top_left.x() + (column - 1) * columns_width_,
-		      top_left.y() + (row - 1) * rows_height_,
+	return QRectF(top_left.x() + (columnIndexByNumber(column) - 1) * columns_width_,
+		      top_left.y() + (rowIndexByNumber(row) - 1) * rows_height_,
 		      columns_width_,
 		      rows_height_);
 }
@@ -1165,4 +1159,59 @@ void BorderTitleBlock::setNextFolioNum(const QString &next)
 	DiagramContext context = m_titleblock_template_renderer->context();
 	context.addValue("next-folio-num", m_next_folio_num);
 	m_titleblock_template_renderer->setContext(context);
+}
+
+/**
+	@brief BorderTitleBlock::columnIndexByNumber
+    @return the column index by number,	taking the origin into account 
+*/
+int BorderTitleBlock::columnIndexByNumber(int num) const {
+	bool revers = false;
+	if (m_owner_folio && m_owner_folio->project())
+	{
+		revers = ProjectOrigin::reversedIsColumns(
+			m_owner_folio->project()->Origin());
+	}
+	return revers ? columns_count_ - num + 1 : num;
+}
+
+/**
+	@brief BorderTitleBlock::columnNumberByIndex
+	@return the column number by index, taking the origin into account
+*/
+int BorderTitleBlock::columnNumberByIndex(int index) const {
+	bool revers = false;
+	if (m_owner_folio && m_owner_folio->project())
+	{
+		revers = ProjectOrigin::reversedIsColumns(
+			m_owner_folio->project()->Origin());
+	}
+	return revers ? columns_count_ - index + 1 : index;
+}
+
+/**
+	@brief BorderTitleBlock::rowIndexByNumber
+	@return the row index by number, taking the origin into account
+*/
+int BorderTitleBlock::rowIndexByNumber(int num) const {
+	bool revers = false;
+	if (m_owner_folio && m_owner_folio->project())
+	{
+		revers =
+			ProjectOrigin::reversedIsRows(m_owner_folio->project()->Origin());
+	}
+	return revers ? rows_count_ - num + 1 : num;
+}
+
+/**
+	@brief BorderTitleBlock::rowNumberByIndex
+	@return the row number by index, taking the origin into account
+*/
+int BorderTitleBlock::rowNumberByIndex(int index) const {
+	bool revers = false;
+	if (m_owner_folio && m_owner_folio->project()) {
+		revers =
+			ProjectOrigin::reversedIsRows(m_owner_folio->project()->Origin());
+	}
+	return revers ? rows_count_ - index + 1 : index;
 }

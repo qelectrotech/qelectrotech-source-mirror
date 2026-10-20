@@ -337,6 +337,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/titleblocktemplate.h
   ${QET_DIR}/sources/titleblocktemplaterenderer.cpp
   ${QET_DIR}/sources/titleblocktemplaterenderer.h
+  ${QET_DIR}/sources/projectorigin.cpp
+  ${QET_DIR}/sources/projectorigin.h
 
   ${QET_DIR}/sources/autoNum/assignvariables.cpp
   ${QET_DIR}/sources/autoNum/assignvariables.h
