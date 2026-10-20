@@ -1042,7 +1042,10 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 	m_last_mouse_pos = e->pos();
 	setToolTip(tr("X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
 	moveCrosshair(e->pos());
-	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) return;
+	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) {
+		updatePointer(e->pos(), e->buttons());
+		return;
+	}
 
 	if (m_gesture_tracking)
 	{
@@ -1121,6 +1124,95 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 	}
 
 	else QGraphicsView::mouseMoveEvent(e);
+	updatePointer(e->pos(), e->buttons());
+}
+
+/**
+	@brief DiagramView::updatePointer
+	Choose the pointer for the mouse at @a viewport_pos: a four-way arrow
+	over a symbol, a text, a shape, a picture or a table that a drag
+	moves, so the place to grab is found without searching; the arrow
+	elsewhere. An item with a cursor of its own (a resize handle, a folio
+	report's hand) keeps it.
+	With the crosshair shown, the pointer jumps with it from grid point to
+	grid point: the system's pointer cannot be moved there by a program on
+	every platform (Wayland forbids it), so it is hidden over the folio and
+	drawn at the crosshair instead.
+	A pressed button keeps the pointer of the press, as does a running
+	tool, but for the crosshair's.
+*/
+void DiagramView::updatePointer(const QPoint &viewport_pos, Qt::MouseButtons buttons)
+{
+	if (buttons != Qt::NoButton)
+		return;
+
+	QGraphicsItem *item = m_event_interface ? nullptr : itemAt(viewport_pos);
+	if (item && item->hasCursor())
+	{
+			//QGraphicsView shows the item's own cursor
+		if (m_pointer != Pointer::System) {
+			m_pointer = Pointer::System;
+			viewport()->update(crosshairArea(m_crosshair_pos));
+		}
+		return;
+	}
+	const bool movable = item && item->isEnabled()
+			&& (item->flags() & QGraphicsItem::ItemIsMovable)
+			&& !(m_diagram && m_diagram->isReadOnly());
+
+	Pointer pointer = Pointer::System;
+	if (m_crosshair_visible && crosshairShown() && m_diagram
+			&& m_diagram->border_and_titleblock.insideBorderRect().contains(m_crosshair_pos))
+		pointer = movable ? Pointer::Move : Pointer::Arrow;
+
+	if (pointer != Pointer::System)
+		viewport()->setCursor(Qt::BlankCursor);
+	else if (!m_event_interface)
+		viewport()->setCursor(movable ? Qt::SizeAllCursor : Qt::ArrowCursor);
+	else if (m_pointer != Pointer::System)
+		viewport()->setCursor(Qt::ArrowCursor);
+
+	if (pointer != m_pointer || pointer != Pointer::System) {
+		m_pointer = pointer;
+		viewport()->update(crosshairArea(m_crosshair_pos));
+	}
+}
+
+/**
+	@brief DiagramView::drawPointer
+	Draw the pointer at the crosshair's grid point, in the viewport's own
+	pixels: an arrow with its tip on the point, or a four-way arrow
+	centred on it. Black, outlined in white, as the system's.
+*/
+void DiagramView::drawPointer(QPainter *painter) const
+{
+	if (m_pointer == Pointer::System)
+		return;
+	const QPointF at = mapFromScene(m_crosshair_pos);
+	painter->save();
+	painter->resetTransform();
+	painter->translate(at);
+	painter->setRenderHint(QPainter::Antialiasing, true);
+	painter->setPen(QPen(Qt::white, 1));
+	painter->setBrush(Qt::black);
+	QPainterPath path;
+	if (m_pointer == Pointer::Arrow)
+	{
+		path.addPolygon(QPolygonF({{0, 0}, {0, 16}, {4, 12}, {7, 18}, {9.5, 17}, {6.5, 11}, {11.5, 11}, {0, 0}}));
+	}
+	else
+	{
+			//Four arrows: a shaft and a head each way
+		for (int quarter = 0; quarter < 4; ++quarter) {
+			QTransform turn;
+			turn.rotate(90 * quarter);
+			path.addPolygon(turn.map(QPolygonF({{-1.5, -1.5}, {-1.5, -7}, {-4.5, -7}, {0, -12},
+												  {4.5, -7}, {1.5, -7}, {1.5, -1.5}})));
+		}
+		path = path.simplified();
+	}
+	painter->drawPath(path);
+	painter->restore();
 }
 
 /**
@@ -1885,7 +1977,8 @@ QRect DiagramView::crosshairArea(const QPointF &scene_pos) const
 	const QPoint p = mapFromScene(scene_pos);
 	const QRect all = viewport()->rect();
 	return QRect(all.left(), p.y() - 2, all.width(), 5)
-			| QRect(p.x() - 2, all.top(), 5, all.height());
+			| QRect(p.x() - 2, all.top(), 5, all.height())
+			| QRect(p.x() - 14, p.y() - 14, 29, 35);	//the pointer drawn on it
 }
 
 /**
@@ -1951,6 +2044,7 @@ void DiagramView::drawForeground(QPainter *painter, const QRectF &rect)
 	p->drawLine(QLineF(area.left(), m_crosshair_pos.y(), area.right(), m_crosshair_pos.y()));
 	p->drawLine(QLineF(m_crosshair_pos.x(), area.top(), m_crosshair_pos.x(), area.bottom()));
 	p->restore();
+	drawPointer(p);
 }
 
 /**
@@ -2091,6 +2185,7 @@ bool DiagramView::viewportEvent(QEvent *event)
 	}
 	if (event->type() == QEvent::Leave) {
 		hideCrosshair();
+		m_pointer = Pointer::System;
 	}
 	return PaletteGraphicsView::viewportEvent(event);
 }
