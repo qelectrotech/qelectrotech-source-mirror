@@ -17,6 +17,7 @@
 */
 #include "qetapptest.h"
 
+#include "TerminalStrip/GraphicsItem/realisticterminalstripdrawer.h"
 #include "TerminalStrip/GraphicsItem/trueterminalstrip.h"
 #include "TerminalStrip/physicalterminal.h"
 #include "TerminalStrip/realterminal.h"
@@ -50,6 +51,10 @@
 	Also here: the box at the end of a cable is written at the font of
 	the drawing -- the end zone the settings leave is what gives it the
 	room, so three lines never end up squeezed into a tiny text.
+
+	Both drawing styles are covered: the schematic one and the
+	realistic one (the strip seen from above), which paint the same
+	cable through Helpers::drawCables().
 
 	fixtures/every_feature.qet has the strip X1 (elements 891b70f2 and
 	4861e268) and the contact fc9cc920 wired to 891b70f2 by the
@@ -169,6 +174,7 @@ private slots:
 	void paintsWithTargetBox();
 	void wireLabelStaysOutOfTheTerminal();
 	void targetBoxKeepsTheDrawingFont();
+	void realisticStyleDrawsTheCable();
 };
 
 void tst_cabletarget::init()
@@ -443,6 +449,75 @@ void tst_cabletarget::targetBoxKeepsTheDrawingFont()
 		//is painted on its edge
 	const qreal row{box_bottom - bounds.top() + 2};
 	QVERIFY(lowest + 2 >= row);
+}
+
+/**
+	The realistic style draws the cable too. The strip seen from above
+	reserves the zone under it when one of its terminals carries a
+	cable, and the wires, the cable and the box naming where it goes
+	are painted in it -- exactly what the schematic style draws, since
+	both styles now share the same Helpers::drawCables().
+*/
+void tst_cabletarget::realisticStyleDrawsTheCable()
+{
+	QVERIFY(wireCableToTheContact());
+
+	const auto strips_ = m_project->terminalStrip();
+	QVERIFY(!strips_.isEmpty());
+	const auto strip_ = QSharedPointer<TerminalStripDrawer::TrueTerminalStrip>{
+		new TerminalStripDrawer::TrueTerminalStrip{strips_.first()}};
+	TerminalStripLayoutPattern pattern_;
+
+	const auto bounds_of = [&strip_, &pattern_]() {
+		return TerminalStripDrawer::Realistic::boundingRect(strip_.data(),
+															pattern_);
+	};
+	const auto render = [&strip_, &pattern_](const QRectF &bounds) {
+		QImage image{bounds.size().toSize() + QSize{4, 4},
+					 QImage::Format_ARGB32_Premultiplied};
+		image.fill(Qt::transparent);
+		QPainter painter{&image};
+		painter.translate(-bounds.topLeft() + QPointF{2, 2});
+		TerminalStripDrawer::Realistic::paint(
+			&painter, *strip_, pattern_,
+			TerminalStripLayoutPattern::DrawStyle::RealisticPushIn);
+		return image;
+	};
+
+	const QRectF with_bounds{bounds_of()};
+	const QImage with_cable{render(with_bounds)};
+
+		//The body of the strip ends there : everything painted under it
+		//belongs to the cable
+	const qreal body_bottom{
+		pattern_.m_realistic_length_mm * pattern_.m_realistic_px_per_mm};
+	QVERIFY(with_bounds.height() > body_bottom);
+
+	int painted_{0};
+	for (auto y = qRound(body_bottom) + 4 ; y + 4 < with_cable.height() ; ++y)
+	{
+		for (auto x = 0 ; x + 4 < with_cable.width() ; ++x)
+		{
+			if (with_cable.pixel(x, y) != qRgba(0, 0, 0, 0)) {
+				++painted_;
+			}
+		}
+	}
+		//The wires and the cable are drawn in that zone
+	QVERIFY(painted_ > 0);
+
+		//The same strip, its terminal carries no cable name any more
+	Element *terminal_ = element(
+		QStringLiteral("{891b70f2-2822-41c3-9f94-28efb448b5c4}"));
+	QVERIFY(terminal_);
+	ElementData terminal_data_{terminal_->elementData()};
+	terminal_data_.m_informations.addValue(RealTerminal::cableInfoKey(),
+										   QString());
+	terminal_->setElementData(terminal_data_);
+
+		//No cable to let out : the strip does not reserve the zone
+	const QRectF without_bounds{bounds_of()};
+	QVERIFY(without_bounds.height() < with_bounds.height());
 }
 
 int main(int argc, char **argv)

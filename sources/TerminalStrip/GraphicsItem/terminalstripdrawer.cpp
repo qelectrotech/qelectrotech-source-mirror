@@ -29,6 +29,10 @@
 
 namespace TerminalStripDrawer {
 
+	//The cells of a cable drawing live with the helpers, so both drawing
+	//styles build the same thing and pass it to Helpers::drawCables()
+using Helpers::CableCell;
+
 /**
  * @brief TerminalStripDrawer::TerminalStripDrawer
  * @param strip
@@ -258,20 +262,6 @@ void drawConnections(QPainter *painter, const QRectF &terminal_rect, qreal lengt
 		painter->drawLine(QPointF{x, bottom}, QPointF{x, bottom + length});
 	}
 }
-
-/**
- * @brief The CableCell struct
- * What is needed to draw the cable under a terminal.
- */
-struct CableCell
-{
-	qreal x{0};          ///< x of the middle of the terminal, in the strip coordinates
-	qreal bottom{0};     ///< y of the bottom of the terminal
-	QString cable;       ///< name of the cable (hose)
-	QString wire;        ///< color / number of the wire
-	bool shield{false};  ///< true if the terminal is the shield of the cable
-	QSharedPointer<AbstractRealTerminalInterface> terminal; ///< to ask where the cable goes
-};
 
 /**
  * @brief drawCables
@@ -941,6 +931,11 @@ void Helpers::drawTypeSymbol(QPainter *painter, const QRectF &box,
 	::TerminalStripDrawer::drawTypeSymbol(painter, box, type, led);
 }
 
+void Helpers::drawCables(QPainter *painter, const QVector<CableCell> &cells,
+						 const TerminalStripLayoutPattern &pattern) {
+	::TerminalStripDrawer::drawCables(painter, cells, pattern);
+}
+
 /**
  * @brief TerminalStripDrawer::paint
  * @param painter
@@ -1368,7 +1363,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
 		painter->setPen(cable_pen);
 		painter->setFont(m_pattern->font());
 		painter->setBrush(Qt::NoBrush);
-		drawCables(painter, cable_cells, *m_pattern);
+		Helpers::drawCables(painter, cable_cells, *m_pattern);
 		painter->restore();
 	}
 }

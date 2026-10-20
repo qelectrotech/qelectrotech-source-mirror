@@ -522,6 +522,26 @@ struct BridgePoint
 	qreal width{0};
 };
 
+	//True when at least one terminal of the strip carries a cable : the strip
+	//then needs the zone drawn under it to let the cables out, like the
+	//schematic style does.
+bool haveCable(const AbstractTerminalStripInterface *strip)
+{
+	if (!strip) {
+		return false;
+	}
+	for (const auto &physical_t : strip->physicalTerminal())
+	{
+		for (const auto &real_t : physical_t->realTerminals())
+		{
+			if (real_t && !real_t->cable().isEmpty()) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 } //End anonymous namespace
 
 QRectF boundingRect(const AbstractTerminalStripInterface *strip,
@@ -535,7 +555,20 @@ QRectF boundingRect(const AbstractTerminalStripInterface *strip,
 		}
 	}
 	const qreal s_{pattern.m_realistic_px_per_mm};
-	return QRectF{0, 0, width_mm_ * s_, pattern.m_realistic_length_mm * s_};
+	const qreal length_{pattern.m_realistic_length_mm * s_};
+
+		//The cables are drawn under the strip, in the zone the schematic
+		//style reserves for them too
+	qreal extra_bottom_{0};
+	if (pattern.m_cable_wire_length > 0 && haveCable(strip))
+	{
+			//4 is the diameter of the circle at the end of the wires
+		extra_bottom_ = pattern.m_cable_wire_length
+						+ std::max<qreal>(0, pattern.m_cable_length)
+						+ std::max<qreal>(0, pattern.m_cable_end_length)
+						+ 4;
+	}
+	return QRectF{0, 0, width_mm_ * s_, length_ + extra_bottom_};
 }
 
 void paint(QPainter *painter,
@@ -595,6 +628,7 @@ void paint(QPainter *painter,
 	}
 
 	QHash<QUuid, QVector<BridgePoint>> bridges_;
+	QVector<Helpers::CableCell> cable_cells_;
 
 	for (const auto &g_ : geometry(&strip))
 	{
@@ -602,6 +636,24 @@ void paint(QPainter *painter,
 		const QRectF body_{x_, 0, w_, length_};
 		const auto first_{g_.reals.first()};
 		const int levels_{static_cast<int>(g_.reals.size())};
+
+			//Cables (hoses) of this terminal : one wire exit by level, spread over
+			//the width of the body, all of them leaving the strip at its bottom edge
+		for (int k = 0 ; k < levels_ ; ++k)
+		{
+			const auto &real_t{g_.reals.at(k)};
+			if (!real_t || real_t->cable().isEmpty()) {
+				continue;
+			}
+			Helpers::CableCell cell_;
+			cell_.x = x_ + w_ * (k + 0.5) / levels_;
+			cell_.bottom = length_;
+			cell_.cable = real_t->cable();
+			cell_.wire = real_t->cableWire();
+			cell_.shield = real_t->isShield();
+			cell_.terminal = real_t;
+			cable_cells_.append(cell_);
+		}
 
 			//A terminal chosen in the catalog is drawn with its own clamp, so that a strip
 			//mixing screw and spring terminals is drawn as it is. The spring-cage clamps
@@ -792,6 +844,18 @@ void paint(QPainter *painter,
 	}
 
 	draw_end_stop();
+
+		//The cables under the strip : the wires of a cable join it, and the
+		//cable ends together in the box naming where it goes -- drawn exactly
+		//like the schematic style draws them, so both styles tell the same thing
+	if (!cable_cells_.isEmpty())
+	{
+		painter->save();
+		painter->setFont(pattern.font());
+		painter->setPen(QPen(Qt::black, 0.5));
+		Helpers::drawCables(painter, cable_cells_, pattern);
+		painter->restore();
+	}
 
 	painter->restore();
 }
