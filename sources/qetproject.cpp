@@ -1886,13 +1886,16 @@ void QETProject::linkElementsToElementAutoNums()
 void QETProject::linkElementsToElementAutoNums(Diagram *folio)
 {
 	const QHash<QString, QStringList> titles_by_formula = elementAutoNumTitlesByFormula();
+	QHash<QUuid, QString> title_cache;
+	QHash<QString, QUuid> id_cache;
 	{
 		const auto items = folio->items();
 		for (QGraphicsItem *it : items) {
 			auto *el = qgraphicsitem_cast<Element *>(it);
 			if (!el) continue;
 			if (const auto id = elementAutoNumIdToLink(el->elementInformations(),
-													   titles_by_formula)) {
+													   titles_by_formula,
+													   &title_cache, &id_cache)) {
 				el->setFormulaSchemeId(*id);
 			}
 		}
@@ -1922,7 +1925,9 @@ QHash<QString, QStringList> QETProject::elementAutoNumTitlesByFormula() const
 */
 std::optional<QUuid> QETProject::elementAutoNumIdToLink(
 		const DiagramContext &information,
-		const QHash<QString, QStringList> &titles_by_formula) const
+		const QHash<QString, QStringList> &titles_by_formula,
+		QHash<QUuid, QString> *title_cache,
+		QHash<QString, QUuid> *id_cache) const
 {
 	const QString formula = information.value(QETInformation::ELMT_FORMULA).toString();
 	const bool has_id = information.contains(QETInformation::ELMT_FORMULA_ID);
@@ -1932,14 +1937,36 @@ std::optional<QUuid> QETProject::elementAutoNumIdToLink(
 		if (has_id) return QUuid();
 		return std::nullopt;
 	}
-	if (!elementAutoNumTitle(id).isEmpty()) {
+		//Every symbol following the same scheme repeats the same id/title
+		//lookup; a project database query per symbol is the ASan-visible
+		//cost (F134-adjacent, 2b-3), so a caller walking many symbols may
+		//pass caches that live only for that one walk -- never persisted.
+	QString title;
+	if (title_cache && title_cache->contains(id)) {
+		title = title_cache->value(id);
+	} else {
+		title = elementAutoNumTitle(id);
+		if (title_cache) title_cache->insert(id, title);
+	}
+	if (!title.isEmpty()) {
 		return std::nullopt;
 	}
 	if (!has_id && !m_legacy_element_autonums) {
 		return std::nullopt; //A formula typed by hand
 	}
 	const QStringList matches = titles_by_formula.value(formula);
-	return matches.size() == 1 ? elementAutoNumId(matches.first()) : QUuid();
+	if (matches.size() != 1) {
+		return QUuid();
+	}
+	const QString &match = matches.first();
+	if (id_cache) {
+		auto it = id_cache->find(match);
+		if (it == id_cache->end()) {
+			it = id_cache->insert(match, elementAutoNumId(match));
+		}
+		return it.value();
+	}
+	return elementAutoNumId(match);
 }
 
 /**
@@ -1986,13 +2013,18 @@ QList<QETProject::SymbolNumbering> QETProject::symbolNumbering() const
 	for (Diagram *d : m_diagrams_list)
 		if (!d->isLoaded()) unbuilt_in_order << d->uuid();
 	const QHash<QString, QStringList> titles_by_formula = elementAutoNumTitlesByFormula();
+		//Every symbol on an unbuilt folio following the same scheme repeats
+		//the same title/id lookup; cache both directions for this one walk
+		//(never persisted -- a scheme rename between calls must see it).
+	QHash<QUuid, QString> title_cache;
+	QHash<QString, QUuid> id_cache;
 	for (const projectDataBase::FolioSymbol &row : m_data_base.symbolsOnFolios(unbuilt_in_order))
 	{
 		const DiagramContext info = m_data_base.elementInformation(row.uuid);
 		SymbolNumbering symbol;
 		symbol.label = info.value(QETInformation::ELMT_LABEL).toString();
 		symbol.formula = info.value(QETInformation::ELMT_FORMULA).toString();
-		const auto linked = elementAutoNumIdToLink(info, titles_by_formula);
+		const auto linked = elementAutoNumIdToLink(info, titles_by_formula, &title_cache, &id_cache);
 		symbol.scheme = linked ? *linked
 							   : QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString());
 		symbol.sequence = row.sequence;

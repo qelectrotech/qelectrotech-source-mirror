@@ -2568,21 +2568,20 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 
 	if (diagram())
 	{
-		QString formula = diagram()
-				->project()
-				->elementAutoNumCurrentFormula();
+		QETProject *autonum_project = diagram()->project();
+		QString element_currentAutoNum = autonum_project->elementCurrentAutoNum();
+			//One query for the scheme's rows, read once and reused below --
+			//elementAutoNumCurrentFormula()+elementAutoNum() each re-fetched
+			//the same rows separately (2b-3: every numbering read is now a
+			//database query, so a second fetch is a second round trip).
+		NumerotationContext nc = autonum_project->elementAutoNum(element_currentAutoNum);
+		QString formula = autonum::numerotationContextToFormula(nc);
 
 		m_data.m_informations.addValue(QStringLiteral("formula"), formula);
 		storeInformation();
 
-		QString element_currentAutoNum = diagram()
-				->project()
-				->elementCurrentAutoNum();
-		const QUuid scheme_id = diagram()->project()->elementAutoNumId(element_currentAutoNum);
+		const QUuid scheme_id = autonum_project->elementAutoNumId(element_currentAutoNum);
 		setFormulaSchemeId(formula.isEmpty() ? QUuid() : scheme_id);
-		NumerotationContext nc = diagram()
-				->project()
-				->elementAutoNum(element_currentAutoNum);
 
 			//The number given is the first whose label no other element of
 			//the project carries: a counter set back, or an element which

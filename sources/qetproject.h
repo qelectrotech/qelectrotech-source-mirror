@@ -537,7 +537,9 @@ class QETProject : public QObject
 		QHash<QString, QStringList> elementAutoNumTitlesByFormula() const;
 		std::optional<QUuid> elementAutoNumIdToLink(
 				const DiagramContext &information,
-				const QHash<QString, QStringList> &titles_by_formula) const;
+				const QHash<QString, QStringList> &titles_by_formula,
+				QHash<QUuid, QString> *title_cache = nullptr,
+				QHash<QString, QUuid> *id_cache = nullptr) const;
 		bool m_deferring_folios = false;
 			/// Opening with folios built only when needed: QET_LAZY_FOLIOS
 			/// is set and the database can be filled from the document
