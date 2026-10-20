@@ -12085,6 +12085,14 @@ Opções disponíveis:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Abaixo, à direita</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Mostrar a etiqueta das réguas de bornes no primeiro borne</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>A etiqueta de cada régua de bornes fica no seu primeiro borne em cada folha e se move com ele</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>

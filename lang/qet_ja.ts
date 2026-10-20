@@ -12008,6 +12008,14 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>右下</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>端子台のラベルを最初の端子に表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>各端子台のラベルは各図面でその最初の端子に表示され、端子と一緒に移動します</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>

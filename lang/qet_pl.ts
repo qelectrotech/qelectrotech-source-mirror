@@ -12196,6 +12196,14 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Na dole po prawej</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Pokaż oznaczenie listew zaciskowych przy pierwszym zacisku</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Oznaczenie każdej listwy zaciskowej stoi przy jej pierwszym zacisku na każdym arkuszu i przesuwa się razem z nim</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1542"/>

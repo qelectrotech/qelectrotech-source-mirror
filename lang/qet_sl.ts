@@ -11837,6 +11837,14 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Spodaj desno</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Prikaži oznake vrstnih sponk pri prvi sponki</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Oznaka vsake vrstne sponke stoji ob njeni prvi sponki na vsakem listu in se premika z njo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>

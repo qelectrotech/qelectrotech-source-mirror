@@ -12034,6 +12034,14 @@ Elérhető lehetőségek:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Lent jobbra</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Sorkapocs-jelölés megjelenítése az első kapocsnál</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Minden sorkapocs jelölése minden lapon az első kapcsánál áll, és vele együtt mozog</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>

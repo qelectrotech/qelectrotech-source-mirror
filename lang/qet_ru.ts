@@ -12187,6 +12187,14 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Снизу справа</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Показывать обозначение клеммника у первой клеммы</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Обозначение каждого клеммника стоит у его первой клеммы на каждом листе и перемещается вместе с ней</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>

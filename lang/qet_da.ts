@@ -11976,6 +11976,14 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Under, til højre</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Vis klemrækkers mærkat ved første klemme</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Mærkatet for hver klemrække står ved dens første klemme på hvert ark og flytter med den</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1542"/>

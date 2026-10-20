@@ -12067,6 +12067,14 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Κάτω, δεξιά</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Εμφάνιση ετικετών κλεμοσειρών στον πρώτο ακροδέκτη</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Η ετικέτα κάθε κλεμοσειράς εμφανίζεται στον πρώτο ακροδέκτη της σε κάθε φύλλο και μετακινείται μαζί του</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1542"/>

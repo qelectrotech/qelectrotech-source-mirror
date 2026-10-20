@@ -11976,6 +11976,14 @@ Dostupné možnosti:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Dole vpravo</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Zobraziť označenie svorkovníc pri prvej svorke</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Označenie každej svorkovnice stojí pri jej prvej svorke na každom liste a pohybuje sa s ňou</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1542"/>

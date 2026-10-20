@@ -12095,6 +12095,14 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Unten rechts</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Klemmleisten-BMK an der ersten Klemme anzeigen</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Das BMK jeder Klemmleiste steht auf jeder Seite an ihrer ersten Klemme und wandert mit ihr</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="480"/>

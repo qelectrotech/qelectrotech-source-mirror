@@ -12119,6 +12119,14 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>En bas à droite</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Afficher le repère des borniers à leur première borne</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Le repère de chaque bornier se place à sa première borne sur chaque folio et se déplace avec elle</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="480"/>

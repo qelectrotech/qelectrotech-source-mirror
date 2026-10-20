@@ -63,7 +63,11 @@ void TerminalStrip::setLocation(const QString &location) {
 }
 
 void TerminalStrip::setName(const QString &name) {
+	if (name == m_data.m_name)
+		return;
 	m_data.m_name = name;
+		//The strip's label at its first terminal reads the name
+	emit dataChanged();
 }
 
 void TerminalStrip::setComment(const QString &comment) {

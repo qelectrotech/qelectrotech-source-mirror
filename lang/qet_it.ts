@@ -12081,6 +12081,14 @@ Ecco gli ultimi messaggi registrati prima della chiusura — puoi salvarli per i
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>In basso a destra</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Mostra la sigla delle morsettiere al primo morsetto</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>La sigla di ogni morsettiera compare al suo primo morsetto in ogni foglio e si sposta con esso</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="313"/>

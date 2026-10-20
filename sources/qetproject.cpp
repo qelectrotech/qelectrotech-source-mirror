@@ -17,6 +17,7 @@
 */
 
 #include "qetproject.h"
+#include "TerminalStrip/terminalstriplabels.h"
 #include "container/qetcontainer.h"
 #include "container/qetcontainerdb.h"
 #include "container/qetzwriter.h"
@@ -2408,6 +2409,21 @@ void QETProject::setAutoBreakConductor(bool abc)
 }
 
 /**
+	@brief QETProject::setTerminalStripLabelsShown
+	Show the label of each terminal strip at its first terminal on every
+	folio, or not; the folios built so far show it at once.
+*/
+void QETProject::setTerminalStripLabelsShown(bool shown)
+{
+	if (shown == m_terminal_strip_labels)
+		return;
+	m_terminal_strip_labels = shown;
+	for (Diagram *diagram : builtFolios())
+		TerminalStripLabels::refresh(diagram);
+	setModified(true);
+}
+
+/**
 	@brief QETProject::autoFolioNumberingNewFolios
 	emit Signal to add new Diagram with autonum
 	properties
@@ -3969,6 +3985,8 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	if (newdiagrams_nodes.isEmpty()) return;
 
 	QDomElement newdiagrams_elmt = newdiagrams_nodes.at(0).toElement();
+	m_terminal_strip_labels = newdiagrams_elmt.firstChildElement(QStringLiteral("terminal_strip_labels"))
+			.attribute(QStringLiteral("at_first_terminal")) == QLatin1String("true");
 
 		// By default, use value find in the global conf of QElectroTech
 	default_border_properties_	   = BorderProperties::    defaultProperties();
@@ -4347,6 +4365,12 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 		xrefs_elmt.appendChild(xref_dom);
 	}
 	xml_element.appendChild(xrefs_elmt);
+
+	if (m_terminal_strip_labels) {
+		QDomElement labels = xml_document.createElement(QStringLiteral("terminal_strip_labels"));
+		labels.setAttribute(QStringLiteral("at_first_terminal"), QStringLiteral("true"));
+		xml_element.appendChild(labels);
+	}
 
 		//The numbering is written from the project database, its only
 		//home (QETZ-DB-FIRST stage 2b)
