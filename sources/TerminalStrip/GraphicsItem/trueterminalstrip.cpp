@@ -153,6 +153,11 @@ namespace TerminalStripDrawer
 		return m_real ? m_real->isShield() : false;
 	}
 
+	QVector<QString> TrueRealTerminal::cableTarget() const
+	{
+		return m_real ? m_real->cableTarget() : QVector<QString>();
+	}
+
 	QColor TrueRealTerminal::color() const
 	{
 		return m_real ? m_real->color() : QColor();
