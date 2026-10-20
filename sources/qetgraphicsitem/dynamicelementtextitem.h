@@ -171,6 +171,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void removeResizeHandles();
 		void updateResizeHandlesPos();
 		QPointF resizeAnchor() const;
+		qreal minimumTextWidth() const;
 		void fitAutoTextWidth();
 		void handlerMousePressEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event);
 		void handlerMouseMoveEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event);

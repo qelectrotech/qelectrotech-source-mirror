@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextitem.h"
+#include <QScopedPointer>
+#include <QTextDocument>
 #include "../QetGraphicsItemModeler/textresizehandles.h"
 #include "../shownkinds.h"
 #include "../qetproject.h"
@@ -1064,6 +1066,20 @@ void DynamicElementTextItem::handlerMousePressEvent(QetGraphicsHandlerItem *hand
 }
 
 /**
+	@brief DynamicElementTextItem::minimumTextWidth
+	@return the narrowest width the text can be dragged to: that of its
+	widest word. Narrower, a long word runs out of the text's box while
+	the short lines are still aligned inside it, and a centred or right
+	aligned text falls apart (a lone "1" in the middle under its words).
+*/
+qreal DynamicElementTextItem::minimumTextWidth() const
+{
+	QScopedPointer<QTextDocument> narrowest(document()->clone());
+	narrowest->setTextWidth(0);
+	return qMax(narrowest->idealWidth(), qreal(10));
+}
+
+/**
 	@brief DynamicElementTextItem::resizeAnchor
 	@return the point of the text, in its own coordinates, that a drag on
 	a width handle keeps in place: the point it is aligned on, one of the
@@ -1102,7 +1118,7 @@ void DynamicElementTextItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *handl
 	if (handle == m_left_resize_handle)
 		delta = -delta;
 
-	qreal new_width = qMax(m_resize_baseline_width + delta, qreal(10));
+	qreal new_width = qMax(m_resize_baseline_width + delta, minimumTextWidth());
 	setTextWidth(new_width);
 
 		//Keep the point the text is aligned on in place, whatever the new

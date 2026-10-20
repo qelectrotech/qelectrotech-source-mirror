@@ -14,6 +14,9 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QSettings>
 #include <QTemporaryDir>
+#include <QTextBlock>
+#include <QTextDocument>
+#include <QTextLayout>
 #include <cstdio>
 #include <stdexcept>
 
@@ -82,6 +85,20 @@ static void drag(Diagram *scene, DynamicElementTextItem *text, bool left, qreal 
 	mouse(scene, h, QEvent::GraphicsSceneMouseRelease, end);
 }
 
+/// Every line lies inside the text's width: none runs out of it.
+static bool linesInside(DynamicElementTextItem *text)
+{
+	QTextDocument *doc = text->document();
+	const qreal inner = doc->textWidth() - 2 * doc->documentMargin();
+	for (QTextBlock b = doc->begin(); b.isValid(); b = b.next())
+		for (int i = 0; i < b.layout()->lineCount(); ++i) {
+			const QTextLine line = b.layout()->lineAt(i);
+			if (line.x() < -0.01 || line.x() + line.naturalTextWidth() > inner + 0.01)
+				return false;
+		}
+	return true;
+}
+
 /// The width changed by exactly as much as the mouse moved.
 static void checkGrowth(DynamicElementTextItem *text, qreal before, qreal moved, const char *message)
 {
@@ -124,6 +141,7 @@ static void checkText(Diagram *scene, Element *element, DynamicElementTextItem *
 	const qreal height = text->boundingRect().height();
 	drag(scene, text, false, 25 - width);
 	check(text->boundingRect().height() > height + 5, "narrowing the text wraps it onto more lines");
+	check(linesInside(text), "a text is not narrower than its widest word: no line runs out of it");
 	check(near(anchor(text), fixed), "a text that wraps keeps its alignment point in place");
 	scene->undoStack().undo();
 	check(near(text->pos(), pos), "undo puts the wrapped text back");
@@ -136,6 +154,7 @@ static void checkAll(Diagram *scene, Element *element, DynamicElementTextItem *t
 	checkText(scene, element, text, Qt::AlignRight | Qt::AlignTop);
 	checkText(scene, element, text, Qt::AlignHCenter | Qt::AlignVCenter);
 	checkText(scene, element, text, Qt::AlignRight | Qt::AlignBottom);
+	checkText(scene, element, text, Qt::AlignLeft | Qt::AlignBottom);
 }
 
 int main(int argc, char **argv)
