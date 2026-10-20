@@ -297,7 +297,9 @@ class Diagram : public QGraphicsScene
 					     const QString&,
 					     const QString&,
 					     const QString&,
-					     const QString&);
+					     const QString&,
+					     const QString &owner = QString(),
+					     const QString &level = QString());
 	
 		void refreshContents();
 	

@@ -2154,34 +2154,46 @@ bool Diagram::fromXml(QDomElement &document,
 					QStringLiteral("elementunitfolioseq"),
 					QStringLiteral("sequf_"),
 					QStringLiteral("unitfolioseq"),
-					QStringLiteral("elementautonumfoliosequentials"));
+					QStringLiteral("elementautonumfoliosequentials"),
+					QStringLiteral("element"),
+					QStringLiteral("unitfolio"));
 		folioSequentialsFromXml(root, &m_elmt_tenfolio_max,
 					QStringLiteral("elementtenfolioseq"),
 					QStringLiteral("seqtf_"),
 					QStringLiteral("tenfolioseq"),
-					QStringLiteral("elementautonumfoliosequentials"));
+					QStringLiteral("elementautonumfoliosequentials"),
+					QStringLiteral("element"),
+					QStringLiteral("tenfolio"));
 		folioSequentialsFromXml(root, &m_elmt_hundredfolio_max,
 					QStringLiteral("elementhundredfolioseq"),
 					QStringLiteral("seqhf_"),
 					QStringLiteral("hundredfolioseq"),
-					QStringLiteral("elementautonumfoliosequentials"));
+					QStringLiteral("elementautonumfoliosequentials"),
+					QStringLiteral("element"),
+					QStringLiteral("hundredfolio"));
 
 			//Load Conductor Folio Sequential
 		folioSequentialsFromXml(root, &m_cnd_unitfolio_max,
 					QStringLiteral("conductorunitfolioseq"),
 					QStringLiteral("sequf_"),
 					QStringLiteral("unitfolioseq"),
-					QStringLiteral("conductorautonumfoliosequentials"));
+					QStringLiteral("conductorautonumfoliosequentials"),
+					QStringLiteral("conductor"),
+					QStringLiteral("unitfolio"));
 		folioSequentialsFromXml(root, &m_cnd_tenfolio_max,
 					QStringLiteral("conductortenfolioseq"),
 					QStringLiteral("seqtf_"),
 					QStringLiteral("tenfolioseq"),
-					QStringLiteral("conductorautonumfoliosequentials"));
+					QStringLiteral("conductorautonumfoliosequentials"),
+					QStringLiteral("conductor"),
+					QStringLiteral("tenfolio"));
 		folioSequentialsFromXml(root, &m_cnd_hundredfolio_max,
 					QStringLiteral("conductorhundredfolioseq"),
 					QStringLiteral("seqhf_"),
 					QStringLiteral("hundredfolioseq"),
-					QStringLiteral("conductorautonumfoliosequentials"));
+					QStringLiteral("conductorautonumfoliosequentials"),
+					QStringLiteral("conductor"),
+					QStringLiteral("hundredfolio"));
 	}
 
 	// if child haven't got a child, loading is finish (diagram is empty)
@@ -2587,7 +2599,9 @@ void Diagram::folioSequentialsFromXml(const QDomElement &root,
 				      const QString& folioSeq,
 				      const QString& seq,
 				      const QString& type,
-				      const QString& autonumFolioSeqType) {
+				      const QString& autonumFolioSeqType,
+				      const QString& owner,
+				      const QString& level) {
 	foreach (QDomElement folioSeqAutoNum,
 		 QET::findInDomElement(root, autonumFolioSeqType, folioSeq)) {
 		for(QDomElement folioseq
@@ -2604,6 +2618,14 @@ void Diagram::folioSequentialsFromXml(const QDomElement &root,
 				i++;
 			}
 			hash->insert(title,list);
+				//2b-4, habit 4: populate the row from the
+				//document being parsed, not from a built
+				//scene -- this runs whether or not the
+				//folio ever becomes one.
+			if (!owner.isEmpty() && project()) {
+				project()->dataBase()->setFolioCounterValues(
+						uuid(), owner, level, title, list);
+			}
 		}
 	}
 }
