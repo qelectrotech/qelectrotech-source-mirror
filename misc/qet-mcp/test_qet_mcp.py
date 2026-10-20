@@ -4602,6 +4602,25 @@ class Integration(unittest.TestCase):
         self.assertEqual(len(styles), 1, styles)
         self.assertIn("dash", styles.pop())
 
+    def test_nomenclature_takes_the_place_of_the_folio(self):
+        """An element without its own plant / location is where its folio
+        is: element_nomenclature_view (BOM, nomenclature tables) shows the
+        folio's =plant +location; an element's own value still wins."""
+        base = self.sb.new()
+        ops = [{"op": "add_folio", "id": "f"},
+               {"op": "set_folio", "folio": "$f", "property": "plant", "value": "HAUS"},
+               {"op": "set_folio", "folio": "$f", "property": "locmach", "value": "UV1"},
+               {"op": "add_element", "id": "a", "folio": "$f", "path": COIL, "x": 100, "y": 100},
+               {"op": "set_label", "folio": "$f", "element": "$a", "label": "KA1"},
+               {"op": "add_element", "id": "b", "folio": "$f", "path": COIL, "x": 300, "y": 100},
+               {"op": "set_label", "folio": "$f", "element": "$b", "label": "KA2"},
+               {"op": "set_info", "folio": "$f", "element": "$b", "key": "location", "value": "UV2"}]
+        r = self.ok(self.sb.edit(base, ops))
+        q = m.tool_query(BINARY, r["output"], "SELECT label, plant, location FROM "
+                         "element_nomenclature_view ORDER BY label")
+        self.assertEqual(q["rows"], [{"label": "KA1", "plant": "HAUS", "location": "UV1"},
+                                     {"label": "KA2", "plant": "HAUS", "location": "UV2"}])
+
     # ---- conductor manual routing ----
 
     def test_move_conductor_segment_reroutes_the_path(self):

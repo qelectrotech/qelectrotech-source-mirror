@@ -2804,10 +2804,15 @@ bool projectDataBase::createDataBase()
 */
 void projectDataBase::createElementNomenclatureView()
 {
+		//plant and location: the element's own, else its folio's. An
+		//installation is structured by its folios (=plant +location, the
+		//%M / %LM of the folio), as EPLAN builds the device tag from the
+		//page structure: an element drawn on a +UV1 folio is in +UV1
+		//without the information being typed into every element.
 	QString create_view ("CREATE VIEW element_nomenclature_view AS SELECT "
 						 "ei.label AS label,"
-						 "ei.plant AS plant,"
-						 "ei.location AS location,"
+						 "COALESCE(NULLIF(ei.plant, ''), di.plant) AS plant,"
+						 "COALESCE(NULLIF(ei.location, ''), di.locmach) AS location,"
 						 "ei.comment AS comment,"
 						 "ei.function AS function,"
 						 "ei.description AS description,"
@@ -2908,6 +2913,10 @@ void projectDataBase::createElementNomenclatureView()
 		columns_.replace(QStringLiteral("e.sub_type AS element_sub_type"), QStringLiteral("NULL AS element_sub_type"));
 		columns_.replace(QStringLiteral("di.title AS title"), QStringLiteral("st.title AS title"));
 		columns_.replace(QStringLiteral("di.folio AS folio"), QStringLiteral("st.folio AS folio"));
+			//A spare terminal is on no folio: no folio plant or location
+			//to fall back to, its own value as before
+		columns_.replace(QStringLiteral("di.plant"), QStringLiteral("''"));
+		columns_.replace(QStringLiteral("di.locmach"), QStringLiteral("''"));
 		columns_.replace(QStringLiteral("e.pos AS position"), QStringLiteral("st.position AS position"));
 		create_view += QStringLiteral(" UNION ALL SELECT ") + columns_ +
 					   QStringLiteral(" FROM spare_terminal st"
