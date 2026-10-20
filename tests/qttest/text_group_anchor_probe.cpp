@@ -150,7 +150,8 @@ int main(int argc, char **argv)
 		QDomElement xml = group->toXml(doc);
 		const QList<DynamicElementTextItem *> texts = group->texts();
 		QList<QPointF> text_pos;
-		for (DynamicElementTextItem *t : texts) text_pos << t->pos();
+			//Where the file has them: in the symbol, as Element::toXml() writes them
+		for (DynamicElementTextItem *t : texts) text_pos << element->mapFromItem(group, t->pos());
 		for (DynamicElementTextItem *t : texts) element->removeTextFromGroup(t, group);
 		element->removeTextGroup(group);
 		delete group;
@@ -164,6 +165,33 @@ int main(int argc, char **argv)
 		const QPointF right = at(read, widthOf(read));
 		read->texts().at(1)->setText(QStringLiteral("40 A / 30 mA, type A, 4-pole"));
 		check(near(at(read, widthOf(read)), right), "and its first change after reading keeps the right edge");
+
+		// A text whose content is filled in only after the group was read,
+		// as Element::fromXml() sets an element's label from its
+		// information last: the group stays where it was saved. Each save
+		// and reload moved it before.
+		for (Qt::Alignment alignment : {Qt::AlignRight, Qt::AlignVCenter}) {
+			ElementTextItemGroup *g = makeGroup(element, {"-FI3", "40 A / 30 mA, type A", "FI EG"});
+			g->setAlignment(alignment);
+			g->setPos(-200, 60);
+			QDomDocument d;
+			QDomElement x = g->toXml(d);
+			const QList<DynamicElementTextItem *> ts = g->texts();
+			QList<QPointF> ps;
+			for (DynamicElementTextItem *t : ts) ps << element->mapFromItem(g, t->pos());
+			for (DynamicElementTextItem *t : ts) element->removeTextFromGroup(t, g);
+			element->removeTextGroup(g);
+			delete g;
+			for (int i = 0; i < ts.size(); ++i) ts[i]->setPos(ps[i]);
+			const QString longest = ts[1]->text();
+			ts[1]->setText(QString());
+
+			ElementTextItemGroup *r = element->addTextGroup(QStringLiteral("late"));
+			r->fromXml(x);
+			ts[1]->setText(longest);
+			check(near(r->pos(), QPointF(-200, 60)),
+				  "a group whose longest text is filled in after reading stays where it was saved");
+		}
 		std::puts("PASS");
 	}
 	catch (const std::exception &error)
