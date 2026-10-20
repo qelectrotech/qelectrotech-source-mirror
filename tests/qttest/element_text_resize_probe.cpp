@@ -68,16 +68,24 @@ static QPointF anchor(DynamicElementTextItem *text)
 	return text->mapToScene(QPointF(x, y));
 }
 
-/// Drag one handle by dx along the text's own baseline.
+/// Drag one handle by dx along the text's own baseline, in 30 steps as a
+/// mouse does: the text moves on every step to keep its alignment point,
+/// so each step must be read the same way as the first.
 static void drag(Diagram *scene, DynamicElementTextItem *text, bool left, qreal dx)
 {
 	QetGraphicsHandlerItem *h = handle(text, left);
 	const QPointF start = h->scenePos();
 	const QPointF end = start + text->mapToScene(QPointF(dx, 0)) - text->mapToScene(QPointF(0, 0));
 	mouse(scene, h, QEvent::GraphicsSceneMousePress, start);
-	mouse(scene, h, QEvent::GraphicsSceneMouseMove, (start + end) / 2);
-	mouse(scene, h, QEvent::GraphicsSceneMouseMove, end);
+	for (int i = 1; i <= 30; ++i)
+		mouse(scene, h, QEvent::GraphicsSceneMouseMove, start + (end - start) * i / 30);
 	mouse(scene, h, QEvent::GraphicsSceneMouseRelease, end);
+}
+
+/// The width changed by exactly as much as the mouse moved.
+static void checkGrowth(DynamicElementTextItem *text, qreal before, qreal moved, const char *message)
+{
+	check(qAbs(text->textWidth() - before - moved) < 0.5, message);
 }
 
 static void checkText(Diagram *scene, Element *element, DynamicElementTextItem *text, Qt::Alignment alignment)
@@ -88,10 +96,11 @@ static void checkText(Diagram *scene, Element *element, DynamicElementTextItem *
 	const QPointF pos = text->pos();
 	const qreal width = text->boundingRect().width();
 	const QPointF fixed = anchor(text);
+	const qreal frame = text->frameRect().width();
 
 	// Left handle 30 outwards: wider, the alignment point where it was.
 	drag(scene, text, true, -30);
-	check(text->boundingRect().width() > width + 10, "the left handle widens the text");
+	checkGrowth(text, frame, 30, "the left handle widens the text by as much as the mouse moved");
 	check(near(anchor(text), fixed), "dragging the left handle keeps the alignment point in place");
 	scene->undoStack().undo();
 	check(near(text->pos(), pos), "undo puts the text back where it was");
@@ -103,7 +112,7 @@ static void checkText(Diagram *scene, Element *element, DynamicElementTextItem *
 	// Right handle 30 outwards: the same point stays.
 	element->setSelected(true);
 	drag(scene, text, false, 30);
-	check(text->boundingRect().width() > width + 10, "the right handle widens the text");
+	checkGrowth(text, frame, 30, "the right handle widens the text by as much as the mouse moved");
 	check(near(anchor(text), fixed), "dragging the right handle keeps the alignment point in place");
 	scene->undoStack().undo();
 	check(near(text->pos(), pos), "undo of the right handle puts the text back");

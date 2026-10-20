@@ -1050,7 +1050,11 @@ void DynamicElementTextItem::handlerMousePressEvent(QetGraphicsHandlerItem *hand
 		//A concrete baseline for the live drag's delta math, which can't
 		//start from -1.
 	m_resize_baseline_width = (m_resize_original_width < 0) ? frameRect().width() : m_resize_original_width;
-	m_resize_start_local_x = mapFromScene(event->scenePos()).x();
+		//The text moves while it is dragged, to keep its alignment point
+		//in place: read the mouse in the text's coordinates as they were
+		//at the press, otherwise the delta grows with every step
+	m_resize_scene_to_local = sceneTransform().inverted();
+	m_resize_start_local_x = m_resize_scene_to_local.map(event->scenePos()).x();
 
 		//The point the text is aligned on stays where it is: remember it
 		//in the parent's coordinates, which take the text's rotation
@@ -1093,7 +1097,7 @@ QPointF DynamicElementTextItem::resizeAnchor() const
 */
 void DynamicElementTextItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event)
 {
-	qreal local_x = mapFromScene(event->scenePos()).x();
+	qreal local_x = m_resize_scene_to_local.map(event->scenePos()).x();
 	qreal delta = local_x - m_resize_start_local_x;
 	if (handle == m_left_resize_handle)
 		delta = -delta;

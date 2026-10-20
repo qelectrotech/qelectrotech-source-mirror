@@ -216,6 +216,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		qreal m_resize_start_local_x = 0;
 		QPointF m_resize_start_pos,
 				m_resize_fixed_parent;
+		QTransform m_resize_scene_to_local;
 		QMetaObject::Connection m_resize_handles_con;
 };
 
