@@ -136,6 +136,25 @@ int main(int argc, char **argv)
 			  "a group is placed as one line of the block");
 		check(group->alignment() == Qt::AlignRight, "and is aligned right too");
 
+		// A group whose texts lie freely (AlignJustify, the default of the
+		// "Label and comment" group): placing it lays its texts out anew,
+		// and one undo puts them back where they lay, not only the group.
+		scene->undoStack().undo();
+		group->setAlignment(Qt::AlignJustify);
+		texts[1]->setPos(0, 0);
+		texts[2]->setPos(5, 12);
+		const QPointF group_pos = group->pos();
+		scene->undoStack().push(SymbolTextPlacement::place({element}, Qt::AlignRight | Qt::AlignVCenter));
+		check(texts[2]->pos() != QPointF(5, 12), "placing lays the group's texts out anew");
+		scene->undoStack().undo();
+		check(group->alignment() == Qt::AlignJustify && group->pos() == group_pos,
+			  "undo puts the group's alignment and place back");
+		check(texts[1]->pos() == QPointF(0, 0) && texts[2]->pos() == QPointF(5, 12),
+			  "undo puts the group's texts back where they lay");
+		scene->undoStack().redo();
+		check(group->alignment() == Qt::AlignLeft && texts[2]->pos() != QPointF(5, 12),
+			  "redo places them again");
+
 		// A symbol with no texts: nothing to undo.
 		Element *other = nullptr;
 		for (Element *e : scene->elements()) if (e != element) other = e;

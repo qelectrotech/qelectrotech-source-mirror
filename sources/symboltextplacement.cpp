@@ -46,6 +46,9 @@ struct Line
 	QGraphicsItem *item;	///< for where it stands
 	QPointF old_pos;
 	QVariant old_alignment;
+		/// For a group, where its texts lay: a new alignment lays them out
+		/// anew, and undoing it to AlignJustify lays out nothing
+	QList<QPair<DynamicElementTextItem *, QPointF>> old_texts;
 };
 
 	/// Move @a item so that the top left of its box in the folio is at @a to
@@ -65,10 +68,15 @@ bool placeOne(Element *element, Qt::Alignment where, QUndoCommand *parent)
 	QList<Line> lines;
 	for (DynamicElementTextItem *text : element->dynamicTextItems())
 		if (!text->parentGroup() && text->isVisible())
-			lines.append({text, text, text->pos(), text->property("alignment")});
+			lines.append({text, text, text->pos(), text->property("alignment"), {}});
 	for (ElementTextItemGroup *group : element->textGroups())
 		if (group->isVisible())
-			lines.append({group, group, group->pos(), group->property("alignment")});
+		{
+			Line line {group, group, group->pos(), group->property("alignment"), {}};
+			for (DynamicElementTextItem *text : group->texts())
+				line.old_texts.append({text, text->pos()});
+			lines.append(line);
+		}
 	if (lines.isEmpty())
 		return false;
 
@@ -112,6 +120,11 @@ bool placeOne(Element *element, Qt::Alignment where, QUndoCommand *parent)
 			new QPropertyUndoCommand(line.object, "alignment", line.old_alignment, alignment, parent);
 		if (line.item->pos() != line.old_pos)
 			new QPropertyUndoCommand(line.object, "pos", line.old_pos, line.item->pos(), parent);
+			//The group's texts too: undoing its alignment to AlignJustify
+			//would leave them where the new alignment put them
+		for (const auto &text : line.old_texts)
+			if (text.first->pos() != text.second)
+				new QPropertyUndoCommand(text.first, "pos", text.second, text.first->pos(), parent);
 	}
 	return true;
 }
