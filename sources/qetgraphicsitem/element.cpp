@@ -47,6 +47,8 @@
 
 #include <QAbstractTextDocumentLayout>
 #include <QApplication>
+#include <QCursor>
+#include <QGuiApplication>
 #include <QCollator>
 #include <QScreen>
 #include <QTimer>
@@ -296,8 +298,8 @@ void Element::showAsJumpTarget()
 	cross reference: its folio is shown whole, as a page, without zooming
 	in on it, and the target and its texts are shaded blue for a moment,
 	so that the eye finds it on the page.
-	(The mouse pointer cannot be put on it: Wayland does not let a program
-	move the pointer.)
+	The mouse pointer is put on it too, except on Wayland, which does not
+	let a program move the pointer.
 */
 void Element::jumpTo(Element *target)
 {
@@ -315,6 +317,26 @@ void Element::jumpTo(Element *target)
 			view->fitInView(diagram->sceneRect(), Qt::KeepAspectRatio);
 	}
 	target->showAsJumpTarget();
+
+		//Put the mouse pointer on the target, so that a double click
+		//there jumps back. Once the folio shown has its size (next turn
+		//of the event loop). Wayland does not let a program move the
+		//pointer: there the highlight alone shows where the jump landed.
+	if (QGuiApplication::platformName().startsWith(QLatin1String("wayland")))
+		return;
+	QTimer::singleShot(0, target, [target]() {
+		if (!target->diagram())
+			return;
+		for (QGraphicsView *view : target->diagram()->views())
+		{
+			if (!view->isVisible())
+				continue;
+			const QPoint pos = view->mapFromScene(target->sceneBoundingRect().center());
+			if (view->viewport()->rect().contains(pos))
+				QCursor::setPos(view->viewport()->mapToGlobal(pos));
+			return;
+		}
+	});
 }
 
 /**

@@ -778,9 +778,10 @@ void DynamicElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 	{
 		setDefaultTextColor(m_user_color);
 		m_user_color = QColor(); //m_user_color is now invalid
-		unsetCursor();
 	}
-	
+		//Out of the test above: a click (mousePressEvent()) already put
+		//the colour back, and the hand would stay after it
+	unsetCursor();
 }
 
 void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
