@@ -187,7 +187,8 @@ class Conductor : public QGraphicsObject
 	public:
 		void setFreezeLabel(bool freeze);
 		bool isAutomatic() const { return m_automatic; }
-		void setAutomatic(bool automatic) { m_automatic = automatic; }
+		void setAutomatic(bool automatic) { m_automatic = automatic; updateTextVisibility(); }
+		bool hidesPlaceholder() const;
 	
 	public slots:
 		void displayedTextChanged();

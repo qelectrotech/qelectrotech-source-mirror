@@ -14,7 +14,8 @@
 // - a T-junction dragged across the same three lines splits each line;
 // - a folio report turned to face up, dragged across two free lines, ends
 //   each of them;
-// - Escape during a drag gives up the drag and keeps the tool.
+// - Escape during a drag gives up the drag and keeps the tool;
+// - the automatic wires do not show the placeholder text "_".
 #include <QApplication>
 #include <QFontDatabase>
 #include <QGraphicsSceneMouseEvent>
@@ -31,6 +32,7 @@
 #include "../../sources/qetproject.h"
 #include "../../sources/qetmessagebox.h"
 #include "../../sources/qetgraphicsitem/conductor.h"
+#include "../../sources/qetgraphicsitem/conductortextitem.h"
 #include "../../sources/qetgraphicsitem/element.h"
 #include "../../sources/qetgraphicsitem/terminal.h"
 
@@ -166,6 +168,10 @@ int main(int argc, char **argv)
 			all &= joined(top[i], corners[i]) && joined(corners[i], right[2 - i]);
 		check(all, "each corner joins its line from the top to its terminal on the right");
 		check(automaticWires(diagram) == 6, "six automatic wires");
+		bool quiet = true;
+		for (Conductor *c : diagram->conductors())
+			if (c->isAutomatic()) quiet &= !c->textItem()->isVisible();
+		check(quiet, "an automatic wire does not show the folio's placeholder text \"_\"");
 		check(diagram->conductors().size() == by_hand + 6, "the wire drawn by hand is untouched");
 
 		diagram->undoStack().undo();

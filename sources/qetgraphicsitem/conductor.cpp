@@ -1568,7 +1568,23 @@ void Conductor::updateTextVisibility()
 {
 	ShownKinds::setVisible(m_text_item,
 						   m_properties.type == ConductorProperties::Multi
-						   && m_properties.m_show_text);
+						   && m_properties.m_show_text
+						   && !hidesPlaceholder());
+}
+
+/**
+	@brief Conductor::hidesPlaceholder
+	@return true for an automatic wire whose text is only QElectroTech's
+	placeholder "_" or nothing: it would stand beside every bridge and
+	corner the automatic connections make (as a "|" on an upright wire).
+	Such a wire shows no text; one given a text of its own shows it.
+*/
+bool Conductor::hidesPlaceholder() const
+{
+	if (!m_automatic)
+		return false;
+	const QString text = m_text_item->toPlainText().trimmed();
+	return text.isEmpty() || text == QLatin1String("_");
 }
 
 /**
@@ -1602,7 +1618,7 @@ void Conductor::calculateTextItemPosition()
 		}
 			//Make sure text item is visible, unless wire numbers are hidden
 			//(View > Show)
-		ShownKinds::setVisible(m_text_item, true);
+		ShownKinds::setVisible(m_text_item, !hidesPlaceholder());
 	}
 
 		//position
