@@ -25,6 +25,7 @@
 
 class Element;
 class QGraphicsLineItem;
+class QGraphicsPathItem;
 class QStatusBar;
 
 /**
@@ -70,6 +71,7 @@ class DiagramEventAddElement : public DiagramEventInterface
 			 m_drag_cancelled = false;
 		QPointF m_press_pos;
 		QGraphicsLineItem *m_drag_line = nullptr;
+		QGraphicsPathItem *m_preview_wires = nullptr;	///< grey, to each copy's partners
 		QList<Element *> m_ghosts;		///< previews of the copies
 		QList<QPointF> m_drag_positions;
 };

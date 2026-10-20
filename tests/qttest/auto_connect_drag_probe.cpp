@@ -6,7 +6,7 @@
 // Six terminals look down from the top of the folio, three more look left
 // from the right. The fourth terminal at the top has a wire drawn by hand.
 // - a drag across the lines finds every line it crosses, but not the one
-//   drawn by hand;
+//   drawn by hand; grey lines preview the wires each copy will get;
 // - a corner pressed and dragged diagonally, through the mouse events of
 //   the placing tool, puts one corner on each of three lines, staggered,
 //   and the automatic connections join each from the top to the right:
@@ -18,6 +18,7 @@
 // - the automatic wires do not show the placeholder text "_".
 #include <QApplication>
 #include <QFontDatabase>
+#include <QGraphicsPathItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QKeyEvent>
 #include <QSettings>
@@ -139,6 +140,24 @@ int main(int argc, char **argv)
 			check(at.size() == 3, "a drag across four lines finds three: the line drawn by hand is not one");
 			check(at.value(0) == QPointF(100, 350) && at.value(2) == QPointF(180, 350),
 				  "each copy stands on its line, on the drag");
+
+			// While dragging, grey lines show the wires each copy will get:
+			// the diagonal drag below, previewed, from the top and to the right
+			mouse(tool, QEvent::GraphicsSceneMouseMove, QPointF(90, 300), Qt::NoButton);
+			mouse(tool, QEvent::GraphicsSceneMousePress, QPointF(90, 300), Qt::LeftButton);
+			mouse(tool, QEvent::GraphicsSceneMouseMove, QPointF(190, 200), Qt::LeftButton);
+			QGraphicsPathItem *preview = nullptr;
+			for (QGraphicsItem *item : diagram->items())
+				if (auto *p = qgraphicsitem_cast<QGraphicsPathItem *>(item)) preview = p;
+			check(preview && preview->path().elementCount() == 12,
+				  "the drag shows six grey wires: each corner from the top and to the right");
+			QKeyEvent escape(QEvent::KeyPress, Qt::Key_Escape, Qt::NoModifier);
+			tool.keyPressEvent(&escape);
+			mouse(tool, QEvent::GraphicsSceneMouseRelease, QPointF(190, 200), Qt::NoButton);
+			bool gone = true;
+			for (QGraphicsItem *item : diagram->items())
+				gone &= !qgraphicsitem_cast<QGraphicsPathItem *>(item);
+			check(gone && automaticWires(diagram) == 0, "given up, the grey wires go and nothing is made");
 		}
 
 		// The corner, dragged diagonally: one per line, staggered, each

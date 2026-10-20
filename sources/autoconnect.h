@@ -87,6 +87,16 @@ namespace AutoConnect
 								  const Element *sample,
 								  const QLineF &drag,
 								  const QSet<const Element *> &ignore = {});
+
+	/**
+		The wires the automatic connections would make for the copies
+		@a placed, which stand in the folio as previews: from each of their
+		terminals to the terminal it would join, as straight lines.
+		@param ignore : symbols that are not part of the folio
+	*/
+	QList<QLineF> previewWires(const Diagram *diagram,
+							   const QList<Element *> &placed,
+							   const QSet<const Element *> &ignore = {});
 }
 
 #endif // AUTOCONNECT_H

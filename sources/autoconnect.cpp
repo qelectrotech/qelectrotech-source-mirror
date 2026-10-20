@@ -406,3 +406,34 @@ QList<QPointF> AutoConnect::dragPlacements(const Diagram *diagram,
 	});
 	return placements;
 }
+
+QList<QLineF> AutoConnect::previewWires(const Diagram *diagram,
+										const QList<Element *> &placed,
+										const QSet<const Element *> &ignore)
+{
+	QList<QLineF> wires;
+	if (!diagram)
+		return wires;
+
+	State s;
+	s.diagram = const_cast<Diagram *>(diagram);
+	for (const Element *e : ignore)
+		s.leaving << const_cast<Element *>(e);
+		//An automatic wire the copies stand across goes when they are
+		//placed: its ends count as free
+	for (Conductor *c : diagram->conductors())
+		if (c->isAutomatic())
+			s.removed << c;
+
+	for (Element *e : placed)
+		for (Terminal *t : e->terminals())
+		{
+			if (s.used.contains(t))
+				continue;
+			if (Terminal *other = findPartner(s, t)) {
+				wires << QLineF(t->dockConductor(), other->dockConductor());
+				s.used << t << other;
+			}
+		}
+	return wires;
+}

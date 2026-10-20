@@ -31,6 +31,7 @@
 #include "../autobreakconductor.h"
 #include "../autoconnect.h"
 #include <QGraphicsLineItem>
+#include <QGraphicsPathItem>
 #include <QPainterPath>
 #include <limits>
 
@@ -402,6 +403,30 @@ void DiagramEventAddElement::updateDrag(const QPointF &to)
 			ghost->setPos(m_drag_positions.at(i));
 	}
 
+		//Grey lines from each copy to the terminals it will be joined to
+	if (!m_preview_wires) {
+		m_preview_wires = new QGraphicsPathItem();
+		QPen pen(QColor(150, 150, 150), 0);
+		pen.setCosmetic(true);
+		m_preview_wires->setPen(pen);
+		m_preview_wires->setZValue(1e6 - 1);
+		m_diagram->addItem(m_preview_wires);
+	}
+	QList<Element *> shown;
+	QSet<const Element *> outside {m_element};
+	for (int i = 0; i < m_ghosts.size(); ++i) {
+		if (i < m_drag_positions.size())
+			shown << m_ghosts.at(i);
+		else
+			outside << m_ghosts.at(i);
+	}
+	QPainterPath path;
+	for (const QLineF &wire : AutoConnect::previewWires(m_diagram, shown, outside)) {
+		path.moveTo(wire.p1());
+		path.lineTo(wire.p2());
+	}
+	m_preview_wires->setPath(path);
+
 	if (m_status_bar)
 		m_status_bar->showMessage(tr("%n symbol(s) along the drag", "", int(m_drag_positions.size())));
 }
@@ -419,6 +444,11 @@ void DiagramEventAddElement::endDrag()
 		m_diagram->removeItem(m_drag_line);
 		delete m_drag_line;
 		m_drag_line = nullptr;
+	}
+	if (m_preview_wires) {
+		m_diagram->removeItem(m_preview_wires);
+		delete m_preview_wires;
+		m_preview_wires = nullptr;
 	}
 	for (Element *ghost : std::as_const(m_ghosts)) {
 		m_diagram->removeItem(ghost);
