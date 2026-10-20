@@ -51,9 +51,10 @@
 	Also here: the box at the end of a cable is written at the font of
 	the drawing -- the end zone the settings leave is what gives it the
 	room, so three lines never end up squeezed into a tiny text. A
-	target typed in by hand is written the way the fields are shown in
-	the column, "Installation / Location / Label", and the box draws one
-	line per field, with no slash in it. Two cables of one strip end
+	target typed in by hand is written one line per field, Installation,
+	Location, Label, the way the column shows them, and only a line
+	break breaks it into fields: a "/" written inside a field is part of
+	it, the box draws one line holding it. Two cables of one strip end
 	close to each other, and their boxes are wider than the room between
 	them: the box standing in the way of the other is set lower, its
 	stub drawn longer, and the strip reserves the room for it too.
@@ -529,12 +530,14 @@ void tst_cabletarget::realisticStyleDrawsTheCable()
 }
 
 /**
-	A target typed in by hand is written the way the fields are shown in
-	the column, "Installation / Location / Label": the box under the
-	cable draws one line per field, with no slash in it. The picture of
-	a strip whose cable ends on three fields is therefore that much
-	deeper than the picture of the same strip with one single field --
-	two lines of the font of the drawing.
+	A target typed in by hand is written one line per field, and only a
+	line break breaks it into fields: the box under the cable draws one
+	line per field, with no separator in it. The picture of a strip
+	whose cable ends on three fields is therefore that much deeper than
+	the picture of the same strip with one single field -- two lines of
+	the font of the drawing. A "/" written inside a field, an
+	installation named "Betrieb 1/2", keeps its line: the box is no
+	deeper than with one plain field.
 */
 void tst_cabletarget::typedTargetIsDrawnInItsOwnLines()
 {
@@ -604,9 +607,9 @@ void tst_cabletarget::typedTargetIsDrawnInItsOwnLines()
 	QVERIFY(one_line >= 0);
 
 		//Three fields: the box is two lines deeper, at the font of the
-		//drawing -- the slashes are only there to separate the fields in
-		//the column, the box never draws them
-	type_in(QStringLiteral("Boiler room / Cabinet 3 / -K3"));
+		//drawing -- the fields are written one under the other, the cell
+		//holding them only tells them apart by their line breaks
+	type_in(QStringLiteral("Boiler room\nCabinet 3\n-K3"));
 	QCOMPARE(a_->cableTarget(), (QVector<QString>{QStringLiteral("Boiler room"),
 												  QStringLiteral("Cabinet 3"),
 												  QStringLiteral("-K3")}));
@@ -614,6 +617,16 @@ void tst_cabletarget::typedTargetIsDrawnInItsOwnLines()
 	const QFontMetricsF metrics{pattern_->font()};
 	QVERIFY2(three_lines - one_line > 1.5 * metrics.height(),
 			 "three fields must give a box two lines deeper than one field");
+
+		//A slash written inside a field is part of it: the text gives
+		//one single line, the box is back to the depth of one field and
+		//holds the slash where it was typed
+	type_in(QStringLiteral("Betrieb 1/2 / Keller"));
+	QCOMPARE(a_->cableTarget(),
+			 QVector<QString>{QStringLiteral("Betrieb 1/2 / Keller")});
+	const qreal one_slashed_field{lowest_row(render())};
+	QVERIFY2(qAbs(one_slashed_field - one_line) < metrics.height() / 2,
+			 "a slash inside a field must not split it into lines");
 }
 
 /**
@@ -688,7 +701,7 @@ void tst_cabletarget::boxesOfTwoCablesAreSetApart()
 	second_data_.m_informations.addValue(RealTerminal::cableInfoKey(),
 										 QStringLiteral("X98"));
 	second_data_.m_informations.addValue(RealTerminal::cableTargetInfoKey(),
-										 QStringLiteral("Plant 9 / Cabinet 9 / -S9"));
+										 QStringLiteral("Plant 9\nCabinet 9\n-S9"));
 	second_->setElementData(second_data_);
 	QCOMPARE(b_->cableTarget(),
 			 (QVector<QString>{QStringLiteral("Plant 9"),

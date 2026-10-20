@@ -141,6 +141,7 @@ class TerminalStripModelDelegate : public QStyledItemDelegate
 				QWidget *editor,
 				QAbstractItemModel *model,
 				const QModelIndex &index) const override;
+		bool eventFilter(QObject *object, QEvent *event) override;
 
 		void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 

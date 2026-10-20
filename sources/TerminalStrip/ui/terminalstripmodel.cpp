@@ -33,6 +33,9 @@
 #include <QSpinBox>
 #include <QPainter>
 #include <QApplication>
+#include <QKeyEvent>
+#include <QPlainTextEdit>
+#include <QFrame>
 
 /**
  * Some const int who describe what a column contain
@@ -517,8 +520,9 @@ QVariant TerminalStripModel::headerData(int section, Qt::Orientation orientation
 			 orientation == Qt::Horizontal &&
 			 section == CABLE_TARGET_CELL)
 	{
-			//Same three fields as the box drawn under the cable
-		return tr("Installation, Location and Label (BMK) of the piece the cable lands on, past this strip");
+			//Same three fields as the box drawn under the cable, one line
+			//by field: only a line break separates them
+		return tr("Installation, Location and Label (BMK) of the piece the cable lands on, past this strip, one line per field");
 	}
 
 	return QVariant();
@@ -1128,8 +1132,57 @@ QWidget *TerminalStripModelDelegate::createEditor(QWidget *parent, const QStyleO
 
 		return qcb;
 	}
+	if (index.column() == CABLE_TARGET_CELL) {
+			//The Target cell holds one line by field, so it takes a multi
+			//line editor : Return writes a new line (the cell gives its
+			//text back when the focus goes somewhere else), Ctrl+Return
+			//hands it over at once, Escape throws the text away
+		auto te = new QPlainTextEdit(parent);
+		te->setObjectName(QStringLiteral("terminal_cable_target"));
+		te->setFrameStyle(QFrame::NoFrame);
+		te->setTabChangesFocus(true);
+		te->setToolTip(tr("One line per field: Installation, Location, Label (BMK).\n"
+						  "Ctrl+Return gives the cell back, Escape throws the text away."));
+		te->installEventFilter(const_cast<TerminalStripModelDelegate *>(this));
+
+		return te;
+	}
 
 	return QStyledItemDelegate::createEditor(parent, option, index);
+}
+
+/**
+ * @brief TerminalStripModelDelegate::eventFilter
+ * The filter taken on by the Target cell editor: only the key which is
+ * handled here is the one giving the text back to the table. The filter
+ * of the base class is left aside for that cell on purpose, it is written
+ * for one line editors and would take Return away from the text.
+ * @param object the editor of the cell
+ * @param event the event sent to it
+ * @return true when the event is taken by this delegate
+ */
+bool TerminalStripModelDelegate::eventFilter(QObject *object, QEvent *event)
+{
+	if (object && object->objectName() == QLatin1String("terminal_cable_target"))
+	{
+		if (event && event->type() == QEvent::KeyPress)
+		{
+			const auto key_event = static_cast<QKeyEvent *>(event);
+			if ((key_event->key() == Qt::Key_Return ||
+				 key_event->key() == Qt::Key_Enter) &&
+				key_event->modifiers().testFlag(Qt::ControlModifier))
+			{
+				auto editor_ = qobject_cast<QWidget *>(object);
+				emit commitData(editor_);
+				emit closeEditor(editor_, QAbstractItemDelegate::NoHint);
+
+				return true;
+			}
+		}
+		return false;
+	}
+
+	return QStyledItemDelegate::eventFilter(object, event);
 }
 
 void TerminalStripModelDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
@@ -1214,6 +1267,17 @@ void TerminalStripModelDelegate::setEditorData(QWidget *editor, const QModelInde
 		return;
 	}
 
+	if (index.isValid() &&
+		editor->objectName() == QLatin1String("terminal_cable_target"))
+	{
+		if (auto te = dynamic_cast<QPlainTextEdit *>(editor)) {
+				//The cell shows one line by field: the editor gets them
+				//back exactly as they are, nothing joined, nothing split
+			te->setPlainText(index.data(Qt::EditRole).toString());
+		}
+		return;
+	}
+
 	QStyledItemDelegate::setEditorData(editor, index);
 }
 
@@ -1252,6 +1316,14 @@ void TerminalStripModelDelegate::setModelData(QWidget *editor, QAbstractItemMode
 		{
 			if (auto qcb = dynamic_cast<QComboBox *>(editor)) {
 				model->setData(index, qcb->currentData(), Qt::EditRole);
+			}
+		}
+		else if (editor->objectName() == QLatin1String("terminal_cable_target"))
+		{
+			if (auto te = dynamic_cast<QPlainTextEdit *>(editor)) {
+					//The lines are handed over as they were written, so a
+					//" / " inside a field is part of it and never a separator
+				model->setData(index, te->toPlainText(), Qt::EditRole);
 			}
 		}
 		else {

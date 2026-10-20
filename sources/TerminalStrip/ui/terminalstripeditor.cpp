@@ -253,6 +253,14 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 				//the width of its own text, never a cut off Installation
 			ui->m_table_widget->horizontalHeader()->setSectionResizeMode(
 				TerminalStripModel::CableTarget, QHeaderView::ResizeToContents);
+				//That column holds one line by field: its rows must be tall
+				//enough for as many lines as a cell shows, while a cell of
+				//one line keeps the height the rows have always had
+			auto v_header_ = ui->m_table_widget->verticalHeader();
+			v_header_->setMinimumSectionSize(qMax(
+				v_header_->defaultSectionSize(),
+				ui->m_table_widget->rowHeight(0)));
+			v_header_->setSectionResizeMode(QHeaderView::ResizeToContents);
 			m_model->buildBridgePixmap(setUpBridgeCellWidth());
 			connect(ui->m_table_widget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TerminalStripEditor::selectionChanged);
 		}
@@ -880,8 +888,15 @@ void TerminalStripEditor::copySelectionToClipboard()
 	for (auto row = top ; row <= bottom ; ++row)
 	{
 		QStringList cells;
-		for (auto column = left ; column <= right ; ++column) {
-			cells << texts.value((qint64(row) << 32) | qint64(column));
+		for (auto column = left ; column <= right ; ++column)
+		{
+				//A cell may hold several lines (the Target cell holds one
+				//line by field): the text of the clipboard keeps one line by
+				//row, the fields of that cell are joined back the way a
+				//spreadsheet reads them
+			QString cell_{texts.value((qint64(row) << 32) | qint64(column))};
+			cell_.replace(QLatin1Char('\n'), QStringLiteral(" / "));
+			cells << cell_;
 		}
 		lines << cells.join(QLatin1Char('\t'));
 	}

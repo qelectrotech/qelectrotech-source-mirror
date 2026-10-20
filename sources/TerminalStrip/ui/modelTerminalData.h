@@ -27,10 +27,12 @@
 struct modelRealTerminalData
 {
 		///The Installation, Location and Label (BMK) of the piece the cable
-		///lands on, joined in one line : what the strip draws in the box
-		///under its cable (RealTerminal::cableTarget), in the same order.
-		///A target typed in by hand is one single line, and nothing is
-		///shown when the cable lands on nothing worth naming and no text
+		///lands on, one line by field : what the strip draws in the box
+		///under its cable (RealTerminal::cableTarget) and what the Target
+		///cell shows, both read line by line. A "/" written inside a field
+		///is part of that field, never a separator.
+		///A target typed in by hand is kept as it was written, and nothing
+		///is shown when the cable lands on nothing worth naming and no text
 		///was ever written in.
 		static QString targetText(const QVector<QString> &target_)
 		{
@@ -41,7 +43,7 @@ struct modelRealTerminalData
 					fields_ << field_;
 				}
 			}
-			return fields_.join(QStringLiteral(" / "));
+			return fields_.join(QLatin1Char('\n'));
 		}
 
 		static modelRealTerminalData data(const QSharedPointer<RealTerminal> &real_t)

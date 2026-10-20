@@ -413,8 +413,10 @@ bool RealTerminal::isShield() const {
  * typed in by hand when none does -- the Target cell of the terminal
  * strip editor is read only in the first case, so a target the drawing
  * cannot work out is still worth naming by hand. A text typed in is
- * written the way the fields are shown in the column,
- * "Installation / Location / Label", and gives one line per field.
+ * written one line per field, Installation, Location and Label (BMK),
+ * the way the cell shows them: only a line break breaks it into fields.
+ * A "/" written inside a field (a name like "ASP/01") is part of that
+ * field and never breaks anything.
  * @return the lines to write in the box under the cable
  */
 QVector<QString> RealTerminal::cableTarget() const
@@ -430,13 +432,15 @@ QVector<QString> RealTerminal::cableTarget() const
 						  .value(cableTargetInfoKey()).toString()};
 		if (!typed_.isEmpty())
 		{
-				//Written the way the fields are shown in the column,
-				//"Installation / Location / Label": the box draws one line
-				//per field, without the separators, like it does for a
-				//target worked out from the project
+				//One line by field, and only a line break breaks the text
+				//into fields : a "/" written inside a field stays where it is
+			QString text_{typed_};
+			text_.replace(QStringLiteral("\r\n"), QStringLiteral("\n"));
+			text_.replace(QLatin1Char('\r'), QLatin1Char('\n'));
+
 			QVector<QString> lines_;
 			for (const QString &field_
-				 : typed_.split(QStringLiteral(" / "), Qt::SkipEmptyParts)) {
+				 : text_.split(QLatin1Char('\n'), Qt::SkipEmptyParts)) {
 				lines_ << field_;
 			}
 			return lines_;
