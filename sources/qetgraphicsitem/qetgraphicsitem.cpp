@@ -18,6 +18,7 @@
 #include "qetgraphicsitem.h"
 
 #include "../diagram.h"
+#include "element.h"
 
 /**
 	@brief QetGraphicsItem::QetGraphicsItem
@@ -38,6 +39,10 @@ void QetGraphicsItem::showItem(QetGraphicsItem *item)
 			fit.adjust(-200, -200, 200, 200);
 			view->fitInView(fit, Qt::KeepAspectRatioByExpanding);
 		}
+
+			//Mark where the jump landed
+		if (Element *element = dynamic_cast<Element *>(item))
+			element->showAsJumpTarget();
 	}
 }
 

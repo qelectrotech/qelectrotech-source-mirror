@@ -1,0 +1,312 @@
+<project title="Linked reports" uuid="{3782ad69-0e05-52a7-950b-4c34633b4add}" version="0.200.1">
+    <properties/>
+    <usage enabled="true" time_spent="0"/>
+    <symbol_texts upright="true"/>
+    <newdiagrams>
+        <border cols="17" colsize="60" displaycols="true" displayrows="true" rows="8" rowsize="80"/>
+        <inset author="" auto_page_num="" date="null" displayAt="bottom" filename="" folio="" indexrev="" locmach="" plant="" title="" version=""/>
+        <conductors bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <report label="%f-%l%c"/>
+        <xrefs>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" stackoverlapping="true" switchprefix="" type="cable" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" stackoverlapping="true" switchprefix="" type="coil" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" stackoverlapping="true" switchprefix="" type="commutator" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" stackoverlapping="true" switchprefix="" type="plc" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" stackoverlapping="true" switchprefix="" type="protection" xrefpos="AlignBottom"/>
+        </xrefs>
+        <conductors_autonums auto_break_conductors="false" current_autonum="" freeze_new_conductors="false"/>
+        <folio_autonums/>
+        <element_autonums current_autonum="" freeze_new_elements="false"/>
+        <guides/>
+    </newdiagrams>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="1" plant="" rows="8" rowsize="80" title="One" uuid="{5c67e69f-cfc9-4757-8318-7d6ec611f7bc}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/10_electric/10_allpole/100_folio_referencing/02going_arrow.elmt" uuid="{139e1748-290b-4bfa-aa31-2d092f4aeb14}" x="300" y="200" z="10">
+                <terminals>
+                    <terminal id="0" orientation="3" x="-9" y="0"/>
+                </terminals>
+                <inputs/>
+                <links_uuids>
+                    <link_uuid uuid="{f85d9f0e-0068-460e-a241-8da7ef1ae4e9}"/>
+                </links_uuids>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{f76e0745-462f-47a6-b900-00790ded6e24}" x="6" y="-11.5">
+                        <text>2-C4</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/10_electric/10_allpole/100_folio_referencing/02going_arrow.elmt" uuid="{2b833a53-8066-433a-b1a1-93997bfdfaf5}" x="500" y="200" z="10">
+                <terminals>
+                    <terminal id="1" orientation="3" x="-9" y="0"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{d370fe1a-1e2f-4d8b-9449-87e23de3ee89}" x="6" y="-11.5">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+        </elements>
+    </diagram>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="2" plant="" rows="8" rowsize="80" title="Two" uuid="{2971356b-b745-43ed-b954-89d3b659ff08}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/10_electric/10_allpole/100_folio_referencing/01coming_arrow.elmt" uuid="{f85d9f0e-0068-460e-a241-8da7ef1ae4e9}" x="300" y="200" z="10">
+                <terminals>
+                    <terminal id="0" orientation="1" x="9" y="0"/>
+                </terminals>
+                <inputs/>
+                <links_uuids>
+                    <link_uuid uuid="{139e1748-290b-4bfa-aa31-2d092f4aeb14}"/>
+                </links_uuids>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignRight" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{97fc5aa3-779f-4cbb-afdb-6ae2743339ca}" x="-37.9844" y="-11.5">
+                        <text>1-C4</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+        </elements>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="ca">Elements importats</name>
+                <name lang="cs">Zavedené prvky</name>
+                <name lang="da">Importerede elementer</name>
+                <name lang="de">Importierte Elemente</name>
+                <name lang="el">Εισηγμένα στοιχεία</name>
+                <name lang="en">Imported elements</name>
+                <name lang="es">Elementos importados</name>
+                <name lang="fr">Éléments importés</name>
+                <name lang="hr">Uvezeni elementi</name>
+                <name lang="it">Elementi importati</name>
+                <name lang="ja">インバートされた要素</name>
+                <name lang="ko">전기 심볼 요소</name>
+                <name lang="ko_KR">전기 심볼 요소</name>
+                <name lang="nl">Elementen geïmporteerd</name>
+                <name lang="nl_BE">Elementen geïmporteerd</name>
+                <name lang="pl">Elementy importowane</name>
+                <name lang="pt">Elementos importados</name>
+                <name lang="pt_BR">Elementos importados</name>
+                <name lang="ro">Elemente importate</name>
+                <name lang="ru">Импортированные элементы</name>
+                <name lang="sl">Uvoženi elementi</name>
+                <name lang="sv">Importerade element</name>
+                <name lang="tr">İthal öğeler</name>
+                <name lang="uk">Імпортовані елементи</name>
+                <name lang="zh">导入元件</name>
+            </names>
+        <category name="10_electric">
+                <names>
+                    <name lang="ar">كهربائي</name>
+                    <name lang="ca">Elèctric</name>
+                    <name lang="cs">Elektrotechnika</name>
+                    <name lang="da">Elektrisk</name>
+                    <name lang="de">Elektrik</name>
+                    <name lang="el">Ηλεκτρικά</name>
+                    <name lang="en">Electric</name>
+                    <name lang="es">Eléctrica</name>
+                    <name lang="fi">Sähkö</name>
+                    <name lang="fr">Electrique</name>
+                    <name lang="hr">Električno</name>
+                    <name lang="hu">Elektromos</name>
+                    <name lang="it">Elettrica</name>
+                    <name lang="ja">電気</name>
+                    <name lang="ko">전기</name>
+                    <name lang="mn">Цахилгаан</name>
+                    <name lang="nb">Elektrisk</name>
+                    <name lang="nl">Elektrotechniek</name>
+                    <name lang="nl_BE">Elektrisch</name>
+                    <name lang="pl">Elektrotechnika</name>
+                    <name lang="pt">Elétrico</name>
+                    <name lang="pt_BR">Elétrica</name>
+                    <name lang="ro">Electric</name>
+                    <name lang="ru">Электротехника</name>
+                    <name lang="sk">Elektrické</name>
+                    <name lang="sl">Elektrika</name>
+                    <name lang="sr">Електрика</name>
+                    <name lang="sv">El</name>
+                    <name lang="tr">Elektrik</name>
+                    <name lang="uk">Електрика</name>
+                    <name lang="zh">10_电气</name>
+                    <name lang="zn">电气工程</name>
+                </names>
+                <category name="10_allpole">
+                    <names>
+                        <name lang="ar">متعدد الأقطاب</name>
+                        <name lang="ca">Multifilar</name>
+                        <name lang="cs">Vícežilový</name>
+                        <name lang="da">Flere ledere</name>
+                        <name lang="de">Allpolig</name>
+                        <name lang="el">Πολυγραμμικό</name>
+                        <name lang="en">All-pole</name>
+                        <name lang="es">Multifilar</name>
+                        <name lang="fi">Yleisnapa</name>
+                        <name lang="fr">Multifilaire</name>
+                        <name lang="hr">Univerzalni</name>
+                        <name lang="hu">Többvonalas szimbólumok</name>
+                        <name lang="it">Multifilare</name>
+                        <name lang="ja">複線</name>
+                        <name lang="ko">다-극</name>
+                        <name lang="mn">Бүх туйл</name>
+                        <name lang="nb">Alle poler</name>
+                        <name lang="nl">Veel polig</name>
+                        <name lang="nl_BE">All-pole</name>
+                        <name lang="pl">Schematy wieloliniowe</name>
+                        <name lang="pt">Multipolar</name>
+                        <name lang="pt_BR">Multifilar</name>
+                        <name lang="ro">Bipolar</name>
+                        <name lang="ru">Многополюсные</name>
+                        <name lang="sk">Všepólové</name>
+                        <name lang="sl">Vsi poli</name>
+                        <name lang="sr">Свe-полни</name>
+                        <name lang="sv">Allpolig</name>
+                        <name lang="tr">Çok kutuplu</name>
+                        <name lang="uk">Багатополюсні</name>
+                        <name lang="zh">10_全极</name>
+                    </names>
+                    <category name="100_folio_referencing">
+                        <names>
+                            <name lang="ar">إحالات</name>
+                            <name lang="ca">Referències als fulls</name>
+                            <name lang="cs">Odkazování listů</name>
+                            <name lang="da">Ark henvisninger</name>
+                            <name lang="de">Folienverweise</name>
+                            <name lang="el">Αναφορές σελίδας</name>
+                            <name lang="en">Folio referencing</name>
+                            <name lang="es">Referencias</name>
+                            <name lang="fi">Lehtiviittaus</name>
+                            <name lang="fr">Reports de folio</name>
+                            <name lang="hr">Referenciranje folija</name>
+                            <name lang="hu">Tervlap hivatkozások</name>
+                            <name lang="it">Riferimenti</name>
+                            <name lang="ja">フォリオ参照</name>
+                            <name lang="ko">도면 간 참조</name>
+                            <name lang="mn">Хуудасны холбоос</name>
+                            <name lang="nb">Folio-referanse</name>
+                            <name lang="nl">Referenties</name>
+                            <name lang="nl_BE">Folioverwijzing</name>
+                            <name lang="pl">Odsyłacze</name>
+                            <name lang="pt">Renvoi de folio</name>
+                            <name lang="pt_BR">Referências</name>
+                            <name lang="ro">Renvoi de folio</name>
+                            <name lang="ru">Точки разрыва</name>
+                            <name lang="sk">Odkazy na listy</name>
+                            <name lang="sl">Sklici na list</name>
+                            <name lang="sr">Референцирање фолија</name>
+                            <name lang="sv">Bladhänvisning</name>
+                            <name lang="tr">Sayfa referansı</name>
+                            <name lang="uk">Посилання на аркуші</name>
+                            <name lang="zh">图页引用</name>
+                        </names>
+                        <element name="02going_arrow.elmt">
+                            <definition height="20" hotspot_x="23" hotspot_y="10" link_type="next_report" type="element" version="0.80" width="30">
+                                <uuid uuid="{5ec3a096-68e7-9b2c-d1b8-b960176e2512}"/>
+                                <names>
+                                    <name lang="ar">الصفحة التالية</name>
+                                    <name lang="ca">Enllaç sortint</name>
+                                    <name lang="cs">Další list</name>
+                                    <name lang="da">Går pil</name>
+                                    <name lang="de">Nächste Folie</name>
+                                    <name lang="el">Επόμενη σελίδα</name>
+                                    <name lang="en">Going arrow</name>
+                                    <name lang="es">Folio siguiente</name>
+                                    <name lang="fi">Lähtevä nuoli</name>
+                                    <name lang="fr">Folio suivant</name>
+                                    <name lang="hr">Odlazna strelica</name>
+                                    <name lang="hu">Elmenő hivatkozás</name>
+                                    <name lang="it">Foglio successivo</name>
+                                    <name lang="ja">出矢印</name>
+                                    <name lang="ko">나가는 화살표</name>
+                                    <name lang="mn">Явж буй сум</name>
+                                    <name lang="nb">Går pil</name>
+                                    <name lang="nl">Referentie volgend</name>
+                                    <name lang="nl_BE">Gaande pijl</name>
+                                    <name lang="pl">Wyjście adresowe</name>
+                                    <name lang="pt">Seta de saída</name>
+                                    <name lang="pt_BR">Seta de saída (vai)</name>
+                                    <name lang="ro">Săgeată de ieșire</name>
+                                    <name lang="ru">Следующая страница</name>
+                                    <name lang="sk">Odchádzajúca šípka</name>
+                                    <name lang="sl">Odhodna puščica</name>
+                                    <name lang="sr">Одлазна стрелица</name>
+                                    <name lang="sv">Utgående pil</name>
+                                    <name lang="tr">Giden ok</name>
+                                    <name lang="uk">Стрілка виходу</name>
+                                    <name lang="zh">02引出箭头</name>
+                                </names>
+                                <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-9" x2="-9" x3="2" y1="-4" y2="4" y3="0"/>
+                                    <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-9" x2="-12" y1="0" y2="0"/>
+                                    <dynamic_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" rotation="0" text_from="ElementInfo" text_width="-1" uuid="{93888a84-3ffd-438d-acef-5396acba0750}" x="6" y="-11.5" z="3">
+                                        <text/>
+                                        <info_name>label</info_name>
+                                    </dynamic_text>
+                                    <terminal name="1" orientation="w" type="Generic" uuid="{975add6f-4ba5-44af-a4c0-e1f1c2024601}" x="-13" y="0"/>
+                                </description>
+                            </definition>
+                        </element>
+                        <element name="01coming_arrow.elmt">
+                            <definition height="20" hotspot_x="6" hotspot_y="10" link_type="previous_report" type="element" version="0.100.0" width="30">
+                                <uuid uuid="{52169153-2558-21ab-63ec-96ce53bfc7c1}"/>
+                                <names>
+                                    <name lang="ar">الصفحة السابقة</name>
+                                    <name lang="ca">Enllaç entrant</name>
+                                    <name lang="cs">Předchozí list</name>
+                                    <name lang="da">Kommer pil</name>
+                                    <name lang="de">Vorherige Folie</name>
+                                    <name lang="el">Προηγούμενη σελίδα</name>
+                                    <name lang="en">Coming arrow</name>
+                                    <name lang="es">folio anterior</name>
+                                    <name lang="fi">Saapuva nuoli</name>
+                                    <name lang="fr">Folio précédent</name>
+                                    <name lang="hr">Dolazna strelica</name>
+                                    <name lang="hu">Beérkező hivatkozás</name>
+                                    <name lang="it">Foglio precedente</name>
+                                    <name lang="ja">入り矢印</name>
+                                    <name lang="ko">들어오는 화살표</name>
+                                    <name lang="mn">Ирж буй сум</name>
+                                    <name lang="nb">Kommer pil</name>
+                                    <name lang="nl">Referentie Vorig</name>
+                                    <name lang="nl_BE">Komende pijl</name>
+                                    <name lang="pl">Wejście adresowe</name>
+                                    <name lang="pt">Seta de entrada</name>
+                                    <name lang="pt_BR">Seta de entrada (vem)</name>
+                                    <name lang="ro">Săgeată de intrare</name>
+                                    <name lang="ru">Предыдущая страница</name>
+                                    <name lang="sk">Prichádzajúca šípka</name>
+                                    <name lang="sl">Prihajajoča puščica</name>
+                                    <name lang="sr">Долазна стрелица</name>
+                                    <name lang="sv">Inkommande pil</name>
+                                    <name lang="tr">Gelen ok</name>
+                                    <name lang="uk">Стрілка входу</name>
+                                    <name lang="zh">01引入箭头</name>
+                                </names>
+                                <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-1" x2="-1" x3="9" y1="-4" y2="4" y3="0"/>
+                                    <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="9" x2="12" y1="0" y2="0"/>
+                                    <dynamic_text Halignment="AlignRight" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" rotation="0" text_from="ElementInfo" text_width="-1" uuid="{8ec41ce2-36d6-4fe3-b299-c8a48cb2182c}" x="-12" y="-11.5" z="3">
+                                        <text/>
+                                        <info_name>label</info_name>
+                                    </dynamic_text>
+                                    <terminal name="1" orientation="e" type="Generic" uuid="{d7fd0bec-9f05-4651-a50b-29d7ffabeb41}" x="13" y="0"/>
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                </category>
+            </category>
+        </category>
+    </collection>
+</project>
