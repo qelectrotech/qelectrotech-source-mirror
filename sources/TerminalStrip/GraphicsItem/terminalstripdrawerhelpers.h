@@ -58,6 +58,13 @@ namespace TerminalStripDrawer
 			//in terminalstripdrawer.cpp for the whole drawing)
 		void drawCables(QPainter *painter, const QVector<CableCell> &cells,
 						const TerminalStripLayoutPattern &pattern);
+			//How much deeper than the end zone (m_cable_end_length) the boxes of
+			//the cables need: a box reaching into another one is set lower than
+			//the others, and the strip must reserve the room for it or the lower
+			//box is cut off. The same rule the drawing uses, worked out of the
+			//same cells, so the two can never disagree.
+		qreal cableBoxesExtraDepth(const QVector<CableCell> &cells,
+								   const TerminalStripLayoutPattern &pattern);
 	}
 }
 

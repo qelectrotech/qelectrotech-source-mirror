@@ -542,6 +542,57 @@ bool haveCable(const AbstractTerminalStripInterface *strip)
 	return false;
 }
 
+	/**
+	 * @brief cableCells
+	 * The cells the cables are drawn from : one per terminal of the strip
+	 * carrying a cable, spread over the width of its body, all of them
+	 * leaving the strip at its bottom edge. The paint and the depth the
+	 * strip reserves under it both work on this list, so a box set lower
+	 * than the others is never cut off by the drawing area.
+	 */
+	QVector<Helpers::CableCell> cableCells(const AbstractTerminalStripInterface &strip,
+										   const TerminalStripLayoutPattern &pattern)
+	{
+		const qreal s_{pattern.m_realistic_px_per_mm};
+		const qreal length_{pattern.m_realistic_length_mm * s_};
+
+			//Left end stop and strip name : the terminals start after them
+		qreal x_{endStopWidthMm(pattern) * s_};
+		if (pattern.m_realistic_group_marker) {
+			x_ += group_marker_width_mm * s_;
+		}
+
+		QVector<Helpers::CableCell> cells;
+		for (const auto &g_ : geometry(&strip))
+		{
+			const qreal w_{g_.width_mm * s_};
+			const int levels_{static_cast<int>(g_.reals.size())};
+
+				//One wire exit by level, spread over the width of the body
+			for (int k = 0 ; k < levels_ ; ++k)
+			{
+				const auto &real_t{g_.reals.at(k)};
+				if (!real_t || real_t->cable().isEmpty()) {
+					continue;
+				}
+				Helpers::CableCell cell_;
+				cell_.x = x_ + w_ * (k + 0.5) / levels_;
+				cell_.bottom = length_;
+				cell_.cable = real_t->cable();
+				cell_.wire = real_t->cableWire();
+				cell_.shield = real_t->isShield();
+				cell_.terminal = real_t;
+				cells.append(cell_);
+			}
+
+			x_ += w_;
+			if (g_.separator_after) {
+				x_ += separator_width_mm * s_;
+			}
+		}
+		return cells;
+	}
+
 } //End anonymous namespace
 
 QRectF boundingRect(const AbstractTerminalStripInterface *strip,
@@ -562,11 +613,16 @@ QRectF boundingRect(const AbstractTerminalStripInterface *strip,
 	qreal extra_bottom_{0};
 	if (pattern.m_cable_wire_length > 0 && haveCable(strip))
 	{
-			//4 is the diameter of the circle at the end of the wires
+			//4 is the diameter of the circle at the end of the wires.
+			//A box standing in the way of another one is drawn lower than
+			//the end zone, and the room for it is reserved too (same rule,
+			//same cells as the drawing) or it is cut off
 		extra_bottom_ = pattern.m_cable_wire_length
 						+ std::max<qreal>(0, pattern.m_cable_length)
 						+ std::max<qreal>(0, pattern.m_cable_end_length)
-						+ 4;
+						+ 4
+						+ Helpers::cableBoxesExtraDepth(cableCells(*strip, pattern),
+														pattern);
 	}
 	return QRectF{0, 0, width_mm_ * s_, length_ + extra_bottom_};
 }
@@ -628,7 +684,11 @@ void paint(QPainter *painter,
 	}
 
 	QHash<QUuid, QVector<BridgePoint>> bridges_;
-	QVector<Helpers::CableCell> cable_cells_;
+		//The cells the cables are drawn from, worked out once for the whole
+		//strip: the depth the strip reserves under it is built on the same
+		//list (boundingRect()), so a box set lower than another one is
+		//never cut off
+	QVector<Helpers::CableCell> cable_cells_{cableCells(strip, pattern)};
 
 	for (const auto &g_ : geometry(&strip))
 	{
@@ -636,24 +696,6 @@ void paint(QPainter *painter,
 		const QRectF body_{x_, 0, w_, length_};
 		const auto first_{g_.reals.first()};
 		const int levels_{static_cast<int>(g_.reals.size())};
-
-			//Cables (hoses) of this terminal : one wire exit by level, spread over
-			//the width of the body, all of them leaving the strip at its bottom edge
-		for (int k = 0 ; k < levels_ ; ++k)
-		{
-			const auto &real_t{g_.reals.at(k)};
-			if (!real_t || real_t->cable().isEmpty()) {
-				continue;
-			}
-			Helpers::CableCell cell_;
-			cell_.x = x_ + w_ * (k + 0.5) / levels_;
-			cell_.bottom = length_;
-			cell_.cable = real_t->cable();
-			cell_.wire = real_t->cableWire();
-			cell_.shield = real_t->isShield();
-			cell_.terminal = real_t;
-			cable_cells_.append(cell_);
-		}
 
 			//A terminal chosen in the catalog is drawn with its own clamp, so that a strip
 			//mixing screw and spring terminals is drawn as it is. The spring-cage clamps

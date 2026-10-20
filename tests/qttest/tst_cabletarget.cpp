@@ -53,7 +53,10 @@
 	room, so three lines never end up squeezed into a tiny text. A
 	target typed in by hand is written the way the fields are shown in
 	the column, "Installation / Location / Label", and the box draws one
-	line per field, with no slash in it.
+	line per field, with no slash in it. Two cables of one strip end
+	close to each other, and their boxes are wider than the room between
+	them: the box standing in the way of the other is set lower, its
+	stub drawn longer, and the strip reserves the room for it too.
 
 	Both drawing styles are covered: the schematic one and the
 	realistic one (the strip seen from above), which paint the same
@@ -178,6 +181,7 @@ private slots:
 	void wireLabelStaysOutOfTheTerminal();
 	void targetBoxKeepsTheDrawingFont();
 	void typedTargetIsDrawnInItsOwnLines();
+	void boxesOfTwoCablesAreSetApart();
 	void realisticStyleDrawsTheCable();
 };
 
@@ -610,6 +614,105 @@ void tst_cabletarget::typedTargetIsDrawnInItsOwnLines()
 	const QFontMetricsF metrics{pattern_->font()};
 	QVERIFY2(three_lines - one_line > 1.5 * metrics.height(),
 			 "three fields must give a box two lines deeper than one field");
+}
+
+/**
+	Two cables of one strip end close to each other, and their boxes are
+	wider than the room between the two cables: the box standing in the
+	way of the other is set lower than it, its stub drawn longer -- the
+	two boxes are never written the one over the other, and the text is
+	never cut down to fit. The strip reserves the room for the lower box
+	too, or the drawing would be cut off there.
+*/
+void tst_cabletarget::boxesOfTwoCablesAreSetApart()
+{
+	QVERIFY(wireCableToTheContact());
+
+		//The second cable of the strip : its wires only join the strip's
+		//own terminals, so it names nothing and takes what is typed in
+	Cable *cable_ = m_project->newCable();
+	QVERIFY(cable_);
+	Conductor *inside_ = conductor(
+		QStringLiteral("{584b452e-a885-491a-98f1-fd348610b5e0}"));
+	QVERIFY(inside_);
+	claimCable(inside_, cable_->uuid());
+
+	const auto b_ = terminalInStrip(
+		QStringLiteral("{4861e268-d344-413e-a86f-034ea5ada16c}"));
+	QVERIFY(b_);
+	Element *second_ = b_->element();
+	QVERIFY(second_);
+
+	auto pattern_ = QSharedPointer<TerminalStripLayoutPattern>{new TerminalStripLayoutPattern};
+	const auto strips_ = m_project->terminalStrip();
+	QVERIFY(!strips_.isEmpty());
+	TerminalStripDrawer::TerminalStripDrawer drawer{
+		QSharedPointer<TerminalStripDrawer::TrueTerminalStrip>{
+			new TerminalStripDrawer::TrueTerminalStrip{strips_.first()}},
+		pattern_};
+
+	const auto render = [&drawer](const QRectF &bounds) {
+		QImage image{bounds.size().toSize() + QSize{4, 4},
+					 QImage::Format_ARGB32_Premultiplied};
+		image.fill(Qt::transparent);
+		QPainter painter{&image};
+		painter.translate(-bounds.topLeft() + QPointF{2, 2});
+		drawer.paint(&painter);
+		painter.end();
+		return image;
+	};
+	const auto lowest_row = [](const QImage &image_) {
+		qreal lowest{-1};
+		for (auto y = 0 ; y < image_.height() ; ++y)
+		{
+			for (auto x = 0 ; x < image_.width() ; ++x)
+			{
+				if (image_.pixel(x, y) != qRgba(0, 0, 0, 0)) {
+					lowest = y;
+					break;
+				}
+			}
+		}
+		return lowest;
+	};
+
+		//One cable with a target : one box, in the end zone
+	const QRectF one_bounds{drawer.boundingRect()};
+	const qreal one_row{lowest_row(render(one_bounds))};
+	QVERIFY(one_row >= 0);
+
+		//The second cable gets a target of its own : its box is wider
+		//than the distance between the two cables and would be written
+		//over the first one
+	ElementData second_data_{second_->elementData()};
+	second_data_.m_informations.addValue(RealTerminal::cableInfoKey(),
+										 QStringLiteral("X98"));
+	second_data_.m_informations.addValue(RealTerminal::cableTargetInfoKey(),
+										 QStringLiteral("Plant 9 / Cabinet 9 / -S9"));
+	second_->setElementData(second_data_);
+	QCOMPARE(b_->cableTarget(),
+			 (QVector<QString>{QStringLiteral("Plant 9"),
+							   QStringLiteral("Cabinet 9"),
+							   QStringLiteral("-S9")}));
+
+	const QRectF two_bounds{drawer.boundingRect()};
+	const qreal two_row{lowest_row(render(two_bounds))};
+
+		//The box in the way is set lower : the strip draws a whole box
+		//deeper than it did with one single box -- the second box stands
+		//under the first one, one box height plus the gap between them
+	const QFontMetricsF metrics{pattern_->font()};
+	const qreal box_height{metrics.height() * 3 + 4};
+	QVERIFY2(two_row - one_row > box_height,
+			 "a box reaching into another one must be set lower, not "
+			 "written over it");
+
+		//And the strip is deep enough for it, or the lower box would be
+		//cut off by the drawing area
+	QVERIFY2(two_bounds.height() > one_bounds.height(),
+			 "the strip reserves no room for the box it sets lower");
+	QVERIFY2(two_bounds.bottom() - one_bounds.bottom() > 0.5 * box_height,
+			 "the room reserved for the lower box is too small");
 }
 
 int main(int argc, char **argv)
