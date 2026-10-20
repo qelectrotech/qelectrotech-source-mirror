@@ -3026,7 +3026,8 @@ void Diagram::insertFolioSeqHash(QHash<QString,
 				 QStringList> *hash,
 				 const QString& title,
 				 const QString& type,
-				 NumerotationContext *nc) {
+				 NumerotationContext *nc,
+				 const QString &owner) {
 	QStringList max;
 	for (int i = 0; i < nc->size(); i++) {
 		if (nc->itemAt(i).at(0) == type) {
@@ -3038,6 +3039,11 @@ void Diagram::insertFolioSeqHash(QHash<QString,
 		}
 	}
 	hash->insert(title,max);
+		//2b-4: the hash stays the source; the row follows it, same
+		//write-through pattern as the numbering tables (2b-1).
+	if (!owner.isEmpty() && project()) {
+		project()->dataBase()->setFolioCounterValues(uuid(), owner, type, title, max);
+	}
 }
 
 /**
@@ -3160,7 +3166,8 @@ void Diagram::loadElmtFolioSeq()
 			insertFolioSeqHash(&m_elmt_unitfolio_max,
 					   title,
 					   QStringLiteral("unitfolio"),
-					   &nc);
+					   &nc,
+					   QStringLiteral("element"));
 			project()->addElementAutoNum(title,nc);
 		}
 	}
@@ -3185,7 +3192,8 @@ void Diagram::loadElmtFolioSeq()
 			insertFolioSeqHash(&m_elmt_tenfolio_max,
 					   title,
 					   QStringLiteral("tenfolio"),
-					   &nc);
+					   &nc,
+					   QStringLiteral("element"));
 			project()->addElementAutoNum(title,nc);
 		}
 	}
@@ -3210,7 +3218,8 @@ void Diagram::loadElmtFolioSeq()
 			insertFolioSeqHash(&m_elmt_hundredfolio_max,
 					   title,
 					   QStringLiteral("hundredfolio"),
-					   &nc);
+					   &nc,
+					   QStringLiteral("element"));
 			project()->addElementAutoNum(title,nc);
 		}
 	}
@@ -3247,7 +3256,8 @@ void Diagram::loadCndFolioSeq()
 			insertFolioSeqHash(&m_cnd_unitfolio_max,
 					   title,
 					   QStringLiteral("unitfolio"),
-					   &nc);
+					   &nc,
+					   QStringLiteral("conductor"));
 			project()->addConductorAutoNum(title,nc);
 		}
 	}
@@ -3270,7 +3280,8 @@ void Diagram::loadCndFolioSeq()
 			insertFolioSeqHash(&m_cnd_tenfolio_max,
 					   title,
 					   QStringLiteral("tenfolio"),
-					   &nc);
+					   &nc,
+					   QStringLiteral("conductor"));
 			project()->addConductorAutoNum(title,nc);
 		}
 	}
@@ -3293,7 +3304,8 @@ void Diagram::loadCndFolioSeq()
 			insertFolioSeqHash(&m_cnd_hundredfolio_max,
 					   title,
 					   QStringLiteral("hundredfolio"),
-					   &nc);
+					   &nc,
+					   QStringLiteral("conductor"));
 			project()->addConductorAutoNum(title,nc);
 		}
 	}

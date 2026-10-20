@@ -376,7 +376,8 @@ class Diagram : public QGraphicsScene
 		void insertFolioSeqHash (QHash<QString, QStringList> *hash,
 					 const QString& title,
 					 const QString& seq,
-					 NumerotationContext *nc);
+					 NumerotationContext *nc,
+					 const QString &owner = QString());
 		void loadFolioSeqHash (QHash<QString, QStringList> *hash,
 				       const QString& title, const QString& seq,
 				       NumerotationContext *nc);
