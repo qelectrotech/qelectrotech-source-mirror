@@ -39,6 +39,8 @@
 #include <QMultiHash>
 #include <QtDebug>
 
+#include <cmath>
+
 namespace {
 		//Bumped whenever a conductor changes shape, moves, or enters or
 		//leaves a folio: the hops of every conductor may then change.
@@ -629,6 +631,7 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		final_conductor_pen.setCosmetic(true);
 	}
 
+	synchronizeDashPhase(final_conductor_pen);
 	painter -> setPen(final_conductor_pen);
 
 		//Draw the conductor, with a hop at each crossing if the project asks for them
@@ -642,6 +645,7 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		QVector<qreal> dash_pattern;
 		dash_pattern << m_properties.m_dash_size << m_properties.m_dash_size *2;
 		final_conductor_pen.setDashPattern(dash_pattern);
+		synchronizeDashPhase(final_conductor_pen);
 		painter->save();
 		painter->setPen(final_conductor_pen);
 		painter->drawPath(painted_path);
@@ -687,6 +691,50 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 	}
 
 	painter -> restore();
+}
+
+/**
+	@brief Conductor::synchronizeDashPhase
+	Offsets pen's dash pattern so it starts in phase with the scene grid
+	instead of with this conductor's own path. As long as wires keep 
+	horizontal and vertical this resolves the issue whereby 
+	several dotted lines appear as a solid line in the overlapping area.
+	@param pen the pen to offset; its style and width must already be set
+*/
+void Conductor::synchronizeDashPhase(QPen &pen) const
+{
+	if (pen.style() == Qt::SolidLine or pen.style() == Qt::NoPen) {
+		return;
+	}
+
+	const QList<ConductorSegment *> segments_list = segmentsList();
+	if (segments_list.isEmpty()) {
+		return;
+	}
+
+	const QVector<qreal> pattern = pen.dashPattern();
+	qreal period_length = 0.0;
+	for (qreal dash_length : pattern) {
+		period_length += dash_length;
+	}
+	if (period_length <= 0.0) {
+		return;
+	}
+
+	qreal pen_width = pen.widthF();
+	if (pen_width <= 0.0) {
+		pen_width = 1.0;
+	}
+
+	ConductorSegment *first_segment = segments_list.first();
+	const QPointF scene_point = mapToScene(first_segment -> firstPoint());
+	const qreal reference = first_segment -> isHorizontal() ? scene_point.x() : scene_point.y();
+
+	qreal offset = std::fmod(reference / pen_width, period_length);
+	if (offset < 0.0) {
+		offset += period_length;
+	}
+	pen.setDashOffset(offset);
 }
 
 /// @return le Diagram auquel ce conducteur appartient, ou 0 si ce conducteur est independant

@@ -260,6 +260,7 @@ class Conductor : public QGraphicsObject
 		void updateConductorPath(const QPointF &, Qet::Orientation, const QPointF &, Qet::Orientation);
 		uint segmentsCount(QET::ConductorSegmentType = QET::Both) const;
 		QList<QPointF> segmentsToPoints() const;
+		void synchronizeDashPhase(QPen &pen) const;
 		QList<ConductorBend> bends() const;
 		bool bendMakesJunction(const Conductor *, const QPointF &, Qt::Corner) const;
 
