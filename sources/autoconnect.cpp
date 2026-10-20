@@ -82,21 +82,19 @@ bool isFree(const State &s, const Terminal *t)
 }
 
 /**
-	@return true when the body of a symbol other than the two ends lies
-	across the straight line from @a a to @a b
+	@return true when the body of a symbol not in @a ignore lies across the
+	straight, level or upright line from @a p to @a q
 */
-bool blocked(const State &s, const Terminal *a, const Terminal *b)
+bool bodyAcross(const Diagram *diagram, const QPointF &p, const QPointF &q,
+				const QSet<const Element *> &ignore)
 {
-	const QPointF p = a->dockConductor();
-	const QPointF q = b->dockConductor();
 	const QRectF span = QRectF(p, q).normalized();
 	const QRectF search = span.adjusted(-1, -1, 1, 1);
 
-	for (QGraphicsItem *qgi : s.diagram->items(search, Qt::IntersectsItemBoundingRect))
+	for (QGraphicsItem *qgi : diagram->items(search, Qt::IntersectsItemBoundingRect))
 	{
 		auto *e = qgraphicsitem_cast<Element *>(qgi);
-		if (!e || e == a->parentElement() || e == b->parentElement()
-			|| s.leaving.contains(e))
+		if (!e || ignore.contains(e))
 			continue;
 
 			//Only the inside of the body stops the line: a symbol whose edge
@@ -118,6 +116,18 @@ bool blocked(const State &s, const Terminal *a, const Terminal *b)
 		}
 	}
 	return false;
+}
+
+/**
+	@return true when the body of a symbol other than the two ends lies
+	across the straight line from @a a to @a b
+*/
+bool blocked(const State &s, const Terminal *a, const Terminal *b)
+{
+	QSet<const Element *> ignore {a->parentElement(), b->parentElement()};
+	for (Element *e : s.leaving)
+		ignore << e;
+	return bodyAcross(s.diagram, a->dockConductor(), b->dockConductor(), ignore);
 }
 
 Terminal *findPartner(const State &s, const Terminal *from)
@@ -325,4 +335,74 @@ Terminal *AutoConnect::partner(const Terminal *from)
 	State s;
 	s.diagram = from->diagram();
 	return findPartner(s, from);
+}
+
+QList<QPointF> AutoConnect::dragPlacements(const Diagram *diagram,
+										   const Element *sample,
+										   const QLineF &drag,
+										   const QSet<const Element *> &ignore)
+{
+	QList<QPointF> placements;
+	if (!diagram || !sample || drag.length() < kTolerance)
+		return placements;
+
+	QSet<const Element *> skip = ignore;
+	skip << sample;
+
+	for (Element *e : diagram->elements())
+	{
+		if (skip.contains(e))
+			continue;
+		for (Terminal *t : e->terminals())
+		{
+				//Only lines automatic connections own: a terminal with a
+				//wire drawn by hand is left alone
+			bool by_hand = false;
+			for (Conductor *c : t->conductors())
+				by_hand |= !c->isAutomatic();
+			if (by_hand)
+				continue;
+
+			const QPointF p = t->dockConductor();
+			const QPointF d = direction(t->orientation());
+			if (d.isNull())
+				continue;
+			const QLineF ray(p, p + d * 1e6);
+			QPointF crossing;
+			if (ray.intersects(drag, &crossing) != QLineF::BoundedIntersection)
+				continue;
+
+			for (Terminal *f : sample->terminals())
+			{
+				if (!Qet::isOpposed(t->orientation(), f->orientation()))
+					continue;
+					//The symbol's origin on the crossing, on the grid along
+					//the line, and across it where the terminal facing the
+					//line lies on it
+				const QPointF offset = f->dockConductor() - sample->pos();
+				const QPointF grid = Diagram::snapToGrid(crossing);
+				QPointF origin;
+				if (qFuzzyIsNull(d.x()))
+					origin = QPointF(p.x() - offset.x(), grid.y());
+				else
+					origin = QPointF(grid.x(), p.y() - offset.y());
+				const QPointF facing = origin + offset;
+				if (ahead(t, facing) <= kTolerance
+					|| bodyAcross(diagram, p, facing, skip | QSet<const Element *>{e}))
+					continue;
+
+				bool twice = false;
+				for (const QPointF &other : std::as_const(placements))
+					twice |= QLineF(other, origin).length() < kTolerance;
+				if (!twice)
+					placements << origin;
+				break;
+			}
+		}
+	}
+
+	std::sort(placements.begin(), placements.end(), [](const QPointF &a, const QPointF &b) {
+		return a.y() != b.y() ? a.y() < b.y() : a.x() < b.x();
+	});
+	return placements;
 }

@@ -18,7 +18,9 @@
 #ifndef AUTOCONNECT_H
 #define AUTOCONNECT_H
 
+#include <QLineF>
 #include <QList>
+#include <QPointF>
 #include <QRectF>
 #include <QSet>
 
@@ -69,6 +71,22 @@ namespace AutoConnect
 
 	/// The terminal @a from would connect to now, or nullptr
 	Terminal *partner(const Terminal *from);
+
+	/**
+		Where copies of @a sample go when it is dragged along @a drag, as
+		corners, T-junctions or folio reports are placed along a drag: one on
+		every line an automatic connection can run along that crosses the
+		drag, where a terminal of the symbol at its present rotation faces
+		the terminal the line starts from. A terminal with a wire drawn by
+		hand starts no line, and the body of a symbol on the way stops it.
+		@param ignore : symbols that are not part of the folio (previews)
+		@return the positions for the symbol's origin, on the grid along
+		each line, in reading order
+	*/
+	QList<QPointF> dragPlacements(const Diagram *diagram,
+								  const Element *sample,
+								  const QLineF &drag,
+								  const QSet<const Element *> &ignore = {});
 }
 
 #endif // AUTOCONNECT_H

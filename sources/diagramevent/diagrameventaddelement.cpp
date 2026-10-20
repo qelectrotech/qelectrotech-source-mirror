@@ -30,6 +30,7 @@
 #include "../qet.h"
 #include "../autobreakconductor.h"
 #include "../autoconnect.h"
+#include <QGraphicsLineItem>
 #include <QPainterPath>
 #include <limits>
 
@@ -78,6 +79,7 @@ DiagramEventAddElement::DiagramEventAddElement(ElementsLocation &location, Diagr
 */
 DiagramEventAddElement::~DiagramEventAddElement()
 {
+	endDrag();
 	if (m_element)
 	{
 		m_diagram->removeItem(m_element);
@@ -100,6 +102,19 @@ DiagramEventAddElement::~DiagramEventAddElement()
 */
 void DiagramEventAddElement::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
+		//Pressed and dragged: copies along the drag
+	if (m_element && m_pressed && (event->buttons() & Qt::LeftButton))
+	{
+		const QPointF to = Diagram::snapToGrid(event->scenePos());
+		if (!m_dragging && QLineF(m_press_pos, to).length() >= Diagram::xGrid)
+			m_dragging = true;
+		if (m_dragging) {
+			updateDrag(to);
+			event->setAccepted(true);
+			return;
+		}
+	}
+
 	if (m_element)
 	{
 		const auto pos_{Diagram::snapToGrid(event->scenePos())};
@@ -118,7 +133,13 @@ void DiagramEventAddElement::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 	the event is always accepted
 	@param event
 */
-void DiagramEventAddElement::mousePressEvent(QGraphicsSceneMouseEvent *event) {
+void DiagramEventAddElement::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	m_drag_cancelled = false;
+	if (m_element && event->button() == Qt::LeftButton && AutoConnect::isOn(m_diagram)) {
+		m_pressed = true;
+		m_press_pos = Diagram::snapToGrid(event->scenePos());
+	}
 	event->setAccepted(true);
 }
 
@@ -143,7 +164,17 @@ void DiagramEventAddElement::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		}
 		else if (event->button() == Qt::LeftButton)
 		{
-			addElement();
+			if (m_drag_cancelled) {
+					//The release of a drag given up with Escape places nothing
+				m_drag_cancelled = false;
+			} else if (m_dragging) {
+				const QList<QPointF> positions = m_drag_positions;
+				endDrag();
+				addElements(positions);
+			} else {
+				endDrag();
+				addElement();
+			}
 		}
 	}
 
@@ -181,6 +212,15 @@ void DiagramEventAddElement::keyPressEvent(QKeyEvent *event)
 	if (m_element && event->key() == Qt::Key_Space)
 	{
 		m_element->setRotation(m_element->rotation() + 90);
+		if (m_dragging && m_drag_line)
+			updateDrag(m_drag_line->line().p2());
+		event->setAccepted(true);
+	}
+	else if (m_dragging && event->key() == Qt::Key_Escape)
+	{
+			//Escape gives up the drag, not the placing
+		endDrag();
+		m_drag_cancelled = true;
 		event->setAccepted(true);
 	}
 	else {
@@ -230,7 +270,12 @@ bool DiagramEventAddElement::buildElement()
 	Add an element at the current pos and current rotation,
 	if project autoconductor option is enable, and the element can be wired, we do it.
 */
-void DiagramEventAddElement::addElement()
+/**
+	@brief DiagramEventAddElement::createElement
+	@return a new copy of the element being placed, or nullptr when it
+	cannot be built
+*/
+Element *DiagramEventAddElement::createElement() const
 {
 	int state;
 	Element *element;
@@ -243,8 +288,16 @@ void DiagramEventAddElement::addElement()
 	if (state)
 	{
 		delete element;
-		return;
+		return nullptr;
 	}
+	return element;
+}
+
+void DiagramEventAddElement::addElement()
+{
+	Element *element = createElement();
+	if (!element)
+		return;
 
 		//We must add item to scene (even if addItemCommand do this)
 		//for create the autoconnection below
@@ -304,4 +357,116 @@ void DiagramEventAddElement::addElement()
 
 	m_diagram -> undoStack().push(undo_object);
 	element->freezeNewAddedElement();
+}
+
+/**
+	@brief DiagramEventAddElement::updateDrag
+	Show the drag from where the mouse was pressed to @a to, and a preview
+	of each copy it places.
+*/
+void DiagramEventAddElement::updateDrag(const QPointF &to)
+{
+	if (!m_drag_line) {
+		m_drag_line = new QGraphicsLineItem();
+		QPen pen(Qt::blue, 0, Qt::DashLine);
+		pen.setCosmetic(true);
+		m_drag_line->setPen(pen);
+		m_drag_line->setZValue(1e6);
+		m_diagram->addItem(m_drag_line);
+	}
+	m_drag_line->setLine(QLineF(m_press_pos, to));
+	m_element->setVisible(false);
+
+	QSet<const Element *> ignore;
+	for (Element *ghost : std::as_const(m_ghosts))
+		ignore << ghost;
+	m_drag_positions = AutoConnect::dragPlacements(
+				m_diagram, m_element, m_drag_line->line(), ignore);
+
+	while (m_ghosts.size() < m_drag_positions.size())
+	{
+		Element *ghost = createElement();
+		if (!ghost)
+			break;
+		ghost->setFlag(QGraphicsItem::ItemIsSelectable, false);
+		ghost->setOpacity(0.5);
+		m_diagram->addItem(ghost);
+		m_ghosts << ghost;
+	}
+	for (int i = 0; i < m_ghosts.size(); ++i)
+	{
+		Element *ghost = m_ghosts.at(i);
+		ghost->setVisible(i < m_drag_positions.size());
+		ghost->setRotation(m_element->rotation());
+		if (i < m_drag_positions.size())
+			ghost->setPos(m_drag_positions.at(i));
+	}
+
+	if (m_status_bar)
+		m_status_bar->showMessage(tr("%n symbol(s) along the drag", "", int(m_drag_positions.size())));
+}
+
+/**
+	@brief DiagramEventAddElement::endDrag
+	Remove the drag line and the previews.
+*/
+void DiagramEventAddElement::endDrag()
+{
+	m_pressed = false;
+	m_dragging = false;
+	m_drag_positions.clear();
+	if (m_drag_line) {
+		m_diagram->removeItem(m_drag_line);
+		delete m_drag_line;
+		m_drag_line = nullptr;
+	}
+	for (Element *ghost : std::as_const(m_ghosts)) {
+		m_diagram->removeItem(ghost);
+		ghost->deleteLater();
+	}
+	m_ghosts.clear();
+	if (m_element)
+		m_element->setVisible(true);
+}
+
+/**
+	@brief DiagramEventAddElement::addElements
+	Add a copy at each of @a positions, at the current rotation, in one
+	undo step; the automatic connections go with it.
+*/
+void DiagramEventAddElement::addElements(const QList<QPointF> &positions)
+{
+	if (positions.isEmpty())
+		return;
+
+	QList<Element *> added;
+	QUndoCommand *undo_object = new QUndoCommand();
+	for (const QPointF &pos : positions)
+	{
+		Element *element = createElement();
+		if (!element)
+			continue;
+		element->setPos(pos);
+		element->setRotation(m_element->rotation());
+		m_diagram->addItem(element);
+		new AddGraphicsObjectCommand(element, m_diagram, pos, undo_object);
+		added << element;
+	}
+	if (added.isEmpty()) {
+		delete undo_object;
+		return;
+	}
+	undo_object->setText(tr("insert %1 × %2").arg(added.size()).arg(added.first()->name()));
+
+		//As addElement(): the element that follows the mouse is not part
+		//of the folio
+	m_diagram->removeItem(m_element);
+	AutoConnect::update(m_diagram, added, {}, undo_object);
+	m_diagram->addItem(m_element);
+
+	for (Element *element : std::as_const(added))
+		element->setUpFormula(true, undo_object);
+	m_diagram->undoStack().push(undo_object);
+	for (Element *element : std::as_const(added))
+		element->freezeNewAddedElement();
 }
