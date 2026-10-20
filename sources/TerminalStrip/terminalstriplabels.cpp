@@ -24,6 +24,7 @@
 
 #include <QHash>
 #include <QPointer>
+#include <QThread>
 #include <QTimer>
 
 namespace {
@@ -92,7 +93,13 @@ QString TerminalStripLabels::text(const TerminalStrip *strip)
 
 void TerminalStripLabels::schedule(Diagram *diagram)
 {
-	if (diagram)
+	if (!diagram)
+		return;
+		//Without a running event loop (an export from the command line,
+		//a script run headless) a timer never fires: work them out now
+	if (QThread::currentThread()->loopLevel() == 0)
+		refresh(diagram);
+	else
 		updaterOf(diagram)->schedule();
 }
 
