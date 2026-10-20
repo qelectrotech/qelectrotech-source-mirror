@@ -395,8 +395,9 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 			//The bundle stays together at the end: the cross bar, a short
 			//stub, and a box naming where the cable goes -- the Installation,
 			//Location and Label (BMK) of the piece it lands on, the same
-			//three fields the cable list shows. The lines shrink to the end
-			//zone the settings leave, so the box never grows past the strip.
+			//three fields the cable list shows. The box spans the cross bar
+			//and never shrinks its text down to fit: when its lines are
+			//longer than the cross bar, the box is the one which grows.
 		painter->drawLine(QPointF{min_x, bar_2_y}, QPointF{max_x, bar_2_y});
 		const qreal stub{qMin<qreal>(6, end_length)};
 		painter->drawLine(QPointF{cable_x, bar_2_y}, QPointF{cable_x, bar_2_y + stub});
@@ -405,23 +406,30 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 														: QVector<QString>()};
 		if (!target_lines.isEmpty() && end_length - stub > 4)
 		{
+				//The font of the drawing, shrunk only while the lines do not
+				//fit the height the settings leave for the box
+			const qreal room{end_length - stub};
 			QFont box_font{painter->font()};
 			if (box_font.pixelSize() <= 0 && box_font.pointSizeF() > 0) {
 				box_font.setPixelSize(qMax(4, qRound(box_font.pointSizeF() * 96.0 / 72.0)));
 			}
-			const qreal room{end_length - stub};
-			const auto fits_the_end_zone = [&target_lines, room](const QFont &font_) {
+			const auto fits_the_height = [&target_lines, room](const QFont &font_) {
 				return QFontMetricsF{font_}.height() * target_lines.size() + 4 <= room;
 			};
-			while (!fits_the_end_zone(box_font) && box_font.pixelSize() > 4) {
+			while (!fits_the_height(box_font) && box_font.pixelSize() > 4) {
 				box_font.setPixelSize(box_font.pixelSize() - 1);
 			}
 
+				//As wide as the cross bar the cable ends on -- the strip of
+				//one single terminal has no width to take, so a small floor
+				//keeps the box drawn at all -- and wider still when the lines
+				//of the target are longer than that
 			const QFontMetricsF box_metrics{box_font};
-			qreal box_width{6};
+			qreal box_width{qMax<qreal>(max_x - min_x, 16)};
 			for (const QString &line_ : target_lines) {
 				box_width = qMax(box_width, box_metrics.horizontalAdvance(line_) + 6);
 			}
+
 			const qreal box_height{box_metrics.height() * target_lines.size() + 4};
 			const QRectF box{cable_x - box_width / 2, bar_2_y + stub, box_width, box_height};
 
@@ -430,9 +438,9 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 			painter->drawRect(box);
 			for (auto i = 0 ; i < target_lines.size() ; ++i)
 			{
-				painter->drawText(QRectF{box.left() + 1,
+				painter->drawText(QRectF{box.left() + 3,
 										 box.top() + 2 + i * box_metrics.height(),
-										 box.width() - 2, box_metrics.height()},
+										 box.width() - 6, box_metrics.height()},
 								  Qt::AlignCenter,
 								  target_lines.at(i));
 			}

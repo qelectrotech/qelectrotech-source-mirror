@@ -47,6 +47,10 @@
 	its mark and the terminal -- it shrinks, and what does not fit is
 	clipped, so it never runs into the drawing of the terminal.
 
+	Also here: the box at the end of a cable is written at the font of
+	the drawing -- the end zone the settings leave is what gives it the
+	room, so three lines never end up squeezed into a tiny text.
+
 	fixtures/every_feature.qet has the strip X1 (elements 891b70f2 and
 	4861e268) and the contact fc9cc920 wired to 891b70f2 by the
 	conductor 8bd16d7a; the test gives the contact the Installation,
@@ -164,6 +168,7 @@ private slots:
 	void spareHasNoTarget();
 	void paintsWithTargetBox();
 	void wireLabelStaysOutOfTheTerminal();
+	void targetBoxKeepsTheDrawingFont();
 };
 
 void tst_cabletarget::init()
@@ -369,6 +374,75 @@ void tst_cabletarget::wireLabelStaysOutOfTheTerminal()
 			QCOMPARE(with_label.pixel(x, y), without_label.pixel(x, y));
 		}
 	}
+}
+
+/**
+	The box at the end of a cable keeps the font of the drawing: with
+	its three lines (Installation, Location and Label) and the end zone
+	the settings leave, the text is still written at the font of the
+	strip instead of being squeezed into a tiny one. The box is the
+	lowest thing the strip draws, so its bottom line is the lowest
+	painted row, and it must land where three lines of that font need
+	it to.
+*/
+void tst_cabletarget::targetBoxKeepsTheDrawingFont()
+{
+	QVERIFY(wireCableToTheContact());
+
+	auto pattern_ = QSharedPointer<TerminalStripLayoutPattern>{new TerminalStripLayoutPattern};
+	const auto strips_ = m_project->terminalStrip();
+	QVERIFY(!strips_.isEmpty());
+	TerminalStripDrawer::TerminalStripDrawer drawer{
+		QSharedPointer<TerminalStripDrawer::TrueTerminalStrip>{
+			new TerminalStripDrawer::TrueTerminalStrip{strips_.first()}},
+		pattern_};
+
+	const QRectF bounds{drawer.boundingRect()};
+	QVERIFY(!bounds.isEmpty());
+	QImage image{bounds.size().toSize() + QSize{4, 4},
+				 QImage::Format_ARGB32_Premultiplied};
+	image.fill(Qt::transparent);
+	QPainter painter{&image};
+	painter.translate(-bounds.topLeft() + QPointF{2, 2});
+	drawer.paint(&painter);
+	painter.end();
+
+	qreal lowest{-1};
+	for (auto y = 0 ; y < image.height() ; ++y)
+	{
+		for (auto x = 0 ; x < image.width() ; ++x)
+		{
+			if (image.pixel(x, y) != qRgba(0, 0, 0, 0)) {
+				lowest = y;
+				break;
+			}
+		}
+	}
+	QVERIFY(lowest >= 0);
+
+		//The end zone the default layout leaves is what gives the box its
+		//room: three lines of the default font must fit in it, or the text
+		//of a target is squeezed down again by the drawing itself
+	const QFontMetricsF metrics{pattern_->font()};
+	const qreal room{pattern_->m_cable_end_length
+					 - qMin<qreal>(6, pattern_->m_cable_end_length)};
+	QVERIFY2(metrics.height() * 3 + 4 <= room,
+			 "the default end zone leaves no room for three lines of the "
+			 "default font, a target would be squeezed again");
+
+		//Where the bottom line of the box lands when it holds the three
+		//lines of its text at the font of the drawing
+	const qreal terminals_bottom{pattern_->m_terminal_rect.at(3).bottom()};
+	const qreal bar_2{terminals_bottom + pattern_->m_cable_wire_length
+					  + pattern_->m_cable_length};
+	const qreal box_bottom{bar_2 + qMin<qreal>(6, pattern_->m_cable_end_length)
+						   + metrics.height() * 3 + 4};
+
+		//The strip draws nothing under the box, so the lowest painted row
+		//is its bottom line -- within a pixel, the outline of a rectangle
+		//is painted on its edge
+	const qreal row{box_bottom - bounds.top() + 2};
+	QVERIFY(lowest + 2 >= row);
 }
 
 int main(int argc, char **argv)
