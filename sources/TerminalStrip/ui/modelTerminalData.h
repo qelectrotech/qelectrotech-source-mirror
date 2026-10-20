@@ -20,11 +20,30 @@
 
 #include <QColor>
 #include <QString>
+#include <QStringList>
 #include "../../qetgraphicsitem/element.h"
 #include "../realterminal.h"
 
 struct modelRealTerminalData
 {
+		///The Installation, Location and Label (BMK) of the piece the cable
+		///lands on, joined in one line : what the strip draws in the box
+		///under its cable (RealTerminal::cableTarget), in the same order.
+		///A target typed in by hand is one single line, and nothing is
+		///shown when the cable lands on nothing worth naming and no text
+		///was ever written in.
+		static QString targetText(const QVector<QString> &target_)
+		{
+			QStringList fields_;
+			for (const QString &field_ : target_)
+			{
+				if (!field_.isEmpty()) {
+					fields_ << field_;
+				}
+			}
+			return fields_.join(QStringLiteral(" / "));
+		}
+
 		static modelRealTerminalData data(const QSharedPointer<RealTerminal> &real_t)
 		{
 			modelRealTerminalData mrtd;
@@ -35,6 +54,8 @@ struct modelRealTerminalData
 				mrtd.Xref_ = real_t->Xref();
 				mrtd.cable_ = real_t->cable();
 				mrtd.cable_wire = real_t->cableWire();
+				mrtd.cable_target_ = targetText(real_t->cableTarget());
+				mrtd.cable_target_auto_ = real_t->cableTargetIsAutomatic();
 				mrtd.cable_auto_ = real_t->cableIsAutomatic();
 				mrtd.conductor_ = real_t->conductor();
 				mrtd.led_ = real_t->isLed();
@@ -61,6 +82,11 @@ struct modelRealTerminalData
 		QString Xref_;
 		QString cable_;
 		QString cable_wire;
+			//Where the cable lands, past this strip : Installation / Location / Label
+		QString cable_target_;
+			//True when cable_target_ comes from the project (read only),
+			//false when it is empty or was typed in by hand (editable)
+		bool cable_target_auto_ = false;
 		bool cable_auto_ = false;	//True when cable_ and cable_wire come from the cables of the project
 		QString conductor_;
 		bool led_ = false;

@@ -48,16 +48,17 @@ const int CONDUCTOR_CELL = 7;
 const int XREF_CELL = 8;
 const int CABLE_CELL = 9;
 const int CABLE_WIRE_CELL = 10;
-const int TYPE_CELL = 11;
-const int FUNCTION_CELL = 12;
-const int LED_CELL = 13;
-const int SHIELD_CELL = 14;
-const int COLOR_CELL = 15;
-const int SECTION_CELL = 16;
-const int WIDTH_CELL = 17;
-const int SEPARATOR_CELL = 18;
+const int CABLE_TARGET_CELL = 11;
+const int TYPE_CELL = 12;
+const int FUNCTION_CELL = 13;
+const int LED_CELL = 14;
+const int SHIELD_CELL = 15;
+const int COLOR_CELL = 16;
+const int SECTION_CELL = 17;
+const int WIDTH_CELL = 18;
+const int SEPARATOR_CELL = 19;
 
-const int COLUMN_COUNT = 19;
+const int COLUMN_COUNT = 20;
 
 static QVector<bool> UNMODIFIED_CELL_VECTOR(COLUMN_COUNT, false);
 
@@ -132,14 +133,15 @@ TerminalStripModel::Column TerminalStripModel::columnTypeForIndex(const QModelIn
 			case 8 : return XRef;
 			case 9 : return Cable;
 			case 10 : return CableWire;
-			case 11 : return Type;
-			case 12 : return Function;
-			case 13 : return Led;
-			case 14 : return Shield;
-			case 15 : return Color;
-			case 16 : return Section;
-			case 17 : return Width;
-			case 18 : return Separator;
+			case 11 : return CableTarget;
+			case 12 : return Type;
+			case 13 : return Function;
+			case 14 : return Led;
+			case 15 : return Shield;
+			case 16 : return Color;
+			case 17 : return Section;
+			case 18 : return Width;
+			case 19 : return Separator;
 			default : return Invalid;
 		}
 	}
@@ -215,6 +217,7 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 			case XREF_CELL :       return mrtd.spare_ ? tr("Spare") : mrtd.Xref_;
 			case CABLE_CELL :      return mrtd.cable_;
 			case CABLE_WIRE_CELL : return mrtd.cable_wire;
+			case CABLE_TARGET_CELL : return mrtd.cable_target_;
 			case TYPE_CELL :       return ElementData::translatedTerminalType(mrtd.type_);
 			case FUNCTION_CELL :   return ElementData::translatedTerminalFunction(mrtd.function_);
 			case COLOR_CELL :      return TerminalColor::displayName(mrtd.color_, mrtd.stripe_color_);
@@ -235,6 +238,7 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 			case LABEL_CELL : return mrtd.label_;
 			case CABLE_CELL : return mrtd.cable_;
 			case CABLE_WIRE_CELL : return mrtd.cable_wire;
+			case CABLE_TARGET_CELL : return mrtd.cable_target_;
 			case COLOR_CELL : return TerminalColor::toSpec(mrtd.color_, mrtd.stripe_color_);
 			case SECTION_CELL : return mrtd.section_ > 0 ? QLocale().toString(mrtd.section_, 'g', 6) : QString();
 			case WIDTH_CELL : return mrtd.width_mm_ > 0 ? QLocale().toString(mrtd.width_mm_, 'g', 6) : QString();
@@ -309,6 +313,10 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 		&& mrtd.cable_auto_) {
 		return false;
 	}
+	if (column_ == CABLE_TARGET_CELL
+		&& mrtd.cable_target_auto_) {
+		return false;
+	}
 
 	if (column_ == LEVEL_CELL &&
 		role == Qt::EditRole)
@@ -360,6 +368,14 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 		mrtd.cable_wire = value.toString();
 		modified_ = true;
 		modified_cell = CABLE_WIRE_CELL;
+	}
+	else if (column_ == CABLE_TARGET_CELL &&
+			 role == Qt::EditRole &&
+			 mrtd.cable_target_ != value.toString())
+	{
+		mrtd.cable_target_ = value.toString();
+		modified_ = true;
+		modified_cell = CABLE_TARGET_CELL;
 	}
 	else if (column_ == SHIELD_CELL)
 	{
@@ -484,6 +500,7 @@ QVariant TerminalStripModel::headerData(int section, Qt::Orientation orientation
 				case XREF_CELL:       return tr("Cross-reference");
 				case CABLE_CELL:      return tr("Cable");
 				case CABLE_WIRE_CELL: return tr("Color / wire number of the cable");
+				case CABLE_TARGET_CELL: return tr("Target");
 				case TYPE_CELL:       return tr("Type");
 				case FUNCTION_CELL :  return tr("Function");
 				case LED_CELL:        return tr("led");
@@ -495,6 +512,13 @@ QVariant TerminalStripModel::headerData(int section, Qt::Orientation orientation
 				default : return QVariant();
 			}
 		}
+	}
+	else if (role == Qt::ToolTipRole &&
+			 orientation == Qt::Horizontal &&
+			 section == CABLE_TARGET_CELL)
+	{
+			//Same three fields as the box drawn under the cable
+		return tr("Installation, Location and Label (BMK) of the piece the cable lands on, past this strip");
 	}
 
 	return QVariant();
@@ -509,6 +533,12 @@ Qt::ItemFlags TerminalStripModel::flags(const QModelIndex &index) const
 		//of the project is wired to the terminal
 	if ((c == CABLE_CELL || c == CABLE_WIRE_CELL)
 		&& !dataAtRow(index.row()).cable_auto_)
+		flags = flags | Qt::ItemIsEditable;
+		//The target the project works out is read only: only the drawing
+		//decides it. No target to show, or one typed in by hand, may be
+		//written -- the same rule as the cable cells.
+	if (c == CABLE_TARGET_CELL
+		&& !dataAtRow(index.row()).cable_target_auto_)
 		flags = flags | Qt::ItemIsEditable;
 	if (c == LABEL_CELL || c == TYPE_CELL || c == FUNCTION_CELL
 		|| c == COLOR_CELL || c == SECTION_CELL || c == WIDTH_CELL)

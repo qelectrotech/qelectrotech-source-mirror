@@ -407,6 +407,57 @@ bool RealTerminal::isShield() const {
 
 /**
  * @brief RealTerminal::cableTarget
+ * Where the cable of this terminal goes at its far end: the lines to
+ * write in the box under the cable. What the project itself says when
+ * a cable lands on a piece (see automaticCableTarget()), and the text
+ * typed in by hand when none does -- the Target cell of the terminal
+ * strip editor is read only in the first case, so a target the drawing
+ * cannot work out is still worth naming by hand. A text typed in is
+ * written the way the fields are shown in the column,
+ * "Installation / Location / Label", and gives one line per field.
+ * @return the lines to write in the box under the cable
+ */
+QVector<QString> RealTerminal::cableTarget() const
+{
+	const auto automatic_{automaticCableTarget()};
+	if (!automatic_.isEmpty()) {
+		return automatic_;
+	}
+
+	if (hasData())
+	{
+		const auto typed_{terminalData().m_informations
+						  .value(cableTargetInfoKey()).toString()};
+		if (!typed_.isEmpty())
+		{
+				//Written the way the fields are shown in the column,
+				//"Installation / Location / Label": the box draws one line
+				//per field, without the separators, like it does for a
+				//target worked out from the project
+			QVector<QString> lines_;
+			for (const QString &field_
+				 : typed_.split(QStringLiteral(" / "), Qt::SkipEmptyParts)) {
+				lines_ << field_;
+			}
+			return lines_;
+		}
+	}
+	return QVector<QString>();
+}
+
+/**
+ * @brief RealTerminal::cableTargetIsAutomatic
+ * @return true when the target of this terminal is worked out from the
+ * project -- one of its cables lands on a piece worth naming -- and
+ * false when only a text typed in by hand is there to show.
+ */
+bool RealTerminal::cableTargetIsAutomatic() const
+{
+	return !automaticCableTarget().isEmpty();
+}
+
+/**
+ * @brief RealTerminal::automaticCableTarget
  * Where the cable of this terminal goes at its far end: the
  * Installation, Location and Label (BMK) of the first piece the
  * wires of the cable land on, past the strip's own terminals, in
@@ -420,7 +471,7 @@ bool RealTerminal::isShield() const {
  * its name among the cables of the project.
  * @return the lines to write in the box under the cable
  */
-QVector<QString> RealTerminal::cableTarget() const
+QVector<QString> RealTerminal::automaticCableTarget() const
 {
 	if (m_spare || m_element.isNull()) {
 		return QVector<QString>();

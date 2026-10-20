@@ -249,6 +249,10 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		{
 			m_model = new TerminalStripModel{strip_, this};
 			ui->m_table_widget->setModel(m_model);
+				//The Target column is worked out from the drawing: it takes
+				//the width of its own text, never a cut off Installation
+			ui->m_table_widget->horizontalHeader()->setSectionResizeMode(
+				TerminalStripModel::CableTarget, QHeaderView::ResizeToContents);
 			m_model->buildBridgePixmap(setUpBridgeCellWidth());
 			connect(ui->m_table_widget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TerminalStripEditor::selectionChanged);
 		}
@@ -335,6 +339,12 @@ void TerminalStripEditor::apply()
 				if (!data_.cable_auto_) {
 					set_info(RealTerminal::cableInfoKey(), data_.cable_);
 					set_info(RealTerminal::cableWireInfoKey(), data_.cable_wire);
+				}
+					//The same for the target: a target worked out from the
+					//project is never written in the element, only the one
+					//typed in by hand is stored
+				if (!data_.cable_target_auto_) {
+					set_info(RealTerminal::cableTargetInfoKey(), data_.cable_target_);
 				}
 				set_info(RealTerminal::shieldInfoKey(), data_.shield_ ? QStringLiteral("true") : QString());
 				//The color and the section are stored with the dot as decimal separator, whatever the locale
@@ -790,7 +800,8 @@ void TerminalStripEditor::on_m_led_cb_activated(int index)
 namespace {
 /**
  * @return true if the cell at @a index contain a free text
- * (label, cable, wire of the cable, color, section or width), so a text can be pasted in it.
+ * (label, cable, wire of the cable, target of the cable, color, section
+ * or width), so a text can be pasted in it.
  */
 bool cellAcceptText(const QModelIndex &index)
 {
@@ -798,6 +809,7 @@ bool cellAcceptText(const QModelIndex &index)
 	return column_ == TerminalStripModel::Label
 			|| column_ == TerminalStripModel::Cable
 			|| column_ == TerminalStripModel::CableWire
+			|| column_ == TerminalStripModel::CableTarget
 			|| column_ == TerminalStripModel::Color
 			|| column_ == TerminalStripModel::Section
 			|| column_ == TerminalStripModel::Width;

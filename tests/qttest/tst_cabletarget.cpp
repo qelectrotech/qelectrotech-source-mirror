@@ -50,7 +50,10 @@
 
 	Also here: the box at the end of a cable is written at the font of
 	the drawing -- the end zone the settings leave is what gives it the
-	room, so three lines never end up squeezed into a tiny text.
+	room, so three lines never end up squeezed into a tiny text. A
+	target typed in by hand is written the way the fields are shown in
+	the column, "Installation / Location / Label", and the box draws one
+	line per field, with no slash in it.
 
 	Both drawing styles are covered: the schematic one and the
 	realistic one (the strip seen from above), which paint the same
@@ -174,6 +177,7 @@ private slots:
 	void paintsWithTargetBox();
 	void wireLabelStaysOutOfTheTerminal();
 	void targetBoxKeepsTheDrawingFont();
+	void typedTargetIsDrawnInItsOwnLines();
 	void realisticStyleDrawsTheCable();
 };
 
@@ -518,6 +522,94 @@ void tst_cabletarget::realisticStyleDrawsTheCable()
 		//No cable to let out : the strip does not reserve the zone
 	const QRectF without_bounds{bounds_of()};
 	QVERIFY(without_bounds.height() < with_bounds.height());
+}
+
+/**
+	A target typed in by hand is written the way the fields are shown in
+	the column, "Installation / Location / Label": the box under the
+	cable draws one line per field, with no slash in it. The picture of
+	a strip whose cable ends on three fields is therefore that much
+	deeper than the picture of the same strip with one single field --
+	two lines of the font of the drawing.
+*/
+void tst_cabletarget::typedTargetIsDrawnInItsOwnLines()
+{
+		//The cable lands on a piece which names nothing, so there is no
+		//target of the drawing and the box takes what is typed in
+	QVERIFY(wireCableToTheContact());
+	Element *contact_ = element(
+		QStringLiteral("{fc9cc920-5822-421a-916e-a17100acdcf6}"));
+	QVERIFY(contact_);
+	ElementData contact_data_{contact_->elementData()};
+	contact_data_.m_informations.addValue(QETInformation::ELMT_PLANT, QString());
+	contact_data_.m_informations.addValue(QETInformation::ELMT_LOCATION, QString());
+	contact_data_.m_informations.addValue(QETInformation::ELMT_LABEL, QString());
+	contact_->setElementData(contact_data_);
+
+	const auto a_ = terminalInStrip(
+		QStringLiteral("{891b70f2-2822-41c3-9f94-28efb448b5c4}"));
+	QVERIFY(a_);
+	QVERIFY(a_->cableTarget().isEmpty());
+	Element *terminal_ = a_->element();
+	QVERIFY(terminal_);
+
+	auto pattern_ = QSharedPointer<TerminalStripLayoutPattern>{new TerminalStripLayoutPattern};
+	const auto strips_ = m_project->terminalStrip();
+	QVERIFY(!strips_.isEmpty());
+	TerminalStripDrawer::TerminalStripDrawer drawer{
+		QSharedPointer<TerminalStripDrawer::TrueTerminalStrip>{
+			new TerminalStripDrawer::TrueTerminalStrip{strips_.first()}},
+		pattern_};
+
+	const QRectF bounds{drawer.boundingRect()};
+	QVERIFY(!bounds.isEmpty());
+
+	const auto render = [&drawer, &bounds]() {
+		QImage image{bounds.size().toSize() + QSize{4, 4},
+					 QImage::Format_ARGB32_Premultiplied};
+		image.fill(Qt::transparent);
+		QPainter painter{&image};
+		painter.translate(-bounds.topLeft() + QPointF{2, 2});
+		drawer.paint(&painter);
+		painter.end();
+		return image;
+	};
+	const auto lowest_row = [](const QImage &image_) {
+		qreal lowest{-1};
+		for (auto y = 0 ; y < image_.height() ; ++y)
+		{
+			for (auto x = 0 ; x < image_.width() ; ++x)
+			{
+				if (image_.pixel(x, y) != qRgba(0, 0, 0, 0)) {
+					lowest = y;
+					break;
+				}
+			}
+		}
+		return lowest;
+	};
+	const auto type_in = [terminal_](const QString &text_) {
+		ElementData data_{terminal_->elementData()};
+		data_.m_informations.addValue(RealTerminal::cableTargetInfoKey(), text_);
+		terminal_->setElementData(data_);
+	};
+
+		//One field: the box holds one single line
+	type_in(QStringLiteral("Boiler room"));
+	const qreal one_line{lowest_row(render())};
+	QVERIFY(one_line >= 0);
+
+		//Three fields: the box is two lines deeper, at the font of the
+		//drawing -- the slashes are only there to separate the fields in
+		//the column, the box never draws them
+	type_in(QStringLiteral("Boiler room / Cabinet 3 / -K3"));
+	QCOMPARE(a_->cableTarget(), (QVector<QString>{QStringLiteral("Boiler room"),
+												  QStringLiteral("Cabinet 3"),
+												  QStringLiteral("-K3")}));
+	const qreal three_lines{lowest_row(render())};
+	const QFontMetricsF metrics{pattern_->font()};
+	QVERIFY2(three_lines - one_line > 1.5 * metrics.height(),
+			 "three fields must give a box two lines deeper than one field");
 }
 
 int main(int argc, char **argv)

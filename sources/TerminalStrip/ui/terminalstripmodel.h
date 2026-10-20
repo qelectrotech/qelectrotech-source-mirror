@@ -58,14 +58,15 @@ class TerminalStripModel : public QAbstractTableModel
 			XRef = 8,
 			Cable = 9,
 			CableWire = 10,
-			Type = 11,
-			Function = 12,
-			Led = 13,
-			Shield = 14,
-			Color = 15,
-			Section = 16,
-			Width = 17,
-			Separator = 18,
+			CableTarget = 11,
+			Type = 12,
+			Function = 13,
+			Led = 14,
+			Shield = 15,
+			Color = 16,
+			Section = 17,
+			Width = 18,
+			Separator = 19,
 			Invalid = 99
 		};
 
