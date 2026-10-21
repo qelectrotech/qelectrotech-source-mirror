@@ -14,6 +14,13 @@ on:
         required: false
         default: ""
 
+# Rolling Qt6 nightly release, updated on every build. Replaces the old
+# "nightly" tag, which became immutable while the "Release immutability"
+# setting was briefly enabled (Oct. 2026) — see the note on
+# publish-nightly-assets in windows-build.yml.
+env:
+  NIGHTLY_TAG: nightly-qt6
+
 jobs:
   build-msi:
     name: Build MSI with WiX v7 (${{ matrix.flavor }})
@@ -371,19 +378,32 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
+          # The release may not exist yet (e.g. a manual MSI run before
+          # windows-build.yml has published anything on NIGHTLY_TAG):
+          # nothing to delete then.
+          gh release view $env:NIGHTLY_TAG --repo $env:REPO *> $null
+          if ($LASTEXITCODE -ne 0) {
+            Write-Host "Release '$env:NIGHTLY_TAG' does not exist yet — nothing to delete."
+            exit 0
+          }
           $pattern = "-qt6.*\\.msi$"
-          $names = gh release view nightly --repo $env:REPO --json assets --jq ".assets[] | select(.name | test(`"$pattern`")) | .name"
+          $names = gh release view $env:NIGHTLY_TAG --repo $env:REPO --json assets --jq ".assets[] | select(.name | test(`"$pattern`")) | .name"
           foreach ($name in ($names -split "`n" | Where-Object { $_ })) {
             Write-Host "Deleting old asset: $name"
-            gh release delete-asset nightly $name --repo $env:REPO --yes
+            gh release delete-asset $env:NIGHTLY_TAG $name --repo $env:REPO --yes
           }
         shell: pwsh
 
+      # prerelease / make_latest set explicitly: if this step happens to
+      # create the release (it does not exist yet), it must not become the
+      # repository's "Latest" release.
       - name: Upload MSI to nightly release
-        if: always()
+        if: always() && hashFiles('dist/*.msi') != ''
         uses: softprops/action-gh-release@v3
         with:
-          tag_name: nightly
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          prerelease: true
+          make_latest: false
           files: dist/*.msi
           fail_on_unmatched_files: true
         env:
@@ -413,11 +433,11 @@ jobs:
     runs-on: ubuntu-latest
     # Regenerate the page whenever the MSI job actually ran (success OR
     # packaging/signing failure) — not only on full success.
-    # generate-page.py queries the published assets on the "nightly"
-    # release itself (line 407: `gh release view nightly --json assets`),
-    # so it already handles a missing MSI natively (empty MSI_NAME -> no
-    # MSI button on the page). The page only needs the exe/zip already
-    # published by windows-build.yml, independent of the MSI's fate.
+    # The step below queries the published assets on the NIGHTLY_TAG
+    # release itself, so it already handles a missing MSI natively (empty
+    # MSI_NAME -> no MSI button on the page). The page only needs the
+    # exe/zip already published by windows-build.yml, independent of the
+    # MSI's fate.
     # Only "skipped"/"cancelled" are excluded: if build-msi never ran at
     # all (e.g. Windows Build itself failed), there is nothing new to
     # publish and regenerating the page would be pointless.
@@ -447,32 +467,22 @@ jobs:
           set -euo pipefail
           REPO="${{ github.repository }}"
 
-          ASSETS=$(gh release view nightly --repo "$REPO" --json assets --jq '.assets[].name')
+          ASSETS=$(gh release view "$NIGHTLY_TAG" --repo "$REPO" --json assets --jq '.assets[].name')
 
-          EXE_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.exe$' | head -1)
-          ZIP_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.zip$' | head -1)
+          EXE_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.exe$' | head -1 || echo "")
+          ZIP_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.zip$' | head -1 || echo "")
           MSI_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.msi$' | head -1 || echo "")
 
-          # Legacy Qt5 assets (no "qt6" in the name): last ever published,
-          # frozen — windows-build.yml/windows-msi.yml no longer delete or
-          # replace these, so they keep pointing at the same files release
-          # after release. Rendered as a separate "legacy" section if present.
-          LEGACY_EXE_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.exe$' | head -1 || echo "")
-          LEGACY_ZIP_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.zip$' | head -1 || echo "")
-          LEGACY_MSI_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.msi$' | head -1 || echo "")
+          if [ -z "$EXE_NAME" ] || [ -z "$ZIP_NAME" ]; then
+            echo "::error::No Qt6 .exe/.zip found on release '$NIGHTLY_TAG' — refusing to publish a page with dead links."
+            exit 1
+          fi
 
-          BASE="https://github.com/$REPO/releases/download/nightly"
+          BASE="https://github.com/$REPO/releases/download/$NIGHTLY_TAG"
           INSTALLER_URL="$BASE/$EXE_NAME"
           PORTABLE_URL="$BASE/$ZIP_NAME"
           MSI_URL=""
           [ -n "$MSI_NAME" ] && MSI_URL="$BASE/$MSI_NAME"
-
-          LEGACY_INSTALLER_URL=""
-          LEGACY_PORTABLE_URL=""
-          LEGACY_MSI_URL=""
-          [ -n "$LEGACY_EXE_NAME" ] && LEGACY_INSTALLER_URL="$BASE/$LEGACY_EXE_NAME"
-          [ -n "$LEGACY_ZIP_NAME" ] && LEGACY_PORTABLE_URL="$BASE/$LEGACY_ZIP_NAME"
-          [ -n "$LEGACY_MSI_NAME" ] && LEGACY_MSI_URL="$BASE/$LEGACY_MSI_NAME"
 
           SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
           SHORT="${SHA:0:7}"
@@ -482,7 +492,7 @@ jobs:
 
           export DATE SHORT REPO SHA RUN_URL RUN_NUMBER
           export INSTALLER_URL PORTABLE_URL MSI_URL
-          export LEGACY_INSTALLER_URL LEGACY_PORTABLE_URL LEGACY_MSI_URL
+          export NIGHTLY_TAG
 
           python3 source/build-aux/generate-page.py
 
