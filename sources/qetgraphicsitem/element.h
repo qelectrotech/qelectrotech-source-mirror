@@ -185,6 +185,8 @@ class Element : public QetGraphicsItem
 		QPixmap pixmap();
 		QPoint setHotspot(QPoint);
 		QPoint hotspot() const;
+			/// The area the symbol is drawn on, in its own coordinates
+		QRectF drawingRect() const;
 		void editProperty() override;
 		static bool valideXml(QDomElement &);
 		static QUuid savedTerminalUuid(const QList<QDomElement> &records, int index);

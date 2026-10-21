@@ -620,6 +620,18 @@ void Element::paint(
 /**
 	@return Le rectangle delimitant le contour de l'element
 */
+/**
+	@brief Element::drawingRect
+	@return the area its drawing covers, in this symbol's coordinates:
+	tighter than boundingRect(), which is rounded up to the grid. The
+	bounding rect for a symbol with nothing drawn.
+*/
+QRectF Element::drawingRect() const
+{
+	const QRect drawn = m_picture.isNull() ? QRect() : m_picture.boundingRect();
+	return drawn.isEmpty() ? boundingRect() : QRectF(drawn);
+}
+
 QRectF Element::boundingRect() const
 {
 	return(QRectF(QPointF(-hotspot_coord.x(), -hotspot_coord.y()),

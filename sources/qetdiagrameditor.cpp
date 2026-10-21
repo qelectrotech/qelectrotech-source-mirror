@@ -20,6 +20,7 @@
 #include "container/qetzip.h"
 #include "utils/previousversions.h"
 #include "shownkinds.h"
+#include "symboltextplacement.h"
 #ifdef QET_HAS_SCRIPTING
 #include "scripting/qetscripting.h"
 #include "scripting/scriptlibrary.h"
@@ -33,6 +34,7 @@
 #include <QCoreApplication>
 #include <QToolButton>
 #include <QWidgetAction>
+#include <QGridLayout>
 #include "ElementsCollection/elementscollectionwidget.h"
 #include "ElementsCollection/elementpickerpopup.h"
 #include "shortcutbarsettings.h"
@@ -488,6 +490,62 @@ void QETDiagramEditor::setUpActions()
 
 	connect(m_copy_text_format,  &QAction::triggered, this, &QETDiagramEditor::copyTextFormat);
 	connect(m_apply_text_format, &QAction::triggered, this, &QETDiagramEditor::applyTextFormat);
+
+		//The texts of the selected symbols, label and notes, as one block at
+		//one of nine points around the symbol: the nine points of the text
+		//alignment dialog. A click places them at the point chosen last.
+	const auto chosen_point = []() {
+		return Qt::Alignment(QSettings().value(QStringLiteral("diagrameditor/place_texts_point"),
+											   int(Qt::AlignLeft | Qt::AlignVCenter)).toInt());
+	};
+		//The button shows where its click will put the texts
+	m_place_texts = new QAction(SymbolTextPlacement::icon(chosen_point()), tr("Place symbol texts"), this);
+	m_place_texts->setStatusTip(tr("Place the label and the notes of the selected symbols as one block beside them", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_place_texts, "diagrameditor.place_symbol_texts", tr("Diagram editors"), QKeySequence());
+	{
+		auto *menu = new QMenu(this);
+		auto *grid_widget = new QWidget(menu);
+		auto *grid = new QGridLayout(grid_widget);
+		grid->setContentsMargins(6, 6, 6, 6);
+		grid->setSpacing(2);
+		const struct { Qt::Alignment where; const char *tip; } points[] = {
+			{Qt::AlignLeft | Qt::AlignTop,        QT_TR_NOOP("Above, left")},
+			{Qt::AlignHCenter | Qt::AlignTop,     QT_TR_NOOP("Above")},
+			{Qt::AlignRight | Qt::AlignTop,       QT_TR_NOOP("Above, right")},
+			{Qt::AlignLeft | Qt::AlignVCenter,    QT_TR_NOOP("Left")},
+			{Qt::AlignCenter,                     QT_TR_NOOP("On the symbol")},
+			{Qt::AlignRight | Qt::AlignVCenter,   QT_TR_NOOP("Right")},
+			{Qt::AlignLeft | Qt::AlignBottom,     QT_TR_NOOP("Below, left")},
+			{Qt::AlignHCenter | Qt::AlignBottom,  QT_TR_NOOP("Below")},
+			{Qt::AlignRight | Qt::AlignBottom,    QT_TR_NOOP("Below, right")}};
+		int n = 0;
+		for (const auto &point : points)
+		{
+			auto *button = new QToolButton(grid_widget);
+			button->setIcon(SymbolTextPlacement::icon(point.where));
+			button->setIconSize(QSize(32, 32));
+			button->setToolTip(tr(point.tip));
+			button->setObjectName(QStringLiteral("place_texts_%1").arg(n));
+			button->setFixedSize(38, 38);
+			button->setAutoRaise(true);
+			const Qt::Alignment where = point.where;
+			connect(button, &QToolButton::clicked, this, [this, menu, where]() {
+				menu->close();
+				QSettings().setValue(QStringLiteral("diagrameditor/place_texts_point"), int(where));
+				m_place_texts->setIcon(SymbolTextPlacement::icon(where));
+				placeSymbolTexts(where);
+			});
+			grid->addWidget(button, n / 3, n % 3);
+			++n;
+		}
+		auto *grid_action = new QWidgetAction(menu);
+		grid_action->setDefaultWidget(grid_widget);
+		menu->addAction(grid_action);
+		m_place_texts->setMenu(menu);
+	}
+	connect(m_place_texts, &QAction::triggered, this, [this, chosen_point]() {
+		placeSymbolTexts(chosen_point());
+	});
 
 		//Duplicate: copy the selection and place it at a configured,
 		//grid-step offset immediately -- no interactive follow-the-
@@ -1585,6 +1643,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_paste);
 	menu_edition -> addAction(m_copy_text_format);
 	menu_edition -> addAction(m_apply_text_format);
+	menu_edition -> addAction(m_place_texts);
 	menu_edition -> addAction(m_paste_origin);
 	menu_edition -> addAction(m_paste_element_info);
 	menu_edition -> addAction(m_duplicate);
@@ -3187,6 +3246,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_find_element->setEnabled(selected_elements_count == 1);
 	m_copy_text_format->setEnabled(selected_elements_count >= 1);
 	m_apply_text_format->setEnabled(!ro && selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern());
+	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
 	m_mirror_horizontal->setEnabled(!ro && selected_elements_count);
 	m_mirror_vertical->setEnabled(!ro && selected_elements_count);
 
@@ -5014,6 +5074,27 @@ void QETDiagramEditor::copyTextFormat()
  * @brief QETDiagramEditor::applyTextFormat
  * Applies the stored text formatting template to all selected elements in the active diagram.
  */
+/**
+	@brief QETDiagramEditor::placeSymbolTexts
+	Place the texts of the selected symbols as one block at @a where,
+	one of nine points around each symbol, in one undo step.
+	@param where : see SymbolTextPlacement::place()
+*/
+void QETDiagramEditor::placeSymbolTexts(Qt::Alignment where)
+{
+	DiagramView *dv = currentDiagramView();
+	if (!dv || !dv->diagram() || dv->diagram()->isReadOnly()) return;
+
+	QList<Element *> elements;
+	for (QGraphicsItem *item : dv->diagram()->selectedItems())
+		if (Element *element = qgraphicsitem_cast<Element *>(item))
+			elements.append(element);
+	if (elements.isEmpty()) return;
+
+	if (QUndoCommand *undo = SymbolTextPlacement::place(elements, where))
+		dv->diagram()->undoStack().push(undo);
+}
+
 void QETDiagramEditor::applyTextFormat()
 {
 	if (!ElementTextFormatPattern::hasPattern()) return;
