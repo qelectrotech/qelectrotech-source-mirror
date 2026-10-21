@@ -179,6 +179,21 @@ class projectDataBase : public QObject
 		};
 		void setNumbering(const Numbering &numbering);
 		Numbering numbering() const;
+		QHash<QString, NumerotationContext> numberingSchemes(const QString &kind) const;
+		bool hasNumberingScheme(const QString &kind, const QString &title) const;
+		NumerotationContext numberingScheme(const QString &kind, const QString &title) const;
+		QUuid numberingSchemeUuid(const QString &kind, const QString &title) const;
+		QString numberingSchemeTitle(const QString &kind, const QUuid &uuid) const;
+		void setNumberingScheme(const QString &kind, const QString &title,
+								const NumerotationContext &context,
+								const QUuid &uuid = QUuid());
+		void removeNumberingScheme(const QString &kind, const QString &title);
+		void renameNumberingScheme(const QString &kind, const QString &old_title,
+								   const QString &new_title);
+		QString numberingSetting(const QString &name, const QString &default_value = QString()) const;
+		bool numberingFlag(const QString &name, bool default_value) const;
+		void setNumberingSetting(const QString &name, const QString &value);
+		void setNumberingFlag(const QString &name, bool value);
 		bool savedLinks(const Element *element, QList<std::pair<QUuid, int>> *links);
 			//The link rows are written (opening filled them): a symbol
 			//built links from them (Element::initLink())

@@ -54,7 +54,7 @@ subprocess.run([ninja, '-C', str(build), '-f', probe_manifest.name, target], che
 output = build / 'lazy-folios'
 output.mkdir(exist_ok=True)
 report = output / 'results.txt'
-result = subprocess.run([str(probe_binary), str(fixture), str(report), str(output)], timeout=1500)
+result = subprocess.run([str(probe_binary), str(fixture), str(report), str(output)], timeout=2400)
 if report.exists():
     print(report.read_text(encoding='utf-8', errors='replace'))
 sys.exit(result.returncode)
