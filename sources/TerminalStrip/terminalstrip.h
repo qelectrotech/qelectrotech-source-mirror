@@ -118,6 +118,10 @@ class TerminalStrip : public QObject
 		void unBridge(const QVector<QSharedPointer<RealTerminal>> &real_terminals);
 		bool canUnBridge(const QVector <QSharedPointer<RealTerminal>> &real_terminals) const;
 		QSharedPointer<TerminalStripBridge> isBridged(const QSharedPointer<RealTerminal> real_terminal) const;
+			///True when at least one bridge joins terminals of this strip :
+			///the bridge cells of the terminal strip editor are the only thing
+			///drawn from them (see TerminalStripModel::bridgePixmapFor)
+		bool hasBridges() const { return !m_bridge.isEmpty(); }
 		QSharedPointer<TerminalStripBridge> bridgeFor (const QVector<QSharedPointer<RealTerminal>> &terminal_vector) const;
 
 		QSharedPointer<RealTerminal> previousTerminalInLevel(const QSharedPointer<RealTerminal> &real_terminal) const;

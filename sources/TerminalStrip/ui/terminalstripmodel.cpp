@@ -187,12 +187,7 @@ int TerminalStripModel::rowCount(const QModelIndex &parent) const
 		return 0;
 	}
 
-	auto count = 0;
-	for (const auto &mptd : m_physical_data) {
-		count += mptd.real_data.size();
-	}
-
-	return count;
+	return m_row_count;
 }
 
 int TerminalStripModel::columnCount(const QModelIndex &parent) const
@@ -274,7 +269,8 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 	{
 		return QBrush(Qt::gray);	//"Spare" : not a reference to a folio
 	}
-	else if (role == Qt::BackgroundRole && index.column() < COLUMN_COUNT )
+	else if (role == Qt::BackgroundRole && index.column() < COLUMN_COUNT
+			 && !m_modified_cell.isEmpty())
 	{
 		const auto key_ = modifiedCellKey(mrtd);
 		if (m_modified_cell.contains(key_) &&
@@ -635,7 +631,7 @@ QVector<modelRealTerminalData> TerminalStripModel::modelRealTerminalDataForIndex
 	for (auto i : set_) {
 		const auto rtd_ = realDataAtIndex(i);
 		if (rtd_.level_ > -1) {
-			vector_.append(realDataAtIndex(i));
+			vector_.append(rtd_);
 		}
 	}
 
@@ -743,6 +739,8 @@ void TerminalStripModel::reload()
 
 void TerminalStripModel::fillPhysicalTerminalData()
 {
+	m_row_index.clear();
+
 		//Get all physical terminal
 	if (m_terminal_strip)
 	{
@@ -752,41 +750,32 @@ void TerminalStripModel::fillPhysicalTerminalData()
 			mptd.pos_ = phy_t->pos();
 			mptd.uuid_ = phy_t->uuid();
 
+			const auto physical_index = static_cast<int>(m_physical_data.size());
 			for (const auto &real_t : phy_t->realTerminals())
 			{
 				if (!real_t.isNull())
 				{
 					mptd.real_data.append(modelRealTerminalData::data(real_t));
+					m_row_index.append({physical_index,
+										static_cast<int>(mptd.real_data.size()) - 1});
 				}
 			}
 
 			m_physical_data.append(mptd);
 		}
 	}
+
+	m_row_count = m_row_index.size();
 }
 
 modelRealTerminalData TerminalStripModel::dataAtRow(int row) const
 {
-	if (row > rowCount(QModelIndex())) {
+	if (row < 0 || row >= m_row_count) {
 		return modelRealTerminalData();
 	}
-	else
-	{
-		auto current_row = 0;
-		for (const auto &physical_data : std::as_const(m_physical_data))
-		{
-			for (const auto &real_data : physical_data.real_data)
-			{
-				if (current_row == row) {
-					return real_data;
-				} else {
-					++current_row;
-				}
-			}
-		}
-	}
 
-	return modelRealTerminalData();
+	const auto &place_ = m_row_index.at(row);
+	return m_physical_data.at(place_.physical_).real_data.at(place_.real_);
 }
 
 /**
@@ -797,32 +786,12 @@ modelRealTerminalData TerminalStripModel::dataAtRow(int row) const
  */
 void TerminalStripModel::replaceDataAtRow(modelRealTerminalData data, int row)
 {
-	if (row > rowCount(QModelIndex())) {
+	if (row < 0 || row >= m_row_count) {
 		return;
 	}
-	else
-	{
-		auto current_row = 0;
-		auto current_physical = 0;
 
-		for (const auto &physical_data : std::as_const(m_physical_data))
-		{
-			auto current_real = 0;
-			for (int i=0 ; i<physical_data.real_data.count() ; ++i)
-			{
-				if (current_row == row) {
-					auto physical_data = m_physical_data.at(current_physical);
-					physical_data.real_data.replace(current_real, data);
-					m_physical_data.replace(current_physical, physical_data);
-					return;
-				} else {
-					++current_real;
-					++current_row;
-				}
-			}
-			++current_physical;
-		}
-	}
+	const auto &place_ = m_row_index.at(row);
+	m_physical_data[place_.physical_].real_data.replace(place_.real_, data);
 }
 
 /**
@@ -840,26 +809,17 @@ modelPhysicalTerminalData TerminalStripModel::physicalDataAtIndex(int index) con
 		return modelPhysicalTerminalData();
 	}
 
-	int current_checked_index = -1;
-	int current_phy = -1;
-	bool match_ = false;
-
-	for (const auto &ptd_ : std::as_const(m_physical_data))
-	{
-		current_checked_index += ptd_.real_data.size();
-		++current_phy;
-
-		if (current_checked_index >= index) {
-			match_ = true;
-			break;
-		}
+		//A row always belongs to the physical terminal it is a level of,
+		//m_row_index says which one (negative index: the first physical
+		//terminal, as the walk this replaces used to give)
+	if (index < 0) {
+		return m_physical_data.first();
 	}
-
-	if (match_) {
-		return  m_physical_data.at(current_phy);
-	} else {
+	if (index >= m_row_count) {
 		return modelPhysicalTerminalData();
 	}
+
+	return m_physical_data.at(m_row_index.at(index).physical_);
 }
 
 /**
@@ -869,23 +829,34 @@ modelPhysicalTerminalData TerminalStripModel::physicalDataAtIndex(int index) con
  */
 modelRealTerminalData TerminalStripModel::realDataAtIndex(int index) const
 {
-	if (m_physical_data.isEmpty()) {
+	if (index < 0 || index >= m_row_count) {
 		return modelRealTerminalData();
 	}
 
-	int current_checked_index = -1;
+	const auto &place_ = m_row_index.at(index);
+	return m_physical_data.at(place_.physical_).real_data.at(place_.real_);
+}
 
-	for (const auto & ptd_ : std::as_const(m_physical_data))
+/**
+ * @brief bridgeWalkStep
+ * The three fields the neighbour walk of bridgePixmapFor() reads: level,
+ * bridge and identity. The whole row data would answer as well, but filling
+ * it reads the cables of the project (RealTerminal::cableTarget() and
+ * friends) -- work done for every step of a walk which the view runs for
+ * every bridge cell it paints and measures.
+ * @param real_t : the terminal to look at, may be null (no previous one)
+ * @return the data the walk needs, everything else left as it defaults
+ */
+static modelRealTerminalData bridgeWalkStep(const QSharedPointer<RealTerminal> &real_t)
+{
+	modelRealTerminalData mrtd;
+	if (!real_t.isNull())
 	{
-		for (const auto & rtd_ : std::as_const(ptd_.real_data)) {
-			++current_checked_index;
-			if (current_checked_index == index) {
-				return rtd_;
-			}
-		}
+		mrtd.level_ = real_t->level();
+		mrtd.bridged_ = real_t->isBridged();
+		mrtd.real_terminal = real_t.toWeakRef();
 	}
-
-	return modelRealTerminalData();
+	return mrtd;
 }
 
 QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
@@ -896,6 +867,15 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 
 	auto level_column = levelForColumn(columnTypeForIndex(index));
 	if (level_column == -1) {
+		return QPixmap();
+	}
+
+		//Without a bridge on this strip there is nothing to draw in the
+		//bridge cells: the check at the end of this function ends on an
+		//empty pixmap, and every step of the walk below to reach it used
+		//to fill the row data of a terminal (which reads the cables of the
+		//whole project). Skip the walk when there is no bridge at all.
+	if (!m_terminal_strip->hasBridges()) {
 		return QPixmap();
 	}
 
@@ -937,22 +917,30 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		//Terminal level ins't in the same column level of index
 		//Check if we need to draw a none bridge pixmap
 
-		//Check previous
-	auto phy_t = mrtd.real_terminal.toStrongRef()->physicalTerminal();
-	auto current_real_terminal = mrtd;
-	auto current_phy_uuid = phy_t->uuid();
+		//Check previous. The rows of the table hold the terminals of the
+		//strip in strip order, so the neighbour of a row is the row next
+		//to it: asking the strip for its neighbour walked to the head of
+		//the strip every time, for every bridge cell the view paints and
+		//measures (and on every layout of the table).
+	auto current_row = index.row();
+	auto current_t = mrtd.real_terminal.toStrongRef();
+	auto current_phy_uuid = current_t->physicalTerminal()->uuid();
 	bool already_jumped_to_previous = false;
 	modelRealTerminalData previous_data;
 
 	do {
-		current_real_terminal = modelRealTerminalData::data(m_terminal_strip->previousRealTerminal(current_real_terminal.real_terminal));
+		--current_row;
+		const auto previous_t = current_row >= 0
+				? dataAtRow(current_row).real_terminal.toStrongRef()
+				: QSharedPointer<RealTerminal>();
+		const auto current_real_terminal = bridgeWalkStep(previous_t);
 
 		if (current_real_terminal.level_ == -1) {
 			break;
 		}
 
 			//We are in the same physical terminal as previous loop
-		if (current_phy_uuid == current_real_terminal.real_terminal.toStrongRef()->physicalTerminal()->uuid())
+		if (current_phy_uuid == previous_t->physicalTerminal()->uuid())
 		{
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
@@ -964,7 +952,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 			break;
 		} else {
 			already_jumped_to_previous = true;
-			current_phy_uuid = current_real_terminal.real_terminal.toStrongRef()->physicalTerminal()->uuid();
+			current_phy_uuid = previous_t->physicalTerminal()->uuid();
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
 				previous_data = current_real_terminal;
@@ -974,20 +962,24 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 	} while(true);
 
 		//Check next
-	current_real_terminal = mrtd;
-	current_phy_uuid = phy_t->uuid();
+	current_row = index.row();
+	current_phy_uuid = current_t->physicalTerminal()->uuid();
 	bool already_jumped_to_next = false;
 	modelRealTerminalData next_data;
 
 	do {
-		current_real_terminal = modelRealTerminalData::data(m_terminal_strip->nextRealTerminal(current_real_terminal.real_terminal));
+		++current_row;
+		const auto next_t = current_row < m_row_count
+				? dataAtRow(current_row).real_terminal.toStrongRef()
+				: QSharedPointer<RealTerminal>();
+		const auto current_real_terminal = bridgeWalkStep(next_t);
 
 		if (current_real_terminal.level_ == -1) {
 			break;
 		}
 
 			//We are in the same physical terminal as previous loop
-		if (current_phy_uuid == current_real_terminal.real_terminal.toStrongRef()->physicalTerminal()->uuid())
+		if (current_phy_uuid == next_t->physicalTerminal()->uuid())
 		{
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
@@ -999,7 +991,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 			break;
 		} else {
 			already_jumped_to_next = true;
-			current_phy_uuid = current_real_terminal.real_terminal.toStrongRef()->physicalTerminal()->uuid();
+			current_phy_uuid = next_t->physicalTerminal()->uuid();
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
 				next_data = current_real_terminal;

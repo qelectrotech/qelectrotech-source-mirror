@@ -107,10 +107,24 @@ class TerminalStripModel : public QAbstractTableModel
 		QPixmap bridgePixmapFor(const QModelIndex &index) const;
 
 	private:
+			//Where the data of one row of the table sit in m_physical_data.
+			//The view asks for every cell of every row, over and over (paint,
+			//flags, row height), so looking a row up must be a lookup and not
+			//a walk through the whole strip each time.
+		struct RowPlace
+		{
+			int physical_;	//index in m_physical_data
+			int real_;		//index in the real_data of that physical terminal
+		};
+
 		QPointer<TerminalStrip> m_terminal_strip;
 			//Modified cells of each real terminal (spare terminals have no element)
 		QHash<const RealTerminal *, QVector<bool>> m_modified_cell;
 		QVector<modelPhysicalTerminalData> m_physical_data;
+			//One RowPlace by row, filled with m_physical_data (see fillPhysicalTerminalData)
+		QVector<RowPlace> m_row_index;
+			//Number of rows held in m_row_index, so rowCount() needs no walk
+		int m_row_count = 0;
 		struct BridgePixmap
 		{
 				QPixmap top_,
