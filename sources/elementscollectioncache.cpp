@@ -40,6 +40,11 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 	QString connection_name = QString("ElementsCollectionCache-%1").arg(cache_instances++);
 	cache_db_ = QSqlDatabase::addDatabase("QSQLITE", connection_name);
 	cache_db_.setDatabaseName(database_path);
+	// Every QElectroTech on this computer shares this file: two builds in
+	// different folders, or a build beside a released version, both run.
+	// The cache only saves time, so never wait for another one to let go
+	// of it -- a busy file is a cache miss (#1571).
+	cache_db_.setConnectOptions("QSQLITE_BUSY_TIMEOUT=0");
 
 	if (!cache_db_.open())
 		qDebug() << "Unable to open the SQLite database " << database_path << " as " << connection_name << ": " << cache_db_.lastError();
@@ -49,7 +54,6 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 		QSqlQuery(cache_db_).exec("PRAGMA journal_mode = MEMORY");
 		QSqlQuery(cache_db_).exec("PRAGMA page_size = 4096");
 		QSqlQuery(cache_db_).exec("PRAGMA cache_size = 16384");
-		QSqlQuery(cache_db_).exec("PRAGMA locking_mode = EXCLUSIVE");
 		QSqlQuery(cache_db_).exec("PRAGMA synchronous = OFF");
 
 			// Previews used to be stored on an opaque white sheet; they are
@@ -301,7 +305,7 @@ bool ElementsCollectionCache::cacheName(const QString &path,
 	insert_name_ -> bindValue(":name",   current_name_);
 	if (!insert_name_ -> exec())
 	{
-		qDebug() << cache_db_.lastError();
+		qDebug() << insert_name_ -> lastError();
 		return(false);
 	}
 	return(true);
@@ -327,7 +331,7 @@ bool ElementsCollectionCache::cachePixmap(const QString &path,
 	insert_pixmap_ -> bindValue(":pixmap", QVariant(ba));
 	if (!insert_pixmap_->exec())
 	{
-		qDebug() << cache_db_.lastError();
+		qDebug() << insert_pixmap_ -> lastError();
 		return(false);
 	}
 	return(true);

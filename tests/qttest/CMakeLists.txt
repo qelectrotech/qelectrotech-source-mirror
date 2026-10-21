@@ -1494,3 +1494,7 @@ qet_add_app_test(tst_elementspanelclosedproject tst_elementspanelclosedproject.c
 # A project closed before the element collection panel's first load, or during
 # a load, stayed in the collection and the next reload read the freed project.
 qet_add_app_test(tst_collectionclosedproject tst_collectionclosedproject.cpp)
+
+# A second QElectroTech writes to the shared element cache at once instead of
+# waiting for the first to close (#1571).
+qet_add_app_test(tst_elementcachelock tst_elementcachelock.cpp)
