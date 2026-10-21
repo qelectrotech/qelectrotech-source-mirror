@@ -16,6 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextitem.h"
+#include <QScopedPointer>
+#include <QTextDocument>
+#include "../QetGraphicsItemModeler/textresizehandles.h"
 #include "../shownkinds.h"
 #include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
@@ -1050,7 +1053,53 @@ void DynamicElementTextItem::handlerMousePressEvent(QetGraphicsHandlerItem *hand
 		//A concrete baseline for the live drag's delta math, which can't
 		//start from -1.
 	m_resize_baseline_width = (m_resize_original_width < 0) ? frameRect().width() : m_resize_original_width;
-	m_resize_start_local_x = mapFromScene(event->scenePos()).x();
+		//The text moves while it is dragged, to keep its alignment point
+		//in place: read the mouse in the text's coordinates as they were
+		//at the press, otherwise the delta grows with every step
+	m_resize_scene_to_local = sceneTransform().inverted();
+	m_resize_start_local_x = m_resize_scene_to_local.map(event->scenePos()).x();
+
+		//The point the text is aligned on stays where it is: remember it
+		//in the parent's coordinates, which take the text's rotation
+		//into account
+	m_resize_start_pos = pos();
+	m_resize_fixed_parent = mapToParent(resizeAnchor());
+}
+
+/**
+	@brief DynamicElementTextItem::minimumTextWidth
+	@return the narrowest width the text can be dragged to: that of its
+	widest word. Narrower, a long word runs out of the text's box while
+	the short lines are still aligned inside it, and a centred or right
+	aligned text falls apart (a lone "1" in the middle under its words).
+*/
+qreal DynamicElementTextItem::minimumTextWidth() const
+{
+	QScopedPointer<QTextDocument> narrowest(document()->clone());
+	narrowest->setTextWidth(0);
+	return qMax(narrowest->idealWidth(), qreal(10));
+}
+
+/**
+	@brief DynamicElementTextItem::resizeAnchor
+	@return the point of the text, in its own coordinates, that a drag on
+	a width handle keeps in place: the point it is aligned on, one of the
+	nine of its alignment (left, centre or right; top, middle or bottom).
+	A text aligned top right keeps its top right corner whichever handle
+	is dragged, and a text that wraps onto more lines while it narrows
+	grows away from that point instead of moving into its neighbours.
+*/
+QPointF DynamicElementTextItem::resizeAnchor() const
+{
+	const QRectF br = boundingRect();
+	const Qt::Alignment a = alignment();
+	const qreal x = (a & Qt::AlignRight) ? br.right()
+				  : (a & Qt::AlignHCenter) ? br.center().x()
+				  : br.left();
+	const qreal y = (a & Qt::AlignBottom) ? br.bottom()
+				  : (a & Qt::AlignVCenter) ? br.center().y()
+				  : br.top();
+	return QPointF(x, y);
 }
 
 /**
@@ -1065,21 +1114,26 @@ void DynamicElementTextItem::handlerMousePressEvent(QetGraphicsHandlerItem *hand
 */
 void DynamicElementTextItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event)
 {
-	qreal local_x = mapFromScene(event->scenePos()).x();
+	qreal local_x = m_resize_scene_to_local.map(event->scenePos()).x();
 	qreal delta = local_x - m_resize_start_local_x;
 	if (handle == m_left_resize_handle)
 		delta = -delta;
 
-	qreal new_width = qMax(m_resize_baseline_width + delta, qreal(10));
+	qreal new_width = qMax(m_resize_baseline_width + delta, minimumTextWidth());
 	setTextWidth(new_width);
+
+		//Keep the point the text is aligned on in place, whatever the new
+		//width and number of lines
+	setPos(pos() + m_resize_fixed_parent - mapToParent(resizeAnchor()));
 	updateResizeHandlesPos();
 }
 
 /**
 	@brief DynamicElementTextItem::handlerMouseReleaseEvent
-	Push the same QPropertyUndoCommand the properties-panel width spinbox
-	already pushes (sources/ui/dynamicelementtextmodel.cpp) -- the value is
-	already applied live from the drag, so this only makes it undoable.
+	Make the drag undoable with a TextResizeCommand, as the corner handles
+	of a free text do: the width and, after a drag on the left handle, the
+	position that kept the right edge in place. Both are already applied,
+	live from the drag.
 	@param handle
 	@param event
 */
@@ -1089,10 +1143,13 @@ void DynamicElementTextItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *ha
 	Q_UNUSED(event)
 
 	qreal new_width = textWidth();
-	if (!qFuzzyCompare(m_resize_original_width, new_width) && m_parent_element && m_parent_element->diagram())
+	if ((!qFuzzyCompare(m_resize_original_width, new_width) || pos() != m_resize_start_pos)
+			&& m_parent_element && m_parent_element->diagram())
 	{
-		auto *undo = new QPropertyUndoCommand(this, "textWidth", QVariant(m_resize_original_width), QVariant(new_width));
-		undo->setAnimated(true, false);
+			//Width and position together: undoing a drag on the left
+			//handle puts the text back where it was
+		auto *undo = new TextResizeCommand(this, m_resize_original_width, new_width,
+										   m_resize_start_pos, pos());
 		undo->setText(tr("Resize an element text"));
 		m_parent_element->diagram()->undoStack().push(undo);
 	}
