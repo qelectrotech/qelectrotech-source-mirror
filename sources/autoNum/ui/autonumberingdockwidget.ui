@@ -92,12 +92,6 @@
     </item>
     <item row="2" column="4">
      <widget class="QSpinBox" name="m_conductor_increase_sb">
-      <property name="maximumSize">
-       <size>
-        <width>55</width>
-        <height>16777215</height>
-       </size>
-      </property>
       <property name="toolTip">
        <string>Increment: the value added to the counter each time a new number is dialled</string>
       </property>
@@ -179,12 +173,6 @@
     </item>
     <item row="3" column="4">
      <widget class="QSpinBox" name="m_element_increase_sb">
-      <property name="maximumSize">
-       <size>
-        <width>55</width>
-        <height>16777215</height>
-       </size>
-      </property>
       <property name="toolTip">
        <string>Increment: the value added to the counter each time a new number is dialled</string>
       </property>
@@ -255,12 +243,6 @@
     </item>
     <item row="4" column="4">
      <widget class="QSpinBox" name="m_folio_increase_sb">
-      <property name="maximumSize">
-       <size>
-        <width>55</width>
-        <height>16777215</height>
-       </size>
-      </property>
       <property name="toolTip">
        <string>Increment: the value added to the counter each time a new number is dialled</string>
       </property>

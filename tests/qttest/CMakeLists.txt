@@ -312,6 +312,10 @@ qet_add_app_test(tst_folioimageload tst_folioimageload.cpp)
 # selection has nothing to edit for a moment (#1439).
 qet_add_app_test(tst_selectionpanelheight tst_selectionpanelheight.cpp)
 
+# The Auto numbering panel's Increment spin boxes get the width their style
+# asks for; a fixed 55 px cut the number off on Windows (#1566).
+qet_add_app_test(tst_autonumincrementwidth tst_autonumincrementwidth.cpp)
+
 # Opening a project before the elements panel's first reload() left its tree
 # item detached, and selecting the item's first child crashed in QTreeModel
 # (pre-existing since a82f6de23).
