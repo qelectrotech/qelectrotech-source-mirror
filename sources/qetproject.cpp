@@ -140,6 +140,8 @@ m_project_properties_handler{this}
 			setCurrentCableAutoNum(cableData.second);
 		}
 	}
+		//m_auto_break_conductor above is read from the settings directly
+	writeNumberingRows();
 }
 
 ProjectPropertiesHandler &QETProject::projectPropertiesHandler()
@@ -1504,6 +1506,7 @@ QString QETProject::elementCurrentAutoNum () const
 */
 void QETProject::setCurrrentElementAutonum(QString autoNum) {
 	m_current_element_autonum = std::move(autoNum);
+	writeNumberingRows();
 }
 
 /**
@@ -1549,6 +1552,7 @@ QString QETProject::cableCurrentAutoNum() const
 void QETProject::setCurrentCableAutoNum(QString autoNum)
 {
 	m_current_cable_autonum = std::move(autoNum);
+	writeNumberingRows();
 }
 
 /**
@@ -1581,6 +1585,7 @@ bool QETProject::cableXAxisFirst() const
 void QETProject::setCableXAxisFirst(bool x_axis_first)
 {
 	m_cable_axis_x_first = x_axis_first;
+	writeNumberingRows();
 }
 
 /**
@@ -1607,6 +1612,7 @@ bool QETProject::cableAskNumbering() const
 void QETProject::setCableAskNumbering(bool ask)
 {
 	m_cable_ask_numbering = ask;
+	writeNumberingRows();
 }
 
 /**
@@ -1660,6 +1666,7 @@ QString QETProject::conductorCurrentAutoNum () const
 */
 void QETProject::setCurrentConductorAutoNum(QString autoNum) {
 	m_current_conductor_autonum = std::move(autoNum);
+	writeNumberingRows();
 }
 
 /**
@@ -1680,6 +1687,7 @@ QHash <QString, NumerotationContext> QETProject::folioAutoNum() const
 */
 void QETProject::addConductorAutoNum(const QString& key, const NumerotationContext& context) {
 	m_conductor_autonum.insert(key, context);
+	writeNumberingRows();
 	emit autoNumContextUpdated();
 }
 
@@ -1724,6 +1732,7 @@ void QETProject::addElementAutoNum(const QString &key,
 	}
 	m_element_autonum_id.insert(key, scheme_id);
 	m_element_autonum.insert(key, context);
+	writeNumberingRows();
 	emit elementAutoNumAdded(key);
 	emit autoNumContextUpdated();
 }
@@ -1795,6 +1804,7 @@ bool QETProject::renameElementAutoNum(const QString &old_title, const QString &n
 		}
 	}
 
+	writeNumberingRows();
 	emit elementAutoNumRemoved(old_title);
 	emit elementAutoNumAdded(new_title);
 	emit autoNumContextUpdated();
@@ -2023,6 +2033,7 @@ QList<QETProject::SymbolNumbering> QETProject::symbolNumbering() const
 */
 void QETProject::addFolioAutoNum(const QString& key, const NumerotationContext& context) {
 	m_folio_autonum.insert(key, context);
+	writeNumberingRows();
 	emit autoNumContextUpdated();
 }
 
@@ -2049,6 +2060,7 @@ void QETProject::addCableAutoNum(const QString& key, const NumerotationContext& 
 						   || !m_cable_autonum.contains(m_current_cable_autonum))) {
 		m_current_cable_autonum = key;
 	}
+	writeNumberingRows();
 	emit autoNumContextUpdated();
 }
 
@@ -2059,6 +2071,7 @@ void QETProject::addCableAutoNum(const QString& key, const NumerotationContext& 
 */
 void QETProject::removeConductorAutoNum(const QString& key) {
 	m_conductor_autonum.remove(key);
+	writeNumberingRows();
 }
 
 /**
@@ -2070,6 +2083,7 @@ void QETProject::removeElementAutoNum(const QString& key)
 {
 	m_element_autonum.remove(key);
 	m_element_autonum_id.remove(key);
+	writeNumberingRows();
 	emit elementAutoNumRemoved(key);
 }
 
@@ -2080,6 +2094,7 @@ void QETProject::removeElementAutoNum(const QString& key)
 */
 void QETProject::removeFolioAutoNum(const QString& key) {
 	m_folio_autonum.remove(key);
+	writeNumberingRows();
 }
 
 /**
@@ -2094,6 +2109,7 @@ void QETProject::removeCableAutoNum(const QString& key)
 		m_current_cable_autonum = m_cable_autonum.isEmpty()
 				? QString() : m_cable_autonum.keys().first();
 	}
+	writeNumberingRows();
 	emit autoNumContextUpdated();
 }
 
@@ -2186,6 +2202,7 @@ bool QETProject::isFreezeNewConductors()
 */
 void QETProject::setFreezeNewConductors(bool set) {
 	m_freeze_new_conductors = set;
+	writeNumberingRows();
 }
 
 /**
@@ -2230,6 +2247,7 @@ bool QETProject::isFreezeNewElements()
 */
 void QETProject::setFreezeNewElements(bool set) {
 	m_freeze_new_elements = set;
+	writeNumberingRows();
 }
 
 /**
@@ -2363,6 +2381,7 @@ void QETProject::setAutoBreakConductor(bool abc)
 {
 	if (abc != m_auto_break_conductor)
 		m_auto_break_conductor = abc;
+	writeNumberingRows();
 }
 
 /**
@@ -4044,6 +4063,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			m_default_guides.append(g);
 		}
 	}
+	writeNumberingRows();
 }
 
 /**
@@ -4227,21 +4247,116 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	}
 	xml_element.appendChild(xrefs_elmt);
 
+	writeNumberingXml(numberingOfProject(), xml_element);
+		//QET_CHECK_NUMBERING_ROWS=1: say whether the project database's
+		//numbering rows write what the project writes (QETZ-DB-FIRST stage
+		//2b-1). A test and debugging aid; it changes nothing.
+	if (qEnvironmentVariableIntValue("QET_CHECK_NUMBERING_ROWS") == 1) {
+		QDomDocument from_project, from_rows;
+		QDomElement project_root = from_project.createElement(QStringLiteral("numbering"));
+		QDomElement rows_root = from_rows.createElement(QStringLiteral("numbering"));
+		from_project.appendChild(project_root);
+		from_rows.appendChild(rows_root);
+		writeNumberingXml(numberingOfProject(), project_root);
+		writeNumberingXml(m_data_base.numbering(), rows_root);
+		const bool same = from_project.toString() == from_rows.toString();
+		qWarning().noquote() << "numbering rows:" << (same ? 0 : 1) << "differ";
+	}
+
+	// Export default guides
+	QDomElement guides_elmt = xml_document.createElement("guides");
+	for (const auto &g : m_default_guides) {
+		QDomElement guide_elmt = xml_document.createElement("guide");
+		guide_elmt.setAttribute("orientation", static_cast<int>(g.orientation));
+		guide_elmt.setAttribute("position", g.position);
+		guide_elmt.setAttribute("color", g.color.name());
+		guides_elmt.appendChild(guide_elmt);
+	}
+	xml_element.appendChild(guides_elmt);
+}
+
+/**
+	@brief QETProject::numberingOfProject
+	@return the project's numbering schemes and their settings, as the
+	project holds them, for the project database's numbering tables
+	(QETZ-DB-FIRST stage 2b) and for the save
+*/
+projectDataBase::Numbering QETProject::numberingOfProject() const
+{
+	projectDataBase::Numbering numbering;
+	auto add = [&numbering](const QString &kind, const QHash<QString, NumerotationContext> &schemes,
+							const QHash<QString, QUuid> &ids) {
+		for (auto it = schemes.cbegin() ; it != schemes.cend() ; ++it)
+			numbering.schemes << projectDataBase::NumberingScheme{kind, it.key(), ids.value(it.key()), it.value()};
+	};
+	add(QStringLiteral("conductor"), m_conductor_autonum, {});
+	add(QStringLiteral("folio"), m_folio_autonum, {});
+	add(QStringLiteral("element"), m_element_autonum, m_element_autonum_id);
+	add(QStringLiteral("cable"), m_cable_autonum, {});
+	numbering.current_conductor = m_current_conductor_autonum;
+	numbering.current_element = m_current_element_autonum;
+	numbering.current_cable = m_current_cable_autonum;
+	numbering.freeze_new_conductors = m_freeze_new_conductors;
+	numbering.freeze_new_elements = m_freeze_new_elements;
+	numbering.auto_break_conductors = m_auto_break_conductor;
+	numbering.cable_x_axis_first = m_cable_axis_x_first;
+	numbering.cable_ask_numbering = m_cable_ask_numbering;
+	return numbering;
+}
+
+/**
+	@brief QETProject::writeNumberingRows
+	Write the project's numbering into the project database's numbering
+	tables (QETZ-DB-FIRST stage 2b-1): after reading the file and after
+	each change of the numbering, so the rows are always what the save
+	writes (QET_CHECK_NUMBERING_ROWS checks it)
+*/
+void QETProject::writeNumberingRows()
+{
+	m_data_base.setNumbering(numberingOfProject());
+}
+
+/**
+	@brief QETProject::writeNumberingXml
+	Export @p numbering as the <conductors_autonums>, <folio_autonums>,
+	<element_autonums> and <cable_autonums> children of @p xml_element
+*/
+void QETProject::writeNumberingXml(const projectDataBase::Numbering &numbering,
+								   QDomElement &xml_element)
+{
+	QDomDocument xml_document = xml_element.ownerDocument();
+		//Sorted, as the xrefs are: the schemes come in no particular order
+		//(they were QHash, whose key order is randomised per process), so
+		//an unsorted write reorders these children on every save.
+	auto schemes = [&numbering](const QString &kind) {
+		QMap<QString, projectDataBase::NumberingScheme> sorted;
+		QStringList titles;
+		for (const auto &scheme : numbering.schemes) {
+			if (scheme.kind == kind) {
+				sorted.insert(scheme.title, scheme);
+				titles << scheme.title;
+			}
+		}
+		titles.sort();
+		QList<projectDataBase::NumberingScheme> list;
+		for (const QString &title : std::as_const(titles))
+			list << sorted.value(title);
+		return list;
+	};
+	auto formula = [](const projectDataBase::NumberingScheme &scheme) {
+		return autonum::numerotationContextToFormula(scheme.context);
+	};
+
 	//Export Conductor Autonums
 	QDomElement conductor_autonums = xml_document.createElement("conductors_autonums");
-	conductor_autonums.setAttribute("current_autonum", m_current_conductor_autonum);
-	conductor_autonums.setAttribute("freeze_new_conductors", m_freeze_new_conductors ? "true" : "false");
-	conductor_autonums.setAttribute("auto_break_conductors", m_auto_break_conductor ? "true" : "false");
-		//Sorted for the same reason as the xrefs above: these three
-		//collections are QHash, whose key order is randomised per process,
-		//so an unsorted write reorders these children on every save.
-	QStringList conductor_autonum_keys = conductorAutoNum().keys();
-	conductor_autonum_keys.sort();
-	for (const QString &key : std::as_const(conductor_autonum_keys)) {
-	QDomElement conductor_autonum = conductorAutoNum(key).toXml(xml_document, "conductor_autonum");
-		if (key != "" && conductorAutoNumFormula(key) != "") {
-			conductor_autonum.setAttribute("title", key);
-			conductor_autonum.setAttribute("formula", conductorAutoNumFormula(key));
+	conductor_autonums.setAttribute("current_autonum", numbering.current_conductor);
+	conductor_autonums.setAttribute("freeze_new_conductors", numbering.freeze_new_conductors ? "true" : "false");
+	conductor_autonums.setAttribute("auto_break_conductors", numbering.auto_break_conductors ? "true" : "false");
+	for (auto scheme : schemes(QStringLiteral("conductor"))) {
+	QDomElement conductor_autonum = scheme.context.toXml(xml_document, "conductor_autonum");
+		if (scheme.title != "" && formula(scheme) != "") {
+			conductor_autonum.setAttribute("title", scheme.title);
+			conductor_autonum.setAttribute("formula", formula(scheme));
 			conductor_autonums.appendChild(conductor_autonum);
 		}
 	}
@@ -4249,31 +4364,30 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 
 	//Export Folio Autonums
 	QDomElement folio_autonums = xml_document.createElement("folio_autonums");
-	QStringList folio_autonum_keys = folioAutoNum().keys();
-	folio_autonum_keys.sort();
-	for (const QString &key : std::as_const(folio_autonum_keys)) {
-	QDomElement folio_autonum = folioAutoNum(key).toXml(xml_document, "folio_autonum");
-		folio_autonum.setAttribute("title", key);
+	for (auto scheme : schemes(QStringLiteral("folio"))) {
+	QDomElement folio_autonum = scheme.context.toXml(xml_document, "folio_autonum");
+		folio_autonum.setAttribute("title", scheme.title);
 		folio_autonums.appendChild(folio_autonum);
 	}
 	xml_element.appendChild(folio_autonums);
 
 	//Export Element Autonums
+	const QList<projectDataBase::NumberingScheme> element_schemes = schemes(QStringLiteral("element"));
+	QUuid current_element_id;
+	for (const auto &scheme : element_schemes)
+		if (scheme.title == numbering.current_element) current_element_id = scheme.uuid;
 	QDomElement element_autonums = xml_document.createElement("element_autonums");
-	element_autonums.setAttribute("current_autonum", m_current_element_autonum);
-	if (!elementAutoNumId(m_current_element_autonum).isNull()) {
-		element_autonums.setAttribute("current_autonum_id",
-									  elementAutoNumId(m_current_element_autonum).toString());
+	element_autonums.setAttribute("current_autonum", numbering.current_element);
+	if (!current_element_id.isNull()) {
+		element_autonums.setAttribute("current_autonum_id", current_element_id.toString());
 	}
-	element_autonums.setAttribute("freeze_new_elements", m_freeze_new_elements ? "true" : "false");
-	QStringList element_autonum_keys = elementAutoNum().keys();
-	element_autonum_keys.sort();
-	for (const QString &key : std::as_const(element_autonum_keys)) {
-	QDomElement element_autonum = elementAutoNum(key).toXml(xml_document, "element_autonum");
-		if (key != "" && elementAutoNumFormula(key) != "") {
-			element_autonum.setAttribute("title", key);
-			element_autonum.setAttribute("id", elementAutoNumId(key).toString());
-			element_autonum.setAttribute("formula", elementAutoNumFormula(key));
+	element_autonums.setAttribute("freeze_new_elements", numbering.freeze_new_elements ? "true" : "false");
+	for (auto scheme : element_schemes) {
+	QDomElement element_autonum = scheme.context.toXml(xml_document, "element_autonum");
+		if (scheme.title != "" && formula(scheme) != "") {
+			element_autonum.setAttribute("title", scheme.title);
+			element_autonum.setAttribute("id", scheme.uuid.toString());
+			element_autonum.setAttribute("formula", formula(scheme));
 			element_autonums.appendChild(element_autonum);
 		}
 	}
@@ -4293,23 +4407,21 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	//drawn, an axis chosen before it, and the numbering question
 	//answered with no are answers only this element can carry.
 	QDomElement cable_autonums = xml_document.createElement("cable_autonums");
-	cable_autonums.setAttribute("current_autonum", m_current_cable_autonum);
+	cable_autonums.setAttribute("current_autonum", numbering.current_cable);
 	cable_autonums.setAttribute("axis_priority",
-								m_cable_axis_x_first ? "x" : "y");
+								numbering.cable_x_axis_first ? "x" : "y");
 		//Only the no is written down: a project which has not answered
 		//the numbering question yet asks again, so silence in the file
 		//means asking rather than holding back.
-	if (!m_cable_ask_numbering) {
+	if (!numbering.cable_ask_numbering) {
 		cable_autonums.setAttribute("ask_numbering_rule", "false");
 	}
 	int written_cable_rules = 0;
-	QStringList cable_autonum_keys = cableAutoNum().keys();
-	cable_autonum_keys.sort();
-	for (const QString &key : std::as_const(cable_autonum_keys)) {
-		QDomElement cable_autonum = cableAutoNum(key).toXml(xml_document, "cable_autonum");
-		if (key != "" && cableAutoNumFormula(key) != "") {
-			cable_autonum.setAttribute("title", key);
-			cable_autonum.setAttribute("formula", cableAutoNumFormula(key));
+	for (auto scheme : schemes(QStringLiteral("cable"))) {
+		QDomElement cable_autonum = scheme.context.toXml(xml_document, "cable_autonum");
+		if (scheme.title != "" && formula(scheme) != "") {
+			cable_autonum.setAttribute("title", scheme.title);
+			cable_autonum.setAttribute("formula", formula(scheme));
 			cable_autonums.appendChild(cable_autonum);
 			++written_cable_rules;
 		}
@@ -4318,23 +4430,12 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 		//chose an axis other than the default and has not answered the
 		//numbering question with no -- then this element would say
 		//nothing the reader does not assume anyway.
-	if (!m_current_cable_autonum.isEmpty()
-	    || !m_cable_ask_numbering
-	    || !m_cable_axis_x_first
+	if (!numbering.current_cable.isEmpty()
+	    || !numbering.cable_ask_numbering
+	    || !numbering.cable_x_axis_first
 	    || written_cable_rules > 0) {
 		xml_element.appendChild(cable_autonums);
 	}
-
-	// Export default guides
-	QDomElement guides_elmt = xml_document.createElement("guides");
-	for (const auto &g : m_default_guides) {
-		QDomElement guide_elmt = xml_document.createElement("guide");
-		guide_elmt.setAttribute("orientation", static_cast<int>(g.orientation));
-		guide_elmt.setAttribute("position", g.position);
-		guide_elmt.setAttribute("color", g.color.name());
-		guides_elmt.appendChild(guide_elmt);
-	}
-	xml_element.appendChild(guides_elmt);
 }
 
 /**

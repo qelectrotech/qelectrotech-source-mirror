@@ -457,6 +457,10 @@ class QETProject : public QObject
 
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
+		projectDataBase::Numbering numberingOfProject() const;
+		void writeNumberingRows();
+		static void writeNumberingXml(const projectDataBase::Numbering &numbering,
+									  QDomElement &xml_element);
 		void writeUsageXml(QDomElement &);
 		void writeWireHopsXml(QDomElement &);
 		void writeSymbolTextsXml(QDomElement &);

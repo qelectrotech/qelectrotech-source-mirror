@@ -42,6 +42,7 @@ class tst_elementautonumids : public QObject
 	int m_run = 0;
 
 	QString m_preferences;   // contents of the settings file of the next run
+	bool m_check_numbering = false;   // QET_CHECK_NUMBERING_ROWS for the runs
 
 	QProcessEnvironment environment()
 	{
@@ -61,6 +62,9 @@ class tst_elementautonumids : public QObject
 		env.insert(QStringLiteral("QET_SETTINGS_DIR"), settings_dir);
 		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
 		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
+		if (m_check_numbering) {
+			env.insert(QStringLiteral("QET_CHECK_NUMBERING_ROWS"), QStringLiteral("1"));
+		}
 		env.insert(QStringLiteral("HOME"), home);
 		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
 		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
@@ -725,6 +729,65 @@ qet.log('PROBE ' + JSON.stringify(r));
 	// the folios which read the numbering with it (26 folios of
 	// industrial.qet read "Wire"), a numbering which folios read cannot be
 	// removed, an unused one can, and every step is one undo.
+	// The project database's numbering rows (QETZ-DB-FIRST stage 2b-1)
+	// follow every change of the numbering: each save below writes the
+	// numbering from the project and from the rows, and the two must be
+	// the same (QET_CHECK_NUMBERING_ROWS). A scheme of each kind added,
+	// renamed, removed, undone and redone, then made current; a
+	// renumbering and its undo. On a one-folio project: a --run script
+	// is stopped after 30 s, and a sanitizer build is slow.
+	void numberingRowsFollowEveryChange()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("numbering-rows.qet"));
+		const QString script = QStringLiteral(R"JS(
+var saves = 0;
+function save() { if (qet.save(%1)) saves++; }
+save();
+['conductor', 'element', 'folio'].forEach(function (k) {
+	qet.addAutoNum(k, 'Rows ' + k, ['string:R-', 'unit:7:2']); save();
+	qet.renameAutoNum(k, 'Rows ' + k, 'Rows renamed ' + k); save();
+	qet.undo(); save();
+	qet.redo(); save();
+});
+['conductor', 'element', 'folio'].forEach(function (k) {
+	qet.removeAutoNum(k, 'Rows renamed ' + k); save();
+	qet.undo(); save();
+});
+qet.useElementAutoNum('Rows renamed element'); save();
+qet.useConductorAutoNum(0, 'Rows renamed conductor'); save();
+var schemes = qet.autoNums('element');
+var renumbered = qet.renumberElementAutoNum(schemes[0].split(': formula=')[0]) > 0;
+save();
+if (renumbered) qet.undo();
+save();
+qet.log('PROBE ' + JSON.stringify({saves: saves}));
+)JS").arg(QStringLiteral("'") + saved + QStringLiteral("'"));
+
+		m_check_numbering = true;
+		const QString path = m_dir.filePath(QStringLiteral("probe%1.js").arg(m_run));
+		QFile f(path);
+		QVERIFY(f.open(QIODevice::WriteOnly));
+		f.write(script.toUtf8());
+		f.close();
+		QProcess proc;
+		proc.setProcessEnvironment(environment());
+		m_check_numbering = false;
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
+				   {QStringLiteral("--run"), path, QStringLiteral(QET_EXAMPLES_DIR "/741.qet")});
+		QVERIFY(proc.waitForFinished(180000));
+		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
+
+		QVERIFY2(out.contains(QLatin1String("PROBE {\"saves\":23}")), qPrintable(out.right(2000)));
+		QCOMPARE(out.count(QLatin1String("numbering rows: 0 differ")), 23);
+		QCOMPARE(out.count(QLatin1String("numbering rows:")), 23);
+		// the changes are in the file: the folio numbering's removal was
+		// undone, the wires of the first folio follow the new numbering
+		const QByteArray xml = read(saved);
+		QVERIFY(xml.contains("title=\"Rows renamed folio\""));
+		QCOMPARE(diagramAttributes(xml, QStringLiteral("conductorAutonum")).value(0),
+				 QStringLiteral("Rows renamed conductor"));
+	}
+
 	void conductorNumberings()
 	{
 		const QString saved = m_dir.filePath(QStringLiteral("conductors.qet"));
