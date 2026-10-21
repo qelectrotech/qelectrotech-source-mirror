@@ -6,10 +6,11 @@
 
 #include <QDockWidget>
 
-// The Selection properties panel keeps the height the user gave it when the
-// selection has nothing it can edit for a moment (#1439). It used to shrink
-// to its title bar, the other panels took the room, and an element selected
-// again brought the panel back at its default height.
+// The Selection properties panel shrinks to its title bar while the selection
+// has nothing it can edit, so the other panels get the room (#1566), and gets
+// back the height the user gave it when an element is selected again. Before
+// #1439 it came back at its default height; #1533 kept the height but no
+// longer shrank.
 class tst_selectionpanelheight : public QObject
 {
 	Q_OBJECT
@@ -57,10 +58,12 @@ class tst_selectionpanelheight : public QObject
 			const int user = panel->height();
 			QVERIFY2(user > start, "the panel could not be made taller");
 
-			select(nullptr);
-			QCOMPARE(panel->height(), user);
-			select(element);
-			QCOMPARE(panel->height(), user);
+			for (int round = 0; round < 2; ++round) {
+				select(nullptr);
+				QVERIFY2(panel->height() < start / 4, "the empty panel did not shrink");
+				select(element);
+				QCOMPARE(panel->height(), user);
+			}
 		}
 };
 

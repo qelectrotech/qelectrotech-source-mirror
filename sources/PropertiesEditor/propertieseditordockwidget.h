@@ -19,6 +19,7 @@
 #define SELECTIONPROPERTIESDOCKWIDGET_H
 
 #include <QDockWidget>
+#include <QPointer>
 
 class PropertiesEditorWidget;
 
@@ -45,7 +46,13 @@ class PropertiesEditorDockWidget : public QDockWidget
 		QList <PropertiesEditorWidget *> m_editor_list;
 
 	private:
+		void rememberHeight();
+		void restoreHeight();
+
 		Ui::PropertiesEditorDockWidget *ui;
+		QList<QPointer<QDockWidget>> m_area_docks;
+		QList<int> m_area_heights;
+		bool m_restore_pending = false;
 };
 
 #endif // SELECTIONPROPERTIESDOCKWIDGET_H
