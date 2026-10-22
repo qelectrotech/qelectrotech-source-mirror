@@ -3075,6 +3075,16 @@ Devam edilsin mi?</translation>
         <source>Choose a background color</source>
         <translation>Bir arka plan rengi seçin</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="93"/>
+        <source>Dark mode</source>
+        <translation>Karanlık mod</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="96"/>
+        <source>A black sheet: symbols and texts in yellow, conductors in red, dashed ones in light blue and dash-dotted ones in yellow, the rest in white. Printing and exporting stay black on white.</source>
+        <translation>Siyah bir sayfa: semboller ve metinler sarı, iletkenler kırmızı, kesikli olanlar açık mavi, kesik noktalı olanlar sarı, geri kalanı beyaz. Yazdırma ve dışa aktarma beyaz üzerine siyah kalır.</translation>
+    </message>
 </context>
 <context>
     <name>DiagramContextWidget</name>

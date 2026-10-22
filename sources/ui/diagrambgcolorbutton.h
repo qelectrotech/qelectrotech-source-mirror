@@ -20,6 +20,7 @@
 
 #include <QColor>
 #include <QList>
+#include <QAction>
 #include <QToolButton>
 
 class QETDiagramEditor;
@@ -42,24 +43,32 @@ class DiagramBgColorToolButton : public QToolButton
 		explicit DiagramBgColorToolButton(QETDiagramEditor *editor,
 						  QWidget *parent = nullptr);
 
+		/// View > Dark mode: the black sheet with colored lines
+		QAction *darkModeAction() const { return m_dark_mode; }
+
 	public slots:
 		void updateEnabledState();
 		void syncFromDiagram();
 
 	private:
 		void rebuildMenu();
-		void applyColor(const QColor &color);
+		void applyColor(const QColor &color, bool colored_ink = false);
 		void applySystemColor();
+		void setDarkMode(bool on);
 		void chooseOtherColor();
 		void rememberRecent(const QColor &color);
 		void persistRecent();
 		void setSwatch(const QColor &color);
-		static QIcon swatchIcon(const QColor &color);
+		static QIcon swatchIcon(const QColor &color, bool colored_ink = false);
 
 		QETDiagramEditor *m_editor = nullptr;
 		QList<QColor> m_recent;
 		QColor m_current;
 		bool m_is_system_color = false;
+		bool m_colored_ink = false;
+		QAction *m_dark_mode = nullptr;
+		bool m_before_dark_system = true;
+		QColor m_before_dark_color;
 };
 
 #endif // DIAGRAMBGCOLORTOOLBUTTON_H

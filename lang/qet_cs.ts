@@ -3122,6 +3122,16 @@ Pokračovat?</translation>
         <source>Choose a background color</source>
         <translation>Vyberte barvu pozadí</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="93"/>
+        <source>Dark mode</source>
+        <translation>Tmavý režim</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="96"/>
+        <source>A black sheet: symbols and texts in yellow, conductors in red, dashed ones in light blue and dash-dotted ones in yellow, the rest in white. Printing and exporting stay black on white.</source>
+        <translation>Černý list: značky a texty žlutě, vodiče červeně, čárkované světle modře a čerchované žlutě, zbytek bíle. Tisk a export zůstávají černé na bílé.</translation>
+    </message>
 </context>
 <context>
     <name>DiagramContextWidget</name>

@@ -1830,6 +1830,47 @@ void DiagramView::paintingInverted(bool inverted)
 }
 
 /**
+	@brief DiagramView::sheetInk
+	Reimplemented from PaletteGraphicsView: on a custom sheet color, the
+	ink that sheet needs (see QET::Palette::sheetInk()).
+*/
+QET::Palette::SheetInk DiagramView::sheetInk() const
+{
+	if (!customBackgroundColor())
+		return {};
+	return QET::Palette::sheetInk(Diagram::background_color, coloredInk());
+}
+
+/**
+	@brief DiagramView::inkKind
+	Reimplemented from PaletteGraphicsView: the symbols and the free texts
+	take the symbols' ink, the conductors the wires' ink for their line
+	style (dashed for a neutral, dash-dotted for a protective conductor),
+	pictures keep
+	their own colors, and the rest takes the other ink. An item is drawn
+	with its whole top-level item, so its children go with it: a symbol's
+	texts are yellow, a conductor's red.
+*/
+PaletteGraphicsView::InkKind DiagramView::inkKind(const QGraphicsItem *item) const
+{
+	const QGraphicsItem *top = item->topLevelItem();
+	if (dynamic_cast<const QGraphicsTextItem *>(top)
+	    || dynamic_cast<const QGraphicsSimpleTextItem *>(top))
+		return InkKind::Symbols;
+	switch (top->type()) {
+		case Element::Type: return InkKind::Symbols;
+		case Conductor::Type:
+			switch (static_cast<const Conductor *>(top)->properties().style) {
+				case Qt::DashLine: return InkKind::DashedWires;
+				case Qt::DashDotLine: return InkKind::DashDottedWires;
+				default: return InkKind::Wires;
+			}
+		case DiagramImageItem::Type: return InkKind::Untouched;
+		default: return InkKind::Other;
+	}
+}
+
+/**
 	@brief DiagramView::setCellLinesShown
 	Show or hide the lines that mark the columns and the rows of the folio
 	border across the drawing, in this view only: printing and exporting
@@ -1942,8 +1983,10 @@ void DiagramView::drawForeground(QPainter *painter, const QRectF &rect)
 
 	QPainter *p = scenePainter(painter);
 	p->save();
-	QPen pen(Diagram::background_color == Qt::darkGray ? QColor(Qt::lightGray)
-													   : QColor(0, 120, 215));
+	const QET::Palette::SheetInk ink = sheetInk();
+	QPen pen(!ink.isNull() ? ink.other
+			       : Diagram::background_color == Qt::darkGray ? QColor(Qt::lightGray)
+									   : QColor(0, 120, 215));
 	pen.setCosmetic(true);
 	pen.setWidthF(0);
 	p->setPen(pen);

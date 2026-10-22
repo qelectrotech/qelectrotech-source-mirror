@@ -3070,6 +3070,16 @@ Continue?</source>
         <source>Choose a background color</source>
         <translation>배경색 선택</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="93"/>
+        <source>Dark mode</source>
+        <translation>다크 모드</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="96"/>
+        <source>A black sheet: symbols and texts in yellow, conductors in red, dashed ones in light blue and dash-dotted ones in yellow, the rest in white. Printing and exporting stay black on white.</source>
+        <translation>검은 시트: 기호와 텍스트는 노란색, 도체는 빨간색, 파선은 하늘색, 일점쇄선은 노란색, 나머지는 흰색. 인쇄와 내보내기는 흰 바탕에 검정으로 유지됩니다.</translation>
+    </message>
 </context>
 <context>
     <name>DiagramContextWidget</name>

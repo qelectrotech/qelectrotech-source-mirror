@@ -71,8 +71,47 @@ namespace QET {
 		void invertLightnessLayer(QImage &image, const QColor &sheet, const QColor &ink);
 
 		/**
+			The colors the folio's black lines are shown in on a custom
+			sheet, by kind of item: symbols and every text, conductors
+			drawn solid, dashed (a neutral) and dash-dotted (a protective
+			conductor), and everything else (shapes, tables, the
+			crosshair), and the sheet itself, which white fills take.
+			Null on a light sheet, where the lines stay black.
+		*/
+		struct SheetInk
+		{
+			QColor sheet;
+			QColor symbols;
+			QColor wires;
+			QColor dashed_wires;
+			QColor dash_dotted_wires;
+			QColor other;
+			bool isNull() const { return !symbols.isValid(); }
+		};
+
+		/**
+			The ink for a custom sheet of color \a sheet: null on a light
+			sheet, white on a dark one, or with \a colored yellow symbols
+			and texts, red conductors, light blue dashed and yellow
+			dash-dotted conductors, and white for the rest. Always null
+			on a light sheet: the printout puts a white sheet under the
+			views for a moment.
+		*/
+		SheetInk sheetInk(const QColor &sheet, bool colored);
+
+		/**
+			Redraw a transparent layer of black-on-white line art in \a ink
+			on a \a sheet: gray pixels go from \a sheet (white) to \a ink
+			(black) by their darkness, so a white fill still covers what
+			lies under it; colored pixels (a highlight, a red terminal) are
+			left as they are. Alpha is kept. \a image must be
+			ARGB32_Premultiplied.
+		*/
+		void tintLayer(QImage &image, const QColor &sheet, const QColor &ink);
+
+		/**
 			The color of the grid dots on a sheet of color \a sheet: black,
-			or white on a black sheet. With \a inverted the sheet is about to
+			or white on a dark sheet. With \a inverted the sheet is about to
 			be shown with its lightness inverted (PaletteGraphicsView), where
 			black dots would come out as bright as the ink; the dots are then
 			a third of the way from the sheet color to black, which shows as

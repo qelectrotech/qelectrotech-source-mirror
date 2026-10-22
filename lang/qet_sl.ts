@@ -3118,6 +3118,16 @@ Continue?</source>
         <source>Choose a background color</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="93"/>
+        <source>Dark mode</source>
+        <translation>Temni način</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="96"/>
+        <source>A black sheet: symbols and texts in yellow, conductors in red, dashed ones in light blue and dash-dotted ones in yellow, the rest in white. Printing and exporting stay black on white.</source>
+        <translation>Črn list: simboli in besedila rumeno, vodniki rdeče, črtkani svetlo modro in črta-pika rumeno, ostalo belo. Tiskanje in izvoz ostaneta črno na belem.</translation>
+    </message>
 </context>
 <context>
     <name>DiagramContextWidget</name>

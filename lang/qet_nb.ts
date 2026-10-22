@@ -3082,6 +3082,16 @@ Continue?</source>
         <source>Choose a background color</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="93"/>
+        <source>Dark mode</source>
+        <translation>Mørk modus</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="96"/>
+        <source>A black sheet: symbols and texts in yellow, conductors in red, dashed ones in light blue and dash-dotted ones in yellow, the rest in white. Printing and exporting stay black on white.</source>
+        <translation>Et svart ark: symboler og tekster i gult, ledere i rødt, stiplede i lyseblått og strekpunkterte i gult, resten i hvitt. Utskrift og eksport forblir svart på hvitt.</translation>
+    </message>
 </context>
 <context>
     <name>DiagramContextWidget</name>
