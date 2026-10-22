@@ -618,9 +618,16 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 	painter -> setBrush(conductor_brush);
 	QPen final_conductor_pen = conductor_pen;
 
-		//Set the conductor style
+		//Set the conductor style. Qt's own dashes (4 on, 2 off) leave
+		//gaps too short to tell a dashed or a dash-dotted conductor from
+		//a solid one at a normal zoom, so these two get longer gaps
 	final_conductor_pen.setColor(final_conductor_color);
-	final_conductor_pen.setStyle(m_properties.style);
+	if (m_properties.style == Qt::DashLine)
+		final_conductor_pen.setDashPattern({5, 4});
+	else if (m_properties.style == Qt::DashDotLine)
+		final_conductor_pen.setDashPattern({6, 4, 1, 4});
+	else
+		final_conductor_pen.setStyle(m_properties.style);
 	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // better rendering with dot
 
 		//Use a cosmetic line, below a certain zoom
