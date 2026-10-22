@@ -141,6 +141,48 @@
         </layout>
        </item>
        <item>
+        <widget class="QGroupBox" name="m_terminal_label_group">
+         <property name="title">
+          <string>Display of the terminal labelling</string>
+         </property>
+         <layout class="QVBoxLayout" name="m_terminal_label_layout">
+          <item>
+           <widget class="QRadioButton" name="m_terminal_label_combined_rb">
+            <property name="toolTip">
+             <string>A terminal's label (X1:1) is drawn as a whole, the way it has always been.</string>
+            </property>
+            <property name="text">
+             <string>Show the label and the terminal number in one field</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="m_terminal_label_split_rb">
+            <property name="toolTip">
+             <string>The label (X1) is drawn in one field and the terminal number (1) in another, which a terminal symbol may place where it wants -- and hide when it must. A symbol without such a field shows the two, one under the other.</string>
+            </property>
+            <property name="text">
+             <string>Split the label and the terminal number</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="m_terminal_label_help">
+            <property name="text">
+             <string>Only the drawing changes: what is written in the element, the numbering, the sorting and the exports keep the whole label.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <widget class="Line" name="line_2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>

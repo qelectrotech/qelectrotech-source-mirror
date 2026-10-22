@@ -6943,6 +6943,36 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
         <translation>Gesten vom Touchpad aktivieren</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
+        <source>Display of the terminal labelling</source>
+        <translation>Darstellung der Klemmenbeschriftung</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="152"/>
+        <source>A terminal's label (X1:1) is drawn as a whole, the way it has always been.</source>
+        <translation>Die BMK einer Klemme (X1:1) wird ganz gezeichnet, wie bisher.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="155"/>
+        <source>Show the label and the terminal number in one field</source>
+        <translation>BMK (Label) und Anschlussnummer in einem Feld anzeigen</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
+        <source>The label (X1) is drawn in one field and the terminal number (1) in another, which a terminal symbol may place where it wants -- and hide when it must. A symbol without such a field shows the two, one under the other.</source>
+        <translation>Die BMK (X1) wird in einem Feld und die Anschlussnummer (1) in einem weiteren Feld gezeichnet, das ein Klemmensymbol platzieren kann, wo es will -- und ausblenden, wenn es muss. Ein Symbol ohne ein solches Feld zeigt beides untereinander.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
+        <source>Split the label and the terminal number</source>
+        <translation>BMK und Anschlussnummer auftrennen</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source>Only the drawing changes: what is written in the element, the numbering, the sorting and the exports keep the whole label.</source>
+        <translation>Es ändert sich nur die Darstellung: Was im Bauteil steht, die Nummerierung, die Sortierung und die Exporte behalten das ganze Label.</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="297"/>
         <source>Use sheet numbers instead of their position in the project</source>
         <translation>Seitennummern anstelle von Seitenposition für Projektanzeigen verwenden</translation>
@@ -16676,6 +16706,11 @@ Möchten Sie sie ersetzen?</translation>
         <location filename="../sources/qetinformation.cpp" line="313"/>
         <source>Label</source>
         <translation>Betriebsmittelkennzeichen (BMK)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="315"/>
+        <source>Terminal number</source>
+        <translation>Anschlussnummer</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="189"/>

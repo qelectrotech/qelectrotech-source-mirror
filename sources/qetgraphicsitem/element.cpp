@@ -33,6 +33,7 @@
 #include "../properties/terminaldata.h"
 #include "../properties/xrefproperties.h"
 #include "../qetinformation.h"
+#include "../utils/qetsettings.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../ui/elementpropertieswidget.h"
@@ -1689,6 +1690,13 @@ void Element::addDynamicTextItem(DynamicElementTextItem *deti)
 
 	m_dynamic_text_list.append(deti);
 
+		//A field of its own for the terminal number is what the label
+		//leaves the number to: the fields which draw the label follow
+		//when such a field lands on the symbol
+	if (deti->infoName() == QETInformation::ELMT_TERMINAL_NUMBER) {
+		refreshLabelFields();
+	}
+
 		//On a mirrored element, the mirror of the text depends on the size
 		//and the rotation of the text, see keepReadable()
 	connect(deti->document()->documentLayout(),
@@ -1724,6 +1732,9 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 		m_dynamic_text_list.removeOne(deti);
 		deti->setParentItem(nullptr);
 		forget();
+		if (deti->infoName() == QETInformation::ELMT_TERMINAL_NUMBER) {
+			refreshLabelFields();
+		}
 		emit textRemoved(deti);
 		return;
 	}
@@ -1736,8 +1747,32 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 			m_dynamic_text_list.removeOne(deti);
 			deti->setParentItem(nullptr);
 			forget();
+			if (deti->infoName() == QETInformation::ELMT_TERMINAL_NUMBER) {
+				refreshLabelFields();
+			}
 			emit textRemoved(deti);
 			return;
+		}
+	}
+}
+
+/**
+	@brief Element::refreshLabelFields
+	The fields which draw the label draw it again: what they show of the
+	label has changed under them (a field for the terminal number added
+	or removed, @sa Element::hasTerminalNumberText), or the terminal
+	labelling setting was switched (@sa QetSettings::terminalLabelSplit).
+	Only the fields which draw a label are refreshed, every other field
+	follows its own information.
+*/
+void Element::refreshLabelFields()
+{
+	for (DynamicElementTextItem *text : m_dynamic_text_list) {
+		text->refreshLabelConnection();
+	}
+	for (ElementTextItemGroup *group : m_texts_group) {
+		for (DynamicElementTextItem *text : group->texts()) {
+			text->refreshLabelConnection();
 		}
 	}
 }
@@ -2719,6 +2754,105 @@ QString Element::actualLabel()
 				diagram(),
 				this);
 	}
+}
+
+/**
+	@brief Element::labelForDisplay
+	@return the label as the drawing must show it, the settings of the
+	moment being read (@sa QetSettings::terminalLabelSplit): the whole
+	label ("X1:1") while the labelling is shown in one field; the label
+	alone ("X1") when it is shown split and this symbol has a text field
+	of its own for the terminal number; and the two one under the other
+	when it is split without such a field -- so a symbol drawn before
+	the setting existed still shows all of its label, only shorter.
+*/
+QString Element::labelForDisplay()
+{
+	const QString label = actualLabel();
+	if (!QetSettings::terminalLabelSplit()) {
+		return label;
+	}
+
+	const int colon = label.lastIndexOf(QLatin1Char(':'));
+	if (colon < 0) {
+		return label;
+	}
+
+	if (hasTerminalNumberText()) {
+		return label.left(colon);
+	}
+
+	return label.left(colon) + QLatin1Char('\n') + label.mid(colon + 1);
+}
+
+/**
+	@brief Element::terminalNumberForDisplay
+	@return the part of the label behind its last colon ("1" in "X1:1"),
+	or an empty string while the labelling is shown in one field: the
+	number is already there with the label, showing it twice would only
+	be noise. @sa labelForDisplay
+*/
+QString Element::terminalNumberForDisplay()
+{
+	if (!QetSettings::terminalLabelSplit()) {
+		return QString();
+	}
+
+	const QString label = actualLabel();
+	const int colon = label.lastIndexOf(QLatin1Char(':'));
+	if (colon < 0) {
+		return QString();
+	}
+
+	return label.mid(colon + 1);
+}
+
+/**
+	@brief Element::hasTerminalNumberText
+	@return whether this symbol has a text field bound to the terminal
+	number, the field labelForDisplay() leaves the number to.
+*/
+bool Element::hasTerminalNumberText() const
+{
+	auto is_number_field = [](const DynamicElementTextItem *text) {
+		return text
+			&& text->textFrom() == DynamicElementTextItem::ElementInfo
+			&& text->infoName() == QETInformation::ELMT_TERMINAL_NUMBER;
+	};
+
+	for (const DynamicElementTextItem *text : dynamicTextItems()) {
+		if (is_number_field(text)) {
+			return true;
+		}
+	}
+		//The field may just as well live in a text group of the symbol
+	for (const ElementTextItemGroup *group : m_texts_group) {
+		for (const DynamicElementTextItem *text : group->texts()) {
+			if (is_number_field(text)) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+/**
+	@brief Element::infoForDisplay
+	@return what a text field bound to @p info_name must show: the label
+	and the terminal number follow how the labelling is drawn, every
+	other information is the stored one. @sa labelForDisplay
+*/
+QString Element::infoForDisplay(const QString &info_name)
+{
+	if (info_name == QETInformation::ELMT_LABEL) {
+		return labelForDisplay();
+	}
+	if (info_name == QETInformation::ELMT_TERMINAL_NUMBER) {
+		return terminalNumberForDisplay();
+	}
+
+	return m_data.m_informations.value(info_name).toString();
 }
 
 /**
