@@ -504,7 +504,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//Extract the content of the xml. The raw bytes are kept : a project
 		//file without a persisted uuid derives its uuid from them.
 	const QByteArray content = file->readAll();
-	rememberDiskState();
+	rememberDiskState(&content);
 		//Each folio's text is kept while it is not built (readDiagramsXml()):
 		//from a .qet only, a .qetz is a zip of parts
 	if (!content.startsWith("PK\x03\x04"))
@@ -2803,16 +2803,37 @@ QETResult QETProject::writeCopyForOlderVersions(const QString &path)
 }
 
 /**
-	@brief QETProject::rememberDiskState
-	Remember the size and modification time of the project file, as this QET
-	has just read or written it. changedOnDisk() compares against them.
+	@brief diskHash
+	@return the SHA-1 of @p content, or of the file at @p path when
+	@p content is null; empty if the file cannot be read
 */
-void QETProject::rememberDiskState()
+static QByteArray diskHash(const QString &path, const QByteArray *content = nullptr)
+{
+	QCryptographicHash hash(QCryptographicHash::Sha1);
+	if (content) {
+		hash.addData(*content);
+		return hash.result();
+	}
+	QFile file(path);
+	if (!file.open(QIODevice::ReadOnly) || !hash.addData(&file))
+		return QByteArray();
+	return hash.result();
+}
+
+/**
+	@brief QETProject::rememberDiskState
+	Remember the size, modification time and content hash of the project
+	file, as this QET has just read or written it. changedOnDisk() compares
+	against them.
+	@param content the bytes just read from the file, if they are at hand
+*/
+void QETProject::rememberDiskState(const QByteArray *content)
 {
 	const QFileInfo info(m_file_path);
 	m_disk_path = m_file_path;
 	m_disk_size = info.exists() ? info.size() : -1;
 	m_disk_mtime = info.exists() ? info.lastModified() : QDateTime();
+	m_disk_hash = info.exists() ? diskHash(m_file_path, content) : QByteArray();
 }
 
 /**
@@ -2822,6 +2843,10 @@ void QETProject::rememberDiskState()
 	last read or wrote: another user, another program or another QET saved
 	it since. A file that does not exist yet, or one this QET never read
 	or wrote (Save As to another name), is not a change.
+	A different size or time alone is not enough: right after a save, a
+	network share (CIFS with its attribute cache, #1579) can report the size
+	and time from before the server settled them. The file is a change only
+	if its content differs from what this QET read or wrote.
 */
 bool QETProject::changedOnDisk(QDateTime *when) const
 {
@@ -2832,6 +2857,8 @@ bool QETProject::changedOnDisk(QDateTime *when) const
 	if (!info.exists())
 		return false;
 	if (info.size() == m_disk_size && info.lastModified() == m_disk_mtime)
+		return false;
+	if (!m_disk_hash.isEmpty() && diskHash(target) == m_disk_hash)
 		return false;
 	if (when)
 		*when = info.lastModified();
