@@ -2666,6 +2666,24 @@ bool projectDataBase::createDataBase()
 		qDebug() << " folio_titleblock_table query : " << query_.lastError();
 	}
 
+		//Create the folio_border table: the border/grid dimensions of
+		//every folio (the column/row reference grid, e.g. "A1", "B2"), the
+		//store each folio's border is written through
+		//(storeFolioBorder()). One row per folio.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE folio_border ("
+			"diagram_uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+			"columns_count INTEGER NOT NULL, "
+			"columns_width REAL NOT NULL, "
+			"columns_header_height REAL NOT NULL, "
+			"display_columns INTEGER NOT NULL, "
+			"rows_count INTEGER NOT NULL, "
+			"rows_height REAL NOT NULL, "
+			"rows_header_width REAL NOT NULL, "
+			"display_rows INTEGER NOT NULL)"))) {
+		qDebug() << " folio_border_table query : " << query_.lastError();
+	}
+
 		//Create the conductor_properties table: the properties of every
 		//wire placed in the project, as the attributes a saved wire carries,
 		//the store wires write through (storeConductorProperties()).
@@ -3580,31 +3598,89 @@ void projectDataBase::storeFolioTitleBlock(const QUuid &folio, const TitleBlockP
 }
 
 /**
+	@brief projectDataBase::storedFolioBorder
+	@return the stored border properties of the folio @p folio, or nullptr;
+	valid until the store next changes
+*/
+const BorderProperties *projectDataBase::storedFolioBorder(const QUuid &folio) const
+{
+	auto it = m_folio_borders.constFind(folio);
+	return it == m_folio_borders.constEnd() ? nullptr : &it.value();
+}
+
+/**
+	@brief projectDataBase::storeFolioBorder
+	Store @p properties as the border of the folio @p folio, in the
+	folio_border table and the cache in front of it.
+*/
+void projectDataBase::storeFolioBorder(const QUuid &folio, const BorderProperties &properties)
+{
+	if (folio.isNull()) return;
+	auto known = m_folio_borders.find(folio);
+	if (known != m_folio_borders.end() && *known == properties) return;
+	m_folio_borders.insert(folio, properties);
+
+	const QString uuid = folio.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM folio_border WHERE diagram_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeFolioBorder remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral(
+			"INSERT INTO folio_border (diagram_uuid, columns_count, columns_width, "
+			"columns_header_height, display_columns, rows_count, rows_height, "
+			"rows_header_width, display_rows) VALUES (:uuid, :cc, :cw, :chh, :dc, "
+			":rc, :rh, :rhw, :dr)"));
+	insert.bindValue(QStringLiteral(":uuid"), uuid);
+	insert.bindValue(QStringLiteral(":cc"), properties.columns_count);
+	insert.bindValue(QStringLiteral(":cw"), properties.columns_width);
+	insert.bindValue(QStringLiteral(":chh"), properties.columns_header_height);
+	insert.bindValue(QStringLiteral(":dc"), properties.display_columns ? 1 : 0);
+	insert.bindValue(QStringLiteral(":rc"), properties.rows_count);
+	insert.bindValue(QStringLiteral(":rh"), properties.rows_height);
+	insert.bindValue(QStringLiteral(":rhw"), properties.rows_header_width);
+	insert.bindValue(QStringLiteral(":dr"), properties.display_rows ? 1 : 0);
+	if (!insert.exec()) {
+		qDebug() << "projectDataBase::storeFolioBorder insert error : " << insert.lastError();
+	}
+}
+
+/**
 	@brief projectDataBase::placeFolio
-	@p folio is now a folio of the project: its title block is stored under
-	its uuid.
+	@p folio is now a folio of the project: its title block and border are
+	stored under its uuid.
 */
 void projectDataBase::placeFolio(Diagram *folio)
 {
 	m_placed_folios.insert(folio->uuid(), folio);
 	storeFolioTitleBlock(folio->uuid(), folio->border_and_titleblock.localTitleBlock());
+	storeFolioBorder(folio->uuid(), folio->border_and_titleblock.exportBorder());
 }
 
 /**
 	@brief projectDataBase::unplaceFolio
 	@p folio no longer holds @p uuid (it was removed, or its uuid changed):
-	the title block stored under it goes.
+	the title block and border stored under it go.
 */
 void projectDataBase::unplaceFolio(Diagram *folio, const QUuid &uuid)
 {
 	if (m_placed_folios.value(uuid) != folio) return;
 	m_placed_folios.remove(uuid);
 	m_folio_titleblocks.remove(uuid);
+	m_folio_borders.remove(uuid);
 	QSqlQuery remove(m_data_base);
 	remove.prepare(QStringLiteral("DELETE FROM folio_titleblock WHERE diagram_uuid = :uuid"));
 	remove.bindValue(QStringLiteral(":uuid"), uuid.toString());
 	if (!remove.exec()) {
 		qDebug() << "projectDataBase::unplaceFolio error : " << remove.lastError();
+	}
+	QSqlQuery remove_border(m_data_base);
+	remove_border.prepare(QStringLiteral("DELETE FROM folio_border WHERE diagram_uuid = :uuid"));
+	remove_border.bindValue(QStringLiteral(":uuid"), uuid.toString());
+	if (!remove_border.exec()) {
+		qDebug() << "projectDataBase::unplaceFolio border error : " << remove_border.lastError();
 	}
 }
 

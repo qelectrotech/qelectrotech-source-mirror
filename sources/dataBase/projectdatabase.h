@@ -34,6 +34,7 @@
 
 #include "../diagramcontext.h"
 #include "../titleblockproperties.h"
+#include "../borderproperties.h"
 #include "../conductorproperties.h"
 #include "../autoNum/assignvariables.h"
 #include "../autoNum/numerotationcontext.h"
@@ -146,6 +147,12 @@ class projectDataBase : public QObject
 		void placeFolio(Diagram *folio);
 		void folioUuidChanged(Diagram *folio, const QUuid &old_uuid);
 		QStringList folioTitleBlockMismatches() const;
+
+			//The border properties of every folio of the project, by folio
+			//uuid: the store each folio's border is written through. A
+			//folio not in a project keeps its own.
+		const BorderProperties *storedFolioBorder(const QUuid &folio) const;
+		void storeFolioBorder(const QUuid &folio, const BorderProperties &properties);
 
 			//The properties of every wire placed in the project, by wire
 			//uuid: the store each wire's properties are written through
@@ -422,6 +429,7 @@ class projectDataBase : public QObject
 		struct UnbuiltWireEdit { ConductorProperties properties; QUuid folio; };
 		QHash<QUuid, UnbuiltWireEdit> m_unbuilt_wire_edits;
 		QHash<QUuid, TitleBlockProperties> m_folio_titleblocks;
+		QHash<QUuid, BorderProperties> m_folio_borders;
 		QHash<QUuid, QPointer<Diagram>> m_placed_folios;
 		QHash<QUuid, ConductorProperties> m_conductor_properties;
 			//The rows of conductor_properties, to write only what changes
