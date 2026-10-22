@@ -52,29 +52,30 @@ class BorderTitleBlock : public QObject
 		void draw(QPainter *painter);
 		void drawDxf(QString &, int);
 	
-		//METHODS TO GET DIMENSION
+		//METHODS TO GET DIMENSION. A folio placed in a project reads them
+		//from the project's store, any other from its own copy.
 		//COLUMNS
 		/// @return the number of columns
-		int   columnsCount() const { return(columns_count_); }
+		int columnsCount() const { const BorderProperties *s = storedBorder(); return(s ? s->columns_count : columns_count_); }
 		/// @return the columns width, in pixels
-		qreal columnsWidth() const { return(columns_width_); }
+		qreal columnsWidth() const { const BorderProperties *s = storedBorder(); return(s ? s->columns_width : columns_width_); }
 		/// @return the total width of all columns, headers excluded
 		qreal columnsTotalWidth() const {
-			return(columns_count_ * columns_width_); }
+			return(columnsCount() * columnsWidth()); }
 		/// @return the column headers height, in pixels
 		qreal columnsHeaderHeight() const {
-			return(columns_header_height_); }
-	
+			const BorderProperties *s = storedBorder(); return(s ? s->columns_header_height : columns_header_height_); }
+
 		//ROWS
 		/// @return the number of rows
-		int rowsCount() const { return(rows_count_); }
+		int rowsCount() const { const BorderProperties *s = storedBorder(); return(s ? s->rows_count : rows_count_); }
 		/// @return the rows height, in pixels
-		qreal rowsHeight() const { return(rows_height_); }
+		qreal rowsHeight() const { const BorderProperties *s = storedBorder(); return(s ? s->rows_height : rows_height_); }
 		/// @return the total height of all rows, headers excluded
 		qreal rowsTotalHeight() const {
-			return(rows_count_ * rows_height_); }
+			return(rowsCount() * rowsHeight()); }
 		/// @return la rows header width, in pixels
-		qreal rowsHeaderWidth() const { return(rows_header_width_); }
+		qreal rowsHeaderWidth() const { const BorderProperties *s = storedBorder(); return(s ? s->rows_header_width : rows_header_width_); }
 		/// @return the edge where title block is docked
 		Qt::Edge titleBlockEdge() const { return(m_edge); }
 	
@@ -148,10 +149,10 @@ class BorderTitleBlock : public QObject
 			return(display_titleblock_); }
 		/// @return true si les entetes des colonnes sont affiches,
 		/// false sinon
-		bool columnsAreDisplayed() const { return(display_columns_); }
+		bool columnsAreDisplayed() const { const BorderProperties *s = storedBorder(); return(s ? s->display_columns : display_columns_); }
 		/// @return true si les entetes des lignes sont affiches,
 		/// false sinon
-		bool rowsAreDisplayed() const { return(display_rows_); }
+		bool rowsAreDisplayed() const { const BorderProperties *s = storedBorder(); return(s ? s->display_rows : display_rows_); }
 		/// @return true si la bordure est affichee, false sinon
 		bool borderIsDisplayed() const { return(display_border_); }
 		
@@ -298,7 +299,9 @@ class BorderTitleBlock : public QObject
 		Diagram *m_owner_folio = nullptr;
 		TitleBlockProperties current() const;
 		const TitleBlockProperties *stored() const;
+		const BorderProperties *storedBorder() const;
 		projectDataBase *placedStore() const;
 		void storeTitleBlock();
+		void storeBorder();
 };
 #endif
