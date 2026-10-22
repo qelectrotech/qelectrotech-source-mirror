@@ -175,6 +175,7 @@ class Element : public QetGraphicsItem
 		QString terminalNumberForDisplay();
 		QString infoForDisplay(const QString &info_name);
 		bool hasTerminalNumberText() const;
+		bool labelShown() const;
 			/**
 				The fields which draw the label draw it again: called when
 				what they show of the label has changed under them, a

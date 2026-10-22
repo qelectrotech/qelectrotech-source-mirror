@@ -19,6 +19,8 @@
 #include "qetapptest.h"
 #include "TerminalStrip/realterminal.h"
 #include "TerminalStrip/terminalstrip.h"
+#include "diagram.h"
+#include "properties/elementdata.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
@@ -83,6 +85,28 @@ class tst_terminallabeldisplay : public QObject
 		number->setInfoName(QETInformation::ELMT_TERMINAL_NUMBER);
 		number->setTextFrom(DynamicElementTextItem::ElementInfo);
 		return number;
+	}
+
+	//The "Show name" box of the selection properties, unticked: the
+	//element then stores the information "label_shown" = "false", the
+	//only thing it stores for it
+	static void hideName(Element *element)
+	{
+		DiagramContext dc = element->elementInformations();
+		dc.addValue(QStringLiteral("label_shown"), QStringLiteral("false"));
+		element->setElementInformations(dc);
+	}
+
+	//Any element of the fixture which is not a terminal and carries a
+	//name to draw
+	static Element *aNonTerminal(QETProject &project)
+	{
+		for (Diagram *diagram : project.diagrams())
+			for (Element *element : diagram->elements())
+				if (element->elementData().m_type != ElementData::Terminal
+					&& !element->actualLabel().isEmpty())
+					return element;
+		return nullptr;
 	}
 
 private slots:
@@ -214,6 +238,102 @@ private slots:
 		element->refreshLabelFields();
 		QCOMPARE(label->toPlainText(), QStringLiteral("X1:1"));
 		QCOMPARE(element->actualLabel(), QStringLiteral("X1:1"));
+	}
+
+	//A terminal whose name must not be drawn draws nothing of it, but
+	//keeps everything: the stored label is still there, and so is every
+	//use of it as data -- only the drawing changes
+	void hiddenNameKeepsEverythingStored()
+	{
+		QetSettings::setTerminalLabelSplit(false);
+
+		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		Element *element = terminalWithLabel(project, QStringLiteral("X1:1"));
+		QVERIFY(element);
+		hideName(element);
+
+		QVERIFY(!element->labelShown());
+		QCOMPARE(element->actualLabel(), QStringLiteral("X1:1"));
+		QCOMPARE(element->labelForDisplay(), QString());
+
+		DynamicElementTextItem *label = fieldBoundTo(element, QETInformation::ELMT_LABEL);
+		QVERIFY(label);
+		QCOMPARE(label->toPlainText(), QString());
+	}
+
+	//Hidden, and the labelling is split: the terminal keeps its number,
+	//drawn on its own line while the symbol has no field for it, so
+	//hiding the name can never hide the number
+	void hiddenNameKeepsTheNumberWithSplit()
+	{
+		QetSettings::setTerminalLabelSplit(true);
+
+		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		Element *element = terminalWithLabel(project, QStringLiteral("X1:1"));
+		QVERIFY(element);
+		hideName(element);
+
+		QCOMPARE(element->labelForDisplay(), QStringLiteral("1"));
+		QCOMPARE(element->terminalNumberForDisplay(), QStringLiteral("1"));
+		QCOMPARE(element->actualLabel(), QStringLiteral("X1:1"));
+
+		DynamicElementTextItem *label = fieldBoundTo(element, QETInformation::ELMT_LABEL);
+		QVERIFY(label);
+		QCOMPARE(label->toPlainText(), QStringLiteral("1"));
+	}
+
+	//Hidden, split, and the symbol has a field of its own for the
+	//number: the number is drawn in its own field, the label field
+	//draws nothing -- the number is never drawn twice
+	void hiddenNameLeavesTheNumberToItsOwnField()
+	{
+		QetSettings::setTerminalLabelSplit(true);
+
+		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		Element *element = terminalWithLabel(project, QStringLiteral("X1:1"));
+		QVERIFY(element);
+		DynamicElementTextItem *number = addNumberField(element);
+		hideName(element);
+
+		QCOMPARE(element->labelForDisplay(), QString());
+		DynamicElementTextItem *label = fieldBoundTo(element, QETInformation::ELMT_LABEL);
+		QVERIFY(label);
+		QCOMPARE(label->toPlainText(), QString());
+		QCOMPARE(number->toPlainText(), QStringLiteral("1"));
+	}
+
+	//Only a terminal may have its name undrawn: another element which
+	//carries the same information still draws its name, whatever the
+	//file says
+	void nonTerminalAlwaysDrawsItsName()
+	{
+		QetSettings::setTerminalLabelSplit(false);
+
+		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		Element *element = aNonTerminal(project);
+		QVERIFY2(element, "the fixture has an element which is no terminal");
+		DiagramContext dc = element->elementInformations();
+		dc.addValue(QStringLiteral("label_shown"), QStringLiteral("false"));
+		element->setElementInformations(dc);
+
+			//Whatever the file says, a non-terminal draws its name:
+			//the information is not obeyed, and the drawn name is the
+			//stored one, composed as it always is
+		QVERIFY(element->labelShown());
+		QVERIFY(!element->actualLabel().isEmpty());
+		QCOMPARE(element->labelForDisplay(), element->actualLabel());
 	}
 };
 

@@ -2769,7 +2769,28 @@ QString Element::actualLabel()
 QString Element::labelForDisplay()
 {
 	const QString label = actualLabel();
-	if (!QetSettings::terminalLabelSplit()) {
+	const bool split = QetSettings::terminalLabelSplit();
+
+		//The "Show name" box of the selection properties hides the name
+		//of this element on the sheet only: the element keeps all of its
+		//data, and a terminal keeps its number, drawn on its own while
+		//the labelling is split.
+	if (!labelShown())
+	{
+		if (!split) {
+			return QString();
+		}
+			//The number alone in the label field, but only while the
+			//symbol has no field of its own for it: the number is
+			//drawn once, wherever it is drawn at all.
+		const int hidden_colon = label.lastIndexOf(QLatin1Char(':'));
+		if (hidden_colon < 0 || hasTerminalNumberText()) {
+			return QString();
+		}
+		return label.mid(hidden_colon + 1);
+	}
+
+	if (!split) {
 		return label;
 	}
 
@@ -2835,6 +2856,29 @@ bool Element::hasTerminalNumberText() const
 	}
 
 	return false;
+}
+
+/**
+	@brief Element::labelShown
+	@return whether the label of this element must be drawn on the sheet.
+	The choice belongs to the element itself, set with the "Show name"
+	box of the selection properties: an element whose name is not shown
+	keeps all of its data, nothing is only not drawn. An element which
+	never got the box unticked keeps drawing its name, which is why a
+	missing information means true.
+*/
+bool Element::labelShown() const
+{
+		//Only a terminal may have its name undrawn: an information
+		//which says otherwise, from whatever source, is not obeyed.
+	if (m_data.m_type != ElementData::Terminal) {
+		return true;
+	}
+	if (!m_data.m_informations.contains(QStringLiteral("label_shown"))) {
+		return true;
+	}
+	return QET::infoFlagIsTrue(
+				m_data.m_informations.value(QStringLiteral("label_shown")).toString());
 }
 
 /**
