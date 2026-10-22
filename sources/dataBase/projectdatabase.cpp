@@ -519,6 +519,11 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 			return refuse(QStringLiteral("a folio number uses %autonum"));
 		}
 		border->setFolioData(i + 1, int(diagram_nodes.size()), QString(), project_wide);
+			//setFolioData() only writes through the store for a placed
+			//folio (reader isn't one); store it here too, straight from
+			//the document (habit 4), so a folio not yet built still has
+			//its number queryable.
+		storeFolioNumber(diagram_uuid, i + 1, int(diagram_nodes.size()));
 
 			//What a formula on this folio is worked out from, as
 			//AssignVariables::formulaToLabel() reads it off a built folio.
@@ -2684,6 +2689,19 @@ bool projectDataBase::createDataBase()
 		qDebug() << " folio_border_table query : " << query_.lastError();
 	}
 
+		//Create the folio_number table: a folio's 1-based position among
+		//the project's folios and the project's folio count, recomputed
+		//whenever a folio is added, removed or reordered
+		//(QETProject::updateDiagramsFolioData()), the store each folio's
+		//number is written through (storeFolioNumber()). One row per folio.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE folio_number ("
+			"diagram_uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+			"folio_index INTEGER NOT NULL, "
+			"folio_total INTEGER NOT NULL)"))) {
+		qDebug() << " folio_number_table query : " << query_.lastError();
+	}
+
 		//Create the conductor_properties table: the properties of every
 		//wire placed in the project, as the attributes a saved wire carries,
 		//the store wires write through (storeConductorProperties()).
@@ -3648,6 +3666,53 @@ void projectDataBase::storeFolioBorder(const QUuid &folio, const BorderPropertie
 }
 
 /**
+	@brief projectDataBase::storedFolioNumber
+	@param index set to the stored folio index, when found
+	@param total set to the stored folio total, when found
+	@return whether the folio @p folio has a stored number
+*/
+bool projectDataBase::storedFolioNumber(const QUuid &folio, int *index, int *total) const
+{
+	auto it = m_folio_numbers.constFind(folio);
+	if (it == m_folio_numbers.constEnd()) return false;
+	if (index) *index = it.value().first;
+	if (total) *total = it.value().second;
+	return true;
+}
+
+/**
+	@brief projectDataBase::storeFolioNumber
+	Store @p index and @p total as the number of the folio @p folio, in
+	the folio_number table and the cache in front of it.
+*/
+void projectDataBase::storeFolioNumber(const QUuid &folio, int index, int total)
+{
+	if (folio.isNull()) return;
+	const QPair<int, int> value(index, total);
+	auto known = m_folio_numbers.find(folio);
+	if (known != m_folio_numbers.end() && *known == value) return;
+	m_folio_numbers.insert(folio, value);
+
+	const QString uuid = folio.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM folio_number WHERE diagram_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeFolioNumber remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral(
+			"INSERT INTO folio_number (diagram_uuid, folio_index, folio_total) "
+			"VALUES (:uuid, :idx, :tot)"));
+	insert.bindValue(QStringLiteral(":uuid"), uuid);
+	insert.bindValue(QStringLiteral(":idx"), index);
+	insert.bindValue(QStringLiteral(":tot"), total);
+	if (!insert.exec()) {
+		qDebug() << "projectDataBase::storeFolioNumber insert error : " << insert.lastError();
+	}
+}
+
+/**
 	@brief projectDataBase::placeFolio
 	@p folio is now a folio of the project: its title block and border are
 	stored under its uuid.
@@ -3681,6 +3746,13 @@ void projectDataBase::unplaceFolio(Diagram *folio, const QUuid &uuid)
 	remove_border.bindValue(QStringLiteral(":uuid"), uuid.toString());
 	if (!remove_border.exec()) {
 		qDebug() << "projectDataBase::unplaceFolio border error : " << remove_border.lastError();
+	}
+	m_folio_numbers.remove(uuid);
+	QSqlQuery remove_number(m_data_base);
+	remove_number.prepare(QStringLiteral("DELETE FROM folio_number WHERE diagram_uuid = :uuid"));
+	remove_number.bindValue(QStringLiteral(":uuid"), uuid.toString());
+	if (!remove_number.exec()) {
+		qDebug() << "projectDataBase::unplaceFolio number error : " << remove_number.lastError();
 	}
 }
 

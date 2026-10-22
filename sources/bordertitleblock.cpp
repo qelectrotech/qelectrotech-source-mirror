@@ -358,6 +358,19 @@ const BorderProperties *BorderTitleBlock::storedBorder() const
 }
 
 /**
+	@brief BorderTitleBlock::storedFolioNumber
+	@param index set to the stored folio index, when found
+	@param total set to the stored folio total, when found
+	@return whether the project's store holds a number for this folio
+*/
+bool BorderTitleBlock::storedFolioNumber(int *index, int *total) const
+{
+	if (projectDataBase *store = placedStore())
+		return store->storedFolioNumber(m_owner_folio->uuid(), index, total);
+	return false;
+}
+
+/**
 	@brief BorderTitleBlock::setOwnerFolio
 	@param folio : the folio this border and title block belongs to
 */
@@ -399,6 +412,21 @@ void BorderTitleBlock::storeBorder()
 {
 	if (projectDataBase *store = placedStore())
 		store->storeFolioBorder(m_owner_folio->uuid(), exportBorder());
+}
+
+/**
+	@brief BorderTitleBlock::storeFolioNumber
+	Write this folio's index and total to its project's store, once its
+	folio is placed: every change of them comes through here.
+*/
+void BorderTitleBlock::storeFolioNumber()
+{
+	//Read the members directly, not the getters: the getters check the
+	//store first, which this call is about to update -- going through
+	//them here would echo back the old stored value instead of the new
+	//one, the same trap storeBorder() avoids with exportBorder().
+	if (projectDataBase *store = placedStore())
+		store->storeFolioNumber(m_owner_folio->uuid(), folio_index_, folio_total_);
 }
 
 /**
@@ -1178,6 +1206,7 @@ void BorderTitleBlock::setFolioData(
 	}
 	btb_final_folio_.replace("%id",    QString::number(folio_index_));
 	btb_final_folio_.replace("%total", QString::number(folio_total_));
+	storeFolioNumber();
 
 	updateDiagramContextForTitleBlock(project_properties);
 }

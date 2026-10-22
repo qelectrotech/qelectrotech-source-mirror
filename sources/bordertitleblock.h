@@ -141,8 +141,12 @@ class BorderTitleBlock : public QObject
 			/// The title of the folio numbering this folio follows, nothing else changes
 		void setAutoPageNum(const QString &title);
 		/// @return the value of the total number of folios
-		int folioTotal() const { return(folio_total_);}
-	
+		int folioTotal() const {
+			int index, total; return(storedFolioNumber(&index, &total) ? total : folio_total_);}
+		/// @return this folio's 1-based position among the project's folios
+		int folioIndex() const {
+			int index, total; return(storedFolioNumber(&index, &total) ? index : folio_index_);}
+
 		// methods to get display options
 		/// @return true si le cartouche est affiche, false sinon
 		bool titleBlockIsDisplayed() const {
@@ -300,8 +304,10 @@ class BorderTitleBlock : public QObject
 		TitleBlockProperties current() const;
 		const TitleBlockProperties *stored() const;
 		const BorderProperties *storedBorder() const;
+		bool storedFolioNumber(int *index, int *total) const;
 		projectDataBase *placedStore() const;
 		void storeTitleBlock();
 		void storeBorder();
+		void storeFolioNumber();
 };
 #endif
