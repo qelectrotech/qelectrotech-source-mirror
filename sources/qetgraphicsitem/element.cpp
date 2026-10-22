@@ -1690,6 +1690,10 @@ void Element::addDynamicTextItem(DynamicElementTextItem *deti)
 
 	m_dynamic_text_list.append(deti);
 
+		//An element whose name must not be drawn does not keep the
+		//field of its label on the sheet either (@sa Element::labelShown)
+	deti->refreshLabelShown();
+
 		//A field of its own for the terminal number is what the label
 		//leaves the number to: the fields which draw the label follow
 		//when such a field lands on the symbol

@@ -335,6 +335,36 @@ private slots:
 		QVERIFY(!element->actualLabel().isEmpty());
 		QCOMPARE(element->labelForDisplay(), element->actualLabel());
 	}
+
+	//The field of a hidden name does not stay on the sheet as an empty
+	//frame to select: it leaves the sheet with the box and comes back
+	//with it, both ways through the same signal
+	void hiddenNameHidesTheLabelField()
+	{
+		QetSettings::setTerminalLabelSplit(false);
+
+		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		Element *element = terminalWithLabel(project, QStringLiteral("X1:1"));
+		QVERIFY(element);
+		DynamicElementTextItem *label = fieldBoundTo(element, QETInformation::ELMT_LABEL);
+		QVERIFY(label);
+		QVERIFY(label->isVisible());
+
+		hideName(element);
+		QVERIFY(!label->isVisible());
+
+			//The box ticked again: the element drops the information,
+			//and the field is drawn as it was before
+		DiagramContext dc = element->elementInformations();
+		dc.remove(QStringLiteral("label_shown"));
+		element->setElementInformations(dc);
+
+		QVERIFY(label->isVisible());
+		QCOMPARE(label->toPlainText(), QStringLiteral("X1:1"));
+	}
 };
 
 QET_APP_TEST_MAIN(tst_terminallabeldisplay)

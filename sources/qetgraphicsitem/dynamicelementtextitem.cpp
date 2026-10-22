@@ -415,6 +415,7 @@ Element *DynamicElementTextItem::elementUseForInfo() const
 */
 void DynamicElementTextItem::refreshLabelConnection()
 {
+	refreshLabelShown();
 	if ((m_text_from == ElementInfo &&
 		 (m_info_name == QLatin1String("label")
 		  || m_info_name == QETInformation::ELMT_TERMINAL_NUMBER)) ||
@@ -432,6 +433,30 @@ void DynamicElementTextItem::refreshLabelConnection()
 			updateLabel();
 		}
 	}
+}
+
+/**
+	@brief DynamicElementTextItem::refreshLabelShown
+	Whether this field is drawn at all: a field bound to the label of
+	an element whose "Show name" box is unticked (@sa Element::labelShown)
+	does not stay on the sheet as an empty frame to select -- it is
+	hidden, and comes back the moment the box is ticked again. Both ways
+	run through the same signals which refresh the text, so the field
+	can never get stuck on one side. Every other field is drawn as
+	always, and a composite text keeps drawing what is not the label.
+*/
+void DynamicElementTextItem::refreshLabelShown()
+{
+	const bool shown = !(m_text_from == ElementInfo
+						 && m_info_name == QETInformation::ELMT_LABEL)
+			|| !m_parent_element
+			|| m_parent_element.data()->labelShown();
+
+	if (!shown && isSelected()) {
+		setSelected(false);
+	}
+	setVisible(shown);
+	refreshResizeHandlesVisibility();
 }
 
 /**
@@ -592,7 +617,12 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 			|| old_info_name == QETInformation::ELMT_TERMINAL_NUMBER)) {
 		parentElement()->refreshLabelFields();
 	}
-	
+
+		//A field which becomes, or stops being, the field for the
+		//label of its element is shown or hidden with the "Show name"
+		//box (@sa refreshLabelShown)
+	refreshLabelShown();
+
 	emit infoNameChanged(info_name);
 }
 
@@ -1001,7 +1031,11 @@ bool DynamicElementTextItem::sceneEventFilter(QGraphicsItem *watched, QEvent *ev
 */
 void DynamicElementTextItem::refreshResizeHandlesVisibility()
 {
-	const bool handles_wanted = isSelected() || (m_parent_element && m_parent_element->isSelected());
+		//A hidden text has no handles, not even while its element is
+		//selected: refreshLabelShown() puts them back when the text
+		//is shown again
+	const bool handles_wanted = isVisible()
+			&& (isSelected() || (m_parent_element && m_parent_element->isSelected()));
 	if (handles_wanted && !m_left_resize_handle)
 		addResizeHandles();
 	else if (!handles_wanted && m_left_resize_handle)
@@ -1202,6 +1236,11 @@ void DynamicElementTextItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *ha
 
 void DynamicElementTextItem::elementInfoChanged()
 {
+		//The "Show name" box of the selection properties was possibly
+		//ticked or unticked: the field of a hidden name leaves the
+		//sheet and comes back with the box (@sa refreshLabelShown)
+	refreshLabelShown();
+
 		//A folio report's label shows where its partner is
 		//(updateReportText()); the label in its information is only where
 		//the partner was when last saved, and changing any other
