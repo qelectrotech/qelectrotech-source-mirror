@@ -756,6 +756,9 @@ void QETDiagramEditor::setUpActions()
 	m_hidden_kinds_label = new QLabel(this);
 	m_hidden_kinds_label->setToolTip(tr("See Display > Show"));
 	statusBar()->addPermanentWidget(m_hidden_kinds_label);
+	m_zoom_label = new QLabel(this);
+	m_zoom_label->setToolTip(tr("Zoom of the folio on screen"));
+	statusBar()->addPermanentWidget(m_zoom_label);
 	connect(QETApp::instance(), &QETApp::shownKindsChanged,
 			this, &QETDiagramEditor::updateShownKinds);
 	updateShownKinds();
@@ -3099,6 +3102,7 @@ void QETDiagramEditor::slot_updateActions()
 	bool opened_project = pv;
 	bool opened_diagram = dv;
 	bool editable_project = (pv && !pv -> project() -> isReadOnly());
+	updateZoomLabel();
 
 	m_close_file->                  setEnabled(opened_project);
 	m_save_file->                   setEnabled(opened_project);
@@ -4188,6 +4192,21 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 		&QETDiagramEditor::slot_updateComplexActions);
 	connect(dv, &DiagramView::modeChanged, this, &QETDiagramEditor::slot_updateModeActions);
 	connect(dv, &DiagramView::elementPlacementStarted, this, &QETDiagramEditor::rememberPlacedElement);
+	connect(dv, &DiagramView::zoomChanged, this, &QETDiagramEditor::updateZoomLabel);
+}
+
+/**
+	@brief QETDiagramEditor::updateZoomLabel
+	Show the zoom of the folio on screen in the status bar, nothing when
+	no folio is shown.
+*/
+void QETDiagramEditor::updateZoomLabel()
+{
+	if (!m_zoom_label)
+		return;
+	DiagramView *dv = currentDiagramView();
+	m_zoom_label->setText(dv ? tr("Zoom %1 %").arg(qRound(dv->transform().m11() * 100))
+				 : QString());
 }
 
 /**

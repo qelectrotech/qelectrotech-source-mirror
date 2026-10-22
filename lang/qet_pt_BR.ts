@@ -14184,6 +14184,16 @@ Remova as pontes e/ou exclua os níveis dos terminais envolvidos para poder excl
         <comment>message box title</comment>
         <translation>Erro</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom da folha na tela</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

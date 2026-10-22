@@ -14039,6 +14039,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <comment>status bar tip</comment>
         <translation>Aktiver foregående projekt</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom af arket på skærmen</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

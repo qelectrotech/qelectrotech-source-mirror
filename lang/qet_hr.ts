@@ -13915,6 +13915,16 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <comment>message box title</comment>
         <translation type="unfinished">Greška</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zum %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zum lista na zaslonu</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

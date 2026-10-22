@@ -14096,6 +14096,16 @@ Ak z toho chcete vytvoriť skript, požiadajte o to svojho AI asistenta – tla�
         <comment>status bar tip</comment>
         <translation>Spustí predchádzajúci projekt</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zväčšenie %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zväčšenie listu na obrazovke</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

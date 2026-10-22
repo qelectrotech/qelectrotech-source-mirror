@@ -14074,6 +14074,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <comment>status bar tip</comment>
         <translation>이전 프로젝트를 활성화합니다</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>확대 %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>화면에 표시된 시트의 확대 비율</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

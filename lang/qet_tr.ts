@@ -14115,6 +14115,16 @@ Bundan bir betik yapmak için yapay zekâ asistanınıza sorun: aşağıdaki dü
         <source>Texts %1</source>
         <translation>Metinler %1</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Yakınlaştırma %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Ekrandaki sayfanın yakınlaştırması</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

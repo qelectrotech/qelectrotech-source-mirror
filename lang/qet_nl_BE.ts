@@ -14185,6 +14185,16 @@ Vraag uw AI-assistent om er een script van te maken: de knop hieronder kopieert 
         <comment>status bar tip</comment>
         <translation>Activeert vorige project</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom van het blad op het scherm</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

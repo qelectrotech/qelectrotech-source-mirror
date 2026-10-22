@@ -14102,6 +14102,16 @@ Ha szkriptet szeretne készíteni belőle, kérje meg AI-asszisztensét: az alá
         <source>Texts %1</source>
         <translation>Szövegek %1</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Nagyítás %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>A képernyőn lévő lap nagyítása</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

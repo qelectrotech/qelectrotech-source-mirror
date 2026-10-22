@@ -14077,6 +14077,16 @@ Remova as pontes e/ou os níveis dos terminais em causa para que possam ser elim
         <comment>status bar tip</comment>
         <translation>Activa o projecto anterior</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom da folha no ecrã</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

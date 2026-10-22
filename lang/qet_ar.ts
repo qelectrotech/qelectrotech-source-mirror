@@ -14150,6 +14150,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <comment>message box title</comment>
         <translation>خطأ</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>التكبير %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>تكبير الورقة المعروضة</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

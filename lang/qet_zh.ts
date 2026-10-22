@@ -14117,6 +14117,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <source>Texts %1</source>
         <translation>文本 %1</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>缩放 %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>屏幕上图纸的缩放</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

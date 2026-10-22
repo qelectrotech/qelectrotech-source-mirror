@@ -14208,6 +14208,16 @@ Retireu els ponts i/o elimineu els nivells dels borns afectats per tal de poder-
         <comment>edit selected item</comment>
         <translation>Edita l&apos;objecte seleccionat</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom del full a la pantalla</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

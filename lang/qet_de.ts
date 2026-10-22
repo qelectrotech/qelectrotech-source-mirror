@@ -14195,6 +14195,16 @@ Um daraus ein Skript zu machen, bitten Sie Ihren KI-Assistenten: Die Schaltfläc
         <comment>message box title</comment>
         <translation>Fehler</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoomstufe der angezeigten Seite</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

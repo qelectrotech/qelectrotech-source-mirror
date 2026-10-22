@@ -13929,6 +13929,16 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <comment>edit selected item</comment>
         <translation>Editează obiectele selectate</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoomul foii de pe ecran</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

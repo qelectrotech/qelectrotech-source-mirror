@@ -14222,6 +14222,16 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         <source>QElectroTech project(*.qet *.qetz);;XML Files (*.xml);;All files (*)</source>
         <translation type="vanished">Projets QElectroTech (*.qet *.qetz);;Fichiers XML (*.xml);;Tous les fichiers (*)</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom du folio affiché</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

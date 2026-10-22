@@ -13926,6 +13926,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <source>Texts %1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Povečava %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Povečava lista na zaslonu</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

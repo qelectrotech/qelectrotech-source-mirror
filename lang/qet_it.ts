@@ -14180,6 +14180,16 @@ Tieni premuto Ctrl durante lo spostamento per posizionare liberamente.</translat
         <source>Adds a text field to the current sheet</source>
         <translation>Aggiunge un campo di testo sulla pagina corrente</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom del foglio sullo schermo</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

@@ -14319,6 +14319,16 @@ Aby zrobić z niego skrypt, poproś swojego asystenta AI: poniższy przycisk kop
         <comment>status bar tip</comment>
         <translation>Uaktywnia poprzedni projekt</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Powiększenie %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Powiększenie arkusza na ekranie</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

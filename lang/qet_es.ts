@@ -14210,6 +14210,16 @@ Para convertirla en un script, pídaselo a su asistente de IA: el botón de abaj
         <comment>message box title</comment>
         <translation>Abriendo el proyecto en sólo lectura</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom del folio en pantalla</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>
