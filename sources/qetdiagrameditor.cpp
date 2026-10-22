@@ -82,6 +82,7 @@
 #include "ui/bomexportdialog.h"
 #include "ui/conductorcolortoolbutton.h"
 #include "ui/diagrambgcolorbutton.h"
+#include "ui/duplicatelabelsdialog.h"
 #include "ui/duplicateoffsetdialog.h"
 #include "ui/jumptoelementdialog.h"
 #include "ui/diagrampropertieseditordockwidget.h"
@@ -778,6 +779,30 @@ void QETDiagramEditor::setUpActions()
 	connect(m_project_edit_properties, &QAction::triggered, [this]() {
 		editProjectProperties(currentProjectView());
 	});
+
+	// Find duplicate identifiers throughout the current project
+	m_find_duplicate_labels =
+		new QAction(tr("Find duplicate signals and components..."), this);
+	m_find_duplicate_labels->setObjectName(
+		QStringLiteral("findDuplicateLabels"));
+	ShortcutManager::instance().registerAction(
+		m_find_duplicate_labels,
+		"diagrameditor.find_duplicate_labels",
+		tr("Diagram editors"),
+		QKeySequence());
+	connect(
+		m_find_duplicate_labels,
+		&QAction::triggered,
+		this,
+		[this]()
+		{
+			if (ProjectView* view = currentProjectView())
+			{
+				auto* dialog = new DuplicateLabelsDialog(view->project(), this);
+				dialog->setAttribute(Qt::WA_DeleteOnClose);
+				dialog->show();
+			}
+		});
 
 		//Add new folio to current project
 	m_project_add_diagram = new QAction(QET::Icons::DiagramAdd, tr("Add a sheet"), this);
@@ -1717,6 +1742,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_project_add_diagram);
 	menu_project -> addAction(m_remove_diagram_from_project);
 	menu_project -> addAction(m_clean_project);
+	menu_project->addAction(m_find_duplicate_labels);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_csv_export);
 	menu_project -> addAction(m_export_cable_list);
@@ -3126,6 +3152,7 @@ void QETDiagramEditor::slot_updateActions()
 
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
+	m_find_duplicate_labels->setEnabled(opened_project);
 	m_project_add_diagram         -> setEnabled(editable_project);
 	m_remove_diagram_from_project -> setEnabled(editable_project);
 	m_clean_project               -> setEnabled(editable_project);
