@@ -14104,6 +14104,16 @@ Ak z toho chcete vytvoriť skript, požiadajte o to svojho AI asistenta – tla�
         <comment>status bar tip</comment>
         <translation>Spustí predchádzajúci projekt</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Zobraziť prepojky svorkovníc medzi svorkami</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Dve prepojené svorky vedľa seba v rade spojí na každom liste čiara</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

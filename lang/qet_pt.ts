@@ -14085,6 +14085,16 @@ Remova as pontes e/ou os níveis dos terminais em causa para que possam ser elim
         <comment>status bar tip</comment>
         <translation>Activa o projecto anterior</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Mostrar as pontes das réguas de bornes entre os bornes</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Dois bornes lado a lado numa fila e ligados por ponte são unidos por uma linha em cada folha</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

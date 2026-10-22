@@ -14158,6 +14158,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <comment>message box title</comment>
         <translation>خطأ</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>إظهار جسور شرائط الأطراف بين أطرافها</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>طرفان متجاوران في صف ومجسّران يُوصلان بخط على كل ورقة</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

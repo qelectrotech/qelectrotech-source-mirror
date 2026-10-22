@@ -14327,6 +14327,16 @@ Aby zrobić z niego skrypt, poproś swojego asystenta AI: poniższy przycisk kop
         <comment>status bar tip</comment>
         <translation>Uaktywnia poprzedni projekt</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Pokaż mostki listew zaciskowych między zaciskami</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Dwa zmostkowane zaciski obok siebie w rzędzie łączy linia na każdym arkuszu</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

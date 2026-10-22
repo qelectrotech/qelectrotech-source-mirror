@@ -14110,6 +14110,16 @@ Ha szkriptet szeretne készíteni belőle, kérje meg AI-asszisztensét: az alá
         <source>Texts %1</source>
         <translation>Szövegek %1</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Sorkapocs-áthidalások megjelenítése a kapcsok között</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Két egymás melletti, áthidalt kapcsot egy sorban vonal köt össze minden lapon</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

@@ -22,7 +22,9 @@
 #include "../qetapp.h"
 #include "../shownkinds.h"
 
+#include <QGraphicsLineItem>
 #include <QGraphicsSimpleTextItem>
+#include <QPen>
 
 /**
 	@brief TerminalElement::TerminalElement
@@ -117,6 +119,43 @@ void TerminalElement::setStripLabel(const QString &text)
 QString TerminalElement::stripLabel() const
 {
 	return m_strip_label ? m_strip_label->text() : QString();
+}
+
+/**
+	@brief TerminalElement::setBridgeLine
+	Draw @a line, a bridge to the next terminal of the row, behind this
+	terminal, so its connection points cover the ends; a null line takes
+	it away.
+*/
+void TerminalElement::setBridgeLine(const QLineF &line)
+{
+	if (line.isNull()) {
+		delete m_bridge_line;
+		m_bridge_line = nullptr;
+		return;
+	}
+	if (!m_bridge_line)
+	{
+		m_bridge_line = new QGraphicsLineItem(this);
+		m_bridge_line->setFlag(QGraphicsItem::ItemStacksBehindParent);
+		QPen pen(Qt::black, 1);
+		pen.setCapStyle(Qt::FlatCap);
+		m_bridge_line->setPen(pen);
+			//Not an item of its own: clicks go to what lies beneath
+		m_bridge_line->setAcceptedMouseButtons(Qt::NoButton);
+		m_bridge_line->setAcceptHoverEvents(false);
+	}
+	if (m_bridge_line->line() != line)
+		m_bridge_line->setLine(line);
+}
+
+/**
+	@brief TerminalElement::bridgeLine
+	@return the bridge drawn to the next terminal of the row, or a null line
+*/
+QLineF TerminalElement::bridgeLine() const
+{
+	return m_bridge_line ? m_bridge_line->line() : QLineF();
 }
 
 /**

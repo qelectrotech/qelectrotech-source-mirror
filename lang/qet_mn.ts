@@ -14002,6 +14002,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <source>Texts %1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Клеммний гүүрийг клеммүүдийн хооронд харуулах</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Эгнээнд зэрэгцсэн гүүрдсэн хоёр клеммийг хуудас бүр дээр шугамаар холбоно</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

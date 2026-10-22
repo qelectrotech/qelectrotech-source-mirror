@@ -14188,6 +14188,16 @@ Tieni premuto Ctrl durante lo spostamento per posizionare liberamente.</translat
         <source>Adds a text field to the current sheet</source>
         <translation>Aggiunge un campo di testo sulla pagina corrente</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Mostra i ponticelli delle morsettiere tra i morsetti</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Due morsetti affiancati in fila e ponticellati sono uniti da una linea su ogni foglio</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

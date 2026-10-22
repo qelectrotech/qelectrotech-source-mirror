@@ -267,6 +267,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
 		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
 		*m_terminal_strip_labels = nullptr,	///< Show each strip's label at its first terminal
+		*m_terminal_strip_bridges = nullptr,	///< Draw the strips' bridges between their terminals
 		*m_crosshair,			///< Show the folio-wide crosshair
 		*m_add_cable = nullptr,		///< Draw the trunk line of a cable
 		*m_draw_grid,			///< Switch the background grid display or not

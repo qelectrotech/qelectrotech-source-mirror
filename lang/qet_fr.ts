@@ -14230,6 +14230,16 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         <source>QElectroTech project(*.qet *.qetz);;XML Files (*.xml);;All files (*)</source>
         <translation type="vanished">Projets QElectroTech (*.qet *.qetz);;Fichiers XML (*.xml);;Tous les fichiers (*)</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Afficher les ponts des borniers entre leurs bornes</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Deux bornes pontées côte à côte dans une rangée sont reliées par un trait sur chaque folio</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

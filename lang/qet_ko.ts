@@ -14082,6 +14082,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <comment>status bar tip</comment>
         <translation>이전 프로젝트를 활성화합니다</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>단자대 브리지를 단자 사이에 표시</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>한 줄에 나란히 있는 브리지된 두 단자를 모든 시트에서 선으로 연결합니다</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

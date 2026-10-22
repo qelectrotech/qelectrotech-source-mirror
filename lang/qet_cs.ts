@@ -14238,6 +14238,16 @@ Chcete-li z něj vytvořit skript, požádejte svého asistenta AI: tlačítko n
         <comment>status bar tip</comment>
         <translation>Spustí předchozí projekt</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Zobrazit propojky svorkovnic mezi svorkami</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Dvě propojené svorky vedle sebe v řadě spojí na každém listu čára</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

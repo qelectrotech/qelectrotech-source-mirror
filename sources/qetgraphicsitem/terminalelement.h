@@ -23,6 +23,7 @@
 #include "../TerminalStrip/terminalstrip.h"
 
 class QETProject;
+class QGraphicsLineItem;
 class QGraphicsSimpleTextItem;
 class RealTerminal;
 /**
@@ -48,6 +49,12 @@ class TerminalElement : public Element
 		QString stripLabel() const;
 		QGraphicsSimpleTextItem *stripLabelItem() const { return m_strip_label; }
 
+			/// A bridge of the terminal strip editor to the next terminal of
+			/// the row, as a line in this terminal's coordinates, drawn
+			/// behind it (TerminalStripLabels); a null line takes it away
+		void setBridgeLine(const QLineF &line);
+		QLineF bridgeLine() const;
+
 	protected:
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
@@ -56,6 +63,7 @@ class TerminalElement : public Element
 
 		QSharedPointer<RealTerminal> m_real_terminal;
 		QGraphicsSimpleTextItem *m_strip_label = nullptr;
+		QGraphicsLineItem *m_bridge_line = nullptr;
 };
 
 #endif // TERMINALELEMENT_H

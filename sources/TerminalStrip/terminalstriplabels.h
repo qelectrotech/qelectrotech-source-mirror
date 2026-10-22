@@ -33,6 +33,13 @@ class TerminalStrip;
 
 	A project option, off by default (QETProject::terminalStripLabelsShown()).
 	The label is worked out, never saved: it is not part of the file.
+
+	The same goes for the bridges of the terminal strip editor, with an
+	option of their own (QETProject::terminalStripBridgesShown()): two
+	terminals of a strip side by side in a row, turned the same way and
+	bridged together, are joined by a line along the row, from the last
+	connection point of the first to the first of the next. It goes behind
+	the terminals, so their connection points cover its ends.
 */
 namespace TerminalStripLabels
 {

@@ -14218,6 +14218,16 @@ Para convertirla en un script, pídaselo a su asistente de IA: el botón de abaj
         <comment>message box title</comment>
         <translation>Abriendo el proyecto en sólo lectura</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Mostrar los puentes de las regletas entre sus bornes</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Dos bornes contiguos de una fila unidos por un puente se unen con una línea en cada folio</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

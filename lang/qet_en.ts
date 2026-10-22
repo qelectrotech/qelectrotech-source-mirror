@@ -14214,6 +14214,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <comment>status bar tip</comment>
         <translation>Activates the previous project</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Show terminal strip bridges between their terminals</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Two bridged terminals side by side in a row are joined by a line on every folio</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

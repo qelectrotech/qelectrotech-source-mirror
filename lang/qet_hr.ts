@@ -13923,6 +13923,16 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <comment>message box title</comment>
         <translation type="unfinished">Greška</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Prikaži mostove rednih stezaljki između stezaljki</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Dvije premoštene stezaljke jedna do druge u redu spajaju se crtom na svakom listu</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

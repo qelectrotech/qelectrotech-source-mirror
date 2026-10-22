@@ -14123,6 +14123,16 @@ Bundan bir betik yapmak için yapay zekâ asistanınıza sorun: aşağıdaki dü
         <source>Texts %1</source>
         <translation>Metinler %1</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Klemens dizilerinin köprülerini klemensler arasında göster</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Bir sırada yan yana köprülenmiş iki klemens her sayfada bir çizgiyle birleştirilir</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

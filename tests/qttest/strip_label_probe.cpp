@@ -12,6 +12,11 @@
 // - on a terminal turned upright the label stands above it, upright;
 // - View > Show hides it with the symbol texts;
 // - it is not saved: only the option is.
+//
+// With the option for the bridges on, two bridged terminals side by side
+// in a row are joined by a line from the last connection point of the
+// first to the first of the next, behind them; a terminal not bridged, or
+// moved out of the row, has none; it is not saved either.
 #include <QApplication>
 #include <QFontDatabase>
 #include <QGraphicsSimpleTextItem>
@@ -23,9 +28,12 @@
 #include "../../sources/diagram.h"
 #include "../../sources/elementsmover.h"
 #include "../../sources/qetproject.h"
+#include "../../sources/qetresult.h"
 #include "../../sources/qetmessagebox.h"
 #include "../../sources/shownkinds.h"
+#include "../../sources/TerminalStrip/realterminal.h"
 #include "../../sources/TerminalStrip/terminalstrip.h"
+#include "../../sources/qetgraphicsitem/terminal.h"
 #include "../../sources/qetgraphicsitem/terminalelement.h"
 
 static void check(bool value, const char *message)
@@ -135,6 +143,45 @@ int main(int argc, char **argv)
 		const QString xml = project.toXml().toString();
 		check(!xml.contains(QStringLiteral("-XN9")), "the label is not saved");
 		check(xml.contains(QStringLiteral("at_first_terminal=\"true\"")), "the option is");
+
+			//Bridges: A, B and C 40 apart in a row, A and B bridged
+		xn1->addTerminal(C);
+		A->setPos(100, 200); B->setPos(140, 200); C->setPos(180, 200);
+		check(xn1->setBridge({A->realTerminal(), B->realTerminal()}), "A and B bridged in the strip editor");
+		settle();
+		check(A->bridgeLine().isNull(), "bridges off by default: no line");
+		project.setTerminalStripBridgesShown(true);
+		settle();
+		const QLineF ab = A->sceneTransform().map(A->bridgeLine());
+		std::printf("bridge %g,%g -> %g,%g\n", ab.x1(), ab.y1(), ab.x2(), ab.y2());
+		check(!A->bridgeLine().isNull(), "on: a line from A");
+		check(near(ab.y1(), 200) && near(ab.y2(), 200), "along the row");
+		qreal a_last = -1e9, b_first = 1e9;
+		for (Terminal *t : A->terminals()) a_last = qMax(a_last, t->dockConductor().x());
+		for (Terminal *t : B->terminals()) b_first = qMin(b_first, t->dockConductor().x());
+		check(near(ab.x1(), a_last) && near(ab.x2(), b_first), "from A's last connection point to B's first");
+		check(B->bridgeLine().isNull(), "none from B: C is not bridged");
+		move(folio, B, QPointF(0, 40));
+		check(A->bridgeLine().isNull(), "none once B leaves the row");
+		move(folio, B, QPointF(0, -40));
+		check(!A->bridgeLine().isNull(), "and back with it");
+		{
+				//Read back from the file, the bridges come after the terminals
+			QTemporaryDir dir;
+			project.setFilePath(dir.filePath(QStringLiteral("bridges.qet")));
+			check(project.write().isOk(), "saved");
+			QETProject reread(project.filePath());
+			reread.buildFolios(reread.diagrams());
+			TerminalElement *a = nullptr;
+			for (Element *e : reread.diagrams().first()->elements())
+				if (e->uuid() == A->uuid()) a = qobject_cast<TerminalElement *>(e);
+			check(a && !a->bridgeLine().isNull(), "read back, the bridge is drawn at once");
+		}
+		xn1->unBridge({A->realTerminal(), B->realTerminal()});
+		settle();
+		check(A->bridgeLine().isNull(), "unbridged in the editor: the line goes");
+		check(project.toXml().toString().contains(QStringLiteral("between_terminals=\"true\"")), "the option is saved");
+		project.setTerminalStripBridgesShown(false);
 
 		project.setTerminalStripLabelsShown(false);
 		check(A->stripLabel().isEmpty() && D->stripLabel().isEmpty(), "off again: the labels go");

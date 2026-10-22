@@ -14216,6 +14216,16 @@ Retireu els ponts i/o elimineu els nivells dels borns afectats per tal de poder-
         <comment>edit selected item</comment>
         <translation>Edita l&apos;objecte seleccionat</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Mostra els ponts de les regletes entre els seus borns</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Dos borns contigus d'una fila units per un pont s'uneixen amb una línia a cada full</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

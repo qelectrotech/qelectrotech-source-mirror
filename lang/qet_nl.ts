@@ -14043,6 +14043,16 @@ They are not shown, but they are kept in the file as they are, and join their te
         <comment>status bar tip</comment>
         <translation>Activeer vorig project</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Bruggen van klemmenstroken tussen de klemmen tonen</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Twee overbrugde klemmen naast elkaar in een rij worden op elk blad met een lijn verbonden</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

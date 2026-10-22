@@ -335,6 +335,11 @@ class QETProject : public QObject
 			/// every folio (TerminalStripLabels), off by default
 		bool terminalStripLabelsShown() const { return m_terminal_strip_labels; }
 		void setTerminalStripLabelsShown(bool shown);
+			/// The bridges of the terminal strip editor drawn between
+			/// their terminals on every folio (TerminalStripLabels), off
+			/// by default
+		bool terminalStripBridgesShown() const { return m_terminal_strip_bridges; }
+		void setTerminalStripBridgesShown(bool shown);
 		void setAutoElement (bool ae);
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, const QString&);
@@ -586,6 +591,7 @@ class QETProject : public QObject
 		bool m_terminal_label_split = false;
 		WiringRules::Settings m_wiring_rules;
 	bool m_terminal_strip_labels = false;
+	bool m_terminal_strip_bridges = false;
 		XmlElementCollection *m_elements_collection = nullptr;
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;

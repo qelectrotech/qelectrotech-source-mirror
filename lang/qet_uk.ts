@@ -14277,6 +14277,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <source>Texts %1</source>
         <translation>Тексти %1</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Показувати перемички клемників між клемами</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Дві сусідні клеми в ряду з перемичкою з'єднуються лінією на кожному аркуші</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>

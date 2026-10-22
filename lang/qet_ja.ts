@@ -14091,6 +14091,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <source>Texts %1</source>
         <translation>テキスト %1</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>端子台のブリッジを端子間に表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>列に並んだブリッジ済みの隣接する2つの端子を各シートで線で結びます</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>
