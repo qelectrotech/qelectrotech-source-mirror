@@ -159,7 +159,12 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 
 	diagram_layout -> addWidget(bpw);
 	diagram_layout -> addWidget(ipw);
-	tab_widget->setMinimumSize(800, 650);
+		//A width only: a minimum height set by hand replaces the one the
+		//tabs ask for, so on a low screen (1080p with display scaling,
+		//#1562) the dialog's scroll area never scrolled and the tallest
+		//tab (cross-references) was squeezed, its widgets drawn on top
+		//of each other. Without it the dialog scrolls instead.
+	tab_widget->setMinimumWidth(800);
 
 	tab_widget -> addTab (diagram_widget, tr("Sheet"));
 	tab_widget -> addTab (m_cpw,            tr("Conductor"));
