@@ -337,7 +337,7 @@ class QETProject : public QObject
 		static QString spliceKeptFolios(QString text, const QHash<int, QByteArray> &kept_folios);
 		bool close();
 		QETResult write(bool overwrite_changed = false);
-		void rememberDiskState();
+		void rememberDiskState(const QByteArray *content = nullptr);
 		bool changedOnDisk(QDateTime *when = nullptr) const;
 		bool isReadOnly() const;
 			/// Opened from a .qetz of a later format (opened read-only)
@@ -558,6 +558,7 @@ class QETProject : public QObject
 		QString m_disk_path;
 		qint64 m_disk_size = -1;
 		QDateTime m_disk_mtime;
+		QByteArray m_disk_hash;
 			/// Saving a .qetz may copy the part of a folio not built
 			/// (toXml(), stage D4)
 		bool m_kept_parts_trusted = false;
