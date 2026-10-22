@@ -84,6 +84,12 @@ class PaletteGraphicsView : public QGraphicsView
 		/// @return the ink the items are shown in, null when they are
 		/// shown as drawn. Null by default.
 		virtual QET::Palette::SheetInk sheetInk() const;
+		/// The ink of the view painting right now, null outside a
+		/// tinted paint: an item drawn in several inks (a cable, its
+		/// line in one, its label in another) draws the part that does
+		/// not take its kind's ink in that ink's own color, which the
+		/// tint leaves as it is.
+		static const QET::Palette::SheetInk &paintingInk() { return s_painting_ink; }
 
 	protected:
 		bool eventFilter(QObject *watched, QEvent *event) override;
@@ -134,6 +140,7 @@ class PaletteGraphicsView : public QGraphicsView
 		QImage m_tint_layer;
 		static inline bool s_custom_bg = false;
 		static inline bool s_colored_ink = false;
+		static inline QET::Palette::SheetInk s_painting_ink;
 };
 
 #endif

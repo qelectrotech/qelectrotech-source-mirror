@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "cablepart.h"
+#include "../palettegraphicsview.h"
 
 #include "cable.h"
 #include "cablemanager.h"
@@ -1391,7 +1392,10 @@ void CablePart::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 	painter->setPen(pen);
 	painter->drawLine(m_p1, m_p2);
 
-	drawLabel(painter, ink);
+		//On a sheet with its own ink the label is written like the other
+		//texts, the line and the cores like the conductors
+	const QET::Palette::SheetInk &sheet_ink = PaletteGraphicsView::paintingInk();
+	drawLabel(painter, sheet_ink.isNull() || isSelected() ? ink : sheet_ink.symbols);
 
 	drawCores(painter, ink);
 

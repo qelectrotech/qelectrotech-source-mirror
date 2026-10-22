@@ -160,6 +160,7 @@ void PaletteGraphicsView::paintInverted(QPaintEvent *event)
 	m_exposed = exposed;
 	m_layered = false;
 	m_ink = sheetInk();
+	s_painting_ink = m_ink;
 	DarkImageRendering::Context context{&m_buffer_painter, !customBackgroundColor(), [this](bool invert, const QRect &bounds) { flushLayer(invert, bounds); }};
 	DarkImageRendering::Scope rasterScope(&context);
 
@@ -172,6 +173,7 @@ void PaletteGraphicsView::paintInverted(QPaintEvent *event)
 	paintingInverted(false);
 	m_inverting = false;
 	m_ink = QET::Palette::SheetInk();
+	s_painting_ink = m_ink;
 
 	if (m_layered) flushLayer(!customBackgroundColor());
 	m_buffer_painter.end();

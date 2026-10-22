@@ -1844,7 +1844,8 @@ QET::Palette::SheetInk DiagramView::sheetInk() const
 /**
 	@brief DiagramView::inkKind
 	Reimplemented from PaletteGraphicsView: the symbols and the free texts
-	take the symbols' ink, the conductors the wires' ink for their line
+	take the symbols' ink, the conductors and the cables (whose label
+	takes the symbols' ink itself) the wires' ink for their line
 	style (dashed for a neutral, dash-dotted for a protective conductor),
 	pictures keep
 	their own colors, and the rest takes the other ink. An item is drawn
@@ -1865,6 +1866,7 @@ PaletteGraphicsView::InkKind DiagramView::inkKind(const QGraphicsItem *item) con
 				case Qt::DashDotLine: return InkKind::DashDottedWires;
 				default: return InkKind::Wires;
 			}
+		case CablePart::Type: return InkKind::Wires;
 		case DiagramImageItem::Type: return InkKind::Untouched;
 		default: return InkKind::Other;
 	}

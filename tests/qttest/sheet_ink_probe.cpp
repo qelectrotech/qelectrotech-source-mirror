@@ -23,6 +23,8 @@
 #include "../../sources/qetmessagebox.h"
 #include "../../sources/qetpalette.h"
 #include "../../sources/qetproject.h"
+#include "../../sources/cable/cablepart.h"
+#include "../../sources/scripting/qetscriptapi.h"
 #include "../../sources/ui/diagrambgcolorbutton.h"
 #include "../../sources/utils/qetsettings.h"
 
@@ -227,6 +229,37 @@ int main(int argc, char **argv)
 		dark_mode->trigger();
 		check(!PaletteGraphicsView::coloredInk() && !PaletteGraphicsView::customBackgroundColor(),
 		      "off: back to the sheet before");
+
+			//A cable across both conductors: its line and cores in the
+			//conductors' red, its label in the texts' yellow
+		{
+			QRectF wires;
+			for (Conductor *c : folio->conductors()) wires |= c->sceneBoundingRect();
+			const qreal x = qRound(wires.center().x() / 10.0) * 10.0 + 5;
+			QetScriptApi api(&project);
+			check(!api.addCable(0, QStringLiteral("-W9"), QStringLiteral("NYM-J 3x1,5"),
+					    {QStringLiteral("BN"), QStringLiteral("BU")}, QString(),
+					    x, wires.top() - 30, x, wires.bottom() + 30).isEmpty(), "a cable across the conductors");
+			setSheet(Qt::black, true, true);
+			const QImage cabled = grab(view);
+			cabled.save(output + "/cable.png");
+			CablePart *part = nullptr;
+			for (QGraphicsItem *item : folio->items())
+				if (item->type() == CablePart::Type) part = static_cast<CablePart *>(item);
+			check(part, "the cable is drawn");
+			const QRect area = view.mapFromScene(part->sceneBoundingRect()).boundingRect()
+					   .intersected(QRect(QPoint(0, 0), cabled.size()));
+			int reds = 0, yellows = 0, whites = 0;
+			for (int y = area.top(); y <= area.bottom(); ++y)
+				for (int x = area.left(); x <= area.right(); ++x) {
+					const QColor c = cabled.pixelColor(x, y);
+					reds += red(c); yellows += yellow(c);
+					whites += white(c) && c.blue() > 200 && c.red() > 220;
+				}
+			std::printf("cable: red %d yellow %d white %d\n", reds, yellows, whites);
+			check(reds > 30, "its line and cores are red");
+			check(yellows > 30, "its label is yellow");
+		}
 
 		QetSettings::setSheetBackground({Qt::black, true, true});
 		check(QetSettings::sheetBackground().colored_ink, "the choice is kept in the settings");
