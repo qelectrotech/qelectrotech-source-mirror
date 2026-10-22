@@ -128,7 +128,9 @@ namespace
  * whose label prefix or plant and location no longer match its strip.
  *
  * In both cases the order the user gave to a strip is never changed,
- * only a strip created by the run itself is sorted.
+ * only a strip created by the run itself is sorted -- the way the plan
+ * is drawn : folio by folio, then left to right (see
+ * SortTerminalStripCommand::planOrderLessThan).
  */
 TerminalStripAutoImport::ImportResult TerminalStripAutoImport::importFreeTerminals(
 	QETProject *project, bool move_placed)
@@ -187,16 +189,21 @@ TerminalStripAutoImport::ImportResult TerminalStripAutoImport::importFreeTermina
 
 	for (auto it_ = groups_.begin(); it_ != groups_.end(); ++it_)
 	{
-		auto by_label_ = [](const QSharedPointer<RealTerminal> &a_,
-							const QSharedPointer<RealTerminal> &b_) {
-			return QETUtils::naturalLessThan(a_->label(), b_->label());
+			//The plan order : folio by folio, then left to right, so the
+			//strip comes out the way the plan is drawn instead of label
+			//by label ("N" and "PE" stay where they are on the sheet).
+			//SortTerminalStripCommand, pushed below for a strip this run
+			//creates, sorts with the same rule and cannot undo it.
+		auto by_plan_ = [](const QSharedPointer<RealTerminal> &a_,
+						   const QSharedPointer<RealTerminal> &b_) {
+			return SortTerminalStripCommand::planOrderLessThan(a_, b_);
 		};
 		std::sort(it_.value().free_terminals.begin(),
-				  it_.value().free_terminals.end(), by_label_);
+				  it_.value().free_terminals.end(), by_plan_);
 		std::sort(it_.value().placed_terminals.begin(),
 				  it_.value().placed_terminals.end(),
-				  [&by_label_](const auto &a_, const auto &b_) {
-			return by_label_(a_.first, b_.first);
+				  [&by_plan_](const auto &a_, const auto &b_) {
+			return by_plan_(a_.first, b_.first);
 		});
 	}
 

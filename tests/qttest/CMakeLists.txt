@@ -318,6 +318,11 @@ qet_add_app_test(tst_assistantinfopaths tst_assistantinfopaths.cpp)
 # %T in a report or cross reference formula is the target folio's title.
 qet_add_app_test(tst_reportfoliotitle tst_reportfoliotitle.cpp)
 
+# The cable cells of a terminal strip are worked out from the cables of
+# the project: wired shows the cable and its core read only, unwired keeps
+# what was typed in, and nothing stale is written into the element.
+qet_add_app_test(tst_terminalcableauto tst_terminalcableauto.cpp)
+
 # Escape during a picture's resize, rotate or pivot drag puts it back, keeps
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
@@ -363,6 +368,17 @@ target_link_libraries(tst_textresizehandles PRIVATE Qt::Test Qt::Widgets)
 # A line's pivot follows its centre when one of its ends is dragged, as a
 # rectangle's does; a pivot placed by hand stays.
 qet_add_app_test(tst_linepivotresize tst_linepivotresize.cpp)
+
+# The terminal strip sorts into the plan's own order -- folio by folio, then
+# left to right -- instead of by label; the auto import and
+# SortTerminalStripCommand share one comparator for it, so a strip the import
+# creates cannot come out in another order than the sort it then pushes.
+qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
+
+# The strip graphic names where a cable goes at its far end -- Installation,
+# Location and Label of the first piece its wires land on past the strip, in
+# plan order, the same three fields the cable list computes for a target.
+qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
 
 # legacyelementtypes.h is header-only: the rewrite of element type names in
 # nomenclature queries saved before June 2022.

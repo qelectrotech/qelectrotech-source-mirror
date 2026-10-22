@@ -35,6 +35,7 @@
 #include "../terminalcatalog.h"
 #include "../realterminal.h"
 #include "../../qetinformation.h"
+#include "../../cable/cable.h"
 
 #include <QApplication>
 #include <QCheckBox>
@@ -95,6 +96,10 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 			}
 		}
 	});
+
+		//The cable cells are worked out from the cables of the project,
+		//so the table follows them while the user wires the drawing
+	watchCableChanges();
 }
 
 /**
@@ -107,7 +112,86 @@ TerminalStripEditor::~TerminalStripEditor() {
 void TerminalStripEditor::setProject(QETProject *project)
 {
     m_project = project;
+	watchCableChanges();
     setCurrentStrip(nullptr);
+}
+
+/**
+ * @brief TerminalStripEditor::watchCableChanges
+ * Follow the cables of the project: the cable cells are worked out from
+ * them, so a cable renamed, given cores or taken away changes what the
+ * cells say, and the window stays open while the user wires the drawing.
+ * The project the editor followed before is let go first, since the
+ * window may be shown on another project.
+ */
+void TerminalStripEditor::watchCableChanges()
+{
+	if (m_watched_project) {
+			//Only the connections made here go to the project
+		m_watched_project->disconnect(nullptr, this);
+		for (Cable *cable : m_watched_project->cables()) {
+			cable->disconnect(nullptr, this);
+		}
+	}
+	m_watched_project = m_project;
+	if (!m_project) {
+		return;
+	}
+
+	connect(m_project, &QETProject::cableAdded, this, [this](Cable *cable) {
+		watchCable(cable);
+	});
+	connect(m_project, &QETProject::cableRemoved, this, [this](Cable *cable) {
+			//The project stopped feeding its labels already, so the
+			//cells show what is left: the typed in value, or nothing
+		if (cable) {
+			cable->disconnect(nullptr, this);
+		}
+		reloadOnCableChange();
+	});
+	for (Cable *cable : m_project->cables()) {
+		watchCable(cable);
+	}
+}
+
+/**
+ * @brief TerminalStripEditor::watchCable
+ * Reload the table when @a cable changes. The project runs its own
+ * connection first (made when the cable entered it), so the labels of
+ * the conductors are worked out again before this reload reads them.
+ * @param cable
+ */
+void TerminalStripEditor::watchCable(Cable *cable)
+{
+	if (!cable) {
+		return;
+	}
+	cable->disconnect(nullptr, this);
+	connect(cable, &Cable::changed, this, &TerminalStripEditor::reloadOnCableChange);
+}
+
+/**
+ * @brief TerminalStripEditor::reloadOnCableChange
+ * Take up a change of the cables: reload so the cable cells say what
+ * they now must, never at the price of the user's own work -- cell
+ * edits not applied yet, or a cell being typed in, are kept and catch
+ * up with the next reload of any kind.
+ */
+void TerminalStripEditor::reloadOnCableChange()
+{
+	if (!m_current_strip || !m_model) {
+		return;
+	}
+	if (!m_model->modifiedmodelRealTerminalData().isEmpty()) {
+		return;
+	}
+		//A cell being typed in keeps its editor: the reload would close
+		//it under the fingers of the user (the edit itself is picked up
+		//by the next reload once it has been made)
+	if (ui->m_table_widget->isAncestorOf(QApplication::focusWidget())) {
+		return;
+	}
+	reload();
 }
 
 /**
@@ -165,6 +249,18 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		{
 			m_model = new TerminalStripModel{strip_, this};
 			ui->m_table_widget->setModel(m_model);
+				//The Target column is worked out from the drawing: it takes
+				//the width of its own text, never a cut off Installation
+			ui->m_table_widget->horizontalHeader()->setSectionResizeMode(
+				TerminalStripModel::CableTarget, QHeaderView::ResizeToContents);
+				//That column holds one line by field: its rows must be tall
+				//enough for as many lines as a cell shows, while a cell of
+				//one line keeps the height the rows have always had
+			auto v_header_ = ui->m_table_widget->verticalHeader();
+			v_header_->setMinimumSectionSize(qMax(
+				v_header_->defaultSectionSize(),
+				ui->m_table_widget->rowHeight(0)));
+			v_header_->setSectionResizeMode(QHeaderView::ResizeToContents);
 			m_model->buildBridgePixmap(setUpBridgeCellWidth());
 			connect(ui->m_table_widget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TerminalStripEditor::selectionChanged);
 		}
@@ -245,8 +341,19 @@ void TerminalStripEditor::apply()
 						current_data.m_informations.addValue(key, value);
 					}
 				};
-				set_info(RealTerminal::cableInfoKey(), data_.cable_);
-				set_info(RealTerminal::cableWireInfoKey(), data_.cable_wire);
+					//A cable worked out from the cables of the project is
+					//never written in the element: it would stay there,
+					//out of date, once the cable is renamed or removed
+				if (!data_.cable_auto_) {
+					set_info(RealTerminal::cableInfoKey(), data_.cable_);
+					set_info(RealTerminal::cableWireInfoKey(), data_.cable_wire);
+				}
+					//The same for the target: a target worked out from the
+					//project is never written in the element, only the one
+					//typed in by hand is stored
+				if (!data_.cable_target_auto_) {
+					set_info(RealTerminal::cableTargetInfoKey(), data_.cable_target_);
+				}
 				set_info(RealTerminal::shieldInfoKey(), data_.shield_ ? QStringLiteral("true") : QString());
 				//The color and the section are stored with the dot as decimal separator, whatever the locale
 				set_info(RealTerminal::colorInfoKey(), TerminalColor::toSpec(data_.color_, data_.stripe_color_));
@@ -701,7 +808,8 @@ void TerminalStripEditor::on_m_led_cb_activated(int index)
 namespace {
 /**
  * @return true if the cell at @a index contain a free text
- * (label, cable, wire of the cable, color, section or width), so a text can be pasted in it.
+ * (label, cable, wire of the cable, target of the cable, color, section
+ * or width), so a text can be pasted in it.
  */
 bool cellAcceptText(const QModelIndex &index)
 {
@@ -709,6 +817,7 @@ bool cellAcceptText(const QModelIndex &index)
 	return column_ == TerminalStripModel::Label
 			|| column_ == TerminalStripModel::Cable
 			|| column_ == TerminalStripModel::CableWire
+			|| column_ == TerminalStripModel::CableTarget
 			|| column_ == TerminalStripModel::Color
 			|| column_ == TerminalStripModel::Section
 			|| column_ == TerminalStripModel::Width;
@@ -779,8 +888,15 @@ void TerminalStripEditor::copySelectionToClipboard()
 	for (auto row = top ; row <= bottom ; ++row)
 	{
 		QStringList cells;
-		for (auto column = left ; column <= right ; ++column) {
-			cells << texts.value((qint64(row) << 32) | qint64(column));
+		for (auto column = left ; column <= right ; ++column)
+		{
+				//A cell may hold several lines (the Target cell holds one
+				//line by field): the text of the clipboard keeps one line by
+				//row, the fields of that cell are joined back the way a
+				//spreadsheet reads them
+			QString cell_{texts.value((qint64(row) << 32) | qint64(column))};
+			cell_.replace(QLatin1Char('\n'), QStringLiteral(" / "));
+			cells << cell_;
 		}
 		lines << cells.join(QLatin1Char('\t'));
 	}
