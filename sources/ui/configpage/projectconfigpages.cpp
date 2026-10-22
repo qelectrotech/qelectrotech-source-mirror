@@ -41,6 +41,7 @@
 #include "../reportpropertiewidget.h"
 #include "../titleblockpropertieswidget.h"
 #include "../xrefpropertieswidget.h"
+#include "../projectorigin.h"
 
 //#include "ui_autonumberingmanagementw.h"
 
@@ -186,6 +187,13 @@ void ProjectMainConfigPage::applyProjectConf()
 		modified_project = true;
 	}
 
+	const auto project_origin = ProjectOrigin::fromString(origin_cb_->currentData().toString());
+	if (m_project->Origin() != project_origin)
+	{
+		m_project->setOrigin(project_origin);
+		modified_project = true;
+	}
+
 	if (m_project -> uprightSymbolTexts() != upright_symbol_texts_cb_ -> isChecked()) {
 		m_project -> setUprightSymbolTexts(upright_symbol_texts_cb_ -> isChecked());
 		modified_project = true;
@@ -298,6 +306,22 @@ void ProjectMainConfigPage::initWidgets()
 											"(Configure QElectroTech > General).",
 											"informative label"));
 	wiring_rules_off_label_ -> setWordWrap(true);
+	//origin (of a coordinate system) settings
+	origin_label_ = new QLabel(tr("Origin (of a coordinate system):"));
+	origin_cb_	  = new QComboBox();
+	origin_cb_->addItem(tr("Top-Left", "project origin"),
+						ProjectOrigin::toString(ProjectOrigin::Mode::TopLeft));
+	origin_cb_->addItem(tr("Top-Right", "project origin"),
+						ProjectOrigin::toString(ProjectOrigin::Mode::TopRight));
+	origin_cb_->addItem(tr("Bottom-Left", "project origin"),
+						ProjectOrigin::toString(ProjectOrigin::Mode::BottomLeft));
+	origin_cb_->addItem(tr("Bottom-Right", "project origin"),
+						ProjectOrigin::toString(ProjectOrigin::Mode::BottomRight));
+	origin_cb_->setToolTip(tr("Which corner to use as the origin (coordinate system origin) "
+							  "Top - Left corner(default), Top - Right, "
+							  "Bottom - Left, Bottom - Right.",
+							  "tooltip"));
+
 }
 
 /**
@@ -345,6 +369,14 @@ void ProjectMainConfigPage::initLayout()
 	wiring_rules_layout -> addWidget(one_wire_per_report_cb_);
 	wiring_rules_layout -> addWidget(wiring_rules_off_label_);
 	main_layout0 -> addWidget(wiring_rules_gb_);
+	main_layout0->addSpacing(10);
+
+	QHBoxLayout* project_origin_layout0 = new QHBoxLayout();
+	project_origin_layout0->addWidget(origin_label_);
+	project_origin_layout0->addWidget(origin_cb_);
+	project_origin_layout0->addStretch();
+	main_layout0->addLayout(project_origin_layout0);
+	main_layout0->addSpacing(10);
 
 	setLayout(main_layout0);
 	this -> setMinimumWidth(680);
@@ -369,6 +401,9 @@ void ProjectMainConfigPage::readValuesFromProject()
 	const int wire_hops_index = wire_hops_cb_ -> findData(WireHops::toString(m_project -> wireHops()));
 	wire_hops_cb_ -> setCurrentIndex(qMax(0, wire_hops_index));
 	upright_symbol_texts_cb_ -> setChecked(m_project -> uprightSymbolTexts());
+
+	const int project_origin_index = origin_cb_->findData(ProjectOrigin::toString(m_project->Origin()));
+	origin_cb_->setCurrentIndex(qMax(0, project_origin_index));
 
 		//The rules that apply: the project's own or the application's
 	const WiringRules::Settings wiring_rules = m_project -> wiringRules();
@@ -426,6 +461,7 @@ void ProjectMainConfigPage::adjustReadOnly()
 	wire_hops_cb_ -> setDisabled(is_read_only);
 	upright_symbol_texts_cb_ -> setDisabled(is_read_only);
 	wiring_rules_gb_ -> setDisabled(is_read_only);
+	origin_cb_->setDisabled(is_read_only);
 }
 
 //######################################################################################//

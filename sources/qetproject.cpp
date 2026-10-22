@@ -2423,6 +2423,25 @@ void QETProject::autoFolioNumberingSelectedFolios(int from,
 }
 
 /**
+	@brief QETProject::Origin
+	@return specifies the origin for the sheet
+*/
+ProjectOrigin::Mode QETProject::Origin() const { return m_origin; }
+
+/**
+	@brief QETProject::setOrigin
+	Specifies which corner is used as the origin (coordinate system starting point)
+	and redraws all project sheets.
+	@param mode
+*/
+void QETProject::setOrigin(ProjectOrigin::Mode mode)
+{
+	if (mode == m_origin) { return; }
+	m_origin = mode;
+	for (Diagram* diagram : builtFolios()) { diagram->refreshContents(); }
+}
+
+/**
 	@brief QETProject::toXml
 	@return un document XML representant le projet
 */
@@ -2570,6 +2589,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeWireHopsXml(project_root);
 	writeSymbolTextsXml(project_root);
 	writeWiringRulesXml(project_root);
+	writeOriginXml(project_root);
 
 	// Properties for news diagrams
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
@@ -3530,6 +3550,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readWireHopsXml(xml_project);
 	readSymbolTextsXml(xml_project);
 	readWiringRulesXml(xml_project);
+	readOriginXml(xml_project);
 
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
@@ -3879,6 +3900,22 @@ void QETProject::readWireHopsXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readOriginXml
+	Read the <style> element and "origin" attribute of the project, if any.
+	A project without it draws origin top-left.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readOriginXml(QDomDocument& xml_project)
+{
+	const QDomElement style =
+		xml_project.documentElement().firstChildElement(
+			QStringLiteral("style"));
+	m_origin = style.isNull() 
+		    ? ProjectOrigin::Mode::TopLeft 
+			: ProjectOrigin::fromString(style.attribute(QStringLiteral("origin")));
+}
+
+/**
 	@brief QETProject::readSymbolTextsXml
 	Read the <symbol_texts> element of the project, if any. A project
 	without it was saved before the setting existed, or with it off, and
@@ -4198,6 +4235,27 @@ void QETProject::writeWireHopsXml(QDomElement &xml_element)
 			.createElement(QStringLiteral("wire_crossings"));
 	crossings.setAttribute(QStringLiteral("hop"), WireHops::toString(m_wire_hops));
 	xml_element.appendChild(crossings);
+}
+
+/**
+	@brief QETProject::writeOriginXml
+	Export information regarding which corner is used as the origin (the reference
+	point for the coordinate system) as a child `<style>` element within
+	`xml_element`. This data is recorded only if a setting other than "Top-left" is
+	selected; consequently, for projects where this feature has never been used,
+	nothing will change.
+*/
+void QETProject::writeOriginXml(QDomElement& xml_element)
+{
+	if (m_origin == ProjectOrigin::Mode::TopLeft){
+		return; 
+	}
+	QDomElement style = xml_element.ownerDocument().createElement(
+		QStringLiteral("style"));
+	style.setAttribute(
+		QStringLiteral("origin"),
+		ProjectOrigin::toString(m_origin));
+	xml_element.appendChild(style);
 }
 
 /**

@@ -20,6 +20,8 @@
 #include "bordercelllabels.h"
 #include "diagram.h"
 #include "diagramview.h"
+#include "projectorigin.h"
+#include "qetproject.h"
 
 #include <QPainter>
 #include <QSettings>
@@ -161,7 +163,8 @@ void CellRuler::paintEvent(QPaintEvent *event)
 		const QRectF text_rect = horizontal
 				? QRectF(centre - label_room / 2.0, 0, label_room, depth - 1)
 				: QRectF(0, centre - label_room / 2.0, depth - 1, label_room);
-		painter.drawText(text_rect, Qt::AlignCenter | Qt::TextDontClip, label(i));
+		painter.drawText(text_rect, Qt::AlignCenter | Qt::TextDontClip, 
+			label(horizontal ? border.columnNumberByIndex(i) : border.rowNumberByIndex(i)));
 	}
 
 		//Keep the corner empty: the other ruler's labels do not belong there

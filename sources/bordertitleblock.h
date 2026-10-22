@@ -64,6 +64,10 @@ class BorderTitleBlock : public QObject
 		/// @return the column headers height, in pixels
 		qreal columnsHeaderHeight() const {
 			return(columns_header_height_); }
+		/// @return the column index by number,	taking the origin into account
+		int columnIndexByNumber(int num) const;
+		/// @return the column number by index, taking the origin into account
+		int columnNumberByIndex(int index) const;
 	
 		//ROWS
 		/// @return the number of rows
@@ -77,6 +81,10 @@ class BorderTitleBlock : public QObject
 		qreal rowsHeaderWidth() const { return(rows_header_width_); }
 		/// @return the edge where title block is docked
 		Qt::Edge titleBlockEdge() const { return(m_edge); }
+		/// @return the row index by number, taking the origin into account
+		int rowIndexByNumber(int num) const;
+		/// @return the row number by index, taking the origin into account
+		int rowNumberByIndex(int index) const;
 	
 		// border - title block = diagram
 		/**
