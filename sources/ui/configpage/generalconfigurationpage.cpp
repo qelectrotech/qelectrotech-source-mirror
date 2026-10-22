@@ -44,7 +44,6 @@
 #include <QSettings>
 
 #include "../../diagram.h"
-#include "../../qetgraphicsitem/element.h"
 #include "../../qetproject.h"
 
 namespace {
@@ -161,11 +160,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		};
 		enable(ui->m_wiring_rules_cb->isChecked());
 		connect(ui->m_wiring_rules_cb, &QCheckBox::toggled, this, enable);
-	}
-	if (QetSettings::terminalLabelSplit()) {
-		ui->m_terminal_label_split_rb->setChecked(true);
-	} else {
-		ui->m_terminal_label_combined_rb->setChecked(true);
 	}
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
@@ -420,19 +414,6 @@ void GeneralConfigurationPage::applyConf()
 		WiringRules::setApplicationSettings(rules);
 		if (WiringRules::masterEnabled() && WiringRules::turnsRuleOn(before, rules)) {
 			WiringRulesWarning::show(this);
-		}
-	}
-		//The labelling setting is read where the label is drawn, so the
-		//drawings already open are told to draw it again when it changes
-	const bool label_split = ui->m_terminal_label_split_rb->isChecked();
-	if (QetSettings::terminalLabelSplit() != label_split) {
-		QetSettings::setTerminalLabelSplit(label_split);
-		for (QETProject *project : QETApp::registeredProjects()) {
-			for (Diagram *diagram : project->diagrams()) {
-				for (Element *element : diagram->elements()) {
-					element->refreshLabelFields();
-				}
-			}
 		}
 	}
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());

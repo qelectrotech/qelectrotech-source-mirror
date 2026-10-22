@@ -26,11 +26,10 @@
 #include "qetgraphicsitem/terminal.h"
 #include "qetinformation.h"
 #include "qetproject.h"
-#include "utils/qetsettings.h"
 
 /**
-	How a terminal's own label is drawn, the setting of the moment being
-	read (@sa QetSettings::terminalLabelSplit).
+	How a terminal's own label is drawn, the terminal labelling of the
+	project being read (@sa QETProject::terminalLabelSplit).
 
 	The label stays whole wherever it is used as data: what the element
 	stores, the numbering, the sorting in the terminal strip editor and
@@ -149,19 +148,10 @@ class tst_terminallabeldisplay : public QObject
 	}
 
 private slots:
-	void cleanup()
-	{
-			//Whatever a test left behind, the next one (and the rest of
-			//the suite) starts from the shipped default
-		QetSettings::setTerminalLabelSplit(false);
-	}
-
 	//The shipped default: one field with the whole label, the way it has
 	//always been drawn
 	void oneFieldKeepsTheWholeLabel()
 	{
-		QetSettings::setTerminalLabelSplit(false);
-
 		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
 		QETProject project(fixture);
 		QCOMPARE(project.state(), QETProject::Ok);
@@ -186,11 +176,10 @@ private slots:
 	//can never make a number vanish
 	void splitWithoutNumberFieldShowsTwoLines()
 	{
-		QetSettings::setTerminalLabelSplit(true);
-
 		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
 		QETProject project(fixture);
 		QCOMPARE(project.state(), QETProject::Ok);
+		project.setTerminalLabelSplit(true);
 
 		Element *element = terminalWithLabel(project, QStringLiteral("X1:1"));
 		QVERIFY(element);
@@ -216,11 +205,10 @@ private slots:
 	//part in its field, the label no longer carrying the number
 	void splitWithNumberFieldShowsEachInItsOwnField()
 	{
-		QetSettings::setTerminalLabelSplit(true);
-
 		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
 		QETProject project(fixture);
 		QCOMPARE(project.state(), QETProject::Ok);
+		project.setTerminalLabelSplit(true);
 
 		Element *element = terminalWithLabel(project, QStringLiteral("X1:1"));
 		QVERIFY(element);
@@ -240,11 +228,10 @@ private slots:
 	//setting says
 	void splitLeavesLabelsWithoutColonAlone()
 	{
-		QetSettings::setTerminalLabelSplit(true);
-
 		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
 		QETProject project(fixture);
 		QCOMPARE(project.state(), QETProject::Ok);
+		project.setTerminalLabelSplit(true);
 
 		Element *element = terminalWithLabel(project, QStringLiteral("S7"));
 		QVERIFY(element);
@@ -266,15 +253,16 @@ private slots:
 		QETProject project(fixture);
 		QCOMPARE(project.state(), QETProject::Ok);
 
-		QetSettings::setTerminalLabelSplit(true);
+		project.setTerminalLabelSplit(true);
 		Element *element = terminalWithLabel(project, QStringLiteral("X1:1"));
 		QVERIFY(element);
 		DynamicElementTextItem *label = fieldBoundTo(element, QETInformation::ELMT_LABEL);
 		QVERIFY(label);
 		QCOMPARE(label->toPlainText(), QStringLiteral("X1\n1"));
 
-		QetSettings::setTerminalLabelSplit(false);
-		element->refreshLabelFields();
+			//The setter itself tells the labels of the drawings already
+			//open to draw again: nothing else to ask for
+		project.setTerminalLabelSplit(false);
 		QCOMPARE(label->toPlainText(), QStringLiteral("X1:1"));
 		QCOMPARE(element->actualLabel(), QStringLiteral("X1:1"));
 	}
@@ -284,8 +272,6 @@ private slots:
 	//use of it as data -- only the drawing changes
 	void hiddenNameKeepsEverythingStored()
 	{
-		QetSettings::setTerminalLabelSplit(false);
-
 		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
 		QETProject project(fixture);
 		QCOMPARE(project.state(), QETProject::Ok);
@@ -308,11 +294,10 @@ private slots:
 	//hiding the name can never hide the number
 	void hiddenNameKeepsTheNumberWithSplit()
 	{
-		QetSettings::setTerminalLabelSplit(true);
-
 		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
 		QETProject project(fixture);
 		QCOMPARE(project.state(), QETProject::Ok);
+		project.setTerminalLabelSplit(true);
 
 		Element *element = terminalWithLabel(project, QStringLiteral("X1:1"));
 		QVERIFY(element);
@@ -332,11 +317,10 @@ private slots:
 	//draws nothing -- the number is never drawn twice
 	void hiddenNameLeavesTheNumberToItsOwnField()
 	{
-		QetSettings::setTerminalLabelSplit(true);
-
 		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
 		QETProject project(fixture);
 		QCOMPARE(project.state(), QETProject::Ok);
+		project.setTerminalLabelSplit(true);
 
 		Element *element = terminalWithLabel(project, QStringLiteral("X1:1"));
 		QVERIFY(element);
@@ -355,8 +339,6 @@ private slots:
 	//file says
 	void nonTerminalAlwaysDrawsItsName()
 	{
-		QetSettings::setTerminalLabelSplit(false);
-
 		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
 		QETProject project(fixture);
 		QCOMPARE(project.state(), QETProject::Ok);
@@ -380,11 +362,10 @@ private slots:
 	//part of the label, not a split waiting to happen
 	void splitLeavesNonTerminalsWithColonAlone()
 	{
-		QetSettings::setTerminalLabelSplit(true);
-
 		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
 		QETProject project(fixture);
 		QCOMPARE(project.state(), QETProject::Ok);
+		project.setTerminalLabelSplit(true);
 
 		Element *element = nonTerminalWithLabel(project, QStringLiteral("-K1:13"));
 		QVERIFY2(element,
@@ -404,8 +385,6 @@ private slots:
 	//with it, both ways through the same signal
 	void hiddenNameHidesTheLabelField()
 	{
-		QetSettings::setTerminalLabelSplit(false);
-
 		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
 		QETProject project(fixture);
 		QCOMPARE(project.state(), QETProject::Ok);

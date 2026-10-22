@@ -1259,7 +1259,7 @@ void DynamicElementTextItem::elementInfoChanged()
 	if(element) {
 		dc = element->elementInformations();
 			//The label and the terminal number are drawn the way the
-			//settings say (@sa QetSettings::terminalLabelSplit): a
+			//project says (@sa QETProject::terminalLabelSplit): a
 			//composite text which uses them must see the same values the
 			//fields bound to them show
 		dc.addValue(QETInformation::ELMT_LABEL,           element->labelForDisplay());

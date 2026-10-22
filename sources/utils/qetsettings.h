@@ -76,20 +76,6 @@ namespace QetSettings
 
 	QStringList sheetBackgroundRecentColors();
 	void setSheetBackgroundRecentColors(const QStringList &colors);
-
-	/**
-		@brief How a terminal's own label is drawn.
-
-		The label is stored as it is written ("X1:1"). With the split on,
-		the drawing shows the label ("X1") and the terminal number ("1")
-		as two parts, so a terminal symbol can keep the number in its own
-		text field and place it where it wants. Only the drawing reacts:
-		what the element stores, the numbering, the sorting in the
-		terminal strip editor and every export keep the whole label.
-		Off by default, so a drawing keeps the look it was made with.
-	*/
-	bool terminalLabelSplit();
-	void setTerminalLabelSplit(bool split);
 }
 
 #endif // QETSETTINGS_H

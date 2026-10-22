@@ -33,7 +33,6 @@
 #include "../properties/terminaldata.h"
 #include "../properties/xrefproperties.h"
 #include "../qetinformation.h"
-#include "../utils/qetsettings.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../ui/elementpropertieswidget.h"
@@ -1765,7 +1764,8 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 	The fields which draw the label draw it again: what they show of the
 	label has changed under them (a field for the terminal number added
 	or removed, @sa Element::hasTerminalNumberText), or the terminal
-	labelling setting was switched (@sa QetSettings::terminalLabelSplit).
+	labelling setting of the project was switched
+	(@sa QETProject::terminalLabelSplit).
 	Only the fields which draw a label are refreshed, every other field
 	follows its own information.
 */
@@ -2762,21 +2762,22 @@ QString Element::actualLabel()
 
 /**
 	@brief Element::labelForDisplay
-	@return the label as the drawing must show it, the settings of the
-	moment being read (@sa QetSettings::terminalLabelSplit): the whole
-	label ("X1:1") while the labelling is shown in one field; the label
-	alone ("X1") when it is shown split and this symbol has a text field
-	of its own for the terminal number; and the two one under the other
-	when it is split without such a field -- so a symbol drawn before
-	the setting existed still shows all of its label, only shorter.
-	Only an element of the terminal type is ever drawn split: the colon
-	in any other label is part of the label ("-K1:13").
+	@return the label as the drawing must show it, the terminal labelling
+	of the project being read (@sa QETProject::terminalLabelSplit): the
+	whole label ("X1:1") while the labelling is shown in one field; the
+	label alone ("X1") when it is shown split and this symbol has a text
+	field of its own for the terminal number; and the two one under the
+	other when it is split without such a field -- so a symbol drawn
+	before the setting existed still shows all of its label, only
+	shorter. Only an element of the terminal type is ever drawn split:
+	the colon in any other label is part of the label ("-K1:13").
 */
 QString Element::labelForDisplay()
 {
 	const QString label = actualLabel();
+	const Diagram *d = diagram();
 	const bool split = m_data.m_type == ElementData::Terminal
-			&& QetSettings::terminalLabelSplit();
+			&& d && d->project() && d->project()->terminalLabelSplit();
 
 		//The "Show name" box of the selection properties hides the name
 		//of this element on the sheet only: the element keeps all of its
@@ -2823,8 +2824,9 @@ QString Element::labelForDisplay()
 */
 QString Element::terminalNumberForDisplay()
 {
+	const Diagram *d = diagram();
 	if (m_data.m_type != ElementData::Terminal
-		|| !QetSettings::terminalLabelSplit()) {
+		|| !d || !d->project() || !d->project()->terminalLabelSplit()) {
 		return QString();
 	}
 

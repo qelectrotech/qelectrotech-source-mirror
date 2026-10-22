@@ -290,28 +290,4 @@ namespace QetSettings
 		QSettings settings;
 		settings.setValue(QStringLiteral("diagrameditor/sheet_background_recent"), colors);
 	}
-
-	/**
-	* @brief terminalLabelSplit
-	* @return whether a terminal's label is drawn split, the label and
-	* the terminal number each in their own text field, instead of the
-	* whole label ("X1:1") in one field. Off unless the user turned it
-	* on, so an existing drawing keeps its look. @sa setTerminalLabelSplit
-	*/
-	bool terminalLabelSplit()
-	{
-		QSettings settings;
-		return settings.value(QStringLiteral("element/terminal_label_split"), false).toBool();
-	}
-
-	/**
-	* @brief setTerminalLabelSplit
-	* Store whether a terminal's label is drawn split. @sa terminalLabelSplit
-	* @param split
-	*/
-	void setTerminalLabelSplit(bool split)
-	{
-		QSettings settings;
-		settings.setValue(QStringLiteral("element/terminal_label_split"), split);
-	}
 }
