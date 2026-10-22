@@ -2769,11 +2769,14 @@ QString Element::actualLabel()
 	of its own for the terminal number; and the two one under the other
 	when it is split without such a field -- so a symbol drawn before
 	the setting existed still shows all of its label, only shorter.
+	Only an element of the terminal type is ever drawn split: the colon
+	in any other label is part of the label ("-K1:13").
 */
 QString Element::labelForDisplay()
 {
 	const QString label = actualLabel();
-	const bool split = QetSettings::terminalLabelSplit();
+	const bool split = m_data.m_type == ElementData::Terminal
+			&& QetSettings::terminalLabelSplit();
 
 		//The "Show name" box of the selection properties hides the name
 		//of this element on the sheet only: the element keeps all of its
@@ -2813,13 +2816,15 @@ QString Element::labelForDisplay()
 /**
 	@brief Element::terminalNumberForDisplay
 	@return the part of the label behind its last colon ("1" in "X1:1"),
-	or an empty string while the labelling is shown in one field: the
-	number is already there with the label, showing it twice would only
-	be noise. @sa labelForDisplay
+	or an empty string while the labelling is shown in one field -- and
+	for every element which is no terminal, whose colon is part of its
+	label: the number is already there with the label, showing it twice
+	would only be noise. @sa labelForDisplay
 */
 QString Element::terminalNumberForDisplay()
 {
-	if (!QetSettings::terminalLabelSplit()) {
+	if (m_data.m_type != ElementData::Terminal
+		|| !QetSettings::terminalLabelSplit()) {
 		return QString();
 	}
 

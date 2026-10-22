@@ -109,6 +109,45 @@ class tst_terminallabeldisplay : public QObject
 		return nullptr;
 	}
 
+	//A non-terminal element of the fixture whose label field draws the
+	//label it is given, colon and all: a terminal's own kind of drawing
+	//is what the split changes, so the test needs an element which is
+	//none of the things drawing a label of their own -- a report (its
+	//label is where its partner is), a slave (its label follows its
+	//master) or a numbered symbol (a formula composes its label)
+	static Element *nonTerminalWithLabel(QETProject &project, const QString &label)
+	{
+		for (Diagram *diagram : project.diagrams())
+			for (Element *element : diagram->elements())
+			{
+				if (element->elementData().m_type == ElementData::Terminal) {
+					continue;
+				}
+				if (element->linkType() & (Element::Slave | Element::AllReport)) {
+					continue;
+				}
+				DiagramContext dc = element->elementInformations();
+				if (!dc.value(QStringLiteral("formula")).toString().isEmpty()) {
+					continue;
+				}
+				dc.addValue(QStringLiteral("label"), label);
+				element->setElementInformations(dc);
+				if (element->actualLabel() != label) {
+					continue;
+				}
+					//Only an element whose own label field draws the
+					//label it stores: everything else draws a text of
+					//its own, which this test would not understand
+				DynamicElementTextItem *field = fieldBoundTo(element,
+															 QETInformation::ELMT_LABEL);
+				if (!field || field->toPlainText() != label) {
+					continue;
+				}
+				return element;
+			}
+		return nullptr;
+	}
+
 private slots:
 	void cleanup()
 	{
@@ -334,6 +373,30 @@ private slots:
 		QVERIFY(element->labelShown());
 		QVERIFY(!element->actualLabel().isEmpty());
 		QCOMPARE(element->labelForDisplay(), element->actualLabel());
+	}
+
+	//The labelling is drawn split for an element of the terminal type
+	//only: the colon in the label of any other element ("-K1:13") is
+	//part of the label, not a split waiting to happen
+	void splitLeavesNonTerminalsWithColonAlone()
+	{
+		QetSettings::setTerminalLabelSplit(true);
+
+		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		Element *element = nonTerminalWithLabel(project, QStringLiteral("-K1:13"));
+		QVERIFY2(element,
+				 "the fixture has an element which is no terminal and draws the label it is given");
+
+		QCOMPARE(element->actualLabel(), QStringLiteral("-K1:13"));
+		QCOMPARE(element->labelForDisplay(), QStringLiteral("-K1:13"));
+		QVERIFY(element->terminalNumberForDisplay().isEmpty());
+
+		DynamicElementTextItem *label = fieldBoundTo(element, QETInformation::ELMT_LABEL);
+		QVERIFY2(label, "the symbol has a field for its label");
+		QCOMPARE(label->toPlainText(), QStringLiteral("-K1:13"));
 	}
 
 	//The field of a hidden name does not stay on the sheet as an empty
