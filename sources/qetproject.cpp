@@ -1784,6 +1784,7 @@ bool QETProject::renameElementAutoNum(const QString &old_title, const QString &n
 			}
 		}
 	}
+	m_data_base.renameFolioCounterScheme(QStringLiteral("element"), old_title, new_title);
 
 	emit elementAutoNumRemoved(old_title);
 	emit elementAutoNumAdded(new_title);

@@ -2715,6 +2715,21 @@ bool projectDataBase::createDataBase()
 		}
 	}
 
+		//2b-4: a folio's own unit/ten/hundred-folio counters, one row per
+		//(folio, owner, level, scheme title, ord). owner is "element" or
+		//"conductor"; level keeps Diagram's own "unitfolio"/"tenfolio"/
+		//"hundredfolio" strings. Not filled from the folio's XML here --
+		//Diagram writes these rows itself, the same write-through pattern
+		//as the numbering tables above.
+	if (!query_.exec(QLatin1String(
+			"CREATE TABLE folio_counter ("
+			"folio_uuid VARCHAR(50) NOT NULL, owner VARCHAR(20) NOT NULL, "
+			"level VARCHAR(20) NOT NULL, title TEXT NOT NULL, ord INTEGER NOT NULL, "
+			"value TEXT, "
+			"PRIMARY KEY (folio_uuid, owner, level, title, ord))"))) {
+		qDebug() << " folio_counter table query : " << query_.lastError();
+	}
+
 	//Create the terminal table.
 	//Terminal::uuid() is the terminal-position id baked into the catalog
 	//.elmt definition (e.g. "the top terminal") -- identical across every
@@ -4425,6 +4440,94 @@ void projectDataBase::setNumberingSetting(const QString &name, const QString &va
 void projectDataBase::setNumberingFlag(const QString &name, bool value)
 {
 	setNumberingSetting(name, value ? QStringLiteral("true") : QStringLiteral("false"));
+}
+
+/**
+	@brief projectDataBase::folioCounterValues
+	@return the folio counter values for @p folio_uuid / @p owner /
+	@p level / @p title, in @c ord order (Diagram::insertFolioSeqHash()'s
+	@c max list); empty if never written
+*/
+QStringList projectDataBase::folioCounterValues(const QUuid &folio_uuid, const QString &owner,
+												const QString &level, const QString &title) const
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral(
+			"SELECT value FROM folio_counter WHERE folio_uuid = :folio_uuid "
+			"AND owner = :owner AND level = :level AND title = :title ORDER BY ord"));
+	query.bindValue(QStringLiteral(":folio_uuid"), folio_uuid.toString());
+	query.bindValue(QStringLiteral(":owner"), owner);
+	query.bindValue(QStringLiteral(":level"), level);
+	query.bindValue(QStringLiteral(":title"), title);
+	QStringList values;
+	if (query.exec()) {
+		while (query.next()) {
+			values.append(query.value(0).toString());
+		}
+	} else {
+		qDebug() << "projectDataBase::folioCounterValues error : " << query.lastError();
+	}
+	return values;
+}
+
+/**
+	@brief projectDataBase::setFolioCounterValues
+	The folio counter for @p folio_uuid / @p owner / @p level / @p title
+	is @p values from now on (one row per entry, in order)
+*/
+void projectDataBase::setFolioCounterValues(const QUuid &folio_uuid, const QString &owner,
+											const QString &level, const QString &title,
+											const QStringList &values)
+{
+	QSqlQuery del(m_data_base);
+	del.prepare(QStringLiteral(
+			"DELETE FROM folio_counter WHERE folio_uuid = :folio_uuid "
+			"AND owner = :owner AND level = :level AND title = :title"));
+	del.bindValue(QStringLiteral(":folio_uuid"), folio_uuid.toString());
+	del.bindValue(QStringLiteral(":owner"), owner);
+	del.bindValue(QStringLiteral(":level"), level);
+	del.bindValue(QStringLiteral(":title"), title);
+	if (!del.exec()) {
+		qDebug() << "projectDataBase::setFolioCounterValues delete error : " << del.lastError();
+		return;
+	}
+
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral(
+			"INSERT INTO folio_counter (folio_uuid, owner, level, title, ord, value) "
+			"VALUES (:folio_uuid, :owner, :level, :title, :ord, :value)"));
+	for (int i = 0; i < values.size(); ++i) {
+		query.bindValue(QStringLiteral(":folio_uuid"), folio_uuid.toString());
+		query.bindValue(QStringLiteral(":owner"), owner);
+		query.bindValue(QStringLiteral(":level"), level);
+		query.bindValue(QStringLiteral(":title"), title);
+		query.bindValue(QStringLiteral(":ord"), i);
+		query.bindValue(QStringLiteral(":value"), values.at(i));
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::setFolioCounterValues insert error : " << query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::renameFolioCounterScheme
+	Every folio_counter row for @p owner under @p old_title moves to
+	@p new_title (renameNumberingScheme()'s counterpart for the rows a
+	folio keeps on its own)
+*/
+void projectDataBase::renameFolioCounterScheme(const QString &owner, const QString &old_title,
+												const QString &new_title)
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral(
+			"UPDATE folio_counter SET title = :new_title "
+			"WHERE owner = :owner AND title = :old_title"));
+	query.bindValue(QStringLiteral(":new_title"), new_title);
+	query.bindValue(QStringLiteral(":owner"), owner);
+	query.bindValue(QStringLiteral(":old_title"), old_title);
+	if (!query.exec()) {
+		qDebug() << "projectDataBase::renameFolioCounterScheme error : " << query.lastError();
+	}
 }
 
 /**

@@ -194,6 +194,18 @@ class projectDataBase : public QObject
 		bool numberingFlag(const QString &name, bool default_value) const;
 		void setNumberingSetting(const QString &name, const QString &value);
 		void setNumberingFlag(const QString &name, bool value);
+			//2b-4: a folio's own numbering counters (unit/ten/hundred-folio
+			//sequentials), one row per (folio, owner, level, scheme, ord).
+			//owner is "element" or "conductor"; level is "unitfolio",
+			//"tenfolio" or "hundredfolio" (kept as Diagram's own strings,
+			//not renamed, so the two stay comparable in logs/greps).
+		QStringList folioCounterValues(const QUuid &folio_uuid, const QString &owner,
+										const QString &level, const QString &title) const;
+		void setFolioCounterValues(const QUuid &folio_uuid, const QString &owner,
+								   const QString &level, const QString &title,
+								   const QStringList &values);
+		void renameFolioCounterScheme(const QString &owner, const QString &old_title,
+									  const QString &new_title);
 		bool savedLinks(const Element *element, QList<std::pair<QUuid, int>> *links);
 			//The link rows are written (opening filled them): a symbol
 			//built links from them (Element::initLink())
