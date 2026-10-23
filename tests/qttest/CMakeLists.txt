@@ -1298,6 +1298,18 @@ target_link_libraries(tst_projectsettingrows PRIVATE Qt::Test Qt::Xml)
 target_compile_definitions(tst_projectsettingrows PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# Where a wire sits and how its text was placed is in the project database
+# (conductor_layout), from a built folio or from the document. QET-SQL-FORMAT S3c.
+add_executable(
+  tst_conductorlayoutrows
+  tst_conductorlayoutrows.cpp)
+add_test(NAME tst_conductorlayoutrows COMMAND tst_conductorlayoutrows)
+add_dependencies(tst_conductorlayoutrows qelectrotech)
+target_link_libraries(tst_conductorlayoutrows PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_conductorlayoutrows PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # A symbol's kind information (NO/NC/SW/power) is queryable from the
 # project database once it is placed, not only from a live Element*.
 # QETZ-DB-FIRST 2d-2a.

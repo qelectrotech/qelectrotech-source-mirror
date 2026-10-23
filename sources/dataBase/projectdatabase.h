@@ -36,6 +36,7 @@
 #include "../titleblockproperties.h"
 #include "../borderproperties.h"
 #include "../conductorproperties.h"
+#include "conductorlayout.h"
 #include "../autoNum/assignvariables.h"
 #include "../autoNum/numerotationcontext.h"
 
@@ -192,6 +193,12 @@ class projectDataBase : public QObject
 		void conductorPropertiesStored(Conductor *conductor, const ConductorProperties &properties);
 		void conductorUuidChanged(Conductor *conductor, const QUuid &old_uuid);
 		QStringList conductorPropertiesMismatches() const;
+
+			/// Where a wire sits and how its text was placed
+		using ConductorLayout = ::ConductorLayout;
+		bool storeConductorLayout(const QUuid &conductor, const ConductorLayout &layout);
+		ConductorLayout conductorLayout(const QUuid &conductor) const;
+		void forgetConductorLayout(const QUuid &conductor);
 		QStringList linkRowMismatches();
 			/// A numbering scheme of the project (QETZ-DB-FIRST stage 2b)
 		struct NumberingScheme {
@@ -467,6 +474,7 @@ class projectDataBase : public QObject
 			//The rows of conductor_properties, to write only what changes
 		QHash<QUuid, QHash<QString, QString>> m_conductor_attributes;
 		QSet<QUuid> m_dirty_conductor_properties;
+		QHash<QUuid, ConductorLayout> m_conductor_layouts;
 		int m_building_folios = 0;
 		QSet<QUuid> m_folios_with_unjoined_wires;
 			//The folios whose rows a rebuild keeps (keepUnbuiltFolioRows())
@@ -483,6 +491,7 @@ class projectDataBase : public QObject
 		QHash<QUuid, DiagramContext> m_prefilled_elements;
 		QHash<QUuid, TitleBlockProperties> m_prefilled_folios;
 		QHash<QUuid, ConductorProperties> m_prefilled_conductors;
+		QHash<QUuid, ConductorLayout> m_prefilled_layouts;
 		struct PrefillTally {
 			int agree = 0, differ = 0, unplaced = 0;
 			QMap<QString, int> fields;

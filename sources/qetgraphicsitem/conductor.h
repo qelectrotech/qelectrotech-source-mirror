@@ -19,6 +19,7 @@
 #define CONDUCTOR_H
 #include "../autoNum/assignvariables.h"
 #include "../conductorproperties.h"
+#include "../dataBase/conductorlayout.h"
 
 #include <QGraphicsPathItem>
 #include <QSet>
@@ -128,6 +129,10 @@ class Conductor : public QGraphicsObject
 		ConductorProperties properties() const;
 			/// This wire's own copy of its properties, whatever the store holds
 		ConductorProperties ownProperties() const {return m_properties;}
+			/// Where this wire sits and how its text was placed, from its own
+			/// members, never from the store
+		ConductorLayout ownLayout() const;
+		void storeLayout();
 			/// The order wires were made in this session: a project's are
 			/// made in the order its file lists them
 		quint64 creationRank() const {return m_creation_rank;}
