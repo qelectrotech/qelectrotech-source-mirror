@@ -34,6 +34,7 @@
 #include "diagram.h"
 #include "autoNum/assignvariables.h"
 #include "container/qetcontainerdb.h"
+#include "container/qetzreader.h"
 #include "projectlock.h"
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
@@ -472,9 +473,6 @@ class QETProject : public QObject
 		static bool isContainerPath(const QString &path);
 		static QString openFileFilter();
 		QETResult writeCopyForOlderVersions(const QString &path);
-		static bool writeContainer(const QDomDocument &project, const QString &path,
-								   QString *error = nullptr,
-								   const QHash<QString, QByteArray> &kept_from = QHash<QString, QByteArray>());
 		bool writeContainerFile(const QString &path, QString *error = nullptr);
 	private:
 		static QUuid derivedUuid(const QByteArray &content);
@@ -486,9 +484,9 @@ class QETProject : public QObject
 		static bool m_backup_enabled;
 			/// Something changed since the last backup, see writeBackup()
 		bool m_backup_needed = true;
-			/// The pictures of the .qetz this project was opened from, see
-			/// containerPicture()
-		QHash<QString, QByteArray> m_container_pictures;
+			/// What the file this project was opened from holds beside its
+			/// document: a .qetz's entries, folio parts and pictures
+		QetzReader m_container;
 			/// File path this project is saved to
 		QString m_file_path;
 			/// Current state of the project
@@ -562,10 +560,6 @@ class QETProject : public QObject
 			/// Saving a .qetz may copy the part of a folio not built
 			/// (toXml(), stage D4)
 		bool m_kept_parts_trusted = false;
-			/// The entries of the .qetz opened, and the part each folio
-			/// was read from, in order
-		QHash<QString, QByteArray> m_container_files;
-		QStringList m_folio_parts;
 		bool m_kept_folios_stale = false;
 			/// Something was edited since the project was opened: a table
 			/// filled from the database may have changed

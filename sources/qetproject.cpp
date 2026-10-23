@@ -19,6 +19,7 @@
 #include "qetproject.h"
 #include "container/qetcontainer.h"
 #include "container/qetcontainerdb.h"
+#include "container/qetzwriter.h"
 
 #include "ElementsCollection/xmlelementcollection.h"
 #include "autoNum/assignvariables.h"
@@ -294,7 +295,7 @@ QUuid QETProject::uuid() const
 */
 QByteArray QETProject::containerPicture(const QString &file) const
 {
-	return m_container_pictures.value(file);
+	return m_container.picture(file);
 }
 
 /**
@@ -528,27 +529,10 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	QString read_error;
 		//A .qetz: its entries are kept, for a save to copy the parts of the
 		//folios not built (stage D4)
-	m_container_files.clear();
-	m_folio_parts.clear();
-	bool read = false;
-	int container_format = 0;
-	if (QetContainer::isZip(content)) {
-		QList<QetZip::Entry> entries;
-		read = QetZip::fromBytes(content, &entries, &read_error)
-				&& QetContainer::join(entries, &xml_project, &read_error, &m_folio_parts,
-									  &m_container_pictures, &container_format);
-		if (read)
-			for (const QetZip::Entry &entry : std::as_const(entries))
-				m_container_files.insert(entry.name, entry.data);
-	} else {
-		read = QetContainer::readDocument(content, &xml_project, &read_error);
-	}
-	if (!read)
+	if (!m_container.read(content, &xml_project, &read_error))
 	{
 		qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << read_error;
 		m_open_error = read_error;
-		m_container_pictures.clear();
-		m_folio_parts.clear();
 		if(opened_here) {
 			file->close();
 		}
@@ -581,13 +565,13 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 
 		//Written by a later QElectroTech that lets this one read it: saving
 		//here would drop what this version does not know
-	m_from_later_version = container_format > QetContainer::Format;
+	m_from_later_version = m_container.format() > QetContainer::Format;
 	if (!fi.isWritable() || m_from_later_version) {
 		setReadOnly(true);
 	}
 	if (m_from_later_version) {
 		qInfo().noquote() << QStringLiteral("Project %1 is of .qetz format %2 (this version writes %3): opened read-only")
-							 .arg(fi.fileName()).arg(container_format).arg(QetContainer::Format);
+							 .arg(fi.fileName()).arg(m_container.format()).arg(QetContainer::Format);
 	}
 	if(opened_here) {
 		file->close();
@@ -2758,22 +2742,6 @@ QString QETProject::openFileFilter()
 }
 
 /**
-	@brief QETProject::writeContainer
-	Write the project document @p project to @p path as a .qetz: the same
-	document, in parts, zipped (#1440). The file is replaced only once
-	the whole archive is written.
-*/
-bool QETProject::writeContainer(const QDomDocument &project, const QString &path, QString *error,
-								const QHash<QString, QByteArray> &kept_from)
-{
-	QList<QetZip::Entry> entries = QetContainer::split(
-				project,
-				QStringLiteral("QElectroTech %1").arg(QetVersion::currentVersion().toString()),
-				error, kept_from);
-	return !entries.isEmpty() && QetZip::write(path, entries, error);
-}
-
-/**
 	@brief QETProject::writeContainerFile
 	Write this project to @p path as a .qetz
 */
@@ -2783,8 +2751,8 @@ bool QETProject::writeContainerFile(const QString &path, QString *error)
 		//what building them would write (toXml()); every other folio built
 	QStringList kept;
 	const QDomDocument document = toXml(nullptr, &kept);
-	return writeContainer(document, path, error,
-						  kept.isEmpty() ? QHash<QString, QByteArray>() : m_container_files);
+	return QetzWriter::write(document, path, error,
+							 kept.isEmpty() ? QHash<QString, QByteArray>() : m_container.files());
 }
 
 /**
@@ -3651,10 +3619,10 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	for (Diagram *diagram : std::as_const(m_diagrams_list))
 		if (!diagram->isLoaded() && diagram->keptText().isEmpty())
 			m_kept_folios_trusted = false;
-	m_kept_parts_trusted = !m_folio_parts.isEmpty() && unloadedFolioCount() > 0
+	m_kept_parts_trusted = !m_container.folioParts().isEmpty() && unloadedFolioCount() > 0
 			&& m_project_qet_version == QetVersion::currentVersion()
 			&& m_data_base.rowsFromDocument()
-			&& QetContainerDb::currentFormat(m_container_files.value(QStringLiteral("project.sqlite")));
+			&& QetContainerDb::currentFormat(m_container.file(QStringLiteral("project.sqlite")));
 	for (Diagram *diagram : std::as_const(m_diagrams_list))
 		if (!diagram->isLoaded() && diagram->keptPart().isEmpty())
 			m_kept_parts_trusted = false;
@@ -3823,8 +3791,8 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 			m_deferring_folios = false;
 			if (!diagram->isLoaded() && !line_starts.isEmpty())
 				diagram->setKeptText(folio_text(diagram_xml_element));
-			if (!diagram->isLoaded() && m_folio_parts.size() == diagram_nodes.length())
-				diagram->setKeptPart(m_folio_parts.at(i));
+			if (!diagram->isLoaded() && m_container.folioParts().size() == diagram_nodes.length())
+				diagram->setKeptPart(m_container.folioParts().at(i));
 			m_data_base.placeFolio(diagram);
 			if(dlgWaiting)
 				dlgWaiting->setDetail(diagram->title());
