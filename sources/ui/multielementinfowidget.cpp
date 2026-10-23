@@ -496,6 +496,9 @@ void MultiElementInfoWidget::buildInterface()
 	QStringList keys = QETInformation::elementInfoKeys();
 		//It has its own check box above, see ElementInfoWidget::buildInterface
 	keys.removeAll(EXCLUDE_FROM_BOM);
+		//Not an editable property but derived from the label, see
+		//ElementInfoWidget::buildInterface
+	keys.removeAll(QETInformation::ELMT_TERMINAL_NUMBER);
 
 	int line = 0;
 	for (const QString &key : std::as_const(keys))

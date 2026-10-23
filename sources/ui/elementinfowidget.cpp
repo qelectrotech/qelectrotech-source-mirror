@@ -313,6 +313,13 @@ void ElementInfoWidget::buildInterface()
 		//line that currentInfo() then fills with "true"/"false".
 	keys.removeAll(QStringLiteral("exclude_from_bom"));
 
+		//The terminal number is not a property of the element: it is
+		//derived from its label, so an edit row here would store a value
+		//nothing reads -- and the nomenclature query has no such column,
+		//which is why the export does not offer it either. The number
+		//stays a text variable (%{terminal_number}) of the element editor.
+	keys.removeAll(QETInformation::ELMT_TERMINAL_NUMBER);
+
 	for (auto str : keys)
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);

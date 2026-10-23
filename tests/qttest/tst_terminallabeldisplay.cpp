@@ -21,6 +21,10 @@
 #include "TerminalStrip/terminalstrip.h"
 #include "dataBase/ui/elementquerywidget.h"
 #include "diagram.h"
+#include "ui/elementinfopartwidget.h"
+#include "ui/elementinfowidget.h"
+#include "ui/multielementinfowidget.h"
+#include <QLabel>
 #include <QListWidget>
 #include "properties/elementdata.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
@@ -439,6 +443,43 @@ private slots:
 					QETInformation::ELMT_TERMINAL_NUMBER));
 		QCOMPARE(QETInformation::elementInfoToVar(QETInformation::ELMT_TERMINAL_NUMBER),
 				 QStringLiteral("%{terminal_number}"));
+	}
+
+	//The properties of a terminal have no row for its number: the number
+	//is derived from the label, so a row there would offer an edit which
+	//stores a value nothing reads -- the export has no column for it, and
+	//the drawing takes the number from the label
+	void propertiesHaveNoRowForTheTerminalNumber()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		Element *element = terminalWithLabel(project, QStringLiteral("X1:1"));
+		QVERIFY(element);
+
+			//The properties of one element...
+		ElementInfoWidget one(element);
+		QStringList one_rows;
+		const QList<ElementInfoPartWidget *> parts = one.findChildren<ElementInfoPartWidget *>();
+		for (const ElementInfoPartWidget *part : parts)
+			one_rows << part->key();
+		QVERIFY2(one_rows.contains(QETInformation::ELMT_LABEL),
+				 "The other properties are still offered");
+		QVERIFY2(!one_rows.contains(QETInformation::ELMT_TERMINAL_NUMBER),
+				 "The terminal number is no property of the element");
+
+			//...and the properties of several elements at once
+		MultiElementInfoWidget many({element});
+		QStringList rows;
+		const QList<QLabel *> labels = many.findChildren<QLabel *>();
+		for (const QLabel *label : labels)
+			rows << label->text();
+		QVERIFY2(rows.contains(QETInformation::translatedInfoKey(QETInformation::ELMT_LABEL)),
+				 "The other properties are still offered");
+		QVERIFY2(!rows.contains(
+					 QETInformation::translatedInfoKey(QETInformation::ELMT_TERMINAL_NUMBER)),
+				 "The terminal number is no property of the element");
 	}
 };
 
