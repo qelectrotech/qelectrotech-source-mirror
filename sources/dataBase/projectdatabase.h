@@ -170,6 +170,18 @@ class projectDataBase : public QObject
 		bool storedFolioNumber(const QUuid &folio, int *index, int *total) const;
 		void storeFolioNumber(const QUuid &folio, int index, int total);
 
+			//The project's settings (title, project properties, new-folio
+			//defaults, wire hops, upright texts, wiring rules), one row per
+			//value: @p settings is the <project> element QETProject writes
+			//them into (QETProject::storeSettings()).
+		struct ProjectSetting {
+			QString section; int ord; QString name; QString value;
+			bool operator==(const ProjectSetting &o) const {
+				return section == o.section && ord == o.ord && name == o.name && value == o.value; }
+		};
+		void storeProjectSettings(const QDomElement &settings);
+		QList<ProjectSetting> projectSettings() const {return m_project_settings;}
+
 			//The properties of every wire placed in the project, by wire
 			//uuid: the store each wire's properties are written through
 			//A wire not placed keeps its own.
@@ -448,6 +460,7 @@ class projectDataBase : public QObject
 		QHash<QUuid, TitleBlockProperties> m_folio_titleblocks;
 		QHash<QUuid, BorderProperties> m_folio_borders;
 		QHash<QUuid, QPair<int, int>> m_folio_numbers; // index, total
+		QList<ProjectSetting> m_project_settings;
 		QHash<QUuid, QPointer<Diagram>> m_placed_folios;
 		QHash<QUuid, ConductorProperties> m_conductor_properties;
 			//The rows of conductor_properties, to write only what changes

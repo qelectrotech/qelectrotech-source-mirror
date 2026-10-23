@@ -2807,6 +2807,20 @@ bool projectDataBase::createDataBase()
 		qDebug() << " folio_number_table query : " << query_.lastError();
 	}
 
+		//Create the project_setting table: the project's settings, one row
+		//per value, the store they are written through
+		//(storeProjectSettings()). section is where the value sits in the
+		//saved project ("newdiagrams/inset"), ord tells apart repeated
+		//items of one section (the xrefs, the guides).
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE project_setting ("
+			"section TEXT NOT NULL, "
+			"ord INTEGER NOT NULL, "
+			"name TEXT NOT NULL, "
+			"value TEXT)"))) {
+		qDebug() << " project_setting_table query : " << query_.lastError();
+	}
+
 		//Create the conductor_properties table: the properties of every
 		//wire placed in the project, as the attributes a saved wire carries,
 		//the store wires write through (storeConductorProperties()).
@@ -3882,6 +3896,87 @@ void projectDataBase::storeFolioNumber(const QUuid &folio, int index, int total)
 	insert.bindValue(QStringLiteral(":tot"), total);
 	if (!insert.exec()) {
 		qDebug() << "projectDataBase::storeFolioNumber insert error : " << insert.lastError();
+	}
+}
+
+/**
+	@brief settingRows
+	Append to @p rows one row per value of @p element, which sits at
+	@p section, the @p ord th of its kind there. Attributes in name order
+	(a QDomElement keeps no order of its own); a <property name="..."> child
+	(a DiagramContext) gives one row named after it, with its show flag as
+	"<name>#show"; any other child is a section of its own.
+*/
+static void settingRows(const QDomElement &element, const QString &section, int ord,
+						QList<projectDataBase::ProjectSetting> &rows)
+{
+	const QDomNamedNodeMap attributes = element.attributes();
+	QStringList names;
+	for (int i = 0 ; i < attributes.count() ; ++i)
+		names << attributes.item(i).nodeName();
+	names.sort();
+	for (const QString &name : std::as_const(names))
+		rows.append({section, ord, name, element.attribute(name)});
+
+	QHash<QString, int> seen;
+	bool has_child = false;
+	for (QDomElement child = element.firstChildElement() ; !child.isNull()
+		 ; child = child.nextSiblingElement()) {
+		has_child = true;
+		if (child.tagName() == QLatin1String("property") && child.hasAttribute(QStringLiteral("name"))) {
+			const QString name = child.attribute(QStringLiteral("name"));
+			rows.append({section, ord, name, child.text()});
+			if (child.hasAttribute(QStringLiteral("show")))
+				rows.append({section, ord, name + QStringLiteral("#show"),
+							 child.attribute(QStringLiteral("show"))});
+			continue;
+		}
+		const QString child_section = section + QLatin1Char('/') + child.tagName();
+		settingRows(child, child_section, seen[child_section]++, rows);
+	}
+	if (!has_child && !element.text().isEmpty())
+		rows.append({section, ord, QStringLiteral("#text"), element.text()});
+}
+
+/**
+	@brief projectDataBase::storeProjectSettings
+	Store the project's settings written into @p settings (a <project>
+	element: its attributes, then each child as a section of its own), in
+	the project_setting table and the cache in front of it.
+*/
+void projectDataBase::storeProjectSettings(const QDomElement &settings)
+{
+	QList<ProjectSetting> rows;
+	const QDomNamedNodeMap attributes = settings.attributes();
+	QStringList names;
+	for (int i = 0 ; i < attributes.count() ; ++i)
+		names << attributes.item(i).nodeName();
+	names.sort();
+	for (const QString &name : std::as_const(names))
+		rows.append({QStringLiteral("project"), 0, name, settings.attribute(name)});
+	QHash<QString, int> seen;
+	for (QDomElement child = settings.firstChildElement() ; !child.isNull()
+		 ; child = child.nextSiblingElement())
+		settingRows(child, child.tagName(), seen[child.tagName()]++, rows);
+
+	if (rows == m_project_settings) return;
+	m_project_settings = rows;
+
+	QSqlQuery remove(m_data_base);
+	if (!remove.exec(QStringLiteral("DELETE FROM project_setting"))) {
+		qDebug() << "projectDataBase::storeProjectSettings remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral("INSERT INTO project_setting (section, ord, name, value) "
+								  "VALUES (:section, :ord, :name, :value)"));
+	for (const ProjectSetting &row : std::as_const(rows)) {
+		insert.bindValue(QStringLiteral(":section"), row.section);
+		insert.bindValue(QStringLiteral(":ord"), row.ord);
+		insert.bindValue(QStringLiteral(":name"), row.name);
+		insert.bindValue(QStringLiteral(":value"), row.value);
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeProjectSettings insert error : " << insert.lastError();
+		}
 	}
 }
 
