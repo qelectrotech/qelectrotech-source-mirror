@@ -96,6 +96,12 @@ m_project_properties_handler{this}
 		//Read auto break conductor default from global settings
 	setAutoBreakConductor(settings.value(QStringLiteral("diagrameditor/auto_break_conductor"), false).toBool());
 
+		//A new project draws its terminals the way the settings chose it
+		//for new projects (Configure QElectroTech > New project), off when
+		//they say nothing: the drawing is then the one it always was. Every
+		//project saved after that keeps its own choice (readTerminalLabelSplitXml())
+	setTerminalLabelSplit(settings.value(QStringLiteral("diagrameditor/defaultterminallabelling"), false).toBool());
+
 	int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
 	for (int i = 0; i < size; ++i) {
 		settings.setArrayIndex(i);
