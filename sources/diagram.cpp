@@ -359,14 +359,17 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		int g_y = (int)ceil(rect.y());
 		while (g_y % yGrid) ++ g_y;
 
+			//Left out when they would crowd, whatever the grid step
+		const qreal zoom_factor = p->transform().m11();
+		const bool dots_shown = FolioGrid::dotsShown(xGrid, yGrid, zoom_factor);
+
 		QPolygon points;
-		for (int gx = g_x ; gx < limit_x ; gx += xGrid) {
+		for (int gx = g_x ; dots_shown && gx < limit_x ; gx += xGrid) {
 			for (int gy = g_y ; gy < limit_y ; gy += yGrid) {
 				points << QPoint(gx, gy);
 			}
 		}
 
-		qreal zoom_factor = p->transform().m11();
 		int minWidthPen = settings.value(QStringLiteral("diagrameditor/grid_pointsize_min"), 1).toInt();
 		int maxWidthPen = settings.value(QStringLiteral("diagrameditor/grid_pointsize_max"), 1).toInt();
 		pen.setWidth(minWidthPen);
@@ -385,8 +388,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 						pen.setWidth(maxWidthPen);
 		}
 		p -> setPen(pen);
-		if (zoom_factor > 0.5) // no grid below ... !
-				p -> drawPoints(points);
+		if (dots_shown)
+			p -> drawPoints(points);
 	}
 
 	if (draw_guides_) {

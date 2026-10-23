@@ -49,6 +49,22 @@ namespace FolioGrid
 			return fallback;
 		return int(s);
 	}
+
+		/// Grid dots closer than this on screen, in pixels, read as a
+		/// gray haze rather than as a grid
+	constexpr double min_dot_spacing = 7.8;
+
+	/**
+		@return true when the grid dots are drawn: when two of them, @p x_step
+		and @p y_step apart on the folio, stand at least min_dot_spacing
+		apart on screen at @p zoom (1 is 100 %). With the default step of
+		10 they go below a zoom of 78 %, whatever the step they go when
+		they would crowd.
+	*/
+	inline bool dotsShown(int x_step, int y_step, double zoom)
+	{
+		return (x_step < y_step ? x_step : y_step) * zoom >= min_dot_spacing;
+	}
 }
 
 #endif // FOLIOGRID_H

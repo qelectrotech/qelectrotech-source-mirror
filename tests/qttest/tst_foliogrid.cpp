@@ -32,6 +32,19 @@ class tst_foliogrid : public QObject
 	Q_OBJECT
 
 private slots:
+	void dotsGoWhenTheyCrowd()
+	{
+			//The default step: the dots go below a zoom of 78 %
+		QVERIFY(FolioGrid::dotsShown(10, 10, 1.0));
+		QVERIFY(FolioGrid::dotsShown(10, 10, 0.78));
+		QVERIFY(!FolioGrid::dotsShown(10, 10, 0.77));
+			//A finer step goes sooner, a coarser one later; the finer of
+			//the two directions decides
+		QVERIFY(!FolioGrid::dotsShown(5, 5, 1.0));
+		QVERIFY(FolioGrid::dotsShown(20, 20, 0.4));
+		QVERIFY(!FolioGrid::dotsShown(20, 5, 1.0));
+	}
+
 	void usableValuesAreKept_data()
 	{
 		QTest::addColumn<QVariant>("value");
