@@ -346,6 +346,11 @@ qet_add_app_test(tst_selectionpanelheight tst_selectionpanelheight.cpp)
 # asks for; a fixed 55 px cut the number off on Windows (#1566).
 qet_add_app_test(tst_autonumincrementwidth tst_autonumincrementwidth.cpp)
 
+# The docks of the right side could not be made narrower than about 310 px:
+# the Assistant's check box text never wraps, the Auto numbering fields
+# never shrink.
+qet_add_app_test(tst_dockminwidth tst_dockminwidth.cpp)
+
 # Opening a project before the elements panel's first reload() left its tree
 # item detached, and selecting the item's first child crashed in QTreeModel
 # (pre-existing since a82f6de23).
