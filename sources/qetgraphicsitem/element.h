@@ -166,6 +166,25 @@ class Element : public QetGraphicsItem
 		bool isFreezeLabel() const {return m_freeze_label;}
 		void freezeNewAddedElement();
 		QString actualLabel();
+			/**
+				What the drawing shows of the label and of the terminal
+				number, the terminal labelling of the project being
+				read (@sa QETProject::terminalLabelSplit). The label itself
+				is never changed by any of them.
+			*/
+		QString labelForDisplay();
+		QString terminalNumberForDisplay();
+		QString infoForDisplay(const QString &info_name);
+		bool hasTerminalNumberText() const;
+		bool labelShown() const;
+			/**
+				The fields which draw the label draw it again: called when
+				what they show of the label has changed under them, a
+				field for the terminal number added or removed, or the
+				terminal labelling setting of the project switched (@sa
+				QETProject::terminalLabelSplit).
+			*/
+		void refreshLabelFields();
 
 		QString name() const override;
 		ElementsLocation location() const;

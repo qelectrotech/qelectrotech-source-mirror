@@ -191,6 +191,11 @@ void ProjectMainConfigPage::applyProjectConf()
 		modified_project = true;
 	}
 
+	if (m_project -> terminalLabelSplit() != terminal_label_split_rb_ -> isChecked()) {
+		m_project -> setTerminalLabelSplit(terminal_label_split_rb_ -> isChecked());
+		modified_project = true;
+	}
+
 		//Following the application's rules stores nothing in the project
 	WiringRules::Settings wiring_rules;
 	if (!use_application_rules_cb_ -> isChecked()) {
@@ -266,6 +271,27 @@ void ProjectMainConfigPage::initWidgets()
 											  "text. Uncheck to make them turn with the element, as before.",
 											  "tooltip"));
 
+		//How the terminals draw their label: a setting of this project,
+		//so the same file draws the same way on every machine which
+		//opens it, like every other choice of how the sheets are drawn
+	terminal_label_gb_ = new QGroupBox(tr("Display of the terminal labelling", "group box title"));
+	terminal_label_combined_rb_ = new QRadioButton(
+				tr("Show the label and the terminal number in one field", "radio button label"));
+	terminal_label_combined_rb_ -> setToolTip(tr(
+			"A terminal's label (X1:1) is drawn as a whole, the way it has always been.",
+			"tooltip"));
+	terminal_label_split_rb_ = new QRadioButton(tr("Split the label and the terminal number",
+												   "radio button label"));
+	terminal_label_split_rb_ -> setToolTip(tr(
+			"The label (X1) is drawn in one field and the terminal number (1) in another, "
+			"which a terminal symbol may place where it wants -- and hide when it must. "
+			"A symbol without such a field shows the two, one under the other.",
+			"tooltip"));
+	terminal_label_help_ = new QLabel(tr("Only the drawing changes: what is written in the element, "
+										 "the numbering, the sorting and the exports keep the whole label.",
+										 "informative label"));
+	terminal_label_help_ -> setWordWrap(true);
+
 		//How many wires a terminal may take (discussion #1158)
 	wiring_rules_gb_ = new QGroupBox(tr("Conductors per terminal", "group box title"));
 	use_application_rules_cb_ = new QCheckBox(tr("Use the application settings", "checkbox label"));
@@ -335,6 +361,13 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addWidget(upright_symbol_texts_cb_);
 	main_layout0 -> addSpacing(10);
 
+	QVBoxLayout *terminal_label_layout = new QVBoxLayout(terminal_label_gb_);
+	terminal_label_layout -> addWidget(terminal_label_combined_rb_);
+	terminal_label_layout -> addWidget(terminal_label_split_rb_);
+	terminal_label_layout -> addWidget(terminal_label_help_);
+	main_layout0 -> addWidget(terminal_label_gb_);
+	main_layout0 -> addSpacing(10);
+
 	QVBoxLayout *wiring_rules_layout = new QVBoxLayout(wiring_rules_gb_);
 	wiring_rules_layout -> addWidget(use_application_rules_cb_);
 	QHBoxLayout *max_wires_layout = new QHBoxLayout();
@@ -369,6 +402,11 @@ void ProjectMainConfigPage::readValuesFromProject()
 	const int wire_hops_index = wire_hops_cb_ -> findData(WireHops::toString(m_project -> wireHops()));
 	wire_hops_cb_ -> setCurrentIndex(qMax(0, wire_hops_index));
 	upright_symbol_texts_cb_ -> setChecked(m_project -> uprightSymbolTexts());
+	if (m_project -> terminalLabelSplit()) {
+		terminal_label_split_rb_ -> setChecked(true);
+	} else {
+		terminal_label_combined_rb_ -> setChecked(true);
+	}
 
 		//The rules that apply: the project's own or the application's
 	const WiringRules::Settings wiring_rules = m_project -> wiringRules();
@@ -425,6 +463,7 @@ void ProjectMainConfigPage::adjustReadOnly()
 	usage_reset_pb_ -> setDisabled(is_read_only);
 	wire_hops_cb_ -> setDisabled(is_read_only);
 	upright_symbol_texts_cb_ -> setDisabled(is_read_only);
+	terminal_label_gb_ -> setDisabled(is_read_only);
 	wiring_rules_gb_ -> setDisabled(is_read_only);
 }
 

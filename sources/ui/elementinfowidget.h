@@ -76,6 +76,7 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 		void updateSuggestions();
 		void setupSchemeRow();
 		void setupFreezeRow();
+		void setupLabelShownRow();
 		void setupNumberRow();
 		void refreshNumberRow();
 		void updateNumberRow();
@@ -103,6 +104,7 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 		QCheckBox                        *m_exclude_from_bom_cb = nullptr;
 		QComboBox                        *m_scheme_cb = nullptr;
 		QCheckBox                        *m_freeze_cb = nullptr;
+		QCheckBox                        *m_label_shown_cb = nullptr;
 		QWidget                          *m_number_row = nullptr;
 		QComboBox                        *m_number_cb = nullptr;
 		int                               m_number_current = -1;   ///< the number the element has, -1 if unknown

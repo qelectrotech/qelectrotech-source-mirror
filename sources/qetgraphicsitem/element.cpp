@@ -1689,6 +1689,17 @@ void Element::addDynamicTextItem(DynamicElementTextItem *deti)
 
 	m_dynamic_text_list.append(deti);
 
+		//An element whose name must not be drawn does not keep the
+		//field of its label on the sheet either (@sa Element::labelShown)
+	deti->refreshLabelShown();
+
+		//A field of its own for the terminal number is what the label
+		//leaves the number to: the fields which draw the label follow
+		//when such a field lands on the symbol
+	if (deti->infoName() == QETInformation::ELMT_TERMINAL_NUMBER) {
+		refreshLabelFields();
+	}
+
 		//On a mirrored element, the mirror of the text depends on the size
 		//and the rotation of the text, see keepReadable()
 	connect(deti->document()->documentLayout(),
@@ -1724,6 +1735,9 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 		m_dynamic_text_list.removeOne(deti);
 		deti->setParentItem(nullptr);
 		forget();
+		if (deti->infoName() == QETInformation::ELMT_TERMINAL_NUMBER) {
+			refreshLabelFields();
+		}
 		emit textRemoved(deti);
 		return;
 	}
@@ -1736,8 +1750,33 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 			m_dynamic_text_list.removeOne(deti);
 			deti->setParentItem(nullptr);
 			forget();
+			if (deti->infoName() == QETInformation::ELMT_TERMINAL_NUMBER) {
+				refreshLabelFields();
+			}
 			emit textRemoved(deti);
 			return;
+		}
+	}
+}
+
+/**
+	@brief Element::refreshLabelFields
+	The fields which draw the label draw it again: what they show of the
+	label has changed under them (a field for the terminal number added
+	or removed, @sa Element::hasTerminalNumberText), or the terminal
+	labelling setting of the project was switched
+	(@sa QETProject::terminalLabelSplit).
+	Only the fields which draw a label are refreshed, every other field
+	follows its own information.
+*/
+void Element::refreshLabelFields()
+{
+	for (DynamicElementTextItem *text : m_dynamic_text_list) {
+		text->refreshLabelConnection();
+	}
+	for (ElementTextItemGroup *group : m_texts_group) {
+		for (DynamicElementTextItem *text : group->texts()) {
+			text->refreshLabelConnection();
 		}
 	}
 }
@@ -2733,6 +2772,156 @@ QString Element::actualLabel()
 				diagram(),
 				this);
 	}
+}
+
+/**
+	@brief Element::labelForDisplay
+	@return the label as the drawing must show it, the terminal labelling
+	of the project being read (@sa QETProject::terminalLabelSplit): the
+	whole label ("X1:1") while the labelling is shown in one field; the
+	label alone ("X1") when it is shown split and this symbol has a text
+	field of its own for the terminal number; and the two one under the
+	other when it is split without such a field -- so a symbol drawn
+	before the setting existed still shows all of its label, only
+	shorter. Only an element of the terminal type is ever drawn split:
+	the colon in any other label is part of the label ("-K1:13").
+*/
+QString Element::labelForDisplay()
+{
+	const QString label = actualLabel();
+	const Diagram *d = diagram();
+	const bool split = m_data.m_type == ElementData::Terminal
+			&& d && d->project() && d->project()->terminalLabelSplit();
+
+		//The "Show name" box of the selection properties hides the name
+		//of this element on the sheet only: the element keeps all of its
+		//data, and a terminal keeps its number, drawn on its own while
+		//the labelling is split.
+	if (!labelShown())
+	{
+		if (!split) {
+			return QString();
+		}
+			//The number alone in the label field, but only while the
+			//symbol has no field of its own for it: the number is
+			//drawn once, wherever it is drawn at all.
+		const int hidden_colon = label.lastIndexOf(QLatin1Char(':'));
+		if (hidden_colon < 0 || hasTerminalNumberText()) {
+			return QString();
+		}
+		return label.mid(hidden_colon + 1);
+	}
+
+	if (!split) {
+		return label;
+	}
+
+	const int colon = label.lastIndexOf(QLatin1Char(':'));
+	if (colon < 0) {
+		return label;
+	}
+
+	if (hasTerminalNumberText()) {
+		return label.left(colon);
+	}
+
+	return label.left(colon) + QLatin1Char('\n') + label.mid(colon + 1);
+}
+
+/**
+	@brief Element::terminalNumberForDisplay
+	@return the part of the label behind its last colon ("1" in "X1:1"),
+	or an empty string while the labelling is shown in one field -- and
+	for every element which is no terminal, whose colon is part of its
+	label: the number is already there with the label, showing it twice
+	would only be noise. @sa labelForDisplay
+*/
+QString Element::terminalNumberForDisplay()
+{
+	const Diagram *d = diagram();
+	if (m_data.m_type != ElementData::Terminal
+		|| !d || !d->project() || !d->project()->terminalLabelSplit()) {
+		return QString();
+	}
+
+	const QString label = actualLabel();
+	const int colon = label.lastIndexOf(QLatin1Char(':'));
+	if (colon < 0) {
+		return QString();
+	}
+
+	return label.mid(colon + 1);
+}
+
+/**
+	@brief Element::hasTerminalNumberText
+	@return whether this symbol has a text field bound to the terminal
+	number, the field labelForDisplay() leaves the number to.
+*/
+bool Element::hasTerminalNumberText() const
+{
+	auto is_number_field = [](const DynamicElementTextItem *text) {
+		return text
+			&& text->textFrom() == DynamicElementTextItem::ElementInfo
+			&& text->infoName() == QETInformation::ELMT_TERMINAL_NUMBER;
+	};
+
+	for (const DynamicElementTextItem *text : dynamicTextItems()) {
+		if (is_number_field(text)) {
+			return true;
+		}
+	}
+		//The field may just as well live in a text group of the symbol
+	for (const ElementTextItemGroup *group : m_texts_group) {
+		for (const DynamicElementTextItem *text : group->texts()) {
+			if (is_number_field(text)) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+/**
+	@brief Element::labelShown
+	@return whether the label of this element must be drawn on the sheet.
+	The choice belongs to the element itself, set with the "Show name"
+	box of the selection properties: an element whose name is not shown
+	keeps all of its data, nothing is only not drawn. An element which
+	never got the box unticked keeps drawing its name, which is why a
+	missing information means true.
+*/
+bool Element::labelShown() const
+{
+		//Only a terminal may have its name undrawn: an information
+		//which says otherwise, from whatever source, is not obeyed.
+	if (m_data.m_type != ElementData::Terminal) {
+		return true;
+	}
+	if (!m_data.m_informations.contains(QStringLiteral("label_shown"))) {
+		return true;
+	}
+	return QET::infoFlagIsTrue(
+				m_data.m_informations.value(QStringLiteral("label_shown")).toString());
+}
+
+/**
+	@brief Element::infoForDisplay
+	@return what a text field bound to @p info_name must show: the label
+	and the terminal number follow how the labelling is drawn, every
+	other information is the stored one. @sa labelForDisplay
+*/
+QString Element::infoForDisplay(const QString &info_name)
+{
+	if (info_name == QETInformation::ELMT_LABEL) {
+		return labelForDisplay();
+	}
+	if (info_name == QETInformation::ELMT_TERMINAL_NUMBER) {
+		return terminalNumberForDisplay();
+	}
+
+	return m_data.m_informations.value(info_name).toString();
 }
 
 /**

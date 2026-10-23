@@ -325,6 +325,8 @@ class QETProject : public QObject
 		void setWireHops(WireHops::Mode mode);
 		bool uprightSymbolTexts() const;
 		void setUprightSymbolTexts(bool upright);
+		bool terminalLabelSplit() const;
+		void setTerminalLabelSplit(bool split);
 		WiringRules::Settings wiringRules() const;
 		WiringRules::Settings projectWiringRules() const;
 		void setWiringRules(const WiringRules::Settings &rules);
@@ -454,6 +456,7 @@ class QETProject : public QObject
 		void readUsageXml(QDomDocument &xml_project);
 		void readWireHopsXml(QDomDocument &xml_project);
 		void readSymbolTextsXml(QDomDocument &xml_project);
+		void readTerminalLabelSplitXml(QDomDocument &xml_project);
 		void readWiringRulesXml(QDomDocument &xml_project);
 
 		void writeProjectPropertiesXml(QDomElement &);
@@ -463,6 +466,7 @@ class QETProject : public QObject
 		void writeUsageXml(QDomElement &);
 		void writeWireHopsXml(QDomElement &);
 		void writeSymbolTextsXml(QDomElement &);
+		void writeTerminalLabelSplitXml(QDomElement &);
 		void writeWiringRulesXml(QDomElement &);
 		void addDiagram(Diagram *diagram, int pos = -1);
 		void detachDiagram(Diagram *diagram);
@@ -572,6 +576,10 @@ class QETProject : public QObject
 			/// Texts drawn in a turned symbol stay horizontal (on for a new
 			/// project, off for one saved without it), see uprightSymbolTexts()
 		bool m_upright_symbol_texts = false;
+			/// Terminals draw their label split: the label ("X1") and the
+			/// terminal number ("1") each in their own text field (off for
+			/// a project saved without it), see terminalLabelSplit()
+		bool m_terminal_label_split = false;
 		WiringRules::Settings m_wiring_rules;
 		XmlElementCollection *m_elements_collection = nullptr;
 		QTimer m_save_backup_timer,

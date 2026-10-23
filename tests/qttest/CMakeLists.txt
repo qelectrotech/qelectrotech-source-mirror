@@ -323,6 +323,13 @@ qet_add_app_test(tst_reportfoliotitle tst_reportfoliotitle.cpp)
 # what was typed in, and nothing stale is written into the element.
 qet_add_app_test(tst_terminalcableauto tst_terminalcableauto.cpp)
 
+# A terminal's label is drawn whole in one field, or split into its label
+# and its terminal number: in their own fields when the symbol carries a
+# field for the number, one under the other when it does not. Only the
+# drawing changes; the stored label, the numbering and the exports keep
+# the whole label.
+qet_add_app_test(tst_terminallabeldisplay tst_terminallabeldisplay.cpp)
+
 # Escape during a picture's resize, rotate or pivot drag puts it back, keeps
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
