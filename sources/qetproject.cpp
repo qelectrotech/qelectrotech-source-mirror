@@ -96,6 +96,12 @@ m_project_properties_handler{this}
 		//Read auto break conductor default from global settings
 	setAutoBreakConductor(settings.value(QStringLiteral("diagrameditor/auto_break_conductor"), false).toBool());
 
+		//A new project draws its terminals the way the settings chose it
+		//for new projects (Configure QElectroTech > New project), off when
+		//they say nothing: the drawing is then the one it always was. Every
+		//project saved after that keeps its own choice (readTerminalLabelSplitXml())
+	setTerminalLabelSplit(settings.value(QStringLiteral("diagrameditor/defaultterminallabelling"), false).toBool());
+
 	int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
 	for (int i = 0; i < size; ++i) {
 		settings.setArrayIndex(i);
@@ -2317,6 +2323,39 @@ void QETProject::setUprightSymbolTexts(bool upright)
 }
 
 /**
+	@brief QETProject::terminalLabelSplit
+	@return whether the terminals of this project draw their label split,
+	the label ("X1") and the terminal number ("1") each in their own text
+	field, instead of the whole label ("X1:1") in one field. Off unless
+	the project says otherwise, so a project saved without it draws as it
+	always did. This is a setting of the project, not of the application:
+	the same file draws the same way on every machine which opens it.
+	@sa setTerminalLabelSplit
+*/
+bool QETProject::terminalLabelSplit() const {
+	return m_terminal_label_split;
+}
+
+/**
+	@brief QETProject::setTerminalLabelSplit
+	Set whether the terminals of this project draw their label split, and
+	tell the labels of the drawings already open to draw it again.
+	@param split
+*/
+void QETProject::setTerminalLabelSplit(bool split)
+{
+	if (split == m_terminal_label_split) {
+		return;
+	}
+	m_terminal_label_split = split;
+	for (Diagram *diagram : diagrams()) {
+		for (Element *element : diagram->elements()) {
+			element->refreshLabelFields();
+		}
+	}
+}
+
+/**
 	@brief QETProject::wiringRules
 	@return how many wires a terminal of this project may take
 	(discussion #1158): the project's own rules when it sets them,
@@ -2554,6 +2593,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeUsageXml(project_root);
 	writeWireHopsXml(project_root);
 	writeSymbolTextsXml(project_root);
+	writeTerminalLabelSplitXml(project_root);
 	writeWiringRulesXml(project_root);
 
 	// Properties for news diagrams
@@ -3525,6 +3565,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readUsageXml(xml_project);
 	readWireHopsXml(xml_project);
 	readSymbolTextsXml(xml_project);
+	readTerminalLabelSplitXml(xml_project);
 	readWiringRulesXml(xml_project);
 
 		//Load the default properties for the new diagrams
@@ -3890,6 +3931,21 @@ void QETProject::readSymbolTextsXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readTerminalLabelSplitXml
+	Read the <terminal_labelling> element of the project, if any. A
+	project without it was saved before the setting existed, or with it
+	off, and draws the whole label of each terminal in one field.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readTerminalLabelSplitXml(QDomDocument &xml_project)
+{
+	const QDomElement labelling = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("terminal_labelling"));
+	m_terminal_label_split = !labelling.isNull()
+			&& labelling.attribute(QStringLiteral("split")) == QLatin1String("true");
+}
+
+/**
 	@brief QETProject::readWiringRulesXml
 	Read the <wiring_rules> element of the project, if any.
 	A project without it sets no rule.
@@ -4211,6 +4267,23 @@ void QETProject::writeSymbolTextsXml(QDomElement &xml_element)
 			.createElement(QStringLiteral("symbol_texts"));
 	texts.setAttribute(QStringLiteral("upright"), QStringLiteral("true"));
 	xml_element.appendChild(texts);
+}
+
+/**
+	@brief QETProject::writeTerminalLabelSplitXml
+	Export whether the terminals draw their label split, as a
+	<terminal_labelling> child of \a xml_element. Written only when on,
+	so a project with it off saves exactly as before.
+*/
+void QETProject::writeTerminalLabelSplitXml(QDomElement &xml_element)
+{
+	if (!m_terminal_label_split) {
+		return;
+	}
+	QDomElement labelling = xml_element.ownerDocument()
+			.createElement(QStringLiteral("terminal_labelling"));
+	labelling.setAttribute(QStringLiteral("split"), QStringLiteral("true"));
+	xml_element.appendChild(labelling);
 }
 
 /**

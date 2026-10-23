@@ -323,6 +323,13 @@ qet_add_app_test(tst_reportfoliotitle tst_reportfoliotitle.cpp)
 # what was typed in, and nothing stale is written into the element.
 qet_add_app_test(tst_terminalcableauto tst_terminalcableauto.cpp)
 
+# A terminal's label is drawn whole in one field, or split into its label
+# and its terminal number: in their own fields when the symbol carries a
+# field for the number, one under the other when it does not. Only the
+# drawing changes; the stored label, the numbering and the exports keep
+# the whole label.
+qet_add_app_test(tst_terminallabeldisplay tst_terminallabeldisplay.cpp)
+
 # Escape during a picture's resize, rotate or pivot drag puts it back, keeps
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
@@ -1214,14 +1221,16 @@ target_compile_definitions(tst_movedterminals PRIVATE
 # A symbol's kind information (NO/NC/SW/power) is queryable from the
 # project database once it is placed, not only from a live Element*.
 # QETZ-DB-FIRST 2d-2a.
-add_executable(
-  tst_elementkindinformation
-  tst_elementkindinformation.cpp)
-add_test(NAME tst_elementkindinformation COMMAND tst_elementkindinformation)
-add_dependencies(tst_elementkindinformation qelectrotech)
-target_link_libraries(tst_elementkindinformation PRIVATE Qt::Test Qt::Xml)
-target_compile_definitions(tst_elementkindinformation PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_elementkindinformation
+    tst_elementkindinformation.cpp)
+  add_test(NAME tst_elementkindinformation COMMAND tst_elementkindinformation)
+  add_dependencies(tst_elementkindinformation qelectrotech)
+  target_link_libraries(tst_elementkindinformation PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_elementkindinformation PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+endif()
 
 # Symbols sharing one uuid on a folio keep their wires through save and
 # reopen (#1408): nets of examples/Habitat-Schemas_developpes.qet.

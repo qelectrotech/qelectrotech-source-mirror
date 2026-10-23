@@ -97,6 +97,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		ElementTextItemGroup *parentGroup() const;
 		Element *elementUseForInfo() const;
 		void refreshLabelConnection();
+		void refreshLabelShown();
 
 		DynamicElementTextItem::TextFrom textFrom() const;
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);

@@ -27,6 +27,7 @@
 #include "properties/elementdata.h"
 
 #include <QFileDialog>
+#include <QTextStream>
 
 /**
 	@brief ConductorNumExport::ConductorNumExport
@@ -73,8 +74,14 @@ bool ConductorNumExport::toCsv()
 		if (file.open(QIODevice::WriteOnly | QIODevice::Text))
 		{
 			QTextStream stream(&file);
-
-			stream << wiresNum() << &Qt::endl(stream);
+				//Qt6 writes UTF-8 by default; without a BOM Excel reads
+				//the file as ANSI and mangles any non-ASCII character of
+				//a wire number (e.g. "–010" shown as "â€“010").
+				//Same as the parts list export (BomExport).
+			stream.setEncoding(QStringConverter::Utf8);
+			stream.setGenerateByteOrderMark(true);
+				//wiresNum() already ends each line with "\n"
+			stream << wiresNum();
 		}
 		else {
 			return false;
