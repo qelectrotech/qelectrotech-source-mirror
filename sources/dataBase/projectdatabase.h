@@ -263,6 +263,7 @@ class projectDataBase : public QObject
 			//Fill the three stores from a project's document before its
 			//folios are built, then, once
 			//they are, say how many of those values building agreed with.
+		QHash<QString, QDomElement> embeddedDefinitions() const;
 		void prefillFromDocument(const QDomDocument &document);
 		void endPrefill(bool keep_unplaced = false);
 			//A folio of a project opened with lazy folios is being built:
@@ -489,6 +490,7 @@ class projectDataBase : public QObject
 		void restoreRemovedFolioRows(Diagram *folio);
 		bool m_changed_before_folio = false, m_blocked_before_folio = false;
 		QHash<QUuid, DiagramContext> m_prefilled_elements;
+		QHash<QUuid, DiagramContext> m_prefilled_kinds;
 		QHash<QUuid, TitleBlockProperties> m_prefilled_folios;
 		QHash<QUuid, ConductorProperties> m_prefilled_conductors;
 		QHash<QUuid, ConductorLayout> m_prefilled_layouts;

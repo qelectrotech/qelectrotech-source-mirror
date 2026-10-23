@@ -1325,7 +1325,8 @@ if(QET_HAS_SCRIPTING)
   add_dependencies(tst_elementkindinformation qelectrotech)
   target_link_libraries(tst_elementkindinformation PRIVATE Qt::Test Qt::Xml)
   target_compile_definitions(tst_elementkindinformation PRIVATE
-    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 endif()
 
 # Symbols sharing one uuid on a folio keep their wires through save and

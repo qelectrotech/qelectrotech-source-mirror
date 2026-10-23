@@ -488,24 +488,8 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 	QHash<QString, DocumentDefinition> definitions;   //by element type
 
 		//The project's own definitions by "embed://" path, which is how an
-		//element's type names them: one walk of the embedded collection
-		//rather than resolving an ElementsLocation per type.
-	QHash<QString, QDomElement> stored;
-	std::function<void (const QDomElement &, const QString &)> walk =
-			[&stored, &walk](const QDomElement &category, const QString &path) {
-		for (QDomElement child = category.firstChildElement() ;
-			 !child.isNull() ; child = child.nextSiblingElement()) {
-			const QString name = path + child.attribute(QStringLiteral("name"));
-			if (child.tagName() == QLatin1String("category")) {
-				walk(child, name + QLatin1Char('/'));
-			} else if (child.tagName() == QLatin1String("element")) {
-				stored.insert(name, child.firstChildElement(QStringLiteral("definition")));
-			}
-		}
-	};
-	if (auto collection = m_project->embeddedElementCollection()) {
-		walk(collection->root(), QStringLiteral("embed://"));
-	}
+		//element's type names them
+	const QHash<QString, QDomElement> stored = embeddedDefinitions();
 
 	for (int i = 0 ; i < diagram_nodes.size() ; ++i)
 	{
@@ -4343,6 +4327,34 @@ QStringList projectDataBase::conductorPropertiesMismatches() const
 }
 
 /**
+	@brief projectDataBase::embeddedDefinitions
+	@return the definitions of the project's embedded collection by
+	"embed://" path, which is how a placed symbol's type names them: one
+	walk of the collection rather than resolving an ElementsLocation per
+	type
+*/
+QHash<QString, QDomElement> projectDataBase::embeddedDefinitions() const
+{
+	QHash<QString, QDomElement> stored;
+	std::function<void (const QDomElement &, const QString &)> walk =
+			[&stored, &walk](const QDomElement &category, const QString &path) {
+		for (QDomElement child = category.firstChildElement() ;
+			 !child.isNull() ; child = child.nextSiblingElement()) {
+			const QString name = path + child.attribute(QStringLiteral("name"));
+			if (child.tagName() == QLatin1String("category")) {
+				walk(child, name + QLatin1Char('/'));
+			} else if (child.tagName() == QLatin1String("element")) {
+				stored.insert(name, child.firstChildElement(QStringLiteral("definition")));
+			}
+		}
+	};
+	if (auto collection = m_project->embeddedElementCollection()) {
+		walk(collection->root(), QStringLiteral("embed://"));
+	}
+	return stored;
+}
+
+/**
 	@brief projectDataBase::prefillFromDocument
 	Fill the stores of symbol information, folio title blocks and wire
 	properties from @p document, the project being opened, before its
@@ -4357,6 +4369,7 @@ QStringList projectDataBase::conductorPropertiesMismatches() const
 void projectDataBase::prefillFromDocument(const QDomDocument &document)
 {
 	m_prefilled_elements.clear();
+	m_prefilled_kinds.clear();
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();
@@ -4366,6 +4379,10 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	QHash<QUuid, DiagramContext> elements;
 	QHash<QUuid, ConductorProperties> conductors;
 	QHash<QUuid, ConductorLayout> layouts;
+	QHash<QUuid, DiagramContext> kinds;
+		//Each type's kind information, read from its definition once
+	const QHash<QString, QDomElement> definitions = embeddedDefinitions();
+	QHash<QString, std::optional<DiagramContext>> kind_of_type;
 	const QDomElement root = document.documentElement();
 	for (QDomElement folio = root.firstChildElement(QStringLiteral("diagram")) ; !folio.isNull() ;
 		 folio = folio.nextSiblingElement(QStringLiteral("diagram")))
@@ -4389,6 +4406,22 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 			information.fromXml(element.firstChildElement(QStringLiteral("elementInformations")),
 								QStringLiteral("elementInformation"));
 			elements.insert(uuid, information);
+
+				//What Element::buildFromXml() reads from the definition
+			const QString type = element.attribute(QStringLiteral("type"));
+			auto kind = kind_of_type.find(type);
+			if (kind == kind_of_type.end()) {
+				std::optional<DiagramContext> read;
+				const QDomElement definition = definitions.value(type);
+				if (!definition.isNull()) {
+					DiagramContext context;
+					context.fromXml(definition.firstChildElement(QStringLiteral("kindInformations")),
+									QStringLiteral("kindInformation"));
+					read = context;
+				}
+				kind = kind_of_type.insert(type, read);
+			}
+			if (kind->has_value()) kinds.insert(uuid, **kind);
 		}
 		const QDomElement conductor_list = folio.firstChildElement(QStringLiteral("conductors"));
 		for (QDomElement conductor = conductor_list.firstChildElement(QStringLiteral("conductor")) ;
@@ -4420,6 +4453,8 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		//A uuid held twice names nothing
 	for (auto it = elements.constBegin() ; it != elements.constEnd() ; ++it)
 		if (seen.value(it.key()) == 1) m_prefilled_elements.insert(it.key(), it.value());
+	for (auto it = kinds.constBegin() ; it != kinds.constEnd() ; ++it)
+		if (seen.value(it.key()) == 1) m_prefilled_kinds.insert(it.key(), it.value());
 	for (auto it = conductors.constBegin() ; it != conductors.constEnd() ; ++it)
 		if (seen.value(it.key()) == 1) {
 			m_prefilled_conductors.insert(it.key(), it.value());
@@ -4430,6 +4465,8 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 
 	for (auto it = m_prefilled_elements.constBegin() ; it != m_prefilled_elements.constEnd() ; ++it)
 		storeElementInformation(it.key(), it.value());
+	for (auto it = m_prefilled_kinds.constBegin() ; it != m_prefilled_kinds.constEnd() ; ++it)
+		storeElementKindInformation(it.key(), it.value());
 	for (auto it = m_prefilled_folios.constBegin() ; it != m_prefilled_folios.constEnd() ; ++it)
 		storeFolioTitleBlock(it.key(), it.value());
 	for (auto it = m_prefilled_conductors.constBegin() ; it != m_prefilled_conductors.constEnd() ; ++it)
@@ -4455,7 +4492,10 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 	for (auto it = m_prefilled_elements.constBegin() ; it != m_prefilled_elements.constEnd() ; ++it) {
 		if (!placedElementCount(it.key())) {
 			++m_prefill_tally[0].unplaced;
-			if (!keep_unplaced && !m_placed_elements.contains(it.key())) forgetElementInformation(it.key());
+			if (!keep_unplaced && !m_placed_elements.contains(it.key())) {
+				forgetElementInformation(it.key());
+				forgetElementKindInformation(it.key());
+			}
 			continue;
 		}
 		const DiagramContext built = m_element_information.value(it.key());
@@ -4515,6 +4555,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 		tally(m_prefill_tally[2], differing);
 	}
 	m_prefilled_elements.clear();
+	m_prefilled_kinds.clear();
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();

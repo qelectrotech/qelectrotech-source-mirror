@@ -139,6 +139,59 @@ private slots:
 			"'SELECT * FROM element_kind_information')));");
 		QCOMPARE(rowsIn(run(xml, script)).size(), 0);
 	}
+	// A real project opened lazily: its symbols on folios not built come
+	// with the kind information of their definitions, the same rows as when
+	// every folio is built. industrial.qet is saved once so that it carries
+	// the uuids lazy opening needs.
+	void realProjectLazyAndBuiltAgree()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("industrial.qet"));
+		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
+		env.insert(QStringLiteral("HOME"), m_dir.filePath(QStringLiteral("home-resave")));
+		QProcess resave;
+		resave.setProcessEnvironment(env);
+		resave.start(QStringLiteral(QET_TEST_BINARY_PATH),
+					 {QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), saved});
+		QVERIFY(resave.waitForFinished(180000));
+		QVERIFY(QFile::exists(saved));
+
+		const QString js = m_dir.filePath(QStringLiteral("script-real.js"));
+		QFile s(js);
+		QVERIFY(s.open(QIODevice::WriteOnly));
+		s.write("qet.log('ROWS ' + JSON.stringify(qet.query("
+				"'SELECT element_uuid, ord, name, value, show FROM element_kind_information "
+				"ORDER BY element_uuid, ord')));");
+		s.close();
+
+		auto rowsOf = [&](bool eager, QString *log) {
+			const QString home = m_dir.filePath(QStringLiteral("home-real%1").arg(eager));
+			QDir().mkpath(home);
+			QProcessEnvironment e = QProcessEnvironment::systemEnvironment();
+			e.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
+			e.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
+			e.insert(QStringLiteral("HOME"), home);
+			e.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
+			e.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
+			if (eager) e.insert(QStringLiteral("QET_EAGER_FOLIOS"), QStringLiteral("1"));
+			else e.remove(QStringLiteral("QET_EAGER_FOLIOS"));
+			QProcess proc;
+			proc.setProcessEnvironment(e);
+			proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js, saved});
+			if (!proc.waitForFinished(120000)) return QJsonArray();
+			*log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
+			return rowsIn(*log);
+		};
+		QString lazy_log, built_log;
+		const QJsonArray lazy = rowsOf(false, &lazy_log);
+		const QJsonArray built = rowsOf(true, &built_log);
+		QVERIFY2(lazy_log.contains(QStringLiteral("Project database filled from the document")),
+				 qPrintable(lazy_log.right(2000)));
+		qInfo() << "kind rows: lazy" << lazy.size() << "eager" << built.size();
+		QVERIFY(built.size() > 50);
+		QCOMPARE(lazy.size(), built.size());
+		QCOMPARE(lazy, built);
+	}
 };
 
 QTEST_GUILESS_MAIN(tst_elementkindinformation)
