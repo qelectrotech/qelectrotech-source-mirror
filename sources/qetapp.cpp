@@ -1924,6 +1924,10 @@ void QETApp::invertMainWindowVisibility(QWidget *window) {
 	false pour utiliser celles du theme en cours
 */
 void QETApp::useSystemPalette(bool use) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	// Follow the system light/dark setting again (see useCustomPalette()).
+	qApp->styleHints()->unsetColorScheme();
+#endif
 	// The base palette is always initial_palette_ (see initStyle()); the
 	// setting only decides whether the user's style.css is layered on top.
 	qApp->setPalette(initial_palette_);
@@ -2018,6 +2022,15 @@ void QETApp::useCustomPalette(const QColor &color) {
 	p.setColor(QPalette::Disabled, QPalette::Text,       disabled_text);
 	p.setColor(QPalette::Disabled, QPalette::ButtonText, disabled_text);
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	// Tell the style whether the chosen color is light or dark. Some
+	// styles draw part of their text from the system color scheme, not
+	// from the palette: the Windows 11 style keeps white menu bar and
+	// toolbar text on a light custom color when Windows is in dark
+	// mode (issue #1591).
+	qApp->styleHints()->setColorScheme(dark ? Qt::ColorScheme::Dark
+	                                        : Qt::ColorScheme::Light);
+#endif
 	qApp->setPalette(p);
 	qApp->setStyleSheet(QString());
 
@@ -2920,11 +2933,16 @@ void QETApp::initStyle()
 	{
 		if (!QET::Palette::styleIsFusion(qApp->style()))
 			return;
+		QSettings settings;
+		// A custom color keeps its palette whatever the OS does; it also
+		// requests its own color scheme, which lands here too.
+		if (!settings.value("usesystemcolors", true).toBool()
+		    && settings.contains("customapplicationcolor"))
+			return;
 		initial_palette_ = scheme == Qt::ColorScheme::Dark
 		                   ? QET::Palette::fusionDark()
 		                   : QET::Palette::fusionLight();
 		applyIconTheme(initial_palette_);
-		QSettings settings;
 		useSystemPalette(settings.value("usesystemcolors", true).toBool());
 	});
 #endif
