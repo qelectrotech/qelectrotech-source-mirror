@@ -454,6 +454,11 @@ qet_add_app_test(tst_autonumincrementwidth tst_autonumincrementwidth.cpp)
 # View > Grid step sets a fine, medium or coarse step.
 qet_add_app_test(tst_gridsnap tst_gridsnap.cpp)
 
+# The docks of the right side could not be made narrower than about 310 px:
+# the Assistant's check box text never wraps, the Auto numbering fields
+# never shrink.
+qet_add_app_test(tst_dockminwidth tst_dockminwidth.cpp)
+
 # Opening a project before the elements panel's first reload() left its tree
 # item detached, and selecting the item's first child crashed in QTreeModel
 # (pre-existing since a82f6de23).

@@ -38,6 +38,7 @@
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QPushButton>
+#include <QScrollArea>
 #include <QSignalBlocker>
 #include <QSpinBox>
 
@@ -73,6 +74,15 @@ AutoNumberingDockWidget::AutoNumberingDockWidget(QWidget *parent) :
 	connect(ui->m_element_cb, qOverload<int>(&QComboBox::currentIndexChanged),
 			this, &AutoNumberingDockWidget::updateApplyEnabled);
 	m_element_apply_pb->setEnabled(false);
+
+		//The fields keep their width: a panel made narrower than them
+		//scrolls, instead of holding every panel docked beside it at
+		//their width
+	auto *scroll = new QScrollArea(this);
+	scroll->setFrameShape(QFrame::NoFrame);
+	scroll->setWidgetResizable(true);
+	scroll->setWidget(widget());
+	setWidget(scroll);
 
 	this->setDisabled(true);
 }
