@@ -20,6 +20,8 @@
 #include "../diagram.h"
 #include "../diagramposition.h"
 #include "../qetapp.h"
+#include "../qetproject.h"
+#include <QSettings>
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/elementtextitemgroup.h"
@@ -123,12 +125,20 @@ void ElementPropertiesWidget::setElement(Element *element)
 			//If previous element is same type as new element we just call setElement for each editor
 		if(previous_element->linkType() == m_element->linkType())
 		{
-			foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
-			{
-				aepew->setElement(m_element);
-				addGeneralWidget();
+			bool chained_changed = false;
+			if (m_element->linkType() & Element::AllReport) {
+				bool prev_chained = previous_element->diagram() && previous_element->diagram()->project() && previous_element->diagram()->project()->chainedReports();
+				bool new_chained = m_element->diagram() && m_element->diagram()->project() && m_element->diagram()->project()->chainedReports();
+				chained_changed = (prev_chained != new_chained);
 			}
-			return;
+			if (!chained_changed) {
+				foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
+				{
+					aepew->setElement(m_element);
+					addGeneralWidget();
+				}
+				return;
+			}
 		}
 	}
 	updateUi();
@@ -323,11 +333,19 @@ void ElementPropertiesWidget::updateUi()
 			m_list_editor << new ElementInfoWidget(m_element, this);
 			break;
 		case Element::NextReport:
+		case Element::PreviousReport: {
+			bool enable_chained = false;
+			if (m_element->diagram() && m_element->diagram()->project()) {
+				enable_chained = m_element->diagram()->project()->chainedReports();
+			} else {
+				enable_chained = QSettings().value(QStringLiteral("project/enable-chained-reports"), false).toBool();
+			}
+			if (enable_chained) {
+				m_list_editor << new ElementInfoWidget(m_element, this);
+			}
 			m_list_editor << new LinkSingleElementWidget(m_element, this);
 			break;
-		case Element::PreviousReport:
-			m_list_editor << new LinkSingleElementWidget(m_element, this);
-			break;
+		}
 		case Element::Master:
 			m_list_editor << new MasterPropertiesWidget(m_element, this);
 			m_list_editor << new ElementInfoWidget(m_element, this);
