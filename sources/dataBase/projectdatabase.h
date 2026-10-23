@@ -154,6 +154,13 @@ class projectDataBase : public QObject
 		const BorderProperties *storedFolioBorder(const QUuid &folio) const;
 		void storeFolioBorder(const QUuid &folio, const BorderProperties &properties);
 
+			//The folio number and total folio count of every folio of the
+			//project, by folio uuid: recomputed whenever a folio is added,
+			//removed or reordered (QETProject::updateDiagramsFolioData()),
+			//the store each folio's number is written through.
+		bool storedFolioNumber(const QUuid &folio, int *index, int *total) const;
+		void storeFolioNumber(const QUuid &folio, int index, int total);
+
 			//The properties of every wire placed in the project, by wire
 			//uuid: the store each wire's properties are written through
 			//A wire not placed keeps its own.
@@ -430,6 +437,7 @@ class projectDataBase : public QObject
 		QHash<QUuid, UnbuiltWireEdit> m_unbuilt_wire_edits;
 		QHash<QUuid, TitleBlockProperties> m_folio_titleblocks;
 		QHash<QUuid, BorderProperties> m_folio_borders;
+		QHash<QUuid, QPair<int, int>> m_folio_numbers; // index, total
 		QHash<QUuid, QPointer<Diagram>> m_placed_folios;
 		QHash<QUuid, ConductorProperties> m_conductor_properties;
 			//The rows of conductor_properties, to write only what changes
