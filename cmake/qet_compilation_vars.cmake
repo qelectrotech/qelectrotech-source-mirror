@@ -186,6 +186,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/cellruler.h
   ${QET_DIR}/sources/conductorautonumerotation.cpp
   ${QET_DIR}/sources/conductorautonumerotation.h
+  ${QET_DIR}/sources/duplicatelabels.h
+  ${QET_DIR}/sources/duplicatelabels.cpp
+  ${QET_DIR}/sources/ui/duplicatelabelsdialog.h
+  ${QET_DIR}/sources/ui/duplicatelabelsdialog.cpp
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
   ${QET_DIR}/sources/wiringlistexport.cpp

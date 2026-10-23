@@ -300,6 +300,13 @@ function(qet_add_app_test name)
   target_link_libraries(${name} PRIVATE qelectrotech_objects Qt::Test)
 endfunction()
 
+# Connectivity-aware duplicate labels and clickable occurrences, through the
+# real application.
+qet_add_app_test(tst_duplicatelabels tst_duplicatelabels.cpp)
+target_compile_definitions(tst_duplicatelabels PRIVATE
+  QET_TEST_TRANSLATIONS_DIR="${CMAKE_BINARY_DIR}/lang")
+add_dependencies(tst_duplicatelabels qelectrotech_lrelease)
+
 # Space on a picture turns its own transform, which the file saves (#1413),
 # alone and with a group.
 qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)

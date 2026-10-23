@@ -212,6 +212,25 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief duplicateLabelsCaseSensitive
+	* @return whether K1 and k1 are different labels when looking for
+	* duplicates. Off by default: schemes rarely tell two devices apart by
+	* letter case alone.
+	* @sa setDuplicateLabelsCaseSensitive
+	*/
+	bool duplicateLabelsCaseSensitive()
+	{
+		QSettings settings;
+		return settings.value("duplicate_labels/case_sensitive", false).toBool();
+	}
+
+	void setDuplicateLabelsCaseSensitive(bool sensitive)
+	{
+		QSettings settings;
+		settings.setValue("duplicate_labels/case_sensitive", sensitive);
+	}
+
+	/**
 	* @brief houseStyle
 	* @return this installation's drawing conventions, in the user's own
 	* words -- empty when nobody has set any.
