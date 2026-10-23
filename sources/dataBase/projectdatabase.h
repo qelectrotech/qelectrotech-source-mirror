@@ -136,6 +136,15 @@ class projectDataBase : public QObject
 			//each as "uuid: why"; empty when they all agree
 		QStringList elementInformationMismatches() const;
 
+			//The kind information of every symbol placed in the project, by
+			//symbol uuid (NO/NC/SW/power and the like, baked into the
+			//symbol's own definition, never edited after it is built): the
+			//store each symbol's kind information is written through. A
+			//symbol not placed keeps its own.
+		DiagramContext elementKindInformation(const QUuid &element) const;
+		bool storeElementKindInformation(const QUuid &element, const DiagramContext &information);
+		void forgetElementKindInformation(const QUuid &element);
+
 			//The title block properties of every folio of the project, by
 			//folio uuid: the store each folio's title block is written
 			//through. A folio not in a
@@ -423,6 +432,7 @@ class projectDataBase : public QObject
 			//cell is written when next read, as drawing items are.
 		QList<QPointer<Element>> m_moved_elements;
 		QHash<QUuid, DiagramContext> m_element_information;
+		QHash<QUuid, DiagramContext> m_element_kind_information;
 			//The placed symbols holding each uuid: a paste or a folio copy
 			//briefly gives a copy its original's uuid, so one uuid can have
 			//two symbols until the copy's is renewed.

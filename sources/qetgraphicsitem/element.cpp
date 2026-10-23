@@ -2298,6 +2298,20 @@ DiagramContext Element::elementInformations() const
 }
 
 /**
+	@brief Element::kindInformations
+	@return this symbol's kind information (NO/NC/SW/power and the like,
+	baked into its own definition, never edited after it is built): the
+	project's store holds it once this symbol is placed, for one not
+	placed (a preview, the symbol editor) its own copy.
+*/
+DiagramContext Element::kindInformations() const
+{
+	if (projectDataBase *store = placedStore())
+		return store->elementKindInformation(m_uuid);
+	return m_kind_informations;
+}
+
+/**
 	@brief Element::placedStore
 	@return the project database holding this symbol's information, or
 	nullptr if it is not placed in a project
