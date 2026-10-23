@@ -1221,14 +1221,16 @@ target_compile_definitions(tst_movedterminals PRIVATE
 # A symbol's kind information (NO/NC/SW/power) is queryable from the
 # project database once it is placed, not only from a live Element*.
 # QETZ-DB-FIRST 2d-2a.
-add_executable(
-  tst_elementkindinformation
-  tst_elementkindinformation.cpp)
-add_test(NAME tst_elementkindinformation COMMAND tst_elementkindinformation)
-add_dependencies(tst_elementkindinformation qelectrotech)
-target_link_libraries(tst_elementkindinformation PRIVATE Qt::Test Qt::Xml)
-target_compile_definitions(tst_elementkindinformation PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_elementkindinformation
+    tst_elementkindinformation.cpp)
+  add_test(NAME tst_elementkindinformation COMMAND tst_elementkindinformation)
+  add_dependencies(tst_elementkindinformation qelectrotech)
+  target_link_libraries(tst_elementkindinformation PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_elementkindinformation PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+endif()
 
 # Symbols sharing one uuid on a folio keep their wires through save and
 # reopen (#1408): nets of examples/Habitat-Schemas_developpes.qet.
