@@ -147,8 +147,9 @@ class Element : public QetGraphicsItem
 		 * use elementData function instead
 		 * @return
 		 */
-		DiagramContext kindInformations() const
-		{return m_kind_informations;}
+		DiagramContext kindInformations() const;
+			/// This symbol's own copy of its kind information, whatever the store holds
+		DiagramContext ownKindInformations() const {return m_kind_informations;}
 		//@kind_information_ is used to store more information
 		//about the herited class like contactelement for know
 		// kind of contact (simple tempo) or number of contact show by the element.

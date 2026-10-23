@@ -2656,6 +2656,21 @@ bool projectDataBase::createDataBase()
 			"PRIMARY KEY (element_uuid, ord))"))) {
 		qDebug() << " element_information_table query : " << query_.lastError();
 	}
+
+		//Create the element_kind_information table: a symbol's kind
+		//information (NO/NC/SW/power and the like), baked into its own
+		//definition and never edited after it is built, the store symbols
+		//write through (storeElementKindInformation()).
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE element_kind_information ("
+			"element_uuid VARCHAR(50) NOT NULL, "
+			"ord INTEGER NOT NULL, "
+			"name TEXT NOT NULL, "
+			"value TEXT, "
+			"show INTEGER NOT NULL, "
+			"PRIMARY KEY (element_uuid, ord))"))) {
+		qDebug() << " element_kind_information_table query : " << query_.lastError();
+	}
 		//Create the folio_titleblock table: the title block properties of
 		//every folio, as a folio saves them, the store folios write
 		//through (storeFolioTitleBlock()). One row per property, then one
@@ -3366,6 +3381,71 @@ void projectDataBase::forgetElementInformation(const QUuid &element)
 }
 
 /**
+	@brief projectDataBase::elementKindInformation
+	@return the stored kind information of the symbol @p element, or an
+	empty context if it holds none
+*/
+DiagramContext projectDataBase::elementKindInformation(const QUuid &element) const
+{
+	return m_element_kind_information.value(element);
+}
+
+/**
+	@brief projectDataBase::storeElementKindInformation
+	Store @p information as the kind information of the placed symbol
+	@p element, in the element_kind_information table and the cache in
+	front of it.
+	@return true if that changed what was stored
+*/
+bool projectDataBase::storeElementKindInformation(const QUuid &element, const DiagramContext &information)
+{
+	if (element.isNull()) return false;
+	auto known = m_element_kind_information.constFind(element);
+	if (known != m_element_kind_information.constEnd() && *known == information) return false;
+	m_element_kind_information.insert(element, information);
+
+	const QString uuid = element.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM element_kind_information WHERE element_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeElementKindInformation remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral(
+			"INSERT INTO element_kind_information (element_uuid, ord, name, value, show) "
+			"VALUES (:uuid, :ord, :name, :value, :show)"));
+	int ord = 0;
+	for (const QString &key : information.keys()) {
+		insert.bindValue(QStringLiteral(":uuid"), uuid);
+		insert.bindValue(QStringLiteral(":ord"), ord++);
+		insert.bindValue(QStringLiteral(":name"), key);
+		insert.bindValue(QStringLiteral(":value"), information.value(key).toString());
+		insert.bindValue(QStringLiteral(":show"), information.keyMustShow(key) ? 1 : 0);
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeElementKindInformation insert error : " << insert.lastError();
+		}
+	}
+	return true;
+}
+
+/**
+	@brief projectDataBase::forgetElementKindInformation
+	The symbol @p element is no longer placed: its stored kind information
+	goes.
+*/
+void projectDataBase::forgetElementKindInformation(const QUuid &element)
+{
+	if (!m_element_kind_information.remove(element)) return;
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM element_kind_information WHERE element_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), element.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::forgetElementKindInformation error : " << remove.lastError();
+	}
+}
+
+/**
 	@brief projectDataBase::placeElement
 	@p element is now placed: its information is stored under its uuid.
 */
@@ -3374,6 +3454,7 @@ void projectDataBase::placeElement(Element *element)
 	if (!m_placed_elements.contains(element->uuid(), element))
 		m_placed_elements.insert(element->uuid(), element);
 	storeElementInformation(element->uuid(), element->ownInformations());
+	storeElementKindInformation(element->uuid(), element->ownKindInformations());
 }
 
 /**
@@ -3389,11 +3470,13 @@ void projectDataBase::unplaceElement(Element *element, const QUuid &uuid)
 		if (other) {
 				//Its own copy: the store still holds this symbol's
 			storeElementInformation(uuid, other->ownInformations());
+			storeElementKindInformation(uuid, other->ownKindInformations());
 			return;
 		}
 	}
 	m_placed_elements.remove(uuid);
 	forgetElementInformation(uuid);
+	forgetElementKindInformation(uuid);
 }
 
 /**
