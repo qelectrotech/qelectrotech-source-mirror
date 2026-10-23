@@ -74,6 +74,14 @@ public slots:
 	ReportPropertieWidget      *rpw;       ///< Widget to edit default report label
 	XRefPropertiesWidget       *xrefpw;    ///< Widget to edit default xref properties
 	GuidesPropertiesWidget     *m_gpw;     ///< Widget to edit guides
+		//How a new project's terminals draw their label, the application's
+		//default (Configure QElectroTech > New project). Per project it is
+		//a project property (project properties > General), so these are
+		//only built for the application's defaults, without a project.
+	QGroupBox                 *m_terminal_label_gb = nullptr;
+	QRadioButton              *m_terminal_label_combined_rb = nullptr;
+	QRadioButton              *m_terminal_label_split_rb = nullptr;
+	QLabel                    *m_terminal_label_help = nullptr;
 	TitleBlockProperties       savedTbp;   ///< Used to save current TBP and retrieve later
 	QTabWidget                *m_tab_widget;     ///< Main tab widget (stored for later access)
 

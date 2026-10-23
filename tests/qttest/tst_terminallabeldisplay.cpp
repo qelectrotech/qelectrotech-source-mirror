@@ -21,11 +21,15 @@
 #include "TerminalStrip/terminalstrip.h"
 #include "dataBase/ui/elementquerywidget.h"
 #include "diagram.h"
+#include "ui/configpage/configpages.h"
 #include "ui/elementinfopartwidget.h"
 #include "ui/elementinfowidget.h"
 #include "ui/multielementinfowidget.h"
+#include <QGroupBox>
 #include <QLabel>
 #include <QListWidget>
+#include <QRadioButton>
+#include <QSettings>
 #include "properties/elementdata.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/element.h"
@@ -480,6 +484,87 @@ private slots:
 		QVERIFY2(!rows.contains(
 					 QETInformation::translatedInfoKey(QETInformation::ELMT_TERMINAL_NUMBER)),
 				 "The terminal number is no property of the element");
+	}
+
+	//A new project starts with the labelling the settings chose for new
+	//projects (Configure QElectroTech > New project), and draws the whole
+	//label in one field when the settings say nothing
+	void newProjectStartsWithTheDefaultLabelling()
+	{
+		const QString key = QStringLiteral("diagrameditor/defaultterminallabelling");
+
+		QSettings().setValue(key, true);
+		{
+			QETProject fresh;
+			QVERIFY2(fresh.terminalLabelSplit(),
+					 "A new project starts with the labelling the settings chose");
+		}
+
+		QSettings().setValue(key, false);
+		{
+			QETProject fresh;
+			QVERIFY(!fresh.terminalLabelSplit());
+		}
+
+		QSettings().remove(key);
+		{
+			QETProject fresh;
+			QVERIFY2(!fresh.terminalLabelSplit(),
+					 "Without a setting in the settings, a new project draws as it always did");
+		}
+	}
+
+	//The default for new projects is offered in Configure QElectroTech >
+	//New project, as the same group box the project properties use, and
+	//saving the page keeps the choice for the next new project
+	void settingsOfferTheDefaultLabelling()
+	{
+		const QString key = QStringLiteral("diagrameditor/defaultterminallabelling");
+		QSettings().remove(key);
+
+		NewDiagramPage settings_page;
+		QGroupBox *group = nullptr;
+		const QList<QGroupBox *> groups = settings_page.findChildren<QGroupBox *>();
+		for (QGroupBox *gb : groups) {
+			if (gb->title() == QStringLiteral("Display of the terminal labelling")) group = gb;
+		}
+		QVERIFY2(group, "The settings for new projects offer the labelling");
+
+		const QList<QRadioButton *> radios = group->findChildren<QRadioButton *>();
+		QCOMPARE(radios.size(), 2);
+		QRadioButton *split = nullptr;
+		for (QRadioButton *rb : radios) {
+			if (rb->text() == QStringLiteral("Split the label and the terminal number")) split = rb;
+		}
+		QVERIFY2(split, "The same choice as in the project properties");
+
+		split->setChecked(true);
+		settings_page.applyConf();
+		QCOMPARE(QSettings().value(key).toBool(), true);
+
+			//And the next new project draws the way it was saved
+		QETProject fresh;
+		QVERIFY(fresh.terminalLabelSplit());
+
+		QSettings().remove(key);
+	}
+
+	//The project keeps the one place to set it: its own properties (General
+	//page) are the only ones which change the drawing of a saved project,
+	//so the page of the new sheets does not offer the setting again
+	void projectSheetPageHasNoDefaultLabelling()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/every_feature.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		NewDiagramPage project_page(&project);
+		const QList<QGroupBox *> groups = project_page.findChildren<QGroupBox *>();
+		for (const QGroupBox *gb : groups) {
+			QVERIFY2(gb->title() != QStringLiteral("Display of the terminal labelling"),
+					 "The labelling of a saved project is set in its own properties, "
+					 "not in the defaults of its sheets");
+		}
 	}
 };
 
