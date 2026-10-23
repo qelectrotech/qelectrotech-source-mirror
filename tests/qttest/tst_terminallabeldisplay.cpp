@@ -19,7 +19,9 @@
 #include "qetapptest.h"
 #include "TerminalStrip/realterminal.h"
 #include "TerminalStrip/terminalstrip.h"
+#include "dataBase/ui/elementquerywidget.h"
 #include "diagram.h"
+#include <QListWidget>
 #include "properties/elementdata.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/element.h"
@@ -406,6 +408,37 @@ private slots:
 
 		QVERIFY(label->isVisible());
 		QCOMPARE(label->toPlainText(), QStringLiteral("X1:1"));
+	}
+
+	//The nomenclature/CSV export builds its columns from the element info
+	//keys, but its query has no terminal_number column: offering the key
+	//there made the export fail. The key itself stays an info key, so the
+	//Bauteileditor keeps offering %{terminal_number} as a text variable
+	void csvExportDoesNotOfferTerminalNumber()
+	{
+		ElementQueryWidget widget;
+		QListWidget *offer = widget.findChild<QListWidget *>(QStringLiteral("m_var_list"));
+		QVERIFY2(offer, "the widget which lists the exportable columns");
+
+		QStringList offered;
+		for (int row = 0; row < offer->count(); ++row)
+			offered.append(offer->item(row)->text());
+
+		const QString terminal_number = QETInformation::translatedInfoKey(
+					QETInformation::ELMT_TERMINAL_NUMBER);
+		QVERIFY2(!offered.contains(terminal_number),
+				 qPrintable(QStringLiteral("The export must not offer \"%1\"")
+							.arg(terminal_number)));
+
+			//The other columns are still offered...
+		QVERIFY(offered.contains(
+					QETInformation::translatedInfoKey(QETInformation::ELMT_LABEL)));
+
+			//...and the variable is still a text variable
+		QVERIFY(QETInformation::elementInfoKeys().contains(
+					QETInformation::ELMT_TERMINAL_NUMBER));
+		QCOMPARE(QETInformation::elementInfoToVar(QETInformation::ELMT_TERMINAL_NUMBER),
+				 QStringLiteral("%{terminal_number}"));
 	}
 };
 
