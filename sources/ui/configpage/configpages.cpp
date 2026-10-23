@@ -196,10 +196,13 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 
 	diagram_layout -> addWidget(bpw);
 	diagram_layout -> addWidget(ipw);
-		//The default labelling of the terminals, application's defaults only
+		//The default labelling of the terminals, application's defaults only.
+		//No stretch after it: the title block widget below takes the free
+		//height of the tab, and a spacer here would only give it a partner
+		//to share that height with -- an empty band at the bottom (the
+		//group box has a fixed height and sits fine without a spacer)
 	if (m_terminal_label_gb) {
 		diagram_layout -> addWidget(m_terminal_label_gb);
-		diagram_layout -> addStretch();
 	}
 		//A width only: a minimum height set by hand replaces the one the
 		//tabs ask for, so on a low screen (1080p with display scaling,
