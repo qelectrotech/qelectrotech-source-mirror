@@ -2697,8 +2697,13 @@ void Diagram::addItem(QGraphicsItem *item)
 	{
 		case Element::Type:
 		{
-			m_project->dataBase()->addElement(
-						static_cast<Element *>(item));
+			Element *elmt = static_cast<Element *>(item);
+			m_project->dataBase()->addElement(elmt);
+			if ((elmt->linkType() & Element::AllReport) && m_project->chainedReports()) {
+				QTimer::singleShot(0, m_project, [prj = m_project]() {
+					prj->autoLinkReportElements();
+				});
+			}
 			break;
 		}
 		case Conductor::Type:
@@ -2738,6 +2743,11 @@ void Diagram::removeItem(QGraphicsItem *item)
 			auto elmt = static_cast<Element*>(item);
 			elmt->unlinkAllElements();
 			m_project->dataBase()->removeElement(elmt);
+			if ((elmt->linkType() & Element::AllReport) && m_project->chainedReports()) {
+				QTimer::singleShot(0, m_project, [prj = m_project]() {
+					prj->autoLinkReportElements();
+				});
+			}
 			break;
 		}
 		case Conductor::Type:

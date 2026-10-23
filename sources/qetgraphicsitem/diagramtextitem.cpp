@@ -573,23 +573,39 @@ void DiagramTextItem::finishAlignment()
 	x=xa=0;
 	y=ya=0;
 
-	if(m_alignment &Qt::AlignRight)
+	Qt::Alignment visual_alignment = m_alignment;
+	
+	// If the text is flipped (rotation around 180 or -180 degrees), the local axes are inverted 
+	// relative to the parent. To preserve the *visual* edges expected by the user (and defined in their UI), 
+	// we swap the alignment flags.
+	int rot = qRound(this->rotation()) % 360;
+	if (rot < 0) rot += 360;
+	if (rot > 90 && rot < 270) {
+		Qt::Alignment new_align = visual_alignment & ~(Qt::AlignLeft | Qt::AlignRight | Qt::AlignTop | Qt::AlignBottom);
+		if (visual_alignment & Qt::AlignLeft) new_align |= Qt::AlignRight;
+		if (visual_alignment & Qt::AlignRight) new_align |= Qt::AlignLeft;
+		if (visual_alignment & Qt::AlignTop) new_align |= Qt::AlignBottom;
+		if (visual_alignment & Qt::AlignBottom) new_align |= Qt::AlignTop;
+		visual_alignment = new_align;
+	}
+
+	if(visual_alignment &Qt::AlignRight)
 	{
 		x = m_alignment_rect.right();
 		xa = boundingRect().right();
 	}
-	else if(m_alignment &Qt::AlignHCenter)
+	else if(visual_alignment &Qt::AlignHCenter)
 	{
 		x = m_alignment_rect.center().x();
 		xa = boundingRect().center().x();
 	}
 	
-	if(m_alignment &Qt::AlignBottom)
+	if(visual_alignment &Qt::AlignBottom)
 	{
 		y = m_alignment_rect.bottom();
 		ya = boundingRect().bottom();
 	}
-	else if(m_alignment &Qt::AlignVCenter)
+	else if(visual_alignment &Qt::AlignVCenter)
 	{
 		y = m_alignment_rect.center().y();
 		ya = boundingRect().center().y();
