@@ -1931,6 +1931,8 @@ void QETApp::useSystemPalette(bool use) {
 	// The base palette is always initial_palette_ (see initStyle()); the
 	// setting only decides whether the user's style.css is layered on top.
 	qApp->setPalette(initial_palette_);
+	// A custom color may have switched the icon theme; switch it back.
+	applyIconTheme(initial_palette_);
 	if (use) {
 		// Drop any stylesheet previously loaded from style.css: with system
 		// colors requested, the palette set just above is what provides them.
