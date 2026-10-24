@@ -3279,18 +3279,26 @@ void QETDiagramEditor::slot_updateComplexActions()
 	//Actions that need items (elements, conductors, texts...) selected, to be enabled
 		//A cable line is drawn on the folio but held by the cable, not
 		//by DiagramContent: it counts on its own for deleting and editing.
+		//A bridge line the same way: deleting it takes its whole bridge.
 	int selected_cables = 0;
+	int selected_bridge_parts = 0;
 	for (QGraphicsItem *item : diagram_->selectedItems()) {
 		if (item && item->type() == CablePart::Type) {
 			selected_cables++;
+		}
+		if (item && item->type() == BridgePart::Type) {
+			selected_bridge_parts++;
 		}
 	}
 
 		//A drawn cable line is copyable, cuttable and duplicatable on
 		//its own, although it belongs to its cable rather than to the
-		//folio and DiagramContent never sees it.
+		//folio and DiagramContent never sees it. A bridge line is only
+		//deletable so far: a drawn bridge is not copied yet, so cutting
+		//one would take it away without leaving it on the clipboard.
 	bool copiable_items  = dc.hasCopiableItems() || selected_cables > 0;
-	bool deletable_items = dc.hasDeletableItems() || selected_cables > 0;
+	bool deletable_items = dc.hasDeletableItems() || selected_cables > 0
+			|| selected_bridge_parts > 0;
 	m_cut              -> setEnabled(!ro && copiable_items);
 	m_copy             -> setEnabled(copiable_items);
 	m_duplicate        -> setEnabled(!ro && copiable_items);

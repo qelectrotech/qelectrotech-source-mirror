@@ -672,22 +672,19 @@ void DiagramView::cut()
 	DiagramContent cut_content(m_diagram);
 		//A cable line is not held by DiagramContent: it leaves with a
 		//command of its own, which takes the cable itself away too when
-		//no line of it is left on the folio. A bridge line the same way
-		//-- one takes the whole bridge with it.
+		//no line of it is left on the folio. A bridge line is left where
+		//it stands: a drawn bridge is not copied yet, so cutting one
+		//would take it away without leaving it on the clipboard.
 	QList<CablePart *> cable_cut;
-	QList<BridgePart *> bridge_cut;
 	for (QGraphicsItem *item : m_diagram->selectedItems()) {
 		if (auto *part = qgraphicsitem_cast<CablePart *>(item)) {
 			cable_cut << part;
-		}
-		if (auto *part = qgraphicsitem_cast<BridgePart *>(item)) {
-			bridge_cut << part;
 		}
 	}
 
 	m_diagram -> clearSelection();
 
-	if (cable_cut.isEmpty() && bridge_cut.isEmpty()) {
+	if (cable_cut.isEmpty()) {
 		m_diagram -> undoStack().push(new CutDiagramCommand(m_diagram, cut_content));
 		return;
 	}
@@ -696,12 +693,7 @@ void DiagramView::cut()
 	if (cut_content.count()) {
 		command = new CutDiagramCommand(m_diagram, cut_content);
 	}
-	if (!cable_cut.isEmpty()) {
-		command = batchWith(command, new RemoveCableCommand(m_diagram, cable_cut));
-	}
-	if (!bridge_cut.isEmpty()) {
-		command = batchWith(command, new RemoveBridgeCommand(bridge_cut));
-	}
+	command = batchWith(command, new RemoveCableCommand(m_diagram, cable_cut));
 	m_diagram -> undoStack().push(command);
 }
 
