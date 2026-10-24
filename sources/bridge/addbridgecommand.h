@@ -44,7 +44,9 @@ class AddBridgeCommand : public QUndoCommand
 						 BridgePart *part,
 						 Diagram *diagram,
 						 bool own_bridge,
-						 const QList<BridgeTerminal> &terminals = QList<BridgeTerminal>());
+						 const QList<BridgeTerminal> &terminals = QList<BridgeTerminal>(),
+						 const BridgeInformation &information_before = BridgeInformation(),
+						 const BridgeInformation &information_after = BridgeInformation());
 		~AddBridgeCommand() override = default;
 
 		void undo() override;
@@ -66,6 +68,12 @@ class AddBridgeCommand : public QUndoCommand
 		///The terminals this line gives to the bridge: redo adds them
 		///again, undo takes them away
 		QList<BridgeTerminal> m_terminals;
+			///What an existing bridge carried before this line landed on
+			///it and what it carries now: the bridge takes the function
+			///and the voltage of the terminals, and one undo puts both
+			///back
+		BridgeInformation m_information_before;
+		BridgeInformation m_information_after;
 		///True when this command brought the bridge into existence, so it
 		///is the one which has to take it away again
 		bool m_own_bridge = false;

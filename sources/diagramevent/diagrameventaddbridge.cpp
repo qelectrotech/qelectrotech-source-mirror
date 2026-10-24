@@ -378,14 +378,33 @@ void DiagramEventAddBridge::finishLine(const QPointF &end)
 		return;
 	}
 
+		//What the bridge carries as information: the function and the
+		//voltage of the terminals it lands on. When they do not agree the
+		//user is asked which the bridge takes, the way sheet references
+		//are linked -- and cancelling aborts: nothing is drawn.
+	bool take_information = false;
+	const BridgeInformation information = BridgeCreateDialog::askForInformation(
+				BridgeManager::informationSets(m_diagram->project(), terminals),
+				&take_information,
+				m_diagram->views().isEmpty() ? nullptr : m_diagram->views().constFirst());
+	if (!take_information) {
+		reset();
+		return;
+	}
+
 	Bridge *bridge = dialog.bridge();
 	const bool own_bridge = !bridge;
+	const BridgeInformation information_before{
+				bridge ? bridge->functionText() : QString(),
+				bridge ? bridge->tensionText() : QString()};
 	if (own_bridge)
 	{
 		bridge = m_diagram->project()->newBridge();
 		bridge->setColor(dialog.newColor());
 		bridge->setMaxConnections(dialog.newMaxConnections());
 		bridge->setLineWidth(dialog.newLineWidth());
+		bridge->setFunctionText(information.function);
+		bridge->setTensionText(information.tension);
 
 			//Which parallel track the bridge runs in: the first free one
 			//at the terminals it crosses. Four are all a terminal takes.
@@ -429,7 +448,8 @@ void DiagramEventAddBridge::finishLine(const QPointF &end)
 
 	m_diagram->project()->undoStack()->push(
 		new AddBridgeCommand(bridge, item, m_diagram, own_bridge,
-							 own_bridge ? QList<BridgeTerminal>() : terminals));
+							 own_bridge ? QList<BridgeTerminal>() : terminals,
+							 information_before, information));
 
 	reset();
 }

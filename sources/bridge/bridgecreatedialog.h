@@ -84,6 +84,20 @@ class BridgeCreateDialog : public QDialog
 			*/
 		QString problem() const;
 
+			/**
+				When the terminals a bridge would land on do not agree
+				about the function and the voltage they carry, the user is
+				asked which the bridge takes -- the way sheet references
+				are linked: the candidates with what they carry, one to
+				choose, and cancelling aborts whatever was being done.
+				@param sets the distinct sets the terminals carry
+				@param ok set to false when he cancelled
+				@return the set the bridge takes
+			*/
+		static BridgeInformation askForInformation(const QList<BridgeInformation> &sets,
+												   bool *ok,
+												   QWidget *parent = nullptr);
+
 	public slots:
 		void accept() override;
 

@@ -21,7 +21,9 @@
 #include "conductorautonumerotation.h"
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
+#include "bridge/bridgecreatedialog.h"
 #include "bridge/bridgemanager.h"
+#include "bridge/bridgepart.h"
 #include "bridge/bridgeundocommands.h"
 #include "diagram.h"
 #include "itemgroups.h"
@@ -267,11 +269,18 @@ void ElementsMover::continueMovement(const QPointF &movement)
 		//A terminal may not come to rest on a bridge which cannot take
 		//one more: what that would build cannot be built in the cabinet.
 		//The step is taken back right away, so the terminal stays at the
-		//mouse and is dropped somewhere else -- the very test of what can
-		//really be built, asked where the drawing now stands.
-	if (!m_moved_content.m_elements.isEmpty()
-		&& !BridgeManager::bridgesOverfilledBy(m_diagram ? m_diagram->project() : nullptr,
-											   m_moved_content.m_elements).isEmpty())
+		//mouse and is dropped somewhere else -- and the bridge which
+		//stops it is drawn in the colour of a problem, so the hand sees
+		//what is wrong rather than only finding a message about it.
+	const QList<Bridge *> overfilled =
+			(m_moved_content.m_elements.isEmpty() || !m_diagram)
+			? QList<Bridge *>()
+			: BridgeManager::bridgesOverfilledBy(m_diagram->project(), m_moved_content.m_elements);
+	for (BridgePart *part : BridgePart::allParts()) {
+		part->setRefused(part->bridge() && overfilled.contains(part->bridge()));
+	}
+
+	if (!overfilled.isEmpty())
 	{
 		m_current_movement -= movement;
 		applyMovement(-movement);
@@ -362,7 +371,23 @@ void ElementsMover::endMovement()
 			if (gained > 0 && bridge->wouldExceed(gained)) {
 				continue;
 			}
-			new ChangeBridgeTerminalsCommand(bridge, before, after, undo_object);
+				//What the bridge carries as information follows the
+				//terminals: when they do not agree the user is asked
+				//which the bridge takes, and cancelling keeps the bridge
+				//as it was -- the terminal crosses its line without being
+				//connected to it.
+			const QList<BridgeInformation> sets =
+					BridgeManager::informationSets(m_diagram->project(), after);
+			bool take_information = false;
+			const BridgeInformation information =
+					BridgeCreateDialog::askForInformation(sets, &take_information);
+			if (!take_information) {
+				continue;
+			}
+			const BridgeInformation information_before{
+						bridge->functionText(), bridge->tensionText()};
+			new ChangeBridgeTerminalsCommand(bridge, before, after,
+											 information_before, information, undo_object);
 		}
 	}
 
@@ -471,6 +496,12 @@ void ElementsMover::endMovement()
 	m_moved_cables.clear();
 	m_start_positions.clear();
 
+		//Nothing is hovering over anything anymore: the lines drawn in
+		//the colour of a problem come back to their own colour
+	for (BridgePart *part : BridgePart::allParts()) {
+		part->setRefused(false);
+	}
+
 		//Keep saying why a held group did not move
 	if (m_status_bar && !m_driver_held) {
 		m_status_bar->clearMessage();
@@ -542,6 +573,12 @@ void ElementsMover::cancelMovement()
 	m_current_movement -= m_current_movement;
 	m_movement_running = false;
 	m_moved_content.clear();
+
+		//Nothing is hovering over anything anymore: the lines drawn in
+		//the colour of a problem come back to their own colour
+	for (BridgePart *part : BridgePart::allParts()) {
+		part->setRefused(false);
+	}
 
 	if (m_status_bar && !m_driver_held) {
 		m_status_bar->clearMessage();

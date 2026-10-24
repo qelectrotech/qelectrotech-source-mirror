@@ -34,6 +34,16 @@ namespace {
 		///of it: generous enough for the hand, tight enough that the
 		///middle of the line stays free for selecting
 	constexpr qreal grip_radius = 6.0;
+
+		///Every bridge line drawn anywhere in the application
+	QList<BridgePart *> bridge_parts;
+}
+
+/**
+	@return every bridge line drawn anywhere in the application
+*/
+QList<BridgePart *> BridgePart::allParts() {
+	return bridge_parts;
 }
 
 /**
@@ -51,6 +61,15 @@ BridgePart::BridgePart(const BridgePartData &data, QGraphicsItem *parent) :
 	setZValue(10); //over the conductors, like any line drawn above a wire
 	setFlag(QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
+	bridge_parts << this;
+}
+
+/**
+	@brief BridgePart::~BridgePart
+*/
+BridgePart::~BridgePart()
+{
+	bridge_parts.removeAll(this);
 }
 
 /**
@@ -59,6 +78,26 @@ BridgePart::BridgePart(const BridgePartData &data, QGraphicsItem *parent) :
 void BridgePart::setBridge(Bridge *bridge)
 {
 	m_bridge = bridge;
+}
+
+/**
+	@brief BridgePart::setRefused
+	@param refused
+*/
+void BridgePart::setRefused(bool refused)
+{
+	if (m_refused == refused) {
+		return;
+	}
+	m_refused = refused;
+	update();
+}
+
+/**
+	@return true while this line is drawn in the colour of a problem
+*/
+bool BridgePart::isRefused() const {
+	return m_refused;
 }
 
 /**
@@ -130,8 +169,10 @@ void BridgePart::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
 	Q_UNUSED(widget)
 
 		//As thick as the bridge says, in the same way a conductor takes
-		//its size: the line is drawn the way the real bar is thick
-	QPen pen(drawColor(), lineWidth(), Qt::SolidLine, Qt::RoundCap);
+		//its size: the line is drawn the way the real bar is thick. The
+		//colour of a problem while the bridge refuses a terminal: what
+		//stops the hand is seen where the hand is.
+	QPen pen(m_refused ? QColor(200, 0, 0) : drawColor(), lineWidth(), Qt::SolidLine, Qt::RoundCap);
 	painter->setPen(pen);
 	painter->drawLine(m_p1, m_p2);
 
@@ -247,9 +288,24 @@ void BridgePart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		return;
 	}
 
+		//What the bridge carries as information follows the terminals:
+		//when they do not agree the user is asked which the bridge takes,
+		//and cancelling leaves the line the length it had
+	const BridgeInformation information_before{bridge->functionText(), bridge->tensionText()};
+	bool take_information = false;
+	const BridgeInformation information_after =
+			BridgeCreateDialog::askForInformation(
+				BridgeManager::informationSets(project, after), &take_information);
+	if (!take_information) {
+		setLine(before_line.p1(), before_line.p2());
+		event->accept();
+		return;
+	}
+
 	folio->undoStack().push(
 		new ChangeBridgeGeometryCommand(bridge, this,
-										before_line, after_line, before, after));
+										before_line, after_line, before, after,
+										information_before, information_after));
 	event->accept();
 }
 

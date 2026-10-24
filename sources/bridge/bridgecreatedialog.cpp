@@ -25,6 +25,7 @@
 #include <QDialogButtonBox>
 #include <QDoubleSpinBox>
 #include <QFont>
+#include <QInputDialog>
 #include <QLabel>
 #include <QListWidget>
 #include <QMessageBox>
@@ -184,10 +185,74 @@ BridgeCreateDialog::BridgeCreateDialog(Bridge *bridge, QWidget *parent) :
 	m_color_cb->setColor(bridge ? bridge->color() : QColor(Qt::black));
 	layout->addWidget(m_color_cb);
 
+		//What the bridge carries: the function and the voltage of the
+		//terminals it lands on. Taken over from them, never typed in.
+	if (bridge) {
+		auto *information = new QLabel(
+					tr("Function: %1\nVoltage: %2",
+					   "what the bridge carries as information")
+					.arg(bridge->functionText().isEmpty() ? tr("—") : bridge->functionText())
+					.arg(bridge->tensionText().isEmpty() ? tr("—") : bridge->tensionText()),
+					this);
+		information->setObjectName(QStringLiteral("bridge_information"));
+		layout->addWidget(information);
+	}
+
 	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
 	layout->addWidget(buttons);
 	connect(buttons, &QDialogButtonBox::accepted, this, &BridgeCreateDialog::accept);
 	connect(buttons, &QDialogButtonBox::rejected, this, &BridgeCreateDialog::reject);
+}
+
+/**
+	@brief BridgeCreateDialog::askForInformation
+	@param sets the distinct sets of information the terminals carry
+	@param ok set to false when he cancelled
+	@param parent
+	@return the set the bridge takes
+*/
+BridgeInformation BridgeCreateDialog::askForInformation(const QList<BridgeInformation> &sets,
+														bool *ok,
+														QWidget *parent)
+{
+	BridgeInformation taken;
+	if (ok) {
+		*ok = false;
+	}
+	if (sets.isEmpty()) {
+		return taken;
+	}
+	if (sets.size() == 1) {
+		if (ok) {
+			*ok = true;
+		}
+		return sets.first();
+	}
+
+	QStringList items;
+	for (const BridgeInformation &set : sets) {
+		items << tr("%1 / %2", "one choice of function and voltage a bridge could take")
+				.arg(set.function.isEmpty() ? tr("no function") : set.function)
+				.arg(set.tension.isEmpty() ? tr("no voltage") : set.tension);
+	}
+
+	bool accepted = false;
+	const QString chosen = QInputDialog::getItem(
+				parent,
+				tr("Different potentials"),
+				tr("The terminals carry different information: choose which the bridge takes."),
+				items, 0, false, &accepted);
+	if (!accepted) {
+		return taken;
+	}
+	const int at = items.indexOf(chosen);
+	if (at < 0) {
+		return taken;
+	}
+	if (ok) {
+		*ok = true;
+	}
+	return sets.at(at);
 }
 
 /**

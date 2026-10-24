@@ -152,6 +152,46 @@ void Bridge::setColumn(int column)
 }
 
 /**
+	@return the function text this bridge carries, taken over from the
+	terminals it lands on
+*/
+QString Bridge::functionText() const {
+	return m_function_text;
+}
+
+/**
+	@param text
+*/
+void Bridge::setFunctionText(const QString &text)
+{
+	if (text == m_function_text) {
+		return;
+	}
+	m_function_text = text;
+	emit changed();
+}
+
+/**
+	@return the voltage/protocol this bridge carries, taken over from
+	the terminals it lands on
+*/
+QString Bridge::tensionText() const {
+	return m_tension_text;
+}
+
+/**
+	@param text
+*/
+void Bridge::setTensionText(const QString &text)
+{
+	if (text == m_tension_text) {
+		return;
+	}
+	m_tension_text = text;
+	emit changed();
+}
+
+/**
 	@return the terminals this bridge lands on, in the order they were
 	given when it was drawn
 */
@@ -296,6 +336,12 @@ QDomElement Bridge::toXml(QDomDocument &document) const
 	if (m_column) {
 		root.setAttribute(QStringLiteral("column"), m_column);
 	}
+	if (!m_function_text.isEmpty()) {
+		root.setAttribute(QStringLiteral("function"), m_function_text);
+	}
+	if (!m_tension_text.isEmpty()) {
+		root.setAttribute(QStringLiteral("tension_protocol"), m_tension_text);
+	}
 
 	auto xml_terminals = document.createElement(QStringLiteral("terminals"));
 	for (const BridgeTerminal &terminal : m_terminals) {
@@ -345,6 +391,8 @@ void Bridge::fromXml(const QDomElement &element)
 	}
 	m_max_connections = qMax(0, element.attribute(QStringLiteral("max_connections")).toInt());
 	m_column = qBound(0, element.attribute(QStringLiteral("column")).toInt(), max_columns);
+	m_function_text = element.attribute(QStringLiteral("function"));
+	m_tension_text = element.attribute(QStringLiteral("tension_protocol"));
 
 	m_terminals.clear();
 	auto xml_terminals = element.firstChildElement(QStringLiteral("terminals"));

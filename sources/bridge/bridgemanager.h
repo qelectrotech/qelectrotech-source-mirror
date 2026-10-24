@@ -94,6 +94,13 @@ class BridgeManager
 			//What the bridge takes over from its first terminal, read live
 		static QString functionOf(QETProject *project, Bridge *bridge);
 		static QString tensionOf(QETProject *project, Bridge *bridge);
+
+			//What one terminal carries as information, and the distinct
+			//sets the terminals of a bridge carry: one when they agree,
+			//more when the user has to be asked which the bridge takes
+		static BridgeInformation informationOf(QETProject *project, const BridgeTerminal &terminal);
+		static QList<BridgeInformation> informationSets(QETProject *project,
+													   const QList<BridgeTerminal> &terminals);
 };
 
 #endif // BRIDGEMANAGER_H

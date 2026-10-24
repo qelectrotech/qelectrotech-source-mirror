@@ -20,6 +20,7 @@
 #include "../diagram.h"
 #include "../qetproject.h"
 #include "bridgepart.h"
+#include "bridgemanager.h"
 
 /**
 	@brief ChangeBridgePropertiesCommand::ChangeBridgePropertiesCommand
@@ -76,6 +77,8 @@ void ChangeBridgePropertiesCommand::undo()
 	@param line_after where it stands now
 	@param terminals_before what the bridge landed on before
 	@param terminals_after what it lands on now
+	@param information_before what it carried before
+	@param information_after what it carries now
 	@param parent
 */
 ChangeBridgeGeometryCommand::ChangeBridgeGeometryCommand(Bridge *bridge,
@@ -84,6 +87,8 @@ ChangeBridgeGeometryCommand::ChangeBridgeGeometryCommand(Bridge *bridge,
 														 const QLineF &line_after,
 														 const QList<BridgeTerminal> &terminals_before,
 														 const QList<BridgeTerminal> &terminals_after,
+														 const BridgeInformation &information_before,
+														 const BridgeInformation &information_after,
 														 QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_bridge(bridge),
@@ -91,7 +96,9 @@ ChangeBridgeGeometryCommand::ChangeBridgeGeometryCommand(Bridge *bridge,
 	m_line_before(line_before),
 	m_line_after(line_after),
 	m_terminals_before(terminals_before),
-	m_terminals_after(terminals_after)
+	m_terminals_after(terminals_after),
+	m_information_before(information_before),
+	m_information_after(information_after)
 {
 	setText(QObject::tr("Changing the length of a bridge", "undo command text"));
 	if (m_part) {
@@ -104,7 +111,7 @@ ChangeBridgeGeometryCommand::ChangeBridgeGeometryCommand(Bridge *bridge,
 */
 void ChangeBridgeGeometryCommand::redo()
 {
-	apply(m_line_after, m_terminals_after);
+	apply(m_line_after, m_terminals_after, m_information_after);
 }
 
 /**
@@ -112,22 +119,27 @@ void ChangeBridgeGeometryCommand::redo()
 */
 void ChangeBridgeGeometryCommand::undo()
 {
-	apply(m_line_before, m_terminals_before);
+	apply(m_line_before, m_terminals_before, m_information_before);
 }
 
 /**
 	@brief ChangeBridgeGeometryCommand::apply
-	Put the line and the terminals of the bridge where they belong: the
-	geometry first, so that anything watching the bridge sees the two
-	agree once the step is done.
+	Put the line, the terminals and the information of the bridge where
+	they belong: the geometry first, so that anything watching the bridge
+	sees the two agree once the step is done.
 	@param line
 	@param terminals
+	@param information
 */
-void ChangeBridgeGeometryCommand::apply(const QLineF &line, const QList<BridgeTerminal> &terminals)
+void ChangeBridgeGeometryCommand::apply(const QLineF &line,
+										const QList<BridgeTerminal> &terminals,
+										const BridgeInformation &information)
 {
 	if (m_bridge) {
 		m_bridge->setPartGeometry(m_part_uuid, line.p1(), line.p2());
 		m_bridge->setTerminals(terminals);
+		m_bridge->setFunctionText(information.function);
+		m_bridge->setTensionText(information.tension);
 	}
 	if (m_part) {
 		m_part->setLine(line.p1(), line.p2());
@@ -139,16 +151,22 @@ void ChangeBridgeGeometryCommand::apply(const QLineF &line, const QList<BridgeTe
 	@param bridge
 	@param before what the bridge landed on before
 	@param after what it lands on now
+	@param information_before what it carried before
+	@param information_after what it carries now
 	@param parent
 */
 ChangeBridgeTerminalsCommand::ChangeBridgeTerminalsCommand(Bridge *bridge,
 														   const QList<BridgeTerminal> &before,
 														   const QList<BridgeTerminal> &after,
+														   const BridgeInformation &information_before,
+														   const BridgeInformation &information_after,
 														   QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_bridge(bridge),
 	m_terminals_before(before),
-	m_terminals_after(after)
+	m_terminals_after(after),
+	m_information_before(information_before),
+	m_information_after(information_after)
 {
 	setText(QObject::tr("Changing the terminals of a bridge", "undo command text"));
 }
@@ -158,7 +176,10 @@ ChangeBridgeTerminalsCommand::ChangeBridgeTerminalsCommand(Bridge *bridge,
 */
 void ChangeBridgeTerminalsCommand::redo()
 {
-	if (m_bridge) m_bridge->setTerminals(m_terminals_after);
+	if (!m_bridge) return;
+	m_bridge->setTerminals(m_terminals_after);
+	m_bridge->setFunctionText(m_information_after.function);
+	m_bridge->setTensionText(m_information_after.tension);
 }
 
 /**
@@ -166,7 +187,10 @@ void ChangeBridgeTerminalsCommand::redo()
 */
 void ChangeBridgeTerminalsCommand::undo()
 {
-	if (m_bridge) m_bridge->setTerminals(m_terminals_before);
+	if (!m_bridge) return;
+	m_bridge->setTerminals(m_terminals_before);
+	m_bridge->setFunctionText(m_information_before.function);
+	m_bridge->setTensionText(m_information_before.tension);
 }
 
 /**

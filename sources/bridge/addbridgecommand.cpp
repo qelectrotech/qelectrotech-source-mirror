@@ -29,17 +29,23 @@
 	@param own_bridge true when this command brings the bridge into
 	existence (a brand new bridge rather than a line on an existing one)
 	@param terminals the terminals the line gives to the bridge
+	@param information_before what an existing bridge carried before
+	@param information_after what it carries now
 */
 AddBridgeCommand::AddBridgeCommand(Bridge *bridge,
 								   BridgePart *part,
 								   Diagram *diagram,
 								   bool own_bridge,
-								   const QList<BridgeTerminal> &terminals) :
+								   const QList<BridgeTerminal> &terminals,
+								   const BridgeInformation &information_before,
+								   const BridgeInformation &information_after) :
 	QUndoCommand(),
 	m_bridge(bridge),
 	m_part(part),
 	m_diagram(diagram),
 	m_terminals(terminals),
+	m_information_before(information_before),
+	m_information_after(information_after),
 	m_own_bridge(own_bridge)
 {
 	setText(QObject::tr("Drawing a bridge", "undo command text"));
@@ -81,6 +87,8 @@ void AddBridgeCommand::redo()
 		for (const BridgeTerminal &terminal : std::as_const(m_terminals)) {
 			m_bridge->addTerminal(terminal);
 		}
+		m_bridge->setFunctionText(m_information_after.function);
+		m_bridge->setTensionText(m_information_after.tension);
 	}
 
 	if (m_part->scene() != m_diagram) {
@@ -111,5 +119,7 @@ void AddBridgeCommand::undo()
 		for (const BridgeTerminal &terminal : std::as_const(m_terminals)) {
 			m_bridge->removeTerminal(terminal);
 		}
+		m_bridge->setFunctionText(m_information_before.function);
+		m_bridge->setTensionText(m_information_before.tension);
 	}
 }

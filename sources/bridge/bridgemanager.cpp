@@ -373,50 +373,73 @@ Element *BridgeManager::elementFor(QETProject *project, const BridgeTerminal &te
 }
 
 /**
+	@brief BridgeManager::informationOf
+	@param project
+	@param terminal
+	@return what that terminal carries as information: its function
+	text and the voltage/protocol of a wire wired to it. Read live, so
+	the bridge follows the way the cores of a cable follow their wires.
+*/
+BridgeInformation BridgeManager::informationOf(QETProject *project, const BridgeTerminal &terminal)
+{
+	BridgeInformation information;
+	Element *element = elementFor(project, terminal);
+	if (!element) {
+		return information;
+	}
+	information.function = element->elementInformations().value(QETInformation::ELMT_FUNCTION).toString();
+
+	const auto terminals = element->terminals();
+	if (!terminals.isEmpty()) {
+		const auto conductors = terminals.first()->conductors();
+		if (!conductors.isEmpty()) {
+			information.tension = conductors.first()->properties().m_tension_protocol;
+		}
+	}
+	return information;
+}
+
+/**
+	@brief BridgeManager::informationSets
+	@param project
+	@param terminals
+	@return the distinct sets of information those terminals carry: one
+	when they agree, more when they do not and the user has to be asked
+	which the bridge takes.
+*/
+QList<BridgeInformation> BridgeManager::informationSets(QETProject *project,
+														const QList<BridgeTerminal> &terminals)
+{
+	QList<BridgeInformation> sets;
+	for (const BridgeTerminal &terminal : terminals) {
+		const BridgeInformation information = informationOf(project, terminal);
+		if (!sets.contains(information)) {
+			sets << information;
+		}
+	}
+	return sets;
+}
+
+/**
 	@brief BridgeManager::functionOf
 	@param project
 	@param bridge
-	@return the function text of the first terminal this bridge lands
-	on -- read live, so the bridge follows it like the cores of a cable
-	follow their wires. Empty when the terminal says nothing.
+	@return the function text the bridge carries
 */
 QString BridgeManager::functionOf(QETProject *project, Bridge *bridge)
 {
-	if (!bridge || bridge->terminals().isEmpty()) {
-		return {};
-	}
-	Element *element = elementFor(project, bridge->terminals().first());
-	if (!element) {
-		return {};
-	}
-	return element->elementInformations().value(QETInformation::ELMT_FUNCTION).toString();
+	Q_UNUSED(project)
+	return bridge ? bridge->functionText() : QString();
 }
 
 /**
 	@brief BridgeManager::tensionOf
 	@param project
 	@param bridge
-	@return the voltage/potential of the first terminal this bridge
-	lands on, taken from a wire wired to it -- read live as well. The
-	bridge is sitting in the cabinet where that potential is, which is
-	why it carries it.
+	@return the voltage/protocol the bridge carries
 */
 QString BridgeManager::tensionOf(QETProject *project, Bridge *bridge)
 {
-	if (!bridge || bridge->terminals().isEmpty()) {
-		return {};
-	}
-	Element *element = elementFor(project, bridge->terminals().first());
-	if (!element) {
-		return {};
-	}
-	const auto terminals = element->terminals();
-	if (terminals.isEmpty()) {
-		return {};
-	}
-	const auto conductors = terminals.first()->conductors();
-	if (conductors.isEmpty()) {
-		return {};
-	}
-	return conductors.first()->properties().m_tension_protocol;
+	Q_UNUSED(project)
+	return bridge ? bridge->tensionText() : QString();
 }

@@ -67,6 +67,26 @@ struct BridgeTerminal
 };
 
 /**
+	@brief What one terminal carries as information: its function text
+	and the voltage/protocol of a wire wired to it. A bridge takes it
+	over -- it sits in the cabinet where that potential is.
+*/
+struct BridgeInformation
+{
+	QString function;
+	QString tension;
+
+	friend bool operator==(const BridgeInformation &a, const BridgeInformation &b)
+	{
+		return a.function == b.function && a.tension == b.tension;
+	}
+	friend bool operator!=(const BridgeInformation &a, const BridgeInformation &b)
+	{
+		return !(a == b);
+	}
+};
+
+/**
 	@brief The Bridge class is the project wide object a drawn bridge
 	line stands for: a terminal bridge (Reihenbruecke) sitting across
 	terminals in the cabinet.
@@ -124,6 +144,16 @@ class Bridge : public QObject
 		int column() const;
 		void setColumn(int column);
 
+			//What the bridge carries as information: the function and the
+			//voltage of the terminals it lands on. It sits in the cabinet
+			//where that potential is -- taken over from them, never typed
+			//in. When they do not agree, the user is asked which the
+			//bridge takes, the way sheet references are linked.
+		QString functionText() const;
+		void setFunctionText(const QString &text);
+		QString tensionText() const;
+		void setTensionText(const QString &text);
+
 		//Terminals
 		QList<BridgeTerminal> terminals() const;
 		bool hasTerminal(const BridgeTerminal &terminal) const;
@@ -155,6 +185,8 @@ class Bridge : public QObject
 		qreal m_line_width = 1.0;
 		int m_max_connections = unlimited_connections;
 		int m_column = 0;
+		QString m_function_text;
+		QString m_tension_text;
 		QList<BridgeTerminal> m_terminals;
 		QList<BridgePartData> m_parts;
 };

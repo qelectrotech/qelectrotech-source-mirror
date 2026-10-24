@@ -138,6 +138,8 @@ private slots:
 
 		Bridge *bridge = project.newBridge();
 		bridge->setLineWidth(2.5);
+		bridge->setFunctionText(QStringLiteral("PE"));
+		bridge->setTensionText(QStringLiteral("24VAC"));
 		const BridgeTerminal first = terminalOf(terminals.at(0));
 		const BridgeTerminal second = terminalOf(terminals.at(1));
 		bridge->addTerminal(first);
@@ -167,6 +169,8 @@ private slots:
 		QCOMPARE(read_back.color(), bridge->color());
 		QCOMPARE(read_back.maxConnections(), bridge->maxConnections());
 		QCOMPARE(read_back.lineWidth(), bridge->lineWidth());
+		QCOMPARE(read_back.functionText(), QStringLiteral("PE"));
+		QCOMPARE(read_back.tensionText(), QStringLiteral("24VAC"));
 		QCOMPARE(read_back.column(), bridge->column());
 		QCOMPARE(read_back.terminals(), bridge->terminals());
 		QCOMPARE(read_back.parts().size(), 1);
@@ -456,7 +460,8 @@ private slots:
 				 "and drops the one it no longer runs over");
 
 		folio->undoStack().push(new ChangeBridgeGeometryCommand(
-									bridge, part, before_line, after_line, before, after));
+									bridge, part, before_line, after_line, before, after,
+									BridgeInformation(), BridgeInformation()));
 		QCOMPARE(part->line(), after_line);
 		QCOMPARE(bridge->terminals(), after);
 
@@ -644,10 +649,58 @@ private slots:
 		QVERIFY2(!after.contains(terminalOf(terminals.at(1))),
 				 "the one which walked off the line drops it");
 
-		folio->undoStack().push(new ChangeBridgeTerminalsCommand(bridge, before, after));
+		folio->undoStack().push(new ChangeBridgeTerminalsCommand(
+									bridge, before, after,
+									BridgeInformation(), BridgeInformation()));
 		QCOMPARE(bridge->terminals(), after);
 		folio->undoStack().undo();
 		QCOMPARE(bridge->terminals(), before);
+	}
+
+	//What the bridge carries is the function and the voltage of the
+	//terminals it lands on: taken over when they agree, asked for when
+	//they do not -- and one undo puts what it carried back
+	void aBridgeCarriesTheFunctionAndTheVoltage()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
+
+		Bridge *bridge = project.newBridge();
+		QVERIFY(bridge->functionText().isEmpty());
+		QVERIFY(bridge->tensionText().isEmpty());
+
+			//They agree: nobody is asked and the bridge takes what they
+			//carry
+		const QList<BridgeInformation> sets = BridgeManager::informationSets(
+					&project, {terminalOf(terminals.at(0)), terminalOf(terminals.at(1))});
+		QVERIFY2(sets.size() == 1, "the terminals agree about what they carry");
+		bool ok = false;
+		const BridgeInformation taken = BridgeCreateDialog::askForInformation(sets, &ok);
+		QVERIFY(ok);
+		QCOMPARE(taken, sets.first());
+
+			//Nothing at all to take: the question is answered with no
+		BridgeCreateDialog::askForInformation(QList<BridgeInformation>(), &ok);
+		QVERIFY2(!ok, "cancelling leaves everything as it was");
+
+			//And what the bridge carries is one undo step like the rest
+		bridge->setFunctionText(taken.function);
+		bridge->setTensionText(taken.tension);
+		const BridgeInformation before{bridge->functionText(), bridge->tensionText()};
+		const BridgeInformation after{QStringLiteral("FE"), QStringLiteral("230V")};
+		folio->undoStack().push(new ChangeBridgeTerminalsCommand(
+									bridge, bridge->terminals(), bridge->terminals(),
+									before, after));
+		QCOMPARE(bridge->functionText(), QStringLiteral("FE"));
+		QCOMPARE(bridge->tensionText(), QStringLiteral("230V"));
+		folio->undoStack().undo();
+		QCOMPARE(bridge->functionText(), before.function);
+		QCOMPARE(bridge->tensionText(), before.tension);
 	}
 };
 

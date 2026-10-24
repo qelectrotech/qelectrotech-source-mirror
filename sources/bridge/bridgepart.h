@@ -42,7 +42,7 @@ class BridgePart : public QetGraphicsItem
 
 	public:
 		explicit BridgePart(const BridgePartData &data, QGraphicsItem *parent = nullptr);
-		~BridgePart() override = default;
+		~BridgePart() override;
 
 		enum {Type = UserType + 1013};
 		int type() const override {return Type;}
@@ -50,6 +50,20 @@ class BridgePart : public QetGraphicsItem
 		void setBridge(Bridge *bridge);
 		Bridge *bridge() const;
 		QUuid partUuid() const;
+			/**
+				While a terminal hovers over this bridge and the bridge
+				cannot take one more, the line is drawn in the colour of
+				a problem: the hand has to see what stops the drop, not
+				only find a message about it afterwards.
+			*/
+		void setRefused(bool refused);
+		bool isRefused() const;
+			/**
+				Every bridge line drawn anywhere in the application: what
+				is happening under the hand paints them without hunting
+				through the folios for them.
+			*/
+		static QList<BridgePart *> allParts();
 
 		void setLine(const QPointF &p1, const QPointF &p2);
 		QLineF line() const;
@@ -82,6 +96,9 @@ class BridgePart : public QetGraphicsItem
 			///Where the line stood when the drag began, to put it back
 			///when what it would take cannot be built
 		QLineF m_stretched_from;
+			///Drawn in the colour of a problem while a terminal hovers
+			///over a bridge which cannot take it
+		bool m_refused = false;
 };
 
 #endif // BRIDGEPART_H

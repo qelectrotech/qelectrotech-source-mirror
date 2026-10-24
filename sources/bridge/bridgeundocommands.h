@@ -62,8 +62,9 @@ class ChangeBridgePropertiesCommand : public QUndoCommand
 
 	The geometry and the terminals it crosses belong together: a line
 	lengthened over another terminal gives the bridge that terminal, and
-	shortened it drops it again. One step either way, so one undo puts
-	the line and its connections back exactly as they were.
+	shortened it drops it again. What the bridge carries as information
+	follows with them. One step either way, so one undo puts the line and
+	its connections back exactly as they were.
 */
 class ChangeBridgeGeometryCommand : public QUndoCommand
 {
@@ -74,12 +75,16 @@ class ChangeBridgeGeometryCommand : public QUndoCommand
 									const QLineF &line_after,
 									const QList<BridgeTerminal> &terminals_before,
 									const QList<BridgeTerminal> &terminals_after,
+									const BridgeInformation &information_before,
+									const BridgeInformation &information_after,
 									QUndoCommand *parent = nullptr);
 		void undo() override;
 		void redo() override;
 
 	private:
-		void apply(const QLineF &line, const QList<BridgeTerminal> &terminals);
+		void apply(const QLineF &line,
+				   const QList<BridgeTerminal> &terminals,
+				   const BridgeInformation &information);
 
 	private:
 		QPointer<Bridge> m_bridge;
@@ -89,6 +94,8 @@ class ChangeBridgeGeometryCommand : public QUndoCommand
 		QLineF m_line_after;
 		QList<BridgeTerminal> m_terminals_before;
 		QList<BridgeTerminal> m_terminals_after;
+		BridgeInformation m_information_before;
+		BridgeInformation m_information_after;
 };
 
 /**
@@ -102,6 +109,8 @@ class ChangeBridgeTerminalsCommand : public QUndoCommand
 		ChangeBridgeTerminalsCommand(Bridge *bridge,
 									 const QList<BridgeTerminal> &before,
 									 const QList<BridgeTerminal> &after,
+									 const BridgeInformation &information_before,
+									 const BridgeInformation &information_after,
 									 QUndoCommand *parent = nullptr);
 		void undo() override;
 		void redo() override;
@@ -110,6 +119,8 @@ class ChangeBridgeTerminalsCommand : public QUndoCommand
 		QPointer<Bridge> m_bridge;
 		QList<BridgeTerminal> m_terminals_before;
 		QList<BridgeTerminal> m_terminals_after;
+		BridgeInformation m_information_before;
+		BridgeInformation m_information_after;
 };
 
 /**
