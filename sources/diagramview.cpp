@@ -37,6 +37,7 @@
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qeticons.h"
+#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "qetpalette.h"
 #include "titleblock/integrationmovetemplateshandler.h"
 #include "PropertiesEditor/propertieseditordialog.h"
@@ -889,12 +890,26 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 	adjustSceneRect();
 }
 
+namespace {
+	/// Hands the accepted state of a moved copy of a mouse event back to
+	/// the event that came, when the handler returns
+	struct AcceptedBack
+	{
+		QMouseEvent *copy;
+		QMouseEvent *original;
+		~AcceptedBack() { if (copy != original) original->setAccepted(copy->isAccepted()); }
+	};
+}
+
 /**
 	Manage the events press click :
 	 *  click to add an independent text field
 */
-void DiagramView::mousePressEvent(QMouseEvent *e)
+void DiagramView::mousePressEvent(QMouseEvent *original)
 {
+	std::unique_ptr<QMouseEvent> shifted;
+	QMouseEvent *e = onCaughtHandle(original, shifted);
+	const AcceptedBack accepted_back{e, original};
 	e->ignore();
 
 		//Ctrl+Shift panning whose key release was missed (see
@@ -1037,8 +1052,11 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 	@brief DiagramView::mouseMoveEvent
 	Manage the event move mouse
 */
-void DiagramView::mouseMoveEvent(QMouseEvent *e)
+void DiagramView::mouseMoveEvent(QMouseEvent *original)
 {
+	std::unique_ptr<QMouseEvent> shifted;
+	QMouseEvent *e = onCaughtHandle(original, shifted);
+	const AcceptedBack accepted_back{e, original};
 	m_last_mouse_pos = e->pos();
 	setToolTip(tr("X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
 	moveCrosshair(e->pos());
@@ -1146,6 +1164,14 @@ void DiagramView::updatePointer(const QPoint &viewport_pos, Qt::MouseButtons but
 	if (buttons != Qt::NoButton)
 		return;
 
+		//A caught handle: the arrow is drawn on it
+	if (m_caught_handle && m_crosshair_visible && crosshairShown()) {
+		viewport()->setCursor(Qt::BlankCursor);
+		m_pointer = Pointer::Arrow;
+		viewport()->update(crosshairArea(m_crosshair_pos));
+		return;
+	}
+
 	QGraphicsItem *item = m_event_interface ? nullptr : itemAt(viewport_pos);
 	if (item && item->hasCursor())
 	{
@@ -1219,8 +1245,11 @@ void DiagramView::drawPointer(QPainter *painter) const
 	@brief DiagramView::mouseReleaseEvent
 	Manage event release click mouse
 */
-void DiagramView::mouseReleaseEvent(QMouseEvent *e)
+void DiagramView::mouseReleaseEvent(QMouseEvent *original)
 {
+	std::unique_ptr<QMouseEvent> shifted;
+	QMouseEvent *e = onCaughtHandle(original, shifted);
+	const AcceptedBack accepted_back{e, original};
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
 		//A plain right click on a running tool falls through: the tool
@@ -1993,7 +2022,11 @@ void DiagramView::moveCrosshair(const QPoint &viewport_pos)
 		hideCrosshair();
 		return;
 	}
-	const QPointF pos = Diagram::snapToGrid(mapToScene(viewport_pos));
+		//A handle near the mouse catches it before the grid does
+	QGraphicsObject *handle = m_grabbing_caught ? nullptr : handleNear(viewport_pos);
+	m_caught_handle = handle;
+	const QPointF pos = handle ? handle->scenePos()
+				   : Diagram::snapToGrid(mapToScene(viewport_pos));
 	if (m_crosshair_visible && pos == m_crosshair_pos)
 		return;
 	if (m_crosshair_visible)
@@ -2001,6 +2034,59 @@ void DiagramView::moveCrosshair(const QPoint &viewport_pos)
 	m_crosshair_pos = pos;
 	m_crosshair_visible = true;
 	viewport()->update(crosshairArea(m_crosshair_pos));
+}
+
+
+/**
+	@brief DiagramView::handleNear
+	@return the handle (of a text, a shape, a conductor...) whose middle
+	is nearest to @a viewport_pos, within 12 pixels, or nullptr. Handles
+	rarely sit on the grid, so the crosshair could never reach them.
+*/
+QGraphicsObject *DiagramView::handleNear(const QPoint &viewport_pos) const
+{
+	constexpr int reach = 12;
+	QGraphicsObject *nearest = nullptr;
+	qreal distance = reach + 1;
+	for (QGraphicsItem *item : items(QRect(viewport_pos - QPoint(reach, reach),
+					      QSize(2 * reach + 1, 2 * reach + 1))))
+	{
+		if (item->type() != QetGraphicsHandlerItem::Type || !item->isVisible())
+			continue;
+		const qreal d = QLineF(mapFromScene(item->scenePos()), viewport_pos).length();
+		if (d < distance) {
+			nearest = item->toGraphicsObject();
+			distance = d;
+		}
+	}
+	return nearest;
+}
+
+/**
+	@brief DiagramView::onCaughtHandle
+	A left press while a handle has caught the crosshair grabs that handle
+	as if the mouse were on its middle; the moves and the release of that
+	drag keep the same offset, so the handle follows without a jump.
+	@param e : the mouse event as it came
+	@param shifted : holds the moved copy, when there is one
+	@return the event to handle: @a e, or its moved copy
+*/
+QMouseEvent *DiagramView::onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseEvent> &shifted)
+{
+	if (e->type() == QEvent::MouseButtonPress && e->button() == Qt::LeftButton
+	    && m_caught_handle && m_crosshair_visible && crosshairShown()) {
+		m_grab_offset = QPointF(mapFromScene(m_caught_handle->scenePos())) - e->position();
+		m_grabbing_caught = true;
+	}
+	if (!m_grabbing_caught)
+		return e;
+	shifted = std::make_unique<QMouseEvent>(e->type(), e->position() + m_grab_offset,
+						 e->globalPosition() + m_grab_offset,
+						 e->button(), e->buttons(), e->modifiers(),
+						 e->pointingDevice());
+	if (e->type() == QEvent::MouseButtonRelease && !(e->buttons() & Qt::LeftButton))
+		m_grabbing_caught = false;
+	return shifted.get();
 }
 
 /**

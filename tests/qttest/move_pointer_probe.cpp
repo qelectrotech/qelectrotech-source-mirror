@@ -18,6 +18,8 @@
 #include "../../sources/diagram.h"
 #include "../../sources/diagramview.h"
 #include "../../sources/qetgraphicsitem/element.h"
+#include "../../sources/qetgraphicsitem/dynamicelementtextitem.h"
+#include "../../sources/QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "../../sources/qetproject.h"
 #include "../../sources/qetmessagebox.h"
 
@@ -96,6 +98,42 @@ int main(int argc, char **argv)
 		check(blackPixels(image, QRect(tip + QPoint(1, 4), QSize(4, 8))) > 8, "the arrow stands below and right of the point");
 		moveTo(view, over);
 		check(view.drawnPointer() == 2, "over a symbol, the drawn pointer is the four-way arrow");
+
+			//A handle near the mouse catches the crosshair, which never
+			//reaches it on the grid, and a press there grabs it
+		element->setSelected(true);
+		QApplication::processEvents();
+		DynamicElementTextItem *text = nullptr;
+		QetGraphicsHandlerItem *handle = nullptr;
+		for (DynamicElementTextItem *t : element->dynamicTextItems())
+			for (QGraphicsItem *child : t->childItems())
+				if (child->type() == QetGraphicsHandlerItem::Type && child->isVisible()) {
+					text = t;
+					handle = static_cast<QetGraphicsHandlerItem *>(child);
+				}
+		check(handle, "the selected symbol's text shows a width handle");
+		const QPoint on_handle = view.mapFromScene(handle->scenePos());
+		const QPoint beside = on_handle + QPoint(7, 6);
+		check(view.itemAt(beside) != handle, "a point beside the handle, off it");
+		moveTo(view, beside);
+		check(view.crosshairPos() == handle->scenePos(), "the crosshair is caught by the handle near the mouse");
+		check(view.drawnPointer() == 1, "and the arrow is drawn on it");
+		const QPointF element_pos = element->pos();
+		const qreal width_before = text->boundingRect().width();
+		auto send = [&](QEvent::Type type, const QPoint &p, Qt::MouseButtons buttons) {
+			QMouseEvent event(type, QPointF(p), view.viewport()->mapToGlobal(QPointF(p)),
+					  Qt::LeftButton, buttons, Qt::NoModifier);
+			QApplication::sendEvent(view.viewport(), &event);
+		};
+		send(QEvent::MouseButtonPress, beside, Qt::LeftButton);
+		for (int step = 1; step <= 10; ++step)
+			send(QEvent::MouseMove, beside + QPoint(4 * step, 0), Qt::LeftButton);
+		send(QEvent::MouseButtonRelease, beside + QPoint(40, 0), Qt::NoButton);
+		QApplication::processEvents();
+		std::printf("width %g -> %g\n", width_before, text->boundingRect().width());
+		check(qAbs(text->boundingRect().width() - width_before) > 10, "a press beside it grabs the handle: the text's width changes");
+		check(element->pos() == element_pos, "and the symbol stays where it was");
+		element->setSelected(false);
 
 		QEvent leave(QEvent::Leave);
 		QApplication::sendEvent(view.viewport(), &leave);

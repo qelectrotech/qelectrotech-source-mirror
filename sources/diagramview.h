@@ -22,6 +22,9 @@
 #include "titleblock/templatelocation.h"
 
 #include <QClipboard>
+#include <QGraphicsObject>
+#include <QPointer>
+#include <memory>
 #include "palettegraphicsview.h"
 
 class CellRuler;
@@ -77,6 +80,14 @@ class DiagramView : public PaletteGraphicsView
 		QPointF           m_crosshair_pos;
 		bool              m_crosshair_visible = false;
 		void moveCrosshair(const QPoint &viewport_pos);
+			/// A handle near the mouse catches the crosshair and the
+			/// pointer, as a grid point does; a press then grabs it as if
+			/// the mouse were on it, and the drag keeps that offset
+		QPointer<QGraphicsObject> m_caught_handle;
+		QPointF           m_grab_offset;
+		bool              m_grabbing_caught = false;
+		QGraphicsObject *handleNear(const QPoint &viewport_pos) const;
+		QMouseEvent *onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseEvent> &shifted);
 		void hideCrosshair();
 		QRect crosshairArea(const QPointF &scene_pos) const;
 			/// The pointer: a four-way arrow over what can be moved; with
