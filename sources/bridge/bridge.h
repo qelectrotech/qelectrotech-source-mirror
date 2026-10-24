@@ -92,6 +92,9 @@ class Bridge : public QObject
 			///How many terminals a bridge may hold when the user says
 			///nothing: as many as he draws (see maxConnections())
 		static constexpr int unlimited_connections = 0;
+			///How thick a bridge is drawn when the user says nothing:
+			///as thick as a conductor is by default
+		static constexpr qreal default_line_width = 1.0;
 			///How many bridges may run side by side through one terminal,
 			///the four bridge points of the drawing
 		static constexpr int max_columns = 4;
@@ -104,6 +107,11 @@ class Bridge : public QObject
 		//Properties the user fills in
 		QColor color() const;
 		void setColor(const QColor &color);
+			///How thick the lines of this bridge are drawn, in the same
+			///way a conductor takes its size: 1 unless the user says
+			///otherwise
+		qreal lineWidth() const;
+		void setLineWidth(qreal width);
 			///How many terminals this bridge may hold,
 			///unlimited_connections (0) when there is no limit
 		int maxConnections() const;
@@ -144,6 +152,7 @@ class Bridge : public QObject
 	private:
 		QUuid m_uuid;
 		QColor m_color = Qt::black;
+		qreal m_line_width = 1.0;
 		int m_max_connections = unlimited_connections;
 		int m_column = 0;
 		QList<BridgeTerminal> m_terminals;

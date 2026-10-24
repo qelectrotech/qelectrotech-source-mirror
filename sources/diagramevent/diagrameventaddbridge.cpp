@@ -385,6 +385,7 @@ void DiagramEventAddBridge::finishLine(const QPointF &end)
 		bridge = m_diagram->project()->newBridge();
 		bridge->setColor(dialog.newColor());
 		bridge->setMaxConnections(dialog.newMaxConnections());
+		bridge->setLineWidth(dialog.newLineWidth());
 
 			//Which parallel track the bridge runs in: the first free one
 			//at the terminals it crosses. Four are all a terminal takes.

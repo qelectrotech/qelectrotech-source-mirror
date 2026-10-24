@@ -23,6 +23,7 @@
 
 #include <QCheckBox>
 #include <QDialogButtonBox>
+#include <QDoubleSpinBox>
 #include <QFont>
 #include <QLabel>
 #include <QListWidget>
@@ -78,6 +79,17 @@ BridgeCreateDialog::BridgeCreateDialog(Diagram *diagram,
 	m_max_sb->setSpecialValueText(tr("Unlimited"));
 	m_max_sb->setValue(Bridge::unlimited_connections);
 	new_layout->addWidget(m_max_sb);
+
+	auto *width_label = new QLabel(tr("Line width:"), new_page);
+	new_layout->addWidget(width_label);
+	m_width_sb = new QDoubleSpinBox(new_page);
+	m_width_sb->setObjectName(QStringLiteral("bridge_width_sb"));
+		//The same numbers as the size of a conductor: the bridge is
+		//drawn as thick as the wires it sits across
+	m_width_sb->setRange(0.4, 20.0);
+	m_width_sb->setSingleStep(0.2);
+	m_width_sb->setValue(Bridge::default_line_width);
+	new_layout->addWidget(m_width_sb);
 
 	auto *color_label = new QLabel(tr("Bridge colour:"), new_page);
 	new_layout->addWidget(color_label);
@@ -155,6 +167,16 @@ BridgeCreateDialog::BridgeCreateDialog(Bridge *bridge, QWidget *parent) :
 	m_max_sb->setValue(bridge ? bridge->maxConnections() : Bridge::unlimited_connections);
 	layout->addWidget(m_max_sb);
 
+	layout->addWidget(new QLabel(tr("Line width:"), this));
+	m_width_sb = new QDoubleSpinBox(this);
+	m_width_sb->setObjectName(QStringLiteral("bridge_width_sb"));
+		//The same numbers as the size of a conductor: the bridge is
+		//drawn as thick as the wires it sits across
+	m_width_sb->setRange(0.4, 20.0);
+	m_width_sb->setSingleStep(0.2);
+	m_width_sb->setValue(bridge ? bridge->lineWidth() : Bridge::default_line_width);
+	layout->addWidget(m_width_sb);
+
 	layout->addWidget(new QLabel(tr("Bridge colour:"), this));
 	m_color_cb = new KColorCombo(this);
 	m_color_cb->setObjectName(QStringLiteral("bridge_color_cb"));
@@ -188,6 +210,14 @@ QColor BridgeCreateDialog::newColor() const {
 */
 int BridgeCreateDialog::newMaxConnections() const {
 	return m_max_sb ? m_max_sb->value() : Bridge::unlimited_connections;
+}
+
+/**
+	@return how thick the lines of the bridge are drawn, in the same way
+	a conductor takes its size
+*/
+qreal BridgeCreateDialog::newLineWidth() const {
+	return m_width_sb ? m_width_sb->value() : Bridge::default_line_width;
 }
 
 /**

@@ -118,6 +118,7 @@ private slots:
 		QVERIFY(bridge);
 		QVERIFY2(bridge->color() == QColor(Qt::black), "a bridge is black unless the user says otherwise");
 		QCOMPARE(bridge->maxConnections(), Bridge::unlimited_connections);
+		QCOMPARE(bridge->lineWidth(), Bridge::default_line_width);
 		QCOMPARE(bridge->column(), 0);
 		QCOMPARE(bridge->terminalCount(), 0);
 		QVERIFY(!bridge->wouldExceed(100));
@@ -136,6 +137,7 @@ private slots:
 		QVERIFY2(terminals.size() >= 2, "the fixture has the terminals of the strip X1");
 
 		Bridge *bridge = project.newBridge();
+		bridge->setLineWidth(2.5);
 		const BridgeTerminal first = terminalOf(terminals.at(0));
 		const BridgeTerminal second = terminalOf(terminals.at(1));
 		bridge->addTerminal(first);
@@ -164,6 +166,7 @@ private slots:
 		QCOMPARE(read_back.uuid(), bridge->uuid());
 		QCOMPARE(read_back.color(), bridge->color());
 		QCOMPARE(read_back.maxConnections(), bridge->maxConnections());
+		QCOMPARE(read_back.lineWidth(), bridge->lineWidth());
 		QCOMPARE(read_back.column(), bridge->column());
 		QCOMPARE(read_back.terminals(), bridge->terminals());
 		QCOMPARE(read_back.parts().size(), 1);
@@ -311,6 +314,7 @@ private slots:
 		BridgeCreateDialog dialog(diagramOf(project, terminals.at(0)->element()), crossings);
 		QVERIFY2(dialog.bridge() == nullptr, "a new bridge is offered first");
 		QCOMPARE(dialog.newMaxConnections(), Bridge::unlimited_connections);
+		QCOMPARE(dialog.newLineWidth(), Bridge::default_line_width);
 		QCOMPARE(dialog.newColor(), QColor(Qt::black));
 		QVERIFY2(dialog.problem().isEmpty(), "nothing speaks against it");
 	}
@@ -477,14 +481,17 @@ private slots:
 		bridge->addTerminal(terminalOf(terminals.first()));
 		QCOMPARE(bridge->color(), QColor(Qt::black));
 		QCOMPARE(bridge->maxConnections(), Bridge::unlimited_connections);
+		QCOMPARE(bridge->lineWidth(), Bridge::default_line_width);
 
-		folio->undoStack().push(new ChangeBridgePropertiesCommand(bridge, QColor(Qt::red), 3));
+		folio->undoStack().push(new ChangeBridgePropertiesCommand(bridge, QColor(Qt::red), 3, 2.5));
 		QCOMPARE(bridge->color(), QColor(Qt::red));
 		QCOMPARE(bridge->maxConnections(), 3);
+		QCOMPARE(bridge->lineWidth(), 2.5);
 
 		folio->undoStack().undo();
 		QCOMPARE(bridge->color(), QColor(Qt::black));
 		QCOMPARE(bridge->maxConnections(), Bridge::unlimited_connections);
+		QCOMPARE(bridge->lineWidth(), Bridge::default_line_width);
 	}
 
 	//A bridge which already holds terminals may not be given a limit

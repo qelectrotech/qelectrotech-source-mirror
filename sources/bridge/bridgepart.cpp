@@ -101,7 +101,8 @@ QLineF BridgePart::line() const {
 QRectF BridgePart::boundingRect() const
 {
 	const QRectF rect(m_p1, m_p2);
-	return rect.normalized().adjusted(-4, -4, 4, 4);
+	const qreal margin = 4 + lineWidth();
+	return rect.normalized().adjusted(-margin, -margin, margin, margin);
 }
 
 /**
@@ -113,7 +114,7 @@ QPainterPath BridgePart::shape() const
 	QPainterPath path(m_p1);
 	path.lineTo(m_p2);
 	QPainterPathStroker stroker;
-	stroker.setWidth(8);
+	stroker.setWidth(qMax(8.0, lineWidth() + 6.0));
 	return stroker.createStroke(path);
 }
 
@@ -128,8 +129,9 @@ void BridgePart::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
 
-	QPen pen(drawColor(), 1, Qt::SolidLine, Qt::RoundCap);
-	pen.setCosmetic(true);
+		//As thick as the bridge says, in the same way a conductor takes
+		//its size: the line is drawn the way the real bar is thick
+	QPen pen(drawColor(), lineWidth(), Qt::SolidLine, Qt::RoundCap);
 	painter->setPen(pen);
 	painter->drawLine(m_p1, m_p2);
 
@@ -282,11 +284,14 @@ void BridgePart::editProperty()
 
 	const QColor color = dialog.newColor();
 	const int max_connections = dialog.newMaxConnections();
-	if (color == bridge->color() && max_connections == bridge->maxConnections()) {
+	const qreal line_width = dialog.newLineWidth();
+	if (color == bridge->color()
+		&& max_connections == bridge->maxConnections()
+		&& qFuzzyCompare(line_width, bridge->lineWidth())) {
 		return;
 	}
 	folio->undoStack().push(
-		new ChangeBridgePropertiesCommand(bridge, color, max_connections));
+		new ChangeBridgePropertiesCommand(bridge, color, max_connections, line_width));
 }
 
 /**
@@ -295,4 +300,12 @@ void BridgePart::editProperty()
 */
 QColor BridgePart::drawColor() const {
 	return m_bridge ? m_bridge->color() : QColor(Qt::black);
+}
+
+/**
+	@return how thick this line is drawn: as thick as its bridge says,
+	as thick as a conductor is by default when it has no bridge (yet)
+*/
+qreal BridgePart::lineWidth() const {
+	return m_bridge ? m_bridge->lineWidth() : Bridge::default_line_width;
 }

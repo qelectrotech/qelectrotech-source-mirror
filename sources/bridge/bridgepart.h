@@ -70,6 +70,7 @@ class BridgePart : public QetGraphicsItem
 
 	private:
 		QColor drawColor() const;
+		qreal lineWidth() const;
 
 	private:
 		QPointer<Bridge> m_bridge;

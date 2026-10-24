@@ -74,6 +74,27 @@ void Bridge::setColor(const QColor &color)
 }
 
 /**
+	@return how thick the lines of this bridge are drawn, in the same
+	way a conductor takes its size
+*/
+qreal Bridge::lineWidth() const {
+	return m_line_width;
+}
+
+/**
+	@param width
+*/
+void Bridge::setLineWidth(qreal width)
+{
+	const qreal clamped = qMax(width, 0.1);
+	if (qFuzzyCompare(clamped, m_line_width)) {
+		return;
+	}
+	m_line_width = clamped;
+	emit changed();
+}
+
+/**
 	@return how many terminals this bridge may hold,
 	unlimited_connections (0) when there is no limit
 */
@@ -266,6 +287,9 @@ QDomElement Bridge::toXml(QDomDocument &document) const
 	auto root = document.createElement(xmlTagName());
 	root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
 	root.setAttribute(QStringLiteral("color"), m_color.name());
+	if (!qFuzzyCompare(m_line_width, default_line_width)) {
+		root.setAttribute(QStringLiteral("line_width"), QString::number(m_line_width));
+	}
 	if (m_max_connections != unlimited_connections) {
 		root.setAttribute(QStringLiteral("max_connections"), m_max_connections);
 	}
@@ -315,6 +339,10 @@ void Bridge::fromXml(const QDomElement &element)
 		newUuid();
 	}
 	m_color = QColor(element.attribute(QStringLiteral("color"), QStringLiteral("#000000")));
+	m_line_width = element.attribute(QStringLiteral("line_width")).toDouble();
+	if (m_line_width <= 0.0) {
+		m_line_width = default_line_width;
+	}
 	m_max_connections = qMax(0, element.attribute(QStringLiteral("max_connections")).toInt());
 	m_column = qBound(0, element.attribute(QStringLiteral("column")).toInt(), max_columns);
 

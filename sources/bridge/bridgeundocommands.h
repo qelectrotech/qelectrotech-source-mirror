@@ -41,6 +41,7 @@ class ChangeBridgePropertiesCommand : public QUndoCommand
 		ChangeBridgePropertiesCommand(Bridge *bridge,
 									  const QColor &color,
 									  int max_connections,
+									  qreal line_width,
 									  QUndoCommand *parent = nullptr);
 		void undo() override;
 		void redo() override;
@@ -51,6 +52,8 @@ class ChangeBridgePropertiesCommand : public QUndoCommand
 		QColor m_color_after;
 		int m_max_before = 0;
 		int m_max_after = 0;
+		qreal m_width_before = 1.0;
+		qreal m_width_after = 1.0;
 };
 
 /**
