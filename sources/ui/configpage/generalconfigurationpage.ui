@@ -155,6 +155,58 @@
         </widget>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="m_grid_min_spacing_layout">
+         <item>
+          <widget class="QLabel" name="m_grid_min_spacing_label">
+           <property name="text">
+            <string>Hide the grid when its dots are closer on screen than</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_grid_min_spacing_sb</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="m_grid_min_spacing_sb">
+           <property name="toolTip">
+            <string>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</string>
+           </property>
+           <property name="suffix">
+            <string> px</string>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>50.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.500000000000000</double>
+           </property>
+           <property name="value">
+            <double>10.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="m_grid_min_spacing_spacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_collection_dblclick_edits">
          <property name="toolTip">
           <string>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</string>

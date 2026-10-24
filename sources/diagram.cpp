@@ -361,7 +361,9 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 
 			//Left out when they would crowd, whatever the grid step
 		const qreal zoom_factor = p->transform().m11();
-		const bool dots_shown = FolioGrid::dotsShown(xGrid, yGrid, zoom_factor);
+		const bool dots_shown = FolioGrid::dotsShown(
+					xGrid, yGrid, zoom_factor,
+					FolioGrid::minDotSpacing(settings.value(FolioGrid::min_dot_spacing_key)));
 
 		QPolygon points;
 		for (int gx = g_x ; dots_shown && gx < limit_x ; gx += xGrid) {

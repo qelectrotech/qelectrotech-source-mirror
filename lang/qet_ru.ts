@@ -7936,6 +7936,21 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 2 — разрешения экрана (dpi) 
 3 — редактирования проекта на другом компьютере и/или экране, параметры которых отличаются от указанных в пунктах 1 и 2.</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Скрывать сетку, когда её точки на экране ближе чем</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>При большем отдалении точки любой сетки не рисуются; где именно, показывает масштаб в строке состояния</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>

@@ -7854,6 +7854,21 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 2 - 螢幕的 DPI
 3 - 在另一臺電腦或螢幕上編輯工程，而其設定與第 1、2 點不同。</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>網格點在螢幕上的間距小於此值時隱藏網格</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>再縮小時，任何網格步長的點都會省略；狀態列中的縮放顯示具體位置</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>

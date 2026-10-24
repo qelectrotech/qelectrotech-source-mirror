@@ -7916,6 +7916,21 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 3 - editing the project on another computer and/or screen that does not have the same settings as in points 1 and 2.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>إخفاء الشبكة عندما تكون نقاطها على الشاشة أقرب من</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>عند التصغير أكثر تُحذف نقاط أي خطوة شبكة؛ يبيّن التكبير المعروض في شريط الحالة متى</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>

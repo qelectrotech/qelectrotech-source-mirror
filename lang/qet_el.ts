@@ -7875,6 +7875,21 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 2 - τα dpi της οθόνης 
 3 - την επεξεργασία του έργου σε άλλον υπολογιστή ή/και οθόνη που δεν έχει τις ίδιες ρυθμίσεις με τα σημεία 1 και 2.</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Απόκρυψη πλέγματος όταν τα σημεία του στην οθόνη απέχουν λιγότερο από</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Με μεγαλύτερη σμίκρυνση τα σημεία κάθε βήματος πλέγματος παραλείπονται· η μεγέθυνση στη γραμμή κατάστασης δείχνει πού</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>

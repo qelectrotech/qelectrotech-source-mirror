@@ -7860,6 +7860,21 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 2 - ekranın dpi değeri 
 3 - projenin, 1. ve 2. maddelerdeki ayarlara sahip olmayan başka bir bilgisayarda ve/veya ekranda düzenlenmesi.</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Noktaları ekranda şundan daha yakınsa ızgarayı gizle</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Daha fazla uzaklaştırınca her ızgara adımının noktaları çizilmez; nerede olduğunu durum çubuğundaki yakınlaştırma gösterir</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>

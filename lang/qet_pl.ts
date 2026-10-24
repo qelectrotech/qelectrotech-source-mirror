@@ -7955,6 +7955,21 @@ Wszelkie wartości inne niż „Brak zaokrąglenia” mogą powodować błędy r
 2 - rozdzielczości DPI ekranu
 3 - modyfikowania projektu na innym komputerze i/lub ekranie niemającym takich samych parametrów jak w punktach 1 i 2.</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Ukryj siatkę, gdy jej punkty na ekranie są bliżej niż</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Przy dalszym oddaleniu punkty każdej siatki są pomijane; gdzie, pokazuje powiększenie na pasku stanu</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>

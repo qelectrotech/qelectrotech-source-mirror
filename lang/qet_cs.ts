@@ -7902,6 +7902,21 @@ Jakékoli jiné nastavení než „Bez zaokrouhlení“ může způsobit chyby v
 2 - dpi obrazovky 
 3 - úpravách projektu na jiném počítači a/nebo obrazovce, které nemají stejné nastavení jako v bodech 1 a 2.</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Skrýt mřížku, když jsou její body na obrazovce blíž než</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Při dalším oddálení se body mřížky libovolného kroku vynechají; kde, ukazuje zvětšení ve stavovém řádku</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>
