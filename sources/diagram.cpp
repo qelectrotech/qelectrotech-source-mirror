@@ -2720,6 +2720,7 @@ void Diagram::addItem(QGraphicsItem *item)
 		case QetShapeItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:
+		case QetGraphicsTableItem::Type:
 		{
 			m_project->dataBase()->addDrawingItem(item);
 			break;
@@ -2761,6 +2762,7 @@ void Diagram::removeItem(QGraphicsItem *item)
 		case QetShapeItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:
+		case QetGraphicsTableItem::Type:
 		{
 			m_project->dataBase()->removeDrawingItem(item);
 			break;

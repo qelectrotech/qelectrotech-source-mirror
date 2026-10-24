@@ -196,6 +196,25 @@ class projectDataBase : public QObject
 		void storeProjectSettings(const QDomElement &settings);
 		QList<ProjectSetting> projectSettings() const {return m_project_settings;}
 
+			//One row per value of @p element and its descendants, the
+			//way the project settings and the drawn items are kept:
+			//@p section is where it sits (the tag for a root), @p ord
+			//which of its kind it is there.
+		static void xmlRows(const QDomElement &element, const QString &section,
+							int ord, QList<ProjectSetting> &rows);
+
+			//The drawn items of a folio -- shapes, free texts, tables --
+			//one row per value of what their toXml() writes, by item
+			//uuid. @p xml is the item as saved. An item without a uuid is
+			//not stored.
+		struct DrawnItem {
+			QUuid folio; QString kind; QList<ProjectSetting> rows;
+		};
+		bool storeDrawingItem(const QUuid &item, const QUuid &folio, const QDomElement &xml);
+		bool storeDrawnRows(const QUuid &item, const DrawnItem &drawn);
+		void forgetDrawingItemRows(const QUuid &item);
+		QList<ProjectSetting> drawingItemRows(const QUuid &item) const;
+
 			//The properties of every wire placed in the project, by wire
 			//uuid: the store each wire's properties are written through
 			//A wire not placed keeps its own.
@@ -387,6 +406,7 @@ class projectDataBase : public QObject
 		void populateDrawingItemTables();
 		bool populateFromDocument(const QDomDocument &document, QString *why = nullptr);
 		bool writeDrawingItem(QObject *object);
+		void writeDrawnItem(QObject *object, const QUuid &uuid, Diagram *diagram);
 		void flushDrawingItems();
 		void forgetDrawingItem(QObject *object);
 		void bindConductorValues(QSqlQuery &query, Conductor *conductor, Diagram *diagram);
@@ -489,6 +509,8 @@ class projectDataBase : public QObject
 		QHash<QUuid, BorderProperties> m_folio_borders;
 		QHash<QUuid, QPair<int, int>> m_folio_numbers; // index, total
 		QList<ProjectSetting> m_project_settings;
+		QHash<QUuid, DrawnItem> m_drawn_items;
+		QSet<QUuid> m_prefilled_drawn_items;
 		QHash<QUuid, QPointer<Diagram>> m_placed_folios;
 		QHash<QUuid, ConductorProperties> m_conductor_properties;
 			//The rows of conductor_properties, to write only what changes

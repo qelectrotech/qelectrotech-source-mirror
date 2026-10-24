@@ -32,6 +32,7 @@
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/independenttextitem.h"
 #include "../qetgraphicsitem/qetshapeitem.h"
+#include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
@@ -2308,7 +2309,24 @@ QUuid drawingItemUuid(QObject *object)
 	if (auto s = qobject_cast<QetShapeItem *>(object))        return s->uuid();
 	if (auto t = qobject_cast<IndependentTextItem *>(object)) return t->uuid();
 	if (auto i = qobject_cast<DiagramImageItem *>(object))    return i->uuid();
+	if (auto g = qobject_cast<QetGraphicsTableItem *>(object)) return g->uuid();
 	return QUuid();
+}
+
+/// Whether @p object is kept in drawing_item: a shape, a free text or a
+/// table (a picture is not). Shapes, texts and pictures also have a row in
+/// their own table (drawingItemTable()).
+bool isDrawnItem(QObject *object)
+{
+	return qobject_cast<QetShapeItem *>(object)
+			|| qobject_cast<IndependentTextItem *>(object)
+			|| qobject_cast<QetGraphicsTableItem *>(object);
+}
+
+/// Whether @p object has a row to keep at all.
+bool isDrawingItem(QObject *object)
+{
+	return !drawingItemTable(object).isEmpty() || isDrawnItem(object);
 }
 
 /// The group_uuid column of @p item's row: its group, or NULL.
@@ -2333,7 +2351,7 @@ QVariant groupValue(const QGraphicsItem *item)
 void projectDataBase::addDrawingItem(QGraphicsItem *item)
 {
 	QGraphicsObject *object = item ? item->toGraphicsObject() : nullptr;
-	if (!object || drawingItemTable(object).isEmpty()) {
+	if (!object || !isDrawingItem(object)) {
 		return;
 	}
 
@@ -2360,6 +2378,11 @@ void projectDataBase::addDrawingItem(QGraphicsItem *item)
 		connect(text->document(), &QTextDocument::contentsChanged,
 				this, &projectDataBase::drawingItemChanged, unique);
 	}
+	else if (auto table = qobject_cast<QetGraphicsTableItem *>(object)) {
+			//Size, name, rows shown, model and column widths: it sends one
+			//signal for all of them.
+		connect(table, &QetGraphicsTableItem::changed, this, &projectDataBase::drawingItemChanged, unique);
+	}
 	else if (auto image = qobject_cast<DiagramImageItem *>(object)) {
 		connect(image, &DiagramImageItem::uuidChanged,      this, &projectDataBase::drawingItemChanged, unique);
 		connect(image, &DiagramImageItem::transformChanged, this, &projectDataBase::drawingItemChanged, unique);
@@ -2379,7 +2402,7 @@ void projectDataBase::addDrawingItem(QGraphicsItem *item)
 void projectDataBase::removeDrawingItem(QGraphicsItem *item)
 {
 	QGraphicsObject *object = item ? item->toGraphicsObject() : nullptr;
-	if (!object || drawingItemTable(object).isEmpty()) {
+	if (!object || !isDrawingItem(object)) {
 		return;
 	}
 
@@ -2389,7 +2412,8 @@ void projectDataBase::removeDrawingItem(QGraphicsItem *item)
 	}
 
 	const QUuid row = m_drawing_item_row.value(object);
-	if (!row.isNull() && m_drawing_row_owner.value(row) == object)
+	if (!row.isNull() && m_drawing_row_owner.value(row) == object
+		&& !drawingItemTable(object).isEmpty())
 	{
 		QSqlQuery remove(m_data_base);
 		remove.prepare(QStringLiteral("DELETE FROM %1 WHERE uuid = :uuid")
@@ -2424,7 +2448,7 @@ void projectDataBase::itemGroupChanged(QGraphicsItem *item)
 	}
 
 	QGraphicsObject *object = item ? item->toGraphicsObject() : nullptr;
-	if (object && !drawingItemTable(object).isEmpty()) {
+	if (object && isDrawingItem(object)) {
 		m_dirty_drawing_items.insert(object);
 	}
 }
@@ -2444,7 +2468,7 @@ void projectDataBase::drawingItemChanged()
 	QObject *object = sender();
 		//QTextDocument::contentsChanged: the item is an ancestor of the
 		//document (item -> text control -> document).
-	while (object && drawingItemTable(object).isEmpty()) {
+	while (object && !isDrawingItem(object)) {
 		object = object->parent();
 	}
 	if (object) {
@@ -2483,6 +2507,8 @@ void projectDataBase::forgetDrawingItem(QObject *object)
 	const QUuid row = m_drawing_item_row.take(object);
 	if (!row.isNull() && m_drawing_row_owner.value(row) == object) {
 		m_drawing_row_owner.remove(row);
+			//Its rows in drawing_item: this item wrote them
+		forgetDrawingItemRows(row);
 	}
 	m_dirty_drawing_items.remove(object);
 }
@@ -2540,7 +2566,7 @@ bool projectDataBase::writeDrawingItem(QObject *object)
 		query->bindValue(QStringLiteral(":pixel_width"), image->pixmap().width());
 		query->bindValue(QStringLiteral(":pixel_height"), image->pixmap().height());
 	}
-	if (!query) {
+	if (!query && !isDrawnItem(object)) {
 		return true;
 	}
 
@@ -2550,12 +2576,23 @@ bool projectDataBase::writeDrawingItem(QObject *object)
 	if (!previous.isNull() && previous != uuid
 		&& m_drawing_row_owner.value(previous) == object)
 	{
-		QSqlQuery remove(m_data_base);
-		remove.prepare(QStringLiteral("DELETE FROM %1 WHERE uuid = :uuid")
-					   .arg(drawingItemTable(object)));
-		remove.bindValue(QStringLiteral(":uuid"), previous.toString());
-		remove.exec();
+		if (!drawingItemTable(object).isEmpty()) {
+			QSqlQuery remove(m_data_base);
+			remove.prepare(QStringLiteral("DELETE FROM %1 WHERE uuid = :uuid")
+						   .arg(drawingItemTable(object)));
+			remove.bindValue(QStringLiteral(":uuid"), previous.toString());
+			remove.exec();
+		}
+		forgetDrawingItemRows(previous);
 		m_drawing_row_owner.remove(previous);
+	}
+
+		//A table has no row of its own besides drawing_item
+	if (!query) {
+		writeDrawnItem(object, uuid, diagram);
+		m_drawing_item_row.insert(object, uuid);
+		m_drawing_row_owner.insert(uuid, object);
+		return true;
 	}
 
 	query->bindValue(QStringLiteral(":uuid"), uuid.toString());
@@ -2571,9 +2608,30 @@ bool projectDataBase::writeDrawingItem(QObject *object)
 		return true;
 	}
 
+	writeDrawnItem(object, uuid, diagram);
 	m_drawing_item_row.insert(object, uuid);
 	m_drawing_row_owner.insert(uuid, object);
 	return true;
+}
+
+/**
+	@brief projectDataBase::writeDrawnItem
+	Write the drawing_item rows of the shape, free text or table @p object,
+	from what its toXml() writes into a saved folio (group included).
+*/
+void projectDataBase::writeDrawnItem(QObject *object, const QUuid &uuid, Diagram *diagram)
+{
+	if (uuid.isNull() || !isDrawnItem(object)) return;
+	QDomDocument document;
+	QDomElement xml;
+	if (auto shape = qobject_cast<QetShapeItem *>(object))
+		xml = shape->toXml(document);
+	else if (auto text = qobject_cast<IndependentTextItem *>(object))
+		xml = text->toXml(document);
+	else if (auto table = qobject_cast<QetGraphicsTableItem *>(object))
+		xml = table->toXml(document);
+	ItemGroups::write(xml, dynamic_cast<QGraphicsItem *>(object));
+	storeDrawingItem(uuid, diagram->uuid(), xml);
 }
 
 /**
@@ -2625,7 +2683,7 @@ void projectDataBase::populateDrawingItemTables()
 		for (QGraphicsItem *item : items)
 		{
 			QGraphicsObject *object = item->toGraphicsObject();
-			if (object && !drawingItemTable(object).isEmpty()) {
+			if (object && isDrawingItem(object)) {
 				m_dirty_drawing_items.insert(object);
 			}
 		}
@@ -2857,6 +2915,22 @@ bool projectDataBase::createDataBase()
 			"text_y REAL, "
 			"text_rotation REAL)"))) {
 		qDebug() << " conductor_layout_table query : " << query_.lastError();
+	}
+
+		//Create the drawing_item table: the shapes, free texts and tables
+		//of the folios, one row per value of what their toXml() writes
+		//(storeDrawingItem()). kind is the tag, section the path inside
+		//it ("shape/points/point"), ord which of a repeated child.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE drawing_item ("
+			"item_uuid VARCHAR(50) NOT NULL, "
+			"folio_uuid VARCHAR(50) NOT NULL, "
+			"kind TEXT NOT NULL, "
+			"section TEXT NOT NULL, "
+			"ord INTEGER NOT NULL, "
+			"name TEXT NOT NULL, "
+			"value TEXT)"))) {
+		qDebug() << " drawing_item_table query : " << query_.lastError();
 	}
 
 		//Create the conductor_path table: the segments of each wire the
@@ -4077,15 +4151,15 @@ void projectDataBase::storeFolioNumber(const QUuid &folio, int index, int total)
 }
 
 /**
-	@brief settingRows
+	@brief projectDataBase::xmlRows
 	Append to @p rows one row per value of @p element, which sits at
 	@p section, the @p ord th of its kind there. Attributes in name order
 	(a QDomElement keeps no order of its own); a <property name="..."> child
 	(a DiagramContext) gives one row named after it, with its show flag as
 	"<name>#show"; any other child is a section of its own.
 */
-static void settingRows(const QDomElement &element, const QString &section, int ord,
-						QList<projectDataBase::ProjectSetting> &rows)
+void projectDataBase::xmlRows(const QDomElement &element, const QString &section, int ord,
+							  QList<ProjectSetting> &rows)
 {
 	const QDomNamedNodeMap attributes = element.attributes();
 	QStringList names;
@@ -4109,7 +4183,7 @@ static void settingRows(const QDomElement &element, const QString &section, int 
 			continue;
 		}
 		const QString child_section = section + QLatin1Char('/') + child.tagName();
-		settingRows(child, child_section, seen[child_section]++, rows);
+		xmlRows(child, child_section, seen[child_section]++, rows);
 	}
 	if (!has_child && !element.text().isEmpty())
 		rows.append({section, ord, QStringLiteral("#text"), element.text()});
@@ -4134,7 +4208,7 @@ void projectDataBase::storeProjectSettings(const QDomElement &settings)
 	QHash<QString, int> seen;
 	for (QDomElement child = settings.firstChildElement() ; !child.isNull()
 		 ; child = child.nextSiblingElement())
-		settingRows(child, child.tagName(), seen[child.tagName()]++, rows);
+		xmlRows(child, child.tagName(), seen[child.tagName()]++, rows);
 
 	if (rows == m_project_settings) return;
 	m_project_settings = rows;
@@ -4154,6 +4228,88 @@ void projectDataBase::storeProjectSettings(const QDomElement &settings)
 		if (!insert.exec()) {
 			qDebug() << "projectDataBase::storeProjectSettings insert error : " << insert.lastError();
 		}
+	}
+}
+
+/**
+	@brief projectDataBase::drawingItemRows
+	@return the stored rows of the drawn item @p item, none if unknown
+*/
+QList<projectDataBase::ProjectSetting> projectDataBase::drawingItemRows(const QUuid &item) const
+{
+	return m_drawn_items.value(item).rows;
+}
+
+/**
+	@brief projectDataBase::storeDrawingItem
+	Store the drawn item @p item of the folio @p folio, as the element
+	@p xml (what its toXml() writes, or what the file holds for it), in the
+	drawing_item table and the cache in front of it. Nothing changes when
+	the rows are the ones already stored.
+	@return true if that changed what was stored
+*/
+bool projectDataBase::storeDrawingItem(const QUuid &item, const QUuid &folio, const QDomElement &xml)
+{
+	if (item.isNull() || folio.isNull() || xml.isNull()) return false;
+	DrawnItem drawn;
+	drawn.folio = folio;
+	drawn.kind = xml.tagName();
+	xmlRows(xml, drawn.kind, 0, drawn.rows);
+	return storeDrawnRows(item, drawn);
+}
+
+/**
+	@brief projectDataBase::storeDrawnRows
+	The rows of storeDrawingItem(), already made.
+*/
+bool projectDataBase::storeDrawnRows(const QUuid &item, const DrawnItem &drawn)
+{
+	const QUuid folio = drawn.folio;
+	auto known = m_drawn_items.constFind(item);
+	if (known != m_drawn_items.constEnd() && known->folio == drawn.folio
+		&& known->kind == drawn.kind && known->rows == drawn.rows) return false;
+	m_drawn_items.insert(item, drawn);
+
+	const QString uuid = item.toString();
+	const bool own_transaction = m_data_base.transaction();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM drawing_item WHERE item_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeDrawingItem remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral(
+			"INSERT INTO drawing_item (item_uuid, folio_uuid, kind, section, ord, name, value) "
+			"VALUES (:uuid, :folio, :kind, :section, :ord, :name, :value)"));
+	for (const ProjectSetting &row : std::as_const(drawn.rows)) {
+		insert.bindValue(QStringLiteral(":uuid"), uuid);
+		insert.bindValue(QStringLiteral(":folio"), folio.toString());
+		insert.bindValue(QStringLiteral(":kind"), drawn.kind);
+		insert.bindValue(QStringLiteral(":section"), row.section);
+		insert.bindValue(QStringLiteral(":ord"), row.ord);
+		insert.bindValue(QStringLiteral(":name"), row.name);
+		insert.bindValue(QStringLiteral(":value"), row.value);
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeDrawingItem insert error : " << insert.lastError();
+		}
+	}
+	if (own_transaction) m_data_base.commit();
+	return true;
+}
+
+/**
+	@brief projectDataBase::forgetDrawingItemRows
+	No drawn item holds @p item any more: its rows go.
+*/
+void projectDataBase::forgetDrawingItemRows(const QUuid &item)
+{
+	if (!m_drawn_items.remove(item)) return;
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM drawing_item WHERE item_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), item.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::forgetDrawingItemRows error : " << remove.lastError();
 	}
 }
 
@@ -4626,6 +4782,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();
 	m_prefilled_paths.clear();
+	m_prefilled_drawn_items.clear();
 	for (PrefillTally &tally : m_prefill_tally) tally = PrefillTally();
 
 	QHash<QUuid, int> seen;
@@ -4633,6 +4790,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	QHash<QUuid, ConductorProperties> conductors;
 	QHash<QUuid, ConductorLayout> layouts;
 	QHash<QUuid, ConductorPath> paths;
+	QHash<QUuid, DrawnItem> drawn_items;
 	QHash<QUuid, DiagramContext> kinds;
 	QHash<QUuid, ElementPlacement> placements;
 	QHash<QUuid, autonum::sequentialNumbers> sequences;
@@ -4695,6 +4853,28 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 			placements.insert(uuid, placement);
 			sequences.insert(uuid, elementSequence(element));
 		}
+			//The shapes, free texts and tables, as the file holds them: for
+			//a folio not built that is what saving it writes again
+		static const QPair<QString, QString> drawn_tags[] = {
+			{QStringLiteral("shapes"), QStringLiteral("shape")},
+			{QStringLiteral("inputs"), QStringLiteral("input")},
+			{QStringLiteral("tables"), QStringLiteral("graphics_table")}};
+		if (!folio_uuid.isNull())
+			for (const auto &tags : drawn_tags)
+			{
+				const QDomElement list = folio.firstChildElement(tags.first);
+				for (QDomElement item = list.firstChildElement(tags.second) ; !item.isNull() ;
+					 item = item.nextSiblingElement(tags.second))
+				{
+					const QUuid uuid(item.attribute(QStringLiteral("uuid")));
+					if (uuid.isNull() || ++seen[uuid] > 1) continue;
+					DrawnItem drawn;
+					drawn.folio = folio_uuid;
+					drawn.kind = item.tagName();
+					xmlRows(item, drawn.kind, 0, drawn.rows);
+					drawn_items.insert(uuid, drawn);
+				}
+			}
 		const QDomElement conductor_list = folio.firstChildElement(QStringLiteral("conductors"));
 		for (QDomElement conductor = conductor_list.firstChildElement(QStringLiteral("conductor")) ;
 			 !conductor.isNull() ; conductor = conductor.nextSiblingElement(QStringLiteral("conductor")))
@@ -4750,6 +4930,11 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 			m_prefilled_conductors.insert(it.key(), it.value());
 			m_prefilled_layouts.insert(it.key(), layouts.value(it.key()));
 			m_prefilled_paths.insert(it.key(), paths.value(it.key()));
+		}
+	for (auto it = drawn_items.constBegin() ; it != drawn_items.constEnd() ; ++it)
+		if (seen.value(it.key()) == 1) {
+			m_prefilled_drawn_items.insert(it.key());
+			storeDrawnRows(it.key(), it.value());
 		}
 	for (auto it = m_prefilled_folios.begin() ; it != m_prefilled_folios.end() ; )
 		it = seen.value(it.key()) == 1 ? std::next(it) : m_prefilled_folios.erase(it);
@@ -4857,6 +5042,13 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 			if (built.value(name) != prefilled.value(name)) differing << name;
 		tally(m_prefill_tally[2], differing);
 	}
+		//Drawn items nothing was built for. Their rows are written when
+		//the queue is flushed, so flush it first.
+	if (!keep_unplaced) {
+		flushDrawingItems();
+		for (const QUuid &item : std::as_const(m_prefilled_drawn_items))
+			if (!m_drawing_row_owner.contains(item)) forgetDrawingItemRows(item);
+	}
 	m_prefilled_elements.clear();
 	m_prefilled_kinds.clear();
 	m_prefilled_placements.clear();
@@ -4865,6 +5057,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();
 	m_prefilled_paths.clear();
+	m_prefilled_drawn_items.clear();
 }
 
 /**

@@ -1350,6 +1350,18 @@ target_compile_definitions(tst_conductorpathrows PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# The shapes, free texts and tables of a folio are in the project database
+# (drawing_item), from a built folio or from the document. QET-SQL-FORMAT S3g.
+add_executable(
+  tst_drawingitemrows
+  tst_drawingitemrows.cpp)
+add_test(NAME tst_drawingitemrows COMMAND tst_drawingitemrows)
+add_dependencies(tst_drawingitemrows qelectrotech)
+target_link_libraries(tst_drawingitemrows PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_drawingitemrows PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # A symbol's kind information (NO/NC/SW/power) is queryable from the
 # project database once it is placed, not only from a live Element*.
 # QETZ-DB-FIRST 2d-2a.

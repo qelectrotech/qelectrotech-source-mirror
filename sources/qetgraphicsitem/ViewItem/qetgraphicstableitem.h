@@ -46,6 +46,11 @@ class QetGraphicsTableItem : public QetGraphicsItem
 	Q_PROPERTY(QSize size READ size WRITE setSize)
 	Q_PROPERTY(int displayNRow READ displayNRow WRITE setDisplayNRow)
 
+	signals:
+			/// Something the table saves changed (size, name, rows shown,
+			/// model, column widths, links)
+		void changed();
+
 	public :
 		static void adjustTableToFolio(
 				QetGraphicsTableItem *table,
