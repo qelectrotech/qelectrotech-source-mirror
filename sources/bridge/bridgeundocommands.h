@@ -92,6 +92,27 @@ class ChangeBridgeGeometryCommand : public QUndoCommand
 };
 
 /**
+	@brief Which terminals a bridge lands on changed: a terminal moved
+	onto one of its lines joins it, one moved off leaves it. The bridge
+	keeps its colour and its limit through it all.
+*/
+class ChangeBridgeTerminalsCommand : public QUndoCommand
+{
+	public:
+		ChangeBridgeTerminalsCommand(Bridge *bridge,
+									 const QList<BridgeTerminal> &before,
+									 const QList<BridgeTerminal> &after,
+									 QUndoCommand *parent = nullptr);
+		void undo() override;
+		void redo() override;
+
+	private:
+		QPointer<Bridge> m_bridge;
+		QList<BridgeTerminal> m_terminals_before;
+		QList<BridgeTerminal> m_terminals_after;
+};
+
+/**
 	@brief Take a bridge off the drawing: every line of it, on whichever
 	folio it stands, and the bridge itself.
 

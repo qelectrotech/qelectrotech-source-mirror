@@ -76,6 +76,21 @@ class BridgeManager
 			*/
 		static QList<BridgeTerminal> terminalsOfBridge(QETProject *project, Bridge *bridge);
 
+			/**
+				The bridges which cannot take what a movement would give
+				them: a terminal moved onto one of their lines joins the
+				bridge, and one which would fill it beyond its limit
+				cannot be built in the cabinet.
+
+				The elements are asked at the place they stand right now:
+				this is asked after a movement was applied to see what it
+				would build, and the answer decides whether it is kept or
+				taken back -- the terminal then stays at the mouse and is
+				dropped somewhere else.
+			*/
+		static QList<Bridge *> bridgesOverfilledBy(QETProject *project,
+												   const QList<Element *> &moved);
+
 			//What the bridge takes over from its first terminal, read live
 		static QString functionOf(QETProject *project, Bridge *bridge);
 		static QString tensionOf(QETProject *project, Bridge *bridge);

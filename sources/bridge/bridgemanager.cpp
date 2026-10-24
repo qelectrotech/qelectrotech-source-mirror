@@ -282,6 +282,66 @@ QList<BridgeTerminal> BridgeManager::terminalsOfBridge(QETProject *project, Brid
 }
 
 /**
+	@brief BridgeManager::bridgesOverfilledBy
+	@param project
+	@param moved the elements being moved
+	@return the bridges which cannot take what the movement would give
+	them: a terminal of @p moved landing on one of their lines joins the
+	bridge, and one which would fill it beyond its limit cannot be
+	built. Asked at the place the elements stand right now.
+*/
+QList<Bridge *> BridgeManager::bridgesOverfilledBy(QETProject *project,
+												   const QList<Element *> &moved)
+{
+	QList<Bridge *> overfilled;
+	if (!project || moved.isEmpty()) {
+		return overfilled;
+	}
+
+		//Only the folios the elements are on can hold a line they land on
+	QSet<QUuid> folios;
+	for (Element *element : moved) {
+		if (element && element->diagram()) {
+			folios.insert(element->diagram()->uuid());
+		}
+	}
+	if (folios.isEmpty()) {
+		return overfilled;
+	}
+
+	const auto bridges = project->bridges();
+	for (Bridge *bridge : bridges)
+	{
+		if (!bridge) {
+			continue;
+		}
+		bool on_these_folios = false;
+		const auto parts = bridge->parts();
+		for (const BridgePartData &part : parts) {
+			if (folios.contains(part.diagram)) {
+				on_these_folios = true;
+				break;
+			}
+		}
+		if (!on_these_folios) {
+			continue;
+		}
+
+		int gained = 0;
+		const auto after = terminalsOfBridge(project, bridge);
+		for (const BridgeTerminal &terminal : after) {
+			if (!bridge->hasTerminal(terminal)) {
+				++gained;
+			}
+		}
+		if (gained > 0 && bridge->wouldExceed(gained)) {
+			overfilled << bridge;
+		}
+	}
+	return overfilled;
+}
+
+/**
 	@brief BridgeManager::bridgeByUuid
 	@param project
 	@param uuid

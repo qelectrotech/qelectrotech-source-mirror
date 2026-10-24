@@ -21,6 +21,8 @@
 #include "conductorautonumerotation.h"
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
+#include "bridge/bridgemanager.h"
+#include "bridge/bridgeundocommands.h"
 #include "diagram.h"
 #include "itemgroups.h"
 #include "qetgraphicsitem/conductor.h"
@@ -189,12 +191,12 @@ bool ElementsMover::holds(const QGraphicsItem *item) const
 	Add a move to the current movement.
 	@param movement movement to applied
 */
-void ElementsMover::continueMovement(const QPointF &movement)
+/**
+	@brief ElementsMover::applyMovement
+	@param movement the step to apply to everything being moved
+*/
+void ElementsMover::applyMovement(const QPointF &movement)
 {
-	if (!m_movement_running || movement.isNull()) return;
-
-	m_current_movement += movement;
-
 		//Move every movable item, except conductor
 	typedef DiagramContent dc;
 	for (auto &qgi : m_moved_content.items(dc::Elements
@@ -251,6 +253,36 @@ void ElementsMover::continueMovement(const QPointF &movement)
 }
 
 /**
+	@brief ElementsMover::continueMovement
+	Add a move to the current movement.
+	@param movement movement to applied
+*/
+void ElementsMover::continueMovement(const QPointF &movement)
+{
+	if (!m_movement_running || movement.isNull()) return;
+
+	m_current_movement += movement;
+	applyMovement(movement);
+
+		//A terminal may not come to rest on a bridge which cannot take
+		//one more: what that would build cannot be built in the cabinet.
+		//The step is taken back right away, so the terminal stays at the
+		//mouse and is dropped somewhere else -- the very test of what can
+		//really be built, asked where the drawing now stands.
+	if (!m_moved_content.m_elements.isEmpty()
+		&& !BridgeManager::bridgesOverfilledBy(m_diagram ? m_diagram->project() : nullptr,
+											   m_moved_content.m_elements).isEmpty())
+	{
+		m_current_movement -= movement;
+		applyMovement(-movement);
+		if (m_status_bar) {
+			m_status_bar->showMessage(
+				QObject::tr("A terminal may not be dropped on a bridge which cannot take one more."));
+		}
+	}
+}
+
+/**
 	@brief ElementsMover::endMovement
 	Ended the current movement by creating an undo added to the undostack of the diagram.
 	If there is only one element moved, we try to auto-connect new conductor from this element
@@ -292,6 +324,26 @@ void ElementsMover::endMovement()
 	if (!m_current_movement.isNull()) {
 		QUndoCommand *quc{new MoveGraphicsItemCommand(m_diagram, m_moved_content, m_current_movement, undo_object)};
 		undo_object->setText(quc->text());
+	}
+
+		//What a bridge lands on follows the terminals he moved: one
+		//moved onto one of its lines joins the bridge, one moved off it
+		//leaves it -- and the bridge keeps everything else it knows.
+		//Together with the move itself, so one undo puts both back.
+	if (!m_moved_content.m_elements.isEmpty() && m_diagram->project())
+	{
+		for (Bridge *bridge : m_diagram->project()->bridges())
+		{
+			if (!bridge) {
+				continue;
+			}
+			const QList<BridgeTerminal> before = bridge->terminals();
+			const QList<BridgeTerminal> after =
+					BridgeManager::terminalsOfBridge(m_diagram->project(), bridge);
+			if (after != before) {
+				new ChangeBridgeTerminalsCommand(bridge, before, after, undo_object);
+			}
+		}
 	}
 
 		//Auto-break conductors: for each moved element, break any conductor

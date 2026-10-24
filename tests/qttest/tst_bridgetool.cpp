@@ -569,6 +569,86 @@ private slots:
 		QCOMPARE(first_part->scene(), static_cast<QGraphicsScene *>(first_folio));
 		QCOMPARE(second_part->scene(), static_cast<QGraphicsScene *>(second_folio));
 	}
+
+	//A terminal dropped onto a bridge which cannot take one more is
+	//refused: what that would build cannot be built in the cabinet, so
+	//the terminal stays at the mouse and is dropped somewhere else
+	void aTerminalDroppedOnAFullBridgeIsRefused()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 3);
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
+
+		BridgePartData data;
+		data.uuid = QUuid::createUuid();
+		data.diagram = folio->uuid();
+		data.p1 = terminals.at(0)->element()->scenePos();
+		data.p2 = terminals.at(1)->element()->scenePos();
+
+		Bridge *bridge = project.newBridge();
+		bridge->setMaxConnections(2);
+		bridge->addPart(data);
+		bridge->setTerminals({terminalOf(terminals.at(0)), terminalOf(terminals.at(1))});
+
+		Element *third = terminals.at(2)->element();
+		QVERIFY(third);
+
+			//Still where it belongs: nothing would be taken on
+		QVERIFY(BridgeManager::bridgesOverfilledBy(&project, {third}).isEmpty());
+
+			//Dropped onto the line of a bridge holding all it may hold
+		third->setPos(terminals.at(0)->element()->pos());
+		QVERIFY2(!BridgeManager::bridgesOverfilledBy(&project, {third}).isEmpty(),
+				 "a bridge which cannot take one more refuses the terminal");
+
+			//With room to spare there is nothing to refuse
+		bridge->setMaxConnections(Bridge::unlimited_connections);
+		QVERIFY(BridgeManager::bridgesOverfilledBy(&project, {third}).isEmpty());
+	}
+
+	//What a bridge lands on follows the drawing: a terminal moved off
+	//one of its lines drops its connection, and one undo puts both the
+	//connection and the terminals back
+	void movingATerminalGivesAndTakesItsConnection()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
+
+		BridgePartData data;
+		data.uuid = QUuid::createUuid();
+		data.diagram = folio->uuid();
+		data.p1 = terminals.at(0)->element()->scenePos();
+		data.p2 = terminals.at(1)->element()->scenePos();
+
+		Bridge *bridge = project.newBridge();
+		bridge->addPart(data);
+		bridge->setTerminals({terminalOf(terminals.at(0)), terminalOf(terminals.at(1))});
+
+			//The second terminal walks off the line
+		Element *second = terminals.at(1)->element();
+		const QPointF where_it_was = second->pos();
+		second->setPos(where_it_was + QPointF(0, 400));
+
+		const QList<BridgeTerminal> before = {terminalOf(terminals.at(0)), terminalOf(terminals.at(1))};
+		const QList<BridgeTerminal> after = BridgeManager::terminalsOfBridge(&project, bridge);
+		QVERIFY2(after.contains(terminalOf(terminals.at(0))), "the terminal which stays keeps its connection");
+		QVERIFY2(!after.contains(terminalOf(terminals.at(1))),
+				 "the one which walked off the line drops it");
+
+		folio->undoStack().push(new ChangeBridgeTerminalsCommand(bridge, before, after));
+		QCOMPARE(bridge->terminals(), after);
+		folio->undoStack().undo();
+		QCOMPARE(bridge->terminals(), before);
+	}
 };
 
 QET_APP_TEST_MAIN(tst_bridgetool)

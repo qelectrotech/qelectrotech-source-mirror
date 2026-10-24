@@ -135,6 +135,41 @@ void ChangeBridgeGeometryCommand::apply(const QLineF &line, const QList<BridgeTe
 }
 
 /**
+	@brief ChangeBridgeTerminalsCommand::ChangeBridgeTerminalsCommand
+	@param bridge
+	@param before what the bridge landed on before
+	@param after what it lands on now
+	@param parent
+*/
+ChangeBridgeTerminalsCommand::ChangeBridgeTerminalsCommand(Bridge *bridge,
+														   const QList<BridgeTerminal> &before,
+														   const QList<BridgeTerminal> &after,
+														   QUndoCommand *parent) :
+	QUndoCommand(parent),
+	m_bridge(bridge),
+	m_terminals_before(before),
+	m_terminals_after(after)
+{
+	setText(QObject::tr("Changing the terminals of a bridge", "undo command text"));
+}
+
+/**
+	@brief ChangeBridgeTerminalsCommand::redo
+*/
+void ChangeBridgeTerminalsCommand::redo()
+{
+	if (m_bridge) m_bridge->setTerminals(m_terminals_after);
+}
+
+/**
+	@brief ChangeBridgeTerminalsCommand::undo
+*/
+void ChangeBridgeTerminalsCommand::undo()
+{
+	if (m_bridge) m_bridge->setTerminals(m_terminals_before);
+}
+
+/**
 	@brief RemoveBridgeCommand::RemoveBridgeCommand
 	@param parts any lines of the bridges to take away
 */
