@@ -151,6 +151,11 @@ class projectDataBase : public QObject
 		bool storeElementPlacement(const QUuid &element, const ElementPlacement &placement);
 		ElementPlacement elementPlacement(const QUuid &element) const;
 		void forgetElementPlacement(const QUuid &element);
+			/// The sequential numbers of a placed symbol or wire (their
+			/// uuids don't collide, so one table holds both)
+		bool storeSequence(const QUuid &item, const autonum::sequentialNumbers &numbers);
+		autonum::sequentialNumbers sequence(const QUuid &item) const;
+		void forgetSequence(const QUuid &item);
 
 			//The title block properties of every folio of the project, by
 			//folio uuid: the store each folio's title block is written
@@ -461,6 +466,7 @@ class projectDataBase : public QObject
 		QHash<QUuid, DiagramContext> m_element_information;
 		QHash<QUuid, DiagramContext> m_element_kind_information;
 		QHash<QUuid, ElementPlacement> m_element_placements;
+		QHash<QUuid, autonum::sequentialNumbers> m_sequences;
 			//The placed symbols holding each uuid: a paste or a folio copy
 			//briefly gives a copy its original's uuid, so one uuid can have
 			//two symbols until the copy's is renewed.
@@ -499,6 +505,7 @@ class projectDataBase : public QObject
 		QHash<QUuid, DiagramContext> m_prefilled_elements;
 		QHash<QUuid, DiagramContext> m_prefilled_kinds;
 		QHash<QUuid, ElementPlacement> m_prefilled_placements;
+		QHash<QUuid, autonum::sequentialNumbers> m_prefilled_sequences;
 		QHash<QUuid, TitleBlockProperties> m_prefilled_folios;
 		QHash<QUuid, ConductorProperties> m_prefilled_conductors;
 		QHash<QUuid, ConductorLayout> m_prefilled_layouts;

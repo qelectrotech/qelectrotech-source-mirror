@@ -2760,6 +2760,18 @@ bool projectDataBase::createDataBase()
 			"z REAL NOT NULL)"))) {
 		qDebug() << " element_placement_table query : " << query_.lastError();
 	}
+		//Create the sequential_number table: the sequential numbers of
+		//every placed symbol and wire, one row per entry of each list
+		//(storeSequence()). part names the list, ord is the entry's index.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE sequential_number ("
+			"item_uuid VARCHAR(50) NOT NULL, "
+			"part TEXT NOT NULL, "
+			"ord INTEGER NOT NULL, "
+			"value TEXT, "
+			"PRIMARY KEY (item_uuid, part, ord))"))) {
+		qDebug() << " sequential_number_table query : " << query_.lastError();
+	}
 		//Create the folio_titleblock table: the title block properties of
 		//every folio, as a folio saves them, the store folios write
 		//through (storeFolioTitleBlock()). One row per property, then one
@@ -3626,6 +3638,77 @@ void projectDataBase::forgetElementPlacement(const QUuid &element)
 }
 
 /**
+	@brief projectDataBase::sequence
+	@return the stored sequential numbers of the symbol or wire @p item
+*/
+autonum::sequentialNumbers projectDataBase::sequence(const QUuid &item) const
+{
+	return m_sequences.value(item);
+}
+
+/**
+	@brief projectDataBase::storeSequence
+	Store @p numbers as the sequential numbers of the placed symbol or wire
+	@p item, in the sequential_number table and the cache in front of it.
+	@return true if that changed what was stored
+*/
+bool projectDataBase::storeSequence(const QUuid &item, const autonum::sequentialNumbers &numbers)
+{
+	if (item.isNull()) return false;
+	auto known = m_sequences.constFind(item);
+	if (known != m_sequences.constEnd() && *known == numbers) return false;
+	m_sequences.insert(item, numbers);
+
+	const QString uuid = item.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM sequential_number WHERE item_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeSequence remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral(
+			"INSERT INTO sequential_number (item_uuid, part, ord, value) "
+			"VALUES (:uuid, :part, :ord, :value)"));
+	const QList<QPair<QString, const QStringList *>> parts = {
+		{QStringLiteral("unit"), &numbers.unit},
+		{QStringLiteral("wrap"), &numbers.wrap},
+		{QStringLiteral("unit_folio"), &numbers.unit_folio},
+		{QStringLiteral("ten"), &numbers.ten},
+		{QStringLiteral("ten_folio"), &numbers.ten_folio},
+		{QStringLiteral("hundred"), &numbers.hundred},
+		{QStringLiteral("hundred_folio"), &numbers.hundred_folio},
+		{QStringLiteral("alpha"), &numbers.alpha}};
+	for (const auto &part : parts) {
+		for (int i = 0 ; i < part.second->size() ; ++i) {
+			insert.bindValue(QStringLiteral(":uuid"), uuid);
+			insert.bindValue(QStringLiteral(":part"), part.first);
+			insert.bindValue(QStringLiteral(":ord"), i);
+			insert.bindValue(QStringLiteral(":value"), part.second->at(i));
+			if (!insert.exec()) {
+				qDebug() << "projectDataBase::storeSequence insert error : " << insert.lastError();
+			}
+		}
+	}
+	return true;
+}
+
+/**
+	@brief projectDataBase::forgetSequence
+	The symbol or wire @p item is no longer placed: its numbers go.
+*/
+void projectDataBase::forgetSequence(const QUuid &item)
+{
+	if (!m_sequences.remove(item)) return;
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM sequential_number WHERE item_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), item.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::forgetSequence error : " << remove.lastError();
+	}
+}
+
+/**
 	@brief projectDataBase::placeElement
 	@p element is now placed: its information is stored under its uuid.
 */
@@ -3636,6 +3719,7 @@ void projectDataBase::placeElement(Element *element)
 	storeElementInformation(element->uuid(), element->ownInformations());
 	storeElementKindInformation(element->uuid(), element->ownKindInformations());
 	storeElementPlacement(element->uuid(), element->ownPlacement());
+	storeSequence(element->uuid(), element->sequenceStruct());
 }
 
 /**
@@ -3653,6 +3737,7 @@ void projectDataBase::unplaceElement(Element *element, const QUuid &uuid)
 			storeElementInformation(uuid, other->ownInformations());
 			storeElementKindInformation(uuid, other->ownKindInformations());
 			storeElementPlacement(uuid, other->ownPlacement());
+			storeSequence(uuid, other->sequenceStruct());
 			return;
 		}
 	}
@@ -3660,6 +3745,7 @@ void projectDataBase::unplaceElement(Element *element, const QUuid &uuid)
 	forgetElementInformation(uuid);
 	forgetElementKindInformation(uuid);
 	forgetElementPlacement(uuid);
+	forgetSequence(uuid);
 }
 
 /**
@@ -4326,6 +4412,7 @@ void projectDataBase::placeConductor(Conductor *conductor)
 		m_placed_conductors.insert(conductor->uuid(), conductor);
 	storeConductorProperties(conductor->uuid(), conductor->ownProperties());
 	storeConductorLayout(conductor->uuid(), conductor->ownLayout());
+	storeSequence(conductor->uuid(), conductor->sequenceNum());
 }
 
 /**
@@ -4340,10 +4427,12 @@ void projectDataBase::unplaceConductor(Conductor *conductor, const QUuid &uuid)
 	if (Conductor *other = otherConductorHolder(uuid, nullptr)) {
 		storeConductorProperties(uuid, other->ownProperties());
 		storeConductorLayout(uuid, other->ownLayout());
+		storeSequence(uuid, other->sequenceNum());
 		return;
 	}
 	m_placed_conductors.remove(uuid);
 	forgetConductorLayout(uuid);
+	forgetSequence(uuid);
 	if (m_conductor_properties.remove(uuid))
 		m_dirty_conductor_properties.insert(uuid);
 }
@@ -4451,6 +4540,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	m_prefilled_elements.clear();
 	m_prefilled_kinds.clear();
 	m_prefilled_placements.clear();
+	m_prefilled_sequences.clear();
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();
@@ -4462,6 +4552,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	QHash<QUuid, ConductorLayout> layouts;
 	QHash<QUuid, DiagramContext> kinds;
 	QHash<QUuid, ElementPlacement> placements;
+	QHash<QUuid, autonum::sequentialNumbers> sequences;
 		//Each type's kind information, read from its definition once
 	const QHash<QString, QDomElement> definitions = embeddedDefinitions();
 	QHash<QString, std::optional<DiagramContext>> kind_of_type;
@@ -4519,6 +4610,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 			placement.horizontal_mirror = mirror == QLatin1String("horizontal") || mirror == QLatin1String("both");
 			placement.vertical_mirror = mirror == QLatin1String("vertical") || mirror == QLatin1String("both");
 			placements.insert(uuid, placement);
+			sequences.insert(uuid, elementSequence(element));
 		}
 		const QDomElement conductor_list = folio.firstChildElement(QStringLiteral("conductors"));
 		for (QDomElement conductor = conductor_list.firstChildElement(QStringLiteral("conductor")) ;
@@ -4545,6 +4637,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 			if (conductor.hasAttribute(QStringLiteral("rotation")) && qIsFinite(rotation))
 				layout.text_rotation = rotation;
 			layouts.insert(uuid, layout);
+			sequences.insert(uuid, elementSequence(conductor));
 		}
 	}
 		//A uuid held twice names nothing
@@ -4554,6 +4647,8 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		if (seen.value(it.key()) == 1) m_prefilled_kinds.insert(it.key(), it.value());
 	for (auto it = placements.constBegin() ; it != placements.constEnd() ; ++it)
 		if (seen.value(it.key()) == 1) m_prefilled_placements.insert(it.key(), it.value());
+	for (auto it = sequences.constBegin() ; it != sequences.constEnd() ; ++it)
+		if (seen.value(it.key()) == 1) m_prefilled_sequences.insert(it.key(), it.value());
 	for (auto it = conductors.constBegin() ; it != conductors.constEnd() ; ++it)
 		if (seen.value(it.key()) == 1) {
 			m_prefilled_conductors.insert(it.key(), it.value());
@@ -4568,6 +4663,8 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		storeElementKindInformation(it.key(), it.value());
 	for (auto it = m_prefilled_placements.constBegin() ; it != m_prefilled_placements.constEnd() ; ++it)
 		storeElementPlacement(it.key(), it.value());
+	for (auto it = m_prefilled_sequences.constBegin() ; it != m_prefilled_sequences.constEnd() ; ++it)
+		storeSequence(it.key(), it.value());
 	for (auto it = m_prefilled_folios.constBegin() ; it != m_prefilled_folios.constEnd() ; ++it)
 		storeFolioTitleBlock(it.key(), it.value());
 	for (auto it = m_prefilled_conductors.constBegin() ; it != m_prefilled_conductors.constEnd() ; ++it)
@@ -4597,6 +4694,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 				forgetElementInformation(it.key());
 				forgetElementKindInformation(it.key());
 				forgetElementPlacement(it.key());
+				forgetSequence(it.key());
 			}
 			continue;
 		}
@@ -4643,7 +4741,10 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 			if (!keep_unplaced && !m_placed_conductors.contains(it.key()) && m_conductor_properties.remove(it.key()))
 				m_dirty_conductor_properties.insert(it.key());
 			if (!keep_unplaced && !m_placed_conductors.contains(it.key()))
+			{
 				forgetConductorLayout(it.key());
+				forgetSequence(it.key());
+			}
 			continue;
 		}
 		QHash<QString, QString> built, prefilled;
@@ -4659,6 +4760,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 	m_prefilled_elements.clear();
 	m_prefilled_kinds.clear();
 	m_prefilled_placements.clear();
+	m_prefilled_sequences.clear();
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();

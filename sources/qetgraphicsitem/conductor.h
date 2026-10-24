@@ -165,9 +165,11 @@ class Conductor : public QGraphicsObject
 
 		autonum::sequentialNumbers sequenceNum () const
 		{return m_autoNum_seq;}
-		autonum::sequentialNumbers& rSequenceNum()
-		{return m_autoNum_seq;}
+			/// Replace the numbers without redrawing the text; the project
+			/// database follows
+		void replaceSequenceNum(const autonum::sequentialNumbers& sn);
 		void setSequenceNum(const autonum::sequentialNumbers& sn);
+		void storeSequence();
 
 		QList<QPointF> junctions() const;
 		QPainterPath paintedPath() const;

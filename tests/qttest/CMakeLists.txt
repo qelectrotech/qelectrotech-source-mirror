@@ -1326,6 +1326,18 @@ target_compile_definitions(tst_elementplacementrows PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# The sequential numbers of a symbol or a wire are in the project database
+# (sequential_number), from a built folio or from the document. QET-SQL-FORMAT S3e.
+add_executable(
+  tst_sequencerows
+  tst_sequencerows.cpp)
+add_test(NAME tst_sequencerows COMMAND tst_sequencerows)
+add_dependencies(tst_sequencerows qelectrotech)
+target_link_libraries(tst_sequencerows PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_sequencerows PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # A symbol's kind information (NO/NC/SW/power) is queryable from the
 # project database once it is placed, not only from a live Element*.
 # QETZ-DB-FIRST 2d-2a.

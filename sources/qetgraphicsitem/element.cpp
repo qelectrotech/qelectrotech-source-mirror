@@ -103,7 +103,7 @@ class ElementXmlRetroCompatibility
 		loadSequential(dom_element, QStringLiteral("seqh_"),  &sn.hundred);
 		loadSequential(dom_element, QStringLiteral("seqhf_"), &sn.hundred_folio);
 
-		element->rSequenceStruct() = sn;
+		element->setSequenceStruct(sn);
 	}
 };
 
@@ -1385,6 +1385,7 @@ bool Element::fromXml(QDomElement &e,
 		ElementXmlRetroCompatibility::loadSequential(e, this);
 	else
 		m_autoNum_seq.fromXml(e.firstChildElement(QStringLiteral("sequentialNumbers")));
+	storeSequence();
 
 		//Position and selection.
 		//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
@@ -2404,6 +2405,30 @@ void Element::storePlacement()
 }
 
 /**
+	@brief Element::setSequenceStruct
+	Replace this symbol's sequential numbers; the project's store follows.
+*/
+void Element::setSequenceStruct(const autonum::sequentialNumbers &numbers)
+{
+	m_autoNum_seq = numbers;
+	storeSequence();
+}
+
+/**
+	@brief Element::storeSequence
+	Write this symbol's sequential numbers to its project's store, once it
+	is placed and alone with its uuid (F100).
+*/
+void Element::storeSequence()
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	if (store && store->hasElementInformation(m_uuid) && store->placedElementCount(m_uuid) == 1)
+		store->storeSequence(m_uuid, m_autoNum_seq);
+}
+
+/**
 	@brief Element::placedStore
 	@return the project database holding this symbol's information, or
 	nullptr if it is not placed in a project
@@ -2733,12 +2758,13 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 		}
 		NumerotationContextCommands ncc (given);
 
-		m_autoNum_seq.clear();
+		autonum::sequentialNumbers numbers;
 		autonum::setSequential(formula,
-					   m_autoNum_seq,
+					   numbers,
 					   given,
 					   diagram(),
 					   element_currentAutoNum);
+		setSequenceStruct(numbers);
 
 		NumerotationContext new_context = ncc.next();
 		QETProject *project = diagram()->project();
@@ -2818,10 +2844,11 @@ QString Element::actualLabel()
 	if (m_data.m_informations.value(QStringLiteral("formula")).toString().isEmpty()) {
 		return m_data.m_informations.value(QStringLiteral("label")).toString();
 	} else {
+	autonum::sequentialNumbers numbers = m_autoNum_seq;
 	return autonum::AssignVariables::formulaToLabel(
 				m_data.m_informations.value(
 					QStringLiteral("formula")).toString(),
-				m_autoNum_seq,
+				numbers,
 				diagram(),
 				this);
 	}

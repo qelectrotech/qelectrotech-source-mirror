@@ -161,8 +161,9 @@ class Element : public QetGraphicsItem
 
 		autonum::sequentialNumbers sequenceStruct() const
 		{return m_autoNum_seq;}
-		autonum::sequentialNumbers& rSequenceStruct()
-		{return m_autoNum_seq;}
+			/// Replace the numbers and tell the project database
+		void setSequenceStruct(const autonum::sequentialNumbers &numbers);
+		void storeSequence();
 		void setUpFormula(bool code_letter = true, QUndoCommand *parent_undo = nullptr);
 		void setFormulaSchemeId(const QUuid &id);
 		void setPrefix(QString);

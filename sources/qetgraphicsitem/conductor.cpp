@@ -95,7 +95,7 @@ class ConductorXmlRetroCompatibility
 			loadSequential(dom_element,"seqh_",&sn.hundred);
 			loadSequential(dom_element,"seqhf_",&sn.hundred_folio);
 
-			conductor->rSequenceNum() = sn;
+			conductor->replaceSequenceNum(sn);
 		}
 };
 
@@ -1172,6 +1172,7 @@ bool Conductor::fromXml(QDomElement &dom_element)
 			pr = *edited;
 	setProperties(pr);
 	storeLayout();
+	storeSequence();
 
 	return retval;
 }
@@ -1748,7 +1749,8 @@ void Conductor::refreshText()
 		{
 			if (diagram())
 			{
-				QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram(), nullptr, this);
+				autonum::sequentialNumbers numbers = m_autoNum_seq;
+				QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, numbers, diagram(), nullptr, this);
 				m_properties.text = text;
 				m_text_item->setPlainText(text);
 			}
@@ -1835,7 +1837,8 @@ void Conductor::setProperties(const ConductorProperties &property)
 	{
 		if (diagram())
 		{
-			QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram(), nullptr, this);
+			autonum::sequentialNumbers numbers = m_autoNum_seq;
+			QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, numbers, diagram(), nullptr, this);
 			m_properties.text = text;
 		}
 		else if (m_properties.text.isEmpty())
@@ -2170,8 +2173,28 @@ void Conductor::editProperty()
 
 void Conductor::setSequenceNum(const autonum::sequentialNumbers& sn)
 {
-	m_autoNum_seq = sn;
+	replaceSequenceNum(sn);
 	refreshText();
+}
+
+void Conductor::replaceSequenceNum(const autonum::sequentialNumbers& sn)
+{
+	m_autoNum_seq = sn;
+	storeSequence();
+}
+
+/**
+	@brief Conductor::storeSequence
+	Write this wire's sequential numbers to its project's store, once it
+	is placed.
+*/
+void Conductor::storeSequence()
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	if (store && store->hasConductorProperties(m_uuid) && store->placedConductorCount(m_uuid) == 1)
+		store->storeSequence(m_uuid, m_autoNum_seq);
 }
 
 /**
