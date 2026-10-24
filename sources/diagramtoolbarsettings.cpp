@@ -58,6 +58,7 @@ QStringList DiagramToolbarSettings::builtInNames()
 		QStringLiteral("display"),
 		QStringLiteral("diagram"),
 		QStringLiteral("adding"),
+		QStringLiteral("connections"),
 		QStringLiteral("diagram_depth_toolbar")};
 }
 
@@ -71,6 +72,8 @@ QString DiagramToolbarSettings::builtInTitle(const QString &name)
 		return QCoreApplication::translate("QETDiagramEditor", "Diagram");
 	if (name == QLatin1String("adding"))
 		return QCoreApplication::translate("QETDiagramEditor", "Add");
+	if (name == QLatin1String("connections"))
+		return QCoreApplication::translate("QETDiagramEditor", "Connections", "toolbar title");
 	if (name == QLatin1String("diagram_depth_toolbar"))
 		return QCoreApplication::translate("QETDiagramEditor", "Depth", "toolbar title");
 	return QString();
@@ -221,6 +224,14 @@ QStringList DiagramToolbarSettings::defaultIds(const QString &name)
 			QStringLiteral("diagrameditor.add_fillet"),
 			QStringLiteral("diagrameditor.add_terminal_strip"),
 			QStringLiteral("diagrameditor.add_generic_device")};
+	}
+	if (name == QLatin1String("connections")) {
+			//ConnectionSymbols::commandId() of each kind
+		return {QStringLiteral("diagrameditor.place_corner"),
+			QStringLiteral("diagrameditor.place_tee"),
+			QStringLiteral("diagrameditor.place_interruption"),
+			QStringLiteral("diagrameditor.place_report_outgoing"),
+			QStringLiteral("diagrameditor.place_report_incoming")};
 	}
 	if (name == QLatin1String("diagram_depth_toolbar")) {
 		return {QStringLiteral("depth.forward"),
