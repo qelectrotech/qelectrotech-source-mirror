@@ -237,6 +237,11 @@
         <translation>Översättning till slovenska</translation>
     </message>
     <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="138"/>
+        <source>Swedish translation (partly AI-generated)</source>
+        <translation>Översättning till svenska (delvis AI-genererad)</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="145"/>
         <source>Fedora and Red Hat packages</source>
         <translation>Paket för Fedora och Red Hat</translation>
