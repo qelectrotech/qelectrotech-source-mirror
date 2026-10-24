@@ -51,6 +51,7 @@
 #include <QGuiApplication>
 #include <QCollator>
 #include <QScreen>
+#include <QTextDocument>
 #include <QTimer>
 #include <QPointer>
 #include "../diagramview.h"
@@ -185,6 +186,21 @@ Element::Element(
 	connect(this, &Element::rotationChanged, this, &Element::applyMirrorTransform);
 		//Texts kept horizontal in a turned symbol depend on the turn
 	connect(this, &Element::rotationChanged, this, [this]() {updateSymbolPictures();});
+		//And its texts and their groups
+	for (DynamicElementTextItem *deti : std::as_const(m_dynamic_text_list))
+		connectTextStore(deti);
+	connect(this, &Element::textAdded, this, [this](DynamicElementTextItem *deti) {
+		connectTextStore(deti);
+		scheduleTextsStore();
+	});
+	connect(this, &Element::textsGroupAdded, this, [this](ElementTextItemGroup *group) {
+		connectTextStore(group);
+		scheduleTextsStore();
+	});
+	connect(this, &Element::textRemoved, this, &Element::scheduleTextsStore);
+	connect(this, &Element::textsGroupAboutToBeRemoved, this, &Element::scheduleTextsStore);
+	connect(this, &Element::textAddedToGroup, this, &Element::scheduleTextsStore);
+	connect(this, &Element::textRemovedFromGroup, this, &Element::scheduleTextsStore);
 }
 
 /**
@@ -1643,47 +1659,7 @@ QDomElement Element::toXml(
 	}
 
 	//Dynamic texts
-	QDomElement dyn_text = document.createElement(QStringLiteral("dynamic_texts"));
-	for (DynamicElementTextItem *deti : m_dynamic_text_list)
-		dyn_text.appendChild(deti->toXml(document));
-
-	QDomElement texts_group = document.createElement(QStringLiteral("texts_groups"));
-
-		//Dynamic texts owned by groups
-	for(ElementTextItemGroup *group : m_texts_group)
-	{
-		group->blockAlignmentUpdate(true);
-			//temporarily remove the texts from group to get the pos relative to element and not group.
-			//Set the alignment to top, because top is not used by groupand so,
-			//each time a text is removed from the group, the alignement is not updated
-		Qt::Alignment al = group->alignment();
-		group->setAlignment(Qt::AlignTop);
-
-			//Remove the texts from group
-		QList<DynamicElementTextItem *> deti_list = group->texts();
-		for(DynamicElementTextItem *deti : deti_list)
-			group->removeFromGroup(deti);
-
-			//Save the texts to xml
-		for (DynamicElementTextItem *deti : deti_list)
-			dyn_text.appendChild(deti->toXml(document));
-
-			//Re add texts to group
-		for(DynamicElementTextItem *deti : deti_list)
-			group->addToGroup(deti);
-
-			//Restorr the alignment
-		group->setAlignment(al);
-
-			//Save the group to xml
-		texts_group.appendChild(group->toXml(document));
-		group->blockAlignmentUpdate(false);
-	}
-
-		//Append the dynamic texts to element
-	element.appendChild(dyn_text);
-		//Append the texts group to element
-	element.appendChild(texts_group);
+	appendTextsXml(document, element);
 
 	return(element);
 }
@@ -2402,6 +2378,126 @@ void Element::storePlacement()
 	projectDataBase *store = project ? project->dataBase() : nullptr;
 	if (store && store->hasElementInformation(m_uuid) && store->placedElementCount(m_uuid) == 1)
 		store->storeElementPlacement(m_uuid, ownPlacement());
+}
+
+/**
+	@brief Element::appendTextsXml
+	Append this symbol's texts and text groups to @p element, as a saved
+	symbol holds them.
+*/
+void Element::appendTextsXml(QDomDocument &document, QDomElement &element) const
+{
+	const bool writing = m_writing_texts;
+	m_writing_texts = true;
+	QDomElement dyn_text = document.createElement(QStringLiteral("dynamic_texts"));
+	for (DynamicElementTextItem *deti : m_dynamic_text_list)
+		dyn_text.appendChild(deti->toXml(document));
+
+	QDomElement texts_group = document.createElement(QStringLiteral("texts_groups"));
+
+		//Dynamic texts owned by groups
+	for(ElementTextItemGroup *group : m_texts_group)
+	{
+		group->blockAlignmentUpdate(true);
+			//temporarily remove the texts from group to get the pos relative to element and not group.
+			//Set the alignment to top, because top is not used by groupand so,
+			//each time a text is removed from the group, the alignement is not updated
+		Qt::Alignment al = group->alignment();
+		group->setAlignment(Qt::AlignTop);
+
+			//Remove the texts from group
+		QList<DynamicElementTextItem *> deti_list = group->texts();
+		for(DynamicElementTextItem *deti : deti_list)
+			group->removeFromGroup(deti);
+
+			//Save the texts to xml
+		for (DynamicElementTextItem *deti : deti_list)
+			dyn_text.appendChild(deti->toXml(document));
+
+			//Re add texts to group
+		for(DynamicElementTextItem *deti : deti_list)
+			group->addToGroup(deti);
+
+			//Restorr the alignment
+		group->setAlignment(al);
+
+			//Save the group to xml
+		texts_group.appendChild(group->toXml(document));
+		group->blockAlignmentUpdate(false);
+	}
+
+		//Append the dynamic texts to element
+	element.appendChild(dyn_text);
+		//Append the texts group to element
+	element.appendChild(texts_group);
+	m_writing_texts = writing;
+}
+
+/**
+	@brief Element::ownTextsXml
+	@return an <element> made in @p document holding this symbol's texts and
+	text groups, as toXml() writes them
+*/
+QDomElement Element::ownTextsXml(QDomDocument &document) const
+{
+	QDomElement element = document.createElement(QStringLiteral("element"));
+	appendTextsXml(document, element);
+	return element;
+}
+
+/**
+	@brief Element::scheduleTextsStore
+	A text or text group of this symbol changed: its project's store
+	writes them when it is next read (projectDataBase::flushElementTexts()).
+*/
+void Element::scheduleTextsStore()
+{
+	if (m_writing_texts) return;
+	if (projectDataBase *store = placedStore())
+		store->queueElementTexts(this);
+}
+
+/**
+	@brief Element::connectTextStore
+	Queue the texts for the store whenever @p deti changes.
+*/
+void Element::connectTextStore(DynamicElementTextItem *deti)
+{
+	if (!deti) return;
+	const auto once = Qt::UniqueConnection;
+	connect(deti, &DynamicElementTextItem::xChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::yChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::rotationChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::fontChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::colorChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::alignmentChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::textFromChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::infoNameChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::compositeTextChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::frameChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::textWidthChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::keepVisualRotationChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::rotationPointCenterChanged, this, &Element::scheduleTextsStore, once);
+		//The text shown, whichever way it is set
+	connect(deti->document(), &QTextDocument::contentsChanged, this, &Element::scheduleTextsStore, once);
+}
+
+/**
+	@brief Element::connectTextStore
+	Queue the texts for the store whenever @p group changes.
+*/
+void Element::connectTextStore(ElementTextItemGroup *group)
+{
+	if (!group) return;
+	const auto once = Qt::UniqueConnection;
+	connect(group, &ElementTextItemGroup::xChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::yChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::rotationChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::verticalAdjustmentChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::alignmentChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::nameChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::holdToBottomPageChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::frameChanged, this, &Element::scheduleTextsStore, once);
 }
 
 /**

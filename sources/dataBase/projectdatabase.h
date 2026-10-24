@@ -214,6 +214,19 @@ class projectDataBase : public QObject
 		QList<ProjectSetting> terminalStripRows(const QUuid &strip) const {
 			return m_terminal_strip_rows.value(strip);}
 
+			//The texts of every symbol placed in the project and their
+			//groups, one row per value of what the symbol saves of them
+			//(its <dynamic_texts> and <texts_groups>), by symbol uuid
+			//(element_text_value). A symbol not placed keeps its own.
+		static QList<ProjectSetting> elementTextRowsOf(const QDomElement &element);
+		bool storeElementTexts(const QUuid &element, const QList<ProjectSetting> &rows);
+		QList<ProjectSetting> elementTextRows(const QUuid &element) const {
+			return m_element_texts.value(element);}
+		void forgetElementTexts(const QUuid &element);
+			//@p element's texts changed: written when the database is next
+			//read (flushElementTexts())
+		void queueElementTexts(Element *element);
+
 			//The drawn items of a folio -- shapes, free texts, tables --
 			//one row per value of what their toXml() writes, by item
 			//uuid. @p xml is the item as saved. An item without a uuid is
@@ -407,6 +420,7 @@ class projectDataBase : public QObject
 		void populateDiagramTable();
 		void updateFolioPositions();
 		void flushElementPositions();
+		void flushElementTexts();
 		void populateElementTable();
 		void populateElementInfoTable();
 		void populateElementInfoTableFromFolios();
@@ -507,10 +521,15 @@ class projectDataBase : public QObject
 			//sends xChanged and yChanged for every step of a drag, so the
 			//cell is written when next read, as drawing items are.
 		QList<QPointer<Element>> m_moved_elements;
+			//Symbols whose texts changed since they were last written: a text
+			//dragged or a group realigned sends a signal per step, and a group
+			//is only written whole once it has settled.
+		QList<QPointer<Element>> m_text_changed_elements;
 		QHash<QUuid, DiagramContext> m_element_information;
 		QHash<QUuid, DiagramContext> m_element_kind_information;
 		QHash<QUuid, ElementPlacement> m_element_placements;
 		QHash<QUuid, autonum::sequentialNumbers> m_sequences;
+		QHash<QUuid, QList<ProjectSetting>> m_element_texts;
 			//The placed symbols holding each uuid: a paste or a folio copy
 			//briefly gives a copy its original's uuid, so one uuid can have
 			//two symbols until the copy's is renewed.
@@ -556,6 +575,7 @@ class projectDataBase : public QObject
 		QHash<QUuid, DiagramContext> m_prefilled_kinds;
 		QHash<QUuid, ElementPlacement> m_prefilled_placements;
 		QHash<QUuid, autonum::sequentialNumbers> m_prefilled_sequences;
+		QHash<QUuid, QList<ProjectSetting>> m_prefilled_element_texts;
 		QHash<QUuid, TitleBlockProperties> m_prefilled_folios;
 		QHash<QUuid, ConductorProperties> m_prefilled_conductors;
 		QHash<QUuid, ConductorLayout> m_prefilled_layouts;

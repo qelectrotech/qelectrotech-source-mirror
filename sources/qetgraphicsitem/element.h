@@ -155,6 +155,9 @@ class Element : public QetGraphicsItem
 			/// never from the store
 		ElementPlacement ownPlacement() const;
 		void storePlacement();
+			/// This symbol's texts and text groups as it saves them, in an
+			/// <element> made in @p document, from its own items
+		QDomElement ownTextsXml(QDomDocument &document) const;
 		//@kind_information_ is used to store more information
 		//about the herited class like contactelement for know
 		// kind of contact (simple tempo) or number of contact show by the element.
@@ -391,6 +394,13 @@ class Element : public QetGraphicsItem
 	private:
 		void storeInformation();
 		projectDataBase *placedStore() const;
+		void appendTextsXml(QDomDocument &document, QDomElement &element) const;
+		void scheduleTextsStore();
+		void connectTextStore(DynamicElementTextItem *deti);
+		void connectTextStore(ElementTextItemGroup *group);
+			/// Set while the texts are being written: taking a group's
+			/// texts out to write them moves them, which is no change
+		mutable bool m_writing_texts = false;
 		bool m_must_highlight = false;
 		int m_jump_highlight = 0;  ///< pending jump-target highlights, see showAsJumpTarget()
 		bool m_jump_cursor = false;

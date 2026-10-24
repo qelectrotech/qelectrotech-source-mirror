@@ -121,6 +121,7 @@ void projectDataBase::updateDB()
 		flushDrawingItems();
 		flushLinks();
 		flushElementPositions();
+		flushElementTexts();
 		flushConductorProperties();
 		emit dataBaseUpdated();
 		return;
@@ -1548,6 +1549,7 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 	flushDrawingItems();
 	flushLinks();
 	flushElementPositions();
+	flushElementTexts();
 	flushConductorProperties();
 
 	// First gate: which kind of statement is acceptable here at all. A
@@ -1937,6 +1939,55 @@ void projectDataBase::flushElementPositions()
 		update.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
 		if (!update.exec()) {
 			qDebug() << "projectDataBase::flushElementPositions error : " << update.lastError();
+		}
+	}
+	if (own_transaction) {
+		m_data_base.commit();
+	}
+}
+
+/**
+	@brief ownTextRows
+	@return the rows of the texts and text groups of the symbol @p element,
+	from its own items, as it saves them
+*/
+static QList<projectDataBase::ProjectSetting> ownTextRows(const Element *element)
+{
+	QDomDocument document;
+	return projectDataBase::elementTextRowsOf(element->ownTextsXml(document));
+}
+
+/**
+	@brief projectDataBase::queueElementTexts
+	The texts of @p element changed: they are written by the next
+	flushElementTexts().
+*/
+void projectDataBase::queueElementTexts(Element *element)
+{
+	if (element && !m_text_changed_elements.contains(element)) {
+		m_text_changed_elements << element;
+	}
+}
+
+/**
+	@brief projectDataBase::flushElementTexts
+	Write the texts of every symbol queued by queueElementTexts() that is
+	still placed and alone with its uuid (F100).
+*/
+void projectDataBase::flushElementTexts()
+{
+	if (m_text_changed_elements.isEmpty()) {
+		return;
+	}
+
+	const auto changed = m_text_changed_elements;
+	m_text_changed_elements.clear();
+	const bool own_transaction = m_data_base.transaction();
+	for (const QPointer<Element> &element : changed)
+	{
+		if (element && m_placed_elements.contains(element->uuid(), element)
+			&& placedElementCount(element->uuid()) == 1) {
+			storeElementTexts(element->uuid(), ownTextRows(element));
 		}
 	}
 	if (own_transaction) {
@@ -2908,6 +2959,26 @@ bool projectDataBase::createDataBase()
 		qDebug() << " terminal_strip_value_table query : " << query_.lastError();
 	}
 
+		//Create the element_text_value table: the texts of each placed symbol
+		//and their groups, as the symbol saves them, one row per value, the
+		//store symbols write through (storeElementTexts()). section and ord
+		//are those of project_setting.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE element_text_value ("
+			"element_uuid VARCHAR(50) NOT NULL, "
+			"section TEXT NOT NULL, "
+			"ord INTEGER NOT NULL, "
+			"name TEXT NOT NULL, "
+			"value TEXT)"))) {
+		qDebug() << " element_text_value_table query : " << query_.lastError();
+	}
+		//Each store and forget names one symbol: without it, each is a
+		//scan of every symbol's texts
+	if (!query_.exec(QStringLiteral(
+			"CREATE INDEX idx_element_text_value_element ON element_text_value (element_uuid)"))) {
+		qDebug() << " element_text_value index query : " << query_.lastError();
+	}
+
 		//Create the conductor_properties table: the properties of every
 		//wire placed in the project, as the attributes a saved wire carries,
 		//the store wires write through (storeConductorProperties()).
@@ -3835,6 +3906,7 @@ void projectDataBase::placeElement(Element *element)
 	storeElementKindInformation(element->uuid(), element->ownKindInformations());
 	storeElementPlacement(element->uuid(), element->ownPlacement());
 	storeSequence(element->uuid(), element->sequenceStruct());
+	queueElementTexts(element);
 }
 
 /**
@@ -3853,6 +3925,7 @@ void projectDataBase::unplaceElement(Element *element, const QUuid &uuid)
 			storeElementKindInformation(uuid, other->ownKindInformations());
 			storeElementPlacement(uuid, other->ownPlacement());
 			storeSequence(uuid, other->sequenceStruct());
+			queueElementTexts(other);
 			return;
 		}
 	}
@@ -3861,6 +3934,7 @@ void projectDataBase::unplaceElement(Element *element, const QUuid &uuid)
 	forgetElementKindInformation(uuid);
 	forgetElementPlacement(uuid);
 	forgetSequence(uuid);
+	forgetElementTexts(uuid);
 }
 
 /**
@@ -4318,6 +4392,73 @@ void projectDataBase::storeTerminalStrip(TerminalStrip *strip)
 		if (!insert.exec()) {
 			qDebug() << "projectDataBase::storeTerminalStrip insert error : " << insert.lastError();
 		}
+	}
+}
+
+/**
+	@brief projectDataBase::elementTextRowsOf
+	@return the rows of the texts and text groups of the saved symbol
+	@p element: one row per value of its <dynamic_texts> and <texts_groups>
+*/
+QList<projectDataBase::ProjectSetting> projectDataBase::elementTextRowsOf(const QDomElement &element)
+{
+	QList<ProjectSetting> rows;
+	for (const QString &tag : {QStringLiteral("dynamic_texts"), QStringLiteral("texts_groups")}) {
+		const QDomElement texts = element.firstChildElement(tag);
+		if (!texts.isNull())
+			xmlRows(texts, tag, 0, rows);
+	}
+	return rows;
+}
+
+/**
+	@brief projectDataBase::storeElementTexts
+	Store @p rows as the texts of the placed symbol @p element, in the
+	element_text_value table and the cache in front of it.
+	@return true if that changed what was stored
+*/
+bool projectDataBase::storeElementTexts(const QUuid &element, const QList<ProjectSetting> &rows)
+{
+	if (element.isNull()) return false;
+	auto known = m_element_texts.constFind(element);
+	if (known != m_element_texts.constEnd() && *known == rows) return false;
+	m_element_texts.insert(element, rows);
+
+	const QString uuid = element.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM element_text_value WHERE element_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeElementTexts remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral("INSERT INTO element_text_value (element_uuid, section, ord, name, value) "
+								  "VALUES (:uuid, :section, :ord, :name, :value)"));
+	for (const ProjectSetting &row : rows) {
+		insert.bindValue(QStringLiteral(":uuid"), uuid);
+		insert.bindValue(QStringLiteral(":section"), row.section);
+		insert.bindValue(QStringLiteral(":ord"), row.ord);
+		insert.bindValue(QStringLiteral(":name"), row.name);
+		insert.bindValue(QStringLiteral(":value"), row.value);
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeElementTexts insert error : " << insert.lastError();
+		}
+	}
+	return true;
+}
+
+/**
+	@brief projectDataBase::forgetElementTexts
+	The symbol @p element is no longer placed: its stored texts go.
+*/
+void projectDataBase::forgetElementTexts(const QUuid &element)
+{
+	if (!m_element_texts.remove(element)) return;
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM element_text_value WHERE element_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), element.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::forgetElementTexts error : " << remove.lastError();
 	}
 }
 
@@ -4962,6 +5103,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	m_prefilled_kinds.clear();
 	m_prefilled_placements.clear();
 	m_prefilled_sequences.clear();
+	m_prefilled_element_texts.clear();
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();
@@ -4977,6 +5119,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	QHash<QUuid, DrawnItem> drawn_items;
 	QHash<QUuid, DiagramContext> kinds;
 	QHash<QUuid, ElementPlacement> placements;
+	QHash<QUuid, QList<ProjectSetting>> element_texts;
 	QHash<QUuid, autonum::sequentialNumbers> sequences;
 		//Each type's kind information, read from its definition once
 	const QHash<QString, QDomElement> definitions = embeddedDefinitions();
@@ -5036,6 +5179,9 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 			placement.vertical_mirror = mirror == QLatin1String("vertical") || mirror == QLatin1String("both");
 			placements.insert(uuid, placement);
 			sequences.insert(uuid, elementSequence(element));
+				//Element::fromXml() drops the definition's texts and reads
+				//these: they are the symbol's texts as they stand
+			element_texts.insert(uuid, elementTextRowsOf(element));
 		}
 			//The shapes, free texts and tables, as the file holds them: for
 			//a folio not built that is what saving it writes again
@@ -5121,6 +5267,8 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		if (seen.value(it.key()) == 1) m_prefilled_placements.insert(it.key(), it.value());
 	for (auto it = sequences.constBegin() ; it != sequences.constEnd() ; ++it)
 		if (seen.value(it.key()) == 1) m_prefilled_sequences.insert(it.key(), it.value());
+	for (auto it = element_texts.constBegin() ; it != element_texts.constEnd() ; ++it)
+		if (seen.value(it.key()) == 1) m_prefilled_element_texts.insert(it.key(), it.value());
 	for (auto it = conductors.constBegin() ; it != conductors.constEnd() ; ++it)
 		if (seen.value(it.key()) == 1) {
 			m_prefilled_conductors.insert(it.key(), it.value());
@@ -5135,6 +5283,8 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	for (auto it = m_prefilled_folios.begin() ; it != m_prefilled_folios.end() ; )
 		it = seen.value(it.key()) == 1 ? std::next(it) : m_prefilled_folios.erase(it);
 
+		//One transaction for the lot, unless a caller already holds one
+	const bool own_transaction = m_data_base.transaction();
 	for (auto it = m_prefilled_elements.constBegin() ; it != m_prefilled_elements.constEnd() ; ++it)
 		storeElementInformation(it.key(), it.value());
 	for (auto it = m_prefilled_kinds.constBegin() ; it != m_prefilled_kinds.constEnd() ; ++it)
@@ -5143,6 +5293,8 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		storeElementPlacement(it.key(), it.value());
 	for (auto it = m_prefilled_sequences.constBegin() ; it != m_prefilled_sequences.constEnd() ; ++it)
 		storeSequence(it.key(), it.value());
+	for (auto it = m_prefilled_element_texts.constBegin() ; it != m_prefilled_element_texts.constEnd() ; ++it)
+		storeElementTexts(it.key(), it.value());
 	for (auto it = m_prefilled_folios.constBegin() ; it != m_prefilled_folios.constEnd() ; ++it)
 		storeFolioTitleBlock(it.key(), it.value());
 	for (auto it = m_prefilled_conductors.constBegin() ; it != m_prefilled_conductors.constEnd() ; ++it)
@@ -5151,6 +5303,9 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		storeConductorLayout(it.key(), it.value());
 	for (auto it = m_prefilled_paths.constBegin() ; it != m_prefilled_paths.constEnd() ; ++it)
 		storeConductorPath(it.key(), it.value());
+	if (own_transaction) {
+		m_data_base.commit();
+	}
 }
 
 /**
@@ -5175,6 +5330,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 				forgetElementKindInformation(it.key());
 				forgetElementPlacement(it.key());
 				forgetSequence(it.key());
+				forgetElementTexts(it.key());
 			}
 			continue;
 		}
@@ -5249,6 +5405,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 	m_prefilled_kinds.clear();
 	m_prefilled_placements.clear();
 	m_prefilled_sequences.clear();
+	m_prefilled_element_texts.clear();
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();
@@ -6528,6 +6685,7 @@ void projectDataBase::exportDb(projectDataBase *db,
 	db->flushDrawingItems();
 	db->flushLinks();
 	db->flushElementPositions();
+	db->flushElementTexts();
 	db->flushConductorProperties();
 	QSqlQuery query(db->m_data_base);
 	if (!query.exec("VACUUM INTO '" % escaped_path % "'")) {

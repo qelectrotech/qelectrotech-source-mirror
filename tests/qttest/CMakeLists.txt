@@ -1327,6 +1327,18 @@ target_compile_definitions(tst_elementplacementrows PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# The texts of a placed symbol and their groups are in the project database
+# (element_text_value), from a built folio or from the document. QET-SQL-FORMAT S3l.
+add_executable(
+  tst_elementtextrows
+  tst_elementtextrows.cpp)
+add_test(NAME tst_elementtextrows COMMAND tst_elementtextrows)
+add_dependencies(tst_elementtextrows qelectrotech)
+target_link_libraries(tst_elementtextrows PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_elementtextrows PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # The sequential numbers of a symbol or a wire are in the project database
 # (sequential_number), from a built folio or from the document. QET-SQL-FORMAT S3e.
 add_executable(
