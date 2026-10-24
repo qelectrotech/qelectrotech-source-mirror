@@ -20,6 +20,7 @@
 #include "TerminalStrip/realterminal.h"
 #include "TerminalStrip/terminalstrip.h"
 #include "bridge/bridge.h"
+#include "bridge/bridgecreatedialog.h"
 #include "bridge/bridgemanager.h"
 #include "diagram.h"
 #include "properties/elementdata.h"
@@ -27,7 +28,11 @@
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
 
+#include <QCheckBox>
 #include <QDomDocument>
+#include <QListWidget>
+#include <QSpinBox>
+#include <QTabWidget>
 
 /**
 	The bridge drawn over terminals: the object behind the line (what it
@@ -72,6 +77,29 @@ class tst_bridgetool : public QObject
 			terminal.terminal = element->terminals().first()->name();
 		}
 		return terminal;
+	}
+
+	//The folio a terminal symbol of the drawing sits on
+	static Diagram *diagramOf(QETProject &project, Element *element)
+	{
+		for (Diagram *diagram : project.diagrams()) {
+			if (diagram->elements().contains(element)) return diagram;
+		}
+		return nullptr;
+	}
+
+	//The terminals a line from @p from to @p to crosses, the way the
+	//tool sees them while the line is pulled
+	static QList<BridgeCrossing> crossingsOver(QETProject &project,
+											   const QSharedPointer<RealTerminal> &from,
+											   const QSharedPointer<RealTerminal> &to)
+	{
+		Element *first = from->element();
+		Element *second = to->element();
+		if (!first || !second) return {};
+		Diagram *diagram = diagramOf(project, first);
+		if (!diagram) return {};
+		return BridgeManager::crossedTerminals(diagram, QLineF(first->scenePos(), second->scenePos()));
 	}
 
 private slots:
@@ -262,6 +290,121 @@ private slots:
 		}
 		QVERIFY2(BridgeManager::freeColumn(&project, {terminal}) == 0,
 				 "no track is left at that terminal");
+	}
+
+	//A new bridge: black, as many terminals as the user draws, and
+	//nothing to type in but that
+	void newBridgeOffersTheShippedDefaults()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+
+		const QList<BridgeCrossing> crossings = crossingsOver(project, terminals.at(0), terminals.at(1));
+		QVERIFY2(crossings.size() >= 2, "the line crosses the terminals it runs over");
+
+		BridgeCreateDialog dialog(diagramOf(project, terminals.at(0)->element()), crossings);
+		QVERIFY2(dialog.bridge() == nullptr, "a new bridge is offered first");
+		QCOMPARE(dialog.newMaxConnections(), Bridge::unlimited_connections);
+		QCOMPARE(dialog.newColor(), QColor(Qt::black));
+		QVERIFY2(dialog.problem().isEmpty(), "nothing speaks against it");
+	}
+
+	//A bridge which cannot take what was crossed is struck through and
+	//cannot be chosen at all -- not with a warning, not at all
+	void fullAndSmallBridgesAreStruckThrough()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 3);
+
+		const QList<BridgeCrossing> crossings = crossingsOver(project, terminals.at(0), terminals.at(1));
+		QVERIFY(crossings.size() >= 2);
+
+		Bridge *good = project.newBridge();
+		QVERIFY(good->maxConnections() == Bridge::unlimited_connections);
+
+		Bridge *small = project.newBridge();
+		small->setMaxConnections(crossings.size());
+		small->addTerminal(terminalOf(terminals.at(2)));
+
+		Bridge *full = project.newBridge();
+		full->setMaxConnections(crossings.size());
+		full->addTerminal(terminalOf(terminals.at(0)));
+		full->addTerminal(terminalOf(terminals.at(1)));
+
+		BridgeCreateDialog dialog(diagramOf(project, terminals.at(0)->element()), crossings);
+		auto *list = dialog.findChild<QListWidget *>(QStringLiteral("bridge_list"));
+		QVERIFY(list);
+		QVERIFY2(list->count() == 1, "the two which cannot take them are hidden first");
+
+		dialog.findChild<QCheckBox *>(QStringLiteral("bridge_hide_full_cb"))->setChecked(false);
+		dialog.findChild<QCheckBox *>(QStringLiteral("bridge_hide_small_cb"))->setChecked(false);
+		QCOMPARE(list->count(), 3);
+
+		int choosable = 0;
+		for (int i = 0 ; i < list->count() ; ++i)
+		{
+			const QListWidgetItem *item = list->item(i);
+			const bool struck = item->font().strikeOut();
+			const bool selectable = item->flags() & Qt::ItemIsSelectable;
+			QVERIFY2(struck == !selectable, "struck through means not choosable");
+			if (selectable) ++choosable;
+		}
+		QVERIFY2(choosable == 1, "only the bridge which can take them is choosable");
+	}
+
+	//Taking a bridge which can hold them: the line lands on it
+	void acceptLandsOnTheChosenBridge()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+
+		const QList<BridgeCrossing> crossings = crossingsOver(project, terminals.at(0), terminals.at(1));
+		QVERIFY(crossings.size() >= 2);
+		Bridge *existing = project.newBridge();
+
+		BridgeCreateDialog dialog(diagramOf(project, terminals.at(0)->element()), crossings);
+		dialog.findChild<QTabWidget *>(QStringLiteral("bridge_tabs"))->setCurrentIndex(1);
+		auto *list = dialog.findChild<QListWidget *>(QStringLiteral("bridge_list"));
+		QVERIFY(list);
+		QCOMPARE(list->count(), 1);
+		list->setCurrentRow(0);
+		QVERIFY2(dialog.problem().isEmpty(), "that bridge can take them");
+
+		dialog.accept();
+		QCOMPARE(dialog.result(), int(QDialog::Accepted));
+		QCOMPARE(dialog.bridge(), existing);
+	}
+
+	//A bridge which cannot hold what was crossed is refused: it cannot
+	//be built in the cabinet, so it is not drawn at all
+	void aLimitBelowWhatWasCrossedIsRefused()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+
+		const QList<BridgeCrossing> crossings = crossingsOver(project, terminals.at(0), terminals.at(1));
+		QVERIFY(crossings.size() >= 2);
+
+		BridgeCreateDialog dialog(diagramOf(project, terminals.at(0)->element()), crossings);
+		dialog.findChild<QSpinBox *>(QStringLiteral("bridge_max_sb"))->setValue(1);
+		QVERIFY2(!dialog.problem().isEmpty(),
+				 "a bridge which cannot take the terminals is refused");
+
+		dialog.findChild<QSpinBox *>(QStringLiteral("bridge_max_sb"))
+				->setValue(Bridge::unlimited_connections);
+		QVERIFY2(dialog.problem().isEmpty(), "no limit is no problem");
 	}
 };
 

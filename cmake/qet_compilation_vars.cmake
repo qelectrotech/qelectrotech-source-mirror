@@ -405,6 +405,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramevent/diagrameventaddpath.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddcable.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddcable.h
+  ${QET_DIR}/sources/diagramevent/diagrameventaddbridge.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventaddbridge.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.h
   ${QET_DIR}/sources/diagramevent/diagrameventinterface.cpp
@@ -988,6 +990,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/bridge/addbridgecommand.h
   ${QET_DIR}/sources/bridge/bridge.cpp
   ${QET_DIR}/sources/bridge/bridge.h
+  ${QET_DIR}/sources/bridge/bridgecreatedialog.cpp
+  ${QET_DIR}/sources/bridge/bridgecreatedialog.h
   ${QET_DIR}/sources/bridge/bridgemanager.cpp
   ${QET_DIR}/sources/bridge/bridgemanager.h
   ${QET_DIR}/sources/bridge/bridgepart.cpp

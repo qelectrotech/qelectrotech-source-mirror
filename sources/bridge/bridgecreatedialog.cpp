@@ -1,0 +1,328 @@
+/*
+	Copyright 2006-2026 The QElectroTech Team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
+#include "bridgecreatedialog.h"
+
+#include "../qetproject.h"
+#include "bridge.h"
+#include "../TerminalStrip/terminalstripbridge.h"
+
+#include <QCheckBox>
+#include <QDialogButtonBox>
+#include <QFont>
+#include <QLabel>
+#include <QListWidget>
+#include <QMessageBox>
+#include <QPixmap>
+#include <QSpinBox>
+#include <QTabWidget>
+#include <QVBoxLayout>
+#include <kcolorcombo.h>
+
+namespace {
+		///Item data of the bridge list: the bridge itself, and whether
+		///it cannot be chosen at all
+	constexpr int bridge_role = Qt::UserRole;
+	constexpr int unsuitable_role = Qt::UserRole + 1;
+}
+
+/**
+	@brief BridgeCreateDialog::BridgeCreateDialog
+	@param diagram the folio the bridge is drawn on
+	@param crossings the terminals the line has just crossed
+	@param parent
+*/
+BridgeCreateDialog::BridgeCreateDialog(Diagram *diagram,
+									   const QList<BridgeCrossing> &crossings,
+									   QWidget *parent) :
+	QDialog(parent),
+	m_diagram(diagram),
+	m_crossings(crossings)
+{
+	setWindowTitle(tr("The bridge over %n terminal(s)", "window title", m_crossings.size()));
+
+	auto *layout = new QVBoxLayout(this);
+	auto *header = new QLabel(tr("%n terminal(s) recognized", "how many terminals the line crossed", m_crossings.size()), this);
+	layout->addWidget(header);
+
+	m_tabs = new QTabWidget(this);
+	m_tabs->setObjectName(QStringLiteral("bridge_tabs"));
+	layout->addWidget(m_tabs);
+
+		//The page for a brand new bridge: what it may hold and which
+		//colour it is drawn in. Nothing else is typed in: a bridge takes
+		//its function and its potential from the first terminal it lands
+		//on and keeps the form it is drawn with.
+	auto *new_page = new QWidget(m_tabs);
+	auto *new_layout = new QVBoxLayout(new_page);
+
+	auto *max_label = new QLabel(tr("Terminals this bridge may hold:"), new_page);
+	new_layout->addWidget(max_label);
+	m_max_sb = new QSpinBox(new_page);
+	m_max_sb->setObjectName(QStringLiteral("bridge_max_sb"));
+	m_max_sb->setRange(Bridge::unlimited_connections, 99);
+	m_max_sb->setSpecialValueText(tr("Unlimited"));
+	m_max_sb->setValue(Bridge::unlimited_connections);
+	new_layout->addWidget(m_max_sb);
+
+	auto *color_label = new QLabel(tr("Bridge colour:"), new_page);
+	new_layout->addWidget(color_label);
+	m_color_cb = new KColorCombo(new_page);
+	m_color_cb->setObjectName(QStringLiteral("bridge_color_cb"));
+	m_color_cb->setColors(TerminalStripBridge::bridgeColor().toList());
+	m_color_cb->setColor(QColor(Qt::black));
+	new_layout->addWidget(m_color_cb);
+	new_layout->addStretch();
+
+	m_tabs->addTab(new_page, tr("New bridge"));
+
+		//The page for a bridge already there: what cannot take these
+		//terminals is struck through and cannot be chosen at all
+	auto *existing_page = new QWidget(m_tabs);
+	auto *existing_layout = new QVBoxLayout(existing_page);
+
+	m_hide_full = new QCheckBox(tr("Hide bridges which are full"), existing_page);
+	m_hide_full->setObjectName(QStringLiteral("bridge_hide_full_cb"));
+	m_hide_full->setChecked(true);
+	existing_layout->addWidget(m_hide_full);
+
+	m_hide_small = new QCheckBox(tr("Hide bridges with fewer free places than terminals recognized"), existing_page);
+	m_hide_small->setObjectName(QStringLiteral("bridge_hide_small_cb"));
+	m_hide_small->setChecked(true);
+	existing_layout->addWidget(m_hide_small);
+
+	m_list = new QListWidget(existing_page);
+	m_list->setObjectName(QStringLiteral("bridge_list"));
+	existing_layout->addWidget(m_list);
+
+	m_note = new QLabel(existing_page);
+	m_note->setObjectName(QStringLiteral("bridge_note"));
+	m_note->setWordWrap(true);
+	existing_layout->addWidget(m_note);
+
+	m_tabs->addTab(existing_page, tr("Bridges already there"));
+
+	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
+	layout->addWidget(buttons);
+	connect(buttons, &QDialogButtonBox::accepted, this, &BridgeCreateDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, this, &BridgeCreateDialog::reject);
+
+	connect(m_hide_full, &QCheckBox::toggled, this, &BridgeCreateDialog::rebuildList);
+	connect(m_hide_small, &QCheckBox::toggled, this, &BridgeCreateDialog::rebuildList);
+	connect(m_list, &QListWidget::itemSelectionChanged, this, &BridgeCreateDialog::selectionChanged);
+
+	rebuildList();
+}
+
+/**
+	@return the bridge to land on, or nullptr when a new one is built
+*/
+Bridge *BridgeCreateDialog::bridge() const {
+	return m_bridge;
+}
+
+/**
+	@return the colour of the new bridge
+*/
+QColor BridgeCreateDialog::newColor() const {
+	return m_color_cb ? m_color_cb->color() : QColor(Qt::black);
+}
+
+/**
+	@return how many terminals the new bridge may hold,
+	Bridge::unlimited_connections (0) when there is no limit
+*/
+int BridgeCreateDialog::newMaxConnections() const {
+	return m_max_sb ? m_max_sb->value() : Bridge::unlimited_connections;
+}
+
+/**
+	@brief BridgeCreateDialog::problem
+	@return why what is chosen now cannot be taken, or an empty string
+	when it can: a new bridge may not be given a limit below the
+	terminals just crossed, and a bridge already there may not be chosen
+	struck through (it cannot be chosen at all) nor be overfilled.
+*/
+QString BridgeCreateDialog::problem() const
+{
+	const int needed = m_crossings.size();
+
+	if (m_tabs->currentIndex() == 0) {
+		if (newMaxConnections() != Bridge::unlimited_connections
+			&& newMaxConnections() < needed) {
+			return tr("A bridge holding %1 terminal(s) at most cannot take the %2 "
+					  "just recognized. Give it a higher limit, no limit at all, or "
+					  "draw another bridge.")
+					.arg(newMaxConnections()).arg(needed);
+		}
+		return {};
+	}
+
+	QListWidgetItem *item = m_list->currentItem();
+	if (!item || item->data(unsuitable_role).toBool()) {
+		return tr("Choose a bridge which can take the %1 terminal(s) just "
+				  "recognized, or draw a new one.")
+				.arg(needed);
+	}
+	Bridge *chosen = reinterpret_cast<Bridge *>(item->data(bridge_role).value<quintptr>());
+	if (!chosen || chosen->wouldExceed(needed)) {
+		return tr("Choose a bridge which can take the %1 terminal(s) just "
+				  "recognized, or draw a new one.")
+				.arg(needed);
+	}
+	return {};
+}
+
+/**
+	@brief BridgeCreateDialog::accept
+	Only a bridge which can really be built is taken, and what refuses
+	one is said before the window goes away.
+*/
+void BridgeCreateDialog::accept()
+{
+	const QString problem_ = problem();
+	if (!problem_.isEmpty()) {
+		QMessageBox::warning(this, tr("That bridge cannot be built"), problem_);
+		return;
+	}
+
+	m_bridge = (m_tabs->currentIndex() == 0)
+			? nullptr
+			: reinterpret_cast<Bridge *>(m_list->currentItem()->data(bridge_role).value<quintptr>());
+
+	QDialog::accept();
+}
+
+/**
+	@brief BridgeCreateDialog::rebuildList
+	The bridges of the project, with what they hold and what is left of
+	them. What cannot take the terminals just crossed is struck through
+	and cannot be chosen -- shown only when the boxes say so.
+*/
+void BridgeCreateDialog::rebuildList()
+{
+	m_list->clear();
+
+	QETProject *project = m_diagram ? m_diagram->project() : nullptr;
+	if (!project) {
+		return;
+	}
+
+	const int needed = m_crossings.size();
+	const auto bridges = project->bridges();
+	for (Bridge *bridge : bridges)
+	{
+		if (!bridge) {
+			continue;
+		}
+		const bool full = isFull(bridge);
+		const bool small = hasTooFewPlaces(bridge);
+		if (full && m_hide_full->isChecked()) {
+			continue;
+		}
+		if (small && !full && m_hide_small->isChecked()) {
+			continue;
+		}
+
+		const QString places = (bridge->maxConnections() == Bridge::unlimited_connections)
+				? tr("unlimited places")
+				: tr("%1 of %2 places")
+				  .arg(bridge->maxConnections() - bridge->terminalCount())
+				  .arg(bridge->maxConnections());
+		auto *item = new QListWidgetItem(
+					tr("%1 terminal(s), %2", "how much a bridge holds and what is left of it")
+					.arg(bridge->terminalCount()).arg(places),
+					m_list);
+		item->setIcon(swatch(bridge->color()));
+		item->setData(bridge_role, quintptr(bridge));
+
+		const bool unsuitable = full || small;
+		item->setData(unsuitable_role, unsuitable);
+		if (unsuitable) {
+			QFont font = item->font();
+			font.setStrikeOut(true);
+			item->setFont(font);
+				//Struck through means: not choosable at all, not with a
+				//warning either -- a bridge which cannot be built is not
+				//drawn.
+			item->setFlags(item->flags() & ~(Qt::ItemIsSelectable | Qt::ItemIsEnabled));
+			item->setToolTip(tr("Not enough free places for the %1 terminal(s) just recognized", "", needed));
+		}
+	}
+
+	selectionChanged();
+}
+
+/**
+	@brief BridgeCreateDialog::selectionChanged
+*/
+void BridgeCreateDialog::selectionChanged()
+{
+	const int needed = m_crossings.size();
+	QListWidgetItem *item = m_list->currentItem();
+	Bridge *bridge = item
+			? reinterpret_cast<Bridge *>(item->data(bridge_role).value<quintptr>())
+			: nullptr;
+
+	if (m_tabs->currentIndex() == 0) {
+		m_note->setText(tr("The bridge is drawn where you pulled the line and keeps the form you give it."));
+		return;
+	}
+
+	if (!bridge) {
+		m_note->setText(tr("Choose a bridge to land on, or draw a new one."));
+	} else if (isFull(bridge)) {
+		m_note->setText(tr("This bridge is full."));
+	} else if (hasTooFewPlaces(bridge)) {
+		m_note->setText(tr("This bridge has %1 free place(s) left, %2 requested.")
+						.arg(bridge->maxConnections() - bridge->terminalCount()).arg(needed));
+	} else {
+		m_note->setText(tr("The %1 terminal(s) join this bridge, drawn as another line of it.")
+						.arg(needed));
+	}
+}
+
+/**
+	@param bridge
+	@return true when the bridge has no free place at all
+*/
+bool BridgeCreateDialog::isFull(Bridge *bridge) const
+{
+	return bridge && bridge->maxConnections() != Bridge::unlimited_connections
+			&& bridge->terminalCount() >= bridge->maxConnections();
+}
+
+/**
+	@param bridge
+	@return true when the bridge has free places, but fewer than the
+	terminals just crossed
+*/
+bool BridgeCreateDialog::hasTooFewPlaces(Bridge *bridge) const
+{
+	return bridge && !isFull(bridge) && bridge->wouldExceed(m_crossings.size());
+}
+
+/**
+	@param color
+	@return a small square of that colour, for the list
+*/
+QIcon BridgeCreateDialog::swatch(const QColor &color)
+{
+	QPixmap pixmap(16, 16);
+	pixmap.fill(color);
+	return QIcon(pixmap);
+}

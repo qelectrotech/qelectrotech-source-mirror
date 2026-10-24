@@ -54,6 +54,7 @@
 #include "diagramevent/diagrameventaddshape.h"
 #include "diagramevent/diagrameventaddpath.h"
 #include "diagramevent/diagrameventaddcable.h"
+#include "diagramevent/diagrameventaddbridge.h"
 #include "diagramevent/diagrameventfillet.h"
 #include "diagramevent/diagrameventaddtext.h"
 #include "cable/cablepart.h"
@@ -1391,6 +1392,9 @@ void QETDiagramEditor::setUpActions()
 		//Not an element of the drawing but a line drawn across the
 		//conductors: what it crosses becomes the cores of a cable.
 	m_add_cable		   = m_add_item_actions_group.addAction(QET::Icons::Cable,      tr("Draw a cable"));
+		//A bridge across terminals: what it crosses becomes the terminals
+		//the bridge lands on.
+	m_add_bridge	   = m_add_item_actions_group.addAction(QET::Icons::Conductor,  tr("Draw a bridge"));
 
 	add_text     ->setStatusTip(tr("Adds a text field to the current sheet"));
 	add_image    ->setStatusTip(tr("Add an image to the current sheet"));
@@ -1407,6 +1411,7 @@ void QETDiagramEditor::setUpActions()
 	add_terminal_strip->setStatusTip(tr("Adds a terminal plan to the current sheet"));
 	add_generic_device->setStatusTip(tr("Makes a box symbol with terminals on any side and places it on the current sheet"));
 	m_add_cable     ->setStatusTip(tr("Draws the main line of a cable: every conductor crossed becomes one of its cores"));
+	m_add_bridge    ->setStatusTip(tr("Draws a bridge over terminals: every terminal crossed becomes one of its connections"));
 
 	add_text     ->setData(QStringLiteral("text"));
 	add_image    ->setData(QStringLiteral("image"));
@@ -1423,6 +1428,7 @@ void QETDiagramEditor::setUpActions()
 	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
 	add_generic_device->setData(QStringLiteral("generic_device"));
 	m_add_cable     ->setData(QStringLiteral("cable"));
+	m_add_bridge    ->setData(QStringLiteral("bridge"));
 
 	add_text->setCheckable(true);
 	add_line->setCheckable(true);
@@ -1432,6 +1438,7 @@ void QETDiagramEditor::setUpActions()
 	add_polyline->setCheckable(true);
 	add_path->setCheckable(true);
 	m_add_cable->setCheckable(true);
+	m_add_bridge->setCheckable(true);
 	add_fillet->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
@@ -2814,6 +2821,10 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 			return;
 		}
 		diagram_event = new DiagramEventAddCable(d);
+	}
+	else if (value == QLatin1String("bridge"))
+	{
+		diagram_event = new DiagramEventAddBridge(d);
 	}
 	else if (value == "fillet")
 		diagram_event = new DiagramEventFillet (d);
