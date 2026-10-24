@@ -3603,7 +3603,7 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
 	//Return a point rounded to the nearest pixel
-	if (QApplication::keyboardModifiers().testFlag(Qt::ControlModifier))
+	if (!gridSnap() || QApplication::keyboardModifiers().testFlag(Qt::ControlModifier))
 	{
 		int p_x = qRound(p.x());
 		int p_y = qRound(p.y());
@@ -3616,10 +3616,30 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	return (QPointF(p_x, p_y));
 }
 
+namespace {
+		/// -1 until read from the settings
+	int s_grid_snap = -1;
+	const QString grid_snap_key = QStringLiteral("diagrameditor/grid_snap");
+}
+
+bool Diagram::gridSnap()
+{
+	if (s_grid_snap < 0)
+		s_grid_snap = QSettings().value(grid_snap_key, true).toBool() ? 1 : 0;
+	return s_grid_snap == 1;
+}
+
+void Diagram::setGridSnap(bool snap)
+{
+	s_grid_snap = snap ? 1 : 0;
+	QSettings().setValue(grid_snap_key, snap);
+}
+
 /**
 	@brief Diagram::snapToTextGrid
 	Return the nearest point of p on the text grid, see TextGrid.
-	Ctrl held rounds to the nearest pixel instead, as snapToGrid() does.
+	Ctrl held, or the snap switched off, rounds to the nearest pixel
+	instead, as snapToGrid() does.
 	@param p point to find the nearest snapped point
 	@return
 */
@@ -3627,7 +3647,7 @@ QPointF Diagram::snapToTextGrid(const QPointF &p)
 {
 	QSettings settings;
 	const qreal divisor =
-		QApplication::keyboardModifiers().testFlag(Qt::ControlModifier)
+		!gridSnap() || QApplication::keyboardModifiers().testFlag(Qt::ControlModifier)
 			? 0
 			: settings.value(TextGrid::settings_key, 1).toReal();
 
