@@ -12109,6 +12109,14 @@ Opcions disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>A baix, a la dreta</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Mostrar l&apos;etiqueta de les regletes al primer born</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>L&apos;etiqueta de cada regleta es mostra al seu primer born a cada full i es mou amb ell</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>
@@ -14207,6 +14215,16 @@ Retireu els ponts i/o elimineu els nivells dels borns afectats per tal de poder-
         <source>Edit the selected object</source>
         <comment>edit selected item</comment>
         <translation>Edita l&apos;objecte seleccionat</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Mostra els ponts de les regletes entre els seus borns</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Dos borns contigus d'una fila units per un pont s'uneixen amb una línia a cada full</translation>
     </message>
 </context>
 <context>

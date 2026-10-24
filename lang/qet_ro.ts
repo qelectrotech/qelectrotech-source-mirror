@@ -11855,6 +11855,14 @@ Opțiuni disponibile:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Jos, dreapta</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Afișează eticheta șirurilor de cleme la prima clemă</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Eticheta fiecărui șir de cleme stă la prima sa clemă pe fiecare foaie și se mută odată cu ea</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>
@@ -13928,6 +13936,16 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <source>Edit the selected object</source>
         <comment>edit selected item</comment>
         <translation>Editează obiectele selectate</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Afișează punțile șirurilor de cleme între cleme</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Două cleme alăturate într-un rând și punțiate sunt unite printr-o linie pe fiecare foaie</translation>
     </message>
 </context>
 <context>

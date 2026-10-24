@@ -11972,6 +11972,14 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Onder, rechts</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Label van klemmenstroken bij de eerste klem tonen</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Het label van elke klemmenstrook staat op elk blad bij de eerste klem en beweegt mee</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1542"/>
@@ -14034,6 +14042,16 @@ They are not shown, but they are kept in the file as they are, and join their te
         <source>Activates the previous project</source>
         <comment>status bar tip</comment>
         <translation>Activeer vorig project</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Bruggen van klemmenstroken tussen de klemmen tonen</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Twee overbrugde klemmen naast elkaar in een rij worden op elk blad met een lijn verbonden</translation>
     </message>
 </context>
 <context>

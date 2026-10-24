@@ -12196,6 +12196,14 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Na dole po prawej</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Pokaż oznaczenie listew zaciskowych przy pierwszym zacisku</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Oznaczenie każdej listwy zaciskowej stoi przy jej pierwszym zacisku na każdym arkuszu i przesuwa się razem z nim</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1542"/>
@@ -14318,6 +14326,16 @@ Aby zrobić z niego skrypt, poproś swojego asystenta AI: poniższy przycisk kop
         <source>Activates the previous project</source>
         <comment>status bar tip</comment>
         <translation>Uaktywnia poprzedni projekt</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Pokaż mostki listew zaciskowych między zaciskami</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Dwa zmostkowane zaciski obok siebie w rzędzie łączy linia na każdym arkuszu</translation>
     </message>
 </context>
 <context>

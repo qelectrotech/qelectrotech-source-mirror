@@ -11841,6 +11841,14 @@ Dostupne opcije:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Dolje desno</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Prikaži oznake rednih stezaljki na prvoj stezaljci</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Oznaka svake redne stezaljke stoji uz njezinu prvu stezaljku na svakom listu i pomiče se s njom</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>
@@ -13914,6 +13922,16 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <source>Error</source>
         <comment>message box title</comment>
         <translation type="unfinished">Greška</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Prikaži mostove rednih stezaljki između stezaljki</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Dvije premoštene stezaljke jedna do druge u redu spajaju se crtom na svakom listu</translation>
     </message>
 </context>
 <context>

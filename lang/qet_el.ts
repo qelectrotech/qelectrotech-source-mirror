@@ -12067,6 +12067,14 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Κάτω, δεξιά</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Εμφάνιση ετικετών κλεμοσειρών στον πρώτο ακροδέκτη</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Η ετικέτα κάθε κλεμοσειράς εμφανίζεται στον πρώτο ακροδέκτη της σε κάθε φύλλο και μετακινείται μαζί του</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1542"/>
@@ -14151,6 +14159,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <source>Opening the file read-only</source>
         <comment>message box title</comment>
         <translation>Άνοιγμα του αρχείου μόνο για ανάγνωση</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Εμφάνιση γεφυρών κλεμμοσειρών ανάμεσα στις κλέμες</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Δύο γεφυρωμένες κλέμες δίπλα-δίπλα σε σειρά ενώνονται με γραμμή σε κάθε φύλλο</translation>
     </message>
 </context>
 <context>

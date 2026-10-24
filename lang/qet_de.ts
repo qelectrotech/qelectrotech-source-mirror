@@ -12095,6 +12095,14 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Unten rechts</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Klemmleisten-BMK an der ersten Klemme anzeigen</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Das BMK jeder Klemmleiste steht auf jeder Seite an ihrer ersten Klemme und wandert mit ihr</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="480"/>
@@ -14194,6 +14202,16 @@ Um daraus ein Skript zu machen, bitten Sie Ihren KI-Assistenten: Die Schaltfläc
         <source>Error</source>
         <comment>message box title</comment>
         <translation>Fehler</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Brücken der Klemmleisten zwischen den Klemmen zeigen</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Zwei gebrückte Klemmen nebeneinander in einer Reihe werden auf jeder Seite durch eine Linie verbunden</translation>
     </message>
 </context>
 <context>

@@ -12034,6 +12034,14 @@ Elérhető lehetőségek:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Lent jobbra</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Sorkapocs-jelölés megjelenítése az első kapocsnál</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Minden sorkapocs jelölése minden lapon az első kapcsánál áll, és vele együtt mozog</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>
@@ -14101,6 +14109,16 @@ Ha szkriptet szeretne készíteni belőle, kérje meg AI-asszisztensét: az alá
         <location filename="../sources/qetdiagrameditor.cpp" line="4984"/>
         <source>Texts %1</source>
         <translation>Szövegek %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Sorkapocs-áthidalások megjelenítése a kapcsok között</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Két egymás melletti, áthidalt kapcsot egy sorban vonal köt össze minden lapon</translation>
     </message>
 </context>
 <context>

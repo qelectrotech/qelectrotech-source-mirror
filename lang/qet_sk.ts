@@ -11976,6 +11976,14 @@ Dostupné možnosti:
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Below, right</source>
         <translation>Dole vpravo</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <source>Show terminal strip labels at their first terminal</source>
+        <translation>Zobraziť označenie svorkovníc pri prvej svorke</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
+        <translation>Označenie každej svorkovnice stojí pri jej prvej svorke na každom liste a pohybuje sa s ňou</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1542"/>
@@ -14095,6 +14103,16 @@ Ak z toho chcete vytvoriť skript, požiadajte o to svojho AI asistenta – tla�
         <source>Activates the previous project</source>
         <comment>status bar tip</comment>
         <translation>Spustí predchádzajúci projekt</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <source>Show terminal strip bridges between their terminals</source>
+        <translation>Zobraziť prepojky svorkovníc medzi svorkami</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
+        <translation>Dve prepojené svorky vedľa seba v rade spojí na každom liste čiara</translation>
     </message>
 </context>
 <context>
