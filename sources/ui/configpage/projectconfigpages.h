@@ -141,6 +141,7 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	QLabel *wire_hops_label_;
 	QComboBox *wire_hops_cb_;
 	QCheckBox *upright_symbol_texts_cb_;
+	QCheckBox *chained_reports_cb_;
 	QGroupBox *terminal_label_gb_;
 	QRadioButton *terminal_label_combined_rb_;
 	QRadioButton *terminal_label_split_rb_;

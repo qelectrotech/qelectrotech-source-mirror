@@ -34,6 +34,11 @@
 
 namespace {
 
+static inline bool fuzzyPointMatch(const QPointF &p1, const QPointF &p2)
+{
+	return qFuzzyIsNull(p1.x() - p2.x()) && qFuzzyIsNull(p1.y() - p2.y());
+}
+
 /**
 	@brief Where two segments cross, if they do at all.
 
@@ -137,7 +142,7 @@ QList<CableCrossing> CableManager::crossedConductors(Diagram *diagram, const QLi
 	}
 
 	const QPointF start = line.p1();
-	if (qFuzzyCompare(start, line.p2())) {
+	if (fuzzyPointMatch(start, line.p2())) {
 		return crossings;
 	}
 
@@ -188,7 +193,7 @@ bool CableManager::crossingOf(Diagram *diagram,
 
 	const QPointF start = line.p1();
 	const QPointF end = line.p2();
-	if (qFuzzyCompare(start, end)) return false;
+	if (fuzzyPointMatch(start, end)) return false;
 
 		//Work in the conductor's own coordinates: its path is stored
 		//there, and a conductor is never where it was when it was

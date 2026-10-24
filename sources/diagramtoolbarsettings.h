@@ -25,6 +25,7 @@
 #include <functional>
 
 class QAction;
+class QObject;
 class QToolBar;
 
 /**

@@ -212,6 +212,8 @@ void PasteDiagramCommand::redo()
 
 			if (settings.value("diagramcommands/erase-label-on-copy", true).toBool())
 			{
+				// Do not erase labels for Report Elements (Folienverweise) because they need to retain their BMK to link properly across pages.
+				if (!(e->linkType() & Element::AllReport)) {
 				//Reset the information about the label, the comment and location
 				DiagramContext dc = e->elementInformations();
 				dc.addValue("formula", "");
@@ -234,6 +236,7 @@ void PasteDiagramCommand::redo()
 					deti->m_block_alignment = false;
 				for (auto *group : e->textGroups())
 					group->blockAlignmentUpdate(false);
+				}
 				
 				//Reset the text of conductors, the same way the label/comment/
 				//location above are reset to "" rather than to some other

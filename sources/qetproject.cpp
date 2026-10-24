@@ -102,6 +102,10 @@ m_project_properties_handler{this}
 		//project saved after that keeps its own choice (readTerminalLabelSplitXml())
 	setTerminalLabelSplit(settings.value(QStringLiteral("diagrameditor/defaultterminallabelling"), false).toBool());
 
+		//Read chained reports default from global settings (enabled for newly created projects when setting is on)
+	m_chained_reports = settings.value(QStringLiteral("project/enable-chained-reports"), false).toBool();
+	m_has_chained_reports_attribute = true;
+
 	int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
 	for (int i = 0; i < size; ++i) {
 		settings.setArrayIndex(i);
@@ -2595,6 +2599,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeSymbolTextsXml(project_root);
 	writeTerminalLabelSplitXml(project_root);
 	writeWiringRulesXml(project_root);
+	writeChainedReportsXml(project_root);
 
 	// Properties for news diagrams
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
@@ -3567,6 +3572,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readSymbolTextsXml(xml_project);
 	readTerminalLabelSplitXml(xml_project);
 	readWiringRulesXml(xml_project);
+	readChainedReportsXml(xml_project);
 
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
@@ -3636,6 +3642,37 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//wire again. Run the pass once more now that the links exist:
 		//it recomputes everything from the project as it now stands.
 	CableManager::refreshLabels(this);
+
+	if (m_has_chained_reports_attribute) {
+		if (m_chained_reports) {
+			autoLinkReportElements();
+		}
+	} else {
+		// Legacy project created before this version
+		QSettings settings;
+		bool global_enabled = settings.value(QStringLiteral("project/enable-chained-reports"), false).toBool();
+		if (global_enabled && !QET::QetMessageBox::isNonInteractive()) {
+			QString proj_name = title().isEmpty() ? QFileInfo(filePath()).fileName() : title();
+			auto ret = QET::QetMessageBox::question(
+						nullptr,
+						tr("Chained Folio Reports", "message box title"),
+						tr("Project \"%1\" does not have chained folio reports enabled.\n\n"
+						   "Do you want to enable chained folio reports for this project?\n"
+						   "(Matching report elements across folios will be chained together.)",
+						   "message box content").arg(proj_name),
+						QMessageBox::Yes | QMessageBox::No,
+						QMessageBox::Yes);
+			if (ret == QMessageBox::Yes) {
+				m_chained_reports = true;
+				m_has_chained_reports_attribute = true;
+				autoLinkReportElements();
+				setModified(true);
+			} else {
+				m_chained_reports = false;
+				m_has_chained_reports_attribute = true;
+			}
+		}
+	}
 
 	m_data_base.blockSignals(false);
 	m_data_base.setUpdateBlocked(false);
@@ -4297,6 +4334,63 @@ void QETProject::writeWiringRulesXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::readChainedReportsXml
+	Read the <chained_reports> element of the project, if any.
+	A project without it was saved before this feature existed.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readChainedReportsXml(QDomDocument &xml_project)
+{
+	const QDomElement cr_elmt = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("chained_reports"));
+	if (!cr_elmt.isNull()) {
+		m_has_chained_reports_attribute = true;
+		m_chained_reports = (cr_elmt.attribute(QStringLiteral("enabled"), QStringLiteral("false")) == QLatin1String("true"));
+	} else {
+		m_has_chained_reports_attribute = false;
+		m_chained_reports = false;
+	}
+}
+
+/**
+	@brief QETProject::writeChainedReportsXml
+	Save the chained reports setting into the project XML.
+	@param xml_element : the root project element
+*/
+void QETProject::writeChainedReportsXml(QDomElement &xml_element)
+{
+	if (!m_has_chained_reports_attribute && !m_chained_reports) {
+		return;
+	}
+	QDomElement cr_elmt = xml_element.ownerDocument()
+			.createElement(QStringLiteral("chained_reports"));
+	cr_elmt.setAttribute(QStringLiteral("enabled"), m_chained_reports ? QStringLiteral("true") : QStringLiteral("false"));
+	xml_element.appendChild(cr_elmt);
+}
+
+bool QETProject::chainedReports() const
+{
+	return m_chained_reports;
+}
+
+void QETProject::setChainedReports(bool enable)
+{
+	if (enable == m_chained_reports && m_has_chained_reports_attribute) {
+		return;
+	}
+	m_chained_reports = enable;
+	m_has_chained_reports_attribute = true;
+	if (m_chained_reports) {
+		autoLinkReportElements();
+	}
+}
+
+bool QETProject::hasChainedReportsAttribute() const
+{
+	return m_has_chained_reports_attribute;
+}
+
+/**
 	@brief QETProject::writeDefaultPropertiesXml
 	Export all defaults properties used by a new diagram and his content
 	size of border
@@ -4897,4 +4991,104 @@ void QETProject::removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection 
 */
 void QETProject::usedTitleBlockTemplateChanged(const QString &template_name) {
 	emit diagramUsedTemplate(embeddedTitleBlockTemplatesCollection(), template_name);
+}
+
+#include "reportelement.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
+
+void QETProject::autoLinkReportElements()
+{
+	if (!m_chained_reports) {
+		return;
+	}
+	QHash<QString, QList<ReportElement*>> reportsByLabel;
+	QList<ReportElement*> all_reports;
+
+	for (Diagram *diagram : m_diagrams_list) {
+		for (QGraphicsItem *item : diagram->items()) {
+			if (ReportElement *report = dynamic_cast<ReportElement*>(item)) {
+				all_reports.append(report);
+				QString label = report->elementInformations().value("label").toString();
+			if (!label.isEmpty()) {
+					reportsByLabel[label].append(report);
+				}
+			}
+		}
+	}
+
+	for (const QString &label : reportsByLabel.keys()) {
+		QList<ReportElement*> &reports = reportsByLabel[label];
+		
+		std::sort(reports.begin(), reports.end(), [this](ReportElement *a, ReportElement *b) {
+			int idxA = m_diagrams_list.indexOf(a->diagram());
+			int idxB = m_diagrams_list.indexOf(b->diagram());
+			if (idxA != idxB) return idxA < idxB;
+			if (a->scenePos().x() != b->scenePos().x()) return a->scenePos().x() < b->scenePos().x();
+			return a->scenePos().y() < b->scenePos().y();
+		});
+		
+		QList<ReportElement*> unmatched_next;
+		QList<ReportElement*> unmatched_prev;
+
+		// Take the first element of the list which is NOT on the given diagram
+		// (a chain link always goes from one page to another page).
+		auto takeOnOtherDiagram = [](QList<ReportElement*> &list, Diagram *diagram) -> ReportElement* {
+			for (int i = 0; i < list.size(); ++i) {
+				if (list.at(i)->diagram() != diagram) {
+					return list.takeAt(i);
+				}
+			}
+			return nullptr;
+		};
+
+		auto linkPair = [](ReportElement *next_rep, ReportElement *prev_rep) {
+			if (next_rep->linkedElements().isEmpty() || next_rep->linkedElements().first() != prev_rep) {
+				next_rep->linkToElement(prev_rep);
+			}
+		};
+		
+		for (ReportElement *report : reports) {
+			if (report->linkType() == Element::NextReport) {
+				unmatched_next.append(report);
+			} else if (report->linkType() == Element::PreviousReport) {
+				if (ReportElement *next_rep = takeOnOtherDiagram(unmatched_next, report->diagram())) {
+					linkPair(next_rep, report);
+				} else {
+					unmatched_prev.append(report);
+				}
+			}
+		}
+		
+		// Fallback 1: Link leftover backward cross-references (e.g., Page 5 to Page 2)
+		for (int i = 0; i < unmatched_next.size(); ) {
+			ReportElement *next_rep = unmatched_next.at(i);
+			if (ReportElement *prev_rep = takeOnOtherDiagram(unmatched_prev, next_rep->diagram())) {
+				linkPair(next_rep, prev_rep);
+				unmatched_next.removeAt(i);
+			} else {
+				++i;
+			}
+		}
+
+		// Fallback 2: last resort, a link on the same page
+		while (!unmatched_next.isEmpty() && !unmatched_prev.isEmpty()) {
+			linkPair(unmatched_next.takeFirst(), unmatched_prev.takeFirst());
+		}
+	}
+
+	// Make sure every report shows the text matching its current link state.
+	// A pasted report may still display the text copied from the clipboard
+	// (e.g. the old cross reference) if its link didn't change here.
+	// setPlainText() does nothing when the text is unchanged.
+	for (ReportElement *report : std::as_const(all_reports)) {
+		for (DynamicElementTextItem *deti : report->dynamicTextItems()) {
+			deti->refreshReportText();
+		}
+		for (ElementTextItemGroup *group : report->textGroups()) {
+			for (DynamicElementTextItem *deti : group->texts()) {
+				deti->refreshReportText();
+			}
+		}
+	}
 }
