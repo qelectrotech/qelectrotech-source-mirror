@@ -2859,6 +2859,18 @@ bool projectDataBase::createDataBase()
 		qDebug() << " conductor_layout_table query : " << query_.lastError();
 	}
 
+		//Create the conductor_path table: the segments of each wire the
+		//user reshaped (storeConductorPath()). No rows: not reshaped.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE conductor_path ("
+			"conductor_uuid VARCHAR(50) NOT NULL, "
+			"ord INTEGER NOT NULL, "
+			"horizontal INTEGER NOT NULL, "
+			"length REAL NOT NULL, "
+			"PRIMARY KEY (conductor_uuid, ord))"))) {
+		qDebug() << " conductor_path_table query : " << query_.lastError();
+	}
+
 
 		//Create the link table: one row per element and element it is
 		//linked to -- a coil and its contacts, a pair of folio reports --
@@ -4329,6 +4341,72 @@ void projectDataBase::forgetConductorLayout(const QUuid &conductor)
 }
 
 /**
+	@brief projectDataBase::conductorPath
+	@return the stored segments of the wire @p conductor; none if it was not
+	reshaped
+*/
+ConductorPath projectDataBase::conductorPath(const QUuid &conductor) const
+{
+	return m_conductor_paths.value(conductor);
+}
+
+/**
+	@brief projectDataBase::storeConductorPath
+	Store @p path as the segments of the wire @p conductor, in the
+	conductor_path table and the cache in front of it. An empty @p path
+	stores nothing.
+	@return true if that changed what was stored
+*/
+bool projectDataBase::storeConductorPath(const QUuid &conductor, const ConductorPath &path)
+{
+	if (conductor.isNull()) return false;
+	auto known = m_conductor_paths.constFind(conductor);
+	if (known == m_conductor_paths.constEnd() ? path.isEmpty() : *known == path) return false;
+	if (path.isEmpty()) {
+		forgetConductorPath(conductor);
+		return true;
+	}
+	m_conductor_paths.insert(conductor, path);
+
+	const QString uuid = conductor.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM conductor_path WHERE conductor_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeConductorPath remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral(
+			"INSERT INTO conductor_path (conductor_uuid, ord, horizontal, length) "
+			"VALUES (:uuid, :ord, :horizontal, :length)"));
+	for (int i = 0 ; i < path.size() ; ++i) {
+		insert.bindValue(QStringLiteral(":uuid"), uuid);
+		insert.bindValue(QStringLiteral(":ord"), i);
+		insert.bindValue(QStringLiteral(":horizontal"), path.at(i).horizontal ? 1 : 0);
+		insert.bindValue(QStringLiteral(":length"), path.at(i).length);
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeConductorPath insert error : " << insert.lastError();
+		}
+	}
+	return true;
+}
+
+/**
+	@brief projectDataBase::forgetConductorPath
+	No wire holds @p conductor any more, or it is not reshaped: its segments go.
+*/
+void projectDataBase::forgetConductorPath(const QUuid &conductor)
+{
+	if (!m_conductor_paths.remove(conductor)) return;
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM conductor_path WHERE conductor_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), conductor.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::forgetConductorPath error : " << remove.lastError();
+	}
+}
+
+/**
 	@brief projectDataBase::flushConductorProperties
 	Write the conductor_properties rows of every wire changed since the last
 	flush; only the attributes that changed.
@@ -4412,6 +4490,7 @@ void projectDataBase::placeConductor(Conductor *conductor)
 		m_placed_conductors.insert(conductor->uuid(), conductor);
 	storeConductorProperties(conductor->uuid(), conductor->ownProperties());
 	storeConductorLayout(conductor->uuid(), conductor->ownLayout());
+	storeConductorPath(conductor->uuid(), conductor->ownPath());
 	storeSequence(conductor->uuid(), conductor->sequenceNum());
 }
 
@@ -4427,11 +4506,13 @@ void projectDataBase::unplaceConductor(Conductor *conductor, const QUuid &uuid)
 	if (Conductor *other = otherConductorHolder(uuid, nullptr)) {
 		storeConductorProperties(uuid, other->ownProperties());
 		storeConductorLayout(uuid, other->ownLayout());
+		storeConductorPath(uuid, other->ownPath());
 		storeSequence(uuid, other->sequenceNum());
 		return;
 	}
 	m_placed_conductors.remove(uuid);
 	forgetConductorLayout(uuid);
+	forgetConductorPath(uuid);
 	forgetSequence(uuid);
 	if (m_conductor_properties.remove(uuid))
 		m_dirty_conductor_properties.insert(uuid);
@@ -4544,12 +4625,14 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();
+	m_prefilled_paths.clear();
 	for (PrefillTally &tally : m_prefill_tally) tally = PrefillTally();
 
 	QHash<QUuid, int> seen;
 	QHash<QUuid, DiagramContext> elements;
 	QHash<QUuid, ConductorProperties> conductors;
 	QHash<QUuid, ConductorLayout> layouts;
+	QHash<QUuid, ConductorPath> paths;
 	QHash<QUuid, DiagramContext> kinds;
 	QHash<QUuid, ElementPlacement> placements;
 	QHash<QUuid, autonum::sequentialNumbers> sequences;
@@ -4637,6 +4720,19 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 			if (conductor.hasAttribute(QStringLiteral("rotation")) && qIsFinite(rotation))
 				layout.text_rotation = rotation;
 			layouts.insert(uuid, layout);
+
+				//The segments Conductor::pathFromXml() reads from it
+			ConductorPath path;
+			for (QDomElement segment = conductor.firstChildElement(QStringLiteral("segment")) ;
+				 !segment.isNull() ; segment = segment.nextSiblingElement(QStringLiteral("segment")))
+			{
+				if (!segment.hasAttribute(QStringLiteral("length"))) continue;
+				bool ok = false;
+				const qreal length = segment.attribute(QStringLiteral("length")).toDouble(&ok);
+				if (!ok || !qIsFinite(length)) continue;
+				path.append({segment.attribute(QStringLiteral("orientation")) == QLatin1String("horizontal"), savedSegmentLength(length)});
+			}
+			paths.insert(uuid, path);
 			sequences.insert(uuid, elementSequence(conductor));
 		}
 	}
@@ -4653,6 +4749,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		if (seen.value(it.key()) == 1) {
 			m_prefilled_conductors.insert(it.key(), it.value());
 			m_prefilled_layouts.insert(it.key(), layouts.value(it.key()));
+			m_prefilled_paths.insert(it.key(), paths.value(it.key()));
 		}
 	for (auto it = m_prefilled_folios.begin() ; it != m_prefilled_folios.end() ; )
 		it = seen.value(it.key()) == 1 ? std::next(it) : m_prefilled_folios.erase(it);
@@ -4671,6 +4768,8 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		storeConductorProperties(it.key(), it.value());
 	for (auto it = m_prefilled_layouts.constBegin() ; it != m_prefilled_layouts.constEnd() ; ++it)
 		storeConductorLayout(it.key(), it.value());
+	for (auto it = m_prefilled_paths.constBegin() ; it != m_prefilled_paths.constEnd() ; ++it)
+		storeConductorPath(it.key(), it.value());
 }
 
 /**
@@ -4743,6 +4842,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 			if (!keep_unplaced && !m_placed_conductors.contains(it.key()))
 			{
 				forgetConductorLayout(it.key());
+				forgetConductorPath(it.key());
 				forgetSequence(it.key());
 			}
 			continue;
@@ -4764,6 +4864,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();
+	m_prefilled_paths.clear();
 }
 
 /**

@@ -20,6 +20,7 @@
 #include "../autoNum/assignvariables.h"
 #include "../conductorproperties.h"
 #include "../dataBase/conductorlayout.h"
+#include "../dataBase/conductorpath.h"
 
 #include <QGraphicsPathItem>
 #include <QSet>
@@ -133,6 +134,10 @@ class Conductor : public QGraphicsObject
 			/// members, never from the store
 		ConductorLayout ownLayout() const;
 		void storeLayout();
+			/// The segments toXml() writes for this wire (none if the user
+			/// did not reshape it), from its own members, never from the store
+		ConductorPath ownPath() const;
+		void storePath();
 			/// The order wires were made in this session: a project's are
 			/// made in the order its file lists them
 		quint64 creationRank() const {return m_creation_rank;}
