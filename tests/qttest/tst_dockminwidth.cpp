@@ -27,7 +27,9 @@
 #include <QRadioButton>
 #include <QScrollArea>
 #include <QScrollBar>
+#include <QHeaderView>
 #include <QTemporaryDir>
+#include <QTreeWidget>
 #include <QVBoxLayout>
 
 /**
@@ -125,10 +127,14 @@ class tst_dockminwidth : public QObject
 			auto *radio = new QRadioButton(long_text, content);
 			auto *combo = new QComboBox(content);
 			combo->addItem(long_text);
+			auto *tree = new QTreeWidget(content);
+			tree->setHeaderHidden(true);
+			tree->addTopLevelItem(new QTreeWidgetItem({long_text}));
 			layout->addWidget(label);
 			layout->addWidget(box);
 			layout->addWidget(radio);
 			layout->addWidget(combo);
+			layout->addWidget(tree);
 			dock->setWidget(content);
 			editor->addDockWidget(Qt::RightDockWidgetArea, dock);
 			dock->show();
@@ -136,6 +142,15 @@ class tst_dockminwidth : public QObject
 
 			QVERIFY(label->wordWrap());
 			checkNarrow(dock, QStringLiteral("a dock of long texts"));
+
+				//A narrow tree shows its entry whole and scrolls sideways
+			editor->resizeDocks({dock}, {150}, Qt::Horizontal);
+			QTest::qWait(200);
+			const int text_width = tree->fontMetrics().horizontalAdvance(long_text);
+			QVERIFY2(tree->header()->sectionSize(0) >= text_width,
+				 qPrintable(QString("the entry is cut to %1 px of %2").arg(tree->header()->sectionSize(0)).arg(text_width)));
+			QVERIFY(tree->horizontalScrollBar()->isVisible());
+			QVERIFY(tree->horizontalScrollBar()->maximum() > 0);
 
 				//The check box's text, beside it, toggles it
 			QLabel *box_text = nullptr;

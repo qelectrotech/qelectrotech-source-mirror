@@ -31,6 +31,8 @@
 #include <QRadioButton>
 #include <QScrollArea>
 #include <QScrollBar>
+#include <QHeaderView>
+#include <QTreeView>
 
 namespace {
 	const char *const handled = "qetDockFitHandled";
@@ -231,6 +233,16 @@ void DockFit::wrap(QWidget *widget)
 		label->setWordWrap(true);
 	} else if (qobject_cast<QCheckBox *>(widget) || qobject_cast<QRadioButton *>(widget)) {
 		wrapButton(static_cast<QAbstractButton *>(widget));
+	} else if (auto *tree = qobject_cast<QTreeView *>(widget)) {
+			//A tree of one column (the collections, the project's
+			//folios): the column takes the width of its longest entry
+			//rather than the tree's, so names are no longer cut with "…"
+			//and a narrow tree scrolls sideways with its own scroll bar
+		if (tree->isHeaderHidden()) {
+			tree->header()->setStretchLastSection(false);
+			tree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+			tree->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+		}
 	} else if (auto *combo = qobject_cast<QComboBox *>(widget)) {
 		if (combo->sizeAdjustPolicy() != QComboBox::AdjustToMinimumContentsLengthWithIcon) {
 			combo->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLengthWithIcon);
