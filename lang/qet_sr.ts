@@ -3895,6 +3895,36 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>DynamicElementTextModel</name>
     <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height</source>
+        <translation>Висина</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
+        <source>Width fixed</source>
+        <translation>Фиксна ширина</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height fixed</source>
+        <translation>Фиксна висина</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="328"/>
+        <source>Ticked, the text field keeps the width above and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>Означено: текстуално поље задржава горњу ширину и текст се у њему прелама. Неозначено: широко је колико и текст.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="331"/>
+        <source>Ticked, the text field keeps the height above and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>Означено: текстуално поље задржава горњу висину, а редови који не стану се одсецају. Неозначено: високо је колико и текст.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>
+        <source>Change the height of an element text</source>
+        <translation>Промени висину текста елемента</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="70"/>
         <source>Property</source>
         <translation type="unfinished"></translation>

@@ -3866,6 +3866,36 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>DynamicElementTextModel</name>
     <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height</source>
+        <translation>高度</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
+        <source>Width fixed</source>
+        <translation>固定宽度</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height fixed</source>
+        <translation>固定高度</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="328"/>
+        <source>Ticked, the text field keeps the width above and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>勾选后文本框保持上面的宽度，文本在其中换行。不勾选时与文本同宽。</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="331"/>
+        <source>Ticked, the text field keeps the height above and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>勾选后文本框保持上面的高度，放不下的行被截断。不勾选时与文本同高。</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>
+        <source>Change the height of an element text</source>
+        <translation>更改元件文本的高度</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="70"/>
         <source>Property</source>
         <translation>属性</translation>
