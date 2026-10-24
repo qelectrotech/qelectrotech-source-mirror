@@ -32,7 +32,8 @@ class QWidget;
 	  too: a label wraps its text; a check box or a radio button, which
 	  never wraps its own text, gets it in a wrapping label beside it, a
 	  click on which still toggles it; a combo box no longer widens to its
-	  longest entry.
+	  longest entry; a tree without a header shows its entries whole and
+	  scrolls sideways, instead of cutting them to its width.
 	- Every dock shows its content in a sideways scroll area: made
 	  narrower than what cannot wrap (fields, buttons), the panel shows a
 	  horizontal scroll bar, so everything stays within reach. Its height
