@@ -121,6 +121,9 @@ class Bridge : public QObject
 		bool hasTerminal(const BridgeTerminal &terminal) const;
 		void addTerminal(const BridgeTerminal &terminal);
 		void removeTerminal(const BridgeTerminal &terminal);
+			///Write a whole set of terminals in place of another: what a
+			///line really crosses, worked out again after it was changed
+		void setTerminals(const QList<BridgeTerminal> &terminals);
 		int terminalCount() const;
 
 		//Sections

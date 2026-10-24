@@ -68,6 +68,14 @@ class BridgeManager
 		static Bridge *bridgeByUuid(QETProject *project, const QUuid &uuid);
 		static Element *elementFor(QETProject *project, const BridgeTerminal &terminal);
 
+			/**
+				The terminals the bridge lands on at this very moment,
+				worked out from its lines as they are drawn now: what a
+				line crosses is what it takes, and a line moved onto or
+				off a terminal takes it on or drops it again.
+			*/
+		static QList<BridgeTerminal> terminalsOfBridge(QETProject *project, Bridge *bridge);
+
 			//What the bridge takes over from its first terminal, read live
 		static QString functionOf(QETProject *project, Bridge *bridge);
 		static QString tensionOf(QETProject *project, Bridge *bridge);

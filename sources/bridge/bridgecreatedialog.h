@@ -55,6 +55,13 @@ class BridgeCreateDialog : public QDialog
 		explicit BridgeCreateDialog(Diagram *diagram,
 									const QList<BridgeCrossing> &crossings,
 									QWidget *parent = nullptr);
+			/**
+				The window of a bridge already drawn, opened by double
+				clicking one of its lines: the colour and how many
+				terminals it may hold, both the bridge's own -- nothing
+				here lands on anything.
+			*/
+		explicit BridgeCreateDialog(Bridge *bridge, QWidget *parent = nullptr);
 		~BridgeCreateDialog() override = default;
 
 			///The bridge to land on, or nullptr when a new one is built
@@ -89,6 +96,9 @@ class BridgeCreateDialog : public QDialog
 		Diagram *m_diagram = nullptr;
 		QList<BridgeCrossing> m_crossings;
 		Bridge *m_bridge = nullptr;
+			///The bridge being edited, when this is its window rather
+			///than the one opening after a line was drawn
+		Bridge *m_editing = nullptr;
 
 		QTabWidget *m_tabs = nullptr;
 		QSpinBox *m_max_sb = nullptr;

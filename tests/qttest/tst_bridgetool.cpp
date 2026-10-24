@@ -22,6 +22,8 @@
 #include "bridge/bridge.h"
 #include "bridge/bridgecreatedialog.h"
 #include "bridge/bridgemanager.h"
+#include "bridge/bridgepart.h"
+#include "bridge/bridgeundocommands.h"
 #include "diagram.h"
 #include "properties/elementdata.h"
 #include "qetgraphicsitem/element.h"
@@ -33,6 +35,7 @@
 #include <QListWidget>
 #include <QSpinBox>
 #include <QTabWidget>
+#include <QUndoStack>
 
 /**
 	The bridge drawn over terminals: the object behind the line (what it
@@ -405,6 +408,159 @@ private slots:
 		dialog.findChild<QSpinBox *>(QStringLiteral("bridge_max_sb"))
 				->setValue(Bridge::unlimited_connections);
 		QVERIFY2(dialog.problem().isEmpty(), "no limit is no problem");
+	}
+
+	//A line stretched by hand gives the bridge the terminals it crosses
+	//now and takes back the ones it no longer runs over -- in one step,
+	//so one undo puts the line and its connections back together
+	void stretchingTheLineGivesAndTakesTerminals()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 3);
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
+
+		BridgePartData data;
+		data.uuid = QUuid::createUuid();
+		data.diagram = folio->uuid();
+		data.p1 = terminals.at(0)->element()->scenePos();
+		data.p2 = terminals.at(1)->element()->scenePos();
+
+		Bridge *bridge = project.newBridge();
+		bridge->addPart(data);
+		bridge->setTerminals({terminalOf(terminals.at(0)), terminalOf(terminals.at(1))});
+
+		auto *part = new BridgePart(data);
+		part->setBridge(bridge);
+		folio->addItem(part);
+
+		const QLineF before_line = part->line();
+		const QList<BridgeTerminal> before = bridge->terminals();
+
+			//The end dragged from the second terminal onto the third
+		const QLineF after_line(terminals.at(1)->element()->scenePos(),
+							   terminals.at(2)->element()->scenePos());
+		part->setLine(after_line.p1(), after_line.p2());
+		const QList<BridgeTerminal> after = BridgeManager::terminalsOfBridge(&project, bridge);
+
+		QVERIFY2(after.contains(terminalOf(terminals.at(2))),
+				 "the line lands on the terminal it runs over now");
+		QVERIFY2(!after.contains(terminalOf(terminals.at(0))),
+				 "and drops the one it no longer runs over");
+
+		folio->undoStack().push(new ChangeBridgeGeometryCommand(
+									bridge, part, before_line, after_line, before, after));
+		QCOMPARE(part->line(), after_line);
+		QCOMPARE(bridge->terminals(), after);
+
+		folio->undoStack().undo();
+		QCOMPARE(part->line(), before_line);
+		QCOMPARE(bridge->terminals(), before);
+	}
+
+	//What the window of a bridge changes -- colour and how many
+	//terminals it may hold -- is one step as well
+	void changingThePropertiesOfABridgeIsOneStep()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(!terminals.isEmpty());
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
+
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(terminalOf(terminals.first()));
+		QCOMPARE(bridge->color(), QColor(Qt::black));
+		QCOMPARE(bridge->maxConnections(), Bridge::unlimited_connections);
+
+		folio->undoStack().push(new ChangeBridgePropertiesCommand(bridge, QColor(Qt::red), 3));
+		QCOMPARE(bridge->color(), QColor(Qt::red));
+		QCOMPARE(bridge->maxConnections(), 3);
+
+		folio->undoStack().undo();
+		QCOMPARE(bridge->color(), QColor(Qt::black));
+		QCOMPARE(bridge->maxConnections(), Bridge::unlimited_connections);
+	}
+
+	//A bridge which already holds terminals may not be given a limit
+	//below them: that would cut off terminals which are on it
+	void anEditMayNotCutOffTheTerminalsAlreadyOnTheBridge()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(terminalOf(terminals.at(0)));
+		bridge->addTerminal(terminalOf(terminals.at(1)));
+
+		BridgeCreateDialog dialog(bridge);
+		auto *max_sb = dialog.findChild<QSpinBox *>(QStringLiteral("bridge_max_sb"));
+		QVERIFY(max_sb);
+		QCOMPARE(max_sb->value(), Bridge::unlimited_connections);
+
+		max_sb->setValue(1);
+		QVERIFY2(!dialog.problem().isEmpty(),
+				 "a limit below what is already on the bridge is refused");
+		max_sb->setValue(2);
+		QVERIFY2(dialog.problem().isEmpty(), "exactly what it holds is allowed");
+		max_sb->setValue(Bridge::unlimited_connections);
+		QVERIFY(dialog.problem().isEmpty());
+	}
+
+	//Deleting one line of a bridge takes the whole bridge: every line
+	//of it, on whichever folio it stands, and one undo draws them all
+	//again where they were
+	void deletingABridgeTakesEveryLineWithIt()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		QVERIFY2(project.diagrams().size() >= 2, "the fixture has more than one folio");
+
+		Diagram *first_folio = project.diagrams().at(0);
+		Diagram *second_folio = project.diagrams().at(1);
+
+		BridgePartData first_data;
+		first_data.uuid = QUuid::createUuid();
+		first_data.diagram = first_folio->uuid();
+		first_data.p1 = QPointF(100, 100);
+		first_data.p2 = QPointF(200, 100);
+
+		BridgePartData second_data;
+		second_data.uuid = QUuid::createUuid();
+		second_data.diagram = second_folio->uuid();
+		second_data.p1 = QPointF(300, 300);
+		second_data.p2 = QPointF(400, 300);
+
+		Bridge *bridge = project.newBridge();
+		bridge->addPart(first_data);
+		bridge->addPart(second_data);
+
+		auto *first_part = new BridgePart(first_data);
+		first_part->setBridge(bridge);
+		first_folio->addItem(first_part);
+
+		auto *second_part = new BridgePart(second_data);
+		second_part->setBridge(bridge);
+		second_folio->addItem(second_part);
+
+		first_folio->undoStack().push(new RemoveBridgeCommand({first_part}));
+		QVERIFY2(!project.bridges().contains(bridge), "the bridge is gone with its line");
+		QVERIFY(!first_part->scene());
+		QVERIFY2(!second_part->scene(), "every line of it goes, wherever it stands");
+
+		first_folio->undoStack().undo();
+		QVERIFY(project.bridges().contains(bridge));
+		QCOMPARE(first_part->scene(), static_cast<QGraphicsScene *>(first_folio));
+		QCOMPARE(second_part->scene(), static_cast<QGraphicsScene *>(second_folio));
 	}
 };
 

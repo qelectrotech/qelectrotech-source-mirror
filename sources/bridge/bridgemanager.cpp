@@ -29,6 +29,7 @@
 #include "../qetproject.h"
 #include "../conductorproperties.h"
 #include "../properties/elementdata.h"
+#include "bridgepart.h"
 
 #include <QPainterPath>
 #include <algorithm>
@@ -227,6 +228,57 @@ int BridgeManager::freeColumn(QETProject *project, const QList<BridgeTerminal> &
 		}
 	}
 	return 0;
+}
+
+/**
+	@brief BridgeManager::terminalsOfBridge
+	@param project
+	@param bridge
+	@return the terminals the bridge lands on at this very moment,
+	worked out from its lines as they are drawn now: what a line crosses
+	is what it takes. A line moved onto or off a terminal takes it on or
+	drops it again, and the order of the list follows the drawing -- the
+	first terminal of it is the one the bridge takes its information
+	from.
+*/
+QList<BridgeTerminal> BridgeManager::terminalsOfBridge(QETProject *project, Bridge *bridge)
+{
+	QList<BridgeTerminal> result;
+	if (!project || !bridge) {
+		return result;
+	}
+
+	for (const BridgePartData &data : bridge->parts())
+	{
+		Diagram *folio = project->diagramByUuid(data.diagram);
+		if (!folio) {
+			continue;
+		}
+
+			//The line as it is drawn right now: the item is ahead of the
+			//data while the user drags an end around
+		QLineF line(data.p1, data.p2);
+		const auto items = folio->items();
+		for (QGraphicsItem *item : items) {
+			if (auto *part = qgraphicsitem_cast<BridgePart *>(item)) {
+				if (part->partUuid() == data.uuid) {
+					line = part->line();
+					break;
+				}
+			}
+		}
+
+		const auto crossings = crossedTerminals(folio, line);
+		for (const BridgeCrossing &crossing : crossings) {
+			BridgeTerminal terminal;
+			terminal.element = crossing.element->uuid();
+			terminal.terminal = crossing.terminal;
+			if (!result.contains(terminal)) {
+				result << terminal;
+			}
+		}
+	}
+	return result;
 }
 
 /**

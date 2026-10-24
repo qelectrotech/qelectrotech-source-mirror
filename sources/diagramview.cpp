@@ -27,6 +27,8 @@
 #include "cable/cablecopy.h"
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
+#include "bridge/bridgepart.h"
+#include "bridge/bridgeundocommands.h"
 #include "diagramevent/diagrameventaddelement.h"
 #include "diagramevent/diagrameventaddmacro.h"
 #include "dvevent/dveventinterface.h"
@@ -670,17 +672,22 @@ void DiagramView::cut()
 	DiagramContent cut_content(m_diagram);
 		//A cable line is not held by DiagramContent: it leaves with a
 		//command of its own, which takes the cable itself away too when
-		//no line of it is left on the folio.
+		//no line of it is left on the folio. A bridge line the same way
+		//-- one takes the whole bridge with it.
 	QList<CablePart *> cable_cut;
+	QList<BridgePart *> bridge_cut;
 	for (QGraphicsItem *item : m_diagram->selectedItems()) {
 		if (auto *part = qgraphicsitem_cast<CablePart *>(item)) {
 			cable_cut << part;
+		}
+		if (auto *part = qgraphicsitem_cast<BridgePart *>(item)) {
+			bridge_cut << part;
 		}
 	}
 
 	m_diagram -> clearSelection();
 
-	if (cable_cut.isEmpty()) {
+	if (cable_cut.isEmpty() && bridge_cut.isEmpty()) {
 		m_diagram -> undoStack().push(new CutDiagramCommand(m_diagram, cut_content));
 		return;
 	}
@@ -689,7 +696,12 @@ void DiagramView::cut()
 	if (cut_content.count()) {
 		command = new CutDiagramCommand(m_diagram, cut_content);
 	}
-	command = batchWith(command, new RemoveCableCommand(m_diagram, cable_cut));
+	if (!cable_cut.isEmpty()) {
+		command = batchWith(command, new RemoveCableCommand(m_diagram, cable_cut));
+	}
+	if (!bridge_cut.isEmpty()) {
+		command = batchWith(command, new RemoveBridgeCommand(bridge_cut));
+	}
 	m_diagram -> undoStack().push(command);
 }
 

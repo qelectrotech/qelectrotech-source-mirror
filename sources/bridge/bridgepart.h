@@ -61,6 +61,9 @@ class BridgePart : public QetGraphicsItem
 		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 		QString name() const override;
 
+		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 			///Opens the dialog editing the properties of the whole bridge
 		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
 		void editProperty() override;
@@ -73,6 +76,11 @@ class BridgePart : public QetGraphicsItem
 		QUuid m_part_uuid;
 		QPointF m_p1;
 		QPointF m_p2;
+			///1 or 2 while one of the ends is dragged around, 0 otherwise
+		int m_stretch_end = 0;
+			///Where the line stood when the drag began, to put it back
+			///when what it would take cannot be built
+		QLineF m_stretched_from;
 };
 
 #endif // BRIDGEPART_H

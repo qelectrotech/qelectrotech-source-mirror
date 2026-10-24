@@ -18,9 +18,23 @@
 #include "bridgepart.h"
 
 #include "../diagram.h"
+#include "../qetproject.h"
+#include "bridgecreatedialog.h"
+#include "bridgemanager.h"
+#include "bridgeundocommands.h"
 
+#include <QGraphicsSceneMouseEvent>
+#include <QMessageBox>
 #include <QPainter>
 #include <QStyleOptionGraphicsItem>
+#include <QUndoStack>
+
+namespace {
+		///How close to one of its ends a click has to land to take hold
+		///of it: generous enough for the hand, tight enough that the
+		///middle of the line stays free for selecting
+	constexpr qreal grip_radius = 6.0;
+}
 
 /**
 	@brief BridgePart::BridgePart
@@ -139,6 +153,105 @@ QString BridgePart::name() const {
 }
 
 /**
+	@brief BridgePart::mousePressEvent
+	Taking hold of one of the ends starts stretching the line: the end
+	follows the mouse and, with it, which terminals the bridge lands on.
+	@param event
+*/
+void BridgePart::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	const QPointF pos = mapToScene(event->pos());
+	if (QLineF(pos, m_p1).length() <= grip_radius) {
+		m_stretch_end = 1;
+	} else if (QLineF(pos, m_p2).length() <= grip_radius) {
+		m_stretch_end = 2;
+	}
+
+	if (m_stretch_end) {
+		m_stretched_from = line();
+		setSelected(true);
+		event->accept();
+		return;
+	}
+	QetGraphicsItem::mousePressEvent(event);
+}
+
+/**
+	@brief BridgePart::mouseMoveEvent
+	@param event
+*/
+void BridgePart::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (!m_stretch_end) {
+		QetGraphicsItem::mouseMoveEvent(event);
+		return;
+	}
+
+	const QPointF end = Diagram::snapToGrid(event->scenePos());
+	if (m_stretch_end == 1) {
+		setLine(end, m_p2);
+	} else {
+		setLine(m_p1, end);
+	}
+	event->accept();
+}
+
+/**
+	@brief BridgePart::mouseReleaseEvent
+	Letting go of the end leaves the line where it is and gives the
+	bridge the terminals it crosses now -- and takes back the ones it no
+	longer runs over. A bridge which cannot hold what the line would
+	take keeps its old length: that one cannot be built, so it is not
+	drawn.
+	@param event
+*/
+void BridgePart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (!m_stretch_end) {
+		QetGraphicsItem::mouseReleaseEvent(event);
+		return;
+	}
+	m_stretch_end = 0;
+
+	Bridge *bridge = m_bridge;
+	Diagram *folio = diagram();
+	QETProject *project = folio ? folio->project() : nullptr;
+	if (!bridge || !project) {
+		return;
+	}
+
+	const QLineF before_line = m_stretched_from;
+	const QLineF after_line = line();
+	const QList<BridgeTerminal> before = bridge->terminals();
+	const QList<BridgeTerminal> after = BridgeManager::terminalsOfBridge(project, bridge);
+
+	if (before_line == after_line && before == after) {
+		return;
+	}
+
+	int added = 0;
+	for (const BridgeTerminal &terminal : after) {
+		if (!before.contains(terminal)) {
+			++added;
+		}
+	}
+	if (added && bridge->wouldExceed(added)) {
+		setLine(before_line.p1(), before_line.p2());
+		QMessageBox::warning(nullptr, tr("That bridge cannot be built"),
+							 tr("The line would land on %1 terminal(s) more than the "
+								"bridge may hold: it keeps the length it had.")
+							 .arg(added));
+		event->accept();
+		return;
+	}
+
+	folio->undoStack().push(
+		new ChangeBridgeGeometryCommand(bridge, this,
+										before_line, after_line, before, after));
+	event->accept();
+}
+
+/**
 	@param event
 */
 void BridgePart::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
@@ -148,11 +261,32 @@ void BridgePart::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
-	The dialog editing the properties of the whole bridge: colour and
-	how many terminals it may hold. It comes with the bridge tool.
+	Opens the dialog editing the properties of the whole bridge: its
+	colour and how many terminals it may hold. Both are the bridge's own
+	-- every line of it is drawn in that colour -- and what is changed
+	here is one undo step.
 */
 void BridgePart::editProperty()
 {
+	Bridge *bridge = m_bridge;
+	Diagram *folio = diagram();
+	if (!bridge || !folio) {
+		return;
+	}
+
+	BridgeCreateDialog dialog(bridge,
+							  folio->views().isEmpty() ? nullptr : folio->views().constFirst());
+	if (dialog.exec() != QDialog::Accepted) {
+		return;
+	}
+
+	const QColor color = dialog.newColor();
+	const int max_connections = dialog.newMaxConnections();
+	if (color == bridge->color() && max_connections == bridge->maxConnections()) {
+		return;
+	}
+	folio->undoStack().push(
+		new ChangeBridgePropertiesCommand(bridge, color, max_connections));
 }
 
 /**

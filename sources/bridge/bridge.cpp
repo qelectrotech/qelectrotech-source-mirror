@@ -170,6 +170,18 @@ void Bridge::removeTerminal(const BridgeTerminal &terminal)
 }
 
 /**
+	@param terminals
+*/
+void Bridge::setTerminals(const QList<BridgeTerminal> &terminals)
+{
+	if (m_terminals == terminals) {
+		return;
+	}
+	m_terminals = terminals;
+	emit changed();
+}
+
+/**
 	@return how many terminals this bridge lands on
 */
 int Bridge::terminalCount() const {

@@ -996,6 +996,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/bridge/bridgemanager.h
   ${QET_DIR}/sources/bridge/bridgepart.cpp
   ${QET_DIR}/sources/bridge/bridgepart.h
+  ${QET_DIR}/sources/bridge/bridgeundocommands.cpp
+  ${QET_DIR}/sources/bridge/bridgeundocommands.h
 
   ${QET_DIR}/sources/cable/addcablecommand.cpp
   ${QET_DIR}/sources/cable/addcablecommand.h

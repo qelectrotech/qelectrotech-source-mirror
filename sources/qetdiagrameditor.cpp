@@ -59,6 +59,8 @@
 #include "diagramevent/diagrameventaddtext.h"
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
+#include "bridge/bridgepart.h"
+#include "bridge/bridgeundocommands.h"
 #include "diagramevent/diagrameventaddpaste.h"
 #include "diagramview.h"
 #include "elementtextpattern.h"
@@ -2923,26 +2925,39 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 					//A cable line is not held by DiagramContent: it is
 					//removed by its own command, which also lets the cable
 					//it belongs to go when no line of it is left anywhere.
+					//A bridge line the same way -- and one takes the whole
+					//bridge with it, every line of it.
 				QList<CablePart *> cable_parts;
+				QList<BridgePart *> bridge_parts;
 				for (QGraphicsItem *item : diagram->selectedItems()) {
 					if (auto *part = qgraphicsitem_cast<CablePart *>(item)) {
 						cable_parts << part;
+					}
+					if (auto *part = qgraphicsitem_cast<BridgePart *>(item)) {
+						bridge_parts << part;
 					}
 				}
 				const bool other_items = dc.hasDeletableItems();
 
                 diagram->clearSelection();
 
-				if (cable_parts.isEmpty()) {
-					diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
-				} else if (!other_items) {
-					diagram->undoStack().push(new RemoveCableCommand(diagram, cable_parts));
+				QList<QUndoCommand *> steps;
+				if (other_items || (cable_parts.isEmpty() && bridge_parts.isEmpty())) {
+					steps << new DeleteQGraphicsItemCommand(diagram, dc);
+				}
+				if (!cable_parts.isEmpty()) {
+					steps << new RemoveCableCommand(diagram, cable_parts);
+				}
+				if (!bridge_parts.isEmpty()) {
+					steps << new RemoveBridgeCommand(bridge_parts);
+				}
+
+					//One single step, so a selection holding both a line
+					//and ordinary drawings comes back whole.
+				if (steps.size() == 1) {
+					diagram->undoStack().push(steps.first());
 				} else {
-						//One single step, so a selection holding both a
-						//cable and ordinary drawings comes back whole.
-					diagram->undoStack().push(new BatchCommand(
-						new DeleteQGraphicsItemCommand(diagram, dc),
-						new RemoveCableCommand(diagram, cable_parts)));
+					diagram->undoStack().push(new BatchCommand(steps, tr("Delete")));
 				}
                 dv->adjustSceneRect();
             }

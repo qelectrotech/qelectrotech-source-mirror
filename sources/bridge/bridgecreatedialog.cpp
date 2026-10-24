@@ -129,6 +129,46 @@ BridgeCreateDialog::BridgeCreateDialog(Diagram *diagram,
 }
 
 /**
+	@brief BridgeCreateDialog::BridgeCreateDialog
+	The window of a bridge already drawn, opened by double clicking one
+	of its lines: only its own properties, colour and how many terminals
+	it may hold. Nothing here lands on anything.
+	@param bridge
+	@param parent
+*/
+BridgeCreateDialog::BridgeCreateDialog(Bridge *bridge, QWidget *parent) :
+	QDialog(parent),
+	m_editing(bridge)
+{
+	setWindowTitle(tr("The bridge"));
+
+	auto *layout = new QVBoxLayout(this);
+	layout->addWidget(new QLabel(
+		tr("%n terminal(s) on this bridge", "how many terminals the bridge lands on",
+		   bridge ? bridge->terminalCount() : 0), this));
+
+	layout->addWidget(new QLabel(tr("Terminals this bridge may hold:"), this));
+	m_max_sb = new QSpinBox(this);
+	m_max_sb->setObjectName(QStringLiteral("bridge_max_sb"));
+	m_max_sb->setRange(Bridge::unlimited_connections, 99);
+	m_max_sb->setSpecialValueText(tr("Unlimited"));
+	m_max_sb->setValue(bridge ? bridge->maxConnections() : Bridge::unlimited_connections);
+	layout->addWidget(m_max_sb);
+
+	layout->addWidget(new QLabel(tr("Bridge colour:"), this));
+	m_color_cb = new KColorCombo(this);
+	m_color_cb->setObjectName(QStringLiteral("bridge_color_cb"));
+	m_color_cb->setColors(TerminalStripBridge::bridgeColor().toList());
+	m_color_cb->setColor(bridge ? bridge->color() : QColor(Qt::black));
+	layout->addWidget(m_color_cb);
+
+	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
+	layout->addWidget(buttons);
+	connect(buttons, &QDialogButtonBox::accepted, this, &BridgeCreateDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, this, &BridgeCreateDialog::reject);
+}
+
+/**
 	@return the bridge to land on, or nullptr when a new one is built
 */
 Bridge *BridgeCreateDialog::bridge() const {
@@ -160,6 +200,18 @@ int BridgeCreateDialog::newMaxConnections() const {
 QString BridgeCreateDialog::problem() const
 {
 	const int needed = m_crossings.size();
+
+		//The window of a bridge already drawn: a limit below what it
+		//already holds would cut off terminals which are on it
+	if (m_editing) {
+		if (newMaxConnections() != Bridge::unlimited_connections
+			&& newMaxConnections() < m_editing->terminalCount()) {
+			return tr("This bridge holds %1 terminal(s): it may not be given a limit "
+					  "below that.")
+					.arg(m_editing->terminalCount());
+		}
+		return {};
+	}
 
 	if (m_tabs->currentIndex() == 0) {
 		if (newMaxConnections() != Bridge::unlimited_connections
@@ -197,6 +249,11 @@ void BridgeCreateDialog::accept()
 	const QString problem_ = problem();
 	if (!problem_.isEmpty()) {
 		QMessageBox::warning(this, tr("That bridge cannot be built"), problem_);
+		return;
+	}
+
+	if (m_editing) {
+		QDialog::accept();
 		return;
 	}
 
