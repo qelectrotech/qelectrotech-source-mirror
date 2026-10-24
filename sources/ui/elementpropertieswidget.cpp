@@ -489,7 +489,10 @@ QWidget *ElementPropertiesWidget::generalWidget()
 						 last.section(QStringLiteral("  "), 2, 2).section(QLatin1Char('@'), 0, 0));
 		}
 	}
-	description_string += QString(tr("Location : %1\n")).arg(m_element.data()->location().toString());
+		//A zero-width space after each slash lets the long path wrap
+		//there, rather than hold the panel at its whole length
+	description_string += QString(tr("Location : %1\n")).arg(
+				m_element.data()->location().toString().replace(QLatin1Char('/'), QStringLiteral("/\u200B")));
 
 		// widget himself
 	QWidget *general_widget = new QWidget (m_tab);
@@ -524,10 +527,10 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	connect(find_in_panel, &QPushButton::clicked, this, &ElementPropertiesWidget::findInPanel);
 	QPushButton *edit_element = new QPushButton(QET::Icons::ElementEdit, tr("Edit element"), general_widget);
 	connect(edit_element, &QPushButton::clicked, this, &ElementPropertiesWidget::editElement);
-	QHBoxLayout *hlayout_ = new QHBoxLayout;
-	hlayout_->addWidget(find_in_panel);
-	hlayout_->addWidget(edit_element);
-	vlayout_->addLayout(hlayout_);
+		//Below each other: side by side, the two held the panel at the
+		//width of both
+	vlayout_->addWidget(find_in_panel);
+	vlayout_->addWidget(edit_element);
 
 		//Set the maximum size of the pixmap to the minimum size of the layout
 	QPixmap pixmap = m_element->pixmap();
