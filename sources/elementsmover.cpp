@@ -275,6 +275,13 @@ void ElementsMover::continueMovement(const QPointF &movement)
 	{
 		m_current_movement -= movement;
 		applyMovement(-movement);
+			//The element under the finger moves with its own hand rather
+			//than with the loop above, so it is put back as well: the
+			//terminal comes off the bridge it may not be dropped on and
+			//stays at the mouse, to be dropped somewhere else.
+		if (m_movement_driver) {
+			m_movement_driver->QGraphicsItem::setPos(m_movement_driver->pos() - movement);
+		}
 		if (m_status_bar) {
 			m_status_bar->showMessage(
 				QObject::tr("A terminal may not be dropped on a bridge which cannot take one more."));
@@ -340,9 +347,22 @@ void ElementsMover::endMovement()
 			const QList<BridgeTerminal> before = bridge->terminals();
 			const QList<BridgeTerminal> after =
 					BridgeManager::terminalsOfBridge(m_diagram->project(), bridge);
-			if (after != before) {
-				new ChangeBridgeTerminalsCommand(bridge, before, after, undo_object);
+			if (after == before) {
+				continue;
 			}
+				//The limit is the one thing which is never crossed,
+				//whatever slipped through while the hand was moving: a
+				//bridge which cannot be built is not written either
+			int gained = 0;
+			for (const BridgeTerminal &terminal : after) {
+				if (!before.contains(terminal)) {
+					++gained;
+				}
+			}
+			if (gained > 0 && bridge->wouldExceed(gained)) {
+				continue;
+			}
+			new ChangeBridgeTerminalsCommand(bridge, before, after, undo_object);
 		}
 	}
 
