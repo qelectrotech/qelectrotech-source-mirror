@@ -17,6 +17,7 @@
 */
 #include "bridgemanager.h"
 
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../TerminalStrip/physicalterminal.h"
 #include "../TerminalStrip/realterminal.h"
 #include "../TerminalStrip/terminalstrip.h"
@@ -376,9 +377,10 @@ Element *BridgeManager::elementFor(QETProject *project, const BridgeTerminal &te
 	@brief BridgeManager::informationOf
 	@param project
 	@param terminal
-	@return what that terminal carries as information: its function
-	text and the voltage/protocol of a wire wired to it. Read live, so
-	the bridge follows the way the cores of a cable follow their wires.
+	@return what that terminal carries as information: the function and
+	the voltage/protocol of a wire wired to it -- the very values the
+	wires carry themselves. Read live, so the bridge follows them the way
+	they follow each other.
 */
 BridgeInformation BridgeManager::informationOf(QETProject *project, const BridgeTerminal &terminal)
 {
@@ -387,15 +389,18 @@ BridgeInformation BridgeManager::informationOf(QETProject *project, const Bridge
 	if (!element) {
 		return information;
 	}
-	information.function = element->elementInformations().value(QETInformation::ELMT_FUNCTION).toString();
 
 	const auto terminals = element->terminals();
-	if (!terminals.isEmpty()) {
-		const auto conductors = terminals.first()->conductors();
-		if (!conductors.isEmpty()) {
-			information.tension = conductors.first()->properties().m_tension_protocol;
-		}
+	if (terminals.isEmpty()) {
+		return information;
 	}
+	const auto conductors = terminals.first()->conductors();
+	if (conductors.isEmpty()) {
+		return information;
+	}
+	const ConductorProperties &properties = conductors.first()->properties();
+	information.function = properties.m_function;
+	information.tension = properties.m_tension_protocol;
 	return information;
 }
 
@@ -418,6 +423,55 @@ QList<BridgeInformation> BridgeManager::informationSets(QETProject *project,
 		}
 	}
 	return sets;
+}
+
+/**
+	@brief BridgeManager::writeInformation
+	@param project
+	@param terminals the terminals the bridge lands on
+	@param information what the bridge carries
+	@param parent the undo step this goes with
+*/
+void BridgeManager::writeInformation(QETProject *project,
+									 const QList<BridgeTerminal> &terminals,
+									 const BridgeInformation &information,
+									 QUndoCommand *parent)
+{
+	if (!project) {
+		return;
+	}
+
+	for (const BridgeTerminal &terminal : terminals)
+	{
+		Element *element = elementFor(project, terminal);
+		if (!element) {
+			continue;
+		}
+		const auto element_terminals = element->terminals();
+		if (element_terminals.isEmpty()) {
+			continue;
+		}
+		const auto conductors = element_terminals.first()->conductors();
+		for (Conductor *conductor : conductors)
+		{
+			if (!conductor) {
+				continue;
+			}
+			const ConductorProperties before = conductor->properties();
+			if (before.m_function == information.function
+				&& before.m_tension_protocol == information.tension) {
+				continue;
+			}
+			ConductorProperties after = before;
+			after.m_function = information.function;
+			after.m_tension_protocol = information.tension;
+
+			QVariant old_value, new_value;
+			old_value.setValue(before);
+			new_value.setValue(after);
+			new QPropertyUndoCommand(conductor, "properties", old_value, new_value, parent);
+		}
+	}
 }
 
 /**

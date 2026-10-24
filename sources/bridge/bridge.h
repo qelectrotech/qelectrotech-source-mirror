@@ -180,6 +180,9 @@ class Bridge : public QObject
 		void changed();
 
 	private:
+		BridgeInformation liveInformation() const;
+
+	private:
 		QUuid m_uuid;
 		QColor m_color = Qt::black;
 		qreal m_line_width = 1.0;

@@ -210,6 +210,10 @@ BridgeCreateDialog::BridgeCreateDialog(Bridge *bridge, QWidget *parent) :
 	@param ok set to false when he cancelled
 	@param parent
 	@return the set the bridge takes
+
+	A bridge which carries nothing takes what is there without being
+	asked -- only a real disagreement between what the candidates carry
+	is worth the question.
 */
 BridgeInformation BridgeCreateDialog::askForInformation(const QList<BridgeInformation> &sets,
 														bool *ok,
@@ -219,18 +223,32 @@ BridgeInformation BridgeCreateDialog::askForInformation(const QList<BridgeInform
 	if (ok) {
 		*ok = false;
 	}
-	if (sets.isEmpty()) {
-		return taken;
+
+		//What is worth keeping: a candidate saying nothing at all is no
+		//candidate, it only ever stands for "nothing to take"
+	QList<BridgeInformation> real;
+	for (const BridgeInformation &set : sets) {
+		if ((set.function.isEmpty() && set.tension.isEmpty()) || real.contains(set)) {
+			continue;
+		}
+		real << set;
 	}
-	if (sets.size() == 1) {
+
+	if (real.isEmpty()) {
 		if (ok) {
 			*ok = true;
 		}
-		return sets.first();
+		return taken;
+	}
+	if (real.size() == 1) {
+		if (ok) {
+			*ok = true;
+		}
+		return real.first();
 	}
 
 	QStringList items;
-	for (const BridgeInformation &set : sets) {
+	for (const BridgeInformation &set : real) {
 		items << tr("%1 / %2", "one choice of function and voltage a bridge could take")
 				.arg(set.function.isEmpty() ? tr("no function") : set.function)
 				.arg(set.tension.isEmpty() ? tr("no voltage") : set.tension);
@@ -252,7 +270,7 @@ BridgeInformation BridgeCreateDialog::askForInformation(const QList<BridgeInform
 	if (ok) {
 		*ok = true;
 	}
-	return sets.at(at);
+	return real.at(at);
 }
 
 /**

@@ -26,9 +26,11 @@
 #include "bridge/bridgeundocommands.h"
 #include "diagram.h"
 #include "properties/elementdata.h"
+#include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
+#include "conductorproperties.h"
 
 #include <QCheckBox>
 #include <QDomDocument>
@@ -658,8 +660,9 @@ private slots:
 	}
 
 	//What the bridge carries is the function and the voltage of the
-	//terminals it lands on: taken over when they agree, asked for when
-	//they do not -- and one undo puts what it carried back
+	//wires at its terminals: taken over without being asked when they
+	//agree, asked for when they do not -- and written onto the wires as
+	//well, so bridge and wires always say the same thing
 	void aBridgeCarriesTheFunctionAndTheVoltage()
 	{
 		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
@@ -674,19 +677,20 @@ private slots:
 		QVERIFY(bridge->functionText().isEmpty());
 		QVERIFY(bridge->tensionText().isEmpty());
 
-			//They agree: nobody is asked and the bridge takes what they
-			//carry
-		const QList<BridgeInformation> sets = BridgeManager::informationSets(
-					&project, {terminalOf(terminals.at(0)), terminalOf(terminals.at(1))});
-		QVERIFY2(sets.size() == 1, "the terminals agree about what they carry");
+			//Nothing to take: nobody is asked and the bridge carries
+			//nothing
 		bool ok = false;
-		const BridgeInformation taken = BridgeCreateDialog::askForInformation(sets, &ok);
-		QVERIFY(ok);
-		QCOMPARE(taken, sets.first());
+		const BridgeInformation nothing = BridgeCreateDialog::askForInformation(
+					QList<BridgeInformation>(), &ok);
+		QVERIFY2(ok, "nothing to take is no question to ask");
+		QVERIFY(nothing.function.isEmpty() && nothing.tension.isEmpty());
 
-			//Nothing at all to take: the question is answered with no
-		BridgeCreateDialog::askForInformation(QList<BridgeInformation>(), &ok);
-		QVERIFY2(!ok, "cancelling leaves everything as it was");
+			//One thing to take: nobody is asked and the bridge takes it
+		const BridgeInformation only{QStringLiteral("PE"), QStringLiteral("24VAC")};
+		const BridgeInformation taken = BridgeCreateDialog::askForInformation(
+					{BridgeInformation(), only}, &ok);
+		QVERIFY(ok);
+		QVERIFY2(taken == only, "a bridge which carries nothing takes what is there");
 
 			//And what the bridge carries is one undo step like the rest
 		bridge->setFunctionText(taken.function);
@@ -701,6 +705,62 @@ private slots:
 		folio->undoStack().undo();
 		QCOMPARE(bridge->functionText(), before.function);
 		QCOMPARE(bridge->tensionText(), before.tension);
+	}
+
+	//Bridge and wires are one circle: what the bridge carries goes onto
+	//the wires it sits on, and when the wires say something else later
+	//the bridge follows them
+	void theWiresSayWhatTheBridgeSays()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(!terminals.isEmpty());
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
+
+			//A terminal with a wire wired to it
+		QSharedPointer<RealTerminal> wired;
+		for (const QSharedPointer<RealTerminal> &terminal : terminals) {
+			Element *element = terminal->element();
+			if (element && !element->terminals().isEmpty()
+				&& !element->terminals().first()->conductors().isEmpty()) {
+				wired = terminal;
+				break;
+			}
+		}
+		if (!wired) {
+			QSKIP("the fixture has no wired terminal");
+		}
+		Conductor *conductor = wired->element()->terminals().first()->conductors().first();
+		const QString original_tension = conductor->properties().m_tension_protocol;
+
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(terminalOf(wired));
+
+		const BridgeInformation information{QStringLiteral("FE"), QStringLiteral("230V")};
+		auto *step = new QUndoCommand();
+		BridgeManager::writeInformation(&project, bridge->terminals(), information, step);
+		folio->undoStack().push(step);
+
+			//The wire says it...
+		QCOMPARE(conductor->properties().m_function, QStringLiteral("FE"));
+		QCOMPARE(conductor->properties().m_tension_protocol, QStringLiteral("230V"));
+			//...and the bridge carries it because its wire does
+		QCOMPARE(bridge->functionText(), QStringLiteral("FE"));
+		QCOMPARE(bridge->tensionText(), QStringLiteral("230V"));
+
+			//Change the wire later and the bridge follows, like every
+			//other wire of that potential
+		ConductorProperties changed = conductor->properties();
+		changed.m_tension_protocol = QStringLiteral("0V");
+		conductor->setProperties(changed);
+		QCOMPARE(bridge->tensionText(), QStringLiteral("0V"));
+
+			//And one undo puts the wires back the way they were
+		folio->undoStack().undo();
+		QCOMPARE(conductor->properties().m_tension_protocol, original_tension);
 	}
 };
 

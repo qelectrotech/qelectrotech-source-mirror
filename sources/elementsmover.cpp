@@ -373,21 +373,26 @@ void ElementsMover::endMovement()
 			}
 				//What the bridge carries as information follows the
 				//terminals: when they do not agree the user is asked
-				//which the bridge takes, and cancelling keeps the bridge
-				//as it was -- the terminal crosses its line without being
-				//connected to it.
-			const QList<BridgeInformation> sets =
+				//which the bridge takes -- its own among the candidates
+				//-- and cancelling keeps the bridge as it was: the
+				//terminal crosses its line without being connected to it.
+			const BridgeInformation information_before{
+						bridge->functionText(), bridge->tensionText()};
+			QList<BridgeInformation> candidates =
 					BridgeManager::informationSets(m_diagram->project(), after);
+			candidates.prepend(information_before);
 			bool take_information = false;
 			const BridgeInformation information =
-					BridgeCreateDialog::askForInformation(sets, &take_information);
+					BridgeCreateDialog::askForInformation(candidates, &take_information);
 			if (!take_information) {
 				continue;
 			}
-			const BridgeInformation information_before{
-						bridge->functionText(), bridge->tensionText()};
-			new ChangeBridgeTerminalsCommand(bridge, before, after,
+			auto *command = new ChangeBridgeTerminalsCommand(bridge, before, after,
 											 information_before, information, undo_object);
+				//Bridge and wires say the same thing: what the bridge
+				//carries goes onto the wires it sits on, in the very same
+				//undo step
+			BridgeManager::writeInformation(m_diagram->project(), after, information, command);
 		}
 	}
 

@@ -289,23 +289,29 @@ void BridgePart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	}
 
 		//What the bridge carries as information follows the terminals:
-		//when they do not agree the user is asked which the bridge takes,
-		//and cancelling leaves the line the length it had
+		//when they do not agree the user is asked which the bridge takes
+		//-- its own among the candidates -- and cancelling leaves the
+		//line the length it had
 	const BridgeInformation information_before{bridge->functionText(), bridge->tensionText()};
+	QList<BridgeInformation> candidates = BridgeManager::informationSets(project, after);
+	candidates.prepend(information_before);
 	bool take_information = false;
 	const BridgeInformation information_after =
-			BridgeCreateDialog::askForInformation(
-				BridgeManager::informationSets(project, after), &take_information);
+			BridgeCreateDialog::askForInformation(candidates, &take_information);
 	if (!take_information) {
 		setLine(before_line.p1(), before_line.p2());
 		event->accept();
 		return;
 	}
 
-	folio->undoStack().push(
-		new ChangeBridgeGeometryCommand(bridge, this,
-										before_line, after_line, before, after,
-										information_before, information_after));
+	auto *command = new ChangeBridgeGeometryCommand(bridge, this,
+													before_line, after_line,
+													before, after,
+													information_before, information_after);
+		//Bridge and wires say the same thing: what the bridge carries
+		//goes onto the wires it sits on, in the very same undo step
+	BridgeManager::writeInformation(project, after, information_after, command);
+	folio->undoStack().push(command);
 	event->accept();
 }
 

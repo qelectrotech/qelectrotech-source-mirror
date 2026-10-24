@@ -378,25 +378,31 @@ void DiagramEventAddBridge::finishLine(const QPointF &end)
 		return;
 	}
 
-		//What the bridge carries as information: the function and the
-		//voltage of the terminals it lands on. When they do not agree the
-		//user is asked which the bridge takes, the way sheet references
-		//are linked -- and cancelling aborts: nothing is drawn.
+	Bridge *bridge = dialog.bridge();
+	const bool own_bridge = !bridge;
+	const BridgeInformation information_before{
+				bridge ? bridge->functionText() : QString(),
+				bridge ? bridge->tensionText() : QString()};
+
+		//What the bridge carries: the function and the voltage of the
+		//terminals it lands on -- and of the bridge it lands on, when
+		//there already is one. When they do not agree the user is asked
+		//which the bridge takes, the way sheet references are linked --
+		//and cancelling aborts: nothing is drawn.
+	QList<BridgeInformation> candidates =
+			BridgeManager::informationSets(m_diagram->project(), terminals);
+	if (!own_bridge) {
+		candidates.prepend(information_before);
+	}
 	bool take_information = false;
 	const BridgeInformation information = BridgeCreateDialog::askForInformation(
-				BridgeManager::informationSets(m_diagram->project(), terminals),
-				&take_information,
+				candidates, &take_information,
 				m_diagram->views().isEmpty() ? nullptr : m_diagram->views().constFirst());
 	if (!take_information) {
 		reset();
 		return;
 	}
 
-	Bridge *bridge = dialog.bridge();
-	const bool own_bridge = !bridge;
-	const BridgeInformation information_before{
-				bridge ? bridge->functionText() : QString(),
-				bridge ? bridge->tensionText() : QString()};
 	if (own_bridge)
 	{
 		bridge = m_diagram->project()->newBridge();
@@ -446,10 +452,14 @@ void DiagramEventAddBridge::finishLine(const QPointF &end)
 	item->setBridge(bridge);
 	m_diagram->addItem(item);
 
-	m_diagram->project()->undoStack()->push(
-		new AddBridgeCommand(bridge, item, m_diagram, own_bridge,
-							 own_bridge ? QList<BridgeTerminal>() : terminals,
-							 information_before, information));
+	auto *command = new AddBridgeCommand(bridge, item, m_diagram, own_bridge,
+										 own_bridge ? QList<BridgeTerminal>() : terminals,
+										 information_before, information);
+		//Bridge and wires say the same thing: what the bridge carries
+		//goes onto the wires it sits on, in the very same undo step
+	BridgeManager::writeInformation(m_diagram->project(), bridge->terminals(),
+									information, command);
+	m_diagram->project()->undoStack()->push(command);
 
 	reset();
 }

@@ -30,6 +30,7 @@
 class Diagram;
 class Element;
 class QETProject;
+class QUndoCommand;
 
 /**
 	@brief One place where a drawn bridge line crosses a terminal.
@@ -101,6 +102,18 @@ class BridgeManager
 		static BridgeInformation informationOf(QETProject *project, const BridgeTerminal &terminal);
 		static QList<BridgeInformation> informationSets(QETProject *project,
 													   const QList<BridgeTerminal> &terminals);
+
+			/**
+				Give the wires wired to those terminals what the bridge
+				carries, so the bridge and the wires it sits on say the
+				same thing: one circle, never half of one. A wire which
+				already says it is left alone; the rest goes with whatever
+				was being done (@p parent), so it is one undo step.
+			*/
+		static void writeInformation(QETProject *project,
+									 const QList<BridgeTerminal> &terminals,
+									 const BridgeInformation &information,
+									 QUndoCommand *parent);
 };
 
 #endif // BRIDGEMANAGER_H

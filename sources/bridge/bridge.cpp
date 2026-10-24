@@ -17,7 +17,9 @@
 */
 #include "bridge.h"
 
+#include "../qetproject.h"
 #include "../qetxml.h"
+#include "bridgemanager.h"
 
 #include <QDomDocument>
 
@@ -152,11 +154,14 @@ void Bridge::setColumn(int column)
 }
 
 /**
-	@return the function text this bridge carries, taken over from the
-	terminals it lands on
+	@return the function text this bridge carries: what the wires at its
+	terminals say, read live, so the bridge follows them the way they
+	follow each other. What was answered when it was drawn stands in for
+	the moment they say nothing.
 */
 QString Bridge::functionText() const {
-	return m_function_text;
+	const BridgeInformation information = liveInformation();
+	return information.function.isEmpty() ? m_function_text : information.function;
 }
 
 /**
@@ -172,11 +177,12 @@ void Bridge::setFunctionText(const QString &text)
 }
 
 /**
-	@return the voltage/protocol this bridge carries, taken over from
-	the terminals it lands on
+	@return the voltage/protocol this bridge carries: what the wires at
+	its terminals say, read live
 */
 QString Bridge::tensionText() const {
-	return m_tension_text;
+	const BridgeInformation information = liveInformation();
+	return information.tension.isEmpty() ? m_tension_text : information.tension;
 }
 
 /**
@@ -189,6 +195,21 @@ void Bridge::setTensionText(const QString &text)
 	}
 	m_tension_text = text;
 	emit changed();
+}
+
+/**
+	@brief Bridge::liveInformation
+	@return what the wires at the first terminal of this bridge say at
+	this very moment -- the bridge sits in the cabinet where that
+	potential is and follows it
+*/
+BridgeInformation Bridge::liveInformation() const
+{
+	auto *project = qobject_cast<QETProject *>(parent());
+	if (!project || m_terminals.isEmpty()) {
+		return {};
+	}
+	return BridgeManager::informationOf(project, m_terminals.first());
 }
 
 /**
