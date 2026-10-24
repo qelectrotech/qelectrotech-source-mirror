@@ -47,6 +47,7 @@ class QETProject;
 class Diagram;
 class Conductor;
 class Terminal;
+class TerminalStrip;
 class QGraphicsItem;
 class QDomDocument;
 class BorderTitleBlock;
@@ -202,6 +203,14 @@ class projectDataBase : public QObject
 			//which of its kind it is there.
 		static void xmlRows(const QDomElement &element, const QString &section,
 							int ord, QList<ProjectSetting> &rows);
+
+			//The terminal strips, one row per value of what each strip's
+			//toXml() writes (terminal_strip_value), by strip uuid. The strips
+			//are always built, so they are written through as they change.
+		void storeTerminalStrip(TerminalStrip *strip);
+		void forgetTerminalStrip(const QUuid &strip);
+		QList<ProjectSetting> terminalStripRows(const QUuid &strip) const {
+			return m_terminal_strip_rows.value(strip);}
 
 			//The drawn items of a folio -- shapes, free texts, tables --
 			//one row per value of what their toXml() writes, by item
@@ -516,6 +525,7 @@ class projectDataBase : public QObject
 		QHash<QUuid, BorderProperties> m_folio_borders;
 		QHash<QUuid, QPair<int, int>> m_folio_numbers; // index, total
 		QList<ProjectSetting> m_project_settings;
+		QHash<QUuid, QList<ProjectSetting>> m_terminal_strip_rows;
 		QHash<QUuid, DrawnItem> m_drawn_items;
 			//How many drawn items name each blob (by SHA-256)
 		QHash<QString, int> m_blob_refs;

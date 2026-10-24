@@ -2895,6 +2895,19 @@ bool projectDataBase::createDataBase()
 		qDebug() << " project_setting_table query : " << query_.lastError();
 	}
 
+		//Create the terminal_strip_value table: what each terminal strip saves,
+		//one row per value, the store strips write through
+		//(storeTerminalStrip()). section and ord are those of project_setting.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE terminal_strip_value ("
+			"strip_uuid VARCHAR(50) NOT NULL, "
+			"section TEXT NOT NULL, "
+			"ord INTEGER NOT NULL, "
+			"name TEXT NOT NULL, "
+			"value TEXT)"))) {
+		qDebug() << " terminal_strip_value_table query : " << query_.lastError();
+	}
+
 		//Create the conductor_properties table: the properties of every
 		//wire placed in the project, as the attributes a saved wire carries,
 		//the store wires write through (storeConductorProperties()).
@@ -4244,6 +4257,57 @@ void projectDataBase::storeProjectSettings(const QDomElement &settings)
 		if (!insert.exec()) {
 			qDebug() << "projectDataBase::storeProjectSettings insert error : " << insert.lastError();
 		}
+	}
+}
+
+/**
+	@brief projectDataBase::storeTerminalStrip
+	Store what @p strip saves, in the terminal_strip_value table and the
+	cache in front of it. Nothing is written if the rows are unchanged.
+*/
+void projectDataBase::storeTerminalStrip(TerminalStrip *strip)
+{
+	if (!strip) return;
+	const QUuid uuid = strip->uuid();
+	QDomDocument document;
+	QList<ProjectSetting> rows;
+	xmlRows(strip->toXml(document), strip->xmlTagName(), 0, rows);
+	if (m_terminal_strip_rows.contains(uuid) && m_terminal_strip_rows.value(uuid) == rows) return;
+	m_terminal_strip_rows.insert(uuid, rows);
+
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM terminal_strip_value WHERE strip_uuid = :strip"));
+	remove.bindValue(QStringLiteral(":strip"), uuid.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeTerminalStrip remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral("INSERT INTO terminal_strip_value (strip_uuid, section, ord, name, value) "
+								  "VALUES (:strip, :section, :ord, :name, :value)"));
+	for (const ProjectSetting &row : std::as_const(rows)) {
+		insert.bindValue(QStringLiteral(":strip"), uuid.toString());
+		insert.bindValue(QStringLiteral(":section"), row.section);
+		insert.bindValue(QStringLiteral(":ord"), row.ord);
+		insert.bindValue(QStringLiteral(":name"), row.name);
+		insert.bindValue(QStringLiteral(":value"), row.value);
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeTerminalStrip insert error : " << insert.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::forgetTerminalStrip
+	Drop the rows of the strip @p strip (it left the project).
+*/
+void projectDataBase::forgetTerminalStrip(const QUuid &strip)
+{
+	if (!m_terminal_strip_rows.remove(strip)) return;
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM terminal_strip_value WHERE strip_uuid = :strip"));
+	remove.bindValue(QStringLiteral(":strip"), strip.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::forgetTerminalStrip remove error : " << remove.lastError();
 	}
 }
 

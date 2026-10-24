@@ -4849,6 +4849,16 @@ void QETProject::watchTerminalStrip(TerminalStrip *strip, bool watch)
 	if (watch) {
 		connect(strip, &TerminalStrip::orderChanged, &m_data_base, &projectDataBase::spareTerminalsChanged);
 		connect(strip, &TerminalStrip::dataChanged, &m_data_base, &projectDataBase::spareTerminalsChanged);
+			//Whatever the strip saves is written through to the database
+		auto store = [this, strip] {m_data_base.storeTerminalStrip(strip);};
+		connect(strip, &TerminalStrip::orderChanged, &m_data_base, store);
+		connect(strip, &TerminalStrip::dataChanged, &m_data_base, store);
+		connect(strip, &TerminalStrip::bridgeChanged, &m_data_base, store);
+		connect(strip, &TerminalStrip::bridgeColorChanged, &m_data_base, store);
+		store();
+	}
+	if (!watch) {
+		m_data_base.forgetTerminalStrip(strip->uuid());
 	}
 	m_data_base.spareTerminalsChanged();
 }

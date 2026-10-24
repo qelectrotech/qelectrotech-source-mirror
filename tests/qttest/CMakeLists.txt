@@ -1362,6 +1362,18 @@ target_compile_definitions(tst_drawingitemrows PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# The terminal strips are in the project database (terminal_strip_value
+# rows), opened and written through as they change. QET-SQL-FORMAT S3k1.
+add_executable(
+  tst_terminalstriprows
+  tst_terminalstriprows.cpp)
+add_test(NAME tst_terminalstriprows COMMAND tst_terminalstriprows)
+add_dependencies(tst_terminalstriprows qelectrotech)
+target_link_libraries(tst_terminalstriprows PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_terminalstriprows PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\"")
+
 # The pictures of a folio are in the project database (drawing_item rows
 # with a "#blob" hash, and the blob table), from a built folio or from the
 # document, .qet or .qetz. QET-SQL-FORMAT S3j.
