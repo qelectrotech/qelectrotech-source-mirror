@@ -7845,6 +7845,21 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 2 - 画面の dpi 
 3 - 1 と 2 の設定が異なる別のコンピューターや画面でプロジェクトを編集すること。</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>画面上のグリッド点の間隔がこれより狭いときにグリッドを隠す</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>さらに縮小すると、どのグリッド間隔でも点を省きます。どこからかはステータスバーのズームで分かります</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>
@@ -14082,6 +14097,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <location filename="../sources/qetdiagrameditor.cpp" line="4984"/>
         <source>Texts %1</source>
         <translation>テキスト %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>ズーム %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>表示中のシートのズーム</translation>
     </message>
 </context>
 <context>

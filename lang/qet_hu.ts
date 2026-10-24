@@ -7861,6 +7861,21 @@ Bármilyen beállítás, ami más mint a „Nincs kerekítés”  renderelési h
 2 - a képernyő dpi-je
 3 - a projekt szerkesztése egy másik számítógépen és/vagy képernyőn, amelynek beállításai nem egyeznek az 1. és 2. pontban leírtakkal.</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>A rács elrejtése, ha pontjai a képernyőn közelebb vannak, mint</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Tovább kicsinyítve bármely rácslépés pontjai elmaradnak; hogy hol, az állapotsor nagyítása mutatja</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>
@@ -14101,6 +14116,16 @@ Ha szkriptet szeretne készíteni belőle, kérje meg AI-asszisztensét: az alá
         <location filename="../sources/qetdiagrameditor.cpp" line="4984"/>
         <source>Texts %1</source>
         <translation>Szövegek %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Nagyítás %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>A képernyőn lévő lap nagyítása</translation>
     </message>
 </context>
 <context>

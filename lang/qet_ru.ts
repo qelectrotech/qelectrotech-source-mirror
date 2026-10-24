@@ -7936,6 +7936,21 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 2 — разрешения экрана (dpi) 
 3 — редактирования проекта на другом компьютере и/или экране, параметры которых отличаются от указанных в пунктах 1 и 2.</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Скрывать сетку, когда её точки на экране ближе чем</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>При большем отдалении точки любой сетки не рисуются; где именно, показывает масштаб в строке состояния</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>
@@ -14312,6 +14327,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <source>Edit the selected object</source>
         <comment>edit selected item</comment>
         <translation>Редактировать выбранный объект</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Масштаб %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Масштаб листа на экране</translation>
     </message>
 </context>
 <context>

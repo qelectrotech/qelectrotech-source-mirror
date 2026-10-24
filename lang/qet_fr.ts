@@ -7888,6 +7888,21 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
 2 - du dpi de l&apos;écran 
 3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Masquer la grille quand ses points sont à l'écran plus proches que</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Au-delà, les points de toute grille sont omis ; le zoom affiché dans la barre d'état indique où</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>
@@ -14221,6 +14236,16 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
     <message>
         <source>QElectroTech project(*.qet *.qetz);;XML Files (*.xml);;All files (*)</source>
         <translation type="vanished">Projets QElectroTech (*.qet *.qetz);;Fichiers XML (*.xml);;Tous les fichiers (*)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom du folio affiché</translation>
     </message>
 </context>
 <context>

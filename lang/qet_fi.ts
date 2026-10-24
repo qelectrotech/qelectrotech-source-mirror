@@ -7776,6 +7776,21 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 3 - editing the project on another computer and/or screen that does not have the same settings as in points 1 and 2.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Piilota ruudukko, kun sen pisteet ovat näytöllä lähempänä kuin</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Kauemmas loitonnettaessa minkä tahansa ruudukon pisteet jätetään pois; tilarivin zoomaus näyttää missä</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>
@@ -13807,6 +13822,16 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <location filename="../sources/qetdiagrameditor.cpp" line="4984"/>
         <source>Texts %1</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoomaus %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Näytössä olevan arkin zoomaus</translation>
     </message>
 </context>
 <context>

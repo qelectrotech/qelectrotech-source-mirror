@@ -7876,6 +7876,21 @@ Qualquer definição diferente de «Sem arredondamento» pode provocar erros de 
 2 - os dpi do ecrã 
 3 - a edição do projeto noutro computador e/ou ecrã que não tenha as mesmas definições dos pontos 1 e 2.</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Ocultar a grelha quando os seus pontos estão no ecrã a menos de</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Com menos zoom, os pontos de qualquer passo de grelha são omitidos; o zoom na barra de estado indica onde</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>
@@ -14076,6 +14091,16 @@ Remova as pontes e/ou os níveis dos terminais em causa para que possam ser elim
         <source>Activates the previous project</source>
         <comment>status bar tip</comment>
         <translation>Activa o projecto anterior</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom da folha no ecrã</translation>
     </message>
 </context>
 <context>

@@ -7888,6 +7888,21 @@ Qualquer valor diferente de ‘Sem arredondamento’ pode causar erros na render
 2 - o dpi da tela 
 3 - editar o projeto em outro computador e/ou tela que não tenha as mesmas configurações dos itens 1 e 2.</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Ocultar a grade quando seus pontos estiverem na tela a menos de</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Com menos zoom, os pontos de qualquer passo de grade são omitidos; o zoom na barra de status indica onde</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>
@@ -14183,6 +14198,16 @@ Remova as pontes e/ou exclua os níveis dos terminais envolvidos para poder excl
         <source>Error</source>
         <comment>message box title</comment>
         <translation>Erro</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom da folha na tela</translation>
     </message>
 </context>
 <context>

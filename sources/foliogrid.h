@@ -49,6 +49,37 @@ namespace FolioGrid
 			return fallback;
 		return int(s);
 	}
+
+		/// QSettings key of the smallest distance, in pixels on screen,
+		/// at which grid dots are still drawn (General > Appearance)
+	inline const QString min_dot_spacing_key{QStringLiteral("diagrameditor/grid_min_dot_spacing")};
+		/// Grid dots closer than this on screen, in pixels, read as a
+		/// gray haze rather than as a grid
+	constexpr double default_min_dot_spacing = 10.0;
+
+	/**
+		@return the smallest dot distance held in @p value, a settings
+		entry, or the default when it is missing or not a positive number.
+	*/
+	inline double minDotSpacing(const QVariant &value)
+	{
+		bool ok = false;
+		const double spacing = value.toDouble(&ok);
+		return ok && spacing > 0 ? spacing : default_min_dot_spacing;
+	}
+
+	/**
+		@return true when the grid dots are drawn: when two of them, @p x_step
+		and @p y_step apart on the folio, stand at least @p min_spacing
+		pixels apart on screen at @p zoom (1 is 100 %). Whatever the step,
+		they go when they would crowd; with the default step and spacing of
+		10, below a zoom of 100 %.
+	*/
+	inline bool dotsShown(int x_step, int y_step, double zoom,
+			      double min_spacing = default_min_dot_spacing)
+	{
+		return (x_step < y_step ? x_step : y_step) * zoom >= min_spacing;
+	}
 }
 
 #endif // FOLIOGRID_H

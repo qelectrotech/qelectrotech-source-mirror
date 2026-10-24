@@ -32,6 +32,31 @@ class tst_foliogrid : public QObject
 	Q_OBJECT
 
 private slots:
+	void dotsGoWhenTheyCrowd()
+	{
+			//The default step and spacing: the dots go below 100 %
+		QVERIFY(FolioGrid::dotsShown(10, 10, 1.0));
+		QVERIFY(!FolioGrid::dotsShown(10, 10, 0.99));
+			//A finer step goes sooner, a coarser one later; the finer of
+			//the two directions decides
+		QVERIFY(!FolioGrid::dotsShown(5, 5, 1.5));
+		QVERIFY(FolioGrid::dotsShown(20, 20, 0.5));
+		QVERIFY(!FolioGrid::dotsShown(20, 5, 1.0));
+			//A spacing set in the settings: 7.8 px keeps them down to 78 %
+		QVERIFY(FolioGrid::dotsShown(10, 10, 0.78, 7.8));
+		QVERIFY(!FolioGrid::dotsShown(10, 10, 0.77, 7.8));
+	}
+
+	void dotSpacingFromSettings()
+	{
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant()), 10.0);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(7.8)), 7.8);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(QStringLiteral("12"))), 12.0);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(0)), 10.0);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(-3)), 10.0);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(QStringLiteral("ten"))), 10.0);
+	}
+
 	void usableValuesAreKept_data()
 	{
 		QTest::addColumn<QVariant>("value");

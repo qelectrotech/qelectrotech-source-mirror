@@ -7804,6 +7804,21 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 3 - editing the project on another computer and/or screen that does not have the same settings as in points 1 and 2.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Sakrij rešetku kad su joj točke na zaslonu bliže od</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Pri većem udaljavanju točke bilo koje rešetke se izostavljaju; zum u traci stanja pokazuje gdje</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>
@@ -13914,6 +13929,16 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <source>Error</source>
         <comment>message box title</comment>
         <translation type="unfinished">Greška</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zum %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zum lista na zaslonu</translation>
     </message>
 </context>
 <context>

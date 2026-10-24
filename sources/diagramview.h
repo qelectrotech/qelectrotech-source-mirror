@@ -93,6 +93,7 @@ class DiagramView : public PaletteGraphicsView
 		bool m_cell_rulers_shown = false;
 		/// Last viewport transform the rulers were painted for
 		QTransform m_rulers_transform;
+		qreal m_shown_zoom = 0;
 		bool m_cell_lines_shown = false;
 
 		
@@ -204,6 +205,8 @@ class DiagramView : public PaletteGraphicsView
 			/// Signal emitted when the placement mode is entered for an
 			/// element (not a macro), whether from a drop or not.
 		void elementPlacementStarted(const ElementsLocation &);
+			/// The view's scale changed: 1 is 100 %
+		void zoomChanged(qreal factor);
 	
 	public slots:
 		void setVisualisationMode();

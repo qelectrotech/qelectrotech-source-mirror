@@ -7895,6 +7895,21 @@ Akékoľvek nastavenie okrem „Bez zaokrúhľovania“ (No rounding) môže sp�
 2 – hodnoty DPI obrazovky
 3 – úpravy projektu na inom počítači a/alebo obrazovke, ktoré nemajú rovnaké nastavenia ako v bodoch 1 a 2.</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Skryť mriežku, keď sú jej body na obrazovke bližšie ako</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Pri ďalšom oddialení sa body mriežky ľubovoľného kroku vynechajú; kde, ukazuje zväčšenie v stavovom riadku</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>
@@ -14095,6 +14110,16 @@ Ak z toho chcete vytvoriť skript, požiadajte o to svojho AI asistenta – tla�
         <source>Activates the previous project</source>
         <comment>status bar tip</comment>
         <translation>Spustí predchádzajúci projekt</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zväčšenie %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zväčšenie listu na obrazovke</translation>
     </message>
 </context>
 <context>

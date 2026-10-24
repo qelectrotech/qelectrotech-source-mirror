@@ -7900,6 +7900,21 @@ Cualquier valor distinto de «Sin redondeo» puede causar errores de representac
 2 - Los PPP de la pantalla.
 3 - La edición del proyecto en otro ordenador o pantalla con ajustes diferentes para los puntos 1 y 2.</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Ocultar la cuadrícula cuando sus puntos estén en pantalla a menos de</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Con menos zoom se omiten los puntos de cualquier paso de cuadrícula; el zoom de la barra de estado indica dónde</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>
@@ -14209,6 +14224,16 @@ Para convertirla en un script, pídaselo a su asistente de IA: el botón de abaj
         <source>Opening the file read-only</source>
         <comment>message box title</comment>
         <translation>Abriendo el proyecto en sólo lectura</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom del folio en pantalla</translation>
     </message>
 </context>
 <context>

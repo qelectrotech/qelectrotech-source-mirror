@@ -7869,6 +7869,21 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <source>Other texts</source>
         <translation>Altri testi</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Nascondi la griglia quando i suoi punti sullo schermo sono più vicini di</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Riducendo oltre, i punti di qualsiasi passo di griglia vengono omessi; lo zoom nella barra di stato indica dove</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericDevice</name>
@@ -14179,6 +14194,16 @@ Tieni premuto Ctrl durante lo spostamento per posizionare liberamente.</translat
         <location filename="../sources/qetdiagrameditor.cpp" line="1337"/>
         <source>Adds a text field to the current sheet</source>
         <translation>Aggiunge un campo di testo sulla pagina corrente</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom del foglio sullo schermo</translation>
     </message>
 </context>
 <context>
