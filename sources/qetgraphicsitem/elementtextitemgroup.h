@@ -122,6 +122,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 			/// The width of each text at the last layout, to find the point
 			/// the group is aligned on at the next one
 		QHash<DynamicElementTextItem *, qreal> m_layout_widths;
+		Qt::Alignment m_layout_alignment = Qt::AlignLeft;
 		qreal anchorX(qreal width) const;
 		bool layoutAnchor(QPointF *anchor) const;
 		void rememberLayout();

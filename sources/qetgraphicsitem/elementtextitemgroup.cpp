@@ -221,13 +221,17 @@ qreal ElementTextItemGroup::anchorX(qreal width) const
 	neither can a text read from the file whose content is filled in only
 	after the group was read (an element's label): its width then differs.
 	@param anchor : the point, in the parent's coordinates
-	@return false when the group is not aligned right or centred, its texts
-	are not the ones laid out last time (a group being built), or every
-	one of them changed: the group then keeps its position.
+	@return false when the group is not aligned right or centred, its
+	alignment changed since the last layout (it is then laid out on the
+	new alignment where it stands, as before), its texts are not the ones
+	laid out last time (a group being built), or every one of them
+	changed: the group then keeps its position.
 */
 bool ElementTextItemGroup::layoutAnchor(QPointF *anchor) const
 {
 	if (m_alignment != Qt::AlignRight && m_alignment != Qt::AlignVCenter)
+		return false;
+	if (m_alignment != m_layout_alignment)
 		return false;
 	const QList<DynamicElementTextItem *> texts = this->texts();
 	if (texts.size() < 2 || texts.size() != m_layout_widths.size())
@@ -250,11 +254,12 @@ bool ElementTextItemGroup::layoutAnchor(QPointF *anchor) const
 
 /**
 	@brief ElementTextItemGroup::rememberLayout
-	Keep the width each text has now, so that the next layout can find
-	where the group's alignment point was.
+	Keep the width each text has now and the alignment, so that the next
+	layout can find where the group's alignment point was.
 */
 void ElementTextItemGroup::rememberLayout()
 {
+	m_layout_alignment = m_alignment;
 	m_layout_widths.clear();
 	for (DynamicElementTextItem *text : texts())
 		m_layout_widths.insert(text, text->boundingRect().width());

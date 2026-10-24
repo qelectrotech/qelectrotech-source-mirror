@@ -20,6 +20,7 @@
 #include "../../sources/diagram.h"
 #include "../../sources/qetproject.h"
 #include "../../sources/qetmessagebox.h"
+#include "../../sources/QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../../sources/qetgraphicsitem/element.h"
 #include "../../sources/qetgraphicsitem/dynamicelementtextitem.h"
 #include "../../sources/qetgraphicsitem/elementtextitemgroup.h"
@@ -134,6 +135,33 @@ int main(int argc, char **argv)
 					   "centred, the middle stays where it is", "shrinking it back puts the centred group back");
 		checkAlignment(scene, element, Qt::AlignLeft,
 					   "aligned left, the left edge stays, as before", "and the left-aligned group is where it was");
+
+		// Changing the alignment of a group (the reviewer's case, left to
+		// right and on) lays its texts out where the group stands: the
+		// group does not move, undo puts the texts back, and toggling
+		// again never drifts.
+		{
+			ElementTextItemGroup *g = makeGroup(element, {"-FI1", "40 A / 30 mA", "FI UG"});
+			g->setAlignment(Qt::AlignLeft);
+			const QPointF pos = g->pos();
+			QUndoStack &undo = scene->undoStack();
+			Qt::Alignment current = Qt::AlignLeft;
+			for (int round = 0; round < 2; ++round)
+				for (Qt::Alignment next : {Qt::AlignRight, Qt::AlignVCenter, Qt::AlignLeft}) {
+					undo.push(new QPropertyUndoCommand(g, "alignment", QVariant(current), QVariant(next)));
+					current = next;
+					check(near(g->pos(), pos), "changing the alignment does not move the group");
+				}
+			for (int i = 0; i < 6; ++i) {
+				undo.undo();
+				check(near(g->pos(), pos), "nor does undoing it");
+			}
+			check(g->alignment() == Qt::AlignLeft, "undo brings back the first alignment");
+			undo.clear();
+			for (DynamicElementTextItem *t : g->texts()) element->removeTextFromGroup(t, g);
+			element->removeTextGroup(g);
+			delete g;
+		}
 
 		// On a turned symbol, the right edge is found along the group.
 		element->setRotation(90);
