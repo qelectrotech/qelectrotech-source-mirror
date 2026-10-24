@@ -27,6 +27,8 @@
 #include <QStyleOptionRubberBand>
 #include <QtMath>
 
+#include <vector>
+
 namespace {
 	/**
 		QGraphicsScene::drawItems() is protected, and QGraphicsView::drawItems()
@@ -77,6 +79,17 @@ void PaletteGraphicsView::paintingInverted(bool inverted)
 	Q_UNUSED(inverted)
 }
 
+QET::Palette::SheetInk PaletteGraphicsView::sheetInk() const
+{
+	return {};
+}
+
+PaletteGraphicsView::InkKind PaletteGraphicsView::inkKind(const QGraphicsItem *item) const
+{
+	Q_UNUSED(item)
+	return InkKind::Other;
+}
+
 /**
 	@brief PaletteGraphicsView::eventFilter
 	Repaint the whole viewport when the application palette changes. Qt
@@ -96,11 +109,12 @@ bool PaletteGraphicsView::eventFilter(QObject *watched, QEvent *event)
 
 /**
 	@brief PaletteGraphicsView::paintEvent
-	Paints as QGraphicsView on a light palette, inverted on a dark one.
+	Paints as QGraphicsView on a light palette, inverted on a dark one,
+	and with the items tinted when sheetInk() is not null.
 */
 void PaletteGraphicsView::paintEvent(QPaintEvent *event)
 {
-	if (invertsLightness())
+	if (invertsLightness() || !sheetInk().isNull())
 	{
 		paintInverted(event);
 		return;
@@ -145,6 +159,8 @@ void PaletteGraphicsView::paintInverted(QPaintEvent *event)
 	m_buffer_painter.setWorldTransform(viewportTransform());
 	m_exposed = exposed;
 	m_layered = false;
+	m_ink = sheetInk();
+	s_painting_ink = m_ink;
 	DarkImageRendering::Context context{&m_buffer_painter, !customBackgroundColor(), [this](bool invert, const QRect &bounds) { flushLayer(invert, bounds); }};
 	DarkImageRendering::Scope rasterScope(&context);
 
@@ -156,6 +172,8 @@ void PaletteGraphicsView::paintInverted(QPaintEvent *event)
 	setOptimizationFlags(flags);
 	paintingInverted(false);
 	m_inverting = false;
+	m_ink = QET::Palette::SheetInk();
+	s_painting_ink = m_ink;
 
 	if (m_layered) flushLayer(!customBackgroundColor());
 	m_buffer_painter.end();
@@ -208,15 +226,92 @@ void PaletteGraphicsView::drawBackground(QPainter *painter, const QRectF &rect)
 /**
 	@brief PaletteGraphicsView::drawItems
 	Into the off-screen image while painting inverted, with the viewport
-	as the scene's widget (see SceneAccess), else as QGraphicsView.
+	as the scene's widget (see SceneAccess), tinted when there is an ink
+	(see drawTinted()), else as QGraphicsView.
 */
 void PaletteGraphicsView::drawItems(QPainter *painter, int count, QGraphicsItem *items[],
                                     const QStyleOptionGraphicsItem options[])
 {
-	if (m_inverting && scene())
+	if (m_inverting && scene() && !m_ink.isNull())
+		drawTinted(count, items, options);
+	else if (m_inverting && scene())
 		(scene()->*SceneAccess::drawItemsPointer())(&m_buffer_painter, count, items, options, viewport());
 	else
 		QGraphicsView::drawItems(painter, count, items, options);
+}
+
+/**
+	@brief PaletteGraphicsView::drawTinted
+	Draw the items kind by kind (see inkKind()): those left untouched
+	straight into the off-screen image, the others each kind on a clear
+	layer that is then tinted in its ink and laid onto the image. Within
+	a kind the items keep their order; between kinds, conductors lie over
+	the other items, solid ones over dashed ones, and symbols and texts
+	over the conductors.
+*/
+void PaletteGraphicsView::drawTinted(int count, QGraphicsItem *items[],
+                                     const QStyleOptionGraphicsItem options[])
+{
+	const auto draw = SceneAccess::drawItemsPointer();
+	const qreal ratio = m_buffer.devicePixelRatio();
+	const QRect pixels = QRectF(m_exposed.topLeft() * ratio, m_exposed.size() * ratio).toAlignedRect();
+
+	std::vector<QGraphicsItem *> kind_items;
+	std::vector<QStyleOptionGraphicsItem> kind_options;
+	for (InkKind kind : {InkKind::Untouched, InkKind::Other, InkKind::DashDottedWires,
+	                     InkKind::DashedWires, InkKind::Wires, InkKind::Symbols})
+	{
+		kind_items.clear();
+		kind_options.clear();
+		for (int i = 0; i < count; ++i) {
+			if (inkKind(items[i]) == kind) {
+				kind_items.push_back(items[i]);
+				kind_options.push_back(options[i]);
+			}
+		}
+		if (kind_items.empty())
+			continue;
+
+		if (kind == InkKind::Untouched) {
+			(scene()->*draw)(&m_buffer_painter, int(kind_items.size()), kind_items.data(),
+			                 kind_options.data(), viewport());
+			continue;
+		}
+
+		if (m_tint_layer.size() != m_buffer.size() || m_tint_layer.devicePixelRatio() != ratio) {
+			m_tint_layer = QImage(m_buffer.size(), QImage::Format_ARGB32_Premultiplied);
+			m_tint_layer.setDevicePixelRatio(ratio);
+		}
+		QPainter layer(&m_tint_layer);
+		layer.setCompositionMode(QPainter::CompositionMode_Source);
+		layer.fillRect(m_exposed, Qt::transparent);
+		layer.setCompositionMode(QPainter::CompositionMode_SourceOver);
+		layer.setClipRect(m_exposed);
+		layer.setRenderHints(renderHints());
+		layer.setWorldTransform(viewportTransform());
+		(scene()->*draw)(&layer, int(kind_items.size()), kind_items.data(),
+		                 kind_options.data(), viewport());
+		layer.end();
+
+		QImage part = m_tint_layer.copy(pixels);
+		QColor ink = m_ink.other;
+		switch (kind) {
+			case InkKind::Symbols:         ink = m_ink.symbols; break;
+			case InkKind::Wires:           ink = m_ink.wires; break;
+			case InkKind::DashedWires:     ink = m_ink.dashed_wires; break;
+			case InkKind::DashDottedWires: ink = m_ink.dash_dotted_wires; break;
+			default: break;
+		}
+		QET::Palette::tintLayer(part, m_ink.sheet, ink);
+		part.setDevicePixelRatio(ratio);
+		m_buffer_painter.save();
+		m_buffer_painter.resetTransform();
+		m_buffer_painter.setClipping(false);
+		m_buffer_painter.setOpacity(1.0);
+		m_buffer_painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+		m_buffer_painter.drawImage(QPointF(pixels.topLeft()) / ratio, part);
+		m_buffer_painter.restore();
+	}
 }
 
 /**

@@ -140,6 +140,8 @@ class DiagramView : public PaletteGraphicsView
 		void drawBackground(QPainter *painter, const QRectF &rect) override;
 		void drawForeground(QPainter *painter, const QRectF &rect) override;
 		void paintingInverted(bool inverted) override;
+		QET::Palette::SheetInk sheetInk() const override;
+		InkKind inkKind(const QGraphicsItem *item) const override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;
 		void mouseReleaseEvent(QMouseEvent *) override;

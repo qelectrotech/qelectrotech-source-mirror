@@ -3096,6 +3096,16 @@ Voleu continuar?</translation>
         <source>Choose a background color</source>
         <translation>Trieu un color de fons</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="93"/>
+        <source>Dark mode</source>
+        <translation>Mode fosc</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="96"/>
+        <source>A black sheet: symbols and texts in yellow, conductors in red, dashed ones in light blue and dash-dotted ones in yellow, the rest in white. Printing and exporting stay black on white.</source>
+        <translation>Un full negre: símbols i textos en groc, conductors en vermell, els discontinus en blau clar i els de traç i punt en groc, la resta en blanc. La impressió i l'exportació continuen en negre sobre blanc.</translation>
+    </message>
 </context>
 <context>
     <name>DiagramContextWidget</name>

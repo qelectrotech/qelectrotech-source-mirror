@@ -660,6 +660,7 @@ void tst_qetpalette::gridDotColorSoftensInvertedDots()
 	QCOMPARE(QET::Palette::gridDotColor(Qt::darkGray, true), QColor(85, 85, 85));
 	QCOMPARE(QET::Palette::gridDotColor(Qt::black, false), QColor(Qt::white));
 	QCOMPARE(QET::Palette::gridDotColor(Qt::black, true), QColor(Qt::white));
+	QCOMPARE(QET::Palette::gridDotColor(QColor(0x40, 0x40, 0x40), false), QColor(Qt::white));
 }
 
 /**
