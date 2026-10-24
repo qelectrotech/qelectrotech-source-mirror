@@ -3594,6 +3594,11 @@ Shift를 누른 채 끌면 이 텍스트만 이동합니다</translation>
         <source>Conductor color</source>
         <translation>도선 색상</translation>
     </message>
+    <message>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="280"/>
+        <source>Grid step</source>
+        <translation>격자 간격</translation>
+    </message>
 </context>
 <context>
     <name>DiagramView</name>
@@ -14073,6 +14078,51 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <source>Activates the previous project</source>
         <comment>status bar tip</comment>
         <translation>이전 프로젝트를 활성화합니다</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="702"/>
+        <source>Snap to the grid</source>
+        <translation>격자에 맞추기</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="705"/>
+        <source>Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point</source>
+        <translation>포인터와 이동하거나 놓는 것을 격자에 맞춥니다. 끄면 가장 가까운 점에</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="714"/>
+        <source>Grid step</source>
+        <translation>격자 간격</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="720"/>
+        <source>The step of the grid that symbols, conductors and the pointer snap to</source>
+        <translation>기호, 도체, 포인터가 맞춰지는 격자 간격</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="723"/>
+        <source>Fine (5)</source>
+        <translation>촘촘 (5)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="724"/>
+        <source>Medium (10)</source>
+        <translation>보통 (10)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
+        <source>Coarse (20)</source>
+        <translation>넓게 (20)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5125"/>
+        <source>Grid %1</source>
+        <translation>격자 %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5126"/>
+        <source>Grid %1 × %2</source>
+        <translation>격자 %1 × %2</translation>
     </message>
 </context>
 <context>

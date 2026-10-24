@@ -3600,6 +3600,11 @@ Bu metni tek başına taşımak için Shift tuşunu basılı tutup sürükleyin<
         <source>Conductor color</source>
         <translation>İletken rengi</translation>
     </message>
+    <message>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="280"/>
+        <source>Grid step</source>
+        <translation>Izgara adımı</translation>
+    </message>
 </context>
 <context>
     <name>DiagramView</name>
@@ -14114,6 +14119,51 @@ Bundan bir betik yapmak için yapay zekâ asistanınıza sorun: aşağıdaki dü
         <location filename="../sources/qetdiagrameditor.cpp" line="4984"/>
         <source>Texts %1</source>
         <translation>Metinler %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="702"/>
+        <source>Snap to the grid</source>
+        <translation>Izgaraya yapış</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="705"/>
+        <source>Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point</source>
+        <translation>İşaretçiyi ve taşınan ya da yerleştirileni ızgaraya yapıştırır; kapalıyken en yakın noktaya</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="714"/>
+        <source>Grid step</source>
+        <translation>Izgara adımı</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="720"/>
+        <source>The step of the grid that symbols, conductors and the pointer snap to</source>
+        <translation>Sembollerin, iletkenlerin ve işaretçinin yapıştığı ızgara adımı</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="723"/>
+        <source>Fine (5)</source>
+        <translation>İnce (5)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="724"/>
+        <source>Medium (10)</source>
+        <translation>Orta (10)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
+        <source>Coarse (20)</source>
+        <translation>Kaba (20)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5125"/>
+        <source>Grid %1</source>
+        <translation>Izgara %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5126"/>
+        <source>Grid %1 × %2</source>
+        <translation>Izgara %1 × %2</translation>
     </message>
 </context>
 <context>

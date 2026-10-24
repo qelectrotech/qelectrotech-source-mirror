@@ -355,6 +355,10 @@ qet_add_app_test(tst_selectionpanelheight tst_selectionpanelheight.cpp)
 # asks for; a fixed 55 px cut the number off on Windows (#1566).
 qet_add_app_test(tst_autonumincrementwidth tst_autonumincrementwidth.cpp)
 
+# View > Snap to the grid switches every snap off and on, as Ctrl held does;
+# View > Grid step sets a fine, medium or coarse step.
+qet_add_app_test(tst_gridsnap tst_gridsnap.cpp)
+
 # Opening a project before the elements panel's first reload() left its tree
 # item detached, and selecting the item's first child crashed in QTreeModel
 # (pre-existing since a82f6de23).
