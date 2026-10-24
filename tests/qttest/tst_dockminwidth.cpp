@@ -25,6 +25,8 @@
 #include <QFile>
 #include <QLabel>
 #include <QRadioButton>
+#include <QScrollArea>
+#include <QScrollBar>
 #include <QTemporaryDir>
 #include <QVBoxLayout>
 
@@ -32,10 +34,11 @@
 	The docks of one side share one width, at least the widest minimum of
 	them all, so one long text held the whole right side wide: the
 	Assistant dock's check box, the fields of the Auto numbering dock, the
-	properties of a selected symbol. The texts of every dock now wrap
-	(DockTextWrap): labels wrap, a check box or radio button has its text
-	in a wrapping label beside it, a combo box no longer widens to its
-	longest entry, and the Auto numbering fields scroll.
+	properties of a selected symbol. The docks can now be made as narrow
+	as one wants (DockFit): their texts wrap -- labels, and check boxes and
+	radio buttons through a wrapping label beside them --, a combo box no
+	longer widens to its longest entry, and what cannot wrap scrolls
+	sideways, with a horizontal scroll bar.
 */
 class tst_dockminwidth : public QObject
 {
@@ -45,7 +48,7 @@ class tst_dockminwidth : public QObject
 
 	static void checkNarrow(QDockWidget *dock, const QString &name)
 	{
-		QVERIFY2(dock->minimumSizeHint().width() <= 200,
+		QVERIFY2(dock->minimumSizeHint().width() <= 100,
 			 qPrintable(QString("%1 needs at least %2 px")
 				    .arg(name).arg(dock->minimumSizeHint().width())));
 	}
@@ -93,12 +96,21 @@ class tst_dockminwidth : public QObject
 			QTest::qWait(300);
 			auto *panel = editor->findChild<QDockWidget *>("diagram_properties_editor_dock_widget");
 			QVERIFY(panel);
-				//Its fields (a numbering list with its button, the text
-				//editor's) still need a little more than the others: it
-				//needed 322 px before
-			QVERIFY2(panel->minimumSizeHint().width() <= 240,
-				 qPrintable(QString("the Selection properties of a symbol need at least %1 px")
-					    .arg(panel->minimumSizeHint().width())));
+			checkNarrow(panel, QStringLiteral("the Selection properties of a symbol"));
+
+				//Narrower than its fields: a horizontal scroll bar
+			editor->resizeDocks({panel}, {110}, Qt::Horizontal);
+			QTest::qWait(200);
+			auto *scroll = panel->findChild<QScrollArea *>(QStringLiteral("qet_dock_side_scroll"));
+			QVERIFY(scroll);
+			QVERIFY2(panel->width() < 140, qPrintable(QString("the panel stays %1 px wide").arg(panel->width())));
+			QVERIFY(scroll->horizontalScrollBar()->isVisible());
+			QVERIFY(scroll->horizontalScrollBar()->maximum() > 0);
+				//Wide enough: no bar, the content takes the whole width
+			editor->resizeDocks({panel}, {420}, Qt::Horizontal);
+			QTest::qWait(200);
+			QVERIFY(!scroll->horizontalScrollBar()->isVisible());
+			QCOMPARE(scroll->widget()->width(), scroll->viewport()->width());
 		}
 
 		void everyDockTextWraps()

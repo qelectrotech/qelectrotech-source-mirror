@@ -15,7 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "docktextwrap.h"
+#include "dockfit.h"
 
 #include <QAbstractButton>
 #include <QApplication>
@@ -29,9 +29,11 @@
 #include <QLabel>
 #include <QMouseEvent>
 #include <QRadioButton>
+#include <QScrollArea>
+#include <QScrollBar>
 
 namespace {
-	const char *const handled = "qetDockTextWrapped";
+	const char *const handled = "qetDockFitHandled";
 
 	/**
 		The text of a check box or a radio button set beside it, so that it
@@ -110,6 +112,85 @@ namespace {
 		row->setProperty(handled, true);
 	}
 
+	/**
+		A scroll area that scrolls sideways only: its content takes its
+		whole width when there is room and keeps its smallest width when
+		there is not, with a horizontal scroll bar. Upwards it is as tall
+		as the content allows, its smallest and largest height included,
+		so a panel whose content shrinks still shrinks with it.
+	*/
+	class SideScroll : public QScrollArea
+	{
+		public:
+			SideScroll(QWidget *content, QWidget *parent) : QScrollArea(parent)
+			{
+				setObjectName(QStringLiteral("qet_dock_side_scroll"));
+				setFrameShape(QFrame::NoFrame);
+				setWidgetResizable(true);
+				setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+				setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+				setWidget(content);
+				content->installEventFilter(this);
+				follow();
+			}
+
+			QSize minimumSizeHint() const override
+			{
+				const QWidget *content = widget();
+				if (!content)
+					return QScrollArea::minimumSizeHint();
+				const int height = qMax(content->minimumSizeHint().height(), content->minimumHeight());
+				return QSize(qMin(content->minimumSizeHint().width(), 48), height + barHeight());
+			}
+
+			QSize sizeHint() const override
+			{
+				const QWidget *content = widget();
+				if (!content)
+					return QScrollArea::sizeHint();
+				return content->sizeHint() + QSize(0, barHeight());
+			}
+
+		protected:
+			bool eventFilter(QObject *watched, QEvent *event) override
+			{
+				if (watched == widget() && event->type() == QEvent::LayoutRequest) {
+					if (QLayout *layout = widget()->layout())
+						layout->activate();
+					follow();
+				}
+				return QScrollArea::eventFilter(watched, event);
+			}
+
+			void resizeEvent(QResizeEvent *event) override
+			{
+				QScrollArea::resizeEvent(event);
+					//The bar comes and goes with the width: the height
+					//asked for changes with it
+				follow();
+			}
+
+		private:
+			int barHeight() const
+			{
+				return horizontalScrollBar()->isVisible()
+						? horizontalScrollBar()->sizeHint().height() : 0;
+			}
+
+			void follow()
+			{
+				const QWidget *content = widget();
+				if (!content)
+					return;
+				const int largest = content->maximumHeight();
+				const int wanted = largest >= QWIDGETSIZE_MAX ? QWIDGETSIZE_MAX
+									      : largest + barHeight();
+				if (maximumHeight() != wanted)
+					setMaximumHeight(wanted);
+				updateGeometry();
+			}
+	};
+
 	class Filter : public QObject
 	{
 		public:
@@ -119,15 +200,17 @@ namespace {
 			{
 				if (event->type() == QEvent::Polish && watched->isWidgetType()) {
 					auto *widget = static_cast<QWidget *>(watched);
-					if (inDock(widget))
-						DockTextWrap::wrap(widget);
+					if (auto *dock = qobject_cast<QDockWidget *>(widget))
+						DockFit::scrollSideways(dock);
+					else if (inDock(widget))
+						DockFit::wrap(widget);
 				}
 				return QObject::eventFilter(watched, event);
 			}
 	};
 }
 
-void DockTextWrap::install()
+void DockFit::install()
 {
 	static Filter *filter = nullptr;
 	if (filter || !qApp)
@@ -136,7 +219,7 @@ void DockTextWrap::install()
 	qApp->installEventFilter(filter);
 }
 
-void DockTextWrap::wrap(QWidget *widget)
+void DockFit::wrap(QWidget *widget)
 {
 	if (widget->property(handled).toBool())
 		return;
@@ -154,4 +237,14 @@ void DockTextWrap::wrap(QWidget *widget)
 			combo->setMinimumContentsLength(4);
 		}
 	}
+}
+
+void DockFit::scrollSideways(QDockWidget *dock)
+{
+	QWidget *content = dock->widget();
+	if (!content || qobject_cast<QAbstractScrollArea *>(content)
+	    || dock->property(handled).toBool())
+		return;
+	dock->setProperty(handled, true);
+	dock->setWidget(new SideScroll(content, dock));
 }
