@@ -1394,7 +1394,7 @@ void QETDiagramEditor::setUpActions()
 	m_add_cable		   = m_add_item_actions_group.addAction(QET::Icons::Cable,      tr("Draw a cable"));
 		//A bridge across terminals: what it crosses becomes the terminals
 		//the bridge lands on.
-	m_add_bridge	   = m_add_item_actions_group.addAction(QET::Icons::Conductor,  tr("Draw a bridge"));
+	m_add_bridge	   = m_add_item_actions_group.addAction(QET::Icons::Bridge,     tr("Draw a bridge"));
 
 	add_text     ->setStatusTip(tr("Adds a text field to the current sheet"));
 	add_image    ->setStatusTip(tr("Add an image to the current sheet"));
