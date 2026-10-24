@@ -74,7 +74,7 @@
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qeticons.h"
-#include "ui/docktextwrap.h"
+#include "ui/dockfit.h"
 #include "qetmessagebox.h"
 #include "recentfiles.h"
 #include "textgrid.h"
@@ -152,8 +152,9 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	m_file_actions_group       (this),
 	open_dialog_dir            (QETApp::documentDir())
 {
-		//The texts of the docked panels wrap, so that none holds them wide
-	DockTextWrap::install();
+		//The docked panels can be made narrow: their texts wrap, and what
+		//cannot wrap scrolls sideways
+	DockFit::install();
 
 		//Trivial property use to set the graphics handler size
 	setProperty("graphics_handler_size", 10);

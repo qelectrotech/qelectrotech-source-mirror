@@ -807,8 +807,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/conductorcolortoolbutton.h
   ${QET_DIR}/sources/ui/diagrambgcolorbutton.cpp
   ${QET_DIR}/sources/ui/diagrambgcolorbutton.h
-  ${QET_DIR}/sources/ui/docktextwrap.cpp
-  ${QET_DIR}/sources/ui/docktextwrap.h
+  ${QET_DIR}/sources/ui/dockfit.cpp
+  ${QET_DIR}/sources/ui/dockfit.h
   ${QET_DIR}/sources/ui/conductorpropertieswidget.cpp
   ${QET_DIR}/sources/ui/conductorpropertieswidget.h
   ${QET_DIR}/sources/ui/configsaveloaderwidget.cpp
