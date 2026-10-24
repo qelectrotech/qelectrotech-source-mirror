@@ -203,6 +203,8 @@ class projectDataBase : public QObject
 			//which of its kind it is there.
 		static void xmlRows(const QDomElement &element, const QString &section,
 							int ord, QList<ProjectSetting> &rows);
+		static void xmlRows(const QDomElement &element, const QString &section, int ord,
+							const QString &children_section, QList<ProjectSetting> &rows);
 
 			//The terminal strips, one row per value of what each strip's
 			//toXml() writes (terminal_strip_value), by strip uuid. The strips

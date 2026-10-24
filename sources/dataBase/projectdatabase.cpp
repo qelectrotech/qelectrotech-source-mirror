@@ -4185,10 +4185,24 @@ void projectDataBase::storeFolioNumber(const QUuid &folio, int index, int total)
 	@p section, the @p ord th of its kind there. Attributes in name order
 	(a QDomElement keeps no order of its own); a <property name="..."> child
 	(a DiagramContext) gives one row named after it, with its show flag as
-	"<name>#show"; any other child is a section of its own.
+	"<name>#show"; any other child is a section of its own. The section of
+	a child of a repeated item names which one it belongs to
+	("layout/physical_terminal[2]/real_terminal"), so no two rows of
+	different items look alike.
 */
 void projectDataBase::xmlRows(const QDomElement &element, const QString &section, int ord,
 							  QList<ProjectSetting> &rows)
+{
+	xmlRows(element, section, ord, section, rows);
+}
+
+/**
+	@brief projectDataBase::xmlRows
+	As above; @p children_section is what the sections of @p element's
+	children start with: @p section, with "[ord]" when @p element repeats.
+*/
+void projectDataBase::xmlRows(const QDomElement &element, const QString &section, int ord,
+							  const QString &children_section, QList<ProjectSetting> &rows)
 {
 	const QDomNamedNodeMap attributes = element.attributes();
 	QStringList names;
@@ -4198,12 +4212,20 @@ void projectDataBase::xmlRows(const QDomElement &element, const QString &section
 	for (const QString &name : std::as_const(names))
 		rows.append({section, ord, name, element.attribute(name)});
 
+	auto isProperty = [](const QDomElement &child) {
+		return child.tagName() == QLatin1String("property") && child.hasAttribute(QStringLiteral("name"));
+	};
+	QHash<QString, int> count;
+	for (QDomElement child = element.firstChildElement() ; !child.isNull()
+		 ; child = child.nextSiblingElement())
+		if (!isProperty(child)) ++count[child.tagName()];
+
 	QHash<QString, int> seen;
 	bool has_child = false;
 	for (QDomElement child = element.firstChildElement() ; !child.isNull()
 		 ; child = child.nextSiblingElement()) {
 		has_child = true;
-		if (child.tagName() == QLatin1String("property") && child.hasAttribute(QStringLiteral("name"))) {
+		if (isProperty(child)) {
 			const QString name = child.attribute(QStringLiteral("name"));
 			rows.append({section, ord, name, child.text()});
 			if (child.hasAttribute(QStringLiteral("show")))
@@ -4211,8 +4233,11 @@ void projectDataBase::xmlRows(const QDomElement &element, const QString &section
 							 child.attribute(QStringLiteral("show"))});
 			continue;
 		}
-		const QString child_section = section + QLatin1Char('/') + child.tagName();
-		xmlRows(child, child_section, seen[child_section]++, rows);
+		const QString child_section = children_section + QLatin1Char('/') + child.tagName();
+		const int child_ord = seen[child_section]++;
+		const QString grandchildren_section = count.value(child.tagName()) > 1
+				? child_section + QStringLiteral("[%1]").arg(child_ord) : child_section;
+		xmlRows(child, child_section, child_ord, grandchildren_section, rows);
 	}
 	if (!has_child && !element.text().isEmpty())
 		rows.append({section, ord, QStringLiteral("#text"), element.text()});

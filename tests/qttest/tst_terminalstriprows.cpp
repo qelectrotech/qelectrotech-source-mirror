@@ -23,14 +23,20 @@ const QString strip_uuid = QStringLiteral("{cfad854f-6cd6-4d34-9473-9af35b219174
 
 // The rows of an element the way projectDataBase::xmlRows() makes them,
 // as "section|ord|name|value".
-void flatten(const QDomElement &element, const QString &section, int ord, QStringList &rows)
+void flatten(const QDomElement &element, const QString &section, int ord, QStringList &rows,
+			 const QString &children_section = QString())
 {
+	const QString base = children_section.isEmpty() ? section : children_section;
 	const QDomNamedNodeMap attributes = element.attributes();
 	QStringList names;
 	for (int i = 0 ; i < attributes.count() ; ++i) names << attributes.item(i).nodeName();
 	names.sort();
 	for (const QString &name : std::as_const(names))
 		rows << QStringLiteral("%1|%2|%3|%4").arg(section).arg(ord).arg(name, element.attribute(name));
+	QHash<QString, int> count;
+	for (QDomElement child = element.firstChildElement() ; !child.isNull() ; child = child.nextSiblingElement())
+		if (!(child.tagName() == QLatin1String("property") && child.hasAttribute(QStringLiteral("name"))))
+			++count[child.tagName()];
 	QHash<QString, int> seen;
 	bool has_child = false;
 	for (QDomElement child = element.firstChildElement() ; !child.isNull() ; child = child.nextSiblingElement()) {
@@ -42,8 +48,10 @@ void flatten(const QDomElement &element, const QString &section, int ord, QStrin
 				rows << QStringLiteral("%1|%2|%3#show|%4").arg(section).arg(ord).arg(name, child.attribute(QStringLiteral("show")));
 			continue;
 		}
-		const QString child_section = section + QLatin1Char('/') + child.tagName();
-		flatten(child, child_section, seen[child_section]++, rows);
+		const QString child_section = base + QLatin1Char('/') + child.tagName();
+		const int child_ord = seen[child_section]++;
+		flatten(child, child_section, child_ord, rows, count.value(child.tagName()) > 1
+				? child_section + QStringLiteral("[%1]").arg(child_ord) : child_section);
 	}
 	if (!has_child && !element.text().isEmpty())
 		rows << QStringLiteral("%1|%2|#text|%3").arg(section).arg(ord).arg(element.text());
@@ -147,10 +155,9 @@ private slots:
 		QVERIFY(rows.contains(p + "terminal_strip/terminal_strip_data|0|uuid|" + strip_uuid));
 		QVERIFY(rows.contains(p + "terminal_strip/terminal_strip_data/informations/information|2|#text|X1"));
 		QVERIFY(rows.contains(p + "terminal_strip/terminal_strip_data/informations/information|0|#text|Plant 0"));
-			// ord counts within the parent, so each terminal's one real
-			// terminal is ord 0; the rows stay in file order
-		QVERIFY(rows.indexOf(p + "terminal_strip/layout/physical_terminal/real_terminal|0|element_uuid|{891b70f2-2822-41c3-9f94-28efb448b5c4}")
-				< rows.indexOf(p + "terminal_strip/layout/physical_terminal/real_terminal|0|element_uuid|{4861e268-d344-413e-a86f-034ea5ada16c}"));
+			// each terminal's real terminal is under its own terminal's index
+		QVERIFY(rows.contains(p + "terminal_strip/layout/physical_terminal[0]/real_terminal|0|element_uuid|{891b70f2-2822-41c3-9f94-28efb448b5c4}"));
+		QVERIFY(rows.contains(p + "terminal_strip/layout/physical_terminal[1]/real_terminal|0|element_uuid|{4861e268-d344-413e-a86f-034ea5ada16c}"));
 		QVERIFY(rows.contains(p + "terminal_strip/terminal_strip_bridge|0|color|#808080"));
 	}
 
