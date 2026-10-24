@@ -20,6 +20,7 @@
 #include "TerminalStrip/realterminal.h"
 #include "TerminalStrip/terminalstrip.h"
 #include "bridge/bridge.h"
+#include "bridge/addbridgecommand.h"
 #include "bridge/bridgecreatedialog.h"
 #include "bridge/bridgemanager.h"
 #include "bridge/bridgepart.h"
@@ -776,6 +777,35 @@ private slots:
 		QCOMPARE(bridge->tensionText(), QStringLiteral("0V"));
 
 			//And one undo puts the wires back the way they were
+		folio->undoStack().undo();
+		QCOMPARE(conductor->properties().m_tension_protocol, original_tension);
+
+			//The very first step of a drawn bridge writes the wires as
+			//well: the command the drawing pushes runs the steps under it
+		const BridgeInformation chosen{QStringLiteral("PE"), QStringLiteral("24VDC")};
+		BridgePartData data;
+		data.uuid = QUuid::createUuid();
+		data.diagram = folio->uuid();
+		data.p1 = wired->element()->scenePos();
+		data.p2 = wired->element()->scenePos() + QPointF(60, 0);
+
+		Bridge *drawn = project.newBridge();
+		drawn->addPart(data);
+		drawn->addTerminal(terminalOf(wired));
+		drawn->setFunctionText(chosen.function);
+		drawn->setTensionText(chosen.tension);
+
+		auto *item = new BridgePart(data);
+		item->setBridge(drawn);
+		folio->addItem(item);
+
+		auto *command = new AddBridgeCommand(drawn, item, folio, true);
+		BridgeManager::writeInformation(&project, drawn->terminals(), chosen, command);
+		folio->undoStack().push(command);
+
+		QCOMPARE(conductor->properties().m_tension_protocol, QStringLiteral("24VDC"));
+		QCOMPARE(drawn->tensionText(), QStringLiteral("24VDC"));
+
 		folio->undoStack().undo();
 		QCOMPARE(conductor->properties().m_tension_protocol, original_tension);
 	}

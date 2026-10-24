@@ -94,6 +94,10 @@ void AddBridgeCommand::redo()
 	if (m_part->scene() != m_diagram) {
 		m_diagram->addItem(m_part);
 	}
+
+		//The steps written under this one -- what the wires say -- go
+		//with it: an overridden redo() has to run them itself
+	QUndoCommand::redo();
 }
 
 /**
@@ -122,4 +126,8 @@ void AddBridgeCommand::undo()
 		m_bridge->setFunctionText(m_information_before.function);
 		m_bridge->setTensionText(m_information_before.tension);
 	}
+
+		//The steps written under this one -- what the wires say -- go
+		//with it
+	QUndoCommand::undo();
 }

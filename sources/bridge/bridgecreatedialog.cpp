@@ -137,6 +137,14 @@ BridgeCreateDialog::BridgeCreateDialog(Diagram *diagram,
 	connect(m_hide_full, &QCheckBox::toggled, this, &BridgeCreateDialog::rebuildList);
 	connect(m_hide_small, &QCheckBox::toggled, this, &BridgeCreateDialog::rebuildList);
 	connect(m_list, &QListWidget::itemSelectionChanged, this, &BridgeCreateDialog::selectionChanged);
+		//Taking the bridge he means is one double click away, the way a
+		//cable is chosen: the row which cannot take anything answers
+		//nothing at all
+	connect(m_list, &QListWidget::itemDoubleClicked, this, [this](QListWidgetItem *item) {
+		if (item && (item->flags() & Qt::ItemIsSelectable)) {
+			accept();
+		}
+	});
 
 	rebuildList();
 }
