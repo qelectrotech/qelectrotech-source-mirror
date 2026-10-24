@@ -23,6 +23,7 @@
 #include "../borderproperties.h"
 #include "../bordertitleblock.h"
 #include "../diagram.h"
+#include "../container/qetcontainer.h"
 #include "../diagramposition.h"
 #include "../elementprovider.h"
 #include "../itemgroups.h"
@@ -46,6 +47,7 @@
 
 #include <QLocale>
 #include <QDate>
+#include <QCryptographicHash>
 #include <QDomDocument>
 
 #include <functional>
@@ -2313,13 +2315,14 @@ QUuid drawingItemUuid(QObject *object)
 	return QUuid();
 }
 
-/// Whether @p object is kept in drawing_item: a shape, a free text or a
-/// table (a picture is not). Shapes, texts and pictures also have a row in
+/// Whether @p object is kept in drawing_item: a shape, a free text, a
+/// picture or a table. Shapes, texts and pictures also have a row in
 /// their own table (drawingItemTable()).
 bool isDrawnItem(QObject *object)
 {
 	return qobject_cast<QetShapeItem *>(object)
 			|| qobject_cast<IndependentTextItem *>(object)
+			|| qobject_cast<DiagramImageItem *>(object)
 			|| qobject_cast<QetGraphicsTableItem *>(object);
 }
 
@@ -2616,7 +2619,7 @@ bool projectDataBase::writeDrawingItem(QObject *object)
 
 /**
 	@brief projectDataBase::writeDrawnItem
-	Write the drawing_item rows of the shape, free text or table @p object,
+	Write the drawing_item rows of the shape, free text, picture or table @p object,
 	from what its toXml() writes into a saved folio (group included).
 */
 void projectDataBase::writeDrawnItem(QObject *object, const QUuid &uuid, Diagram *diagram)
@@ -2630,6 +2633,8 @@ void projectDataBase::writeDrawnItem(QObject *object, const QUuid &uuid, Diagram
 		xml = text->toXml(document);
 	else if (auto table = qobject_cast<QetGraphicsTableItem *>(object))
 		xml = table->toXml(document);
+	else if (auto image = qobject_cast<DiagramImageItem *>(object))
+		xml = image->toXml(document);
 	ItemGroups::write(xml, dynamic_cast<QGraphicsItem *>(object));
 	storeDrawingItem(uuid, diagram->uuid(), xml);
 }
@@ -2921,6 +2926,17 @@ bool projectDataBase::createDataBase()
 		//of the folios, one row per value of what their toXml() writes
 		//(storeDrawingItem()). kind is the tag, section the path inside
 		//it ("shape/points/point"), ord which of a repeated child.
+		//Create the blob table: the pictures, once each however many items
+		//show them, by the SHA-256 of their bytes. A drawing_item row named
+		//"#blob" holds the hash. Removed with the last item naming them.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE blob ("
+			"hash TEXT PRIMARY KEY NOT NULL, "
+			"media_type TEXT NOT NULL, "
+			"bytes BLOB NOT NULL)"))) {
+		qDebug() << " blob_table query : " << query_.lastError();
+	}
+
 	if (!query_.exec(QStringLiteral(
 			"CREATE TABLE drawing_item ("
 			"item_uuid VARCHAR(50) NOT NULL, "
@@ -4251,11 +4267,52 @@ QList<projectDataBase::ProjectSetting> projectDataBase::drawingItemRows(const QU
 bool projectDataBase::storeDrawingItem(const QUuid &item, const QUuid &folio, const QDomElement &xml)
 {
 	if (item.isNull() || folio.isNull() || xml.isNull()) return false;
+	return storeDrawnRows(item, drawnItemOf(folio, xml));
+}
+
+/**
+	@brief projectDataBase::drawnItemOf
+	The rows of the drawn item @p xml of the folio @p folio. A picture's
+	bytes are not rows: they are @p picture, or when that is empty the
+	base64 text its element starts with, read as Diagram::fromXml() reads it
+	(the first text node, not QDomElement::text(), which would add the
+	text of every child). The text, and the file name a .qetz keeps in its
+	place, give way to one row, "#blob", holding the SHA-256 of the bytes.
+*/
+projectDataBase::DrawnItem projectDataBase::drawnItemOf(const QUuid &folio, const QDomElement &xml,
+														 const QByteArray &picture)
+{
 	DrawnItem drawn;
 	drawn.folio = folio;
 	drawn.kind = xml.tagName();
-	xmlRows(xml, drawn.kind, 0, drawn.rows);
-	return storeDrawnRows(item, drawn);
+	if (drawn.kind != QLatin1String("image")) {
+		xmlRows(xml, drawn.kind, 0, drawn.rows);
+		return drawn;
+	}
+
+	QDomElement copy = xml.cloneNode(true).toElement();
+	drawn.picture = picture;
+	if (!QetContainer::pictureFile(copy).isEmpty())
+		QetContainer::inlinePicture(copy, picture);
+	const QDomNode first = copy.firstChild();
+	if (first.isText()) {
+		if (drawn.picture.isEmpty())
+			drawn.picture = QByteArray::fromBase64(first.toText().data().toLatin1());
+		copy.removeChild(first);
+	}
+	xmlRows(copy, drawn.kind, 0, drawn.rows);
+	if (!drawn.picture.isEmpty())
+		drawn.rows.append({drawn.kind, 0, QStringLiteral("#blob"),
+						   QString::fromLatin1(QCryptographicHash::hash(drawn.picture, QCryptographicHash::Sha256).toHex())});
+	return drawn;
+}
+
+/// The SHA-256 a picture's rows name, none for any other item
+static QString blobOfRows(const QList<projectDataBase::ProjectSetting> &rows)
+{
+	for (const auto &row : rows)
+		if (row.name == QLatin1String("#blob")) return row.value;
+	return QString();
 }
 
 /**
@@ -4268,10 +4325,26 @@ bool projectDataBase::storeDrawnRows(const QUuid &item, const DrawnItem &drawn)
 	auto known = m_drawn_items.constFind(item);
 	if (known != m_drawn_items.constEnd() && known->folio == drawn.folio
 		&& known->kind == drawn.kind && known->rows == drawn.rows) return false;
-	m_drawn_items.insert(item, drawn);
+	const QString old_blob = known == m_drawn_items.constEnd() ? QString() : blobOfRows(known->rows);
+	DrawnItem kept = drawn;
+	kept.picture.clear();
+	m_drawn_items.insert(item, kept);
 
 	const QString uuid = item.toString();
 	const bool own_transaction = m_data_base.transaction();
+		//The new picture first, so that one kept as it is is never removed
+	const QString new_blob = blobOfRows(drawn.rows);
+	if (!new_blob.isEmpty() && ++m_blob_refs[new_blob] == 1) {
+		QSqlQuery blob(m_data_base);
+		blob.prepare(QStringLiteral("INSERT OR REPLACE INTO blob (hash, media_type, bytes) "
+									"VALUES (:hash, 'image/png', :bytes)"));
+		blob.bindValue(QStringLiteral(":hash"), new_blob);
+		blob.bindValue(QStringLiteral(":bytes"), drawn.picture);
+		if (!blob.exec()) {
+			qDebug() << "projectDataBase::storeDrawingItem blob error : " << blob.lastError();
+		}
+	}
+	releaseBlob(old_blob);
 	QSqlQuery remove(m_data_base);
 	remove.prepare(QStringLiteral("DELETE FROM drawing_item WHERE item_uuid = :uuid"));
 	remove.bindValue(QStringLiteral(":uuid"), uuid);
@@ -4299,12 +4372,34 @@ bool projectDataBase::storeDrawnRows(const QUuid &item, const DrawnItem &drawn)
 }
 
 /**
+	@brief projectDataBase::releaseBlob
+	One item less names the picture @p hash: the last one takes it along.
+*/
+void projectDataBase::releaseBlob(const QString &hash)
+{
+	if (hash.isEmpty()) return;
+	auto refs = m_blob_refs.find(hash);
+	if (refs == m_blob_refs.end() || --*refs > 0) return;
+	m_blob_refs.erase(refs);
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM blob WHERE hash = :hash"));
+	remove.bindValue(QStringLiteral(":hash"), hash);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::releaseBlob error : " << remove.lastError();
+	}
+}
+
+/**
 	@brief projectDataBase::forgetDrawingItemRows
 	No drawn item holds @p item any more: its rows go.
 */
 void projectDataBase::forgetDrawingItemRows(const QUuid &item)
 {
-	if (!m_drawn_items.remove(item)) return;
+	const auto known = m_drawn_items.constFind(item);
+	if (known == m_drawn_items.constEnd()) return;
+	const QString blob = blobOfRows(known->rows);
+	m_drawn_items.erase(known);
+	releaseBlob(blob);
 	QSqlQuery remove(m_data_base);
 	remove.prepare(QStringLiteral("DELETE FROM drawing_item WHERE item_uuid = :uuid"));
 	remove.bindValue(QStringLiteral(":uuid"), item.toString());
@@ -4874,6 +4969,18 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 					xmlRows(item, drawn.kind, 0, drawn.rows);
 					drawn_items.insert(uuid, drawn);
 				}
+			}
+			//The pictures too: their bytes are the base64 text of a .qet, or
+			//the file a .qetz names
+		if (!folio_uuid.isNull())
+			for (const QDomElement &image : QET::findInDomElement(folio, QStringLiteral("images"), QStringLiteral("image")))
+			{
+				const QUuid uuid(image.attribute(QStringLiteral("uuid")));
+				if (uuid.isNull() || ++seen[uuid] > 1) continue;
+				const QString file = QetContainer::pictureFile(image);
+				const QByteArray bytes = file.isEmpty() || !m_project
+						? QByteArray() : m_project->containerPicture(file);
+				drawn_items.insert(uuid, drawnItemOf(folio_uuid, image, bytes));
 			}
 		const QDomElement conductor_list = folio.firstChildElement(QStringLiteral("conductors"));
 		for (QDomElement conductor = conductor_list.firstChildElement(QStringLiteral("conductor")) ;

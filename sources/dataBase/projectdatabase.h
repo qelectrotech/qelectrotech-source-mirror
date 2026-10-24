@@ -207,12 +207,19 @@ class projectDataBase : public QObject
 			//one row per value of what their toXml() writes, by item
 			//uuid. @p xml is the item as saved. An item without a uuid is
 			//not stored.
+			//A picture's bytes are not rows: its rows carry a "#blob" row
+			//with their SHA-256, and the bytes are in the blob table, once
+			//however many pictures use them. @p picture is only filled
+			//while the item is being stored.
 		struct DrawnItem {
-			QUuid folio; QString kind; QList<ProjectSetting> rows;
+			QUuid folio; QString kind; QList<ProjectSetting> rows; QByteArray picture;
 		};
+		static DrawnItem drawnItemOf(const QUuid &folio, const QDomElement &xml,
+									 const QByteArray &picture = QByteArray());
 		bool storeDrawingItem(const QUuid &item, const QUuid &folio, const QDomElement &xml);
 		bool storeDrawnRows(const QUuid &item, const DrawnItem &drawn);
 		void forgetDrawingItemRows(const QUuid &item);
+		void releaseBlob(const QString &hash);
 		QList<ProjectSetting> drawingItemRows(const QUuid &item) const;
 
 			//The properties of every wire placed in the project, by wire
@@ -510,6 +517,8 @@ class projectDataBase : public QObject
 		QHash<QUuid, QPair<int, int>> m_folio_numbers; // index, total
 		QList<ProjectSetting> m_project_settings;
 		QHash<QUuid, DrawnItem> m_drawn_items;
+			//How many drawn items name each blob (by SHA-256)
+		QHash<QString, int> m_blob_refs;
 		QSet<QUuid> m_prefilled_drawn_items;
 		QHash<QUuid, QPointer<Diagram>> m_placed_folios;
 		QHash<QUuid, ConductorProperties> m_conductor_properties;

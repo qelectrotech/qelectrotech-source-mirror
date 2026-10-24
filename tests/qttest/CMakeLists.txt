@@ -1362,6 +1362,19 @@ target_compile_definitions(tst_drawingitemrows PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# The pictures of a folio are in the project database (drawing_item rows
+# with a "#blob" hash, and the blob table), from a built folio or from the
+# document, .qet or .qetz. QET-SQL-FORMAT S3j.
+add_executable(
+  tst_picturerows
+  tst_picturerows.cpp)
+add_test(NAME tst_picturerows COMMAND tst_picturerows)
+add_dependencies(tst_picturerows qelectrotech)
+target_link_libraries(tst_picturerows PRIVATE Qt::Test Qt::Xml Qt::Gui)
+target_compile_definitions(tst_picturerows PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # A symbol's kind information (NO/NC/SW/power) is queryable from the
 # project database once it is placed, not only from a live Element*.
 # QETZ-DB-FIRST 2d-2a.
