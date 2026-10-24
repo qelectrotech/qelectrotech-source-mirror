@@ -22,6 +22,9 @@
 #include "titleblock/templatelocation.h"
 
 #include <QClipboard>
+#include <QGraphicsObject>
+#include <QPointer>
+#include <memory>
 #include "palettegraphicsview.h"
 
 class CellRuler;
@@ -77,8 +80,23 @@ class DiagramView : public PaletteGraphicsView
 		QPointF           m_crosshair_pos;
 		bool              m_crosshair_visible = false;
 		void moveCrosshair(const QPoint &viewport_pos);
+			/// A handle near the mouse catches the crosshair and the
+			/// pointer, as a grid point does; a press then grabs it as if
+			/// the mouse were on it, and the drag keeps that offset
+		QPointer<QGraphicsObject> m_caught_handle;
+		QPointF           m_grab_offset;
+		bool              m_grabbing_caught = false;
+		QGraphicsObject *handleNear(const QPoint &viewport_pos) const;
+		QMouseEvent *onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseEvent> &shifted);
 		void hideCrosshair();
 		QRect crosshairArea(const QPointF &scene_pos) const;
+			/// The pointer: a four-way arrow over what can be moved; with
+			/// the crosshair, drawn on the grid point in place of the
+			/// system's, which a program may not move on every platform
+		enum class Pointer { System, Arrow, Move };
+		Pointer           m_pointer = Pointer::System;
+		void updatePointer(const QPoint &viewport_pos, Qt::MouseButtons buttons);
+		void drawPointer(QPainter *painter) const;
 		QPointF           m_drag_last_pos;
 		bool              m_fresh_focus_in,
 						  m_first_activation = true;
@@ -121,6 +139,9 @@ class DiagramView : public PaletteGraphicsView
 		static bool crosshairShown();
 		static void setCrosshairShown(bool shown);
 		bool crosshairVisible() const { return m_crosshair_visible; }
+			/// The pointer drawn on the crosshair's grid point, if any:
+			/// 0 none (the system's shows), 1 an arrow, 2 a four-way arrow
+		int drawnPointer() const { return int(m_pointer); }
 		QPointF crosshairPos() const { return m_crosshair_pos; }
 
 	protected:
