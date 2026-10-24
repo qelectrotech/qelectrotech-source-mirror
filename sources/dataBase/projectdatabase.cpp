@@ -40,6 +40,7 @@
 #include "../qet.h"
 #include "../titleblockproperties.h"
 #include "../ElementsCollection/xmlelementcollection.h"
+#include "../titleblock/templatescollection.h"
 #include "../properties/elementdata.h"
 #include "../TerminalStrip/terminalstrip.h"
 #include "../TerminalStrip/physicalterminal.h"
@@ -122,6 +123,7 @@ void projectDataBase::updateDB()
 		flushLinks();
 		flushElementPositions();
 		flushElementTexts();
+		flushCollections();
 		flushConductorProperties();
 		emit dataBaseUpdated();
 		return;
@@ -1550,6 +1552,7 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 	flushLinks();
 	flushElementPositions();
 	flushElementTexts();
+	flushCollections();
 	flushConductorProperties();
 
 	// First gate: which kind of statement is acceptable here at all. A
@@ -1993,6 +1996,119 @@ void projectDataBase::flushElementTexts()
 	if (own_transaction) {
 		m_data_base.commit();
 	}
+}
+
+/**
+	@brief projectDataBase::queueCollections
+	The project's symbols, their categories or its title-block templates
+	changed: they are written by the next flushCollections().
+*/
+void projectDataBase::queueCollections()
+{
+	m_collections_changed = true;
+}
+
+/**
+	@brief wholeXml
+	@return @p element and everything in it, as one line of XML
+*/
+static QString wholeXml(const QDomElement &element)
+{
+	QDomDocument document;
+	document.appendChild(document.importNode(element, true));
+	return document.toString(-1);
+}
+
+/**
+	@brief collectionRows
+	Fill @p symbols and @p categories from the collection element
+	@p parent, at the path @p path: a symbol whole, a category with its
+	names only (its content has rows of its own).
+*/
+static void collectionRows(const QDomElement &parent, const QString &path,
+						   QHash<QString, QString> &symbols, QHash<QString, QString> &categories)
+{
+	for (QDomElement child = parent.firstChildElement() ; !child.isNull()
+		 ; child = child.nextSiblingElement()) {
+		const QString child_path = (path.isEmpty() ? QString() : path + QLatin1Char('/'))
+				+ child.attribute(QStringLiteral("name"));
+		if (child.tagName() == QLatin1String("element")) {
+			symbols.insert(child_path, wholeXml(child));
+		} else if (child.tagName() == QLatin1String("category")) {
+			QDomElement own = child.cloneNode(false).toElement();
+			const QDomElement names = child.firstChildElement(QStringLiteral("names"));
+			if (!names.isNull()) own.appendChild(names.cloneNode(true));
+			categories.insert(child_path, wholeXml(own));
+			collectionRows(child, child_path, symbols, categories);
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::flushCollections
+	Write the project's symbols, their categories and its title-block
+	templates if queueCollections() was called since they were last
+	written: only the rows that changed.
+*/
+void projectDataBase::flushCollections()
+{
+	if (!m_collections_changed || !m_project) {
+		return;
+	}
+	m_collections_changed = false;
+
+	QHash<QString, QString> symbols, categories, templates;
+	if (XmlElementCollection *collection = m_project->embeddedElementCollection())
+		collectionRows(collection->root(), QString(), symbols, categories);
+	TitleBlockTemplatesProjectCollection *tbt = m_project->embeddedTitleBlockTemplatesCollection();
+	const QStringList names = tbt->templates();
+	for (const QString &name : names) {
+		const QDomElement xml = tbt->getTemplateXmlDescription(name);
+		if (!xml.isNull()) templates.insert(name, wholeXml(xml));
+	}
+
+	const bool own_transaction = m_data_base.transaction();
+	writeWholeRows(QStringLiteral("symbol_def"), QStringLiteral("path"), m_symbol_defs, symbols);
+	writeWholeRows(QStringLiteral("symbol_category"), QStringLiteral("path"), m_symbol_categories, categories);
+	writeWholeRows(QStringLiteral("titleblock_template"), QStringLiteral("name"), m_titleblock_templates, templates);
+	if (own_transaction) {
+		m_data_base.commit();
+	}
+}
+
+/**
+	@brief projectDataBase::writeWholeRows
+	Make @p table, whose rows are a @p key, a content and its hash, and the
+	cache @p stored in front of it hold @p now: rows gone are deleted, new
+	or changed ones written.
+*/
+void projectDataBase::writeWholeRows(const QString &table, const QString &key,
+									 QHash<QString, QString> &stored, const QHash<QString, QString> &now)
+{
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM %1 WHERE %2 = :key").arg(table, key));
+	for (auto it = stored.constBegin() ; it != stored.constEnd() ; ++it) {
+		if (now.contains(it.key())) continue;
+		remove.bindValue(QStringLiteral(":key"), it.key());
+		if (!remove.exec()) {
+			qDebug() << "projectDataBase::writeWholeRows remove error : " << remove.lastError();
+		}
+	}
+	QSqlQuery write(m_data_base);
+	write.prepare(QStringLiteral("INSERT OR REPLACE INTO %1 (%2, content, hash) VALUES (:key, :content, :hash)")
+				  .arg(table, key));
+	for (auto it = now.constBegin() ; it != now.constEnd() ; ++it) {
+		auto known = stored.constFind(it.key());
+		if (known != stored.constEnd() && *known == it.value()) continue;
+		write.bindValue(QStringLiteral(":key"), it.key());
+		write.bindValue(QStringLiteral(":content"), it.value());
+		write.bindValue(QStringLiteral(":hash"), QString::fromLatin1(
+							QCryptographicHash::hash(it.value().toUtf8(), QCryptographicHash::Sha256).toHex()));
+		if (!write.exec()) {
+			qDebug() << "projectDataBase::writeWholeRows write error : " << write.lastError();
+		}
+	}
+	stored = now;
 }
 
 /**
@@ -2977,6 +3093,28 @@ bool projectDataBase::createDataBase()
 	if (!query_.exec(QStringLiteral(
 			"CREATE INDEX idx_element_text_value_element ON element_text_value (element_uuid)"))) {
 		qDebug() << " element_text_value index query : " << query_.lastError();
+	}
+
+		//Create the project's own symbols, their categories and its
+		//title-block templates, each whole as the project saves it
+		//(flushCollections()). path is the place in the project's
+		//collection ("import/10_electric/relay.elmt"), name a template's
+		//name; hash the SHA-256 of content.
+	for (const QString &table : {QStringLiteral("CREATE TABLE symbol_def ("
+												"path TEXT PRIMARY KEY NOT NULL, "
+												"content TEXT NOT NULL, "
+												"hash VARCHAR(64) NOT NULL)"),
+								 QStringLiteral("CREATE TABLE symbol_category ("
+												"path TEXT PRIMARY KEY NOT NULL, "
+												"content TEXT NOT NULL, "
+												"hash VARCHAR(64) NOT NULL)"),
+								 QStringLiteral("CREATE TABLE titleblock_template ("
+												"name TEXT PRIMARY KEY NOT NULL, "
+												"content TEXT NOT NULL, "
+												"hash VARCHAR(64) NOT NULL)")}) {
+		if (!query_.exec(table)) {
+			qDebug() << " project collection table query : " << query_.lastError();
+		}
 	}
 
 		//Create the conductor_properties table: the properties of every
@@ -6686,6 +6824,7 @@ void projectDataBase::exportDb(projectDataBase *db,
 	db->flushLinks();
 	db->flushElementPositions();
 	db->flushElementTexts();
+	db->flushCollections();
 	db->flushConductorProperties();
 	QSqlQuery query(db->m_data_base);
 	if (!query.exec("VACUUM INTO '" % escaped_path % "'")) {

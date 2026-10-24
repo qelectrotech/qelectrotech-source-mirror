@@ -227,6 +227,17 @@ class projectDataBase : public QObject
 			//read (flushElementTexts())
 		void queueElementTexts(Element *element);
 
+			//The project's own symbols and title-block templates, as it
+			//saves them in its <collection> and <titleblocktemplates>: each
+			//symbol definition, category and template whole, one row each
+			//(symbol_def, symbol_category, titleblock_template), by its path
+			//in the collection or its name. Written when the database is
+			//next read after queueCollections().
+		void queueCollections();
+		QHash<QString, QString> symbolDefinitions() const {return m_symbol_defs;}
+		QHash<QString, QString> symbolCategories() const {return m_symbol_categories;}
+		QHash<QString, QString> titleBlockTemplates() const {return m_titleblock_templates;}
+
 			//The drawn items of a folio -- shapes, free texts, tables --
 			//one row per value of what their toXml() writes, by item
 			//uuid. @p xml is the item as saved. An item without a uuid is
@@ -421,6 +432,9 @@ class projectDataBase : public QObject
 		void updateFolioPositions();
 		void flushElementPositions();
 		void flushElementTexts();
+		void flushCollections();
+		void writeWholeRows(const QString &table, const QString &key,
+							QHash<QString, QString> &stored, const QHash<QString, QString> &now);
 		void populateElementTable();
 		void populateElementInfoTable();
 		void populateElementInfoTableFromFolios();
@@ -525,6 +539,12 @@ class projectDataBase : public QObject
 			//dragged or a group realigned sends a signal per step, and a group
 			//is only written whole once it has settled.
 		QList<QPointer<Element>> m_text_changed_elements;
+			//The project's symbols, categories and templates changed since
+			//they were last written; what is written, by path or name
+		bool m_collections_changed = false;
+		QHash<QString, QString> m_symbol_defs;
+		QHash<QString, QString> m_symbol_categories;
+		QHash<QString, QString> m_titleblock_templates;
 		QHash<QUuid, DiagramContext> m_element_information;
 		QHash<QUuid, DiagramContext> m_element_kind_information;
 		QHash<QUuid, ElementPlacement> m_element_placements;

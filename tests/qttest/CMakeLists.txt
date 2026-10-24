@@ -1339,6 +1339,21 @@ target_compile_definitions(tst_elementtextrows PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# The project's own symbols, their categories and its title-block templates
+# are in the project database (symbol_def, symbol_category,
+# titleblock_template). QET-SQL-FORMAT S3m.
+add_executable(
+  tst_projectcollectionrows
+  tst_projectcollectionrows.cpp)
+add_test(NAME tst_projectcollectionrows COMMAND tst_projectcollectionrows)
+add_dependencies(tst_projectcollectionrows qelectrotech)
+target_link_libraries(tst_projectcollectionrows PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_projectcollectionrows PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\""
+  "QET_TITLEBLOCKS_DIR=\"${QET_DIR}/titleblocks\"")
+
 # The sequential numbers of a symbol or a wire are in the project database
 # (sequential_number), from a built folio or from the document. QET-SQL-FORMAT S3e.
 add_executable(

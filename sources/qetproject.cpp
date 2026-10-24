@@ -409,6 +409,18 @@ void QETProject::init()
 	connect(m_elements_collection, &XmlElementCollection::elementRemoved, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::directorieAdded, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::directoryRemoved, this, backup_needed);
+		//The project database holds the embedded symbols and templates as
+		//saved; a template is removed after aboutToRemove(), so they are
+		//written when the database is next read
+	const auto collections_changed = [this]() { m_data_base.queueCollections(); };
+	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, collections_changed);
+	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::elementAdded, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::elementChanged, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::elementRemoved, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::directorieAdded, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::directoryRemoved, this, collections_changed);
+	m_data_base.queueCollections();
 
 	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
 	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
