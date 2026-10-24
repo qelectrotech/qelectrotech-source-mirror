@@ -21,6 +21,7 @@
 #include "bridge.h"
 
 #include <QColor>
+#include <QHash>
 #include <QLineF>
 #include <QList>
 #include <QPointer>
@@ -124,13 +125,12 @@ class ChangeBridgeTerminalsCommand : public QUndoCommand
 };
 
 /**
-	@brief Take a bridge off the drawing: every line of it, on whichever
-	folio it stands, and the bridge itself.
+	@brief Take the drawn lines of a bridge off the drawing.
 
-	Deleting one line of a bridge takes the whole bridge: the lines are
-	one bridge across the folios and half of it is of no use to anybody.
-	The bridge keeps everything it knows, so undo finds it exactly as it
-	was and draws its lines again.
+	Only the lines which were selected go: a bridge with other lines
+	left goes on with them. When the last line of a bridge goes, the
+	bridge goes with it -- what draws nothing is no bridge of this
+	project -- and one undo puts both back where they stood.
 */
 class RemoveBridgeCommand : public QUndoCommand
 {
@@ -151,9 +151,18 @@ class RemoveBridgeCommand : public QUndoCommand
 			QPointer<BridgePart> part;
 				///The folio it stands on
 			QPointer<Diagram> folio;
+				///Where the bridge holds that section
+			BridgePartData data;
+				///The bridge the section belongs to
+			QPointer<Bridge> bridge;
 		};
 
 		QList<Entry> m_entries;
+			///What each bridge lands on before and after the lines go:
+			///what only those lines crossed goes with them
+		QHash<Bridge *, QList<BridgeTerminal>> m_terminals_before;
+		QHash<Bridge *, QList<BridgeTerminal>> m_terminals_after;
+			///Every bridge which loses its last line here: it goes with it
 		QList<QPointer<Bridge>> m_bridges;
 };
 

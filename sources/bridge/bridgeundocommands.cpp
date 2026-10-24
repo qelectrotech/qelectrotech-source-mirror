@@ -56,6 +56,7 @@ void ChangeBridgePropertiesCommand::redo()
 	m_bridge->setColor(m_color_after);
 	m_bridge->setMaxConnections(m_max_after);
 	m_bridge->setLineWidth(m_width_after);
+	QUndoCommand::redo();
 }
 
 /**
@@ -67,6 +68,7 @@ void ChangeBridgePropertiesCommand::undo()
 	m_bridge->setColor(m_color_before);
 	m_bridge->setMaxConnections(m_max_before);
 	m_bridge->setLineWidth(m_width_before);
+	QUndoCommand::undo();
 }
 
 /**
@@ -112,6 +114,7 @@ ChangeBridgeGeometryCommand::ChangeBridgeGeometryCommand(Bridge *bridge,
 void ChangeBridgeGeometryCommand::redo()
 {
 	apply(m_line_after, m_terminals_after, m_information_after);
+	QUndoCommand::redo();
 }
 
 /**
@@ -120,6 +123,7 @@ void ChangeBridgeGeometryCommand::redo()
 void ChangeBridgeGeometryCommand::undo()
 {
 	apply(m_line_before, m_terminals_before, m_information_before);
+	QUndoCommand::undo();
 }
 
 /**
@@ -180,6 +184,7 @@ void ChangeBridgeTerminalsCommand::redo()
 	m_bridge->setTerminals(m_terminals_after);
 	m_bridge->setFunctionText(m_information_after.function);
 	m_bridge->setTensionText(m_information_after.tension);
+	QUndoCommand::redo();
 }
 
 /**
@@ -191,48 +196,100 @@ void ChangeBridgeTerminalsCommand::undo()
 	m_bridge->setTerminals(m_terminals_before);
 	m_bridge->setFunctionText(m_information_before.function);
 	m_bridge->setTensionText(m_information_before.tension);
+	QUndoCommand::undo();
 }
 
 /**
 	@brief RemoveBridgeCommand::RemoveBridgeCommand
-	@param parts any lines of the bridges to take away
+	@param parts the drawn lines to take away
 */
 RemoveBridgeCommand::RemoveBridgeCommand(const QList<BridgePart *> &parts)
 {
-	setText(QObject::tr("Deleting a bridge", "undo command text"));
+	setText(QObject::tr("Deleting a line of a bridge", "undo command text"));
 
 	for (BridgePart *part : parts)
 	{
 		if (!part || !part->bridge()) {
 			continue;
 		}
-		Bridge *bridge = part->bridge();
-		if (m_bridges.contains(QPointer<Bridge>(bridge))) {
+		bool known = false;
+		for (const Entry &entry : std::as_const(m_entries)) {
+			if (entry.part == part) {
+				known = true;
+				break;
+			}
+		}
+		if (known) {
 			continue;
 		}
-		m_bridges << bridge;
 
-			//Every line of the bridge goes with it, on whichever folio it
-			//stands: half a bridge is of no use to anybody.
-		QETProject *proj = bridge->parent()
-				? qobject_cast<QETProject *>(bridge->parent()) : nullptr;
-		for (const BridgePartData &data : bridge->parts())
+		Entry entry;
+		entry.part = part;
+		entry.folio = part->diagram();
+		entry.bridge = part->bridge();
+		entry.data.uuid = part->partUuid();
+		entry.data.diagram = entry.folio ? entry.folio->uuid() : QUuid();
+		entry.data.p1 = part->firstPoint();
+		entry.data.p2 = part->secondPoint();
+		m_entries << entry;
+	}
+
+		//What each bridge lands on before the lines go, and what is left
+		//of it afterwards: what only those lines crossed goes with them
+	for (const Entry &entry : std::as_const(m_entries)) {
+		if (entry.bridge && !m_terminals_before.contains(entry.bridge.data())) {
+			m_terminals_before.insert(entry.bridge.data(), entry.bridge->terminals());
+		}
+	}
+
+	for (auto it = m_terminals_before.constBegin();
+		 it != m_terminals_before.constEnd(); ++it)
+	{
+		Bridge *bridge = it.key();
+		if (!bridge) {
+			continue;
+		}
+
+		QList<BridgeTerminal> after;
+		int lines_left = 0;
+		const auto parts_of_bridge = bridge->parts();
+		for (const BridgePartData &data : parts_of_bridge)
 		{
-			Entry entry;
-			entry.part = nullptr;
-			entry.folio = proj ? proj->diagramByUuid(data.diagram) : nullptr;
-			if (entry.folio) {
-				const auto items = entry.folio->items();
-				for (QGraphicsItem *item : items) {
-					if (auto *candidate = qgraphicsitem_cast<BridgePart *>(item)) {
-						if (candidate->partUuid() == data.uuid) {
-							entry.part = candidate;
-							break;
-						}
-					}
+			bool goes = false;
+			for (const Entry &entry : std::as_const(m_entries)) {
+				if (entry.bridge == bridge && entry.data.uuid == data.uuid) {
+					goes = true;
+					break;
 				}
 			}
-			m_entries << entry;
+			if (goes) {
+				continue;
+			}
+			++lines_left;
+
+				//What this line which stays crosses: the bridge goes on
+				//landing on it
+			QETProject *proj = project();
+			Diagram *folio = proj ? proj->diagramByUuid(data.diagram) : nullptr;
+			if (!folio) {
+				continue;
+			}
+			const auto crossings =
+					BridgeManager::crossedTerminals(folio, QLineF(data.p1, data.p2));
+			for (const BridgeCrossing &crossing : crossings) {
+				BridgeTerminal terminal;
+				terminal.element = crossing.element->uuid();
+				terminal.terminal = crossing.terminal;
+				if (!after.contains(terminal)) {
+					after << terminal;
+				}
+			}
+		}
+		m_terminals_after.insert(bridge, after);
+
+			//What draws nothing is no bridge of this project
+		if (!lines_left) {
+			m_bridges << bridge;
 		}
 	}
 }
@@ -253,16 +310,26 @@ QETProject *RemoveBridgeCommand::project() const
 
 /**
 	@brief RemoveBridgeCommand::redo
-	Take every line of the bridges off their folios and the bridges out
-	of the project. They keep everything they know: undo finds them
-	exactly as they were.
+	Take the selected lines off their folios and what they crossed off
+	their bridges. A bridge with no line left goes out of the project.
 */
 void RemoveBridgeCommand::redo()
 {
 	for (const Entry &entry : std::as_const(m_entries))
 	{
+		if (entry.bridge) {
+			entry.bridge->removePart(entry.data.uuid);
+		}
 		if (entry.part && entry.part->scene()) {
 			entry.part->scene()->removeItem(entry.part.data());
+		}
+	}
+
+	for (auto it = m_terminals_after.constBegin();
+		 it != m_terminals_after.constEnd(); ++it)
+	{
+		if (it.key()) {
+			it.key()->setTerminals(it.value());
 		}
 	}
 
@@ -280,8 +347,9 @@ void RemoveBridgeCommand::redo()
 
 /**
 	@brief RemoveBridgeCommand::undo
-	Put the bridges back into the project and draw their lines again,
-	exactly where they stood.
+	Put the lines back on their folios, the sections back in their
+	bridges and the terminals back on them: exactly the state the delete
+	action took away.
 */
 void RemoveBridgeCommand::undo()
 {
@@ -298,8 +366,19 @@ void RemoveBridgeCommand::undo()
 
 	for (const Entry &entry : std::as_const(m_entries))
 	{
+		if (entry.bridge && !entry.bridge->hasPart(entry.data.uuid)) {
+			entry.bridge->addPart(entry.data);
+		}
 		if (entry.part && !entry.part->scene() && entry.folio) {
 			entry.folio->addItem(entry.part.data());
+		}
+	}
+
+	for (auto it = m_terminals_before.constBegin();
+		 it != m_terminals_before.constEnd(); ++it)
+	{
+		if (it.key()) {
+			it.key()->setTerminals(it.value());
 		}
 	}
 }

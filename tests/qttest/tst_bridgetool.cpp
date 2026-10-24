@@ -529,10 +529,10 @@ private slots:
 		QVERIFY(dialog.problem().isEmpty());
 	}
 
-	//Deleting one line of a bridge takes the whole bridge: every line
-	//of it, on whichever folio it stands, and one undo draws them all
-	//again where they were
-	void deletingABridgeTakesEveryLineWithIt()
+	//Deleting a line of a bridge deletes that line and nothing else: a
+	//bridge with other lines left goes on with them, and only the last
+	//line takes the bridge with it -- what draws nothing is no bridge
+	void deletingALineLeavesTheRestOfTheBridge()
 	{
 		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
 		QETProject project(fixture);
@@ -566,14 +566,27 @@ private slots:
 		second_part->setBridge(bridge);
 		second_folio->addItem(second_part);
 
+			//Only the line he chose goes; the bridge draws on with its other
+			//line, wherever that one stands
 		first_folio->undoStack().push(new RemoveBridgeCommand({first_part}));
-		QVERIFY2(!project.bridges().contains(bridge), "the bridge is gone with its line");
+		QVERIFY(project.bridges().contains(bridge));
 		QVERIFY(!first_part->scene());
-		QVERIFY2(!second_part->scene(), "every line of it goes, wherever it stands");
+		QVERIFY2(second_part->scene(), "the line he did not choose stays");
+		QVERIFY(!bridge->hasPart(first_data.uuid));
+		QVERIFY(bridge->hasPart(second_data.uuid));
+
+		first_folio->undoStack().undo();
+		QVERIFY(bridge->hasPart(first_data.uuid));
+		QCOMPARE(first_part->scene(), static_cast<QGraphicsScene *>(first_folio));
+
+			//Both lines gone: the last one takes the bridge with it
+		first_folio->undoStack().push(new RemoveBridgeCommand({first_part, second_part}));
+		QVERIFY(!project.bridges().contains(bridge));
+		QVERIFY(!first_part->scene());
+		QVERIFY(!second_part->scene());
 
 		first_folio->undoStack().undo();
 		QVERIFY(project.bridges().contains(bridge));
-		QCOMPARE(first_part->scene(), static_cast<QGraphicsScene *>(first_folio));
 		QCOMPARE(second_part->scene(), static_cast<QGraphicsScene *>(second_folio));
 	}
 
@@ -740,7 +753,11 @@ private slots:
 		bridge->addTerminal(terminalOf(wired));
 
 		const BridgeInformation information{QStringLiteral("FE"), QStringLiteral("230V")};
-		auto *step = new QUndoCommand();
+			//The very command the drawing pushes, so the wires go with
+			//it the way they do in the drawing
+		const BridgeInformation carried{bridge->functionText(), bridge->tensionText()};
+		auto *step = new ChangeBridgeTerminalsCommand(bridge, bridge->terminals(),
+													  bridge->terminals(), carried, information);
 		BridgeManager::writeInformation(&project, bridge->terminals(), information, step);
 		folio->undoStack().push(step);
 
