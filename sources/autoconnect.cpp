@@ -388,7 +388,7 @@ QList<QPointF> AutoConnect::dragPlacements(const Diagram *diagram,
 					origin = QPointF(grid.x(), p.y() - offset.y());
 				const QPointF facing = origin + offset;
 				if (ahead(t, facing) <= kTolerance
-					|| bodyAcross(diagram, p, facing, skip | QSet<const Element *>{e}))
+					|| bodyAcross(diagram, p, facing, QSet<const Element *>(skip) << e))
 					continue;
 
 				bool twice = false;
