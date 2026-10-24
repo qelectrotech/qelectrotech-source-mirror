@@ -480,6 +480,26 @@
         </widget>
        </item>
        <item row="10" column="0">
+        <widget class="QCheckBox" name="m_reopen_projects">
+         <property name="text">
+          <string>Reopen the projects of the last session at start</string>
+         </property>
+         <property name="toolTip">
+          <string>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0">
+        <widget class="QCheckBox" name="m_offer_backups">
+         <property name="text">
+          <string>Offer to restore automatic backups at start</string>
+         </property>
+         <property name="toolTip">
+          <string>After a crash, the automatic backups of the projects that were open are offered at the next start. Unticked, they are kept but not offered, until this is ticked again.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="0">
         <widget class="QCheckBox" name="m_working_copy_recovery">
          <property name="text">
           <string>After a crash, offer projects as they were after their last edit (experimental)</string>
@@ -489,7 +509,7 @@
          </property>
         </widget>
        </item>
-       <item row="11" column="0">
+       <item row="13" column="0">
         <widget class="QCheckBox" name="m_qetdb_enabled">
          <property name="text">
           <string>Offer saving a project as one database file, .qetdb (experimental)</string>
@@ -499,7 +519,7 @@
          </property>
         </widget>
        </item>
-       <item row="12" column="0">
+       <item row="14" column="0">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -1667,6 +1687,8 @@
   <tabstop>m_save_label_paste</tabstop>
   <tabstop>m_autonumber_pasted</tabstop>
   <tabstop>m_project_lock</tabstop>
+  <tabstop>m_reopen_projects</tabstop>
+  <tabstop>m_offer_backups</tabstop>
   <tabstop>m_use_folio_label</tabstop>
   <tabstop>m_border_0</tabstop>
   <tabstop>m_autosave_sb</tabstop>

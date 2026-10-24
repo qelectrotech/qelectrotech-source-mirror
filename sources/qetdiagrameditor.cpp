@@ -2006,6 +2006,14 @@ void QETDiagramEditor::setUpMenu()
 */
 void QETDiagramEditor::closeEvent(QCloseEvent *qce)
 {
+		//The projects open now, for QETApp::reopenLastProjects(); those of
+		//every window closed during this run, when there are several
+	static QStringList open_at_quit;
+	QStringList open_here;
+	for (ProjectView *project_view : openedProjects())
+		if (!project_view->project()->filePath().isEmpty())
+			open_here << project_view->project()->filePath();
+
 	// quitte directement s'il n'y a aucun projet ouvert
 	bool can_quit = true;
 	if (openedProjects().count()) {
@@ -2024,6 +2032,11 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce)
 		}
 	}
 	if (can_quit) {
+		for (const QString &file : std::as_const(open_here))
+			if (!open_at_quit.contains(file))
+				open_at_quit << file;
+		QSettings settings;
+		settings.setValue(QStringLiteral("projects/open_at_quit"), open_at_quit);
 		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
 		qce -> accept();

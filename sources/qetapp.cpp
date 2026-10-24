@@ -203,9 +203,38 @@ QETApp::QETApp() :
 		//prompts were up that connection did not exist yet, so a file handed
 		//to the already-running instance during start-up was accepted by the
 		//socket and then dropped on the floor.
-	QMetaObject::invokeMethod(this, [this]() {
+		//The projects of the last session are reopened after that prompt,
+		//so the recovery files of a crash are still offered for them.
+	const bool reopen = qet_arguments_.files().isEmpty();
+	QMetaObject::invokeMethod(this, [this, reopen]() {
 		checkBackupFiles();
+		if (reopen)
+			reopenLastProjects();
 	}, Qt::QueuedConnection);
+}
+
+/**
+	@brief QETApp::reopenLastProjects
+	When the setting is on, open again the projects that were open when
+	QElectroTech was last left (@see QETDiagramEditor::closeEvent). A
+	project already open, from a recovery file for instance, is not
+	opened twice; one that no longer exists is skipped without a word.
+*/
+void QETApp::reopenLastProjects()
+{
+	QSettings settings;
+	if (!settings.value(QStringLiteral("projects/reopen_at_start"), false).toBool())
+		return;
+	QStringList files;
+	for (const QString &file : settings.value(QStringLiteral("projects/open_at_quit")).toStringList())
+		if (QFileInfo::exists(file) && !diagramEditorForFile(file))
+			files << file;
+	if (files.isEmpty())
+		return;
+	QETDiagramEditor *editor = diagramEditors().isEmpty() ? new QETDiagramEditor()
+							      : diagramEditors().first();
+	for (const QString &file : std::as_const(files))
+		editor->openAndAddProject(file, false);
 }
 
 /**
@@ -3249,6 +3278,13 @@ void QETApp::checkBackupFiles()
 				stale_files.removeOne(kasf);
 			}
 		}
+	}
+
+		//Not asked: the backup files are kept, and offered again once the
+		//question is switched back on
+	QSettings settings;
+	if (!settings.value(QStringLiteral("projects/offer_backups"), true).toBool()) {
+		stale_files.clear();
 	}
 
 		//The working copies left by projects open when QElectroTech did not
