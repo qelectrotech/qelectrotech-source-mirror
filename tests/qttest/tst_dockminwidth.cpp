@@ -43,6 +43,9 @@ class tst_dockminwidth : public QObject
 			for (const QString &name : {QStringLiteral("assistant_dock"),
 						    QStringLiteral("AutoNumberingDockWidget")}) {
 				auto *dock = editor->findChild<QDockWidget *>(name);
+					//A build without scripting has no Assistant dock
+				if (!dock && name == QLatin1String("assistant_dock"))
+					continue;
 				QVERIFY2(dock, qPrintable(name));
 				QVERIFY2(dock->minimumSizeHint().width() <= 200,
 					 qPrintable(QString("%1 needs at least %2 px")
@@ -53,7 +56,8 @@ class tst_dockminwidth : public QObject
 		void assistantTextTogglesItsBox()
 		{
 			auto *dock = QetAppTest::editor()->findChild<QDockWidget *>(QStringLiteral("assistant_dock"));
-			QVERIFY(dock);
+			if (!dock)
+				QSKIP("Built without scripting: there is no Assistant dock");
 			auto *box = dock->findChild<QCheckBox *>();
 			auto *label = dock->findChild<QLabel *>();
 			QVERIFY(box && label);
