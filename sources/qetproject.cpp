@@ -374,6 +374,10 @@ void QETProject::init()
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, &QETProject::updateDiagramsTitleBlockTemplate);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, &QETProject::removeDiagramsTitleBlockTemplate);
 
+		//The default layout of the terminal strips is a setting of the project
+	connect(&m_project_properties_handler.terminalStripLayoutHandler(), &TerminalStripLayoutsHandler::changed,
+			this, &QETProject::storeSettings);
+
 		//What changes the saved items of folios not built (lazy folios):
 		//a folio's position, number or the folio total in their texts,
 		//the report and cross-reference settings, a symbol's definition.
@@ -3640,6 +3644,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//Load the layout of the terminal strip (font, size of cells...),
 		//before the diagrams because the terminal strip items use it
 	m_project_properties_handler.terminalStripLayoutHandler().fromXml(xml_project.documentElement());
+	storeSettings();
 
 		//The stores of symbol information, folio title blocks and wire
 		//properties are filled from the document before the folios are
@@ -4543,6 +4548,10 @@ void QETProject::storeSettings()
 									 QStringLiteral("element_autonums"), QStringLiteral("cable_autonums")})
 		new_diagrams.removeChild(new_diagrams.firstChildElement(numbering));
 	root.appendChild(new_diagrams);
+		//The default layout of the terminal strips, written only when the
+		//project has strips, as a save does
+	if (m_terminal_strip_vector.count())
+		m_project_properties_handler.terminalStripLayoutHandler().toXml(root);
 	m_data_base.storeProjectSettings(root);
 }
 
@@ -4859,6 +4868,11 @@ void QETProject::watchTerminalStrip(TerminalStrip *strip, bool watch)
 	}
 	if (!watch) {
 		m_data_base.forgetTerminalStrip(strip->uuid());
+	}
+		//The layout is saved only while there are strips: the first one
+		//added and the last one removed change the settings
+	if (m_terminal_strip_vector.count() == (watch ? 1 : 0)) {
+		storeSettings();
 	}
 	m_data_base.spareTerminalsChanged();
 }

@@ -1297,7 +1297,8 @@ if(QET_HAS_SCRIPTING)
   add_dependencies(tst_projectsettingrows qelectrotech)
   target_link_libraries(tst_projectsettingrows PRIVATE Qt::Test Qt::Xml)
   target_compile_definitions(tst_projectsettingrows PRIVATE
-    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\"")
 endif()
 
 # Where a wire sits and how its text was placed is in the project database
