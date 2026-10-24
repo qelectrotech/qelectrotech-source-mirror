@@ -3867,6 +3867,36 @@ Shift を押しながらドラッグすると、このテキストだけを移�
 <context>
     <name>DynamicElementTextModel</name>
     <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height</source>
+        <translation>高さ</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
+        <source>Width fixed</source>
+        <translation>幅を固定</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height fixed</source>
+        <translation>高さを固定</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="328"/>
+        <source>Ticked, the text field keeps the width above and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>チェックするとテキスト欄は上の幅を保ち、テキストはその中で折り返します。チェックしないとテキストの幅になります。</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="331"/>
+        <source>Ticked, the text field keeps the height above and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>チェックするとテキスト欄は上の高さを保ち、収まらない行は切り捨てられます。チェックしないとテキストの高さになります。</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>
+        <source>Change the height of an element text</source>
+        <translation>要素テキストの高さを変更</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="70"/>
         <source>Property</source>
         <translation>属性</translation>
