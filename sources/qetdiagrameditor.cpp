@@ -74,6 +74,7 @@
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qeticons.h"
+#include "ui/docktextwrap.h"
 #include "qetmessagebox.h"
 #include "recentfiles.h"
 #include "textgrid.h"
@@ -128,32 +129,6 @@
 #include <QLabel>
 #include <QUrl>
 #include <algorithm>
-
-namespace {
-	/**
-		The text of a check box set apart from it so that it can wrap:
-		a click on the text toggles the box, as on a check box's own text.
-	*/
-	class ClickToToggleLabel : public QLabel
-	{
-		public:
-			ClickToToggleLabel(const QString &text, QCheckBox *box, QWidget *parent) :
-				QLabel(text, parent), m_box(box)
-			{
-				setWordWrap(true);
-				setBuddy(box);
-			}
-		protected:
-			void mouseReleaseEvent(QMouseEvent *event) override
-			{
-				if (event->button() == Qt::LeftButton && rect().contains(event->position().toPoint()))
-					m_box->toggle();
-				QLabel::mouseReleaseEvent(event);
-			}
-		private:
-			QCheckBox *m_box;
-	};
-}
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -177,6 +152,9 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	m_file_actions_group       (this),
 	open_dialog_dir            (QETApp::documentDir())
 {
+		//The texts of the docked panels wrap, so that none holds them wide
+	DockTextWrap::install();
+
 		//Trivial property use to set the graphics handler size
 	setProperty("graphics_handler_size", 10);
 
@@ -4947,20 +4925,12 @@ void QETDiagramEditor::setUpLiveIndicator()
 	dock->setObjectName(QStringLiteral("assistant_dock"));
 	auto *content = new QWidget(dock);
 	auto *dock_layout = new QVBoxLayout(content);
-		//The box and its text apart, so that the text wraps: a check box
-		//never wraps its own text and would hold every panel docked
-		//beside it at the width of this one line
-	auto *ask = new QCheckBox(content);
+	auto *ask = new QCheckBox(tr("Ask before running a script the assistant wrote"), content);
 	ask->setChecked(LiveServer::instance().askFirst());
 	ask->setToolTip(tr("Remembered after a restart"));
-	auto *ask_label = new ClickToToggleLabel(tr("Ask before running a script the assistant wrote"), ask, content);
-	ask_label->setToolTip(ask->toolTip());
-	auto *ask_row = new QHBoxLayout;
-	ask_row->addWidget(ask, 0, Qt::AlignTop);
-	ask_row->addWidget(ask_label, 1);
 	auto *log = new QListWidget(content);
 	log->setWordWrap(true);
-	dock_layout->addLayout(ask_row);
+	dock_layout->addWidget(ask);
 	dock_layout->addWidget(log);
 	dock->setWidget(content);
 	addDockWidget(Qt::RightDockWidgetArea, dock);
