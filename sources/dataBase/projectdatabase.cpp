@@ -2745,6 +2745,21 @@ bool projectDataBase::createDataBase()
 			"PRIMARY KEY (element_uuid, ord))"))) {
 		qDebug() << " element_kind_information_table query : " << query_.lastError();
 	}
+		//Create the element_placement table: where each placed symbol comes
+		//from and sits, as it saves them (storeElementPlacement()).
+		//rotation is the orientation, 0 to 3 quarter turns.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE element_placement ("
+			"element_uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+			"type TEXT NOT NULL, "
+			"x REAL NOT NULL, "
+			"y REAL NOT NULL, "
+			"rotation REAL NOT NULL, "
+			"horizontal_mirror INTEGER NOT NULL, "
+			"vertical_mirror INTEGER NOT NULL, "
+			"z REAL NOT NULL)"))) {
+		qDebug() << " element_placement_table query : " << query_.lastError();
+	}
 		//Create the folio_titleblock table: the title block properties of
 		//every folio, as a folio saves them, the store folios write
 		//through (storeFolioTitleBlock()). One row per property, then one
@@ -3549,6 +3564,68 @@ void projectDataBase::forgetElementKindInformation(const QUuid &element)
 }
 
 /**
+	@brief projectDataBase::elementPlacement
+	@return the stored placement of the symbol @p element
+*/
+projectDataBase::ElementPlacement projectDataBase::elementPlacement(const QUuid &element) const
+{
+	return m_element_placements.value(element);
+}
+
+/**
+	@brief projectDataBase::storeElementPlacement
+	Store @p placement as the placement of the placed symbol @p element, in
+	the element_placement table and the cache in front of it.
+	@return true if that changed what was stored
+*/
+bool projectDataBase::storeElementPlacement(const QUuid &element, const ElementPlacement &placement)
+{
+	if (element.isNull()) return false;
+	auto known = m_element_placements.constFind(element);
+	if (known != m_element_placements.constEnd() && *known == placement) return false;
+	m_element_placements.insert(element, placement);
+
+	const QString uuid = element.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM element_placement WHERE element_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeElementPlacement remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral(
+			"INSERT INTO element_placement (element_uuid, type, x, y, rotation, horizontal_mirror, vertical_mirror, z) "
+			"VALUES (:uuid, :type, :x, :y, :rot, :hm, :vm, :z)"));
+	insert.bindValue(QStringLiteral(":uuid"), uuid);
+	insert.bindValue(QStringLiteral(":type"), placement.type);
+	insert.bindValue(QStringLiteral(":x"), placement.x);
+	insert.bindValue(QStringLiteral(":y"), placement.y);
+	insert.bindValue(QStringLiteral(":rot"), placement.rotation);
+	insert.bindValue(QStringLiteral(":hm"), placement.horizontal_mirror ? 1 : 0);
+	insert.bindValue(QStringLiteral(":vm"), placement.vertical_mirror ? 1 : 0);
+	insert.bindValue(QStringLiteral(":z"), placement.z);
+	if (!insert.exec()) {
+		qDebug() << "projectDataBase::storeElementPlacement insert error : " << insert.lastError();
+	}
+	return true;
+}
+
+/**
+	@brief projectDataBase::forgetElementPlacement
+	The symbol @p element is no longer placed: its stored placement goes.
+*/
+void projectDataBase::forgetElementPlacement(const QUuid &element)
+{
+	if (!m_element_placements.remove(element)) return;
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM element_placement WHERE element_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), element.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::forgetElementPlacement error : " << remove.lastError();
+	}
+}
+
+/**
 	@brief projectDataBase::placeElement
 	@p element is now placed: its information is stored under its uuid.
 */
@@ -3558,6 +3635,7 @@ void projectDataBase::placeElement(Element *element)
 		m_placed_elements.insert(element->uuid(), element);
 	storeElementInformation(element->uuid(), element->ownInformations());
 	storeElementKindInformation(element->uuid(), element->ownKindInformations());
+	storeElementPlacement(element->uuid(), element->ownPlacement());
 }
 
 /**
@@ -3574,12 +3652,14 @@ void projectDataBase::unplaceElement(Element *element, const QUuid &uuid)
 				//Its own copy: the store still holds this symbol's
 			storeElementInformation(uuid, other->ownInformations());
 			storeElementKindInformation(uuid, other->ownKindInformations());
+			storeElementPlacement(uuid, other->ownPlacement());
 			return;
 		}
 	}
 	m_placed_elements.remove(uuid);
 	forgetElementInformation(uuid);
 	forgetElementKindInformation(uuid);
+	forgetElementPlacement(uuid);
 }
 
 /**
@@ -4370,6 +4450,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 {
 	m_prefilled_elements.clear();
 	m_prefilled_kinds.clear();
+	m_prefilled_placements.clear();
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();
@@ -4380,6 +4461,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	QHash<QUuid, ConductorProperties> conductors;
 	QHash<QUuid, ConductorLayout> layouts;
 	QHash<QUuid, DiagramContext> kinds;
+	QHash<QUuid, ElementPlacement> placements;
 		//Each type's kind information, read from its definition once
 	const QHash<QString, QDomElement> definitions = embeddedDefinitions();
 	QHash<QString, std::optional<DiagramContext>> kind_of_type;
@@ -4422,6 +4504,21 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 				kind = kind_of_type.insert(type, read);
 			}
 			if (kind->has_value()) kinds.insert(uuid, **kind);
+
+				//What Element::fromXml() makes of the same attributes
+			ElementPlacement placement;
+			placement.type = type;
+			placement.x = element.attribute(QStringLiteral("x")).toDouble();
+			placement.y = element.attribute(QStringLiteral("y")).toDouble();
+			placement.z = element.attribute(QStringLiteral("z"), QStringLiteral("10")).toDouble();
+			bool converted = false;
+			int orientation = element.attribute(QStringLiteral("orientation")).toInt(&converted);
+			if (!converted || orientation < 0 || orientation > 3) orientation = 0;
+			placement.rotation = orientation;
+			const QString mirror = element.attribute(QStringLiteral("mirror"));
+			placement.horizontal_mirror = mirror == QLatin1String("horizontal") || mirror == QLatin1String("both");
+			placement.vertical_mirror = mirror == QLatin1String("vertical") || mirror == QLatin1String("both");
+			placements.insert(uuid, placement);
 		}
 		const QDomElement conductor_list = folio.firstChildElement(QStringLiteral("conductors"));
 		for (QDomElement conductor = conductor_list.firstChildElement(QStringLiteral("conductor")) ;
@@ -4455,6 +4552,8 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		if (seen.value(it.key()) == 1) m_prefilled_elements.insert(it.key(), it.value());
 	for (auto it = kinds.constBegin() ; it != kinds.constEnd() ; ++it)
 		if (seen.value(it.key()) == 1) m_prefilled_kinds.insert(it.key(), it.value());
+	for (auto it = placements.constBegin() ; it != placements.constEnd() ; ++it)
+		if (seen.value(it.key()) == 1) m_prefilled_placements.insert(it.key(), it.value());
 	for (auto it = conductors.constBegin() ; it != conductors.constEnd() ; ++it)
 		if (seen.value(it.key()) == 1) {
 			m_prefilled_conductors.insert(it.key(), it.value());
@@ -4467,6 +4566,8 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		storeElementInformation(it.key(), it.value());
 	for (auto it = m_prefilled_kinds.constBegin() ; it != m_prefilled_kinds.constEnd() ; ++it)
 		storeElementKindInformation(it.key(), it.value());
+	for (auto it = m_prefilled_placements.constBegin() ; it != m_prefilled_placements.constEnd() ; ++it)
+		storeElementPlacement(it.key(), it.value());
 	for (auto it = m_prefilled_folios.constBegin() ; it != m_prefilled_folios.constEnd() ; ++it)
 		storeFolioTitleBlock(it.key(), it.value());
 	for (auto it = m_prefilled_conductors.constBegin() ; it != m_prefilled_conductors.constEnd() ; ++it)
@@ -4495,6 +4596,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 			if (!keep_unplaced && !m_placed_elements.contains(it.key())) {
 				forgetElementInformation(it.key());
 				forgetElementKindInformation(it.key());
+				forgetElementPlacement(it.key());
 			}
 			continue;
 		}
@@ -4556,6 +4658,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 	}
 	m_prefilled_elements.clear();
 	m_prefilled_kinds.clear();
+	m_prefilled_placements.clear();
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();

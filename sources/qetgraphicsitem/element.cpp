@@ -174,6 +174,12 @@ Element::Element(
 	connect(this, &Element::xChanged, update_docked_conductors);
 	connect(this, &Element::yChanged, update_docked_conductors);
 	connect(this, &Element::mirrorChanged, update_docked_conductors);
+		//The project's database holds the symbol's place
+	connect(this, &Element::xChanged, this, &Element::storePlacement);
+	connect(this, &Element::yChanged, this, &Element::storePlacement);
+	connect(this, &Element::zChanged, this, &Element::storePlacement);
+	connect(this, &Element::rotationChanged, this, &Element::storePlacement);
+	connect(this, &Element::mirrorChanged, this, &Element::storePlacement);
 		//The mirror is about the element's own axis, so it follows the
 		//rotation, see applyMirrorTransform()
 	connect(this, &Element::rotationChanged, this, &Element::applyMirrorTransform);
@@ -2364,6 +2370,37 @@ DiagramContext Element::kindInformations() const
 	if (projectDataBase *store = placedStore())
 		return store->elementKindInformation(m_uuid);
 	return m_kind_informations;
+}
+
+/**
+	@brief Element::ownPlacement
+	@return where this symbol comes from and sits, as toXml() writes it
+*/
+ElementPlacement Element::ownPlacement() const
+{
+	ElementPlacement placement;
+	placement.type = m_location.path();
+	placement.x = pos().x();
+	placement.y = pos().y();
+	placement.z = zValue();
+	placement.rotation = orientation();
+	placement.horizontal_mirror = m_horizontal_mirror;
+	placement.vertical_mirror = m_vertical_mirror;
+	return placement;
+}
+
+/**
+	@brief Element::storePlacement
+	Write this symbol's placement to its project's store, once it is
+	placed and alone with its uuid (F100).
+*/
+void Element::storePlacement()
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	if (store && store->hasElementInformation(m_uuid) && store->placedElementCount(m_uuid) == 1)
+		store->storeElementPlacement(m_uuid, ownPlacement());
 }
 
 /**

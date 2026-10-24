@@ -1314,6 +1314,18 @@ if(QET_HAS_SCRIPTING)
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 endif()
 
+# Where a placed symbol comes from and sits is in the project database
+# (element_placement), from a built folio or from the document. QET-SQL-FORMAT S3d.
+add_executable(
+  tst_elementplacementrows
+  tst_elementplacementrows.cpp)
+add_test(NAME tst_elementplacementrows COMMAND tst_elementplacementrows)
+add_dependencies(tst_elementplacementrows qelectrotech)
+target_link_libraries(tst_elementplacementrows PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_elementplacementrows PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # A symbol's kind information (NO/NC/SW/power) is queryable from the
 # project database once it is placed, not only from a live Element*.
 # QETZ-DB-FIRST 2d-2a.

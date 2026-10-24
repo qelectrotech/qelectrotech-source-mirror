@@ -22,6 +22,7 @@
 #include "../NameList/nameslist.h"
 #include "../autoNum/assignvariables.h"
 #include "../diagramcontext.h"
+#include "../dataBase/elementplacement.h"
 #include "../qet.h"
 #include "qetgraphicsitem.h"
 #include "../properties/elementdata.h"
@@ -150,6 +151,10 @@ class Element : public QetGraphicsItem
 		DiagramContext kindInformations() const;
 			/// This symbol's own copy of its kind information, whatever the store holds
 		DiagramContext ownKindInformations() const {return m_kind_informations;}
+			/// Where this symbol comes from and sits, from its own members,
+			/// never from the store
+		ElementPlacement ownPlacement() const;
+		void storePlacement();
 		//@kind_information_ is used to store more information
 		//about the herited class like contactelement for know
 		// kind of contact (simple tempo) or number of contact show by the element.

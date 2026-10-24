@@ -37,6 +37,7 @@
 #include "../borderproperties.h"
 #include "../conductorproperties.h"
 #include "conductorlayout.h"
+#include "elementplacement.h"
 #include "../autoNum/assignvariables.h"
 #include "../autoNum/numerotationcontext.h"
 
@@ -145,6 +146,11 @@ class projectDataBase : public QObject
 		DiagramContext elementKindInformation(const QUuid &element) const;
 		bool storeElementKindInformation(const QUuid &element, const DiagramContext &information);
 		void forgetElementKindInformation(const QUuid &element);
+			/// Where a placed symbol comes from and sits
+		using ElementPlacement = ::ElementPlacement;
+		bool storeElementPlacement(const QUuid &element, const ElementPlacement &placement);
+		ElementPlacement elementPlacement(const QUuid &element) const;
+		void forgetElementPlacement(const QUuid &element);
 
 			//The title block properties of every folio of the project, by
 			//folio uuid: the store each folio's title block is written
@@ -454,6 +460,7 @@ class projectDataBase : public QObject
 		QList<QPointer<Element>> m_moved_elements;
 		QHash<QUuid, DiagramContext> m_element_information;
 		QHash<QUuid, DiagramContext> m_element_kind_information;
+		QHash<QUuid, ElementPlacement> m_element_placements;
 			//The placed symbols holding each uuid: a paste or a folio copy
 			//briefly gives a copy its original's uuid, so one uuid can have
 			//two symbols until the copy's is renewed.
@@ -491,6 +498,7 @@ class projectDataBase : public QObject
 		bool m_changed_before_folio = false, m_blocked_before_folio = false;
 		QHash<QUuid, DiagramContext> m_prefilled_elements;
 		QHash<QUuid, DiagramContext> m_prefilled_kinds;
+		QHash<QUuid, ElementPlacement> m_prefilled_placements;
 		QHash<QUuid, TitleBlockProperties> m_prefilled_folios;
 		QHash<QUuid, ConductorProperties> m_prefilled_conductors;
 		QHash<QUuid, ConductorLayout> m_prefilled_layouts;
