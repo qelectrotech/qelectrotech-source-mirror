@@ -984,6 +984,15 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/cablelist/cablequerywidget.cpp
   ${QET_DIR}/sources/cablelist/cablequerywidget.h
 
+  ${QET_DIR}/sources/bridge/addbridgecommand.cpp
+  ${QET_DIR}/sources/bridge/addbridgecommand.h
+  ${QET_DIR}/sources/bridge/bridge.cpp
+  ${QET_DIR}/sources/bridge/bridge.h
+  ${QET_DIR}/sources/bridge/bridgemanager.cpp
+  ${QET_DIR}/sources/bridge/bridgemanager.h
+  ${QET_DIR}/sources/bridge/bridgepart.cpp
+  ${QET_DIR}/sources/bridge/bridgepart.h
+
   ${QET_DIR}/sources/cable/addcablecommand.cpp
   ${QET_DIR}/sources/cable/addcablecommand.h
   ${QET_DIR}/sources/cable/cable.cpp

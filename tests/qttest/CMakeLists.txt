@@ -339,6 +339,12 @@ qet_add_app_test(tst_terminalcableauto tst_terminalcableauto.cpp)
 # the whole label.
 qet_add_app_test(tst_terminallabeldisplay tst_terminallabeldisplay.cpp)
 
+# The bridge drawn over terminals: what a bridge holds (colour, how many
+# terminals it may take, its sections), which terminals a line about to be
+# drawn crosses, and which parallel track a new bridge takes at them --
+# the first free one, side by side with the bridges already there.
+qet_add_app_test(tst_bridgetool tst_bridgetool.cpp)
+
 # Escape during a picture's resize, rotate or pivot drag puts it back, keeps
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
