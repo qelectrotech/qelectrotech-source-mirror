@@ -40,7 +40,9 @@
 	as one wants (DockFit): their texts wrap -- labels, and check boxes and
 	radio buttons through a wrapping label beside them --, a combo box no
 	longer widens to its longest entry, and what cannot wrap scrolls
-	sideways, with a horizontal scroll bar.
+	sideways, with a horizontal scroll bar. All of it with the setting
+	"Narrow docks" (off by default, tst_dockfitoff), switched on here
+	before the application starts.
 */
 class tst_dockminwidth : public QObject
 {
@@ -127,6 +129,10 @@ class tst_dockminwidth : public QObject
 			auto *radio = new QRadioButton(long_text, content);
 			auto *combo = new QComboBox(content);
 			combo->addItem(long_text);
+				//A check box in a layout nested in the content's
+			auto *row = new QHBoxLayout;
+			auto *nested = new QCheckBox(long_text, content);
+			row->addWidget(nested);
 			auto *tree = new QTreeWidget(content);
 			tree->setHeaderHidden(true);
 			tree->addTopLevelItem(new QTreeWidgetItem({long_text}));
@@ -134,6 +140,7 @@ class tst_dockminwidth : public QObject
 			layout->addWidget(box);
 			layout->addWidget(radio);
 			layout->addWidget(combo);
+			layout->addLayout(row);
 			layout->addWidget(tree);
 			dock->setWidget(content);
 			editor->addDockWidget(Qt::RightDockWidgetArea, dock);
@@ -174,12 +181,29 @@ class tst_dockminwidth : public QObject
 			QVERIFY(box_text->isHidden());
 			box->show();
 			QVERIFY(!box_text->isHidden());
+				//and its text, set later
+			box->setText(QStringLiteral("Another text"));
+			QTest::qWait(100);
+			QCOMPARE(box_text->text(), QStringLiteral("Another text"));
+			QVERIFY(box->text().isEmpty());
+
+				//A check box in a nested layout wraps too
+			QLabel *nested_text = nullptr;
+			for (QLabel *l : content->findChildren<QLabel *>())
+				if (l->buddy() == nested) nested_text = l;
+			QVERIFY(nested_text);
+			QCOMPARE(nested_text->text(), long_text);
 
 			editor->removeDockWidget(dock);
 			delete dock;
 		}
 };
 
-QET_APP_TEST_MAIN(tst_dockminwidth)
+static void narrowDocks()
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/narrow_docks"), true);
+}
+
+QET_APP_TEST_MAIN_PREPARED(tst_dockminwidth, narrowDocks)
 
 #include "tst_dockminwidth.moc"

@@ -458,6 +458,8 @@ qet_add_app_test(tst_gridsnap tst_gridsnap.cpp)
 # the Assistant's check box text never wraps, the Auto numbering fields
 # never shrink.
 qet_add_app_test(tst_dockminwidth tst_dockminwidth.cpp)
+# Without the setting "Narrow docks" (the default) they stay as before.
+qet_add_app_test(tst_dockfitoff tst_dockfitoff.cpp)
 
 # Opening a project before the elements panel's first reload() left its tree
 # item detached, and selecting the item's first child crashed in QTreeModel

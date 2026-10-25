@@ -31,6 +31,7 @@
 #include <QRadioButton>
 #include <QScrollArea>
 #include <QScrollBar>
+#include <QSettings>
 #include <QHeaderView>
 #include <QTreeView>
 
@@ -55,6 +56,15 @@ namespace {
 				setVisible(!button->isHidden());
 				button->installEventFilter(this);
 			}
+				/// The text of a button set later, with setText(), comes
+				/// here too: before the button paints it
+			void takeText()
+			{
+				if (m_button->text().isEmpty())
+					return;
+				setText(m_button->text());
+				m_button->setText(QString());
+			}
 		protected:
 				/// The text follows the button: enabled, shown, its tip
 			bool eventFilter(QObject *watched, QEvent *event) override
@@ -65,6 +75,7 @@ namespace {
 						case QEvent::ShowToParent:  show(); break;
 						case QEvent::HideToParent:  hide(); break;
 						case QEvent::ToolTipChange: setToolTip(m_button->toolTip()); break;
+						case QEvent::Paint:         takeText(); break;
 						default: break;
 					}
 				}
@@ -90,14 +101,27 @@ namespace {
 		return false;
 	}
 
+	/// @return true when @a widget stands in @a layout or in one nested in it
+	bool holds(QLayout *layout, QWidget *widget)
+	{
+		if (layout->indexOf(widget) >= 0)
+			return true;
+		for (int i = 0; i < layout->count(); ++i)
+			if (QLayout *inner = layout->itemAt(i)->layout())
+				if (holds(inner, widget))
+					return true;
+		return false;
+	}
+
 	/// Put @a button's text in a wrapping label beside it, where it stands
-	/// in its parent's layout; nothing when it stands in none
+	/// in its parent's layout or a layout nested in it; nothing when it
+	/// stands in none
 	void wrapButton(QAbstractButton *button)
 	{
 		if (button->text().isEmpty() || !button->parentWidget())
 			return;
 		QLayout *layout = button->parentWidget()->layout();
-		if (!layout || layout->indexOf(button) < 0)
+		if (!layout || !holds(layout, button))
 			return;
 
 		const bool hidden = button->isHidden();
@@ -212,10 +236,20 @@ namespace {
 	};
 }
 
+bool DockFit::enabled()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/narrow_docks"), false).toBool();
+}
+
+void DockFit::setEnabled(bool on)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/narrow_docks"), on);
+}
+
 void DockFit::install()
 {
 	static Filter *filter = nullptr;
-	if (filter || !qApp)
+	if (filter || !qApp || !enabled())
 		return;
 	filter = new Filter(qApp);
 	qApp->installEventFilter(filter);

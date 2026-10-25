@@ -32,12 +32,15 @@
 #include "linksingleelementwidget.h"
 #include "masterpropertieswidget.h"
 #include "plclinkwidget.h"
+#include "dockfit.h"
 
 #include "../dataBase/qetdbfile.h"
 
 #include <QCheckBox>
 #include <QDateTime>
 #include <QFileInfo>
+#include <QClipboard>
+#include <QGuiApplication>
 #include <QLabel>
 #include <QLocale>
 #include <QUndoStack>
@@ -489,10 +492,13 @@ QWidget *ElementPropertiesWidget::generalWidget()
 						 last.section(QStringLiteral("  "), 2, 2).section(QLatin1Char('@'), 0, 0));
 		}
 	}
-		//A zero-width space after each slash lets the long path wrap
-		//there, rather than hold the panel at its whole length
-	description_string += QString(tr("Location : %1\n")).arg(
-				m_element.data()->location().toString().replace(QLatin1Char('/'), QStringLiteral("/\u200B")));
+		//Narrow docks: a zero-width space after each slash lets the long
+		//path wrap there, rather than hold the panel at its whole length
+	const bool narrow = DockFit::enabled();
+	QString location = m_element.data()->location().toString();
+	if (narrow)
+		location.replace(QLatin1Char('/'), QStringLiteral("/\u200B"));
+	description_string += QString(tr("Location : %1\n")).arg(location);
 
 		// widget himself
 	QWidget *general_widget = new QWidget (m_tab);
@@ -504,6 +510,15 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	label->setWordWrap(true);
 	label->setTextInteractionFlags(Qt::TextEditorInteraction);
 	vlayout_->addWidget(label);
+	if (narrow) {
+			//What is copied from the text gets no zero-width spaces
+		connect(QGuiApplication::clipboard(), &QClipboard::dataChanged, label, [label] {
+			QClipboard *clipboard = QGuiApplication::clipboard();
+			const QString text = clipboard->text();
+			if (label->hasFocus() && text.contains(QChar(0x200B)))
+				clipboard->setText(QString(text).remove(QChar(0x200B)));
+		});
+	}
 
 		//checkbox to lock the element position on the diagram
 		//(same mechanism already used by images and drawn shapes)
@@ -527,10 +542,17 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	connect(find_in_panel, &QPushButton::clicked, this, &ElementPropertiesWidget::findInPanel);
 	QPushButton *edit_element = new QPushButton(QET::Icons::ElementEdit, tr("Edit element"), general_widget);
 	connect(edit_element, &QPushButton::clicked, this, &ElementPropertiesWidget::editElement);
-		//Below each other: side by side, the two held the panel at the
-		//width of both
-	vlayout_->addWidget(find_in_panel);
-	vlayout_->addWidget(edit_element);
+	if (narrow) {
+			//Below each other: side by side, the two held the panel at
+			//the width of both
+		vlayout_->addWidget(find_in_panel);
+		vlayout_->addWidget(edit_element);
+	} else {
+		QHBoxLayout *hlayout_ = new QHBoxLayout;
+		hlayout_->addWidget(find_in_panel);
+		hlayout_->addWidget(edit_element);
+		vlayout_->addLayout(hlayout_);
+	}
 
 		//Set the maximum size of the pixmap to the minimum size of the layout
 	QPixmap pixmap = m_element->pixmap();

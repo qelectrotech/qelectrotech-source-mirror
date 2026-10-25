@@ -31,7 +31,8 @@ class QWidget;
 	  later (the Selection properties of what is selected) are handled
 	  too: a label wraps its text; a check box or a radio button, which
 	  never wraps its own text, gets it in a wrapping label beside it, a
-	  click on which still toggles it; a combo box no longer widens to its
+	  click on which still toggles it, and which follows a later
+	  setText() of the button; a combo box no longer widens to its
 	  longest entry; a tree without a header shows its entries whole and
 	  scrolls sideways, instead of cutting them to its width.
 	- Every dock shows its content in a sideways scroll area: made
@@ -41,8 +42,13 @@ class QWidget;
 */
 namespace DockFit
 {
-		/// Handle the docks of the whole application from now on; once is
-		/// enough, more calls do nothing
+		/// The setting (Settings > General, off by default): narrow docks,
+		/// from the next start of the application
+	bool enabled();
+	void setEnabled(bool on);
+
+		/// Handle the docks of the whole application from now on, when
+		/// enabled(); once is enough, more calls do nothing
 	void install();
 
 		/// Handle @a widget as a widget inside a dock, now
