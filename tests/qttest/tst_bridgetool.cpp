@@ -110,6 +110,7 @@ class tst_bridgetool : public QObject
 	}
 
 private slots:
+
 	//The shipped default: a bridge is black, holds as many terminals as
 	//the user draws, and its track is worked out when it is drawn
 	void bridgeDefaultsAreTheShippedOnes()

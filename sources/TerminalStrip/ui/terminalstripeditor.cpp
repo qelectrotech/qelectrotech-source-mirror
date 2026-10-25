@@ -82,6 +82,13 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 		//Setup the bridge color
 	ui->m_bridge_color_cb->setColors(TerminalStripBridge::bridgeColor().toList());
 
+		//What the button really does is more than its label says: it
+		//brings the bridges of the drawing in with the sorting
+	ui->m_auto_ordering_pb->setToolTip(tr(
+		"Sort the terminals the way the drawing is laid out, and bring "
+		"the bridges drawn there in with them. What the drawing brought "
+		"is read-only here: it is changed in the drawing or not at all."));
+
 		//Call for update the state of child widgets
 	selectionChanged();
 
