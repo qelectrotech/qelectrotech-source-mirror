@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -588,13 +588,15 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 	{
 		if(old_info_name != info_name)
 		{
-			if(old_info_name == "label") {
+			if(old_info_name == "label" || old_info_name == "cross_ref") {
 				removeConnectionForReportFormula(m_report_formula);
 			}
-			if(info_name == "label")
+			if(info_name == "label" || info_name == "cross_ref")
 			{
 				setConnectionForReportFormula(m_report_formula);
-				updateReportText();
+				if (m_parent_element.data()->state() != QET::GIBuildingFromXml && m_parent_element.data()->state() != QET::GILoadingFromXml) {
+					updateReportText();
+				}
 			}
 			else
 				conductorPropertiesChanged();
@@ -663,10 +665,11 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 			 * but for that we must do several checks and because I'm lazy,
 			 * in every case I remove connection and set it after ;)
 			 */
-		if(old_composite_text.contains("%{label}"))
+		if(old_composite_text.contains("%{label}") || old_composite_text.contains("%{cross_ref}"))
 			removeConnectionForReportFormula(m_report_formula);
-		if(m_composite_text.contains("%{label}"))
+		if(m_composite_text.contains("%{label}") || m_composite_text.contains("%{cross_ref}")) {
 			setConnectionForReportFormula(m_report_formula);
+		}
 		
 		updateReportText();
 	}
@@ -1371,8 +1374,8 @@ void DynamicElementTextItem::reportChanged()
 	
 	bool text_have_label = false;
 	
-	if((textFrom() == ElementInfo && m_info_name == "label") ||
-	   (textFrom() == CompositeText && m_composite_text.contains("%{label}")))
+	if((textFrom() == ElementInfo && (m_info_name == "label" || m_info_name == "cross_ref")) ||
+	   (textFrom() == CompositeText && (m_composite_text.contains("%{label}") || m_composite_text.contains("%{cross_ref}"))))
 		text_have_label = true;
 	
 	if(text_have_label)
@@ -1400,7 +1403,7 @@ void DynamicElementTextItem::reportFormulaChanged()
 {
 	m_report_formula = parentElement()->diagram()->project()->defaultReportProperties();
 	
-	if(m_text_from == ElementInfo && m_info_name == "label")
+	if(m_text_from == ElementInfo && (m_info_name == "label" || m_info_name == "cross_ref"))
 		updateReportText();
 }
 
@@ -1531,22 +1534,71 @@ void DynamicElementTextItem::updateReportFormulaConnection()
 */
 void DynamicElementTextItem::updateReportText()
 {
-	if(!(m_parent_element.data()->linkType() & Element::AllReport) &&
-		m_parent_element.data()->linkType() != Element::ConductorDefinition)
+	if (!m_parent_element ||
+		(!(m_parent_element.data()->linkType() & Element::AllReport) &&
+		 m_parent_element.data()->linkType() != Element::ConductorDefinition))
 		return;
-	
-	if (m_text_from == ElementInfo && m_info_name == "label")
-	{
-		if(m_other_report)
+
+	bool chained = false;
+	if (m_parent_element && m_parent_element.data()->diagram() && m_parent_element.data()->diagram()->project()) {
+		chained = m_parent_element.data()->diagram()->project()->chainedReports();
+	}
+
+	if (!chained) {
+		// When chained reports setting is OFF: 100% identical to upstream master behavior
+		if (m_text_from == ElementInfo && m_info_name == "label")
 		{
-			Element *elmt = m_other_report.data();
-			QString label = m_report_formula;
-			label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
-			setPlainText(label);
+			if(m_other_report)
+			{
+				Element *elmt = m_other_report.data();
+				QString label = m_report_formula;
+				label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+				setPlainText(label);
+			}
+			else
+			{
+				setPlainText("");
+			}
 		}
-		else
-		{
-			setPlainText("");
+		else if (m_text_from == CompositeText) {
+			setPlainText(reportReplacedCompositeText());
+		}
+		return;
+	}
+
+	// When chained reports setting is ON:
+	if (m_text_from == ElementInfo)
+	{
+		if (m_info_name == "cross_ref") {
+			if (m_other_report) {
+				Element *elmt = m_other_report.data();
+				QString xref_str = m_report_formula;
+				xref_str = autonum::AssignVariables::formulaToLabel(xref_str, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+				setPlainText(xref_str);
+			} else {
+				setPlainText("");
+			}
+		} else if (m_info_name == "label") {
+			if (m_other_report) {
+				Element *elmt = m_other_report.data();
+				QString xref_str = m_report_formula;
+				xref_str = autonum::AssignVariables::formulaToLabel(xref_str, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+				QString lbl = m_parent_element ? m_parent_element.data()->actualLabel() : "";
+				if (!lbl.isEmpty() && !xref_str.isEmpty()) {
+					if (m_parent_element && m_parent_element.data()->linkType() == Element::PreviousReport) {
+						setPlainText(xref_str + " / " + lbl);
+					} else {
+						setPlainText(lbl + " / " + xref_str);
+					}
+				} else if (!lbl.isEmpty()) {
+					setPlainText(lbl);
+				} else {
+					setPlainText(xref_str);
+				}
+			} else {
+				QString lbl = m_parent_element ? m_parent_element.data()->actualLabel() : "";
+				setPlainText(lbl);
+			}
 		}
 	}
 	else if (m_text_from == CompositeText) {

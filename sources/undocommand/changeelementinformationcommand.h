@@ -53,6 +53,7 @@ class ChangeElementInformationCommand : public QUndoCommand
 
 	private:
 		QMap<QPointer<Element>, QPair<DiagramContext, DiagramContext>> m_map;
+		QMap<QPointer<Element>, QPointer<Element>> m_unlinked_reports;
 };
 
 /**

@@ -6920,6 +6920,16 @@ que vous créez. entrées de texte et nombres sont
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="370"/>
+        <source>Enable chained folio reports for report elements</source>
+        <translation>Activer le chaînage des renvois de folio pour les éléments de rapport</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="373"/>
+        <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
+        <translation>Lorsque cette option est activée, les éléments de rapport (renvois de folio) avec le même label sont automatiquement chaînés d'un folio à l'autre. Les nouveaux projets l'activeront automatiquement.</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="24"/>
         <source>Appearance</source>
         <translation>Apparence</translation>
@@ -11150,6 +11160,18 @@ Donnez-leur une autre numérotation d&apos;abord.</numerusform>
 <context>
     <name>ProjectMainConfigPage</name>
     <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="267"/>
+        <source>Enable chained folio reports for report elements</source>
+        <comment>checkbox label</comment>
+        <translation>Activer le chaînage des renvois de folio pour les éléments de rapport</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="268"/>
+        <source>Automatically chains folio report elements with the same label in a forward/backward sequence.</source>
+        <comment>tooltip</comment>
+        <translation>Chaîne automatiquement les éléments de renvoi de folio avec le même label dans une séquence avant/arrière.</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="147"/>
         <source>General</source>
         <comment>configuration page title</comment>
@@ -15298,6 +15320,24 @@ les conditions requises ne sont pas valides</translation>
 </context>
 <context>
     <name>QETProject</name>
+    <message>
+        <location filename="../sources/qetproject.cpp" line="2332"/>
+        <source>Chained Folio Reports</source>
+        <comment>message box title</comment>
+        <translation>Renvois de folio chaînés</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetproject.cpp" line="2333"/>
+        <source>Project &quot;%1&quot; does not have chained folio reports enabled.
+
+Do you want to enable chained folio reports for this project?
+(Matching report elements across folios will be chained together.)</source>
+        <comment>message box content</comment>
+        <translation>Le projet "%1" n'a pas les renvois de folio chaînés activés.
+
+Souhaitez-vous activer les renvois de folio chaînés pour ce projet ?
+(Les éléments de rapport correspondants à travers les folios seront chaînés.)</translation>
+    </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1246"/>
         <source>Project « %1 : %2»</source>

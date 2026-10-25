@@ -6915,6 +6915,16 @@ that you create. Text and number inputs are
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="370"/>
+        <source>Enable chained folio reports for report elements</source>
+        <translation>Enable chained folio reports for report elements</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="373"/>
+        <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
+        <translation>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="24"/>
         <source>Appearance</source>
         <translation>Appearance</translation>
@@ -11138,6 +11148,18 @@ Give them another numbering first.</numerusform>
 <context>
     <name>ProjectMainConfigPage</name>
     <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="267"/>
+        <source>Enable chained folio reports for report elements</source>
+        <comment>checkbox label</comment>
+        <translation>Enable chained folio reports for report elements</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="268"/>
+        <source>Automatically chains folio report elements with the same label in a forward/backward sequence.</source>
+        <comment>tooltip</comment>
+        <translation>Automatically chains folio report elements with the same label in a forward/backward sequence.</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="147"/>
         <source>General</source>
         <comment>configuration page title</comment>
@@ -15282,6 +15304,24 @@ the conditions are not valid</translation>
 </context>
 <context>
     <name>QETProject</name>
+    <message>
+        <location filename="../sources/qetproject.cpp" line="2332"/>
+        <source>Chained Folio Reports</source>
+        <comment>message box title</comment>
+        <translation>Chained Folio Reports</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetproject.cpp" line="2333"/>
+        <source>Project &quot;%1&quot; does not have chained folio reports enabled.
+
+Do you want to enable chained folio reports for this project?
+(Matching report elements across folios will be chained together.)</source>
+        <comment>message box content</comment>
+        <translation>Project &quot;%1&quot; does not have chained folio reports enabled.
+
+Do you want to enable chained folio reports for this project?
+(Matching report elements across folios will be chained together.)</translation>
+    </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="3444"/>
         <source>Warning</source>
