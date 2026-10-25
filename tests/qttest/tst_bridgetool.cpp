@@ -967,6 +967,28 @@ private slots:
 				BridgeManager::conductorsOverBridges(&project, {wires.first()});
 		QVERIFY2(over.contains(wires.last()),
 				 "the edit reaches the wires of the other end of the bridge");
+
+			//The bridge sits on the terminal itself, not on the pin the
+			//line happened to run closest to: a wire on another pin of
+			//the same terminal reaches the bridge all the same
+		Element *first_element = BridgeManager::elementFor(&project, lands_on.first());
+		QVERIFY(first_element);
+		if (first_element->terminals().size() < 2) {
+			QSKIP("the fixture has no symbol with two pins");
+		}
+		const BridgeTerminal another_pin{
+					first_element->uuid(),
+					first_element->terminals().last()->stableUuid().toString()};
+		QVERIFY2(another_pin != lands_on.first(),
+				 "the bridge names the other pin of that terminal");
+
+		Bridge *drawn = project.newBridge();
+		drawn->setTerminals({another_pin, lands_on.last()});
+
+		const QList<Conductor *> from_the_other_pin =
+				BridgeManager::conductorsOverBridges(&project, {wires.first()});
+		QVERIFY2(from_the_other_pin.contains(wires.last()),
+				 "an edit on a pin the line did not cross reaches the bridge too");
 	}
 };
 

@@ -579,10 +579,13 @@ void BridgeManager::writeInformation(QETProject *project,
 	@brief BridgeManager::conductorsOverBridges
 	@param project
 	@param edited the wires being edited
-	@return the wires the bridges reach from them: a bridge sits across
-	the terminals it lands on, so a voltage reaching one of their wires
-	reaches every wire of every terminal of the bridge. Only the voltage
-	and the protocol cross it -- never the function.
+	@return the wires the bridges reach from them.
+
+	A bridge sits across the terminals it lands on, so a voltage reaching
+	one of their wires reaches every wire of every terminal of the bridge
+	-- and a wire of those reaches the next bridge sitting on its own
+	terminal, however many bridges the way is paved with. Only the
+	voltage and the protocol cross a bridge, never the function.
 */
 QList<Conductor *> BridgeManager::conductorsOverBridges(QETProject *project,
 													   const QList<Conductor *> &edited)
@@ -592,13 +595,24 @@ QList<Conductor *> BridgeManager::conductorsOverBridges(QETProject *project,
 		return reached;
 	}
 
-		//The pins the edited wires sit on
-	QSet<BridgeTerminal> touched;
-	for (Conductor *conductor : edited)
-	{
-		if (!conductor) {
-			continue;
+	QSet<Conductor *> seen;
+	QList<Conductor *> work;
+	for (Conductor *conductor : edited) {
+		if (conductor && !seen.contains(conductor)) {
+			seen << conductor;
+			work << conductor;
 		}
+	}
+
+		//The pins reached so far: a bridge lands on a terminal whatever
+		//pin of it the line ran closest to
+	QSet<BridgeTerminal> touched;
+
+	const auto bridges = project->bridges();
+	while (!work.isEmpty())
+	{
+		Conductor *conductor = work.takeFirst();
+
 		const auto ends = QList<Terminal *>{conductor->terminal1, conductor->terminal2};
 		for (Terminal *end : ends)
 		{
@@ -611,62 +625,57 @@ QList<Conductor *> BridgeManager::conductorsOverBridges(QETProject *project,
 			terminal.terminal = end->stableUuid().toString();
 			touched << terminal;
 		}
-	}
-	if (touched.isEmpty()) {
-		return reached;
-	}
 
-	const auto bridges = project->bridges();
-	for (Bridge *bridge : bridges)
-	{
-		if (!bridge) {
-			continue;
-		}
-		bool lands = false;
-		const auto lands_on = bridge->terminals();
-		for (const BridgeTerminal &terminal : lands_on) {
-			if (touched.contains(terminal)) {
-				lands = true;
-				break;
+		const auto add = [&](QSet<Conductor *> others) {
+			for (Conductor *other : others) {
+				if (other && !seen.contains(other)) {
+					seen << other;
+					reached << other;
+					work << other;
+				}
 			}
-		}
-		if (!lands) {
-			continue;
-		}
+		};
+		add(conductor->relatedPotentialConductors());
+		add(conductor->functionSeparatedConductors());
 
-		for (const BridgeTerminal &terminal : lands_on)
+		for (Bridge *bridge : bridges)
 		{
-			Element *element = elementFor(project, terminal);
-			if (!element) {
+			if (!bridge) {
 				continue;
 			}
-			const auto pins = element->terminals();
-			for (Terminal *pin : pins)
+			bool lands = false;
+			const auto lands_on = bridge->terminals();
+			for (const BridgeTerminal &terminal : lands_on) {
+				for (const BridgeTerminal &mine : touched) {
+					if (mine.element == terminal.element) {
+						lands = true;
+						break;
+					}
+				}
+				if (lands) {
+					break;
+				}
+			}
+			if (!lands) {
+				continue;
+			}
+
+			for (const BridgeTerminal &terminal : lands_on)
 			{
-				//Every pin of the terminal: a bridge sitting across a
-				//terminal reaches all of them
-				const auto attached = pin->conductors();
-				for (Conductor *conductor : attached)
-				{
-					if (!conductor || reached.contains(conductor)) {
-						continue;
-					}
-					reached << conductor;
-					const auto related = conductor->relatedPotentialConductors();
-					for (Conductor *other : related) {
-						if (other && !reached.contains(other)) {
-							reached << other;
-						}
-					}
-						//And over a function separation: the voltage
-						//crosses it the way the wires themselves let it
-					const auto separated = conductor->functionSeparatedConductors();
-					for (Conductor *other : separated) {
-						if (other && !reached.contains(other)) {
-							reached << other;
+				Element *element = elementFor(project, terminal);
+				if (!element) {
+					continue;
+				}
+				QSet<Conductor *> on_the_terminal;
+				const auto pins = element->terminals();
+				for (Terminal *pin : pins) {
+					for (Conductor *wire : pin->conductors()) {
+						if (wire && !seen.contains(wire)) {
+							on_the_terminal << wire;
 						}
 					}
 				}
+				add(on_the_terminal);
 			}
 		}
 	}
