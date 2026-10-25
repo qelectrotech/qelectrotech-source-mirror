@@ -3067,7 +3067,7 @@ Continue?</source>
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="3112"/>
+        <location filename="../sources/diagram.cpp" line="3111"/>
         <source>Change the depth</source>
         <translation>Изменить глубину</translation>
     </message>
@@ -6983,17 +6983,17 @@ that you create. Text and number inputs are
         <translation>Использовать системные цвета</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="771"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="773"/>
         <source>User Collection Path</source>
         <translation>Путь к коллекции пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="799"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="801"/>
         <source>User Title blocks Path</source>
         <translation>Путь к штампам пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="743"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="745"/>
         <source>Path of the Common Collection</source>
         <translation>Путь к общей коллекции</translation>
     </message>
@@ -7187,6 +7187,11 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="153"/>
         <source>Show the default grid (applied the next time the programme is launched)</source>
         <translation>Показать сетку по умолчанию (будет применено при следующем запуске)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
@@ -7644,219 +7649,219 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Не округлять</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="128"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="130"/>
         <source>Disabled</source>
         <comment>fr: Désactivée</comment>
         <translation>Отключено</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="179"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="181"/>
         <source>Enabled by the QET_ENABLE_SCRIPTING environment variable; this setting has no effect while it is set.</source>
         <translation>Включается с помощью переменной среды QET_ENABLE_SCRIPTING; этот параметр не действует, пока она определена.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="319"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="321"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
         <translatorcomment>подсказка, отображаемая в поле «Файл материала», если файл ещё не настроен</translatorcomment>
         <translation>Не настроено (по умолчанию: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="330"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="332"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
         <translation>Не настроено (по умолчанию: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="586"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="588"/>
         <source>General</source>
         <comment>configuration page title</comment>
         <translation>Общее</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="604"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="606"/>
         <source>System</source>
         <translatorcomment>Система?</translatorcomment>
         <translation>Системный</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="608"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="610"/>
         <source>Arabic</source>
         <translation>Арабский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="609"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="611"/>
         <source>Brazilian</source>
         <translation>Бразильский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="610"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="612"/>
         <source>Catalan</source>
         <translation>Каталонский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="611"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="613"/>
         <source>Czech</source>
         <translation>Чешский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="612"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="614"/>
         <source>German</source>
         <translation>Немецкий</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="613"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="615"/>
         <source>Danish</source>
         <translation>Датский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="616"/>
         <source>Greek</source>
         <translation>Греческий</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="615"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="617"/>
         <source>English</source>
         <translation>Английский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="616"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="618"/>
         <source>Spanish</source>
         <translation>Испанский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="617"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="619"/>
         <source>French</source>
         <translation>Французский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="618"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="620"/>
         <source>Croatian</source>
         <translation>Хорватский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="619"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="621"/>
         <source>Italian</source>
         <translation>Итальянский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="620"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="622"/>
         <source>Japanese</source>
         <translation>Японский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="621"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="623"/>
         <source>Korean</source>
         <translation>Корейский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="622"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="624"/>
         <source>Polish</source>
         <translation>Польский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="623"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="625"/>
         <source>Portuguese</source>
         <translation>Португальский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="624"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="626"/>
         <source>Romanian</source>
         <translation>Румынский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="625"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="627"/>
         <source>Russian</source>
         <translation>Русский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="626"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="628"/>
         <source>Slovenian</source>
         <translation>Словенский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="627"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="629"/>
         <source>Dutch</source>
         <translatorcomment>Немецкий/Нидерландский</translatorcomment>
         <translation>Голландский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="628"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="630"/>
         <source>Norwegian</source>
         <translation>Норвежский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="629"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="631"/>
         <source>Belgium-Flemish</source>
         <translation>Бельгийский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="630"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="632"/>
         <source>Turkish</source>
         <translation>Турецкий</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="631"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="633"/>
         <source>Hungarian</source>
         <translation>Венгерский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="632"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="634"/>
         <source>Mongolian</source>
         <translation>Монгольский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="635"/>
         <source>Ukrainian</source>
         <translation>Украинский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="634"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="636"/>
         <source>Chinese</source>
         <translation>Китайский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="635"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="637"/>
         <source>Chinese (Traditional)</source>
         <translation>Китайский (традиционный)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="636"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="638"/>
         <source>Swedish</source>
         <translation>Шведский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="710"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="712"/>
         <source>Cable text font</source>
         <translation>Шрифт текста кабелей</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="728"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="730"/>
         <source>Core colors font</source>
         <translation>Шрифт цветов жил</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="757"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="759"/>
         <source>Company collection path</source>
         <translation>Путь к коллекции компании</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="785"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="787"/>
         <source>Company title-blocks</source>
         <translation>Путь к штампам компании</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="813"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="815"/>
         <source>User macro path</source>
         <translation>Путь к пользовательским шаблонам</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="855"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="857"/>
         <source>Folder not found</source>
         <translation>Папка не найдена</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="856"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="858"/>
         <source>The user collection folder:
 %1
 does not exist and could not be created.</source>
@@ -7865,12 +7870,12 @@ does not exist and could not be created.</source>
 не существует, и её не удалось создать.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="864"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="866"/>
         <source>No subfolder</source>
         <translation>Подпапок нет</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="865"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="867"/>
         <source>The user collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
@@ -7879,34 +7884,34 @@ has no subfolder, so there is no prefix to configure.</source>
 не содержит подпапок, поэтому настраивать префикс нечего.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="873"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="875"/>
         <source>Prefix file cannot be read</source>
         <translation>Не удалось прочитать файл префиксов</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="882"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="884"/>
         <source>Prefix file damaged</source>
         <translation>Файл префиксов повреждён</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="883"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="885"/>
         <source>The file %1 is not a valid XML file:
 %2</source>
         <translation>Файл %1 не является допустимым XML-файлом:
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="887"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="889"/>
         <source>Fix the file</source>
         <translation>Исправить файл</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="888"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="890"/>
         <source>Rebuild</source>
         <translation>Перестроить</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="889"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="891"/>
         <source>Nothing has been changed yet.
 
 “Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
@@ -7919,36 +7924,36 @@ has no subfolder, so there is no prefix to configure.</source>
 «Перестроить»: дерево папок воссоздаётся, но все текущие префиксы теряются. Текущий файл сохраняется под именем qet_labels.xml.bak перед заменой.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="898"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="900"/>
         <source>File: %1</source>
         <translation>Файл: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="922"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="924"/>
         <source>Select the materials list file</source>
         <translation>Выбрать файл списка материалов</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="924"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="947"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="988"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1011"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="926"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="949"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="990"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1013"/>
         <source>CSV files (*.csv)</source>
         <translation>Файлы CSV (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="945"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="947"/>
         <source>Create the materials list file</source>
         <translation>Создать файл со списком материалов</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="963"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="965"/>
         <source>Cannot create</source>
         <translation>Невозможно создать</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="964"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1028"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="966"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1030"/>
         <source>Cannot create the file:
 %1
 %2</source>
@@ -7957,32 +7962,32 @@ has no subfolder, so there is no prefix to configure.</source>
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="986"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="988"/>
         <source>Select the cable types file</source>
         <translation>Выбрать файл типов кабелей</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1009"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1011"/>
         <source>Create the cable types file</source>
         <translation>Создать файл типов кабелей</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1027"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1029"/>
         <source>Cannot be created</source>
         <translation>Невозможно создать</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1057"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1059"/>
         <source>Values that are too high might cause the application to crash</source>
         <translation>Слишком высокие значения могут привести к сбоям в работе приложения.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1092"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1094"/>
         <source>Experimental feature</source>
         <translation>Экспериментальная функция</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1093"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1095"/>
         <source>WARNING:
 Any setting other than “No rounding” may cause rendering errors in the project, depending on:
 
@@ -8002,9 +8007,8 @@ Any setting other than “No rounding” may cause rendering errors in the proje
         <translation>Скрывать сетку, когда её точки на экране ближе чем</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
-        <translation>При большем отдалении точки любой сетки не рисуются; где именно, показывает масштаб в строке состояния</translation>
+        <translation type="vanished">При большем отдалении точки любой сетки не рисуются; где именно, показывает масштаб в строке состояния</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
@@ -12342,8 +12346,8 @@ Available options:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4382"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="4385"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4388"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
@@ -12383,7 +12387,7 @@ Available options:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1159"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4982"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4985"/>
         <source>&amp;Close</source>
         <translation>&amp;Закрыть</translation>
     </message>
@@ -12767,8 +12771,8 @@ Hold Ctrl while moving to place freely.</source>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1003"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4765"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4781"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4768"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4784"/>
         <source>Reload element drawings</source>
         <translation>Обновить чертежи элементов</translation>
     </message>
@@ -13481,17 +13485,17 @@ You can also number the cables automatically later: the rule is set at any time 
         <translation>Редактировать кабель</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5030"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5033"/>
         <source>Remembered after a restart</source>
         <translation>Запоминается после перезапуска</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5190"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5193"/>
         <source>Text format of &quot;%1&quot; copied</source>
         <translation>Формат текста «%1» скопирован</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5239"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5242"/>
         <source>Text format applied to %n element(s)</source>
         <translation>
             <numerusform>Формат текста применён к %n элементу</numerusform>
@@ -13539,7 +13543,7 @@ You can also number the cables automatically later: the rule is set at any time 
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1814"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4895"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4898"/>
         <source>Scripts</source>
         <translation>Скрипты</translation>
     </message>
@@ -13665,22 +13669,22 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <translation>Ошибка при открытии файла %1.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4448"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4451"/>
         <source>Repeat: insert &quot;%1&quot;</source>
         <translation>Повторить: вставку «%1»</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4449"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4452"/>
         <source>Repeat: %1</source>
         <translation>Повторить: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4746"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4749"/>
         <source>sheet %1</source>
         <translation>лист %1</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="4754"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4757"/>
         <source>%n elements redrawn.</source>
         <translation>
             <numerusform>Перерисован %n элемент.</numerusform>
@@ -13689,7 +13693,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="4758"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4761"/>
         <source>%n elements for which no definition could be found or which were illegible: their current design has been retained.</source>
         <translation>
             <numerusform>%n элемент, для которого не найдено определение или оно нечитаемо: его текущий вид сохранён.</numerusform>
@@ -13698,7 +13702,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="4770"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4773"/>
         <source>%n elements not redrawn: their size, grip point or terminals have changed (a terminal was added, removed or moved).</source>
         <translation>
             <numerusform>%n элемент не перерисован: изменились его размер, точка привязки или выводы (вывод добавлен, удалён или перемещён).</numerusform>
@@ -13707,18 +13711,18 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4774"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4777"/>
         <source>To update them, they must be deleted then reinserted. Warning: this operation removes the conductors already connected to these elements, which will need to be redrawn.</source>
         <translation>Чтобы обновить их, необходимо удалить их, а затем вставить заново. Внимание: при выполнении этой операции будут удалены проводники, уже подключенные к этим элементам, и их придётся проложить заново.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4803"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4807"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4806"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4810"/>
         <source>Run a script</source>
         <translation>Запустить скрипт</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4832"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4835"/>
         <source>Scripts are disabled.
 
 A script runs with your permissions: it can read and modify the open project and write files. Only run scripts whose origin you know.
@@ -13731,28 +13735,28 @@ Enable scripts? This setting can be changed in Configure QElectroTech &gt; Gener
 Включить скрипты? Этот параметр можно изменить в меню «Настройки QElectroTech» &gt; «Общие» &gt; «Проекты».</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4809"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4812"/>
         <source>JavaScript scripts (*.js);;All files (*)</source>
         <translation>Скрипты JavaScript (*.js);;Все файлы (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4909"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4912"/>
         <source>Ignored: %1</source>
         <translation>Игнорируется: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4944"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5005"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4947"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5008"/>
         <source>Stop</source>
         <translation>Остановить</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4945"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4948"/>
         <source>Stop recording the macro</source>
         <translation>Остановить запись макроса</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="4955"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4958"/>
         <source>● Recording: %n steps</source>
         <translation>
             <numerusform>● Запись: %n шаг</numerusform>
@@ -13761,12 +13765,12 @@ Enable scripts? This setting can be changed in Configure QElectroTech &gt; Gener
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4970"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4973"/>
         <source>Macro recorded</source>
         <translation>Макрос записан</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="4971"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4974"/>
         <source>“%1”: %n steps.
 
 To make a script of it, ask your AI assistant: the button below copies the request, just paste it into its window.</source>
@@ -13783,53 +13787,53 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4980"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4983"/>
         <source>&amp;Copy the request for the assistant</source>
         <translation>&amp;Скопировать запрос для помощника</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4981"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4984"/>
         <source>&amp;Open the folder</source>
         <translation>&amp;Открыть папку</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4987"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4990"/>
         <source>Request copied: paste it into the assistant&apos;s window</source>
         <translation>Запрос скопирован: вставьте его в окно помощника</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5006"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5009"/>
         <source>Close the assistant&apos;s connection for the rest of the session</source>
         <translation>Закрыть соединение с помощником до конца сеанса</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5015"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5018"/>
         <source>Live mode: assistant connected</source>
         <translation>Живой режим: помощник подключён</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5016"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5019"/>
         <source>Live mode: waiting for an assistant</source>
         <translation>Живой режим: ожидание помощника</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5024"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5068"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5027"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5071"/>
         <source>Assistant</source>
         <translation>Помощник</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5028"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5031"/>
         <source>Ask before running a script the assistant wrote</source>
         <translation>Спрашивать перед запуском скрипта, написанного помощником</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5085"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5088"/>
         <source>Live mode: %1 %2 at %3</source>
         <translation>Живой режим: %1 %2 в %3</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5127"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5130"/>
         <source>%n kinds of items hidden</source>
         <translation>
             <numerusform>Скрыт %n тип объектов</numerusform>
@@ -13838,8 +13842,8 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5160"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5165"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5163"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5168"/>
         <source>Texts %1</source>
         <translation>Тексты %1</translation>
     </message>
@@ -14090,7 +14094,7 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <translation>Переместить листы</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4322"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4325"/>
         <source>Error</source>
         <comment>message box title</comment>
         <translation>Ошибка</translation>
@@ -14469,7 +14473,7 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <translation>Редактировать выбранный объект</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4293"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4296"/>
         <source>Zoom %1 %</source>
         <translation>Масштаб %1 %</translation>
     </message>
@@ -14514,12 +14518,12 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <translation>Крупный (20)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5144"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5147"/>
         <source>Grid %1</source>
         <translation>Сетка %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5145"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5148"/>
         <source>Grid %1 × %2</source>
         <translation>Сетка %1 × %2</translation>
     </message>
@@ -17428,22 +17432,22 @@ Do you want to replace it ?</source>
         <translation>Создание проводников</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4596"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4599"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>Чтобы установить плагин qet_tb_generator&lt;br&gt;Посетите:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Требуется python 3.5 или выше.&lt;br&gt;&lt;B&gt;&lt;U&gt;Первая установка в Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. При необходимости установите python 3.5 или более позднюю версию&lt;br&gt;Посетите:&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt;Обновление в Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;пользователь может запустить в терминале этот сценарий в этом каталоге&lt;br&gt;C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4616"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4619"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Чтобы установить плагин qet_tb_generator&lt;br&gt;Перейдите :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Первая установка на macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. При необходимости установите только пакет python 3.11: &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Запустите скрипт Profile.command&lt;br&gt;так как программа использует жёстко заданный PATH для поиска плагина qet-tb-generator &lt;br&gt; Перейдите :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;инструкция&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Обновление на macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4635"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4638"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Чтобы установить плагин qet_tb_generator&lt;br&gt;Посетите:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Требуется Python 3.5 или выше.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Первая установка в Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Проверьте, что у вас установлен pip3: pip3 --version&lt;br&gt; Если не установлено, то: sudo apt-get install python3-pip&lt;br&gt;2. Установите программу: sudo pip3 install qet_tb_generator&lt;br&gt;3. Запустите программу: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Обновление в Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4655"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4658"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>Ошибка при запуске плагина qet_tb_generator</translation>
     </message>
