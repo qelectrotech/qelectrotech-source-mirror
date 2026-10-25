@@ -2287,6 +2287,13 @@ void Element::setElementInformations(DiagramContext dc)
 	emit elementInfoChange(old_info, m_data.m_informations);
 	notifyTerminalStrip(this);
 
+	bool label_changed = old_info.value("label").toString() != dc.value("label").toString();
+	if (label_changed && (linkType() & Element::AllReport)) {
+		if (diagram() && diagram()->project() && diagram()->project()->chainedReports()) {
+			diagram()->project()->scheduleAutoLink();
+		}
+	}
+
 	// Propagate label change to linked PLC slaves (label is changed via
 	// setElementInformations through the undo stack, not via setElementData)
 	if (m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC)

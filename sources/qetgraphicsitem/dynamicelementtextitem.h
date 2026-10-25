@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -99,6 +99,8 @@ class DynamicElementTextItem : public DiagramTextItem
 		ElementTextItemGroup *parentGroup() const;
 		Element *elementUseForInfo() const;
 		void refreshLabelConnection();
+		/// Re-evaluate the text of a folio report (label / cross reference).
+		void refreshReportText() { updateReportText(); }
 		void refreshLabelShown();
 
 		DynamicElementTextItem::TextFrom textFrom() const;

@@ -437,6 +437,16 @@
         </widget>
        </item>
        <item row="7" column="0">
+        <widget class="QCheckBox" name="m_enable_chained_reports">
+         <property name="text">
+          <string>Enable chained folio reports for report elements</string>
+         </property>
+         <property name="toolTip">
+          <string>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
         <widget class="QLabel" name="m_previous_versions_label">
          <property name="text">
           <string>Previous versions kept when saving a project</string>
@@ -446,7 +456,7 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="2">
+       <item row="8" column="2">
         <widget class="QSpinBox" name="m_previous_versions_sb">
          <property name="toolTip">
           <string>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with "-backups". Only the newest are kept.</string>
