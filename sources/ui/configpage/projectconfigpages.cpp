@@ -191,6 +191,11 @@ void ProjectMainConfigPage::applyProjectConf()
 		modified_project = true;
 	}
 
+	if (m_project -> chainedReports() != chained_reports_cb_ -> isChecked()) {
+		m_project -> setChainedReports(chained_reports_cb_ -> isChecked());
+		modified_project = true;
+	}
+
 	if (m_project -> terminalLabelSplit() != terminal_label_split_rb_ -> isChecked()) {
 		m_project -> setTerminalLabelSplit(terminal_label_split_rb_ -> isChecked());
 		modified_project = true;
@@ -270,6 +275,9 @@ void ProjectMainConfigPage::initWidgets()
 											  "when the element is rotated: their frame turns with the element, not the "
 											  "text. Uncheck to make them turn with the element, as before.",
 											  "tooltip"));
+
+	chained_reports_cb_ = new QCheckBox(tr("Enable chained folio reports for report elements", "checkbox label"));
+	chained_reports_cb_ -> setToolTip(tr("Automatically chains folio report elements with the same label in a forward/backward sequence.", "tooltip"));
 
 		//How the terminals draw their label: a setting of this project,
 		//so the same file draws the same way on every machine which
@@ -361,6 +369,9 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addWidget(upright_symbol_texts_cb_);
 	main_layout0 -> addSpacing(10);
 
+	main_layout0 -> addWidget(chained_reports_cb_);
+	main_layout0 -> addSpacing(10);
+
 	QVBoxLayout *terminal_label_layout = new QVBoxLayout(terminal_label_gb_);
 	terminal_label_layout -> addWidget(terminal_label_combined_rb_);
 	terminal_label_layout -> addWidget(terminal_label_split_rb_);
@@ -402,6 +413,7 @@ void ProjectMainConfigPage::readValuesFromProject()
 	const int wire_hops_index = wire_hops_cb_ -> findData(WireHops::toString(m_project -> wireHops()));
 	wire_hops_cb_ -> setCurrentIndex(qMax(0, wire_hops_index));
 	upright_symbol_texts_cb_ -> setChecked(m_project -> uprightSymbolTexts());
+	chained_reports_cb_ -> setChecked(m_project -> chainedReports());
 	if (m_project -> terminalLabelSplit()) {
 		terminal_label_split_rb_ -> setChecked(true);
 	} else {
@@ -463,6 +475,7 @@ void ProjectMainConfigPage::adjustReadOnly()
 	usage_reset_pb_ -> setDisabled(is_read_only);
 	wire_hops_cb_ -> setDisabled(is_read_only);
 	upright_symbol_texts_cb_ -> setDisabled(is_read_only);
+	chained_reports_cb_ -> setDisabled(is_read_only);
 	terminal_label_gb_ -> setDisabled(is_read_only);
 	wiring_rules_gb_ -> setDisabled(is_read_only);
 }

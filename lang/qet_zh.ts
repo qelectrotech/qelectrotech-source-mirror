@@ -3006,7 +3006,7 @@ Continue?</source>
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="3107"/>
+        <location filename="../sources/diagram.cpp" line="3113"/>
         <source>Change the depth</source>
         <translation>修改图层</translation>
     </message>
@@ -3796,7 +3796,7 @@ Hold Shift and drag to move this text on its own</source>
         <translation>编辑元件文本</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1243"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1246"/>
         <source>Resize an element text</source>
         <translation>调整元件文本大小</translation>
     </message>
@@ -4347,7 +4347,7 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>Element</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="2701"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="2708"/>
         <source>Automatically number an element</source>
         <comment>undo caption</comment>
         <translation>自动为元件编号</translation>
@@ -5357,127 +5357,127 @@ Continue?</source>
 <context>
     <name>ElementPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="387"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="405"/>
         <source>General</source>
         <translation>一般</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="397"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="415"/>
         <source>Element
 </source>
         <translation>元件
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="400"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="418"/>
         <source>Name : %1
 </source>
         <translation>名称：%1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="403"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="421"/>
         <source>Sheet : %1
 </source>
         <translation>图页：%1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="405"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="423"/>
         <source>Type: %1
 </source>
         <translation>类型：%1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="406"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="424"/>
         <source>Sub-type : %1
 </source>
         <translation>子类：%1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="407"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="425"/>
         <source>Position : %1
 </source>
         <translation>分区：%1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="408"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="426"/>
         <source>Rotation : %1°
 </source>
         <translation>旋转：%1°
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="409"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="427"/>
         <source>Dimensions : %1*%2
 </source>
         <translation>尺寸：%1*%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="410"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="428"/>
         <source>Terminals : %1
 </source>
         <translation>端子：%1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="417"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="435"/>
         <source>Maximum number of slave contacts defined:  not defined
 </source>
         <translation>定义的从属触点最大数量：  未定义
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="418"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="436"/>
         <source>Maximum number of slave contacts defined:  %1
 </source>
         <translation>设置的从元件的最大数量： %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="423"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="441"/>
         <source>Number of slave contacts used : %1
 </source>
         <translation>已使用的从元件数量： %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="438"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="456"/>
         <source>    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8
 </source>
         <translation>    触点：常开：%1/%2，常闭：%3/%4，转换：%5/%6，其他：%7/%8
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="447"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="465"/>
         <source>    Contacts : NO : %1, NC : %2, changeover : %3, other : %4
 </source>
         <translation>    触点：常开：%1，常闭：%2，转换：%3，其他：%4
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="454"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="472"/>
         <source>Location : %1
 </source>
         <translation>路径：%1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="469"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="487"/>
         <source>Lock Position</source>
         <translation>锁定位置</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="485"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="503"/>
         <source>Find in the panel</source>
         <translation>在面板中查找</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="487"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="505"/>
         <source>Edit element</source>
         <translation>编辑元件</translation>
     </message>
@@ -6916,7 +6916,7 @@ that you create. Text and number inputs are
         <translation>使用图页编号而不是它们在工程中的位置</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="439"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="449"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>从 0 开始对标题栏列进行编号（否则为 1）</translation>
@@ -6947,39 +6947,39 @@ that you create. Text and number inputs are
         <translation>窗体</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="767"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="769"/>
         <source>User Collection Path</source>
         <translation>用户库路径</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="739"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="741"/>
         <source>Path of the Common Collection</source>
         <translation>通用库路径</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="487"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="525"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="553"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="567"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="588"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="563"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="577"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="598"/>
         <source>By default</source>
         <translation>默认</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="478"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="492"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="530"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="558"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="572"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="593"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="630"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="671"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="488"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="502"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="540"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="568"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="582"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="603"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="640"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="681"/>
         <source>Browse...</source>
         <translation>浏览...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="601"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="611"/>
         <source>(Reload the elements collections to apply the changes)</source>
         <translation>（重新加载元件库以应用更改）</translation>
     </message>
@@ -6995,78 +6995,78 @@ that you create. Text and number inputs are
         <translation> 分钟</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="795"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="797"/>
         <source>User Title blocks Path</source>
         <translation>用户标题栏路径</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="447"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="457"/>
         <source>Collections</source>
         <translation>库</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="463"/>
         <source>Access the collections</source>
         <translation>访问库</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="510"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="520"/>
         <source>Common collection directory</source>
         <translation>内置库目录</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="538"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="548"/>
         <source>User collection directory</source>
         <translation>用户库目录</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="580"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="590"/>
         <source>User title blocks directory</source>
         <translation>用户标题栏目录</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
         <source>Elements management</source>
         <translation>元件管理</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="702"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="712"/>
         <source>Highlight freshly integrated elements in the panel</source>
         <translation>高亮面板中新集成的元件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="709"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="719"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>每个元件都包含有关其作者、许可协议或您认为在任何领域有用的任何信息。
     您可以在此处为新加入元件指定此处字段的默认值：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="745"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="755"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>适用于下一次启动QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="785"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="795"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation>在这里您可以定义 QElectroTech 不同文本的默认外观</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1075"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1085"/>
         <source>Grid + Keyboard</source>
         <translation>网格+键盘</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1081"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1091"/>
         <source>Grid: 1 - 30</source>
         <translation>网格：1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1148"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1158"/>
         <source>DiagramEditor xGrid</source>
         <translation>原理图编辑器x网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1115"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1125"/>
         <source>DiagramEditor yGrid</source>
         <translation>原理图编辑器y网格</translation>
     </message>
@@ -7232,61 +7232,71 @@ that you create. Text and number inputs are
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
+        <source>Enable chained folio reports for report elements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
         <source>Previous versions kept when saving a project</source>
         <translation>保存工程时保留的旧版本数</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>保存工程前，原文件会被复制到工程旁的一个文件夹中，该文件夹以工程名加“-backups”命名。只保留最新的几个版本。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="413"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="465"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="475"/>
         <source>Company collection directory</source>
         <translation>企业库目录</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="500"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="510"/>
         <source>Create or change the prefix of the user collection&apos;s folders (qet_labels.xml file)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the user collection</extracomment>
         <translation>创建或修改用户库文件夹的前缀（qet_labels.xml 文件）</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="503"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="513"/>
         <source>Configure prefixes…</source>
         <extracomment>button opening the dialog where the folder prefixes of the user collection are configured</extracomment>
         <translation>配置前缀…</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="517"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="527"/>
         <source>Company title-block directory</source>
         <translation>企业标题栏目录</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="555"/>
         <source>User Macro Directory</source>
         <translation>用户宏目录</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="608"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
         <source>Materials list file</source>
         <translation>材料清单文件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="617"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="627"/>
         <source>Materials list used to fill in a symbol&apos;s items</source>
         <extracomment>tooltip of the material file path field</extracomment>
         <translation>用于填写符号条目的材料清单</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="623"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="664"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="674"/>
         <source>Not set</source>
         <extracomment>hint shown when no material file is configured yet
 ----------
@@ -7294,161 +7304,161 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>未设置</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="637"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="647"/>
         <source>Create the list file with its headers</source>
         <extracomment>tooltip of the button creating the material file with its header line</extracomment>
         <translation>创建带标题行的清单文件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="640"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="681"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="650"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="691"/>
         <source>Create...</source>
         <translation>创建...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="649"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="659"/>
         <source>Cable type list file</source>
         <translation>线缆类型清单文件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="658"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="668"/>
         <source>Directory of the cable types used to define a cable (number of cores, colors, cross-section)</source>
         <extracomment>tooltip of the cable type file path field</extracomment>
         <translation>用于定义线缆的线缆类型目录（芯数、颜色、截面积）</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="678"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="688"/>
         <source>Create the cable type list file with its header line</source>
         <extracomment>tooltip of the button creating the cable type file with its header line</extracomment>
         <translation>创建带标题行的线缆类型清单文件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="746"/>
         <source>Languages</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="779"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="789"/>
         <source>texts</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="799"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="809"/>
         <source>Elements texts</source>
         <translation>元件文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="812"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="878"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="924"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="822"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="888"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="934"/>
         <source>Font:</source>
         <translation>字体：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="822"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="885"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="832"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="895"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="832"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="842"/>
         <source>Length :</source>
         <translation>长度：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="842"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="871"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="852"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="881"/>
         <source>Rotation :</source>
         <translation>旋转：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="865"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="875"/>
         <source>Independent texts</source>
         <translation>独立文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="918"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="928"/>
         <source>Other texts</source>
         <translation>其他文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="954"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="964"/>
         <source>Cable texts</source>
         <translation>线缆文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="960"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="970"/>
         <source>Designation, type, plant, location, length :</source>
         <translation>名称、类型、装置、位置、长度：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="983"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="993"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>沿线缆线书写的文本字体；已单独设置字体的线缆保持其设置。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="993"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1003"/>
         <source>Core colors (all of them) :</source>
         <translation>芯线颜色（全部）：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1016"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1026"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>沿线书写的芯线颜色字体；已单独设置字体的线缆保持其设置。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1026"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1036"/>
         <source>Text alignment :</source>
         <translation>文本对齐方式：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1036"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1046"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>线缆文本相对于其线起点的终止位置；已单独设置的线缆保持其设置。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1040"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1050"/>
         <source>Right aligned</source>
         <translation>右对齐</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1045"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1055"/>
         <source>Centred</source>
         <translation>居中</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1050"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1060"/>
         <source>Left aligned</source>
         <translation>左对齐</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1122"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1132"/>
         <source>The Grid must be active to see the changes.</source>
         <translation>网格必须处于活动状态才能看到更改。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1168"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1178"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>鼠标移动文本时使用的栅格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1171"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1181"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>图页栅格的分数。移动时按住 Ctrl 可自由放置。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1191"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1201"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>键盘移动：1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1241"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1251"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>原理图编辑器（键：左/右）x网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1258"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>原理图编辑器（键：上/下）y网格</translation>
     </message>
@@ -7457,65 +7467,65 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">使用 ALT 键的键盘移动：1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1277"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1287"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>原理图编辑器（键：左/右）x网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1306"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1316"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>原理图编辑器（键：上/下）y网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1351"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1361"/>
         <source>View grid</source>
         <translation>网格显示</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1448"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1455"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1458"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1465"/>
         <source>max:</source>
         <translation>max:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1536"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1546"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>保存符号时：拒绝两个同名端子，并报告未命名的端子（IEC 61666）。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1539"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1549"/>
         <source>Check terminal names when saving</source>
         <translation>保存时检查端子名称</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1409"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1419"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>电路图编辑器的格点大小：1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1271"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1281"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>按住 Ctrl 键用键盘移动：1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1357"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1462"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1367"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1472"/>
         <source>min:</source>
         <translation>min:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1469"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1479"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>元件编辑器的格点大小：1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1493"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1503"/>
         <source>Editor</source>
         <translation>编辑</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1501"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1511"/>
         <source>Max. parts in Element Editor List</source>
         <translation>元件编辑器列表的最多部件数量</translation>
     </message>
@@ -7571,210 +7581,210 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>已禁用</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="176"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="177"/>
         <source>Enabled by the QET_ENABLE_SCRIPTING environment variable; this setting has no effect while it is set.</source>
         <translation>已由环境变量 QET_ENABLE_SCRIPTING 启用；设置该变量期间此选项无效。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="316"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="317"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
         <translation>未设置（默认：%1）</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="327"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="328"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
         <translation>未设置（默认：%1）</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="582"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="584"/>
         <source>General</source>
         <comment>configuration page title</comment>
         <translation>通用</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="600"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="602"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="604"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="606"/>
         <source>Arabic</source>
         <translation>阿拉伯语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="605"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="607"/>
         <source>Brazilian</source>
         <translation>巴西语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="606"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="608"/>
         <source>Catalan</source>
         <translation>加泰罗尼亚语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="607"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="609"/>
         <source>Czech</source>
         <translation>捷克语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="608"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="610"/>
         <source>German</source>
         <translation>德语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="609"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="611"/>
         <source>Danish</source>
         <translation>丹麦语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="610"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="612"/>
         <source>Greek</source>
         <translation>希腊语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="611"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="613"/>
         <source>English</source>
         <translation>英语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="612"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="614"/>
         <source>Spanish</source>
         <translation>西班牙语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="613"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="615"/>
         <source>French</source>
         <translation>法语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="616"/>
         <source>Croatian</source>
         <translation>克罗地亚语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="615"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="617"/>
         <source>Italian</source>
         <translation>意大利语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="616"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="618"/>
         <source>Japanese</source>
         <translation>日语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="617"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="619"/>
         <source>Korean</source>
         <translation>韩语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="618"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="620"/>
         <source>Polish</source>
         <translation>波兰语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="619"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="621"/>
         <source>Portuguese</source>
         <translation>葡萄牙语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="620"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="622"/>
         <source>Romanian</source>
         <translation>罗马尼亚语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="621"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="623"/>
         <source>Russian</source>
         <translation>俄语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="622"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="624"/>
         <source>Slovenian</source>
         <translation>斯洛文尼亚语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="623"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="625"/>
         <source>Dutch</source>
         <translation>荷兰语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="624"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="626"/>
         <source>Norwegian</source>
         <translation>挪威语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="625"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="627"/>
         <source>Belgium-Flemish</source>
         <translation>比利时-佛兰德语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="626"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="628"/>
         <source>Turkish</source>
         <translation>土耳其语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="627"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="629"/>
         <source>Hungarian</source>
         <translation>匈牙利语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="628"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="630"/>
         <source>Mongolian</source>
         <translation>蒙古语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="629"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="631"/>
         <source>Ukrainian</source>
         <translation>乌克兰语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="630"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="632"/>
         <source>Chinese</source>
         <translation>汉语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="631"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="633"/>
         <source>Chinese (Traditional)</source>
         <translation>中文（繁体）</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="632"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="634"/>
         <source>Swedish</source>
         <translation>瑞典语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="706"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="708"/>
         <source>Cable text font</source>
         <translation>线缆文本字体</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="724"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="726"/>
         <source>Core colors font</source>
         <translation>芯线颜色字体</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="753"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="755"/>
         <source>Company collection path</source>
         <translation>企业库路径</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="781"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="783"/>
         <source>Company title-blocks</source>
         <translation>企业标题栏路径</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="809"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="811"/>
         <source>User macro path</source>
         <translation>用户宏路径</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="851"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="853"/>
         <source>Folder not found</source>
         <translation>未找到文件夹</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="852"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="854"/>
         <source>The user collection folder:
 %1
 does not exist and could not be created.</source>
@@ -7783,12 +7793,12 @@ does not exist and could not be created.</source>
 不存在且无法创建。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="860"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="862"/>
         <source>No subfolder</source>
         <translation>没有子文件夹</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="861"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="863"/>
         <source>The user collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
@@ -7797,34 +7807,34 @@ has no subfolder, so there is no prefix to configure.</source>
 没有子文件夹，因此没有可配置的前缀。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="869"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="871"/>
         <source>Prefix file cannot be read</source>
         <translation>无法读取前缀文件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="878"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="880"/>
         <source>Prefix file damaged</source>
         <translation>前缀文件已损坏</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="879"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="881"/>
         <source>The file %1 is not a valid XML file:
 %2</source>
         <translation>文件 %1 不是有效的 XML 文件：
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="883"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="885"/>
         <source>Fix the file</source>
         <translation>修复文件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="884"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="886"/>
         <source>Rebuild</source>
         <translation>重建</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="885"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="887"/>
         <source>Nothing has been changed yet.
 
 “Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
@@ -7837,36 +7847,36 @@ has no subfolder, so there is no prefix to configure.</source>
 “重建”：重新生成文件夹树，但当前所有前缀都将丢失。当前文件在被替换前会保存为 qet_labels.xml.bak。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="894"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="896"/>
         <source>File: %1</source>
         <translation>文件：%1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="918"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="920"/>
         <source>Select the materials list file</source>
         <translation>选择材料清单文件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="920"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="943"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="984"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1007"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="922"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="945"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="986"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1009"/>
         <source>CSV files (*.csv)</source>
         <translation>CSV 文件 (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="941"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="943"/>
         <source>Create the materials list file</source>
         <translation>创建材料清单文件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="959"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="961"/>
         <source>Cannot create</source>
         <translation>无法创建</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="960"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1024"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="962"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1026"/>
         <source>Cannot create the file:
 %1
 %2</source>
@@ -7875,32 +7885,32 @@ has no subfolder, so there is no prefix to configure.</source>
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="982"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="984"/>
         <source>Select the cable types file</source>
         <translation>选择线缆类型文件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1005"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1007"/>
         <source>Create the cable types file</source>
         <translation>创建线缆类型文件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1023"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1025"/>
         <source>Cannot be created</source>
         <translation>无法创建</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1053"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1055"/>
         <source>Values that are too high might cause the application to crash</source>
         <translation>太大的值可能会导致应用程序崩溃</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1088"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1090"/>
         <source>Experimental feature</source>
         <translation>实验性功能</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1089"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1091"/>
         <source>WARNING:
 Any setting other than “No rounding” may cause rendering errors in the project, depending on:
 
@@ -10774,183 +10784,183 @@ Its copy was kept as:
 <context>
     <name>ProjectAutoNumConfigPage</name>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="499"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="512"/>
         <source>Auto Numbering</source>
         <translation>自动编号</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="572"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1246"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="585"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1259"/>
         <source>Conductors</source>
         <translation>导线</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="587"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="600"/>
         <source>No.</source>
         <translation>序号</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="587"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="600"/>
         <source>Name</source>
         <translation>名称</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="587"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="600"/>
         <source>Sheet</source>
         <translation>图页</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="587"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="600"/>
         <source>Element</source>
         <translation>元件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="587"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="600"/>
         <source>Frozen</source>
         <translation>已冻结</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="594"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="607"/>
         <source>Assign a free number…</source>
         <translation>分配空闲编号…</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="595"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="899"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="608"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="912"/>
         <source>Give the selected element a number nobody has: it keeps its numbering, only its number changes.</source>
         <translation>为选中的元件分配一个无人使用的编号：它保持其编号规则，只有编号改变。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="603"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1248"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="616"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1261"/>
         <source>Elements</source>
         <translation>元件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="608"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1250"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="621"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1263"/>
         <source>Sheets</source>
         <translation>图页</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="614"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="627"/>
         <source>Cables</source>
         <translation>线缆</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="618"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="631"/>
         <source>Sheet Auto Numbering</source>
         <translation>图页自动编号</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="621"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="634"/>
         <source>Import from another project...</source>
         <translation>从其他工程导入...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="623"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="636"/>
         <source>Reuse the automatic numbering saved in another project</source>
         <translation>重用另一个工程中保存的自动编号</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="846"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="859"/>
         <source>frozen</source>
         <translation>已冻结</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="854"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="867"/>
         <source>— free —</source>
         <translation>— 空闲 —</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="855"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="868"/>
         <source>no element has this number (deleted or renumbered)</source>
         <translation>没有元件使用此编号（已删除或重新编号）</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="872"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="885"/>
         <source>No element follows this numbering</source>
         <translation>没有元件遵循此编号</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="873"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="886"/>
         <source>%n elements follow this numbering, %1 with a frozen name</source>
         <translation>
             <numerusform>%n 个元件遵循此编号，其中 %1 个名称已冻结</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="875"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="888"/>
         <source>; %n numbers without an element</source>
         <translation>
             <numerusform>；%n 个编号没有对应元件</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="897"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="910"/>
         <source>This numbering has several numbers (or one number per sheet): one cannot be chosen by hand.</source>
         <translation>此编号有多个编号（或每个图页一个编号）：无法手动选择编号。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="914"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="927"/>
         <source>Assign a free number</source>
         <translation>分配空闲编号</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="920"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="933"/>
         <source>This element&apos;s name is frozen: unfreeze it first.</source>
         <translation>此元件的名称已冻结：请先解冻。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="925"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="938"/>
         <source>No number is free.</source>
         <translation>没有空闲编号。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="930"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="943"/>
         <source>%1  →  %2</source>
         <translation>%1  →  %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="936"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="949"/>
         <source>Free number for element “%1” (%2):</source>
         <translation>元件“%1”（%2）的空闲编号：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="987"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1682"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1000"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1695"/>
         <source>Numbering name:</source>
         <translation>编号名称：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1016"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1106"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1029"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1119"/>
         <source>Modify numbering</source>
         <translation>修改编号</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1017"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1030"/>
         <source>%n elements follow this numbering and will change formula and name.</source>
         <translation>
             <numerusform>%n 个元件遵循此编号，其公式和名称将随之改变。</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1038"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1091"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1704"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1755"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1051"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1104"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1717"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1768"/>
         <source>New numbering</source>
         <translation>新建编号</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1063"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1726"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1076"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1739"/>
         <source>Rename numbering</source>
         <translation>重命名编号</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1107"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1120"/>
         <source>The “%1” numbering cannot be modified: %n elements with a frozen name follow it.
 Unfreeze them first (see the list), or just rename the numbering.</source>
         <translation>
@@ -10959,27 +10969,27 @@ Unfreeze them first (see the list), or just rename the numbering.</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1421"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1434"/>
         <source>%n numberings followed by elements with a frozen name were not replaced.</source>
         <translation>
             <numerusform>%n 个被名称已冻结的元件所遵循的编号未被替换。</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1425"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1438"/>
         <source>%n elements changed formula.</source>
         <translation>
             <numerusform>%n 个元件的公式已更改。</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1442"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1784"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1455"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1797"/>
         <source>Delete numbering</source>
         <translation>删除编号</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1443"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1456"/>
         <source>%n elements follow the “%1” numbering, so it cannot be deleted.
 Give them another numbering or a fixed name first.</source>
         <translation>
@@ -10988,31 +10998,31 @@ Give them another numbering or a fixed name first.</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1667"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1680"/>
         <source>No sheet names this numbering</source>
         <translation>没有图页使用此编号命名</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1668"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1681"/>
         <source>%n sheets name this numbering</source>
         <translation>
             <numerusform>%n 个图页使用此编号命名</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1671"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1684"/>
         <source>No sheet follows this numbering</source>
         <translation>没有图页遵循此编号</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1672"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1685"/>
         <source>%n sheets follow this numbering</source>
         <translation>
             <numerusform>%n 个图页遵循此编号</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1785"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1798"/>
         <source>%n sheets follow the “%1” numbering, so it cannot be deleted.
 Give them another numbering first.</source>
         <translation>
@@ -11021,7 +11031,7 @@ Give them another numbering first.</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1206"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1219"/>
         <source>Import numbering from a project</source>
         <translation>从工程导入编号</translation>
     </message>
@@ -11030,75 +11040,75 @@ Give them another numbering first.</source>
         <translation type="obsolete">QElectroTech工程(*.qet)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1215"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1222"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1228"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1235"/>
         <source>Import not possible</source>
         <translation>无法导入</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1216"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1229"/>
         <source>Unable to open %1</source>
         <translation>无法打开 %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1223"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1236"/>
         <source>%1 is not a valid QElectroTech project.</source>
         <translation>%1 不是有效的 QElectroTech 工程。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1232"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1314"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1245"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1327"/>
         <source>No numbering</source>
         <translation>没有编号</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1233"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1315"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1246"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1328"/>
         <source>This project does not contain any automatic numbering.</source>
         <translation>此工程不包含任何自动编号。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1254"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1267"/>
         <source>Numbering to import</source>
         <translation>要导入的编号</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1257"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1270"/>
         <source>Numbering found in %1:</source>
         <translation>在 %1 中找到的编号：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1295"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1308"/>
         <source>%1: %2 (already exists)</source>
         <translation>%1：%2（已存在）</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1320"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1333"/>
         <source>Replace numbering with the same name</source>
         <translation>替换同名编号</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1334"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1347"/>
         <source>Import numberings</source>
         <translation>导入编号</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1415"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1428"/>
         <source>Import complete</source>
         <translation>导入完成</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1416"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1429"/>
         <source>%1 numbering(s) imported, %2 kept unchanged.</source>
         <translation>已导入 %1 个编号，%2 个保持不变。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1419"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1432"/>
         <source>%1 numbering(s) imported.</source>
         <translation>已导入 %1 个编号。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="567"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="580"/>
         <source>Management</source>
         <translation>管理</translation>
     </message>
@@ -11140,176 +11150,188 @@ Give them another numbering first.</source>
         <translation>常规</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="234"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="239"/>
         <source>Project title :</source>
         <comment>label when configuring</comment>
         <translation>工程名称：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="236"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="241"/>
         <source>This title is made available to all child sheets as %projecttitle.</source>
         <comment>informative label</comment>
         <translation>此标题将作为变量 %projecttitle 应用于此工程的所有图页。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="238"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="243"/>
         <source>You may define below custom properties that will be made available to all sheets of the project (typically to use within title blocks).</source>
         <comment>informative label</comment>
         <translation>您可以在下面定义自定义属性，这些属性将用于该工程的所有图页（通常用于标题栏）。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="247"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="252"/>
         <source>Time spent on this project:</source>
         <comment>label when configuring</comment>
         <translation>在此项目上花费的时间：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="249"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="254"/>
         <source>Track the time spent on this project (recorded locally in this file only)</source>
         <comment>checkbox label</comment>
         <translation>跟踪在此项目上花费的时间（仅在此文件中本地记录）</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="250"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="255"/>
         <source>Reset</source>
         <comment>button label</comment>
         <translation>重置</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="254"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="259"/>
         <source>Conductor crossings:</source>
         <comment>label when configuring</comment>
         <translation>导线交叉：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="256"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="261"/>
         <source>No hop</source>
         <comment>wire crossings</comment>
         <translation>不跨越</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="258"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="263"/>
         <source>Hop on horizontal conductors</source>
         <comment>wire crossings</comment>
         <translation>在水平导线上跨越</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="260"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="265"/>
         <source>Hop on vertical conductors</source>
         <comment>wire crossings</comment>
         <translation>在垂直导线上跨越</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="262"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="267"/>
         <source>Draws a small arc where two conductors cross without being connected. Only the drawing changes: no element is added and no conductor is cut.</source>
         <comment>tooltip</comment>
         <translation>在两根导线交叉但未连接处绘制一个小弧。只改变绘图：不添加元件，也不切断导线。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="267"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="272"/>
         <source>Keep the texts of rotated elements horizontal</source>
         <comment>checkbox label</comment>
         <translation>旋转元件时保持其文本水平</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="269"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="274"/>
         <source>Texts drawn in an element and the names of its terminals stay readable when the element is rotated: their frame turns with the element, not the text. Uncheck to make them turn with the element, as before.</source>
         <comment>tooltip</comment>
         <translation>元件中绘制的文本及其端子名称在元件旋转后仍保持可读：随元件旋转的是文本框，而不是文本。取消勾选可使文本像以前一样随元件旋转。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="277"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="279"/>
+        <source>Enable chained folio reports for report elements</source>
+        <comment>checkbox label</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="280"/>
+        <source>Automatically chains folio report elements with the same label in a forward/backward sequence.</source>
+        <comment>tooltip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="285"/>
         <source>Display of the terminal labelling</source>
         <comment>group box title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="279"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="287"/>
         <source>Show the label and the terminal number in one field</source>
         <comment>radio button label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="280"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="288"/>
         <source>A terminal&apos;s label (X1:1) is drawn as a whole, the way it has always been.</source>
         <comment>tooltip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="283"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="291"/>
         <source>Split the label and the terminal number</source>
         <comment>radio button label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="285"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="293"/>
         <source>The label (X1) is drawn in one field and the terminal number (1) in another, which a terminal symbol may place where it wants -- and hide when it must. A symbol without such a field shows the two, one under the other.</source>
         <comment>tooltip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="290"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="298"/>
         <source>Only the drawing changes: what is written in the element, the numbering, the sorting and the exports keep the whole label.</source>
         <comment>informative label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="296"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="304"/>
         <source>Conductors per terminal</source>
         <comment>group box title</comment>
         <translation>每个端子的导线数</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="297"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="305"/>
         <source>Use the application settings</source>
         <comment>checkbox label</comment>
         <translation>使用应用程序设置</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="298"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="306"/>
         <source>The settings in Configure QElectroTech &gt; General apply. Untick to give this project its own settings, saved in the project.</source>
         <comment>tooltip</comment>
         <translation>应用“配置 QElectroTech &gt; 常规”中的设置。取消勾选可为此工程单独设置，设置将保存在工程中。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="311"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="319"/>
         <source>Maximum conductors per terminal:</source>
         <comment>label when configuring</comment>
         <translation>每个端子的最大导线数：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="314"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="322"/>
         <source>No limit</source>
         <comment>wires per terminal</comment>
         <translation>无限制</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="315"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="323"/>
         <source>A new conductor that would take a terminal past this number is refused. Conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <comment>tooltip</comment>
         <translation>会使端子超过此数量的新导线将被拒绝。已绘制的导线不受影响。4 表示两个双线管形端头，螺钉两侧各一个。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="319"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="327"/>
         <source>Only one conductor per sheet reference</source>
         <comment>checkbox label</comment>
         <translation>每个图页引用只接一根导线</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="320"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="328"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <comment>tooltip</comment>
         <translation>图页引用是一个虚拟点：它只接一根导线，即在另一图页上延续的那根。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="323"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="331"/>
         <source>These rules are turned off for every project (Configure QElectroTech &gt; General).</source>
         <comment>informative label</comment>
         <translation>这些规则对所有工程均已关闭（配置 QElectroTech &gt; 常规）。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="397"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="451"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="408"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="463"/>
         <source>%1 h %2 min</source>
         <comment>hours and minutes of time spent on a project</comment>
         <translation>%1 小时 %2 分钟</translation>
@@ -15312,72 +15334,72 @@ the conditions are not valid</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1237"/>
+        <location filename="../sources/qetproject.cpp" line="1241"/>
         <source>Project « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>工程《%1 : %2》</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1244"/>
+        <location filename="../sources/qetproject.cpp" line="1248"/>
         <source>Project %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>工程 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1251"/>
+        <location filename="../sources/qetproject.cpp" line="1255"/>
         <source>Untitled project</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>未命名工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1260"/>
+        <location filename="../sources/qetproject.cpp" line="1264"/>
         <source>%1 [read-only]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [只读]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1270"/>
+        <location filename="../sources/qetproject.cpp" line="1274"/>
         <source>%1 [modified]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [已修改]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1620"/>
+        <location filename="../sources/qetproject.cpp" line="1624"/>
         <source>Renumber elements</source>
         <translation>重新编号元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1621"/>
+        <location filename="../sources/qetproject.cpp" line="1625"/>
         <source>Renumber elements (%1)</source>
         <translation>重新编号元件（%1）</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="2812"/>
+        <location filename="../sources/qetproject.cpp" line="2817"/>
         <source>QElectroTech project (*.qet *.qetz)</source>
         <translation>QElectroTech 工程 (*.qet *.qetz)</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="2954"/>
+        <location filename="../sources/qetproject.cpp" line="2959"/>
         <source>%1 was opened read-only because someone else has it open. Use Save As to keep your changes in another file.</source>
         <translation>%1 已以只读方式打开，因为其他人正在使用它。请使用“另存为”将修改保存到其他文件。</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="2959"/>
+        <location filename="../sources/qetproject.cpp" line="2964"/>
         <source>Cannot save %1: %2</source>
         <translation>无法保存 %1：%2</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="2979"/>
+        <location filename="../sources/qetproject.cpp" line="2984"/>
         <source>someone else changed the file on disk at %1 since it was opened, and saving would overwrite that. Save to another name, or set QET_OVERWRITE_CHANGED=1 to overwrite it.</source>
         <translation>自打开以来，其他人已于 %1 在磁盘上修改了该文件，保存会将其覆盖。请另存为其他名称，或设置 QET_OVERWRITE_CHANGED=1 以覆盖。</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3172"/>
+        <location filename="../sources/qetproject.cpp" line="3177"/>
         <source>Modified contact system</source>
         <translation>触点系统已修改</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3173"/>
+        <location filename="../sources/qetproject.cpp" line="3178"/>
         <source>The new element defines slave contact groups.
 Existing slave elements will not be automatically assigned. You will need to link the slaves manually and assign the contact groups.
 
@@ -15388,19 +15410,19 @@ Do you wish to continue?</source>
 是否继续？</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3262"/>
+        <location filename="../sources/qetproject.cpp" line="3267"/>
         <source>An error occurred during the template integration.</source>
         <comment>error message</comment>
         <translation>模板集成期间发生错误。</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3529"/>
+        <location filename="../sources/qetproject.cpp" line="3534"/>
         <source>Warning</source>
         <comment>message box title</comment>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3531"/>
+        <location filename="../sources/qetproject.cpp" line="3536"/>
         <source>This document appears to have been saved with version %1
  which is later than your version ! 
 You are currently using QElectroTech in version %2</source>
@@ -15409,7 +15431,7 @@ You are currently using QElectroTech in version %2</source>
 您当前使用的是版本 %2 的 QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3535"/>
+        <location filename="../sources/qetproject.cpp" line="3540"/>
         <source>.
  It is then possible that the opening of all or part of this document fails.
 What do you wish to do ?</source>
@@ -15418,32 +15440,32 @@ What do you wish to do ?</source>
 你想如何处理？</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3556"/>
+        <location filename="../sources/qetproject.cpp" line="3561"/>
         <source>Warning </source>
         <comment>message box title</comment>
         <translation>警告 </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3557"/>
+        <location filename="../sources/qetproject.cpp" line="3562"/>
         <source>The project you are trying to open is partially compatible with your version %1 of QElectroTech.
 </source>
         <translation>您尝试打开的工程与您的 QElectroTech %1 版本部分兼容。
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3560"/>
+        <location filename="../sources/qetproject.cpp" line="3565"/>
         <source>In order to make it fully compatible please open this same project with version 0.8, or 0.80 of QElectroTech and save the project and open it again with this version.
 What do you wish to do ?</source>
         <translation>为了使其完全兼容，请使用 QElectroTech 的 0.8 或 0.80 版本打开同一个工程并保存该工程，然后使用此版本再次打开它。
 你想如何处理？</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3754"/>
+        <location filename="../sources/qetproject.cpp" line="3764"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creation of sheets&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;正在打开当前工程...&lt;/b&gt;&lt;br/&gt;正在创建图页&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3881"/>
+        <location filename="../sources/qetproject.cpp" line="3891"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Setting up cross references&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;打开当前工程...&lt;/b&gt;&lt;br/&gt;设置交叉引用&lt;/p&gt;</translation>
     </message>
@@ -15839,32 +15861,32 @@ What do you wish to do ?</source>
         <translation>粘贴 %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="347"/>
+        <location filename="../sources/diagramcommands.cpp" line="350"/>
         <source>cut %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
         <translation>剪切 %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="460"/>
+        <location filename="../sources/diagramcommands.cpp" line="463"/>
         <location filename="../sources/undocommand/movegraphicsitemcommand.cpp" line="54"/>
         <source>move %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>移动 %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="482"/>
+        <location filename="../sources/diagramcommands.cpp" line="485"/>
         <source>modify text</source>
         <comment>undo caption</comment>
         <translation>编辑文本</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="534"/>
+        <location filename="../sources/diagramcommands.cpp" line="537"/>
         <source>modify a conductor</source>
         <comment>undo caption</comment>
         <translation>修改导线</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="604"/>
+        <location filename="../sources/diagramcommands.cpp" line="607"/>
         <source>Reset %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>重置 %1</translation>
@@ -15876,7 +15898,7 @@ What do you wish to do ?</source>
         <translation>修改标题栏</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="655"/>
+        <location filename="../sources/diagramcommands.cpp" line="658"/>
         <source>change the sheet size</source>
         <comment>undo caption</comment>
         <translation>修改页面尺寸</translation>
@@ -15893,7 +15915,7 @@ What do you wish to do ?</source>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="292"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="544"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="557"/>
         <source>Title</source>
         <translation>标题</translation>
     </message>
@@ -16440,7 +16462,7 @@ What do you wish to do ?</source>
         <translation>编辑多个元件信息</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="132"/>
+        <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="156"/>
         <source>Change the information of the element</source>
         <translation>修改元件信息</translation>
     </message>
@@ -16806,7 +16828,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="209"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1456"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1734"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3138"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3145"/>
         <source>Type</source>
         <translation>类型</translation>
     </message>
@@ -16814,7 +16836,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="210"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1457"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1735"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3139"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3146"/>
         <source>Address</source>
         <translation>地址</translation>
     </message>
@@ -16823,7 +16845,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="212"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1459"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1737"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3141"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3148"/>
         <source>Annotation</source>
         <translation>注释</translation>
     </message>
@@ -16832,7 +16854,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="213"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1460"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1738"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3142"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3149"/>
         <source>Cross-reference</source>
         <translation>交叉引用</translation>
     </message>
@@ -16842,7 +16864,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="211"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1458"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1736"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3140"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3147"/>
         <source>Function</source>
         <translation>功能</translation>
     </message>
@@ -17879,7 +17901,7 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
         <translation>解冻元件名称</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="544"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="557"/>
         <source>Sheet</source>
         <translation>图页</translation>
     </message>

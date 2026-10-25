@@ -3010,7 +3010,7 @@ Devam edilsin mi?</translation>
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="3107"/>
+        <location filename="../sources/diagram.cpp" line="3113"/>
         <source>Change the depth</source>
         <translatorcomment>I am not sure about this. It should be checked.</translatorcomment>
         <translation>Derinliği değiştirin</translation>
@@ -3804,7 +3804,7 @@ Bu metni tek başına taşımak için Shift tuşunu basılı tutup sürükleyin<
         <translation>Öğe metnini düzenle</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1243"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1246"/>
         <source>Resize an element text</source>
         <translation>Bir öğe metnini yeniden boyutlandır</translation>
     </message>
@@ -4359,7 +4359,7 @@ Bu metni tek başına taşımak için Shift tuşunu basılı tutup sürükleyin<
 <context>
     <name>Element</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="2701"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="2708"/>
         <source>Automatically number an element</source>
         <comment>undo caption</comment>
         <translation>Bir öğeyi otomatik numaralandır</translation>
@@ -5364,128 +5364,128 @@ Devam edilsin mi?</translation>
 <context>
     <name>ElementPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="387"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="405"/>
         <source>General</source>
         <translation>Genel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="397"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="415"/>
         <source>Element
 </source>
         <translation>Öğe
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="400"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="418"/>
         <source>Name : %1
 </source>
         <translation>İsim : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="403"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="421"/>
         <source>Sheet : %1
 </source>
         <translation>Sayfa : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="405"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="423"/>
         <source>Type: %1
 </source>
         <translation>Tip : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="406"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="424"/>
         <source>Sub-type : %1
 </source>
         <translation>Alt tip : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="407"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="425"/>
         <source>Position : %1
 </source>
         <translation>Pozisyon : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="408"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="426"/>
         <source>Rotation : %1°
 </source>
         <translation>Döndürme : %1°
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="409"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="427"/>
         <source>Dimensions : %1*%2
 </source>
         <translation>Boyutlar : %1*%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="410"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="428"/>
         <source>Terminals : %1
 </source>
         <translation>Sınırlar : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="417"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="435"/>
         <source>Maximum number of slave contacts defined:  not defined
 </source>
         <translation>Tanımlanan en fazla bağımlı kontak sayısı:  tanımlanmamış
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="418"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="436"/>
         <source>Maximum number of slave contacts defined:  %1
 </source>
         <translation>Tanımlı en fazla bağımlı kontak sayısı : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="423"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="441"/>
         <source>Number of slave contacts used : %1
 </source>
         <translation>Kullanılan bağımlı kontak sayısı : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="438"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="456"/>
         <source>    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8
 </source>
         <translation>    Kontaklar : NA : %1/%2, NK : %3/%4, değiştirici : %5/%6, diğer : %7/%8
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="447"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="465"/>
         <source>    Contacts : NO : %1, NC : %2, changeover : %3, other : %4
 </source>
         <translation>    Kontaklar : NA : %1, NK : %2, değiştirici : %3, diğer : %4
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="454"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="472"/>
         <source>Location : %1
 </source>
         <translation>Yerleştir : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="469"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="487"/>
         <source>Lock Position</source>
         <translation>Konumu kilitle</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="485"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="503"/>
         <source>Find in the panel</source>
         <translatorcomment>I am not sure about this. It should be checked.</translatorcomment>
         <translation>Panelde bul</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="487"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="505"/>
         <source>Edit element</source>
         <translation>Öğeyi düzenle</translation>
     </message>
@@ -6916,39 +6916,39 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
         <translation>Sistem renklerini kullan</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="767"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="769"/>
         <source>User Collection Path</source>
         <translation>Kullanıcı Kütüphanesi Yolu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="739"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="741"/>
         <source>Path of the Common Collection</source>
         <translation>Ortak Kütüphane Yolu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="487"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="525"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="553"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="567"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="588"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="563"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="577"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="598"/>
         <source>By default</source>
         <translation>Varsayılan</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="478"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="492"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="530"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="558"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="572"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="593"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="630"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="671"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="488"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="502"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="540"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="568"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="582"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="603"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="640"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="681"/>
         <source>Browse...</source>
         <translation>Göz Atın...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="601"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="611"/>
         <source>(Reload the elements collections to apply the changes)</source>
         <translation>(Değişiklikleri uygulamak için öğe kütüphanelerini yeniden yüklemelisiniz)</translation>
     </message>
@@ -6978,7 +6978,7 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
         <translation>Projedeki pozisyonlarının yerine sayfa numaralandırmasını kullan</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="439"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="449"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Başlık bloğunun 0&apos;dan başlayarak sütunlarını numaralandır(Aksi takdirde &quot;1&quot;)</translation>
@@ -7000,79 +7000,79 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
         <translation>#Yakınlaştırmanın sayfanın ötesine geçmesine izin ver</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="795"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="797"/>
         <source>User Title blocks Path</source>
         <translatorcomment>It does not exist in the english translation.</translatorcomment>
         <translation>Kullanıcı başlık blokları dizini</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="447"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="457"/>
         <source>Collections</source>
         <translation>Koleksiyonlar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="463"/>
         <source>Access the collections</source>
         <translation>Koleksiyonlara Erişim</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="510"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="520"/>
         <source>Common collection directory</source>
         <translation>Ortak koleksiyon dizini</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="538"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="548"/>
         <source>User collection directory</source>
         <translation>Kullanıcı koleksiyon dizini</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="580"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="590"/>
         <source>User title blocks directory</source>
         <translation>Kullanıcı başlık blokları dizini</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
         <source>Elements management</source>
         <translation>Öğe Yönetimi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="702"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="712"/>
         <source>Highlight freshly integrated elements in the panel</source>
         <translation>#Yeni entegre edilen öğeleri panelde vurgulayın</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="709"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="719"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>#Her öğe,boş bi alanda &quot;Yazarları, Lisansı veya başka bir alanda yararlı bulduğunuz veriler&quot; hakkında bilgiler içerir.
 #Burada, oluşturacağınız öğeler için bu alanın varsayılan içeriğini belirtebilirsiniz :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="745"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="755"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>QElectroTech&apos;in bir sonraki başlatma işleminde uygulanır</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="785"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="795"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation>Burada çeşitli metinlerin QElectroTech içinde varsayılan görünümünü tanımlayabilirsiniz</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1075"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1085"/>
         <source>Grid + Keyboard</source>
         <translation>Izgara + Klavye</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1081"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1091"/>
         <source>Grid: 1 - 30</source>
         <translation>Izgara: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1148"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1158"/>
         <source>DiagramEditor xGrid</source>
         <translation>Diyagram Editörü xIzgarası</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1115"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1125"/>
         <source>DiagramEditor yGrid</source>
         <translation>Diyagram Editörü yIzgarası</translation>
     </message>
@@ -7238,61 +7238,71 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
+        <source>Enable chained folio reports for report elements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
         <source>Previous versions kept when saving a project</source>
         <translation>Proje kaydedilirken saklanan önceki sürümler</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>Bir proje kaydedilmeden önce, dosyanın önceki hali yanındaki, proje adı ve “-backups” ile adlandırılan bir klasöre kopyalanır. Yalnızca en yenileri saklanır.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="413"/>
         <source>None</source>
         <translation>Yok</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="465"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="475"/>
         <source>Company collection directory</source>
         <translation>Şirket koleksiyonu dizini</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="500"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="510"/>
         <source>Create or change the prefix of the user collection&apos;s folders (qet_labels.xml file)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the user collection</extracomment>
         <translation>Kullanıcı koleksiyonu klasörlerinin önekini oluştur veya değiştir (qet_labels.xml dosyası)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="503"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="513"/>
         <source>Configure prefixes…</source>
         <extracomment>button opening the dialog where the folder prefixes of the user collection are configured</extracomment>
         <translation>Önekleri yapılandır…</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="517"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="527"/>
         <source>Company title-block directory</source>
         <translation>Şirket antet blokları dizini</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="555"/>
         <source>User Macro Directory</source>
         <translation>Kullanıcı Makroları dizini</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="608"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
         <source>Materials list file</source>
         <translation>Malzeme listesi dosyası</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="617"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="627"/>
         <source>Materials list used to fill in a symbol&apos;s items</source>
         <extracomment>tooltip of the material file path field</extracomment>
         <translation>Bir sembolün öğelerini doldurmak için kullanılan malzeme listesi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="623"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="664"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="674"/>
         <source>Not set</source>
         <extracomment>hint shown when no material file is configured yet
 ----------
@@ -7300,161 +7310,161 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Ayarlanmadı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="637"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="647"/>
         <source>Create the list file with its headers</source>
         <extracomment>tooltip of the button creating the material file with its header line</extracomment>
         <translation>Liste dosyasını başlıklarıyla oluştur</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="640"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="681"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="650"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="691"/>
         <source>Create...</source>
         <translation>Oluştur...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="649"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="659"/>
         <source>Cable type list file</source>
         <translation>Kablo tipi listesi dosyası</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="658"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="668"/>
         <source>Directory of the cable types used to define a cable (number of cores, colors, cross-section)</source>
         <extracomment>tooltip of the cable type file path field</extracomment>
         <translation>Bir kabloyu tanımlamak için kullanılan kablo tipleri dizini (damar sayısı, renkler, kesit)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="678"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="688"/>
         <source>Create the cable type list file with its header line</source>
         <extracomment>tooltip of the button creating the cable type file with its header line</extracomment>
         <translation>Kablo tipi listesi dosyasını başlık satırıyla oluştur</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="746"/>
         <source>Languages</source>
         <translation>Diller</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="779"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="789"/>
         <source>texts</source>
         <translation>Metinler</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="799"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="809"/>
         <source>Elements texts</source>
         <translation>Öğelerin Metinleri</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="812"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="878"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="924"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="822"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="888"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="934"/>
         <source>Font:</source>
         <translation>Yazı Tipi :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="822"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="885"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="832"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="895"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="832"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="842"/>
         <source>Length :</source>
         <translation>Uzunluk :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="842"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="871"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="852"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="881"/>
         <source>Rotation :</source>
         <translation>Dönüş:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="865"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="875"/>
         <source>Independent texts</source>
         <translation>Bağımsız Metinler</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="918"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="928"/>
         <source>Other texts</source>
         <translation>Diğer Metinler</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="954"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="964"/>
         <source>Cable texts</source>
         <translation>Kablo metinleri</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="960"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="970"/>
         <source>Designation, type, plant, location, length :</source>
         <translation>Tanım, tip, tesis, konum, uzunluk :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="983"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="993"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>Kablo hattı boyunca yazılan metinlerin yazı tipi; kendi yazı tipi olan bir kablo onu korur.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="993"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1003"/>
         <source>Core colors (all of them) :</source>
         <translation>Damar renkleri (tümü) :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1016"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1026"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>Hat boyunca yazılan damar renklerinin yazı tipi; kendi yazı tipi olan bir kablo onu korur.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1026"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1036"/>
         <source>Text alignment :</source>
         <translation>Metin hizalaması :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1036"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1046"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>Bir kablonun metinlerinin hattının başlangıcına göre nerede bittiği; kendi ayarı olan bir kablo onu korur.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1040"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1050"/>
         <source>Right aligned</source>
         <translation>Sağa hizalı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1045"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1055"/>
         <source>Centred</source>
         <translation>Ortalanmış</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1050"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1060"/>
         <source>Left aligned</source>
         <translation>Sola hizalı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1122"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1132"/>
         <source>The Grid must be active to see the changes.</source>
         <translation>Değişiklikleri görebilmek için Izgara&apos;nın etkin olması gerekir.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1168"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1178"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>Fareyle taşınan metinler için ızgara</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1171"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1181"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>Sayfa ızgarasının kesri. Serbestçe yerleştirmek için taşırken Ctrl tuşunu basılı tutun.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1191"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1201"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>Klavye hareketi: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1241"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1251"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>Diyagram Editörü (Tuş : Sol / Sağ)  xIzgara</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1258"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>Diyagram Editörü (Tuş : Yukarı / Aşağı) yIzgarası</translation>
     </message>
@@ -7463,65 +7473,65 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">ALT tuşuyla Klavye hareketi : 1 - 9 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1277"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1287"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>Diyagram Editörü (Tuş : Sol / Sağ)  xIzgara</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1306"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1316"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>Diyagram Editörü (Tuş : Yukarı / Aşağı) yIzgarası</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1351"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1361"/>
         <source>View grid</source>
         <translation>Izgara Görünümü</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1448"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1455"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1458"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1465"/>
         <source>max:</source>
         <translation>maks:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1536"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1546"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>Bir sembolü kaydederken: aynı ada sahip iki klemensi reddet ve adı olmayan klemensleri bildir (IEC 61666).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1539"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1549"/>
         <source>Check terminal names when saving</source>
         <translation>Kaydederken klemens adlarını denetle</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1409"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1419"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>Şema düzenleyicide nokta boyutu: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1271"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1281"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>Ctrl tuşuyla klavyeden taşıma: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1357"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1462"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1367"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1472"/>
         <source>min:</source>
         <translation>min:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1469"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1479"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>Öğe düzenleyicide nokta boyutu: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1493"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1503"/>
         <source>Editor</source>
         <translation>Düzenleyici</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1501"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1511"/>
         <source>Max. parts in Element Editor List</source>
         <translation>Öğe düzenleyici listesindeki en fazla parça sayısı</translation>
     </message>
@@ -7577,210 +7587,210 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Devre dışı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="176"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="177"/>
         <source>Enabled by the QET_ENABLE_SCRIPTING environment variable; this setting has no effect while it is set.</source>
         <translation>QET_ENABLE_SCRIPTING ortam değişkeni ile etkinleştirildi; bu değişken tanımlıyken bu ayarın etkisi yoktur.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="316"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="317"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
         <translation>Ayarlanmadı (varsayılan: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="327"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="328"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
         <translation>Ayarlanmadı (varsayılan: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="582"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="584"/>
         <source>General</source>
         <comment>configuration page title</comment>
         <translation>Genel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="600"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="602"/>
         <source>System</source>
         <translation>Sistem</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="604"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="606"/>
         <source>Arabic</source>
         <translation>Arapça</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="605"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="607"/>
         <source>Brazilian</source>
         <translation>Brezilyaca</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="606"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="608"/>
         <source>Catalan</source>
         <translation>Katalanca</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="607"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="609"/>
         <source>Czech</source>
         <translation>Çekce</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="608"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="610"/>
         <source>German</source>
         <translation>Almanca</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="609"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="611"/>
         <source>Danish</source>
         <translation>Danca</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="610"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="612"/>
         <source>Greek</source>
         <translation>Yunanca</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="611"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="613"/>
         <source>English</source>
         <translation>İngilizce</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="612"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="614"/>
         <source>Spanish</source>
         <translation>İspanyolca</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="613"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="615"/>
         <source>French</source>
         <translation>Fransızca</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="616"/>
         <source>Croatian</source>
         <translation>Hırvatça</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="615"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="617"/>
         <source>Italian</source>
         <translation>İtalyanca</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="616"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="618"/>
         <source>Japanese</source>
         <translation>Japonca</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="617"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="619"/>
         <source>Korean</source>
         <translation>Korece</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="618"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="620"/>
         <source>Polish</source>
         <translation>Polonyaca</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="619"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="621"/>
         <source>Portuguese</source>
         <translation>Portekizce</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="620"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="622"/>
         <source>Romanian</source>
         <translation>Romence</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="621"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="623"/>
         <source>Russian</source>
         <translation>Rusça</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="622"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="624"/>
         <source>Slovenian</source>
         <translation>Slovakça</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="623"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="625"/>
         <source>Dutch</source>
         <translation>Hollancada</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="624"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="626"/>
         <source>Norwegian</source>
         <translation>Norveççe</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="625"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="627"/>
         <source>Belgium-Flemish</source>
         <translation>Flemenkçe</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="626"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="628"/>
         <source>Turkish</source>
         <translation>Türkçe</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="627"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="629"/>
         <source>Hungarian</source>
         <translation>Macarca</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="628"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="630"/>
         <source>Mongolian</source>
         <translation>Moğolca</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="629"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="631"/>
         <source>Ukrainian</source>
         <translation>Ukraynaca</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="630"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="632"/>
         <source>Chinese</source>
         <translation>Çince</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="631"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="633"/>
         <source>Chinese (Traditional)</source>
         <translation>Çince (Geleneksel)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="632"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="634"/>
         <source>Swedish</source>
         <translation>İsveççe</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="706"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="708"/>
         <source>Cable text font</source>
         <translation>Kablo metni yazı tipi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="724"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="726"/>
         <source>Core colors font</source>
         <translation>Damar renkleri yazı tipi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="753"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="755"/>
         <source>Company collection path</source>
         <translation>Şirket koleksiyonu yolu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="781"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="783"/>
         <source>Company title-blocks</source>
         <translation>Şirket antet blokları yolu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="809"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="811"/>
         <source>User macro path</source>
         <translation>Kullanıcı makroları yolu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="851"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="853"/>
         <source>Folder not found</source>
         <translation>Klasör bulunamadı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="852"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="854"/>
         <source>The user collection folder:
 %1
 does not exist and could not be created.</source>
@@ -7789,12 +7799,12 @@ does not exist and could not be created.</source>
 mevcut değil ve oluşturulamadı.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="860"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="862"/>
         <source>No subfolder</source>
         <translation>Alt klasör yok</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="861"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="863"/>
         <source>The user collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
@@ -7803,34 +7813,34 @@ has no subfolder, so there is no prefix to configure.</source>
 hiç alt klasör içermiyor, dolayısıyla yapılandırılacak önek yok.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="869"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="871"/>
         <source>Prefix file cannot be read</source>
         <translation>Önek dosyası okunamıyor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="878"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="880"/>
         <source>Prefix file damaged</source>
         <translation>Önek dosyası hasarlı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="879"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="881"/>
         <source>The file %1 is not a valid XML file:
 %2</source>
         <translation>%1 dosyası geçerli bir XML dosyası değil:
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="883"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="885"/>
         <source>Fix the file</source>
         <translation>Dosyayı düzelt</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="884"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="886"/>
         <source>Rebuild</source>
         <translation>Yeniden oluştur</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="885"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="887"/>
         <source>Nothing has been changed yet.
 
 “Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
@@ -7843,36 +7853,36 @@ hiç alt klasör içermiyor, dolayısıyla yapılandırılacak önek yok.</trans
 “Yeniden oluştur”: klasör ağacı yeniden oluşturulur, ancak mevcut tüm önekler kaybolur. Mevcut dosya, değiştirilmeden önce qet_labels.xml.bak olarak saklanır.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="894"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="896"/>
         <source>File: %1</source>
         <translation>Dosya: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="918"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="920"/>
         <source>Select the materials list file</source>
         <translation>Malzeme listesi dosyasını seçin</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="920"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="943"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="984"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1007"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="922"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="945"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="986"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1009"/>
         <source>CSV files (*.csv)</source>
         <translation>CSV dosyaları (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="941"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="943"/>
         <source>Create the materials list file</source>
         <translation>Malzeme listesi dosyasını oluştur</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="959"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="961"/>
         <source>Cannot create</source>
         <translation>Oluşturulamıyor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="960"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1024"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="962"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1026"/>
         <source>Cannot create the file:
 %1
 %2</source>
@@ -7881,32 +7891,32 @@ hiç alt klasör içermiyor, dolayısıyla yapılandırılacak önek yok.</trans
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="982"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="984"/>
         <source>Select the cable types file</source>
         <translation>Kablo tipleri dosyasını seçin</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1005"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1007"/>
         <source>Create the cable types file</source>
         <translation>Kablo tipleri dosyasını oluştur</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1023"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1025"/>
         <source>Cannot be created</source>
         <translation>Oluşturulamadı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1053"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1055"/>
         <source>Values that are too high might cause the application to crash</source>
         <translation>Çok yüksek değerler uygulamanın çökmesine neden olabilir.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1088"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1090"/>
         <source>Experimental feature</source>
         <translation>Deneysel özellik</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1089"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1091"/>
         <source>WARNING:
 Any setting other than “No rounding” may cause rendering errors in the project, depending on:
 
@@ -10788,188 +10798,188 @@ Kopyası şu adla saklandı:
 <context>
     <name>ProjectAutoNumConfigPage</name>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="567"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="580"/>
         <source>Management</source>
         <translation>Yönetim</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="499"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="512"/>
         <source>Auto Numbering</source>
         <translation>Otomatik Numaralandırma</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="572"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1246"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="585"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1259"/>
         <source>Conductors</source>
         <translation>İletkenler</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="587"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="600"/>
         <source>No.</source>
         <translation>No.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="587"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="600"/>
         <source>Name</source>
         <translation>İsim</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="587"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="600"/>
         <source>Sheet</source>
         <translation>Sayfa</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="587"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="600"/>
         <source>Element</source>
         <translation>Öğe</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="587"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="600"/>
         <source>Frozen</source>
         <translation>Sabitlenmiş</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="594"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="607"/>
         <source>Assign a free number…</source>
         <translation>Boş bir numara ata…</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="595"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="899"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="608"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="912"/>
         <source>Give the selected element a number nobody has: it keeps its numbering, only its number changes.</source>
         <translation>Seçili öğeye kimsenin sahip olmadığı bir numara ver: numaralandırmasını korur, yalnızca numarası değişir.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="603"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1248"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="616"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1261"/>
         <source>Elements</source>
         <translation>Öğeler</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="608"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1250"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="621"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1263"/>
         <source>Sheets</source>
         <translation>Sayfalar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="614"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="627"/>
         <source>Cables</source>
         <translation>Kablolar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="618"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="631"/>
         <source>Sheet Auto Numbering</source>
         <translation>Sayfa otomatik numaralandırma</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="621"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="634"/>
         <source>Import from another project...</source>
         <translation>Başka bir projeden içe aktar...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="623"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="636"/>
         <source>Reuse the automatic numbering saved in another project</source>
         <translation>Başka bir projede kaydedilmiş otomatik numaralandırmayı yeniden kullan</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="846"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="859"/>
         <source>frozen</source>
         <translation>sabitlenmiş</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="854"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="867"/>
         <source>— free —</source>
         <translation>— boş —</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="855"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="868"/>
         <source>no element has this number (deleted or renumbered)</source>
         <translation>bu numaraya sahip öğe yok (silinmiş veya yeniden numaralandırılmış)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="872"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="885"/>
         <source>No element follows this numbering</source>
         <translation>Bu numaralandırmayı izleyen öğe yok</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="873"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="886"/>
         <source>%n elements follow this numbering, %1 with a frozen name</source>
         <translation>
             <numerusform>Bu numaralandırmayı %n öğe izliyor, %1 tanesinin adı sabitlenmiş</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="875"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="888"/>
         <source>; %n numbers without an element</source>
         <translation>
             <numerusform>; öğesi olmayan %n numara</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="897"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="910"/>
         <source>This numbering has several numbers (or one number per sheet): one cannot be chosen by hand.</source>
         <translation>Bu numaralandırmanın birkaç numarası var (veya sayfa başına bir numara): numara elle seçilemez.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="914"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="927"/>
         <source>Assign a free number</source>
         <translation>Boş bir numara ata</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="920"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="933"/>
         <source>This element&apos;s name is frozen: unfreeze it first.</source>
         <translation>Bu öğenin adı sabitlenmiş: önce sabitlemeyi kaldırın.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="925"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="938"/>
         <source>No number is free.</source>
         <translation>Boş numara yok.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="930"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="943"/>
         <source>%1  →  %2</source>
         <translation>%1  →  %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="936"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="949"/>
         <source>Free number for element “%1” (%2):</source>
         <translation>“%1” öğesi için boş numara (%2):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="987"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1682"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1000"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1695"/>
         <source>Numbering name:</source>
         <translation>Numaralandırma adı:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1016"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1106"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1029"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1119"/>
         <source>Modify numbering</source>
         <translation>Numaralandırmayı değiştir</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1017"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1030"/>
         <source>%n elements follow this numbering and will change formula and name.</source>
         <translation>
             <numerusform>Bu numaralandırmayı %n öğe izliyor; bunların formülü ve adı değişecek.</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1038"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1091"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1704"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1755"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1051"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1104"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1717"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1768"/>
         <source>New numbering</source>
         <translation>Yeni numaralandırma</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1063"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1726"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1076"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1739"/>
         <source>Rename numbering</source>
         <translation>Numaralandırmayı yeniden adlandır</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1107"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1120"/>
         <source>The “%1” numbering cannot be modified: %n elements with a frozen name follow it.
 Unfreeze them first (see the list), or just rename the numbering.</source>
         <translation>
@@ -10978,27 +10988,27 @@ Unfreeze them first (see the list), or just rename the numbering.</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1421"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1434"/>
         <source>%n numberings followed by elements with a frozen name were not replaced.</source>
         <translation>
             <numerusform>Adı sabitlenmiş öğelerin izlediği %n numaralandırma değiştirilmedi.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1425"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1438"/>
         <source>%n elements changed formula.</source>
         <translation>
             <numerusform>%n öğenin formülü değişti.</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1442"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1784"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1455"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1797"/>
         <source>Delete numbering</source>
         <translation>Numaralandırmayı sil</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1443"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1456"/>
         <source>%n elements follow the “%1” numbering, so it cannot be deleted.
 Give them another numbering or a fixed name first.</source>
         <translation>
@@ -11007,31 +11017,31 @@ Give them another numbering or a fixed name first.</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1667"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1680"/>
         <source>No sheet names this numbering</source>
         <translation>Bu numaralandırmayı adlandıran sayfa yok</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1668"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1681"/>
         <source>%n sheets name this numbering</source>
         <translation>
             <numerusform>Bu numaralandırmayı %n sayfa adlandırıyor</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1671"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1684"/>
         <source>No sheet follows this numbering</source>
         <translation>Bu numaralandırmayı izleyen sayfa yok</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1672"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1685"/>
         <source>%n sheets follow this numbering</source>
         <translation>
             <numerusform>Bu numaralandırmayı %n sayfa izliyor</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1785"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1798"/>
         <source>%n sheets follow the “%1” numbering, so it cannot be deleted.
 Give them another numbering first.</source>
         <translation>
@@ -11040,7 +11050,7 @@ Give them another numbering first.</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1206"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1219"/>
         <source>Import numbering from a project</source>
         <translation>Numaralandırmayı bir projeden içe aktar</translation>
     </message>
@@ -11049,70 +11059,70 @@ Give them another numbering first.</source>
         <translation type="obsolete">QElectroTech Projesi (*.qet)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1215"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1222"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1228"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1235"/>
         <source>Import not possible</source>
         <translation>İçe aktarma mümkün değil</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1216"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1229"/>
         <source>Unable to open %1</source>
         <translation>%1 açılamıyor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1223"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1236"/>
         <source>%1 is not a valid QElectroTech project.</source>
         <translation>%1 geçerli bir QElectroTech projesi değil.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1232"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1314"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1245"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1327"/>
         <source>No numbering</source>
         <translation>Numaralandırma yok</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1233"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1315"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1246"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1328"/>
         <source>This project does not contain any automatic numbering.</source>
         <translation>Bu proje hiç otomatik numaralandırma içermiyor.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1254"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1267"/>
         <source>Numbering to import</source>
         <translation>İçe aktarılacak numaralandırma</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1257"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1270"/>
         <source>Numbering found in %1:</source>
         <translation>%1 içinde bulunan numaralandırma:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1295"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1308"/>
         <source>%1: %2 (already exists)</source>
         <translation>%1: %2 (zaten var)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1320"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1333"/>
         <source>Replace numbering with the same name</source>
         <translation>Aynı ada sahip numaralandırmayı değiştir</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1334"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1347"/>
         <source>Import numberings</source>
         <translation>Numaralandırmaları içe aktar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1415"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1428"/>
         <source>Import complete</source>
         <translation>İçe aktarma tamamlandı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1416"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1429"/>
         <source>%1 numbering(s) imported, %2 kept unchanged.</source>
         <translation>%1 numaralandırma içe aktarıldı, %2 tanesi değiştirilmeden bırakıldı.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1419"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1432"/>
         <source>%1 numbering(s) imported.</source>
         <translation>%1 numaralandırma içe aktarıldı.</translation>
     </message>
@@ -11154,176 +11164,188 @@ Give them another numbering first.</source>
         <translation>Genel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="234"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="239"/>
         <source>Project title :</source>
         <comment>label when configuring</comment>
         <translation>Proje başlığı :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="236"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="241"/>
         <source>This title is made available to all child sheets as %projecttitle.</source>
         <comment>informative label</comment>
         <translation>Bu başlık, bu projedeki tüm sayfalar için %projecttitle olarak belirlenecektir.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="238"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="243"/>
         <source>You may define below custom properties that will be made available to all sheets of the project (typically to use within title blocks).</source>
         <comment>informative label</comment>
         <translation>Bu projedeki (genellikle öğeler için) tüm sayfalar için mevcut olacak özel özellikleri aşağıda tanımlayabilirsiniz.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="247"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="252"/>
         <source>Time spent on this project:</source>
         <comment>label when configuring</comment>
         <translation>Bu projede geçirilen süre:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="249"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="254"/>
         <source>Track the time spent on this project (recorded locally in this file only)</source>
         <comment>checkbox label</comment>
         <translation>Bu projede geçirilen süreyi izle (yalnızca bu dosyaya yerel olarak kaydedilir)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="250"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="255"/>
         <source>Reset</source>
         <comment>button label</comment>
         <translation>Sıfırla</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="254"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="259"/>
         <source>Conductor crossings:</source>
         <comment>label when configuring</comment>
         <translation>İletken kesişmeleri:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="256"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="261"/>
         <source>No hop</source>
         <comment>wire crossings</comment>
         <translation>Atlama yok</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="258"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="263"/>
         <source>Hop on horizontal conductors</source>
         <comment>wire crossings</comment>
         <translation>Yatay iletkenlerde atlama</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="260"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="265"/>
         <source>Hop on vertical conductors</source>
         <comment>wire crossings</comment>
         <translation>Dikey iletkenlerde atlama</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="262"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="267"/>
         <source>Draws a small arc where two conductors cross without being connected. Only the drawing changes: no element is added and no conductor is cut.</source>
         <comment>tooltip</comment>
         <translation>Birbirine bağlı olmadan kesişen iki iletkenin kesiştiği yerde küçük bir yay çizer. Yalnızca çizim değişir: hiçbir öğe eklenmez ve hiçbir iletken kesilmez.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="267"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="272"/>
         <source>Keep the texts of rotated elements horizontal</source>
         <comment>checkbox label</comment>
         <translation>Döndürülmüş öğelerin metinlerini yatay tut</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="269"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="274"/>
         <source>Texts drawn in an element and the names of its terminals stay readable when the element is rotated: their frame turns with the element, not the text. Uncheck to make them turn with the element, as before.</source>
         <comment>tooltip</comment>
         <translation>Bir öğede çizilen metinler ve klemenslerinin adları, öğe döndürüldüğünde okunabilir kalır: öğeyle birlikte metin değil, çerçevesi döner. Eskisi gibi öğeyle birlikte dönmeleri için işareti kaldırın.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="277"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="279"/>
+        <source>Enable chained folio reports for report elements</source>
+        <comment>checkbox label</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="280"/>
+        <source>Automatically chains folio report elements with the same label in a forward/backward sequence.</source>
+        <comment>tooltip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="285"/>
         <source>Display of the terminal labelling</source>
         <comment>group box title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="279"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="287"/>
         <source>Show the label and the terminal number in one field</source>
         <comment>radio button label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="280"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="288"/>
         <source>A terminal&apos;s label (X1:1) is drawn as a whole, the way it has always been.</source>
         <comment>tooltip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="283"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="291"/>
         <source>Split the label and the terminal number</source>
         <comment>radio button label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="285"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="293"/>
         <source>The label (X1) is drawn in one field and the terminal number (1) in another, which a terminal symbol may place where it wants -- and hide when it must. A symbol without such a field shows the two, one under the other.</source>
         <comment>tooltip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="290"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="298"/>
         <source>Only the drawing changes: what is written in the element, the numbering, the sorting and the exports keep the whole label.</source>
         <comment>informative label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="296"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="304"/>
         <source>Conductors per terminal</source>
         <comment>group box title</comment>
         <translation>Klemens başına iletken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="297"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="305"/>
         <source>Use the application settings</source>
         <comment>checkbox label</comment>
         <translation>Uygulama ayarlarını kullan</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="298"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="306"/>
         <source>The settings in Configure QElectroTech &gt; General apply. Untick to give this project its own settings, saved in the project.</source>
         <comment>tooltip</comment>
         <translation>QElectroTech&apos;i yapılandır &gt; Genel bölümündeki ayarlar uygulanır. Bu projeye projede kaydedilen kendi ayarlarını vermek için işareti kaldırın.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="311"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="319"/>
         <source>Maximum conductors per terminal:</source>
         <comment>label when configuring</comment>
         <translation>Klemens başına en fazla iletken:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="314"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="322"/>
         <source>No limit</source>
         <comment>wires per terminal</comment>
         <translation>Sınır yok</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="315"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="323"/>
         <source>A new conductor that would take a terminal past this number is refused. Conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <comment>tooltip</comment>
         <translation>Bir klemensi bu sayının ötesine taşıyacak yeni bir iletken reddedilir. Zaten çizilmiş iletkenler değiştirilmez. 4, vidanın her iki yanında birer tane olmak üzere iki ikiz yüksük demektir.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="319"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="327"/>
         <source>Only one conductor per sheet reference</source>
         <comment>checkbox label</comment>
         <translation>Sayfa referansı başına yalnızca bir iletken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="320"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="328"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <comment>tooltip</comment>
         <translation>Bir sayfa referansı sanal bir noktadır: yalnızca bir iletken alır, diğer sayfada devam eden iletkeni.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="323"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="331"/>
         <source>These rules are turned off for every project (Configure QElectroTech &gt; General).</source>
         <comment>informative label</comment>
         <translation>Bu kurallar tüm projeler için kapalı (QElectroTech&apos;i yapılandır &gt; Genel).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="397"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="451"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="408"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="463"/>
         <source>%1 h %2 min</source>
         <comment>hours and minutes of time spent on a project</comment>
         <translation>%1 sa %2 dk</translation>
@@ -15312,72 +15334,72 @@ the conditions are not valid</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1237"/>
+        <location filename="../sources/qetproject.cpp" line="1241"/>
         <source>Project « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>Proje « %1 : %2»</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1244"/>
+        <location filename="../sources/qetproject.cpp" line="1248"/>
         <source>Project %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Proje %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1251"/>
+        <location filename="../sources/qetproject.cpp" line="1255"/>
         <source>Untitled project</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Başlıksız proje</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1260"/>
+        <location filename="../sources/qetproject.cpp" line="1264"/>
         <source>%1 [read-only]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [salt okunur]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1270"/>
+        <location filename="../sources/qetproject.cpp" line="1274"/>
         <source>%1 [modified]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [değiştirildi]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1620"/>
+        <location filename="../sources/qetproject.cpp" line="1624"/>
         <source>Renumber elements</source>
         <translation>Öğeleri yeniden numaralandır</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1621"/>
+        <location filename="../sources/qetproject.cpp" line="1625"/>
         <source>Renumber elements (%1)</source>
         <translation>Öğeleri yeniden numaralandır (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="2812"/>
+        <location filename="../sources/qetproject.cpp" line="2817"/>
         <source>QElectroTech project (*.qet *.qetz)</source>
         <translation>QElectroTech projesi (*.qet *.qetz)</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="2954"/>
+        <location filename="../sources/qetproject.cpp" line="2959"/>
         <source>%1 was opened read-only because someone else has it open. Use Save As to keep your changes in another file.</source>
         <translation>%1, başka biri tarafından açık olduğu için salt okunur açıldı. Değişikliklerinizi başka bir dosyada saklamak için Farklı Kaydet&apos;i kullanın.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="2959"/>
+        <location filename="../sources/qetproject.cpp" line="2964"/>
         <source>Cannot save %1: %2</source>
         <translation>%1 kaydedilemiyor: %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="2979"/>
+        <location filename="../sources/qetproject.cpp" line="2984"/>
         <source>someone else changed the file on disk at %1 since it was opened, and saving would overwrite that. Save to another name, or set QET_OVERWRITE_CHANGED=1 to overwrite it.</source>
         <translation>dosya açıldığından beri başka biri onu diskte değiştirdi (%1) ve kaydetmek bu değişikliğin üzerine yazar. Başka bir adla kaydedin veya üzerine yazmak için QET_OVERWRITE_CHANGED=1 ayarlayın.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3172"/>
+        <location filename="../sources/qetproject.cpp" line="3177"/>
         <source>Modified contact system</source>
         <translation>Değiştirilmiş kontak sistemi</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3173"/>
+        <location filename="../sources/qetproject.cpp" line="3178"/>
         <source>The new element defines slave contact groups.
 Existing slave elements will not be automatically assigned. You will need to link the slaves manually and assign the contact groups.
 
@@ -15388,19 +15410,19 @@ Mevcut bağımlı öğeler otomatik olarak atanmayacak. Bağımlıları elle ba�
 Devam etmek istiyor musunuz?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3262"/>
+        <location filename="../sources/qetproject.cpp" line="3267"/>
         <source>An error occurred during the template integration.</source>
         <comment>error message</comment>
         <translation>Şablon entegre edilirken bir hata oluştu.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3529"/>
+        <location filename="../sources/qetproject.cpp" line="3534"/>
         <source>Warning</source>
         <comment>message box title</comment>
         <translation>Uyarılar</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3531"/>
+        <location filename="../sources/qetproject.cpp" line="3536"/>
         <source>This document appears to have been saved with version %1
  which is later than your version ! 
 You are currently using QElectroTech in version %2</source>
@@ -15408,7 +15430,7 @@ You are currently using QElectroTech in version %2</source>
 Şu anda QElectroTech sürüm %2 kullanıyorsunuz</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3535"/>
+        <location filename="../sources/qetproject.cpp" line="3540"/>
         <source>.
  It is then possible that the opening of all or part of this document fails.
 What do you wish to do ?</source>
@@ -15417,32 +15439,32 @@ What do you wish to do ?</source>
 Ne yapmak istersiniz?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3556"/>
+        <location filename="../sources/qetproject.cpp" line="3561"/>
         <source>Warning </source>
         <comment>message box title</comment>
         <translation>Uyarı </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3557"/>
+        <location filename="../sources/qetproject.cpp" line="3562"/>
         <source>The project you are trying to open is partially compatible with your version %1 of QElectroTech.
 </source>
         <translation>Açmaya çalıştığınız proje, QElectroTech sürüm %1 ile kısmen uyumludur.
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3560"/>
+        <location filename="../sources/qetproject.cpp" line="3565"/>
         <source>In order to make it fully compatible please open this same project with version 0.8, or 0.80 of QElectroTech and save the project and open it again with this version.
 What do you wish to do ?</source>
         <translation>Tamamen uyumlu hale getirmek için lütfen bu projeyi QElectroTech sürüm 0.8 veya 0.80 ile açın, projeyi kaydedin ve bu sürümle tekrar açın.
 Ne yapmak istersiniz?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3754"/>
+        <location filename="../sources/qetproject.cpp" line="3764"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creation of sheets&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Mevcut Proje Açılıyor&lt;/b&gt;&lt;br/&gt;Sayfa Oluşturma&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3881"/>
+        <location filename="../sources/qetproject.cpp" line="3891"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Setting up cross references&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Devam eden projeyi açıyor...&lt;/b&gt;&lt;br/&gt;Çapraz referansları ayarlama&lt;/p&gt;</translation>
     </message>
@@ -15900,32 +15922,32 @@ bu klasörün çevrilmiş adı okunamadı, bu nedenle yerine klasör adı göste
         <translation>yapıştır %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="347"/>
+        <location filename="../sources/diagramcommands.cpp" line="350"/>
         <source>cut %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
         <translation>kes %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="460"/>
+        <location filename="../sources/diagramcommands.cpp" line="463"/>
         <location filename="../sources/undocommand/movegraphicsitemcommand.cpp" line="54"/>
         <source>move %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>taşı %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="482"/>
+        <location filename="../sources/diagramcommands.cpp" line="485"/>
         <source>modify text</source>
         <comment>undo caption</comment>
         <translation>metni değiştir</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="534"/>
+        <location filename="../sources/diagramcommands.cpp" line="537"/>
         <source>modify a conductor</source>
         <comment>undo caption</comment>
         <translation>Bir iletkeni değiştir</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="604"/>
+        <location filename="../sources/diagramcommands.cpp" line="607"/>
         <source>Reset %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>Sıfırla %1</translation>
@@ -15937,7 +15959,7 @@ bu klasörün çevrilmiş adı okunamadı, bu nedenle yerine klasör adı göste
         <translation>Anteti değiştir</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="655"/>
+        <location filename="../sources/diagramcommands.cpp" line="658"/>
         <source>change the sheet size</source>
         <comment>undo caption</comment>
         <translation>sayfa boyutlarını değiştir</translation>
@@ -15979,7 +16001,7 @@ bu klasörün çevrilmiş adı okunamadı, bu nedenle yerine klasör adı göste
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="292"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="544"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="557"/>
         <source>Title</source>
         <translation>Başlık</translation>
     </message>
@@ -16648,7 +16670,7 @@ Değiştirmek ister misiniz?</translation>
         <translation>Birden çok öğenin bilgilerini değiştir</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="132"/>
+        <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="156"/>
         <source>Change the information of the element</source>
         <translation>Öğenin bilgilerini değiştir</translation>
     </message>
@@ -16814,7 +16836,7 @@ Değiştirmek ister misiniz?</translation>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="209"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1456"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1734"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3138"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3145"/>
         <source>Type</source>
         <translation>Tip</translation>
     </message>
@@ -16822,7 +16844,7 @@ Değiştirmek ister misiniz?</translation>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="210"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1457"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1735"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3139"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3146"/>
         <source>Address</source>
         <translation>Adres</translation>
     </message>
@@ -16831,7 +16853,7 @@ Değiştirmek ister misiniz?</translation>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="212"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1459"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1737"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3141"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3148"/>
         <source>Annotation</source>
         <translation>Açıklama</translation>
     </message>
@@ -16840,7 +16862,7 @@ Değiştirmek ister misiniz?</translation>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="213"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1460"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1738"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3142"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3149"/>
         <source>Cross-reference</source>
         <translation>Çapraz referans</translation>
     </message>
@@ -16850,7 +16872,7 @@ Değiştirmek ister misiniz?</translation>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="211"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1458"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1736"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3140"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3147"/>
         <source>Function</source>
         <translation>Fonksiyon</translation>
     </message>
@@ -17887,7 +17909,7 @@ Etkinleştirmek için: QElectroTech&apos;i yapılandır &gt; Genel &gt; Projeler
         <translation>Öğe adının sabitlemesini kaldır</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="544"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="557"/>
         <source>Sheet</source>
         <translation>Sayfa</translation>
     </message>
