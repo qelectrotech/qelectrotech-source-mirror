@@ -180,7 +180,7 @@ add_library(
     ${QET_DIR}/ico/icon-themes.qrc
     "${GENERATED_QETVERSION_CPP}"
 )
-add_dependencies(${PROJECT_NAME} GenerateVersionFile)
+add_dependencies(${PROJECT_NAME}_objects GenerateVersionFile)
 # The definitions above are set for this whole directory; a test target
 # lives in tests/ and gets them from here, through the library.
 get_directory_property(QET_DIRECTORY_DEFINITIONS COMPILE_DEFINITIONS)
