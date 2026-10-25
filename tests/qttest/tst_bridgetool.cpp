@@ -761,6 +761,14 @@ private slots:
 					all << c;
 				}
 			}
+				//And over a function separation: the voltage crosses it
+				//the way the wires themselves let it
+			const auto separated = all.at(i)->functionSeparatedConductors();
+			for (Conductor *c : separated) {
+				if (c && !all.contains(c)) {
+					all << c;
+				}
+			}
 		}
 		QVERIFY2(!all.isEmpty(), "there are wires wired to it");
 		QHash<Conductor *, QString> functions_before;

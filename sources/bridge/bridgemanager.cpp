@@ -522,6 +522,15 @@ void BridgeManager::writeInformation(QETProject *project,
 				for (Conductor *other : related) {
 					conductors << other;
 				}
+					//And over a function separation, the way the wires
+					//themselves let the voltage cross it: the voltage
+					//describes the node and not one side of it -- so an
+					//edit reaches every terminal and every pin of the net
+					//just as it does when made by hand on one wire
+				const auto separated = conductor->functionSeparatedConductors();
+				for (Conductor *other : separated) {
+					conductors << other;
+				}
 			}
 		}
 	}
@@ -626,6 +635,14 @@ QList<Conductor *> BridgeManager::conductorsOverBridges(QETProject *project,
 					reached << conductor;
 					const auto related = conductor->relatedPotentialConductors();
 					for (Conductor *other : related) {
+						if (other && !reached.contains(other)) {
+							reached << other;
+						}
+					}
+						//And over a function separation: the voltage
+						//crosses it the way the wires themselves let it
+					const auto separated = conductor->functionSeparatedConductors();
+					for (Conductor *other : separated) {
 						if (other && !reached.contains(other)) {
 							reached << other;
 						}
