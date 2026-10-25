@@ -49,6 +49,11 @@ QET_GITURL="https://github.com/qelectrotech/qelectrotech-source-mirror.git"
 # Branch or tag to package, "master" for the current development code.
 QET_VERSION=master
 
+# Build an existing QET checkout instead of cloning QET_GITURL in
+# $BUILDING_DIR (used by the CI, .github/workflows/linux-appimage.yml).
+# The checkout is built as it is: no reset, no pull.
+QET_SOURCE_DIR="${QET_SOURCE_DIR:-}"
+
 # Build with KDE Frameworks: ECM, KCoreAddons and KWidgetsAddons are built
 # statically against the bundled Qt by 02-build-qet.sh, in $KF_PREFIX.
 # 0 = use QET's sources/ui/nokde replacements.

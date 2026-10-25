@@ -43,7 +43,11 @@ mkdir -p "$DOWNLOAD_DIR" "$BUILDING_DIR"
 echo -e "---------- Update Linux Host\n"
 
 sudo apt-get update
-sudo apt-get -y dist-upgrade
+
+# Not on CI runners: they are recreated for every run.
+if [[ "$CI" != "true" ]] ; then
+    sudo apt-get -y dist-upgrade
+fi
 
 #################################################################################################
 
@@ -111,12 +115,20 @@ else
 
     echo -e "---------- Install Qt $QT_VERSION with aqtinstall\n"
 
-    python3 -m venv "$WORK_DIR/aqt-venv"
-    "$WORK_DIR/aqt-venv/bin/pip" install --upgrade aqtinstall
+    if [[ -x "$QT_ROOT/$QT_VERSION/gcc_64/bin/qmake" ]] ; then
 
-    "$WORK_DIR/aqt-venv/bin/aqt" install-qt linux desktop "$QT_VERSION" "$QT_ARCH" \
-         -m $QT_AQT_MODULES \
-         -O "$QT_ROOT"
+        echo "Qt $QT_VERSION already installed in $QT_ROOT (cache), skipped."
+
+    else
+
+        python3 -m venv "$WORK_DIR/aqt-venv"
+        "$WORK_DIR/aqt-venv/bin/pip" install --upgrade aqtinstall
+
+        "$WORK_DIR/aqt-venv/bin/aqt" install-qt linux desktop "$QT_VERSION" "$QT_ARCH" \
+             -m $QT_AQT_MODULES \
+             -O "$QT_ROOT"
+
+    fi
 
 fi
 

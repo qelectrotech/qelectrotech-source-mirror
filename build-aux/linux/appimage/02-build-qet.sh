@@ -35,29 +35,39 @@ ChecksCPUCores
 HostAdjustments
 
 ORIG_WD="`pwd`"
-QET_SRC="$BUILDING_DIR/qelectrotech-$QET_VERSION"
-
 #################################################################################################
 # Checkout QElectroTech
 
-if [[ -d "$QET_SRC/.git" ]] ; then
+if [[ -n "$QET_SOURCE_DIR" ]] ; then
 
-    echo "---------- Updating existing $QET_SRC"
-
+    QET_SRC="$(readlink -f "$QET_SOURCE_DIR")"
+    echo "---------- Using the QElectroTech checkout $QET_SRC"
     cd "$QET_SRC"
-    git reset --hard
-    git fetch origin
-    git checkout "$QET_VERSION"
-    git pull --ff-only || true
 
 else
 
-    echo "---------- Downloading QElectroTech $QET_VERSION"
+    QET_SRC="$BUILDING_DIR/qelectrotech-$QET_VERSION"
 
-    mkdir -p "$BUILDING_DIR"
-    git clone --progress "$QET_GITURL" "$QET_SRC"
-    cd "$QET_SRC"
-    git checkout "$QET_VERSION"
+    if [[ -d "$QET_SRC/.git" ]] ; then
+
+        echo "---------- Updating existing $QET_SRC"
+
+        cd "$QET_SRC"
+        git reset --hard
+        git fetch origin
+        git checkout "$QET_VERSION"
+        git pull --ff-only || true
+
+    else
+
+        echo "---------- Downloading QElectroTech $QET_VERSION"
+
+        mkdir -p "$BUILDING_DIR"
+        git clone --progress "$QET_GITURL" "$QET_SRC"
+        cd "$QET_SRC"
+        git checkout "$QET_VERSION"
+
+    fi
 
 fi
 
@@ -72,8 +82,8 @@ TAGNAME=$(grep "return QVersionNumber{" sources/qetversion.cpp | head -n 1 \
 REVISION=$(( $(git rev-list HEAD --count) + 473 ))
 GITCOMMIT=$(git rev-parse --short HEAD)
 
-echo "$TAGNAME-r$REVISION" > "$ORIG_WD/data/RELEASEID.txt"
-echo "$GITCOMMIT"          > "$ORIG_WD/data/GITCOMMIT.txt"
+echo "$TAGNAME-r$REVISION" > "$WORK_DIR/RELEASEID.txt"
+echo "$GITCOMMIT"          > "$WORK_DIR/GITCOMMIT.txt"
 
 echo "Release ID     : $TAGNAME-r$REVISION ($GITCOMMIT)"
 

@@ -130,6 +130,27 @@ HOW IT WORKS
   --common-tbt-dir and --lang-dir.
 
 
+CONTINUOUS INTEGRATION
+----------------------
+
+.github/workflows/linux-appimage.yml runs these scripts on an ubuntu-24.04
+GitHub runner. It is called by windows-msi.yml, so it only runs when the
+Windows CI/CD runs, in parallel with the MSI build:
+
+    Windows Build -> windows-msi.yml -> build-msi       \
+                                     -> build-appimage   -> deploy-pages
+
+- QET_SOURCE_DIR points the scripts to the workflow's checkout, built as
+  it is, and CI=true skips the dist-upgrade.
+- Qt ($QT_ROOT) and the KDE Frameworks ($KF_PREFIX) are kept in the
+  GitHub Actions cache, keyed by QT_VERSION and KF_VERSION: only QET is
+  rebuilt on each run.
+- The AppImage and its SHA256 file replace the previous ones on the
+  nightly-qt6 release, and deploy-pages adds a Linux section to
+  https://qelectrotech.github.io/qelectrotech-source-mirror/
+- An AppImage failure never blocks the Windows part of the page.
+
+
 COMPATIBILITY
 -------------
 

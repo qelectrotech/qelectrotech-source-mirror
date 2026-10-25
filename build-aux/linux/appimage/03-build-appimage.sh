@@ -36,7 +36,15 @@ ChecksCPUCores
 HostAdjustments
 
 ORIG_WD="`pwd`"
-QET_RELEASEID=`cat $ORIG_WD/data/RELEASEID.txt`
+
+# Written by 02-build-qet.sh in the work directory, not in this script
+# directory, so that moving or replacing the scripts does not lose it.
+if [[ ! -f "$WORK_DIR/RELEASEID.txt" ]] ; then
+    echo "$WORK_DIR/RELEASEID.txt not found : run 02-build-qet.sh first."
+    exit 1
+fi
+
+QET_RELEASEID=$(cat "$WORK_DIR/RELEASEID.txt")
 
 if [[ ! -x "$APP_IMG_DIR/usr/bin/qelectrotech" ]] ; then
     echo "QElectroTech is not installed in $APP_IMG_DIR : run 02-build-qet.sh first."
