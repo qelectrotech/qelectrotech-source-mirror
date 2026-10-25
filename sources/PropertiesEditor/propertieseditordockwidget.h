@@ -48,6 +48,8 @@ class PropertiesEditorDockWidget : public QDockWidget
 	private:
 		void rememberHeight();
 		void restoreHeight();
+		void updateSizeConstraint();
+		bool isTabbed() const;
 
 		Ui::PropertiesEditorDockWidget *ui;
 		QList<QPointer<QDockWidget>> m_area_docks;

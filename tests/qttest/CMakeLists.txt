@@ -121,6 +121,15 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/strip_labels.qet)
   set_tests_properties(tst_striplabelintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # The pointer: a four-way arrow over what a drag moves; with the
+  # crosshair, drawn on its grid point in place of the system's.
+  add_test(NAME tst_movepointerintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_move_pointer_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/move_pointer_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_movepointerintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # A linked folio report shows a pointing hand and jumps to its other
   # end on a double click, on the arrow and on its label text; the end
   # jumped to is highlighted for a moment.
@@ -139,6 +148,33 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --source ${CMAKE_CURRENT_SOURCE_DIR}/symbol_text_placement_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
   set_tests_properties(tst_symboltextplacementintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # The outline and the click area of a fixed-width text are the lines
+  # written, not the whole box.
+  add_test(NAME tst_textoutlineintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_text_outline_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/text_outline_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_textoutlineintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # A group of symbol texts keeps the point it is aligned on when a text
+  # grows: the right edge when aligned right, the middle when centred.
+  add_test(NAME tst_textgroupanchorintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_text_group_anchor_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/text_group_anchor_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_textgroupanchorintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # Width and height of a symbol's text, each fixed or not: a fixed
+  # height cuts off the lines that do not fit; saved and undone.
+  add_test(NAME tst_textfixedsizeintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_text_fixed_size_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/text_fixed_size_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_textfixedsizeintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
@@ -354,6 +390,10 @@ qet_add_app_test(tst_selectionpanelheight tst_selectionpanelheight.cpp)
 # The Auto numbering panel's Increment spin boxes get the width their style
 # asks for; a fixed 55 px cut the number off on Windows (#1566).
 qet_add_app_test(tst_autonumincrementwidth tst_autonumincrementwidth.cpp)
+
+# View > Snap to the grid switches every snap off and on, as Ctrl held does;
+# View > Grid step sets a fine, medium or coarse step.
+qet_add_app_test(tst_gridsnap tst_gridsnap.cpp)
 
 # Opening a project before the elements panel's first reload() left its tree
 # item detached, and selecting the item's first child crashed in QTreeModel
@@ -1230,14 +1270,16 @@ target_compile_definitions(tst_movedterminals PRIVATE
 # A symbol's kind information (NO/NC/SW/power) is queryable from the
 # project database once it is placed, not only from a live Element*.
 # QETZ-DB-FIRST 2d-2a.
-add_executable(
-  tst_elementkindinformation
-  tst_elementkindinformation.cpp)
-add_test(NAME tst_elementkindinformation COMMAND tst_elementkindinformation)
-add_dependencies(tst_elementkindinformation qelectrotech)
-target_link_libraries(tst_elementkindinformation PRIVATE Qt::Test Qt::Xml)
-target_compile_definitions(tst_elementkindinformation PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_elementkindinformation
+    tst_elementkindinformation.cpp)
+  add_test(NAME tst_elementkindinformation COMMAND tst_elementkindinformation)
+  add_dependencies(tst_elementkindinformation qelectrotech)
+  target_link_libraries(tst_elementkindinformation PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_elementkindinformation PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+endif()
 
 # Symbols sharing one uuid on a folio keep their wires through save and
 # reopen (#1408): nets of examples/Habitat-Schemas_developpes.qet.
