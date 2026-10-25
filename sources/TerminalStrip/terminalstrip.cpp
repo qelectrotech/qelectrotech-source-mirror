@@ -1023,8 +1023,53 @@ void TerminalStrip::setAutomaticBridges(const QList<DrawingBridge> &bridges)
 		}
 	}
 
+		/*
+			Which groove each bar sits in is worked out here, from the way
+			the bars lie across the terminals right now -- and not from the
+			drawing, where the order of the strip was whatever it happened
+			to be when the line was drawn. Two bars lying across the same
+			terminals run side by side, and each takes the first groove no
+			bar beside it already sits in.
+		*/
+	struct Span
+	{
+		int first = -1;
+		int last = -1;
+		int track = 1;
+	};
+	auto span_of = [this](const QVector<QSharedPointer<RealTerminal>> &real_terminals)
+	{
+		Span span;
+		for (const auto &real_t : real_terminals) {
+			const auto physical = real_t ? real_t->physicalTerminal() : QSharedPointer<PhysicalTerminal>();
+			if (!physical) {
+				continue;
+			}
+			const int pos = physical->pos();
+			span.first = (span.first < 0) ? pos : qMin(span.first, pos);
+			span.last = (span.last < 0) ? pos : qMax(span.last, pos);
+		}
+		return span;
+	};
+
+	QList<Span> placed;
+	for (const auto &bridge : std::as_const(m_bridge)) {
+		if (bridge && !bridge->automatic()) {
+			Span span = span_of(bridge->realTerminals());
+			span.track = bridge->track();
+			placed << span;
+		}
+	}
+
+	QList<DrawingBridge> ordered = bridges;
+	std::sort(ordered.begin(), ordered.end(),
+			  [&span_of](const DrawingBridge &a, const DrawingBridge &b)
+	{
+		return span_of(a.real_terminals).first < span_of(b.real_terminals).first;
+	});
+
 		//What is drawn comes
-	for (const DrawingBridge &wanted : bridges)
+	for (const DrawingBridge &wanted : ordered)
 	{
 		QSharedPointer<TerminalStripBridge> bridge;
 		for (const auto &candidate : std::as_const(m_bridge)) {
@@ -1042,9 +1087,31 @@ void TerminalStrip::setAutomaticBridges(const QList<DrawingBridge> &bridges)
 		}
 
 		bridge->setColor(wanted.color);
-		bridge->setTrack(wanted.track);
 		bridge->removeTerminals(bridge->realTerminals());
 		bridge->addTerminals(wanted.real_terminals);
+
+			//The groove it sits in: the first no bar beside it takes
+		const Span span = span_of(wanted.real_terminals);
+		int track = 1;
+		for (; track <= 4 ; ++track) {
+			bool taken = false;
+			for (const Span &other : std::as_const(placed)) {
+				if (other.track == track
+					&& !(other.last < span.first || other.first > span.last)) {
+					taken = true;
+					break;
+				}
+			}
+			if (!taken) {
+				break;
+			}
+		}
+		bridge->setTrack(qBound(1, track, 4));
+		{
+			Span span_ = span;
+			span_.track = bridge->track();
+			placed << span_;
+		}
 	}
 
 	emit bridgeChanged();
