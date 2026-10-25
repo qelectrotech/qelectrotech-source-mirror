@@ -6024,8 +6024,17 @@ void projectDataBase::setNumbering(const Numbering &numbering)
 */
 projectDataBase::Numbering projectDataBase::numbering() const
 {
+	return numberingOf(m_data_base);
+}
+
+/**
+	@brief projectDataBase::numberingOf
+	@return the numbering the tables of @p db hold
+*/
+projectDataBase::Numbering projectDataBase::numberingOf(const QSqlDatabase &db)
+{
 	Numbering numbering;
-	QSqlQuery query(m_data_base);
+	QSqlQuery query(db);
 	query.exec(QStringLiteral("SELECT kind, title, uuid FROM numbering_scheme"));
 	QHash<std::pair<QString, QString>, int> index;
 	while (query.next()) {

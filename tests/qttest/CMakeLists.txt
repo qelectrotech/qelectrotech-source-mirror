@@ -1360,6 +1360,19 @@ if(QET_HAS_SCRIPTING)
     "QET_TITLEBLOCKS_DIR=\"${QET_DIR}/titleblocks\"")
 endif()
 
+# A project written back from its database alone saves as the project does
+# (projectDataBase::toDocument()). QET-SQL-FORMAT S3z1.
+add_executable(
+  tst_databasewriter
+  tst_databasewriter.cpp)
+add_test(NAME tst_databasewriter COMMAND tst_databasewriter)
+add_dependencies(tst_databasewriter qelectrotech)
+target_link_libraries(tst_databasewriter PRIVATE Qt::Test)
+target_compile_definitions(tst_databasewriter PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
 # What a symbol, a folio or a cable saves that no other table holds is in the
 # project database (element_value, folio_value, cable_value). QET-SQL-FORMAT S3n.
 if(QET_HAS_SCRIPTING)

@@ -404,6 +404,10 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool exportInfo(const QString &output);
 		Q_INVOKABLE bool setTitleBlock(const QString &output, const QStringList &assignments);
 		Q_INVOKABLE bool save(const QString &output);
+			/// Write @p output from the project database alone, read back
+			/// from a copy of it (QET-SQL-FORMAT S3z1): a test of whether
+			/// the database holds the whole project
+		Q_INVOKABLE bool saveFromDatabase(const QString &output);
 
 		// -- edit geometry, through the real undo commands --
 		Q_INVOKABLE QString addElement(int folioIndex, const QString &locationPath, double x, double y);

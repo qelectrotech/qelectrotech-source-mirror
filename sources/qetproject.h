@@ -474,8 +474,11 @@ class QETProject : public QObject
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
 		void storeSettings();
+	public:
+			/// Also what projectDataBase::toDocument() writes the numbering with
 		static void writeNumberingXml(const projectDataBase::Numbering &numbering,
 									  QDomElement &xml_element);
+	private:
 		void writeUsageXml(QDomElement &);
 		void writeWireHopsXml(QDomElement &);
 		void writeOriginXml(QDomElement&);

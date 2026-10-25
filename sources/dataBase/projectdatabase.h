@@ -310,6 +310,13 @@ class projectDataBase : public QObject
 		};
 		void setNumbering(const Numbering &numbering);
 		Numbering numbering() const;
+		static Numbering numberingOf(const QSqlDatabase &db);
+			/// The project @p db holds, written from its tables alone
+			/// (projectdatabasewriter.cpp)
+		static QDomDocument toDocument(const QSqlDatabase &db);
+		static bool writeDocument(const QString &database_file, const QString &project_file,
+								  QString *error = nullptr);
+		bool writeProjectFromDatabase(const QString &project_file, QString *error = nullptr);
 		QHash<QString, NumerotationContext> numberingSchemes(const QString &kind) const;
 		bool hasNumberingScheme(const QString &kind, const QString &title) const;
 		NumerotationContext numberingScheme(const QString &kind, const QString &title) const;
