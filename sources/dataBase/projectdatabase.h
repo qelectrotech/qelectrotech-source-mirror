@@ -70,6 +70,9 @@ class projectDataBase : public QObject
 		virtual ~projectDataBase() override;
 
 		void updateDB();
+			//updateDB() without dataBaseUpdated(): the tables brought up
+			//to date for a reader that shows nothing (a commit, a save)
+		void refresh();
 			/**
 				updateDB() for a project just read from @p document: the
 				diagram, element, terminal and conductor tables are filled
@@ -461,11 +464,25 @@ class projectDataBase : public QObject
 							QHash<QString, QString> &stored, const QHash<QString, QString> &now,
 							const QHash<QString, int> *order = nullptr);
 		void populateElementTable();
+		void insertFolioElementRows(Diagram *diagram);
 		void populateElementInfoTable();
+		void insertElementInfoRow(const QString &uuid);
+		bool sharedElementUuids() const;
+		void folioChanged(const QUuid &folio);
+		void folioChanged(Diagram *folio);
+		void elementFoliosChanged(Element *element);
+		QUuid rowFolio(const QString &table, const QUuid &uuid);
+		void refreshChangedFolios();
+		void putRowsInFolioOrder();
+		QHash<QString, std::pair<qint64, qint64>> folioRowRanges(const QUuid &folio);
+		void refreshFolioTexts();
+		bool placeFolioRows(const QUuid &folio, const QHash<QString, std::pair<qint64, qint64>> &ranges);
+		QStringList rebuildMismatches();
 		void populateElementInfoTableFromFolios();
 		void populateSpareTerminalTable();
 		void populateDiagramInfoTable();
 		void populateConductorTable();
+		void insertFolioConductorRows(Diagram *diagram);
 		void populateLinkTable();
 		void flushLinks();
 		void insertLinkRows(QSqlQuery &insert, Element *element, const std::function<bool(const QUuid &)> &waiting,
@@ -507,6 +524,21 @@ class projectDataBase : public QObject
 			//updateDB(). Callers reach the database from outside only through
 			//newQuery(), and every such call site reads.
 		bool m_content_changed = true;
+			//What changed since the last update, when it is known: the
+			//folios whose rows are rebuilt (refreshChangedFolios()), or
+			//all of them. A change of anything else (a folio's place)
+			//only sets m_content_changed: the rows are put back in folio
+			//order.
+		QSet<QUuid> m_changed_folios;
+		bool m_rebuild_all = true;
+			//The folio-by-folio tables are in folio order with spaced
+			//rowids (putRowsInFolioOrder())
+		bool m_rows_in_folio_order = false;
+			//Per table, the last rowid of the rows in that order: the rows
+			//after it were written since
+		QHash<QString, qint64> m_ordered_rows;
+			//A folio was added, removed or moved since the last update
+		bool m_folio_places_changed = false;
 		QSqlDatabase m_data_base;
 		QSqlQuery m_insert_elements_query,
 				  m_insert_element_info_query,
@@ -623,7 +655,9 @@ class projectDataBase : public QObject
 		void dropKeptRows();
 		void keepRemovedFolioRows(const QString &folio);
 		void restoreRemovedFolioRows(Diagram *folio);
-		bool m_changed_before_folio = false, m_blocked_before_folio = false;
+		bool m_changed_before_folio = false, m_blocked_before_folio = false,
+			 m_rebuild_all_before_folio = false;
+		QSet<QUuid> m_changed_folios_before_folio;
 		QHash<QUuid, DiagramContext> m_prefilled_elements;
 		QHash<QUuid, DiagramContext> m_prefilled_kinds;
 		QHash<QUuid, ElementPlacement> m_prefilled_placements;

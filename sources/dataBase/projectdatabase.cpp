@@ -61,6 +61,7 @@
 #include <QRegularExpression>
 #include <QSqlDriver>
 #include <QSqlError>
+#include <QSqlRecord>
 #include <optional>
 
 
@@ -85,7 +86,10 @@ projectDataBase::projectDataBase(QETProject *project, QObject *parent) :
 	});
 	connect(m_project, &QETProject::projectDiagramsOrderChanged, [this]()
 	{
+			//Only the folios' places: the rows are put in the new order
 		m_content_changed = true;
+		m_rows_in_folio_order = false;
+		m_folio_places_changed = true;
 		updateFolioPositions();
 		emit dataBaseUpdated();
 	});
@@ -100,6 +104,8 @@ projectDataBase::~projectDataBase()
 	m_data_base.close();
 }
 
+static ElementData::Types allElementTypes();
+
 /**
 	@brief projectDataBase::updateDB
 	Up to date the content of the data base.
@@ -113,11 +119,42 @@ void projectDataBase::updateDB()
 	if (m_update_blocked) {
 		return;
 	}
+	refresh();
+		//Emitted even when nothing changed: callers and models rely on it
+		//to refresh, and what they read back is unchanged either way.
+	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::refresh
+	Bring the tables up to date: write the queued rows, and rebuild the
+	rows of the folios that changed (refreshChangedFolios()), or of every
+	folio when what changed is not known to be one folio's.
+
+	QET_CHECK_DB_REBUILD=1 rebuilds every folio after each such update
+	and logs every table the full rebuild gives otherwise
+	(rebuildMismatches()): a test and debugging aid.
+*/
+void projectDataBase::refresh()
+{
+	if (m_update_blocked) {
+		return;
+	}
+	if (m_content_changed && !m_rebuild_all && !sharedElementUuids())
+	{
+		refreshChangedFolios();
+		if (qEnvironmentVariableIntValue("QET_CHECK_DB_REBUILD") == 1) {
+			const QStringList mismatches = rebuildMismatches();
+			for (const QString &mismatch : mismatches)
+				qWarning().noquote() << "projectDataBase: a full rebuild changes" << mismatch;
+			qInfo().noquote() << "projectDataBase: update checked against a full rebuild,"
+							  << mismatches.size() << "tables differ";
+		}
+		return;
+	}
 
 		//Nothing in the project has changed since the last rebuild, so
 		//repopulating would insert exactly the rows that are already there.
-		//The signal is still emitted : callers and models rely on it to
-		//refresh, and what they read back is unchanged either way.
 	if (!m_content_changed)
 	{
 		flushDrawingItems();
@@ -128,7 +165,6 @@ void projectDataBase::updateDB()
 		flushFolioValues();
 		flushCables();
 		flushConductorProperties();
-		emit dataBaseUpdated();
 		return;
 	}
 
@@ -147,8 +183,488 @@ void projectDataBase::updateDB()
 	dropKeptRows();
 	flushConductorProperties();
 	m_content_changed = false;
+	m_rebuild_all = false;
+	m_changed_folios.clear();
+	m_rows_in_folio_order = false;
+	m_folio_places_changed = false;
+}
 
-	emit dataBaseUpdated();
+namespace {
+	//The tables refreshChangedFolios() writes folio by folio, each with
+	//its rows on the folios %1 (a list of folio uuids; alias t) and the
+	//order a full rebuild writes them in
+struct FolioRows { const char *table; const char *on; const char *order; };
+const FolioRows folio_rows[] = {
+	{"element", "t.diagram_uuid IN (%1)", "(SELECT pos FROM diagram d WHERE d.uuid = t.diagram_uuid)"},
+	{"element_info", "t.element_uuid IN (SELECT uuid FROM element WHERE diagram_uuid IN (%1))",
+	 "(SELECT rowid FROM element e WHERE e.uuid = t.element_uuid)"},
+	{"terminal", "t.element_uuid IN (SELECT uuid FROM element WHERE diagram_uuid IN (%1))",
+	 "(SELECT d.pos FROM element e JOIN diagram d ON d.uuid = e.diagram_uuid WHERE e.uuid = t.element_uuid)"},
+	{"conductor", "t.diagram_uuid IN (%1)", "(SELECT pos FROM diagram d WHERE d.uuid = t.diagram_uuid)"},
+	{"link", "t.element_uuid IN (SELECT uuid FROM element WHERE diagram_uuid IN (%1))",
+	 "(SELECT rowid FROM element e WHERE e.uuid = t.element_uuid)"}};
+	//Between two rows put in order, room for the rows a folio gains
+const qint64 row_spacing = 64;
+}
+
+/**
+	@brief projectDataBase::refreshChangedFolios
+	refresh() when only some folios changed: the queued rows are
+	written, then the element, element_info, terminal, conductor and
+	link rows of each changed folio that is built are made again from it,
+	as a full rebuild makes them, and put where a full rebuild puts them
+	(placeFolioRows(), or putRowsInFolioOrder() when there is no room).
+	A folio not built changed only through the rows themselves
+	(editUnbuiltElementInformation()), which a rebuild keeps as they are.
+	A folio added, removed or moved changes what the others show
+	(refreshFolioTexts()).
+
+	QET-SQL-FORMAT S3z1b (QETDB-S3-SCOPE.md 7.4): a full rebuild costs
+	about 4 ms a folio, 0.6 s an edit on a 136-folio project.
+*/
+void projectDataBase::refreshChangedFolios()
+{
+		//A table split across folios saves the parts before and after it
+		//(previous_table, next_table) and, the first part, the query: a
+		//folio added, removed or moved can change them, with no signal
+	if (m_folio_places_changed) {
+		for (Diagram *diagram : m_project->folios()) {
+			if (!diagram->isLoaded()) continue;
+			for (QGraphicsItem *item : diagram->items())
+				if (auto table = dynamic_cast<QetGraphicsTableItem *>(item))
+					m_dirty_drawing_items.insert(table);
+		}
+	}
+	flushDrawingItems();
+	flushLinks();
+	flushElementPositions();
+	flushElementTexts();
+	flushCollections();
+	flushFolioValues();
+	flushCables();
+
+	const bool own_transaction = m_data_base.transaction();
+	const QSet<QUuid> waiting_symbols = waitingSymbols();
+	const auto waiting = [&waiting_symbols](const QUuid &uuid) {return waiting_symbols.contains(uuid);};
+	QSqlQuery query(m_data_base);
+	QSqlQuery insert_link(m_data_base);
+	insert_link.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index, ord) "
+									   "VALUES (:element_uuid, :linked_uuid, :group_index, :ord)"));
+	for (Diagram *diagram : m_project->folios())
+	{
+		if (!m_changed_folios.contains(diagram->uuid()) || !diagram->isLoaded()) {
+			continue;
+		}
+		const QString folio = diagram->uuid().toString();
+			//The link rows as they are, as populateLinkTable() takes them
+		QHash<QUuid, QList<std::pair<QUuid, int>>> old_links;
+		query.prepare(QStringLiteral("SELECT element_uuid, linked_uuid, group_index FROM link "
+									 "WHERE element_uuid IN (SELECT uuid FROM element WHERE diagram_uuid = :folio) "
+									 "ORDER BY ord, rowid"));
+		query.bindValue(QStringLiteral(":folio"), folio);
+		if (query.exec())
+			while (query.next())
+				old_links[QUuid(query.value(0).toString())].append(
+						{QUuid(query.value(1).toString()), query.value(2).isNull() ? -1 : query.value(2).toInt()});
+		const QHash<QString, std::pair<qint64, qint64>> ranges =
+				m_rows_in_folio_order ? folioRowRanges(diagram->uuid())
+									  : QHash<QString, std::pair<qint64, qint64>>();
+		for (const char *sql : {
+			 "DELETE FROM link WHERE element_uuid IN (SELECT uuid FROM element WHERE diagram_uuid = :folio)",
+			 "DELETE FROM element_info WHERE element_uuid IN (SELECT uuid FROM element WHERE diagram_uuid = :folio)",
+			 "DELETE FROM terminal WHERE element_uuid IN (SELECT uuid FROM element WHERE diagram_uuid = :folio)",
+			 "DELETE FROM conductor WHERE diagram_uuid = :folio",
+			 "DELETE FROM element WHERE diagram_uuid = :folio"}) {
+			query.prepare(QLatin1String(sql));
+			query.bindValue(QStringLiteral(":folio"), folio);
+			if (!query.exec()) {
+				qDebug() << "projectDataBase::refreshChangedFolios error : " << query.lastError();
+			}
+		}
+
+		insertFolioElementRows(diagram);
+		query.prepare(QStringLiteral("SELECT uuid FROM element WHERE diagram_uuid = :folio ORDER BY rowid"));
+		query.bindValue(QStringLiteral(":folio"), folio);
+		QStringList uuids;
+		if (query.exec())
+			while (query.next())
+				uuids << query.value(0).toString();
+		for (const QString &uuid : std::as_const(uuids))
+			insertElementInfoRow(uuid);
+		insertFolioConductorRows(diagram);
+		const ElementProvider ep(diagram);
+		for (const auto &elmt : ep.find(allElementTypes())) {
+			m_dirty_link_elements.removeAll(elmt);
+			insertLinkRows(insert_link, elmt, waiting,
+						   old_links.contains(elmt->uuid()) ? old_links.value(elmt->uuid())
+															 : elmt->savedLinkList());
+		}
+		if (m_rows_in_folio_order && !placeFolioRows(diagram->uuid(), ranges)) {
+			m_rows_in_folio_order = false;
+		}
+	}
+	if (m_folio_places_changed) {
+		populateDiagramTable();
+		populateDiagramInfoTable();
+		refreshFolioTexts();
+		m_folio_places_changed = false;
+	}
+	if (m_rows_in_folio_order) {
+		for (const FolioRows &rows : folio_rows) {
+			query.exec(QStringLiteral("SELECT MAX(rowid) FROM %1").arg(QLatin1String(rows.table)));
+			m_ordered_rows.insert(QLatin1String(rows.table), query.next() ? query.value(0).toLongLong() : 0);
+		}
+	} else {
+		putRowsInFolioOrder();
+	}
+	if (own_transaction) {
+		m_data_base.commit();
+	}
+	flushConductorProperties();
+	m_content_changed = false;
+	m_changed_folios.clear();
+}
+
+/**
+	@brief projectDataBase::putRowsInFolioOrder
+	Put the rows of the element, element_info, terminal, conductor and
+	link tables in the order a full rebuild gives them: folio by folio,
+	and in each folio the order they were written in. Their rowids are
+	spaced (row_spacing), so that a folio rebuilt alone can put its rows
+	back in their place (placeFolioRows()) without moving the others.
+*/
+void projectDataBase::putRowsInFolioOrder()
+{
+	QSqlQuery query(m_data_base);
+	for (const FolioRows &rows : folio_rows)
+	{
+		const QString table = QLatin1String(rows.table);
+		QStringList columns;
+		const QSqlRecord record = m_data_base.record(table);
+		for (int i = 0 ; i < record.count() ; ++i)
+			columns << record.fieldName(i);
+		const QString list = columns.join(QStringLiteral(", "));
+		for (const QString &sql : {
+			 QStringLiteral("CREATE TEMP TABLE folio_order AS SELECT t.* FROM %1 t ORDER BY %2, t.rowid")
+				 .arg(table, QLatin1String(rows.order)),
+			 QStringLiteral("DELETE FROM %1").arg(table),
+			 QStringLiteral("INSERT INTO %1 (rowid, %2) SELECT rowid * %3, %2 FROM folio_order ORDER BY rowid")
+				 .arg(table, list).arg(row_spacing),
+			 QStringLiteral("DROP TABLE folio_order")}) {
+			if (!query.exec(sql)) {
+				qDebug() << "projectDataBase::putRowsInFolioOrder error : " << table << query.lastError();
+			}
+		}
+	}
+	for (const FolioRows &rows : folio_rows) {
+		query.exec(QStringLiteral("SELECT MAX(rowid) FROM %1").arg(QLatin1String(rows.table)));
+		m_ordered_rows.insert(QLatin1String(rows.table), query.next() ? query.value(0).toLongLong() : 0);
+	}
+	m_rows_in_folio_order = true;
+}
+
+/**
+	@brief projectDataBase::refreshFolioTexts
+	A folio was added, removed or moved: a label or a wire text made from
+	a formula can show a folio's number (%id, %total), which changed for
+	folios not otherwise touched. Write again, in place, each label and
+	wire text of a built folio that differs from what it now shows.
+*/
+void projectDataBase::refreshFolioTexts()
+{
+	QSqlQuery query(m_data_base);
+	QSqlQuery update(m_data_base);
+		//Only a label made from a formula with a variable can change
+	update.prepare(QStringLiteral("UPDATE element_info SET label = :text WHERE element_uuid = :uuid"));
+	if (query.exec(QStringLiteral("SELECT element_uuid, label FROM element_info WHERE formula LIKE '%\\%%' ESCAPE '\\'")))
+		while (query.next())
+		{
+			const QUuid uuid(query.value(0).toString());
+				//The symbol holding the uuid gives the label
+			Element *holder = otherHolder(uuid, nullptr);
+			if (!holder || !holder->diagram() || m_changed_folios.contains(holder->diagram()->uuid())) {
+				continue;
+			}
+			const QString label = holder->actualLabel();
+			if (query.value(1).toString() != label) {
+				update.bindValue(QStringLiteral(":text"), label);
+				update.bindValue(QStringLiteral(":uuid"), query.value(0));
+				update.exec();
+			}
+		}
+
+	QHash<QString, QString> texts;
+	if (query.exec(QStringLiteral("SELECT uuid, text FROM conductor")))
+		while (query.next())
+			texts.insert(query.value(0).toString(), query.value(1).toString());
+	update.prepare(QStringLiteral("UPDATE conductor SET text = :text WHERE uuid = :uuid"));
+	for (auto it = m_placed_conductors.cbegin() ; it != m_placed_conductors.cend() ; ++it)
+	{
+		Conductor *conductor = it.value();
+		if (!conductor || !conductor->properties().m_formula.contains(QLatin1Char('%'))
+			|| !conductor->diagram() || m_changed_folios.contains(conductor->diagram()->uuid())) {
+			continue;
+		}
+		const QString uuid = conductor->uuid().toString();
+		auto known = texts.constFind(uuid);
+		if (known != texts.constEnd() && *known != conductor->properties().text) {
+			update.bindValue(QStringLiteral(":text"), conductor->properties().text);
+			update.bindValue(QStringLiteral(":uuid"), uuid);
+			update.exec();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::folioRowRanges
+	@return for each folio-by-folio table, the first and last rowid of
+	the rows of @p folio among those in folio order, before they are
+	written again (placeFolioRows()); no entry for a table where it has
+	none
+*/
+QHash<QString, std::pair<qint64, qint64>> projectDataBase::folioRowRanges(const QUuid &folio)
+{
+	QHash<QString, std::pair<qint64, qint64>> ranges;
+	QSqlQuery query(m_data_base);
+	for (const FolioRows &rows : folio_rows)
+	{
+		const QString table = QLatin1String(rows.table);
+		query.prepare(QStringLiteral("SELECT MIN(t.rowid), MAX(t.rowid) FROM %1 t WHERE t.rowid <= :ordered AND %2")
+					  .arg(table, QLatin1String(rows.on).arg(QStringLiteral(":folio"))));
+		query.bindValue(QStringLiteral(":ordered"), m_ordered_rows.value(table));
+		query.bindValue(QStringLiteral(":folio"), folio.toString());
+		if (query.exec() && query.next() && !query.value(0).isNull()) {
+			ranges.insert(table, {query.value(0).toLongLong(), query.value(1).toLongLong()});
+		}
+	}
+	return ranges;
+}
+
+/**
+	@brief projectDataBase::placeFolioRows
+	The rows of the folio @p folio were just written again, after the rows
+	in folio order: move them between the rows of the folios before it and
+	those after it, where a full rebuild writes them. @p ranges is where
+	its rows were (folioRowRanges()); for a table where it had none, the
+	rows of the folios before and after it are looked for.
+	@return false if there is no room for them there; the tables are
+	then to be put in order (putRowsInFolioOrder())
+*/
+bool projectDataBase::placeFolioRows(const QUuid &folio, const QHash<QString, std::pair<qint64, qint64>> &ranges)
+{
+	QSqlQuery query(m_data_base);
+	QVariant pos;
+	for (const FolioRows &rows : folio_rows)
+	{
+		const QString table = QLatin1String(rows.table);
+		const qint64 ordered = m_ordered_rows.value(table);
+		auto value = [&](const QString &sql, const QString &folios) {
+			query.prepare(sql.arg(table, QLatin1String(rows.on).arg(folios)));
+			query.bindValue(QStringLiteral(":ordered"), ordered);
+			query.bindValue(QStringLiteral(":pos"), pos);
+			return query.exec() && query.next() ? query.value(0) : QVariant();
+		};
+		QList<qint64> own;
+		query.prepare(QStringLiteral("SELECT t.rowid FROM %1 t WHERE t.rowid > :ordered AND %2 ORDER BY t.rowid")
+					  .arg(table, QLatin1String(rows.on).arg(QStringLiteral(":folio"))));
+		query.bindValue(QStringLiteral(":ordered"), ordered);
+		query.bindValue(QStringLiteral(":folio"), folio.toString());
+		if (!query.exec()) {
+			return false;
+		}
+		while (query.next())
+			own << query.value(0).toLongLong();
+		if (own.isEmpty()) {
+			continue;
+		}
+
+		qint64 low;
+		QVariant after;
+		if (ranges.contains(table)) {
+				//Next to where they were
+			query.prepare(QStringLiteral("SELECT COALESCE(MAX(rowid), 0) FROM %1 WHERE rowid < :from").arg(table));
+			query.bindValue(QStringLiteral(":from"), ranges.value(table).first);
+			low = query.exec() && query.next() ? query.value(0).toLongLong() : 0;
+			query.prepare(QStringLiteral("SELECT MIN(rowid) FROM %1 WHERE rowid > :to AND rowid <= :ordered").arg(table));
+			query.bindValue(QStringLiteral(":to"), ranges.value(table).second);
+			query.bindValue(QStringLiteral(":ordered"), ordered);
+			after = query.exec() && query.next() ? query.value(0) : QVariant();
+		} else {
+			if (pos.isNull()) {
+				query.prepare(QStringLiteral("SELECT pos FROM diagram WHERE uuid = :folio"));
+				query.bindValue(QStringLiteral(":folio"), folio.toString());
+				if (!query.exec() || !query.next()) {
+					return false;
+				}
+				pos = query.value(0);
+			}
+			after = value(QStringLiteral("SELECT MIN(t.rowid) FROM %1 t WHERE t.rowid <= :ordered AND %2"),
+						  QStringLiteral("SELECT uuid FROM diagram WHERE pos > :pos"));
+			low = value(QStringLiteral("SELECT COALESCE(MAX(t.rowid), 0) FROM %1 t WHERE t.rowid <= :ordered AND %2"),
+						QStringLiteral("SELECT uuid FROM diagram WHERE pos < :pos")).toLongLong();
+		}
+			//Last: where they were written
+		if (after.isNull()) {
+			continue;
+		}
+		const qint64 high = after.toLongLong();
+		const qint64 step = (high - low) / (own.size() + 1);
+		if (step < 1) {
+			return false;
+		}
+		query.prepare(QStringLiteral("UPDATE %1 SET rowid = :to WHERE rowid = :from").arg(table));
+		for (int i = 0 ; i < own.size() ; ++i) {
+			query.bindValue(QStringLiteral(":to"), low + (i + 1) * step);
+			query.bindValue(QStringLiteral(":from"), own.at(i));
+				//Taken by a row on no folio
+			if (!query.exec()) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+/**
+	@brief projectDataBase::rebuildMismatches
+	A test and debugging aid (QET_CHECK_DB_REBUILD): rebuild every table
+	from the folios, as a full update does, and compare.
+	@return one entry per table the full rebuild changed, with a row it
+	gave and one it took away; empty when the tables were already what
+	it gives
+*/
+QStringList projectDataBase::rebuildMismatches()
+{
+	QSqlQuery query(m_data_base);
+	QStringList tables;
+	query.exec(QStringLiteral("SELECT name FROM main.sqlite_master WHERE type = 'table' "
+							  "AND name NOT LIKE 'sqlite_%' ORDER BY name"));
+	while (query.next())
+		tables << query.value(0).toString();
+	for (const QString &table : std::as_const(tables))
+		query.exec(QStringLiteral("CREATE TEMP TABLE \"check_%1\" AS SELECT * FROM main.\"%1\" ORDER BY rowid").arg(table));
+
+	m_content_changed = true;
+	m_rebuild_all = true;
+	refresh();
+
+		//Kept in the order their rows were written between full rebuilds,
+		//before S3z1b too: a save takes the order of drawn items from
+		//drawing_item (z, seq), not from these
+	const QSet<QString> unordered{QStringLiteral("shape"), QStringLiteral("independent_text"),
+								  QStringLiteral("image")};
+	QStringList mismatches;
+	for (const QString &table : std::as_const(tables))
+	{
+		const QString now = QStringLiteral("main.\"%1\"").arg(table);
+		const QString then = QStringLiteral("temp.\"check_%1\"").arg(table);
+		auto first = [&query](const QString &sql) {
+			return query.exec(sql) && query.next() ? query.value(0).toString() : QString();
+		};
+		auto row = [&](const QString &a, const QString &b) {
+			if (!query.exec(QStringLiteral("SELECT * FROM (SELECT * FROM %1 EXCEPT SELECT * FROM %2) LIMIT 1").arg(a, b))
+				|| !query.next()) {
+				return QString();
+			}
+			QStringList values;
+			for (int i = 0 ; i < query.record().count() ; ++i)
+				values << query.value(i).toString();
+			return values.join(QLatin1Char('|'));
+		};
+		QString gave = row(now, then), took = row(then, now);
+		bool order = false;
+		if (gave.isEmpty() && took.isEmpty() && !unordered.contains(table)) {
+				//Each row's place, or for a folio-by-folio table its folio's:
+				//in a folio, the rows come in the order of the folio's scene
+				//(Diagram::conductors() is QGraphicsScene::items()) when they
+				//were last written, which a copy from the folio can change
+				//with nothing on it changed, nor its save
+			QString place = QStringLiteral("t.*");
+			for (const FolioRows &rows : folio_rows)
+				if (table == QLatin1String(rows.table))
+					place = QLatin1String(rows.on).contains(QLatin1String("element_uuid"))
+							? QStringLiteral("(SELECT d.pos FROM element e JOIN diagram d ON d.uuid = e.diagram_uuid "
+											 "WHERE e.uuid = t.element_uuid)")
+							: QStringLiteral("(SELECT pos FROM diagram d WHERE d.uuid = t.diagram_uuid)");
+				//The first row out of place: its place, then its first column
+			auto placed = [&](const QString &a, const QString &b) {
+				return query.exec(QStringLiteral(
+						"SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY t.rowid) AS check_n, %3 FROM %1 t "
+						"EXCEPT SELECT ROW_NUMBER() OVER (ORDER BY t.rowid), %3 FROM %2 t) ORDER BY check_n LIMIT 1")
+								  .arg(a, b, place))
+						&& query.next()
+						? query.value(0).toString() + QLatin1Char(' ') + query.value(1).toString() : QString();
+			};
+			gave = placed(now, then);
+			took = placed(then, now);
+			order = !gave.isEmpty();
+		}
+		const QString count_now = first(QStringLiteral("SELECT COUNT(*) FROM %1").arg(now));
+		const QString count_then = first(QStringLiteral("SELECT COUNT(*) FROM %1").arg(then));
+		if (gave.isEmpty() && took.isEmpty() && !order && count_now == count_then) {
+			continue;
+		}
+		mismatches << QStringLiteral("%1 (%2 rows to %3%4): +%5 -%6")
+					  .arg(table, count_then, count_now,
+						   order ? QStringLiteral(", order only") : QString(),
+						   gave.left(200), took.left(200));
+	}
+	for (const QString &table : std::as_const(tables))
+		query.exec(QStringLiteral("DROP TABLE temp.\"check_%1\"").arg(table));
+	return mismatches;
+}
+
+/**
+	@brief projectDataBase::folioChanged
+	A row of the folio @p folio changed: its rows are made again by the
+	next update (refreshChangedFolios()). A null uuid, a change no folio
+	is known for, rebuilds every folio.
+*/
+void projectDataBase::folioChanged(const QUuid &folio)
+{
+	m_content_changed = true;
+	if (folio.isNull()) {
+		m_rebuild_all = true;
+	} else {
+		m_changed_folios.insert(folio);
+	}
+}
+
+void projectDataBase::folioChanged(Diagram *folio)
+{
+	folioChanged(folio ? folio->uuid() : QUuid());
+}
+
+/**
+	@brief projectDataBase::elementFoliosChanged
+	@p element changed: its folio, and the folios of the symbols linked
+	to it, which show its label (a contact shows its coil's).
+*/
+void projectDataBase::elementFoliosChanged(Element *element)
+{
+	if (!element) {
+		folioChanged(QUuid());
+		return;
+	}
+	folioChanged(element->diagram());
+	for (Element *linked : element->linkedElements())
+		folioChanged(linked->diagram());
+}
+
+/**
+	@brief projectDataBase::rowFolio
+	@return the folio the row of @p uuid in @p table (element, conductor)
+	is on, or a null uuid
+*/
+QUuid projectDataBase::rowFolio(const QString &table, const QUuid &uuid)
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT diagram_uuid FROM %1 WHERE uuid = :uuid").arg(table));
+	query.bindValue(QStringLiteral(":uuid"), uuid.toString());
+	if (query.exec() && query.next()) {
+		return QUuid(query.value(0).toString());
+	}
+	return QUuid();
 }
 
 /**
@@ -264,10 +780,16 @@ void projectDataBase::updateDB(const QDomDocument &document)
 		populateDrawingItemTables();
 		flushConductorProperties();
 		m_content_changed = false;
+		m_rebuild_all = false;
+		m_changed_folios.clear();
+		m_rows_in_folio_order = false;
+		m_folio_places_changed = false;
 		emit dataBaseUpdated();
 		return;
 	}
 	qInfo().noquote() << "Project database filled from the folios:" << why;
+		//Every folio: the project's rows were not written as it was read
+	m_rebuild_all = true;
 	updateDB();
 }
 
@@ -1441,12 +1963,16 @@ void projectDataBase::setBuildingFolio(bool building)
 	if (building) {
 		if (m_building_folios++ == 0) {
 			m_changed_before_folio = m_content_changed;
+			m_rebuild_all_before_folio = m_rebuild_all;
+			m_changed_folios_before_folio = m_changed_folios;
 			m_blocked_before_folio = m_update_blocked;
 			m_update_blocked = true;
 		}
 	} else if (m_building_folios > 0 && --m_building_folios == 0) {
 		m_update_blocked = m_blocked_before_folio;
 		m_content_changed = m_changed_before_folio;
+		m_rebuild_all = m_rebuild_all_before_folio;
+		m_changed_folios = m_changed_folios_before_folio;
 	}
 }
 
@@ -1551,6 +2077,12 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 	if (m_project && m_project->unloadedFolioCount() && drawing_tables.match(query).hasMatch()) {
 		m_project->loadFolios();
 	}
+		//Checking each update against a full rebuild (refresh()): each
+		//read brings the tables up to date first, so that a script reading
+		//after each edit has each edit checked
+	if (qEnvironmentVariableIntValue("QET_CHECK_DB_REBUILD") == 1) {
+		refresh();
+	}
 	flushDrawingItems();
 	flushLinks();
 	flushElementPositions();
@@ -1642,12 +2174,13 @@ int projectDataBase::excludedConductorCount() const
 */
 void projectDataBase::addElement(Element *element)
 {
-	m_content_changed = true;
 	if (!element || !element->diagram()) {
+		folioChanged(QUuid());
 		qDebug() << "projectDataBase::addElement: null element or diagram";
 		return;
 	}
 
+	elementFoliosChanged(element);
 	placeElement(element);
 	connect(element, &Element::linkedElementChanged,
 			this, &projectDataBase::linksChanged, Qt::UniqueConnection);
@@ -1669,11 +2202,14 @@ void projectDataBase::removeElement(Element *element)
 	if (!m_placed_elements.contains(uuid, element)) {
 		return;
 	}
-	m_content_changed = true;
+	folioChanged(rowFolio(QStringLiteral("element"), uuid));
+	for (Element *linked : element->linkedElements())
+		folioChanged(linked->diagram());
 	removeElementRows(uuid);
 	unplaceElement(element, uuid);
 		//Another symbol still holds the uuid (F100): the rows are its own.
 	if (Element *other = otherHolder(uuid, element)) {
+		folioChanged(other->diagram());
 		writeElementRows(other);
 	}
 	emit dataBaseUpdated();
@@ -1685,7 +2221,7 @@ void projectDataBase::removeElement(Element *element)
 */
 void projectDataBase::elementInfoChanged(Element *element)
 {
-	m_content_changed = true;
+	elementFoliosChanged(element);
 	auto hash = elementInfoToString(element);
 	for (auto str : QETInformation::elementInfoKeys()) {
 		m_update_element_query.bindValue(":" + str, hash.value(str));
@@ -1700,7 +2236,6 @@ void projectDataBase::elementInfoChanged(Element *element)
 
 void projectDataBase::elementInfoChanged(QList<Element *> elements)
 {
-	m_content_changed = true;
 	this->blockSignals(true);
 		//Block signal for not emit dataBaseUpdated at
 		//each call of the method elementInfoChanged(Element *element)
@@ -1781,7 +2316,8 @@ void projectDataBase::populateSpareTerminalTable()
 
 void projectDataBase::addDiagram(Diagram *diagram)
 {
-	m_content_changed = true;
+	folioChanged(diagram);
+	m_folio_places_changed = true;
 	placeFolio(diagram);
 	m_insert_diagram_query.bindValue(":uuid", diagram->uuid().toString());
 	m_insert_diagram_query.bindValue(":pos", m_project->folioIndex(diagram)+1);
@@ -2181,7 +2717,10 @@ void projectDataBase::updateFolioPositions()
 
 void projectDataBase::removeDiagram(Diagram *diagram)
 {
+		//Its rows go with it: the others are put in the new order
 	m_content_changed = true;
+	m_folio_places_changed = true;
+	m_changed_folios.remove(diagram->uuid());
 	const QString uuid_str = diagram->uuid().toString();
 	unplaceFolio(diagram, diagram->uuid());
 	for (Conductor *conductor : diagram->conductors())
@@ -2292,7 +2831,8 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 
 void projectDataBase::diagramInfoChanged(Diagram *diagram)
 {
-	m_content_changed = true;
+		//Its symbols' labels can show its title or number
+	folioChanged(diagram);
 		//Not while the project is being read: a folio's header read gives
 		//it a folio number counted from the folios read so far ("1/1" for
 		//the first of three); the rows are filled once every folio is
@@ -2312,6 +2852,8 @@ void projectDataBase::diagramInfoChanged(Diagram *diagram)
 void projectDataBase::diagramOrderChanged()
 {
 	m_content_changed = true;
+	m_rows_in_folio_order = false;
+	m_folio_places_changed = true;
 }
 
 /**
@@ -2320,7 +2862,7 @@ void projectDataBase::diagramOrderChanged()
 */
 void projectDataBase::addConductor(Conductor *conductor)
 {
-	m_content_changed = true;
+	folioChanged(conductor ? conductor->diagram() : nullptr);
 	if (!conductor || !conductor->diagram()) {
 		qDebug() << "projectDataBase::addConductor: null conductor or diagram";
 		return;
@@ -2369,8 +2911,8 @@ void projectDataBase::writeConductorRow(Conductor *conductor)
 */
 void projectDataBase::removeConductor(Conductor *conductor)
 {
-	m_content_changed = true;
 	const QUuid uuid = conductor->uuid();
+	folioChanged(rowFolio(QStringLiteral("conductor"), uuid));
 	removeConductorRow(uuid);
 	unplaceConductor(conductor, uuid);
 		//Another wire still holds the uuid: the row is its own.
@@ -2437,7 +2979,7 @@ void projectDataBase::removeConductorRow(const QUuid &uuid)
 */
 void projectDataBase::updateConductor(Conductor *conductor)
 {
-	m_content_changed = true;
+	folioChanged(conductor ? conductor->diagram() : nullptr);
 	if (!conductor) {
 		return;
 	}
@@ -2480,8 +3022,9 @@ void projectDataBase::watchConductor(Conductor *conductor)
 */
 void projectDataBase::conductorPropertiesChanged()
 {
-	m_content_changed = true;
-	if (auto *conductor = qobject_cast<Conductor *>(sender())) {
+	auto *conductor = qobject_cast<Conductor *>(sender());
+	folioChanged(conductor ? conductor->diagram() : nullptr);
+	if (conductor) {
 		updateConductor(conductor);
 	}
 }
@@ -2657,7 +3200,7 @@ void projectDataBase::itemGroupChanged(QGraphicsItem *item)
 		if (!update.exec()) {
 			qDebug() << "projectDataBase::itemGroupChanged update error : " << update.lastError();
 		}
-		m_content_changed = true;
+		folioChanged(element->diagram());
 		return;
 	}
 
@@ -3747,15 +4290,24 @@ void projectDataBase::populateElementTable()
 			restoreKeptRows(QStringLiteral("element"), diagram, QStringLiteral("diagram_uuid = :folio"));
 			continue;
 		}
-		const ElementProvider ep(diagram);
-		const auto elmt_vector = ep.find(allElementTypes());
-			//Insert all values into the database
-		for (const auto &elmt : elmt_vector)
-		{
-			bindElementValues(m_insert_elements_query, elmt, diagram);
-			if (!m_insert_elements_query.exec()) {
-				qDebug() << "projectDataBase::populateElementTable insert error : " << m_insert_elements_query.lastError();
-			}
+		insertFolioElementRows(diagram);
+	}
+}
+
+/**
+	@brief projectDataBase::insertFolioElementRows
+	Insert the element rows of the built folio @p diagram
+*/
+void projectDataBase::insertFolioElementRows(Diagram *diagram)
+{
+	const ElementProvider ep(diagram);
+	const auto elmt_vector = ep.find(allElementTypes());
+		//Insert all values into the database
+	for (const auto &elmt : elmt_vector)
+	{
+		bindElementValues(m_insert_elements_query, elmt, diagram);
+		if (!m_insert_elements_query.exec()) {
+			qDebug() << "projectDataBase::populateElementTable insert error : " << m_insert_elements_query.lastError();
 		}
 	}
 }
@@ -3776,11 +4328,9 @@ void projectDataBase::populateElementInfoTable()
 	QSqlQuery query(m_data_base);
 	query.exec(QStringLiteral("DELETE FROM element_info"));
 
-	for (auto it = m_placed_elements.constBegin() ; it != m_placed_elements.constEnd() ; ++it) {
-		if (placedElementCount(it.key()) > 1) {
-			populateElementInfoTableFromFolios();
-			return;
-		}
+	if (sharedElementUuids()) {
+		populateElementInfoTableFromFolios();
+		return;
 	}
 
 	QSqlQuery uuids(m_data_base);
@@ -3789,26 +4339,47 @@ void projectDataBase::populateElementInfoTable()
 		return;
 	}
 	while (uuids.next())
-	{
-		const QString uuid_str = uuids.value(0).toString();
-		const QUuid uuid(uuid_str);
-		Element *holder = otherHolder(uuid, nullptr);
-		if (!holder) {
-				//A symbol on a folio not built: its row as it was
-			if (!m_kept_folios.isEmpty()) {
-				QSqlQuery kept(m_data_base);
-				kept.prepare(QStringLiteral("INSERT INTO element_info SELECT * FROM kept_element_info "
-											"WHERE element_uuid = :uuid"));
-				kept.bindValue(QStringLiteral(":uuid"), uuid_str);
-				kept.exec();
-			}
-			continue;
+		insertElementInfoRow(uuids.value(0).toString());
+}
+
+/**
+	@brief projectDataBase::sharedElementUuids
+	@return true if several placed symbols share a uuid (F100)
+*/
+bool projectDataBase::sharedElementUuids() const
+{
+	for (auto it = m_placed_elements.constBegin() ; it != m_placed_elements.constEnd() ; ++it) {
+		if (placedElementCount(it.key()) > 1) {
+			return true;
 		}
-		bindElementInfoValues(m_insert_element_info_query, uuid_str,
-							  m_element_information.value(uuid), holder->actualLabel());
-		if (!m_insert_element_info_query.exec()) {
-			qDebug() << "projectDataBase::populateElementInfoTable insert error : " << m_insert_element_info_query.lastError();
+	}
+	return false;
+}
+
+/**
+	@brief projectDataBase::insertElementInfoRow
+	Insert the element_info row of the symbol @p uuid_str, from the
+	information store and the label the symbol holding it shows
+*/
+void projectDataBase::insertElementInfoRow(const QString &uuid_str)
+{
+	const QUuid uuid(uuid_str);
+	Element *holder = otherHolder(uuid, nullptr);
+	if (!holder) {
+			//A symbol on a folio not built: its row as it was
+		if (!m_kept_folios.isEmpty()) {
+			QSqlQuery kept(m_data_base);
+			kept.prepare(QStringLiteral("INSERT INTO element_info SELECT * FROM kept_element_info "
+										"WHERE element_uuid = :uuid"));
+			kept.bindValue(QStringLiteral(":uuid"), uuid_str);
+			kept.exec();
 		}
+		return;
+	}
+	bindElementInfoValues(m_insert_element_info_query, uuid_str,
+						  m_element_information.value(uuid), holder->actualLabel());
+	if (!m_insert_element_info_query.exec()) {
+		qDebug() << "projectDataBase::populateElementInfoTable insert error : " << m_insert_element_info_query.lastError();
 	}
 }
 
@@ -3910,7 +4481,7 @@ void projectDataBase::elementInformationChanged(Element *element, const DiagramC
 	if (!storeElementInformation(element->uuid(), information)) {
 		return;
 	}
-	m_content_changed = true;
+	elementFoliosChanged(element);
 	if (m_update_blocked || placedElementCount(element->uuid()) != 1) {
 		return;
 	}
@@ -4191,7 +4762,7 @@ void projectDataBase::unplaceElement(Element *element, const QUuid &uuid)
 void projectDataBase::elementUuidChanged(Element *element, const QUuid &old_uuid)
 {
 	if (!m_placed_elements.contains(old_uuid, element) || old_uuid == element->uuid()) return;
-	m_content_changed = true;
+	elementFoliosChanged(element);
 	Element *other = otherHolder(old_uuid, element);
 	unplaceElement(element, old_uuid);
 	removeElementRows(old_uuid);
@@ -5396,7 +5967,7 @@ void projectDataBase::flushConductorProperties()
 void projectDataBase::conductorPropertiesStored(Conductor *conductor, const ConductorProperties &properties)
 {
 	if (storeConductorProperties(conductor->uuid(), properties)) {
-		m_content_changed = true;
+		folioChanged(conductor->diagram());
 	}
 }
 
@@ -5459,7 +6030,7 @@ Conductor *projectDataBase::otherConductorHolder(const QUuid &uuid, const Conduc
 void projectDataBase::conductorUuidChanged(Conductor *conductor, const QUuid &old_uuid)
 {
 	if (!m_placed_conductors.contains(old_uuid, conductor) || old_uuid == conductor->uuid()) return;
-	m_content_changed = true;
+	folioChanged(conductor->diagram());
 	Conductor *other = otherConductorHolder(old_uuid, conductor);
 	unplaceConductor(conductor, old_uuid);
 	removeConductorRow(old_uuid);
@@ -5943,7 +6514,7 @@ void projectDataBase::linksChanged()
 */
 void projectDataBase::queueLinks(Element *element)
 {
-	m_content_changed = true;
+	folioChanged(element ? element->diagram() : nullptr);
 	if (element && !m_dirty_link_elements.contains(element)) {
 		m_dirty_link_elements << element;
 	}
@@ -6750,24 +7321,34 @@ void projectDataBase::populateConductorTable()
 			restoreKeptRows(QStringLiteral("conductor"), diagram, QStringLiteral("diagram_uuid = :folio"));
 			continue;
 		}
-		const auto conductor_list = diagram->conductors();
-		for (auto *conductor : conductor_list)
-		{
-				//See addConductor(): only a terminal with no parent element is
-				//skipped. A missing terminal uuid is handled by stableUuid().
-			if (!conductor->terminal1->parentElement()
-				|| !conductor->terminal2->parentElement()) {
-				continue;
-			}
+		insertFolioConductorRows(diagram);
+	}
+}
 
-			insertTerminal(conductor->terminal1);
-			insertTerminal(conductor->terminal2);
+/**
+	@brief projectDataBase::insertFolioConductorRows
+	Insert the conductor rows of the built folio @p diagram, and the
+	terminal rows of their ends
+*/
+void projectDataBase::insertFolioConductorRows(Diagram *diagram)
+{
+	const auto conductor_list = diagram->conductors();
+	for (auto *conductor : conductor_list)
+	{
+			//See addConductor(): only a terminal with no parent element is
+			//skipped. A missing terminal uuid is handled by stableUuid().
+		if (!conductor->terminal1->parentElement()
+			|| !conductor->terminal2->parentElement()) {
+			continue;
+		}
 
-			watchConductor(conductor);
-			bindConductorValues(m_insert_conductor_query, conductor, diagram);
-			if (!m_insert_conductor_query.exec()) {
-				qDebug() << "projectDataBase::populateConductorTable insert error : " << m_insert_conductor_query.lastError();
-			}
+		insertTerminal(conductor->terminal1);
+		insertTerminal(conductor->terminal2);
+
+		watchConductor(conductor);
+		bindConductorValues(m_insert_conductor_query, conductor, diagram);
+		if (!m_insert_conductor_query.exec()) {
+			qDebug() << "projectDataBase::populateConductorTable insert error : " << m_insert_conductor_query.lastError();
 		}
 	}
 }
