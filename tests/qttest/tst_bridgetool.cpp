@@ -762,9 +762,29 @@ private slots:
 		BridgeManager::writeInformation(&project, bridge->terminals(), information, step);
 		folio->undoStack().push(step);
 
-			//The wire says it...
-		QCOMPARE(conductor->properties().m_function, QStringLiteral("FE"));
-		QCOMPARE(conductor->properties().m_tension_protocol, QStringLiteral("230V"));
+			//Every wire connected says it -- at every terminal of the
+			//symbol and on through the potential
+		QList<Conductor *> all;
+		for (Terminal *t : wired->element()->terminals()) {
+			for (Conductor *c : t->conductors()) {
+				if (c && !all.contains(c)) {
+					all << c;
+				}
+			}
+		}
+		for (int i = 0 ; i < all.size() ; ++i) {
+			const auto related = all.at(i)->relatedPotentialConductors();
+			for (Conductor *c : related) {
+				if (c && !all.contains(c)) {
+					all << c;
+				}
+			}
+		}
+		QVERIFY2(!all.isEmpty(), "there are wires wired to it");
+		for (Conductor *c : std::as_const(all)) {
+			QCOMPARE(c->properties().m_function, QStringLiteral("FE"));
+			QCOMPARE(c->properties().m_tension_protocol, QStringLiteral("230V"));
+		}
 			//...and the bridge carries it because its wire does
 		QCOMPARE(bridge->functionText(), QStringLiteral("FE"));
 		QCOMPARE(bridge->tensionText(), QStringLiteral("230V"));

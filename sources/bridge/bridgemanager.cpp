@@ -380,7 +380,8 @@ Element *BridgeManager::elementFor(QETProject *project, const BridgeTerminal &te
 	@return what that terminal carries as information: the function and
 	the voltage/protocol of a wire wired to it -- the very values the
 	wires carry themselves. Read live, so the bridge follows them the way
-	they follow each other.
+	they follow each other. A symbol with several terminals is asked at
+	all of them: what one says, the bridge carries.
 */
 BridgeInformation BridgeManager::informationOf(QETProject *project, const BridgeTerminal &terminal)
 {
@@ -391,16 +392,26 @@ BridgeInformation BridgeManager::informationOf(QETProject *project, const Bridge
 	}
 
 	const auto terminals = element->terminals();
-	if (terminals.isEmpty()) {
-		return information;
+	for (Terminal *t : terminals)
+	{
+		const auto conductors = t->conductors();
+		for (Conductor *conductor : conductors)
+		{
+			if (!conductor) {
+				continue;
+			}
+			const ConductorProperties &properties = conductor->properties();
+			if (information.function.isEmpty() && !properties.m_function.isEmpty()) {
+				information.function = properties.m_function;
+			}
+			if (information.tension.isEmpty() && !properties.m_tension_protocol.isEmpty()) {
+				information.tension = properties.m_tension_protocol;
+			}
+			if (!information.function.isEmpty() && !information.tension.isEmpty()) {
+				return information;
+			}
+		}
 	}
-	const auto conductors = terminals.first()->conductors();
-	if (conductors.isEmpty()) {
-		return information;
-	}
-	const ConductorProperties &properties = conductors.first()->properties();
-	information.function = properties.m_function;
-	information.tension = properties.m_tension_protocol;
 	return information;
 }
 
@@ -431,6 +442,14 @@ QList<BridgeInformation> BridgeManager::informationSets(QETProject *project,
 	@param terminals the terminals the bridge lands on
 	@param information what the bridge carries
 	@param parent the undo step this goes with
+
+	Give the wires wired to those terminals what the bridge carries, so
+	the bridge and the wires it sits on say the same thing: one circle,
+	never half of one. Every wire which is connected goes with it -- at
+	all the terminals of the symbol, and on through the potential they
+	belong to, however far that reaches. A wire which already says it is
+	left alone; the rest goes with whatever was being done (@p parent),
+	so it is one undo step.
 */
 void BridgeManager::writeInformation(QETProject *project,
 									 const QList<BridgeTerminal> &terminals,
@@ -441,6 +460,11 @@ void BridgeManager::writeInformation(QETProject *project,
 		return;
 	}
 
+		//Every wire connected to those terminals, and every wire those
+		//wires are connected to: the potential as one thing, the way the
+		//wires see it themselves -- a separated function keeps its own
+		//group apart the way it always did
+	QSet<Conductor *> conductors;
 	for (const BridgeTerminal &terminal : terminals)
 	{
 		Element *element = elementFor(project, terminal);
@@ -448,29 +472,41 @@ void BridgeManager::writeInformation(QETProject *project,
 			continue;
 		}
 		const auto element_terminals = element->terminals();
-		if (element_terminals.isEmpty()) {
+		for (Terminal *t : element_terminals)
+		{
+			const auto attached = t->conductors();
+			for (Conductor *conductor : attached)
+			{
+				if (!conductor) {
+					continue;
+				}
+				conductors << conductor;
+				const auto related = conductor->relatedPotentialConductors();
+				for (Conductor *other : related) {
+					conductors << other;
+				}
+			}
+		}
+	}
+
+	for (Conductor *conductor : std::as_const(conductors))
+	{
+		if (!conductor) {
 			continue;
 		}
-		const auto conductors = element_terminals.first()->conductors();
-		for (Conductor *conductor : conductors)
-		{
-			if (!conductor) {
-				continue;
-			}
-			const ConductorProperties before = conductor->properties();
-			if (before.m_function == information.function
-				&& before.m_tension_protocol == information.tension) {
-				continue;
-			}
-			ConductorProperties after = before;
-			after.m_function = information.function;
-			after.m_tension_protocol = information.tension;
-
-			QVariant old_value, new_value;
-			old_value.setValue(before);
-			new_value.setValue(after);
-			new QPropertyUndoCommand(conductor, "properties", old_value, new_value, parent);
+		const ConductorProperties before = conductor->properties();
+		if (before.m_function == information.function
+			&& before.m_tension_protocol == information.tension) {
+			continue;
 		}
+		ConductorProperties after = before;
+		after.m_function = information.function;
+		after.m_tension_protocol = information.tension;
+
+		QVariant old_value, new_value;
+		old_value.setValue(before);
+		new_value.setValue(after);
+		new QPropertyUndoCommand(conductor, "properties", old_value, new_value, parent);
 	}
 }
 
