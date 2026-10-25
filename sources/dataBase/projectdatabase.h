@@ -463,6 +463,8 @@ class projectDataBase : public QObject
 		void keepUnbuiltFolioRows();
 		void restoreKeptRows(const QString &table, Diagram *folio, const QString &where);
 		void dropKeptRows();
+		void keepRemovedFolioRows(const QString &folio);
+		void restoreRemovedFolioRows(Diagram *folio);
 		bool m_changed_before_folio = false, m_blocked_before_folio = false;
 		QHash<QUuid, DiagramContext> m_prefilled_elements;
 		QHash<QUuid, TitleBlockProperties> m_prefilled_folios;
