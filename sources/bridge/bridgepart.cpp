@@ -292,7 +292,7 @@ void BridgePart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		//when they do not agree the user is asked which the bridge takes
 		//-- its own among the candidates -- and cancelling leaves the
 		//line the length it had
-	const BridgeInformation information_before{bridge->functionText(), bridge->tensionText()};
+	const BridgeInformation information_before{bridge->tensionText()};
 	QList<BridgeInformation> candidates = BridgeManager::informationSets(project, after);
 	candidates.prepend(information_before);
 	bool take_information = false;

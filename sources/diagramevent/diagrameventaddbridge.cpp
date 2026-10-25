@@ -381,7 +381,6 @@ void DiagramEventAddBridge::finishLine(const QPointF &end)
 	Bridge *bridge = dialog.bridge();
 	const bool own_bridge = !bridge;
 	const BridgeInformation information_before{
-				bridge ? bridge->functionText() : QString(),
 				bridge ? bridge->tensionText() : QString()};
 
 		//What the bridge carries: the function and the voltage of the
@@ -409,7 +408,6 @@ void DiagramEventAddBridge::finishLine(const QPointF &end)
 		bridge->setColor(dialog.newColor());
 		bridge->setMaxConnections(dialog.newMaxConnections());
 		bridge->setLineWidth(dialog.newLineWidth());
-		bridge->setFunctionText(information.function);
 		bridge->setTensionText(information.tension);
 
 			//Which parallel track the bridge runs in: the first free one

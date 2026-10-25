@@ -377,7 +377,7 @@ void ElementsMover::endMovement()
 				//-- and cancelling keeps the bridge as it was: the
 				//terminal crosses its line without being connected to it.
 			const BridgeInformation information_before{
-						bridge->functionText(), bridge->tensionText()};
+						bridge->tensionText()};
 			QList<BridgeInformation> candidates =
 					BridgeManager::informationSets(m_diagram->project(), after);
 			candidates.prepend(information_before);

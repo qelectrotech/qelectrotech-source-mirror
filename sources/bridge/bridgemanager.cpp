@@ -61,6 +61,22 @@ namespace {
 	}
 
 	/**
+		How far @p point stands from the line @p line: the pin the line
+		really runs across is the one nearest to it.
+	*/
+	qreal distanceToLine(const QLineF &line, const QPointF &point)
+	{
+		const QPointF a = line.p1();
+		const QPointF ab = line.p2() - a;
+		const qreal length_squared = QPointF::dotProduct(ab, ab);
+		if (length_squared <= 0.0) {
+			return QLineF(a, point).length();
+		}
+		const qreal at = qBound(0.0, QPointF::dotProduct(point - a, ab) / length_squared, 1.0);
+		return QLineF(a + at * ab, point).length();
+	}
+
+	/**
 		Which terminals of the strip @p strip lie between @p from and
 		@p to -- inclusive, whatever their level: a bridge bar lies
 		across the whole physical terminal on its way, so it takes its
@@ -114,10 +130,28 @@ QList<BridgeCrossing> BridgeManager::crossedTerminals(Diagram *diagram, const QL
 			|| element->terminals().isEmpty()) {
 			continue;
 		}
+			//The pin the line runs across: a symbol may carry several
+			//terminals and each of them is its own potential, so the
+			//nearest one to the line is the one the bridge lands on
+		Terminal *pin = nullptr;
+		qreal nearest = 0.0;
+		const auto pins = element->terminals();
+		for (Terminal *candidate : pins)
+		{
+			const qreal distance = distanceToLine(line, candidate->scenePos());
+			if (!pin || distance < nearest) {
+				pin = candidate;
+				nearest = distance;
+			}
+		}
+		if (!pin) {
+			continue;
+		}
+
 		BridgeCrossing crossing;
 		crossing.element = element;
-		crossing.terminal = element->terminals().first()->name();
-		crossing.position = element->scenePos();
+		crossing.terminal = pin->stableUuid().toString();
+		crossing.position = pin->scenePos();
 		crossings.append(crossing);
 	}
 
@@ -377,11 +411,12 @@ Element *BridgeManager::elementFor(QETProject *project, const BridgeTerminal &te
 	@brief BridgeManager::informationOf
 	@param project
 	@param terminal
-	@return what that terminal carries as information: the function and
-	the voltage/protocol of a wire wired to it -- the very values the
-	wires carry themselves. Read live, so the bridge follows them the way
-	they follow each other. A symbol with several terminals is asked at
-	all of them: what one says, the bridge carries.
+	@return what that very pin carries: the voltage/protocol of a wire
+	wired to it, the very value the wires carry themselves. Read live, so
+	the bridge follows them the way they follow each other. A symbol
+	with several terminals is asked at the pin the bridge lands on:
+	each of them may carry a different voltage and none of them carries
+	a function across a bridge.
 */
 BridgeInformation BridgeManager::informationOf(QETProject *project, const BridgeTerminal &terminal)
 {
@@ -391,23 +426,22 @@ BridgeInformation BridgeManager::informationOf(QETProject *project, const Bridge
 		return information;
 	}
 
-	const auto terminals = element->terminals();
-	for (Terminal *t : terminals)
+	const auto pins = element->terminals();
+	for (Terminal *pin : pins)
 	{
-		const auto conductors = t->conductors();
+		if (pin->stableUuid().toString() != terminal.terminal
+			&& !(pins.size() == 1 && terminal.terminal.isEmpty())) {
+			continue;
+		}
+		const auto conductors = pin->conductors();
 		for (Conductor *conductor : conductors)
 		{
 			if (!conductor) {
 				continue;
 			}
-			const ConductorProperties &properties = conductor->properties();
-			if (information.function.isEmpty() && !properties.m_function.isEmpty()) {
-				information.function = properties.m_function;
-			}
-			if (information.tension.isEmpty() && !properties.m_tension_protocol.isEmpty()) {
-				information.tension = properties.m_tension_protocol;
-			}
-			if (!information.function.isEmpty() && !information.tension.isEmpty()) {
+			const QString tension = conductor->properties().m_tension_protocol;
+			if (!tension.isEmpty()) {
+				information.tension = tension;
 				return information;
 			}
 		}
@@ -443,13 +477,17 @@ QList<BridgeInformation> BridgeManager::informationSets(QETProject *project,
 	@param information what the bridge carries
 	@param parent the undo step this goes with
 
-	Give the wires wired to those terminals what the bridge carries, so
-	the bridge and the wires it sits on say the same thing: one circle,
-	never half of one. Every wire which is connected goes with it -- at
-	all the terminals of the symbol, and on through the potential they
-	belong to, however far that reaches. A wire which already says it is
-	left alone; the rest goes with whatever was being done (@p parent),
-	so it is one undo step.
+	Give the wires wired to those pins what the bridge carries, so the
+	bridge and the wires it sits on say the same thing: one circle, never
+	half of one. Only the voltage and the protocol cross a bridge -- never
+	the function, which is the very business a separated function keeps
+	to itself.
+
+	Every wire which is connected goes with it: at the pin the bridge
+	lands on, and on through the potential that pin belongs to, however
+	far that reaches and however the function separation draws its lines.
+	A wire which already says it is left alone; the rest goes with
+	whatever was being done (@p parent), so it is one undo step.
 */
 void BridgeManager::writeInformation(QETProject *project,
 									 const QList<BridgeTerminal> &terminals,
@@ -460,10 +498,6 @@ void BridgeManager::writeInformation(QETProject *project,
 		return;
 	}
 
-		//Every wire connected to those terminals, and every wire those
-		//wires are connected to: the potential as one thing, the way the
-		//wires see it themselves -- a separated function keeps its own
-		//group apart the way it always did
 	QSet<Conductor *> conductors;
 	for (const BridgeTerminal &terminal : terminals)
 	{
@@ -471,10 +505,13 @@ void BridgeManager::writeInformation(QETProject *project,
 		if (!element) {
 			continue;
 		}
-		const auto element_terminals = element->terminals();
-		for (Terminal *t : element_terminals)
+		const auto pins = element->terminals();
+		for (Terminal *pin : pins)
 		{
-			const auto attached = t->conductors();
+			if (pin->stableUuid().toString() != terminal.terminal && !(pins.size() == 1 && terminal.terminal.isEmpty())) {
+				continue;
+			}
+			const auto attached = pin->conductors();
 			for (Conductor *conductor : attached)
 			{
 				if (!conductor) {
@@ -495,12 +532,10 @@ void BridgeManager::writeInformation(QETProject *project,
 			continue;
 		}
 		const ConductorProperties before = conductor->properties();
-		if (before.m_function == information.function
-			&& before.m_tension_protocol == information.tension) {
+		if (before.m_tension_protocol == information.tension) {
 			continue;
 		}
 		ConductorProperties after = before;
-		after.m_function = information.function;
 		after.m_tension_protocol = information.tension;
 
 		QVariant old_value, new_value;
@@ -511,15 +546,95 @@ void BridgeManager::writeInformation(QETProject *project,
 }
 
 /**
-	@brief BridgeManager::functionOf
+	@brief BridgeManager::conductorsOverBridges
 	@param project
-	@param bridge
-	@return the function text the bridge carries
+	@param edited the wires being edited
+	@return the wires the bridges reach from them: a bridge sits across
+	the terminals it lands on, so a voltage reaching one of their wires
+	reaches every wire of every terminal of the bridge. Only the voltage
+	and the protocol cross it -- never the function.
 */
-QString BridgeManager::functionOf(QETProject *project, Bridge *bridge)
+QList<Conductor *> BridgeManager::conductorsOverBridges(QETProject *project,
+													   const QList<Conductor *> &edited)
 {
-	Q_UNUSED(project)
-	return bridge ? bridge->functionText() : QString();
+	QList<Conductor *> reached;
+	if (!project || edited.isEmpty()) {
+		return reached;
+	}
+
+		//The pins the edited wires sit on
+	QSet<BridgeTerminal> touched;
+	for (Conductor *conductor : edited)
+	{
+		if (!conductor) {
+			continue;
+		}
+		const auto ends = QList<Terminal *>{conductor->terminal1, conductor->terminal2};
+		for (Terminal *end : ends)
+		{
+			Element *element = end ? end->parentElement() : nullptr;
+			if (!element) {
+				continue;
+			}
+			BridgeTerminal terminal;
+			terminal.element = element->uuid();
+			terminal.terminal = end->stableUuid().toString();
+			touched << terminal;
+		}
+	}
+	if (touched.isEmpty()) {
+		return reached;
+	}
+
+	const auto bridges = project->bridges();
+	for (Bridge *bridge : bridges)
+	{
+		if (!bridge) {
+			continue;
+		}
+		bool lands = false;
+		const auto lands_on = bridge->terminals();
+		for (const BridgeTerminal &terminal : lands_on) {
+			if (touched.contains(terminal)) {
+				lands = true;
+				break;
+			}
+		}
+		if (!lands) {
+			continue;
+		}
+
+		for (const BridgeTerminal &terminal : lands_on)
+		{
+			Element *element = elementFor(project, terminal);
+			if (!element) {
+				continue;
+			}
+			const auto pins = element->terminals();
+			for (Terminal *pin : pins)
+			{
+				if (pin->stableUuid().toString() != terminal.terminal
+					&& !(pins.size() == 1 && terminal.terminal.isEmpty())) {
+					continue;
+				}
+				const auto attached = pin->conductors();
+				for (Conductor *conductor : attached)
+				{
+					if (!conductor || reached.contains(conductor)) {
+						continue;
+					}
+					reached << conductor;
+					const auto related = conductor->relatedPotentialConductors();
+					for (Conductor *other : related) {
+						if (other && !reached.contains(other)) {
+							reached << other;
+						}
+					}
+				}
+			}
+		}
+	}
+	return reached;
 }
 
 /**
@@ -533,3 +648,4 @@ QString BridgeManager::tensionOf(QETProject *project, Bridge *bridge)
 	Q_UNUSED(project)
 	return bridge ? bridge->tensionText() : QString();
 }
+

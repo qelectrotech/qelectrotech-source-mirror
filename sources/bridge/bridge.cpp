@@ -154,35 +154,14 @@ void Bridge::setColumn(int column)
 }
 
 /**
-	@return the function text this bridge carries: what the wires at its
-	terminals say, read live, so the bridge follows them the way they
-	follow each other. What was answered when it was drawn stands in for
-	the moment they say nothing.
-*/
-QString Bridge::functionText() const {
-	const BridgeInformation information = liveInformation();
-	return information.function.isEmpty() ? m_function_text : information.function;
-}
-
-/**
-	@param text
-*/
-void Bridge::setFunctionText(const QString &text)
-{
-	if (text == m_function_text) {
-		return;
-	}
-	m_function_text = text;
-	emit changed();
-}
-
-/**
 	@return the voltage/protocol this bridge carries: what the wires at
-	its terminals say, read live
+	its terminals say, read live, so the bridge follows them the way
+	they follow each other. What was answered when it was drawn stands
+	in for the moment they say nothing.
 */
 QString Bridge::tensionText() const {
-	const BridgeInformation information = liveInformation();
-	return information.tension.isEmpty() ? m_tension_text : information.tension;
+	const QString tension = liveTension();
+	return tension.isEmpty() ? m_tension_text : tension;
 }
 
 /**
@@ -198,18 +177,18 @@ void Bridge::setTensionText(const QString &text)
 }
 
 /**
-	@brief Bridge::liveInformation
+	@brief Bridge::liveTension
 	@return what the wires at the first terminal of this bridge say at
 	this very moment -- the bridge sits in the cabinet where that
 	potential is and follows it
 */
-BridgeInformation Bridge::liveInformation() const
+QString Bridge::liveTension() const
 {
 	auto *project = qobject_cast<QETProject *>(parent());
 	if (!project || m_terminals.isEmpty()) {
 		return {};
 	}
-	return BridgeManager::informationOf(project, m_terminals.first());
+	return BridgeManager::informationOf(project, m_terminals.first()).tension;
 }
 
 /**
@@ -357,9 +336,6 @@ QDomElement Bridge::toXml(QDomDocument &document) const
 	if (m_column) {
 		root.setAttribute(QStringLiteral("column"), m_column);
 	}
-	if (!m_function_text.isEmpty()) {
-		root.setAttribute(QStringLiteral("function"), m_function_text);
-	}
 	if (!m_tension_text.isEmpty()) {
 		root.setAttribute(QStringLiteral("tension_protocol"), m_tension_text);
 	}
@@ -412,7 +388,6 @@ void Bridge::fromXml(const QDomElement &element)
 	}
 	m_max_connections = qMax(0, element.attribute(QStringLiteral("max_connections")).toInt());
 	m_column = qBound(0, element.attribute(QStringLiteral("column")).toInt(), max_columns);
-	m_function_text = element.attribute(QStringLiteral("function"));
 	m_tension_text = element.attribute(QStringLiteral("tension_protocol"));
 
 	m_terminals.clear();

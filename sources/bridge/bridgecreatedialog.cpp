@@ -193,13 +193,11 @@ BridgeCreateDialog::BridgeCreateDialog(Bridge *bridge, QWidget *parent) :
 	m_color_cb->setColor(bridge ? bridge->color() : QColor(Qt::black));
 	layout->addWidget(m_color_cb);
 
-		//What the bridge carries: the function and the voltage of the
-		//terminals it lands on. Taken over from them, never typed in.
+		//What the bridge carries: the voltage/protocol of the wires it
+		//sits on, and only that. Taken over from them, never typed in.
 	if (bridge) {
 		auto *information = new QLabel(
-					tr("Function: %1\nVoltage: %2",
-					   "what the bridge carries as information")
-					.arg(bridge->functionText().isEmpty() ? tr("—") : bridge->functionText())
+					tr("Voltage: %1", "what the bridge carries as information")
 					.arg(bridge->tensionText().isEmpty() ? tr("—") : bridge->tensionText()),
 					this);
 		information->setObjectName(QStringLiteral("bridge_information"));
@@ -236,7 +234,7 @@ BridgeInformation BridgeCreateDialog::askForInformation(const QList<BridgeInform
 		//candidate, it only ever stands for "nothing to take"
 	QList<BridgeInformation> real;
 	for (const BridgeInformation &set : sets) {
-		if ((set.function.isEmpty() && set.tension.isEmpty()) || real.contains(set)) {
+		if (set.tension.isEmpty() || real.contains(set)) {
 			continue;
 		}
 		real << set;
@@ -257,9 +255,7 @@ BridgeInformation BridgeCreateDialog::askForInformation(const QList<BridgeInform
 
 	QStringList items;
 	for (const BridgeInformation &set : real) {
-		items << tr("%1 / %2", "one choice of function and voltage a bridge could take")
-				.arg(set.function.isEmpty() ? tr("no function") : set.function)
-				.arg(set.tension.isEmpty() ? tr("no voltage") : set.tension);
+		items << set.tension;
 	}
 
 	bool accepted = false;

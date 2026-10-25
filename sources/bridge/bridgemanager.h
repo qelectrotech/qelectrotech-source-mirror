@@ -27,6 +27,7 @@
 #include <QString>
 #include <QUuid>
 
+class Conductor;
 class Diagram;
 class Element;
 class QETProject;
@@ -93,15 +94,30 @@ class BridgeManager
 												   const QList<Element *> &moved);
 
 			//What the bridge takes over from its first terminal, read live
-		static QString functionOf(QETProject *project, Bridge *bridge);
 		static QString tensionOf(QETProject *project, Bridge *bridge);
 
 			//What one terminal carries as information, and the distinct
 			//sets the terminals of a bridge carry: one when they agree,
-			//more when the user has to be asked which the bridge takes
+			//more when the user has to be asked which the bridge takes.
+			//Only the voltage/protocol -- a bridge crosses that and
+			//nothing else
 		static BridgeInformation informationOf(QETProject *project, const BridgeTerminal &terminal);
 		static QList<BridgeInformation> informationSets(QETProject *project,
 													   const QList<BridgeTerminal> &terminals);
+
+			/**
+				The wires a bridge takes an edit to: a bridge sits across
+				the terminals it lands on, so changing the voltage of one
+				of their wires changes it for every wire of every terminal
+				of the bridges over it. Only the voltage and the protocol
+				cross a bridge -- never the function, a separated function
+				stays separated however many bridges sit across it.
+				@param project
+				@param edited the wires being edited
+				@return the wires the bridges reach from them, once
+			*/
+		static QList<Conductor *> conductorsOverBridges(QETProject *project,
+													   const QList<Conductor *> &edited);
 
 			/**
 				Give the wires wired to those terminals what the bridge

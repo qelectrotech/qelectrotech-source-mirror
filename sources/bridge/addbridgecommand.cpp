@@ -87,7 +87,6 @@ void AddBridgeCommand::redo()
 		for (const BridgeTerminal &terminal : std::as_const(m_terminals)) {
 			m_bridge->addTerminal(terminal);
 		}
-		m_bridge->setFunctionText(m_information_after.function);
 		m_bridge->setTensionText(m_information_after.tension);
 	}
 
@@ -123,7 +122,6 @@ void AddBridgeCommand::undo()
 		for (const BridgeTerminal &terminal : std::as_const(m_terminals)) {
 			m_bridge->removeTerminal(terminal);
 		}
-		m_bridge->setFunctionText(m_information_before.function);
 		m_bridge->setTensionText(m_information_before.tension);
 	}
 

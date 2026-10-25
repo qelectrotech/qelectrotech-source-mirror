@@ -142,7 +142,6 @@ void ChangeBridgeGeometryCommand::apply(const QLineF &line,
 	if (m_bridge) {
 		m_bridge->setPartGeometry(m_part_uuid, line.p1(), line.p2());
 		m_bridge->setTerminals(terminals);
-		m_bridge->setFunctionText(information.function);
 		m_bridge->setTensionText(information.tension);
 	}
 	if (m_part) {
@@ -182,7 +181,6 @@ void ChangeBridgeTerminalsCommand::redo()
 {
 	if (!m_bridge) return;
 	m_bridge->setTerminals(m_terminals_after);
-	m_bridge->setFunctionText(m_information_after.function);
 	m_bridge->setTensionText(m_information_after.tension);
 	QUndoCommand::redo();
 }
@@ -194,7 +192,6 @@ void ChangeBridgeTerminalsCommand::undo()
 {
 	if (!m_bridge) return;
 	m_bridge->setTerminals(m_terminals_before);
-	m_bridge->setFunctionText(m_information_before.function);
 	m_bridge->setTensionText(m_information_before.tension);
 	QUndoCommand::undo();
 }

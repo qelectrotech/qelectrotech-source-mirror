@@ -80,7 +80,7 @@ class tst_bridgetool : public QObject
 		if (!element) return terminal;
 		terminal.element = element->uuid();
 		if (!element->terminals().isEmpty()) {
-			terminal.terminal = element->terminals().first()->name();
+			terminal.terminal = element->terminals().first()->stableUuid().toString();
 		}
 		return terminal;
 	}
@@ -141,7 +141,6 @@ private slots:
 
 		Bridge *bridge = project.newBridge();
 		bridge->setLineWidth(2.5);
-		bridge->setFunctionText(QStringLiteral("PE"));
 		bridge->setTensionText(QStringLiteral("24VAC"));
 		const BridgeTerminal first = terminalOf(terminals.at(0));
 		const BridgeTerminal second = terminalOf(terminals.at(1));
@@ -172,7 +171,6 @@ private slots:
 		QCOMPARE(read_back.color(), bridge->color());
 		QCOMPARE(read_back.maxConnections(), bridge->maxConnections());
 		QCOMPARE(read_back.lineWidth(), bridge->lineWidth());
-		QCOMPARE(read_back.functionText(), QStringLiteral("PE"));
 		QCOMPARE(read_back.tensionText(), QStringLiteral("24VAC"));
 		QCOMPARE(read_back.column(), bridge->column());
 		QCOMPARE(read_back.terminals(), bridge->terminals());
@@ -673,11 +671,10 @@ private slots:
 		QCOMPARE(bridge->terminals(), before);
 	}
 
-	//What the bridge carries is the function and the voltage of the
-	//wires at its terminals: taken over without being asked when they
-	//agree, asked for when they do not -- and written onto the wires as
-	//well, so bridge and wires always say the same thing
-	void aBridgeCarriesTheFunctionAndTheVoltage()
+	//What the bridge carries is the voltage of the wires at its pins --
+	//and only that: a bridge crosses no function, so a separated function
+	//stays separated however many bridges sit across it
+	void aBridgeCarriesTheVoltageOnly()
 	{
 		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
 		QETProject project(fixture);
@@ -688,42 +685,37 @@ private slots:
 		QVERIFY(folio);
 
 		Bridge *bridge = project.newBridge();
-		QVERIFY(bridge->functionText().isEmpty());
 		QVERIFY(bridge->tensionText().isEmpty());
 
-			//Nothing to take: nobody is asked and the bridge carries
-			//nothing
+			//Nothing to take: nobody is asked and the bridge carries nothing
 		bool ok = false;
 		const BridgeInformation nothing = BridgeCreateDialog::askForInformation(
 					QList<BridgeInformation>(), &ok);
 		QVERIFY2(ok, "nothing to take is no question to ask");
-		QVERIFY(nothing.function.isEmpty() && nothing.tension.isEmpty());
+		QVERIFY(nothing.tension.isEmpty());
 
 			//One thing to take: nobody is asked and the bridge takes it
-		const BridgeInformation only{QStringLiteral("PE"), QStringLiteral("24VAC")};
+		const BridgeInformation only{QStringLiteral("24VDC")};
 		const BridgeInformation taken = BridgeCreateDialog::askForInformation(
 					{BridgeInformation(), only}, &ok);
 		QVERIFY(ok);
 		QVERIFY2(taken == only, "a bridge which carries nothing takes what is there");
 
 			//And what the bridge carries is one undo step like the rest
-		bridge->setFunctionText(taken.function);
 		bridge->setTensionText(taken.tension);
-		const BridgeInformation before{bridge->functionText(), bridge->tensionText()};
-		const BridgeInformation after{QStringLiteral("FE"), QStringLiteral("230V")};
+		const BridgeInformation before{bridge->tensionText()};
+		const BridgeInformation after{QStringLiteral("230V")};
 		folio->undoStack().push(new ChangeBridgeTerminalsCommand(
-									bridge, bridge->terminals(), bridge->terminals(),
-									before, after));
-		QCOMPARE(bridge->functionText(), QStringLiteral("FE"));
+										bridge, bridge->terminals(), bridge->terminals(),
+										before, after));
 		QCOMPARE(bridge->tensionText(), QStringLiteral("230V"));
 		folio->undoStack().undo();
-		QCOMPARE(bridge->functionText(), before.function);
 		QCOMPARE(bridge->tensionText(), before.tension);
 	}
 
 	//Bridge and wires are one circle: what the bridge carries goes onto
-	//the wires it sits on, and when the wires say something else later
-	//the bridge follows them
+	//the wires it sits on -- the voltage and nothing else -- and when the
+	//wires say something else later the bridge follows them
 	void theWiresSayWhatTheBridgeSays()
 	{
 		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
@@ -750,26 +742,16 @@ private slots:
 		Conductor *conductor = wired->element()->terminals().first()->conductors().first();
 		const QString original_tension = conductor->properties().m_tension_protocol;
 
-		Bridge *bridge = project.newBridge();
-		bridge->addTerminal(terminalOf(wired));
-
-		const BridgeInformation information{QStringLiteral("FE"), QStringLiteral("230V")};
-			//The very command the drawing pushes, so the wires go with
-			//it the way they do in the drawing
-		const BridgeInformation carried{bridge->functionText(), bridge->tensionText()};
-		auto *step = new ChangeBridgeTerminalsCommand(bridge, bridge->terminals(),
-													  bridge->terminals(), carried, information);
-		BridgeManager::writeInformation(&project, bridge->terminals(), information, step);
-		folio->undoStack().push(step);
-
-			//Every wire connected says it -- at every terminal of the
-			//symbol and on through the potential
+			//Every wire connected -- at every terminal of the symbol and on
+			//through the potential -- and what each of them says of its own
+		//function before anything is written to them
+			//The pin the bridge lands on and the potential it belongs to
+			//-- a pin beside it is a potential of its own and says what it
+			//always said
 		QList<Conductor *> all;
-		for (Terminal *t : wired->element()->terminals()) {
-			for (Conductor *c : t->conductors()) {
-				if (c && !all.contains(c)) {
-					all << c;
-				}
+		for (Conductor *c : conductor ? QList<Conductor *>{conductor} : QList<Conductor *>()) {
+			if (!all.contains(c)) {
+				all << c;
 			}
 		}
 		for (int i = 0 ; i < all.size() ; ++i) {
@@ -781,12 +763,40 @@ private slots:
 			}
 		}
 		QVERIFY2(!all.isEmpty(), "there are wires wired to it");
+		QHash<Conductor *, QString> functions_before;
 		for (Conductor *c : std::as_const(all)) {
-			QCOMPARE(c->properties().m_function, QStringLiteral("FE"));
-			QCOMPARE(c->properties().m_tension_protocol, QStringLiteral("230V"));
+			functions_before.insert(c, c->properties().m_function);
 		}
-			//...and the bridge carries it because its wire does
-		QCOMPARE(bridge->functionText(), QStringLiteral("FE"));
+
+			//What the wires say is what a bridge reads
+		ConductorProperties with_function = conductor->properties();
+		with_function.m_function = QStringLiteral("PE");
+		conductor->setProperties(with_function);
+		functions_before.insert(conductor, QStringLiteral("PE"));
+
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(terminalOf(wired));
+
+		const BridgeInformation information{QStringLiteral("230V")};
+			//The very command the drawing pushes, so the wires go with it
+			//the way they do in the drawing
+		const BridgeInformation carried{bridge->tensionText()};
+		auto *step = new ChangeBridgeTerminalsCommand(bridge, bridge->terminals(),
+												  bridge->terminals(), carried, information);
+		for (Terminal *pin : wired->element()->terminals()) {
+		}
+		BridgeManager::writeInformation(&project, bridge->terminals(), information, step);
+		folio->undoStack().push(step);
+
+		for (Conductor *c : std::as_const(all)) {
+			QCOMPARE(c->properties().m_tension_protocol, QStringLiteral("230V"));
+				//The function is the terminal's own business: a bridge
+				//crosses the voltage and nothing else. Each wire keeps its
+			//its own
+			QCOMPARE(c->properties().m_function, functions_before.value(c));
+		}
+
+			//...and the bridge carries it because its wires do
 		QCOMPARE(bridge->tensionText(), QStringLiteral("230V"));
 
 			//Change the wire later and the bridge follows, like every
@@ -802,7 +812,7 @@ private slots:
 
 			//The very first step of a drawn bridge writes the wires as
 			//well: the command the drawing pushes runs the steps under it
-		const BridgeInformation chosen{QStringLiteral("PE"), QStringLiteral("24VDC")};
+		const BridgeInformation chosen{QStringLiteral("24VDC")};
 		BridgePartData data;
 		data.uuid = QUuid::createUuid();
 		data.diagram = folio->uuid();
@@ -812,7 +822,6 @@ private slots:
 		Bridge *drawn = project.newBridge();
 		drawn->addPart(data);
 		drawn->addTerminal(terminalOf(wired));
-		drawn->setFunctionText(chosen.function);
 		drawn->setTensionText(chosen.tension);
 
 		auto *item = new BridgePart(data);
@@ -828,6 +837,108 @@ private slots:
 
 		folio->undoStack().undo();
 		QCOMPARE(conductor->properties().m_tension_protocol, original_tension);
+	}
+
+	//The pin a bridge names is the pin it asks: a symbol may carry
+	//several terminals and each of them is its own potential
+	void thePinsOfASymbolAreAskedApart()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(!terminals.isEmpty());
+
+			//A symbol with at least two pins, one of them wired
+		Element *element = nullptr;
+		for (const QSharedPointer<RealTerminal> &terminal : terminals) {
+			Element *candidate = terminal->element();
+			if (candidate && candidate->terminals().size() >= 2) {
+				element = candidate;
+				break;
+			}
+		}
+		if (!element) {
+			QSKIP("the fixture has no symbol with two pins");
+		}
+
+			//Two pins wired: each of them carries its own voltage and each
+		//is asked on its own -- a symbol with a separated function is
+		//exactly that, one potential per pin
+		QList<Terminal *> wired_pins;
+		for (Terminal *pin : element->terminals()) {
+			if (!pin->conductors().isEmpty()) {
+				wired_pins << pin;
+			}
+		}
+		if (wired_pins.size() < 2) {
+			QSKIP("the fixture has fewer than two wired pins on one symbol");
+		}
+
+		ConductorProperties first_properties = wired_pins.at(0)->conductors().first()->properties();
+		first_properties.m_tension_protocol = QStringLiteral("11V");
+		wired_pins.at(0)->conductors().first()->setProperties(first_properties);
+
+		ConductorProperties second_properties = wired_pins.at(1)->conductors().first()->properties();
+		second_properties.m_tension_protocol = QStringLiteral("22V");
+		wired_pins.at(1)->conductors().first()->setProperties(second_properties);
+
+		const BridgeTerminal first_pin{element->uuid(),
+									  wired_pins.at(0)->stableUuid().toString()};
+		const BridgeTerminal second_pin{element->uuid(),
+									   wired_pins.at(1)->stableUuid().toString()};
+		QCOMPARE(BridgeManager::informationOf(&project, first_pin).tension,
+				 QStringLiteral("11V"));
+		QVERIFY2(BridgeManager::informationOf(&project, second_pin).tension
+				 == QStringLiteral("22V"),
+				 "the pin beside it carries its own voltage");
+
+			//And a pin with no wire of its own says nothing at all
+		for (Terminal *pin : element->terminals()) {
+			if (!pin->conductors().isEmpty()) {
+				continue;
+			}
+			const BridgeTerminal unwired{element->uuid(), pin->stableUuid().toString()};
+			QVERIFY(BridgeManager::informationOf(&project, unwired).tension.isEmpty());
+		}
+	}
+
+	//A bridge takes an edit over to the wires of every terminal it lands
+	//on: the voltage crosses it, and only the voltage
+	void aWireEditCrossesTheBridge()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+
+			//Two wired pins the bridge lands on
+		QList<Conductor *> wires;
+		QList<BridgeTerminal> lands_on;
+		for (const QSharedPointer<RealTerminal> &terminal : terminals) {
+			Element *element = terminal->element();
+			if (!element || element->terminals().isEmpty()
+				|| element->terminals().first()->conductors().isEmpty()) {
+				continue;
+			}
+			wires << element->terminals().first()->conductors().first();
+			lands_on << terminalOf(terminal);
+			if (lands_on.size() == 2) {
+				break;
+			}
+		}
+		if (lands_on.size() < 2) {
+			QSKIP("the fixture has fewer than two wired terminals");
+		}
+
+		Bridge *bridge = project.newBridge();
+		bridge->setTerminals(lands_on);
+
+		const QList<Conductor *> over =
+				BridgeManager::conductorsOverBridges(&project, {wires.first()});
+		QVERIFY2(over.contains(wires.last()),
+				 "the edit reaches the wires of the other end of the bridge");
 	}
 };
 

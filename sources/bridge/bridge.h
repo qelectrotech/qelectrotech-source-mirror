@@ -48,8 +48,9 @@ struct BridgePartData
 	@brief One terminal a bridge lands on, named by identity.
 
 	The element uuid names the terminal symbol of the drawing, the way
-	the bridge is drawn; the terminal name tells which of the terminals
-	of that symbol it is, for symbols which have more than one.
+	the bridge is drawn; the terminal uuid tells which of the pins of
+	that symbol it is -- a symbol may carry several, each of them its
+	own potential, and they have no names to tell them apart.
 */
 struct BridgeTerminal
 {
@@ -66,19 +67,24 @@ struct BridgeTerminal
 	}
 };
 
+inline size_t qHash(const BridgeTerminal &terminal, size_t seed = 0)
+{
+	return qHash(terminal.element, seed) ^ qHash(terminal.terminal, seed);
+}
+
 /**
-	@brief What one terminal carries as information: its function text
-	and the voltage/protocol of a wire wired to it. A bridge takes it
-	over -- it sits in the cabinet where that potential is.
+	@brief What a bridge crosses: the voltage/protocol of the wires it
+	sits on, and nothing else. A bridge carries no function -- the
+	function of a terminal is its own business and a separated function
+	stays separated however many bridges sit across it.
 */
 struct BridgeInformation
 {
-	QString function;
 	QString tension;
 
 	friend bool operator==(const BridgeInformation &a, const BridgeInformation &b)
 	{
-		return a.function == b.function && a.tension == b.tension;
+		return a.tension == b.tension;
 	}
 	friend bool operator!=(const BridgeInformation &a, const BridgeInformation &b)
 	{
@@ -144,13 +150,11 @@ class Bridge : public QObject
 		int column() const;
 		void setColumn(int column);
 
-			//What the bridge carries as information: the function and the
-			//voltage of the terminals it lands on. It sits in the cabinet
-			//where that potential is -- taken over from them, never typed
-			//in. When they do not agree, the user is asked which the
-			//bridge takes, the way sheet references are linked.
-		QString functionText() const;
-		void setFunctionText(const QString &text);
+			//What the bridge carries: the voltage/protocol of the wires
+			//it sits on, and only that -- never a function. Taken over
+			//from them, never typed in; when they do not agree the user
+			//is asked which the bridge takes, the way sheet references
+			//are linked.
 		QString tensionText() const;
 		void setTensionText(const QString &text);
 
@@ -180,7 +184,7 @@ class Bridge : public QObject
 		void changed();
 
 	private:
-		BridgeInformation liveInformation() const;
+		QString liveTension() const;
 
 	private:
 		QUuid m_uuid;
@@ -188,7 +192,6 @@ class Bridge : public QObject
 		qreal m_line_width = 1.0;
 		int m_max_connections = unlimited_connections;
 		int m_column = 0;
-		QString m_function_text;
 		QString m_tension_text;
 		QList<BridgeTerminal> m_terminals;
 		QList<BridgePartData> m_parts;
