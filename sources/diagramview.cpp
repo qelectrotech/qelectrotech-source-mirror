@@ -39,6 +39,7 @@
 #include "qeticons.h"
 #include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "qetpalette.h"
+#include <QScopeGuard>
 #include "titleblock/integrationmovetemplateshandler.h"
 #include "PropertiesEditor/propertieseditordialog.h"
 #include "ui/diagrampropertiesdialog.h"
@@ -1161,8 +1162,20 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 */
 void DiagramView::updatePointer(const QPoint &viewport_pos, Qt::MouseButtons buttons)
 {
+	if (!pointerAids()) {
+			//Switched off: hand the pointer back once, then leave it to
+			//the view and the items, as before
+		if (m_pointer != Pointer::System || m_pointer_set) {
+			m_pointer = Pointer::System;
+			m_pointer_set = false;
+			viewport()->unsetCursor();
+			viewport()->update(crosshairArea(m_crosshair_pos));
+		}
+		return;
+	}
 	if (buttons != Qt::NoButton)
 		return;
+	m_pointer_set = true;
 
 		//A caught handle: the arrow is drawn on it
 	if (m_caught_handle && m_crosshair_visible && crosshairShown()) {
@@ -1250,6 +1263,9 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *original)
 	std::unique_ptr<QMouseEvent> shifted;
 	QMouseEvent *e = onCaughtHandle(original, shifted);
 	const AcceptedBack accepted_back{e, original};
+		//After a drag the mouse may stand over another item: its pointer
+		//now, not at the next move
+	const auto pointer_after = qScopeGuard([this, e] { updatePointer(e->pos(), e->buttons()); });
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
 		//A plain right click on a running tool falls through: the tool
@@ -1964,8 +1980,9 @@ void DiagramView::setCellLinesShown(bool shown)
 }
 
 namespace {
-		/// The setting, read once and then kept here for every view
+		/// The settings, read once and then kept here for every view
 	int s_crosshair = -1;
+	int s_pointer_aids = -1;
 }
 
 /**
@@ -1994,6 +2011,34 @@ void DiagramView::setCrosshairShown(bool shown)
 	s_crosshair = shown;
 	QSettings settings;
 	settings.setValue(QStringLiteral("diagrameditor/crosshair"), shown);
+}
+
+/**
+	@brief DiagramView::pointerAids
+	@return true when the pointer helps to grab: a four-way arrow over
+	what a drag moves, the pointer on the crosshair's grid point, and
+	handles near the mouse catching the crosshair and the press. Off, the
+	system's pointer and the handle under the mouse are used, as before.
+*/
+bool DiagramView::pointerAids()
+{
+	if (s_pointer_aids < 0) {
+		QSettings settings;
+		s_pointer_aids = settings.value(QStringLiteral("diagrameditor/pointer_aids"), false).toBool();
+	}
+	return s_pointer_aids;
+}
+
+/**
+	@brief DiagramView::setPointerAids
+	@param on : see pointerAids(); kept in the settings, for every view
+	from the next mouse move.
+*/
+void DiagramView::setPointerAids(bool on)
+{
+	s_pointer_aids = on;
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/pointer_aids"), on);
 }
 
 /**
@@ -2045,6 +2090,8 @@ void DiagramView::moveCrosshair(const QPoint &viewport_pos)
 */
 QGraphicsObject *DiagramView::handleNear(const QPoint &viewport_pos) const
 {
+	if (!pointerAids())
+		return nullptr;
 	constexpr int reach = 12;
 	QGraphicsObject *nearest = nullptr;
 	qreal distance = reach + 1;
@@ -2073,6 +2120,11 @@ QGraphicsObject *DiagramView::handleNear(const QPoint &viewport_pos) const
 */
 QMouseEvent *DiagramView::onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseEvent> &shifted)
 {
+		//A grab whose release never came (the press went to a menu, a
+		//dialog or a tool): any event without the left button ends it
+	if (m_grabbing_caught && e->type() != QEvent::MouseButtonRelease
+	    && !(e->buttons() & Qt::LeftButton))
+		m_grabbing_caught = false;
 	if (e->type() == QEvent::MouseButtonPress && e->button() == Qt::LeftButton
 	    && m_caught_handle && m_crosshair_visible && crosshairShown()) {
 		m_grab_offset = QPointF(mapFromScene(m_caught_handle->scenePos())) - e->position();

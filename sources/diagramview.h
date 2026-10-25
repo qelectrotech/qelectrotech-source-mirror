@@ -95,6 +95,8 @@ class DiagramView : public PaletteGraphicsView
 			/// system's, which a program may not move on every platform
 		enum class Pointer { System, Arrow, Move };
 		Pointer           m_pointer = Pointer::System;
+			/// The view's cursor was set by updatePointer()
+		bool              m_pointer_set = false;
 		void updatePointer(const QPoint &viewport_pos, Qt::MouseButtons buttons);
 		void drawPointer(QPainter *painter) const;
 		QPointF           m_drag_last_pos;
@@ -138,6 +140,8 @@ class DiagramView : public PaletteGraphicsView
 			/// one setting for every view
 		static bool crosshairShown();
 		static void setCrosshairShown(bool shown);
+		static bool pointerAids();
+		static void setPointerAids(bool on);
 		bool crosshairVisible() const { return m_crosshair_visible; }
 			/// The pointer drawn on the crosshair's grid point, if any:
 			/// 0 none (the system's shows), 1 an arrow, 2 a four-way arrow

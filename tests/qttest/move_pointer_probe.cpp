@@ -5,7 +5,9 @@
 // the empty folio the arrow. With the crosshair on, the pointer jumps with
 // it from grid point to grid point: the system's pointer is hidden over
 // the folio and an arrow, or the four-way arrow, is drawn on the
-// crosshair's point instead.
+// crosshair's point instead. All of it only with the setting "Four-way
+// arrow and handle catching with the crosshair": off, the default, the
+// system's pointer and the handle under the mouse, as before.
 #include <QApplication>
 #include <QFontDatabase>
 #include <QImage>
@@ -83,6 +85,18 @@ int main(int argc, char **argv)
 		const QPoint empty = view.mapFromScene(folio->border_and_titleblock.insideBorderRect().topLeft() + QPointF(15, 15));
 		check(!view.itemAt(empty), "and one over the empty folio");
 
+		// Switched off (the default): nothing changes the pointer, and the
+		// crosshair keeps to the grid.
+		check(!DiagramView::pointerAids(), "the pointer aids are off by default");
+		moveTo(view, over);
+		check(!view.viewport()->testAttribute(Qt::WA_SetCursor), "off: over a symbol, the view sets no pointer");
+		DiagramView::setCrosshairShown(true);
+		moveTo(view, over);
+		check(view.drawnPointer() == 0 && !view.viewport()->testAttribute(Qt::WA_SetCursor),
+			  "off: with the crosshair too, the system's pointer");
+		DiagramView::setCrosshairShown(false);
+		DiagramView::setPointerAids(true);
+
 		moveTo(view, over);
 		check(view.viewport()->cursor().shape() == Qt::SizeAllCursor, "over a symbol, the four-way arrow");
 		check(view.drawnPointer() == 0, "the system's pointer, while the crosshair is off");
@@ -133,7 +147,31 @@ int main(int argc, char **argv)
 		std::printf("width %g -> %g\n", width_before, text->boundingRect().width());
 		check(qAbs(text->boundingRect().width() - width_before) > 10, "a press beside it grabs the handle: the text's width changes");
 		check(element->pos() == element_pos, "and the symbol stays where it was");
+
+			//A press whose release never comes (it went to a menu or a
+			//dialog): the next move without the button ends the grab, and
+			//the handle catches the crosshair again
+		moveTo(view, beside + QPoint(40, 0));
+		const QPoint near_handle = view.mapFromScene(handle->scenePos()) + QPoint(7, 6);
+		moveTo(view, near_handle);
+		check(view.crosshairPos() == handle->scenePos(), "caught again before the lost release");
+		send(QEvent::MouseButtonPress, near_handle, Qt::LeftButton);
+		moveTo(view, near_handle + QPoint(1, 0));
+		check(view.crosshairPos() == handle->scenePos(), "a move without the button ends a grab whose release was lost");
+		send(QEvent::MouseButtonRelease, near_handle + QPoint(1, 0), Qt::NoButton);
 		element->setSelected(false);
+		QApplication::processEvents();
+
+			//After a drag, the pointer of where it ended at once: a
+			//rubber band from the empty folio onto the symbol
+		moveTo(view, empty);
+		check(view.drawnPointer() == 1, "the arrow over the empty folio");
+		send(QEvent::MouseButtonPress, empty, Qt::LeftButton);
+		for (int step = 1; step <= 10; ++step)
+			send(QEvent::MouseMove, empty + (over - empty) * step / 10, Qt::LeftButton);
+		send(QEvent::MouseButtonRelease, over, Qt::NoButton);
+		check(view.drawnPointer() == 2, "released over the symbol: the four-way arrow without another move");
+		folio->clearSelection();
 
 		QEvent leave(QEvent::Leave);
 		QApplication::sendEvent(view.viewport(), &leave);

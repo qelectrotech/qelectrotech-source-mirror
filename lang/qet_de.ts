@@ -6921,6 +6921,14 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
+        <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
+        <translation>Ein Vierfachpfeil über allem, was sich ziehen lässt; mit dem Fadenkreuz springt der Zeiger mit ihm von Rasterpunkt zu Rasterpunkt, und ein Anfasser im Umkreis von 12 Pixeln fängt ihn und den Klick. Aus: der Zeiger des Systems, Anfasser nur direkt unter der Maus.</translation>
+    </message>
+    <message>
+        <source>Four-way arrow and handle catching with the crosshair</source>
+        <translation>Vierfachpfeil und Fangen der Anfasser mit dem Fadenkreuz</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="24"/>
         <source>Appearance</source>
         <translation>Darstellung</translation>
