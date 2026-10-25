@@ -26,8 +26,10 @@ string(STRIP "${QET_VERSION_TYPE}" QET_VERSION_TYPE)
 
 set(_qet_valid_version_types dev alpha1 alpha2 alpha3 stable)
 if(NOT QET_VERSION_TYPE IN_LIST _qet_valid_version_types)
-  message(FATAL_ERROR "VERSION_TYPE file contains '${QET_VERSION_TYPE}', must be one of: ${_qet_valid_version_types}")
+  message(FATAL_ERROR "QET_RELEASE file contains '${QET_VERSION_TYPE}', must be one of: ${_qet_valid_version_types}")
 endif()
+
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS QET_VERSION QET_RELEASE)
 
 project(qelectrotech
         VERSION ${QET_VERSION_STRING}
