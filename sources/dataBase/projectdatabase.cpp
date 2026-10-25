@@ -45,6 +45,7 @@
 #include "../TerminalStrip/terminalstrip.h"
 #include "../TerminalStrip/physicalterminal.h"
 #include "../TerminalStrip/realterminal.h"
+#include "../cable/cable.h"
 
 #include <QLocale>
 #include <QDate>
@@ -124,6 +125,8 @@ void projectDataBase::updateDB()
 		flushElementPositions();
 		flushElementTexts();
 		flushCollections();
+		flushFolioValues();
+		flushCables();
 		flushConductorProperties();
 		emit dataBaseUpdated();
 		return;
@@ -1553,6 +1556,8 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 	flushElementPositions();
 	flushElementTexts();
 	flushCollections();
+	flushFolioValues();
+	flushCables();
 	flushConductorProperties();
 
 	// First gate: which kind of statement is acceptable here at all. A
@@ -1961,6 +1966,17 @@ static QList<projectDataBase::ProjectSetting> ownTextRows(const Element *element
 }
 
 /**
+	@brief ownValueRows
+	@return the rows of what the symbol @p element saves that no other
+	table holds (Element::ownValuesXml()), from its own members
+*/
+static QList<projectDataBase::ProjectSetting> ownValueRows(const Element *element)
+{
+	QDomDocument document;
+	return projectDataBase::elementValueRowsOf(element->ownValuesXml(document));
+}
+
+/**
 	@brief projectDataBase::queueElementTexts
 	The texts of @p element changed: they are written by the next
 	flushElementTexts().
@@ -1974,8 +1990,9 @@ void projectDataBase::queueElementTexts(Element *element)
 
 /**
 	@brief projectDataBase::flushElementTexts
-	Write the texts of every symbol queued by queueElementTexts() that is
-	still placed and alone with its uuid (F100).
+	Write the texts and the values (ownValueRows()) of every symbol queued
+	by queueElementTexts() that is still placed and alone with its uuid
+	(F100).
 */
 void projectDataBase::flushElementTexts()
 {
@@ -1991,6 +2008,7 @@ void projectDataBase::flushElementTexts()
 		if (element && m_placed_elements.contains(element->uuid(), element)
 			&& placedElementCount(element->uuid()) == 1) {
 			storeElementTexts(element->uuid(), ownTextRows(element));
+			storeElementValues(element->uuid(), ownValueRows(element));
 		}
 	}
 	if (own_transaction) {
@@ -2023,23 +2041,31 @@ static QString wholeXml(const QDomElement &element)
 	@brief collectionRows
 	Fill @p symbols and @p categories from the collection element
 	@p parent, at the path @p path: a symbol whole, a category with its
-	names only (its content has rows of its own).
+	names only (its content has rows of its own). @p order gets each one's
+	place in the collection, symbols and categories counted together, and
+	the place of a category's names as "<category>/#names".
 */
 static void collectionRows(const QDomElement &parent, const QString &path,
-						   QHash<QString, QString> &symbols, QHash<QString, QString> &categories)
+						   QHash<QString, QString> &symbols, QHash<QString, QString> &categories,
+						   QHash<QString, int> &order)
 {
 	for (QDomElement child = parent.firstChildElement() ; !child.isNull()
 		 ; child = child.nextSiblingElement()) {
 		const QString child_path = (path.isEmpty() ? QString() : path + QLatin1Char('/'))
 				+ child.attribute(QStringLiteral("name"));
-		if (child.tagName() == QLatin1String("element")) {
+		if (child.tagName() == QLatin1String("names") && !path.isEmpty()) {
+				//Where its category's names sit among its children
+			order.insert(path + QStringLiteral("/#names"), order.size());
+		} else if (child.tagName() == QLatin1String("element")) {
 			symbols.insert(child_path, wholeXml(child));
+			order.insert(child_path, order.size());
 		} else if (child.tagName() == QLatin1String("category")) {
 			QDomElement own = child.cloneNode(false).toElement();
 			const QDomElement names = child.firstChildElement(QStringLiteral("names"));
 			if (!names.isNull()) own.appendChild(names.cloneNode(true));
 			categories.insert(child_path, wholeXml(own));
-			collectionRows(child, child_path, symbols, categories);
+			order.insert(child_path, order.size());
+			collectionRows(child, child_path, symbols, categories, order);
 		}
 	}
 }
@@ -2058,8 +2084,9 @@ void projectDataBase::flushCollections()
 	m_collections_changed = false;
 
 	QHash<QString, QString> symbols, categories, templates;
+	QHash<QString, int> order;
 	if (XmlElementCollection *collection = m_project->embeddedElementCollection())
-		collectionRows(collection->root(), QString(), symbols, categories);
+		collectionRows(collection->root(), QString(), symbols, categories, order);
 	TitleBlockTemplatesProjectCollection *tbt = m_project->embeddedTitleBlockTemplatesCollection();
 	const QStringList names = tbt->templates();
 	for (const QString &name : names) {
@@ -2068,9 +2095,21 @@ void projectDataBase::flushCollections()
 	}
 
 	const bool own_transaction = m_data_base.transaction();
-	writeWholeRows(QStringLiteral("symbol_def"), QStringLiteral("path"), m_symbol_defs, symbols);
-	writeWholeRows(QStringLiteral("symbol_category"), QStringLiteral("path"), m_symbol_categories, categories);
+	writeWholeRows(QStringLiteral("symbol_def"), QStringLiteral("path"), m_symbol_defs, symbols, &order);
+	writeWholeRows(QStringLiteral("symbol_category"), QStringLiteral("path"), m_symbol_categories, categories, &order);
 	writeWholeRows(QStringLiteral("titleblock_template"), QStringLiteral("name"), m_titleblock_templates, templates);
+	QSqlQuery names_update(m_data_base);
+	names_update.prepare(QStringLiteral("UPDATE symbol_category SET names_ord = :ord WHERE path = :path"));
+	for (auto it = categories.constBegin() ; it != categories.constEnd() ; ++it) {
+			//Every one: a row written again above lost it
+		const QString key = it.key() + QStringLiteral("/#names");
+		names_update.bindValue(QStringLiteral(":ord"), order.contains(key) ? QVariant(order.value(key)) : QVariant(QMetaType(QMetaType::Int)));
+		names_update.bindValue(QStringLiteral(":path"), it.key());
+		if (!names_update.exec()) {
+			qDebug() << "projectDataBase::flushCollections names error : " << names_update.lastError();
+		}
+	}
+	m_collection_order = order;
 	if (own_transaction) {
 		m_data_base.commit();
 	}
@@ -2083,7 +2122,8 @@ void projectDataBase::flushCollections()
 	or changed ones written.
 */
 void projectDataBase::writeWholeRows(const QString &table, const QString &key,
-									 QHash<QString, QString> &stored, const QHash<QString, QString> &now)
+									 QHash<QString, QString> &stored, const QHash<QString, QString> &now,
+									 const QHash<QString, int> *order)
 {
 	QSqlQuery remove(m_data_base);
 	remove.prepare(QStringLiteral("DELETE FROM %1 WHERE %2 = :key").arg(table, key));
@@ -2095,12 +2135,16 @@ void projectDataBase::writeWholeRows(const QString &table, const QString &key,
 		}
 	}
 	QSqlQuery write(m_data_base);
-	write.prepare(QStringLiteral("INSERT OR REPLACE INTO %1 (%2, content, hash) VALUES (:key, :content, :hash)")
-				  .arg(table, key));
+	write.prepare(order ? QStringLiteral("INSERT OR REPLACE INTO %1 (%2, content, hash, ord) "
+										 "VALUES (:key, :content, :hash, :ord)").arg(table, key)
+						: QStringLiteral("INSERT OR REPLACE INTO %1 (%2, content, hash) "
+										 "VALUES (:key, :content, :hash)").arg(table, key));
 	for (auto it = now.constBegin() ; it != now.constEnd() ; ++it) {
 		auto known = stored.constFind(it.key());
-		if (known != stored.constEnd() && *known == it.value()) continue;
+		if (known != stored.constEnd() && *known == it.value()
+			&& (!order || m_collection_order.value(it.key(), -1) == order->value(it.key()))) continue;
 		write.bindValue(QStringLiteral(":key"), it.key());
+		if (order) write.bindValue(QStringLiteral(":ord"), order->value(it.key()));
 		write.bindValue(QStringLiteral(":content"), it.value());
 		write.bindValue(QStringLiteral(":hash"), QString::fromLatin1(
 							QCryptographicHash::hash(it.value().toUtf8(), QCryptographicHash::Sha256).toHex()));
@@ -2817,10 +2861,33 @@ void projectDataBase::flushDrawingItems()
 		return;
 	}
 
-	const QSet<QObject *> dirty = m_dirty_drawing_items;
+		//In each folio's stacking order, the order a save writes them in:
+		//an item stored for the first time is given its place among the
+		//items of its folio then (DrawnItem::seq)
+	QList<QObject *> dirty = m_dirty_drawing_items.values();
+	QHash<QGraphicsScene *, QHash<const QGraphicsItem *, int>> ranks;
+	QHash<QObject *, int> rank;
+	for (QObject *object : std::as_const(dirty)) {
+		auto item = qobject_cast<QGraphicsObject *>(object);
+		QGraphicsScene *scene = item ? item->scene() : nullptr;
+		if (!scene) {
+			rank.insert(object, INT_MAX);
+			continue;
+		}
+		auto &scene_ranks = ranks[scene];
+		if (scene_ranks.isEmpty()) {
+			const QList<QGraphicsItem *> stacked = scene->items(
+						QRectF(-1e9, -1e9, 2e9, 2e9), Qt::IntersectsItemBoundingRect, Qt::AscendingOrder);
+			for (int i = 0 ; i < stacked.size() ; ++i)
+				scene_ranks.insert(stacked.at(i), i);
+		}
+		rank.insert(object, scene_ranks.value(item, INT_MAX));
+	}
+	std::stable_sort(dirty.begin(), dirty.end(),
+					 [&rank](QObject *a, QObject *b) { return rank.value(a) < rank.value(b); });
 		//One transaction for the batch, unless a caller already holds one.
 	const bool own_transaction = m_data_base.transaction();
-	for (QObject *object : dirty) {
+	for (QObject *object : std::as_const(dirty)) {
 		if (writeDrawingItem(object)) {
 			m_dirty_drawing_items.remove(object);
 		}
@@ -3095,19 +3162,51 @@ bool projectDataBase::createDataBase()
 		qDebug() << " element_text_value index query : " << query_.lastError();
 	}
 
+		//What a symbol, a folio or a cable saves that no other table holds,
+		//one row per value as project_setting (storeElementValues(),
+		//flushFolioValues(), flushCables()): a symbol's prefix, frozen
+		//label, whether it moves, a terminal's override properties and a
+		//PLC's master data; a folio's default wire and its freeze and
+		//numbering settings; each cable whole
+	for (const auto &[table, key] : {std::pair{QStringLiteral("element_value"), QStringLiteral("element_uuid")},
+									 std::pair{QStringLiteral("folio_value"), QStringLiteral("diagram_uuid")},
+									 std::pair{QStringLiteral("cable_value"), QStringLiteral("cable_uuid")}}) {
+		if (!query_.exec(QStringLiteral("CREATE TABLE %1 (%2 VARCHAR(50) NOT NULL, section TEXT NOT NULL, "
+										"ord INTEGER NOT NULL, name TEXT NOT NULL, value TEXT)").arg(table, key))) {
+			qDebug() << table << "table query : " << query_.lastError();
+		}
+		if (!query_.exec(QStringLiteral("CREATE INDEX idx_%1_key ON %1 (%2)").arg(table, key))) {
+			qDebug() << table << "index query : " << query_.lastError();
+		}
+	}
+
+		//The symbols a folio keeps as read because their definition is
+		//missing, and the wires it keeps (F127, F128), each whole as the save
+		//writes it, in that order (flushFolioValues())
+	if (!query_.exec(QStringLiteral("CREATE TABLE kept_item (diagram_uuid VARCHAR(50) NOT NULL, "
+									"ord INTEGER NOT NULL, content TEXT NOT NULL)"))) {
+		qDebug() << " kept_item table query : " << query_.lastError();
+	}
+
 		//Create the project's own symbols, their categories and its
 		//title-block templates, each whole as the project saves it
 		//(flushCollections()). path is the place in the project's
 		//collection ("import/10_electric/relay.elmt"), name a template's
 		//name; hash the SHA-256 of content.
+		//ord: the place in the collection, symbols and categories counted
+		//together, as the save writes them; names_ord that of a category's
+		//names, NULL when it has none
 	for (const QString &table : {QStringLiteral("CREATE TABLE symbol_def ("
 												"path TEXT PRIMARY KEY NOT NULL, "
 												"content TEXT NOT NULL, "
-												"hash VARCHAR(64) NOT NULL)"),
+												"hash VARCHAR(64) NOT NULL, "
+												"ord INTEGER NOT NULL DEFAULT 0)"),
 								 QStringLiteral("CREATE TABLE symbol_category ("
 												"path TEXT PRIMARY KEY NOT NULL, "
 												"content TEXT NOT NULL, "
-												"hash VARCHAR(64) NOT NULL)"),
+												"hash VARCHAR(64) NOT NULL, "
+												"ord INTEGER NOT NULL DEFAULT 0, "
+												"names_ord INTEGER)"),
 								 QStringLiteral("CREATE TABLE titleblock_template ("
 												"name TEXT PRIMARY KEY NOT NULL, "
 												"content TEXT NOT NULL, "
@@ -3167,7 +3266,11 @@ bool projectDataBase::createDataBase()
 			"section TEXT NOT NULL, "
 			"ord INTEGER NOT NULL, "
 			"name TEXT NOT NULL, "
-			"value TEXT)"))) {
+			"value TEXT, "
+				//The item's place among the drawn items of its folio, for
+				//those of the same z: first stored, first drawn, as the
+				//folio stacks them (storeDrawnRows())
+			"seq INTEGER NOT NULL DEFAULT 0)"))) {
 		qDebug() << " drawing_item_table query : " << query_.lastError();
 	}
 
@@ -4073,6 +4176,7 @@ void projectDataBase::unplaceElement(Element *element, const QUuid &uuid)
 	forgetElementPlacement(uuid);
 	forgetSequence(uuid);
 	forgetElementTexts(uuid);
+	forgetElementValues(uuid);
 }
 
 /**
@@ -4397,7 +4501,8 @@ void projectDataBase::storeFolioNumber(const QUuid &folio, int index, int total)
 	@p section, the @p ord th of its kind there. Attributes in name order
 	(a QDomElement keeps no order of its own); a <property name="..."> child
 	(a DiagramContext) gives one row named after it, with its show flag as
-	"<name>#show"; any other child is a section of its own. The section of
+	"<name>#show"; any other child is a section of its own; an element
+	with no attribute, child or text gives one empty "#text" row. The section of
 	a child of a repeated item names which one it belongs to
 	("layout/physical_terminal[2]/real_terminal"), so no two rows of
 	different items look alike.
@@ -4453,6 +4558,11 @@ void projectDataBase::xmlRows(const QDomElement &element, const QString &section
 	}
 	if (!has_child && !element.text().isEmpty())
 		rows.append({section, ord, QStringLiteral("#text"), element.text()});
+		//An element with nothing in it still is one, and reading it can
+		//differ from reading none (an empty <text> of a symbol's text is
+		//no text, a missing one the default "Text")
+	else if (!has_child && names.isEmpty())
+		rows.append({section, ord, QStringLiteral("#text"), QString()});
 }
 
 /**
@@ -4601,6 +4711,184 @@ void projectDataBase::forgetElementTexts(const QUuid &element)
 }
 
 /**
+	@brief projectDataBase::elementValueRowsOf
+	@return the rows of what the saved symbol @p element holds that no
+	other table does: its frozen label, whether it moves and its prefix, as
+	Element::fromXml() reads them (a file that leaves one out gives the
+	value it is read as), then its <properties> and <plcMasterData>
+*/
+QList<projectDataBase::ProjectSetting> projectDataBase::elementValueRowsOf(const QDomElement &element)
+{
+	QList<ProjectSetting> rows;
+	const QString section = QStringLiteral("element");
+		//Attributes in name order, as xmlRows()
+	rows.append({section, 0, QStringLiteral("freezeLabel"),
+				 element.attribute(QStringLiteral("freezeLabel"), QStringLiteral("false")) == QLatin1String("false")
+				 ? QStringLiteral("false") : QStringLiteral("true")});
+	rows.append({section, 0, QStringLiteral("is_movable"),
+				 QString::number(int(bool(element.attribute(QStringLiteral("is_movable"), QStringLiteral("1")).toInt())))});
+	rows.append({section, 0, QStringLiteral("prefix"), element.attribute(QStringLiteral("prefix"))});
+	for (const QString &tag : {QStringLiteral("properties"), QStringLiteral("plcMasterData")}) {
+		const QDomElement child = element.firstChildElement(tag);
+		if (!child.isNull())
+			xmlRows(child, tag, 0, rows);
+	}
+	return rows;
+}
+
+/**
+	@brief projectDataBase::storeElementValues
+	Store @p rows (elementValueRowsOf()) for the placed symbol @p element
+	@return true if that changed what was stored
+*/
+bool projectDataBase::storeElementValues(const QUuid &element, const QList<ProjectSetting> &rows)
+{
+	return storeKeyedRows(QStringLiteral("element_value"), QStringLiteral("element_uuid"),
+						  m_element_values, element, rows);
+}
+
+/**
+	@brief projectDataBase::forgetElementValues
+	The symbol @p element is no longer placed: its stored values go.
+*/
+void projectDataBase::forgetElementValues(const QUuid &element)
+{
+	forgetKeyedRows(QStringLiteral("element_value"), QStringLiteral("element_uuid"), m_element_values, element);
+}
+
+/**
+	@brief projectDataBase::storeKeyedRows
+	Store @p rows under @p key in @p table, whose key column is @p column,
+	and in @p cache in front of it. Nothing is written if they are unchanged.
+	@return true if that changed what was stored
+*/
+bool projectDataBase::storeKeyedRows(const QString &table, const QString &column,
+									 QHash<QUuid, QList<ProjectSetting>> &cache,
+									 const QUuid &key, const QList<ProjectSetting> &rows)
+{
+	if (key.isNull()) return false;
+	auto known = cache.constFind(key);
+	if (known != cache.constEnd() && *known == rows) return false;
+	cache.insert(key, rows);
+
+	const QString uuid = key.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM %1 WHERE %2 = :uuid").arg(table, column));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeKeyedRows" << table << "remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral("INSERT INTO %1 (%2, section, ord, name, value) "
+								  "VALUES (:uuid, :section, :ord, :name, :value)").arg(table, column));
+	for (const ProjectSetting &row : rows) {
+		insert.bindValue(QStringLiteral(":uuid"), uuid);
+		insert.bindValue(QStringLiteral(":section"), row.section);
+		insert.bindValue(QStringLiteral(":ord"), row.ord);
+		insert.bindValue(QStringLiteral(":name"), row.name);
+		insert.bindValue(QStringLiteral(":value"), row.value);
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeKeyedRows" << table << "insert error : " << insert.lastError();
+		}
+	}
+	return true;
+}
+
+/**
+	@brief projectDataBase::forgetKeyedRows
+	The rows of @p key go from @p table and @p cache
+*/
+void projectDataBase::forgetKeyedRows(const QString &table, const QString &column,
+									  QHash<QUuid, QList<ProjectSetting>> &cache, const QUuid &key)
+{
+	if (!cache.remove(key)) return;
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM %1 WHERE %2 = :uuid").arg(table, column));
+	remove.bindValue(QStringLiteral(":uuid"), key.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::forgetKeyedRows" << table << "error : " << remove.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::flushFolioValues
+	Write the values (Diagram::ownValuesXml()) of every placed folio, and
+	the symbols and wires it keeps as read (Diagram::keptXml()), when
+	queueFolioValues() said one may have changed. Folios not built hold
+	their values too: they are read with the folio's header.
+*/
+void projectDataBase::flushFolioValues()
+{
+	if (!m_folio_values_changed) return;
+	m_folio_values_changed = false;
+	const bool own_transaction = m_data_base.transaction();
+	for (auto it = m_placed_folios.constBegin() ; it != m_placed_folios.constEnd() ; ++it) {
+		if (!it.value()) continue;
+		QDomDocument document;
+		QList<ProjectSetting> rows;
+		xmlRows(it.value()->ownValuesXml(document), QStringLiteral("diagram"), 0, rows);
+		storeKeyedRows(QStringLiteral("folio_value"), QStringLiteral("diagram_uuid"), m_folio_values, it.key(), rows);
+			//The symbols and wires it keeps as read, each whole
+		QStringList kept;
+		for (const QDomElement &item : it.value()->keptXml(document)) {
+			QString text;
+			QTextStream stream(&text);
+			item.save(stream, -1);
+			kept << text;
+		}
+		if (m_kept_items.value(it.key()) == kept) continue;
+		m_kept_items.insert(it.key(), kept);
+		QSqlQuery remove(m_data_base);
+		remove.prepare(QStringLiteral("DELETE FROM kept_item WHERE diagram_uuid = :uuid"));
+		remove.bindValue(QStringLiteral(":uuid"), it.key().toString());
+		if (!remove.exec()) {
+			qDebug() << "projectDataBase::flushFolioValues kept remove error : " << remove.lastError();
+		}
+		QSqlQuery insert(m_data_base);
+		insert.prepare(QStringLiteral("INSERT INTO kept_item (diagram_uuid, ord, content) VALUES (:uuid, :ord, :content)"));
+		for (int i = 0 ; i < kept.size() ; ++i) {
+			insert.bindValue(QStringLiteral(":uuid"), it.key().toString());
+			insert.bindValue(QStringLiteral(":ord"), i);
+			insert.bindValue(QStringLiteral(":content"), kept.at(i));
+			if (!insert.exec()) {
+				qDebug() << "projectDataBase::flushFolioValues kept insert error : " << insert.lastError();
+			}
+		}
+	}
+	if (own_transaction) {
+		m_data_base.commit();
+	}
+}
+
+/**
+	@brief projectDataBase::flushCables
+	Write every cable of the project whole (Cable::toXml(), its sections
+	included), when queueCables() said one changed, and forget the rows of
+	the cables gone.
+*/
+void projectDataBase::flushCables()
+{
+	if (!m_cables_changed || !m_project) return;
+	m_cables_changed = false;
+	const bool own_transaction = m_data_base.transaction();
+	QSet<QUuid> now;
+	for (Cable *cable : m_project->cables()) {
+		QDomDocument document;
+		QList<ProjectSetting> rows;
+		xmlRows(cable->toXml(document), QStringLiteral("cable"), 0, rows);
+		now.insert(cable->uuid());
+		storeKeyedRows(QStringLiteral("cable_value"), QStringLiteral("cable_uuid"), m_cable_values, cable->uuid(), rows);
+	}
+	const QList<QUuid> stored = m_cable_values.keys();
+	for (const QUuid &uuid : stored)
+		if (!now.contains(uuid))
+			forgetKeyedRows(QStringLiteral("cable_value"), QStringLiteral("cable_uuid"), m_cable_values, uuid);
+	if (own_transaction) {
+		m_data_base.commit();
+	}
+}
+
+/**
 	@brief projectDataBase::forgetTerminalStrip
 	Drop the rows of the strip @p strip (it left the project).
 */
@@ -4696,6 +4984,8 @@ bool projectDataBase::storeDrawnRows(const QUuid &item, const DrawnItem &drawn)
 	const QString old_blob = known == m_drawn_items.constEnd() ? QString() : blobOfRows(known->rows);
 	DrawnItem kept = drawn;
 	kept.picture.clear();
+		//Rewritten, an item keeps its place
+	kept.seq = known == m_drawn_items.constEnd() ? ++m_drawn_seq : known->seq;
 	m_drawn_items.insert(item, kept);
 
 	const QString uuid = item.toString();
@@ -4721,9 +5011,10 @@ bool projectDataBase::storeDrawnRows(const QUuid &item, const DrawnItem &drawn)
 	}
 	QSqlQuery insert(m_data_base);
 	insert.prepare(QStringLiteral(
-			"INSERT INTO drawing_item (item_uuid, folio_uuid, kind, section, ord, name, value) "
-			"VALUES (:uuid, :folio, :kind, :section, :ord, :name, :value)"));
+			"INSERT INTO drawing_item (item_uuid, folio_uuid, kind, section, ord, name, value, seq) "
+			"VALUES (:uuid, :folio, :kind, :section, :ord, :name, :value, :seq)"));
 	for (const ProjectSetting &row : std::as_const(drawn.rows)) {
+		insert.bindValue(QStringLiteral(":seq"), kept.seq);
 		insert.bindValue(QStringLiteral(":uuid"), uuid);
 		insert.bindValue(QStringLiteral(":folio"), folio.toString());
 		insert.bindValue(QStringLiteral(":kind"), drawn.kind);
@@ -4786,6 +5077,7 @@ void projectDataBase::placeFolio(Diagram *folio)
 	m_placed_folios.insert(folio->uuid(), folio);
 	storeFolioTitleBlock(folio->uuid(), folio->border_and_titleblock.localTitleBlock());
 	storeFolioBorder(folio->uuid(), folio->border_and_titleblock.exportBorder());
+	queueFolioValues();
 }
 
 /**
@@ -4797,6 +5089,15 @@ void projectDataBase::unplaceFolio(Diagram *folio, const QUuid &uuid)
 {
 	if (m_placed_folios.value(uuid) != folio) return;
 	m_placed_folios.remove(uuid);
+	if (m_kept_items.remove(uuid)) {
+		QSqlQuery remove_kept(m_data_base);
+		remove_kept.prepare(QStringLiteral("DELETE FROM kept_item WHERE diagram_uuid = :uuid"));
+		remove_kept.bindValue(QStringLiteral(":uuid"), uuid.toString());
+		if (!remove_kept.exec()) {
+			qDebug() << "projectDataBase::unplaceFolio kept error : " << remove_kept.lastError();
+		}
+	}
+	forgetKeyedRows(QStringLiteral("folio_value"), QStringLiteral("diagram_uuid"), m_folio_values, uuid);
 	m_folio_titleblocks.remove(uuid);
 	m_folio_borders.remove(uuid);
 	QSqlQuery remove(m_data_base);
@@ -5242,6 +5543,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	m_prefilled_placements.clear();
 	m_prefilled_sequences.clear();
 	m_prefilled_element_texts.clear();
+	m_prefilled_element_values.clear();
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();
@@ -5255,9 +5557,11 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	QHash<QUuid, ConductorLayout> layouts;
 	QHash<QUuid, ConductorPath> paths;
 	QHash<QUuid, DrawnItem> drawn_items;
+	QList<QUuid> drawn_order;   //as the file holds them, which is how they stack
 	QHash<QUuid, DiagramContext> kinds;
 	QHash<QUuid, ElementPlacement> placements;
 	QHash<QUuid, QList<ProjectSetting>> element_texts;
+	QHash<QUuid, QList<ProjectSetting>> element_values;
 	QHash<QUuid, autonum::sequentialNumbers> sequences;
 		//Each type's kind information, read from its definition once
 	const QHash<QString, QDomElement> definitions = embeddedDefinitions();
@@ -5320,6 +5624,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 				//Element::fromXml() drops the definition's texts and reads
 				//these: they are the symbol's texts as they stand
 			element_texts.insert(uuid, elementTextRowsOf(element));
+			element_values.insert(uuid, elementValueRowsOf(element));
 		}
 			//The shapes, free texts and tables, as the file holds them: for
 			//a folio not built that is what saving it writes again
@@ -5341,6 +5646,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 					drawn.kind = item.tagName();
 					xmlRows(item, drawn.kind, 0, drawn.rows);
 					drawn_items.insert(uuid, drawn);
+					drawn_order.append(uuid);
 				}
 			}
 			//The pictures too: their bytes are the base64 text of a .qet, or
@@ -5354,6 +5660,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 				const QByteArray bytes = file.isEmpty() || !m_project
 						? QByteArray() : m_project->containerPicture(file);
 				drawn_items.insert(uuid, drawnItemOf(folio_uuid, image, bytes));
+				drawn_order.append(uuid);
 			}
 		const QDomElement conductor_list = folio.firstChildElement(QStringLiteral("conductors"));
 		for (QDomElement conductor = conductor_list.firstChildElement(QStringLiteral("conductor")) ;
@@ -5407,16 +5714,18 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		if (seen.value(it.key()) == 1) m_prefilled_sequences.insert(it.key(), it.value());
 	for (auto it = element_texts.constBegin() ; it != element_texts.constEnd() ; ++it)
 		if (seen.value(it.key()) == 1) m_prefilled_element_texts.insert(it.key(), it.value());
+	for (auto it = element_values.constBegin() ; it != element_values.constEnd() ; ++it)
+		if (seen.value(it.key()) == 1) m_prefilled_element_values.insert(it.key(), it.value());
 	for (auto it = conductors.constBegin() ; it != conductors.constEnd() ; ++it)
 		if (seen.value(it.key()) == 1) {
 			m_prefilled_conductors.insert(it.key(), it.value());
 			m_prefilled_layouts.insert(it.key(), layouts.value(it.key()));
 			m_prefilled_paths.insert(it.key(), paths.value(it.key()));
 		}
-	for (auto it = drawn_items.constBegin() ; it != drawn_items.constEnd() ; ++it)
-		if (seen.value(it.key()) == 1) {
-			m_prefilled_drawn_items.insert(it.key());
-			storeDrawnRows(it.key(), it.value());
+	for (const QUuid &uuid : std::as_const(drawn_order))
+		if (seen.value(uuid) == 1) {
+			m_prefilled_drawn_items.insert(uuid);
+			storeDrawnRows(uuid, drawn_items.value(uuid));
 		}
 	for (auto it = m_prefilled_folios.begin() ; it != m_prefilled_folios.end() ; )
 		it = seen.value(it.key()) == 1 ? std::next(it) : m_prefilled_folios.erase(it);
@@ -5433,6 +5742,8 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		storeSequence(it.key(), it.value());
 	for (auto it = m_prefilled_element_texts.constBegin() ; it != m_prefilled_element_texts.constEnd() ; ++it)
 		storeElementTexts(it.key(), it.value());
+	for (auto it = m_prefilled_element_values.constBegin() ; it != m_prefilled_element_values.constEnd() ; ++it)
+		storeElementValues(it.key(), it.value());
 	for (auto it = m_prefilled_folios.constBegin() ; it != m_prefilled_folios.constEnd() ; ++it)
 		storeFolioTitleBlock(it.key(), it.value());
 	for (auto it = m_prefilled_conductors.constBegin() ; it != m_prefilled_conductors.constEnd() ; ++it)
@@ -5469,6 +5780,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 				forgetElementPlacement(it.key());
 				forgetSequence(it.key());
 				forgetElementTexts(it.key());
+				forgetElementValues(it.key());
 			}
 			continue;
 		}
@@ -5544,6 +5856,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 	m_prefilled_placements.clear();
 	m_prefilled_sequences.clear();
 	m_prefilled_element_texts.clear();
+	m_prefilled_element_values.clear();
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
 	m_prefilled_layouts.clear();
@@ -6825,6 +7138,8 @@ void projectDataBase::exportDb(projectDataBase *db,
 	db->flushElementPositions();
 	db->flushElementTexts();
 	db->flushCollections();
+	db->flushFolioValues();
+	db->flushCables();
 	db->flushConductorProperties();
 	QSqlQuery query(db->m_data_base);
 	if (!query.exec("VACUUM INTO '" % escaped_path % "'")) {

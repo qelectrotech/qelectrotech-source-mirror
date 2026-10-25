@@ -155,6 +155,13 @@ class tst_elementtextrows : public QObject
 		return result;
 	}
 
+	// The rows of a symbol with no text and no group: its two empty lists
+	static QStringList noTexts(const QString &uuid)
+	{
+		return {uuid + QStringLiteral("|dynamic_texts|0|#text|"),
+				uuid + QStringLiteral("|texts_groups|0|#text|")};
+	}
+
 	static QStringList rowsOf(const QStringList &rows, const QString &uuid)
 	{
 		QStringList result;
@@ -171,13 +178,14 @@ private slots:
 	}
 
 	// Each value of the saved texts and group is a row; the symbol with no
-	// texts has none
+	// texts has its two empty lists only (no texts, which is not the same
+	// as none saved)
 	void textsAreRows()
 	{
 		const QStringList r = run(true, QStringLiteral("dump('open');")).value(QStringLiteral("open"));
 		const QStringList a = rowsOf(r, uuid_a);
 		QVERIFY2(!a.isEmpty(), qPrintable(r.join(QLatin1Char('\n'))));
-		QVERIFY(rowsOf(r, uuid_b).isEmpty());
+		QCOMPARE(rowsOf(r, uuid_b), noTexts(uuid_b));
 		const QString first = uuid_a + QStringLiteral("|dynamic_texts/dynamic_elmt_text|0|");
 		const QString second = uuid_a + QStringLiteral("|dynamic_texts/dynamic_elmt_text|1|");
 		for (const QString &row : {first + QStringLiteral("uuid|") + text_user,
@@ -222,10 +230,10 @@ private slots:
 		const QString changed = uuid_a + QStringLiteral("|dynamic_texts/dynamic_elmt_text[0]/text|0|#text|changed");
 		QVERIFY2(r.value(QStringLiteral("edited")).contains(changed),
 				 qPrintable(r.value(QStringLiteral("edited")).join(QLatin1Char('\n'))));
-		QVERIFY(rowsOf(r.value(QStringLiteral("edited")), uuid_b).isEmpty());
+		QCOMPARE(rowsOf(r.value(QStringLiteral("edited")), uuid_b), noTexts(uuid_b));
 		QVERIFY(rowsOf(r.value(QStringLiteral("added")), uuid_b)
 				.contains(uuid_b + QStringLiteral("|dynamic_texts/dynamic_elmt_text/text|0|#text|added")));
-		QVERIFY(rowsOf(r.value(QStringLiteral("undone")), uuid_b).isEmpty());
+		QCOMPARE(rowsOf(r.value(QStringLiteral("undone")), uuid_b), noTexts(uuid_b));
 		QVERIFY(r.value(QStringLiteral("undone")).contains(changed));
 	}
 

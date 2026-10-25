@@ -158,6 +158,10 @@ class Element : public QetGraphicsItem
 			/// This symbol's texts and text groups as it saves them, in an
 			/// <element> made in @p document, from its own items
 		QDomElement ownTextsXml(QDomDocument &document) const;
+			/// What this symbol saves that no other table holds, in an
+			/// <element> made in @p document, from its own members
+		QDomElement ownValuesXml(QDomDocument &document) const;
+		void setMovable(bool movable) override;
 		//@kind_information_ is used to store more information
 		//about the herited class like contactelement for know
 		// kind of contact (simple tempo) or number of contact show by the element.
@@ -395,6 +399,7 @@ class Element : public QetGraphicsItem
 		void storeInformation();
 		projectDataBase *placedStore() const;
 		void appendTextsXml(QDomDocument &document, QDomElement &element) const;
+		void appendDataXml(QDomDocument &document, QDomElement &element) const;
 		void scheduleTextsStore();
 		void connectTextStore(DynamicElementTextItem *deti);
 		void connectTextStore(ElementTextItemGroup *group);

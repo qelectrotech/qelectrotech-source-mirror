@@ -1354,6 +1354,19 @@ target_compile_definitions(tst_projectcollectionrows PRIVATE
   "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\""
   "QET_TITLEBLOCKS_DIR=\"${QET_DIR}/titleblocks\"")
 
+# What a symbol, a folio or a cable saves that no other table holds is in the
+# project database (element_value, folio_value, cable_value). QET-SQL-FORMAT S3n.
+add_executable(
+  tst_savevaluerows
+  tst_savevaluerows.cpp)
+add_test(NAME tst_savevaluerows COMMAND tst_savevaluerows)
+add_dependencies(tst_savevaluerows qelectrotech)
+target_link_libraries(tst_savevaluerows PRIVATE Qt::Test)
+target_compile_definitions(tst_savevaluerows PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
 # The sequential numbers of a symbol or a wire are in the project database
 # (sequential_number), from a built folio or from the document. QET-SQL-FORMAT S3e.
 add_executable(

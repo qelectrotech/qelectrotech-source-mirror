@@ -223,6 +223,15 @@ class projectDataBase : public QObject
 		QList<ProjectSetting> elementTextRows(const QUuid &element) const {
 			return m_element_texts.value(element);}
 		void forgetElementTexts(const QUuid &element);
+		static QList<ProjectSetting> elementValueRowsOf(const QDomElement &element);
+		bool storeElementValues(const QUuid &element, const QList<ProjectSetting> &rows);
+		QList<ProjectSetting> elementValueRows(const QUuid &element) const {
+			return m_element_values.value(element);}
+		void forgetElementValues(const QUuid &element);
+			/// A folio's values (Diagram::ownValuesXml()) or the cables may
+			/// have changed: written at the next read
+		void queueFolioValues() {m_folio_values_changed = true;}
+		void queueCables() {m_cables_changed = true;}
 			//@p element's texts changed: written when the database is next
 			//read (flushElementTexts())
 		void queueElementTexts(Element *element);
@@ -248,6 +257,7 @@ class projectDataBase : public QObject
 			//while the item is being stored.
 		struct DrawnItem {
 			QUuid folio; QString kind; QList<ProjectSetting> rows; QByteArray picture;
+			int seq = 0;   ///< its place among the drawn items (storeDrawnRows())
 		};
 		static DrawnItem drawnItemOf(const QUuid &folio, const QDomElement &xml,
 									 const QByteArray &picture = QByteArray());
@@ -432,9 +442,17 @@ class projectDataBase : public QObject
 		void updateFolioPositions();
 		void flushElementPositions();
 		void flushElementTexts();
+		void flushFolioValues();
+		void flushCables();
+		bool storeKeyedRows(const QString &table, const QString &column,
+							QHash<QUuid, QList<ProjectSetting>> &cache,
+							const QUuid &key, const QList<ProjectSetting> &rows);
+		void forgetKeyedRows(const QString &table, const QString &column,
+							 QHash<QUuid, QList<ProjectSetting>> &cache, const QUuid &key);
 		void flushCollections();
 		void writeWholeRows(const QString &table, const QString &key,
-							QHash<QString, QString> &stored, const QHash<QString, QString> &now);
+							QHash<QString, QString> &stored, const QHash<QString, QString> &now,
+							const QHash<QString, int> *order = nullptr);
 		void populateElementTable();
 		void populateElementInfoTable();
 		void populateElementInfoTableFromFolios();
@@ -543,6 +561,8 @@ class projectDataBase : public QObject
 			//they were last written; what is written, by path or name
 		bool m_collections_changed = false;
 		QHash<QString, QString> m_symbol_defs;
+		QHash<QString, int> m_collection_order;   ///< flushCollections()
+		int m_drawn_seq = 0;   ///< the last DrawnItem::seq given
 		QHash<QString, QString> m_symbol_categories;
 		QHash<QString, QString> m_titleblock_templates;
 		QHash<QUuid, DiagramContext> m_element_information;
@@ -550,6 +570,12 @@ class projectDataBase : public QObject
 		QHash<QUuid, ElementPlacement> m_element_placements;
 		QHash<QUuid, autonum::sequentialNumbers> m_sequences;
 		QHash<QUuid, QList<ProjectSetting>> m_element_texts;
+		QHash<QUuid, QList<ProjectSetting>> m_element_values;
+		QHash<QUuid, QList<ProjectSetting>> m_folio_values;
+		QHash<QUuid, QList<ProjectSetting>> m_cable_values;
+		QHash<QUuid, QStringList> m_kept_items;   ///< kept_item, by folio
+		bool m_folio_values_changed = false;
+		bool m_cables_changed = false;
 			//The placed symbols holding each uuid: a paste or a folio copy
 			//briefly gives a copy its original's uuid, so one uuid can have
 			//two symbols until the copy's is renewed.
@@ -596,6 +622,7 @@ class projectDataBase : public QObject
 		QHash<QUuid, ElementPlacement> m_prefilled_placements;
 		QHash<QUuid, autonum::sequentialNumbers> m_prefilled_sequences;
 		QHash<QUuid, QList<ProjectSetting>> m_prefilled_element_texts;
+		QHash<QUuid, QList<ProjectSetting>> m_prefilled_element_values;
 		QHash<QUuid, TitleBlockProperties> m_prefilled_folios;
 		QHash<QUuid, ConductorProperties> m_prefilled_conductors;
 		QHash<QUuid, ConductorLayout> m_prefilled_layouts;

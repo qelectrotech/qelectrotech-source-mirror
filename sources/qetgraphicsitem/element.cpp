@@ -1632,31 +1632,7 @@ QDomElement Element::toXml(
 			element.appendChild(infos);
 	}
 
-		//Save override properties (For now, only used when the element is a terminal)
-	if (m_data.m_type == ElementData::Terminal)
-	{
-		QDomElement properties = document.createElement(QStringLiteral("properties"));
-		QDomElement element_type = document.createElement(QStringLiteral("element_type"));
-
-		element_type.setAttribute(QStringLiteral("terminal_type"),
-								m_data.terminalTypeToString(m_data.terminalType()));
-		element_type.setAttribute(QStringLiteral("terminal_function"),
-								m_data.terminalFunctionToString(m_data.terminalFunction()));
-		element_type.setAttribute(QStringLiteral("terminal_led"),
-								QETXML::boolToString(m_data.terminalLed()));
-
-		properties.appendChild(element_type);
-		element.appendChild(properties);
-	}
-
-		//Save PLC master data override for elements on diagram
-	if (m_data.m_type == ElementData::Master &&
-		m_data.m_master_type == ElementData::PLC)
-	{
-		auto xml_plc = m_data.plcMasterDataToXml(document);
-		if (!xml_plc.isNull())
-			element.appendChild(xml_plc);
-	}
+	appendDataXml(document, element);
 
 	//Dynamic texts
 	appendTextsXml(document, element);
@@ -2434,6 +2410,57 @@ void Element::appendTextsXml(QDomDocument &document, QDomElement &element) const
 }
 
 /**
+	@brief Element::appendDataXml
+	Append to @p element, made in @p document, what toXml() writes of this
+	symbol's own data: the override properties of a terminal and the PLC
+	master data of a PLC.
+*/
+void Element::appendDataXml(QDomDocument &document, QDomElement &element) const
+{
+		//Save override properties (For now, only used when the element is a terminal)
+	if (m_data.m_type == ElementData::Terminal)
+	{
+		QDomElement properties = document.createElement(QStringLiteral("properties"));
+		QDomElement element_type = document.createElement(QStringLiteral("element_type"));
+
+		element_type.setAttribute(QStringLiteral("terminal_type"),
+								m_data.terminalTypeToString(m_data.terminalType()));
+		element_type.setAttribute(QStringLiteral("terminal_function"),
+								m_data.terminalFunctionToString(m_data.terminalFunction()));
+		element_type.setAttribute(QStringLiteral("terminal_led"),
+								QETXML::boolToString(m_data.terminalLed()));
+
+		properties.appendChild(element_type);
+		element.appendChild(properties);
+	}
+
+		//Save PLC master data override for elements on diagram
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		auto xml_plc = m_data.plcMasterDataToXml(document);
+		if (!xml_plc.isNull())
+			element.appendChild(xml_plc);
+	}
+}
+
+/**
+	@brief Element::ownValuesXml
+	@return an <element> made in @p document holding what toXml() writes
+	of this symbol that no other table of the project database holds: its
+	prefix, frozen label, whether it can be moved, and appendDataXml()
+*/
+QDomElement Element::ownValuesXml(QDomDocument &document) const
+{
+	QDomElement element = document.createElement(QStringLiteral("element"));
+	element.setAttribute(QStringLiteral("prefix"), m_prefix);
+	element.setAttribute(QStringLiteral("freezeLabel"), m_freeze_label? QStringLiteral("true") : QStringLiteral("false"));
+	element.setAttribute(QStringLiteral("is_movable"), bool(is_movable_));
+	appendDataXml(document, element);
+	return element;
+}
+
+/**
 	@brief Element::ownTextsXml
 	@return an <element> made in @p document holding this symbol's texts and
 	text groups, as toXml() writes them
@@ -2447,8 +2474,9 @@ QDomElement Element::ownTextsXml(QDomDocument &document) const
 
 /**
 	@brief Element::scheduleTextsStore
-	A text or text group of this symbol changed: its project's store
-	writes them when it is next read (projectDataBase::flushElementTexts()).
+	A text or text group of this symbol changed, or what ownValuesXml()
+	writes: its project's store writes them when it is next read
+	(projectDataBase::flushElementTexts()).
 */
 void Element::scheduleTextsStore()
 {
@@ -2553,6 +2581,7 @@ void Element::setElementData(ElementData data)
 	auto old_plc = m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC
 		? m_data.plcMasterData() : ElementData::PlcMasterData();
 	m_data = data;
+	scheduleTextsStore();
 
 	if (old_info != m_data.m_informations) {
 		m_data.m_informations.addValue(QStringLiteral("label"), actualLabel()); //Update the label if there is a formula
@@ -2903,6 +2932,7 @@ QString Element::getPrefix() const
 void Element::setPrefix(QString prefix)
 {
 	m_prefix = std::move(prefix);
+	scheduleTextsStore();
 }
 
 /**
@@ -2912,6 +2942,17 @@ void Element::setPrefix(QString prefix)
 void Element::freezeLabel(bool freeze)
 {
 	m_freeze_label = freeze;
+	scheduleTextsStore();
+}
+
+/**
+	@brief Element::setMovable
+	As QetGraphicsItem, and queue the change for the project database
+*/
+void Element::setMovable(bool movable)
+{
+	QetGraphicsItem::setMovable(movable);
+	scheduleTextsStore();
 }
 
 /**

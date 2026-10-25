@@ -3480,6 +3480,7 @@ Diagram *QETProject::addNewDiagram(int pos)
 	diagram->border_and_titleblock.importBorder(defaultBorderProperties());
 	diagram->border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
 	diagram->defaultConductorProperties = defaultConductorProperties();
+	diagram->queueValuesStore();
 
 	m_undo_stack->push(new AddDiagramCommand(this, diagram, pos));
 	return(diagram);
@@ -4534,7 +4535,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	@brief QETProject::storeSettings
 	Write the project's settings to the project database, one row per value
 	(projectDataBase::storeProjectSettings()), as a save writes them: the
-	title, the project properties, wire hops, upright texts, wiring rules
+	title and uuid, the project properties, wire hops, upright texts, wiring rules
 	and the defaults for new folios. Not the numbering (its own tables,
 	QETZ-DB-FIRST 2b) nor the usage time (counted while the project is open,
 	written at save).
@@ -4545,6 +4546,7 @@ void QETProject::storeSettings()
 	QDomElement root = document.createElement(QStringLiteral("project"));
 	document.appendChild(root);
 	root.setAttribute(QStringLiteral("title"), project_title_);
+	root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
 	QDomElement properties = document.createElement(QStringLiteral("properties"));
 	writeProjectPropertiesXml(properties);
 	root.appendChild(properties);
@@ -4960,7 +4962,9 @@ bool QETProject::addCable(Cable *cable)
 		return true;
 
 	m_cables.append(cable);
+	m_data_base.queueCables();
 	connect(cable, &Cable::changed, this, [this]() {
+		m_data_base.queueCables();
 		CableManager::refreshLabels(this);
 		setModified(true);
 	});
@@ -4980,6 +4984,7 @@ bool QETProject::removeCable(Cable *cable) {
 		return false;
 
 	disconnect(cable, nullptr, this, nullptr);
+	m_data_base.queueCables();
 
 		//A cable which is no longer one of ours stops writing its labels
 		//into the conductors it used to feed.
