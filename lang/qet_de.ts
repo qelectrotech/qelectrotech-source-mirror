@@ -3629,6 +3629,11 @@ Hold Shift and drag to move this text on its own</source>
         <source>Conductor color</source>
         <translation>Leiterfarbe</translation>
     </message>
+    <message>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="280"/>
+        <source>Grid step</source>
+        <translation>Rasterstufe</translation>
+    </message>
 </context>
 <context>
     <name>DiagramView</name>
@@ -14229,6 +14234,51 @@ Um daraus ein Skript zu machen, bitten Sie Ihren KI-Assistenten: Die Schaltfläc
         <source>Error</source>
         <comment>message box title</comment>
         <translation>Fehler</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="702"/>
+        <source>Snap to the grid</source>
+        <translation>Am Raster fangen</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="705"/>
+        <source>Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point</source>
+        <translation>Zeiger und alles, was verschoben oder platziert wird, am Raster fangen; aus: auf den nächsten Punkt</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="714"/>
+        <source>Grid step</source>
+        <translation>Rasterstufe</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="720"/>
+        <source>The step of the grid that symbols, conductors and the pointer snap to</source>
+        <translation>Das Raster, an dem Symbole, Leiter und der Zeiger gefangen werden</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="723"/>
+        <source>Fine (5)</source>
+        <translation>Fein (5)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="724"/>
+        <source>Medium (10)</source>
+        <translation>Mittel (10)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
+        <source>Coarse (20)</source>
+        <translation>Grob (20)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5125"/>
+        <source>Grid %1</source>
+        <translation>Raster %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5126"/>
+        <source>Grid %1 × %2</source>
+        <translation>Raster %1 × %2</translation>
     </message>
 </context>
 <context>

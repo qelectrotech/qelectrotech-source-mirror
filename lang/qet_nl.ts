@@ -3608,6 +3608,11 @@ Hold Shift and drag to move this text on its own</source>
         <source>Conductor color</source>
         <translation type="unfinished">Geleiderkleur</translation>
     </message>
+    <message>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="280"/>
+        <source>Grid step</source>
+        <translation>Rasterstap</translation>
+    </message>
 </context>
 <context>
     <name>DiagramView</name>
@@ -14069,6 +14074,51 @@ They are not shown, but they are kept in the file as they are, and join their te
         <source>Activates the previous project</source>
         <comment>status bar tip</comment>
         <translation>Activeer vorig project</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="702"/>
+        <source>Snap to the grid</source>
+        <translation>Aan het raster vangen</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="705"/>
+        <source>Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point</source>
+        <translation>Vangt de aanwijzer en wat verplaatst of geplaatst wordt aan het raster; uit: op het dichtstbijzijnde punt</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="714"/>
+        <source>Grid step</source>
+        <translation>Rasterstap</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="720"/>
+        <source>The step of the grid that symbols, conductors and the pointer snap to</source>
+        <translation>De rasterstap waaraan symbolen, geleiders en de aanwijzer gevangen worden</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="723"/>
+        <source>Fine (5)</source>
+        <translation>Fijn (5)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="724"/>
+        <source>Medium (10)</source>
+        <translation>Middel (10)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
+        <source>Coarse (20)</source>
+        <translation>Grof (20)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5125"/>
+        <source>Grid %1</source>
+        <translation>Raster %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5126"/>
+        <source>Grid %1 × %2</source>
+        <translation>Raster %1 × %2</translation>
     </message>
 </context>
 <context>

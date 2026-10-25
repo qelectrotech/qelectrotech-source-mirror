@@ -3629,6 +3629,11 @@ Hold Shift and drag to move this text on its own</source>
         <source>Conductor color</source>
         <translation>Color del conductor</translation>
     </message>
+    <message>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="280"/>
+        <source>Grid step</source>
+        <translation>Paso de cuadrícula</translation>
+    </message>
 </context>
 <context>
     <name>DiagramView</name>
@@ -14244,6 +14249,51 @@ Para convertirla en un script, pídaselo a su asistente de IA: el botón de abaj
         <source>Opening the file read-only</source>
         <comment>message box title</comment>
         <translation>Abriendo el proyecto en sólo lectura</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="702"/>
+        <source>Snap to the grid</source>
+        <translation>Ajustar a la cuadrícula</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="705"/>
+        <source>Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point</source>
+        <translation>Ajusta el puntero y lo que se mueve o coloca a la cuadrícula; desactivado, al punto más cercano</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="714"/>
+        <source>Grid step</source>
+        <translation>Paso de cuadrícula</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="720"/>
+        <source>The step of the grid that symbols, conductors and the pointer snap to</source>
+        <translation>El paso de la cuadrícula al que se ajustan símbolos, conductores y el puntero</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="723"/>
+        <source>Fine (5)</source>
+        <translation>Fino (5)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="724"/>
+        <source>Medium (10)</source>
+        <translation>Medio (10)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
+        <source>Coarse (20)</source>
+        <translation>Grueso (20)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5125"/>
+        <source>Grid %1</source>
+        <translation>Cuadrícula %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5126"/>
+        <source>Grid %1 × %2</source>
+        <translation>Cuadrícula %1 × %2</translation>
     </message>
 </context>
 <context>

@@ -3703,6 +3703,11 @@ Hold Shift and drag to move this text on its own</source>
         <source>Conductor color</source>
         <translation type="unfinished">لون الموصل</translation>
     </message>
+    <message>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="280"/>
+        <source>Grid step</source>
+        <translation>خطوة الشبكة</translation>
+    </message>
 </context>
 <context>
     <name>DiagramView</name>
@@ -14184,6 +14189,51 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <source>Error</source>
         <comment>message box title</comment>
         <translation>خطأ</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="702"/>
+        <source>Snap to the grid</source>
+        <translation>الالتقاط إلى الشبكة</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="705"/>
+        <source>Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point</source>
+        <translation>يلتقط المؤشر وما يُنقل أو يوضع إلى الشبكة؛ عند الإيقاف إلى أقرب نقطة</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="714"/>
+        <source>Grid step</source>
+        <translation>خطوة الشبكة</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="720"/>
+        <source>The step of the grid that symbols, conductors and the pointer snap to</source>
+        <translation>خطوة الشبكة التي تلتقط إليها الرموز والموصلات والمؤشر</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="723"/>
+        <source>Fine (5)</source>
+        <translation>دقيقة (5)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="724"/>
+        <source>Medium (10)</source>
+        <translation>متوسطة (10)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
+        <source>Coarse (20)</source>
+        <translation>خشنة (20)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5125"/>
+        <source>Grid %1</source>
+        <translation>الشبكة %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5126"/>
+        <source>Grid %1 × %2</source>
+        <translation>الشبكة %1 × %2</translation>
     </message>
 </context>
 <context>
