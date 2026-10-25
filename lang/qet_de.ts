@@ -7957,7 +7957,7 @@ Alle Einstellungen außer „Keine Rundung“ können je nach folgenden Faktoren
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
-        <translation>Weiter herausgezoomt fallen die Punkte jedes Rasters weg; wo, zeigt die Zoomstufe in der Statusleiste</translation>
+        <translation>Weiter herausgezoomt fallen die Punkte jedes Rasters weg; wo, zeigt die Zoomstufe in der Statusleiste. In Pixeln, wie das System sie skaliert, damit derselbe Wert auch auf einem HiDPI-Bildschirm passt</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>

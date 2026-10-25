@@ -169,7 +169,7 @@
          <item>
           <widget class="QDoubleSpinBox" name="m_grid_min_spacing_sb">
            <property name="toolTip">
-            <string>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</string>
+            <string>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</string>
            </property>
            <property name="suffix">
             <string> px</string>

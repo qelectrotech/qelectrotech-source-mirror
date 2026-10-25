@@ -4290,7 +4290,10 @@ void QETDiagramEditor::updateZoomLabel()
 	if (!m_zoom_label)
 		return;
 	DiagramView *dv = currentDiagramView();
-	m_zoom_label->setText(dv ? tr("Zoom %1 %").arg(qRound(dv->transform().m11() * 100))
+		//Four digits, not rounded to a whole percent: the grid's cutoff
+		//(Settings > General) compares the exact zoom, so 77.6 % shows as
+		//such, not as 78 %
+	m_zoom_label->setText(dv ? tr("Zoom %1 %").arg(QLocale().toString(dv->transform().m11() * 100, 'g', 4))
 				 : QString());
 }
 

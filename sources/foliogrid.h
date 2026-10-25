@@ -19,6 +19,7 @@
 #define FOLIOGRID_H
 
 #include <QString>
+#include <QtGlobal>
 #include <QVariant>
 #include <cmath>
 #include <limits>
@@ -88,7 +89,7 @@ namespace FolioGrid
 	inline bool dotsShown(int x_step, int y_step, double zoom,
 			      double min_spacing = default_min_dot_spacing)
 	{
-		return (x_step < y_step ? x_step : y_step) * zoom >= min_spacing;
+		return qMin(x_step, y_step) * zoom >= min_spacing;
 	}
 }
 
