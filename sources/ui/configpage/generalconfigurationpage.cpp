@@ -111,6 +111,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	}
 
 	ui->grid_startup_cb->setChecked(settings.value("diagrameditor/grid_display_startup", true).toBool());
+	ui->m_grid_min_spacing_sb->setRange(FolioGrid::min_dot_spacing_lowest,
+					      FolioGrid::min_dot_spacing_highest);
 	ui->m_grid_min_spacing_sb->setValue(
 				FolioGrid::minDotSpacing(settings.value(FolioGrid::min_dot_spacing_key)));
 	ui->guides_startup_cb->setChecked(settings.value("diagrameditor/guides_display_startup", false).toBool());
