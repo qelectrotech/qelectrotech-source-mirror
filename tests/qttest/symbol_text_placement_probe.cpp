@@ -118,6 +118,17 @@ int main(int argc, char **argv)
 		check(same(b.bottom(), body(element).top() - SymbolTextPlacement::gap), "above: the block ends 3 px above the drawing");
 		check(same(texts[0]->sceneBoundingRect().center().x(), body(element).center().x()), "above: the lines are centred on it");
 
+		// Corners beside it: level with its top or bottom edge, not above
+		// or below it.
+		scene->undoStack().push(SymbolTextPlacement::place({element}, Qt::AlignLeft | Qt::AlignTop));
+		b = block(texts);
+		check(same(b.top(), body(element).top()) && same(b.right(), body(element).left() - SymbolTextPlacement::gap),
+			  "top left: the block's top on the drawing's top, left of it");
+		scene->undoStack().push(SymbolTextPlacement::place({element}, Qt::AlignRight | Qt::AlignBottom));
+		b = block(texts);
+		check(same(b.bottom(), body(element).bottom()) && same(b.left(), body(element).right() + SymbolTextPlacement::gap),
+			  "bottom right: the block's bottom on the drawing's bottom, right of it");
+
 		// A turned symbol: left in the folio is still left.
 		element->setRotation(90);
 		scene->undoStack().push(SymbolTextPlacement::place({element}, Qt::AlignLeft | Qt::AlignVCenter));
