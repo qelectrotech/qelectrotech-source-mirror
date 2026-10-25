@@ -18,6 +18,7 @@
 // first to the first of the next, behind them; a terminal not bridged, or
 // moved out of the row, has none; it is not saved either.
 #include <QApplication>
+#include <QPointer>
 #include <QFontDatabase>
 #include <QGraphicsSimpleTextItem>
 #include <QSettings>
@@ -185,6 +186,21 @@ int main(int argc, char **argv)
 
 		project.setTerminalStripLabelsShown(false);
 		check(A->stripLabel().isEmpty() && D->stripLabel().isEmpty(), "off again: the labels go");
+
+			//A strip outlives a folio removed from the project: the folio's
+			//updater goes with it, and so do its connections to the strip,
+			//so a change of the strip afterwards reaches nothing stale
+		project.setTerminalStripLabelsShown(true);
+		settle();
+		QPointer<QObject> updater = folio->findChild<QObject *>(QStringLiteral("TerminalStripLabelsUpdater"));
+		check(updater, "the folio has an updater following its strips");
+		project.removeDiagram(folio);
+		QCoreApplication::sendPostedEvents(nullptr, QEvent::DeferredDelete);
+		check(!updater, "removed, the folio's updater is gone");
+		xn1->setName(QStringLiteral("XN5"));
+		x2->setName(QStringLiteral("X7"));
+		settle();
+		check(project.terminalStrip().contains(xn1), "the strips live on and change without reaching the removed folio");
 		std::puts("PASS");
 	}
 	catch (const std::exception &error)

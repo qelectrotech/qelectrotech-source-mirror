@@ -137,6 +137,12 @@ void TerminalStripLabels::schedule(Diagram *diagram)
 {
 	if (!diagram)
 		return;
+		//Both options off (the default): nothing is drawn, nothing to work
+		//out; switching one on works every built folio out at once
+		//(QETProject::setTerminalStripLabelsShown() and ...BridgesShown())
+	if (QETProject *project = diagram->project();
+		project && !project->terminalStripLabelsShown() && !project->terminalStripBridgesShown())
+		return;
 		//Without a running event loop (an export from the command line,
 		//a script run headless) a timer never fires: work them out now
 	if (QThread::currentThread()->loopLevel() == 0)
