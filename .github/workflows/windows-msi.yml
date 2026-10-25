@@ -40,7 +40,6 @@ jobs:
         include:
           - flavor: qt6
             portable_artifact: qelectrotech-windows-portable-qt6
-            version_source: hardcoded    # see note in "Extract version" step
             label_suffix: "-qt6"
             experimental: false
 
@@ -104,33 +103,12 @@ jobs:
 
       # ----------------------------------------------------------------
       # 3. Extract version
-      #    Qt6: hardcoded "0.200.1" here — deliberately NOT parsed from the
-      #         binary/source, since Qt-version self-detection inside the
-      #         compiled code proved unreliable (see commit e1aa65f). The CI
-      #         matrix entry already knows for certain which flavor it is
-      #         packaging, so the version label is set explicitly at the
-      #         packaging level instead.
       # ----------------------------------------------------------------
       - name: Extract version
         id: version
         shell: pwsh
         run: |
-          if ("${{ matrix.version_source }}" -eq "hardcoded") {
-            $ver = "0.200.1"
-          } else {
-            $src = Get-Content "sources\qetversion.cpp" -Raw -ErrorAction SilentlyContinue
-            if ($src -match 'return QVersionNumber\{([^}]+)\}') {
-              $ver = $Matches[1] -replace '\s','' -replace ',','.'
-            } else {
-              # Fallback: CMakeLists.txt
-              $cmake = Get-Content "CMakeLists.txt" -Raw
-              if ($cmake -match 'project\s*\([^)]*VERSION\s+([\d]+\.[\d]+\.[\d]+)') {
-                $ver = $Matches[1]
-              } else {
-                $ver = "0.0.0"
-              }
-            }
-          }
+          $ver = Get-Content "QET_VERSION" -Raw -ErrorAction SilentlyContinue
 
           # Short SHA for the display version
           $sha = git rev-parse --short HEAD 2>$null

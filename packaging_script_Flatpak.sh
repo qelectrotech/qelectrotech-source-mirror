@@ -16,7 +16,7 @@ git pull --recurse-submodules
 # get the number of the new revision
 GITCOMMIT=$(git rev-parse --short HEAD)
 
-tagName=$(cat sources/qetversion.cpp | grep "return QVersionNumber{"| head -n 1| awk -F "{" '{ print $2 }' | awk -F "}" '{ print $1 }' | sed -e 's/,/./g' -e 's/ //g')
+tagName=$(cat QET_VERSION)
 #tagName=$(cat sources/qetversion.cpp | grep "return QVersionNumber{ 0, "| head -n 1| cut -c32-40| sed -e 's/,/./g' -e 's/ //g')   #Find major, minor, and micro version numbers in sources/qetversion.cp
 
 cd ~
