@@ -847,8 +847,9 @@ private slots:
 		QCOMPARE(conductor->properties().m_tension_protocol, original_tension);
 	}
 
-	//The pin a bridge names is the pin it asks: a symbol may carry
-	//several terminals and each of them is its own potential
+	//A symbol may carry several pins and each of them its own voltage:
+	//the question a bridge asks sees every one of them, and what it
+	//carries goes to every one of them
 	void thePinsOfASymbolAreAskedApart()
 	{
 		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
@@ -856,31 +857,36 @@ private slots:
 		QCOMPARE(project.state(), QETProject::Ok);
 		const auto terminals = stripTerminals(project);
 		QVERIFY(!terminals.isEmpty());
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
 
-			//A symbol with at least two pins, one of them wired
+			//A symbol with two wired pins
 		Element *element = nullptr;
 		for (const QSharedPointer<RealTerminal> &terminal : terminals) {
 			Element *candidate = terminal->element();
-			if (candidate && candidate->terminals().size() >= 2) {
+			if (!candidate || candidate->terminals().size() < 2) {
+				continue;
+			}
+			int wired = 0;
+			for (Terminal *pin : candidate->terminals()) {
+				if (!pin->conductors().isEmpty()) {
+					++wired;
+				}
+			}
+			if (wired >= 2) {
 				element = candidate;
 				break;
 			}
 		}
 		if (!element) {
-			QSKIP("the fixture has no symbol with two pins");
+			QSKIP("the fixture has no symbol with two wired pins");
 		}
 
-			//Two pins wired: each of them carries its own voltage and each
-		//is asked on its own -- a symbol with a separated function is
-		//exactly that, one potential per pin
 		QList<Terminal *> wired_pins;
 		for (Terminal *pin : element->terminals()) {
 			if (!pin->conductors().isEmpty()) {
 				wired_pins << pin;
 			}
-		}
-		if (wired_pins.size() < 2) {
-			QSKIP("the fixture has fewer than two wired pins on one symbol");
 		}
 
 		ConductorProperties first_properties = wired_pins.at(0)->conductors().first()->properties();
@@ -891,24 +897,38 @@ private slots:
 		second_properties.m_tension_protocol = QStringLiteral("22V");
 		wired_pins.at(1)->conductors().first()->setProperties(second_properties);
 
-		const BridgeTerminal first_pin{element->uuid(),
-									  wired_pins.at(0)->stableUuid().toString()};
-		const BridgeTerminal second_pin{element->uuid(),
-									   wired_pins.at(1)->stableUuid().toString()};
-		QCOMPARE(BridgeManager::informationOf(&project, first_pin).tension,
-				 QStringLiteral("11V"));
-		QVERIFY2(BridgeManager::informationOf(&project, second_pin).tension
-				 == QStringLiteral("22V"),
-				 "the pin beside it carries its own voltage");
-
-			//And a pin with no wire of its own says nothing at all
-		for (Terminal *pin : element->terminals()) {
-			if (!pin->conductors().isEmpty()) {
-				continue;
-			}
-			const BridgeTerminal unwired{element->uuid(), pin->stableUuid().toString()};
-			QVERIFY(BridgeManager::informationOf(&project, unwired).tension.isEmpty());
+			//The question sees both of them: two pins, two voltages, two
+			//candidates to choose from
+		const BridgeTerminal on_the_symbol{
+				element->uuid(), wired_pins.at(0)->stableUuid().toString()};
+		const QList<BridgeInformation> sets =
+				BridgeManager::informationSets(&project, {on_the_symbol});
+		QList<QString> tensions;
+		for (const BridgeInformation &set : sets) {
+			tensions << set.tension;
 		}
+		QVERIFY2(tensions.contains(QStringLiteral("11V")), "the one pin is offered");
+		QVERIFY2(tensions.contains(QStringLiteral("22V")), "and the pin beside it");
+
+			//And what the bridge carries goes to every pin of the symbol:
+		//a bridge sitting across a terminal reaches all of them
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(on_the_symbol);
+		auto *step = new QUndoCommand();
+		BridgeManager::writeInformation(&project, bridge->terminals(),
+										BridgeInformation{QStringLiteral("230V")}, step);
+		folio->undoStack().push(step);
+
+		for (Terminal *pin : wired_pins) {
+			QCOMPARE(pin->conductors().first()->properties().m_tension_protocol,
+					 QStringLiteral("230V"));
+		}
+
+		folio->undoStack().undo();
+		QCOMPARE(wired_pins.at(0)->conductors().first()->properties().m_tension_protocol,
+				 QStringLiteral("11V"));
+		QCOMPARE(wired_pins.at(1)->conductors().first()->properties().m_tension_protocol,
+				 QStringLiteral("22V"));
 	}
 
 	//A bridge takes an edit over to the wires of every terminal it lands

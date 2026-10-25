@@ -429,10 +429,8 @@ BridgeInformation BridgeManager::informationOf(QETProject *project, const Bridge
 	const auto pins = element->terminals();
 	for (Terminal *pin : pins)
 	{
-		if (pin->stableUuid().toString() != terminal.terminal
-			&& !(pins.size() == 1 && terminal.terminal.isEmpty())) {
-			continue;
-		}
+		//Every pin of the terminal: a bridge sitting across a
+		//terminal reaches all of them
 		const auto conductors = pin->conductors();
 		for (Conductor *conductor : conductors)
 		{
@@ -455,16 +453,40 @@ BridgeInformation BridgeManager::informationOf(QETProject *project, const Bridge
 	@param terminals
 	@return the distinct sets of information those terminals carry: one
 	when they agree, more when they do not and the user has to be asked
-	which the bridge takes.
+	which the bridge takes. Every pin of every terminal is asked -- a
+	symbol may carry several and each of them may say something else --
+	so the question sees all of them and not only the one the line
+	happened to run closest to. Only the voltage/protocol: a bridge
+	crosses that and nothing else.
 */
 QList<BridgeInformation> BridgeManager::informationSets(QETProject *project,
 														const QList<BridgeTerminal> &terminals)
 {
 	QList<BridgeInformation> sets;
-	for (const BridgeTerminal &terminal : terminals) {
-		const BridgeInformation information = informationOf(project, terminal);
-		if (!sets.contains(information)) {
-			sets << information;
+	for (const BridgeTerminal &terminal : terminals)
+	{
+		Element *element = elementFor(project, terminal);
+		if (!element) {
+			continue;
+		}
+		const auto pins = element->terminals();
+		for (Terminal *pin : pins)
+		{
+			const auto conductors = pin->conductors();
+			for (Conductor *conductor : conductors)
+			{
+				if (!conductor) {
+					continue;
+				}
+				const QString tension = conductor->properties().m_tension_protocol;
+				if (tension.isEmpty()) {
+					continue;
+				}
+				const BridgeInformation information{tension};
+				if (!sets.contains(information)) {
+					sets << information;
+				}
+			}
 		}
 	}
 	return sets;
@@ -508,9 +530,8 @@ void BridgeManager::writeInformation(QETProject *project,
 		const auto pins = element->terminals();
 		for (Terminal *pin : pins)
 		{
-			if (pin->stableUuid().toString() != terminal.terminal && !(pins.size() == 1 && terminal.terminal.isEmpty())) {
-				continue;
-			}
+			//Every pin of the terminal: a bridge sitting across a
+			//terminal reaches all of them
 			const auto attached = pin->conductors();
 			for (Conductor *conductor : attached)
 			{
@@ -622,10 +643,8 @@ QList<Conductor *> BridgeManager::conductorsOverBridges(QETProject *project,
 			const auto pins = element->terminals();
 			for (Terminal *pin : pins)
 			{
-				if (pin->stableUuid().toString() != terminal.terminal
-					&& !(pins.size() == 1 && terminal.terminal.isEmpty())) {
-					continue;
-				}
+				//Every pin of the terminal: a bridge sitting across a
+				//terminal reaches all of them
 				const auto attached = pin->conductors();
 				for (Conductor *conductor : attached)
 				{
