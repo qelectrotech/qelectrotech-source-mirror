@@ -319,6 +319,11 @@
         <translation>Slovenian translation</translation>
     </message>
     <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="138"/>
+        <source>Swedish translation (partly AI-generated)</source>
+        <translation>Swedish translation (partly AI-generated)</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="180"/>
         <source>Lambda element generator</source>
         <comment>Lambda element generator</comment>
