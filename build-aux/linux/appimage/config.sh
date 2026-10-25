@@ -74,4 +74,4 @@ QET_SIGN=0
 # Upload with rsync over ssh. "server" is a Host alias in ~/.ssh/config.
 QET_UPLOAD=0
 QET_UPLOADURL="server"
-QET_UPLOADDIR="download.qelectrotech.org/qet/builds/AppImage/"
+QET_UPLOADDIR="download.qelectrotech.org/qet/builds/AppImage/0.200.0/X86_64/"
