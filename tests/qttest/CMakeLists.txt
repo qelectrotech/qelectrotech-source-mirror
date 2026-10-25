@@ -712,7 +712,7 @@ add_executable(
   tst_projectlock
   tst_projectlock.cpp
   ${QET_DIR}/sources/projectlock.cpp
-  ${QET_DIR}/sources/qetversion.cpp)
+  ${GENERATED_QETVERSION_CPP})
 add_test(NAME tst_projectlock COMMAND tst_projectlock)
 target_include_directories(tst_projectlock PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_projectlock PRIVATE Qt::Test Qt::Xml)
