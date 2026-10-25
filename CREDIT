@@ -51,6 +51,7 @@ Thanks to Mohamed Souabni for his translations into Arabic
 Thanks to Uroš Platiše for his translations into Slovenian
 Thanks to Antun Marakovic for his translations Croatian
 Thanks to Nikos Papadopoylos && Yannis Gyftomitros their Greek translations
+Thanks to Magnus Hellströmer for the Swedish translation (parts of it are AI-generated)
 Thanks to Markos Chandras for Gentoo packaging
 Thanks to David for packaging Slackware
 Thanks to Chipsterjulien for packaging Archlinux AUR packages
@@ -328,3 +329,33 @@ OS/2 패키지를 제공해 주신 Elbert에게 감사드립니다.
 FreeBSD(GCC 포트) 패키지를 제공해 주신 zloidemon에게 감사드립니다.
 Gentoo ebuild 패키지를 제공해 주신 Mrbit에게 감사드립니다.
 
+[sv]
+Tack till Qt Software för Qt-biblioteket ( http://www.qtsoftware.com/ ), licensierat under GNU/GPL.
+Tack till KDE-projektet ( http://www.kde.org/ ).
+Tack till Loic för hans matematiska förklaringar.
+Tack till Remi Collet för Fedora-paketeringen.
+Tack till Laurent Trinques för Debian-paketeringen.
+Tack till `trem' för Mandriva-paketeringen.
+Tack till TuxFamily ( http://tuxfamily.org/ ) för att de är värd för projektet.
+Tack till `Nishiki' för hans symboler och hans stöd.
+Tack till qtcentre.org för deras klass SingleApplication.
+Tack till Alfredo Carreto för hans spanska översättningar och rättningar av de spanska översättningarna ( http://electronicosmx.net )
+Tack till 'Dr.Slump' och Silvio för deras italienska översättningar
+Tack till Jose Carlos Martins för hans portugisiska översättningar
+Tack till Pavel Fric för hans tjeckiska översättningar
+Tack till Pawel Smiech för hans polska översättningar
+Tack till Yuriy Litkevich för hans ryska översättningar
+Tack till Youssef Ouamalkran för hans katalanska översättningar
+Tack till Gabi Mandoc för hans rumänska översättningar
+Tack till Markus Budde, Jonas Stein och Noah Braden för deras tyska översättningar
+Tack till Mohamed Souabni för hans arabiska översättningar
+Tack till Uroš Platiše för hans slovenska översättningar
+Tack till Antun Marakovic för hans kroatiska översättningar
+Tack till Nikos Papadopoylos och Yannis Gyftomitros för deras grekiska översättningar
+Tack till Magnus Hellströmer för den svenska översättningen (delar av den är AI-genererade)
+Tack till Markos Chandras för Gentoo-paketeringen
+Tack till David för Slackware-paketeringen
+Tack till Chipsterjulien för Arch Linux AUR-paketen
+Tack till Elbert från Nederländerna för OS/2-paketeringen
+Tack till zloidemon för FreeBSD-paketeringen (port GCC)
+Tack till Mrbit för Gentoo-ebuilden.
