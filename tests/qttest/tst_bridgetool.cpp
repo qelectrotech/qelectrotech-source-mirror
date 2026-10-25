@@ -17,6 +17,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetapptest.h"
+#include "TerminalStrip/UndoCommand/sortterminalstripcommand.h"
 #include "TerminalStrip/realterminal.h"
 #include "TerminalStrip/terminalstrip.h"
 #include "bridge/bridge.h"
@@ -989,6 +990,68 @@ private slots:
 				BridgeManager::conductorsOverBridges(&project, {wires.first()});
 		QVERIFY2(from_the_other_pin.contains(wires.last()),
 				 "an edit on a pin the line did not cross reaches the bridge too");
+	}
+
+	//The sort button brings the bridges of the drawing into the strip:
+	//what is drawn becomes a bridge of the strip, spanning every
+	//terminal it lies across, and one undo takes it back
+	void sortingBringsTheBridgesOfTheDrawing()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY2(terminals.size() >= 3, "the strip X1 has terminals to lie across");
+		QVector<TerminalStrip *> strips = project.terminalStrip();
+		QVERIFY(!strips.isEmpty());
+		TerminalStrip *strip = strips.first();
+
+			//A drawn bridge over the first and the third terminal
+		Bridge *drawn = project.newBridge();
+		drawn->setColor(QColor(Qt::red));
+		drawn->addTerminal(terminalOf(terminals.at(0)));
+		drawn->addTerminal(terminalOf(terminals.at(2)));
+
+		project.diagrams().first()->undoStack().push(new SortTerminalStripCommand(strip));
+
+		const auto bridges = strip->automaticBridges();
+		QVERIFY2(bridges.size() == 1, "what is drawn becomes a bridge of the strip");
+		QCOMPARE(bridges.first().source, drawn->uuid());
+		QCOMPARE(bridges.first().color, QColor(Qt::red));
+		QVERIFY2(bridges.first().real_terminals.size() == 3,
+				 "the bar lies across every terminal between its ends");
+
+			//A bridge the drawing brought here is not his to take away
+		QVERIFY(!strip->canUnBridge(bridges.first().real_terminals));
+
+		project.diagrams().first()->undoStack().undo();
+		QVERIFY2(strip->automaticBridges().isEmpty(),
+				 "one undo takes the bridges back with the sorting");
+	}
+
+	//The bridges he set here by hand are his own: the sorting never
+	//touches them
+	void sortingLeavesTheBridgesHeSetByHand()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY2(terminals.size() >= 4, "the strip X1 has four terminals");
+		QVector<TerminalStrip *> strips = project.terminalStrip();
+		QVERIFY(!strips.isEmpty());
+		TerminalStrip *strip = strips.first();
+
+			//The two the fixture does not bridge yet
+		QVector<QSharedPointer<RealTerminal>> by_hand;
+		by_hand << terminals.at(2) << terminals.at(3);
+		QVERIFY(strip->setBridge(by_hand));
+
+		project.diagrams().first()->undoStack().push(new SortTerminalStripCommand(strip));
+
+		QVERIFY2(strip->isBridged(terminals.at(2)), "his bridge is still there");
+		QVERIFY(strip->canUnBridge(by_hand));
+		QVERIFY(strip->automaticBridges().isEmpty());
 	}
 };
 

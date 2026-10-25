@@ -864,6 +864,11 @@ bool TerminalStrip::canUnBridge(const QVector<QSharedPointer<RealTerminal> > &re
 	const auto compar_bridge = isBridged(real_terminals.first());
 	if (compar_bridge)
 	{
+			//A bridge the drawing brought here belongs to the drawing:
+			//it is changed there or not at all
+		if (compar_bridge->automatic()) {
+			return false;
+		}
 		QMap<int, QSharedPointer<RealTerminal>> sorted_terminal;
 
 			//Check if all terminals are bridged and if it's the same bridge.
@@ -909,6 +914,83 @@ bool TerminalStrip::canUnBridge(const QVector<QSharedPointer<RealTerminal> > &re
 	}
 
 	return false;
+}
+
+/**
+ * @brief TerminalStrip::automaticBridges
+ * @return the bridges this strip holds which were brought here by the
+ * drawing, as they stand now
+ */
+QList<TerminalStrip::DrawingBridge> TerminalStrip::automaticBridges() const
+{
+	QList<DrawingBridge> list;
+	for (const auto &bridge : m_bridge)
+	{
+		if (!bridge || !bridge->automatic()) {
+			continue;
+		}
+		DrawingBridge drawn;
+		drawn.source = bridge->source();
+		drawn.real_terminals = bridge->realTerminals();
+		drawn.color = bridge->color();
+		list << drawn;
+	}
+	return list;
+}
+
+/**
+ * @brief TerminalStrip::setAutomaticBridges
+ * Bring the bridges of the drawing into this strip: what the drawing
+ * says, these bridges say. A bridge whose line is gone in the drawing
+ * goes, a new one comes, and one which stays is changed where it stands
+ * -- the bridges he set by hand are never touched.
+ * @param bridges what the drawing says, one per drawn bridge
+ */
+void TerminalStrip::setAutomaticBridges(const QList<DrawingBridge> &bridges)
+{
+		//What is no longer drawn goes
+	for (int i = m_bridge.size() - 1 ; i >= 0 ; --i)
+	{
+		const auto bridge = m_bridge.at(i);
+		if (!bridge || !bridge->automatic()) {
+			continue;
+		}
+		bool stays = false;
+		for (const DrawingBridge &wanted : bridges) {
+			if (wanted.source == bridge->source()) {
+				stays = true;
+				break;
+			}
+		}
+		if (!stays) {
+			m_bridge.removeAt(i);
+		}
+	}
+
+		//What is drawn comes
+	for (const DrawingBridge &wanted : bridges)
+	{
+		QSharedPointer<TerminalStripBridge> bridge;
+		for (const auto &candidate : std::as_const(m_bridge)) {
+			if (candidate && candidate->automatic() && candidate->source() == wanted.source) {
+				bridge = candidate;
+				break;
+			}
+		}
+		if (!bridge) {
+			auto br_ = new TerminalStripBridge(this);
+			bridge = br_->sharedRef();
+			bridge->setAutomatic(true);
+			bridge->setSource(wanted.source);
+			m_bridge.append(bridge);
+		}
+
+		bridge->setColor(wanted.color);
+		bridge->removeTerminals(bridge->realTerminals());
+		bridge->addTerminals(wanted.real_terminals);
+	}
+
+	emit bridgeChanged();
 }
 
 /**

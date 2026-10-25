@@ -1060,6 +1060,21 @@ void TerminalStripEditor::on_m_bridge_terminals_pb_clicked()
 			}
 
 			if (m_current_strip->isBridgeable(match_vector)) {
+					//A bridge set here is his own: the drawing knows
+					//nothing of it and never will. Say so once -- the way
+					//the plan would grow it is to draw it there -- and let
+					//him do it anyway.
+				const QMessageBox::StandardButton answer = QMessageBox::warning(
+							this,
+							tr("A bridge of your own"),
+							tr("This bridge is set here only: it is not added to "
+							   "the drawing, where bridges belong.\n\n"
+							   "Set it here anyway?"),
+							QMessageBox::Yes | QMessageBox::No,
+							QMessageBox::No);
+				if (answer != QMessageBox::Yes) {
+					return;
+				}
 				m_project->undoStack()->push(new BridgeTerminalsCommand(m_current_strip, match_vector));
 			}
 		}
@@ -1112,6 +1127,12 @@ void TerminalStripEditor::on_m_bridge_color_cb_activated(const QColor &col)
 		{
 			if (mrtd.level_ == level_ && mrtd.bridged_) {
 				auto bridge_ = mrtd.real_terminal.toStrongRef()->bridge();
+					//The colour of a bridge the drawing brought here is
+					//the drawing's business: it is changed there or not
+					//at all
+				if (bridge_ && bridge_->automatic()) {
+					break;
+				}
 				if (bridge_->color() != col)
 					m_project->undoStack()->push(new ChangeTerminalStripColor(bridge_, col));
 				break;

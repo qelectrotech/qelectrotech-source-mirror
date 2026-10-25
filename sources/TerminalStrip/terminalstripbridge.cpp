@@ -83,6 +83,12 @@ QDomElement TerminalStripBridge::toXml(QDomDocument &parent_document) const
 
 	root_elmt.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
 	root_elmt.setAttribute(QStringLiteral("color"), m_color.name());
+	if (m_automatic) {
+		root_elmt.setAttribute(QStringLiteral("automatic"), QStringLiteral("1"));
+	}
+	if (!m_source.isNull()) {
+		root_elmt.setAttribute(QStringLiteral("source"), m_source.toString());
+	}
 
 	auto terminals_elmt = parent_document.createElement(QStringLiteral("real_terminals"));
 	for (const auto &real_t : std::as_const(m_real_terminals))
@@ -107,6 +113,8 @@ void TerminalStripBridge::fromXml(const QDomElement &dom_element)
 
 	m_uuid = QUuid(dom_element.attribute(QStringLiteral("uuid"), m_uuid.toString()));
 	m_color = QColor(dom_element.attribute(QStringLiteral("color")));
+	m_automatic = dom_element.attribute(QStringLiteral("automatic")) == QLatin1String("1");
+	m_source = QUuid(dom_element.attribute(QStringLiteral("source")));
 
 	const auto real_t_vector = QETXML::subChild(dom_element,
 										 QStringLiteral("real_terminals"),
@@ -174,4 +182,34 @@ void TerminalStripBridge::removeTerminals(const QVector<QSharedPointer<RealTermi
 
 void TerminalStripBridge::removeTerminal(const QSharedPointer<RealTerminal> &real_terminal) {
 	m_real_terminals.removeOne(real_terminal);
+}
+
+/**
+	@return true for a bridge the drawing brought here: what the drawing
+	says, this bridge says
+*/
+bool TerminalStripBridge::automatic() const noexcept {
+	return m_automatic;
+}
+
+/**
+	@param automatic
+*/
+void TerminalStripBridge::setAutomatic(bool automatic) {
+	m_automatic = automatic;
+}
+
+/**
+	@return the drawn bridge this one was brought from, null when he set
+	it here himself
+*/
+QUuid TerminalStripBridge::source() const noexcept {
+	return m_source;
+}
+
+/**
+	@param source
+*/
+void TerminalStripBridge::setSource(const QUuid &source) {
+	m_source = source;
 }

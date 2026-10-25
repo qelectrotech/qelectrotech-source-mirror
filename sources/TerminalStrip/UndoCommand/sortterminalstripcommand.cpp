@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "sortterminalstripcommand.h"
+
+#include "../../bridge/bridgemanager.h"
 #include "../terminalstrip.h"
 #include "../physicalterminal.h"
 #include "../realterminal.h"
@@ -32,12 +34,19 @@ SortTerminalStripCommand::SortTerminalStripCommand(TerminalStrip *strip, QUndoCo
 	m_old_order = m_strip->physicalTerminal();
 	m_new_order = m_strip->physicalTerminal();
 	sort();
+
+		//The bridges of the drawing come with the sorting: one button
+		//brings the terminals and their bridges in step with the plan,
+		//and one undo takes both back
+	m_bridges_before = m_strip->automaticBridges();
+	m_bridges_after = BridgeManager::bridgesForStrip(m_strip->project(), m_strip);
 }
 
 void SortTerminalStripCommand::undo()
 {
 	if (m_strip) {
 		m_strip->setOrderTo(m_old_order);
+		m_strip->setAutomaticBridges(m_bridges_before);
 	}
 }
 
@@ -45,6 +54,7 @@ void SortTerminalStripCommand::redo()
 {
 	if (m_strip) {
 		m_strip->setOrderTo(m_new_order);
+		m_strip->setAutomaticBridges(m_bridges_after);
 	}
 }
 

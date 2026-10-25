@@ -48,6 +48,19 @@ class TerminalStripBridge
 		void fromXml(const QDomElement &dom_element);
 		QUuid uuid() const noexcept;
 
+			/**
+				True for a bridge the drawing brought here: it belongs to
+				the bridge drawn on the plan and is read-only in this
+				strip -- what the drawing says, this bridge says. Only a
+				bridge he set here by hand is his to change.
+			*/
+		bool automatic() const noexcept;
+		void setAutomatic(bool automatic);
+			///The drawn bridge this one was brought from, null when he
+			///set it here himself
+		QUuid source() const noexcept;
+		void setSource(const QUuid &source);
+
 	private:
 		bool addTerminals(const QVector<QSharedPointer<RealTerminal>> &real_terminals);
 		void removeTerminals(const QVector<QSharedPointer<RealTerminal>> &real_terminals);
@@ -59,6 +72,8 @@ class TerminalStripBridge
 		QVector<QSharedPointer<RealTerminal>> m_real_terminals;
 		QColor m_color = Qt::darkGray;
 		QUuid m_uuid = QUuid::createUuid();
+		bool m_automatic = false;
+		QUuid m_source;
 		QWeakPointer<TerminalStripBridge> m_this_weak;
 };
 

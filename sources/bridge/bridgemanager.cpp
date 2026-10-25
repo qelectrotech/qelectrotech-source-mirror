@@ -683,6 +683,97 @@ QList<Conductor *> BridgeManager::conductorsOverBridges(QETProject *project,
 }
 
 /**
+	@brief BridgeManager::bridgesForStrip
+	@param project
+	@param strip
+	@return what the drawing says about the bridges of that strip: every
+	drawn bridge whose terminals sit in it, as the span it lies across --
+	the bar sits on every terminal between its ends, so it takes its
+	track there too.
+*/
+QList<TerminalStrip::DrawingBridge> BridgeManager::bridgesForStrip(QETProject *project,
+																	TerminalStrip *strip)
+{
+	QList<TerminalStrip::DrawingBridge> list;
+	if (!project || !strip) {
+		return list;
+	}
+
+	const auto bridges = project->bridges();
+	for (Bridge *bridge : bridges)
+	{
+		if (!bridge) {
+			continue;
+		}
+
+			//The terminals of this strip the bridge lands on
+		QVector<QSharedPointer<RealTerminal>> landed;
+		const auto lands_on = bridge->terminals();
+		for (const BridgeTerminal &terminal : lands_on)
+		{
+			Element *element = elementFor(project, terminal);
+			auto *terminal_element = element ? dynamic_cast<TerminalElement *>(element) : nullptr;
+			const QSharedPointer<RealTerminal> real_t =
+					terminal_element ? terminal_element->realTerminal() : QSharedPointer<RealTerminal>();
+			if (real_t && real_t->parentStrip() == strip) {
+				landed << real_t;
+			}
+		}
+		if (landed.isEmpty()) {
+			continue;
+		}
+
+			//The span it lies across: from the first to the last of them,
+			//on the level it sits on
+		int level = landed.first()->level();
+		int first = -1;
+		int last = -1;
+		for (const auto &real_t : landed) {
+			const auto physical = real_t->physicalTerminal();
+			if (!physical) {
+				continue;
+			}
+			const int pos = physical->pos();
+			first = (first < 0) ? pos : qMin(first, pos);
+			last = (last < 0) ? pos : qMax(last, pos);
+			if (level < 0) {
+				level = real_t->level();
+			}
+		}
+		if (first < 0) {
+			continue;
+		}
+
+		QVector<QSharedPointer<RealTerminal>> span;
+		for (int pos = first ; pos <= last ; ++pos)
+		{
+			const auto physical = strip->physicalTerminal(pos);
+			if (!physical) {
+				continue;
+			}
+			if (level >= 0 && level < physical->realTerminalCount()) {
+				const auto real_t = physical->realTerminal(level);
+				if (real_t) {
+					span << real_t;
+				}
+			} else {
+				span << physical->realTerminals();
+			}
+		}
+		if (span.isEmpty()) {
+			continue;
+		}
+
+		TerminalStrip::DrawingBridge drawn;
+		drawn.source = bridge->uuid();
+		drawn.real_terminals = span;
+		drawn.color = bridge->color();
+		list << drawn;
+	}
+	return list;
+}
+
+/**
 	@brief BridgeManager::tensionOf
 	@param project
 	@param bridge

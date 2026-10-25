@@ -20,6 +20,8 @@
 
 #include "bridge.h"
 
+#include "../TerminalStrip/terminalstrip.h"
+
 #include <QLineF>
 #include <QList>
 #include <QPointF>
@@ -118,6 +120,16 @@ class BridgeManager
 			*/
 		static QList<Conductor *> conductorsOverBridges(QETProject *project,
 													   const QList<Conductor *> &edited);
+
+			/**
+				What the drawing says about the bridges of @p strip: every
+				drawn bridge whose terminals sit in it, as the span it lies
+				across. A bridge bar sits on every terminal between its
+				ends -- which is exactly why two of them take their own
+				track where they run beside each other.
+			*/
+		static QList<TerminalStrip::DrawingBridge> bridgesForStrip(QETProject *project,
+																   TerminalStrip *strip);
 
 			/**
 				Give the wires wired to those terminals what the bridge

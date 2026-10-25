@@ -117,6 +117,23 @@ class TerminalStrip : public QObject
 		bool setBridge(const QSharedPointer<TerminalStripBridge> &bridge, const QVector<QSharedPointer<RealTerminal>> &real_terminals);
 		void unBridge(const QVector<QSharedPointer<RealTerminal>> &real_terminals);
 		bool canUnBridge(const QVector <QSharedPointer<RealTerminal>> &real_terminals) const;
+
+			/**
+				A bridge the drawing brought here: the bridges drawn on the
+				plan become bridges of this strip when its terminals are
+				sorted, and what the drawing says, those bridges say. They
+				are read-only here -- only the bridges he set by hand are
+				his to change.
+			*/
+		struct DrawingBridge
+		{
+				///The drawn bridge it comes from
+			QUuid source;
+			QVector<QSharedPointer<RealTerminal>> real_terminals;
+			QColor color;
+		};
+		QList<DrawingBridge> automaticBridges() const;
+		void setAutomaticBridges(const QList<DrawingBridge> &bridges);
 		QSharedPointer<TerminalStripBridge> isBridged(const QSharedPointer<RealTerminal> real_terminal) const;
 			///True when at least one bridge joins terminals of this strip :
 			///the bridge cells of the terminal strip editor are the only thing
