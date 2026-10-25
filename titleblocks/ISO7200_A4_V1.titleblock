@@ -467,6 +467,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
             </value>
             <label>
                 <translation lang="en">Department</translation>
+                <translation lang="sv">Ansvarig avdelning</translation>
             </label>
         </field>
         <field valign="center" row="0" hadjust="true" col="3" name="reference" displaylabel="false" align="center">
@@ -489,6 +490,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="pt">Título</translation>
                 <translation lang="ro">Titlu</translation>
                 <translation lang="ru">Название</translation>
+                <translation lang="sv">Referens</translation>
                 <translation lang="zh">职称</translation>
             </label>
         </field>
@@ -514,6 +516,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="pt">Ficheiro</translation>
                 <translation lang="ro">Fisier</translation>
                 <translation lang="ru">Файл</translation>
+                <translation lang="sv">Upprättad av</translation>
                 <translation lang="zh">文件名</translation>
             </label>
         </field>
@@ -544,6 +547,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="pt">Ficheiro</translation>
                 <translation lang="ro">Fisier</translation>
                 <translation lang="ru">Файл</translation>
+                <translation lang="sv">Fil</translation>
                 <translation lang="zh">文件名</translation>
             </label>
         </field>
@@ -571,6 +575,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
             </value>
             <label>
                 <translation lang="en">status</translation>
+                <translation lang="sv">Dokumentstatus</translation>
             </label>
         </field>
         <field valign="center" row="1" colspan="1" fontsize="9" hadjust="true" col="7" name="code" displaylabel="false" align="center">
@@ -605,6 +610,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="pt">Título</translation>
                 <translation lang="ro">Titlu</translation>
                 <translation lang="ru">Название</translation>
+                <translation lang="sv">Titel</translation>
                 <translation lang="zh">职称</translation>
             </label>
         </field>
@@ -633,6 +639,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
             </value>
             <label>
                 <translation lang="en">country</translation>
+                <translation lang="sv">Land</translation>
             </label>
         </field>
         <field valign="center" row="3" fontsize="9" hadjust="true" col="8" name="folio" displaylabel="false" align="center">
@@ -658,6 +665,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="pt">Folha</translation>
                 <translation lang="ro">Pagina</translation>
                 <translation lang="ru">Фолио</translation>
+                <translation lang="sv">Blad</translation>
                 <translation lang="zh">当前页</translation>
             </label>
         </field>

@@ -66,6 +66,40 @@ description:
       - "Companion tools: QET-elementScaler (symbol scaling) and qet_tb_generator (terminal block table generation)"
       - Interface translated into 25 languages
       - "Cross-platform: Windows, macOS, Linux, BSD"
+  sv:
+    shortDescription: >-
+      Fri redigerare för elscheman, som även används för VVS, hydraulik,
+      pneumatik, fordonskablage och solcellsscheman.
+    longDescription: >-
+      QElectroTech (QET) är ett fritt CAD/CAE-program med öppen källkod för
+      att rita komplexa elscheman för industri och bostäder. Programmet var
+      från början inriktat på elteknik, men används i dag även för VVS,
+      bergvärme, luftkonditionering, layout, hydraulik, pneumatik,
+      fastighetsautomation, fordonskablage, processcheman (P&ID),
+      solcellsanläggningar och många andra tekniska områden.
+
+
+      Programmet levereras med ett communityunderhållet bibliotek med över
+      9000 standardiserade symboler. Det fungerar likadant på Windows, macOS,
+      Linux och BSD, och filer som skapats på en plattform kan öppnas på en
+      annan utan konvertering.
+
+
+      QET har utvecklats sedan 2007 och underhålls av communityn sedan 2013.
+      Det används bland annat som ett fritt alternativ till kommersiella
+      program som EPLAN och SEE Electrical, av hobbyister, lärare,
+      studenter, yrkesverksamma elektriker och företag över hela världen.
+    documentation: "https://qelectrotech.github.io/qelectrotech-doc/index.html"
+    apiDocumentation: ""
+    features:
+      - Elscheman och andra tekniska scheman inom flera områden
+      - Bibliotek med över 9000 standardiserade symboler
+      - Projekt med flera blad och konfigurerbara ritningshuvuden
+      - DXF-import och DXF-export (via dxf2elmt)
+      - Generering av materialförteckningar och plintradstabeller
+      - "Kompletterande verktyg: QET-elementScaler (skalning av symboler) och qet_tb_generator (generering av plintradstabeller)"
+      - Gränssnittet är översatt till 25 språk
+      - "Plattformsoberoende: Windows, macOS, Linux, BSD"
 
 legal:
   license: GPL-2.0-only

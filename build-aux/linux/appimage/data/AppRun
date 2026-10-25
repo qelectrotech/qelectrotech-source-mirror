@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# AppRun of the QElectroTech AppImage bundle.
+#
+# Adapted from the digiKam AppImage scripts by Gilles Caulier.
+# Copyright (c) 2015-2019, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2026, The QElectroTech Team
+#
+# Redistribution and use is allowed according to the terms of the BSD license.
+#
+# Libraries are found through RPATH and the Qt plugins through usr/bin/qt.conf:
+# LD_LIBRARY_PATH and QT_PLUGIN_PATH are left untouched, so the programs QET
+# starts (xdg-open, browser, PDF viewer) use the host libraries.
+
+DIR="$(dirname "$(readlink -f "$0")")"
+export APPDIR="$DIR"
+
+QET_DATA="$DIR/usr/share/qelectrotech"
+
+# QET is built with absolute /usr/share/qelectrotech paths: point it to the
+# collections, title blocks and translations inside the AppImage.
+QET_OPTIONS=(
+    "--common-elements-dir=$QET_DATA/elements/"
+    "--common-tbt-dir=$QET_DATA/titleblocks/"
+    "--lang-dir=$QET_DATA/lang/"
+)
+
+if [[ $1 == "debug" ]] ; then
+
+    echo "Starting QElectroTech into GDB..."
+    echo "Use 'bt' command on debugger prompt to get a crash backtrace."
+    echo "Use 'q' command to quit debugger session."
+    exec gdb -ex=r --args "$DIR/usr/bin/qelectrotech" "${QET_OPTIONS[@]}" "${@:2}"
+
+elif [[ $1 == "help" ]] ; then
+
+    echo "QElectroTech AppImage bundle CLI options:"
+    echo " without option : run QElectroTech."
+    echo " <debug>        : run QElectroTech into GDB (gdb must be installed)."
+    echo " <help>         : show these information."
+    echo "Other arguments (files, --help...) are passed to QElectroTech."
+
+else
+
+    exec "$DIR/usr/bin/qelectrotech" "${QET_OPTIONS[@]}" "$@"
+
+fi

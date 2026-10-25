@@ -247,6 +247,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_pointer_aids_cb">
+         <property name="toolTip">
+          <string>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</string>
+         </property>
+         <property name="text">
+          <string>Four-way arrow and handle catching with the crosshair</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="guides_startup_cb">
          <property name="text">
           <string>Show default guides (applies from the next time the programme is launched)</string>

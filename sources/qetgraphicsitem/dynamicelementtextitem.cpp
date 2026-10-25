@@ -175,6 +175,8 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("uuid", m_uuid.toString());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
+	if (m_text_height > 0)
+		root_element.setAttribute(QStringLiteral("text_height"), QString::number(m_text_height));
 	root_element.setAttribute("font", QETUtils::fontToString(font()));
 	root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
 	root_element.setAttribute("rotation_point_center", m_rotation_point_center ? "true" : "false");
@@ -262,6 +264,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
 	setFrame(dom_elmt.attribute("frame", "false") == "true"? true : false);
 	setTextWidth(dom_elmt.attribute("text_width", QString::number(-1)).toDouble());
+	setTextHeight(dom_elmt.attribute(QStringLiteral("text_height"), QStringLiteral("-1")).toDouble());
 	
 		//Text from
 	QMetaEnum me = textFromMetaEnum();
@@ -867,7 +870,15 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 	if (m_jump_highlight)
 		painter->fillRect(boundingRect(), QColor(69, 137, 255, 90));
 
-	DiagramTextItem::paint(painter, option, widget);
+		//A fixed height cuts off the lines that do not fit
+	if (m_text_height > 0) {
+		painter->save();
+		painter->setClipRect(boundingRect(), Qt::IntersectClip);
+		DiagramTextItem::paint(painter, option, widget);
+		painter->restore();
+	} else {
+		DiagramTextItem::paint(painter, option, widget);
+	}
 
 	if (m_frame)
 	{
@@ -2067,6 +2078,60 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 	m_text_width = width;
 	fitAutoTextWidth();
 	emit textWidthChanged(width);
+}
+
+/**
+	@brief DynamicElementTextItem::setTextHeight
+	@param height : the height of the text field, -1 to follow the text.
+	With a height set, the field keeps it whatever is written: the lines
+	that do not fit are not drawn, to shorten a text where room is short.
+*/
+void DynamicElementTextItem::setTextHeight(qreal height)
+{
+	if (height <= 0)
+		height = -1;
+	if (qFuzzyCompare(height + 2, m_text_height + 2))
+		return;
+	prepareGeometryChange();
+	m_text_height = height;
+	update();
+	emit textHeightChanged(height);
+}
+
+/**
+	@brief DynamicElementTextItem::boundingRect
+	@return the text's own box, cut to the height set by the user
+*/
+QRectF DynamicElementTextItem::boundingRect() const
+{
+	QRectF rect = DiagramTextItem::boundingRect();
+	if (m_text_height > 0)
+		rect.setHeight(m_text_height);
+	return rect;
+}
+
+/**
+	@brief DynamicElementTextItem::shape
+	QGraphicsTextItem answers shape() and contains() from its own box, not
+	from boundingRect(): cut both to the height set by the user, so that
+	the lines cut off take no clicks either.
+*/
+QPainterPath DynamicElementTextItem::shape() const
+{
+	QPainterPath path = DiagramTextItem::shape();
+	if (m_text_height > 0) {
+		QPainterPath cut;
+		cut.addRect(boundingRect());
+		path = path.intersected(cut);
+	}
+	return path;
+}
+
+bool DynamicElementTextItem::contains(const QPointF &point) const
+{
+	if (m_text_height > 0 && !boundingRect().contains(point))
+		return false;
+	return DiagramTextItem::contains(point);
 }
 
 /**

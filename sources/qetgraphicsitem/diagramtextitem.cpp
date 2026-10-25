@@ -25,6 +25,11 @@
 #include "../utils/qetutils.h"
 #include "../QetGraphicsItemModeler/textresizehandles.h"
 
+#include <QAbstractTextDocumentLayout>
+#include <QStyleOptionGraphicsItem>
+#include <QTextBlock>
+#include <QTextLayout>
+
 /**
 	@brief DiagramTextItem::DiagramTextItem
 	@param parent : parent item
@@ -255,6 +260,59 @@ QRectF DiagramTextItem::frameRect() const
 	return QRectF(pos, size);
 }
 
+/**
+	@brief DiagramTextItem::writtenRect
+	@return the rect around the lines actually written, in this item's
+	coordinates: narrower than boundingRect() for a text kept at a fixed
+	width, and placed as the text is aligned. A text with nothing written
+	gives its bounding rect, so that it can still be picked.
+*/
+QRectF DiagramTextItem::writtenRect() const
+{
+	QRectF written;
+	QAbstractTextDocumentLayout *layout = document()->documentLayout();
+	for (QTextBlock block = document()->begin(); block.isValid(); block = block.next())
+	{
+		const QTextLayout *lines = block.layout();
+		if (!lines)
+			continue;
+		const QPointF origin = layout->blockBoundingRect(block).topLeft();
+		for (int i = 0; i < lines->lineCount(); ++i)
+		{
+			const QRectF line = lines->lineAt(i).naturalTextRect().translated(origin);
+			if (line.width() > 0)
+				written |= line;
+		}
+	}
+	if (written.isEmpty())
+		return boundingRect();
+		//A little room around the letters, as the frame keeps
+	return written.adjusted(-1, -1, 1, 1) & boundingRect();
+}
+
+/**
+	@brief DiagramTextItem::shape
+	@return the lines written as the place to click: the empty part of a
+	fixed-width text belongs to whatever lies beneath it. While editing,
+	the whole box, so that a click anywhere in it moves the cursor.
+*/
+QPainterPath DiagramTextItem::shape() const
+{
+	QPainterPath path;
+	path.addRect(isEditing() ? boundingRect() : writtenRect());
+	return path;
+}
+
+/**
+	@brief DiagramTextItem::contains
+	QGraphicsTextItem answers from its whole box: answer from shape(), so
+	that hovering and picking at a point follow it too.
+*/
+bool DiagramTextItem::contains(const QPointF &point) const
+{
+	return shape().contains(point);
+}
+
 void DiagramTextItem::setHtml(const QString &text)
 {
 	QGraphicsTextItem::setHtml(text);
@@ -301,7 +359,25 @@ void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *o
 {
 	painter -> setRenderHint(QPainter::Antialiasing, false);
 
-	QGraphicsTextItem::paint(painter, option, widget);
+		//Outside editing, the selection is drawn around the lines written,
+		//not around the whole width a fixed-width text keeps free
+	const bool outline = option && (option->state & QStyle::State_Selected) && !isEditing();
+	if (outline)
+	{
+		QStyleOptionGraphicsItem plain(*option);
+		plain.state &= ~(QStyle::State_Selected | QStyle::State_HasFocus);
+		QGraphicsTextItem::paint(painter, &plain, widget);
+
+		painter -> save();
+		painter -> setBrush(Qt::NoBrush);
+		QPen pen(Qt::black, 0, Qt::DashLine);
+		pen.setCosmetic(true);
+		painter -> setPen(pen);
+		painter -> drawRect(writtenRect());
+		painter -> restore();
+	}
+	else
+		QGraphicsTextItem::paint(painter, option, widget);
 
 	if (m_mouse_hover && !isSelected())
 	{
@@ -318,7 +394,7 @@ void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *o
 		t.setStyle(Qt::DashDotLine);
 		t.setCosmetic(true);
 		painter -> setPen(t);
-		painter -> drawRoundedRect(boundingRect(), 10, 10);
+		painter -> drawRoundedRect(writtenRect(), 2, 2);
 
 		painter -> restore();
 	}
