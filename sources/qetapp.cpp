@@ -871,7 +871,11 @@ QString QETApp::commonTitleBlockTemplatesDir()
 	 */
 	return(QCoreApplication::applicationDirPath() + "/titleblocks/");
 #else
-	#ifndef QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
+	/* QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH used to decide
+	 *  this path too, so it still does
+	 */
+	#if !defined(QET_COMMON_TBT_PATH_RELATIVE_TO_BINARY_PATH) \
+		&& !defined(QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH)
 		// the compile-time option represents a usual path
 		// (be it absolute or relative)
 		return(resolveConfiguredDataPath(QUOTE(QET_COMMON_TBT_PATH)));
