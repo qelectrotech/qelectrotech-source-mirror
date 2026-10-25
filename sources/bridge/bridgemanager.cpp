@@ -768,6 +768,8 @@ QList<TerminalStrip::DrawingBridge> BridgeManager::bridgesForStrip(QETProject *p
 		drawn.source = bridge->uuid();
 		drawn.real_terminals = span;
 		drawn.color = bridge->color();
+			//The groove its bar sits in is the one the drawing gave it
+		drawn.track = qBound(1, bridge->column(), 4);
 		list << drawn;
 	}
 	return list;

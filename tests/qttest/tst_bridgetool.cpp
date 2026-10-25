@@ -1030,6 +1030,46 @@ private slots:
 				 "one undo takes the bridges back with the sorting");
 	}
 
+	//Two bridges lying across the same terminals run side by side:
+	//each takes its own groove, the one the drawing gave it
+	void everyBridgeTakesItsOwnGroove()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY2(terminals.size() >= 4, "the strip X1 has four terminals");
+		QVector<TerminalStrip *> strips = project.terminalStrip();
+		QVERIFY(!strips.isEmpty());
+		TerminalStrip *strip = strips.first();
+
+			//One bridge over the first and the third, one over the second
+			//and the fourth: they lie across each other
+		Bridge *first = project.newBridge();
+		first->addTerminal(terminalOf(terminals.at(0)));
+		first->addTerminal(terminalOf(terminals.at(2)));
+		first->setColumn(BridgeManager::freeColumn(&project, first->terminals()));
+
+		Bridge *second = project.newBridge();
+		second->addTerminal(terminalOf(terminals.at(1)));
+		second->addTerminal(terminalOf(terminals.at(3)));
+		second->setColumn(BridgeManager::freeColumn(&project, second->terminals()));
+
+		QCOMPARE(first->column(), 1);
+		QVERIFY2(second->column() == 2, "the second bridge runs beside the first");
+
+		project.diagrams().first()->undoStack().push(new SortTerminalStripCommand(strip));
+
+		const auto bridges = strip->automaticBridges();
+		QCOMPARE(bridges.size(), 2);
+		QList<int> tracks;
+		for (const auto &bridge : bridges) {
+			tracks << bridge.track;
+		}
+		QVERIFY2(tracks.contains(1) && tracks.contains(2),
+				 "each bridge sits in the groove the drawing gave it");
+	}
+
 	//The bridges he set here by hand are his own: the sorting never
 	//touches them
 	void sortingLeavesTheBridgesHeSetByHand()

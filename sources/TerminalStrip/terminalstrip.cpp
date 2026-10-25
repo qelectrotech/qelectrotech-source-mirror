@@ -795,6 +795,7 @@ bool TerminalStrip::setBridge(const QVector<QSharedPointer<RealTerminal>> &real_
 	{
 		auto br_ = new TerminalStripBridge(this);
 		bridge = br_->sharedRef();
+		bridge->setTrack(freeTrackFor(real_terminals));
 		m_bridge.append(bridge);
 	}
 
@@ -917,6 +918,60 @@ bool TerminalStrip::canUnBridge(const QVector<QSharedPointer<RealTerminal> > &re
 }
 
 /**
+ * @brief TerminalStrip::freeTrackFor
+ * @param real_terminals the terminals a bar would lie across
+ * @return the first groove (1 to 4) no bar of a bridge lying across the
+ * same terminals already sits in: two bars beside each other, the way
+ * the real ones run, and never one on top of the other
+ */
+int TerminalStrip::freeTrackFor(const QVector<QSharedPointer<RealTerminal>> &real_terminals) const
+{
+	if (real_terminals.isEmpty()) {
+		return 1;
+	}
+
+	int first = -1, last = -1;
+	for (const auto &real_t : real_terminals) {
+		const auto physical = real_t ? real_t->physicalTerminal() : QSharedPointer<PhysicalTerminal>();
+		if (!physical) {
+			continue;
+		}
+		const int pos = physical->pos();
+		first = (first < 0) ? pos : qMin(first, pos);
+		last = (last < 0) ? pos : qMax(last, pos);
+	}
+
+	bool taken[5] = {false, false, false, false, false};
+	for (const auto &bridge : m_bridge)
+	{
+		if (!bridge) {
+			continue;
+		}
+		int bridge_first = -1, bridge_last = -1;
+		for (const auto &real_t : bridge->realTerminals()) {
+			const auto physical = real_t ? real_t->physicalTerminal() : QSharedPointer<PhysicalTerminal>();
+			if (!physical) {
+				continue;
+			}
+			const int pos = physical->pos();
+			bridge_first = (bridge_first < 0) ? pos : qMin(bridge_first, pos);
+			bridge_last = (bridge_last < 0) ? pos : qMax(bridge_last, pos);
+		}
+		if (bridge_first < 0 || first < 0 || bridge_last < first || bridge_first > last) {
+			continue;
+		}
+		taken[qBound(1, bridge->track(), 4)] = true;
+	}
+
+	for (int track = 1 ; track <= 4 ; ++track) {
+		if (!taken[track]) {
+			return track;
+		}
+	}
+	return 1;
+}
+
+/**
  * @brief TerminalStrip::automaticBridges
  * @return the bridges this strip holds which were brought here by the
  * drawing, as they stand now
@@ -933,6 +988,7 @@ QList<TerminalStrip::DrawingBridge> TerminalStrip::automaticBridges() const
 		drawn.source = bridge->source();
 		drawn.real_terminals = bridge->realTerminals();
 		drawn.color = bridge->color();
+		drawn.track = bridge->track();
 		list << drawn;
 	}
 	return list;
@@ -986,6 +1042,7 @@ void TerminalStrip::setAutomaticBridges(const QList<DrawingBridge> &bridges)
 		}
 
 		bridge->setColor(wanted.color);
+		bridge->setTrack(wanted.track);
 		bridge->removeTerminals(bridge->realTerminals());
 		bridge->addTerminals(wanted.real_terminals);
 	}

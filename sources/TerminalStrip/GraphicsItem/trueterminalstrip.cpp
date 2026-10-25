@@ -195,4 +195,9 @@ namespace TerminalStripDrawer
 			return QUuid();
 		}
 	}
+
+	int TrueBridge::track() const
+	{
+		return m_bridge ? m_bridge->track() : 1;
+	}
 }

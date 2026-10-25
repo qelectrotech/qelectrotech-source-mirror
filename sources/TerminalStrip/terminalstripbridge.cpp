@@ -86,6 +86,9 @@ QDomElement TerminalStripBridge::toXml(QDomDocument &parent_document) const
 	if (m_automatic) {
 		root_elmt.setAttribute(QStringLiteral("automatic"), QStringLiteral("1"));
 	}
+	if (m_track != 1) {
+		root_elmt.setAttribute(QStringLiteral("track"), m_track);
+	}
 	if (!m_source.isNull()) {
 		root_elmt.setAttribute(QStringLiteral("source"), m_source.toString());
 	}
@@ -114,6 +117,7 @@ void TerminalStripBridge::fromXml(const QDomElement &dom_element)
 	m_uuid = QUuid(dom_element.attribute(QStringLiteral("uuid"), m_uuid.toString()));
 	m_color = QColor(dom_element.attribute(QStringLiteral("color")));
 	m_automatic = dom_element.attribute(QStringLiteral("automatic")) == QLatin1String("1");
+	m_track = qBound(1, dom_element.attribute(QStringLiteral("track"), QStringLiteral("1")).toInt(), 4);
 	m_source = QUuid(dom_element.attribute(QStringLiteral("source")));
 
 	const auto real_t_vector = QETXML::subChild(dom_element,
@@ -212,4 +216,19 @@ QUuid TerminalStripBridge::source() const noexcept {
 */
 void TerminalStripBridge::setSource(const QUuid &source) {
 	m_source = source;
+}
+
+/**
+	@return which of the four grooves of the terminal block this bar
+	sits in
+*/
+int TerminalStripBridge::track() const noexcept {
+	return m_track;
+}
+
+/**
+	@param track
+*/
+void TerminalStripBridge::setTrack(int track) {
+	m_track = qBound(1, track, 4);
 }

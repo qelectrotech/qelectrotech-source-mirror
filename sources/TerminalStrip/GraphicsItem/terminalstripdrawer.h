@@ -59,6 +59,11 @@ namespace TerminalStripDrawer
             AbstractBridgeInterface() {}
             virtual ~AbstractBridgeInterface() {}
             virtual QUuid uuid() const = 0;
+				//Which of the four grooves its bar sits in: two bars
+				//lying across the same terminals run side by side.
+				//Not pure virtual: an implementation without grooves
+				//simply sits in the first one.
+            virtual int track() const { return 1; }
     };
 
     class AbstractRealTerminalInterface

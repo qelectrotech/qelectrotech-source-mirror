@@ -80,6 +80,7 @@ namespace TerminalStripDrawer
 		public:
 			TrueBridge(QSharedPointer<TerminalStripBridge> bridge);
 			QUuid uuid() const override;
+			int track() const override;
 
 		private:
 			QSharedPointer<TerminalStripBridge> m_bridge;

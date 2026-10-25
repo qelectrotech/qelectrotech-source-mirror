@@ -56,6 +56,13 @@ class TerminalStripBridge
 			*/
 		bool automatic() const noexcept;
 		void setAutomatic(bool automatic);
+			/**
+				Which of the four grooves of the terminal block this bar
+				sits in: two bridges lying across the same terminals run
+				side by side, one per groove, the way the real bars do.
+			*/
+		int track() const noexcept;
+		void setTrack(int track);
 			///The drawn bridge this one was brought from, null when he
 			///set it here himself
 		QUuid source() const noexcept;
@@ -73,6 +80,7 @@ class TerminalStripBridge
 		QColor m_color = Qt::darkGray;
 		QUuid m_uuid = QUuid::createUuid();
 		bool m_automatic = false;
+		int m_track = 1;
 		QUuid m_source;
 		QWeakPointer<TerminalStripBridge> m_this_weak;
 };

@@ -1526,7 +1526,11 @@ void TerminalStripDrawer::paint(QPainter *painter)
                         shared_real_terminal->bridge() })
                     {
                         const auto x_anchor{terminal_rect.width()/2};
-                        const auto y_anchor {m_pattern->m_bridge_point_y_offset[index_]};
+							//Which groove the bar sits in is the bridge's
+							//own: two bars lying across the same terminals
+							//run side by side, one per groove
+                        const auto track_ = qBound(1, bridge_->track(), 4) - 1;
+                        const auto y_anchor {m_pattern->m_bridge_point_y_offset[track_]};
                         const auto radius_anchor{m_pattern->m_bridge_point_d/2};
 
 						painter->setBrush(Qt::SolidPattern);

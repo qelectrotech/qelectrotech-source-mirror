@@ -131,9 +131,18 @@ class TerminalStrip : public QObject
 			QUuid source;
 			QVector<QSharedPointer<RealTerminal>> real_terminals;
 			QColor color;
+				///Which of the four grooves its bar sits in
+			int track = 1;
 		};
 		QList<DrawingBridge> automaticBridges() const;
 		void setAutomaticBridges(const QList<DrawingBridge> &bridges);
+
+	private:
+			///The first groove (1 to 4) no bar of a bridge lying across
+			///the same terminals already sits in
+		int freeTrackFor(const QVector<QSharedPointer<RealTerminal>> &real_terminals) const;
+
+	public:
 		QSharedPointer<TerminalStripBridge> isBridged(const QSharedPointer<RealTerminal> real_terminal) const;
 			///True when at least one bridge joins terminals of this strip :
 			///the bridge cells of the terminal strip editor are the only thing
