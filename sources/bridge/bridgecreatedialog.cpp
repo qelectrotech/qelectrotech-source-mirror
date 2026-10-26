@@ -187,9 +187,13 @@ BridgeCreateDialog::BridgeCreateDialog(Bridge *bridge, QWidget *parent) :
 	setWindowTitle(tr("The bridge"));
 
 	auto *layout = new QVBoxLayout(this);
-	layout->addWidget(new QLabel(
-		tr("%n terminal(s) on this bridge", "how many terminals the bridge lands on",
-		   bridge ? bridge->terminalCount() : 0), this));
+	QString counted = tr("%n Klemme(n) on this bridge", "how many terminals the bridge lands on",
+						 bridge ? bridge->terminalCount() : 0);
+	if (bridge && !bridge->references().isEmpty()) {
+		counted += tr(", %n sheet reference(s) on the way to the next sheet",
+					  "the way to the next sheet", bridge->references().size());
+	}
+	layout->addWidget(new QLabel(counted, this));
 
 	layout->addWidget(new QLabel(tr("Terminals this bridge may hold:"), this));
 	m_max_sb = new QSpinBox(this);

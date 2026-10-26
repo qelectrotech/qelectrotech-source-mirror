@@ -171,8 +171,13 @@ class Bridge : public QObject
 		QString name() const;
 		void setName(const QString &name);
 
-		//Terminals
+		//Where the bridge is plugged in. A Klemme is an Anschluss; a
+		//sheet reference is the way to the next sheet and never one --
+		//it is kept apart and never counted as a connection of the
+		//bridge.
+		QList<BridgeTerminal> landings() const;
 		QList<BridgeTerminal> terminals() const;
+		QList<BridgeTerminal> references() const;
 		bool hasTerminal(const BridgeTerminal &terminal) const;
 		void addTerminal(const BridgeTerminal &terminal);
 		void removeTerminal(const BridgeTerminal &terminal);

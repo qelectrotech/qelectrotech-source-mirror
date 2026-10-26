@@ -177,15 +177,8 @@ void Bridge::setName(const QString &name)
 	carried on by is no Klemme: it never counts as one, and never fills
 	one of the places the bridge holds.
 */
-int Bridge::klemmCount() const
-{
-	int count = 0;
-	for (const BridgeTerminal &terminal : m_terminals) {
-		if (!terminal.reference) {
-			++count;
-		}
-	}
-	return count;
+int Bridge::klemmCount() const {
+	return terminals().size();
 }
 
 /**
@@ -227,11 +220,40 @@ QString Bridge::liveTension() const
 }
 
 /**
-	@return the terminals this bridge lands on, in the order they were
-	given when it was drawn
+	@return every place this bridge is plugged in: the Klemmen and the
+	sheet references alike, in the order they were drawn over
+*/
+QList<BridgeTerminal> Bridge::landings() const {
+	return m_terminals;
+}
+
+/**
+	@return the Klemmen this bridge lands on. A sheet reference is the
+	way to the next sheet and never an Anschluss of the bridge: it is
+	not in here and never counted as one.
 */
 QList<BridgeTerminal> Bridge::terminals() const {
-	return m_terminals;
+	QList<BridgeTerminal> list;
+	for (const BridgeTerminal &terminal : m_terminals) {
+		if (!terminal.reference) {
+			list << terminal;
+		}
+	}
+	return list;
+}
+
+/**
+	@return the sheet references this bridge is carried on by: the way
+	to the next sheet, kept apart from its Anschluesse
+*/
+QList<BridgeTerminal> Bridge::references() const {
+	QList<BridgeTerminal> list;
+	for (const BridgeTerminal &terminal : m_terminals) {
+		if (terminal.reference) {
+			list << terminal;
+		}
+	}
+	return list;
 }
 
 /**
@@ -280,8 +302,12 @@ void Bridge::setTerminals(const QList<BridgeTerminal> &terminals)
 /**
 	@return how many terminals this bridge lands on
 */
+	/**
+		@return how many Klemmen this bridge lands on: a sheet reference
+		is no Anschluss and never counted here
+	*/
 int Bridge::terminalCount() const {
-	return m_terminals.size();
+	return terminals().size();
 }
 
 /**

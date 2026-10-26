@@ -964,9 +964,9 @@ private slots:
 		bridge->addTerminal(BridgeTerminal{report->uuid(),
 										   report->terminals().first()->stableUuid().toString(),
 										   true});
-		QCOMPARE(bridge->terminalCount(), 1);
-		QVERIFY2(bridge->klemmCount() == 0,
-				  "a sheet reference is no Klemme");
+		QVERIFY2(bridge->terminalCount() == 0,
+				 "a sheet reference is no Anschluss of the bridge");
+		QCOMPARE(bridge->references().size(), 1);
 		QVERIFY2(!bridge->wouldExceed(1),
 				 "and it never fills one of the places the bridge holds");
 	}
