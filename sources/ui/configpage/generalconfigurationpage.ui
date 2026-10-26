@@ -257,6 +257,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_warn_outside_sheet_cb">
+         <property name="toolTip">
+          <string>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</string>
+         </property>
+         <property name="text">
+          <string>Warn about items outside the sheet</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="guides_startup_cb">
          <property name="text">
           <string>Show default guides (applies from the next time the programme is launched)</string>

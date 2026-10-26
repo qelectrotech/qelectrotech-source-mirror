@@ -212,6 +212,7 @@ class Diagram : public QGraphicsScene
 		void restoreText(Element* elmt);
 		QUuid uuid();
 		QStringList wiresNotReconnected() const;
+		QStringList itemsOutsideSheet() const;
 		QStringList symbolsNotLoaded() const;
 		QSet<QUuid> keptSymbolUuids() const;
 		void setEventInterface (DiagramEventInterface *event_interface);
