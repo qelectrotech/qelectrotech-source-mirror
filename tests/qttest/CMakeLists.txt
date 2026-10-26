@@ -1802,7 +1802,9 @@ if(QET_HAS_SCRIPTING)
   add_test(NAME tst_workingcopy COMMAND tst_workingcopy)
   add_dependencies(tst_workingcopy qelectrotech)
   target_link_libraries(tst_workingcopy PRIVATE Qt::Test Qt::Xml)
-  set_tests_properties(tst_workingcopy PROPERTIES TIMEOUT 1800
+  # It runs 8 QElectroTech at once: counted as 8 of ctest -j8's slots, so it
+  # does not slow the other tests past their own time limits.
+  set_tests_properties(tst_workingcopy PROPERTIES TIMEOUT 1800 PROCESSORS 8
     ENVIRONMENT "QTEST_FUNCTION_TIMEOUT=1500000")
   target_compile_definitions(tst_workingcopy PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
