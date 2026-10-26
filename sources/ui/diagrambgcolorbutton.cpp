@@ -25,6 +25,7 @@
 #include "../qetproject.h"
 #include "../utils/qetsettings.h"
 
+#include <QSignalBlocker>
 #include <QApplication>
 #include <QColorDialog>
 #include <QMenu>
@@ -97,6 +98,61 @@ DiagramBgColorToolButton::DiagramBgColorToolButton(QETDiagramEditor *editor, QWi
 				     "dashed ones in light blue and dash-dotted ones in yellow, the rest "
 				     "in white. Printing and exporting stay black on white."));
 	connect(m_dark_mode, &QAction::triggered, this, &DiagramBgColorToolButton::setDarkMode);
+	allButtons() << this;
+}
+
+DiagramBgColorToolButton::~DiagramBgColorToolButton()
+{
+	allButtons().removeAll(this);
+}
+
+/**
+	@brief DiagramBgColorToolButton::allButtons
+	@return the buttons of every editor window: the sheet color and the
+	dark mode are the same for all of them
+*/
+QList<DiagramBgColorToolButton *> &DiagramBgColorToolButton::allButtons()
+{
+	static QList<DiagramBgColorToolButton *> buttons;
+	return buttons;
+}
+
+/**
+	@brief DiagramBgColorToolButton::showSheetState
+	Show the sheet the views draw now (Diagram::background_color and the
+	PaletteGraphicsView flags): the swatch, and the dark mode's check
+	mark, without triggering it.
+*/
+void DiagramBgColorToolButton::showSheetState()
+{
+	m_is_system_color = !PaletteGraphicsView::customBackgroundColor();
+	m_colored_ink = PaletteGraphicsView::coloredInk();
+	const QSignalBlocker blocker(m_dark_mode);
+	m_dark_mode->setChecked(m_colored_ink);
+	setSwatch(m_is_system_color ? QApplication::palette().color(QPalette::Base)
+				    : Diagram::background_color);
+}
+
+/**
+	@brief DiagramBgColorToolButton::spreadSheetState
+	After a change here, every editor window shows the new sheet: its
+	button and its menu entry, its recent colors, and its folios, built
+	or not (a folio not built yet takes the color when it is drawn).
+*/
+void DiagramBgColorToolButton::spreadSheetState()
+{
+	for (DiagramBgColorToolButton *button : std::as_const(allButtons()))
+	{
+		if (button != this && button->m_recent != m_recent) {
+			button->m_recent = m_recent;
+			button->rebuildMenu();
+		}
+		button->showSheetState();
+		if (QETDiagramEditor *editor = button->m_editor)
+			for (ProjectView *pv : editor->openedProjects())
+				for (Diagram *d : pv->project()->folios())
+					d->update();
+	}
 }
 
 /**
@@ -108,13 +164,13 @@ DiagramBgColorToolButton::DiagramBgColorToolButton(QETDiagramEditor *editor, QWi
 void DiagramBgColorToolButton::setDarkMode(bool on)
 {
 	if (on) {
-		m_before_dark_system = m_is_system_color;
-		m_before_dark_color = m_current;
+		s_before_dark_system = m_is_system_color;
+		s_before_dark_color = m_current;
 		applyColor(Qt::black, true);
-	} else if (m_before_dark_system || !m_before_dark_color.isValid()) {
+	} else if (s_before_dark_system || !s_before_dark_color.isValid()) {
 		applySystemColor();
 	} else {
-		applyColor(m_before_dark_color);
+		applyColor(s_before_dark_color);
 	}
 }
 
@@ -179,15 +235,7 @@ void DiagramBgColorToolButton::applyColor(const QColor &color, bool colored_ink)
 	PaletteGraphicsView::setColoredInk(colored_ink);
 	Diagram::background_color = color;
 	QetSettings::setSheetBackground(QetSettings::SheetBackground{color, true, colored_ink});
-
-	QETDiagramEditor *editor = m_editor;
-	if (!editor) {
-		return;
-	}
-		//A folio not built yet takes the colour when it is drawn
-	for (ProjectView *pv : editor->openedProjects())
-		for (Diagram *d : pv->project()->folios())
-			d->update();
+	spreadSheetState();
 }
 
 /**
@@ -208,15 +256,7 @@ void DiagramBgColorToolButton::applySystemColor()
 	Diagram::background_color = Qt::white;
 	QetSettings::setSheetBackground(
 				QetSettings::SheetBackground{QColor(Qt::white), false});
-
-	QETDiagramEditor *editor = m_editor;
-	if (!editor) {
-		return;
-	}
-		//A folio not built yet takes the colour when it is drawn
-	for (ProjectView *pv : editor->openedProjects())
-		for (Diagram *d : pv->project()->folios())
-			d->update();
+	spreadSheetState();
 }
 
 /**

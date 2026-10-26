@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "../qetgraphicsitem/conductor.h"
+#include "../palettegraphicsview.h"
 #include "../shownkinds.h"
 #include "../lastusedstyle.h"
 #include "../qetproject.h"
@@ -596,13 +597,16 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 	painter -> setRenderHint(QPainter::Antialiasing, false);
 
 		// Set the color of conductor
+		//In the dark mode a red pick and a blue highlight would look like
+		//the red and light blue conductors around them
+	const QET::Palette::SheetInk &sheet_ink = PaletteGraphicsView::paintingInk();
 	QColor final_conductor_color(m_properties.color);
 	if (must_highlight_ == Normal) {
-		final_conductor_color = QColor::fromRgb(69, 137, 255, 255);
+		final_conductor_color = QET::Palette::highlightColor(sheet_ink);
 	} else if (must_highlight_ == Alert) {
 		final_conductor_color =QColor::fromRgb(255, 69, 0, 255);
 	} else if (isSelected()) {
-		final_conductor_color = Qt::red;
+		final_conductor_color = QET::Palette::pickedColor(sheet_ink);
 	} else {
 		if (Diagram *parent_diagram = diagram()) {
 			if (!parent_diagram -> drawColoredConductors()) {

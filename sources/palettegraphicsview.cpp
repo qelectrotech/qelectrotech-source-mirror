@@ -27,6 +27,7 @@
 #include <QStyleOptionRubberBand>
 #include <QtMath>
 
+#include <optional>
 #include <vector>
 
 namespace {
@@ -162,7 +163,13 @@ void PaletteGraphicsView::paintInverted(QPaintEvent *event)
 	m_ink = sheetInk();
 	s_painting_ink = m_ink;
 	DarkImageRendering::Context context{&m_buffer_painter, !customBackgroundColor(), [this](bool invert, const QRect &bounds) { flushLayer(invert, bounds); }};
-	DarkImageRendering::Scope rasterScope(&context);
+		//Only on a dark palette: a picture "adapted to the dark theme" is
+		//inverted against the scene there. Tinting for a dark custom
+		//sheet on a light palette draws pictures as they are, as before
+		//there was a tint
+	std::optional<DarkImageRendering::Scope> rasterScope;
+	if (invertsLightness())
+		rasterScope.emplace(&context);
 
 	m_inverting = true;
 	paintingInverted(!customBackgroundColor());

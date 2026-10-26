@@ -108,6 +108,19 @@ namespace QET {
 			ARGB32_Premultiplied.
 		*/
 		void tintLayer(QImage &image, const QColor &sheet, const QColor &ink);
+		/**
+			The color a picked item (a conductor, a cable) is drawn in on
+			\a ink: red, or magenta when the conductors themselves are
+			red (the dark mode), where a red pick would not stand out.
+			Saturated either way, so tintLayer() leaves it as it is.
+		*/
+		QColor pickedColor(const SheetInk &ink);
+		/**
+			The color of a conductor highlighted with its potential on
+			\a ink: blue, or green in the dark mode, where blue is close
+			to the light blue of the dashed conductors.
+		*/
+		QColor highlightColor(const SheetInk &ink);
 
 		/**
 			The color of the grid dots on a sheet of color \a sheet: black,

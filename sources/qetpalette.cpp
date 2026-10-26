@@ -149,8 +149,13 @@ void QET::Palette::tintLayer(QImage &image, const QColor &sheet, const QColor &i
 	/* The layer is premultiplied: a pixel of alpha a has its channels in
 	   0..a. Its gray level g (0..a) is the white part, a - g the black
 	   part, so each channel becomes (sheet * g + ink * (a - g)) / 255,
-	   which is again premultiplied by a. A pixel whose channels spread
-	   by more than a fifth of its alpha is colored and left alone. */
+	   which is again premultiplied by a. A colored pixel (a highlight, a
+	   red terminal, a pale blue fill) is left alone: one whose saturation
+	   as in HSL -- the spread of its channels against how far its
+	   lightness is from black or white -- is above one half, and whose
+	   spread is not mere rounding noise. A spread against the alpha
+	   alone missed pale tints, whose channels lie close together near
+	   white. */
 	for (int y = 0; y < image.height(); ++y) {
 		quint32 *line = reinterpret_cast<quint32 *>(image.scanLine(y));
 		for (int x = 0, width = image.width(); x < width; ++x) {
@@ -162,7 +167,9 @@ void QET::Palette::tintLayer(QImage &image, const QColor &sheet, const QColor &i
 			const int blue  = pixel & 0xff;
 			const int highest = qMax(red, qMax(green, blue));
 			const int lowest  = qMin(red, qMin(green, blue));
-			if ((highest - lowest) * 5 > alpha) continue;
+			const int spread = highest - lowest;
+			const int room = alpha - qAbs(highest + lowest - alpha);
+			if (spread * 32 > alpha && spread * 2 > room) continue;
 			const int gray = (red + green + blue) / 3;
 			const int dark = alpha - gray;
 			quint32 out = quint32(alpha) << 24;
@@ -171,6 +178,24 @@ void QET::Palette::tintLayer(QImage &image, const QColor &sheet, const QColor &i
 			line[x] = out;
 		}
 	}
+}
+
+namespace {
+	/// The dark mode: conductors in a color of their own, not one ink
+	bool coloredWires(const QET::Palette::SheetInk &ink)
+	{
+		return !ink.isNull() && ink.wires != ink.symbols;
+	}
+}
+
+QColor QET::Palette::pickedColor(const SheetInk &ink)
+{
+	return coloredWires(ink) ? QColor(255, 0, 255) : QColor(Qt::red);
+}
+
+QColor QET::Palette::highlightColor(const SheetInk &ink)
+{
+	return coloredWires(ink) ? QColor(0, 210, 0) : QColor(69, 137, 255);
 }
 
 QColor QET::Palette::gridDotColor(const QColor &sheet, bool inverted)

@@ -20,6 +20,7 @@
 #include "../../sources/diagramview.h"
 #include "../../sources/qetgraphicsitem/conductor.h"
 #include "../../sources/qetgraphicsitem/element.h"
+#include "../../sources/qetgraphicsitem/diagramimageitem.h"
 #include "../../sources/qetmessagebox.h"
 #include "../../sources/qetpalette.h"
 #include "../../sources/qetproject.h"
@@ -53,6 +54,8 @@ static bool yellow(const QColor &c) { return c.red() > 140 && c.green() > 140 &&
 static bool red(const QColor &c) { return c.red() > 140 && c.green() < 90 && c.blue() < 90; }
 static bool lightBlue(const QColor &c) { return c.blue() > 180 && c.green() > 120 && c.red() < 170; }
 static bool white(const QColor &c) { return c.red() > 140 && c.green() > 140 && c.blue() > 140; }
+static bool magenta(const QColor &c) { return c.red() > 180 && c.blue() > 180 && c.green() < 90; }
+static bool green(const QColor &c) { return c.green() > 150 && c.red() < 90 && c.blue() < 90; }
 
 /// The share of the pixels of \a mask that pass \a test in \a image
 static double share(const QImage &image, const QList<QPoint> &mask, bool (*test)(const QColor &))
@@ -259,6 +262,110 @@ int main(int argc, char **argv)
 			std::printf("cable: red %d yellow %d white %d\n", reds, yellows, whites);
 			check(reds > 30, "its line and cores are red");
 			check(yellows > 30, "its label is yellow");
+
+				//With one white ink for all (Dark gray or Black, dark mode
+				//off) the label is white too: written in white it counted
+				//as gray, and the tint gave it the sheet's color
+			setSheet(Qt::black, true, false);
+			const QImage mono = grab(view);
+			mono.save(output + "/cable-mono.png");
+			int mono_whites = 0;
+			for (int y = area.top(); y <= area.bottom(); ++y)
+				for (int x = area.left(); x <= area.right(); ++x)
+					mono_whites += white(mono.pixelColor(x, y));
+			std::printf("cable mono: white %d (colored: red %d + yellow %d)\n", mono_whites, reds, yellows);
+			check(mono_whites > reds + yellows * 4 / 5, "with one white ink its label shows, white like its line");
+
+				//Picked in the dark mode: magenta, not the red of the
+				//conductors around it; nor is a highlighted conductor
+				//the light blue of the dashed ones, but green
+			setSheet(Qt::black, true, true);
+			part->setSelected(true);
+			const QImage picked = grab(view);
+			int magentas = 0;
+			for (int y = area.top(); y <= area.bottom(); ++y)
+				for (int x = area.left(); x <= area.right(); ++x)
+					magentas += magenta(picked.pixelColor(x, y));
+			check(magentas > 30, "a picked cable is magenta in the dark mode");
+			part->setSelected(false);
+		}
+		{
+			setSheet(Qt::black, true, true);
+			Conductor *c = folio->conductors().first();
+			const QRect area = view.mapFromScene(c->sceneBoundingRect()).boundingRect()
+					   .intersected(QRect(QPoint(0, 0), view.viewport()->size()));
+			auto count = [&](const QImage &image, bool (*test)(const QColor &)) {
+				int n = 0;
+				for (int y = area.top(); y <= area.bottom(); ++y)
+					for (int x = area.left(); x <= area.right(); ++x)
+						n += test(image.pixelColor(x, y));
+				return n;
+			};
+			c->setSelected(true);
+			const QImage picked = grab(view);
+			check(count(picked, magenta) > 20, "a picked conductor is magenta in the dark mode");
+			c->setSelected(false);
+			c->setHighlighted(Conductor::Normal);
+			const QImage lit = grab(view);
+			check(count(lit, green) > 20 && count(lit, lightBlue) < count(lit, green) / 4,
+			      "a highlighted conductor is green in the dark mode");
+			c->setHighlighted(Conductor::None);
+			setSheet(Qt::black, true, false);
+			c->setSelected(true);
+			check(count(grab(view), red) > 20, "with one white ink a pick stays red");
+			c->setSelected(false);
+		}
+
+			//A picture on a dark custom sheet, on a light palette: its frame
+			//and caption in the sheet's light ink, and a picture adapted to
+			//the dark theme drawn as it is (a dark gray stays dark), as
+			//before there was a tint: inverted against the light palette it
+			//came out light gray
+		{
+			QTemporaryDir pictures;
+			QImage gray_picture(40, 40, QImage::Format_RGB32);
+			gray_picture.fill(QColor(60, 60, 60));
+			const QString path = pictures.filePath("gray.png");
+			check(gray_picture.save(path), "a dark gray picture to place");
+			QetScriptApi api(&project);
+			const QPointF at = view.mapToScene(view.viewport()->rect().center() + QPoint(120, 120));
+			check(api.addImage(0, path, at.x(), at.y()) >= 0, "the picture is placed");
+			DiagramImageItem *picture = nullptr;
+			for (QGraphicsItem *item : folio->items())
+				if (item->type() == DiagramImageItem::Type) picture = static_cast<DiagramImageItem *>(item);
+			check(picture, "the picture is drawn");
+			picture->setAdaptToDarkTheme(true);
+			setSheet(Qt::black, true, false);
+			const QRect rect = view.mapFromScene(picture->sceneBoundingRect()).boundingRect();
+			const QImage adapted = grab(view);
+			adapted.save(output + "/picture.png");
+			std::printf("adapted picture: %s\n", qPrintable(adapted.pixelColor(rect.center()).name()));
+			check(dark(adapted.pixelColor(rect.center())), "an adapted picture is drawn as it is on a light palette");
+			picture->setSelected(true);
+			const QImage framed = grab(view);
+			int frame_whites = 0, frame_pixels = 0;
+			for (int x = rect.left() - 1; x <= rect.right() + 1; ++x)
+				for (int y : {rect.top() - 1, rect.top(), rect.bottom(), rect.bottom() + 1}) {
+					++frame_pixels;
+					frame_whites += white(framed.pixelColor(x, y));
+				}
+			std::printf("picture frame: %d of %d white\n", frame_whites, frame_pixels);
+			check(frame_whites > frame_pixels / 8, "its selection frame is light on the dark sheet");
+			picture->setSelected(false);
+			picture->setVisible(false);	//the folio's QGIManager deletes it
+		}
+
+			//Two editor windows share one sheet: the dark mode switched on
+			//in one is checked in the other, and switched off there it
+			//brings back the sheet from before
+		{
+			setSheet(Qt::white, false, false);
+			DiagramBgColorToolButton a(nullptr), b(nullptr);
+			a.darkModeAction()->trigger();
+			check(b.darkModeAction()->isChecked(), "on in one window: checked in the other");
+			b.darkModeAction()->trigger();
+			check(!a.darkModeAction()->isChecked() && !PaletteGraphicsView::customBackgroundColor(),
+			      "off in the other: unchecked in both, the sheet from before");
 		}
 
 		QetSettings::setSheetBackground({Qt::black, true, true});
