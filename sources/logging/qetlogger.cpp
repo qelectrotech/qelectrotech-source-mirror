@@ -591,7 +591,7 @@ QByteArray QetLogger::buildDiagnosticsReport() const
 	header += "QElectroTech diagnostics report\n";
 	header += "Generated: " % QDateTime::currentDateTime().toString(Qt::ISODate) % "\n";
 	header += "Version: " % QetVersion::displayedVersion() % "\n";
-	header += "Git: " GIT_COMMIT_SHA "\n";
+	header += "Git: " % QetVersion::gitCommitSha().toUtf8() % "\n";
 	header += "OS: " % QSysInfo::prettyProductName() % " (" % QSysInfo::currentCpuArchitecture() % ")\n";
 	header += "Qt: " QT_VERSION_STR "\n";
 	header += "---\n";

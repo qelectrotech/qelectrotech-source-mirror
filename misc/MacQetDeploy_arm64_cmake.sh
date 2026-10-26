@@ -65,7 +65,7 @@ git pull
 GITCOMMIT=$(git rev-parse --short HEAD)
 A=$(git rev-list HEAD --count)
 HEAD=$(($A+473))
-VERSION=$(cat sources/qetversion.cpp | grep "return QVersionNumber{"| head -n 1| awk -F "{" '{ print $2 }' | awk -F "}" '{ print $1 }' | sed -e 's/,/./g' -e 's/ //g')
+VERSION=$(cat QET_VERSION)
 DMG_NAME="${APPNAME}-$VERSION-r$HEAD-arm64.dmg"
 DMG_PATH="build-aux/mac-osx/$DMG_NAME"
 

@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.5...4.2)
 
 message("..___________________________________________________________________")
 
@@ -711,7 +711,8 @@ add_executable(
   tst_crashhandler.cpp
   ${QET_DIR}/sources/logging/crashhandler.cpp
   ${QET_DIR}/sources/logging/logring.cpp
-  ${QET_DIR}/sources/qetversion.cpp)
+  ${GENERATED_QETVERSION_CPP})
+add_dependencies(tst_crashhandler qelectrotech)
 add_test(NAME tst_crashhandler COMMAND tst_crashhandler)
 target_include_directories(tst_crashhandler PRIVATE ${QET_DIR}/sources)
 # Qt::Xml because crashhandler.cpp includes qetversion.h for the header it
@@ -729,7 +730,7 @@ add_executable(
   tst_projectlock
   tst_projectlock.cpp
   ${QET_DIR}/sources/projectlock.cpp
-  ${QET_DIR}/sources/qetversion.cpp)
+  ${GENERATED_QETVERSION_CPP})
 add_test(NAME tst_projectlock COMMAND tst_projectlock)
 target_include_directories(tst_projectlock PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_projectlock PRIVATE Qt::Test Qt::Xml)
@@ -744,7 +745,7 @@ add_executable(
   ${QET_DIR}/sources/logging/qetlogger.cpp
   ${QET_DIR}/sources/logging/crashhandler.cpp
   ${QET_DIR}/sources/logging/logring.cpp
-  ${QET_DIR}/sources/qetversion.cpp)
+  ${GENERATED_QETVERSION_CPP})
 add_test(NAME tst_crashdumps COMMAND tst_crashdumps)
 target_include_directories(tst_crashdumps PRIVATE
   ${QET_DIR}
@@ -752,6 +753,7 @@ target_include_directories(tst_crashdumps PRIVATE
   ${QET_DIR}/sources/NameList)
 target_link_libraries(tst_crashdumps PRIVATE
   Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+add_dependencies(tst_crashdumps qelectrotech)
 if(Backtrace_FOUND)
   target_link_libraries(tst_crashdumps PRIVATE ${Backtrace_LIBRARIES})
 endif()
