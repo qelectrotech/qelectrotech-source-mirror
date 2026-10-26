@@ -188,6 +188,10 @@ class Conductor : public QGraphicsObject
 		void setFreezeLabel(bool freeze);
 		bool isAutomatic() const { return m_automatic; }
 		void setAutomatic(bool automatic) { m_automatic = automatic; updateTextVisibility(); }
+			/// Drawn grey while its symbol is dragged: an automatic wire
+			/// is worked out anew once the symbol is put down
+		bool isPreview() const { return m_preview; }
+		void setPreview(bool preview) { if (m_preview != preview) { m_preview = preview; update(); } }
 		bool hidesPlaceholder() const;
 	
 	public slots:
@@ -254,6 +258,7 @@ class Conductor : public QGraphicsObject
 		bool m_freeze_label = false;
 			/// Made by AutoConnect: removed again when its ends leave the line
 		bool m_automatic = false;
+		bool m_preview = false;
 		QUuid m_uuid;
 			/// false when m_uuid was synthesized by fromXml() because the
 			/// file had none -- toXml() must not persist that value, or

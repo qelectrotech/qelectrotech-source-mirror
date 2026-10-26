@@ -106,6 +106,21 @@ int main(int argc, char **argv)
 		diagram->undoStack().push(connect);
 		check(wire(aE, bW) && wire(aE, bW)->isAutomatic(), "A-B joined automatically");
 		check(wire(bE, cW) && wire(bE, cW)->isAutomatic(), "B-C joined automatically");
+
+			//While B is dragged its automatic wires follow grey, as a
+			//preview; the drop works them out and they are drawn as usual
+		{
+			diagram->clearSelection();
+			B->setSelected(true);
+			ElementsMover &mover = diagram->elementsMover();
+			mover.beginMovement(diagram);
+			check(wire(aE, bW)->isPreview() && wire(bE, cW)->isPreview(), "dragging B: its automatic wires are grey");
+			check(!by_hand->isPreview(), "a wire drawn by hand is not");
+			mover.continueMovement(QPointF(0, 10));
+			mover.cancelMovement();
+			check(!wire(aE, bW)->isPreview() && !wire(bE, cW)->isPreview(), "given up: drawn as usual again");
+			diagram->clearSelection();
+		}
 		check(diagram->conductors().size() == 3, "D-E untouched, nothing else made");
 
 		// The middle one out of the row: A and C are still in line.

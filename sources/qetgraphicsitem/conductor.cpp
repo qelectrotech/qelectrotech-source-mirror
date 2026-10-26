@@ -601,7 +601,9 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		//the red and light blue conductors around them
 	const QET::Palette::SheetInk sheet_ink = PaletteGraphicsView::paintingInk(qw);
 	QColor final_conductor_color(m_properties.color);
-	if (must_highlight_ == Normal) {
+	if (m_preview) {
+		final_conductor_color = QColor(160, 160, 160);
+	} else if (must_highlight_ == Normal) {
 		final_conductor_color = QET::Palette::highlightColor(sheet_ink);
 	} else if (must_highlight_ == Alert) {
 		final_conductor_color =QColor::fromRgb(255, 69, 0, 255);

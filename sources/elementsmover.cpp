@@ -31,6 +31,7 @@
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetgraphicsitem/independenttextitem.h"
+#include "qetgraphicsitem/terminal.h"
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
@@ -118,6 +119,19 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 	}
 
 	if (!m_moved_content.count()) return(-1);
+
+		//Live AutoConnect works the automatic wires out anew at the drop:
+		//until then they only follow, grey, so they do not pass for the
+		//wires the drop will give
+	if (AutoConnect::isOn(diagram)) {
+		for (Element *e : std::as_const(m_moved_content.m_elements))
+			for (Terminal *t : e->terminals())
+				for (Conductor *c : t->conductors())
+					if (c->isAutomatic() && !c->isPreview()) {
+						c->setPreview(true);
+						m_preview_wires << c;
+					}
+	}
 
 		//Steps left over by a gesture which never reached its end are
 		//never worth keeping: whatever starts here starts from nothing.
@@ -261,6 +275,7 @@ void ElementsMover::endMovement()
 {
 		// A movement must be inited
 	if (!m_movement_running) return;
+	endPreview();
 
 		//The lines he marked together with the elements settle first:
 		//they may have to be asked something before they can rest, and
@@ -452,6 +467,7 @@ void ElementsMover::addExtraCommands(const QList<QUndoCommand *> &steps)
 void ElementsMover::cancelMovement()
 {
 	if (!m_movement_running) return;
+	endPreview();
 
 		//Back to the places the gesture found them in: the recorded
 		//ones rather than the movement taken back, since every step of
@@ -489,4 +505,15 @@ void ElementsMover::cancelMovement()
 	if (m_status_bar && !m_driver_held) {
 		m_status_bar->clearMessage();
 	}
+}
+
+/**
+	@brief ElementsMover::endPreview
+	The automatic wires of the moved symbols are drawn as usual again.
+*/
+void ElementsMover::endPreview()
+{
+	for (const QPointer<Conductor> &c : std::as_const(m_preview_wires))
+		if (c) c->setPreview(false);
+	m_preview_wires.clear();
 }
