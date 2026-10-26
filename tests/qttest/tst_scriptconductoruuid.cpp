@@ -9,6 +9,7 @@
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
 #include <QUuid>
+#include "qettesttimeout.h"
 
 // qet.conductorUuids(folio) and qet.conductorEnds(folio, uuid): a script can
 // list a folio's conductors by uuid and find where each one runs, in the
@@ -43,7 +44,7 @@ class tst_scriptconductoruuid : public QObject
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), path,
 					QFINDTESTDATA("fixtures/qet_bug_repro_resaved.qet")});
-		if (!proc.waitForFinished(60000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(60000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput()
 											  + proc.readAllStandardError());
 		const QString mark = QStringLiteral("PROBE ");

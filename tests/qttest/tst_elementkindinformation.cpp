@@ -10,6 +10,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // A symbol's kind information (NO/NC/SW/power and the like, baked into its
 // own definition and never edited after it is built -- the data
@@ -83,7 +84,7 @@ class tst_elementkindinformation : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js, in});
-		if (!proc.waitForFinished(60000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(60000))) return {};
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
 

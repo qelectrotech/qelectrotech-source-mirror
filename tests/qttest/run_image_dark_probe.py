@@ -28,7 +28,7 @@ probe_binary = ninja_probe.build_probe(build, binary, source, 'image-dark-probe.
 output = build / 'image-dark-integration'
 output.mkdir(exist_ok=True)
 report = output / 'results.txt'
-result = subprocess.run([str(probe_binary), str(fixture), str(report), str(output)], timeout=90)
+result = subprocess.run([str(probe_binary), str(fixture), str(report), str(output)], timeout=ninja_probe.timeout(90))
 if report.exists():
     print(report.read_text(encoding='utf-8', errors='replace'))
 if result.returncode == 0:

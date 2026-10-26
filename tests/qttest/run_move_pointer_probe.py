@@ -26,7 +26,7 @@ probe_binary = ninja_probe.build_probe(build, binary, source, 'move-pointer-prob
 output = build / "move-pointer"
 output.mkdir(exist_ok=True)
 report = output / 'results.txt'
-result = subprocess.run([str(probe_binary), str(fixture), str(report), str(output)], timeout=90)
+result = subprocess.run([str(probe_binary), str(fixture), str(report), str(output)], timeout=ninja_probe.timeout(90))
 if report.exists():
     print(report.read_text(encoding='utf-8', errors='replace'))
 sys.exit(result.returncode)

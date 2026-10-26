@@ -8,6 +8,7 @@
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 #include "container/qetzip.h"
 
@@ -98,7 +99,7 @@ function wire() { var u = sorted(qet.conductorUuids(f)); return u.length ? u[0] 
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), args);
-		const bool done = proc.waitForFinished(180000);
+		const bool done = proc.waitForFinished(QetTest::timeout(180000));
 		if (ok) *ok = done && proc.exitStatus() == QProcess::NormalExit;
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}

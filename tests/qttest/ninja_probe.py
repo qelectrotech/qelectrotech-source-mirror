@@ -8,11 +8,22 @@ copy of the manifest stays in the build directory.
 Ninja writes paths with / on Unix and with \\ on Windows (MSVC and MinGW), so
 both are matched.
 """
+import os
 import pathlib
 import re
 import shutil
 import subprocess
 import sys
+
+
+def timeout(seconds):
+    """A time limit of a probe, multiplied by QET_TEST_TIMEOUT_SCALE when it
+    is set, as the C++ tests do (qettesttimeout.h)."""
+    try:
+        scale = int(os.environ.get('QET_TEST_TIMEOUT_SCALE', ''))
+    except ValueError:
+        scale = 1
+    return seconds * scale if scale > 1 else seconds
 
 
 def _escape(path):

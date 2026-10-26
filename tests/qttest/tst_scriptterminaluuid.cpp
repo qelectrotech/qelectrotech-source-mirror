@@ -11,6 +11,7 @@
 #include <QRegularExpression>
 #include <QTemporaryDir>
 #include <QUuid>
+#include "qettesttimeout.h"
 
 // qet.elementTerminals() ends each line with the terminal's uuid, and
 // qet.terminalIndex(folio, element, terminalUuid) turns it back into the
@@ -46,7 +47,7 @@ class tst_scriptterminaluuid : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), path, project});
-		if (!proc.waitForFinished(120000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(120000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput()
 											  + proc.readAllStandardError());
 		const QString mark = QStringLiteral("PROBE ");

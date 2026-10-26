@@ -18,6 +18,7 @@
 #include <QtTest>
 #include <QProcess>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 /**
 	--export-dxf --dxf-blocks (issue #1339): a symbol placed twice is one
@@ -40,7 +41,7 @@ class tst_dxfblocks : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   QStringList{QStringLiteral("--export-dxf"), project, dir.path()} + extra);
-		if (!proc.waitForFinished(60000) || proc.exitCode() != 0)
+		if (!proc.waitForFinished(QetTest::timeout(60000)) || proc.exitCode() != 0)
 			return {};
 		QFile file(dir.filePath(QStringLiteral("01_diagram.dxf")));
 		if (!file.open(QIODevice::ReadOnly | QIODevice::Text))

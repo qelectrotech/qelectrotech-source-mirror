@@ -7,6 +7,7 @@
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // With "one text per potential" on, the potential's number is drawn on its
 // longest conductor. fixtures/one_text_per_potential_tie.qet has two
@@ -39,7 +40,7 @@ class tst_potentialtextcarrier : public QObject
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--export-svg"),
 					QFINDTESTDATA("fixtures/one_text_per_potential_tie.qet"), out});
-		if (!proc.waitForFinished(60000) || proc.exitCode() != 0)
+		if (!proc.waitForFinished(QetTest::timeout(60000)) || proc.exitCode() != 0)
 			return {};
 
 		const QStringList svgs = QDir(out).entryList({QStringLiteral("*.svg")});

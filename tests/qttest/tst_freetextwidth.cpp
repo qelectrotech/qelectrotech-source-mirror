@@ -21,6 +21,7 @@
 #include <QRegularExpression>
 #include <QTemporaryDir>
 #include <QTextDocument>
+#include "qettesttimeout.h"
 
 /// Run the qelectrotech binary with arguments, without a display.
 static bool runQet(const QStringList &arguments)
@@ -30,7 +31,7 @@ static bool runQet(const QStringList &arguments)
 	QProcess proc;
 	proc.setProcessEnvironment(env);
 	proc.start(QStringLiteral(QET_TEST_BINARY_PATH), arguments);
-	return proc.waitForFinished(60000)
+	return proc.waitForFinished(QetTest::timeout(60000))
 			&& proc.exitStatus() == QProcess::NormalExit
 			&& proc.exitCode() == 0;
 }

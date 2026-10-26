@@ -72,6 +72,16 @@ add_executable(tst_darkimagelayers tst_darkimagelayers.cpp
 add_test(NAME tst_darkimagelayers COMMAND tst_darkimagelayers)
 target_include_directories(tst_darkimagelayers PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_darkimagelayers PRIVATE Qt::Test Qt::Widgets)
+# MSVC's Debug libraries make QElectroTech five to eight times slower than a
+# GCC build, for which the tests' time limits were chosen. Every limit is
+# multiplied by this scale: ctest's below, and the tests' own through
+# QET_TEST_TIMEOUT_SCALE (qettesttimeout.h, ninja_probe.py), set at the end.
+if(MSVC)
+  set(qet_test_timeout_scale 5)
+else()
+  set(qet_test_timeout_scale 1)
+endif()
+math(EXPR qet_probe_ctest_timeout "300 * ${qet_test_timeout_scale}")
 find_package(Python3 QUIET COMPONENTS Interpreter)
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
   add_test(NAME tst_handlersizeintegration
@@ -79,14 +89,14 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/handle_size_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_handlersizeintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_handlersizeintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   add_test(NAME tst_attachedplainpaste
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_attached_plain_paste_probe.py
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/attached_plain_paste_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_attachedplainpaste PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
+  set_tests_properties(tst_attachedplainpaste PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE)
   # The probe opens and saves the whole industrial example: about 10 minutes
   # in a Debug build with GCC, and five to eight times as long with MSVC's
   # Debug libraries.
@@ -112,7 +122,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/cable_undo_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_cableundointegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
+  set_tests_properties(tst_cableundointegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE)
   # The folio-wide crosshair follows the mouse on the grid, on screen
   # only, and goes when the mouse leaves or the option is off.
   add_test(NAME tst_crosshairintegration
@@ -120,7 +130,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/crosshair_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_crosshairintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_crosshairintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The pointer: a four-way arrow over what a drag moves; with the
   # crosshair, drawn on its grid point in place of the system's.
@@ -129,7 +139,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/move_pointer_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_movepointerintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_movepointerintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # A linked folio report shows a pointing hand and jumps to its other
   # end on a double click, on the arrow and on its label text; the end
@@ -139,7 +149,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/report_jump_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/linked_reports.qet)
-  set_tests_properties(tst_reportjumpintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_reportjumpintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # "Place symbol texts": label and notes as one block at one of nine
   # points beside the drawing, aligned to hang on it; one undo step.
@@ -148,7 +158,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/symbol_text_placement_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_symboltextplacementintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_symboltextplacementintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The outline and the click area of a fixed-width text are the lines
   # written, not the whole box.
@@ -157,7 +167,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/text_outline_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_textoutlineintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_textoutlineintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # A group of symbol texts keeps the point it is aligned on when a text
   # grows: the right edge when aligned right, the middle when centred.
@@ -166,7 +176,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/text_group_anchor_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_textgroupanchorintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_textgroupanchorintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Width and height of a symbol's text, each fixed or not: a fixed
   # height cuts off the lines that do not fit; saved and undone.
@@ -175,7 +185,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/text_fixed_size_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_textfixedsizeintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_textfixedsizeintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
@@ -184,7 +194,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/image_dark_integration_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_darkimageintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
+  set_tests_properties(tst_darkimageintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE)
   # A dark custom sheet shows the lines light, or yellow symbols and red
   # conductors; printing and exporting stay black on white.
   add_test(NAME tst_sheetinkintegration
@@ -192,7 +202,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/sheet_ink_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/coil_contact_wired.qet)
-  set_tests_properties(tst_sheetinkintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_sheetinkintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Dragging the left width handle of a symbol's text keeps its right
   # edge in place, the right handle its left edge; undo restores both.
@@ -201,7 +211,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/element_text_resize_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_elementtextresizeintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_elementtextresizeintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 
@@ -1933,5 +1943,18 @@ if(MSVC AND NOT CMAKE_VERSION VERSION_LESS 3.22)
   if(qet_qttests)
     set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
       "QET_SCRIPT_TIMEOUT_MS=set:300000")
+  endif()
+endif()
+
+# The tests' own time limits, scaled as ctest's are (see
+# qet_test_timeout_scale above), and QtTest's limit for one test function,
+# 300 s by default. Needs CMake 3.22, as above.
+if(qet_test_timeout_scale GREATER 1 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
+  math(EXPR qet_test_function_timeout "300000 * ${qet_test_timeout_scale}")
+  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+  if(qet_qttests)
+    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+      "QET_TEST_TIMEOUT_SCALE=set:${qet_test_timeout_scale}"
+      "QTEST_FUNCTION_TIMEOUT=set:${qet_test_function_timeout}")
   endif()
 endif()

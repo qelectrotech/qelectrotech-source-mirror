@@ -6,6 +6,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // A folio of a .qetz whose title only changed is saved from its items as
 // read, not built (Diagram::deferredXmlWithHeader()). Those items name
@@ -43,7 +44,7 @@ class tst_qetzheaderpictures : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), path, project});
-		proc.waitForFinished(120000);
+		proc.waitForFinished(QetTest::timeout(120000));
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
 
