@@ -86,6 +86,9 @@ class DiagramView : public PaletteGraphicsView
 		QPointer<QGraphicsObject> m_caught_handle;
 		QPointF           m_grab_offset;
 		bool              m_grabbing_caught = false;
+			/// A left press on an item: what follows places or drags it
+		bool              m_press_places = false;
+		bool snapsPointer() const;
 		QGraphicsObject *handleNear(const QPoint &viewport_pos) const;
 		QMouseEvent *onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseEvent> &shifted);
 		void hideCrosshair();
@@ -143,6 +146,11 @@ class DiagramView : public PaletteGraphicsView
 		static void setCrosshairShown(bool shown);
 		static bool pointerAids();
 		static void setPointerAids(bool on);
+			/// The pointer and the crosshair keep to the grid only while
+			/// something is placed or dragged, and follow the mouse
+			/// freely otherwise; one setting for every view
+		static bool gridOnlyWhilePlacing();
+		static void setGridOnlyWhilePlacing(bool on);
 		bool crosshairVisible() const { return m_crosshair_visible; }
 			/// The pointer drawn on the crosshair's grid point, if any:
 			/// 0 none (the system's shows), 1 an arrow, 2 a four-way arrow

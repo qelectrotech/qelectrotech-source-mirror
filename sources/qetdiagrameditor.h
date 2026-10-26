@@ -328,6 +328,7 @@ class QETDiagramEditor : public QETMainWindow
 		QAction *m_grid_snap = nullptr;			///< Snap to the grid, on or off
 		QMenu *m_grid_step_menu = nullptr;		///< Fine, medium or coarse grid
 		QToolButton *m_grid_step_button = nullptr;
+		QToolButton *m_grid_status_button = nullptr;	///< Status bar: the grid step, with the same menu
 		QToolButton *m_text_grid_button = nullptr;
 		QMenu *m_shown_kinds_menu = nullptr;		///< View > Show, kinds of items (#301)
 		QLabel *m_hidden_kinds_label = nullptr;	///< Status bar: how many kinds are hidden

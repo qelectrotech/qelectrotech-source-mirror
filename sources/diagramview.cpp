@@ -925,6 +925,14 @@ void DiagramView::mousePressEvent(QMouseEvent *original)
 		m_fresh_focus_in = false;
 	}
 
+		//A press on an item places or drags it from here on: the
+		//crosshair goes to the grid at once
+	if (e->button() == Qt::LeftButton && !m_press_places && itemAt(e->pos())) {
+		m_press_places = true;
+		if (gridOnlyWhilePlacing())
+			moveCrosshair(e->pos());
+	}
+
 	if (m_event_interface && m_event_interface->mousePressEvent(e)) return;
 
 	if (e->button() == Qt::LeftButton) {
@@ -1060,6 +1068,10 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 	const AcceptedBack accepted_back{e, original};
 	m_last_mouse_pos = e->pos();
 	setToolTip(tr("X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
+		//A press whose release never came (it went to a menu or a
+		//dialog): a move without the button ends the drag
+	if (m_press_places && !(e->buttons() & Qt::LeftButton))
+		m_press_places = false;
 	moveCrosshair(e->pos());
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) {
 		updatePointer(e->pos(), e->buttons());
@@ -1199,8 +1211,9 @@ void DiagramView::updatePointer(const QPoint &viewport_pos, Qt::MouseButtons but
 			&& (item->flags() & QGraphicsItem::ItemIsMovable)
 			&& !(m_diagram && m_diagram->isReadOnly());
 
+		//Drawn only where it stands apart from the mouse: on a grid point
 	Pointer pointer = Pointer::System;
-	if (m_crosshair_visible && crosshairShown() && m_diagram
+	if (m_crosshair_visible && crosshairShown() && snapsPointer() && m_diagram
 			&& m_diagram->border_and_titleblock.insideBorderRect().contains(m_crosshair_pos))
 		pointer = movable ? Pointer::Move : Pointer::Arrow;
 
@@ -1266,6 +1279,15 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *original)
 		//After a drag the mouse may stand over another item: its pointer
 		//now, not at the next move
 	const auto pointer_after = qScopeGuard([this, e] { updatePointer(e->pos(), e->buttons()); });
+		//Runs before pointer_after: the drag is over, the crosshair
+		//follows the mouse freely again
+	const auto placed = qScopeGuard([this, e] {
+		if (m_press_places && !(e->buttons() & Qt::LeftButton)) {
+			m_press_places = false;
+			if (gridOnlyWhilePlacing())
+				moveCrosshair(e->pos());
+		}
+	});
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
 		//A plain right click on a running tool falls through: the tool
@@ -2026,6 +2048,7 @@ namespace {
 		/// The settings, read once and then kept here for every view
 	int s_crosshair = -1;
 	int s_pointer_aids = -1;
+	int s_grid_only_placing = -1;
 }
 
 /**
@@ -2085,6 +2108,46 @@ void DiagramView::setPointerAids(bool on)
 }
 
 /**
+	@brief DiagramView::gridOnlyWhilePlacing
+	@return true when the pointer and the crosshair keep to the grid only
+	while a tool places something or a press on an item drags it. Off,
+	they always keep to it, as before.
+*/
+bool DiagramView::gridOnlyWhilePlacing()
+{
+	if (s_grid_only_placing < 0) {
+		QSettings settings;
+		s_grid_only_placing = settings.value(QStringLiteral("diagrameditor/grid_only_placing"), false).toBool();
+	}
+	return s_grid_only_placing;
+}
+
+/**
+	@brief DiagramView::setGridOnlyWhilePlacing
+	@param on : see gridOnlyWhilePlacing(); kept in the settings, for
+	every view from the next mouse move.
+*/
+void DiagramView::setGridOnlyWhilePlacing(bool on)
+{
+	s_grid_only_placing = on;
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/grid_only_placing"), on);
+}
+
+/**
+	@brief DiagramView::snapsPointer
+	@return true when the crosshair and the drawn pointer go to the grid
+	point under the mouse now: always, or with gridOnlyWhilePlacing()
+	while a tool runs (placing a symbol, drawing a shape or a text) or a
+	press on an item drags it
+*/
+bool DiagramView::snapsPointer() const
+{
+	return !gridOnlyWhilePlacing() || m_event_interface || m_press_places
+			|| (m_diagram && m_diagram->eventInterfaceIsRunning());
+}
+
+/**
 	@brief DiagramView::crosshairArea
 	@return the part of the viewport the two lines through @a scene_pos
 	cover, a little wider than the lines
@@ -2111,10 +2174,16 @@ void DiagramView::moveCrosshair(const QPoint &viewport_pos)
 		return;
 	}
 		//A handle near the mouse catches it before the grid does
-	QGraphicsObject *handle = m_grabbing_caught ? nullptr : handleNear(viewport_pos);
+		//Following the mouse freely, the pointer is where the mouse is:
+		//nothing to catch. Nor while a press drags something: the
+		//crosshair shows where it lands, not the handles it passes
+	const bool snaps = snapsPointer();
+	QGraphicsObject *handle = m_grabbing_caught || !snaps || m_press_places
+			? nullptr : handleNear(viewport_pos);
 	m_caught_handle = handle;
 	const QPointF pos = handle ? handle->scenePos()
-				   : Diagram::snapToGrid(mapToScene(viewport_pos));
+				   : snaps ? Diagram::snapToGrid(mapToScene(viewport_pos))
+				   : mapToScene(viewport_pos);
 	if (m_crosshair_visible && pos == m_crosshair_pos)
 		return;
 	if (m_crosshair_visible)

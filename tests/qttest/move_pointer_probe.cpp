@@ -173,6 +173,42 @@ int main(int argc, char **argv)
 		check(view.drawnPointer() == 2, "released over the symbol: the four-way arrow without another move");
 		folio->clearSelection();
 
+			//"Pointer on the grid only while placing": hovering, the
+			//crosshair follows the mouse and the system's pointer shows;
+			//a press on the symbol puts it on the grid for the drag, and
+			//the release frees it again. No handle catches it meanwhile.
+		DiagramView::setGridOnlyWhilePlacing(true);
+		QPoint off_grid = over;
+		for (int d = 0; d < 10 && view.mapToScene(off_grid) == Diagram::snapToGrid(view.mapToScene(off_grid)); ++d)
+			off_grid = over + QPoint(d, d);
+		check(view.mapToScene(off_grid) != Diagram::snapToGrid(view.mapToScene(off_grid)), "a point over the symbol off the grid");
+		moveTo(view, off_grid);
+		check(view.crosshairPos() == view.mapToScene(off_grid), "while placing only: hovering, the crosshair follows the mouse");
+		check(view.drawnPointer() == 0 && view.viewport()->cursor().shape() == Qt::SizeAllCursor,
+			  "the system's four-way arrow, not a drawn one");
+		element->setSelected(true);
+		QApplication::processEvents();
+		handle = nullptr;	//the old one went with the selection
+		for (DynamicElementTextItem *t : element->dynamicTextItems())
+			for (QGraphicsItem *child : t->childItems())
+				if (child->type() == QetGraphicsHandlerItem::Type && child->isVisible())
+					handle = static_cast<QetGraphicsHandlerItem *>(child);
+		check(handle, "the width handle shows again");
+		const QPoint free_beside = view.mapFromScene(handle->scenePos()) + QPoint(7, 6);
+		moveTo(view, free_beside);
+		check(view.crosshairPos() != handle->scenePos(), "no handle catches the free crosshair");
+		element->setSelected(false);
+		QApplication::processEvents();
+		moveTo(view, off_grid);
+		send(QEvent::MouseButtonPress, off_grid, Qt::LeftButton);
+		check(view.crosshairPos() == Diagram::snapToGrid(view.mapToScene(off_grid)), "a press on the symbol puts the crosshair on the grid");
+		send(QEvent::MouseMove, off_grid + QPoint(13, 0), Qt::LeftButton);
+		check(view.crosshairPos() == Diagram::snapToGrid(view.mapToScene(off_grid + QPoint(13, 0))), "and keeps it there while dragging");
+		send(QEvent::MouseButtonRelease, off_grid + QPoint(13, 0), Qt::NoButton);
+		check(view.crosshairPos() == view.mapToScene(off_grid + QPoint(13, 0)), "the release frees it");
+		folio->clearSelection();
+		DiagramView::setGridOnlyWhilePlacing(false);
+
 		QEvent leave(QEvent::Leave);
 		QApplication::sendEvent(view.viewport(), &leave);
 		check(view.drawnPointer() == 0, "it goes with the crosshair when the mouse leaves");

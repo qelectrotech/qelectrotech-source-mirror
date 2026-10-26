@@ -707,8 +707,9 @@ void QETDiagramEditor::setUpActions()
 	m_grid_snap->setStatusTip(tr("Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point"));
 	m_grid_snap->setCheckable(true);
 	m_grid_snap->setChecked(Diagram::gridSnap());
-	connect(m_grid_snap, &QAction::triggered, this, [](bool on) {
+	connect(m_grid_snap, &QAction::triggered, this, [this](bool on) {
 		Diagram::setGridSnap(on);
+		updateGridStepButton();
 	});
 
 		//The grid step, fine, medium or coarse: align blocks on a coarse
@@ -840,6 +841,16 @@ void QETDiagramEditor::setUpActions()
 	m_hidden_kinds_label = new QLabel(this);
 	m_hidden_kinds_label->setToolTip(tr("See Display > Show"));
 	statusBar()->addPermanentWidget(m_hidden_kinds_label);
+		//The grid step beside the zoom, always in sight; a click on it
+		//picks another, as on the toolbar
+	m_grid_status_button = new QToolButton(this);
+	m_grid_status_button->setMenu(m_grid_step_menu);
+	m_grid_status_button->setPopupMode(QToolButton::InstantPopup);
+	m_grid_status_button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	m_grid_status_button->setAutoRaise(true);
+	m_grid_status_button->setToolTip(m_grid_step_button->toolTip());
+	statusBar()->addPermanentWidget(m_grid_status_button);
+	updateGridStepButton();
 	m_zoom_label = new QLabel(this);
 	m_zoom_label->setToolTip(tr("Zoom of the folio on screen"));
 	statusBar()->addPermanentWidget(m_zoom_label);
@@ -5136,9 +5147,9 @@ void QETDiagramEditor::updateShownKinds()
 
 /**
 	@brief QETDiagramEditor::updateGridStepButton
-	Show the current grid step on its toolbar button and check it in its
-	menu; a step set in the settings that the menu does not offer shows
-	as its number.
+	Show the current grid step on its toolbar button and in the status
+	bar, and check it in its menu; a step set in the settings that the
+	menu does not offer shows as its number.
 */
 void QETDiagramEditor::updateGridStepButton()
 {
@@ -5147,8 +5158,12 @@ void QETDiagramEditor::updateGridStepButton()
 	const int y_step = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 	for (QAction *action : m_grid_step_menu->actions())
 		action->setChecked(x_step == y_step && action->data().toInt() == x_step);
-	m_grid_step_button->setText(x_step == y_step ? tr("Grid %1").arg(x_step)
-						     : tr("Grid %1 × %2").arg(x_step).arg(y_step));
+	const QString text = x_step == y_step ? tr("Grid %1").arg(x_step)
+					      : tr("Grid %1 × %2").arg(x_step).arg(y_step);
+	m_grid_step_button->setText(text);
+		//Below, also whether anything snaps to it
+	if (m_grid_status_button)
+		m_grid_status_button->setText(Diagram::gridSnap() ? text : tr("%1 (snap off)").arg(text));
 }
 
 /**
