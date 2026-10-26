@@ -42,6 +42,7 @@ class QMenu;
 	This class provides a widget to render an electric diagram in an editable,
 	interactive way.
 */
+class Element;
 class DiagramView : public PaletteGraphicsView
 {
 	Q_OBJECT
@@ -88,6 +89,9 @@ class DiagramView : public PaletteGraphicsView
 		bool              m_grabbing_caught = false;
 			/// A left press on an item: what follows places or drags it
 		bool              m_press_places = false;
+			/// The symbol a press grabbed: while it is dragged, the
+			/// crosshair stands on its terminal nearest the mouse
+		QPointer<Element> m_dragged_element;
 		bool snapsPointer() const;
 		QGraphicsObject *handleNear(const QPoint &viewport_pos) const;
 		QMouseEvent *onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseEvent> &shifted);

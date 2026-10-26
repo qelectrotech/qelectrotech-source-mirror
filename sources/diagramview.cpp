@@ -63,6 +63,7 @@
 #include "genericdevice/genericdevicewizard.h"
 #include "qetapp.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/terminal.h"
 #include "qetinformation.h"
 #include "qetversion.h"
 #include <QApplication>
@@ -926,6 +927,8 @@ void DiagramView::mousePressEvent(QMouseEvent *original)
 		//crosshair goes to the grid at once
 	if (e->button() == Qt::LeftButton && !m_press_places && itemAt(e->pos())) {
 		m_press_places = true;
+		QGraphicsItem *top = itemAt(e->pos())->topLevelItem();
+		m_dragged_element = top->type() == Element::Type ? static_cast<Element *>(top) : nullptr;
 		if (gridOnlyWhilePlacing())
 			moveCrosshair(e->pos());
 	}
@@ -1067,9 +1070,17 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 	setToolTip(tr("X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
 		//A press whose release never came (it went to a menu or a
 		//dialog): a move without the button ends the drag
-	if (m_press_places && !(e->buttons() & Qt::LeftButton))
+	if (m_press_places && !(e->buttons() & Qt::LeftButton)) {
 		m_press_places = false;
+		m_dragged_element = nullptr;
+	}
 	moveCrosshair(e->pos());
+		//The symbol moves after the crosshair did: put the crosshair on
+		//its terminal again once it stands where it goes
+	const auto follow_symbol = qScopeGuard([this, e] {
+		if (m_dragged_element)
+			moveCrosshair(e->pos());
+	});
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) {
 		updatePointer(e->pos(), e->buttons());
 		return;
@@ -1281,6 +1292,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *original)
 	const auto placed = qScopeGuard([this, e] {
 		if (m_press_places && !(e->buttons() & Qt::LeftButton)) {
 			m_press_places = false;
+			m_dragged_element = nullptr;
 			if (gridOnlyWhilePlacing())
 				moveCrosshair(e->pos());
 		}
@@ -2174,9 +2186,23 @@ void DiagramView::moveCrosshair(const QPoint &viewport_pos)
 	QGraphicsObject *handle = m_grabbing_caught || !snaps || m_press_places
 			? nullptr : handleNear(viewport_pos);
 	m_caught_handle = handle;
-	const QPointF pos = handle ? handle->scenePos()
-				   : snaps ? Diagram::snapToGrid(mapToScene(viewport_pos))
-				   : mapToScene(viewport_pos);
+	QPointF pos = handle ? handle->scenePos()
+			     : snaps ? Diagram::snapToGrid(mapToScene(viewport_pos))
+			     : mapToScene(viewport_pos);
+		//Dragging a symbol: on its terminal nearest the mouse, where that
+		//terminal lands, not on the mouse, which holds the symbol
+		//somewhere beside it
+	if (m_dragged_element && m_press_places && !handle) {
+		const QPointF mouse = mapToScene(viewport_pos);
+		qreal nearest = -1;
+		for (const Terminal *t : m_dragged_element->terminals()) {
+			const qreal d = QLineF(mouse, t->dockConductor()).length();
+			if (nearest < 0 || d < nearest) {
+				nearest = d;
+				pos = t->dockConductor();
+			}
+		}
+	}
 	if (m_crosshair_visible && pos == m_crosshair_pos)
 		return;
 	if (m_crosshair_visible)

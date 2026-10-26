@@ -20,6 +20,7 @@
 #include "../../sources/diagram.h"
 #include "../../sources/diagramview.h"
 #include "../../sources/qetgraphicsitem/element.h"
+#include "../../sources/qetgraphicsitem/terminal.h"
 #include "../../sources/qetgraphicsitem/dynamicelementtextitem.h"
 #include "../../sources/QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "../../sources/qetproject.h"
@@ -203,9 +204,26 @@ int main(int argc, char **argv)
 		QApplication::processEvents();
 		moveTo(view, off_grid);
 		send(QEvent::MouseButtonPress, off_grid, Qt::LeftButton);
-		check(view.crosshairPos() == Diagram::snapToGrid(view.mapToScene(off_grid)), "a press on the symbol puts the crosshair on the grid");
+		auto nearestTerminal = [&](const QPoint &at) {
+			const QPointF mouse = view.mapToScene(at);
+			QPointF nearest;
+			qreal best = -1;
+			for (Terminal *t : element->terminals()) {
+				const qreal d = QLineF(mouse, t->dockConductor()).length();
+				if (best < 0 || d < best) { best = d; nearest = t->dockConductor(); }
+			}
+			return nearest;
+		};
+		check(view.crosshairPos() == nearestTerminal(off_grid), "a press on the symbol puts the crosshair on its terminal nearest the mouse");
 		send(QEvent::MouseMove, off_grid + QPoint(13, 0), Qt::LeftButton);
-		check(view.crosshairPos() == Diagram::snapToGrid(view.mapToScene(off_grid + QPoint(13, 0))), "and keeps it there while dragging");
+			//Dragging the symbol: on its terminal nearest the mouse, where
+			//that terminal lands
+		{
+			const QPointF nearest = nearestTerminal(off_grid + QPoint(13, 0));
+			check(!element->terminals().isEmpty(), "the symbol has terminals");
+			check(view.crosshairPos() == nearest, "while dragging, the crosshair stands on the symbol's terminal nearest the mouse");
+			check(nearest == Diagram::snapToGrid(nearest), "which lies on the grid");
+		}
 		send(QEvent::MouseButtonRelease, off_grid + QPoint(13, 0), Qt::NoButton);
 		check(view.crosshairPos() == view.mapToScene(off_grid + QPoint(13, 0)), "the release frees it");
 		folio->clearSelection();
