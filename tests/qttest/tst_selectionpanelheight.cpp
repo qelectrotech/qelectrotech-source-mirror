@@ -44,7 +44,10 @@ class tst_selectionpanelheight : public QObject
 			auto panel = editor->findChild<QDockWidget *>("diagram_properties_editor_dock_widget");
 			QVERIFY(panel);
 
-				// The panel follows the selection through a queued connection
+				// The panel follows the selection through a queued connection,
+				// and the dock layout after it: the checks below wait for it
+				// (QTRY_*) rather than for a fixed time, which a slow build,
+				// e.g. a Debug MSVC one, can miss
 			auto select = [&](Element *e) {
 				diagram->clearSelection();
 				if (e)
@@ -62,9 +65,9 @@ class tst_selectionpanelheight : public QObject
 
 			for (int round = 0; round < 2; ++round) {
 				select(nullptr);
-				QVERIFY2(panel->height() < start / 4, "the empty panel did not shrink");
+				QTRY_VERIFY2(panel->height() < start / 4, "the empty panel did not shrink");
 				select(element);
-				QCOMPARE(panel->height(), user);
+				QTRY_COMPARE(panel->height(), user);
 			}
 		}
 
@@ -94,7 +97,7 @@ class tst_selectionpanelheight : public QObject
 			QTest::qWait(200);
 			diagram->clearSelection();
 			QTest::qWait(200);
-			QVERIFY2(panel->maximumHeight() < 100, "the panel is not empty");
+			QTRY_VERIFY2(panel->maximumHeight() < 100, "the panel is not empty");
 			editor->tabifyDockWidget(panel, collections);
 			collections->raise();
 			QTest::qWait(200);
@@ -127,7 +130,7 @@ class tst_selectionpanelheight : public QObject
 			const int selected = panel->height();
 			diagram->clearSelection();
 			QTest::qWait(200);
-			QVERIFY2(panel->height() < selected / 4, "the empty panel did not shrink once untabbed");
+			QTRY_VERIFY2(panel->height() < selected / 4, "the empty panel did not shrink once untabbed");
 		}
 };
 
