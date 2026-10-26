@@ -3101,6 +3101,16 @@ Continue?</source>
         <source>Choose a background color</source>
         <translation>Επιλέξτε χρώμα φόντου</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="93"/>
+        <source>Dark mode</source>
+        <translation>Σκοτεινή λειτουργία</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="96"/>
+        <source>A black sheet: symbols and texts in yellow, conductors in red, dashed ones in light blue and dash-dotted ones in yellow, the rest in white. Printing and exporting stay black on white.</source>
+        <translation>Μαύρο φύλλο: σύμβολα και κείμενα σε κίτρινο, αγωγοί σε κόκκινο, οι διακεκομμένοι σε γαλάζιο και οι παύλας-τελείας σε κίτρινο, τα υπόλοιπα σε λευκό. Η εκτύπωση και η εξαγωγή μένουν μαύρα σε λευκό.</translation>
+    </message>
 </context>
 <context>
     <name>DiagramContextWidget</name>

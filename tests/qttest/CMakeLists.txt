@@ -184,6 +184,15 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --source ${CMAKE_CURRENT_SOURCE_DIR}/image_dark_integration_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
   set_tests_properties(tst_darkimageintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
+  # A dark custom sheet shows the lines light, or yellow symbols and red
+  # conductors; printing and exporting stay black on white.
+  add_test(NAME tst_sheetinkintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_sheet_ink_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/sheet_ink_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/coil_contact_wired.qet)
+  set_tests_properties(tst_sheetinkintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Dragging the left width handle of a symbol's text keeps its right
   # edge in place, the right handle its left edge; undo restores both.
   add_test(NAME tst_elementtextresizeintegration
@@ -347,6 +356,12 @@ endfunction()
 
 # Space on a picture turns its own transform, which the file saves (#1413),
 # alone and with a group.
+# Closing a project takes its symbols down with them: their terminals say
+# "a wire left" on the way out, and what a symbol shows of its wire must not
+# be filled while its texts are being deleted -- which took the whole
+# application down with a real drawing.
+qet_add_app_test(tst_symbolteardown tst_symbolteardown.cpp)
+
 qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 
 # Editing the information of several elements at once (#1439): kept, set
@@ -1279,6 +1294,17 @@ add_test(NAME tst_movedterminals COMMAND tst_movedterminals)
 add_dependencies(tst_movedterminals qelectrotech)
 target_link_libraries(tst_movedterminals PRIVATE Qt::Test Qt::Xml)
 target_compile_definitions(tst_movedterminals PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+# The project's settings are in the project database, one row per value,
+# and kept by every change. QET-SQL-FORMAT S3b.
+add_executable(
+  tst_projectsettingrows
+  tst_projectsettingrows.cpp)
+add_test(NAME tst_projectsettingrows COMMAND tst_projectsettingrows)
+add_dependencies(tst_projectsettingrows qelectrotech)
+target_link_libraries(tst_projectsettingrows PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_projectsettingrows PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
 # A symbol's kind information (NO/NC/SW/power) is queryable from the

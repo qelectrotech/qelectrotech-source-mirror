@@ -152,6 +152,7 @@ m_project_properties_handler{this}
 			setCurrentCableAutoNum(cableData.second);
 		}
 	}
+	storeSettings();
 }
 
 ProjectPropertiesHandler &QETProject::projectPropertiesHandler()
@@ -388,6 +389,8 @@ void QETProject::init()
 		//Folios not built are saved as read until something is edited
 		//(m_edited_since_open, toXml())
 	connect(m_undo_stack, &QUndoStack::indexChanged, this, [this]() {m_edited_since_open = true;});
+		//An edit may give a folio shown partners not built
+	connect(m_undo_stack, &QUndoStack::indexChanged, this, [this]() {m_folios_shown.clear();});
 	connect(m_undo_stack, &QUndoStack::cleanChanged, this, &QETProject::undoStackChanged);
 
 		//What counts as a change for writeBackup(): the undo stack moving,
@@ -1057,6 +1060,12 @@ void QETProject::buildFolioToShow(Diagram *folio)
 	if (!folio || !unloadedFolioCount()) {
 		return;
 	}
+		//Asked again with nothing edited (a script reads a folio item by
+		//item): the scan below costs a query per symbol, each time
+	if (m_folios_shown.contains(folio)) {
+		return;
+	}
+	m_folios_shown.insert(folio);
 		//A table chain is built at once: its model is in its first table
 	QSet<Diagram *> chained = tableChainFolios(folio);
 	chained.insert(folio);
@@ -1310,6 +1319,7 @@ void QETProject::setTitle(const QString &title) {
 	if (project_title_ == title) return;
 
 	project_title_ = title;
+	storeSettings();
 	emit projectTitleChanged(this, project_title_);
 	emit projectInformationsChanged(this);
 	updateDiagramsFolioData();
@@ -1331,6 +1341,7 @@ BorderProperties QETProject::defaultBorderProperties() const
 */
 void QETProject::setDefaultBorderProperties(const BorderProperties &border) {
 	default_border_properties_ = border;
+	storeSettings();
 }
 
 /**
@@ -1349,6 +1360,7 @@ QList<GuideProperties> QETProject::defaultGuides() const {
 void QETProject::setDefaultGuides(const QList<GuideProperties> &guides) {
 	if (m_default_guides != guides) {
 		m_default_guides = guides;
+		storeSettings();
 		setModified(true);
 
 		for (Diagram *diagram : m_diagrams_list) {
@@ -1366,6 +1378,7 @@ void QETProject::setDefaultGuides(const QList<GuideProperties> &guides) {
 */
 void QETProject::setDefaultTitleBlockProperties(const TitleBlockProperties &titleblock) {
 	default_titleblock_properties_ = titleblock;
+	storeSettings();
 		//Integrate the title block in this project
 	if (!titleblock.template_name.isEmpty())
 	{
@@ -1407,6 +1420,7 @@ ConductorProperties QETProject::defaultConductorProperties() const
 */
 void QETProject::setDefaultConductorProperties(const ConductorProperties &conductor) {
 	default_conductor_properties_ = conductor;
+	storeSettings();
 }
 
 QString QETProject::defaultReportProperties() const
@@ -1418,18 +1432,21 @@ void QETProject::setDefaultReportProperties(const QString &properties)
 {
 	QString old = m_default_report_properties;
 	m_default_report_properties = properties;
+	storeSettings();
 
 	emit reportPropertiesChanged(old, properties);
 }
 
 void QETProject::setDefaultXRefProperties(const QString& type, const XRefProperties &properties) {
 	m_default_xref_properties.insert(type, properties);
+	storeSettings();
 	emit XRefPropertiesChanged();
 }
 
 void QETProject::setDefaultXRefProperties(QHash<QString, XRefProperties> hash)
 {
 	m_default_xref_properties.swap(hash);
+	storeSettings();
 	emit XRefPropertiesChanged();
 }
 
@@ -2289,6 +2306,7 @@ void QETProject::setWireHops(WireHops::Mode mode)
 		return;
 	}
 	m_wire_hops = mode;
+	storeSettings();
 		//A folio not built yet reads the mode when its wires are drawn
 	for (Diagram *diagram : folios()) {
 		diagram->update();
@@ -2317,6 +2335,7 @@ void QETProject::setUprightSymbolTexts(bool upright)
 		return;
 	}
 	m_upright_symbol_texts = upright;
+	storeSettings();
 		//A folio not built yet reads the setting when its symbols are drawn
 	for (Diagram *diagram : folios()) {
 		for (QGraphicsItem *item : diagram->items()) {
@@ -2353,6 +2372,7 @@ void QETProject::setTerminalLabelSplit(bool split)
 		return;
 	}
 	m_terminal_label_split = split;
+	storeSettings();
 	for (Diagram *diagram : diagrams()) {
 		for (Element *element : diagram->elements()) {
 			element->refreshLabelFields();
@@ -2389,6 +2409,7 @@ WiringRules::Settings QETProject::projectWiringRules() const {
 void QETProject::setWiringRules(const WiringRules::Settings &rules)
 {
 	m_wiring_rules = rules;
+	storeSettings();
 }
 
 /**
@@ -2497,6 +2518,7 @@ void QETProject::setOrigin(ProjectOrigin::Mode mode)
 {
 	if (mode == m_origin) { return; }
 	m_origin = mode;
+	storeSettings();
 	for (Diagram* diagram : diagrams()) { diagram->update(); }
 }
 
@@ -3628,6 +3650,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
+	storeSettings();
 
 		//load the embedded titleblock templates
 	m_titleblocks_collection.fromXml(xml_project.documentElement());
@@ -4451,6 +4474,7 @@ void QETProject::setChainedReports(bool enable)
 	}
 	m_chained_reports = enable;
 	m_has_chained_reports_attribute = true;
+	storeSettings();
 	if (m_chained_reports) {
 		autoLinkReportElements();
 	}
@@ -4538,6 +4562,39 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 		guides_elmt.appendChild(guide_elmt);
 	}
 	xml_element.appendChild(guides_elmt);
+}
+
+/**
+	@brief QETProject::storeSettings
+	Write the project's settings to the project database, one row per value
+	(projectDataBase::storeProjectSettings()), as a save writes them: the
+	title, the project properties, wire hops, upright texts, wiring rules
+	and the defaults for new folios. Not the numbering (its own tables,
+	QETZ-DB-FIRST 2b) nor the usage time (counted while the project is open,
+	written at save).
+*/
+void QETProject::storeSettings()
+{
+	QDomDocument document;
+	QDomElement root = document.createElement(QStringLiteral("project"));
+	document.appendChild(root);
+	root.setAttribute(QStringLiteral("title"), project_title_);
+	QDomElement properties = document.createElement(QStringLiteral("properties"));
+	writeProjectPropertiesXml(properties);
+	root.appendChild(properties);
+	writeWireHopsXml(root);
+	writeSymbolTextsXml(root);
+	writeTerminalLabelSplitXml(root);
+	writeWiringRulesXml(root);
+	writeChainedReportsXml(root);
+	writeOriginXml(root);
+	QDomElement new_diagrams = document.createElement(QStringLiteral("newdiagrams"));
+	writeDefaultPropertiesXml(new_diagrams);
+	for (const QString &numbering : {QStringLiteral("conductors_autonums"), QStringLiteral("folio_autonums"),
+									 QStringLiteral("element_autonums"), QStringLiteral("cable_autonums")})
+		new_diagrams.removeChild(new_diagrams.firstChildElement(numbering));
+	root.appendChild(new_diagrams);
+	m_data_base.storeProjectSettings(root);
 }
 
 /**
@@ -4686,6 +4743,7 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 	} else {
 		m_diagrams_list.insert(pos, diagram);
 	}
+	m_folios_shown.clear();
 
 	updateDiagramsFolioData();
 	emit diagramAdded(this, diagram);
@@ -4711,6 +4769,7 @@ void QETProject::detachDiagram(Diagram *diagram)
 		&QETProject::updateDiagramsFolioData);
 	disconnect(diagram, &Diagram::usedTitleBlockTemplateChanged,
 		this, &QETProject::usedTitleBlockTemplateChanged);
+	m_folios_shown.clear();
 
 		//A folio that holds a table or a symbol is removed: tables on folios
 		//not built yet (lazy folios) are built while it is still in the
@@ -4789,6 +4848,7 @@ DiagramContext QETProject::projectProperties()
 */
 void QETProject::setProjectProperties(const DiagramContext &context) {
 	m_project_properties = context;
+	storeSettings();
 		//Folio and symbol texts are made from them
 	markKeptFoliosStale();
 	updateDiagramsFolioData();

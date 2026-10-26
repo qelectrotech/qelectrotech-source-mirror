@@ -3101,6 +3101,16 @@ Continue?</source>
         <source>Choose a background color</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="93"/>
+        <source>Dark mode</source>
+        <translation>Tamni režim</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="96"/>
+        <source>A black sheet: symbols and texts in yellow, conductors in red, dashed ones in light blue and dash-dotted ones in yellow, the rest in white. Printing and exporting stay black on white.</source>
+        <translation>Crni list: simboli i tekstovi žuto, provodnici crveno, isprekidani svetloplavo i crta-tačka žuto, ostalo belo. Štampa i izvoz ostaju crno na belom.</translation>
+    </message>
 </context>
 <context>
     <name>DiagramContextWidget</name>

@@ -3102,6 +3102,16 @@ Continuer ?</translation>
         <source>Choose a background color</source>
         <translation>Choisir une couleur de fond</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="93"/>
+        <source>Dark mode</source>
+        <translation>Mode sombre</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="96"/>
+        <source>A black sheet: symbols and texts in yellow, conductors in red, dashed ones in light blue and dash-dotted ones in yellow, the rest in white. Printing and exporting stay black on white.</source>
+        <translation>Une feuille noire : symboles et textes en jaune, conducteurs en rouge, les tiretés en bleu clair et les mixtes en jaune, le reste en blanc. L'impression et l'export restent en noir sur blanc.</translation>
+    </message>
 </context>
 <context>
     <name>DiagramContextWidget</name>

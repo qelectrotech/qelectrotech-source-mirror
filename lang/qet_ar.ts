@@ -3175,6 +3175,16 @@ Continue?</source>
         <source>Choose a background color</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="93"/>
+        <source>Dark mode</source>
+        <translation>الوضع الداكن</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="96"/>
+        <source>A black sheet: symbols and texts in yellow, conductors in red, dashed ones in light blue and dash-dotted ones in yellow, the rest in white. Printing and exporting stay black on white.</source>
+        <translation>ورقة سوداء: الرموز والنصوص بالأصفر، والموصلات بالأحمر، والمتقطعة بالأزرق الفاتح، والمنقطة المتقطعة بالأصفر، والباقي بالأبيض. تبقى الطباعة والتصدير بالأسود على الأبيض.</translation>
+    </message>
 </context>
 <context>
     <name>DiagramContextWidget</name>
