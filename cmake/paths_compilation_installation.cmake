@@ -67,7 +67,7 @@ if(WIN32)
   # for Windows operating system in general
   set(COMPIL_PREFIX               "./")
   set(INSTALL_PREFIX              "./")
-  set(QET_BINARY_PATH             "./")
+  set(QET_BINARY_PATH             "bin/")
   set(QET_COMMON_COLLECTION_PATH  "elements/")
   set(QET_COMMON_TBT_PATH         "titleblocks/")
   # "lang/" and not "l10n/": that is where every Windows packaging actually
@@ -75,10 +75,11 @@ if(WIN32)
   # windows-build workflow), and what the shortcuts pass as --lang-dir.
   set(QET_LANG_PATH               "lang/")
   set(QET_EXAMPLES_PATH           "examples/")
-  # Where an MSVC "cmake --install" puts the data and the documents; the
-  # Windows packagings do not use it, they lay the files out themselves.
-  set(QET_DATA_PATH               "share/qelectrotech/")
-  set(QET_LICENSE_PATH            "share/doc/qelectrotech/")
+  # "cmake --install" lays the files out as the Windows installers and the
+  # portable folder do: the program in bin/, the data and the documents
+  # beside it, where QET and the MCP server (misc/qet-mcp) look for them.
+  set(QET_DATA_PATH               "./")
+  set(QET_LICENSE_PATH            "./")
   set(QET_ICONS_PATH              "icons/hicolor/")
   # Liste des ressources Windows
 #RC_FILE = qelectrotech.rc
