@@ -370,8 +370,6 @@ void GeneralConfigurationPage::applyConf()
 	}
 	settings.setValue("border-columns_0",ui->m_border_0->isChecked());
 	settings.setValue("lang", ui->m_lang_cb->itemData(ui->m_lang_cb->currentIndex()).toString());
-	settings.setValue("reverse_order_col",ui->m_reverse_order_col->isChecked());
-	settings.setValue("reverse_order_row", ui->m_reverse_order_row->isChecked());
 
 		//hdpi
 	QetSettings::setHdpiScaleFactorRoundingPolicy(ui->m_hdpi_round_policy_cb->currentData().toString());

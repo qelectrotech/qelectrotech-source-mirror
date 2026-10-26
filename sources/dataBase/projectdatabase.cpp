@@ -472,6 +472,12 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		//One border and title block read from each folio's XML in turn:
 		//only what it gives is kept.
 	BorderTitleBlock reader;
+		//It belongs to no folio, so it takes the origin from the document
+		//(the project's own may not be read yet): the cells it names must
+		//be the ones the built folios name.
+	reader.setOrigin(ProjectOrigin::fromString(
+		document.documentElement().firstChildElement(QStringLiteral("style"))
+			.attribute(QStringLiteral("origin"))));
 	QList<DiagramContext> diagram_infos;
 	QList<QDate> diagram_dates;
 	QList<QUuid> diagram_uuids;

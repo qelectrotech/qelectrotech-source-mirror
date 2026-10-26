@@ -70,9 +70,6 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 
 	display_titleblock_ = true;
 	display_border_ = true;
-	QSettings settings;
-	reverse_order_col_ = settings.value("reverse_order_col", false).toBool();
-	reverse_order_row_ = settings.value("reverse_order_row", false).toBool();
 	setFolioData(1, 1);
 	updateRectangles();
 }
@@ -624,25 +621,47 @@ void BorderTitleBlock::displayBorder(bool db) {
 }
 
 /**
-	@brief BorderTitleBlock::reverseOrderCol
-	@param db : true — counting direction inverted, false — otherwise
+	@brief BorderTitleBlock::origin
+	@return the corner the cells are counted from: the project's, or the one
+	given to setOrigin() for a border that belongs to no built folio.
 */
-void BorderTitleBlock::reverseOrderCol(bool db)
+ProjectOrigin::Mode BorderTitleBlock::origin() const
 {
-	bool change = (db != reverse_order_col_);
-	reverse_order_col_ = db;
-	if (change) emit(displayChanged());
+	if (m_owner_folio && m_owner_folio->project())
+		return m_owner_folio->project()->Origin();
+	return m_origin;
 }
 
 /**
-	@brief BorderTitleBlock::reverseOrderRow
-	@param db : true — counting direction inverted, false — otherwise
+	@brief BorderTitleBlock::setOrigin
+	For a border that belongs to no folio (one read from a project file);
+	a folio's border follows its project.
 */
-void BorderTitleBlock::reverseOrderRow(bool db)
+void BorderTitleBlock::setOrigin(ProjectOrigin::Mode mode)
 {
-	bool change = (db != reverse_order_row_);
-	reverse_order_row_ = db;
-	if (change) emit(displayChanged());
+	m_origin = mode;
+}
+
+/**
+	@brief BorderTitleBlock::columnAt
+	@param i : the i-th column from the left, starting at 1
+	@return the number that column carries: counted from the right when the
+	origin is on the right
+*/
+int BorderTitleBlock::columnAt(int i) const
+{
+	return ProjectOrigin::reversedIsColumns(origin()) ? columns_count_ - i + 1 : i;
+}
+
+/**
+	@brief BorderTitleBlock::rowAt
+	@param i : the i-th row from the top, starting at 1
+	@return the number of that row: counted from the bottom when the origin
+	is at the bottom
+*/
+int BorderTitleBlock::rowAt(int i) const
+{
+	return ProjectOrigin::reversedIsRows(origin()) ? rows_count_ - i + 1 : i;
 }
 
 /**
@@ -679,10 +698,6 @@ void BorderTitleBlock::draw(QPainter *painter)
 
 	QSettings settings;
 
-	//Update columns and rows order settings
-	reverseOrderCol(settings.value("reverse_order_col", false).toBool());
-	reverseOrderRow(settings.value("reverse_order_row", false).toBool());
-
 	//Draw the borer
 	if (display_border_) painter -> drawRect(diagram_rect_);
 
@@ -704,8 +719,6 @@ void BorderTitleBlock::draw(QPainter *painter)
 	if (display_border_ && display_columns_) {
 		const bool columns_start_at_zero =
 				settings.value("border-columns_0", true).toBool();
-		const bool reversedIsColumns = 
-			ProjectOrigin::reversedIsColumns(m_owner_folio->project()->Origin());
 		for (int i = 1 ; i <= columns_count_ ; ++ i) {
 			QRectF numbered_rectangle = QRectF(
 				diagram_rect_.topLeft().x()
@@ -720,15 +733,12 @@ void BorderTitleBlock::draw(QPainter *painter)
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
 				BorderCellLabels::columnLabel(
-					reversedIsColumns ? columns_count_ - i + 1 : i,
-					columns_start_at_zero));
+					columnAt(i), columns_start_at_zero));
 		}
 	}
 
 		//Draw the nums of rows
 	if (display_border_ && display_rows_) {
-		const bool reversedIsRows = 
-			ProjectOrigin::reversedIsRows(m_owner_folio->project()->Origin());
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			QRectF lettered_rectangle = QRectF(
 				diagram_rect_.topLeft().x(),
@@ -744,7 +754,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> drawText(lettered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-				BorderCellLabels::rowLabel(reversedIsRows ? rows_count_ - i + 1 : i));
+				BorderCellLabels::rowLabel(rowAt(i)));
 		}
 	}
 
@@ -815,8 +825,6 @@ void BorderTitleBlock::drawDxf(
 	if (display_border_ &&
 		display_columns_) {
 	int offset = settings.value("border-columns_0", true).toBool() ? -1 : 0;
-		const bool reversedIsColumns = ProjectOrigin::reversedIsColumns(
-			m_owner_folio->project()->Origin());
 		for (int i = 1 ; i <= columns_count_ ; ++ i) {
 	    double xCoord = diagram_rect_.topLeft().x() * Createdxf::xScale +
 					(rows_header_width_ + ((i - 1) *
@@ -830,7 +838,7 @@ void BorderTitleBlock::drawDxf(
 						 recWidth, recHeight, color);
 
 			Createdxf::drawTextAligned(file_path,
-				QString::number((reversedIsColumns ? columns_count_ - i + 1 : i) + offset),
+				QString::number(columnAt(i) + offset),
 			   xCoord+recWidth/4,
 			   yCoord + recHeight*0.5,
 						   recHeight*0.7,
@@ -847,8 +855,6 @@ void BorderTitleBlock::drawDxf(
 	// draw line numbering
 	// dessine la numerotation des lignes
 	if (display_border_ && display_rows_) {
-		const bool reversedIsRows =
-			ProjectOrigin::reversedIsRows(m_owner_folio->project()->Origin());
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			double xCoord = diagram_rect_.topLeft().x()
 					* Createdxf::xScale;
@@ -865,8 +871,7 @@ void BorderTitleBlock::drawDxf(
 			Createdxf::drawRectangle(file_path, xCoord, yCoord,
 						 recWidth, recHeight, color);
 			Createdxf::drawTextAligned(file_path,
-				BorderCellLabels::rowLabel(
-					reversedIsRows ? rows_count_ - i + 1 : i),
+				BorderCellLabels::rowLabel(rowAt(i)),
 			   xCoord+recWidth*0.1,
 			   yCoord + recHeight*0.4,
 						   recWidth*0.7,
@@ -1056,12 +1061,9 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 	int row_number    = int(ceil(relative_pos.x() / columnsWidth()));
 	int column_number = int(ceil(relative_pos.y() / rowsHeight()));
 
-	if(m_owner_folio && m_owner_folio->project()){
-		if (ProjectOrigin::reversedIsColumns(m_owner_folio->project()->Origin()))
-			row_number = columnsCount() - row_number + 1;
-		if (ProjectOrigin::reversedIsRows(m_owner_folio->project()->Origin()))
-			column_number = rowsCount() - column_number + 1;
-	}
+		//The mirror image of the drawn labels, see columnAt() and rowAt()
+	row_number = columnAt(row_number);
+	column_number = rowAt(column_number);
 
 	return(DiagramPosition(BorderCellLabels::rowLabel(column_number), row_number));
 }
@@ -1174,6 +1176,10 @@ QRectF BorderTitleBlock::cellRect(const QString &cell) const
 
 	if (row < 1 || column < 1 || column > columns_count_)
 		return QRectF();
+
+		//The label is the mirror image of the position, see convertPosition()
+	row = rowAt(row);
+	column = columnAt(column);
 
 	const QPointF top_left = insideBorderRect().topLeft();
 	return QRectF(top_left.x() + (column - 1) * columns_width_,

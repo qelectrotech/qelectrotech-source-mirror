@@ -972,6 +972,20 @@ target_link_libraries(tst_wirehops PRIVATE Qt::Test Qt::Gui)
 target_compile_definitions(tst_wirehops PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# Project origin (which corner columns and rows are counted from): the
+# names and directions in projectorigin.cpp, and through the real binary,
+# that --resave keeps the setting and adds none to a project without it.
+add_executable(
+  tst_projectorigin
+  tst_projectorigin.cpp
+  ${QET_DIR}/sources/projectorigin.cpp)
+add_test(NAME tst_projectorigin COMMAND tst_projectorigin)
+add_dependencies(tst_projectorigin qelectrotech)
+target_include_directories(tst_projectorigin PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_projectorigin PRIVATE Qt::Test Qt::Gui)
+target_compile_definitions(tst_projectorigin PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # Wires per terminal (discussion #1158): the rules in wiringrules.cpp, and
 # through the real binary, that --resave keeps the project setting, adds
 # none to a project without it, and that a wire past the limit is refused
