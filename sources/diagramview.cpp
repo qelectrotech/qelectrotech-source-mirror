@@ -2337,6 +2337,12 @@ void DiagramView::paintEvent(QPaintEvent *event)
 {
 	PaletteGraphicsView::paintEvent(event);
 
+		//Every way of zooming ends in a repaint
+	if (transform().m11() != m_shown_zoom) {
+		m_shown_zoom = transform().m11();
+		emit zoomChanged(m_shown_zoom);
+	}
+
 		//Scrolling and zooming both repaint the viewport: follow them.
 		//Showing or hiding a ruler resizes the viewport, which cannot be
 		//done while it paints.

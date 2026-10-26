@@ -29,6 +29,7 @@
 #include "../../utils/qetutils.h"
 #include "../../utils/previousversions.h"
 #include "../../qetmessagebox.h"
+#include "../../foliogrid.h"
 #include "../../textgrid.h"
 #include "../../wiringrules.h"
 #include "../wiringruleswarning.h"
@@ -110,6 +111,10 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	}
 
 	ui->grid_startup_cb->setChecked(settings.value("diagrameditor/grid_display_startup", true).toBool());
+	ui->m_grid_min_spacing_sb->setRange(FolioGrid::min_dot_spacing_lowest,
+					      FolioGrid::min_dot_spacing_highest);
+	ui->m_grid_min_spacing_sb->setValue(
+				FolioGrid::minDotSpacing(settings.value(FolioGrid::min_dot_spacing_key)));
 	ui->guides_startup_cb->setChecked(settings.value("diagrameditor/guides_display_startup", false).toBool());
 		//Stored as "inserts" but presented as "edits", so the default (insert)
 		//is the unchecked state -- a preference reads better as an opt-out.
@@ -425,6 +430,7 @@ void GeneralConfigurationPage::applyConf()
 	PreviousVersions::setCount(ui->m_previous_versions_sb->value());
 
 	settings.setValue("diagrameditor/grid_display_startup", ui->grid_startup_cb->isChecked());
+	settings.setValue(FolioGrid::min_dot_spacing_key, ui->m_grid_min_spacing_sb->value());
 	settings.setValue("diagrameditor/guides_display_startup", ui->guides_startup_cb->isChecked());
 	settings.setValue("elementscollection/double-click-inserts", !ui->m_collection_dblclick_edits->isChecked());
 	settings.setValue("elementscollection/search-flat-list", ui->m_collection_search_flat_cb->isChecked());

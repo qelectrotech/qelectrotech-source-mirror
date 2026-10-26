@@ -472,6 +472,12 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		//One border and title block read from each folio's XML in turn:
 		//only what it gives is kept.
 	BorderTitleBlock reader;
+		//It belongs to no folio, so it takes the origin from the document
+		//(the project's own may not be read yet): the cells it names must
+		//be the ones the built folios name.
+	reader.setOrigin(ProjectOrigin::fromString(
+		document.documentElement().firstChildElement(QStringLiteral("style"))
+			.attribute(QStringLiteral("origin"))));
 	QList<DiagramContext> diagram_infos;
 	QList<QDate> diagram_dates;
 	QList<QUuid> diagram_uuids;
@@ -1791,6 +1797,7 @@ void projectDataBase::addDiagram(Diagram *diagram)
 	if (!m_insert_diagram_info_query.exec()) {
 		qDebug() << "projectDataBase::addDiagram insert info error : " << m_insert_diagram_info_query.lastError();
 	}
+	restoreRemovedFolioRows(diagram);
 
 		//A folio put back by undoing its removal comes with its items already
 		//on it, and their rows went with it: queue them again.
@@ -1821,6 +1828,88 @@ void projectDataBase::addDiagram(Diagram *diagram)
 		//from %id or %total changed on every folio.
 	updateFolioPositions();
 	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::keepRemovedFolioRows
+	Before the rows of the folio of uuid @p folio are deleted with it: keep
+	a copy of its element, element_info, terminal, conductor and link rows,
+	and of the link rows of other symbols to its own, for
+	restoreRemovedFolioRows() if the removal is undone. A folio not built
+	(lazy folios) has no symbols to write them again from, and a symbol on
+	a folio not built none to write its link to the folio's.
+*/
+void projectDataBase::keepRemovedFolioRows(const QString &folio)
+{
+	QSqlQuery query(m_data_base);
+	for (const char *table : {"element", "element_info", "terminal", "conductor", "link"})
+		query.exec(QStringLiteral("CREATE TEMP TABLE IF NOT EXISTS removed_%1 AS SELECT * FROM %1 WHERE 0")
+				   .arg(QLatin1String(table)));
+	const QString of_folio = QStringLiteral("(SELECT uuid FROM element WHERE diagram_uuid = :folio)");
+	for (const QString &sql : {
+		 QStringLiteral("INSERT OR IGNORE INTO removed_link SELECT * FROM link WHERE element_uuid IN %1 "
+						"OR linked_uuid IN %1 ORDER BY rowid").arg(of_folio),
+		 QStringLiteral("INSERT OR IGNORE INTO removed_element_info SELECT * FROM element_info "
+						"WHERE element_uuid IN %1 ORDER BY rowid").arg(of_folio),
+		 QStringLiteral("INSERT OR IGNORE INTO removed_terminal SELECT * FROM terminal "
+						"WHERE element_uuid IN %1 ORDER BY rowid").arg(of_folio),
+		 QStringLiteral("INSERT OR IGNORE INTO removed_conductor SELECT * FROM conductor "
+						"WHERE diagram_uuid = :folio ORDER BY rowid"),
+		 QStringLiteral("INSERT OR IGNORE INTO removed_element SELECT * FROM element "
+						"WHERE diagram_uuid = :folio ORDER BY rowid")}) {
+		query.prepare(sql);
+		query.bindValue(QStringLiteral(":folio"), folio);
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::keepRemovedFolioRows error : " << query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::restoreRemovedFolioRows
+	@p folio is put back by undoing its removal: put back the rows kept by
+	keepRemovedFolioRows(), then drop their copies. Built, the folio writes
+	its symbols and wires again itself (addDiagram()): only the link rows
+	are put back, those of symbols on folios not built among them.
+*/
+void projectDataBase::restoreRemovedFolioRows(Diagram *folio)
+{
+	QSqlQuery query(m_data_base);
+	if (!query.exec(QStringLiteral("SELECT 1 FROM removed_element LIMIT 1")) || !query.next()) {
+		return;
+	}
+	const QString of_folio = QStringLiteral("(SELECT uuid FROM removed_element WHERE diagram_uuid = :folio)");
+	QStringList restore = {QStringLiteral("INSERT OR IGNORE INTO link SELECT * FROM removed_link "
+										  "WHERE element_uuid IN %1 OR linked_uuid IN %1 ORDER BY rowid")
+						   .arg(of_folio)};
+	if (!folio->isLoaded()) {
+		restore << QStringLiteral("INSERT OR IGNORE INTO element SELECT * FROM removed_element "
+								  "WHERE diagram_uuid = :folio ORDER BY rowid")
+				<< QStringLiteral("INSERT OR IGNORE INTO element_info SELECT * FROM removed_element_info "
+								  "WHERE element_uuid IN %1 ORDER BY rowid").arg(of_folio)
+				<< QStringLiteral("INSERT OR IGNORE INTO terminal SELECT * FROM removed_terminal "
+								  "WHERE element_uuid IN %1 ORDER BY rowid").arg(of_folio)
+				<< QStringLiteral("INSERT OR IGNORE INTO conductor SELECT * FROM removed_conductor "
+								  "WHERE diagram_uuid = :folio ORDER BY rowid");
+	}
+		//The copies go, the element ones last: the others are found by them
+	for (const char *table : {"link", "element_info", "terminal"})
+		restore << QStringLiteral("DELETE FROM removed_%1 WHERE element_uuid IN %2")
+				   .arg(QLatin1String(table), of_folio);
+	restore << QStringLiteral("DELETE FROM removed_link WHERE linked_uuid IN %1").arg(of_folio)
+			<< QStringLiteral("DELETE FROM removed_conductor WHERE diagram_uuid = :folio")
+			<< QStringLiteral("DELETE FROM removed_element WHERE diagram_uuid = :folio");
+	const bool own_transaction = m_data_base.transaction();
+	for (const QString &sql : std::as_const(restore)) {
+		query.prepare(sql);
+		query.bindValue(QStringLiteral(":folio"), folio->uuid().toString());
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::restoreRemovedFolioRows error : " << query.lastError();
+		}
+	}
+	if (own_transaction) {
+		m_data_base.commit();
+	}
 }
 
 /**
@@ -1910,6 +1999,7 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 		//locked DB) can't leave the diagram row deleted while its
 		//element/terminal/element_info/conductor rows survive.
 	m_data_base.transaction();
+	keepRemovedFolioRows(uuid_str);
 
 	QSqlQuery cascade_links(m_data_base);
 	cascade_links.prepare(QStringLiteral(
