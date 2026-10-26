@@ -172,6 +172,7 @@ class QETProject : public QObject
 		/// background thread referencing the project, and a short-lived CLI
 		/// process can destroy the project before the write finishes (crash).
 		static void setBackupEnabled(bool enabled);
+		static bool backupEnabled() {return m_backup_enabled;}
 
 			/// Whether a folio is built only when it is needed, not all on
 			/// opening (stage D6): yes, unless the

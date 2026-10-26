@@ -19,7 +19,11 @@
 #define PROJECTDATABASE_H
 
 #include <functional>
+#include <memory>
+#include <QDateTime>
+#include <QLockFile>
 #include <QObject>
+#include <QTimer>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QPointer>
@@ -73,6 +77,24 @@ class projectDataBase : public QObject
 			//updateDB() without dataBaseUpdated(): the tables brought up
 			//to date for a reader that shows nothing (a commit, a save)
 		void refresh();
+			/**
+				The working copy (QET-SQL-FORMAT S3z2, QETDB-S3-SCOPE.md
+				7.4.5): the database in a file of its own, one transaction
+				open, committed after each step of the undo stack, once the
+				project is open, after a save, and when anything else changed
+				it (a 1 s poll). A crash leaves it as at the last commit.
+				None when backups are off (the command line) and
+				QET_WORKING_COPY_DIR is not set: the database is in memory.
+			*/
+		bool hasWorkingCopy() const {return m_working_copy;}
+		QString workingCopyPath() const {return m_working_copy_path;}
+			/// The project is open: first commit, the copy is ready
+		void workingCopyOpened();
+		void commitWorkingCopy();
+			/// Write @p project_file from the working copy @p working_copy
+			/// left by a QElectroTech that ended (--from-database)
+		static bool writeWorkingCopy(const QString &working_copy, const QString &project_file,
+									 QString *error = nullptr);
 			/**
 				updateDB() for a project just read from @p document: the
 				diagram, element, terminal and conductor tables are filled
@@ -444,6 +466,17 @@ class projectDataBase : public QObject
 
 	private:
 		bool createDataBase();
+		bool openWorkingCopy();
+		void removeWorkingCopy();
+		void endTransaction();
+		void beginTransaction();
+		qint64 totalChanges() const;
+		bool m_working_copy = false, m_working_copy_ready = false;
+		QString m_working_copy_path;
+		std::unique_ptr<QLockFile> m_working_copy_lock;
+		QTimer *m_working_copy_poll = nullptr;
+		qint64 m_committed_changes = -1;
+		QDateTime m_opened;
 		void createElementNomenclatureView();
 		void createSummaryView();
 		void createWiringListView();

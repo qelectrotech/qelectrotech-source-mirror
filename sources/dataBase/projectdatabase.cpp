@@ -47,7 +47,10 @@
 #include "../TerminalStrip/realterminal.h"
 #include "../cable/cable.h"
 
+#include <QDir>
 #include <QLocale>
+#include <QTemporaryDir>
+#include <QUndoStack>
 #include <QDate>
 #include <QCryptographicHash>
 #include <QDomDocument>
@@ -101,7 +104,209 @@ projectDataBase::projectDataBase(QETProject *project, QObject *parent) :
 */
 projectDataBase::~projectDataBase()
 {
+		//A clean close: what the folios' teardown wrote is not kept, and the
+		//working copy goes (a crash leaves it as at the last commit)
+	if (m_working_copy) {
+		m_data_base.rollback();
+	}
 	m_data_base.close();
+	if (m_working_copy) {
+		removeWorkingCopy();
+	}
+}
+
+/**
+	@brief projectDataBase::openWorkingCopy
+	Open the database in a file of its own, the working copy, in
+	QET_WORKING_COPY_DIR or else QETApp::dataDir()/working-copies when
+	backups are on, with a lock file beside it held while the project is
+	open. In WAL mode without shared memory (locking_mode=EXCLUSIVE, set
+	first): no -shm file, and no other connection can open it.
+	@return false if there is none: the database is then made in memory, as
+	with backups off, with one warning if the file could not be made
+*/
+bool projectDataBase::openWorkingCopy()
+{
+	QString dir = qEnvironmentVariable("QET_WORKING_COPY_DIR");
+	if (dir.isEmpty()) {
+		if (!QETProject::backupEnabled()) {
+			return false;
+		}
+		dir = QETApp::dataDir() + QStringLiteral("/working-copies");
+	}
+	const QString base = QDir(dir).filePath(QUuid::createUuid().toString(QUuid::WithoutBraces));
+	auto lock = std::make_unique<QLockFile>(base + QStringLiteral(".lock"));
+	if (!QDir().mkpath(dir) || !lock->tryLock(0)) {
+		qWarning() << "projectDataBase: no working copy in" << dir << ", the database stays in memory";
+		return false;
+	}
+	m_data_base.setDatabaseName(base + QStringLiteral(".sqlite"));
+	if (!m_data_base.open()) {
+		qWarning() << "projectDataBase: no working copy in" << dir << ":"
+				   << m_data_base.lastError().text() << ", the database stays in memory";
+		m_data_base.setDatabaseName(QString());
+		return false;
+	}
+	QSqlQuery query(m_data_base);
+	for (const char *pragma : {"PRAGMA temp_store = MEMORY", "PRAGMA locking_mode = EXCLUSIVE",
+							   "PRAGMA journal_mode = WAL", "PRAGMA synchronous = NORMAL",
+							   "PRAGMA cache_size = -65536"})
+		if (!query.exec(QLatin1String(pragma))) {
+			qWarning() << "projectDataBase:" << pragma << query.lastError().text();
+		}
+	m_working_copy_path = base + QStringLiteral(".sqlite");
+	m_working_copy_lock = std::move(lock);
+	m_opened = QDateTime::currentDateTimeUtc();
+	return true;
+}
+
+/**
+	@brief projectDataBase::removeWorkingCopy
+	Delete the working copy's files, the connection closed, then release
+	its lock
+*/
+void projectDataBase::removeWorkingCopy()
+{
+	for (const char *suffix : {"", "-wal", "-shm", "-journal"})
+		QFile::remove(m_working_copy_path + QLatin1String(suffix));
+	m_working_copy_lock.reset();
+}
+
+/**
+	@brief projectDataBase::endTransaction
+	Commit the transaction the working copy keeps open (VACUUM INTO, a
+	commit): what it holds is then in the file
+*/
+void projectDataBase::endTransaction()
+{
+	if (m_working_copy && !m_data_base.commit()) {
+		qWarning() << "projectDataBase: working copy commit:" << m_data_base.lastError().text();
+	}
+}
+
+/**
+	@brief projectDataBase::beginTransaction
+	Open the transaction the working copy keeps open: nothing written until
+	the next commit reaches the file
+*/
+void projectDataBase::beginTransaction()
+{
+	if (m_working_copy && !m_data_base.transaction()) {
+		qWarning() << "projectDataBase: working copy begin:" << m_data_base.lastError().text();
+	}
+}
+
+/**
+	@brief projectDataBase::totalChanges
+	@return the rows changed through the connection since it was opened
+*/
+qint64 projectDataBase::totalChanges() const
+{
+	QSqlQuery query(m_data_base);
+	return query.exec(QStringLiteral("SELECT total_changes()")) && query.next()
+			? query.value(0).toLongLong() : -1;
+}
+
+/**
+	@brief projectDataBase::workingCopyOpened
+	The project is open: the first commit, which writes it all, marks the
+	working copy ready (a copy left by a crash during the open is never
+	one to recover). From now on anything changed outside the undo stack
+	is committed within a second.
+*/
+void projectDataBase::workingCopyOpened()
+{
+	if (!m_working_copy || m_working_copy_ready) {
+		return;
+	}
+	m_working_copy_ready = true;
+	commitWorkingCopy();
+	m_working_copy_poll = new QTimer(this);
+	m_working_copy_poll->setInterval(1000);
+	connect(m_working_copy_poll, &QTimer::timeout, this, [this]() {
+		if (m_update_blocked || (m_project && m_project->isReadOnly())) {
+			return;
+		}
+			//The second writes the queues the first leaves after a rebuild
+		refresh();
+		refresh();
+		if (totalChanges() != m_committed_changes) {
+			commitWorkingCopy();
+		}
+	});
+	m_working_copy_poll->start();
+}
+
+/**
+	@brief projectDataBase::commitWorkingCopy
+	Bring every table up to date, note in working_copy when and whether
+	the project then differed from its file, and commit. Not while a bulk
+	operation or a folio build holds the tables back, nor for a project
+	opened read-only (it never has a ready copy): the poll commits later.
+*/
+void projectDataBase::commitWorkingCopy()
+{
+	if (!m_working_copy_ready || m_update_blocked || !m_project || m_project->isReadOnly()) {
+		return;
+	}
+		//The second writes the queues the first leaves after a rebuild
+	refresh();
+	refresh();
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("UPDATE working_copy SET project_file = :file, committed = :committed, "
+								 "modified = :modified, ready = 1"));
+	query.bindValue(QStringLiteral(":file"), m_project->filePath());
+	query.bindValue(QStringLiteral(":committed"), QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs));
+	query.bindValue(QStringLiteral(":modified"), int(m_project->projectOptionsWereModified()
+													 || (m_project->undoStack() && !m_project->undoStack()->isClean())));
+	if (!query.exec()) {
+		qWarning() << "projectDataBase: working_copy row:" << query.lastError().text();
+	}
+	endTransaction();
+	m_committed_changes = totalChanges();
+	beginTransaction();
+}
+
+/**
+	@brief projectDataBase::writeWorkingCopy
+	Write @p project_file from the working copy @p working_copy, left by a
+	QElectroTech that ended: its file and its WAL are copied, the copy
+	opened (which puts the WAL's commits in) and taken out of WAL mode,
+	then written as writeDocument() does.
+*/
+bool projectDataBase::writeWorkingCopy(const QString &working_copy, const QString &project_file, QString *error)
+{
+	QTemporaryDir dir;
+	const QString copy = dir.filePath(QStringLiteral("working-copy.sqlite"));
+	if (!dir.isValid() || !QFile::copy(working_copy, copy)
+		|| (QFile::exists(working_copy + QStringLiteral("-wal"))
+			&& !QFile::copy(working_copy + QStringLiteral("-wal"), copy + QStringLiteral("-wal")))) {
+		if (error) *error = QStringLiteral("cannot copy %1").arg(working_copy);
+		return false;
+	}
+	const QString connection = QStringLiteral("qet_working_copy_") + QUuid::createUuid().toString();
+	bool ok = false;
+	{
+		QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), connection);
+		db.setDatabaseName(copy);
+		ok = db.open();
+		QSqlQuery query(db);
+		ok = ok && query.exec(QStringLiteral("PRAGMA journal_mode = DELETE"));
+		if (!ok && error) {
+			*error = db.isOpen() ? query.lastError().text() : db.lastError().text();
+		}
+			//Not ready: QElectroTech stopped while opening the project, the
+			//tables are not all there
+		if (ok && !(query.exec(QStringLiteral("SELECT ready FROM working_copy")) && query.next()
+					&& query.value(0).toInt() == 1)) {
+			ok = false;
+			if (error) *error = QStringLiteral("the working copy is not ready (QElectroTech stopped while opening the project)");
+		}
+		query = QSqlQuery();
+		db.close();
+	}
+	QSqlDatabase::removeDatabase(connection);
+	return ok && writeDocument(copy, project_file, error);
 }
 
 static ElementData::Types allElementTypes();
@@ -2240,11 +2445,13 @@ void projectDataBase::elementInfoChanged(QList<Element *> elements)
 		//Block signal for not emit dataBaseUpdated at
 		//each call of the method elementInfoChanged(Element *element)
 
-	m_data_base.transaction();	
+	const bool own_transaction = m_data_base.transaction();
 	for (auto elmt : elements) {
 		elementInfoChanged(elmt);
 	}
-	m_data_base.commit();
+	if (own_transaction) {
+		m_data_base.commit();
+	}
 
 	this->blockSignals(false);
 	emit dataBaseUpdated();
@@ -2734,8 +2941,14 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 		//deleted below. The whole cascade runs in one transaction and is
 		//rolled back on the first error, so a mid-cascade failure (e.g. a
 		//locked DB) can't leave the diagram row deleted while its
-		//element/terminal/element_info/conductor rows survive.
-	m_data_base.transaction();
+		//element/terminal/element_info/conductor rows survive. A savepoint,
+		//not a transaction: the working copy keeps one open (S3z2).
+	QSqlQuery savepoint(m_data_base);
+	savepoint.exec(QStringLiteral("SAVEPOINT remove_folio"));
+	const auto rollback = [&savepoint]() {
+		savepoint.exec(QStringLiteral("ROLLBACK TO remove_folio"));
+		savepoint.exec(QStringLiteral("RELEASE remove_folio"));
+	};
 	keepRemovedFolioRows(uuid_str);
 
 	QSqlQuery cascade_links(m_data_base);
@@ -2746,7 +2959,7 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 	if (!cascade_links.exec()) {
 		qDebug() << "projectDataBase::removeDiagram link cascade error : "
 				 << cascade_links.lastError();
-		m_data_base.rollback();
+		rollback();
 		return;
 	}
 
@@ -2754,7 +2967,7 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 	if (!m_cascade_remove_element_info_query.exec()) {
 		qDebug() << "projectDataBase::removeDiagram element_info cascade error : "
 				 << m_cascade_remove_element_info_query.lastError();
-		m_data_base.rollback();
+		rollback();
 		return;
 	}
 
@@ -2762,7 +2975,7 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 	if (!m_cascade_remove_terminal_query.exec()) {
 		qDebug() << "projectDataBase::removeDiagram terminal cascade error : "
 				 << m_cascade_remove_terminal_query.lastError();
-		m_data_base.rollback();
+		rollback();
 		return;
 	}
 
@@ -2770,7 +2983,7 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 	if (!m_cascade_remove_conductor_query.exec()) {
 		qDebug() << "projectDataBase::removeDiagram conductor cascade error : "
 				 << m_cascade_remove_conductor_query.lastError();
-		m_data_base.rollback();
+		rollback();
 		return;
 	}
 
@@ -2778,7 +2991,7 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 	if (!m_cascade_remove_element_query.exec()) {
 		qDebug() << "projectDataBase::removeDiagram element cascade error : "
 				 << m_cascade_remove_element_query.lastError();
-		m_data_base.rollback();
+		rollback();
 		return;
 	}
 
@@ -2792,7 +3005,7 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 		if (!cascade.exec()) {
 			qDebug() << "projectDataBase::removeDiagram" << table << "cascade error : "
 					 << cascade.lastError();
-			m_data_base.rollback();
+			rollback();
 			return;
 		}
 	}
@@ -2812,18 +3025,18 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 	remove_info.bindValue(QStringLiteral(":uuid"), uuid_str);
 	if (!remove_info.exec()) {
 		qDebug() << "projectDataBase::removeDiagram diagram_info delete error : " << remove_info.lastError();
-		m_data_base.rollback();
+		rollback();
 		return;
 	}
 
 	m_remove_diagram_query.bindValue(":uuid", uuid_str);
 	if (!m_remove_diagram_query.exec()) {
 		qDebug() << "projectDataBase::removeDiagram delete error : " << m_remove_diagram_query.lastError();
-		m_data_base.rollback();
+		rollback();
 		return;
 	}
 
-	m_data_base.commit();
+	savepoint.exec(QStringLiteral("RELEASE remove_folio"));
 		//The folios after it moved up, and %id / %total changed.
 	updateFolioPositions();
 	emit dataBaseUpdated();
@@ -3481,15 +3694,18 @@ void projectDataBase::populateDrawingItemTables()
 bool projectDataBase::createDataBase()
 {
 	m_data_base = QSqlDatabase::addDatabase("QSQLITE", "qet_project_db_" + m_project->uuid().toString());
-	if(!m_data_base.open()) {
-		m_data_base.close();
-		return false;
+	m_working_copy = openWorkingCopy();
+	if (!m_working_copy) {
+		if(!m_data_base.open()) {
+			m_data_base.close();
+			return false;
+		}
+
+		QSqlQuery(m_data_base).exec("PRAGMA temp_store = MEMORY");
+		QSqlQuery(m_data_base).exec("PRAGMA journal_mode = MEMORY");
+		QSqlQuery(m_data_base).exec("PRAGMA synchronous = OFF");
 	}
 
-	QSqlQuery(m_data_base).exec("PRAGMA temp_store = MEMORY");
-	QSqlQuery(m_data_base).exec("PRAGMA journal_mode = MEMORY");
-	QSqlQuery(m_data_base).exec("PRAGMA synchronous = OFF");
-	
 	QSqlQuery query_(m_data_base);
 	bool first_ = true;
 
@@ -3981,6 +4197,22 @@ bool projectDataBase::createDataBase()
 	createWiringListView();
 	createDrawingItemView();
 	prepareQuery();
+
+		//The working copy's one row, for recovering it at the next start:
+		//written now, outside the transaction, ready only once the project
+		//is open (workingCopyOpened())
+	if (m_working_copy) {
+		query_.exec(QStringLiteral("CREATE TABLE working_copy (project_file TEXT, version TEXT, "
+								   "opened TEXT, committed TEXT, modified INTEGER, ready INTEGER)"));
+		query_.prepare(QStringLiteral("INSERT INTO working_copy (version, opened, ready) "
+									  "VALUES (:version, :opened, 0)"));
+		query_.bindValue(QStringLiteral(":version"), QetVersion::displayedVersion());
+		query_.bindValue(QStringLiteral(":opened"), m_opened.toString(Qt::ISODateWithMs));
+		if (!query_.exec()) {
+			qWarning() << "projectDataBase: working_copy row:" << query_.lastError().text();
+		}
+		beginTransaction();
+	}
 	updateDB();
 	return true;
 }
@@ -7731,9 +7963,12 @@ void projectDataBase::exportDb(projectDataBase *db,
 	db->flushFolioValues();
 	db->flushCables();
 	db->flushConductorProperties();
+		//VACUUM INTO cannot run inside the working copy's transaction
+	db->endTransaction();
 	QSqlQuery query(db->m_data_base);
 	if (!query.exec("VACUUM INTO '" % escaped_path % "'")) {
 		qWarning() << "Unable to export project database:" << query.lastError().text();
 	}
+	db->beginTransaction();
 }
 #endif

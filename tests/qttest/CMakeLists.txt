@@ -1792,6 +1792,30 @@ qet_add_app_test(tst_collectionclosedproject tst_collectionclosedproject.cpp)
 # waiting for the first to close (#1571).
 qet_add_app_test(tst_elementcachelock tst_elementcachelock.cpp)
 
+# The working copy: the project database in a file, committed after each
+# edit; killed at random moments, it holds every edit finished, and a clean
+# exit leaves nothing. QET-SQL-FORMAT S3z2.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_workingcopy
+    tst_workingcopy.cpp)
+  add_test(NAME tst_workingcopy COMMAND tst_workingcopy)
+  add_dependencies(tst_workingcopy qelectrotech)
+  target_link_libraries(tst_workingcopy PRIVATE Qt::Test Qt::Xml)
+  set_tests_properties(tst_workingcopy PROPERTIES TIMEOUT 1800
+    ENVIRONMENT "QTEST_FUNCTION_TIMEOUT=1500000")
+  target_compile_definitions(tst_workingcopy PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The working copy in the editor: in the data folder, a change outside the
+# undo stack committed within 2 s, deleted on close. QET-SQL-FORMAT S3z2.
+qet_add_app_test(tst_workingcopypoll tst_workingcopypoll.cpp)
+target_link_libraries(tst_workingcopypoll PRIVATE Qt::Xml)
+target_compile_definitions(tst_workingcopypoll PRIVATE
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
 # PATH for every test above and keeps the ENVIRONMENT each test sets

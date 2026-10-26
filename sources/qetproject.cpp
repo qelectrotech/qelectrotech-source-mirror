@@ -401,6 +401,10 @@ void QETProject::init()
 		//without going through either.
 	const auto backup_needed = [this]() { m_backup_needed = true; };
 	connect(m_undo_stack, &QUndoStack::indexChanged, this, backup_needed);
+		//Each step of the undo stack reaches the working copy at once (S3z2):
+		//no event loop runs during a --run script. The database is the
+		//context: it is gone before the stack's clear() in the teardown.
+	connect(m_undo_stack, &QUndoStack::indexChanged, &m_data_base, &projectDataBase::commitWorkingCopy);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, backup_needed);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::elementAdded, this, backup_needed);
@@ -452,6 +456,9 @@ void QETProject::init()
 		m_autosave_timer.start();
 	}
 
+		//The project is open: the first commit makes its working copy one
+		//to recover after a crash (S3z2)
+	m_data_base.workingCopyOpened();
 }
 
 /**
@@ -3076,6 +3083,8 @@ QETResult QETProject::write(bool overwrite_changed)
 	m_stamped_path = m_file_path;
 	m_stamped_undo_index = m_undo_stack->index();
 	setModified(false);
+		//The working copy now says it matches the file
+	m_data_base.commitWorkingCopy();
 	return(QETResult());
 }
 

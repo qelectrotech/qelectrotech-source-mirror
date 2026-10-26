@@ -676,8 +676,12 @@ bool projectDataBase::writeProjectFromDatabase(const QString &project_file, QStr
 		return false;
 	}
 	const QString copy = dir.filePath(QStringLiteral("project.sqlite"));
+		//VACUUM INTO cannot run inside the working copy's transaction
+	endTransaction();
 	QSqlQuery query(m_data_base);
-	if (!query.exec(QStringLiteral("VACUUM INTO '%1'").arg(QString(copy).replace(QLatin1Char('\''), QStringLiteral("''"))))) {
+	const bool copied = query.exec(QStringLiteral("VACUUM INTO '%1'").arg(QString(copy).replace(QLatin1Char('\''), QStringLiteral("''"))));
+	beginTransaction();
+	if (!copied) {
 		if (error) *error = query.lastError().text();
 		return false;
 	}
