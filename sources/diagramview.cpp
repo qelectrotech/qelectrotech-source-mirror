@@ -584,14 +584,11 @@ void DiagramView::zoom(const qreal zoom_factor)
 	if (zoom_factor >= 1){
 		scale(zoom_factor, zoom_factor);
 	}
-	else
+	else if (zoom_factor > 0)
 	{
-		QSettings settings;
-		if (settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ||
-			(horizontalScrollBar()->maximum() || verticalScrollBar()->maximum()) )
-			if (zoom_factor >= 0){
-				scale(zoom_factor, zoom_factor);
-			}
+			//Out beyond the sheet as well: the workspace around it shows,
+			//with the grid on it
+		scale(zoom_factor, zoom_factor);
 	}
 	m_diagram->adjustSceneRect();
 	adjustGridToZoom();
@@ -1836,15 +1833,11 @@ void DiagramView::adjustSceneRect()
 	QRectF scene_rect = m_diagram->sceneRect();
 	scene_rect.adjust(-Diagram::margin, -Diagram::margin, Diagram::margin, Diagram::margin);
 
-	QSettings settings;
-	if (settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool())
-	{
-			//When zoom out beyond of folio is active,
-			//we always adjust the scene rect to be 1/3 bigger than the wiewport
-		QRectF vpbr = mapToScene(viewport()->rect()).boundingRect();
-		vpbr.adjust(0, 0, vpbr.width()/3, vpbr.height()/3);
-		scene_rect = scene_rect.united(vpbr);
-	}
+		//The scene rect is always 1/3 bigger than the viewport, so the
+		//view can be zoomed out and scrolled beyond the sheet
+	QRectF vpbr = mapToScene(viewport()->rect()).boundingRect();
+	vpbr.adjust(0, 0, vpbr.width()/3, vpbr.height()/3);
+	scene_rect = scene_rect.united(vpbr);
 	setSceneRect(scene_rect);
 }
 

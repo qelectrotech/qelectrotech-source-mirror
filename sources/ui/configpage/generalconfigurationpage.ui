@@ -57,13 +57,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="m_zoom_out_beyond_folio">
-         <property name="text">
-          <string>Allow zooming beyond the sheet</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QCheckBox" name="m_conductor_properties_panel">
          <property name="text">
           <string>Show the properties of a selected conductor in the Selection properties panel</string>
@@ -1637,7 +1630,6 @@
  <tabstops>
   <tabstop>m_use_system_color_cb</tabstop>
   <tabstop>m_use_gesture_trackpad</tabstop>
-  <tabstop>m_zoom_out_beyond_folio</tabstop>
   <tabstop>m_conductor_properties_panel</tabstop>
   <tabstop>m_wiring_rules_cb</tabstop>
   <tabstop>m_wiring_max_wires_sb</tabstop>

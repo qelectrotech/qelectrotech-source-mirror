@@ -326,12 +326,9 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	p -> drawRect(r);
 
 	QSettings settings;
-	QRectF rect = settings.value(
-				QStringLiteral("diagrameditor/zoom-out-beyond-of-folio"),
-				false).toBool() ? r
-						: border_and_titleblock
-						  .insideBorderRect()
-						  .intersected(r);
+		//The grid covers the whole workspace, not only the sheet: the
+		//sheet's own border is drawn on it
+	const QRectF rect = r;
 
 	if (draw_grid_) {
 			/* Draw the points of the grid
