@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -101,6 +101,10 @@ m_project_properties_handler{this}
 		//they say nothing: the drawing is then the one it always was. Every
 		//project saved after that keeps its own choice (readTerminalLabelSplitXml())
 	setTerminalLabelSplit(settings.value(QStringLiteral("diagrameditor/defaultterminallabelling"), false).toBool());
+
+		//Read chained reports default from global settings (enabled for newly created projects when setting is on)
+	m_chained_reports = settings.value(QStringLiteral("project/enable-chained-reports"), false).toBool();
+	m_has_chained_reports_attribute = true;
 
 	int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
 	for (int i = 0; i < size; ++i) {
@@ -2447,6 +2451,25 @@ void QETProject::autoFolioNumberingSelectedFolios(int from,
 }
 
 /**
+	@brief QETProject::Origin
+	@return specifies the origin for the sheet
+*/
+ProjectOrigin::Mode QETProject::Origin() const { return m_origin; }
+
+/**
+	@brief QETProject::setOrigin
+	Specifies which corner is used as the origin (coordinate system starting point)
+	and redraws all project sheets.
+	@param mode
+*/
+void QETProject::setOrigin(ProjectOrigin::Mode mode)
+{
+	if (mode == m_origin) { return; }
+	m_origin = mode;
+	for (Diagram* diagram : diagrams()) { diagram->update(); }
+}
+
+/**
 	@brief QETProject::toXml
 	@return un document XML representant le projet
 */
@@ -2595,6 +2618,8 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeSymbolTextsXml(project_root);
 	writeTerminalLabelSplitXml(project_root);
 	writeWiringRulesXml(project_root);
+	writeChainedReportsXml(project_root);
+	writeOriginXml(project_root);
 
 	// Properties for news diagrams
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
@@ -3567,6 +3592,8 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readSymbolTextsXml(xml_project);
 	readTerminalLabelSplitXml(xml_project);
 	readWiringRulesXml(xml_project);
+	readChainedReportsXml(xml_project);
+	readOriginXml(xml_project);
 
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
@@ -3636,6 +3663,10 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//wire again. Run the pass once more now that the links exist:
 		//it recomputes everything from the project as it now stands.
 	CableManager::refreshLabels(this);
+
+	if (m_chained_reports) {
+		autoLinkReportElements();
+	}
 
 	m_data_base.blockSignals(false);
 	m_data_base.setUpdateBlocked(false);
@@ -3913,6 +3944,22 @@ void QETProject::readWireHopsXml(QDomDocument &xml_project)
 	m_wire_hops = crossings.isNull()
 			? WireHops::Mode::None
 			: WireHops::fromString(crossings.attribute(QStringLiteral("hop")));
+}
+
+/**
+	@brief QETProject::readOriginXml
+	Read the <style> element and "origin" attribute of the project, if any.
+	A project without it draws origin top-left.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readOriginXml(QDomDocument& xml_project)
+{
+	const QDomElement style =
+		xml_project.documentElement().firstChildElement(
+			QStringLiteral("style"));
+	m_origin = style.isNull() 
+		    ? ProjectOrigin::Mode::TopLeft 
+			: ProjectOrigin::fromString(style.attribute(QStringLiteral("origin")));
 }
 
 /**
@@ -4253,6 +4300,27 @@ void QETProject::writeWireHopsXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::writeOriginXml
+	Export information regarding which corner is used as the origin (the reference
+	point for the coordinate system) as a child `<style>` element within
+	`xml_element`. This data is recorded only if a setting other than "Top-left" is
+	selected; consequently, for projects where this feature has never been used,
+	nothing will change.
+*/
+void QETProject::writeOriginXml(QDomElement& xml_element)
+{
+	if (m_origin == ProjectOrigin::Mode::TopLeft){
+		return; 
+	}
+	QDomElement style = xml_element.ownerDocument().createElement(
+		QStringLiteral("style"));
+	style.setAttribute(
+		QStringLiteral("origin"),
+		ProjectOrigin::toString(m_origin));
+	xml_element.appendChild(style);
+}
+
+/**
 	@brief QETProject::writeSymbolTextsXml
 	Export whether the texts of turned symbols stay horizontal, as a
 	<symbol_texts> child of \a xml_element. Written only when on, so a
@@ -4294,6 +4362,63 @@ void QETProject::writeTerminalLabelSplitXml(QDomElement &xml_element)
 void QETProject::writeWiringRulesXml(QDomElement &xml_element)
 {
 	WiringRules::toXml(m_wiring_rules, xml_element);
+}
+
+/**
+	@brief QETProject::readChainedReportsXml
+	Read the <chained_reports> element of the project, if any.
+	A project without it was saved before this feature existed.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readChainedReportsXml(QDomDocument &xml_project)
+{
+	const QDomElement cr_elmt = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("chained_reports"));
+	if (!cr_elmt.isNull()) {
+		m_has_chained_reports_attribute = true;
+		m_chained_reports = (cr_elmt.attribute(QStringLiteral("enabled"), QStringLiteral("false")) == QLatin1String("true"));
+	} else {
+		m_has_chained_reports_attribute = false;
+		m_chained_reports = false;
+	}
+}
+
+/**
+	@brief QETProject::writeChainedReportsXml
+	Save the chained reports setting into the project XML.
+	@param xml_element : the root project element
+*/
+void QETProject::writeChainedReportsXml(QDomElement &xml_element)
+{
+	if (!m_has_chained_reports_attribute && !m_chained_reports) {
+		return;
+	}
+	QDomElement cr_elmt = xml_element.ownerDocument()
+			.createElement(QStringLiteral("chained_reports"));
+	cr_elmt.setAttribute(QStringLiteral("enabled"), m_chained_reports ? QStringLiteral("true") : QStringLiteral("false"));
+	xml_element.appendChild(cr_elmt);
+}
+
+bool QETProject::chainedReports() const
+{
+	return m_chained_reports;
+}
+
+void QETProject::setChainedReports(bool enable)
+{
+	if (enable == m_chained_reports && m_has_chained_reports_attribute) {
+		return;
+	}
+	m_chained_reports = enable;
+	m_has_chained_reports_attribute = true;
+	if (m_chained_reports) {
+		autoLinkReportElements();
+	}
+}
+
+bool QETProject::hasChainedReportsAttribute() const
+{
+	return m_has_chained_reports_attribute;
 }
 
 /**
@@ -4897,4 +5022,125 @@ void QETProject::removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection 
 */
 void QETProject::usedTitleBlockTemplateChanged(const QString &template_name) {
 	emit diagramUsedTemplate(embeddedTitleBlockTemplatesCollection(), template_name);
+}
+
+#include "elementprovider.h"
+#include "qetgraphicsitem/reportelement.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
+
+void QETProject::scheduleAutoLink()
+{
+	if (!m_chained_reports || m_pending_auto_link) {
+		return;
+	}
+	m_pending_auto_link = true;
+	QTimer::singleShot(0, this, [this]() {
+		m_pending_auto_link = false;
+		autoLinkReportElements();
+	});
+}
+
+void QETProject::autoLinkReportElements()
+{
+	if (!m_chained_reports) {
+		return;
+	}
+
+	ElementProvider ep(this);
+	const QVector<QPointer<Element>> all_report_elmts = ep.find(ElementData::AllReport);
+
+	QHash<QString, QList<ReportElement*>> freeReportsByLabel;
+	QList<ReportElement*> all_reports;
+
+	for (const auto &elmt_ptr : all_report_elmts) {
+		if (!elmt_ptr) continue;
+		ReportElement *report = dynamic_cast<ReportElement*>(elmt_ptr.data());
+		if (!report) continue;
+
+		all_reports.append(report);
+
+		// Only auto-link reports that are currently unlinked (isFree() == true)
+		// and have a non-empty label! Never overwrite existing or manual links.
+		if (report->isFree()) {
+			QString label = report->elementInformations().value(QStringLiteral("label")).toString().trimmed();
+			if (!label.isEmpty()) {
+				freeReportsByLabel[label].append(report);
+			}
+		}
+	}
+
+	bool linked_any = false;
+
+	for (auto it = freeReportsByLabel.begin(); it != freeReportsByLabel.end(); ++it) {
+		QList<ReportElement*> &reports = it.value();
+		if (reports.size() < 2) continue;
+
+		std::sort(reports.begin(), reports.end(), [this](ReportElement *a, ReportElement *b) {
+			int idxA = m_diagrams_list.indexOf(a->diagram());
+			int idxB = m_diagrams_list.indexOf(b->diagram());
+			if (idxA != idxB) return idxA < idxB;
+			if (a->scenePos().x() != b->scenePos().x()) return a->scenePos().x() < b->scenePos().x();
+			return a->scenePos().y() < b->scenePos().y();
+		});
+
+		QList<ReportElement*> unmatched_next;
+		QList<ReportElement*> unmatched_prev;
+
+		auto takeOnOtherDiagram = [](QList<ReportElement*> &list, Diagram *diagram) -> ReportElement* {
+			for (int i = 0; i < list.size(); ++i) {
+				if (list.at(i)->diagram() != diagram) {
+					return list.takeAt(i);
+				}
+			}
+			return nullptr;
+		};
+
+		auto linkPair = [&linked_any](ReportElement *next_rep, ReportElement *prev_rep) {
+			if (next_rep->isFree() && prev_rep->isFree()) {
+				next_rep->linkToElement(prev_rep);
+				linked_any = true;
+			}
+		};
+
+		for (ReportElement *report : reports) {
+			if (report->linkType() == Element::NextReport) {
+				unmatched_next.append(report);
+			} else if (report->linkType() == Element::PreviousReport) {
+				if (ReportElement *next_rep = takeOnOtherDiagram(unmatched_next, report->diagram())) {
+					linkPair(next_rep, report);
+				} else {
+					unmatched_prev.append(report);
+				}
+			}
+		}
+
+		// Backward cross-references (e.g., Folio 5 to Folio 2)
+		for (int i = 0; i < unmatched_next.size(); ) {
+			ReportElement *next_rep = unmatched_next.at(i);
+			if (ReportElement *prev_rep = takeOnOtherDiagram(unmatched_prev, next_rep->diagram())) {
+				linkPair(next_rep, prev_rep);
+				unmatched_next.removeAt(i);
+			} else {
+				++i;
+			}
+		}
+		// NOTE: Never pair on the same diagram! Any remaining reports stay unlinked.
+	}
+
+	if (linked_any) {
+		setModified(true);
+	}
+
+	// Make sure every report shows the text matching its current link state.
+	for (ReportElement *report : std::as_const(all_reports)) {
+		for (DynamicElementTextItem *deti : report->dynamicTextItems()) {
+			deti->refreshReportText();
+		}
+		for (ElementTextItemGroup *group : report->textGroups()) {
+			for (DynamicElementTextItem *deti : group->texts()) {
+				deti->refreshReportText();
+			}
+		}
+	}
 }

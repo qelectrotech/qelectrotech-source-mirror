@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -175,6 +175,8 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("uuid", m_uuid.toString());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
+	if (m_text_height > 0)
+		root_element.setAttribute(QStringLiteral("text_height"), QString::number(m_text_height));
 	root_element.setAttribute("font", QETUtils::fontToString(font()));
 	root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
 	root_element.setAttribute("rotation_point_center", m_rotation_point_center ? "true" : "false");
@@ -262,6 +264,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
 	setFrame(dom_elmt.attribute("frame", "false") == "true"? true : false);
 	setTextWidth(dom_elmt.attribute("text_width", QString::number(-1)).toDouble());
+	setTextHeight(dom_elmt.attribute(QStringLiteral("text_height"), QStringLiteral("-1")).toDouble());
 	
 		//Text from
 	QMetaEnum me = textFromMetaEnum();
@@ -585,13 +588,15 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 	{
 		if(old_info_name != info_name)
 		{
-			if(old_info_name == "label") {
+			if(old_info_name == "label" || old_info_name == "cross_ref") {
 				removeConnectionForReportFormula(m_report_formula);
 			}
-			if(info_name == "label")
+			if(info_name == "label" || info_name == "cross_ref")
 			{
 				setConnectionForReportFormula(m_report_formula);
-				updateReportText();
+				if (m_parent_element.data()->state() != QET::GIBuildingFromXml && m_parent_element.data()->state() != QET::GILoadingFromXml) {
+					updateReportText();
+				}
 			}
 			else
 				conductorPropertiesChanged();
@@ -660,10 +665,11 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 			 * but for that we must do several checks and because I'm lazy,
 			 * in every case I remove connection and set it after ;)
 			 */
-		if(old_composite_text.contains("%{label}"))
+		if(old_composite_text.contains("%{label}") || old_composite_text.contains("%{cross_ref}"))
 			removeConnectionForReportFormula(m_report_formula);
-		if(m_composite_text.contains("%{label}"))
+		if(m_composite_text.contains("%{label}") || m_composite_text.contains("%{cross_ref}")) {
 			setConnectionForReportFormula(m_report_formula);
+		}
 		
 		updateReportText();
 	}
@@ -867,7 +873,15 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 	if (m_jump_highlight)
 		painter->fillRect(boundingRect(), QColor(69, 137, 255, 90));
 
-	DiagramTextItem::paint(painter, option, widget);
+		//A fixed height cuts off the lines that do not fit
+	if (m_text_height > 0) {
+		painter->save();
+		painter->setClipRect(boundingRect(), Qt::IntersectClip);
+		DiagramTextItem::paint(painter, option, widget);
+		painter->restore();
+	} else {
+		DiagramTextItem::paint(painter, option, widget);
+	}
 
 	if (m_frame)
 	{
@@ -1360,8 +1374,8 @@ void DynamicElementTextItem::reportChanged()
 	
 	bool text_have_label = false;
 	
-	if((textFrom() == ElementInfo && m_info_name == "label") ||
-	   (textFrom() == CompositeText && m_composite_text.contains("%{label}")))
+	if((textFrom() == ElementInfo && (m_info_name == "label" || m_info_name == "cross_ref")) ||
+	   (textFrom() == CompositeText && (m_composite_text.contains("%{label}") || m_composite_text.contains("%{cross_ref}"))))
 		text_have_label = true;
 	
 	if(text_have_label)
@@ -1389,7 +1403,7 @@ void DynamicElementTextItem::reportFormulaChanged()
 {
 	m_report_formula = parentElement()->diagram()->project()->defaultReportProperties();
 	
-	if(m_text_from == ElementInfo && m_info_name == "label")
+	if(m_text_from == ElementInfo && (m_info_name == "label" || m_info_name == "cross_ref"))
 		updateReportText();
 }
 
@@ -1520,22 +1534,71 @@ void DynamicElementTextItem::updateReportFormulaConnection()
 */
 void DynamicElementTextItem::updateReportText()
 {
-	if(!(m_parent_element.data()->linkType() & Element::AllReport) &&
-		m_parent_element.data()->linkType() != Element::ConductorDefinition)
+	if (!m_parent_element ||
+		(!(m_parent_element.data()->linkType() & Element::AllReport) &&
+		 m_parent_element.data()->linkType() != Element::ConductorDefinition))
 		return;
-	
-	if (m_text_from == ElementInfo && m_info_name == "label")
-	{
-		if(m_other_report)
+
+	bool chained = false;
+	if (m_parent_element && m_parent_element.data()->diagram() && m_parent_element.data()->diagram()->project()) {
+		chained = m_parent_element.data()->diagram()->project()->chainedReports();
+	}
+
+	if (!chained) {
+		// When chained reports setting is OFF: 100% identical to upstream master behavior
+		if (m_text_from == ElementInfo && m_info_name == "label")
 		{
-			Element *elmt = m_other_report.data();
-			QString label = m_report_formula;
-			label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
-			setPlainText(label);
+			if(m_other_report)
+			{
+				Element *elmt = m_other_report.data();
+				QString label = m_report_formula;
+				label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+				setPlainText(label);
+			}
+			else
+			{
+				setPlainText("");
+			}
 		}
-		else
-		{
-			setPlainText("");
+		else if (m_text_from == CompositeText) {
+			setPlainText(reportReplacedCompositeText());
+		}
+		return;
+	}
+
+	// When chained reports setting is ON:
+	if (m_text_from == ElementInfo)
+	{
+		if (m_info_name == "cross_ref") {
+			if (m_other_report) {
+				Element *elmt = m_other_report.data();
+				QString xref_str = m_report_formula;
+				xref_str = autonum::AssignVariables::formulaToLabel(xref_str, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+				setPlainText(xref_str);
+			} else {
+				setPlainText("");
+			}
+		} else if (m_info_name == "label") {
+			if (m_other_report) {
+				Element *elmt = m_other_report.data();
+				QString xref_str = m_report_formula;
+				xref_str = autonum::AssignVariables::formulaToLabel(xref_str, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+				QString lbl = m_parent_element ? m_parent_element.data()->actualLabel() : "";
+				if (!lbl.isEmpty() && !xref_str.isEmpty()) {
+					if (m_parent_element && m_parent_element.data()->linkType() == Element::PreviousReport) {
+						setPlainText(xref_str + " / " + lbl);
+					} else {
+						setPlainText(lbl + " / " + xref_str);
+					}
+				} else if (!lbl.isEmpty()) {
+					setPlainText(lbl);
+				} else {
+					setPlainText(xref_str);
+				}
+			} else {
+				QString lbl = m_parent_element ? m_parent_element.data()->actualLabel() : "";
+				setPlainText(lbl);
+			}
 		}
 	}
 	else if (m_text_from == CompositeText) {
@@ -2067,6 +2130,60 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 	m_text_width = width;
 	fitAutoTextWidth();
 	emit textWidthChanged(width);
+}
+
+/**
+	@brief DynamicElementTextItem::setTextHeight
+	@param height : the height of the text field, -1 to follow the text.
+	With a height set, the field keeps it whatever is written: the lines
+	that do not fit are not drawn, to shorten a text where room is short.
+*/
+void DynamicElementTextItem::setTextHeight(qreal height)
+{
+	if (height <= 0)
+		height = -1;
+	if (qFuzzyCompare(height + 2, m_text_height + 2))
+		return;
+	prepareGeometryChange();
+	m_text_height = height;
+	update();
+	emit textHeightChanged(height);
+}
+
+/**
+	@brief DynamicElementTextItem::boundingRect
+	@return the text's own box, cut to the height set by the user
+*/
+QRectF DynamicElementTextItem::boundingRect() const
+{
+	QRectF rect = DiagramTextItem::boundingRect();
+	if (m_text_height > 0)
+		rect.setHeight(m_text_height);
+	return rect;
+}
+
+/**
+	@brief DynamicElementTextItem::shape
+	QGraphicsTextItem answers shape() and contains() from its own box, not
+	from boundingRect(): cut both to the height set by the user, so that
+	the lines cut off take no clicks either.
+*/
+QPainterPath DynamicElementTextItem::shape() const
+{
+	QPainterPath path = DiagramTextItem::shape();
+	if (m_text_height > 0) {
+		QPainterPath cut;
+		cut.addRect(boundingRect());
+		path = path.intersected(cut);
+	}
+	return path;
+}
+
+bool DynamicElementTextItem::contains(const QPointF &point) const
+{
+	if (m_text_height > 0 && !boundingRect().contains(point))
+		return false;
+	return DiagramTextItem::contains(point);
 }
 
 /**

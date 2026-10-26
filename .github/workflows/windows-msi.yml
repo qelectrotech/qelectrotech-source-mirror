@@ -425,11 +425,31 @@ jobs:
           Write-Host "Signed  : ${{ steps.sign.outcome == 'success' }}"
 
   # ---------------------------------------------------------------------------
+  # Linux AppImage, built in parallel with the MSI, only when the Windows
+  # CI/CD runs (same condition as build-msi). See linux-appimage.yml and
+  # build-aux/linux/appimage/appimage.readme.
+  # `with:` cannot read the env context: nightly_tag repeats NIGHTLY_TAG.
+  # ---------------------------------------------------------------------------
+  build-appimage:
+    name: Linux AppImage
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+    uses: ./.github/workflows/linux-appimage.yml
+    with:
+      ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+      nightly_tag: nightly-qt6
+    permissions:
+      contents: write
+
+  # ---------------------------------------------------------------------------
   # Job 2 : Génère et déploie la page GitHub Pages une fois le MSI publié,
   # pour que toutes les URLs soient connues.
+  # It also waits for the AppImage, so the page lists it; an AppImage failure
+  # does not block the page (the condition below only looks at build-msi).
   # ---------------------------------------------------------------------------
   deploy-pages:
-    needs: build-msi
+    needs: [build-msi, build-appimage]
     runs-on: ubuntu-latest
     # Regenerate the page whenever the MSI job actually ran (success OR
     # packaging/signing failure) — not only on full success.
@@ -472,6 +492,8 @@ jobs:
           EXE_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.exe$' | head -1 || echo "")
           ZIP_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.zip$' | head -1 || echo "")
           MSI_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.msi$' | head -1 || echo "")
+          # The Linux AppImage name carries no "qt6": only Qt6 builds publish one.
+          APPIMAGE_NAME=$(echo "$ASSETS" | grep '\.AppImage$' | head -1 || echo "")
 
           if [ -z "$EXE_NAME" ] || [ -z "$ZIP_NAME" ]; then
             echo "::error::No Qt6 .exe/.zip found on release '$NIGHTLY_TAG' — refusing to publish a page with dead links."
@@ -483,6 +505,8 @@ jobs:
           PORTABLE_URL="$BASE/$ZIP_NAME"
           MSI_URL=""
           [ -n "$MSI_NAME" ] && MSI_URL="$BASE/$MSI_NAME"
+          APPIMAGE_URL=""
+          [ -n "$APPIMAGE_NAME" ] && APPIMAGE_URL="$BASE/$APPIMAGE_NAME"
 
           SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
           SHORT="${SHA:0:7}"
@@ -492,6 +516,7 @@ jobs:
 
           export DATE SHORT REPO SHA RUN_URL RUN_NUMBER
           export INSTALLER_URL PORTABLE_URL MSI_URL
+          export APPIMAGE_URL APPIMAGE_NAME
           export NIGHTLY_TAG
 
           python3 source/build-aux/generate-page.py

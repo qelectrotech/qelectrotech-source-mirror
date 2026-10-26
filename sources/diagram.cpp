@@ -351,42 +351,46 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
 		const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
-		qreal limit_x = rect.x() + rect.width();
-		qreal limit_y = rect.y() + rect.height();
+			//Left out when they would crowd, whatever the grid step
+		const qreal zoom_factor = p->transform().m11();
+		if (FolioGrid::dotsShown(xGrid, yGrid, zoom_factor,
+					 FolioGrid::minDotSpacing(settings.value(FolioGrid::min_dot_spacing_key))))
+		{
+			qreal limit_x = rect.x() + rect.width();
+			qreal limit_y = rect.y() + rect.height();
 
-		int g_x = (int)ceil(rect.x());
-		while (g_x % xGrid) ++ g_x;
-		int g_y = (int)ceil(rect.y());
-		while (g_y % yGrid) ++ g_y;
+			int g_x = (int)ceil(rect.x());
+			while (g_x % xGrid) ++ g_x;
+			int g_y = (int)ceil(rect.y());
+			while (g_y % yGrid) ++ g_y;
 
-		QPolygon points;
-		for (int gx = g_x ; gx < limit_x ; gx += xGrid) {
-			for (int gy = g_y ; gy < limit_y ; gy += yGrid) {
-				points << QPoint(gx, gy);
-			}
-		}
-
-		qreal zoom_factor = p->transform().m11();
-		int minWidthPen = settings.value(QStringLiteral("diagrameditor/grid_pointsize_min"), 1).toInt();
-		int maxWidthPen = settings.value(QStringLiteral("diagrameditor/grid_pointsize_max"), 1).toInt();
-		pen.setWidth(minWidthPen);
-		if (minWidthPen != maxWidthPen) {
-			qreal stepPen  = (maxWidthPen - minWidthPen) / (qreal)maxWidthPen;
-			qreal stepZoom = (5.0 - 1.0) / maxWidthPen;
-			for (int n=0; n<maxWidthPen; n++) {
-				if ((zoom_factor > (1.0 + n * stepZoom)) && (zoom_factor <= (1.0 + (n+1) * stepZoom))) {
-					int widthPen = minWidthPen + qRound(n * stepPen);
-					pen.setWidth(widthPen);
+			QPolygon points;
+			for (int gx = g_x ; gx < limit_x ; gx += xGrid) {
+				for (int gy = g_y ; gy < limit_y ; gy += yGrid) {
+					points << QPoint(gx, gy);
 				}
 			}
-			if		(zoom_factor <= 1.0)
-						pen.setWidth(minWidthPen);
-			else if (zoom_factor > (1.0 + stepZoom * maxWidthPen))
-						pen.setWidth(maxWidthPen);
+
+			int minWidthPen = settings.value(QStringLiteral("diagrameditor/grid_pointsize_min"), 1).toInt();
+			int maxWidthPen = settings.value(QStringLiteral("diagrameditor/grid_pointsize_max"), 1).toInt();
+			pen.setWidth(minWidthPen);
+			if (minWidthPen != maxWidthPen) {
+				qreal stepPen  = (maxWidthPen - minWidthPen) / (qreal)maxWidthPen;
+				qreal stepZoom = (5.0 - 1.0) / maxWidthPen;
+				for (int n=0; n<maxWidthPen; n++) {
+					if ((zoom_factor > (1.0 + n * stepZoom)) && (zoom_factor <= (1.0 + (n+1) * stepZoom))) {
+						int widthPen = minWidthPen + qRound(n * stepPen);
+						pen.setWidth(widthPen);
+					}
+				}
+				if		(zoom_factor <= 1.0)
+							pen.setWidth(minWidthPen);
+				else if (zoom_factor > (1.0 + stepZoom * maxWidthPen))
+							pen.setWidth(maxWidthPen);
+			}
+			p -> setPen(pen);
+			p -> drawPoints(points);
 		}
-		p -> setPen(pen);
-		if (zoom_factor > 0.5) // no grid below ... !
-				p -> drawPoints(points);
 	}
 
 	if (draw_guides_) {
@@ -2697,8 +2701,11 @@ void Diagram::addItem(QGraphicsItem *item)
 	{
 		case Element::Type:
 		{
-			m_project->dataBase()->addElement(
-						static_cast<Element *>(item));
+			Element *elmt = static_cast<Element *>(item);
+			m_project->dataBase()->addElement(elmt);
+			if ((elmt->linkType() & Element::AllReport) && m_project->chainedReports()) {
+				m_project->scheduleAutoLink();
+			}
 			break;
 		}
 		case Conductor::Type:
@@ -2738,6 +2745,9 @@ void Diagram::removeItem(QGraphicsItem *item)
 			auto elmt = static_cast<Element*>(item);
 			elmt->unlinkAllElements();
 			m_project->dataBase()->removeElement(elmt);
+			if ((elmt->linkType() & Element::AllReport) && m_project->chainedReports()) {
+				m_project->scheduleAutoLink();
+			}
 			break;
 		}
 		case Conductor::Type:
@@ -3603,7 +3613,7 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
 	//Return a point rounded to the nearest pixel
-	if (QApplication::keyboardModifiers().testFlag(Qt::ControlModifier))
+	if (!gridSnap() || QApplication::keyboardModifiers().testFlag(Qt::ControlModifier))
 	{
 		int p_x = qRound(p.x());
 		int p_y = qRound(p.y());
@@ -3616,10 +3626,30 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	return (QPointF(p_x, p_y));
 }
 
+namespace {
+		/// -1 until read from the settings
+	int s_grid_snap = -1;
+	const QString grid_snap_key = QStringLiteral("diagrameditor/grid_snap");
+}
+
+bool Diagram::gridSnap()
+{
+	if (s_grid_snap < 0)
+		s_grid_snap = QSettings().value(grid_snap_key, true).toBool() ? 1 : 0;
+	return s_grid_snap == 1;
+}
+
+void Diagram::setGridSnap(bool snap)
+{
+	s_grid_snap = snap ? 1 : 0;
+	QSettings().setValue(grid_snap_key, snap);
+}
+
 /**
 	@brief Diagram::snapToTextGrid
 	Return the nearest point of p on the text grid, see TextGrid.
-	Ctrl held rounds to the nearest pixel instead, as snapToGrid() does.
+	Ctrl held, or the snap switched off, rounds to the nearest pixel
+	instead, as snapToGrid() does.
 	@param p point to find the nearest snapped point
 	@return
 */
@@ -3627,7 +3657,7 @@ QPointF Diagram::snapToTextGrid(const QPointF &p)
 {
 	QSettings settings;
 	const qreal divisor =
-		QApplication::keyboardModifiers().testFlag(Qt::ControlModifier)
+		!gridSnap() || QApplication::keyboardModifiers().testFlag(Qt::ControlModifier)
 			? 0
 			: settings.value(TextGrid::settings_key, 1).toReal();
 

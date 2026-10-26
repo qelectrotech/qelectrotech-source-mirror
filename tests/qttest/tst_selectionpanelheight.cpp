@@ -10,7 +10,9 @@
 // has nothing it can edit, so the other panels get the room (#1566), and gets
 // back the height the user gave it when an element is selected again. Before
 // #1439 it came back at its default height; #1533 kept the height but no
-// longer shrank.
+// longer shrank. Tabbed with another panel, it does not shrink: a tab stack
+// takes the smallest maximum height of its tabs, and the empty panel held
+// the Collections tab at its title bar.
 class tst_selectionpanelheight : public QObject
 {
 	Q_OBJECT
@@ -64,6 +66,68 @@ class tst_selectionpanelheight : public QObject
 				select(element);
 				QCOMPARE(panel->height(), user);
 			}
+		}
+
+		void tabbedStackResizes()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			QVERIFY(editor);
+			editor->resize(1600, 1500);
+			editor->show();
+			QVERIFY(QTest::qWaitForWindowExposed(editor));
+			const QString copy = m_dir.filePath("q.qet");
+			QVERIFY(QFile::copy(QFINDTESTDATA("fixtures/ten_sequential_numbers.qet"), copy));
+			QVERIFY(editor->openAndAddProject(copy, false));
+			Diagram *diagram = editor->currentProjectView()->currentDiagram()->diagram();
+			Element *element = nullptr;
+			for (QGraphicsItem *qgi : diagram->items())
+				if (qgi->type() == Element::Type)
+					element = static_cast<Element *>(qgi);
+			QVERIFY(element);
+			auto panel = editor->findChild<QDockWidget *>("diagram_properties_editor_dock_widget");
+			auto collections = editor->findChild<QDockWidget *>("elements_collection_widget");
+			QVERIFY(panel);
+			QVERIFY(collections);
+
+				// Collections dragged onto the empty panel, as a tab in front
+			element->setSelected(true);
+			QTest::qWait(200);
+			diagram->clearSelection();
+			QTest::qWait(200);
+			QVERIFY2(panel->maximumHeight() < 100, "the panel is not empty");
+			editor->tabifyDockWidget(panel, collections);
+			collections->raise();
+			QTest::qWait(200);
+			QCOMPARE(editor->dockWidgetArea(collections), editor->dockWidgetArea(panel));
+			QVERIFY(editor->tabifiedDockWidgets(panel).contains(collections));
+
+			const int start = collections->height();
+				// Above the minimum height of the element's editor, which
+				// a tab stack keeps while the editor is shown
+			editor->resizeDocks({collections}, {start + 700}, Qt::Vertical);
+			QTest::qWait(200);
+			const int user = collections->height();
+			QVERIFY2(user > start, "the tab stack could not be made taller");
+
+				// Selecting and deselecting leaves the stack alone
+			element->setSelected(true);
+			QTest::qWait(200);
+			diagram->clearSelection();
+			QTest::qWait(200);
+			QCOMPARE(collections->height(), user);
+
+				// Back on its own, the empty panel shrinks again
+			editor->removeDockWidget(collections);
+			editor->addDockWidget(Qt::RightDockWidgetArea, collections);
+			collections->show();
+			QTest::qWait(200);
+			QVERIFY(editor->tabifiedDockWidgets(panel).isEmpty());
+			element->setSelected(true);
+			QTest::qWait(200);
+			const int selected = panel->height();
+			diagram->clearSelection();
+			QTest::qWait(200);
+			QVERIFY2(panel->height() < selected / 4, "the empty panel did not shrink once untabbed");
 		}
 };
 

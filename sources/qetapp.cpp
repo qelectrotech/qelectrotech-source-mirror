@@ -871,7 +871,11 @@ QString QETApp::commonTitleBlockTemplatesDir()
 	 */
 	return(QCoreApplication::applicationDirPath() + "/titleblocks/");
 #else
-	#ifndef QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
+	/* QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH used to decide
+	 *  this path too, so it still does
+	 */
+	#if !defined(QET_COMMON_TBT_PATH_RELATIVE_TO_BINARY_PATH) \
+		&& !defined(QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH)
 		// the compile-time option represents a usual path
 		// (be it absolute or relative)
 		return(resolveConfiguredDataPath(QUOTE(QET_COMMON_TBT_PATH)));
@@ -1924,9 +1928,15 @@ void QETApp::invertMainWindowVisibility(QWidget *window) {
 	false pour utiliser celles du theme en cours
 */
 void QETApp::useSystemPalette(bool use) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	// Follow the system light/dark setting again (see useCustomPalette()).
+	qApp->styleHints()->unsetColorScheme();
+#endif
 	// The base palette is always initial_palette_ (see initStyle()); the
 	// setting only decides whether the user's style.css is layered on top.
 	qApp->setPalette(initial_palette_);
+	// A custom color may have switched the icon theme; switch it back.
+	applyIconTheme(initial_palette_);
 	if (use) {
 		// Drop any stylesheet previously loaded from style.css: with system
 		// colors requested, the palette set just above is what provides them.
@@ -2018,6 +2028,15 @@ void QETApp::useCustomPalette(const QColor &color) {
 	p.setColor(QPalette::Disabled, QPalette::Text,       disabled_text);
 	p.setColor(QPalette::Disabled, QPalette::ButtonText, disabled_text);
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	// Tell the style whether the chosen color is light or dark. Some
+	// styles draw part of their text from the system color scheme, not
+	// from the palette: the Windows 11 style keeps white menu bar and
+	// toolbar text on a light custom color when Windows is in dark
+	// mode (issue #1591).
+	qApp->styleHints()->setColorScheme(dark ? Qt::ColorScheme::Dark
+	                                        : Qt::ColorScheme::Light);
+#endif
 	qApp->setPalette(p);
 	qApp->setStyleSheet(QString());
 
@@ -2920,11 +2939,16 @@ void QETApp::initStyle()
 	{
 		if (!QET::Palette::styleIsFusion(qApp->style()))
 			return;
+		QSettings settings;
+		// A custom color keeps its palette whatever the OS does; it also
+		// requests its own color scheme, which lands here too.
+		if (!settings.value("usesystemcolors", true).toBool()
+		    && settings.contains("customapplicationcolor"))
+			return;
 		initial_palette_ = scheme == Qt::ColorScheme::Dark
 		                   ? QET::Palette::fusionDark()
 		                   : QET::Palette::fusionLight();
 		applyIconTheme(initial_palette_);
-		QSettings settings;
 		useSystemPalette(settings.value("usesystemcolors", true).toBool());
 	});
 #endif

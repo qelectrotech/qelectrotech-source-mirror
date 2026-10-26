@@ -20,6 +20,7 @@
 #include "autoNum/numerotationcontext.h"
 #include "borderproperties.h"
 #include "diagramcontext.h"
+#include "projectorigin.h"
 #include "titleblockproperties.h"
 
 #include <QDate>
@@ -159,7 +160,12 @@ class BorderTitleBlock : public QObject
 		bool rowsAreDisplayed() const { const BorderProperties *s = storedBorder(); return(s ? s->display_rows : display_rows_); }
 		/// @return true si la bordure est affichee, false sinon
 		bool borderIsDisplayed() const { return(display_border_); }
-		
+
+		ProjectOrigin::Mode origin() const;
+		void setOrigin(ProjectOrigin::Mode);
+		int columnAt(int) const;
+		int rowAt(int) const;
+
 		// methods to set dimensions
 		void setColumnsCount(int);
 		void setRowsCount(int);
@@ -299,6 +305,7 @@ class BorderTitleBlock : public QObject
 		bool display_columns_ = false;
 		bool display_rows_ = false;
 		bool display_border_ = false;
+		ProjectOrigin::Mode m_origin = ProjectOrigin::Mode::TopLeft;
 		TitleBlockTemplateRenderer *m_titleblock_template_renderer;
 		Diagram *m_owner_folio = nullptr;
 		TitleBlockProperties current() const;

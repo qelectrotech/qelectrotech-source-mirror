@@ -20,6 +20,7 @@
 #include "../../scripting/assistantinfo.h"
 
 #include "../../qetapp.h"
+#include "../../diagramview.h"
 #include "../../qeticons.h"
 #include "ui_generalconfigurationpage.h"
 #include "../../materiallist/materiallist.h"
@@ -28,6 +29,7 @@
 #include "../../utils/qetutils.h"
 #include "../../utils/previousversions.h"
 #include "../../qetmessagebox.h"
+#include "../../foliogrid.h"
 #include "../../textgrid.h"
 #include "../../wiringrules.h"
 #include "../wiringruleswarning.h"
@@ -109,6 +111,10 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	}
 
 	ui->grid_startup_cb->setChecked(settings.value("diagrameditor/grid_display_startup", true).toBool());
+	ui->m_grid_min_spacing_sb->setRange(FolioGrid::min_dot_spacing_lowest,
+					      FolioGrid::min_dot_spacing_highest);
+	ui->m_grid_min_spacing_sb->setValue(
+				FolioGrid::minDotSpacing(settings.value(FolioGrid::min_dot_spacing_key)));
 	ui->guides_startup_cb->setChecked(settings.value("diagrameditor/guides_display_startup", false).toBool());
 		//Stored as "inserts" but presented as "edits", so the default (insert)
 		//is the unchecked state -- a preference reads better as an opt-out.
@@ -116,6 +122,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_collection_search_flat_cb->setChecked(settings.value("elementscollection/search-flat-list", true).toBool());
 	ui->m_context_toolbar_cb->setChecked(settings.value("diagrameditor/context_toolbar", true).toBool());
 	ui->m_mouse_gestures_cb->setChecked(settings.value("diagrameditor/mouse_gestures", true).toBool());
+	ui->m_pointer_aids_cb->setChecked(DiagramView::pointerAids());
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
 	for (const qreal divisor : TextGrid::divisors)
@@ -164,6 +171,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
 	ui->m_autonumber_pasted->setChecked(settings.value("diagramcommands/autonumber-pasted-elements", true).toBool());
+	ui->m_enable_chained_reports->setChecked(settings.value("project/enable-chained-reports", false).toBool());
 	ui->m_enable_scripting->setChecked(QetSettings::scriptingEnabled());
 #ifdef QET_HAS_SCRIPTING
 	if (QetSettings::scriptingForcedByEnvironment()) {
@@ -380,6 +388,7 @@ void GeneralConfigurationPage::applyConf()
 		//DIAGRAM COMMAND
 	settings.setValue("diagramcommands/erase-label-on-copy", ui->m_save_label_paste->isChecked());
 	settings.setValue("diagramcommands/autonumber-pasted-elements", ui->m_autonumber_pasted->isChecked());
+	settings.setValue("project/enable-chained-reports", ui->m_enable_chained_reports->isChecked());
 
 		//SCRIPTING
 		//Left alone while the environment forces it on: the box is disabled
@@ -421,11 +430,13 @@ void GeneralConfigurationPage::applyConf()
 	PreviousVersions::setCount(ui->m_previous_versions_sb->value());
 
 	settings.setValue("diagrameditor/grid_display_startup", ui->grid_startup_cb->isChecked());
+	settings.setValue(FolioGrid::min_dot_spacing_key, ui->m_grid_min_spacing_sb->value());
 	settings.setValue("diagrameditor/guides_display_startup", ui->guides_startup_cb->isChecked());
 	settings.setValue("elementscollection/double-click-inserts", !ui->m_collection_dblclick_edits->isChecked());
 	settings.setValue("elementscollection/search-flat-list", ui->m_collection_search_flat_cb->isChecked());
 	settings.setValue("diagrameditor/context_toolbar", ui->m_context_toolbar_cb->isChecked());
 	settings.setValue("diagrameditor/mouse_gestures", ui->m_mouse_gestures_cb->isChecked());
+	DiagramView::setPointerAids(ui->m_pointer_aids_cb->isChecked());
 		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());

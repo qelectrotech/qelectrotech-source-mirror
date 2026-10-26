@@ -21,6 +21,7 @@
 #include <QImage>
 #include <QPainter>
 #include <QPixmap>
+#include <QStyleHints>
 #include <QStyleOption>
 #include <QWidget>
 
@@ -137,6 +138,24 @@ QIcon QETStyle::menuIcon(const QIcon &icon, const QPalette &palette, int size, q
 }
 
 /**
+	@brief QETStyle::hasMenuHighlightBar
+	False for the Windows 11 style outside high contrast: it marks a
+	highlighted menu item with a pale fill and keeps the normal text
+	color, so an icon in the highlighted-text color would vanish on it
+	(issue #1591).
+*/
+bool QETStyle::hasMenuHighlightBar() const
+{
+	if (objectName().compare(QLatin1String("windows11"), Qt::CaseInsensitive) != 0)
+		return true;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+	return QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Unknown;
+#else
+	return true;
+#endif
+}
+
+/**
 	@brief QETStyle::drawControl
 	CE_MenuItem with an icon and a highlight: swap the icon for menuIcon()
 	so the base style's QIcon::Active request gets an icon that reads on
@@ -147,7 +166,7 @@ void QETStyle::drawControl(ControlElement element,
                            QPainter *painter,
                            const QWidget *widget) const
 {
-	if (element == CE_MenuItem)
+	if (element == CE_MenuItem && hasMenuHighlightBar())
 	{
 		const auto *item = qstyleoption_cast<const QStyleOptionMenuItem *>(option);
 		if (item && !item->icon.isNull()

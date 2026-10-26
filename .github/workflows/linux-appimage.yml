@@ -1,0 +1,191 @@
+name: Linux AppImage
+
+# Builds the Qt6 Linux AppImage with the scripts of build-aux/linux/appimage
+# and publishes it on the rolling nightly release.
+#
+# Not triggered on its own: windows-msi.yml calls it, in parallel with the
+# MSI build, so the AppImage is only built when the Windows CI/CD runs, and
+# its deploy-pages job waits for both before regenerating the download page.
+# A manual run is still possible; it updates the release, not the page.
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        description: "Commit to build (default: the triggering commit)"
+        type: string
+        required: false
+        default: ""
+      nightly_tag:
+        description: "Release receiving the AppImage"
+        type: string
+        required: false
+        default: "nightly-qt6"
+    outputs:
+      appimage_name:
+        description: "File name of the published AppImage (empty if none)"
+        value: ${{ jobs.build-appimage.outputs.appimage_name }}
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Commit or branch to build (empty: master)"
+        required: false
+        default: ""
+      nightly_tag:
+        description: "Release receiving the AppImage"
+        required: false
+        default: "nightly-qt6"
+
+jobs:
+  build-appimage:
+    name: Build AppImage (Qt6, x86_64)
+    # The AppImage only runs on systems with a glibc at least as recent as
+    # the build host's: keep this in line with build-aux/linux/appimage
+    # (Ubuntu 24.04, glibc 2.39). Not ubuntu-latest, which moves.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+
+    permissions:
+      contents: write
+
+    env:
+      NIGHTLY_TAG: ${{ inputs.nightly_tag || 'nightly-qt6' }}
+      SCRIPTS_DIR: build-aux/linux/appimage
+
+    outputs:
+      appimage_name: ${{ steps.result.outputs.appimage_name }}
+
+    steps:
+      # ----------------------------------------------------------------
+      # 1. Checkout
+      #
+      #    fetch-depth 0: the revision number of the AppImage name is
+      #    git rev-list HEAD --count + 473, as for the other packagings.
+      #    lfs false: the LFS objects are not needed to build, and each
+      #    run would otherwise use LFS bandwidth (see issue #975).
+      # ----------------------------------------------------------------
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.ref || github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
+          submodules: recursive
+          lfs: false
+
+      # ----------------------------------------------------------------
+      # 2. Versions and paths from config.sh, for the cache key
+      # ----------------------------------------------------------------
+      - name: Read build configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$SCRIPTS_DIR/config.sh"
+          {
+            echo "QT_VERSION=$QT_VERSION"
+            echo "KF_VERSION=$KF_VERSION"
+            echo "QT_ROOT=$QT_ROOT"
+            echo "KF_PREFIX=$KF_PREFIX"
+          } >> "$GITHUB_ENV"
+
+      # ----------------------------------------------------------------
+      # 3. Qt and KDE Frameworks cache
+      #
+      #    Qt (aqtinstall) and the static ECM/KCoreAddons/KWidgetsAddons
+      #    only change with QT_VERSION or KF_VERSION. Restored, they make
+      #    01/02 skip their installation: only QET is built on each run,
+      #    and a download.qt.io or invent.kde.org outage does not matter.
+      # ----------------------------------------------------------------
+      - name: Cache Qt and KDE Frameworks
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ env.QT_ROOT }}
+            ${{ env.KF_PREFIX }}
+          key: appimage-qt${{ env.QT_VERSION }}-kf${{ env.KF_VERSION }}-v1
+
+      # ----------------------------------------------------------------
+      # 4. Build: host packages, QET, AppImage
+      #
+      #    QET_SOURCE_DIR: build this checkout instead of cloning QET.
+      #    CI=true (set by GitHub): no dist-upgrade on the runner.
+      # ----------------------------------------------------------------
+      - name: Prepare the host
+        working-directory: ${{ env.SCRIPTS_DIR }}
+        run: ./01-build-host.sh
+
+      - name: Build QElectroTech
+        working-directory: ${{ env.SCRIPTS_DIR }}
+        env:
+          QET_SOURCE_DIR: ${{ github.workspace }}
+        run: ./02-build-qet.sh
+
+      - name: Build the AppImage
+        working-directory: ${{ env.SCRIPTS_DIR }}
+        run: ./03-build-appimage.sh
+
+      - name: Find the AppImage
+        id: result
+        shell: bash
+        run: |
+          set -euo pipefail
+          FILE=$(find "$SCRIPTS_DIR/bundle" -maxdepth 1 -name "*.AppImage" | head -n 1)
+          [ -n "$FILE" ] || { echo "::error::No AppImage in $SCRIPTS_DIR/bundle"; exit 1; }
+          echo "appimage_name=$(basename "$FILE")" >> "$GITHUB_OUTPUT"
+          echo "Built: $(basename "$FILE") ($(du -h "$FILE" | cut -f1))"
+
+      - name: Upload AppImage artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: qelectrotech-linux-appimage
+          path: ${{ env.SCRIPTS_DIR }}/bundle/*
+          if-no-files-found: error
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: qelectrotech-linux-appimage-logs
+          path: ${{ env.SCRIPTS_DIR }}/logs/*
+          if-no-files-found: ignore
+
+      # ----------------------------------------------------------------
+      # 5. Publish on the nightly release
+      #
+      #    The previous AppImage is only deleted once a new one exists
+      #    (same lesson as the MSI: a failed build must not leave the
+      #    nightly without any AppImage to download).
+      # ----------------------------------------------------------------
+      - name: Delete old nightly AppImage assets
+        if: steps.result.outputs.appimage_name != ''
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          if ! gh release view "$NIGHTLY_TAG" --repo "$REPO" > /dev/null 2>&1 ; then
+            echo "Release '$NIGHTLY_TAG' does not exist yet: nothing to delete."
+            exit 0
+          fi
+          gh release view "$NIGHTLY_TAG" --repo "$REPO" --json assets \
+             --jq '.assets[].name | select(test("\\.AppImage(-SHA256\\.txt)?$"))' |
+          while read -r NAME ; do
+            echo "Deleting $NAME"
+            gh release delete-asset "$NIGHTLY_TAG" "$NAME" --repo "$REPO" --yes
+          done
+
+      # prerelease / make_latest set explicitly, as in windows-msi.yml: if
+      # this step creates the release, it must not become "Latest".
+      - name: Upload AppImage to nightly release
+        if: steps.result.outputs.appimage_name != ''
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          prerelease: true
+          make_latest: false
+          files: |
+            ${{ env.SCRIPTS_DIR }}/bundle/*.AppImage
+            ${{ env.SCRIPTS_DIR }}/bundle/*.AppImage-SHA256.txt
+          fail_on_unmatched_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
