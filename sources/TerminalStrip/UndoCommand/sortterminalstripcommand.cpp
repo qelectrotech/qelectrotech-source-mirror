@@ -18,6 +18,7 @@
 #include "sortterminalstripcommand.h"
 
 #include "../../bridge/bridgemanager.h"
+#include "../../qetproject.h"
 #include "../terminalstrip.h"
 #include "../physicalterminal.h"
 #include "../realterminal.h"
@@ -35,18 +36,31 @@ SortTerminalStripCommand::SortTerminalStripCommand(TerminalStrip *strip, QUndoCo
 	m_new_order = m_strip->physicalTerminal();
 	sort();
 
-		//The bridges of the drawing come with the sorting: one button
-		//brings the terminals and their bridges in step with the plan,
-		//and one undo takes both back
-	m_bridges_before = m_strip->automaticBridges();
-	m_bridges_after = BridgeManager::bridgesForStrip(m_strip->project(), m_strip);
+		//The bridges of the drawing come with the sorting -- and with
+		//every strip of the project at once: the hand pressing the
+		//button wants the plan in step everywhere, not only where it
+		//happened to stand. One undo takes all of it back.
+	if (m_strip->project()) {
+		const auto strips = m_strip->project()->terminalStrip();
+		for (TerminalStrip *strip : strips) {
+			if (!strip) {
+				continue;
+			}
+			m_bridges_before.insert(strip, strip->automaticBridges());
+			m_bridges_after.insert(strip, BridgeManager::bridgesForStrip(m_strip->project(), strip));
+		}
+	}
 }
 
 void SortTerminalStripCommand::undo()
 {
 	if (m_strip) {
 		m_strip->setOrderTo(m_old_order);
-		m_strip->setAutomaticBridges(m_bridges_before);
+		for (auto it = m_bridges_before.constBegin() ; it != m_bridges_before.constEnd() ; ++it) {
+			if (it.key()) {
+				it.key()->setAutomaticBridges(it.value());
+			}
+		}
 	}
 }
 
@@ -54,7 +68,11 @@ void SortTerminalStripCommand::redo()
 {
 	if (m_strip) {
 		m_strip->setOrderTo(m_new_order);
-		m_strip->setAutomaticBridges(m_bridges_after);
+		for (auto it = m_bridges_after.constBegin() ; it != m_bridges_after.constEnd() ; ++it) {
+			if (it.key()) {
+				it.key()->setAutomaticBridges(it.value());
+			}
+		}
 	}
 }
 

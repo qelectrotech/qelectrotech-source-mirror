@@ -723,50 +723,13 @@ QList<TerminalStrip::DrawingBridge> BridgeManager::bridgesForStrip(QETProject *p
 			continue;
 		}
 
-			//The span it lies across: from the first to the last of them,
-			//on the level it sits on
-		int level = landed.first()->level();
-		int first = -1;
-		int last = -1;
-		for (const auto &real_t : landed) {
-			const auto physical = real_t->physicalTerminal();
-			if (!physical) {
-				continue;
-			}
-			const int pos = physical->pos();
-			first = (first < 0) ? pos : qMin(first, pos);
-			last = (last < 0) ? pos : qMax(last, pos);
-			if (level < 0) {
-				level = real_t->level();
-			}
-		}
-		if (first < 0) {
-			continue;
-		}
-
-		QVector<QSharedPointer<RealTerminal>> span;
-		for (int pos = first ; pos <= last ; ++pos)
-		{
-			const auto physical = strip->physicalTerminal(pos);
-			if (!physical) {
-				continue;
-			}
-			if (level >= 0 && level < physical->realTerminalCount()) {
-				const auto real_t = physical->realTerminal(level);
-				if (real_t) {
-					span << real_t;
-				}
-			} else {
-				span << physical->realTerminals();
-			}
-		}
-		if (span.isEmpty()) {
-			continue;
-		}
-
+			//The bar lies across every terminal between its ends, but it
+			//is plugged into the ones it was drawn over and no other: a
+			//point on a terminal it only runs across would say the bridge
+			//lands there, and it does not
 		TerminalStrip::DrawingBridge drawn;
 		drawn.source = bridge->uuid();
-		drawn.real_terminals = span;
+		drawn.real_terminals = landed;
 		drawn.color = bridge->color();
 			//The groove its bar sits in is the one the drawing gave it
 		drawn.track = qBound(1, bridge->column(), 4);

@@ -1074,8 +1074,9 @@ private slots:
 		QVERIFY2(bridges.size() == 1, "what is drawn becomes a bridge of the strip");
 		QCOMPARE(bridges.first().source, drawn->uuid());
 		QCOMPARE(bridges.first().color, QColor(Qt::red));
-		QVERIFY2(bridges.first().real_terminals.size() == 3,
-				 "the bar lies across every terminal between its ends");
+		QVERIFY2(bridges.first().real_terminals.size() == 2,
+				 "the bar is plugged into the terminals it was drawn over "
+				 "-- and into no other");
 
 			//A bridge the drawing brought here is not his to take away
 		QVERIFY(!strip->canUnBridge(bridges.first().real_terminals));
