@@ -191,11 +191,11 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 	else
 		DarkImageRendering::paintPixmap(painter, pixmap_, m_adapt_to_dark_theme);
 
-	Q_UNUSED(option); Q_UNUSED(widget);
+	Q_UNUSED(option);
 
 		//A picture keeps its own colors on a sheet with its own ink, and
 		//so is not tinted: its frame and caption take that ink themselves
-	const QET::Palette::SheetInk &sheet_ink = PaletteGraphicsView::paintingInk();
+	const QET::Palette::SheetInk sheet_ink = PaletteGraphicsView::paintingInk(widget);
 	const QColor line_color = sheet_ink.isNull() ? QColor(Qt::black) : sheet_ink.other;
 
 	if (isSelected()) {

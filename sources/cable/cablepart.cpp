@@ -1369,7 +1369,6 @@ void CablePart::drawCoreMark(QPainter *painter, const QColor &ink,
 void CablePart::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	Q_UNUSED(option)
-	Q_UNUSED(widget)
 
 	painter->setRenderHint(QPainter::Antialiasing, true);
 	painter->setFont(textFont());
@@ -1381,7 +1380,7 @@ void CablePart::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 	// view's widgets, so it names colors which are already final and land
 	// on the sheet color -- an ink taken from it vanishes. Conductors are
 	// drawn the same way: black when they stand, red when they are picked.
-	const QET::Palette::SheetInk &sheet_ink = PaletteGraphicsView::paintingInk();
+	const QET::Palette::SheetInk sheet_ink = PaletteGraphicsView::paintingInk(widget);
 	const QColor ink = isSelected() ? QET::Palette::pickedColor(sheet_ink) : QColor(Qt::black);
 
 		//One unit, like every other line of the drawing: a cable trunk is

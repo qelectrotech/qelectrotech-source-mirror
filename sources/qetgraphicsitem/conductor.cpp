@@ -592,14 +592,13 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation term
 */
 void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *qw)
 {
-	Q_UNUSED(qw);
 	painter -> save();
 	painter -> setRenderHint(QPainter::Antialiasing, false);
 
 		// Set the color of conductor
 		//In the dark mode a red pick and a blue highlight would look like
 		//the red and light blue conductors around them
-	const QET::Palette::SheetInk &sheet_ink = PaletteGraphicsView::paintingInk();
+	const QET::Palette::SheetInk sheet_ink = PaletteGraphicsView::paintingInk(qw);
 	QColor final_conductor_color(m_properties.color);
 	if (must_highlight_ == Normal) {
 		final_conductor_color = QET::Palette::highlightColor(sheet_ink);

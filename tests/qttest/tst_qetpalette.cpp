@@ -1032,7 +1032,7 @@ int main(int argc, char **argv)
 	return QTest::qExec(&test, argc, argv);
 }
 
-#include "tst_qetpalette.moc/**
+/**
 	@brief tst_qetpalette::tintLayerKeepsColorsPaleOrNot
 	tintLayer() redraws gray in the ink and leaves colors alone -- also
 	pale ones, whose channels lie close together near white (a light blue
@@ -1073,7 +1073,9 @@ void tst_qetpalette::pickAndHighlightStandOutInDarkMode()
 	QCOMPARE(QET::Palette::pickedColor(dark_mode), QColor(255, 0, 255));
 	QCOMPARE(QET::Palette::highlightColor({}), QColor(69, 137, 255));
 	QCOMPARE(QET::Palette::highlightColor(dark_mode), QColor(0, 210, 0));
-	QVERIFY(QET::Palette::contrastRatio(QET::Palette::pickedColor(dark_mode), dark_mode.wires) > 1.3);
+		//Both are bright, so they differ in hue rather than in lightness
+	const int apart = qAbs(QET::Palette::pickedColor(dark_mode).hsvHue() - dark_mode.wires.hsvHue());
+	QVERIFY(qMin(apart, 360 - apart) >= 45);
 }
 
-"
+#include "tst_qetpalette.moc"

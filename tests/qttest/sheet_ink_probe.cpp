@@ -21,6 +21,7 @@
 #include "../../sources/qetgraphicsitem/conductor.h"
 #include "../../sources/qetgraphicsitem/element.h"
 #include "../../sources/qetgraphicsitem/diagramimageitem.h"
+#include "../../sources/qetgraphicsitem/qetshapeitem.h"
 #include "../../sources/qetmessagebox.h"
 #include "../../sources/qetpalette.h"
 #include "../../sources/qetproject.h"
@@ -315,6 +316,44 @@ int main(int argc, char **argv)
 			check(count(grab(view), red) > 20, "with one white ink a pick stays red");
 			c->setSelected(false);
 		}
+
+			//A white rectangle brought in front of a conductor hides it on
+			//the screen as it does in print: the tint keeps the stacking
+			//order instead of laying all conductors over the shapes
+		{
+			Conductor *c = folio->conductors().first();
+			const QRectF under = c->sceneBoundingRect().adjusted(-5, -5, 5, 5);
+			QetScriptApi api(&project);
+			check(api.addShape(0, QStringLiteral("rectangle"), under.left(), under.top(),
+			                   under.right(), under.bottom()) >= 0, "a rectangle over a conductor");
+			QetShapeItem *shape = nullptr;
+			for (QGraphicsItem *item : folio->items())
+				if (auto *s = dynamic_cast<QetShapeItem *>(item)) shape = s;
+			check(shape, "the rectangle is drawn");
+			shape->setBrush(QBrush(Qt::white));
+			shape->setZValue(1000);
+			setSheet(Qt::black, true, true);
+			const QRect inside = view.mapFromScene(under).boundingRect().adjusted(4, 4, -4, -4);
+			auto reds = [&](const QImage &image) {
+				int n = 0;
+				for (int y = inside.top(); y <= inside.bottom(); ++y)
+					for (int x = inside.left(); x <= inside.right(); ++x)
+						n += red(image.pixelColor(x, y));
+				return n;
+			};
+			const QImage covered = grab(view);
+			covered.save(output + "/covered.png");
+			std::printf("red under the rectangle: %d\n", reds(covered));
+			check(reds(covered) == 0, "a shape in front of a conductor hides it on a tinted sheet");
+			shape->setZValue(-1000);
+			check(reds(grab(view)) > 20, "and sent behind it, the conductor shows");
+			shape->setVisible(false);
+		}
+
+			//The ink is the painting view's: printing gets none, and nor
+			//does a view outside its paint
+		check(PaletteGraphicsView::paintingInk(nullptr).isNull()
+		      && PaletteGraphicsView::paintingInk(view.viewport()).isNull(), "no ink outside a view's paint");
 
 			//A picture on a dark custom sheet, on a light palette: its frame
 			//and caption in the sheet's light ink, and a picture adapted to

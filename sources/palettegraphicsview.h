@@ -22,6 +22,8 @@
 #include <QImage>
 #include <QPainter>
 
+#include <functional>
+
 #include "qetpalette.h"
 
 /**
@@ -59,8 +61,8 @@
 	needs light lines: sheetInk() then gives the colors, and the items
 	are drawn on the same off-screen path, each kind on a layer of its
 	own that is tinted in its color (QET::Palette::tintLayer()) before it
-	goes onto the sheet. The background and the foreground are drawn as
-	they are.
+	goes onto the sheet, in the items' stacking order (see drawTinted()).
+	The background and the foreground are drawn as they are.
 */
 class PaletteGraphicsView : public QGraphicsView
 {
@@ -84,12 +86,15 @@ class PaletteGraphicsView : public QGraphicsView
 		/// @return the ink the items are shown in, null when they are
 		/// shown as drawn. Null by default.
 		virtual QET::Palette::SheetInk sheetInk() const;
-		/// The ink of the view painting right now, null outside a
-		/// tinted paint: an item drawn in several inks (a cable, its
-		/// line in one, its label in another) draws the part that does
-		/// not take its kind's ink in that ink's own color, which the
-		/// tint leaves as it is.
-		static const QET::Palette::SheetInk &paintingInk() { return s_painting_ink; }
+		/// The ink \a widget is painted in right now: while a view
+		/// tints its items, the ink of that view when \a widget is its
+		/// viewport, else null, so printing, exporting or another view
+		/// get null. An item passes the widget its paint() is given. An
+		/// item drawn in several inks (a cable, its line in one, its
+		/// label in another) draws the part that does not take its
+		/// kind's ink in that ink's own color, which the tint leaves as
+		/// it is, and a picked item a color that stands out in it.
+		static QET::Palette::SheetInk paintingInk(const QWidget *widget);
 
 	protected:
 		bool eventFilter(QObject *watched, QEvent *event) override;
@@ -123,6 +128,9 @@ class PaletteGraphicsView : public QGraphicsView
 		void flushLayer(bool invert, const QRect &bounds = QRect());
 		void drawTinted(int count, QGraphicsItem *items[],
 		                const QStyleOptionGraphicsItem options[]);
+		struct TintBatch;
+		void drawBatch(TintBatch &batch);
+		void paintOnBuffer(const std::function<void(QPainter &)> &paint);
 
 		/// The off-screen image the hooks paint into while m_inverting:
 		/// the viewport's size, in its coordinates. Kept between paints,
@@ -140,7 +148,6 @@ class PaletteGraphicsView : public QGraphicsView
 		QImage m_tint_layer;
 		static inline bool s_custom_bg = false;
 		static inline bool s_colored_ink = false;
-		static inline QET::Palette::SheetInk s_painting_ink;
 };
 
 #endif

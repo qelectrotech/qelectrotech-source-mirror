@@ -22,11 +22,15 @@
 
 #include <QApplication>
 #include <QEvent>
+#include <QGraphicsItem>
 #include <QPaintEvent>
+#include <QSet>
 #include <QStyleHintReturnMask>
 #include <QStyleOptionRubberBand>
 #include <QtMath>
 
+#include <algorithm>
+#include <iterator>
 #include <optional>
 #include <vector>
 
@@ -89,6 +93,12 @@ PaletteGraphicsView::InkKind PaletteGraphicsView::inkKind(const QGraphicsItem *i
 {
 	Q_UNUSED(item)
 	return InkKind::Other;
+}
+
+QET::Palette::SheetInk PaletteGraphicsView::paintingInk(const QWidget *widget)
+{
+	const auto *view = widget ? qobject_cast<const PaletteGraphicsView *>(widget->parentWidget()) : nullptr;
+	return view && view->viewport() == widget ? view->m_ink : QET::Palette::SheetInk();
 }
 
 /**
@@ -161,7 +171,6 @@ void PaletteGraphicsView::paintInverted(QPaintEvent *event)
 	m_exposed = exposed;
 	m_layered = false;
 	m_ink = sheetInk();
-	s_painting_ink = m_ink;
 	DarkImageRendering::Context context{&m_buffer_painter, !customBackgroundColor(), [this](bool invert, const QRect &bounds) { flushLayer(invert, bounds); }};
 		//Only on a dark palette: a picture "adapted to the dark theme" is
 		//inverted against the scene there. Tinting for a dark custom
@@ -180,7 +189,6 @@ void PaletteGraphicsView::paintInverted(QPaintEvent *event)
 	paintingInverted(false);
 	m_inverting = false;
 	m_ink = QET::Palette::SheetInk();
-	s_painting_ink = m_ink;
 
 	if (m_layered) flushLayer(!customBackgroundColor());
 	m_buffer_painter.end();
@@ -209,14 +217,27 @@ void PaletteGraphicsView::flushLayer(bool invert, const QRect &bounds)
 	}
 	QPainter composite(&m_composite);
 	composite.drawImage(QPointF(pixels.topLeft()) / ratio, layer);
-	// Keep Qt's active painter and its saved state stack intact. Replacing
-	// or restarting it here would lose ancestor clipping and opacity.
+	paintOnBuffer([&](QPainter &painter) {
+		painter.setCompositionMode(QPainter::CompositionMode_Source);
+		painter.fillRect(QRectF(QPointF(pixels.topLeft()) / ratio, QSizeF(pixels.size()) / ratio), Qt::transparent);
+	});
+}
+
+/**
+	@brief PaletteGraphicsView::paintOnBuffer
+	Run \a paint on the off-screen image's painter in viewport
+	coordinates, unclipped and opaque, and give the painter back as it
+	was. Qt's active painter and its saved state stack are kept intact:
+	replacing or restarting it here would lose ancestor clipping and
+	opacity.
+*/
+void PaletteGraphicsView::paintOnBuffer(const std::function<void(QPainter &)> &paint)
+{
 	m_buffer_painter.save();
 	m_buffer_painter.resetTransform();
 	m_buffer_painter.setClipping(false);
 	m_buffer_painter.setOpacity(1.0);
-	m_buffer_painter.setCompositionMode(QPainter::CompositionMode_Source);
-	m_buffer_painter.fillRect(QRectF(QPointF(pixels.topLeft()) / ratio, QSizeF(pixels.size()) / ratio), Qt::transparent);
+	paint(m_buffer_painter);
 	m_buffer_painter.restore();
 }
 
@@ -247,78 +268,123 @@ void PaletteGraphicsView::drawItems(QPainter *painter, int count, QGraphicsItem 
 		QGraphicsView::drawItems(painter, count, items, options);
 }
 
+/// Items of one kind drawn together, and the part of the viewport they cover
+struct PaletteGraphicsView::TintBatch
+{
+	InkKind kind = InkKind::Other;
+	std::vector<QGraphicsItem *> items;
+	std::vector<QStyleOptionGraphicsItem> options;
+	QRect area;
+};
+
 /**
 	@brief PaletteGraphicsView::drawTinted
 	Draw the items kind by kind (see inkKind()): those left untouched
 	straight into the off-screen image, the others each kind on a clear
-	layer that is then tinted in its ink and laid onto the image. Within
-	a kind the items keep their order; between kinds, conductors lie over
-	the other items, solid ones over dashed ones, and symbols and texts
-	over the conductors.
+	layer that is then tinted in its ink and laid onto the image.
+
+	The items come bottom first, and keep that order where they overlap:
+	an item joins the batch of its kind unless it overlaps a batch that
+	is laid on later; then the batches so far are drawn first. Items
+	that do not overlap need no order, so a folio is drawn in a few
+	batches however its kinds alternate in the stack. Each batch is
+	tinted only over the part of the viewport its items cover, and an
+	item's kind is asked once, for its top-level item, which the scene
+	draws with all its children.
 */
 void PaletteGraphicsView::drawTinted(int count, QGraphicsItem *items[],
                                      const QStyleOptionGraphicsItem options[])
 {
-	const auto draw = SceneAccess::drawItemsPointer();
-	const qreal ratio = m_buffer.devicePixelRatio();
-	const QRect pixels = QRectF(m_exposed.topLeft() * ratio, m_exposed.size() * ratio).toAlignedRect();
+	static constexpr InkKind order[] = {InkKind::Untouched, InkKind::Other, InkKind::DashDottedWires,
+	                                    InkKind::DashedWires, InkKind::Wires, InkKind::Symbols};
+	constexpr int kinds = int(std::size(order));
+	TintBatch batches[kinds];
+	for (int k = 0; k < kinds; ++k) batches[k].kind = order[k];
 
-	std::vector<QGraphicsItem *> kind_items;
-	std::vector<QStyleOptionGraphicsItem> kind_options;
-	for (InkKind kind : {InkKind::Untouched, InkKind::Other, InkKind::DashDottedWires,
-	                     InkKind::DashedWires, InkKind::Wires, InkKind::Symbols})
+	const auto drawAll = [&]() {
+		for (TintBatch &batch : batches) {
+			if (batch.items.empty()) continue;
+			drawBatch(batch);
+			batch.items.clear();
+			batch.options.clear();
+			batch.area = QRect();
+		}
+	};
+
+	const QTransform to_viewport = viewportTransform();
+	QSet<const QGraphicsItem *> seen;
+	for (int i = 0; i < count; ++i)
 	{
-		kind_items.clear();
-		kind_options.clear();
-		for (int i = 0; i < count; ++i) {
-			if (inkKind(items[i]) == kind) {
-				kind_items.push_back(items[i]);
-				kind_options.push_back(options[i]);
+		QGraphicsItem *top = items[i]->topLevelItem();
+		if (seen.contains(top)) continue;
+		seen.insert(top);
+
+		const int k = int(std::find(std::begin(order), std::end(order), inkKind(top)) - std::begin(order));
+			//Two pixels around for antialiasing and wide pens
+		const QRect area = to_viewport.mapRect(top->sceneBoundingRect()
+		                                       | top->mapRectToScene(top->childrenBoundingRect()))
+		                   .toAlignedRect().adjusted(-2, -2, 2, 2).intersected(m_exposed);
+		for (int later = k + 1; later < kinds; ++later)
+			if (batches[later].area.intersects(area)) {
+				drawAll();
+				break;
 			}
-		}
-		if (kind_items.empty())
-			continue;
-
-		if (kind == InkKind::Untouched) {
-			(scene()->*draw)(&m_buffer_painter, int(kind_items.size()), kind_items.data(),
-			                 kind_options.data(), viewport());
-			continue;
-		}
-
-		if (m_tint_layer.size() != m_buffer.size() || m_tint_layer.devicePixelRatio() != ratio) {
-			m_tint_layer = QImage(m_buffer.size(), QImage::Format_ARGB32_Premultiplied);
-			m_tint_layer.setDevicePixelRatio(ratio);
-		}
-		QPainter layer(&m_tint_layer);
-		layer.setCompositionMode(QPainter::CompositionMode_Source);
-		layer.fillRect(m_exposed, Qt::transparent);
-		layer.setCompositionMode(QPainter::CompositionMode_SourceOver);
-		layer.setClipRect(m_exposed);
-		layer.setRenderHints(renderHints());
-		layer.setWorldTransform(viewportTransform());
-		(scene()->*draw)(&layer, int(kind_items.size()), kind_items.data(),
-		                 kind_options.data(), viewport());
-		layer.end();
-
-		QImage part = m_tint_layer.copy(pixels);
-		QColor ink = m_ink.other;
-		switch (kind) {
-			case InkKind::Symbols:         ink = m_ink.symbols; break;
-			case InkKind::Wires:           ink = m_ink.wires; break;
-			case InkKind::DashedWires:     ink = m_ink.dashed_wires; break;
-			case InkKind::DashDottedWires: ink = m_ink.dash_dotted_wires; break;
-			default: break;
-		}
-		QET::Palette::tintLayer(part, m_ink.sheet, ink);
-		part.setDevicePixelRatio(ratio);
-		m_buffer_painter.save();
-		m_buffer_painter.resetTransform();
-		m_buffer_painter.setClipping(false);
-		m_buffer_painter.setOpacity(1.0);
-		m_buffer_painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-		m_buffer_painter.drawImage(QPointF(pixels.topLeft()) / ratio, part);
-		m_buffer_painter.restore();
+		batches[k].items.push_back(top);
+		batches[k].options.push_back(options[i]);
+		batches[k].area |= area;
 	}
+	drawAll();
+}
+
+/**
+	@brief PaletteGraphicsView::drawBatch
+	Draw \a batch: untouched items straight into the off-screen image,
+	the others on the layer, tinted in their kind's ink over the area
+	they cover and laid onto the image.
+*/
+void PaletteGraphicsView::drawBatch(TintBatch &batch)
+{
+	const auto draw = SceneAccess::drawItemsPointer();
+	if (batch.kind == InkKind::Untouched) {
+		(scene()->*draw)(&m_buffer_painter, int(batch.items.size()), batch.items.data(),
+		                 batch.options.data(), viewport());
+		return;
+	}
+	if (batch.area.isEmpty())
+		return;
+
+	const qreal ratio = m_buffer.devicePixelRatio();
+	const QRect pixels = QRectF(batch.area.topLeft() * ratio, batch.area.size() * ratio).toAlignedRect();
+	if (m_tint_layer.size() != m_buffer.size() || m_tint_layer.devicePixelRatio() != ratio) {
+		m_tint_layer = QImage(m_buffer.size(), QImage::Format_ARGB32_Premultiplied);
+		m_tint_layer.setDevicePixelRatio(ratio);
+	}
+	QPainter layer(&m_tint_layer);
+	layer.setCompositionMode(QPainter::CompositionMode_Source);
+	layer.fillRect(batch.area, Qt::transparent);
+	layer.setCompositionMode(QPainter::CompositionMode_SourceOver);
+	layer.setClipRect(batch.area);
+	layer.setRenderHints(renderHints());
+	layer.setWorldTransform(viewportTransform());
+	(scene()->*draw)(&layer, int(batch.items.size()), batch.items.data(),
+	                 batch.options.data(), viewport());
+	layer.end();
+
+	QImage part = m_tint_layer.copy(pixels);
+	QColor ink = m_ink.other;
+	switch (batch.kind) {
+		case InkKind::Symbols:         ink = m_ink.symbols; break;
+		case InkKind::Wires:           ink = m_ink.wires; break;
+		case InkKind::DashedWires:     ink = m_ink.dashed_wires; break;
+		case InkKind::DashDottedWires: ink = m_ink.dash_dotted_wires; break;
+		default: break;
+	}
+	QET::Palette::tintLayer(part, m_ink.sheet, ink);
+	part.setDevicePixelRatio(ratio);
+	paintOnBuffer([&](QPainter &painter) {
+		painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+		painter.drawImage(QPointF(pixels.topLeft()) / ratio, part);
+	});
 }
 
 /**
