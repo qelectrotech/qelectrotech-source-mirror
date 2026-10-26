@@ -1287,6 +1287,17 @@ target_link_libraries(tst_movedterminals PRIVATE Qt::Test Qt::Xml)
 target_compile_definitions(tst_movedterminals PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# The project's settings are in the project database, one row per value,
+# and kept by every change. QET-SQL-FORMAT S3b.
+add_executable(
+  tst_projectsettingrows
+  tst_projectsettingrows.cpp)
+add_test(NAME tst_projectsettingrows COMMAND tst_projectsettingrows)
+add_dependencies(tst_projectsettingrows qelectrotech)
+target_link_libraries(tst_projectsettingrows PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_projectsettingrows PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # A symbol's kind information (NO/NC/SW/power) is queryable from the
 # project database once it is placed, not only from a live Element*.
 # QETZ-DB-FIRST 2d-2a.

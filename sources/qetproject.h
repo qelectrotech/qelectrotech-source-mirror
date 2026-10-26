@@ -473,6 +473,7 @@ class QETProject : public QObject
 
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
+		void storeSettings();
 		static void writeNumberingXml(const projectDataBase::Numbering &numbering,
 									  QDomElement &xml_element);
 		void writeUsageXml(QDomElement &);
