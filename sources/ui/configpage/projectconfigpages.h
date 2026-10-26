@@ -152,6 +152,8 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	QSpinBox *max_wires_sb_;
 	QCheckBox *one_wire_per_report_cb_;
 	QLabel *wiring_rules_off_label_;
+	QLabel *origin_label_;
+	QComboBox *origin_cb_;
 };
 
 class ProjectAutoNumConfigPage : public ProjectConfigPage {
