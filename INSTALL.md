@@ -257,6 +257,17 @@ downloads and compiles KDE Frameworks itself, which is slow.
    Ninja works too, in place of the Visual Studio generator, if you prefer
    (`-G Ninja -DCMAKE_BUILD_TYPE=Release`, run from the same VS developer
    prompt so `cl.exe` is on `PATH`).
+4. Optionally, install it in a folder laid out as the Windows installers
+   lay QET out (the program in `bin\`, the elements, title blocks and
+   translations beside it):
+   ```bat
+   cmake --install . --config Release --prefix C:\QElectroTech
+   ```
+   SQLite's DLL is installed with it only when you tell CMake where it is,
+   at the configure step:
+   `-DSQLite3_DLL="C:\vcpkg\installed\x64-windows\bin\sqlite3.dll"`.
+   Qt's DLLs are not installed: run Qt's `windeployqt` on
+   `C:\QElectroTech\bin\qelectrotech.exe` for those.
 
 ### MinGW-w64 (gcc)
 
