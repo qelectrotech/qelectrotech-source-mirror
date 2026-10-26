@@ -186,8 +186,17 @@ Element::Element(
 */
 Element::~Element()
 {
+		//Nothing of this element answers anything while it goes: its
+		//terminals say "a wire left" on their way out, and the texts they
+		//would ask are gone before them. Without this the element is
+		//asked to fill texts which are already deleted, and the symbol
+		//takes the whole application with it when it is closed.
+	disconnect(nullptr, nullptr, this, nullptr);
+
 	qDeleteAll (m_dynamic_text_list);
+	m_dynamic_text_list.clear();
 	qDeleteAll (m_terminals);
+	m_terminals.clear();
 }
 
 /**

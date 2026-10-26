@@ -1698,7 +1698,23 @@ void DynamicElementTextItem::setPotentialConductor()
 		 * owned by the parent report element of this text.
 		 * #third case, if m_watched_conductor is null, we set a conductor of the linked report, if any.
 		 */
-		QList<Conductor *> c_list = parentElement()->terminals().first()->conductors();
+			//A report symbol can have no terminal at all (some older
+			//collections'), and asking a symbol for the wire of a
+			//terminal it does not have takes the application down with
+			//it. What has no terminal has no wire to show.
+		const auto element_terminals = parentElement()->terminals();
+		if (element_terminals.isEmpty())
+		{
+			if (!m_watched_conductor.isNull()) {
+				disconnect(m_watched_conductor.data(), &Conductor::propertiesChange,
+						   this, &DynamicElementTextItem::conductorPropertiesChanged);
+			}
+			m_watched_conductor.clear();
+			conductorPropertiesChanged();
+			return;
+		}
+
+		QList<Conductor *> c_list = element_terminals.first()->conductors();
 		
 		if(!c_list.isEmpty() && c_list.contains(m_watched_conductor.data()))
 			return;
@@ -2052,6 +2068,11 @@ void DynamicElementTextItem::updateXref()
 
 void DynamicElementTextItem::setPlainText(const QString &text)
 {
+		//A text without its symbol has nothing to say: asking it while
+		//the symbol is gone is what takes the application down
+	if (!m_parent_element)
+		return;
+
 	if (toPlainText() == text)
 		return;
 

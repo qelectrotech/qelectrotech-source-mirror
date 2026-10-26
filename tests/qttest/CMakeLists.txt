@@ -338,6 +338,12 @@ endfunction()
 
 # Space on a picture turns its own transform, which the file saves (#1413),
 # alone and with a group.
+# Closing a project takes its symbols down with them: their terminals say
+# "a wire left" on the way out, and what a symbol shows of its wire must not
+# be filled while its texts are being deleted -- which took the whole
+# application down with a real drawing.
+qet_add_app_test(tst_symbolteardown tst_symbolteardown.cpp)
+
 qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 
 # Editing the information of several elements at once (#1439): kept, set
