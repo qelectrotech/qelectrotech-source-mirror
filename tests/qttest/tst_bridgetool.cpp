@@ -111,6 +111,58 @@ class tst_bridgetool : public QObject
 
 private slots:
 
+	//Closing a project takes its symbols down with it, and their
+	//terminals say "a wire left" on the way out. What a symbol fills
+	//must not be asked about wires while its texts are being deleted --
+	//they are gone before the terminals, and asking them takes the whole
+	//application down with the project
+	void closingAProjectTakesItsSymbolsDownWhole()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/linked_reports.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		QVERIFY(!project.diagrams().isEmpty());
+
+			//A report symbol with texts of its own and a wire on one of
+			//its terminals: the very chain which fills those texts
+		Element *report = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if ((element->linkType() & Element::AllReport)
+					&& !element->dynamicTextItems().isEmpty()) {
+					report = element;
+					break;
+				}
+			}
+			if (report) break;
+		}
+		if (!report) {
+			QSKIP("the fixture has no report symbol with texts");
+		}
+		QVERIFY(!report->terminals().isEmpty());
+
+		Diagram *diagram = report->diagram();
+		Terminal *first = report->terminals().first();
+		Terminal *second = nullptr;
+		for (Element *element : diagram->elements()) {
+			if (element == report) continue;
+			for (Terminal *terminal : element->terminals()) {
+				if (!terminal->conductors().isEmpty()) {
+					second = terminal;
+					break;
+				}
+			}
+			if (second) break;
+		}
+		if (second) {
+			auto *conductor = new Conductor(first, second);
+			diagram->addItem(conductor);
+		}
+
+			//The symbol goes with its texts still asking about wires
+		delete report;
+		QVERIFY2(true, "the symbol went down without taking the application with it");
+	}
 	//The shipped default: a bridge is black, holds as many terminals as
 	//the user draws, and its track is worked out when it is drawn
 	void bridgeDefaultsAreTheShippedOnes()
