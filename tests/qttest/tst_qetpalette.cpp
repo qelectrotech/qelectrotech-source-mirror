@@ -1020,18 +1020,6 @@ void tst_qetpalette::styleSheetWidgetsFollowPaletteChange()
 	}
 }
 
-int main(int argc, char **argv)
-{
-	// Widgets are painted for real, on Qt's offscreen platform so the test
-	// runs the same on a build box and on a desktop.
-	if (qEnvironmentVariableIsEmpty("QT_QPA_PLATFORM"))
-		qputenv("QT_QPA_PLATFORM", "offscreen");
-	QApplication app(argc, argv);
-	tst_qetpalette test;
-	QTEST_SET_MAIN_SOURCE_PATH
-	return QTest::qExec(&test, argc, argv);
-}
-
 /**
 	@brief tst_qetpalette::tintLayerKeepsColorsPaleOrNot
 	tintLayer() redraws gray in the ink and leaves colors alone -- also
@@ -1076,6 +1064,18 @@ void tst_qetpalette::pickAndHighlightStandOutInDarkMode()
 		//Both are bright, so they differ in hue rather than in lightness
 	const int apart = qAbs(QET::Palette::pickedColor(dark_mode).hsvHue() - dark_mode.wires.hsvHue());
 	QVERIFY(qMin(apart, 360 - apart) >= 45);
+}
+
+int main(int argc, char **argv)
+{
+	// Widgets are painted for real, on Qt's offscreen platform so the test
+	// runs the same on a build box and on a desktop.
+	if (qEnvironmentVariableIsEmpty("QT_QPA_PLATFORM"))
+		qputenv("QT_QPA_PLATFORM", "offscreen");
+	QApplication app(argc, argv);
+	tst_qetpalette test;
+	QTEST_SET_MAIN_SOURCE_PATH
+	return QTest::qExec(&test, argc, argv);
 }
 
 #include "tst_qetpalette.moc"
