@@ -129,7 +129,7 @@ bool Bridge::wouldExceed(int adding) const
 	if (m_max_connections == unlimited_connections) {
 		return false;
 	}
-	return (m_terminals.size() + qMax(adding, 0)) > m_max_connections;
+	return (klemmCount() + qMax(adding, 0)) > m_max_connections;
 }
 
 /**
@@ -151,6 +151,41 @@ void Bridge::setColumn(int column)
 	}
 	m_column = clamped;
 	emit changed();
+}
+
+/**
+	@return the name the hand gave this bridge, empty when nobody did
+*/
+QString Bridge::name() const {
+	return m_name;
+}
+
+/**
+	@param name
+*/
+void Bridge::setName(const QString &name)
+{
+	if (name == m_name) {
+		return;
+	}
+	m_name = name;
+	emit changed();
+}
+
+/**
+	@return how many Klemmen this bridge holds. A sheet reference it is
+	carried on by is no Klemme: it never counts as one, and never fills
+	one of the places the bridge holds.
+*/
+int Bridge::klemmCount() const
+{
+	int count = 0;
+	for (const BridgeTerminal &terminal : m_terminals) {
+		if (!terminal.reference) {
+			++count;
+		}
+	}
+	return count;
 }
 
 /**
@@ -339,6 +374,9 @@ QDomElement Bridge::toXml(QDomDocument &document) const
 	if (!m_tension_text.isEmpty()) {
 		root.setAttribute(QStringLiteral("tension_protocol"), m_tension_text);
 	}
+	if (!m_name.isEmpty()) {
+		root.setAttribute(QStringLiteral("name"), m_name);
+	}
 
 	auto xml_terminals = document.createElement(QStringLiteral("terminals"));
 	for (const BridgeTerminal &terminal : m_terminals) {
@@ -346,6 +384,9 @@ QDomElement Bridge::toXml(QDomDocument &document) const
 		xml_terminal.setAttribute(QStringLiteral("element"), terminal.element.toString());
 		if (!terminal.terminal.isEmpty()) {
 			xml_terminal.setAttribute(QStringLiteral("name"), terminal.terminal);
+		}
+		if (terminal.reference) {
+			xml_terminal.setAttribute(QStringLiteral("reference"), QStringLiteral("1"));
 		}
 		xml_terminals.appendChild(xml_terminal);
 	}
@@ -389,6 +430,7 @@ void Bridge::fromXml(const QDomElement &element)
 	m_max_connections = qMax(0, element.attribute(QStringLiteral("max_connections")).toInt());
 	m_column = qBound(0, element.attribute(QStringLiteral("column")).toInt(), max_columns);
 	m_tension_text = element.attribute(QStringLiteral("tension_protocol"));
+	m_name = element.attribute(QStringLiteral("name"));
 
 	m_terminals.clear();
 	auto xml_terminals = element.firstChildElement(QStringLiteral("terminals"));
@@ -399,6 +441,7 @@ void Bridge::fromXml(const QDomElement &element)
 		BridgeTerminal terminal;
 		terminal.element = QUuid(xml_terminal.attribute(QStringLiteral("element")));
 		terminal.terminal = xml_terminal.attribute(QStringLiteral("name"));
+		terminal.reference = xml_terminal.attribute(QStringLiteral("reference")) == QLatin1String("1");
 		if (!terminal.element.isNull()) {
 			m_terminals.append(terminal);
 		}

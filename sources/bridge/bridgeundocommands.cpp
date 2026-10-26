@@ -28,12 +28,14 @@
 	@param color the colour the bridge is drawn in from now on
 	@param max_connections how many terminals it may hold from now on
 	@param line_width how thick its lines are drawn from now on
+	@param name the name the bridge carries from now on
 	@param parent
 */
 ChangeBridgePropertiesCommand::ChangeBridgePropertiesCommand(Bridge *bridge,
 															const QColor &color,
 															int max_connections,
 															qreal line_width,
+															const QString &name,
 															QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_bridge(bridge),
@@ -42,7 +44,9 @@ ChangeBridgePropertiesCommand::ChangeBridgePropertiesCommand(Bridge *bridge,
 	m_max_before(bridge ? bridge->maxConnections() : 0),
 	m_max_after(qMax(max_connections, 0)),
 	m_width_before(bridge ? bridge->lineWidth() : Bridge::default_line_width),
-	m_width_after(qMax(line_width, 0.1))
+	m_width_after(qMax(line_width, 0.1)),
+	m_name_before(bridge ? bridge->name() : QString()),
+	m_name_after(name)
 {
 	setText(QObject::tr("Changing a bridge", "undo command text"));
 }
@@ -56,6 +60,7 @@ void ChangeBridgePropertiesCommand::redo()
 	m_bridge->setColor(m_color_after);
 	m_bridge->setMaxConnections(m_max_after);
 	m_bridge->setLineWidth(m_width_after);
+	m_bridge->setName(m_name_after);
 	QUndoCommand::redo();
 }
 
@@ -68,6 +73,7 @@ void ChangeBridgePropertiesCommand::undo()
 	m_bridge->setColor(m_color_before);
 	m_bridge->setMaxConnections(m_max_before);
 	m_bridge->setLineWidth(m_width_before);
+	m_bridge->setName(m_name_before);
 	QUndoCommand::undo();
 }
 

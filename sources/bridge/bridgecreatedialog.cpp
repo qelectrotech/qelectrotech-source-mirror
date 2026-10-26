@@ -27,6 +27,7 @@
 #include <QFont>
 #include <QInputDialog>
 #include <QLabel>
+#include <QLineEdit>
 #include <QListWidget>
 #include <QMessageBox>
 #include <QPixmap>
@@ -91,6 +92,14 @@ BridgeCreateDialog::BridgeCreateDialog(Diagram *diagram,
 	m_width_sb->setSingleStep(0.2);
 	m_width_sb->setValue(Bridge::default_line_width);
 	new_layout->addWidget(m_width_sb);
+
+	auto *name_label = new QLabel(tr("Name:"), new_page);
+	new_layout->addWidget(name_label);
+	m_name_ed = new QLineEdit(new_page);
+	m_name_ed->setObjectName(QStringLiteral("bridge_name_ed"));
+	m_name_ed->setToolTip(tr("A name to tell this bridge from the next one, "
+							 "like 24V or B1. Empty when nobody names it."));
+	new_layout->addWidget(m_name_ed);
 
 	auto *color_label = new QLabel(tr("Bridge colour:"), new_page);
 	new_layout->addWidget(color_label);
@@ -185,6 +194,16 @@ BridgeCreateDialog::BridgeCreateDialog(Bridge *bridge, QWidget *parent) :
 	m_width_sb->setSingleStep(0.2);
 	m_width_sb->setValue(bridge ? bridge->lineWidth() : Bridge::default_line_width);
 	layout->addWidget(m_width_sb);
+
+	layout->addWidget(new QLabel(tr("Name:"), this));
+	m_name_ed = new QLineEdit(this);
+	m_name_ed->setObjectName(QStringLiteral("bridge_name_ed"));
+	m_name_ed->setToolTip(tr("A name to tell this bridge from the next one, "
+							 "like 24V or B1. Empty when nobody names it."));
+	if (bridge) {
+		m_name_ed->setText(bridge->name());
+	}
+	layout->addWidget(m_name_ed);
 
 	layout->addWidget(new QLabel(tr("Bridge colour:"), this));
 	m_color_cb = new KColorCombo(this);
@@ -308,6 +327,13 @@ qreal BridgeCreateDialog::newLineWidth() const {
 }
 
 /**
+	@return the name the hand gives the bridge, empty for none
+*/
+QString BridgeCreateDialog::bridgeName() const {
+	return m_name_ed ? m_name_ed->text() : QString();
+}
+
+/**
 	@brief BridgeCreateDialog::problem
 	@return why what is chosen now cannot be taken, or an empty string
 	when it can: a new bridge may not be given a limit below the
@@ -415,12 +441,20 @@ void BridgeCreateDialog::rebuildList()
 		const QString places = (bridge->maxConnections() == Bridge::unlimited_connections)
 				? tr("unlimited places")
 				: tr("%1 of %2 places")
-				  .arg(bridge->maxConnections() - bridge->terminalCount())
+				  .arg(bridge->maxConnections() - bridge->klemmCount())
 				  .arg(bridge->maxConnections());
-		auto *item = new QListWidgetItem(
-					tr("%1 terminal(s), %2", "how much a bridge holds and what is left of it")
-					.arg(bridge->terminalCount()).arg(places),
-					m_list);
+			//Told apart the way a place is named on a drawing: which
+			//sheet, which column and which row -- and what it carries
+		const QString location = BridgeManager::locationOf(
+					m_diagram ? m_diagram->project() : nullptr, bridge);
+		QStringList lines;
+		lines << (bridge->name().isEmpty() ? tr("without a name") : bridge->name())
+			  + (location.isEmpty() ? QString() : QStringLiteral(" \u2013 %1").arg(location));
+		lines << (bridge->tensionText().isEmpty() ? tr("no voltage") : bridge->tensionText())
+			  + QStringLiteral(" \u2013 ")
+			  + tr("%1 Klemmen, %2", "how much a bridge holds and what is left of it")
+				.arg(bridge->klemmCount()).arg(places);
+		auto *item = new QListWidgetItem(lines.join(QLatin1Char('\n')), m_list);
 		item->setIcon(swatch(bridge->color()));
 		item->setData(bridge_role, quintptr(bridge));
 

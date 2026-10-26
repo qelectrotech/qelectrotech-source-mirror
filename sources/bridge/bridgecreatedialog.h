@@ -28,6 +28,7 @@ class Bridge;
 class Diagram;
 class QCheckBox;
 class QDoubleSpinBox;
+class QLineEdit;
 class QLabel;
 class QListWidget;
 class QSpinBox;
@@ -72,6 +73,8 @@ class BridgeCreateDialog : public QDialog
 			///How thick the lines of the bridge are drawn, in the same
 			///way a conductor takes its size
 		qreal newLineWidth() const;
+			///The name the hand gives the bridge, empty for none
+		QString bridgeName() const;
 			///How many terminals a new bridge may hold,
 			///Bridge::unlimited_connections when there is no limit
 		int newMaxConnections() const;
@@ -121,6 +124,7 @@ class BridgeCreateDialog : public QDialog
 		QTabWidget *m_tabs = nullptr;
 		QSpinBox *m_max_sb = nullptr;
 		QDoubleSpinBox *m_width_sb = nullptr;
+		QLineEdit *m_name_ed = nullptr;
 		KColorCombo *m_color_cb = nullptr;
 		QCheckBox *m_hide_full = nullptr;
 		QCheckBox *m_hide_small = nullptr;

@@ -43,6 +43,10 @@ struct BridgeCrossing
 	Element *element = nullptr;
 		///Name of the terminal of that symbol the bridge lands on
 	QString terminal;
+		///True when the symbol is a sheet reference rather than a
+		///Klemme: a bridge carried on to another sheet is no terminal
+		///connection
+	bool reference = false;
 		/// Scene coordinates of the crossing, where the line is drawn
 	QPointF position;
 };
@@ -72,6 +76,7 @@ class BridgeManager
 		static Bridge *bridgeByUuid(QETProject *project, const QUuid &uuid);
 		static Element *elementFor(QETProject *project, const BridgeTerminal &terminal);
 		static bool bridgeLandsOn(QETProject *project, Element *element);
+		static QString locationOf(QETProject *project, Bridge *bridge);
 		static bool linkJoinsBridgeToWire(QETProject *project,
 										  Element *first,
 										  Element *second);

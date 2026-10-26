@@ -56,6 +56,10 @@ struct BridgeTerminal
 {
 	QUuid element;
 	QString terminal;
+		///True when this landing is the connection of a sheet reference
+		///rather than a terminal: a bridge carried on to another sheet
+		///is no terminal connection, and never counts as a Klemme
+	bool reference = false;
 
 	friend bool operator==(const BridgeTerminal &a, const BridgeTerminal &b)
 	{
@@ -144,6 +148,9 @@ class Bridge : public QObject
 		void setMaxConnections(int max);
 			///True when @p adding more terminals would cross the limit
 		bool wouldExceed(int adding) const;
+			///How many Klemmen this bridge holds: a sheet reference it is
+			///carried on by is no Klemme and never counts as one
+		int klemmCount() const;
 
 			///The parallel track this bridge runs in at the terminals it
 			///crosses, 1 to max_columns; 0 when it was never worked out
@@ -157,6 +164,12 @@ class Bridge : public QObject
 			//are linked.
 		QString tensionText() const;
 		void setTensionText(const QString &text);
+
+			//The name the hand gives the bridge, so two of them can be
+			//told apart: "24V" says what it carries, the name says which
+			//one it is. Empty when nobody named it.
+		QString name() const;
+		void setName(const QString &name);
 
 		//Terminals
 		QList<BridgeTerminal> terminals() const;
@@ -193,6 +206,7 @@ class Bridge : public QObject
 		int m_max_connections = unlimited_connections;
 		int m_column = 0;
 		QString m_tension_text;
+		QString m_name;
 		QList<BridgeTerminal> m_terminals;
 		QList<BridgePartData> m_parts;
 };

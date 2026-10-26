@@ -26,6 +26,7 @@
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/terminalelement.h"
 #include "../qetgraphicsitem/terminal.h"
+#include "../autoNum/assignvariables.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
 #include "../conductorproperties.h"
@@ -163,6 +164,7 @@ QList<BridgeCrossing> BridgeManager::crossedTerminals(Diagram *diagram, const QL
 		BridgeCrossing crossing;
 		crossing.element = element;
 		crossing.terminal = pin->stableUuid().toString();
+		crossing.reference = is_sheet_reference;
 		crossing.position = pin->scenePos();
 		crossings.append(crossing);
 	}
@@ -386,6 +388,27 @@ QList<Bridge *> BridgeManager::bridgesOverfilledBy(QETProject *project,
 		}
 	}
 	return overfilled;
+}
+
+/**
+	@brief BridgeManager::locationOf
+	@param project
+	@param bridge
+	@return where this bridge stands: which sheet, which column and
+	which row of it -- the way a cross-reference names a place, so two
+	bridges are told apart by where they are. Empty when the bridge
+	lands on nothing of the drawing yet.
+*/
+QString BridgeManager::locationOf(QETProject *project, Bridge *bridge)
+{
+	if (!project || !bridge || bridge->terminals().isEmpty()) {
+		return {};
+	}
+	Element *element = elementFor(project, bridge->terminals().first());
+	if (!element || !element->diagram()) {
+		return {};
+	}
+	return autonum::AssignVariables::genericXref(element);
 }
 
 /**

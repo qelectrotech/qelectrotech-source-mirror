@@ -347,13 +347,15 @@ void BridgePart::editProperty()
 	const QColor color = dialog.newColor();
 	const int max_connections = dialog.newMaxConnections();
 	const qreal line_width = dialog.newLineWidth();
+	const QString name = dialog.bridgeName();
 	if (color == bridge->color()
 		&& max_connections == bridge->maxConnections()
-		&& qFuzzyCompare(line_width, bridge->lineWidth())) {
+		&& qFuzzyCompare(line_width, bridge->lineWidth())
+		&& name == bridge->name()) {
 		return;
 	}
 	folio->undoStack().push(
-		new ChangeBridgePropertiesCommand(bridge, color, max_connections, line_width));
+		new ChangeBridgePropertiesCommand(bridge, color, max_connections, line_width, name));
 }
 
 /**

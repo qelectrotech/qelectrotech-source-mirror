@@ -546,15 +546,19 @@ private slots:
 		QCOMPARE(bridge->maxConnections(), Bridge::unlimited_connections);
 		QCOMPARE(bridge->lineWidth(), Bridge::default_line_width);
 
-		folio->undoStack().push(new ChangeBridgePropertiesCommand(bridge, QColor(Qt::red), 3, 2.5));
+		bridge->setName(QStringLiteral("B1"));
+		folio->undoStack().push(new ChangeBridgePropertiesCommand(
+									bridge, QColor(Qt::red), 3, 2.5, QStringLiteral("24V")));
 		QCOMPARE(bridge->color(), QColor(Qt::red));
 		QCOMPARE(bridge->maxConnections(), 3);
 		QCOMPARE(bridge->lineWidth(), 2.5);
+		QCOMPARE(bridge->name(), QStringLiteral("24V"));
 
 		folio->undoStack().undo();
 		QCOMPARE(bridge->color(), QColor(Qt::black));
 		QCOMPARE(bridge->maxConnections(), Bridge::unlimited_connections);
 		QCOMPARE(bridge->lineWidth(), Bridge::default_line_width);
+		QCOMPARE(bridge->name(), QStringLiteral("B1"));
 	}
 
 	//A bridge which already holds terminals may not be given a limit
@@ -902,6 +906,69 @@ private slots:
 
 		folio->undoStack().undo();
 		QCOMPARE(conductor->properties().m_tension_protocol, original_tension);
+	}
+
+	//A name, a place and what it carries: two bridges are told apart
+	//the way places are named on a drawing -- which sheet, which column
+	//and which row
+	void aBridgeCanBeToldApart()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(terminalOf(terminals.at(0)));
+		bridge->setName(QStringLiteral("24V"));
+
+		QCOMPARE(bridge->name(), QStringLiteral("24V"));
+		const QString location = BridgeManager::locationOf(&project, bridge);
+		QVERIFY2(!location.isEmpty(),
+				 "the bridge names its place: sheet, column and row");
+
+			//And the name travels with the project
+		QDomDocument document;
+		const QDomElement written = bridge->toXml(document);
+		Bridge read_back;
+		read_back.fromXml(written);
+		QCOMPARE(read_back.name(), QStringLiteral("24V"));
+	}
+
+	//A sheet reference a bridge is carried on by is no Klemme: it never
+	//counts as one, and never fills one of the places the bridge holds
+	void aSheetReferenceIsNoKlemme()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/linked_reports.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		Element *report = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if ((element->linkType() & Element::AllReport)
+					&& !element->terminals().isEmpty()) {
+					report = element;
+					break;
+				}
+			}
+			if (report) break;
+		}
+		if (!report) {
+			QSKIP("the fixture has no sheet reference with a connection");
+		}
+
+		Bridge *bridge = project.newBridge();
+		bridge->setMaxConnections(1);
+		bridge->addTerminal(BridgeTerminal{report->uuid(),
+										   report->terminals().first()->stableUuid().toString(),
+										   true});
+		QCOMPARE(bridge->terminalCount(), 1);
+		QVERIFY2(bridge->klemmCount() == 0,
+				  "a sheet reference is no Klemme");
+		QVERIFY2(!bridge->wouldExceed(1),
+				 "and it never fills one of the places the bridge holds");
 	}
 
 	//A bridge lands on the connection of a sheet reference the way a

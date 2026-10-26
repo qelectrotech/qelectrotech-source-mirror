@@ -408,6 +408,7 @@ void DiagramEventAddBridge::finishLine(const QPointF &end)
 		bridge->setColor(dialog.newColor());
 		bridge->setMaxConnections(dialog.newMaxConnections());
 		bridge->setLineWidth(dialog.newLineWidth());
+		bridge->setName(dialog.bridgeName());
 		bridge->setTensionText(information.tension);
 
 			//Which parallel track the bridge runs in: the first free one
