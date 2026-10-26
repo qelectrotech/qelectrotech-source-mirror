@@ -77,14 +77,23 @@ $qtPrefix = 'C:/Qt/6.x.x/msvc2022_64'
 cmake -S . -B build-msvc -G 'Visual Studio 17 2022' -A x64 `
     "-DCMAKE_PREFIX_PATH=$qtPrefix" -DBUILD_WITH_KF=OFF -DPACKAGE_TESTS=ON
 cmake --build build-msvc --config Debug --parallel
-$env:Path = "$qtPrefix/bin;$env:Path"
 ctest --test-dir build-msvc -C Debug --output-on-failure
 ```
 
-Putting the matching Qt `bin` directory on `PATH` lets test executables find
-Qt DLLs. Other shared dependencies must also be available on `PATH`.
+With MSVC, CTest puts the Qt kit's `bin` directory in front of `PATH` for
+each test, so the tests find Qt's DLLs without changing `PATH` (this needs
+CMake 3.22 or newer; with an older CMake, add `$qtPrefix/bin` to `PATH`
+yourself). Other shared libraries are not added: `sqlite3.dll` in
+particular must be on `PATH` or next to the test executables and
+`qelectrotech.exe`, or Windows stops every test that needs it with a
+"sqlite3.dll was not found" dialog. vcpkg's toolchain file copies it next
+to the executables; with SQLite from elsewhere, add its directory to
+`PATH` before running `ctest`, e.g. `$env:Path = "C:/sqlite;$env:Path"`.
+
 For MinGW with Ninja, use the matching MinGW Qt kit and compiler environment,
-omit `-A x64`, select `-G Ninja`, and set `-DCMAKE_BUILD_TYPE=Debug`.
+omit `-A x64`, select `-G Ninja`, and set `-DCMAKE_BUILD_TYPE=Debug`. Qt's
+`bin` directory is not added there: put it, and SQLite's, on `PATH` (an
+MSYS2 UCRT64 shell already has both in `/ucrt64/bin`).
 The Linux shell regression scripts below do not run natively on Windows.
 
 ### Tests outside the CTest suite
