@@ -18,7 +18,7 @@
 // QElectroTech killed at any moment leaves every edit it finished.
 //
 // Runs the real binary on industrial.qet with QET_WORKING_COPY_DIR. A
-// script makes eleven edits that make no new uuids, logging "DONE k"
+// script makes twelve edits that make no new uuids, logging "DONE k"
 // after each; a reference run saves the project after each. The test
 // kills the edit run at random moments with SIGKILL, writes the copy left
 // behind with --from-database, and compares it, saved with every folio
@@ -33,6 +33,7 @@ class tst_workingcopy : public QObject
 	QString m_source, m_script;
 	QList<QByteArray> m_reference;   // hash of the eager save after edit k
 	qint64 m_open_ms = 0, m_edits_ms = 0;
+	static constexpr int LAST = 12;   // the edits the script makes
 	int m_run = 0;
 
 	QProcessEnvironment environment(const QString &home, const QString &working_copies = QString()) const
@@ -155,7 +156,9 @@ private slots:
 				 "  function () { return qet.setFolioProperty(7, 'title', 'Edited'); },\n"
 				 "  function () { return qet.undo(); },\n"
 				 "  function () { return qet.redo(); },\n"
-				 "  function () { return qet.removeFolio(8); }\n"
+				 "  function () { return qet.removeFolio(8); },\n"
+					//Folio 8 is not built: its rows are put back (F137)
+				 "  function () { return qet.undo(); }\n"
 				 "];\n"
 				 "function save(k) { if (typeof SAVEDIR !== 'undefined') qet.save(SAVEDIR + '/' + k + '/industrial.qet'); }\n"
 				 "save(0);\n"
@@ -176,10 +179,10 @@ private slots:
 		QVERIFY(edits.open(QIODevice::ReadOnly));
 		ref.write(QStringLiteral("var SAVEDIR = '%1';\n").arg(saves).toUtf8() + edits.readAll());
 		ref.close();
-		for (int k = 0; k <= 11; ++k) QDir().mkpath(saves + QStringLiteral("/%1").arg(k));
+		for (int k = 0; k <= LAST; ++k) QDir().mkpath(saves + QStringLiteral("/%1").arg(k));
 		const QString log = runQet({QStringLiteral("--run"), reference, m_source});
-		QVERIFY2(lastDone(log) == 11, qPrintable(log.right(600)));
-		for (int k = 0; k <= 11; ++k) {
+		QVERIFY2(lastDone(log) == LAST, qPrintable(log.right(600)));
+		for (int k = 0; k <= LAST; ++k) {
 			m_reference << savedHash(saves + QStringLiteral("/%1/industrial.qet").arg(k));
 			QVERIFY(!m_reference.last().isEmpty());
 			if (k) QVERIFY2(m_reference.at(k) != m_reference.at(k - 1),
@@ -188,7 +191,7 @@ private slots:
 	}
 
 	// Run to the end: every edit, and no file left in the folder. Times
-	// the open (to DONE 0) and the edits (DONE 0 to DONE 11).
+	// the open (to DONE 0) and the edits (DONE 0 to DONE LAST).
 	void cleanExitLeavesNothing()
 	{
 		const QString copies = m_dir.filePath(QStringLiteral("clean"));
@@ -204,15 +207,16 @@ private slots:
 			proc.waitForReadyRead(5);
 			log += QString::fromUtf8(proc.readAll());
 			if (!m_open_ms && lastDone(log) >= 0) m_open_ms = timer.elapsed();
-			if (!m_edits_ms && lastDone(log) == 11) m_edits_ms = timer.elapsed() - m_open_ms;
+			if (!m_edits_ms && lastDone(log) == LAST) m_edits_ms = timer.elapsed() - m_open_ms;
 		}
-		QVERIFY2(lastDone(log) == 11, qPrintable(log.right(600)));
+		QVERIFY2(lastDone(log) == LAST, qPrintable(log.right(600)));
 		QVERIFY2(workingCopies(copies).isEmpty(), qPrintable(workingCopies(copies).join(QLatin1Char(' '))));
 	}
 
 	// Killed at random moments: the copy holds every edit finished. One
-	// run in ten is killed while it opens the project, the others between
-	// its DONE 0 and a little after its DONE 11.
+	// run in ten is killed while it opens the project, one as soon as it
+	// logs DONE LAST, the others between its DONE 0 and a little after
+	// its DONE LAST.
 	void killedKeepsEveryEdit()
 	{
 		QVERIFY(m_open_ms > 0 && m_edits_ms > 0);
@@ -225,6 +229,7 @@ private slots:
 			QList<QProcess *> runs;
 			QStringList dirs;
 			QList<qint64> kill_at;   // from the start, or (-delay) from DONE 0
+			QList<bool> at_last;     // or as soon as the last edit is done
 			for (int i = batch; i < qMin(kills, batch + parallel); ++i) {
 				const QString copies = m_dir.filePath(QStringLiteral("killed%1").arg(i));
 				QDir().mkpath(copies);
@@ -237,6 +242,7 @@ private slots:
 				dirs << copies;
 				kill_at << (i % 10 == 0 ? QRandomGenerator::global()->bounded(m_open_ms)
 										: -1 - QRandomGenerator::global()->bounded(m_edits_ms * 3 / 2));
+				at_last << (i % 10 == 5);
 			}
 			QElapsedTimer timer;
 			timer.start();
@@ -258,7 +264,7 @@ private slots:
 					if (opened.at(i) < 0 && done.at(i) >= 0) opened[i] = timer.elapsed();
 					const qint64 at = kill_at.at(i) >= 0 ? kill_at.at(i)
 							: opened.at(i) < 0 ? -1 : opened.at(i) - kill_at.at(i) - 1;
-					if (at >= 0 && timer.elapsed() >= at) proc->kill();
+					if ((at >= 0 && timer.elapsed() >= at) || (at_last.at(i) && done.at(i) == LAST)) proc->kill();
 				}
 					//Every pipe read as it comes: one left full would stop its run
 				if (running) QTest::qWait(2);
@@ -274,8 +280,8 @@ private slots:
 					++not_ready;
 					if (copies.isEmpty()) continue;
 				}
-				if (last == 11 && copies.isEmpty()) {
-					++at_edit[11];   // ended before the kill: nothing left
+				if (last == LAST && copies.isEmpty()) {
+					++at_edit[LAST];   // ended before the kill: nothing left
 					continue;
 				}
 				QCOMPARE(copies.size(), 1);
@@ -293,7 +299,7 @@ private slots:
 				QVERIFY2(exit_code == 0, qPrintable(log));
 				const QByteArray hash = savedHash(written);
 				const bool k = hash == m_reference.at(last);
-				const bool k1 = last < 11 && hash == m_reference.at(last + 1);
+				const bool k1 = last < LAST && hash == m_reference.at(last + 1);
 				QVERIFY2(k || k1, qPrintable(QStringLiteral("killed after DONE %1: the copy is neither "
 															"save %1 nor save %2 (%3)")
 											 .arg(last).arg(last + 1).arg(dirs.at(i))));
