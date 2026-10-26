@@ -1880,6 +1880,11 @@ target_compile_definitions(tst_qetdbrobust PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
   "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
 
+# Upright symbol texts read from bottom to top, when the setting asks.
+qet_add_app_test(tst_uprighttexts tst_uprighttexts.cpp)
+target_compile_definitions(tst_uprighttexts PRIVATE
+  QET_ELEMENTS_DIR="${QET_DIR}/elements")
+
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
 # PATH for every test above and keeps the ENVIRONMENT each test sets
@@ -1897,7 +1902,15 @@ if(MSVC)
   endif()
 endif()
 
-# Upright symbol texts read from bottom to top, when the setting asks.
-qet_add_app_test(tst_uprighttexts tst_uprighttexts.cpp)
-target_compile_definitions(tst_uprighttexts PRIVATE
-  QET_ELEMENTS_DIR="${QET_DIR}/elements")
+# Windows: a program without a console sends Qt's messages, and with them
+# QtTest's report, to the debugger, so ctest --output-on-failure showed
+# nothing. QT_FORCE_STDERR_LOGGING sends them to stderr, where ctest reads
+# them. ENVIRONMENT_MODIFICATION keeps the ENVIRONMENT each test sets; it
+# needs CMake 3.22.
+if(WIN32 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
+  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+  if(qet_qttests)
+    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+      "QT_FORCE_STDERR_LOGGING=set:1")
+  endif()
+endif()
