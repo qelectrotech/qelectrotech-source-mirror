@@ -839,7 +839,11 @@ void paint(QPainter *painter,
 			}
 		}
 
-			//Bridge points : one channel by level
+			//Bridge points : one groove per parallel track. The groove a
+			//bar is plugged in is its own, not the level it serves: two
+			//bars lying across the same terminals run side by side in the
+			//rail, and the second one would vanish inside the first if
+			//they shared a groove.
 		for (int k = 0 ; k < levels_ ; ++k)
 		{
 			const auto &real_t{g_.reals.at(k)};
@@ -850,8 +854,9 @@ void paint(QPainter *painter,
 			if (!bridge_) {
 				continue;
 			}
-			const qreal channel_h_{length_ * (channels_bottom - channels_top) / levels_};
-			const qreal y_{length_ * channels_top + (k + 0.5) * channel_h_};
+			const qreal channel_h_{length_ * (channels_bottom - channels_top) / 4};
+			const qreal y_{length_ * channels_top
+						   + (qBound(1, bridge_->track(), 4) - 0.5) * channel_h_};
 			bridges_[bridge_->uuid()].append(BridgePoint{QPointF{x_ + w_ / 2, y_}, w_});
 		}
 
