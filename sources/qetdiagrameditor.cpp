@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetdiagrameditor.h"
+#include "itemdescription.h"
 #include "container/qetcontainer.h"
 #include "container/qetzip.h"
 #include "utils/previousversions.h"
@@ -265,7 +266,16 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 
 	setWindowTitle(tr("QElectroTech", "window title"));
 	setWindowIcon(QET::Icons::QETLogo);
-	statusBar() -> showMessage(tr("QElectroTech", "status bar message"));
+		//Left, where the status tips show: hidden while one does. Added
+		//before any message: one added while a message shows is hidden
+		//for good
+	m_item_info_label = new QLabel(this);
+	m_item_info_label->setObjectName(QStringLiteral("item_info_label"));
+	m_item_info_label->setToolTip(tr("What the mouse points at, or else what is selected"));
+	statusBar()->addWidget(m_item_info_label, 1);
+		//For a moment only: while a message shows, the status bar hides
+		//what stands on its left
+	statusBar() -> showMessage(tr("QElectroTech", "status bar message"), 3000);
 
 	setUpElementsPanel();
 	setUpElementsCollectionWidget();
@@ -3401,6 +3411,7 @@ void QETDiagramEditor::slot_updateActions()
 	bool opened_diagram = dv;
 	bool editable_project = (pv && !pv -> project() -> isReadOnly());
 	updateZoomLabel();
+	updateItemInfo();
 
 	m_close_file->                  setEnabled(opened_project);
 	m_save_file->                   setEnabled(opened_project);
@@ -4545,6 +4556,27 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 	connect(dv, &DiagramView::modeChanged, this, &QETDiagramEditor::slot_updateModeActions);
 	connect(dv, &DiagramView::elementPlacementStarted, this, &QETDiagramEditor::rememberPlacedElement);
 	connect(dv, &DiagramView::zoomChanged, this, &QETDiagramEditor::updateZoomLabel);
+	connect(dv, &DiagramView::pointedItemChanged, this, &QETDiagramEditor::updateItemInfo);
+}
+
+/**
+	@brief QETDiagramEditor::updateItemInfo
+	Say in the status bar what the mouse points at on the folio shown, or
+	else what is selected on it: a symbol, a text of a symbol, a free
+	text, a shape... which are hard to tell apart on the folio.
+*/
+void QETDiagramEditor::updateItemInfo()
+{
+	if (!m_item_info_label)
+		return;
+	DiagramView *dv = currentDiagramView();
+	QString text;
+	if (dv) {
+		text = dv->pointedItemDescription();
+		if (text.isEmpty() && dv->diagram())
+			text = ItemDescription::ofSelection(dv->diagram()->selectedItems());
+	}
+	m_item_info_label->setText(text);
 }
 
 /**
@@ -4668,6 +4700,7 @@ void QETDiagramEditor::selectionChanged()
 	DiagramView *dv = currentDiagramView();
 	if (dv && dv->diagram())
 		m_selection_properties_editor->setDiagram(dv->diagram());
+	updateItemInfo();
 }
 
 
