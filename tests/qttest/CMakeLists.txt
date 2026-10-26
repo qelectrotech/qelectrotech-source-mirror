@@ -291,6 +291,8 @@ add_test(NAME tst_genericdevice COMMAND tst_genericdevice)
 set_tests_properties(tst_genericdevice PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_genericdevice PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_genericdevice PRIVATE Qt::Test Qt::Gui Qt::Xml)
+target_compile_definitions(tst_genericdevice PRIVATE
+  "QET_FONTS_DIR=\"${QET_DIR}/fonts\"")
 
 # configprofile.h is header-only: which settings a saved configuration
 # profile carries, and how loading one replaces the live settings.
