@@ -88,6 +88,8 @@ int main(int argc, char **argv)
 		// Switched off (the default): nothing changes the pointer, and the
 		// crosshair keeps to the grid.
 		check(!DiagramView::pointerAids(), "the pointer aids are off by default");
+		check(DiagramView::gridOnlyWhilePlacing(), "the pointer keeps to the grid only while placing, by default");
+		DiagramView::setGridOnlyWhilePlacing(false);	//the grid all along, until tried below
 		moveTo(view, over);
 		check(!view.viewport()->testAttribute(Qt::WA_SetCursor), "off: over a symbol, the view sets no pointer");
 		DiagramView::setCrosshairShown(true);

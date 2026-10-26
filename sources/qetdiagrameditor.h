@@ -329,10 +329,11 @@ class QETDiagramEditor : public QETMainWindow
 		QMenu *m_grid_step_menu = nullptr;		///< Fine, medium or coarse grid
 		QToolButton *m_grid_step_button = nullptr;
 		QToolButton *m_grid_status_button = nullptr;	///< Status bar: the grid step, with the same menu
+		QToolButton *m_snap_status_button = nullptr;	///< Status bar: snapping on or off, a magnet
 		QToolButton *m_text_grid_button = nullptr;
 		QMenu *m_shown_kinds_menu = nullptr;		///< View > Show, kinds of items (#301)
 		QLabel *m_hidden_kinds_label = nullptr;	///< Status bar: how many kinds are hidden
-		QLabel *m_zoom_label = nullptr;		///< Status bar: the zoom of the folio on screen
+		QToolButton *m_zoom_button = nullptr;	///< Status bar: the zoom of the folio on screen, fixed steps on a click
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
 

@@ -259,7 +259,7 @@
        <item>
         <widget class="QCheckBox" name="m_grid_only_placing_cb">
          <property name="toolTip">
-          <string>The pointer and the crosshair jump from grid point to grid point only while something is placed or dragged; otherwise they follow the mouse, so small items are easy to grab. What is placed still lands on the grid. Unticked: they always keep to the grid.</string>
+          <string>The pointer and the crosshair jump from grid point to grid point only while something is placed or dragged; otherwise they follow the mouse, so small items are easy to grab. What is placed still lands on the grid. Ticked by default; unticked, they always keep to the grid.</string>
          </property>
          <property name="text">
           <string>Pointer on the grid only while placing</string>

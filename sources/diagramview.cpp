@@ -2110,14 +2110,14 @@ void DiagramView::setPointerAids(bool on)
 /**
 	@brief DiagramView::gridOnlyWhilePlacing
 	@return true when the pointer and the crosshair keep to the grid only
-	while a tool places something or a press on an item drags it. Off,
-	they always keep to it, as before.
+	while a tool places something or a press on an item drags it, the
+	default. Off, they always keep to it, as before.
 */
 bool DiagramView::gridOnlyWhilePlacing()
 {
 	if (s_grid_only_placing < 0) {
 		QSettings settings;
-		s_grid_only_placing = settings.value(QStringLiteral("diagrameditor/grid_only_placing"), false).toBool();
+		s_grid_only_placing = settings.value(QStringLiteral("diagrameditor/grid_only_placing"), true).toBool();
 	}
 	return s_grid_only_placing;
 }

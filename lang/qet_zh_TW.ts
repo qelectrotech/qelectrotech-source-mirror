@@ -7186,11 +7186,6 @@ that you create. Text and number inputs are
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
-        <source>The pointer and the crosshair jump from grid point to grid point only while something is placed or dragged; otherwise they follow the mouse, so small items are easy to grab. What is placed still lands on the grid. Unticked: they always keep to the grid.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
         <source>Pointer on the grid only while placing</source>
         <translation type="unfinished"></translation>
@@ -7527,6 +7522,11 @@ hint shown when no cable type file is configured yet</extracomment>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1481"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>電路圖編輯器的格點大小：1 - 5</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
+        <source>The pointer and the crosshair jump from grid point to grid point only while something is placed or dragged; otherwise they follow the mouse, so small items are easy to grab. What is placed still lands on the grid. Ticked by default; unticked, they always keep to the grid.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1343"/>
@@ -12221,1535 +12221,1550 @@ Available options:
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="538"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="574"/>
         <source>Place symbol texts</source>
         <translation>放置符號文字</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="539"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
         <source>Place the label and the notes of the selected symbols as one block beside them</source>
         <comment>status bar tip</comment>
         <translation>將所選符號的標籤與註解作為一個區塊放在其旁邊</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="548"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="584"/>
         <source>Above, left</source>
         <translation>左上</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="549"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
         <source>Above</source>
         <translation>上</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="550"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="586"/>
         <source>Above, right</source>
         <translation>右上</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="551"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="587"/>
         <source>Left</source>
         <translation>左</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="552"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="588"/>
         <source>On the symbol</source>
         <translation>在符號上</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="589"/>
         <source>Right</source>
         <translation>右</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="554"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="590"/>
         <source>Below, left</source>
         <translation>左下</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="555"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="591"/>
         <source>Below</source>
         <translation>下</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="556"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="592"/>
         <source>Below, right</source>
         <translation>右下</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4396"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4399"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="256"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4461"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4464"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="258"/>
         <source>QElectroTech</source>
         <comment>status bar message</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="351"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="387"/>
         <source>No modification</source>
         <translation>無修改</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="352"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="388"/>
         <source>Click an action to get back in the changes you made to your diagram</source>
         <comment>Status tip</comment>
         <translation>單擊一個動作以回退你對原理圖的更改</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="353"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="389"/>
         <source>This panel lists the various changes applied to the current sheet. Clicking a change gets the sheet back to its state right after it was applied.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>此面板列出了對當前圖頁執行的不同操作。 單擊一個動作可以讓您返回到應用該操作後的圖頁狀態。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="355"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="391"/>
         <source>Undo</source>
         <comment>dock title</comment>
         <translation>撤銷</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="402"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="438"/>
         <source>&amp;Export</source>
         <translation>匯出（&amp;X）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="413"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="449"/>
         <source>Print</source>
         <translation>列印</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="435"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="471"/>
         <source>&amp;Quit</source>
         <translation>退出（&amp;Q）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="441"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="477"/>
         <source>Undo</source>
         <translation>撤銷</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="446"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="482"/>
         <source>Redo</source>
         <translation>恢復</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="452"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="488"/>
         <source>Cu&amp;t</source>
         <translation>剪下（&amp;X）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="453"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="489"/>
         <source>&amp;Copy</source>
         <translation>複製（&amp;C）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="454"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="490"/>
         <source>&amp;Paste</source>
         <translation>貼上（&amp;V）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="628"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="664"/>
         <source>Reset conductors</source>
         <translation>重置導線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="637"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="673"/>
         <source>Automatic creation conductor (s)</source>
         <comment>Tool tip of auto conductor</comment>
         <translation>自動連線導線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="638"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="674"/>
         <source>Using the automatic creation of conductor (s) when possible</source>
         <comment>Status tip of auto conductor</comment>
         <translation>儘可能使用自動連線導線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="708"/>
         <source>Display the grid</source>
         <translation>顯示網格</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="674"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="710"/>
         <source>Display or hide the grid of sheet</source>
         <translation>顯示或隱藏頁面網格</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="689"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
         <source>Folio-wide crosshair</source>
         <translation>整頁十字游標</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="691"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="727"/>
         <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
         <translation>在滑鼠處顯示貫穿整頁的兩條線，以檢查元件是否對齊</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="860"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="925"/>
         <source>Sheet properties</source>
         <translation>圖頁屬性</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="872"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="937"/>
         <source>Project properties</source>
         <translation>工程屬性</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="879"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="944"/>
         <source>Add a sheet</source>
         <translation>新增圖頁</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="888"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4073"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4096"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="953"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4138"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4161"/>
         <source>Delete this sheet</source>
         <translation>刪除圖頁</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="893"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="958"/>
         <source>Clean project</source>
         <translation>清理工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="921"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="986"/>
         <source>Add a summary</source>
         <translation>新增摘要</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="940"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1005"/>
         <source>Launch the terminal block creation plugin</source>
         <translation>啟動端子排建立外掛</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1094"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1159"/>
         <source>using tabs</source>
         <translation>使用選項卡</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1100"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1165"/>
         <source>using windows</source>
         <translation>使用視窗</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1122"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1187"/>
         <source>Select</source>
         <translation>選擇模式</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1135"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1200"/>
         <source>Move</source>
         <translation>檢視模式</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1111"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1176"/>
         <source>&amp;Tile</source>
         <translation>平鋪（&amp;T）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1116"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1181"/>
         <source>&amp;Cascade</source>
         <translation>層疊（&amp;C）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1153"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1218"/>
         <source>Next project</source>
         <translation>下一個工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1158"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1223"/>
         <source>Previous project</source>
         <translation>上一個工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1164"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
         <source>&amp;New</source>
         <translation>新建（&amp;N）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1165"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1230"/>
         <source>&amp;Open</source>
         <translation>開啟（&amp;O）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1166"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1231"/>
         <source>&amp;Save</source>
         <translation>儲存（&amp;S）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1167"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1232"/>
         <source>Save as</source>
         <translation>另存為</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1170"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4996"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1235"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5061"/>
         <source>&amp;Close</source>
         <translation>關閉（&amp;C）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1178"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1243"/>
         <source>Creates a new project</source>
         <comment>status bar tip</comment>
         <translation>建立一個新工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1179"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1244"/>
         <source>Opens an existing project</source>
         <comment>status bar tip</comment>
         <translation>開啟現有工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1180"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1245"/>
         <source>Closes the current project</source>
         <comment>status bar tip</comment>
         <translation>關閉當前工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1181"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1246"/>
         <source>Saves the current project and all its sheets</source>
         <comment>status bar tip</comment>
         <translation>儲存當前工程及其所有圖頁</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1182"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1247"/>
         <source>Saves the current project with a different file name</source>
         <comment>status bar tip</comment>
         <translation>用另一個檔名儲存當前工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1208"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1273"/>
         <source>Add a column</source>
         <translation>新增列</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1209"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1274"/>
         <source>Remove a column</source>
         <translation>刪除列</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1213"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1278"/>
         <source>Add a column to the sheet</source>
         <comment>status bar tip</comment>
         <translation>在圖頁中新增一列</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1214"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1279"/>
         <source>Remove a column from the sheet</source>
         <comment>status bar tip</comment>
         <translation>從圖頁中刪除一列</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1215"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1280"/>
         <source>Expands the sheet height</source>
         <comment>status bar tip</comment>
         <translation>放大頁面高度</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1216"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1281"/>
         <source>Shrinks the sheet height</source>
         <comment>status bar tip</comment>
         <translation>縮小頁面高度</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1232"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1297"/>
         <source>Delete</source>
         <translation>刪除</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1233"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1298"/>
         <source>Rotate</source>
         <translation>旋轉</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1235"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1300"/>
         <source>Choose texts orientation</source>
         <translation>旋轉文本</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1238"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1303"/>
         <source>Find in the panel</source>
         <translation>在面板中查詢</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1239"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1304"/>
         <source>Edit the selected item</source>
         <translation>編輯所選物件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1551"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1616"/>
         <source>Search / Replace</source>
         <translation>查詢/替換</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1593"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1658"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="75"/>
         <source>Depth</source>
         <comment>toolbar title</comment>
         <translation>圖層</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3102"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3167"/>
         <source>Group</source>
         <translation>群組</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="912"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="977"/>
         <source>Add a nomenclature</source>
         <translation>新增物料清單</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1240"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1305"/>
         <source>Group selected texts</source>
         <translation>將選定的文本分組</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1340"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1405"/>
         <source>Removes selected elements from the sheet</source>
         <comment>status bar tip</comment>
         <translation>從圖頁中刪除選定的元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1341"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1406"/>
         <source>Rotate selected elements and texts</source>
         <comment>status bar tip</comment>
         <translation>旋轉選定的元件和文本</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1343"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1408"/>
         <source>Rotate selected texts to a specific angle</source>
         <comment>status bar tip</comment>
         <translation>以特定角度旋轉選定的文本</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1346"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1411"/>
         <source>Find the selected item in the panel</source>
         <comment>status bar tip</comment>
         <translation>在面板中查詢選擇的元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1399"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1464"/>
         <source>Select All</source>
         <translation>全選</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1400"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1465"/>
         <source>Select none</source>
         <translation>取消全選</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1401"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1466"/>
         <source>Invert selection</source>
         <translation>反選</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1413"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1478"/>
         <source>Selects all elements on the sheet</source>
         <comment>status bar tip</comment>
         <translation>選擇圖頁中的所有元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1414"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1479"/>
         <source>Deselect all elements on the sheet</source>
         <comment>status bar tip</comment>
         <translation>取消圖頁所有元件的選擇</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1415"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1480"/>
         <source>Inverts selection of elements</source>
         <comment>status bar tip</comment>
         <translation>取消選中的元件並選擇未選中的元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1428"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1493"/>
         <source>Zoom In</source>
         <translation>放大</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1429"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1494"/>
         <source>Zoom Out</source>
         <translation>縮小</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1430"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1495"/>
         <source>Zoom content</source>
         <translation>放大焦點內容</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1431"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1496"/>
         <source>Fit in view</source>
         <translation>自適應縮放</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1432"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1497"/>
         <source>Reset zoom</source>
         <translation>無縮放</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1443"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1508"/>
         <source>Expand the sheet</source>
         <comment>status bar tip</comment>
         <translation>放大頁面</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1444"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1509"/>
         <source>Shrinks the sheet</source>
         <comment>status bar tip</comment>
         <translation>縮小頁面</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1445"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1510"/>
         <source>Adjusts the zoom to display all the contents of sheet regardless of context</source>
         <translation>調整縮放以顯示頁面的所有內容</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1446"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1511"/>
         <source>Adjusts the zoom on exactly the part of the sheet</source>
         <comment>status bar tip</comment>
         <translation>調整縮放以完全適應頁面大小</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1447"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1512"/>
         <source>Restores default zoom level</source>
         <comment>status bar tip</comment>
         <translation>恢復預設縮放</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1473"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1538"/>
         <source>Add a textfield</source>
         <translation>新增文本框</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1474"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1539"/>
         <source>Add a picture</source>
         <translation>新增圖片</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1479"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1544"/>
         <source>Add a rectangle</source>
         <translation>新增矩形</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1480"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1545"/>
         <source>Add an ellipse</source>
         <translation>新增橢圓</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1482"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1547"/>
         <source>Add a polygon</source>
         <translation>新增多段線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="404"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="440"/>
         <source>Exports the current sheet to another format</source>
         <comment>status bar tip</comment>
         <translation>將當前圖頁匯出為另一種格式</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="415"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="451"/>
         <source>Prints one or more sheet of the current project</source>
         <comment>status bar tip</comment>
         <translation>列印當前工程的一頁或多頁</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="437"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="473"/>
         <source>Closes QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>關閉 QElectroTech 應用程式</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="444"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="480"/>
         <source>Undoes the previous action</source>
         <comment>status bar tip</comment>
         <translation>撤銷上一個動作</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="285"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="321"/>
         <source>Projects</source>
         <comment>dock title</comment>
         <translation>工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="356"/>
         <source>Collections</source>
         <translation>庫</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="449"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="485"/>
         <source>Restores the undone action</source>
         <comment>status bar tip</comment>
         <translation>恢復被撤銷的動作</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="465"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
         <source>Puts selected elements into the clipboard</source>
         <comment>status bar tip</comment>
         <translation>將所選元件剪下到剪貼簿</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="466"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="502"/>
         <source>Copies selected elements</source>
         <comment>status bar tip</comment>
         <translation>將所選元件複製到剪貼簿</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="467"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="503"/>
         <source>Pastes elements from the clipboard into the sheet</source>
         <comment>status bar tip</comment>
         <translation>將剪貼簿元件放在圖頁上</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1210"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1275"/>
         <source>Add row</source>
         <comment>Add row</comment>
         <translation>新增行</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1211"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1276"/>
         <source>Remove a row</source>
         <comment>Remove row</comment>
         <translation>刪除行</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1478"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1543"/>
         <source>Add line</source>
         <comment>Draw line</comment>
         <translation>新增直線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="630"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="666"/>
         <source>Reset the conductors path ignoring the user changes</source>
         <comment>status bar tip</comment>
         <translation>忽略修改，重新計算導線路徑</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="862"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="927"/>
         <source>Edits the properties of the sheet (size, title block information, conductor properties...)</source>
         <comment>status bar tip</comment>
         <translation>編輯圖頁屬性（尺寸、標題欄資訊、導線屬性等）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1102"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1167"/>
         <source>Shows the various opened projects in windows</source>
         <comment>status bar tip</comment>
         <translation>在視窗中顯示開啟的不同工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1096"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1161"/>
         <source>Shows the various opened projects in tabs</source>
         <comment>status bar tip</comment>
         <translation>在選項卡中顯示開啟的不同工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1124"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1189"/>
         <source>Allows to select elements</source>
         <comment>status bar tip</comment>
         <translation>允許您選擇元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1137"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1202"/>
         <source>Allows to view the sheet without modifying it</source>
         <comment>status bar tip</comment>
         <translation>允許您檢視圖頁但不能修改它</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1113"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1178"/>
         <source>Arranges windows in a tile pattern</source>
         <comment>status bar tip</comment>
         <translation>平鋪視窗</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="403"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="414"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="425"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="436"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="443"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="448"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="458"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="459"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="439"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="450"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="461"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="463"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="521"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="522"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="540"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="618"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="629"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="650"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="472"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="479"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="484"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="494"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="495"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="496"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="499"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="557"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="558"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="630"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="654"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="673"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="665"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="686"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="690"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="703"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="731"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="776"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="790"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="803"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="861"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="873"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="880"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="889"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="894"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="905"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="913"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="922"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="930"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="941"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="967"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="709"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="726"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="739"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="767"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="812"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="826"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="839"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="926"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="938"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="945"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="954"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="959"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="970"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="978"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="990"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1002"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1015"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1024"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1053"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1070"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1075"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1087"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1095"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1101"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1112"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1117"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1123"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1136"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1154"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1159"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1172"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1173"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1174"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1175"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1176"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1187"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1226"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1244"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1245"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1246"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1247"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1249"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1250"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1251"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="987"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="995"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1006"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1032"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1043"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1055"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1067"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1080"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1089"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1118"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1135"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1140"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1152"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1160"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1166"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1177"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1182"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1188"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1201"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1219"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1224"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1237"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1238"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1239"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1240"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1241"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1252"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1253"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1270"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1283"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1306"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1320"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1291"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1309"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1310"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1311"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1312"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1314"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1315"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1316"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1317"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1318"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1335"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1361"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1362"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1372"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1392"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1405"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1406"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1407"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1410"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1411"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1436"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1348"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1371"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1385"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1400"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1426"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1427"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1437"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1438"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1439"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1440"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1441"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1540"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1552"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1563"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1457"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1470"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1471"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1472"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1475"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1476"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1501"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1502"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1503"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1504"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1505"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1506"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1605"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1617"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1628"/>
         <source>Diagram editors</source>
         <translation>原理圖編輯器</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="424"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
         <source>Export in pdf</source>
         <translation>匯出為 PDF</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="426"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="462"/>
         <source>Export one or more sheets of the current project</source>
         <comment>status bar tip</comment>
         <translation>匯出當前工程的一個或多個圖頁</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="455"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="491"/>
         <source>Paste at the original position</source>
         <translation>貼上到原始位置</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="456"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3651"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="492"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3716"/>
         <source>Paste element information</source>
         <translation>貼上元件資訊</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="468"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="504"/>
         <source>Places the clipboard&apos;s items at their original position and moves the cursor to that point</source>
         <comment>status bar tip</comment>
         <translation>將剪貼簿中的專案放到其原始位置，並將游標移到該點</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="469"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="505"/>
         <source>Copies the filled-in information of the element on the clipboard to the selected elements</source>
         <comment>status bar tip</comment>
         <translation>將剪貼簿中元件已填寫的資訊複製到選中的元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="518"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="554"/>
         <source>Copy text format</source>
         <translation>複製文字格式</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="519"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="555"/>
         <source>Apply text format</source>
         <translation>套用文字格式</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="524"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="560"/>
         <source>Copy the text format of the selected element as a template</source>
         <comment>status bar tip</comment>
         <translation>複製所選元件的文字格式作為範本</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="525"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="561"/>
         <source>Apply the copied text format to the selected elements</source>
         <comment>status bar tip</comment>
         <translation>將複製的文字格式套用到所選元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="593"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="629"/>
         <source>&amp;Duplicate</source>
         <translation>複製副本（&amp;D）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="631"/>
         <source>Copies the selection, offset by the configured spacing</source>
         <comment>status bar tip</comment>
         <translation>按配置的間距偏移複製所選內容</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="653"/>
         <source>Configure duplication...</source>
         <translation>配置複製副本...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="619"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="655"/>
         <source>Choose the spacing and direction used by Duplicate</source>
         <comment>status bar tip</comment>
         <translation>選擇“複製副本”使用的間距和方向</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="653"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="689"/>
         <source>Automatic disconnection of conductor(s)</source>
         <comment>Tool tip of auto break conductor</comment>
         <translation>導線自動斷開</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="655"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="691"/>
         <source>Automatically cut existing conductors when placing an element</source>
         <comment>Status tip of auto break conductor</comment>
         <translation>放置元件時自動切斷現有導線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="748"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
         <source>Text grid</source>
         <translation>文本柵格</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="755"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="791"/>
         <source>Snap grid for texts moved with the mouse.
 Hold Ctrl while moving to place freely.</source>
         <translation>滑鼠移動文本時使用的吸附柵格。
 移動時按住 Ctrl 可自由放置。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="761"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="797"/>
         <source>Disabled</source>
         <translation>已停用</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="775"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
         <source>View the guides</source>
         <translation>顯示參考線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="777"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="813"/>
         <source>Shows or hides the guides</source>
         <translation>顯示或隱藏參考線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="789"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="825"/>
         <source>Keep headers visible</source>
         <translation>保持標題可見</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="791"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="827"/>
         <source>Keeps the sheet&apos;s column numbers and row letters visible at the edge of the view</source>
         <translation>使圖頁的列號和行字母始終顯示在檢視邊緣</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="802"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="838"/>
         <source>Show cell boundaries</source>
         <translation>顯示單元格邊界</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="804"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="840"/>
         <source>Draws the boundaries of the sheet&apos;s columns and rows on the diagram, on screen only</source>
         <translation>在原理圖上繪製圖頁列和行的邊界，僅在螢幕上顯示</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="815"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="851"/>
         <source>Show</source>
         <translation>顯示</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="817"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="853"/>
         <source>Element texts</source>
         <translation>元件文本</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="818"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="854"/>
         <source>Conductor texts</source>
         <translation>導線文本</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="819"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="855"/>
         <source>Text fields</source>
         <translation>文本框</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="820"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="856"/>
         <source>Shapes</source>
         <translation>形狀</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="821"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="857"/>
         <source>Pictures</source>
         <translation>圖片</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="822"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="858"/>
         <source>Tables</source>
         <translation>表格</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="823"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="859"/>
         <source>Cross-references</source>
         <translation>交叉引用</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="840"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="876"/>
         <source>See Display &gt; Show</source>
         <translation>參見“顯示 &gt; 顯示”</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="904"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="902"/>
+        <source>Zoom of the folio on screen; a click offers fixed ones</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="908"/>
+        <source>%1 %</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="914"/>
+        <source>Whole folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="969"/>
         <source>Export to CSV</source>
         <translation>匯出為 CSV 格式</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="929"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="994"/>
         <source>Terminal block manager (DEV)</source>
         <translation>端子排管理器 (DEV)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="945"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1010"/>
         <source>Add a cable list</source>
         <translation>新增線纜清單</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="953"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1018"/>
         <source>Export the cable list to CSV format</source>
         <translation>將線纜清單匯出為 CSV 格式</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="966"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1031"/>
         <source>Export the list of names of wires</source>
         <translation>匯出導線名稱列表</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="977"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1042"/>
         <source>Export the wiring diagram</source>
         <translation>匯出接線表</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="989"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1054"/>
         <source>Wiring list (database)</source>
         <translation>接線清單（資料庫）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1001"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1066"/>
         <source>Automatic numbering of terminals</source>
         <translation>端子自動編號</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1007"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1072"/>
         <source>Cable numbering</source>
         <translation>線纜編號</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1009"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1074"/>
         <source>Shows the cable numbering rule of the project and renumbers its cables with it</source>
         <translation>顯示工程的線纜編號規則，並據此對線纜重新編號</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1014"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4779"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4795"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1079"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4844"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4860"/>
         <source>Reload element drawings</source>
         <translation>重新載入元件圖形</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1017"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1082"/>
         <source>Redraws each placed element from its current definition, without having to close and reopen the project (action cannot be undone)</source>
         <translation>根據當前定義重新繪製每個已放置的元件，無需關閉並重新開啟工程（此操作無法撤銷）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1023"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1088"/>
         <source>Run a script...</source>
         <translation>執行指令碼...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1026"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1091"/>
         <source>Runs a JavaScript script on the current project (see qet.* in the script for the available API)</source>
         <translation>在當前工程上執行 JavaScript 指令碼（可用的 API 見指令碼中的 qet.*）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1040"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1105"/>
         <source>Record a macro</source>
         <translation>錄製宏</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1043"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1108"/>
         <source>Records what you do on the project, for an AI assistant to make a script of; click again to stop</source>
         <translation>記錄您對工程的操作，供 AI 助手據此編寫指令碼；再次單擊停止</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1056"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1121"/>
         <source>Manage scripts…</source>
         <translation>管理指令碼…</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1057"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1122"/>
         <source>Write a script and make it a button with an icon</source>
         <translation>編寫指令碼並將其製作成帶圖示的按鈕</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1074"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1139"/>
         <source>Open the scripts folder</source>
         <translation>開啟指令碼資料夾</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1077"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1142"/>
         <source>Every .js file in this folder that starts with a // ==QETScript== header becomes a button</source>
         <translation>此資料夾中每個以 // ==QETScript== 標頭開頭的 .js 檔案都會成為一個按鈕</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1086"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1151"/>
         <source>Export the internal project database</source>
         <translation>匯出內部工程資料庫</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1118"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1183"/>
         <source>Arranges windows in a cascade pattern</source>
         <comment>status bar tip</comment>
         <translation>層疊視窗</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1155"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1220"/>
         <source>Activates the next project</source>
         <comment>status bar tip</comment>
         <translation>啟用下一個工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1160"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1225"/>
         <source>Activates the previous project</source>
         <comment>status bar tip</comment>
         <translation>啟用上一個工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1169"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1234"/>
         <source>Save a copy for an older QElectroTech</source>
         <translation>為舊版 QElectroTech 儲存副本</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1183"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1248"/>
         <source>Writes a copy of the current project as a .qet file, which versions of QElectroTech that cannot open a .qetz open</source>
         <comment>status bar tip</comment>
         <translation>將當前工程的副本寫為 .qet 檔案，無法開啟 .qetz 的 QElectroTech 版本可以開啟它</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1234"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1299"/>
         <source>Rotate the group</source>
         <translation>旋轉組</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1236"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1301"/>
         <source>Horizontal mirror</source>
         <translation>水平映象</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1237"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1302"/>
         <source>Vertical mirror</source>
         <translation>垂直映象</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1241"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1775"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1306"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1840"/>
         <source>Group</source>
         <comment>fr: Grouper</comment>
         <translation>編組</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1242"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1307"/>
         <source>Ungroup</source>
         <translation>取消編組</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1263"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1328"/>
         <source>Insert the last element</source>
         <translation>插入上一個元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1265"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1330"/>
         <source>Places the last inserted element again</source>
         <comment>status bar tip</comment>
         <translation>再次放置上一個插入的元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1277"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1342"/>
         <source>Search for a command…</source>
         <translation>搜尋命令…</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1279"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1344"/>
         <source>Type part of a command name and press Enter to launch it</source>
         <comment>status bar tip</comment>
         <translation>輸入命令名稱的一部分，按 Enter 執行</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1299"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1364"/>
         <source>Insert an element…</source>
         <translation>插入元件…</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1301"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1366"/>
         <source>Opens the element picker at the cursor position</source>
         <comment>status bar tip</comment>
         <translation>在游標位置開啟元件選擇器</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1314"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1379"/>
         <source>Shortcut bar</source>
         <translation>快捷欄</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1316"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1381"/>
         <source>Opens, at the cursor position, the commands useful for the selection, and the element picker</source>
         <comment>status bar tip</comment>
         <translation>在游標位置開啟適用於所選物件的命令和元件選擇器</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1328"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1393"/>
         <source>Repeat the last command</source>
         <translation>重複上一個命令</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1330"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1395"/>
         <source>Relaunches the last drawing tool or element insertion (Enter on the sheet)</source>
         <comment>status bar tip</comment>
         <translation>重新啟動上一個繪圖工具或元件插入（在圖頁上按 Enter）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1342"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1407"/>
         <source>Rotates the selection as a group around its centre, rather than each element in place</source>
         <comment>status bar tip</comment>
         <translation>將所選物件作為一個整體圍繞中心旋轉，而不是每個元件原地旋轉</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1344"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1409"/>
         <source>Flips the selected elements from left to right</source>
         <comment>status bar tip</comment>
         <translation>將選中的元件左右翻轉</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1345"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1410"/>
         <source>Flips the selected elements from top to bottom</source>
         <comment>status bar tip</comment>
         <translation>將選中的元件上下翻轉</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1363"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1428"/>
         <source>Groups the selected elements, texts, shapes and images: they are selected, moved and copied together</source>
         <comment>status bar tip</comment>
         <translation>將選中的元件、文本、形狀和影像編組：它們將一起被選擇、移動和複製</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1364"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1429"/>
         <source>Breaks up the selected groups</source>
         <comment>status bar tip</comment>
         <translation>拆分選中的編組</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1371"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1436"/>
         <source>Align to grid</source>
         <translation>對齊到柵格</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1373"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1438"/>
         <source>Puts the selected elements, images and texts back on the grid</source>
         <comment>status bar tip</comment>
         <translation>將選中的元件、影像和文本放回柵格上</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1382"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1447"/>
         <source>Align left</source>
         <translation>左對齊</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1382"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1447"/>
         <source>Aligns the left edges of the selected items</source>
         <comment>status bar tip</comment>
         <translation>對齊選中專案的左邊緣</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1383"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1448"/>
         <source>Centre horizontally</source>
         <translation>水平居中</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1383"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1448"/>
         <source>Aligns the selected items on one vertical line, by their origin point for elements</source>
         <comment>status bar tip</comment>
         <translation>將選中的專案對齊到同一條垂直線上，元件按其原點對齊</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1384"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1449"/>
         <source>Align right</source>
         <translation>右對齊</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1384"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1449"/>
         <source>Aligns the right edges of the selected items</source>
         <comment>status bar tip</comment>
         <translation>對齊選中專案的右邊緣</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1385"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1450"/>
         <source>Align top</source>
         <translation>頂部對齊</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1385"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1450"/>
         <source>Aligns the top edges of the selected items</source>
         <comment>status bar tip</comment>
         <translation>對齊選中專案的上邊緣</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1386"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1451"/>
         <source>Centre vertically</source>
         <translation>垂直居中</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1386"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1451"/>
         <source>Aligns the selected items on one horizontal line, by their origin point for elements</source>
         <comment>status bar tip</comment>
         <translation>將選中的專案對齊到同一條水平線上，元件按其原點對齊</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1387"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1452"/>
         <source>Align bottom</source>
         <translation>底部對齊</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1387"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1452"/>
         <source>Aligns the bottom edges of the selected items</source>
         <comment>status bar tip</comment>
         <translation>對齊選中專案的下邊緣</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1402"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1467"/>
         <source>Select all conductors</source>
         <translation>選擇所有導線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1403"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1468"/>
         <source>Select all text fields</source>
         <translation>選擇所有文本框</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1416"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1481"/>
         <source>Selects all conductors on the sheet, deselects the rest</source>
         <comment>status bar tip</comment>
         <translation>選擇圖頁上的所有導線，並取消選擇其餘物件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1417"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1482"/>
         <source>Selects all text fields on the sheet, deselects the rest</source>
         <comment>status bar tip</comment>
         <translation>選擇圖頁上的所有文本框，並取消選擇其餘物件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1433"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1498"/>
         <source>Centre on the cursor</source>
         <translation>以游標為中心</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1448"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1513"/>
         <source>Centres the sheet on the point under the mouse cursor, without changing the zoom</source>
         <comment>status bar tip</comment>
         <translation>以滑鼠游標下的點為圖頁中心，不改變縮放</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1476"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1541"/>
         <source>Add a PDF</source>
         <translation>新增 PDF</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1481"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1546"/>
         <source>Add an arc</source>
         <translation>新增圓弧</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1483"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1548"/>
         <source>Add a curve</source>
         <translation>新增曲線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1484"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1549"/>
         <source>Add a fillet</source>
         <translation>新增圓角</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1485"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1550"/>
         <source>Add a terminal plan</source>
         <translation>新增端子排</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1486"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1551"/>
         <source>Add a generic device…</source>
         <translation>新增通用裝置…</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1489"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1554"/>
         <source>Draw a cable</source>
         <translation>繪製線纜</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1491"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1556"/>
         <source>Adds a text field to the current sheet</source>
         <translation>將文本框新增到當前頁面</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1492"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1557"/>
         <source>Add an image to the current sheet</source>
         <translation>將影像新增到當前頁面</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1494"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1559"/>
         <source>Adds a PDF page to the current sheet</source>
         <translation>在當前圖紙中新增 PDF 頁面</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1496"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1561"/>
         <source>Add a line to the current sheet</source>
         <translation>在當前頁面中新增一條線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1497"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1562"/>
         <source>Adds a rectangle on the current sheet</source>
         <translation>在當前頁面新增一個矩形</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1498"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1563"/>
         <source>Add an ellipse to the current sheet</source>
         <translation>在當前頁面新增一個橢圓</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1499"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1564"/>
         <source>Adds an arc on the current sheet</source>
         <translation>在當前圖頁上新增圓弧</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1500"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1565"/>
         <source>Adds a polyline to the current sheet</source>
         <translation>在當前圖頁新增多段線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1501"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1566"/>
         <source>Adds a Bézier curve to the current sheet</source>
         <translation>在當前圖頁上新增貝塞爾曲線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1502"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1567"/>
         <source>Rounds the corner between two lines of the current sheet</source>
         <translation>將當前圖頁上兩條線之間的拐角倒圓</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1503"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1568"/>
         <source>Adds a terminal plan to the current sheet</source>
         <translation>在當前圖頁新增端子排</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1504"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1569"/>
         <source>Makes a box symbol with terminals on any side and places it on the current sheet</source>
         <translation>建立一個任意側都可帶端子的框形符號，並將其放到當前圖頁上</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1505"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1570"/>
         <source>Draws the main line of a cable: every conductor crossed becomes one of its cores</source>
         <translation>繪製線纜的主線：穿過的每根導線都成為它的一根芯線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1562"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1627"/>
         <source>Navigate to an element</source>
         <translation>跳轉到元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1564"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1629"/>
         <source>Quickly search for and select an element in the sheet</source>
         <comment>status bar tip</comment>
         <translation>快速搜尋並選中圖紙中的元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1695"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1760"/>
         <source>Numbering</source>
         <translation>編號</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1696"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1761"/>
         <source>Lists</source>
         <translation>清單</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2027"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2092"/>
         <source>XML Files (*.xml);;All files (*)</source>
         <translation>XML 檔案 (*.xml);;所有檔案 (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2083"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2148"/>
         <source>%1 is being opened by another session of QElectroTech.</source>
         <translation>%1 正在被另一個 QElectroTech 工作階段開啟。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2086"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2151"/>
         <source>%1 is open by %2 on %3 since %4</source>
         <translation>%1 自 %4 起已被 %2 在 %3 上開啟</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2092"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2157"/>
         <source> (active just now).</source>
         <translation>（剛剛活躍）。</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2093"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2158"/>
         <source> (active %n minute(s) ago).</source>
         <translation>
             <numerusform>（%n 分鐘前活躍）。</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2099"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2164"/>
         <source>Project in use</source>
         <comment>message box title</comment>
         <translation>工程正在使用中</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2100"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2165"/>
         <source>Open it read-only to look at it without changing it. Open it anyway only if you know that session is not using it any more: both of you could then save over each other.</source>
         <translation>以只讀方式開啟可檢視而不修改。只有在確定該工作階段不再使用它時才強制開啟：否則雙方的儲存可能相互覆蓋。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2103"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2168"/>
         <source>Open read-only</source>
         <translation>以只讀方式開啟</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2104"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2169"/>
         <source>Open anyway</source>
         <translation>仍然開啟</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2130"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2158"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2169"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2212"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2195"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2223"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2234"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2277"/>
         <source>Cannot open %1</source>
         <translation>無法開啟 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2132"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2197"/>
         <source>The file %1 cannot be read as a QElectroTech project.</source>
         <translation>無法將檔案 %1 作為 QElectroTech 工程讀取。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2133"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2198"/>
         <source>The project file is damaged:
 %1</source>
         <translation>工程檔案已損壞：
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2138"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2203"/>
         <source>Open the version saved %1</source>
         <translation>開啟 %1 儲存的版本</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2143"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2208"/>
         <source>Recover what can be read</source>
         <translation>恢復可讀取的內容</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2145"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2210"/>
         <source>Either opens as a new project, &quot;%1&quot;; %2 is left as it is.</source>
         <translation>兩者都會作為新工程「%1」開啟；%2 保持不變。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2159"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2224"/>
         <source>Nothing can be recovered from it:
 %1</source>
         <translation>無法從中恢復任何內容：
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2173"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2238"/>
         <source>Project recovered</source>
         <translation>工程已恢復</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2174"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2239"/>
         <source>What could be read of %1 is open as a new project. Some parts could not be read and were left out: see the details.</source>
         <translation>%1 中可讀取的內容已作為新工程開啟。部分內容無法讀取，已被略去：請查看詳細資訊。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2194"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2259"/>
         <source>%1 (recovered)</source>
         <translation>%1（已恢復）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2197"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2262"/>
         <source>%1 (recovered %2)</source>
         <translation>%1（於 %2 恢復）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2381"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2446"/>
         <source>%1 on %2 has taken over %3. Save your changes with Save As to keep them.</source>
         <translation>%2 上的 %1 已接管 %3。請使用「另存為」儲存您的修改以保留它們。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2396"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2461"/>
         <source>This project was saved by a later version of QElectroTech. It is opened read-only, so that saving it cannot lose what this version does not know. Use Save As to keep a copy in this version&apos;s format.</source>
         <translation>此工程由較新版本的 QElectroTech 儲存。它以只讀方式開啟，以免儲存時丟失此版本無法識別的內容。請使用“另存為”以此版本的格式儲存副本。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2455"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2520"/>
         <source>Elements not loaded</source>
         <comment>message box title</comment>
         <translation>元件未載入</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2456"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2521"/>
         <source>%n elements could not be loaded: their definition is missing from the project and from the collections.
 
 They are not shown, but they are kept in the file as they are, with their conductors, and come back once their definition is available again.</source>
@@ -13761,7 +13776,7 @@ They are not shown, but they are kept in the file as they are, with their conduc
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2473"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2538"/>
         <source>%n conductors could not be joined to their terminals and were not loaded. The element&apos;s definition is missing, or was replaced by another one with different terminals.
 
 They are not shown, but they are kept in the file as they are, and join their terminals again once the definition has them where they were.</source>
@@ -13773,19 +13788,19 @@ They are not shown, but they are kept in the file as they are, and join their te
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2809"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2874"/>
         <source>Automatic numbering</source>
         <comment>window title</comment>
         <translation>自動編號</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2810"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2875"/>
         <source>No automatic cable numbering is defined.</source>
         <comment>shown when a project has no cable numbering rule</comment>
         <translation>未定義線纜自動編號。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2814"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2879"/>
         <source>Do you want to define one now?
 
 You can also number the cables automatically later: the rule is set at any time in the project properties, on the &quot;Auto Numbering&quot; page.</source>
@@ -13795,186 +13810,181 @@ You can also number the cables automatically later: the rule is set at any time 
 您也可以稍後再自動為線纜編號：隨時可以在工程屬性的“自動編號”頁面中設定規則。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2820"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2885"/>
         <source>Yes</source>
         <comment>yes</comment>
         <translation>是</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2821"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2886"/>
         <source>No</source>
         <comment>no</comment>
         <translation>否</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2822"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2887"/>
         <source>Cancel</source>
         <comment>cancel</comment>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3431"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3496"/>
         <source>Edit the information of the elements</source>
         <comment>edit several elements</comment>
         <translation>編輯元件資訊</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3462"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3527"/>
         <source>Edit the cable</source>
         <comment>edit cable</comment>
         <translation>編輯線纜</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5044"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5109"/>
         <source>Remembered after a restart</source>
         <translation>重啟後仍保留</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5163"/>
-        <source>%1 (snap off)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5208"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5272"/>
         <source>Text format of &quot;%1&quot; copied</source>
         <translation>已複製「%1」的文字格式</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5257"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5321"/>
         <source>Text format applied to %n element(s)</source>
         <translation>
             <numerusform>已將文字格式套用到 %n 個元件</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1581"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1646"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="67"/>
         <source>Tools</source>
         <translation>工具</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1584"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1649"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="69"/>
         <source>Display</source>
         <translation>顯示</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1587"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1652"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="71"/>
         <source>Diagram</source>
         <translation>原理圖</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1590"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1655"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="73"/>
         <source>Add</source>
         <translation>新增</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1622"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1687"/>
         <source>Scripts</source>
         <comment>toolbar title</comment>
         <translation>指令碼</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1690"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1755"/>
         <source>&amp;File</source>
         <translation>檔案（&amp;F）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1691"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1756"/>
         <source>&amp;Edit</source>
         <translation>編輯（&amp;E）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1692"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1757"/>
         <source>&amp;Project</source>
         <translation>工程（&amp;P）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1697"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1762"/>
         <source>Displ&amp;ay</source>
         <translation>顯示（&amp;D）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1699"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1764"/>
         <source>Wi&amp;ndows</source>
         <translation>視窗（&amp;W）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1721"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1786"/>
         <source>&amp;Latest files</source>
         <translation>最近開啟（&amp;R）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1756"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1821"/>
         <source>&amp;Add</source>
         <translation>新增（&amp;A）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1764"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1829"/>
         <source>Selection</source>
         <translation>選擇</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1780"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1845"/>
         <source>Align</source>
         <translation>對齊</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1794"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1859"/>
         <source>Rows and columns</source>
         <translation>行和列</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1797"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1862"/>
         <source>Depth</source>
         <translation>深度</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1825"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4909"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1890"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4974"/>
         <source>Scripts</source>
         <translation>指令碼</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1857"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1922"/>
         <source>Display or hide the main toolbar</source>
         <translation>是否顯示主工具欄</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1858"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1923"/>
         <source>Display or hide the Display toolbar</source>
         <translation>是否顯示顯示工具欄</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1859"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1924"/>
         <source>Display or hide the Diagram toolbar</source>
         <translation>是否顯示原理圖工具欄</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1860"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1925"/>
         <source>Show or hide the elements panel</source>
         <translation>是否顯示工程面板</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1861"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1926"/>
         <source>Display or hide the undo list</source>
         <translation>是否顯示撤銷列表</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1865"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1930"/>
         <source>Display projects</source>
         <translation>顯示工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1954"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1977"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2019"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2042"/>
         <source>Project %1 registered in the directory: %2.</source>
         <translation>工程 %1 儲存在目錄中：%2。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2025"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2090"/>
         <source>Open a file</source>
         <translation>開啟檔案</translation>
     </message>
@@ -13983,49 +13993,49 @@ You can also number the cables automatically later: the rule is set at any time 
         <translation type="vanished">QElectroTech 工程 (*.qet);;XML 檔案 (*.xml);;所有檔案 (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2264"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2280"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2329"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2345"/>
         <source>Unable to open file</source>
         <comment>message box title</comment>
         <translation>無法開啟檔案</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2266"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2331"/>
         <source>It appears the %1 file which you are trying to open does not exist or does not exist anymore.</source>
         <translation>您嘗試開啟的檔案 %1 似乎不存在或不再存在。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2281"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2346"/>
         <source>The file you try to open does not seem readable and can not be opened. Please check the file permissions.</source>
         <translation>您嘗試開啟的檔案似乎不可讀。 因此不可能開啟它。 請檢查檔案許可權。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2294"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2395"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2359"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2460"/>
         <source>Opening the file read-only</source>
         <comment>message box title</comment>
         <translation>以只讀方式開啟工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2295"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2360"/>
         <source>The project you try to open does not seem writable. It will be opened read-only.</source>
         <translation>您嘗試開啟的工程似乎不可寫。 因此它將以只讀模式開啟。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2362"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3801"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2427"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3866"/>
         <source>Unable to open project</source>
         <comment>message box title</comment>
         <translation>無法開啟工程</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2364"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2429"/>
         <source>The file %1 does not appear to be a QElectroTech project file. Thus it cannot be opened.</source>
         <comment>message box content</comment>
         <translation>檔案 %1 看起來不是 QElectroTech 工程檔案。 因此無法開啟。</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2417"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2482"/>
         <source>%n font descriptions written in a foreign or corrupted format have been restored. They will be rewritten in a stable format the next time the project is saved.</source>
         <comment>message box content</comment>
         <translation>
@@ -14033,7 +14043,7 @@ You can also number the cables automatically later: the rule is set at any time 
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2425"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2490"/>
         <source>%n font descriptions could not be read; the default font will be used for these texts.</source>
         <comment>message box content</comment>
         <translation>
@@ -14041,19 +14051,19 @@ You can also number the cables automatically later: the rule is set at any time 
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2432"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2497"/>
         <source>Project fonts</source>
         <comment>message box title</comment>
         <translation>專案字型</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2445"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2449"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2510"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2514"/>
         <source>Sheet %1: %2</source>
         <translation>圖頁 %1：%2</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2472"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2537"/>
         <source>Conductors not loaded</source>
         <comment>message box title</comment>
         <translation>導線未載入</translation>
@@ -14070,180 +14080,180 @@ If you save the project, these conductors will disappear from the file. Close it
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3005"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3070"/>
         <source>Unable to delete the terminal</source>
         <translation>不能刪除端子</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3006"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3071"/>
         <source>The deletion cannot be performed because the selection contains one or more terminals that are bridged and/or belong to a multi-level terminal.
 Unbridge and/or remove the levels from the affected terminals so that they can be deleted</source>
         <translation>無法執行刪除操作，因為所選物件包含一個或多個已橋接或屬於多層端子的端子。
 請解除橋接或移除相關端子的層級，以便將其刪除。</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3141"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3206"/>
         <source>%n items put back on the grid</source>
         <translation>
             <numerusform>%n 個專案已放回柵格</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3142"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3207"/>
         <source>%n items aligned</source>
         <translation>
             <numerusform>已對齊 %n 個專案</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3148"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3213"/>
         <source>The selection is already on the grid</source>
         <translation>所選內容已在柵格上</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3150"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3215"/>
         <source>Select at least two unlocked elements, images, texts, shapes or groups</source>
         <translation>請至少選擇兩個未鎖定的元件、影像、文本、形狀或編組</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3152"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3217"/>
         <source>The selection is already aligned, to the nearest grid step</source>
         <translation>所選內容已對齊（精確到最近的柵格步長）</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3156"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3221"/>
         <source>(%n locked objects left in place)</source>
         <translation>
             <numerusform>（%n 個鎖定的物件保持原位）</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3441"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3506"/>
         <source>Edit the element</source>
         <comment>edit element</comment>
         <translation>編輯元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3448"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3513"/>
         <source>Edit the text field</source>
         <comment>edit text field</comment>
         <translation>編輯文本框</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3455"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3520"/>
         <source>Edit the image</source>
         <comment>edit image</comment>
         <translation>編輯圖片</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3469"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3534"/>
         <source>Edit conductor</source>
         <comment>edit conductor</comment>
         <translation>編輯導線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3477"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3542"/>
         <source>Edit the selected object</source>
         <comment>edit selected item</comment>
         <translation>編輯所選物件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3802"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3867"/>
         <source>An error occurred while opening file %1.</source>
         <comment>message box content</comment>
         <translation>開啟檔案 %1 時出錯。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3850"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3915"/>
         <source>Activates the project « %1 »</source>
         <translation>啟用工程《%1》</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4074"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4139"/>
         <source>Are you sure you want to delete this sheet?</source>
         <translation>你確定你要刪除這個圖頁嗎？</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4079"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4144"/>
         <source>Delete the sheets</source>
         <translation>刪除圖頁</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4080"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4145"/>
         <source>Are you sure you want to delete the selected %1 sheets ?</source>
         <translation>你確定你要刪除所選的圖頁 %1 嗎？</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4097"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4162"/>
         <source>Delete %1 sheets</source>
         <translation>刪除 %1 個圖紙</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4135"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4153"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4171"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4189"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4207"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4225"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4243"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4200"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4218"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4236"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4254"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4272"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4290"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4308"/>
         <source>Move the sheets</source>
         <translation>移動圖紙</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4336"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4401"/>
         <source>Error</source>
         <comment>message box title</comment>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4462"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4527"/>
         <source>Repeat: insert &quot;%1&quot;</source>
         <translation>重複：插入“%1”</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4463"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4528"/>
         <source>Repeat: %1</source>
         <translation>重複：%1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4760"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4825"/>
         <source>sheet %1</source>
         <translation>圖頁 %1</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="4768"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4833"/>
         <source>%n elements redrawn.</source>
         <translation>
             <numerusform>已重新繪製 %n 個元件。</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="4772"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4837"/>
         <source>%n elements for which no definition could be found or which were illegible: their current design has been retained.</source>
         <translation>
             <numerusform>%n 個元件找不到定義或定義無法讀取：保留其當前圖形。</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="4784"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4849"/>
         <source>%n elements not redrawn: their size, grip point or terminals have changed (a terminal was added, removed or moved).</source>
         <translation>
             <numerusform>%n 個元件未重新繪製：其尺寸、插入點或端子已改變（新增、刪除或移動了端子）。</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4788"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4853"/>
         <source>To update them, they must be deleted then reinserted. Warning: this operation removes the conductors already connected to these elements, which will need to be redrawn.</source>
         <translation>要更新它們，必須先刪除再重新插入。警告：此操作會刪除已連線到這些元件的導線，需要重新繪製。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4817"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4821"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4882"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4886"/>
         <source>Run a script</source>
         <translation>執行指令碼</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4846"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4911"/>
         <source>Scripts are disabled.
 
 A script runs with your permissions: it can read and modify the open project and write files. Only run scripts whose origin you know.
@@ -14256,40 +14266,40 @@ Enable scripts? This setting can be changed in Configure QElectroTech &gt; Gener
 是否啟用指令碼？此設定可在“配置 QElectroTech &gt; 常規 &gt; 工程”中更改。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4823"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4888"/>
         <source>JavaScript scripts (*.js);;All files (*)</source>
         <translation>JavaScript 指令碼 (*.js);;所有檔案 (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4923"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4988"/>
         <source>Ignored: %1</source>
         <translation>已忽略：%1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4958"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5019"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5023"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5084"/>
         <source>Stop</source>
         <translation>停止</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4959"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5024"/>
         <source>Stop recording the macro</source>
         <translation>停止錄製宏</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="4969"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5034"/>
         <source>● Recording: %n steps</source>
         <translation>
             <numerusform>● 正在錄製：%n 步</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4984"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5049"/>
         <source>Macro recorded</source>
         <translation>宏已錄製</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="4985"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5050"/>
         <source>“%1”: %n steps.
 
 To make a script of it, ask your AI assistant: the button below copies the request, just paste it into its window.</source>
@@ -14300,116 +14310,115 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4994"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5059"/>
         <source>&amp;Copy the request for the assistant</source>
         <translation>複製給助手的請求（&amp;C）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4995"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5060"/>
         <source>&amp;Open the folder</source>
         <translation>開啟資料夾（&amp;O）</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5001"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5066"/>
         <source>Request copied: paste it into the assistant&apos;s window</source>
         <translation>請求已複製：請將其貼上到助手視窗中</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5020"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5085"/>
         <source>Close the assistant&apos;s connection for the rest of the session</source>
         <translation>在本次會話剩餘時間內關閉助手的連線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5029"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5094"/>
         <source>Live mode: assistant connected</source>
         <translation>即時模式：助手已連線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5030"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5095"/>
         <source>Live mode: waiting for an assistant</source>
         <translation>即時模式：等待助手連線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5038"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5082"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5103"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5147"/>
         <source>Assistant</source>
         <translation>助手</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5042"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5107"/>
         <source>Ask before running a script the assistant wrote</source>
         <translation>執行助手編寫的指令碼前先詢問</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5099"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5164"/>
         <source>Live mode: %1 %2 at %3</source>
         <translation>即時模式：%3 時 %1 %2</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5141"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5206"/>
         <source>%n kinds of items hidden</source>
         <translation>
             <numerusform>已隱藏 %n 類專案</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5178"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5183"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5242"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5247"/>
         <source>Texts %1</source>
         <translation>文本 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4307"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4372"/>
         <source>Zoom %1 %</source>
         <translation>縮放 %1 %</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="853"/>
         <source>Zoom of the folio on screen</source>
-        <translation>螢幕上圖紙的縮放</translation>
+        <translation type="vanished">螢幕上圖紙的縮放</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="702"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="738"/>
         <source>Snap to the grid</source>
         <translation>吸附到網格</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="705"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="741"/>
         <source>Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point</source>
         <translation>將指標及移動或放置的物件吸附到網格；關閉時吸附到最近的點</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="715"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="751"/>
         <source>Grid step</source>
         <translation>網格步長</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="721"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="757"/>
         <source>The step of the grid that symbols, conductors and the pointer snap to</source>
         <translation>符號、導線和指標吸附的網格步長</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="724"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="760"/>
         <source>Fine (5)</source>
         <translation>細 (5)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="761"/>
         <source>Medium (10)</source>
         <translation>中 (10)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="726"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="762"/>
         <source>Coarse (20)</source>
         <translation>粗 (20)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5158"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5223"/>
         <source>Grid %1</source>
         <translation>網格 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5159"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5224"/>
         <source>Grid %1 × %2</source>
         <translation>網格 %1 × %2</translation>
     </message>
@@ -17272,22 +17281,22 @@ Do you want to replace it ?</source>
         <translation>生成導線</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4610"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4675"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>要安裝外掛 qet_tb_generator&lt;br&gt;請訪問：&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;需要python 3.5或更高版本。&lt;br&gt;&lt;B&gt;&lt;U&gt;首此在Windows上安裝&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. 如果需要，請安裝 python 3.5 或更高版本&lt;br&gt;訪問：&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; 在 Windows 上更新&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;使用者可以在終端中啟動此目錄的指令碼&lt;br&gt;C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4630"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4695"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>要安裝外掛 qet_tb_generator&lt;br&gt;請訪問：&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;首此在macOSX上安裝：&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. 如果需要，僅安裝python 3.11 捆綁包即可，&lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 執行 Profile.command 指令碼&lt;br&gt;因為程式使用硬編碼路徑來定位 qet-tb-generator 外掛 &lt;br&gt; 請訪問：&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; 在 macOSX 上更新：&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4649"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4714"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>要安裝外掛 qet_tb_generator&lt;br&gt;請訪問：&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;需要 python 3.5 或更高版本。&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;首次在Linux 上安裝&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. 檢查您是否已安裝 pip3：pip3 --version&lt;br&gt;如果未安裝：sudo apt-get install python3-pip&lt;br&gt;2. 安裝程式：sudo pip3 install qet_tb_generator&lt;br&gt;3. 執行程式：qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;在 Linux 上更新&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4669"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4734"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>啟動 qet_tb_generator 外掛時出錯</translation>
     </message>
