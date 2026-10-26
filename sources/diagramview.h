@@ -155,6 +155,10 @@ class DiagramView : public PaletteGraphicsView
 			/// freely otherwise; one setting for every view
 		static bool gridOnlyWhilePlacing();
 		static void setGridOnlyWhilePlacing(bool on);
+			/// The shaded lines from a dragged symbol's terminals to the
+			/// terminals in line with them; off by default
+		static bool terminalHelpLinesShown();
+		static void setTerminalHelpLinesShown(bool shown);
 		bool crosshairVisible() const { return m_crosshair_visible; }
 			/// The pointer drawn on the crosshair's grid point, if any:
 			/// 0 none (the system's shows), 1 an arrow, 2 a four-way arrow

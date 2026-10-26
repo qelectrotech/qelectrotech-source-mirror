@@ -2054,6 +2054,7 @@ namespace {
 	int s_crosshair = -1;
 	int s_pointer_aids = -1;
 	int s_grid_only_placing = -1;
+	int s_terminal_help_lines = -1;
 }
 
 /**
@@ -2137,6 +2138,33 @@ void DiagramView::setGridOnlyWhilePlacing(bool on)
 	s_grid_only_placing = on;
 	QSettings settings;
 	settings.setValue(QStringLiteral("diagrameditor/grid_only_placing"), on);
+}
+
+/**
+	@brief DiagramView::terminalHelpLinesShown
+	@return true when a symbol being placed or dragged draws a shaded line
+	from each of its terminals to the terminal in line with it. Off by
+	default: the crosshair shows the same and the lines get in the way.
+*/
+bool DiagramView::terminalHelpLinesShown()
+{
+	if (s_terminal_help_lines < 0) {
+		QSettings settings;
+		s_terminal_help_lines = settings.value(QStringLiteral("diagrameditor/terminal_help_lines"), false).toBool();
+	}
+	return s_terminal_help_lines;
+}
+
+/**
+	@brief DiagramView::setTerminalHelpLinesShown
+	@param shown : see terminalHelpLinesShown(); kept in the settings, for
+	the next drag.
+*/
+void DiagramView::setTerminalHelpLinesShown(bool shown)
+{
+	s_terminal_help_lines = shown;
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/terminal_help_lines"), shown);
 }
 
 /**
