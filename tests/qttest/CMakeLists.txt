@@ -1279,7 +1279,7 @@ add_executable(
   tst_projectsettingrows.cpp)
 add_test(NAME tst_projectsettingrows COMMAND tst_projectsettingrows)
 add_dependencies(tst_projectsettingrows qelectrotech)
-target_link_libraries(tst_projectsettingrows PRIVATE Qt::Test)
+target_link_libraries(tst_projectsettingrows PRIVATE Qt::Test Qt::Xml)
 target_compile_definitions(tst_projectsettingrows PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 

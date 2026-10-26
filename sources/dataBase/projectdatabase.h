@@ -171,7 +171,8 @@ class projectDataBase : public QObject
 		void storeFolioNumber(const QUuid &folio, int index, int total);
 
 			//The project's settings (title, project properties, new-folio
-			//defaults, wire hops, upright texts, wiring rules), one row per
+			//defaults, wire hops, upright texts, split terminal labels,
+			//wiring rules, chained reports, the folios' origin), one row per
 			//value: @p settings is the <project> element QETProject writes
 			//them into (QETProject::storeSettings()).
 		struct ProjectSetting {

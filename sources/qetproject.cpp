@@ -2371,6 +2371,7 @@ void QETProject::setTerminalLabelSplit(bool split)
 		return;
 	}
 	m_terminal_label_split = split;
+	storeSettings();
 	for (Diagram *diagram : diagrams()) {
 		for (Element *element : diagram->elements()) {
 			element->refreshLabelFields();
@@ -2486,6 +2487,7 @@ void QETProject::setOrigin(ProjectOrigin::Mode mode)
 {
 	if (mode == m_origin) { return; }
 	m_origin = mode;
+	storeSettings();
 	for (Diagram* diagram : diagrams()) { diagram->update(); }
 }
 
@@ -4432,6 +4434,7 @@ void QETProject::setChainedReports(bool enable)
 	}
 	m_chained_reports = enable;
 	m_has_chained_reports_attribute = true;
+	storeSettings();
 	if (m_chained_reports) {
 		autoLinkReportElements();
 	}
@@ -4530,7 +4533,10 @@ void QETProject::storeSettings()
 	root.appendChild(properties);
 	writeWireHopsXml(root);
 	writeSymbolTextsXml(root);
+	writeTerminalLabelSplitXml(root);
 	writeWiringRulesXml(root);
+	writeChainedReportsXml(root);
+	writeOriginXml(root);
 	QDomElement new_diagrams = document.createElement(QStringLiteral("newdiagrams"));
 	writeDefaultPropertiesXml(new_diagrams);
 	for (const QString &numbering : {QStringLiteral("conductors_autonums"), QStringLiteral("folio_autonums"),
