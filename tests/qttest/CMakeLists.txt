@@ -1589,3 +1589,20 @@ qet_add_app_test(tst_collectionclosedproject tst_collectionclosedproject.cpp)
 # A second QElectroTech writes to the shared element cache at once instead of
 # waiting for the first to close (#1571).
 qet_add_app_test(tst_elementcachelock tst_elementcachelock.cpp)
+
+# MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
+# Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
+# PATH for every test above and keeps the ENVIRONMENT each test sets
+# (QT_QPA_PLATFORM=offscreen, ...); it needs CMake 3.22.
+if(MSVC)
+  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+  if(CMAKE_VERSION VERSION_LESS 3.22)
+    message(WARNING
+      "CMake ${CMAKE_VERSION} cannot add Qt's bin folder to the tests' PATH "
+      "(ENVIRONMENT_MODIFICATION needs 3.22): put it on PATH before running "
+      "ctest.")
+  elseif(qet_qttests)
+    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+      "PATH=path_list_prepend:$<TARGET_FILE_DIR:Qt6::Core>")
+  endif()
+endif()
