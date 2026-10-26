@@ -582,6 +582,9 @@ class QETProject : public QObject
 			/// Something was edited since the project was opened: a table
 			/// filled from the database may have changed
 		bool m_edited_since_open = false;
+			/// The folios buildFolioToShow() built with their partners since
+			/// the last edit: it has nothing more to build for them
+		QSet<Diagram *> m_folios_shown;
 		void markKeptFoliosStale() {m_kept_folios_stale = true;}
 			/// The file being read, for each folio's text (readDiagramsXml())
 		QByteArray m_opened_content;

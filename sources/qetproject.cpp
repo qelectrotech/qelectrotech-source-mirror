@@ -387,6 +387,8 @@ void QETProject::init()
 		//Folios not built are saved as read until something is edited
 		//(m_edited_since_open, toXml())
 	connect(m_undo_stack, &QUndoStack::indexChanged, this, [this]() {m_edited_since_open = true;});
+		//An edit may give a folio shown partners not built
+	connect(m_undo_stack, &QUndoStack::indexChanged, this, [this]() {m_folios_shown.clear();});
 	connect(m_undo_stack, &QUndoStack::cleanChanged, this, &QETProject::undoStackChanged);
 
 		//What counts as a change for writeBackup(): the undo stack moving,
@@ -1056,6 +1058,12 @@ void QETProject::buildFolioToShow(Diagram *folio)
 	if (!folio || !unloadedFolioCount()) {
 		return;
 	}
+		//Asked again with nothing edited (a script reads a folio item by
+		//item): the scan below costs a query per symbol, each time
+	if (m_folios_shown.contains(folio)) {
+		return;
+	}
+	m_folios_shown.insert(folio);
 		//A table chain is built at once: its model is in its first table
 	QSet<Diagram *> chained = tableChainFolios(folio);
 	chained.insert(folio);
@@ -4635,6 +4643,7 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 	} else {
 		m_diagrams_list.insert(pos, diagram);
 	}
+	m_folios_shown.clear();
 
 	updateDiagramsFolioData();
 	emit diagramAdded(this, diagram);
@@ -4660,6 +4669,7 @@ void QETProject::detachDiagram(Diagram *diagram)
 		&QETProject::updateDiagramsFolioData);
 	disconnect(diagram, &Diagram::usedTitleBlockTemplateChanged,
 		this, &QETProject::usedTitleBlockTemplateChanged);
+	m_folios_shown.clear();
 
 		//A folio that holds a table or a symbol is removed: tables on folios
 		//not built yet (lazy folios) are built while it is still in the
