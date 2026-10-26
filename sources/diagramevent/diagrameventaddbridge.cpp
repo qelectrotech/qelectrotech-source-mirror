@@ -152,11 +152,17 @@ void DiagramEventAddBridge::updateHint() const
 		return;
 	}
 
+	int klemmen = 0;
+	for (const BridgeCrossing &crossing : std::as_const(m_crossings)) {
+		if (!crossing.reference) {
+			++klemmen;
+		}
+	}
 	editor->statusBar()->showMessage(tr(
 		"Left click or release: finish the line "
-		"(%n terminal(s) recognized)",
+		"(%n Klemme(n) recognized)",
 		"how many terminals the line being drawn already crosses",
-		m_crossings.size()));
+		klemmen));
 }
 
 /**
@@ -289,7 +295,23 @@ void DiagramEventAddBridge::updatePreview(const QPointF &scene_pos)
 	m_counter->setPos(end + QPointF(8, -24));
 
 	m_crossings = BridgeManager::crossedTerminals(m_diagram, QLineF(m_anchor, end));
-	m_counter->setText(tr("%n terminal(s)", "counted while the line is pulled", m_crossings.size()));
+		//What is counted is what the bridge lands on: a Klemme. A sheet
+		//reference is the way to the next sheet and never an Anschluss
+		//of the bridge -- it is not counted as one, here or anywhere.
+	int klemmen = 0;
+	int references = 0;
+	for (const BridgeCrossing &crossing : std::as_const(m_crossings)) {
+		if (crossing.reference) {
+			++references;
+		} else {
+			++klemmen;
+		}
+	}
+	QString counted = tr("%n Klemme(n)", "counted while the line is pulled", klemmen);
+	if (references) {
+		counted += tr(", %n sheet reference(s)", "the way to the next sheet", references);
+	}
+	m_counter->setText(counted);
 	updateHint();
 }
 

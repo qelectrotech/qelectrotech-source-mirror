@@ -56,10 +56,24 @@ BridgeCreateDialog::BridgeCreateDialog(Diagram *diagram,
 	m_diagram(diagram),
 	m_crossings(crossings)
 {
-	setWindowTitle(tr("The bridge over %n terminal(s)", "window title", m_crossings.size()));
+	int klemmen = 0;
+	int references = 0;
+	for (const BridgeCrossing &crossing : m_crossings) {
+		if (crossing.reference) {
+			++references;
+		} else {
+			++klemmen;
+		}
+	}
+	setWindowTitle(tr("The bridge over %n Klemme(n)", "window title", klemmen));
 
 	auto *layout = new QVBoxLayout(this);
-	auto *header = new QLabel(tr("%n terminal(s) recognized", "how many terminals the line crossed", m_crossings.size()), this);
+	QString counted = tr("%n Klemme(n) recognized", "how many terminals the line crossed", klemmen);
+	if (references) {
+		counted += tr(", %n sheet reference(s) on the way to the next sheet",
+					  "the way to the next sheet", references);
+	}
+	auto *header = new QLabel(counted, this);
 	layout->addWidget(header);
 
 	m_tabs = new QTabWidget(this);
