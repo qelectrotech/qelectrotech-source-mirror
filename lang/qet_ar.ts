@@ -7163,6 +7163,11 @@ that you create. Text and number inputs are
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>السماح بالتصغير لما بعد الصفحة</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation type="unfinished"></translation>
@@ -7613,9 +7618,8 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>السماح بالتصغير لما بعد الصفحة</translation>
+        <translation type="vanished">السماح بالتصغير لما بعد الصفحة</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="63"/>

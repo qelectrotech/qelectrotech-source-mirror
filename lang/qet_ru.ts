@@ -7159,6 +7159,11 @@ that you create. Text and number inputs are
         <translation>Цвет приложения</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Разрешить масштаб меньше размера листа</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Показывать свойства выбранного проводника на панели «Свойства выбора»</translation>
@@ -7629,9 +7634,8 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Не сохранять метки элементов при копировании и вставке</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Разрешить масштаб меньше размера листа</translation>
+        <translation type="vanished">Разрешить масштаб меньше размера листа</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="63"/>

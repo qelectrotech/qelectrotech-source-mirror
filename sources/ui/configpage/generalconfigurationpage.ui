@@ -59,7 +59,7 @@
        <item>
         <widget class="QCheckBox" name="m_zoom_out_beyond_folio">
          <property name="text">
-          <string>Allow unzoom beyond the sheet</string>
+          <string>Allow zooming beyond the sheet</string>
          </property>
         </widget>
        </item>

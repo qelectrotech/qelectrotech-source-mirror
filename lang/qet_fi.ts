@@ -6958,6 +6958,11 @@ that you create. Text and number inputs are
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation type="unfinished"></translation>
@@ -7465,11 +7470,6 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="425"/>
         <source>Do not store the labels of items in the copy paste</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
-        <source>Allow unzoom beyond the sheet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

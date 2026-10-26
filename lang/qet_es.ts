@@ -7125,6 +7125,11 @@ Aquí puede especificar el valor predeterminado de este campo para los elementos
         <translation>Color de la aplicación</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Permite el ajuste del tamaño del folio</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Mostrar las propiedades del conductor seleccionado en el panel Propiedades de la selección</translation>
@@ -7595,9 +7600,8 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>No conservar las etiquetas de los elementos después de copiar y pegar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Permite el ajuste del tamaño del folio</translation>
+        <translation type="vanished">Permite el ajuste del tamaño del folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="63"/>

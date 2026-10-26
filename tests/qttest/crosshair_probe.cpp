@@ -79,8 +79,13 @@ int main(int argc, char **argv)
 		DiagramView::setCrosshairShown(true);
 		moveTo(view, mouse);
 		check(view.crosshairVisible(), "the crosshair follows the mouse once on");
+		check(view.crosshairPos() == view.mapToScene(mouse),
+		      "hovering, it stands under the mouse itself (pointer on the grid only while placing, the default)");
+		DiagramView::setGridOnlyWhilePlacing(false);
+		moveTo(view, mouse + QPoint(1, 0));
+		moveTo(view, mouse);
 		const QPointF at = view.crosshairPos();
-		check(at == Diagram::snapToGrid(view.mapToScene(mouse)), "it stands on the grid point under the mouse");
+		check(at == Diagram::snapToGrid(view.mapToScene(mouse)), "with the pointer always on the grid, on the grid point under the mouse");
 		check(folio->items().size() == items, "nothing is added to the folio");
 
 		const QImage image = view.viewport()->grab().toImage();

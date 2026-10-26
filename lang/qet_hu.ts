@@ -6999,6 +6999,11 @@ Szöveg és szám szintén bevihető.</translation>
         <translation>Alkalmazás színe</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Engedélyezze a kicsinyítést a tervlapon</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>A kijelölt vezeték tulajdonságainak megjelenítése a Kijelölés tulajdonságai panelen</translation>
@@ -7473,9 +7478,8 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Ne tárolja az elemek címkéit másolat beillesztésekor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Engedélyezze a kicsinyítést a tervlapon</translation>
+        <translation type="vanished">Engedélyezze a kicsinyítést a tervlapon</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>

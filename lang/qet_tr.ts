@@ -7005,9 +7005,8 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
         <translation> dk</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>#Yakınlaştırmanın sayfanın ötesine geçmesine izin ver</translation>
+        <translation type="vanished">#Yakınlaştırmanın sayfanın ötesine geçmesine izin ver</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="805"/>
@@ -7090,6 +7089,11 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="39"/>
         <source>Application color</source>
         <translation>Uygulama rengi</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>#Yakınlaştırmanın sayfanın ötesine geçmesine izin ver</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>

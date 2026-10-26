@@ -6981,9 +6981,8 @@ que você cria. Entradas de texto e números
         <translation>Não manter rótulos de elementos ao copiar e colar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Permitir zoom além da página</translation>
+        <translation type="vanished">Permitir zoom além da página</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
@@ -7118,6 +7117,11 @@ Aqui você pode especificar o valor padrão deste campo para os elementos que vo
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="39"/>
         <source>Application color</source>
         <translation>Cor do aplicativo</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Permitir zoom além da página</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>

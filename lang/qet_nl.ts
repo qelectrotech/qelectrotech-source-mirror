@@ -7042,6 +7042,11 @@ Hieronder kan de standaardtekst voor nieuwe elementen worden opgegeven:</transla
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Sta uitzoomen toe buiten het schemabladbereik</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation type="unfinished"></translation>
@@ -7521,9 +7526,8 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Vergeet elementlabels bij kopiëren/plakken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Sta uitzoomen toe buiten het schemabladbereik</translation>
+        <translation type="vanished">Sta uitzoomen toe buiten het schemabladbereik</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>

@@ -7136,6 +7136,11 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
         <translation>Farbe der Anwendung</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Zoom über den Blattrand hinaus erlauben</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Die Eigenschaften eines ausgewählten Leiters im Fenster „Eigenschaften der Auswahl“ anzeigen</translation>
@@ -7589,9 +7594,8 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Betriebsmittelkennzeichen von Bauteilen beim Kopieren/Einfügen nicht beibehalten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Zoom über den Blattrand hinaus erlauben</translation>
+        <translation type="vanished">Zoom über den Blattrand hinaus erlauben</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="63"/>

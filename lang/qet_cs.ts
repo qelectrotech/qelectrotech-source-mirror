@@ -7129,6 +7129,11 @@ Stanovte výchozí hodnotu textového pole pro nové prvky níže:</translation>
         <translation>Barva aplikace</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Povolit zrušení zvětšení mimo list</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Zobrazit vlastnosti vybraného vodiče v panelu Vlastnosti výběru</translation>
@@ -7598,9 +7603,8 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Neukládat štítky položek při kopírovat-vložit</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Povolit zrušení zvětšení mimo list</translation>
+        <translation type="vanished">Povolit zrušení zvětšení mimo list</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="63"/>

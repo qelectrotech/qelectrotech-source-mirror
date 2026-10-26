@@ -7072,6 +7072,11 @@ that you create. Text and number inputs are
         <translation>응용 프로그램 색상</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>시트 범위를 넘어 축소 허용</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>선택한 도선의 속성을 선택 항목 속성 패널에 표시</translation>
@@ -7541,9 +7546,8 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>복사/붙여넣기 시 요소 라벨을 유지하지 않음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>시트 범위를 넘어 축소 허용</translation>
+        <translation type="vanished">시트 범위를 넘어 축소 허용</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="63"/>

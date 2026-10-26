@@ -6944,9 +6944,8 @@ que criar. Também estão disponíveis entradas de
         <translation>Usar os gestos do touchpad</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Permitir reduzir o zoom para além da folha</translation>
+        <translation type="vanished">Permitir reduzir o zoom para além da folha</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
@@ -7086,6 +7085,11 @@ que criar. Também estão disponíveis entradas de
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="39"/>
         <source>Application color</source>
         <translation>Cor da aplicação</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Permitir reduzir o zoom para além da folha</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>

@@ -7178,6 +7178,11 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
         <translation>Kolor aplikacji</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Pozwól na powiększenie poza arkusz</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Pokaż właściwości zaznaczonego przewodu w panelu Właściwości zaznaczenia</translation>
@@ -7648,9 +7653,8 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Nie przechowuj etykiet elementów podczas wklejania kopii</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Pozwól na powiększenie poza arkusz</translation>
+        <translation type="vanished">Pozwól na powiększenie poza arkusz</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="63"/>

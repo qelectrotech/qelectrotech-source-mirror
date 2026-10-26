@@ -7104,6 +7104,11 @@ Les entrades de text i nombres també
         <translation>Color de l&apos;aplicació</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Permet allunyar més enllà de la mida del full</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Mostra les propietats d&apos;un conductor seleccionat al panell Propietats de la selecció</translation>
@@ -7574,9 +7579,8 @@ Podeu especificar el valor per defecte d&apos;aquest camp per als elements que c
         <translation>No conservis les etiquetes dels elements després de copia i enganxa</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Permet allunyar més enllà de la mida del full</translation>
+        <translation type="vanished">Permet allunyar més enllà de la mida del full</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="63"/>

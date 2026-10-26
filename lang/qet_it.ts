@@ -7277,6 +7277,11 @@ Qualsiasi impostazione diversa da “Nessun arrotondamento” può causare error
         <translation>Colore dell&apos;applicazione</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Permetti la riduzione dello zoom al di fuori della pagina</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Mostra le proprietà di un conduttore selezionato nel pannello Proprietà della selezione</translation>
@@ -7642,9 +7647,8 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Numero max. di parti nell&apos;elenco dell&apos;editor di elementi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Permetti la riduzione dello zoom al di fuori della pagina</translation>
+        <translation type="vanished">Permetti la riduzione dello zoom al di fuori della pagina</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="153"/>

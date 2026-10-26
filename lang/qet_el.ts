@@ -7102,6 +7102,11 @@ that you create. Text and number inputs are
         <translation>Χρώμα εφαρμογής</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Δυνατότητα αποεστίασης πέρα από τη σελίδα</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Εμφάνιση των ιδιοτήτων ενός επιλεγμένου αγωγού στον πίνακα Ιδιότητες επιλογής</translation>
@@ -7571,9 +7576,8 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Μη αποθήκευση των ετικετών κατά την αντιγραφή επικόλληση</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Δυνατότητα αποεστίασης πέρα από τη σελίδα</translation>
+        <translation type="vanished">Δυνατότητα αποεστίασης πέρα από τη σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="63"/>

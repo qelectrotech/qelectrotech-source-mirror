@@ -7119,6 +7119,11 @@ Hier kunt u de standaardwaarde voor dit veld opgeven voor de items die u gaat ma
         <translation>Kleur van de toepassing</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Uitzomen voorbij het schema kader toestaan</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>De eigenschappen van een geselecteerde geleider tonen in het paneel Eigenschappen van de selectie</translation>
@@ -7589,9 +7594,8 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Bewaar niet de labels van de element bij copy-paste</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Uitzomen voorbij het schema kader toestaan</translation>
+        <translation type="vanished">Uitzomen voorbij het schema kader toestaan</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="63"/>

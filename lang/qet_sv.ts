@@ -6947,9 +6947,8 @@ som du skapar. Text- och nummerinmatningar är
         <translation>Använd gester för pekplattan</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Tillåt utzoomning utanför bladet</translation>
+        <translation type="vanished">Tillåt utzoomning utanför bladet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
@@ -7064,6 +7063,11 @@ som du skapar. Text- och nummerinmatningar är
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="39"/>
         <source>Application color</source>
         <translation>Programfärg</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Tillåt utzoomning utanför bladet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>

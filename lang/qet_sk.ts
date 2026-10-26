@@ -7122,6 +7122,11 @@ aj textové a číselné vstupy.</translation>
         <translation>Farba aplikácie</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <source>Allow zooming beyond the sheet</source>
+        <translation>Povoliť oddialenie za hranice listu</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Zobraziť vlastnosti vybraného vodiča na paneli vlastnosti výberu</translation>
@@ -7591,9 +7596,8 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Neukládať označenia položiek do schránky (pri kopírovaní a vkladaní).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>Povoliť oddialenie za hranice listu</translation>
+        <translation type="vanished">Povoliť oddialenie za hranice listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="63"/>
