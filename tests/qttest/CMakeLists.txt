@@ -1981,6 +1981,9 @@ target_compile_definitions(tst_uprighttexts PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
 
 # New tests go above this line: the blocks below apply to the tests above them.
+# The selection properties dock scrolls its editors in a low window rather
+# than its smallest height pushing the dock below over its last rows.
+qet_add_app_test(tst_propertiesdockscroll tst_propertiesdockscroll.cpp)
 
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of

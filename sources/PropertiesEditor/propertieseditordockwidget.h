@@ -43,12 +43,14 @@ class PropertiesEditorDockWidget : public QDockWidget
 		bool removeEditor (PropertiesEditorWidget *editor);
 
 	protected:
+		bool eventFilter(QObject *watched, QEvent *event) override;
 		QList <PropertiesEditorWidget *> m_editor_list;
 
 	private:
 		void rememberHeight();
 		void restoreHeight();
 		void updateSizeConstraint();
+		void fitScrollArea();
 		bool isTabbed() const;
 
 		Ui::PropertiesEditorDockWidget *ui;

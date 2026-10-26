@@ -19,7 +19,10 @@
 #include "ui_propertieseditordockwidget.h"
 #include "propertieseditorwidget.h"
 
+#include <QEvent>
 #include <QMainWindow>
+#include <QScrollArea>
+#include <QScrollBar>
 #include <QTimer>
 
 /**
@@ -32,6 +35,10 @@ PropertiesEditorDockWidget::PropertiesEditorDockWidget(QWidget *parent) :
 	ui(new Ui::PropertiesEditorDockWidget)
 {
 	ui->setupUi(this);
+		// The editors scroll when the dock is lower than they are, rather
+		// than spilling over the dock below; see fitScrollArea()
+	ui->m_scroll_contents->installEventFilter(this);
+	fitScrollArea();
 		// Tabbed or not can change without the selection changing
 	connect(this, &QDockWidget::dockLocationChanged,
 		this, &PropertiesEditorDockWidget::updateSizeConstraint);
@@ -245,6 +252,34 @@ void PropertiesEditorDockWidget::updateSizeConstraint()
 		// SetMaximumSize left its maximum on the contents
 	if (tabbed)
 		ui->dockWidgetContents->setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
+}
+
+/**
+	@brief PropertiesEditorDockWidget::eventFilter
+	Fit the scroll area again whenever the editors' layout changes: an
+	editor came or went, or one shows or hides a part of itself.
+*/
+bool PropertiesEditorDockWidget::eventFilter(QObject *watched, QEvent *event)
+{
+	if (watched == ui->m_scroll_contents && event->type() == QEvent::LayoutRequest)
+		fitScrollArea();
+	return QDockWidget::eventFilter(watched, event);
+}
+
+/**
+	@brief PropertiesEditorDockWidget::fitScrollArea
+	The scroll area is no higher than the editors in it, so the dock still
+	shrinks to them, and to its title bar when it has none; it may be lower,
+	and then scrolls. Its width follows the editors', the scroll bar
+	included, as the editors do not scroll sideways.
+*/
+void PropertiesEditorDockWidget::fitScrollArea()
+{
+	const QSize hint = ui->m_scroll_contents->sizeHint();
+	ui->m_scroll_area->setMaximumHeight(m_editor_list.isEmpty() ? 0 : hint.height());
+	ui->m_scroll_area->setMinimumWidth(
+				ui->m_scroll_contents->minimumSizeHint().width()
+				+ ui->m_scroll_area->verticalScrollBar()->sizeHint().width());
 }
 
 /**
