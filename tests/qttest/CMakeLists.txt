@@ -96,7 +96,8 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/attached_plain_paste_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_attachedplainpaste PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE)
+  set_tests_properties(tst_attachedplainpaste PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The probe opens and saves the whole industrial example: about 10 minutes
   # in a Debug build with GCC, and five to eight times as long with MSVC's
   # Debug libraries.
@@ -122,7 +123,8 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/cable_undo_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_cableundointegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE)
+  set_tests_properties(tst_cableundointegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The folio-wide crosshair follows the mouse on the grid, on screen
   # only, and goes when the mouse leaves or the option is off.
   add_test(NAME tst_crosshairintegration
@@ -194,7 +196,8 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/image_dark_integration_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_darkimageintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE)
+  set_tests_properties(tst_darkimageintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # A dark custom sheet shows the lines light, or yellow symbols and red
   # conductors; printing and exporting stay black on white.
   add_test(NAME tst_sheetinkintegration
