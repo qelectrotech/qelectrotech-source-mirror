@@ -30,6 +30,9 @@
 
 #include <QTreeWidgetItem>
 #include <QInputDialog>
+#include <QMessageBox>
+
+#include "../bridge/bridgemanager.h"
 #include <QCheckBox>
 #include <QSettings>
 #include <QSignalBlocker>
@@ -190,6 +193,35 @@ void LinkSingleElementWidget::setElement(Element *element)
 */
 void LinkSingleElementWidget::apply()
 {
+		//A bridge and a wire may not meet through a link: a bar in the
+		//cabinet and a wire on the drawing are not one thing, whatever
+		//brings them to the same connection. Said here, where the link
+		//is made -- while a line is drawn nobody knows yet what it will
+		//meet.
+	if (m_element_to_link && m_element
+		&& BridgeManager::linkJoinsBridgeToWire(
+				m_element->diagram() ? m_element->diagram()->project() : nullptr,
+				m_element,
+				m_element_to_link))
+	{
+		QMessageBox::warning(this,
+							  tr("That link cannot be made"),
+							  tr("A bridge and a wire cannot be joined through these "
+								 "items: what one side carries and what the other "
+								 "carries are two different things.\n\n"
+								 "Connect a bridge to a bridge, or a wire to a wire."));
+		if (m_pending_qtwi) {
+			for (int i = 0 ; i < 6 ; ++i) {
+				m_pending_qtwi->setBackground(i, QBrush(Qt::white, Qt::NoBrush));
+			}
+		}
+		m_unlink = false;
+		m_element_to_link = nullptr;
+		m_pending_qtwi = nullptr;
+		m_pending_group_index = -1;
+		return;
+	}
+
 	QUndoCommand *undo = associatedUndo();
 	if (undo)
 		m_element->diagram()->undoStack().push(undo);

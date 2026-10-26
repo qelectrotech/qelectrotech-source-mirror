@@ -904,6 +904,93 @@ private slots:
 		QCOMPARE(conductor->properties().m_tension_protocol, original_tension);
 	}
 
+	//A bridge lands on the connection of a sheet reference the way a
+	//wire does: that is what carries it on to the sheet the other half
+	//of the reference stands on
+	void aBridgeLandsOnASheetReference()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/linked_reports.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		Element *report = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if (element->linkType() & Element::AllReport) {
+					report = element;
+					break;
+				}
+			}
+			if (report) break;
+		}
+		if (!report || report->terminals().isEmpty()) {
+			QSKIP("the fixture has no sheet reference with a connection");
+		}
+		Diagram *diagram = report->diagram();
+		QVERIFY(diagram);
+
+			//A line over its connection is recognized, the way a line
+			//over a terminal symbol is
+		const QPointF at = report->terminals().first()->scenePos();
+		const QPointF middle = report->sceneBoundingRect().center();
+		const QLineF line(at, middle + (middle - at));
+		const auto crossings = BridgeManager::crossedTerminals(diagram, line);
+		bool lands = false;
+		for (const BridgeCrossing &crossing : crossings) {
+			if (crossing.element == report) lands = true;
+		}
+		QVERIFY2(lands, "the line over the connection of a sheet reference is recognized");
+
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(BridgeTerminal{report->uuid(),
+										   report->terminals().first()->stableUuid().toString()});
+		QVERIFY2(BridgeManager::bridgeLandsOn(&project, report),
+				 "and the bridge lands on it");
+	}
+
+	//A bridge and a wire may not be joined through a link: what one
+	//side carries and what the other carries are two different things
+	void aLinkMayNotJoinABridgeToAWire()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/linked_reports.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		QList<Element *> reports;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if ((element->linkType() & Element::AllReport)
+					&& !element->terminals().isEmpty()) {
+					reports << element;
+				}
+			}
+		}
+		if (reports.size() < 2) {
+			QSKIP("the fixture has fewer than two sheet references");
+		}
+		Element *first = reports.at(0);
+		Element *second = reports.at(1);
+
+			//Nothing on either side: a link between wires is fine
+		QVERIFY(!BridgeManager::linkJoinsBridgeToWire(&project, first, second));
+
+			//A bridge on one side only: the link would join a bridge to
+			//a wire, and that is refused where the link is made
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(BridgeTerminal{first->uuid(),
+										   first->terminals().first()->stableUuid().toString()});
+		QVERIFY2(BridgeManager::linkJoinsBridgeToWire(&project, first, second),
+				 "a bridge and a wire may not be joined through a link");
+		QVERIFY(BridgeManager::linkJoinsBridgeToWire(&project, second, first));
+
+			//A bridge on both sides: the bridge continues on the other
+			//sheet, and the link is free
+		bridge->addTerminal(BridgeTerminal{second->uuid(),
+										   second->terminals().first()->stableUuid().toString()});
+		QVERIFY2(!BridgeManager::linkJoinsBridgeToWire(&project, first, second),
+				 "a bridge may continue on the other sheet");
+	}
+
 	//A symbol may carry several pins and each of them its own voltage:
 	//the question a bridge asks sees every one of them, and what it
 	//carries goes to every one of them

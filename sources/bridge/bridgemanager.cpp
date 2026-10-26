@@ -38,11 +38,13 @@
 namespace {
 
 	/**
-		Every element of @p project which is a terminal symbol, by
-		identity: the bridge names the terminals it lands on that way,
-		so it follows them wherever the drawing moves them.
+		Every element of @p project a bridge may land on, by identity: a
+		terminal symbol, or the connection of a sheet reference -- what
+		carries a bridge on to the sheet the other half of the reference
+		stands on. The bridge names them that way, so it follows them
+		wherever the drawing moves them.
 	*/
-	QHash<QUuid, Element *> terminalElements(QETProject *project)
+	QHash<QUuid, Element *> bridgeableElements(QETProject *project)
 	{
 		QHash<QUuid, Element *> hash;
 		if (!project) {
@@ -52,7 +54,9 @@ namespace {
 		for (Diagram *diagram : diagrams) {
 			const auto elements = diagram->elements();
 			for (Element *element : elements) {
-				if (element && element->elementData().m_type == ElementData::Terminal) {
+				if (element
+					&& (element->elementData().m_type == ElementData::Terminal
+						|| (element->linkType() & Element::AllReport))) {
 					hash.insert(element->uuid(), element);
 				}
 			}
@@ -125,9 +129,17 @@ QList<BridgeCrossing> BridgeManager::crossedTerminals(Diagram *diagram, const QL
 	const QList<QGraphicsItem *> items = diagram->items(path);
 	for (QGraphicsItem *item : items) {
 		Element *element = qgraphicsitem_cast<Element *>(item);
-		if (!element
-			|| element->elementData().m_type != ElementData::Terminal
-			|| element->terminals().isEmpty()) {
+		if (!element || element->terminals().isEmpty()) {
+			continue;
+		}
+			//A terminal symbol, or the connection of a sheet reference:
+			//a bridge may land on either, and a sheet reference is what
+			//carries it on to the sheet the other half of it stands on
+		const bool is_terminal =
+				element->elementData().m_type == ElementData::Terminal;
+		const bool is_sheet_reference =
+				element->linkType() & Element::AllReport;
+		if (!is_terminal && !is_sheet_reference) {
 			continue;
 		}
 			//The pin the line runs across: a symbol may carry several
@@ -186,7 +198,7 @@ QList<BridgeCrossing> BridgeManager::crossedTerminals(Diagram *diagram, const QL
 QSet<QUuid> BridgeManager::occupiedTerminals(QETProject *project, const QList<BridgeTerminal> &terminals)
 {
 	QSet<QUuid> occupied;
-	const QHash<QUuid, Element *> elements = terminalElements(project);
+	const QHash<QUuid, Element *> elements = bridgeableElements(project);
 
 	TerminalStrip *strip = nullptr;
 	int first = -1;
@@ -377,6 +389,53 @@ QList<Bridge *> BridgeManager::bridgesOverfilledBy(QETProject *project,
 }
 
 /**
+	@brief BridgeManager::bridgeLandsOn
+	@param project
+	@param element
+	@return true when one of the bridges of the drawing lands on that
+	symbol -- a terminal, or the connection of a sheet reference
+*/
+bool BridgeManager::bridgeLandsOn(QETProject *project, Element *element)
+{
+	if (!project || !element) {
+		return false;
+	}
+	const auto bridges = project->bridges();
+	for (Bridge *bridge : bridges)
+	{
+		if (!bridge) {
+			continue;
+		}
+		const auto lands_on = bridge->terminals();
+		for (const BridgeTerminal &terminal : lands_on) {
+			if (elementFor(project, terminal) == element) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+/**
+	@brief BridgeManager::linkJoinsBridgeToWire
+	@param project
+	@param first one side of a link about to be made
+	@param second the other side of it
+	@return true when that link would join a bridge to a wire: a bar in
+	the cabinet and a wire on the drawing are not one thing, whatever
+	brings them to the same connection. Asked when the link is made --
+	while a line is drawn nobody knows yet what it will meet.
+*/
+bool BridgeManager::linkJoinsBridgeToWire(QETProject *project,
+										  Element *first,
+										  Element *second)
+{
+	const bool first_on_bridge = bridgeLandsOn(project, first);
+	const bool second_on_bridge = bridgeLandsOn(project, second);
+	return first_on_bridge != second_on_bridge;
+}
+
+/**
 	@brief BridgeManager::bridgeByUuid
 	@param project
 	@param uuid
@@ -404,7 +463,7 @@ Bridge *BridgeManager::bridgeByUuid(QETProject *project, const QUuid &uuid)
 */
 Element *BridgeManager::elementFor(QETProject *project, const BridgeTerminal &terminal)
 {
-	return terminalElements(project).value(terminal.element);
+	return bridgeableElements(project).value(terminal.element);
 }
 
 /**

@@ -71,6 +71,10 @@ class BridgeManager
 			//Lookup
 		static Bridge *bridgeByUuid(QETProject *project, const QUuid &uuid);
 		static Element *elementFor(QETProject *project, const BridgeTerminal &terminal);
+		static bool bridgeLandsOn(QETProject *project, Element *element);
+		static bool linkJoinsBridgeToWire(QETProject *project,
+										  Element *first,
+										  Element *second);
 
 			/**
 				The terminals the bridge lands on at this very moment,
