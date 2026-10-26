@@ -386,6 +386,56 @@ private slots:
 		}
 	}
 
+	// After a folio not built is removed and the removal undone, the
+	// element, element_info, terminal, conductor and link tables hold what
+	// they held before. They used to keep none of its rows, nor the links
+	// to its symbols: undoing puts back what the folio's built symbols
+	// write, and a folio not built has none.
+	void unbuiltFolioRemovalUndone()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("undone.qet"));
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/affuteuse_250h.qet"), saved});
+		QVERIFY(QFile::exists(saved));
+		QFile js(m_dir.filePath(QStringLiteral("undone.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write(QByteArrayLiteral(
+				 "function dump(tag) {\n"
+				 "  var out = {};\n"
+				 "  ['element', 'element_info', 'terminal', 'conductor', 'link'].forEach(function (t) {\n"
+				 "    out[t] = qet.query('SELECT * FROM ' + t); });\n"
+				 "  qet.log(tag + JSON.stringify(out));\n"
+				 "}\n"
+				 "dump('BEFORE ');\n"
+				 "qet.log('REMOVED ' + qet.removeFolio(6));\n"
+				 "qet.log('UNDONE ' + qet.undo());\n"
+				 "dump('DUMP ');\n"));
+		js.close();
+		QProcessEnvironment e = env();
+		e.remove(QStringLiteral("QET_EAGER_FOLIOS"));
+		e.insert(QStringLiteral("QET_LAZY_FOLIOS_TRACE"), QStringLiteral("1"));
+		QProcess proc;
+		proc.setProcessEnvironment(e);
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js.fileName(), saved});
+		QVERIFY(proc.waitForFinished(180000));
+		const QString log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
+		QVERIFY2(log.contains(QStringLiteral("opened with 12 of 12 folios not built")), qPrintable(log.left(400)));
+		QVERIFY2(log.contains(QStringLiteral("REMOVED true")) && log.contains(QStringLiteral("UNDONE true")),
+				 qPrintable(log.right(400)));
+		QString unused;
+		const QJsonObject after = tablesIn(log, &unused);
+		QString before_log = log;
+		before_log.replace(QStringLiteral("DUMP "), QStringLiteral("AFTER "))
+				.replace(QStringLiteral("BEFORE "), QStringLiteral("DUMP "));
+		const QJsonObject before = tablesIn(before_log, &unused);
+		QCOMPARE(before.keys().size(), 5);
+		for (const QString &table : before.keys()) {
+			const QJsonArray a = before.value(table).toArray(), b = after.value(table).toArray();
+			QVERIFY2(!a.isEmpty(), qPrintable(table));
+			QVERIFY2(a == b, qPrintable(QStringLiteral("%1: %2 rows before, %3 after the undo, or different")
+										.arg(table).arg(a.size()).arg(b.size())));
+		}
+	}
+
 	// After an element is moved several columns, its folio cell in the
 	// element table is the one a fresh open of the saved project gives.
 	// It used to stay where the element was added.
