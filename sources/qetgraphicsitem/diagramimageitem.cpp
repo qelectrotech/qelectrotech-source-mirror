@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramimageitem.h"
+#include "../palettegraphicsview.h"
 #include "../darkimagerendering.h"
 #include "cropgeometry.h"
 #include "../shownkinds.h"
@@ -190,7 +191,12 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 	else
 		DarkImageRendering::paintPixmap(painter, pixmap_, m_adapt_to_dark_theme);
 
-	Q_UNUSED(option); Q_UNUSED(widget);
+	Q_UNUSED(option);
+
+		//A picture keeps its own colors on a sheet with its own ink, and
+		//so is not tinted: its frame and caption take that ink themselves
+	const QET::Palette::SheetInk sheet_ink = PaletteGraphicsView::paintingInk(widget);
+	const QColor line_color = sheet_ink.isNull() ? QColor(Qt::black) : sheet_ink.other;
 
 	if (isSelected()) {
 		painter -> save();
@@ -199,7 +205,7 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 		painter -> setRenderHint(QPainter::TextAntialiasing,      false);
 		painter -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 		// Dessin du cadre de selection en noir à partir du boundingrect
-		QPen t(Qt::black);
+		QPen t(line_color);
 		t.setStyle(Qt::DashLine);
 		painter -> setPen(t);
 		painter -> drawRect(boundingRect());
@@ -217,7 +223,7 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 		painter -> translate(r.topLeft());
 		painter -> scale(1.0 / m_label_scale.x(), 1.0 / m_label_scale.y());
 		painter -> setFont(m_label_font);
-		painter -> setPen(Qt::black);
+		painter -> setPen(line_color);
 		painter -> drawText(QRectF(QPointF(0, 0), m_label_size), Qt::AlignCenter, m_label);
 		painter -> restore();
 	}

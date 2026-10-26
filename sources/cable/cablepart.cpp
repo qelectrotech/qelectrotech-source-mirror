@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "cablepart.h"
+#include "../palettegraphicsview.h"
 
 #include "cable.h"
 #include "cablemanager.h"
@@ -1368,7 +1369,6 @@ void CablePart::drawCoreMark(QPainter *painter, const QColor &ink,
 void CablePart::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	Q_UNUSED(option)
-	Q_UNUSED(widget)
 
 	painter->setRenderHint(QPainter::Antialiasing, true);
 	painter->setFont(textFont());
@@ -1380,7 +1380,8 @@ void CablePart::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 	// view's widgets, so it names colors which are already final and land
 	// on the sheet color -- an ink taken from it vanishes. Conductors are
 	// drawn the same way: black when they stand, red when they are picked.
-	const QColor ink = isSelected() ? Qt::red : Qt::black;
+	const QET::Palette::SheetInk sheet_ink = PaletteGraphicsView::paintingInk(widget);
+	const QColor ink = isSelected() ? QET::Palette::pickedColor(sheet_ink) : QColor(Qt::black);
 
 		//One unit, like every other line of the drawing: a cable trunk is
 		//a line, not a highlight, and it has to line up with the wires it
@@ -1391,7 +1392,15 @@ void CablePart::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 	painter->setPen(pen);
 	painter->drawLine(m_p1, m_p2);
 
-	drawLabel(painter, ink);
+		//On a sheet with its own ink the label is written like the other
+		//texts, the line and the cores like the conductors. The label's
+		//color is kept by the tint only when it is a color (the yellow of
+		//the dark mode); with one light ink for all it is written black
+		//like the line, and the tint gives it that ink: written in the
+		//light ink itself it would count as gray and take the sheet's
+	const bool own_label_ink = !sheet_ink.isNull() && !isSelected()
+							   && sheet_ink.symbols != sheet_ink.wires;
+	drawLabel(painter, own_label_ink ? sheet_ink.symbols : ink);
 
 	drawCores(painter, ink);
 

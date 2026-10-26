@@ -3101,6 +3101,16 @@ Continue?</source>
         <source>Choose a background color</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="93"/>
+        <source>Dark mode</source>
+        <translation>Mod întunecat</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="96"/>
+        <source>A black sheet: symbols and texts in yellow, conductors in red, dashed ones in light blue and dash-dotted ones in yellow, the rest in white. Printing and exporting stay black on white.</source>
+        <translation>O foaie neagră: simboluri și texte în galben, conductoare în roșu, cele întrerupte în albastru deschis și cele linie-punct în galben, restul în alb. Tipărirea și exportul rămân negru pe alb.</translation>
+    </message>
 </context>
 <context>
     <name>DiagramContextWidget</name>

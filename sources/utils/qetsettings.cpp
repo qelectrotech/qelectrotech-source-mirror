@@ -245,6 +245,8 @@ namespace QetSettings
 				  background.color.name(QColor::HexRgb));
 		settings.setValue(QStringLiteral("diagrameditor/sheet_background_custom"),
 				  background.custom);
+		settings.setValue(QStringLiteral("diagrameditor/sheet_colored_ink"),
+				  background.colored_ink);
 	}
 
 	/**
@@ -264,6 +266,9 @@ namespace QetSettings
 				QStringLiteral("diagrameditor/sheet_background_color"),
 				QStringLiteral("#ffffff")).toString());
 		background.color = stored.isValid() ? stored : QColor(Qt::white);
+		background.colored_ink = background.custom && settings.value(
+				QStringLiteral("diagrameditor/sheet_colored_ink"),
+				false).toBool();
 		return background;
 	}
 

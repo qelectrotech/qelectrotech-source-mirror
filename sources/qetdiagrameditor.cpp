@@ -667,6 +667,8 @@ void QETDiagramEditor::setUpActions()
 
 		//Diagram background color picker
 	m_background_color_button = new DiagramBgColorToolButton(this, this);
+	ShortcutManager::instance().registerAction(m_background_color_button->darkModeAction(),
+						   "diagrameditor.dark_mode", tr("Diagram editors"), QKeySequence());
 
 		//Draw or not the background grid
 	m_draw_grid = new QAction ( QET::Icons::Grid, tr("Display the grid"), this);
@@ -1870,6 +1872,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_cell_lines);
 	menu_affichage -> addMenu(m_shown_kinds_menu);
 	menu_affichage -> addMenu(m_background_color_button->menu());
+	menu_affichage -> addAction(m_background_color_button->darkModeAction());
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
 

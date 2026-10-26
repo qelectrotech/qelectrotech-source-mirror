@@ -3075,6 +3075,16 @@ Continue?</source>
         <source>Choose a background color</source>
         <translation>選擇背景顏色</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="93"/>
+        <source>Dark mode</source>
+        <translation>深色模式</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="96"/>
+        <source>A black sheet: symbols and texts in yellow, conductors in red, dashed ones in light blue and dash-dotted ones in yellow, the rest in white. Printing and exporting stay black on white.</source>
+        <translation>黑色圖紙：符號與文字為黃色，導線為紅色，虛線導線為淺藍色，點劃線導線為黃色，其餘為白色。列印與匯出仍為白底黑字。</translation>
+    </message>
 </context>
 <context>
     <name>DiagramContextWidget</name>

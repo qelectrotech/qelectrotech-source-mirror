@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "../qetgraphicsitem/conductor.h"
+#include "../palettegraphicsview.h"
 #include "../shownkinds.h"
 #include "../lastusedstyle.h"
 #include "../qetproject.h"
@@ -591,18 +592,20 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation term
 */
 void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *qw)
 {
-	Q_UNUSED(qw);
 	painter -> save();
 	painter -> setRenderHint(QPainter::Antialiasing, false);
 
 		// Set the color of conductor
+		//In the dark mode a red pick and a blue highlight would look like
+		//the red and light blue conductors around them
+	const QET::Palette::SheetInk sheet_ink = PaletteGraphicsView::paintingInk(qw);
 	QColor final_conductor_color(m_properties.color);
 	if (must_highlight_ == Normal) {
-		final_conductor_color = QColor::fromRgb(69, 137, 255, 255);
+		final_conductor_color = QET::Palette::highlightColor(sheet_ink);
 	} else if (must_highlight_ == Alert) {
 		final_conductor_color =QColor::fromRgb(255, 69, 0, 255);
 	} else if (isSelected()) {
-		final_conductor_color = Qt::red;
+		final_conductor_color = QET::Palette::pickedColor(sheet_ink);
 	} else {
 		if (Diagram *parent_diagram = diagram()) {
 			if (!parent_diagram -> drawColoredConductors()) {
@@ -618,9 +621,16 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 	painter -> setBrush(conductor_brush);
 	QPen final_conductor_pen = conductor_pen;
 
-		//Set the conductor style
+		//Set the conductor style. Qt's own dashes (4 on, 2 off) leave
+		//gaps too short to tell a dashed or a dash-dotted conductor from
+		//a solid one at a normal zoom, so these two get longer gaps
 	final_conductor_pen.setColor(final_conductor_color);
-	final_conductor_pen.setStyle(m_properties.style);
+	if (m_properties.style == Qt::DashLine)
+		final_conductor_pen.setDashPattern({5, 4});
+	else if (m_properties.style == Qt::DashDotLine)
+		final_conductor_pen.setDashPattern({6, 4, 1, 4});
+	else
+		final_conductor_pen.setStyle(m_properties.style);
 	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // better rendering with dot
 
 		//Use a cosmetic line, below a certain zoom
