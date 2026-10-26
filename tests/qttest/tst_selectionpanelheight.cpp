@@ -56,12 +56,12 @@ class tst_selectionpanelheight : public QObject
 			};
 
 			select(element);
+			QTRY_VERIFY2(panel->height() > 100, "the panel did not grow for the element");
 			const int start = panel->height();
 				// What dragging the separator above the panel does
 			editor->resizeDocks({panel}, {start + 150}, Qt::Vertical);
-			QTest::qWait(200);
+			QTRY_VERIFY2(panel->height() > start, "the panel could not be made taller");
 			const int user = panel->height();
-			QVERIFY2(user > start, "the panel could not be made taller");
 
 			for (int round = 0; round < 2; ++round) {
 				select(nullptr);
@@ -108,9 +108,8 @@ class tst_selectionpanelheight : public QObject
 				// Above the minimum height of the element's editor, which
 				// a tab stack keeps while the editor is shown
 			editor->resizeDocks({collections}, {start + 700}, Qt::Vertical);
-			QTest::qWait(200);
+			QTRY_VERIFY2(collections->height() > start, "the tab stack could not be made taller");
 			const int user = collections->height();
-			QVERIFY2(user > start, "the tab stack could not be made taller");
 
 				// Selecting and deselecting leaves the stack alone
 			element->setSelected(true);
@@ -126,7 +125,7 @@ class tst_selectionpanelheight : public QObject
 			QTest::qWait(200);
 			QVERIFY(editor->tabifiedDockWidgets(panel).isEmpty());
 			element->setSelected(true);
-			QTest::qWait(200);
+			QTRY_VERIFY2(panel->height() > 100, "the untabbed panel did not grow for the element");
 			const int selected = panel->height();
 			diagram->clearSelection();
 			QTest::qWait(200);
