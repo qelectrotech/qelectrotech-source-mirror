@@ -137,6 +137,16 @@ class TerminalStrip : public QObject
 		QList<DrawingBridge> automaticBridges() const;
 		void setAutomaticBridges(const QList<DrawingBridge> &bridges);
 
+			/**
+				Every bridge this terminal sits in: a terminal may lie
+				under several bars at once -- they run side by side in the
+				grooves of the rail -- and asking for "the" bridge of a
+				terminal only ever gave back one of them, so the others
+				were never drawn at all.
+			*/
+		QVector<QSharedPointer<TerminalStripBridge>> bridgesOf(
+				const QSharedPointer<RealTerminal> &real_terminal) const;
+
 	private:
 			///The first groove (1 to 4) no bar of a bridge lying across
 			///the same terminals already sits in

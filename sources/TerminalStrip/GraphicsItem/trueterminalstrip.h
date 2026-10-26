@@ -58,6 +58,7 @@ namespace TerminalStripDrawer
             QString label() const override;
             bool isBridged() const override;
             AbstractBridgeInterface* bridge() const override;
+            QVector<AbstractBridgeInterface *> bridges() const override;
 			QString xref() const override;
 			ElementData::TerminalType type() const override;
 			bool isLed() const override;

@@ -18,6 +18,9 @@
 */
 #include "qetapptest.h"
 #include "TerminalStrip/UndoCommand/sortterminalstripcommand.h"
+#include "TerminalStrip/physicalterminal.h"
+#include "TerminalStrip/terminalstripbridge.h"
+#include "TerminalStrip/ui/terminalstripmodel.h"
 #include "TerminalStrip/realterminal.h"
 #include "TerminalStrip/terminalstrip.h"
 #include "bridge/bridge.h"
@@ -1125,6 +1128,87 @@ private slots:
 				 "two bars lying across each other run side by side");
 		for (int track : std::as_const(tracks)) {
 			QVERIFY(track >= 1 && track <= 4);
+		}
+	}
+
+	//The four columns of the table are the four grooves of the rail: a
+	//bar is drawn in the column of its own groove, so two bars lying
+	//across the same terminals stand side by side instead of one inside
+	//the other
+	void theCellsFollowTheGrooveOfTheBridge()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY2(terminals.size() >= 4, "the strip X1 has four terminals");
+		QVector<TerminalStrip *> strips = project.terminalStrip();
+		QVERIFY(!strips.isEmpty());
+		TerminalStrip *strip = strips.first();
+
+			//Two bars lying across each other: the first over the first
+			//and the third terminal, the second over the second and the
+			//fourth
+		Bridge *first = project.newBridge();
+		first->addTerminal(terminalOf(terminals.at(0)));
+		first->addTerminal(terminalOf(terminals.at(2)));
+		Bridge *second = project.newBridge();
+		second->addTerminal(terminalOf(terminals.at(1)));
+		second->addTerminal(terminalOf(terminals.at(3)));
+		project.diagrams().first()->undoStack().push(new SortTerminalStripCommand(strip));
+
+		TerminalStripModel model(strip);
+		model.buildBridgePixmap(QSize(24, 24)); // what the editor does at startup
+
+			//Every bar of the strip, wherever it comes from, with the
+			//span of terminals it lies across and the groove it sits in
+		struct Bar { int first = -1; int last = -1; int groove = -1; };
+		QList<Bar> bars;
+		const auto order = strip->realTerminals();
+		for (const auto &real_t : order) {
+			for (const auto &bridge : strip->bridgesOf(real_t)) {
+				if (!bridge) continue;
+				bool known = false;
+				for (const Bar &bar : std::as_const(bars)) {
+					if (bar.groove == bridge->track()) { known = true; break; }
+				}
+				if (known) continue;
+				Bar bar;
+				bar.groove = bridge->track();
+				for (const auto &of_bridge : bridge->realTerminals()) {
+					const int pos = of_bridge->physicalTerminal()->pos();
+					bar.first = (bar.first < 0) ? pos : qMin(bar.first, pos);
+					bar.last = (bar.last < 0) ? pos : qMax(bar.last, pos);
+				}
+				bars << bar;
+			}
+		}
+
+		for (const Bar &bar : bars)
+		{
+			const int column = TerminalStripModel::Level0 + qBound(1, bar.groove, 4) - 1;
+			for (int row = bar.first ; row <= bar.last ; ++row)
+			{
+				const auto cell = model.data(model.index(row, column), Qt::DecorationRole);
+				QVERIFY2(!cell.value<QPixmap>().isNull(),
+						 "the bar is drawn in the column of its own groove");
+			}
+
+				//And nowhere outside its own span
+			for (int row = 0 ; row < model.rowCount() ; ++row) {
+				if (row >= bar.first && row <= bar.last) {
+					continue;
+				}
+				bool covered = false;
+				for (const Bar &other : std::as_const(bars)) {
+					if (other.groove != bar.groove) continue;
+					if (row >= other.first && row <= other.last) covered = true;
+				}
+				if (covered) continue;
+				const auto cell = model.data(model.index(row, column), Qt::DecorationRole);
+				QVERIFY2(cell.value<QPixmap>().isNull(),
+						 "and it leaves the other rows of that column alone");
+			}
 		}
 	}
 

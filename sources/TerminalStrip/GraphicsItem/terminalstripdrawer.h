@@ -74,6 +74,19 @@ namespace TerminalStripDrawer
             virtual QString label() const = 0;
             virtual bool isBridged() const = 0;
             virtual AbstractBridgeInterface* bridge() const = 0;
+				//Every bridge this terminal sits in: several bars may lie
+				//across the same terminal, one per groove of the rail, and
+				//asking for "the" bridge of a terminal only ever gave back
+				//one of them -- the others were never drawn at all. The
+				//caller owns the answers.
+            virtual QVector<AbstractBridgeInterface *> bridges() const
+            {
+                QVector<AbstractBridgeInterface *> list;
+                if (auto *one = bridge()) {
+                    list << one;
+                }
+                return list;
+            }
 			virtual QString xref() const = 0;
 			//Type and led are only used to draw the symbol of the terminal.
 			//They are not pure virtual, so an implementation can ignore them.

@@ -850,14 +850,20 @@ void paint(QPainter *painter,
 			if (!real_t->isBridged()) {
 				continue;
 			}
-			QScopedPointer<AbstractBridgeInterface> bridge_{real_t->bridge()};
-			if (!bridge_) {
-				continue;
+				//Every bar lying across this terminal is plugged in here,
+				//one per groove of the rail
+			const auto bridge_list{real_t->bridges()};
+			for (auto *bridge_item : bridge_list)
+			{
+				const QScopedPointer<AbstractBridgeInterface> bridge_{bridge_item};
+				if (!bridge_) {
+					continue;
+				}
+				const qreal channel_h_{length_ * (channels_bottom - channels_top) / 4};
+				const qreal y_{length_ * channels_top
+							   + (qBound(1, bridge_->track(), 4) - 0.5) * channel_h_};
+				bridges_[bridge_->uuid()].append(BridgePoint{QPointF{x_ + w_ / 2, y_}, w_});
 			}
-			const qreal channel_h_{length_ * (channels_bottom - channels_top) / 4};
-			const qreal y_{length_ * channels_top
-						   + (qBound(1, bridge_->track(), 4) - 0.5) * channel_h_};
-			bridges_[bridge_->uuid()].append(BridgePoint{QPointF{x_ + w_ / 2, y_}, w_});
 		}
 
 		x_ += w_;

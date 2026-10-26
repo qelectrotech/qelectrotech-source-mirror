@@ -881,23 +881,42 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 
 	auto mrtd = modelRealTerminalDataForIndex(index);
 
-		//Terminal level correspond to the column level of index
-	if (level_column == mrtd.level_)
+		//Which of the four columns a bar sits in is the groove of the
+		//bridge itself: two bars lying across the same terminals run side
+		//by side, one per column, and the second one would vanish inside
+		//the first if they shared one. The columns of the table are those
+		//four grooves and nothing else -- they only ever draw bridges.
+	const auto bar_in_column =
+			[this](const QSharedPointer<RealTerminal> &real_t, int column)
+			-> QSharedPointer<TerminalStripBridge>
 	{
-		if (mrtd.bridged_)
+		if (!real_t) {
+			return {};
+		}
+		for (const auto &bridge_ : m_terminal_strip->bridgesOf(real_t)) {
+			if (bridge_ && qBound(1, bridge_->track(), 4) - 1 == column) {
+				return bridge_;
+			}
+		}
+		return {};
+	};
+
+		//A bar of this terminal sits in this column -- several bars may
+		//lie across one terminal, one per column, and the one drawn here
+		//is the one whose groove this column is
+	if (auto bridge_ = bar_in_column(mrtd.real_terminal.toStrongRef(), level_column))
+	{
 		{
-			auto bridge_ = m_terminal_strip->isBridged(mrtd.real_terminal);
-			if (bridge_)
 			{
 				const auto previous_t = m_terminal_strip->previousTerminalInLevel(mrtd.real_terminal);
 				QSharedPointer<TerminalStripBridge> previous_bridge;
 				if (previous_t)
-					previous_bridge = previous_t->bridge();
+					previous_bridge = bar_in_column(previous_t, level_column);
 
 				const auto next_t = m_terminal_strip->nextTerminalInLevel(mrtd.real_terminal);
 				QSharedPointer<TerminalStripBridge> next_bridge;
 				if (next_t)
-					next_bridge = next_t->bridge();
+					next_bridge = bar_in_column(next_t, level_column);
 
 				auto color_ = bridge_->color();
 				auto pixmap_ = m_bridges_pixmaps.value(color_);
@@ -943,7 +962,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		if (current_phy_uuid == previous_t->physicalTerminal()->uuid())
 		{
 			if (current_real_terminal.bridged_ &&
-				current_real_terminal.level_ == level_column) {
+				bar_in_column(current_real_terminal.real_terminal.toStrongRef(), level_column)) {
 				previous_data = current_real_terminal;
 				break;
 			}
@@ -954,7 +973,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 			already_jumped_to_previous = true;
 			current_phy_uuid = previous_t->physicalTerminal()->uuid();
 			if (current_real_terminal.bridged_ &&
-				current_real_terminal.level_ == level_column) {
+				bar_in_column(current_real_terminal.real_terminal.toStrongRef(), level_column)) {
 				previous_data = current_real_terminal;
 				break;
 			}
@@ -982,7 +1001,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		if (current_phy_uuid == next_t->physicalTerminal()->uuid())
 		{
 			if (current_real_terminal.bridged_ &&
-				current_real_terminal.level_ == level_column) {
+				bar_in_column(current_real_terminal.real_terminal.toStrongRef(), level_column)) {
 				next_data = current_real_terminal;
 				break;
 			}
@@ -993,15 +1012,15 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 			already_jumped_to_next = true;
 			current_phy_uuid = next_t->physicalTerminal()->uuid();
 			if (current_real_terminal.bridged_ &&
-				current_real_terminal.level_ == level_column) {
+				bar_in_column(current_real_terminal.real_terminal.toStrongRef(), level_column)) {
 				next_data = current_real_terminal;
 				break;
 			}
 		}
 	} while(true);
 
-	auto previous_bridge = m_terminal_strip->isBridged(previous_data.real_terminal);
-	if (previous_bridge == m_terminal_strip->isBridged(next_data.real_terminal))
+	auto previous_bridge = bar_in_column(previous_data.real_terminal.toStrongRef(), level_column);
+	if (previous_bridge && previous_bridge == bar_in_column(next_data.real_terminal.toStrongRef(), level_column))
 	{
 		if (previous_bridge) {
 			return m_bridges_pixmaps.value(previous_bridge->color()).none_;

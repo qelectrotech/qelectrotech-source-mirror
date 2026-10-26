@@ -972,6 +972,27 @@ int TerminalStrip::freeTrackFor(const QVector<QSharedPointer<RealTerminal>> &rea
 }
 
 /**
+ * @brief TerminalStrip::bridgesOf
+ * @param real_terminal
+ * @return every bridge this terminal sits in: several bars may lie
+ * across the same terminal, one per groove of the rail
+ */
+QVector<QSharedPointer<TerminalStripBridge>> TerminalStrip::bridgesOf(
+		const QSharedPointer<RealTerminal> &real_terminal) const
+{
+	QVector<QSharedPointer<TerminalStripBridge>> list;
+	if (!real_terminal) {
+		return list;
+	}
+	for (const auto &bridge : m_bridge) {
+		if (bridge && bridge->realTerminals().contains(real_terminal)) {
+			list << bridge;
+		}
+	}
+	return list;
+}
+
+/**
  * @brief TerminalStrip::automaticBridges
  * @return the bridges this strip holds which were brought here by the
  * drawing, as they stand now
