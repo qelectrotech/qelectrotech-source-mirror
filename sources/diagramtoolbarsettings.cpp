@@ -17,6 +17,9 @@
 */
 #include "diagramtoolbarsettings.h"
 
+#include <QMenu>
+#include <QToolButton>
+
 #include "shortcutmanager.h"
 
 #include <QApplication>
@@ -180,6 +183,8 @@ QStringList DiagramToolbarSettings::defaultIds(const QString &name)
 			QStringLiteral("widget:handler_size"),
 			sep,
 			QStringLiteral("diagrameditor.draw_grid"),
+			QStringLiteral("diagrameditor.grid_snap"),
+			QStringLiteral("widget:grid_step"),
 			QStringLiteral("widget:text_grid"),
 			QStringLiteral("diagrameditor.draw_guides"),
 			QStringLiteral("widget:background_color"),
@@ -198,7 +203,9 @@ QStringList DiagramToolbarSettings::defaultIds(const QString &name)
 				//the shapes of the "Ajouter" toolbar.
 			sep,
 			QStringLiteral("diagrameditor.add_cable"),
-			QStringLiteral("widget:conductor_color")};
+			QStringLiteral("widget:conductor_color"),
+			sep,
+			QStringLiteral("diagrameditor.place_symbol_texts")};
 	}
 	if (name == QLatin1String("adding")) {
 			//add_pdf is skipped when built without QtPdf, as before
@@ -255,6 +262,7 @@ QString DiagramToolbarSettings::separatorId()
 QStringList DiagramToolbarSettings::widgetIds()
 {
 	return {QStringLiteral("widget:handler_size"),
+		QStringLiteral("widget:grid_step"),
 		QStringLiteral("widget:text_grid"),
 		QStringLiteral("widget:background_color"),
 		QStringLiteral("widget:conductor_color")};
@@ -269,6 +277,8 @@ QString DiagramToolbarSettings::widgetTitle(const QString &id)
 {
 	if (id == QLatin1String("widget:handler_size"))
 		return QCoreApplication::translate("DiagramToolbarSettings", "Handle size");
+	if (id == QLatin1String("widget:grid_step"))
+		return QCoreApplication::translate("DiagramToolbarSettings", "Grid step");
 	if (id == QLatin1String("widget:text_grid"))
 		return QCoreApplication::translate("DiagramToolbarSettings", "Text grid");
 	if (id == QLatin1String("widget:background_color"))
@@ -330,6 +340,11 @@ void DiagramToolbarSettings::fill(QToolBar *toolbar, const QStringList &ids,
 			pending_separator = false;
 		}
 		toolbar->addAction(action);
+			//A command with a menu of choices: a click does it again,
+			//the arrow beside it opens the choices
+		if (action->menu())
+			if (auto *button = qobject_cast<QToolButton *>(toolbar->widgetForAction(action)))
+				button->setPopupMode(QToolButton::MenuButtonPopup);
 	}
 }
 

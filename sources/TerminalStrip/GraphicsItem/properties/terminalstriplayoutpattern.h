@@ -127,8 +127,11 @@ class TerminalStripLayoutPattern
 		qreal m_cable_wire_length{40};
 			//Length of the cable
 		qreal m_cable_length{60};
-			//Length of the wires after the cable
-		qreal m_cable_end_length{40};
+			//Length of the wires after the cable. It leaves the room the box
+			//naming where the cable goes needs: three lines (Installation,
+			//Location, Label) at the default font of 15 px, so the box does
+			//not have to shrink its text down.
+		qreal m_cable_end_length{80};
         qreal m_bridge_point_d{5};
         QVector<qreal> m_bridge_point_y_offset{50,70,90,110};
 

@@ -173,6 +173,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/container/qetcontainer.h
   ${QET_DIR}/sources/container/qetzip.cpp
   ${QET_DIR}/sources/container/qetzip.h
+  ${QET_DIR}/sources/container/qetzreader.cpp
+  ${QET_DIR}/sources/container/qetzreader.h
+  ${QET_DIR}/sources/container/qetzwriter.cpp
+  ${QET_DIR}/sources/container/qetzwriter.h
   ${QET_DIR}/sources/borderproperties.cpp
   ${QET_DIR}/sources/borderproperties.h
   ${QET_DIR}/sources/bordertitleblock.cpp
@@ -388,6 +392,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/autobreakconductor.cpp
   ${QET_DIR}/sources/autobreakconductor.h
+  ${QET_DIR}/sources/symboltextplacement.cpp
+  ${QET_DIR}/sources/symboltextplacement.h
 
   ${QET_DIR}/sources/diagramevent/diagrameventaddelement.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddelement.h
@@ -718,6 +724,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/TerminalStrip/terminalstripbridge.h
   ${QET_DIR}/sources/TerminalStrip/terminalstrip.cpp
   ${QET_DIR}/sources/TerminalStrip/terminalstrip.h
+  ${QET_DIR}/sources/TerminalStrip/terminalstripautoimport.cpp
+  ${QET_DIR}/sources/TerminalStrip/terminalstripautoimport.h
   ${QET_DIR}/sources/TerminalStrip/terminalstripdata.cpp
   ${QET_DIR}/sources/TerminalStrip/terminalstripdata.h
   ${QET_DIR}/sources/TerminalStrip/ui/addterminalstripitemdialog.cpp

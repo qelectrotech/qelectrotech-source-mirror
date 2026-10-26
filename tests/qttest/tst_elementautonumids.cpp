@@ -725,6 +725,85 @@ qet.log('PROBE ' + JSON.stringify(r));
 	// the folios which read the numbering with it (26 folios of
 	// industrial.qet read "Wire"), a numbering which folios read cannot be
 	// removed, an unused one can, and every step is one undo.
+	// The project database is the only home of the numbering (QETZ-DB-FIRST
+	// stage 2b): every change of it is read back, and saved, from there.
+	// A scheme of each kind added, renamed, removed, undone and redone,
+	// then made current; a renumbering and its undo; the scheme list is
+	// checked after each step and the project saved. On a one-folio
+	// project: a --run script is stopped after 30 s, and a sanitizer
+	// build is slow.
+	void numberingRowsFollowEveryChange()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("numbering-rows.qet"));
+		const QString script = QStringLiteral(R"JS(
+var saves = 0, wrong = [];
+function save() { if (qet.save(%1)) saves++; }
+function has(k, title) {
+	return qet.autoNums(k).some(function (n) { return n.split(': formula=')[0] === title; });
+}
+function formula(k, title) {
+	var found = qet.autoNums(k).filter(function (n) { return n.split(': formula=')[0] === title; });
+	return found.length ? found[0].split(': formula=')[1].replace(/^'|'$/g, '') : null;
+}
+function expect(step, k, present, absent) {
+	if (present && !has(k, present)) wrong.push(step + ' ' + k + ': no ' + present);
+	if (present && !formula(k, present)) wrong.push(step + ' ' + k + ': ' + present + ' has no parts');
+	if (absent && has(k, absent)) wrong.push(step + ' ' + k + ': still ' + absent);
+	var left = qet.query('SELECT COUNT(*) AS n FROM numbering_part p WHERE NOT EXISTS (SELECT 1 '
+			+ 'FROM numbering_scheme s WHERE s.kind = p.kind AND s.title = p.title)');
+	if (!left.length || left[0].n !== 0) wrong.push(step + ' ' + k + ': parts of no scheme');
+}
+save();
+['conductor', 'element', 'folio'].forEach(function (k) {
+	var first = 'Rows ' + k, renamed = 'Rows renamed ' + k;
+	qet.addAutoNum(k, first, ['string:R-', 'unit:7:2']); expect('add', k, first); save();
+	qet.renameAutoNum(k, first, renamed); expect('rename', k, renamed, first); save();
+	qet.undo(); expect('undo', k, first, renamed); save();
+	qet.redo(); expect('redo', k, renamed, first); save();
+});
+['conductor', 'element', 'folio'].forEach(function (k) {
+	qet.removeAutoNum(k, 'Rows renamed ' + k); expect('remove', k, null, 'Rows renamed ' + k); save();
+	qet.undo(); expect('undo remove', k, 'Rows renamed ' + k); save();
+});
+qet.useElementAutoNum('Rows renamed element'); save();
+qet.useConductorAutoNum(0, 'Rows renamed conductor'); save();
+var schemes = qet.autoNums('element');
+var renumbered = qet.renumberElementAutoNum(schemes[0].split(': formula=')[0]) > 0;
+save();
+if (renumbered) qet.undo();
+save();
+qet.log('PROBE ' + JSON.stringify({saves: saves, wrong: wrong}));
+)JS").arg(QStringLiteral("'") + saved + QStringLiteral("'"));
+
+		const QString path = m_dir.filePath(QStringLiteral("probe%1.js").arg(m_run));
+		QFile f(path);
+		QVERIFY(f.open(QIODevice::WriteOnly));
+		f.write(script.toUtf8());
+		f.close();
+		QProcess proc;
+		proc.setProcessEnvironment(environment());
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
+				   {QStringLiteral("--run"), path, QStringLiteral(QET_EXAMPLES_DIR "/741.qet")});
+		QVERIFY(proc.waitForFinished(180000));
+		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
+
+		QVERIFY2(out.contains(QLatin1String("PROBE {\"saves\":23,\"wrong\":[]}")), qPrintable(out.right(2000)));
+		// the changes are in the file: the folio numbering's removal was
+		// undone, the wires of the first folio follow the new numbering
+		const QByteArray xml = read(saved);
+		QVERIFY(xml.contains("title=\"Rows renamed folio\""));
+		QCOMPARE(diagramAttributes(xml, QStringLiteral("conductorAutonum")).value(0),
+				 QStringLiteral("Rows renamed conductor"));
+		// and the save, which writes the numbering from the database,
+		// has every scheme and the ones made current
+		const Saved numbering = parse(xml);
+		QCOMPARE(numbering.current, QStringLiteral("Rows renamed element"));
+		QCOMPARE(numbering.scheme_formula.value(QStringLiteral("Rows renamed element")),
+				 QStringLiteral("R-%sequ_1"));
+		QCOMPARE(QUuid(numbering.current_id), numbering.scheme_id.value(QStringLiteral("Rows renamed element")));
+		QVERIFY(xml.contains("current_autonum=\"Rows renamed conductor\""));
+	}
+
 	void conductorNumberings()
 	{
 		const QString saved = m_dir.filePath(QStringLiteral("conductors.qet"));

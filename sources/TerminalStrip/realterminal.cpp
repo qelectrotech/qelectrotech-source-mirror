@@ -22,7 +22,56 @@
 #include "terminalcolor.h"
 #include "terminalcatalog.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
+#include "../diagram.h"
+#include "../cable/cable.h"
+#include "../cable/cablemanager.h"
+#include "../qetproject.h"
+
+#include <QHash>
+#include <QSet>
+
+namespace
+{
+		/**
+		 * The cable cores wired to one terminal element, worked out from
+		 * the cables of the project (PR #1438). A core knows its
+		 * conductor, and CableManager::refreshLabels() writes the cable
+		 * and the core into the properties of that conductor, so reading
+		 * the conductors of the element is enough.
+		 * Each pair is (cable designation, core colour or number).
+		 */
+	QList<QPair<QString, QString>> wiredCores(Element *element)
+	{
+		QList<QPair<QString, QString>> cores;
+		if (!element || !element->diagram()) {
+			return cores;
+		}
+		const auto project = element->diagram()->project();
+		for (const auto terminal : element->terminals())
+		{
+			for (const auto conductor : terminal->conductors())
+			{
+				const auto properties = conductor->ownProperties();
+				const auto cable = CableManager::cableByUuid(project, properties.m_cable_uuid);
+				if (!cable || cable->designation().isEmpty()) {
+					continue;
+				}
+				auto wire = cable->colorOfCore(properties.m_cable_slot);
+				if (wire.isEmpty() && properties.m_cable_slot >= 0) {
+					wire = QString::number(properties.m_cable_slot + 1);
+				}
+				const QPair<QString, QString> core(cable->designation(), wire);
+				if (!cores.contains(core)) {
+					cores.append(core);
+				}
+			}
+		}
+		return cores;
+	}
+}
 
 /**
  * @brief RealTerminal
@@ -291,7 +340,20 @@ QString RealTerminal::Xref() const
  * @return The name of the cable (hose) connected to this terminal.
  * The value is stored in the informations of the element.
  */
-QString RealTerminal::cable() const {
+QString RealTerminal::cable() const
+{
+	const auto cores = wiredCores(m_element.data());
+	if (!cores.isEmpty())
+	{
+		QStringList cables;
+		for (const auto &core : cores) {
+			if (!cables.contains(core.first)) {
+				cables.append(core.first);
+			}
+		}
+		return cables.join(QStringLiteral(", "));
+	}
+
 	if (hasData()) {
 		return terminalData().m_informations.value(cableInfoKey()).toString();
 	}
@@ -299,10 +361,31 @@ QString RealTerminal::cable() const {
 }
 
 /**
+ * @brief RealTerminal::cableIsAutomatic
+ * @return true when the cable and the core of this terminal come from
+ * a cable of the project wired to it, false when they are the values
+ * typed in by the user in the terminal strip editor.
+ */
+bool RealTerminal::cableIsAutomatic() const {
+	return !wiredCores(m_element.data()).isEmpty();
+}
+
+/**
  * @brief RealTerminal::cableWire
  * @return The color / number of the wire of the cable, connected to this terminal.
  */
-QString RealTerminal::cableWire() const {
+QString RealTerminal::cableWire() const
+{
+	const auto cores = wiredCores(m_element.data());
+	if (!cores.isEmpty())
+	{
+		QStringList wires;
+		for (const auto &core : cores) {
+			wires.append(core.second);
+		}
+		return wires.join(QStringLiteral(", "));
+	}
+
 	if (hasData()) {
 		return terminalData().m_informations.value(cableWireInfoKey()).toString();
 	}
@@ -320,6 +403,199 @@ bool RealTerminal::isShield() const {
 			terminalData().m_informations.value(shieldInfoKey()).toString());
 	}
 	return false;
+}
+
+/**
+ * @brief RealTerminal::cableTarget
+ * Where the cable of this terminal goes at its far end: the lines to
+ * write in the box under the cable. What the project itself says when
+ * a cable lands on a piece (see automaticCableTarget()), and the text
+ * typed in by hand when none does -- the Target cell of the terminal
+ * strip editor is read only in the first case, so a target the drawing
+ * cannot work out is still worth naming by hand. A text typed in is
+ * written one line per field, Installation, Location and Label (BMK),
+ * the way the cell shows them: only a line break breaks it into fields.
+ * A "/" written inside a field (a name like "ASP/01") is part of that
+ * field and never breaks anything.
+ * @return the lines to write in the box under the cable
+ */
+QVector<QString> RealTerminal::cableTarget() const
+{
+	const auto automatic_{automaticCableTarget()};
+	if (!automatic_.isEmpty()) {
+		return automatic_;
+	}
+
+	if (hasData())
+	{
+		const auto typed_{terminalData().m_informations
+						  .value(cableTargetInfoKey()).toString()};
+		if (!typed_.isEmpty())
+		{
+				//One line by field, and only a line break breaks the text
+				//into fields : a "/" written inside a field stays where it is
+			QString text_{typed_};
+			text_.replace(QStringLiteral("\r\n"), QStringLiteral("\n"));
+			text_.replace(QLatin1Char('\r'), QLatin1Char('\n'));
+
+			QVector<QString> lines_;
+			for (const QString &field_
+				 : text_.split(QLatin1Char('\n'), Qt::SkipEmptyParts)) {
+				lines_ << field_;
+			}
+			return lines_;
+		}
+	}
+	return QVector<QString>();
+}
+
+/**
+ * @brief RealTerminal::cableTargetIsAutomatic
+ * @return true when the target of this terminal is worked out from the
+ * project -- one of its cables lands on a piece worth naming -- and
+ * false when only a text typed in by hand is there to show.
+ */
+bool RealTerminal::cableTargetIsAutomatic() const
+{
+	return !automaticCableTarget().isEmpty();
+}
+
+/**
+ * @brief RealTerminal::automaticCableTarget
+ * Where the cable of this terminal goes at its far end: the
+ * Installation, Location and Label (BMK) of the first piece the
+ * wires of the cable land on, past the strip's own terminals, in
+ * plan order -- the same three fields the cable list shows for a
+ * target, in the same order. An empty field is left out; a terminal
+ * with no cable, or a cable which lands on nothing else, gives no
+ * lines at all.
+ *
+ * The cable is the one the wires drawn to this terminal carry; a
+ * cable name typed by hand, with no wire behind it, is looked up by
+ * its name among the cables of the project.
+ * @return the lines to write in the box under the cable
+ */
+QVector<QString> RealTerminal::automaticCableTarget() const
+{
+	if (m_spare || m_element.isNull()) {
+		return QVector<QString>();
+	}
+	TerminalStrip *strip_ = parentStrip();
+	if (!strip_ || !strip_->project()) {
+		return QVector<QString>();
+	}
+	QETProject *project_{strip_->project()};
+
+		//The cable the wires drawn to this terminal are part of
+	QUuid cable_uuid_;
+	for (Terminal *terminal_ : m_element->terminals())
+	{
+		if (!terminal_) {
+			continue;
+		}
+		for (Conductor *conductor_ : terminal_->conductors())
+		{
+			if (conductor_ && !conductor_->properties().m_cable_uuid.isNull()) {
+				cable_uuid_ = conductor_->properties().m_cable_uuid;
+				break;
+			}
+		}
+		if (!cable_uuid_.isNull()) {
+			break;
+		}
+	}
+	if (cable_uuid_.isNull())
+	{
+			//A cable name typed by hand, no wire behind it: the first
+			//cable of the project drawn under that name
+		const auto name_{cable()};
+		if (name_.isEmpty()) {
+			return QVector<QString>();
+		}
+		for (Cable *cable_ : project_->cables())
+		{
+			if (cable_ && cable_->designation() == name_) {
+				cable_uuid_ = cable_->uuid();
+				break;
+			}
+		}
+		if (cable_uuid_.isNull()) {
+			return QVector<QString>();
+		}
+	}
+
+		//The own side: this strip's terminals never are the target
+	QSet<QUuid> own_;
+	for (const auto &physical_ : strip_->physicalTerminal())
+	{
+		if (!physical_) {
+			continue;
+		}
+		for (const auto &real_ : physical_->realTerminals()) {
+			if (real_ && real_->element()) {
+				own_.insert(real_->element()->uuid());
+			}
+		}
+	}
+
+		//Where the wires of the cable land: one piece whatever the
+		//number of its cores, never a report (the cable continues on
+		//the sheet the report points to) and never the strip's own
+		//terminals. Same rule as the cable list (cablelistrows.cpp).
+	QHash<QUuid, Element *> landed_;
+	for (Diagram *diagram_ : project_->diagrams())
+	{
+		for (Conductor *conductor_ : diagram_->conductors())
+		{
+			if (!conductor_ || conductor_->properties().m_cable_uuid != cable_uuid_) {
+				continue;
+			}
+			Terminal *ends_[2] = {conductor_->terminal1, conductor_->terminal2};
+			for (Terminal *terminal_ : ends_)
+			{
+				if (!terminal_) {
+					continue;
+				}
+				Element *element_ = terminal_->parentElement();
+				if (!element_ || (element_->linkType() & Element::AllReport)) {
+					continue;
+				}
+				if (own_.contains(element_->uuid())) {
+					continue;
+				}
+				landed_.insert(element_->uuid(), element_);
+			}
+		}
+	}
+	if (landed_.isEmpty()) {
+		return QVector<QString>();
+	}
+
+		//The first piece in plan order is the target, as the cable
+		//list chooses it
+	Element *target_{nullptr};
+	for (Element *element_ : std::as_const(landed_)) {
+		if (!target_ || comparPos(element_, target_)) {
+			target_ = element_;
+		}
+	}
+
+	const DiagramContext informations_{target_->elementInformations()};
+	const auto installation_{informations_.value(QETInformation::ELMT_PLANT).toString()};
+	const auto location_{informations_.value(QETInformation::ELMT_LOCATION).toString()};
+	const auto label_{informations_.value(QETInformation::ELMT_LABEL).toString()};
+
+	QVector<QString> lines_;
+	if (!installation_.isEmpty()) {
+		lines_ << installation_;
+	}
+	if (!location_.isEmpty()) {
+		lines_ << location_;
+	}
+	if (!label_.isEmpty()) {
+		lines_ << label_;
+	}
+	return lines_;
 }
 
 /**

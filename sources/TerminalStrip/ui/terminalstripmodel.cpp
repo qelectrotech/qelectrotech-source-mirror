@@ -33,6 +33,9 @@
 #include <QSpinBox>
 #include <QPainter>
 #include <QApplication>
+#include <QKeyEvent>
+#include <QPlainTextEdit>
+#include <QFrame>
 
 /**
  * Some const int who describe what a column contain
@@ -48,16 +51,17 @@ const int CONDUCTOR_CELL = 7;
 const int XREF_CELL = 8;
 const int CABLE_CELL = 9;
 const int CABLE_WIRE_CELL = 10;
-const int TYPE_CELL = 11;
-const int FUNCTION_CELL = 12;
-const int LED_CELL = 13;
-const int SHIELD_CELL = 14;
-const int COLOR_CELL = 15;
-const int SECTION_CELL = 16;
-const int WIDTH_CELL = 17;
-const int SEPARATOR_CELL = 18;
+const int CABLE_TARGET_CELL = 11;
+const int TYPE_CELL = 12;
+const int FUNCTION_CELL = 13;
+const int LED_CELL = 14;
+const int SHIELD_CELL = 15;
+const int COLOR_CELL = 16;
+const int SECTION_CELL = 17;
+const int WIDTH_CELL = 18;
+const int SEPARATOR_CELL = 19;
 
-const int COLUMN_COUNT = 19;
+const int COLUMN_COUNT = 20;
 
 static QVector<bool> UNMODIFIED_CELL_VECTOR(COLUMN_COUNT, false);
 
@@ -132,14 +136,15 @@ TerminalStripModel::Column TerminalStripModel::columnTypeForIndex(const QModelIn
 			case 8 : return XRef;
 			case 9 : return Cable;
 			case 10 : return CableWire;
-			case 11 : return Type;
-			case 12 : return Function;
-			case 13 : return Led;
-			case 14 : return Shield;
-			case 15 : return Color;
-			case 16 : return Section;
-			case 17 : return Width;
-			case 18 : return Separator;
+			case 11 : return CableTarget;
+			case 12 : return Type;
+			case 13 : return Function;
+			case 14 : return Led;
+			case 15 : return Shield;
+			case 16 : return Color;
+			case 17 : return Section;
+			case 18 : return Width;
+			case 19 : return Separator;
 			default : return Invalid;
 		}
 	}
@@ -182,12 +187,7 @@ int TerminalStripModel::rowCount(const QModelIndex &parent) const
 		return 0;
 	}
 
-	auto count = 0;
-	for (const auto &mptd : m_physical_data) {
-		count += mptd.real_data.size();
-	}
-
-	return count;
+	return m_row_count;
 }
 
 int TerminalStripModel::columnCount(const QModelIndex &parent) const
@@ -215,6 +215,7 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 			case XREF_CELL :       return mrtd.spare_ ? tr("Spare") : mrtd.Xref_;
 			case CABLE_CELL :      return mrtd.cable_;
 			case CABLE_WIRE_CELL : return mrtd.cable_wire;
+			case CABLE_TARGET_CELL : return mrtd.cable_target_;
 			case TYPE_CELL :       return ElementData::translatedTerminalType(mrtd.type_);
 			case FUNCTION_CELL :   return ElementData::translatedTerminalFunction(mrtd.function_);
 			case COLOR_CELL :      return TerminalColor::displayName(mrtd.color_, mrtd.stripe_color_);
@@ -235,6 +236,7 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 			case LABEL_CELL : return mrtd.label_;
 			case CABLE_CELL : return mrtd.cable_;
 			case CABLE_WIRE_CELL : return mrtd.cable_wire;
+			case CABLE_TARGET_CELL : return mrtd.cable_target_;
 			case COLOR_CELL : return TerminalColor::toSpec(mrtd.color_, mrtd.stripe_color_);
 			case SECTION_CELL : return mrtd.section_ > 0 ? QLocale().toString(mrtd.section_, 'g', 6) : QString();
 			case WIDTH_CELL : return mrtd.width_mm_ > 0 ? QLocale().toString(mrtd.width_mm_, 'g', 6) : QString();
@@ -267,7 +269,8 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 	{
 		return QBrush(Qt::gray);	//"Spare" : not a reference to a folio
 	}
-	else if (role == Qt::BackgroundRole && index.column() < COLUMN_COUNT )
+	else if (role == Qt::BackgroundRole && index.column() < COLUMN_COUNT
+			 && !m_modified_cell.isEmpty())
 	{
 		const auto key_ = modifiedCellKey(mrtd);
 		if (m_modified_cell.contains(key_) &&
@@ -301,6 +304,18 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 	bool modified_ = false;
 	int modified_cell = -1;
 	auto column_ = index.column();
+
+		//A cell worked out from the cables of the project is read only:
+		//the element never holds that value, so writing one in would only
+		//show something the next reload takes away again
+	if ((column_ == CABLE_CELL || column_ == CABLE_WIRE_CELL)
+		&& mrtd.cable_auto_) {
+		return false;
+	}
+	if (column_ == CABLE_TARGET_CELL
+		&& mrtd.cable_target_auto_) {
+		return false;
+	}
 
 	if (column_ == LEVEL_CELL &&
 		role == Qt::EditRole)
@@ -352,6 +367,14 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 		mrtd.cable_wire = value.toString();
 		modified_ = true;
 		modified_cell = CABLE_WIRE_CELL;
+	}
+	else if (column_ == CABLE_TARGET_CELL &&
+			 role == Qt::EditRole &&
+			 mrtd.cable_target_ != value.toString())
+	{
+		mrtd.cable_target_ = value.toString();
+		modified_ = true;
+		modified_cell = CABLE_TARGET_CELL;
 	}
 	else if (column_ == SHIELD_CELL)
 	{
@@ -476,6 +499,7 @@ QVariant TerminalStripModel::headerData(int section, Qt::Orientation orientation
 				case XREF_CELL:       return tr("Cross-reference");
 				case CABLE_CELL:      return tr("Cable");
 				case CABLE_WIRE_CELL: return tr("Color / wire number of the cable");
+				case CABLE_TARGET_CELL: return tr("Target");
 				case TYPE_CELL:       return tr("Type");
 				case FUNCTION_CELL :  return tr("Function");
 				case LED_CELL:        return tr("led");
@@ -488,6 +512,14 @@ QVariant TerminalStripModel::headerData(int section, Qt::Orientation orientation
 			}
 		}
 	}
+	else if (role == Qt::ToolTipRole &&
+			 orientation == Qt::Horizontal &&
+			 section == CABLE_TARGET_CELL)
+	{
+			//Same three fields as the box drawn under the cable, one line
+			//by field: only a line break separates them
+		return tr("Installation, Location and Label (BMK) of the piece the cable lands on, past this strip, one line per field");
+	}
 
 	return QVariant();
 }
@@ -497,8 +529,18 @@ Qt::ItemFlags TerminalStripModel::flags(const QModelIndex &index) const
 	Qt::ItemFlags flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 
 	auto c = index.column();
+		//The cable cells are only edited by hand when no cable
+		//of the project is wired to the terminal
+	if ((c == CABLE_CELL || c == CABLE_WIRE_CELL)
+		&& !dataAtRow(index.row()).cable_auto_)
+		flags = flags | Qt::ItemIsEditable;
+		//The target the project works out is read only: only the drawing
+		//decides it. No target to show, or one typed in by hand, may be
+		//written -- the same rule as the cable cells.
+	if (c == CABLE_TARGET_CELL
+		&& !dataAtRow(index.row()).cable_target_auto_)
+		flags = flags | Qt::ItemIsEditable;
 	if (c == LABEL_CELL || c == TYPE_CELL || c == FUNCTION_CELL
-		|| c == CABLE_CELL || c == CABLE_WIRE_CELL
 		|| c == COLOR_CELL || c == SECTION_CELL || c == WIDTH_CELL)
 		flags = flags | Qt::ItemIsEditable;
 	if (c == LED_CELL || c == SHIELD_CELL || c == SEPARATOR_CELL) {
@@ -589,7 +631,7 @@ QVector<modelRealTerminalData> TerminalStripModel::modelRealTerminalDataForIndex
 	for (auto i : set_) {
 		const auto rtd_ = realDataAtIndex(i);
 		if (rtd_.level_ > -1) {
-			vector_.append(realDataAtIndex(i));
+			vector_.append(rtd_);
 		}
 	}
 
@@ -697,6 +739,8 @@ void TerminalStripModel::reload()
 
 void TerminalStripModel::fillPhysicalTerminalData()
 {
+	m_row_index.clear();
+
 		//Get all physical terminal
 	if (m_terminal_strip)
 	{
@@ -706,41 +750,32 @@ void TerminalStripModel::fillPhysicalTerminalData()
 			mptd.pos_ = phy_t->pos();
 			mptd.uuid_ = phy_t->uuid();
 
+			const auto physical_index = static_cast<int>(m_physical_data.size());
 			for (const auto &real_t : phy_t->realTerminals())
 			{
 				if (!real_t.isNull())
 				{
 					mptd.real_data.append(modelRealTerminalData::data(real_t));
+					m_row_index.append({physical_index,
+										static_cast<int>(mptd.real_data.size()) - 1});
 				}
 			}
 
 			m_physical_data.append(mptd);
 		}
 	}
+
+	m_row_count = m_row_index.size();
 }
 
 modelRealTerminalData TerminalStripModel::dataAtRow(int row) const
 {
-	if (row > rowCount(QModelIndex())) {
+	if (row < 0 || row >= m_row_count) {
 		return modelRealTerminalData();
 	}
-	else
-	{
-		auto current_row = 0;
-		for (const auto &physical_data : std::as_const(m_physical_data))
-		{
-			for (const auto &real_data : physical_data.real_data)
-			{
-				if (current_row == row) {
-					return real_data;
-				} else {
-					++current_row;
-				}
-			}
-		}
-	}
 
-	return modelRealTerminalData();
+	const auto &place_ = m_row_index.at(row);
+	return m_physical_data.at(place_.physical_).real_data.at(place_.real_);
 }
 
 /**
@@ -751,32 +786,12 @@ modelRealTerminalData TerminalStripModel::dataAtRow(int row) const
  */
 void TerminalStripModel::replaceDataAtRow(modelRealTerminalData data, int row)
 {
-	if (row > rowCount(QModelIndex())) {
+	if (row < 0 || row >= m_row_count) {
 		return;
 	}
-	else
-	{
-		auto current_row = 0;
-		auto current_physical = 0;
 
-		for (const auto &physical_data : std::as_const(m_physical_data))
-		{
-			auto current_real = 0;
-			for (int i=0 ; i<physical_data.real_data.count() ; ++i)
-			{
-				if (current_row == row) {
-					auto physical_data = m_physical_data.at(current_physical);
-					physical_data.real_data.replace(current_real, data);
-					m_physical_data.replace(current_physical, physical_data);
-					return;
-				} else {
-					++current_real;
-					++current_row;
-				}
-			}
-			++current_physical;
-		}
-	}
+	const auto &place_ = m_row_index.at(row);
+	m_physical_data[place_.physical_].real_data.replace(place_.real_, data);
 }
 
 /**
@@ -794,26 +809,17 @@ modelPhysicalTerminalData TerminalStripModel::physicalDataAtIndex(int index) con
 		return modelPhysicalTerminalData();
 	}
 
-	int current_checked_index = -1;
-	int current_phy = -1;
-	bool match_ = false;
-
-	for (const auto &ptd_ : std::as_const(m_physical_data))
-	{
-		current_checked_index += ptd_.real_data.size();
-		++current_phy;
-
-		if (current_checked_index >= index) {
-			match_ = true;
-			break;
-		}
+		//A row always belongs to the physical terminal it is a level of,
+		//m_row_index says which one (negative index: the first physical
+		//terminal, as the walk this replaces used to give)
+	if (index < 0) {
+		return m_physical_data.first();
 	}
-
-	if (match_) {
-		return  m_physical_data.at(current_phy);
-	} else {
+	if (index >= m_row_count) {
 		return modelPhysicalTerminalData();
 	}
+
+	return m_physical_data.at(m_row_index.at(index).physical_);
 }
 
 /**
@@ -823,23 +829,34 @@ modelPhysicalTerminalData TerminalStripModel::physicalDataAtIndex(int index) con
  */
 modelRealTerminalData TerminalStripModel::realDataAtIndex(int index) const
 {
-	if (m_physical_data.isEmpty()) {
+	if (index < 0 || index >= m_row_count) {
 		return modelRealTerminalData();
 	}
 
-	int current_checked_index = -1;
+	const auto &place_ = m_row_index.at(index);
+	return m_physical_data.at(place_.physical_).real_data.at(place_.real_);
+}
 
-	for (const auto & ptd_ : std::as_const(m_physical_data))
+/**
+ * @brief bridgeWalkStep
+ * The three fields the neighbour walk of bridgePixmapFor() reads: level,
+ * bridge and identity. The whole row data would answer as well, but filling
+ * it reads the cables of the project (RealTerminal::cableTarget() and
+ * friends) -- work done for every step of a walk which the view runs for
+ * every bridge cell it paints and measures.
+ * @param real_t : the terminal to look at, may be null (no previous one)
+ * @return the data the walk needs, everything else left as it defaults
+ */
+static modelRealTerminalData bridgeWalkStep(const QSharedPointer<RealTerminal> &real_t)
+{
+	modelRealTerminalData mrtd;
+	if (!real_t.isNull())
 	{
-		for (const auto & rtd_ : std::as_const(ptd_.real_data)) {
-			++current_checked_index;
-			if (current_checked_index == index) {
-				return rtd_;
-			}
-		}
+		mrtd.level_ = real_t->level();
+		mrtd.bridged_ = real_t->isBridged();
+		mrtd.real_terminal = real_t.toWeakRef();
 	}
-
-	return modelRealTerminalData();
+	return mrtd;
 }
 
 QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
@@ -850,6 +867,15 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 
 	auto level_column = levelForColumn(columnTypeForIndex(index));
 	if (level_column == -1) {
+		return QPixmap();
+	}
+
+		//Without a bridge on this strip there is nothing to draw in the
+		//bridge cells: the check at the end of this function ends on an
+		//empty pixmap, and every step of the walk below to reach it used
+		//to fill the row data of a terminal (which reads the cables of the
+		//whole project). Skip the walk when there is no bridge at all.
+	if (!m_terminal_strip->hasBridges()) {
 		return QPixmap();
 	}
 
@@ -891,22 +917,30 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		//Terminal level ins't in the same column level of index
 		//Check if we need to draw a none bridge pixmap
 
-		//Check previous
-	auto phy_t = mrtd.real_terminal.toStrongRef()->physicalTerminal();
-	auto current_real_terminal = mrtd;
-	auto current_phy_uuid = phy_t->uuid();
+		//Check previous. The rows of the table hold the terminals of the
+		//strip in strip order, so the neighbour of a row is the row next
+		//to it: asking the strip for its neighbour walked to the head of
+		//the strip every time, for every bridge cell the view paints and
+		//measures (and on every layout of the table).
+	auto current_row = index.row();
+	auto current_t = mrtd.real_terminal.toStrongRef();
+	auto current_phy_uuid = current_t->physicalTerminal()->uuid();
 	bool already_jumped_to_previous = false;
 	modelRealTerminalData previous_data;
 
 	do {
-		current_real_terminal = modelRealTerminalData::data(m_terminal_strip->previousRealTerminal(current_real_terminal.real_terminal));
+		--current_row;
+		const auto previous_t = current_row >= 0
+				? dataAtRow(current_row).real_terminal.toStrongRef()
+				: QSharedPointer<RealTerminal>();
+		const auto current_real_terminal = bridgeWalkStep(previous_t);
 
 		if (current_real_terminal.level_ == -1) {
 			break;
 		}
 
 			//We are in the same physical terminal as previous loop
-		if (current_phy_uuid == current_real_terminal.real_terminal.toStrongRef()->physicalTerminal()->uuid())
+		if (current_phy_uuid == previous_t->physicalTerminal()->uuid())
 		{
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
@@ -918,7 +952,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 			break;
 		} else {
 			already_jumped_to_previous = true;
-			current_phy_uuid = current_real_terminal.real_terminal.toStrongRef()->physicalTerminal()->uuid();
+			current_phy_uuid = previous_t->physicalTerminal()->uuid();
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
 				previous_data = current_real_terminal;
@@ -928,20 +962,24 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 	} while(true);
 
 		//Check next
-	current_real_terminal = mrtd;
-	current_phy_uuid = phy_t->uuid();
+	current_row = index.row();
+	current_phy_uuid = current_t->physicalTerminal()->uuid();
 	bool already_jumped_to_next = false;
 	modelRealTerminalData next_data;
 
 	do {
-		current_real_terminal = modelRealTerminalData::data(m_terminal_strip->nextRealTerminal(current_real_terminal.real_terminal));
+		++current_row;
+		const auto next_t = current_row < m_row_count
+				? dataAtRow(current_row).real_terminal.toStrongRef()
+				: QSharedPointer<RealTerminal>();
+		const auto current_real_terminal = bridgeWalkStep(next_t);
 
 		if (current_real_terminal.level_ == -1) {
 			break;
 		}
 
 			//We are in the same physical terminal as previous loop
-		if (current_phy_uuid == current_real_terminal.real_terminal.toStrongRef()->physicalTerminal()->uuid())
+		if (current_phy_uuid == next_t->physicalTerminal()->uuid())
 		{
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
@@ -953,7 +991,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 			break;
 		} else {
 			already_jumped_to_next = true;
-			current_phy_uuid = current_real_terminal.real_terminal.toStrongRef()->physicalTerminal()->uuid();
+			current_phy_uuid = next_t->physicalTerminal()->uuid();
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
 				next_data = current_real_terminal;
@@ -1086,8 +1124,57 @@ QWidget *TerminalStripModelDelegate::createEditor(QWidget *parent, const QStyleO
 
 		return qcb;
 	}
+	if (index.column() == CABLE_TARGET_CELL) {
+			//The Target cell holds one line by field, so it takes a multi
+			//line editor : Return writes a new line (the cell gives its
+			//text back when the focus goes somewhere else), Ctrl+Return
+			//hands it over at once, Escape throws the text away
+		auto te = new QPlainTextEdit(parent);
+		te->setObjectName(QStringLiteral("terminal_cable_target"));
+		te->setFrameStyle(QFrame::NoFrame);
+		te->setTabChangesFocus(true);
+		te->setToolTip(tr("One line per field: Installation, Location, Label (BMK).\n"
+						  "Ctrl+Return gives the cell back, Escape throws the text away."));
+		te->installEventFilter(const_cast<TerminalStripModelDelegate *>(this));
+
+		return te;
+	}
 
 	return QStyledItemDelegate::createEditor(parent, option, index);
+}
+
+/**
+ * @brief TerminalStripModelDelegate::eventFilter
+ * The filter taken on by the Target cell editor: only the key which is
+ * handled here is the one giving the text back to the table. The filter
+ * of the base class is left aside for that cell on purpose, it is written
+ * for one line editors and would take Return away from the text.
+ * @param object the editor of the cell
+ * @param event the event sent to it
+ * @return true when the event is taken by this delegate
+ */
+bool TerminalStripModelDelegate::eventFilter(QObject *object, QEvent *event)
+{
+	if (object && object->objectName() == QLatin1String("terminal_cable_target"))
+	{
+		if (event && event->type() == QEvent::KeyPress)
+		{
+			const auto key_event = static_cast<QKeyEvent *>(event);
+			if ((key_event->key() == Qt::Key_Return ||
+				 key_event->key() == Qt::Key_Enter) &&
+				key_event->modifiers().testFlag(Qt::ControlModifier))
+			{
+				auto editor_ = qobject_cast<QWidget *>(object);
+				emit commitData(editor_);
+				emit closeEditor(editor_, QAbstractItemDelegate::NoHint);
+
+				return true;
+			}
+		}
+		return false;
+	}
+
+	return QStyledItemDelegate::eventFilter(object, event);
 }
 
 void TerminalStripModelDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
@@ -1172,6 +1259,17 @@ void TerminalStripModelDelegate::setEditorData(QWidget *editor, const QModelInde
 		return;
 	}
 
+	if (index.isValid() &&
+		editor->objectName() == QLatin1String("terminal_cable_target"))
+	{
+		if (auto te = dynamic_cast<QPlainTextEdit *>(editor)) {
+				//The cell shows one line by field: the editor gets them
+				//back exactly as they are, nothing joined, nothing split
+			te->setPlainText(index.data(Qt::EditRole).toString());
+		}
+		return;
+	}
+
 	QStyledItemDelegate::setEditorData(editor, index);
 }
 
@@ -1210,6 +1308,14 @@ void TerminalStripModelDelegate::setModelData(QWidget *editor, QAbstractItemMode
 		{
 			if (auto qcb = dynamic_cast<QComboBox *>(editor)) {
 				model->setData(index, qcb->currentData(), Qt::EditRole);
+			}
+		}
+		else if (editor->objectName() == QLatin1String("terminal_cable_target"))
+		{
+			if (auto te = dynamic_cast<QPlainTextEdit *>(editor)) {
+					//The lines are handed over as they were written, so a
+					//" / " inside a field is part of it and never a separator
+				model->setData(index, te->toPlainText(), Qt::EditRole);
 			}
 		}
 		else {

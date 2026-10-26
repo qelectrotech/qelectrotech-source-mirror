@@ -415,9 +415,9 @@ namespace autonum
 		m_assigned_label.replace("%M", m_context.plant);
 		m_assigned_label.replace("%LM", m_context.locmach);
 
-		QSettings settings;
 		if (m_context.has_element)
 		{
+		QSettings settings;
 		if (settings.value("border-columns_0", true).toBool()){
 			m_assigned_label.replace("%c", QString::number(m_context.element_position.number() - 1));
 			}else{

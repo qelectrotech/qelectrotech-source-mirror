@@ -12,7 +12,9 @@
 // when the file on disk is no longer that one. Driven through the real
 // binary's --run: qet.save(<the project's own path>) writes the file behind
 // the open project without updating what it remembers, which is exactly "someone
-// else saved"; qet.save('') is the project's own save.
+// else saved"; qet.save('') is the project's own save. Only a different content
+// counts: the same bytes with a new time are what a network share reports
+// right after our own save (#1579).
 class tst_changedondisk : public QObject
 {
 	Q_OBJECT
@@ -71,9 +73,21 @@ private slots:
 		QVERIFY2(out.contains(QStringLiteral("R2 true")), qPrintable(out));
 	}
 
+	void sameContentNewTimeSaves()
+	{
+		// the same bytes written behind the project (an unchanged project
+		// saves to an identical file, F124): only the time differs
+		const QString script = QStringLiteral(
+			"qet.save(%1);\nqet.log('R ' + qet.save(''));\n")
+			.arg(QStringLiteral("'") + m_project + QStringLiteral("'"));
+		const QString out = run(script, m_project);
+		QVERIFY2(out.contains(QStringLiteral("R true")), qPrintable(out));
+	}
+
 	void changedFileIsNotOverwritten()
 	{
 		const QString script = QStringLiteral(
+			"qet.moveElement(0, qet.elementUuids(0)[0], 10, 0);\n"
 			"qet.save(%1);\nqet.log('R ' + qet.save(''));\n")
 			.arg(QStringLiteral("'") + m_project + QStringLiteral("'"));
 		const QString out = run(script, m_project);
@@ -84,6 +98,7 @@ private slots:
 	void overrideOverwrites()
 	{
 		const QString script = QStringLiteral(
+			"qet.moveElement(0, qet.elementUuids(0)[0], 10, 0);\n"
 			"qet.save(%1);\nqet.log('R ' + qet.save(''));\n")
 			.arg(QStringLiteral("'") + m_project + QStringLiteral("'"));
 		const QString out = run(script, m_project, true);

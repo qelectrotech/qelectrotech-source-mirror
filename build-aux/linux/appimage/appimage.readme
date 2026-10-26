@@ -1,0 +1,194 @@
+QElectroTech AppImage bundle for Linux
+======================================
+
+RESUME
+------
+These scripts build a binary QElectroTech AppImage bundle for Linux x86_64,
+with Qt 6 and the KDE Frameworks QET uses, on an Ubuntu/Xubuntu 24.04 host.
+
+They are adapted from the digiKam AppImage scripts by Gilles Caulier
+(digikam/project/bundles/appimage and 3rdparty/ext_kf6), reduced to what
+QElectroTech needs.
+
+Location in the QET tree: build-aux/linux/appimage/
+
+
+AUTHORS
+-------
+(c) 2015-2019 Gilles Caulier <caulier dot gilles at gmail dot com>
+(c) 2026      The QElectroTech Team
+
+
+FILES
+-----
+
+build-aux/linux/appimage/
+├── appimage.readme           This file
+├── config.sh                 Settings: Qt version, QET branch, options
+├── common.sh                 Shared functions
+├── 01-build-host.sh          Host packages, Qt 6, AppImage tools
+├── 02-build-qet.sh           KDE Frameworks (once), then QElectroTech
+├── 03-build-appimage.sh      Bundle and AppImage file
+├── makeall.sh                01 + 02 + 03 : everything from scratch
+├── update.sh                 02 + 03 : rebuild QET and the AppImage
+└── data
+    ├── AppRun                Launcher inside the AppImage
+    └── qt.conf               Qt plugins/translations paths in the bundle
+
+
+REQUIREMENTS
+------------
+
+- Ubuntu or Xubuntu 24.04 x86_64. A virtual machine is fine (4 cores,
+  8 GB RAM and 30 GB of disk recommended).
+- A normal user with sudo rights. Do NOT run the scripts as root: only the
+  apt commands in 01-build-host.sh use sudo. Everything else is built and
+  assembled in $HOME/qet-appimage-work.
+- Internet access to: Ubuntu mirrors, PyPI (aqtinstall), the Qt download
+  mirrors, invent.kde.org (KDE Frameworks) and github.com (QET sources,
+  appimagetool, excludelist).
+- In a VM, disable the screen locker and the suspend before a long build
+  (Xfce: Settings > Screensaver and Settings > Power Manager), or:
+    sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+
+CONFIGURATION (config.sh)
+-------------------------
+
+QT_FROM          aqt    : official Qt binaries installed with aqtinstall
+                          (default, recommended)
+                 system : Ubuntu's Qt 6.4.2. QET master does not compile
+                          with it any more: only for older branches.
+QT_VERSION       Qt version installed by aqt (default 6.11.2).
+QT_AQT_MODULES   Extra Qt modules: qtpdf (PDF page import), qtimageformats.
+QET_VERSION      QET branch or tag to package (default master).
+QET_WITH_KF      1 : build with KCoreAddons/KWidgetsAddons (default).
+                 0 : use QET's own replacements (sources/ui/nokde).
+KF_VERSION       KDE Frameworks tag (default v6.10.0, as in
+                 cmake/fetch_kdeaddons.cmake).
+QET_SPACEMOUSE   1 : 3D mouse support through hidapi.
+QET_DEBUG        1 : keep the debug symbols of the qelectrotech binary.
+QET_SIGN         1 : detached GPG signature (.sig) of the AppImage.
+QET_UPLOAD       1 : rsync the AppImage to QET_UPLOADURL:QET_UPLOADDIR.
+
+
+USAGE
+-----
+
+First build, from this directory:
+
+    ./makeall.sh
+
+Next builds (host, Qt and KDE Frameworks already in place):
+
+    ./update.sh
+
+The AppImage and its SHA256 file are written in ./bundle/ :
+
+    QElectroTech_<major.minor.micro>-r<revision>-x86_64.AppImage
+    QElectroTech_<major.minor.micro>-r<revision>-x86_64.AppImage-SHA256.txt
+
+The revision number is computed as in the former packaging script:
+git rev-list HEAD --count + 473.
+
+The logs of each step are in ./logs/.
+
+
+HOW IT WORKS
+------------
+
+* 01-build-host.sh
+  - installs the build packages with apt (compiler, CMake, Ninja, patchelf,
+    SQLite, xcb/wayland/xkbcommon, CUPS, OpenSSL...);
+  - installs Qt with aqtinstall in $HOME/qet-appimage-work/Qt;
+  - downloads appimagetool (static runtime) and the AppImage excludelist.
+
+* 02-build-qet.sh
+  - builds ECM, KCoreAddons and KWidgetsAddons once, statically, against the
+    same Qt, in $HOME/qet-appimage-work/kf6 (QET's own BUILD_KF=ON fetch does
+    not work: kcoreaddons cannot find the fetched ECM);
+  - clones or updates QET in $HOME/qet-appimage-work/build, builds it with
+    -DBUILD_WITH_KF=ON -DBUILD_KF=OFF -DPACKAGE_TESTS=OFF;
+  - installs it with DESTDIR in the AppDir, prefix /usr.
+
+* 03-build-appimage.sh
+  - copies the Qt plugins QET needs: platforms (xcb, wayland), platform
+    themes, input methods, xcb GL, wayland integrations, image formats,
+    SVG icon engine, print support (CUPS), TLS, and the SQLite driver only;
+  - copies the Qt translations (qt_*.qm, qtbase_*.qm);
+  - collects the shared libraries with ldd, minus the libraries of the
+    excludelist (glibc, libstdc++, libGL/libEGL, X11, fontconfig...):
+    bundling libGL/libEGL would break the host graphics drivers;
+  - sets the RPATHs with patchelf ($ORIGIN): LD_LIBRARY_PATH is not used,
+    so the programs QET starts (browser, PDF viewer, xdg-open) keep the
+    host libraries;
+  - strips the binaries and runs appimagetool.
+
+* data/AppRun
+  QET is built with absolute /usr/share/qelectrotech paths. AppRun gives it
+  the paths inside the AppImage with --common-elements-dir,
+  --common-tbt-dir and --lang-dir.
+
+
+CONTINUOUS INTEGRATION
+----------------------
+
+.github/workflows/linux-appimage.yml runs these scripts on an ubuntu-24.04
+GitHub runner. It is called by windows-msi.yml, so it only runs when the
+Windows CI/CD runs, in parallel with the MSI build:
+
+    Windows Build -> windows-msi.yml -> build-msi       \
+                                     -> build-appimage   -> deploy-pages
+
+- QET_SOURCE_DIR points the scripts to the workflow's checkout, built as
+  it is, and CI=true skips the dist-upgrade.
+- Qt ($QT_ROOT) and the KDE Frameworks ($KF_PREFIX) are kept in the
+  GitHub Actions cache, keyed by QT_VERSION and KF_VERSION: only QET is
+  rebuilt on each run.
+- The AppImage and its SHA256 file replace the previous ones on the
+  nightly-qt6 release, and deploy-pages adds a Linux section to
+  https://qelectrotech.github.io/qelectrotech-source-mirror/
+- An AppImage failure never blocks the Windows part of the page.
+
+
+COMPATIBILITY
+-------------
+
+An AppImage only runs on systems whose glibc is at least as recent as the
+build host's. Built on Ubuntu 24.04 (glibc 2.39), it runs on Ubuntu 24.04
+and later, Debian 13 and later, Fedora 40 and later, current Arch Linux and
+openSUSE Tumbleweed. It does NOT run on Ubuntu 22.04 or Debian 12.
+
+No libfuse2 is needed on the target: appimagetool uses the static type2
+runtime.
+
+
+AT RUN-TIME ON TARGET COMPUTER
+------------------------------
+
+    chmod +x QElectroTech_*.AppImage
+    ./QElectroTech_*.AppImage              run QElectroTech
+    ./QElectroTech_*.AppImage file.qet     open a project
+    ./QElectroTech_*.AppImage debug        run QElectroTech in gdb
+    ./QElectroTech_*.AppImage help         show these options
+
+To integrate the AppImage into the desktop menu and file associations, use
+Gear Lever or AppImageLauncher.
+
+
+TROUBLESHOOTING
+---------------
+
+- "This application failed to start because no Qt platform plugin could be
+  initialized": run with QT_DEBUG_PLUGINS=1 to see which library is missing,
+  then add it to the bundle or check that it is not wrongly excluded.
+- Unresolved libraries: 03-build-appimage.sh prints
+  "WARNING: unresolved dependencies" with the missing names.
+- Wayland: force X11 with QT_QPA_PLATFORM=xcb if a compositor misbehaves.
+
+
+LICENSES
+--------
+
+The scripts and other contents of this directory are licensed under the
+GNU General Public License version 2, or any later version.

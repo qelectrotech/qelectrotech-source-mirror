@@ -94,12 +94,12 @@ void PartArc::normalizeAngles(qreal &start, qreal &angle)
 {
     constexpr qreal CIRCLE = 360.0 * 16.0; // internal representation of angles in 1/16 degree
 
-    while (start <    0.0) { start += CIRCLE; } // always positive start
-    while (start > CIRCLE) { start -= CIRCLE; } // within 0 ... 360
+    while (start <     0.0) { start += CIRCLE; } // always positive start
+    while (start >= CIRCLE) { start -= CIRCLE; } // within 0 ... 360
     if (angle < 0.0) {
         start  = (start + angle + CIRCLE);
-        while (start <    0.0) { start += CIRCLE; }
-        while (start > CIRCLE) { start -= CIRCLE; }
+        while (start <     0.0) { start += CIRCLE; }
+        while (start >= CIRCLE) { start -= CIRCLE; }
         angle *= (-1.0);
     }
 }

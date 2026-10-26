@@ -262,6 +262,9 @@ void ElementInfoWidget::enableLiveEdit()
 	if (m_freeze_cb) {
 		connect(m_freeze_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
 	}
+	if (m_label_shown_cb) {
+		connect(m_label_shown_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
+	}
 	if (m_number_cb) {
 		connect(m_number_cb, QOverload<int>::of(&QComboBox::activated), this, &ElementInfoWidget::apply);
 	}
@@ -282,6 +285,9 @@ void ElementInfoWidget::disableLiveEdit()
 	}
 	if (m_freeze_cb) {
 		disconnect(m_freeze_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
+	}
+	if (m_label_shown_cb) {
+		disconnect(m_label_shown_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
 	}
 	if (m_number_cb) {
 		disconnect(m_number_cb, QOverload<int>::of(&QComboBox::activated), this, &ElementInfoWidget::apply);
@@ -307,6 +313,13 @@ void ElementInfoWidget::buildInterface()
 		//line that currentInfo() then fills with "true"/"false".
 	keys.removeAll(QStringLiteral("exclude_from_bom"));
 
+		//The terminal number is not a property of the element: it is
+		//derived from its label, so an edit row here would store a value
+		//nothing reads -- and the nomenclature query has no such column,
+		//which is why the export does not offer it either. The number
+		//stays a text variable (%{terminal_number}) of the element editor.
+	keys.removeAll(QETInformation::ELMT_TERMINAL_NUMBER);
+
 	for (auto str : keys)
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
@@ -318,6 +331,7 @@ void ElementInfoWidget::buildInterface()
 	setupSchemeRow();
 	setupNumberRow();
 	setupFreezeRow();
+	setupLabelShownRow();
 
 	m_add_custom_property_btn = new QPushButton(tr("Add a custom property"), this);
 	connect(m_add_custom_property_btn, &QPushButton::clicked, this, [this]() { addCustomProperty(); });
@@ -367,7 +381,8 @@ QStringList ElementInfoWidget::predefinedKeys() const
 	keys << QETInformation::ELMT_FORMULA_ID
 		 << QStringLiteral("auto_num_locked")
 		 << QStringLiteral("potential_isolating")
-		 << QStringLiteral("exclude_from_bom");
+		 << QStringLiteral("exclude_from_bom")
+		 << QStringLiteral("label_shown");
 
 	return keys;
 }
@@ -672,6 +687,9 @@ void ElementInfoWidget::updateUi()
 		m_freeze_cb->setChecked(m_element->isFreezeLabel());
 		updateFreezeRow();
 	}
+	if (m_label_shown_cb) {
+		m_label_shown_cb->setChecked(m_element->labelShown());
+	}
 	refreshNumberRow();
 	updateSuggestions();
 
@@ -759,6 +777,13 @@ DiagramContext ElementInfoWidget::currentInfo() const
 		info_.addValue(QStringLiteral("exclude_from_bom"), m_exclude_from_bom_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
 	}
 
+	// The name is drawn unless the element says otherwise: only a name
+	// which is not drawn needs an information, so that elements which
+	// draw it keep their files exactly as they are.
+	if (m_label_shown_cb && !m_label_shown_cb->isChecked()) {
+		info_.addValue(QStringLiteral("label_shown"), QStringLiteral("false"));
+	}
+
 		//The element keeps following its numbering scheme as long as its
 		//formula is left as it is; a formula edited by hand is its own.
 	const DiagramContext &elmt_info = m_element->elementInformations();
@@ -844,6 +869,38 @@ void ElementInfoWidget::updateFreezeRow()
 	}
 	m_freeze_cb->setEnabled(!formula->text().isEmpty() || m_freeze_cb->isChecked());
 	updateNumberRow();
+}
+
+/**
+	@brief ElementInfoWidget::setupLabelShownRow
+	Add under the freeze box a check box which decides whether the name
+	of this element is drawn on the sheet: the choice belongs to the
+	placed element, not to the symbol, so everyone can decide for
+	himself.
+*/
+void ElementInfoWidget::setupLabelShownRow()
+{
+		//The box means something for a terminal only, so it is drawn
+		//for a terminal only - the same rule as the function separation
+		//box just below it.
+	if (!m_element || m_element->elementData().m_type != ElementData::Terminal) {
+		return;
+	}
+	m_label_shown_cb = new QCheckBox(tr("Show name"), this);
+	m_label_shown_cb->setObjectName(QStringLiteral("m_label_shown_cb"));
+	m_label_shown_cb->setToolTip(tr("Untick to not draw the name of this element on the sheet: "
+									"its data is kept, and a terminal keeps its number."));
+
+	int row = ui->scroll_vlayout->indexOf(m_freeze_cb);
+	if (row < 0) {
+		ElementInfoPartWidget *label = infoPartWidgetForKey(QETInformation::ELMT_LABEL);
+		row = label ? ui->scroll_vlayout->indexOf(label) : -1;
+	}
+	if (row >= 0) {
+		ui->scroll_vlayout->insertWidget(row + 1, m_label_shown_cb);
+	} else {
+		ui->scroll_vlayout->addWidget(m_label_shown_cb);
+	}
 }
 
 /**

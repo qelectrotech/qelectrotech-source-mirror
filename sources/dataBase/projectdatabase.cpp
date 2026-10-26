@@ -519,6 +519,11 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 			return refuse(QStringLiteral("a folio number uses %autonum"));
 		}
 		border->setFolioData(i + 1, int(diagram_nodes.size()), QString(), project_wide);
+			//setFolioData() only writes through the store for a placed
+			//folio (reader isn't one); store it here too, straight from
+			//the document (habit 4), so a folio not yet built still has
+			//its number queryable.
+		storeFolioNumber(diagram_uuid, i + 1, int(diagram_nodes.size()));
 
 			//What a formula on this folio is worked out from, as
 			//AssignVariables::formulaToLabel() reads it off a built folio.
@@ -1786,6 +1791,7 @@ void projectDataBase::addDiagram(Diagram *diagram)
 	if (!m_insert_diagram_info_query.exec()) {
 		qDebug() << "projectDataBase::addDiagram insert info error : " << m_insert_diagram_info_query.lastError();
 	}
+	restoreRemovedFolioRows(diagram);
 
 		//A folio put back by undoing its removal comes with its items already
 		//on it, and their rows went with it: queue them again.
@@ -1816,6 +1822,88 @@ void projectDataBase::addDiagram(Diagram *diagram)
 		//from %id or %total changed on every folio.
 	updateFolioPositions();
 	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::keepRemovedFolioRows
+	Before the rows of the folio of uuid @p folio are deleted with it: keep
+	a copy of its element, element_info, terminal, conductor and link rows,
+	and of the link rows of other symbols to its own, for
+	restoreRemovedFolioRows() if the removal is undone. A folio not built
+	(lazy folios) has no symbols to write them again from, and a symbol on
+	a folio not built none to write its link to the folio's.
+*/
+void projectDataBase::keepRemovedFolioRows(const QString &folio)
+{
+	QSqlQuery query(m_data_base);
+	for (const char *table : {"element", "element_info", "terminal", "conductor", "link"})
+		query.exec(QStringLiteral("CREATE TEMP TABLE IF NOT EXISTS removed_%1 AS SELECT * FROM %1 WHERE 0")
+				   .arg(QLatin1String(table)));
+	const QString of_folio = QStringLiteral("(SELECT uuid FROM element WHERE diagram_uuid = :folio)");
+	for (const QString &sql : {
+		 QStringLiteral("INSERT OR IGNORE INTO removed_link SELECT * FROM link WHERE element_uuid IN %1 "
+						"OR linked_uuid IN %1 ORDER BY rowid").arg(of_folio),
+		 QStringLiteral("INSERT OR IGNORE INTO removed_element_info SELECT * FROM element_info "
+						"WHERE element_uuid IN %1 ORDER BY rowid").arg(of_folio),
+		 QStringLiteral("INSERT OR IGNORE INTO removed_terminal SELECT * FROM terminal "
+						"WHERE element_uuid IN %1 ORDER BY rowid").arg(of_folio),
+		 QStringLiteral("INSERT OR IGNORE INTO removed_conductor SELECT * FROM conductor "
+						"WHERE diagram_uuid = :folio ORDER BY rowid"),
+		 QStringLiteral("INSERT OR IGNORE INTO removed_element SELECT * FROM element "
+						"WHERE diagram_uuid = :folio ORDER BY rowid")}) {
+		query.prepare(sql);
+		query.bindValue(QStringLiteral(":folio"), folio);
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::keepRemovedFolioRows error : " << query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::restoreRemovedFolioRows
+	@p folio is put back by undoing its removal: put back the rows kept by
+	keepRemovedFolioRows(), then drop their copies. Built, the folio writes
+	its symbols and wires again itself (addDiagram()): only the link rows
+	are put back, those of symbols on folios not built among them.
+*/
+void projectDataBase::restoreRemovedFolioRows(Diagram *folio)
+{
+	QSqlQuery query(m_data_base);
+	if (!query.exec(QStringLiteral("SELECT 1 FROM removed_element LIMIT 1")) || !query.next()) {
+		return;
+	}
+	const QString of_folio = QStringLiteral("(SELECT uuid FROM removed_element WHERE diagram_uuid = :folio)");
+	QStringList restore = {QStringLiteral("INSERT OR IGNORE INTO link SELECT * FROM removed_link "
+										  "WHERE element_uuid IN %1 OR linked_uuid IN %1 ORDER BY rowid")
+						   .arg(of_folio)};
+	if (!folio->isLoaded()) {
+		restore << QStringLiteral("INSERT OR IGNORE INTO element SELECT * FROM removed_element "
+								  "WHERE diagram_uuid = :folio ORDER BY rowid")
+				<< QStringLiteral("INSERT OR IGNORE INTO element_info SELECT * FROM removed_element_info "
+								  "WHERE element_uuid IN %1 ORDER BY rowid").arg(of_folio)
+				<< QStringLiteral("INSERT OR IGNORE INTO terminal SELECT * FROM removed_terminal "
+								  "WHERE element_uuid IN %1 ORDER BY rowid").arg(of_folio)
+				<< QStringLiteral("INSERT OR IGNORE INTO conductor SELECT * FROM removed_conductor "
+								  "WHERE diagram_uuid = :folio ORDER BY rowid");
+	}
+		//The copies go, the element ones last: the others are found by them
+	for (const char *table : {"link", "element_info", "terminal"})
+		restore << QStringLiteral("DELETE FROM removed_%1 WHERE element_uuid IN %2")
+				   .arg(QLatin1String(table), of_folio);
+	restore << QStringLiteral("DELETE FROM removed_link WHERE linked_uuid IN %1").arg(of_folio)
+			<< QStringLiteral("DELETE FROM removed_conductor WHERE diagram_uuid = :folio")
+			<< QStringLiteral("DELETE FROM removed_element WHERE diagram_uuid = :folio");
+	const bool own_transaction = m_data_base.transaction();
+	for (const QString &sql : std::as_const(restore)) {
+		query.prepare(sql);
+		query.bindValue(QStringLiteral(":folio"), folio->uuid().toString());
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::restoreRemovedFolioRows error : " << query.lastError();
+		}
+	}
+	if (own_transaction) {
+		m_data_base.commit();
+	}
 }
 
 /**
@@ -1905,6 +1993,7 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 		//locked DB) can't leave the diagram row deleted while its
 		//element/terminal/element_info/conductor rows survive.
 	m_data_base.transaction();
+	keepRemovedFolioRows(uuid_str);
 
 	QSqlQuery cascade_links(m_data_base);
 	cascade_links.prepare(QStringLiteral(
@@ -2651,6 +2740,21 @@ bool projectDataBase::createDataBase()
 			"PRIMARY KEY (element_uuid, ord))"))) {
 		qDebug() << " element_information_table query : " << query_.lastError();
 	}
+
+		//Create the element_kind_information table: a symbol's kind
+		//information (NO/NC/SW/power and the like), baked into its own
+		//definition and never edited after it is built, the store symbols
+		//write through (storeElementKindInformation()).
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE element_kind_information ("
+			"element_uuid VARCHAR(50) NOT NULL, "
+			"ord INTEGER NOT NULL, "
+			"name TEXT NOT NULL, "
+			"value TEXT, "
+			"show INTEGER NOT NULL, "
+			"PRIMARY KEY (element_uuid, ord))"))) {
+		qDebug() << " element_kind_information_table query : " << query_.lastError();
+	}
 		//Create the folio_titleblock table: the title block properties of
 		//every folio, as a folio saves them, the store folios write
 		//through (storeFolioTitleBlock()). One row per property, then one
@@ -2664,6 +2768,37 @@ bool projectDataBase::createDataBase()
 			"show INTEGER NOT NULL, "
 			"PRIMARY KEY (diagram_uuid, ord))"))) {
 		qDebug() << " folio_titleblock_table query : " << query_.lastError();
+	}
+
+		//Create the folio_border table: the border/grid dimensions of
+		//every folio (the column/row reference grid, e.g. "A1", "B2"), the
+		//store each folio's border is written through
+		//(storeFolioBorder()). One row per folio.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE folio_border ("
+			"diagram_uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+			"columns_count INTEGER NOT NULL, "
+			"columns_width REAL NOT NULL, "
+			"columns_header_height REAL NOT NULL, "
+			"display_columns INTEGER NOT NULL, "
+			"rows_count INTEGER NOT NULL, "
+			"rows_height REAL NOT NULL, "
+			"rows_header_width REAL NOT NULL, "
+			"display_rows INTEGER NOT NULL)"))) {
+		qDebug() << " folio_border_table query : " << query_.lastError();
+	}
+
+		//Create the folio_number table: a folio's 1-based position among
+		//the project's folios and the project's folio count, recomputed
+		//whenever a folio is added, removed or reordered
+		//(QETProject::updateDiagramsFolioData()), the store each folio's
+		//number is written through (storeFolioNumber()). One row per folio.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE folio_number ("
+			"diagram_uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+			"folio_index INTEGER NOT NULL, "
+			"folio_total INTEGER NOT NULL)"))) {
+		qDebug() << " folio_number_table query : " << query_.lastError();
 	}
 
 		//Create the conductor_properties table: the properties of every
@@ -2693,6 +2828,41 @@ bool projectDataBase::createDataBase()
 			"FOREIGN KEY (element_uuid) REFERENCES element (uuid))"));
 	if (!query_.exec(link_table)) {
 		qDebug() << " link_table query : " << query_.lastError();
+	}
+
+		//The numbering tables (QETZ-DB-FIRST stage 2b): the project's
+		//schemes, one row per part of each in its order, and the settings
+		//saved with them; the save writes the numbering from them. Not
+		//filled from the folios: QETProject writes them when it reads its
+		//file and whenever its numbering changes.
+	for (const char *table : {
+			 "CREATE TABLE numbering_scheme ("
+			 "kind VARCHAR(20) NOT NULL, title TEXT NOT NULL, uuid VARCHAR(50), "
+			 "PRIMARY KEY (kind, title))",
+			 "CREATE TABLE numbering_part ("
+			 "kind VARCHAR(20) NOT NULL, title TEXT NOT NULL, ord INTEGER NOT NULL, "
+			 "type TEXT, value TEXT, increase TEXT, initialvalue TEXT, modulus TEXT, format TEXT, "
+			 "PRIMARY KEY (kind, title, ord), "
+			 "FOREIGN KEY (kind, title) REFERENCES numbering_scheme (kind, title))",
+			 "CREATE TABLE numbering_setting (name VARCHAR(50) PRIMARY KEY NOT NULL, value TEXT)"}) {
+		if (!query_.exec(QLatin1String(table))) {
+			qDebug() << " numbering table query : " << query_.lastError();
+		}
+	}
+
+		//2b-4: a folio's own unit/ten/hundred-folio counters, one row per
+		//(folio, owner, level, scheme title, ord). owner is "element" or
+		//"conductor"; level keeps Diagram's own "unitfolio"/"tenfolio"/
+		//"hundredfolio" strings. Not filled from the folio's XML here --
+		//Diagram writes these rows itself, the same write-through pattern
+		//as the numbering tables above.
+	if (!query_.exec(QLatin1String(
+			"CREATE TABLE folio_counter ("
+			"folio_uuid VARCHAR(50) NOT NULL, owner VARCHAR(20) NOT NULL, "
+			"level VARCHAR(20) NOT NULL, title TEXT NOT NULL, ord INTEGER NOT NULL, "
+			"value TEXT, "
+			"PRIMARY KEY (folio_uuid, owner, level, title, ord))"))) {
+		qDebug() << " folio_counter table query : " << query_.lastError();
 	}
 
 	//Create the terminal table.
@@ -2804,10 +2974,15 @@ bool projectDataBase::createDataBase()
 */
 void projectDataBase::createElementNomenclatureView()
 {
+		//plant and location: the element's own, else its folio's. An
+		//installation is structured by its folios (=plant +location, the
+		//%M / %LM of the folio), as EPLAN builds the device tag from the
+		//page structure: an element drawn on a +UV1 folio is in +UV1
+		//without the information being typed into every element.
 	QString create_view ("CREATE VIEW element_nomenclature_view AS SELECT "
 						 "ei.label AS label,"
-						 "ei.plant AS plant,"
-						 "ei.location AS location,"
+						 "COALESCE(NULLIF(ei.plant, ''), di.plant) AS plant,"
+						 "COALESCE(NULLIF(ei.location, ''), di.locmach) AS location,"
 						 "ei.comment AS comment,"
 						 "ei.function AS function,"
 						 "ei.description AS description,"
@@ -2908,6 +3083,10 @@ void projectDataBase::createElementNomenclatureView()
 		columns_.replace(QStringLiteral("e.sub_type AS element_sub_type"), QStringLiteral("NULL AS element_sub_type"));
 		columns_.replace(QStringLiteral("di.title AS title"), QStringLiteral("st.title AS title"));
 		columns_.replace(QStringLiteral("di.folio AS folio"), QStringLiteral("st.folio AS folio"));
+			//A spare terminal is on no folio: no folio plant or location
+			//to fall back to, its own value as before
+		columns_.replace(QStringLiteral("di.plant"), QStringLiteral("''"));
+		columns_.replace(QStringLiteral("di.locmach"), QStringLiteral("''"));
 		columns_.replace(QStringLiteral("e.pos AS position"), QStringLiteral("st.position AS position"));
 		create_view += QStringLiteral(" UNION ALL SELECT ") + columns_ +
 					   QStringLiteral(" FROM spare_terminal st"
@@ -3286,6 +3465,71 @@ void projectDataBase::forgetElementInformation(const QUuid &element)
 }
 
 /**
+	@brief projectDataBase::elementKindInformation
+	@return the stored kind information of the symbol @p element, or an
+	empty context if it holds none
+*/
+DiagramContext projectDataBase::elementKindInformation(const QUuid &element) const
+{
+	return m_element_kind_information.value(element);
+}
+
+/**
+	@brief projectDataBase::storeElementKindInformation
+	Store @p information as the kind information of the placed symbol
+	@p element, in the element_kind_information table and the cache in
+	front of it.
+	@return true if that changed what was stored
+*/
+bool projectDataBase::storeElementKindInformation(const QUuid &element, const DiagramContext &information)
+{
+	if (element.isNull()) return false;
+	auto known = m_element_kind_information.constFind(element);
+	if (known != m_element_kind_information.constEnd() && *known == information) return false;
+	m_element_kind_information.insert(element, information);
+
+	const QString uuid = element.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM element_kind_information WHERE element_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeElementKindInformation remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral(
+			"INSERT INTO element_kind_information (element_uuid, ord, name, value, show) "
+			"VALUES (:uuid, :ord, :name, :value, :show)"));
+	int ord = 0;
+	for (const QString &key : information.keys()) {
+		insert.bindValue(QStringLiteral(":uuid"), uuid);
+		insert.bindValue(QStringLiteral(":ord"), ord++);
+		insert.bindValue(QStringLiteral(":name"), key);
+		insert.bindValue(QStringLiteral(":value"), information.value(key).toString());
+		insert.bindValue(QStringLiteral(":show"), information.keyMustShow(key) ? 1 : 0);
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeElementKindInformation insert error : " << insert.lastError();
+		}
+	}
+	return true;
+}
+
+/**
+	@brief projectDataBase::forgetElementKindInformation
+	The symbol @p element is no longer placed: its stored kind information
+	goes.
+*/
+void projectDataBase::forgetElementKindInformation(const QUuid &element)
+{
+	if (!m_element_kind_information.remove(element)) return;
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM element_kind_information WHERE element_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), element.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::forgetElementKindInformation error : " << remove.lastError();
+	}
+}
+
+/**
 	@brief projectDataBase::placeElement
 	@p element is now placed: its information is stored under its uuid.
 */
@@ -3294,6 +3538,7 @@ void projectDataBase::placeElement(Element *element)
 	if (!m_placed_elements.contains(element->uuid(), element))
 		m_placed_elements.insert(element->uuid(), element);
 	storeElementInformation(element->uuid(), element->ownInformations());
+	storeElementKindInformation(element->uuid(), element->ownKindInformations());
 }
 
 /**
@@ -3309,11 +3554,13 @@ void projectDataBase::unplaceElement(Element *element, const QUuid &uuid)
 		if (other) {
 				//Its own copy: the store still holds this symbol's
 			storeElementInformation(uuid, other->ownInformations());
+			storeElementKindInformation(uuid, other->ownKindInformations());
 			return;
 		}
 	}
 	m_placed_elements.remove(uuid);
 	forgetElementInformation(uuid);
+	forgetElementKindInformation(uuid);
 }
 
 /**
@@ -3536,31 +3783,143 @@ void projectDataBase::storeFolioTitleBlock(const QUuid &folio, const TitleBlockP
 }
 
 /**
+	@brief projectDataBase::storedFolioBorder
+	@return the stored border properties of the folio @p folio, or nullptr;
+	valid until the store next changes
+*/
+const BorderProperties *projectDataBase::storedFolioBorder(const QUuid &folio) const
+{
+	auto it = m_folio_borders.constFind(folio);
+	return it == m_folio_borders.constEnd() ? nullptr : &it.value();
+}
+
+/**
+	@brief projectDataBase::storeFolioBorder
+	Store @p properties as the border of the folio @p folio, in the
+	folio_border table and the cache in front of it.
+*/
+void projectDataBase::storeFolioBorder(const QUuid &folio, const BorderProperties &properties)
+{
+	if (folio.isNull()) return;
+	auto known = m_folio_borders.find(folio);
+	if (known != m_folio_borders.end() && *known == properties) return;
+	m_folio_borders.insert(folio, properties);
+
+	const QString uuid = folio.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM folio_border WHERE diagram_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeFolioBorder remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral(
+			"INSERT INTO folio_border (diagram_uuid, columns_count, columns_width, "
+			"columns_header_height, display_columns, rows_count, rows_height, "
+			"rows_header_width, display_rows) VALUES (:uuid, :cc, :cw, :chh, :dc, "
+			":rc, :rh, :rhw, :dr)"));
+	insert.bindValue(QStringLiteral(":uuid"), uuid);
+	insert.bindValue(QStringLiteral(":cc"), properties.columns_count);
+	insert.bindValue(QStringLiteral(":cw"), properties.columns_width);
+	insert.bindValue(QStringLiteral(":chh"), properties.columns_header_height);
+	insert.bindValue(QStringLiteral(":dc"), properties.display_columns ? 1 : 0);
+	insert.bindValue(QStringLiteral(":rc"), properties.rows_count);
+	insert.bindValue(QStringLiteral(":rh"), properties.rows_height);
+	insert.bindValue(QStringLiteral(":rhw"), properties.rows_header_width);
+	insert.bindValue(QStringLiteral(":dr"), properties.display_rows ? 1 : 0);
+	if (!insert.exec()) {
+		qDebug() << "projectDataBase::storeFolioBorder insert error : " << insert.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::storedFolioNumber
+	@param index set to the stored folio index, when found
+	@param total set to the stored folio total, when found
+	@return whether the folio @p folio has a stored number
+*/
+bool projectDataBase::storedFolioNumber(const QUuid &folio, int *index, int *total) const
+{
+	auto it = m_folio_numbers.constFind(folio);
+	if (it == m_folio_numbers.constEnd()) return false;
+	if (index) *index = it.value().first;
+	if (total) *total = it.value().second;
+	return true;
+}
+
+/**
+	@brief projectDataBase::storeFolioNumber
+	Store @p index and @p total as the number of the folio @p folio, in
+	the folio_number table and the cache in front of it.
+*/
+void projectDataBase::storeFolioNumber(const QUuid &folio, int index, int total)
+{
+	if (folio.isNull()) return;
+	const QPair<int, int> value(index, total);
+	auto known = m_folio_numbers.find(folio);
+	if (known != m_folio_numbers.end() && *known == value) return;
+	m_folio_numbers.insert(folio, value);
+
+	const QString uuid = folio.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM folio_number WHERE diagram_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeFolioNumber remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral(
+			"INSERT INTO folio_number (diagram_uuid, folio_index, folio_total) "
+			"VALUES (:uuid, :idx, :tot)"));
+	insert.bindValue(QStringLiteral(":uuid"), uuid);
+	insert.bindValue(QStringLiteral(":idx"), index);
+	insert.bindValue(QStringLiteral(":tot"), total);
+	if (!insert.exec()) {
+		qDebug() << "projectDataBase::storeFolioNumber insert error : " << insert.lastError();
+	}
+}
+
+/**
 	@brief projectDataBase::placeFolio
-	@p folio is now a folio of the project: its title block is stored under
-	its uuid.
+	@p folio is now a folio of the project: its title block and border are
+	stored under its uuid.
 */
 void projectDataBase::placeFolio(Diagram *folio)
 {
 	m_placed_folios.insert(folio->uuid(), folio);
 	storeFolioTitleBlock(folio->uuid(), folio->border_and_titleblock.localTitleBlock());
+	storeFolioBorder(folio->uuid(), folio->border_and_titleblock.exportBorder());
 }
 
 /**
 	@brief projectDataBase::unplaceFolio
 	@p folio no longer holds @p uuid (it was removed, or its uuid changed):
-	the title block stored under it goes.
+	the title block and border stored under it go.
 */
 void projectDataBase::unplaceFolio(Diagram *folio, const QUuid &uuid)
 {
 	if (m_placed_folios.value(uuid) != folio) return;
 	m_placed_folios.remove(uuid);
 	m_folio_titleblocks.remove(uuid);
+	m_folio_borders.remove(uuid);
 	QSqlQuery remove(m_data_base);
 	remove.prepare(QStringLiteral("DELETE FROM folio_titleblock WHERE diagram_uuid = :uuid"));
 	remove.bindValue(QStringLiteral(":uuid"), uuid.toString());
 	if (!remove.exec()) {
 		qDebug() << "projectDataBase::unplaceFolio error : " << remove.lastError();
+	}
+	QSqlQuery remove_border(m_data_base);
+	remove_border.prepare(QStringLiteral("DELETE FROM folio_border WHERE diagram_uuid = :uuid"));
+	remove_border.bindValue(QStringLiteral(":uuid"), uuid.toString());
+	if (!remove_border.exec()) {
+		qDebug() << "projectDataBase::unplaceFolio border error : " << remove_border.lastError();
+	}
+	m_folio_numbers.remove(uuid);
+	QSqlQuery remove_number(m_data_base);
+	remove_number.prepare(QStringLiteral("DELETE FROM folio_number WHERE diagram_uuid = :uuid"));
+	remove_number.bindValue(QStringLiteral(":uuid"), uuid.toString());
+	if (!remove_number.exec()) {
+		qDebug() << "projectDataBase::unplaceFolio number error : " << remove_number.lastError();
 	}
 }
 
@@ -4080,6 +4439,410 @@ QStringList projectDataBase::linkRowMismatches()
 		}
 	}
 	return mismatches;
+}
+
+/**
+	@brief projectDataBase::setNumbering
+	The numbering tables hold @p numbering from now on, and nothing else:
+	what QETProject reads from its file (QETZ-DB-FIRST stage 2b)
+*/
+void projectDataBase::setNumbering(const Numbering &numbering)
+{
+	QSqlQuery query(m_data_base);
+	for (const char *table : {"numbering_part", "numbering_scheme", "numbering_setting"}) {
+		if (!query.exec(QStringLiteral("DELETE FROM %1").arg(QLatin1String(table)))) {
+			qDebug() << "projectDataBase::setNumbering error : " << query.lastError();
+		}
+	}
+	for (const NumberingScheme &item : numbering.schemes) {
+		setNumberingScheme(item.kind, item.title, item.context, item.uuid);
+	}
+	setNumberingSetting(QStringLiteral("conductor_current"), numbering.current_conductor);
+	setNumberingSetting(QStringLiteral("element_current"), numbering.current_element);
+	setNumberingSetting(QStringLiteral("cable_current"), numbering.current_cable);
+	setNumberingFlag(QStringLiteral("freeze_new_conductors"), numbering.freeze_new_conductors);
+	setNumberingFlag(QStringLiteral("freeze_new_elements"), numbering.freeze_new_elements);
+	setNumberingFlag(QStringLiteral("auto_break_conductors"), numbering.auto_break_conductors);
+	setNumberingFlag(QStringLiteral("cable_x_axis_first"), numbering.cable_x_axis_first);
+	setNumberingFlag(QStringLiteral("cable_ask_numbering"), numbering.cable_ask_numbering);
+}
+
+/**
+	@brief projectDataBase::numbering
+	@return the numbering the numbering tables hold (setNumbering()); the
+	schemes in no particular order
+*/
+projectDataBase::Numbering projectDataBase::numbering() const
+{
+	Numbering numbering;
+	QSqlQuery query(m_data_base);
+	query.exec(QStringLiteral("SELECT kind, title, uuid FROM numbering_scheme"));
+	QHash<std::pair<QString, QString>, int> index;
+	while (query.next()) {
+		NumberingScheme scheme;
+		scheme.kind = query.value(0).toString();
+		scheme.title = query.value(1).toString();
+		scheme.uuid = QUuid(query.value(2).toString());
+		index.insert({scheme.kind, scheme.title}, numbering.schemes.size());
+		numbering.schemes << scheme;
+	}
+	query.exec(QStringLiteral("SELECT kind, title, type, value, increase, initialvalue, modulus, "
+							  "format FROM numbering_part ORDER BY kind, title, ord"));
+	while (query.next()) {
+		const int at = index.value({query.value(0).toString(), query.value(1).toString()}, -1);
+		if (at < 0) {
+			continue;
+		}
+		numbering.schemes[at].context.addValue(query.value(2).toString(), query.value(3).toString(),
+											   query.value(4).toInt(), query.value(5).toInt(),
+											   query.value(6).toInt(), query.value(7).toString());
+	}
+	query.exec(QStringLiteral("SELECT name, value FROM numbering_setting"));
+	while (query.next())
+	{
+		const QString name = query.value(0).toString();
+		const QString value = query.value(1).toString();
+		const bool flag = value == QLatin1String("true");
+		if (name == QLatin1String("conductor_current")) numbering.current_conductor = value;
+		else if (name == QLatin1String("element_current")) numbering.current_element = value;
+		else if (name == QLatin1String("cable_current")) numbering.current_cable = value;
+		else if (name == QLatin1String("freeze_new_conductors")) numbering.freeze_new_conductors = flag;
+		else if (name == QLatin1String("freeze_new_elements")) numbering.freeze_new_elements = flag;
+		else if (name == QLatin1String("auto_break_conductors")) numbering.auto_break_conductors = flag;
+		else if (name == QLatin1String("cable_x_axis_first")) numbering.cable_x_axis_first = flag;
+		else if (name == QLatin1String("cable_ask_numbering")) numbering.cable_ask_numbering = flag;
+	}
+	return numbering;
+}
+
+/**
+	@brief projectDataBase::numberingSchemes
+	@return the numbering schemes of @p kind (conductor, element, folio or
+	cable) by title
+*/
+QHash<QString, NumerotationContext> projectDataBase::numberingSchemes(const QString &kind) const
+{
+	QHash<QString, NumerotationContext> schemes;
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT title FROM numbering_scheme WHERE kind = :kind"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.exec();
+	while (query.next()) {
+		schemes.insert(query.value(0).toString(), NumerotationContext());
+	}
+	query.prepare(QStringLiteral("SELECT title, type, value, increase, initialvalue, modulus, format "
+								 "FROM numbering_part WHERE kind = :kind ORDER BY title, ord"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.exec();
+	while (query.next()) {
+		const QString title = query.value(0).toString();
+		if (!schemes.contains(title)) {
+			continue;
+		}
+		schemes[title].addValue(query.value(1).toString(), query.value(2).toString(),
+								query.value(3).toInt(), query.value(4).toInt(),
+								query.value(5).toInt(), query.value(6).toString());
+	}
+	return schemes;
+}
+
+/**
+	@brief projectDataBase::hasNumberingScheme
+	@return true if there is a numbering scheme of @p kind titled @p title
+*/
+bool projectDataBase::hasNumberingScheme(const QString &kind, const QString &title) const
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT 1 FROM numbering_scheme WHERE kind = :kind AND title = :title"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.bindValue(QStringLiteral(":title"), title);
+	return query.exec() && query.next();
+}
+
+/**
+	@brief projectDataBase::numberingScheme
+	@return the numbering scheme of @p kind titled @p title, empty if there
+	is none
+*/
+NumerotationContext projectDataBase::numberingScheme(const QString &kind, const QString &title) const
+{
+	NumerotationContext context;
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT type, value, increase, initialvalue, modulus, format "
+								 "FROM numbering_part WHERE kind = :kind AND title = :title ORDER BY ord"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.bindValue(QStringLiteral(":title"), title);
+	query.exec();
+	while (query.next()) {
+		context.addValue(query.value(0).toString(), query.value(1).toString(),
+						 query.value(2).toInt(), query.value(3).toInt(),
+						 query.value(4).toInt(), query.value(5).toString());
+	}
+	return context;
+}
+
+/**
+	@brief projectDataBase::numberingSchemeUuid
+	@return the uuid of the numbering scheme of @p kind titled @p title,
+	null if there is no such scheme or it has none (only element schemes
+	have one)
+*/
+QUuid projectDataBase::numberingSchemeUuid(const QString &kind, const QString &title) const
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT uuid FROM numbering_scheme WHERE kind = :kind AND title = :title"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.bindValue(QStringLiteral(":title"), title);
+	if (query.exec() && query.next()) {
+		return QUuid(query.value(0).toString());
+	}
+	return QUuid();
+}
+
+/**
+	@brief projectDataBase::numberingSchemeTitle
+	@return the title of the numbering scheme of @p kind whose uuid is
+	@p uuid, empty if there is none
+*/
+QString projectDataBase::numberingSchemeTitle(const QString &kind, const QUuid &uuid) const
+{
+	if (uuid.isNull()) {
+		return QString();
+	}
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT title FROM numbering_scheme WHERE kind = :kind AND uuid = :uuid"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.bindValue(QStringLiteral(":uuid"), uuid.toString());
+	if (query.exec() && query.next()) {
+		return query.value(0).toString();
+	}
+	return QString();
+}
+
+/**
+	@brief projectDataBase::setNumberingScheme
+	Add the numbering scheme of @p kind titled @p title, or replace it:
+	its parts are those of @p context, its uuid @p uuid
+*/
+void projectDataBase::setNumberingScheme(const QString &kind, const QString &title,
+										 const NumerotationContext &context, const QUuid &uuid)
+{
+	QSqlQuery query(m_data_base);
+	bool ok = true;
+	query.prepare(QStringLiteral("DELETE FROM numbering_part WHERE kind = :kind AND title = :title"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.bindValue(QStringLiteral(":title"), title);
+	ok = ok && query.exec();
+	query.prepare(QStringLiteral("INSERT OR REPLACE INTO numbering_scheme (kind, title, uuid) "
+								 "VALUES (:kind, :title, :uuid)"));
+	query.bindValue(QStringLiteral(":kind"), kind);
+	query.bindValue(QStringLiteral(":title"), title);
+	query.bindValue(QStringLiteral(":uuid"), uuid.isNull() ? QVariant() : QVariant(uuid.toString()));
+	ok = ok && query.exec();
+
+	query.prepare(QStringLiteral("INSERT INTO numbering_part (kind, title, ord, type, value, "
+								 "increase, initialvalue, modulus, format) VALUES (:kind, :title, "
+								 ":ord, :type, :value, :increase, :initialvalue, :modulus, :format)"));
+	for (int i = 0 ; i < context.size() ; ++i)
+	{
+		const QStringList fields = context.itemAt(i);
+		query.bindValue(QStringLiteral(":kind"), kind);
+		query.bindValue(QStringLiteral(":title"), title);
+		query.bindValue(QStringLiteral(":ord"), i);
+		int field = 0;
+		for (const char *name : {":type", ":value", ":increase", ":initialvalue", ":modulus", ":format"}) {
+			query.bindValue(QLatin1String(name), field < fields.size() ? QVariant(fields.at(field))
+																	   : QVariant());
+			++field;
+		}
+		ok = ok && query.exec();
+	}
+	if (!ok) {
+		qDebug() << "projectDataBase::setNumberingScheme error : " << query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::removeNumberingScheme
+	Remove the numbering scheme of @p kind titled @p title
+*/
+void projectDataBase::removeNumberingScheme(const QString &kind, const QString &title)
+{
+	QSqlQuery query(m_data_base);
+	for (const char *table : {"numbering_part", "numbering_scheme"})
+	{
+		query.prepare(QStringLiteral("DELETE FROM %1 WHERE kind = :kind AND title = :title")
+					  .arg(QLatin1String(table)));
+		query.bindValue(QStringLiteral(":kind"), kind);
+		query.bindValue(QStringLiteral(":title"), title);
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::removeNumberingScheme error : " << query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::renameNumberingScheme
+	The numbering scheme of @p kind titled @p old_title is titled
+	@p new_title from now on, with the same parts and uuid. The caller
+	makes sure no scheme of @p kind is titled @p new_title.
+*/
+void projectDataBase::renameNumberingScheme(const QString &kind, const QString &old_title,
+											const QString &new_title)
+{
+	QSqlQuery query(m_data_base);
+	for (const char *table : {"numbering_scheme", "numbering_part"})
+	{
+		query.prepare(QStringLiteral("UPDATE %1 SET title = :new_title "
+									 "WHERE kind = :kind AND title = :old_title")
+					  .arg(QLatin1String(table)));
+		query.bindValue(QStringLiteral(":new_title"), new_title);
+		query.bindValue(QStringLiteral(":kind"), kind);
+		query.bindValue(QStringLiteral(":old_title"), old_title);
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::renameNumberingScheme error : " << query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::numberingSetting
+	@return the numbering setting @p name (setNumbering() lists them),
+	@p default_value if it was never set
+*/
+QString projectDataBase::numberingSetting(const QString &name, const QString &default_value) const
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT value FROM numbering_setting WHERE name = :name"));
+	query.bindValue(QStringLiteral(":name"), name);
+	if (query.exec() && query.next()) {
+		return query.value(0).toString();
+	}
+	return default_value;
+}
+
+/**
+	@brief projectDataBase::numberingFlag
+	@return numberingSetting() @p name as a flag, @p default_value if it
+	was never set
+*/
+bool projectDataBase::numberingFlag(const QString &name, bool default_value) const
+{
+	return numberingSetting(name, default_value ? QStringLiteral("true") : QStringLiteral("false"))
+			== QLatin1String("true");
+}
+
+/**
+	@brief projectDataBase::setNumberingSetting
+	The numbering setting @p name is @p value from now on
+*/
+void projectDataBase::setNumberingSetting(const QString &name, const QString &value)
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("INSERT OR REPLACE INTO numbering_setting (name, value) "
+								 "VALUES (:name, :value)"));
+	query.bindValue(QStringLiteral(":name"), name);
+	query.bindValue(QStringLiteral(":value"), value);
+	if (!query.exec()) {
+		qDebug() << "projectDataBase::setNumberingSetting error : " << query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::setNumberingFlag
+	setNumberingSetting() for a flag
+*/
+void projectDataBase::setNumberingFlag(const QString &name, bool value)
+{
+	setNumberingSetting(name, value ? QStringLiteral("true") : QStringLiteral("false"));
+}
+
+/**
+	@brief projectDataBase::folioCounterValues
+	@return the folio counter values for @p folio_uuid / @p owner /
+	@p level / @p title, in @c ord order (Diagram::insertFolioSeqHash()'s
+	@c max list); empty if never written
+*/
+QStringList projectDataBase::folioCounterValues(const QUuid &folio_uuid, const QString &owner,
+												const QString &level, const QString &title) const
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral(
+			"SELECT value FROM folio_counter WHERE folio_uuid = :folio_uuid "
+			"AND owner = :owner AND level = :level AND title = :title ORDER BY ord"));
+	query.bindValue(QStringLiteral(":folio_uuid"), folio_uuid.toString());
+	query.bindValue(QStringLiteral(":owner"), owner);
+	query.bindValue(QStringLiteral(":level"), level);
+	query.bindValue(QStringLiteral(":title"), title);
+	QStringList values;
+	if (query.exec()) {
+		while (query.next()) {
+			values.append(query.value(0).toString());
+		}
+	} else {
+		qDebug() << "projectDataBase::folioCounterValues error : " << query.lastError();
+	}
+	return values;
+}
+
+/**
+	@brief projectDataBase::setFolioCounterValues
+	The folio counter for @p folio_uuid / @p owner / @p level / @p title
+	is @p values from now on (one row per entry, in order)
+*/
+void projectDataBase::setFolioCounterValues(const QUuid &folio_uuid, const QString &owner,
+											const QString &level, const QString &title,
+											const QStringList &values)
+{
+	QSqlQuery del(m_data_base);
+	del.prepare(QStringLiteral(
+			"DELETE FROM folio_counter WHERE folio_uuid = :folio_uuid "
+			"AND owner = :owner AND level = :level AND title = :title"));
+	del.bindValue(QStringLiteral(":folio_uuid"), folio_uuid.toString());
+	del.bindValue(QStringLiteral(":owner"), owner);
+	del.bindValue(QStringLiteral(":level"), level);
+	del.bindValue(QStringLiteral(":title"), title);
+	if (!del.exec()) {
+		qDebug() << "projectDataBase::setFolioCounterValues delete error : " << del.lastError();
+		return;
+	}
+
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral(
+			"INSERT INTO folio_counter (folio_uuid, owner, level, title, ord, value) "
+			"VALUES (:folio_uuid, :owner, :level, :title, :ord, :value)"));
+	for (int i = 0; i < values.size(); ++i) {
+		query.bindValue(QStringLiteral(":folio_uuid"), folio_uuid.toString());
+		query.bindValue(QStringLiteral(":owner"), owner);
+		query.bindValue(QStringLiteral(":level"), level);
+		query.bindValue(QStringLiteral(":title"), title);
+		query.bindValue(QStringLiteral(":ord"), i);
+		query.bindValue(QStringLiteral(":value"), values.at(i));
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::setFolioCounterValues insert error : " << query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::renameFolioCounterScheme
+	Every folio_counter row for @p owner under @p old_title moves to
+	@p new_title (renameNumberingScheme()'s counterpart for the rows a
+	folio keeps on its own)
+*/
+void projectDataBase::renameFolioCounterScheme(const QString &owner, const QString &old_title,
+												const QString &new_title)
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral(
+			"UPDATE folio_counter SET title = :new_title "
+			"WHERE owner = :owner AND title = :old_title"));
+	query.bindValue(QStringLiteral(":new_title"), new_title);
+	query.bindValue(QStringLiteral(":owner"), owner);
+	query.bindValue(QStringLiteral(":old_title"), old_title);
+	if (!query.exec()) {
+		qDebug() << "projectDataBase::renameFolioCounterScheme error : " << query.lastError();
+	}
 }
 
 /**

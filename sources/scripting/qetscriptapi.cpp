@@ -3314,8 +3314,9 @@ bool QetScriptApi::bridgeTerminals(int stripIndex, const QVariantList &realTermi
 
 /**
 	@brief QetScriptApi::sortTerminalStrip
-	Reorder a strip's physical positions into the canonical order the
-	editor's own "sort" button computes, through SortTerminalStripCommand.
+	Reorder a strip's physical positions into the order the plan is
+	drawn in -- folio by folio, then left to right -- the same
+	SortTerminalStripCommand the editor's own "sort" button pushes.
 */
 bool QetScriptApi::sortTerminalStrip(int stripIndex)
 {

@@ -1,0 +1,401 @@
+<project title="Folio counters multi" uuid="{34ea8ec4-2824-5da4-be89-87f0ab29e0d8}" version="0.200.1">
+    <properties>
+        <property name="saveddate" show="1">10/20/26</property>
+        <property name="saveddate-eu" show="1">20-10-2026</property>
+        <property name="saveddate-us" show="1">2026-10-20</property>
+        <property name="savedfilename" show="1">skeleton</property>
+        <property name="savedfilepath" show="1">/tmp/qet-mcp-new-tulbg10x/skeleton.qet</property>
+        <property name="savedtime" show="1">17:13</property>
+    </properties>
+    <usage enabled="true" time_spent="0"/>
+    <newdiagrams>
+        <border cols="17" colsize="60" displaycols="true" displayrows="true" rows="8" rowsize="80"/>
+        <inset author="" auto_page_num="" date="null" displayAt="bottom" filename="" folio="" indexrev="" locmach="" plant="" title="" version=""/>
+        <conductors bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <report label="%f-%l%c"/>
+        <xrefs>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="coil" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="commutator" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="plc" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="protection" xrefpos="AlignBottom"/>
+        </xrefs>
+        <conductors_autonums auto_break_conductors="false" current_autonum="Wires" freeze_new_conductors="false">
+            <conductor_autonum formula="W%seqtf_1" title="Wires">
+                <part increase="1" type="string" value="W"/>
+                <part increase="1" initialvalue="0" type="tenfolio" value="4"/>
+            </conductor_autonum>
+        </conductors_autonums>
+        <folio_autonums/>
+        <element_autonums current_autonum="Resistors" freeze_new_elements="false">
+            <element_autonum formula="R%seqtf_1" title="Resistors">
+                <part increase="1" type="string" value="R"/>
+                <part increase="1" initialvalue="0" type="tenfolio" value="7"/>
+            </element_autonum>
+        </element_autonums>
+        <guides/>
+    </newdiagrams>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" conductorAutonum="Wires" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="1" plant="" rows="8" rowsize="80" title="Folio A" uuid="{16b76b0f-7123-4b29-afc5-d100553d65bd}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elementautonumfoliosequentials>
+            <elementtenfolioseq>
+                <tenfolioseq seqtf_1="02" title="Resistors"/>
+                <tenfolioseq seqtf_1="01" title="Wires"/>
+            </elementtenfolioseq>
+        </elementautonumfoliosequentials>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="R" type="embed://import/10_electric/11_singlepole/395_electronics_semiconductors/10_resistors/resistance.elmt" uuid="{2a86f09b-111e-4852-a08a-f58918263ca4}" x="100" y="100" z="10">
+                <sequentialNumbers>
+                    <tenFolio>01</tenFolio>
+                </sequentialNumbers>
+                <terminals>
+                    <terminal id="0" orientation="0" x="0" y="-17"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="formula" show="1">R%seqtf_1</elementInformation>
+                    <elementInformation name="label" show="1">R01</elementInformation>
+                </elementInformations>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="R" type="embed://import/10_electric/11_singlepole/395_electronics_semiconductors/10_resistors/resistance.elmt" uuid="{ccaa0f87-7adf-4a95-a0d8-add9336ffa90}" x="200" y="100" z="10">
+                <sequentialNumbers>
+                    <tenFolio>02</tenFolio>
+                </sequentialNumbers>
+                <terminals>
+                    <terminal id="1" orientation="0" x="0" y="-17"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="formula" show="1">R%seqtf_1</elementInformation>
+                    <elementInformation name="label" show="1">R02</elementInformation>
+                </elementInformations>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{2a86f09b-111e-4852-a08a-f58918263ca4}" element1_label="R01" element1_name="Resistor" element2="{ccaa0f87-7adf-4a95-a0d8-add9336ffa90}" element2_label="R02" element2_name="Resistor" formula="W%seqtf_1" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="W01" numsize="7" onetextperfolio="0" tension_protocol="" terminal1="{efc2de34-5e5c-4ab3-9f47-78b8ffa44228}" terminal2="{efc2de34-5e5c-4ab3-9f47-78b8ffa44228}" terminalname1="" terminalname2="" text_color="#000000" type="multi" uuid="{f9be4f4a-5a13-40ee-8128-2869fa11c0c1}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers>
+                    <tenFolio>01</tenFolio>
+                </sequentialNumbers>
+            </conductor>
+        </conductors>
+    </diagram>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" conductorAutonum="Wires" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="2" plant="" rows="8" rowsize="80" title="Folio B" uuid="{0bcbe8b5-f73f-4a89-9c17-0175d1e7cb8f}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elementautonumfoliosequentials>
+            <elementtenfolioseq>
+                <tenfolioseq seqtf_1="04" title="Resistors"/>
+                <tenfolioseq seqtf_1="02" title="Wires"/>
+            </elementtenfolioseq>
+        </elementautonumfoliosequentials>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="R" type="embed://import/10_electric/11_singlepole/395_electronics_semiconductors/10_resistors/resistance.elmt" uuid="{f22cdaee-5a46-4334-b3d0-7d2962513696}" x="100" y="100" z="10">
+                <sequentialNumbers>
+                    <tenFolio>03</tenFolio>
+                </sequentialNumbers>
+                <terminals>
+                    <terminal id="0" orientation="0" x="0" y="-17"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="formula" show="1">R%seqtf_1</elementInformation>
+                    <elementInformation name="label" show="1">R03</elementInformation>
+                </elementInformations>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="R" type="embed://import/10_electric/11_singlepole/395_electronics_semiconductors/10_resistors/resistance.elmt" uuid="{e30f218d-8298-4c87-bae6-269d17987a38}" x="200" y="100" z="10">
+                <sequentialNumbers>
+                    <tenFolio>04</tenFolio>
+                </sequentialNumbers>
+                <terminals>
+                    <terminal id="1" orientation="0" x="0" y="-17"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="formula" show="1">R%seqtf_1</elementInformation>
+                    <elementInformation name="label" show="1">R04</elementInformation>
+                </elementInformations>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{f22cdaee-5a46-4334-b3d0-7d2962513696}" element1_label="R03" element1_name="Resistor" element2="{e30f218d-8298-4c87-bae6-269d17987a38}" element2_label="R04" element2_name="Resistor" formula="W%seqtf_1" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="W02" numsize="7" onetextperfolio="0" tension_protocol="" terminal1="{efc2de34-5e5c-4ab3-9f47-78b8ffa44228}" terminal2="{efc2de34-5e5c-4ab3-9f47-78b8ffa44228}" terminalname1="" terminalname2="" text_color="#000000" type="multi" uuid="{a704f454-106c-45f3-a8b6-4fc3653ea96b}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers>
+                    <tenFolio>02</tenFolio>
+                </sequentialNumbers>
+            </conductor>
+        </conductors>
+    </diagram>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" conductorAutonum="Wires" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="3" plant="" rows="8" rowsize="80" title="Folio C" uuid="{2a80b1a0-b99f-4657-b458-b3c65c1cc60a}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elementautonumfoliosequentials>
+            <elementtenfolioseq>
+                <tenfolioseq seqtf_1="06" title="Resistors"/>
+                <tenfolioseq seqtf_1="03" title="Wires"/>
+            </elementtenfolioseq>
+        </elementautonumfoliosequentials>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="R" type="embed://import/10_electric/11_singlepole/395_electronics_semiconductors/10_resistors/resistance.elmt" uuid="{8012f531-76ed-44b5-81d6-434dadcf0b08}" x="100" y="100" z="10">
+                <sequentialNumbers>
+                    <tenFolio>05</tenFolio>
+                </sequentialNumbers>
+                <terminals>
+                    <terminal id="0" orientation="0" x="0" y="-17"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="formula" show="1">R%seqtf_1</elementInformation>
+                    <elementInformation name="label" show="1">R05</elementInformation>
+                </elementInformations>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="R" type="embed://import/10_electric/11_singlepole/395_electronics_semiconductors/10_resistors/resistance.elmt" uuid="{eae0aeb4-c792-4030-a093-d22fad0f6967}" x="200" y="100" z="10">
+                <sequentialNumbers>
+                    <tenFolio>06</tenFolio>
+                </sequentialNumbers>
+                <terminals>
+                    <terminal id="1" orientation="0" x="0" y="-17"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="formula" show="1">R%seqtf_1</elementInformation>
+                    <elementInformation name="label" show="1">R06</elementInformation>
+                </elementInformations>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{8012f531-76ed-44b5-81d6-434dadcf0b08}" element1_label="R05" element1_name="Resistor" element2="{eae0aeb4-c792-4030-a093-d22fad0f6967}" element2_label="R06" element2_name="Resistor" formula="W%seqtf_1" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="W03" numsize="7" onetextperfolio="0" tension_protocol="" terminal1="{efc2de34-5e5c-4ab3-9f47-78b8ffa44228}" terminal2="{efc2de34-5e5c-4ab3-9f47-78b8ffa44228}" terminalname1="" terminalname2="" text_color="#000000" type="multi" uuid="{576157fa-69e0-4a66-ab53-d775f7105794}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers>
+                    <tenFolio>03</tenFolio>
+                </sequentialNumbers>
+            </conductor>
+        </conductors>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="ca">Elements importats</name>
+                <name lang="cs">Zavedené prvky</name>
+                <name lang="da">Importerede elementer</name>
+                <name lang="de">Importierte Elemente</name>
+                <name lang="el">Εισηγμένα στοιχεία</name>
+                <name lang="en">Imported elements</name>
+                <name lang="es">Elementos importados</name>
+                <name lang="fr">Éléments importés</name>
+                <name lang="hr">Uvezeni elementi</name>
+                <name lang="it">Elementi importati</name>
+                <name lang="ja">インバートされた要素</name>
+                <name lang="ko">전기 심볼 요소</name>
+                <name lang="ko_KR">전기 심볼 요소</name>
+                <name lang="nl">Elementen geïmporteerd</name>
+                <name lang="nl_BE">Elementen geïmporteerd</name>
+                <name lang="pl">Elementy importowane</name>
+                <name lang="pt">Elementos importados</name>
+                <name lang="pt_BR">Elementos importados</name>
+                <name lang="ro">Elemente importate</name>
+                <name lang="ru">Импортированные элементы</name>
+                <name lang="sl">Uvoženi elementi</name>
+                <name lang="sv">Importerade element</name>
+                <name lang="tr">İthal öğeler</name>
+                <name lang="uk">Імпортовані елементи</name>
+                <name lang="zh">导入元件</name>
+            </names>
+        <category name="10_electric">
+                <names>
+                    <name lang="ar">كهربائي</name>
+                    <name lang="ca">Elèctric</name>
+                    <name lang="cs">Elektrotechnika</name>
+                    <name lang="da">Elektrisk</name>
+                    <name lang="de">Elektrik</name>
+                    <name lang="el">Ηλεκτρικά</name>
+                    <name lang="en">Electric</name>
+                    <name lang="es">Eléctrica</name>
+                    <name lang="fi">Sähkö</name>
+                    <name lang="fr">Electrique</name>
+                    <name lang="hr">Električno</name>
+                    <name lang="hu">Elektromos</name>
+                    <name lang="it">Elettrica</name>
+                    <name lang="ja">電気</name>
+                    <name lang="ko">전기</name>
+                    <name lang="mn">Цахилгаан</name>
+                    <name lang="nb">Elektrisk</name>
+                    <name lang="nl">Elektrotechniek</name>
+                    <name lang="nl_BE">Elektrisch</name>
+                    <name lang="pl">Elektrotechnika</name>
+                    <name lang="pt">Elétrico</name>
+                    <name lang="pt_BR">Elétrica</name>
+                    <name lang="ro">Electric</name>
+                    <name lang="ru">Электротехника</name>
+                    <name lang="sk">Elektrické</name>
+                    <name lang="sl">Elektrika</name>
+                    <name lang="sr">Електрика</name>
+                    <name lang="sv">El</name>
+                    <name lang="tr">Elektrik</name>
+                    <name lang="uk">Електрика</name>
+                    <name lang="zh">10_电气</name>
+                    <name lang="zn">电气工程</name>
+                </names>
+                <category name="11_singlepole">
+                    <names>
+                        <name lang="ar">أحادي القطب</name>
+                        <name lang="ca">Unifilar</name>
+                        <name lang="cs">Jednopólové</name>
+                        <name lang="da">Enkel leder</name>
+                        <name lang="de">Einpolig</name>
+                        <name lang="el">Μονογραμμικό</name>
+                        <name lang="en">Single pole</name>
+                        <name lang="es">Polo simple</name>
+                        <name lang="fi">Yksinapa</name>
+                        <name lang="fr">Unifilaire</name>
+                        <name lang="hr">Jednopolni</name>
+                        <name lang="hu">Egyvonalas</name>
+                        <name lang="it">Unifilare</name>
+                        <name lang="ja">単線</name>
+                        <name lang="ko">단-극</name>
+                        <name lang="mn">Нэг туйл</name>
+                        <name lang="nb">Enpolt</name>
+                        <name lang="nl">Enkel pool</name>
+                        <name lang="nl_BE">Enkelpolig</name>
+                        <name lang="pl">Schematy jednoliniowe</name>
+                        <name lang="pt">Unipolar</name>
+                        <name lang="pt_BR">Unifilar</name>
+                        <name lang="ro">Unipolar</name>
+                        <name lang="ru">Однополюсные</name>
+                        <name lang="sk">Jednopólové</name>
+                        <name lang="sl">Enopolno</name>
+                        <name lang="sr">Једнополни</name>
+                        <name lang="sv">Enpolig</name>
+                        <name lang="tr">Tek kutuplu</name>
+                        <name lang="uk">Однополюсні</name>
+                        <name lang="zh">11_单极</name>
+                    </names>
+                    <category name="395_electronics_semiconductors">
+                        <names>
+                            <name lang="ar">إلكترونيات وأشباه موصلات</name>
+                            <name lang="ca">Electrònica i semiconductors</name>
+                            <name lang="cs">Elektronika a polovodiče</name>
+                            <name lang="da">Elektronik og halvledere</name>
+                            <name lang="de">Elektronik und Halbleiter</name>
+                            <name lang="el">Ηλεκτρονικά και ημιαγωγοί</name>
+                            <name lang="en">Electronics and semiconductors</name>
+                            <name lang="es">Electrónica y semiconductores</name>
+                            <name lang="fi">Elektroniikka ja puolijohteet</name>
+                            <name lang="fr">Electronique et semi-conducteurs</name>
+                            <name lang="hr">Elektronika i poluvodiči</name>
+                            <name lang="hu">Elektronika és félvezetők</name>
+                            <name lang="it">Elettronica e semiconduttori</name>
+                            <name lang="ja">電子と半導体</name>
+                            <name lang="ko">전자 및 반도체</name>
+                            <name lang="mn">Электроник ба хагас дамжуулагч</name>
+                            <name lang="nb">Elektronikk og halvledere</name>
+                            <name lang="nl">Electronica en halfgeleiders</name>
+                            <name lang="nl_BE">Elektronica en halfgeleiders</name>
+                            <name lang="pl">Elektronika i półprzewodniki</name>
+                            <name lang="pt">Eletrónica e semicondutores</name>
+                            <name lang="pt_BR">Eletronica e semicondutoues</name>
+                            <name lang="ro">Electronică și semiconductoare</name>
+                            <name lang="ru">Электроника и полупроводники</name>
+                            <name lang="sk">Elektronika a polovodiče</name>
+                            <name lang="sl">Elektronika in polprevodniki</name>
+                            <name lang="sr">Електроника и полупроводници</name>
+                            <name lang="sv">Elektronik och halvledare</name>
+                            <name lang="tr">Elektronik ve yarı iletkenler</name>
+                            <name lang="uk">Електроніка та напівпровідники</name>
+                            <name lang="zh">电子半导体</name>
+                        </names>
+                        <category name="10_resistors">
+                            <names>
+                                <name lang="ar">مُقاومة</name>
+                                <name lang="ca">Resistències</name>
+                                <name lang="cs">Rezistory</name>
+                                <name lang="da">Modstande</name>
+                                <name lang="de">Widerstände</name>
+                                <name lang="el">Αντιστάσεις</name>
+                                <name lang="en">Resistors</name>
+                                <name lang="es">Resistencia</name>
+                                <name lang="fi">Vastukset</name>
+                                <name lang="fr">Résistances</name>
+                                <name lang="hr">Otpornici</name>
+                                <name lang="hu">Ellenállások</name>
+                                <name lang="it">Resistori</name>
+                                <name lang="ja">抵抗器</name>
+                                <name lang="ko">저항</name>
+                                <name lang="mn">Эсэргүүцэл</name>
+                                <name lang="nb">Motstander</name>
+                                <name lang="nl">Weerstand</name>
+                                <name lang="nl_BE">Weerstanden</name>
+                                <name lang="pl">Rezystory</name>
+                                <name lang="pt">Resistência</name>
+                                <name lang="pt_BR">Resistores</name>
+                                <name lang="ro">Rezistoare</name>
+                                <name lang="ru">Резисторы</name>
+                                <name lang="sk">Rezistory</name>
+                                <name lang="sl">Upori</name>
+                                <name lang="sr">Отпорници</name>
+                                <name lang="sv">Motstånd</name>
+                                <name lang="tr">Dirençler</name>
+                                <name lang="uk">Резистори</name>
+                                <name lang="zh">10_电阻器</name>
+                            </names>
+                            <element name="resistance.elmt">
+                                <definition height="40" hotspot_x="10" hotspot_y="28" link_type="simple" type="element" version="0.100.0" width="20">
+                                    <uuid uuid="{ea2ccc89-555e-144d-d2df-d28449d7d15e}"/>
+                                    <names>
+                                        <name lang="ar">مُقاومة</name>
+                                        <name lang="ca">Resistència</name>
+                                        <name lang="cs">Rezistor</name>
+                                        <name lang="da">Modstand</name>
+                                        <name lang="de">Widerstand</name>
+                                        <name lang="el">Αντίσταση</name>
+                                        <name lang="en">Resistor</name>
+                                        <name lang="es">Resistencia</name>
+                                        <name lang="fi">Vastus</name>
+                                        <name lang="fr">Résistance</name>
+                                        <name lang="hr">Otpornik</name>
+                                        <name lang="hu">Ellenállás</name>
+                                        <name lang="it">Resistore</name>
+                                        <name lang="ja">抵抗器</name>
+                                        <name lang="ko">저항</name>
+                                        <name lang="mn">Резистор</name>
+                                        <name lang="nb">Motstand</name>
+                                        <name lang="nl">Weerstand</name>
+                                        <name lang="nl_BE">Weerstand</name>
+                                        <name lang="pl">Rezystor</name>
+                                        <name lang="pt">Resistência</name>
+                                        <name lang="pt_BR">Resistor</name>
+                                        <name lang="ro">Rezistor</name>
+                                        <name lang="ru">Резистор</name>
+                                        <name lang="sk">Rezistor</name>
+                                        <name lang="sl">Upor</name>
+                                        <name lang="sr">Отпорник</name>
+                                        <name lang="sv">Resistor</name>
+                                        <name lang="tr">Direnç</name>
+                                        <name lang="uk">Резистор</name>
+                                        <name lang="zh">电阻</name>
+                                    </names>
+                                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                    <description>
+                                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" y1="-10" y2="-20"/>
+                                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="4" x2="4" y1="10" y2="-10"/>
+                                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-4" x2="4" y1="10" y2="10"/>
+                                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="4" x2="-4" y1="-10" y2="-10"/>
+                                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-4" x2="-4" y1="-10" y2="10"/>
+                                        <terminal name="" orientation="n" type="Generic" uuid="{efc2de34-5e5c-4ab3-9f47-78b8ffa44228}" x="0" y="-21"/>
+                                    </description>
+                                </definition>
+                            </element>
+                        </category>
+                    </category>
+                </category>
+            </category>
+        </category>
+    </collection>
+</project>

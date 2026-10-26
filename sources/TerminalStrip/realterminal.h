@@ -55,6 +55,11 @@ class RealTerminal
 
 		void setPhysicalTerminal(const QSharedPointer<PhysicalTerminal> &phy_t);
 
+			///Where the wires of a cable land, worked out from the project:
+			///empty when no cable lands on a piece worth naming (cableTarget()
+			///then falls back on the text typed in by hand).
+		QVector<QString> automaticCableTarget() const;
+
 	public:
 		~RealTerminal();
 		static QSharedPointer<RealTerminal> createSpare(const ElementData &data, const QUuid &uuid = QUuid());
@@ -73,7 +78,12 @@ class RealTerminal
 		QString Xref() const;
 		QString cable() const;
 		QString cableWire() const;
+		bool cableIsAutomatic() const;
 		bool isShield() const;
+		QVector<QString> cableTarget() const;
+			///True when cableTarget() is worked out from the project (read only),
+			///false when it is the text typed in by hand (which may be edited)
+		bool cableTargetIsAutomatic() const;
 		QColor color() const;
 		QColor stripeColor() const;
 		qreal section() const;
@@ -84,6 +94,8 @@ class RealTerminal
 		//Keys used to store the cable data in the element informations
 		static QString cableInfoKey()     { return QStringLiteral("terminal_cable"); }
 		static QString cableWireInfoKey() { return QStringLiteral("terminal_cable_wire"); }
+			//Target typed in by hand, only read when the cables give none
+		static QString cableTargetInfoKey() { return QStringLiteral("terminal_cable_target"); }
 		static QString shieldInfoKey()    { return QStringLiteral("terminal_shield"); }
 		//Keys used to store the color and the section (mm2) of the terminal
 		static QString colorInfoKey()     { return QStringLiteral("terminal_color"); }

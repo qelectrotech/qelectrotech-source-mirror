@@ -136,6 +136,43 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 		}
 	}
 
+		//How the terminals of a new project draw their label, built for
+		//the application's defaults only: per project this is a project
+		//property (project properties > General page), which is where the
+		//project gets it from. Same group box, same words, same choice as
+		//there -- only what a new project starts with is read and written
+		//here, in the settings (diagrameditor/defaultterminallabelling).
+	if (!m_project) {
+		m_terminal_label_gb = new QGroupBox(tr("Display of the terminal labelling", "group box title"));
+		m_terminal_label_combined_rb = new QRadioButton(
+					tr("Show the label and the terminal number in one field", "radio button label"));
+		m_terminal_label_combined_rb -> setToolTip(tr(
+				"A terminal's label (X1:1) is drawn as a whole, the way it has always been.",
+				"tooltip"));
+		m_terminal_label_split_rb = new QRadioButton(tr("Split the label and the terminal number",
+														"radio button label"));
+		m_terminal_label_split_rb -> setToolTip(tr(
+				"The label (X1) is drawn in one field and the terminal number (1) in another, "
+				"which a terminal symbol may place where it wants -- and hide when it must. "
+				"A symbol without such a field shows the two, one under the other.",
+				"tooltip"));
+		m_terminal_label_help = new QLabel(tr("Only the drawing changes: what is written in the element, "
+											  "the numbering, the sorting and the exports keep the whole label.",
+											  "informative label"));
+		m_terminal_label_help -> setWordWrap(true);
+
+		QVBoxLayout *terminal_label_layout = new QVBoxLayout(m_terminal_label_gb);
+		terminal_label_layout -> addWidget(m_terminal_label_combined_rb);
+		terminal_label_layout -> addWidget(m_terminal_label_split_rb);
+		terminal_label_layout -> addWidget(m_terminal_label_help);
+
+		if (settings.value(QStringLiteral("diagrameditor/defaultterminallabelling"), false).toBool()) {
+			m_terminal_label_split_rb -> setChecked(true);
+		} else {
+			m_terminal_label_combined_rb -> setChecked(true);
+		}
+	}
+
 	//If there is a project, we edit his properties
 	if (m_project) {
 		bpw -> setProperties (m_project -> defaultBorderProperties());
@@ -159,7 +196,17 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 
 	diagram_layout -> addWidget(bpw);
 	diagram_layout -> addWidget(ipw);
-	tab_widget->setMinimumSize(800, 650);
+		//The default labelling of the terminals, application's defaults only
+	if (m_terminal_label_gb) {
+		diagram_layout -> addWidget(m_terminal_label_gb);
+		diagram_layout -> addStretch();
+	}
+		//A width only: a minimum height set by hand replaces the one the
+		//tabs ask for, so on a low screen (1080p with display scaling,
+		//#1562) the dialog's scroll area never scrolled and the tallest
+		//tab (cross-references) was squeezed, its widgets drawn on top
+		//of each other. Without it the dialog scrolls instead.
+	tab_widget->setMinimumWidth(800);
 
 	tab_widget -> addTab (diagram_widget, tr("Sheet"));
 	tab_widget -> addTab (m_cpw,            tr("Conductor"));
@@ -286,6 +333,13 @@ void NewDiagramPage::applyConf()
 			settings.setValue(QStringLiteral("color"), current_guides[i].color.name());
 		}
 		settings.endArray();
+
+		// How a new project's terminals draw their label. Kept with the
+		// other defaults of a new project (the key starts with
+		// "diagrameditor/default", the prefix of that part of a
+		// configuration profile, see ConfigProfile::partOf())
+		settings.setValue(QStringLiteral("diagrameditor/defaultterminallabelling"),
+						  m_terminal_label_split_rb -> isChecked());
 
 		// save global auto-numbering defaults
 		//

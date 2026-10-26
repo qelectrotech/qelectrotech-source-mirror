@@ -86,6 +86,9 @@ class DiagramTextItem : public QGraphicsTextItem
 		void setAlignmentAtAnchor(const Qt::Alignment &alignment);
 		
 		QRectF frameRect() const;
+		QRectF writtenRect() const;
+		QPainterPath shape() const override;
+		bool contains(const QPointF &point) const override;
 	
 	void setHtml(const QString &text);
 		void setPlainText(const QString &text);

@@ -297,7 +297,9 @@ class Diagram : public QGraphicsScene
 					     const QString&,
 					     const QString&,
 					     const QString&,
-					     const QString&);
+					     const QString&,
+					     const QString &owner = QString(),
+					     const QString &level = QString());
 	
 		void refreshContents();
 	
@@ -321,6 +323,11 @@ class Diagram : public QGraphicsScene
 		BorderOptions borderOptions();
 		DiagramPosition convertPosition(const QPointF &);
 		static QPointF snapToGrid(const QPointF &p);
+			/// Snap to the grid on (the default) or off: off, snapToGrid()
+			/// gives the nearest point, as with Ctrl held. Kept in the
+			/// settings.
+		static bool gridSnap();
+		static void setGridSnap(bool snap);
 		static QPointF snapToTextGrid(const QPointF &p);
 	
 		bool drawTerminals() const;
@@ -376,7 +383,8 @@ class Diagram : public QGraphicsScene
 		void insertFolioSeqHash (QHash<QString, QStringList> *hash,
 					 const QString& title,
 					 const QString& seq,
-					 NumerotationContext *nc);
+					 NumerotationContext *nc,
+					 const QString &owner = QString());
 		void loadFolioSeqHash (QHash<QString, QStringList> *hash,
 				       const QString& title, const QString& seq,
 				       NumerotationContext *nc);

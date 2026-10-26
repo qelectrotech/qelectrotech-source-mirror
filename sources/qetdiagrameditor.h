@@ -148,6 +148,7 @@ class QETDiagramEditor : public QETMainWindow
 		void alignGroupTriggered     (QAction *action);
 		void rowColumnGroupTriggered (QAction *action);
 		void slot_updateActions();
+		void updateZoomLabel();
 		void slot_updateUndoStack();
 		void slot_updateModeActions();
 		void slot_updateComplexActions();
@@ -210,9 +211,11 @@ class QETDiagramEditor : public QETMainWindow
 		void subWindowActivated(QMdiSubWindow *subWindows);
 		void copyTextFormat();
 		void applyTextFormat();
+		void placeSymbolTexts(Qt::Alignment where);
 
 	private slots:
 		void updateTextGridButton();
+		void updateGridStepButton();
 		void updateShownKinds();
 		void selectionChanged();
 
@@ -225,7 +228,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_paste_element_info,      ///< Copy the information of the copied element onto the selected elements (#1375)
 		*m_insert_last_element = nullptr, ///< Place the last placed element again
 		*m_copy_text_format = nullptr,  ///< Copy label/text formatting template
-		*m_apply_text_format = nullptr; ///< Apply label/text formatting template
+		*m_apply_text_format = nullptr, ///< Apply label/text formatting template
+		*m_place_texts = nullptr;	///< Place the texts of the selected symbols at one of nine points
 		
 		QActionGroup
 		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram
@@ -321,9 +325,13 @@ class QETDiagramEditor : public QETMainWindow
 		///< Diagram background color picker, in the "Affichage" toolbar
 		DiagramBgColorToolButton *m_background_color_button = nullptr;
 		QMenu *m_text_grid_menu = nullptr;		///< Snap step used when dragging texts
+		QAction *m_grid_snap = nullptr;			///< Snap to the grid, on or off
+		QMenu *m_grid_step_menu = nullptr;		///< Fine, medium or coarse grid
+		QToolButton *m_grid_step_button = nullptr;
 		QToolButton *m_text_grid_button = nullptr;
 		QMenu *m_shown_kinds_menu = nullptr;		///< View > Show, kinds of items (#301)
 		QLabel *m_hidden_kinds_label = nullptr;	///< Status bar: how many kinds are hidden
+		QLabel *m_zoom_label = nullptr;		///< Status bar: the zoom of the folio on screen
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
 

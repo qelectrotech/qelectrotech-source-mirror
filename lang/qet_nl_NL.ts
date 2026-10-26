@@ -237,6 +237,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="138"/>
+        <source>Swedish translation (partly AI-generated)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="145"/>
         <source>Fedora and Red Hat packages</source>
         <translation type="unfinished"></translation>
@@ -2458,6 +2463,11 @@ Hold Shift and drag to move this text on its own</source>
         <source>Conductor color</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="280"/>
+        <source>Grid step</source>
+        <translation>Rasterstap</translation>
+    </message>
 </context>
 <context>
     <name>DiagramView</name>
@@ -2697,6 +2707,36 @@ Hold Shift and drag to move this text on its own</source>
 </context>
 <context>
     <name>DynamicElementTextModel</name>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height</source>
+        <translation>Hoogte</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
+        <source>Width fixed</source>
+        <translation>Vaste breedte</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <source>Height fixed</source>
+        <translation>Vaste hoogte</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="328"/>
+        <source>Ticked, the text field keeps the width above and the text wraps inside it. Not ticked, it is as wide as the text.</source>
+        <translation>Aangevinkt houdt het tekstveld de breedte hierboven en loopt de tekst erin door. Niet aangevinkt is het zo breed als de tekst.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="331"/>
+        <source>Ticked, the text field keeps the height above and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
+        <translation>Aangevinkt houdt het tekstveld de hoogte hierboven en worden regels die niet passen afgesneden. Niet aangevinkt is het zo hoog als de tekst.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="649"/>
+        <source>Change the height of an element text</source>
+        <translation>De hoogte van een elementtekst wijzigen</translation>
+    </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="70"/>
         <source>Property</source>
@@ -6337,6 +6377,21 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 3 - editing the project on another computer and/or screen that does not have the same settings as in points 1 and 2.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <source>Hide the grid when its dots are closer on screen than</source>
+        <translation>Raster verbergen als de punten op het scherm dichter bij elkaar staan dan</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where</source>
+        <translation>Verder uitgezoomd vallen de punten van elke rasterstap weg; de zoom in de statusbalk toont waar</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
 </context>
 <context>
     <name>GenericPanel</name>
@@ -9937,6 +9992,62 @@ Available options:
 <context>
     <name>QETDiagramEditor</name>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
+        <source>Place symbol texts</source>
+        <translation>Symbolteksten plaatsen</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="498"/>
+        <source>Place the label and the notes of the selected symbols as one block beside them</source>
+        <comment>status bar tip</comment>
+        <translation>Plaatst het label en de opmerkingen van de geselecteerde symbolen als één blok ernaast</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="507"/>
+        <source>Above, left</source>
+        <translation>Boven, links</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="508"/>
+        <source>Above</source>
+        <translation>Boven</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="509"/>
+        <source>Above, right</source>
+        <translation>Boven, rechts</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="510"/>
+        <source>Left</source>
+        <translation>Links</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="511"/>
+        <source>On the symbol</source>
+        <translation>Op het symbool</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="512"/>
+        <source>Right</source>
+        <translation>Rechts</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
+        <source>Below, left</source>
+        <translation>Onder, links</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
+        <source>Below</source>
+        <translation>Onder</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
+        <source>Below, right</source>
+        <translation>Onder, rechts</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="169"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="3709"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="3712"/>
@@ -11710,6 +11821,61 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <source>Error</source>
         <comment>message box title</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4285"/>
+        <source>Zoom %1 %</source>
+        <translation>Zoom %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
+        <source>Zoom of the folio on screen</source>
+        <translation>Zoom van het blad op het scherm</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="702"/>
+        <source>Snap to the grid</source>
+        <translation>Aan het raster vangen</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="705"/>
+        <source>Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point</source>
+        <translation>Vangt de aanwijzer en wat verplaatst of geplaatst wordt aan het raster; uit: op het dichtstbijzijnde punt</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="714"/>
+        <source>Grid step</source>
+        <translation>Rasterstap</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="720"/>
+        <source>The step of the grid that symbols, conductors and the pointer snap to</source>
+        <translation>De rasterstap waaraan symbolen, geleiders en de aanwijzer gevangen worden</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="723"/>
+        <source>Fine (5)</source>
+        <translation>Fijn (5)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="724"/>
+        <source>Medium (10)</source>
+        <translation>Middel (10)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
+        <source>Coarse (20)</source>
+        <translation>Grof (20)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5125"/>
+        <source>Grid %1</source>
+        <translation>Raster %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5126"/>
+        <source>Grid %1 × %2</source>
+        <translation>Raster %1 × %2</translation>
     </message>
 </context>
 <context>
@@ -21747,6 +21913,14 @@ The following variables can be used:
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>What:</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SymbolTextPlacement</name>
+    <message>
+        <location filename="../sources/symboltextplacement.cpp" line="120"/>
+        <source>Place symbol texts</source>
+        <translation>Symbolteksten plaatsen</translation>
     </message>
 </context>
 </TS>

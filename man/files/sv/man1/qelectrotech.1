@@ -1,0 +1,67 @@
+.TH QELECTROTECH 1 "AUGUSTI 2008" QElectroTech "Användarhandbok"
+.SH NAMN
+qelectrotech \- Redigerare för elscheman
+.SH SYNOPSIS
+.B qelectrotech
+.B [\-\-common\-elements\-dir\fR=\fIMAPP\fB]
+.B [\-\-config\-dir\fR=\fIMAPP\fB]
+.B [\-\-lang\-dir\fR=\fIMAPP\fB]
+.B [\-\-help]
+.B [\-v\fR|\fB\-\-version]
+.B [\-\-license]
+.B [\fIFIL\fB]...
+
+.SH BESKRIVNING
+QElectroTech är en redigerare för elscheman. Scheman (*.qet) och elektriska symboler (*.elmt) sparas i XML-format.
+De symboler som kan användas i scheman kan komma från det gemensamma biblioteket eller från användarens personliga bibliotek.
+Normalt kan alla användare läsa det gemensamma biblioteket, men de kan inte ändra det.
+Varje användare har ett eget personligt bibliotek som han eller hon kan ändra fritt.
+.SH ALTERNATIV
+.TP
+\fB\-\-common\-elements\-dir\fR=\fIMAPP\fR
+Använder MAPP som rotmapp för det gemensamma symbolbiblioteket. Obs: detta alternativ är endast aktiverat om direktivet QET_ALLOW_OVERRIDE_CED_OPTION angavs vid kompileringen.
+.TP
+\fB\-\-config\-dir\fR=\fIMAPP\fR
+Använder MAPP som konfigurationsmapp för den aktuella användaren. Mappen innehåller filen qelectrotech.conf med programmets konfiguration och undermappen elements med användarens symbolbibliotek. Obs: detta alternativ är endast aktiverat om direktivet QET_ALLOW_OVERRIDE_CD_OPTION angavs vid kompileringen.
+.TP
+\fB\-\-lang\-dir\fR=\fIMAPP\fR
+Söker efter programmets översättningsfiler i mappen MAPP.
+.TP
+\fB\-\-help\fR
+Visar en kort beskrivning av de tillgängliga alternativen.
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+Visar programmets version (t.ex. 0.1).
+.TP
+\fB\-\-license\fR
+Visar programmets licens (GNU/GPL).
+
+.P
+Om något av de tre sista alternativen anges på kommandoraden avslutas programmet efter att motsvarande information har visats.
+Om användaren redan har en instans av programmet igång är det den instansen som tar emot kommandoraden, och i synnerhet de filer som ska öppnas.
+Alternativ som anger andra mappar (gemensamt bibliotek, konfiguration och översättningsfiler) tas dock inte i beaktande.
+Om ett filnamn slutar på .elmt försöker QElectroTech öppna filen i en symbolredigerare.
+Annars behandlas filerna som scheman.
+.SH UPPHOVSMÄN
+Benoît Ansieau <benoit@qelectrotech.org>
+.br
+Xavier Guerrin <xavier@qelectrotech.org>
+.br
+Laurent Trinques <scorpio@qelectrotech.org>
+.br
+Joshua Claveau <joshua@qelectrotech.org>
+.br
+Cyril.frausti <cyril@qelectrotech.org>
+
+.SH RAPPORTERA FEL
+Om programmet beter sig på ett sätt som verkar onormalt, läs först vår FAQ <http://qelectrotech.org/wiki/doku.php?id=doc:faq> och se i vår BugTracker <http://qelectrotech.org/bugtracker/> om problemet redan är känt. Om det inte är det, skicka in en felrapport via BugTracker.
+
+.SH COPYRIGHT
+Copyright © QElectroTechs utvecklare
+.br
+Licens: GNU/GPL v2+: <http://www.gnu.org/licenses/old\-licenses/gpl\-2.0.html>
+.br
+Detta program är fri programvara. Du får ändra och vidaredistribuera det. Det tillhandahålls i befintligt skick och UTAN NÅGON GARANTI.
+
+.SH SE ÄVEN
+Officiell webbplats: <http://qelectrotech.org/>

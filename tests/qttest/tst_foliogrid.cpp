@@ -32,6 +32,41 @@ class tst_foliogrid : public QObject
 	Q_OBJECT
 
 private slots:
+	void dotsGoWhenTheyCrowd()
+	{
+			//The default step and spacing: the dots go below 75 %
+		QVERIFY(FolioGrid::dotsShown(10, 10, 0.75));
+		QVERIFY(!FolioGrid::dotsShown(10, 10, 0.74));
+			//A finer step goes sooner, a coarser one later; the finer of
+			//the two directions decides
+		QVERIFY(!FolioGrid::dotsShown(5, 5, 1.4));
+		QVERIFY(FolioGrid::dotsShown(20, 20, 0.4));
+		QVERIFY(!FolioGrid::dotsShown(20, 5, 1.0));
+			//A spacing set in the settings: 7.8 px keeps them down to 78 %
+		QVERIFY(FolioGrid::dotsShown(10, 10, 0.78, 7.8));
+		QVERIFY(!FolioGrid::dotsShown(10, 10, 0.77, 7.8));
+	}
+
+	void dotSpacingFromSettings()
+	{
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant()), 7.5);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(7.8)), 7.8);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(QStringLiteral("12"))), 12.0);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(0)), 7.5);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(-3)), 7.5);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(QStringLiteral("ten"))), 7.5);
+			//Only what the preferences page offers, 1 to 50 px: no
+			//endless or huge value hides the grid for good
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(1.0)), 1.0);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(50.0)), 50.0);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(0.5)), 7.5);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(50.5)), 7.5);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(1e9)), 7.5);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(QStringLiteral("inf"))), 7.5);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(std::numeric_limits<double>::infinity())), 7.5);
+		QCOMPARE(FolioGrid::minDotSpacing(QVariant(std::numeric_limits<double>::quiet_NaN())), 7.5);
+	}
+
 	void usableValuesAreKept_data()
 	{
 		QTest::addColumn<QVariant>("value");

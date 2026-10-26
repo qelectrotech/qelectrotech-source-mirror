@@ -20,6 +20,7 @@
 #include "container/qetzip.h"
 #include "utils/previousversions.h"
 #include "shownkinds.h"
+#include "symboltextplacement.h"
 #ifdef QET_HAS_SCRIPTING
 #include "scripting/qetscripting.h"
 #include "scripting/scriptlibrary.h"
@@ -33,6 +34,7 @@
 #include <QCoreApplication>
 #include <QToolButton>
 #include <QWidgetAction>
+#include <QGridLayout>
 #include "ElementsCollection/elementscollectionwidget.h"
 #include "ElementsCollection/elementpickerpopup.h"
 #include "shortcutbarsettings.h"
@@ -126,6 +128,42 @@
 #include <QLabel>
 #include <QUrl>
 #include <algorithm>
+#include "foliogrid.h"
+
+namespace {
+	/**
+		The icon of View > Snap to the grid: a grid of dots and a pointer
+		whose tip sits on the middle one, in the palette's text color.
+	*/
+	QIcon gridSnapIcon()
+	{
+		QIcon icon;
+		const QColor ink = QApplication::palette().color(QPalette::WindowText);
+		for (int size : {16, 22, 32, 48})
+		{
+			QPixmap pixmap(size, size);
+			pixmap.fill(Qt::transparent);
+			QPainter painter(&pixmap);
+			painter.setRenderHint(QPainter::Antialiasing);
+			painter.scale(size / 24.0, size / 24.0);
+			painter.setPen(Qt::NoPen);
+			painter.setBrush(ink);
+			for (int x : {4, 12, 20})
+				for (int y : {4, 12, 20})
+					painter.drawEllipse(QPointF(x, y), 1.4, 1.4);
+				//The pointer, its tip on the middle dot
+			painter.setPen(QPen(ink, 1.2));
+			painter.setBrush(QApplication::palette().color(QPalette::Window));
+			painter.drawPolygon(QPolygonF({{12, 12}, {12, 23}, {14.8, 20.3}, {16.8, 24}, {18.6, 23.1}, {16.6, 19.4}, {20.5, 19.4}}));
+			painter.setPen(Qt::NoPen);
+			painter.setBrush(ink);
+			painter.drawEllipse(QPointF(12, 12), 2.4, 2.4);
+			painter.end();
+			icon.addPixmap(pixmap);
+		}
+		return icon;
+	}
+}
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -489,6 +527,62 @@ void QETDiagramEditor::setUpActions()
 	connect(m_copy_text_format,  &QAction::triggered, this, &QETDiagramEditor::copyTextFormat);
 	connect(m_apply_text_format, &QAction::triggered, this, &QETDiagramEditor::applyTextFormat);
 
+		//The texts of the selected symbols, label and notes, as one block at
+		//one of nine points around the symbol: the nine points of the text
+		//alignment dialog. A click places them at the point chosen last.
+	const auto chosen_point = []() {
+		return Qt::Alignment(QSettings().value(QStringLiteral("diagrameditor/place_texts_point"),
+											   int(Qt::AlignLeft | Qt::AlignVCenter)).toInt());
+	};
+		//The button shows where its click will put the texts
+	m_place_texts = new QAction(SymbolTextPlacement::icon(chosen_point()), tr("Place symbol texts"), this);
+	m_place_texts->setStatusTip(tr("Place the label and the notes of the selected symbols as one block beside them", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_place_texts, "diagrameditor.place_symbol_texts", tr("Diagram editors"), QKeySequence());
+	{
+		auto *menu = new QMenu(this);
+		auto *grid_widget = new QWidget(menu);
+		auto *grid = new QGridLayout(grid_widget);
+		grid->setContentsMargins(6, 6, 6, 6);
+		grid->setSpacing(2);
+		const struct { Qt::Alignment where; const char *tip; } points[] = {
+			{Qt::AlignLeft | Qt::AlignTop,        QT_TR_NOOP("Above, left")},
+			{Qt::AlignHCenter | Qt::AlignTop,     QT_TR_NOOP("Above")},
+			{Qt::AlignRight | Qt::AlignTop,       QT_TR_NOOP("Above, right")},
+			{Qt::AlignLeft | Qt::AlignVCenter,    QT_TR_NOOP("Left")},
+			{Qt::AlignCenter,                     QT_TR_NOOP("On the symbol")},
+			{Qt::AlignRight | Qt::AlignVCenter,   QT_TR_NOOP("Right")},
+			{Qt::AlignLeft | Qt::AlignBottom,     QT_TR_NOOP("Below, left")},
+			{Qt::AlignHCenter | Qt::AlignBottom,  QT_TR_NOOP("Below")},
+			{Qt::AlignRight | Qt::AlignBottom,    QT_TR_NOOP("Below, right")}};
+		int n = 0;
+		for (const auto &point : points)
+		{
+			auto *button = new QToolButton(grid_widget);
+			button->setIcon(SymbolTextPlacement::icon(point.where));
+			button->setIconSize(QSize(32, 32));
+			button->setToolTip(tr(point.tip));
+			button->setObjectName(QStringLiteral("place_texts_%1").arg(n));
+			button->setFixedSize(38, 38);
+			button->setAutoRaise(true);
+			const Qt::Alignment where = point.where;
+			connect(button, &QToolButton::clicked, this, [this, menu, where]() {
+				menu->close();
+				QSettings().setValue(QStringLiteral("diagrameditor/place_texts_point"), int(where));
+				m_place_texts->setIcon(SymbolTextPlacement::icon(where));
+				placeSymbolTexts(where);
+			});
+			grid->addWidget(button, n / 3, n % 3);
+			++n;
+		}
+		auto *grid_action = new QWidgetAction(menu);
+		grid_action->setDefaultWidget(grid_widget);
+		menu->addAction(grid_action);
+		m_place_texts->setMenu(menu);
+	}
+	connect(m_place_texts, &QAction::triggered, this, [this, chosen_point]() {
+		placeSymbolTexts(chosen_point());
+	});
+
 		//Duplicate: copy the selection and place it at a configured,
 		//grid-step offset immediately -- no interactive follow-the-
 		//cursor step, unlike Ctrl+V above. That is deliberate (#991):
@@ -603,6 +697,52 @@ void QETDiagramEditor::setUpActions()
 			view->viewport()->update();
 	});
 
+		//Snap to the grid, on or off: off, the pointer and whatever is
+		//moved or placed go to the nearest point, as with Ctrl held
+	m_grid_snap = new QAction(gridSnapIcon(), tr("Snap to the grid"), this);
+	ShortcutManager::instance().registerAction(m_grid_snap, "diagrameditor.grid_snap", tr("Diagram editors"),
+						   QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_G));
+	m_grid_snap->setStatusTip(tr("Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point"));
+	m_grid_snap->setCheckable(true);
+	m_grid_snap->setChecked(Diagram::gridSnap());
+	connect(m_grid_snap, &QAction::triggered, this, [](bool on) {
+		Diagram::setGridSnap(on);
+	});
+
+		//The grid step, fine, medium or coarse: align blocks on a coarse
+		//grid, work them out on a fine one
+	m_grid_step_menu = new QMenu(tr("Grid step"), this);
+	m_grid_step_menu->setIcon(QET::Icons::Grid);
+	m_grid_step_button = new QToolButton(this);
+	m_grid_step_button->setMenu(m_grid_step_menu);
+	m_grid_step_button->setPopupMode(QToolButton::InstantPopup);
+	m_grid_step_button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	m_grid_step_button->setToolTip(tr("The step of the grid that symbols, conductors and the pointer snap to"));
+	auto grid_step_group = new QActionGroup(this);
+	const struct { const char *id; const char *name; int step; Qt::Key key; } grid_steps[] = {
+		{"diagrameditor.grid_step_fine",   QT_TR_NOOP("Fine (5)"),    5, Qt::Key_1},
+		{"diagrameditor.grid_step_medium", QT_TR_NOOP("Medium (10)"), 10, Qt::Key_2},
+		{"diagrameditor.grid_step_coarse", QT_TR_NOOP("Coarse (20)"), 20, Qt::Key_3},
+	};
+	for (const auto &grid_step : grid_steps)
+	{
+		QAction *action = m_grid_step_menu->addAction(tr(grid_step.name));
+		ShortcutManager::instance().registerAction(action, grid_step.id, tr("Diagram editors"),
+							   QKeySequence(Qt::CTRL | Qt::ALT | grid_step.key));
+		action->setCheckable(true);
+		action->setData(grid_step.step);
+		grid_step_group->addAction(action);
+	}
+	connect(grid_step_group, &QActionGroup::triggered, this, [this](QAction *action) {
+		QSettings settings;
+		settings.setValue(FolioGrid::x_key, action->data());
+		settings.setValue(FolioGrid::y_key, action->data());
+		updateGridStepButton();
+		for (DiagramView *view : findChildren<DiagramView *>())
+			view->viewport()->update();
+	});
+	updateGridStepButton();
+
 		//Snap step for dragged texts, as a fraction of the folio grid
 	m_text_grid_menu = new QMenu(tr("Text grid"), this);
 	m_text_grid_menu->setIcon(QET::Icons::Grid);
@@ -698,6 +838,9 @@ void QETDiagramEditor::setUpActions()
 	m_hidden_kinds_label = new QLabel(this);
 	m_hidden_kinds_label->setToolTip(tr("See Display > Show"));
 	statusBar()->addPermanentWidget(m_hidden_kinds_label);
+	m_zoom_label = new QLabel(this);
+	m_zoom_label->setToolTip(tr("Zoom of the folio on screen"));
+	statusBar()->addPermanentWidget(m_zoom_label);
 	connect(QETApp::instance(), &QETApp::shownKindsChanged,
 			this, &QETDiagramEditor::updateShownKinds);
 	updateShownKinds();
@@ -1449,6 +1592,7 @@ void QETDiagramEditor::setUpToolBar()
 	};
 	add_widget(QStringLiteral("widget:handler_size"), new DiagramEditorHandlerSizeWidget(this));
 	add_widget(QStringLiteral("widget:text_grid"), m_text_grid_button);
+	add_widget(QStringLiteral("widget:grid_step"), m_grid_step_button);
 	add_widget(QStringLiteral("widget:background_color"), m_background_color_button);
 		//Sits with the conductor actions it works alongside: it colours
 		//the selected conductors and sets the colour of the next one drawn.
@@ -1585,6 +1729,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_paste);
 	menu_edition -> addAction(m_copy_text_format);
 	menu_edition -> addAction(m_apply_text_format);
+	menu_edition -> addAction(m_place_texts);
 	menu_edition -> addAction(m_paste_origin);
 	menu_edition -> addAction(m_paste_element_info);
 	menu_edition -> addAction(m_duplicate);
@@ -1716,6 +1861,8 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_mode_visualise);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(m_draw_grid);
+	menu_affichage -> addAction(m_grid_snap);
+	menu_affichage -> addMenu(m_grid_step_menu);
 	menu_affichage -> addAction(m_crosshair);
 	menu_affichage -> addMenu(m_text_grid_menu);
 	menu_affichage -> addAction(m_draw_guides);
@@ -3040,6 +3187,7 @@ void QETDiagramEditor::slot_updateActions()
 	bool opened_project = pv;
 	bool opened_diagram = dv;
 	bool editable_project = (pv && !pv -> project() -> isReadOnly());
+	updateZoomLabel();
 
 	m_close_file->                  setEnabled(opened_project);
 	m_save_file->                   setEnabled(opened_project);
@@ -3187,6 +3335,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_find_element->setEnabled(selected_elements_count == 1);
 	m_copy_text_format->setEnabled(selected_elements_count >= 1);
 	m_apply_text_format->setEnabled(!ro && selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern());
+	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
 	m_mirror_horizontal->setEnabled(!ro && selected_elements_count);
 	m_mirror_vertical->setEnabled(!ro && selected_elements_count);
 
@@ -4128,6 +4277,24 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 		&QETDiagramEditor::slot_updateComplexActions);
 	connect(dv, &DiagramView::modeChanged, this, &QETDiagramEditor::slot_updateModeActions);
 	connect(dv, &DiagramView::elementPlacementStarted, this, &QETDiagramEditor::rememberPlacedElement);
+	connect(dv, &DiagramView::zoomChanged, this, &QETDiagramEditor::updateZoomLabel);
+}
+
+/**
+	@brief QETDiagramEditor::updateZoomLabel
+	Show the zoom of the folio on screen in the status bar, nothing when
+	no folio is shown.
+*/
+void QETDiagramEditor::updateZoomLabel()
+{
+	if (!m_zoom_label)
+		return;
+	DiagramView *dv = currentDiagramView();
+		//Four digits, not rounded to a whole percent: the grid's cutoff
+		//(Settings > General) compares the exact zoom, so 77.6 % shows as
+		//such, not as 78 %
+	m_zoom_label->setText(dv ? tr("Zoom %1 %").arg(QLocale().toString(dv->transform().m11() * 100, 'g', 4))
+				 : QString());
 }
 
 /**
@@ -4965,6 +5132,23 @@ void QETDiagramEditor::updateShownKinds()
 }
 
 /**
+	@brief QETDiagramEditor::updateGridStepButton
+	Show the current grid step on its toolbar button and check it in its
+	menu; a step set in the settings that the menu does not offer shows
+	as its number.
+*/
+void QETDiagramEditor::updateGridStepButton()
+{
+	QSettings settings;
+	const int x_step = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int y_step = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
+	for (QAction *action : m_grid_step_menu->actions())
+		action->setChecked(x_step == y_step && action->data().toInt() == x_step);
+	m_grid_step_button->setText(x_step == y_step ? tr("Grid %1").arg(x_step)
+						     : tr("Grid %1 × %2").arg(x_step).arg(y_step));
+}
+
+/**
 	@brief QETDiagramEditor::updateTextGridButton
 	Show the current text grid on its toolbar button and check it in its menu.
 */
@@ -5014,6 +5198,27 @@ void QETDiagramEditor::copyTextFormat()
  * @brief QETDiagramEditor::applyTextFormat
  * Applies the stored text formatting template to all selected elements in the active diagram.
  */
+/**
+	@brief QETDiagramEditor::placeSymbolTexts
+	Place the texts of the selected symbols as one block at @a where,
+	one of nine points around each symbol, in one undo step.
+	@param where : see SymbolTextPlacement::place()
+*/
+void QETDiagramEditor::placeSymbolTexts(Qt::Alignment where)
+{
+	DiagramView *dv = currentDiagramView();
+	if (!dv || !dv->diagram() || dv->diagram()->isReadOnly()) return;
+
+	QList<Element *> elements;
+	for (QGraphicsItem *item : dv->diagram()->selectedItems())
+		if (Element *element = qgraphicsitem_cast<Element *>(item))
+			elements.append(element);
+	if (elements.isEmpty()) return;
+
+	if (QUndoCommand *undo = SymbolTextPlacement::place(elements, where))
+		dv->diagram()->undoStack().push(undo);
+}
+
 void QETDiagramEditor::applyTextFormat()
 {
 	if (!ElementTextFormatPattern::hasPattern()) return;

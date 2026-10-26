@@ -78,6 +78,12 @@ namespace TerminalStripDrawer
 			virtual QString cable() const { return QString(); }
 			virtual QString cableWire() const { return QString(); }
 			virtual bool isShield() const { return false; }
+			//Installation, Location and Label (BMK) of the piece the cable
+			//goes to at its far end -- the same three fields the cable list
+			//shows for a target -- drawn in a box under the cable. Empty
+			//when the terminal has no cable, or when the cable lands on
+			//nothing past the strip's own terminals.
+			virtual QVector<QString> cableTarget() const { return QVector<QString>(); }
 			//Color and width (mm) of the terminal, only used to draw the terminal.
 			//An invalid color means "no override" : the default color of the type is used.
 			//A width <= 0 means "unknown" : the default width of the layout is used.

@@ -75,6 +75,15 @@ quint64 s_last_session = 0;
 const QString EXCLUDE_FROM_BOM    = QStringLiteral("exclude_from_bom");
 const QString AUTO_NUM_LOCKED     = QStringLiteral("auto_num_locked");
 const QString POTENTIAL_ISOLATING = QStringLiteral("potential_isolating");
+	//The name is drawn unless the element says otherwise (@sa
+	//Element::labelShown): an element which never got the box unticked
+	//has no information for it, and counts as "shown".
+const QString LABEL_SHOWN         = QStringLiteral("label_shown");
+
+bool flagDefaultIsOn(const QString &key)
+{
+	return key == LABEL_SHOWN;
+}
 
 QString flagText(bool on)
 {
@@ -449,7 +458,8 @@ void MultiElementInfoWidget::buildInterface()
 	const QList<QPair<QString, QString>> flags {
 		{EXCLUDE_FROM_BOM,    tr("Exclude from the bill of materials")},
 		{POTENTIAL_ISOLATING, tr("Function separation")},
-		{AUTO_NUM_LOCKED,     tr("Exclude from automatic numbering")}
+		{AUTO_NUM_LOCKED,     tr("Exclude from automatic numbering")},
+		{LABEL_SHOWN,         tr("Show name")}
 	};
 	for (const auto &pair : flags)
 	{
@@ -486,6 +496,9 @@ void MultiElementInfoWidget::buildInterface()
 	QStringList keys = QETInformation::elementInfoKeys();
 		//It has its own check box above, see ElementInfoWidget::buildInterface
 	keys.removeAll(EXCLUDE_FROM_BOM);
+		//Not an editable property but derived from the label, see
+		//ElementInfoWidget::buildInterface
+	keys.removeAll(QETInformation::ELMT_TERMINAL_NUMBER);
 
 	int line = 0;
 	for (const QString &key : std::as_const(keys))
@@ -588,12 +601,19 @@ void MultiElementInfoWidget::fillRows()
 
 	for (Flag *flag : std::as_const(m_flags))
 	{
+		//"Show name" means something for a terminal only, so it is
+		//shown for terminals only - the same rule as the two flags
+		//before it.
 		flag->check->setVisible(flag->key == EXCLUDE_FROM_BOM || all_terminals);
 		flag->restore->setVisible(flag->check->isVisible());
 
 		int on = 0;
 		for (Element *element : list) {
-			if (QET::infoFlagIsTrue(m_snapshot.value(element).value(flag->key).toString())) {
+			const QVariant value = m_snapshot.value(element).value(flag->key);
+			const bool is_on = value.isValid()
+					? QET::infoFlagIsTrue(value.toString())
+					: flagDefaultIsOn(flag->key);
+			if (is_on) {
 				++on;
 			}
 		}

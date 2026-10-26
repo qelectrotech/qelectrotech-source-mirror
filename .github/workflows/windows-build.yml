@@ -509,6 +509,21 @@ jobs:
   # ---------------------------------------------------------------------------
   # Job 2 : Publie les assets nightly (exe + zip) sur la release
   # Ne tourne que sur push master (pas sur les PRs)
+  #
+  # Release tag: "nightly-qt6" (was "nightly").
+  # The old "nightly" release became IMMUTABLE after it was republished by
+  # this job while GitHub's "Release immutability" repo setting was briefly
+  # enabled (Oct. 2026). Turning the setting off again does not revert a
+  # release that was published while it was on: assets could no longer be
+  # added or deleted there, and its tag can never host a new release, even
+  # after the release itself was deleted. Hence a fresh tag. The old
+  # "nightly" release (with the frozen Qt5 legacy build) was deleted at the
+  # same time; its tag stays locked and must not be reused.
+  #
+  # Do NOT re-enable "Release immutability" while this single, rolling
+  # nightly release model is used: the next republish would lock
+  # "nightly-qt6" the same way. Immutability requires one new release per
+  # build (draft -> upload assets -> publish).
   # ---------------------------------------------------------------------------
   publish-nightly-assets:
     needs: [build-windows-qt6]
@@ -516,6 +531,8 @@ jobs:
     if: github.event_name != 'pull_request'
     permissions:
       contents: write
+    env:
+      NIGHTLY_TAG: nightly-qt6
 
     steps:
       - name: Download installer artifact
@@ -532,27 +549,33 @@ jobs:
           path: downloaded/portable/
           merge-multiple: true
 
-      # Only Qt6-tagged assets are deleted/replaced here. Assets without "qt6"
-      # in the name are the frozen Qt5 legacy build (last one ever published,
-      # before the Qt5 CI job was removed) — deliberately left untouched so
-      # they stay downloadable indefinitely instead of disappearing.
-      - name: Delete old nightly Qt6 assets (.exe and .zip)
+      # Remove the previous .exe/.zip before uploading the new ones.
+      # On the very first run the release does not exist yet: skip cleanly
+      # (the default bash shell runs with pipefail, so an unguarded
+      # `gh release view` on a missing release would fail the step).
+      - name: Delete old nightly assets (.exe and .zip)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
-          gh release view nightly --repo "$REPO" --json assets \
-            --jq '.assets[] | select(.name | test("qt6")) | select(.name | test("\\.(exe|zip)$")) | .name' \
+          if ! gh release view "$NIGHTLY_TAG" --repo "$REPO" > /dev/null 2>&1; then
+            echo "Release '$NIGHTLY_TAG' does not exist yet — it will be created by the next step."
+            exit 0
+          fi
+          gh release view "$NIGHTLY_TAG" --repo "$REPO" --json assets \
+            --jq '.assets[] | select(.name | test("\\.(exe|zip)$")) | .name' \
           | while read -r name; do
-              echo "Deleting old Qt6 asset: $name"
-              gh release delete-asset nightly "$name" --repo "$REPO" --yes
+              echo "Deleting old asset: $name"
+              gh release delete-asset "$NIGHTLY_TAG" "$name" --repo "$REPO" --yes
             done
-          echo "Old Qt6 .exe and .zip assets deleted (legacy Qt5 assets left untouched)."
+          echo "Old .exe and .zip assets deleted."
 
       - name: Update nightly release
         uses: softprops/action-gh-release@v3
         with:
-          tag_name: nightly
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          # Only used when the tag does not exist yet (first run).
+          target_commitish: ${{ github.sha }}
           name: "Nightly Build – Windows"
           body: |
             🔧 **Automated nightly build** — may be unstable.
@@ -565,8 +588,6 @@ jobs:
 
             > ⚠️ This is a development version; it introduces new features you want, but may cause bugs that have not yet been identified yet.
             > For stable releases, see the [Releases page](https://github.com/${{ github.repository }}/releases).
-
-            > 🗄️ Files without `-qt6-` in the name are the last Qt5 build ever published (frozen, unmaintained). Files tagged `-qt6-` are the actively maintained build.
           prerelease: true
           make_latest: false
           files: |

@@ -142,6 +142,7 @@ QStringList QETInformation::elementInfoKeys()
 {
 	QStringList list = { ELMT_FORMULA,
 						 ELMT_LABEL,
+						 ELMT_TERMINAL_NUMBER,
 						 ELMT_PLANT,
 						 ELMT_LOCATION,
 						 ELMT_COMMENT,
@@ -311,6 +312,7 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == PROJECT_SAVED_FILE_PATH)          return QObject::tr("Saved file path");
 	else if (info == ELMT_FORMULA)                     return QObject::tr("Label formula");
 	else if (info == ELMT_LABEL)                       return QObject::tr("Label");
+	else if (info == ELMT_TERMINAL_NUMBER)             return QObject::tr("Terminal number");
 	else if (info == ELMT_COMMENT)                     return QObject::tr("Annotation");
 	else if (info == ELMT_FUNCTION)                    return QObject::tr("Function");
 	else if (info == ELMT_DESCRIPTION)                 return QObject::tr("Textual description");

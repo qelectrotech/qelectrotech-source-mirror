@@ -7,30 +7,29 @@ Environment variables required:
   DATE, SHORT, REPO, SHA, RUN_URL, RUN_NUMBER,
   INSTALLER_URL, PORTABLE_URL, MSI_URL (optional)
 
-Optional (frozen Qt5 legacy build — omitted entirely if empty):
-  LEGACY_INSTALLER_URL, LEGACY_PORTABLE_URL, LEGACY_MSI_URL
+Optional:
+  NIGHTLY_TAG    tag of the rolling nightly release (default: "nightly-qt6")
+  APPIMAGE_URL   Linux AppImage (built by linux-appimage.yml); no Linux
+  APPIMAGE_NAME  section on the page when empty
 
-NOTE: Windows Qt5 CI build removed (Qt6 is now the sole track built and
-signed going forward). INSTALLER_URL / PORTABLE_URL / MSI_URL point to the
-Qt6 build artifacts. The LEGACY_* variables, when set, point to the last
-Qt5 nightly assets that were ever published — kept downloadable but frozen
-(windows-build.yml no longer regenerates or deletes them).
+NOTE: Qt6 is the sole Windows track. The frozen Qt5 legacy build and the
+old "nightly" release that held it were removed in Oct. 2026, after that
+release became immutable (see windows-build.yml, publish-nightly-assets).
 """
 import os
 
-date         = os.environ.get("DATE", "")
-short        = os.environ.get("SHORT", "")
-repo         = os.environ.get("REPO", "")
-sha          = os.environ.get("SHA", "")
-run_url      = os.environ.get("RUN_URL", "")
-run_number   = os.environ.get("RUN_NUMBER", "")
+date          = os.environ.get("DATE", "")
+short         = os.environ.get("SHORT", "")
+repo          = os.environ.get("REPO", "")
+sha           = os.environ.get("SHA", "")
+run_url       = os.environ.get("RUN_URL", "")
+run_number    = os.environ.get("RUN_NUMBER", "")
 installer_url = os.environ.get("INSTALLER_URL", "")
 portable_url  = os.environ.get("PORTABLE_URL", "")
 msi_url       = os.environ.get("MSI_URL", "")
-
-legacy_installer_url = os.environ.get("LEGACY_INSTALLER_URL", "")
-legacy_portable_url  = os.environ.get("LEGACY_PORTABLE_URL", "")
-legacy_msi_url       = os.environ.get("LEGACY_MSI_URL", "")
+nightly_tag   = os.environ.get("NIGHTLY_TAG", "") or "nightly-qt6"
+appimage_url  = os.environ.get("APPIMAGE_URL", "")
+appimage_name = os.environ.get("APPIMAGE_NAME", "")
 
 msi_block = ""
 if msi_url:
@@ -40,45 +39,23 @@ if msi_url:
 <span class="btn-text">Windows Installer .msi<small>.msi &mdash; for enterprise / GPO deployment</small></span>
 </a>"""
 
-# Legacy Qt5 section — only rendered if at least one legacy asset exists.
-legacy_block = ""
-if legacy_installer_url or legacy_portable_url or legacy_msi_url:
-    legacy_installer_btn = ""
-    if legacy_installer_url:
-        legacy_installer_btn = f"""
-<a class="btn btn-secondary" href="{legacy_installer_url}">
-<span class="btn-icon">&#11015;</span>
-<span class="btn-text">Windows Installer (Qt5, legacy)<small>.exe &mdash; frozen, no longer updated</small></span>
-</a>"""
-    legacy_msi_btn = ""
-    if legacy_msi_url:
-        legacy_msi_btn = f"""
-<a class="btn btn-secondary" href="{legacy_msi_url}">
-<span class="btn-icon">&#11015;</span>
-<span class="btn-text">Windows Installer .msi (Qt5, legacy)<small>.msi &mdash; frozen, no longer updated</small></span>
-</a>"""
-    legacy_portable_btn = ""
-    if legacy_portable_url:
-        legacy_portable_btn = f"""
-<a class="btn btn-secondary" href="{legacy_portable_url}">
-<span class="btn-icon">&#128230;</span>
-<span class="btn-text">Windows Portable (Qt5, legacy)<small>.zip &mdash; frozen, no longer updated</small></span>
-</a>"""
-
-    legacy_block = f"""
+# The AppImage is built in parallel with the MSI and may be missing (first
+# run, build failure): the Linux section is only shown when it exists. Its
+# file name is shown because, after a failed AppImage build, the previous
+# AppImage stays on the release and may be older than the Windows builds.
+linux_block = ""
+if appimage_url:
+    linux_block = f"""
 <div class="card">
-<h2>&#128451; Windows &mdash; x86_64 &mdash; Qt5 (legacy, unmaintained)</h2>
-<div class="warning">
-&#128451; <strong>Legacy build &mdash; frozen, no longer updated.</strong> This is the
-last Qt5 build published before Windows CI switched to Qt6 only. Kept available for
-anyone who still needs it, but it will not receive further fixes or security updates.
-Please migrate to the Qt6 build above when you can.
-</div>
+<h2>&#128039; Linux &mdash; x86_64</h2>
 <div class="downloads">
-{legacy_installer_btn}
-{legacy_msi_btn}
-{legacy_portable_btn}
+<a class="btn btn-appimage" href="{appimage_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">Linux AppImage<small>{appimage_name} &mdash; make it executable and run it, no installation required</small></span>
+</a>
 </div>
+<p class="note">Needs glibc 2.39 or newer: Ubuntu 24.04+, Debian 13+, Fedora 40+, Arch, openSUSE Tumbleweed.
+<code>chmod +x QElectroTech_*.AppImage</code></p>
 </div>"""
 
 html = f"""<!DOCTYPE html>
@@ -107,6 +84,9 @@ main{{max-width:680px;margin:40px auto;padding:0 20px 60px}}
 .btn:hover{{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15)}}
 .btn-primary{{background:#2b6cb0;color:white}}
 .btn-msi{{background:#6b46c1;color:white}}
+.btn-appimage{{background:#2f855a;color:white}}
+.note{{font-size:.8em;color:#718096;line-height:1.6;margin-top:14px}}
+.note code{{background:#edf2f7;border-radius:4px;padding:1px 6px}}
 .btn-secondary{{background:#edf2f7;color:#2d3748}}
 .btn-icon{{font-size:1.3em}}
 .btn-text small{{display:block;font-weight:400;font-size:.8em;opacity:.75;margin-top:1px}}
@@ -117,7 +97,7 @@ footer a{{color:#718096;text-decoration:none}}
 <body>
 <header>
 <h1>&#9889; QElectroTech</h1>
-<p>Nightly Windows Builds</p>
+<p>Nightly Builds</p>
 </header>
 <main>
 <div class="card">
@@ -146,13 +126,13 @@ For production use, download a <a href="https://github.com/{repo}/releases">stab
 <span class="btn-icon">&#128230;</span>
 <span class="btn-text">Windows Portable<small>.zip &mdash; no installation required, extract and run &quot;Lancer QET.bat&quot;</small></span>
 </a>
-<a class="btn btn-secondary" href="https://github.com/{repo}/releases/tag/nightly">
+<a class="btn btn-secondary" href="https://github.com/{repo}/releases/tag/{nightly_tag}">
 <span class="btn-icon">&#128230;</span>
 <span class="btn-text">All nightly files on GitHub<small>Release page with checksums</small></span>
 </a>
 </div>
 </div>
-{legacy_block}
+{linux_block}
 </main>
 <footer>
 Auto-generated by GitHub Actions &nbsp;&middot;&nbsp;

@@ -47,8 +47,13 @@
 
 #include <QAbstractTextDocumentLayout>
 #include <QApplication>
+#include <QCursor>
+#include <QGuiApplication>
 #include <QCollator>
 #include <QScreen>
+#include <QTimer>
+#include <QPointer>
+#include "../diagramview.h"
 
 static const QString plcTerminalKeys[] = {
 	QETInformation::ELMT_PLC_T1,
@@ -251,6 +256,99 @@ void Element::setHighlighted(bool hl)
 {
 	m_must_highlight = hl;
 	update();
+}
+
+/**
+	@brief Element::showAsJumpTarget
+	Highlight this element for a moment, so the user sees where a jump
+	from a folio report (or a cross reference) landed. Independent of
+	setHighlighted(), which follows the mouse over a linked element and
+	would be cleared as soon as the mouse leaves the element jumped from.
+*/
+void Element::showAsJumpTarget()
+{
+		//The symbol and its texts, so that the label jumped to is seen too
+	QList<DynamicElementTextItem *> texts = dynamicTextItems();
+	for (ElementTextItemGroup *group : textGroups())
+		texts.append(group->texts());
+	for (DynamicElementTextItem *text : std::as_const(texts))
+		text->setJumpHighlight(true);
+
+	++m_jump_highlight;
+	update();
+	QPointer<Element> self(this);
+	QTimer::singleShot(3000, this, [self]() {
+		if (!self) return;
+		if (self->m_jump_highlight > 0)
+			--self->m_jump_highlight;
+		if (self->m_jump_highlight == 0) {
+			QList<DynamicElementTextItem *> texts = self->dynamicTextItems();
+			for (ElementTextItemGroup *group : self->textGroups())
+				texts.append(group->texts());
+			for (DynamicElementTextItem *text : std::as_const(texts))
+				text->setJumpHighlight(false);
+		}
+		self->update();
+	});
+}
+
+/**
+	@brief Element::jumpTo
+	Go to @a target, the other end of a folio report or the master of a
+	cross reference: its folio is shown whole, as a page, without zooming
+	in on it, and the target and its texts are shaded blue for a moment,
+	so that the eye finds it on the page.
+	The mouse pointer is put on it too, except on Wayland, which does not
+	let a program move the pointer.
+*/
+void Element::jumpTo(Element *target)
+{
+	if (!target || !target->diagram())
+		return;
+	Diagram *diagram = target->diagram();
+	diagram->showMe();
+	diagram->clearSelection();
+	target->setSelected(true);
+	for (QGraphicsView *view : diagram->views())
+	{
+		if (auto *diagram_view = qobject_cast<DiagramView *>(view))
+			diagram_view->zoomFit();
+		else
+			view->fitInView(diagram->sceneRect(), Qt::KeepAspectRatio);
+	}
+	target->showAsJumpTarget();
+
+		//Put the mouse pointer on the target, so that a double click
+		//there jumps back. Once the folio shown has its size (next turn
+		//of the event loop). Wayland does not let a program move the
+		//pointer: there the highlight alone shows where the jump landed.
+	if (QGuiApplication::platformName().startsWith(QLatin1String("wayland")))
+		return;
+	QTimer::singleShot(0, target, [target]() {
+		if (!target->diagram())
+			return;
+		for (QGraphicsView *view : target->diagram()->views())
+		{
+			if (!view->isVisible())
+				continue;
+			const QPoint pos = view->mapFromScene(target->sceneBoundingRect().center());
+			if (view->viewport()->rect().contains(pos))
+				QCursor::setPos(view->viewport()->mapToGlobal(pos));
+			return;
+		}
+	});
+}
+
+/**
+	@brief Element::jumpTarget
+	@return the element a double click on this one jumps to: the other end
+	of a linked folio report, or nullptr.
+*/
+Element *Element::jumpTarget() const
+{
+	if ((linkType() & AllReport) && !connected_elements.isEmpty())
+		return connected_elements.first();
+	return nullptr;
 }
 
 /**
@@ -474,7 +572,7 @@ void Element::paint(
 		const QStyleOptionGraphicsItem *options,
 		QWidget *)
 {
-	if (m_must_highlight) {
+	if (m_must_highlight || m_jump_highlight > 0) {
 		drawHighlight(painter, options);
 	}
 
@@ -522,6 +620,18 @@ void Element::paint(
 /**
 	@return Le rectangle delimitant le contour de l'element
 */
+/**
+	@brief Element::drawingRect
+	@return the area its drawing covers, in this symbol's coordinates:
+	tighter than boundingRect(), which is rounded up to the grid. The
+	bounding rect for a symbol with nothing drawn.
+*/
+QRectF Element::drawingRect() const
+{
+	const QRect drawn = m_picture.isNull() ? QRect() : m_picture.boundingRect();
+	return drawn.isEmpty() ? boundingRect() : QRectF(drawn);
+}
+
 QRectF Element::boundingRect() const
 {
 	return(QRectF(QPointF(-hotspot_coord.x(), -hotspot_coord.y()),
@@ -1579,6 +1689,17 @@ void Element::addDynamicTextItem(DynamicElementTextItem *deti)
 
 	m_dynamic_text_list.append(deti);
 
+		//An element whose name must not be drawn does not keep the
+		//field of its label on the sheet either (@sa Element::labelShown)
+	deti->refreshLabelShown();
+
+		//A field of its own for the terminal number is what the label
+		//leaves the number to: the fields which draw the label follow
+		//when such a field lands on the symbol
+	if (deti->infoName() == QETInformation::ELMT_TERMINAL_NUMBER) {
+		refreshLabelFields();
+	}
+
 		//On a mirrored element, the mirror of the text depends on the size
 		//and the rotation of the text, see keepReadable()
 	connect(deti->document()->documentLayout(),
@@ -1614,6 +1735,9 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 		m_dynamic_text_list.removeOne(deti);
 		deti->setParentItem(nullptr);
 		forget();
+		if (deti->infoName() == QETInformation::ELMT_TERMINAL_NUMBER) {
+			refreshLabelFields();
+		}
 		emit textRemoved(deti);
 		return;
 	}
@@ -1626,8 +1750,33 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 			m_dynamic_text_list.removeOne(deti);
 			deti->setParentItem(nullptr);
 			forget();
+			if (deti->infoName() == QETInformation::ELMT_TERMINAL_NUMBER) {
+				refreshLabelFields();
+			}
 			emit textRemoved(deti);
 			return;
+		}
+	}
+}
+
+/**
+	@brief Element::refreshLabelFields
+	The fields which draw the label draw it again: what they show of the
+	label has changed under them (a field for the terminal number added
+	or removed, @sa Element::hasTerminalNumberText), or the terminal
+	labelling setting of the project was switched
+	(@sa QETProject::terminalLabelSplit).
+	Only the fields which draw a label are refreshed, every other field
+	follows its own information.
+*/
+void Element::refreshLabelFields()
+{
+	for (DynamicElementTextItem *text : m_dynamic_text_list) {
+		text->refreshLabelConnection();
+	}
+	for (ElementTextItemGroup *group : m_texts_group) {
+		for (DynamicElementTextItem *text : group->texts()) {
+			text->refreshLabelConnection();
 		}
 	}
 }
@@ -2138,6 +2287,13 @@ void Element::setElementInformations(DiagramContext dc)
 	emit elementInfoChange(old_info, m_data.m_informations);
 	notifyTerminalStrip(this);
 
+	bool label_changed = old_info.value("label").toString() != dc.value("label").toString();
+	if (label_changed && (linkType() & Element::AllReport)) {
+		if (diagram() && diagram()->project() && diagram()->project()->chainedReports()) {
+			diagram()->project()->scheduleAutoLink();
+		}
+	}
+
 	// Propagate label change to linked PLC slaves (label is changed via
 	// setElementInformations through the undo stack, not via setElementData)
 	if (m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC)
@@ -2185,6 +2341,20 @@ DiagramContext Element::elementInformations() const
 	if (projectDataBase *store = placedStore())
 		return store->elementInformation(m_uuid);
 	return m_data.m_informations;
+}
+
+/**
+	@brief Element::kindInformations
+	@return this symbol's kind information (NO/NC/SW/power and the like,
+	baked into its own definition, never edited after it is built): the
+	project's store holds it once this symbol is placed, for one not
+	placed (a preview, the symbol editor) its own copy.
+*/
+DiagramContext Element::kindInformations() const
+{
+	if (projectDataBase *store = placedStore())
+		return store->elementKindInformation(m_uuid);
+	return m_kind_informations;
 }
 
 /**
@@ -2355,6 +2525,29 @@ void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
+	@brief Element::mouseDoubleClickEvent
+	A double click on a linked folio report goes to its other end, as a
+	double click on its text does; on any other element it opens the
+	properties. A report's properties stay reachable from the context menu
+	and the properties panel.
+	@param event
+*/
+void Element::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (Element *target = jumpTarget())
+	{
+		event->accept();
+			//Unselect and ungrab mouse to prevent unwanted
+			//move when the target is in the same scene as this.
+		setSelected(false);
+		ungrabMouse();
+		jumpTo(target);
+		return;
+	}
+	QetGraphicsItem::mouseDoubleClickEvent(event);
+}
+
+/**
 	When mouse over element
 	change m_mouse_over to true   (used in paint() function )
 	Also highlight linked elements
@@ -2366,6 +2559,13 @@ void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e)
 
 	foreach (Element *elmt, linkedElements())
 		elmt -> setHighlighted(true);
+
+		//A linked folio report jumps to its other end on a double
+		//click: the pointing hand says so
+	if (jumpTarget()) {
+		setCursor(Qt::PointingHandCursor);
+		m_jump_cursor = true;
+	}
 
 	m_mouse_over = true;
 	setToolTip( name() );
@@ -2384,6 +2584,11 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 
 	foreach (Element *elmt, linkedElements())
 		elmt -> setHighlighted(false);
+
+	if (m_jump_cursor) {
+		unsetCursor();
+		m_jump_cursor = false;
+	}
 
 	m_mouse_over = false;
 	update();
@@ -2435,21 +2640,20 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 
 	if (diagram())
 	{
-		QString formula = diagram()
-				->project()
-				->elementAutoNumCurrentFormula();
+		QETProject *autonum_project = diagram()->project();
+		QString element_currentAutoNum = autonum_project->elementCurrentAutoNum();
+			//One query for the scheme's rows, read once and reused below --
+			//elementAutoNumCurrentFormula()+elementAutoNum() each re-fetched
+			//the same rows separately (2b-3: every numbering read is now a
+			//database query, so a second fetch is a second round trip).
+		NumerotationContext nc = autonum_project->elementAutoNum(element_currentAutoNum);
+		QString formula = autonum::numerotationContextToFormula(nc);
 
 		m_data.m_informations.addValue(QStringLiteral("formula"), formula);
 		storeInformation();
 
-		QString element_currentAutoNum = diagram()
-				->project()
-				->elementCurrentAutoNum();
-		const QUuid scheme_id = diagram()->project()->elementAutoNumId(element_currentAutoNum);
+		const QUuid scheme_id = autonum_project->elementAutoNumId(element_currentAutoNum);
 		setFormulaSchemeId(formula.isEmpty() ? QUuid() : scheme_id);
-		NumerotationContext nc = diagram()
-				->project()
-				->elementAutoNum(element_currentAutoNum);
 
 			//The number given is the first whose label no other element of
 			//the project carries: a counter set back, or an element which
@@ -2575,6 +2779,156 @@ QString Element::actualLabel()
 				diagram(),
 				this);
 	}
+}
+
+/**
+	@brief Element::labelForDisplay
+	@return the label as the drawing must show it, the terminal labelling
+	of the project being read (@sa QETProject::terminalLabelSplit): the
+	whole label ("X1:1") while the labelling is shown in one field; the
+	label alone ("X1") when it is shown split and this symbol has a text
+	field of its own for the terminal number; and the two one under the
+	other when it is split without such a field -- so a symbol drawn
+	before the setting existed still shows all of its label, only
+	shorter. Only an element of the terminal type is ever drawn split:
+	the colon in any other label is part of the label ("-K1:13").
+*/
+QString Element::labelForDisplay()
+{
+	const QString label = actualLabel();
+	const Diagram *d = diagram();
+	const bool split = m_data.m_type == ElementData::Terminal
+			&& d && d->project() && d->project()->terminalLabelSplit();
+
+		//The "Show name" box of the selection properties hides the name
+		//of this element on the sheet only: the element keeps all of its
+		//data, and a terminal keeps its number, drawn on its own while
+		//the labelling is split.
+	if (!labelShown())
+	{
+		if (!split) {
+			return QString();
+		}
+			//The number alone in the label field, but only while the
+			//symbol has no field of its own for it: the number is
+			//drawn once, wherever it is drawn at all.
+		const int hidden_colon = label.lastIndexOf(QLatin1Char(':'));
+		if (hidden_colon < 0 || hasTerminalNumberText()) {
+			return QString();
+		}
+		return label.mid(hidden_colon + 1);
+	}
+
+	if (!split) {
+		return label;
+	}
+
+	const int colon = label.lastIndexOf(QLatin1Char(':'));
+	if (colon < 0) {
+		return label;
+	}
+
+	if (hasTerminalNumberText()) {
+		return label.left(colon);
+	}
+
+	return label.left(colon) + QLatin1Char('\n') + label.mid(colon + 1);
+}
+
+/**
+	@brief Element::terminalNumberForDisplay
+	@return the part of the label behind its last colon ("1" in "X1:1"),
+	or an empty string while the labelling is shown in one field -- and
+	for every element which is no terminal, whose colon is part of its
+	label: the number is already there with the label, showing it twice
+	would only be noise. @sa labelForDisplay
+*/
+QString Element::terminalNumberForDisplay()
+{
+	const Diagram *d = diagram();
+	if (m_data.m_type != ElementData::Terminal
+		|| !d || !d->project() || !d->project()->terminalLabelSplit()) {
+		return QString();
+	}
+
+	const QString label = actualLabel();
+	const int colon = label.lastIndexOf(QLatin1Char(':'));
+	if (colon < 0) {
+		return QString();
+	}
+
+	return label.mid(colon + 1);
+}
+
+/**
+	@brief Element::hasTerminalNumberText
+	@return whether this symbol has a text field bound to the terminal
+	number, the field labelForDisplay() leaves the number to.
+*/
+bool Element::hasTerminalNumberText() const
+{
+	auto is_number_field = [](const DynamicElementTextItem *text) {
+		return text
+			&& text->textFrom() == DynamicElementTextItem::ElementInfo
+			&& text->infoName() == QETInformation::ELMT_TERMINAL_NUMBER;
+	};
+
+	for (const DynamicElementTextItem *text : dynamicTextItems()) {
+		if (is_number_field(text)) {
+			return true;
+		}
+	}
+		//The field may just as well live in a text group of the symbol
+	for (const ElementTextItemGroup *group : m_texts_group) {
+		for (const DynamicElementTextItem *text : group->texts()) {
+			if (is_number_field(text)) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+/**
+	@brief Element::labelShown
+	@return whether the label of this element must be drawn on the sheet.
+	The choice belongs to the element itself, set with the "Show name"
+	box of the selection properties: an element whose name is not shown
+	keeps all of its data, nothing is only not drawn. An element which
+	never got the box unticked keeps drawing its name, which is why a
+	missing information means true.
+*/
+bool Element::labelShown() const
+{
+		//Only a terminal may have its name undrawn: an information
+		//which says otherwise, from whatever source, is not obeyed.
+	if (m_data.m_type != ElementData::Terminal) {
+		return true;
+	}
+	if (!m_data.m_informations.contains(QStringLiteral("label_shown"))) {
+		return true;
+	}
+	return QET::infoFlagIsTrue(
+				m_data.m_informations.value(QStringLiteral("label_shown")).toString());
+}
+
+/**
+	@brief Element::infoForDisplay
+	@return what a text field bound to @p info_name must show: the label
+	and the terminal number follow how the labelling is drawn, every
+	other information is the stored one. @sa labelForDisplay
+*/
+QString Element::infoForDisplay(const QString &info_name)
+{
+	if (info_name == QETInformation::ELMT_LABEL) {
+		return labelForDisplay();
+	}
+	if (info_name == QETInformation::ELMT_TERMINAL_NUMBER) {
+		return terminalNumberForDisplay();
+	}
+
+	return m_data.m_informations.value(info_name).toString();
 }
 
 /**

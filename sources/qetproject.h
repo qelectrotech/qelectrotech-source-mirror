@@ -34,6 +34,7 @@
 #include "diagram.h"
 #include "autoNum/assignvariables.h"
 #include "container/qetcontainerdb.h"
+#include "container/qetzreader.h"
 #include "projectlock.h"
 #include "projectorigin.h"
 
@@ -116,6 +117,9 @@ class QETProject : public QObject
 		QETProject (const QString &path, QObject * = nullptr);
 		QETProject (KAutoSaveFile *backup, QObject *parent=nullptr);
 		~QETProject() override;
+
+		void autoLinkReportElements();
+		void scheduleAutoLink();
 
 	private:
 		QETProject(const QETProject &);
@@ -326,6 +330,11 @@ class QETProject : public QObject
 		void setWireHops(WireHops::Mode mode);
 		bool uprightSymbolTexts() const;
 		void setUprightSymbolTexts(bool upright);
+		bool chainedReports() const;
+		void setChainedReports(bool enable);
+		bool hasChainedReportsAttribute() const;
+		bool terminalLabelSplit() const;
+		void setTerminalLabelSplit(bool split);
 		WiringRules::Settings wiringRules() const;
 		WiringRules::Settings projectWiringRules() const;
 		void setWiringRules(const WiringRules::Settings &rules);
@@ -341,7 +350,7 @@ class QETProject : public QObject
 		static QString spliceKeptFolios(QString text, const QHash<int, QByteArray> &kept_folios);
 		bool close();
 		QETResult write(bool overwrite_changed = false);
-		void rememberDiskState();
+		void rememberDiskState(const QByteArray *content = nullptr);
 		bool changedOnDisk(QDateTime *when = nullptr) const;
 		bool isReadOnly() const;
 			/// Opened from a .qetz of a later format (opened read-only)
@@ -458,14 +467,20 @@ class QETProject : public QObject
 		void readWireHopsXml(QDomDocument &xml_project);
 		void readOriginXml(QDomDocument& xml_project);
 		void readSymbolTextsXml(QDomDocument &xml_project);
+		void readChainedReportsXml(QDomDocument &xml_project);
+		void readTerminalLabelSplitXml(QDomDocument &xml_project);
 		void readWiringRulesXml(QDomDocument &xml_project);
 
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
+		static void writeNumberingXml(const projectDataBase::Numbering &numbering,
+									  QDomElement &xml_element);
 		void writeUsageXml(QDomElement &);
 		void writeWireHopsXml(QDomElement &);
 		void writeOriginXml(QDomElement&);
 		void writeSymbolTextsXml(QDomElement &);
+		void writeChainedReportsXml(QDomElement &);
+		void writeTerminalLabelSplitXml(QDomElement &);
 		void writeWiringRulesXml(QDomElement &);
 		void addDiagram(Diagram *diagram, int pos = -1);
 		void detachDiagram(Diagram *diagram);
@@ -476,9 +491,6 @@ class QETProject : public QObject
 		static bool isContainerPath(const QString &path);
 		static QString openFileFilter();
 		QETResult writeCopyForOlderVersions(const QString &path);
-		static bool writeContainer(const QDomDocument &project, const QString &path,
-								   QString *error = nullptr,
-								   const QHash<QString, QByteArray> &kept_from = QHash<QString, QByteArray>());
 		bool writeContainerFile(const QString &path, QString *error = nullptr);
 	private:
 		static QUuid derivedUuid(const QByteArray &content);
@@ -490,9 +502,9 @@ class QETProject : public QObject
 		static bool m_backup_enabled;
 			/// Something changed since the last backup, see writeBackup()
 		bool m_backup_needed = true;
-			/// The pictures of the .qetz this project was opened from, see
-			/// containerPicture()
-		QHash<QString, QByteArray> m_container_pictures;
+			/// What the file this project was opened from holds beside its
+			/// document: a .qetz's entries, folio parts and pictures
+		QetzReader m_container;
 			/// File path this project is saved to
 		QString m_file_path;
 			/// Current state of the project
@@ -533,26 +545,6 @@ class QETProject : public QObject
 		DiagramContext m_project_properties;
 			/// undo stack for this project
 		QUndoStack *m_undo_stack;
-			/// Conductor auto numerotation
-		QHash <QString, NumerotationContext> m_conductor_autonum;//Title and NumContext hash
-		QString m_current_conductor_autonum;
-			/// Folio auto numbering
-		QHash <QString, NumerotationContext> m_folio_autonum;
-			/// Element Auto Numbering
-		QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
-			/// Title -> uuid of each element numbering scheme
-		QHash <QString, QUuid> m_element_autonum_id;
-		QString m_current_element_autonum;
-			/// Cable auto numbering: exactly one rule, kept the same way
-			/// the others are so it stores and travels with the project
-			/// alike, but never a list to choose from.
-		QHash <QString, NumerotationContext> m_cable_autonum;
-		QString m_current_cable_autonum;
-			///< which axis the cables are numbered along (see cableXAxisFirst)
-		bool m_cable_axis_x_first = true;
-			///< whether the cable tool still asks about a numbering rule
-			///< for this project (see cableAskNumbering)
-		bool m_cable_ask_numbering = true;
 			/// True when the loaded file had element numbering schemes
 			/// saved without an id (written before ids existed)
 		bool m_legacy_element_autonums = false;
@@ -561,7 +553,9 @@ class QETProject : public QObject
 		QHash<QString, QStringList> elementAutoNumTitlesByFormula() const;
 		std::optional<QUuid> elementAutoNumIdToLink(
 				const DiagramContext &information,
-				const QHash<QString, QStringList> &titles_by_formula) const;
+				const QHash<QString, QStringList> &titles_by_formula,
+				QHash<QUuid, QString> *title_cache = nullptr,
+				QHash<QString, QUuid> *id_cache = nullptr) const;
 		bool m_deferring_folios = false;
 			/// Opening with folios built only when needed: QET_LAZY_FOLIOS
 			/// is set and the database can be filled from the document
@@ -580,13 +574,10 @@ class QETProject : public QObject
 		QString m_disk_path;
 		qint64 m_disk_size = -1;
 		QDateTime m_disk_mtime;
+		QByteArray m_disk_hash;
 			/// Saving a .qetz may copy the part of a folio not built
 			/// (toXml(), stage D4)
 		bool m_kept_parts_trusted = false;
-			/// The entries of the .qetz opened, and the part each folio
-			/// was read from, in order
-		QHash<QString, QByteArray> m_container_files;
-		QStringList m_folio_parts;
 		bool m_kept_folios_stale = false;
 			/// Something was edited since the project was opened: a table
 			/// filled from the database may have changed
@@ -600,11 +591,15 @@ class QETProject : public QObject
 			/// Texts drawn in a turned symbol stay horizontal (on for a new
 			/// project, off for one saved without it), see uprightSymbolTexts()
 		bool m_upright_symbol_texts = false;
+		bool m_chained_reports = false;
+		bool m_has_chained_reports_attribute = false;
+		bool m_pending_auto_link = false;
+			/// Terminals draw their label split: the label ("X1") and the
+			/// terminal number ("1") each in their own text field (off for
+			/// a project saved without it), see terminalLabelSplit()
+		bool m_terminal_label_split = false;
 		WiringRules::Settings m_wiring_rules;
-	bool m_auto_break_conductor = false;
 		XmlElementCollection *m_elements_collection = nullptr;
-		bool m_freeze_new_elements = false;
-		bool m_freeze_new_conductors = false;
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
 		QFuture<bool> m_backup_future;

@@ -346,6 +346,31 @@ const TitleBlockProperties *BorderTitleBlock::stored() const
 }
 
 /**
+	@brief BorderTitleBlock::storedBorder
+	@return the properties the project's store holds for this folio's
+	border, or nullptr if it is not placed.
+*/
+const BorderProperties *BorderTitleBlock::storedBorder() const
+{
+	if (projectDataBase *store = placedStore())
+		return store->storedFolioBorder(m_owner_folio->uuid());
+	return nullptr;
+}
+
+/**
+	@brief BorderTitleBlock::storedFolioNumber
+	@param index set to the stored folio index, when found
+	@param total set to the stored folio total, when found
+	@return whether the project's store holds a number for this folio
+*/
+bool BorderTitleBlock::storedFolioNumber(int *index, int *total) const
+{
+	if (projectDataBase *store = placedStore())
+		return store->storedFolioNumber(m_owner_folio->uuid(), index, total);
+	return false;
+}
+
+/**
 	@brief BorderTitleBlock::setOwnerFolio
 	@param folio : the folio this border and title block belongs to
 */
@@ -376,6 +401,32 @@ void BorderTitleBlock::storeTitleBlock()
 {
 	if (projectDataBase *store = placedStore())
 		store->storeFolioTitleBlock(m_owner_folio->uuid(), localTitleBlock());
+}
+
+/**
+	@brief BorderTitleBlock::storeBorder
+	Write this folio's border properties to its project's store, once its
+	folio is placed: every change of them comes through here.
+*/
+void BorderTitleBlock::storeBorder()
+{
+	if (projectDataBase *store = placedStore())
+		store->storeFolioBorder(m_owner_folio->uuid(), exportBorder());
+}
+
+/**
+	@brief BorderTitleBlock::storeFolioNumber
+	Write this folio's index and total to its project's store, once its
+	folio is placed: every change of them comes through here.
+*/
+void BorderTitleBlock::storeFolioNumber()
+{
+	//Read the members directly, not the getters: the getters check the
+	//store first, which this call is about to update -- going through
+	//them here would echo back the old stored value instead of the new
+	//one, the same trap storeBorder() avoids with exportBorder().
+	if (projectDataBase *store = placedStore())
+		store->storeFolioNumber(m_owner_folio->uuid(), folio_index_, folio_total_);
 }
 
 /**
@@ -418,15 +469,19 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip)
 */
 BorderProperties BorderTitleBlock::exportBorder()
 {
+		//Read the members directly, not the getters: a folio placed in a
+		//project reads those back from the store, which storeBorder() is
+		//about to update from this very value -- going through them here
+		//would echo back the old stored value instead of the new one.
 	BorderProperties bp;
-	bp.columns_count = columnsCount();
-	bp.columns_width = columnsWidth();
-	bp.columns_header_height = columnsHeaderHeight();
-	bp.display_columns = columnsAreDisplayed();
-	bp.rows_count = rowsCount();
-	bp.rows_height = rowsHeight();
-	bp.rows_header_width = rowsHeaderWidth();
-	bp.display_rows = rowsAreDisplayed();
+	bp.columns_count = columns_count_;
+	bp.columns_width = columns_width_;
+	bp.columns_header_height = columns_header_height_;
+	bp.display_columns = display_columns_;
+	bp.rows_count = rows_count_;
+	bp.rows_height = rows_height_;
+	bp.rows_header_width = rows_header_width_;
+	bp.display_rows = display_rows_;
 	return(bp);
 }
 
@@ -530,7 +585,10 @@ void BorderTitleBlock::displayTitleBlock(bool di) {
 void BorderTitleBlock::displayColumns(bool dc) {
 	bool change = (dc != display_columns_);
 	display_columns_ = dc;
-	if (change) emit(displayChanged());
+	if (change) {
+		storeBorder();
+		emit(displayChanged());
+	}
 }
 
 /**
@@ -541,7 +599,10 @@ void BorderTitleBlock::displayColumns(bool dc) {
 void BorderTitleBlock::displayRows(bool dr) {
 	bool change = (dr != display_rows_);
 	display_rows_ = dr;
-	if (change) emit(displayChanged());
+	if (change) {
+		storeBorder();
+		emit(displayChanged());
+	}
 }
 
 /**
@@ -829,6 +890,7 @@ void BorderTitleBlock::setColumnsCount(int nb_c) {
 	if (nb_c == columnsCount()) return;
 	columns_count_ = qMax(MIN_COLUMN_COUNT , nb_c);
 	updateRectangles();
+	storeBorder();
 }
 
 /**
@@ -848,6 +910,7 @@ void BorderTitleBlock::setColumnsWidth(const qreal &new_cw) {
 	if (new_cw == columnsWidth()) return;
 	columns_width_ = qMax(MIN_COLUMN_WIDTH , new_cw);
 	updateRectangles();
+	storeBorder();
 }
 
 /**
@@ -863,6 +926,7 @@ void BorderTitleBlock::setColumnsWidth(const qreal &new_cw) {
 void BorderTitleBlock::setColumnsHeaderHeight(const qreal &new_chh) {
 	columns_header_height_ = qBound(qreal(5.0), new_chh, qreal(50.0));
 	updateRectangles();
+	storeBorder();
 }
 
 /**
@@ -882,6 +946,7 @@ void BorderTitleBlock::setRowsCount(int nb_r) {
 	if (nb_r == rowsCount()) return;
 	rows_count_ = qMax(MIN_ROW_COUNT, nb_r);
 	updateRectangles();
+	storeBorder();
 }
 
 /**
@@ -901,6 +966,7 @@ void BorderTitleBlock::setRowsHeight(const qreal &new_rh) {
 	if (new_rh == rowsHeight()) return;
 	rows_height_ = qMax(MIN_ROW_HEIGHT, new_rh);
 	updateRectangles();
+	storeBorder();
 }
 
 /**
@@ -916,6 +982,7 @@ void BorderTitleBlock::setRowsHeight(const qreal &new_rh) {
 void BorderTitleBlock::setRowsHeaderWidth(const qreal &new_rhw) {
 	rows_header_width_ = qBound(qreal(5.0), new_rhw, qreal(50.0));
 	updateRectangles();
+	storeBorder();
 }
 
 /**
@@ -1133,6 +1200,7 @@ void BorderTitleBlock::setFolioData(
 	}
 	btb_final_folio_.replace("%id",    QString::number(folio_index_));
 	btb_final_folio_.replace("%total", QString::number(folio_total_));
+	storeFolioNumber();
 
 	updateDiagramContextForTitleBlock(project_properties);
 }
