@@ -87,12 +87,22 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --source ${CMAKE_CURRENT_SOURCE_DIR}/attached_plain_paste_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
   set_tests_properties(tst_attachedplainpaste PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
+  # The probe opens and saves the whole industrial example: about 10 minutes
+  # in a Debug build with GCC, and five to eight times as long with MSVC's
+  # Debug libraries.
+  if(MSVC)
+    set(qet_lazyfolios_timeout 7200)
+  else()
+    set(qet_lazyfolios_timeout 2400)
+  endif()
+  math(EXPR qet_lazyfolios_ctest_timeout "${qet_lazyfolios_timeout} + 600")
   add_test(NAME tst_lazyfolios
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_lazy_folios_probe.py
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/lazy_folios_probe.cpp
-      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/../../examples/industrial.qet)
-  set_tests_properties(tst_lazyfolios PROPERTIES TIMEOUT 3000 RUN_SERIAL TRUE
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/../../examples/industrial.qet
+      --timeout ${qet_lazyfolios_timeout})
+  set_tests_properties(tst_lazyfolios PROPERTIES TIMEOUT ${qet_lazyfolios_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Deleting a cable, undoing the delete twice and then editing anything
   # has both cable commands tearing down the same cable. Runs under the
