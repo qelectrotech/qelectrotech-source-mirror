@@ -33,6 +33,8 @@
 #include "diagram.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/terminal.h"
+#include "properties/terminaldata.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/ViewItem/projectdbmodel.h"
@@ -3828,10 +3830,16 @@ bool QETProject::lazyFolios()
 	into @p xml_project the uuids building the folios gives them: a
 	folio's from its place and title (Diagram::derivedUuid()), a wire's
 	from the symbol and terminal uuids that name its ends
-	(Diagram::fromXml()). They are saved from then on either way. A wire
-	whose ends are named the older way is left: only the built symbols
-	know its terminals. So are the wires of a project whose symbols lack
-	uuids or share one: those are renewed when their folio is built.
+	(Diagram::fromXml()). They are saved from then on either way.
+	A wire whose ends are named the older way, by a number each symbol's
+	saved terminal carries, is named by the symbol's and the terminal's
+	uuid instead, as its next save names it: the terminal is the one of
+	the symbol's definition at the saved terminal's place, the last if
+	several are there, as Element::fromXml() pairs them. A symbol with a
+	saved terminal at no terminal's place (moved since:
+	Element::matchMovedTerminals()), and a folio whose symbols number their
+	terminals alike, are left to their folio. So are the wires of a project whose symbols lack uuids or
+	share one: those are renewed when their folio is built.
 */
 void QETProject::fillDerivedUuids(QDomDocument &xml_project)
 {
@@ -3865,6 +3873,93 @@ void QETProject::fillDerivedUuids(QDomDocument &xml_project)
 				return;
 			elements.insert(uuid);
 		}
+
+		//Wire ends named the older way
+	const QHash<QString, QDomElement> definitions = m_data_base.embeddedDefinitions();
+	QHash<QString, QList<TerminalData *>> definition_terminals;
+	const auto terminalsOf = [&](const QString &type) -> const QList<TerminalData *> & {
+		auto known = definition_terminals.find(type);
+		if (known != definition_terminals.end())
+			return known.value();
+		QList<TerminalData *> terminals;
+		const QDomElement definition = definitions.value(type);
+		for (QDomElement d = definition.firstChildElement(QStringLiteral("description")) ;
+			 !d.isNull() ; d = d.nextSiblingElement(QStringLiteral("description")))
+			for (QDomElement t = d.firstChildElement(QStringLiteral("terminal")) ;
+				 !t.isNull() ; t = t.nextSiblingElement(QStringLiteral("terminal"))) {
+				auto data = new TerminalData();
+				if (data->fromXml(t) && !data->m_uuid.isNull()) terminals << data;
+				else delete data;
+			}
+		return definition_terminals.insert(type, terminals).value();
+	};
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i) {
+		const QDomElement folio = diagram_nodes.at(i).toElement();
+			//saved terminal number -> symbol uuid, terminal uuid
+		QHash<int, std::pair<QString, QString>> ends;
+		QSet<int> numbers;
+		bool clash = false;
+		for (QDomElement element : QET::findInDomElement(folio, QStringLiteral("elements"),
+														  QStringLiteral("element"))) {
+			if (!Element::valideXml(element))
+				continue;
+			QList<QDomElement> records;
+			for (QDomElement record : QET::findInDomElement(element, QStringLiteral("terminals"),
+															 QStringLiteral("terminal")))
+				if (Terminal::valideXml(record)) records << record;
+			for (const QDomElement &record : std::as_const(records)) {
+				const int number = record.attribute(QStringLiteral("id")).toInt();
+				clash = clash || numbers.contains(number);
+				numbers.insert(number);
+			}
+			const QList<TerminalData *> &terminals = terminalsOf(element.attribute(QStringLiteral("type")));
+			QHash<int, QString> paired;
+			bool exact = !terminals.isEmpty();
+			for (const QDomElement &record : std::as_const(records)) {
+				const TerminalData *match = nullptr;
+				for (const TerminalData *t : terminals) {
+					QPointF dock = t->m_pos;
+					switch (t->m_orientation) {
+						case Qet::North: dock += QPointF(0, Terminal::terminalSize); break;
+						case Qet::East : dock += QPointF(-Terminal::terminalSize, 0); break;
+						case Qet::West : dock += QPointF(Terminal::terminalSize, 0); break;
+						case Qet::South: dock += QPointF(0, -Terminal::terminalSize); break;
+					}
+					if (qFuzzyCompare(record.attribute(QStringLiteral("x")).toDouble(), dock.x())
+						&& qFuzzyCompare(record.attribute(QStringLiteral("y")).toDouble(), dock.y())
+						&& record.attribute(QStringLiteral("orientation")).toInt() == t->m_orientation)
+						match = t;
+				}
+				exact = exact && match;
+				if (!exact)
+					break;
+				paired.insert(record.attribute(QStringLiteral("id")).toInt(), match->m_uuid.toString());
+			}
+			if (!exact)
+				continue;
+			const QString uuid = QUuid(element.attribute(QStringLiteral("uuid"))).toString();
+			for (auto it = paired.cbegin() ; it != paired.cend() ; ++it)
+				ends.insert(it.key(), {uuid, it.value()});
+		}
+		if (clash)
+			continue;
+		for (QDomElement wire : QET::findInDomElement(folio, QStringLiteral("conductors"),
+													   QStringLiteral("conductor"))) {
+			if (wire.hasAttribute(QStringLiteral("element1")) || wire.hasAttribute(QStringLiteral("element2"))
+					|| !Conductor::valideXml(wire))
+				continue;
+			const int one = wire.attribute(QStringLiteral("terminal1")).toInt();
+			const int two = wire.attribute(QStringLiteral("terminal2")).toInt();
+			if (!ends.contains(one) || !ends.contains(two))
+				continue;
+			wire.setAttribute(QStringLiteral("element1"), ends.value(one).first);
+			wire.setAttribute(QStringLiteral("terminal1"), ends.value(one).second);
+			wire.setAttribute(QStringLiteral("element2"), ends.value(two).first);
+			wire.setAttribute(QStringLiteral("terminal2"), ends.value(two).second);
+		}
+	}
+	for (const QList<TerminalData *> &terminals : std::as_const(definition_terminals))
+		qDeleteAll(terminals);
 
 		//As readDiagramsXml() does, before deriving any
 	for (const QString &tag : {QStringLiteral("element"), QStringLiteral("conductor")}) {
