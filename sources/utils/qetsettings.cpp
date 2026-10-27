@@ -154,6 +154,32 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief workingCopyRecovery
+	* @return whether the next start offers, with the recovery files, the
+	* working copy of a project that was open when QElectroTech did not
+	* close normally: the project as it was after its last edit
+	* (QET-SQL-FORMAT S3z3). Off unless the user turned it on, while the
+	* .qetdb format is experimental. @sa setWorkingCopyRecovery
+	*/
+	bool workingCopyRecovery()
+	{
+		QSettings settings;
+		return settings.value("workingcopy/recovery", false).toBool();
+	}
+
+	/**
+	* @brief setWorkingCopyRecovery
+	* Store whether working copies are offered at the next start.
+	* @sa workingCopyRecovery
+	* @param enabled
+	*/
+	void setWorkingCopyRecovery(bool enabled)
+	{
+		QSettings settings;
+		settings.setValue("workingcopy/recovery", enabled);
+	}
+
+	/**
 	* @brief liveAssistantEnabled
 	* @return whether an AI assistant may connect to this QElectroTech and
 	* act on the open project while the user watches (live mode, see

@@ -38,6 +38,8 @@ namespace QetSettings
 	bool scriptingEnabled();
 	void setScriptingEnabled(bool enabled);
 	bool scriptingForcedByEnvironment();
+	bool workingCopyRecovery();
+	void setWorkingCopyRecovery(bool enabled);
 	bool liveAssistantEnabled();
 	void setLiveAssistantEnabled(bool enabled);
 	bool liveSkipStartWarning();
