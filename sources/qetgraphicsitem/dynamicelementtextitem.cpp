@@ -1574,7 +1574,8 @@ void DynamicElementTextItem::updateReportText()
 			if (m_other_report) {
 				Element *elmt = m_other_report.data();
 				QString xref_str = m_report_formula;
-				xref_str = autonum::AssignVariables::formulaToLabel(xref_str, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+				autonum::sequentialNumbers seq_copy = elmt->sequenceStruct();
+				xref_str = autonum::AssignVariables::formulaToLabel(xref_str, seq_copy, elmt->diagram(), elmt);
 				setPlainText(xref_str);
 			} else {
 				setPlainText("");
@@ -1583,7 +1584,8 @@ void DynamicElementTextItem::updateReportText()
 			if (m_other_report) {
 				Element *elmt = m_other_report.data();
 				QString xref_str = m_report_formula;
-				xref_str = autonum::AssignVariables::formulaToLabel(xref_str, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+				autonum::sequentialNumbers seq_copy = elmt->sequenceStruct();
+				xref_str = autonum::AssignVariables::formulaToLabel(xref_str, seq_copy, elmt->diagram(), elmt);
 				QString lbl = m_parent_element ? m_parent_element.data()->actualLabel() : "";
 				if (!lbl.isEmpty() && !xref_str.isEmpty()) {
 					if (m_parent_element && m_parent_element.data()->linkType() == Element::PreviousReport) {
