@@ -6380,10 +6380,12 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		//Each type's kind information, read from its definition once
 	const QHash<QString, QDomElement> definitions = embeddedDefinitions();
 	QHash<QString, std::optional<DiagramContext>> kind_of_type;
-	const QDomElement root = document.documentElement();
-	for (QDomElement folio = root.firstChildElement(QStringLiteral("diagram")) ; !folio.isNull() ;
-		 folio = folio.nextSiblingElement(QStringLiteral("diagram")))
+		//Every <diagram>, as QETProject::readDiagramsXml() reads them: a
+		//folio saved inside another one (a damaged file) is one too
+	const QDomNodeList diagram_nodes = document.elementsByTagName(QStringLiteral("diagram"));
+	for (int f = 0 ; f < diagram_nodes.size() ; ++f)
 	{
+		const QDomElement folio = diagram_nodes.at(f).toElement();
 		const QUuid folio_uuid(folio.attribute(QStringLiteral("uuid")));
 		if (!folio_uuid.isNull() && ++seen[folio_uuid] == 1) {
 			TitleBlockProperties properties;
