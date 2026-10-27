@@ -539,6 +539,9 @@ private slots:
 		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
 		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
 		env.insert(QString::fromLatin1(check), QStringLiteral("1"));
+			//A script is stopped after 30 s; beside the other tests (ctest -j8)
+			//the edits below took longer (2026-10-27, 2026-10-28)
+		env.insert(QStringLiteral("QET_SCRIPT_TIMEOUT_MS"), QStringLiteral("240000"));
 		if (eager) {
 			env.insert(QStringLiteral("QET_EAGER_FOLIOS"), QStringLiteral("1")); //every folio built on opening
 		}
@@ -840,7 +843,9 @@ private slots:
 										   QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet")});
 		QVERIFY2(edited.contains(QStringLiteral("COPIED 3")) && edited.contains(QStringLiteral("WIRED 6 with wires"))
 				 && edited.contains(QStringLiteral("UNDONE true"))
-				 && edited.contains(QStringLiteral("SAVED true")), qPrintable(edited.right(600)));
+				 && edited.contains(QStringLiteral("SAVED true")),
+				 qPrintable(edited.split(QLatin1Char('\n')).filter(QRegularExpression(
+						QStringLiteral("COPIED|WIRED|UNDONE|SAVED|Script error"))).join(QLatin1Char('\n'))));
 		const QString reopened = runChecked({QStringLiteral("--run"), dump, saved});
 		auto rowsOf = [](const QString &log) {
 			const int at = log.indexOf(QStringLiteral("ROWS "));
