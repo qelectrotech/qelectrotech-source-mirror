@@ -42,6 +42,12 @@ struct BridgePartData
 	QUuid diagram;
 	QPointF p1;
 	QPointF p2;
+		///The pin each end is docked to, empty when the end stands on
+		///its own: a sheet reference stuck to the line takes its end
+		///along when it is dragged, and the line grows or shrinks with
+		///it the way a wire follows the terminal it is docked to
+	QString dock1;
+	QString dock2;
 };
 
 /**
@@ -192,6 +198,7 @@ class Bridge : public QObject
 		void addPart(const BridgePartData &part);
 		void removePart(const QUuid &part);
 		void setPartGeometry(const QUuid &part, const QPointF &p1, const QPointF &p2);
+		void setPartDocks(const QUuid &part, const QString &dock1, const QString &dock2);
 
 		//Serialisation
 		QDomElement toXml(QDomDocument &document) const;

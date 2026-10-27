@@ -28,6 +28,7 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../autoNum/assignvariables.h"
 #include "../qetinformation.h"
+#include "../undocommand/linkelementcommand.h"
 #include "../qetproject.h"
 #include "../conductorproperties.h"
 #include "../properties/elementdata.h"
@@ -151,7 +152,7 @@ QList<BridgeCrossing> BridgeManager::crossedTerminals(Diagram *diagram, const QL
 		const auto pins = element->terminals();
 		for (Terminal *candidate : pins)
 		{
-			const qreal distance = distanceToLine(line, candidate->scenePos());
+			const qreal distance = distanceToLine(line, candidate->dockConductor());
 			if (!pin || distance < nearest) {
 				pin = candidate;
 				nearest = distance;
@@ -165,7 +166,7 @@ QList<BridgeCrossing> BridgeManager::crossedTerminals(Diagram *diagram, const QL
 		crossing.element = element;
 		crossing.terminal = pin->stableUuid().toString();
 		crossing.reference = is_sheet_reference;
-		crossing.position = pin->scenePos();
+		crossing.position = pin->dockConductor();
 		crossings.append(crossing);
 	}
 
@@ -388,6 +389,250 @@ QList<Bridge *> BridgeManager::bridgesOverfilledBy(QETProject *project,
 		}
 	}
 	return overfilled;
+}
+
+namespace {
+	/**
+		Where the pin named @p dock of @p moved stands now, and whether
+		that pin belongs to @p moved at all.
+	*/
+	QPointF pinPosition(Bridge *bridge,
+						const QString &dock,
+						Element *moved,
+						bool *found)
+	{
+		*found = false;
+		const auto lands_on = bridge->landings();
+		for (const BridgeTerminal &landing : lands_on)
+		{
+			const auto element = landing.element;
+			if (!moved || moved->uuid() != element) {
+				continue;
+			}
+			for (Terminal *pin : moved->terminals()) {
+				if (pin->stableUuid().toString() == dock) {
+					*found = true;
+					return pin->dockConductor();
+				}
+			}
+		}
+		return QPointF();
+	}
+}
+
+/**
+	@brief BridgeManager::dockAt
+	@param project
+	@param bridge
+	@param point where a drawn end stands
+	@param tolerance how far a pin may stand from it to be docked to it
+	@return the pin of one of the bridge's landings the end is docked to,
+	empty when it stands on its own
+*/
+QString BridgeManager::dockAt(QETProject *project,
+							  Bridge *bridge,
+							  const QPointF &point,
+							  qreal tolerance)
+{
+	if (!project || !bridge) {
+		return {};
+	}
+	QString pin_uuid;
+	qreal nearest = tolerance;
+	const auto lands_on = bridge->landings();
+	for (const BridgeTerminal &landing : lands_on)
+	{
+		Element *element = elementFor(project, landing);
+		if (!element) {
+			continue;
+		}
+		for (Terminal *pin : element->terminals())
+		{
+			const qreal distance = QLineF(pin->dockConductor(), point).length();
+			if (distance <= nearest) {
+				nearest = distance;
+				pin_uuid = pin->stableUuid().toString();
+			}
+		}
+	}
+	return pin_uuid;
+}
+
+/**
+	@brief BridgeManager::pairReferences
+	@param project
+	@param bridge
+	@param parent the step this goes with
+*/
+void BridgeManager::pairReferences(QETProject *project, Bridge *bridge, QUndoCommand *parent)
+{
+	if (!project || !bridge || !parent) {
+		return;
+	}
+
+	QList<Element *> free_references;
+	const auto lands_on = bridge->references();
+	for (const BridgeTerminal &landing : lands_on)
+	{
+		Element *element = elementFor(project, landing);
+		if (element && element->isFree()) {
+			free_references << element;
+		}
+	}
+
+		//A going arrow is linked with a coming one and never with its
+		//own kind: what the drawing pairs is the way out of a sheet
+		//and the way into it
+	for (Element *out : std::as_const(free_references))
+	{
+		if (!out->isFree()) {
+			continue;
+		}
+		for (Element *in : std::as_const(free_references))
+		{
+			if (in == out || !in->isFree()) {
+				continue;
+			}
+			const bool pair_ok =
+					(out->linkType() == Element::NextReport
+					 && in->linkType() == Element::PreviousReport)
+					|| (out->linkType() == Element::PreviousReport
+						&& in->linkType() == Element::NextReport);
+			if (!pair_ok) {
+				continue;
+			}
+			auto *link = new LinkElementCommand(out, parent);
+			link->setLink(in);
+			break;
+		}
+	}
+}
+
+/**
+	@brief BridgeManager::redock
+	@param project
+	@param bridge
+	@param part the drawn line whose ends are worked out again
+*/
+void BridgeManager::redock(QETProject *project, Bridge *bridge, const QUuid &part)
+{
+	if (!project || !bridge) {
+		return;
+	}
+	const auto parts = bridge->parts();
+	for (const BridgePartData &data : parts) {
+		if (data.uuid != part) {
+			continue;
+		}
+		bridge->setPartDocks(part,
+							 dockAt(project, bridge, data.p1),
+							 dockAt(project, bridge, data.p2));
+		return;
+	}
+}
+
+/**
+	@brief BridgeManager::followDocks
+	@param project
+	@param moved the symbol which was moved
+*/
+void BridgeManager::followDocks(QETProject *project, Element *moved)
+{
+	if (!project || !moved || !moved->diagram()) {
+		return;
+	}
+
+	const auto bridges = project->bridges();
+	for (Bridge *bridge : bridges)
+	{
+		if (!bridge) {
+			continue;
+		}
+		for (const BridgePartData &data : bridge->parts())
+		{
+			QPointF p1 = data.p1;
+			QPointF p2 = data.p2;
+			bool follows = false;
+
+			for (int end = 0 ; end < 2 ; ++end)
+			{
+				const QString dock = end ? data.dock2 : data.dock1;
+				if (dock.isEmpty()) {
+					continue;
+				}
+				bool found = false;
+				const QPointF at = pinPosition(bridge, dock, moved, &found);
+				if (!found) {
+					continue;
+				}
+				if (end) {
+					p2 = at;
+				} else {
+					p1 = at;
+				}
+				follows = true;
+			}
+
+			if (!follows) {
+				continue;
+			}
+			bridge->setPartGeometry(data.uuid, p1, p2);
+			for (BridgePart *part : BridgePart::allParts()) {
+				if (part && part->partUuid() == data.uuid) {
+					part->setLine(p1, p2);
+				}
+			}
+		}
+	}
+}
+
+/**
+	@brief BridgeManager::wireOfBridgeAt
+	@param project
+	@param element
+	@return the wire behind a bridge landing on that symbol, or nullptr
+	when no bridge is plugged into it. The values a text of the symbol
+	shows come from that wire: the bridge carries its voltage, and the
+	wire is where it comes from.
+*/
+Conductor *BridgeManager::wireOfBridgeAt(QETProject *project, Element *element)
+{
+	if (!project || !element) {
+		return nullptr;
+	}
+	const auto bridges = project->bridges();
+	for (Bridge *bridge : bridges)
+	{
+		if (!bridge) {
+			continue;
+		}
+		const auto lands_on = bridge->landings();
+		bool lands_here = false;
+		for (const BridgeTerminal &landing : lands_on) {
+			if (elementFor(project, landing) == element) {
+				lands_here = true;
+				break;
+			}
+		}
+		if (!lands_here) {
+			continue;
+		}
+		for (const BridgeTerminal &landing : lands_on)
+		{
+			Element *landed = elementFor(project, landing);
+			if (!landed) {
+				continue;
+			}
+			for (Terminal *pin : landed->terminals()) {
+				for (Conductor *wire : pin->conductors()) {
+					if (wire) {
+						return wire;
+					}
+				}
+			}
+		}
+	}
+	return nullptr;
 }
 
 /**

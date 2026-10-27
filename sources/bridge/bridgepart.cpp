@@ -308,6 +308,9 @@ void BridgePart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 													before_line, after_line,
 													before, after,
 													information_before, information_after);
+		//A reference which has come to this bridge finds the one on the
+		//other sheet: they link with the change
+	BridgeManager::pairReferences(project, bridge, command);
 		//Bridge and wires say the same thing: what the bridge carries
 		//goes onto the wires it sits on, in the very same undo step
 	BridgeManager::writeInformation(project, after, information_after, command);

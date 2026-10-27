@@ -21,6 +21,7 @@
 #include "../qetproject.h"
 #include "bridgepart.h"
 #include "bridgemanager.h"
+#include "bridgemanager.h"
 
 /**
 	@brief ChangeBridgePropertiesCommand::ChangeBridgePropertiesCommand
@@ -152,6 +153,13 @@ void ChangeBridgeGeometryCommand::apply(const QLineF &line,
 	}
 	if (m_part) {
 		m_part->setLine(line.p1(), line.p2());
+	}
+		//Where the ends stand now, whatever the step did to them: an end
+		//on a pin sticks to it, an end away from every pin stands on its
+		//own
+	if (m_bridge) {
+		QETProject *project = qobject_cast<QETProject *>(m_bridge->parent());
+		BridgeManager::redock(project, m_bridge.data(), m_part_uuid);
 	}
 }
 

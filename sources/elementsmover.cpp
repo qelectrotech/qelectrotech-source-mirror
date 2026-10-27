@@ -389,6 +389,9 @@ void ElementsMover::endMovement()
 			}
 			auto *command = new ChangeBridgeTerminalsCommand(bridge, before, after,
 											 information_before, information, undo_object);
+				//A reference which has come to this bridge finds the one
+				//on the other sheet: they link with the move
+			BridgeManager::pairReferences(m_diagram->project(), bridge, command);
 				//Bridge and wires say the same thing: what the bridge
 				//carries goes onto the wires it sits on, in the very same
 				//undo step

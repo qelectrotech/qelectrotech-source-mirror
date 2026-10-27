@@ -76,7 +76,52 @@ class BridgeManager
 		static Bridge *bridgeByUuid(QETProject *project, const QUuid &uuid);
 		static Element *elementFor(QETProject *project, const BridgeTerminal &terminal);
 		static bool bridgeLandsOn(QETProject *project, Element *element);
+			/**
+				The wire behind a bridge landing on that symbol: what the
+				texts of a sheet reference read when a bridge is plugged
+				into it instead of a wire. The bridge carries the voltage
+				of those very wires, so the text says the same thing it
+				would say about the wire itself.
+			*/
+		static Conductor *wireOfBridgeAt(QETProject *project, Element *element);
 		static QString locationOf(QETProject *project, Bridge *bridge);
+
+			/**
+				Which pin of the bridge's landings a drawn end stands on,
+				empty when it stands on its own. The end is docked to it
+				then, and follows it when it is dragged away.
+			*/
+		static QString dockAt(QETProject *project,
+							  Bridge *bridge,
+							  const QPointF &point,
+							  qreal tolerance = 10.0);
+			/**
+				The ends docked to the pins of @p moved follow it: a
+				sheet reference stuck to the line takes its end along when
+				it is dragged, and the line grows or shrinks with it the
+				way a wire follows the terminal it is docked to. No undo
+				step of its own -- it is the move of the symbol which
+				moved the line, the way a wire follows its terminal.
+			*/
+		static void followDocks(QETProject *project, Element *moved);
+			/**
+				Work out again which pins the ends of a drawn line are
+				docked to: where one of them stands on a pin of the
+				bridge, it sticks to it from now on.
+			*/
+		static void redock(QETProject *project, Bridge *bridge, const QUuid &part);
+
+			/**
+				The sheet references of this bridge find each other: what
+				is one bridge carried on over the sheets is one pair of
+				linked references, and the cross-reference comes with the
+				link. The link goes with whatever was being done (@p
+				parent), so it is undone with it -- nobody has to link
+				them by hand afterwards.
+			*/
+		static void pairReferences(QETProject *project,
+								   Bridge *bridge,
+								   QUndoCommand *parent);
 		static bool linkJoinsBridgeToWire(QETProject *project,
 										  Element *first,
 										  Element *second);

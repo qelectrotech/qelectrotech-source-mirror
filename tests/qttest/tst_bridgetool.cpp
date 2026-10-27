@@ -492,8 +492,8 @@ private slots:
 		BridgePartData data;
 		data.uuid = QUuid::createUuid();
 		data.diagram = folio->uuid();
-		data.p1 = terminals.at(0)->element()->scenePos();
-		data.p2 = terminals.at(1)->element()->scenePos();
+		data.p1 = terminals.at(0)->element()->terminals().first()->dockConductor();
+		data.p2 = terminals.at(1)->element()->terminals().first()->dockConductor();
 
 		Bridge *bridge = project.newBridge();
 		bridge->addPart(data);
@@ -666,8 +666,8 @@ private slots:
 		BridgePartData data;
 		data.uuid = QUuid::createUuid();
 		data.diagram = folio->uuid();
-		data.p1 = terminals.at(0)->element()->scenePos();
-		data.p2 = terminals.at(1)->element()->scenePos();
+		data.p1 = terminals.at(0)->element()->terminals().first()->dockConductor();
+		data.p2 = terminals.at(1)->element()->terminals().first()->dockConductor();
 
 		Bridge *bridge = project.newBridge();
 		bridge->setMaxConnections(2);
@@ -706,8 +706,8 @@ private slots:
 		BridgePartData data;
 		data.uuid = QUuid::createUuid();
 		data.diagram = folio->uuid();
-		data.p1 = terminals.at(0)->element()->scenePos();
-		data.p2 = terminals.at(1)->element()->scenePos();
+		data.p1 = terminals.at(0)->element()->terminals().first()->dockConductor();
+		data.p2 = terminals.at(1)->element()->terminals().first()->dockConductor();
 
 		Bridge *bridge = project.newBridge();
 		bridge->addPart(data);
@@ -974,6 +974,147 @@ private slots:
 	//A bridge lands on the connection of a sheet reference the way a
 	//wire does: that is what carries it on to the sheet the other half
 	//of the reference stands on
+	//A sheet reference stuck to the bridge line: the line grows or
+	//shrinks with it when it is dragged, the way a wire follows the
+	//terminal it is docked to
+	void aReferenceStuckToTheLineTakesItAlong()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+		Diagram *diagram = project.diagrams().first();
+		Element *symbol = terminals.at(1)->element();
+		QVERIFY(symbol && !symbol->terminals().isEmpty());
+		Terminal *pin = symbol->terminals().first();
+		Element *first_symbol = terminals.at(0)->element();
+		QVERIFY(first_symbol && !first_symbol->terminals().isEmpty());
+		Terminal *first_pin = first_symbol->terminals().first();
+
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(terminalOf(terminals.at(0)));
+		bridge->addTerminal(terminalOf(terminals.at(1)));
+
+		const QUuid part_uuid = QUuid::createUuid();
+		const QPointF p1 = first_pin->dockConductor();
+		const QPointF p2 = pin->dockConductor();
+		bridge->addPart(BridgePartData{part_uuid, diagram->uuid(), p1, p2});
+
+		//The end on the pin of the second terminal sticks to it
+		BridgeManager::redock(&project, bridge, part_uuid);
+		for (const BridgePartData &data : bridge->parts()) {
+			QCOMPARE(data.dock2, pin->stableUuid().toString());
+		}
+
+		//Drag the symbol: the docked end goes along and the line grows
+		const QPointF away = symbol->pos() + QPointF(0, 200);
+		symbol->setPos(away);
+		BridgeManager::followDocks(&project, symbol);
+		const QPointF landed = pin->dockConductor();
+		for (const BridgePartData &data : bridge->parts()) {
+			QVERIFY2(QLineF(data.p2, landed).length() < 0.1,
+					 "the line follows the pin it is docked to");
+		}
+	}
+
+	//The text of a sheet reference says what hangs on it whether that
+	//is a wire or a bridge: a bridge is read the way a wire is
+	void aReferenceTextReadsTheBridgeOnIt()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+
+		//A wire hanging on the bridge and a symbol it is plugged into
+		//which stands for the sheet reference of the drawing
+		QSharedPointer<RealTerminal> wired;
+		for (const QSharedPointer<RealTerminal> &terminal : terminals) {
+			Element *element = terminal->element();
+			if (element && !element->terminals().isEmpty()
+				&& !element->terminals().first()->conductors().isEmpty()) {
+				wired = terminal;
+				break;
+			}
+		}
+		if (!wired) {
+			QSKIP("the fixture has no wired terminal");
+		}
+		Element *reference = nullptr;
+		for (const QSharedPointer<RealTerminal> &terminal : terminals) {
+			if (terminal->element() != wired->element()) {
+				reference = terminal->element();
+				break;
+			}
+		}
+		if (!reference || reference->terminals().isEmpty()) {
+			QSKIP("the fixture has but one symbol");
+		}
+
+		Bridge *bridge = project.newBridge();
+		bridge->setTensionText(QStringLiteral("24 V"));
+		bridge->addTerminal(BridgeTerminal{wired->element()->uuid(),
+										   wired->element()->terminals().first()->stableUuid().toString(),
+										   false});
+		bridge->addTerminal(BridgeTerminal{reference->uuid(),
+										   reference->terminals().first()->stableUuid().toString(),
+										   true});
+
+		//What the texts of the reference read comes from the wires
+		//behind the bridge -- the very values it carries
+		Conductor *wire = BridgeManager::wireOfBridgeAt(&project, reference);
+		QVERIFY2(wire,
+				 "a reference reads what hangs on it whether wire or bridge");
+	}
+
+	//What is one bridge carried on over the sheets is one pair of
+	//linked references: they link by themselves, with the step which
+	//joined the bridge -- no second job by hand
+	void referencesLinkThemselvesWhenTheBridgeIsJoined()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/free_reports.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		Element *out = nullptr;
+		Element *in = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if (!(element->linkType() & Element::AllReport)
+					|| !element->isFree() || element->terminals().isEmpty()) {
+					continue;
+				}
+				if (element->linkType() == Element::NextReport && !out) {
+					out = element;
+				} else if (element->linkType() == Element::PreviousReport && !in) {
+					in = element;
+				}
+			}
+		}
+		if (!out || !in) {
+			QSKIP("the fixture has not a free going and a free coming arrow");
+		}
+
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(BridgeTerminal{out->uuid(),
+										   out->terminals().first()->stableUuid().toString(),
+										   true});
+		bridge->addTerminal(BridgeTerminal{in->uuid(),
+										   in->terminals().first()->stableUuid().toString(),
+										   true});
+
+			//The link goes with whatever was being done: it is made
+			//with the step, and undone with it
+		auto *command = new QUndoCommand();
+		BridgeManager::pairReferences(&project, bridge, command);
+		project.diagrams().first()->undoStack().push(command);
+
+		QVERIFY2(out->linkedElements().contains(in),
+				 "the references find each other when the bridge is joined");
+	}
+
 	void aBridgeLandsOnASheetReference()
 	{
 		const QString fixture = QFINDTESTDATA("fixtures/linked_reports.qet");

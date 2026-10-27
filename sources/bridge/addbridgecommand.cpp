@@ -20,6 +20,7 @@
 #include "../diagram.h"
 #include "../qetproject.h"
 #include "bridgepart.h"
+#include "bridgemanager.h"
 
 /**
 	@brief AddBridgeCommand::AddBridgeCommand
@@ -92,6 +93,11 @@ void AddBridgeCommand::redo()
 
 	if (m_part->scene() != m_diagram) {
 		m_diagram->addItem(m_part);
+	}
+		//An end standing on a pin sticks to it from the very first step
+	if (m_bridge) {
+		QETProject *project = qobject_cast<QETProject *>(m_bridge->parent());
+		BridgeManager::redock(project, m_bridge.data(), m_part_data.uuid);
 	}
 
 		//The steps written under this one -- what the wires say -- go

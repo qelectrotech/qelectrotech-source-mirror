@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextitem.h"
+
+#include "../bridge/bridgemanager.h"
 #include <QScopedPointer>
 #include <QTextDocument>
 #include "../QetGraphicsItemModeler/textresizehandles.h"
@@ -1671,6 +1673,24 @@ void DynamicElementTextItem::setPotentialConductor()
 			{
 				m_watched_conductor = m_other_report.data()->terminals().first()->conductors().first();
 				connect(m_watched_conductor.data(), &Conductor::propertiesChange, this, &DynamicElementTextItem::conductorPropertiesChanged);
+			}
+		}
+
+			//A bridge plugged into this reference carries it on to the
+			//next sheet: what the texts of the reference read comes from
+			//the wires behind that bridge -- the very values the bridge
+			//carries -- so a reference says what hangs on it whether that
+			//is a wire or a bridge. Read where the text is put down, so
+			//it is filled the moment the reference is set.
+		if (m_watched_conductor.isNull())
+		{
+			QETProject *project = parentElement()->diagram()
+					? parentElement()->diagram()->project() : nullptr;
+			if (Conductor *wire = BridgeManager::wireOfBridgeAt(project, parentElement()))
+			{
+				m_watched_conductor = wire;
+				connect(m_watched_conductor.data(), &Conductor::propertiesChange,
+						this, &DynamicElementTextItem::conductorPropertiesChanged);
 			}
 		}
 		conductorPropertiesChanged();

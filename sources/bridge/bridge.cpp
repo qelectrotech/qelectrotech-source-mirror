@@ -379,6 +379,26 @@ void Bridge::setPartGeometry(const QUuid &part, const QPointF &p1, const QPointF
 }
 
 /**
+	@param part
+	@param dock1
+	@param dock2
+*/
+void Bridge::setPartDocks(const QUuid &part, const QString &dock1, const QString &dock2)
+{
+	for (BridgePartData &data : m_parts) {
+		if (data.uuid == part) {
+			if (data.dock1 == dock1 && data.dock2 == dock2) {
+				return;
+			}
+			data.dock1 = dock1;
+			data.dock2 = dock2;
+			emit changed();
+			return;
+		}
+	}
+}
+
+/**
 	@brief Bridge::toXml
 	@param document
 	@return the xml description of this bridge
@@ -427,6 +447,12 @@ QDomElement Bridge::toXml(QDomDocument &document) const
 		xml_part.setAttribute(QStringLiteral("y1"), QString::number(part.p1.y()));
 		xml_part.setAttribute(QStringLiteral("x2"), QString::number(part.p2.x()));
 		xml_part.setAttribute(QStringLiteral("y2"), QString::number(part.p2.y()));
+		if (!part.dock1.isEmpty()) {
+			xml_part.setAttribute(QStringLiteral("dock1"), part.dock1);
+		}
+		if (!part.dock2.isEmpty()) {
+			xml_part.setAttribute(QStringLiteral("dock2"), part.dock2);
+		}
 		xml_parts.appendChild(xml_part);
 	}
 	root.appendChild(xml_parts);
@@ -489,6 +515,8 @@ void Bridge::fromXml(const QDomElement &element)
 						  xml_part.attribute(QStringLiteral("y1")).toDouble());
 		part.p2 = QPointF(xml_part.attribute(QStringLiteral("x2")).toDouble(),
 						  xml_part.attribute(QStringLiteral("y2")).toDouble());
+		part.dock1 = xml_part.attribute(QStringLiteral("dock1"));
+		part.dock2 = xml_part.attribute(QStringLiteral("dock2"));
 		m_parts.append(part);
 	}
 

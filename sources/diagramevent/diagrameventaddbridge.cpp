@@ -476,6 +476,10 @@ void DiagramEventAddBridge::finishLine(const QPointF &end)
 	auto *command = new AddBridgeCommand(bridge, item, m_diagram, own_bridge,
 										 own_bridge ? QList<BridgeTerminal>() : terminals,
 										 information_before, information);
+		//What is one bridge carried on over the sheets is one pair of
+		//linked references: they find each other when the halves are
+		//joined, and the cross-reference comes with the link
+	BridgeManager::pairReferences(m_diagram->project(), bridge, command);
 		//Bridge and wires say the same thing: what the bridge carries
 		//goes onto the wires it sits on, in the very same undo step
 	BridgeManager::writeInformation(m_diagram->project(), bridge->terminals(),
