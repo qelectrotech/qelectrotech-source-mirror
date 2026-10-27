@@ -2808,14 +2808,20 @@ static void collectionRows(const QDomElement &parent, const QString &path,
 				//Where its category's names sit among its children
 			order.insert(path + QStringLiteral("/#names"), order.size());
 		} else if (child.tagName() == QLatin1String("element")) {
-			symbols.insert(child_path, wholeXml(child));
-			order.insert(child_path, order.size());
+				//Two under one path: QElectroTech uses the first
+				//(XmlElementCollection::child())
+			if (!symbols.contains(child_path)) {
+				symbols.insert(child_path, wholeXml(child));
+				order.insert(child_path, order.size());
+			}
 		} else if (child.tagName() == QLatin1String("category")) {
-			QDomElement own = child.cloneNode(false).toElement();
-			const QDomElement names = child.firstChildElement(QStringLiteral("names"));
-			if (!names.isNull()) own.appendChild(names.cloneNode(true));
-			categories.insert(child_path, wholeXml(own));
-			order.insert(child_path, order.size());
+			if (!categories.contains(child_path)) {
+				QDomElement own = child.cloneNode(false).toElement();
+				const QDomElement names = child.firstChildElement(QStringLiteral("names"));
+				if (!names.isNull()) own.appendChild(names.cloneNode(true));
+				categories.insert(child_path, wholeXml(own));
+				order.insert(child_path, order.size());
+			}
 			collectionRows(child, child_path, symbols, categories, order);
 		}
 	}

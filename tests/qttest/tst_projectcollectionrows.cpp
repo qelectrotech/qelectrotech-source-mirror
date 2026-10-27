@@ -174,6 +174,28 @@ private slots:
 		QVERIFY(r.value(QStringLiteral("titleblock_template")).isEmpty());
 	}
 
+	// Two symbols under one path: QElectroTech uses the first
+	// (XmlElementCollection::child()), so the row is the first. A .qetdb
+	// written from the rows would otherwise show the other one.
+	void firstOfTwoUnderOnePath()
+	{
+		const QString one = QStringLiteral("<element name=\"box.elmt\">");
+		QString text = project();
+		const int at = text.indexOf(one);
+		const int end = text.indexOf(QStringLiteral("</element>"), at) + int(qstrlen("</element>"));
+		const QString second = text.mid(at, end - at).replace(QStringLiteral("<rect "), QStringLiteral("<ellipse "));
+		text.insert(end, second);
+		const QString in = m_dir.filePath(QStringLiteral("two-under-one-path.qet"));
+		QFile f(in);
+		QVERIFY(f.open(QIODevice::WriteOnly));
+		f.write(text.toUtf8());
+		f.close();
+
+		const Rows r = run(QStringLiteral("dump('open');"), in).value(QStringLiteral("open"));
+		const QString box = r.value(QStringLiteral("symbol_def")).value(QStringLiteral("import/t/box.elmt")).content;
+		QVERIFY2(box.contains(QStringLiteral("<rect ")) && !box.contains(QStringLiteral("<ellipse ")), qPrintable(box));
+	}
+
 	// A symbol placed from the library and a template embedded each add
 	// their rows
 	void additionsAreWritten()
