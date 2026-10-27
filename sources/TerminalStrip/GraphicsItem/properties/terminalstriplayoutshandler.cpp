@@ -20,7 +20,8 @@
 #include <QDomDocument>
 #include <QObject>
 
-TerminalStripLayoutsHandler::TerminalStripLayoutsHandler()
+TerminalStripLayoutsHandler::TerminalStripLayoutsHandler() :
+	QObject()
 {
 
 	m_default_layout = QSharedPointer<TerminalStripLayoutPattern>::create();

@@ -121,6 +121,7 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 #endif
 			/// TODO implement an undo command to allow the user to undo/redo this action
 			diagram -> defaultConductorProperties = new_conductors;
+			diagram->queueValuesStore();
 
 				// "One text per potential" changed: show or hide the
 				// conductor texts now, not at the next edit or reload.

@@ -374,6 +374,10 @@ void QETProject::init()
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, &QETProject::updateDiagramsTitleBlockTemplate);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, &QETProject::removeDiagramsTitleBlockTemplate);
 
+		//The default layout of the terminal strips is a setting of the project
+	connect(&m_project_properties_handler.terminalStripLayoutHandler(), &TerminalStripLayoutsHandler::changed,
+			this, &QETProject::storeSettings);
+
 		//What changes the saved items of folios not built (lazy folios):
 		//a folio's position, number or the folio total in their texts,
 		//the report and cross-reference settings, a symbol's definition.
@@ -405,6 +409,18 @@ void QETProject::init()
 	connect(m_elements_collection, &XmlElementCollection::elementRemoved, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::directorieAdded, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::directoryRemoved, this, backup_needed);
+		//The project database holds the embedded symbols and templates as
+		//saved; a template is removed after aboutToRemove(), so they are
+		//written when the database is next read
+	const auto collections_changed = [this]() { m_data_base.queueCollections(); };
+	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, collections_changed);
+	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::elementAdded, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::elementChanged, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::elementRemoved, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::directorieAdded, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::directoryRemoved, this, collections_changed);
+	m_data_base.queueCollections();
 
 	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
 	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
@@ -3464,6 +3480,7 @@ Diagram *QETProject::addNewDiagram(int pos)
 	diagram->border_and_titleblock.importBorder(defaultBorderProperties());
 	diagram->border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
 	diagram->defaultConductorProperties = defaultConductorProperties();
+	diagram->queueValuesStore();
 
 	m_undo_stack->push(new AddDiagramCommand(this, diagram, pos));
 	return(diagram);
@@ -3640,6 +3657,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//Load the layout of the terminal strip (font, size of cells...),
 		//before the diagrams because the terminal strip items use it
 	m_project_properties_handler.terminalStripLayoutHandler().fromXml(xml_project.documentElement());
+	storeSettings();
 
 		//The stores of symbol information, folio title blocks and wire
 		//properties are filled from the document before the folios are
@@ -4517,7 +4535,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	@brief QETProject::storeSettings
 	Write the project's settings to the project database, one row per value
 	(projectDataBase::storeProjectSettings()), as a save writes them: the
-	title, the project properties, wire hops, upright texts, wiring rules
+	title and uuid, the project properties, wire hops, upright texts, wiring rules
 	and the defaults for new folios. Not the numbering (its own tables,
 	QETZ-DB-FIRST 2b) nor the usage time (counted while the project is open,
 	written at save).
@@ -4528,6 +4546,7 @@ void QETProject::storeSettings()
 	QDomElement root = document.createElement(QStringLiteral("project"));
 	document.appendChild(root);
 	root.setAttribute(QStringLiteral("title"), project_title_);
+	root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
 	QDomElement properties = document.createElement(QStringLiteral("properties"));
 	writeProjectPropertiesXml(properties);
 	root.appendChild(properties);
@@ -4543,6 +4562,10 @@ void QETProject::storeSettings()
 									 QStringLiteral("element_autonums"), QStringLiteral("cable_autonums")})
 		new_diagrams.removeChild(new_diagrams.firstChildElement(numbering));
 	root.appendChild(new_diagrams);
+		//The default layout of the terminal strips, written only when the
+		//project has strips, as a save does
+	if (m_terminal_strip_vector.count())
+		m_project_properties_handler.terminalStripLayoutHandler().toXml(root);
 	m_data_base.storeProjectSettings(root);
 }
 
@@ -4849,6 +4872,21 @@ void QETProject::watchTerminalStrip(TerminalStrip *strip, bool watch)
 	if (watch) {
 		connect(strip, &TerminalStrip::orderChanged, &m_data_base, &projectDataBase::spareTerminalsChanged);
 		connect(strip, &TerminalStrip::dataChanged, &m_data_base, &projectDataBase::spareTerminalsChanged);
+			//Whatever the strip saves is written through to the database
+		auto store = [this, strip] {m_data_base.storeTerminalStrip(strip);};
+		connect(strip, &TerminalStrip::orderChanged, &m_data_base, store);
+		connect(strip, &TerminalStrip::dataChanged, &m_data_base, store);
+		connect(strip, &TerminalStrip::bridgeChanged, &m_data_base, store);
+		connect(strip, &TerminalStrip::bridgeColorChanged, &m_data_base, store);
+		store();
+	}
+	if (!watch) {
+		m_data_base.forgetTerminalStrip(strip->uuid());
+	}
+		//The layout is saved only while there are strips: the first one
+		//added and the last one removed change the settings
+	if (m_terminal_strip_vector.count() == (watch ? 1 : 0)) {
+		storeSettings();
 	}
 	m_data_base.spareTerminalsChanged();
 }
@@ -4924,7 +4962,9 @@ bool QETProject::addCable(Cable *cable)
 		return true;
 
 	m_cables.append(cable);
+	m_data_base.queueCables();
 	connect(cable, &Cable::changed, this, [this]() {
+		m_data_base.queueCables();
 		CableManager::refreshLabels(this);
 		setModified(true);
 	});
@@ -4944,6 +4984,7 @@ bool QETProject::removeCable(Cable *cable) {
 		return false;
 
 	disconnect(cable, nullptr, this, nullptr);
+	m_data_base.queueCables();
 
 		//A cable which is no longer one of ours stops writing its labels
 		//into the conductors it used to feed.

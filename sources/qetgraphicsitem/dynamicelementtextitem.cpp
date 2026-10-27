@@ -1552,7 +1552,8 @@ void DynamicElementTextItem::updateReportText()
 			{
 				Element *elmt = m_other_report.data();
 				QString label = m_report_formula;
-				label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+				autonum::sequentialNumbers seq_copy = elmt->sequenceStruct();
+				label = autonum::AssignVariables::formulaToLabel(label, seq_copy, elmt->diagram(), elmt);
 				setPlainText(label);
 			}
 			else
@@ -1573,7 +1574,8 @@ void DynamicElementTextItem::updateReportText()
 			if (m_other_report) {
 				Element *elmt = m_other_report.data();
 				QString xref_str = m_report_formula;
-				xref_str = autonum::AssignVariables::formulaToLabel(xref_str, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+				autonum::sequentialNumbers seq_copy = elmt->sequenceStruct();
+				xref_str = autonum::AssignVariables::formulaToLabel(xref_str, seq_copy, elmt->diagram(), elmt);
 				setPlainText(xref_str);
 			} else {
 				setPlainText("");
@@ -1582,7 +1584,8 @@ void DynamicElementTextItem::updateReportText()
 			if (m_other_report) {
 				Element *elmt = m_other_report.data();
 				QString xref_str = m_report_formula;
-				xref_str = autonum::AssignVariables::formulaToLabel(xref_str, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+				autonum::sequentialNumbers seq_copy = elmt->sequenceStruct();
+				xref_str = autonum::AssignVariables::formulaToLabel(xref_str, seq_copy, elmt->diagram(), elmt);
 				QString lbl = m_parent_element ? m_parent_element.data()->actualLabel() : "";
 				if (!lbl.isEmpty() && !xref_str.isEmpty()) {
 					if (m_parent_element && m_parent_element.data()->linkType() == Element::PreviousReport) {
@@ -1792,7 +1795,8 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 		{
 			Element *elmt = m_other_report.data();
 			QString label = m_report_formula;
-			label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+			autonum::sequentialNumbers seq_copy = elmt->sequenceStruct();
+			label = autonum::AssignVariables::formulaToLabel(label, seq_copy, elmt->diagram(), elmt);
 			string.replace("%{label}", label);
 		}
 			// if element is not linked, replace an empty string
@@ -1953,7 +1957,8 @@ void DynamicElementTextItem::updateXref()
 					if(m_text_from == DynamicElementTextItem::ElementInfo && m_info_name == "xref")
 					{
 						QString xref_label = xrp.slaveLabel();
-						xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+						autonum::sequentialNumbers seq_copy = master_elmt->sequenceStruct();
+						xref_label = autonum::AssignVariables::formulaToLabel(xref_label, seq_copy, master_elmt->diagram(), master_elmt);
 
 						DiagramContext dc = m_parent_element->elementInformations();
 						if(dc.value("xref").toString() != xref_label)
@@ -1983,7 +1988,8 @@ void DynamicElementTextItem::updateXref()
 			   )
 				{
 					QString xref_label = xrp.slaveLabel();
-					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+					autonum::sequentialNumbers seq_copy = master_elmt->sequenceStruct();
+					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, seq_copy, master_elmt->diagram(), master_elmt);
 					
 					if(!m_slave_Xref_item)
 					{
@@ -2039,7 +2045,8 @@ void DynamicElementTextItem::updateXref()
 				if(xrp.getXrefPos() == Qt::AlignHCenter)
 				{
 					QString xref_label = xrp.slaveLabel();
-					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+					autonum::sequentialNumbers seq_copy = master_elmt->sequenceStruct();
+					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, seq_copy, master_elmt->diagram(), master_elmt);
 
 					DiagramContext dc = m_parent_element->elementInformations();
 					if(dc.value("xref").toString() != xref_label)

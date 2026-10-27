@@ -189,6 +189,7 @@ void TerminalStripLayoutEditor::valueEdited()
 
 	updateUi();
 	m_preview_strip_item.update();
+	emit layoutEdited();
 }
 
 void TerminalStripLayoutEditor::updateUi()

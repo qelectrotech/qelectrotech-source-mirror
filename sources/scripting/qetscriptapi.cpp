@@ -4929,6 +4929,7 @@ bool QetScriptApi::setConductorDefault(int folioIndex, const QString &property, 
 		return true;
 	}
 	diagram->defaultConductorProperties = new_p;
+	diagram->queueValuesStore();
 	// Show or hide the conductor texts now, as the Folio properties dialog
 	// does (DiagramPropertiesDialog), or an export later in this run would
 	// draw them as they were.

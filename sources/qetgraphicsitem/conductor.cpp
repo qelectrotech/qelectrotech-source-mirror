@@ -95,7 +95,7 @@ class ConductorXmlRetroCompatibility
 			loadSequential(dom_element,"seqh_",&sn.hundred);
 			loadSequential(dom_element,"seqhf_",&sn.hundred_folio);
 
-			conductor->rSequenceNum() = sn;
+			conductor->replaceSequenceNum(sn);
 		}
 };
 
@@ -235,6 +235,7 @@ void Conductor::segmentsToPath()
 	path.lineTo(segment -> secondPoint());
 
 	setPath(path);
+	storePath();
 
 		//If conductor is selected and he's not being modified
 		//we update the position of the handlers
@@ -1172,6 +1173,8 @@ bool Conductor::fromXml(QDomElement &dom_element)
 			pr = *edited;
 	setProperties(pr);
 	storeLayout();
+	storePath();
+	storeSequence();
 
 	return retval;
 }
@@ -1715,9 +1718,11 @@ void Conductor::setProfile(const ConductorProfile &cp, Qt::Corner path_type) {
 		if (conductor_profiles[path_type].isNull()) {
 			generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 			modified_path = false;
+			storePath();
 		} else {
 			updateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 			modified_path = true;
+			storePath();
 		}
 		if (type() == ConductorProperties::Multi) {
 			calculateTextItemPosition();
@@ -1748,7 +1753,8 @@ void Conductor::refreshText()
 		{
 			if (diagram())
 			{
-				QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram(), nullptr, this);
+				autonum::sequentialNumbers numbers = m_autoNum_seq;
+				QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, numbers, diagram(), nullptr, this);
 				m_properties.text = text;
 				m_text_item->setPlainText(text);
 			}
@@ -1835,7 +1841,8 @@ void Conductor::setProperties(const ConductorProperties &property)
 	{
 		if (diagram())
 		{
-			QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram(), nullptr, this);
+			autonum::sequentialNumbers numbers = m_autoNum_seq;
+			QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, numbers, diagram(), nullptr, this);
 			m_properties.text = text;
 		}
 		else if (m_properties.text.isEmpty())
@@ -1931,6 +1938,35 @@ void Conductor::storeLayout()
 	projectDataBase *store = project ? project->dataBase() : nullptr;
 	if (store && store->hasConductorProperties(m_uuid) && store->placedConductorCount(m_uuid) == 1)
 		store->storeConductorLayout(m_uuid, ownLayout());
+}
+
+/**
+	@brief Conductor::ownPath
+	@return the segments toXml() writes for this wire, with the lengths as
+	written there (six significant digits); none if the user did not reshape it
+*/
+ConductorPath Conductor::ownPath() const
+{
+	ConductorPath path;
+	if (!modified_path) return path;
+	for (const ConductorSegment *segment = segments ; segment ; segment = segment -> hasNextSegment() ? segment -> nextSegment() : nullptr)
+		path.append({segment -> isHorizontal(), savedSegmentLength(segment -> length())});
+	return path;
+}
+
+/**
+	@brief Conductor::storePath
+	Write this wire's segments to its project's store, once it is placed.
+	Called wherever the segments are rebuilt (segmentsToPath()) and wherever
+	the wire stops being a reshaped one without that.
+*/
+void Conductor::storePath()
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	if (store && store->hasConductorProperties(m_uuid) && store->placedConductorCount(m_uuid) == 1)
+		store->storeConductorPath(m_uuid, ownPath());
 }
 
 /**
@@ -2170,8 +2206,28 @@ void Conductor::editProperty()
 
 void Conductor::setSequenceNum(const autonum::sequentialNumbers& sn)
 {
-	m_autoNum_seq = sn;
+	replaceSequenceNum(sn);
 	refreshText();
+}
+
+void Conductor::replaceSequenceNum(const autonum::sequentialNumbers& sn)
+{
+	m_autoNum_seq = sn;
+	storeSequence();
+}
+
+/**
+	@brief Conductor::storeSequence
+	Write this wire's sequential numbers to its project's store, once it
+	is placed.
+*/
+void Conductor::storeSequence()
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	if (store && store->hasConductorProperties(m_uuid) && store->placedConductorCount(m_uuid) == 1)
+		store->storeSequence(m_uuid, m_autoNum_seq);
 }
 
 /**
@@ -2488,9 +2544,11 @@ void Conductor::setProfiles(const ConductorProfilesGroup &cpg) {
 	if (conductor_profiles[currentPathType()].isNull()) {
 		generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 		modified_path = false;
+		storePath();
 	} else {
 		updateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 		modified_path = true;
+		storePath();
 	}
 	if (properties().type == ConductorProperties::Multi) {
 		calculateTextItemPosition();

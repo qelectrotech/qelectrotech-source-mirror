@@ -1030,6 +1030,7 @@ void Diagram::keepWire(const QDomElement &wire, Terminal *found1, Terminal *foun
 														 ends.join(QLatin1Char('\n'))).toString());
 	}
 	m_kept_wires << kept;
+	queueValuesStore();
 }
 
 /**
@@ -1221,6 +1222,7 @@ QString Diagram::conductorsAutonumName() const
 */
 void Diagram::setConductorsAutonumName(const QString &name) {
 	m_conductors_autonum_name= name;
+	queueValuesStore();
 }
 
 /**
@@ -1568,21 +1570,12 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 }
 
 /**
-	@brief Diagram::writeHeader
-	Write this folio's own data -- its uuid, title block, border, default
-	wire, numbering -- into @p dom_root, the folio's element of @p document:
-	what toXml() writes before the folio's items.
+	@brief Diagram::appendValuesXml
+	Write into @p dom_root, made in @p document, this folio's default wire
+	and its numbering and freeze settings, as writeHeader() does
 */
-void Diagram::writeHeader(QDomDocument &document, QDomElement &dom_root)
+void Diagram::appendValuesXml(QDomDocument &document, QDomElement &dom_root) const
 {
-		//Persist the folio identity, so that a folio keeps the same uuid
-		//across save/load. Without it every load invents a new one, and
-		//nothing outside the running instance (version control, a lock,
-		//a diff tool...) can tell which folio is which.
-	dom_root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
-	border_and_titleblock.titleBlockToXml(dom_root);
-	border_and_titleblock.borderToXml(dom_root);
-
 	// Default conductor properties
 	QDomElement default_conductor =
 			document.createElement(QStringLiteral("defaultconductor"));
@@ -1603,6 +1596,67 @@ void Diagram::writeHeader(QDomDocument &document, QDomElement &dom_root)
 	dom_root.setAttribute(QStringLiteral("freezeNewConductor"),
 				  m_freeze_new_conductors_
 				  ? QStringLiteral("true") : QStringLiteral("false"));
+}
+
+/**
+	@brief Diagram::keptXml
+	@return what writeKept() writes of the symbols and wires this folio
+	keeps as read (F127, F128): each symbol, then each wire, made in
+	@p document. Their terminals are numbered from 0.
+*/
+QList<QDomElement> Diagram::keptXml(QDomDocument &document) const
+{
+	QDomElement elements = document.createElement(QStringLiteral("elements"));
+	QDomElement conductors = document.createElement(QStringLiteral("conductors"));
+	writeKept(document, elements, conductors, QHash<Terminal *, int>());
+	QList<QDomElement> kept;
+	for (const QDomElement &list : {elements, conductors})
+		for (QDomElement item = list.firstChildElement() ; !item.isNull() ; item = item.nextSiblingElement())
+			kept << item;
+	return kept;
+}
+
+/**
+	@brief Diagram::queueValuesStore
+	What ownValuesXml() writes may have changed: the project database
+	writes it at its next read. Call it after changing
+	defaultConductorProperties.
+*/
+void Diagram::queueValuesStore()
+{
+	if (m_project && m_project->dataBase())
+		m_project->dataBase()->queueFolioValues();
+}
+
+/**
+	@brief Diagram::ownValuesXml
+	@return a <diagram> made in @p document holding appendValuesXml():
+	what this folio saves that no other table of the project database holds
+*/
+QDomElement Diagram::ownValuesXml(QDomDocument &document) const
+{
+	QDomElement root = document.createElement(QStringLiteral("diagram"));
+	appendValuesXml(document, root);
+	return root;
+}
+
+/**
+	@brief Diagram::writeHeader
+	Write this folio's own data -- its uuid, title block, border, default
+	wire, numbering -- into @p dom_root, the folio's element of @p document:
+	what toXml() writes before the folio's items.
+*/
+void Diagram::writeHeader(QDomDocument &document, QDomElement &dom_root)
+{
+		//Persist the folio identity, so that a folio keeps the same uuid
+		//across save/load. Without it every load invents a new one, and
+		//nothing outside the running instance (version control, a lock,
+		//a diff tool...) can tell which folio is which.
+	dom_root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
+	border_and_titleblock.titleBlockToXml(dom_root);
+	border_and_titleblock.borderToXml(dom_root);
+
+	appendValuesXml(document, dom_root);
 
 	//Element Folio Sequential Variables
 	if (!m_elmt_unitfolio_max.isEmpty()
@@ -2285,6 +2339,7 @@ bool Diagram::fromXml(QDomElement &document,
 			if (QUuid(kept.attribute(QStringLiteral("uuid"))).isNull() && m_project)
 				kept.setAttribute(QStringLiteral("uuid"), derivedSymbolUuid(element_xml).toString());
 			m_kept_symbols << kept;
+			queueValuesStore();
 			read_symbols.append({QUuid(kept.attribute(QStringLiteral("uuid"))), element_xml});
 			QString label;
 			for (const QDomElement &info : QET::findInDomElement(
@@ -2458,6 +2513,7 @@ bool Diagram::fromXml(QDomElement &document,
 				kept.xml = m_kept_document.importNode(f, true).toElement();
 				kept.as_read = true;
 				m_kept_wires << kept;
+				queueValuesStore();
 			}
 			continue;
 		}
@@ -2720,6 +2776,7 @@ void Diagram::addItem(QGraphicsItem *item)
 		case QetShapeItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:
+		case QetGraphicsTableItem::Type:
 		{
 			m_project->dataBase()->addDrawingItem(item);
 			break;
@@ -2761,6 +2818,7 @@ void Diagram::removeItem(QGraphicsItem *item)
 		case QetShapeItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:
+		case QetGraphicsTableItem::Type:
 		{
 			m_project->dataBase()->removeDrawingItem(item);
 			break;
@@ -3467,6 +3525,7 @@ void Diagram::unfreezeElements()
 */
 void Diagram::setFreezeNewElements(bool b) {
 	m_freeze_new_elements = b;
+	queueValuesStore();
 }
 
 /**
@@ -3494,6 +3553,7 @@ void Diagram::freezeConductors(bool freeze) {
 */
 void Diagram::setFreezeNewConductors(bool b) {
 	m_freeze_new_conductors_ = b;
+	queueValuesStore();
 }
 
 /**

@@ -37,6 +37,8 @@
 #include "../borderproperties.h"
 #include "../conductorproperties.h"
 #include "conductorlayout.h"
+#include "conductorpath.h"
+#include "elementplacement.h"
 #include "../autoNum/assignvariables.h"
 #include "../autoNum/numerotationcontext.h"
 
@@ -45,6 +47,7 @@ class QETProject;
 class Diagram;
 class Conductor;
 class Terminal;
+class TerminalStrip;
 class QGraphicsItem;
 class QDomDocument;
 class BorderTitleBlock;
@@ -145,6 +148,16 @@ class projectDataBase : public QObject
 		DiagramContext elementKindInformation(const QUuid &element) const;
 		bool storeElementKindInformation(const QUuid &element, const DiagramContext &information);
 		void forgetElementKindInformation(const QUuid &element);
+			/// Where a placed symbol comes from and sits
+		using ElementPlacement = ::ElementPlacement;
+		bool storeElementPlacement(const QUuid &element, const ElementPlacement &placement);
+		ElementPlacement elementPlacement(const QUuid &element) const;
+		void forgetElementPlacement(const QUuid &element);
+			/// The sequential numbers of a placed symbol or wire (their
+			/// uuids don't collide, so one table holds both)
+		bool storeSequence(const QUuid &item, const autonum::sequentialNumbers &numbers);
+		autonum::sequentialNumbers sequence(const QUuid &item) const;
+		void forgetSequence(const QUuid &item);
 
 			//The title block properties of every folio of the project, by
 			//folio uuid: the store each folio's title block is written
@@ -184,6 +197,76 @@ class projectDataBase : public QObject
 		void storeProjectSettings(const QDomElement &settings);
 		QList<ProjectSetting> projectSettings() const {return m_project_settings;}
 
+			//One row per value of @p element and its descendants, the
+			//way the project settings and the drawn items are kept:
+			//@p section is where it sits (the tag for a root), @p ord
+			//which of its kind it is there.
+		static void xmlRows(const QDomElement &element, const QString &section,
+							int ord, QList<ProjectSetting> &rows);
+		static void xmlRows(const QDomElement &element, const QString &section, int ord,
+							const QString &children_section, QList<ProjectSetting> &rows);
+
+			//The terminal strips, one row per value of what each strip's
+			//toXml() writes (terminal_strip_value), by strip uuid. The strips
+			//are always built, so they are written through as they change.
+		void storeTerminalStrip(TerminalStrip *strip);
+		void forgetTerminalStrip(const QUuid &strip);
+		QList<ProjectSetting> terminalStripRows(const QUuid &strip) const {
+			return m_terminal_strip_rows.value(strip);}
+
+			//The texts of every symbol placed in the project and their
+			//groups, one row per value of what the symbol saves of them
+			//(its <dynamic_texts> and <texts_groups>), by symbol uuid
+			//(element_text_value). A symbol not placed keeps its own.
+		static QList<ProjectSetting> elementTextRowsOf(const QDomElement &element);
+		bool storeElementTexts(const QUuid &element, const QList<ProjectSetting> &rows);
+		QList<ProjectSetting> elementTextRows(const QUuid &element) const {
+			return m_element_texts.value(element);}
+		void forgetElementTexts(const QUuid &element);
+		static QList<ProjectSetting> elementValueRowsOf(const QDomElement &element);
+		bool storeElementValues(const QUuid &element, const QList<ProjectSetting> &rows);
+		QList<ProjectSetting> elementValueRows(const QUuid &element) const {
+			return m_element_values.value(element);}
+		void forgetElementValues(const QUuid &element);
+			/// A folio's values (Diagram::ownValuesXml()) or the cables may
+			/// have changed: written at the next read
+		void queueFolioValues() {m_folio_values_changed = true;}
+		void queueCables() {m_cables_changed = true;}
+			//@p element's texts changed: written when the database is next
+			//read (flushElementTexts())
+		void queueElementTexts(Element *element);
+
+			//The project's own symbols and title-block templates, as it
+			//saves them in its <collection> and <titleblocktemplates>: each
+			//symbol definition, category and template whole, one row each
+			//(symbol_def, symbol_category, titleblock_template), by its path
+			//in the collection or its name. Written when the database is
+			//next read after queueCollections().
+		void queueCollections();
+		QHash<QString, QString> symbolDefinitions() const {return m_symbol_defs;}
+		QHash<QString, QString> symbolCategories() const {return m_symbol_categories;}
+		QHash<QString, QString> titleBlockTemplates() const {return m_titleblock_templates;}
+
+			//The drawn items of a folio -- shapes, free texts, tables --
+			//one row per value of what their toXml() writes, by item
+			//uuid. @p xml is the item as saved. An item without a uuid is
+			//not stored.
+			//A picture's bytes are not rows: its rows carry a "#blob" row
+			//with their SHA-256, and the bytes are in the blob table, once
+			//however many pictures use them. @p picture is only filled
+			//while the item is being stored.
+		struct DrawnItem {
+			QUuid folio; QString kind; QList<ProjectSetting> rows; QByteArray picture;
+			int seq = 0;   ///< its place among the drawn items (storeDrawnRows())
+		};
+		static DrawnItem drawnItemOf(const QUuid &folio, const QDomElement &xml,
+									 const QByteArray &picture = QByteArray());
+		bool storeDrawingItem(const QUuid &item, const QUuid &folio, const QDomElement &xml);
+		bool storeDrawnRows(const QUuid &item, const DrawnItem &drawn);
+		void forgetDrawingItemRows(const QUuid &item);
+		void releaseBlob(const QString &hash);
+		QList<ProjectSetting> drawingItemRows(const QUuid &item) const;
+
 			//The properties of every wire placed in the project, by wire
 			//uuid: the store each wire's properties are written through
 			//A wire not placed keeps its own.
@@ -199,6 +282,11 @@ class projectDataBase : public QObject
 		bool storeConductorLayout(const QUuid &conductor, const ConductorLayout &layout);
 		ConductorLayout conductorLayout(const QUuid &conductor) const;
 		void forgetConductorLayout(const QUuid &conductor);
+
+			/// The segments of a wire the user reshaped (none: not reshaped)
+		bool storeConductorPath(const QUuid &conductor, const ConductorPath &path);
+		ConductorPath conductorPath(const QUuid &conductor) const;
+		void forgetConductorPath(const QUuid &conductor);
 		QStringList linkRowMismatches();
 			/// A numbering scheme of the project (QETZ-DB-FIRST stage 2b)
 		struct NumberingScheme {
@@ -263,6 +351,7 @@ class projectDataBase : public QObject
 			//Fill the three stores from a project's document before its
 			//folios are built, then, once
 			//they are, say how many of those values building agreed with.
+		QHash<QString, QDomElement> embeddedDefinitions() const;
 		void prefillFromDocument(const QDomDocument &document);
 		void endPrefill(bool keep_unplaced = false);
 			//A folio of a project opened with lazy folios is being built:
@@ -352,6 +441,18 @@ class projectDataBase : public QObject
 		void populateDiagramTable();
 		void updateFolioPositions();
 		void flushElementPositions();
+		void flushElementTexts();
+		void flushFolioValues();
+		void flushCables();
+		bool storeKeyedRows(const QString &table, const QString &column,
+							QHash<QUuid, QList<ProjectSetting>> &cache,
+							const QUuid &key, const QList<ProjectSetting> &rows);
+		void forgetKeyedRows(const QString &table, const QString &column,
+							 QHash<QUuid, QList<ProjectSetting>> &cache, const QUuid &key);
+		void flushCollections();
+		void writeWholeRows(const QString &table, const QString &key,
+							QHash<QString, QString> &stored, const QHash<QString, QString> &now,
+							const QHash<QString, int> *order = nullptr);
 		void populateElementTable();
 		void populateElementInfoTable();
 		void populateElementInfoTableFromFolios();
@@ -369,6 +470,7 @@ class projectDataBase : public QObject
 		void populateDrawingItemTables();
 		bool populateFromDocument(const QDomDocument &document, QString *why = nullptr);
 		bool writeDrawingItem(QObject *object);
+		void writeDrawnItem(QObject *object, const QUuid &uuid, Diagram *diagram);
 		void flushDrawingItems();
 		void forgetDrawingItem(QObject *object);
 		void bindConductorValues(QSqlQuery &query, Conductor *conductor, Diagram *diagram);
@@ -451,8 +553,29 @@ class projectDataBase : public QObject
 			//sends xChanged and yChanged for every step of a drag, so the
 			//cell is written when next read, as drawing items are.
 		QList<QPointer<Element>> m_moved_elements;
+			//Symbols whose texts changed since they were last written: a text
+			//dragged or a group realigned sends a signal per step, and a group
+			//is only written whole once it has settled.
+		QList<QPointer<Element>> m_text_changed_elements;
+			//The project's symbols, categories and templates changed since
+			//they were last written; what is written, by path or name
+		bool m_collections_changed = false;
+		QHash<QString, QString> m_symbol_defs;
+		QHash<QString, int> m_collection_order;   ///< flushCollections()
+		int m_drawn_seq = 0;   ///< the last DrawnItem::seq given
+		QHash<QString, QString> m_symbol_categories;
+		QHash<QString, QString> m_titleblock_templates;
 		QHash<QUuid, DiagramContext> m_element_information;
 		QHash<QUuid, DiagramContext> m_element_kind_information;
+		QHash<QUuid, ElementPlacement> m_element_placements;
+		QHash<QUuid, autonum::sequentialNumbers> m_sequences;
+		QHash<QUuid, QList<ProjectSetting>> m_element_texts;
+		QHash<QUuid, QList<ProjectSetting>> m_element_values;
+		QHash<QUuid, QList<ProjectSetting>> m_folio_values;
+		QHash<QUuid, QList<ProjectSetting>> m_cable_values;
+		QHash<QUuid, QStringList> m_kept_items;   ///< kept_item, by folio
+		bool m_folio_values_changed = false;
+		bool m_cables_changed = false;
 			//The placed symbols holding each uuid: a paste or a folio copy
 			//briefly gives a copy its original's uuid, so one uuid can have
 			//two symbols until the copy's is renewed.
@@ -469,12 +592,18 @@ class projectDataBase : public QObject
 		QHash<QUuid, BorderProperties> m_folio_borders;
 		QHash<QUuid, QPair<int, int>> m_folio_numbers; // index, total
 		QList<ProjectSetting> m_project_settings;
+		QHash<QUuid, QList<ProjectSetting>> m_terminal_strip_rows;
+		QHash<QUuid, DrawnItem> m_drawn_items;
+			//How many drawn items name each blob (by SHA-256)
+		QHash<QString, int> m_blob_refs;
+		QSet<QUuid> m_prefilled_drawn_items;
 		QHash<QUuid, QPointer<Diagram>> m_placed_folios;
 		QHash<QUuid, ConductorProperties> m_conductor_properties;
 			//The rows of conductor_properties, to write only what changes
 		QHash<QUuid, QHash<QString, QString>> m_conductor_attributes;
 		QSet<QUuid> m_dirty_conductor_properties;
 		QHash<QUuid, ConductorLayout> m_conductor_layouts;
+		QHash<QUuid, ConductorPath> m_conductor_paths;
 		int m_building_folios = 0;
 		QSet<QUuid> m_folios_with_unjoined_wires;
 			//The folios whose rows a rebuild keeps (keepUnbuiltFolioRows())
@@ -489,9 +618,15 @@ class projectDataBase : public QObject
 		void restoreRemovedFolioRows(Diagram *folio);
 		bool m_changed_before_folio = false, m_blocked_before_folio = false;
 		QHash<QUuid, DiagramContext> m_prefilled_elements;
+		QHash<QUuid, DiagramContext> m_prefilled_kinds;
+		QHash<QUuid, ElementPlacement> m_prefilled_placements;
+		QHash<QUuid, autonum::sequentialNumbers> m_prefilled_sequences;
+		QHash<QUuid, QList<ProjectSetting>> m_prefilled_element_texts;
+		QHash<QUuid, QList<ProjectSetting>> m_prefilled_element_values;
 		QHash<QUuid, TitleBlockProperties> m_prefilled_folios;
 		QHash<QUuid, ConductorProperties> m_prefilled_conductors;
 		QHash<QUuid, ConductorLayout> m_prefilled_layouts;
+		QHash<QUuid, ConductorPath> m_prefilled_paths;
 		struct PrefillTally {
 			int agree = 0, differ = 0, unplaced = 0;
 			QMap<QString, int> fields;

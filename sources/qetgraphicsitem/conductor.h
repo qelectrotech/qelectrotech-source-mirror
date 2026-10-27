@@ -20,6 +20,7 @@
 #include "../autoNum/assignvariables.h"
 #include "../conductorproperties.h"
 #include "../dataBase/conductorlayout.h"
+#include "../dataBase/conductorpath.h"
 
 #include <QGraphicsPathItem>
 #include <QSet>
@@ -133,6 +134,10 @@ class Conductor : public QGraphicsObject
 			/// members, never from the store
 		ConductorLayout ownLayout() const;
 		void storeLayout();
+			/// The segments toXml() writes for this wire (none if the user
+			/// did not reshape it), from its own members, never from the store
+		ConductorPath ownPath() const;
+		void storePath();
 			/// The order wires were made in this session: a project's are
 			/// made in the order its file lists them
 		quint64 creationRank() const {return m_creation_rank;}
@@ -165,9 +170,11 @@ class Conductor : public QGraphicsObject
 
 		autonum::sequentialNumbers sequenceNum () const
 		{return m_autoNum_seq;}
-		autonum::sequentialNumbers& rSequenceNum()
-		{return m_autoNum_seq;}
+			/// Replace the numbers without redrawing the text; the project
+			/// database follows
+		void replaceSequenceNum(const autonum::sequentialNumbers& sn);
 		void setSequenceNum(const autonum::sequentialNumbers& sn);
+		void storeSequence();
 
 		QList<QPointF> junctions() const;
 		QPainterPath paintedPath() const;
