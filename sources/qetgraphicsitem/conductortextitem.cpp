@@ -89,6 +89,20 @@ void ConductorTextItem::fromXml(const QDomElement &e) {
 }
 
 /**
+	@brief ConductorTextItem::itemChange
+	The wire's layout holds the text's position and rotation once the user
+	has set them.
+*/
+QVariant ConductorTextItem::itemChange(GraphicsItemChange change, const QVariant &value)
+{
+	const QVariant result = DiagramTextItem::itemChange(change, value);
+	if ((change == QGraphicsItem::ItemPositionHasChanged
+		 || change == QGraphicsItem::ItemRotationHasChanged) && parent_conductor_)
+		parent_conductor_->storeLayout();
+	return result;
+}
+
+/**
 	@return true si ce champ de texte a ete explictement deplace par
 	l'utilisateur, false sinon
 */
@@ -118,7 +132,8 @@ void ConductorTextItem::forceMovedByUser(bool moved_by_user) {
 	if (!moved_by_user && parent_conductor_) {
 		parent_conductor_ -> calculateTextItemPosition();
 	}
-	
+	if (parent_conductor_) parent_conductor_ -> storeLayout();
+
 }
 
 /**
@@ -134,6 +149,7 @@ void ConductorTextItem::forceRotateByUser(bool rotate_by_user) {
 	if (!rotate_by_user && parent_conductor_) {
 		parent_conductor_ -> calculateTextItemPosition();
 	}
+	if (parent_conductor_) parent_conductor_ -> storeLayout();
 }
 
 /**
@@ -221,6 +237,7 @@ void ConductorTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 				undo_object -> addTextMovement(this, before_mov_pos_, pos(), moved_by_user_);
 
 				moved_by_user_ = true;
+				if (parent_conductor_) parent_conductor_ -> storeLayout();
 				
 				diagram_ptr -> undoStack().push(undo_object);
 			}

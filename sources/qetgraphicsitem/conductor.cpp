@@ -845,6 +845,7 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 		adjustHandlerPos();
 	}
 	else if (change == QGraphicsItem::ItemScenePositionHasChanged) {
+		storeLayout();
 		conductorGeometryChanged();
 	}
 
@@ -1170,6 +1171,7 @@ bool Conductor::fromXml(QDomElement &dom_element)
 		if (const auto edited = diagram()->project()->dataBase()->takeUnbuiltWireEdit(m_uuid))
 			pr = *edited;
 	setProperties(pr);
+	storeLayout();
 
 	return retval;
 }
@@ -1896,6 +1898,39 @@ void Conductor::storeProperties()
 	QETProject *project = d ? d->project() : nullptr;
 	if (project && project->dataBase() && project->dataBase()->hasConductorProperties(m_uuid))
 		project->dataBase()->conductorPropertiesStored(this, m_properties);
+}
+
+/**
+	@brief Conductor::ownLayout
+	@return where this wire sits and how its text was placed, as toXml()
+	writes them
+*/
+ConductorLayout Conductor::ownLayout() const
+{
+	ConductorLayout layout;
+	layout.x = pos().x();
+	layout.y = pos().y();
+	layout.freeze_label = m_freeze_label;
+	if (m_text_item) {
+		if (m_text_item->wasMovedByUser())
+			layout.text_pos = m_text_item->pos();
+		if (m_text_item->wasRotatedByUser())
+			layout.text_rotation = m_text_item->rotation();
+	}
+	return layout;
+}
+
+/**
+	@brief Conductor::storeLayout
+	Write this wire's layout to its project's store, once it is placed.
+*/
+void Conductor::storeLayout()
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	if (store && store->hasConductorProperties(m_uuid) && store->placedConductorCount(m_uuid) == 1)
+		store->storeConductorLayout(m_uuid, ownLayout());
 }
 
 /**
@@ -2626,6 +2661,7 @@ QList <Conductor *> relatedConductors(const Conductor *conductor) {
 void Conductor::setFreezeLabel(bool freeze)
 {
 	m_freeze_label = freeze;
+	storeLayout();
 
 	if (m_freeze_label != freeze)
 	{

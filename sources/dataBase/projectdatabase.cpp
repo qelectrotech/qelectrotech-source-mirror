@@ -2833,6 +2833,21 @@ bool projectDataBase::createDataBase()
 		qDebug() << " conductor_properties_table query : " << query_.lastError();
 	}
 
+		//Create the conductor_layout table: where each placed wire sits and
+		//how its text was placed (storeConductorLayout()). A NULL text
+		//position or rotation: the user did not move or rotate the text.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE conductor_layout ("
+			"conductor_uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+			"x REAL NOT NULL, "
+			"y REAL NOT NULL, "
+			"freeze_label INTEGER NOT NULL, "
+			"text_x REAL, "
+			"text_y REAL, "
+			"text_rotation REAL)"))) {
+		qDebug() << " conductor_layout_table query : " << query_.lastError();
+	}
+
 
 		//Create the link table: one row per element and element it is
 		//linked to -- a coil and its contacts, a pair of folio reports --
@@ -4103,6 +4118,67 @@ bool projectDataBase::storeConductorProperties(const QUuid &conductor, const Con
 }
 
 /**
+	@brief projectDataBase::conductorLayout
+	@return the stored layout of the wire @p conductor
+*/
+projectDataBase::ConductorLayout projectDataBase::conductorLayout(const QUuid &conductor) const
+{
+	return m_conductor_layouts.value(conductor);
+}
+
+/**
+	@brief projectDataBase::storeConductorLayout
+	Store @p layout as the layout of the wire @p conductor, in the
+	conductor_layout table and the cache in front of it.
+	@return true if that changed what was stored
+*/
+bool projectDataBase::storeConductorLayout(const QUuid &conductor, const ConductorLayout &layout)
+{
+	if (conductor.isNull()) return false;
+	auto known = m_conductor_layouts.constFind(conductor);
+	if (known != m_conductor_layouts.constEnd() && *known == layout) return false;
+	m_conductor_layouts.insert(conductor, layout);
+
+	const QString uuid = conductor.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM conductor_layout WHERE conductor_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeConductorLayout remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral(
+			"INSERT INTO conductor_layout (conductor_uuid, x, y, freeze_label, text_x, text_y, text_rotation) "
+			"VALUES (:uuid, :x, :y, :freeze, :tx, :ty, :rot)"));
+	insert.bindValue(QStringLiteral(":uuid"), uuid);
+	insert.bindValue(QStringLiteral(":x"), layout.x);
+	insert.bindValue(QStringLiteral(":y"), layout.y);
+	insert.bindValue(QStringLiteral(":freeze"), layout.freeze_label ? 1 : 0);
+	insert.bindValue(QStringLiteral(":tx"), layout.text_pos ? QVariant(layout.text_pos->x()) : QVariant(QMetaType(QMetaType::Double)));
+	insert.bindValue(QStringLiteral(":ty"), layout.text_pos ? QVariant(layout.text_pos->y()) : QVariant(QMetaType(QMetaType::Double)));
+	insert.bindValue(QStringLiteral(":rot"), layout.text_rotation ? QVariant(*layout.text_rotation) : QVariant(QMetaType(QMetaType::Double)));
+	if (!insert.exec()) {
+		qDebug() << "projectDataBase::storeConductorLayout insert error : " << insert.lastError();
+	}
+	return true;
+}
+
+/**
+	@brief projectDataBase::forgetConductorLayout
+	No wire holds @p conductor any more: its layout goes.
+*/
+void projectDataBase::forgetConductorLayout(const QUuid &conductor)
+{
+	if (!m_conductor_layouts.remove(conductor)) return;
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM conductor_layout WHERE conductor_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), conductor.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::forgetConductorLayout error : " << remove.lastError();
+	}
+}
+
+/**
 	@brief projectDataBase::flushConductorProperties
 	Write the conductor_properties rows of every wire changed since the last
 	flush; only the attributes that changed.
@@ -4185,6 +4261,7 @@ void projectDataBase::placeConductor(Conductor *conductor)
 	if (!m_placed_conductors.contains(conductor->uuid(), conductor))
 		m_placed_conductors.insert(conductor->uuid(), conductor);
 	storeConductorProperties(conductor->uuid(), conductor->ownProperties());
+	storeConductorLayout(conductor->uuid(), conductor->ownLayout());
 }
 
 /**
@@ -4198,9 +4275,11 @@ void projectDataBase::unplaceConductor(Conductor *conductor, const QUuid &uuid)
 	m_placed_conductors.remove(uuid, conductor);
 	if (Conductor *other = otherConductorHolder(uuid, nullptr)) {
 		storeConductorProperties(uuid, other->ownProperties());
+		storeConductorLayout(uuid, other->ownLayout());
 		return;
 	}
 	m_placed_conductors.remove(uuid);
+	forgetConductorLayout(uuid);
 	if (m_conductor_properties.remove(uuid))
 		m_dirty_conductor_properties.insert(uuid);
 }
@@ -4280,11 +4359,13 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	m_prefilled_elements.clear();
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
+	m_prefilled_layouts.clear();
 	for (PrefillTally &tally : m_prefill_tally) tally = PrefillTally();
 
 	QHash<QUuid, int> seen;
 	QHash<QUuid, DiagramContext> elements;
 	QHash<QUuid, ConductorProperties> conductors;
+	QHash<QUuid, ConductorLayout> layouts;
 	const QDomElement root = document.documentElement();
 	for (QDomElement folio = root.firstChildElement(QStringLiteral("diagram")) ; !folio.isNull() ;
 		 folio = folio.nextSiblingElement(QStringLiteral("diagram")))
@@ -4318,13 +4399,32 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 			ConductorProperties properties;
 			properties.fromXml(conductor);
 			conductors.insert(uuid, properties);
+
+				//What Conductor::fromXml() makes of the same attributes
+			ConductorLayout layout;
+			const qreal x = conductor.attribute(QStringLiteral("x")).toDouble();
+			const qreal y = conductor.attribute(QStringLiteral("y")).toDouble();
+			layout.x = qIsFinite(x) ? x : 0;
+			layout.y = qIsFinite(y) ? y : 0;
+			layout.freeze_label = conductor.attribute(QStringLiteral("freezeLabel")) == QLatin1String("true");
+			const qreal user_x = conductor.attribute(QStringLiteral("userx")).toDouble();
+			const qreal user_y = conductor.attribute(QStringLiteral("usery")).toDouble();
+			if (conductor.hasAttribute(QStringLiteral("userx")) && qIsFinite(user_x) && qIsFinite(user_y))
+				layout.text_pos = QPointF(user_x, user_y);
+			const qreal rotation = conductor.attribute(QStringLiteral("rotation")).toDouble();
+			if (conductor.hasAttribute(QStringLiteral("rotation")) && qIsFinite(rotation))
+				layout.text_rotation = rotation;
+			layouts.insert(uuid, layout);
 		}
 	}
 		//A uuid held twice names nothing
 	for (auto it = elements.constBegin() ; it != elements.constEnd() ; ++it)
 		if (seen.value(it.key()) == 1) m_prefilled_elements.insert(it.key(), it.value());
 	for (auto it = conductors.constBegin() ; it != conductors.constEnd() ; ++it)
-		if (seen.value(it.key()) == 1) m_prefilled_conductors.insert(it.key(), it.value());
+		if (seen.value(it.key()) == 1) {
+			m_prefilled_conductors.insert(it.key(), it.value());
+			m_prefilled_layouts.insert(it.key(), layouts.value(it.key()));
+		}
 	for (auto it = m_prefilled_folios.begin() ; it != m_prefilled_folios.end() ; )
 		it = seen.value(it.key()) == 1 ? std::next(it) : m_prefilled_folios.erase(it);
 
@@ -4334,6 +4434,8 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		storeFolioTitleBlock(it.key(), it.value());
 	for (auto it = m_prefilled_conductors.constBegin() ; it != m_prefilled_conductors.constEnd() ; ++it)
 		storeConductorProperties(it.key(), it.value());
+	for (auto it = m_prefilled_layouts.constBegin() ; it != m_prefilled_layouts.constEnd() ; ++it)
+		storeConductorLayout(it.key(), it.value());
 }
 
 /**
@@ -4398,6 +4500,8 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 			++m_prefill_tally[2].unplaced;
 			if (!keep_unplaced && !m_placed_conductors.contains(it.key()) && m_conductor_properties.remove(it.key()))
 				m_dirty_conductor_properties.insert(it.key());
+			if (!keep_unplaced && !m_placed_conductors.contains(it.key()))
+				forgetConductorLayout(it.key());
 			continue;
 		}
 		QHash<QString, QString> built, prefilled;
@@ -4413,6 +4517,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 	m_prefilled_elements.clear();
 	m_prefilled_folios.clear();
 	m_prefilled_conductors.clear();
+	m_prefilled_layouts.clear();
 }
 
 /**
