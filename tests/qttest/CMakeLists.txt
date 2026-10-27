@@ -1833,8 +1833,10 @@ if(QET_HAS_SCRIPTING)
   target_link_libraries(tst_workingcopy PRIVATE Qt::Test Qt::Xml)
   # It runs 8 QElectroTech at once: counted as 8 of ctest -j8's slots, so it
   # does not slow the other tests past their own time limits.
-  set_tests_properties(tst_workingcopy PROPERTIES TIMEOUT 1800 PROCESSORS 8
-    ENVIRONMENT "QTEST_FUNCTION_TIMEOUT=1500000")
+  math(EXPR qet_workingcopy_timeout "1800 * ${qet_test_timeout_scale}")
+  math(EXPR qet_workingcopy_function_timeout "1500000 * ${qet_test_timeout_scale}")
+  set_tests_properties(tst_workingcopy PROPERTIES TIMEOUT ${qet_workingcopy_timeout} PROCESSORS 8
+    ENVIRONMENT "QTEST_FUNCTION_TIMEOUT=${qet_workingcopy_function_timeout}")
   target_compile_definitions(tst_workingcopy PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
@@ -1951,13 +1953,18 @@ endif()
 
 # The tests' own time limits, scaled as ctest's are (see
 # qet_test_timeout_scale above), and QtTest's limit for one test function,
-# 300 s by default. Needs CMake 3.22, as above.
+# 300 s by default, unless a test sets its own (scaled where it is set).
+# Needs CMake 3.22, as above.
 if(qet_test_timeout_scale GREATER 1 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
   math(EXPR qet_test_function_timeout "300000 * ${qet_test_timeout_scale}")
   get_property(qet_qttests DIRECTORY PROPERTY TESTS)
-  if(qet_qttests)
-    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
-      "QET_TEST_TIMEOUT_SCALE=set:${qet_test_timeout_scale}"
-      "QTEST_FUNCTION_TIMEOUT=set:${qet_test_function_timeout}")
-  endif()
+  foreach(qet_qttest IN LISTS qet_qttests)
+    set_property(TEST ${qet_qttest} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+      "QET_TEST_TIMEOUT_SCALE=set:${qet_test_timeout_scale}")
+    get_test_property(${qet_qttest} ENVIRONMENT qet_test_env)
+    if(NOT qet_test_env MATCHES "QTEST_FUNCTION_TIMEOUT=")
+      set_property(TEST ${qet_qttest} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+        "QTEST_FUNCTION_TIMEOUT=set:${qet_test_function_timeout}")
+    endif()
+  endforeach()
 endif()
