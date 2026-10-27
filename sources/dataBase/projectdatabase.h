@@ -19,7 +19,11 @@
 #define PROJECTDATABASE_H
 
 #include <functional>
+#include <memory>
+#include <QDateTime>
+#include <QLockFile>
 #include <QObject>
+#include <QTimer>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QPointer>
@@ -70,6 +74,27 @@ class projectDataBase : public QObject
 		virtual ~projectDataBase() override;
 
 		void updateDB();
+			//updateDB() without dataBaseUpdated(): the tables brought up
+			//to date for a reader that shows nothing (a commit, a save)
+		void refresh();
+			/**
+				The working copy (QET-SQL-FORMAT S3z2, QETDB-S3-SCOPE.md
+				7.4.5): the database in a file of its own, one transaction
+				open, committed after each step of the undo stack, once the
+				project is open, after a save, and when anything else changed
+				it (a 1 s poll). A crash leaves it as at the last commit.
+				None when backups are off (the command line) and
+				QET_WORKING_COPY_DIR is not set: the database is in memory.
+			*/
+		bool hasWorkingCopy() const {return m_working_copy;}
+		QString workingCopyPath() const {return m_working_copy_path;}
+			/// The project is open: first commit, the copy is ready
+		void workingCopyOpened();
+		void commitWorkingCopy();
+			/// Write @p project_file from the working copy @p working_copy
+			/// left by a QElectroTech that ended (--from-database)
+		static bool writeWorkingCopy(const QString &working_copy, const QString &project_file,
+									 QString *error = nullptr);
 			/**
 				updateDB() for a project just read from @p document: the
 				diagram, element, terminal and conductor tables are filled
@@ -310,6 +335,13 @@ class projectDataBase : public QObject
 		};
 		void setNumbering(const Numbering &numbering);
 		Numbering numbering() const;
+		static Numbering numberingOf(const QSqlDatabase &db);
+			/// The project @p db holds, written from its tables alone
+			/// (projectdatabasewriter.cpp)
+		static QDomDocument toDocument(const QSqlDatabase &db);
+		static bool writeDocument(const QString &database_file, const QString &project_file,
+								  QString *error = nullptr);
+		bool writeProjectFromDatabase(const QString &project_file, QString *error = nullptr);
 		QHash<QString, NumerotationContext> numberingSchemes(const QString &kind) const;
 		bool hasNumberingScheme(const QString &kind, const QString &title) const;
 		NumerotationContext numberingScheme(const QString &kind, const QString &title) const;
@@ -434,6 +466,17 @@ class projectDataBase : public QObject
 
 	private:
 		bool createDataBase();
+		bool openWorkingCopy();
+		void removeWorkingCopy();
+		void endTransaction();
+		void beginTransaction();
+		qint64 totalChanges() const;
+		bool m_working_copy = false, m_working_copy_ready = false;
+		QString m_working_copy_path;
+		std::unique_ptr<QLockFile> m_working_copy_lock;
+		QTimer *m_working_copy_poll = nullptr;
+		qint64 m_committed_changes = -1;
+		QDateTime m_opened;
 		void createElementNomenclatureView();
 		void createSummaryView();
 		void createWiringListView();
@@ -454,11 +497,25 @@ class projectDataBase : public QObject
 							QHash<QString, QString> &stored, const QHash<QString, QString> &now,
 							const QHash<QString, int> *order = nullptr);
 		void populateElementTable();
+		void insertFolioElementRows(Diagram *diagram);
 		void populateElementInfoTable();
+		void insertElementInfoRow(const QString &uuid);
+		bool sharedElementUuids() const;
+		void folioChanged(const QUuid &folio);
+		void folioChanged(Diagram *folio);
+		void elementFoliosChanged(Element *element);
+		QUuid rowFolio(const QString &table, const QUuid &uuid);
+		void refreshChangedFolios();
+		void putRowsInFolioOrder();
+		QHash<QString, std::pair<qint64, qint64>> folioRowRanges(const QUuid &folio);
+		void refreshFolioTexts();
+		bool placeFolioRows(const QUuid &folio, const QHash<QString, std::pair<qint64, qint64>> &ranges);
+		QStringList rebuildMismatches();
 		void populateElementInfoTableFromFolios();
 		void populateSpareTerminalTable();
 		void populateDiagramInfoTable();
 		void populateConductorTable();
+		void insertFolioConductorRows(Diagram *diagram);
 		void populateLinkTable();
 		void flushLinks();
 		void insertLinkRows(QSqlQuery &insert, Element *element, const std::function<bool(const QUuid &)> &waiting,
@@ -500,6 +557,21 @@ class projectDataBase : public QObject
 			//updateDB(). Callers reach the database from outside only through
 			//newQuery(), and every such call site reads.
 		bool m_content_changed = true;
+			//What changed since the last update, when it is known: the
+			//folios whose rows are rebuilt (refreshChangedFolios()), or
+			//all of them. A change of anything else (a folio's place)
+			//only sets m_content_changed: the rows are put back in folio
+			//order.
+		QSet<QUuid> m_changed_folios;
+		bool m_rebuild_all = true;
+			//The folio-by-folio tables are in folio order with spaced
+			//rowids (putRowsInFolioOrder())
+		bool m_rows_in_folio_order = false;
+			//Per table, the last rowid of the rows in that order: the rows
+			//after it were written since
+		QHash<QString, qint64> m_ordered_rows;
+			//A folio was added, removed or moved since the last update
+		bool m_folio_places_changed = false;
 		QSqlDatabase m_data_base;
 		QSqlQuery m_insert_elements_query,
 				  m_insert_element_info_query,
@@ -616,7 +688,9 @@ class projectDataBase : public QObject
 		void dropKeptRows();
 		void keepRemovedFolioRows(const QString &folio);
 		void restoreRemovedFolioRows(Diagram *folio);
-		bool m_changed_before_folio = false, m_blocked_before_folio = false;
+		bool m_changed_before_folio = false, m_blocked_before_folio = false,
+			 m_rebuild_all_before_folio = false;
+		QSet<QUuid> m_changed_folios_before_folio;
 		QHash<QUuid, DiagramContext> m_prefilled_elements;
 		QHash<QUuid, DiagramContext> m_prefilled_kinds;
 		QHash<QUuid, ElementPlacement> m_prefilled_placements;

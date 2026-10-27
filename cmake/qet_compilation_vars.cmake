@@ -381,6 +381,7 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/dataBase/legacyelementtypes.h
   ${QET_DIR}/sources/dataBase/projectdatabase.cpp
+  ${QET_DIR}/sources/dataBase/projectdatabasewriter.cpp
   ${QET_DIR}/sources/dataBase/projectdatabase.h
   ${QET_DIR}/sources/dataBase/conductorlayout.h
   ${QET_DIR}/sources/dataBase/conductorpath.h

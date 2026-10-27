@@ -1360,6 +1360,37 @@ if(QET_HAS_SCRIPTING)
     "QET_TITLEBLOCKS_DIR=\"${QET_DIR}/titleblocks\"")
 endif()
 
+# A project written back from its database alone saves as the project does
+# (projectDataBase::toDocument()). QET-SQL-FORMAT S3z1.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_databasewriter
+    tst_databasewriter.cpp)
+  add_test(NAME tst_databasewriter COMMAND tst_databasewriter)
+  add_dependencies(tst_databasewriter qelectrotech)
+  target_link_libraries(tst_databasewriter PRIVATE Qt::Test)
+  target_compile_definitions(tst_databasewriter PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+endif()
+
+# An edit rebuilds the database rows of the folios it touched only, and the
+# tables are still what a full rebuild gives (QET_CHECK_DB_REBUILD).
+# QET-SQL-FORMAT S3z1b.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_folioupdaterows
+    tst_folioupdaterows.cpp)
+  add_test(NAME tst_folioupdaterows COMMAND tst_folioupdaterows)
+  add_dependencies(tst_folioupdaterows qelectrotech)
+  target_link_libraries(tst_folioupdaterows PRIVATE Qt::Test)
+  target_compile_definitions(tst_folioupdaterows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+endif()
+
 # What a symbol, a folio or a cable saves that no other table holds is in the
 # project database (element_value, folio_value, cable_value). QET-SQL-FORMAT S3n.
 if(QET_HAS_SCRIPTING)
@@ -1764,6 +1795,32 @@ qet_add_app_test(tst_collectionclosedproject tst_collectionclosedproject.cpp)
 # A second QElectroTech writes to the shared element cache at once instead of
 # waiting for the first to close (#1571).
 qet_add_app_test(tst_elementcachelock tst_elementcachelock.cpp)
+
+# The working copy: the project database in a file, committed after each
+# edit; killed at random moments, it holds every edit finished, and a clean
+# exit leaves nothing. QET-SQL-FORMAT S3z2.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_workingcopy
+    tst_workingcopy.cpp)
+  add_test(NAME tst_workingcopy COMMAND tst_workingcopy)
+  add_dependencies(tst_workingcopy qelectrotech)
+  target_link_libraries(tst_workingcopy PRIVATE Qt::Test Qt::Xml)
+  # It runs 8 QElectroTech at once: counted as 8 of ctest -j8's slots, so it
+  # does not slow the other tests past their own time limits.
+  set_tests_properties(tst_workingcopy PROPERTIES TIMEOUT 1800 PROCESSORS 8
+    ENVIRONMENT "QTEST_FUNCTION_TIMEOUT=1500000")
+  target_compile_definitions(tst_workingcopy PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The working copy in the editor: in the data folder, a change outside the
+# undo stack committed within 2 s, deleted on close. QET-SQL-FORMAT S3z2.
+qet_add_app_test(tst_workingcopypoll tst_workingcopypoll.cpp)
+target_link_libraries(tst_workingcopypoll PRIVATE Qt::Xml)
+target_compile_definitions(tst_workingcopypoll PRIVATE
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of

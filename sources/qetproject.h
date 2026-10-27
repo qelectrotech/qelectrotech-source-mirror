@@ -172,6 +172,7 @@ class QETProject : public QObject
 		/// background thread referencing the project, and a short-lived CLI
 		/// process can destroy the project before the write finishes (crash).
 		static void setBackupEnabled(bool enabled);
+		static bool backupEnabled() {return m_backup_enabled;}
 
 			/// Whether a folio is built only when it is needed, not all on
 			/// opening (stage D6): yes, unless the
@@ -474,8 +475,11 @@ class QETProject : public QObject
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
 		void storeSettings();
+	public:
+			/// Also what projectDataBase::toDocument() writes the numbering with
 		static void writeNumberingXml(const projectDataBase::Numbering &numbering,
 									  QDomElement &xml_element);
+	private:
 		void writeUsageXml(QDomElement &);
 		void writeWireHopsXml(QDomElement &);
 		void writeOriginXml(QDomElement&);
