@@ -74,6 +74,7 @@ Useful configure-time options (pass as `-D<OPTION>=ON/OFF`):
 | `PACKAGE_TESTS` | `ON` | build the test suite (needs the Qt Test module) |
 | `BUILD_WITH_KF` | distro-dependent | build against KDE Frameworks; see below |
 | `QET_ENABLE_PCH` | `OFF` | precompiled headers for faster rebuilds (needs CMake ≥ 3.16) |
+| `QET_DEPLOY_QT` | `OFF` | Windows and macOS: `cmake --install` also copies the Qt libraries and plugins QElectroTech uses (windeployqt, macdeployqt), for a folder that runs without Qt installed; needs Qt ≥ 6.5 |
 
 ## 3.1 Choosing a compiler (Unix)
 
@@ -268,7 +269,8 @@ downloads and compiles KDE Frameworks itself, which is slow.
    SQLite's DLL is installed with it only when you tell CMake where it is,
    at the configure step:
    `-DSQLite3_DLL="C:\vcpkg\installed\x64-windows\bin\sqlite3.dll"`.
-   Qt's DLLs are not installed: run Qt's `windeployqt` on
+   Qt's DLLs are installed with it when `-DQET_DEPLOY_QT=ON` is set at the
+   configure step (Qt 6.5 or newer). Without it, run Qt's `windeployqt` on
    `C:\QElectroTech\bin\qelectrotech.exe` for those.
 
 ### MinGW-w64 (gcc)
