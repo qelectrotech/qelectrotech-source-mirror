@@ -3701,6 +3701,11 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	m_project_properties_handler.terminalStripLayoutHandler().fromXml(xml_project.documentElement());
 	storeSettings();
 
+		//An older file's folios and wires get the uuids building them
+		//would give, so that the database can be filled from it
+	if (lazyFolios())
+		fillDerivedUuids(xml_project);
+
 		//The stores of symbol information, folio title blocks and wire
 		//properties are filled from the document before the folios are
 		//built
@@ -3813,6 +3818,78 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 bool QETProject::lazyFolios()
 {
 	return qEnvironmentVariableIntValue("QET_EAGER_FOLIOS") != 1;
+}
+
+/**
+	@brief QETProject::fillDerivedUuids
+	A file from an older QElectroTech has no folio uuids, and often no wire
+	uuids: the project database cannot be filled from it, so every folio
+	is built at once (projectDataBase::documentRefusal()), slowly. Write
+	into @p xml_project the uuids building the folios gives them: a
+	folio's from its place and title (Diagram::derivedUuid()), a wire's
+	from the symbol and terminal uuids that name its ends
+	(Diagram::fromXml()). They are saved from then on either way. A wire
+	whose ends are named the older way is left: only the built symbols
+	know its terminals. So are the wires of a project whose symbols lack
+	uuids or share one: those are renewed when their folio is built.
+*/
+void QETProject::fillDerivedUuids(QDomDocument &xml_project)
+{
+	const QString project_title = xml_project.documentElement().attribute(QStringLiteral("title"));
+	const QDomNodeList diagram_nodes = xml_project.elementsByTagName(QStringLiteral("diagram"));
+	QList<QUuid> folios;
+	const auto used = [&folios](const QUuid &uuid) { return folios.contains(uuid); };
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i) {
+		QDomElement folio = diagram_nodes.at(i).toElement();
+		const QUuid persisted(folio.attribute(QStringLiteral("uuid")));
+		QUuid uuid = persisted;
+		if (persisted.isNull())
+			uuid = Diagram::derivedUuid(QStringLiteral("legacy"), project_title, i,
+										folio.attribute(QStringLiteral("title")), used);
+		else if (used(persisted))
+			uuid = Diagram::derivedUuid(QStringLiteral("duplicate ") + persisted.toString(),
+										project_title, i, folio.attribute(QStringLiteral("title")), used);
+		if (uuid != persisted)
+			folio.setAttribute(QStringLiteral("uuid"), uuid.toString());
+		folios << uuid;
+	}
+
+	QSet<QUuid> elements;
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i)
+		for (QDomElement element : QET::findInDomElement(diagram_nodes.at(i).toElement(),
+														  QStringLiteral("elements"), QStringLiteral("element"))) {
+			if (!Element::valideXml(element))
+				continue;
+			const QUuid uuid(element.attribute(QStringLiteral("uuid")));
+			if (uuid.isNull() || elements.contains(uuid))
+				return;
+			elements.insert(uuid);
+		}
+
+		//As readDiagramsXml() does, before deriving any
+	for (const QString &tag : {QStringLiteral("element"), QStringLiteral("conductor")}) {
+		const QDomNodeList nodes = xml_project.elementsByTagName(tag);
+		for (int i = 0; i < nodes.size(); ++i) {
+			const QUuid saved(nodes.at(i).toElement().attribute(QStringLiteral("uuid")));
+			if (!saved.isNull())
+				m_saved_item_uuids.insert(saved);
+		}
+	}
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i)
+		for (QDomElement wire : QET::findInDomElement(diagram_nodes.at(i).toElement(),
+													   QStringLiteral("conductors"), QStringLiteral("conductor"))) {
+			if (!QUuid(wire.attribute(QStringLiteral("uuid"))).isNull() || !Conductor::valideXml(wire)
+					|| !wire.hasAttribute(QStringLiteral("element1"))
+					|| !wire.hasAttribute(QStringLiteral("element2")))
+				continue;
+			QStringList ends;
+			for (const QString n : {QStringLiteral("1"), QStringLiteral("2")})
+				ends << QUuid(wire.attribute(QStringLiteral("element") + n)).toString()
+						+ QLatin1Char('/') + QUuid(wire.attribute(QStringLiteral("terminal") + n)).toString();
+			ends.sort();
+			wire.setAttribute(QStringLiteral("uuid"),
+							  derivedItemUuid(QStringLiteral("conductor"), ends.join(QLatin1Char('\n'))).toString());
+		}
 }
 
 /**

@@ -38,11 +38,13 @@ class tst_databasefromdocument : public QObject
 		return e;
 	}
 
-	QString run(const QStringList &args, bool from_folios = false)
+	QString run(const QStringList &args, bool from_folios = false, bool eager = false)
 	{
 		QProcessEnvironment e = env();
 		if (from_folios)
 			e.insert(QStringLiteral("QET_DATABASE_FROM_FOLIOS"), QStringLiteral("1"));
+		if (eager)
+			e.insert(QStringLiteral("QET_EAGER_FOLIOS"), QStringLiteral("1"));
 		QProcess proc;
 		proc.setProcessEnvironment(e);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), args);
@@ -52,10 +54,10 @@ class tst_databasefromdocument : public QObject
 
 	// The seven tables, each as a sorted list of its rows, and which way the
 	// database was filled.
-	QJsonObject dump(const QString &project, bool from_folios, QString *how)
+	QJsonObject dump(const QString &project, bool from_folios, QString *how, bool eager = false)
 	{
 		const QString out = run({QStringLiteral("--run"), m_dir.filePath(QStringLiteral("dump.js")),
-								 project}, from_folios);
+								 project}, from_folios, eager);
 		return tablesIn(out, how);
 	}
 
@@ -498,6 +500,33 @@ private slots:
 		const QJsonArray b = dump(edited, false, &unused).value(QStringLiteral("terminal")).toArray();
 		QVERIFY2(a == b, qPrintable(QStringLiteral("%1 terminal rows after the edits, %2 on reopening")
 									.arg(a.size()).arg(b.size())));
+	}
+
+	// A file from an older QElectroTech whose folios, and wires named by
+	// their ends' uuids, carry no saved uuid is filled from the document:
+	// the uuids written into it on opening are those its folios give
+	// themselves when built (every folio built, as before the fill).
+	void olderFileFilledFromDocument_data()
+	{
+		QTest::addColumn<QString>("project");
+		for (const char *f : {"ShellyParts.qet", "pinball_williams_em.qet"})
+			QTest::newRow(f) << QStringLiteral(QET_EXAMPLES_DIR "/") + QLatin1String(f);
+	}
+
+	void olderFileFilledFromDocument()
+	{
+		QFETCH(QString, project);
+		QString how_document, how_folios;
+		const QJsonObject document = dump(project, false, &how_document);
+		const QJsonObject folios = dump(project, true, &how_folios, true);
+		QVERIFY2(how_document == QLatin1String("Project database filled from the document"),
+				 qPrintable(how_document));
+		QCOMPARE(document.keys().size(), 7);
+		for (const QString &table : folios.keys()) {
+			const QJsonArray a = document.value(table).toArray(), b = folios.value(table).toArray();
+			QVERIFY2(a == b, qPrintable(QStringLiteral("%1: %2 rows from the document, %3 from the folios")
+										.arg(table).arg(a.size()).arg(b.size())));
+		}
 	}
 
 	// A file whose items carry no saved uuid is filled from the folios,
