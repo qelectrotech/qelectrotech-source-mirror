@@ -9,6 +9,7 @@
 #include <QJsonObject>
 #include <QProcess>
 #include <QProcessEnvironment>
+#include <QRegularExpression>
 #include <QTemporaryDir>
 
 // The project's settings (title, project properties, new-folio defaults)
@@ -46,16 +47,18 @@ class tst_projectsettingrows : public QObject
 
 	// The rows of project_setting after running @p script on the project,
 	// as "section|ord|name|value".
-	QStringList rows(const QString &script)
+	QStringList rows(const QString &script, const QString &project_path = QString())
 	{
 		const QString in = m_dir.filePath(QStringLiteral("in%1.qet").arg(m_run));
 		const QString js = m_dir.filePath(QStringLiteral("script%1.js").arg(m_run));
 		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(m_run++));
 		QDir().mkpath(home);
-		QFile f(in);
-		if (!f.open(QIODevice::WriteOnly)) return {};
-		f.write(project_xml.toUtf8());
-		f.close();
+		if (project_path.isEmpty()) {
+			QFile f(in);
+			if (!f.open(QIODevice::WriteOnly)) return {};
+			f.write(project_xml.toUtf8());
+			f.close();
+		}
 		QFile s(js);
 		if (!s.open(QIODevice::WriteOnly)) return {};
 		s.write((script + QStringLiteral(
@@ -71,7 +74,7 @@ class tst_projectsettingrows : public QObject
 		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
 		QProcess proc;
 		proc.setProcessEnvironment(env);
-		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js, in});
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js, project_path.isEmpty() ? in : project_path});
 		if (!proc.waitForFinished(60000)) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		QStringList result;
@@ -147,10 +150,10 @@ private slots:
 		for (const QString &row : r)
 			sections << row.section(QLatin1Char('|'), 0, 0);
 			// an element with no attribute, child or text holds no value
-	auto holds_value = [](const QDomElement &e) {
-		return e.attributes().count() || !e.firstChildElement().isNull() || !e.text().isEmpty();
-	};
-	auto has_rows = [&sections](const QString &section) {
+		auto holds_value = [](const QDomElement &e) {
+			return e.attributes().count() || !e.firstChildElement().isNull() || !e.text().isEmpty();
+		};
+		auto has_rows = [&sections](const QString &section) {
 			for (const QString &s : std::as_const(sections))
 				if (s == section || s.startsWith(section + QLatin1Char('/')))
 					return true;
@@ -181,6 +184,35 @@ private slots:
 		QVERIFY(checked.contains(QStringLiteral("newdiagrams/guides")));
 		for (const QString &section : std::as_const(checked))
 			QVERIFY2(has_rows(section), qPrintable(section));
+	}
+
+	// The default layout of the terminal strips is rows, as a save writes it:
+	// only for a project with strips
+	void layoutPatternIsRows()
+	{
+		const QStringList none = rows(QString());
+		for (const QString &row : none)
+			QVERIFY2(!row.startsWith(QStringLiteral("terminal_strip_layout")), qPrintable(row));
+
+		const QString fixture = QStringLiteral(QET_FIXTURES_DIR "/every_feature.qet");
+		QFile f(fixture);
+		QVERIFY(f.open(QIODevice::ReadOnly));
+		QDomDocument doc;
+		QVERIFY(doc.setContent(&f));
+		QDomElement layout;
+		for (QDomElement c = doc.documentElement().firstChildElement(); !c.isNull(); c = c.nextSiblingElement())
+			if (c.tagName() == QLatin1String("terminal_strip_layout")) layout = c;
+		QVERIFY(!layout.isNull());
+
+		const QStringList r = rows(QString(), fixture);
+		const QStringList layout_rows = r.filter(QRegularExpression(QStringLiteral("^terminal_strip_layout")));
+		QVERIFY2(!layout_rows.isEmpty(), qPrintable(r.join('\n')));
+		for (const QString &name : {QStringLiteral("header_h"), QStringLiteral("terminal_2_y"),
+									QStringLiteral("font_pixel_size"), QStringLiteral("cable_end_length"),
+									QStringLiteral("xref_text_orientation")}) {
+			const QString row = QStringLiteral("terminal_strip_layout|0|%1|%2").arg(name, layout.attribute(name));
+			QVERIFY2(r.contains(row), qPrintable(row));
+		}
 	}
 };
 

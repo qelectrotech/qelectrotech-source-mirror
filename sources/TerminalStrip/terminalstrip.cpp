@@ -56,10 +56,12 @@ TerminalStrip::TerminalStrip(const QString &installation, const QString &locatio
 
 void TerminalStrip::setInstallation(const QString &installation) {
 	m_data.m_installation = installation;
+	emit dataChanged();
 }
 
 void TerminalStrip::setLocation(const QString &location) {
 	m_data.m_location = location;
+	emit dataChanged();
 }
 
 void TerminalStrip::setName(const QString &name) {
@@ -72,10 +74,12 @@ void TerminalStrip::setName(const QString &name) {
 
 void TerminalStrip::setComment(const QString &comment) {
 	m_data.m_comment = comment;
+	emit dataChanged();
 }
 
 void TerminalStrip::setDescription(const QString &description) {
 	m_data.m_description = description;
+	emit dataChanged();
 }
 
 /**

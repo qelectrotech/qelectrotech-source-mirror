@@ -88,6 +88,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--check-elements", "check"},
 		{"--resave", "resave"},
 		{"--recover", "recover"},
+		{"--from-database", "fromdb"},
 		{"--set-titleblock", "settb"},
 	};
 	return flags;
@@ -1086,6 +1087,21 @@ int run(const QStringList &args)
 			return 2;
 		}
 		return recoverProject(rest.at(0), rest.at(1));
+	}
+
+	// --from-database writes a project from the working copy a QElectroTech
+	// that ended left behind, which a project cannot be opened from.
+	if (format == "fromdb") {
+		if (rest.size() < 2) {
+			err << "Usage: qelectrotech --from-database <working-copy.sqlite> <output.qet>\n";
+			return 2;
+		}
+		QString error;
+		if (!projectDataBase::writeWorkingCopy(rest.at(0), rest.at(1), &error)) {
+			err << "Cannot write " << rest.at(1) << " from " << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		return 0;
 	}
 
 	const QString input = rest.value(0);

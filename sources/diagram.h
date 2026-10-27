@@ -238,6 +238,12 @@ class Diagram : public QGraphicsScene
 		// methods related to XML import/export
 		QDomDocument toXml(bool wholeContent = true, bool is_copy_command = false);
 		void writeHeader(QDomDocument &document, QDomElement &dom_root);
+		void appendValuesXml(QDomDocument &document, QDomElement &dom_root) const;
+			/// What this folio saves that no other table of the project
+			/// database holds, in a <diagram> made in @p document
+		QDomElement ownValuesXml(QDomDocument &document) const;
+		void queueValuesStore();
+		QList<QDomElement> keptXml(QDomDocument &document) const;
 		bool initFromXml(QDomElement &,
 				 QPointF = QPointF(),
 				 bool = true,

@@ -400,6 +400,22 @@ bool QetScriptApi::setTitleBlock(const QString &output, const QStringList &assig
 }
 
 /**
+	@brief QetScriptApi::saveFromDatabase
+	Write @p output from the project database alone (QET-SQL-FORMAT S3z1).
+	@return false if the database could not be copied or the file written
+*/
+bool QetScriptApi::saveFromDatabase(const QString &output)
+{
+	if (!m_project || output.isEmpty()) return false;
+	QString error;
+	if (!m_project->dataBase()->writeProjectFromDatabase(output, &error)) {
+		log(QStringLiteral("qet.saveFromDatabase: %1").arg(error));
+		return false;
+	}
+	return true;
+}
+
+/**
 	@brief QetScriptApi::save
 	Write this project's own current in-memory state -- unlike every export
 	method above, this does NOT go through runFlag()/CLIExport::run(): that
@@ -4929,6 +4945,7 @@ bool QetScriptApi::setConductorDefault(int folioIndex, const QString &property, 
 		return true;
 	}
 	diagram->defaultConductorProperties = new_p;
+	diagram->queueValuesStore();
 	// Show or hide the conductor texts now, as the Folio properties dialog
 	// does (DiagramPropertiesDialog), or an export later in this run would
 	// draw them as they were.

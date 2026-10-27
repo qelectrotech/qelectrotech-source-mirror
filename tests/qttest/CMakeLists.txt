@@ -1298,14 +1298,193 @@ target_compile_definitions(tst_movedterminals PRIVATE
 
 # The project's settings are in the project database, one row per value,
 # and kept by every change. QET-SQL-FORMAT S3b.
-add_executable(
-  tst_projectsettingrows
-  tst_projectsettingrows.cpp)
-add_test(NAME tst_projectsettingrows COMMAND tst_projectsettingrows)
-add_dependencies(tst_projectsettingrows qelectrotech)
-target_link_libraries(tst_projectsettingrows PRIVATE Qt::Test Qt::Xml)
-target_compile_definitions(tst_projectsettingrows PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_projectsettingrows
+    tst_projectsettingrows.cpp)
+  add_test(NAME tst_projectsettingrows COMMAND tst_projectsettingrows)
+  add_dependencies(tst_projectsettingrows qelectrotech)
+  target_link_libraries(tst_projectsettingrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_projectsettingrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\"")
+endif()
+
+# Where a wire sits and how its text was placed is in the project database
+# (conductor_layout), from a built folio or from the document. QET-SQL-FORMAT S3c.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_conductorlayoutrows
+    tst_conductorlayoutrows.cpp)
+  add_test(NAME tst_conductorlayoutrows COMMAND tst_conductorlayoutrows)
+  add_dependencies(tst_conductorlayoutrows qelectrotech)
+  target_link_libraries(tst_conductorlayoutrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_conductorlayoutrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# Where a placed symbol comes from and sits is in the project database
+# (element_placement), from a built folio or from the document. QET-SQL-FORMAT S3d.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_elementplacementrows
+    tst_elementplacementrows.cpp)
+  add_test(NAME tst_elementplacementrows COMMAND tst_elementplacementrows)
+  add_dependencies(tst_elementplacementrows qelectrotech)
+  target_link_libraries(tst_elementplacementrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_elementplacementrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The texts of a placed symbol and their groups are in the project database
+# (element_text_value), from a built folio or from the document. QET-SQL-FORMAT S3l.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_elementtextrows
+    tst_elementtextrows.cpp)
+  add_test(NAME tst_elementtextrows COMMAND tst_elementtextrows)
+  add_dependencies(tst_elementtextrows qelectrotech)
+  target_link_libraries(tst_elementtextrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_elementtextrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The project's own symbols, their categories and its title-block templates
+# are in the project database (symbol_def, symbol_category,
+# titleblock_template). QET-SQL-FORMAT S3m.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_projectcollectionrows
+    tst_projectcollectionrows.cpp)
+  add_test(NAME tst_projectcollectionrows COMMAND tst_projectcollectionrows)
+  add_dependencies(tst_projectcollectionrows qelectrotech)
+  target_link_libraries(tst_projectcollectionrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_projectcollectionrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\""
+    "QET_TITLEBLOCKS_DIR=\"${QET_DIR}/titleblocks\"")
+endif()
+
+# A project written back from its database alone saves as the project does
+# (projectDataBase::toDocument()). QET-SQL-FORMAT S3z1.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_databasewriter
+    tst_databasewriter.cpp)
+  add_test(NAME tst_databasewriter COMMAND tst_databasewriter)
+  add_dependencies(tst_databasewriter qelectrotech)
+  target_link_libraries(tst_databasewriter PRIVATE Qt::Test)
+  target_compile_definitions(tst_databasewriter PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+endif()
+
+# An edit rebuilds the database rows of the folios it touched only, and the
+# tables are still what a full rebuild gives (QET_CHECK_DB_REBUILD).
+# QET-SQL-FORMAT S3z1b.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_folioupdaterows
+    tst_folioupdaterows.cpp)
+  add_test(NAME tst_folioupdaterows COMMAND tst_folioupdaterows)
+  add_dependencies(tst_folioupdaterows qelectrotech)
+  target_link_libraries(tst_folioupdaterows PRIVATE Qt::Test)
+  target_compile_definitions(tst_folioupdaterows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+endif()
+
+# What a symbol, a folio or a cable saves that no other table holds is in the
+# project database (element_value, folio_value, cable_value). QET-SQL-FORMAT S3n.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_savevaluerows
+    tst_savevaluerows.cpp)
+  add_test(NAME tst_savevaluerows COMMAND tst_savevaluerows)
+  add_dependencies(tst_savevaluerows qelectrotech)
+  target_link_libraries(tst_savevaluerows PRIVATE Qt::Test)
+  target_compile_definitions(tst_savevaluerows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+endif()
+
+# The sequential numbers of a symbol or a wire are in the project database
+# (sequential_number), from a built folio or from the document. QET-SQL-FORMAT S3e.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_sequencerows
+    tst_sequencerows.cpp)
+  add_test(NAME tst_sequencerows COMMAND tst_sequencerows)
+  add_dependencies(tst_sequencerows qelectrotech)
+  target_link_libraries(tst_sequencerows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_sequencerows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The segments of a wire the user reshaped are in the project database
+# (conductor_path), from a built folio or from the document. QET-SQL-FORMAT S3f.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_conductorpathrows
+    tst_conductorpathrows.cpp)
+  add_test(NAME tst_conductorpathrows COMMAND tst_conductorpathrows)
+  add_dependencies(tst_conductorpathrows qelectrotech)
+  target_link_libraries(tst_conductorpathrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_conductorpathrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The shapes, free texts and tables of a folio are in the project database
+# (drawing_item), from a built folio or from the document. QET-SQL-FORMAT S3g.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_drawingitemrows
+    tst_drawingitemrows.cpp)
+  add_test(NAME tst_drawingitemrows COMMAND tst_drawingitemrows)
+  add_dependencies(tst_drawingitemrows qelectrotech)
+  target_link_libraries(tst_drawingitemrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_drawingitemrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The terminal strips are in the project database (terminal_strip_value
+# rows), opened and written through as they change. QET-SQL-FORMAT S3k1.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_terminalstriprows
+    tst_terminalstriprows.cpp)
+  add_test(NAME tst_terminalstriprows COMMAND tst_terminalstriprows)
+  add_dependencies(tst_terminalstriprows qelectrotech)
+  target_link_libraries(tst_terminalstriprows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_terminalstriprows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\"")
+endif()
+
+# The pictures of a folio are in the project database (drawing_item rows
+# with a "#blob" hash, and the blob table), from a built folio or from the
+# document, .qet or .qetz. QET-SQL-FORMAT S3j.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_picturerows
+    tst_picturerows.cpp)
+  add_test(NAME tst_picturerows COMMAND tst_picturerows)
+  add_dependencies(tst_picturerows qelectrotech)
+  target_link_libraries(tst_picturerows PRIVATE Qt::Test Qt::Xml Qt::Gui)
+  target_compile_definitions(tst_picturerows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
 
 # A symbol's kind information (NO/NC/SW/power) is queryable from the
 # project database once it is placed, not only from a live Element*.
@@ -1318,7 +1497,8 @@ if(QET_HAS_SCRIPTING)
   add_dependencies(tst_elementkindinformation qelectrotech)
   target_link_libraries(tst_elementkindinformation PRIVATE Qt::Test Qt::Xml)
   target_compile_definitions(tst_elementkindinformation PRIVATE
-    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 endif()
 
 # Symbols sharing one uuid on a folio keep their wires through save and
@@ -1624,6 +1804,32 @@ qet_add_app_test(tst_collectionclosedproject tst_collectionclosedproject.cpp)
 # A second QElectroTech writes to the shared element cache at once instead of
 # waiting for the first to close (#1571).
 qet_add_app_test(tst_elementcachelock tst_elementcachelock.cpp)
+
+# The working copy: the project database in a file, committed after each
+# edit; killed at random moments, it holds every edit finished, and a clean
+# exit leaves nothing. QET-SQL-FORMAT S3z2.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_workingcopy
+    tst_workingcopy.cpp)
+  add_test(NAME tst_workingcopy COMMAND tst_workingcopy)
+  add_dependencies(tst_workingcopy qelectrotech)
+  target_link_libraries(tst_workingcopy PRIVATE Qt::Test Qt::Xml)
+  # It runs 8 QElectroTech at once: counted as 8 of ctest -j8's slots, so it
+  # does not slow the other tests past their own time limits.
+  set_tests_properties(tst_workingcopy PROPERTIES TIMEOUT 1800 PROCESSORS 8
+    ENVIRONMENT "QTEST_FUNCTION_TIMEOUT=1500000")
+  target_compile_definitions(tst_workingcopy PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The working copy in the editor: in the data folder, a change outside the
+# undo stack committed within 2 s, deleted on close. QET-SQL-FORMAT S3z2.
+qet_add_app_test(tst_workingcopypoll tst_workingcopypoll.cpp)
+target_link_libraries(tst_workingcopypoll PRIVATE Qt::Xml)
+target_compile_definitions(tst_workingcopypoll PRIVATE
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
