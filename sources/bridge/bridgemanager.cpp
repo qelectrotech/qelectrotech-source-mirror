@@ -828,15 +828,21 @@ QList<BridgeInformation> BridgeManager::informationSets(QETProject *project,
 
 	Give the wires wired to those pins what the bridge carries, so the
 	bridge and the wires it sits on say the same thing: one circle, never
-	half of one. Only the voltage and the protocol cross a bridge -- never
-	the function, which is the very business a separated function keeps
-	to itself.
+	half of one.
+
+	The voltage and the protocol cross everything -- they describe the
+	electrical node and not one side of it. The function goes where the
+	circle follows one function and nowhere else: it fills the wires
+	which have none of their own, never overwrites one which is there
+	(a function which is there is a separated function keeping it), and
+	never comes across a function separation at all. Two functions
+	meeting at a bridge stay two -- only the voltage crosses then.
 
 	Every wire which is connected goes with it: at the pin the bridge
 	lands on, and on through the potential that pin belongs to, however
 	far that reaches and however the function separation draws its lines.
-	A wire which already says it is left alone; the rest goes with
-	whatever was being done (@p parent), so it is one undo step.
+	The rest goes with whatever was being done (@p parent), so it is one
+	undo step.
 */
 void BridgeManager::writeInformation(QETProject *project,
 									 const QList<BridgeTerminal> &terminals,
@@ -848,6 +854,9 @@ void BridgeManager::writeInformation(QETProject *project,
 	}
 
 	QSet<Conductor *> conductors;
+		//What stands on one side of a function separation only: the
+		//function never comes this way
+	QSet<Conductor *> groups;
 	for (const BridgeTerminal &terminal : terminals)
 	{
 		Element *element = elementFor(project, terminal);
@@ -866,9 +875,11 @@ void BridgeManager::writeInformation(QETProject *project,
 					continue;
 				}
 				conductors << conductor;
+				groups << conductor;
 				const auto related = conductor->relatedPotentialConductors();
 				for (Conductor *other : related) {
 					conductors << other;
+					groups << other;
 				}
 					//And over a function separation, the way the wires
 					//themselves let the voltage cross it: the voltage
@@ -883,17 +894,43 @@ void BridgeManager::writeInformation(QETProject *project,
 		}
 	}
 
+		//The function the circle follows, if it follows one: two
+		//functions meeting at a bridge stay two, and only the voltage
+		//crosses then
+	QString function;
+	bool several_functions = false;
+	for (Conductor *conductor : std::as_const(groups))
+	{
+		const QString carried = conductor
+				? conductor->properties().m_function : QString();
+		if (carried.isEmpty()) {
+			continue;
+		}
+		if (function.isEmpty()) {
+			function = carried;
+		} else if (carried != function) {
+			several_functions = true;
+			break;
+		}
+	}
+
 	for (Conductor *conductor : std::as_const(conductors))
 	{
 		if (!conductor) {
 			continue;
 		}
 		const ConductorProperties before = conductor->properties();
-		if (before.m_tension_protocol == information.tension) {
-			continue;
-		}
 		ConductorProperties after = before;
 		after.m_tension_protocol = information.tension;
+			//The function fills what has none of its own, on its own
+			//side of every separation, and never one which is there
+		if (!several_functions && !function.isEmpty()
+			&& groups.contains(conductor) && before.m_function.isEmpty()) {
+			after.m_function = function;
+		}
+		if (after == before) {
+			continue;
+		}
 
 		QVariant old_value, new_value;
 		old_value.setValue(before);

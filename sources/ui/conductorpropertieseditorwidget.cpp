@@ -371,11 +371,13 @@ QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 		&function_separated);
 
 		//A bridge sits across the terminals it lands on, so the voltage
-		//of one of their wires reaches every wire of every terminal of it
-		//-- and only the voltage crosses a bridge, never the function. The
-		//same rule as the wires themselves, so those wires go with the
-		//edit the way a function separated one does.
+		//of one of their wires reaches every wire of every terminal of it.
+		//The function follows the circle too, where it follows one
+		//function -- kept apart here from the wires a function separated
+		//terminal element holds at a distance, which only ever get the
+		//voltage.
 	QList<Conductor *> all_targets = targets;
+	QSet<Conductor *> bridge_crossed;
 	if (!targets.isEmpty() && targets.first()->diagram())
 	{
 		const auto over_bridges = BridgeManager::conductorsOverBridges(
@@ -386,11 +388,13 @@ QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 			{
 				all_targets << conductor;
 				function_separated.insert(conductor);
+				bridge_crossed.insert(conductor);
 			}
 		}
 	}
 
-	return ConductorMultiEdit::undo(all_targets, m_shown, edited, function_separated);
+	return ConductorMultiEdit::undo(all_targets, m_shown, edited,
+					function_separated, bridge_crossed);
 }
 
 /**

@@ -878,6 +878,26 @@ void ConductorProperties::applyTensionProtocolChange(const ConductorProperties &
 }
 
 /**
+	@brief ConductorProperties::applyFunctionChange
+	An edit of the function follows to the wires which carried the very
+	function being edited away, and to those alone: a wire with a
+	function of its own is a separated function keeping it, and one
+	with none is not spoken for by any side of a separation.
+	@param before the properties as they were shown
+	@param after the properties after the edit
+*/
+void ConductorProperties::applyFunctionChange(const ConductorProperties &before,
+					      const ConductorProperties &after)
+{
+	if (before.m_function == after.m_function) {
+		return;
+	}
+	if (m_function == before.m_function) {
+		m_function = after.m_function;
+	}
+}
+
+/**
 	@brief ConductorProperties::defaultProperties
 	@return the default properties stored in the setting file
 */

@@ -32,7 +32,9 @@
 #include "diagram.h"
 #include "properties/elementdata.h"
 #include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/element.h"
+#include "qetinformation.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
 #include "conductorproperties.h"
@@ -1067,6 +1069,221 @@ private slots:
 		Conductor *wire = BridgeManager::wireOfBridgeAt(&project, reference);
 		QVERIFY2(wire,
 				 "a reference reads what hangs on it whether wire or bridge");
+	}
+
+	//The function goes with the bridge to what hangs on it and has none
+	//of its own -- so a sheet reference set on the bridge says it, the
+	//very moment the reference is put down
+	void aBridgeGivesTheFunctionToWhatHasNone()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(terminalOf(terminals.at(0)));
+		bridge->addTerminal(terminalOf(terminals.at(1)));
+
+		//The wires the bridge sits on: one carries the function of the
+		//circuit, one has none of its own -- the way a wire of a sheet
+		//reference stands to the rest of it
+		QList<Conductor *> wires;
+		for (const QSharedPointer<RealTerminal> &terminal : terminals) {
+			Element *element = terminal->element();
+			for (Terminal *pin : element->terminals()) {
+				for (Conductor *wire : pin->conductors()) {
+					if (wire && !wires.contains(wire)) {
+						wires << wire;
+					}
+				}
+			}
+		}
+		QVERIFY(wires.size() >= 2);
+
+		Conductor *carrying = nullptr;
+		Conductor *empty = nullptr;
+		for (Conductor *wire : std::as_const(wires)) {
+			if (!wire->properties().m_function.isEmpty() && !carrying) {
+				carrying = wire;
+			} else if (wire->properties().m_function.isEmpty() && !empty) {
+				empty = wire;
+			}
+		}
+		if (!carrying) {
+			QSKIP("the fixture wires carry no function");
+		}
+		if (!empty) {
+			empty = wires.first() == carrying ? wires.last() : wires.first();
+			ConductorProperties none = empty->properties();
+			none.m_function.clear();
+			empty->setProperties(none);
+		}
+		const QString function = carrying->properties().m_function;
+
+			//The sheet reference the bridge is carried on by
+		Element *report = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if ((element->linkType() & Element::AllReport)
+					&& !element->terminals().isEmpty()) {
+					report = element;
+					break;
+				}
+			}
+			if (report) break;
+		}
+		if (!report) {
+			QSKIP("the fixture has no sheet reference");
+		}
+		bridge->addTerminal(BridgeTerminal{
+				report->uuid(),
+				report->terminals().first()->stableUuid().toString(),
+				true});
+
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
+		auto *command = new QUndoCommand();
+		BridgeManager::writeInformation(&project, bridge->terminals(),
+										BridgeInformation{QStringLiteral("400V")},
+										command);
+		folio->undoStack().push(command);
+
+			//The circle follows one function: what has none of its own
+			//goes with it, and nothing which is there is taken away
+		QCOMPARE(empty->properties().m_function, function);
+		QCOMPARE(carrying->properties().m_function, function);
+		QCOMPARE(empty->properties().m_tension_protocol, QStringLiteral("400V"));
+
+			//And the text of a sheet reference reads it the moment the
+			//reference is put down
+		auto *text = new DynamicElementTextItem(report);
+		text->setTextFrom(DynamicElementTextItem::ElementInfo);
+		text->setInfoName(QETInformation::COND_FUNCTION);
+		QCOMPARE(text->toPlainText(), function);
+		delete text;
+	}
+
+	//Two functions meeting at a bridge stay two: only the voltage
+	//crosses then, and a wire with none of its own is not spoken for by
+	//either side
+	void aFunctionSeparationStaysSeparateAtABridge()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+		Element *first = terminals.at(0)->element();
+		Element *second = terminals.at(1)->element();
+		QVERIFY(first && second);
+
+		//A wire of its own between two pins nothing speaks for yet
+		Terminal *free_first = nullptr;
+		Terminal *free_second = nullptr;
+		for (Terminal *pin : first->terminals()) {
+			if (pin->conductors().isEmpty()) {
+				free_first = pin;
+				break;
+			}
+		}
+		for (Terminal *pin : second->terminals()) {
+			if (pin->conductors().isEmpty()) {
+				free_second = pin;
+				break;
+			}
+		}
+		if (!free_first || !free_second) {
+			QSKIP("the fixture has no two free pins");
+		}
+		Conductor *third = new Conductor(free_first, free_second);
+		QVERIFY(third);
+
+		//The two functions meeting at the bridge
+		QList<Conductor *> wires;
+		for (Terminal *pin : first->terminals()) {
+			for (Conductor *wire : pin->conductors()) {
+				if (wire && wire != third && !wires.contains(wire)) {
+					wires << wire;
+				}
+			}
+		}
+		for (Terminal *pin : second->terminals()) {
+			for (Conductor *wire : pin->conductors()) {
+				if (wire && wire != third && !wires.contains(wire)) {
+					wires << wire;
+				}
+			}
+		}
+		if (wires.size() < 2) {
+			QSKIP("the fixture has not two wired terminals");
+		}
+		QStringList functions;
+		functions << QStringLiteral("L1") << QStringLiteral("N");
+		for (int i = 0; i < wires.size(); ++i) {
+			ConductorProperties properties = wires.at(i)->properties();
+			properties.m_function = functions.at(i % functions.size());
+			wires.at(i)->setProperties(properties);
+		}
+
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(terminalOf(terminals.at(0)));
+		bridge->addTerminal(terminalOf(terminals.at(1)));
+
+		Diagram *folio = diagramOf(project, first);
+		QVERIFY(folio);
+		auto *command = new QUndoCommand();
+		BridgeManager::writeInformation(&project, bridge->terminals(),
+										BridgeInformation{QStringLiteral("400V")},
+										command);
+		folio->undoStack().push(command);
+
+			//Only the voltage crosses: the functions stay where they are,
+			//and the wire with none of its own stays out of it
+		QVERIFY2(third->properties().m_function.isEmpty(),
+				 "a wire with no function is not spoken for by either side");
+		for (int i = 0; i < wires.size(); ++i) {
+			QCOMPARE(wires.at(i)->properties().m_function,
+					 functions.at(i % functions.size()));
+			QCOMPARE(wires.at(i)->properties().m_tension_protocol,
+					 QStringLiteral("400V"));
+		}
+		QCOMPARE(third->properties().m_tension_protocol, QStringLiteral("400V"));
+	}
+
+	//An edit of the function follows the circle over the bridge where
+	//the circle follows one function: the very function being edited
+	//away goes with it, a function of its own stays
+	void anEditOfTheFunctionFollowsTheCircle()
+	{
+		ConductorProperties shown;
+		shown.m_function = QStringLiteral("L1");
+		ConductorProperties edited = shown;
+		edited.m_function = QStringLiteral("L2");
+
+		ConductorProperties follows;
+		follows.m_function = QStringLiteral("L1");
+		follows.applyFunctionChange(shown, edited);
+		QCOMPARE(follows.m_function, QStringLiteral("L2"));
+
+		ConductorProperties own;
+		own.m_function = QStringLiteral("N");
+		own.applyFunctionChange(shown, edited);
+		QCOMPARE(own.m_function, QStringLiteral("N"));
+
+		ConductorProperties none;
+		none.applyFunctionChange(shown, edited);
+		QVERIFY2(none.m_function.isEmpty(),
+				 "a wire with none of its own is not spoken for by either side");
+
+			//An edit of the voltage only touches the function of nobody
+		ConductorProperties voltage = edited;
+		voltage.m_tension_protocol = QStringLiteral("24V");
+		ConductorProperties stays;
+		stays.m_function = QStringLiteral("L1");
+		stays.applyFunctionChange(edited, voltage);
+		QCOMPARE(stays.m_function, QStringLiteral("L1"));
 	}
 
 	//What is one bridge carried on over the sheets is one pair of

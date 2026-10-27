@@ -121,11 +121,11 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
 	}
 
 		//A bridge sits across the terminals it lands on, so the voltage
-		//of one of their wires reaches every wire of every terminal of it
-		//-- and only the voltage crosses a bridge, never the function: a
-		//separated function stays separated however many bridges sit on
-		//it. The same rule as the wires themselves: what reaches the
-		//potential reaches what the bridge joins to it.
+		//of one of their wires reaches every wire of every terminal of it.
+		//The function follows the circle too, and only where the circle
+		//follows it: a wire carrying the very function being edited away
+		//goes with the edit, one carrying its own keeps it -- a separated
+		//function stays separated however many bridges sit on it.
 	if (cpd.applyAll())
 	{
 		const ConductorProperties shown_for_bridge = conductor->properties();
@@ -138,6 +138,8 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
 			}
 			ConductorProperties over_properties = over->properties();
 			over_properties.applyTensionProtocolChange(
+						shown_for_bridge, cpd.properties());
+			over_properties.applyFunctionChange(
 						shown_for_bridge, cpd.properties());
 			if (over_properties == over->properties()) {
 				continue;

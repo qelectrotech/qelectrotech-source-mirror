@@ -148,6 +148,11 @@ namespace ConductorMultiEdit
 		function separated terminal element links to the edited
 		conductors: they get the voltage / protocol and nothing else
 		(@see ConductorProperties::applyTensionProtocolChange)
+		@param bridge_crossed : the targets a bridge reaches them by: the
+		voltage crosses a bridge always, and the function follows the
+		circle where it follows one function (@see
+		ConductorProperties::applyFunctionChange). A separated function
+		stays separated however many bridges sit on it.
 		@return one undo step giving each target the fields that differ
 		between shown and edited, or nullptr if no conductor changes
 	*/
@@ -155,7 +160,8 @@ namespace ConductorMultiEdit
 	QUndoCommand *undo(const QList<T *> &targets,
 			   const ConductorProperties &shown,
 			   const ConductorProperties &edited,
-			   const QSet<T *> &function_separated = QSet<T *>())
+			   const QSet<T *> &function_separated = QSet<T *>(),
+			   const QSet<T *> &bridge_crossed = QSet<T *>())
 	{
 		if (edited == shown)
 			return nullptr;
@@ -167,7 +173,11 @@ namespace ConductorMultiEdit
 			const ConductorProperties old_properties = conductor->properties();
 			ConductorProperties properties = old_properties;
 			if (function_separated.contains(conductor))
+			{
 				properties.applyTensionProtocolChange(shown, edited);
+				if (bridge_crossed.contains(conductor))
+					properties.applyFunctionChange(shown, edited);
+			}
 			else
 				properties.applyChanges(shown, edited);
 			if (properties == old_properties)

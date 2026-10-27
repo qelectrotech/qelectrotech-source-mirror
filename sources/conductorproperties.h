@@ -141,6 +141,8 @@ class ConductorProperties
 				  const ConductorProperties &after);
 		void applyTensionProtocolChange(const ConductorProperties &before,
 					      const ConductorProperties &after);
+		void applyFunctionChange(const ConductorProperties &before,
+				      const ConductorProperties &after);
 
 		static ConductorProperties defaultProperties();
 
