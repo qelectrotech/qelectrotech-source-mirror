@@ -87,6 +87,7 @@ class projectDataBase : public QObject
 				QET_WORKING_COPY_DIR is not set: the database is in memory.
 			*/
 		bool hasWorkingCopy() const {return m_working_copy;}
+		static QString workingCopyDir();
 		QString workingCopyPath() const {return m_working_copy_path;}
 			/// The project is open: first commit, the copy is ready
 		void workingCopyOpened();

@@ -116,6 +116,7 @@ class QETProject : public QObject
 		QETProject (QObject *parent = nullptr);
 		QETProject (const QString &path, QObject * = nullptr);
 		QETProject (KAutoSaveFile *backup, QObject *parent=nullptr);
+		QETProject (const QString &recovered, const QString &file_path, QObject *parent=nullptr);
 		~QETProject() override;
 
 		void autoLinkReportElements();

@@ -219,6 +219,39 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 }
 
 /**
+	@brief QETProject::QETProject
+	Construct a project recovered from the working copy a QElectroTech
+	that did not close normally left (QET-SQL-FORMAT S3z3)
+	@param recovered : the .qet written from the working copy
+	@param file_path : the file of the project it was, empty if never saved
+	@param parent : parent QObject
+*/
+QETProject::QETProject(const QString &recovered, const QString &file_path, QObject *parent) :
+	QObject              (parent),
+	m_titleblocks_collection(this),
+	m_data_base(this, this),
+	m_project_properties_handler{this}
+{
+	QFile file(recovered);
+	m_state = openFile(&file);
+	if (m_state != ProjectState::Ok) {
+		return;
+	}
+		//The path of the project, instead of the one written from the copy
+	setFilePath(file_path);
+	const QFileInfo fi(m_file_path);
+	setReadOnly(fi.exists() && !fi.isWritable());
+
+	init();
+		//What the file lacks: it has to be saved, as a project reopened
+		//from a recovery file. The working copy's first commit, in init(),
+		//noted it unmodified: commit again, or a second crash before an
+		//edit would leave a copy with nothing to recover.
+	setModified(true);
+	m_data_base.commitWorkingCopy();
+}
+
+/**
 	@brief QETProject::~QETProject
 	Destructor
 */

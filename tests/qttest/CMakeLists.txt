@@ -1822,6 +1822,15 @@ target_link_libraries(tst_workingcopypoll PRIVATE Qt::Xml)
 target_compile_definitions(tst_workingcopypoll PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# Which working copies a QElectroTech that did not close normally left are
+# offered at the next start, and which are deleted. QET-SQL-FORMAT S3z3.
+add_executable(
+  tst_workingcopyrecovery
+  tst_workingcopyrecovery.cpp
+  ${QET_DIR}/sources/dataBase/workingcopyrecovery.cpp)
+add_test(NAME tst_workingcopyrecovery COMMAND tst_workingcopyrecovery)
+target_link_libraries(tst_workingcopyrecovery PRIVATE Qt::Test Qt::Sql)
+
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
 # PATH for every test above and keeps the ENVIRONMENT each test sets

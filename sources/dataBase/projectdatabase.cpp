@@ -127,13 +127,10 @@ projectDataBase::~projectDataBase()
 */
 bool projectDataBase::openWorkingCopy()
 {
-	QString dir = qEnvironmentVariable("QET_WORKING_COPY_DIR");
-	if (dir.isEmpty()) {
-		if (!QETProject::backupEnabled()) {
-			return false;
-		}
-		dir = QETApp::dataDir() + QStringLiteral("/working-copies");
+	if (qEnvironmentVariableIsEmpty("QET_WORKING_COPY_DIR") && !QETProject::backupEnabled()) {
+		return false;
 	}
+	const QString dir = workingCopyDir();
 	const QString base = QDir(dir).filePath(QUuid::createUuid().toString(QUuid::WithoutBraces));
 	auto lock = std::make_unique<QLockFile>(base + QStringLiteral(".lock"));
 	if (!QDir().mkpath(dir) || !lock->tryLock(0)) {
@@ -158,6 +155,17 @@ bool projectDataBase::openWorkingCopy()
 	m_working_copy_lock = std::move(lock);
 	m_opened = QDateTime::currentDateTimeUtc();
 	return true;
+}
+
+/**
+	@brief projectDataBase::workingCopyDir
+	@return where working copies are made: QET_WORKING_COPY_DIR, or else
+	QETApp::dataDir()/working-copies
+*/
+QString projectDataBase::workingCopyDir()
+{
+	const QString dir = qEnvironmentVariable("QET_WORKING_COPY_DIR");
+	return dir.isEmpty() ? QETApp::dataDir() + QStringLiteral("/working-copies") : dir;
 }
 
 /**
