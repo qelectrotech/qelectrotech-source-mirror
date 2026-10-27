@@ -32,7 +32,9 @@
 #include "diagram.h"
 #include "properties/elementdata.h"
 #include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/element.h"
+#include "qetinformation.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
 #include "conductorproperties.h"
@@ -1067,6 +1069,94 @@ private slots:
 		Conductor *wire = BridgeManager::wireOfBridgeAt(&project, reference);
 		QVERIFY2(wire,
 				 "a reference reads what hangs on it whether wire or bridge");
+	}
+
+	//A sheet reference reads again what hangs on it when a bridge lands
+	//on it: the fields carry the very names the wires give their values,
+	//so the text finds them the same way it does at a wire
+	void aReferenceReadsTheBridgeWhenItLandsOnIt()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+
+		//The sheet reference, its fields already standing there the way
+		//the drawing has them before any bridge is drawn
+		Element *report = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if ((element->linkType() & Element::AllReport)
+					&& !element->terminals().isEmpty()) {
+					report = element;
+					break;
+				}
+			}
+			if (report) break;
+		}
+		if (!report) {
+			QSKIP("the fixture has no sheet reference");
+		}
+		auto *function_text = new DynamicElementTextItem(report);
+		function_text->setTextFrom(DynamicElementTextItem::ElementInfo);
+		function_text->setInfoName(QETInformation::COND_FUNCTION);
+		report->addDynamicTextItem(function_text);
+		auto *tension_text = new DynamicElementTextItem(report);
+		tension_text->setTextFrom(DynamicElementTextItem::ElementInfo);
+		tension_text->setInfoName(QETInformation::COND_TENSION_PROTOCOL);
+		report->addDynamicTextItem(tension_text);
+		QVERIFY2(tension_text->toPlainText().isEmpty(),
+				 "before any bridge the fields say nothing");
+
+			//What the wires behind say of themselves
+		QString function;
+		for (const QSharedPointer<RealTerminal> &terminal : terminals) {
+			for (Terminal *pin : terminal->element()->terminals()) {
+				for (Conductor *wire : pin->conductors()) {
+					if (wire && !wire->properties().m_function.isEmpty()) {
+						function = wire->properties().m_function;
+					}
+				}
+			}
+		}
+		if (function.isEmpty()) {
+			QSKIP("the fixture wires carry no function");
+		}
+
+		//The bridge is drawn over the wired terminals and lands on the
+		//reference afterwards
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(terminalOf(terminals.at(0)));
+		bridge->addTerminal(terminalOf(terminals.at(1)));
+
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
+		auto *command = new QUndoCommand();
+		BridgeManager::writeInformation(&project, bridge->terminals(),
+										BridgeInformation{QStringLiteral("400V")},
+										command);
+		folio->undoStack().push(command);
+
+		bridge->addTerminal(BridgeTerminal{
+				report->uuid(),
+				report->terminals().first()->stableUuid().toString(),
+				true});
+
+			//The bridge carries the voltage / protocol, under the name
+			//the wires carry it too -- and the function it never has is
+			//the one the wires behind it have
+		QCOMPARE(tension_text->toPlainText(), QStringLiteral("400V"));
+		QCOMPARE(function_text->toPlainText(), function);
+
+			//And it goes when the bridge leaves
+		bridge->removeTerminal(BridgeTerminal{
+				report->uuid(),
+				report->terminals().first()->stableUuid().toString(),
+				true});
+		QVERIFY2(tension_text->toPlainText().isEmpty(),
+				 "what hangs on the reference follows the drawing");
+
 	}
 
 	//What is one bridge carried on over the sheets is one pair of

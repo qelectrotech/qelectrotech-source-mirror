@@ -1617,6 +1617,31 @@ void DynamicElementTextItem::conductorWasRemoved(Conductor *conductor)
 }
 
 /**
+	@brief DynamicElementTextItem::refreshConnection
+	Read again what hangs on the symbol of this text -- a wire, or a
+	bridge landed on it since -- the way it is read when the text is
+	put down.
+*/
+void DynamicElementTextItem::refreshConnection()
+{
+	if (m_parent_element
+		&& ((m_parent_element.data()->linkType() & Element::AllReport)
+			|| m_parent_element.data()->linkType() == Element::ConductorDefinition))
+	{
+			//What is watched is let go of first: what hangs on the
+			//symbol may be another wire now, or nothing at all, and a
+			//wire watched is a wire kept. Everything is read again.
+		if (!m_watched_conductor.isNull()) {
+			disconnect(m_watched_conductor.data(), &Conductor::propertiesChange,
+					   this, &DynamicElementTextItem::conductorPropertiesChanged);
+			m_watched_conductor.clear();
+		}
+		setPotentialConductor();
+		conductorPropertiesChanged();
+	}
+}
+
+/**
 	@brief DynamicElementTextItem::setPotentialConductor
 	This function is only used when the parent element of this text is a report element
 	Get a conductor in the potential of the parent report

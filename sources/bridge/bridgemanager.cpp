@@ -23,6 +23,7 @@
 #include "../TerminalStrip/terminalstrip.h"
 #include "../diagram.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/terminalelement.h"
 #include "../qetgraphicsitem/terminal.h"
@@ -456,6 +457,35 @@ QString BridgeManager::dockAt(QETProject *project,
 		}
 	}
 	return pin_uuid;
+}
+
+/**
+	@brief BridgeManager::refreshReferences
+	@param project
+	@param landings where a bridge comes or goes
+	Every sheet reference among them reads again what hangs on it: what
+	a reference says follows the drawing, and a bridge landed on one is
+	as much a thing hung on it as a wire is.
+*/
+void BridgeManager::refreshReferences(QETProject *project,
+									  const QList<BridgeTerminal> &landings)
+{
+	if (!project) {
+		return;
+	}
+	for (const BridgeTerminal &landing : landings)
+	{
+		Element *element = elementFor(project, landing);
+		if (!element || !(element->linkType() & Element::AllReport)) {
+			continue;
+		}
+		const auto texts = element->dynamicTextItems();
+		for (DynamicElementTextItem *text : texts) {
+			if (text) {
+				text->refreshConnection();
+			}
+		}
+	}
 }
 
 /**

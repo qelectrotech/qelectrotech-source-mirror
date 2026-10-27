@@ -119,6 +119,10 @@ class BridgeManager
 				parent), so it is undone with it -- nobody has to link
 				them by hand afterwards.
 			*/
+			/**The sheet references among those landings say again what
+			hangs on them: a bridge come or gone changes it.*/
+		static void refreshReferences(QETProject *project,
+									  const QList<BridgeTerminal> &landings);
 		static void pairReferences(QETProject *project,
 								   Bridge *bridge,
 								   QUndoCommand *parent);

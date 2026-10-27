@@ -273,6 +273,9 @@ void Bridge::addTerminal(const BridgeTerminal &terminal)
 		return;
 	}
 	m_terminals.append(terminal);
+		//What a reference landed on says follows the drawing
+	BridgeManager::refreshReferences(
+				qobject_cast<QETProject *>(parent()), QList<BridgeTerminal>{terminal});
 	emit changed();
 }
 
@@ -284,6 +287,8 @@ void Bridge::removeTerminal(const BridgeTerminal &terminal)
 	if (!m_terminals.removeOne(terminal)) {
 		return;
 	}
+	BridgeManager::refreshReferences(
+				qobject_cast<QETProject *>(parent()), QList<BridgeTerminal>{terminal});
 	emit changed();
 }
 
@@ -295,7 +300,15 @@ void Bridge::setTerminals(const QList<BridgeTerminal> &terminals)
 	if (m_terminals == terminals) {
 		return;
 	}
+	QList<BridgeTerminal> touched = m_terminals;
+	for (const BridgeTerminal &terminal : terminals) {
+		if (!touched.contains(terminal)) {
+			touched << terminal;
+		}
+	}
 	m_terminals = terminals;
+	BridgeManager::refreshReferences(
+				qobject_cast<QETProject *>(parent()), touched);
 	emit changed();
 }
 
