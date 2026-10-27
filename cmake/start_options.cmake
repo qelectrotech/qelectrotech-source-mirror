@@ -34,3 +34,8 @@ option(QET_EXPORT_PROJECT_DB "Enable project database export" OFF)
 if(QET_EXPORT_PROJECT_DB)
     add_compile_definitions(QET_EXPORT_PROJECT_DB)
 endif()
+
+# Windows and macOS: install the Qt libraries and plugins QElectroTech uses
+# with it, for a folder that runs on a machine without Qt (see
+# CMakeLists.txt).
+option(QET_DEPLOY_QT "Install Qt's libraries and plugins with QElectroTech (Windows and macOS, Qt 6.5 or newer)" OFF)
