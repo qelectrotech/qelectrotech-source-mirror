@@ -824,8 +824,15 @@ private slots:
 				 "      copied += qet.duplicateElements(f, [e[i]], f, 300, 300).length;\n"
 				 "}\n"
 				 "qet.log('COPIED ' + copied);\n"
+				 // elementUuids() and conductorUuids() come in no set order, so
+				 // the symbols are the two ends of the wire whose end pair sorts
+				 // first, and then the lowest other uuids: always a wired set.
 				 "var wf = 0; while (qet.elementUuids(wf).length < 6) ++wf;\n"
-				 "var wires = qet.conductorCount(wf), w = qet.elementUuids(wf);\n"
+				 "var wires = qet.conductorCount(wf);\n"
+				 "var ends = qet.conductorUuids(wf).map(function (c) {\n"
+				 "  return qet.conductorEnds(wf, c).map(function (e) { return e.split(' ')[0]; }).sort(); })\n"
+				 "  .filter(function (p) { return p[0] !== '?' && p[0] !== p[1]; }).sort()[0];\n"
+				 "var w = ends.concat(qet.elementUuids(wf).sort().filter(function (u) { return ends.indexOf(u) < 0; }));\n"
 				 "qet.log('WIRED ' + qet.duplicateElements(wf, w.slice(0, 6), wf, 300, 300).length"
 				 " + (qet.conductorCount(wf) > wires ? ' with wires' : ''));\n"
 				 "qet.log('ROWS ' + rows());\n"
