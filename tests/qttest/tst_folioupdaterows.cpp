@@ -58,6 +58,8 @@ class tst_folioupdaterows : public QObject
 		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
 		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
 		env.insert(QStringLiteral("QET_CHECK_DB_REBUILD"), QStringLiteral("1"));
+		// a dozen edits take longer than a script's 30 s under AddressSanitizer
+		env.insert(QStringLiteral("QET_SCRIPT_TIMEOUT_MS"), QStringLiteral("240000"));
 		env.insert(QStringLiteral("HOME"), home);
 		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
 		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
