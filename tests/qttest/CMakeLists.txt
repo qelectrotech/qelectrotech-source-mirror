@@ -1924,3 +1924,14 @@ if(WIN32 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
       "QT_FORCE_STDERR_LOGGING=set:1")
   endif()
 endif()
+
+# MSVC: its Debug libraries make QElectroTech five to eight times slower,
+# and some tests run scripts that then pass QElectroTech's 30 s script limit.
+# QET_SCRIPT_TIMEOUT_MS gives them 300 s. Needs CMake 3.22, as above.
+if(MSVC AND NOT CMAKE_VERSION VERSION_LESS 3.22)
+  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+  if(qet_qttests)
+    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+      "QET_SCRIPT_TIMEOUT_MS=set:300000")
+  endif()
+endif()
