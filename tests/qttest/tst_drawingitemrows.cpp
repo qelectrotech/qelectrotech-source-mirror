@@ -9,6 +9,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // The shapes, free texts and tables of a folio are in the project database,
 // one drawing_item row per value of what their toXml() writes, whether the
@@ -109,7 +110,7 @@ class tst_drawingitemrows : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js, in});
-		if (!proc.waitForFinished(120000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(120000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		if (log) *log = out;
 		QStringList result;
@@ -161,7 +162,7 @@ class tst_drawingitemrows : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/") + example, saved});
-		QVERIFY(proc.waitForFinished(180000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(180000)));
 		QVERIFY(QFile::exists(saved));
 
 		QString lazy_log;

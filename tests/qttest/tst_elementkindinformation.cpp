@@ -154,7 +154,7 @@ private slots:
 		resave.setProcessEnvironment(env);
 		resave.start(QStringLiteral(QET_TEST_BINARY_PATH),
 					 {QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), saved});
-		QVERIFY(resave.waitForFinished(180000));
+		QVERIFY(resave.waitForFinished(QetTest::timeout(180000)));
 		QVERIFY(QFile::exists(saved));
 
 		const QString js = m_dir.filePath(QStringLiteral("script-real.js"));
@@ -179,7 +179,7 @@ private slots:
 			QProcess proc;
 			proc.setProcessEnvironment(e);
 			proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js, saved});
-			if (!proc.waitForFinished(120000)) return QJsonArray();
+			if (!proc.waitForFinished(QetTest::timeout(120000))) return QJsonArray();
 			*log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 			return rowsIn(*log);
 		};

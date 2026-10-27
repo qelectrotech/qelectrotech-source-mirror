@@ -12,6 +12,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // A folio's pictures are in the project database: the drawing_item rows of
 // each (kind image) with a "#blob" row, the SHA-256 of the picture, in
@@ -96,7 +97,7 @@ class tst_picturerows : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js, source});
-		if (!proc.waitForFinished(120000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(120000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		if (log) *log = out;
 		QStringList result;
@@ -160,7 +161,7 @@ class tst_picturerows : public QObject
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--resave"),
 					QFile::exists(example) ? example : QStringLiteral(QET_EXAMPLES_DIR "/") + example, saved});
-		if (!proc.waitForFinished(180000) || !QFile::exists(saved)) return QString();
+		if (!proc.waitForFinished(QetTest::timeout(180000)) || !QFile::exists(saved)) return QString();
 		return saved;
 	}
 
