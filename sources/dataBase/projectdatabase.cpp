@@ -5457,15 +5457,18 @@ void projectDataBase::storeTerminalStrip(TerminalStrip *strip)
 /**
 	@brief projectDataBase::elementTextRowsOf
 	@return the rows of the texts and text groups of the saved symbol
-	@p element: one row per value of its <dynamic_texts> and <texts_groups>
+	@p element: one row per value of its <dynamic_texts> and <texts_groups>.
+	One missing (a symbol saved by an older QElectroTech) reads as empty:
+	a built symbol writes both (Element::ownTextsXml()).
 */
 QList<projectDataBase::ProjectSetting> projectDataBase::elementTextRowsOf(const QDomElement &element)
 {
 	QList<ProjectSetting> rows;
 	for (const QString &tag : {QStringLiteral("dynamic_texts"), QStringLiteral("texts_groups")}) {
-		const QDomElement texts = element.firstChildElement(tag);
-		if (!texts.isNull())
-			xmlRows(texts, tag, 0, rows);
+		QDomElement texts = element.firstChildElement(tag);
+		if (texts.isNull())
+			texts = element.ownerDocument().createElement(tag);
+		xmlRows(texts, tag, 0, rows);
 	}
 	return rows;
 }
