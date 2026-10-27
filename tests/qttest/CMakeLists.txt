@@ -1317,116 +1317,134 @@ endif()
 
 # Where a placed symbol comes from and sits is in the project database
 # (element_placement), from a built folio or from the document. QET-SQL-FORMAT S3d.
-add_executable(
-  tst_elementplacementrows
-  tst_elementplacementrows.cpp)
-add_test(NAME tst_elementplacementrows COMMAND tst_elementplacementrows)
-add_dependencies(tst_elementplacementrows qelectrotech)
-target_link_libraries(tst_elementplacementrows PRIVATE Qt::Test Qt::Xml)
-target_compile_definitions(tst_elementplacementrows PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
-  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_elementplacementrows
+    tst_elementplacementrows.cpp)
+  add_test(NAME tst_elementplacementrows COMMAND tst_elementplacementrows)
+  add_dependencies(tst_elementplacementrows qelectrotech)
+  target_link_libraries(tst_elementplacementrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_elementplacementrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
 
 # The texts of a placed symbol and their groups are in the project database
 # (element_text_value), from a built folio or from the document. QET-SQL-FORMAT S3l.
-add_executable(
-  tst_elementtextrows
-  tst_elementtextrows.cpp)
-add_test(NAME tst_elementtextrows COMMAND tst_elementtextrows)
-add_dependencies(tst_elementtextrows qelectrotech)
-target_link_libraries(tst_elementtextrows PRIVATE Qt::Test Qt::Xml)
-target_compile_definitions(tst_elementtextrows PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
-  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_elementtextrows
+    tst_elementtextrows.cpp)
+  add_test(NAME tst_elementtextrows COMMAND tst_elementtextrows)
+  add_dependencies(tst_elementtextrows qelectrotech)
+  target_link_libraries(tst_elementtextrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_elementtextrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
 
 # The project's own symbols, their categories and its title-block templates
 # are in the project database (symbol_def, symbol_category,
 # titleblock_template). QET-SQL-FORMAT S3m.
-add_executable(
-  tst_projectcollectionrows
-  tst_projectcollectionrows.cpp)
-add_test(NAME tst_projectcollectionrows COMMAND tst_projectcollectionrows)
-add_dependencies(tst_projectcollectionrows qelectrotech)
-target_link_libraries(tst_projectcollectionrows PRIVATE Qt::Test Qt::Xml)
-target_compile_definitions(tst_projectcollectionrows PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
-  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
-  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\""
-  "QET_TITLEBLOCKS_DIR=\"${QET_DIR}/titleblocks\"")
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_projectcollectionrows
+    tst_projectcollectionrows.cpp)
+  add_test(NAME tst_projectcollectionrows COMMAND tst_projectcollectionrows)
+  add_dependencies(tst_projectcollectionrows qelectrotech)
+  target_link_libraries(tst_projectcollectionrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_projectcollectionrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\""
+    "QET_TITLEBLOCKS_DIR=\"${QET_DIR}/titleblocks\"")
+endif()
 
 # What a symbol, a folio or a cable saves that no other table holds is in the
 # project database (element_value, folio_value, cable_value). QET-SQL-FORMAT S3n.
-add_executable(
-  tst_savevaluerows
-  tst_savevaluerows.cpp)
-add_test(NAME tst_savevaluerows COMMAND tst_savevaluerows)
-add_dependencies(tst_savevaluerows qelectrotech)
-target_link_libraries(tst_savevaluerows PRIVATE Qt::Test)
-target_compile_definitions(tst_savevaluerows PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
-  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
-  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_savevaluerows
+    tst_savevaluerows.cpp)
+  add_test(NAME tst_savevaluerows COMMAND tst_savevaluerows)
+  add_dependencies(tst_savevaluerows qelectrotech)
+  target_link_libraries(tst_savevaluerows PRIVATE Qt::Test)
+  target_compile_definitions(tst_savevaluerows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+endif()
 
 # The sequential numbers of a symbol or a wire are in the project database
 # (sequential_number), from a built folio or from the document. QET-SQL-FORMAT S3e.
-add_executable(
-  tst_sequencerows
-  tst_sequencerows.cpp)
-add_test(NAME tst_sequencerows COMMAND tst_sequencerows)
-add_dependencies(tst_sequencerows qelectrotech)
-target_link_libraries(tst_sequencerows PRIVATE Qt::Test Qt::Xml)
-target_compile_definitions(tst_sequencerows PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
-  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_sequencerows
+    tst_sequencerows.cpp)
+  add_test(NAME tst_sequencerows COMMAND tst_sequencerows)
+  add_dependencies(tst_sequencerows qelectrotech)
+  target_link_libraries(tst_sequencerows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_sequencerows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
 
 # The segments of a wire the user reshaped are in the project database
 # (conductor_path), from a built folio or from the document. QET-SQL-FORMAT S3f.
-add_executable(
-  tst_conductorpathrows
-  tst_conductorpathrows.cpp)
-add_test(NAME tst_conductorpathrows COMMAND tst_conductorpathrows)
-add_dependencies(tst_conductorpathrows qelectrotech)
-target_link_libraries(tst_conductorpathrows PRIVATE Qt::Test Qt::Xml)
-target_compile_definitions(tst_conductorpathrows PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
-  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_conductorpathrows
+    tst_conductorpathrows.cpp)
+  add_test(NAME tst_conductorpathrows COMMAND tst_conductorpathrows)
+  add_dependencies(tst_conductorpathrows qelectrotech)
+  target_link_libraries(tst_conductorpathrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_conductorpathrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
 
 # The shapes, free texts and tables of a folio are in the project database
 # (drawing_item), from a built folio or from the document. QET-SQL-FORMAT S3g.
-add_executable(
-  tst_drawingitemrows
-  tst_drawingitemrows.cpp)
-add_test(NAME tst_drawingitemrows COMMAND tst_drawingitemrows)
-add_dependencies(tst_drawingitemrows qelectrotech)
-target_link_libraries(tst_drawingitemrows PRIVATE Qt::Test Qt::Xml)
-target_compile_definitions(tst_drawingitemrows PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
-  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_drawingitemrows
+    tst_drawingitemrows.cpp)
+  add_test(NAME tst_drawingitemrows COMMAND tst_drawingitemrows)
+  add_dependencies(tst_drawingitemrows qelectrotech)
+  target_link_libraries(tst_drawingitemrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_drawingitemrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
 
 # The terminal strips are in the project database (terminal_strip_value
 # rows), opened and written through as they change. QET-SQL-FORMAT S3k1.
-add_executable(
-  tst_terminalstriprows
-  tst_terminalstriprows.cpp)
-add_test(NAME tst_terminalstriprows COMMAND tst_terminalstriprows)
-add_dependencies(tst_terminalstriprows qelectrotech)
-target_link_libraries(tst_terminalstriprows PRIVATE Qt::Test Qt::Xml)
-target_compile_definitions(tst_terminalstriprows PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
-  "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\"")
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_terminalstriprows
+    tst_terminalstriprows.cpp)
+  add_test(NAME tst_terminalstriprows COMMAND tst_terminalstriprows)
+  add_dependencies(tst_terminalstriprows qelectrotech)
+  target_link_libraries(tst_terminalstriprows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_terminalstriprows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\"")
+endif()
 
 # The pictures of a folio are in the project database (drawing_item rows
 # with a "#blob" hash, and the blob table), from a built folio or from the
 # document, .qet or .qetz. QET-SQL-FORMAT S3j.
-add_executable(
-  tst_picturerows
-  tst_picturerows.cpp)
-add_test(NAME tst_picturerows COMMAND tst_picturerows)
-add_dependencies(tst_picturerows qelectrotech)
-target_link_libraries(tst_picturerows PRIVATE Qt::Test Qt::Xml Qt::Gui)
-target_compile_definitions(tst_picturerows PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
-  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_picturerows
+    tst_picturerows.cpp)
+  add_test(NAME tst_picturerows COMMAND tst_picturerows)
+  add_dependencies(tst_picturerows qelectrotech)
+  target_link_libraries(tst_picturerows PRIVATE Qt::Test Qt::Xml Qt::Gui)
+  target_compile_definitions(tst_picturerows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
 
 # A symbol's kind information (NO/NC/SW/power) is queryable from the
 # project database once it is placed, not only from a live Element*.
