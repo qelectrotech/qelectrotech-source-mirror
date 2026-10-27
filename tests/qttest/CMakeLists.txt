@@ -1822,6 +1822,10 @@ target_link_libraries(tst_workingcopypoll PRIVATE Qt::Xml)
 target_compile_definitions(tst_workingcopypoll PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# While placing, the folio knows the symbol that follows the mouse: the
+# crosshair leaves it out, so a corner turned by Space stays visible.
+qet_add_app_test(tst_pendingelement tst_pendingelement.cpp)
+
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
 # PATH for every test above and keeps the ENVIRONMENT each test sets
@@ -1838,3 +1842,4 @@ if(MSVC)
       "PATH=path_list_prepend:$<TARGET_FILE_DIR:Qt6::Core>")
   endif()
 endif()
+

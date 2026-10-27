@@ -314,6 +314,7 @@ class Diagram : public QGraphicsScene
 		virtual void removeItem (QGraphicsItem *item);
 		bool eventInterfaceIsRunning() const;
 		bool cableToolIsRunning() const;
+		Element *pendingElement() const;
 	
 		// methods related to graphics options
 		ExportProperties applyProperties(const ExportProperties &);

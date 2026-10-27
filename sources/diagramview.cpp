@@ -2340,8 +2340,25 @@ void DiagramView::drawForeground(QPainter *painter, const QRectF &rect)
 	pen.setWidthF(0);
 	p->setPen(pen);
 	p->setRenderHint(QPainter::Antialiasing, false);
-	p->drawLine(QLineF(area.left(), m_crosshair_pos.y(), area.right(), m_crosshair_pos.y()));
-	p->drawLine(QLineF(m_crosshair_pos.x(), area.top(), m_crosshair_pos.x(), area.bottom()));
+		//The crosshair stands on a terminal of the symbol being placed, so
+		//it would hide the symbol's own lines -- a corner and its turn by
+		//Space entirely. It leaves the symbol out.
+	QRectF gap;
+	if (Element *pending = m_diagram->pendingElement())
+		gap = pending->sceneBoundingRect().adjusted(-2, -2, 2, 2);
+	const qreal x = m_crosshair_pos.x(), y = m_crosshair_pos.y();
+	if (gap.isNull() || y < gap.top() || y > gap.bottom()) {
+		p->drawLine(QLineF(area.left(), y, area.right(), y));
+	} else {
+		p->drawLine(QLineF(area.left(), y, gap.left(), y));
+		p->drawLine(QLineF(gap.right(), y, area.right(), y));
+	}
+	if (gap.isNull() || x < gap.left() || x > gap.right()) {
+		p->drawLine(QLineF(x, area.top(), x, area.bottom()));
+	} else {
+		p->drawLine(QLineF(x, area.top(), x, gap.top()));
+		p->drawLine(QLineF(x, gap.bottom(), x, area.bottom()));
+	}
 	p->restore();
 	drawPointer(p);
 }
