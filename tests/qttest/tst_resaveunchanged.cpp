@@ -828,7 +828,7 @@ private slots:
 				 "}\n"
 				 "qet.log('COPIED ' + copied);\n"
 				 "var wf = 0; while (qet.elementUuids(wf).length < 6) ++wf;\n"
-				 "var wires = qet.conductorCount(wf), w = qet.elementUuids(wf);\n"
+				 "var wires = qet.conductorCount(wf), w = qet.elementUuids(wf).sort();\n"
 				 "qet.log('WIRED ' + qet.duplicateElements(wf, w.slice(0, 6), wf, 300, 300).length"
 				 " + (qet.conductorCount(wf) > wires ? ' with wires' : ''));\n"
 				 "qet.log('ROWS ' + rows());\n"
