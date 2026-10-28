@@ -155,6 +155,7 @@ class projectDataBase : public QObject
 			*/
 		static constexpr int PublicViewsVersion = 1;
 		static QStringList publicViews();
+		static QStringList publicViewStatements();
 		QSqlDatabase database() const {return m_data_base;}
 		int excludedConductorCount() const;
 

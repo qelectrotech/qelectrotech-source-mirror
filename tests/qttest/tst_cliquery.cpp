@@ -12,6 +12,9 @@
 #include <QJsonObject>
 #include <QProcess>
 #include <QProcessEnvironment>
+#include <QCryptographicHash>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 #include <QTemporaryDir>
 
 class tst_cliquery : public QObject
@@ -27,7 +30,7 @@ class tst_cliquery : public QObject
 		QStringList lines() const {return out.split(QLatin1Char('\n'), Qt::SkipEmptyParts);}
 	};
 
-	Result run(const QStringList &args)
+	Result run(const QStringList &args, const QStringList &extra_env = {})
 	{
 		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(m_run++));
 		QDir().mkpath(home);
@@ -37,6 +40,8 @@ class tst_cliquery : public QObject
 		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
 		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
 		env.remove(QStringLiteral("QET_EAGER_FOLIOS"));
+		for (const QString &pair : extra_env)
+			env.insert(pair.section(QLatin1Char('='), 0, 0), pair.section(QLatin1Char('='), 1));
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
@@ -61,6 +66,22 @@ class tst_cliquery : public QObject
 		for (QString &row : rows) row = row.section(QLatin1Char(','), 1);
 		rows.sort();
 		return rows;
+	}
+
+	// industrial saved as a .qetdb, once
+	QString industrialDb()
+	{
+		const QString path = m_dir.filePath(QStringLiteral("direct.qetdb"));
+		if (!QFile::exists(path))
+			run({QStringLiteral("--resave"), example(QStringLiteral("industrial.qet")), path});
+		return path;
+	}
+
+	static QByteArray digest(const QString &path)
+	{
+		QFile f(path);
+		return f.open(QIODevice::ReadOnly)
+				? QCryptographicHash::hash(f.readAll(), QCryptographicHash::Sha256) : QByteArray();
 	}
 
 private slots:
@@ -172,11 +193,15 @@ private slots:
 	void writesRefused()
 	{
 		QFETCH(QString, sql);
-		const QString project = example(QStringLiteral("industrial.qet"));
-		const Result r = run({QStringLiteral("--query"), sql, project});
-		QCOMPARE(r.code, 1);
-		QVERIFY2(r.err.contains(project + QStringLiteral(": ")), qPrintable(r.err.right(600)));
-		QVERIFY(r.out.trimmed().isEmpty());
+			//Through the project, and on a .qetdb read itself
+		for (const QString &project : {example(QStringLiteral("industrial.qet")), industrialDb()}) {
+			const QByteArray before = digest(project);
+			const Result r = run({QStringLiteral("--query"), sql, project});
+			QCOMPARE(r.code, 1);
+			QVERIFY2(r.err.contains(project + QStringLiteral(": ")), qPrintable(r.err.right(600)));
+			QVERIFY(r.out.trimmed().isEmpty());
+			QCOMPARE(digest(project), before);
+		}
 	}
 
 	// A file that is missing is reported; the others still give their rows
@@ -188,6 +213,62 @@ private slots:
 		QCOMPARE(r.code, 1);
 		QVERIFY(r.err.contains(missing));
 		QVERIFY(r.lines().size() > 1);
+	}
+
+	// A .qetdb read itself gives the rows of the project opened from it,
+	// and the file is not changed
+	void directEqualsOpened()
+	{
+		const QString path = industrialDb();
+		const QByteArray before = digest(path);
+		QVERIFY(!before.isEmpty());
+		const QString sql = QStringLiteral("SELECT folio_number, position, label, kind FROM qet_devices");
+		const Result direct = run({QStringLiteral("--query"), sql, path});
+		const Result opened = run({QStringLiteral("--query"), sql, path}, {QStringLiteral("QET_QUERY_OPEN_PROJECT=1")});
+		QVERIFY2(direct.code == 0 && opened.code == 0, qPrintable(direct.err + opened.err));
+		QVERIFY(rowsOnly(direct).size() > 100);
+		QCOMPARE(rowsOnly(direct), rowsOnly(opened));
+		QCOMPARE(digest(path), before);
+	}
+
+	// A .qetdb saved before the views existed answers the same: they are
+	// made for the query, not read from the file
+	void fileWithoutViews()
+	{
+		const QString path = m_dir.filePath(QStringLiteral("noviews.qetdb"));
+		QVERIFY(QFile::copy(industrialDb(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		{
+			QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("drop"));
+			db.setDatabaseName(path);
+			QVERIFY(db.open());
+			QSqlQuery query(db);
+			for (const char *view : {"qet_folios", "qet_devices", "qet_wires", "qet_links"})
+				QVERIFY(query.exec(QStringLiteral("DROP VIEW IF EXISTS %1").arg(QLatin1String(view))));
+			db.close();
+		}
+		QSqlDatabase::removeDatabase(QStringLiteral("drop"));
+		const QString sql = QStringLiteral("SELECT wire_number, from_device, to_device FROM qet_wires");
+		const Result a = run({QStringLiteral("--query"), sql, path});
+		const Result b = run({QStringLiteral("--query"), sql, industrialDb()});
+		QVERIFY2(a.code == 0, qPrintable(a.err.right(600)));
+		QVERIFY(rowsOnly(a).size() > 100);
+		QCOMPARE(rowsOnly(a), rowsOnly(b));
+	}
+
+	// A damaged file is refused with its name, the others still answer
+	void damagedRefused()
+	{
+		const QString bad = m_dir.filePath(QStringLiteral("damaged.qetdb"));
+		QFile f(bad);
+		QVERIFY(f.open(QIODevice::WriteOnly));
+		f.write(QByteArray("SQLite format 3") + QByteArray(4096, 'x'));
+		f.close();
+		const Result r = run({QStringLiteral("--query"), QStringLiteral("SELECT title FROM qet_folios"),
+							  bad, industrialDb()});
+		QCOMPARE(r.code, 1);
+		QVERIFY2(r.err.contains(bad + QStringLiteral(": ")), qPrintable(r.err.right(600)));
+		QCOMPARE(r.lines().size(), 1 + 50);
 	}
 
 	// A project's .qet, .qetz and .qetdb give the same rows

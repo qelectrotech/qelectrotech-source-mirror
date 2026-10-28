@@ -252,3 +252,13 @@ QByteArray QetDbFile::readAsQet(const QString &path, QString *error)
 	}
 	return file.readAll();
 }
+
+/**
+	@brief QetDbFile::isReadable
+	@return true if @p path passes the checks a .qetdb passes before it is
+	opened, with @p error saying why not otherwise
+*/
+bool QetDbFile::isReadable(const QString &path, QString *error)
+{
+	return check(path, error);
+}

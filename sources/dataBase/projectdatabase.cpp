@@ -4511,6 +4511,23 @@ QStringList projectDataBase::publicViews()
 */
 void projectDataBase::createPublicViews()
 {
+	QSqlQuery query(m_data_base);
+	for (const QString &view : publicViewStatements()) {
+		if (!query.exec(view)) {
+			qDebug() << "projectDataBase::createPublicViews" << query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::publicViewStatements
+	@return the CREATE VIEW statement of each of publicViews(): what
+	createPublicViews() runs on the project database, and --query as
+	TEMP views on a .qetdb it reads directly, so that a file saved before
+	the views existed answers the same
+*/
+QStringList projectDataBase::publicViewStatements()
+{
 	const QString folio_of(QStringLiteral(
 		" LEFT JOIN diagram d ON d.uuid = %1"
 		" LEFT JOIN diagram_info di ON di.diagram_uuid = %1"));
@@ -4575,12 +4592,7 @@ void projectDataBase::createPublicViews()
 			"LEFT JOIN diagram_info di2 ON di2.diagram_uuid = e2.diagram_uuid "
 			"WHERE e1.type IN ('master', 'next_report')")
 	};
-	QSqlQuery query(m_data_base);
-	for (const QString &view : views) {
-		if (!query.exec(view)) {
-			qDebug() << "projectDataBase::createPublicViews" << query.lastError();
-		}
-	}
+	return views;
 }
 
 void projectDataBase::populateDiagramTable()

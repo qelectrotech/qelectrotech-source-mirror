@@ -1853,7 +1853,7 @@ add_executable(
   tst_cliquery.cpp)
 add_test(NAME tst_cliquery COMMAND tst_cliquery)
 add_dependencies(tst_cliquery qelectrotech)
-target_link_libraries(tst_cliquery PRIVATE Qt::Test)
+target_link_libraries(tst_cliquery PRIVATE Qt::Test Qt::Sql)
 target_compile_definitions(tst_cliquery PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""

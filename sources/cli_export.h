@@ -109,7 +109,8 @@ namespace CLIExport {
 		      qet_folios, qet_devices, qet_wires and qet_links keep their
 		      names and columns from one version to the next. A project
 		      that cannot be opened or queried is reported on stderr, the
-		      others still run, and the exit code is 1.
+		      others still run, and the exit code is 1. A .qetdb is read
+		      itself, without opening the project: seconds for hundreds.
 		      E.g. --query "SELECT label, folio FROM qet_devices
 		      WHERE article = 'LC1D09'" *.qet
 		set-titleblock: stamp title-block fields onto every folio, then save.

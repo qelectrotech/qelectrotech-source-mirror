@@ -40,6 +40,9 @@ namespace QetDbFile
 	bool isDatabase(const QByteArray &head);
 	bool save(projectDataBase &database, const QString &path, QString *error);
 	QByteArray readAsQet(const QString &path, QString *error);
+		/// The checks a file passes before it is opened: not damaged,
+		/// ours, a format this QElectroTech reads
+	bool isReadable(const QString &path, QString *error);
 }
 
 #endif // QETDBFILE_H
