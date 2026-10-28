@@ -43,7 +43,7 @@ namespace QetDbFile
 	bool isDatabase(const QByteArray &head);
 	bool save(projectDataBase &database, const QString &path, QString *error);
 	bool read(const QString &path, QDomDocument *document, QString *error,
-			  const std::function<void(const QString &copy)> &with_copy = {});
+			  const std::function<bool(const QString &copy)> &with_copy = {});
 }
 
 #endif // QETDBFILE_H

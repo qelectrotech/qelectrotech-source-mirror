@@ -330,6 +330,24 @@ void projectDataBase::loadCaches()
 }
 
 /**
+	@brief projectDataBase::foliosWithCableWires
+	@return the folios with a wire that is a core of a cable, from the
+	wires' rows: what QETProject::cableLabelFolios() otherwise reads from
+	every folio not built, which for a .qetdb opened from its tables would
+	write out each one's items (S4x X3)
+*/
+QSet<QUuid> projectDataBase::foliosWithCableWires() const
+{
+	QSet<QUuid> folios;
+	QSqlQuery query(m_data_base);
+	if (query.exec(QStringLiteral("SELECT DISTINCT c.diagram_uuid FROM conductor c "
+								  "JOIN conductor_properties p ON p.conductor_uuid = c.uuid "
+								  "WHERE p.name = 'cable_uuid' AND p.value <> ''")))
+		while (query.next()) folios.insert(QUuid(query.value(0).toString()));
+	return folios;
+}
+
+/**
 	@brief projectDataBase::stateDump
 	Every table, its rows sorted, and every cache loadCaches() fills, its
 	entries sorted, as text: two ways of opening a project give the same

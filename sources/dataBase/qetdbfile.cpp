@@ -342,11 +342,13 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 	document: read from a copy, so that the file itself is never opened for
 	writing, once it passes the checks of a save. Handed over as it is, not
 	written as text and parsed again (S4x X1). @p with_copy, if given, is
-	called with the checked copy, indexes made again, while it exists.
+	called with the checked copy, indexes made again, while it exists; if
+	it returns true, the folios' items are left out of @p document, marked
+	for projectDataBase::writeFolioContent().
 	@return false, with @p error saying why, if it cannot be read
 */
 bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error,
-					 const std::function<void(const QString &copy)> &with_copy)
+					 const std::function<bool(const QString &copy)> &with_copy)
 {
 	QTemporaryDir dir;
 	const QString copy = dir.filePath(QStringLiteral("project.qetdb"));
@@ -371,7 +373,9 @@ bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error
 		normalize(query);
 		return true;
 	});
-		//The checked copy, for the project database to start from (S4x X2)
-	if (with_copy) with_copy(copy);
-	return projectDataBase::readDocument(copy, document, error);
+		//The checked copy, for the project database to start from (S4x X2):
+		//if it did, the folios' items are left in it until each is built
+		//(S4x X3)
+	const bool deferred = with_copy && with_copy(copy);
+	return projectDataBase::readDocument(copy, document, error, deferred);
 }

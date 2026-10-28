@@ -430,6 +430,18 @@ void writeConductors(QDomDocument &document, QDomElement &folio, const QSqlDatab
 }
 
 /// The symbols and wires a folio keeps as read (kept_item), after its own
+void writeKept(QDomDocument &document, QDomElement &folio, const QSqlDatabase &db, const QString &uuid);
+void writeDrawnItems(QDomDocument &document, QDomElement &folio, const QSqlDatabase &db, const QString &uuid);
+
+/// A folio's items: its symbols, wires, kept items and drawn items
+void writeFolioItems(QDomDocument &document, QDomElement &folio, const QSqlDatabase &db, const QString &uuid)
+{
+	writeElements(document, folio, db, uuid);
+	writeConductors(document, folio, db, uuid);
+	writeKept(document, folio, db, uuid);
+	writeDrawnItems(document, folio, db, uuid);
+}
+
 void writeKept(QDomDocument &document, QDomElement &folio, const QSqlDatabase &db, const QString &uuid)
 {
 	QSqlQuery query(db);
@@ -566,7 +578,7 @@ QDomElement collectionOf(QDomDocument &document, const QSqlDatabase &db)
 	@return the project the database @p db holds, as a save writes it,
 	read from its tables alone
 */
-QDomDocument projectDataBase::toDocument(const QSqlDatabase &db)
+QDomDocument projectDataBase::toDocument(const QSqlDatabase &db, bool deferred_folios)
 {
 	QDomDocument document;
 	QDomElement project = document.createElement(QStringLiteral("project"));
@@ -644,10 +656,12 @@ QDomDocument projectDataBase::toDocument(const QSqlDatabase &db)
 		rowsToXml(document, folio, QStringLiteral("diagram"),
 				  keyRows(db, QStringLiteral("folio_value"), QStringLiteral("diagram_uuid"), uuid));
 		writeFolioCounters(document, folio, db, uuid);
-		writeElements(document, folio, db, uuid);
-		writeConductors(document, folio, db, uuid);
-		writeKept(document, folio, db, uuid);
-		writeDrawnItems(document, folio, db, uuid);
+			//A folio not built at the open gets its items when it is
+			//(writeFolioContent(), S4x X3)
+		if (deferred_folios)
+			folio.setAttribute(QString::fromLatin1(deferred_content), QStringLiteral("1"));
+		else
+			writeFolioItems(document, folio, db, uuid);
 		folio.setAttribute(QStringLiteral("order"), order_num++);
 		project.appendChild(folio);
 	}
@@ -676,6 +690,20 @@ QDomDocument projectDataBase::toDocument(const QSqlDatabase &db)
 	its own.
 	@return true on success; else false, and why in @p error
 */
+/**
+	@brief projectDataBase::writeFolioContent
+	Write into @p folio, a folio element toDocument() left without its items
+	(deferred_content), its symbols, wires, kept items and drawn items, as
+	this database holds them now
+*/
+void projectDataBase::writeFolioContent(QDomElement &folio) const
+{
+	if (!folio.hasAttribute(QString::fromLatin1(deferred_content))) return;
+	folio.removeAttribute(QString::fromLatin1(deferred_content));
+	QDomDocument document = folio.ownerDocument();
+	writeFolioItems(document, folio, m_data_base, folio.attribute(QStringLiteral("uuid")));
+}
+
 bool projectDataBase::writeDocument(const QString &database_file, const QString &project_file, QString *error)
 {
 	QDomDocument document;
@@ -689,7 +717,8 @@ bool projectDataBase::writeDocument(const QString &database_file, const QString 
 	holds (toDocument()), read through a connection of its own.
 	@return true on success; else false, and why in @p error
 */
-bool projectDataBase::readDocument(const QString &database_file, QDomDocument *document, QString *error)
+bool projectDataBase::readDocument(const QString &database_file, QDomDocument *document, QString *error,
+								   bool deferred_folios)
 {
 	const QString connection = QStringLiteral("qet_project_writer_") + QUuid::createUuid().toString();
 	bool ok = false;
@@ -700,7 +729,7 @@ bool projectDataBase::readDocument(const QString &database_file, QDomDocument *d
 		if (!db.open()) {
 			if (error) *error = db.lastError().text();
 		} else {
-			*document = toDocument(db);
+			*document = toDocument(db, deferred_folios);
 			ok = true;
 		}
 		db.close();

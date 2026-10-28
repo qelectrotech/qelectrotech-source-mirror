@@ -92,6 +92,7 @@ class projectDataBase : public QObject
 			/// (S4x X2, projectdatabaseadopt.cpp)
 		bool adoptFile(const QString &file, QString *error = nullptr);
 		bool adopted() const {return m_adopted;}
+		QSet<QUuid> foliosWithCableWires() const;
 		QString stateDump() const;
 		bool copyTo(const QString &file, QString *error = nullptr);
 		QString workingCopyPath() const {return m_working_copy_path;}
@@ -345,9 +346,13 @@ class projectDataBase : public QObject
 		static Numbering numberingOf(const QSqlDatabase &db);
 			/// The project @p db holds, written from its tables alone
 			/// (projectdatabasewriter.cpp)
-		static QDomDocument toDocument(const QSqlDatabase &db);
+		static QDomDocument toDocument(const QSqlDatabase &db, bool deferred_folios = false);
 		static bool readDocument(const QString &database_file, QDomDocument *document,
-								 QString *error = nullptr);
+								 QString *error = nullptr, bool deferred_folios = false);
+			/// The attribute of a folio element whose items are still in the
+			/// database (S4x X3)
+		static constexpr const char *deferred_content = "qetdb-deferred";
+		void writeFolioContent(QDomElement &folio) const;
 		static bool writeDocument(const QString &database_file, const QString &project_file,
 								  QString *error = nullptr);
 		bool writeProjectFromDatabase(const QString &project_file, QString *error = nullptr);

@@ -900,6 +900,21 @@ QDomElement Diagram::deferredXmlWithHeader(QDomDocument &document)
 }
 
 /**
+	@brief Diagram::deferredXml
+	The XML kept for building this folio later. A folio of a .qetdb opened
+	from its tables has its header only: its items are written into it
+	from the project database the first time they are asked for (S4x X3).
+*/
+QDomElement Diagram::deferredXml() const
+{
+	if (m_project && m_deferred.hasAttribute(QString::fromLatin1(projectDataBase::deferred_content))) {
+		QDomElement xml = m_deferred;
+		m_project->dataBase()->writeFolioContent(xml);
+	}
+	return m_deferred;
+}
+
+/**
 	@brief Diagram::buildDeferred
 	Build this folio's items from the XML kept for later, and nothing else.
 	Their rows are in the project database already, filled from the same
@@ -911,7 +926,7 @@ bool Diagram::buildDeferred()
 	if (isLoaded()) {
 		return false;
 	}
-	QDomElement xml = m_deferred;
+	QDomElement xml = deferredXml();
 	m_deferred = QDomElement();
 	m_kept_part.clear();
 	m_kept_text.clear();

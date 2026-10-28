@@ -599,11 +599,16 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		content.clear();
 			//The project database starts from the file's tables (S4x X2);
 			//QET_QETDB_NO_ADOPT=1 fills it from the document instead
+			//With lazy folios, each folio's items are read from it when the
+			//folio is built (S4x X3)
 		const auto adopt = [this](const QString &copy) {
-			if (qEnvironmentVariableIntValue("QET_QETDB_NO_ADOPT") == 1) return;
+			if (qEnvironmentVariableIntValue("QET_QETDB_NO_ADOPT") == 1) return false;
 			QString why;
-			if (!m_data_base.adoptFile(copy, &why))
+			if (!m_data_base.adoptFile(copy, &why)) {
 				qInfo().noquote() << "Project database not read from the file:" << why;
+				return false;
+			}
+			return lazyFolios();
 		};
 		if (!QetDbFile::read(fi.absoluteFilePath(), &xml_project, &error, adopt)) {
 			qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << error;
@@ -774,6 +779,15 @@ QList<Diagram *> QETProject::cableLabelFolios()
 		return diagrams();
 	}
 	QList<Diagram *> referring;
+		//Opened from a .qetdb's tables: its wires' rows say it, without
+		//writing out every folio's items (S4x X3)
+	if (m_data_base.adopted()) {
+		const QSet<QUuid> with_cables = m_data_base.foliosWithCableWires();
+		for (Diagram *d : std::as_const(m_diagrams_list))
+			if (!d->isLoaded() && with_cables.contains(d->uuid())) referring << d;
+		buildFolios(referring);
+		return builtFolios();
+	}
 	for (Diagram *d : std::as_const(m_diagrams_list)) {
 		if (d->isLoaded()) continue;
 		for (const QDomElement &wire : QET::findInDomElement(d->deferredXml(), QStringLiteral("conductors"),
