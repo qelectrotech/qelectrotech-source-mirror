@@ -3747,6 +3747,11 @@ bool projectDataBase::createDataBase()
 	if (!query_.exec(element_table)) {
 		qDebug() <<" element_table query : "<< query_.lastError();
 	}
+		//A folio's symbols, found by the folio: what writing a project from
+		//the database reads its other tables through
+	if (!query_.exec(QStringLiteral("CREATE INDEX idx_element_diagram ON element (diagram_uuid)"))) {
+		qDebug() << " element index query : " << query_.lastError();
+	}
 
 	//Create the diagram info table
 	QString diagram_info_table("CREATE TABLE diagram_info (diagram_uuid VARCHAR(50) PRIMARY KEY NOT NULL, ");

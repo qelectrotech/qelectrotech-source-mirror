@@ -156,22 +156,31 @@ Rows keyRows(const QSqlDatabase &db, const QString &table, const QString &column
 	return selectRows(query);
 }
 
-autonum::sequentialNumbers sequenceOf(const QSqlDatabase &db, const QString &item)
+/// The numbers @p parts, (part, value) in part and ord order, make
+autonum::sequentialNumbers sequenceFrom(const QList<std::pair<QString, QString>> &parts_values)
 {
 	autonum::sequentialNumbers numbers;
-	QSqlQuery query(db);
-	query.prepare(QStringLiteral("SELECT part, value FROM sequential_number WHERE item_uuid = :uuid ORDER BY part, ord"));
-	query.bindValue(QStringLiteral(":uuid"), item);
-	query.exec();
 	const QHash<QString, QStringList *> parts = {
 		{QStringLiteral("unit"), &numbers.unit}, {QStringLiteral("wrap"), &numbers.wrap},
 		{QStringLiteral("unit_folio"), &numbers.unit_folio}, {QStringLiteral("ten"), &numbers.ten},
 		{QStringLiteral("ten_folio"), &numbers.ten_folio}, {QStringLiteral("hundred"), &numbers.hundred},
 		{QStringLiteral("hundred_folio"), &numbers.hundred_folio}, {QStringLiteral("alpha"), &numbers.alpha}};
-	while (query.next())
-		if (QStringList *part = parts.value(query.value(0).toString()))
-			part->append(query.value(1).toString());
+	for (const auto &[part_name, value] : parts_values)
+		if (QStringList *part = parts.value(part_name))
+			part->append(value);
 	return numbers;
+}
+
+autonum::sequentialNumbers sequenceOf(const QSqlDatabase &db, const QString &item)
+{
+	QSqlQuery query(db);
+	query.prepare(QStringLiteral("SELECT part, value FROM sequential_number WHERE item_uuid = :uuid ORDER BY part, ord"));
+	query.bindValue(QStringLiteral(":uuid"), item);
+	query.exec();
+	QList<std::pair<QString, QString>> parts_values;
+	while (query.next())
+		parts_values.append({query.value(0).toString(), query.value(1).toString()});
+	return sequenceFrom(parts_values);
 }
 
 /// What a folio's title block saves, from its folio_titleblock rows
@@ -258,6 +267,53 @@ void writeElements(QDomDocument &document, QDomElement &folio, const QSqlDatabas
 		qWarning() << "projectDataBase::toDocument elements:" << query.lastError();
 		return;
 	}
+		//Each table read once for the folio's symbols, not once per symbol
+		//(5 080 symbols of f2099: 2.9 s): each symbol's rows in the order
+		//its own query gave
+	const auto folio_rows = [&db, &uuid](const QString &sql) {
+		QSqlQuery rows(db);
+		rows.prepare(sql);
+		rows.bindValue(QStringLiteral(":uuid"), uuid);
+		if (!rows.exec())
+			qWarning() << "projectDataBase::toDocument elements:" << rows.lastError();
+		return rows;
+	};
+	QHash<QString, Rows> values, texts;
+	for (auto [table, rows] : {std::pair{QStringLiteral("element_value"), &values},
+							   std::pair{QStringLiteral("element_text_value"), &texts}}) {
+		QSqlQuery q = folio_rows(QStringLiteral("SELECT v.element_uuid, v.section, v.ord, v.name, v.value FROM %1 v "
+												"JOIN element e ON e.uuid = v.element_uuid "
+												"WHERE e.diagram_uuid = :uuid ORDER BY v.rowid").arg(table));
+		while (q.next())
+			(*rows)[q.value(0).toString()].append({q.value(1).toString(), q.value(2).toInt(),
+												   q.value(3).toString(), q.value(4).toString()});
+	}
+	QHash<QString, QList<std::pair<QString, QString>>> sequence_parts;
+	{
+		QSqlQuery q = folio_rows(QStringLiteral("SELECT s.item_uuid, s.part, s.value FROM sequential_number s "
+												"JOIN element e ON e.uuid = s.item_uuid "
+												"WHERE e.diagram_uuid = :uuid ORDER BY s.item_uuid, s.part, s.ord"));
+		while (q.next())
+			sequence_parts[q.value(0).toString()].append({q.value(1).toString(), q.value(2).toString()});
+	}
+	QHash<QString, QList<std::pair<QString, QVariant>>> links_of;
+	{
+		QSqlQuery q = folio_rows(QStringLiteral("SELECT l.element_uuid, l.linked_uuid, l.group_index FROM link l "
+												"JOIN element e ON e.uuid = l.element_uuid "
+												"WHERE e.diagram_uuid = :uuid ORDER BY l.element_uuid, l.ord"));
+		while (q.next())
+			links_of[q.value(0).toString()].append({q.value(1).toString(), q.value(2)});
+	}
+	QHash<QString, DiagramContext> information_of;
+	{
+		QSqlQuery q = folio_rows(QStringLiteral("SELECT i.element_uuid, i.name, i.value, i.show FROM element_information i "
+												"JOIN element e ON e.uuid = i.element_uuid "
+												"WHERE e.diagram_uuid = :uuid ORDER BY i.element_uuid, i.ord"));
+		while (q.next())
+			information_of[q.value(0).toString()].addValue(q.value(1).toString(), q.value(2).toString(),
+															q.value(3).toBool());
+	}
+
 	QDomElement list = document.createElement(QStringLiteral("elements"));
 	while (query.next()) {
 		const QString element_uuid = query.value(0).toString();
@@ -277,40 +333,30 @@ void writeElements(QDomDocument &document, QDomElement &folio, const QSqlDatabas
 			element.setAttribute(QString::fromLatin1(ItemGroups::xml_attribute), query.value(2).toString());
 
 			//Prefix, frozen label, movability, override properties, PLC data
-		Rows values = keyRows(db, QStringLiteral("element_value"), QStringLiteral("element_uuid"), element_uuid);
+		Rows own_values = values.value(element_uuid);
 			//Its children's sections start with their own tag
-		for (Row &row : values)
+		for (Row &row : own_values)
 			if (row.section != QLatin1String("element")) row.section.prepend(QStringLiteral("element/"));
-		rowsToXml(document, element, QStringLiteral("element"), values);
+		rowsToXml(document, element, QStringLiteral("element"), own_values);
 
-		const QDomElement sequence = sequenceOf(db, element_uuid).toXml(document);
+		const QDomElement sequence = sequenceFrom(sequence_parts.value(element_uuid)).toXml(document);
 		if (sequence.hasChildNodes()) element.appendChild(sequence);
 			//Each terminal is placed from the symbol's definition, and the
 			//wires name theirs by uuid
 		element.appendChild(document.createElement(QStringLiteral("terminals")));
 		element.appendChild(document.createElement(QStringLiteral("inputs")));
 
-		QSqlQuery links(db);
-		links.prepare(QStringLiteral("SELECT linked_uuid, group_index FROM link WHERE element_uuid = :uuid ORDER BY ord"));
-		links.bindValue(QStringLiteral(":uuid"), element_uuid);
-		links.exec();
 		QDomElement links_uuids = document.createElement(QStringLiteral("links_uuids"));
-		while (links.next()) {
+		for (const auto &[linked, group_index] : links_of.value(element_uuid)) {
 			QDomElement link = document.createElement(QStringLiteral("link_uuid"));
-			link.setAttribute(QStringLiteral("uuid"), links.value(0).toString());
-			if (!links.value(1).isNull() && links.value(1).toInt() >= 0)
-				link.setAttribute(QStringLiteral("group_index"), links.value(1).toInt());
+			link.setAttribute(QStringLiteral("uuid"), linked);
+			if (!group_index.isNull() && group_index.toInt() >= 0)
+				link.setAttribute(QStringLiteral("group_index"), group_index.toInt());
 			links_uuids.appendChild(link);
 		}
 		if (links_uuids.hasChildNodes()) element.appendChild(links_uuids);
 
-		QSqlQuery information(db);
-		information.prepare(QStringLiteral("SELECT name, value, show FROM element_information WHERE element_uuid = :uuid ORDER BY ord"));
-		information.bindValue(QStringLiteral(":uuid"), element_uuid);
-		information.exec();
-		DiagramContext context;
-		while (information.next())
-			context.addValue(information.value(0).toString(), information.value(1).toString(), information.value(2).toBool());
+		const DiagramContext context = information_of.value(element_uuid);
 		QDomElement infos = document.createElement(QStringLiteral("elementInformations"));
 		context.toXml(infos, QStringLiteral("elementInformation"));
 		if (infos.hasChildNodes()) element.appendChild(infos);
@@ -318,7 +364,7 @@ void writeElements(QDomDocument &document, QDomElement &folio, const QSqlDatabas
 			//Texts and text groups (S3l)
 		rowsToXml(document, element, QStringLiteral("element"),
 				  [&]() {
-					  Rows rows = keyRows(db, QStringLiteral("element_text_value"), QStringLiteral("element_uuid"), element_uuid);
+					  Rows rows = texts.value(element_uuid);
 						  //Their sections start with their own tag
 					  for (Row &row : rows) row.section.prepend(QStringLiteral("element/"));
 					  return rows;
