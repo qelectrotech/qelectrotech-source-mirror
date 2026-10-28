@@ -178,6 +178,42 @@ private slots:
 		QVERIFY(!QFile::exists(m_dir.filePath(QStringLiteral("damaged.qet"))));
 	}
 
+	// What SQLite's own check passes but the file must not hold: a value
+	// changed since the save, SQL that would run on its own, an item
+	// referring to one that is not there. Each refused, with why.
+	void tamperedRefused_data()
+	{
+		QTest::addColumn<QString>("sql");
+		QTest::addColumn<QString>("why");
+		QTest::newRow("value changed") << QStringLiteral(
+				"UPDATE element_info SET label = 'CHANGED' WHERE rowid = (SELECT min(rowid) FROM element_info)")
+				<< QStringLiteral("not what QElectroTech saved");
+		QTest::newRow("trigger") << QStringLiteral(
+				"CREATE TRIGGER t AFTER INSERT ON element BEGIN DELETE FROM element; END")
+				<< QStringLiteral("does not expect (t)");
+		QTest::newRow("view") << QStringLiteral("CREATE VIEW extra AS SELECT 1")
+				<< QStringLiteral("does not expect (extra)");
+		QTest::newRow("missing item") << QStringLiteral(
+				"DELETE FROM diagram WHERE rowid = (SELECT min(rowid) FROM diagram)")
+				<< QStringLiteral("refers to one that is not there");
+	}
+
+	void tamperedRefused()
+	{
+		QFETCH(QString, sql);
+		QFETCH(QString, why);
+		const QString path = m_dir.filePath(QStringLiteral("tampered%1.qetdb").arg(m_run));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		QVERIFY(exec(path, sql));
+		QCOMPARE(pragma(path, QStringLiteral("PRAGMA quick_check")).toString(), QStringLiteral("ok"));
+		int code = 0;
+		const QString out = path + QStringLiteral(".qet");
+		const QString log = resave(path, out, &code);
+		QVERIFY2(code != 0 && log.contains(why), qPrintable(log.right(800)));
+		QVERIFY(!QFile::exists(out));
+	}
+
 	// A save that cannot finish leaves the previous file as it was
 	void failedSaveKeepsTheFile()
 	{

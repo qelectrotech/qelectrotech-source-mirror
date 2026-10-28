@@ -22,6 +22,7 @@
 #include "../qetversion.h"
 #include "../utils/syncfolder.h"
 
+#include <QCryptographicHash>
 #include <QDateTime>
 #include <QDir>
 #include <QElapsedTimer>
@@ -30,6 +31,7 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QSqlRecord>
 #include <QTemporaryDir>
 #include <QThread>
 #include <QUuid>
@@ -45,6 +47,48 @@
 #endif
 
 namespace {
+
+	//The views a .qetdb may hold: the project database's own
+const QStringList our_views{QStringLiteral("drawing_item_view"), QStringLiteral("element_nomenclature_view"),
+							QStringLiteral("project_summary_view"), QStringLiteral("wiring_list_view")};
+
+	//A hash over every value of every table but qet_format, in a fixed
+	//order: SQLite's checks see broken pages, not a changed value inside
+	//one (QET-SQL-FORMAT-SCOPE.md 5.4). Empty if it cannot be read.
+QString contentDigest(QSqlQuery &query)
+{
+	QStringList tables;
+	if (!query.exec(QStringLiteral("SELECT name FROM sqlite_master WHERE type = 'table' "
+								   "AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\' AND name <> 'qet_format' ORDER BY name")))
+		return {};
+	while (query.next()) tables << query.value(0).toString();
+	QCryptographicHash hash(QCryptographicHash::Sha256);
+	const auto add = [&hash](char tag, const QByteArray &bytes) {
+		const quint64 size = quint64(bytes.size());
+		hash.addData(QByteArrayView(&tag, 1));
+		hash.addData(QByteArrayView(reinterpret_cast<const char *>(&size), sizeof size));
+		hash.addData(bytes);
+	};
+	for (const QString &table : std::as_const(tables)) {
+		add('T', table.toUtf8());
+		if (!query.exec(QStringLiteral("SELECT * FROM \"%1\" ORDER BY rowid").arg(table)))
+			return {};
+		const int columns = query.record().count();
+		while (query.next()) {
+			add('R', {});
+			for (int i = 0 ; i < columns ; ++i) {
+				const QVariant value = query.value(i);
+				if (value.isNull()) add('N', {});
+				else if (value.typeId() == QMetaType::QByteArray) add('B', value.toByteArray());
+				else if (value.typeId() == QMetaType::Double) add('F', QByteArray::number(value.toDouble(), 'g', 17));
+				else if (value.typeId() == QMetaType::LongLong || value.typeId() == QMetaType::Int)
+					add('I', QByteArray::number(value.toLongLong()));
+				else add('S', value.toString().toUtf8());
+			}
+		}
+	}
+	return QString::fromLatin1(hash.result().toHex());
+}
 
 	//Runs @p work on a connection of its own to the file @p path
 template <typename Work>
@@ -93,10 +137,17 @@ bool finish(const QString &path, QString *error)
 			query.bindValue(QStringLiteral(":value"), value);
 			if (!query.exec()) return false;
 		}
-		return query.exec(QStringLiteral("PRAGMA application_id = %1").arg(QetDbFile::applicationId))
-				&& query.exec(QStringLiteral("PRAGMA user_version = %1").arg(QetDbFile::format))
-				&& query.exec(QStringLiteral("PRAGMA journal_mode = DELETE"))
-				&& query.exec(QStringLiteral("VACUUM"));
+		if (!query.exec(QStringLiteral("PRAGMA application_id = %1").arg(QetDbFile::applicationId))
+				|| !query.exec(QStringLiteral("PRAGMA user_version = %1").arg(QetDbFile::format))
+				|| !query.exec(QStringLiteral("PRAGMA journal_mode = DELETE"))
+				|| !query.exec(QStringLiteral("VACUUM")))
+			return false;
+			//After the VACUUM, which can renumber rows
+		const QString digest = contentDigest(query);
+		if (digest.isEmpty()) return false;
+		query.prepare(QStringLiteral("INSERT INTO qet_format (key, value) VALUES ('content_digest', :digest)"));
+		query.bindValue(QStringLiteral(":digest"), digest);
+		return query.exec();
 	});
 }
 
@@ -120,12 +171,39 @@ bool check(const QString &path, QString *error)
 			if (error) *error = QObject::tr("the file is not a QElectroTech project");
 			return false;
 		}
-		if (query.value(0).toInt() > QetDbFile::format) {
+		const int min_reader = query.value(0).toInt();
+		if (min_reader > QetDbFile::format) {
 			QString writer;
 			if (query.exec(QStringLiteral("SELECT value FROM qet_format WHERE key = 'writer'")) && query.next())
 				writer = query.value(0).toString();
 			if (error) *error = QObject::tr("it was saved by a newer QElectroTech (%1)").arg(writer);
 			return false;
+		}
+			//Nothing that runs SQL of its own: no trigger, no view but ours,
+			//every table a table (QET-SQL-FORMAT-SCOPE.md 5.6)
+		if (!query.exec(QStringLiteral("SELECT type, name FROM sqlite_master WHERE type IN ('trigger', 'view')")))
+			return false;
+		while (query.next()) {
+			if (query.value(0).toString() == QLatin1String("trigger")
+					|| !our_views.contains(query.value(1).toString())) {
+				if (error) *error = QObject::tr("the file holds SQL that QElectroTech does not expect (%1)")
+						.arg(query.value(1).toString());
+				return false;
+			}
+		}
+		if (!query.exec(QStringLiteral("PRAGMA foreign_key_check")) || query.next()) {
+			if (error) *error = QObject::tr("the file is damaged: an item refers to one that is not there");
+			return false;
+		}
+			//Written by every save since the first files (format 1 without it)
+		if (query.exec(QStringLiteral("SELECT value FROM qet_format WHERE key = 'content_digest'"))
+				&& query.next()) {
+			const QString saved = query.value(0).toString();
+			if (contentDigest(query) != saved) {
+				if (error) *error = QObject::tr("its content is not what QElectroTech saved: it is damaged, "
+												"or another program changed it");
+				return false;
+			}
 		}
 		return true;
 	});
