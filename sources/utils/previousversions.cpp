@@ -23,6 +23,12 @@
 #include <QFileInfo>
 #include <QSettings>
 
+#ifdef Q_OS_WIN
+#	include <windows.h>
+#else
+#	include <unistd.h>
+#endif
+
 namespace {
 const QString CountKey = QStringLiteral("diagrameditor/previous-versions");
 constexpr int DefaultCount = 5;
@@ -49,6 +55,23 @@ bool sameContent(const QString &a, const QString &b)
 		if (x.isEmpty() || x != y) return false;
 	}
 	return second.atEnd();
+}
+
+	//@p target as a second name of the file @p path, without copying it.
+	//Only for a .qetdb: its save puts a new file in place by rename
+	//(QetDbFile::save()), never writing the old one, which then has no
+	//other name than @p target. False where the folder's file system
+	//has no hard links, and the version is copied
+bool linkVersion(const QString &path, const QString &target)
+{
+	if (!path.endsWith(QLatin1String(".qetdb"), Qt::CaseInsensitive)) return false;
+#ifdef Q_OS_WIN
+	return CreateHardLinkW(reinterpret_cast<const wchar_t *>(QDir::toNativeSeparators(target).utf16()),
+						   reinterpret_cast<const wchar_t *>(QDir::toNativeSeparators(path).utf16()),
+						   nullptr);
+#else
+	return ::link(QFile::encodeName(path).constData(), QFile::encodeName(target).constData()) == 0;
+#endif
 }
 }
 
@@ -108,13 +131,15 @@ bool PreviousVersions::keep(const QString &file_path, int count, QString *error)
 	QString target = dir.filePath(stem + QLatin1Char('.') + info.suffix());
 	for (int n = 2 ; QFileInfo::exists(target) ; ++n)
 		target = dir.filePath(stem + QStringLiteral(" (%1).").arg(n) + info.suffix());
-	if (!QFile::copy(file_path, target)) {
-		if (error) *error = QStringLiteral("cannot copy %1 to %2").arg(file_path, target);
-		return false;
+	if (!linkVersion(file_path, target)) {
+		if (!QFile::copy(file_path, target)) {
+			if (error) *error = QStringLiteral("cannot copy %1 to %2").arg(file_path, target);
+			return false;
+		}
+		QFile copy(target);
+		if (copy.open(QIODevice::ReadWrite))
+			copy.setFileTime(saved, QFileDevice::FileModificationTime);
 	}
-	QFile copy(target);
-	if (copy.open(QIODevice::ReadWrite))
-		copy.setFileTime(saved, QFileDevice::FileModificationTime);
 
 	const QStringList all = kept(file_path);
 	for (int i = count ; i < all.size() ; ++i)

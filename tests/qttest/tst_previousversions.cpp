@@ -21,6 +21,10 @@
 #include <QFile>
 #include <QTemporaryDir>
 
+#ifdef Q_OS_UNIX
+#	include <sys/stat.h>
+#endif
+
 #include "utils/previousversions.h"
 
 // The versions of a project kept before it is saved over
@@ -31,14 +35,20 @@ class tst_previousversions : public QObject
 
 	QTemporaryDir m_dir;
 
-		// @p path holding @p text, saved at @p when
+		// @p path holding @p text, saved at @p when: written beside it and
+		// put in its place, as a save does, so that a version linked to
+		// the file before keeps its bytes
 	static void write(const QString &path, const QByteArray &text, const QDateTime &when)
 	{
-		QFile file(path);
+		const QString beside = path + QStringLiteral(".new");
+		QFile file(beside);
 		QVERIFY(file.open(QIODevice::WriteOnly | QIODevice::Truncate));
 		file.write(text);
 		file.flush();	//else closing writes, and sets the time to now
 		QVERIFY(file.setFileTime(when, QFileDevice::FileModificationTime));
+		file.close();
+		QFile::remove(path);
+		QVERIFY(QFile::rename(beside, path));
 	}
 
 	static QByteArray read(const QString &path)
@@ -99,6 +109,31 @@ private slots:
 		QCOMPARE(read(kept.first()), QByteArray("6"));
 		QVERIFY(PreviousVersions::keep(project, 5));
 		QCOMPARE(PreviousVersions::kept(project).size(), 5);
+	}
+
+	// A .qetdb's version is the file under a second name, not a copy;
+	// once the file is replaced the version alone holds the old bytes
+	void qetdbVersionIsLinked()
+	{
+		const QString project = m_dir.filePath(QStringLiteral("linked.qetdb"));
+		const QDateTime when(QDate(2026, 10, 29), QTime(12, 0, 0));
+		write(project, "old", when);
+		QVERIFY(PreviousVersions::keep(project, 5));
+		const QStringList kept = PreviousVersions::kept(project);
+		QCOMPARE(kept.size(), 1);
+#ifdef Q_OS_UNIX
+		struct stat st;
+		QCOMPARE(::stat(QFile::encodeName(kept.first()).constData(), &st), 0);
+		QCOMPARE(int(st.st_nlink), 2);
+#endif
+		QCOMPARE(QFileInfo(kept.first()).lastModified(), when);
+		write(project, "new", when.addSecs(30));
+		QCOMPARE(read(kept.first()), QByteArray("old"));
+		QCOMPARE(read(project), QByteArray("new"));
+#ifdef Q_OS_UNIX
+		QCOMPARE(::stat(QFile::encodeName(kept.first()).constData(), &st), 0);
+		QCOMPARE(int(st.st_nlink), 1);
+#endif
 	}
 
 	void sameSizeComparedToTheEnd()
