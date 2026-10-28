@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "bridgemanager.h"
+#include "bridgeundocommands.h"
 
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../TerminalStrip/physicalterminal.h"
@@ -324,6 +325,8 @@ QList<BridgeTerminal> BridgeManager::terminalsOfBridge(QETProject *project, Brid
 			BridgeTerminal terminal;
 			terminal.element = crossing.element->uuid();
 			terminal.terminal = crossing.terminal;
+			terminal.reference = crossing.reference;
+			terminal.terminal = crossing.terminal;
 			if (!result.contains(terminal)) {
 				result << terminal;
 			}
@@ -457,6 +460,72 @@ QString BridgeManager::dockAt(QETProject *project,
 		}
 	}
 	return pin_uuid;
+}
+
+/**
+	@brief BridgeManager::bridgeCarriedBy
+	@param project
+	@param element a sheet reference
+	@return the bridge that reference is carried on by, or nullptr
+*/
+Bridge *BridgeManager::bridgeCarriedBy(QETProject *project, Element *element)
+{
+	if (!project || !element) {
+		return nullptr;
+	}
+	const auto bridges = project->bridges();
+	for (Bridge *bridge : bridges)
+	{
+		if (!bridge) {
+			continue;
+		}
+		const auto lands_on = bridge->landings();
+		for (const BridgeTerminal &landing : lands_on) {
+			if (elementFor(project, landing) == element) {
+				return bridge;
+			}
+		}
+	}
+	return nullptr;
+}
+
+/**
+	@brief BridgeManager::joinOverLink
+	@param project
+	@param one
+	@param other the two sheet references being linked
+	@param parent the step this goes with
+*/
+void BridgeManager::joinOverLink(QETProject *project,
+								 Element *one,
+								 Element *other,
+								 QUndoCommand *parent)
+{
+	if (!project || !one || !other || !parent) {
+		return;
+	}
+	Bridge *first = bridgeCarriedBy(project, one);
+	Bridge *second = bridgeCarriedBy(project, other);
+	if (!first || !second || first == second) {
+		return;
+	}
+
+		//The unit is the one which carries the voltage -- the one the
+		//other half is packed onto, the way the GUI does it -- and where
+		//both or neither of them do, the one holding more of the drawing
+	Bridge *into = first;
+	if (second->tensionText() != first->tensionText()) {
+		if (!second->tensionText().isEmpty()) {
+			into = second;
+		}
+	} else if (second->klemmCount() > first->klemmCount()) {
+		into = second;
+	}
+	Bridge *from = (into == first) ? second : first;
+
+	new MergeBridgesCommand(from, into, parent);
+	writeInformation(project, into->terminals(),
+					 BridgeInformation{into->tensionText()}, parent);
 }
 
 /**

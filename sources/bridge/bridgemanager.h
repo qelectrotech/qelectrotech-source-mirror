@@ -136,6 +136,22 @@ class BridgeManager
 		static Bridge *joinTarget(QETProject *project,
 								  const QList<BridgeTerminal> &landings,
 								  Bridge *self);
+			/**
+				The bridge that reference is carried on by, or nullptr.
+			*/
+		static Bridge *bridgeCarriedBy(QETProject *project, Element *element);
+			/**
+				Two sheet references linked: what is one bridge carried
+				on over the sheets is one unit, so the bridges they carry
+				become one in that very moment -- the voltage of the one
+				goes around the whole of it, and the limit is the limit
+				of all of it. Goes with whatever was being done (@p
+				parent), so it is one undo step.
+			*/
+		static void joinOverLink(QETProject *project,
+								 Element *one,
+								 Element *other,
+								 QUndoCommand *parent);
 		static void pairReferences(QETProject *project,
 								   Bridge *bridge,
 								   QUndoCommand *parent);

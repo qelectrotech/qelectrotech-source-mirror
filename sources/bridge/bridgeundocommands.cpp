@@ -372,6 +372,8 @@ RemoveBridgeCommand::RemoveBridgeCommand(const QList<BridgePart *> &parts)
 				BridgeTerminal terminal;
 				terminal.element = crossing.element->uuid();
 				terminal.terminal = crossing.terminal;
+				terminal.reference = crossing.reference;
+				terminal.terminal = crossing.terminal;
 				if (!after.contains(terminal)) {
 					after << terminal;
 				}

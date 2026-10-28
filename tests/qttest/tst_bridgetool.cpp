@@ -28,6 +28,7 @@
 #include "bridge/bridgecreatedialog.h"
 #include "bridge/bridgemanager.h"
 #include "bridge/bridgepart.h"
+#include "undocommand/linkelementcommand.h"
 #include "bridge/bridgeundocommands.h"
 #include "diagram.h"
 #include "properties/elementdata.h"
@@ -1392,6 +1393,150 @@ private slots:
 				 "what the other half brings counts against the limit");
 		QVERIFY2(!joined->wouldExceed(0),
 				 "and a sheet reference fills no place of the bridge");
+	}
+
+	//A sheet reference is the way to the next sheet: whatever crosses
+	//it, the landing it brings is no Klemme and fills no place
+	void aReferenceLandingIsNoKlemmeInTheCount()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		Element *report = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if ((element->linkType() & Element::AllReport)
+					&& !element->terminals().isEmpty()) {
+					report = element;
+					break;
+				}
+			}
+			if (report) break;
+		}
+		if (!report) {
+			QSKIP("the fixture has no sheet reference");
+		}
+		Diagram *folio = report->diagram();
+		QVERIFY(folio);
+
+			//A line drawn across the connection of that reference
+		const QPointF at = report->terminals().first()->dockConductor();
+		BridgePartData part;
+		part.uuid = QUuid::createUuid();
+		part.diagram = folio->uuid();
+		part.p1 = at - QPointF(60, 0);
+		part.p2 = at + QPointF(60, 0);
+
+		Bridge *bridge = project.newBridge();
+		bridge->setMaxConnections(1);
+		bridge->addPart(part);
+
+		const QList<BridgeTerminal> landings =
+				BridgeManager::terminalsOfBridge(&project, bridge);
+		QVERIFY(!landings.isEmpty());
+		for (const BridgeTerminal &landing : landings) {
+			QVERIFY2(landing.reference,
+					 "what crosses a sheet reference is no Klemme");
+		}
+		bridge->setTerminals(landings);
+		QVERIFY2(bridge->klemmCount() == 0,
+				  "and fills no place of the bridge");
+		QVERIFY2(!bridge->wouldExceed(1),
+				 "so the bridge may still take a Klemme");
+	}
+
+	//Two sheet references linked: the bridges they carry are one unit
+	//in that very moment -- the voltage of the one goes around all of
+	//it and onto the wires of the far side
+	void linkingTwoReferencesJoinsTheBridgesTheyCarry()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+
+		Element *out = nullptr;
+		Element *in = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if (element->terminals().isEmpty()
+					|| !(element->linkType() & Element::AllReport)) {
+					continue;
+				}
+				if (!out) {
+					out = element;
+				} else if (!in && element != out) {
+					in = element;
+				}
+			}
+		}
+		if (!out || !in) {
+			QSKIP("the fixture has not two sheet references");
+		}
+
+			//The bridge which has the voltage, with its reference
+		Bridge *carried = project.newBridge();
+		carried->addTerminal(terminalOf(terminals.at(0)));
+		carried->addTerminal(terminalOf(terminals.at(1)));
+		const BridgeTerminal on_out{out->uuid(),
+								   out->terminals().first()->stableUuid().toString(),
+								   true};
+		carried->addTerminal(on_out);
+
+			//The half on the other side: a reference, and a wire which
+			//says nothing yet
+		Bridge *coming = project.newBridge();
+		const BridgeTerminal on_in{in->uuid(),
+								  in->terminals().first()->stableUuid().toString(),
+								  true};
+		coming->addTerminal(on_in);
+		Terminal *far_pin = in->terminals().first();
+		Terminal *free_pin = nullptr;
+		for (Terminal *pin : terminals.at(0)->element()->terminals()) {
+			if (pin->conductors().isEmpty()) {
+				free_pin = pin;
+				break;
+			}
+		}
+		if (!free_pin) {
+			QSKIP("the fixture has no free pin");
+		}
+		Conductor *far = new Conductor(far_pin, free_pin);
+		QVERIFY(far);
+			//Both sides say the same of their potential, so linking them
+			//asks nobody anything -- where they disagree the drawing
+			//asks the user, and a test has nobody there to answer
+		const auto out_wires = out->terminals().first()->conductors();
+		if (!out_wires.isEmpty()) {
+			far->setProperties(out_wires.first()->properties());
+		}
+		QVERIFY2(far->properties().m_tension_protocol.isEmpty(),
+				 "the far side says nothing before it is joined");
+
+			//The two references are linked -- and with that very step
+			//the bridges they carry become one
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
+		out->linkToElement(in);
+		auto *link = new QUndoCommand();
+		BridgeManager::joinOverLink(&project, out, in, link);
+		folio->undoStack().push(link);
+
+		QCOMPARE(project.bridges().size(), 1);
+		QVERIFY2(carried->hasTerminal(on_in),
+				 "the half the reference brought is on the unit");
+		QCOMPARE(far->properties().m_tension_protocol,
+				 QStringLiteral("400V"));
+		QVERIFY(out->linkedElements().contains(in));
+
+			//And one step takes the joining back
+		folio->undoStack().undo();
+		QCOMPARE(project.bridges().size(), 2);
+		QVERIFY2(!carried->hasTerminal(on_in),
+				 "the halves are apart again");
+		QVERIFY(far->properties().m_tension_protocol.isEmpty());
 	}
 
 	//What is one bridge carried on over the sheets is one pair of

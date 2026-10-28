@@ -390,6 +390,8 @@ void DiagramEventAddBridge::finishLine(const QPointF &end)
 		BridgeTerminal terminal;
 		terminal.element = crossing.element->uuid();
 		terminal.terminal = crossing.terminal;
+		terminal.reference = crossing.reference;
+		terminal.terminal = crossing.terminal;
 		terminals << terminal;
 	}
 
