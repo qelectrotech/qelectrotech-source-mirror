@@ -34,7 +34,13 @@ class QWidget;
 	  click on which still toggles it, and which follows a later
 	  setText() of the button; a combo box no longer widens to its
 	  longest entry; a tree without a header shows its entries whole and
-	  scrolls sideways, instead of cutting them to its width.
+	  scrolls sideways, instead of cutting them to its width; a tab
+	  widget is as high as its current page, not as its highest one; a
+	  group box drops the minimum width a form gave it, and its grids of
+	  label-field pairs side by side go one half below the other when
+	  the dock is narrower than they are.
+	- A widget polished before it stood in a dock is handled when it is
+	  first shown there.
 	- Every dock shows its content in a sideways scroll area: made
 	  narrower than what cannot wrap (fields, buttons), the panel shows a
 	  horizontal scroll bar, so everything stays within reach. Its height

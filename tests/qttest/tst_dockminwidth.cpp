@@ -17,7 +17,9 @@
 */
 #include "qetapptest.h"
 #include "projectview.h"
+#include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
+#include "ui/diagrampropertieseditordockwidget.h"
 
 #include <QCheckBox>
 #include <QComboBox>
@@ -27,6 +29,7 @@
 #include <QRadioButton>
 #include <QScrollArea>
 #include <QScrollBar>
+#include <QTabWidget>
 #include <QHeaderView>
 #include <QTemporaryDir>
 #include <QTreeWidget>
@@ -117,6 +120,57 @@ class tst_dockminwidth : public QObject
 			QCOMPARE(scroll->widget()->width(), scroll->viewport()->width());
 		}
 
+		/**
+			The properties of a selected wire: in a narrow dock the
+			label-field pairs side by side go one below the other, so the
+			fields are not cut; a short tab (Appearance) is not as high as
+			the highest one (Type), so no empty space is left below it.
+		*/
+		void wireEditorFitsTheDock()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			ProjectView *view = editor->currentProjectView();
+			QVERIFY(view);
+			Conductor *conductor = nullptr;
+			for (DiagramView *dv : view->diagram_views()) {
+				for (QGraphicsItem *qgi : dv->diagram()->items())
+					if (qgi->type() == Conductor::Type) {
+						view->showDiagram(dv);
+						conductor = static_cast<Conductor *>(qgi);
+						break;
+					}
+				if (conductor)
+					break;
+			}
+			if (!conductor)
+				QSKIP("the fixture has no wire");
+			auto *panel = editor->findChild<DiagramPropertiesEditorDockWidget *>();
+			QVERIFY(panel);
+			panel->setDiagram(conductor->diagram());
+			conductor->diagram()->clearSelection();
+			conductor->setSelected(true);
+			QTest::qWait(300);
+			auto *tabs = panel->findChild<QTabWidget *>(QStringLiteral("tabWidget"));
+			QVERIFY(tabs);
+
+			editor->resizeDocks({panel}, {300}, Qt::Horizontal);
+			QTest::qWait(200);
+			QWidget *form = tabs->parentWidget();
+			QVERIFY2(form->minimumSizeHint().width() < 300,
+				 qPrintable(QString("the wire's properties need %1 px")
+					    .arg(form->minimumSizeHint().width())));
+
+			tabs->setCurrentIndex(0);
+			QTest::qWait(100);
+			const int type_height = tabs->maximumHeight();
+			tabs->setCurrentIndex(1);
+			QTest::qWait(100);
+			QVERIFY2(tabs->maximumHeight() < type_height,
+				 qPrintable(QString("Appearance %1 px, Type %2 px")
+					    .arg(tabs->maximumHeight()).arg(type_height)));
+			QVERIFY(tabs->height() <= tabs->maximumHeight());
+		}
+
 		void everyDockTextWraps()
 		{
 			QETDiagramEditor *editor = QetAppTest::editor();
@@ -202,6 +256,7 @@ class tst_dockminwidth : public QObject
 static void narrowDocks()
 {
 	QSettings().setValue(QStringLiteral("diagrameditor/narrow_docks"), true);
+	QSettings().setValue(QStringLiteral("diagrameditor/conductor_properties_panel"), true);
 }
 
 QET_APP_TEST_MAIN_PREPARED(tst_dockminwidth, narrowDocks)

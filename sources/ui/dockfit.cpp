@@ -26,6 +26,8 @@
 #include <QEvent>
 #include <QGridLayout>
 #include <QFormLayout>
+#include <QGroupBox>
+#include <QPointer>
 #include <QLabel>
 #include <QMouseEvent>
 #include <QRadioButton>
@@ -33,6 +35,7 @@
 #include <QScrollBar>
 #include <QSettings>
 #include <QHeaderView>
+#include <QTabWidget>
 #include <QTreeView>
 
 namespace {
@@ -217,6 +220,224 @@ namespace {
 			}
 	};
 
+	/**
+		A scroll area keeps the size hint its content had first, so it
+		stays as high as the highest page it ever showed. Each scroll area
+		around @a widget, up to its dock, is held to its content's height
+		now; one that scrolls sideways only (SideScroll) already follows
+		its content.
+	*/
+	void updateScrollAreasAround(QWidget *widget)
+	{
+		for (QWidget *w = widget->parentWidget(); w && !qobject_cast<QDockWidget *>(w);
+		     w = w->parentWidget()) {
+			auto *scroll = qobject_cast<QScrollArea *>(w);
+			if (!scroll || !scroll->widget() || !scroll->widgetResizable()
+			    || scroll->verticalScrollBarPolicy() == Qt::ScrollBarAlwaysOff)
+				continue;
+			const int frame = 2 * scroll->frameWidth();
+			scroll->setMaximumHeight(scroll->widget()->sizeHint().height() + frame
+						 + (scroll->horizontalScrollBar()->isVisible()
+						    ? scroll->horizontalScrollBar()->sizeHint().height() : 0));
+			scroll->updateGeometry();
+		}
+	}
+
+	/**
+		A tab widget as high as its current page, not as its highest one,
+		so a short page leaves no empty space below it: its other pages are
+		ignored by its stack, and its height is held to the current page's,
+		since QTabWidget::sizeHint() still asks every page.
+	*/
+	class TabFit : public QObject
+	{
+		public:
+			explicit TabFit(QTabWidget *tabs) : QObject(tabs), m_tabs(tabs)
+			{
+				connect(tabs, &QTabWidget::currentChanged, this, &TabFit::fit);
+				tabs->installEventFilter(this);
+				fit();
+			}
+
+			void fit()
+			{
+				int highest = 0;
+				for (int i = 0; i < m_tabs->count(); ++i) {
+					QWidget *page = m_tabs->widget(i);
+					highest = qMax(highest, page->sizeHint().height());
+					const QSizePolicy::Policy policy = i == m_tabs->currentIndex()
+							? QSizePolicy::Preferred : QSizePolicy::Ignored;
+					page->setSizePolicy(policy, policy);
+				}
+				QWidget *current = m_tabs->currentWidget();
+				if (!current)
+					return;
+					//The tab bar and the frame, above and around the page
+				const int around = m_tabs->sizeHint().height() - highest;
+				const int height = qMax(current->sizeHint().height() + around,
+							m_tabs->minimumSizeHint().height());
+				if (m_tabs->maximumHeight() != height)
+					m_tabs->setMaximumHeight(height);
+				m_tabs->updateGeometry();
+				updateScrollAreasAround(m_tabs);
+			}
+
+		protected:
+			bool eventFilter(QObject *watched, QEvent *event) override
+			{
+				if (watched == m_tabs && event->type() == QEvent::LayoutRequest)
+					fit();
+				return QObject::eventFilter(watched, event);
+			}
+
+		private:
+			QTabWidget *m_tabs;
+	};
+
+	/**
+		A grid of label-field pairs side by side (label, field, label,
+		field) that is wider than its dock: its right half goes below its
+		left half, each of its rows on a row of its own, so the dock gets
+		narrower without cutting its fields. Back side by side once the dock
+		is wide enough again.
+	*/
+	class GridReflow : public QObject
+	{
+		public:
+			GridReflow(QGridLayout *grid, QWidget *owner) :
+				QObject(owner), m_grid(grid), m_owner(owner)
+			{
+				const int split = (grid->columnCount() + 1) / 2;
+				for (int i = 0; i < grid->count(); ++i) {
+					Place place;
+					place.item = grid->itemAt(i);
+					grid->getItemPosition(i, &place.row, &place.column,
+							      &place.row_span, &place.column_span);
+					place.narrow_row = place.row * 2 + (place.column >= split ? 1 : 0);
+					place.narrow_column = place.column >= split ? place.column - split
+										    : place.column;
+					place.narrow_span = qMax(1, qMin(place.column_span,
+							split - place.narrow_column));
+					m_places << place;
+				}
+			}
+
+				/// Side by side when @a width is enough for it, else one half
+				/// below the other
+			void fit(int width)
+			{
+				if (!m_narrow)
+					m_wide_width = m_owner->minimumSizeHint().width();
+				const bool narrow = m_wide_width > 0 && width < m_wide_width;
+				if (narrow == m_narrow)
+					return;
+				m_narrow = narrow;
+				for (const Place &place : std::as_const(m_places))
+					m_grid->removeItem(place.item);
+				for (const Place &place : std::as_const(m_places)) {
+					if (narrow)
+						m_grid->addItem(place.item, place.narrow_row, place.narrow_column,
+								place.row_span, place.narrow_span);
+					else
+						m_grid->addItem(place.item, place.row, place.column,
+								place.row_span, place.column_span);
+				}
+				m_grid->invalidate();
+				m_owner->updateGeometry();
+				updateScrollAreasAround(m_owner);
+			}
+
+		private:
+			struct Place {
+				QLayoutItem *item = nullptr;
+				int row = 0, column = 0, row_span = 1, column_span = 1;
+				int narrow_row = 0, narrow_column = 0, narrow_span = 1;
+			};
+			QPointer<QGridLayout> m_grid;
+			QWidget *m_owner;
+			QList<Place> m_places;
+			bool m_narrow = false;
+			int m_wide_width = 0;
+	};
+
+	/// The dock @a widget lies in, or nullptr
+	QDockWidget *dockOf(QWidget *widget)
+	{
+		for (QWidget *w = widget->parentWidget(); w; w = w->parentWidget())
+			if (auto *dock = qobject_cast<QDockWidget *>(w))
+				return dock;
+		return nullptr;
+	}
+
+	/**
+		Watches the docks whose grids reflow: on a new width, each grid
+		goes side by side or one half below the other. The width a grid
+		has is the dock's, less the margins around the grid's widget.
+	*/
+	class ReflowWatch : public QObject
+	{
+		public:
+			using QObject::QObject;
+			void add(QDockWidget *dock, GridReflow *reflow, QWidget *owner)
+			{
+				m_reflows.append({dock, reflow, owner});
+				if (!m_docks.contains(dock)) {
+					m_docks << dock;
+					dock->installEventFilter(this);
+				}
+			}
+		protected:
+			bool eventFilter(QObject *watched, QEvent *event) override
+			{
+				if (event->type() == QEvent::Resize || event->type() == QEvent::Show
+				    || event->type() == QEvent::LayoutRequest)
+					fitAll(static_cast<QDockWidget *>(watched));
+				return QObject::eventFilter(watched, event);
+			}
+		private:
+			void fitAll(QDockWidget *dock)
+			{
+				for (int i = m_reflows.size() - 1; i >= 0; --i) {
+					const Entry &entry = m_reflows.at(i);
+					if (!entry.reflow || !entry.owner) {
+						m_reflows.removeAt(i);
+						continue;
+					}
+					if (entry.dock != dock || !entry.owner->isVisible())
+						continue;
+						//The margins on both sides of the grid's widget, as
+						//on its left, without what is scrolled away
+					const int left = qMax(0, entry.owner->mapTo(dock, QPoint(0, 0)).x());
+					entry.reflow->fit(dock->width() - 2 * left);
+				}
+			}
+			struct Entry {
+				QDockWidget *dock;
+				QPointer<GridReflow> reflow;
+				QPointer<QWidget> owner;
+			};
+			QList<Entry> m_reflows;
+			QList<QDockWidget *> m_docks;
+	};
+
+	ReflowWatch *reflowWatch()
+	{
+		static ReflowWatch *watch = new ReflowWatch(qApp);
+		return watch;
+	}
+
+	/// Let every grid of two pairs or more in @a layout, @a layout
+	/// included, reflow in @a dock
+	void reflowGrids(QLayout *layout, QWidget *owner, QDockWidget *dock)
+	{
+		for (int i = 0; i < layout->count(); ++i)
+			if (QLayout *inner = layout->itemAt(i)->layout())
+				reflowGrids(inner, owner, dock);
+		auto *grid = qobject_cast<QGridLayout *>(layout);
+		if (grid && grid->columnCount() >= 2)
+			reflowWatch()->add(dock, new GridReflow(grid, owner), owner);
+	}
+
 	class Filter : public QObject
 	{
 		public:
@@ -224,7 +445,10 @@ namespace {
 		protected:
 			bool eventFilter(QObject *watched, QEvent *event) override
 			{
-				if (event->type() == QEvent::Polish && watched->isWidgetType()) {
+					//Polished before it stood in a dock, a widget is handled
+					//when it is first shown there
+				if ((event->type() == QEvent::Polish || event->type() == QEvent::Show)
+				    && watched->isWidgetType()) {
 					auto *widget = static_cast<QWidget *>(watched);
 					if (auto *dock = qobject_cast<QDockWidget *>(widget))
 						DockFit::scrollSideways(dock);
@@ -282,7 +506,20 @@ void DockFit::wrap(QWidget *widget)
 			combo->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLengthWithIcon);
 			combo->setMinimumContentsLength(4);
 		}
+	} else if (auto *tabs = qobject_cast<QTabWidget *>(widget)) {
+		new TabFit(tabs);
+	} else if (auto *group = qobject_cast<QGroupBox *>(widget)) {
+			//A width a form gave the group in the designer
+		group->setMinimumWidth(0);
 	}
+
+		//The grids of a group box, label-field pairs side by side, go one
+		//half below the other in a narrow dock; other grids, tables like
+		//the Auto numbering panel's, stay as they are
+	if (qobject_cast<QGroupBox *>(widget))
+		if (QLayout *layout = widget->layout())
+			if (QDockWidget *dock = dockOf(widget))
+				reflowGrids(layout, widget, dock);
 }
 
 void DockFit::scrollSideways(QDockWidget *dock)
