@@ -5533,6 +5533,7 @@ QList<projectDataBase::ProjectSetting> projectDataBase::elementTextRowsOf(const 
 bool projectDataBase::storeElementTexts(const QUuid &element, const QList<ProjectSetting> &rows)
 {
 	if (element.isNull()) return false;
+	readElementTexts(element);
 	auto known = m_element_texts.constFind(element);
 	if (known != m_element_texts.constEnd() && *known == rows) return false;
 	m_element_texts.insert(element, rows);
@@ -5566,6 +5567,7 @@ bool projectDataBase::storeElementTexts(const QUuid &element, const QList<Projec
 */
 void projectDataBase::forgetElementTexts(const QUuid &element)
 {
+	readElementTexts(element);
 	if (!m_element_texts.remove(element)) return;
 	QSqlQuery remove(m_data_base);
 	remove.prepare(QStringLiteral("DELETE FROM element_text_value WHERE element_uuid = :uuid"));

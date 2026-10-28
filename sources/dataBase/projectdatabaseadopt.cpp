@@ -167,6 +167,46 @@ bool projectDataBase::adoptFile(const QString &file, QString *error)
 }
 
 /**
+	@brief projectDataBase::readElementTexts
+	Read the stored texts of the symbol @p element into the cache, if the
+	file's were not read at open (loadCaches()) and these not yet: what
+	storeElementTexts() compares with, as if all had been read.
+*/
+void projectDataBase::readElementTexts(const QUuid &element) const
+{
+	if (!m_element_texts_lazy || element.isNull() || m_element_texts_read.contains(element)) return;
+	m_element_texts_read.insert(element);
+	if (m_element_texts.contains(element)) return;
+	QSqlQuery query(m_data_base);
+	query.setForwardOnly(true);
+	query.prepare(QStringLiteral("SELECT section, ord, name, value FROM element_text_value "
+								 "WHERE element_uuid = :uuid ORDER BY rowid"));
+	query.bindValue(QStringLiteral(":uuid"), element.toString());
+	if (!query.exec()) return;
+	QList<ProjectSetting> rows;
+	while (query.next())
+		rows.append({query.value(0).toString(), query.value(1).toInt(),
+					 query.value(2).toString(), query.value(3).toString()});
+	if (!rows.isEmpty()) m_element_texts.insert(element, rows);
+}
+
+/**
+	@brief projectDataBase::readAllElementTexts
+	Read every symbol's stored texts not read yet (readElementTexts()):
+	the cache then holds what loading the whole table would have.
+*/
+void projectDataBase::readAllElementTexts() const
+{
+	if (!m_element_texts_lazy) return;
+	const QHash<QUuid, Rows> stored = keyedRows(m_data_base, QStringLiteral("element_text_value"),
+												QStringLiteral("element_uuid"));
+	for (auto it = stored.constBegin() ; it != stored.constEnd() ; ++it)
+		if (!m_element_texts_read.contains(it.key()) && !m_element_texts.contains(it.key()))
+			m_element_texts.insert(it.key(), it.value());
+	m_element_texts_lazy = false;
+}
+
+/**
 	@brief projectDataBase::loadCaches
 	Fill the caches in front of the tables from the tables, as the stores
 	that wrote them would hold them (adoptFile())
@@ -175,7 +215,11 @@ void projectDataBase::loadCaches()
 {
 	m_element_information = contexts(m_data_base, QStringLiteral("element_information"), QStringLiteral("element_uuid"));
 	m_element_kind_information = contexts(m_data_base, QStringLiteral("element_kind_information"), QStringLiteral("element_uuid"));
-	m_element_texts = keyedRows(m_data_base, QStringLiteral("element_text_value"), QStringLiteral("element_uuid"));
+		//Most of the rows (102,000 of f2099's 120,000): each symbol's are
+		//read when first asked for, readElementTexts()
+	m_element_texts.clear();
+	m_element_texts_read.clear();
+	m_element_texts_lazy = true;
 	m_element_values = keyedRows(m_data_base, QStringLiteral("element_value"), QStringLiteral("element_uuid"));
 	m_folio_values = keyedRows(m_data_base, QStringLiteral("folio_value"), QStringLiteral("diagram_uuid"));
 	m_cable_values = keyedRows(m_data_base, QStringLiteral("cable_value"), QStringLiteral("cable_uuid"));
@@ -385,6 +429,8 @@ QSet<QUuid> projectDataBase::foliosWithCableWires() const
 */
 QString projectDataBase::stateDump() const
 {
+		//The cache as loading the whole table would have left it
+	readAllElementTexts();
 	QStringList out;
 	QSqlQuery query(m_data_base);
 	query.setForwardOnly(true);

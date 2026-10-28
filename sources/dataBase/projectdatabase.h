@@ -254,7 +254,7 @@ class projectDataBase : public QObject
 		static QList<ProjectSetting> elementTextRowsOf(const QDomElement &element);
 		bool storeElementTexts(const QUuid &element, const QList<ProjectSetting> &rows);
 		QList<ProjectSetting> elementTextRows(const QUuid &element) const {
-			return m_element_texts.value(element);}
+			readElementTexts(element); return m_element_texts.value(element);}
 		void forgetElementTexts(const QUuid &element);
 		static QList<ProjectSetting> elementValueRowsOf(const QDomElement &element);
 		bool storeElementValues(const QUuid &element, const QList<ProjectSetting> &rows);
@@ -658,7 +658,14 @@ class projectDataBase : public QObject
 		QHash<QUuid, DiagramContext> m_element_kind_information;
 		QHash<QUuid, ElementPlacement> m_element_placements;
 		QHash<QUuid, autonum::sequentialNumbers> m_sequences;
-		QHash<QUuid, QList<ProjectSetting>> m_element_texts;
+			//Read from an adopted file one symbol at a time, the first time
+			//it is asked for (readElementTexts()): most of the rows of a big
+			//project, and most are never asked for
+		mutable QHash<QUuid, QList<ProjectSetting>> m_element_texts;
+		mutable QSet<QUuid> m_element_texts_read;
+		mutable bool m_element_texts_lazy = false;
+		void readElementTexts(const QUuid &element) const;
+		void readAllElementTexts() const;
 		QHash<QUuid, QList<ProjectSetting>> m_element_values;
 		QHash<QUuid, QList<ProjectSetting>> m_folio_values;
 		QHash<QUuid, QList<ProjectSetting>> m_cable_values;
