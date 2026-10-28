@@ -1119,11 +1119,6 @@ bool Diagram::uuidUsedByOtherDiagram(const QUuid &uuid) const
 */
 QUuid Diagram::derivedUuid(const QDomElement &root, const QString &reason) const
 {
-		//Fixed namespace for QElectroTech folio uuids, never change it :
-		//doing so would change the uuid given to every legacy folio.
-	static const QUuid folio_namespace(
-				QStringLiteral("{d5951240-154d-44d6-8277-0092a31d1920}"));
-
 	const int index = m_project
 			? m_project->folios().indexOf(const_cast<Diagram *>(this))
 			: -1;
@@ -1131,16 +1126,35 @@ QUuid Diagram::derivedUuid(const QDomElement &root, const QString &reason) const
 			.documentElement()
 			.attribute(QStringLiteral("title"));
 
+	return derivedUuid(reason, project_title, index, root.attribute(QStringLiteral("title")),
+					   [this](const QUuid &uuid) { return uuidUsedByOtherDiagram(uuid); });
+}
+
+/**
+	@brief Diagram::derivedUuid
+	The uuid derivedUuid() above gives the folio at @p index, titled
+	@p title, of a project titled @p project_title; @p used says whether a
+	uuid is taken by a folio before it. Also used on the document before
+	any folio is built (QETProject::fillDerivedUuids()).
+*/
+QUuid Diagram::derivedUuid(const QString &reason, const QString &project_title,
+						   int index, const QString &title,
+						   const std::function<bool(const QUuid &)> &used)
+{
+		//Fixed namespace for QElectroTech folio uuids, never change it :
+		//doing so would change the uuid given to every legacy folio.
+	static const QUuid folio_namespace(
+				QStringLiteral("{d5951240-154d-44d6-8277-0092a31d1920}"));
 	const QString base = QStringLiteral("qet-folio\n%1\n%2\n%3\n%4")
 			.arg(reason,
 				 project_title,
 				 QString::number(index),
-				 root.attribute(QStringLiteral("title")));
+				 title);
 
 		//A clash is only possible with a hand-crafted file, but the uuid is a
 		//key : salt the name until it is free. Still deterministic.
 	QUuid uuid = QUuid::createUuidV5(folio_namespace, base);
-	for (int salt = 1 ; uuidUsedByOtherDiagram(uuid) ; ++salt) {
+	for (int salt = 1 ; used(uuid) ; ++salt) {
 		uuid = QUuid::createUuidV5(folio_namespace,
 								   base + QStringLiteral("\n")
 								   + QString::number(salt));

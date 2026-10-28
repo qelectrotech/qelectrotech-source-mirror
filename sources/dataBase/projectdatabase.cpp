@@ -5457,15 +5457,18 @@ void projectDataBase::storeTerminalStrip(TerminalStrip *strip)
 /**
 	@brief projectDataBase::elementTextRowsOf
 	@return the rows of the texts and text groups of the saved symbol
-	@p element: one row per value of its <dynamic_texts> and <texts_groups>
+	@p element: one row per value of its <dynamic_texts> and <texts_groups>.
+	One missing (a symbol saved by an older QElectroTech) reads as empty:
+	a built symbol writes both (Element::ownTextsXml()).
 */
 QList<projectDataBase::ProjectSetting> projectDataBase::elementTextRowsOf(const QDomElement &element)
 {
 	QList<ProjectSetting> rows;
 	for (const QString &tag : {QStringLiteral("dynamic_texts"), QStringLiteral("texts_groups")}) {
-		const QDomElement texts = element.firstChildElement(tag);
-		if (!texts.isNull())
-			xmlRows(texts, tag, 0, rows);
+		QDomElement texts = element.firstChildElement(tag);
+		if (texts.isNull())
+			texts = element.ownerDocument().createElement(tag);
+		xmlRows(texts, tag, 0, rows);
 	}
 	return rows;
 }
@@ -6377,10 +6380,12 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		//Each type's kind information, read from its definition once
 	const QHash<QString, QDomElement> definitions = embeddedDefinitions();
 	QHash<QString, std::optional<DiagramContext>> kind_of_type;
-	const QDomElement root = document.documentElement();
-	for (QDomElement folio = root.firstChildElement(QStringLiteral("diagram")) ; !folio.isNull() ;
-		 folio = folio.nextSiblingElement(QStringLiteral("diagram")))
+		//Every <diagram>, as QETProject::readDiagramsXml() reads them: a
+		//folio saved inside another one (a damaged file) is one too
+	const QDomNodeList diagram_nodes = document.elementsByTagName(QStringLiteral("diagram"));
+	for (int f = 0 ; f < diagram_nodes.size() ; ++f)
 	{
+		const QDomElement folio = diagram_nodes.at(f).toElement();
 		const QUuid folio_uuid(folio.attribute(QStringLiteral("uuid")));
 		if (!folio_uuid.isNull() && ++seen[folio_uuid] == 1) {
 			TitleBlockProperties properties;

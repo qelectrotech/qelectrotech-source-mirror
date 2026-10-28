@@ -38,11 +38,13 @@ class tst_databasefromdocument : public QObject
 		return e;
 	}
 
-	QString run(const QStringList &args, bool from_folios = false)
+	QString run(const QStringList &args, bool from_folios = false, bool eager = false)
 	{
 		QProcessEnvironment e = env();
 		if (from_folios)
 			e.insert(QStringLiteral("QET_DATABASE_FROM_FOLIOS"), QStringLiteral("1"));
+		if (eager)
+			e.insert(QStringLiteral("QET_EAGER_FOLIOS"), QStringLiteral("1"));
 		QProcess proc;
 		proc.setProcessEnvironment(e);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), args);
@@ -52,10 +54,10 @@ class tst_databasefromdocument : public QObject
 
 	// The seven tables, each as a sorted list of its rows, and which way the
 	// database was filled.
-	QJsonObject dump(const QString &project, bool from_folios, QString *how)
+	QJsonObject dump(const QString &project, bool from_folios, QString *how, bool eager = false)
 	{
 		const QString out = run({QStringLiteral("--run"), m_dir.filePath(QStringLiteral("dump.js")),
-								 project}, from_folios);
+								 project}, from_folios, eager);
 		return tablesIn(out, how);
 	}
 
@@ -500,13 +502,53 @@ private slots:
 									.arg(a.size()).arg(b.size())));
 	}
 
-	// A file whose items carry no saved uuid is filled from the folios,
-	// which work those uuids out as they are built, and says why.
+	// A file from an older QElectroTech, as shipped: the uuids and wire ends
+	// written into it on opening are those its folios give themselves when
+	// built (every folio built, without the fill). Each example as it is;
+	// those still filled from the folios compare too.
+	void olderFileFilledFromDocument_data()
+	{
+		QTest::addColumn<QString>("project");
+		const QDir examples(QStringLiteral(QET_EXAMPLES_DIR));
+		for (const QString &f : examples.entryList({QStringLiteral("*.qet")}, QDir::Files, QDir::Name))
+			QTest::newRow(f.toUtf8().constData()) << examples.filePath(f);
+	}
+
+	void olderFileFilledFromDocument()
+	{
+		QFETCH(QString, project);
+		QString how_document, how_folios;
+		const QJsonObject document = dump(project, false, &how_document);
+		const QJsonObject folios = dump(project, true, &how_folios, true);
+		QCOMPARE(document.keys().size(), 7);
+		for (const QString &table : folios.keys()) {
+			const QJsonArray a = document.value(table).toArray(), b = folios.value(table).toArray();
+			QVERIFY2(a == b, qPrintable(QStringLiteral("%1: %2 rows from the document, %3 from the folios")
+										.arg(table).arg(a.size()).arg(b.size())));
+		}
+	}
+
+	// Older files, their folios without uuids and their wires' ends named
+	// the older way, are filled from the document, so open with folios
+	// not built
+	void olderFileOpensFromDocument()
+	{
+		for (const char *f : {"industrial.qet", "tremie_vibrante.qet"}) {
+			QString how;
+			dump(QStringLiteral(QET_EXAMPLES_DIR "/") + QLatin1String(f), false, &how);
+			QVERIFY2(how == QLatin1String("Project database filled from the document"), qPrintable(how));
+		}
+	}
+
+	// A file whose wire ends cannot be paired from the document (a terminal
+	// moved since it was saved, or numbered alike on one folio) is filled
+	// from the folios, which pair them as they are built, and says why.
 	void olderFileFallsBack()
 	{
 		QString how;
-		dump(QStringLiteral(QET_EXAMPLES_DIR "/tremie_vibrante.qet"), false, &how);
-		QCOMPARE(how, QStringLiteral("Project database filled from the folios: a folio has no saved uuid"));
+		dump(QStringLiteral(QET_EXAMPLES_DIR "/photovoltaique.qet"), false, &how);
+		QCOMPARE(how, QStringLiteral("Project database filled from the folios: "
+									 "a conductor has no saved uuid, or names its ends the older way"));
 	}
 };
 

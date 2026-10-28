@@ -33,6 +33,8 @@
 #include "diagram.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/terminal.h"
+#include "properties/terminaldata.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/ViewItem/projectdbmodel.h"
@@ -3701,6 +3703,11 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	m_project_properties_handler.terminalStripLayoutHandler().fromXml(xml_project.documentElement());
 	storeSettings();
 
+		//An older file's folios and wires get the uuids building them
+		//would give, so that the database can be filled from it
+	if (lazyFolios())
+		fillDerivedUuids(xml_project);
+
 		//The stores of symbol information, folio title blocks and wire
 		//properties are filled from the document before the folios are
 		//built
@@ -3813,6 +3820,233 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 bool QETProject::lazyFolios()
 {
 	return qEnvironmentVariableIntValue("QET_EAGER_FOLIOS") != 1;
+}
+
+/**
+	@brief QETProject::fillDerivedUuids
+	A file from an older QElectroTech has no folio uuids, and often no wire
+	uuids: the project database cannot be filled from it, so every folio
+	is built at once (projectDataBase::documentRefusal()), slowly. Write
+	into @p xml_project the uuids building the folios gives them: a
+	folio's from its place and title (Diagram::derivedUuid()), a wire's
+	from the symbol and terminal uuids that name its ends
+	(Diagram::fromXml()). They are saved from then on either way.
+	A wire whose ends are named the older way, by a number each symbol's
+	saved terminal carries, is named by the symbol's and the terminal's
+	uuid instead, as its next save names it: the terminal is the one of
+	the symbol's definition at the saved terminal's place, the last if
+	several are there, as Element::fromXml() pairs them. A symbol with a
+	saved terminal at no terminal's place (moved since:
+	Element::matchMovedTerminals()), and a folio whose symbols number their
+	terminals alike, are left to their folio. So are the wires of a
+	project whose symbols lack uuids or share one: those are renewed when
+	their folio is built.
+	A symbol whose label follows a numbering scheme gets the scheme's id
+	(formula_id) as linkElementsToElementAutoNums() gives a built one, and
+	a text, picture or shape saved without a uuid the one Diagram::fromXml()
+	derives from its folio's.
+*/
+void QETProject::fillDerivedUuids(QDomDocument &xml_project)
+{
+	const QString project_title = xml_project.documentElement().attribute(QStringLiteral("title"));
+	const QDomNodeList diagram_nodes = xml_project.elementsByTagName(QStringLiteral("diagram"));
+	QList<QUuid> folios;
+	const auto used = [&folios](const QUuid &uuid) { return folios.contains(uuid); };
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i) {
+		QDomElement folio = diagram_nodes.at(i).toElement();
+		const QUuid persisted(folio.attribute(QStringLiteral("uuid")));
+		QUuid uuid = persisted;
+		if (persisted.isNull())
+			uuid = Diagram::derivedUuid(QStringLiteral("legacy"), project_title, i,
+										folio.attribute(QStringLiteral("title")), used);
+		else if (used(persisted))
+			uuid = Diagram::derivedUuid(QStringLiteral("duplicate ") + persisted.toString(),
+										project_title, i, folio.attribute(QStringLiteral("title")), used);
+		if (uuid != persisted)
+			folio.setAttribute(QStringLiteral("uuid"), uuid.toString());
+		folios << uuid;
+
+			//As Diagram::fromXml()'s settle_uuid, in its order
+		QSet<QUuid> used;
+		for (const auto &[list, item] : {std::pair{QStringLiteral("inputs"), QStringLiteral("input")},
+										 std::pair{QStringLiteral("images"), QStringLiteral("image")},
+										 std::pair{QStringLiteral("shapes"), QStringLiteral("shape")}}) {
+			int index = 0;
+			for (QDomElement xml : QET::findInDomElement(folio, list, item)) {
+				const QUuid saved(xml.attribute(QStringLiteral("uuid")));
+				QUuid given = saved;
+				if (saved.isNull() || used.contains(saved)) {
+					given = QUuid::createUuidV5(uuid, QStringLiteral("%1\n%2\n%3")
+												.arg(item).arg(index).arg(saved.toString()));
+					xml.setAttribute(QStringLiteral("uuid"), given.toString());
+				}
+				used.insert(given);
+				++index;
+			}
+		}
+	}
+
+		//The numbering scheme each symbol's label follows
+	const QHash<QString, QStringList> titles_by_formula = elementAutoNumTitlesByFormula();
+	QHash<QUuid, QString> title_cache;
+	QHash<QString, QUuid> id_cache;
+	const QString formula_id = QStringLiteral("formula_id");
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i)
+		for (QDomElement element : QET::findInDomElement(diagram_nodes.at(i).toElement(),
+														  QStringLiteral("elements"), QStringLiteral("element"))) {
+			if (!Element::valideXml(element))
+				continue;
+			QDomElement informations = element.firstChildElement(QStringLiteral("elementInformations"));
+			DiagramContext information;
+			information.fromXml(informations, QStringLiteral("elementInformation"));
+			const auto id = elementAutoNumIdToLink(information, titles_by_formula, &title_cache, &id_cache);
+			if (!id)
+				continue;
+			QDomElement before;
+			for (QDomElement info = informations.firstChildElement(QStringLiteral("elementInformation")) ;
+				 !info.isNull() ; ) {
+				const QDomElement next = info.nextSiblingElement(QStringLiteral("elementInformation"));
+				if (info.attribute(QStringLiteral("name")) == formula_id)
+					informations.removeChild(info);
+				else if (before.isNull() && info.attribute(QStringLiteral("name")) > formula_id)
+					before = info;
+				info = next;
+			}
+			if (id->isNull())
+				continue;
+			if (informations.isNull())
+				informations = element.appendChild(
+						xml_project.createElement(QStringLiteral("elementInformations"))).toElement();
+			QDomElement info = xml_project.createElement(QStringLiteral("elementInformation"));
+			info.setAttribute(QStringLiteral("show"), QStringLiteral("0"));
+			info.setAttribute(QStringLiteral("name"), formula_id);
+			info.appendChild(xml_project.createTextNode(id->toString()));
+			informations.insertBefore(info, before);
+		}
+
+	QSet<QUuid> elements;
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i)
+		for (QDomElement element : QET::findInDomElement(diagram_nodes.at(i).toElement(),
+														  QStringLiteral("elements"), QStringLiteral("element"))) {
+			if (!Element::valideXml(element))
+				continue;
+			const QUuid uuid(element.attribute(QStringLiteral("uuid")));
+			if (uuid.isNull() || elements.contains(uuid))
+				return;
+			elements.insert(uuid);
+		}
+
+		//Wire ends named the older way
+	const QHash<QString, QDomElement> definitions = m_data_base.embeddedDefinitions();
+	QHash<QString, QList<TerminalData *>> definition_terminals;
+	const auto terminalsOf = [&](const QString &type) -> const QList<TerminalData *> & {
+		auto known = definition_terminals.find(type);
+		if (known != definition_terminals.end())
+			return known.value();
+		QList<TerminalData *> terminals;
+		const QDomElement definition = definitions.value(type);
+		for (QDomElement d = definition.firstChildElement(QStringLiteral("description")) ;
+			 !d.isNull() ; d = d.nextSiblingElement(QStringLiteral("description")))
+			for (QDomElement t = d.firstChildElement(QStringLiteral("terminal")) ;
+				 !t.isNull() ; t = t.nextSiblingElement(QStringLiteral("terminal"))) {
+				auto data = new TerminalData();
+				if (data->fromXml(t) && !data->m_uuid.isNull()) terminals << data;
+				else delete data;
+			}
+		return definition_terminals.insert(type, terminals).value();
+	};
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i) {
+		const QDomElement folio = diagram_nodes.at(i).toElement();
+			//saved terminal number -> symbol uuid, terminal uuid
+		QHash<int, std::pair<QString, QString>> ends;
+		QSet<int> numbers;
+		bool clash = false;
+		for (QDomElement element : QET::findInDomElement(folio, QStringLiteral("elements"),
+														  QStringLiteral("element"))) {
+			if (!Element::valideXml(element))
+				continue;
+			QList<QDomElement> records;
+			for (QDomElement record : QET::findInDomElement(element, QStringLiteral("terminals"),
+															 QStringLiteral("terminal")))
+				if (Terminal::valideXml(record)) records << record;
+			for (const QDomElement &record : std::as_const(records)) {
+				const int number = record.attribute(QStringLiteral("id")).toInt();
+				clash = clash || numbers.contains(number);
+				numbers.insert(number);
+			}
+			const QList<TerminalData *> &terminals = terminalsOf(element.attribute(QStringLiteral("type")));
+			QHash<int, QString> paired;
+			bool exact = !terminals.isEmpty();
+			for (const QDomElement &record : std::as_const(records)) {
+				const TerminalData *match = nullptr;
+				for (const TerminalData *t : terminals) {
+					QPointF dock = t->m_pos;
+					switch (t->m_orientation) {
+						case Qet::North: dock += QPointF(0, Terminal::terminalSize); break;
+						case Qet::East : dock += QPointF(-Terminal::terminalSize, 0); break;
+						case Qet::West : dock += QPointF(Terminal::terminalSize, 0); break;
+						case Qet::South: dock += QPointF(0, -Terminal::terminalSize); break;
+					}
+					if (qFuzzyCompare(record.attribute(QStringLiteral("x")).toDouble(), dock.x())
+						&& qFuzzyCompare(record.attribute(QStringLiteral("y")).toDouble(), dock.y())
+						&& record.attribute(QStringLiteral("orientation")).toInt() == t->m_orientation)
+						match = t;
+				}
+				exact = exact && match;
+				if (!exact)
+					break;
+				paired.insert(record.attribute(QStringLiteral("id")).toInt(), match->m_uuid.toString());
+			}
+			if (!exact)
+				continue;
+			const QString uuid = QUuid(element.attribute(QStringLiteral("uuid"))).toString();
+			for (auto it = paired.cbegin() ; it != paired.cend() ; ++it)
+				ends.insert(it.key(), {uuid, it.value()});
+		}
+		if (clash)
+			continue;
+		for (QDomElement wire : QET::findInDomElement(folio, QStringLiteral("conductors"),
+													   QStringLiteral("conductor"))) {
+			if (wire.hasAttribute(QStringLiteral("element1")) || wire.hasAttribute(QStringLiteral("element2"))
+					|| !Conductor::valideXml(wire))
+				continue;
+			const int one = wire.attribute(QStringLiteral("terminal1")).toInt();
+			const int two = wire.attribute(QStringLiteral("terminal2")).toInt();
+			if (!ends.contains(one) || !ends.contains(two))
+				continue;
+			wire.setAttribute(QStringLiteral("element1"), ends.value(one).first);
+			wire.setAttribute(QStringLiteral("terminal1"), ends.value(one).second);
+			wire.setAttribute(QStringLiteral("element2"), ends.value(two).first);
+			wire.setAttribute(QStringLiteral("terminal2"), ends.value(two).second);
+		}
+	}
+	for (const QList<TerminalData *> &terminals : std::as_const(definition_terminals))
+		qDeleteAll(terminals);
+
+		//As readDiagramsXml() does, before deriving any
+	for (const QString &tag : {QStringLiteral("element"), QStringLiteral("conductor")}) {
+		const QDomNodeList nodes = xml_project.elementsByTagName(tag);
+		for (int i = 0; i < nodes.size(); ++i) {
+			const QUuid saved(nodes.at(i).toElement().attribute(QStringLiteral("uuid")));
+			if (!saved.isNull())
+				m_saved_item_uuids.insert(saved);
+		}
+	}
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i)
+		for (QDomElement wire : QET::findInDomElement(diagram_nodes.at(i).toElement(),
+													   QStringLiteral("conductors"), QStringLiteral("conductor"))) {
+			if (!QUuid(wire.attribute(QStringLiteral("uuid"))).isNull() || !Conductor::valideXml(wire)
+					|| !wire.hasAttribute(QStringLiteral("element1"))
+					|| !wire.hasAttribute(QStringLiteral("element2")))
+				continue;
+			QStringList ends;
+			for (const QString n : {QStringLiteral("1"), QStringLiteral("2")})
+				ends << QUuid(wire.attribute(QStringLiteral("element") + n)).toString()
+						+ QLatin1Char('/') + QUuid(wire.attribute(QStringLiteral("terminal") + n)).toString();
+			ends.sort();
+			wire.setAttribute(QStringLiteral("uuid"),
+							  derivedItemUuid(QStringLiteral("conductor"), ends.join(QLatin1Char('\n'))).toString());
+		}
 }
 
 /**

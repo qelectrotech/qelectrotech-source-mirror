@@ -459,6 +459,7 @@ class QETProject : public QObject
 		void watchTerminalStrip(TerminalStrip *strip, bool watch = true);
 		bool stampSaved();
 		void readProjectXml(QDomDocument &xml_project);
+		void fillDerivedUuids(QDomDocument &xml_project);
 		void readDiagramsXml(QDomDocument &xml_project);
 		void readElementsCollectionXml(QDomDocument &xml_project);
 		void readProjectPropertiesXml(QDomDocument &xml_project);
