@@ -20,6 +20,7 @@
 #include "container/qetcontainer.h"
 #include "container/qetcontainerdb.h"
 #include "container/qetzwriter.h"
+#include "dataBase/qetdbfile.h"
 
 #include "ElementsCollection/xmlelementcollection.h"
 #include "autoNum/assignvariables.h"
@@ -561,7 +562,9 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		if (!file->open(QIODevice::ReadOnly)) {
 			return FileOpenFailed;
 		}
-		if (!QetContainer::isZip(file->peek(4))) {
+			//A .qetdb is read as bytes too
+		const QByteArray head = file->peek(16);
+		if (!QetContainer::isZip(head.left(4)) && !QetDbFile::isDatabase(head)) {
 			file->close();
 			if (!file->open(QIODevice::ReadOnly | QIODevice::Text)) {
 				return FileOpenFailed;
@@ -575,8 +578,23 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 
 		//Extract the content of the xml. The raw bytes are kept : a project
 		//file without a persisted uuid derives its uuid from them.
-	const QByteArray content = file->readAll();
-	rememberDiskState(&content);
+	QByteArray content = file->readAll();
+		//A .qetdb (experimental): the project it holds, as a .qet's text.
+		//Its state on disk is that of the file itself
+	const bool database = QetDbFile::isDatabase(content.left(16));
+	if (database) {
+		QString error;
+		content = QetDbFile::readAsQet(fi.absoluteFilePath(), &error);
+		if (content.isEmpty()) {
+			qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << error;
+			m_open_error = error;
+			if (opened_here) {
+				file->close();
+			}
+			return XmlParsingFailed;
+		}
+	}
+	rememberDiskState(database ? nullptr : &content);
 		//Each folio's text is kept while it is not built (readDiagramsXml()):
 		//from a .qet only, a .qetz is a zip of parts
 	if (!content.startsWith("PK\x03\x04"))
@@ -2879,11 +2897,12 @@ bool QETProject::isContainerPath(const QString &path)
 
 /**
 	@brief QETProject::openFileFilter
-	@return the file-dialog filter for a project to open: .qet and .qetz
+	@return the file-dialog filter for a project to open: .qet, .qetz and
+	.qetdb (experimental)
 */
 QString QETProject::openFileFilter()
 {
-	return tr("QElectroTech project (*.qet *.qetz)");
+	return tr("QElectroTech project (*.qet *.qetz *.qetdb)");
 }
 
 /**
@@ -3079,7 +3098,18 @@ QETResult QETProject::write(bool overwrite_changed)
 	};
 
 	QString error_message;
-	if (isContainerPath(m_file_path))
+	if (QetDbFile::isDatabasePath(m_file_path))
+	{
+			//Written from the project database, the saved date and path
+			//above included (experimental, QET-SQL-FORMAT S4a)
+		storeSettings();
+		if (!QetDbFile::save(m_data_base, m_file_path, &error_message)) {
+			const QETResult result = failed_stamped(error_message);
+			storeSettings();
+			return result;
+		}
+	}
+	else if (isContainerPath(m_file_path))
 	{
 			//A container is written from the whole document: every folio
 			//built (stage D4 writes it from the database)
