@@ -385,6 +385,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/dataBase/projectdatabase.h
   ${QET_DIR}/sources/dataBase/workingcopyrecovery.cpp
   ${QET_DIR}/sources/dataBase/workingcopyrecovery.h
+  ${QET_DIR}/sources/dataBase/qetdbfile.cpp
+  ${QET_DIR}/sources/dataBase/qetdbfile.h
   ${QET_DIR}/sources/dataBase/conductorlayout.h
   ${QET_DIR}/sources/dataBase/conductorpath.h
   ${QET_DIR}/sources/dataBase/elementplacement.h

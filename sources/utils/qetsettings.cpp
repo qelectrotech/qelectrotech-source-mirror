@@ -154,6 +154,30 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief qetdbEnabled
+	* @return whether Save As offers a project as one SQLite file, .qetdb
+	* (QET-SQL-FORMAT S4a). Off unless the user turned it on, while the
+	* format is experimental. Opening a .qetdb does not need it.
+	* @sa setQetdbEnabled
+	*/
+	bool qetdbEnabled()
+	{
+		QSettings settings;
+		return settings.value("qetdb/enabled", false).toBool();
+	}
+
+	/**
+	* @brief setQetdbEnabled
+	* Store whether Save As offers .qetdb. @sa qetdbEnabled
+	* @param enabled
+	*/
+	void setQetdbEnabled(bool enabled)
+	{
+		QSettings settings;
+		settings.setValue("qetdb/enabled", enabled);
+	}
+
+	/**
 	* @brief workingCopyRecovery
 	* @return whether the next start offers, with the recovery files, the
 	* working copy of a project that was open when QElectroTech did not

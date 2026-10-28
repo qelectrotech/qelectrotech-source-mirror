@@ -1831,6 +1831,20 @@ add_executable(
 add_test(NAME tst_workingcopyrecovery COMMAND tst_workingcopyrecovery)
 target_link_libraries(tst_workingcopyrecovery PRIVATE Qt::Test Qt::Sql)
 
+# A project saved as one database file, .qetdb (experimental): what the file
+# is, that it gives the project back, that an unreadable one is refused and
+# that a failed save keeps the previous file. QET-SQL-FORMAT S4a.
+add_executable(
+  tst_qetdbfile
+  tst_qetdbfile.cpp)
+add_test(NAME tst_qetdbfile COMMAND tst_qetdbfile)
+add_dependencies(tst_qetdbfile qelectrotech)
+target_link_libraries(tst_qetdbfile PRIVATE Qt::Test Qt::Sql)
+target_compile_definitions(tst_qetdbfile PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
 # PATH for every test above and keeps the ENVIRONMENT each test sets

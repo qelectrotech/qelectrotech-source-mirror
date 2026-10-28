@@ -88,6 +88,7 @@ class projectDataBase : public QObject
 			*/
 		bool hasWorkingCopy() const {return m_working_copy;}
 		static QString workingCopyDir();
+		bool copyTo(const QString &file, QString *error = nullptr);
 		QString workingCopyPath() const {return m_working_copy_path;}
 			/// The project is open: first commit, the copy is ready
 		void workingCopyOpened();
