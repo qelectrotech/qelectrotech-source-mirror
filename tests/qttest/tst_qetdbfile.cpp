@@ -21,7 +21,8 @@ class tst_qetdbfile : public QObject
 	QTemporaryDir m_dir;
 	int m_run = 0;
 
-	QString run(const QStringList &args, bool eager = false, int *code = nullptr)
+	QString run(const QStringList &args, bool eager = false, int *code = nullptr,
+				const QStringList &extra_env = {})
 	{
 		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(m_run++));
 		QDir().mkpath(home);
@@ -33,6 +34,8 @@ class tst_qetdbfile : public QObject
 		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
 		env.remove(QStringLiteral("QET_EAGER_FOLIOS"));
 		if (eager) env.insert(QStringLiteral("QET_EAGER_FOLIOS"), QStringLiteral("1"));
+		for (const QString &pair : extra_env)
+			env.insert(pair.section(QLatin1Char('='), 0, 0), pair.section(QLatin1Char('='), 1));
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
@@ -130,6 +133,39 @@ private slots:
 		const QByteArray a = built(back), b = built(plain);
 		QVERIFY(a.size() > 100000);
 		QVERIFY(a == b);
+	}
+
+	// Opened from its own tables, a .qetdb gives the project database that
+	// filling it from the document read out of it gives: every table and
+	// every cache in front of them (QET_DUMP_DB_STATE)
+	void tablesGiveTheDocumentsDatabase()
+	{
+		const QString adopted = m_dir.filePath(QStringLiteral("adopted.txt"));
+		const QString filled = m_dir.filePath(QStringLiteral("filled.txt"));
+		const QString out = m_dir.filePath(QStringLiteral("dump-out.qet"));
+		const QString log = run({QStringLiteral("--resave"), industrial(), out}, false, nullptr,
+								{QStringLiteral("QET_DUMP_DB_STATE=") + adopted});
+		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
+		run({QStringLiteral("--resave"), industrial(), out}, false, nullptr,
+			{QStringLiteral("QET_DUMP_DB_STATE=") + filled, QStringLiteral("QET_QETDB_NO_ADOPT=1")});
+		const auto sections = [](const QString &path) {
+			QFile f(path);
+			QMap<QString, QStringList> result;
+			if (!f.open(QIODevice::ReadOnly)) return result;
+			QString current;
+			for (const QString &line : QString::fromUtf8(f.readAll()).split(QLatin1Char('\n'))) {
+				if (line.startsWith(QStringLiteral("== "))) current = line;
+				else result[current] << line;
+			}
+			for (QStringList &lines : result) lines.sort();
+			return result;
+		};
+		const auto a = sections(adopted), b = sections(filled);
+		QVERIFY(a.size() > 30);
+		QStringList differing;
+		for (auto it = a.constBegin() ; it != a.constEnd() ; ++it)
+			if (b.value(it.key()) != it.value()) differing << it.key();
+		QVERIFY2(differing.isEmpty() && a.keys() == b.keys(), qPrintable(differing.join(QLatin1Char('\n'))));
 	}
 
 	// An edit saved through the project's own save is in the file

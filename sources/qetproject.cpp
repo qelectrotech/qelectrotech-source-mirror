@@ -184,6 +184,16 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 		//there is nothing to back up until the project is changed.
 	m_backup_needed = false;
 	init();
+
+		//The project database as the open leaves it, for comparing two ways
+		//of opening (S4x X2: from a .qetdb's tables or from its document)
+	const QString dump_path = qEnvironmentVariable("QET_DUMP_DB_STATE");
+	if (!dump_path.isEmpty()) {
+		m_data_base.updateDB();
+		QFile dump(dump_path);
+		if (dump.open(QIODevice::WriteOnly | QIODevice::Truncate))
+			dump.write(m_data_base.stateDump().toUtf8());
+	}
 }
 
 /**
@@ -587,7 +597,15 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	if (database) {
 		QString error;
 		content.clear();
-		if (!QetDbFile::read(fi.absoluteFilePath(), &xml_project, &error)) {
+			//The project database starts from the file's tables (S4x X2);
+			//QET_QETDB_NO_ADOPT=1 fills it from the document instead
+		const auto adopt = [this](const QString &copy) {
+			if (qEnvironmentVariableIntValue("QET_QETDB_NO_ADOPT") == 1) return;
+			QString why;
+			if (!m_data_base.adoptFile(copy, &why))
+				qInfo().noquote() << "Project database not read from the file:" << why;
+		};
+		if (!QetDbFile::read(fi.absoluteFilePath(), &xml_project, &error, adopt)) {
 			qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << error;
 			m_open_error = error;
 			if (opened_here) {
@@ -644,6 +662,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//Build the project from the xml
 	readProjectXml(xml_project);
 	m_opened_content.clear();
+
 
 	const qint64 total_ms = load_timer.elapsed();
 	qInfo().nospace().noquote()

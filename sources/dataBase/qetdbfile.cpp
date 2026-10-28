@@ -91,6 +91,30 @@ QString contentDigest(QSqlQuery &query)
 	return QString::fromLatin1(hash.result().toHex());
 }
 
+	//What a project read back from the file gives (its document drops a
+	//symbol's empty information, DiagramContext::toXml(), and reads an
+	//empty number as ""): the file holds that, not what the session that
+	//saved it held, so opening it from its tables gives the same database
+	//as from its document (S4x X2)
+bool normalize(QSqlQuery &query)
+{
+	if (!query.exec(QStringLiteral("DELETE FROM element_information WHERE trim(coalesce(value, '')) = ''"))
+			|| !query.exec(QStringLiteral("UPDATE element_information SET ord = (SELECT count(*) FROM element_information i "
+										  "WHERE i.element_uuid = element_information.element_uuid "
+										  "AND i.ord < element_information.ord)"))
+			|| !query.exec(QStringLiteral("UPDATE sequential_number SET value = '' WHERE value IS NULL")))
+		return false;
+	QStringList columns;
+	if (!query.exec(QStringLiteral("PRAGMA table_info(element_info)")))
+		return false;
+	while (query.next())
+		if (query.value(1).toString() != QLatin1String("element_uuid")) columns << query.value(1).toString();
+	for (const QString &column : std::as_const(columns))
+		if (!query.exec(QStringLiteral("UPDATE element_info SET \"%1\" = NULL WHERE \"%1\" = ''").arg(column)))
+			return false;
+	return true;
+}
+
 	//Runs @p work on a connection of its own to the file @p path
 template <typename Work>
 bool withConnection(const QString &path, QString *error, Work work)
@@ -133,6 +157,7 @@ bool finish(const QString &path, QString *error)
 		while (query.next()) indexes << query.value(0).toString();
 		for (const QString &index : std::as_const(indexes))
 			if (!query.exec(QStringLiteral("DROP INDEX \"%1\"").arg(index))) return false;
+		if (!normalize(query)) return false;
 		if (!query.exec(QStringLiteral("CREATE TABLE qet_format (key TEXT PRIMARY KEY, value TEXT)"))) return false;
 		const QList<std::pair<QString, QString>> rows{
 			{QStringLiteral("format"), QString::number(QetDbFile::format)},
@@ -316,10 +341,12 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 	@p document becomes the project the .qetdb @p path holds, as a .qet's
 	document: read from a copy, so that the file itself is never opened for
 	writing, once it passes the checks of a save. Handed over as it is, not
-	written as text and parsed again (S4x X1).
+	written as text and parsed again (S4x X1). @p with_copy, if given, is
+	called with the checked copy, indexes made again, while it exists.
 	@return false, with @p error saying why, if it cannot be read
 */
-bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error)
+bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error,
+					 const std::function<void(const QString &copy)> &with_copy)
 {
 	QTemporaryDir dir;
 	const QString copy = dir.filePath(QStringLiteral("project.qetdb"));
@@ -340,7 +367,11 @@ bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error
 		for (const QString &definition : std::as_const(definitions))
 			if (index_only.match(definition).hasMatch())
 				query.exec(definition);
+			//A file saved before it was (#1642)
+		normalize(query);
 		return true;
 	});
+		//The checked copy, for the project database to start from (S4x X2)
+	if (with_copy) with_copy(copy);
 	return projectDataBase::readDocument(copy, document, error);
 }

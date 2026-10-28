@@ -977,6 +977,17 @@ void projectDataBase::dropKeptRows()
 */
 void projectDataBase::updateDB(const QDomDocument &document)
 {
+		//A .qetdb's own tables, adopted (adoptFile()): only what the folios
+		//built at open give, as the fill below ends with
+	if (m_adopted) {
+		qInfo() << "Project database read from the file";
+			//The link rows are the file's (forgetLinks() at the open)
+		m_holds_links = true;
+		populateDrawingItemTables();
+		flushConductorProperties();
+		emit dataBaseUpdated();
+		return;
+	}
 	if (m_update_blocked || !m_content_changed) {
 		updateDB();
 		return;
@@ -5797,6 +5808,22 @@ projectDataBase::DrawnItem projectDataBase::drawnItemOf(const QUuid &folio, cons
 }
 
 /// The SHA-256 a picture's rows name, none for any other item
+static QString blobOfRows(const QList<projectDataBase::ProjectSetting> &rows);
+
+/**
+	@brief projectDataBase::recountBlobs
+	How many drawn items name each picture, from m_drawn_items
+	(loadCaches())
+*/
+void projectDataBase::recountBlobs()
+{
+	m_blob_refs.clear();
+	for (const DrawnItem &drawn : std::as_const(m_drawn_items)) {
+		const QString blob = blobOfRows(drawn.rows);
+		if (!blob.isEmpty()) ++m_blob_refs[blob];
+	}
+}
+
 static QString blobOfRows(const QList<projectDataBase::ProjectSetting> &rows)
 {
 	for (const auto &row : rows)
@@ -6371,6 +6398,10 @@ QHash<QString, QDomElement> projectDataBase::embeddedDefinitions() const
 */
 void projectDataBase::prefillFromDocument(const QDomDocument &document)
 {
+		//The stores were loaded with the file's tables (adoptFile())
+	if (m_adopted) {
+		return;
+	}
 	m_prefilled_elements.clear();
 	m_prefilled_kinds.clear();
 	m_prefilled_placements.clear();

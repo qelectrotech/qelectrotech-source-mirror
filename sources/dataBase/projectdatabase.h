@@ -88,6 +88,11 @@ class projectDataBase : public QObject
 			*/
 		bool hasWorkingCopy() const {return m_working_copy;}
 		static QString workingCopyDir();
+			/// Start from the tables of the checked .qetdb copy @p file
+			/// (S4x X2, projectdatabaseadopt.cpp)
+		bool adoptFile(const QString &file, QString *error = nullptr);
+		bool adopted() const {return m_adopted;}
+		QString stateDump() const;
 		bool copyTo(const QString &file, QString *error = nullptr);
 		QString workingCopyPath() const {return m_working_copy_path;}
 			/// The project is open: first commit, the copy is ready
@@ -476,6 +481,9 @@ class projectDataBase : public QObject
 		void beginTransaction();
 		qint64 totalChanges() const;
 		bool m_working_copy = false, m_working_copy_ready = false;
+		bool m_adopted = false;
+		void loadCaches();
+		void recountBlobs();
 		QString m_working_copy_path;
 		std::unique_ptr<QLockFile> m_working_copy_lock;
 		QTimer *m_working_copy_poll = nullptr;

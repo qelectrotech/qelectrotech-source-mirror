@@ -23,6 +23,8 @@
 #include <QDomDocument>
 #include <QString>
 
+#include <functional>
+
 class projectDataBase;
 
 /**
@@ -40,7 +42,8 @@ namespace QetDbFile
 	bool isDatabasePath(const QString &path);
 	bool isDatabase(const QByteArray &head);
 	bool save(projectDataBase &database, const QString &path, QString *error);
-	bool read(const QString &path, QDomDocument *document, QString *error);
+	bool read(const QString &path, QDomDocument *document, QString *error,
+			  const std::function<void(const QString &copy)> &with_copy = {});
 }
 
 #endif // QETDBFILE_H
