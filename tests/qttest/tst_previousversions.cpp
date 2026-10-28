@@ -85,6 +85,22 @@ private slots:
 
 	// Files of the same size are compared byte for byte, to the end: one
 	// differing only in its last byte is kept, the same bytes are not
+	// A .qetdb's versions are listed and kept to the count like the others
+	void qetdbVersionsKeptToTheCount()
+	{
+		const QString project = m_dir.filePath(QStringLiteral("count.qetdb"));
+		const QDateTime start(QDate(2026, 10, 29), QTime(11, 0, 0));
+		for (int i = 0 ; i < 7 ; ++i) {
+			write(project, QByteArray::number(i), start.addSecs(60 * i));
+			QVERIFY(PreviousVersions::keep(project, 5));
+		}
+		const QStringList kept = PreviousVersions::kept(project);
+		QCOMPARE(kept.size(), 5);
+		QCOMPARE(read(kept.first()), QByteArray("6"));
+		QVERIFY(PreviousVersions::keep(project, 5));
+		QCOMPARE(PreviousVersions::kept(project).size(), 5);
+	}
+
 	void sameSizeComparedToTheEnd()
 	{
 		const QString project = m_dir.filePath(QStringLiteral("big.qetdb"));
