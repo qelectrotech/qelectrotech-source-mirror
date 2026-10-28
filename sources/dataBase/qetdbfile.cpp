@@ -25,16 +25,18 @@
 #include <QCryptographicHash>
 #include <QDateTime>
 #include <QDir>
+#include <QFuture>
+#include <QtConcurrent>
 #include <QElapsedTimer>
 #include <QFile>
 #include <QFileInfo>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
-#include <QRegularExpression>
 #include <QSqlRecord>
 #include <QTemporaryDir>
 #include <QThread>
+#include <QThreadPool>
 #include <QUuid>
 
 #ifdef Q_OS_WIN
@@ -53,42 +55,64 @@ namespace {
 const QStringList our_views{QStringLiteral("drawing_item_view"), QStringLiteral("element_nomenclature_view"),
 							QStringLiteral("project_summary_view"), QStringLiteral("wiring_list_view")};
 
+template <typename Work>
+bool withConnection(const QString &path, QString *error, Work work);
+
 	//A hash over every value of every table but qet_format, in a fixed
 	//order: SQLite's checks see broken pages, not a changed value inside
-	//one (QET-SQL-FORMAT-SCOPE.md 5.4). Empty if it cannot be read.
-QString contentDigest(QSqlQuery &query)
+	//one (QET-SQL-FORMAT-SCOPE.md 5.4). Each table on a connection of its
+	//own in parallel, BLAKE2b: 1 s of f2099's save and open as one SHA-256
+	//read row by row. Empty if it cannot be read.
+QString contentDigest(const QString &path)
 {
 	QStringList tables;
-	if (!query.exec(QStringLiteral("SELECT name FROM sqlite_master WHERE type = 'table' "
-								   "AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\' AND name <> 'qet_format' ORDER BY name")))
-		return {};
-	while (query.next()) tables << query.value(0).toString();
-	QCryptographicHash hash(QCryptographicHash::Sha256);
-	const auto add = [&hash](char tag, const QByteArray &bytes) {
-		const quint64 size = quint64(bytes.size());
-		hash.addData(QByteArrayView(&tag, 1));
-		hash.addData(QByteArrayView(reinterpret_cast<const char *>(&size), sizeof size));
-		hash.addData(bytes);
-	};
-	for (const QString &table : std::as_const(tables)) {
-		add('T', table.toUtf8());
-		if (!query.exec(QStringLiteral("SELECT * FROM \"%1\" ORDER BY rowid").arg(table)))
-			return {};
-		const int columns = query.record().count();
-		while (query.next()) {
-			add('R', {});
-			for (int i = 0 ; i < columns ; ++i) {
-				const QVariant value = query.value(i);
-				if (value.isNull()) add('N', {});
-				else if (value.typeId() == QMetaType::QByteArray) add('B', value.toByteArray());
-				else if (value.typeId() == QMetaType::Double) add('F', QByteArray::number(value.toDouble(), 'g', 17));
-				else if (value.typeId() == QMetaType::LongLong || value.typeId() == QMetaType::Int)
-					add('I', QByteArray::number(value.toLongLong()));
-				else add('S', value.toString().toUtf8());
+	withConnection(path, nullptr, [&tables](QSqlQuery &query) {
+		if (!query.exec(QStringLiteral("SELECT name FROM sqlite_master WHERE type = 'table' "
+									   "AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\' AND name <> 'qet_format' ORDER BY name")))
+			return false;
+		while (query.next()) tables << query.value(0).toString();
+		return true;
+	});
+	if (tables.isEmpty()) return {};
+	const auto table_digest = [&path](const QString &table) {
+		QCryptographicHash hash(QCryptographicHash::Blake2b_256);
+		const auto add = [&hash](char tag, const QByteArray &bytes) {
+			const quint64 size = quint64(bytes.size());
+			hash.addData(QByteArrayView(&tag, 1));
+			hash.addData(QByteArrayView(reinterpret_cast<const char *>(&size), sizeof size));
+			hash.addData(bytes);
+		};
+		bool ok = withConnection(path, nullptr, [&](QSqlQuery &query) {
+			query.setForwardOnly(true);
+			if (!query.exec(QStringLiteral("SELECT * FROM \"%1\" ORDER BY rowid").arg(table)))
+				return false;
+			const int columns = query.record().count();
+			while (query.next()) {
+				add('R', {});
+				for (int i = 0 ; i < columns ; ++i) {
+					const QVariant value = query.value(i);
+					if (value.isNull()) add('N', {});
+					else if (value.typeId() == QMetaType::QByteArray) add('B', value.toByteArray());
+					else if (value.typeId() == QMetaType::Double) add('F', QByteArray::number(value.toDouble(), 'g', 17));
+					else if (value.typeId() == QMetaType::LongLong || value.typeId() == QMetaType::Int)
+						add('I', QByteArray::number(value.toLongLong()));
+					else add('S', value.toString().toUtf8());
+				}
 			}
-		}
+			return true;
+		});
+		return ok ? hash.result() : QByteArray();
+	};
+	QThreadPool pool;
+	pool.setMaxThreadCount(std::max(1, std::min(QThread::idealThreadCount(), int(tables.size()))));
+	const QList<QByteArray> digests = QtConcurrent::blockingMapped(&pool, tables, std::function<QByteArray(const QString &)>(table_digest));
+	QCryptographicHash all(QCryptographicHash::Blake2b_256);
+	for (int i = 0 ; i < tables.size() ; ++i) {
+		if (digests.at(i).isEmpty()) return {};
+		all.addData(tables.at(i).toUtf8());
+		all.addData(digests.at(i));
 	}
-	return QString::fromLatin1(hash.result().toHex());
+	return QStringLiteral("blake2b:") + QString::fromLatin1(all.result().toHex());
 }
 
 	//What a project read back from the file gives (its document drops a
@@ -142,21 +166,10 @@ bool withConnection(const QString &path, QString *error, Work work)
 	//and the working copy's row left out (QETDB-S4-SCOPE.md 3.1, E7)
 bool finish(const QString &path, QString *error)
 {
-	return withConnection(path, error, [](QSqlQuery &query) {
+	return withConnection(path, error, [&path](QSqlQuery &query) {
 		if (!query.exec(QStringLiteral("DROP TABLE IF EXISTS working_copy"))) return false;
-			//Each index left out is kept as its definition, for opening to
-			//make again on the copy it reads: without them reading a folio
-			//scans whole tables (f2099 took 73 s instead of 6)
-		if (!query.exec(QStringLiteral("CREATE TABLE qet_index (name TEXT PRIMARY KEY, sql TEXT)"))
-				|| !query.exec(QStringLiteral("INSERT INTO qet_index (name, sql) SELECT name, sql FROM sqlite_master "
-											  "WHERE type = 'index' AND name LIKE 'idx\\_%' ESCAPE '\\'")))
-			return false;
-		QStringList indexes;
-		if (!query.exec(QStringLiteral("SELECT name FROM sqlite_master WHERE type = 'index' "
-									   "AND name LIKE 'idx\\_%' ESCAPE '\\'"))) return false;
-		while (query.next()) indexes << query.value(0).toString();
-		for (const QString &index : std::as_const(indexes))
-			if (!query.exec(QStringLiteral("DROP INDEX \"%1\"").arg(index))) return false;
+			//The indexes stay: speed matters more than size (the user,
+			//2026-10-28); VACUUM INTO wrote the file compact already
 		if (!normalize(query)) return false;
 		if (!query.exec(QStringLiteral("CREATE TABLE qet_format (key TEXT PRIMARY KEY, value TEXT)"))) return false;
 		const QList<std::pair<QString, QString>> rows{
@@ -172,11 +185,9 @@ bool finish(const QString &path, QString *error)
 		}
 		if (!query.exec(QStringLiteral("PRAGMA application_id = %1").arg(QetDbFile::applicationId))
 				|| !query.exec(QStringLiteral("PRAGMA user_version = %1").arg(QetDbFile::format))
-				|| !query.exec(QStringLiteral("PRAGMA journal_mode = DELETE"))
-				|| !query.exec(QStringLiteral("VACUUM")))
+				|| !query.exec(QStringLiteral("PRAGMA journal_mode = DELETE")))
 			return false;
-			//After the VACUUM, which can renumber rows
-		const QString digest = contentDigest(query);
+		const QString digest = contentDigest(path);
 		if (digest.isEmpty()) return false;
 		query.prepare(QStringLiteral("INSERT INTO qet_format (key, value) VALUES ('content_digest', :digest)"));
 		query.bindValue(QStringLiteral(":digest"), digest);
@@ -185,7 +196,9 @@ bool finish(const QString &path, QString *error)
 }
 
 	//The checks a file passes before it replaces the project, and before
-	//it is opened: SQLite's own, ours, a format this QElectroTech reads
+	//it is opened: SQLite's own, ours, a format this QElectroTech reads.
+	//The content digest is not among them: the save writes it, and the
+	//open compares it beside reading the file (QetDbFile::read())
 bool check(const QString &path, QString *error)
 {
 	return withConnection(path, error, [error](QSqlQuery &query) {
@@ -227,16 +240,6 @@ bool check(const QString &path, QString *error)
 		if (!query.exec(QStringLiteral("PRAGMA foreign_key_check")) || query.next()) {
 			if (error) *error = QObject::tr("the file is damaged: an item refers to one that is not there");
 			return false;
-		}
-			//Written by every save since the first files (format 1 without it)
-		if (query.exec(QStringLiteral("SELECT value FROM qet_format WHERE key = 'content_digest'"))
-				&& query.next()) {
-			const QString saved = query.value(0).toString();
-			if (contentDigest(query) != saved) {
-				if (error) *error = QObject::tr("its content is not what QElectroTech saved: it is damaged, "
-												"or another program changed it");
-				return false;
-			}
 		}
 		return true;
 	});
@@ -358,24 +361,33 @@ bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error
 	}
 	if (!check(copy, error))
 		return false;
-		//The indexes the save left out (finish()); a file saved before they
-		//were kept is read without them, slowly
-	withConnection(copy, nullptr, [](QSqlQuery &query) {
-		QStringList definitions;
-		if (query.exec(QStringLiteral("SELECT sql FROM qet_index")))
-			while (query.next()) definitions << query.value(0).toString();
-			//Index definitions only: the file is not trusted to say what runs
-		static const QRegularExpression index_only(QStringLiteral("^CREATE INDEX idx_\\w+ ON \\w+ \\([\\w, ]+\\)$"));
-		for (const QString &definition : std::as_const(definitions))
-			if (index_only.match(definition).hasMatch())
-				query.exec(definition);
-			//A file saved before it was (#1642)
-		normalize(query);
+	QString saved_digest;
+	withConnection(copy, nullptr, [&saved_digest](QSqlQuery &query) {
+			//Written by every save but #1642's, which neither normalized
+		if (query.exec(QStringLiteral("SELECT value FROM qet_format WHERE key = 'content_digest'"))
+				&& query.next())
+			saved_digest = query.value(0).toString();
+		else
+			normalize(query);
 		return true;
 	});
+		//The content digest, worked out on a connection of its own beside
+		//what follows, which only reads the copy too: a second off f2099's
+		//open
+	QFuture<QString> digest;
+	if (!saved_digest.isEmpty())
+		digest = QtConcurrent::run([copy]() {
+			return contentDigest(copy);
+		});
 		//The checked copy, for the project database to start from (S4x X2):
 		//if it did, the folios' items are left in it until each is built
 		//(S4x X3)
 	const bool deferred = with_copy && with_copy(copy);
-	return projectDataBase::readDocument(copy, document, error, deferred);
+	const bool read = projectDataBase::readDocument(copy, document, error, deferred);
+	if (!saved_digest.isEmpty() && digest.result() != saved_digest) {
+		if (error) *error = QObject::tr("its content is not what QElectroTech saved: it is damaged, "
+										"or another program changed it");
+		return false;
+	}
+	return read;
 }

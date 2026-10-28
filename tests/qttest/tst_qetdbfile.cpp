@@ -104,7 +104,7 @@ private slots:
 	}
 
 	// What the file is: ours, its format, at rest with nothing beside it,
-	// without the database's own indexes or the working copy's row
+	// with the database's own indexes, without the working copy's row
 	void fileIsOneDatabase()
 	{
 		const QString path = industrial();
@@ -114,9 +114,8 @@ private slots:
 		QCOMPARE(pragma(path, QStringLiteral("PRAGMA journal_mode")).toString(), QStringLiteral("delete"));
 		QCOMPARE(pragma(path, QStringLiteral("SELECT value FROM qet_format WHERE key = 'format'")).toString(),
 				 QStringLiteral("1"));
-		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name LIKE 'idx_%'")).toInt(), 0);
-			//Kept as definitions, for opening to make again on its copy
-		QVERIFY(pragma(path, QStringLiteral("SELECT count(*) FROM qet_index WHERE name = 'idx_conductor_diagram'")).toInt() == 1);
+			//The indexes stay: speed matters more than size
+		QVERIFY(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'idx_conductor_diagram'")).toInt() == 1);
 		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'working_copy'")).toInt(), 0);
 		const QStringList beside = QDir(m_dir.path()).entryList({QStringLiteral("industrial.qetdb*")}, QDir::Files);
 		QCOMPARE(beside, QStringList{QStringLiteral("industrial.qetdb")});
