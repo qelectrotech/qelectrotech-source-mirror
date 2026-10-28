@@ -30,6 +30,8 @@
 #include <QPointer>
 #include <QUuid>
 #include <QtWidgets>
+
+#include <functional>
 #include <QtXml>
 
 class Conductor;
@@ -163,6 +165,11 @@ class Diagram : public QGraphicsScene
 
 		bool uuidUsedByOtherDiagram(const QUuid &uuid) const;
 		QUuid derivedUuid(const QDomElement &root, const QString &reason) const;
+	public:
+		static QUuid derivedUuid(const QString &reason, const QString &project_title,
+								 int index, const QString &title,
+								 const std::function<bool(const QUuid &)> &used);
+	private:
 
 			//Wires of the loaded file whose ends could not be found
 		QStringList m_wires_not_reconnected;

@@ -19,6 +19,7 @@
 #define QET_DIAGRAM_EDITOR_H
 
 #include "SearchAndReplace/ui/searchandreplacewidget.h"
+#include "dataBase/workingcopyrecovery.h"
 #include "diagramcontext.h"
 #include "projectlock.h"
 #include "qetmainwindow.h"
@@ -85,6 +86,7 @@ class QETDiagramEditor : public QETMainWindow
 		void templateSaved(const ElementsLocation &location);
 		bool drawGrid() const;
 		void openBackupFiles (QList<KAutoSaveFile *> backup_files);
+		void openWorkingCopies(const QList<WorkingCopyRecovery::LeftWorkingCopy> &copies);
 
 	  protected:
 		bool event(QEvent *) override;

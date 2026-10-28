@@ -23,6 +23,7 @@
 #include "conductornumexport.h"
 #include "conductorproperties.h"
 #include "dataBase/projectdatabase.h"
+#include "dataBase/qetdbfile.h"
 #include "diagram.h"
 #include "diagramcontext.h"
 #include "editor/terminalnamecheck.h"
@@ -912,6 +913,16 @@ int recoverProject(const QString &input, const QString &output)
 
 int resaveProject(QETProject &project, const QString &output)
 {
+		//A .qetdb (experimental), whatever the setting: tests and conversions
+	if (QetDbFile::isDatabasePath(output)) {
+		QString error;
+		if (!QetDbFile::save(*project.dataBase(), output, &error)) {
+			err << "Cannot write '" << output << "': " << error << "\n";
+			return 1;
+		}
+		out << "Re-saved project -> " << output << "\n";
+		return 0;
+	}
 	if (QETProject::isContainerPath(output)) {
 		QString error;
 		if (!project.writeContainerFile(output, &error)) {

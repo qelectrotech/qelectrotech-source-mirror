@@ -127,13 +127,10 @@ projectDataBase::~projectDataBase()
 */
 bool projectDataBase::openWorkingCopy()
 {
-	QString dir = qEnvironmentVariable("QET_WORKING_COPY_DIR");
-	if (dir.isEmpty()) {
-		if (!QETProject::backupEnabled()) {
-			return false;
-		}
-		dir = QETApp::dataDir() + QStringLiteral("/working-copies");
+	if (qEnvironmentVariableIsEmpty("QET_WORKING_COPY_DIR") && !QETProject::backupEnabled()) {
+		return false;
 	}
+	const QString dir = workingCopyDir();
 	const QString base = QDir(dir).filePath(QUuid::createUuid().toString(QUuid::WithoutBraces));
 	auto lock = std::make_unique<QLockFile>(base + QStringLiteral(".lock"));
 	if (!QDir().mkpath(dir) || !lock->tryLock(0)) {
@@ -158,6 +155,17 @@ bool projectDataBase::openWorkingCopy()
 	m_working_copy_lock = std::move(lock);
 	m_opened = QDateTime::currentDateTimeUtc();
 	return true;
+}
+
+/**
+	@brief projectDataBase::workingCopyDir
+	@return where working copies are made: QET_WORKING_COPY_DIR, or else
+	QETApp::dataDir()/working-copies
+*/
+QString projectDataBase::workingCopyDir()
+{
+	const QString dir = qEnvironmentVariable("QET_WORKING_COPY_DIR");
+	return dir.isEmpty() ? QETApp::dataDir() + QStringLiteral("/working-copies") : dir;
 }
 
 /**
@@ -2800,14 +2808,20 @@ static void collectionRows(const QDomElement &parent, const QString &path,
 				//Where its category's names sit among its children
 			order.insert(path + QStringLiteral("/#names"), order.size());
 		} else if (child.tagName() == QLatin1String("element")) {
-			symbols.insert(child_path, wholeXml(child));
-			order.insert(child_path, order.size());
+				//Two under one path: QElectroTech uses the first
+				//(XmlElementCollection::child())
+			if (!symbols.contains(child_path)) {
+				symbols.insert(child_path, wholeXml(child));
+				order.insert(child_path, order.size());
+			}
 		} else if (child.tagName() == QLatin1String("category")) {
-			QDomElement own = child.cloneNode(false).toElement();
-			const QDomElement names = child.firstChildElement(QStringLiteral("names"));
-			if (!names.isNull()) own.appendChild(names.cloneNode(true));
-			categories.insert(child_path, wholeXml(own));
-			order.insert(child_path, order.size());
+			if (!categories.contains(child_path)) {
+				QDomElement own = child.cloneNode(false).toElement();
+				const QDomElement names = child.firstChildElement(QStringLiteral("names"));
+				if (!names.isNull()) own.appendChild(names.cloneNode(true));
+				categories.insert(child_path, wholeXml(own));
+				order.insert(child_path, order.size());
+			}
 			collectionRows(child, child_path, symbols, categories, order);
 		}
 	}
@@ -5449,15 +5463,18 @@ void projectDataBase::storeTerminalStrip(TerminalStrip *strip)
 /**
 	@brief projectDataBase::elementTextRowsOf
 	@return the rows of the texts and text groups of the saved symbol
-	@p element: one row per value of its <dynamic_texts> and <texts_groups>
+	@p element: one row per value of its <dynamic_texts> and <texts_groups>.
+	One missing (a symbol saved by an older QElectroTech) reads as empty:
+	a built symbol writes both (Element::ownTextsXml()).
 */
 QList<projectDataBase::ProjectSetting> projectDataBase::elementTextRowsOf(const QDomElement &element)
 {
 	QList<ProjectSetting> rows;
 	for (const QString &tag : {QStringLiteral("dynamic_texts"), QStringLiteral("texts_groups")}) {
-		const QDomElement texts = element.firstChildElement(tag);
-		if (!texts.isNull())
-			xmlRows(texts, tag, 0, rows);
+		QDomElement texts = element.firstChildElement(tag);
+		if (texts.isNull())
+			texts = element.ownerDocument().createElement(tag);
+		xmlRows(texts, tag, 0, rows);
 	}
 	return rows;
 }
@@ -6369,10 +6386,12 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 		//Each type's kind information, read from its definition once
 	const QHash<QString, QDomElement> definitions = embeddedDefinitions();
 	QHash<QString, std::optional<DiagramContext>> kind_of_type;
-	const QDomElement root = document.documentElement();
-	for (QDomElement folio = root.firstChildElement(QStringLiteral("diagram")) ; !folio.isNull() ;
-		 folio = folio.nextSiblingElement(QStringLiteral("diagram")))
+		//Every <diagram>, as QETProject::readDiagramsXml() reads them: a
+		//folio saved inside another one (a damaged file) is one too
+	const QDomNodeList diagram_nodes = document.elementsByTagName(QStringLiteral("diagram"));
+	for (int f = 0 ; f < diagram_nodes.size() ; ++f)
 	{
+		const QDomElement folio = diagram_nodes.at(f).toElement();
 		const QUuid folio_uuid(folio.attribute(QStringLiteral("uuid")));
 		if (!folio_uuid.isNull() && ++seen[folio_uuid] == 1) {
 			TitleBlockProperties properties;

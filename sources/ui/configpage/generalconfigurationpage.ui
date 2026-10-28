@@ -483,6 +483,26 @@
         </widget>
        </item>
        <item row="9" column="0">
+        <widget class="QCheckBox" name="m_working_copy_recovery">
+         <property name="text">
+          <string>After a crash, offer projects as they were after their last edit (experimental)</string>
+         </property>
+         <property name="toolTip">
+          <string>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QCheckBox" name="m_qetdb_enabled">
+         <property name="text">
+          <string>Offer saving a project as one database file, .qetdb (experimental)</string>
+         </property>
+         <property name="toolTip">
+          <string>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>

@@ -3880,6 +3880,52 @@ void QETDiagramEditor::openBackupFiles(QList<KAutoSaveFile *> backup_files)
 	}
 }
 /**
+	@brief QETDiagramEditor::openWorkingCopies
+	Open the projects the working copies @p copies left by a QElectroTech
+	that did not close normally (QET-SQL-FORMAT S3z3): each is written as
+	a .qet, which is opened as the project it was, unsaved, as a project
+	reopened from a recovery file. The working copies are deleted.
+	@param copies
+*/
+void QETDiagramEditor::openWorkingCopies(const QList<WorkingCopyRecovery::LeftWorkingCopy> &copies)
+{
+	for (const auto &copy : copies)
+	{
+		DialogWaiting::instance(this);
+		QETProject *project = nullptr;
+		QTemporaryDir dir;
+		const QString recovered = dir.filePath(QStringLiteral("recovered.qet"));
+		QString error;
+		if (dir.isValid() && projectDataBase::writeWorkingCopy(copy.path, recovered, &error))
+		{
+			project = new QETProject(recovered, copy.project_file, this);
+			if (project->state() != QETProject::Ok) {
+				delete project;
+				project = nullptr;
+			}
+		}
+		else {
+			qWarning() << "Working copy" << copy.path << "not recovered:" << error;
+		}
+		WorkingCopyRecovery::remove(copy.path);
+		DialogWaiting::dropInstance();
+		if (!project)
+		{
+			QET::QetMessageBox::warning(
+				this,
+				tr("Unable to open project", "message box title"),
+				QString(tr(
+					"An error occurred while opening file %1.",
+					"message box content")).arg(
+						copy.project_file.isEmpty() ? copy.path
+													: QFileInfo(copy.project_file).fileName()));
+			continue;
+		}
+		addProject(project);
+	}
+}
+
+/**
 	met a jour le menu "Fenetres"
 */
 void QETDiagramEditor::slot_updateWindowsMenu()

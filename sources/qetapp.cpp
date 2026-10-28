@@ -31,6 +31,8 @@
 #include "qetstyle.h"
 #include "utils/qetutils.h"
 #include "utils/configprofile.h"
+#include "utils/qetsettings.h"
+#include "dataBase/projectdatabase.h"
 #include "qetmessagebox.h"
 #include "qetproject.h"
 #include "qtextorientationspinboxwidget.h"
@@ -1184,6 +1186,7 @@ QStringList QETApp::handledFileExtensions()
 	if (!ext.count()) {
 		ext << "qet";
 		ext << "qetz";
+		ext << "qetdb";
 		ext << "elmt";
 		ext << QString(TITLEBLOCKS_FILE_EXTENSION).remove(QRegularExpression("^\\."));
 	}
@@ -3248,8 +3251,18 @@ void QETApp::checkBackupFiles()
 		}
 	}
 
-	if (!stale_files.isEmpty()) {
-		offerBackupFiles(stale_files);
+		//The working copies left by projects open when QElectroTech did not
+		//close normally (QET-SQL-FORMAT S3z3). Those with nothing to
+		//recover are deleted even with the setting off; the others wait
+		//for it to be turned on.
+	QList<WorkingCopyRecovery::LeftWorkingCopy> working_copies =
+			WorkingCopyRecovery::leftWorkingCopies(projectDataBase::workingCopyDir());
+	if (!QetSettings::workingCopyRecovery()) {
+		working_copies.clear();
+	}
+
+	if (!stale_files.isEmpty() || !working_copies.isEmpty()) {
+		offerBackupFiles(stale_files, working_copies);
 	}
 
 	// Discussion #644 step 5 asks that the recovery prompt and the crash
@@ -3269,8 +3282,11 @@ void QETApp::checkBackupFiles()
 	files, one per snapshot (@see QETProject::writeBackup): they are grouped
 	by project, and the user picks which one to reopen, the newest by default.
 	@param stale_files : the recovery files to offer
+	@param working_copies : the working copies to offer, above the recovery
+	files of their project. Deleted once opened, or if not picked.
 */
-void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files)
+void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files,
+			      const QList<WorkingCopyRecovery::LeftWorkingCopy> &working_copies)
 {
 		//Group the snapshots by the project they recover, newest first.
 	QHash<QString, QList<KAutoSaveFile *>> groups;
@@ -3285,9 +3301,35 @@ void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files)
 			});
 	}
 
-	BackupRestoreDialog dialog(groups, nullptr);
+	QHash<QString, WorkingCopyRecovery::LeftWorkingCopy> copy_for_key;
+	QHash<QString, QDateTime> committed;
+	for (const auto &copy : working_copies) {
+			//Keyed as the recovery files are, by the path of a URL
+		const QString key = copy.project_file.isEmpty()
+				? BackupRestoreDialog::neverSavedKey(copy.path)
+				: QUrl::fromLocalFile(copy.project_file).path();
+			//Newest first: a second copy of the same project is older
+		if (copy_for_key.contains(key)) {
+			WorkingCopyRecovery::remove(copy.path);
+			continue;
+		}
+		copy_for_key.insert(key, copy);
+		committed.insert(key, copy.committed);
+	}
+
+	BackupRestoreDialog dialog(groups, nullptr, committed);
 	if (dialog.exec() == QDialog::Accepted)
 	{
+		QList<WorkingCopyRecovery::LeftWorkingCopy> copies_to_open;
+		const QStringList picked = dialog.selectedWorkingCopies();
+		for (auto it = copy_for_key.constBegin(); it != copy_for_key.constEnd(); ++it) {
+			if (picked.contains(it.key())) {
+				copies_to_open << it.value();
+			} else {
+				WorkingCopyRecovery::remove(it.value().path);
+			}
+		}
+
 			//The snapshots not picked are no longer needed.
 		for (KAutoSaveFile *discarded : dialog.discardedFiles())
 		{
@@ -3301,15 +3343,20 @@ void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files)
 		{
 			diagramEditors().first()->setVisible(true);
 			diagramEditors().first()->openBackupFiles(to_open);
+			diagramEditors().first()->openWorkingCopies(copies_to_open);
 		}
 		else
 		{
 			QETDiagramEditor *editor = new QETDiagramEditor();
 			editor->openBackupFiles(to_open);
+			editor->openWorkingCopies(copies_to_open);
 		}
 	}
 	else //Clear backup file
 	{
+		for (const auto &copy : std::as_const(copy_for_key)) {
+			WorkingCopyRecovery::remove(copy.path);
+		}
 		//Remove the stale files
 		for (KAutoSaveFile *stale : stale_files)
 		{

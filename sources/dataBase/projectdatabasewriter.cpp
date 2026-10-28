@@ -659,6 +659,22 @@ bool projectDataBase::writeDocument(const QString &database_file, const QString 
 */
 bool projectDataBase::writeProjectFromDatabase(const QString &project_file, QString *error)
 {
+	QTemporaryDir dir;
+	if (!dir.isValid()) {
+		if (error) *error = QStringLiteral("no temporary folder");
+		return false;
+	}
+	const QString copy = dir.filePath(QStringLiteral("project.sqlite"));
+	return copyTo(copy, error) && writeDocument(copy, project_file, error);
+}
+
+/**
+	@brief projectDataBase::copyTo
+	Bring every table up to date and copy the database to the new file
+	@p file (VACUUM INTO), as it then holds the whole project.
+*/
+bool projectDataBase::copyTo(const QString &file, QString *error)
+{
 	updateDB();
 		//The rebuild above leaves some queues for the next read
 	flushDrawingItems();
@@ -670,20 +686,11 @@ bool projectDataBase::writeProjectFromDatabase(const QString &project_file, QStr
 	flushCables();
 	flushConductorProperties();
 
-	QTemporaryDir dir;
-	if (!dir.isValid()) {
-		if (error) *error = QStringLiteral("no temporary folder");
-		return false;
-	}
-	const QString copy = dir.filePath(QStringLiteral("project.sqlite"));
 		//VACUUM INTO cannot run inside the working copy's transaction
 	endTransaction();
 	QSqlQuery query(m_data_base);
-	const bool copied = query.exec(QStringLiteral("VACUUM INTO '%1'").arg(QString(copy).replace(QLatin1Char('\''), QStringLiteral("''"))));
+	const bool copied = query.exec(QStringLiteral("VACUUM INTO '%1'").arg(QString(file).replace(QLatin1Char('\''), QStringLiteral("''"))));
 	beginTransaction();
-	if (!copied) {
-		if (error) *error = query.lastError().text();
-		return false;
-	}
-	return writeDocument(copy, project_file, error);
+	if (!copied && error) *error = query.lastError().text();
+	return copied;
 }
