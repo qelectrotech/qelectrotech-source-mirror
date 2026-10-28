@@ -169,8 +169,10 @@ private slots:
 			if (!f.open(QIODevice::ReadOnly)) return result;
 			QString current;
 			for (const QString &line : QString::fromUtf8(f.readAll()).split(QLatin1Char('\n'))) {
-				if (line.startsWith(QStringLiteral("== "))) current = line.section(QStringLiteral(" ("), 0, 0);
-				else result[current] << line;
+				if (line.startsWith(QStringLiteral("== "))) {
+					current = line.section(QStringLiteral(" ("), 0, 0);
+					result[current];	//an empty section is one too
+				} else result[current] << line;
 			}
 			return result;
 		};
