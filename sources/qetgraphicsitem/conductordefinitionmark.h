@@ -71,6 +71,9 @@ class ConductorDefinitionMark : public QGraphicsObject
 		void place(qreal distance);
 		QRectF colorRect() const;
 		QRectF sectionRect() const;
+		QRectF textRect(const QString &text, bool first_side) const;
+		void drawText(QPainter *painter, const QRectF &rect,
+			      const QString &text) const;
 
 		Conductor *m_conductor;
 		qreal m_distance = 0;

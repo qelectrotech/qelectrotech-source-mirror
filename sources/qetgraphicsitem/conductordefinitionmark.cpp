@@ -161,31 +161,52 @@ void ConductorDefinitionMark::place(qreal distance)
 }
 
 /**
-	@return where the colour is written: past the stroke's upper end, above
-	a horizontal conductor and right of a vertical one
+	@return where the colour is written, on the sheet: on a vertical
+	conductor upright, left of the conductor and just above the stroke;
+	on a horizontal one above the conductor, just past the stroke
 */
 QRectF ConductorDefinitionMark::colorRect() const
 {
-	const ConductorProperties p = m_conductor->ownProperties();
-	const QFontMetricsF metrics(m_conductor->textItem()->font());
-	const QSizeF size(metrics.horizontalAdvance(p.m_wire_color), metrics.height());
-	return m_vertical
-		? QRectF(QPointF(half_stroke + text_gap, -half_stroke - size.height()), size)
-		: QRectF(QPointF(half_stroke, -half_stroke - text_gap - size.height()), size);
+	return textRect(m_conductor->ownProperties().m_wire_color, true);
 }
 
 /**
-	@return where the section is written: past the stroke's lower end,
-	below a horizontal conductor and left of a vertical one
+	@return where the section is written: level with the colour, on the
+	other side of the conductor
 */
 QRectF ConductorDefinitionMark::sectionRect() const
 {
-	const ConductorProperties p = m_conductor->ownProperties();
+	return textRect(m_conductor->ownProperties().m_wire_section, false);
+}
+
+QRectF ConductorDefinitionMark::textRect(const QString &text, bool first_side) const
+{
 	const QFontMetricsF metrics(m_conductor->textItem()->font());
-	const QSizeF size(metrics.horizontalAdvance(p.m_wire_section), metrics.height());
-	return m_vertical
-		? QRectF(QPointF(-half_stroke - text_gap - size.width(), half_stroke), size)
-		: QRectF(QPointF(-half_stroke - size.width(), half_stroke + text_gap), size);
+	const qreal width = metrics.horizontalAdvance(text);
+	const qreal height = metrics.height();
+	if (m_vertical)
+		return QRectF(first_side ? -height - text_gap / 2 : text_gap / 2,
+			      -half_stroke - text_gap - width, height, width);
+	return QRectF(half_stroke + text_gap,
+		      first_side ? -height - text_gap / 2 : text_gap / 2, width, height);
+}
+
+/**
+	Write @p text into @p rect, upright on a vertical conductor
+*/
+void ConductorDefinitionMark::drawText(QPainter *painter, const QRectF &rect,
+				       const QString &text) const
+{
+	if (!m_vertical) {
+		painter->drawText(rect, Qt::AlignLeft | Qt::AlignVCenter, text);
+		return;
+	}
+	painter->save();
+	painter->translate(rect.bottomLeft());
+	painter->rotate(-90);
+	painter->drawText(QRectF(0, 0, rect.height(), rect.width()),
+			  Qt::AlignLeft | Qt::AlignVCenter, text);
+	painter->restore();
 }
 
 QRectF ConductorDefinitionMark::boundingRect() const
@@ -227,8 +248,8 @@ void ConductorDefinitionMark::paint(QPainter *painter,
 
 	painter->setFont(m_conductor->textItem()->font());
 	painter->setPen(m_conductor->textItem()->defaultTextColor());
-	painter->drawText(colorRect(), Qt::AlignLeft | Qt::AlignVCenter, p.m_wire_color);
-	painter->drawText(sectionRect(), Qt::AlignLeft | Qt::AlignVCenter, p.m_wire_section);
+	drawText(painter, colorRect(), p.m_wire_color);
+	drawText(painter, sectionRect(), p.m_wire_section);
 
 	if (m_hovered) {
 		painter->setPen(QPen(QColor(0x60, 0x90, 0xd0), 0, Qt::DashLine));
