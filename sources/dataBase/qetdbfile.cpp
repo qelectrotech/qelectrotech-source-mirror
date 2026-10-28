@@ -312,23 +312,23 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 }
 
 /**
-	@brief QetDbFile::readAsQet
-	The project the .qetdb @p path holds, as the text of a .qet: read from a
-	copy, so that the file itself is never opened for writing, once it
-	passes the checks of a save.
-	@return the text, or an empty array with @p error saying why
+	@brief QetDbFile::read
+	@p document becomes the project the .qetdb @p path holds, as a .qet's
+	document: read from a copy, so that the file itself is never opened for
+	writing, once it passes the checks of a save. Handed over as it is, not
+	written as text and parsed again (S4x X1).
+	@return false, with @p error saying why, if it cannot be read
 */
-QByteArray QetDbFile::readAsQet(const QString &path, QString *error)
+bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error)
 {
 	QTemporaryDir dir;
 	const QString copy = dir.filePath(QStringLiteral("project.qetdb"));
-	const QString written = dir.filePath(QStringLiteral("project.qet"));
 	if (!dir.isValid() || !QFile::copy(path, copy)) {
 		if (error) *error = QObject::tr("the file could not be read");
-		return {};
+		return false;
 	}
 	if (!check(copy, error))
-		return {};
+		return false;
 		//The indexes the save left out (finish()); a file saved before they
 		//were kept is read without them, slowly
 	withConnection(copy, nullptr, [](QSqlQuery &query) {
@@ -342,12 +342,5 @@ QByteArray QetDbFile::readAsQet(const QString &path, QString *error)
 				query.exec(definition);
 		return true;
 	});
-	if (!projectDataBase::writeDocument(copy, written, error))
-		return {};
-	QFile file(written);
-	if (!file.open(QIODevice::ReadOnly)) {
-		if (error) *error = file.errorString();
-		return {};
-	}
-	return file.readAll();
+	return projectDataBase::readDocument(copy, document, error);
 }

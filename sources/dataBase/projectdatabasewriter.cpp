@@ -632,23 +632,35 @@ QDomDocument projectDataBase::toDocument(const QSqlDatabase &db)
 */
 bool projectDataBase::writeDocument(const QString &database_file, const QString &project_file, QString *error)
 {
-	const QString connection = QStringLiteral("qet_project_writer_") + QUuid::createUuid().toString();
 	QDomDocument document;
+	return readDocument(database_file, &document, error)
+			&& QET::writeXmlFile(document, project_file, error);
+}
+
+/**
+	@brief projectDataBase::readDocument
+	@p document becomes the project the database file @p database_file
+	holds (toDocument()), read through a connection of its own.
+	@return true on success; else false, and why in @p error
+*/
+bool projectDataBase::readDocument(const QString &database_file, QDomDocument *document, QString *error)
+{
+	const QString connection = QStringLiteral("qet_project_writer_") + QUuid::createUuid().toString();
+	bool ok = false;
 	{
 		QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), connection);
 		db.setDatabaseName(database_file);
 		db.setConnectOptions(QStringLiteral("QSQLITE_OPEN_READONLY"));
 		if (!db.open()) {
 			if (error) *error = db.lastError().text();
-			db = QSqlDatabase();
-			QSqlDatabase::removeDatabase(connection);
-			return false;
+		} else {
+			*document = toDocument(db);
+			ok = true;
 		}
-		document = toDocument(db);
 		db.close();
 	}
 	QSqlDatabase::removeDatabase(connection);
-	return QET::writeXmlFile(document, project_file, error);
+	return ok;
 }
 
 /**

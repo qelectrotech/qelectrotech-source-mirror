@@ -341,6 +341,8 @@ class projectDataBase : public QObject
 			/// The project @p db holds, written from its tables alone
 			/// (projectdatabasewriter.cpp)
 		static QDomDocument toDocument(const QSqlDatabase &db);
+		static bool readDocument(const QString &database_file, QDomDocument *document,
+								 QString *error = nullptr);
 		static bool writeDocument(const QString &database_file, const QString &project_file,
 								  QString *error = nullptr);
 		bool writeProjectFromDatabase(const QString &project_file, QString *error = nullptr);

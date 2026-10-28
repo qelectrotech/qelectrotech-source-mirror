@@ -20,6 +20,7 @@
 #define QETDBFILE_H
 
 #include <QByteArray>
+#include <QDomDocument>
 #include <QString>
 
 class projectDataBase;
@@ -39,7 +40,7 @@ namespace QetDbFile
 	bool isDatabasePath(const QString &path);
 	bool isDatabase(const QByteArray &head);
 	bool save(projectDataBase &database, const QString &path, QString *error);
-	QByteArray readAsQet(const QString &path, QString *error);
+	bool read(const QString &path, QDomDocument *document, QString *error);
 }
 
 #endif // QETDBFILE_H

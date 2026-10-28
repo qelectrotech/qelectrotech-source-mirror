@@ -579,13 +579,15 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//Extract the content of the xml. The raw bytes are kept : a project
 		//file without a persisted uuid derives its uuid from them.
 	QByteArray content = file->readAll();
-		//A .qetdb (experimental): the project it holds, as a .qet's text.
-		//Its state on disk is that of the file itself
+		//A .qetdb (experimental): the project it holds, as a .qet's document,
+		//handed over without being written as text. Its state on disk is that
+		//of the file itself
 	const bool database = QetDbFile::isDatabase(content.left(16));
+	QDomDocument xml_project;
 	if (database) {
 		QString error;
-		content = QetDbFile::readAsQet(fi.absoluteFilePath(), &error);
-		if (content.isEmpty()) {
+		content.clear();
+		if (!QetDbFile::read(fi.absoluteFilePath(), &xml_project, &error)) {
 			qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << error;
 			m_open_error = error;
 			if (opened_here) {
@@ -599,7 +601,6 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//from a .qet only, a .qetz is a zip of parts
 	if (!content.startsWith("PK\x03\x04"))
 		m_opened_content = content;
-	QDomDocument xml_project;
 	// PreserveSpacingOnlyNodes: without it, a text node that is entirely
 	// whitespace -- e.g. a title-block custom variable deliberately set to
 	// a single space, the only way to give it a value other than blank
@@ -618,7 +619,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	QString read_error;
 		//A .qetz: its entries are kept, for a save to copy the parts of the
 		//folios not built (stage D4)
-	if (!m_container.read(content, &xml_project, &read_error))
+	if (!database && !m_container.read(content, &xml_project, &read_error))
 	{
 		qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << read_error;
 		m_open_error = read_error;
@@ -636,7 +637,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	if (root_elmt.tagName() == QLatin1String("project"))
 	{
 		const QUuid persisted_uuid(root_elmt.attribute(QStringLiteral("uuid")));
-		m_uuid = persisted_uuid.isNull() ? derivedUuid(content)
+		m_uuid = persisted_uuid.isNull() ? derivedUuid(database ? xml_project.toByteArray() : content)
 										 : persisted_uuid;
 	}
 
