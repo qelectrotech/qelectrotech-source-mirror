@@ -122,21 +122,31 @@ QString contentDigest(const QString &path)
 	//as from its document (S4x X2)
 bool normalize(QSqlQuery &query)
 {
-	if (!query.exec(QStringLiteral("DELETE FROM element_information WHERE trim(coalesce(value, '')) = ''"))
-			|| !query.exec(QStringLiteral("UPDATE element_information SET ord = (SELECT count(*) FROM element_information i "
-										  "WHERE i.element_uuid = element_information.element_uuid "
-										  "AND i.ord < element_information.ord)"))
-			|| !query.exec(QStringLiteral("UPDATE sequential_number SET value = '' WHERE value IS NULL")))
+	if (!query.exec(QStringLiteral("DELETE FROM element_information WHERE trim(coalesce(value, '')) = ''")))
+		return false;
+		//Each symbol's rows numbered from 0, only the rows whose number changes rewritten
+	if (!query.exec(QStringLiteral("UPDATE element_information SET ord = n.ord FROM "
+										  "(SELECT rowid AS id, rank() OVER (PARTITION BY element_uuid ORDER BY ord) - 1 AS ord "
+										  "FROM element_information) AS n "
+										  "WHERE n.id = element_information.rowid AND n.ord <> element_information.ord")))
+		return false;
+	if (!query.exec(QStringLiteral("UPDATE sequential_number SET value = '' WHERE value IS NULL")))
 		return false;
 	QStringList columns;
 	if (!query.exec(QStringLiteral("PRAGMA table_info(element_info)")))
 		return false;
 	while (query.next())
 		if (query.value(1).toString() != QLatin1String("element_uuid")) columns << query.value(1).toString();
-	for (const QString &column : std::as_const(columns))
-		if (!query.exec(QStringLiteral("UPDATE element_info SET \"%1\" = NULL WHERE \"%1\" = ''").arg(column)))
-			return false;
-	return true;
+	if (columns.isEmpty())
+		return true;
+		//One pass over the table, rewriting only the rows with an empty value
+	QStringList sets, empties;
+	for (const QString &column : std::as_const(columns)) {
+		sets << QStringLiteral("\"%1\" = NULLIF(\"%1\", '')").arg(column);
+		empties << QStringLiteral("\"%1\" = ''").arg(column);
+	}
+	return query.exec(QStringLiteral("UPDATE element_info SET %1 WHERE %2")
+					  .arg(sets.join(QStringLiteral(", ")), empties.join(QStringLiteral(" OR "))));
 }
 
 	//Runs @p work on a connection of its own to the file @p path
