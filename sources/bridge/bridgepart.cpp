@@ -272,13 +272,23 @@ void BridgePart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		return;
 	}
 
+		//What is one bridge carried on over the sheets is one bridge:
+		//an end coming to a sheet reference joins the bridge that
+		//reference stands for -- one unit, one voltage, one limit -- the
+		//way a line drawn onto an existing bridge joins it
+	Bridge *joined = BridgeManager::joinTarget(project, after, bridge);
+	Bridge *unit = joined ? joined : bridge;
+
+		//A sheet reference is the way to the next sheet and fills no
+		//place of the bridge: what is counted are the Klemmen the line
+		//lands on and did not land on before
 	int added = 0;
 	for (const BridgeTerminal &terminal : after) {
-		if (!before.contains(terminal)) {
+		if (!terminal.reference && !unit->hasTerminal(terminal)) {
 			++added;
 		}
 	}
-	if (added && bridge->wouldExceed(added)) {
+	if (added && unit->wouldExceed(added)) {
 		setLine(before_line.p1(), before_line.p2());
 		QMessageBox::warning(nullptr, tr("That bridge cannot be built"),
 							 tr("The line would land on %1 terminal(s) more than the "
@@ -291,8 +301,14 @@ void BridgePart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		//What the bridge carries as information follows the terminals:
 		//when they do not agree the user is asked which the bridge takes
 		//-- its own among the candidates -- and cancelling leaves the
-		//line the length it had
-	const BridgeInformation information_before{bridge->tensionText()};
+		//line the length it had. The unit joined carries its own voltage
+		//to the new half of it.
+	const QString unit_tension = joined
+			? (joined->tensionText().isEmpty()
+			   ? bridge->tensionText() : joined->tensionText())
+			: bridge->tensionText();
+	const BridgeInformation information_before{joined ? unit_tension
+													  : bridge->tensionText()};
 	QList<BridgeInformation> candidates = BridgeManager::informationSets(project, after);
 	candidates.prepend(information_before);
 	bool take_information = false;
@@ -300,6 +316,40 @@ void BridgePart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 			BridgeCreateDialog::askForInformation(candidates, &take_information);
 	if (!take_information) {
 		setLine(before_line.p1(), before_line.p2());
+		event->accept();
+		return;
+	}
+
+	if (joined)
+	{
+			//One undo step for the two of them: first the bridges become
+			//one, then the line is the length it was pulled to on the
+			//unit which now holds it
+		auto *outer = new QUndoCommand();
+		outer->setText(tr("Joining a bridge over a sheet reference", "undo command text"));
+		new MergeBridgesCommand(bridge, joined, outer);
+
+		QList<BridgeTerminal> merged_before = joined->terminals();
+		for (const BridgeTerminal &terminal : before) {
+			if (!merged_before.contains(terminal)) {
+				merged_before << terminal;
+			}
+		}
+		QList<BridgeTerminal> merged_after = joined->terminals();
+		for (const BridgeTerminal &terminal : after) {
+			if (!merged_after.contains(terminal)) {
+				merged_after << terminal;
+			}
+		}
+		const BridgeInformation carried{joined->tensionText().isEmpty()
+					? information_after.tension : joined->tensionText()};
+		new ChangeBridgeGeometryCommand(joined, this,
+										before_line, after_line,
+										merged_before, merged_after,
+										carried, carried, outer);
+		BridgeManager::pairReferences(project, joined, outer);
+		BridgeManager::writeInformation(project, merged_after, carried, outer);
+		folio->undoStack().push(outer);
 		event->accept();
 		return;
 	}

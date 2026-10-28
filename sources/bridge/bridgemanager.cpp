@@ -460,6 +460,59 @@ QString BridgeManager::dockAt(QETProject *project,
 }
 
 /**
+	@brief BridgeManager::joinTarget
+	@param project
+	@param landings where a line comes to
+	@param self the bridge asking, never the answer
+	@return the bridge one of those landings reaches through a sheet
+	reference -- the one the reference, or the one it is linked to, is
+	already carried on by -- or nullptr when there is none. What is one
+	bridge carried on over the sheets is one unit: a line landing on
+	one half of it joins the whole of it.
+*/
+Bridge *BridgeManager::joinTarget(QETProject *project,
+								  const QList<BridgeTerminal> &landings,
+								  Bridge *self)
+{
+	if (!project) {
+		return nullptr;
+	}
+	for (const BridgeTerminal &landing : landings)
+	{
+		Element *element = elementFor(project, landing);
+		if (!element || !(element->linkType() & Element::AllReport)) {
+			continue;
+		}
+			//The reference itself, and the one it is linked to: the
+			//half of a bridge carried on over the sheets stands on the
+			//other sheet behind that link
+		QList<Element *> system;
+		system << element;
+		const auto linked = element->linkedElements();
+		for (Element *other : linked) {
+			system << other;
+		}
+		for (Element *member : std::as_const(system))
+		{
+			const auto bridges = project->bridges();
+			for (Bridge *bridge : bridges)
+			{
+				if (!bridge || bridge == self) {
+					continue;
+				}
+				const auto lands_on = bridge->landings();
+				for (const BridgeTerminal &on : lands_on) {
+					if (elementFor(project, on) == member) {
+						return bridge;
+					}
+				}
+			}
+		}
+	}
+	return nullptr;
+}
+
+/**
 	@brief BridgeManager::refreshReferences
 	@param project
 	@param landings where a bridge comes or goes

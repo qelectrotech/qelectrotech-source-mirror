@@ -1088,7 +1088,8 @@ private slots:
 		for (Diagram *diagram : project.diagrams()) {
 			for (Element *element : diagram->elements()) {
 				if ((element->linkType() & Element::AllReport)
-					&& !element->terminals().isEmpty()) {
+					&& !element->terminals().isEmpty()
+					&& element->terminals().first()->conductors().isEmpty()) {
 					report = element;
 					break;
 				}
@@ -1096,7 +1097,7 @@ private slots:
 			if (report) break;
 		}
 		if (!report) {
-			QSKIP("the fixture has no sheet reference");
+			QSKIP("the fixture has no sheet reference without a wire");
 		}
 		auto *function_text = new DynamicElementTextItem(report);
 		function_text->setTextFrom(DynamicElementTextItem::ElementInfo);
@@ -1109,19 +1110,20 @@ private slots:
 		QVERIFY2(tension_text->toPlainText().isEmpty(),
 				 "before any bridge the fields say nothing");
 
-			//What the wires behind say of themselves
-		QString function;
+			//What the wires behind say of themselves: in a drawing every
+		//wire of the circle carries the name of its circuit
+		QString function = QStringLiteral("L1");
 		for (const QSharedPointer<RealTerminal> &terminal : terminals) {
 			for (Terminal *pin : terminal->element()->terminals()) {
 				for (Conductor *wire : pin->conductors()) {
-					if (wire && !wire->properties().m_function.isEmpty()) {
-						function = wire->properties().m_function;
+					if (!wire) {
+						continue;
 					}
+					ConductorProperties properties = wire->properties();
+					properties.m_function = function;
+					wire->setProperties(properties);
 				}
 			}
-		}
-		if (function.isEmpty()) {
-			QSKIP("the fixture wires carry no function");
 		}
 
 		//The bridge is drawn over the wired terminals and lands on the
@@ -1149,14 +1151,247 @@ private slots:
 		QCOMPARE(tension_text->toPlainText(), QStringLiteral("400V"));
 		QCOMPARE(function_text->toPlainText(), function);
 
-			//And it goes when the bridge leaves
-		bridge->removeTerminal(BridgeTerminal{
-				report->uuid(),
-				report->terminals().first()->stableUuid().toString(),
-				true});
+			//And one step takes the whole of it back
+		folio->undoStack().undo();
 		QVERIFY2(tension_text->toPlainText().isEmpty(),
 				 "what hangs on the reference follows the drawing");
 
+	}
+
+	//A line coming to a sheet reference joins the bridge that reference
+	//stands for -- as if it had been drawn onto it from the start: one
+	//unit, one voltage reaching the far side, one limit
+	void aLineLandedOnAReferenceJoinsTheBridgeBehindIt()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+
+		Element *out = nullptr;
+		Element *in = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if (element->terminals().isEmpty()
+					|| !(element->linkType() & Element::AllReport)) {
+					continue;
+				}
+				if (!out) {
+					out = element;
+				} else if (!in && element != out) {
+					in = element;
+				}
+			}
+		}
+		if (!out || !in) {
+			QSKIP("the fixture has not two sheet references");
+		}
+		out->linkToElement(in);
+
+		//The bridge which carries the voltage, one reference at it
+		Bridge *carried = project.newBridge();
+		carried->setTensionText(QStringLiteral("400V"));
+		carried->addTerminal(terminalOf(terminals.at(0)));
+		carried->addTerminal(terminalOf(terminals.at(1)));
+		const BridgeTerminal on_out{out->uuid(),
+								   out->terminals().first()->stableUuid().toString(),
+								   true};
+		carried->addTerminal(on_out);
+
+		//The line comes to the other reference and touches no Klemme
+		const BridgeTerminal on_in{in->uuid(),
+								  in->terminals().first()->stableUuid().toString(),
+								  true};
+		Bridge *joined = BridgeManager::joinTarget(
+					&project, QList<BridgeTerminal>{on_in}, nullptr);
+		QVERIFY2(joined == carried,
+				 "the line joins the bridge the reference stands for");
+
+			//A wire on that side says what the unit says
+		Terminal *far_pin = in->terminals().first();
+		Terminal *free_pin = nullptr;
+		for (Terminal *pin : terminals.at(0)->element()->terminals()) {
+			if (pin->conductors().isEmpty()) {
+				free_pin = pin;
+				break;
+			}
+		}
+		if (!free_pin) {
+			QSKIP("the fixture has no free pin");
+		}
+		Conductor *far = new Conductor(far_pin, free_pin);
+		QVERIFY(far);
+
+			//The line goes onto the unit the way the GUI packs it onto
+			//the existing bridge
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
+		BridgePartData part;
+		part.uuid = QUuid::createUuid();
+		part.diagram = folio->uuid();
+		part.p1 = far_pin->dockConductor();
+		part.p2 = far_pin->dockConductor() + QPointF(60, 0);
+		joined->addPart(part);
+		joined->addTerminal(on_in);
+		auto *item = new BridgePart(part);
+		item->setBridge(joined);
+		folio->addItem(item);
+
+		auto *command = new AddBridgeCommand(
+					joined, item, folio, false, QList<BridgeTerminal>{on_in},
+					BridgeInformation{QStringLiteral("400V")},
+					BridgeInformation{QStringLiteral("400V")});
+		BridgeManager::pairReferences(&project, joined, command);
+		BridgeManager::writeInformation(&project, joined->terminals(),
+										BridgeInformation{QStringLiteral("400V")},
+										command);
+		folio->undoStack().push(command);
+
+			//One unit, and its voltage reaches the far side
+		QCOMPARE(project.bridges().size(), 1);
+		QCOMPARE(joined->tensionText(), QStringLiteral("400V"));
+		QVERIFY2(joined->hasTerminal(on_in),
+				 "the line the reference brought is on the unit");
+		QCOMPARE(far->properties().m_tension_protocol, QStringLiteral("400V"));
+
+			//And one step puts both halves apart again
+		folio->undoStack().undo();
+		QVERIFY2(!joined->hasTerminal(on_in),
+				 "the line the reference brought goes with its step");
+		QVERIFY(far->properties().m_tension_protocol.isEmpty());
+	}
+
+	//Two bridges which meet at their references are one unit: what the
+	//one holds goes onto the other, the voltage with it, and undo puts
+	//the two apart the way they stood
+	void twoBridgesBecomeOneOverTheirReferences()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+
+		Element *out = nullptr;
+		Element *in = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if (element->terminals().isEmpty()
+					|| !(element->linkType() & Element::AllReport)) {
+					continue;
+				}
+				if (!out) {
+					out = element;
+				} else if (!in && element != out) {
+					in = element;
+				}
+			}
+		}
+		if (!out || !in) {
+			QSKIP("the fixture has not two sheet references");
+		}
+		out->linkToElement(in);
+
+		Bridge *carried = project.newBridge();
+		carried->setTensionText(QStringLiteral("400V"));
+		carried->addTerminal(terminalOf(terminals.at(0)));
+		const BridgeTerminal on_out{out->uuid(),
+								   out->terminals().first()->stableUuid().toString(),
+								   true};
+		carried->addTerminal(on_out);
+
+		Bridge *coming = project.newBridge();
+		coming->addTerminal(terminalOf(terminals.at(1)));
+		const BridgeTerminal on_in{in->uuid(),
+								  in->terminals().first()->stableUuid().toString(),
+								  true};
+		coming->addTerminal(on_in);
+		QCOMPARE(project.bridges().size(), 2);
+
+		const int carried_klemmen = carried->klemmCount();
+		const int coming_klemmen = coming->klemmCount();
+		QVERIFY2(carried != coming, "they are two bridges");
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
+		auto *command = new QUndoCommand();
+		new MergeBridgesCommand(coming, carried, command);
+		folio->undoStack().push(command);
+
+			//One unit: one bridge holding what both of them held, its
+			//own voltage reaching all of it
+		QCOMPARE(project.bridges().size(), 1);
+		QVERIFY(carried->hasTerminal(on_in));
+		QCOMPARE(carried->klemmCount(), carried_klemmen + coming_klemmen);
+		QCOMPARE(carried->tensionText(), QStringLiteral("400V"));
+
+			//And two again, each holding what it held
+		folio->undoStack().undo();
+		QCOMPARE(project.bridges().size(), 2);
+		QVERIFY2(!carried->hasTerminal(on_in), "the halves are apart again");
+		QVERIFY(coming->hasTerminal(on_in));
+		QCOMPARE(carried->klemmCount(), carried_klemmen);
+		QCOMPARE(coming->klemmCount(), coming_klemmen);
+	}
+
+	//What the unit may hold is the limit of all of it: a sheet
+	//reference fills no place of the bridge, and the Klemmen the other
+	//half brings count against the limit of the one they join
+	void theUnitKeepsTheLimitOfAllOfIt()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 3);
+
+		Element *out = nullptr;
+		Element *in = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if (element->terminals().isEmpty()
+					|| !(element->linkType() & Element::AllReport)) {
+					continue;
+				}
+				if (!out) {
+					out = element;
+				} else if (!in && element != out) {
+					in = element;
+				}
+			}
+		}
+		if (!out || !in) {
+			QSKIP("the fixture has not two sheet references");
+		}
+		out->linkToElement(in);
+
+		Bridge *carried = project.newBridge();
+		carried->setMaxConnections(2);
+		carried->addTerminal(terminalOf(terminals.at(0)));
+		carried->addTerminal(terminalOf(terminals.at(1)));
+		const BridgeTerminal on_out{out->uuid(),
+								   out->terminals().first()->stableUuid().toString(),
+								   true};
+		carried->addTerminal(on_out);
+
+		Bridge *coming = project.newBridge();
+		coming->addTerminal(terminalOf(terminals.at(2)));
+		const BridgeTerminal on_in{in->uuid(),
+								  in->terminals().first()->stableUuid().toString(),
+								  true};
+		coming->addTerminal(on_in);
+
+		Bridge *joined = BridgeManager::joinTarget(
+					&project, QList<BridgeTerminal>{on_in}, coming);
+		QVERIFY(joined == carried);
+
+			//The Klemme the other half brings is one more of the unit,
+			//and the reference it comes by is none: the limit of the
+			//whole of it is the limit they are held to
+		QVERIFY2(joined->wouldExceed(1),
+				 "what the other half brings counts against the limit");
+		QVERIFY2(!joined->wouldExceed(0),
+				 "and a sheet reference fills no place of the bridge");
 	}
 
 	//What is one bridge carried on over the sheets is one pair of

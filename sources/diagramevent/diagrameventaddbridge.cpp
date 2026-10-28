@@ -401,7 +401,17 @@ void DiagramEventAddBridge::finishLine(const QPointF &end)
 	}
 
 	Bridge *bridge = dialog.bridge();
-	const bool own_bridge = !bridge;
+	bool own_bridge = !bridge;
+
+		//What is one bridge carried on over the sheets is one bridge:
+		//a line coming to a sheet reference joins the bridge that
+		//reference stands for, as if it had been drawn onto it from the
+		//start -- one unit, one voltage, one limit.
+	Bridge *joined = BridgeManager::joinTarget(m_diagram->project(), terminals, bridge);
+	if (own_bridge && joined) {
+		bridge = joined;
+		own_bridge = false;
+	}
 	const BridgeInformation information_before{
 				bridge ? bridge->tensionText() : QString()};
 
@@ -448,8 +458,17 @@ void DiagramEventAddBridge::finishLine(const QPointF &end)
 		bridge->setColumn(column);
 	}
 
-		//The one limit which is never crossed, whatever was drawn
-	if (bridge->wouldExceed(terminals.size())) {
+		//The one limit which is never crossed, whatever was drawn: the
+		//Klemmen the line lands on and did not land on before. A sheet
+		//reference is the way to the next sheet and fills no place of
+		//the bridge, so it is not counted here either.
+	int added = 0;
+	for (const BridgeTerminal &terminal : std::as_const(terminals)) {
+		if (!terminal.reference && !bridge->hasTerminal(terminal)) {
+			++added;
+		}
+	}
+	if (bridge->wouldExceed(added)) {
 		if (own_bridge) {
 			m_diagram->project()->removeBridge(bridge);
 			delete bridge;

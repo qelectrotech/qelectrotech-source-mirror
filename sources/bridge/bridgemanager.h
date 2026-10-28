@@ -123,6 +123,19 @@ class BridgeManager
 			hangs on them: a bridge come or gone changes it.*/
 		static void refreshReferences(QETProject *project,
 									  const QList<BridgeTerminal> &landings);
+
+			/**
+				The bridge one of those landings would join: a line
+				coming to a sheet reference joins the bridge that
+				reference is carried on by -- itself, or through the
+				reference it is linked to -- the way a line drawn onto
+				an existing bridge joins it. What is one bridge carried
+				on over the sheets is one unit. nullptr when none of
+				the landings reaches another bridge.
+			*/
+		static Bridge *joinTarget(QETProject *project,
+								  const QList<BridgeTerminal> &landings,
+								  Bridge *self);
 		static void pairReferences(QETProject *project,
 								   Bridge *bridge,
 								   QUndoCommand *parent);

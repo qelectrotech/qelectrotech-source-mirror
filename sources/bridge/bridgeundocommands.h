@@ -61,6 +61,33 @@ class ChangeBridgePropertiesCommand : public QUndoCommand
 };
 
 /**
+	@brief Two bridges become one.
+
+	What a line lands on through a sheet reference is the same bridge it
+	lands on directly: what is one bridge carried on over the sheets is
+	one unit -- one set of lines, one voltage, one limit. The bridge
+	which arrives gives everything it holds to the one the reference
+	already carries, the way a line drawn onto an existing bridge joins
+	it, and goes out of the project whole: undo finds it exactly as it
+	was and the two are two again.
+*/
+class MergeBridgesCommand : public QUndoCommand
+{
+	public:
+		MergeBridgesCommand(Bridge *from,
+							Bridge *into,
+							QUndoCommand *parent = nullptr);
+		void undo() override;
+		void redo() override;
+
+	private:
+		QPointer<Bridge> m_from;
+		QPointer<Bridge> m_into;
+		QList<BridgePartData> m_parts;
+		QList<BridgeTerminal> m_terminals;
+};
+
+/**
 	@brief A line of a bridge moved: its ends, and with them which
 	terminals the bridge lands on.
 

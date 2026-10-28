@@ -690,9 +690,9 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <terminal id="18" orientation="0" x="0" y="-1"/>
                     <terminal id="19" orientation="0" x="20" y="-1"/>
                     <terminal id="20" orientation="0" x="40" y="-1"/>
-                    <terminal id="21" orientation="2" x="0" y="1"/>
-                    <terminal id="22" orientation="2" x="20" y="1"/>
-                    <terminal id="23" orientation="2" x="40" y="1"/>
+                    <terminal id="28" orientation="2" x="0" y="1"/>
+                    <terminal id="29" orientation="2" x="20" y="1"/>
+                    <terminal id="30" orientation="2" x="40" y="1"/>
                 </terminals>
                 <inputs/>
                 <dynamic_texts>
@@ -708,7 +708,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/10_electric/10_allpole/100_folio_referencing/02going_arrow.elmt" uuid="{de9ccb25-2b6c-42c3-81d6-6ce77792b1ab}" x="700" y="300" z="10">
                 <terminals>
-                    <terminal id="24" orientation="3" x="-9" y="0"/>
+                    <terminal id="27" orientation="3" x="-9" y="0"/>
                 </terminals>
                 <inputs/>
                 <links_uuids>

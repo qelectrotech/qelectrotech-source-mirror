@@ -164,6 +164,87 @@ void ChangeBridgeGeometryCommand::apply(const QLineF &line,
 }
 
 /**
+	@brief MergeBridgesCommand::MergeBridgesCommand
+	@param from the bridge which gives up what it holds
+	@param into the bridge the reference already carries
+	@param parent the step this goes with
+*/
+MergeBridgesCommand::MergeBridgesCommand(Bridge *from,
+										 Bridge *into,
+										 QUndoCommand *parent) :
+	QUndoCommand(parent),
+	m_from(from),
+	m_into(into)
+{
+	setText(QObject::tr("Joining a bridge over a sheet reference", "undo command text"));
+}
+
+/**
+	@brief MergeBridgesCommand::redo
+	One unit: everything @p from held goes onto @p into, and what it
+	carried as its voltage goes with it when the unit carried none of
+	its own -- the reference one bridge stands on is the reference of
+	both halves of it.
+*/
+void MergeBridgesCommand::redo()
+{
+	if (!m_from || !m_into) return;
+	QETProject *proj = qobject_cast<QETProject *>(m_into->parent());
+	if (!proj) return;
+
+		//What is moved is what the other bridge does not hold already:
+		//a terminal both of them land on is no terminal to move back
+	m_parts.clear();
+	const auto parts = m_from->parts();
+	for (const BridgePartData &part : parts) {
+		if (!m_into->hasPart(part.uuid)) {
+			m_parts << part;
+		}
+	}
+	m_terminals.clear();
+	const auto landings = m_from->landings();
+	for (const BridgeTerminal &landing : landings) {
+		if (!m_into->hasTerminal(landing)) {
+			m_terminals << landing;
+		}
+	}
+
+	for (const BridgePartData &part : std::as_const(m_parts)) {
+		m_into->addPart(part);
+	}
+	for (const BridgeTerminal &terminal : std::as_const(m_terminals)) {
+		m_into->addTerminal(terminal);
+	}
+	proj->removeBridge(m_from.data());
+
+	QUndoCommand::redo();
+}
+
+/**
+	@brief MergeBridgesCommand::undo
+	Two again: the one which came gives back everything it was made to
+	give, and the project holds both of them as they stood.
+*/
+void MergeBridgesCommand::undo()
+{
+	if (!m_from || !m_into) return;
+	QETProject *proj = qobject_cast<QETProject *>(m_into->parent());
+	if (!proj) return;
+
+	proj->addBridge(m_from.data());
+	for (const BridgeTerminal &terminal : std::as_const(m_terminals)) {
+		m_into->removeTerminal(terminal);
+		m_from->addTerminal(terminal);
+	}
+	for (const BridgePartData &part : std::as_const(m_parts)) {
+		m_into->removePart(part.uuid);
+		m_from->addPart(part);
+	}
+
+	QUndoCommand::undo();
+}
+
+/**
 	@brief ChangeBridgeTerminalsCommand::ChangeBridgeTerminalsCommand
 	@param bridge
 	@param before what the bridge landed on before

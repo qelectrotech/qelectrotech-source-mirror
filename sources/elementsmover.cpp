@@ -361,14 +361,22 @@ void ElementsMover::endMovement()
 			}
 				//The limit is the one thing which is never crossed,
 				//whatever slipped through while the hand was moving: a
-				//bridge which cannot be built is not written either
+				//bridge which cannot be built is not written either.
+				//A sheet reference is the way to the next sheet and
+				//fills no place of the bridge, so it is not counted.
+				//What is one bridge carried on over the sheets is one
+				//bridge: a symbol brought to the line through a sheet
+				//reference joins the bridge that reference stands for
+			Bridge *joined = BridgeManager::joinTarget(
+						m_diagram->project(), after, bridge);
+			Bridge *unit = joined ? joined : bridge;
 			int gained = 0;
 			for (const BridgeTerminal &terminal : after) {
-				if (!before.contains(terminal)) {
+				if (!terminal.reference && !unit->hasTerminal(terminal)) {
 					++gained;
 				}
 			}
-			if (gained > 0 && bridge->wouldExceed(gained)) {
+			if (gained > 0 && unit->wouldExceed(gained)) {
 				continue;
 			}
 				//What the bridge carries as information follows the
@@ -376,8 +384,12 @@ void ElementsMover::endMovement()
 				//which the bridge takes -- its own among the candidates
 				//-- and cancelling keeps the bridge as it was: the
 				//terminal crosses its line without being connected to it.
-			const BridgeInformation information_before{
-						bridge->tensionText()};
+				//A unit joined carries its own voltage to the new half.
+			const QString unit_tension = joined
+					? (joined->tensionText().isEmpty()
+					   ? bridge->tensionText() : joined->tensionText())
+					: bridge->tensionText();
+			const BridgeInformation information_before{unit_tension};
 			QList<BridgeInformation> candidates =
 					BridgeManager::informationSets(m_diagram->project(), after);
 			candidates.prepend(information_before);
@@ -387,7 +399,30 @@ void ElementsMover::endMovement()
 			if (!take_information) {
 				continue;
 			}
-			auto *command = new ChangeBridgeTerminalsCommand(bridge, before, after,
+
+			QList<BridgeTerminal> unit_before = before;
+			QList<BridgeTerminal> unit_after = after;
+			if (joined)
+			{
+					//One step for the two of them: the bridges become one
+					//first, then the unit which now holds the line gets
+					//the terminals it crosses
+				new MergeBridgesCommand(bridge, joined, undo_object);
+				unit_before = joined->terminals();
+				for (const BridgeTerminal &terminal : before) {
+					if (!unit_before.contains(terminal)) {
+						unit_before << terminal;
+					}
+				}
+				unit_after = joined->terminals();
+				for (const BridgeTerminal &terminal : after) {
+					if (!unit_after.contains(terminal)) {
+						unit_after << terminal;
+					}
+				}
+				bridge = joined;
+			}
+			auto *command = new ChangeBridgeTerminalsCommand(bridge, unit_before, unit_after,
 											 information_before, information, undo_object);
 				//A reference which has come to this bridge finds the one
 				//on the other sheet: they link with the move
@@ -395,7 +430,7 @@ void ElementsMover::endMovement()
 				//Bridge and wires say the same thing: what the bridge
 				//carries goes onto the wires it sits on, in the very same
 				//undo step
-			BridgeManager::writeInformation(m_diagram->project(), after, information, command);
+			BridgeManager::writeInformation(m_diagram->project(), unit_after, information, command);
 		}
 	}
 
