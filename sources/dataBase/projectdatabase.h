@@ -541,7 +541,7 @@ class projectDataBase : public QObject
 		bool linksLater(const QUuid &uuid) const;
 		QList<std::pair<QUuid, int>> rowsToWrite(Element *element, const std::function<bool(const QUuid &)> &waiting,
 												 const QList<std::pair<QUuid, int>> &old_rows) const;
-		void populateDrawingItemTables();
+		void populateDrawingItemTables(bool keep_rows = false);
 		bool populateFromDocument(const QDomDocument &document, QString *why = nullptr);
 		bool writeDrawingItem(QObject *object);
 		void writeDrawnItem(QObject *object, const QUuid &uuid, Diagram *diagram);

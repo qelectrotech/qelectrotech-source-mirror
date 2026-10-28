@@ -200,6 +200,22 @@ private slots:
 		QVERIFY(f.readAll().contains("5e1f0c3a-7d2b-4c11-9a4e-0b6c2d8e9f10"));
 	}
 
+	// The shape and text rows a file holds stay when it is opened from its
+	// tables and saved again with its folios not built
+	void drawingRowsSurviveResave()
+	{
+		const QString first = m_dir.filePath(QStringLiteral("drawn.qetdb"));
+		const QString second = m_dir.filePath(QStringLiteral("drawn-again.qetdb"));
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), first}, true);
+		const QString log = resave(first, second);
+		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
+		for (const QString &table : {QStringLiteral("shape"), QStringLiteral("independent_text")}) {
+			const QString count = QStringLiteral("SELECT count(*) FROM %1").arg(table);
+			QVERIFY2(pragma(first, count).toInt() > 0, qPrintable(table));
+			QCOMPARE(pragma(second, count).toInt(), pragma(first, count).toInt());
+		}
+	}
+
 	// An edit saved through the project's own save is in the file
 	void editIsSaved()
 	{

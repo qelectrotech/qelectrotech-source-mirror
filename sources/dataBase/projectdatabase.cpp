@@ -983,7 +983,7 @@ void projectDataBase::updateDB(const QDomDocument &document)
 		qInfo() << "Project database read from the file";
 			//The link rows are the file's (forgetLinks() at the open)
 		m_holds_links = true;
-		populateDrawingItemTables();
+		populateDrawingItemTables(true);
 		flushConductorProperties();
 			//As the fill below: what placing the folios marked changed is
 			//what the tables hold already
@@ -3697,16 +3697,21 @@ void projectDataBase::flushDrawingItems()
 /**
 	@brief projectDataBase::populateDrawingItemTables
 	Rebuild the shape, independent_text and image tables from every folio.
+	With @p keep_rows (an adopted .qetdb) the rows stay: they are the file's,
+	the folios not built have no items to write them again, and the items
+	of the folios built rewrite their own, by uuid.
 */
-void projectDataBase::populateDrawingItemTables()
+void projectDataBase::populateDrawingItemTables(bool keep_rows)
 {
-	QSqlQuery query_(m_data_base);
-	query_.exec(QStringLiteral("DELETE FROM shape"));
-	query_.exec(QStringLiteral("DELETE FROM independent_text"));
-	query_.exec(QStringLiteral("DELETE FROM image"));
-	m_drawing_item_row.clear();
-	m_drawing_row_owner.clear();
-	m_dirty_drawing_items.clear();
+	if (!keep_rows) {
+		QSqlQuery query_(m_data_base);
+		query_.exec(QStringLiteral("DELETE FROM shape"));
+		query_.exec(QStringLiteral("DELETE FROM independent_text"));
+		query_.exec(QStringLiteral("DELETE FROM image"));
+		m_drawing_item_row.clear();
+		m_drawing_row_owner.clear();
+		m_dirty_drawing_items.clear();
+	}
 
 		//Queued directly, not through addDrawingItem(): every one of them
 		//came onto its folio through Diagram::addItem(), which connected it
