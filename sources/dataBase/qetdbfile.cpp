@@ -176,7 +176,15 @@ bool withConnection(const QString &path, QString *error, Work work)
 	//and the working copy's row left out (QETDB-S4-SCOPE.md 3.1, E7)
 bool finish(const QString &path, QString *error)
 {
-	return withConnection(path, error, [&path](QSqlQuery &query) {
+		//QET_QETDB_SAVE_TIMES=1: its own steps, in ms
+	QElapsedTimer timer;
+	timer.start();
+	QStringList times;
+	const auto lap = [&timer, &times](const char *step) {
+		times << QStringLiteral("%1 %2").arg(QLatin1String(step)).arg(timer.restart());
+		return true;
+	};
+	const bool ok = withConnection(path, error, [&path, &lap](QSqlQuery &query) {
 			//The file is not the project's until it is flushed whole and
 			//put in its place (QetDbFile::save()): a crash before leaves
 			//only it, thrown away by the next save. So no journal on disk
@@ -188,7 +196,7 @@ bool finish(const QString &path, QString *error)
 		if (!query.exec(QStringLiteral("DROP TABLE IF EXISTS working_copy"))) return false;
 			//The indexes stay: speed matters more than size (the user,
 			//2026-10-28); VACUUM INTO wrote the file compact already
-		if (!normalize(query)) return false;
+		if (!normalize(query) || !lap("normalize")) return false;
 		if (!query.exec(QStringLiteral("CREATE TABLE qet_format (key TEXT PRIMARY KEY, value TEXT)"))) return false;
 		const QList<std::pair<QString, QString>> rows{
 			{QStringLiteral("format"), QString::number(QetDbFile::format)},
@@ -202,17 +210,21 @@ bool finish(const QString &path, QString *error)
 			if (!query.exec()) return false;
 		}
 			//Read by contentDigest() through connections of its own
-		if (!query.exec(QStringLiteral("COMMIT"))) return false;
+		if (!query.exec(QStringLiteral("COMMIT")) || !lap("format and commit")) return false;
 		if (!query.exec(QStringLiteral("PRAGMA application_id = %1").arg(QetDbFile::applicationId))
 				|| !query.exec(QStringLiteral("PRAGMA user_version = %1").arg(QetDbFile::format))
-				|| !query.exec(QStringLiteral("PRAGMA journal_mode = DELETE")))
+				|| !query.exec(QStringLiteral("PRAGMA journal_mode = DELETE"))
+				|| !lap("pragmas"))
 			return false;
 		const QString digest = contentDigest(path);
-		if (digest.isEmpty()) return false;
+		if (digest.isEmpty() || !lap("digest")) return false;
 		query.prepare(QStringLiteral("INSERT INTO qet_format (key, value) VALUES ('content_digest', :digest)"));
 		query.bindValue(QStringLiteral(":digest"), digest);
-		return query.exec();
+		return query.exec() && lap("digest row");
 	});
+	if (ok && qEnvironmentVariableIntValue("QET_QETDB_SAVE_TIMES") == 1)
+		qInfo().noquote() << "finish (ms):" << times.join(QStringLiteral(", "));
+	return ok;
 }
 
 	//The checks a file passes before it replaces the project, and before
