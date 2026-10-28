@@ -339,10 +339,13 @@ bool QetDbFile::isDatabase(const QByteArray &head)
 	beside it (<path>.saving), checked, flushed to disk, then put in its
 	place at once. On any failure @p path is as it was.
 */
-bool QetDbFile::save(projectDataBase &database, const QString &path, QString *error)
+bool QetDbFile::save(projectDataBase &database, const QString &path, QString *error, QByteArray *sha1)
 {
 	const QString saving = path + QStringLiteral(".saving");
-	const auto give_up = [&saving]() {
+	QFuture<QByteArray> hashing;
+	const auto give_up = [&saving, &hashing]() {
+			//Not removed while it is read (Windows refuses)
+		if (hashing.isValid()) hashing.waitForFinished();
 		for (const char *suffix : {"", "-journal", "-wal", "-shm"})
 			QFile::remove(saving + QLatin1String(suffix));
 		return false;
@@ -356,14 +359,29 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 		times << QStringLiteral("%1 %2").arg(QLatin1String(step)).arg(timer.restart());
 		return true;
 	};
-	if (!database.copyTo(saving, error) || !lap("copy") || !finish(saving, error) || !lap("finish")
-			|| !check(saving, error) || !lap("check"))
+	if (!database.copyTo(saving, error) || !lap("copy") || !finish(saving, error) || !lap("finish"))
+		return give_up();
+		//The file is complete and no one else's yet: hashed beside its
+		//check and flush, not read again once it is the project
+	if (sha1)
+		hashing = QtConcurrent::run([saving]() {
+			QFile file(saving);
+			QCryptographicHash hash(QCryptographicHash::Sha1);
+			if (!file.open(QIODevice::ReadOnly) || !hash.addData(&file))
+				return QByteArray();
+			return hash.result();
+		});
+	if (!check(saving, error) || !lap("check"))
 		return give_up();
 	if (!flushFile(saving)) {
 		if (error) *error = QObject::tr("the file could not be written to disk");
 		return give_up();
 	}
 	lap("flush");
+	if (sha1) {
+		*sha1 = hashing.result();
+		lap("hash");
+	}
 	if (!replace(saving, path, error))
 		return give_up();
 	lap("replace");

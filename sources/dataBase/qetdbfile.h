@@ -41,7 +41,10 @@ namespace QetDbFile
 
 	bool isDatabasePath(const QString &path);
 	bool isDatabase(const QByteArray &head);
-	bool save(projectDataBase &database, const QString &path, QString *error);
+		/// @p sha1, if given, gets the SHA-1 of the file written (what
+		/// QETProject remembers to see it changed on disk), made from it
+		/// before it replaces the project, while it is checked and flushed
+	bool save(projectDataBase &database, const QString &path, QString *error, QByteArray *sha1 = nullptr);
 	bool read(const QString &path, QDomDocument *document, QString *error,
 			  const std::function<bool(const QString &copy)> &with_copy = {});
 }

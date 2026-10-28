@@ -3157,13 +3157,15 @@ QETResult QETProject::write(bool overwrite_changed)
 	};
 
 	QString error_message;
+		//The SHA-1 of a .qetdb written, made by its save (rememberDiskState())
+	QByteArray saved_hash;
 	if (QetDbFile::isDatabasePath(m_file_path))
 	{
 			//Written from the project database, the saved date and path
 			//above included (experimental, QET-SQL-FORMAT S4a)
 		storeSettings();
 		save_lap("settings");
-		if (!QetDbFile::save(m_data_base, m_file_path, &error_message)) {
+		if (!QetDbFile::save(m_data_base, m_file_path, &error_message, &saved_hash)) {
 			const QETResult result = failed_stamped(error_message);
 			storeSettings();
 			return result;
@@ -3190,7 +3192,10 @@ QETResult QETProject::write(bool overwrite_changed)
 			return(failed_stamped(error_message));
 	}
 
-	rememberDiskState();
+	if (saved_hash.isEmpty())
+		rememberDiskState();
+	else
+		rememberDiskState(nullptr, &saved_hash);
 
 		// The project has just been written to a writable file (e.g. saved to
 		// a new location with "Save As"), so it is no longer read-only.
