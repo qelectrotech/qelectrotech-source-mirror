@@ -556,6 +556,8 @@ QUuid QETProject::derivedUuid(const QByteArray &content)
 	return QUuid::fromRfc4122(bytes);
 }
 
+static QByteArray diskHash(const QString &path, const QByteArray *content = nullptr);
+
 /**
 	@brief QETProject::openFile
 	@param file
@@ -597,8 +599,12 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//of the file itself
 	const bool database = QetDbFile::isDatabase(content.left(16));
 	QDomDocument xml_project;
+		//The bytes just read are those of the file: hashed for
+		//changedOnDisk() while the open goes on (0.2 s of a 44 MB file)
+	QFuture<QByteArray> database_hash;
 	if (database) {
 		QString error;
+		database_hash = QtConcurrent::run([content]() { return diskHash(QString(), &content); });
 		content.clear();
 			//The project database starts from the file's tables (S4x X2);
 			//QET_QETDB_NO_ADOPT=1 fills it from the document instead
@@ -622,7 +628,12 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 			return XmlParsingFailed;
 		}
 	}
-	rememberDiskState(database ? nullptr : &content);
+	if (database) {
+		const QByteArray hash = database_hash.result();
+		rememberDiskState(nullptr, &hash);
+	} else {
+		rememberDiskState(&content);
+	}
 		//Each folio's text is kept while it is not built (readDiagramsXml()):
 		//from a .qet only, a .qetz is a zip of parts
 	if (!content.startsWith("PK\x03\x04"))
@@ -2977,7 +2988,7 @@ QETResult QETProject::writeCopyForOlderVersions(const QString &path)
 	@return the SHA-1 of @p content, or of the file at @p path when
 	@p content is null; empty if the file cannot be read
 */
-static QByteArray diskHash(const QString &path, const QByteArray *content = nullptr)
+static QByteArray diskHash(const QString &path, const QByteArray *content)
 {
 	QCryptographicHash hash(QCryptographicHash::Sha1);
 	if (content) {
@@ -2996,14 +3007,15 @@ static QByteArray diskHash(const QString &path, const QByteArray *content = null
 	file, as this QET has just read or written it. changedOnDisk() compares
 	against them.
 	@param content the bytes just read from the file, if they are at hand
+	@param hash their hash, if already made
 */
-void QETProject::rememberDiskState(const QByteArray *content)
+void QETProject::rememberDiskState(const QByteArray *content, const QByteArray *hash)
 {
 	const QFileInfo info(m_file_path);
 	m_disk_path = m_file_path;
 	m_disk_size = info.exists() ? info.size() : -1;
 	m_disk_mtime = info.exists() ? info.lastModified() : QDateTime();
-	m_disk_hash = info.exists() ? diskHash(m_file_path, content) : QByteArray();
+	m_disk_hash = !info.exists() ? QByteArray() : hash ? *hash : diskHash(m_file_path, content);
 }
 
 /**
@@ -4224,6 +4236,8 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		return text;
 	};
 
+	m_reading_folios = true;
+	m_reading_autonum_folio = false;
 	for (int i = 0 ; i < diagram_nodes.length() ; ++ i)
 	{
 		if(dlgWaiting)
@@ -4255,6 +4269,7 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		}
 	}
 
+	m_reading_folios = false;
 	m_shared_uuid_keepers.clear();
 	updateDiagramsFolioData();
 
@@ -5398,7 +5413,22 @@ void QETProject::updateDiagramsFolioData()
 
 	const DiagramContext project_wide_properties = projectWideProperties();
 
-	for (int i = 0 ; i < total_folio ; ++ i)
+		//While the folios are read, each one asks as its title block is
+		//read: only that folio, the last one so far, needs its data then,
+		//and every folio gets it again once all are read (readDiagramsXml()).
+		//Walking every folio each time made a 136-folio open spend 0.7 s
+		//here. Not once a folio numbered with %autonum is read: each pass
+		//moves its counter, so the passes must stay as they were.
+	int first = 0;
+	if (m_reading_folios && total_folio) {
+		const BorderTitleBlock &last = m_diagrams_list.last()->border_and_titleblock;
+		if (last.folio().contains("%autonum") && !last.autoPageNum().isNull())
+			m_reading_autonum_folio = true;
+		if (!m_reading_autonum_folio)
+			first = total_folio - 1;
+	}
+
+	for (int i = first ; i < total_folio ; ++ i)
 	{
 		QString autopagenum = m_diagrams_list[i]->border_and_titleblock.autoPageNum();
 		NumerotationContext nC = folioAutoNum(autopagenum);
@@ -5428,8 +5458,8 @@ void QETProject::updateDiagramsFolioData()
 		}
 	}
 
-	for (const auto &diagram_ : std::as_const(m_diagrams_list)) {
-		diagram_->update();
+	for (int i = first ; i < total_folio ; ++ i) {
+		m_diagrams_list.at(i)->update();
 	}
 }
 
