@@ -3115,6 +3115,13 @@ QETResult QETProject::write(bool overwrite_changed)
 			return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
 	}
 
+		//QET_QETDB_SAVE_TIMES=1: how long each step of the save took, in ms
+	QElapsedTimer save_timer;
+	save_timer.start();
+	QStringList save_times;
+	const auto save_lap = [&save_timer, &save_times](const char *step) {
+		save_times << QStringLiteral("%1 %2").arg(QLatin1String(step)).arg(save_timer.restart());
+	};
 	if (!overwrite_changed && qEnvironmentVariableIntValue("QET_OVERWRITE_CHANGED") == 0) {
 		QDateTime when;
 		if (changedOnDisk(&when))
@@ -3127,9 +3134,11 @@ QETResult QETProject::write(bool overwrite_changed)
 		//The file as it was goes among its previous versions first
 		//(Settings > General > Projects); a copy that fails does not stop
 		//the save
+	save_lap("changed on disk");
 	QString backup_error;
 	if (!PreviousVersions::keep(m_file_path, PreviousVersions::count(), &backup_error))
 		qWarning().noquote() << "Previous version of" << m_file_path << "not kept:" << backup_error;
+	save_lap("previous version");
 
 		//The saved date, time and path go into the file being written, and
 		//only when there is something new to save: an unchanged project
@@ -3137,6 +3146,7 @@ QETResult QETProject::write(bool overwrite_changed)
 		//failed write puts the previous values back.
 	const DiagramContext stamped_before = m_project_properties;
 	const bool stamped = stampSaved();
+	save_lap("stamp");
 	const auto failed_stamped = [&](const QString &error) {
 		if (stamped) {
 			m_project_properties = stamped_before;
@@ -3152,11 +3162,15 @@ QETResult QETProject::write(bool overwrite_changed)
 			//Written from the project database, the saved date and path
 			//above included (experimental, QET-SQL-FORMAT S4a)
 		storeSettings();
+		save_lap("settings");
 		if (!QetDbFile::save(m_data_base, m_file_path, &error_message)) {
 			const QETResult result = failed_stamped(error_message);
 			storeSettings();
 			return result;
 		}
+		save_lap("file");
+		if (qEnvironmentVariableIntValue("QET_QETDB_SAVE_TIMES") == 1)
+			qInfo().noquote() << "QETProject::write (ms):" << save_times.join(QStringLiteral(", "));
 	}
 	else if (isContainerPath(m_file_path))
 	{

@@ -338,14 +338,27 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 		return false;
 	};
 	give_up();
-	if (!database.copyTo(saving, error) || !finish(saving, error) || !check(saving, error))
+		//QET_QETDB_SAVE_TIMES=1: how long each step took, in ms
+	QElapsedTimer timer;
+	timer.start();
+	QStringList times;
+	const auto lap = [&timer, &times](const char *step) {
+		times << QStringLiteral("%1 %2").arg(QLatin1String(step)).arg(timer.restart());
+		return true;
+	};
+	if (!database.copyTo(saving, error) || !lap("copy") || !finish(saving, error) || !lap("finish")
+			|| !check(saving, error) || !lap("check"))
 		return give_up();
 	if (!flushFile(saving)) {
 		if (error) *error = QObject::tr("the file could not be written to disk");
 		return give_up();
 	}
+	lap("flush");
 	if (!replace(saving, path, error))
 		return give_up();
+	lap("replace");
+	if (qEnvironmentVariableIntValue("QET_QETDB_SAVE_TIMES") == 1)
+		qInfo().noquote() << "QetDbFile::save (ms):" << times.join(QStringLiteral(", "));
 	return true;
 }
 

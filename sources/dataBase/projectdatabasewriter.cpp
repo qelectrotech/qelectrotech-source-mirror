@@ -28,6 +28,7 @@
 #include "../qet.h"
 
 #include <QSqlError>
+#include <QElapsedTimer>
 #include <QSqlQuery>
 #include <QTemporaryDir>
 #include <QtConcurrentMap>
@@ -792,6 +793,8 @@ bool projectDataBase::writeProjectFromDatabase(const QString &project_file, QStr
 */
 bool projectDataBase::copyTo(const QString &file, QString *error)
 {
+	QElapsedTimer timer;
+	timer.start();
 	updateDB();
 		//The rebuild above leaves some queues for the next read
 	flushDrawingItems();
@@ -802,6 +805,7 @@ bool projectDataBase::copyTo(const QString &file, QString *error)
 	flushFolioValues();
 	flushCables();
 	flushConductorProperties();
+	const qint64 update_ms = timer.elapsed();
 
 		//VACUUM INTO cannot run inside the working copy's transaction
 	endTransaction();
@@ -809,6 +813,9 @@ bool projectDataBase::copyTo(const QString &file, QString *error)
 	query.setForwardOnly(true);
 	const bool copied = query.exec(QStringLiteral("VACUUM INTO '%1'").arg(QString(file).replace(QLatin1Char('\''), QStringLiteral("''"))));
 	beginTransaction();
+	if (qEnvironmentVariableIntValue("QET_QETDB_SAVE_TIMES") == 1)
+		qInfo().noquote() << "projectDataBase::copyTo (ms): update and flush" << update_ms
+						  << ", VACUUM INTO" << timer.elapsed() - update_ms;
 	if (!copied && error) *error = query.lastError().text();
 	return copied;
 }
