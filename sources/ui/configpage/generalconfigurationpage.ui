@@ -263,6 +263,16 @@
          </property>
          <property name="text">
           <string>Upright symbol texts read from bottom to top</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+        <widget class="QCheckBox" name="m_dock_fold_cb">
+         <property name="toolTip">
+          <string>A dark bar at each side of the drawing folds the panels of that side away, as in LibreOffice's sidebar, and a second click shows them again as they were. Unticked: no bars.</string>
+         </property>
+         <property name="text">
+          <string>Bars beside the drawing to fold the side panels away</string>
          </property>
         </widget>
        </item>

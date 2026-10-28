@@ -449,6 +449,8 @@ qet_add_app_test(tst_selectionpanelheight tst_selectionpanelheight.cpp)
 # The Auto numbering panel's Increment spin boxes get the width their style
 # asks for; a fixed 55 px cut the number off on Windows (#1566).
 qet_add_app_test(tst_autonumincrementwidth tst_autonumincrementwidth.cpp)
+# An arrow beside the drawing folds the docks of its side away and back.
+qet_add_app_test(tst_dockfold tst_dockfold.cpp)
 
 # View > Snap to the grid switches every snap off and on, as Ctrl held does;
 # View > Grid step sets a fine, medium or coarse step.

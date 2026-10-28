@@ -74,6 +74,7 @@
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qeticons.h"
+#include "ui/dockfold.h"
 #include "qetmessagebox.h"
 #include "recentfiles.h"
 #include "textgrid.h"
@@ -300,6 +301,9 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 		//the way while there are none.
 	if (m_script_actions.isEmpty()) m_scripts_tool_bar->hide();
 #endif
+		//A button at each side of the drawing folds its docks away
+	new DockFold(this, Qt::RightDockWidgetArea);
+	new DockFold(this, Qt::LeftDockWidgetArea);
 
 		//If valid file path is given as arguments
 	uint opened_projects = 0;
