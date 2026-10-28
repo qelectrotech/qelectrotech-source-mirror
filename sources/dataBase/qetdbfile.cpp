@@ -177,6 +177,14 @@ bool withConnection(const QString &path, QString *error, Work work)
 bool finish(const QString &path, QString *error)
 {
 	return withConnection(path, error, [&path](QSqlQuery &query) {
+			//The file is not the project's until it is flushed whole and
+			//put in its place (QetDbFile::save()): a crash before leaves
+			//only it, thrown away by the next save. So no journal on disk
+			//and no flush per statement, and its changes in one transaction
+		if (!query.exec(QStringLiteral("PRAGMA synchronous = OFF"))
+				|| !query.exec(QStringLiteral("PRAGMA journal_mode = MEMORY"))
+				|| !query.exec(QStringLiteral("BEGIN")))
+			return false;
 		if (!query.exec(QStringLiteral("DROP TABLE IF EXISTS working_copy"))) return false;
 			//The indexes stay: speed matters more than size (the user,
 			//2026-10-28); VACUUM INTO wrote the file compact already
@@ -193,6 +201,8 @@ bool finish(const QString &path, QString *error)
 			query.bindValue(QStringLiteral(":value"), value);
 			if (!query.exec()) return false;
 		}
+			//Read by contentDigest() through connections of its own
+		if (!query.exec(QStringLiteral("COMMIT"))) return false;
 		if (!query.exec(QStringLiteral("PRAGMA application_id = %1").arg(QetDbFile::applicationId))
 				|| !query.exec(QStringLiteral("PRAGMA user_version = %1").arg(QetDbFile::format))
 				|| !query.exec(QStringLiteral("PRAGMA journal_mode = DELETE")))
