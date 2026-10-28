@@ -542,7 +542,7 @@ private slots:
 		env.insert(QString::fromLatin1(check), QStringLiteral("1"));
 			//A script is stopped after 30 s; beside the other tests (ctest -j8)
 			//the edits below took longer (2026-10-27, 2026-10-28)
-		env.insert(QStringLiteral("QET_SCRIPT_TIMEOUT_MS"), QStringLiteral("240000"));
+		env.insert(QStringLiteral("QET_SCRIPT_TIMEOUT_MS"), QString::number(QetTest::timeout(240000)));
 		if (eager) {
 			env.insert(QStringLiteral("QET_EAGER_FOLIOS"), QStringLiteral("1")); //every folio built on opening
 		}
