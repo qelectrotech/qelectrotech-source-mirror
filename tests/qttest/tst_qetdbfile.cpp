@@ -112,6 +112,8 @@ private slots:
 		QCOMPARE(pragma(path, QStringLiteral("SELECT value FROM qet_format WHERE key = 'format'")).toString(),
 				 QStringLiteral("1"));
 		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name LIKE 'idx_%'")).toInt(), 0);
+			//Kept as definitions, for opening to make again on its copy
+		QVERIFY(pragma(path, QStringLiteral("SELECT count(*) FROM qet_index WHERE name = 'idx_conductor_diagram'")).toInt() == 1);
 		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'working_copy'")).toInt(), 0);
 		const QStringList beside = QDir(m_dir.path()).entryList({QStringLiteral("industrial.qetdb*")}, QDir::Files);
 		QCOMPARE(beside, QStringList{QStringLiteral("industrial.qetdb")});

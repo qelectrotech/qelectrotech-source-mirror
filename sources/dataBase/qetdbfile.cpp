@@ -31,6 +31,7 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QRegularExpression>
 #include <QSqlRecord>
 #include <QTemporaryDir>
 #include <QThread>
@@ -119,6 +120,13 @@ bool finish(const QString &path, QString *error)
 {
 	return withConnection(path, error, [](QSqlQuery &query) {
 		if (!query.exec(QStringLiteral("DROP TABLE IF EXISTS working_copy"))) return false;
+			//Each index left out is kept as its definition, for opening to
+			//make again on the copy it reads: without them reading a folio
+			//scans whole tables (f2099 took 73 s instead of 6)
+		if (!query.exec(QStringLiteral("CREATE TABLE qet_index (name TEXT PRIMARY KEY, sql TEXT)"))
+				|| !query.exec(QStringLiteral("INSERT INTO qet_index (name, sql) SELECT name, sql FROM sqlite_master "
+											  "WHERE type = 'index' AND name LIKE 'idx\\_%' ESCAPE '\\'")))
+			return false;
 		QStringList indexes;
 		if (!query.exec(QStringLiteral("SELECT name FROM sqlite_master WHERE type = 'index' "
 									   "AND name LIKE 'idx\\_%' ESCAPE '\\'"))) return false;
@@ -319,7 +327,22 @@ QByteArray QetDbFile::readAsQet(const QString &path, QString *error)
 		if (error) *error = QObject::tr("the file could not be read");
 		return {};
 	}
-	if (!check(copy, error) || !projectDataBase::writeDocument(copy, written, error))
+	if (!check(copy, error))
+		return {};
+		//The indexes the save left out (finish()); a file saved before they
+		//were kept is read without them, slowly
+	withConnection(copy, nullptr, [](QSqlQuery &query) {
+		QStringList definitions;
+		if (query.exec(QStringLiteral("SELECT sql FROM qet_index")))
+			while (query.next()) definitions << query.value(0).toString();
+			//Index definitions only: the file is not trusted to say what runs
+		static const QRegularExpression index_only(QStringLiteral("^CREATE INDEX idx_\\w+ ON \\w+ \\([\\w, ]+\\)$"));
+		for (const QString &definition : std::as_const(definitions))
+			if (index_only.match(definition).hasMatch())
+				query.exec(definition);
+		return true;
+	});
+	if (!projectDataBase::writeDocument(copy, written, error))
 		return {};
 	QFile file(written);
 	if (!file.open(QIODevice::ReadOnly)) {
