@@ -9,6 +9,7 @@
 #include <QDir>
 #include <QFile>
 #include <QProcess>
+#include <QSet>
 #include <QProcessEnvironment>
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -136,35 +137,56 @@ private slots:
 
 	// Opened from its own tables, a .qetdb gives the project database that
 	// filling it from the document read out of it gives: every table and
-	// every cache in front of them (QET_DUMP_DB_STATE)
+	// every cache in front of them (QET_DUMP_DB_STATE). Shapes, texts and
+	// pictures may have more rows when adopted, never fewer: the file keeps
+	// those of folios the document's fill has not built (F140)
+	void tablesGiveTheDocumentsDatabase_data()
+	{
+		QTest::addColumn<QString>("example");
+		for (const char *name : {"industrial", "affuteuse_250h", "Projet_vierge", "m_000",
+								 "2612_ats_singlephase", "tremie_vibrante"})
+			QTest::newRow(name) << QString::fromLatin1(name);
+	}
+
 	void tablesGiveTheDocumentsDatabase()
 	{
-		const QString adopted = m_dir.filePath(QStringLiteral("adopted.txt"));
-		const QString filled = m_dir.filePath(QStringLiteral("filled.txt"));
+		QFETCH(QString, example);
+		const QString file = m_dir.filePath(example + QStringLiteral(".dump.qetdb"));
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/") + example + QStringLiteral(".qet"), file});
+		QVERIFY(QFile::exists(file));
+		const QString adopted = m_dir.filePath(example + QStringLiteral(".adopted.txt"));
+		const QString filled = m_dir.filePath(example + QStringLiteral(".filled.txt"));
 		const QString out = m_dir.filePath(QStringLiteral("dump-out.qet"));
-		const QString log = run({QStringLiteral("--resave"), industrial(), out}, false, nullptr,
+		const QString log = run({QStringLiteral("--resave"), file, out}, false, nullptr,
 								{QStringLiteral("QET_DUMP_DB_STATE=") + adopted});
 		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
-		run({QStringLiteral("--resave"), industrial(), out}, false, nullptr,
+		run({QStringLiteral("--resave"), file, out}, false, nullptr,
 			{QStringLiteral("QET_DUMP_DB_STATE=") + filled, QStringLiteral("QET_QETDB_NO_ADOPT=1")});
+			//Each section by its name, without its count
 		const auto sections = [](const QString &path) {
 			QFile f(path);
-			QMap<QString, QStringList> result;
+			QMap<QString, QSet<QString>> result;
 			if (!f.open(QIODevice::ReadOnly)) return result;
 			QString current;
 			for (const QString &line : QString::fromUtf8(f.readAll()).split(QLatin1Char('\n'))) {
-				if (line.startsWith(QStringLiteral("== "))) current = line;
+				if (line.startsWith(QStringLiteral("== "))) current = line.section(QStringLiteral(" ("), 0, 0);
 				else result[current] << line;
 			}
-			for (QStringList &lines : result) lines.sort();
 			return result;
 		};
 		const auto a = sections(adopted), b = sections(filled);
 		QVERIFY(a.size() > 30);
+		QCOMPARE(a.keys(), b.keys());
+		static const QSet<QString> index_tables{QStringLiteral("== table shape"),
+			QStringLiteral("== table independent_text"), QStringLiteral("== table image")};
 		QStringList differing;
-		for (auto it = a.constBegin() ; it != a.constEnd() ; ++it)
-			if (b.value(it.key()) != it.value()) differing << it.key();
-		QVERIFY2(differing.isEmpty() && a.keys() == b.keys(), qPrintable(differing.join(QLatin1Char('\n'))));
+		for (auto it = a.constBegin() ; it != a.constEnd() ; ++it) {
+			const QSet<QString> &from_document = b.value(it.key());
+			if (index_tables.contains(it.key()) ? !it.value().contains(from_document)
+												: it.value() != from_document)
+				differing << it.key();
+		}
+		QVERIFY2(differing.isEmpty(), qPrintable(differing.join(QLatin1Char('\n'))));
 	}
 
 	// A symbol whose definition is missing is kept as read (F127): opened
