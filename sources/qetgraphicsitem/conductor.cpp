@@ -1694,9 +1694,10 @@ namespace {
 
 /**
 	@brief Conductor::cornerChain
-	@return this conductor and those joined to it through corners only:
-	one run of wire, ending at a terminal of anything else (a T-junction,
-	a device)
+	@return this conductor and those joined to it through corners only,
+	with the same colour and section: one run of wire, ending at a
+	terminal of anything else (a T-junction, a device) or where the wire
+	changes
 */
 QList<Conductor *> Conductor::cornerChain()
 {
@@ -1710,7 +1711,9 @@ QList<Conductor *> Conductor::cornerChain()
 				continue;
 			for (Terminal *other : end->parentElement()->terminals())
 				for (Conductor *next : other->conductors())
-					if (!chain.contains(next))
+					if (!chain.contains(next)
+					    && next->m_properties.m_wire_color == c->m_properties.m_wire_color
+					    && next->m_properties.m_wire_section == c->m_properties.m_wire_section)
 						chain << next;
 		}
 	}
@@ -1915,6 +1918,8 @@ void Conductor::setProperties(const ConductorProperties &property)
 {
 	if (m_properties == property) return;
 
+		//The run this conductor was part of, which may part now
+	const QList<Conductor *> old_run = cornerChain();
 	QString formula = m_properties.m_formula;
 	m_properties = property;
 
@@ -1942,6 +1947,9 @@ void Conductor::setProperties(const ConductorProperties &property)
 
 	updateTextVisibility();
 	calculateTextItemPosition();
+	for (Conductor *c : old_run)
+		if (c != this)
+			c->updateDefinitionMark();
 	update();
 
 	storeProperties();

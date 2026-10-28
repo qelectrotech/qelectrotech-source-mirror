@@ -132,6 +132,12 @@ class TstConductorDefinitionMark : public QObject
 		{
 			setMark(m_second, true, -1);
 			QCOMPARE(int(bool(markOf(m_conductor))) + int(bool(markOf(m_second))), 1);
+				//Another section after the corner: a new run
+			ConductorProperties p = m_second->properties();
+			p.m_wire_section = QStringLiteral("6");
+			m_second->setProperties(p);
+			QVERIFY(markOf(m_conductor));
+			QVERIFY(markOf(m_second));
 			setMark(m_second, false, -1);
 			QVERIFY(markOf(m_conductor));
 			QVERIFY(!markOf(m_second));
