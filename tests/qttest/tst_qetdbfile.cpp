@@ -111,6 +111,11 @@ private slots:
 		QCOMPARE(pragma(path, QStringLiteral("PRAGMA journal_mode")).toString(), QStringLiteral("delete"));
 		QCOMPARE(pragma(path, QStringLiteral("SELECT value FROM qet_format WHERE key = 'format'")).toString(),
 				 QStringLiteral("1"));
+			//The public views other tools read it through (QETDB-S10)
+		QCOMPARE(pragma(path, QStringLiteral("SELECT value FROM qet_format WHERE key = 'views'")).toString(),
+				 QStringLiteral("1"));
+		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE type = 'view' "
+											 "AND name IN ('qet_folios', 'qet_devices', 'qet_wires', 'qet_links')")).toInt(), 4);
 		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name LIKE 'idx_%'")).toInt(), 0);
 		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'working_copy'")).toInt(), 0);
 		const QStringList beside = QDir(m_dir.path()).entryList({QStringLiteral("industrial.qetdb*")}, QDir::Files);

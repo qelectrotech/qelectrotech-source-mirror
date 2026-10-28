@@ -1845,6 +1845,20 @@ target_compile_definitions(tst_qetdbfile PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
   "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
 
+# --query: one read-only query over several projects through the public
+# qet_ views; their columns, refused writes, the same rows from .qet, .qetz
+# and .qetdb. QETDB-S10 Q1 + Q2.
+add_executable(
+  tst_cliquery
+  tst_cliquery.cpp)
+add_test(NAME tst_cliquery COMMAND tst_cliquery)
+add_dependencies(tst_cliquery qelectrotech)
+target_link_libraries(tst_cliquery PRIVATE Qt::Test)
+target_compile_definitions(tst_cliquery PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
 # PATH for every test above and keeps the ENVIRONMENT each test sets

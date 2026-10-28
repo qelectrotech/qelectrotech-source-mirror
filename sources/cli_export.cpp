@@ -61,6 +61,7 @@
 #include <QSet>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QSqlRecord>
 #include <QSvgGenerator>
 #include <QTextStream>
 #include <QTimeZone>
@@ -91,6 +92,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--recover", "recover"},
 		{"--from-database", "fromdb"},
 		{"--set-titleblock", "settb"},
+		{"--query", "query"},
 	};
 	return flags;
 }
@@ -1041,6 +1043,97 @@ int setTitleBlock(QETProject &project, const QString &output,
 	return 0;
 }
 
+/// One CSV field as RFC 4180 has it: quoted when it holds a comma, a quote
+/// or a line break, its quotes doubled.
+QString rfcCsvField(const QString &value)
+{
+	if (value.contains(QLatin1Char(',')) || value.contains(QLatin1Char('"'))
+			|| value.contains(QLatin1Char('\n')) || value.contains(QLatin1Char('\r')))
+	{
+		QString escaped = value;
+		escaped.replace(QLatin1Char('"'), QStringLiteral("\"\""));
+		return QLatin1Char('"') % escaped % QLatin1Char('"');
+	}
+	return value;
+}
+
+/// --query: run @p sql on the project database of each of @p files in
+/// turn, as qet.query() runs it (read-only, one SELECT), and print every
+/// row with the file it came from first: CSV, or a JSON array of objects
+/// with @p json. A file that cannot be opened or queried is reported on
+/// stderr and the others still run; the exit code says whether any failed.
+int queryProjects(const QString &sql, const QStringList &files, bool json)
+{
+	QStringList columns;
+	QJsonArray json_rows;
+	bool failed = false;
+	for (const QString &file : files) {
+		if (!QFileInfo::exists(file)) {
+			err << file << ": not found\n";
+			failed = true;
+			continue;
+		}
+		QETProject project(file);
+		if (project.state() != QETProject::Ok) {
+			err << file << ": cannot be opened (state " << project.state() << ")\n";
+			failed = true;
+			continue;
+		}
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(sql, &error);
+		if (error.isEmpty() && query.lastError().isValid())
+			error = query.lastError().text();
+		if (!error.isEmpty()) {
+			err << file << ": " << error << "\n";
+			failed = true;
+			continue;
+		}
+		const QSqlRecord record = query.record();
+		QStringList names{QStringLiteral("project")};
+		for (int i = 0 ; i < record.count() ; ++i)
+			names << record.fieldName(i);
+		if (columns.isEmpty()) {
+			columns = names;
+			if (!json) {
+				QStringList header;
+				for (const QString &name : std::as_const(columns))
+					header << rfcCsvField(name);
+				out << header.join(QLatin1Char(',')) << "\n";
+			}
+		} else if (names != columns) {
+			err << file << ": the query gives other columns than for the first file\n";
+			failed = true;
+			continue;
+		}
+		int rows = 0;
+		while (query.next()) {
+				//A query that never stops producing rows (a recursive CTE)
+				//stops here, as qet.query() does
+			if (++rows > projectDataBase::MaxResultRows) {
+				err << file << ": result cut at " << projectDataBase::MaxResultRows
+					<< " rows; add a LIMIT or a WHERE clause\n";
+				failed = true;
+				break;
+			}
+			if (json) {
+				QJsonObject row{{QStringLiteral("project"), file}};
+				for (int i = 0 ; i < record.count() ; ++i)
+					row.insert(record.fieldName(i), QJsonValue::fromVariant(query.value(i)));
+				json_rows.append(row);
+			} else {
+				QStringList fields{rfcCsvField(file)};
+				for (int i = 0 ; i < record.count() ; ++i)
+					fields << (query.isNull(i) ? QString() : rfcCsvField(query.value(i).toString()));
+				out << fields.join(QLatin1Char(',')) << "\n";
+			}
+		}
+		out.flush();
+	}
+	if (json)
+		out << QJsonDocument(json_rows).toJson(QJsonDocument::Indented);
+	return failed ? 1 : 0;
+}
+
 } // anonymous namespace
 
 namespace CLIExport {
@@ -1067,6 +1160,7 @@ int run(const QStringList &args)
 	const bool includeSlaves = filtered.removeAll("--no-slaves") == 0;
 	const bool includeJunctions = filtered.removeAll("--no-junctions") == 0;
 	const bool ignoreLock = filtered.removeAll("--ignore-lock") > 0;
+	const bool json = filtered.removeAll("--json") > 0;
 
 	QString flag;
 	QStringList rest;
@@ -1113,6 +1207,15 @@ int run(const QStringList &args)
 			return 1;
 		}
 		return 0;
+	}
+
+	// --query runs one query on many projects, each opened in turn.
+	if (format == "query") {
+		if (rest.size() < 2) {
+			err << "Usage: qelectrotech --query <SQL> <project>... [--json]\n";
+			return 2;
+		}
+		return queryProjects(rest.at(0), rest.mid(1), json);
 	}
 
 	const QString input = rest.value(0);

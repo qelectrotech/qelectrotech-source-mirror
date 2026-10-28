@@ -85,6 +85,8 @@ bool finish(const QString &path, QString *error)
 		const QList<std::pair<QString, QString>> rows{
 			{QStringLiteral("format"), QString::number(QetDbFile::format)},
 			{QStringLiteral("min_reader"), QStringLiteral("1")},
+				//The qet_ views' version (projectDataBase::publicViews())
+			{QStringLiteral("views"), QString::number(projectDataBase::PublicViewsVersion)},
 			{QStringLiteral("writer"), QetVersion::displayedVersion()},
 			{QStringLiteral("saved"), QDateTime::currentDateTimeUtc().toString(Qt::ISODate)}};
 		query.prepare(QStringLiteral("INSERT INTO qet_format (key, value) VALUES (:key, :value)"));
