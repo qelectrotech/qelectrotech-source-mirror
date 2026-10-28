@@ -190,6 +190,14 @@ private slots:
 		const QByteArray bytes = before.readAll();
 		before.close();
 		QFile::setPermissions(folder, QFile::ReadOwner | QFile::ExeOwner);
+			//Root writes into a folder it made read-only (CI runs as root)
+		QFile probe(folder + QStringLiteral("/probe"));
+		if (probe.open(QIODevice::WriteOnly)) {
+			probe.close();
+			probe.remove();
+			QFile::setPermissions(folder, QFile::ReadOwner | QFile::WriteOwner | QFile::ExeOwner);
+			QSKIP("a read-only folder is still writable here (running as root)");
+		}
 		int code = 0;
 		const QString log = resave(QStringLiteral(QET_EXAMPLES_DIR "/grafcet.qet"), path, &code);
 		QFile::setPermissions(folder, QFile::ReadOwner | QFile::WriteOwner | QFile::ExeOwner);
