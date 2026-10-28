@@ -229,6 +229,7 @@ QStringList DiagramToolbarSettings::defaultIds(const QString &name)
 			//ConnectionSymbols::commandId() of each kind
 		return {QStringLiteral("diagrameditor.place_corner"),
 			QStringLiteral("diagrameditor.place_tee"),
+			QStringLiteral("diagrameditor.place_tee_mirrored"),
 			QStringLiteral("diagrameditor.place_interruption"),
 			QStringLiteral("diagrameditor.place_report_outgoing"),
 			QStringLiteral("diagrameditor.place_report_incoming")};

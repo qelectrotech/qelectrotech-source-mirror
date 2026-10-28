@@ -32,7 +32,10 @@
 	interruption point.
 */
 namespace ConnectionSymbols {
-	enum Kind { Corner, Tee, Interruption, ReportOutgoing, ReportIncoming };
+	/// TeeMirrored is the mirror image of Tee: a T-junction whose slant
+	/// shows the feeding side cannot be turned into its mirror image, so
+	/// both are offered, each in four turns
+	enum Kind { Corner, Tee, Interruption, ReportOutgoing, ReportIncoming, TeeMirrored };
 
 	QList<Kind> kinds();
 		/// The command's id, for shortcuts and toolbars

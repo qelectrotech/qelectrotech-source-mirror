@@ -24,14 +24,15 @@ namespace {
 	QString key(ConnectionSymbols::Kind kind)
 	{
 		static const char *names[] = {"corner", "tee", "interruption",
-					      "report_outgoing", "report_incoming"};
+					      "report_outgoing", "report_incoming",
+					      "tee_mirrored"};
 		return QStringLiteral("connectionsymbols/") + QLatin1String(names[kind]);
 	}
 }
 
 QList<ConnectionSymbols::Kind> ConnectionSymbols::kinds()
 {
-	return {Corner, Tee, Interruption, ReportOutgoing, ReportIncoming};
+	return {Corner, Tee, TeeMirrored, Interruption, ReportOutgoing, ReportIncoming};
 }
 
 QString ConnectionSymbols::commandId(Kind kind)
@@ -46,6 +47,8 @@ QString ConnectionSymbols::title(Kind kind)
 			return QCoreApplication::translate("ConnectionSymbols", "Corner");
 		case Tee:
 			return QCoreApplication::translate("ConnectionSymbols", "T-junction");
+		case TeeMirrored:
+			return QCoreApplication::translate("ConnectionSymbols", "T-junction, mirrored");
 		case Interruption:
 			return QCoreApplication::translate("ConnectionSymbols", "Interruption point");
 		case ReportOutgoing:
@@ -63,6 +66,8 @@ QString ConnectionSymbols::defaultPath(Kind kind)
 			return QStringLiteral("common://10_electric/10_allpole/114_connections/corner.elmt");
 		case Tee:
 			return QStringLiteral("common://10_electric/10_allpole/114_connections/thruleft.elmt");
+		case TeeMirrored:
+			return QStringLiteral("common://10_electric/10_allpole/114_connections/thruright.elmt");
 		case Interruption:
 			return QString();
 		case ReportOutgoing:
