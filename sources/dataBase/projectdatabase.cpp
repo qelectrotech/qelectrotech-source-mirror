@@ -985,6 +985,13 @@ void projectDataBase::updateDB(const QDomDocument &document)
 		m_holds_links = true;
 		populateDrawingItemTables();
 		flushConductorProperties();
+			//As the fill below: what placing the folios marked changed is
+			//what the tables hold already
+		m_content_changed = false;
+		m_rebuild_all = false;
+		m_changed_folios.clear();
+		m_rows_in_folio_order = false;
+		m_folio_places_changed = false;
 		emit dataBaseUpdated();
 		return;
 	}

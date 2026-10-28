@@ -177,8 +177,34 @@ void projectDataBase::loadCaches()
 	m_element_values = keyedRows(m_data_base, QStringLiteral("element_value"), QStringLiteral("element_uuid"));
 	m_folio_values = keyedRows(m_data_base, QStringLiteral("folio_value"), QStringLiteral("diagram_uuid"));
 	m_cable_values = keyedRows(m_data_base, QStringLiteral("cable_value"), QStringLiteral("cable_uuid"));
+	m_terminal_strip_rows = keyedRows(m_data_base, QStringLiteral("terminal_strip_value"), QStringLiteral("strip_uuid"));
 
 	QSqlQuery query(m_data_base);
+		//The project's own symbols, categories and templates, and its
+		//settings: else the first flush after the open writes them all
+		//again (0.8 s of saving f2099)
+	m_symbol_defs.clear();
+	m_symbol_categories.clear();
+	m_titleblock_templates.clear();
+	m_collection_order.clear();
+	for (auto [table, cache] : {std::pair{QStringLiteral("symbol_def"), &m_symbol_defs},
+								std::pair{QStringLiteral("symbol_category"), &m_symbol_categories}})
+		if (query.exec(QStringLiteral("SELECT path, content, ord FROM %1").arg(table)))
+			while (query.next()) {
+				cache->insert(query.value(0).toString(), query.value(1).toString());
+				if (!query.value(2).isNull()) m_collection_order.insert(query.value(0).toString(), query.value(2).toInt());
+			}
+	if (query.exec(QStringLiteral("SELECT name, content FROM titleblock_template")))
+		while (query.next()) m_titleblock_templates.insert(query.value(0).toString(), query.value(1).toString());
+	m_project_settings.clear();
+	if (query.exec(QStringLiteral("SELECT section, ord, name, value FROM project_setting ORDER BY rowid")))
+		while (query.next())
+			m_project_settings.append({query.value(0).toString(), query.value(1).toInt(),
+									   query.value(2).toString(), query.value(3).toString()});
+	m_kept_items.clear();
+	if (query.exec(QStringLiteral("SELECT diagram_uuid, content FROM kept_item ORDER BY diagram_uuid, ord")))
+		while (query.next()) m_kept_items[QUuid(query.value(0).toString())].append(query.value(1).toString());
+
 	m_element_placements.clear();
 	if (query.exec(QStringLiteral("SELECT element_uuid, type, x, y, rotation, horizontal_mirror, vertical_mirror, z "
 								  "FROM element_placement")))

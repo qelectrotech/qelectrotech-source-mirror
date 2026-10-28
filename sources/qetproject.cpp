@@ -470,7 +470,10 @@ void QETProject::init()
 	connect(m_elements_collection, &XmlElementCollection::elementRemoved, this, collections_changed);
 	connect(m_elements_collection, &XmlElementCollection::directorieAdded, this, collections_changed);
 	connect(m_elements_collection, &XmlElementCollection::directoryRemoved, this, collections_changed);
-	m_data_base.queueCollections();
+		//Taken from a .qetdb's tables, they hold the collection this project
+		//was read from (S4x X2): comparing it again costs 0.5 s on f2099
+	if (!m_data_base.adopted())
+		m_data_base.queueCollections();
 
 	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
 	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
