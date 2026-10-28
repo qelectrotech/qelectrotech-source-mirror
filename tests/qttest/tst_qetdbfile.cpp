@@ -167,6 +167,39 @@ private slots:
 		QVERIFY2(differing.isEmpty() && a.keys() == b.keys(), qPrintable(differing.join(QLatin1Char('\n'))));
 	}
 
+	// A symbol whose definition is missing is kept as read (F127): opened
+	// from the file's tables and saved again, a folio not built keeps it
+	void keptSymbolSurvivesResave()
+	{
+		QFile source(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
+		QVERIFY(source.open(QIODevice::ReadOnly));
+		QByteArray text = source.readAll();
+		const qsizetype last = text.lastIndexOf("<elements>");
+		QVERIFY(last > 0);
+		text.insert(last + qsizetype(qstrlen("<elements>")),
+					"<element type=\"embed://import/missing/nowhere.elmt\" x=\"100\" y=\"100\" z=\"10\" "
+					"orientation=\"0\" prefix=\"\" freezeLabel=\"false\" "
+					"uuid=\"{5e1f0c3a-7d2b-4c11-9a4e-0b6c2d8e9f10}\"><terminals/><inputs/></element>");
+		const QString with_missing = m_dir.filePath(QStringLiteral("missing.qet"));
+		QFile out(with_missing);
+		QVERIFY(out.open(QIODevice::WriteOnly));
+		out.write(text);
+		out.close();
+		const QString first = m_dir.filePath(QStringLiteral("missing.qetdb"));
+		const QString second = m_dir.filePath(QStringLiteral("missing-again.qetdb"));
+		resave(with_missing, first);
+		const QString log = resave(first, second);
+		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
+		const QString count = QStringLiteral("SELECT count(*) FROM kept_item WHERE content LIKE '%5e1f0c3a%'");
+		QCOMPARE(pragma(first, count).toInt(), 1);
+		QCOMPARE(pragma(second, count).toInt(), 1);
+		const QString back = m_dir.filePath(QStringLiteral("missing-back.qet"));
+		resave(second, back);
+		QFile f(back);
+		QVERIFY(f.open(QIODevice::ReadOnly));
+		QVERIFY(f.readAll().contains("5e1f0c3a-7d2b-4c11-9a4e-0b6c2d8e9f10"));
+	}
+
 	// An edit saved through the project's own save is in the file
 	void editIsSaved()
 	{

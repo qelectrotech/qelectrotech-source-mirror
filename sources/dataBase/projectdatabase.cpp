@@ -5688,7 +5688,9 @@ void projectDataBase::flushFolioValues()
 		QList<ProjectSetting> rows;
 		xmlRows(it.value()->ownValuesXml(document), QStringLiteral("diagram"), 0, rows);
 		storeKeyedRows(QStringLiteral("folio_value"), QStringLiteral("diagram_uuid"), m_folio_values, it.key(), rows);
-			//The symbols and wires it keeps as read, each whole
+			//The symbols and wires it keeps as read, each whole. A folio not
+			//built has read none yet: its rows (an adopted .qetdb's) stay
+		if (!it.value()->isLoaded()) continue;
 		QStringList kept;
 		for (const QDomElement &item : it.value()->keptXml(document)) {
 			QString text;
