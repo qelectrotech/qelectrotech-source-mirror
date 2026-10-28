@@ -83,6 +83,24 @@ private slots:
 		QCOMPARE(PreviousVersions::kept(project).size(), 1);
 	}
 
+	// Files of the same size are compared byte for byte, to the end: one
+	// differing only in its last byte is kept, the same bytes are not
+	void sameSizeComparedToTheEnd()
+	{
+		const QString project = m_dir.filePath(QStringLiteral("big.qetdb"));
+		const QDateTime when(QDate(2026, 10, 29), QTime(9, 0, 0));
+		QByteArray text(300000, 'a');
+		write(project, text, when);
+		QVERIFY(PreviousVersions::keep(project, 5));
+		text[text.size() - 1] = 'b';
+		write(project, text, when.addSecs(30));
+		QVERIFY(PreviousVersions::keep(project, 5));
+		QCOMPARE(PreviousVersions::kept(project).size(), 2);
+		write(project, text, when.addSecs(60));
+		QVERIFY(PreviousVersions::keep(project, 5));
+		QCOMPARE(PreviousVersions::kept(project).size(), 2);
+	}
+
 	// Two versions saved the same second both kept
 	void sameSecond()
 	{

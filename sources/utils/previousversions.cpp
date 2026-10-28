@@ -17,7 +17,6 @@
 */
 #include "previousversions.h"
 
-#include <QCryptographicHash>
 #include <QDateTime>
 #include <QDir>
 #include <QFile>
@@ -35,13 +34,21 @@ QString versionPrefix(const QFileInfo &info)
 	return info.completeBaseName() + QLatin1Char(' ');
 }
 
-QByteArray digest(const QString &path)
+	//True if the files @p a and @p b hold the same bytes, read until the
+	//first that differs: a saved project differs from its previous
+	//version within its first pages, where hashing both read them whole
+bool sameContent(const QString &a, const QString &b)
 {
-	QFile file(path);
-	if (!file.open(QIODevice::ReadOnly)) return {};
-	QCryptographicHash hash(QCryptographicHash::Sha256);
-	hash.addData(&file);
-	return hash.result();
+	QFile first(a), second(b);
+	if (!first.open(QIODevice::ReadOnly) || !second.open(QIODevice::ReadOnly)
+			|| first.size() != second.size())
+		return false;
+	constexpr qint64 chunk = 1 << 16;
+	while (!first.atEnd()) {
+		const QByteArray x = first.read(chunk), y = second.read(chunk);
+		if (x.isEmpty() || x != y) return false;
+	}
+	return second.atEnd();
 }
 }
 
@@ -85,8 +92,7 @@ bool PreviousVersions::keep(const QString &file_path, int count, QString *error)
 	if (count <= 0 || !info.isFile()) return true;
 
 	const QStringList versions = kept(file_path);
-	if (!versions.isEmpty() && QFileInfo(versions.first()).size() == info.size()
-			&& digest(versions.first()) == digest(file_path))
+	if (!versions.isEmpty() && sameContent(versions.first(), file_path))
 		return true;
 
 	QDir dir(folder(file_path));
