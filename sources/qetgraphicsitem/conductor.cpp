@@ -32,6 +32,7 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../ui/conductorpropertiesdialog.h"
 #include "conductortextitem.h"
+#include "conductordefinitionmark.h"
 #include "element.h"
 #include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "../utils/qetutils.h"
@@ -1576,6 +1577,7 @@ void Conductor::updateTextVisibility()
 */
 void Conductor::calculateTextItemPosition()
 {
+	updateDefinitionMark();
 	if (!m_text_item || !diagram() || m_properties.type != ConductorProperties::Multi)
 		return;
 
@@ -1665,6 +1667,26 @@ void Conductor::calculateTextItemPosition()
 			}
 		}
 	}
+}
+
+/**
+	@brief Conductor::updateDefinitionMark
+	Show, move or remove the stroke with this conductor's colour and
+	section, as its properties ask
+*/
+void Conductor::updateDefinitionMark()
+{
+	const bool wanted = m_properties.m_definition_mark
+			&& m_properties.type == ConductorProperties::Multi;
+	if (!wanted) {
+		delete m_definition_mark;
+		m_definition_mark = nullptr;
+		return;
+	}
+	if (!m_definition_mark)
+		m_definition_mark = new ConductorDefinitionMark(this);
+	else
+		m_definition_mark->refresh();
 }
 
 /**

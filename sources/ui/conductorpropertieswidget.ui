@@ -162,6 +162,48 @@
                 </property>
                </widget>
               </item>
+              <item row="9" column="0" colspan="3">
+               <widget class="QCheckBox" name="m_definition_mark_cb">
+                <property name="toolTip">
+                 <string>A slanted stroke across the conductor, with its colour above and its section below. Drag it along the conductor to move it.</string>
+                </property>
+                <property name="text">
+                 <string>Stroke with colour and section</string>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="3">
+               <widget class="QLabel" name="m_definition_mark_pos_label">
+                <property name="text">
+                 <string>From the start :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="4">
+               <widget class="QSpinBox" name="m_definition_mark_pos_sb">
+                <property name="toolTip">
+                 <string>How far from the conductor's start the stroke stands. "Middle": the middle of its longest stretch.</string>
+                </property>
+                <property name="specialValueText">
+                 <string>Middle</string>
+                </property>
+                <property name="suffix">
+                 <string> px</string>
+                </property>
+                <property name="minimum">
+                 <number>-1</number>
+                </property>
+                <property name="maximum">
+                 <number>100000</number>
+                </property>
+                <property name="singleStep">
+                 <number>5</number>
+                </property>
+                <property name="value">
+                 <number>-1</number>
+                </property>
+               </widget>
+              </item>
               <item row="8" column="0" colspan="5">
                <layout class="QGridLayout" name="m_text_angle_gl">
                 <item row="1" column="0">

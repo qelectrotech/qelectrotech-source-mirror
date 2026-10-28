@@ -603,6 +603,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/qetgraphicsitem/conductor.cpp
   ${QET_DIR}/sources/qetgraphicsitem/conductor.h
+  ${QET_DIR}/sources/qetgraphicsitem/conductordefinitionmark.cpp
+  ${QET_DIR}/sources/qetgraphicsitem/conductordefinitionmark.h
   ${QET_DIR}/sources/qetgraphicsitem/conductortextitem.cpp
   ${QET_DIR}/sources/qetgraphicsitem/conductortextitem.h
   ${QET_DIR}/sources/qetgraphicsitem/crossrefitem.cpp

@@ -121,6 +121,13 @@ class ConductorProperties
 		m_one_text_per_folio,
 		m_bicolor = false;
 
+			/// A slanted stroke across the conductor with its colour
+			/// and section beside it (ConductorDefinitionMark), and how
+			/// far from the conductor's start it stands; -1 is the
+			/// middle of its longest stretch
+		bool m_definition_mark = false;
+		qreal m_definition_mark_pos = -1;
+
 		Qt::Alignment
 		m_horizontal_alignment = Qt::AlignBottom,
 		m_vertical_alignment = Qt::AlignRight;

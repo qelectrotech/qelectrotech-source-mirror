@@ -345,6 +345,11 @@ function(qet_add_app_test name)
   target_link_libraries(${name} PRIVATE qelectrotech_objects Qt::Test)
 endfunction()
 
+# A conductor's colour and section at a slanted stroke across it.
+qet_add_app_test(tst_conductordefinitionmark tst_conductordefinitionmark.cpp)
+target_compile_definitions(tst_conductordefinitionmark PRIVATE
+  QET_ELEMENTS_DIR="${QET_DIR}/elements")
+
 # Space on a picture turns its own transform, which the file saves (#1413),
 # alone and with a group.
 # Closing a project takes its symbols down with them: their terminals say
