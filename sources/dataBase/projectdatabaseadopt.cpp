@@ -47,6 +47,7 @@ QHash<QUuid, Rows> keyedRows(const QSqlDatabase &db, const QString &table, const
 {
 	QHash<QUuid, Rows> rows;
 	QSqlQuery query(db);
+	query.setForwardOnly(true);
 	if (!query.exec(QStringLiteral("SELECT %1, section, ord, name, value FROM %2 ORDER BY rowid").arg(key, table)))
 		return rows;
 	while (query.next())
@@ -61,6 +62,7 @@ QHash<QUuid, DiagramContext> contexts(const QSqlDatabase &db, const QString &tab
 {
 	QHash<QUuid, DiagramContext> result;
 	QSqlQuery query(db);
+	query.setForwardOnly(true);
 	if (!query.exec(QStringLiteral("SELECT %1, name, value, show FROM %2 ORDER BY %1, ord").arg(key, table)))
 		return result;
 	while (query.next())
@@ -180,6 +182,7 @@ void projectDataBase::loadCaches()
 	m_terminal_strip_rows = keyedRows(m_data_base, QStringLiteral("terminal_strip_value"), QStringLiteral("strip_uuid"));
 
 	QSqlQuery query(m_data_base);
+	query.setForwardOnly(true);
 		//The project's own symbols, categories and templates, and its
 		//settings: else the first flush after the open writes them all
 		//again (0.8 s of saving f2099)
@@ -366,6 +369,7 @@ QSet<QUuid> projectDataBase::foliosWithCableWires() const
 {
 	QSet<QUuid> folios;
 	QSqlQuery query(m_data_base);
+	query.setForwardOnly(true);
 	if (query.exec(QStringLiteral("SELECT DISTINCT c.diagram_uuid FROM conductor c "
 								  "JOIN conductor_properties p ON p.conductor_uuid = c.uuid "
 								  "WHERE p.name = 'cable_uuid' AND p.value <> ''")))
@@ -383,6 +387,7 @@ QString projectDataBase::stateDump() const
 {
 	QStringList out;
 	QSqlQuery query(m_data_base);
+	query.setForwardOnly(true);
 	QStringList tables;
 	if (query.exec(QStringLiteral("SELECT name FROM sqlite_master WHERE type = 'table' "
 								  "AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\' AND name <> 'working_copy' ORDER BY name")))
