@@ -158,6 +158,7 @@ class Conductor : public QGraphicsObject
 		ConductorProfilesGroup profiles() const;
 		void calculateTextItemPosition();
 		void updateDefinitionMark();
+		QList<Conductor *> cornerChain();
 		void updateTextVisibility();
 		virtual Highlight highlight() const;
 		virtual void setHighlighted(Highlight);

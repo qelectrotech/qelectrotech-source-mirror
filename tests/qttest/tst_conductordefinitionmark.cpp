@@ -25,6 +25,7 @@
 #include "factory/elementfactory.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductordefinitionmark.h"
+#include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetmessagebox.h"
@@ -38,22 +39,28 @@ class TstConductorDefinitionMark : public QObject
 	private:
 		Conductor *m_conductor = nullptr;
 
-		ConductorDefinitionMark *mark() const
+		Conductor *m_second = nullptr;
+
+		ConductorDefinitionMark *mark() const { return markOf(m_conductor); }
+
+		static ConductorDefinitionMark *markOf(const Conductor *conductor)
 		{
-			for (QGraphicsItem *child : m_conductor->childItems())
+			for (QGraphicsItem *child : conductor->childItems())
 				if (auto *found = qgraphicsitem_cast<ConductorDefinitionMark *>(child))
 					return found;
 			return nullptr;
 		}
 
-		void setMark(bool on, qreal pos)
+		void setMark(bool on, qreal pos) { setMark(m_conductor, on, pos); }
+
+		static void setMark(Conductor *conductor, bool on, qreal pos)
 		{
-			ConductorProperties p = m_conductor->properties();
+			ConductorProperties p = conductor->properties();
 			p.m_definition_mark = on;
 			p.m_definition_mark_pos = pos;
 			p.m_wire_color = QStringLiteral("BK");
 			p.m_wire_section = QStringLiteral("10");
-			m_conductor->setProperties(p);
+			conductor->setProperties(p);
 		}
 
 	private slots:
@@ -75,6 +82,15 @@ class TstConductorDefinitionMark : public QObject
 			m_conductor = new Conductor(a->terminals().first(), b->terminals().first());
 			diagram->addItem(m_conductor);
 			QVERIFY(m_conductor->isValid());
+
+				//b is a corner: a second conductor goes on from it
+			Element *c = ElementFactory::Instance()->createElement(location, nullptr, &state);
+			QVERIFY(c);
+			diagram->addItem(c);
+			c->setPos(500, 300);
+			m_second = new Conductor(b->terminals().last(), c->terminals().first());
+			diagram->addItem(m_second);
+			QVERIFY(m_second->isValid());
 		}
 
 		void pointsAlongAPolyline()
@@ -105,6 +121,20 @@ class TstConductorDefinitionMark : public QObject
 			const QPainterPath path = m_conductor->path();
 			QVERIFY2(path.boundingRect().adjusted(-1, -1, 1, 1).contains(on),
 				 "the stroke left the conductor");
+		}
+
+		void theTextMakesWayForTheStroke()
+		{
+			QVERIFY(!m_conductor->textItem()->isVisible());
+		}
+
+		void oneStrokeForARunTurnedByCorners()
+		{
+			setMark(m_second, true, -1);
+			QCOMPARE(int(bool(markOf(m_conductor))) + int(bool(markOf(m_second))), 1);
+			setMark(m_second, false, -1);
+			QVERIFY(markOf(m_conductor));
+			QVERIFY(!markOf(m_second));
 		}
 
 		void savedWithTheConductor()

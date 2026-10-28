@@ -1566,7 +1566,8 @@ void Conductor::updateTextVisibility()
 {
 	ShownKinds::setVisible(m_text_item,
 						   m_properties.type == ConductorProperties::Multi
-						   && m_properties.m_show_text);
+						   && m_properties.m_show_text
+						   && !m_properties.m_definition_mark);
 }
 
 /**
@@ -1601,7 +1602,7 @@ void Conductor::calculateTextItemPosition()
 		}
 			//Make sure text item is visible, unless wire numbers are hidden
 			//(View > Show)
-		ShownKinds::setVisible(m_text_item, true);
+		ShownKinds::setVisible(m_text_item, !m_properties.m_definition_mark);
 	}
 
 		//position
@@ -1669,24 +1670,82 @@ void Conductor::calculateTextItemPosition()
 	}
 }
 
+namespace {
+	/**
+		@return true for a corner: a symbol of two terminals close together
+		and at right angles, which only turns the wire. The wire it turns
+		is still one run, which shows its colour and section once.
+	*/
+	bool isCorner(const Element *element)
+	{
+		if (!element)
+			return false;
+		const QList<Terminal *> terminals = element->terminals();
+		if (terminals.size() != 2)
+			return false;
+		const auto horizontal = [](Qet::Orientation o) {
+			return o == Qet::East || o == Qet::West;
+		};
+		return horizontal(terminals.at(0)->orientation()) != horizontal(terminals.at(1)->orientation())
+			&& QLineF(terminals.at(0)->dockConductor(),
+				  terminals.at(1)->dockConductor()).length() <= 30;
+	}
+}
+
+/**
+	@brief Conductor::cornerChain
+	@return this conductor and those joined to it through corners only:
+	one run of wire, ending at a terminal of anything else (a T-junction,
+	a device)
+*/
+QList<Conductor *> Conductor::cornerChain()
+{
+	QList<Conductor *> chain {this};
+	for (int i = 0 ; i < chain.size() ; ++i)
+	{
+		Conductor *c = chain.at(i);
+		for (Terminal *end : {c->terminal1, c->terminal2})
+		{
+			if (!end || !isCorner(end->parentElement()))
+				continue;
+			for (Terminal *other : end->parentElement()->terminals())
+				for (Conductor *next : other->conductors())
+					if (!chain.contains(next))
+						chain << next;
+		}
+	}
+	return chain;
+}
+
 /**
 	@brief Conductor::updateDefinitionMark
 	Show, move or remove the stroke with this conductor's colour and
-	section, as its properties ask
+	section, as its properties ask. A run turned by corners shows one
+	stroke, on its longest conductor that asks for one.
 */
 void Conductor::updateDefinitionMark()
 {
-	const bool wanted = m_properties.m_definition_mark
-			&& m_properties.type == ConductorProperties::Multi;
-	if (!wanted) {
-		delete m_definition_mark;
-		m_definition_mark = nullptr;
-		return;
+	const auto wants = [](const Conductor *c) {
+		return c->m_properties.m_definition_mark
+			&& c->m_properties.type == ConductorProperties::Multi;
+	};
+	Conductor *shown = nullptr;
+	const QList<Conductor *> chain = cornerChain();
+	for (Conductor *c : chain)
+		if (wants(c) && (!shown || c->length() > shown->length()))
+			shown = c;
+
+	for (Conductor *c : chain)
+	{
+		if (c != shown) {
+			delete c->m_definition_mark;
+			c->m_definition_mark = nullptr;
+		} else if (!c->m_definition_mark) {
+			c->m_definition_mark = new ConductorDefinitionMark(c);
+		} else {
+			c->m_definition_mark->refresh();
+		}
 	}
-	if (!m_definition_mark)
-		m_definition_mark = new ConductorDefinitionMark(this);
-	else
-		m_definition_mark->refresh();
 }
 
 /**
