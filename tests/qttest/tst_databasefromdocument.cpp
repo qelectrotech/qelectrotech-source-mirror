@@ -502,6 +502,37 @@ private slots:
 									.arg(a.size()).arg(b.size())));
 	}
 
+	// A symbol with two terminals sharing a uuid (copied in the symbol
+	// editor, F139): a wire to it docks on the first in the element's
+	// terminal order, and both fills give that terminal's index. The copy
+	// comes after the original in the file and sorts after it.
+	void copiedTerminalUuid()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("copied-terminal.qet"));
+		QDomDocument document = resaved(saved);
+		const QDomElement conductor = document.elementsByTagName(QStringLiteral("conductor")).at(0).toElement();
+		const QString uuid = conductor.attribute(QStringLiteral("terminal1"));
+		QVERIFY(!uuid.isEmpty());
+		bool copied = false;
+		const QDomNodeList terminals = document.elementsByTagName(QStringLiteral("terminal"));
+		for (int i = 0 ; i < terminals.size() && !copied ; ++i) {
+			QDomElement terminal = terminals.at(i).toElement();
+			if (terminal.attribute(QStringLiteral("uuid")) != uuid
+				|| terminal.parentNode().nodeName() != QLatin1String("description"))
+				continue;
+			QDomElement copy = terminal.cloneNode().toElement();
+			copy.setAttribute(QStringLiteral("y"), QStringLiteral("1000"));
+			terminal.parentNode().appendChild(copy);
+			copied = true;
+		}
+		QVERIFY(copied);
+		QVERIFY(write(saved, document));
+		compareBothWays(saved);
+		const QString rows = QString::fromUtf8(QJsonDocument(m_last.value(QStringLiteral("terminal")).toArray())
+												   .toJson(QJsonDocument::Compact));
+		QVERIFY2(rows.contains(uuid), qPrintable(rows.left(400)));
+	}
+
 	// A file from an older QElectroTech, as shipped: the uuids and wire ends
 	// written into it on opening are those its folios give themselves when
 	// built (every folio built, without the fill). Each example as it is;

@@ -1381,7 +1381,16 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 					if (place >= 0) {
 						terminal.index = indexes.at(place);
 					}
-					read.terminals.insert(terminal_uuid, terminal);
+						//Terminals copied in the symbol editor can share a uuid:
+						//a wire to it docks on the first of them in
+						//Element::terminals(), the lowest index (findTerminals()
+						//in diagram.cpp), which is the one a built folio stores
+					const auto kept = read.terminals.constFind(terminal_uuid);
+					if (kept == read.terminals.constEnd()
+						|| (terminal.index.isValid()
+							&& (!kept->index.isValid() || terminal.index.toInt() < kept->index.toInt()))) {
+						read.terminals.insert(terminal_uuid, terminal);
+					}
 				}
 				known = definitions.insert(type, read);
 			}
@@ -7572,7 +7581,7 @@ void projectDataBase::flushLinks()
 		if (!remove.exec()) {
 			qDebug() << "projectDataBase::flushLinks remove error : " << remove.lastError();
 		}
-			//An element taken off its folio is unlinked first (Diagram::
+			//An element taken off its folio is unlinked first (findTerminals()
 			//removeItem()), so it writes no rows here; one on a removed
 			//folio is not, and writes none either.
 		if (!placed) {
