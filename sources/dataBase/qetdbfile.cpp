@@ -383,13 +383,19 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 				return QByteArray();
 			return hash.result();
 		});
-	if (!check(saving, error) || !lap("check"))
+		//Flushed while it is checked: neither changes it, and it replaces
+		//nothing before both are done
+	QFuture<bool> flushing = QtConcurrent::run([saving]() { return flushFile(saving); });
+	const bool checked = check(saving, error);
+	lap("check");
+	const bool flushed = flushing.result();
+	lap("flush");
+	if (!checked)
 		return give_up();
-	if (!flushFile(saving)) {
+	if (!flushed) {
 		if (error) *error = QObject::tr("the file could not be written to disk");
 		return give_up();
 	}
-	lap("flush");
 	if (sha1) {
 		*sha1 = hashing.result();
 		lap("hash");
