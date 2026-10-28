@@ -108,9 +108,14 @@ class tst_qetdbrobust : public QObject
 			//And no new file left by a save killed before
 		for (const char *suffix : {"", ".saving", ".saving-journal"})
 			QFile::remove(target + QLatin1String(suffix));
-		QFile f(target);
+			//Written beside it and put in place at once, as a save does:
+			//copiedDuringSave() copies the file while this runs
+		const QString beside = target + QStringLiteral(".old");
+		QFile f(beside);
 		QVERIFY(f.open(QIODevice::WriteOnly));
 		f.write(m_old_bytes);
+		f.close();
+		QVERIFY(QFile::rename(beside, target));
 	}
 
 private slots:
