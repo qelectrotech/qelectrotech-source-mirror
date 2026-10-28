@@ -143,8 +143,12 @@ bool projectDataBase::adoptFile(const QString &file, QString *error)
 	if (ok) ok = m_data_base.transaction();
 	for (const QString &table : std::as_const(tables)) {
 		if (!ok) break;
+			//No ORDER BY: a table is read in rowid order anyway, and SQLite
+			//copies a table into an empty one of the same columns and
+			//indexes page by page only without one (its transfer
+			//optimization; a file keeps its indexes): half the time on f2099
 		ok = query.exec(QStringLiteral("DELETE FROM main.\"%1\"").arg(table))
-				&& query.exec(QStringLiteral("INSERT INTO main.\"%1\" SELECT * FROM adopted.\"%1\" ORDER BY rowid").arg(table));
+				&& query.exec(QStringLiteral("INSERT INTO main.\"%1\" SELECT * FROM adopted.\"%1\"").arg(table));
 		if (!ok && error) *error = query.lastError().text();
 	}
 	if (ok) ok = m_data_base.commit();
