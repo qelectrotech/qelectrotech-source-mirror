@@ -38,7 +38,7 @@ public:
 
 	void apply();
 
-protected:
+public slots:
 	void accept() override;
 	void reject() override;
 

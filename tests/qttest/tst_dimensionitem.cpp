@@ -25,6 +25,9 @@
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "undocommand/deleteqgraphicsitemcommand.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "ui/dimensionpropertiesdialog.h"
+#include <QComboBox>
+#include <QCheckBox>
 
 class tst_DimensionItem : public QObject
 {
@@ -40,6 +43,7 @@ private slots:
 	void testUndoRedoAdd();
 	void testUndoRedoDelete();
 	void testUndoRedoProperties();
+	void testUndoRedoDialog();
 };
 
 void tst_DimensionItem::testDefaultValues()
@@ -276,6 +280,47 @@ void tst_DimensionItem::testUndoRedoProperties()
 
 	diagram->undoStack().redo();
 	QCOMPARE(dim->offset(), 45.0);
+}
+
+void tst_DimensionItem::testUndoRedoDialog()
+{
+	QETProject project;
+	Diagram *diagram = project.addNewDiagram();
+	QVERIFY(diagram != nullptr);
+	auto *dim = new DimensionItem(QPointF(0, 0), QPointF(200, 0), 20.0);
+	diagram->undoStack().push(new AddGraphicsObjectCommand(dim, diagram));
+
+	int initialUndoCount = diagram->undoStack().count();
+	QCOMPARE(dim->prefix(), QString());
+	QCOMPARE(dim->isFramed(), true);
+
+	{
+		DimensionPropertiesDialog dialog(dim);
+		auto *prefixCb = dialog.findChild<QComboBox*>("m_prefix_cb");
+		auto *framedCb = dialog.findChild<QCheckBox*>("m_framed_cb");
+		QVERIFY(prefixCb != nullptr);
+		QVERIFY(framedCb != nullptr);
+
+		prefixCb->setCurrentText(QStringLiteral("⌀"));
+		framedCb->setChecked(false);
+
+		// Accept dialog -> commits ChangeDimensionPropertiesCommand
+		dialog.accept();
+	}
+
+	QCOMPARE(diagram->undoStack().count(), initialUndoCount + 1);
+	QCOMPARE(dim->prefix(), QStringLiteral("⌀"));
+	QCOMPARE(dim->isFramed(), false);
+
+	// Undo dialog changes
+	diagram->undoStack().undo();
+	QCOMPARE(dim->prefix(), QString());
+	QCOMPARE(dim->isFramed(), true);
+
+	// Redo dialog changes
+	diagram->undoStack().redo();
+	QCOMPARE(dim->prefix(), QStringLiteral("⌀"));
+	QCOMPARE(dim->isFramed(), false);
 }
 
 QTEST_MAIN(tst_DimensionItem)
