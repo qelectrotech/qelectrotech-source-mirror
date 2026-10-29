@@ -119,6 +119,11 @@
 #include <QJsonArray>
 #include <QVBoxLayout>
 #include <QListWidget>
+#include <QTreeWidget>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QHeaderView>
+#include "dataBase/qetdbfile.h"
 #include <QCheckBox>
 #include <QDockWidget>
 #include <QJsonObject>
@@ -865,6 +870,11 @@ void QETDiagramEditor::setUpActions()
 	connect(m_project_edit_properties, &QAction::triggered, [this]() {
 		editProjectProperties(currentProjectView());
 	});
+
+		//The saves a .qetdb keeps, and keeping them or not (QETDB-S6-SCOPE.md)
+	m_project_history = new QAction(tr("History of saves..."), this);
+	ShortcutManager::instance().registerAction(m_project_history, "diagrameditor.project_history", tr("Diagram editors"), QKeySequence());
+	connect(m_project_history, &QAction::triggered, this, &QETDiagramEditor::showProjectHistory);
 
 		//Add new folio to current project
 	m_project_add_diagram = new QAction(QET::Icons::DiagramAdd, tr("Add a sheet"), this);
@@ -1797,6 +1807,7 @@ void QETDiagramEditor::setUpMenu()
 
 	// menu Projet
 	menu_project -> addAction(m_project_edit_properties);
+	menu_project -> addAction(m_project_history);
 	menu_project -> addAction(m_auto_conductor);
 		//Sits beside m_auto_conductor, the setting it pairs with. It was
 		//toolbar-only and so had no keyboard route at all.
@@ -3218,6 +3229,7 @@ void QETDiagramEditor::slot_updateActions()
 
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
+	m_project_history             -> setEnabled(opened_project);
 	m_project_add_diagram         -> setEnabled(editable_project);
 	m_remove_diagram_from_project -> setEnabled(editable_project);
 	m_clean_project               -> setEnabled(editable_project);
@@ -5289,4 +5301,78 @@ void QETDiagramEditor::applyTextFormat()
 	dv->diagram()->undoStack().push(new ApplyElementTextFormatCommand(targetElements, pattern));
 
 	statusBar()->showMessage(tr("Text format applied to %n element(s)", "", targetElements.size()), 3000);
+}
+
+/**
+	@brief QETDiagramEditor::showProjectHistory
+	The saves the current project's .qetdb keeps, newest first: when, who,
+	and what each changed; and whether the file keeps them (off unless
+	switched on: names and history travel with every copy, #1512).
+*/
+void QETDiagramEditor::showProjectHistory()
+{
+	QETProject *project = currentProject();
+	if (!project) return;
+
+	QDialog dialog(this);
+	dialog.setWindowTitle(tr("History of saves"));
+	auto *layout = new QVBoxLayout(&dialog);
+	auto *keep = new QCheckBox(tr("Keep a history of saves in this file"), &dialog);
+	auto *note = new QLabel(&dialog);
+	note->setWordWrap(true);
+	auto *list = new QTreeWidget(&dialog);
+	list->setHeaderLabels({tr("No."), tr("Saved"), tr("By"), tr("Changes")});
+	list->setRootIsDecorated(false);
+	list->header()->setStretchLastSection(true);
+	layout->addWidget(keep);
+	layout->addWidget(note);
+	layout->addWidget(list);
+	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Close, &dialog);
+	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+	layout->addWidget(buttons);
+
+	const bool database = QetDbFile::isDatabasePath(project->filePath())
+			&& QFileInfo::exists(project->filePath());
+	const auto refresh = [&]() {
+		list->clear();
+		QString error;
+		const QStringList lines = database ? QetDbFile::history(project->filePath(), &error) : QStringList();
+		const QSignalBlocker blocker(keep);
+		keep->setChecked(!lines.isEmpty());
+		keep->setEnabled(database);
+		note->setText(!database ? tr("A history is kept only in a project saved as .qetdb (File > Save as).")
+								: lines.isEmpty() ? tr("This file keeps no history. Switched on, each save "
+													   "records who saved, when and what changed.")
+												  : tr("Each save records who saved, when and what changed. "
+													   "Copies of the file carry this history: use "
+													   "--export-delivery to send a project without it."));
+			//"ord  time  who@host  kind: changes", newest first
+		for (auto it = lines.crbegin() ; it != lines.crend() ; ++it) {
+			const QString &line = *it;
+			const QString what = line.section(QStringLiteral("  "), 3);
+			auto *item = new QTreeWidgetItem(list, {line.section(QStringLiteral("  "), 0, 0),
+													line.section(QStringLiteral("  "), 1, 1),
+													line.section(QStringLiteral("  "), 2, 2),
+													what == QLatin1String("import") ? tr("History started")
+																					: what.section(QStringLiteral(": "), 1)});
+			item->setToolTip(3, what);
+		}
+		for (int i = 0 ; i < 3 ; ++i) list->resizeColumnToContents(i);
+	};
+	connect(keep, &QCheckBox::toggled, &dialog, [&](bool on) {
+		if (!on && QMessageBox::question(&dialog, tr("History of saves"),
+										 tr("Delete the history this file keeps? It cannot be undone."))
+				!= QMessageBox::Yes) {
+			refresh();
+			return;
+		}
+		QString error;
+		if (!project->setKeepHistory(on, &error))
+			QMessageBox::warning(&dialog, tr("History of saves"),
+								 tr("The history could not be changed: %1").arg(error));
+		refresh();
+	});
+	refresh();
+	dialog.resize(720, 420);
+	dialog.exec();
 }

@@ -2968,6 +2968,30 @@ bool QETProject::writeDatabaseFile(const QString &path, QString *error)
 }
 
 /**
+	@brief QETProject::setKeepHistory
+	Make this project's .qetdb keep a history of its saves, or drop the one
+	it keeps (QETDB-S6-SCOPE.md): written to its file at once, which this
+	project then remembers as its own, so the next save sees no change on
+	disk. Refused for a project not saved as .qetdb, or whose file someone
+	else changed.
+*/
+bool QETProject::setKeepHistory(bool on, QString *error)
+{
+	if (!QetDbFile::isDatabasePath(m_file_path) || !QFileInfo::exists(m_file_path)) {
+		if (error) *error = tr("a history is kept only in a project saved as .qetdb");
+		return false;
+	}
+	if (changedOnDisk()) {
+		if (error) *error = tr("the file was changed on disk since it was opened or saved");
+		return false;
+	}
+	if (!QetDbFile::setHistory(m_file_path, on, error))
+		return false;
+	rememberDiskState();
+	return true;
+}
+
+/**
 	@brief QETProject::writeContainerFile
 	Write this project to @p path as a .qetz
 */
