@@ -1566,8 +1566,7 @@ void Conductor::updateTextVisibility()
 {
 	ShownKinds::setVisible(m_text_item,
 						   m_properties.type == ConductorProperties::Multi
-						   && m_properties.m_show_text
-						   && !m_properties.m_definition_mark);
+						   && m_properties.m_show_text);
 }
 
 /**
@@ -1602,7 +1601,7 @@ void Conductor::calculateTextItemPosition()
 		}
 			//Make sure text item is visible, unless wire numbers are hidden
 			//(View > Show)
-		ShownKinds::setVisible(m_text_item, !m_properties.m_definition_mark);
+		ShownKinds::setVisible(m_text_item, true);
 	}
 
 		//position
@@ -1670,28 +1669,6 @@ void Conductor::calculateTextItemPosition()
 	}
 }
 
-namespace {
-	/**
-		@return true for a corner: a symbol of two terminals close together
-		and at right angles, which only turns the wire. The wire it turns
-		is still one run, which shows its colour and section once.
-	*/
-	bool isCorner(const Element *element)
-	{
-		if (!element)
-			return false;
-		const QList<Terminal *> terminals = element->terminals();
-		if (terminals.size() != 2)
-			return false;
-		const auto horizontal = [](Qet::Orientation o) {
-			return o == Qet::East || o == Qet::West;
-		};
-		return horizontal(terminals.at(0)->orientation()) != horizontal(terminals.at(1)->orientation())
-			&& QLineF(terminals.at(0)->dockConductor(),
-				  terminals.at(1)->dockConductor()).length() <= 30;
-	}
-}
-
 /**
 	@brief Conductor::cornerChain
 	@return this conductor and those joined to it through corners only,
@@ -1707,7 +1684,7 @@ QList<Conductor *> Conductor::cornerChain()
 		Conductor *c = chain.at(i);
 		for (Terminal *end : {c->terminal1, c->terminal2})
 		{
-			if (!end || !isCorner(end->parentElement()))
+			if (!end || !end->parentElement() || !end->parentElement()->isCorner())
 				continue;
 			for (Terminal *other : end->parentElement()->terminals())
 				for (Conductor *next : other->conductors())
@@ -1728,6 +1705,17 @@ QList<Conductor *> Conductor::cornerChain()
 */
 void Conductor::updateDefinitionMark()
 {
+		//Taken off the folio: its terminals no longer list it, the run it
+		//was part of shows its stroke on another conductor
+	if (!scene()) {
+		delete m_definition_mark;
+		m_definition_mark = nullptr;
+		const QList<Conductor *> run = cornerChain();
+		for (Conductor *c : run)
+			if (c != this && c->scene())
+				c->updateDefinitionMark();
+		return;
+	}
 	const auto wants = [](const Conductor *c) {
 		return c->m_properties.m_definition_mark
 			&& c->m_properties.type == ConductorProperties::Multi;

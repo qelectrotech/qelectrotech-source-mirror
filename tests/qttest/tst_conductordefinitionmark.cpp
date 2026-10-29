@@ -29,6 +29,10 @@
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetmessagebox.h"
+#include "qetproject.h"
+#include "shownkinds.h"
+
+#include <QGraphicsSceneMouseEvent>
 
 #include <QDomDocument>
 
@@ -57,7 +61,7 @@ class TstConductorDefinitionMark : public QObject
 		{
 			ConductorProperties p = conductor->properties();
 			p.m_definition_mark = on;
-			p.m_definition_mark_pos = pos;
+			p.m_definition_mark_at = pos;
 			p.m_wire_color = QStringLiteral("BK");
 			p.m_wire_section = QStringLiteral("10");
 			conductor->setProperties(p);
@@ -115,17 +119,42 @@ class TstConductorDefinitionMark : public QObject
 		{
 			setMark(true, -1);
 			QVERIFY(mark());
-			setMark(true, 20);
-			QCOMPARE(mark()->distance(), 20.0);
+			setMark(true, 0.25);
+			QCOMPARE(mark()->distance(), 0.25 * m_conductor->length());
 			const QPointF on = mark()->pos();
 			const QPainterPath path = m_conductor->path();
 			QVERIFY2(path.boundingRect().adjusted(-1, -1, 1, 1).contains(on),
 				 "the stroke left the conductor");
 		}
 
-		void theTextMakesWayForTheStroke()
+			//The conductor text is often the wire number: it stays
+		void theTextStaysVisible()
 		{
-			QVERIFY(!m_conductor->textItem()->isVisible());
+			QVERIFY(m_conductor->textItem()->isVisible());
+		}
+
+			//A stroke only follows the wire numbers of View > Show
+		void hiddenWithTheWireNumbers()
+		{
+			ShownKinds::setShown(ShownKinds::WireNumbers, false);
+			ShownKinds::apply(m_conductor->scene(), ShownKinds::WireNumbers);
+			QVERIFY(!mark()->isVisible());
+			ShownKinds::setShown(ShownKinds::WireNumbers, true);
+			ShownKinds::apply(m_conductor->scene(), ShownKinds::WireNumbers);
+			QVERIFY(mark()->isVisible());
+		}
+
+			//On a read-only folio the stroke is not dragged
+		void notDraggedReadOnly()
+		{
+			Diagram *diagram = QetAppTest::diagram();
+			diagram->project()->setReadOnly(true);
+			QGraphicsSceneMouseEvent own(QEvent::GraphicsSceneMousePress);
+			own.setButton(Qt::LeftButton);
+			own.setAccepted(false);
+			diagram->sendEvent(mark(), &own);
+			QVERIFY(!own.isAccepted());
+			diagram->project()->setReadOnly(false);
 		}
 
 		void oneStrokeForARunTurnedByCorners()
@@ -143,6 +172,22 @@ class TstConductorDefinitionMark : public QObject
 			QVERIFY(!markOf(m_second));
 		}
 
+			//The conductor carrying the stroke taken off the folio: the
+			//rest of the run shows it
+		void runKeepsItsStrokeWhenOneGoes()
+		{
+			setMark(m_second, true, -1);
+			Conductor *shown = markOf(m_conductor) ? m_conductor : m_second;
+			Conductor *other = shown == m_conductor ? m_second : m_conductor;
+			QVERIFY(!markOf(other));
+			Diagram *diagram = QetAppTest::diagram();
+			diagram->removeItem(shown);
+			QVERIFY(markOf(other));
+			diagram->addItem(shown);
+			setMark(m_second, false, -1);
+			QVERIFY(markOf(m_conductor));
+		}
+
 		void savedWithTheConductor()
 		{
 			ConductorProperties p = m_conductor->properties();
@@ -153,12 +198,12 @@ class TstConductorDefinitionMark : public QObject
 			ConductorProperties read;
 			read.fromXml(element);
 			QVERIFY(read.m_definition_mark);
-			QCOMPARE(read.m_definition_mark_pos, 20.0);
+			QCOMPARE(read.m_definition_mark_at, 0.25);
 		}
 
 		void switchedOffItGoes()
 		{
-			setMark(false, 20);
+			setMark(false, 0.25);
 			QVERIFY(!mark());
 			QDomDocument document;
 			QDomElement element = document.createElement(QStringLiteral("conductor"));

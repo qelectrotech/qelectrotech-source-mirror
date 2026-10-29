@@ -22,6 +22,7 @@
 #include "../diagram.h"
 #include "conductor.h"
 #include "conductortextitem.h"
+#include "../shownkinds.h"
 
 #include <QFontMetricsF>
 #include <QGraphicsSceneMouseEvent>
@@ -39,6 +40,8 @@ ConductorDefinitionMark::ConductorDefinitionMark(Conductor *conductor) :
 	QGraphicsObject(conductor),
 	m_conductor(conductor)
 {
+		//Shown and hidden with the wire numbers (View > Show)
+	ShownKinds::tag(this, ShownKinds::WireNumbers);
 	setAcceptHoverEvents(true);
 	setCursor(Qt::SizeAllCursor);
 	setToolTip(tr("Drag along the conductor to move the colour and section"));
@@ -147,9 +150,9 @@ QList<QPointF> ConductorDefinitionMark::points() const
 */
 void ConductorDefinitionMark::refresh()
 {
-	const qreal wanted = m_conductor->ownProperties().m_definition_mark_pos;
+	const qreal wanted = m_conductor->ownProperties().m_definition_mark_at;
 	const QList<QPointF> list = points();
-	place(wanted < 0 ? defaultDistance(list) : qMin(wanted, length(list)));
+	place(wanted < 0 ? defaultDistance(list) : qBound<qreal>(0, wanted, 1) * length(list));
 }
 
 void ConductorDefinitionMark::place(qreal distance)
@@ -261,7 +264,8 @@ void ConductorDefinitionMark::paint(QPainter *painter,
 
 void ConductorDefinitionMark::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (event->button() != Qt::LeftButton) {
+	Diagram *diagram = m_conductor->diagram();
+	if (event->button() != Qt::LeftButton || (diagram && diagram->isReadOnly())) {
 		event->ignore();
 		return;
 	}
@@ -291,7 +295,9 @@ void ConductorDefinitionMark::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
 	const ConductorProperties old_properties = m_conductor->properties();
 	ConductorProperties new_properties = old_properties;
-	new_properties.m_definition_mark_pos = qRound(m_distance);
+	const qreal total = length(points());
+	new_properties.m_definition_mark_at = total > 0
+			? qRound(m_distance / total * 1000) / 1000.0 : -1;
 	auto *undo = new QPropertyUndoCommand(m_conductor, "properties",
 					      QVariant::fromValue(old_properties),
 					      QVariant::fromValue(new_properties));

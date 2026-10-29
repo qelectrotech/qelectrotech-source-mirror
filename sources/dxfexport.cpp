@@ -26,6 +26,7 @@
 #include "factory/elementpicturefactory.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/conductordefinitionmark.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/crossrefitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
@@ -329,6 +330,9 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 		//drawAsPlcTable), so instead of hand-porting each one it's replayed
 		//through DxfPaintEngine, which reuses paint() unmodified.
 	QList<CrossRefItem *> list_master_xrefs;
+		//The stroke with a conductor's colour and section, replayed through
+		//DxfPaintEngine like the cross-reference items
+	QList<ConductorDefinitionMark *> list_definition_marks;
 	QList<QLineF *> list_lines;
 	QList<QRectF *> list_rectangles;
 	//QList<QRectF *> list_ellipses;
@@ -363,6 +367,9 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			list_elements << elmt;
 		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
 			list_conductors << f;
+		} else if (auto *mark = qgraphicsitem_cast<ConductorDefinitionMark *>(qgi)) {
+			if (mark->isVisible())
+				list_definition_marks << mark;
 		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
 			list_texts << iti;
 		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
@@ -723,6 +730,16 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 	//actually turns the drawPixmap() call inside paint() into a
 	//placeholder outline, since this DXF dialect has no raster image
 	//entity to draw instead.
+	Createdxf::layer = Layer::Wires;
+	for (ConductorDefinitionMark *mark : std::as_const(list_definition_marks))
+	{
+		DxfPaintDevice dxf_device(file_path);
+		QPainter painter(&dxf_device);
+		painter.setWorldTransform(mark->sceneTransform());
+		mark->paint(&painter, nullptr, nullptr);
+		painter.end();
+	}
+
 	Createdxf::layer = Layer::Images;
 	for (DiagramImageItem *image : std::as_const(list_images))
 	{

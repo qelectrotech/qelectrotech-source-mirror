@@ -173,28 +173,28 @@
                </widget>
               </item>
               <item row="9" column="3">
-               <widget class="QLabel" name="m_definition_mark_pos_label">
+               <widget class="QLabel" name="m_definition_mark_at_label">
                 <property name="text">
                  <string>From the start :</string>
                 </property>
                </widget>
               </item>
               <item row="9" column="4">
-               <widget class="QSpinBox" name="m_definition_mark_pos_sb">
+               <widget class="QSpinBox" name="m_definition_mark_at_sb">
                 <property name="toolTip">
-                 <string>How far from the conductor's start the stroke stands. "Middle": the middle of its longest stretch.</string>
+                 <string>Where the stroke stands, as a share of the conductor's length from its start. "Middle": the middle of its longest stretch.</string>
                 </property>
                 <property name="specialValueText">
                  <string>Middle</string>
                 </property>
                 <property name="suffix">
-                 <string> px</string>
+                 <string> %</string>
                 </property>
                 <property name="minimum">
                  <number>-1</number>
                 </property>
                 <property name="maximum">
-                 <number>100000</number>
+                 <number>100</number>
                 </property>
                 <property name="singleStep">
                  <number>5</number>

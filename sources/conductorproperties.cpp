@@ -334,7 +334,7 @@ QList<QPair<QString, QString>> ConductorProperties::attributes() const
 		//Only written when shown: a project without marks stays as it was
 	if (m_definition_mark) {
 		add("definition_mark", QStringLiteral("1"));
-		add("definition_mark_pos", QString::number(m_definition_mark_pos));
+		add("definition_mark_at", QString::number(m_definition_mark_at));
 	}
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
@@ -399,8 +399,8 @@ void ConductorProperties::fromXml(QDomElement &e)
 	verti_rotate_text    = e.attribute("vertirotatetext").toDouble();
 	horiz_rotate_text    = e.attribute("horizrotatetext").toDouble();
 	m_definition_mark    = e.attribute("definition_mark").toInt();
-	m_definition_mark_pos = e.attribute("definition_mark_pos", QStringLiteral("-1")).toDouble();
-	if (!qIsFinite(m_definition_mark_pos)) m_definition_mark_pos = -1;
+	m_definition_mark_at = e.attribute("definition_mark_at", QStringLiteral("-1")).toDouble();
+	if (!qIsFinite(m_definition_mark_at) || m_definition_mark_at > 1) m_definition_mark_at = -1;
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	m_horizontal_alignment = Qt::Alignment(
@@ -553,7 +553,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_horizontal_alignment = cp.m_horizontal_alignment;
 		style                = cp.style;
 		m_definition_mark    = cp.m_definition_mark;
-		m_definition_mark_pos = cp.m_definition_mark_pos;
+		m_definition_mark_at = cp.m_definition_mark_at;
 
 		return;
 	}
@@ -766,14 +766,14 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_definition_mark = b_value;
 	equal = true;
 
-	d_value = clist.first().m_definition_mark_pos;
+	d_value = clist.first().m_definition_mark_at;
 	for(ConductorProperties cp : clist)
 	{
-		if (cp.m_definition_mark_pos != d_value)
+		if (cp.m_definition_mark_at != d_value)
 			equal = false;
 	}
 	if (equal)
-		m_definition_mark_pos = d_value;
+		m_definition_mark_at = d_value;
 	equal = true;
 
 		//One text per folio
@@ -874,7 +874,7 @@ void ConductorProperties::applyChanges(const ConductorProperties &before,
 	take(m_horizontal_alignment, before.m_horizontal_alignment, after.m_horizontal_alignment);
 	take(m_vertical_alignment,   before.m_vertical_alignment,   after.m_vertical_alignment);
 	take(m_definition_mark,      before.m_definition_mark,      after.m_definition_mark);
-	take(m_definition_mark_pos,  before.m_definition_mark_pos,  after.m_definition_mark_pos);
+	take(m_definition_mark_at,  before.m_definition_mark_at,  after.m_definition_mark_at);
 
 		//Single-line symbols, one by one
 	SingleLineProperties slp_before = before.singleLineProperties;
@@ -961,7 +961,7 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 		other.m_horizontal_alignment == m_horizontal_alignment &&\
 		other.m_vertical_alignment == m_vertical_alignment &&\
 		other.m_definition_mark == m_definition_mark &&\
-		other.m_definition_mark_pos == m_definition_mark_pos
+		other.m_definition_mark_at == m_definition_mark_at
 	);
 }
 

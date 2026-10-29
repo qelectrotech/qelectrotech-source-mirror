@@ -859,6 +859,9 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	m_kind_informations.fromXml(
 				xml_def_elmt.firstChildElement(QStringLiteral("kindInformations")),
 				QStringLiteral("kindInformation"));
+	m_corner = m_kind_informations.value(QStringLiteral("corner")).toString() == QLatin1String("true")
+		|| QUuid(xml_def_elmt.firstChildElement(QStringLiteral("uuid")).attribute(QStringLiteral("uuid")))
+			== QUuid(QStringLiteral("{b4bba5d9-a60d-8f6c-a61d-1b18a5c9397d}")); //114_connections/corner.elmt
 		//load element information
 	m_data.m_informations.fromXml(
 				xml_def_elmt.firstChildElement(QStringLiteral("elementInformations")),
