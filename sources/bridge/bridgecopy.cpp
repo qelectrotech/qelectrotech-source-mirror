@@ -19,6 +19,7 @@
 
 #include "addbridgecommand.h"
 #include "bridge.h"
+#include "bridgecreatedialog.h"
 #include "bridgepart.h"
 #include "bridgemanager.h"
 #include "../diagram.h"
@@ -202,9 +203,29 @@ QList<QUndoCommand *> BridgeCopy::land(Diagram *diagram, Bridge *bridge)
 	const int column = BridgeManager::freeColumn(project, after);
 	const bool refused = (added && bridge->wouldExceed(added))
 			|| !strips.isEmpty() || !column;
+
+		//What the bridge carries as information follows the terminals:
+		//where what it would land on does not agree with what the copy
+		//brings, the user is asked which the bridge takes -- and
+		//cancelling calls this bridge off: what is not wanted is not
+		//written, and nothing arrives.
+	BridgeInformation information_after{carried};
 	if (!refused) {
+		QList<BridgeInformation> candidates =
+				BridgeManager::informationSets(project, after);
+		candidates.prepend(BridgeInformation{carried});
+		bool take_information = false;
+		information_after = BridgeCreateDialog::askForInformation(
+					candidates, &take_information,
+					diagram->views().isEmpty()
+					? nullptr : diagram->views().constFirst());
+		if (!take_information) {
+			BridgeCopy::discard(diagram, bridge);
+			return commands;
+		}
 		bridge->setColumn(column);
 		bridge->setTerminals(after);
+		bridge->setTensionText(information_after.tension);
 	}
 
 		//One step for the whole of it: the lines of the unit and what
@@ -223,11 +244,17 @@ QList<QUndoCommand *> BridgeCopy::land(Diagram *diagram, Bridge *bridge)
 		auto *command = new AddBridgeCommand(bridge, item, diagram, true,
 											QList<BridgeTerminal>(),
 											BridgeInformation{carried},
-											BridgeInformation{carried});
+											information_after);
 		if (!first) {
 			first = command;
+				//A reference which has come to this bridge finds the
+				//one on the other sheet: they link with the change
+			BridgeManager::pairReferences(project, bridge, command);
+				//Bridge and wires say the same thing: what the bridge
+				//carries goes onto the wires it sits on, in the very
+				//same undo step
 			BridgeManager::writeInformation(project, bridge->terminals(),
-											BridgeInformation{carried}, command);
+											information_after, command);
 		}
 		commands << command;
 	}

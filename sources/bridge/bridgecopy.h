@@ -67,7 +67,11 @@ namespace BridgeCopy
 			What the rules of a bridge refuse (its limit, its
 			Klemmleiste, the tracks already run in) leaves the line
 			standing where it is, landing on nothing until the hand
-			pulls it into a place it may be built.
+			pulls it into a place it may be built. What the bridge
+			carries as information follows the terminals it lands on:
+			where they do not agree with what the copy brings, the
+			user is asked which the bridge takes -- and cancelling
+			calls the bridge off whole.
 		*/
 	QList<QUndoCommand *> land(Diagram *diagram, Bridge *bridge);
 

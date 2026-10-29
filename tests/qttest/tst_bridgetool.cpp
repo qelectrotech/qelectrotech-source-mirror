@@ -1977,6 +1977,7 @@ private slots:
 			//What is copied travels beside the folio's own drawing
 		QDomDocument clipboard;
 		clipboard.appendChild(clipboard.createElement(QStringLiteral("diagram")));
+		const QString carried = bridge->tensionText();
 		BridgeCopy::write(folio, clipboard);
 		QVERIFY(!clipboard.documentElement()
 					 .firstChildElement(QStringLiteral("bridge_copies")).isNull());
@@ -1991,6 +1992,9 @@ private slots:
 		QCOMPARE(copy->color(), QColor(Qt::red));
 		QCOMPARE(copy->maxConnections(), 3);
 		QCOMPARE(copy->name(), QStringLiteral("B1"));
+			//What the copy was made of says what it is: the voltage the
+			//bridge carried comes with it
+		QCOMPARE(copy->tensionText(), carried);
 		QCOMPARE(copy->parts().size(), 1);
 
 		QList<QUndoCommand *> commands = BridgeCopy::land(folio, copy);
