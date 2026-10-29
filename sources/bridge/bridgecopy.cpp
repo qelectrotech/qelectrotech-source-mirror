@@ -146,6 +146,31 @@ QList<Bridge *> BridgeCopy::read(Diagram *diagram, const QDomElement &root)
 	@param bridge
 	@return the commands which put the lines of @p bridge down
 */
+/**
+	@brief BridgeCopy::discard
+	Take a pasted bridge back off the folio before anything was written
+	for it: the placement was called off or never finished, so there is
+	nothing on the undo stack to take it away.
+	@param diagram
+	@param bridge
+*/
+void BridgeCopy::discard(Diagram *diagram, Bridge *bridge)
+{
+	if (!bridge) {
+		return;
+	}
+	const QList<BridgePart *> parts = BridgePart::allParts();
+	for (BridgePart *part : parts) {
+		if (part && part->bridge() == bridge) {
+			if (diagram && part->scene() == diagram) {
+				diagram->removeItem(part);
+			}
+			delete part;
+		}
+	}
+	delete bridge;
+}
+
 QList<QUndoCommand *> BridgeCopy::land(Diagram *diagram, Bridge *bridge)
 {
 	QList<QUndoCommand *> commands;
@@ -160,9 +185,13 @@ QList<QUndoCommand *> BridgeCopy::land(Diagram *diagram, Bridge *bridge)
 	const QList<BridgeTerminal> after =
 			BridgeManager::terminalsOfBridge(project, bridge);
 
-		//What the rules of a bridge refuse leaves the line standing
-		//where it is: it lands on nothing until the hand pulls it into
-		//a place it may be built
+		//What the rules of a bridge refuse -- its limit, its
+		//Klemmleiste, the tracks already run in -- leaves the line
+		//standing where it is, landing on nothing until the hand pulls
+		//it into a place it may be built. It is still a bridge of its
+		//own, held by the project and taken away by one undo like any
+		//other: what is pasted never stays behind without a step to
+		//account for it.
 	int added = 0;
 	for (const BridgeTerminal &terminal : after) {
 		if (!terminal.reference && !bridge->hasTerminal(terminal)) {
@@ -171,12 +200,12 @@ QList<QUndoCommand *> BridgeCopy::land(Diagram *diagram, Bridge *bridge)
 	}
 	const QStringList strips = BridgeManager::clashingStrips(project, after);
 	const int column = BridgeManager::freeColumn(project, after);
-	if ((added && bridge->wouldExceed(added)) || !strips.isEmpty() || !column) {
-		return commands;
+	const bool refused = (added && bridge->wouldExceed(added))
+			|| !strips.isEmpty() || !column;
+	if (!refused) {
+		bridge->setColumn(column);
+		bridge->setTerminals(after);
 	}
-
-	bridge->setColumn(column);
-	bridge->setTerminals(after);
 
 		//One step for the whole of it: the lines of the unit and what
 		//the circle says of itself

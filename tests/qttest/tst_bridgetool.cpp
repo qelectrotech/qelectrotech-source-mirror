@@ -1838,6 +1838,67 @@ private slots:
 				 "the original keeps its end");
 	}
 
+	//A copy whose landing the rules of a bridge refuse -- here one
+	//terminal more than the bridge may hold -- still arrives as a
+	//bridge of its own: the line stands where it was put down, lands
+	//on nothing until the hand pulls it into a place it may be built,
+	//and one undo takes it away like any other
+	void aRefusedCopyStillStandsAndUndoes()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
+
+		Bridge *bridge = project.newBridge();
+		bridge->setMaxConnections(2);
+		bridge->setTensionText(QStringLiteral("24 V"));
+		bridge->addTerminal(terminalOf(terminals.at(0)));
+		bridge->addTerminal(terminalOf(terminals.at(1)));
+		const QPointF at = terminals.at(0)->element()->terminals().first()->dockConductor();
+		BridgePartData data;
+		data.uuid = QUuid::createUuid();
+		data.diagram = folio->uuid();
+		data.p1 = at;
+		data.p2 = at + QPointF(120, 0);
+		bridge->addPart(data);
+		auto *item = new BridgePart(data);
+		item->setBridge(bridge);
+		folio->addItem(item);
+		item->setSelected(true);
+
+		QDomDocument clipboard;
+		clipboard.appendChild(clipboard.createElement(QStringLiteral("diagram")));
+		BridgeCopy::write(folio, clipboard);
+		const QList<Bridge *> built =
+				BridgeCopy::read(folio, clipboard.documentElement());
+		QCOMPARE(built.size(), 1);
+		Bridge *copy = built.first();
+
+			//The line crosses three terminals and the copy may hold two:
+			//that landing is not one which can be built
+		QList<QUndoCommand *> commands = BridgeCopy::land(folio, copy);
+		QVERIFY2(!commands.isEmpty(),
+				 "a refused paste is written down all the same");
+		for (QUndoCommand *command : std::as_const(commands)) {
+			folio->undoStack().push(command);
+		}
+
+		const int bridges_before = project.bridges().size();
+		QCOMPARE(bridges_before, project.bridges().count(bridge) + 1);
+		QVERIFY(project.bridges().contains(copy));
+		QCOMPARE(copy->klemmCount(), 0);
+
+			//And one undo takes the standing line away again
+		for (int i = commands.size() ; i ; --i) {
+			folio->undoStack().undo();
+		}
+		QVERIFY(!project.bridges().contains(copy));
+	}
+
 	//However a line is moved about -- a paste puts it down elsewhere, a
 	//duplicate stamps it at an offset, the hand drags it -- the line
 	//itself goes along

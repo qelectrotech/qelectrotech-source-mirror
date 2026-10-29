@@ -70,6 +70,13 @@ namespace BridgeCopy
 			pulls it into a place it may be built.
 		*/
 	QList<QUndoCommand *> land(Diagram *diagram, Bridge *bridge);
+
+		/**
+			Take a pasted bridge back off the folio before anything was
+			written for it -- the placement was called off or never
+			finished, so there is no step to take it away.
+		*/
+	void discard(Diagram *diagram, Bridge *bridge);
 }
 
 #endif // BRIDGECOPY_H
