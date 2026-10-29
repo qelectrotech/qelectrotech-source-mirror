@@ -25475,6 +25475,14 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
         <source>Measure distance and angle between points</source>
         <translation>Abstand und Winkel zwischen Punkten messen</translation>
     </message>
+    <message>
+        <source>Clear measurements</source>
+        <translation>Messungen löschen</translation>
+    </message>
+    <message>
+        <source>Clear all tape measurements from the editor</source>
+        <translation>Alle Maßband-Messungen aus dem Editor löschen</translation>
+    </message>
 </context>
 <context>
     <name>ESEventMeasure</name>

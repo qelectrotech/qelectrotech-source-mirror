@@ -31,6 +31,10 @@ ElementMeasureItem::ElementMeasureItem(const QPointF &p1, const QPointF &p2, QGr
 	m_p2(p2)
 {
 	setZValue(1000.0); // Keep on top of element graphics
+	setAcceptedMouseButtons(Qt::NoButton);
+	setFlag(QGraphicsItem::ItemIsSelectable, false);
+	setFlag(QGraphicsItem::ItemIsMovable, false);
+	setFlag(QGraphicsItem::ItemIsFocusable, false);
 }
 
 void ElementMeasureItem::setP1(const QPointF &p1)

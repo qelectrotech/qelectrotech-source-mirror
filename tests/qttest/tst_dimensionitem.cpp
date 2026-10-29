@@ -23,6 +23,7 @@
 #include "ui/dimensionpropertiesdialog.h"
 #include "editor/esevent/elementmeasureitem.h"
 #include "editor/esevent/eseventmeasure.h"
+#include "editor/esevent/eseventaddline.h"
 #include "editor/elementscene.h"
 #include <QImage>
 #include <QPainter>
@@ -65,6 +66,7 @@ class tst_DimensionItem : public QObject
 	void testFramedBoxPainting();
 	void testElementMeasureItemZoomScaling();
 	void testElementEditorMeasureTeardown();
+	void testElementMeasurePersistenceAcrossToolSwitchAndXml();
 	void testTextRotationAndArrowSizeMax();
 };
 
@@ -899,6 +901,58 @@ void tst_DimensionItem::testElementEditorMeasureTeardown()
 	auto *measureTool2 = new ESEventMeasure(&scene);
 	scene.setEventInterface(measureTool2);
 	// scene goes out of scope here: destructor cleans up interface safely
+}
+
+void tst_DimensionItem::testElementMeasurePersistenceAcrossToolSwitchAndXml()
+{
+	ElementScene scene(nullptr, nullptr);
+	auto *measureTool = new ESEventMeasure(&scene);
+	scene.setEventInterface(measureTool);
+
+	// P1: (20, 20)
+	QGraphicsSceneMouseEvent press1(QEvent::GraphicsSceneMousePress);
+	press1.setButton(Qt::LeftButton);
+	press1.setScenePos(QPointF(20, 20));
+	measureTool->mousePressEvent(&press1);
+
+	QCOMPARE(scene.hasMeasureItems(), true);
+	QCOMPARE(scene.measureItems().count(), 1);
+	ElementMeasureItem *measureItem = scene.measureItems().first();
+	QVERIFY(measureItem != nullptr);
+	QCOMPARE(measureItem->isFinished(), false);
+
+	// P2: (100, 20) -> distance = 80 px = 40 mm
+	QGraphicsSceneMouseEvent press2(QEvent::GraphicsSceneMousePress);
+	press2.setButton(Qt::LeftButton);
+	press2.setScenePos(QPointF(100, 20));
+	measureTool->mousePressEvent(&press2);
+
+	QCOMPARE(measureItem->isFinished(), true);
+	QCOMPARE(measureItem->lengthMM(), 40.0);
+	QCOMPARE(measureItem->deltaXMM(), 40.0);
+	QCOMPARE(measureItem->deltaYMM(), 0.0);
+
+	// Switch to line tool (simulates user selecting line tool to draw element)
+	auto *lineTool = new ESEventAddLine(&scene);
+	scene.setEventInterface(lineTool);
+
+	// Pinned measurement MUST persist in the scene as reference guide!
+	QCOMPARE(scene.hasMeasureItems(), true);
+	QCOMPARE(scene.measureItems().count(), 1);
+	QCOMPARE(scene.measureItems().first(), measureItem);
+
+	// XML export must NEVER save measurement items into element file
+	QDomDocument doc = scene.toXml();
+	QDomElement desc = doc.documentElement().firstChildElement("description");
+	QCOMPARE(desc.childNodes().count(), 0);
+
+	// Element geometric rect must ignore the measurement item
+	QVERIFY(scene.elementSceneGeometricRect().isEmpty());
+
+	// Clear measurements explicitly
+	scene.clearMeasureItems();
+	QCOMPARE(scene.hasMeasureItems(), false);
+	QCOMPARE(scene.measureItems().count(), 0);
 }
 
 void tst_DimensionItem::testTextRotationAndArrowSizeMax()

@@ -48,21 +48,6 @@ ESEventMeasure::~ESEventMeasure()
 		delete m_current_measure;
 		m_current_measure = nullptr;
 	}
-
-	clearAllMeasurements();
-}
-
-void ESEventMeasure::clearAllMeasurements()
-{
-	for (ElementMeasureItem *item : m_pinned_measures) {
-		if (item) {
-			if (item->scene()) {
-				item->scene()->removeItem(item);
-			}
-			delete item;
-		}
-	}
-	m_pinned_measures.clear();
 }
 
 void ESEventMeasure::updateStatusMessage(const QPointF &p1, const QPointF &p2)
@@ -104,7 +89,6 @@ bool ESEventMeasure::mousePressEvent(QGraphicsSceneMouseEvent *event)
 			if (m_current_measure) {
 				m_current_measure->setP2(pos);
 				m_current_measure->setFinished(true);
-				m_pinned_measures.append(m_current_measure);
 				updateStatusMessage(m_current_measure->p1(), pos);
 				m_current_measure = nullptr;
 			}
@@ -123,8 +107,8 @@ bool ESEventMeasure::mousePressEvent(QGraphicsSceneMouseEvent *event)
 					tr("Tape measure: Click to set the first reference point (P1), Esc to exit"));
 			}
 			return true;
-		} else if (!m_pinned_measures.isEmpty()) {
-			clearAllMeasurements();
+		} else if (m_scene && m_scene->hasMeasureItems()) {
+			m_scene->clearMeasureItems();
 			if (m_editor && m_editor->statusBar()) {
 				m_editor->statusBar()->showMessage(tr("Measurements cleared"));
 			}
@@ -173,8 +157,8 @@ bool ESEventMeasure::keyPressEvent(QKeyEvent *event)
 					tr("Tape measure: Click to set the first reference point (P1), Esc to exit"));
 			}
 			return true;
-		} else if (!m_pinned_measures.isEmpty()) {
-			clearAllMeasurements();
+		} else if (m_scene && m_scene->hasMeasureItems()) {
+			m_scene->clearMeasureItems();
 			if (m_editor && m_editor->statusBar()) {
 				m_editor->statusBar()->showMessage(
 					tr("Measurements cleared. Press Esc again to exit"));

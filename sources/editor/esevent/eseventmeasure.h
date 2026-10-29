@@ -49,11 +49,9 @@ class ESEventMeasure : public ESEventInterface
 
 	private:
 		void updateStatusMessage(const QPointF &p1, const QPointF &p2);
-		void clearAllMeasurements();
 
 		QPointer<QAction> m_action;
 		ElementMeasureItem *m_current_measure = nullptr;
-		QList<ElementMeasureItem *> m_pinned_measures;
 		bool m_in_first_click = true;
 };
 

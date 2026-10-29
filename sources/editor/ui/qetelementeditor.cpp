@@ -117,6 +117,10 @@ void QETElementEditor::contextMenu(QPoint p, QList<QAction *> actions)
 {
 	QMenu menu(this);
 	menu.addActions(std::move(actions));
+	if (m_elmt_scene && m_elmt_scene->hasMeasureItems() && m_clear_measure_action) {
+		menu.addSeparator();
+		menu.addAction(m_clear_measure_action);
+	}
 	menu.addSeparator();
 	menu.addAction(m_undo_action);
 	menu.addAction(m_redo_action);
@@ -1226,6 +1230,19 @@ void QETElementEditor::setupActions()
 
 	ShortcutManager::instance().registerAction(m_tape_measure_action, "elementeditor.tape_measure", tr("Element editors"), QKeySequence(Qt::Key_M));
 	ui->m_edit_menu->addAction(m_tape_measure_action);
+
+	m_clear_measure_action = new QAction(tr("Clear measurements"), this);
+	m_clear_measure_action->setStatusTip(tr("Clear all tape measurements from the editor"));
+	connect(m_clear_measure_action, &QAction::triggered, [this]() {
+		if (m_elmt_scene) {
+			m_elmt_scene->clearMeasureItems();
+			if (statusBar()) {
+				statusBar()->showMessage(tr("Measurements cleared"), 3000);
+			}
+		}
+	});
+	ui->m_edit_menu->addAction(m_clear_measure_action);
+
 	parts_toolbar->addSeparator();
 	parts_toolbar->addAction(m_tape_measure_action);
 	addToolBar(Qt::LeftToolBarArea, parts_toolbar);
