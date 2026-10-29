@@ -220,9 +220,7 @@ QStringList DiagramToolbarSettings::defaultIds(const QString &name)
 			QStringLiteral("diagrameditor.add_path"),
 			QStringLiteral("diagrameditor.add_fillet"),
 			QStringLiteral("diagrameditor.add_terminal_strip"),
-			QStringLiteral("diagrameditor.add_generic_device"),
-			QStringLiteral("diagrameditor.add_dimension_linear"),
-			QStringLiteral("diagrameditor.add_dimension_chain")};
+			QStringLiteral("diagrameditor.add_generic_device")};
 	}
 	if (name == QLatin1String("diagram_depth_toolbar")) {
 		return {QStringLiteral("depth.forward"),

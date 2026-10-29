@@ -282,6 +282,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_terminal_strip_bridges = nullptr,	///< Draw the strips' bridges between their terminals
 		*m_crosshair,			///< Show the folio-wide crosshair
 		*m_add_cable = nullptr,		///< Draw the trunk line of a cable
+		*m_add_dimension_linear = nullptr,  ///< Add linear dimension
+		*m_add_dimension_chain = nullptr,   ///< Add chain dimension
 		*m_draw_grid,			///< Switch the background grid display or not
 		*m_draw_guides = nullptr,	///< Switch the custom guides display or not
 		*m_cell_rulers = nullptr,	///< Keep the folio column/row headers in sight or not

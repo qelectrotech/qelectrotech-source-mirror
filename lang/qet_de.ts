@@ -12302,6 +12302,26 @@ Verfügbare Optionen:
 <context>
     <name>QETDiagramEditor</name>
     <message>
+        <source>Tape measure</source>
+        <translation>Maßband</translation>
+    </message>
+    <message>
+        <source>Add linear dimension</source>
+        <translation>Lineare Bemaßung</translation>
+    </message>
+    <message>
+        <source>Add chain dimension</source>
+        <translation>Kettenbemaßung</translation>
+    </message>
+    <message>
+        <source>Adds a linear dimension to the current sheet</source>
+        <translation>Fügt dem aktuellen Folio eine lineare Bemaßung hinzu</translation>
+    </message>
+    <message>
+        <source>Adds a chain dimension to the current sheet</source>
+        <translation>Fügt dem aktuellen Folio eine Kettenbemaßung hinzu</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="538"/>
         <source>Place symbol texts</source>
         <translation>Symboltexte platzieren</translation>

@@ -1595,8 +1595,8 @@ void QETDiagramEditor::setUpActions()
 		//Not an element of the drawing but a line drawn across the
 		//conductors: what it crosses becomes the cores of a cable.
 	m_add_cable		   = m_add_item_actions_group.addAction(QET::Icons::Cable,      tr("Draw a cable"));
-	QAction *add_dimension_linear = m_add_item_actions_group.addAction(QET::Icons::DimensionLinear, tr("Add linear dimension"));
-	QAction *add_dimension_chain  = m_add_item_actions_group.addAction(QET::Icons::DimensionChain,  tr("Add chain dimension"));
+	m_add_dimension_linear = m_add_item_actions_group.addAction(QET::Icons::DimensionLinear, tr("Add linear dimension"));
+	m_add_dimension_chain  = m_add_item_actions_group.addAction(QET::Icons::DimensionChain,  tr("Add chain dimension"));
 
 	add_text     ->setStatusTip(tr("Adds a text field to the current sheet"));
 	add_image    ->setStatusTip(tr("Add an image to the current sheet"));
@@ -1613,8 +1613,8 @@ void QETDiagramEditor::setUpActions()
 	add_terminal_strip->setStatusTip(tr("Adds a terminal plan to the current sheet"));
 	add_generic_device->setStatusTip(tr("Makes a box symbol with terminals on any side and places it on the current sheet"));
 	m_add_cable     ->setStatusTip(tr("Draws the main line of a cable: every conductor crossed becomes one of its cores"));
-	add_dimension_linear->setStatusTip(tr("Adds a linear dimension to the current sheet"));
-	add_dimension_chain ->setStatusTip(tr("Adds a chain dimension to the current sheet"));
+	m_add_dimension_linear->setStatusTip(tr("Adds a linear dimension to the current sheet"));
+	m_add_dimension_chain ->setStatusTip(tr("Adds a chain dimension to the current sheet"));
 
 	add_text     ->setData(QStringLiteral("text"));
 	add_image    ->setData(QStringLiteral("image"));
@@ -1631,8 +1631,8 @@ void QETDiagramEditor::setUpActions()
 	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
 	add_generic_device->setData(QStringLiteral("generic_device"));
 	m_add_cable     ->setData(QStringLiteral("cable"));
-	add_dimension_linear->setData(QStringLiteral("dimension_linear"));
-	add_dimension_chain ->setData(QStringLiteral("dimension_chain"));
+	m_add_dimension_linear->setData(QStringLiteral("dimension_linear"));
+	m_add_dimension_chain ->setData(QStringLiteral("dimension_chain"));
 
 	add_text->setCheckable(true);
 	add_line->setCheckable(true);
@@ -1643,8 +1643,8 @@ void QETDiagramEditor::setUpActions()
 	add_path->setCheckable(true);
 	m_add_cable->setCheckable(true);
 	add_fillet->setCheckable(true);
-	add_dimension_linear->setCheckable(true);
-	add_dimension_chain->setCheckable(true);
+	m_add_dimension_linear->setCheckable(true);
+	m_add_dimension_chain->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
 		//No default key, but an id: they can then be found by the command
@@ -1873,6 +1873,9 @@ void QETDiagramEditor::setUpMenu()
 	m_add_item_menu = menu_edition -> addMenu(tr("&Add"));
 	m_add_item_menu -> setIcon(QET::Icons::Add);
 	m_add_item_menu -> addActions(m_add_item_actions_group.actions());
+	QMenu *tape_menu = menu_edition -> addMenu(QET::Icons::DimensionLinear, tr("Tape measure"));
+	tape_menu -> addAction(m_add_dimension_linear);
+	tape_menu -> addAction(m_add_dimension_chain);
 	menu_edition -> addSeparator();
 		//The menu had grown to over forty entries and no longer fitted on a
 		//laptop screen (issue #1336). Whole families now sit one level down,
