@@ -4390,10 +4390,24 @@ bool QetScriptApi::placeElementTexts(int folioIndex, const QStringList &elementU
 		log(QStringLiteral("qet.placeElementTexts: unknown point '%1'").arg(where));
 		return false;
 	}
+	const QList<Diagram *> diagrams = m_project->folios();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) {
+		log(QStringLiteral("qet.placeElementTexts: no folio %1").arg(folioIndex));
+		return false;
+	}
+		//The folio's symbols looked up once, not once per uuid
+	QHash<QString, Element *> on_folio;
+	const DiagramContent content(built(diagrams.at(folioIndex)), false);
+	for (Element *elmt : std::as_const(content.m_elements))
+		on_folio.insert(elmt->uuid().toString(), elmt);
 	QList<Element *> elements;
 	for (const QString &uuid : elementUuids) {
-		Element *element = findElement(folioIndex, uuid);
-		if (!element) return false;
+		Element *element = on_folio.value(uuid);
+		if (!element) {
+			log(QStringLiteral("qet.placeElementTexts: no symbol %1 on folio %2")
+				.arg(uuid).arg(folioIndex));
+			return false;
+		}
 		elements << element;
 	}
 	QUndoCommand *cmd = SymbolTextPlacement::place(elements, points.value(where));

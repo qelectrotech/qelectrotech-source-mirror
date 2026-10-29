@@ -1638,6 +1638,11 @@ OPS = {
                                                        ("value", "str")]),
     "delete_element_text": ("deleteElementText",      [("folio", "folio"), ("element", "elmt"),
                                                        ("index", "element_text")]),
+    # The label and notes of each symbol as one block at one of nine points
+    # around it (Edit > Place symbol texts): top-left, top, top-right,
+    # left, center, right, bottom-left, bottom, bottom-right.
+    "place_element_texts": ("placeElementTexts",      [("folio", "folio"), ("elements", "elmts"),
+                                                       ("where", "str")]),
     # Returns the uuids of the copies IN THE ORDER the elements were named,
     # so "$copies[0]" is the copy of the first one. Conductors between the
     # copied elements are copied with them; copies arrive without labels or
@@ -5293,6 +5298,10 @@ TOOLS = [
                         "shape's points can reorder it relative to the others -- re-list "
                         "before addressing one by index again if more than one is being "
                         "edited in the same run, or address it by uuid. "
+                        "place_element_texts (folio, elements, where: top-left, top, "
+                        "top-right, left, center, right, bottom-left, bottom or bottom-right) "
+                        "puts each symbol's label and notes as one block at that point, as "
+                        "Edit > Place symbol texts does, in one undo step. "
                         "set_table_position/delete_table take a table's index or its uuid, "
                         "and set_element_text/delete_element_text a text field's index or "
                         "its uuid (the field's own, looked up within the op's element) "
