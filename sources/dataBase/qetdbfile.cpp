@@ -526,6 +526,78 @@ bool recordRevision(const QString &saving, const QString &previous, QString *err
 	return ok;
 }
 
+	//@p to written as @p from with @p edit made to it, as a save writes a
+	//file: a new one in its place, checked and on disk before it replaces
+	//anything, so that a previous version sharing @p to's bytes is not
+	//changed. @p refinish: its content changed, so it is normalized and its
+	//digest written again (finish(); @p edit drops qet_format)
+bool rewrite(const QString &from, const QString &to, const std::function<bool(Sqlite &, QString *)> &edit,
+			 bool refinish, QString *error)
+{
+	const QString saving = to + QStringLiteral(".saving");
+	QFile::remove(saving);
+	if (!QFile::copy(from, saving)) {
+		if (error) *error = QObject::tr("the file could not be written");
+		return false;
+	}
+	QFile::setPermissions(saving, QFile::permissions(saving) | QFile::WriteOwner);
+	bool ok = check(saving, error);
+	if (ok) {
+		Sqlite file(saving, true);
+		ok = edit(file, error);
+	}
+	ok = ok && (!refinish || finish(saving, error)) && check(saving, error) && flushFile(saving)
+			&& replace(saving, to, error);
+	if (!ok) QFile::remove(saving);
+	return ok;
+}
+
+	//@p file as it was at its revision @p ord: the changes of every save
+	//after it undone, newest first, and those revisions dropped. Fails if
+	//one of them has no changes recorded or does not undo cleanly
+bool windBack(Sqlite &file, qint64 ord, QString *error)
+{
+	if (file.select(QStringLiteral("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'revision'")).isEmpty()
+			|| file.select(QStringLiteral("SELECT 1 FROM revision WHERE ord = ?"), {ord}).isEmpty()) {
+		if (error) *error = QObject::tr("it keeps no revision %1").arg(ord);
+		return false;
+	}
+	const auto fail = [&file, error](const QString &why) {
+		if (error) *error = why;
+		file.exec(QStringLiteral("ROLLBACK"));
+		return false;
+	};
+	if (!file.exec(QStringLiteral("BEGIN"))) return fail(file.error());
+	for (const QVariantList &row : file.select(QStringLiteral(
+			"SELECT r.ord, c.changeset FROM revision r LEFT JOIN revision_changes c ON c.revision = r.uuid "
+			"WHERE r.ord > ? ORDER BY r.ord DESC"), {ord})) {
+		if (row.value(1).isNull())
+			return fail(QObject::tr("the changes of revision %1 were not recorded").arg(row.value(0).toString()));
+		QByteArray changeset = qUncompress(row.value(1).toByteArray());
+		int size = 0;
+		void *inverse = nullptr;
+		if (sqlite3changeset_invert(int(changeset.size()), changeset.data(), &size, &inverse) != SQLITE_OK)
+			return fail(QObject::tr("revision %1 cannot be undone").arg(row.value(0).toString()));
+		int conflicts = 0;
+		const int applied = sqlite3changeset_apply(
+				file.db(), size, inverse, nullptr,
+				[](void *context, int, sqlite3_changeset_iter *) {
+					++*static_cast<int *>(context);
+					return SQLITE_CHANGESET_ABORT;
+				}, &conflicts);
+		sqlite3_free(inverse);
+		if (applied != SQLITE_OK || conflicts)
+			return fail(QObject::tr("revision %1 does not undo cleanly").arg(row.value(0).toString()));
+	}
+	if (!file.run(QStringLiteral("DELETE FROM revision_changes WHERE revision IN "
+								 "(SELECT uuid FROM revision WHERE ord > ?)"), {ord})
+			|| !file.run(QStringLiteral("DELETE FROM revision WHERE ord > ?"), {ord})
+			|| !file.exec(QStringLiteral("DROP TABLE qet_format"))
+			|| !file.exec(QStringLiteral("COMMIT")))
+		return fail(file.error());
+	return true;
+}
+
 } // namespace
 
 /**
@@ -673,16 +745,8 @@ bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error
 */
 bool QetDbFile::setHistory(const QString &path, bool on, QString *error)
 {
-	const QString saving = path + QStringLiteral(".saving");
-	QFile::remove(saving);
-	if (!QFile::copy(path, saving)) {
-		if (error) *error = QObject::tr("the file could not be written");
-		return false;
-	}
-	QFile::setPermissions(saving, QFile::permissions(saving) | QFile::WriteOwner);
-	bool ok = check(saving, error);
-	if (ok) {
-		Sqlite file(saving, true);
+	return rewrite(path, path, [on](Sqlite &file, QString *error) {
+		bool ok;
 		if (on) {
 			ok = file.exec(history_schema);
 			if (ok && file.select(QStringLiteral("SELECT 1 FROM revision LIMIT 1")).isEmpty())
@@ -699,11 +763,53 @@ bool QetDbFile::setHistory(const QString &path, bool on, QString *error)
 					&& file.exec(QStringLiteral("VACUUM"));
 		}
 		if (!ok && error) *error = file.error();
-		ok = ok && check(saving, error);
+		return ok;
+	}, false, error);
+}
+
+/**
+	@brief QetDbFile::exportDelivery
+	Write the .qetdb @p path to @p output without the history it keeps:
+	what to send a client, who should get the drawings, not who changed
+	them and when (QET-SQL-FORMAT-SCOPE.md 6.5)
+*/
+bool QetDbFile::exportDelivery(const QString &path, const QString &output, QString *error)
+{
+	return rewrite(path, output, [](Sqlite &file, QString *error) {
+		const bool ok = file.exec(QStringLiteral("DROP TABLE IF EXISTS revision"))
+				&& file.exec(QStringLiteral("DROP TABLE IF EXISTS revision_changes"))
+				&& file.exec(QStringLiteral("VACUUM"));
+		if (!ok && error) *error = file.error();
+		return ok;
+	}, false, error);
+}
+
+/**
+	@brief QetDbFile::writeRevision
+	Write to @p output the project the .qetdb @p path holds as it was at
+	its revision @p ord, with its history up to it: the saves after it
+	undone from their recorded changes, newest first.
+	@p same_digest, if given, says whether its content digest is the one
+	that revision was saved with (undone rows come back at the end of
+	their table, so a table's row order may differ)
+*/
+bool QetDbFile::writeRevision(const QString &path, qint64 ord, const QString &output, QString *error,
+							  bool *same_digest)
+{
+	QString digest;
+	{
+		Sqlite file(path, false);
+		const auto rows = file.select(QStringLiteral("SELECT digest FROM revision WHERE ord = ?"), {ord});
+		if (!rows.isEmpty()) digest = rows.first().value(0).toString();
 	}
-	ok = ok && flushFile(saving) && replace(saving, path, error);
-	if (!ok) QFile::remove(saving);
-	return ok;
+	if (!rewrite(path, output, [ord](Sqlite &file, QString *error) { return windBack(file, ord, error); },
+				 true, error))
+		return false;
+	if (same_digest) {
+		Sqlite file(output, false);
+		*same_digest = !digest.isEmpty() && digestOf(file, QStringLiteral("main")) == digest;
+	}
+	return true;
 }
 
 /**

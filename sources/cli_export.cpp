@@ -92,6 +92,8 @@ const QHash<QString, QString> &exportFlags()
 		{"--history", "history"},
 		{"--history-on", "historyon"},
 		{"--history-off", "historyoff"},
+		{"--revision", "revision"},
+		{"--export-delivery", "delivery"},
 		{"--from-database", "fromdb"},
 		{"--set-titleblock", "settb"},
 	};
@@ -1126,6 +1128,36 @@ int run(const QStringList &args)
 			err << "Cannot change the history of " << rest.at(0) << ": " << error << "\n";
 			return 1;
 		}
+		return 0;
+	}
+
+	// --revision writes a .qetdb as it was at one of its revisions;
+	// --export-delivery writes it without its history (QETDB-S6-SCOPE.md)
+	if (format == "revision" || format == "delivery") {
+		const int needed = format == "revision" ? 3 : 2;
+		bool number = true;
+		const qint64 ord = format == "revision" ? rest.value(1).toLongLong(&number) : 0;
+		if (rest.size() < needed || !number || !QetDbFile::isDatabasePath(rest.at(0))
+				|| !QetDbFile::isDatabasePath(rest.at(needed - 1))) {
+			err << (format == "revision"
+					? "Usage: qelectrotech --revision <project.qetdb> <number> <output.qetdb>\n"
+					: "Usage: qelectrotech --export-delivery <project.qetdb> <output.qetdb>\n");
+			return 2;
+		}
+		QString error;
+		bool same_digest = false;
+		const bool ok = format == "revision"
+				? QetDbFile::writeRevision(rest.at(0), ord, rest.at(2), &error, &same_digest)
+				: QetDbFile::exportDelivery(rest.at(0), rest.at(1), &error);
+		if (!ok) {
+			err << "Cannot write " << rest.at(needed - 1) << " from " << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		if (format == "revision")
+			out << "Revision " << ord << " written to " << rest.at(2) << "; content digest "
+				<< (same_digest ? "the one it was saved with" : "differs from the one it was saved with")
+				<< "\n";
+		out.flush();
 		return 0;
 	}
 

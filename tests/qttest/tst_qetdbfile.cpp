@@ -342,6 +342,52 @@ private slots:
 		QCOMPARE(in_own.size(), 1);
 	}
 
+	// A revision written again from the history: two saves undone give the
+	// project as it was when the history began, and a copy for delivery has
+	// no history at all
+	void historyGivesBackARevision()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("revisions.qetdb"));
+		const QString first = m_dir.filePath(QStringLiteral("revisions-first.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString out = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QVERIFY(QFile::copy(path, first));
+		QFile js(m_dir.filePath(QStringLiteral("revisions.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("var us = qet.elementUuids(0).sort();\n"
+				 "qet.setElementLabel(0, us[0], 'UNDO1');\n"
+				 "qet.moveElement(0, us[1], 20, 0);\n"
+				 "qet.log('SAVED1 ' + qet.save(''));\n"
+				 "qet.setElementLabel(0, us[2], 'UNDO2');\n"
+				 "qet.log('SAVED2 ' + qet.save(''));\n");
+		js.close();
+		out = run({QStringLiteral("--run"), js.fileName(), path});
+		QVERIFY2(out.contains(QStringLiteral("SAVED1 true")) && out.contains(QStringLiteral("SAVED2 true")),
+				 qPrintable(out.right(800)));
+		const QString old = m_dir.filePath(QStringLiteral("revision-1.qetdb"));
+		out = run({QStringLiteral("--revision"), path, QStringLiteral("1"), old}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		const QByteArray then = built(old), before = built(first);
+		QVERIFY(before.size() > 100000);
+		QVERIFY(!then.contains("UNDO1") && !then.contains("UNDO2"));
+		QVERIFY(then == before);
+		QVERIFY(built(path).contains("UNDO2"));
+		out = run({QStringLiteral("--revision"), path, QStringLiteral("9"), old}, false, &code);
+		QVERIFY2(code == 1, qPrintable(out));
+		const QString delivery = m_dir.filePath(QStringLiteral("delivery.qetdb"));
+		out = run({QStringLiteral("--export-delivery"), path, delivery}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QCOMPARE(pragma(delivery, QStringLiteral(
+			"SELECT count(*) FROM sqlite_master WHERE name IN ('revision', 'revision_changes')")).toInt(), 0);
+		QVERIFY(built(delivery).contains("UNDO2"));
+	}
+
 	// A symbol whose definition is missing is kept as read (F127): opened
 	// from the file's tables and saved again, a folio not built keeps it
 	void keptSymbolSurvivesResave()
