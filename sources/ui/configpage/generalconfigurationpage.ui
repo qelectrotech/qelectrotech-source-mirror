@@ -495,7 +495,7 @@
           <string>Offer to restore automatic backups at start</string>
          </property>
          <property name="toolTip">
-          <string>After a crash, the automatic backups of the projects that were open are offered at the next start. Unticked, they are kept but not offered, until this is ticked again.</string>
+          <string>After a crash, the automatic backups (made every few minutes, see "Automatic backup of projects" above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</string>
          </property>
         </widget>
        </item>

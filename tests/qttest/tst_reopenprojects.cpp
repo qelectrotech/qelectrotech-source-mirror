@@ -22,6 +22,7 @@
 	before QETApp starts, since that is when it reads them.
 */
 #include "qetapptest.h"
+#include "qetdiagrameditor.h"
 #include "projectview.h"
 #include "qetproject.h"
 
@@ -42,6 +43,20 @@ class TstReopenProjects : public QObject
 			QVERIFY(editor);
 			QTRY_COMPARE(editor->openedProjects().count(), 1);
 			QCOMPARE(editor->openedProjects().first()->project()->filePath(), s_project);
+		}
+
+			//Closing one of two windows mid-session keeps nothing: the
+			//projects of the last session are those open at the end
+		void closingOneOfTwoWindowsKeepsNothing()
+		{
+			const QStringList before {QStringLiteral("/sentinel.qet")};
+			QSettings().setValue(QStringLiteral("projects/open_at_quit"), before);
+			auto *second = new QETDiagramEditor();
+			second->show();
+			QTRY_COMPARE(QETApp::diagramEditors().size(), 2);
+			QVERIFY(second->close());
+			QCOMPARE(QSettings().value(QStringLiteral("projects/open_at_quit")).toStringList(), before);
+			QTRY_COMPARE(QETApp::diagramEditors().size(), 1);
 		}
 
 		void closingKeepsTheOpenProjects()
