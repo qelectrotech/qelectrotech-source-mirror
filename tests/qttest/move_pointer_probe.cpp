@@ -20,6 +20,7 @@
 #include "../../sources/diagram.h"
 #include "../../sources/diagramview.h"
 #include "../../sources/qetgraphicsitem/element.h"
+#include "../../sources/qetgraphicsitem/terminal.h"
 #include "../../sources/qetgraphicsitem/dynamicelementtextitem.h"
 #include "../../sources/QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "../../sources/qetproject.h"
@@ -160,6 +161,32 @@ int main(int argc, char **argv)
 		check(view.crosshairPos() == handle->scenePos(), "a move without the button ends a grab whose release was lost");
 		send(QEvent::MouseButtonRelease, near_handle + QPoint(1, 0), Qt::NoButton);
 		element->setSelected(false);
+		QApplication::processEvents();
+
+			//Dragging the symbol: the crosshair stands on its terminal
+			//nearest the mouse, where that terminal lands; the release
+			//puts it back on the grid point under the mouse
+		auto nearestTerminal = [&](const QPoint &at) {
+			const QPointF mouse = view.mapToScene(at);
+			QPointF nearest;
+			qreal best = -1;
+			for (Terminal *t : element->terminals()) {
+				const qreal d = QLineF(mouse, t->dockConductor()).length();
+				if (best < 0 || d < best) { best = d; nearest = t->dockConductor(); }
+			}
+			return nearest;
+		};
+		check(!element->terminals().isEmpty(), "the symbol has terminals");
+		moveTo(view, over);
+		send(QEvent::MouseButtonPress, over, Qt::LeftButton);
+		check(view.crosshairPos() == nearestTerminal(over), "a press on the symbol puts the crosshair on its terminal nearest the mouse");
+		send(QEvent::MouseMove, over + QPoint(23, 0), Qt::LeftButton);
+		check(view.crosshairPos() == nearestTerminal(over + QPoint(23, 0)),
+		      "while dragging, it stands on the symbol's terminal nearest the mouse");
+		send(QEvent::MouseButtonRelease, over + QPoint(23, 0), Qt::NoButton);
+		check(view.crosshairPos() == Diagram::snapToGrid(view.mapToScene(over + QPoint(23, 0))),
+		      "the release puts it on the grid point under the mouse");
+		folio->undoStack().undo();
 		QApplication::processEvents();
 
 			//After a drag, the pointer of where it ended at once: a
