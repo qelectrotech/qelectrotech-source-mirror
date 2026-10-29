@@ -273,9 +273,6 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	m_item_info_label->setObjectName(QStringLiteral("item_info_label"));
 	m_item_info_label->setToolTip(tr("What the mouse points at, or else what is selected"));
 	statusBar()->addWidget(m_item_info_label, 1);
-		//For a moment only: while a message shows, the status bar hides
-		//what stands on its left
-	statusBar() -> showMessage(tr("QElectroTech", "status bar message"), 3000);
 
 	setUpElementsPanel();
 	setUpElementsCollectionWidget();
@@ -299,6 +296,10 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	readSettings();  // restoreGeometry before show()
 	show();
 	readSettingsState();  // restoreState() must be called after show() in Qt6
+		//For a moment only: while a message shows, the status bar hides
+		//what stands on its left -- what is visible then, so only once the
+		//window is shown
+	statusBar() -> showMessage(tr("QElectroTech", "status bar message"), 3000);
 	ToolbarSettings::applyTo(this);
 #ifdef QET_HAS_SCRIPTING
 	setUpLiveIndicator();

@@ -101,6 +101,19 @@ class tst_itemdescription : public QObject
 			QVERIFY(ItemDescription::of(nullptr).isEmpty());
 		}
 
+			/// A new window's start message hides the description rather
+			/// than standing over it
+		void startMessageHidesIt()
+		{
+			auto *editor = new QETDiagramEditor();
+			auto label = editor->findChild<QLabel *>(QStringLiteral("item_info_label"));
+			QVERIFY(label);
+			QVERIFY(!editor->statusBar()->currentMessage().isEmpty());
+			QVERIFY(!label->isVisible());
+			editor->close();
+			delete editor;
+		}
+
 			/// The status bar of the editor: the selection, and over it
 			/// what the mouse points at
 		void statusBar()
@@ -117,7 +130,12 @@ class tst_itemdescription : public QObject
 			Diagram *diagram = view->diagram();
 			auto label = editor->findChild<QLabel *>(QStringLiteral("item_info_label"));
 			QVERIFY(label);
+				//The message given at start hides it, rather than standing
+				//over it, and it comes back when the message goes
+			editor->statusBar()->showMessage(QStringLiteral("a message"));
+			QVERIFY(!label->isVisible());
 			editor->statusBar()->clearMessage();
+			QVERIFY(label->isVisible());
 
 			Element *element = nullptr;
 			for (QGraphicsItem *item : diagram->items())
