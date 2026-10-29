@@ -993,12 +993,16 @@ void DimensionItem::rebuildHandles()
 
 	// 2. Create OffsetPoint handles (on the dimension lines for adjusting height)
 	for (int k = 0; k < chain.size(); ++k) {
-		auto *hDim1 = new DimensionHandler(this, DimensionHandler::OffsetPoint, k * 2);
+		auto *hDim1 = new DimensionHandler(this, DimensionHandler::OffsetPoint, k * 3);
 		scene()->addItem(hDim1);
 		m_handlers.append(hDim1);
 
+		auto *hDimMid = new DimensionHandler(this, DimensionHandler::OffsetPoint, k * 3 + 1);
+		scene()->addItem(hDimMid);
+		m_handlers.append(hDimMid);
+
 		if (k == chain.size() - 1) {
-			auto *hDim2 = new DimensionHandler(this, DimensionHandler::OffsetPoint, k * 2 + 1);
+			auto *hDim2 = new DimensionHandler(this, DimensionHandler::OffsetPoint, k * 3 + 2);
 			scene()->addItem(hDim2);
 			m_handlers.append(hDim2);
 		}
@@ -1055,6 +1059,10 @@ void DimensionItem::updateHandlePositions()
 
 		if (handleIdx < m_handlers.size()) {
 			m_handlers[handleIdx]->setPos(seg->mapToScene(p1_dim));
+			handleIdx++;
+		}
+		if (handleIdx < m_handlers.size()) {
+			m_handlers[handleIdx]->setPos(seg->mapToScene(mid));
 			handleIdx++;
 		}
 		if (k == chain.size() - 1 && handleIdx < m_handlers.size()) {
@@ -1272,13 +1280,13 @@ DimensionHandler::~DimensionHandler()
 
 QRectF DimensionHandler::boundingRect() const
 {
-	return QRectF(-4.5, -4.5, 9.0, 9.0);
+	return QRectF(-7.0, -7.0, 14.0, 14.0);
 }
 
 QPainterPath DimensionHandler::shape() const
 {
 	QPainterPath path;
-	path.addRect(QRectF(-4.5, -4.5, 9.0, 9.0));
+	path.addRect(QRectF(-7.0, -7.0, 14.0, 14.0));
 	return path;
 }
 
@@ -1303,7 +1311,11 @@ void DimensionHandler::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
 	Q_UNUSED(event)
 	m_hovered = true;
-	setCursor(Qt::SizeAllCursor);
+	if (m_role == OffsetPoint && m_coordinator) {
+		setCursor(m_coordinator->isVerticalChain() ? Qt::SizeHorCursor : Qt::SizeVerCursor);
+	} else {
+		setCursor(Qt::SizeAllCursor);
+	}
 	update();
 }
 
@@ -1389,7 +1401,7 @@ void DimensionHandler::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 			qreal len = std::hypot(diff.x(), diff.y());
 			if (len > 1e-4) {
 				QPointF normal_dir(-diff.y() / len, diff.x() / len);
-				QPointF toCursor = event->scenePos() - p1_scene;
+				QPointF toCursor = scenePos - p1_scene;
 				qreal newOffset = toCursor.x() * normal_dir.x() + toCursor.y() * normal_dir.y();
 				newOffset = std::round(newOffset / 5.0) * 5.0;
 				if (std::abs(newOffset) < 5.0) {

@@ -624,6 +624,53 @@ void tst_DimensionItem::testChainOffsetMoveAndUndo()
 	diagram->undoStack().redo();
 	QCOMPARE(s0->offset(), 35.0);
 	QCOMPARE(s1->offset(), 35.0);
+
+	// Interactive test: Select chain to generate red handles
+	s0->setSelected(true);
+	QVERIFY(!s0->handlers().isEmpty());
+
+	// Find an OffsetPoint handler (e.g. the mid_dim or end handle)
+	DimensionHandler *offsetHandle = nullptr;
+	for (DimensionHandler *h : s0->handlers()) {
+		if (h && h->role() == DimensionHandler::OffsetPoint) {
+			offsetHandle = h;
+			break;
+		}
+	}
+	QVERIFY(offsetHandle != nullptr);
+
+	// Verify type matches QetGraphicsHandlerItem so crosshair snaps to it
+	QCOMPARE(offsetHandle->type(), 1200 + QGraphicsItem::UserType);
+
+	// Simulate dragging the red handle to new offset (Y = 60.0)
+	QGraphicsSceneMouseEvent pressEv(QEvent::GraphicsSceneMousePress);
+	pressEv.setButton(Qt::LeftButton);
+	pressEv.setScenePos(offsetHandle->scenePos());
+	diagram->sendEvent(offsetHandle, &pressEv);
+
+	QGraphicsSceneMouseEvent moveEv(QEvent::GraphicsSceneMouseMove);
+	moveEv.setButtons(Qt::LeftButton);
+	// Move 25 pixels further away (35 + 25 = 60)
+	moveEv.setScenePos(QPointF(50, 60));
+	diagram->sendEvent(offsetHandle, &moveEv);
+
+	QCOMPARE(s0->offset(), 60.0);
+	QCOMPARE(s1->offset(), 60.0);
+
+	QGraphicsSceneMouseEvent releaseEv(QEvent::GraphicsSceneMouseRelease);
+	releaseEv.setButton(Qt::LeftButton);
+	releaseEv.setScenePos(QPointF(50, 60));
+	diagram->sendEvent(offsetHandle, &releaseEv);
+
+	// Verify Undo restores 35.0
+	diagram->undoStack().undo();
+	QCOMPARE(s0->offset(), 35.0);
+	QCOMPARE(s1->offset(), 35.0);
+
+	// Verify Redo restores 60.0
+	diagram->undoStack().redo();
+	QCOMPARE(s0->offset(), 60.0);
+	QCOMPARE(s1->offset(), 60.0);
 }
 
 void tst_DimensionItem::testChainAxisConstraintAndMoveAll()

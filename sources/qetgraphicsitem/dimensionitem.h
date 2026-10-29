@@ -241,6 +241,7 @@ public:
 	void rebuildHandles();
 	void updateHandlePositions();
 	void clearHandles();
+	QList<DimensionHandler *> handlers() const { return m_handlers; }
 
 	void calculateGeometry(QPointF &p1_dim, QPointF &p2_dim,
 	                       QPointF &p1_ext_end, QPointF &p2_ext_end,
@@ -347,6 +348,9 @@ public:
 		ReferencePoint, // Draggable point on the measured geometry (intermediate point or endpoint)
 		OffsetPoint     // Draggable point on the dimension line (changes offset for the chain)
 	};
+
+	enum { Type = UserType + 1200 };
+	int type() const override { return Type; }
 
 	DimensionHandler(DimensionItem *coordinator, Role role, int index, QGraphicsItem *parent = nullptr);
 	~DimensionHandler() override;
