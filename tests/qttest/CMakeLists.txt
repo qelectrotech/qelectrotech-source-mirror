@@ -1890,3 +1890,8 @@ if(MSVC)
       "PATH=path_list_prepend:$<TARGET_FILE_DIR:Qt6::Core>")
   endif()
 endif()
+
+# Upright symbol texts read from bottom to top, when the setting asks.
+qet_add_app_test(tst_uprighttexts tst_uprighttexts.cpp)
+target_compile_definitions(tst_uprighttexts PRIVATE
+  QET_ELEMENTS_DIR="${QET_DIR}/elements")
