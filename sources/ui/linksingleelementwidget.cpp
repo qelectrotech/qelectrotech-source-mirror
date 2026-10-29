@@ -224,18 +224,7 @@ void LinkSingleElementWidget::apply()
 
 	QUndoCommand *undo = associatedUndo();
 	if (undo)
-	{
-			//What is one bridge carried on over the sheets is one
-			//bridge: linking two sheet references joins the bridges
-			//they carry in that very moment, as if the new half had
-			//been packed onto the existing one. One undo step for both.
-		if (m_element && m_element_to_link && !m_unlink) {
-			BridgeManager::joinOverLink(
-						m_element->diagram() ? m_element->diagram()->project() : nullptr,
-						m_element, m_element_to_link, undo);
-		}
 		m_element->diagram()->undoStack().push(undo);
-	}
 	
 	m_unlink = false;
 	m_element_to_link = nullptr;
@@ -262,6 +251,17 @@ QUndoCommand *LinkSingleElementWidget::associatedUndo() const
 		}
 		else if (m_unlink)
 			undo->unlinkAll();
+
+			//What is one bridge carried on over the sheets is one
+			//bridge: linking two sheet references joins the bridges
+			//they carry in that very moment, as if the new half had
+			//been packed onto the existing one by hand. One undo step
+			//for the link and the joining together.
+		if (m_element_to_link && !m_unlink) {
+			BridgeManager::joinOverLink(
+						m_element->diagram() ? m_element->diagram()->project() : nullptr,
+						m_element, m_element_to_link, undo);
+		}
 
 		return undo;
 	}
