@@ -60,7 +60,7 @@
       <item row="1" column="0" colspan="2">
        <widget class="QCheckBox" name="m_auto_cb">
         <property name="text">
-         <string>Automatische Berechnung</string>
+         <string>Automatische Berechnung (2px = 1mm)</string>
         </property>
         <property name="checked">
          <bool>true</bool>

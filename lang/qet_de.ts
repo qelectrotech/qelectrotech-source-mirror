@@ -25377,7 +25377,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     </message>
     <message>
         <source>Automatic calculation</source>
-        <translation>Automatische Berechnung</translation>
+        <translation>Automatische Berechnung (2px = 1mm)</translation>
     </message>
     <message>
         <source>Custom label:</source>

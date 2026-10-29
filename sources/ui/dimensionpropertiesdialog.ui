@@ -155,7 +155,7 @@
               <item>
                <widget class="QCheckBox" name="m_auto_cb">
                 <property name="text">
-                 <string>Automatisch berechnen</string>
+                 <string>Automatisch berechnen (2px = 1mm)</string>
                 </property>
                 <property name="checked">
                  <bool>true</bool>
