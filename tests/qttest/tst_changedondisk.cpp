@@ -1,10 +1,15 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include <QtTest>
 
+#include <QElapsedTimer>
 #include <QFile>
+#include <QFileInfo>
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include <QThread>
+
+#include <functional>
 
 // Saving a project replaced the file whatever had happened to it since it was
 // opened: another user's save, or another program's, was lost without a word.
@@ -22,15 +27,28 @@ class tst_changedondisk : public QObject
 	QTemporaryDir m_dir;
 	QString m_project; // a .qetz made from examples/741.qet
 
-	QString run(const QString &script, const QString &project, bool overwrite = false)
+	QString m_database; // the same project as a .qetdb
+
+	QString run(const QString &script, const QString &project, bool overwrite = false,
+				const std::function<void()> &meanwhile = {})
+	{
+		return launch({QStringLiteral("--run"), scriptFile(script), project}, overwrite, meanwhile);
+	}
+
+	QString scriptFile(const QString &script)
 	{
 		const QString path = m_dir.filePath(QStringLiteral("probe.js"));
-		const QString home = m_dir.filePath(QStringLiteral("home"));
-		QDir().mkpath(home);
 		QFile f(path);
 		if (!f.open(QIODevice::WriteOnly)) return QString();
 		f.write(script.toUtf8());
-		f.close();
+		return path;
+	}
+
+	QString launch(const QStringList &args, bool overwrite = false,
+				   const std::function<void()> &meanwhile = {})
+	{
+		const QString home = m_dir.filePath(QStringLiteral("home"));
+		QDir().mkpath(home);
 
 		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
 		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
@@ -44,8 +62,8 @@ class tst_changedondisk : public QObject
 			env.insert(QStringLiteral("QET_OVERWRITE_CHANGED"), QStringLiteral("1"));
 		QProcess proc;
 		proc.setProcessEnvironment(env);
-		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
-				   {QStringLiteral("--run"), path, project});
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), args);
+		if (meanwhile) meanwhile();
 		if (!proc.waitForFinished(120000)) return QString();
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
@@ -62,6 +80,9 @@ private slots:
 		const QString out = run(QStringLiteral("qet.log('R ' + qet.save('%1'));\n").arg(m_project), qet);
 		QVERIFY2(out.contains(QStringLiteral("R true")), qPrintable(out));
 		QVERIFY(QFile::exists(m_project));
+		m_database = m_dir.filePath(QStringLiteral("p.qetdb"));
+		launch({QStringLiteral("--resave"), qet, m_database});
+		QVERIFY(QFile::exists(m_database));
 	}
 
 	void unchangedFileSaves()
@@ -103,6 +124,54 @@ private slots:
 			.arg(QStringLiteral("'") + m_project + QStringLiteral("'"));
 		const QString out = run(script, m_project, true);
 		QVERIFY2(out.contains(QStringLiteral("R true")), qPrintable(out));
+	}
+
+	// A .qetdb: its save remembers the file it wrote (the hash made while
+	// writing it), so a second save is no conflict and another's is
+	void qetdbUnchangedSaves()
+	{
+		const QString out = run(QStringLiteral(
+			"qet.log('R1 ' + qet.save(''));\nqet.log('R2 ' + qet.save(''));\n"), m_database);
+		QVERIFY2(out.contains(QStringLiteral("R1 true")), qPrintable(out));
+		QVERIFY2(out.contains(QStringLiteral("R2 true")), qPrintable(out));
+	}
+
+	// The same bytes with a new time after its own save (a network share
+	// settling it, #1579): the file is then hashed, so the hash the save
+	// handed over must be the file's, or the next save refuses
+	void qetdbSameContentNewTimeSaves()
+	{
+		const QDateTime before = QFileInfo(m_database).lastModified();
+		bool touched = false;
+		const auto touch = [&]() {
+			QElapsedTimer timer;
+			timer.start();
+			while (QFileInfo(m_database).lastModified() == before && timer.elapsed() < 60000)
+				QThread::msleep(50);
+				// past the save's own look at the file
+			QThread::msleep(1000);
+			QFile file(m_database);
+			touched = file.open(QIODevice::ReadWrite)
+					&& file.setFileTime(before.addSecs(-3600), QFileDevice::FileModificationTime);
+		};
+		const QString out = run(QStringLiteral(
+			"qet.log('R1 ' + qet.save(''));\n"
+			"var t = Date.now(); while (Date.now() - t < 5000) {}\n"
+			"qet.log('R2 ' + qet.save(''));\n"), m_database, false, touch);
+		QVERIFY(touched);
+		QVERIFY2(out.contains(QStringLiteral("R1 true")), qPrintable(out));
+		QVERIFY2(out.contains(QStringLiteral("R2 true")), qPrintable(out));
+	}
+
+	void qetdbChangedFileIsNotOverwritten()
+	{
+		const QString script = QStringLiteral(
+			"qet.moveElement(0, qet.elementUuids(0)[0], 10, 0);\n"
+			"qet.save(%1);\nqet.log('R ' + qet.save(''));\n")
+			.arg(QStringLiteral("'") + m_database + QStringLiteral("'"));
+		const QString out = run(script, m_database);
+		QVERIFY2(out.contains(QStringLiteral("R false")), qPrintable(out));
+		QVERIFY2(out.contains(QStringLiteral("changed the file on disk")), qPrintable(out));
 	}
 
 	void saveAsTargetIsNotAConflict()

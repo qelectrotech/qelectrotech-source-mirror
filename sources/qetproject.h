@@ -352,7 +352,7 @@ class QETProject : public QObject
 		static QString spliceKeptFolios(QString text, const QHash<int, QByteArray> &kept_folios);
 		bool close();
 		QETResult write(bool overwrite_changed = false);
-		void rememberDiskState(const QByteArray *content = nullptr);
+		void rememberDiskState(const QByteArray *content = nullptr, const QByteArray *hash = nullptr);
 		bool changedOnDisk(QDateTime *when = nullptr) const;
 		bool isReadOnly() const;
 			/// Opened from a .qetz of a later format (opened read-only)
@@ -564,6 +564,10 @@ class QETProject : public QObject
 				QHash<QUuid, QString> *title_cache = nullptr,
 				QHash<QString, QUuid> *id_cache = nullptr) const;
 		bool m_deferring_folios = false;
+			/// readDiagramsXml() is reading the folios; and whether one read
+			/// so far numbers itself with %autonum (updateDiagramsFolioData())
+		bool m_reading_folios = false;
+		bool m_reading_autonum_folio = false;
 			/// Opening with folios built only when needed: QET_LAZY_FOLIOS
 			/// is set and the database can be filled from the document
 		bool m_lazy_open = false;
