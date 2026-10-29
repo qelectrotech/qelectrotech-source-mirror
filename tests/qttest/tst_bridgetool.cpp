@@ -1486,7 +1486,8 @@ private slots:
 		carried->addTerminal(on_out);
 
 			//The half on the other side: a reference, and a wire which
-			//says nothing yet
+			//says nothing yet and hangs on nothing the first bridge
+			//reaches -- only the joining can bring it the voltage
 		Bridge *coming = project.newBridge();
 		const BridgeTerminal on_in{in->uuid(),
 								  in->terminals().first()->stableUuid().toString(),
@@ -1494,7 +1495,7 @@ private slots:
 		coming->addTerminal(on_in);
 		Terminal *far_pin = in->terminals().first();
 		Terminal *free_pin = nullptr;
-		for (Terminal *pin : terminals.at(0)->element()->terminals()) {
+		for (Terminal *pin : terminals.at(2)->element()->terminals()) {
 			if (pin->conductors().isEmpty()) {
 				free_pin = pin;
 				break;
@@ -1508,20 +1509,29 @@ private slots:
 			//Both sides say the same of their potential, so linking them
 			//asks nobody anything -- where they disagree the drawing
 			//asks the user, and a test has nobody there to answer
-		const auto out_wires = out->terminals().first()->conductors();
-		if (!out_wires.isEmpty()) {
-			far->setProperties(out_wires.first()->properties());
+		ConductorProperties agreed = far->properties();
+		agreed.m_tension_protocol.clear();
+		agreed.m_function.clear();
+		for (const QSharedPointer<RealTerminal> &terminal : terminals) {
+			for (Terminal *pin : terminal->element()->terminals()) {
+				for (Conductor *wire : pin->conductors()) {
+					if (wire) {
+						wire->setProperties(agreed);
+					}
+				}
+			}
 		}
+		far->setProperties(agreed);
 		QVERIFY2(far->properties().m_tension_protocol.isEmpty(),
 				 "the far side says nothing before it is joined");
+		carried->setTensionText(QStringLiteral("400V"));
 
-			//The two references are linked -- and with that very step
-			//the bridges they carry become one
+			//The two references are linked -- the very step the drawing
+			//makes -- and with it the bridges they carry become one
 		Diagram *folio = diagramOf(project, terminals.at(0)->element());
 		QVERIFY(folio);
-		out->linkToElement(in);
-		auto *link = new QUndoCommand();
-		BridgeManager::joinOverLink(&project, out, in, link);
+		auto *link = new LinkElementCommand(out);
+		link->setLink(in);
 		folio->undoStack().push(link);
 
 		QCOMPARE(project.bridges().size(), 1);

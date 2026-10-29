@@ -524,7 +524,18 @@ void BridgeManager::joinOverLink(QETProject *project,
 	Bridge *from = (into == first) ? second : first;
 
 	new MergeBridgesCommand(from, into, parent);
-	writeInformation(project, into->terminals(),
+
+		//What the unit says goes onto the wires of the whole of it --
+		//the list as it stands when the two are one, so the far half
+		//says it too
+	QList<BridgeTerminal> unit = into->terminals();
+	const auto from_landings = from->landings();
+	for (const BridgeTerminal &landing : from_landings) {
+		if (!unit.contains(landing)) {
+			unit << landing;
+		}
+	}
+	writeInformation(project, unit,
 					 BridgeInformation{into->tensionText()}, parent);
 }
 
