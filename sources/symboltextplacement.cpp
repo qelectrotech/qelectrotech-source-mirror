@@ -65,9 +65,13 @@ bool placeOne(Element *element, Qt::Alignment where, QUndoCommand *parent)
 {
 	const Qt::Alignment lines_alignment = linesFor(where);
 
+		//A text written as it is -- a terminal's number, a marking drawn
+		//into the symbol -- belongs where the symbol has it; only the
+		//texts telling about the symbol make the block
 	QList<Line> lines;
 	for (DynamicElementTextItem *text : element->dynamicTextItems())
-		if (!text->parentGroup() && text->isVisible())
+		if (!text->parentGroup() && text->isVisible()
+		    && text->textFrom() != DynamicElementTextItem::UserText)
 			lines.append({text, text, text->pos(), text->property("alignment"), {}});
 	for (ElementTextItemGroup *group : element->textGroups())
 		if (group->isVisible())

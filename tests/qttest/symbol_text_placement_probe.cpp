@@ -74,12 +74,18 @@ int main(int argc, char **argv)
 		const QStringList lines {"-FI1", "40 A / 30 mA, type A", "FI UG"};
 		for (int i = 0; i < lines.size(); ++i) {
 			auto *t = new DynamicElementTextItem(element);
-			t->setTextFrom(DynamicElementTextItem::UserText);
-			t->setText(lines[i]);
+			t->setTextFrom(DynamicElementTextItem::CompositeText);
+			t->setCompositeText(lines[i]);
 			t->setPos(80 + 5 * i, -20 + 12 * i);
 			element->addDynamicTextItem(t);
 			texts << t;
 		}
+			//A terminal's number, written as it is: it stays at its terminal
+		auto *number = new DynamicElementTextItem(element);
+		number->setTextFrom(DynamicElementTextItem::UserText);
+		number->setText(QStringLiteral("1"));
+		number->setPos(-30, -34);
+		element->addDynamicTextItem(number);
 		QList<QPointF> start;
 		for (DynamicElementTextItem *t : texts) start << t->pos();
 		const QRectF before = block(texts);
@@ -100,6 +106,7 @@ int main(int argc, char **argv)
 		check(right_aligned, "left: the lines are aligned right, on the screen and as their alignment");
 		check(keeps_order, "the lines keep their order and their spacing");
 		check(same(b.height(), before.height()), "the block keeps its height");
+		check(number->pos() == QPointF(-30, -34), "a text written as it is, a terminal's number, stays where it is");
 
 		scene->undoStack().undo();
 		bool back = true;
