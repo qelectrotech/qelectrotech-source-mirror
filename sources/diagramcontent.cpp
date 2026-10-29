@@ -28,6 +28,7 @@
 #include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
+#include "qetgraphicsitem/dimensionitem.h"
 #include "qetgraphicsitem/terminal.h"
 #include "TerminalStrip/GraphicsItem/terminalstripitem.h"
 
@@ -84,6 +85,7 @@ DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 			}
 			case DiagramImageItem::Type:       { m_images        << qgraphicsitem_cast<DiagramImageItem *>(item);       break;}
 			case QetShapeItem::Type:           { m_shapes        << qgraphicsitem_cast<QetShapeItem *>(item);           break;}
+			case DimensionItem::Type:          { m_dimensions    << qgraphicsitem_cast<DimensionItem *>(item);          break;}
 			case DynamicElementTextItem::Type: { m_element_texts << qgraphicsitem_cast<DynamicElementTextItem *>(item); break;}
 			case QGraphicsItemGroup::Type: {
 				if (auto *group = dynamic_cast<ElementTextItemGroup *>(item)) {
@@ -203,6 +205,7 @@ bool DiagramContent::hasDeletableItems() const
 			|| qgi->type() == Conductor::Type
 			|| qgi->type() == IndependentTextItem::Type
 			|| qgi->type() == QetShapeItem::Type
+			|| qgi->type() == DimensionItem::Type
 			|| qgi->type() == DiagramImageItem::Type
 			|| qgi->type() == DynamicElementTextItem::Type
 			|| qgi->type() == QetGraphicsTableItem::Type
@@ -223,6 +226,7 @@ bool DiagramContent::hasCopiableItems() const
 {
 	if(!m_images.isEmpty())      return true;
 	if(!m_shapes.isEmpty())      return true;
+	if(!m_dimensions.isEmpty())  return true;
 	if(!m_elements.isEmpty())    return true;
 	if(!m_text_fields.isEmpty()) return true;
 	
@@ -239,6 +243,7 @@ void DiagramContent::clear()
 	m_text_fields.clear();
 	m_images.clear();
 	m_shapes.clear();
+	m_dimensions.clear();
 	m_conductors_to_update.clear();
 	m_conductors_to_move.clear();
 	m_other_conductors.clear();

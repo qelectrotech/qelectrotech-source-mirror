@@ -469,5 +469,7 @@
 	<file>licenses/QET-Elements.LICENSE</file>
 	<file>ico/format-copy.svg</file>
 	<file>ico/format-apply.svg</file>
+	<file>ico/dimension-linear.svg</file>
+	<file>ico/dimension-chain.svg</file>
     </qresource>
 </RCC>

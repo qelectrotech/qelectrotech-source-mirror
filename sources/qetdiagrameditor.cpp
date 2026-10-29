@@ -52,6 +52,7 @@
 #include "diagramevent/diagrameventaddpdf.h"
 #endif
 #include "diagramevent/diagrameventaddshape.h"
+#include "diagramevent/diagrameventadddimension.h"
 #include "diagramevent/diagrameventaddpath.h"
 #include "diagramevent/diagrameventaddcable.h"
 #include "diagramevent/diagrameventfillet.h"
@@ -1594,6 +1595,8 @@ void QETDiagramEditor::setUpActions()
 		//Not an element of the drawing but a line drawn across the
 		//conductors: what it crosses becomes the cores of a cable.
 	m_add_cable		   = m_add_item_actions_group.addAction(QET::Icons::Cable,      tr("Draw a cable"));
+	QAction *add_dimension_linear = m_add_item_actions_group.addAction(QET::Icons::DimensionLinear, tr("Add linear dimension"));
+	QAction *add_dimension_chain  = m_add_item_actions_group.addAction(QET::Icons::DimensionChain,  tr("Add chain dimension"));
 
 	add_text     ->setStatusTip(tr("Adds a text field to the current sheet"));
 	add_image    ->setStatusTip(tr("Add an image to the current sheet"));
@@ -1610,6 +1613,8 @@ void QETDiagramEditor::setUpActions()
 	add_terminal_strip->setStatusTip(tr("Adds a terminal plan to the current sheet"));
 	add_generic_device->setStatusTip(tr("Makes a box symbol with terminals on any side and places it on the current sheet"));
 	m_add_cable     ->setStatusTip(tr("Draws the main line of a cable: every conductor crossed becomes one of its cores"));
+	add_dimension_linear->setStatusTip(tr("Adds a linear dimension to the current sheet"));
+	add_dimension_chain ->setStatusTip(tr("Adds a chain dimension to the current sheet"));
 
 	add_text     ->setData(QStringLiteral("text"));
 	add_image    ->setData(QStringLiteral("image"));
@@ -1626,6 +1631,8 @@ void QETDiagramEditor::setUpActions()
 	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
 	add_generic_device->setData(QStringLiteral("generic_device"));
 	m_add_cable     ->setData(QStringLiteral("cable"));
+	add_dimension_linear->setData(QStringLiteral("dimension_linear"));
+	add_dimension_chain ->setData(QStringLiteral("dimension_chain"));
 
 	add_text->setCheckable(true);
 	add_line->setCheckable(true);
@@ -1636,6 +1643,8 @@ void QETDiagramEditor::setUpActions()
 	add_path->setCheckable(true);
 	m_add_cable->setCheckable(true);
 	add_fillet->setCheckable(true);
+	add_dimension_linear->setCheckable(true);
+	add_dimension_chain->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
 		//No default key, but an id: they can then be found by the command
@@ -3099,6 +3108,14 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 	else if (value == "path")
 	{
 		diagram_event = new DiagramEventAddPath (d);
+	}
+	else if (value == "dimension_linear")
+	{
+		diagram_event = new DiagramEventAddDimension (d, DimensionItem::Linear);
+	}
+	else if (value == "dimension_chain")
+	{
+		diagram_event = new DiagramEventAddDimension (d, DimensionItem::Chain);
 	}
 	else if (value == QLatin1String("cable"))
 	{

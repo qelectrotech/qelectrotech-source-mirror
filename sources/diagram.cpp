@@ -41,6 +41,7 @@
 #include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
+#include "qetgraphicsitem/dimensionitem.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetxml.h"
 #include "undocommand/addelementtextcommand.h"
@@ -1442,6 +1443,7 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	QVector<QetShapeItem *> list_shapes;
 	QVector<QetGraphicsTableItem *> table_vector;
 	QVector<TerminalStripItem *> strip_vector;
+	QVector<DimensionItem *> list_dimensions;
 
 	//Ckeck graphics item to "XMLise"
 	for(QGraphicsItem *qgi : items())
@@ -1495,6 +1497,13 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 				auto table = static_cast<QetGraphicsTableItem *>(qgi);
 				if (whole_content || table->isSelected())
 					table_vector << table;
+				break;
+			}
+			case DimensionItem::Type: {
+				auto dim = static_cast<DimensionItem *>(qgi);
+				if (whole_content || dim->isSelected()) {
+					list_dimensions << dim;
+				}
 				break;
 			}
 			case TerminalStripItem::Type: {
@@ -1589,6 +1598,7 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	appendInStackingOrder(document, dom_root, QStringLiteral("images"), list_images, stack_rank);
 	appendInStackingOrder(document, dom_root, QStringLiteral("shapes"), list_shapes, stack_rank);
 	appendInStackingOrder(document, dom_root, QStringLiteral("tables"), table_vector, stack_rank);
+	appendInStackingOrder(document, dom_root, QStringLiteral("dimensions"), list_dimensions, stack_rank);
 
 	if (!strip_vector.isEmpty()) {
 		dom_root.appendChild(TerminalStripItemXml::toXml(strip_vector, document));
@@ -2468,6 +2478,19 @@ bool Diagram::fromXml(QDomElement &document,
 		added_shapes << dii;
 	}
 
+		// Load dimensions
+	QList<DimensionItem *> added_dimensions;
+	for (auto dim_xml : QET::findInDomElement(root,
+											   QStringLiteral("dimensions"),
+											   QStringLiteral("dimension"))) {
+		DimensionItem *dim = new DimensionItem();
+		dim->fromXml(dim_xml);
+		settle_uuid(dim, dim_xml, QStringLiteral("dimension"), added_dimensions.size());
+		ItemGroups::setGroup(dim, ItemGroups::read(dim_xml));
+		addItem(dim);
+		added_dimensions << dim;
+	}
+
 		//Load tables
 	QVector<QetGraphicsTableItem *> added_tables;
 	for (const auto &dom_table : QETXML::subChild(root,
@@ -2803,6 +2826,7 @@ void Diagram::addItem(QGraphicsItem *item)
 			break;
 		}
 		case QetShapeItem::Type:
+		case DimensionItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:
 		case QetGraphicsTableItem::Type:
@@ -2845,6 +2869,7 @@ void Diagram::removeItem(QGraphicsItem *item)
 			break;
 		}
 		case QetShapeItem::Type:
+		case DimensionItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:
 		case QetGraphicsTableItem::Type:
