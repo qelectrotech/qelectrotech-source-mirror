@@ -305,13 +305,16 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="0" colspan="2">
-             <widget class="QCheckBox" name="m_text_horiz_cb">
-              <property name="text">
-               <string>Maßzahl immer horizontal</string>
-              </property>
-             </widget>
-            </item>
+                        <item row="1" column="0">
+              <widget class="QLabel" name="label_text_rotation">
+               <property name="text">
+                <string>Text-Drehwinkel:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QComboBox" name="m_text_rotation_cb"/>
+             </item>
             <item row="1" column="2">
              <widget class="QCheckBox" name="m_mid_line_cb">
               <property name="text">
@@ -515,7 +518,7 @@
                <double>2.000000000000000</double>
               </property>
               <property name="maximum">
-               <double>30.000000000000000</double>
+               <double>100.000000000000000</double>
               </property>
               <property name="singleStep">
                <double>1.000000000000000</double>

@@ -25403,6 +25403,14 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
         <source>Architectural Slashes</source>
         <translation>Schrägstriche (CAD)</translation>
     </message>
+    <message>
+        <source>Auto (parallel to line)</source>
+        <translation>Automatisch (Linienparallel)</translation>
+    </message>
+    <message>
+        <source>Horizontal</source>
+        <translation>Horizontal</translation>
+    </message>
 </context>
 <context>
     <name>DimensionPropertiesDialog</name>

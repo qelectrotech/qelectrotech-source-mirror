@@ -65,6 +65,7 @@ class tst_DimensionItem : public QObject
 	void testFramedBoxPainting();
 	void testElementMeasureItemZoomScaling();
 	void testElementEditorMeasureTeardown();
+	void testTextRotationAndArrowSizeMax();
 };
 
 void tst_DimensionItem::testDefaultValues()
@@ -851,6 +852,84 @@ void tst_DimensionItem::testElementEditorMeasureTeardown()
 	auto *measureTool2 = new ESEventMeasure(&scene);
 	scene.setEventInterface(measureTool2);
 	// scene goes out of scope here: destructor cleans up interface safely
+}
+
+void tst_DimensionItem::testTextRotationAndArrowSizeMax()
+{
+	DimensionItem dim;
+	QCOMPARE(dim.textRotation(), -1);
+	QCOMPARE(dim.isTextHorizontal(), false);
+
+	// Rotation settings
+	dim.setTextRotation(0);
+	QCOMPARE(dim.textRotation(), 0);
+	QCOMPARE(dim.isTextHorizontal(), true);
+
+	dim.setTextRotation(90);
+	QCOMPARE(dim.textRotation(), 90);
+	QCOMPARE(dim.isTextHorizontal(), false);
+
+	dim.setTextRotation(180);
+	QCOMPARE(dim.textRotation(), 180);
+
+	dim.setTextRotation(270);
+	QCOMPARE(dim.textRotation(), 270);
+
+	dim.setTextRotation(360);
+	QCOMPARE(dim.textRotation(), 360);
+
+	// Arrow size up to 100.0
+	dim.setArrowSize(100.0);
+	QCOMPARE(dim.arrowSize(), 100.0);
+
+	// XML serialization
+	QDomDocument doc;
+	QDomElement xml = dim.toXml(doc);
+	QCOMPARE(xml.attribute("text_rotation"), QStringLiteral("360"));
+	QCOMPARE(xml.attribute("arrow_size"), QStringLiteral("100.00"));
+
+	// Backward compatibility XML (has horizontal="true", no text_rotation)
+	QDomDocument docOld;
+	QDomElement oldXml = docOld.createElement("dimension");
+	oldXml.setAttribute("horizontal", "true");
+	DimensionItem dimOld;
+	dimOld.fromXml(oldXml);
+	QCOMPARE(dimOld.isTextHorizontal(), true);
+	QCOMPARE(dimOld.textRotation(), 0);
+
+	// Unified vertical line orientation in Auto mode (-1)
+	// Line 1: top to bottom (0, 0) to (0, 100)
+	DimensionItem vDim1(QPointF(0, 0), QPointF(0, 100));
+	vDim1.setTextRotation(-1);
+	QPointF p1_a, p2_a, p1_ext_a, p2_ext_a, mid_a, udir_a, ndir_a;
+	qreal angle1 = 0.0;
+	vDim1.calculateGeometry(p1_a, p2_a, p1_ext_a, p2_ext_a, mid_a, angle1, udir_a, ndir_a);
+
+	// Line 2: bottom to top (0, 100) to (0, 0)
+	DimensionItem vDim2(QPointF(0, 100), QPointF(0, 0));
+	vDim2.setTextRotation(-1);
+	QPointF p1_b, p2_b, p1_ext_b, p2_ext_b, mid_b, udir_b, ndir_b;
+	qreal angle2 = 0.0;
+	vDim2.calculateGeometry(p1_b, p2_b, p1_ext_b, p2_ext_b, mid_b, angle2, udir_b, ndir_b);
+
+	// Both should face the exact same direction (-90°)
+	QCOMPARE(angle1, -90.0);
+	QCOMPARE(angle2, -90.0);
+
+	// When explicitly rotated to 270, both should be 270
+	vDim1.setTextRotation(270);
+	vDim1.calculateGeometry(p1_a, p2_a, p1_ext_a, p2_ext_a, mid_a, angle1, udir_a, ndir_a);
+	QCOMPARE(angle1, 270.0);
+
+	// Verify Dialog sets rotation and max arrow size
+	DimensionPropertiesDialog dlg(&dim);
+	auto *rotCb = dlg.findChild<QComboBox*>("m_text_rotation_cb");
+	QVERIFY(rotCb != nullptr);
+	QVERIFY(rotCb->count() >= 6); // Auto, 0, 90, 180, 270, 360
+
+	auto *arrowSb = dlg.findChild<QDoubleSpinBox*>("m_arrow_size_sb");
+	QVERIFY(arrowSb != nullptr);
+	QCOMPARE(arrowSb->maximum(), 100.0);
 }
 
 QTEST_MAIN(tst_DimensionItem)

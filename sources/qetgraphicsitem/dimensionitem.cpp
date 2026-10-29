@@ -286,18 +286,29 @@ void DimensionItem::setShowDualUnit(bool d)
 	update();
 }
 
+int DimensionItem::textRotation() const
+{
+	return m_text_rotation;
+}
+
+void DimensionItem::setTextRotation(int rot)
+{
+	if (m_text_rotation == rot) return;
+	prepareGeometryChange();
+	m_text_rotation = rot;
+	m_text_horizontal = (rot == 0);
+	emit propertiesChanged();
+	update();
+}
+
 bool DimensionItem::isTextHorizontal() const
 {
-	return m_text_horizontal;
+	return m_text_rotation == 0 || m_text_horizontal;
 }
 
 void DimensionItem::setTextHorizontal(bool h)
 {
-	if (m_text_horizontal == h) return;
-	prepareGeometryChange();
-	m_text_horizontal = h;
-	emit propertiesChanged();
-	update();
+	setTextRotation(h ? 0 : -1);
 }
 
 bool DimensionItem::isTextInLine() const
@@ -454,7 +465,8 @@ DimensionProperties DimensionItem::properties() const
 	p.textCenter = m_text_center;
 	p.showDualUnit = m_show_dual_unit;
 	p.suppressZero = m_suppress_zero;
-	p.isTextHorizontal = m_text_horizontal;
+	p.textRotation = m_text_rotation;
+	p.isTextHorizontal = (m_text_rotation == 0 || m_text_horizontal);
 	p.isTextInLine = m_text_in_line;
 	p.lineWidth = m_line_width;
 	p.extensionOvershoot = m_extension_overshoot;
@@ -483,7 +495,8 @@ void DimensionItem::setProperties(const DimensionProperties &p)
 	m_text_center = p.textCenter;
 	m_show_dual_unit = p.showDualUnit;
 	m_suppress_zero = p.suppressZero;
-	m_text_horizontal = p.isTextHorizontal;
+	m_text_rotation = p.textRotation;
+	m_text_horizontal = (p.textRotation == 0 || p.isTextHorizontal);
 	m_text_in_line = p.isTextInLine;
 	m_line_width = p.lineWidth;
 	m_pen.setWidthF(m_line_width);
@@ -707,14 +720,16 @@ void DimensionItem::calculateGeometry(QPointF &p1_dim, QPointF &p2_dim,
 
 	mid_dim = (p1_dim + p2_dim) / 2.0;
 
-	if (m_text_horizontal) {
+	if (m_text_rotation >= 0) {
+		angle_deg = static_cast<qreal>(m_text_rotation % 360);
+	} else if (m_text_horizontal) {
 		angle_deg = 0.0;
 	} else {
 		qreal rad = std::atan2(unit_dir.y(), unit_dir.x());
 		angle_deg = rad * 180.0 / 3.14159265358979323846;
 
-		// Keep dimension text readable from bottom or right edge
-		if (angle_deg > 90.0) {
+		// Keep dimension text readable from bottom or right edge (DIN 406 / ISO 129)
+		if (angle_deg >= 90.0) {
 			angle_deg -= 180.0;
 		} else if (angle_deg < -90.0) {
 			angle_deg += 180.0;
@@ -1086,7 +1101,8 @@ QDomElement DimensionItem::toXml(QDomDocument &document) const
 	xml.setAttribute(QStringLiteral("distance"), QString::number(m_text_distance, 'f', 2));
 	xml.setAttribute(QStringLiteral("center"), m_text_center ? QStringLiteral("true") : QStringLiteral("false"));
 	xml.setAttribute(QStringLiteral("dual_unit"), m_show_dual_unit ? QStringLiteral("true") : QStringLiteral("false"));
-	xml.setAttribute(QStringLiteral("horizontal"), m_text_horizontal ? QStringLiteral("true") : QStringLiteral("false"));
+	xml.setAttribute(QStringLiteral("text_rotation"), QString::number(m_text_rotation));
+	xml.setAttribute(QStringLiteral("horizontal"), (m_text_rotation == 0 || m_text_horizontal) ? QStringLiteral("true") : QStringLiteral("false"));
 	xml.setAttribute(QStringLiteral("mid_line"), m_text_in_line ? QStringLiteral("true") : QStringLiteral("false"));
 	xml.setAttribute(QStringLiteral("suppress_zero"), m_suppress_zero ? QStringLiteral("true") : QStringLiteral("false"));
 	xml.setAttribute(QStringLiteral("line_width"), QString::number(m_line_width, 'f', 2));
@@ -1123,7 +1139,13 @@ void DimensionItem::fromXml(const QDomElement &element)
 	m_text_distance = element.attribute(QStringLiteral("distance"), QStringLiteral("1.0")).toDouble();
 	m_text_center = (element.attribute(QStringLiteral("center"), QStringLiteral("true")) == QStringLiteral("true"));
 	m_show_dual_unit = (element.attribute(QStringLiteral("dual_unit"), QStringLiteral("false")) == QStringLiteral("true"));
-	m_text_horizontal = (element.attribute(QStringLiteral("horizontal"), QStringLiteral("false")) == QStringLiteral("true"));
+	if (element.hasAttribute(QStringLiteral("text_rotation"))) {
+		m_text_rotation = element.attribute(QStringLiteral("text_rotation")).toInt();
+		m_text_horizontal = (m_text_rotation == 0);
+	} else {
+		m_text_horizontal = (element.attribute(QStringLiteral("horizontal"), QStringLiteral("false")) == QStringLiteral("true"));
+		m_text_rotation = m_text_horizontal ? 0 : -1;
+	}
 	m_text_in_line = (element.attribute(QStringLiteral("mid_line"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_suppress_zero = (element.attribute(QStringLiteral("suppress_zero"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_line_width = element.attribute(QStringLiteral("line_width"), QStringLiteral("1.2")).toDouble();
@@ -1198,6 +1220,7 @@ ApplyDimensionFormatCommand::ApplyDimensionFormatCommand(const QList<DimensionIt
 		newP.suppressZero = pattern.suppressZero;
 		newP.textDistance = pattern.textDistance;
 		newP.textCenter = pattern.textCenter;
+		newP.textRotation = pattern.textRotation;
 		newP.isTextHorizontal = pattern.isTextHorizontal;
 		newP.isTextInLine = pattern.isTextInLine;
 		newP.lineWidth = pattern.lineWidth;

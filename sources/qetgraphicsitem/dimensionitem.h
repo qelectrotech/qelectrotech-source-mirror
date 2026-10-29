@@ -44,6 +44,7 @@ struct DimensionProperties
 	bool textCenter = true;
 	bool showDualUnit = false;
 	bool suppressZero = false;
+	int textRotation = -1; // -1 = Auto (Linienparallel), 0 = 0°, 90 = 90°, 180 = 180°, 270 = 270°, 360 = 360°
 	bool isTextHorizontal = false;
 	bool isTextInLine = false;
 	qreal lineWidth = 1.2;
@@ -69,6 +70,7 @@ struct DimensionProperties
 		       textCenter == o.textCenter &&
 		       showDualUnit == o.showDualUnit &&
 		       suppressZero == o.suppressZero &&
+		       textRotation == o.textRotation &&
 		       isTextHorizontal == o.isTextHorizontal &&
 		       isTextInLine == o.isTextInLine &&
 		       qFuzzyCompare(lineWidth, o.lineWidth) &&
@@ -107,6 +109,7 @@ class DimensionItem : public QetGraphicsItem
 	Q_PROPERTY(bool isFramed READ isFramed WRITE setFramed NOTIFY propertiesChanged)
 	Q_PROPERTY(bool useComma READ useComma WRITE setUseComma NOTIFY propertiesChanged)
 	Q_PROPERTY(qreal textDistance READ textDistance WRITE setTextDistance NOTIFY propertiesChanged)
+	Q_PROPERTY(int textRotation READ textRotation WRITE setTextRotation NOTIFY propertiesChanged)
 	Q_PROPERTY(bool isTextHorizontal READ isTextHorizontal WRITE setTextHorizontal NOTIFY propertiesChanged)
 	Q_PROPERTY(bool isTextInLine READ isTextInLine WRITE setTextInLine NOTIFY propertiesChanged)
 	Q_PROPERTY(bool suppressZero READ suppressZero WRITE setSuppressZero NOTIFY propertiesChanged)
@@ -185,6 +188,9 @@ public:
 
 	bool showDualUnit() const;
 	void setShowDualUnit(bool d);
+
+	int textRotation() const;
+	void setTextRotation(int rot);
 
 	bool isTextHorizontal() const;
 	void setTextHorizontal(bool h);
@@ -273,6 +279,7 @@ private:
 	qreal m_text_distance = 1.0;
 	bool m_text_center = true;
 	bool m_show_dual_unit = false;
+	int m_text_rotation = -1;
 	bool m_text_horizontal = false;
 	bool m_text_in_line = false;
 	bool m_suppress_zero = false;

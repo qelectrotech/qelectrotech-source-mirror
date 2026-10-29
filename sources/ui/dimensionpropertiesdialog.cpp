@@ -72,6 +72,13 @@ DimensionPropertiesDialog::DimensionPropertiesDialog(DimensionItem *item, QWidge
 	ui->m_terminations_cb->addItem(tr("Arrows"), DimensionItem::Arrows);
 	ui->m_terminations_cb->addItem(tr("Architectural Slashes"), DimensionItem::Slashes);
 
+	ui->m_text_rotation_cb->addItem(tr("Auto (parallel to line)"), -1);
+	ui->m_text_rotation_cb->addItem(QStringLiteral("0° (") + tr("Horizontal") + QStringLiteral(")"), 0);
+	ui->m_text_rotation_cb->addItem(QStringLiteral("90°"), 90);
+	ui->m_text_rotation_cb->addItem(QStringLiteral("180°"), 180);
+	ui->m_text_rotation_cb->addItem(QStringLiteral("270°"), 270);
+	ui->m_text_rotation_cb->addItem(QStringLiteral("360°"), 360);
+
 	if (item) {
 		m_segments = item->findChainSegments();
 	}
@@ -300,11 +307,13 @@ void DimensionPropertiesDialog::setupPropertyConnections()
 		updateValueDisplay();
 	});
 
-	// Text horizontal
-	connect(ui->m_text_horiz_cb, &QCheckBox::toggled, this, [this](bool checked) {
+	// Text rotation
+	connect(ui->m_text_rotation_cb, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int idx) {
 		if (m_updating) return;
+		int rot = ui->m_text_rotation_cb->itemData(idx).toInt();
 		for (DimensionItem *seg : selectedSegments()) {
-			m_current_props[seg].isTextHorizontal = checked;
+			m_current_props[seg].textRotation = rot;
+			m_current_props[seg].isTextHorizontal = (rot == 0);
 		}
 	});
 
@@ -450,7 +459,15 @@ void DimensionPropertiesDialog::loadItemProperties(DimensionItem *item)
 	ui->m_dual_unit_cb->setChecked(p.showDualUnit);
 	ui->m_precision_cb->setCurrentIndex(p.precision >= 0 && p.precision <= 3 ? p.precision : 1);
 	ui->m_suppress_zero_cb->setChecked(p.suppressZero);
-	ui->m_text_horiz_cb->setChecked(p.isTextHorizontal);
+	int rotIdx = ui->m_text_rotation_cb->findData(p.textRotation);
+	if (rotIdx < 0) {
+		if (p.isTextHorizontal || p.textRotation == 0) {
+			rotIdx = ui->m_text_rotation_cb->findData(0);
+		} else {
+			rotIdx = 0; // Default to Automatisch (-1)
+		}
+	}
+	ui->m_text_rotation_cb->setCurrentIndex(rotIdx >= 0 ? rotIdx : 0);
 	ui->m_mid_line_cb->setChecked(p.isTextInLine);
 
 	ui->m_line_width_sb->setValue(p.lineWidth);
