@@ -788,7 +788,14 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 				bridge_commands << added;
 			}
 		}
-		PasteNumberingImport::push(this, m_diagram, content_pasted,
+			for (Bridge *bridge : std::as_const(pasted_bridges)) {
+		for (BridgePart *part : BridgePart::allParts()) {
+			if (part && part->bridge() == bridge) {
+				part->setSelected(true);
+			}
+		}
+	}
+PasteNumberingImport::push(this, m_diagram, content_pasted,
 								   PasteNumberingImport::copiedBy(document_xml),
 								   cable_commands + bridge_commands);
 			//The stack has just renewed the identity of a pasted
@@ -867,6 +874,7 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 	// should not clobber whatever the user last copied with Ctrl+C.
 	QDomDocument document = m_diagram->toXml(false, true);
 	CableCopy::write(m_diagram, document);
+	BridgeCopy::write(m_diagram, document);
 
 	DiagramContent pasted;
 	QList<CablePart *> cable_pasted;
@@ -923,7 +931,14 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 	for (const CableCopy::Wired &line : std::as_const(wired)) {
 		if (line.part) line.part->setSelected(true);
 	}
-	if (command) m_diagram->undoStack().push(command);
+		for (Bridge *bridge : std::as_const(pasted_bridges)) {
+		for (BridgePart *part : BridgePart::allParts()) {
+			if (part && part->bridge() == bridge) {
+				part->setSelected(true);
+			}
+		}
+	}
+if (command) m_diagram->undoStack().push(command);
 		//Same as a paste: the stack has renewed the identity of the
 		//pasted conductors, so the cores are pointed at the wires again
 		//and the cable fields written out once more.

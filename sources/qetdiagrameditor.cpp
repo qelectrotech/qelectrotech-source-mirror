@@ -3293,10 +3293,11 @@ void QETDiagramEditor::slot_updateComplexActions()
 
 		//A drawn cable line is copyable, cuttable and duplicatable on
 		//its own, although it belongs to its cable rather than to the
-		//folio and DiagramContent never sees it. A bridge line is only
-		//deletable so far: a drawn bridge is not copied yet, so cutting
-		//one would take it away without leaving it on the clipboard.
-	bool copiable_items  = dc.hasCopiableItems() || selected_cables > 0;
+		//folio and DiagramContent never sees it. A bridge line the
+		//same way: it travels beside the folio's own XML, and what is
+		//pasted is a bridge of its own.
+	bool copiable_items  = dc.hasCopiableItems() || selected_cables > 0
+			|| selected_bridge_parts > 0;
 	bool deletable_items = dc.hasDeletableItems() || selected_cables > 0
 			|| selected_bridge_parts > 0;
 	m_cut              -> setEnabled(!ro && copiable_items);
