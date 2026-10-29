@@ -6,6 +6,10 @@
 
 #include <QMainWindow>
 #include <QScrollArea>
+#include <QScrollBar>
+#include <QSpinBox>
+#include <QVBoxLayout>
+#include <QWheelEvent>
 
 // The selection properties dock scrolls its editors when it is lower than
 // they are: before, its smallest height was theirs, and in a low window the
@@ -49,6 +53,62 @@ class tst_propertiesdockscroll : public QObject
 			delete editor;
 			QApplication::processEvents();
 			QCOMPARE(scroll->maximumHeight(), 0);
+		}
+
+			// Tabbed with another dock, the scroll area keeps no maximum:
+			// the tab stack would take it for all its tabs
+		void noMaximumWhenTabbed()
+		{
+			QMainWindow window;
+			auto *dock = new PropertiesEditorDockWidget(&window);
+			auto *other = new QDockWidget(QStringLiteral("other"), &window);
+			other->setWidget(new QWidget(other));
+			window.addDockWidget(Qt::RightDockWidgetArea, dock);
+			window.addDockWidget(Qt::RightDockWidgetArea, other);
+			window.tabifyDockWidget(other, dock);
+			window.setCentralWidget(new QWidget(&window));
+			window.resize(600, 400);
+			window.show();
+			QVERIFY(QTest::qWaitForWindowExposed(&window));
+			auto *editor = new PropertiesEditorWidget;
+			editor->setMinimumHeight(100);
+			dock->addEditor(editor);
+			QApplication::processEvents();
+			QTest::qWait(50);
+			auto *scroll = dock->findChild<QScrollArea *>(QStringLiteral("m_scroll_area"));
+			QVERIFY(scroll);
+			QCOMPARE(scroll->maximumHeight(), QWIDGETSIZE_MAX);
+			QVERIFY(dock->height() > 200);
+		}
+
+			// The wheel over a spin box without focus scrolls the dock
+		void wheelScrollsOverFields()
+		{
+			QMainWindow window;
+			auto *dock = new PropertiesEditorDockWidget(&window);
+			window.addDockWidget(Qt::RightDockWidgetArea, dock);
+			window.setCentralWidget(new QWidget(&window));
+			window.resize(600, 300);
+			window.show();
+			QVERIFY(QTest::qWaitForWindowExposed(&window));
+			auto *editor = new PropertiesEditorWidget;
+			auto *layout = new QVBoxLayout(editor);
+			auto *spin = new QSpinBox(editor);
+			spin->setRange(0, 100);
+			spin->setValue(50);
+			layout->addWidget(spin);
+			editor->setMinimumHeight(800);
+			dock->addEditor(editor);
+			QApplication::processEvents();
+			QTest::qWait(50);
+			QCOMPARE(spin->focusPolicy(), Qt::StrongFocus);
+			QWheelEvent wheel(QPointF(5, 5), spin->mapToGlobal(QPointF(5, 5)), QPoint(),
+					  QPoint(0, -120), Qt::NoButton, Qt::NoModifier,
+					  Qt::NoScrollPhase, false);
+			QCoreApplication::sendEvent(spin, &wheel);
+			QCOMPARE(spin->value(), 50);
+			auto *scroll = dock->findChild<QScrollArea *>(QStringLiteral("m_scroll_area"));
+			QVERIFY(scroll->verticalScrollBar()->value() > 0);
 		}
 };
 

@@ -19,6 +19,9 @@
 #include "ui_propertieseditordockwidget.h"
 #include "propertieseditorwidget.h"
 
+#include <QAbstractSlider>
+#include <QAbstractSpinBox>
+#include <QComboBox>
 #include <QEvent>
 #include <QMainWindow>
 #include <QScrollArea>
@@ -38,6 +41,10 @@ PropertiesEditorDockWidget::PropertiesEditorDockWidget(QWidget *parent) :
 		// The editors scroll when the dock is lower than they are, rather
 		// than spilling over the dock below; see fitScrollArea()
 	ui->m_scroll_contents->installEventFilter(this);
+		// The background of the dock, not of a text field, in every theme
+	ui->m_scroll_area->setBackgroundRole(QPalette::Window);
+	ui->m_scroll_area->viewport()->setBackgroundRole(QPalette::Window);
+	ui->m_scroll_contents->setAutoFillBackground(false);
 	fitScrollArea();
 		// Tabbed or not can change without the selection changing
 	connect(this, &QDockWidget::dockLocationChanged,
@@ -242,6 +249,7 @@ void PropertiesEditorDockWidget::restoreHeight()
 void PropertiesEditorDockWidget::updateSizeConstraint()
 {
 	const bool tabbed = isTabbed();
+	fitScrollArea();
 	const QLayout::SizeConstraint constraint = tabbed
 			? QLayout::SetDefaultConstraint
 			: QLayout::SetMaximumSize;
@@ -263,6 +271,15 @@ bool PropertiesEditorDockWidget::eventFilter(QObject *watched, QEvent *event)
 {
 	if (watched == ui->m_scroll_contents && event->type() == QEvent::LayoutRequest)
 		fitScrollArea();
+		// The wheel over a field that is not being edited scrolls the
+		// dock, rather than changing the field's value under the mouse
+	if (event->type() == QEvent::Wheel && watched != ui->m_scroll_contents) {
+		auto *field = qobject_cast<QWidget *>(watched);
+		if (field && !field->hasFocus()) {
+			QCoreApplication::sendEvent(ui->m_scroll_area->verticalScrollBar(), event);
+			return true;
+		}
+	}
 	return QDockWidget::eventFilter(watched, event);
 }
 
@@ -276,7 +293,19 @@ bool PropertiesEditorDockWidget::eventFilter(QObject *watched, QEvent *event)
 void PropertiesEditorDockWidget::fitScrollArea()
 {
 	const QSize hint = ui->m_scroll_contents->sizeHint();
-	ui->m_scroll_area->setMaximumHeight(m_editor_list.isEmpty() ? 0 : hint.height());
+		// Tabbed, the stack takes the smallest maximum height of its tabs
+		// (see updateSizeConstraint()): no maximum here then
+	ui->m_scroll_area->setMaximumHeight(isTabbed()
+			? QWIDGETSIZE_MAX
+			: m_editor_list.isEmpty() ? 0 : hint.height());
+	for (QWidget *field : ui->m_scroll_contents->findChildren<QWidget *>())
+		if ((qobject_cast<QAbstractSpinBox *>(field) || qobject_cast<QComboBox *>(field)
+		     || qobject_cast<QAbstractSlider *>(field))
+		    && !field->property("qetWheelWatched").toBool()) {
+			field->setProperty("qetWheelWatched", true);
+			field->setFocusPolicy(Qt::StrongFocus);
+			field->installEventFilter(this);
+		}
 	ui->m_scroll_area->setMinimumWidth(
 				ui->m_scroll_contents->minimumSizeHint().width()
 				+ ui->m_scroll_area->verticalScrollBar()->sizeHint().width());
