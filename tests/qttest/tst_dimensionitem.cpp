@@ -47,6 +47,8 @@ class tst_DimensionItem : public QObject
 	void testUndoRedoProperties();
 	void testUndoRedoDialog();
 	void testEscapeCancelsTool();
+	void testFormatPainterDimension();
+	void testDialogButtons();
 };
 
 void tst_DimensionItem::testDefaultValues()
@@ -354,6 +356,105 @@ void tst_DimensionItem::testEscapeCancelsTool()
 	// The event should be accepted and the tool aborted/cleared
 	QCOMPARE(escEvent.isAccepted(), true);
 	QCOMPARE(diagram->eventInterfaceIsRunning(), false);
+}
+
+void tst_DimensionItem::testFormatPainterDimension()
+{
+	QETProject project;
+	Diagram *diagram = project.addNewDiagram();
+	QVERIFY(diagram != nullptr);
+
+	auto *sourceDim = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0);
+	sourceDim->setPrefix(QStringLiteral("⌀"));
+	sourceDim->setPrecision(2);
+	sourceDim->setLineWidth(2.0);
+	sourceDim->setTerminationStyle(DimensionItem::Slashes);
+	diagram->undoStack().push(new AddGraphicsObjectCommand(sourceDim, diagram));
+
+	auto *targetDim1 = new DimensionItem(QPointF(0, 100), QPointF(200, 100), 25.0);
+	auto *targetDim2 = new DimensionItem(QPointF(0, 200), QPointF(300, 200), 30.0);
+	diagram->undoStack().push(new AddGraphicsObjectCommand(targetDim1, diagram));
+	diagram->undoStack().push(new AddGraphicsObjectCommand(targetDim2, diagram));
+
+	// Copy format from source
+	DimensionFormatPattern::setCurrentPattern(sourceDim->properties());
+	QCOMPARE(DimensionFormatPattern::hasPattern(), true);
+
+	// Apply format to targets via ApplyDimensionFormatCommand
+	QList<DimensionItem *> targets{targetDim1, targetDim2};
+	diagram->undoStack().push(new ApplyDimensionFormatCommand(targets, DimensionFormatPattern::currentPattern()));
+
+	// Verify targets received source format
+	QCOMPARE(targetDim1->prefix(), QStringLiteral("⌀"));
+	QCOMPARE(targetDim1->precision(), 2);
+	QCOMPARE(targetDim1->lineWidth(), 2.0);
+	QCOMPARE(targetDim1->terminationStyle(), DimensionItem::Slashes);
+
+	QCOMPARE(targetDim2->prefix(), QStringLiteral("⌀"));
+	QCOMPARE(targetDim2->precision(), 2);
+	QCOMPARE(targetDim2->lineWidth(), 2.0);
+	QCOMPARE(targetDim2->terminationStyle(), DimensionItem::Slashes);
+
+	// Verify length & offset of targetDim1 were NOT overwritten
+	QCOMPARE(targetDim1->dimensionValueMM(), 100.0);
+	QCOMPARE(targetDim1->offset(), 25.0);
+
+	// Test Undo
+	diagram->undoStack().undo();
+	QCOMPARE(targetDim1->prefix(), QString());
+	QCOMPARE(targetDim1->precision(), 1);
+	QCOMPARE(targetDim1->terminationStyle(), DimensionItem::Arrows);
+
+	// Test Redo
+	diagram->undoStack().redo();
+	QCOMPARE(targetDim1->prefix(), QStringLiteral("⌀"));
+	QCOMPARE(targetDim1->precision(), 2);
+	QCOMPARE(targetDim1->terminationStyle(), DimensionItem::Slashes);
+}
+
+void tst_DimensionItem::testDialogButtons()
+{
+	QETProject project;
+	Diagram *diagram = project.addNewDiagram();
+	QVERIFY(diagram != nullptr);
+
+	auto *dim = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0);
+	diagram->undoStack().push(new AddGraphicsObjectCommand(dim, diagram));
+
+	int undoCountBefore = diagram->undoStack().count();
+
+	// Test Ok button via m_buttonBox
+	{
+		DimensionPropertiesDialog dialog(dim);
+		auto *buttonBox = dialog.findChild<QDialogButtonBox*>("m_buttonBox");
+		QVERIFY(buttonBox != nullptr);
+		auto *prefixCb = dialog.findChild<QComboBox*>("m_prefix_cb");
+		QVERIFY(prefixCb != nullptr);
+
+		prefixCb->setCurrentText(QStringLiteral("L="));
+
+		// Click OK button
+		buttonBox->button(QDialogButtonBox::Ok)->click();
+	}
+
+	QCOMPARE(diagram->undoStack().count(), undoCountBefore + 1);
+	QCOMPARE(dim->prefix(), QStringLiteral("L="));
+
+	// Test Cancel button via m_buttonBox
+	{
+		DimensionPropertiesDialog dialog(dim);
+		auto *buttonBox = dialog.findChild<QDialogButtonBox*>("m_buttonBox");
+		auto *prefixCb = dialog.findChild<QComboBox*>("m_prefix_cb");
+
+		prefixCb->setCurrentText(QStringLiteral("TEST_DISCARD"));
+
+		// Click Cancel button
+		buttonBox->button(QDialogButtonBox::Cancel)->click();
+	}
+
+	// Should not have pushed anything new, and prefix should remain L=
+	QCOMPARE(diagram->undoStack().count(), undoCountBefore + 1);
+	QCOMPARE(dim->prefix(), QStringLiteral("L="));
 }
 
 QTEST_MAIN(tst_DimensionItem)

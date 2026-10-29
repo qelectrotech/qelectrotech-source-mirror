@@ -285,6 +285,9 @@
               <property name="text">
                <string>Maßzahl als Bruch anzeigen</string>
               </property>
+              <property name="checked">
+               <bool>false</bool>
+              </property>
              </widget>
             </item>
             <item row="5" column="0" colspan="3">

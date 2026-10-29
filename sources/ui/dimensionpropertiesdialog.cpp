@@ -97,6 +97,9 @@ DimensionPropertiesDialog::DimensionPropertiesDialog(DimensionItem *item, QWidge
 	connect(ui->m_suppress_zero_cb, &QCheckBox::toggled,
 	        this, &DimensionPropertiesDialog::updateValueDisplay);
 
+	connect(ui->m_buttonBox, &QDialogButtonBox::accepted, this, &DimensionPropertiesDialog::accept);
+	connect(ui->m_buttonBox, &QDialogButtonBox::rejected, this, &DimensionPropertiesDialog::reject);
+
 	QPushButton *applyBtn = ui->m_buttonBox->button(QDialogButtonBox::Apply);
 	if (applyBtn) {
 		connect(applyBtn, &QPushButton::clicked, this, &DimensionPropertiesDialog::onApplyClicked);

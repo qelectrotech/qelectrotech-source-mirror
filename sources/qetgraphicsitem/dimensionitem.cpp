@@ -914,3 +914,86 @@ void DimensionItem::fromXml(const QDomElement &element)
 	}
 	prepareGeometryChange();
 }
+
+DimensionProperties DimensionFormatPattern::s_current_pattern;
+bool DimensionFormatPattern::s_has_pattern = false;
+
+bool DimensionFormatPattern::hasPattern()
+{
+	return s_has_pattern;
+}
+
+const DimensionProperties &DimensionFormatPattern::currentPattern()
+{
+	return s_current_pattern;
+}
+
+void DimensionFormatPattern::setCurrentPattern(const DimensionProperties &p)
+{
+	s_current_pattern = p;
+	s_has_pattern = true;
+}
+
+void DimensionFormatPattern::clearPattern()
+{
+	s_has_pattern = false;
+}
+
+ApplyDimensionFormatCommand::ApplyDimensionFormatCommand(const QList<DimensionItem *> &items,
+                                                         const DimensionProperties &pattern,
+                                                         QUndoCommand *parent) :
+	QUndoCommand(parent)
+{
+	setText(QObject::tr("Apply dimension format"));
+
+	for (DimensionItem *it : items) {
+		if (!it) continue;
+		ItemChange change;
+		change.item = it;
+		change.oldProps = it->properties();
+
+		DimensionProperties newP = change.oldProps;
+		newP.prefix = pattern.prefix;
+		newP.suffix = pattern.suffix;
+		newP.unit = pattern.unit;
+		newP.showUnit = pattern.showUnit;
+		newP.showDualUnit = pattern.showDualUnit;
+		newP.precision = pattern.precision;
+		newP.useComma = pattern.useComma;
+		newP.suppressZero = pattern.suppressZero;
+		newP.fractionFormat = pattern.fractionFormat;
+		newP.textDistance = pattern.textDistance;
+		newP.textCenter = pattern.textCenter;
+		newP.isTextHorizontal = pattern.isTextHorizontal;
+		newP.isTextInLine = pattern.isTextInLine;
+		newP.lineWidth = pattern.lineWidth;
+		newP.extensionOvershoot = pattern.extensionOvershoot;
+		newP.extensionGap = pattern.extensionGap;
+		newP.terminationStyle = pattern.terminationStyle;
+		newP.arrowSize = pattern.arrowSize;
+		newP.isFramed = pattern.isFramed;
+		newP.maskBackground = pattern.maskBackground;
+		newP.fontSize = pattern.fontSize;
+
+		change.newProps = newP;
+		m_changes.append(change);
+	}
+}
+
+void ApplyDimensionFormatCommand::undo()
+{
+	for (const auto &c : m_changes) {
+		if (c.item) {
+			c.item->setProperties(c.oldProps);
+		}
+	}
+}
+
+void ApplyDimensionFormatCommand::redo()
+{
+	for (const auto &c : m_changes) {
+		if (c.item) {
+			c.item->setProperties(c.newProps);
+		}
+	}
+}

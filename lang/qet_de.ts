@@ -12404,6 +12404,21 @@ Verfügbare Optionen:
         <source>Text format of &quot;%1&quot; copied</source>
         <translation>Beschriftungsart von „%1“ kopiert</translation>
     </message>
+    <message>
+        <source>Dimension format copied</source>
+        <translation>Bemaßungsformat kopiert</translation>
+    </message>
+    <message numerus="yes">
+        <source>Dimension format applied to %n dimension(s)</source>
+        <translation>
+            <numerusform>Bemaßungsformat auf %n Bemaßung übertragen</numerusform>
+            <numerusform>Bemaßungsformat auf %n Bemaßungen übertragen</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Apply dimension format</source>
+        <translation>Bemaßungsformat zuweisen</translation>
+    </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="5270"/>
         <source>Text format applied to %n element(s)</source>

@@ -3565,11 +3565,13 @@ void QETDiagramEditor::slot_updateComplexActions()
 	int selected_conductors_count = diagram_->selectedConductors().count();
 	m_conductor_reset->setEnabled(!ro && selected_conductors_count);
 
-	// number of selected elements
+	// number of selected elements and dimensions
 	int selected_elements_count = dc.count(DiagramContent::Elements);
+	int selected_dimensions_count = dc.count(DiagramContent::Dimensions);
 	m_find_element->setEnabled(selected_elements_count == 1);
-	m_copy_text_format->setEnabled(selected_elements_count >= 1);
-	m_apply_text_format->setEnabled(!ro && selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern());
+	m_copy_text_format->setEnabled(selected_elements_count >= 1 || selected_dimensions_count >= 1);
+	m_apply_text_format->setEnabled(!ro && ((selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern()) ||
+	                                        (selected_dimensions_count >= 1 && DimensionFormatPattern::hasPattern())));
 	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
 	m_mirror_horizontal->setEnabled(!ro && selected_elements_count);
 	m_mirror_vertical->setEnabled(!ro && selected_elements_count);
@@ -5466,12 +5468,25 @@ void QETDiagramEditor::copyTextFormat()
 	DiagramView *dv = currentDiagramView();
 	if (!dv || !dv->diagram()) return;
 
+	DimensionItem *sourceDim = nullptr;
 	Element *sourceElmt = nullptr;
+
 	for (QGraphicsItem *item : dv->diagram()->selectedItems()) {
-		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
-			sourceElmt = elmt;
+		if (DimensionItem *dim = qgraphicsitem_cast<DimensionItem *>(item)) {
+			sourceDim = dim;
 			break;
+		} else if (!sourceElmt) {
+			if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
+			sourceElmt = elmt;
+			}
 		}
+	}
+
+	if (sourceDim) {
+		DimensionFormatPattern::setCurrentPattern(sourceDim->properties());
+		slot_updateComplexActions();
+		statusBar()->showMessage(tr("Dimension format copied"), 3000);
+		return;
 	}
 
 	if (!sourceElmt) return;
@@ -5511,25 +5526,42 @@ void QETDiagramEditor::placeSymbolTexts(Qt::Alignment where)
 
 void QETDiagramEditor::applyTextFormat()
 {
-	if (!ElementTextFormatPattern::hasPattern()) return;
-
 	DiagramView *dv = currentDiagramView();
-	if (!dv || !dv->diagram()) return;
-	if (dv->diagram()->isReadOnly()) return;
+	if (!dv || !dv->diagram() || dv->diagram()->isReadOnly()) return;
 
-	QList<Element *> targetElements;
-	for (QGraphicsItem *item : dv->diagram()->selectedItems()) {
-		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
-			targetElements.append(elmt);
+	bool applied = false;
+
+	if (DimensionFormatPattern::hasPattern()) {
+		QList<DimensionItem *> targetDimensions;
+		for (QGraphicsItem *item : dv->diagram()->selectedItems()) {
+			if (DimensionItem *dim = qgraphicsitem_cast<DimensionItem *>(item)) {
+				targetDimensions.append(dim);
+			}
+		}
+		if (!targetDimensions.isEmpty()) {
+			const DimensionProperties &pattern = DimensionFormatPattern::currentPattern();
+			dv->diagram()->undoStack().push(new ApplyDimensionFormatCommand(targetDimensions, pattern));
+			statusBar()->showMessage(tr("Dimension format applied to %n dimension(s)", "", targetDimensions.size()), 3000);
+			applied = true;
 		}
 	}
 
-	if (targetElements.isEmpty()) return;
-
-	const ElementTextFormatPattern &pattern = ElementTextFormatPattern::currentPattern();
-	dv->diagram()->undoStack().push(new ApplyElementTextFormatCommand(targetElements, pattern));
-
-	statusBar()->showMessage(tr("Text format applied to %n element(s)", "", targetElements.size()), 3000);
+	if (ElementTextFormatPattern::hasPattern()) {
+		QList<Element *> targetElements;
+		for (QGraphicsItem *item : dv->diagram()->selectedItems()) {
+			if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
+				targetElements.append(elmt);
+			}
+		}
+		if (!targetElements.isEmpty()) {
+			const ElementTextFormatPattern &pattern = ElementTextFormatPattern::currentPattern();
+			dv->diagram()->undoStack().push(new ApplyElementTextFormatCommand(targetElements, pattern));
+			if (!applied) {
+				statusBar()->showMessage(tr("Text format applied to %n element(s)", "", targetElements.size()), 3000);
+			}
+			applied = true;
+		}
+	}
 }
 
 /**

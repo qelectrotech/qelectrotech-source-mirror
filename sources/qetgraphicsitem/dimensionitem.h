@@ -22,6 +22,8 @@
 #include <QFont>
 #include <QPen>
 #include <QUuid>
+#include <QUndoCommand>
+#include <QPointer>
 
 class QDomDocument;
 class QDomElement;
@@ -35,7 +37,7 @@ struct DimensionProperties
 	int precision = 1;
 	QString unit = QStringLiteral("mm");
 	bool showUnit = false;
-	bool isFramed = true;
+	bool isFramed = false;
 	bool useComma = true;
 	qreal textDistance = 1.0;
 	bool textCenter = true;
@@ -43,14 +45,14 @@ struct DimensionProperties
 	bool suppressZero = false;
 	bool fractionFormat = false;
 	bool isTextHorizontal = false;
-	bool isTextInLine = true;
+	bool isTextInLine = false;
 	qreal lineWidth = 1.2;
 	qreal extensionOvershoot = 5.0;
 	qreal extensionGap = 0.0;
 	qreal offset = 20.0;
 	int terminationStyle = 0; // 0 = Arrows, 1 = Slashes
 	qreal arrowSize = 8.0;
-	bool maskBackground = true;
+	bool maskBackground = false;
 	int fontSize = 8;
 
 	bool operator==(const DimensionProperties &o) const {
@@ -279,6 +281,45 @@ private:
 	QUuid m_uuid;
 	QPen m_pen;
 	QFont m_font;
+};
+
+/**
+ * @brief Manages the stored formatting pattern for dimension items (Format Painter clipboard).
+ */
+class DimensionFormatPattern
+{
+public:
+	static bool hasPattern();
+	static const DimensionProperties &currentPattern();
+	static void setCurrentPattern(const DimensionProperties &p);
+	static void clearPattern();
+
+private:
+	static DimensionProperties s_current_pattern;
+	static bool s_has_pattern;
+};
+
+/**
+ * @brief Undo command to apply a dimension formatting pattern to one or multiple DimensionItems.
+ * Measured distance and geometry are preserved unchanged.
+ */
+class ApplyDimensionFormatCommand : public QUndoCommand
+{
+public:
+	ApplyDimensionFormatCommand(const QList<DimensionItem *> &items,
+	                            const DimensionProperties &pattern,
+	                            QUndoCommand *parent = nullptr);
+
+	void undo() override;
+	void redo() override;
+
+private:
+	struct ItemChange {
+		QPointer<DimensionItem> item;
+		DimensionProperties oldProps;
+		DimensionProperties newProps;
+	};
+	QList<ItemChange> m_changes;
 };
 
 #endif // DIMENSIONITEM_H
