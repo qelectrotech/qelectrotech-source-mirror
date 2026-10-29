@@ -42,9 +42,12 @@ public:
 	DiagramEventAddDimension(Diagram *diagram, DimensionItem::DimensionMode mode = DimensionItem::Linear);
 	~DiagramEventAddDimension() override;
 
+	void init() override;
 	void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 	void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 	void keyPressEvent(QKeyEvent *event) override;
+
+	static QCursor dimensionCursor();
 
 private:
 	void updateStatusHint();

@@ -27,6 +27,7 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcontent.h"
 #include "diagramevent/diagrameventaddcable.h"
+#include "diagramevent/diagrameventadddimension.h"
 #include "diagramevent/diagrameventinterface.h"
 #include "diagramposition.h"
 #include "factory/elementfactory.h"
@@ -1235,6 +1236,17 @@ bool Diagram::cableToolIsRunning() const
 	return m_event_interface
 	       && m_event_interface->isRunning()
 	       && qobject_cast<DiagramEventAddCable *>(m_event_interface);
+}
+
+/**
+	@brief Diagram::dimensionToolIsRunning
+	@return true while the CAD dimensioning tool is the running tool.
+*/
+bool Diagram::dimensionToolIsRunning() const
+{
+	return m_event_interface
+	       && m_event_interface->isRunning()
+	       && qobject_cast<DiagramEventAddDimension *>(m_event_interface);
 }
 
 /**

@@ -23,8 +23,12 @@
 #include "../undocommand/addgraphicsobjectcommand.h"
 
 #include <cmath>
+#include <QCursor>
 #include <QGraphicsSceneMouseEvent>
+#include <QGraphicsView>
 #include <QKeyEvent>
+#include <QPainter>
+#include <QPainterPath>
 #include <QStatusBar>
 
 /**
@@ -37,7 +41,8 @@ DiagramEventAddDimension::DiagramEventAddDimension(Diagram *diagram, DimensionIt
 	m_state(WaitingForP1),
 	m_dimension_item(nullptr)
 {
-	updateStatusHint();
+	m_running = true;
+	init();
 }
 
 /**
@@ -52,11 +57,70 @@ DiagramEventAddDimension::~DiagramEventAddDimension()
 		m_dimension_item = nullptr;
 	}
 
-	if (m_diagram && !m_diagram->views().isEmpty()) {
-		if (auto *editor = QETApp::diagramEditorAncestorOf(m_diagram->views().constFirst())) {
-			editor->statusBar()->clearMessage();
+	if (m_diagram) {
+		for (auto *view : m_diagram->views()) {
+			view->viewport()->unsetCursor();
+			view->viewport()->update();
+		}
+		if (!m_diagram->views().isEmpty()) {
+			if (auto *editor = QETApp::diagramEditorAncestorOf(m_diagram->views().constFirst())) {
+				editor->statusBar()->clearMessage();
+			}
 		}
 	}
+}
+
+void DiagramEventAddDimension::init()
+{
+	m_running = true;
+	if (m_diagram) {
+		for (auto *view : m_diagram->views()) {
+			view->viewport()->setCursor(dimensionCursor());
+			view->viewport()->update();
+		}
+	}
+	updateStatusHint();
+}
+
+QCursor DiagramEventAddDimension::dimensionCursor()
+{
+	static QCursor cursor;
+	static bool initialized = false;
+	if (!initialized) {
+		QPixmap pixmap(32, 32);
+		pixmap.fill(Qt::transparent);
+
+		QPainter painter(&pixmap);
+		painter.setRenderHint(QPainter::Antialiasing, true);
+
+		// Arrow pointer at (0, 0)
+		QPainterPath path;
+		path.addPolygon(QPolygonF({{0, 0}, {0, 16}, {4, 12}, {7, 18}, {9.5, 17}, {6.5, 11}, {11.5, 11}, {0, 0}}));
+		painter.setPen(QPen(Qt::white, 1));
+		painter.setBrush(Qt::black);
+		painter.drawPath(path);
+
+		// Dimension badge |<->| beside the arrow
+		QPen haloPen(Qt::white, 2.5, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
+		painter.setPen(haloPen);
+		painter.drawLine(QPointF(13, 5), QPointF(13, 15));
+		painter.drawLine(QPointF(27, 5), QPointF(27, 15));
+		painter.drawLine(QPointF(13, 10), QPointF(27, 10));
+
+		QPen darkPen(Qt::black, 1.2, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
+		painter.setPen(darkPen);
+		painter.drawLine(QPointF(13, 5), QPointF(13, 15));
+		painter.drawLine(QPointF(27, 5), QPointF(27, 15));
+		painter.drawLine(QPointF(13, 10), QPointF(27, 10));
+		painter.drawLine(QPointF(13, 10), QPointF(16, 7.5));
+		painter.drawLine(QPointF(13, 10), QPointF(16, 12.5));
+		painter.drawLine(QPointF(27, 10), QPointF(24, 7.5));
+		painter.drawLine(QPointF(27, 10), QPointF(24, 12.5));
+
+		cursor = QCursor(pixmap, 0, 0);
+		initialized = true;
+	}
+	return cursor;
 }
 
 void DiagramEventAddDimension::mousePressEvent(QGraphicsSceneMouseEvent *event)
@@ -220,7 +284,9 @@ void DiagramEventAddDimension::finishChain()
 		delete m_dimension_item;
 		m_dimension_item = nullptr;
 	}
-	m_diagram->clearEventInterface();
+	m_running = false;
+	m_abort = false;
+	emit finish();
 }
 
 void DiagramEventAddDimension::abortTool()
@@ -230,7 +296,9 @@ void DiagramEventAddDimension::abortTool()
 		delete m_dimension_item;
 		m_dimension_item = nullptr;
 	}
-	m_diagram->clearEventInterface();
+	m_running = false;
+	m_abort = true;
+	emit finish();
 }
 
 void DiagramEventAddDimension::updateStatusHint()

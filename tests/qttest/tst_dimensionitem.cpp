@@ -15,25 +15,27 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QtTest>
-#include <QDomDocument>
-#include <QDomElement>
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagram.h"
 #include "diagramcontent.h"
-#include "qetproject.h"
 #include "qetgraphicsitem/dimensionitem.h"
+#include "qetproject.h"
+#include "ui/dimensionpropertiesdialog.h"
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "undocommand/deleteqgraphicsitemcommand.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "ui/dimensionpropertiesdialog.h"
-#include <QComboBox>
+
 #include <QCheckBox>
+#include "diagramevent/diagrameventadddimension.h"
+#include <QComboBox>
+#include <QDomDocument>
+#include <QDomElement>
+#include <QtTest>
 
 class tst_DimensionItem : public QObject
 {
 	Q_OBJECT
 
-private slots:
+  private slots:
 	void testDefaultValues();
 	void testScaleFactorAndFormatting();
 	void testCustomText();
@@ -44,6 +46,7 @@ private slots:
 	void testUndoRedoDelete();
 	void testUndoRedoProperties();
 	void testUndoRedoDialog();
+	void testEscapeCancelsTool();
 };
 
 void tst_DimensionItem::testDefaultValues()
@@ -54,7 +57,7 @@ void tst_DimensionItem::testDefaultValues()
 	QCOMPARE(dim.offset(), 20.0);
 	QCOMPARE(dim.mode(), DimensionItem::Linear);
 	QCOMPARE(dim.terminationStyle(), DimensionItem::Arrows);
-	QCOMPARE(dim.isFramed(), true);
+	QCOMPARE(dim.isFramed(), false);
 	QCOMPARE(dim.useComma(), true);
 	QCOMPARE(dim.precision(), 1);
 }
@@ -113,26 +116,26 @@ void tst_DimensionItem::testOffsetAndGeometry()
 	QCOMPARE(dim.offset(), -45.0);
 
 	QRectF br = dim.boundingRect();
-	QVERIFY(!br.isEmpty());
+	QVERIFY(! br.isEmpty());
 	QVERIFY(br.contains(QPointF(50, 0)));
 
 	QPainterPath sh = dim.shape();
-	QVERIFY(!sh.isEmpty());
+	QVERIFY(! sh.isEmpty());
 }
 
 void tst_DimensionItem::testPropertiesStruct()
 {
-	DimensionItem dim;
+	DimensionItem		dim;
 	DimensionProperties p = dim.properties();
-	QCOMPARE(p.isFramed, true);
+	QCOMPARE(p.isFramed, false);
 	QCOMPARE(p.useComma, true);
 	QCOMPARE(p.precision, 1);
 
-	p.prefix = QStringLiteral("M");
-	p.customText = QStringLiteral("12");
+	p.prefix	  = QStringLiteral("M");
+	p.customText  = QStringLiteral("12");
 	p.isAutoValue = false;
-	p.precision = 2;
-	p.isFramed = false;
+	p.precision	  = 2;
+	p.isFramed	  = true;
 	dim.setProperties(p);
 
 	DimensionProperties p2 = dim.properties();
@@ -140,13 +143,17 @@ void tst_DimensionItem::testPropertiesStruct()
 	QCOMPARE(p2.customText, QStringLiteral("12"));
 	QCOMPARE(p2.isAutoValue, false);
 	QCOMPARE(p2.precision, 2);
-	QCOMPARE(p2.isFramed, false);
+	QCOMPARE(p2.isFramed, true);
 	QCOMPARE(p, p2);
 }
 
 void tst_DimensionItem::testXmlSerializationRoundtrip()
 {
-	DimensionItem original(QPointF(50, 100), QPointF(250, 100), 35.0, DimensionItem::Chain);
+	DimensionItem original(
+		QPointF(50, 100),
+		QPointF(250, 100),
+		35.0,
+		DimensionItem::Chain);
 	original.setAutoValue(false);
 	original.setCustomText(QStringLiteral("TEST_DIM"));
 	original.setTerminationStyle(DimensionItem::Slashes);
@@ -154,7 +161,7 @@ void tst_DimensionItem::testXmlSerializationRoundtrip()
 	original.setFramed(true);
 
 	QDomDocument doc;
-	QDomElement xml = original.toXml(doc);
+	QDomElement	 xml = original.toXml(doc);
 
 	QCOMPARE(xml.tagName(), QStringLiteral("dimension"));
 	QCOMPARE(xml.attribute(QStringLiteral("x1")), QStringLiteral("50.00"));
@@ -189,9 +196,9 @@ void tst_DimensionItem::testXmlSerializationRoundtrip()
 void tst_DimensionItem::testUndoRedoAdd()
 {
 	QETProject project;
-	Diagram *diagram = project.addNewDiagram();
+	Diagram*   diagram = project.addNewDiagram();
 	QVERIFY(diagram != nullptr);
-	auto *dim = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0);
+	auto* dim = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0);
 
 	// Initial: not yet committed via undo stack
 	QCOMPARE(diagram->items().contains(dim), false);
@@ -215,9 +222,9 @@ void tst_DimensionItem::testUndoRedoAdd()
 void tst_DimensionItem::testUndoRedoDelete()
 {
 	QETProject project;
-	Diagram *diagram = project.addNewDiagram();
+	Diagram*   diagram = project.addNewDiagram();
 	QVERIFY(diagram != nullptr);
-	auto *dim = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0);
+	auto* dim = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0);
 	diagram->undoStack().push(new AddGraphicsObjectCommand(dim, diagram));
 	QCOMPARE(diagram->items().contains(dim), true);
 
@@ -244,14 +251,15 @@ void tst_DimensionItem::testUndoRedoDelete()
 void tst_DimensionItem::testUndoRedoProperties()
 {
 	QETProject project;
-	Diagram *diagram = project.addNewDiagram();
+	Diagram*   diagram = project.addNewDiagram();
 	QVERIFY(diagram != nullptr);
-	auto *dim = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0);
+	auto* dim = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0);
 	diagram->undoStack().push(new AddGraphicsObjectCommand(dim, diagram));
 
 	// Test QPropertyUndoCommand for auto value
 	QCOMPARE(dim->isAutoValue(), true);
-	diagram->undoStack().push(new QPropertyUndoCommand(dim, "isAutoValue", true, false));
+	diagram->undoStack().push(
+		new QPropertyUndoCommand(dim, "isAutoValue", true, false));
 	QCOMPARE(dim->isAutoValue(), false);
 
 	diagram->undoStack().undo();
@@ -261,7 +269,11 @@ void tst_DimensionItem::testUndoRedoProperties()
 	QCOMPARE(dim->isAutoValue(), false);
 
 	// Test QPropertyUndoCommand for customText
-	diagram->undoStack().push(new QPropertyUndoCommand(dim, "customText", QString(), QStringLiteral("L=500")));
+	diagram->undoStack().push(new QPropertyUndoCommand(
+		dim,
+		"customText",
+		QString(),
+		QStringLiteral("L=500")));
 	QCOMPARE(dim->customText(), QStringLiteral("L=500"));
 
 	diagram->undoStack().undo();
@@ -272,7 +284,8 @@ void tst_DimensionItem::testUndoRedoProperties()
 
 	// Test offset undo/redo
 	QCOMPARE(dim->offset(), 20.0);
-	diagram->undoStack().push(new QPropertyUndoCommand(dim, "offset", 20.0, 45.0));
+	diagram->undoStack().push(
+		new QPropertyUndoCommand(dim, "offset", 20.0, 45.0));
 	QCOMPARE(dim->offset(), 45.0);
 
 	diagram->undoStack().undo();
@@ -285,24 +298,24 @@ void tst_DimensionItem::testUndoRedoProperties()
 void tst_DimensionItem::testUndoRedoDialog()
 {
 	QETProject project;
-	Diagram *diagram = project.addNewDiagram();
+	Diagram*   diagram = project.addNewDiagram();
 	QVERIFY(diagram != nullptr);
-	auto *dim = new DimensionItem(QPointF(0, 0), QPointF(200, 0), 20.0);
+	auto* dim = new DimensionItem(QPointF(0, 0), QPointF(200, 0), 20.0);
 	diagram->undoStack().push(new AddGraphicsObjectCommand(dim, diagram));
 
 	int initialUndoCount = diagram->undoStack().count();
 	QCOMPARE(dim->prefix(), QString());
-	QCOMPARE(dim->isFramed(), true);
+	QCOMPARE(dim->isFramed(), false);
 
 	{
 		DimensionPropertiesDialog dialog(dim);
-		auto *prefixCb = dialog.findChild<QComboBox*>("m_prefix_cb");
-		auto *framedCb = dialog.findChild<QCheckBox*>("m_framed_cb");
+		auto* prefixCb = dialog.findChild<QComboBox*>("m_prefix_cb");
+		auto* framedCb = dialog.findChild<QCheckBox*>("m_framed_cb");
 		QVERIFY(prefixCb != nullptr);
 		QVERIFY(framedCb != nullptr);
 
 		prefixCb->setCurrentText(QStringLiteral("⌀"));
-		framedCb->setChecked(false);
+		framedCb->setChecked(true);
 
 		// Accept dialog -> commits ChangeDimensionPropertiesCommand
 		dialog.accept();
@@ -310,17 +323,37 @@ void tst_DimensionItem::testUndoRedoDialog()
 
 	QCOMPARE(diagram->undoStack().count(), initialUndoCount + 1);
 	QCOMPARE(dim->prefix(), QStringLiteral("⌀"));
-	QCOMPARE(dim->isFramed(), false);
+	QCOMPARE(dim->isFramed(), true);
 
 	// Undo dialog changes
 	diagram->undoStack().undo();
 	QCOMPARE(dim->prefix(), QString());
-	QCOMPARE(dim->isFramed(), true);
+	QCOMPARE(dim->isFramed(), false);
 
 	// Redo dialog changes
 	diagram->undoStack().redo();
 	QCOMPARE(dim->prefix(), QStringLiteral("⌀"));
-	QCOMPARE(dim->isFramed(), false);
+	QCOMPARE(dim->isFramed(), true);
+}
+
+void tst_DimensionItem::testEscapeCancelsTool()
+{
+	QETProject project;
+	Diagram *diagram = project.addNewDiagram();
+	QVERIFY(diagram != nullptr);
+
+	auto *tool = new DiagramEventAddDimension(diagram, DimensionItem::Linear);
+	diagram->setEventInterface(tool);
+
+	QCOMPARE(diagram->eventInterfaceIsRunning(), true);
+
+	// Send Escape key event to diagram
+	QKeyEvent escEvent(QEvent::KeyPress, Qt::Key_Escape, Qt::NoModifier);
+	QCoreApplication::sendEvent(diagram, &escEvent);
+
+	// The event should be accepted and the tool aborted/cleared
+	QCOMPARE(escEvent.isAccepted(), true);
+	QCOMPARE(diagram->eventInterfaceIsRunning(), false);
 }
 
 QTEST_MAIN(tst_DimensionItem)

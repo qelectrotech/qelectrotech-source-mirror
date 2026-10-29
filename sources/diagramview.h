@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -93,7 +93,7 @@ class DiagramView : public PaletteGraphicsView
 			/// The pointer: a four-way arrow over what can be moved; with
 			/// the crosshair, drawn on the grid point in place of the
 			/// system's, which a program may not move on every platform
-		enum class Pointer { System, Arrow, Move };
+		enum class Pointer { System, Arrow, Move, Dimension };
 		Pointer           m_pointer = Pointer::System;
 			/// The view's cursor was set by updatePointer()
 		bool              m_pointer_set = false;

@@ -790,14 +790,16 @@ void DimensionItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 		if (m_framed) {
 			// Boxed / Framed text as seen in CAD panel drawings
 			QRectF boxRect = text_bounds.adjusted(-4, -2, 4, 2);
-			painter->fillRect(boxRect, QBrush(Qt::white));
+			if (m_mask_background && diagram()) {
+				painter->fillRect(boxRect, diagram()->backgroundBrush());
+			}
 			painter->setPen(m_pen);
 			painter->setBrush(Qt::NoBrush);
 			painter->drawRect(boxRect);
-		} else if (m_mask_background && m_text_in_line) {
+		} else if (m_mask_background && m_text_in_line && diagram()) {
 			// Mask background behind text so dimension line does not cut through
 			QRectF maskRect = text_bounds.adjusted(-2, -1, 2, 1);
-			painter->fillRect(maskRect, QBrush(Qt::white));
+			painter->fillRect(maskRect, diagram()->backgroundBrush());
 		}
 
 		painter->setPen(m_pen);
@@ -883,21 +885,21 @@ void DimensionItem::fromXml(const QDomElement &element)
 	m_precision = element.attribute(QStringLiteral("precision"), QStringLiteral("1")).toInt();
 	m_unit = element.attribute(QStringLiteral("unit"), QStringLiteral("mm"));
 	m_show_unit = (element.attribute(QStringLiteral("show_unit"), QStringLiteral("false")) == QStringLiteral("true"));
-	m_framed = (element.attribute(QStringLiteral("framed"), QStringLiteral("true")) == QStringLiteral("true"));
+	m_framed = (element.attribute(QStringLiteral("framed"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_use_comma = (element.attribute(QStringLiteral("comma"), QStringLiteral("true")) == QStringLiteral("true"));
 	m_text_distance = element.attribute(QStringLiteral("distance"), QStringLiteral("1.0")).toDouble();
 	m_text_center = (element.attribute(QStringLiteral("center"), QStringLiteral("true")) == QStringLiteral("true"));
 	m_show_dual_unit = (element.attribute(QStringLiteral("dual_unit"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_fraction_format = (element.attribute(QStringLiteral("fraction"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_text_horizontal = (element.attribute(QStringLiteral("horizontal"), QStringLiteral("false")) == QStringLiteral("true"));
-	m_text_in_line = (element.attribute(QStringLiteral("mid_line"), QStringLiteral("true")) == QStringLiteral("true"));
+	m_text_in_line = (element.attribute(QStringLiteral("mid_line"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_suppress_zero = (element.attribute(QStringLiteral("suppress_zero"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_line_width = element.attribute(QStringLiteral("line_width"), QStringLiteral("1.2")).toDouble();
 	m_pen.setWidthF(m_line_width);
 	m_extension_overshoot = element.attribute(QStringLiteral("overshoot"), QStringLiteral("5.0")).toDouble();
 	m_extension_gap = element.attribute(QStringLiteral("gap"), QStringLiteral("0.0")).toDouble();
 	m_arrow_size = element.attribute(QStringLiteral("arrow_size"), QStringLiteral("8.0")).toDouble();
-	m_mask_background = (element.attribute(QStringLiteral("mask"), QStringLiteral("true")) == QStringLiteral("true"));
+	m_mask_background = (element.attribute(QStringLiteral("mask"), QStringLiteral("false")) == QStringLiteral("true"));
 	int fsize = element.attribute(QStringLiteral("font_size"), QStringLiteral("8")).toInt();
 	m_font.setPointSize(fsize > 0 ? fsize : 8);
 

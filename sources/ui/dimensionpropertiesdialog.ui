@@ -548,7 +548,7 @@
                <string>Maßzahl einrahmen (Kasten)</string>
               </property>
               <property name="checked">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -568,7 +568,7 @@
                <string>Hintergrund maskieren</string>
               </property>
               <property name="checked">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>

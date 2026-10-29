@@ -321,6 +321,8 @@ class Diagram : public QGraphicsScene
 		virtual void removeItem (QGraphicsItem *item);
 		bool eventInterfaceIsRunning() const;
 		bool cableToolIsRunning() const;
+		bool dimensionToolIsRunning() const;
+		DiagramEventInterface *eventInterface() const { return m_event_interface; }
 	
 		// methods related to graphics options
 		ExportProperties applyProperties(const ExportProperties &);
