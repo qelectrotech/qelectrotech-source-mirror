@@ -25361,4 +25361,134 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
         <translation>Was:</translation>
     </message>
 </context>
+<context>
+    <name>DimensionPropertiesWidget</name>
+    <message>
+        <source>Dimension Properties</source>
+        <translation>Eigenschaften (Bemaßung)</translation>
+    </message>
+    <message>
+        <source>Dimension</source>
+        <translation>Bemaßung</translation>
+    </message>
+    <message>
+        <source>Calculated:</source>
+        <translation>Berechnet:</translation>
+    </message>
+    <message>
+        <source>Automatic calculation</source>
+        <translation>Automatische Berechnung</translation>
+    </message>
+    <message>
+        <source>Custom label:</source>
+        <translation>Eigener Text:</translation>
+    </message>
+    <message>
+        <source>Offset:</source>
+        <translation>Abstand (Offset):</translation>
+    </message>
+    <message>
+        <source>Termination:</source>
+        <translation>Begrenzung:</translation>
+    </message>
+    <message>
+        <source>Dimension Properties...</source>
+        <translation>Eigenschaften (Bemaßung)...</translation>
+    </message>
+    <message>
+        <source>Arrows</source>
+        <translation>Pfeile</translation>
+    </message>
+    <message>
+        <source>Architectural Slashes</source>
+        <translation>Schrägstriche (CAD)</translation>
+    </message>
+</context>
+<context>
+    <name>DimensionPropertiesDialog</name>
+    <message>
+        <source>Edit dimension properties</source>
+        <translation>Bemaßungseigenschaften bearbeiten</translation>
+    </message>
+    <message>
+        <source>Arrows</source>
+        <translation>Pfeile</translation>
+    </message>
+    <message>
+        <source>Architectural Slashes</source>
+        <translation>Schrägstriche (CAD)</translation>
+    </message>
+</context>
+<context>
+    <name>DiagramEventAddDimension</name>
+    <message>
+        <source>Linear Dimension: Click to set the first reference point (P1)</source>
+        <translation>Lineare Bemaßung: Ersten Messpunkt (P1) anklicken</translation>
+    </message>
+    <message>
+        <source>Chain Dimension: Click to set the start reference point (P1)</source>
+        <translation>Kettenbemaßung: Start-Messpunkt (P1) anklicken</translation>
+    </message>
+    <message>
+        <source>Dimension: Click to set the second reference point (P2) - Length: %1 mm</source>
+        <translation>Bemaßung: Zweiten Messpunkt (P2) anklicken - Länge: %1 mm</translation>
+    </message>
+    <message>
+        <source>Dimension: Move mouse to set offset distance and side (%1 mm), click to fix</source>
+        <translation>Bemaßung: Maus bewegen für Abstand und Seite (%1 mm), Klick zum Platzieren</translation>
+    </message>
+    <message>
+        <source>Chain Dimension: Click to place next segment (%1 mm) | Press Enter to finish, Esc to exit</source>
+        <translation>Kettenbemaßung: Nächstes Segment anklicken (%1 mm) | Enter zum Beenden, Esc zum Abbrechen</translation>
+    </message>
+</context>
+<context>
+    <name>DimensionItem</name>
+    <message>
+        <source>Apply dimension format</source>
+        <translation>Bemaßungsformat übertragen</translation>
+    </message>
+    <message>
+        <source>Move dimension point</source>
+        <translation>Bemaßungspunkt verschieben</translation>
+    </message>
+    <message>
+        <source>Change dimension offset</source>
+        <translation>Bemaßungsabstand ändern</translation>
+    </message>
+</context>
+<context>
+    <name>QETElementEditor</name>
+    <message>
+        <source>Tape measure</source>
+        <translation>Maßband</translation>
+    </message>
+    <message>
+        <source>Measure distance and angle between points</source>
+        <translation>Abstand und Winkel zwischen Punkten messen</translation>
+    </message>
+</context>
+<context>
+    <name>ESEventMeasure</name>
+    <message>
+        <source>Tape measure: Click to set the first reference point (P1), Esc to exit</source>
+        <translation>Maßband: Ersten Messpunkt (P1) anklicken, Esc zum Beenden</translation>
+    </message>
+    <message>
+        <source>Tape measure: Click to set the second reference point (P2)</source>
+        <translation>Maßband: Zweiten Messpunkt (P2) anklicken</translation>
+    </message>
+    <message>
+        <source>Tape measure: %1 mm (%2 px) | ΔX: %3 mm | ΔY: %4 mm | Angle: %5°</source>
+        <translation>Maßband: Abstand: %1 mm (%2 px) | ΔX: %3 mm | ΔY: %4 mm | Winkel: %5°</translation>
+    </message>
+    <message>
+        <source>Measurements cleared</source>
+        <translation>Messungen gelöscht</translation>
+    </message>
+    <message>
+        <source>Measurements cleared. Press Esc again to exit</source>
+        <translation>Messungen gelöscht. Erneut Esc drücken zum Beenden</translation>
+    </message>
+</context>
 </TS>

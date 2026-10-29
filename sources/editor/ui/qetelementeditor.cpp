@@ -38,6 +38,7 @@
 #include "../esevent/eseventaddtext.h"
 #include "../esevent/eseventaddterminal.h"
 #include "../esevent/eseventadddynamictextfield.h"
+#include "../esevent/eseventmeasure.h"
 #include "../../elementdialog.h"
 #include "../graphicspart/partterminal.h"
 #include "../terminalnamecheck.h"
@@ -537,6 +538,9 @@ void QETElementEditor::fillPartsList()
 void QETElementEditor::UncheckAddPrimitive() {
 	for (auto action : m_add_part_action_grp->actions()) {
 		action->setChecked(false);
+	}
+	if (m_tape_measure_action) {
+		m_tape_measure_action->setChecked(false);
 	}
 }
 
@@ -1197,6 +1201,30 @@ void QETElementEditor::setupActions()
 	parts_toolbar -> setAllowedAreas(Qt::AllToolBarAreas);
 	parts_toolbar -> setObjectName("parts");
 	parts_toolbar -> addActions(m_add_part_action_grp -> actions());
+
+	m_tape_measure_action = new QAction(QET::Icons::DimensionLinear, tr("Tape measure"), this);
+	m_tape_measure_action->setCheckable(true);
+	m_tape_measure_action->setStatusTip(tr("Measure distance and angle between points"));
+	connect(m_tape_measure_action, &QAction::triggered, [this]() {
+		if (m_tape_measure_action->isChecked()) {
+			for (auto action : m_add_part_action_grp->actions()) {
+				action->setChecked(false);
+			}
+			m_elmt_scene->setEventInterface(new ESEventMeasure(m_elmt_scene, m_tape_measure_action));
+		} else {
+			m_elmt_scene->clearEventInterface();
+		}
+	});
+	connect(m_add_part_action_grp, &QActionGroup::triggered, [this]() {
+		if (m_tape_measure_action) {
+			m_tape_measure_action->setChecked(false);
+		}
+	});
+
+	ShortcutManager::instance().registerAction(m_tape_measure_action, "elementeditor.tape_measure", tr("Element editors"), QKeySequence(Qt::Key_M));
+	ui->m_edit_menu->addAction(m_tape_measure_action);
+	parts_toolbar->addSeparator();
+	parts_toolbar->addAction(m_tape_measure_action);
 	addToolBar(Qt::LeftToolBarArea, parts_toolbar);
 
 		//Background frame action: a visual-only reference rectangle, never

@@ -145,7 +145,8 @@ class QETElementEditor : public QMainWindow
 		QAction
 			*m_scale_element_action = nullptr,
 			*m_undo_action = nullptr,
-			*m_redo_action = nullptr;
+			*m_redo_action = nullptr,
+			*m_tape_measure_action = nullptr;
 
 
 			/// Hash associating primitive names with their matching edition widget

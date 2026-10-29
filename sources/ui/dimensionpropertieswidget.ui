@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dimension Properties</string>
+   <string>Eigenschaften (Bemaßung)</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -32,7 +32,7 @@
    <item>
     <widget class="QGroupBox" name="m_groupBox">
      <property name="title">
-      <string>Dimension</string>
+      <string>Bemaßung</string>
      </property>
      <layout class="QFormLayout" name="formLayout">
       <property name="fieldGrowthPolicy">
@@ -41,7 +41,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="label_length_title">
         <property name="text">
-         <string>Calculated:</string>
+         <string>Berechnet:</string>
         </property>
        </widget>
       </item>
@@ -60,7 +60,7 @@
       <item row="1" column="0" colspan="2">
        <widget class="QCheckBox" name="m_auto_cb">
         <property name="text">
-         <string>Automatic calculation</string>
+         <string>Automatische Berechnung</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -70,7 +70,7 @@
       <item row="2" column="0">
        <widget class="QLabel" name="label_text">
         <property name="text">
-         <string>Custom label:</string>
+         <string>Eigener Text:</string>
         </property>
        </widget>
       </item>
@@ -84,7 +84,7 @@
       <item row="3" column="0">
        <widget class="QLabel" name="label_offset">
         <property name="text">
-         <string>Offset:</string>
+         <string>Abstand (Offset):</string>
         </property>
        </widget>
       </item>
@@ -104,7 +104,7 @@
       <item row="4" column="0">
        <widget class="QLabel" name="label_style">
         <property name="text">
-         <string>Termination:</string>
+         <string>Begrenzung:</string>
         </property>
        </widget>
       </item>
@@ -114,7 +114,7 @@
       <item row="5" column="0" colspan="2">
        <widget class="QPushButton" name="m_edit_dialog_btn">
         <property name="text">
-         <string>Dimension Properties...</string>
+         <string>Eigenschaften (Bemaßung)...</string>
         </property>
        </widget>
       </item>

@@ -476,6 +476,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/editor/esevent/eseventaddtext.h
   ${QET_DIR}/sources/editor/esevent/eseventinterface.cpp
   ${QET_DIR}/sources/editor/esevent/eseventinterface.h
+  ${QET_DIR}/sources/editor/esevent/elementmeasureitem.cpp
+  ${QET_DIR}/sources/editor/esevent/elementmeasureitem.h
+  ${QET_DIR}/sources/editor/esevent/eseventmeasure.cpp
+  ${QET_DIR}/sources/editor/esevent/eseventmeasure.h
 
   ${QET_DIR}/sources/editor/graphicspart/abstractpartellipse.cpp
   ${QET_DIR}/sources/editor/graphicspart/abstractpartellipse.h
