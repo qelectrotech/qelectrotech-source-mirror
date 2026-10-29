@@ -29,6 +29,7 @@ private slots:
 	void testScaleFactorAndFormatting();
 	void testCustomText();
 	void testOffsetAndGeometry();
+	void testPropertiesStruct();
 	void testXmlSerializationRoundtrip();
 };
 
@@ -40,6 +41,9 @@ void tst_DimensionItem::testDefaultValues()
 	QCOMPARE(dim.offset(), 20.0);
 	QCOMPARE(dim.mode(), DimensionItem::Linear);
 	QCOMPARE(dim.terminationStyle(), DimensionItem::Arrows);
+	QCOMPARE(dim.isFramed(), true);
+	QCOMPARE(dim.useComma(), true);
+	QCOMPARE(dim.precision(), 1);
 }
 
 void tst_DimensionItem::testScaleFactorAndFormatting()
@@ -48,6 +52,9 @@ void tst_DimensionItem::testScaleFactorAndFormatting()
 	// 200 px = 100.0 mm
 	DimensionItem dim(QPointF(0, 0), QPointF(200, 0));
 	QCOMPARE(dim.dimensionValueMM(), 100.0);
+	QCOMPARE(dim.displayText(), QStringLiteral("100,0"));
+
+	dim.setUseComma(false);
 	QCOMPARE(dim.displayText(), QStringLiteral("100.0"));
 
 	// 160 px = 80.0 mm
@@ -60,11 +67,20 @@ void tst_DimensionItem::testScaleFactorAndFormatting()
 	dim.setP2(QPointF(3480, 100));
 	QCOMPARE(dim.dimensionValueMM(), 1690.0);
 	QCOMPARE(dim.displayText(), QStringLiteral("1690.0"));
+
+	// Formatting with prefix, suffix and unit
+	dim.setPrefix(QStringLiteral("⌀"));
+	dim.setSuffix(QStringLiteral(" max"));
+	dim.setUnit(QStringLiteral("mm"));
+	dim.setShowUnit(true);
+	dim.setUseComma(true);
+	QCOMPARE(dim.displayText(), QStringLiteral("⌀1690,0 mm max"));
 }
 
 void tst_DimensionItem::testCustomText()
 {
 	DimensionItem dim(QPointF(0, 0), QPointF(200, 0));
+	dim.setUseComma(false);
 	QCOMPARE(dim.displayText(), QStringLiteral("100.0"));
 
 	dim.setAutoValue(false);
@@ -91,12 +107,38 @@ void tst_DimensionItem::testOffsetAndGeometry()
 	QVERIFY(!sh.isEmpty());
 }
 
+void tst_DimensionItem::testPropertiesStruct()
+{
+	DimensionItem dim;
+	DimensionProperties p = dim.properties();
+	QCOMPARE(p.isFramed, true);
+	QCOMPARE(p.useComma, true);
+	QCOMPARE(p.precision, 1);
+
+	p.prefix = QStringLiteral("M");
+	p.customText = QStringLiteral("12");
+	p.isAutoValue = false;
+	p.precision = 2;
+	p.isFramed = false;
+	dim.setProperties(p);
+
+	DimensionProperties p2 = dim.properties();
+	QCOMPARE(p2.prefix, QStringLiteral("M"));
+	QCOMPARE(p2.customText, QStringLiteral("12"));
+	QCOMPARE(p2.isAutoValue, false);
+	QCOMPARE(p2.precision, 2);
+	QCOMPARE(p2.isFramed, false);
+	QCOMPARE(p, p2);
+}
+
 void tst_DimensionItem::testXmlSerializationRoundtrip()
 {
 	DimensionItem original(QPointF(50, 100), QPointF(250, 100), 35.0, DimensionItem::Chain);
 	original.setAutoValue(false);
 	original.setCustomText(QStringLiteral("TEST_DIM"));
 	original.setTerminationStyle(DimensionItem::Slashes);
+	original.setPrefix(QStringLiteral("L="));
+	original.setFramed(true);
 
 	QDomDocument doc;
 	QDomElement xml = original.toXml(doc);
@@ -109,6 +151,8 @@ void tst_DimensionItem::testXmlSerializationRoundtrip()
 	QCOMPARE(xml.attribute(QStringLiteral("offset")), QStringLiteral("35.00"));
 	QCOMPARE(xml.attribute(QStringLiteral("auto")), QStringLiteral("false"));
 	QCOMPARE(xml.attribute(QStringLiteral("text")), QStringLiteral("TEST_DIM"));
+	QCOMPARE(xml.attribute(QStringLiteral("prefix")), QStringLiteral("L="));
+	QCOMPARE(xml.attribute(QStringLiteral("framed")), QStringLiteral("true"));
 	QCOMPARE(xml.attribute(QStringLiteral("mode")), QStringLiteral("chain"));
 	QCOMPARE(xml.attribute(QStringLiteral("style")), QStringLiteral("slashes"));
 
@@ -121,12 +165,13 @@ void tst_DimensionItem::testXmlSerializationRoundtrip()
 	QCOMPARE(restored.offset(), 35.0);
 	QCOMPARE(restored.isAutoValue(), false);
 	QCOMPARE(restored.customText(), QStringLiteral("TEST_DIM"));
+	QCOMPARE(restored.prefix(), QStringLiteral("L="));
+	QCOMPARE(restored.isFramed(), true);
 	QCOMPARE(restored.mode(), DimensionItem::Chain);
 	QCOMPARE(restored.terminationStyle(), DimensionItem::Slashes);
 	QCOMPARE(restored.dimensionValueMM(), 100.0);
-	QCOMPARE(restored.displayText(), QStringLiteral("TEST_DIM"));
+	QCOMPARE(restored.displayText(), QStringLiteral("L=TEST_DIM"));
 }
 
 QTEST_MAIN(tst_DimensionItem)
 #include "tst_dimensionitem.moc"
-

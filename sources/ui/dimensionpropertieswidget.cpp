@@ -194,3 +194,10 @@ void DimensionPropertiesWidget::on_m_style_cb_currentIndexChanged(int index)
 	}
 }
 
+void DimensionPropertiesWidget::on_m_edit_dialog_btn_clicked()
+{
+	if (m_item) {
+		m_item->editProperty();
+	}
+}
+

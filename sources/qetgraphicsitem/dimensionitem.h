@@ -26,6 +26,64 @@
 class QDomDocument;
 class QDomElement;
 
+struct DimensionProperties
+{
+	bool isAutoValue = true;
+	QString customText;
+	QString prefix;
+	QString suffix;
+	int precision = 1;
+	QString unit = QStringLiteral("mm");
+	bool showUnit = false;
+	bool isFramed = true;
+	bool useComma = true;
+	qreal textDistance = 1.0;
+	bool textCenter = true;
+	bool showDualUnit = false;
+	bool suppressZero = false;
+	bool fractionFormat = false;
+	bool isTextHorizontal = false;
+	bool isTextInLine = true;
+	qreal lineWidth = 1.2;
+	qreal extensionOvershoot = 5.0;
+	qreal extensionGap = 0.0;
+	qreal offset = 20.0;
+	int terminationStyle = 0; // 0 = Arrows, 1 = Slashes
+	qreal arrowSize = 8.0;
+	bool maskBackground = true;
+	int fontSize = 8;
+
+	bool operator==(const DimensionProperties &o) const {
+		return isAutoValue == o.isAutoValue &&
+		       customText == o.customText &&
+		       prefix == o.prefix &&
+		       suffix == o.suffix &&
+		       precision == o.precision &&
+		       unit == o.unit &&
+		       showUnit == o.showUnit &&
+		       isFramed == o.isFramed &&
+		       useComma == o.useComma &&
+		       qFuzzyCompare(textDistance, o.textDistance) &&
+		       textCenter == o.textCenter &&
+		       showDualUnit == o.showDualUnit &&
+		       suppressZero == o.suppressZero &&
+		       fractionFormat == o.fractionFormat &&
+		       isTextHorizontal == o.isTextHorizontal &&
+		       isTextInLine == o.isTextInLine &&
+		       qFuzzyCompare(lineWidth, o.lineWidth) &&
+		       qFuzzyCompare(extensionOvershoot, o.extensionOvershoot) &&
+		       qFuzzyCompare(extensionGap, o.extensionGap) &&
+		       qFuzzyCompare(offset, o.offset) &&
+		       terminationStyle == o.terminationStyle &&
+		       qFuzzyCompare(arrowSize, o.arrowSize) &&
+		       maskBackground == o.maskBackground &&
+		       fontSize == o.fontSize;
+	}
+	bool operator!=(const DimensionProperties &o) const {
+		return !(*this == o);
+	}
+};
+
 /**
 	@brief The DimensionItem class
 	Represents a CAD linear or chain dimension item in a diagram.
@@ -40,6 +98,17 @@ class DimensionItem : public QetGraphicsItem
 	Q_PROPERTY(qreal offset READ offset WRITE setOffset NOTIFY geometryChanged)
 	Q_PROPERTY(bool isAutoValue READ isAutoValue WRITE setAutoValue NOTIFY propertiesChanged)
 	Q_PROPERTY(QString customText READ customText WRITE setCustomText NOTIFY propertiesChanged)
+	Q_PROPERTY(QString prefix READ prefix WRITE setPrefix NOTIFY propertiesChanged)
+	Q_PROPERTY(QString suffix READ suffix WRITE setSuffix NOTIFY propertiesChanged)
+	Q_PROPERTY(int precision READ precision WRITE setPrecision NOTIFY propertiesChanged)
+	Q_PROPERTY(QString unit READ unit WRITE setUnit NOTIFY propertiesChanged)
+	Q_PROPERTY(bool showUnit READ showUnit WRITE setShowUnit NOTIFY propertiesChanged)
+	Q_PROPERTY(bool isFramed READ isFramed WRITE setFramed NOTIFY propertiesChanged)
+	Q_PROPERTY(bool useComma READ useComma WRITE setUseComma NOTIFY propertiesChanged)
+	Q_PROPERTY(qreal textDistance READ textDistance WRITE setTextDistance NOTIFY propertiesChanged)
+	Q_PROPERTY(bool isTextHorizontal READ isTextHorizontal WRITE setTextHorizontal NOTIFY propertiesChanged)
+	Q_PROPERTY(bool isTextInLine READ isTextInLine WRITE setTextInLine NOTIFY propertiesChanged)
+	Q_PROPERTY(bool suppressZero READ suppressZero WRITE setSuppressZero NOTIFY propertiesChanged)
 	Q_PROPERTY(DimensionMode mode READ mode WRITE setMode NOTIFY propertiesChanged)
 	Q_PROPERTY(TerminationStyle terminationStyle READ terminationStyle WRITE setTerminationStyle NOTIFY propertiesChanged)
 	Q_PROPERTY(qreal dimensionValueMM READ dimensionValueMM NOTIFY geometryChanged)
@@ -69,6 +138,8 @@ public:
 	QPainterPath shape() const override;
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
 
+	void editProperty() override;
+
 	QPointF p1() const;
 	void setP1(const QPointF &p1);
 
@@ -84,14 +155,79 @@ public:
 	QString customText() const;
 	void setCustomText(const QString &text);
 
+	QString prefix() const;
+	void setPrefix(const QString &p);
+
+	QString suffix() const;
+	void setSuffix(const QString &s);
+
+	int precision() const;
+	void setPrecision(int p);
+
+	QString unit() const;
+	void setUnit(const QString &u);
+
+	bool showUnit() const;
+	void setShowUnit(bool s);
+
+	bool isFramed() const;
+	void setFramed(bool f);
+
+	bool useComma() const;
+	void setUseComma(bool c);
+
+	qreal textDistance() const;
+	void setTextDistance(qreal d);
+
+	bool isTextCenter() const;
+	void setTextCenter(bool c);
+
+	bool showDualUnit() const;
+	void setShowDualUnit(bool d);
+
+	bool isFractionFormat() const;
+	void setFractionFormat(bool f);
+
+	bool isTextHorizontal() const;
+	void setTextHorizontal(bool h);
+
+	bool isTextInLine() const;
+	void setTextInLine(bool il);
+
+	bool suppressZero() const;
+	void setSuppressZero(bool sz);
+
+	qreal lineWidth() const;
+	void setLineWidth(qreal w);
+
+	qreal extensionOvershoot() const;
+	void setExtensionOvershoot(qreal o);
+
+	qreal extensionGap() const;
+	void setExtensionGap(qreal g);
+
+	qreal arrowSize() const;
+	void setArrowSize(qreal s);
+
+	bool maskBackground() const;
+	void setMaskBackground(bool m);
+
+	int fontSize() const;
+	void setFontSize(int s);
+
 	DimensionMode mode() const;
 	void setMode(DimensionMode mode);
 
 	TerminationStyle terminationStyle() const;
 	void setTerminationStyle(TerminationStyle style);
 
+	DimensionProperties properties() const;
+	void setProperties(const DimensionProperties &p);
+
 	qreal dimensionValueMM() const;
 	QString displayText() const;
+
+	QList<DimensionItem *> findChainSegments() const;
 
 	QUuid uuid() const { return m_uuid; }
 	void setUuid(const QUuid &uuid) { m_uuid = uuid; emit uuidChanged(); }
@@ -119,6 +255,25 @@ private:
 	qreal m_offset = 20.0;
 	bool m_auto_value = true;
 	QString m_custom_text;
+	QString m_prefix;
+	QString m_suffix;
+	int m_precision = 1;
+	QString m_unit = QStringLiteral("mm");
+	bool m_show_unit = false;
+	bool m_framed = true;
+	bool m_use_comma = true;
+	qreal m_text_distance = 1.0;
+	bool m_text_center = true;
+	bool m_show_dual_unit = false;
+	bool m_fraction_format = false;
+	bool m_text_horizontal = false;
+	bool m_text_in_line = true;
+	bool m_suppress_zero = false;
+	qreal m_line_width = 1.2;
+	qreal m_extension_overshoot = 5.0;
+	qreal m_extension_gap = 0.0;
+	qreal m_arrow_size = 8.0;
+	bool m_mask_background = true;
 	DimensionMode m_mode = Linear;
 	TerminationStyle m_termination_style = Arrows;
 	QUuid m_uuid;
@@ -127,4 +282,3 @@ private:
 };
 
 #endif // DIMENSIONITEM_H
-

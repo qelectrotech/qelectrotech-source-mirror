@@ -53,6 +53,7 @@ private slots:
 	void on_m_custom_text_le_editingFinished();
 	void on_m_offset_sb_valueChanged(double val);
 	void on_m_style_cb_currentIndexChanged(int index);
+	void on_m_edit_dialog_btn_clicked();
 
 private:
 	void setupConnections();

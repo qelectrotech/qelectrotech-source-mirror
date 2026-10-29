@@ -111,6 +111,13 @@
       <item row="4" column="1">
        <widget class="QComboBox" name="m_style_cb"/>
       </item>
+      <item row="5" column="0" colspan="2">
+       <widget class="QPushButton" name="m_edit_dialog_btn">
+        <property name="text">
+         <string>Dimension Properties...</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

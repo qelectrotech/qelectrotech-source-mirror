@@ -117,6 +117,7 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/potentialselectordialog.ui
   ${QET_DIR}/sources/ui/reportpropertiewidget.ui
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.ui
+  ${QET_DIR}/sources/ui/dimensionpropertiesdialog.ui
   ${QET_DIR}/sources/ui/dimensionpropertieswidget.ui
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.ui
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.ui
@@ -909,6 +910,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/reportpropertiewidget.h
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.cpp
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.h
+  ${QET_DIR}/sources/ui/dimensionpropertiesdialog.cpp
+  ${QET_DIR}/sources/ui/dimensionpropertiesdialog.h
   ${QET_DIR}/sources/ui/dimensionpropertieswidget.cpp
   ${QET_DIR}/sources/ui/dimensionpropertieswidget.h
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.cpp
