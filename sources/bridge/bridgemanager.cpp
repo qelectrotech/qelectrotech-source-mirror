@@ -837,7 +837,7 @@ bool BridgeManager::bridgeLandsOn(QETProject *project, Element *element)
 		if (!bridge) {
 			continue;
 		}
-		const auto lands_on = bridge->terminals();
+		const auto lands_on = bridge->landings();
 		for (const BridgeTerminal &terminal : lands_on) {
 			if (elementFor(project, terminal) == element) {
 				return true;

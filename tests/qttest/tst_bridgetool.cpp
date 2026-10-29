@@ -1325,6 +1325,11 @@ private slots:
 		QVERIFY(carried->hasTerminal(on_in));
 		QCOMPARE(carried->klemmCount(), carried_klemmen + coming_klemmen);
 		QCOMPARE(carried->tensionText(), QStringLiteral("400V"));
+			//What the unit holds, the other half holds no longer: it
+			//gave it by taking it
+		QVERIFY2(!coming->hasTerminal(on_in),
+				 "the half which came holds nothing of it any more");
+		QCOMPARE(coming->klemmCount(), 0);
 
 			//And two again, each holding what it held
 		folio->undoStack().undo();

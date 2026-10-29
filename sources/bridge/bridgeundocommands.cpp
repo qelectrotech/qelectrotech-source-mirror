@@ -211,9 +211,24 @@ void MergeBridgesCommand::redo()
 
 	for (const BridgePartData &part : std::as_const(m_parts)) {
 		m_into->addPart(part);
+		m_from->removePart(part.uuid);
 	}
 	for (const BridgeTerminal &terminal : std::as_const(m_terminals)) {
 		m_into->addTerminal(terminal);
+		m_from->removeTerminal(terminal);
+	}
+		//What is drawn follows its bridge: the line items belong to the
+		//unit from now on, so clicking one speaks of it
+	const auto items = BridgePart::allParts();
+	for (BridgePart *item : items) {
+		if (!item) {
+			continue;
+		}
+		for (const BridgePartData &part : std::as_const(m_parts)) {
+			if (item->partUuid() == part.uuid) {
+				item->setBridge(m_into.data());
+			}
+		}
 	}
 	proj->removeBridge(m_from.data());
 
@@ -239,6 +254,17 @@ void MergeBridgesCommand::undo()
 	for (const BridgePartData &part : std::as_const(m_parts)) {
 		m_into->removePart(part.uuid);
 		m_from->addPart(part);
+	}
+	const auto items = BridgePart::allParts();
+	for (BridgePart *item : items) {
+		if (!item) {
+			continue;
+		}
+		for (const BridgePartData &part : std::as_const(m_parts)) {
+			if (item->partUuid() == part.uuid) {
+				item->setBridge(m_from.data());
+			}
+		}
 	}
 
 	QUndoCommand::undo();
