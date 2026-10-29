@@ -77,7 +77,6 @@ DimensionPropertiesDialog::DimensionPropertiesDialog(DimensionItem *item, QWidge
 	ui->m_text_rotation_cb->addItem(QStringLiteral("90°"), 90);
 	ui->m_text_rotation_cb->addItem(QStringLiteral("180°"), 180);
 	ui->m_text_rotation_cb->addItem(QStringLiteral("270°"), 270);
-	ui->m_text_rotation_cb->addItem(QStringLiteral("360°"), 360);
 
 	if (item) {
 		m_segments = item->findChainSegments();

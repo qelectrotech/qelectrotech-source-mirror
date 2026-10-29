@@ -875,9 +875,6 @@ void tst_DimensionItem::testTextRotationAndArrowSizeMax()
 	dim.setTextRotation(270);
 	QCOMPARE(dim.textRotation(), 270);
 
-	dim.setTextRotation(360);
-	QCOMPARE(dim.textRotation(), 360);
-
 	// Arrow size up to 100.0
 	dim.setArrowSize(100.0);
 	QCOMPARE(dim.arrowSize(), 100.0);
@@ -885,7 +882,7 @@ void tst_DimensionItem::testTextRotationAndArrowSizeMax()
 	// XML serialization
 	QDomDocument doc;
 	QDomElement xml = dim.toXml(doc);
-	QCOMPARE(xml.attribute("text_rotation"), QStringLiteral("360"));
+	QCOMPARE(xml.attribute("text_rotation"), QStringLiteral("270"));
 	QCOMPARE(xml.attribute("arrow_size"), QStringLiteral("100.00"));
 
 	// Backward compatibility XML (has horizontal="true", no text_rotation)
@@ -925,7 +922,7 @@ void tst_DimensionItem::testTextRotationAndArrowSizeMax()
 	DimensionPropertiesDialog dlg(&dim);
 	auto *rotCb = dlg.findChild<QComboBox*>("m_text_rotation_cb");
 	QVERIFY(rotCb != nullptr);
-	QVERIFY(rotCb->count() >= 6); // Auto, 0, 90, 180, 270, 360
+	QCOMPARE(rotCb->count(), 5); // Auto (-1), 0, 90, 180, 270
 
 	auto *arrowSb = dlg.findChild<QDoubleSpinBox*>("m_arrow_size_sb");
 	QVERIFY(arrowSb != nullptr);
