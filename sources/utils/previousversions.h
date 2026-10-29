@@ -28,6 +28,8 @@
 	beside it, "<name>-backups", named by the time that version was saved
 	("industrial 2026-10-16 08-30-12.qetz"), and only the newest are kept.
 	The file is copied, never moved: a save that fails leaves it in place.
+	A .qetdb is not copied but given a second name, its version (a hard
+	link, where the file system has them): its save replaces it by rename.
 */
 namespace PreviousVersions
 {

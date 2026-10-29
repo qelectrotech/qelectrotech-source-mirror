@@ -51,6 +51,7 @@ class ConductorTextItem : public DiagramTextItem
 		virtual void setPos(qreal x, qreal y);
 
 	protected:
+		QVariant itemChange(GraphicsItemChange, const QVariant &) override;
 		void mousePressEvent   (QGraphicsSceneMouseEvent *event) override;
 		void mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;

@@ -155,6 +155,58 @@
         </widget>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="m_grid_min_spacing_layout">
+         <item>
+          <widget class="QLabel" name="m_grid_min_spacing_label">
+           <property name="text">
+            <string>Hide the grid when its dots are closer on screen than</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_grid_min_spacing_sb</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="m_grid_min_spacing_sb">
+           <property name="toolTip">
+            <string>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</string>
+           </property>
+           <property name="suffix">
+            <string> px</string>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>50.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.500000000000000</double>
+           </property>
+           <property name="value">
+            <double>7.500000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="m_grid_min_spacing_spacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_collection_dblclick_edits">
          <property name="toolTip">
           <string>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</string>
@@ -191,6 +243,16 @@
          </property>
          <property name="text">
           <string>Right-button mouse gestures</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_pointer_aids_cb">
+         <property name="toolTip">
+          <string>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</string>
+         </property>
+         <property name="text">
+          <string>Four-way arrow and handle catching with the crosshair</string>
          </property>
         </widget>
        </item>
@@ -375,6 +437,16 @@
         </widget>
        </item>
        <item row="7" column="0">
+        <widget class="QCheckBox" name="m_enable_chained_reports">
+         <property name="text">
+          <string>Enable chained folio reports for report elements</string>
+         </property>
+         <property name="toolTip">
+          <string>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
         <widget class="QLabel" name="m_previous_versions_label">
          <property name="text">
           <string>Previous versions kept when saving a project</string>
@@ -384,7 +456,7 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="2">
+       <item row="8" column="2">
         <widget class="QSpinBox" name="m_previous_versions_sb">
          <property name="toolTip">
           <string>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with "-backups". Only the newest are kept.</string>
@@ -398,6 +470,26 @@
         </widget>
        </item>
        <item row="9" column="0">
+        <widget class="QCheckBox" name="m_working_copy_recovery">
+         <property name="text">
+          <string>After a crash, offer projects as they were after their last edit (experimental)</string>
+         </property>
+         <property name="toolTip">
+          <string>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QCheckBox" name="m_qetdb_enabled">
+         <property name="text">
+          <string>Offer saving a project as one database file, .qetdb (experimental)</string>
+         </property>
+         <property name="toolTip">
+          <string>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>

@@ -23,6 +23,7 @@
                 <translation lang="pt_BR">Autor</translation>
                 <translation lang="ro">Autor</translation>
                 <translation lang="ru">Автор</translation>
+                <translation lang="sv">Upprättad av</translation>
                 <translation lang="zh">作者</translation>
             </label>
         </field>
@@ -46,6 +47,7 @@
                 <translation lang="pt_BR">Título</translation>
                 <translation lang="ro">Titlu</translation>
                 <translation lang="ru">Название</translation>
+                <translation lang="sv">Titel</translation>
                 <translation lang="zh">职称</translation>
             </label>
         </field>
@@ -70,6 +72,7 @@
                 <translation lang="pt_BR">Arquivo</translation>
                 <translation lang="ro">Fisier</translation>
                 <translation lang="ru">Файл</translation>
+                <translation lang="sv">Fil</translation>
                 <translation lang="zh">文件名</translation>
             </label>
         </field>
@@ -94,6 +97,7 @@
                 <translation lang="pt_BR">Data</translation>
                 <translation lang="ro">Data</translation>
                 <translation lang="ru">Дата</translation>
+                <translation lang="sv">Datum</translation>
                 <translation lang="zh">日期</translation>
             </label>
         </field>
@@ -118,6 +122,7 @@
                 <translation lang="pt_BR">Folha</translation>
                 <translation lang="ro">Pagina</translation>
                 <translation lang="ru">Фолио</translation>
+                <translation lang="sv">Blad</translation>
                 <translation lang="zh">当前页</translation>
             </label>
         </field>

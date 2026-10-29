@@ -156,6 +156,8 @@ QetGraphicsTableItem::QetGraphicsTableItem(QGraphicsItem *parent) :
 	{
 		m_header_item->setPos(0, 0-m_header_item->rect().height());
 	});
+	connect(m_header_item, &QetGraphicsHeaderItem::sectionResized,
+		this, &QetGraphicsTableItem::changed);
 		//Init the size of table without a model
 	setModel();
 }
@@ -207,6 +209,7 @@ void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
 	if (m_next_table) {
 		m_next_table->setModel(m_model);
 	}
+	emit changed();
 }
 
 /**
@@ -350,6 +353,7 @@ void QetGraphicsTableItem::setSize(const QSize &size)
 	m_current_size = new_size;
 	adjustColumnsWidth();
 	setUpBoundingRect();
+	emit changed();
 }
 
 /**
@@ -408,6 +412,7 @@ void QetGraphicsTableItem::setDisplayNRow(const int &number)
 	setToMinimumHeight();
 	if (m_next_table)
 		m_next_table->previousTableDisplayRowChanged();
+	emit changed();
 }
 
 /**
@@ -459,6 +464,7 @@ void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
 			setModel(new CableListModel(*cable_model));
 		}
 	}
+	emit changed();
 
 	if (old_previous_table &&
 		old_previous_table->nextTable() == this) {
@@ -496,6 +502,7 @@ void QetGraphicsTableItem::setNextTable(QetGraphicsTableItem *table)
 void QetGraphicsTableItem::setTableName(const QString &name)
 {
 	m_name = name;
+	emit changed();
 }
 
 QString QetGraphicsTableItem::tableName() const
@@ -732,6 +739,7 @@ void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 	m_header_item->fromXml(
 				dom_element.firstChildElement(
 					QetGraphicsHeaderItem::xmlTagName()));
+	emit changed();
 }
 
 /**
@@ -1097,6 +1105,7 @@ void QetGraphicsTableItem::dataChanged(
 	setUpColumnAndRowMinimumSize();
 	adjustSize();
 	update();
+	emit changed();
 }
 
 /**

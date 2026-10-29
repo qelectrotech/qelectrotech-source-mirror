@@ -341,6 +341,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/titleblocktemplate.h
   ${QET_DIR}/sources/titleblocktemplaterenderer.cpp
   ${QET_DIR}/sources/titleblocktemplaterenderer.h
+  ${QET_DIR}/sources/projectorigin.cpp
+  ${QET_DIR}/sources/projectorigin.h
 
   ${QET_DIR}/sources/autoNum/assignvariables.cpp
   ${QET_DIR}/sources/autoNum/assignvariables.h
@@ -379,7 +381,16 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/dataBase/legacyelementtypes.h
   ${QET_DIR}/sources/dataBase/projectdatabase.cpp
+  ${QET_DIR}/sources/dataBase/projectdatabasewriter.cpp
   ${QET_DIR}/sources/dataBase/projectdatabase.h
+  ${QET_DIR}/sources/dataBase/workingcopyrecovery.cpp
+  ${QET_DIR}/sources/dataBase/workingcopyrecovery.h
+  ${QET_DIR}/sources/dataBase/qetdbfile.cpp
+  ${QET_DIR}/sources/dataBase/projectdatabaseadopt.cpp
+  ${QET_DIR}/sources/dataBase/qetdbfile.h
+  ${QET_DIR}/sources/dataBase/conductorlayout.h
+  ${QET_DIR}/sources/dataBase/conductorpath.h
+  ${QET_DIR}/sources/dataBase/elementplacement.h
   ${QET_DIR}/sources/dataBase/sqlreadonly.cpp
   ${QET_DIR}/sources/dataBase/sqlreadonly.h
 

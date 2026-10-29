@@ -278,6 +278,7 @@ int main(int argc, char **argv)
 	{
 		const QetSettings::SheetBackground sheet_background = QetSettings::sheetBackground();
 		PaletteGraphicsView::setCustomBackgroundColor(sheet_background.custom);
+		PaletteGraphicsView::setColoredInk(sheet_background.colored_ink);
 		Diagram::background_color = sheet_background.color;
 	}
 

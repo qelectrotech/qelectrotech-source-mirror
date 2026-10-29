@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "../qetgraphicsitem/conductor.h"
+#include "../palettegraphicsview.h"
 #include "../shownkinds.h"
 #include "../lastusedstyle.h"
 #include "../qetproject.h"
@@ -94,7 +95,7 @@ class ConductorXmlRetroCompatibility
 			loadSequential(dom_element,"seqh_",&sn.hundred);
 			loadSequential(dom_element,"seqhf_",&sn.hundred_folio);
 
-			conductor->rSequenceNum() = sn;
+			conductor->replaceSequenceNum(sn);
 		}
 };
 
@@ -234,6 +235,7 @@ void Conductor::segmentsToPath()
 	path.lineTo(segment -> secondPoint());
 
 	setPath(path);
+	storePath();
 
 		//If conductor is selected and he's not being modified
 		//we update the position of the handlers
@@ -591,18 +593,20 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation term
 */
 void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *qw)
 {
-	Q_UNUSED(qw);
 	painter -> save();
 	painter -> setRenderHint(QPainter::Antialiasing, false);
 
 		// Set the color of conductor
+		//In the dark mode a red pick and a blue highlight would look like
+		//the red and light blue conductors around them
+	const QET::Palette::SheetInk sheet_ink = PaletteGraphicsView::paintingInk(qw);
 	QColor final_conductor_color(m_properties.color);
 	if (must_highlight_ == Normal) {
-		final_conductor_color = QColor::fromRgb(69, 137, 255, 255);
+		final_conductor_color = QET::Palette::highlightColor(sheet_ink);
 	} else if (must_highlight_ == Alert) {
 		final_conductor_color =QColor::fromRgb(255, 69, 0, 255);
 	} else if (isSelected()) {
-		final_conductor_color = Qt::red;
+		final_conductor_color = QET::Palette::pickedColor(sheet_ink);
 	} else {
 		if (Diagram *parent_diagram = diagram()) {
 			if (!parent_diagram -> drawColoredConductors()) {
@@ -618,9 +622,16 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 	painter -> setBrush(conductor_brush);
 	QPen final_conductor_pen = conductor_pen;
 
-		//Set the conductor style
+		//Set the conductor style. Qt's own dashes (4 on, 2 off) leave
+		//gaps too short to tell a dashed or a dash-dotted conductor from
+		//a solid one at a normal zoom, so these two get longer gaps
 	final_conductor_pen.setColor(final_conductor_color);
-	final_conductor_pen.setStyle(m_properties.style);
+	if (m_properties.style == Qt::DashLine)
+		final_conductor_pen.setDashPattern({5, 4});
+	else if (m_properties.style == Qt::DashDotLine)
+		final_conductor_pen.setDashPattern({6, 4, 1, 4});
+	else
+		final_conductor_pen.setStyle(m_properties.style);
 	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // better rendering with dot
 
 		//Use a cosmetic line, below a certain zoom
@@ -835,6 +846,7 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 		adjustHandlerPos();
 	}
 	else if (change == QGraphicsItem::ItemScenePositionHasChanged) {
+		storeLayout();
 		conductorGeometryChanged();
 	}
 
@@ -1160,6 +1172,9 @@ bool Conductor::fromXml(QDomElement &dom_element)
 		if (const auto edited = diagram()->project()->dataBase()->takeUnbuiltWireEdit(m_uuid))
 			pr = *edited;
 	setProperties(pr);
+	storeLayout();
+	storePath();
+	storeSequence();
 
 	return retval;
 }
@@ -1703,9 +1718,11 @@ void Conductor::setProfile(const ConductorProfile &cp, Qt::Corner path_type) {
 		if (conductor_profiles[path_type].isNull()) {
 			generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 			modified_path = false;
+			storePath();
 		} else {
 			updateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 			modified_path = true;
+			storePath();
 		}
 		if (type() == ConductorProperties::Multi) {
 			calculateTextItemPosition();
@@ -1736,7 +1753,8 @@ void Conductor::refreshText()
 		{
 			if (diagram())
 			{
-				QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram(), nullptr, this);
+				autonum::sequentialNumbers numbers = m_autoNum_seq;
+				QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, numbers, diagram(), nullptr, this);
 				m_properties.text = text;
 				m_text_item->setPlainText(text);
 			}
@@ -1823,7 +1841,8 @@ void Conductor::setProperties(const ConductorProperties &property)
 	{
 		if (diagram())
 		{
-			QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram(), nullptr, this);
+			autonum::sequentialNumbers numbers = m_autoNum_seq;
+			QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, numbers, diagram(), nullptr, this);
 			m_properties.text = text;
 		}
 		else if (m_properties.text.isEmpty())
@@ -1886,6 +1905,68 @@ void Conductor::storeProperties()
 	QETProject *project = d ? d->project() : nullptr;
 	if (project && project->dataBase() && project->dataBase()->hasConductorProperties(m_uuid))
 		project->dataBase()->conductorPropertiesStored(this, m_properties);
+}
+
+/**
+	@brief Conductor::ownLayout
+	@return where this wire sits and how its text was placed, as toXml()
+	writes them
+*/
+ConductorLayout Conductor::ownLayout() const
+{
+	ConductorLayout layout;
+	layout.x = pos().x();
+	layout.y = pos().y();
+	layout.freeze_label = m_freeze_label;
+	if (m_text_item) {
+		if (m_text_item->wasMovedByUser())
+			layout.text_pos = m_text_item->pos();
+		if (m_text_item->wasRotatedByUser())
+			layout.text_rotation = m_text_item->rotation();
+	}
+	return layout;
+}
+
+/**
+	@brief Conductor::storeLayout
+	Write this wire's layout to its project's store, once it is placed.
+*/
+void Conductor::storeLayout()
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	if (store && store->hasConductorProperties(m_uuid) && store->placedConductorCount(m_uuid) == 1)
+		store->storeConductorLayout(m_uuid, ownLayout());
+}
+
+/**
+	@brief Conductor::ownPath
+	@return the segments toXml() writes for this wire, with the lengths as
+	written there (six significant digits); none if the user did not reshape it
+*/
+ConductorPath Conductor::ownPath() const
+{
+	ConductorPath path;
+	if (!modified_path) return path;
+	for (const ConductorSegment *segment = segments ; segment ; segment = segment -> hasNextSegment() ? segment -> nextSegment() : nullptr)
+		path.append({segment -> isHorizontal(), savedSegmentLength(segment -> length())});
+	return path;
+}
+
+/**
+	@brief Conductor::storePath
+	Write this wire's segments to its project's store, once it is placed.
+	Called wherever the segments are rebuilt (segmentsToPath()) and wherever
+	the wire stops being a reshaped one without that.
+*/
+void Conductor::storePath()
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	if (store && store->hasConductorProperties(m_uuid) && store->placedConductorCount(m_uuid) == 1)
+		store->storeConductorPath(m_uuid, ownPath());
 }
 
 /**
@@ -2125,8 +2206,28 @@ void Conductor::editProperty()
 
 void Conductor::setSequenceNum(const autonum::sequentialNumbers& sn)
 {
-	m_autoNum_seq = sn;
+	replaceSequenceNum(sn);
 	refreshText();
+}
+
+void Conductor::replaceSequenceNum(const autonum::sequentialNumbers& sn)
+{
+	m_autoNum_seq = sn;
+	storeSequence();
+}
+
+/**
+	@brief Conductor::storeSequence
+	Write this wire's sequential numbers to its project's store, once it
+	is placed.
+*/
+void Conductor::storeSequence()
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	if (store && store->hasConductorProperties(m_uuid) && store->placedConductorCount(m_uuid) == 1)
+		store->storeSequence(m_uuid, m_autoNum_seq);
 }
 
 /**
@@ -2443,9 +2544,11 @@ void Conductor::setProfiles(const ConductorProfilesGroup &cpg) {
 	if (conductor_profiles[currentPathType()].isNull()) {
 		generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 		modified_path = false;
+		storePath();
 	} else {
 		updateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 		modified_path = true;
+		storePath();
 	}
 	if (properties().type == ConductorProperties::Multi) {
 		calculateTextItemPosition();
@@ -2616,6 +2719,7 @@ QList <Conductor *> relatedConductors(const Conductor *conductor) {
 void Conductor::setFreezeLabel(bool freeze)
 {
 	m_freeze_label = freeze;
+	storeLayout();
 
 	if (m_freeze_label != freeze)
 	{

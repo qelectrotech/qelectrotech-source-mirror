@@ -19,6 +19,7 @@
 #define QET_DIAGRAM_EDITOR_H
 
 #include "SearchAndReplace/ui/searchandreplacewidget.h"
+#include "dataBase/workingcopyrecovery.h"
 #include "diagramcontext.h"
 #include "projectlock.h"
 #include "qetmainwindow.h"
@@ -85,6 +86,7 @@ class QETDiagramEditor : public QETMainWindow
 		void templateSaved(const ElementsLocation &location);
 		bool drawGrid() const;
 		void openBackupFiles (QList<KAutoSaveFile *> backup_files);
+		void openWorkingCopies(const QList<WorkingCopyRecovery::LeftWorkingCopy> &copies);
 
 	  protected:
 		bool event(QEvent *) override;
@@ -148,6 +150,7 @@ class QETDiagramEditor : public QETMainWindow
 		void alignGroupTriggered     (QAction *action);
 		void rowColumnGroupTriggered (QAction *action);
 		void slot_updateActions();
+		void updateZoomLabel();
 		void slot_updateUndoStack();
 		void slot_updateModeActions();
 		void slot_updateComplexActions();
@@ -214,6 +217,7 @@ class QETDiagramEditor : public QETMainWindow
 
 	private slots:
 		void updateTextGridButton();
+		void updateGridStepButton();
 		void updateShownKinds();
 		void selectionChanged();
 
@@ -324,9 +328,13 @@ class QETDiagramEditor : public QETMainWindow
 		///< Diagram background color picker, in the "Affichage" toolbar
 		DiagramBgColorToolButton *m_background_color_button = nullptr;
 		QMenu *m_text_grid_menu = nullptr;		///< Snap step used when dragging texts
+		QAction *m_grid_snap = nullptr;			///< Snap to the grid, on or off
+		QMenu *m_grid_step_menu = nullptr;		///< Fine, medium or coarse grid
+		QToolButton *m_grid_step_button = nullptr;
 		QToolButton *m_text_grid_button = nullptr;
 		QMenu *m_shown_kinds_menu = nullptr;		///< View > Show, kinds of items (#301)
 		QLabel *m_hidden_kinds_label = nullptr;	///< Status bar: how many kinds are hidden
+		QLabel *m_zoom_label = nullptr;		///< Status bar: the zoom of the folio on screen
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
 

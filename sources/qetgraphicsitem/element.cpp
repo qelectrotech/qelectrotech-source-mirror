@@ -53,6 +53,7 @@
 #include <QGuiApplication>
 #include <QCollator>
 #include <QScreen>
+#include <QTextDocument>
 #include <QTimer>
 #include <QPointer>
 #include "../diagramview.h"
@@ -105,7 +106,7 @@ class ElementXmlRetroCompatibility
 		loadSequential(dom_element, QStringLiteral("seqh_"),  &sn.hundred);
 		loadSequential(dom_element, QStringLiteral("seqhf_"), &sn.hundred_folio);
 
-		element->rSequenceStruct() = sn;
+		element->setSequenceStruct(sn);
 	}
 };
 
@@ -180,11 +181,32 @@ Element::Element(
 	connect(this, &Element::xChanged, update_docked_conductors);
 	connect(this, &Element::yChanged, update_docked_conductors);
 	connect(this, &Element::mirrorChanged, update_docked_conductors);
+		//The project's database holds the symbol's place
+	connect(this, &Element::xChanged, this, &Element::storePlacement);
+	connect(this, &Element::yChanged, this, &Element::storePlacement);
+	connect(this, &Element::zChanged, this, &Element::storePlacement);
+	connect(this, &Element::rotationChanged, this, &Element::storePlacement);
+	connect(this, &Element::mirrorChanged, this, &Element::storePlacement);
 		//The mirror is about the element's own axis, so it follows the
 		//rotation, see applyMirrorTransform()
 	connect(this, &Element::rotationChanged, this, &Element::applyMirrorTransform);
 		//Texts kept horizontal in a turned symbol depend on the turn
 	connect(this, &Element::rotationChanged, this, [this]() {updateSymbolPictures();});
+		//And its texts and their groups
+	for (DynamicElementTextItem *deti : std::as_const(m_dynamic_text_list))
+		connectTextStore(deti);
+	connect(this, &Element::textAdded, this, [this](DynamicElementTextItem *deti) {
+		connectTextStore(deti);
+		scheduleTextsStore();
+	});
+	connect(this, &Element::textsGroupAdded, this, [this](ElementTextItemGroup *group) {
+		connectTextStore(group);
+		scheduleTextsStore();
+	});
+	connect(this, &Element::textRemoved, this, &Element::scheduleTextsStore);
+	connect(this, &Element::textsGroupAboutToBeRemoved, this, &Element::scheduleTextsStore);
+	connect(this, &Element::textAddedToGroup, this, &Element::scheduleTextsStore);
+	connect(this, &Element::textRemovedFromGroup, this, &Element::scheduleTextsStore);
 }
 
 /**
@@ -1385,6 +1407,7 @@ bool Element::fromXml(QDomElement &e,
 		ElementXmlRetroCompatibility::loadSequential(e, this);
 	else
 		m_autoNum_seq.fromXml(e.firstChildElement(QStringLiteral("sequentialNumbers")));
+	storeSequence();
 
 		//Position and selection.
 		//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
@@ -1615,74 +1638,10 @@ QDomElement Element::toXml(
 			element.appendChild(infos);
 	}
 
-		//Save override properties (For now, only used when the element is a terminal)
-	if (m_data.m_type == ElementData::Terminal)
-	{
-		QDomElement properties = document.createElement(QStringLiteral("properties"));
-		QDomElement element_type = document.createElement(QStringLiteral("element_type"));
-
-		element_type.setAttribute(QStringLiteral("terminal_type"),
-								m_data.terminalTypeToString(m_data.terminalType()));
-		element_type.setAttribute(QStringLiteral("terminal_function"),
-								m_data.terminalFunctionToString(m_data.terminalFunction()));
-		element_type.setAttribute(QStringLiteral("terminal_led"),
-								QETXML::boolToString(m_data.terminalLed()));
-
-		properties.appendChild(element_type);
-		element.appendChild(properties);
-	}
-
-		//Save PLC master data override for elements on diagram
-	if (m_data.m_type == ElementData::Master &&
-		m_data.m_master_type == ElementData::PLC)
-	{
-		auto xml_plc = m_data.plcMasterDataToXml(document);
-		if (!xml_plc.isNull())
-			element.appendChild(xml_plc);
-	}
+	appendDataXml(document, element);
 
 	//Dynamic texts
-	QDomElement dyn_text = document.createElement(QStringLiteral("dynamic_texts"));
-	for (DynamicElementTextItem *deti : m_dynamic_text_list)
-		dyn_text.appendChild(deti->toXml(document));
-
-	QDomElement texts_group = document.createElement(QStringLiteral("texts_groups"));
-
-		//Dynamic texts owned by groups
-	for(ElementTextItemGroup *group : m_texts_group)
-	{
-		group->blockAlignmentUpdate(true);
-			//temporarily remove the texts from group to get the pos relative to element and not group.
-			//Set the alignment to top, because top is not used by groupand so,
-			//each time a text is removed from the group, the alignement is not updated
-		Qt::Alignment al = group->alignment();
-		group->setAlignment(Qt::AlignTop);
-
-			//Remove the texts from group
-		QList<DynamicElementTextItem *> deti_list = group->texts();
-		for(DynamicElementTextItem *deti : deti_list)
-			group->removeFromGroup(deti);
-
-			//Save the texts to xml
-		for (DynamicElementTextItem *deti : deti_list)
-			dyn_text.appendChild(deti->toXml(document));
-
-			//Re add texts to group
-		for(DynamicElementTextItem *deti : deti_list)
-			group->addToGroup(deti);
-
-			//Restorr the alignment
-		group->setAlignment(al);
-
-			//Save the group to xml
-		texts_group.appendChild(group->toXml(document));
-		group->blockAlignmentUpdate(false);
-	}
-
-		//Append the dynamic texts to element
-	element.appendChild(dyn_text);
-		//Append the texts group to element
-	element.appendChild(texts_group);
+	appendTextsXml(document, element);
 
 	return(element);
 }
@@ -2302,6 +2261,13 @@ void Element::setElementInformations(DiagramContext dc)
 	emit elementInfoChange(old_info, m_data.m_informations);
 	notifyTerminalStrip(this);
 
+	bool label_changed = old_info.value("label").toString() != dc.value("label").toString();
+	if (label_changed && (linkType() & Element::AllReport)) {
+		if (diagram() && diagram()->project() && diagram()->project()->chainedReports()) {
+			diagram()->project()->scheduleAutoLink();
+		}
+	}
+
 	// Propagate label change to linked PLC slaves (label is changed via
 	// setElementInformations through the undo stack, not via setElementData)
 	if (m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC)
@@ -2366,6 +2332,233 @@ DiagramContext Element::kindInformations() const
 }
 
 /**
+	@brief Element::ownPlacement
+	@return where this symbol comes from and sits, as toXml() writes it
+*/
+ElementPlacement Element::ownPlacement() const
+{
+	ElementPlacement placement;
+	placement.type = m_location.path();
+	placement.x = pos().x();
+	placement.y = pos().y();
+	placement.z = zValue();
+	placement.rotation = orientation();
+	placement.horizontal_mirror = m_horizontal_mirror;
+	placement.vertical_mirror = m_vertical_mirror;
+	return placement;
+}
+
+/**
+	@brief Element::storePlacement
+	Write this symbol's placement to its project's store, once it is
+	placed and alone with its uuid (F100).
+*/
+void Element::storePlacement()
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	if (store && store->hasElementInformation(m_uuid) && store->placedElementCount(m_uuid) == 1)
+		store->storeElementPlacement(m_uuid, ownPlacement());
+}
+
+/**
+	@brief Element::appendTextsXml
+	Append this symbol's texts and text groups to @p element, as a saved
+	symbol holds them.
+*/
+void Element::appendTextsXml(QDomDocument &document, QDomElement &element) const
+{
+	const bool writing = m_writing_texts;
+	m_writing_texts = true;
+	QDomElement dyn_text = document.createElement(QStringLiteral("dynamic_texts"));
+	for (DynamicElementTextItem *deti : m_dynamic_text_list)
+		dyn_text.appendChild(deti->toXml(document));
+
+	QDomElement texts_group = document.createElement(QStringLiteral("texts_groups"));
+
+		//Dynamic texts owned by groups
+	for(ElementTextItemGroup *group : m_texts_group)
+	{
+		group->blockAlignmentUpdate(true);
+			//temporarily remove the texts from group to get the pos relative to element and not group.
+			//Set the alignment to top, because top is not used by groupand so,
+			//each time a text is removed from the group, the alignement is not updated
+		Qt::Alignment al = group->alignment();
+		group->setAlignment(Qt::AlignTop);
+
+			//Remove the texts from group
+		QList<DynamicElementTextItem *> deti_list = group->texts();
+		for(DynamicElementTextItem *deti : deti_list)
+			group->removeFromGroup(deti);
+
+			//Save the texts to xml
+		for (DynamicElementTextItem *deti : deti_list)
+			dyn_text.appendChild(deti->toXml(document));
+
+			//Re add texts to group
+		for(DynamicElementTextItem *deti : deti_list)
+			group->addToGroup(deti);
+
+			//Restorr the alignment
+		group->setAlignment(al);
+
+			//Save the group to xml
+		texts_group.appendChild(group->toXml(document));
+		group->blockAlignmentUpdate(false);
+	}
+
+		//Append the dynamic texts to element
+	element.appendChild(dyn_text);
+		//Append the texts group to element
+	element.appendChild(texts_group);
+	m_writing_texts = writing;
+}
+
+/**
+	@brief Element::appendDataXml
+	Append to @p element, made in @p document, what toXml() writes of this
+	symbol's own data: the override properties of a terminal and the PLC
+	master data of a PLC.
+*/
+void Element::appendDataXml(QDomDocument &document, QDomElement &element) const
+{
+		//Save override properties (For now, only used when the element is a terminal)
+	if (m_data.m_type == ElementData::Terminal)
+	{
+		QDomElement properties = document.createElement(QStringLiteral("properties"));
+		QDomElement element_type = document.createElement(QStringLiteral("element_type"));
+
+		element_type.setAttribute(QStringLiteral("terminal_type"),
+								m_data.terminalTypeToString(m_data.terminalType()));
+		element_type.setAttribute(QStringLiteral("terminal_function"),
+								m_data.terminalFunctionToString(m_data.terminalFunction()));
+		element_type.setAttribute(QStringLiteral("terminal_led"),
+								QETXML::boolToString(m_data.terminalLed()));
+
+		properties.appendChild(element_type);
+		element.appendChild(properties);
+	}
+
+		//Save PLC master data override for elements on diagram
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		auto xml_plc = m_data.plcMasterDataToXml(document);
+		if (!xml_plc.isNull())
+			element.appendChild(xml_plc);
+	}
+}
+
+/**
+	@brief Element::ownValuesXml
+	@return an <element> made in @p document holding what toXml() writes
+	of this symbol that no other table of the project database holds: its
+	prefix, frozen label, whether it can be moved, and appendDataXml()
+*/
+QDomElement Element::ownValuesXml(QDomDocument &document) const
+{
+	QDomElement element = document.createElement(QStringLiteral("element"));
+	element.setAttribute(QStringLiteral("prefix"), m_prefix);
+	element.setAttribute(QStringLiteral("freezeLabel"), m_freeze_label? QStringLiteral("true") : QStringLiteral("false"));
+	element.setAttribute(QStringLiteral("is_movable"), bool(is_movable_));
+	appendDataXml(document, element);
+	return element;
+}
+
+/**
+	@brief Element::ownTextsXml
+	@return an <element> made in @p document holding this symbol's texts and
+	text groups, as toXml() writes them
+*/
+QDomElement Element::ownTextsXml(QDomDocument &document) const
+{
+	QDomElement element = document.createElement(QStringLiteral("element"));
+	appendTextsXml(document, element);
+	return element;
+}
+
+/**
+	@brief Element::scheduleTextsStore
+	A text or text group of this symbol changed, or what ownValuesXml()
+	writes: its project's store writes them when it is next read
+	(projectDataBase::flushElementTexts()).
+*/
+void Element::scheduleTextsStore()
+{
+	if (m_writing_texts) return;
+	if (projectDataBase *store = placedStore())
+		store->queueElementTexts(this);
+}
+
+/**
+	@brief Element::connectTextStore
+	Queue the texts for the store whenever @p deti changes.
+*/
+void Element::connectTextStore(DynamicElementTextItem *deti)
+{
+	if (!deti) return;
+	const auto once = Qt::UniqueConnection;
+	connect(deti, &DynamicElementTextItem::xChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::yChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::rotationChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::fontChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::colorChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::alignmentChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::textFromChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::infoNameChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::compositeTextChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::frameChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::textWidthChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::keepVisualRotationChanged, this, &Element::scheduleTextsStore, once);
+	connect(deti, &DynamicElementTextItem::rotationPointCenterChanged, this, &Element::scheduleTextsStore, once);
+		//The text shown, whichever way it is set
+	connect(deti->document(), &QTextDocument::contentsChanged, this, &Element::scheduleTextsStore, once);
+}
+
+/**
+	@brief Element::connectTextStore
+	Queue the texts for the store whenever @p group changes.
+*/
+void Element::connectTextStore(ElementTextItemGroup *group)
+{
+	if (!group) return;
+	const auto once = Qt::UniqueConnection;
+	connect(group, &ElementTextItemGroup::xChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::yChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::rotationChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::verticalAdjustmentChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::alignmentChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::nameChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::holdToBottomPageChanged, this, &Element::scheduleTextsStore, once);
+	connect(group, &ElementTextItemGroup::frameChanged, this, &Element::scheduleTextsStore, once);
+}
+
+/**
+	@brief Element::setSequenceStruct
+	Replace this symbol's sequential numbers; the project's store follows.
+*/
+void Element::setSequenceStruct(const autonum::sequentialNumbers &numbers)
+{
+	m_autoNum_seq = numbers;
+	storeSequence();
+}
+
+/**
+	@brief Element::storeSequence
+	Write this symbol's sequential numbers to its project's store, once it
+	is placed and alone with its uuid (F100).
+*/
+void Element::storeSequence()
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	if (store && store->hasElementInformation(m_uuid) && store->placedElementCount(m_uuid) == 1)
+		store->storeSequence(m_uuid, m_autoNum_seq);
+}
+
+/**
 	@brief Element::placedStore
 	@return the project database holding this symbol's information, or
 	nullptr if it is not placed in a project
@@ -2394,6 +2587,7 @@ void Element::setElementData(ElementData data)
 	auto old_plc = m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC
 		? m_data.plcMasterData() : ElementData::PlcMasterData();
 	m_data = data;
+	scheduleTextsStore();
 
 	if (old_info != m_data.m_informations) {
 		m_data.m_informations.addValue(QStringLiteral("label"), actualLabel()); //Update the label if there is a formula
@@ -2695,12 +2889,13 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 		}
 		NumerotationContextCommands ncc (given);
 
-		m_autoNum_seq.clear();
+		autonum::sequentialNumbers numbers;
 		autonum::setSequential(formula,
-					   m_autoNum_seq,
+					   numbers,
 					   given,
 					   diagram(),
 					   element_currentAutoNum);
+		setSequenceStruct(numbers);
 
 		NumerotationContext new_context = ncc.next();
 		QETProject *project = diagram()->project();
@@ -2743,6 +2938,7 @@ QString Element::getPrefix() const
 void Element::setPrefix(QString prefix)
 {
 	m_prefix = std::move(prefix);
+	scheduleTextsStore();
 }
 
 /**
@@ -2752,6 +2948,17 @@ void Element::setPrefix(QString prefix)
 void Element::freezeLabel(bool freeze)
 {
 	m_freeze_label = freeze;
+	scheduleTextsStore();
+}
+
+/**
+	@brief Element::setMovable
+	As QetGraphicsItem, and queue the change for the project database
+*/
+void Element::setMovable(bool movable)
+{
+	QetGraphicsItem::setMovable(movable);
+	scheduleTextsStore();
 }
 
 /**
@@ -2780,10 +2987,11 @@ QString Element::actualLabel()
 	if (m_data.m_informations.value(QStringLiteral("formula")).toString().isEmpty()) {
 		return m_data.m_informations.value(QStringLiteral("label")).toString();
 	} else {
+	autonum::sequentialNumbers numbers = m_autoNum_seq;
 	return autonum::AssignVariables::formulaToLabel(
 				m_data.m_informations.value(
 					QStringLiteral("formula")).toString(),
-				m_autoNum_seq,
+				numbers,
 				diagram(),
 				this);
 	}

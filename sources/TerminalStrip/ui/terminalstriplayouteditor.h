@@ -70,6 +70,10 @@ class TerminalStripLayoutEditor : public QWidget
 										   QWidget *parent = nullptr);
 		~TerminalStripLayoutEditor();
 
+	signals:
+			//The user changed a value of the layout
+		void layoutEdited();
+
 	protected:
 		void resizeEvent(QResizeEvent *event) override;
 		void showEvent(QShowEvent *event) override;

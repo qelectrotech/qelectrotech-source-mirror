@@ -187,7 +187,7 @@ void ConductorAutoNumerotation::numeratePotential()
 	if (properties_equal)
 	{
 		m_conductor->setProperties(cp);
-		m_conductor->rSequenceNum() = conductor_list.first()->sequenceNum();
+		m_conductor->replaceSequenceNum(conductor_list.first()->sequenceNum());
 		return;
 	}
 
@@ -210,7 +210,7 @@ void ConductorAutoNumerotation::numeratePotential()
 
 		ConductorProperties cp = m_conductor->properties();
 		cp.applyForEqualAttributes(cp_list);
-		m_conductor->rSequenceNum() = conductor_list.first()->sequenceNum();
+		m_conductor->replaceSequenceNum(conductor_list.first()->sequenceNum());
 		m_conductor->setProperties(cp);
 	}
 		//the texts isn't identicals
@@ -248,11 +248,13 @@ void ConductorAutoNumerotation::numerateNewConductor()
 		cp.m_formula = formula;
 		m_conductor->setProperties(cp);
 
+		autonum::sequentialNumbers numbers = m_conductor->sequenceNum();
 		autonum::setSequential(formula,
-							   m_conductor->rSequenceNum(),
+							   numbers,
 							   context,
 							   m_diagram,
 							   autoNum_name);
+		m_conductor->replaceSequenceNum(numbers);
 
 		NumerotationContextCommands ncc (context, m_diagram);
 		NumerotationContext new_context = ncc.next();
@@ -272,8 +274,9 @@ void ConductorAutoNumerotation::numerateNewConductor()
 		}
 	}
 
+	autonum::sequentialNumbers numbers = m_conductor->sequenceNum();
 	applyText(autonum::AssignVariables::formulaToLabel(
 		m_conductor->properties().m_formula,
-		m_conductor->rSequenceNum(),
+		numbers,
 		m_diagram));
 }

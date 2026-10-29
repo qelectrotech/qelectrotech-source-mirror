@@ -131,6 +131,42 @@
 #include <QLabel>
 #include <QUrl>
 #include <algorithm>
+#include "foliogrid.h"
+
+namespace {
+	/**
+		The icon of View > Snap to the grid: a grid of dots and a pointer
+		whose tip sits on the middle one, in the palette's text color.
+	*/
+	QIcon gridSnapIcon()
+	{
+		QIcon icon;
+		const QColor ink = QApplication::palette().color(QPalette::WindowText);
+		for (int size : {16, 22, 32, 48})
+		{
+			QPixmap pixmap(size, size);
+			pixmap.fill(Qt::transparent);
+			QPainter painter(&pixmap);
+			painter.setRenderHint(QPainter::Antialiasing);
+			painter.scale(size / 24.0, size / 24.0);
+			painter.setPen(Qt::NoPen);
+			painter.setBrush(ink);
+			for (int x : {4, 12, 20})
+				for (int y : {4, 12, 20})
+					painter.drawEllipse(QPointF(x, y), 1.4, 1.4);
+				//The pointer, its tip on the middle dot
+			painter.setPen(QPen(ink, 1.2));
+			painter.setBrush(QApplication::palette().color(QPalette::Window));
+			painter.drawPolygon(QPolygonF({{12, 12}, {12, 23}, {14.8, 20.3}, {16.8, 24}, {18.6, 23.1}, {16.6, 19.4}, {20.5, 19.4}}));
+			painter.setPen(Qt::NoPen);
+			painter.setBrush(ink);
+			painter.drawEllipse(QPointF(12, 12), 2.4, 2.4);
+			painter.end();
+			icon.addPixmap(pixmap);
+		}
+		return icon;
+	}
+}
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -634,6 +670,8 @@ void QETDiagramEditor::setUpActions()
 
 		//Diagram background color picker
 	m_background_color_button = new DiagramBgColorToolButton(this, this);
+	ShortcutManager::instance().registerAction(m_background_color_button->darkModeAction(),
+						   "diagrameditor.dark_mode", tr("Diagram editors"), QKeySequence());
 
 		//Draw or not the background grid
 	m_draw_grid = new QAction ( QET::Icons::Grid, tr("Display the grid"), this);
@@ -663,6 +701,52 @@ void QETDiagramEditor::setUpActions()
 		for (DiagramView *view : findChildren<DiagramView *>())
 			view->viewport()->update();
 	});
+
+		//Snap to the grid, on or off: off, the pointer and whatever is
+		//moved or placed go to the nearest point, as with Ctrl held
+	m_grid_snap = new QAction(gridSnapIcon(), tr("Snap to the grid"), this);
+	ShortcutManager::instance().registerAction(m_grid_snap, "diagrameditor.grid_snap", tr("Diagram editors"),
+						   QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_G));
+	m_grid_snap->setStatusTip(tr("Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point"));
+	m_grid_snap->setCheckable(true);
+	m_grid_snap->setChecked(Diagram::gridSnap());
+	connect(m_grid_snap, &QAction::triggered, this, [](bool on) {
+		Diagram::setGridSnap(on);
+	});
+
+		//The grid step, fine, medium or coarse: align blocks on a coarse
+		//grid, work them out on a fine one
+	m_grid_step_menu = new QMenu(tr("Grid step"), this);
+	m_grid_step_menu->setIcon(QET::Icons::Grid);
+	m_grid_step_button = new QToolButton(this);
+	m_grid_step_button->setMenu(m_grid_step_menu);
+	m_grid_step_button->setPopupMode(QToolButton::InstantPopup);
+	m_grid_step_button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	m_grid_step_button->setToolTip(tr("The step of the grid that symbols, conductors and the pointer snap to"));
+	auto grid_step_group = new QActionGroup(this);
+	const struct { const char *id; const char *name; int step; Qt::Key key; } grid_steps[] = {
+		{"diagrameditor.grid_step_fine",   QT_TR_NOOP("Fine (5)"),    5, Qt::Key_1},
+		{"diagrameditor.grid_step_medium", QT_TR_NOOP("Medium (10)"), 10, Qt::Key_2},
+		{"diagrameditor.grid_step_coarse", QT_TR_NOOP("Coarse (20)"), 20, Qt::Key_3},
+	};
+	for (const auto &grid_step : grid_steps)
+	{
+		QAction *action = m_grid_step_menu->addAction(tr(grid_step.name));
+		ShortcutManager::instance().registerAction(action, grid_step.id, tr("Diagram editors"),
+							   QKeySequence(Qt::CTRL | Qt::ALT | grid_step.key));
+		action->setCheckable(true);
+		action->setData(grid_step.step);
+		grid_step_group->addAction(action);
+	}
+	connect(grid_step_group, &QActionGroup::triggered, this, [this](QAction *action) {
+		QSettings settings;
+		settings.setValue(FolioGrid::x_key, action->data());
+		settings.setValue(FolioGrid::y_key, action->data());
+		updateGridStepButton();
+		for (DiagramView *view : findChildren<DiagramView *>())
+			view->viewport()->update();
+	});
+	updateGridStepButton();
 
 		//Snap step for dragged texts, as a fraction of the folio grid
 	m_text_grid_menu = new QMenu(tr("Text grid"), this);
@@ -759,6 +843,9 @@ void QETDiagramEditor::setUpActions()
 	m_hidden_kinds_label = new QLabel(this);
 	m_hidden_kinds_label->setToolTip(tr("See Display > Show"));
 	statusBar()->addPermanentWidget(m_hidden_kinds_label);
+	m_zoom_label = new QLabel(this);
+	m_zoom_label->setToolTip(tr("Zoom of the folio on screen"));
+	statusBar()->addPermanentWidget(m_zoom_label);
 	connect(QETApp::instance(), &QETApp::shownKindsChanged,
 			this, &QETDiagramEditor::updateShownKinds);
 	updateShownKinds();
@@ -1516,6 +1603,7 @@ void QETDiagramEditor::setUpToolBar()
 	};
 	add_widget(QStringLiteral("widget:handler_size"), new DiagramEditorHandlerSizeWidget(this));
 	add_widget(QStringLiteral("widget:text_grid"), m_text_grid_button);
+	add_widget(QStringLiteral("widget:grid_step"), m_grid_step_button);
 	add_widget(QStringLiteral("widget:background_color"), m_background_color_button);
 		//Sits with the conductor actions it works alongside: it colours
 		//the selected conductors and sets the colour of the next one drawn.
@@ -1784,6 +1872,8 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_mode_visualise);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(m_draw_grid);
+	menu_affichage -> addAction(m_grid_snap);
+	menu_affichage -> addMenu(m_grid_step_menu);
 	menu_affichage -> addAction(m_crosshair);
 	menu_affichage -> addMenu(m_text_grid_menu);
 	menu_affichage -> addAction(m_draw_guides);
@@ -1791,6 +1881,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_cell_lines);
 	menu_affichage -> addMenu(m_shown_kinds_menu);
 	menu_affichage -> addMenu(m_background_color_button->menu());
+	menu_affichage -> addAction(m_background_color_button->darkModeAction());
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
 
@@ -3125,6 +3216,7 @@ void QETDiagramEditor::slot_updateActions()
 	bool opened_project = pv;
 	bool opened_diagram = dv;
 	bool editable_project = (pv && !pv -> project() -> isReadOnly());
+	updateZoomLabel();
 
 	m_close_file->                  setEnabled(opened_project);
 	m_save_file->                   setEnabled(opened_project);
@@ -3747,6 +3839,52 @@ void QETDiagramEditor::openBackupFiles(QList<KAutoSaveFile *> backup_files)
 	}
 }
 /**
+	@brief QETDiagramEditor::openWorkingCopies
+	Open the projects the working copies @p copies left by a QElectroTech
+	that did not close normally (QET-SQL-FORMAT S3z3): each is written as
+	a .qet, which is opened as the project it was, unsaved, as a project
+	reopened from a recovery file. The working copies are deleted.
+	@param copies
+*/
+void QETDiagramEditor::openWorkingCopies(const QList<WorkingCopyRecovery::LeftWorkingCopy> &copies)
+{
+	for (const auto &copy : copies)
+	{
+		DialogWaiting::instance(this);
+		QETProject *project = nullptr;
+		QTemporaryDir dir;
+		const QString recovered = dir.filePath(QStringLiteral("recovered.qet"));
+		QString error;
+		if (dir.isValid() && projectDataBase::writeWorkingCopy(copy.path, recovered, &error))
+		{
+			project = new QETProject(recovered, copy.project_file, this);
+			if (project->state() != QETProject::Ok) {
+				delete project;
+				project = nullptr;
+			}
+		}
+		else {
+			qWarning() << "Working copy" << copy.path << "not recovered:" << error;
+		}
+		WorkingCopyRecovery::remove(copy.path);
+		DialogWaiting::dropInstance();
+		if (!project)
+		{
+			QET::QetMessageBox::warning(
+				this,
+				tr("Unable to open project", "message box title"),
+				QString(tr(
+					"An error occurred while opening file %1.",
+					"message box content")).arg(
+						copy.project_file.isEmpty() ? copy.path
+													: QFileInfo(copy.project_file).fileName()));
+			continue;
+		}
+		addProject(project);
+	}
+}
+
+/**
 	met a jour le menu "Fenetres"
 */
 void QETDiagramEditor::slot_updateWindowsMenu()
@@ -4223,6 +4361,24 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 		&QETDiagramEditor::slot_updateComplexActions);
 	connect(dv, &DiagramView::modeChanged, this, &QETDiagramEditor::slot_updateModeActions);
 	connect(dv, &DiagramView::elementPlacementStarted, this, &QETDiagramEditor::rememberPlacedElement);
+	connect(dv, &DiagramView::zoomChanged, this, &QETDiagramEditor::updateZoomLabel);
+}
+
+/**
+	@brief QETDiagramEditor::updateZoomLabel
+	Show the zoom of the folio on screen in the status bar, nothing when
+	no folio is shown.
+*/
+void QETDiagramEditor::updateZoomLabel()
+{
+	if (!m_zoom_label)
+		return;
+	DiagramView *dv = currentDiagramView();
+		//Four digits, not rounded to a whole percent: the grid's cutoff
+		//(Settings > General) compares the exact zoom, so 77.6 % shows as
+		//such, not as 78 %
+	m_zoom_label->setText(dv ? tr("Zoom %1 %").arg(QLocale().toString(dv->transform().m11() * 100, 'g', 4))
+				 : QString());
 }
 
 /**
@@ -5057,6 +5213,23 @@ void QETDiagramEditor::updateShownKinds()
 	const int hidden = ShownKinds::hiddenCount();
 	m_hidden_kinds_label->setText(tr("%n kinds of items hidden", "", hidden));
 	m_hidden_kinds_label->setVisible(hidden > 0);
+}
+
+/**
+	@brief QETDiagramEditor::updateGridStepButton
+	Show the current grid step on its toolbar button and check it in its
+	menu; a step set in the settings that the menu does not offer shows
+	as its number.
+*/
+void QETDiagramEditor::updateGridStepButton()
+{
+	QSettings settings;
+	const int x_step = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int y_step = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
+	for (QAction *action : m_grid_step_menu->actions())
+		action->setChecked(x_step == y_step && action->data().toInt() == x_step);
+	m_grid_step_button->setText(x_step == y_step ? tr("Grid %1").arg(x_step)
+						     : tr("Grid %1 × %2").arg(x_step).arg(y_step));
 }
 
 /**

@@ -354,42 +354,46 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
 		const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
-		qreal limit_x = rect.x() + rect.width();
-		qreal limit_y = rect.y() + rect.height();
+			//Left out when they would crowd, whatever the grid step
+		const qreal zoom_factor = p->transform().m11();
+		if (FolioGrid::dotsShown(xGrid, yGrid, zoom_factor,
+					 FolioGrid::minDotSpacing(settings.value(FolioGrid::min_dot_spacing_key))))
+		{
+			qreal limit_x = rect.x() + rect.width();
+			qreal limit_y = rect.y() + rect.height();
 
-		int g_x = (int)ceil(rect.x());
-		while (g_x % xGrid) ++ g_x;
-		int g_y = (int)ceil(rect.y());
-		while (g_y % yGrid) ++ g_y;
+			int g_x = (int)ceil(rect.x());
+			while (g_x % xGrid) ++ g_x;
+			int g_y = (int)ceil(rect.y());
+			while (g_y % yGrid) ++ g_y;
 
-		QPolygon points;
-		for (int gx = g_x ; gx < limit_x ; gx += xGrid) {
-			for (int gy = g_y ; gy < limit_y ; gy += yGrid) {
-				points << QPoint(gx, gy);
-			}
-		}
-
-		qreal zoom_factor = p->transform().m11();
-		int minWidthPen = settings.value(QStringLiteral("diagrameditor/grid_pointsize_min"), 1).toInt();
-		int maxWidthPen = settings.value(QStringLiteral("diagrameditor/grid_pointsize_max"), 1).toInt();
-		pen.setWidth(minWidthPen);
-		if (minWidthPen != maxWidthPen) {
-			qreal stepPen  = (maxWidthPen - minWidthPen) / (qreal)maxWidthPen;
-			qreal stepZoom = (5.0 - 1.0) / maxWidthPen;
-			for (int n=0; n<maxWidthPen; n++) {
-				if ((zoom_factor > (1.0 + n * stepZoom)) && (zoom_factor <= (1.0 + (n+1) * stepZoom))) {
-					int widthPen = minWidthPen + qRound(n * stepPen);
-					pen.setWidth(widthPen);
+			QPolygon points;
+			for (int gx = g_x ; gx < limit_x ; gx += xGrid) {
+				for (int gy = g_y ; gy < limit_y ; gy += yGrid) {
+					points << QPoint(gx, gy);
 				}
 			}
-			if		(zoom_factor <= 1.0)
-						pen.setWidth(minWidthPen);
-			else if (zoom_factor > (1.0 + stepZoom * maxWidthPen))
-						pen.setWidth(maxWidthPen);
+
+			int minWidthPen = settings.value(QStringLiteral("diagrameditor/grid_pointsize_min"), 1).toInt();
+			int maxWidthPen = settings.value(QStringLiteral("diagrameditor/grid_pointsize_max"), 1).toInt();
+			pen.setWidth(minWidthPen);
+			if (minWidthPen != maxWidthPen) {
+				qreal stepPen  = (maxWidthPen - minWidthPen) / (qreal)maxWidthPen;
+				qreal stepZoom = (5.0 - 1.0) / maxWidthPen;
+				for (int n=0; n<maxWidthPen; n++) {
+					if ((zoom_factor > (1.0 + n * stepZoom)) && (zoom_factor <= (1.0 + (n+1) * stepZoom))) {
+						int widthPen = minWidthPen + qRound(n * stepPen);
+						pen.setWidth(widthPen);
+					}
+				}
+				if		(zoom_factor <= 1.0)
+							pen.setWidth(minWidthPen);
+				else if (zoom_factor > (1.0 + stepZoom * maxWidthPen))
+							pen.setWidth(maxWidthPen);
+			}
+			p -> setPen(pen);
+			p -> drawPoints(points);
 		}
-		p -> setPen(pen);
-		if (zoom_factor > 0.5) // no grid below ... !
-				p -> drawPoints(points);
 	}
 
 	if (draw_guides_) {
@@ -904,6 +908,21 @@ QDomElement Diagram::deferredXmlWithHeader(QDomDocument &document)
 }
 
 /**
+	@brief Diagram::deferredXml
+	The XML kept for building this folio later. A folio of a .qetdb opened
+	from its tables has its header only: its items are written into it
+	from the project database the first time they are asked for (S4x X3).
+*/
+QDomElement Diagram::deferredXml() const
+{
+	if (m_project && m_deferred.hasAttribute(QString::fromLatin1(projectDataBase::deferred_content))) {
+		QDomElement xml = m_deferred;
+		m_project->dataBase()->writeFolioContent(xml);
+	}
+	return m_deferred;
+}
+
+/**
 	@brief Diagram::buildDeferred
 	Build this folio's items from the XML kept for later, and nothing else.
 	Their rows are in the project database already, filled from the same
@@ -915,7 +934,7 @@ bool Diagram::buildDeferred()
 	if (isLoaded()) {
 		return false;
 	}
-	QDomElement xml = m_deferred;
+	QDomElement xml = deferredXml();
 	m_deferred = QDomElement();
 	m_kept_part.clear();
 	m_kept_text.clear();
@@ -1034,6 +1053,7 @@ void Diagram::keepWire(const QDomElement &wire, Terminal *found1, Terminal *foun
 														 ends.join(QLatin1Char('\n'))).toString());
 	}
 	m_kept_wires << kept;
+	queueValuesStore();
 }
 
 /**
@@ -1122,11 +1142,6 @@ bool Diagram::uuidUsedByOtherDiagram(const QUuid &uuid) const
 */
 QUuid Diagram::derivedUuid(const QDomElement &root, const QString &reason) const
 {
-		//Fixed namespace for QElectroTech folio uuids, never change it :
-		//doing so would change the uuid given to every legacy folio.
-	static const QUuid folio_namespace(
-				QStringLiteral("{d5951240-154d-44d6-8277-0092a31d1920}"));
-
 	const int index = m_project
 			? m_project->folios().indexOf(const_cast<Diagram *>(this))
 			: -1;
@@ -1134,16 +1149,35 @@ QUuid Diagram::derivedUuid(const QDomElement &root, const QString &reason) const
 			.documentElement()
 			.attribute(QStringLiteral("title"));
 
+	return derivedUuid(reason, project_title, index, root.attribute(QStringLiteral("title")),
+					   [this](const QUuid &uuid) { return uuidUsedByOtherDiagram(uuid); });
+}
+
+/**
+	@brief Diagram::derivedUuid
+	The uuid derivedUuid() above gives the folio at @p index, titled
+	@p title, of a project titled @p project_title; @p used says whether a
+	uuid is taken by a folio before it. Also used on the document before
+	any folio is built (QETProject::fillDerivedUuids()).
+*/
+QUuid Diagram::derivedUuid(const QString &reason, const QString &project_title,
+						   int index, const QString &title,
+						   const std::function<bool(const QUuid &)> &used)
+{
+		//Fixed namespace for QElectroTech folio uuids, never change it :
+		//doing so would change the uuid given to every legacy folio.
+	static const QUuid folio_namespace(
+				QStringLiteral("{d5951240-154d-44d6-8277-0092a31d1920}"));
 	const QString base = QStringLiteral("qet-folio\n%1\n%2\n%3\n%4")
 			.arg(reason,
 				 project_title,
 				 QString::number(index),
-				 root.attribute(QStringLiteral("title")));
+				 title);
 
 		//A clash is only possible with a hand-crafted file, but the uuid is a
 		//key : salt the name until it is free. Still deterministic.
 	QUuid uuid = QUuid::createUuidV5(folio_namespace, base);
-	for (int salt = 1 ; uuidUsedByOtherDiagram(uuid) ; ++salt) {
+	for (int salt = 1 ; used(uuid) ; ++salt) {
 		uuid = QUuid::createUuidV5(folio_namespace,
 								   base + QStringLiteral("\n")
 								   + QString::number(salt));
@@ -1225,6 +1259,7 @@ QString Diagram::conductorsAutonumName() const
 */
 void Diagram::setConductorsAutonumName(const QString &name) {
 	m_conductors_autonum_name= name;
+	queueValuesStore();
 }
 
 /**
@@ -1572,21 +1607,12 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 }
 
 /**
-	@brief Diagram::writeHeader
-	Write this folio's own data -- its uuid, title block, border, default
-	wire, numbering -- into @p dom_root, the folio's element of @p document:
-	what toXml() writes before the folio's items.
+	@brief Diagram::appendValuesXml
+	Write into @p dom_root, made in @p document, this folio's default wire
+	and its numbering and freeze settings, as writeHeader() does
 */
-void Diagram::writeHeader(QDomDocument &document, QDomElement &dom_root)
+void Diagram::appendValuesXml(QDomDocument &document, QDomElement &dom_root) const
 {
-		//Persist the folio identity, so that a folio keeps the same uuid
-		//across save/load. Without it every load invents a new one, and
-		//nothing outside the running instance (version control, a lock,
-		//a diff tool...) can tell which folio is which.
-	dom_root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
-	border_and_titleblock.titleBlockToXml(dom_root);
-	border_and_titleblock.borderToXml(dom_root);
-
 	// Default conductor properties
 	QDomElement default_conductor =
 			document.createElement(QStringLiteral("defaultconductor"));
@@ -1607,6 +1633,67 @@ void Diagram::writeHeader(QDomDocument &document, QDomElement &dom_root)
 	dom_root.setAttribute(QStringLiteral("freezeNewConductor"),
 				  m_freeze_new_conductors_
 				  ? QStringLiteral("true") : QStringLiteral("false"));
+}
+
+/**
+	@brief Diagram::keptXml
+	@return what writeKept() writes of the symbols and wires this folio
+	keeps as read (F127, F128): each symbol, then each wire, made in
+	@p document. Their terminals are numbered from 0.
+*/
+QList<QDomElement> Diagram::keptXml(QDomDocument &document) const
+{
+	QDomElement elements = document.createElement(QStringLiteral("elements"));
+	QDomElement conductors = document.createElement(QStringLiteral("conductors"));
+	writeKept(document, elements, conductors, QHash<Terminal *, int>());
+	QList<QDomElement> kept;
+	for (const QDomElement &list : {elements, conductors})
+		for (QDomElement item = list.firstChildElement() ; !item.isNull() ; item = item.nextSiblingElement())
+			kept << item;
+	return kept;
+}
+
+/**
+	@brief Diagram::queueValuesStore
+	What ownValuesXml() writes may have changed: the project database
+	writes it at its next read. Call it after changing
+	defaultConductorProperties.
+*/
+void Diagram::queueValuesStore()
+{
+	if (m_project && m_project->dataBase())
+		m_project->dataBase()->queueFolioValues();
+}
+
+/**
+	@brief Diagram::ownValuesXml
+	@return a <diagram> made in @p document holding appendValuesXml():
+	what this folio saves that no other table of the project database holds
+*/
+QDomElement Diagram::ownValuesXml(QDomDocument &document) const
+{
+	QDomElement root = document.createElement(QStringLiteral("diagram"));
+	appendValuesXml(document, root);
+	return root;
+}
+
+/**
+	@brief Diagram::writeHeader
+	Write this folio's own data -- its uuid, title block, border, default
+	wire, numbering -- into @p dom_root, the folio's element of @p document:
+	what toXml() writes before the folio's items.
+*/
+void Diagram::writeHeader(QDomDocument &document, QDomElement &dom_root)
+{
+		//Persist the folio identity, so that a folio keeps the same uuid
+		//across save/load. Without it every load invents a new one, and
+		//nothing outside the running instance (version control, a lock,
+		//a diff tool...) can tell which folio is which.
+	dom_root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
+	border_and_titleblock.titleBlockToXml(dom_root);
+	border_and_titleblock.borderToXml(dom_root);
+
+	appendValuesXml(document, dom_root);
 
 	//Element Folio Sequential Variables
 	if (!m_elmt_unitfolio_max.isEmpty()
@@ -2296,6 +2383,7 @@ bool Diagram::fromXml(QDomElement &document,
 			if (QUuid(kept.attribute(QStringLiteral("uuid"))).isNull() && m_project)
 				kept.setAttribute(QStringLiteral("uuid"), derivedSymbolUuid(element_xml).toString());
 			m_kept_symbols << kept;
+			queueValuesStore();
 			read_symbols.append({QUuid(kept.attribute(QStringLiteral("uuid"))), element_xml});
 			QString label;
 			for (const QDomElement &info : QET::findInDomElement(
@@ -2484,6 +2572,7 @@ bool Diagram::fromXml(QDomElement &document,
 				kept.xml = m_kept_document.importNode(f, true).toElement();
 				kept.as_read = true;
 				m_kept_wires << kept;
+				queueValuesStore();
 			}
 			continue;
 		}
@@ -2727,8 +2816,11 @@ void Diagram::addItem(QGraphicsItem *item)
 	{
 		case Element::Type:
 		{
-			m_project->dataBase()->addElement(
-						static_cast<Element *>(item));
+			Element *elmt = static_cast<Element *>(item);
+			m_project->dataBase()->addElement(elmt);
+			if ((elmt->linkType() & Element::AllReport) && m_project->chainedReports()) {
+				m_project->scheduleAutoLink();
+			}
 			break;
 		}
 		case Conductor::Type:
@@ -2743,6 +2835,7 @@ void Diagram::addItem(QGraphicsItem *item)
 		case QetShapeItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:
+		case QetGraphicsTableItem::Type:
 		{
 			m_project->dataBase()->addDrawingItem(item);
 			break;
@@ -2768,6 +2861,9 @@ void Diagram::removeItem(QGraphicsItem *item)
 			auto elmt = static_cast<Element*>(item);
 			elmt->unlinkAllElements();
 			m_project->dataBase()->removeElement(elmt);
+			if ((elmt->linkType() & Element::AllReport) && m_project->chainedReports()) {
+				m_project->scheduleAutoLink();
+			}
 			break;
 		}
 		case Conductor::Type:
@@ -2781,6 +2877,7 @@ void Diagram::removeItem(QGraphicsItem *item)
 		case QetShapeItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:
+		case QetGraphicsTableItem::Type:
 		{
 			m_project->dataBase()->removeDrawingItem(item);
 			break;
@@ -3487,6 +3584,7 @@ void Diagram::unfreezeElements()
 */
 void Diagram::setFreezeNewElements(bool b) {
 	m_freeze_new_elements = b;
+	queueValuesStore();
 }
 
 /**
@@ -3514,6 +3612,7 @@ void Diagram::freezeConductors(bool freeze) {
 */
 void Diagram::setFreezeNewConductors(bool b) {
 	m_freeze_new_conductors_ = b;
+	queueValuesStore();
 }
 
 /**
@@ -3633,7 +3732,7 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
 	//Return a point rounded to the nearest pixel
-	if (QApplication::keyboardModifiers().testFlag(Qt::ControlModifier))
+	if (!gridSnap() || QApplication::keyboardModifiers().testFlag(Qt::ControlModifier))
 	{
 		int p_x = qRound(p.x());
 		int p_y = qRound(p.y());
@@ -3646,10 +3745,30 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	return (QPointF(p_x, p_y));
 }
 
+namespace {
+		/// -1 until read from the settings
+	int s_grid_snap = -1;
+	const QString grid_snap_key = QStringLiteral("diagrameditor/grid_snap");
+}
+
+bool Diagram::gridSnap()
+{
+	if (s_grid_snap < 0)
+		s_grid_snap = QSettings().value(grid_snap_key, true).toBool() ? 1 : 0;
+	return s_grid_snap == 1;
+}
+
+void Diagram::setGridSnap(bool snap)
+{
+	s_grid_snap = snap ? 1 : 0;
+	QSettings().setValue(grid_snap_key, snap);
+}
+
 /**
 	@brief Diagram::snapToTextGrid
 	Return the nearest point of p on the text grid, see TextGrid.
-	Ctrl held rounds to the nearest pixel instead, as snapToGrid() does.
+	Ctrl held, or the snap switched off, rounds to the nearest pixel
+	instead, as snapToGrid() does.
 	@param p point to find the nearest snapped point
 	@return
 */
@@ -3657,7 +3776,7 @@ QPointF Diagram::snapToTextGrid(const QPointF &p)
 {
 	QSettings settings;
 	const qreal divisor =
-		QApplication::keyboardModifiers().testFlag(Qt::ControlModifier)
+		!gridSnap() || QApplication::keyboardModifiers().testFlag(Qt::ControlModifier)
 			? 0
 			: settings.value(TextGrid::settings_key, 1).toReal();
 

@@ -27,7 +27,7 @@
 #include "qetversion.h"
 #include "titleblocktemplate.h"
 #include "titleblocktemplaterenderer.h"
-
+#include "projectorigin.h"
 
 #include "diagram.h"
 #include "qetproject.h"
@@ -621,6 +621,50 @@ void BorderTitleBlock::displayBorder(bool db) {
 }
 
 /**
+	@brief BorderTitleBlock::origin
+	@return the corner the cells are counted from: the project's, or the one
+	given to setOrigin() for a border that belongs to no built folio.
+*/
+ProjectOrigin::Mode BorderTitleBlock::origin() const
+{
+	if (m_owner_folio && m_owner_folio->project())
+		return m_owner_folio->project()->Origin();
+	return m_origin;
+}
+
+/**
+	@brief BorderTitleBlock::setOrigin
+	For a border that belongs to no folio (one read from a project file);
+	a folio's border follows its project.
+*/
+void BorderTitleBlock::setOrigin(ProjectOrigin::Mode mode)
+{
+	m_origin = mode;
+}
+
+/**
+	@brief BorderTitleBlock::columnAt
+	@param i : the i-th column from the left, starting at 1
+	@return the number that column carries: counted from the right when the
+	origin is on the right
+*/
+int BorderTitleBlock::columnAt(int i) const
+{
+	return ProjectOrigin::reversedIsColumns(origin()) ? columns_count_ - i + 1 : i;
+}
+
+/**
+	@brief BorderTitleBlock::rowAt
+	@param i : the i-th row from the top, starting at 1
+	@return the number of that row: counted from the bottom when the origin
+	is at the bottom
+*/
+int BorderTitleBlock::rowAt(int i) const
+{
+	return ProjectOrigin::reversedIsRows(origin()) ? rows_count_ - i + 1 : i;
+}
+
+/**
 	@brief BorderTitleBlock::updateRectangles
 	This method update the diagram rect according
 	to the value of rows and columns (number and size)
@@ -688,7 +732,8 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> drawText(numbered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-					    BorderCellLabels::columnLabel(i, columns_start_at_zero));
+				BorderCellLabels::columnLabel(
+					columnAt(i), columns_start_at_zero));
 		}
 	}
 
@@ -709,7 +754,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> drawText(lettered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-					    BorderCellLabels::rowLabel(i));
+				BorderCellLabels::rowLabel(rowAt(i)));
 		}
 	}
 
@@ -793,7 +838,7 @@ void BorderTitleBlock::drawDxf(
 						 recWidth, recHeight, color);
 
 			Createdxf::drawTextAligned(file_path,
-			   QString::number(i + offset),
+				QString::number(columnAt(i) + offset),
 			   xCoord+recWidth/4,
 			   yCoord + recHeight*0.5,
 						   recHeight*0.7,
@@ -810,7 +855,6 @@ void BorderTitleBlock::drawDxf(
 	// draw line numbering
 	// dessine la numerotation des lignes
 	if (display_border_ && display_rows_) {
-		QString row_string("A");
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			double xCoord = diagram_rect_.topLeft().x()
 					* Createdxf::xScale;
@@ -827,7 +871,7 @@ void BorderTitleBlock::drawDxf(
 			Createdxf::drawRectangle(file_path, xCoord, yCoord,
 						 recWidth, recHeight, color);
 			Createdxf::drawTextAligned(file_path,
-						   row_string,
+				BorderCellLabels::rowLabel(rowAt(i)),
 			   xCoord+recWidth*0.1,
 			   yCoord + recHeight*0.4,
 						   recWidth*0.7,
@@ -838,7 +882,6 @@ void BorderTitleBlock::drawDxf(
 						   xCoord+recWidth/2,
 			   1,
 			   color);
-			row_string = incrementLetters(row_string);
 		}
 	}
 
@@ -1018,11 +1061,11 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 	int row_number    = int(ceil(relative_pos.x() / columnsWidth()));
 	int column_number = int(ceil(relative_pos.y() / rowsHeight()));
 
-	QString letter = "A";
-	for (int i = 1 ; i < column_number ; ++ i)
-		letter = incrementLetters(letter);
+		//The mirror image of the drawn labels, see columnAt() and rowAt()
+	row_number = columnAt(row_number);
+	column_number = rowAt(column_number);
 
-	return(DiagramPosition(letter, row_number));
+	return(DiagramPosition(BorderCellLabels::rowLabel(column_number), row_number));
 }
 
 /**
@@ -1133,6 +1176,10 @@ QRectF BorderTitleBlock::cellRect(const QString &cell) const
 
 	if (row < 1 || column < 1 || column > columns_count_)
 		return QRectF();
+
+		//The label is the mirror image of the position, see convertPosition()
+	row = rowAt(row);
+	column = columnAt(column);
 
 	const QPointF top_left = insideBorderRect().topLeft();
 	return QRectF(top_left.x() + (column - 1) * columns_width_,

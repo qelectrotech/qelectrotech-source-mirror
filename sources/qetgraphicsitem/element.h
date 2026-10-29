@@ -22,6 +22,7 @@
 #include "../NameList/nameslist.h"
 #include "../autoNum/assignvariables.h"
 #include "../diagramcontext.h"
+#include "../dataBase/elementplacement.h"
 #include "../qet.h"
 #include "qetgraphicsitem.h"
 #include "../properties/elementdata.h"
@@ -150,14 +151,26 @@ class Element : public QetGraphicsItem
 		DiagramContext kindInformations() const;
 			/// This symbol's own copy of its kind information, whatever the store holds
 		DiagramContext ownKindInformations() const {return m_kind_informations;}
+			/// Where this symbol comes from and sits, from its own members,
+			/// never from the store
+		ElementPlacement ownPlacement() const;
+		void storePlacement();
+			/// This symbol's texts and text groups as it saves them, in an
+			/// <element> made in @p document, from its own items
+		QDomElement ownTextsXml(QDomDocument &document) const;
+			/// What this symbol saves that no other table holds, in an
+			/// <element> made in @p document, from its own members
+		QDomElement ownValuesXml(QDomDocument &document) const;
+		void setMovable(bool movable) override;
 		//@kind_information_ is used to store more information
 		//about the herited class like contactelement for know
 		// kind of contact (simple tempo) or number of contact show by the element.
 
 		autonum::sequentialNumbers sequenceStruct() const
 		{return m_autoNum_seq;}
-		autonum::sequentialNumbers& rSequenceStruct()
-		{return m_autoNum_seq;}
+			/// Replace the numbers and tell the project database
+		void setSequenceStruct(const autonum::sequentialNumbers &numbers);
+		void storeSequence();
 		void setUpFormula(bool code_letter = true, QUndoCommand *parent_undo = nullptr);
 		void setFormulaSchemeId(const QUuid &id);
 		void setPrefix(QString);
@@ -385,6 +398,14 @@ class Element : public QetGraphicsItem
 	private:
 		void storeInformation();
 		projectDataBase *placedStore() const;
+		void appendTextsXml(QDomDocument &document, QDomElement &element) const;
+		void appendDataXml(QDomDocument &document, QDomElement &element) const;
+		void scheduleTextsStore();
+		void connectTextStore(DynamicElementTextItem *deti);
+		void connectTextStore(ElementTextItemGroup *group);
+			/// Set while the texts are being written: taking a group's
+			/// texts out to write them moves them, which is no change
+		mutable bool m_writing_texts = false;
 		bool m_must_highlight = false;
 		int m_jump_highlight = 0;  ///< pending jump-target highlights, see showAsJumpTarget()
 		bool m_jump_cursor = false;

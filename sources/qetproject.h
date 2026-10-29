@@ -36,6 +36,8 @@
 #include "container/qetcontainerdb.h"
 #include "container/qetzreader.h"
 #include "projectlock.h"
+#include "projectorigin.h"
+
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -115,7 +117,11 @@ class QETProject : public QObject
 		QETProject (QObject *parent = nullptr);
 		QETProject (const QString &path, QObject * = nullptr);
 		QETProject (KAutoSaveFile *backup, QObject *parent=nullptr);
+		QETProject (const QString &recovered, const QString &file_path, QObject *parent=nullptr);
 		~QETProject() override;
+
+		void autoLinkReportElements();
+		void scheduleAutoLink();
 
 	private:
 		QETProject(const QETProject &);
@@ -168,6 +174,7 @@ class QETProject : public QObject
 		/// background thread referencing the project, and a short-lived CLI
 		/// process can destroy the project before the write finishes (crash).
 		static void setBackupEnabled(bool enabled);
+		static bool backupEnabled() {return m_backup_enabled;}
 
 			/// Whether a folio is built only when it is needed, not all on
 			/// opening (stage D6): yes, unless the
@@ -326,6 +333,9 @@ class QETProject : public QObject
 		void setWireHops(WireHops::Mode mode);
 		bool uprightSymbolTexts() const;
 		void setUprightSymbolTexts(bool upright);
+		bool chainedReports() const;
+		void setChainedReports(bool enable);
+		bool hasChainedReportsAttribute() const;
 		bool terminalLabelSplit() const;
 		void setTerminalLabelSplit(bool split);
 		WiringRules::Settings wiringRules() const;
@@ -335,13 +345,15 @@ class QETProject : public QObject
 		void setAutoElement (bool ae);
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, const QString&);
+		ProjectOrigin::Mode Origin() const;
+		void setOrigin(ProjectOrigin::Mode mode);
 
 		QDomDocument toXml(QHash<int, QByteArray> *kept_folios = nullptr,
 						   QStringList *kept_parts = nullptr);
 		static QString spliceKeptFolios(QString text, const QHash<int, QByteArray> &kept_folios);
 		bool close();
 		QETResult write(bool overwrite_changed = false);
-		void rememberDiskState(const QByteArray *content = nullptr);
+		void rememberDiskState(const QByteArray *content = nullptr, const QByteArray *hash = nullptr);
 		bool changedOnDisk(QDateTime *when = nullptr) const;
 		bool isReadOnly() const;
 			/// Opened from a .qetz of a later format (opened read-only)
@@ -457,6 +469,7 @@ class QETProject : public QObject
 		void watchTerminalStrip(TerminalStrip *strip, bool watch = true);
 		bool stampSaved();
 		void readProjectXml(QDomDocument &xml_project);
+		void fillDerivedUuids(QDomDocument &xml_project);
 		void readDiagramsXml(QDomDocument &xml_project);
 		void readElementsCollectionXml(QDomDocument &xml_project);
 		void readProjectPropertiesXml(QDomDocument &xml_project);
@@ -466,17 +479,25 @@ class QETProject : public QObject
 		void readBridgeXml(const QDomDocument &xml_project);
 		void readUsageXml(QDomDocument &xml_project);
 		void readWireHopsXml(QDomDocument &xml_project);
+		void readOriginXml(QDomDocument& xml_project);
 		void readSymbolTextsXml(QDomDocument &xml_project);
+		void readChainedReportsXml(QDomDocument &xml_project);
 		void readTerminalLabelSplitXml(QDomDocument &xml_project);
 		void readWiringRulesXml(QDomDocument &xml_project);
 
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
+		void storeSettings();
+	public:
+			/// Also what projectDataBase::toDocument() writes the numbering with
 		static void writeNumberingXml(const projectDataBase::Numbering &numbering,
 									  QDomElement &xml_element);
+	private:
 		void writeUsageXml(QDomElement &);
 		void writeWireHopsXml(QDomElement &);
+		void writeOriginXml(QDomElement&);
 		void writeSymbolTextsXml(QDomElement &);
+		void writeChainedReportsXml(QDomElement &);
 		void writeTerminalLabelSplitXml(QDomElement &);
 		void writeWiringRulesXml(QDomElement &);
 		void addDiagram(Diagram *diagram, int pos = -1);
@@ -554,6 +575,10 @@ class QETProject : public QObject
 				QHash<QUuid, QString> *title_cache = nullptr,
 				QHash<QString, QUuid> *id_cache = nullptr) const;
 		bool m_deferring_folios = false;
+			/// readDiagramsXml() is reading the folios; and whether one read
+			/// so far numbers itself with %autonum (updateDiagramsFolioData())
+		bool m_reading_folios = false;
+		bool m_reading_autonum_folio = false;
 			/// Opening with folios built only when needed: QET_LAZY_FOLIOS
 			/// is set and the database can be filled from the document
 		bool m_lazy_open = false;
@@ -579,14 +604,21 @@ class QETProject : public QObject
 			/// Something was edited since the project was opened: a table
 			/// filled from the database may have changed
 		bool m_edited_since_open = false;
+			/// The folios buildFolioToShow() built with their partners since
+			/// the last edit: it has nothing more to build for them
+		QSet<Diagram *> m_folios_shown;
 		void markKeptFoliosStale() {m_kept_folios_stale = true;}
 			/// The file being read, for each folio's text (readDiagramsXml())
 		QByteArray m_opened_content;
 		bool m_auto_conductor = true;
 		WireHops::Mode m_wire_hops = WireHops::Mode::None;
+		ProjectOrigin::Mode m_origin = ProjectOrigin::Mode::TopLeft;
 			/// Texts drawn in a turned symbol stay horizontal (on for a new
 			/// project, off for one saved without it), see uprightSymbolTexts()
 		bool m_upright_symbol_texts = false;
+		bool m_chained_reports = false;
+		bool m_has_chained_reports_attribute = false;
+		bool m_pending_auto_link = false;
 			/// Terminals draw their label split: the label ("X1") and the
 			/// terminal number ("1") each in their own text field (off for
 			/// a project saved without it), see terminalLabelSplit()
