@@ -1007,7 +1007,8 @@ private slots:
 		//The end on the pin of the second terminal sticks to it
 		BridgeManager::redock(&project, bridge, part_uuid);
 		for (const BridgePartData &data : bridge->parts()) {
-			QCOMPARE(data.dock2, pin->stableUuid().toString());
+			QVERIFY2(data.dock2.endsWith(pin->stableUuid().toString()),
+					 "the end is docked to the very pin");
 		}
 
 		//Drag the symbol: the docked end goes along and the line grows
@@ -1569,23 +1570,28 @@ private slots:
 		QVERIFY(first && second);
 
 			//A symbol which sits in no Klemmleiste at all
-		QSet<Element *> in_strip;
-		for (const QSharedPointer<RealTerminal> &terminal : terminals) {
-			in_strip.insert(terminal->element());
+		QSet<Element *> in_strips;
+		for (auto one_strip : project.terminalStrip()) {
+			for (const QSharedPointer<RealTerminal> &real_t : one_strip->realTerminals()) {
+				if (real_t) {
+					in_strips.insert(real_t->element());
+				}
+			}
 		}
 		Element *loose = nullptr;
-		for (Diagram *diagram : project.diagrams()) {
-			for (Element *element : diagram->elements()) {
-				if (!in_strip.contains(element) && !element->terminals().isEmpty()
+		if (first && first->diagram()) {
+				//On the sheet of the Klemme itself: what lies on two
+				//sheets is never one bar's business
+			for (Element *element : first->diagram()->elements()) {
+				if (!in_strips.contains(element) && !element->terminals().isEmpty()
 					&& !(element->linkType() & Element::AllReport)) {
 					loose = element;
 					break;
 				}
 			}
-			if (loose) break;
 		}
 		if (!loose) {
-			QSKIP("the fixture has no symbol outside a strip");
+			QSKIP("the fixture has no symbol outside a strip on that sheet");
 		}
 
 		const QString strip = BridgeManager::stripNameOf(&project, first);
@@ -1608,6 +1614,7 @@ private slots:
 
 			//A symbol of another label would give the bar two of them
 		DiagramContext informations = loose->elementInformations();
+		informations.remove(QETInformation::ELMT_FORMULA);
 		informations.addValue(QETInformation::ELMT_LABEL,
 							  QStringLiteral("X9:1"));
 		loose->setElementInformations(informations);
@@ -1620,6 +1627,7 @@ private slots:
 				 "a bar of two Klemmleisten cannot be built");
 
 			//Labelled like the strip it stands beside, it is of it
+		informations.remove(QETInformation::ELMT_FORMULA);
 		informations.addValue(QETInformation::ELMT_LABEL,
 							  strip + QStringLiteral(":9"));
 		loose->setElementInformations(informations);
@@ -1653,6 +1661,172 @@ private slots:
 		QVERIFY2(BridgeManager::clashingStrips(
 					 &project, QList<BridgeTerminal>{on_loose, on_report}).isEmpty(),
 				 "a sheet reference is never asked");
+	}
+
+	//One bar lies across one Klemmleiste, whatever sheet it stands on:
+	//a Folienverweis joining bridges of two of them is not made
+	void aReferenceDoesNotJoinTwoTerminalStrips()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		Element *out = nullptr;
+		Element *in = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if (element->terminals().isEmpty()
+					|| !(element->linkType() & Element::AllReport)) {
+					continue;
+				}
+				if (!out) {
+					out = element;
+				} else if (!in && element != out) {
+					in = element;
+				}
+			}
+		}
+		if (!out || !in) {
+			QSKIP("the fixture has not two sheet references");
+		}
+
+		//A Klemme of the fixture's own X1 behind the one, a Klemme of
+		//X9 -- of no Klemmleiste at all -- behind the other
+		QSet<Element *> in_strips;
+		for (auto one_strip : project.terminalStrip()) {
+			for (const QSharedPointer<RealTerminal> &real_t : one_strip->realTerminals()) {
+				if (real_t) {
+					in_strips.insert(real_t->element());
+				}
+			}
+		}
+		Element *in_strip = in_strips.isEmpty() ? nullptr : *in_strips.constBegin();
+		QList<Element *> loose;
+		if (in_strip && in_strip->diagram()) {
+				//On the sheet of the Klemme itself: what lies on two
+				//sheets is never one bar's business
+			for (Element *element : in_strip->diagram()->elements()) {
+				if (!element->terminals().isEmpty()
+					&& !(element->linkType() & Element::AllReport)
+					&& !in_strips.contains(element)) {
+					loose << element;
+				}
+			}
+		}
+		if (!in_strip || loose.isEmpty()) {
+			QSKIP("the fixture has not a loose terminal symbol on that sheet");
+		}
+		QList<Element *> symbols;
+		symbols << in_strip << loose.first();
+		DiagramContext other_info = loose.first()->elementInformations();
+		other_info.remove(QETInformation::ELMT_FORMULA);
+		other_info.addValue(QETInformation::ELMT_LABEL, QStringLiteral("X9:1"));
+		loose.first()->setElementInformations(other_info);
+
+		Bridge *one = project.newBridge();
+		one->addTerminal(BridgeTerminal{out->uuid(),
+									   out->terminals().first()->stableUuid().toString(),
+									   true});
+		one->addTerminal(BridgeTerminal{symbols.at(0)->uuid(),
+									   symbols.at(0)->terminals().first()->stableUuid().toString(),
+									   false});
+		Bridge *other = project.newBridge();
+		other->addTerminal(BridgeTerminal{in->uuid(),
+										 in->terminals().first()->stableUuid().toString(),
+										 true});
+		other->addTerminal(BridgeTerminal{symbols.at(1)->uuid(),
+										 symbols.at(1)->terminals().first()->stableUuid().toString(),
+										 false});
+
+		const bool clashes = BridgeManager::linkJoinsDifferentStrips(&project, out, in);
+		QVERIFY2(clashes,
+				 "two Klemmleisten may not be joined over a sheet reference");
+
+			//And the joining itself leaves them apart
+		Diagram *folio = out->diagram();
+		QVERIFY(folio);
+		out->linkToElement(in);
+		auto *command = new QUndoCommand();
+		BridgeManager::joinOverLink(&project, out, in, command);
+		folio->undoStack().push(command);
+		QCOMPARE(project.bridges().size(), 2);
+	}
+
+	//A copied symbol carries the identities of the one it came from:
+	//neither its pins nor its going with the hand may ever take the
+	//docked ends of a bridge away from the original
+	void aCopiedSymbolDoesNotStealTheDockedEnds()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+		Element *original = terminals.at(0)->element();
+		Diagram *folio = diagramOf(project, original);
+		QVERIFY(original && folio);
+
+		Terminal *pin = original->terminals().first();
+		const QPointF on_the_pin = pin->dockConductor();
+
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(terminalOf(terminals.at(0)));
+		BridgePartData part;
+		part.uuid = QUuid::createUuid();
+		part.diagram = folio->uuid();
+		part.p1 = on_the_pin + QPointF(120, 0);
+		part.p2 = on_the_pin;
+		bridge->addPart(part);
+		BridgeManager::redock(&project, bridge, part.uuid);
+
+		const auto line_of_the_part = [&bridge, &part]() {
+			for (const BridgePartData &data : bridge->parts()) {
+				if (data.uuid == part.uuid) {
+					return QLineF(data.p1, data.p2);
+				}
+			}
+			return QLineF();
+		};
+		const QLineF was = line_of_the_part();
+		QVERIFY(!was.isNull());
+
+			//A copy of the symbol, carrying the very terminal identities
+			//it was copied with -- the way a paste brings it before it
+			//gives it new ones
+		QDomDocument document;
+		QHash<Terminal *, int> written;
+		QDomElement xml = original->toXml(document, written);
+		QDomElement root = document.createElement(QStringLiteral("diagram"));
+		document.appendChild(root);
+		QDomElement elements = document.createElement(QStringLiteral("elements"));
+		root.appendChild(elements);
+		elements.appendChild(xml);
+		const int before_copy = folio->elements().size();
+		folio->fromXml(root, QPointF(200, 0), false, nullptr, nullptr);
+		QCOMPARE(folio->elements().size(), before_copy + 1);
+		Element *copy = folio->elements().last();
+		QVERIFY(copy != original);
+
+			//What a paste does the moment it has read the copy: the
+			//copy is a symbol of its own from now on
+		copy->newUuid();
+
+			//It may not take the docked ends along
+		for (const BridgePartData &data : bridge->parts()) {
+		}
+		BridgeManager::followDocks(&project, copy);
+		QVERIFY2(QLineF(line_of_the_part().p2(), was.p2()).length() < 0.1,
+				 "a copy does not steal the docked ends");
+		copy->setPos(copy->pos() + QPointF(10, 0));
+		BridgeManager::followDocks(&project, copy);
+		QVERIFY2(QLineF(line_of_the_part().p2(), was.p2()).length() < 0.1,
+				 "and not when it is moved either");
+
+			//The original still takes its ends along
+		original->setPos(original->pos() + QPointF(0, 150));
+		BridgeManager::followDocks(&project, original);
+		QVERIFY2(QLineF(line_of_the_part().p2(), original->terminals().first()->dockConductor()).length() < 0.1,
+				 "the original keeps its end");
 	}
 
 	//What is one bridge carried on over the sheets is one pair of

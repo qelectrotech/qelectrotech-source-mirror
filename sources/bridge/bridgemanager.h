@@ -121,6 +121,24 @@ class BridgeManager
 			*/
 		static void followDocks(QETProject *project, Element *moved);
 			/**
+				While a folio reads symbols in -- a file opened, or a
+				copy pasted -- nothing is docked to anything: a symbol
+				read in carries the identities of the one it was copied
+				from for as long as the reading lasts, and an end of a
+				bridge would be stolen by it. Nothing is hung differently
+				while the reading lasts; afterwards the hand hangs the
+				ends as it always did.
+			*/
+		static void beginReadingSymbols();
+		static void endReadingSymbols();
+			/** Hands the reading above to the guard: reading symbols
+			ends however the reading itself ends. */
+		class ReadingGuard {
+			public:
+				ReadingGuard() { beginReadingSymbols(); }
+				~ReadingGuard() { endReadingSymbols(); }
+		};
+			/**
 				Work out again which pins the ends of a drawn line are
 				docked to: where one of them stands on a pin of the
 				bridge, it sticks to it from now on.
@@ -174,6 +192,15 @@ class BridgeManager
 		static bool linkJoinsBridgeToWire(QETProject *project,
 										  Element *first,
 										  Element *second);
+			/**
+				Linking those two sheet references would join bridges
+				whose Klemmen are of two Klemmleisten: one bar lies
+				across one of them, whatever sheet it is on. True when
+				the link may not be made.
+			*/
+		static bool linkJoinsDifferentStrips(QETProject *project,
+											 Element *first,
+											 Element *second);
 
 			/**
 				The terminals the bridge lands on at this very moment,

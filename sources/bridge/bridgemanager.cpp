@@ -406,6 +406,13 @@ namespace {
 						bool *found)
 	{
 		*found = false;
+		QString wanted_element;
+		QString wanted_pin = dock;
+		const int bar = dock.indexOf(QLatin1Char('|'));
+		if (bar >= 0) {
+			wanted_element = dock.left(bar);
+			wanted_pin = dock.mid(bar + 1);
+		}
 		const auto lands_on = bridge->landings();
 		for (const BridgeTerminal &landing : lands_on)
 		{
@@ -413,8 +420,12 @@ namespace {
 			if (!moved || moved->uuid() != element) {
 				continue;
 			}
+			if (!wanted_element.isEmpty()
+				&& moved->uuid().toString() != wanted_element) {
+				continue;
+			}
 			for (Terminal *pin : moved->terminals()) {
-				if (pin->stableUuid().toString() == dock) {
+				if (pin->stableUuid().toString() == wanted_pin) {
 					*found = true;
 					return pin->dockConductor();
 				}
@@ -441,7 +452,7 @@ QString BridgeManager::dockAt(QETProject *project,
 	if (!project || !bridge) {
 		return {};
 	}
-	QString pin_uuid;
+	QString dock;
 	qreal nearest = tolerance;
 	const auto lands_on = bridge->landings();
 	for (const BridgeTerminal &landing : lands_on)
@@ -455,11 +466,16 @@ QString BridgeManager::dockAt(QETProject *project,
 			const qreal distance = QLineF(pin->dockConductor(), point).length();
 			if (distance <= nearest) {
 				nearest = distance;
-				pin_uuid = pin->stableUuid().toString();
+					//Named after the symbol AND the pin: a copied
+					//symbol carries pins of the very same name, and an
+					//end docked to one symbol may never be stolen by
+					//its copy
+				dock = element->uuid().toString() + QLatin1Char('|')
+						+ pin->stableUuid().toString();
 			}
 		}
 	}
-	return pin_uuid;
+	return dock;
 }
 
 /**
@@ -522,6 +538,19 @@ void BridgeManager::joinOverLink(QETProject *project,
 		into = second;
 	}
 	Bridge *from = (into == first) ? second : first;
+
+		//One bar lies across one Klemmleiste: halves of two of them
+		//are not one unit and are left apart
+	QList<BridgeTerminal> whole = into->landings();
+	const auto taken = from->landings();
+	for (const BridgeTerminal &landing : taken) {
+		if (!whole.contains(landing)) {
+			whole << landing;
+		}
+	}
+	if (!clashingStrips(project, whole).isEmpty()) {
+		return;
+	}
 
 	new MergeBridgesCommand(from, into, parent);
 
@@ -699,9 +728,28 @@ void BridgeManager::redock(QETProject *project, Bridge *bridge, const QUuid &par
 	@param project
 	@param moved the symbol which was moved
 */
+namespace {
+	int reading_symbols = 0;
+}
+
+void BridgeManager::beginReadingSymbols()
+{
+	++reading_symbols;
+}
+
+void BridgeManager::endReadingSymbols()
+{
+	if (reading_symbols > 0) {
+		--reading_symbols;
+	}
+}
+
 void BridgeManager::followDocks(QETProject *project, Element *moved)
 {
 	if (!project || !moved || !moved->diagram()) {
+		return;
+	}
+	if (reading_symbols > 0) {
 		return;
 	}
 
@@ -976,6 +1024,39 @@ bool BridgeManager::linkJoinsBridgeToWire(QETProject *project,
 	const bool first_on_bridge = bridgeLandsOn(project, first);
 	const bool second_on_bridge = bridgeLandsOn(project, second);
 	return first_on_bridge != second_on_bridge;
+}
+
+/**
+	@brief BridgeManager::linkJoinsDifferentStrips
+	@param project
+	@param first
+	@param second the two sheet references being linked
+	@return true when linking them would join bridges whose Klemmen
+	are of two Klemmleisten. One bar of a bridge lies across one of
+	them, whatever sheet it stands on: what the Folienverweis would
+	join is held to it as well.
+*/
+bool BridgeManager::linkJoinsDifferentStrips(QETProject *project,
+											 Element *first,
+											 Element *second)
+{
+	if (!project || !first || !second) {
+		return false;
+	}
+	Bridge *one = bridgeCarriedBy(project, first);
+	Bridge *other = bridgeCarriedBy(project, second);
+	if (!one || !other || one == other) {
+		return false;
+	}
+
+	QList<BridgeTerminal> unit = one->landings();
+	const auto other_landings = other->landings();
+	for (const BridgeTerminal &landing : other_landings) {
+		if (!unit.contains(landing)) {
+			unit << landing;
+		}
+	}
+	return !clashingStrips(project, unit).isEmpty();
 }
 
 /**

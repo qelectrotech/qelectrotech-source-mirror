@@ -222,6 +222,27 @@ void LinkSingleElementWidget::apply()
 		return;
 	}
 
+		//One bar of a bridge lies across one Klemmleiste, whatever
+		//sheet it stands on: a link joining bridges of two of them may
+		//not be made. Said here, where the link is made.
+	if (m_element_to_link && m_element
+		&& BridgeManager::linkJoinsDifferentStrips(
+				m_element->diagram() ? m_element->diagram()->project() : nullptr,
+				m_element, m_element_to_link))
+	{
+		QMessageBox::warning(this,
+							  tr("That link cannot be made"),
+							  tr("A bridge lies across one terminal strip: the "
+								 "bridges these items carry are of two of them, "
+								 "and a link would join them.\n\n"
+								 "Bring them into one terminal strip first."));
+		m_unlink = false;
+		m_element_to_link = nullptr;
+		m_pending_qtwi = nullptr;
+		m_pending_group_index = -1;
+		return;
+	}
+
 	QUndoCommand *undo = associatedUndo();
 	if (undo)
 		m_element->diagram()->undoStack().push(undo);
