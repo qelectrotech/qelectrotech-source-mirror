@@ -1704,6 +1704,9 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 
 	switchToVisualisationModeIfNeeded(e);
 	QGraphicsView::keyPressEvent(e);
+	if (e->key() == Qt::Key_Left || e->key() == Qt::Key_Right
+	    || e->key() == Qt::Key_Up || e->key() == Qt::Key_Down)
+		crosshairOnMovedSelection();
 }
 
 /**
@@ -2230,6 +2233,54 @@ QMouseEvent *DiagramView::onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseE
 	if (e->type() == QEvent::MouseButtonRelease && !(e->buttons() & Qt::LeftButton))
 		m_grabbing_caught = false;
 	return shifted.get();
+}
+
+/**
+	@brief DiagramView::crosshairOnMovedSelection
+	After the arrow keys moved the selection, the crosshair stands on the
+	point that moved: of the selected items, the one nearest where the
+	crosshair was -- a symbol's terminal, or else the item's own origin --
+	so that a symbol can be brought in line with another one by eye, with
+	the mouse left where it is. The next mouse move takes it back.
+*/
+void DiagramView::crosshairOnMovedSelection()
+{
+	if (!m_diagram || !crosshairShown())
+		return;
+	DiagramContent dc(m_diagram);
+	if (dc.hasTextEditing())
+		return;
+	QList<QPointF> points;
+	for (QGraphicsItem *item : m_diagram->selectedItems()) {
+		if (item->type() == Element::Type) {
+			const auto terminals = static_cast<Element *>(item)->terminals();
+			for (const Terminal *t : terminals)
+				points << t->dockConductor();
+			if (!terminals.isEmpty())
+				continue;
+		}
+		if (item->type() != Conductor::Type)
+			points << item->scenePos();
+	}
+	if (points.isEmpty())
+		return;
+	const QPointF from = m_crosshair_visible ? m_crosshair_pos
+			: mapToScene(viewport()->rect().center());
+	QPointF pos = points.first();
+	qreal nearest = QLineF(from, pos).length();
+	for (const QPointF &p : std::as_const(points)) {
+		const qreal d = QLineF(from, p).length();
+		if (d < nearest) {
+			nearest = d;
+			pos = p;
+		}
+	}
+	if (m_crosshair_visible)
+		viewport()->update(crosshairArea(m_crosshair_pos));
+	m_caught_handle = nullptr;
+	m_crosshair_pos = pos;
+	m_crosshair_visible = true;
+	viewport()->update(crosshairArea(m_crosshair_pos));
 }
 
 /**

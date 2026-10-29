@@ -95,6 +95,7 @@ class DiagramView : public PaletteGraphicsView
 		QGraphicsObject *handleNear(const QPoint &viewport_pos) const;
 		QMouseEvent *onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseEvent> &shifted);
 		void hideCrosshair();
+		void crosshairOnMovedSelection();
 		QRect crosshairArea(const QPointF &scene_pos) const;
 			/// The pointer: a four-way arrow over what can be moved; with
 			/// the crosshair, drawn on the grid point in place of the
