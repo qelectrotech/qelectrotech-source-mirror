@@ -57,7 +57,7 @@ namespace {
 		/// "-Q1 · circuit breaker", or the name alone without a label
 	QString elementName(const Element *element)
 	{
-		const QString label = const_cast<Element *>(element)->actualLabel();
+		const QString label = element->actualLabel();
 		const QString name = element->name();
 		if (label.isEmpty())
 			return name;

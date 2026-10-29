@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetapptest.h"
+#include "shownkinds.h"
 #include "diagram.h"
 #include "itemdescription.h"
 #include "qetgraphicsitem/conductor.h"
@@ -136,6 +137,23 @@ class tst_itemdescription : public QObject
 			QTest::mouseMove(view->viewport(), at);
 			QTest::qWait(50);
 			QVERIFY2(!label->text().isEmpty(), "nothing said over a symbol");
+
+				//A free text hidden by View > Show is not described
+			IndependentTextItem *text = nullptr;
+			for (QGraphicsItem *item : diagram->items())
+				if (item->type() == IndependentTextItem::Type && !text)
+					text = static_cast<IndependentTextItem *>(item);
+			QVERIFY(text);
+			ShownKinds::setShown(ShownKinds::FreeTexts, false);
+			ShownKinds::apply(diagram, ShownKinds::FreeTexts);
+			view->centerOn(text);
+			QTest::qWait(50);
+			const QPoint over_text = view->mapFromScene(text->mapToScene(text->boundingRect().center()));
+			QTest::mouseMove(view->viewport(), over_text);
+			QTest::qWait(50);
+			QVERIFY(label->text() != ItemDescription::of(text));
+			ShownKinds::setShown(ShownKinds::FreeTexts, true);
+			ShownKinds::apply(diagram, ShownKinds::FreeTexts);
 		}
 };
 
