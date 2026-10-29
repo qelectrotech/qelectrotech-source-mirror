@@ -1860,6 +1860,17 @@ target_compile_definitions(tst_qetdbrobust PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
   "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
 
+
+# Custom conductor patterns: legacy defaults, drawing-unit lengths, persistence,
+# invalid input, field-wise multi-edit and secondary-colour gap clipping.
+add_executable(
+  tst_conductordashpattern
+  tst_conductordashpattern.cpp
+  ${QET_DIR}/sources/conductorproperties.cpp)
+add_test(NAME tst_conductordashpattern COMMAND tst_conductordashpattern)
+target_include_directories(tst_conductordashpattern PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_conductordashpattern PRIVATE Qt::Test Qt::Gui Qt::Xml)
+
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
 # PATH for every test above and keeps the ENVIRONMENT each test sets

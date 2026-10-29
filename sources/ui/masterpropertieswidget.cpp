@@ -53,6 +53,7 @@ ui(new Ui::MasterPropertiesWidget),
 m_project(nullptr)
 {
 	ui->setupUi(this);
+    ui->link_button->setText(tr("Link ↓"));ui->unlink_button->setText(tr("Unlink ↑"));
 
 	ui->m_free_tree_widget->setContextMenuPolicy(Qt::CustomContextMenu);
 	ui->m_link_tree_widget->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -60,13 +61,13 @@ m_project(nullptr)
 	QStringList list;
 	QSettings settings;
 	if (settings.value("genericpanel/folio", false).toBool()) {
-		list << tr("Thumbnail")
+		list << tr("Device")
 		<< tr("Sheet label")
 		<< tr("Sheet title")
 		<< tr("Position");
 	}
 	else {
-		list << tr("Thumbnail")
+		list << tr("Device")
 		<< tr("Sheet no.")
 		<< tr("Sheet title")
 		<< tr("Position");
@@ -673,6 +674,8 @@ void MasterPropertiesWidget::updateUi()
 
 			QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_free_tree_widget);
 			qtwi->setIcon(0, elmt->pixmap());
+            qtwi->setText(0,elmt->elementInformations().value("label").toString());
+            qtwi->setToolTip(0,elmt->elementInformations().value("comment").toString());
 
 			if(settings.value("genericpanel/folio", false).toBool())
 			{
@@ -693,7 +696,7 @@ void MasterPropertiesWidget::updateUi()
 
 
 			qtwi->setText(2, elmt->diagram()->title());
-			qtwi->setText(4, elmt->diagram()->convertPosition(
+			qtwi->setText(3, elmt->diagram()->convertPosition(
 				elmt->scenePos()).toString());
 			items_list.append(qtwi);
 			m_qtwi_hash.insert(qtwi, elmt);
@@ -708,6 +711,8 @@ void MasterPropertiesWidget::updateUi()
 		{
 			QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_link_tree_widget);
 			qtwi->setIcon(0, elmt->pixmap());
+            qtwi->setText(0,elmt->elementInformations().value("label").toString());
+            qtwi->setToolTip(0,elmt->elementInformations().value("comment").toString());
 
 			if(settings.value("genericpanel/folio", false).toBool())
 			{

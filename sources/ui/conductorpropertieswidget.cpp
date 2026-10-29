@@ -82,6 +82,12 @@ void ConductorPropertiesWidget::setProperties(
 
 	ui->m_color_2_gb            -> setChecked  (m_properties.m_bicolor);
 	ui->m_dash_size_sb          -> setValue    (m_properties.m_dash_size);
+	ui->m_custom_dash_gb->setChecked(m_properties.m_dash_pattern.enabled);
+	ui->m_pattern_dash_sb->setValue(m_properties.m_dash_pattern.dash);
+	ui->m_pattern_gap_sb->setValue(m_properties.m_dash_pattern.gap);
+	ui->m_pattern_dot_sb->setValue(m_properties.m_dash_pattern.dot);
+	ui->m_pattern_dotGap_sb->setValue(m_properties.m_dash_pattern.dotGap);
+
 	ui->m_formula_le            -> setText    (m_properties.m_formula);
 	ui->m_text_le               -> setText    (m_properties.text);
 	ui->m_function_le           -> setText    (m_properties.m_function);
@@ -110,6 +116,7 @@ void ConductorPropertiesWidget::setProperties(
 
 	setConductorType(m_properties.type);
 	updatePreview(false);
+	updateDashPatternPreview();
 }
 
 /**
@@ -126,6 +133,12 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.m_bicolor               = ui->m_color_2_gb->isChecked();
 	properties_.m_color_2               = ui->m_color_2_kpb->color();
 	properties_.m_dash_size             = ui->m_dash_size_sb->value();
+	properties_.m_dash_pattern.enabled = ui->m_custom_dash_gb->isChecked();
+	properties_.m_dash_pattern.dash = ui->m_pattern_dash_sb->value();
+	properties_.m_dash_pattern.gap = ui->m_pattern_gap_sb->value();
+	properties_.m_dash_pattern.dot = ui->m_pattern_dot_sb->value();
+	properties_.m_dash_pattern.dotGap = ui->m_pattern_dotGap_sb->value();
+
 		//The box starts at 2, so the default size 1 shows as 2: keep the
 		//stored size unless the box shows something else.
 	if (properties_.m_dash_size == qBound(ui->m_dash_size_sb->minimum(),
@@ -291,6 +304,17 @@ void ConductorPropertiesWidget::initWidget()
 
 	ui -> m_update_preview_pb -> setHidden(true);
 
+	connect(ui->m_custom_dash_gb, &QGroupBox::toggled, this, &ConductorPropertiesWidget::updateDashPatternPreview);
+	connect(ui->m_line_style_cb, &QComboBox::currentIndexChanged, this, &ConductorPropertiesWidget::updateDashPatternPreview);
+	connect(ui->m_cond_size_sb, &QDoubleSpinBox::valueChanged, this, &ConductorPropertiesWidget::updateDashPatternPreview);
+	connect(ui->m_color_kpb, &KColorButton::changed, this, &ConductorPropertiesWidget::updateDashPatternPreview);
+	connect(ui->m_pattern_dash_sb, &QDoubleSpinBox::valueChanged, this, &ConductorPropertiesWidget::updateDashPatternPreview);
+	connect(ui->m_pattern_gap_sb, &QDoubleSpinBox::valueChanged, this, &ConductorPropertiesWidget::updateDashPatternPreview);
+	connect(ui->m_pattern_dot_sb, &QDoubleSpinBox::valueChanged, this, &ConductorPropertiesWidget::updateDashPatternPreview);
+	connect(ui->m_pattern_dotGap_sb, &QDoubleSpinBox::valueChanged, this, &ConductorPropertiesWidget::updateDashPatternPreview);
+	updateDashPatternPreview();
+
+
 	connect(ui->m_multiwires_gb, &QGroupBox::toggled, [this](bool toggle) {this->ui->m_singlewire_gb->setChecked(!toggle);});
 	connect(ui->m_singlewire_gb, &QGroupBox::toggled, [this](bool toggle) {this->ui->m_multiwires_gb->setChecked(!toggle);});
 	connect(ui->m_formula_le, &QLineEdit::textChanged, [this](QString text) {this->ui->m_text_le->setEnabled(!m_text_locked && text.isEmpty());});
@@ -377,4 +401,31 @@ void ConductorPropertiesWidget::on_m_neutral_cb_toggled(bool checked) {
 void ConductorPropertiesWidget::on_m_update_preview_pb_clicked()
 {
 	updatePreview();
+}
+
+void ConductorPropertiesWidget::updateDashPatternPreview()
+{
+    const auto cp = properties();
+    const bool dashed = cp.style == Qt::DashLine || cp.style == Qt::DashDotLine;
+    const bool dotted = cp.style == Qt::DashDotLine;
+    ui->m_custom_dash_gb->setEnabled(dashed);
+    ui->m_pattern_dot_sb->setEnabled(dotted && ui->m_custom_dash_gb->isChecked());
+    ui->m_pattern_dot_label->setEnabled(dotted && ui->m_custom_dash_gb->isChecked());
+    ui->m_pattern_dotGap_sb->setEnabled(dotted && ui->m_custom_dash_gb->isChecked());
+    ui->m_pattern_dotGap_label->setEnabled(dotted && ui->m_custom_dash_gb->isChecked());
+
+    const qreal ratio = devicePixelRatioF();
+    QPixmap pixmap(qRound(320 * ratio), qRound(60 * ratio));
+    pixmap.setDevicePixelRatio(ratio);
+    pixmap.fill(palette().color(QPalette::Base));
+    QPainter painter(&pixmap);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    QPen pen(cp.color);
+    pen.setWidthF(cp.cond_size);
+    cp.m_dash_pattern.apply(pen, cp.style);
+    painter.setPen(pen);
+    painter.drawLine(QLineF(10, 18, 310, 18));
+    painter.drawLine(QLineF(10, 42, 310, 42));
+    painter.end();
+    ui->m_pattern_preview_label->setPixmap(pixmap);
 }

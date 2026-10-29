@@ -463,7 +463,7 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="5" column="1">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -487,6 +487,59 @@
         </widget>
        </item>
        <item row="3" column="0" colspan="2">
+        <widget class="QGroupBox" name="m_custom_dash_gb">
+         <property name="title"><string>Custom dash pattern</string></property>
+         <property name="checkable"><bool>true</bool></property>
+         <property name="checked"><bool>false</bool></property>
+         <layout class="QGridLayout" name="m_custom_dash_layout">
+          <item row="0" column="0"><widget class="QLabel" name="m_pattern_dash_label"><property name="text"><string>Dash length:</string></property></widget></item>
+          <item row="0" column="1"><widget class="QDoubleSpinBox" name="m_pattern_dash_sb">
+           <property name="decimals"><number>2</number></property>
+           <property name="minimum"><double>0.1</double></property>
+           <property name="maximum"><double>1000.0</double></property>
+           <property name="singleStep"><double>0.5</double></property>
+           <property name="value"><double>6.0</double></property>
+           <property name="suffix"><string> du</string></property>
+          </widget></item>
+          <item row="1" column="0"><widget class="QLabel" name="m_pattern_gap_label"><property name="text"><string>Gap after dash:</string></property></widget></item>
+          <item row="1" column="1"><widget class="QDoubleSpinBox" name="m_pattern_gap_sb">
+           <property name="decimals"><number>2</number></property>
+           <property name="minimum"><double>0.1</double></property>
+           <property name="maximum"><double>1000.0</double></property>
+           <property name="singleStep"><double>0.5</double></property>
+           <property name="value"><double>4.0</double></property>
+           <property name="suffix"><string> du</string></property>
+          </widget></item>
+          <item row="2" column="0"><widget class="QLabel" name="m_pattern_dot_label"><property name="text"><string>Dot / short dash length:</string></property></widget></item>
+          <item row="2" column="1"><widget class="QDoubleSpinBox" name="m_pattern_dot_sb">
+           <property name="decimals"><number>2</number></property>
+           <property name="minimum"><double>0.1</double></property>
+           <property name="maximum"><double>1000.0</double></property>
+           <property name="singleStep"><double>0.5</double></property>
+           <property name="value"><double>1.0</double></property>
+           <property name="suffix"><string> du</string></property>
+          </widget></item>
+          <item row="3" column="0"><widget class="QLabel" name="m_pattern_dotGap_label"><property name="text"><string>Gap after dot:</string></property></widget></item>
+          <item row="3" column="1"><widget class="QDoubleSpinBox" name="m_pattern_dotGap_sb">
+           <property name="decimals"><number>2</number></property>
+           <property name="minimum"><double>0.1</double></property>
+           <property name="maximum"><double>1000.0</double></property>
+           <property name="singleStep"><double>0.5</double></property>
+           <property name="value"><double>4.0</double></property>
+           <property name="suffix"><string> du</string></property>
+          </widget></item>
+          <item row="4" column="0" colspan="2"><widget class="QLabel" name="m_pattern_units_label">
+           <property name="text"><string>Drawing units, independent of line width. Page scaling scales the pattern.</string></property>
+           <property name="wordWrap"><bool>true</bool></property>
+          </widget></item>
+          <item row="5" column="0" colspan="2"><widget class="QLabel" name="m_pattern_preview_label">
+           <property name="minimumSize"><size><width>280</width><height>60</height></size></property>
+           <property name="alignment"><set>Qt::AlignCenter</set></property>
+          </widget></item>
+         </layout>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2">
         <widget class="QGroupBox" name="m_color_2_gb">
          <property name="title">
           <string>Secondary color :</string>

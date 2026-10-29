@@ -1814,7 +1814,7 @@ QWidget *DynamicTextItemDelegate::createEditor(
 				 * before returning removes the second, competing teardown
 				 * path entirely. */
 			QColor color = QColorDialog::getColor(index.data(Qt::EditRole).value<QColor>(), parent,
-											 QString(), QColorDialog::DontUseNativeDialog);
+											 QString(), QColorDialog::DontUseNativeDialog | QColorDialog::ShowAlphaChannel);
 			QWidget *w = new QWidget(parent);
 			if (color.isValid())
 			{

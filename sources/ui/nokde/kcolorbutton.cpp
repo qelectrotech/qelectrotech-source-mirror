@@ -49,7 +49,7 @@ void KColorButton::setColor(const QColor &color)
 void KColorButton::chooseColor()
 {
 	const auto selected = QColorDialog::getColor(m_color, this, QString(),
-											 QColorDialog::DontUseNativeDialog);
+											 QColorDialog::DontUseNativeDialog | QColorDialog::ShowAlphaChannel);
 	if (!selected.isValid() || selected == m_color) {
 		return;
 	}

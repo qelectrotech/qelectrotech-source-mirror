@@ -35,7 +35,9 @@
 ToolbarCommandsConfigPage::ToolbarCommandsConfigPage(QWidget *parent) :
 	ConfigPage(parent)
 {
-	const QStringList available = DiagramToolbarSettings::availableCommandIds();
+	const QStringList available = DiagramToolbarSettings::availableCommandIds()
+		+ DiagramToolbarSettings::availableCommandIds(QStringLiteral("elementeditor"))
+		+ DiagramToolbarSettings::availableCommandIds(QStringLiteral("titleblockeditor"));
 	for (const ShortcutManager::ShortcutInfo &info :
 	     ShortcutManager::instance().allShortcuts()) {
 		if (available.contains(info.id)) {
@@ -48,7 +50,7 @@ ToolbarCommandsConfigPage::ToolbarCommandsConfigPage(QWidget *parent) :
 	}
 
 	auto *explanation = new QLabel(
-		tr("Choose the commands of each toolbar of the diagram editor. Drag "
+		tr("Choose the toolbar to customize. Symbol and title-block commands become available when their editor is open. Drag "
 		   "a command from the list on the left to the bar, or double-click "
 		   "it; Delete removes it."), this);
 	explanation->setWordWrap(true);
@@ -252,10 +254,10 @@ void ToolbarCommandsConfigPage::fillAvailable()
 
 	QStringList ids;
 	for (auto it = m_descriptions.cbegin() ; it != m_descriptions.cend() ; ++it) {
-		if (!on_shown.contains(it.key())) ids << it.key();
+		if (!on_shown.contains(it.key()) && DiagramToolbarSettings::availableCommandIds(DiagramToolbarSettings::contextForToolbar(m_shown)).contains(it.key())) ids << it.key();
 	}
 	for (const QString &id : DiagramToolbarSettings::widgetIds()) {
-		if (!on_any.contains(id)) ids << id;
+		if (DiagramToolbarSettings::contextForToolbar(m_shown) == QLatin1String("diagrameditor") && !on_any.contains(id)) ids << id;
 	}
 
 	m_available->clear();
@@ -356,7 +358,7 @@ void ToolbarCommandsConfigPage::newToolbar()
 	}
 	storeToolbar();
 	DiagramToolbarSettings::Toolbar toolbar;
-	toolbar.name = DiagramToolbarSettings::newCustomName(m_custom);
+	toolbar.name = DiagramToolbarSettings::newCustomName(m_custom, DiagramToolbarSettings::contextForToolbar(m_shown));
 	toolbar.title = title;
 	toolbar.custom = true;
 	m_custom << toolbar;
