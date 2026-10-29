@@ -230,6 +230,8 @@ QStringList DiagramToolbarSettings::defaultIds(const QString &name)
 		return {QStringLiteral("diagrameditor.place_corner"),
 			QStringLiteral("diagrameditor.place_tee"),
 			QStringLiteral("diagrameditor.place_tee_mirrored"),
+			QStringLiteral("diagrameditor.place_tee_branch_left"),
+			QStringLiteral("diagrameditor.place_tee_branch_right"),
 			QStringLiteral("diagrameditor.place_interruption"),
 			QStringLiteral("diagrameditor.place_report_outgoing"),
 			QStringLiteral("diagrameditor.place_report_incoming")};

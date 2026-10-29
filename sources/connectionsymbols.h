@@ -35,7 +35,12 @@ namespace ConnectionSymbols {
 	/// TeeMirrored is the mirror image of Tee: a T-junction whose slant
 	/// shows the feeding side cannot be turned into its mirror image, so
 	/// both are offered, each in four turns
-	enum Kind { Corner, Tee, Interruption, ReportOutgoing, ReportIncoming, TeeMirrored };
+	/// TeeBranchLeft and TeeBranchRight: the double wire at the branch,
+	/// the run from one side turning into it at a corner and the run from
+	/// the other side meeting it with a slant; the common collection has
+	/// neither
+	enum Kind { Corner, Tee, Interruption, ReportOutgoing, ReportIncoming, TeeMirrored,
+		    TeeBranchLeft, TeeBranchRight };
 
 	QList<Kind> kinds();
 		/// The command's id, for shortcuts and toolbars
