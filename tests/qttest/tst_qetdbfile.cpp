@@ -89,6 +89,31 @@ class tst_qetdbfile : public QObject
 		return ok;
 	}
 
+	// The tables of @p path without a primary key
+	static QStringList tablesWithoutKey(const QString &path)
+	{
+		QStringList tables, keyless;
+		{
+			QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("keys"));
+			db.setDatabaseName(path);
+			if (db.open()) {
+				QSqlQuery query(db);
+				query.exec(QStringLiteral("SELECT name FROM sqlite_master WHERE type = 'table' "
+										  "AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\'"));
+				while (query.next()) tables << query.value(0).toString();
+				for (const QString &table : std::as_const(tables)) {
+					bool key = false;
+					query.exec(QStringLiteral("PRAGMA table_info(\"%1\")").arg(table));
+					while (query.next()) key = key || query.value(5).toInt() > 0;
+					if (!key) keyless << table;
+				}
+			}
+			db.close();
+		}
+		QSqlDatabase::removeDatabase(QStringLiteral("keys"));
+		return tables.isEmpty() ? QStringList{QStringLiteral("(no tables)")} : keyless;
+	}
+
 	QString industrial()
 	{
 		const QString path = m_dir.filePath(QStringLiteral("industrial.qetdb"));
@@ -189,6 +214,41 @@ private slots:
 				differing << it.key();
 		}
 		QVERIFY2(differing.isEmpty(), qPrintable(differing.join(QLatin1Char('\n'))));
+	}
+
+	// Every table has a primary key: a revision is what SQLite's session
+	// extension finds changed between two saves, and it leaves out a table
+	// without one (QETDB-S6-SCOPE.md 2.3)
+	void everyTableHasAKey()
+	{
+		QCOMPARE(tablesWithoutKey(industrial()), QStringList());
+	}
+
+	// A file saved before the tables had keys opens from its tables, and
+	// saved again it has them, with every row
+	void fileWithoutKeysOpens()
+	{
+		const QString old = m_dir.filePath(QStringLiteral("without-keys.qetdb"));
+		QVERIFY(QFile::copy(industrial(), old));
+		QFile::setPermissions(old, QFile::ReadOwner | QFile::WriteOwner);
+		static const QStringList keyed{QStringLiteral("element_text_value"), QStringLiteral("drawing_item"),
+			QStringLiteral("element_value"), QStringLiteral("folio_value"), QStringLiteral("project_setting"),
+			QStringLiteral("cable_value"), QStringLiteral("terminal_strip_value"), QStringLiteral("kept_item")};
+		for (const QString &table : keyed) {
+			QVERIFY(exec(old, QStringLiteral("CREATE TABLE old_%1 AS SELECT * FROM %1 ORDER BY rowid").arg(table)));
+			QVERIFY(exec(old, QStringLiteral("DROP TABLE %1").arg(table)));
+			QVERIFY(exec(old, QStringLiteral("ALTER TABLE old_%1 RENAME TO %1").arg(table)));
+		}
+		QCOMPARE(tablesWithoutKey(old).size(), keyed.size());
+		const QString again = m_dir.filePath(QStringLiteral("with-keys.qetdb"));
+		const QString log = resave(old, again);
+		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
+		QCOMPARE(tablesWithoutKey(again), QStringList());
+		for (const QString &table : keyed) {
+			const QString count = QStringLiteral("SELECT count(*) FROM %1").arg(table);
+			QVERIFY2(pragma(again, count).toInt() == pragma(old, count).toInt(), qPrintable(table));
+		}
+		QVERIFY(pragma(again, QStringLiteral("SELECT count(*) FROM element_text_value")).toInt() > 0);
 	}
 
 	// A symbol whose definition is missing is kept as read (F127): opened
