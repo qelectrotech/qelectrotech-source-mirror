@@ -389,6 +389,55 @@ private slots:
 		QVERIFY(built(delivery).contains("UNDO2"));
 	}
 
+	// Two revisions compared: the changes of every save between them, the
+	// symbols each one touched and only those (QETDB-S6-SCOPE.md S6-3)
+	void historyComparesTwoRevisions()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("compare.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString out = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QFile js(m_dir.filePath(QStringLiteral("compare.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("var us = qet.elementUuids(0).sort();\n"
+				 "qet.log('UUIDS ' + us[0] + ' ' + us[1] + ' ' + us[2]);\n"
+				 "qet.setElementLabel(0, us[0], 'DIFF1');\n"
+				 "qet.log('SAVED1 ' + qet.save(''));\n"
+				 "qet.setElementLabel(0, us[1], 'DIFF2');\n"
+				 "qet.log('SAVED2 ' + qet.save(''));\n"
+				 "qet.moveElement(0, us[2], 20, 0);\n"
+				 "qet.log('SAVED3 ' + qet.save(''));\n");
+		js.close();
+		out = run({QStringLiteral("--run"), js.fileName(), path});
+		QVERIFY2(out.contains(QStringLiteral("SAVED3 true")), qPrintable(out.right(800)));
+		const QRegularExpressionMatch uuids = QRegularExpression(QStringLiteral("UUIDS (\\S+) (\\S+) (\\S+)")).match(out);
+		QVERIFY2(uuids.hasMatch(), qPrintable(out.right(800)));
+		const auto symbol = [&uuids](int i) {
+			return QStringLiteral("symbol %1: changed").arg(uuids.captured(i));
+		};
+
+		out = run({QStringLiteral("--history-diff"), path, QStringLiteral("1"), QStringLiteral("4")}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QVERIFY2(out.contains(QRegularExpression(QStringLiteral("^1 to 4: \\d+ symbols?[;,].* rows changed"),
+												 QRegularExpression::MultilineOption)), qPrintable(out));
+		for (int i : {1, 2, 3})
+			QVERIFY2(out.contains(symbol(i)), qPrintable(out));
+
+		out = run({QStringLiteral("--history-diff"), path, QStringLiteral("2"), QStringLiteral("3")}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QVERIFY2(out.contains(symbol(2)) && !out.contains(symbol(1)) && !out.contains(symbol(3)), qPrintable(out));
+
+		run({QStringLiteral("--history-diff"), path, QStringLiteral("3"), QStringLiteral("2")}, false, &code);
+		QCOMPARE(code, 1);
+		run({QStringLiteral("--history-diff"), path, QStringLiteral("1"), QStringLiteral("9")}, false, &code);
+		QCOMPARE(code, 1);
+	}
+
 	// A symbol whose definition is missing is kept as read (F127): opened
 	// from the file's tables and saved again, a folio not built keeps it
 	void keptSymbolSurvivesResave()

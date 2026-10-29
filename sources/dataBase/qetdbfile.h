@@ -56,6 +56,7 @@ namespace QetDbFile
 		/// (QETDB-S6-SCOPE.md): on or off, and each revision as a line
 	bool setHistory(const QString &path, bool on, QString *error);
 	QStringList history(const QString &path, QString *error);
+	QStringList historyDiff(const QString &path, qint64 from, qint64 to, QString *error);
 	bool exportDelivery(const QString &path, const QString &output, QString *error);
 	bool writeRevision(const QString &path, qint64 ord, const QString &output, QString *error,
 					   bool *same_digest = nullptr);

@@ -92,6 +92,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--history", "history"},
 		{"--history-on", "historyon"},
 		{"--history-off", "historyoff"},
+		{"--history-diff", "historydiff"},
 		{"--revision", "revision"},
 		{"--export-delivery", "delivery"},
 		{"--from-database", "fromdb"},
@@ -1128,6 +1129,28 @@ int run(const QStringList &args)
 			err << "Cannot change the history of " << rest.at(0) << ": " << error << "\n";
 			return 1;
 		}
+		return 0;
+	}
+
+	// --history-diff says what changed between two of a .qetdb's revisions
+	// (QETDB-S6-SCOPE.md S6-3)
+	if (format == "historydiff") {
+		bool from_number = false, to_number = false;
+		const qint64 from = rest.value(1).toLongLong(&from_number);
+		const qint64 to = rest.value(2).toLongLong(&to_number);
+		if (rest.size() < 3 || !from_number || !to_number || !QetDbFile::isDatabasePath(rest.at(0))) {
+			err << "Usage: qelectrotech --history-diff <project.qetdb> <revision> <later revision>\n";
+			return 2;
+		}
+		QString error;
+		const QStringList lines = QetDbFile::historyDiff(rest.at(0), from, to, &error);
+		if (lines.isEmpty()) {
+			err << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		for (const QString &line : lines)
+			out << line << "\n";
+		out.flush();
 		return 0;
 	}
 
