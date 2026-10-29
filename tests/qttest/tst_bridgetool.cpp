@@ -1802,11 +1802,19 @@ private slots:
 		QDomElement elements = document.createElement(QStringLiteral("elements"));
 		root.appendChild(elements);
 		elements.appendChild(xml);
-		const int before_copy = folio->elements().size();
+		const QList<Element *> before_copy = folio->elements();
 		folio->fromXml(root, QPointF(200, 0), false, nullptr, nullptr);
-		QCOMPARE(folio->elements().size(), before_copy + 1);
-		Element *copy = folio->elements().last();
-		QVERIFY(copy != original);
+		QCOMPARE(folio->elements().size(), before_copy.size() + 1);
+			//Which of them is the copy says the set of them, not the
+			//order a scene happens to list them in
+		Element *copy = nullptr;
+		for (Element *elmt : folio->elements()) {
+			if (!before_copy.contains(elmt)) {
+				copy = elmt;
+				break;
+			}
+		}
+		QVERIFY(copy && copy != original);
 
 			//What a paste does the moment it has read the copy: the
 			//copy is a symbol of its own from now on
