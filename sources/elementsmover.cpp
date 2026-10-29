@@ -379,6 +379,13 @@ void ElementsMover::endMovement()
 			if (gained > 0 && unit->wouldExceed(gained)) {
 				continue;
 			}
+				//One bar lies across one Klemmleiste: a terminal of
+				//another one crosses the line without being connected
+				//to it
+			if (!BridgeManager::clashingStrips(
+						m_diagram->project(), after).isEmpty()) {
+				continue;
+			}
 				//What the bridge carries as information follows the
 				//terminals: when they do not agree the user is asked
 				//which the bridge takes -- its own among the candidates

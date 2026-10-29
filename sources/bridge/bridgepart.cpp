@@ -298,6 +298,20 @@ void BridgePart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		return;
 	}
 
+		//One bar lies across one Klemmleiste: an end which would take
+		//terminals of another one keeps the length it had
+	const QStringList strips = BridgeManager::clashingStrips(project, after);
+	if (!strips.isEmpty()) {
+		setLine(before_line.p1(), before_line.p2());
+		QMessageBox::warning(nullptr, tr("That bridge cannot be built"),
+							 tr("A bridge lies across one terminal strip: the "
+								"line would take terminals of %1, and keeps "
+								"the length it had.")
+							 .arg(strips.join(QStringLiteral(", "))));
+		event->accept();
+		return;
+	}
+
 		//What the bridge carries as information follows the terminals:
 		//when they do not agree the user is asked which the bridge takes
 		//-- its own among the candidates -- and cancelling leaves the

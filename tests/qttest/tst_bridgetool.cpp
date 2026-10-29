@@ -1554,6 +1554,107 @@ private slots:
 		QVERIFY(far->properties().m_tension_protocol.isEmpty());
 	}
 
+	//One bar of a bridge lies across one Klemmleiste: what it takes of
+	//two of them cannot be built, and a sheet reference, the way to the
+	//next sheet, is never asked
+	void aBridgeLiesAcrossOneTerminalStrip()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+		Element *first = terminals.at(0)->element();
+		Element *second = terminals.at(1)->element();
+		QVERIFY(first && second);
+
+			//A symbol which sits in no Klemmleiste at all
+		QSet<Element *> in_strip;
+		for (const QSharedPointer<RealTerminal> &terminal : terminals) {
+			in_strip.insert(terminal->element());
+		}
+		Element *loose = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if (!in_strip.contains(element) && !element->terminals().isEmpty()
+					&& !(element->linkType() & Element::AllReport)) {
+					loose = element;
+					break;
+				}
+			}
+			if (loose) break;
+		}
+		if (!loose) {
+			QSKIP("the fixture has no symbol outside a strip");
+		}
+
+		const QString strip = BridgeManager::stripNameOf(&project, first);
+		QVERIFY2(!strip.isEmpty(), "the strip is known by name or by its labels");
+		QCOMPARE(BridgeManager::stripNameOf(&project, second), strip);
+
+		const BridgeTerminal on_first{
+					first->uuid(),
+					first->terminals().first()->stableUuid().toString(),
+					false};
+		const BridgeTerminal on_second{
+					second->uuid(),
+					second->terminals().first()->stableUuid().toString(),
+					false};
+
+			//Two Klemmen of one Klemmleiste: one bar lies across it
+		QVERIFY2(BridgeManager::clashingStrips(
+					 &project, QList<BridgeTerminal>{on_first, on_second}).isEmpty(),
+				 "one bar across one Klemmleiste is built");
+
+			//A symbol of another label would give the bar two of them
+		DiagramContext informations = loose->elementInformations();
+		informations.addValue(QETInformation::ELMT_LABEL,
+							  QStringLiteral("X9:1"));
+		loose->setElementInformations(informations);
+		const BridgeTerminal on_loose{
+					loose->uuid(),
+					loose->terminals().first()->stableUuid().toString(),
+					false};
+		QVERIFY2(!BridgeManager::clashingStrips(
+					  &project, QList<BridgeTerminal>{on_first, on_loose}).isEmpty(),
+				 "a bar of two Klemmleisten cannot be built");
+
+			//Labelled like the strip it stands beside, it is of it
+		informations.addValue(QETInformation::ELMT_LABEL,
+							  strip + QStringLiteral(":9"));
+		loose->setElementInformations(informations);
+		QVERIFY2(BridgeManager::clashingStrips(
+					 &project, QList<BridgeTerminal>{on_first, on_loose}).isEmpty(),
+				 "a symbol labelled like the strip is of that strip");
+
+			//And a sheet reference is the way to the next sheet: it
+			//fills no place and is never asked
+		Element *report = nullptr;
+		for (Diagram *diagram : project.diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if ((element->linkType() & Element::AllReport)
+					&& !element->terminals().isEmpty()) {
+					report = element;
+					break;
+				}
+			}
+			if (report) break;
+		}
+		if (!report) {
+			QSKIP("the fixture has no sheet reference");
+		}
+		informations.addValue(QETInformation::ELMT_LABEL,
+							  QStringLiteral("X9:1"));
+		loose->setElementInformations(informations);
+		const BridgeTerminal on_report{
+					report->uuid(),
+					report->terminals().first()->stableUuid().toString(),
+					true};
+		QVERIFY2(BridgeManager::clashingStrips(
+					 &project, QList<BridgeTerminal>{on_loose, on_report}).isEmpty(),
+				 "a sheet reference is never asked");
+	}
+
 	//What is one bridge carried on over the sheets is one pair of
 	//linked references: they link by themselves, with the step which
 	//joined the bridge -- no second job by hand

@@ -77,6 +77,22 @@ class BridgeManager
 		static Element *elementFor(QETProject *project, const BridgeTerminal &terminal);
 		static bool bridgeLandsOn(QETProject *project, Element *element);
 			/**
+				The name of the Klemmleiste that terminal symbol sits
+				in -- or what its label says when it sits in none: X1:7
+				is of X1. A bridge is the bar across one Klemmleiste.
+			*/
+		static QString stripNameOf(QETProject *project, Element *element);
+			/**
+				The Klemmleisten which clash: where the Klemmen on one
+				sheet sit in more than one of them. Empty when every
+				sheet has its bar in one strip -- a bridge may run over
+				the sheets, but on each of them it lies across one
+				Klemmleiste. Sheet references are the way to the next
+				sheet and are never asked.
+			*/
+		static QStringList clashingStrips(QETProject *project,
+										  const QList<BridgeTerminal> &landings);
+			/**
 				The wire behind a bridge landing on that symbol: what the
 				texts of a sheet reference read when a bridge is plugged
 				into it instead of a wire. The bridge carries the voltage

@@ -820,6 +820,118 @@ QString BridgeManager::locationOf(QETProject *project, Bridge *bridge)
 }
 
 /**
+	@brief BridgeManager::stripNameOf
+	@param project
+	@param element a terminal symbol
+	@return the name of the Klemmleiste that symbol sits in, or what
+	its label says when it sits in none: a symbol labelled X1:7 is of
+	the strip X1, whatever holds it.
+*/
+QString BridgeManager::stripNameOf(QETProject *project, Element *element)
+{
+	if (!project || !element) {
+		return {};
+	}
+	const auto strips = project->terminalStrip();
+	for (TerminalStrip *strip : strips)
+	{
+		if (!strip) {
+			continue;
+		}
+		const auto real_terminals = strip->realTerminals();
+		bool in_this = false;
+		QString prefix;
+		for (const QSharedPointer<RealTerminal> &real_t : real_terminals)
+		{
+			if (!real_t) {
+				continue;
+			}
+			if (real_t->element() == element) {
+				in_this = true;
+			}
+			const QString label = real_t->label();
+			const int colon = label.indexOf(QLatin1Char(':'));
+			if (prefix.isEmpty() && colon > 0) {
+				prefix = label.left(colon);
+			}
+		}
+		if (in_this) {
+				//A strip with a name is known by it; one without is
+				//known by what its terminals are labelled
+			return strip->name().isEmpty() ? prefix : strip->name();
+		}
+	}
+
+	const QString label = element->elementInformations()
+			.value(QETInformation::ELMT_LABEL).toString();
+	const int colon = label.indexOf(QLatin1Char(':'));
+	return colon > 0 ? label.left(colon) : label;
+}
+
+/**
+	@brief BridgeManager::clashingStrips
+	@param project
+	@param landings where a bridge is plugged in
+	@return the Klemmleisten which clash -- where the Klemmen on one
+	sheet sit in more than one of them -- or an empty list. One bar of
+	a bridge lies across one Klemmleiste: a bridge may run over the
+	sheets behind a sheet reference, but on each of them it lies in one
+	of them. A sheet reference is the way to the next sheet and fills
+	no place of the bridge, so it is never asked.
+*/
+QStringList BridgeManager::clashingStrips(QETProject *project,
+										  const QList<BridgeTerminal> &landings)
+{
+	QMap<QString, QSet<QString>> on_sheet;
+	for (const BridgeTerminal &landing : landings)
+	{
+		if (landing.reference) {
+			continue;
+		}
+		Element *element = elementFor(project, landing);
+		if (!element)
+		{
+				//What is not a bridgeable Anschluss may still name a
+				//symbol of a drawing: a Klemme sitting in no
+				//Klemmleiste is a symbol like any other
+			for (Diagram *diagram : project->diagrams())
+			{
+				const auto elements = diagram->elements();
+				for (Element *candidate : elements) {
+					if (candidate && candidate->uuid() == landing.element) {
+						element = candidate;
+						break;
+					}
+				}
+				if (element) {
+					break;
+				}
+			}
+		}
+		if (!element) {
+			continue;
+		}
+		const QString sheet = element->diagram()
+				? element->diagram()->uuid().toString() : QString();
+		on_sheet[sheet].insert(stripNameOf(project, element));
+	}
+
+	QStringList clashing;
+	for (const QSet<QString> &names : std::as_const(on_sheet))
+	{
+		if (names.size() > 1) {
+			for (const QString &name : names) {
+				if (!clashing.contains(name)) {
+					clashing << name;
+				}
+			}
+		}
+	}
+	clashing.sort();
+	return clashing;
+}
+
+/**
 	@brief BridgeManager::bridgeLandsOn
 	@param project
 	@param element

@@ -479,6 +479,23 @@ void DiagramEventAddBridge::finishLine(const QPointF &end)
 		return;
 	}
 
+		//One bar of a bridge lies across one Klemmleiste: what the line
+		//would take of two of them cannot be built
+	const QStringList strips =
+			BridgeManager::clashingStrips(m_diagram->project(), terminals);
+	if (!strips.isEmpty()) {
+		if (own_bridge) {
+			m_diagram->project()->removeBridge(bridge);
+			delete bridge;
+		}
+		QMessageBox::warning(nullptr, tr("That bridge cannot be built"),
+							 tr("A bridge lies across one terminal strip: the "
+								"line would take terminals of %1.")
+							 .arg(strips.join(QStringLiteral(", "))));
+		reset();
+		return;
+	}
+
 	BridgePartData part;
 	part.uuid = QUuid::createUuid();
 	part.diagram = m_diagram->uuid();
