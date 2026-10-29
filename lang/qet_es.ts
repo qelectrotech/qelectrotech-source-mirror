@@ -239,7 +239,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="138"/>
         <source>Swedish translation (partly AI-generated)</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducción al sueco (generada en parte con IA)</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="146"/>
@@ -1432,7 +1432,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="545"/>
         <source>Location</source>
-        <translation>Locmach</translation>
+        <translation>Localización</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="557"/>
@@ -4746,12 +4746,12 @@ Create it?</source>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="889"/>
         <source>Show name</source>
-        <translation type="unfinished">Mostrar el nombre</translation>
+        <translation>Mostrar el nombre</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="891"/>
         <source>Untick to not draw the name of this element on the sheet: its data is kept, and a terminal keeps its number.</source>
-        <translation type="unfinished"></translation>
+        <translation>Desmarque para no dibujar el nombre de este elemento en el folio: sus datos se conservan y un borne mantiene su número.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="920"/>
@@ -7167,7 +7167,7 @@ Aquí puede especificar el valor predeterminado de este campo para los elementos
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Con menos zoom, se omiten los puntos de cualquier paso de cuadrícula; el zoom que aparece en la barra de estado indica dónde. En píxeles tal como los escala el sistema, por lo que el mismo valor sirve para una pantalla HiDPI</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
@@ -7212,12 +7212,12 @@ Aquí puede especificar el valor predeterminado de este campo para los elementos
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="252"/>
         <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
-        <translation type="unfinished"></translation>
+        <translation>Una flecha de cuatro direcciones sobre lo que mueve un arrastre; con la retícula, el puntero salta con ella de un punto de la cuadrícula a otro, y un tirador a menos de 12 píxeles atrae el puntero y recibe el clic. Desmarcado: el puntero del sistema, y los tiradores solo se agarran justo bajo el ratón.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="255"/>
         <source>Four-way arrow and handle catching with the crosshair</source>
-        <translation type="unfinished"></translation>
+        <translation>Flecha de cuatro direcciones y captura de tiradores con la retícula</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
@@ -7283,12 +7283,12 @@ Método para escalar pantallas con alta densidad de píxeles (hdpi) (aplicado al
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="442"/>
         <source>Enable chained folio reports for report elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Activar el encadenamiento de las referencias de folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="445"/>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>Si se activa, los elementos de referencia de folio (referencias cruzadas) con la misma etiqueta en distintos folios se encadenan automáticamente. Los proyectos nuevos lo tendrán activado de forma predeterminada.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="452"/>
@@ -9837,7 +9837,7 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="462"/>
         <source>Show name</source>
-        <translation type="unfinished">Mostrar el nombre</translation>
+        <translation>Mostrar el nombre</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="472"/>
@@ -9983,37 +9983,37 @@ Do you still want to link this slave contact?</source>
         <location filename="../sources/ui/configpage/configpages.cpp" line="146"/>
         <source>Display of the terminal labelling</source>
         <comment>group box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Visualización del marcado de bornes</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="148"/>
         <source>Show the label and the terminal number in one field</source>
         <comment>radio button label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar la etiqueta y el número de borne en un solo campo</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="149"/>
         <source>A terminal&apos;s label (X1:1) is drawn as a whole, the way it has always been.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>La etiqueta de un borne (X1:1) se dibuja entera, como se ha hecho siempre.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="152"/>
         <source>Split the label and the terminal number</source>
         <comment>radio button label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Separar la etiqueta y el número de borne</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="154"/>
         <source>The label (X1) is drawn in one field and the terminal number (1) in another, which a terminal symbol may place where it wants -- and hide when it must. A symbol without such a field shows the two, one under the other.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>La etiqueta (X1) se dibuja en un campo y el número de borne (1) en otro, que un símbolo de borne puede colocar donde quiera -- y ocultar cuando sea necesario. Un símbolo sin ese campo muestra los dos, uno debajo del otro.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="159"/>
         <source>Only the drawing changes: what is written in the element, the numbering, the sorting and the exports keep the whole label.</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Solo cambia el dibujo: lo que está escrito en el elemento, la numeración, la ordenación y las exportaciones conservan la etiqueta completa.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="211"/>
@@ -10306,7 +10306,7 @@ Do you still want to link this slave contact?</source>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="312"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="506"/>
         <source>Location</source>
-        <translation>Locmach</translation>
+        <translation>Localización</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="161"/>
@@ -11328,49 +11328,49 @@ Deles primero otra numeración.</numerusform>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="279"/>
         <source>Enable chained folio reports for report elements</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Activar el encadenamiento de las referencias de folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="280"/>
         <source>Automatically chains folio report elements with the same label in a forward/backward sequence.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Encadena automáticamente los elementos de referencia de folio con la misma etiqueta en una secuencia hacia delante y hacia atrás.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="285"/>
         <source>Display of the terminal labelling</source>
         <comment>group box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Visualización del marcado de bornes</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="287"/>
         <source>Show the label and the terminal number in one field</source>
         <comment>radio button label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar la etiqueta y el número de borne en un solo campo</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="288"/>
         <source>A terminal&apos;s label (X1:1) is drawn as a whole, the way it has always been.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>La etiqueta de un borne (X1:1) se dibuja entera, como se ha hecho siempre.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="291"/>
         <source>Split the label and the terminal number</source>
         <comment>radio button label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Separar la etiqueta y el número de borne</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="293"/>
         <source>The label (X1) is drawn in one field and the terminal number (1) in another, which a terminal symbol may place where it wants -- and hide when it must. A symbol without such a field shows the two, one under the other.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>La etiqueta (X1) se dibuja en un campo y el número de borne (1) en otro, que un símbolo de borne puede colocar donde quiera -- y ocultar cuando sea necesario. Un símbolo sin ese campo muestra los dos, uno debajo del otro.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="298"/>
         <source>Only the drawing changes: what is written in the element, the numbering, the sorting and the exports keep the whole label.</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Solo cambia el dibujo: lo que está escrito en el elemento, la numeración, la ordenación y las exportaciones conservan la etiqueta completa.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="304"/>
@@ -17008,7 +17008,7 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="315"/>
         <source>Terminal number</source>
-        <translation type="unfinished"></translation>
+        <translation>Número de borne</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="326"/>
@@ -23392,7 +23392,7 @@ Doble clic para ir al elemento</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="502"/>
         <source>Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Destino</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="503"/>
@@ -23437,7 +23437,7 @@ Doble clic para ir al elemento</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="521"/>
         <source>Installation, Location and Label (BMK) of the piece the cable lands on, past this strip, one line per field</source>
-        <translation type="unfinished"></translation>
+        <translation>Instalación, localización y etiqueta (BMK) del elemento al que llega el cable, más allá de este bornero, una línea por campo</translation>
     </message>
 </context>
 <context>
@@ -23464,7 +23464,8 @@ Doble clic para ir al elemento</translation>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1136"/>
         <source>One line per field: Installation, Location, Label (BMK).
 Ctrl+Return gives the cell back, Escape throws the text away.</source>
-        <translation type="unfinished"></translation>
+        <translation>Una línea por campo: instalación, localización, etiqueta (BMK).
+Ctrl+Intro confirma la celda, Escape descarta el texto.</translation>
     </message>
 </context>
 <context>

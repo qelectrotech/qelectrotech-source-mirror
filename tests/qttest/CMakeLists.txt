@@ -1859,6 +1859,21 @@ target_compile_definitions(tst_cliquery PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
   "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
 
+# A .qetdb survives a kill during its save, a sync tool copying it during
+# its save, a full disk and a missing folder; damaged files never crash
+# QElectroTech. QET-SQL-FORMAT S5.
+add_executable(
+  tst_qetdbrobust
+  tst_qetdbrobust.cpp)
+add_test(NAME tst_qetdbrobust COMMAND tst_qetdbrobust)
+set_tests_properties(tst_qetdbrobust PROPERTIES TIMEOUT 900)
+add_dependencies(tst_qetdbrobust qelectrotech)
+target_link_libraries(tst_qetdbrobust PRIVATE Qt::Test Qt::Sql)
+target_compile_definitions(tst_qetdbrobust PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
 # PATH for every test above and keeps the ENVIRONMENT each test sets

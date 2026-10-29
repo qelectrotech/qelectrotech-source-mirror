@@ -977,6 +977,24 @@ void projectDataBase::dropKeptRows()
 */
 void projectDataBase::updateDB(const QDomDocument &document)
 {
+		//A .qetdb's own tables, adopted (adoptFile()): only what the folios
+		//built at open give, as the fill below ends with
+	if (m_adopted) {
+		qInfo() << "Project database read from the file";
+			//The link rows are the file's (forgetLinks() at the open)
+		m_holds_links = true;
+		populateDrawingItemTables(true);
+		flushConductorProperties();
+			//As the fill below: what placing the folios marked changed is
+			//what the tables hold already
+		m_content_changed = false;
+		m_rebuild_all = false;
+		m_changed_folios.clear();
+		m_rows_in_folio_order = false;
+		m_folio_places_changed = false;
+		emit dataBaseUpdated();
+		return;
+	}
 	if (m_update_blocked || !m_content_changed) {
 		updateDB();
 		return;
@@ -1363,7 +1381,16 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 					if (place >= 0) {
 						terminal.index = indexes.at(place);
 					}
-					read.terminals.insert(terminal_uuid, terminal);
+						//Terminals copied in the symbol editor can share a uuid:
+						//a wire to it docks on the first of them in
+						//Element::terminals(), the lowest index (findTerminals()
+						//in diagram.cpp), which is the one a built folio stores
+					const auto kept = read.terminals.constFind(terminal_uuid);
+					if (kept == read.terminals.constEnd()
+						|| (terminal.index.isValid()
+							&& (!kept->index.isValid() || terminal.index.toInt() < kept->index.toInt()))) {
+						read.terminals.insert(terminal_uuid, terminal);
+					}
 				}
 				known = definitions.insert(type, read);
 			}
@@ -3670,16 +3697,21 @@ void projectDataBase::flushDrawingItems()
 /**
 	@brief projectDataBase::populateDrawingItemTables
 	Rebuild the shape, independent_text and image tables from every folio.
+	With @p keep_rows (an adopted .qetdb) the rows stay: they are the file's,
+	the folios not built have no items to write them again, and the items
+	of the folios built rewrite their own, by uuid.
 */
-void projectDataBase::populateDrawingItemTables()
+void projectDataBase::populateDrawingItemTables(bool keep_rows)
 {
-	QSqlQuery query_(m_data_base);
-	query_.exec(QStringLiteral("DELETE FROM shape"));
-	query_.exec(QStringLiteral("DELETE FROM independent_text"));
-	query_.exec(QStringLiteral("DELETE FROM image"));
-	m_drawing_item_row.clear();
-	m_drawing_row_owner.clear();
-	m_dirty_drawing_items.clear();
+	if (!keep_rows) {
+		QSqlQuery query_(m_data_base);
+		query_.exec(QStringLiteral("DELETE FROM shape"));
+		query_.exec(QStringLiteral("DELETE FROM independent_text"));
+		query_.exec(QStringLiteral("DELETE FROM image"));
+		m_drawing_item_row.clear();
+		m_drawing_row_owner.clear();
+		m_dirty_drawing_items.clear();
+	}
 
 		//Queued directly, not through addDrawingItem(): every one of them
 		//came onto its folio through Diagram::addItem(), which connected it
@@ -3746,6 +3778,11 @@ bool projectDataBase::createDataBase()
 						  ")");
 	if (!query_.exec(element_table)) {
 		qDebug() <<" element_table query : "<< query_.lastError();
+	}
+		//A folio's symbols, found by the folio: what writing a project from
+		//the database reads its other tables through
+	if (!query_.exec(QStringLiteral("CREATE INDEX idx_element_diagram ON element (diagram_uuid)"))) {
+		qDebug() << " element index query : " << query_.lastError();
 	}
 
 	//Create the diagram info table
@@ -4046,6 +4083,14 @@ bool projectDataBase::createDataBase()
 			"seq INTEGER NOT NULL DEFAULT 0)"))) {
 		qDebug() << " drawing_item_table query : " << query_.lastError();
 	}
+		//An item's rows are rewritten by its uuid and a folio's read by the
+		//folio's: without these each looks through every row (a 136-folio
+		//project: 27 126 rows of 2 689 items, 6 s of its 11 s to open)
+	for (const QString &index : {QStringLiteral("CREATE INDEX idx_drawing_item_item ON drawing_item (item_uuid)"),
+								 QStringLiteral("CREATE INDEX idx_drawing_item_folio ON drawing_item (folio_uuid)")})
+		if (!query_.exec(index)) {
+			qDebug() << " drawing_item index query : " << query_.lastError();
+		}
 
 		//Create the conductor_path table: the segments of each wire the
 		//user reshaped (storeConductorPath()). No rows: not reshaped.
@@ -5603,6 +5648,7 @@ QList<projectDataBase::ProjectSetting> projectDataBase::elementTextRowsOf(const 
 bool projectDataBase::storeElementTexts(const QUuid &element, const QList<ProjectSetting> &rows)
 {
 	if (element.isNull()) return false;
+	readElementTexts(element);
 	auto known = m_element_texts.constFind(element);
 	if (known != m_element_texts.constEnd() && *known == rows) return false;
 	m_element_texts.insert(element, rows);
@@ -5636,6 +5682,7 @@ bool projectDataBase::storeElementTexts(const QUuid &element, const QList<Projec
 */
 void projectDataBase::forgetElementTexts(const QUuid &element)
 {
+	readElementTexts(element);
 	if (!m_element_texts.remove(element)) return;
 	QSqlQuery remove(m_data_base);
 	remove.prepare(QStringLiteral("DELETE FROM element_text_value WHERE element_uuid = :uuid"));
@@ -5763,7 +5810,9 @@ void projectDataBase::flushFolioValues()
 		QList<ProjectSetting> rows;
 		xmlRows(it.value()->ownValuesXml(document), QStringLiteral("diagram"), 0, rows);
 		storeKeyedRows(QStringLiteral("folio_value"), QStringLiteral("diagram_uuid"), m_folio_values, it.key(), rows);
-			//The symbols and wires it keeps as read, each whole
+			//The symbols and wires it keeps as read, each whole. A folio not
+			//built has read none yet: its rows (an adopted .qetdb's) stay
+		if (!it.value()->isLoaded()) continue;
 		QStringList kept;
 		for (const QDomElement &item : it.value()->keptXml(document)) {
 			QString text;
@@ -5899,6 +5948,22 @@ projectDataBase::DrawnItem projectDataBase::drawnItemOf(const QUuid &folio, cons
 }
 
 /// The SHA-256 a picture's rows name, none for any other item
+static QString blobOfRows(const QList<projectDataBase::ProjectSetting> &rows);
+
+/**
+	@brief projectDataBase::recountBlobs
+	How many drawn items name each picture, from m_drawn_items
+	(loadCaches())
+*/
+void projectDataBase::recountBlobs()
+{
+	m_blob_refs.clear();
+	for (const DrawnItem &drawn : std::as_const(m_drawn_items)) {
+		const QString blob = blobOfRows(drawn.rows);
+		if (!blob.isEmpty()) ++m_blob_refs[blob];
+	}
+}
+
 static QString blobOfRows(const QList<projectDataBase::ProjectSetting> &rows)
 {
 	for (const auto &row : rows)
@@ -6473,6 +6538,10 @@ QHash<QString, QDomElement> projectDataBase::embeddedDefinitions() const
 */
 void projectDataBase::prefillFromDocument(const QDomDocument &document)
 {
+		//The stores were loaded with the file's tables (adoptFile())
+	if (m_adopted) {
+		return;
+	}
 	m_prefilled_elements.clear();
 	m_prefilled_kinds.clear();
 	m_prefilled_placements.clear();
@@ -7636,7 +7705,7 @@ void projectDataBase::flushLinks()
 		if (!remove.exec()) {
 			qDebug() << "projectDataBase::flushLinks remove error : " << remove.lastError();
 		}
-			//An element taken off its folio is unlinked first (Diagram::
+			//An element taken off its folio is unlinked first (findTerminals()
 			//removeItem()), so it writes no rows here; one on a removed
 			//folio is not, and writes none either.
 		if (!placed) {

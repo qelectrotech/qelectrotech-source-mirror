@@ -28,8 +28,10 @@
 #include "../qet.h"
 
 #include <QSqlError>
+#include <QElapsedTimer>
 #include <QSqlQuery>
 #include <QTemporaryDir>
+#include <QtConcurrentMap>
 #include <QUuid>
 
 /*
@@ -149,6 +151,7 @@ void keyedRowsToXml(QDomDocument &document, QDomElement &parent, QSqlQuery &quer
 Rows keyRows(const QSqlDatabase &db, const QString &table, const QString &column, const QString &key)
 {
 	QSqlQuery query(db);
+	query.setForwardOnly(true);
 	query.prepare(QStringLiteral("SELECT section, ord, name, value FROM %1 WHERE %2 = :key ORDER BY rowid")
 				  .arg(table, column));
 	query.bindValue(QStringLiteral(":key"), key);
@@ -156,22 +159,32 @@ Rows keyRows(const QSqlDatabase &db, const QString &table, const QString &column
 	return selectRows(query);
 }
 
-autonum::sequentialNumbers sequenceOf(const QSqlDatabase &db, const QString &item)
+/// The numbers @p parts, (part, value) in part and ord order, make
+autonum::sequentialNumbers sequenceFrom(const QList<std::pair<QString, QString>> &parts_values)
 {
 	autonum::sequentialNumbers numbers;
-	QSqlQuery query(db);
-	query.prepare(QStringLiteral("SELECT part, value FROM sequential_number WHERE item_uuid = :uuid ORDER BY part, ord"));
-	query.bindValue(QStringLiteral(":uuid"), item);
-	query.exec();
 	const QHash<QString, QStringList *> parts = {
 		{QStringLiteral("unit"), &numbers.unit}, {QStringLiteral("wrap"), &numbers.wrap},
 		{QStringLiteral("unit_folio"), &numbers.unit_folio}, {QStringLiteral("ten"), &numbers.ten},
 		{QStringLiteral("ten_folio"), &numbers.ten_folio}, {QStringLiteral("hundred"), &numbers.hundred},
 		{QStringLiteral("hundred_folio"), &numbers.hundred_folio}, {QStringLiteral("alpha"), &numbers.alpha}};
-	while (query.next())
-		if (QStringList *part = parts.value(query.value(0).toString()))
-			part->append(query.value(1).toString());
+	for (const auto &[part_name, value] : parts_values)
+		if (QStringList *part = parts.value(part_name))
+			part->append(value);
 	return numbers;
+}
+
+autonum::sequentialNumbers sequenceOf(const QSqlDatabase &db, const QString &item)
+{
+	QSqlQuery query(db);
+	query.setForwardOnly(true);
+	query.prepare(QStringLiteral("SELECT part, value FROM sequential_number WHERE item_uuid = :uuid ORDER BY part, ord"));
+	query.bindValue(QStringLiteral(":uuid"), item);
+	query.exec();
+	QList<std::pair<QString, QString>> parts_values;
+	while (query.next())
+		parts_values.append({query.value(0).toString(), query.value(1).toString()});
+	return sequenceFrom(parts_values);
 }
 
 /// What a folio's title block saves, from its folio_titleblock rows
@@ -179,6 +192,7 @@ TitleBlockProperties titleBlockOf(const QSqlDatabase &db, const QString &folio)
 {
 	TitleBlockProperties properties;
 	QSqlQuery query(db);
+	query.setForwardOnly(true);
 	query.prepare(QStringLiteral("SELECT name, value, show FROM folio_titleblock WHERE diagram_uuid = :uuid ORDER BY ord"));
 	query.bindValue(QStringLiteral(":uuid"), folio);
 	query.exec();
@@ -220,6 +234,7 @@ void writeFolioCounters(QDomDocument &document, QDomElement &folio, const QSqlDa
 		QDomElement list = document.createElement(owner_tag);
 		for (const auto &[level, level_suffix, item_tag, prefix] : levels) {
 			QSqlQuery query(db);
+			query.setForwardOnly(true);
 			query.prepare(QStringLiteral("SELECT title, value FROM folio_counter WHERE folio_uuid = :uuid "
 										 "AND owner = :owner AND level = :level ORDER BY title, ord"));
 			query.bindValue(QStringLiteral(":uuid"), uuid);
@@ -249,6 +264,7 @@ void writeFolioCounters(QDomDocument &document, QDomElement &folio, const QSqlDa
 void writeElements(QDomDocument &document, QDomElement &folio, const QSqlDatabase &db, const QString &uuid)
 {
 	QSqlQuery query(db);
+	query.setForwardOnly(true);
 	query.prepare(QStringLiteral(
 			"SELECT e.uuid, p.type, e.group_uuid, p.x, p.y, p.z, p.rotation, p.horizontal_mirror, p.vertical_mirror "
 			"FROM element e JOIN element_placement p ON p.element_uuid = e.uuid "
@@ -258,6 +274,54 @@ void writeElements(QDomDocument &document, QDomElement &folio, const QSqlDatabas
 		qWarning() << "projectDataBase::toDocument elements:" << query.lastError();
 		return;
 	}
+		//Each table read once for the folio's symbols, not once per symbol
+		//(5 080 symbols of f2099: 2.9 s): each symbol's rows in the order
+		//its own query gave
+	const auto folio_rows = [&db, &uuid](const QString &sql) {
+		QSqlQuery rows(db);
+		rows.setForwardOnly(true);
+		rows.prepare(sql);
+		rows.bindValue(QStringLiteral(":uuid"), uuid);
+		if (!rows.exec())
+			qWarning() << "projectDataBase::toDocument elements:" << rows.lastError();
+		return rows;
+	};
+	QHash<QString, Rows> values, texts;
+	for (auto [table, rows] : {std::pair{QStringLiteral("element_value"), &values},
+							   std::pair{QStringLiteral("element_text_value"), &texts}}) {
+		QSqlQuery q = folio_rows(QStringLiteral("SELECT v.element_uuid, v.section, v.ord, v.name, v.value FROM %1 v "
+												"JOIN element e ON e.uuid = v.element_uuid "
+												"WHERE e.diagram_uuid = :uuid ORDER BY v.rowid").arg(table));
+		while (q.next())
+			(*rows)[q.value(0).toString()].append({q.value(1).toString(), q.value(2).toInt(),
+												   q.value(3).toString(), q.value(4).toString()});
+	}
+	QHash<QString, QList<std::pair<QString, QString>>> sequence_parts;
+	{
+		QSqlQuery q = folio_rows(QStringLiteral("SELECT s.item_uuid, s.part, s.value FROM sequential_number s "
+												"JOIN element e ON e.uuid = s.item_uuid "
+												"WHERE e.diagram_uuid = :uuid ORDER BY s.item_uuid, s.part, s.ord"));
+		while (q.next())
+			sequence_parts[q.value(0).toString()].append({q.value(1).toString(), q.value(2).toString()});
+	}
+	QHash<QString, QList<std::pair<QString, QVariant>>> links_of;
+	{
+		QSqlQuery q = folio_rows(QStringLiteral("SELECT l.element_uuid, l.linked_uuid, l.group_index FROM link l "
+												"JOIN element e ON e.uuid = l.element_uuid "
+												"WHERE e.diagram_uuid = :uuid ORDER BY l.element_uuid, l.ord"));
+		while (q.next())
+			links_of[q.value(0).toString()].append({q.value(1).toString(), q.value(2)});
+	}
+	QHash<QString, DiagramContext> information_of;
+	{
+		QSqlQuery q = folio_rows(QStringLiteral("SELECT i.element_uuid, i.name, i.value, i.show FROM element_information i "
+												"JOIN element e ON e.uuid = i.element_uuid "
+												"WHERE e.diagram_uuid = :uuid ORDER BY i.element_uuid, i.ord"));
+		while (q.next())
+			information_of[q.value(0).toString()].addValue(q.value(1).toString(), q.value(2).toString(),
+															q.value(3).toBool());
+	}
+
 	QDomElement list = document.createElement(QStringLiteral("elements"));
 	while (query.next()) {
 		const QString element_uuid = query.value(0).toString();
@@ -277,40 +341,30 @@ void writeElements(QDomDocument &document, QDomElement &folio, const QSqlDatabas
 			element.setAttribute(QString::fromLatin1(ItemGroups::xml_attribute), query.value(2).toString());
 
 			//Prefix, frozen label, movability, override properties, PLC data
-		Rows values = keyRows(db, QStringLiteral("element_value"), QStringLiteral("element_uuid"), element_uuid);
+		Rows own_values = values.value(element_uuid);
 			//Its children's sections start with their own tag
-		for (Row &row : values)
+		for (Row &row : own_values)
 			if (row.section != QLatin1String("element")) row.section.prepend(QStringLiteral("element/"));
-		rowsToXml(document, element, QStringLiteral("element"), values);
+		rowsToXml(document, element, QStringLiteral("element"), own_values);
 
-		const QDomElement sequence = sequenceOf(db, element_uuid).toXml(document);
+		const QDomElement sequence = sequenceFrom(sequence_parts.value(element_uuid)).toXml(document);
 		if (sequence.hasChildNodes()) element.appendChild(sequence);
 			//Each terminal is placed from the symbol's definition, and the
 			//wires name theirs by uuid
 		element.appendChild(document.createElement(QStringLiteral("terminals")));
 		element.appendChild(document.createElement(QStringLiteral("inputs")));
 
-		QSqlQuery links(db);
-		links.prepare(QStringLiteral("SELECT linked_uuid, group_index FROM link WHERE element_uuid = :uuid ORDER BY ord"));
-		links.bindValue(QStringLiteral(":uuid"), element_uuid);
-		links.exec();
 		QDomElement links_uuids = document.createElement(QStringLiteral("links_uuids"));
-		while (links.next()) {
+		for (const auto &[linked, group_index] : links_of.value(element_uuid)) {
 			QDomElement link = document.createElement(QStringLiteral("link_uuid"));
-			link.setAttribute(QStringLiteral("uuid"), links.value(0).toString());
-			if (!links.value(1).isNull() && links.value(1).toInt() >= 0)
-				link.setAttribute(QStringLiteral("group_index"), links.value(1).toInt());
+			link.setAttribute(QStringLiteral("uuid"), linked);
+			if (!group_index.isNull() && group_index.toInt() >= 0)
+				link.setAttribute(QStringLiteral("group_index"), group_index.toInt());
 			links_uuids.appendChild(link);
 		}
 		if (links_uuids.hasChildNodes()) element.appendChild(links_uuids);
 
-		QSqlQuery information(db);
-		information.prepare(QStringLiteral("SELECT name, value, show FROM element_information WHERE element_uuid = :uuid ORDER BY ord"));
-		information.bindValue(QStringLiteral(":uuid"), element_uuid);
-		information.exec();
-		DiagramContext context;
-		while (information.next())
-			context.addValue(information.value(0).toString(), information.value(1).toString(), information.value(2).toBool());
+		const DiagramContext context = information_of.value(element_uuid);
 		QDomElement infos = document.createElement(QStringLiteral("elementInformations"));
 		context.toXml(infos, QStringLiteral("elementInformation"));
 		if (infos.hasChildNodes()) element.appendChild(infos);
@@ -318,7 +372,7 @@ void writeElements(QDomDocument &document, QDomElement &folio, const QSqlDatabas
 			//Texts and text groups (S3l)
 		rowsToXml(document, element, QStringLiteral("element"),
 				  [&]() {
-					  Rows rows = keyRows(db, QStringLiteral("element_text_value"), QStringLiteral("element_uuid"), element_uuid);
+					  Rows rows = texts.value(element_uuid);
 						  //Their sections start with their own tag
 					  for (Row &row : rows) row.section.prepend(QStringLiteral("element/"));
 					  return rows;
@@ -331,6 +385,7 @@ void writeElements(QDomDocument &document, QDomElement &folio, const QSqlDatabas
 void writeConductors(QDomDocument &document, QDomElement &folio, const QSqlDatabase &db, const QString &uuid)
 {
 	QSqlQuery query(db);
+	query.setForwardOnly(true);
 	query.prepare(QStringLiteral(
 			"SELECT c.uuid, c.terminal1_uuid, c.terminal1_element_uuid, c.terminal2_uuid, c.terminal2_element_uuid, "
 			"l.x, l.y, l.freeze_label, l.text_x, l.text_y, l.text_rotation "
@@ -355,6 +410,7 @@ void writeConductors(QDomDocument &document, QDomElement &folio, const QSqlDatab
 		conductor.setAttribute(QStringLiteral("freezeLabel"), query.value(7).toBool() ? QStringLiteral("true") : QStringLiteral("false"));
 
 		QSqlQuery path(db);
+		path.setForwardOnly(true);
 		path.prepare(QStringLiteral("SELECT horizontal, length FROM conductor_path WHERE conductor_uuid = :uuid ORDER BY ord"));
 		path.bindValue(QStringLiteral(":uuid"), wire);
 		path.exec();
@@ -367,6 +423,7 @@ void writeConductors(QDomDocument &document, QDomElement &folio, const QSqlDatab
 		conductor.appendChild(sequenceOf(db, wire).toXml(document));
 
 		QSqlQuery properties(db);
+		properties.setForwardOnly(true);
 		properties.prepare(QStringLiteral("SELECT name, value FROM conductor_properties WHERE conductor_uuid = :uuid"));
 		properties.bindValue(QStringLiteral(":uuid"), wire);
 		properties.exec();
@@ -384,9 +441,22 @@ void writeConductors(QDomDocument &document, QDomElement &folio, const QSqlDatab
 }
 
 /// The symbols and wires a folio keeps as read (kept_item), after its own
+void writeKept(QDomDocument &document, QDomElement &folio, const QSqlDatabase &db, const QString &uuid);
+void writeDrawnItems(QDomDocument &document, QDomElement &folio, const QSqlDatabase &db, const QString &uuid);
+
+/// A folio's items: its symbols, wires, kept items and drawn items
+void writeFolioItems(QDomDocument &document, QDomElement &folio, const QSqlDatabase &db, const QString &uuid)
+{
+	writeElements(document, folio, db, uuid);
+	writeConductors(document, folio, db, uuid);
+	writeKept(document, folio, db, uuid);
+	writeDrawnItems(document, folio, db, uuid);
+}
+
 void writeKept(QDomDocument &document, QDomElement &folio, const QSqlDatabase &db, const QString &uuid)
 {
 	QSqlQuery query(db);
+	query.setForwardOnly(true);
 	query.prepare(QStringLiteral("SELECT content FROM kept_item WHERE diagram_uuid = :uuid ORDER BY ord"));
 	query.bindValue(QStringLiteral(":uuid"), uuid);
 	query.exec();
@@ -415,6 +485,7 @@ void writeDrawnItems(QDomDocument &document, QDomElement &folio, const QSqlDatab
 		{QStringLiteral("shape"), QStringLiteral("shapes")}, {QStringLiteral("graphics_table"), QStringLiteral("tables")}};
 	QHash<QString, QDomElement> parents;
 	QSqlQuery query(db);
+	query.setForwardOnly(true);
 		//As the folio stacks them: by height, then first stored first
 	query.prepare(QStringLiteral(
 			"SELECT d.item_uuid, d.kind, d.section, d.ord, d.name, d.value FROM drawing_item d "
@@ -435,6 +506,7 @@ void writeDrawnItems(QDomDocument &document, QDomElement &folio, const QSqlDatab
 			else own.append(row);
 		if (!blob.isEmpty()) {
 			QSqlQuery bytes(db);
+			bytes.setForwardOnly(true);
 			bytes.prepare(QStringLiteral("SELECT bytes FROM blob WHERE hash = :hash"));
 			bytes.bindValue(QStringLiteral(":hash"), blob);
 			if (bytes.exec() && bytes.next())
@@ -470,11 +542,6 @@ QDomElement collectionOf(QDomDocument &document, const QSqlDatabase &db)
 	QDomElement collection = document.createElement(QStringLiteral("collection"));
 	QHash<QString, QDomElement> categories;
 	categories.insert(QString(), collection);
-	auto parse = [&](const QString &content) {
-		QDomDocument part;
-		part.setContent(content, QDomDocument::ParseOption::PreserveSpacingOnlyNodes);
-		return document.importNode(part.documentElement(), true).toElement();
-	};
 	auto parentOf = [&](const QString &path) {
 		return categories.value(path.left(qMax(path.lastIndexOf(QLatin1Char('/')), 0)), collection);
 	};
@@ -491,22 +558,40 @@ QDomElement collectionOf(QDomDocument &document, const QSqlDatabase &db)
 		}
 		into.appendChild(item);
 	};
+	struct Entry {
+		QString path;
+		QString content;
+		int ord;
+		bool is_category;
+		QVariant names_ord;
+		QDomDocument parsed;
+	};
+	QList<Entry> entries;
 	QSqlQuery query(db);
+	query.setForwardOnly(true);
 	query.exec(QStringLiteral("SELECT path, content, ord, is_category, names_ord FROM ("
 							  "SELECT path, content, ord, 1 AS is_category, names_ord FROM symbol_category UNION ALL "
 							  "SELECT path, content, ord, 0, NULL FROM symbol_def) ORDER BY ord"));
-	while (query.next()) {
-		const QString path = query.value(0).toString();
-		QDomElement item = parse(query.value(1).toString());
-		if (query.value(3).toBool()) {
+	while (query.next())
+		entries.append({query.value(0).toString(), query.value(1).toString(), query.value(2).toInt(),
+						query.value(3).toBool(), query.value(4), {}});
+		//Each symbol parsed on its own document, all at once: the parsing
+		//was 2.3 s of 3.8 s opening f2099's 404 symbols one after another
+	QtConcurrent::blockingMap(entries, [](Entry &entry) {
+		entry.parsed.setContent(entry.content, QDomDocument::ParseOption::PreserveSpacingOnlyNodes);
+	});
+	for (Entry &entry : entries) {
+		QDomElement item = document.importNode(entry.parsed.documentElement(), true).toElement();
+		entry.parsed = QDomDocument();
+		if (entry.is_category) {
 			const QDomElement names = item.firstChildElement(QStringLiteral("names"));
-			if (!names.isNull() && !query.value(4).isNull()) {
+			if (!names.isNull() && !entry.names_ord.isNull()) {
 				item.removeChild(names);
-				pending_names.insert(path, {query.value(4).toInt(), names});
+				pending_names.insert(entry.path, {entry.names_ord.toInt(), names});
 			}
-			categories.insert(path, item);
+			categories.insert(entry.path, item);
 		}
-		place(path, query.value(2).toInt(), item);
+		place(entry.path, entry.ord, item);
 	}
 	for (auto it = pending_names.constBegin() ; it != pending_names.constEnd() ; ++it)
 		categories.value(it.key()).appendChild(it.value().second);
@@ -520,7 +605,7 @@ QDomElement collectionOf(QDomDocument &document, const QSqlDatabase &db)
 	@return the project the database @p db holds, as a save writes it,
 	read from its tables alone
 */
-QDomDocument projectDataBase::toDocument(const QSqlDatabase &db)
+QDomDocument projectDataBase::toDocument(const QSqlDatabase &db, bool deferred_folios)
 {
 	QDomDocument document;
 	QDomElement project = document.createElement(QStringLiteral("project"));
@@ -528,6 +613,7 @@ QDomDocument projectDataBase::toDocument(const QSqlDatabase &db)
 	QetVersion::toXmlAttribute(project);
 
 	QSqlQuery query(db);
+	query.setForwardOnly(true);
 	query.exec(QStringLiteral("SELECT section, ord, name, value FROM project_setting ORDER BY rowid"));
 	const Rows settings = selectRows(query);
 	Rows newdiagrams;
@@ -583,6 +669,7 @@ QDomDocument projectDataBase::toDocument(const QSqlDatabase &db)
 		titleBlockOf(db, uuid).toXml(folio);
 
 		QSqlQuery border(db);
+		border.setForwardOnly(true);
 		border.prepare(QStringLiteral("SELECT columns_count, columns_width, display_columns, "
 									  "rows_count, rows_height, display_rows FROM folio_border WHERE diagram_uuid = :uuid"));
 		border.bindValue(QStringLiteral(":uuid"), uuid);
@@ -598,22 +685,26 @@ QDomDocument projectDataBase::toDocument(const QSqlDatabase &db)
 		rowsToXml(document, folio, QStringLiteral("diagram"),
 				  keyRows(db, QStringLiteral("folio_value"), QStringLiteral("diagram_uuid"), uuid));
 		writeFolioCounters(document, folio, db, uuid);
-		writeElements(document, folio, db, uuid);
-		writeConductors(document, folio, db, uuid);
-		writeKept(document, folio, db, uuid);
-		writeDrawnItems(document, folio, db, uuid);
+			//A folio not built at the open gets its items when it is
+			//(writeFolioContent(), S4x X3)
+		if (deferred_folios)
+			folio.setAttribute(QString::fromLatin1(deferred_content), QStringLiteral("1"));
+		else
+			writeFolioItems(document, folio, db, uuid);
 		folio.setAttribute(QStringLiteral("order"), order_num++);
 		project.appendChild(folio);
 	}
 
 	for (QDomElement &element : after_folios) project.appendChild(element);
 	QSqlQuery strips(db);
+	strips.setForwardOnly(true);
 	strips.exec(QStringLiteral("SELECT strip_uuid, section, ord, name, value FROM terminal_strip_value ORDER BY rowid"));
 	QDomElement strip_list = document.createElement(QStringLiteral("terminal_strips"));
 	keyedRowsToXml(document, strip_list, strips, QStringLiteral("terminal_strip"));
 	if (strip_list.hasChildNodes()) project.appendChild(strip_list);
 
 	QSqlQuery cables(db);
+	cables.setForwardOnly(true);
 	cables.exec(QStringLiteral("SELECT cable_uuid, section, ord, name, value FROM cable_value ORDER BY rowid"));
 	QDomElement cable_list = document.createElement(QStringLiteral("cables"));
 	keyedRowsToXml(document, cable_list, cables, QStringLiteral("cable"));
@@ -630,25 +721,52 @@ QDomDocument projectDataBase::toDocument(const QSqlDatabase &db)
 	its own.
 	@return true on success; else false, and why in @p error
 */
+/**
+	@brief projectDataBase::writeFolioContent
+	Write into @p folio, a folio element toDocument() left without its items
+	(deferred_content), its symbols, wires, kept items and drawn items, as
+	this database holds them now
+*/
+void projectDataBase::writeFolioContent(QDomElement &folio) const
+{
+	if (!folio.hasAttribute(QString::fromLatin1(deferred_content))) return;
+	folio.removeAttribute(QString::fromLatin1(deferred_content));
+	QDomDocument document = folio.ownerDocument();
+	writeFolioItems(document, folio, m_data_base, folio.attribute(QStringLiteral("uuid")));
+}
+
 bool projectDataBase::writeDocument(const QString &database_file, const QString &project_file, QString *error)
 {
-	const QString connection = QStringLiteral("qet_project_writer_") + QUuid::createUuid().toString();
 	QDomDocument document;
+	return readDocument(database_file, &document, error)
+			&& QET::writeXmlFile(document, project_file, error);
+}
+
+/**
+	@brief projectDataBase::readDocument
+	@p document becomes the project the database file @p database_file
+	holds (toDocument()), read through a connection of its own.
+	@return true on success; else false, and why in @p error
+*/
+bool projectDataBase::readDocument(const QString &database_file, QDomDocument *document, QString *error,
+								   bool deferred_folios)
+{
+	const QString connection = QStringLiteral("qet_project_writer_") + QUuid::createUuid().toString();
+	bool ok = false;
 	{
 		QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), connection);
 		db.setDatabaseName(database_file);
 		db.setConnectOptions(QStringLiteral("QSQLITE_OPEN_READONLY"));
 		if (!db.open()) {
 			if (error) *error = db.lastError().text();
-			db = QSqlDatabase();
-			QSqlDatabase::removeDatabase(connection);
-			return false;
+		} else {
+			*document = toDocument(db, deferred_folios);
+			ok = true;
 		}
-		document = toDocument(db);
 		db.close();
 	}
 	QSqlDatabase::removeDatabase(connection);
-	return QET::writeXmlFile(document, project_file, error);
+	return ok;
 }
 
 /**
@@ -675,6 +793,8 @@ bool projectDataBase::writeProjectFromDatabase(const QString &project_file, QStr
 */
 bool projectDataBase::copyTo(const QString &file, QString *error)
 {
+	QElapsedTimer timer;
+	timer.start();
 	updateDB();
 		//The rebuild above leaves some queues for the next read
 	flushDrawingItems();
@@ -685,12 +805,17 @@ bool projectDataBase::copyTo(const QString &file, QString *error)
 	flushFolioValues();
 	flushCables();
 	flushConductorProperties();
+	const qint64 update_ms = timer.elapsed();
 
 		//VACUUM INTO cannot run inside the working copy's transaction
 	endTransaction();
 	QSqlQuery query(m_data_base);
+	query.setForwardOnly(true);
 	const bool copied = query.exec(QStringLiteral("VACUUM INTO '%1'").arg(QString(file).replace(QLatin1Char('\''), QStringLiteral("''"))));
 	beginTransaction();
+	if (qEnvironmentVariableIntValue("QET_QETDB_SAVE_TIMES") == 1)
+		qInfo().noquote() << "projectDataBase::copyTo (ms): update and flush" << update_ms
+						  << ", VACUUM INTO" << timer.elapsed() - update_ms;
 	if (!copied && error) *error = query.lastError().text();
 	return copied;
 }
