@@ -927,6 +927,67 @@ void tst_DimensionItem::testTextRotationAndArrowSizeMax()
 	auto *arrowSb = dlg.findChild<QDoubleSpinBox*>("m_arrow_size_sb");
 	QVERIFY(arrowSb != nullptr);
 	QCOMPARE(arrowSb->maximum(), 100.0);
+
+	// Explicit Undo/Redo test for textRotation and arrowSize via Dialog
+	QETProject prj;
+	Diagram *diag = prj.addNewDiagram();
+	QVERIFY(diag != nullptr);
+	auto *testDim = new DimensionItem(QPointF(0, 0), QPointF(200, 0), 20.0);
+	diag->undoStack().push(new AddGraphicsObjectCommand(testDim, diag));
+
+	QCOMPARE(testDim->textRotation(), -1);
+	QCOMPARE(testDim->arrowSize(), 8.0);
+
+	{
+		DimensionPropertiesDialog dialog(testDim);
+		auto *rotBox = dialog.findChild<QComboBox*>("m_text_rotation_cb");
+		auto *arrBox = dialog.findChild<QDoubleSpinBox*>("m_arrow_size_sb");
+		QVERIFY(rotBox != nullptr);
+		QVERIFY(arrBox != nullptr);
+
+		// Select 90°
+		int idx90 = rotBox->findData(90);
+		QVERIFY(idx90 >= 0);
+		rotBox->setCurrentIndex(idx90);
+		arrBox->setValue(85.0);
+
+		dialog.accept();
+	}
+
+	QCOMPARE(testDim->textRotation(), 90);
+	QCOMPARE(testDim->arrowSize(), 85.0);
+
+	// Perform Undo
+	diag->undoStack().undo();
+	QCOMPARE(testDim->textRotation(), -1);
+	QCOMPARE(testDim->arrowSize(), 8.0);
+
+	// Perform Redo
+	diag->undoStack().redo();
+	QCOMPARE(testDim->textRotation(), 90);
+	QCOMPARE(testDim->arrowSize(), 85.0);
+
+	// Test Apply + Reject (Preview cancel)
+	{
+		DimensionPropertiesDialog dialog(testDim);
+		auto *rotBox = dialog.findChild<QComboBox*>("m_text_rotation_cb");
+		auto *arrBox = dialog.findChild<QDoubleSpinBox*>("m_arrow_size_sb");
+
+		int idx180 = rotBox->findData(180);
+		QVERIFY(idx180 >= 0);
+		rotBox->setCurrentIndex(idx180);
+		arrBox->setValue(95.0);
+
+		// Simulate clicking Apply
+		dialog.apply();
+		QCOMPARE(testDim->textRotation(), 180);
+		QCOMPARE(testDim->arrowSize(), 95.0);
+
+		// Cancel (Reject) -> must rollback to 90 and 85.0
+		dialog.reject();
+	}
+	QCOMPARE(testDim->textRotation(), 90);
+	QCOMPARE(testDim->arrowSize(), 85.0);
 }
 
 QTEST_MAIN(tst_DimensionItem)
