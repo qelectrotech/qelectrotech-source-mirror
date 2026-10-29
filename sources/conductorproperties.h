@@ -129,6 +129,8 @@ class ConductorProperties
 			/// stretch
 		bool m_definition_mark = false;
 		qreal m_definition_mark_at = -1;
+			/// The stroke stands in for the conductor's own text
+		bool m_definition_mark_hides_text = false;
 
 		Qt::Alignment
 		m_horizontal_alignment = Qt::AlignBottom,

@@ -204,6 +204,16 @@
                 </property>
                </widget>
               </item>
+              <item row="10" column="0" colspan="5">
+               <widget class="QCheckBox" name="m_definition_mark_hides_text_cb">
+                <property name="toolTip">
+                 <string>With the stroke shown, the conductor's own text is hidden: the stroke already gives the colour and the section.</string>
+                </property>
+                <property name="text">
+                 <string>The stroke replaces the conductor's text</string>
+                </property>
+               </widget>
+              </item>
               <item row="8" column="0" colspan="5">
                <layout class="QGridLayout" name="m_text_angle_gl">
                 <item row="1" column="0">

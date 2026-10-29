@@ -95,6 +95,7 @@ void ConductorPropertiesWidget::setProperties(
 	ui->m_show_text_cb          -> setChecked (m_properties.m_show_text);
 	ui->m_one_text_per_folio_cb -> setChecked (m_properties.m_one_text_per_folio);
 	ui->m_definition_mark_cb    -> setChecked (m_properties.m_definition_mark);
+	ui->m_definition_mark_hides_text_cb -> setChecked (m_properties.m_definition_mark_hides_text);
 	ui->m_definition_mark_at_sb -> setValue  (m_properties.m_definition_mark_at < 0
 						   ? -1 : qRound(m_properties.m_definition_mark_at * 100));
 	ui->m_earth_cb              -> setChecked (m_properties.singleLineProperties.hasGround);
@@ -150,6 +151,7 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.m_show_text             = ui -> m_show_text_cb -> isChecked();
 	properties_.m_one_text_per_folio    = ui -> m_one_text_per_folio_cb -> isChecked();
 	properties_.m_definition_mark       = ui -> m_definition_mark_cb -> isChecked();
+	properties_.m_definition_mark_hides_text = ui -> m_definition_mark_hides_text_cb -> isChecked();
 	const int at_percent = ui->m_definition_mark_at_sb->value();
 	properties_.m_definition_mark_at   = at_percent < 0 ? -1 : at_percent / 100.0;
 		//The box shows whole percents: keep the stored place unless it

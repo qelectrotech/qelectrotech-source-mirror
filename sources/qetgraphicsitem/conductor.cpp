@@ -1566,7 +1566,18 @@ void Conductor::updateTextVisibility()
 {
 	ShownKinds::setVisible(m_text_item,
 						   m_properties.type == ConductorProperties::Multi
-						   && m_properties.m_show_text);
+						   && m_properties.m_show_text
+						   && !markReplacesText());
+}
+
+/**
+	@brief Conductor::markReplacesText
+	@return true when the stroke with colour and section is shown and its
+	properties ask it to stand in for the conductor's text
+*/
+bool Conductor::markReplacesText() const
+{
+	return m_properties.m_definition_mark && m_properties.m_definition_mark_hides_text;
 }
 
 /**
@@ -1601,7 +1612,7 @@ void Conductor::calculateTextItemPosition()
 		}
 			//Make sure text item is visible, unless wire numbers are hidden
 			//(View > Show)
-		ShownKinds::setVisible(m_text_item, true);
+		ShownKinds::setVisible(m_text_item, !markReplacesText());
 	}
 
 		//position

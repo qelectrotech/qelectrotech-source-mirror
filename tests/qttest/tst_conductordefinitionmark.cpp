@@ -133,6 +133,18 @@ class TstConductorDefinitionMark : public QObject
 			QVERIFY(m_conductor->textItem()->isVisible());
 		}
 
+			//Asked to, the stroke stands in for the text, and gives it back
+		void replacesTheTextWhenAsked()
+		{
+			ConductorProperties p = m_conductor->properties();
+			p.m_definition_mark_hides_text = true;
+			m_conductor->setProperties(p);
+			QVERIFY(!m_conductor->textItem()->isVisible());
+			p.m_definition_mark_hides_text = false;
+			m_conductor->setProperties(p);
+			QVERIFY(m_conductor->textItem()->isVisible());
+		}
+
 			//A stroke only follows the wire numbers of View > Show
 		void hiddenWithTheWireNumbers()
 		{

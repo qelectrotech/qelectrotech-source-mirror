@@ -335,6 +335,8 @@ QList<QPair<QString, QString>> ConductorProperties::attributes() const
 	if (m_definition_mark) {
 		add("definition_mark", QStringLiteral("1"));
 		add("definition_mark_at", QString::number(m_definition_mark_at));
+		if (m_definition_mark_hides_text)
+			add("definition_mark_hides_text", QStringLiteral("1"));
 	}
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
@@ -400,6 +402,7 @@ void ConductorProperties::fromXml(QDomElement &e)
 	horiz_rotate_text    = e.attribute("horizrotatetext").toDouble();
 	m_definition_mark    = e.attribute("definition_mark").toInt();
 	m_definition_mark_at = e.attribute("definition_mark_at", QStringLiteral("-1")).toDouble();
+	m_definition_mark_hides_text = e.attribute("definition_mark_hides_text").toInt();
 	if (!qIsFinite(m_definition_mark_at) || m_definition_mark_at > 1) m_definition_mark_at = -1;
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
@@ -445,6 +448,7 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "vertirotatetext", QString::number(verti_rotate_text));
 	settings.setValue(prefix + "horizrotatetext", QString::number(horiz_rotate_text));
 	settings.setValue(prefix + "definition_mark", m_definition_mark);
+	settings.setValue(prefix + "definition_mark_hides_text", m_definition_mark_hides_text);
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	settings.setValue(prefix + "horizontal-alignment", me.valueToKey(m_horizontal_alignment));
@@ -493,6 +497,7 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	verti_rotate_text    = settings.value((prefix + "vertirotatetext"), "270").toDouble();
 	horiz_rotate_text    = settings.value((prefix + "horizrotatetext"), "0").toDouble();
 	m_definition_mark    = settings.value(prefix + "definition_mark", false).toBool();
+	m_definition_mark_hides_text = settings.value(prefix + "definition_mark_hides_text", false).toBool();
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	m_horizontal_alignment = Qt::Alignment(me.keyToValue(settings.value(prefix + "horizontal-alignment", "AlignBottom").toString().toStdString().data()));
@@ -554,6 +559,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		style                = cp.style;
 		m_definition_mark    = cp.m_definition_mark;
 		m_definition_mark_at = cp.m_definition_mark_at;
+		m_definition_mark_hides_text = cp.m_definition_mark_hides_text;
 
 		return;
 	}
@@ -776,6 +782,16 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_definition_mark_at = d_value;
 	equal = true;
 
+	b_value = clist.first().m_definition_mark_hides_text;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_definition_mark_hides_text != b_value)
+			equal = false;
+	}
+	if (equal)
+		m_definition_mark_hides_text = b_value;
+	equal = true;
+
 		//One text per folio
 	b_value = clist.first().m_one_text_per_folio;
 	for(ConductorProperties cp : clist)
@@ -875,6 +891,7 @@ void ConductorProperties::applyChanges(const ConductorProperties &before,
 	take(m_vertical_alignment,   before.m_vertical_alignment,   after.m_vertical_alignment);
 	take(m_definition_mark,      before.m_definition_mark,      after.m_definition_mark);
 	take(m_definition_mark_at,  before.m_definition_mark_at,  after.m_definition_mark_at);
+	take(m_definition_mark_hides_text, before.m_definition_mark_hides_text, after.m_definition_mark_hides_text);
 
 		//Single-line symbols, one by one
 	SingleLineProperties slp_before = before.singleLineProperties;
@@ -961,7 +978,8 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 		other.m_horizontal_alignment == m_horizontal_alignment &&\
 		other.m_vertical_alignment == m_vertical_alignment &&\
 		other.m_definition_mark == m_definition_mark &&\
-		other.m_definition_mark_at == m_definition_mark_at
+		other.m_definition_mark_at == m_definition_mark_at &&\
+		other.m_definition_mark_hides_text == m_definition_mark_hides_text
 	);
 }
 
