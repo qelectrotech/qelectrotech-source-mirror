@@ -257,6 +257,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_vertical_texts_from_bottom_cb">
+         <property name="toolTip">
+          <string>A symbol's text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires' texts. Unticked by default: texts turn with their symbol.</string>
+         </property>
+         <property name="text">
+          <string>Upright symbol texts read from bottom to top</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="guides_startup_cb">
          <property name="text">
           <string>Show default guides (applies from the next time the programme is launched)</string>
