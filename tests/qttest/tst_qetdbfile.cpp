@@ -280,10 +280,10 @@ private slots:
 		QVERIFY2(code == 0, qPrintable(out));
 		QFile js(m_dir.filePath(QStringLiteral("history.js")));
 		QVERIFY(js.open(QIODevice::WriteOnly));
-		js.write("var us = qet.elementUuids(0).sort();\n"
-				 "qet.setElementLabel(0, us[0], 'REV1');\n"
+		js.write("var us = qet.elementUuids(3).sort();\n"
+				 "qet.setElementInfo(3, us[0], 'comment', 'REV1');\n"
 				 "qet.log('SAVED1 ' + qet.save(''));\n"
-				 "qet.setElementLabel(0, us[1], 'REV2');\n"
+				 "qet.setElementInfo(3, us[1], 'comment', 'REV2');\n"
 				 "qet.log('SAVED2 ' + qet.save(''));\n");
 		js.close();
 		out = run({QStringLiteral("--run"), js.fileName(), path});
@@ -361,11 +361,11 @@ private slots:
 		QVERIFY(QFile::copy(path, first));
 		QFile js(m_dir.filePath(QStringLiteral("revisions.js")));
 		QVERIFY(js.open(QIODevice::WriteOnly));
-		js.write("var us = qet.elementUuids(0).sort();\n"
-				 "qet.setElementLabel(0, us[0], 'UNDO1');\n"
-				 "qet.moveElement(0, us[1], 20, 0);\n"
+		js.write("var us = qet.elementUuids(3).sort();\n"
+				 "qet.setElementInfo(3, us[0], 'comment', 'UNDO1');\n"
+				 "qet.moveElement(3, us[1], 20, 0);\n"
 				 "qet.log('SAVED1 ' + qet.save(''));\n"
-				 "qet.setElementLabel(0, us[2], 'UNDO2');\n"
+				 "qet.setElementInfo(3, us[2], 'comment', 'UNDO2');\n"
 				 "qet.log('SAVED2 ' + qet.save(''));\n");
 		js.close();
 		out = run({QStringLiteral("--run"), js.fileName(), path});
@@ -404,13 +404,13 @@ private slots:
 		QVERIFY2(code == 0, qPrintable(out));
 		QFile js(m_dir.filePath(QStringLiteral("compare.js")));
 		QVERIFY(js.open(QIODevice::WriteOnly));
-		js.write("var us = qet.elementUuids(0).sort();\n"
+		js.write("var us = qet.elementUuids(3).sort();\n"
 				 "qet.log('UUIDS ' + us[0] + ' ' + us[1] + ' ' + us[2]);\n"
-				 "qet.setElementLabel(0, us[0], 'DIFF1');\n"
+				 "qet.setElementInfo(3, us[0], 'comment', 'DIFF1');\n"
 				 "qet.log('SAVED1 ' + qet.save(''));\n"
-				 "qet.setElementLabel(0, us[1], 'DIFF2');\n"
+				 "qet.setElementInfo(3, us[1], 'comment', 'DIFF2');\n"
 				 "qet.log('SAVED2 ' + qet.save(''));\n"
-				 "qet.moveElement(0, us[2], 20, 0);\n"
+				 "qet.moveElement(3, us[2], 20, 0);\n"
 				 "qet.log('SAVED3 ' + qet.save(''));\n");
 		js.close();
 		out = run({QStringLiteral("--run"), js.fileName(), path});
