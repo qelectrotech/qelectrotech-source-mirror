@@ -40,7 +40,7 @@ struct DimensionProperties
 	bool showUnit = false;
 	bool isFramed = false;
 	bool useComma = true;
-	qreal textDistance = 1.0;
+	qreal textDistance = 4.0;
 	bool textCenter = true;
 	bool showDualUnit = false;
 	bool suppressZero = false;
@@ -277,7 +277,7 @@ private:
 	bool m_show_unit = false;
 	bool m_framed = false;
 	bool m_use_comma = true;
-	qreal m_text_distance = 1.0;
+	qreal m_text_distance = 4.0;
 	bool m_text_center = true;
 	bool m_show_dual_unit = false;
 	int m_text_rotation = -1;

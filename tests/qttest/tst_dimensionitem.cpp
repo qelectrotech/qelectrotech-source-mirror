@@ -81,6 +81,7 @@ void tst_DimensionItem::testDefaultValues()
 	QCOMPARE(dim.isFramed(), false);
 	QCOMPARE(dim.useComma(), true);
 	QCOMPARE(dim.precision(), 1);
+	QCOMPARE(dim.textDistance(), 4.0);
 }
 
 void tst_DimensionItem::testScaleFactorAndFormatting()
@@ -151,6 +152,7 @@ void tst_DimensionItem::testPropertiesStruct()
 	QCOMPARE(p.isFramed, false);
 	QCOMPARE(p.useComma, true);
 	QCOMPARE(p.precision, 1);
+	QCOMPARE(p.textDistance, 4.0);
 
 	p.prefix	  = QStringLiteral("M");
 	p.customText  = QStringLiteral("12");

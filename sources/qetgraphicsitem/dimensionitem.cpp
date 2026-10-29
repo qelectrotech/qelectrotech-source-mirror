@@ -864,8 +864,8 @@ void DimensionItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 
 		QPointF text_pos = mid_dim;
 		if (!m_text_in_line) {
-			// Text placed alongside the dimension line with distance
-			qreal dist = m_text_distance > 0.0 ? m_text_distance * 2.0 : 4.0;
+			// Text placed alongside the dimension line with distance (2 px = 1.0 mm)
+			qreal dist = m_text_distance * 2.0;
 			text_pos += normal_dir * (m_offset >= 0.0 ? dist : -dist);
 		}
 
@@ -1144,7 +1144,7 @@ void DimensionItem::fromXml(const QDomElement &element)
 	m_show_unit = (element.attribute(QStringLiteral("show_unit"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_framed = (element.attribute(QStringLiteral("framed"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_use_comma = (element.attribute(QStringLiteral("comma"), QStringLiteral("true")) == QStringLiteral("true"));
-	m_text_distance = element.attribute(QStringLiteral("distance"), QStringLiteral("1.0")).toDouble();
+	m_text_distance = element.attribute(QStringLiteral("distance"), QStringLiteral("4.0")).toDouble();
 	m_text_center = (element.attribute(QStringLiteral("center"), QStringLiteral("true")) == QStringLiteral("true"));
 	m_show_dual_unit = (element.attribute(QStringLiteral("dual_unit"), QStringLiteral("false")) == QStringLiteral("true"));
 	if (element.hasAttribute(QStringLiteral("text_rotation"))) {
