@@ -91,7 +91,7 @@
          <item>
           <widget class="QGroupBox" name="group_anzeige">
            <property name="title">
-            <string>Anzeige</string>
+            <string>Anzeige &amp; Text</string>
            </property>
            <layout class="QGridLayout" name="gridAnzeige">
             <property name="horizontalSpacing">
@@ -145,7 +145,7 @@
               <item>
                <widget class="QCheckBox" name="m_auto_cb">
                 <property name="text">
-                 <string>Automatisch</string>
+                 <string>Automatisch berechnen</string>
                 </property>
                 <property name="checked">
                  <bool>true</bool>
@@ -178,11 +178,81 @@
           </widget>
          </item>
          <item>
-          <widget class="QGroupBox" name="group_masszahl">
+          <widget class="QGroupBox" name="group_units">
            <property name="title">
-            <string>Maßzahl</string>
+            <string>Einheiten &amp; Genauigkeit</string>
            </property>
-           <layout class="QGridLayout" name="gridMasszahl">
+           <layout class="QGridLayout" name="gridUnits">
+            <property name="horizontalSpacing">
+             <number>12</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>6</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_unit">
+              <property name="text">
+               <string>Einheit:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QComboBox" name="m_unit_cb">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QCheckBox" name="m_show_unit_cb">
+              <property name="text">
+               <string>Einheit anzeigen</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_precision">
+              <property name="text">
+               <string>Genauigkeit:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QComboBox" name="m_precision_cb">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QCheckBox" name="m_suppress_zero_cb">
+              <property name="text">
+               <string>Null unterdrücken</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" colspan="2">
+             <widget class="QCheckBox" name="m_dual_unit_cb">
+              <property name="text">
+               <string>Zweite Einheit anzeigen (Zoll)</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="group_alignment">
+           <property name="title">
+            <string>Ausrichtung &amp; Position</string>
+           </property>
+           <layout class="QGridLayout" name="gridAlignment">
             <property name="horizontalSpacing">
              <number>12</number>
             </property>
@@ -225,79 +295,14 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_unit">
+            <item row="1" column="0" colspan="2">
+             <widget class="QCheckBox" name="m_text_horiz_cb">
               <property name="text">
-               <string>Einheit:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QComboBox" name="m_unit_cb">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
+               <string>Maßzahl immer horizontal</string>
               </property>
              </widget>
             </item>
             <item row="1" column="2">
-             <widget class="QCheckBox" name="m_show_unit_cb">
-              <property name="text">
-               <string>Einheiten anzeigen</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QCheckBox" name="m_dual_unit_cb">
-              <property name="text">
-               <string>Zwei Einheiten anzeigen</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="label_precision">
-              <property name="text">
-               <string>Genauigkeit:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QComboBox" name="m_precision_cb">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="2">
-             <widget class="QCheckBox" name="m_suppress_zero_cb">
-              <property name="text">
-               <string>Null unterdrücken</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0" colspan="3">
-             <widget class="QCheckBox" name="m_fraction_cb">
-              <property name="text">
-               <string>Maßzahl als Bruch anzeigen</string>
-              </property>
-              <property name="checked">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="0" colspan="3">
-             <widget class="QCheckBox" name="m_text_horiz_cb">
-              <property name="text">
-               <string>Maßzahl horizontal</string>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="0" colspan="3">
              <widget class="QCheckBox" name="m_mid_line_cb">
               <property name="text">
                <string>Maßzahl mittig in Maßlinie</string>

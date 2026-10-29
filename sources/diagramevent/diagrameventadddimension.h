@@ -64,6 +64,8 @@ private:
 	qreal m_fixed_offset = 20.0;
 	bool m_offset_determined = false;
 	QUuid m_active_chain_id;
+	bool m_chain_is_vertical = false;
+	qreal m_chain_ref_coord = 0.0;
 };
 
 #endif // DIAGRAMEVENTADDDIMENSION_H

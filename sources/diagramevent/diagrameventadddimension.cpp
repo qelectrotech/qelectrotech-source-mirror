@@ -160,7 +160,24 @@ void DiagramEventAddDimension::mousePressEvent(QGraphicsSceneMouseEvent *event)
 			if (pos == m_p1) {
 				return;
 			}
-			m_p2 = pos;
+			if (m_mode == DimensionItem::Chain) {
+				qreal dx = pos.x() - m_p1.x();
+				qreal dy = pos.y() - m_p1.y();
+				if (std::abs(dy) > std::abs(dx)) {
+					m_chain_is_vertical = true;
+					m_chain_ref_coord = m_p1.x();
+					m_p2 = QPointF(m_p1.x(), pos.y());
+				} else {
+					m_chain_is_vertical = false;
+					m_chain_ref_coord = m_p1.y();
+					m_p2 = QPointF(pos.x(), m_p1.y());
+				}
+			} else {
+				m_p2 = pos;
+			}
+			if (m_p2 == m_p1) {
+				return;
+			}
 			m_dimension_item->setP2(m_p2);
 			m_state = WaitingForOffset;
 			updateStatusHint();
@@ -196,10 +213,16 @@ void DiagramEventAddDimension::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		}
 
 		case WaitingForChainPoint: {
-			if (pos == m_p1) {
+			QPointF chainPos = pos;
+			if (m_chain_is_vertical) {
+				chainPos = QPointF(m_chain_ref_coord, pos.y());
+			} else {
+				chainPos = QPointF(pos.x(), m_chain_ref_coord);
+			}
+			if (chainPos == m_p1) {
 				return;
 			}
-			m_p2 = pos;
+			m_p2 = chainPos;
 			m_dimension_item->setP2(m_p2);
 			m_dimension_item->setOffset(m_fixed_offset);
 			m_dimension_item->setChainId(m_active_chain_id);
@@ -227,7 +250,17 @@ void DiagramEventAddDimension::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 		case WaitingForP2: {
 			if (m_dimension_item) {
-				m_dimension_item->setP2(pos);
+				QPointF target_pos = pos;
+				if (m_mode == DimensionItem::Chain) {
+					qreal dx = pos.x() - m_p1.x();
+					qreal dy = pos.y() - m_p1.y();
+					if (std::abs(dy) > std::abs(dx)) {
+						target_pos = QPointF(m_p1.x(), pos.y());
+					} else {
+						target_pos = QPointF(pos.x(), m_p1.y());
+					}
+				}
+				m_dimension_item->setP2(target_pos);
 				updateStatusHint();
 			}
 			break;
@@ -254,7 +287,13 @@ void DiagramEventAddDimension::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 		case WaitingForChainPoint: {
 			if (m_dimension_item) {
-				m_dimension_item->setP2(pos);
+				QPointF chainPos = pos;
+				if (m_chain_is_vertical) {
+					chainPos = QPointF(m_chain_ref_coord, pos.y());
+				} else {
+					chainPos = QPointF(pos.x(), m_chain_ref_coord);
+				}
+				m_dimension_item->setP2(chainPos);
 				m_dimension_item->setOffset(m_fixed_offset);
 				updateStatusHint();
 			}

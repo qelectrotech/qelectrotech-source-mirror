@@ -286,20 +286,6 @@ void DimensionItem::setShowDualUnit(bool d)
 	update();
 }
 
-bool DimensionItem::isFractionFormat() const
-{
-	return m_fraction_format;
-}
-
-void DimensionItem::setFractionFormat(bool f)
-{
-	if (m_fraction_format == f) return;
-	prepareGeometryChange();
-	m_fraction_format = f;
-	emit propertiesChanged();
-	update();
-}
-
 bool DimensionItem::isTextHorizontal() const
 {
 	return m_text_horizontal;
@@ -468,7 +454,6 @@ DimensionProperties DimensionItem::properties() const
 	p.textCenter = m_text_center;
 	p.showDualUnit = m_show_dual_unit;
 	p.suppressZero = m_suppress_zero;
-	p.fractionFormat = m_fraction_format;
 	p.isTextHorizontal = m_text_horizontal;
 	p.isTextInLine = m_text_in_line;
 	p.lineWidth = m_line_width;
@@ -498,7 +483,6 @@ void DimensionItem::setProperties(const DimensionProperties &p)
 	m_text_center = p.textCenter;
 	m_show_dual_unit = p.showDualUnit;
 	m_suppress_zero = p.suppressZero;
-	m_fraction_format = p.fractionFormat;
 	m_text_horizontal = p.isTextHorizontal;
 	m_text_in_line = p.isTextInLine;
 	m_line_width = p.lineWidth;
@@ -686,6 +670,15 @@ QList<DimensionItem *> DimensionItem::chainSegments() const
 QList<DimensionItem *> DimensionItem::findChainSegments() const
 {
 	return chainSegments();
+}
+
+bool DimensionItem::isVerticalChain() const
+{
+	QList<DimensionItem *> chain = chainSegments();
+	DimensionItem *firstSeg = chain.isEmpty() ? const_cast<DimensionItem *>(this) : chain.first();
+	if (!firstSeg) return false;
+	QPointF diff = firstSeg->p2() - firstSeg->p1();
+	return std::abs(diff.y()) > std::abs(diff.x());
 }
 
 void DimensionItem::calculateGeometry(QPointF &p1_dim, QPointF &p2_dim,
@@ -923,6 +916,25 @@ QVariant DimensionItem::itemChange(GraphicsItemChange change, const QVariant &va
 	return QetGraphicsItem::itemChange(change, value);
 }
 
+void DimensionItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_mode == Chain && event->button() == Qt::LeftButton) {
+		if (!isSelected()) {
+			if (!(event->modifiers() & (Qt::ControlModifier | Qt::ShiftModifier))) {
+				if (scene()) {
+					scene()->clearSelection();
+				}
+			}
+			for (DimensionItem *sibling : chainSegments()) {
+				if (sibling) {
+					sibling->setSelected(true);
+				}
+			}
+		}
+	}
+	QetGraphicsItem::mousePressEvent(event);
+}
+
 void DimensionItem::rebuildHandles()
 {
 	clearHandles();
@@ -1066,7 +1078,6 @@ QDomElement DimensionItem::toXml(QDomDocument &document) const
 	xml.setAttribute(QStringLiteral("distance"), QString::number(m_text_distance, 'f', 2));
 	xml.setAttribute(QStringLiteral("center"), m_text_center ? QStringLiteral("true") : QStringLiteral("false"));
 	xml.setAttribute(QStringLiteral("dual_unit"), m_show_dual_unit ? QStringLiteral("true") : QStringLiteral("false"));
-	xml.setAttribute(QStringLiteral("fraction"), m_fraction_format ? QStringLiteral("true") : QStringLiteral("false"));
 	xml.setAttribute(QStringLiteral("horizontal"), m_text_horizontal ? QStringLiteral("true") : QStringLiteral("false"));
 	xml.setAttribute(QStringLiteral("mid_line"), m_text_in_line ? QStringLiteral("true") : QStringLiteral("false"));
 	xml.setAttribute(QStringLiteral("suppress_zero"), m_suppress_zero ? QStringLiteral("true") : QStringLiteral("false"));
@@ -1104,7 +1115,6 @@ void DimensionItem::fromXml(const QDomElement &element)
 	m_text_distance = element.attribute(QStringLiteral("distance"), QStringLiteral("1.0")).toDouble();
 	m_text_center = (element.attribute(QStringLiteral("center"), QStringLiteral("true")) == QStringLiteral("true"));
 	m_show_dual_unit = (element.attribute(QStringLiteral("dual_unit"), QStringLiteral("false")) == QStringLiteral("true"));
-	m_fraction_format = (element.attribute(QStringLiteral("fraction"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_text_horizontal = (element.attribute(QStringLiteral("horizontal"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_text_in_line = (element.attribute(QStringLiteral("mid_line"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_suppress_zero = (element.attribute(QStringLiteral("suppress_zero"), QStringLiteral("false")) == QStringLiteral("true"));
@@ -1178,7 +1188,6 @@ ApplyDimensionFormatCommand::ApplyDimensionFormatCommand(const QList<DimensionIt
 		newP.precision = pattern.precision;
 		newP.useComma = pattern.useComma;
 		newP.suppressZero = pattern.suppressZero;
-		newP.fractionFormat = pattern.fractionFormat;
 		newP.textDistance = pattern.textDistance;
 		newP.textCenter = pattern.textCenter;
 		newP.isTextHorizontal = pattern.isTextHorizontal;
@@ -1309,6 +1318,17 @@ void DimensionHandler::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 	if (chain.isEmpty()) chain.append(m_coordinator.data());
 
 	if (m_role == ReferencePoint) {
+		if (m_coordinator->mode() == DimensionItem::Chain || chain.size() > 1) {
+			bool isVert = m_coordinator->isVerticalChain();
+			if (isVert) {
+				qreal refX = chain.first()->mapToScene(chain.first()->p1()).x();
+				scenePos.setX(refX);
+			} else {
+				qreal refY = chain.first()->mapToScene(chain.first()->p1()).y();
+				scenePos.setY(refY);
+			}
+		}
+
 		if (m_index == 0) {
 			DimensionItem *s0 = chain.first();
 			if (s0) {

@@ -44,7 +44,6 @@ struct DimensionProperties
 	bool textCenter = true;
 	bool showDualUnit = false;
 	bool suppressZero = false;
-	bool fractionFormat = false;
 	bool isTextHorizontal = false;
 	bool isTextInLine = false;
 	qreal lineWidth = 1.2;
@@ -70,7 +69,6 @@ struct DimensionProperties
 		       textCenter == o.textCenter &&
 		       showDualUnit == o.showDualUnit &&
 		       suppressZero == o.suppressZero &&
-		       fractionFormat == o.fractionFormat &&
 		       isTextHorizontal == o.isTextHorizontal &&
 		       isTextInLine == o.isTextInLine &&
 		       qFuzzyCompare(lineWidth, o.lineWidth) &&
@@ -188,9 +186,6 @@ public:
 	bool showDualUnit() const;
 	void setShowDualUnit(bool d);
 
-	bool isFractionFormat() const;
-	void setFractionFormat(bool f);
-
 	bool isTextHorizontal() const;
 	void setTextHorizontal(bool h);
 
@@ -235,6 +230,7 @@ public:
 
 	QList<DimensionItem *> chainSegments() const;
 	QList<DimensionItem *> findChainSegments() const;
+	bool isVerticalChain() const;
 
 	void rebuildHandles();
 	void updateHandlePositions();
@@ -259,6 +255,7 @@ signals:
 
 protected:
 	QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+	void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 
 private:
 	QPointF m_p1;
@@ -276,7 +273,6 @@ private:
 	qreal m_text_distance = 1.0;
 	bool m_text_center = true;
 	bool m_show_dual_unit = false;
-	bool m_fraction_format = false;
 	bool m_text_horizontal = false;
 	bool m_text_in_line = false;
 	bool m_suppress_zero = false;

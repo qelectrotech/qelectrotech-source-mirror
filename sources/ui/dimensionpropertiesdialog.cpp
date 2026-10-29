@@ -203,7 +203,6 @@ void DimensionPropertiesDialog::loadItemProperties(DimensionItem *item)
 	ui->m_dual_unit_cb->setChecked(p.showDualUnit);
 	ui->m_precision_cb->setCurrentIndex(p.precision >= 0 && p.precision <= 3 ? p.precision : 1);
 	ui->m_suppress_zero_cb->setChecked(p.suppressZero);
-	ui->m_fraction_cb->setChecked(p.fractionFormat);
 	ui->m_text_horiz_cb->setChecked(p.isTextHorizontal);
 	ui->m_mid_line_cb->setChecked(p.isTextInLine);
 
@@ -239,7 +238,6 @@ void DimensionPropertiesDialog::saveItemProperties(DimensionItem *item)
 	p.showDualUnit = ui->m_dual_unit_cb->isChecked();
 	p.precision = ui->m_precision_cb->currentIndex();
 	p.suppressZero = ui->m_suppress_zero_cb->isChecked();
-	p.fractionFormat = ui->m_fraction_cb->isChecked();
 	p.isTextHorizontal = ui->m_text_horiz_cb->isChecked();
 	p.isTextInLine = ui->m_mid_line_cb->isChecked();
 

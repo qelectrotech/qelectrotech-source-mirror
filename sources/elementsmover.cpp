@@ -153,7 +153,8 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 										   | dc::Images
 										   | dc::Shapes
 										   | dc::ElementTextFields
-										   | dc::TextGroup))
+										   | dc::TextGroup
+										   | dc::Dimensions))
 	{
 		m_start_positions.insert(qgi, qgi->pos());
 	}
@@ -202,7 +203,8 @@ void ElementsMover::continueMovement(const QPointF &movement)
 										   | dc::Images
 										   | dc::Shapes
 										   | dc::ElementTextFields
-										   | dc::TextGroup))
+										   | dc::TextGroup
+										   | dc::Dimensions))
 	{
 		if (qgi == m_movement_driver)
 			continue;
