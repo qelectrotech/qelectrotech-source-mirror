@@ -287,6 +287,14 @@ int DiagramContent::removeNonMovableItems()
 		}
 	}
 
+	const QSet<DimensionItem *> dimensions_set = m_dimensions;
+	for(DimensionItem *dim : dimensions_set) {
+		if (!dim->isMovable()) {
+			m_dimensions.remove(dim);
+			++count_;
+		}
+	}
+
 		//A wire whose two ends no longer both move is redrawn, not moved,
 		//or its text would be carried off with the end that still moves
 	const QList<Conductor *> conductors_to_move = m_conductors_to_move;
@@ -353,6 +361,10 @@ DiagramContent &DiagramContent::operator+=(const DiagramContent &other)
 	for(QetShapeItem *qsi : other.m_shapes)
 		if(!m_shapes.contains(qsi))
 			m_shapes << qsi;
+
+	for(DimensionItem *di : other.m_dimensions)
+		if(!m_dimensions.contains(di))
+			m_dimensions << di;
 	
 	for(Conductor *c : other.m_conductors_to_update)
 		if(!m_conductors_to_update.contains(c))
@@ -471,6 +483,7 @@ QList<QGraphicsItem *> DiagramContent::items(int filter) const
 	if (filter & TextGroup)			for(auto qgi : m_texts_groups)  items_list << qgi;
 	if (filter & Tables)            for(auto qgi : m_tables)        items_list << qgi;
 	if (filter & TerminalStrip)     for(const auto qgi : std::as_const(m_terminal_strip)) items_list << qgi;
+	if (filter & Dimensions)        for(const auto qgi : std::as_const(m_dimensions))     items_list << qgi;
 
 	if (filter & SelectedOnly) {
 		for(const auto &qgi : std::as_const(items_list)) {
@@ -500,6 +513,7 @@ int DiagramContent::count(int filter) const
 		if (filter & TextGroup)          for(auto etig      : m_texts_groups)         { if (etig      -> isSelected()) ++ count; }
 		if (filter & Tables)             for(auto table     : m_tables)               { if (table     -> isSelected()) ++ count;  }
 		if (filter & TerminalStrip)      for(const auto &strip : std::as_const(m_terminal_strip)) {if (strip->isSelected()) ++ count;}
+		if (filter & Dimensions)         for(const auto &dim   : std::as_const(m_dimensions))     {if (dim->isSelected())   ++ count;}
 	}
 	else {
 		if (filter & Elements)           count += m_elements.count();
@@ -513,6 +527,7 @@ int DiagramContent::count(int filter) const
 		if (filter & TextGroup)			 count += m_texts_groups.count();
 		if (filter & Tables)             count += m_tables.count();
 		if (filter & TerminalStrip)      count += m_terminal_strip.count();
+		if (filter & Dimensions)         count += m_dimensions.count();
 	}
 	return(count);
 }

@@ -18,7 +18,13 @@
 #include <QtTest>
 #include <QDomDocument>
 #include <QDomElement>
+#include "diagram.h"
+#include "diagramcontent.h"
+#include "qetproject.h"
 #include "qetgraphicsitem/dimensionitem.h"
+#include "undocommand/addgraphicsobjectcommand.h"
+#include "undocommand/deleteqgraphicsitemcommand.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 class tst_DimensionItem : public QObject
 {
@@ -31,6 +37,9 @@ private slots:
 	void testOffsetAndGeometry();
 	void testPropertiesStruct();
 	void testXmlSerializationRoundtrip();
+	void testUndoRedoAdd();
+	void testUndoRedoDelete();
+	void testUndoRedoProperties();
 };
 
 void tst_DimensionItem::testDefaultValues()
@@ -69,12 +78,12 @@ void tst_DimensionItem::testScaleFactorAndFormatting()
 	QCOMPARE(dim.displayText(), QStringLiteral("1690.0"));
 
 	// Formatting with prefix, suffix and unit
-	dim.setPrefix(QStringLiteral("⌀"));
+	dim.setPrefix(QStringLiteral("DM"));
 	dim.setSuffix(QStringLiteral(" max"));
 	dim.setUnit(QStringLiteral("mm"));
 	dim.setShowUnit(true);
 	dim.setUseComma(true);
-	QCOMPARE(dim.displayText(), QStringLiteral("⌀1690,0 mm max"));
+	QCOMPARE(dim.displayText(), QStringLiteral("DM1690,0 mm max"));
 }
 
 void tst_DimensionItem::testCustomText()
@@ -171,6 +180,102 @@ void tst_DimensionItem::testXmlSerializationRoundtrip()
 	QCOMPARE(restored.terminationStyle(), DimensionItem::Slashes);
 	QCOMPARE(restored.dimensionValueMM(), 100.0);
 	QCOMPARE(restored.displayText(), QStringLiteral("L=TEST_DIM"));
+}
+
+void tst_DimensionItem::testUndoRedoAdd()
+{
+	QETProject project;
+	Diagram *diagram = project.addNewDiagram();
+	QVERIFY(diagram != nullptr);
+	auto *dim = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0);
+
+	// Initial: not yet committed via undo stack
+	QCOMPARE(diagram->items().contains(dim), false);
+
+	// Add via command
+	diagram->undoStack().push(new AddGraphicsObjectCommand(dim, diagram));
+	QCOMPARE(diagram->items().contains(dim), true);
+	QCOMPARE(dim->scene(), diagram);
+
+	// Undo: should remove item from diagram
+	diagram->undoStack().undo();
+	QCOMPARE(diagram->items().contains(dim), false);
+	QCOMPARE(dim->scene(), nullptr);
+
+	// Redo: should put item back into diagram
+	diagram->undoStack().redo();
+	QCOMPARE(diagram->items().contains(dim), true);
+	QCOMPARE(dim->scene(), diagram);
+}
+
+void tst_DimensionItem::testUndoRedoDelete()
+{
+	QETProject project;
+	Diagram *diagram = project.addNewDiagram();
+	QVERIFY(diagram != nullptr);
+	auto *dim = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0);
+	diagram->undoStack().push(new AddGraphicsObjectCommand(dim, diagram));
+	QCOMPARE(diagram->items().contains(dim), true);
+
+	// Select and build DiagramContent
+	dim->setSelected(true);
+	DiagramContent content(diagram, true);
+	QCOMPARE(content.m_dimensions.count(), 1);
+
+	// Delete item via command
+	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
+	QCOMPARE(diagram->items().contains(dim), false);
+
+	// Undo deletion: restored!
+	diagram->undoStack().undo();
+	QCOMPARE(diagram->items().contains(dim), true);
+	QCOMPARE(dim->scene(), diagram);
+
+	// Redo deletion: removed again!
+	diagram->undoStack().redo();
+	QCOMPARE(diagram->items().contains(dim), false);
+	QCOMPARE(dim->scene(), nullptr);
+}
+
+void tst_DimensionItem::testUndoRedoProperties()
+{
+	QETProject project;
+	Diagram *diagram = project.addNewDiagram();
+	QVERIFY(diagram != nullptr);
+	auto *dim = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0);
+	diagram->undoStack().push(new AddGraphicsObjectCommand(dim, diagram));
+
+	// Test QPropertyUndoCommand for auto value
+	QCOMPARE(dim->isAutoValue(), true);
+	diagram->undoStack().push(new QPropertyUndoCommand(dim, "isAutoValue", true, false));
+	QCOMPARE(dim->isAutoValue(), false);
+
+	diagram->undoStack().undo();
+	QCOMPARE(dim->isAutoValue(), true);
+
+	diagram->undoStack().redo();
+	QCOMPARE(dim->isAutoValue(), false);
+
+	// Test QPropertyUndoCommand for customText
+	diagram->undoStack().push(new QPropertyUndoCommand(dim, "customText", QString(), QStringLiteral("L=500")));
+	QCOMPARE(dim->customText(), QStringLiteral("L=500"));
+
+	diagram->undoStack().undo();
+	QCOMPARE(dim->customText(), QString());
+
+	diagram->undoStack().redo();
+	QCOMPARE(dim->customText(), QStringLiteral("L=500"));
+
+	// Test offset undo/redo
+	QCOMPARE(dim->offset(), 20.0);
+	diagram->undoStack().push(new QPropertyUndoCommand(dim, "offset", 20.0, 45.0));
+	QCOMPARE(dim->offset(), 45.0);
+
+	diagram->undoStack().undo();
+	QCOMPARE(dim->offset(), 20.0);
+
+	diagram->undoStack().redo();
+	QCOMPARE(dim->offset(), 45.0);
 }
 
 QTEST_MAIN(tst_DimensionItem)

@@ -68,8 +68,9 @@ class DiagramContent
 			TextGroup = 256,
 			Tables = 512,
 			TerminalStrip = 1024,
-			All = 2047,
-			SelectedOnly = 2048
+			Dimensions = 2048,
+			All = 4095,
+			SelectedOnly = 4096
 		};
 		
 		QList<Element *> m_elements;
