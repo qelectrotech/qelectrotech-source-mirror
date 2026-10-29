@@ -86,16 +86,27 @@ DimensionPropertiesDialog::DimensionPropertiesDialog(DimensionItem *item, QWidge
 		m_current_props[it] = it->properties();
 	}
 
+	if (m_segments.size() <= 1) {
+		ui->m_select_all_cb->setVisible(false);
+	}
+
+	connect(ui->m_select_all_cb, &QCheckBox::clicked,
+	        this, &DimensionPropertiesDialog::onSelectAllToggled);
+	connect(ui->m_segments_list, &QListWidget::itemSelectionChanged,
+	        this, &DimensionPropertiesDialog::onSelectionChanged);
 	connect(ui->m_segments_list, &QListWidget::currentRowChanged,
-	        this, &DimensionPropertiesDialog::onSegmentSelected);
-	connect(ui->m_auto_cb, &QCheckBox::toggled,
-	        this, &DimensionPropertiesDialog::onAutoToggled);
-	connect(ui->m_precision_cb, QOverload<int>::of(&QComboBox::currentIndexChanged),
-	        this, &DimensionPropertiesDialog::onPrecisionChanged);
-	connect(ui->m_comma_cb, &QCheckBox::toggled,
-	        this, &DimensionPropertiesDialog::onCommaToggled);
-	connect(ui->m_suppress_zero_cb, &QCheckBox::toggled,
-	        this, &DimensionPropertiesDialog::updateValueDisplay);
+	        this, [this](int row) {
+		if (m_updating_selection) return;
+		if (row >= 0 && row < m_segments.size()) {
+			DimensionItem *newActive = m_segments.at(row);
+			if (newActive != m_active_item) {
+				m_active_item = newActive;
+				loadItemProperties(m_active_item);
+			}
+		}
+	});
+
+	setupPropertyConnections();
 
 	connect(ui->m_buttonBox, &QDialogButtonBox::accepted, this, &DimensionPropertiesDialog::accept);
 	connect(ui->m_buttonBox, &QDialogButtonBox::rejected, this, &DimensionPropertiesDialog::reject);
@@ -106,7 +117,11 @@ DimensionPropertiesDialog::DimensionPropertiesDialog(DimensionItem *item, QWidge
 	}
 
 	int initialIdx = m_segments.indexOf(item);
-	ui->m_segments_list->setCurrentRow(initialIdx >= 0 ? initialIdx : 0);
+	int startRow = initialIdx >= 0 ? initialIdx : 0;
+	if (startRow >= 0 && startRow < ui->m_segments_list->count()) {
+		ui->m_segments_list->setCurrentRow(startRow);
+		ui->m_segments_list->item(startRow)->setSelected(true);
+	}
 }
 
 DimensionPropertiesDialog::~DimensionPropertiesDialog()
@@ -114,41 +129,273 @@ DimensionPropertiesDialog::~DimensionPropertiesDialog()
 	delete ui;
 }
 
-void DimensionPropertiesDialog::onSegmentSelected(int row)
+QList<DimensionItem *> DimensionPropertiesDialog::selectedSegments() const
 {
-	if (row < 0 || row >= m_segments.size()) return;
+	QList<DimensionItem *> list;
+	for (QListWidgetItem *item : ui->m_segments_list->selectedItems()) {
+		int row = ui->m_segments_list->row(item);
+		if (row >= 0 && row < m_segments.size()) {
+			list.append(m_segments.at(row));
+		}
+	}
+	if (list.isEmpty() && m_active_item) {
+		list.append(m_active_item);
+	}
+	return list;
+}
 
-	if (m_active_item) {
-		saveItemProperties(m_active_item);
+void DimensionPropertiesDialog::onSelectAllToggled(bool checked)
+{
+	if (m_updating_selection) return;
+	m_updating_selection = true;
+
+	if (checked) {
+		ui->m_segments_list->selectAll();
+	} else {
+		ui->m_segments_list->clearSelection();
+		if (m_active_item) {
+			int idx = m_segments.indexOf(m_active_item);
+			if (idx >= 0 && idx < ui->m_segments_list->count()) {
+				ui->m_segments_list->item(idx)->setSelected(true);
+			}
+		}
 	}
 
-	m_active_item = m_segments.at(row);
-	loadItemProperties(m_active_item);
+	m_updating_selection = false;
+	onSelectionChanged();
+}
 
-	if (m_active_item && m_active_item->diagram()) {
-		m_active_item->diagram()->clearSelection();
-		m_active_item->setSelected(true);
-		m_active_item->update();
+void DimensionPropertiesDialog::onSelectionChanged()
+{
+	if (m_updating_selection) return;
+	m_updating_selection = true;
+
+	auto selected = ui->m_segments_list->selectedItems();
+	if (selected.size() == m_segments.size() && !m_segments.isEmpty()) {
+		ui->m_select_all_cb->setCheckState(Qt::Checked);
+	} else if (selected.isEmpty()) {
+		ui->m_select_all_cb->setCheckState(Qt::Unchecked);
+	} else {
+		ui->m_select_all_cb->setCheckState(Qt::PartiallyChecked);
 	}
+
+	int currentRow = ui->m_segments_list->currentRow();
+	if (currentRow >= 0 && currentRow < m_segments.size()) {
+		DimensionItem *newActive = m_segments.at(currentRow);
+		if (newActive != m_active_item) {
+			m_active_item = newActive;
+			loadItemProperties(m_active_item);
+		}
+	} else if (!selected.isEmpty()) {
+		int firstRow = ui->m_segments_list->row(selected.first());
+		if (firstRow >= 0 && firstRow < m_segments.size()) {
+			m_active_item = m_segments.at(firstRow);
+			loadItemProperties(m_active_item);
+		}
+	}
+
+	// Highlight all selected segments in diagram
+	if (!m_segments.isEmpty() && m_segments.first() && m_segments.first()->diagram()) {
+		Diagram *diag = m_segments.first()->diagram();
+		diag->clearSelection();
+		for (DimensionItem *seg : selectedSegments()) {
+			if (seg) seg->setSelected(true);
+		}
+		diag->update();
+	}
+
+	m_updating_selection = false;
 }
 
-void DimensionPropertiesDialog::onAutoToggled(bool checked)
+void DimensionPropertiesDialog::setupPropertyConnections()
 {
-	Q_UNUSED(checked)
-	if (m_updating) return;
-	updateValueDisplay();
-}
+	// Prefix
+	connect(ui->m_prefix_cb, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].prefix = text;
+		}
+	});
 
-void DimensionPropertiesDialog::onPrecisionChanged()
-{
-	if (m_updating) return;
-	updateValueDisplay();
-}
+	// Auto value
+	connect(ui->m_auto_cb, &QCheckBox::toggled, this, [this](bool checked) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].isAutoValue = checked;
+		}
+		updateValueDisplay();
+	});
 
-void DimensionPropertiesDialog::onCommaToggled()
-{
-	if (m_updating) return;
-	updateValueDisplay();
+	// Custom text
+	connect(ui->m_value_le, &QLineEdit::textEdited, this, [this](const QString &text) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].customText = text;
+		}
+	});
+
+	// Suffix
+	connect(ui->m_suffix_cb, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].suffix = text;
+		}
+	});
+
+	// Text distance
+	connect(ui->m_text_dist_sb, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [this](double val) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].textDistance = val;
+		}
+	});
+
+	// Text center
+	connect(ui->m_center_cb, &QCheckBox::toggled, this, [this](bool checked) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].textCenter = checked;
+		}
+	});
+
+	// Unit
+	connect(ui->m_unit_cb, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].unit = text;
+		}
+	});
+
+	// Show unit
+	connect(ui->m_show_unit_cb, &QCheckBox::toggled, this, [this](bool checked) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].showUnit = checked;
+		}
+	});
+
+	// Dual unit
+	connect(ui->m_dual_unit_cb, &QCheckBox::toggled, this, [this](bool checked) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].showDualUnit = checked;
+		}
+	});
+
+	// Precision
+	connect(ui->m_precision_cb, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int idx) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].precision = idx;
+		}
+		updateValueDisplay();
+	});
+
+	// Suppress zero
+	connect(ui->m_suppress_zero_cb, &QCheckBox::toggled, this, [this](bool checked) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].suppressZero = checked;
+		}
+		updateValueDisplay();
+	});
+
+	// Text horizontal
+	connect(ui->m_text_horiz_cb, &QCheckBox::toggled, this, [this](bool checked) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].isTextHorizontal = checked;
+		}
+	});
+
+	// Text in line (mid line)
+	connect(ui->m_mid_line_cb, &QCheckBox::toggled, this, [this](bool checked) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].isTextInLine = checked;
+		}
+	});
+
+	// Line width
+	connect(ui->m_line_width_sb, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [this](double val) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].lineWidth = val;
+		}
+	});
+
+	// Extension overshoot
+	connect(ui->m_overshoot_sb, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [this](double val) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].extensionOvershoot = val;
+		}
+	});
+
+	// Extension gap
+	connect(ui->m_gap_sb, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [this](double val) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].extensionGap = val;
+		}
+	});
+
+	// Offset
+	connect(ui->m_offset_sb, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [this](double val) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].offset = val;
+		}
+	});
+
+	// Termination style
+	connect(ui->m_terminations_cb, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int idx) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].terminationStyle = idx;
+		}
+	});
+
+	// Arrow size
+	connect(ui->m_arrow_size_sb, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [this](double val) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].arrowSize = val;
+		}
+	});
+
+	// Framed
+	connect(ui->m_framed_cb, &QCheckBox::toggled, this, [this](bool checked) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].isFramed = checked;
+		}
+	});
+
+	// Comma
+	connect(ui->m_comma_cb, &QCheckBox::toggled, this, [this](bool checked) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].useComma = checked;
+		}
+		updateValueDisplay();
+	});
+
+	// Mask background
+	connect(ui->m_mask_cb, &QCheckBox::toggled, this, [this](bool checked) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].maskBackground = checked;
+		}
+	});
+
+	// Font size
+	connect(ui->m_font_size_sb, QOverload<int>::of(&QSpinBox::valueChanged), this, [this](int val) {
+		if (m_updating) return;
+		for (DimensionItem *seg : selectedSegments()) {
+			m_current_props[seg].fontSize = val;
+		}
+	});
 }
 
 void DimensionPropertiesDialog::onApplyClicked()
@@ -222,46 +469,8 @@ void DimensionPropertiesDialog::loadItemProperties(DimensionItem *item)
 	updateValueDisplay();
 }
 
-void DimensionPropertiesDialog::saveItemProperties(DimensionItem *item)
-{
-	if (!item) return;
-
-	DimensionProperties p = m_current_props.value(item);
-	p.prefix = ui->m_prefix_cb->currentText();
-	p.isAutoValue = ui->m_auto_cb->isChecked();
-	p.customText = ui->m_value_le->text();
-	p.suffix = ui->m_suffix_cb->currentText();
-	p.textDistance = ui->m_text_dist_sb->value();
-	p.textCenter = ui->m_center_cb->isChecked();
-	p.unit = ui->m_unit_cb->currentText();
-	p.showUnit = ui->m_show_unit_cb->isChecked();
-	p.showDualUnit = ui->m_dual_unit_cb->isChecked();
-	p.precision = ui->m_precision_cb->currentIndex();
-	p.suppressZero = ui->m_suppress_zero_cb->isChecked();
-	p.isTextHorizontal = ui->m_text_horiz_cb->isChecked();
-	p.isTextInLine = ui->m_mid_line_cb->isChecked();
-
-	p.lineWidth = ui->m_line_width_sb->value();
-	p.extensionOvershoot = ui->m_overshoot_sb->value();
-	p.extensionGap = ui->m_gap_sb->value();
-	p.offset = ui->m_offset_sb->value();
-	p.terminationStyle = ui->m_terminations_cb->currentIndex();
-	p.arrowSize = ui->m_arrow_size_sb->value();
-
-	p.isFramed = ui->m_framed_cb->isChecked();
-	p.useComma = ui->m_comma_cb->isChecked();
-	p.maskBackground = ui->m_mask_cb->isChecked();
-	p.fontSize = ui->m_font_size_sb->value();
-
-	m_current_props[item] = p;
-}
-
 void DimensionPropertiesDialog::apply()
 {
-	if (m_active_item) {
-		saveItemProperties(m_active_item);
-	}
-
 	for (DimensionItem *it : m_segments) {
 		if (it && m_current_props.contains(it)) {
 			it->setProperties(m_current_props[it]);
@@ -276,10 +485,6 @@ void DimensionPropertiesDialog::apply()
 
 void DimensionPropertiesDialog::accept()
 {
-	if (m_active_item) {
-		saveItemProperties(m_active_item);
-	}
-
 	apply();
 
 	Diagram *diagram = m_primary_item ? m_primary_item->diagram() : nullptr;
@@ -320,4 +525,3 @@ void DimensionPropertiesDialog::reject()
 	}
 	QDialog::reject();
 }
-

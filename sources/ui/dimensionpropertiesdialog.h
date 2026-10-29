@@ -37,22 +37,21 @@ public:
 	~DimensionPropertiesDialog() override;
 
 	void apply();
+	QList<DimensionItem *> selectedSegments() const;
 
 public slots:
 	void accept() override;
 	void reject() override;
 
 private slots:
-	void onSegmentSelected(int row);
-	void onAutoToggled(bool checked);
-	void onPrecisionChanged();
-	void onCommaToggled();
+	void onSelectionChanged();
+	void onSelectAllToggled(bool checked);
+	void updateValueDisplay();
 	void onApplyClicked();
 
 private:
+	void setupPropertyConnections();
 	void loadItemProperties(DimensionItem *item);
-	void saveItemProperties(DimensionItem *item);
-	void updateValueDisplay();
 
 	Ui::DimensionPropertiesDialog *ui;
 	QPointer<DimensionItem> m_primary_item;
@@ -61,8 +60,8 @@ private:
 	QMap<DimensionItem *, DimensionProperties> m_original_props;
 	QMap<DimensionItem *, DimensionProperties> m_current_props;
 	bool m_updating = false;
+	bool m_updating_selection = false;
 	bool m_applied = false;
 };
 
 #endif // DIMENSIONPROPERTIESDIALOG_H
-

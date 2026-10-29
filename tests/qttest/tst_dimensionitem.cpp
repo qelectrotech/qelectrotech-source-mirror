@@ -55,6 +55,7 @@ class tst_DimensionItem : public QObject
 	void testIntermediatePointMoveAndUndo();
 	void testChainOffsetMoveAndUndo();
 	void testChainAxisConstraintAndMoveAll();
+	void testDialogMultiSegmentPropertyEdit();
 };
 
 void tst_DimensionItem::testDefaultValues()
@@ -675,6 +676,98 @@ void tst_DimensionItem::testChainAxisConstraintAndMoveAll()
 	diagram->undoStack().redo();
 	QCOMPARE(v0->pos(), delta);
 	QCOMPARE(v1->pos(), delta);
+}
+
+void tst_DimensionItem::testDialogMultiSegmentPropertyEdit()
+{
+	QETProject project;
+	Diagram *diagram = project.addNewDiagram();
+	QVERIFY(diagram != nullptr);
+
+	QUuid chainId = QUuid::createUuid();
+
+	auto *s0 = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0, DimensionItem::Chain);
+	s0->setChainId(chainId);
+	s0->setPrefix(QStringLiteral("L="));
+	s0->setLineWidth(1.0);
+	s0->setPrecision(1);
+	s0->setUnit(QStringLiteral("mm"));
+
+	auto *s1 = new DimensionItem(QPointF(100, 0), QPointF(250, 0), 20.0, DimensionItem::Chain);
+	s1->setChainId(chainId);
+	s1->setPrefix(QStringLiteral("B="));
+	s1->setLineWidth(1.0);
+	s1->setPrecision(2);
+	s1->setUnit(QStringLiteral("mm"));
+
+	auto *s2 = new DimensionItem(QPointF(250, 0), QPointF(400, 0), 20.0, DimensionItem::Chain);
+	s2->setChainId(chainId);
+	s2->setPrefix(QStringLiteral("H="));
+	s2->setLineWidth(1.0);
+	s2->setPrecision(3);
+	s2->setUnit(QStringLiteral("mm"));
+
+	diagram->addItem(s0);
+	diagram->addItem(s1);
+	diagram->addItem(s2);
+
+	DimensionPropertiesDialog dialog(s0);
+	QCOMPARE(dialog.selectedSegments().size(), 1);
+
+	// Select all segments via selectAll checkbox
+	auto *selectAllCb = dialog.findChild<QCheckBox *>("m_select_all_cb");
+	QVERIFY(selectAllCb != nullptr);
+	selectAllCb->click();
+
+	QCOMPARE(dialog.selectedSegments().size(), 3);
+
+	// Change only lineWidth and unit
+	auto *lineWidthSb = dialog.findChild<QDoubleSpinBox *>("m_line_width_sb");
+	QVERIFY(lineWidthSb != nullptr);
+	lineWidthSb->setValue(2.5);
+
+	auto *unitCb = dialog.findChild<QComboBox *>("m_unit_cb");
+	QVERIFY(unitCb != nullptr);
+	unitCb->setCurrentText(QStringLiteral("cm"));
+
+	// Accept dialog
+	dialog.accept();
+
+	// Verify changed fields are updated on all segments
+	QCOMPARE(s0->lineWidth(), 2.5);
+	QCOMPARE(s1->lineWidth(), 2.5);
+	QCOMPARE(s2->lineWidth(), 2.5);
+
+	QCOMPARE(s0->unit(), QStringLiteral("cm"));
+	QCOMPARE(s1->unit(), QStringLiteral("cm"));
+	QCOMPARE(s2->unit(), QStringLiteral("cm"));
+
+	// Verify untouched fields remain at their individual states
+	QCOMPARE(s0->prefix(), QStringLiteral("L="));
+	QCOMPARE(s1->prefix(), QStringLiteral("B="));
+	QCOMPARE(s2->prefix(), QStringLiteral("H="));
+
+	QCOMPARE(s0->precision(), 1);
+	QCOMPARE(s1->precision(), 2);
+	QCOMPARE(s2->precision(), 3);
+
+	// Test Undo
+	diagram->undoStack().undo();
+	QCOMPARE(s0->lineWidth(), 1.0);
+	QCOMPARE(s1->lineWidth(), 1.0);
+	QCOMPARE(s2->lineWidth(), 1.0);
+	QCOMPARE(s0->unit(), QStringLiteral("mm"));
+	QCOMPARE(s1->unit(), QStringLiteral("mm"));
+	QCOMPARE(s2->unit(), QStringLiteral("mm"));
+
+	// Test Redo
+	diagram->undoStack().redo();
+	QCOMPARE(s0->lineWidth(), 2.5);
+	QCOMPARE(s1->lineWidth(), 2.5);
+	QCOMPARE(s2->lineWidth(), 2.5);
+	QCOMPARE(s0->unit(), QStringLiteral("cm"));
+	QCOMPARE(s1->unit(), QStringLiteral("cm"));
+	QCOMPARE(s2->unit(), QStringLiteral("cm"));
 }
 
 QTEST_MAIN(tst_DimensionItem)
