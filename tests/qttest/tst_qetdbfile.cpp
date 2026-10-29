@@ -297,6 +297,7 @@ private slots:
 				 qPrintable(out));
 		for (int i : {1, 2})
 			QVERIFY2(lines.at(i).contains(QStringLiteral(" save: ")) && lines.at(i).contains(QStringLiteral("element_info"))
+					 && lines.at(i).contains(QRegularExpression(QStringLiteral(": \\d+ symbols?[;,]")))
 					 && !lines.at(i).contains(QStringLiteral("not recorded")), qPrintable(out));
 		const QString back = m_dir.filePath(QStringLiteral("history-back.qetdb"));
 		const QString log = resave(path, back);

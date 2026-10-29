@@ -30,6 +30,7 @@
 #include <QElapsedTimer>
 #include <QFile>
 #include <QFileInfo>
+#include <QSet>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
@@ -451,6 +452,22 @@ QString digestOf(Sqlite &file, const QString &schema)
 	return rows.isEmpty() ? QString() : rows.first().value(0).toString();
 }
 
+	//What a row of @p table is part of, for a revision's summary: a
+	//symbol, a wire, a folio or a drawn item, by the uuid its key starts
+	//with; empty for the rest (a terminal's key starts with its own)
+QString objectKind(const QString &table)
+{
+	if (table == QLatin1String("link") || (table.startsWith(QLatin1String("element"))))
+		return QStringLiteral("symbol");
+	if (table.startsWith(QLatin1String("conductor")))
+		return QStringLiteral("wire");
+	if (table.startsWith(QLatin1String("diagram")) || table.startsWith(QLatin1String("folio_")))
+		return QStringLiteral("folio");
+	if (table == QLatin1String("drawing_item"))
+		return QStringLiteral("drawn item");
+	return {};
+}
+
 	//The revision of this save, if the project keeps a history (the file
 	//it replaces, @p previous, has one): what changed from @p previous to
 	//@p saving as SQLite's session extension finds it, table by table,
@@ -839,6 +856,9 @@ QStringList QetDbFile::history(const QString &path, QString *error)
 			} else {
 				const QByteArray changeset = qUncompress(row.value(5).toByteArray());
 				QMap<QString, int> counts;
+					//The symbols, wires, folios and drawn items changed:
+					//each by the uuid its rows start their key with
+				QMap<QString, QSet<QString>> objects;
 				int rows = 0;
 				sqlite3_changeset_iter *iter = nullptr;
 				if (sqlite3changeset_start(&iter, int(changeset.size()), const_cast<char *>(changeset.constData())) == SQLITE_OK) {
@@ -846,15 +866,33 @@ QStringList QetDbFile::history(const QString &path, QString *error)
 						const char *table = nullptr;
 						int columns = 0, op = 0, indirect = 0;
 						sqlite3changeset_op(iter, &table, &columns, &op, &indirect);
-						++counts[QString::fromUtf8(table)];
+						const QString name = QString::fromUtf8(table);
+						++counts[name];
 						++rows;
+						const QString kind = objectKind(name);
+						unsigned char *key = nullptr;
+						int key_columns = 0;
+						if (kind.isEmpty() || sqlite3changeset_pk(iter, &key, &key_columns) != SQLITE_OK) continue;
+						for (int i = 0 ; i < key_columns ; ++i) {
+							if (!key[i]) continue;
+							sqlite3_value *value = nullptr;
+							if ((op == SQLITE_INSERT ? sqlite3changeset_new(iter, i, &value)
+													 : sqlite3changeset_old(iter, i, &value)) == SQLITE_OK && value)
+								objects[kind] << QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_value_text(value)));
+							break;
+						}
 					}
 					sqlite3changeset_finalize(iter);
 				}
-				QStringList tables;
+				QStringList changed, tables;
+				for (const QString &kind : {QStringLiteral("symbol"), QStringLiteral("wire"),
+											QStringLiteral("folio"), QStringLiteral("drawn item")})
+					if (const int n = int(objects.value(kind).size()))
+						changed << QStringLiteral("%1 %2%3").arg(n).arg(kind, n == 1 ? QString() : QStringLiteral("s"));
 				for (auto it = counts.constBegin() ; it != counts.constEnd() ; ++it)
 					tables << QStringLiteral("%1 %2").arg(it.key()).arg(it.value());
-				line += QStringLiteral(": %1 rows changed").arg(rows)
+				line += QStringLiteral(": %1%2 rows changed").arg(changed.isEmpty() ? QString()
+								: changed.join(QStringLiteral(", ")) + QStringLiteral("; ")).arg(rows)
 						+ (tables.isEmpty() ? QString() : QStringLiteral(" (%1)").arg(tables.join(QStringLiteral(", "))));
 			}
 		}
