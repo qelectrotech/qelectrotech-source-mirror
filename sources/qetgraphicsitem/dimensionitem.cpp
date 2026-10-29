@@ -21,9 +21,13 @@
 
 #include <cmath>
 #include <QApplication>
+#include <QCursor>
 #include <QDomDocument>
 #include <QDomElement>
 #include <QFontMetricsF>
+#include <QGraphicsScene>
+#include <QGraphicsSceneHoverEvent>
+#include <QGraphicsSceneMouseEvent>
 #include <QPainter>
 #include <QPainterPathStroker>
 #include <QStyleOptionGraphicsItem>
@@ -59,6 +63,7 @@ DimensionItem::DimensionItem(const QPointF &p1, const QPointF &p2, qreal offset,
 
 DimensionItem::~DimensionItem()
 {
+	clearHandles();
 }
 
 void DimensionItem::editProperty()
@@ -80,6 +85,7 @@ void DimensionItem::setP1(const QPointF &p1)
 	m_p1 = p1;
 	emit geometryChanged();
 	update();
+	updateHandlePositions();
 }
 
 QPointF DimensionItem::p2() const
@@ -94,6 +100,7 @@ void DimensionItem::setP2(const QPointF &p2)
 	m_p2 = p2;
 	emit geometryChanged();
 	update();
+	updateHandlePositions();
 }
 
 qreal DimensionItem::offset() const
@@ -108,6 +115,7 @@ void DimensionItem::setOffset(qreal offset)
 	m_offset = offset;
 	emit geometryChanged();
 	update();
+	updateHandlePositions();
 }
 
 bool DimensionItem::isAutoValue() const
@@ -545,70 +553,139 @@ QString DimensionItem::displayText() const
 	return result;
 }
 
-QList<DimensionItem *> DimensionItem::findChainSegments() const
+QList<DimensionItem *> DimensionItem::chainSegments() const
 {
 	if (m_mode != Chain || !diagram()) {
 		return { const_cast<DimensionItem *>(this) };
 	}
 
-	QList<DimensionItem *> candidates;
-	for (QGraphicsItem *qgi : diagram()->items()) {
-		if (qgi->type() == DimensionItem::Type) {
-			auto *it = static_cast<DimensionItem *>(qgi);
-			if (it->mode() == Chain && std::abs(it->offset() - m_offset) < 2.0) {
-				candidates.append(it);
+	QList<DimensionItem *> chain;
+	if (!m_chain_id.isNull()) {
+		for (QGraphicsItem *qgi : diagram()->items()) {
+			if (qgi->type() == DimensionItem::Type) {
+				auto *it = static_cast<DimensionItem *>(qgi);
+				if (it->mode() == Chain && it->chainId() == m_chain_id) {
+					chain.append(it);
+				}
 			}
 		}
 	}
 
-	QList<DimensionItem *> chain;
-	// Trace backward: it->p2() == curr->p1()
-	DimensionItem *curr = const_cast<DimensionItem *>(this);
-	QList<DimensionItem *> backward;
-	while (curr) {
-		DimensionItem *prev = nullptr;
-		for (DimensionItem *it : candidates) {
-			if (it != curr && !backward.contains(it) && it != this) {
-				qreal d = std::hypot(it->p2().x() - curr->p1().x(), it->p2().y() - curr->p1().y());
-				if (d < 2.0) {
-					prev = it;
+	if (chain.isEmpty()) {
+		QList<DimensionItem *> candidates;
+		for (QGraphicsItem *qgi : diagram()->items()) {
+			if (qgi->type() == DimensionItem::Type) {
+				auto *it = static_cast<DimensionItem *>(qgi);
+				if (it->mode() == Chain && std::abs(it->offset() - m_offset) < 2.0) {
+					candidates.append(it);
+				}
+			}
+		}
+
+		DimensionItem *curr = const_cast<DimensionItem *>(this);
+		QList<DimensionItem *> backward;
+		while (curr) {
+			DimensionItem *prev = nullptr;
+			QPointF curr_p1 = curr->mapToScene(curr->p1());
+			for (DimensionItem *it : candidates) {
+				if (it != curr && !backward.contains(it) && it != this) {
+					QPointF it_p2 = it->mapToScene(it->p2());
+					if (std::hypot(it_p2.x() - curr_p1.x(), it_p2.y() - curr_p1.y()) < 2.0) {
+						prev = it;
+						break;
+					}
+				}
+			}
+			if (prev) {
+				backward.prepend(prev);
+				curr = prev;
+			} else {
+				break;
+			}
+		}
+
+		chain.append(backward);
+		chain.append(const_cast<DimensionItem *>(this));
+
+		curr = const_cast<DimensionItem *>(this);
+		while (curr) {
+			DimensionItem *next = nullptr;
+			QPointF curr_p2 = curr->mapToScene(curr->p2());
+			for (DimensionItem *it : candidates) {
+				if (it != curr && !chain.contains(it)) {
+					QPointF it_p1 = it->mapToScene(it->p1());
+					if (std::hypot(curr_p2.x() - it_p1.x(), curr_p2.y() - it_p1.y()) < 2.0) {
+						next = it;
+						break;
+					}
+				}
+			}
+			if (next) {
+				chain.append(next);
+				curr = next;
+			} else {
+				break;
+			}
+		}
+		return chain;
+	}
+
+	// Sort segments in order P0 -> P1 -> P2 ... Pn
+	QList<DimensionItem *> sorted;
+	DimensionItem *first = nullptr;
+	for (DimensionItem *it : chain) {
+		QPointF p1_scene = it->mapToScene(it->p1());
+		bool has_prev = false;
+		for (DimensionItem *other : chain) {
+			if (other != it) {
+				QPointF other_p2 = other->mapToScene(other->p2());
+				if (std::hypot(p1_scene.x() - other_p2.x(), p1_scene.y() - other_p2.y()) < 2.0) {
+					has_prev = true;
 					break;
 				}
 			}
 		}
-		if (prev) {
-			backward.prepend(prev);
-			curr = prev;
-		} else {
+		if (!has_prev) {
+			first = it;
 			break;
 		}
 	}
 
-	chain.append(backward);
-	chain.append(const_cast<DimensionItem *>(this));
+	if (!first) {
+		first = chain.first();
+	}
 
-	// Trace forward: curr->p2() == it->p1()
-	curr = const_cast<DimensionItem *>(this);
-	while (curr) {
+	sorted.append(first);
+	DimensionItem *curr = first;
+	while (sorted.size() < chain.size()) {
 		DimensionItem *next = nullptr;
-		for (DimensionItem *it : candidates) {
-			if (it != curr && !chain.contains(it)) {
-				qreal d = std::hypot(curr->p2().x() - it->p1().x(), curr->p2().y() - it->p1().y());
-				if (d < 2.0) {
+		QPointF curr_p2 = curr->mapToScene(curr->p2());
+		for (DimensionItem *it : chain) {
+			if (!sorted.contains(it)) {
+				QPointF it_p1 = it->mapToScene(it->p1());
+				if (std::hypot(curr_p2.x() - it_p1.x(), curr_p2.y() - it_p1.y()) < 2.0) {
 					next = it;
 					break;
 				}
 			}
 		}
 		if (next) {
-			chain.append(next);
+			sorted.append(next);
 			curr = next;
 		} else {
+			for (DimensionItem *it : chain) {
+				if (!sorted.contains(it)) sorted.append(it);
+			}
 			break;
 		}
 	}
 
-	return chain;
+	return sorted;
+}
+
+QList<DimensionItem *> DimensionItem::findChainSegments() const
+{
+	return chainSegments();
 }
 
 void DimensionItem::calculateGeometry(QPointF &p1_dim, QPointF &p2_dim,
@@ -807,34 +884,171 @@ void DimensionItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 		painter->restore();
 	}
 
-	// 5. Draw red square handles when selected (as shown in panel layout drawings)
-	if (isSelected()) {
-		painter->save();
-		painter->setPen(QPen(Qt::black, 1.0));
-		painter->setBrush(QBrush(Qt::red));
-		const qreal hs = 3.0;
-		painter->drawRect(QRectF(m_p1.x() - hs, m_p1.y() - hs, hs * 2.0, hs * 2.0));
-		painter->drawRect(QRectF(m_p2.x() - hs, m_p2.y() - hs, hs * 2.0, hs * 2.0));
-		painter->drawRect(QRectF(p1_dim.x() - hs, p1_dim.y() - hs, hs * 2.0, hs * 2.0));
-		painter->drawRect(QRectF(p2_dim.x() - hs, p2_dim.y() - hs, hs * 2.0, hs * 2.0));
-		painter->restore();
-	}
-
 	painter->restore();
 }
 
 QVariant DimensionItem::itemChange(GraphicsItemChange change, const QVariant &value)
 {
-	if (change == ItemPositionHasChanged) {
+	if (change == ItemSelectedHasChanged) {
+		bool is_sel = value.toBool();
+		static bool s_syncing_selection = false;
+		if (m_mode == Chain && !s_syncing_selection && diagram()) {
+			s_syncing_selection = true;
+			for (DimensionItem *sibling : chainSegments()) {
+				if (sibling != this && sibling->isSelected() != is_sel) {
+					sibling->setSelected(is_sel);
+				}
+			}
+			s_syncing_selection = false;
+		}
+
+		if (is_sel) {
+			rebuildHandles();
+		} else {
+			clearHandles();
+		}
+	} else if (change == ItemPositionHasChanged) {
 		emit geometryChanged();
+		if (m_mode == Chain) {
+			QList<DimensionItem *> chain = chainSegments();
+			if (!chain.isEmpty() && chain.first()) {
+				chain.first()->updateHandlePositions();
+			}
+		} else {
+			updateHandlePositions();
+		}
+	} else if (change == ItemSceneChange) {
+		clearHandles();
 	}
 	return QetGraphicsItem::itemChange(change, value);
+}
+
+void DimensionItem::rebuildHandles()
+{
+	clearHandles();
+	if (!scene() || !isSelected()) return;
+
+	QList<DimensionItem *> chain = chainSegments();
+	if (m_mode == Chain && !chain.isEmpty() && chain.first() != this) {
+		// In chain mode, only the first segment acts as coordinator for all handles
+		return;
+	}
+
+	if (chain.isEmpty()) {
+		chain.append(this);
+	}
+
+	// 1. Create ReferencePoint handles (one handle for each unique point along the chain)
+	// Index 0: Start of first segment
+	auto *hStart = new DimensionHandler(this, DimensionHandler::ReferencePoint, 0);
+	scene()->addItem(hStart);
+	m_handlers.append(hStart);
+
+	// Index 1 .. N-1: Intermediate points (p1 of segment k, connecting segment k-1 and segment k)
+	for (int k = 1; k < chain.size(); ++k) {
+		auto *hInter = new DimensionHandler(this, DimensionHandler::ReferencePoint, k);
+		scene()->addItem(hInter);
+		m_handlers.append(hInter);
+	}
+
+	// Index N: End of last segment
+	auto *hEnd = new DimensionHandler(this, DimensionHandler::ReferencePoint, chain.size());
+	scene()->addItem(hEnd);
+	m_handlers.append(hEnd);
+
+	// 2. Create OffsetPoint handles (on the dimension lines for adjusting height)
+	for (int k = 0; k < chain.size(); ++k) {
+		auto *hDim1 = new DimensionHandler(this, DimensionHandler::OffsetPoint, k * 2);
+		scene()->addItem(hDim1);
+		m_handlers.append(hDim1);
+
+		if (k == chain.size() - 1) {
+			auto *hDim2 = new DimensionHandler(this, DimensionHandler::OffsetPoint, k * 2 + 1);
+			scene()->addItem(hDim2);
+			m_handlers.append(hDim2);
+		}
+	}
+
+	updateHandlePositions();
+}
+
+void DimensionItem::updateHandlePositions()
+{
+	if (m_mode == Chain) {
+		QList<DimensionItem *> chain = chainSegments();
+		if (!chain.isEmpty() && chain.first() != this) {
+			if (chain.first()) chain.first()->updateHandlePositions();
+			return;
+		}
+	}
+
+	if (m_handlers.isEmpty() || !scene()) return;
+
+	QList<DimensionItem *> chain = chainSegments();
+	if (chain.isEmpty()) chain.append(this);
+
+	int handleIdx = 0;
+
+	// Handle 0: Start point of first segment
+	if (handleIdx < m_handlers.size() && chain.first()) {
+		m_handlers[handleIdx]->setPos(chain.first()->mapToScene(chain.first()->p1()));
+		handleIdx++;
+	}
+
+	// Intermediate handles 1 .. N-1
+	for (int k = 1; k < chain.size(); ++k) {
+		if (handleIdx < m_handlers.size() && chain.at(k)) {
+			m_handlers[handleIdx]->setPos(chain.at(k)->mapToScene(chain.at(k)->p1()));
+			handleIdx++;
+		}
+	}
+
+	// Handle N: End point of last segment
+	if (handleIdx < m_handlers.size() && chain.last()) {
+		m_handlers[handleIdx]->setPos(chain.last()->mapToScene(chain.last()->p2()));
+		handleIdx++;
+	}
+
+	// Offset handles on the dimension lines
+	for (int k = 0; k < chain.size(); ++k) {
+		DimensionItem *seg = chain.at(k);
+		if (!seg) continue;
+
+		QPointF p1_dim, p2_dim, p1_ext, p2_ext, mid, udir, ndir;
+		qreal ang;
+		seg->calculateGeometry(p1_dim, p2_dim, p1_ext, p2_ext, mid, ang, udir, ndir);
+
+		if (handleIdx < m_handlers.size()) {
+			m_handlers[handleIdx]->setPos(seg->mapToScene(p1_dim));
+			handleIdx++;
+		}
+		if (k == chain.size() - 1 && handleIdx < m_handlers.size()) {
+			m_handlers[handleIdx]->setPos(seg->mapToScene(p2_dim));
+			handleIdx++;
+		}
+	}
+}
+
+void DimensionItem::clearHandles()
+{
+	for (DimensionHandler *h : m_handlers) {
+		if (h) {
+			if (h->scene()) {
+				h->scene()->removeItem(h);
+			}
+			delete h;
+		}
+	}
+	m_handlers.clear();
 }
 
 QDomElement DimensionItem::toXml(QDomDocument &document) const
 {
 	QDomElement xml = document.createElement(QStringLiteral("dimension"));
 	xml.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
+	if (!m_chain_id.isNull()) {
+		xml.setAttribute(QStringLiteral("chain_id"), m_chain_id.toString());
+	}
 	xml.setAttribute(QStringLiteral("x1"), QString::number(m_p1.x() + pos().x(), 'f', 2));
 	xml.setAttribute(QStringLiteral("y1"), QString::number(m_p1.y() + pos().y(), 'f', 2));
 	xml.setAttribute(QStringLiteral("x2"), QString::number(m_p2.x() + pos().x(), 'f', 2));
@@ -911,6 +1125,9 @@ void DimensionItem::fromXml(const QDomElement &element)
 
 	if (element.hasAttribute(QStringLiteral("uuid"))) {
 		m_uuid = QUuid(element.attribute(QStringLiteral("uuid")));
+	}
+	if (element.hasAttribute(QStringLiteral("chain_id"))) {
+		m_chain_id = QUuid(element.attribute(QStringLiteral("chain_id")));
 	}
 	prepareGeometryChange();
 }
@@ -994,6 +1211,250 @@ void ApplyDimensionFormatCommand::redo()
 	for (const auto &c : m_changes) {
 		if (c.item) {
 			c.item->setProperties(c.newProps);
+		}
+	}
+}
+
+DimensionHandler::DimensionHandler(DimensionItem *coordinator, Role role, int index, QGraphicsItem *parent) :
+	QGraphicsObject(parent),
+	m_coordinator(coordinator),
+	m_role(role),
+	m_index(index)
+{
+	setAcceptHoverEvents(true);
+	setFlag(ItemIgnoresTransformations, true);
+	setZValue(1000);
+}
+
+DimensionHandler::~DimensionHandler()
+{
+}
+
+QRectF DimensionHandler::boundingRect() const
+{
+	return QRectF(-4.5, -4.5, 9.0, 9.0);
+}
+
+QPainterPath DimensionHandler::shape() const
+{
+	QPainterPath path;
+	path.addRect(QRectF(-4.5, -4.5, 9.0, 9.0));
+	return path;
+}
+
+void DimensionHandler::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+	Q_UNUSED(option)
+	Q_UNUSED(widget)
+
+	painter->save();
+	painter->setRenderHint(QPainter::Antialiasing, false);
+
+	QPen pen(Qt::black, 1.0);
+	pen.setCosmetic(true);
+	painter->setPen(pen);
+	painter->setBrush(m_hovered ? QBrush(QColor(255, 60, 60)) : QBrush(Qt::red));
+	painter->drawRect(QRectF(-3.5, -3.5, 7.0, 7.0));
+
+	painter->restore();
+}
+
+void DimensionHandler::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
+	Q_UNUSED(event)
+	m_hovered = true;
+	setCursor(Qt::SizeAllCursor);
+	update();
+}
+
+void DimensionHandler::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
+	Q_UNUSED(event)
+	m_hovered = false;
+	unsetCursor();
+	update();
+}
+
+void DimensionHandler::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (event->button() != Qt::LeftButton || !m_coordinator) {
+		event->ignore();
+		return;
+	}
+
+	m_dragging = true;
+	m_press_pos = event->scenePos();
+
+	m_saved_states.clear();
+	QList<DimensionItem *> chain = m_coordinator->chainSegments();
+	if (chain.isEmpty()) chain.append(m_coordinator.data());
+	for (DimensionItem *seg : chain) {
+		if (seg) {
+			m_saved_states.append({ seg, seg->p1(), seg->p2(), seg->offset() });
+		}
+	}
+
+	event->accept();
+}
+
+void DimensionHandler::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (!m_dragging || !m_coordinator) {
+		event->ignore();
+		return;
+	}
+
+	QPointF scenePos = Diagram::snapToGrid(event->scenePos());
+	QList<DimensionItem *> chain = m_coordinator->chainSegments();
+	if (chain.isEmpty()) chain.append(m_coordinator.data());
+
+	if (m_role == ReferencePoint) {
+		if (m_index == 0) {
+			DimensionItem *s0 = chain.first();
+			if (s0) {
+				s0->setP1(s0->mapFromScene(scenePos));
+			}
+		} else if (m_index == chain.size()) {
+			DimensionItem *sLast = chain.last();
+			if (sLast) {
+				sLast->setP2(sLast->mapFromScene(scenePos));
+			}
+		} else if (m_index > 0 && m_index < chain.size()) {
+			DimensionItem *prevSeg = chain.at(m_index - 1);
+			DimensionItem *nextSeg = chain.at(m_index);
+			if (prevSeg) {
+				prevSeg->setP2(prevSeg->mapFromScene(scenePos));
+			}
+			if (nextSeg) {
+				nextSeg->setP1(nextSeg->mapFromScene(scenePos));
+			}
+		}
+	} else if (m_role == OffsetPoint) {
+		DimensionItem *firstSeg = chain.first();
+		if (firstSeg) {
+			QPointF p1_scene = firstSeg->mapToScene(firstSeg->p1());
+			QPointF p2_scene = firstSeg->mapToScene(firstSeg->p2());
+			QPointF diff = p2_scene - p1_scene;
+			qreal len = std::hypot(diff.x(), diff.y());
+			if (len > 1e-4) {
+				QPointF normal_dir(-diff.y() / len, diff.x() / len);
+				QPointF toCursor = event->scenePos() - p1_scene;
+				qreal newOffset = toCursor.x() * normal_dir.x() + toCursor.y() * normal_dir.y();
+				newOffset = std::round(newOffset / 5.0) * 5.0;
+				if (std::abs(newOffset) < 5.0) {
+					newOffset = (newOffset >= 0.0 ? 5.0 : -5.0);
+				}
+
+				for (DimensionItem *seg : chain) {
+					if (seg) seg->setOffset(newOffset);
+				}
+			}
+		}
+	}
+
+	m_coordinator->updateHandlePositions();
+	event->accept();
+}
+
+void DimensionHandler::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (!m_dragging || !m_coordinator) {
+		event->ignore();
+		return;
+	}
+	m_dragging = false;
+
+	if (!m_coordinator->diagram()) {
+		event->accept();
+		return;
+	}
+
+	bool changed = false;
+	QList<MoveDimensionPointCommand::PointChange> pointChanges;
+	for (const auto &state : m_saved_states) {
+		if (state.item) {
+			if (state.item->p1() != state.oldP1 || state.item->p2() != state.oldP2) {
+				changed = true;
+				pointChanges.append({ state.item, state.oldP1, state.oldP2, state.item->p1(), state.item->p2() });
+			}
+			if (!qFuzzyCompare(state.item->offset(), state.oldOffset)) {
+				changed = true;
+			}
+		}
+	}
+
+	if (!changed) {
+		event->accept();
+		return;
+	}
+
+	if (m_role == ReferencePoint && !pointChanges.isEmpty()) {
+		m_coordinator->diagram()->undoStack().push(new MoveDimensionPointCommand(pointChanges));
+	} else if (m_role == OffsetPoint && !m_saved_states.isEmpty()) {
+		QList<DimensionItem *> items;
+		qreal oldOff = m_saved_states.first().oldOffset;
+		qreal newOff = m_saved_states.first().item ? m_saved_states.first().item->offset() : oldOff;
+		for (const auto &s : m_saved_states) {
+			if (s.item) items.append(s.item.data());
+		}
+		m_coordinator->diagram()->undoStack().push(new ChangeDimensionOffsetCommand(items, oldOff, newOff));
+	}
+
+	event->accept();
+}
+
+MoveDimensionPointCommand::MoveDimensionPointCommand(const QList<PointChange> &changes, QUndoCommand *parent) :
+	QUndoCommand(parent),
+	m_changes(changes)
+{
+	setText(QObject::tr("Move dimension point"));
+}
+
+void MoveDimensionPointCommand::undo()
+{
+	for (const auto &c : m_changes) {
+		if (c.item) {
+			c.item->setP1(c.oldP1);
+			c.item->setP2(c.oldP2);
+		}
+	}
+}
+
+void MoveDimensionPointCommand::redo()
+{
+	for (const auto &c : m_changes) {
+		if (c.item) {
+			c.item->setP1(c.newP1);
+			c.item->setP2(c.newP2);
+		}
+	}
+}
+
+ChangeDimensionOffsetCommand::ChangeDimensionOffsetCommand(const QList<DimensionItem *> &items, qreal oldOffset, qreal newOffset, QUndoCommand *parent) :
+	QUndoCommand(parent),
+	m_old_offset(oldOffset),
+	m_new_offset(newOffset)
+{
+	setText(QObject::tr("Change dimension offset"));
+	for (DimensionItem *it : items) {
+		if (it) m_items.append({ it });
+	}
+}
+
+void ChangeDimensionOffsetCommand::undo()
+{
+	for (const auto &it : m_items) {
+		if (it.item) {
+			it.item->setOffset(m_old_offset);
+		}
+	}
+}
+
+void ChangeDimensionOffsetCommand::redo()
+{
+	for (const auto &it : m_items) {
+		if (it.item) {
+			it.item->setOffset(m_new_offset);
 		}
 	}
 }

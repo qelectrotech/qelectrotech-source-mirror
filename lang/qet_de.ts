@@ -12419,6 +12419,14 @@ Verfügbare Optionen:
         <source>Apply dimension format</source>
         <translation>Bemaßungsformat zuweisen</translation>
     </message>
+    <message>
+        <source>Move dimension point</source>
+        <translation>Bemaßungspunkt verschieben</translation>
+    </message>
+    <message>
+        <source>Change dimension offset</source>
+        <translation>Bemaßungsabstand ändern</translation>
+    </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="5270"/>
         <source>Text format applied to %n element(s)</source>

@@ -49,6 +49,10 @@ class tst_DimensionItem : public QObject
 	void testEscapeCancelsTool();
 	void testFormatPainterDimension();
 	void testDialogButtons();
+	void testChainGroupIdAndSegments();
+	void testChainSelectionSync();
+	void testIntermediatePointMoveAndUndo();
+	void testChainOffsetMoveAndUndo();
 };
 
 void tst_DimensionItem::testDefaultValues()
@@ -455,6 +459,158 @@ void tst_DimensionItem::testDialogButtons()
 	// Should not have pushed anything new, and prefix should remain L=
 	QCOMPARE(diagram->undoStack().count(), undoCountBefore + 1);
 	QCOMPARE(dim->prefix(), QStringLiteral("L="));
+}
+
+void tst_DimensionItem::testChainGroupIdAndSegments()
+{
+	QETProject project;
+	Diagram *diagram = project.addNewDiagram();
+	QVERIFY(diagram != nullptr);
+
+	QUuid chainId = QUuid::createUuid();
+
+	auto *s0 = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0, DimensionItem::Chain);
+	s0->setChainId(chainId);
+	auto *s1 = new DimensionItem(QPointF(100, 0), QPointF(250, 0), 20.0, DimensionItem::Chain);
+	s1->setChainId(chainId);
+	auto *s2 = new DimensionItem(QPointF(250, 0), QPointF(400, 0), 20.0, DimensionItem::Chain);
+	s2->setChainId(chainId);
+
+	diagram->addItem(s0);
+	diagram->addItem(s1);
+	diagram->addItem(s2);
+
+	QList<DimensionItem *> segments = s1->chainSegments();
+	QCOMPARE(segments.size(), 3);
+	QCOMPARE(segments[0], s0);
+	QCOMPARE(segments[1], s1);
+	QCOMPARE(segments[2], s2);
+
+	QCOMPARE(s0->dimensionValueMM(), 50.0);
+	QCOMPARE(s1->dimensionValueMM(), 75.0);
+	QCOMPARE(s2->dimensionValueMM(), 75.0);
+}
+
+void tst_DimensionItem::testChainSelectionSync()
+{
+	QETProject project;
+	Diagram *diagram = project.addNewDiagram();
+	QVERIFY(diagram != nullptr);
+
+	QUuid chainId = QUuid::createUuid();
+
+	auto *s0 = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0, DimensionItem::Chain);
+	s0->setChainId(chainId);
+	auto *s1 = new DimensionItem(QPointF(100, 0), QPointF(250, 0), 20.0, DimensionItem::Chain);
+	s1->setChainId(chainId);
+	auto *s2 = new DimensionItem(QPointF(250, 0), QPointF(400, 0), 20.0, DimensionItem::Chain);
+	s2->setChainId(chainId);
+
+	diagram->addItem(s0);
+	diagram->addItem(s1);
+	diagram->addItem(s2);
+
+	// Select s1: s0 and s2 must become selected too (unified chain selection)
+	s1->setSelected(true);
+	QCOMPARE(s0->isSelected(), true);
+	QCOMPARE(s1->isSelected(), true);
+	QCOMPARE(s2->isSelected(), true);
+
+	// Deselect s1: s0 and s2 must become deselected
+	s1->setSelected(false);
+	QCOMPARE(s0->isSelected(), false);
+	QCOMPARE(s1->isSelected(), false);
+	QCOMPARE(s2->isSelected(), false);
+}
+
+void tst_DimensionItem::testIntermediatePointMoveAndUndo()
+{
+	QETProject project;
+	Diagram *diagram = project.addNewDiagram();
+	QVERIFY(diagram != nullptr);
+
+	QUuid chainId = QUuid::createUuid();
+
+	auto *s0 = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0, DimensionItem::Chain);
+	s0->setChainId(chainId);
+	auto *s1 = new DimensionItem(QPointF(100, 0), QPointF(250, 0), 20.0, DimensionItem::Chain);
+	s1->setChainId(chainId);
+	auto *s2 = new DimensionItem(QPointF(250, 0), QPointF(400, 0), 20.0, DimensionItem::Chain);
+	s2->setChainId(chainId);
+
+	diagram->addItem(s0);
+	diagram->addItem(s1);
+	diagram->addItem(s2);
+
+	// Intermediate point P1 connects s0->p2 and s1->p1 at (100, 0)
+	// Move intermediate point from (100, 0) to (140, 0)
+	QList<MoveDimensionPointCommand::PointChange> changes;
+	changes.append({ s0, s0->p1(), s0->p2(), s0->p1(), QPointF(140, 0) });
+	changes.append({ s1, s1->p1(), s1->p2(), QPointF(140, 0), s1->p2() });
+
+	diagram->undoStack().push(new MoveDimensionPointCommand(changes));
+
+	// Verify both adjacent segments dynamically updated
+	QCOMPARE(s0->p2(), QPointF(140, 0));
+	QCOMPARE(s1->p1(), QPointF(140, 0));
+	QCOMPARE(s0->dimensionValueMM(), 70.0);
+	QCOMPARE(s1->dimensionValueMM(), 55.0);
+	// s2 must remain untouched
+	QCOMPARE(s2->p1(), QPointF(250, 0));
+	QCOMPARE(s2->dimensionValueMM(), 75.0);
+
+	// Verify displayText live updates
+	QCOMPARE(s0->displayText(), QStringLiteral("70,0"));
+	QCOMPARE(s1->displayText(), QStringLiteral("55,0"));
+
+	// Undo
+	diagram->undoStack().undo();
+	QCOMPARE(s0->p2(), QPointF(100, 0));
+	QCOMPARE(s1->p1(), QPointF(100, 0));
+	QCOMPARE(s0->dimensionValueMM(), 50.0);
+	QCOMPARE(s1->dimensionValueMM(), 75.0);
+	QCOMPARE(s0->displayText(), QStringLiteral("50,0"));
+	QCOMPARE(s1->displayText(), QStringLiteral("75,0"));
+
+	// Redo
+	diagram->undoStack().redo();
+	QCOMPARE(s0->p2(), QPointF(140, 0));
+	QCOMPARE(s1->p1(), QPointF(140, 0));
+	QCOMPARE(s0->dimensionValueMM(), 70.0);
+	QCOMPARE(s1->dimensionValueMM(), 55.0);
+}
+
+void tst_DimensionItem::testChainOffsetMoveAndUndo()
+{
+	QETProject project;
+	Diagram *diagram = project.addNewDiagram();
+	QVERIFY(diagram != nullptr);
+
+	QUuid chainId = QUuid::createUuid();
+
+	auto *s0 = new DimensionItem(QPointF(0, 0), QPointF(100, 0), 20.0, DimensionItem::Chain);
+	s0->setChainId(chainId);
+	auto *s1 = new DimensionItem(QPointF(100, 0), QPointF(250, 0), 20.0, DimensionItem::Chain);
+	s1->setChainId(chainId);
+
+	diagram->addItem(s0);
+	diagram->addItem(s1);
+
+	// Change offset of whole chain to 35.0
+	diagram->undoStack().push(new ChangeDimensionOffsetCommand({ s0, s1 }, 20.0, 35.0));
+
+	QCOMPARE(s0->offset(), 35.0);
+	QCOMPARE(s1->offset(), 35.0);
+
+	// Undo
+	diagram->undoStack().undo();
+	QCOMPARE(s0->offset(), 20.0);
+	QCOMPARE(s1->offset(), 20.0);
+
+	// Redo
+	diagram->undoStack().redo();
+	QCOMPARE(s0->offset(), 35.0);
+	QCOMPARE(s1->offset(), 35.0);
 }
 
 QTEST_MAIN(tst_DimensionItem)

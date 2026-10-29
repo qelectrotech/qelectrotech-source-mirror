@@ -63,6 +63,7 @@ private:
 	QPointF m_p2;
 	qreal m_fixed_offset = 20.0;
 	bool m_offset_determined = false;
+	QUuid m_active_chain_id;
 };
 
 #endif // DIAGRAMEVENTADDDIMENSION_H

@@ -27,6 +27,7 @@
 
 class QDomDocument;
 class QDomElement;
+class DimensionHandler;
 
 struct DimensionProperties
 {
@@ -229,7 +230,20 @@ public:
 	qreal dimensionValueMM() const;
 	QString displayText() const;
 
+	QUuid chainId() const { return m_chain_id; }
+	void setChainId(const QUuid &id) { m_chain_id = id; }
+
+	QList<DimensionItem *> chainSegments() const;
 	QList<DimensionItem *> findChainSegments() const;
+
+	void rebuildHandles();
+	void updateHandlePositions();
+	void clearHandles();
+
+	void calculateGeometry(QPointF &p1_dim, QPointF &p2_dim,
+	                       QPointF &p1_ext_end, QPointF &p2_ext_end,
+	                       QPointF &mid_dim, qreal &angle_deg,
+	                       QPointF &unit_dir, QPointF &normal_dir) const;
 
 	QUuid uuid() const { return m_uuid; }
 	void setUuid(const QUuid &uuid) { m_uuid = uuid; emit uuidChanged(); }
@@ -247,11 +261,6 @@ protected:
 	QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 private:
-	void calculateGeometry(QPointF &p1_dim, QPointF &p2_dim,
-	                       QPointF &p1_ext_end, QPointF &p2_ext_end,
-	                       QPointF &mid_dim, qreal &angle_deg,
-	                       QPointF &unit_dir, QPointF &normal_dir) const;
-
 	QPointF m_p1;
 	QPointF m_p2;
 	qreal m_offset = 20.0;
@@ -279,8 +288,10 @@ private:
 	DimensionMode m_mode = Linear;
 	TerminationStyle m_termination_style = Arrows;
 	QUuid m_uuid;
+	QUuid m_chain_id;
 	QPen m_pen;
 	QFont m_font;
+	QList<DimensionHandler *> m_handlers;
 };
 
 /**
@@ -320,6 +331,95 @@ private:
 		DimensionProperties newProps;
 	};
 	QList<ItemChange> m_changes;
+};
+
+/**
+ * @brief Interactive CAD handle for moving dimension reference points and offset.
+ */
+class DimensionHandler : public QGraphicsObject
+{
+	Q_OBJECT
+public:
+	enum Role {
+		ReferencePoint, // Draggable point on the measured geometry (intermediate point or endpoint)
+		OffsetPoint     // Draggable point on the dimension line (changes offset for the chain)
+	};
+
+	DimensionHandler(DimensionItem *coordinator, Role role, int index, QGraphicsItem *parent = nullptr);
+	~DimensionHandler() override;
+
+	QRectF boundingRect() const override;
+	QPainterPath shape() const override;
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
+
+	Role role() const { return m_role; }
+	int index() const { return m_index; }
+
+protected:
+	void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
+	void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
+	void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+	void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+	void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+
+private:
+	QPointer<DimensionItem> m_coordinator;
+	Role m_role;
+	int m_index;
+	bool m_hovered = false;
+	bool m_dragging = false;
+	QPointF m_press_pos;
+
+	struct SegmentState {
+		QPointer<DimensionItem> item;
+		QPointF oldP1;
+		QPointF oldP2;
+		qreal oldOffset = 0.0;
+	};
+	QList<SegmentState> m_saved_states;
+};
+
+/**
+ * @brief Undo command for moving dimension reference/intermediate points.
+ */
+class MoveDimensionPointCommand : public QUndoCommand
+{
+public:
+	struct PointChange {
+		QPointer<DimensionItem> item;
+		QPointF oldP1;
+		QPointF oldP2;
+		QPointF newP1;
+		QPointF newP2;
+	};
+
+	MoveDimensionPointCommand(const QList<PointChange> &changes, QUndoCommand *parent = nullptr);
+
+	void undo() override;
+	void redo() override;
+
+private:
+	QList<PointChange> m_changes;
+};
+
+/**
+ * @brief Undo command for changing the dimension line offset across one or multiple chained dimensions.
+ */
+class ChangeDimensionOffsetCommand : public QUndoCommand
+{
+public:
+	ChangeDimensionOffsetCommand(const QList<DimensionItem *> &items, qreal oldOffset, qreal newOffset, QUndoCommand *parent = nullptr);
+
+	void undo() override;
+	void redo() override;
+
+private:
+	struct ItemOffset {
+		QPointer<DimensionItem> item;
+	};
+	QList<ItemOffset> m_items;
+	qreal m_old_offset;
+	qreal m_new_offset;
 };
 
 #endif // DIMENSIONITEM_H

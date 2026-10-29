@@ -171,6 +171,12 @@ void DiagramEventAddDimension::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		case WaitingForOffset: {
 			m_fixed_offset = m_dimension_item->offset();
 			m_offset_determined = true;
+
+			if (m_mode == DimensionItem::Chain) {
+				m_active_chain_id = QUuid::createUuid();
+				m_dimension_item->setChainId(m_active_chain_id);
+			}
+
 			commitCurrentDimension();
 
 			if (m_mode == DimensionItem::Linear) {
@@ -180,6 +186,7 @@ void DiagramEventAddDimension::mousePressEvent(QGraphicsSceneMouseEvent *event)
 				// Chain dimensioning mode: keep P2 as new P1, reuse fixed offset
 				m_p1 = m_p2;
 				m_dimension_item = new DimensionItem(m_p1, m_p1, m_fixed_offset, DimensionItem::Chain);
+				m_dimension_item->setChainId(m_active_chain_id);
 				m_diagram->addItem(m_dimension_item);
 				m_state = WaitingForChainPoint;
 				updateStatusHint();
@@ -195,11 +202,13 @@ void DiagramEventAddDimension::mousePressEvent(QGraphicsSceneMouseEvent *event)
 			m_p2 = pos;
 			m_dimension_item->setP2(m_p2);
 			m_dimension_item->setOffset(m_fixed_offset);
+			m_dimension_item->setChainId(m_active_chain_id);
 			commitCurrentDimension();
 
 			// Append next chain segment
 			m_p1 = m_p2;
 			m_dimension_item = new DimensionItem(m_p1, m_p1, m_fixed_offset, DimensionItem::Chain);
+			m_dimension_item->setChainId(m_active_chain_id);
 			m_diagram->addItem(m_dimension_item);
 			updateStatusHint();
 			event->setAccepted(true);
@@ -279,6 +288,7 @@ void DiagramEventAddDimension::commitCurrentDimension()
 
 void DiagramEventAddDimension::finishChain()
 {
+	m_active_chain_id = QUuid();
 	if (m_dimension_item) {
 		m_diagram->removeItem(m_dimension_item);
 		delete m_dimension_item;
@@ -291,6 +301,7 @@ void DiagramEventAddDimension::finishChain()
 
 void DiagramEventAddDimension::abortTool()
 {
+	m_active_chain_id = QUuid();
 	if (m_dimension_item) {
 		m_diagram->removeItem(m_dimension_item);
 		delete m_dimension_item;
