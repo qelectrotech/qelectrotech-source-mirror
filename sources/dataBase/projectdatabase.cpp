@@ -4255,6 +4255,7 @@ bool projectDataBase::createDataBase()
 	createSummaryView();
 	createWiringListView();
 	createDrawingItemView();
+	createPublicViews();
 	prepareQuery();
 
 		//The working copy's one row, for recovering it at the next start:
@@ -4523,6 +4524,120 @@ void projectDataBase::createDrawingItemView()
 	if (!query.exec(create_view)) {
 		qDebug() << query.lastError();
 	}
+}
+
+/**
+	@brief projectDataBase::publicViews
+	@return the names of the views createPublicViews() makes
+*/
+QStringList projectDataBase::publicViews()
+{
+	return {QStringLiteral("qet_folios"), QStringLiteral("qet_devices"),
+			QStringLiteral("qet_wires"), QStringLiteral("qet_links")};
+}
+
+/**
+	@brief projectDataBase::createPublicViews
+	The views other tools read a project through (QETDB-S10, Q1), with
+	the same names and columns in every QElectroTech: the tables under
+	them change with the schema, these do not. A column is only added,
+	never renamed or removed, while PublicViewsVersion stays the same.
+
+	Every column comes from a table filled when the project is opened, so
+	a folio not built gives the same rows. folio_number is the folio's
+	place in the project from 1, folio its label as its title block shows
+	it. A device's plant and location are its own, or else its folio's,
+	as in the parts list. The links are kept once each: coil to contact,
+	going arrow to coming arrow.
+
+	No view of terminals: the terminal table lists only the terminals a
+	wire ends on, so one would leave out every free terminal without
+	saying so. qet_wires names the terminal at each end.
+*/
+void projectDataBase::createPublicViews()
+{
+	QSqlQuery query(m_data_base);
+	for (const QString &view : publicViewStatements()) {
+		if (!query.exec(view)) {
+			qDebug() << "projectDataBase::createPublicViews" << query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::publicViewStatements
+	@return the CREATE VIEW statement of each of publicViews(): what
+	createPublicViews() runs on the project database, and --query as
+	TEMP views on a .qetdb it reads directly, so that a file saved before
+	the views existed answers the same
+*/
+QStringList projectDataBase::publicViewStatements()
+{
+	const QString folio_of(QStringLiteral(
+		" LEFT JOIN diagram d ON d.uuid = %1"
+		" LEFT JOIN diagram_info di ON di.diagram_uuid = %1"));
+	const auto property = [](const QString &name, const QString &column) {
+		return QStringLiteral("(SELECT p.value FROM conductor_properties p"
+							  " WHERE p.conductor_uuid = c.uuid AND p.name = '%1') AS %2")
+				.arg(name, column);
+	};
+	const QStringList views {
+		QStringLiteral(
+			"CREATE VIEW qet_folios AS SELECT "
+			"d.pos AS folio_number, di.folio AS folio, di.title AS title, "
+			"di.author AS author, di.plant AS plant, di.locmach AS location, "
+			"di.indexrev AS revision, di.date AS date, di.filename AS filename, "
+			"d.uuid AS folio_uuid "
+			"FROM diagram d LEFT JOIN diagram_info di ON di.diagram_uuid = d.uuid"),
+		QStringLiteral(
+			"CREATE VIEW qet_devices AS SELECT "
+			"d.pos AS folio_number, di.folio AS folio, e.pos AS position, "
+			"ei.label AS label, "
+			"COALESCE(NULLIF(ei.plant, ''), di.plant) AS plant, "
+			"COALESCE(NULLIF(ei.location, ''), di.locmach) AS location, "
+			"e.type AS kind, e.sub_type AS sub_kind, ei.function AS function, "
+			"ei.description AS description, ei.designation AS designation, "
+			"ei.manufacturer AS manufacturer, ei.manufacturer_reference AS article, "
+			"ei.supplier AS supplier, ei.quantity AS quantity, ei.comment AS comment, "
+			"e.definition AS symbol, e.uuid AS device_uuid, e.diagram_uuid AS folio_uuid "
+			"FROM element e LEFT JOIN element_info ei ON ei.element_uuid = e.uuid")
+			+ folio_of.arg(QStringLiteral("e.diagram_uuid")),
+		QStringLiteral(
+			"CREATE VIEW qet_wires AS SELECT "
+			"d.pos AS folio_number, di.folio AS folio, c.text AS wire_number, "
+			"ei1.label AS from_device, t1.name AS from_terminal, "
+			"ei2.label AS to_device, t2.name AS to_terminal, ")
+			+ property(QStringLiteral("conductor_color"), QStringLiteral("colour")) + QStringLiteral(", ")
+			+ property(QStringLiteral("conductor_section"), QStringLiteral("section")) + QStringLiteral(", ")
+			+ property(QStringLiteral("cable"), QStringLiteral("cable")) + QStringLiteral(", ")
+			+ property(QStringLiteral("bus"), QStringLiteral("bus")) + QStringLiteral(", ")
+			+ property(QStringLiteral("function"), QStringLiteral("function")) + QStringLiteral(", ")
+			+ property(QStringLiteral("tension_protocol"), QStringLiteral("voltage")) + QStringLiteral(
+			", c.uuid AS wire_uuid, t1.element_uuid AS from_device_uuid, "
+			"t2.element_uuid AS to_device_uuid "
+			"FROM conductor c "
+			"LEFT JOIN terminal t1 ON t1.uuid = c.terminal1_uuid AND t1.element_uuid = c.terminal1_element_uuid "
+			"LEFT JOIN terminal t2 ON t2.uuid = c.terminal2_uuid AND t2.element_uuid = c.terminal2_element_uuid "
+			"LEFT JOIN element_info ei1 ON ei1.element_uuid = c.terminal1_element_uuid "
+			"LEFT JOIN element_info ei2 ON ei2.element_uuid = c.terminal2_element_uuid")
+			+ folio_of.arg(QStringLiteral("c.diagram_uuid")),
+		QStringLiteral(
+			"CREATE VIEW qet_links AS SELECT "
+			"CASE e1.type WHEN 'master' THEN 'contact' ELSE 'report' END AS link_kind, "
+			"ei1.label AS device, d1.pos AS folio_number, di1.folio AS folio, e1.pos AS position, "
+			"ei2.label AS linked_device, d2.pos AS linked_folio_number, di2.folio AS linked_folio, "
+			"e2.pos AS linked_position, l.element_uuid AS device_uuid, l.linked_uuid AS linked_uuid "
+			"FROM link l JOIN element e1 ON e1.uuid = l.element_uuid "
+			"JOIN element e2 ON e2.uuid = l.linked_uuid "
+			"LEFT JOIN element_info ei1 ON ei1.element_uuid = l.element_uuid "
+			"LEFT JOIN element_info ei2 ON ei2.element_uuid = l.linked_uuid "
+			"LEFT JOIN diagram d1 ON d1.uuid = e1.diagram_uuid "
+			"LEFT JOIN diagram_info di1 ON di1.diagram_uuid = e1.diagram_uuid "
+			"LEFT JOIN diagram d2 ON d2.uuid = e2.diagram_uuid "
+			"LEFT JOIN diagram_info di2 ON di2.diagram_uuid = e2.diagram_uuid "
+			"WHERE e1.type IN ('master', 'next_report')")
+	};
+	return views;
 }
 
 void projectDataBase::populateDiagramTable()

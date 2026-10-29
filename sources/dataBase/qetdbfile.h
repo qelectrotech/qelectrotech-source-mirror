@@ -47,6 +47,9 @@ namespace QetDbFile
 	bool save(projectDataBase &database, const QString &path, QString *error, QByteArray *sha1 = nullptr);
 	bool read(const QString &path, QDomDocument *document, QString *error,
 			  const std::function<bool(const QString &copy)> &with_copy = {});
+		/// The checks a file passes before it is opened: not damaged,
+		/// ours, a format this QElectroTech reads
+	bool isReadable(const QString &path, QString *error);
 }
 
 #endif // QETDBFILE_H

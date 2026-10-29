@@ -1845,6 +1845,20 @@ target_compile_definitions(tst_qetdbfile PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
   "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
 
+# --query: one read-only query over several projects through the public
+# qet_ views; their columns, refused writes, the same rows from .qet, .qetz
+# and .qetdb. QETDB-S10 Q1 + Q2.
+add_executable(
+  tst_cliquery
+  tst_cliquery.cpp)
+add_test(NAME tst_cliquery COMMAND tst_cliquery)
+add_dependencies(tst_cliquery qelectrotech)
+target_link_libraries(tst_cliquery PRIVATE Qt::Test Qt::Sql)
+target_compile_definitions(tst_cliquery PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
 # A .qetdb survives a kill during its save, a sync tool copying it during
 # its save, a full disk and a missing folder; damaged files never crash
 # QElectroTech. QET-SQL-FORMAT S5.

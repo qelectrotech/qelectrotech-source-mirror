@@ -152,6 +152,16 @@ class projectDataBase : public QObject
 				says so rather than truncating quietly.
 			*/
 		static constexpr int MaxResultRows = 100000;
+			/**
+				The views other tools may rely on (QETDB-S10, Q1): folios,
+				devices, wires and links, in engineering words.
+				They keep their names and columns from one QElectroTech to
+				the next; a column is only ever added. PublicViewsVersion is
+				written to a .qetdb's qet_format as "views".
+			*/
+		static constexpr int PublicViewsVersion = 1;
+		static QStringList publicViews();
+		static QStringList publicViewStatements();
 		QSqlDatabase database() const {return m_data_base;}
 		int excludedConductorCount() const;
 
@@ -498,6 +508,7 @@ class projectDataBase : public QObject
 		void createSummaryView();
 		void createWiringListView();
 		void createDrawingItemView();
+		void createPublicViews();
 		void populateDiagramTable();
 		void updateFolioPositions();
 		void flushElementPositions();

@@ -24,6 +24,7 @@
 #include "conductorproperties.h"
 #include "dataBase/projectdatabase.h"
 #include "dataBase/qetdbfile.h"
+#include "dataBase/sqlreadonly.h"
 #include "diagram.h"
 #include "diagramcontext.h"
 #include "editor/terminalnamecheck.h"
@@ -61,10 +62,13 @@
 #include <QSet>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QSqlRecord>
 #include <QSvgGenerator>
+#include <QTemporaryDir>
 #include <QTextStream>
 #include <QTimeZone>
 #include <QTransform>
+#include <QUuid>
 
 namespace {
 
@@ -91,6 +95,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--recover", "recover"},
 		{"--from-database", "fromdb"},
 		{"--set-titleblock", "settb"},
+		{"--query", "query"},
 	};
 	return flags;
 }
@@ -1041,6 +1046,162 @@ int setTitleBlock(QETProject &project, const QString &output,
 	return 0;
 }
 
+/// One CSV field as RFC 4180 has it: quoted when it holds a comma, a quote
+/// or a line break, its quotes doubled.
+QString rfcCsvField(const QString &value)
+{
+	if (value.contains(QLatin1Char(',')) || value.contains(QLatin1Char('"'))
+			|| value.contains(QLatin1Char('\n')) || value.contains(QLatin1Char('\r')))
+	{
+		QString escaped = value;
+		escaped.replace(QLatin1Char('"'), QStringLiteral("\"\""));
+		return QLatin1Char('"') % escaped % QLatin1Char('"');
+	}
+	return value;
+}
+
+/// Run @p sql on the .qetdb @p file itself, without opening the project:
+/// on a copy, once it passes the checks of an open, read-only, with the
+/// public views made as TEMP views (a file saved before them answers the
+/// same). @p print is given the rows.
+/// @return 0, 1 with @p error saying why, or 2 when @p print failed and
+/// said why itself
+template <typename Print>
+int queryDatabaseFile(const QString &file, const QString &sql, Print print, QString *error)
+{
+	QTemporaryDir dir;
+	const QString copy = dir.filePath(QStringLiteral("query.qetdb"));
+	if (!dir.isValid() || !QFile::copy(file, copy)) {
+		*error = QStringLiteral("the file could not be read");
+		return 1;
+	}
+	if (!QetDbFile::isReadable(copy, error)) return 1;
+	const QString name = QStringLiteral("qet_query_") + QUuid::createUuid().toString();
+	int result = 1;
+	{
+		QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), name);
+		db.setDatabaseName(copy);
+		db.setConnectOptions(QStringLiteral("QSQLITE_OPEN_READONLY"));
+		if (!db.open()) {
+			*error = db.lastError().text();
+		} else {
+			{
+				QSqlQuery views(db);
+				for (QString statement : projectDataBase::publicViewStatements()) {
+					statement.replace(QStringLiteral("CREATE VIEW "), QStringLiteral("CREATE TEMP VIEW "));
+					if (!views.exec(statement)) {
+						*error = views.lastError().text();
+						break;
+					}
+				}
+			}
+			if (error->isEmpty() && projectDataBase::isReadOnlySelect(sql, error)) {
+				QSqlQuery query = QETSql::execReadOnly(db, sql, error);
+				if (error->isEmpty() && query.lastError().isValid())
+					*error = query.lastError().text();
+				if (error->isEmpty())
+					result = print(file, query) ? 0 : 2;
+			}
+			db.close();
+		}
+	}
+	QSqlDatabase::removeDatabase(name);
+	return result;
+}
+
+/// --query: run @p sql on the project database of each of @p files in
+/// turn, as qet.query() runs it (read-only, one SELECT), and print every
+/// row with the file it came from first: CSV, or a JSON array of objects
+/// with @p json. A .qetdb is read itself, without opening the project
+/// (QET_QUERY_OPEN_PROJECT=1 opens it as the others). A file that cannot
+/// be opened or queried is reported on stderr and the others still run;
+/// the exit code says whether any failed.
+int queryProjects(const QString &sql, const QStringList &files, bool json)
+{
+	QStringList columns;
+	QJsonArray json_rows;
+		//The rows of @p query, run on @p file; false, said on stderr, if
+		//they could not all be printed
+	const auto print = [&](const QString &file, QSqlQuery &query) {
+		const QSqlRecord record = query.record();
+		QStringList names{QStringLiteral("project")};
+		for (int i = 0 ; i < record.count() ; ++i)
+			names << record.fieldName(i);
+		if (columns.isEmpty()) {
+			columns = names;
+			if (!json) {
+				QStringList header;
+				for (const QString &name : std::as_const(columns))
+					header << rfcCsvField(name);
+				out << header.join(QLatin1Char(',')) << "\n";
+			}
+		} else if (names != columns) {
+			err << file << ": the query gives other columns than for the first file\n";
+			return false;
+		}
+		int rows = 0;
+		bool complete = true;
+		while (query.next()) {
+				//A query that never stops producing rows (a recursive CTE)
+				//stops here, as qet.query() does
+			if (++rows > projectDataBase::MaxResultRows) {
+				err << file << ": result cut at " << projectDataBase::MaxResultRows
+					<< " rows; add a LIMIT or a WHERE clause\n";
+				complete = false;
+				break;
+			}
+			if (json) {
+				QJsonObject row{{QStringLiteral("project"), file}};
+				for (int i = 0 ; i < record.count() ; ++i)
+					row.insert(record.fieldName(i), QJsonValue::fromVariant(query.value(i)));
+				json_rows.append(row);
+			} else {
+				QStringList fields{rfcCsvField(file)};
+				for (int i = 0 ; i < record.count() ; ++i)
+					fields << (query.isNull(i) ? QString() : rfcCsvField(query.value(i).toString()));
+				out << fields.join(QLatin1Char(',')) << "\n";
+			}
+		}
+		out.flush();
+		return complete;
+	};
+
+	const bool open_every_project = qEnvironmentVariableIntValue("QET_QUERY_OPEN_PROJECT") == 1;
+	bool failed = false;
+	for (const QString &file : files) {
+		if (!QFileInfo::exists(file)) {
+			err << file << ": not found\n";
+			failed = true;
+			continue;
+		}
+		QString error;
+		if (QetDbFile::isDatabasePath(file) && !open_every_project) {
+			const int result = queryDatabaseFile(file, sql, print, &error);
+			if (result == 1) err << file << ": " << error << "\n";
+			if (result != 0) failed = true;
+			continue;
+		}
+		QETProject project(file);
+		if (project.state() != QETProject::Ok) {
+			err << file << ": cannot be opened (state " << project.state() << ")\n";
+			failed = true;
+			continue;
+		}
+		QSqlQuery query = project.dataBase()->newQuery(sql, &error);
+		if (error.isEmpty() && query.lastError().isValid())
+			error = query.lastError().text();
+		if (!error.isEmpty()) {
+			err << file << ": " << error << "\n";
+			failed = true;
+			continue;
+		}
+		if (!print(file, query)) failed = true;
+	}
+	if (json)
+		out << QJsonDocument(json_rows).toJson(QJsonDocument::Indented);
+	return failed ? 1 : 0;
+}
+
 } // anonymous namespace
 
 namespace CLIExport {
@@ -1067,6 +1228,7 @@ int run(const QStringList &args)
 	const bool includeSlaves = filtered.removeAll("--no-slaves") == 0;
 	const bool includeJunctions = filtered.removeAll("--no-junctions") == 0;
 	const bool ignoreLock = filtered.removeAll("--ignore-lock") > 0;
+	const bool json = filtered.removeAll("--json") > 0;
 
 	QString flag;
 	QStringList rest;
@@ -1113,6 +1275,15 @@ int run(const QStringList &args)
 			return 1;
 		}
 		return 0;
+	}
+
+	// --query runs one query on many projects, each opened in turn.
+	if (format == "query") {
+		if (rest.size() < 2) {
+			err << "Usage: qelectrotech --query <SQL> <project>... [--json]\n";
+			return 2;
+		}
+		return queryProjects(rest.at(0), rest.mid(1), json);
 	}
 
 	const QString input = rest.value(0);

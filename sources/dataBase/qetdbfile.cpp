@@ -51,9 +51,12 @@
 
 namespace {
 
-	//The views a .qetdb may hold: the project database's own
+	//The views a .qetdb may hold: the project database's own, and the
+	//public ones other tools read it through (QETDB-S10)
 const QStringList our_views{QStringLiteral("drawing_item_view"), QStringLiteral("element_nomenclature_view"),
-							QStringLiteral("project_summary_view"), QStringLiteral("wiring_list_view")};
+							QStringLiteral("project_summary_view"), QStringLiteral("wiring_list_view"),
+							QStringLiteral("qet_folios"), QStringLiteral("qet_devices"),
+							QStringLiteral("qet_wires"), QStringLiteral("qet_links")};
 
 template <typename Work>
 bool withConnection(const QString &path, QString *error, Work work);
@@ -201,6 +204,8 @@ bool finish(const QString &path, QString *error)
 		const QList<std::pair<QString, QString>> rows{
 			{QStringLiteral("format"), QString::number(QetDbFile::format)},
 			{QStringLiteral("min_reader"), QStringLiteral("1")},
+				//The qet_ views' version (projectDataBase::publicViews())
+			{QStringLiteral("views"), QString::number(projectDataBase::PublicViewsVersion)},
 			{QStringLiteral("writer"), QetVersion::displayedVersion()},
 			{QStringLiteral("saved"), QDateTime::currentDateTimeUtc().toString(Qt::ISODate)}};
 		query.prepare(QStringLiteral("INSERT INTO qet_format (key, value) VALUES (:key, :value)"));
@@ -459,4 +464,14 @@ bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error
 		return false;
 	}
 	return read;
+}
+
+/**
+	@brief QetDbFile::isReadable
+	@return true if @p path passes the checks a .qetdb passes before it is
+	opened, with @p error saying why not otherwise
+*/
+bool QetDbFile::isReadable(const QString &path, QString *error)
+{
+	return check(path, error);
 }
