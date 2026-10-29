@@ -9,6 +9,7 @@
 #include <QDir>
 #include <QFile>
 #include <QProcess>
+#include <QRegularExpression>
 #include <QSet>
 #include <QProcessEnvironment>
 #include <QSqlDatabase>
@@ -249,6 +250,62 @@ private slots:
 			QVERIFY2(pragma(again, count).toInt() == pragma(old, count).toInt(), qPrintable(table));
 		}
 		QVERIFY(pragma(again, QStringLiteral("SELECT count(*) FROM element_text_value")).toInt() > 0);
+	}
+
+	// A project keeps no history unless told to (#1512: names and history
+	// travel with every copy)
+	void noHistoryByDefault()
+	{
+		QCOMPARE(pragma(industrial(), QStringLiteral(
+			"SELECT count(*) FROM sqlite_master WHERE name IN ('revision', 'revision_changes')")).toInt(), 0);
+		int code = 0;
+		const QString out = run({QStringLiteral("--history"), industrial()}, false, &code);
+		QVERIFY2(code == 1 && out.contains(QStringLiteral("keeps no history")), qPrintable(out));
+	}
+
+	// Told to, each save is a revision: who, when, and the rows it changed,
+	// as SQLite's session extension finds them between the file it replaces
+	// and the new one. The file still opens from its tables, and the
+	// history goes when told to
+	void historyRecordsEachSave()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("history.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString out = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QFile js(m_dir.filePath(QStringLiteral("history.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("var us = qet.elementUuids(0).sort();\n"
+				 "qet.setElementLabel(0, us[0], 'REV1');\n"
+				 "qet.log('SAVED1 ' + qet.save(''));\n"
+				 "qet.setElementLabel(0, us[1], 'REV2');\n"
+				 "qet.log('SAVED2 ' + qet.save(''));\n");
+		js.close();
+		out = run({QStringLiteral("--run"), js.fileName(), path});
+		QVERIFY2(out.contains(QStringLiteral("SAVED1 true")) && out.contains(QStringLiteral("SAVED2 true")),
+				 qPrintable(out.right(800)));
+		out = run({QStringLiteral("--history"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		const QStringList lines = out.split(QLatin1Char('\n')).filter(QRegularExpression(QStringLiteral("^\\d+  ")));
+		QVERIFY2(lines.size() == 3, qPrintable(out));
+		QVERIFY2(lines.at(0).startsWith(QStringLiteral("1  ")) && lines.at(0).endsWith(QStringLiteral("import")),
+				 qPrintable(out));
+		for (int i : {1, 2})
+			QVERIFY2(lines.at(i).contains(QStringLiteral(" save: ")) && lines.at(i).contains(QStringLiteral("element_info"))
+					 && !lines.at(i).contains(QStringLiteral("not recorded")), qPrintable(out));
+		const QString back = m_dir.filePath(QStringLiteral("history-back.qetdb"));
+		const QString log = resave(path, back);
+		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
+		out = run({QStringLiteral("--history-off"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QCOMPARE(pragma(path, QStringLiteral(
+			"SELECT count(*) FROM sqlite_master WHERE name IN ('revision', 'revision_changes')")).toInt(), 0);
+		QVERIFY(resave(path, back).contains(QStringLiteral("Project database read from the file")));
 	}
 
 	// A symbol whose definition is missing is kept as read (F127): opened

@@ -89,6 +89,9 @@ const QHash<QString, QString> &exportFlags()
 		{"--check-elements", "check"},
 		{"--resave", "resave"},
 		{"--recover", "recover"},
+		{"--history", "history"},
+		{"--history-on", "historyon"},
+		{"--history-off", "historyoff"},
 		{"--from-database", "fromdb"},
 		{"--set-titleblock", "settb"},
 	};
@@ -1098,6 +1101,32 @@ int run(const QStringList &args)
 			return 2;
 		}
 		return recoverProject(rest.at(0), rest.at(1));
+	}
+
+	// --history lists the saves a .qetdb keeps; --history-on and
+	// --history-off make it keep them or drop them (QETDB-S6-SCOPE.md)
+	if (format == "history" || format == "historyon" || format == "historyoff") {
+		if (rest.isEmpty() || !QetDbFile::isDatabasePath(rest.at(0))) {
+			err << "Usage: qelectrotech " << flag << " <project.qetdb>\n";
+			return 2;
+		}
+		QString error;
+		if (format == "history") {
+			const QStringList lines = QetDbFile::history(rest.at(0), &error);
+			if (lines.isEmpty()) {
+				err << rest.at(0) << ": " << error << "\n";
+				return 1;
+			}
+			for (const QString &line : lines)
+				out << line << "\n";
+			out.flush();
+			return 0;
+		}
+		if (!QetDbFile::setHistory(rest.at(0), format == "historyon", &error)) {
+			err << "Cannot change the history of " << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		return 0;
 	}
 
 	// --from-database writes a project from the working copy a QElectroTech

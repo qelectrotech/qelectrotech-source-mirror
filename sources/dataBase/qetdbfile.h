@@ -22,6 +22,7 @@
 #include <QByteArray>
 #include <QDomDocument>
 #include <QString>
+#include <QStringList>
 
 #include <functional>
 
@@ -47,6 +48,10 @@ namespace QetDbFile
 	bool save(projectDataBase &database, const QString &path, QString *error, QByteArray *sha1 = nullptr);
 	bool read(const QString &path, QDomDocument *document, QString *error,
 			  const std::function<bool(const QString &copy)> &with_copy = {});
+		/// History of the saves, kept in the file when switched on
+		/// (QETDB-S6-SCOPE.md): on or off, and each revision as a line
+	bool setHistory(const QString &path, bool on, QString *error);
+	QStringList history(const QString &path, QString *error);
 }
 
 #endif // QETDBFILE_H
