@@ -141,6 +141,11 @@ private slots:
 		QCOMPARE(pragma(path, QStringLiteral("PRAGMA journal_mode")).toString(), QStringLiteral("delete"));
 		QCOMPARE(pragma(path, QStringLiteral("SELECT value FROM qet_format WHERE key = 'format'")).toString(),
 				 QStringLiteral("1"));
+			//The public views other tools read it through (QETDB-S10)
+		QCOMPARE(pragma(path, QStringLiteral("SELECT value FROM qet_format WHERE key = 'views'")).toString(),
+				 QStringLiteral("1"));
+		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE type = 'view' "
+											 "AND name IN ('qet_folios', 'qet_devices', 'qet_wires', 'qet_links')")).toInt(), 4);
 			//The indexes stay: speed matters more than size
 		QVERIFY(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'idx_conductor_diagram'")).toInt() == 1);
 		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'working_copy'")).toInt(), 0);
