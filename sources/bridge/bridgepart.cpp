@@ -58,6 +58,9 @@ BridgePart::BridgePart(const BridgePartData &data, QGraphicsItem *parent) :
 	m_p2(data.p2)
 {
 	setMovable(false); //the shape is the user's own, changing it comes later
+		//A moved line is a moved line: itemChange() folds the moving
+		//into the ends, and Qt only tells about it with this flag
+	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 	setZValue(10); //over the conductors, like any line drawn above a wire
 	setFlag(QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
@@ -118,6 +121,51 @@ QUuid BridgePart::partUuid() const {
 	@param p1
 	@param p2
 */
+/**
+	@brief BridgePart::itemChange
+	However a line is moved about -- a paste puts it down elsewhere, a
+	duplicate stamps it at an offset, the hand drags it -- the line
+	itself goes along: its ends live in the drawing's own coordinates,
+	so a moved item is a moved line and never a shifted view of an
+	unmoved one. The item itself never leaves the origin: the line IS
+	the position, and every reader of the line reads the truth.
+*/
+QVariant BridgePart::itemChange(QGraphicsItem::GraphicsItemChange change,
+								const QVariant &value)
+{
+	if (change == ItemPositionChange)
+	{
+		const QPointF delta = value.toPointF() - pos();
+		if (!delta.isNull()) {
+			setLine(m_p1 + delta, m_p2 + delta);
+			if (m_bridge) {
+				m_bridge->setPartGeometry(m_part_uuid, m_p1, m_p2);
+			}
+		}
+		return QPointF();
+	}
+	return QetGraphicsItem::itemChange(change, value);
+}
+
+/**
+	@brief BridgePart::setPos
+	@param p
+*/
+void BridgePart::setPos(const QPointF &p)
+{
+	QGraphicsItem::setPos(p);
+}
+
+/**
+	@brief BridgePart::setPos
+	@param x
+	@param y
+*/
+void BridgePart::setPos(qreal x, qreal y)
+{
+	QGraphicsItem::setPos(QPointF(x, y));
+}
+
 void BridgePart::setLine(const QPointF &p1, const QPointF &p2)
 {
 	prepareGeometryChange();
@@ -216,6 +264,18 @@ void BridgePart::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		event->accept();
 		return;
 	}
+
+		//Anywhere else on the line takes hold of the whole of it: the
+		//line is dragged to a new place, both ends and all, and what it
+		//lands on there is what it lands on
+	if (event->button() == Qt::LeftButton) {
+		m_moving_line = true;
+		m_move_anchor = event->scenePos();
+		m_stretched_from = line();
+		setSelected(true);
+		event->accept();
+		return;
+	}
 	QetGraphicsItem::mousePressEvent(event);
 }
 
@@ -225,6 +285,16 @@ void BridgePart::mousePressEvent(QGraphicsSceneMouseEvent *event)
 */
 void BridgePart::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
+	if (!m_stretch_end && m_moving_line)
+	{
+		const QPointF from = Diagram::snapToGrid(m_move_anchor);
+		const QPointF to = Diagram::snapToGrid(event->scenePos());
+		const QPointF delta = to - from;
+		const QLineF was = m_stretched_from;
+		setLine(was.p1() + delta, was.p2() + delta);
+		event->accept();
+		return;
+	}
 	if (!m_stretch_end) {
 		QetGraphicsItem::mouseMoveEvent(event);
 		return;
@@ -250,11 +320,12 @@ void BridgePart::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 */
 void BridgePart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (!m_stretch_end) {
+	if (!m_stretch_end && !m_moving_line) {
 		QetGraphicsItem::mouseReleaseEvent(event);
 		return;
 	}
 	m_stretch_end = 0;
+	m_moving_line = false;
 
 	Bridge *bridge = m_bridge;
 	Diagram *folio = diagram();

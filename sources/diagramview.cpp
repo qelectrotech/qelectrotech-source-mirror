@@ -24,6 +24,9 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcommands.h"
 #include "cable/addcablecommand.h"
+#include "bridge/bridgecopy.h"
+#include "bridge/bridgepart.h"
+#include "bridge/bridgeundocommands.h"
 #include "cable/cablecopy.h"
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
@@ -672,19 +675,22 @@ void DiagramView::cut()
 	DiagramContent cut_content(m_diagram);
 		//A cable line is not held by DiagramContent: it leaves with a
 		//command of its own, which takes the cable itself away too when
-		//no line of it is left on the folio. A bridge line is left where
-		//it stands: a drawn bridge is not copied yet, so cutting one
-		//would take it away without leaving it on the clipboard.
+		//no line of it is left on the folio. A bridge line goes the same
+		//way -- and by way of the clipboard, so what is cut is pasted.
 	QList<CablePart *> cable_cut;
+	QList<BridgePart *> bridge_cut;
 	for (QGraphicsItem *item : m_diagram->selectedItems()) {
 		if (auto *part = qgraphicsitem_cast<CablePart *>(item)) {
 			cable_cut << part;
+		}
+		if (auto *part = qgraphicsitem_cast<BridgePart *>(item)) {
+			bridge_cut << part;
 		}
 	}
 
 	m_diagram -> clearSelection();
 
-	if (cable_cut.isEmpty()) {
+	if (cable_cut.isEmpty() && bridge_cut.isEmpty()) {
 		m_diagram -> undoStack().push(new CutDiagramCommand(m_diagram, cut_content));
 		return;
 	}
@@ -693,7 +699,12 @@ void DiagramView::cut()
 	if (cut_content.count()) {
 		command = new CutDiagramCommand(m_diagram, cut_content);
 	}
-	command = batchWith(command, new RemoveCableCommand(m_diagram, cable_cut));
+	if (!cable_cut.isEmpty()) {
+		command = batchWith(command, new RemoveCableCommand(m_diagram, cable_cut));
+	}
+	if (!bridge_cut.isEmpty()) {
+		command = batchWith(command, new RemoveBridgeCommand(bridge_cut));
+	}
 	m_diagram -> undoStack().push(command);
 }
 
@@ -709,6 +720,7 @@ void DiagramView::copy()
 		//owns it -- so it travels in a block of its own, beside the XML
 		//of the folio rather than in it.
 	CableCopy::write(m_diagram, document);
+	BridgeCopy::write(m_diagram, document);
 	QString content_clipboard = document.toString(4);
 	if (clipboard -> supportsSelection()) clipboard -> setText(content_clipboard, QClipboard::Selection);
 	clipboard -> setText(content_clipboard);
@@ -737,13 +749,15 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 		//place holds no wire, in which case the labels go on standing
 		//on the line to be wired when it is pulled into place.
 	QList<CablePart *> cable_pasted;
-	m_diagram->fromXml(document_xml, pos, false, &content_pasted, &cable_pasted);
+	QList<Bridge *> pasted_bridges;
+	m_diagram->fromXml(document_xml, pos, false, &content_pasted, &cable_pasted,
+					   &pasted_bridges);
 	const QList<CableCopy::Wired> wired = CableCopy::wire(
 			m_diagram, cable_pasted,
 			content_pasted.conductors(DiagramContent::AnyConductor));
 
 		//If something was really added to diagram, we create an undo object.
-	if (content_pasted.count() || !wired.isEmpty())
+	if (content_pasted.count() || !wired.isEmpty() || !pasted_bridges.isEmpty())
 	{
 		m_diagram -> clearSelection();
 
@@ -767,9 +781,16 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 			//Asks whether to import the numberings the copy brings, if the
 			//project has not got them; the paste itself and the cable lines
 			//travel inside the same step of the undo stack.
+		QList<QUndoCommand *> bridge_commands;
+		for (Bridge *bridge : std::as_const(pasted_bridges)) {
+			for (QUndoCommand *added : BridgeCopy::land(m_diagram, bridge)) {
+				added->setText(QCoreApplication::translate("BridgeCopy", "Paste a bridge"));
+				bridge_commands << added;
+			}
+		}
 		PasteNumberingImport::push(this, m_diagram, content_pasted,
 								   PasteNumberingImport::copiedBy(document_xml),
-								   cable_commands);
+								   cable_commands + bridge_commands);
 			//The stack has just renewed the identity of a pasted
 			//conductor: the cores are pointed at the wires again and
 			//the cable fields written out once more, so the entries
@@ -851,8 +872,10 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 	QList<CablePart *> cable_pasted;
 	// No position argument -- see the function comment above for why
 	// the offset is not passed here.
-	m_diagram->fromXml(document, QPointF(), false, &pasted, &cable_pasted);
-	if (!pasted.count() && cable_pasted.isEmpty()) return;
+	QList<Bridge *> pasted_bridges;
+	m_diagram->fromXml(document, QPointF(), false, &pasted, &cable_pasted,
+					   &pasted_bridges);
+	if (!pasted.count() && cable_pasted.isEmpty() && pasted_bridges.isEmpty()) return;
 
 	const int movable = DiagramContent::Elements | DiagramContent::TextFields
 					   | DiagramContent::Images | DiagramContent::Shapes
@@ -864,6 +887,15 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 		//ends up decides which wire it is going to take
 	for (CablePart *part : std::as_const(cable_pasted))
 		if (part) part->setPos(part->pos() + offset);
+		//A bridge line goes along the same way: moving the line is
+		//moving the line, however the moving is done
+	for (Bridge *bridge : std::as_const(pasted_bridges)) {
+		for (BridgePart *part : BridgePart::allParts()) {
+			if (part && part->bridge() == bridge) {
+				part->setPos(part->pos() + offset);
+			}
+		}
+	}
 
 	const QList<CableCopy::Wired> wired = CableCopy::wire(
 			m_diagram, cable_pasted,
@@ -881,6 +913,12 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 										  m_diagram, true, line.taken);
 		added->setText(QCoreApplication::translate("CableCopy", "Duplicate a cable"));
 		command = batchWith(command, added);
+	}
+	for (Bridge *bridge : std::as_const(pasted_bridges)) {
+		for (QUndoCommand *added : BridgeCopy::land(m_diagram, bridge)) {
+			added->setText(QCoreApplication::translate("BridgeCopy", "Duplicate a bridge"));
+			command = batchWith(command, added);
+		}
 	}
 	for (const CableCopy::Wired &line : std::as_const(wired)) {
 		if (line.part) line.part->setSelected(true);

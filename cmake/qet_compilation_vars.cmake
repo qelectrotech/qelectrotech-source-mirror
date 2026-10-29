@@ -990,6 +990,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/bridge/addbridgecommand.h
   ${QET_DIR}/sources/bridge/bridge.cpp
   ${QET_DIR}/sources/bridge/bridge.h
+  ${QET_DIR}/sources/bridge/bridgecopy.cpp
+  ${QET_DIR}/sources/bridge/bridgecopy.h
   ${QET_DIR}/sources/bridge/bridgecreatedialog.cpp
   ${QET_DIR}/sources/bridge/bridgecreatedialog.h
   ${QET_DIR}/sources/bridge/bridgemanager.cpp

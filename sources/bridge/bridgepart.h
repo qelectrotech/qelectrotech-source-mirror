@@ -66,6 +66,15 @@ class BridgePart : public QetGraphicsItem
 		static QList<BridgePart *> allParts();
 
 		void setLine(const QPointF &p1, const QPointF &p2);
+			/**
+				A line moved about -- a paste puts it down elsewhere, a
+				duplicate stamps it at an offset, the hand drags it --
+				is a moved line: these two hide the base class, which
+				refuses to move an item whose shape is the user's own.
+				The moving itself is folded into the ends by itemChange().
+			*/
+		void setPos(const QPointF &p);
+		void setPos(qreal x, qreal y);
 		QLineF line() const;
 		QPointF firstPoint() const {return m_p1;}
 		QPointF secondPoint() const {return m_p2;}
@@ -76,6 +85,7 @@ class BridgePart : public QetGraphicsItem
 		QString name() const override;
 
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 			///Opens the dialog editing the properties of the whole bridge
@@ -91,6 +101,9 @@ class BridgePart : public QetGraphicsItem
 		QUuid m_part_uuid;
 		QPointF m_p1;
 		QPointF m_p2;
+			///The whole line is being dragged to a new place
+		bool m_moving_line = false;
+		QPointF m_move_anchor;
 			///1 or 2 while one of the ends is dragged around, 0 otherwise
 		int m_stretch_end = 0;
 			///Where the line stood when the drag began, to put it back

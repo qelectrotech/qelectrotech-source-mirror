@@ -27,6 +27,7 @@
 #include "bridge/addbridgecommand.h"
 #include "bridge/bridgecreatedialog.h"
 #include "bridge/bridgemanager.h"
+#include "bridge/bridgecopy.h"
 #include "bridge/bridgepart.h"
 #include "undocommand/linkelementcommand.h"
 #include "bridge/bridgeundocommands.h"
@@ -1827,6 +1828,119 @@ private slots:
 		BridgeManager::followDocks(&project, original);
 		QVERIFY2(QLineF(line_of_the_part().p2(), original->terminals().first()->dockConductor()).length() < 0.1,
 				 "the original keeps its end");
+	}
+
+	//However a line is moved about -- a paste puts it down elsewhere, a
+	//duplicate stamps it at an offset, the hand drags it -- the line
+	//itself goes along
+	void aBridgeLineGoesWhereverItIsMoved()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(!terminals.isEmpty());
+		Element *symbol = terminals.at(0)->element();
+		Diagram *folio = diagramOf(project, symbol);
+		QVERIFY(symbol && folio);
+		const QPointF on_the_pin = symbol->terminals().first()->dockConductor();
+
+		Bridge *bridge = project.newBridge();
+		bridge->addTerminal(terminalOf(terminals.at(0)));
+		BridgePartData data;
+		data.uuid = QUuid::createUuid();
+		data.diagram = folio->uuid();
+		data.p1 = on_the_pin;
+		data.p2 = on_the_pin + QPointF(120, 0);
+		bridge->addPart(data);
+		auto *item = new BridgePart(data);
+		item->setBridge(bridge);
+		folio->addItem(item);
+
+		const QLineF was = item->line();
+		item->setPos(item->pos() + QPointF(60, 20));
+
+			//The drawn line goes along, ends and all
+		const QPointF by(60, 20);
+		QVERIFY2(QLineF(item->line().p1(), was.p1() + by).length() < 0.1,
+				 "a moved line is a moved line");
+		QVERIFY2(QLineF(item->line().p2(), was.p2() + by).length() < 0.1,
+				 "and both of its ends with it");
+			//And what the bridge holds is where the line is drawn
+		for (const BridgePartData &held : bridge->parts()) {
+			QVERIFY2(QLineF(held.p1, item->line().p1()).length() < 0.1,
+					 "the bridge holds the line where it is drawn");
+		}
+	}
+
+	//A copied bridge line is a bridge of its own: what it was -- its
+	//colour, its limit, its name, the voltage it carries -- comes with
+	//it, and what it landed on does not
+	void aCopiedBridgeLineIsABridgeOfItsOwn()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		const auto terminals = stripTerminals(project);
+		QVERIFY(terminals.size() >= 2);
+		Diagram *folio = diagramOf(project, terminals.at(0)->element());
+		QVERIFY(folio);
+
+		Bridge *bridge = project.newBridge();
+		bridge->setColor(QColor(Qt::red));
+		bridge->setMaxConnections(3);
+		bridge->setName(QStringLiteral("B1"));
+		bridge->setTensionText(QStringLiteral("24 V"));
+		bridge->addTerminal(terminalOf(terminals.at(0)));
+		bridge->addTerminal(terminalOf(terminals.at(1)));
+		const QPointF at = terminals.at(0)->element()->terminals().first()->dockConductor();
+		BridgePartData data;
+		data.uuid = QUuid::createUuid();
+		data.diagram = folio->uuid();
+		data.p1 = at;
+		data.p2 = at + QPointF(120, 0);
+		bridge->addPart(data);
+		auto *item = new BridgePart(data);
+		item->setBridge(bridge);
+		folio->addItem(item);
+		item->setSelected(true);
+
+			//What is copied travels beside the folio's own drawing
+		QDomDocument clipboard;
+		clipboard.appendChild(clipboard.createElement(QStringLiteral("diagram")));
+		BridgeCopy::write(folio, clipboard);
+		QVERIFY(!clipboard.documentElement()
+					 .firstChildElement(QStringLiteral("bridge_copies")).isNull());
+
+			//And what is pasted is a bridge of its own
+		const int bridges_before = project.bridges().size();
+		const QList<Bridge *> built =
+				BridgeCopy::read(folio, clipboard.documentElement());
+		QCOMPARE(built.size(), 1);
+		Bridge *copy = built.first();
+		QVERIFY(copy != bridge);
+		QCOMPARE(copy->color(), QColor(Qt::red));
+		QCOMPARE(copy->maxConnections(), 3);
+		QCOMPARE(copy->name(), QStringLiteral("B1"));
+		QCOMPARE(copy->parts().size(), 1);
+
+		QList<QUndoCommand *> commands = BridgeCopy::land(folio, copy);
+		QVERIFY(!commands.isEmpty());
+		for (QUndoCommand *command : std::as_const(commands)) {
+			folio->undoStack().push(command);
+		}
+
+			//The copy lands on the terminals its line crosses where it
+			//is put down, and the original keeps what was its own
+		QCOMPARE(project.bridges().size(), bridges_before + 1);
+		QVERIFY(copy->klemmCount() > 0);
+		QCOMPARE(bridge->klemmCount(), 2);
+
+			//And one undo puts the copy away again
+		for (int i = commands.size() ; i ; --i) {
+			folio->undoStack().undo();
+		}
+		QCOMPARE(project.bridges().size(), bridges_before);
 	}
 
 	//What is one bridge carried on over the sheets is one pair of

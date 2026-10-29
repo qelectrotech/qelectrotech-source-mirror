@@ -16,7 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagram.h"
+#include "bridge/bridgecopy.h"
 #include "bridge/bridgemanager.h"
+#include "bridge/bridgepart.h"
 #include "dataBase/projectdatabase.h"
 #include "autoNum/elementautonumschemecommand.h"
 
@@ -1850,9 +1852,10 @@ bool Diagram::fromXml(QDomDocument &document,
 				QPointF position,
 				bool consider_informations,
 				DiagramContent *content_ptr,
-				QList<CablePart *> *cables_added) {
+				QList<CablePart *> *cables_added,
+			  QList<Bridge *> *bridges_added) {
 	QDomElement root = document.documentElement();
-	return(fromXml(root, position, consider_informations, content_ptr, cables_added));
+	return(fromXml(root, position, consider_informations, content_ptr, cables_added, bridges_added));
 }
 
 /**
@@ -2098,7 +2101,8 @@ bool Diagram::fromXml(QDomElement &document,
 				QPointF position,
 				bool consider_informations,
 				DiagramContent *content_ptr,
-				QList<CablePart *> *cables_added)
+				QList<CablePart *> *cables_added,
+			QList<Bridge *> *bridges_added)
 {
 	const QDomElement& root = document;
 		// The first element must be a diagram
@@ -2417,6 +2421,14 @@ bool Diagram::fromXml(QDomElement &document,
 		*cables_added = added_cables;
 	}
 
+		//The bridge lines of a copy come in the same way, and are put
+		//down with everything else
+	QList<Bridge *> added_bridges;
+	if (bridges_added) {
+		added_bridges = BridgeCopy::read(this, root);
+		*bridges_added = added_bridges;
+	}
+
 	//Translate items if a new position was given in parameter
 	if (position != QPointF())
 	{
@@ -2428,6 +2440,13 @@ bool Diagram::fromXml(QDomElement &document,
 		for (auto table   : std::as_const(added_tables     )) added_items << table;
 		for (const auto &strip : std::as_const(added_strips)) added_items << strip;
 		for (const auto &cable : std::as_const(added_cables)) added_items << cable;
+		for (Bridge *bridge : std::as_const(added_bridges)) {
+			for (BridgePart *part : BridgePart::allParts()) {
+				if (part && part->bridge() == bridge) {
+					added_items << part;
+				}
+			}
+		}
 
 		//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
