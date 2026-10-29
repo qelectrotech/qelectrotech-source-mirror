@@ -442,6 +442,10 @@ qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
 # plan order, the same three fields the cable list computes for a target.
 qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
 
+# What lies outside the sheet: named per folio, for the warning before
+# printing and exporting; off with the setting.
+qet_add_app_test(tst_outsidesheet tst_outsidesheet.cpp)
+
 # legacyelementtypes.h is header-only: the rewrite of element type names in
 # nomenclature queries saved before June 2022.
 add_executable(tst_legacyelementtypes tst_legacyelementtypes.cpp)

@@ -69,6 +69,10 @@ class QETDiagramEditor : public QETMainWindow
         friend class MacroRecorder;
 	
 	public:
+			/// Warn about what lies outside the sheet (Settings > General)
+		static bool warnsOutsideSheet();
+		static void setWarnsOutsideSheet(bool on);
+		static QStringList outsideSheetReport(QETProject *project);
 		QETDiagramEditor(
 				const QStringList & = QStringList(),
 				QWidget * = nullptr);
@@ -131,6 +135,8 @@ class QETDiagramEditor : public QETMainWindow
 		QMdiSubWindow *subWindowForWidget(QWidget *) const;
 		void updateUsageTrackersActiveState();
 		void updateWindowModifiedState();
+		bool confirmOutsideSheet(QETProject *project);
+		void showOutsideSheetAfterSave(QETProject *project);
 
 	signals:
 		void syncElementsPanel();

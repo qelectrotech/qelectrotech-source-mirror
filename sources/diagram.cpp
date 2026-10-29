@@ -299,6 +299,42 @@ Diagram::~Diagram()
 }
 
 /**
+	@brief Diagram::itemsOutsideSheet
+	@return the names of what lies wholly or partly outside the sheet (its
+	border and title block), and so is cut off or left out when the folio
+	is printed or exported: symbols by their label (or their name), and
+	free texts, shapes, pictures and tables by their kind. Conductors are
+	left out, as they go with the symbols they join; so is anything hidden.
+*/
+QStringList Diagram::itemsOutsideSheet() const
+{
+	const QRectF sheet = border_and_titleblock.borderAndTitleBlockRect();
+	QStringList names;
+	for (QGraphicsItem *item : items())
+	{
+		if (item->parentItem() || !item->isVisible()
+				|| item->type() == Conductor::Type
+				|| sheet.contains(item->sceneBoundingRect()))
+			continue;
+		switch (item->type())
+		{
+			case Element::Type: {
+				auto *element = static_cast<Element *>(item);
+				const QString label = element->actualLabel();
+				names << (label.isEmpty() ? element->name() : label);
+				break;
+			}
+			case IndependentTextItem::Type: names << tr("a text"); break;
+			case QetShapeItem::Type:        names << tr("a shape"); break;
+			case DiagramImageItem::Type:    names << tr("a picture"); break;
+			case QetGraphicsTableItem::Type: names << tr("a table"); break;
+			default: break;
+		}
+	}
+	return names;
+}
+
+/**
 	@brief Diagram::drawBackground
 	Draw the background of the diagram, ie the grid.
 	\~French Dessine l'arriere-plan du schema, cad la grille.
