@@ -24,14 +24,20 @@
 class QDockWidget;
 class QMainWindow;
 class QToolButton;
+class QAction;
+class QTimer;
 
 /**
-	A button at the edge of the drawing, beside the docks of one side, as
-	in LibreOffice's sidebar: a click folds the docks of that side away,
-	and the drawing gets their room; a second click shows them again, at
-	the width and heights they had. Docks opened another way (the
-	Windows menu) end the fold. The folded docks are remembered over a
-	restart.
+	A bar at the edge of the drawing, beside the docks of one side, as in
+	LibreOffice's sidebar: a click folds the docks of that side away, and
+	the drawing gets their room; a second click shows them again, at the
+	width and heights they had. Docks opened another way (the Windows
+	menu) end the fold. The folded docks are remembered over a restart.
+
+	The bar stands in a strip of its own at the edge of the central
+	widget, so it covers neither the drawing's scroll bar nor the dock
+	separator. The same is in the Display menu as action(), with a
+	shortcut, whether the bars are shown or not.
 */
 class DockFold : public QObject
 {
@@ -40,12 +46,14 @@ class DockFold : public QObject
 	public:
 		DockFold(QMainWindow *window, Qt::DockWidgetArea area);
 
-			/// The setting (Settings > General, on by default)
+			/// The setting (Settings > General, off by default); a
+			/// change shows or hides the bars of every window at once
 		static bool enabled();
 		static void setEnabled(bool on);
 
 		bool isFolded() const { return !m_folded.isEmpty(); }
 		QToolButton *button() const { return m_button; }
+		QAction *action() const { return m_action; }
 
 	public slots:
 		void toggle();
@@ -59,13 +67,17 @@ class DockFold : public QObject
 		void fold();
 		void unfold();
 		void refresh();
+		void scheduleRefresh();
 		void place();
+		void reserveStrip(bool on);
 		QString settingKey() const;
 		void remember();
 
 		QMainWindow *m_window;
 		Qt::DockWidgetArea m_area;
 		QToolButton *m_button;
+		QAction *m_action;
+		QTimer *m_refresh_timer;
 			/// The folded docks, by name: all of them, those that were
 			/// in front of their tab group, the width of the side and the
 			/// height of each one in front

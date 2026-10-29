@@ -20,6 +20,7 @@
 
 #include <QAction>
 #include <QDockWidget>
+#include <QMenu>
 #include <QToolButton>
 
 /**
@@ -44,6 +45,9 @@ class tst_dockfold : public QObject
 	private slots:
 		void initTestCase()
 		{
+				//Off by default: no bars until the setting is on
+			QVERIFY(!DockFold::enabled());
+			DockFold::setEnabled(true);
 			QETDiagramEditor *editor = QetAppTest::editor();
 			QVERIFY(editor);
 			editor->resize(1600, 1000);
@@ -74,8 +78,9 @@ class tst_dockfold : public QObject
 			QTest::qWait(100);
 			QVERIFY(openDocks(editor, Qt::RightDockWidgetArea).isEmpty());
 			QVERIFY(editor->centralWidget()->width() > drawing + 300);
-				//The arrow stays at the edge of the drawing
+				//The bar stays at the edge, in a strip of its own
 			QVERIFY(button->isVisible());
+			QCOMPARE(editor->centralWidget()->contentsMargins().right(), button->width());
 			QVERIFY(button->geometry().right() <= editor->centralWidget()->geometry().right());
 			QVERIFY(button->geometry().right() > editor->centralWidget()->geometry().right() - 40);
 
@@ -124,15 +129,33 @@ class tst_dockfold : public QObject
 			QCOMPARE(openDocks(editor, Qt::LeftDockWidgetArea).size(), count);
 		}
 
-		void noArrowsWithTheSettingOff()
+			//The Display menu folds too, bars or not
+		void theMenuFoldsWithoutBars()
 		{
 			QETDiagramEditor *editor = QetAppTest::editor();
 			DockFold::setEnabled(false);
-			editor->resize(1500, 1000);
+			QAction *fold = QetAppTest::action(QStringLiteral("fold_right_docks"));
+			QVERIFY(fold);
+			auto *menu = editor->findChild<QMenu *>(QStringLiteral("display_menu"));
+			QVERIFY(menu && menu->actions().contains(fold));
+			fold->trigger();
 			QTest::qWait(100);
+			QVERIFY(openDocks(editor, Qt::RightDockWidgetArea).isEmpty());
+			fold->trigger();
+			QTest::qWait(200);
+			QVERIFY(!openDocks(editor, Qt::RightDockWidgetArea).isEmpty());
+			DockFold::setEnabled(true);
+		}
+
+			//Switched off, the bars and their strips go at once
+		void noBarsWithTheSettingOff()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			DockFold::setEnabled(false);
 			for (const QString &name : {QStringLiteral("qet_dock_fold_right"),
 						    QStringLiteral("qet_dock_fold_left")})
 				QVERIFY(!editor->findChild<QToolButton *>(name)->isVisible());
+			QCOMPARE(editor->centralWidget()->contentsMargins(), QMargins());
 			DockFold::setEnabled(true);
 		}
 };

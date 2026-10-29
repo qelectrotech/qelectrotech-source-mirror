@@ -22,6 +22,7 @@
 #include <QDockWidget>
 #include <QEvent>
 #include <QMainWindow>
+#include <QPointer>
 #include <QPainter>
 #include <QPixmap>
 #include <QSettings>
@@ -31,18 +32,20 @@
 
 namespace {
 	const char *const watched_by = "qetDockFoldWatched";
+		/// Every bar, so a change of the setting reaches them all
+	QList<QPointer<DockFold>> all_folds;
 
 	/**
-		A light triangle pointing left or right, drawn on the dark bar
+		A triangle pointing left or right, in @p color
 	*/
-	QIcon triangle(bool left)
+	QIcon triangle(bool left, const QColor &color)
 	{
 		QPixmap pixmap(6, 10);
 		pixmap.fill(Qt::transparent);
 		QPainter painter(&pixmap);
 		painter.setRenderHint(QPainter::Antialiasing);
 		painter.setPen(Qt::NoPen);
-		painter.setBrush(QColor(0xe0, 0xe0, 0xe0));
+		painter.setBrush(color);
 		const QPolygonF points = left
 				? QPolygonF({QPointF(6, 0), QPointF(6, 10), QPointF(0, 5)})
 				: QPolygonF({QPointF(0, 0), QPointF(0, 10), QPointF(6, 5)});
@@ -55,17 +58,25 @@ DockFold::DockFold(QMainWindow *window, Qt::DockWidgetArea area) :
 	QObject(window),
 	m_window(window),
 	m_area(area),
-	m_button(new QToolButton(window))
+	m_button(new QToolButton(window)),
+	m_action(new QAction(this)),
+	m_refresh_timer(new QTimer(this))
 {
+	all_folds << this;
+	m_refresh_timer->setSingleShot(true);
+	m_refresh_timer->setInterval(0);
+	connect(m_refresh_timer, &QTimer::timeout, this, &DockFold::refresh);
+	connect(m_action, &QAction::triggered, this, &DockFold::toggle);
+	window->addAction(m_action);
 	m_button->setObjectName(area == Qt::RightDockWidgetArea
 				? QStringLiteral("qet_dock_fold_right")
 				: QStringLiteral("qet_dock_fold_left"));
-		//A dark bar with a light triangle, as beside the sidebar of
-		//LibreOffice: it stands out on a light and on a dark drawing
+		//A bar with a triangle, as beside the sidebar of LibreOffice, in
+		//the colours of the theme
 	m_button->setStyleSheet(QStringLiteral(
-		"QToolButton { background: #303030; border: none; border-radius: 1px; }"
-		"QToolButton:hover { background: #505050; }"
-		"QToolButton:pressed { background: #202020; }"));
+		"QToolButton { background: palette(mid); border: none; border-radius: 1px; }"
+		"QToolButton:hover { background: palette(dark); }"
+		"QToolButton:pressed { background: palette(shadow); }"));
 	m_button->setIconSize(QSize(6, 10));
 	m_button->setFocusPolicy(Qt::NoFocus);
 	m_button->setCursor(Qt::PointingHandCursor);
@@ -85,17 +96,30 @@ DockFold::DockFold(QMainWindow *window, Qt::DockWidgetArea area) :
 	window->installEventFilter(this);
 	if (window->centralWidget())
 		window->centralWidget()->installEventFilter(this);
-	QTimer::singleShot(0, this, &DockFold::refresh);
+	scheduleRefresh();
 }
 
 bool DockFold::enabled()
 {
-	return QSettings().value(QStringLiteral("diagrameditor/dock_fold_buttons"), true).toBool();
+	return QSettings().value(QStringLiteral("diagrameditor/dock_fold_buttons"), false).toBool();
 }
 
 void DockFold::setEnabled(bool on)
 {
 	QSettings().setValue(QStringLiteral("diagrameditor/dock_fold_buttons"), on);
+	for (const QPointer<DockFold> &fold : std::as_const(all_folds))
+		if (fold)
+			fold->refresh();
+}
+
+/**
+	Refresh once the events of this round are through: a resize brings
+	several of them, one refresh is enough
+*/
+void DockFold::scheduleRefresh()
+{
+	if (!m_busy)
+		m_refresh_timer->start();
 }
 
 void DockFold::toggle()
@@ -115,8 +139,7 @@ bool DockFold::eventFilter(QObject *watched, QEvent *event)
 		case QEvent::Hide:
 		case QEvent::LayoutRequest:
 		case QEvent::ChildAdded:
-			if (!m_busy)
-				QTimer::singleShot(0, this, &DockFold::refresh);
+			scheduleRefresh();
 			break;
 		default:
 			break;
@@ -221,14 +244,8 @@ void DockFold::refresh()
 	for (QDockWidget *dock : m_window->findChildren<QDockWidget *>(QString(), Qt::FindDirectChildrenOnly))
 		if (!dock->property(watched_by).toBool()) {
 			dock->setProperty(watched_by, true);
-			connect(dock, &QDockWidget::visibilityChanged, this, [this] {
-				if (!m_busy)
-					QTimer::singleShot(0, this, &DockFold::refresh);
-			});
-			connect(dock, &QDockWidget::dockLocationChanged, this, [this] {
-				if (!m_busy)
-					QTimer::singleShot(0, this, &DockFold::refresh);
-			});
+			connect(dock, &QDockWidget::visibilityChanged, this, &DockFold::scheduleRefresh);
+			connect(dock, &QDockWidget::dockLocationChanged, this, &DockFold::scheduleRefresh);
 		}
 		//A dock of this side opened another way: the side is no longer
 		//folded
@@ -242,9 +259,15 @@ void DockFold::refresh()
 
 	const bool right = m_area == Qt::RightDockWidgetArea;
 		//The arrow points where the docks go
-	m_button->setIcon(triangle(isFolded() == right));
+	m_button->setIcon(triangle(isFolded() == right,
+				   m_button->palette().color(QPalette::ButtonText)));
 	m_button->setToolTip(isFolded() ? tr("Show the side panels again")
 					: tr("Fold the side panels away"));
+	m_action->setText(right
+		? (isFolded() ? tr("Show the right side panels again") : tr("Fold the right side panels away"))
+		: (isFolded() ? tr("Show the left side panels again") : tr("Fold the left side panels away")));
+	m_action->setEnabled(isFolded() || !open.isEmpty());
+	reserveStrip(enabled());
 	if (!enabled() || (open.isEmpty() && !isFolded())) {
 		m_button->hide();
 		return;
@@ -255,9 +278,31 @@ void DockFold::refresh()
 }
 
 /**
-	The bar stands in the middle of the drawing's height: on the gap
-	between the drawing and the open panels, or at the window's edge
-	while they are folded away
+	Keep a strip of the bar's width free at this side of the central
+	widget, or give it back
+*/
+void DockFold::reserveStrip(bool on)
+{
+	QWidget *central = m_window->centralWidget();
+	if (!central)
+		return;
+	QMargins margins = central->contentsMargins();
+	const int strip = on ? m_button->width() : 0;
+	if (m_area == Qt::RightDockWidgetArea) {
+		if (margins.right() == strip)
+			return;
+		margins.setRight(strip);
+	} else {
+		if (margins.left() == strip)
+			return;
+		margins.setLeft(strip);
+	}
+	central->setContentsMargins(margins);
+}
+
+/**
+	The bar stands in its strip at this side of the central widget, in
+	the middle of its height
 */
 void DockFold::place()
 {
@@ -265,17 +310,9 @@ void DockFold::place()
 	if (!central)
 		return;
 	const QRect area = central->geometry();
-	const bool right = m_area == Qt::RightDockWidgetArea;
-	const int width = m_button->width();
-	int x;
-	if (isFolded()) {
-		x = right ? area.right() + 1 - width : area.left();
-	} else {
-		const int gap = m_window->style()->pixelMetric(
-					QStyle::PM_DockWidgetSeparatorExtent, nullptr, m_window);
-		x = right ? area.right() + 1 + (gap - width) / 2
-			  : area.left() - (gap + width) / 2;
-	}
+	const int x = m_area == Qt::RightDockWidgetArea
+			? area.right() + 1 - m_button->width()
+			: area.left();
 	m_button->move(x, area.center().y() - m_button->height() / 2);
 }
 
