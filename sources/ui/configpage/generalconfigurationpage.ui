@@ -263,6 +263,16 @@
          </property>
          <property name="text">
           <string>Upright symbol texts read from bottom to top</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+        <widget class="QCheckBox" name="m_terminal_help_lines_cb">
+         <property name="toolTip">
+          <string>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</string>
+         </property>
+         <property name="text">
+          <string>Help lines from the terminals of a dragged symbol</string>
          </property>
         </widget>
        </item>

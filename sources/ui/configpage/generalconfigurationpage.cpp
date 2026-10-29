@@ -126,6 +126,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_mouse_gestures_cb->setChecked(settings.value("diagrameditor/mouse_gestures", true).toBool());
 	ui->m_pointer_aids_cb->setChecked(DiagramView::pointerAids());
 	ui->m_vertical_texts_from_bottom_cb->setChecked(DynamicElementTextItem::verticalFromBottom());
+	ui->m_terminal_help_lines_cb->setChecked(DiagramView::terminalHelpLinesShown());
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
 	for (const qreal divisor : TextGrid::divisors)
@@ -446,6 +447,7 @@ void GeneralConfigurationPage::applyConf()
 	DiagramView::setPointerAids(ui->m_pointer_aids_cb->isChecked());
 	if (ui->m_vertical_texts_from_bottom_cb->isChecked() != DynamicElementTextItem::verticalFromBottom())
 		DynamicElementTextItem::setVerticalFromBottom(ui->m_vertical_texts_from_bottom_cb->isChecked());
+	DiagramView::setTerminalHelpLinesShown(ui->m_terminal_help_lines_cb->isChecked());
 		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());
