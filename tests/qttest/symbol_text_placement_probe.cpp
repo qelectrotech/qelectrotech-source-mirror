@@ -134,6 +134,15 @@ int main(int argc, char **argv)
 		scene->undoStack().push(SymbolTextPlacement::place({element}, Qt::AlignLeft | Qt::AlignVCenter));
 		b = block(texts);
 		check(same(b.right(), body(element).left() - SymbolTextPlacement::gap), "turned symbol: the block is left of it in the folio");
+			// and a corner of a turned symbol: level with its top in the folio
+		scene->undoStack().push(SymbolTextPlacement::place({element}, Qt::AlignLeft | Qt::AlignTop));
+		b = block(texts);
+		check(same(b.top(), body(element).top()) && same(b.right(), body(element).left() - SymbolTextPlacement::gap),
+			  "turned symbol, top left: the block's top on its top in the folio, left of it");
+		scene->undoStack().push(SymbolTextPlacement::place({element}, Qt::AlignRight | Qt::AlignBottom));
+		b = block(texts);
+		check(same(b.bottom(), body(element).bottom()) && same(b.left(), body(element).right() + SymbolTextPlacement::gap),
+			  "turned symbol, bottom right: the block's bottom on its bottom in the folio, right of it");
 		element->setRotation(0);
 
 		// A group of texts is one line of the block, aligned like it.
