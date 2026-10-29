@@ -45,7 +45,11 @@ namespace QetDbFile
 		/// @p sha1, if given, gets the SHA-1 of the file written (what
 		/// QETProject remembers to see it changed on disk), made from it
 		/// before it replaces the project, while it is checked and flushed
-	bool save(projectDataBase &database, const QString &path, QString *error, QByteArray *sha1 = nullptr);
+		/// @p previous, if given, is the file this save follows when it is
+		/// not @p path (Save As, a copy): the history it keeps goes on in
+		/// the new file (QETDB-S6-SCOPE.md R4)
+	bool save(projectDataBase &database, const QString &path, QString *error, QByteArray *sha1 = nullptr,
+			  const QString &previous = QString());
 	bool read(const QString &path, QDomDocument *document, QString *error,
 			  const std::function<bool(const QString &copy)> &with_copy = {});
 		/// History of the saves, kept in the file when switched on

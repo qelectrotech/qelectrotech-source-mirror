@@ -499,6 +499,7 @@ class QETProject : public QObject
 		static QString openFileFilter();
 		QETResult writeCopyForOlderVersions(const QString &path);
 		bool writeContainerFile(const QString &path, QString *error = nullptr);
+		bool writeDatabaseFile(const QString &path, QString *error = nullptr);
 	private:
 		static QUuid derivedUuid(const QByteArray &content);
 		void refresh();

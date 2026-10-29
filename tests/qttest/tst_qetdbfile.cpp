@@ -308,6 +308,40 @@ private slots:
 		QVERIFY(resave(path, back).contains(QStringLiteral("Project database read from the file")));
 	}
 
+	// A copy written by a script (qet.save(path)) is a .qetdb, and the
+	// history the project's file keeps goes on in it: the copy has the save,
+	// the project's own file not (QETDB-S6-SCOPE.md R4)
+	void historyGoesOnInACopy()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("own.qetdb"));
+		const QString copy = m_dir.filePath(QStringLiteral("copy.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString out = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QFile js(m_dir.filePath(QStringLiteral("copy.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write(QStringLiteral("var us = qet.elementUuids(0).sort();\n"
+								"qet.setElementLabel(0, us[0], 'COPY1');\n"
+								"qet.log('COPIED ' + qet.save('%1'));\n").arg(copy).toUtf8());
+		js.close();
+		out = run({QStringLiteral("--run"), js.fileName(), path});
+		QVERIFY2(out.contains(QStringLiteral("COPIED true")), qPrintable(out.right(800)));
+		QCOMPARE(pragma(copy, QStringLiteral("PRAGMA application_id")).toInt(), 0x51455444);
+		const auto revisions = [this](const QString &file) {
+			return run({QStringLiteral("--history"), file}).split(QLatin1Char('\n'))
+					.filter(QRegularExpression(QStringLiteral("^\\d+  ")));
+		};
+		const QStringList in_copy = revisions(copy), in_own = revisions(path);
+		QVERIFY2(in_copy.size() == 2 && in_copy.at(1).contains(QStringLiteral("element_info")),
+				 qPrintable(in_copy.join(QLatin1Char('\n'))));
+		QCOMPARE(in_own.size(), 1);
+	}
+
 	// A symbol whose definition is missing is kept as read (F127): opened
 	// from the file's tables and saved again, a folio not built keeps it
 	void keptSymbolSurvivesResave()

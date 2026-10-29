@@ -2954,6 +2954,20 @@ QString QETProject::openFileFilter()
 }
 
 /**
+	@brief QETProject::writeDatabaseFile
+	Write this project to @p path as a .qetdb, a copy: the project's own
+	file and what it remembers of it stay as they are. A history the
+	project's file keeps goes on in the copy (QETDB-S6-SCOPE.md R4)
+*/
+bool QETProject::writeDatabaseFile(const QString &path, QString *error)
+{
+	storeSettings();
+	const QString previous = QetDbFile::isDatabasePath(m_disk_path) ? m_disk_path : QString();
+	return QetDbFile::save(m_data_base, path, error, nullptr,
+						   previous.isEmpty() || previous == path ? QString() : previous);
+}
+
+/**
 	@brief QETProject::writeContainerFile
 	Write this project to @p path as a .qetz
 */
@@ -3165,7 +3179,11 @@ QETResult QETProject::write(bool overwrite_changed)
 			//above included (experimental, QET-SQL-FORMAT S4a)
 		storeSettings();
 		save_lap("settings");
-		if (!QetDbFile::save(m_data_base, m_file_path, &error_message, &saved_hash)) {
+			//After Save As, the history goes on from the file it was
+			//(QETDB-S6-SCOPE.md R4)
+		const QString previous = QetDbFile::isDatabasePath(m_disk_path) && m_disk_path != m_file_path
+				? m_disk_path : QString();
+		if (!QetDbFile::save(m_data_base, m_file_path, &error_message, &saved_hash, previous)) {
 			const QETResult result = failed_stamped(error_message);
 			storeSettings();
 			return result;

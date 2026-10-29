@@ -551,7 +551,8 @@ bool QetDbFile::isDatabase(const QByteArray &head)
 	beside it (<path>.saving), checked, flushed to disk, then put in its
 	place at once. On any failure @p path is as it was.
 */
-bool QetDbFile::save(projectDataBase &database, const QString &path, QString *error, QByteArray *sha1)
+bool QetDbFile::save(projectDataBase &database, const QString &path, QString *error, QByteArray *sha1,
+					 const QString &previous)
 {
 	const QString saving = path + QStringLiteral(".saving");
 	QFuture<QByteArray> hashing;
@@ -572,7 +573,7 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 		return true;
 	};
 	if (!database.copyTo(saving, error) || !lap("copy") || !finish(saving, error) || !lap("finish")
-			|| !recordRevision(saving, path, error) || !lap("revision"))
+			|| !recordRevision(saving, previous.isEmpty() ? path : previous, error) || !lap("revision"))
 		return give_up();
 		//The file is complete and no one else's yet: hashed beside its
 		//check and flush, not read again once it is the project
