@@ -195,12 +195,19 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 	QVBoxLayout *diagram_layout = new QVBoxLayout(diagram_widget);
 
 	diagram_layout -> addWidget(bpw);
-	diagram_layout -> addWidget(ipw);
-		//The default labelling of the terminals, application's defaults only.
-		//No stretch after it: the title block widget below takes the free
-		//height of the tab, and a spacer here would only give it a partner
-		//to share that height with -- an empty band at the bottom (the
-		//group box has a fixed height and sits fine without a spacer)
+		//The free height of the tab belongs to the title block widget:
+		//the stretch factor says so outright, here on the application's
+		//defaults as well as on a project's own page (which ends here),
+		//so a widget added after it later -- the way the labelling group
+		//was added at the end of the tab -- cannot take the height away
+		//from it and bring the empty band at the bottom back. Nothing
+		//here grows to reach for the height either: the group box is
+		//Preferred like every QGroupBox, and what the title block does
+		//with the height says titleblockpropertieswidget.ui -- the
+		//pages of its tab take it, the Template row keeps its own.
+	diagram_layout -> addWidget(ipw, 1);
+		//The default labelling of the terminals, application's defaults
+		//only. It sits at its natural height at the end of the tab.
 	if (m_terminal_label_gb) {
 		diagram_layout -> addWidget(m_terminal_label_gb);
 	}
