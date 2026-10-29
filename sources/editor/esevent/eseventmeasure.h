@@ -20,6 +20,7 @@
 
 #include <QCoreApplication>
 #include <QList>
+#include <QPointer>
 #include "eseventinterface.h"
 
 class ElementScene;
@@ -50,7 +51,7 @@ class ESEventMeasure : public ESEventInterface
 		void updateStatusMessage(const QPointF &p1, const QPointF &p2);
 		void clearAllMeasurements();
 
-		QAction *m_action = nullptr;
+		QPointer<QAction> m_action;
 		ElementMeasureItem *m_current_measure = nullptr;
 		QList<ElementMeasureItem *> m_pinned_measures;
 		bool m_in_first_click = true;

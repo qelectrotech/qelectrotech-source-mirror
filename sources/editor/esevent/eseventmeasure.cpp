@@ -42,27 +42,23 @@ ESEventMeasure::ESEventMeasure(ElementScene *scene, QAction *action) :
 ESEventMeasure::~ESEventMeasure()
 {
 	if (m_current_measure) {
-		m_scene->removeItem(m_current_measure);
+		if (m_current_measure->scene()) {
+			m_current_measure->scene()->removeItem(m_current_measure);
+		}
 		delete m_current_measure;
 		m_current_measure = nullptr;
 	}
 
 	clearAllMeasurements();
-
-	if (m_action) {
-		m_action->setChecked(false);
-	}
-
-	if (m_editor && m_editor->statusBar()) {
-		m_editor->statusBar()->clearMessage();
-	}
 }
 
 void ESEventMeasure::clearAllMeasurements()
 {
 	for (ElementMeasureItem *item : m_pinned_measures) {
 		if (item) {
-			m_scene->removeItem(item);
+			if (item->scene()) {
+				item->scene()->removeItem(item);
+			}
 			delete item;
 		}
 	}
@@ -134,6 +130,12 @@ bool ESEventMeasure::mousePressEvent(QGraphicsSceneMouseEvent *event)
 			}
 			return true;
 		} else {
+			if (m_editor && m_editor->statusBar()) {
+				m_editor->statusBar()->clearMessage();
+			}
+			if (m_action) {
+				m_action->setChecked(false);
+			}
 			m_running = false;
 			m_abort = true;
 			return true;
@@ -179,6 +181,12 @@ bool ESEventMeasure::keyPressEvent(QKeyEvent *event)
 			}
 			return true;
 		} else {
+			if (m_editor && m_editor->statusBar()) {
+				m_editor->statusBar()->clearMessage();
+			}
+			if (m_action) {
+				m_action->setChecked(false);
+			}
 			m_running = false;
 			m_abort = true;
 			return true;

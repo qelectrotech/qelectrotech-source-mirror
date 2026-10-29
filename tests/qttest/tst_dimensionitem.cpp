@@ -21,6 +21,12 @@
 #include "qetgraphicsitem/dimensionitem.h"
 #include "qetproject.h"
 #include "ui/dimensionpropertiesdialog.h"
+#include "editor/esevent/elementmeasureitem.h"
+#include "editor/esevent/eseventmeasure.h"
+#include "editor/elementscene.h"
+#include <QImage>
+#include <QPainter>
+#include <QStyleOptionGraphicsItem>
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "undocommand/deleteqgraphicsitemcommand.h"
 #include "undocommand/movegraphicsitemcommand.h"
@@ -56,6 +62,9 @@ class tst_DimensionItem : public QObject
 	void testChainOffsetMoveAndUndo();
 	void testChainAxisConstraintAndMoveAll();
 	void testDialogMultiSegmentPropertyEdit();
+	void testFramedBoxPainting();
+	void testElementMeasureItemZoomScaling();
+	void testElementEditorMeasureTeardown();
 };
 
 void tst_DimensionItem::testDefaultValues()
@@ -768,6 +777,80 @@ void tst_DimensionItem::testDialogMultiSegmentPropertyEdit()
 	QCOMPARE(s0->unit(), QStringLiteral("cm"));
 	QCOMPARE(s1->unit(), QStringLiteral("cm"));
 	QCOMPARE(s2->unit(), QStringLiteral("cm"));
+}
+
+
+void tst_DimensionItem::testFramedBoxPainting()
+{
+	DimensionItem item(QPointF(0, 0), QPointF(100, 0), 25.0);
+	item.setFramed(true);
+	item.setMaskBackground(true);
+	QVERIFY(item.isFramed());
+	QVERIFY(item.maskBackground());
+
+	// Test painting on QImage
+	QImage img(200, 200, QImage::Format_ARGB32_Premultiplied);
+	img.fill(Qt::white);
+	QPainter painter(&img);
+	QStyleOptionGraphicsItem option;
+	item.paint(&painter, &option);
+	painter.end();
+
+	// Verify bounding rect contains text area
+	QRectF br = item.boundingRect();
+	QVERIFY(br.width() > 100);
+	QVERIFY(br.height() > 25);
+}
+
+void tst_DimensionItem::testElementMeasureItemZoomScaling()
+{
+	ElementMeasureItem item(QPointF(10, 20), QPointF(110, 70));
+	QCOMPARE(item.deltaXMM(), 50.0);
+	QCOMPARE(item.deltaYMM(), 25.0);
+	qreal expectedLen = std::hypot(100.0, 50.0) / 2.0;
+	QVERIFY(qAbs(item.lengthMM() - expectedLen) < 1e-4);
+
+	QImage img(300, 300, QImage::Format_ARGB32_Premultiplied);
+	img.fill(Qt::white);
+	QPainter painter(&img);
+	QStyleOptionGraphicsItem opt;
+
+	// Normal 1:1
+	item.paint(&painter, &opt);
+
+	// Zoomed in 5x
+	painter.save();
+	painter.scale(5.0, 5.0);
+	item.paint(&painter, &opt);
+	painter.restore();
+
+	// Zoomed out 0.2x
+	painter.save();
+	painter.scale(0.2, 0.2);
+	item.paint(&painter, &opt);
+	painter.restore();
+
+	painter.end();
+
+	QRectF br = item.boundingRect();
+	QVERIFY(!br.isEmpty());
+}
+
+void tst_DimensionItem::testElementEditorMeasureTeardown()
+{
+	// Verify that setting and clearing ESEventMeasure or destroying scene causes NO crash
+	ElementScene scene(nullptr, nullptr);
+	auto *measureTool = new ESEventMeasure(&scene);
+	scene.setEventInterface(measureTool);
+
+	// Normal clear
+	scene.clearEventInterface();
+	QVERIFY(scene.behavior() == ElementScene::Behavior::Normal);
+
+	// Second instance destroyed alongside scene destructor
+	auto *measureTool2 = new ESEventMeasure(&scene);
+	scene.setEventInterface(measureTool2);
+	// scene goes out of scope here: destructor cleans up interface safely
 }
 
 QTEST_MAIN(tst_DimensionItem)

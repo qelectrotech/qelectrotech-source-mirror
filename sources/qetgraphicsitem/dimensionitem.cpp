@@ -857,23 +857,31 @@ void DimensionItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 		painter->translate(text_pos);
 		painter->rotate(angle_deg);
 
+		qreal tw = text_bounds.width();
+		qreal th = text_bounds.height();
+		qreal padH = 4.0;
+		qreal padV = 2.0;
+		QRectF boxRect(-tw / 2.0 - padH, -th / 2.0 - padV, tw + 2.0 * padH, th + 2.0 * padV);
+		QRectF textRect(-tw / 2.0, -th / 2.0, tw, th);
+
+		QBrush bgBrush = diagram() ? diagram()->backgroundBrush() : QBrush(Qt::white);
+
 		if (m_framed) {
 			// Boxed / Framed text as seen in CAD panel drawings
-			QRectF boxRect = text_bounds.adjusted(-4, -2, 4, 2);
-			if (m_mask_background && diagram()) {
-				painter->fillRect(boxRect, diagram()->backgroundBrush());
+			if (m_mask_background || m_text_in_line) {
+				painter->fillRect(boxRect, bgBrush);
 			}
 			painter->setPen(m_pen);
 			painter->setBrush(Qt::NoBrush);
 			painter->drawRect(boxRect);
-		} else if (m_mask_background && m_text_in_line && diagram()) {
+		} else if (m_mask_background && m_text_in_line) {
 			// Mask background behind text so dimension line does not cut through
-			QRectF maskRect = text_bounds.adjusted(-2, -1, 2, 1);
-			painter->fillRect(maskRect, diagram()->backgroundBrush());
+			QRectF maskRect = textRect.adjusted(-2, -1, 2, 1);
+			painter->fillRect(maskRect, bgBrush);
 		}
 
 		painter->setPen(m_pen);
-		painter->drawText(QPointF(-text_bounds.width() / 2.0, text_bounds.height() / 4.0), text);
+		painter->drawText(boxRect, Qt::AlignCenter, text);
 		painter->restore();
 	}
 

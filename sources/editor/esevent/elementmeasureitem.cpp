@@ -21,6 +21,9 @@
 #include <QFontMetricsF>
 #include <QtMath>
 #include <QLineF>
+#include <QStyleOptionGraphicsItem>
+#include <QGraphicsScene>
+#include <QGraphicsView>
 
 ElementMeasureItem::ElementMeasureItem(const QPointF &p1, const QPointF &p2, QGraphicsItem *parent) :
 	QGraphicsItem(parent),
@@ -79,13 +82,20 @@ QRectF ElementMeasureItem::boundingRect() const
 	qreal minY = qMin(m_p1.y(), m_p2.y());
 	qreal maxY = qMax(m_p1.y(), m_p2.y());
 
-	qreal margin = 50.0;
+	qreal margin = 60.0;
+	if (scene() && !scene()->views().isEmpty()) {
+		if (auto *v = scene()->views().first()) {
+			qreal lod = v->transform().m11();
+			if (lod > 0.001 && lod < 1.0) {
+				margin = 60.0 / lod;
+			}
+		}
+	}
 	return QRectF(minX - margin, minY - margin, (maxX - minX) + 2 * margin, (maxY - minY) + 2 * margin);
 }
 
 void ElementMeasureItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-	Q_UNUSED(option)
 	Q_UNUSED(widget)
 
 	painter->save();
@@ -93,6 +103,10 @@ void ElementMeasureItem::paint(QPainter *painter, const QStyleOptionGraphicsItem
 
 	QColor cadBlue(0, 120, 215);
 	QColor projColor(100, 140, 180, 180);
+
+	qreal lod = option ? option->levelOfDetailFromTransform(painter->worldTransform()) : 1.0;
+	if (lod <= 0.001) lod = 1.0;
+	qreal invScale = 1.0 / lod;
 
 	// 1. Draw dashed projection lines if diagonal
 	qreal dx = qAbs(m_p2.x() - m_p1.x());
@@ -106,19 +120,30 @@ void ElementMeasureItem::paint(QPainter *painter, const QStyleOptionGraphicsItem
 		painter->drawLine(m_p1, corner);
 		painter->drawLine(corner, m_p2);
 
-		// Small projection labels
+		// Small projection labels scaling with zoom
+		QString dxStr = QStringLiteral("ΔX: %1 mm").arg(QString::number(deltaXMM(), 'f', 1).replace('.', ','));
+		QPointF dxMid = (m_p1 + corner) / 2.0;
+
+		painter->save();
+		painter->translate(dxMid);
+		painter->scale(invScale, invScale);
 		QFont projFont = painter->font();
 		projFont.setPointSize(7);
 		painter->setFont(projFont);
 		painter->setPen(projColor);
-
-		QString dxStr = QStringLiteral("ΔX: %1 mm").arg(QString::number(deltaXMM(), 'f', 1).replace('.', ','));
-		QPointF dxMid = (m_p1 + corner) / 2.0;
-		painter->drawText(QRectF(dxMid.x() - 40, dxMid.y() - 15, 80, 14), Qt::AlignCenter, dxStr);
+		painter->drawText(QRectF(-40, -15, 80, 14), Qt::AlignCenter, dxStr);
+		painter->restore();
 
 		QString dyStr = QStringLiteral("ΔY: %1 mm").arg(QString::number(deltaYMM(), 'f', 1).replace('.', ','));
 		QPointF dyMid = (corner + m_p2) / 2.0;
-		painter->drawText(QRectF(dyMid.x() + 5, dyMid.y() - 7, 80, 14), Qt::AlignLeft | Qt::AlignVCenter, dyStr);
+
+		painter->save();
+		painter->translate(dyMid);
+		painter->scale(invScale, invScale);
+		painter->setFont(projFont);
+		painter->setPen(projColor);
+		painter->drawText(QRectF(5, -7, 80, 14), Qt::AlignLeft | Qt::AlignVCenter, dyStr);
+		painter->restore();
 	}
 
 	// 2. Draw main dimension line
@@ -131,7 +156,7 @@ void ElementMeasureItem::paint(QPainter *painter, const QStyleOptionGraphicsItem
 	QLineF line(m_p1, m_p2);
 	qreal angle = line.angle();
 	qreal radPerp = qDegreesToRadians(angle + 90.0);
-	qreal tickLen = 6.0;
+	qreal tickLen = 6.0 * invScale;
 	QPointF perpOffset(tickLen * qCos(radPerp), -tickLen * qSin(radPerp));
 
 	painter->drawLine(m_p1 - perpOffset, m_p1 + perpOffset);
@@ -139,11 +164,17 @@ void ElementMeasureItem::paint(QPainter *painter, const QStyleOptionGraphicsItem
 
 	// Small endpoint anchor markers
 	painter->setBrush(cadBlue);
-	painter->drawEllipse(m_p1, 2.0, 2.0);
-	painter->drawEllipse(m_p2, 2.0, 2.0);
+	painter->drawEllipse(m_p1, 2.5 * invScale, 2.5 * invScale);
+	painter->drawEllipse(m_p2, 2.5 * invScale, 2.5 * invScale);
 
-	// 4. Draw dimension label badge at midpoint
+	// 4. Draw dimension label badge at midpoint adapting dynamically to zoom
 	QString labelText = QStringLiteral("%1 mm").arg(QString::number(lengthMM(), 'f', 1).replace('.', ','));
+
+	painter->save();
+	QPointF midPoint = (m_p1 + m_p2) / 2.0;
+	painter->translate(midPoint);
+	painter->scale(invScale, invScale);
+
 	QFont badgeFont = painter->font();
 	badgeFont.setPointSize(9);
 	badgeFont.setBold(true);
@@ -153,10 +184,9 @@ void ElementMeasureItem::paint(QPainter *painter, const QStyleOptionGraphicsItem
 	QRectF textRect = fm.boundingRect(labelText);
 	qreal padH = 6.0;
 	qreal padV = 3.0;
-	QRectF badgeRect(0, 0, textRect.width() + 2 * padH, textRect.height() + 2 * padV);
-
-	QPointF midPoint = (m_p1 + m_p2) / 2.0;
-	badgeRect.moveCenter(midPoint);
+	qreal bw = textRect.width() + 2.0 * padH;
+	qreal bh = textRect.height() + 2.0 * padV;
+	QRectF badgeRect(-bw / 2.0, -bh / 2.0, bw, bh);
 
 	// Draw rounded badge box
 	painter->setPen(QPen(cadBlue, 1.0));
@@ -168,4 +198,7 @@ void ElementMeasureItem::paint(QPainter *painter, const QStyleOptionGraphicsItem
 	painter->drawText(badgeRect, Qt::AlignCenter, labelText);
 
 	painter->restore();
+
+	painter->restore();
 }
+

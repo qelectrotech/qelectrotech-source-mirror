@@ -100,6 +100,9 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
  */
 QETElementEditor::~QETElementEditor()
 {
+	if (m_elmt_scene) {
+		m_elmt_scene->clearEventInterface();
+	}
 	delete ui;
 	qDeleteAll(m_editors.begin(), m_editors.end());
 }
@@ -1337,6 +1340,11 @@ void QETElementEditor::setupConnection()
 	connect(m_parts_list, &QListWidget::itemSelectionChanged, this, &QETElementEditor::updateSelectionFromPartsList);
 	connect(QApplication::clipboard(),  &QClipboard::dataChanged, this, &QETElementEditor::updateAction);
 	connect(m_elmt_scene, &ElementScene::behaviorChanged,     this, &QETElementEditor::updateAction);
+	connect(m_elmt_scene, &ElementScene::behaviorChanged,     this, [this]() {
+		if (m_elmt_scene && m_elmt_scene->behavior() == ElementScene::Behavior::Normal && m_tape_measure_action) {
+			m_tape_measure_action->setChecked(false);
+		}
+	});
 
 	connect(m_elmt_scene, &ElementScene::selectionChanged, [this]() {
 		this->updateInformations();
