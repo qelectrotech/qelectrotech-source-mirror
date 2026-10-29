@@ -83,6 +83,7 @@ class ProjectDBModel : public QAbstractTableModel
 		bool m_fill_when_built = false;
 		QString m_query;
 		QVector<QStringList> m_record;
+        int m_column_count = 0;
 		//First int = section, second int = Qt::role, QVariant = value
 		QHash<int, QHash<int, QVariant>> m_header_data;
 		QHash<int, QVariant> m_index_0_0_data;

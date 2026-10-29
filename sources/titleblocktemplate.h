@@ -171,6 +171,7 @@ class TitleBlockTemplate : public QObject {
 	QPixmap bitmapLogo(const QString &) const;
 	
 	void render(QPainter &, const DiagramContext &, int) const;
+    QString languageText16(const QString &text,const DiagramContext &context) const { return interpreteVariables(text,context); }
 	void renderDxf(
 			QRectF &,
 			const DiagramContext &,

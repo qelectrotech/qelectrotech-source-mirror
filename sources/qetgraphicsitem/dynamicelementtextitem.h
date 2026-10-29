@@ -119,6 +119,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void setFrame(const bool frame);
 		bool frame() const;
 		QUuid uuid() const;
+        QString languageId16() const override { return uuid().toString(QUuid::WithoutBraces); }
 		void updateXref();
 		void setPlainText(const QString &text);
 			//Hide QGraphicsTextItem::textWidth(): with the width on "auto"

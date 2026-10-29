@@ -431,7 +431,7 @@ void TerminalEditor::labelColorClicked()
 
 #ifdef BUILD_WITHOUT_KF
 	QColor new_color = QColorDialog::getColor(m_part->labelColor(), this, QString(),
-											QColorDialog::DontUseNativeDialog);
+											QColorDialog::DontUseNativeDialog | QColorDialog::ShowAlphaChannel);
 	if (new_color.isValid() && m_part->labelColor() != new_color) {
 		auto undo = new QPropertyUndoCommand(m_part, "label_color", m_part->labelColor(), new_color);
 		undo->setText(tr("Change the label colour"));

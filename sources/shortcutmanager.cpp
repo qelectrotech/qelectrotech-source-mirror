@@ -129,6 +129,8 @@ void ShortcutManager::unregisterAction(QObject *target, const QString &id)
 QList<ShortcutManager::ShortcutInfo> ShortcutManager::allShortcuts() const
 {
 	QList<ShortcutInfo> list;
+    list.reserve(m_order.size());
+    QSettings settings;
 	for (const QString &id : m_order) {
 		const Entry &entry = m_entries.value(id);
 		ShortcutInfo info;
@@ -136,7 +138,8 @@ QList<ShortcutManager::ShortcutInfo> ShortcutManager::allShortcuts() const
 		info.category = entry.category;
 		info.description = entry.description;
 		info.default_sequence = entry.default_sequence;
-		info.current_sequence = savedSequence(id, entry.default_sequence);
+		const QString key = SETTINGS_GROUP + id;
+        info.current_sequence = settings.contains(key) ? QKeySequence::fromString(settings.value(key).toString()) : entry.default_sequence;
 		for (const QPointer<QObject> &target : entry.targets) {
 			if (target) {
 				info.icon = target->property("icon").value<QIcon>();

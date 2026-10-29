@@ -22,6 +22,17 @@
 #include "qet.h"
 
 #include "machine_info.h"
+#include "qeticons.h"
+#include "ui/configpage/generalconfigurationpage.h"
+#include "ui/configpage/shortcutsconfigpage.h"
+#include "ui/configpage/shortcutbarconfigpage.h"
+#include "ui/configpage/gesturesconfigpage.h"
+#include "ui/configpage/toolbarsconfigpage.h"
+#include "ui/configpage/toolbarcommandsconfigpage.h"
+#ifdef QET_SPACEMOUSE_SUPPORT
+#include "ui/configpage/spacemouseconfigpage.h"
+#endif
+#include <QShowEvent>
 
 /**
 	Constructeur
@@ -77,7 +88,7 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	// connexion signaux / slots
 	connect(buttons, &QDialogButtonBox::accepted, this, &ConfigDialog::applyConf);
 	connect(buttons, &QDialogButtonBox::rejected, this, &ConfigDialog::reject);
-	connect(pages_list, &QListWidget::currentRowChanged, pages_widget, &QStackedWidget::setCurrentIndex);
+	connect(pages_list, &QListWidget::currentRowChanged, this, &ConfigDialog::showPage23);
 
 	// set maximum a bit smaller than available size = (screen-size - Task-Bar):
 	setMaximumSize((int)(0.94 * MachineInfo::instance()->i_max_available_width()),
@@ -102,13 +113,41 @@ ConfigDialog::~ConfigDialog()
 /**
 	Construit la liste des pages sur la gauche
 */
-void ConfigDialog::buildPagesList()
+void ConfigDialog::showEvent(QShowEvent *event)
 {
-	pages_list -> clear();
-	foreach(ConfigPage *page, pages) {
-		addPageToList(page);
-	}
+    if (pages_list->currentRow() < 0 && !pages.isEmpty()) setCurrentPage(0);
+    QDialog::showEvent(event);
 }
+
+void ConfigDialog::showPage23(int index)
+{
+    if (index < 0 || index >= pages.size()) return;
+    if (!pages[index] && m_factories23[index]) {
+        // Keep the placeholder in the stack: page indices and the selection
+        // never change while constructing a page. Unopened pages write nothing.
+        auto *holder = pages_widget->widget(index);
+        auto *page = m_factories23[index]();
+        pages[index] = page;
+        auto *layout = new QVBoxLayout(holder);
+        layout->setContentsMargins(0, 0, 0, 0);
+        layout->addWidget(page);
+        m_factories23[index] = {};
+    }
+    pages_widget->setCurrentIndex(index);
+}
+
+void ConfigDialog::addLazyPage23(const QString &title, const QIcon &icon,
+                               std::function<ConfigPage *()> factory)
+{
+    if (!factory) return;
+    pages.append(nullptr);
+    m_factories23.append(std::move(factory));
+    pages_widget->addWidget(new QWidget);
+    auto *button = new QListWidgetItem(icon, title, pages_list);
+    button->setTextAlignment(Qt::AlignHCenter);
+    button->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+}
+
 
 /**
 	Add the \a page ConfigPage to this configuration dialog.
@@ -127,7 +166,7 @@ void ConfigDialog::addPageToList(ConfigPage *page) {
 void ConfigDialog::applyConf()
 {
 	foreach(ConfigPage *page, pages) {
-		page -> applyConf();
+		if (page) page -> applyConf();
 	}
 	accept();
 }
@@ -138,6 +177,7 @@ void ConfigDialog::applyConf()
 void ConfigDialog::addPage(ConfigPage *page) {
 	if (!page || pages.contains(page)) return;
 	pages << page;
+    m_factories23.append(std::function<ConfigPage *()>{});
 	pages_widget -> addWidget(page);
 	addPageToList(page);
 }
@@ -149,4 +189,21 @@ void ConfigDialog::addPage(ConfigPage *page) {
 */
 void ConfigDialog::setCurrentPage(const int index) {
 	pages_list->setCurrentRow(index);
+    showPage23(index);
+}
+
+void ConfigDialog::addApplicationPages23()
+{
+    addLazyPage23(QCoreApplication::translate("GeneralConfigurationPage", "General", "configuration page title"), QET::Icons::Settings, []() { return new GeneralConfigurationPage; });
+    addLazyPage23(QCoreApplication::translate("NewDiagramPage", "New project", "configuration page title"), QET::Icons::Projects, []() { return new NewDiagramPage; });
+    addLazyPage23(QCoreApplication::translate("ExportConfigPage", "Export", "configuration page title"), QET::Icons::DocumentExport, []() { return new ExportConfigPage; });
+    addLazyPage23(QCoreApplication::translate("PrintConfigPage", "Printing", "configuration page title"), QET::Icons::Printer, []() { return new PrintConfigPage; });
+    addLazyPage23(QCoreApplication::translate("ShortcutsConfigPage", "Shortcuts", "configuration page title"), QET::Icons::ConfigureShortcuts, []() { return new ShortcutsConfigPage; });
+    addLazyPage23(QCoreApplication::translate("ShortcutBarConfigPage", "Shortcut bar", "configuration page title"), QET::Icons::ConfigureShortcuts, []() { return new ShortcutBarConfigPage; });
+    addLazyPage23(QCoreApplication::translate("GesturesConfigPage", "Mouse gestures", "configuration page title"), QET::Icons::ConfigureShortcuts, []() { return new GesturesConfigPage; });
+    addLazyPage23(QCoreApplication::translate("ToolbarsConfigPage", "Toolbars", "configuration page title"), QET::Icons::ConfigureToolbars, []() { return new ToolbarsConfigPage; });
+    addLazyPage23(QCoreApplication::translate("ToolbarCommandsConfigPage", "Toolbar contents", "configuration page title: what each toolbar holds"), QET::Icons::ConfigureToolbars, []() { return new ToolbarCommandsConfigPage; });
+#ifdef QET_SPACEMOUSE_SUPPORT
+    addLazyPage23(QCoreApplication::translate("SpaceMouseConfigPage", "3D mouse", "configuration page title"), QET::Icons::ConfigureToolbars, []() { return new SpaceMouseConfigPage; });
+#endif
 }

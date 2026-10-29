@@ -88,9 +88,18 @@ void CustomElementGraphicPart::drawCross(const QPointF &center,
 	Set line style to ls
 	@param ls
 */
+void CustomElementGraphicPart::setDashPattern(const ConductorDashPattern &pattern)
+{
+	if (!pattern.valid() || pattern == m_dash_pattern) return;
+	prepareGeometryChange();
+	m_dash_pattern = pattern;
+	update();
+}
+
 void CustomElementGraphicPart::setLineStyle(const LineStyle ls)
 {
 	if (_linestyle == ls) return;
+	if (m_dash_pattern.enabled) prepareGeometryChange();
 	_linestyle = ls;
 	update();
 }
@@ -113,6 +122,7 @@ void CustomElementGraphicPart::setLineWeight(const LineWeight lw)
 */
 qreal CustomElementGraphicPart::penWeight() const
 {
+	if (_lineweight == ThinWeight && hasCustomDashPattern()) return 0.5;
 	if (_lineweight == NoneWeight || _lineweight == ThinWeight) return 0;
 	else if (_lineweight == NormalWeight) return 1;
 	else if (_lineweight == UltraWeight)  return 2;
@@ -507,6 +517,7 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	if (color != color_map.end()) { css_like_styles += color.value(); }
 
 	qde.setAttribute("style", css_like_styles);
+	m_dash_pattern.toXml(qde);
 		//Every graphic part writes and reads its styles through this pair,
 		//so its uuid is kept here rather than in six toXml()/fromXml().
 	qde.setAttribute("uuid", m_uuid.toString());
@@ -522,6 +533,7 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 {
 	resetStyles();
+	m_dash_pattern = ConductorDashPattern::fromXml(qde);
 
 		//Absent from definitions written before parts carried one: keep the
 		//fresh uuid this part was built with, and the next save persists it.
@@ -904,6 +916,7 @@ void CustomElementGraphicPart::resetStyles()
 	_filling = NoneFilling;
 	_color = BlackColor;
 	_antialiased = false;
+	m_dash_pattern = ConductorDashPattern();
 }
 
 /**
@@ -1273,6 +1286,13 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	painter.setRenderHint(QPainter::TextAntialiasing,      _antialiased);
 	painter.setRenderHint(QPainter::SmoothPixmapTransform, _antialiased);
 
+	if (hasCustomDashPattern()) {
+		// Match the symbol renderer: Thin is 0.5 drawing units. A zero
+		// width cosmetic pen would make lengths depend on zoom/device.
+		if (_lineweight == ThinWeight) pen.setWidthF(0.5);
+		pen.setCosmetic(false);
+		m_dash_pattern.apply(pen, pen.style());
+	}
 	painter.setPen(pen);
 	painter.setBrush(brush);
 }

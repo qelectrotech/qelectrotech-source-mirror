@@ -18,6 +18,9 @@
 #ifndef CONFIG_DIALOG_H
 #define CONFIG_DIALOG_H
 #include <QDialog>
+#include <QIcon>
+#include <functional>
+#define QET_LAZY_CONFIG23 1
 class ConfigPage;
 class QListWidget;
 class QListWidgetItem;
@@ -44,16 +47,20 @@ class ConfigDialog : public QDialog {
 	// methods
 	public slots:
 		void applyConf();
+        void addLazyPage23(const QString &, const QIcon &, std::function<ConfigPage *()>);
+        void addApplicationPages23();
 		void addPage(ConfigPage *);
 		void setCurrentPage(const int index);
 	
 	private:
-		void buildPagesList();
+		void showEvent(QShowEvent *) override;
+        void showPage23(int);
 		void addPageToList(ConfigPage *);
 	
 	// attributes
 	private:
-		QListWidget *pages_list;
+		QList<std::function<ConfigPage *()>> m_factories23;
+        QListWidget *pages_list;
 		QStackedWidget *pages_widget;
 		QDialogButtonBox *buttons;
 

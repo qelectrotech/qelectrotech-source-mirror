@@ -61,7 +61,8 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 		//Always remove the brush
 	painter -> setBrush(Qt::NoBrush);
 	QPen t = painter -> pen();
-	t.setCosmetic(options && options -> levelOfDetailFromTransform(painter->worldTransform()) < 1.0);
+	t.setCosmetic(!hasCustomDashPattern() && options
+		&& options -> levelOfDetailFromTransform(painter->worldTransform()) < 1.0);
 	painter -> setPen(t);
 
 	if (isSelected())

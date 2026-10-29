@@ -126,7 +126,7 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 		if (m_label_frame)
 			xml_element.setAttribute("label_frame", "true");
 		if (m_label_color != QColor(Qt::black))
-			xml_element.setAttribute("label_color", m_label_color.name());
+			xml_element.setAttribute("label_color", m_label_color.name(QColor::HexArgb));
 	}
 
 	if (!m_potential.isEmpty())

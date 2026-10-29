@@ -25,6 +25,7 @@
 #include <functional>
 
 class QAction;
+class QObject;
 class QToolBar;
 
 /**
@@ -56,7 +57,8 @@ class DiagramToolbarSettings
 		static QString builtInTitle(const QString &name);
 		static QList<Toolbar> customToolbars();
 		static void setCustomToolbars(const QList<Toolbar> &toolbars);
-		static QString newCustomName(const QList<Toolbar> &existing);
+		static QString newCustomName(const QList<Toolbar> &existing, const QString &context = QStringLiteral("diagrameditor"));
+		static QString contextForToolbar(const QString &name);
 
 		static QStringList ids(const QString &name);
 		static QStringList defaultIds(const QString &name);
@@ -67,7 +69,7 @@ class DiagramToolbarSettings
 		static QStringList widgetIds();
 		static bool isWidget(const QString &id);
 		static QString widgetTitle(const QString &id);
-		static QStringList availableCommandIds();
+		static QStringList availableCommandIds(const QString &context = QStringLiteral("diagrameditor"));
 
 		static void fill(QToolBar *toolbar, const QStringList &ids,
 				 const std::function<QAction *(const QString &)> &resolve);

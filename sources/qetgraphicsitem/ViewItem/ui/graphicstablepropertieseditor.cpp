@@ -29,6 +29,9 @@
 
 #include <QAbstractItemModel>
 #include <QFontDialog>
+#include "../../../ui/tableformat13.h"
+#include "../../../ui/tableeditor15.h"
+#include "../../../ui/tablequick20.h"
 
 /**
 	@brief GraphicsTablePropertiesEditor::GraphicsTablePropertiesEditor
@@ -42,6 +45,19 @@ GraphicsTablePropertiesEditor::GraphicsTablePropertiesEditor(
 	ui(new Ui::GraphicsTablePropertiesEditor)
 {
 	ui->setupUi(this);
+    auto *definitionButton=new QPushButton(tr("Edit table definition and properties..."),this);definitionButton->setObjectName("editTableDefinition15");ui->m_content_layout->addWidget(definitionButton);
+    connect(definitionButton,&QPushButton::clicked,this,[this](){if(m_table_item){QetTableEditor15::edit(m_table_item,this);updateUi();}});
+    auto *formatButton=new QPushButton(tr("Column widths, headers, rows and colours..."),this);ui->m_content_layout->addWidget(formatButton);
+    connect(formatButton,&QPushButton::clicked,this,[this](){
+        if(!m_table_item || !m_table_item->diagram() || m_table_item->diagram()->isReadOnly())return;
+        auto before=m_table_item->customFormat(),after=before;QVector<int> widths;
+        if(!m_table_item->model())return;
+        for(int i=0;i<m_table_item->model()->columnCount();++i)widths<<m_table_item->headerItem()->sectionSize(i);
+        QFont fallback=m_table_item->model()->index(0,0).data(Qt::FontRole).value<QFont>();
+        if(QetFormatting::editTableFormat(this,after,m_table_item->model(),widths,m_table_item->displayNRow(),fallback,m_table_item->diagram()->border_and_titleblock.borderAndTitleBlockRect().right()-m_table_item->scenePos().x()) && before!=after){
+            auto *undo=new QPropertyUndoCommand(m_table_item.data(),"customFormat",before,after);undo->setText(tr("Format table"));m_table_item->diagram()->undoStack().push(undo);updateUi();
+        }
+    });
 	m_header_button_group = new QButtonGroup(this);
 	m_header_button_group->addButton(ui->m_header_align_left_rb,   Qt::AlignLeft);
 	m_header_button_group->addButton(ui->m_header_align_center_rb, Qt::AlignHCenter);
@@ -86,7 +102,10 @@ void GraphicsTablePropertiesEditor::setTable(QetGraphicsTableItem *table)
 		}
 	}
 
-	m_table_item = table;
+	if(m_quick20){delete m_quick20;m_quick20=nullptr;}
+    m_table_item = table;
+    if(table){m_quick20=new QetTableQuick20::Panel(table,this);auto *layout=qobject_cast<QVBoxLayout*>(ui->m_display_tab->layout());if(layout)layout->insertWidget(2,m_quick20);}
+    ui->groupBox_2->hide();ui->groupBox_3->hide();
 	m_connect_list.clear();
 	m_connect_list << connect(m_table_item.data(),
 				  &QetGraphicsTableItem::xChanged,
@@ -112,7 +131,7 @@ void GraphicsTablePropertiesEditor::setTable(QetGraphicsTableItem *table)
 */
 void GraphicsTablePropertiesEditor::apply()
 {
-	if(!m_table_item && m_table_item->diagram()) {
+	if(!m_table_item || !m_table_item->diagram()) {
 		return;
 	}
 	auto d = m_table_item->diagram();
@@ -542,3 +561,5 @@ void GraphicsTablePropertiesEditor::on_m_apply_geometry_to_linked_table_pb_click
 	}
 	m_table_item->diagram()->undoStack().push(parent_undo);
 }
+
+QetGraphicsTableItem *GraphicsTablePropertiesEditor::table() const { return m_table_item.data(); }

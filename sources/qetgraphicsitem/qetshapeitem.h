@@ -158,6 +158,7 @@ class QetShapeItem : public QetGraphicsItem
 		QBrush brush() const {return m_brush;}
 		void setBrush(const QBrush &brush);
 		ShapeType shapeType() const {return m_shapeType;}
+        QPainterPath geometryPath26() const {return outline();}
 
 		virtual bool	    fromXml (const QDomElement &);
 		virtual QDomElement toXml (QDomDocument &document) const;

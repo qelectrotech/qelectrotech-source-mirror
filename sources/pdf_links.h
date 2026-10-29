@@ -55,6 +55,8 @@ namespace PdfLinks {
 		std::function<QPointF(const QPointF &)> devToPdf;
 		/// a diagram -> its source rectangle in scene pixels (for /FitR framing)
 		std::function<QRectF(Diagram *)> sourceRectOf;
+        /// Optional mapping using the destination page's own orientation/margins.
+        std::function<QRectF(Diagram *,const QRectF &)> targetRectToPdf24;
 	};
 
 	/**

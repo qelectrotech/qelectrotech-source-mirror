@@ -154,6 +154,7 @@ class QETDiagramEditor : public QETMainWindow
 		void slot_updateUndoStack();
 		void slot_updateModeActions();
 		void slot_updateComplexActions();
+		void updateCustomCommands19(Diagram *diagram);
 		void slot_updatePasteAction();
 		void pasteElementInformations();
 		void updatePasteElementInfoAction();

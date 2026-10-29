@@ -1,5 +1,6 @@
 #include "titleblockcell.h"
 #include "titleblocktemplate.h"
+#include "ui/textstyle13.h"
 /**
 	Constructor
 */
@@ -55,7 +56,9 @@ int TitleBlockCell::verticalAlign() const
 	@param attr_value New value of the changed attribute
 */
 void TitleBlockCell::setAttribute(const QString &attribute, const QVariant &attr_value) {
-	if (attribute == "type") {
+	if (attribute == "label_style") { label_style=attr_value.toMap();
+	} else if (attribute == "value_style") { value_style=attr_value.toMap();
+	} else if (attribute == "type") {
 		int new_type = attr_value.toInt();
 		if (new_type <= TitleBlockCell::LogoCell) {
 			cell_type = static_cast<TitleBlockCell::TemplateCellType>(new_type);
@@ -84,6 +87,8 @@ void TitleBlockCell::setAttribute(const QString &attribute, const QVariant &attr
 	@return the value of the required attribute
 */
 QVariant TitleBlockCell::attribute(const QString &attribute) {
+	if(attribute=="label_style") return label_style;
+	if(attribute=="value_style") return value_style;
 	if (attribute == "type") {
 		return(type());
 	} else if (attribute == "name") {
@@ -146,6 +151,7 @@ bool TitleBlockCell::spans() const
 	@param other_cell Another cell
 */
 void TitleBlockCell::loadContentFromCell(const TitleBlockCell &other_cell) {
+	label_style=other_cell.label_style; value_style=other_cell.value_style;
 	value_name = other_cell.value_name;
 	cell_type = other_cell.cell_type;
 	logo_reference = other_cell.logo_reference;
@@ -161,6 +167,8 @@ void TitleBlockCell::loadContentFromCell(const TitleBlockCell &other_cell) {
 	@param cell_element XML element from which cell content will be read
 */
 void TitleBlockCell::loadContentFromXml(const QDomElement &cell_element) {
+	label_style=QetFormatting::decode(cell_element.attribute("label-style"));
+	value_style=QetFormatting::decode(cell_element.attribute("value-style"));
 	// common properties
 	if (cell_element.hasAttribute("name") && !cell_element.attribute("name").isEmpty()) {
 		value_name = cell_element.attribute("name");
@@ -228,6 +236,8 @@ void TitleBlockCell::loadContentFromXml(const QDomElement &cell_element) {
 */
 void TitleBlockCell::saveContentToXml(QDomElement &cell_elmt) {
 	cell_elmt.setAttribute("name", value_name);
+	if(!label_style.isEmpty())cell_elmt.setAttribute("label-style",QetFormatting::encode(label_style));
+	if(!value_style.isEmpty())cell_elmt.setAttribute("value-style",QetFormatting::encode(value_style));
 	
 	if (type() == TitleBlockCell::EmptyCell) {
 		cell_elmt.setTagName("empty");

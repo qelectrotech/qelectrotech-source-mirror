@@ -766,7 +766,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> translate(tbt_rect.topLeft());
 			m_titleblock_template_renderer -> render(
 						painter,
-						tbt_rect.width());
+						tbt_rect.width(),m_owner_folio && m_owner_folio->project()?m_owner_folio->project()->languageData():QVariantMap());
 			painter -> translate(-tbt_rect.topLeft());
 		}
 		else
@@ -775,7 +775,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter->rotate(-90);
 			m_titleblock_template_renderer -> render(
 						painter,
-						tbt_rect.width());
+						tbt_rect.width(),m_owner_folio && m_owner_folio->project()?m_owner_folio->project()->languageData():QVariantMap());
 			painter->rotate(90);
 			painter -> translate(-tbt_rect.topLeft());
 		}

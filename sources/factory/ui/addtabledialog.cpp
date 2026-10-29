@@ -24,6 +24,9 @@
 
 #include "../../qet.h"
 #include <QFontDialog>
+#include "../../ui/tabledefaults18.h"
+#include "../../dataBase/ui/summaryquerywidget.h"
+#include <QMessageBox>
 
 /**
 	@brief AddTableDialog::AddTableDialog
@@ -190,6 +193,25 @@ QFont AddTableDialog::tableFont() const
 	return m_table_font;
 }
 
+void AddTableDialog::setHeaderFont(const QFont &font)
+{
+    m_header_font=font;ui->m_header_font_pb->setText(font.family());
+}
+void AddTableDialog::setTableFont(const QFont &font)
+{
+    m_table_font=font;ui->m_table_font_pb->setText(font.family());
+}
+void AddTableDialog::setHeaderAlignment(Qt::Alignment alignment)
+{
+    ui->m_header_alignment_cb->setCurrentIndex(alignment&Qt::AlignRight?2:alignment&Qt::AlignHCenter?1:0);
+}
+void AddTableDialog::setTableAlignment(Qt::Alignment alignment)
+{
+    ui->m_table_alignment_cb->setCurrentIndex(alignment&Qt::AlignRight?2:alignment&Qt::AlignHCenter?1:0);
+}
+void AddTableDialog::setHeaderMargins(const QMargins &margins) {m_header_margins=margins;}
+void AddTableDialog::setTableMargins(const QMargins &margins) {m_table_margins=margins;}
+
 QWidget *AddTableDialog::contentWidget() const
 {
 	return m_content_widget;
@@ -341,4 +363,18 @@ void AddTableDialog::fillSavedQuery()
 			ui->m_config_gb->addItem(it.key());
 		}
 	}
+}
+
+void AddTableDialog::setUpDefaults20(const QString &kind){
+ if(!QetTableDefaults18::supportedKind18(kind))return;
+ auto *box=new QGroupBox(tr("Defaults for new tables"),this);auto *layout=new QVBoxLayout(box);auto *row=new QHBoxLayout;
+ auto *fonts=new QPushButton(tr("Use fonts as default"));fonts->setObjectName("addTableFontsDefault20");row->addWidget(fonts);
+ auto *full=new QPushButton(tr("Use configuration as default"));full->setObjectName("addTableFullDefault20");row->addWidget(full);layout->addLayout(row);
+ auto *remember=new QCheckBox(tr("Remember last used formatting"));remember->setObjectName("addTableRemember20");remember->setChecked(QetTableDefaults18::remember20(kind));layout->addWidget(remember);
+ auto *status=new QLabel;status->setWordWrap(true);layout->addWidget(status);
+ auto *displayLayout=qobject_cast<QVBoxLayout*>(ui->m_tab->widget(0)->layout());if(displayLayout)displayLayout->insertWidget(displayLayout->count()-1,box);
+ auto capture=[this](){auto format=property("newTableDefault18Configuration").toMap().value("format").toMap();auto body=format.value("bodyStyle").toMap(),header=format.value("headerStyle").toMap();body["font"]=tableFont().toString();header["font"]=headerFont().toString();format["bodyStyle"]=body;format["headerStyle"]=header;QString query;if(auto *w=qobject_cast<ElementQueryWidget*>(contentWidget()))query=w->queryStr();else if(auto *w=qobject_cast<SummaryQueryWidget*>(contentWidget()))query=w->queryStr();const int columns=QetTableFields18::outputNames18(query).size();QVariantList bodyAlign,headAlign;for(int i=0;i<columns;++i){bodyAlign<<int(tableAlignment());headAlign<<int(headerAlignment());}format["alignments"]=bodyAlign;format["headerAlignments"]=headAlign;const auto margins=tableMargins();format["paddingX"]=qMax(margins.left(),margins.right());format["paddingY"]=qMax(margins.top(),margins.bottom());return format;};
+ connect(fonts,&QPushButton::clicked,this,[=](){QetTableDefaults18::saveFonts20(kind,capture());status->setText(tr("Fonts saved for new tables of this type."));});
+ connect(full,&QPushButton::clicked,this,[=](){auto configuration=property("newTableDefault18Configuration").toMap();configuration["format"]=capture();if(auto *w=qobject_cast<ElementQueryWidget*>(contentWidget()))configuration["query"]=w->queryStr();else if(auto *w=qobject_cast<SummaryQueryWidget*>(contentWidget()))configuration["query"]=w->queryStr();configuration["columns18"]=QetTableFields18::outputNames18(configuration.value("query").toString());QString error;status->setText(QetTableDefaults18::saveDefault18(kind,configuration,&error)?tr("Configuration saved for new tables of this type."):error);});
+ connect(remember,&QCheckBox::toggled,this,[=](bool checked){QSettings().setValue(QetTableDefaults18::preferenceKey20(kind,"remember"),checked);});
 }

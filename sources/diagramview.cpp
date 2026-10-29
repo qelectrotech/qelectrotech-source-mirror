@@ -1,3 +1,4 @@
+#include "ui/references25.h"
 /*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
@@ -908,6 +909,8 @@ namespace {
 */
 void DiagramView::mousePressEvent(QMouseEvent *original)
 {
+    if(original->button()==Qt::LeftButton&&original->modifiers()==Qt::ControlModifier&&QetReferences25::follow(diagram(),mapToScene(original->position().toPoint()))){original->accept();return;}
+
 	std::unique_ptr<QMouseEvent> shifted;
 	QMouseEvent *e = onCaughtHandle(original, shifted);
 	const AcceptedBack accepted_back{e, original};

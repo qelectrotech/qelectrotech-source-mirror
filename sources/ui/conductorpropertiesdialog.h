@@ -37,6 +37,8 @@ class ConductorPropertiesDialog : public QDialog
 	public:
 		explicit ConductorPropertiesDialog (
 			Conductor *conductor, QWidget *parent = nullptr);
+		static bool ApplyAppearance(Conductor *conductor, QWidget *parent = nullptr);
+		static bool ApplyPatternToProject(Conductor *conductor, QWidget *parent = nullptr);
 		static void PropertiesDialog (
 				Conductor *conductor, QWidget *parent = nullptr);
 		~ConductorPropertiesDialog() override;
@@ -47,6 +49,7 @@ class ConductorPropertiesDialog : public QDialog
 	private:
 		Ui::ConductorPropertiesDialog *ui;
 		ConductorPropertiesWidget *m_cpw;
+		bool m_project_pattern_applied = false;
 };
 
 #endif // CONDUCTORPROPERTIESDIALOG_H

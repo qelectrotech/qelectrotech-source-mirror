@@ -54,15 +54,20 @@ QList<DiagramToolbarSettings::Toolbar> DiagramToolbarSettings::toolbars()
 */
 QStringList DiagramToolbarSettings::builtInNames()
 {
-	return {QStringLiteral("toolbar"),
+	return {QStringLiteral("arrange25"),QStringLiteral("toolbar"),
 		QStringLiteral("display"),
 		QStringLiteral("diagram"),
 		QStringLiteral("adding"),
-		QStringLiteral("diagram_depth_toolbar")};
+		QStringLiteral("diagram_depth_toolbar"),
+		QStringLiteral("elementeditor_commands19"),
+		QStringLiteral("titleblockeditor_commands19")};
 }
 
 QString DiagramToolbarSettings::builtInTitle(const QString &name)
 {
+    if(name=="arrange25")return QCoreApplication::translate("QETDiagramEditor","Arrange");
+	if(name == QLatin1String("elementeditor_commands19")) return QCoreApplication::translate("DiagramToolbarSettings", "Symbol editor: Custom commands");
+	if(name == QLatin1String("titleblockeditor_commands19")) return QCoreApplication::translate("DiagramToolbarSettings", "Title block editor: Custom commands");
 	if (name == QLatin1String("toolbar"))
 		return QCoreApplication::translate("QETDiagramEditor", "Tools");
 	if (name == QLatin1String("display"))
@@ -123,13 +128,14 @@ void DiagramToolbarSettings::setCustomToolbars(const QList<Toolbar> &toolbars)
 	and none had before (stored positions stay with the toolbar they
 	belonged to)
 */
-QString DiagramToolbarSettings::newCustomName(const QList<Toolbar> &existing)
+QString DiagramToolbarSettings::newCustomName(const QList<Toolbar> &existing, const QString &context)
 {
 	QStringList taken;
 	for (const Toolbar &toolbar : existing) taken << toolbar.name;
 	for (const Toolbar &toolbar : customToolbars()) taken << toolbar.name;
 	for (int i = 1 ; ; ++i) {
-		const QString name = QStringLiteral("custom_%1").arg(i);
+		const QString prefix = context == QLatin1String("diagrameditor") ? QString() : context + QLatin1Char('_');
+		const QString name = prefix + QStringLiteral("custom_%1").arg(i);
 		if (!taken.contains(name)) return name;
 	}
 }
@@ -155,6 +161,8 @@ QStringList DiagramToolbarSettings::ids(const QString &name)
 */
 QStringList DiagramToolbarSettings::defaultIds(const QString &name)
 {
+    if(name=="arrange25"){QStringList ids;for(auto n:QStringList{"left","hcenter","right","top","vcenter","bottom","distribute_h","distribute_v","page_h","page_v","text_left","text_center","text_right","match_width","match_height"})ids<<"diagrameditor.arrange_"+n;return ids;}
+
 	const QString sep = separatorId();
 	if (name == QLatin1String("toolbar")) {
 		return {QStringLiteral("diagrameditor.new_file"),
@@ -293,14 +301,21 @@ QString DiagramToolbarSettings::widgetTitle(const QString &id)
 	its stored scripts', and the depth commands it shares with the element
 	editor
 */
-QStringList DiagramToolbarSettings::availableCommandIds()
+QString DiagramToolbarSettings::contextForToolbar(const QString &name)
+{
+	if(name.startsWith(QLatin1String("elementeditor_"))) return QStringLiteral("elementeditor");
+	if(name.startsWith(QLatin1String("titleblockeditor_"))) return QStringLiteral("titleblockeditor");
+	return QStringLiteral("diagrameditor");
+}
+
+QStringList DiagramToolbarSettings::availableCommandIds(const QString &context)
 {
 	QStringList ids;
 	for (const ShortcutManager::ShortcutInfo &info :
 	     ShortcutManager::instance().allShortcuts())
 	{
-		if (info.id.startsWith(QLatin1String("diagrameditor."))
-		    || info.id.startsWith(QLatin1String("depth."))) {
+		if (info.id.startsWith(context + QLatin1Char('.'))
+		    || ((context == QLatin1String("diagrameditor") || context == QLatin1String("elementeditor")) && info.id.startsWith(QLatin1String("depth.")))) {
 			ids << info.id;
 		}
 	}

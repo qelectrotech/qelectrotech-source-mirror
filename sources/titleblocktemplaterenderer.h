@@ -40,7 +40,7 @@ class TitleBlockTemplateRenderer : public QObject
 		DiagramContext context()const;
 		
 		int height() const;
-		void render(QPainter *, int);
+		void render(QPainter *, int, const QVariantMap &languageData = QVariantMap());
 		void renderDxf(QRectF &, int, QString &, int,
 			       const QTransform & = QTransform());
 	

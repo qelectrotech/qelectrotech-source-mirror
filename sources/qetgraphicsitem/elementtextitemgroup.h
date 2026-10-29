@@ -114,6 +114,8 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		Qt::Alignment m_alignment = Qt::AlignJustify;
 		QString m_name;
 		bool m_first_move = true,
+		m_additive_text_press25 = false,
+		m_toggle_text25 = false,
 		m_hold_to_bottom_of_page = false,
 		m_block_alignment_update = false,
 		m_frame = false;

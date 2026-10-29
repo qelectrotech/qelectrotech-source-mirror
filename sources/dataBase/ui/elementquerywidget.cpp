@@ -16,6 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementquerywidget.h"
+#include "../../ui/tablequery15.h"
+#include "../../ui/tablefields18.h"
+#include "../../ui/tablefields19.h"
+#include "../../ui/formulabuilder19.h"
+#include "../../ui/groupedbom13.h"
+#include <QDialogButtonBox>
+#include <QCheckBox>
+#include <QVBoxLayout>
+#include <QLabel>
 
 #include "../../properties/elementdata.h"
 #include "../../qetapp.h"
@@ -41,6 +50,25 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 	ui(new Ui::ElementQueryWidget)
 {
 	ui->setupUi(this);
+    auto *grouped=new QPushButton(tr("Grouped BOM: manufacturer and article..."),this);grouped->setObjectName("groupedBom13Button");layout()->addWidget(grouped);
+    connect(grouped,&QPushButton::clicked,this,[this](){
+        QDialog d(this);d.setWindowTitle(tr("Grouped bill of materials"));auto *l=new QVBoxLayout(&d);
+        auto *info=new QLabel(tr("Generate a BOM for all eligible components in the project.\nGroups use manufacturer, article and unit. Decorative objects are excluded by default; described items without an article remain separate.\nFor a supported grouped BOM, current fields and filters are retained. For another source, this creates a new grouped query. Excluded BOM items stay excluded."),&d);info->setWordWrap(true);l->addWidget(info);
+        auto check=[&](const QString &title,const QString &key,bool fallback){auto *c=new QCheckBox(title,&d);QString q=queryStr();bool checked=q.contains("qet-bom13")&&q.contains(key+"=")?q.contains(key+"=1"):fallback;if(!m_source_query18.isEmpty()&&key=="refs")checked=selectedFieldIds19().contains("nomenclature:references");if(!m_source_query18.isEmpty()&&key=="seq")checked=selectedFieldIds19().contains("nomenclature:number");c->setChecked(checked);l->addWidget(c);return c;};
+        auto *qty=check(tr("Sum quantities (unchecked: count occurrences)"),"qty",true);
+        auto *refs=check(tr("Combine component references"),"refs",true);
+        auto *seq=check(tr("Add sequential item numbers"),"seq",true);
+        auto *aux=check(tr("Include auxiliary articles 1–4"),"aux",false);
+        auto *data=check(tr("Only components with article / description data"),"data",true);data->setObjectName("table18MeaningfulBom");
+        auto *buttons=new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel,&d);l->addWidget(buttons);connect(buttons,&QDialogButtonBox::accepted,&d,&QDialog::accept);connect(buttons,&QDialogButtonBox::rejected,&d,&QDialog::reject);
+        if(d.exec()==QDialog::Accepted) {
+          if(!m_known_group19){setQuery(QetFormatting::groupedBomQuery(qty->isChecked(),refs->isChecked(),seq->isChecked(),aux->isChecked(),data->isChecked()));return;}
+          auto selected=selectedKeys();m_group_options19={{"qty",qty->isChecked()},{"refs",refs->isChecked()},{"seq",seq->isChecked()},{"aux",aux->isChecked()},{"data",data->isChecked()}};regenerateGrouped19();
+          selected.removeIf([&](const QString &e){const auto base=QetTableQuery15::baseExpression(e);return (base=="\"No.\""&&!seq->isChecked())||(base=="\"References\""&&!refs->isChecked());});
+          bool hasNo=false,hasReferences=false;for(const auto &e:selected){const auto id=QetTableFields19::semanticId("nomenclature",e);hasNo|=id=="nomenclature:number";hasReferences|=id=="nomenclature:references";}if(seq->isChecked()&&!hasNo)selected.prepend("\"No.\"");if(refs->isChecked()&&!hasReferences)selected<<"\"References\"";
+          rebuildFields18();QetTableQuery15::restoreSelected(selected,ui->m_var_list,ui->m_choosen_list,m_items_list);updateQueryLine();
+        }
+    });
 
 	m_export_info.insert("position", tr("Position"));
 	m_export_info.insert("title", tr("Sheet title"));
@@ -82,11 +110,37 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 			updateAllCheckState();
 		}
 
+        if(!m_source_query18.isEmpty()&&!m_known_group19) {
+          ui->m_edit_sql_query_cb->setChecked(true);refreshMode18();
+          if(auto *notice=findChild<QLabel*>("table18QueryMode")){notice->setText(tr("This custom SQL result has no known component-type source. Choose a predefined component/BOM table to use element-type filters. The original SQL is preserved."));notice->show();}
+          emit definitionChanged19();return;
+        }
 		updateQueryLine();
 	});
 	updateAllCheckState();
 
 	setUpItems();
+    QetTableFields18::installFields18("nomenclature",ui->m_var_list,m_items_list);
+    m_custom_fields=QetTableQuery15::savedFields("nomenclature");
+    QetTableQuery15::installFields(applicableFields18(),ui->m_var_list,m_items_list);
+    auto *custom=new QPushButton(tr("Add custom field..."),this);custom->setObjectName("table15AddCustomField");layout()->addWidget(custom);
+    connect(custom,&QPushButton::clicked,this,[this](){QList<QetFormula19::Field> catalog;for(const auto &f:sourceFields19())catalog<<QetFormula19::Field{f.first,f.second};QVariantMap field;if(QetTableQuery15::editField(this,field,"nomenclature",m_source_query18.isEmpty()?QStringList():QetTableFields18::outputNames18(m_source_query18),catalog))if(!addCustomField(field.value("name").toString(),field.value("heading").toString(),field.value("expression").toString(),field.value("saveForReuse").toBool(),field.value("formulaTree19").toMap()))QMessageBox::information(this,tr("Calculated field"),tr("A field with that name already exists, or its heading is already used by a selected column. Choose a unique field name and column heading."));});
+
+
+    auto *recipes=new QWidget(this);auto *recipeLayout=new QHBoxLayout(recipes);recipeLayout->setContentsMargins(0,0,0,0);
+    auto *recipe=new QComboBox(recipes);recipe->setObjectName("table18Recipe");
+    recipe->addItem(tr("Choose a predefined table..."),QString());
+    recipe->addItem(tr("Grouped BOM - components with part/description data"),"grouped");
+    recipe->addItem(tr("Grouped BOM - include auxiliary articles"),"grouped-aux");
+    recipe->addItem(tr("Component list - one row per component"),"components");
+    auto *useRecipe=new QPushButton(tr("Use predefined table"),recipes);useRecipe->setObjectName("table18UseRecipe");
+    recipeLayout->addWidget(recipe,1);recipeLayout->addWidget(useRecipe);
+    static_cast<QVBoxLayout*>(layout())->insertWidget(0,recipes);
+    auto *mode=new QLabel(this);mode->setObjectName("table18QueryMode");mode->setWordWrap(true);mode->hide();static_cast<QVBoxLayout*>(layout())->insertWidget(1,mode);
+    connect(useRecipe,&QPushButton::clicked,this,[this,recipe](){if(!recipe->currentData().toString().isEmpty())usePredefined18(recipe->currentData().toString());});
+    setupControls19();
+    cleanFields19();
+    connect(ui->m_sql_query,&QLineEdit::textChanged,this,[this](){if(!m_loading19&&ui->m_edit_sql_query_cb->isChecked())emit definitionChanged19();});
 	fillSavedQuery();
 
 	connect(ui->m_sql_query, &QLineEdit::textChanged, this, &ElementQueryWidget::checkQueryValidity);
@@ -107,8 +161,11 @@ ElementQueryWidget::~ElementQueryWidget()
 	Set the current query to query.
 	If it's possible, rebuild the state of the widget from the query
 */
-void ElementQueryWidget::setQuery(const QString &query)
+void ElementQueryWidget::setLegacyQuery(const QString &query)
 {
+    if(query.contains("/*qet-bom13 ")) {
+        m_custom_query=query;ui->m_edit_sql_query_cb->setChecked(true);on_m_edit_sql_query_cb_clicked();ui->m_sql_query->setText(query);return;
+    }
 	if (query.startsWith("SELECT"))
 	{
 		reset();
@@ -284,14 +341,21 @@ void ElementQueryWidget::setQuery(const QString &query)
 	@brief ElementQueryWidget::queryStr
 	@return The current query
 */
-QString ElementQueryWidget::queryStr() const
+QString ElementQueryWidget::rawQueryStr() const
 {
 		//User define is own query
 	if (ui->m_edit_sql_query_cb->isChecked()) {
-		return ui->m_sql_query->text();
+		return QetTableQuery15::withoutState(ui->m_sql_query->text());
 	}
-		//Made a string list with the columns (keys) chosen by the user
-	QStringList keys = selectedKeys();
+		//A saved nested query stays the source; graphical column changes project
+        //its output rather than flattening derived aliases into the base view.
+    if(!m_source_query18.isEmpty()) {
+     if(m_known_group19||m_extra_filter.trimmed().isEmpty())return QetTableFields18::projectOutputs18(m_source_query18,selectedKeys());
+     return "WITH \"qet_table_filtered19\" AS ("+QetTableQuery15::withoutState(m_source_query18)+") SELECT "+selectedKeys().join(", ")+" FROM \"qet_table_filtered19\" WHERE ("+m_extra_filter+")";
+    }
+
+        //Made a string list with the columns (keys) chosen by the user
+	QStringList keys = QetTableFields19::formatSelected("nomenclature",selectedKeys(),m_number_start19,QString(),selectedFieldIds19());
 
 	QString select ="SELECT ";
 	QString order_by = " ORDER BY ";
@@ -307,33 +371,22 @@ QString ElementQueryWidget::queryStr() const
 			order_by += ", ";
 		}
 		column += key;
-		order_by += key;
+		const QString alias = QetTableQuery15::alias(key);
+		order_by += alias.isEmpty() ? key : alias;
+		const QString expression = QetTableQuery15::baseExpression(key);
 
 		auto f = FilterFor(key);
-		switch (f.first)
-		{
-			case 0: //No filter
-				break;
-			case 1: //Not empty
-				filter_ += QStringLiteral(" AND ") += key += " != ''";
-				break;
-			case 2: //empty
-				filter_ += QStringLiteral(" AND (%1 IS NULL OR %1 = '')").arg(key);
-				break;
-			case 3: // contain
-				filter_ += QStringLiteral(" AND ") += key += QStringLiteral(" LIKE'%") += f.second += "%'";
-				break;
-			case 4: // not contain
-				filter_ += QStringLiteral(" AND ") += key += QStringLiteral(" NOT LIKE'%") += f.second += "%'";
-				break;
-			case 5: // is equal
-				filter_ += QStringLiteral(" AND ") += key += QStringLiteral("='") += f.second += "'";
-				break;
-			case 6: // is not equal
-				filter_ += QStringLiteral(" AND ") += key += QStringLiteral("!='") += f.second += "'";
-				break;
-		}
-	}
+        f.second.replace('\'', "''");
+        switch(f.first) {
+        case 1: filter_ += " AND " + expression + " != ''"; break;
+        case 2: filter_ += QStringLiteral(" AND (%1 IS NULL OR %1 = '')").arg(expression); break;
+        case 3: filter_ += " AND " + expression + " LIKE'%" + f.second + "%'"; break;
+        case 4: filter_ += " AND " + expression + " NOT LIKE'%" + f.second + "%'"; break;
+        case 5: filter_ += " AND " + expression + "='" + f.second + "'"; break;
+        case 6: filter_ += " AND " + expression + "!='" + f.second + "'"; break;
+        default: break;
+        }
+    }
 
 	QString from = " FROM element_nomenclature_view";
 
@@ -392,9 +445,8 @@ QString ElementQueryWidget::queryStr() const
 	}
 	where.append(")");
 
-	if (where == " WHERE ()") {
-		where.clear();
-	}
+	if (where == " WHERE ()") {where=" WHERE 0";}
+ int selectedTypes19=0;for(int id=1;id<=8;++id)selectedTypes19+=m_button_group.button(id)->isChecked();if(selectedTypes19==8)where.clear();
 
 	// exclude_from_bom is already filtered by element_nomenclature_view
 	// (see createElementNomenclatureView() in projectdatabase.cpp); this
@@ -402,7 +454,7 @@ QString ElementQueryWidget::queryStr() const
 	// reaches this point in the first place.
 
 	if (!m_extra_filter.isEmpty()) {
-		filter_ += QStringLiteral(" AND ") + m_extra_filter;
+		filter_ += QStringLiteral(" AND (") + m_extra_filter + ")";
 	}
 
 	if (where.isEmpty() && !filter_.isEmpty()) {
@@ -410,7 +462,8 @@ QString ElementQueryWidget::queryStr() const
 		filter_.prepend( " WHERE");
 	}
 
-	QString q(select + column + m_count + from + where + filter_ + m_group_by + order_by);
+	for(const auto &key:keys)if(QetTableFields19::semanticId("nomenclature",key)=="nomenclature:number") {const auto alias=QetTableQuery15::alias(key);order_by=" ORDER BY "+(alias.isEmpty()?QetTableQuery15::baseExpression(key):alias);break;}
+ QString q(select + column + m_count + from + where + filter_ + m_group_by + order_by);
 	return q;
 }
 
@@ -518,7 +571,11 @@ void ElementQueryWidget::setExtraFilter(const QString &text, bool set)
 */
 void ElementQueryWidget::updateQueryLine()
 {
-	ui->m_sql_query->setText(queryStr());
+    if(m_loading19)return;
+    if(m_known_group19)regenerateGrouped19();
+    cleanFields19();
+    ui->m_sql_query->setText(QetTableQuery15::withoutState(queryStr()));
+    emit definitionChanged19();
 }
 
 /**
@@ -619,10 +676,15 @@ void ElementQueryWidget::on_m_up_pb_clicked()
 */
 void ElementQueryWidget::on_m_add_pb_clicked()
 {
-	if (auto *item = ui->m_var_list->takeItem(ui->m_var_list->currentRow())) {
-		ui->m_choosen_list->addItem(item);
-	}
-
+    if(m_known_group19)if(auto *item=ui->m_var_list->currentItem())if(item->data(Qt::UserRole+20).isValid()) {
+      QDialog dialog(this);dialog.setWindowTitle(tr("Add field to grouped BOM"));QFormLayout form(&dialog);
+      auto *heading=new QLineEdit(item->text());form.addRow(tr("Column heading"),heading);
+      auto *mode=new QComboBox;mode->addItem(tr("List distinct values"),"distinct");mode->addItem(tr("Common value; mark differing values"),"common");mode->addItem(tr("Split groups by this value"),"split");form.addRow(tr("Several values in one group"),mode);
+      auto *buttons=new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);form.addRow(buttons);connect(buttons,&QDialogButtonBox::accepted,&dialog,&QDialog::accept);connect(buttons,&QDialogButtonBox::rejected,&dialog,&QDialog::reject);
+      if(dialog.exec()==QDialog::Accepted&&!addGroupedField19(item->data(Qt::UserRole+20).toString(),heading->text(),mode->currentData().toString()))QMessageBox::information(this,tr("Grouped BOM"),tr("Choose a unique non-empty heading and a field from the available catalogue."));
+      return;
+    }
+	if (auto *item = ui->m_var_list->takeItem(ui->m_var_list->currentRow())) {item->setHidden(false);ui->m_choosen_list->addItem(item);}
 	updateQueryLine();
 }
 
@@ -660,21 +722,18 @@ void ElementQueryWidget::on_m_down_pb_clicked()
 */
 void ElementQueryWidget::on_m_edit_sql_query_cb_clicked()
 {
-	ui->m_sql_query->setEnabled(ui->m_edit_sql_query_cb->isChecked());
-	ui->m_info_widget->setDisabled(ui->m_edit_sql_query_cb->isChecked());
-	ui->m_parametre_widget->setDisabled(ui->m_edit_sql_query_cb->isChecked());
-
-	if (ui->m_edit_sql_query_cb->isChecked() && !m_custom_query.isEmpty())
-	{
-		ui->m_sql_query->setText(m_custom_query);
-	}
-	else if (!ui->m_edit_sql_query_cb->isChecked())
-	{
-		m_custom_query = ui->m_sql_query->text();
-		updateQueryLine();
-	}
-
-	checkQueryValidity();
+    const QString current=QetTableQuery15::withoutState(ui->m_sql_query->text());
+    if(ui->m_edit_sql_query_cb->isChecked())m_custom_query=current;
+    else if(!m_source_query18.isEmpty()&&current.trimmed()==QetTableFields18::projectOutputs18(m_source_query18,selectedKeys()).trimmed()) {
+        // Existing graphical projection remains valid when SQL is only viewed.
+    } else if(current.trimmed()!=rawQueryStr().trimmed()) {
+        const bool supported=QetTableFields18::canProjectOutputs18(current);
+        if(supported)setDerivedSource18(current);
+        else {ui->m_edit_sql_query_cb->setChecked(true);if(auto *notice=findChild<QLabel*>("table18QueryMode")){notice->setText(tr("This SQL query needs unique named output columns for graphical editing (no duplicate headings or wildcard *). It is preserved. Add unique AS headings in SQL, or choose a predefined table."));notice->show();}return;}
+    } else m_source_query18.clear();
+    refreshMode18();
+    if(!ui->m_edit_sql_query_cb->isChecked())updateQueryLine();
+    checkQueryValidity();
 }
 
 /**
@@ -963,3 +1022,257 @@ void ElementQueryWidget::reset()
 	m_filter.clear();
 }
 
+
+// Table 1.5 stores editor state beside the SELECT as an inert SQL comment.
+// Unknown SQL remains Advanced and is never regenerated implicitly.
+
+QStringList ElementQueryWidget::selectedFieldExpressions() const {return selectedKeys();}
+
+bool ElementQueryWidget::addCustomField(const QString &name,const QString &heading,const QString &expression,bool saveForReuse,const QVariantMap &formulaTree19)
+{
+ if(!QetTableQuery15::fieldValid(name,heading,expression))return false;
+ QVariantMap field{{"name",name.trimmed()},{"heading",heading.trimmed()},{"expression",expression.trimmed()},{"context","nomenclature"}};if(!formulaTree19.isEmpty())field["formulaTree19"]=formulaTree19;
+ if(!m_source_query18.isEmpty())field["sourceColumns18"]=QetTableFields18::outputNames18(m_source_query18);
+ const QString sql=QetTableQuery15::fieldExpression(field);
+ for(const auto &f:m_custom_fields)if(QetTableQuery15::fieldExpression(f.toMap())==sql&&f.toMap().value("sourceColumns18")==field.value("sourceColumns18"))return true;
+ for(const auto &f:applicableFields18())if(f.toMap().value("name").toString().compare(name.trimmed(),Qt::CaseInsensitive)==0)return false;
+ for(const auto &selected:QetTableFields18::outputNames18(rawQueryStr()))if(selected.compare(heading.trimmed(),Qt::CaseInsensitive)==0)return false;
+ m_custom_fields<<field;QetTableQuery15::installFields(applicableFields18(),ui->m_var_list,m_items_list);cleanFields19();
+ if(saveForReuse)QetTableQuery15::saveFields("nomenclature",m_custom_fields);return true;
+}
+
+QVariantMap ElementQueryWidget::editorState() const
+{
+ QVariantMap result{{"version",15},{"context","nomenclature"},{"columns",selectedKeys()},{"customFields",m_custom_fields},{"advanced",ui->m_edit_sql_query_cb->isChecked()}};
+ result["sourceSql18"]=m_source_query18;result["columnIds19"]=selectedFieldIds19();result["filterTree19"]=m_filter_tree19;
+ result["knownGroup19"]=m_known_group19;result["groupOptions19"]=m_group_options19;result["groupFields19"]=m_group_fields19;result["numberStart19"]=m_number_start19;
+
+ QVariantList types;for(int i=1;i<=8;++i)types<<m_button_group.button(i)->isChecked();result["types"]=types;
+ QVariantMap filters;for(auto i=m_filter.cbegin();i!=m_filter.cend();++i)filters[i.key()]=QVariantList{i.value().first,i.value().second};result["filters"]=filters;
+ result["groupBy"]=m_group_by;result["count"]=m_count;result["extraFilter"]=m_extra_filter;
+
+ return result;
+}
+
+void ElementQueryWidget::restoreEditorState(const QVariantMap &state)
+{
+ for(const auto &f:state.value("customFields").toList()){auto field=f.toMap();if(QetTableQuery15::fieldValid(field.value("name").toString(),field.value("heading").toString(),field.value("expression").toString())){bool found=false;for(const auto &existing:m_custom_fields)if(existing.toMap()==field)found=true;if(!found)m_custom_fields<<field;}}
+ QetTableQuery15::installFields(applicableFields18(),ui->m_var_list,m_items_list);
+ QetTableQuery15::restoreSelected(state.value("columns").toStringList(),ui->m_var_list,ui->m_choosen_list,m_items_list);
+
+ auto types=state.value("types").toList();for(int i=1;i<=8&&i<=types.size();++i)m_button_group.button(i)->setChecked(types[i-1].toBool());updateAllCheckState();
+ m_filter.clear();auto filters=state.value("filters").toMap();for(auto i=filters.cbegin();i!=filters.cend();++i){auto values=i.value().toList();if(values.size()==2)m_filter[i.key()]=qMakePair(values[0].toInt(),values[1].toString());}
+ m_group_by=state.value("groupBy").toString();m_count=state.value("count").toString();m_extra_filter=state.value("extraFilter").toString();
+
+}
+
+QString ElementQueryWidget::queryStr() const
+{
+ const QString sql=QetTableQuery15::withoutState(rawQueryStr());
+ if(ui->m_edit_sql_query_cb->isChecked())return sql;
+ auto state=editorState();state["sql"]=sql;return QetTableQuery15::withState(sql,state);
+}
+
+void ElementQueryWidget::setQuery(const QString &query)
+{
+ m_loading19=true;
+ const QString sql=QetTableQuery15::withoutState(query);auto state=QetTableQuery15::state(query);m_filter_tree19=state.value("filterTree19").toMap();
+ m_known_group19=false;m_group_options19.clear();m_group_fields19.clear();m_number_start19=qMax(1,state.value("numberStart19",1).toInt());
+ m_source_query18.clear();rebuildFields18();reset();m_custom_query.clear();m_group_by.clear();m_count.clear();m_extra_filter.clear();
+ ui->m_edit_sql_query_cb->setChecked(false);
+ const bool saved=state.value("context").toString()=="nomenclature"&&state.value("sql").toString()==sql;
+ if(saved&&!state.value("sourceSql18").toString().isEmpty()) {
+  m_source_query18=state.value("sourceSql18").toString();
+  m_known_group19=m_source_query18.contains("/*qet-bom13 ")&&m_source_query18.trimmed()==QetTableFields19::groupedQuery(QetTableFields19::groupedOptions(m_source_query18),{}, {},1).trimmed();
+  m_group_options19=state.value("groupOptions19",QetTableFields19::groupedOptions(m_source_query18)).toMap();m_group_fields19=state.value("groupFields19").toList();rebuildFields18();
+ }
+ if(!saved)setLegacyQuery(sql);
+ if(saved) {
+  if(state.value("columns").toStringList().isEmpty()&&!QetTableQuery15::selectColumns(sql).isEmpty())state["columns"]=QetTableQuery15::selectColumns(sql);
+  restoreEditorState(state);
+  if(state.value("knownGroup19").toBool()&&!m_source_query18.isEmpty()) {
+   const QString candidate=QetTableFields19::groupedQuery(m_group_options19,preGroupFilter19(),m_group_fields19,m_number_start19);
+   m_known_group19=candidate.trimmed()==m_source_query18.trimmed();
+   if(m_known_group19){const auto selected=selectedKeys();rebuildFields18();QetTableQuery15::restoreSelected(selected,ui->m_var_list,ui->m_choosen_list,m_items_list);}
+  }
+  if(m_known_group19&&!state.contains("knownGroup19"))for(auto *button:m_button_group.buttons())button->setChecked(true);
+ }else QetTableQuery15::restoreSelected(QetTableQuery15::selectColumns(sql),ui->m_var_list,ui->m_choosen_list,m_items_list);
+ ui->m_edit_sql_query_cb->setChecked(false);
+ bool advanced=saved?state.value("advanced").toBool():sql.trimmed()!=rawQueryStr().trimmed();
+ if(saved&&!advanced&&rawQueryStr().trimmed()!=sql.trimmed()) {
+  QetTableQuery15::restoreSelected(QetTableQuery15::selectColumns(sql),ui->m_var_list,ui->m_choosen_list,m_items_list);
+  advanced=sql.trimmed()!=rawQueryStr().trimmed();
+ }
+ ui->m_edit_sql_query_cb->setChecked(advanced);ui->m_sql_query->setText(sql);m_custom_query=advanced?sql:QString();
+ if(!saved&&sql.contains("/*qet-bom13 ")&&QetTableFields18::canProjectOutputs18(sql)){setDerivedSource18(sql);ui->m_edit_sql_query_cb->setChecked(!m_known_group19);if(!m_known_group19)m_custom_query=sql;}
+ if(saved){const auto ids=state.value("columnIds19").toStringList();for(int i=0;i<ui->m_choosen_list->count()&&i<ids.size();++i)ui->m_choosen_list->item(i)->setData(Qt::UserRole+19,ids[i]);}
+ if(auto *spin=findChild<QSpinBox*>("table19NumberStart")){QSignalBlocker block(spin);spin->setValue(m_number_start19);}
+ 
+ cleanFields19();refreshMode18();m_loading19=false;emit definitionChanged19();
+}
+
+QVariantList ElementQueryWidget::applicableFields18() const
+{
+ QVariantList result;const auto names=m_source_query18.isEmpty()?QStringList():QetTableFields18::outputNames18(m_source_query18);
+ for(const auto &entry:m_custom_fields){const auto columns=entry.toMap().value("sourceColumns18").toStringList();if(columns==names)result<<entry;}
+ return result;
+}
+
+void ElementQueryWidget::rebuildFields18()
+{
+ QSignalBlocker a(ui->m_var_list),b(ui->m_choosen_list);
+ ui->m_var_list->clear();ui->m_choosen_list->clear();m_items_list.clear();
+ if(m_source_query18.isEmpty()){setUpItems();QetTableFields18::installFields18("nomenclature",ui->m_var_list,m_items_list);}
+ else {
+  for(const auto &name:QetTableFields18::outputNames18(m_source_query18))QetTableQuery15::addItem(ui->m_var_list,m_items_list,QetTableQuery15::quotedName(name),name);
+  if(m_known_group19) {
+   int before=m_items_list.size();setUpItems();
+   for(int i=before;i<m_items_list.size();++i)m_items_list[i]->setData(Qt::UserRole+20,m_items_list[i]->data(Qt::UserRole));
+  }
+ }
+ QetTableQuery15::installFields(applicableFields18(),ui->m_var_list,m_items_list);
+}
+
+void ElementQueryWidget::setDerivedSource18(const QString &query)
+{
+ m_source_query18=QetTableQuery15::withoutState(query);
+ m_known_group19=m_source_query18.contains("/*qet-bom13 ")&&m_source_query18.trimmed()==QetTableFields19::groupedQuery(QetTableFields19::groupedOptions(m_source_query18),{}, {},1).trimmed();
+ if(m_known_group19){m_group_options19=QetTableFields19::groupedOptions(m_source_query18);for(auto *button:m_button_group.buttons())button->setChecked(true);updateAllCheckState();}
+ rebuildFields18();
+ QetTableQuery15::restoreSelected(QetTableFields18::quotedOutputs18(m_source_query18),ui->m_var_list,ui->m_choosen_list,m_items_list);
+}
+
+void ElementQueryWidget::refreshMode18()
+{
+ const bool advanced=ui->m_edit_sql_query_cb->isChecked();
+ ui->m_sql_query->setEnabled(advanced);ui->m_info_widget->setDisabled(advanced);
+ ui->m_parametre_widget->setDisabled(advanced);
+ for(const auto &name:QStringList{"table19NumberStart","table19AddNumber"})if(auto *control=findChild<QWidget*>(name)){control->setEnabled(!advanced&&(m_source_query18.isEmpty()||m_known_group19));control->setToolTip(tr("Automatic numbering is editable for predefined component/BOM tables. Custom SQL keeps its own ordering and numbering."));}
+ if(auto *notice=findChild<QLabel*>("table18QueryMode")){
+  notice->setText(advanced?tr("Advanced SQL is preserved. Unchecking SQL edits its result columns without replacing its source query."):!m_source_query18.isEmpty()?tr("Saved query source: edit the columns and order above. Use the grouped-BOM controls or a predefined table to change its data selection."):QString());
+  notice->setVisible(!notice->text().isEmpty());
+ }
+}
+
+void ElementQueryWidget::usePredefined18(const QString &recipe)
+{
+ if(recipe=="components") {
+  const QString sql=QetTableFields18::componentListQuery18();setQuery(sql);m_loading19=true;m_source_query18.clear();m_known_group19=false;rebuildFields18();
+  for(auto *button:m_button_group.buttons())button->setChecked(true);updateAllCheckState();
+  m_extra_filter="TRIM(COALESCE(description,''))<>'' OR TRIM(COALESCE(designation,''))<>'' OR TRIM(COALESCE(manufacturer_reference,''))<>''";
+  QetTableQuery15::restoreSelected(QetTableQuery15::selectColumns(sql),ui->m_var_list,ui->m_choosen_list,m_items_list);ui->m_edit_sql_query_cb->setChecked(false);m_loading19=false;refreshMode18();updateQueryLine();
+ }
+ else if(recipe=="grouped"||recipe=="grouped-aux")setQuery(QetFormatting::groupedBomQuery(true,true,true,recipe=="grouped-aux"));
+}
+
+QStringList ElementQueryWidget::selectedFieldIds19() const {QStringList result;for(int i=0;i<ui->m_choosen_list->count();++i){auto *item=ui->m_choosen_list->item(i);QString id=item->data(Qt::UserRole+19).toString();for(const auto &v:m_custom_fields){const auto field=v.toMap();if(QetTableQuery15::fieldExpression(field)==item->data(Qt::UserRole).toString())id="custom:"+field.value("context").toString()+":"+field.value("name").toString();}result<< (id.isEmpty()?QetTableFields19::semanticId("nomenclature",item->data(Qt::UserRole).toString()):id);}return result;}
+
+QString ElementQueryWidget::validationMessage19() const {
+ if(ui->m_edit_sql_query_cb->isChecked())return {};
+ if(selectedKeys().isEmpty())return tr("Choose at least one column. The previous table is kept until a valid definition is applied.");
+ QSet<QString> headings;for(const auto &name:QetTableFields18::outputNames18(rawQueryStr())){const auto folded=name.toCaseFolded();if(headings.contains(folded))return tr("Choose unique column headings. Two selected columns currently have the same heading: %1").arg(name);headings.insert(folded);}
+ return {};
+}
+void ElementQueryWidget::cleanFields19() {
+ for(auto *item:m_items_list) {
+  const QString expression=item->data(Qt::UserRole).toString();
+  for(const auto &v:m_custom_fields){const auto field=v.toMap();if(QetTableQuery15::fieldExpression(field)==expression)item->setData(Qt::UserRole+19,"custom:"+field.value("context").toString()+":"+field.value("name").toString());}
+  for(const auto &v:m_group_fields19){const auto field=v.toMap();if(expression==QetTableQuery15::quotedName(field.value("heading").toString()))item->setData(Qt::UserRole+19,"nomenclature:group:"+field.value("key").toString());}
+ }
+ QetTableFields19::deduplicate("nomenclature",ui->m_var_list,ui->m_choosen_list,m_items_list);
+ const auto query=findChild<QLineEdit*>("table19SearchFields");const QString text=query?query->text():QString();const auto categoryBox=findChild<QComboBox*>("table19FieldCategory");const QString category=categoryBox?categoryBox->currentData().toString():QStringLiteral("all");
+ for(int i=0;i<ui->m_var_list->count();++i){auto *item=ui->m_var_list->item(i);item->setHidden((!text.isEmpty()&&!item->text().contains(text,Qt::CaseInsensitive)&&!item->toolTip().contains(text,Qt::CaseInsensitive))||(category!="all"&&QetTableFields19::category("nomenclature",item)!=category));}
+ for(int i=0;i<ui->m_choosen_list->count();++i)ui->m_choosen_list->item(i)->setHidden(false);
+}
+QList<QPair<QString,QString>> ElementQueryWidget::sourceFields19() const {
+ QList<QPair<QString,QString>> result;
+ if(!m_source_query18.isEmpty()){for(const auto &name:QetTableFields18::outputNames18(m_source_query18))result<<qMakePair(name,QetTableQuery15::quotedName(name));return result;}
+ for(auto *item:m_items_list)result<<qMakePair(item->text(),QetTableQuery15::baseExpression(item->data(Qt::UserRole).toString()));return result;
+}
+void ElementQueryWidget::setNumberStart19(int start) {
+ m_number_start19=qMax(1,start);
+ if(m_source_query18.isEmpty())for(int i=0;i<ui->m_choosen_list->count();++i){auto *item=ui->m_choosen_list->item(i);if(selectedFieldIds19().value(i)=="nomenclature:number")item->setData(Qt::UserRole,QetTableFields19::formatSelected("nomenclature",{item->data(Qt::UserRole).toString()},m_number_start19).first());}
+ updateQueryLine();
+}
+void ElementQueryWidget::enableNumber19(bool enabled) {
+ for(int i=0;i<ui->m_choosen_list->count();++i){auto *item=ui->m_choosen_list->item(i);if(selectedFieldIds19().value(i)=="nomenclature:number"){
+  if(!enabled){ui->m_choosen_list->takeItem(i);ui->m_var_list->addItem(item);updateQueryLine();}return;
+ }}
+ if(!enabled)return;
+ if(m_known_group19&&!QetTableFields18::outputNames18(m_source_query18).contains("No.")){m_group_options19["seq"]=true;regenerateGrouped19();}
+ if(!m_source_query18.isEmpty()&&!m_known_group19){QMessageBox::information(this,tr("Automatic numbering"),tr("Choose a predefined table to add ordered automatic numbering. Custom SQL keeps its own ordering."));return;}
+ for(int i=0;i<ui->m_var_list->count();++i)if(QetTableFields19::semanticId("nomenclature",ui->m_var_list->item(i)->data(Qt::UserRole).toString())=="nomenclature:number"){
+  auto *item=ui->m_var_list->takeItem(i);ui->m_choosen_list->insertItem(0,item);updateQueryLine();return;
+ }
+ auto *item=QetTableQuery15::addItem(ui->m_var_list,m_items_list,QetTableFields19::numberExpression("nomenclature",m_number_start19),tr("No."));ui->m_var_list->takeItem(ui->m_var_list->row(item));ui->m_choosen_list->insertItem(0,item);updateQueryLine();
+}
+void ElementQueryWidget::setFilter19(const QString &condition) {m_filter_tree19.clear();m_extra_filter=condition;updateQueryLine();}
+void ElementQueryWidget::setupControls19() {
+ auto *controls=new QWidget(this);auto *box=new QVBoxLayout(controls);box->setContentsMargins(0,0,0,0);
+ auto *search=new QLineEdit;search->setObjectName("table19SearchFields");search->setPlaceholderText(tr("Search available fields..."));auto *searchRow=new QHBoxLayout;searchRow->addWidget(search,1);auto *category=new QComboBox;category->setObjectName("table19FieldCategory");category->addItem(tr("All fields"),"all");category->addItem(tr("Common fields"),"common");category->addItem(tr("Component properties"),"component");category->addItem(tr("Auxiliary articles"),"auxiliary"); category->addItem(tr("Sheet / placement"),"sheet");category->addItem(tr("Calculated fields"),"calculated");searchRow->addWidget(category);box->addLayout(searchRow);connect(category,qOverload<int>(&QComboBox::currentIndexChanged),this,[this](){cleanFields19();});
+ connect(search,&QLineEdit::textChanged,this,[this](){cleanFields19();});
+ auto *row=new QHBoxLayout;auto *more=new QHBoxLayout;auto *number=new QPushButton(tr("Add No. column"));number->setObjectName("table19AddNumber");row->addWidget(number);connect(number,&QPushButton::clicked,this,[this](){enableNumber19();});
+ row->addWidget(new QLabel(tr("Starting number")));auto *start=new QSpinBox;start->setObjectName("table19NumberStart");start->setRange(1,1000000000);start->setValue(1);row->addWidget(start);connect(start,qOverload<int>(&QSpinBox::valueChanged),this,&ElementQueryWidget::setNumberStart19);
+ 
+ auto *heading=new QPushButton(tr("Column heading..."));heading->setObjectName("table19ColumnHeading");row->addWidget(heading);connect(heading,&QPushButton::clicked,this,[this](){auto *item=ui->m_choosen_list->currentItem();if(!item)return;bool ok=false;const auto old=item->data(Qt::UserRole).toString();QString name=QInputDialog::getText(this,tr("Column heading"),tr("Displayed heading"),QLineEdit::Normal,item->text(),&ok).trimmed();if(!ok||name.isEmpty())return;for(int i=0;i<ui->m_choosen_list->count();++i)if(ui->m_choosen_list->item(i)!=item&&ui->m_choosen_list->item(i)->text().compare(name,Qt::CaseInsensitive)==0){QMessageBox::information(this,tr("Column heading"),tr("Choose a unique heading."));return;}for(int i=0;i<m_custom_fields.size();++i){auto field=m_custom_fields[i].toMap();if(QetTableQuery15::fieldExpression(field)==old){field["heading"]=name;m_custom_fields[i]=field;}}item->setData(Qt::UserRole,QetTableQuery15::baseExpression(old)+" AS "+QetTableQuery15::quotedName(name));item->setText(name);updateQueryLine();});
+ auto *groupValues=new QPushButton(tr("Grouped field values..."));groupValues->setObjectName("table19GroupedFieldValues");more->addWidget(groupValues);connect(groupValues,&QPushButton::clicked,this,[this](){
+  auto *item=ui->m_choosen_list->currentItem();if(!item||!m_known_group19)return;const auto expression=QetTableQuery15::baseExpression(item->data(Qt::UserRole).toString());int index=-1;for(int i=0;i<m_group_fields19.size();++i)if(QetTableQuery15::quotedName(m_group_fields19[i].toMap().value("heading").toString())==expression){index=i;break;}if(index<0){QMessageBox::information(this,tr("Grouped field values"),tr("Select an additional grouped property column. Qty and References use the main grouped-BOM controls."));return;}
+  auto field=m_group_fields19[index].toMap();QDialog dialog(this);dialog.setWindowTitle(tr("Grouped field values"));QFormLayout form(&dialog);auto *mode=new QComboBox;mode->addItem(tr("List distinct values"),"distinct");mode->addItem(tr("Common value; mark differing values"),"common");mode->addItem(tr("Split groups by this value"),"split");mode->setCurrentIndex(qMax(0,mode->findData(field.value("mode"))));form.addRow(tr("Several values in one group"),mode);auto *buttons=new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);form.addRow(buttons);connect(buttons,&QDialogButtonBox::accepted,&dialog,&QDialog::accept);connect(buttons,&QDialogButtonBox::rejected,&dialog,&QDialog::reject);if(dialog.exec()==QDialog::Accepted){field["mode"]=mode->currentData();m_group_fields19[index]=field;updateQueryLine();}
+ });
+ auto *editFormula=new QPushButton(tr("Edit calculated field..."));editFormula->setObjectName("table19EditCalculatedField");more->addWidget(editFormula);
+ connect(editFormula,&QPushButton::clicked,this,[this](){
+  auto *item=ui->m_choosen_list->currentItem();if(!item)item=ui->m_var_list->currentItem();if(!item)return;
+  const QString oldExpression=item->data(Qt::UserRole).toString();int index=-1;for(int i=0;i<m_custom_fields.size();++i)if(QetTableQuery15::fieldExpression(m_custom_fields[i].toMap())==oldExpression){index=i;break;}
+  if(index<0){QMessageBox::information(this,tr("Calculated field"),tr("Select a calculated/custom field to edit. Use Column heading for a normal field."));return;}
+  QVariantMap field=m_custom_fields[index].toMap();
+  QList<QetFormula19::Field> catalog;for(const auto &f:sourceFields19())catalog<<QetFormula19::Field{f.first,f.second};if(!QetTableQuery15::editField(this,field,"nomenclature",m_source_query18.isEmpty()?QStringList():QetTableFields18::outputNames18(m_source_query18),catalog))return;
+  if(!m_source_query18.isEmpty())field["sourceColumns18"]=QetTableFields18::outputNames18(m_source_query18);
+  bool conflict=false;
+  for(int i=0;i<m_custom_fields.size();++i)if(i!=index){const auto other=m_custom_fields[i].toMap();if(other.value("sourceColumns18").toStringList()!=field.value("sourceColumns18").toStringList())continue;if(other.value("name").toString().compare(field.value("name").toString(),Qt::CaseInsensitive)==0||other.value("heading").toString().compare(field.value("heading").toString(),Qt::CaseInsensitive)==0)conflict=true;}
+  for(int i=0;i<ui->m_choosen_list->count();++i){auto *other=ui->m_choosen_list->item(i);if(other==item)continue;const auto headings=QetTableFields18::outputNames18("SELECT "+other->data(Qt::UserRole).toString());if(!headings.isEmpty()&&headings.first().compare(field.value("heading").toString(),Qt::CaseInsensitive)==0)conflict=true;}
+  if(conflict){QMessageBox::information(this,tr("Calculated field"),tr("Another field already uses this name or column heading. Choose unique values; the existing definition has been kept."));return;}
+  m_custom_fields[index]=field;item->setData(Qt::UserRole,QetTableQuery15::fieldExpression(field));item->setText(field.value("name").toString()+tr(" (custom)"));item->setData(Qt::UserRole+19,"custom:nomenclature:"+field.value("name").toString());
+  if(field.value("saveForReuse").toBool())QetTableQuery15::saveFields("nomenclature",m_custom_fields);updateQueryLine();
+ });
+ auto *filter=new QPushButton(tr("Build filter..."));filter->setObjectName("table19BuildFilter");more->addWidget(filter);connect(filter,&QPushButton::clicked,this,[this](){
+  QList<QetFormula19::Field> fields;
+  if(m_known_group19||m_source_query18.isEmpty()) {
+   for(const auto &key:QETInformation::elementInfoKeys())if(key!="formula"&&key!="exclude_from_bom"&&key!=QETInformation::ELMT_TERMINAL_NUMBER)fields<<QetFormula19::Field{QETInformation::translatedInfoKey(key),QetTableQuery15::quotedName(key)};
+   for(auto it=m_export_info.cbegin();it!=m_export_info.cend();++it)fields<<QetFormula19::Field{it.value(),QetTableQuery15::quotedName(it.key())};
+  }else for(const auto &field:sourceFields19())fields<<QetFormula19::Field{field.first,field.second};
+  QString condition=m_extra_filter;
+  QetFormula19::Dialog dialog(this,fields,condition,true,false);if(!m_filter_tree19.isEmpty())dialog.setExpressionTree(m_filter_tree19);if(dialog.exec()==QDialog::Accepted){setFilter19(dialog.expression());m_filter_tree19=dialog.expressionTree();emit definitionChanged19();}
+ });
+ auto *clear=new QPushButton(tr("Clear filter"));clear->setObjectName("table19ClearFilter");more->addWidget(clear);connect(clear,&QPushButton::clicked,this,[this](){setFilter19({});});
+ row->addStretch();more->addStretch();box->addLayout(row);box->addLayout(more);static_cast<QVBoxLayout*>(layout())->insertWidget(2,controls);
+}
+
+QString ElementQueryWidget::preGroupFilter19() const {
+ QStringList clauses,types;
+ for(int id=1;id<=8;++id)if(m_button_group.button(id)->isChecked()) {
+  switch(id){
+  case 1:types<<"element_type='terminal'";break;case 2:types<<"element_type='simple'";break;case 6:types<<"element_type='thumbnail'";break;case 8:types<<"element_type='slave'";break;
+  case 3:types<<"(element_type='master' AND element_sub_type='"+ElementData::masterTypeToString(ElementData::Commutator)+"')";break;case 4:types<<"(element_type='master' AND element_sub_type='"+ElementData::masterTypeToString(ElementData::Coil)+"')";break;case 5:types<<"(element_type='master' AND element_sub_type='"+ElementData::masterTypeToString(ElementData::Protection)+"')";break;case 7:types<<"(element_type='master' AND element_sub_type='"+ElementData::masterTypeToString(ElementData::PLC)+"')";break;
+  }
+ }
+ int checked=0;for(int i=1;i<=8;++i)checked+=m_button_group.button(i)->isChecked();
+ if(checked!=8)clauses<< (types.isEmpty()?QStringLiteral("0"):"("+types.join(" OR ")+")");
+ for(auto it=m_filter.cbegin();it!=m_filter.cend();++it) {
+  QString expression=QetTableQuery15::baseExpression(it.key());const QString id=QetTableFields19::semanticId("nomenclature",it.key());if(id=="nomenclature:number")continue;
+  if(id=="nomenclature:references")expression="label";else if(id=="nomenclature:manufacturer")expression="manufacturer";else if(id=="nomenclature:article")expression="manufacturer_reference";else if(id=="nomenclature:name")expression="COALESCE(NULLIF(TRIM(description),''),designation,'')";else if(id=="nomenclature:quantity")expression="CAST(REPLACE(COALESCE(NULLIF(TRIM(quantity),''),'1'),',','.') AS REAL)";else if(id=="nomenclature:unit")expression="unity";
+  for(const auto &v:m_group_fields19)if(v.toMap().value("heading").toString()==QetTableFields18::unquote18(expression))expression=v.toMap().value("key").toString();
+  const QString filter=QetTableFields19::condition(expression,it.value().first,it.value().second);if(!filter.isEmpty())clauses<<"("+filter+")";
+ }
+ if(!m_extra_filter.trimmed().isEmpty())clauses<<"("+m_extra_filter+")";return clauses.join(" AND ");
+}
+void ElementQueryWidget::regenerateGrouped19() {
+ if(!m_known_group19)return;
+ m_source_query18=QetTableFields19::groupedQuery(m_group_options19,preGroupFilter19(),m_group_fields19,m_number_start19);
+}
+bool ElementQueryWidget::addGroupedField19(const QString &key,const QString &heading,const QString &mode) {
+ if(!m_known_group19||heading.trimmed().isEmpty()||!QStringList{"common","distinct","split"}.contains(mode))return false;
+ for(const auto &v:m_group_fields19)if(v.toMap().value("key").toString()==key)return false;
+ for(const auto &name:QetTableFields18::outputNames18(m_source_query18))if(name.compare(heading.trimmed(),Qt::CaseInsensitive)==0)return false;
+ bool exists=false;for(auto *item:m_items_list)if(item->data(Qt::UserRole+20).toString()==key)exists=true;if(!exists)return false;
+ auto selected=selectedKeys();m_group_fields19<<QVariantMap{{"key",key},{"heading",heading.trimmed()},{"mode",mode}};regenerateGrouped19();rebuildFields18();selected<<QetTableQuery15::quotedName(heading.trimmed());QetTableQuery15::restoreSelected(selected,ui->m_var_list,ui->m_choosen_list,m_items_list);updateQueryLine();return true;
+}

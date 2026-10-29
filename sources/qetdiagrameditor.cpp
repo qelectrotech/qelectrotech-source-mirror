@@ -16,6 +16,20 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetdiagrameditor.h"
+#include "ui/textstyle13.h"
+#include "ui/foliolayout13.h"
+#include "ui/languageui16.h"
+#include "ui/labelclearance24.h"
+#include "ui/arrange25.h"
+#include "ui/references25.h"
+#include "ui/xref26.h"
+#include "ui/languageeditor21.h"
+#include "ui/textalignment18.h"
+#include "ui/tablecombine18.h"
+#include "ui/tableeditor15.h"
+#include "ui/customcommands19.h"
+#include "ui/conductorpropertiesdialog.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "container/qetcontainer.h"
 #include "container/qetzip.h"
 #include "utils/previousversions.h"
@@ -230,6 +244,11 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	setUpActions();
 	setUpToolBar();
 	setUpMenu();
+    QetArrange25::install(this,[this](){auto *v=currentDiagramView();return v?v->diagram():nullptr;});
+	// Menu-based custom commands are registered after the first toolbar fill.
+	// Refill now so saved custom buttons survive a fresh application start.
+	rebuildToolBars();
+	updateCustomCommands19(currentDiagramView() ? currentDiagramView()->diagram() : nullptr);
 
 	tabifyDockWidget(qdw_undo, qdw_pa);
 
@@ -1629,7 +1648,9 @@ void QETDiagramEditor::setUpToolBar()
 */
 void QETDiagramEditor::rebuildToolBars()
 {
-	const QList<DiagramToolbarSettings::Toolbar> custom = DiagramToolbarSettings::customToolbars();
+	QList<DiagramToolbarSettings::Toolbar> custom;
+	for(const auto &bar:DiagramToolbarSettings::customToolbars())
+		if(DiagramToolbarSettings::contextForToolbar(bar.name)==QLatin1String("diagrameditor"))custom<<bar;
 	QStringList custom_names;
 	for (const DiagramToolbarSettings::Toolbar &toolbar : custom) {
 		custom_names << toolbar.name;
@@ -1670,6 +1691,12 @@ void QETDiagramEditor::rebuildToolBars()
 	for (QToolBar *toolbar : built_in + m_custom_tool_bars) {
 		DiagramToolbarSettings::fill(toolbar, DiagramToolbarSettings::ids(toolbar->objectName()), resolve);
 	}
+
+    if(auto *arrange=findChild<QToolBar*>("arrange25",Qt::FindDirectChildrenOnly)){
+        auto *controls=arrange->findChild<QWidgetAction*>("arrangeControls25");
+        DiagramToolbarSettings::fill(arrange,DiagramToolbarSettings::ids("arrange25"),resolve);
+        if(controls)arrange->insertAction(arrange->actions().isEmpty()?nullptr:arrange->actions().first(),controls);
+    }
 }
 
 /**
@@ -1685,6 +1712,23 @@ void QETDiagramEditor::setUpMenu()
 		//and sitting right behind the project it belongs to
 	QMenu* menu_numbering = new QMenu(tr("Numbering"), this);
 	QMenu* menu_lists     = new QMenu(tr("Lists"), this);
+    auto *languages16=menu_project->addAction(tr("Project languages and text placement..."));
+    QetCustomCommands19::registerCommand(languages16,"diagrameditor.project_languages",tr("Diagram editors"),QET::Icons::UserInformations,tr("Edit project translations, languages and text placement."),this,"sheet-edit");
+    connect(languages16,&QAction::triggered,this,[this](){auto *view=currentDiagramView();if(view&&!view->diagram()->isReadOnly())QetLanguagesUi16::edit(view->diagram()->project(),this,view->diagram());});
+    auto *layouts=menu_project->addMenu(tr("Folio layouts"));
+    auto *saveLayout=layouts->addAction(tr("Save current folio as layout..."));
+    auto *addLayout=layouts->addAction(tr("Add folio from layout..."));
+    auto *defaultLayout=layouts->addAction(tr("Choose default layout for new folios..."));
+    auto *clearLayout=layouts->addAction(tr("Use standard blank folios by default"));
+    QetCustomCommands19::registerCommand(saveLayout,"diagrameditor.save_folio_layout",tr("Diagram editors"),QET::Icons::DocumentSaveAs,tr("Save the current folio and its reusable symbol dependencies as a layout."),this,"sheet");
+    QetCustomCommands19::registerCommand(addLayout,"diagrameditor.add_folio_layout",tr("Diagram editors"),QET::Icons::AddFolio,tr("Add a folio from a saved layout to the current project."),this,"sheet-edit");
+    QetCustomCommands19::registerCommand(defaultLayout,"diagrameditor.default_folio_layout",tr("Diagram editors"),QET::Icons::Configure,tr("Choose the layout used for new folios."),this);
+    QetCustomCommands19::registerCommand(clearLayout,"diagrameditor.clear_folio_layout",tr("Diagram editors"),QET::Icons::DocumentNew,tr("Use standard blank folios for subsequently created folios."),this);
+    connect(saveLayout,&QAction::triggered,this,[this](){auto *view=currentDiagramView();if(!view)return;QString path=QFileDialog::getSaveFileName(this,tr("Save folio layout"),QSettings().value("folioLayouts/directory").toString(),tr("QET folio layout (*.qet *.qetz)"));if(path.isEmpty())return;if(!path.endsWith(".qet",Qt::CaseInsensitive) && !path.endsWith(".qetz",Qt::CaseInsensitive))path+=".qet";QString error;
+        if(!QetFolioLayouts::save(view->diagram(),path,error))QMessageBox::warning(this,tr("Save layout"),error);else QSettings().setValue("folioLayouts/directory",QFileInfo(path).absolutePath());});
+    connect(addLayout,&QAction::triggered,this,[this](){auto *view=currentDiagramView();if(!view||view->diagram()->isReadOnly())return;QString path=QFileDialog::getOpenFileName(this,tr("Add folio from layout"),QSettings().value("folioLayouts/directory").toString(),tr("QET folio layout (*.qet *.qetz)"));if(!path.isEmpty())view->diagram()->project()->addNewDiagram(-1,path);});
+    connect(defaultLayout,&QAction::triggered,this,[this](){QString path=QFileDialog::getOpenFileName(this,tr("Default folio layout"),QSettings().value("folioLayouts/directory").toString(),tr("QET folio layout (*.qet *.qetz)"));if(!path.isEmpty())QSettings().setValue("folioLayouts/default",path);});
+    connect(clearLayout,&QAction::triggered,this,[](){QSettings().remove("folioLayouts/default");});
 	QMenu* menu_affichage = new QMenu(tr("Displ&ay"), this);
 	// QMenu *menu_outils    = new QMenu(tr("O&utils"), this);
 	windows_menu = new QMenu(tr("Wi&ndows"), this);
@@ -1732,6 +1776,39 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_copy_text_format);
 	menu_edition -> addAction(m_apply_text_format);
 	menu_edition -> addAction(m_place_texts);
+    auto *textStyle=menu_edition->addAction(tr("Selected text: font, colour and opacity..."));
+    QetCustomCommands19::registerCommand(textStyle,"diagrameditor.text_style",tr("Diagram editors"),QET::Icons::EditText,tr("Format selected sheet text and text contained in selected symbols."),this,"texts");
+    connect(textStyle,&QAction::triggered,this,[this](){
+        auto *view=currentDiagramView();if(!view || view->diagram()->isReadOnly())return;
+        QList<QGraphicsTextItem*> texts;for(auto *text:QetTextAlignment18::selectedTexts(view->diagram()))texts<<text;for(auto *item:view->diagram()->selectedItems())if(auto *text=dynamic_cast<QGraphicsTextItem*>(item))if(!texts.contains(text))texts<<text;
+        if(texts.isEmpty()){QMessageBox::information(this,tr("Text formatting"),tr("Select one or more text fields first."));return;}
+        auto *first=texts.first();QVariantMap initial{{"font",first->font().toString()},{"color",first->defaultTextColor().name(QColor::HexArgb)}};
+        QDialog d(this);d.setWindowTitle(tr("Selected text formatting"));auto *l=new QVBoxLayout(&d);auto *style=new QetFormatting::TextStyleWidget(tr("Font, colour and opacity"),initial,first->font(),&d);l->addWidget(style);
+        auto *buttons=new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel,&d);l->addWidget(buttons);connect(buttons,&QDialogButtonBox::accepted,&d,&QDialog::accept);connect(buttons,&QDialogButtonBox::rejected,&d,&QDialog::reject);
+        if(d.exec()!=QDialog::Accepted || !style->isChecked())return;auto v=style->value();auto *undo=new QUndoCommand(tr("Format selected text"));
+        auto *project=view->diagram()->project();const auto beforeLanguage21=project->languageData();auto afterLanguage21=QetLanguagePositions21::capture(project,beforeLanguage21);auto entries21=afterLanguage21.value("entries").toMap();bool translated21=false;
+        for(auto *text:texts){
+            if(auto *drawing=dynamic_cast<DiagramTextItem*>(text))if(drawing->isTranslationMode21()){
+                auto id=QetLanguages16::effectiveId21(afterLanguage21,drawing->languageId16());auto entry=entries21.value(id).toMap();auto variants=entry.value("variants").toMap();auto code=QetLanguages16::activeLanguage(afterLanguage21);auto variant=variants.value(code).toMap();variant["font"]=v.value("font");variant["color"]=v.value("color");variants[code]=variant;entry["variants"]=variants;entries21[id]=entry;translated21=true;continue;
+            }
+            if(auto *wireText=dynamic_cast<ConductorTextItem*>(text)) {
+                auto *wire=wireText->parentConductor();if(!wire)continue;
+                auto chosenFont=QetFormatting::font(v,text->font());auto before=wire->properties(),after=before;
+                after.text_color=QetFormatting::color(v);after.text_size=qMax(1,qRound(chosenFont.pointSizeF()));
+                new QPropertyUndoCommand(wireText,"font",wireText->font(),chosenFont,undo);
+                new QPropertyUndoCommand(wire,"properties",QVariant::fromValue(before),QVariant::fromValue(after),undo);
+                continue;
+            }
+            if(auto *independent=dynamic_cast<IndependentTextItem*>(text)) {
+                new QPropertyUndoCommand(independent,"styledHtml",independent->toHtml(),QetFormatting::styledHtml(independent->document(),QetFormatting::font(v,text->font()),QetFormatting::color(v)),undo);
+                continue;
+            }
+            if(text->metaObject()->indexOfProperty("font")>=0)new QPropertyUndoCommand(text,"font",text->font(),QetFormatting::font(v,text->font()),undo);
+            if(text->metaObject()->indexOfProperty("color")>=0)new QPropertyUndoCommand(text,"color",text->property("color"),QetFormatting::color(v),undo);
+        }
+        if(translated21){afterLanguage21["entries"]=entries21;const auto positions21=QetLanguagesUi16::positions(project);new QetLanguagesUi16::Change(project,beforeLanguage21,afterLanguage21,positions21,positions21,undo);}
+        if(undo->childCount())view->diagram()->undoStack().push(undo);else delete undo;
+    });
 	menu_edition -> addAction(m_paste_origin);
 	menu_edition -> addAction(m_paste_element_info);
 	menu_edition -> addAction(m_duplicate);
@@ -1776,6 +1853,55 @@ void QETDiagramEditor::setUpMenu()
 	m_align_menu -> addActions(m_align_actions_group.actions().mid(1, 3));
 	m_align_menu -> addSeparator();
 	m_align_menu -> addActions(m_align_actions_group.actions().mid(4));
+    menu_edition->addSeparator();
+    auto *references25=menu_edition->addAction(tr("Import / rebuild schematic references..."));
+    QetCustomCommands19::registerCommand(references25,"diagrameditor.references25",tr("Diagram editors"),QET::Icons::PartTextField,tr("Import PDF hyperlinks or review printed references."),this,"sheet-edit");
+    connect(references25,&QAction::triggered,this,[this]{if(auto *v=currentDiagramView())QetReferences25::show(v->diagram(),this);});
+    auto *relay26=menu_edition->addAction(tr("Relay contact display..."));
+    connect(relay26,&QAction::triggered,this,[this]{if(auto *v=currentDiagramView())QetXref26::show(v->diagram(),this);});
+    auto *manualLink25=menu_edition->addAction(tr("Assign reference destination..."));
+    QetCustomCommands19::registerCommand(manualLink25,"diagrameditor.assign_reference25",tr("Diagram editors"),QET::Icons::PartTextField,tr("Assign a selected reference text to a drawing sheet or object; navigation only."),this,"sheet-edit");
+    connect(manualLink25,&QAction::triggered,this,[this]{if(auto *v=currentDiagramView())QetReferences25::editSelected(v->diagram(),this);});
+    auto *appearance25=menu_edition->addAction(tr("Apply conductor appearance..."));
+    QetCustomCommands19::registerCommand(appearance25,"diagrameditor.conductor_appearance25",tr("Diagram editors"),QET::Icons::Configure,tr("Copy selected appearance properties from a chosen conductor."),this,"sheet-edit");
+    connect(appearance25,&QAction::triggered,this,[this]{auto *v=currentDiagramView();if(!v)return;QList<Conductor*> wires;QStringList labels;for(auto *i:v->diagram()->selectedItems())if(auto *c=dynamic_cast<Conductor*>(i)){wires<<c;labels<<QString::number(wires.size())+" - "+c->properties().text+" - "+v->diagram()->convertPosition(c->sceneBoundingRect().center()).toString();}if(wires.isEmpty()){QMessageBox::information(this,tr("Apply conductor appearance"),tr("Select the conductor whose appearance you want to copy first."));return;}int index=0;if(wires.size()>1){bool ok=false;auto label=QInputDialog::getItem(this,tr("Source conductor"),tr("Copy appearance from"),labels,0,false,&ok);if(!ok)return;index=labels.indexOf(label);}ConductorPropertiesDialog::ApplyAppearance(wires[index],this);});
+    auto *linkView25=menu_edition->addAction(tr("Link destination view..."));
+    QetCustomCommands19::registerCommand(linkView25,"diagrameditor.link_view25",tr("Diagram editors"),QET::Icons::Configure,tr("Choose whole page, current zoom, custom zoom or component area for links."),this,"");
+    connect(linkView25,&QAction::triggered,this,[this]{QetReferences25::settings(this);});
+    auto *spacing24=menu_edition->addAction(tr("Label spacing from conductors..."));
+    spacing24->setObjectName("labelClearance24Action");
+    QetCustomCommands19::registerCommand(spacing24,"diagrameditor.label_clearance",tr("Diagram editors"),QET::Icons::PartTextField,tr("Set minimum label-to-wire spacing, preview and correct selected objects, a sheet or the project."),this,"sheet-edit");
+    connect(spacing24,&QAction::triggered,this,[this](){auto *view=currentDiagramView();if(view)QetLabelClearance24::show(view->diagram(),this);});
+    auto *textAlignment18=menu_edition->addAction(tr("Advanced alignment..."));
+    textAlignment18->setObjectName("textAlignment18Action");
+    QetCustomCommands19::registerCommand(textAlignment18,"diagrameditor.text_alignment_reference",tr("Diagram editors"),QET::Icons::PartTextField,tr("Align selected texts, including symbol texts, to a chosen reference or the drawing area."),this,"texts");
+    connect(textAlignment18,&QAction::triggered,this,[this](){auto *view=currentDiagramView();if(view)QetTextAlignment18::show(view->diagram(),this);});
+    auto *combineTables18=menu_edition->addAction(tr("Combine selected tables..."));
+    combineTables18->setObjectName("combineTables18Action");
+    QetCustomCommands19::registerCommand(combineTables18,"diagrameditor.combine_tables",tr("Diagram editors"),QET::Icons::EditTableCellMerge,tr("Combine compatible selected table pieces into one live table; one Undo restores them."),this,"tables");
+    connect(combineTables18,&QAction::triggered,this,[this](){auto *view=currentDiagramView();if(view)QetTableCombine18::combineSelected(view->diagram(),this);});
+    auto selectedTable19=[this]() -> QetGraphicsTableItem* {auto *v=currentDiagramView();if(!v)return nullptr;QetGraphicsTableItem *table=nullptr;for(auto *item:v->diagram()->selectedItems())if(auto *t=dynamic_cast<QetGraphicsTableItem*>(item))if(qobject_cast<ProjectDBModel*>(t->model())){if(table)return nullptr;table=t;}return table;};
+    auto addTableCommand19=[this,menu_edition](const QString &label,const QString &id,const QIcon &icon,const QString &tip){auto *a=menu_edition->addAction(label);QetCustomCommands19::registerCommand(a,id,tr("Diagram editors"),icon,tip,this,"table");return a;};
+    auto *tableDefinition19=addTableCommand19(tr("Table definition and formula builder..."),"diagrameditor.table_definition",QET::Icons::TableOfContent,tr("Edit the selected table's fields, formulas, filters, saved defaults and preview."));
+    connect(tableDefinition19,&QAction::triggered,this,[this,selectedTable19](){if(auto *table=selectedTable19())QetTableEditor15::edit(table,this);});
+    auto *tableFormat19=addTableCommand19(tr("Table columns, rows, fonts and colours..."),"diagrameditor.table_format",QET::Icons::Configure,tr("Open formatting for the selected table; review the draft before applying it."));
+    connect(tableFormat19,&QAction::triggered,this,[this,selectedTable19](){if(auto *table=selectedTable19())QetTableEditor15::editFormatting19(table,this);});
+    auto *grouped19=addTableCommand19(tr("Grouped BOM settings..."),"diagrameditor.grouped_bom",QET::Icons::TableOfContent,tr("Configure grouping and quantities for the selected nomenclature table."));
+    grouped19->setProperty("qetRequirement19","bom-table");
+    connect(grouped19,&QAction::triggered,this,[this,selectedTable19](){if(auto *table=selectedTable19())QetTableEditor15::editGroupedBom19(table,this);});
+    auto *saveDefault19=addTableCommand19(tr("Save selected table as new-table default"),"diagrameditor.table_save_default",QET::Icons::DocumentSave,tr("Save this table's query and formatting as the default for new tables of the same type."));
+    connect(saveDefault19,&QAction::triggered,this,[this,selectedTable19](){if(auto *table=selectedTable19()){QetTableEditor15::Dialog dialog(table,this);QString error;if(dialog.saveCurrentAsDefault18(&error))statusBar()->showMessage(tr("New-table default saved."),5000);else QMessageBox::warning(this,tr("New-table default"),error);}});
+    saveDefault19->setProperty("qetRequirement19","default-table");
+    auto *loadDefault19=addTableCommand19(tr("Preview default in selected table..."),"diagrameditor.table_load_default",QET::Icons::DocumentOpen,tr("Load the saved table default into a draft and review it before applying."));
+    loadDefault19->setProperty("qetRequirement19","default-table");
+    connect(loadDefault19,&QAction::triggered,this,[this,selectedTable19](){if(auto *table=selectedTable19()){QetTableEditor15::Dialog dialog(table,this);QString error;if(!dialog.loadDefaultConfiguration18(&error)){QMessageBox::warning(this,tr("Table default"),error);return;}dialog.exec();}});
+    auto *wireStyle19=menu_edition->addAction(tr("Conductor properties and dash pattern..."));
+    QetCustomCommands19::registerCommand(wireStyle19,"diagrameditor.conductor_pattern",tr("Diagram editors"),QET::Icons::PartLine,tr("Edit the selected conductor's properties, appearance and custom dash pattern."),this,"wire");
+    connect(wireStyle19,&QAction::triggered,this,[this](){auto *v=currentDiagramView();if(v&&v->diagram()->selectedConductors().size()==1)ConductorPropertiesDialog::PropertiesDialog(*v->diagram()->selectedConductors().cbegin(),this);});
+    auto *projectPe19=menu_edition->addAction(tr("Apply pattern to all PE in project..."));
+    QetCustomCommands19::registerCommand(projectPe19,"diagrameditor.apply_project_pe_pattern",tr("Diagram editors"),QET::Icons::Conductor,tr("Review PE targets using the selected conductor's existing dash pattern; only the pattern is copied."),this,"wire");
+    connect(projectPe19,&QAction::triggered,this,[this](){auto *v=currentDiagramView();if(v&&v->diagram()->selectedConductors().size()==1)ConductorPropertiesDialog::ApplyPatternToProject(*v->diagram()->selectedConductors().cbegin(),this);});
+
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(m_conductor_reset);
 	menu_edition -> addSeparator();
@@ -3293,12 +3419,35 @@ QList<Element *> selectedInformationElements(Diagram *diagram)
 	Manage the actions that need some conditions to be enabled or not.
 	This method does nothing if there is no project opened
 */
+void QETDiagramEditor::updateCustomCommands19(Diagram *diagram)
+{
+ const bool editable=diagram&&!diagram->isReadOnly();
+ int tables=0;QetGraphicsTableItem *oneTable=nullptr;
+ if(diagram)for(auto *item:diagram->selectedItems())if(auto *table=dynamic_cast<QetGraphicsTableItem*>(item))if(qobject_cast<ProjectDBModel*>(table->model())){++tables;oneTable=table;}
+ bool texts=diagram&&!QetTextAlignment18::selectedTexts(diagram).isEmpty();
+ if(diagram&&!texts)for(auto *item:diagram->selectedItems())if(dynamic_cast<QGraphicsTextItem*>(item)){texts=true;break;}
+ for(auto *action:findChildren<QAction*>()) {
+  if(action->property("qetCommand19").toString().isEmpty())continue;
+  const auto requirement=action->property("qetRequirement19").toString();bool enabled=true;
+  if(requirement=="sheet")enabled=diagram;
+  else if(requirement=="sheet-edit")enabled=editable;
+  else if(requirement=="texts")enabled=editable&&texts;
+  else if(requirement=="table")enabled=editable&&tables==1;
+  else if(requirement=="bom-table")enabled=editable&&tables==1&&qobject_cast<ProjectDBModel*>(oneTable->model())->identifier()=="nomenclature";
+  else if(requirement=="default-table")enabled=editable&&tables==1&&QetTableDefaults18::supportedKind18(qobject_cast<ProjectDBModel*>(oneTable->model())->identifier());
+  else if(requirement=="tables")enabled=editable&&tables>=2;
+  else if(requirement=="wire")enabled=editable&&diagram->selectedConductors().size()==1;
+  action->setEnabled(enabled);
+ }
+}
+
 void QETDiagramEditor::slot_updateComplexActions()
 {
 #ifdef QET_HAS_SCRIPTING
 	updateScriptActions();
 #endif
 	DiagramView *dv = currentDiagramView();
+	updateCustomCommands19(dv ? dv->diagram() : nullptr);
 	if(!dv)
 	{
 		QList <QAction *> action_list;

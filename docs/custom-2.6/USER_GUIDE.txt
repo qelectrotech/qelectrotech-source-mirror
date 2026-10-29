@@ -1,0 +1,151 @@
+QElectroTech Custom 2.6 - changes and guided checks
+
+START
+Extract into a fresh folder and run Start_QET_Custom_2.6.cmd. Keep the complete
+folder together. Work on a Save As copy of your project while evaluating 2.6.
+The smaller portable includes all symbols, languages and PDF import/export tools.
+Examples are separate. The complete source contains the matching diagnostic map.
+
+TITLE-BLOCK CELLS
+Right-click the project's embedded title-block template > Edit this template.
+Ctrl-click cells to add/remove them, or drag a selection rectangle.
+Edit > Apply text formatting to cells...
+Choose Selected cells or All text cells, then captions, values, or both.
+Choose a font and tick the properties you want to apply: family, size, bold,
+italic, colour, opacity, alignment. Unticked properties keep their values.
+For example, tick only family to change every cell to Arial while preserving
+the existing sizes, bold/italic, colours and opacity. Alignment affects the
+whole cell, including its caption and value. Logos and empty/covered cells are
+excluded. OK applies one Undo step; save the template afterwards.
+
+TABLE TITLE IN THE DRAWING LANGUAGE
+Project > Project languages and text placement... > Drawing / translation language.
+Choose de and Apply. Select the table title and press F2, or double-click it.
+The editor displays the active language and its current title. Enter the German
+title and OK. Switch to en: the English source title remains intact.
+Restore / clear this language title removes its local override (or clears the
+source title when editing the source language). A local title override takes
+priority over the Project languages phrase translation until restored.
+Column headings and body-cell manual text retain the existing 2.5 behaviour.
+
+RELAY CONTACT DISPLAY
+Select the relay/master or its label.
+Edit > Relay contact display...
+Choose This device, or Default for this device type. Existing individual-device
+overrides take priority over type defaults. Restore inherited settings removes
+the override at the selected scope.
+Appearance: Cross or Contact symbols. Position: Under device label, Below symbol,
+Sheet footer, or Manual position. Below symbol has a gap setting.
+Manual position uses the display's top-left sheet coordinates in drawing units.
+After OK, Shift-drag the display to position it independently of the device label.
+Manual positioning is for one device; choose another position for type defaults.
+Changing appearance/position does not create or remove electrical relationships.
+Use the relay's relationship list (Link / Unlink) to assign its contacts.
+Show defined contacts includes unlinked contact groups only where the symbol
+definition declares them. PLC IO tables retain their own symbol layout.
+Line thickness applies to the cross/contact display, including small header
+contact graphics. The default small-header stroke now matches the other strokes.
+The old printer/DPI fixes are retained. These controls do not change conductor
+thickness; use Edit > Apply conductor appearance for that.
+
+SPACING
+Edit > Label spacing from conductors...
+Choose selected texts/symbols, sheet, or project.
+Minimum clearance only moves conflicts. Exact spacing targets the closest
+expanded obstacle edge for the text/group, with a 0.08 drawing-unit tolerance.
+An aligned group moves together; individual members can retain larger gaps.
+Choose Automatic, Horizontal only, or Vertical only movement. Automatic uses
+the perpendicular axis of the pin/nearest obstacle. It never searches diagonal
+positions. Pin texts preserve their side and nearest pin; ambiguous/unsafe
+placements remain unresolved rather than jumping to another terminal.
+Keep aligned text stacks and pin rows together preserves existing aligned groups.
+Conductors, graphic lines/shapes, symbol/terminal-block outlines and pin points
+have inclusion controls; shapes, bodies and pins have separate gap values.
+Symbol outlines use their drawing bounds. Pin points use a 1-du radius around
+the connection point. Enable those categories only when they are relevant.
+Preview / check spacing lists proposed moves, already-clear and excluded texts,
+and unresolved/locked entries. Double-click a text entry to locate it on this sheet.
+Green outlines show proposed positions. Apply is one Undo step.
+Fixed text drawn inside a symbol and generated cross-reference graphics are
+not independent text fields; use the symbol editor or Relay contact display.
+Wire labels are excluded from this automatic placement tool.
+Automatic correction is optional and remains off by default. Preview first.
+
+SIEMENS WORDMARK
+The supplied LOGO! definition contains seven filled polygons for SIEMENS.
+The optional Siemens_LOGO_Editable_Text_2.6.elmt replaces only these polygons
+with literal SIEMENS text using Arial Bold. This is editable lettering, not an
+exact reproduction of the proprietary wordmark; it needs no special logo font.
+The original symbol's terminals and other geometry are preserved.
+Open this .elmt in the element editor, select the teal text, and change its font
+or wording. Save the variant to your user collection and use it in a practice
+project. Do not expect editing a collection variant to replace existing embedded
+instances automatically. The prior 2.5 special-font example remains optional.
+
+OTHER 2.5 CONTROLS
+Shift-click adds text from different symbols; Ctrl+Shift-click removes it.
+An ordinary click on empty sheet space clears the selection.
+Arrange > Texts moves selected labels, keeping symbols in place.
+Project languages > Show > Checked for translation filters by the Translate ticks.
+Edit > Assign reference destination... creates navigation for one selected text.
+Ctrl-click manually assigned text to follow its link. Native contact graphics
+also support double-click navigation to their linked contact.
+File > Export in pdf: enable Fit to page and Clickable schematic references,
+and include destination sheets. Edit > Link destination view > Whole page avoids
+excessive destination zoom.
+
+SCOPE OF PRINTING CHECKS
+The reported Supply PDF stores its conductor strokes at equal widths. Small
+safety-relay cross-header strokes were genuinely thinner and are addressed here.
+Physical printer output still depends on the printer and PDF print settings;
+testing software export cannot certify every printer's output.
+
+EXAMPLE FILES - A SHORT GUIDED TEST
+These are practice copies; they do not install settings into your existing project.
+Use File > Open to open .qetz examples in the new 2.6 application.
+
+1. Translated_title_2.6.qetz
+   The title is "Mein Verzeichnis" in German. Project > Project languages and
+   text placement... > Drawing / translation language > en > Apply shows
+   "Contents". Return to de, select the title, press F2, and edit it.
+   Save As a new file, close, and reopen to check both languages are retained.
+
+2. Relay_display_2.6.qetz and Relay_cross_2.6.qetz
+   Open the Safety circuit sheet (drawing label 2A). Select K1.
+   Edit > Relay contact display... compares Contact symbols versus Cross.
+   The examples use Manual position: Shift-drag the display, then Undo.
+   Move the K1 label separately with Shift-drag to check independence.
+   Try Below symbol, then Sheet footer. These are layout changes, not electrical
+   rewiring. The matching PDFs let you check export thickness and navigation.
+
+3. Spacing_current_project_2.6.qetz
+   This is a practice copy of your 1.8 project with the new minimum-clearance
+   pass applied. Inspect the Supply sheet and other sheets at normal zoom.
+   It preserves groups and pin associations and leaves unsafe placements alone.
+   On YOUR Save As copy, Edit > Label spacing from conductors... > Current sheet
+   > Preview / check spacing shows the proposal before you choose Apply.
+   Green outlines are moves; the list also tells you what was checked but left
+   in place. One Undo reverses Apply. Do not expect every text to move when it
+   already has the requested minimum clearance.
+
+4. Bulk_fonts_2.6.titleblock
+   In an opened project's left panel, right-click an embedded title-block
+   template and edit it. Ctrl-click two text cells. Edit > Apply text formatting
+   to cells... > Selected cells. Choose Arial, tick Font family only, then OK.
+   Undo; repeat with All text cells. Save the template to apply it to the project.
+   The supplied .titleblock is a formatting example, not a required replacement
+   for your own border/template.
+
+5. Siemens_LOGO_Editable_Text_2.6.elmt
+   File > Open in the element editor opens the optional symbol variant.
+   Select the teal SIEMENS text and edit its font or wording. Save to your user
+   collection. Existing embedded symbols are unchanged until you replace/edit
+   them deliberately. The lettering is Arial Bold, not the original logo font.
+
+6. Spacing_2.6.qetz and fit-96/300/600/1200.pdf
+   The small spacing example is a synthetic development test. The four fit PDFs
+   are printing regression samples at different printer-resolution settings.
+   They are optional; start with the real-project examples above.
+
+To use a feature on your own drawings, repeat its menu steps on a Save As copy.
+The examples do not need to be imported into your project or copied over it.

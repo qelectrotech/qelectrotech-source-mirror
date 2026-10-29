@@ -66,7 +66,8 @@ void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 	applyStylesToQPainter(*painter);
 
 	QPen t = painter -> pen();
-	t.setCosmetic(options && options -> levelOfDetailFromTransform(painter->worldTransform()) < 1.0);
+	t.setCosmetic(!hasCustomDashPattern() && options
+		&& options -> levelOfDetailFromTransform(painter->worldTransform()) < 1.0);
 	if (isSelected()) t.setColor(Qt::red);
 	painter -> setPen(t);
 

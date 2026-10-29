@@ -1,3 +1,5 @@
+#include "ui/references25.h"
+#include <QSettings>
 /*
 	Copyright 2006-2025 The QElectroTech Team
 	This file is part of QElectroTech.
@@ -74,7 +76,7 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 		// Frame the target with a little context, and enforce a minimum
 		// framed size so tiny contacts don't zoom in extremely.
 		QRectF framed = targetScene;
-		const qreal pad = 25.0;
+		const qreal pad = QSettings().value("pdf25/padding",25).toDouble();
 		framed.adjust(-pad, -pad, pad, pad);
 		const qreal minSide = 160.0;
 		if (framed.width()  < minSide)
@@ -84,7 +86,8 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 			framed.adjust(0, -(minSide - framed.height()) / 2.0,
 						  0,  (minSide - framed.height()) / 2.0);
 
-		const QRectF devT = fitT.mapRect(framed);
+		if(geom.targetRectToPdf24)return geom.targetRectToPdf24(dg,framed);
+        const QRectF devT = fitT.mapRect(framed);
 		const QPointF a = geom.devToPdf(devT.topLeft());
 		const QPointF b = geom.devToPdf(devT.bottomRight());
 		return QRectF(QPointF(qMin(a.x(), b.x()), qMin(a.y(), b.y())),
@@ -111,10 +114,16 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 
 		QString frag = QString("page=%1").arg(targetPage);
 		const QRectF d = frameRectPdf(targetDiagram, targetScene);   // /FitR L_B_R_T
-		if (d.isValid())
+		const QString view=QSettings().value("pdf25/view","page").toString();
+        if (d.isValid()&&view=="area")
 			frag += QString("&fitr=%1_%2_%3_%4")
 				.arg(qRound(d.left())).arg(qRound(d.top()))
 				.arg(qRound(d.right())).arg(qRound(d.bottom()));
+
+        if(view=="keep"||view=="custom"){
+            const qreal zoom=view=="custom"?qBound(0.1,QSettings().value("pdf25/zoom",100).toDouble()/100.0,16.0):0;
+            frag+=QString("&xyz=%1_%2_%3").arg(qRound(d.center().x())).arg(qRound(d.center().y())).arg(zoom,0,'f',3);
+        }
 
 		QUrl url = QUrl::fromLocalFile(outputFileName);
 		url.setFragment(frag);
@@ -207,6 +216,8 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 			continue;
 		}
 	}
+
+	for(auto link:QetReferences25::links(diagram))injectLinkTo(link.source,link.target,link.destination);
 
 	// Top to bottom, then left to right; the target breaks a tie between
 	// two links on the same spot.
@@ -365,6 +376,15 @@ void convertUriToGoTo(const QString &pdfPath)
 							   + parts[2] + " " + parts[3] + "]";
 					}
 				}
+
+                int xyz=uriVal.indexOf("xyz=");
+                if(xyz>=0){
+                    auto rest=uriVal.mid(xyz+4);auto parts=rest.split('&').first().split('_');
+                    if(parts.size()==3){
+                        bool xok=false,yok=false,zok=false;double x=parts[0].toDouble(&xok),y=parts[1].toDouble(&yok),z=parts[2].toDouble(&zok);
+                        if(xok&&yok&&zok&&z>=0&&z<=16)dest=" /XYZ "+QByteArray::number(x,'f',2)+" "+QByteArray::number(y,'f',2)+" "+(z==0?QByteArray("null"):QByteArray::number(z,'f',3))+"]";
+                    }
+                }
 
 				QByteArray goTo = sGoTo
 					+ QByteArray::number(pageObjNum)

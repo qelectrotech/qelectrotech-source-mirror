@@ -2344,18 +2344,8 @@ void QETApp::configureQET()
 	// holds raw pointers derived from the current project list.  Same class of
 	// bug as ProjectPropertiesDialog — see issue #527.
 	cd.setWindowModality(Qt::ApplicationModal);
-	cd.addPage(new GeneralConfigurationPage());
-	cd.addPage(new NewDiagramPage());
-	cd.addPage(new ExportConfigPage());
-	cd.addPage(new PrintConfigPage());
-	cd.addPage(new ShortcutsConfigPage());
-	cd.addPage(new ShortcutBarConfigPage());
-	cd.addPage(new GesturesConfigPage());
-	cd.addPage(new ToolbarsConfigPage());
-	cd.addPage(new ToolbarCommandsConfigPage());
-#ifdef QET_SPACEMOUSE_SUPPORT
-	cd.addPage(new SpaceMouseConfigPage());
-#endif
+	cd.addApplicationPages23();
+	cd.setCurrentPage(0);
 
 	// associates the dialog with a possible parent widget
 	// associe le dialogue a un eventuel widget parent

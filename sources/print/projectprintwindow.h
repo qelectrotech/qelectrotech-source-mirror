@@ -105,6 +105,7 @@ class ProjectPrintWindow : public QMainWindow
 		QPrinter *m_printer = nullptr;
 		QPrintPreviewWidget *m_preview=nullptr;
 		QColor m_backup_diagram_background_color;
+        QCheckBox *m_clickable_references24 = nullptr;
 		QHash<Diagram *, QCheckBox *> m_diagram_list_hash;
 		QList<PdfLinks::ComponentInfo> m_componentInfoList;
 		bool m_printing = false;

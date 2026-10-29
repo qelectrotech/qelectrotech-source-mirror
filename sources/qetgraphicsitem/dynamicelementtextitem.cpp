@@ -169,8 +169,8 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 {
 	QDomElement root_element = dom_doc.createElement(xmlTagName());
 	
-	root_element.setAttribute("x", QString::number(pos().x()));
-	root_element.setAttribute("y", QString::number(pos().y()));
+	root_element.setAttribute("x", QString::number(sourcePosition21().x()));
+	root_element.setAttribute("y", QString::number(sourcePosition21().y()));
 	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
 	root_element.setAttribute("uuid", m_uuid.toString());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
@@ -224,7 +224,7 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	if(color() != QColor(Qt::black))
 	{
 		QDomElement dom_color = dom_doc.createElement("color");
-		dom_color.appendChild(dom_doc.createTextNode(color().name()));
+		dom_color.appendChild(dom_doc.createTextNode(color().name(QColor::HexArgb)));
 		root_element.appendChild(dom_color);
 	}
 	
@@ -736,6 +736,8 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	if((event->modifiers() & Qt::ShiftModifier) || !m_parent_element)
 	{
 		m_move_parent = false;
+		if (m_parent_element && event->button() == Qt::LeftButton)
+			m_parent_element->setSelected(false);
 		DiagramTextItem::mousePressEvent(event);
 	} else {
 		m_move_parent = true;
@@ -807,6 +809,7 @@ void DynamicElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	
 		if(m_parent_element && m_parent_element->diagram())
 			m_parent_element.data()->diagram()->elementTextsMover().endMovement();
+		if (finishAdditiveSelection25(event)) return;
 		
 		if(!(event->modifiers() & Qt::ControlModifier))
 			QGraphicsTextItem::mouseReleaseEvent(event);
@@ -874,7 +877,7 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 		painter->fillRect(boundingRect(), QColor(69, 137, 255, 90));
 
 		//A fixed height cuts off the lines that do not fit
-	if (m_text_height > 0) {
+	if (m_text_height > 0 && !hasLanguageDisplay16()) {
 		painter->save();
 		painter->setClipRect(boundingRect(), Qt::IntersectClip);
 		DiagramTextItem::paint(painter, option, widget);
@@ -918,7 +921,7 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 	if(change == QGraphicsItem::ItemSceneHasChanged && m_first_scene_change)
 	{
 		if(m_parent_element.isNull())
-			return QGraphicsObject::itemChange(change, value);
+			return DiagramTextItem::itemChange(change, value);
 		
 			//If the parent is slave, we keep aware about the changement of master.
 		if(m_parent_element.data()->linkType() == Element::Slave)
@@ -969,7 +972,7 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		}
 		
 		m_first_scene_change = false;
-		return QGraphicsObject::itemChange(change, value);
+		return DiagramTextItem::itemChange(change, value);
 	}
 	else if (change == QGraphicsItem::ItemParentHasChanged)
 	{
@@ -985,7 +988,7 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		removeResizeHandles();
 	}
 
-	return QGraphicsObject::itemChange(change, value);
+	return DiagramTextItem::itemChange(change, value);
 }
 
 bool DynamicElementTextItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
@@ -1925,7 +1928,7 @@ void DynamicElementTextItem::updateXref()
 	{
 		if(m_parent_element.data()->linkType() == Element::Master)
 		{
-			XRefProperties xrp = diagram()->project()->defaultXRefProperties(m_parent_element.data()->kindInformations()["type"].toString());
+			XRefProperties xrp = CrossRefItem::propertiesFor26(m_parent_element.data());
 			
 			if(m_text_from == DynamicElementTextItem::ElementInfo &&
 			   m_info_name == "label" &&
@@ -1949,7 +1952,7 @@ void DynamicElementTextItem::updateXref()
 			Element *master_elmt = m_parent_element.data()->linkedElements().first();
 			if(master_elmt && !parentGroup())
 			{
-				XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+				XRefProperties xrp = CrossRefItem::propertiesFor26(master_elmt);
 
 				//Champ de texte: store xref in element informations
 				if(xrp.getXrefPos() == Qt::AlignHCenter)
@@ -2041,7 +2044,7 @@ void DynamicElementTextItem::updateXref()
 			Element *master_elmt = m_parent_element->linkedElements().first();
 			if(master_elmt && diagram())
 			{
-				XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+				XRefProperties xrp = CrossRefItem::propertiesFor26(master_elmt);
 				if(xrp.getXrefPos() == Qt::AlignHCenter)
 				{
 					QString xref_label = xrp.slaveLabel();
@@ -2146,7 +2149,7 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 		Element *master_elmt = m_parent_element.data()->linkedElements().isEmpty()
 			? nullptr : m_parent_element.data()->linkedElements().first();
 		if (master_elmt) {
-			XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+			XRefProperties xrp = CrossRefItem::propertiesFor26(master_elmt);
 			setXref_item(xrp.getXrefPos(), xrp.slaveOffset());
 		}
 	}
@@ -2157,6 +2160,7 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 	this->document()->setTextWidth(width);
 	m_text_width = width;
 	fitAutoTextWidth();
+    refreshLanguageSiblings23();
 	emit textWidthChanged(width);
 }
 
@@ -2185,7 +2189,7 @@ void DynamicElementTextItem::setTextHeight(qreal height)
 QRectF DynamicElementTextItem::boundingRect() const
 {
 	QRectF rect = DiagramTextItem::boundingRect();
-	if (m_text_height > 0)
+	if (m_text_height > 0 && !hasLanguageDisplay16())
 		rect.setHeight(m_text_height);
 	return rect;
 }
@@ -2199,7 +2203,7 @@ QRectF DynamicElementTextItem::boundingRect() const
 QPainterPath DynamicElementTextItem::shape() const
 {
 	QPainterPath path = DiagramTextItem::shape();
-	if (m_text_height > 0) {
+	if (m_text_height > 0 && !hasLanguageDisplay16()) {
 		QPainterPath cut;
 		cut.addRect(boundingRect());
 		path = path.intersected(cut);

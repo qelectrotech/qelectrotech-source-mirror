@@ -20,6 +20,8 @@
 
 #include <QGraphicsTextItem>
 #include <QFont>
+#include <QSharedPointer>
+#include <QVariantMap>
 
 class Diagram;
 class QDomElement;
@@ -61,6 +63,20 @@ class DiagramTextItem : public QGraphicsTextItem
 		int type() const override { return Type; }
 
 		Diagram *diagram() const;
+        // Language display never changes the original editable/source document.
+        virtual QString languageId16() const { return property("languageId16").toString(); }
+        void refreshLanguage16();
+        void refreshLanguageSiblings23();
+        bool hasLanguageDisplay16() const;
+        QString displayedText16() const;
+        bool isTranslationMode21() const;
+        bool languageHidden21() const;
+        QPointF sourcePosition21() const;
+        QPointF languageOffset22(Qt::Alignment *resolved = nullptr) const;
+        QVariantMap languageVariant16() const;
+        int languageLineCount16() const;
+        const QTextDocument *languageDocument16() const;
+        QRectF boundingRect() const override;
 		virtual void fromXml(const QDomElement &) = 0;
 		virtual QDomElement toXml(QDomDocument &) const;
 		void edit();
@@ -109,6 +125,7 @@ class DiagramTextItem : public QGraphicsTextItem
 		void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
 		void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
+		bool finishAdditiveSelection25(QGraphicsSceneMouseEvent *event);
 
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
@@ -128,6 +145,8 @@ class DiagramTextItem : public QGraphicsTextItem
 		bool
 		m_mouse_hover = false,
 		m_first_move = true,
+		m_additive_text_press25 = false,
+		m_toggle_text25 = false,
 		m_no_editable,
 		m_is_html = false,
 		m_non_left_alignment = false;
@@ -142,6 +161,17 @@ class DiagramTextItem : public QGraphicsTextItem
 		void pushResizeCommand(qreal old_width, qreal new_width,
 							   QPointF old_pos, QPointF new_pos);
 
+		void ensureLanguageDocument16() const;
+        QPointF calculateLanguageOffset23(Qt::Alignment *resolved) const;
+        mutable QPointF m_language_offset23;
+        mutable Qt::Alignment m_language_alignment23;
+        mutable QVariantMap m_language_variant23;
+        mutable bool m_language_hidden23 = false;
+        bool m_language_refreshing23 = false;
+
+        mutable QString m_language_key16;
+        mutable QSharedPointer<QTextDocument> m_language_document16;
+        QMetaObject::Connection m_language_connection16;
 		QRectF m_alignment_rect;
 		TextResizeHandles *m_resize_handles = nullptr;
 		Qt::Alignment m_alignment = (Qt::AlignTop | Qt::AlignLeft);

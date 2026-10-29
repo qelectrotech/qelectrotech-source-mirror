@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -56,12 +56,16 @@
 #include "../UndoCommand/openelmtcommand.h"
 #include "scaleelementdialog.h"
 #include "../../toolbarsettings.h"
+#include "../../ui/customcommands19.h"
+#include "../../ui/dashpatterneditor.h"
+#include "../graphicspart/customelementgraphicpart.h"
 
 #include <QSettings>
 #include <QActionGroup>
 #include <QFileDialog>
 #include <QSvgGenerator>
 #include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QDoubleSpinBox>
@@ -79,6 +83,8 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 	initGui();
 	setupActions();
 	setupConnection();
+	rebuildToolBars();
+	updateAction();
 
 	auto menu = createPopupMenu();
 	menu->setTearOffEnabled(true);
@@ -1239,6 +1245,24 @@ void QETElementEditor::setupActions()
 	});
 	ShortcutManager::instance().registerAction(configure_background_frame_action, "elementeditor.configure_background_frame", tr("Element editors"), QKeySequence());
 	ui->m_display_menu->addAction(configure_background_frame_action);
+
+    auto *appearance19=ui->m_edit_menu->addAction(tr("Selected part appearance and dash pattern..."));
+    QetCustomCommands19::registerCommand(appearance19,"elementeditor.part_appearance",tr("Element editors"),QET::Icons::PartLine,tr("Edit selected graphic parts' outline, fill and custom dash pattern. Changes apply immediately and can be undone."),this,"graphic-parts");
+    connect(appearance19,&QAction::triggered,this,[this](){
+        if(m_read_only)return;QList<CustomElementPart*> parts;
+        for(auto *item:m_elmt_scene->selectedItems())if(auto *part=dynamic_cast<CustomElementPart*>(item))parts<<part;
+        if(!StyleEditor::isStyleEditable(parts))return;
+        QDialog dialog(this);dialog.setObjectName("symbolAppearance19");dialog.setWindowTitle(tr("Selected part appearance and dash pattern"));
+        auto *layout=new QVBoxLayout(&dialog);auto *note=new QLabel(tr("Changes apply immediately. Use Undo after closing to reverse an edit."));note->setWordWrap(true);layout->addWidget(note);
+        auto *style=new StyleEditor(this,nullptr,&dialog);style->setParts(parts);layout->addWidget(style);
+        auto *buttons=new QDialogButtonBox(QDialogButtonBox::Close,&dialog);layout->addWidget(buttons);connect(buttons,&QDialogButtonBox::rejected,&dialog,&QDialog::reject);dialog.exec();
+    });
+    auto *properties19=ui->m_edit_menu->addAction(tr("Show selected part properties"));
+    QetCustomCommands19::registerCommand(properties19,"elementeditor.part_properties",tr("Element editors"),QET::Icons::EditText,tr("Show the properties dock for selected symbol parts, including text fonts and appearance."),this,"parts");
+    connect(properties19,&QAction::triggered,this,[this](){updateInformations();ui->m_tools_dock->show();ui->m_tools_dock->raise();});
+    auto *customize19=ui->m_display_menu->addAction(tr("Customize toolbars and shortcuts..."));
+    QetCustomCommands19::registerCommand(customize19,"elementeditor.customize",tr("Element editors"),QET::Icons::ConfigureToolbars,tr("Choose Symbol editor: Custom commands in Toolbar contents to pin commands, or assign keyboard shortcuts."),this);
+    connect(customize19,&QAction::triggered,this,[](){if(auto *app=QETApp::instance())app->customizeQET();});
 }
 
 /**
@@ -1247,6 +1271,14 @@ void QETElementEditor::setupActions()
  */
 void QETElementEditor::updateAction()
 {
+    QList<CustomElementPart*> styleParts19;bool unsupported19=false;
+    for(auto *item:m_elmt_scene->selectedItems()){if(auto *part=dynamic_cast<CustomElementPart*>(item))styleParts19<<part;else unsupported19=true;}
+    for(auto *action:findChildren<QAction*>())if(!action->property("qetCommand19").toString().isEmpty()) {
+        const auto requirement=action->property("qetRequirement19").toString();
+        if(requirement=="graphic-parts")action->setEnabled(!m_read_only&&!unsupported19&&!styleParts19.isEmpty()&&StyleEditor::isStyleEditable(styleParts19));
+        else if(requirement=="parts")action->setEnabled(!m_elmt_scene->selectedItems().isEmpty());
+    }
+
 		//Action disabled if read only
 	auto ro_list = m_add_part_action_grp->actions();
 	ro_list << ui->m_paste_from_file_action
@@ -1852,3 +1884,8 @@ void QETElementEditor::on_m_import_scaled_element_triggered()
 	}
 }
 
+
+void QETElementEditor::rebuildToolBars()
+{
+    QetCustomCommands19::rebuildEditorToolbars(this, QStringLiteral("elementeditor"));
+}

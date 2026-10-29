@@ -20,6 +20,7 @@
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../editor/graphicspart/customelementgraphicpart.h"
 #include "../qeticons.h"
+#include "../ui/dashpatterneditor.h"
 
 #include <QCheckBox>
 #include <QComboBox>
@@ -377,6 +378,21 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	// antialiasing
 	antialiasing = new QCheckBox(tr("Antialiasing"));
 
+	m_dash_editor = new DashPatternEditor(this);
+	m_dash_editor->edited = [this](DashPatternEditor::Field field, const ConductorDashPattern &value) {
+		QList<CustomElementGraphicPart *> parts = m_part_list;
+		if (part) parts = {part};
+		auto *undo = new QUndoCommand(tr("Edit symbol dash pattern"));
+		for (auto *item : parts) {
+			const auto before = item->dashPattern();
+			const auto after = DashPatternEditor::changedField(before, value, field);
+			if (before == after) continue;
+			new QPropertyUndoCommand(item, "dash_pattern", QVariant::fromValue(before),
+					QVariant::fromValue(after), undo);
+		}
+		if (undo->childCount()) undoStack().push(undo);
+		else delete undo;
+	};
 	updateForm();
 
 	auto main_layout = new QVBoxLayout();
@@ -398,6 +414,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	main_layout->addItem(grid_layout);
 
 	main_layout -> addWidget(antialiasing);
+	main_layout -> addWidget(m_dash_editor);
 
 	main_layout -> addSpacing(10);
 	main_layout -> addWidget(new QLabel("<u>" + tr("geometry:") + "</u> "));
@@ -425,6 +442,7 @@ void StyleEditor::updatePartColor()
 void StyleEditor::updatePartLineStyle()
 {
 	makeUndo(tr("line style"), "line_style", line_style->itemData(line_style -> currentIndex()));
+	updateForm();
 }
 
 /// Update weight with undo command
@@ -479,6 +497,15 @@ void StyleEditor::updateForm()
 		}
 	}
 
+	auto *pattern_part = part ? part : m_part_list.first();
+	m_dash_editor->setPattern(pattern_part->dashPattern());
+	Qt::PenStyle dash_style = Qt::SolidLine;
+	if (line_style->currentIndex() == CustomElementGraphicPart::DashedStyle) dash_style = Qt::DashLine;
+	else if (line_style->currentIndex() == CustomElementGraphicPart::DashdottedStyle) dash_style = Qt::DashDotLine;
+	m_dash_editor->setLineStyle(dash_style);
+	m_dash_editor->setToolTip(m_part_list.size() > 1
+		? tr("Lengths shown are from the first selected part. Editing a field changes only that field on each selected part.")
+		: tr("Use the same drawing-unit lengths as the connected conductor."));
 	activeConnections(true);
 }
 

@@ -28,6 +28,7 @@
 #include "../utils/qetutils.h"
 #include "ui/addtabledialog.h"
 #include "../qetproject.h"
+#include "../ui/tabledefaults18.h"
 #include <QDialog>
 
 QetGraphicsTableFactory::QetGraphicsTableFactory()
@@ -43,15 +44,15 @@ QetGraphicsTableFactory::QetGraphicsTableFactory()
 */
 void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 {
-	QScopedPointer<AddTableDialog> d(
-				new AddTableDialog(
-					new ElementQueryWidget(),
-					diagram->views().first()));
-	d->setWindowTitle(QObject::tr("Add a nomenclature"));
-
-	if (d->exec()) {
-		create(diagram, d.data());
-	}
+    if(!diagram || diagram->isReadOnly())return;
+    auto *queryWidget=new ElementQueryWidget();
+    queryWidget->setQuery(QetTableDefaults18::defaultConfiguration18("nomenclature").value("query").toString());
+    QScopedPointer<AddTableDialog> d(new AddTableDialog(queryWidget,
+        diagram->views().isEmpty()?nullptr:diagram->views().first()));
+    QetTableDefaults18::initializeNewTableDialog18(d.data(),"nomenclature");
+    d->setUpDefaults20("nomenclature");
+    d->setWindowTitle(QObject::tr("Add a nomenclature"));
+    if(d->exec()==QDialog::Accepted)create(diagram,d.data());
 }
 
 /**
@@ -62,15 +63,15 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 */
 void QetGraphicsTableFactory::createAndAddSummary(Diagram *diagram)
 {
-	QScopedPointer<AddTableDialog> d(
-				new AddTableDialog(
-					new SummaryQueryWidget(),
-					diagram->views().first()));
-	d->setWindowTitle(QObject::tr("Add a summary"));
-
-	if (d->exec()) {
-		create(diagram, d.data());
-	}
+    if(!diagram || diagram->isReadOnly())return;
+    auto *queryWidget=new SummaryQueryWidget();
+    queryWidget->setQuery(QetTableDefaults18::defaultConfiguration18("summary").value("query").toString());
+    QScopedPointer<AddTableDialog> d(new AddTableDialog(queryWidget,
+        diagram->views().isEmpty()?nullptr:diagram->views().first()));
+    QetTableDefaults18::initializeNewTableDialog18(d.data(),"summary");
+    d->setUpDefaults20("summary");
+    d->setWindowTitle(QObject::tr("Add a summary"));
+    if(d->exec()==QDialog::Accepted)create(diagram,d.data());
 }
 
 /**
@@ -187,6 +188,8 @@ QetGraphicsTableItem *QetGraphicsTableFactory::newTable(Diagram *diagram, AddTab
 
 	diagram->addItem(table);
 	table->setPos(50,50);
+    if(previous_table)table->setCustomFormat(previous_table->customFormat());
+    else QetTableDefaults18::applyNewTableFormat18(table,dialog);
 
 	return table;
 }

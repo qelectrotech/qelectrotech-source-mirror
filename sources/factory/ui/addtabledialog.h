@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -43,6 +43,7 @@ class AddTableDialog : public QDialog
 		~AddTableDialog();
 
 		void setQueryWidget(QWidget *widget);
+        void setUpDefaults20(const QString &kind);
 		bool adjustTableToFolio() const;
 		void setAdjustTableToFolio(bool set);
 		bool addNewTableToNewDiagram() const;
@@ -54,10 +55,16 @@ class AddTableDialog : public QDialog
 		QMargins headerMargins() const;
 		Qt::Alignment headerAlignment() const;
 		QFont headerFont() const;
+        void setHeaderFont(const QFont &font);
+        void setHeaderAlignment(Qt::Alignment alignment);
+        void setHeaderMargins(const QMargins &margins);
 
 		QMargins tableMargins() const;
 		Qt::Alignment tableAlignment() const;
 		QFont tableFont() const;
+        void setTableFont(const QFont &font);
+        void setTableAlignment(Qt::Alignment alignment);
+        void setTableMargins(const QMargins &margins);
 		QWidget *contentWidget() const;
 
 	private slots:

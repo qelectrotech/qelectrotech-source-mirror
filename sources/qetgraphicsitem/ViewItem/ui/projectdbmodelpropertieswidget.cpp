@@ -16,6 +16,8 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectdbmodelpropertieswidget.h"
+#include "graphicstablepropertieseditor.h"
+#include "../../../ui/tableeditor15.h"
 
 #include "../../../dataBase/ui/elementquerywidget.h"
 #include "../../../dataBase/ui/summaryquerywidget.h"
@@ -64,6 +66,9 @@ void ProjectDBModelPropertiesWidget::setModel(ProjectDBModel *model)
 */
 void ProjectDBModelPropertiesWidget::on_m_edit_query_pb_clicked()
 {
+	for(QWidget *w=parentWidget();w;w=w->parentWidget()) {
+        if(auto *editor=qobject_cast<GraphicsTablePropertiesEditor*>(w)){QetTableEditor15::edit(editor->table(),this);return;}
+    }
 	QDialog d(this);
 	auto l = new QVBoxLayout;
 	d.setLayout(l);

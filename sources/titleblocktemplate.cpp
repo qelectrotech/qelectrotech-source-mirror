@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "titleblocktemplate.h"
+#include "ui/languagephrases16.h"
+#include "ui/textstyle13.h"
 
 #include "NameList/nameslist.h"
 #include "createdxf.h"
@@ -1776,8 +1778,14 @@ void TitleBlockTemplate::renderCell(QPainter &painter,
 			}
 		}
 	} else if (cell.type() == TitleBlockCell::TextCell) {
-		QString final_text = finalTextForCell(cell, diagram_context);
-		renderTextCell(painter, final_text, cell, cell_rect);
+		if (!cell.label_style.isEmpty() || !cell.value_style.isEmpty()) {
+            const auto languageData=diagram_context.value("qet_language16").toMap();
+            QString label=cell.display_label && !cell.label.isEmpty()?QString(" %1: ").arg(QetLanguages16::resolvedPhrase(languageData,interpreteVariables(cell.label.name(),diagram_context))):QString(" ");
+            QetFormatting::drawStyledText(painter,cell_rect,label,(QetLanguages16::protectedTitleValue(cell.value.name())?interpreteVariables(cell.value.name(),diagram_context):QetLanguages16::resolvedPhrase(languageData,interpreteVariables(cell.value.name(),diagram_context))),cell.label_style,cell.value_style,fontForCell(cell),cell.alignment,cell.hadjust);
+        } else {
+            QString final_text = finalTextForCell(cell, diagram_context);
+            renderTextCell(painter, final_text, cell, cell_rect);
+        }
 	}
 	painter.restore();
 
@@ -1804,10 +1812,10 @@ QString TitleBlockTemplate::finalTextForCell(
 	QString cell_text = cell.value.name();
 	QString cell_label = cell.label.name();
 
-	cell_text = interpreteVariables(cell_text, diagram_context);
+	cell_text = QetLanguages16::protectedTitleValue(cell.value.name())?interpreteVariables(cell_text,diagram_context):QetLanguages16::resolvedPhrase(diagram_context.value("qet_language16").toMap(),interpreteVariables(cell_text, diagram_context));
 
 	if (cell.display_label && !cell.label.isEmpty()) {
-		cell_label = interpreteVariables(cell_label, diagram_context);
+		cell_label = QetLanguages16::resolvedPhrase(diagram_context.value("qet_language16").toMap(),interpreteVariables(cell_label, diagram_context));
 		cell_text = QString(tr(" %1: %2", "titleblock content - please let the blank space at the beginning")).arg(cell_label).arg(cell_text);
 	} else {
 		cell_text = QString(tr(" %1")).arg(cell_text);

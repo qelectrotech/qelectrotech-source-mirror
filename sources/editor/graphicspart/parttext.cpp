@@ -189,7 +189,7 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("text", toPlainText());
 	xml_element.setAttribute("font", QETUtils::fontToString(font()));
 	xml_element.setAttribute("rotation", QString::number(rot));
-	xml_element.setAttribute("color", defaultTextColor().name());
+	xml_element.setAttribute("color", defaultTextColor().name(QColor::HexArgb));
 	xml_element.setAttribute("uuid", m_uuid.toString());
 
 		// Only written when different from the historical behaviour, so

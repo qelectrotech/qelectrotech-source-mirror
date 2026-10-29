@@ -24,6 +24,8 @@
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
 #include "../../qetproject.h"
+#include "../../ui/languagephrases16.h"
+#include "../../ui/tablequery15.h"
 #include "../../qetxml.h"
 #include "../../utils/qetutils.h"
 
@@ -41,6 +43,11 @@ ProjectDBModel::ProjectDBModel(QETProject *project, QObject *parent) :
 	m_fill_when_built(project->dataBase()->isBuildingFolio())
 {
 	connect(m_project->dataBase(), &projectDataBase::dataBaseUpdated, this, &ProjectDBModel::dataBaseUpdated);
+ connect(m_project,&QETProject::languageDataChanged,this,[this](){
+  // A language changes presentation, not SQL/model data. Preserve linked tables.
+  const auto old=property("qetEditDefinition15");setProperty("qetEditDefinition15",true);
+  beginResetModel();endResetModel();setProperty("qetEditDefinition15",old);
+ });
 }
 
 /**
@@ -53,7 +60,13 @@ ProjectDBModel::ProjectDBModel(const ProjectDBModel &other_model) :
 	this->setParent(other_model.parent());
 	m_project = other_model.m_project;
 	connect(m_project->dataBase(), &projectDataBase::dataBaseUpdated, this, &ProjectDBModel::dataBaseUpdated);
+ connect(m_project,&QETProject::languageDataChanged,this,[this](){
+  // A language changes presentation, not SQL/model data. Preserve linked tables.
+  const auto old=property("qetEditDefinition15");setProperty("qetEditDefinition15",true);
+  beginResetModel();endResetModel();setProperty("qetEditDefinition15",old);
+ });
 	m_index_0_0_data = other_model.m_index_0_0_data;
+    m_identifier = other_model.m_identifier;
 	setQuery(other_model.queryString());
 }
 
@@ -82,11 +95,7 @@ int ProjectDBModel::columnCount(const QModelIndex &parent) const
 	if (parent.isValid())
 		return 0;
 	
-	if (m_record.count()) {
-		return m_record.first().count();
-	}
-	
-	return 0;
+	return m_column_count;
 }
 
 /**
@@ -121,19 +130,15 @@ bool ProjectDBModel::setHeaderData(int section, Qt::Orientation orientation, con
 */
 QVariant ProjectDBModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-	if (orientation == Qt::Vertical) {
-		return QVariant();
-	}
-	
-	if (m_header_data.contains(section))
-	{
-		auto hash_ = m_header_data.value(section);
-		if (role == Qt::DisplayRole && !hash_.contains(Qt::DisplayRole)) { //special case to have the same behavior as Qt
-			return hash_.value(Qt::EditRole);
-		}
-		return m_header_data.value(section).value(role);
-	}
-	return QVariant();
+ if(orientation==Qt::Vertical)return QVariant();
+ const auto values=m_header_data.value(section);
+ if(role==QetLanguages16::SourceTextRole16)return values.value(Qt::DisplayRole,values.value(Qt::EditRole));
+ auto value=values.value(role);
+ if(role==Qt::DisplayRole) {
+  if(!values.contains(Qt::DisplayRole))value=values.value(Qt::EditRole);
+  return m_project?QetLanguages16::resolvedPhrase(m_project->languageData(),value.toString()):value;
+ }
+ return value;
 }
 
 /**
@@ -168,14 +173,14 @@ QVariant ProjectDBModel::data(const QModelIndex &index, int role) const
 	
 	if (index.row() == 0 &&
 		index.column() == 0 &&
-		role != Qt::DisplayRole) {
+		role != Qt::DisplayRole && role != QetLanguages16::SourceTextRole16) {
 		return m_index_0_0_data.value(role);
 	}
 	
-	if (role == Qt::DisplayRole) {
-		QVariant v(m_record.at(index.row()).at(index.column()));
-		return v;
-	}
+	if (role == Qt::DisplayRole || role == QetLanguages16::SourceTextRole16) {
+        const QString source=m_record.at(index.row()).at(index.column());
+        return role==Qt::DisplayRole && m_project && !QetLanguages16::protectedPhraseColumn(property("qetLanguageColumns16").toStringList().value(index.column(),m_header_data.value(index.column()).value(Qt::DisplayRole).toString()))?QetLanguages16::resolvedPhrase(m_project->languageData(),source):source;
+    }
 	
 	return QVariant();
 }
@@ -367,6 +372,8 @@ void ProjectDBModel::setHeaderString()
 {
 	auto q = m_project->dataBase()->newQuery(m_query);
 	auto record = q.record();
+    m_column_count = record.count();
+    QStringList sourceColumns16;for(int c=0;c<record.count();++c)sourceColumns16<<record.fieldName(c);setProperty("qetLanguageColumns16",sourceColumns16);
 	
 	for (auto i=0 ; i<record.count() ; ++i)
 	{
@@ -387,6 +394,48 @@ void ProjectDBModel::setHeaderString()
 	}
 }
 
+namespace {
+// Preserve strings deliberately produced by a SQL expression. The legacy
+// locale conversion remains for a plain date field, but must not undo a
+// requested ISO format or turn a fixed text value into a different date.
+QString unquotedDateField19(QString value,bool qualified=true) {
+ value=value.trimmed();int dot=-1;QChar quote;
+ if(qualified)for(int i=0;i<value.size();++i){const QChar c=value[i];if(!quote.isNull()){if(c==quote||(quote=='['&&c==']')){if(i+1<value.size()&&value[i+1]==c&&quote!='['){++i;continue;}quote=QChar();}}else if(c=='"'||c=='`'||c=='[')quote=c;else if(c=='.')dot=i;}
+ if(dot>=0)value=value.mid(dot+1).trimmed();
+ if(value.size()>1&&((value.front()=='"'&&value.back()=='"')||(value.front()=='['&&value.back()==']')||(value.front()=='`'&&value.back()=='`')))value=value.mid(1,value.size()-2);
+ value.replace("\"\"","\"");return value.toCaseFolded();
+}
+bool preserveSqlTextColumn19(const QString &sql,int column,int depth=0) {
+ if(depth>12)return true;
+ const auto columns=QetTableQuery15::selectColumns(QetTableQuery15::withoutState(sql));
+ if(column<0||column>=columns.size())return true;
+ const QString expression=QetTableQuery15::baseExpression(columns[column]).trimmed();
+ const QRegularExpression bare(QStringLiteral(R"rx(^(?:[A-Za-z_][A-Za-z0-9_]*|"(?:[^"]|"")*"|\[[^\]]+\]|`(?:[^`]|``)*`)(?:\s*\.\s*(?:[A-Za-z_][A-Za-z0-9_]*|"(?:[^"]|"")*"|\[[^\]]+\]|`(?:[^`]|``)*`))*$)rx"));
+ if(expression=="*"||expression.endsWith(".*"))return true;
+ if(!bare.match(expression).hasMatch())return true;
+ const QString source=QetTableQuery15::state(sql).value("sourceSql18").toString();
+ if(!source.isEmpty()) {
+  const auto sourceColumns=QetTableQuery15::selectColumns(QetTableQuery15::withoutState(source));
+  for(int i=0;i<sourceColumns.size();++i)if(unquotedDateField19(QetTableQuery15::displayName(sourceColumns[i]),false)==unquotedDateField19(expression))return preserveSqlTextColumn19(source,i,depth+1);
+  return true;
+ }
+ // Only the historic, directly selected summary date field has automatic
+ // locale presentation. Other bare values may be article codes or date text
+ // computed inside opaque SQL; their spelling is authoritative.
+ const auto tokens=QetTableQuery15::tokens(QetTableQuery15::withoutState(sql));
+ if(unquotedDateField19(expression)!="date"||tokens.isEmpty()||tokens.first().word!="SELECT")return true;
+ for(const auto &token:tokens)if(QStringList{"UNION","EXCEPT","INTERSECT"}.contains(token.word))return true;
+ for(const auto &token:tokens)if(token.word=="FROM") {
+  int end=QetTableQuery15::withoutState(sql).size();
+  for(const auto &next:tokens)if(next.start>token.end&&QStringList{"WHERE","GROUP","HAVING","ORDER","LIMIT","WINDOW"}.contains(next.word)){end=next.start;break;}
+  const auto tail=QetTableQuery15::withoutState(sql).mid(token.end,end-token.end).trimmed();
+  const QRegularExpression direct(QStringLiteral(R"rx(^(?:project_summary_view|"project_summary_view")(?:\s+(?:AS\s+)?(?:[A-Za-z_][A-Za-z0-9_]*|"(?:[^"]|"")*"))?$)rx"),QRegularExpression::CaseInsensitiveOption);
+  return !direct.match(tail).hasMatch();
+ }
+ return true;
+}
+}
+
 void ProjectDBModel::fillValue()
 {
 	m_record.clear();
@@ -403,6 +452,8 @@ void ProjectDBModel::fillValue()
 		qDebug() << "Query error : " << query_.lastError();
 	}
 	
+ QSet<int> sqlTextColumns19;
+ for(int column=0;column<query_.record().count();++column)if(preserveSqlTextColumn19(m_query,column))sqlTextColumns19.insert(column);
 	while (query_.next())
 	{
 		//This query text comes out of the project file, so its result is
@@ -422,10 +473,10 @@ void ProjectDBModel::fillValue()
 
 		QStringList record_;
 		auto i=0;
-		while (query_.value(i).isValid())
+		while (i < query_.record().count())
 		{
 			auto date = query_.value(i).toDate();
-			if (!date.isNull()) {
+			if (!date.isNull() && !sqlTextColumns19.contains(i)) {
 				record_ << QLocale::system().toString(query_.value(i).toDate(), QLocale::ShortFormat);
 			} else {
 				record_ << query_.value(i).toString();

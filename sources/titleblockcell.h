@@ -18,6 +18,7 @@
 #ifndef TITLEBLOCK_CELL_H
 #define TITLEBLOCK_CELL_H
 #include "NameList/nameslist.h"
+#include <QVariantMap>
 
 /**
 	This class is a container for the various parameters of a titleblock cell
@@ -71,6 +72,7 @@ class TitleBlockCell {
 	NamesList label;                   ///< Label displayed by the cell
 	bool display_label;                ///< Whether to display the label or not
 	int alignment;                     ///< Where the label+text should be displayed within the visual cell
+	QVariantMap label_style, value_style;
 	int font_size;                     ///< Font size the text should be rendered with
 	bool hadjust;                      ///< Whether to reduce the font size if the text does not fit in the cell
 	QString logo_reference;            ///< Logo displayed by this cell, it it is a logo cell

@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "../ui/labelclearance24.h"
 #include "element.h"
 #include "../qetapp.h"
 #include "../qetproject.h"
@@ -2805,6 +2806,7 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 */
 QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value)
 {
+    if(change==ItemPositionHasChanged||change==ItemRotationHasChanged||change==ItemTransformHasChanged||change==ItemSceneHasChanged)QetLabelClearance24::notify(this);
 	if (change == QGraphicsItem::ItemSelectedHasChanged)
 	{
 		const QList<DynamicElementTextItem *> texts = dynamicTextItems();

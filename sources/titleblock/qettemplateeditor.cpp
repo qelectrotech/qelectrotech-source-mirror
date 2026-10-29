@@ -23,11 +23,13 @@
 #include "../qetmessagebox.h"
 #include "../qetproject.h"
 #include "templatecellwidget.h"
+#include "bulkformat26.h"
 #include "templatecommands.h"
 #include "templatelocationsaver.h"
 #include "templatelogomanager.h"
 #include "templateview.h"
 #include "../toolbarsettings.h"
+#include "../ui/customcommands19.h"
 
 /**
 	@param parent parent QWidget of this window
@@ -47,6 +49,7 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	initActions();
 	initMenus();
 	initToolbars();
+	rebuildToolBars();
 	ToolbarSettings::applyTo(this);
 	readSettings();
 }
@@ -444,6 +447,15 @@ void QETTitleBlockTemplateEditor::initActions()
 	connect(add_col_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::addColumnAtEnd);
 	connect(merge_cells_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::mergeSelectedCells);
 	connect(split_cell_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::splitSelectedCell);
+    auto *style19=new QAction(tr("Cell caption/value fonts, colours and opacity..."),this);
+    QetCustomCommands19::registerCommand(style19,"titleblockeditor.cell_text_style",tr("Title block template editors"),QET::Icons::EditText,tr("Edit caption and value text styles for the selected title-block text cell."),this,"text-cell");
+    connect(style19,&QAction::triggered,this,[this](){if(read_only_||template_edition_area_view_->selectedCells().size()!=1)return;if(auto *button=template_cell_editor_widget_->findChild<QPushButton*>("titleBlockTextStyle13"))button->click();});
+    style19->setEnabled(false);
+    auto *properties19=new QAction(tr("Show selected cell properties"),this);
+    QetCustomCommands19::registerCommand(properties19,"titleblockeditor.cell_properties",tr("Title block template editors"),QET::Icons::Configure,tr("Show the title-block cell properties panel."),this,"cell");
+    connect(properties19,&QAction::triggered,this,[this](){template_cell_editor_dock_widget_->show();template_cell_editor_dock_widget_->raise();});
+    properties19->setEnabled(false);
+
 }
 
 /**
@@ -464,7 +476,11 @@ void QETTitleBlockTemplateEditor::initMenus()
 	file_menu_    -> addSeparator();
 	file_menu_    -> addAction(quit_);
 
-	edit_menu_   -> addAction(undo_);
+	auto *bulk26=edit_menu_->addAction(tr("Apply text formatting to cells..."));
+    bulk26->setObjectName("bulkTitleFormat26Action");
+    connect(bulk26,&QAction::triggered,this,[this]{if(!read_only_)QetTitleBulk26::show(tb_template_,template_edition_area_view_,undo_stack_,this);});
+    template_edition_area_view_->setDragMode(QGraphicsView::RubberBandDrag);
+    edit_menu_   -> addAction(undo_);
 	edit_menu_   -> addAction(redo_);
 	edit_menu_   -> addSeparator();
 	edit_menu_   -> addAction(cut_);
@@ -478,6 +494,9 @@ void QETTitleBlockTemplateEditor::initMenus()
 	edit_menu_   -> addSeparator();
 	edit_menu_   -> addAction(edit_logos_);
 	edit_menu_   -> addAction(edit_info_);
+	edit_menu_->addSeparator();
+	edit_menu_->addAction(ShortcutManager::instance().action("titleblockeditor.cell_text_style",this));
+	edit_menu_->addAction(ShortcutManager::instance().action("titleblockeditor.cell_properties",this));
 	display_menu_ -> addAction(zoom_in_);
 	display_menu_ -> addAction(zoom_out_);
 	display_menu_ -> addAction(zoom_fit_);
@@ -772,6 +791,13 @@ void QETTitleBlockTemplateEditor::updateEditorTitle()
 */
 void QETTitleBlockTemplateEditor::updateActions()
 {
+    const auto selected19=template_edition_area_view_->selectedCells();
+    for(auto *action:findChildren<QAction*>())if(!action->property("qetCommand19").toString().isEmpty()) {
+        const auto requirement=action->property("qetRequirement19").toString();
+        if(requirement=="text-cell")action->setEnabled(!read_only_&&selected19.size()==1&&selected19.first()->cell_type==TitleBlockCell::TextCell);
+        else if(requirement=="cell")action->setEnabled(selected19.size()==1);
+    }
+
 	save_ -> setEnabled(!read_only_);
 
 	bool can_merge = true;
@@ -1097,4 +1123,9 @@ void QETTitleBlockTemplateEditor::editTemplateInformation()
 						new_info));
 		}
 	}
+}
+
+void QETTitleBlockTemplateEditor::rebuildToolBars()
+{
+    QetCustomCommands19::rebuildEditorToolbars(this, QStringLiteral("titleblockeditor"));
 }

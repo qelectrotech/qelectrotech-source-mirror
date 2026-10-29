@@ -15,8 +15,10 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "../ui/labelclearance24.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../palettegraphicsview.h"
+#include <QPainterPathStroker>
 #include "../shownkinds.h"
 #include "../lastusedstyle.h"
 #include "../qetproject.h"
@@ -626,16 +628,20 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		//gaps too short to tell a dashed or a dash-dotted conductor from
 		//a solid one at a normal zoom, so these two get longer gaps
 	final_conductor_pen.setColor(final_conductor_color);
-	if (m_properties.style == Qt::DashLine)
-		final_conductor_pen.setDashPattern({5, 4});
-	else if (m_properties.style == Qt::DashDotLine)
-		final_conductor_pen.setDashPattern({6, 4, 1, 4});
-	else
-		final_conductor_pen.setStyle(m_properties.style);
+	const bool custom_pattern = m_properties.m_dash_pattern.apply(final_conductor_pen, m_properties.style);
+	if (!custom_pattern)
+	{
+		if (m_properties.style == Qt::DashLine)
+			final_conductor_pen.setDashPattern({5, 4});
+		else if (m_properties.style == Qt::DashDotLine)
+			final_conductor_pen.setDashPattern({6, 4, 1, 4});
+		else
+			final_conductor_pen.setStyle(m_properties.style);
+	}
 	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // better rendering with dot
 
 		//Use a cosmetic line, below a certain zoom
-	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
+	if (!custom_pattern && options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
 	{
 		final_conductor_pen.setCosmetic(true);
 	}
@@ -648,12 +654,23 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		//Draw the second color
 	if(m_properties.m_bicolor)
 	{
+		const QPen primary_pen = final_conductor_pen;
 		final_conductor_pen.setColor(m_properties.m_color_2);
 		final_conductor_pen.setStyle(Qt::CustomDashLine);
 		QVector<qreal> dash_pattern;
 		dash_pattern << m_properties.m_dash_size << m_properties.m_dash_size *2;
 		final_conductor_pen.setDashPattern(dash_pattern);
 		painter->save();
+		// Keep the secondary colour inside the custom primary dashes. Otherwise
+		// its independent alternation would paint across the requested gaps.
+		if (custom_pattern) {
+			QPainterPathStroker mask;
+			mask.setWidth(primary_pen.widthF());
+			mask.setCapStyle(primary_pen.capStyle());
+			mask.setJoinStyle(primary_pen.joinStyle());
+			mask.setDashPattern(primary_pen.dashPattern());
+			painter->setClipPath(mask.createStroke(paintedPath()), Qt::IntersectClip);
+		}
 		painter->setPen(final_conductor_pen);
 		painter->drawPath(painted_path);
 		painter->restore();
@@ -1261,6 +1278,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 
 		// Export the properties and text
 	properties().toXml(dom_element);
+    dom_element.setAttribute("text-font",m_text_item->font().toString());
 	if(m_text_item->wasMovedByUser())
 	{
 		dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
@@ -1779,6 +1797,7 @@ void Conductor::setPath(const QPainterPath &path)
 
 	prepareGeometryChange();
 	m_path = path;
+    QetLabelClearance24::notify(this);
 	conductorGeometryChanged();
 	update();
 }
@@ -1864,6 +1883,7 @@ void Conductor::setProperties(const ConductorProperties &property)
 	update();
 
 	storeProperties();
+    QetLabelClearance24::notify(this);
 	emit propertiesChange();
 }
 

@@ -62,7 +62,7 @@ void MasterElement::linkToElement(Element *elmt)
 		connected_elements << elmt;
 		elmt->linkToElement(this);
 
-		XRefProperties xrp = diagram()->project()->defaultXRefProperties(kindInformations()["type"].toString());
+		XRefProperties xrp = CrossRefItem::propertiesFor26(this);
 		if (!m_Xref_item && (xrp.snapTo() == XRefProperties::Bottom ||
 			m_data.m_master_type == ElementData::PLC))
 			m_Xref_item = new CrossRefItem(this); //create cross ref item if not yet	
@@ -159,6 +159,7 @@ QVariant MasterElement::itemChange(QGraphicsItem::GraphicsItemChange change, con
 	{
 		m_first_scene_change = false;
 		connect(diagram()->project(), &QETProject::XRefPropertiesChanged, this, &MasterElement::xrefPropertiesChanged);
+        connect(diagram()->project(), &QETProject::languageDataChanged, this, &MasterElement::xrefPropertiesChanged);
 
 		// For PLC masters, create the CrossRefItem immediately so the
 		// IO table is visible even without linked slaves.
@@ -184,7 +185,7 @@ void MasterElement::xrefPropertiesChanged()
 	if(!diagram())
 		return;
 
-	XRefProperties xrp = diagram()->project()->defaultXRefProperties(kindInformations()["type"].toString());
+	XRefProperties xrp = CrossRefItem::propertiesFor26(this);
 	if(xrp.snapTo() == XRefProperties::Bottom)
 	{
 			//We create a Xref, and just after we call aboutDeleteXref,
@@ -214,8 +215,7 @@ bool MasterElement::mustShowXrefWithoutSlave() const
 	if (!diagram() || !diagram()->project())
 		return false;
 
-	const XRefProperties xrp = diagram()->project()->defaultXRefProperties(
-				kindInformations()["type"].toString());
+	const XRefProperties xrp = CrossRefItem::propertiesFor26(this);
 
 	return xrp.snapTo() == XRefProperties::Bottom
 			&& CrossRefItem::showAllConfiguredSlaves(this, xrp);
@@ -240,7 +240,7 @@ void MasterElement::aboutDeleteXref()
 	if (m_data.m_master_type == ElementData::PLC)
 		return;
 
-	XRefProperties xrp = diagram()->project()->defaultXRefProperties(kindInformations()["type"].toString());
+	XRefProperties xrp = CrossRefItem::propertiesFor26(this);
 	if (xrp.snapTo() != XRefProperties::Bottom && m_Xref_item)
 	{
 		delete m_Xref_item;

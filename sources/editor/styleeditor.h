@@ -24,6 +24,7 @@ class CustomElementGraphicPart;
 class QVBoxLayout;
 class QCheckBox;
 class QComboBox;
+class DashPatternEditor;
 
 /**
 	This class provides a widget to edit styles (color, pen style and thickness,
@@ -48,6 +49,7 @@ class StyleEditor : public ElementItemEditor
 		QList <CustomElementGraphicPart *> m_part_list;
 		QList <CustomElementPart *> m_cep_list;
 		QCheckBox *antialiasing;
+		DashPatternEditor *m_dash_editor;
 		QComboBox *filling_color, *outline_color, *size_weight, *line_style;
 	
 		// methods

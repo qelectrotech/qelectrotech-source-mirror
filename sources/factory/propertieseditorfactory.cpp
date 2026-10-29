@@ -16,6 +16,7 @@
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "propertieseditorfactory.h"
+#include "../ui/languageeditor21.h"
 
 #include "../PropertiesEditor/propertieseditorwidget.h"
 #include "../cable/cablepart.h"
@@ -156,7 +157,11 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 		return new MultiElementInfoWidget(elements, other_items, parent);
 	}
 
-	switch (type_)
+	if(count_==1)if(auto *text=dynamic_cast<DiagramTextItem*>(item))if(QetLanguageEditor21::active(text)){
+        if(editor&&editor->objectName()=="languageProperties21"){static_cast<QetLanguageEditor21::Properties*>(editor)->setText(text);return editor;}
+        return new QetLanguageEditor21::Properties(text,parent);
+    }
+    switch (type_)
 	{
 		case Conductor::Type: //1001
 		{

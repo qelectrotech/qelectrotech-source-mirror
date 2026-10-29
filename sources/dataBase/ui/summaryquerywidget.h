@@ -19,6 +19,8 @@
 #define SUMMARYQUERYWIDGET_H
 
 #include <QWidget>
+#include <QVariantMap>
+#include <QVariantList>
 
 class QListWidgetItem;
 
@@ -37,9 +39,34 @@ class SummaryQueryWidget : public QWidget
 		static QString modelIdentifier() {return "summary";}
 		QString queryStr() const;
 		void setQuery(const QString &query);
+		void usePredefined18(const QString &recipe);
+		bool addCustomField(const QString &name, const QString &heading, const QString &expression, bool saveForReuse = true, const QVariantMap &formulaTree19 = QVariantMap());
+		QStringList selectedFieldExpressions() const;
+        QStringList selectedFieldIds19() const;
+        QString validationMessage19() const;
+        QList<QPair<QString,QString>> sourceFields19() const;
+        void setNumberStart19(int start);
+        void enableNumber19(bool enabled=true);
+        void setFilter19(const QString &condition);
+        void setDateFormat19(const QString &format);
+
+
+    signals:
+        void definitionChanged19();
 
 	private:
+		void setLegacyQuery(const QString &query);
+		QString rawQueryStr() const;
+		QVariantMap editorState() const;
+		void restoreEditorState(const QVariantMap &state);
 		void setUpItems();
+		void rebuildFields18();
+		QVariantList applicableFields18() const;
+		void setDerivedSource18(const QString &query);
+		void refreshMode18();
+        void cleanFields19();
+        void setupControls19();
+
 		void fillSavedQuery();
 		void updateQueryLine();
 		QStringList selectedKeys() const;
@@ -59,7 +86,13 @@ class SummaryQueryWidget : public QWidget
 	private:
 		Ui::SummaryQueryWidget *ui;
 		QList <QListWidgetItem *> m_items_list;
-		QString m_custom_query;
+		QVariantList m_custom_fields;
+		QString m_custom_query, m_source_query18;
+        QVariantMap m_filter_tree19;
+        bool m_loading19=false;
+        int m_number_start19=1;
+        QString m_filter19,m_date_format19;
+
 };
 
 #endif // SUMMARYQUERYWIDGET_H

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "templatecellwidget.h"
+#include "../ui/textstyle13.h"
 
 #include "../NameList/nameslist.h"
 #include "../NameList/ui/namelistdialog.h"
@@ -158,6 +159,19 @@ void TitleBlockTemplateCellWidget::initWidgets()
 	connect(vert_align_input_, qOverload<int>(&QComboBox::activated), this, &TitleBlockTemplateCellWidget::editAlignment);
 	connect(font_size_input_, qOverload<int>(&QSpinBox::valueChanged), this, &TitleBlockTemplateCellWidget::editFontSize);
 	connect(font_adjust_input_, &QCheckBox::clicked, this, &TitleBlockTemplateCellWidget::editAdjust);
+    auto *styles=new QPushButton(tr("Caption / value fonts, colours and opacity..."),this);
+    styles->setObjectName("titleBlockTextStyle13");
+    cell_editor_layout_->addWidget(styles);
+    connect(styles,&QPushButton::clicked,this,[this](){
+        if(!edited_cell_ || read_only_)return;
+        QDialog d(this);d.setWindowTitle(tr("Title block cell text formatting"));auto *l=new QVBoxLayout(&d);
+        auto *caption=new QetFormatting::TextStyleWidget(tr("Fixed caption (unchecked = inherited)"),edited_cell_->label_style,TitleBlockTemplate::fontForCell(*edited_cell_),&d);
+        auto *value=new QetFormatting::TextStyleWidget(tr("Value (unchecked = inherited)"),edited_cell_->value_style,TitleBlockTemplate::fontForCell(*edited_cell_),&d);
+        l->addWidget(caption);l->addWidget(value);
+        auto *buttons=new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel,&d);l->addWidget(buttons);
+        connect(buttons,&QDialogButtonBox::accepted,&d,&QDialog::accept);connect(buttons,&QDialogButtonBox::rejected,&d,&QDialog::reject);
+        if(d.exec()==QDialog::Accepted){emitModification("label_style",caption->value());emitModification("value_style",value->value());}
+    });
 	connect(logo_input_, qOverload<int>(&QComboBox::activated), this, &TitleBlockTemplateCellWidget::editLogo);
 	
 	updateFormType(TitleBlockCell::TextCell);

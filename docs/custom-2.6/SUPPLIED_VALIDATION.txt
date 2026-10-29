@@ -1,0 +1,59 @@
+SUPPLIED REPORT FOR THE ORIGINAL CUSTOM 2.6 BUILD
+Not a validation of the newly integrated GitHub source.
+
+QElectroTech Custom 2.6 - validation
+
+PASS 378 version 2.6 checks
+PASS 293 version 2.5 checks
+PASS 55 Custom 2.0 regression checks
+PASS 47 printing checks; tiled page count 6
+PASS editable Arial wordmark PDF export; terminal definitions unchanged
+
+{
+  "Translated_title_2.6_info_seconds": 0.122,
+  "Translated_title_2.6_counts": {
+    "diagrams": 1,
+    "elements": 0,
+    "conductors": 0
+  },
+  "Translated_title_2.6_export-pdf_seconds": 0.352,
+  "Relay_display_2.6_info_seconds": 6.587,
+  "Relay_display_2.6_counts": {
+    "diagrams": 12,
+    "elements": 628,
+    "conductors": 286
+  },
+  "Relay_display_2.6_export-pdf_seconds": 7.611,
+  "Relay_cross_2.6_info_seconds": 6.647,
+  "Relay_cross_2.6_counts": {
+    "diagrams": 12,
+    "elements": 628,
+    "conductors": 286
+  },
+  "Relay_cross_2.6_export-pdf_seconds": 7.534,
+  "Spacing_current_project_2.6_info_seconds": 6.629,
+  "Spacing_current_project_2.6_counts": {
+    "diagrams": 12,
+    "elements": 628,
+    "conductors": 286
+  },
+  "Spacing_current_project_2.6_export-pdf_seconds": 7.862,
+  "Relay_input_2.6_info_seconds": 7.198,
+  "Relay_input_2.6_counts": {
+    "diagrams": 12,
+    "elements": 628,
+    "conductors": 286
+  },
+  "Relay_input_2.6_export-pdf_seconds": 7.466,
+  "pdf_import_pages": 2,
+  "pdf_import_links": 2,
+  "pdf_content_and_thickness_checks": "passed",
+  "isolated_runtime": "passed",
+  "portable_exe_sha256": "50218a7ca95934f7d3437290ab8070913ad0d50e7b85069d30f39935f70f7f21"
+}
+
+Limitations: hardware printer output was not physically tested. Fixed symbol text
+and wire labels remain excluded from automatic spacing. Exact spacing preserves
+aligned groups; the group targets its nearest obstacle edge. Unsafe or ambiguous
+placements are reported, not forced. Arial lettering is an editable alternative
+to the Siemens wordmark, not an exact brand-font reproduction.

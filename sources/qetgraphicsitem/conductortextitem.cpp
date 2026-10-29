@@ -73,6 +73,7 @@ Conductor *ConductorTextItem::parentConductor() const
 	@param e
 */
 void ConductorTextItem::fromXml(const QDomElement &e) {
+    if(e.hasAttribute("text-font")){QFont f=font();if(f.fromString(e.attribute("text-font")))setFont(f);}
 		//A non-finite ("nan", "inf") position or rotation is ignored,
 		//as if the text had never been moved or rotated
 	const qreal x = e.attribute("userx").toDouble();

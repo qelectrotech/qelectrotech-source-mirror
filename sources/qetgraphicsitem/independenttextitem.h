@@ -30,6 +30,7 @@ class IndependentTextItem : public DiagramTextItem
 {
 	Q_OBJECT
 
+	Q_PROPERTY(QString styledHtml READ toHtml WRITE setStyledHtml)
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
 		
 		// constructors, destructor
@@ -47,9 +48,11 @@ class IndependentTextItem : public DiagramTextItem
 		enum { Type = UserType + 1005 };
 		int type() const override { return Type; }
 		
+		void setStyledHtml(const QString &html) { setHtml(html); wrapAtWords(); QGraphicsTextItem::setTextWidth(m_text_width); }
 		void fromXml(const QDomElement &) override;
 		QDomElement toXml(QDomDocument &) const override;
 		QUuid uuid() const {return m_uuid;}
+        QString languageId16() const override { return m_uuid.toString(QUuid::WithoutBraces); }
 		void setUuid(const QUuid &uuid) {m_uuid = uuid; emit uuidChanged();}
 		void newUuid() {setUuid(QUuid::createUuid());}	//create new uuid for this item
 

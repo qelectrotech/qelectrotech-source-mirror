@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementpicturefactory.h"
+#include "../conductordashpattern.h"
 
 #include "../ElementsCollection/elementslocation.h"
 #include "../editor/graphicspart/partline.h"
@@ -1315,6 +1316,8 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 		}
 	}
 
+	const auto dash_pattern = ConductorDashPattern::fromXml(dom);
+	if (dash_pattern.apply(pen, pen.style())) pen.setCosmetic(false);
 	painter.setPen(pen);
 	painter.setBrush(brush);
 }

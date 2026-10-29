@@ -77,11 +77,13 @@ int TitleBlockTemplateRenderer::height() const
 	@param titleblock_width : The total width of the titleblock to render
 */
 void TitleBlockTemplateRenderer::render(QPainter *provided_painter,
-					int titleblock_width) {
+					int titleblock_width, const QVariantMap &languageData) {
 	if (!m_titleblock_template) return;
 	
+	DiagramContext displayContext=m_context;
+    if(!languageData.isEmpty())displayContext.addValue("qet_language16",languageData,false);
 	m_titleblock_template -> render(*provided_painter,
-					m_context,
+					displayContext,
 					titleblock_width);
 }
 

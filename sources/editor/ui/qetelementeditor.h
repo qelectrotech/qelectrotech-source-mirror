@@ -78,6 +78,9 @@ class QETElementEditor : public QMainWindow
 		void closeEvent(QCloseEvent *) override;
 
 
+	public slots:
+		void rebuildToolBars();
+
 	private slots:
 		bool on_m_save_action_triggered();
 		bool on_m_save_as_action_triggered();

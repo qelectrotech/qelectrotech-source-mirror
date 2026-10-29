@@ -97,6 +97,7 @@ class CrossRefItem : public QGraphicsObject
 
 	public slots:
 		void updateProperties();
+        static XRefProperties propertiesFor26(const Element *);
 		void updateLabel();
 		void autoPos();
 
@@ -120,7 +121,10 @@ class CrossRefItem : public QGraphicsObject
 			   QWidget *widget) override;
 		void mouseDoubleClickEvent (
 				QGraphicsSceneMouseEvent * event ) override;
-		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
+		void mousePressEvent(QGraphicsSceneMouseEvent *) override;
+        void mouseMoveEvent(QGraphicsSceneMouseEvent *) override;
+        void mouseReleaseEvent(QGraphicsSceneMouseEvent *) override;
+        void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverMoveEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 
@@ -147,7 +151,10 @@ class CrossRefItem : public QGraphicsObject
 
 		//Attributes
 	private:
-		Element *m_element; //element to display the cross reference
+		QVariantMap m_options26;
+        bool m_drag26=false; QPointF m_dragOrigin26,m_dragMouse26;
+        qreal lineWidth26() const { return qBound(.1,m_options26.value("width",.5).toDouble(),10.0); }
+        Element *m_element; //element to display the cross reference
 		QRectF m_bounding_rect;
 		QPainterPath m_shape_path;
 		XRefProperties m_properties;

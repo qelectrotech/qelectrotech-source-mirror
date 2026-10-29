@@ -57,6 +57,7 @@ ElementTextItemGroup::ElementTextItemGroup(const QString &name,
 	ShownKinds::tag(this, ShownKinds::SymbolTexts);
 	setFlags(QGraphicsItem::ItemIsSelectable
 		 | QGraphicsItem::ItemIsMovable);
+	setToolTip(tr("Shift-click to add this text group to the selection; Ctrl+Shift-click to remove it."));
 	connect(parent,
 		&Element::linkedElementChanged,
 		this,
@@ -410,7 +411,7 @@ void ElementTextItemGroup::updateAlignment()
 		Element *master_elmt = m_parent_element->linkedElements().isEmpty()
 			? nullptr : m_parent_element->linkedElements().first();
 		if (master_elmt && m_parent_element->diagram()) {
-			XRefProperties xrp = m_parent_element->diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+			XRefProperties xrp = CrossRefItem::propertiesFor26(master_elmt);
 			slave_offset = xrp.slaveOffset();
 		}
 		adjustSlaveXrefPos(slave_offset);
@@ -767,9 +768,18 @@ void ElementTextItemGroup::setPos(qreal x, qreal y)
 */
 void ElementTextItemGroup::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {	
+	m_additive_text_press25 = false;
 	if(event->button() == Qt::LeftButton)
 	{
 		m_first_move = true;
+		if (event->modifiers().testFlag(Qt::ShiftModifier) && (flags() & ItemIsSelectable)) {
+			m_additive_text_press25 = true;
+			m_toggle_text25 = event->modifiers().testFlag(Qt::ControlModifier) && isSelected();
+			if (parentElement()) parentElement()->setSelected(false);
+			setSelected(true);
+			event->accept();
+			return;
+		}
 		if(event->modifiers() & Qt::ControlModifier)
 			setSelected(!isSelected());
 	}
@@ -825,6 +835,12 @@ void ElementTextItemGroup::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		diagram()->elementTextsMover().endMovement();
 		if(parentElement())
 			parentElement()->setHighlighted(false);
+	}
+	if (m_additive_text_press25 && event->button() == Qt::LeftButton) {
+		if (m_toggle_text25 && m_first_move) setSelected(false);
+		m_additive_text_press25 = false;
+		event->accept();
+		return;
 	}
 	
 	if(!(event->modifiers() & Qt::ControlModifier))
@@ -924,7 +940,7 @@ void ElementTextItemGroup::updateXref()
 		
 		if(m_parent_element->linkType() == Element::Master)
 		{
-			XRefProperties xrp = project->defaultXRefProperties(m_parent_element->kindInformations()["type"].toString());
+			XRefProperties xrp = CrossRefItem::propertiesFor26(m_parent_element);
 
 			if(xrp.snapTo() == XRefProperties::Label &&
 			   (!m_parent_element->linkedElements().isEmpty()
@@ -950,7 +966,7 @@ void ElementTextItemGroup::updateXref()
 				!m_parent_element->linkedElements().isEmpty())
 		{
 			Element *master_elmt = m_parent_element->linkedElements().first();
-			XRefProperties xrp = project->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+			XRefProperties xrp = CrossRefItem::propertiesFor26(master_elmt);
 
 			//Champ de texte: store xref in element informations
 			if(xrp.getXrefPos() == Qt::AlignHCenter)
@@ -1041,7 +1057,7 @@ void ElementTextItemGroup::updateXref()
 			Element *master_elmt = m_parent_element->linkedElements().first();
 			if(master_elmt)
 			{
-				XRefProperties xrp = m_parent_element->diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+				XRefProperties xrp = CrossRefItem::propertiesFor26(master_elmt);
 				if(xrp.getXrefPos() == Qt::AlignHCenter)
 				{
 					QString xref_label = xrp.slaveLabel();
@@ -1097,7 +1113,7 @@ void ElementTextItemGroup::autoPos()
 			return;
 		
 		MasterElement *master = static_cast<MasterElement *>(m_parent_element);
-		XRefProperties xrp = diagram()->project()->defaultXRefProperties(master->kindInformations()["type"].toString());
+		XRefProperties xrp = CrossRefItem::propertiesFor26(master);
 		if(xrp.snapTo() == XRefProperties::Bottom)
 		{
 			QRectF rectXref = master->XrefBoundingRect();

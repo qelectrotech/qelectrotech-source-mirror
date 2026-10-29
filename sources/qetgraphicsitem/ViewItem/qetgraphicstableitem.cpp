@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -16,6 +16,7 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetgraphicstableitem.h"
+#include "../../ui/tableeditor15.h"
 #include "../../shownkinds.h"
 #include "../../qetproject.h"
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
@@ -30,9 +31,15 @@
 #include "qetgraphicsheaderitem.h"
 
 #include <QAbstractItemModel>
+#include "../../ui/tableformat13.h"
 #include <QFontMetrics>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
+#include <QGraphicsSceneHoverEvent>
+#include <QGraphicsView>
+#include <QKeyEvent>
+#include <QFocusEvent>
+#include <cmath>
 #include <QPainter>
 
 static int no_model_height = 20;
@@ -53,6 +60,19 @@ void QetGraphicsTableItem::adjustTableToFolio(
 	}
 
 	auto drawable_rect = table->diagram()->border_and_titleblock.insideBorderRect();
+    if(table->customFormatting() && table->model()) {
+        const int offset=table->previousTable()?table->previousTable()->displayNRowOffset():0;
+        const auto fallback=table->model()->index(0,0).data(Qt::FontRole).value<QFont>();
+        const int remaining=qMax(0,table->model()->rowCount()-offset);
+        const auto layout=QetFormatting::tableLayout(table->customFormat(),table->model(),offset,remaining,fallback);
+        table->setPos(drawable_rect.left()+margins.left(),drawable_rect.top()+margins.top()+layout.headerHeight+layout.titleHeight);
+        const qreal available=drawable_rect.bottom()-margins.bottom()-table->pos().y();
+        int count=0,height=0;for(int rowHeight:layout.rowHeights){if(height+rowHeight>available)break;height+=rowHeight;++count;}
+        // Zero means unlimited in the table model; keep one row when even the
+        // first row is taller than the page, rather than displaying everything.
+        table->setDisplayNRow(remaining?qMax(1,count):0);
+        return;
+    }
 	table->setPos(
 				drawable_rect.topLeft().x() + margins.left(),
 				drawable_rect.topLeft().y()
@@ -138,6 +158,7 @@ QetGraphicsTableItem::QetGraphicsTableItem(QGraphicsItem *parent) :
 	ShownKinds::tag(this, ShownKinds::Tables);
 	setFlag(QGraphicsItem::ItemIsMovable, true);
 	setFlag(QGraphicsItem::ItemIsSelectable, true);
+	setFlag(QGraphicsItem::ItemIsFocusable, true);
 	setAcceptHoverEvents(true);
 	setUpHandler();
 
@@ -244,7 +265,15 @@ void QetGraphicsTableItem::paint(
 		QWidget *widget)
 {
 	Q_UNUSED(option)
-	Q_UNUSED(widget)
+    Q_UNUSED(widget)
+    if(customFormatting()) {
+        int offset=m_previous_table?m_previous_table->displayNRowOffset():0;
+        QFont fallback=m_model?m_model->index(0,0).data(Qt::FontRole).value<QFont>():QFont();
+        QetFormatting::paintTable(*painter,m_custom_format,m_model,offset,formattedRows(),fallback);
+        if(widget&&isSelected()&&scene()&&!scene()->views().isEmpty()){painter->save();painter->setPen(QPen(QColor("#2678d4"),0));painter->setBrush(QColor(38,120,212,35));const auto g=QetFormatting::tableLayout(m_custom_format,m_model,offset,formattedRows(),fallback);QVector<int> xs{0},ys{0};for(int w:g.widths)xs<<xs.last()+w;for(int h:g.rowHeights)ys<<ys.last()+h;for(const auto &cell:m_cells20){const int c=cell.first,r=cell.second-offset;if(cell.second==-2)painter->drawRect(QRectF(0,-g.headerHeight-g.titleHeight,g.width,g.titleHeight));else if(c>=0&&c<g.widths.size()){if(cell.second==-1)painter->drawRect(QRectF(xs[c],-g.headerHeight,g.widths[c],g.headerHeight));else if(r>=0&&r<g.rowHeights.size())painter->drawRect(QRectF(xs[c],ys[r],g.widths[c],g.rowHeights[r]));}}painter->restore();}
+        if(isSelected()){painter->save();painter->setPen(QPen(Qt::blue,0,Qt::DashLine));painter->setBrush(Qt::NoBrush);painter->drawRect(boundingRect().adjusted(5,5,-5,-5));painter->restore();}
+        return;
+    }
 
 	painter->save();
 
@@ -338,6 +367,7 @@ void QetGraphicsTableItem::paint(
 */
 void QetGraphicsTableItem::setSize(const QSize &size)
 {
+	if(customFormatting()){refreshCustomGeometry();return;}
 	auto new_size = size;
 	if (new_size.width() < minimumSize().width()) {
 		new_size.setWidth(minimumSize().width());
@@ -362,6 +392,7 @@ void QetGraphicsTableItem::setSize(const QSize &size)
 */
 QSize QetGraphicsTableItem::size() const
 {
+	if(customFormatting())return m_current_size;
 	QSize size_(m_header_item->rect().width(), m_current_size.height());
 	return size_;
 }
@@ -374,6 +405,12 @@ QSize QetGraphicsTableItem::size() const
 */
 QSize QetGraphicsTableItem::minimumSize() const
 {
+	if(customFormatting()){
+        const int offset=m_previous_table?m_previous_table->displayNRowOffset():0;
+        const QFont fallback=m_model?m_model->index(0,0).data(Qt::FontRole).value<QFont>():QFont();
+        const auto g=QetFormatting::tableLayout(m_custom_format,m_model,offset,formattedRows(),fallback);
+        return QSize(g.width,g.bodyHeight);
+    }
 	if (!m_model) {
 		return QSize(no_model_width, no_model_height);
 	}
@@ -409,6 +446,7 @@ QSize QetGraphicsTableItem::minimumSize() const
 void QetGraphicsTableItem::setDisplayNRow(const int &number)
 {
 	m_number_of_row_to_display = number;
+	if(customFormatting())m_custom_format["rows"]=qMax(0,number);
 	setToMinimumHeight();
 	if (m_next_table)
 		m_next_table->previousTableDisplayRowChanged();
@@ -422,7 +460,7 @@ void QetGraphicsTableItem::setDisplayNRow(const int &number)
 */
 int QetGraphicsTableItem::displayNRow() const
 {
-	return m_number_of_row_to_display;
+	return customFormatting()?QetFormatting::number(m_custom_format,"rows",0,0,10000):m_number_of_row_to_display;
 }
 
 /**
@@ -517,7 +555,7 @@ QString QetGraphicsTableItem::tableName() const
 */
 int QetGraphicsTableItem::displayNRowOffset() const
 {
-	auto offset_ = m_number_of_row_to_display;
+	auto offset_ = customFormatting()?formattedRows():m_number_of_row_to_display;
 	if(m_previous_table)
 		offset_ += m_previous_table->displayNRowOffset();
 
@@ -530,6 +568,7 @@ int QetGraphicsTableItem::displayNRowOffset() const
  */
 int QetGraphicsTableItem::displayedRowCount() const
 {
+	if(customFormatting())return formattedRows();
 	if (!m_model) {
 		return 0;
 	}
@@ -606,7 +645,7 @@ QUuid QetGraphicsTableItem::previousTableUuid() const
 */
 int QetGraphicsTableItem::minimumRowHeight() const
 {
-	return m_minimum_row_height;
+	return customFormatting()?QetFormatting::number(m_custom_format,"rowHeight",20):m_minimum_row_height;
 }
 
 /**
@@ -624,6 +663,7 @@ QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
 	dom_table.setAttribute("height", QString::number(m_current_size.height()));
 	dom_table.setAttribute("uuid", m_uuid.toString());
 	dom_table.setAttribute("name", m_name);
+	if(!m_custom_format.isEmpty())dom_table.setAttribute("format-v13",QetFormatting::encode(m_custom_format));
 	dom_table.setAttribute("display_n_row", QString::number(m_number_of_row_to_display));
 
 		//Add the header xml
@@ -698,6 +738,8 @@ void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 					"uuid",
 					QUuid::createUuid().toString()));
 	m_name = dom_element.attribute("name");
+	m_custom_format=QetFormatting::decode(dom_element.attribute("format-v13"));
+	m_header_item->setVisible(!customFormatting());
 	m_number_of_row_to_display = dom_element.attribute(
 				"display_n_row",
 				QString::number(0)).toInt();
@@ -834,7 +876,7 @@ bool QetGraphicsTableItem::toDXF(const QString &filepath)
 */
 void QetGraphicsTableItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
-	if (m_model)
+	if (m_model && !customFormatting())
 	{
 		adjustHandlerPos();
 		this->scene()->addItem(&m_handler_item);
@@ -851,7 +893,8 @@ void QetGraphicsTableItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 */
 void QetGraphicsTableItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
-	if (m_model &&
+    if(!m_resize_active18)unsetCursor();
+	if (m_handler_item.scene() &&
 		!m_handler_item.contains(mapToItem(&m_handler_item, event->pos())))
 	{
 		m_handler_item.scene()->removeItem(&m_handler_item);
@@ -900,6 +943,7 @@ QVariant QetGraphicsTableItem::itemChange(
 		QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
 		//item was removed from scene, we remove the handler
+	if ((change==ItemSelectedHasChanged && !value.toBool()) || change==ItemSceneChange)cancelResize18();
 	if (change == ItemSceneHasChanged) {
 		if (!scene() && m_handler_item.scene()) {
 			m_handler_item.scene()->removeItem(&m_handler_item);
@@ -917,7 +961,7 @@ void QetGraphicsTableItem::modelReseted()
 	dataChanged(m_model->index(0,0), m_model->index(0,0), QVector<int>());
 	setToMinimumHeight();
 
-	if (!previousTable()) //this is the head table
+	if (!previousTable() && !m_model->property("qetEditDefinition15").toBool()) // Preserve continuation tables during undoable definition edits.
 	{
 		checkInsufficientRowsCount(this);
 		removeUselessNextTable();
@@ -966,6 +1010,7 @@ void QetGraphicsTableItem::setUpColumnAndRowMinimumSize()
 */
 void QetGraphicsTableItem::setUpBoundingRect()
 {
+	if(customFormatting()){refreshCustomGeometry();return;}
 	QSize header_size = m_header_item->rect().size();
 	QRect rect(
 				0,
@@ -1043,6 +1088,7 @@ void QetGraphicsTableItem::handlerMouseReleaseEvent(
 */
 void QetGraphicsTableItem::adjustColumnsWidth()
 {
+	if(customFormatting()){refreshCustomGeometry();return;}
 	if (!m_model)
 	{
 		auto h_  = m_header_item->minimumSectionWidth();
@@ -1115,6 +1161,7 @@ void QetGraphicsTableItem::dataChanged(
 */
 void QetGraphicsTableItem::adjustSize()
 {
+	if(customFormatting()){refreshCustomGeometry();return;}
 		//If there is no model, set the size to minimum
 	if (!m_model) {
 		setSize(minimumSize());
@@ -1168,4 +1215,305 @@ void QetGraphicsTableItem::removeUselessNextTable(bool recursive)
 			m_next_table.clear();
 		}
 	}
+}
+
+int QetGraphicsTableItem::formattedRows() const {
+    int rows=QetFormatting::number(m_custom_format,"rows",0,0,10000);
+    if(rows)return rows;
+    int offset=m_previous_table?m_previous_table->displayNRowOffset():0;
+    return qMax(0,m_model?m_model->rowCount()-offset:0);
+}
+void QetGraphicsTableItem::refreshCustomGeometry() {
+    prepareGeometryChange();
+    const int offset=m_previous_table?m_previous_table->displayNRowOffset():0;
+    const QFont fallback=m_model?m_model->index(0,0).data(Qt::FontRole).value<QFont>():QFont();
+    const auto g=QetFormatting::tableLayout(m_custom_format,m_model,offset,formattedRows(),fallback);
+    m_current_size=QSize(g.width,g.bodyHeight);
+    m_bounding_rect=g.bounds.adjusted(-10,-10,10,10);
+    if(m_header_item)m_header_item->hide();adjustHandlerPos();update();
+}
+void QetGraphicsTableItem::setCustomFormat(const QVariantMap &format) {
+    const bool changed18=m_custom_format!=format;
+    prepareGeometryChange();m_custom_format=format;m_header_item->setVisible(!customFormatting());
+    if(customFormatting()&&m_handler_item.scene())m_handler_item.scene()->removeItem(&m_handler_item);
+    if(customFormatting())refreshCustomGeometry();else{setUpColumnAndRowMinimumSize();adjustSize();setUpBoundingRect();}
+    if(m_next_table)m_next_table->previousTableDisplayRowChanged();update();
+    if(changed18)emit customFormatChanged18(m_custom_format);
+}
+
+void QetGraphicsTableItem::editProperty() { QetTableEditor15::edit(this); }
+
+bool QetGraphicsTableItem::canResize18() const {
+    return customFormatting()&&m_model&&isMovable()&&flags().testFlag(ItemIsMovable)
+            &&(!diagram()||!diagram()->isReadOnly());
+}
+
+bool QetGraphicsTableItem::resizeBoundary18(const QPointF &position,QWidget *viewport,int &column,int &row) const {
+    column=row=-1;
+    if(!isSelected()||!canResize18())return false;
+    QGraphicsView *view=nullptr;
+    if(scene())for(auto *candidate:scene()->views())if(!viewport||candidate->viewport()==viewport){view=candidate;break;}
+    qreal tx=5,ty=5;
+    if(view){const auto transform=deviceTransform(view->viewportTransform());
+        tx=5/qMax(qreal(0.001),std::hypot(transform.m11(),transform.m12()));
+        ty=5/qMax(qreal(0.001),std::hypot(transform.m21(),transform.m22()));}
+    const int offset=m_previous_table?m_previous_table->displayNRowOffset():0;
+    const auto g=QetFormatting::tableLayout(m_custom_format,m_model,offset,formattedRows(),m_model->index(0,0).data(Qt::FontRole).value<QFont>());
+
+    qreal columnDistance=2,rowDistance=2;
+    if(position.y()>=-g.headerHeight-g.titleHeight-ty&&position.y()<=g.bodyHeight+ty){
+        if(qAbs(position.x())<=tx){column=-2;columnDistance=qAbs(position.x())/tx;}
+        int x=0;for(int c=0;c<g.widths.size();++c){x+=g.widths[c];qreal d=qAbs(position.x()-x)/tx;if(d<=1&&d<columnDistance){column=c;columnDistance=d;}}
+    }
+    if(position.x()>=-tx&&position.x()<=g.width+tx){
+        auto candidate=[&](qreal y,int id){qreal d=qAbs(position.y()-y)/ty;if(d<=1&&d<rowDistance){row=id;rowDistance=d;}};
+        candidate(-g.headerHeight-g.titleHeight,g.titleHeight?-2:-3);
+        if(g.titleHeight)candidate(-g.headerHeight,-4);
+        int y=0;for(int rr=0;rr<g.rowHeights.size();++rr){y+=g.rowHeights[rr];candidate(y,offset+rr);}
+    }
+    if(column!=-1&&row!=-1){if(columnDistance<=rowDistance)row=-1;else column=-1;}
+    return column!=-1||row!=-1;
+}
+
+bool QetGraphicsTableItem::commitResize18(const QVariantMap &before,const QVariantMap &after,bool undo,const QString &text) {
+    if(before==after)return false;
+    if(undo&&diagram()){
+        // A live drag may already display after. Restore the starting state so
+        // the command owns both the initial redo and every later Undo/Redo.
+        setCustomFormat(before);
+        // A completed gesture is one independent action. QPropertyUndoCommand
+        // normally merges successive writes to the same property, which would
+        // silently combine separate column/row drags. The parent has the
+        // default nonmergeable id and owns the actual property operation.
+        auto *command=new QUndoCommand(text);
+        new QPropertyUndoCommand(this,"customFormat",before,after,command);
+        diagram()->undoStack().push(command);
+    }else setCustomFormat(after);
+    return true;
+}
+
+bool QetGraphicsTableItem::resizeColumn18(int column,int width,bool undo) {
+    if(!canResize18()||column<0||column>=m_model->columnCount())return false;
+    const auto before=m_custom_format;auto after=before;
+    auto widths=QetFormatting::tableWidths(before,m_model->columnCount());widths[column]=qBound(10,width,10000);
+    QVariantList values;for(int value:widths)values<<value;after["widths"]=values;
+    auto automatic=before.value("autoWidths").toList();while(automatic.size()<widths.size())automatic<<false;automatic[column]=false;after["autoWidths"]=automatic;
+    return commitResize18(before,after,undo,tr("Resize table column"));
+}
+
+bool QetGraphicsTableItem::resizeRow18(int absoluteModelRow,int height,bool undo) {
+    if(!canResize18()||absoluteModelRow<0)return false;
+    const auto before=m_custom_format;auto after=before;auto rows=after.value("rowHeights18").toMap();
+    rows[QString::number(absoluteModelRow)]=qBound(6,height,10000);after["rowHeights18"]=rows;
+    return commitResize18(before,after,undo,tr("Resize table row"));
+}
+
+bool QetGraphicsTableItem::autoFitColumn18(int column,bool undo) {
+    if(!canResize18()||column<0||column>=m_model->columnCount())return false;
+    const int offset=m_previous_table?m_previous_table->displayNRowOffset():0;
+    const auto widths=QetFormatting::fittedColumnWidths(m_custom_format,m_model,offset,formattedRows(),m_model->index(0,0).data(Qt::FontRole).value<QFont>());
+    return resizeColumn18(column,widths[column],undo);
+}
+
+bool QetGraphicsTableItem::autoFitRow18(int absoluteModelRow,bool undo) {
+    if(!canResize18()||absoluteModelRow<0)return false;
+    const int offset=m_previous_table?m_previous_table->displayNRowOffset():0;const auto font=m_model->index(0,0).data(Qt::FontRole).value<QFont>();
+    const auto geometry=QetFormatting::tableLayout(m_custom_format,m_model,offset,formattedRows(),font);
+    return resizeRow18(absoluteModelRow,QetFormatting::fittedRowHeight18(m_custom_format,m_model,absoluteModelRow,geometry.widths,font),undo);
+}
+
+void QetGraphicsTableItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event) {
+    int column,row;
+    if(resizeBoundary18(event->pos(),event->widget(),column,row))setCursor(column!=-1?Qt::SplitHCursor:Qt::SplitVCursor);
+    else unsetCursor();
+    QetGraphicsItem::hoverMoveEvent(event);
+}
+
+void QetGraphicsTableItem::mousePressEvent(QGraphicsSceneMouseEvent *event) {
+    if(m_resize_active18&&event->button()==Qt::RightButton){cancelResize18();event->accept();return;}
+    m_resize_cancelled18=false;
+    int column,row;
+    if(event->button()==Qt::LeftButton&&!(event->modifiers()&Qt::ControlModifier)&&resizeBoundary18(event->pos(),event->widget(),column,row)){
+        setFocus(Qt::MouseFocusReason);m_resize_before18=m_custom_format;m_resize_press18=event->pos();m_resize_scene25=event->scenePos();m_resize_position25=pos();m_resize_column18=column;m_resize_row18=row;
+        const int offset=m_previous_table?m_previous_table->displayNRowOffset():0;
+        const auto g=QetFormatting::tableLayout(m_custom_format,m_model,offset,formattedRows(),m_model->index(0,0).data(Qt::FontRole).value<QFont>());
+        m_resize_start18=0;m_resize_active18=true;event->accept();return;
+    }
+    if(event->button()==Qt::LeftButton&&isSelected()&&customFormatting()){
+        const auto cell=cellAt20(event->pos());
+        if(cell.second>=-2){
+            if((event->modifiers()&Qt::ShiftModifier)&&m_anchor20.second>=-1&&cell.second>=-1){QSet<QPair<int,int>> cells;for(int r=qMin(cell.second,m_anchor20.second);r<=qMax(cell.second,m_anchor20.second);++r)for(int c=qMin(cell.first,m_anchor20.first);c<=qMax(cell.first,m_anchor20.first);++c)cells.insert({c,r});setSelectedCells20(cells);}
+            else if(event->modifiers()&Qt::ControlModifier){auto cells=m_cells20;if(cells.contains(cell))cells.remove(cell);else cells.insert(cell);setSelectedCells20(cells);}
+            else {m_anchor20=cell;setSelectedCells20({cell});}
+            if(event->modifiers()&(Qt::ShiftModifier|Qt::ControlModifier)){event->accept();return;}
+        }
+    }
+    QetGraphicsItem::mousePressEvent(event);
+}
+
+void QetGraphicsTableItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
+    if(m_resize_cancelled18){event->accept();return;}
+    if(m_resize_active18){
+        if(!canResize18()){cancelResize18();event->accept();return;}
+        auto delta=mapFromScene(event->scenePos())-mapFromScene(m_resize_scene25);
+        if(m_resize_column18==-2){
+            const int off=m_previous_table?m_previous_table->displayNRowOffset():0;
+            auto g=QetFormatting::tableLayout(m_resize_before18,m_model,off,formattedRows(),m_model->index(0,0).data(Qt::FontRole).value<QFont>());
+            if(!g.widths.isEmpty()){
+                int dx=qBound(g.widths[0]-10000,qRound(delta.x()),g.widths[0]-10);
+                auto after=m_resize_before18;g.widths[0]-=dx;QVariantList widths,automatic;
+                for(int w:g.widths){widths<<w;automatic<<false;}after["widths"]=widths;after["autoWidths"]=automatic;
+                setCustomFormat(after);setPos(m_resize_position25+mapToParent(QPointF(dx,0))-mapToParent(QPointF()));
+            }
+        }else resizeBoundary20(m_resize_column18,m_resize_row18,qRound(m_resize_column18>=0?delta.x():delta.y()),m_resize_before18,false);
+        event->accept();return;
+    }
+    QetGraphicsItem::mouseMoveEvent(event);
+}
+
+void QetGraphicsTableItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
+    if(m_resize_cancelled18){m_resize_cancelled18=false;event->accept();return;}
+    if(m_resize_active18){const auto before=m_resize_before18,after=m_custom_format;m_resize_active18=false;m_resize_column18=m_resize_row18=-1;unsetCursor();
+        auto finalPos=pos();setCustomFormat(before);setPos(m_resize_position25);
+        if(diagram()&&(before!=after||finalPos!=m_resize_position25)){
+            auto *command=new QUndoCommand(tr("Resize table boundary"));
+            new QPropertyUndoCommand(this,"customFormat",before,after,command);
+            if(finalPos!=m_resize_position25)new QPropertyUndoCommand(this,"pos",m_resize_position25,finalPos,command);
+            diagram()->undoStack().push(command);
+        }else {setCustomFormat(after);setPos(finalPos);}
+        event->accept();return;}
+    QetGraphicsItem::mouseReleaseEvent(event);
+}
+
+void QetGraphicsTableItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+    int column,row;
+    if(event->button()==Qt::LeftButton&&resizeBoundary18(event->pos(),event->widget(),column,row)){
+        cancelResize18();if(column>=0)autoFitColumn18(column);else if(row>=0)autoFitRow18(row);event->accept();return;
+    }
+    if(event->button()==Qt::LeftButton&&isSelected()&&canResize18()){
+        auto cell=cellAt20(event->pos());
+        if(cell.second>=-2){setSelectedCells20({cell});editCellText25(cell.first,cell.second,event->widget());event->accept();return;}
+    }
+    QetGraphicsItem::mouseDoubleClickEvent(event);
+}
+
+void QetGraphicsTableItem::cancelResize18() {
+    if(!m_resize_active18)return;
+    m_resize_active18=false;m_resize_cancelled18=true;m_resize_column18=m_resize_row18=-1;setCustomFormat(m_resize_before18);setPos(m_resize_position25);unsetCursor();
+}
+void QetGraphicsTableItem::keyPressEvent(QKeyEvent *event) {
+    if(event->key()==Qt::Key_Escape&&m_resize_active18){cancelResize18();event->accept();return;}
+    if(event->key()==Qt::Key_F2&&m_cells20.size()==1&&canResize18()){
+        auto cell=*m_cells20.cbegin();editCellText25(cell.first,cell.second);event->accept();return;
+    }
+    QGraphicsObject::keyPressEvent(event);
+}
+void QetGraphicsTableItem::focusOutEvent(QFocusEvent *event) {cancelResize18();QGraphicsObject::focusOutEvent(event);}
+bool QetGraphicsTableItem::sceneEvent(QEvent *event) {
+    if(event->type()==QEvent::UngrabMouse)cancelResize18();
+    return QetGraphicsItem::sceneEvent(event);
+}
+
+QRectF QetGraphicsTableItem::cellRect20(int c,int r) const {
+ if(!m_model)return {};const int off=m_previous_table?m_previous_table->displayNRowOffset():0;
+ const auto g=QetFormatting::tableLayout(m_custom_format,m_model,off,formattedRows(),m_model->index(0,0).data(Qt::FontRole).value<QFont>());
+ if(r==-2)return QRectF(0,-g.headerHeight-g.titleHeight,g.width,g.titleHeight);
+ if(c<0||c>=g.widths.size())return {};int x=0;for(int i=0;i<c;++i)x+=g.widths[i];
+ if(r==-1)return QRectF(x,-g.headerHeight,g.widths[c],g.headerHeight);
+ if(r<off||r>=off+g.rowHeights.size())return {};int y=0;for(int i=0;i<r-off;++i)y+=g.rowHeights[i];return QRectF(x,y,g.widths[c],g.rowHeights[r-off]);
+}
+QPair<int,int> QetGraphicsTableItem::cellAt20(const QPointF &p) const {
+ if(!m_model)return {-1,-3};const int off=m_previous_table?m_previous_table->displayNRowOffset():0;
+ const auto g=QetFormatting::tableLayout(m_custom_format,m_model,off,formattedRows(),m_model->index(0,0).data(Qt::FontRole).value<QFont>());
+ if(p.x()<0||p.x()>g.width)return {-1,-3};
+ if(g.titleHeight&&p.y()>=-g.headerHeight-g.titleHeight&&p.y()<-g.headerHeight)return {-1,-2};
+ int c=-1,x=0;for(int i=0;i<g.widths.size();++i){x+=g.widths[i];if(p.x()<=x){c=i;break;}}if(c<0)return {-1,-3};
+ if(p.y()>=-g.headerHeight&&p.y()<0)return {c,-1};if(p.y()<0)return {-1,-3};
+ int y=0;for(int r=0;r<g.rowHeights.size();++r){y+=g.rowHeights[r];if(p.y()<=y)return {c,off+r};}return {-1,-3};
+}
+bool QetGraphicsTableItem::resizeBoundary20(int column,int row,int delta,const QVariantMap &start,bool undo){
+ if(!canResize18())return false;const int off=m_previous_table?m_previous_table->displayNRowOffset():0;
+ const auto g=QetFormatting::tableLayout(start,m_model,off,formattedRows(),m_model->index(0,0).data(Qt::FontRole).value<QFont>());auto after=start;
+ if(column==-1&&row<-1){
+  if(row==-2)after["titleHeight"]=qBound(6,g.titleHeight-delta,10000);
+  else if(row==-3){after["headerHeight"]=qBound(6,g.headerHeight-delta,10000);after["autoHeaderHeight"]=false;}
+  else if(row==-4){delta=qBound(6-g.titleHeight,delta,g.headerHeight-6);after["titleHeight"]=g.titleHeight+delta;after["headerHeight"]=g.headerHeight-delta;after["autoHeaderHeight"]=false;}
+  return commitResize18(start,after,undo,tr("Resize table title / header"));
+ }
+ if(column>=0){if(column>=g.widths.size())return false;auto widths=g.widths;auto automatic=start.value("autoWidths").toList();while(automatic.size()<widths.size())automatic<<false;
+  const bool paired=start.value("columnResize20","keep").toString()=="keep"&&column+1<widths.size();
+  delta=qBound(10-widths[column],delta,paired?qMin(10000-widths[column],widths[column+1]-10):10000-widths[column]);widths[column]+=delta;automatic[column]=false;
+  if(paired){widths[column+1]-=delta;automatic[column+1]=false;}QVariantList values;for(int w:widths)values<<w;after["widths"]=values;after["autoWidths"]=automatic;
+ }else {int index=row-off;if(index<0||index>=g.rowHeights.size())return false;auto heights=g.rowHeights;const bool paired=start.value("rowResize20","expand").toString()=="keep"&&index+1<heights.size();
+  delta=qBound(6-heights[index],delta,paired?qMin(10000-heights[index],heights[index+1]-6):10000-heights[index]);auto overrides=start.value("rowHeights18").toMap();overrides[QString::number(row)]=heights[index]+delta;if(paired)overrides[QString::number(row+1)]=heights[index+1]-delta;after["rowHeights18"]=overrides;
+ }
+ return commitResize18(start,after,undo,tr("Resize adjacent table cells"));
+}
+
+bool QetGraphicsTableItem::setCellText25(int column,int row,const QString &text,bool restore) {
+    if(!canResize18()||row<-2)return false;
+    auto before=m_custom_format,after=before;
+    if(row==-2){
+        auto *db=qobject_cast<ProjectDBModel*>(m_model);auto data=db&&db->project()?db->project()->languageData():QVariantMap();
+        auto lang=QetManualCells25::language(m_model);
+        if(lang==QetLanguages16::sourceLanguage(data))after["title"]=restore?QString():text;
+        else {auto titles=after.value("titleTexts26").toMap();if(restore)titles.remove(lang);else titles[lang]=text;after["titleTexts26"]=titles;}
+    }
+    else if(row==-1){
+        if(column<0||column>=m_model->columnCount())return false;
+        auto *db=qobject_cast<ProjectDBModel*>(m_model);auto data=db&&db->project()?db->project()->languageData():QVariantMap();
+        auto lang=QetManualCells25::language(m_model);auto key=QetManualCells25::headerKey(m_model,column);
+        if(lang!=QetLanguages16::sourceLanguage(data)){
+            if(key.isEmpty())return false;auto languages=after.value("headerTexts25").toMap();auto edits=languages.value(lang).toMap();
+            if(restore)edits.remove(key);else edits[key]=text;
+            languages[lang]=edits;after["headerTexts25"]=languages;
+            return commitResize18(before,after,true,restore?tr("Restore translated header"):tr("Edit translated header"));
+        }
+        auto headers=after.value("headers").toList();
+        while(headers.size()<m_model->columnCount()){
+            int c=headers.size();auto raw=m_model->headerData(c,Qt::Horizontal,QetLanguages16::SourceTextRole16);
+            headers<<(raw.isValid()?raw:m_model->headerData(c,Qt::Horizontal));
+        }
+        auto raw=m_model->headerData(column,Qt::Horizontal,QetLanguages16::SourceTextRole16);
+        headers[column]=restore?(raw.isValid()?raw:m_model->headerData(column,Qt::Horizontal)):QVariant(text);
+        after["headers"]=headers;
+    }else{
+        QString key=QetManualCells25::key(m_model,row,column);if(key.isEmpty())return false;
+        auto edits=after.value("manualCells25").toMap();
+        if(restore)edits.remove(key);
+        else edits[key]=QVariantMap{{"text",text},{"column",QetManualCells25::cache(m_model)->columns[column]},
+             {"language",QetManualCells25::language(m_model)},{"original",row<m_model->rowCount()?m_model->index(row,column).data().toString():QString()}};
+        after["manualCells25"]=edits;
+    }
+    return commitResize18(before,after,true,restore?tr("Restore generated table text"):tr("Edit table cell text"));
+}
+void QetGraphicsTableItem::editCellText25(int column,int row,QWidget *parent){
+    if(!canResize18()||row<-2)return;
+    if(row>=0&&QetManualCells25::key(m_model,row,column).isEmpty()){
+        QMessageBox::information(parent,tr("Cell text"),tr("This row or column is not unique. Include a unique identifier in the table fields before editing, so your text cannot move to a different row when the table refreshes."));return;
+    }
+    QDialog d(parent);d.setWindowTitle(tr("Edit cell text"));d.setObjectName("editCellText25");d.resize(480,300);
+    auto *layout=new QVBoxLayout(&d);
+    auto *note=new QLabel(row==-2?tr("Editing title in drawing language: %1. Other language versions are preserved.").arg(QetManualCells25::language(m_model)):row==-1?tr("This header is edited for the current drawing language. Other languages and the underlying field name are preserved."):tr("Your text is saved with this table. Generated device data is unchanged. If the source row changes, the edit is retained for review."));note->setWordWrap(true);layout->addWidget(note);
+    auto *editor=new QPlainTextEdit;editor->setObjectName("cellText25");
+    editor->setPlainText(row==-2?QetFormatting::tableTitle26(m_custom_format,m_model):row==-1?QetFormatting::columnHeading(m_custom_format,m_model,column):QetManualCells25::text(m_custom_format,m_model,row,column));layout->addWidget(editor);
+    auto *buttons=new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+    auto *restore=buttons->addButton(row==-2?tr("Restore / clear this language title"):tr("Restore generated value"),QDialogButtonBox::ResetRole);
+    bool reset=false;
+    connect(restore,&QPushButton::clicked,&d,[&]{reset=true;d.accept();});
+    connect(buttons,&QDialogButtonBox::accepted,&d,&QDialog::accept);connect(buttons,&QDialogButtonBox::rejected,&d,&QDialog::reject);layout->addWidget(buttons);
+    if(d.exec()==QDialog::Accepted)setCellText25(column,row,editor->toPlainText(),reset);
+}
+void QetGraphicsTableItem::reviewCellText25(QWidget *parent){
+    if(!canResize18())return;
+    auto before=m_custom_format;auto edits=before.value("manualCells25").toMap();
+    auto keys=QetManualCells25::currentKeys(m_model,formattedRows()+(m_previous_table?m_previous_table->displayNRowOffset():0));
+    QDialog d(parent);d.setWindowTitle(tr("Saved cell text"));d.resize(750,400);auto *layout=new QVBoxLayout(&d);
+    auto *note=new QLabel(tr("Unmatched edits are saved but are not displayed on a different source row. Copy any text you want to reuse, or select edits and restore their generated values."));note->setWordWrap(true);layout->addWidget(note);
+    auto *list=new QTableWidget(edits.size(),5);list->setHorizontalHeaderLabels({tr("Status"),tr("Field"),tr("Language"),tr("Original text"),tr("Your text")});list->setSelectionBehavior(QAbstractItemView::SelectRows);list->setEditTriggers(QAbstractItemView::NoEditTriggers);list->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);layout->addWidget(list);
+    int r=0;for(auto it=edits.cbegin();it!=edits.cend();++it,++r){auto v=it.value().toMap();QString status=keys.contains(it.key())?tr("Matched"):v.value("language").toString()!=QetManualCells25::language(m_model)?tr("Other language"):tr("Unmatched");QStringList values{status,v.value("column").toString(),v.value("language").toString(),v.value("original").toString(),v.value("text").toString()};for(int c=0;c<5;++c)list->setItem(r,c,new QTableWidgetItem(values[c]));list->item(r,0)->setData(Qt::UserRole,it.key());}
+    auto *buttons=new QDialogButtonBox(QDialogButtonBox::Close);auto *restore=buttons->addButton(tr("Restore selected values"),QDialogButtonBox::ActionRole);layout->addWidget(buttons);
+    connect(buttons,&QDialogButtonBox::rejected,&d,&QDialog::reject);
+    connect(restore,&QPushButton::clicked,&d,[&]{QSet<int> rows;for(auto *item:list->selectedItems())rows.insert(item->row());for(int row:rows)edits.remove(list->item(row,0)->data(Qt::UserRole).toString());if(!rows.isEmpty())d.accept();});
+    if(d.exec()==QDialog::Accepted){auto after=before;after["manualCells25"]=edits;commitResize18(before,after,true,tr("Restore generated table values"));}
 }

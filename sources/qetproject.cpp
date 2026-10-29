@@ -17,6 +17,10 @@
 */
 
 #include "qetproject.h"
+#include "ui/foliolayout13.h"
+#include "ui/languagecatalog16.h"
+#include "ui/labelclearance24.h"
+#include "ui/languagepositions21.h"
 #include "container/qetcontainer.h"
 #include "container/qetcontainerdb.h"
 #include "container/qetzwriter.h"
@@ -435,6 +439,7 @@ void QETProject::init()
 	connect(this, &QETProject::XRefPropertiesChanged, this, &QETProject::markKeptFoliosStale);
 
 	m_undo_stack = new QUndoStack(this);
+    QetLabelClearance24::initialize(this);
 		//Folios not built are saved as read until something is edited
 		//(m_edited_since_open, toXml())
 	connect(m_undo_stack, &QUndoStack::indexChanged, this, [this]() {m_edited_since_open = true;});
@@ -977,6 +982,7 @@ void QETProject::buildFolios(const QList<Diagram *> &folios) const
 	for (ProjectDBModel *model : std::as_const(models))
 		model->folioBuilt();
 	self->m_state = state;
+    if(state!=ProjectParsingRunning&&!built.isEmpty()&&!m_language_data.isEmpty())emit self->languageDataChanged();
 }
 
 /**
@@ -1250,6 +1256,7 @@ void QETProject::buildPartnerSymbols(const QList<Diagram *> &folios, const QSet<
 			text->refreshLabelConnection();
 	}
 	m_state = state;
+    if(state!=ProjectParsingRunning&&!built.isEmpty()&&!m_language_data.isEmpty())emit languageDataChanged();
 }
 
 /**
@@ -1261,6 +1268,7 @@ void QETProject::folioLoaded(Diagram *folio)
 {
 	linkElementsToElementAutoNums(folio);
 	folio->refreshContents();
+    QetLanguagePositions21::restore(this,folio);
 }
 
 /**
@@ -2735,6 +2743,12 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 		//key-value store, a lock...) can tell which project a file belongs to.
 	project_root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
 	xml_doc.appendChild(project_root);
+    auto clearance24=xml_doc.createElement("label-clearance-v24");
+    clearance24.setAttribute("version",1);
+    clearance24.appendChild(xml_doc.createTextNode(QString::fromUtf8(QJsonDocument::fromVariant(QetLabelClearance24::settings(this).toMap()).toJson(QJsonDocument::Compact))));
+    project_root.appendChild(clearance24);
+    if (!m_language_data.isEmpty()) setLanguageData(QetLanguagePositions21::capture(this,m_language_data));
+    if (!m_language_data.isEmpty()) project_root.appendChild(QetLanguages16::toXml(xml_doc,m_language_data));
 
 	// titleblock templates, if any
 	if (m_titleblocks_collection.templates().count()) {
@@ -3611,7 +3625,7 @@ bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &locati
 	@param pos
 	@return the new created diagram
 */
-Diagram *QETProject::addNewDiagram(int pos)
+Diagram *QETProject::addNewDiagram(int pos, const QString &layoutPath)
 {
 	if (isReadOnly()) {
 		return(nullptr);
@@ -3624,7 +3638,9 @@ Diagram *QETProject::addNewDiagram(int pos)
 	diagram->defaultConductorProperties = defaultConductorProperties();
 	diagram->queueValuesStore();
 
-	m_undo_stack->push(new AddDiagramCommand(this, diagram, pos));
+	QString layout=layoutPath.isEmpty()?QSettings().value("folioLayouts/default").toString():layoutPath;
+    if(!layout.isEmpty() && !QetFolioLayouts::loading){QString error;if(!QetFolioLayouts::apply(this,diagram,layout,error)){delete diagram;QMessageBox::warning(nullptr,tr("Folio layout"),error);return nullptr;}}
+    m_undo_stack->push(new AddDiagramCommand(this, diagram, pos));
 	return(diagram);
 }
 
@@ -3688,6 +3704,10 @@ void QETProject::setModified(bool modified) {
 void QETProject::readProjectXml(QDomDocument &xml_project)
 {
 	QDomElement root_elmt = xml_project.documentElement();
+    m_language_data = QetLanguages16::fromXml(root_elmt.firstChildElement("languages-v16"));
+    const auto clearance24=root_elmt.firstChildElement("label-clearance-v24");
+    QetLabelClearance24::setSettings(this,QetLabelClearance24::Settings::fromMap(
+        clearance24.attribute("version")=="1"?QJsonDocument::fromJson(clearance24.text().toUtf8()).toVariant().toMap():QVariantMap()));
 	m_state = ProjectParsingRunning;
 
 	//The roots of the xml document must be a "project" element
@@ -3909,6 +3929,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 			<< ", database " << database_ms / 1000.0 << ")";
 
 	m_state = Ok;
+    if(!m_language_data.isEmpty())emit languageDataChanged();
 }
 
 /**
@@ -4299,6 +4320,8 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		dlgWaiting->setTitle( tr("<p align=\"center\"><b>Opening the project "
 								 "...</b><br/>Setting up cross references</p>"));
 	}
+    emit languageDataChanged();
+    QetLanguagePositions21::restore(this);
 }
 
 /**
@@ -5637,3 +5660,17 @@ void QETProject::autoLinkReportElements()
 		}
 	}
 }
+
+// Project language selection is independent of the application interface locale.
+void QETProject::setLanguageData(const QVariantMap &data)
+{
+    if (data == m_language_data) return;
+    const bool xrefChanged26=m_language_data.value("xrefDevices26")!=data.value("xrefDevices26")||m_language_data.value("xrefTypes26")!=data.value("xrefTypes26");
+    m_language_data = data;
+    setModified(true);
+    emit languageDataChanged();
+    if(xrefChanged26)emit XRefPropertiesChanged();
+    for (auto *folio : std::as_const(m_diagrams_list)) if (folio->isLoaded()) folio->update();
+}
+
+Diagram *QETProject::createDetachedDiagram25(){return isReadOnly()?nullptr:new Diagram(this);}

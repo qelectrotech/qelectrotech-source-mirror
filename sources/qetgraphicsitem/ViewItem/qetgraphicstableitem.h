@@ -44,6 +44,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
 	Q_OBJECT
 
 	Q_PROPERTY(QSize size READ size WRITE setSize)
+	Q_PROPERTY(QVariantMap customFormat READ customFormat WRITE setCustomFormat)
 	Q_PROPERTY(int displayNRow READ displayNRow WRITE setDisplayNRow)
 
 	signals:
@@ -64,7 +65,27 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		enum { Type = UserType + 1300 };
 		int type() const override { return Type; }
 
-		void setModel(QAbstractItemModel *model = nullptr);
+		void editProperty() override;
+		QVariantMap customFormat() const { return m_custom_format; }
+        void setCustomFormat(const QVariantMap &format);
+        bool customFormatting() const { return m_custom_format.value("enabled").toBool(); }
+        int formattedRows() const;
+        void refreshCustomGeometry();
+        // Manual sizes are stored in customFormat; optional undo is one command.
+        bool resizeColumn18(int column,int width,bool undo=true);
+        bool resizeBoundary20(int column,int row,int delta,const QVariantMap &start,bool undo=true);
+        QSet<QPair<int,int>> selectedCells20() const {return m_cells20;}
+        void setSelectedCells20(const QSet<QPair<int,int>> &cells){m_cells20=cells;update();emit cellSelectionChanged20();}
+        QRectF cellRect20(int column,int row) const;
+        QPair<int,int> cellAt20(const QPointF &position) const;
+        bool setCellText25(int column,int row,const QString &text,bool restore=false);
+        void editCellText25(int column,int row,QWidget *parent=nullptr);
+        void reviewCellText25(QWidget *parent=nullptr);
+        bool resizeRow18(int absoluteModelRow,int height,bool undo=true);
+        bool autoFitColumn18(int column,bool undo=true);
+        bool autoFitRow18(int absoluteModelRow,bool undo=true);
+
+        void setModel(QAbstractItemModel *model = nullptr);
 		QAbstractItemModel *model() const;
 
 		virtual QRectF boundingRect() const override;
@@ -99,7 +120,20 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		static QString xmlTagName() {return QString("graphics_table");}
 		virtual bool toDXF (const QString &filepath);
 
+	signals:
+        void customFormatChanged18(const QVariantMap &format);
+        void cellSelectionChanged20();
+
 	protected:
+
+        void hoverMoveEvent(QGraphicsSceneHoverEvent *event) override;
+        void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+        void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+        void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+        void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
+        void keyPressEvent(QKeyEvent *event) override;
+        void focusOutEvent(QFocusEvent *event) override;
+        bool sceneEvent(QEvent *event) override;
 		virtual void hoverEnterEvent(
 				QGraphicsSceneHoverEvent *event) override;
 		virtual void hoverLeaveEvent(
@@ -112,6 +146,17 @@ class QetGraphicsTableItem : public QetGraphicsItem
 				const QVariant &value) override;
 
 	private:
+
+        bool canResize18() const;
+        bool resizeBoundary18(const QPointF &position,QWidget *viewport,int &column,int &row) const;
+        bool commitResize18(const QVariantMap &before,const QVariantMap &after,bool undo,const QString &text);
+        void cancelResize18();
+        QSet<QPair<int,int>> m_cells20;
+        QPair<int,int> m_anchor20={-1,-3};
+        QVariantMap m_resize_before18;
+        QPointF m_resize_press18,m_resize_position25,m_resize_scene25;
+        int m_resize_column18=-1,m_resize_row18=-1,m_resize_start18=0;
+        bool m_resize_active18=false,m_resize_cancelled18=false;
 		void modelReseted();
 		void setUpColumnAndRowMinimumSize();
 		void setUpBoundingRect();
@@ -130,6 +175,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		void previousTableDisplayRowChanged();
 		void removeUselessNextTable(bool recursive = true);
 
+		QVariantMap m_custom_format;
 		QPointer<QAbstractItemModel> m_model;
 
 		QVector<int> m_minimum_column_width;

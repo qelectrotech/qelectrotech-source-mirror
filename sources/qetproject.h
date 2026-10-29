@@ -49,6 +49,7 @@
 #include <QSet>
 #include <QUuid>
 #include <QVector>
+#include <QVariantMap>
 #include <QFuture>
 
 #include <array>
@@ -110,6 +111,7 @@ class QETProject : public QObject
 
 		Q_PROPERTY(bool autoConductor READ autoConductor WRITE setAutoConductor)
 	Q_PROPERTY(bool autoBreakConductor READ autoBreakConductor WRITE setAutoBreakConductor)
+    Q_PROPERTY(QVariantMap languageData READ languageData WRITE setLanguageData NOTIFY languageDataChanged)
 
 		// constructors, destructor
 	public:
@@ -388,15 +390,20 @@ class QETProject : public QObject
 		bool addCable(Cable *cable);
 		bool removeCable(Cable *cable);
 		Diagram *diagramByUuid(const QUuid &uuid);
+        // Caller must transfer ownership to AddDiagramCommand or the project.
+        Diagram *createDetachedDiagram25();
 
 	public slots:
-		Diagram *addNewDiagram(int pos = -1);
+		Diagram *addNewDiagram(int pos = -1, const QString &layoutPath = QString());
 		void removeDiagram(Diagram *);
 		void diagramOrderChanged(int, int);
 		void setModified(bool);
+        QVariantMap languageData() const { return m_language_data; }
+        void setLanguageData(const QVariantMap &data);
 
 	signals:
-		void projectFilePathChanged(QETProject *, const QString &);
+		void languageDataChanged();
+        void projectFilePathChanged(QETProject *, const QString &);
 		void projectTitleChanged(QETProject *, const QString &);
 		void projectInformationsChanged(QETProject *);
 		void diagramAdded(QETProject *, Diagram *);
@@ -634,6 +641,7 @@ class QETProject : public QObject
 			//Called after each folio built, see setFolioBuildObserver()
 		std::function<void(int, int)> m_folio_build_observer;
 		QVector<Cable *> m_cables;
+        QVariantMap m_language_data;
 
 		ProjectPropertiesHandler m_project_properties_handler;
 };

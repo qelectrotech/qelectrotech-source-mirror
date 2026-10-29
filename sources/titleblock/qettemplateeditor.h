@@ -107,6 +107,7 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 	QString currentlyEditedTitle() const;
 
 	public slots:
+	void rebuildToolBars();
 	void readSettings();
 	void readSettingsState();
 	void writeSettings();

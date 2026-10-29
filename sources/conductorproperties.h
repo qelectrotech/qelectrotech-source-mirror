@@ -19,6 +19,7 @@
 #define CONDUCTOR_PROPERTIES_H
 
 #include "qet.h"
+#include "conductordashpattern.h"
 #include <QColor>
 #include <QSettings>
 #include <QUuid>
@@ -126,6 +127,7 @@ class ConductorProperties
 		m_vertical_alignment = Qt::AlignRight;
 
 		Qt::PenStyle style;
+		ConductorDashPattern m_dash_pattern;
 
 		SingleLineProperties singleLineProperties;
 

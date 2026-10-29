@@ -45,6 +45,7 @@ class GraphicsTablePropertiesEditor : public PropertiesEditorWidget
 		~GraphicsTablePropertiesEditor() override;
 
 		void setTable(QetGraphicsTableItem *table);
+        QetGraphicsTableItem *table() const;
 		virtual void apply() override;
 		QUndoCommand * associatedUndo() const override;
 		virtual bool setLiveEdit(bool live_edit) override;
@@ -73,6 +74,7 @@ class GraphicsTablePropertiesEditor : public PropertiesEditorWidget
 		QButtonGroup *m_header_button_group = nullptr,
 					 *m_table_button_group = nullptr;
 		QWidget *m_current_model_editor = nullptr;
+        QWidget *m_quick20=nullptr;
 		QVector<QetGraphicsTableItem *> m_other_table_vector;
 };
 

@@ -21,6 +21,7 @@
 #include <QGraphicsObject>
 #include <QUuid>
 #include "customelementpart.h"
+#include "../../conductordashpattern.h"
 
 class QETElementEditor;
 class QPainter;
@@ -44,6 +45,7 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		Q_PROPERTY(Filling filling        READ filling     WRITE setFilling)
 		Q_PROPERTY(Color color            READ color       WRITE setColor)
 		Q_PROPERTY(bool antialias         READ antialiased WRITE setAntialiased)
+		Q_PROPERTY(ConductorDashPattern dash_pattern READ dashPattern WRITE setDashPattern)
 
 	public:
 			//Line style
@@ -286,6 +288,13 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		Color color   () const {return _color;}
 		void  setColor(const Color c);
 
+		ConductorDashPattern dashPattern() const {return m_dash_pattern;}
+		void setDashPattern(const ConductorDashPattern &pattern);
+		bool hasCustomDashPattern() const {
+			return m_dash_pattern.enabled && m_dash_pattern.valid()
+				&& (_linestyle == DashedStyle || _linestyle == DashdottedStyle);
+		}
+
 		bool antialiased   () const {return _antialiased;}
 		void setAntialiased(const bool b);
 			//End of getter and setter
@@ -331,6 +340,7 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		bool m_hovered;
 	private:
 		QUuid m_uuid = QUuid::createUuid();
+		ConductorDashPattern m_dash_pattern;
 		LineStyle _linestyle;
 		LineWeight _lineweight;
 		Filling _filling ;

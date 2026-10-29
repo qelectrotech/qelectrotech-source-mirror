@@ -22,6 +22,7 @@
 #include "../graphicspart/parttext.h"
 
 #include <cassert>
+#include <QColorDialog>
 
 /**
 	@brief TextEditor::TextEditor
@@ -347,8 +348,10 @@ void TextEditor::setUpWidget(QWidget *parent)
 
 	gridLayout->addWidget(m_line_edit, 0, 0, 1, 6);
 #ifdef BUILD_WITHOUT_KF
+    auto *colour=new QPushButton(tr("Colour / opacity..."),parent);gridLayout->addWidget(colour,2,5);
+    connect(colour,&QPushButton::clicked,this,[this](){if(!m_text)return;auto c=QColorDialog::getColor(m_text->defaultTextColor(),this,tr("Text colour and opacity"),QColorDialog::DontUseNativeDialog|QColorDialog::ShowAlphaChannel);if(c.isValid())on_m_color_pb_changed(c);});
 #else
-	m_color_pb = new KColorButton(parent);
+    m_color_pb = new KColorButton(parent);
 	m_color_pb->setObjectName(QString::fromUtf8("m_color_pb"));
 
 	connect(

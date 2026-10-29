@@ -15,7 +15,13 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "../ui/labelclearance24.h"
 #include "diagramtextitem.h"
+#include "../ui/textgeometry23.h"
+#include "../qetproject.h"
+#include "../ui/languagetext16.h"
+#include "../ui/languageeditor21.h"
+#include <QJsonDocument>
 
 #include "../diagram.h"
 #include "../diagramcommands.h"
@@ -62,7 +68,10 @@ void DiagramTextItem::build()
 	setFont(QETApp::diagramTextsItemFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemSendsGeometryChanges);
 	setNoEditable(false);
-	setToolTip(tr("Hold ctrl to free movement"));
+	setToolTip(tr("Shift-click to add text to the selection; Ctrl+Shift-click to remove it. Hold Ctrl while dragging for free movement."));
+    connect(document(),&QTextDocument::contentsChanged,this,&DiagramTextItem::refreshLanguageSiblings23);
+    connect(document(),&QTextDocument::contentsChanged,this,[this](){QetLabelClearance24::notify(this);});
+    connect(this,&DiagramTextItem::fontChanged,this,[this](){QetLabelClearance24::notify(this);});
 }
 
 /**
@@ -174,6 +183,7 @@ void DiagramTextItem::setFont(const QFont &font)
 	{
 		prepareAlignment();
 		QGraphicsTextItem::setFont(font);
+        refreshLanguageSiblings23();
 		finishAlignment();
 		emit fontChanged(font);
 	}
@@ -192,8 +202,10 @@ QColor DiagramTextItem::color() const
 
 void DiagramTextItem::setAlignment(const Qt::Alignment &alignment)
 {
+	if (m_alignment == alignment) return;
 	m_alignment = alignment;
 	emit alignmentChanged(alignment);
+    refreshLanguageSiblings23();
 }
 
 Qt::Alignment DiagramTextItem::alignment() const
@@ -243,11 +255,14 @@ void DiagramTextItem::setAlignmentAtAnchor(const Qt::Alignment &alignment)
 QRectF DiagramTextItem::frameRect() const
 {	
 		//Get the bounding rectangle of the text
-	QSizeF size = document()->size();
-	size.setWidth(document()->idealWidth());
+	if(languageHidden21())return {};
+	const QTextDocument *display = languageDocument16();
+	if (!display) display = document();
+	QSizeF size = display->size();
+	size.setWidth(display->idealWidth());
 		//Remove the margin. Size is exactly the bounding rect of the text
-	size.rheight() -= document()->documentMargin()*2;
-	size.rwidth() -= document()->documentMargin()*2;
+	size.rheight() -= display->documentMargin()*2;
+	size.rwidth() -= display->documentMargin()*2;
 		//Add a little margin only for a better visual;
 	size.rheight() += 2;
 	size.rwidth() += 2;
@@ -269,6 +284,7 @@ QRectF DiagramTextItem::frameRect() const
 */
 QRectF DiagramTextItem::writtenRect() const
 {
+    if (hasLanguageDisplay16()) return boundingRect();
 	QRectF written;
 	QAbstractTextDocumentLayout *layout = document()->documentLayout();
 	for (QTextBlock block = document()->begin(); block.isValid(); block = block.next())
@@ -358,6 +374,16 @@ bool DiagramTextItem::isHtml() const
 void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	painter -> setRenderHint(QPainter::Antialiasing, false);
+    if(languageHidden21())return;
+    if (const auto *translated = languageDocument16()) {
+        painter->save();QAbstractTextDocumentLayout::PaintContext context;
+        context.palette.setColor(QPalette::Text,defaultTextColor());
+        painter->translate(languageOffset22());translated->documentLayout()->draw(painter,context);painter->translate(-languageOffset22());
+        if ((option && (option->state & QStyle::State_Selected)) || m_mouse_hover) {
+            QPen pen(isSelected()?Qt::black:Qt::gray,0,Qt::DashLine);pen.setCosmetic(true);painter->setPen(pen);painter->setBrush(Qt::NoBrush);painter->drawRect(boundingRect());
+        }
+        painter->restore();return;
+    }
 
 		//Outside editing, the selection is drawn around the lines written,
 		//not around the whole width a fixed-width text keeps free
@@ -448,6 +474,16 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *event)
 */
 QVariant DiagramTextItem::itemChange(GraphicsItemChange change, const QVariant &value)
 {
+    if(change==ItemPositionHasChanged||change==ItemRotationHasChanged||change==ItemTransformHasChanged||change==ItemSceneHasChanged)QetLabelClearance24::notify(this);
+    if (change == QGraphicsItem::ItemSceneHasChanged) {
+        QObject::disconnect(m_language_connection16);
+        if (auto *folio=diagram()) if (auto *project=folio->project())
+            m_language_connection16=connect(project,&QETProject::languageDataChanged,this,&DiagramTextItem::refreshLanguage16);
+        refreshLanguage16();
+    }
+    if(change==QGraphicsItem::ItemParentChange)refreshLanguageSiblings23();
+    if(change==QGraphicsItem::ItemParentHasChanged || change==QGraphicsItem::ItemRotationHasChanged ||
+       (change==QGraphicsItem::ItemPositionHasChanged && !isTranslationMode21()))refreshLanguageSiblings23();
 		//Also when the text comes back to a scene: Qt keeps it selected
 		//across removeItem()/addItem() (undoing a delete) and sends no
 		//selection change, and its handles were removed with the scene.
@@ -487,7 +523,7 @@ bool DiagramTextItem::isEditing() const
 */
 void DiagramTextItem::refreshTextResizeHandles()
 {
-	const bool wanted = scene() && textResizeHandlesWanted();
+	const bool wanted = scene() && !isTranslationMode21() && textResizeHandlesWanted();
 	if (wanted && !m_resize_handles)
 	{
 		m_resize_handles = new TextResizeHandles(this, QETUtils::graphicsHandlerSize(this));
@@ -526,6 +562,7 @@ void DiagramTextItem::pushResizeCommand(qreal old_width, qreal new_width,
 	@param event un QGraphicsSceneMouseEvent decrivant le double-clic
 */
 void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+    if(isTranslationMode21()){QetLanguageEditor21::editText(this,event->widget());event->accept();return;}
 	if (!(textInteractionFlags() & Qt::TextEditable) && !m_no_editable) {
 		// rend le champ de texte editable
 		setTextInteractionFlags(Qt::TextEditorInteraction);
@@ -543,11 +580,21 @@ void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 */
 void DiagramTextItem::mousePressEvent (QGraphicsSceneMouseEvent *event)
 {
+	m_additive_text_press25 = false;
 	if (event->button() == Qt::LeftButton)
 	{
 		m_first_move = true;
 			//Save the pos of item at the beggining of the movement
 		m_mouse_to_origin_movement = pos() - event->scenePos();
+		if (event->modifiers().testFlag(Qt::ShiftModifier)
+			&& !(textInteractionFlags() & Qt::TextEditable)
+			&& (flags() & ItemIsSelectable)) {
+			m_additive_text_press25 = true;
+			m_toggle_text25 = event->modifiers().testFlag(Qt::ControlModifier) && isSelected();
+			setSelected(true);
+			event->accept();
+			return;
+		}
 	}
 	QGraphicsTextItem::mousePressEvent(event);
 }
@@ -600,6 +647,7 @@ void DiagramTextItem::mouseReleaseEvent (QGraphicsSceneMouseEvent *event)
 	{
 		diagram()->elementsMover().endMovement();
 		event->accept();
+		if (finishAdditiveSelection25(event)) return;
 		if (event->buttonDownScenePos(Qt::LeftButton) != event->scenePos()) {
 			return;
 		}
@@ -612,6 +660,15 @@ void DiagramTextItem::mouseReleaseEvent (QGraphicsSceneMouseEvent *event)
 	else {
 		QGraphicsTextItem::mouseReleaseEvent(event);
 	}	
+}
+
+bool DiagramTextItem::finishAdditiveSelection25(QGraphicsSceneMouseEvent *event)
+{
+	if (!m_additive_text_press25 || event->button() != Qt::LeftButton) return false;
+	if (m_toggle_text25 && m_first_move) setSelected(false);
+	m_additive_text_press25 = false;
+	event->accept();
+	return true;
 }
 
 /**
@@ -683,6 +740,7 @@ void DiagramTextItem::finishAlignment()
 */
 void DiagramTextItem::edit()
 {
+    if(isTranslationMode21()){QetLanguageEditor21::editText(this,scene()&&!scene()->views().isEmpty()?scene()->views().first():nullptr);return;}
 	QWidget *parent = nullptr;
 	if (scene() && scene()->views().size())
 		parent = scene()->views().first();
@@ -758,4 +816,107 @@ void DiagramTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 void DiagramTextItem::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
 	Q_UNUSED(e);
 	QGraphicsTextItem::hoverMoveEvent(e);
+}
+
+// Display-only language documents are cached per text/variant/source revision.
+void DiagramTextItem::ensureLanguageDocument16() const
+{
+    if(!m_language_key16.isEmpty())return;
+    QVariantMap data;
+    if(auto *folio=diagram())if(auto *project=folio->project()) {
+        // During XML construction each text receives font, width and position
+        // separately. Build its translated layout once, after loading finishes.
+        if(project->state()==QETProject::ProjectParsingRunning) {
+            m_language_hidden23=false;m_language_offset23={};m_language_alignment23=alignment();return;
+        }
+        data=project->languageData();
+    }
+    const QString id=languageId16();
+    // Event-driven cache: source edits and project-language changes invalidate
+    // it. Rendering no longer serializes HTML/JSON or scans siblings repeatedly.
+    m_language_key16=QStringLiteral("ready");
+    m_language_variant23=QetLanguageText16::variant(data,id);
+    m_language_hidden23=QetLanguages16::hiddenMember21(data,id);
+    m_language_document16=QetLanguageText16::document(data,id,document(),font(),property("textWidth").isValid()?property("textWidth").toDouble():-1);
+    m_language_offset23=calculateLanguageOffset23(&m_language_alignment23);
+    const auto &v=m_language_variant23;
+    if(m_language_document16 && !v.contains("align") && !v.contains("alignment") &&
+       (m_language_alignment23&Qt::AlignHorizontal_Mask)!=(alignment()&Qt::AlignHorizontal_Mask)) {
+        QTextCursor all(m_language_document16.data());all.select(QTextCursor::Document);
+        QTextBlockFormat format;format.setAlignment(m_language_alignment23&Qt::AlignHorizontal_Mask);all.mergeBlockFormat(format);
+        m_language_offset23=calculateLanguageOffset23(&m_language_alignment23);
+    }
+
+}
+const QTextDocument *DiagramTextItem::languageDocument16() const
+{
+    if(isEditing()&&!isTranslationMode21())return nullptr;ensureLanguageDocument16();return m_language_document16.data();
+}
+bool DiagramTextItem::hasLanguageDisplay16() const {return languageDocument16()!=nullptr;}
+QString DiagramTextItem::displayedText16() const {const auto *doc=languageDocument16();return doc?doc->toPlainText():toPlainText();}
+QVariantMap DiagramTextItem::languageVariant16() const {ensureLanguageDocument16();return m_language_variant23;}
+
+int DiagramTextItem::languageLineCount16() const {const auto *doc=languageDocument16();return QetLanguageText16::lineCount(doc?doc:document());}
+QRectF DiagramTextItem::boundingRect() const {if(languageHidden21())return {};if(const auto *doc=languageDocument16())return QRectF(languageOffset22(),doc->size());return QGraphicsTextItem::boundingRect();}
+void DiagramTextItem::refreshLanguage16()
+{
+    if(m_language_refreshing23)return;
+    m_language_refreshing23=true;
+    const auto *project=diagram()?diagram()->project():nullptr;
+    const bool loading=project&&project->state()==QETProject::ProjectParsingRunning;
+    if(!loading)prepareGeometryChange();
+    m_language_key16.clear();m_language_document16.clear();
+    if(!loading){update();refreshTextResizeHandles();}
+    m_language_refreshing23=false;
+}
+
+bool DiagramTextItem::isTranslationMode21() const {return QetLanguageEditor21::active(const_cast<DiagramTextItem*>(this));}
+bool DiagramTextItem::languageHidden21() const {ensureLanguageDocument16();return m_language_hidden23;}
+void DiagramTextItem::refreshLanguageSiblings23() {
+    if(auto *folio=diagram())if(auto *project=folio->project())if(project->state()==QETProject::ProjectParsingRunning){refreshLanguage16();return;}
+    if(auto *parent=parentItem()) {
+        for(auto *item:parent->childItems())if(auto *text=dynamic_cast<DiagramTextItem*>(item))text->refreshLanguage16();
+    } else refreshLanguage16();
+}
+QPointF DiagramTextItem::languageOffset22(Qt::Alignment *resolved) const {
+    ensureLanguageDocument16();if(resolved)*resolved=m_language_alignment23;return m_language_offset23;
+}
+
+QPointF DiagramTextItem::sourcePosition21() const {if(auto *folio=diagram())if(auto *project=folio->project()){auto data=project->languageData();auto e=QetLanguages16::entry(data,languageId16());if(QetLanguages16::activeLanguage(data)!=QetLanguages16::sourceLanguage(data)&&e.value("enabled").toBool()&&e.contains("baseX"))return {e.value("baseX").toDouble(),e.value("baseY").toDouble()};}return pos();}
+
+// Keep the source text's alignment anchor fixed without moving its item origin.
+// This is a local-coordinate display offset: parent transforms and rotation apply
+// identically to the source and translation, and manual language moves still work.
+QPointF DiagramTextItem::calculateLanguageOffset23(Qt::Alignment *resolved) const {
+ if(resolved)*resolved=alignment();
+ const auto *display=languageDocument16();if(!display||languageHidden21())return {};
+ if(auto *page=diagram())if(auto *project=page->project())if(QetLanguages16::effectiveId21(project->languageData(),languageId16())!=languageId16())return {}; // explicit reviewed blocks already have a top-left layout
+ const auto source=QGraphicsTextItem::boundingRect();const auto size=display->size();
+ auto a=alignment();const auto v=languageVariant16();const int setting=v.value("anchor22",0).toInt();
+ if(setting)a=Qt::Alignment((int(a)&~int(Qt::AlignHorizontal_Mask))|setting);
+ qreal referenceX=0;bool inferred=false;
+ // Imported drawings often encode right/centre aligned word stacks as several
+ // left-aligned objects with manually offset origins. Recognise only close,
+ // unrotated descriptive siblings whose source edges form a clear common line.
+ if(!setting && (a&Qt::AlignLeft) && parentItem() && qFuzzyIsNull(rotation())) {
+  auto *project=diagram()?diagram()->project():nullptr;
+  if(project){const auto data=project->languageData();struct Row {const DiagramTextItem *item;QRectF rect;};QList<Row> rows;
+   auto sourceRect=[&](const DiagramTextItem *t){auto e=QetLanguages16::entry(data,t->languageId16());QPointF base(e.value("baseX",t->pos().x()).toDouble(),e.value("baseY",t->pos().y()).toDouble());return QetTextGeometry23::trimmedDocumentRect(t->document()).translated(base);};
+   const auto own=sourceRect(this);const qreal spacing=qMax<qreal>(12,source.height()*1.1);
+   for(auto *sibling:parentItem()->childItems())if(auto *t=dynamic_cast<DiagramTextItem*>(sibling))if(qFuzzyIsNull(t->rotation())&&(t->alignment()&Qt::AlignLeft)&&QetLanguages16::entry(data,t->languageId16()).value("enabled").toBool()&&QetLanguages16::isHumanPhrase(t->toPlainText())&&t->toPlainText().count('\n')==0){auto rect=sourceRect(t);if(qAbs(rect.center().x()-own.center().x())<=qMax(rect.width(),own.width())&&qAbs(rect.top()-own.top())<=spacing*10)rows<<Row{t,rect};}
+   std::sort(rows.begin(),rows.end(),[](const Row &a,const Row &b){return a.rect.top()<b.rect.top();});int index=-1;for(int i=0;i<rows.size();++i)if(rows[i].item==this)index=i;
+   if(index>=0){int first=index,last=index;while(first>0&&rows[first].rect.top()-rows[first-1].rect.top()>1&&rows[first].rect.top()-rows[first-1].rect.top()<=spacing)--first;while(last+1<rows.size()&&rows[last+1].rect.top()-rows[last].rect.top()>1&&rows[last+1].rect.top()-rows[last].rect.top()<=spacing)++last;
+    if(last-first>=1){qreal best=1e9,leftSpread=0;int mode=Qt::AlignLeft;QList<qreal> bestEdges;
+     for(auto candidate:{Qt::AlignLeft,Qt::AlignHCenter,Qt::AlignRight}){QList<qreal> edges;for(int i=first;i<=last;++i)edges<< (candidate==Qt::AlignLeft?rows[i].rect.left():candidate==Qt::AlignRight?rows[i].rect.right():rows[i].rect.center().x());std::sort(edges.begin(),edges.end());const qreal spread=edges.last()-edges.first();if(candidate==Qt::AlignLeft)leftSpread=spread;if(spread<best){best=spread;mode=candidate;bestEdges=edges;}}
+     if(mode!=Qt::AlignLeft&&best<=3.5&&leftSpread>best+1){a=Qt::Alignment((int(a)&~int(Qt::AlignHorizontal_Mask))|mode);referenceX=bestEdges[bestEdges.size()/2]-QetLanguages16::entry(data,languageId16()).value("baseX",pos().x()).toDouble();inferred=true;}
+    }
+   }
+  }
+ }
+ if(resolved)*resolved=a;
+ qreal x=source.left(),y=source.top();
+ if(a&Qt::AlignRight)x=inferred?referenceX-QetTextGeometry23::trimmedDocumentRect(display).right():source.right()-size.width();
+ else if(a&Qt::AlignHCenter)x=inferred?referenceX-QetTextGeometry23::trimmedDocumentRect(display).center().x():source.center().x()-size.width()/2;
+ if(a&Qt::AlignBottom)y=source.bottom()-size.height();else if(a&Qt::AlignVCenter)y=source.center().y()-size.height()/2;
+ return {x,y};
 }

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "crossrefitem.h"
+#include "../ui/xref26.h"
 #include "../shownkinds.h"
 
 #include <QTimer>
@@ -95,9 +96,12 @@ void CrossRefItem::init()
 	
 	QETProject *project = m_element->diagram()->project();
 	connect(project, &QETProject::XRefPropertiesChanged, this, &CrossRefItem::updateProperties);
+    connect(project, &QETProject::languageDataChanged, this, &CrossRefItem::updateProperties);
+    m_options26=QetXref26::options(m_element);
 	
-	m_properties = m_element->diagram()->project()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
+	m_properties = propertiesFor26(m_element);
 	setAcceptHoverEvents(true);
+    ShownKinds::setVisible(this,(m_properties.snapTo()==XRefProperties::Label)?bool(m_text||m_group):!m_text&&!m_group);
 	
 	setUpConnection();
 	linkedChanged();
@@ -241,11 +245,12 @@ bool CrossRefItem::mustDrawAllConfiguredSlaves() const
 */
 void CrossRefItem::updateProperties()
 {
-	XRefProperties xrp = m_element->diagram()->project()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
+	XRefProperties xrp = propertiesFor26(m_element);
 	
-	if (m_properties != xrp)
+	auto options=QetXref26::options(m_element);
+    if (m_properties != xrp || m_options26!=options)
 	{
-		m_properties = xrp;
+		m_properties = xrp; m_options26=options;
 			//Through ShownKinds: stays hidden while View > Show hides
 			//cross-references
 		ShownKinds::setVisible(this, false);
@@ -278,7 +283,7 @@ void CrossRefItem::updateLabel()
 	QImage dummy(1, 1, QImage::Format_ARGB32_Premultiplied);
 	QPainter qp(&dummy);
 	QPen pen_;
-	pen_.setWidthF(0.5);
+	pen_.setWidthF(lineWidth26());
 	qp.setPen(pen_);
 	qp.setFont(QETApp::diagramTextsFont(5));
 
@@ -335,7 +340,13 @@ void CrossRefItem::autoPos()
 	if (m_element->elementData().m_master_type == ElementData::PLC)
 		return;
 
-	//We calculate the position according to the snapTo of the xrefproperties
+	const auto position=m_options26.value("position").toString();
+    if(!m_text&&!m_group&&(position=="symbol"||position=="manual")){
+        const auto body=m_element->mapRectToScene(m_element->drawingRect());
+        QPointF target=position=="manual"?QPointF(m_options26.value("x").toDouble(),m_options26.value("y").toDouble()):QPointF(body.center().x()-boundingRect().width()/2,body.bottom()+m_options26.value("gap",10).toDouble());
+        m_element->keepReadable(this);setPos(pos()+parentItem()->mapFromScene(target)-parentItem()->mapFromScene(mapToScene(boundingRect().topLeft())));return;
+    }
+    //We calculate the position according to the snapTo of the xrefproperties
 	if (m_properties.snapTo() == XRefProperties::Bottom)
 		stackAtBottom();
 	else
@@ -364,7 +375,7 @@ void CrossRefItem::stackAtBottom()
 		if (item->type() != CrossRefItem::Type) continue;
 		auto xref = static_cast<CrossRefItem *>(item);
 		if (xref->m_properties.snapTo() == XRefProperties::Bottom
-			&& !xref->m_text && !xref->m_group
+			&& !xref->m_text && !xref->m_group && (xref->m_options26.value("position","footer").toString()=="footer")
 			&& xref->m_element->elementData().m_master_type != ElementData::PLC)
 			xrefs << xref;
 	}
@@ -498,7 +509,7 @@ void CrossRefItem::paint(
 	    && !mustDrawAllConfiguredSlaves()) return;
 
 	QPen pen_;
-	pen_.setWidthF(0.5);
+	pen_.setWidthF(lineWidth26());
 	painter->save();
 	painter->setPen(pen_);
 	painter->setFont(QETApp::diagramTextsFont(5));
@@ -657,7 +668,7 @@ void CrossRefItem::linkedChanged()
 void CrossRefItem::buildHeaderContact(QPainter &painter, QPointF no_pos, QPointF nc_pos)
 {
 	QPen pen_;
-	pen_.setWidthF(0.2);
+	pen_.setWidthF(lineWidth26());
 	painter.save();
 	painter.setPen(pen_);
 
@@ -1924,3 +1935,16 @@ void CrossRefItem::drawAsPlcTable(QPainter &painter)
 	m_bounding_rect = bg_rect;
 	m_shape_path.addRect(bg_rect);
 }
+
+XRefProperties CrossRefItem::propertiesFor26(const Element *e){
+ auto p=e->diagram()->project()->defaultXRefProperties(e->kindInformations().value("type").toString());auto v=QetXref26::options(e);
+ if(v.contains("appearance"))p.setDisplayHas(v.value("appearance").toInt()?XRefProperties::Contacts:XRefProperties::Cross);
+ if(v.contains("position"))p.setSnapTo(v.value("position")=="label"?XRefProperties::Label:XRefProperties::Bottom);
+ if(v.contains("all"))p.setShowAllConfiguredSlaves(v.value("all").toBool());return p;
+}
+void CrossRefItem::mousePressEvent(QGraphicsSceneMouseEvent *ev){
+ if(!m_text&&!m_group&&ev->button()==Qt::LeftButton&&ev->modifiers().testFlag(Qt::ShiftModifier)&&m_options26.value("position")=="manual"&&!m_element->diagram()->isReadOnly()){
+ m_drag26=true;m_dragOrigin26=mapToScene(boundingRect().topLeft());m_dragMouse26=ev->scenePos();ev->accept();return;}QGraphicsObject::mousePressEvent(ev);
+}
+void CrossRefItem::mouseMoveEvent(QGraphicsSceneMouseEvent *ev){if(m_drag26){auto target=m_dragOrigin26+ev->scenePos()-m_dragMouse26;setPos(pos()+parentItem()->mapFromScene(target)-parentItem()->mapFromScene(mapToScene(boundingRect().topLeft())));ev->accept();return;}QGraphicsObject::mouseMoveEvent(ev);}
+void CrossRefItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *ev){if(m_drag26){m_drag26=false;auto point=mapToScene(boundingRect().topLeft());auto v=m_options26;v["x"]=point.x();v["y"]=point.y();autoPos();QetXref26::save(m_element,v);ev->accept();return;}QGraphicsObject::mouseReleaseEvent(ev);}

@@ -190,7 +190,7 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
 		//Color
 	if(color() != QColor(Qt::black)) {
 		QDomElement dom_color = dom_doc.createElement("color");
-		dom_color.appendChild(dom_doc.createTextNode(color().name()));
+		dom_color.appendChild(dom_doc.createTextNode(color().name(QColor::HexArgb)));
 		root_element.appendChild(dom_color);
 	}
 

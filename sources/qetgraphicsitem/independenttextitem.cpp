@@ -91,6 +91,7 @@ void IndependentTextItem::fromXml(const QDomElement &e) {
 	const qreal y = e.attribute("y").toDouble();
 	setPos(qIsFinite(x) ? x : 0, qIsFinite(y) ? y : 0);
 	setHtml(e.attribute("text"));
+	if(e.hasAttribute("text-color"))setColor(QColor(e.attribute("text-color")));
 	const qreal rotation = e.attribute("rotation").toDouble();
 	setRotation(qIsFinite(rotation) ? rotation : 0);
 	if (e.hasAttribute("font"))
@@ -113,9 +114,10 @@ QDomElement IndependentTextItem::toXml(QDomDocument &document) const
 {
 	QDomElement result = document.createElement("input");
 	result.setAttribute("uuid", m_uuid.toString());
-	result.setAttribute("x", QString("%1").arg(pos().x()));
-	result.setAttribute("y", QString("%1").arg(pos().y()));
+	result.setAttribute("x", QString("%1").arg(sourcePosition21().x()));
+	result.setAttribute("y", QString("%1").arg(sourcePosition21().y()));
 	result.setAttribute("text", toHtml());
+	result.setAttribute("text-color",color().name(QColor::HexArgb));
 	result.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
 	result.setAttribute("font", QETUtils::fontToString(font()));
 		//Only when set, so a text with the automatic width is saved as before
@@ -150,6 +152,7 @@ void IndependentTextItem::setTextWidth(qreal width)
 
 	document()->setTextWidth(document_width);
 	m_text_width = width;
+    refreshLanguageSiblings23();
 	emit textWidthChanged(width);
 }
 

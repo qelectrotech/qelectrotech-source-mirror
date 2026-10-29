@@ -4357,7 +4357,8 @@ void projectDataBase::createElementNomenclatureView()
 						 "e.sub_type AS element_sub_type,"
 						 "di.title AS title,"
 						 "di.folio AS folio,"
-						 "e.pos AS position "
+						 "e.pos AS position,"
+                         "e.uuid AS element_uuid "
 						 " FROM element_info ei, diagram_info di, element e, diagram d"
 						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid"
 						 " AND COALESCE(LOWER(TRIM(ei.exclude_from_bom)), '') NOT IN ('true', '1', 'yes', 'on')"
@@ -4395,6 +4396,7 @@ void projectDataBase::createElementNomenclatureView()
 		columns_.replace(QStringLiteral("di.plant"), QStringLiteral("''"));
 		columns_.replace(QStringLiteral("di.locmach"), QStringLiteral("''"));
 		columns_.replace(QStringLiteral("e.pos AS position"), QStringLiteral("st.position AS position"));
+        columns_.replace(QStringLiteral("e.uuid AS element_uuid"), QStringLiteral("st.uuid AS element_uuid"));
 		create_view += QStringLiteral(" UNION ALL SELECT ") + columns_ +
 					   QStringLiteral(" FROM spare_terminal st"
 									  " WHERE COALESCE(LOWER(TRIM(st.exclude_from_bom)), '') NOT IN ('true', '1', 'yes', 'on')");
