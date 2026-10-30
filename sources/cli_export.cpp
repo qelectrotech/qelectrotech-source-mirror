@@ -93,6 +93,12 @@ const QHash<QString, QString> &exportFlags()
 		{"--check-elements", "check"},
 		{"--resave", "resave"},
 		{"--recover", "recover"},
+		{"--history", "history"},
+		{"--history-on", "historyon"},
+		{"--history-off", "historyoff"},
+		{"--history-diff", "historydiff"},
+		{"--revision", "revision"},
+		{"--export-delivery", "delivery"},
 		{"--from-database", "fromdb"},
 		{"--set-titleblock", "settb"},
 		{"--query", "query"},
@@ -1260,6 +1266,84 @@ int run(const QStringList &args)
 			return 2;
 		}
 		return recoverProject(rest.at(0), rest.at(1));
+	}
+
+	// --history lists the saves a .qetdb keeps; --history-on and
+	// --history-off make it keep them or drop them (QETDB-S6-SCOPE.md)
+	if (format == "history" || format == "historyon" || format == "historyoff") {
+		if (rest.isEmpty() || !QetDbFile::isDatabasePath(rest.at(0))) {
+			err << "Usage: qelectrotech " << flag << " <project.qetdb>\n";
+			return 2;
+		}
+		QString error;
+		if (format == "history") {
+			const QStringList lines = QetDbFile::history(rest.at(0), &error);
+			if (lines.isEmpty()) {
+				err << rest.at(0) << ": " << error << "\n";
+				return 1;
+			}
+			for (const QString &line : lines)
+				out << line << "\n";
+			out.flush();
+			return 0;
+		}
+		if (!QetDbFile::setHistory(rest.at(0), format == "historyon", &error)) {
+			err << "Cannot change the history of " << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		return 0;
+	}
+
+	// --history-diff says what changed between two of a .qetdb's revisions
+	// (QETDB-S6-SCOPE.md S6-3)
+	if (format == "historydiff") {
+		bool from_number = false, to_number = false;
+		const qint64 from = rest.value(1).toLongLong(&from_number);
+		const qint64 to = rest.value(2).toLongLong(&to_number);
+		if (rest.size() < 3 || !from_number || !to_number || !QetDbFile::isDatabasePath(rest.at(0))) {
+			err << "Usage: qelectrotech --history-diff <project.qetdb> <revision> <later revision>\n";
+			return 2;
+		}
+		QString error;
+		const QStringList lines = QetDbFile::historyDiff(rest.at(0), from, to, &error);
+		if (lines.isEmpty()) {
+			err << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		for (const QString &line : lines)
+			out << line << "\n";
+		out.flush();
+		return 0;
+	}
+
+	// --revision writes a .qetdb as it was at one of its revisions;
+	// --export-delivery writes it without its history (QETDB-S6-SCOPE.md)
+	if (format == "revision" || format == "delivery") {
+		const int needed = format == "revision" ? 3 : 2;
+		bool number = true;
+		const qint64 ord = format == "revision" ? rest.value(1).toLongLong(&number) : 0;
+		if (rest.size() < needed || !number || !QetDbFile::isDatabasePath(rest.at(0))
+				|| !QetDbFile::isDatabasePath(rest.at(needed - 1))) {
+			err << (format == "revision"
+					? "Usage: qelectrotech --revision <project.qetdb> <number> <output.qetdb>\n"
+					: "Usage: qelectrotech --export-delivery <project.qetdb> <output.qetdb>\n");
+			return 2;
+		}
+		QString error;
+		bool same_digest = false;
+		const bool ok = format == "revision"
+				? QetDbFile::writeRevision(rest.at(0), ord, rest.at(2), &error, &same_digest)
+				: QetDbFile::exportDelivery(rest.at(0), rest.at(1), &error);
+		if (!ok) {
+			err << "Cannot write " << rest.at(needed - 1) << " from " << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		if (format == "revision")
+			out << "Revision " << ord << " written to " << rest.at(2) << "; content digest "
+				<< (same_digest ? "the one it was saved with" : "differs from the one it was saved with")
+				<< "\n";
+		out.flush();
+		return 0;
 	}
 
 	// --from-database writes a project from the working copy a QElectroTech

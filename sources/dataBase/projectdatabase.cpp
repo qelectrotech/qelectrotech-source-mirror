@@ -3930,12 +3930,17 @@ bool projectDataBase::createDataBase()
 		//(storeProjectSettings()). section is where the value sits in the
 		//saved project ("newdiagrams/inset"), ord tells apart repeated
 		//items of one section (the xrefs, the guides).
+		//Every table has a primary key: a revision is what SQLite's session
+		//extension finds changed between two saves, and it leaves out a
+		//table without one (QETDB-S6-SCOPE.md 2.3). The rowid stays, so
+		//the rows keep the order they were written in.
 	if (!query_.exec(QStringLiteral(
 			"CREATE TABLE project_setting ("
 			"section TEXT NOT NULL, "
 			"ord INTEGER NOT NULL, "
 			"name TEXT NOT NULL, "
-			"value TEXT)"))) {
+			"value TEXT, "
+			"PRIMARY KEY (section, ord, name))"))) {
 		qDebug() << " project_setting_table query : " << query_.lastError();
 	}
 
@@ -3948,7 +3953,8 @@ bool projectDataBase::createDataBase()
 			"section TEXT NOT NULL, "
 			"ord INTEGER NOT NULL, "
 			"name TEXT NOT NULL, "
-			"value TEXT)"))) {
+			"value TEXT, "
+			"PRIMARY KEY (strip_uuid, section, ord, name))"))) {
 		qDebug() << " terminal_strip_value_table query : " << query_.lastError();
 	}
 
@@ -3962,7 +3968,8 @@ bool projectDataBase::createDataBase()
 			"section TEXT NOT NULL, "
 			"ord INTEGER NOT NULL, "
 			"name TEXT NOT NULL, "
-			"value TEXT)"))) {
+			"value TEXT, "
+			"PRIMARY KEY (element_uuid, section, ord, name))"))) {
 		qDebug() << " element_text_value_table query : " << query_.lastError();
 	}
 		//Each store and forget names one symbol: without it, each is a
@@ -3982,7 +3989,8 @@ bool projectDataBase::createDataBase()
 									 std::pair{QStringLiteral("folio_value"), QStringLiteral("diagram_uuid")},
 									 std::pair{QStringLiteral("cable_value"), QStringLiteral("cable_uuid")}}) {
 		if (!query_.exec(QStringLiteral("CREATE TABLE %1 (%2 VARCHAR(50) NOT NULL, section TEXT NOT NULL, "
-										"ord INTEGER NOT NULL, name TEXT NOT NULL, value TEXT)").arg(table, key))) {
+										"ord INTEGER NOT NULL, name TEXT NOT NULL, value TEXT, "
+										"PRIMARY KEY (%2, section, ord, name))").arg(table, key))) {
 			qDebug() << table << "table query : " << query_.lastError();
 		}
 		if (!query_.exec(QStringLiteral("CREATE INDEX idx_%1_key ON %1 (%2)").arg(table, key))) {
@@ -3994,7 +4002,8 @@ bool projectDataBase::createDataBase()
 		//missing, and the wires it keeps (F127, F128), each whole as the save
 		//writes it, in that order (flushFolioValues())
 	if (!query_.exec(QStringLiteral("CREATE TABLE kept_item (diagram_uuid VARCHAR(50) NOT NULL, "
-									"ord INTEGER NOT NULL, content TEXT NOT NULL)"))) {
+									"ord INTEGER NOT NULL, content TEXT NOT NULL, "
+									"PRIMARY KEY (diagram_uuid, ord))"))) {
 		qDebug() << " kept_item table query : " << query_.lastError();
 	}
 
@@ -4080,7 +4089,8 @@ bool projectDataBase::createDataBase()
 				//The item's place among the drawn items of its folio, for
 				//those of the same z: first stored, first drawn, as the
 				//folio stacks them (storeDrawnRows())
-			"seq INTEGER NOT NULL DEFAULT 0)"))) {
+			"seq INTEGER NOT NULL DEFAULT 0, "
+			"PRIMARY KEY (item_uuid, section, ord, name))"))) {
 		qDebug() << " drawing_item_table query : " << query_.lastError();
 	}
 		//An item's rows are rewritten by its uuid and a folio's read by the

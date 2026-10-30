@@ -22,6 +22,7 @@
 #include <QByteArray>
 #include <QDomDocument>
 #include <QString>
+#include <QStringList>
 
 #include <functional>
 
@@ -44,9 +45,21 @@ namespace QetDbFile
 		/// @p sha1, if given, gets the SHA-1 of the file written (what
 		/// QETProject remembers to see it changed on disk), made from it
 		/// before it replaces the project, while it is checked and flushed
-	bool save(projectDataBase &database, const QString &path, QString *error, QByteArray *sha1 = nullptr);
+		/// @p previous, if given, is the file this save follows when it is
+		/// not @p path (Save As, a copy): the history it keeps goes on in
+		/// the new file (QETDB-S6-SCOPE.md R4)
+	bool save(projectDataBase &database, const QString &path, QString *error, QByteArray *sha1 = nullptr,
+			  const QString &previous = QString());
 	bool read(const QString &path, QDomDocument *document, QString *error,
 			  const std::function<bool(const QString &copy)> &with_copy = {});
+		/// History of the saves, kept in the file when switched on
+		/// (QETDB-S6-SCOPE.md): on or off, and each revision as a line
+	bool setHistory(const QString &path, bool on, QString *error);
+	QStringList history(const QString &path, QString *error);
+	QStringList historyDiff(const QString &path, qint64 from, qint64 to, QString *error);
+	bool exportDelivery(const QString &path, const QString &output, QString *error);
+	bool writeRevision(const QString &path, qint64 ord, const QString &output, QString *error,
+					   bool *same_digest = nullptr);
 		/// The checks a file passes before it is opened: not damaged,
 		/// ours, a format this QElectroTech reads
 	bool isReadable(const QString &path, QString *error);
