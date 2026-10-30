@@ -713,15 +713,12 @@ void QETDiagramEditor::setUpActions()
 	});
 
 		//Live AutoConnect: automatic wires are removed and found again as
-		//symbols move, see AutoConnect
-	m_live_auto_connect = new QAction(QET::Icons::Autoconnect, tr("Keep automatic connections up to date"), this);
+		//symbols move, see AutoConnect. Chosen once, by File > New project
+		//with automatic connections; the entry only shows the project's kind
+	m_live_auto_connect = new QAction(QET::Icons::Autoconnect, tr("Automatic connections (chosen when the project is created)"), this);
 	m_live_auto_connect->setStatusTip(tr("Terminals in line connect to the next free terminal they face, and are disconnected again when moved out of line"));
 	m_live_auto_connect->setCheckable(true);
-	ShortcutManager::instance().registerAction(m_live_auto_connect, "diagrameditor.live_auto_connect", tr("Diagram editors"), QKeySequence());
-	connect(m_live_auto_connect, &QAction::triggered, [this](bool on) {
-		if (ProjectView *pv = currentProjectView())
-			pv->project()->setLiveAutoConnect(on);
-	});
+	m_live_auto_connect->setEnabled(false);
 
 	m_connect_aligned = new QAction(QET::Icons::Autoconnect, tr("Connect aligned terminals on this folio"), this);
 	m_connect_aligned->setStatusTip(tr("Connect every free terminal of the folio to the next free terminal it faces"));
@@ -1276,6 +1273,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Files action
 	QAction *new_file  = m_file_actions_group.addAction(QET::Icons::ProjectNew,     tr("&New"));
+	QAction *new_auto_file = m_file_actions_group.addAction(QET::Icons::ProjectNew, tr("New project with automatic connections"));
 	QAction *open_file = m_file_actions_group.addAction(QET::Icons::DocumentOpen,   tr("&Open"));
 	m_save_file        = m_file_actions_group.addAction(QET::Icons::DocumentSave,   tr("&Save"));
 	m_save_file_as     = m_file_actions_group.addAction(QET::Icons::DocumentSaveAs, tr("Save as"));
@@ -1284,12 +1282,15 @@ void QETDiagramEditor::setUpActions()
 	m_close_file       = m_file_actions_group.addAction(QET::Icons::ProjectClose,   tr("&Close"));
 
 	ShortcutManager::instance().registerAction(new_file, "diagrameditor.new_file", tr("Diagram editors"), QKeySequence::New);
+	ShortcutManager::instance().registerAction(new_auto_file, "diagrameditor.new_auto_connect_file", tr("Diagram editors"), QKeySequence());
 	ShortcutManager::instance().registerAction(open_file, "diagrameditor.open_file", tr("Diagram editors"), QKeySequence::Open);
 	ShortcutManager::instance().registerAction(m_close_file, "diagrameditor.close_file", tr("Diagram editors"), QKeySequence::Close);
 	ShortcutManager::instance().registerAction(m_save_file, "diagrameditor.save_file", tr("Diagram editors"), QKeySequence::Save);
 	ShortcutManager::instance().registerAction(m_save_file_as, "diagrameditor.save_file_as", tr("Diagram editors"), Qt::CTRL | Qt::SHIFT | Qt::Key_S);
 
 	new_file     ->setStatusTip( tr("Creates a new project", "status bar tip") );
+	new_auto_file->setStatusTip( tr("Creates a new project in which terminals in line connect by themselves; "
+									"a project is of one kind or the other for good", "status bar tip") );
 	open_file    ->setStatusTip( tr("Opens an existing project", "status bar tip") );
 	m_close_file ->setStatusTip( tr("Closes the current project", "status bar tip") );
 	m_save_file    ->setStatusTip( tr("Saves the current project and all its sheets", "status bar tip") );
@@ -1311,6 +1312,7 @@ void QETDiagramEditor::setUpActions()
 	connect(m_save_file_as, &QAction::triggered, this, &QETDiagramEditor::saveAs);
 	connect(m_save_file,    &QAction::triggered, this, &QETDiagramEditor::save);
 	connect(new_file,       &QAction::triggered, this, &QETDiagramEditor::newProject);
+	connect(new_auto_file,  &QAction::triggered, this, &QETDiagramEditor::newAutoConnectProject);
 	connect(open_file,      &QAction::triggered, this, &QETDiagramEditor::openProject);
 	connect(m_close_file,   &QAction::triggered, [this]() {
 		if (ProjectView *project_view = currentProjectView()) {
@@ -2112,6 +2114,21 @@ bool QETDiagramEditor::newProject()
 	auto new_project = new QETProject(this);
 
 	// add new diagram
+	new_project -> addNewDiagram();
+
+	return addProject(new_project);
+}
+
+/**
+	@brief QETDiagramEditor::newAutoConnectProject
+	Create a new project with an empty diagram, in which terminals in line
+	connect by themselves (AutoConnect). The kind is fixed for good.
+	@return
+*/
+bool QETDiagramEditor::newAutoConnectProject()
+{
+	auto new_project = new QETProject(this);
+	new_project -> setLiveAutoConnect(true);
 	new_project -> addNewDiagram();
 
 	return addProject(new_project);
@@ -3663,7 +3680,6 @@ void QETDiagramEditor::slot_updateModeActions()
 		m_auto_conductor -> setChecked (pv -> project() -> autoConductor());
 		m_auto_break_conductor -> setEnabled (true);
 		m_auto_break_conductor -> setChecked (pv -> project() -> autoBreakConductor());
-		m_live_auto_connect -> setEnabled (true);
 		m_live_auto_connect -> setChecked (pv -> project() -> liveAutoConnect());
 		m_connect_aligned -> setEnabled (true);
 	}
@@ -3671,7 +3687,7 @@ void QETDiagramEditor::slot_updateModeActions()
 	{
 		m_auto_conductor -> setDisabled(true);
 		m_auto_break_conductor -> setDisabled(true);
-		m_live_auto_connect -> setDisabled(true);
+		m_live_auto_connect -> setChecked(false);
 		m_connect_aligned -> setDisabled(true);
 	}
 

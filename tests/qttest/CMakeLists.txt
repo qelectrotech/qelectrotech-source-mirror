@@ -1897,6 +1897,10 @@ target_compile_definitions(tst_qetdbrobust PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
   "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
 
+# A project is of one kind for good: File > New without automatic
+# connections, File > New project with automatic connections with them.
+qet_add_app_test(tst_newprojectkind tst_newprojectkind.cpp)
+
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
 # PATH for every test above and keeps the ENVIRONMENT each test sets
