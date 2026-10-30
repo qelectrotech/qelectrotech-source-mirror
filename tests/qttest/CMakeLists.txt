@@ -1845,6 +1845,15 @@ target_compile_definitions(tst_qetdbfile PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
   "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
 
+# The repair data of a .qetdb: lost pages rebuilt exactly up to the parity,
+# one more reported, the same bytes as the prototype. QETDB-S4C-PLAN.md P1.
+add_executable(
+  tst_qetparity
+  tst_qetparity.cpp
+  ${QET_DIR}/sources/dataBase/qetparity.cpp)
+add_test(NAME tst_qetparity COMMAND tst_qetparity)
+target_link_libraries(tst_qetparity PRIVATE Qt::Test)
+
 # --query: one read-only query over several projects through the public
 # qet_ views; their columns, refused writes, the same rows from .qet, .qetz
 # and .qetdb. QETDB-S10 Q1 + Q2.
