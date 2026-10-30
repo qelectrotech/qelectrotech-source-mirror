@@ -57,6 +57,7 @@ namespace QetDbFile
 		bool parity = false;  ///< it carries repair data that could be read
 		bool edited = false;  ///< another program wrote to it since its save: nothing repaired
 		bool header = false;  ///< its header was destroyed and is written again
+		bool scanned = false; ///< its repair data was found by reading its pages: SQLite could not read it
 		int bad_pages = 0;    ///< pages not as its save wrote them
 		int beyond = 0;       ///< groups of pages with more bad ones than repair data
 		bool repaired() const { return (bad_pages > 0 || header) && !beyond; }

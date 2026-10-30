@@ -892,6 +892,104 @@ bool writeWhole(const QString &path, const QByteArray &bytes)
 	return file.open(QIODevice::WriteOnly | QIODevice::Truncate) && file.write(bytes) == bytes.size();
 }
 
+	//SQLite's variable-length integer at @p at, before @p end
+bool readVarint(const uchar *bytes, qsizetype &at, qsizetype end, quint64 &value)
+{
+	value = 0;
+	for (int i = 0 ; i < 9 ; ++i) {
+		if (at >= end) return false;
+		const uchar b = bytes[at++];
+		if (i == 8) {
+			value = (value << 8) | b;
+			return true;
+		}
+		value = (value << 7) | (b & 0x7f);
+		if (!(b & 0x80)) return true;
+	}
+	return true;
+}
+
+	//The rows of qet_parity, found by reading every page of @p data as
+	//SQLite lays out a table's rows (https://sqlite.org/fileformat2.html):
+	//leaf pages, their cells, each row's spill into overflow pages, its
+	//record. For a file SQLite cannot read them from; what is not one of
+	//them is left to @p take, which checks each row's own hash
+void scanParityRows(const QByteArray &data, int page_size,
+					const std::function<void(int, int, const QByteArray &, const QByteArray &, const QByteArray &)> &take)
+{
+	const int pages = int(data.size() / page_size);
+	const int usable = page_size;  //No reserved bytes in a page of a .qetdb
+	const auto *bytes = reinterpret_cast<const uchar *>(data.constData());
+	const auto be16 = [bytes](qsizetype at) { return int(qFromBigEndian<quint16>(bytes + at)); };
+	const auto be32 = [bytes](qsizetype at) { return qFromBigEndian<quint32>(bytes + at); };
+		//The largest row: its layout and every page hash of a group
+	const quint64 largest = quint64(page_size) + 36 + 8 * 255 + 64;
+	for (int p = 0 ; p < pages ; ++p) {
+		const qsizetype base = qsizetype(p) * page_size, end = base + page_size;
+		const qsizetype head = base + (p == 0 ? 100 : 0);
+		if (bytes[head] != 0x0d) continue;  //A table's leaf page
+		const int cells = be16(head + 3);
+		if (cells < 1 || head + 8 + 2 * qsizetype(cells) > end) continue;
+		for (int c = 0 ; c < cells ; ++c) {
+			qsizetype at = base + be16(head + 8 + 2 * c);
+			quint64 size = 0, rowid = 0;
+			if (at < head + 8 || !readVarint(bytes, at, end, size) || !readVarint(bytes, at, end, rowid)
+					|| size <= quint64(page_size) || size > largest)
+				continue;
+				//The part of the row on this page, as SQLite works it out
+			const qsizetype most = usable - 35, least = (qsizetype(usable - 12) * 32 / 255) - 23;
+			qsizetype local = least + qsizetype((size - quint64(least)) % quint64(usable - 4));
+			if (local > most) local = least;
+			if (at + local + 4 > end) continue;
+			QByteArray payload(reinterpret_cast<const char *>(bytes + at), local);
+			quint32 next = be32(at + local);
+			for (int hops = 0 ; quint64(payload.size()) < size && next >= 1 && int(next) <= pages && hops < 8 ; ++hops) {
+				const qsizetype o = qsizetype(next - 1) * page_size;
+				next = be32(o);
+				payload.append(reinterpret_cast<const char *>(bytes + o + 4),
+							   qsizetype(std::min<quint64>(quint64(usable - 4), size - quint64(payload.size()))));
+			}
+			if (quint64(payload.size()) != size) continue;
+				//The record: id (the rowid, stored as null), grp, j, hash, info, data
+			const auto *rec = reinterpret_cast<const uchar *>(payload.constData());
+			qsizetype h = 0;
+			quint64 header_size = 0;
+			if (!readVarint(rec, h, payload.size(), header_size) || header_size > quint64(payload.size())) continue;
+			quint64 types[6];
+			bool ok = true;
+			for (quint64 &type : types) ok = ok && readVarint(rec, h, qsizetype(header_size), type);
+			if (!ok || h != qsizetype(header_size) || types[0] != 0) continue;
+			qsizetype v = qsizetype(header_size);
+			const auto integer = [rec, &v, &payload](quint64 type, int &out) {
+				static const int widths[] = {0, 1, 2, 3, 4, 6, 8};
+				if (type == 8 || type == 9) {
+					out = int(type - 8);
+					return true;
+				}
+				if (type < 1 || type > 6 || v + widths[type] > payload.size()) return false;
+				qint64 value = qint8(rec[v]);
+				for (int i = 1 ; i < widths[type] ; ++i) value = (value << 8) | rec[v + i];
+				v += widths[type];
+				out = int(value);
+				return true;
+			};
+			const auto blob = [&payload, &v](quint64 type, QByteArray &out) {
+				if (type < 12 || type % 2) return false;
+				const qsizetype length = qsizetype((type - 12) / 2);
+				if (v + length > payload.size()) return false;
+				out = payload.mid(v, length);
+				v += length;
+				return true;
+			};
+			int grp = 0, j = 0;
+			QByteArray hash, info, shard;
+			if (integer(types[1], grp) && integer(types[2], j) && blob(types[3], hash) && blob(types[4], info)
+					&& blob(types[5], shard))
+				take(grp, j, hash, info, shard);
+		}
+	}
+}
+
 	//The pages of the .qetdb @p copy that are not what its save wrote,
 	//rebuilt in place from the repair data it carries (QETDB-S4C-PLAN.md
 	//P3), before anything else reads it. A file another program wrote to
@@ -923,6 +1021,21 @@ QetDbFile::Repair repairPages(const QString &copy, const QString &path)
 	quint32 counter = 0;
 	QHash<std::pair<int, int>, QByteArray> shards;
 	QHash<int, QByteArray> group_hashes;
+		//Each row checks itself: a damaged one is left out
+	const auto take = [&](int grp, int j, const QByteArray &hash, const QByteArray &info, const QByteArray &shard) {
+		if (info.size() < 36 || !info.startsWith(parity_magic) || pageHash(shard + info) != hash)
+			return;
+		const auto at = [&info](int i) { return qFromLittleEndian<quint32>(info.constData() + 8 + 4 * i); };
+		const int g = int(at(4));
+		if (g != grp || int(at(6)) != page_size || shard.size() != page_size || j < 0 || int(at(1)) <= j)
+			return;
+		if (!k) {
+			k = int(at(0)); m = int(at(1)); file_pages = int(at(2)); root = int(at(3)); counter = at(5);
+		}
+		if (int(at(0)) != k || int(at(1)) != m) return;
+		if (info.size() > 36 && !group_hashes.contains(g)) group_hashes.insert(g, info.mid(36));
+		shards.insert({g, j}, shard);
+	};
 	const QString name = QStringLiteral("qetdb_repair_") + QUuid::createUuid().toString();
 	{
 		QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), name);
@@ -931,32 +1044,21 @@ QetDbFile::Repair repairPages(const QString &copy, const QString &path)
 		if (db.open()) {
 			QSqlQuery query(db);
 			query.setForwardOnly(true);
-				//Each row checks itself: a damaged one is left out, as
-				//are those after an error part way through the table
-			if (query.exec(QStringLiteral("SELECT grp, j, hash, info, data FROM qet_parity"))) {
-				while (query.next()) {
-					const QByteArray info = query.value(3).toByteArray();
-					const QByteArray shard = query.value(4).toByteArray();
-					if (info.size() < 36 || !info.startsWith(parity_magic)
-							|| pageHash(shard + info) != query.value(2).toByteArray())
-						continue;
-					const auto at = [&info](int i) { return qFromLittleEndian<quint32>(info.constData() + 8 + 4 * i); };
-					const int g = int(at(4)), j = query.value(1).toInt();
-					if (g != query.value(0).toInt() || int(at(6)) != page_size || shard.size() != page_size
-							|| j < 0 || int(at(1)) <= j)
-						continue;
-					if (!k) {
-						k = int(at(0)); m = int(at(1)); file_pages = int(at(2)); root = int(at(3)); counter = at(5);
-					}
-					if (int(at(0)) != k || int(at(1)) != m) continue;
-					if (info.size() > 36 && !group_hashes.contains(g)) group_hashes.insert(g, info.mid(36));
-					shards.insert({g, j}, shard);
-				}
-			}
+				//Those after an error part way through the table are left out too
+			if (query.exec(QStringLiteral("SELECT grp, j, hash, info, data FROM qet_parity")))
+				while (query.next())
+					take(query.value(0).toInt(), query.value(1).toInt(), query.value(2).toByteArray(),
+						 query.value(3).toByteArray(), query.value(4).toByteArray());
 		}
 		db.close();
 	}
 	QSqlDatabase::removeDatabase(name);
+		//SQLite cannot read them (its schema page, or the table's own pages,
+		//lost): found by reading every page as SQLite lays rows out (P4)
+	if (!k) {
+		scanParityRows(data, page_size, take);
+		r.scanned = k > 0;
+	}
 	if (!k || !m || file_pages < 1) {
 		if (header_bad) writeWhole(copy, original);
 		return r;
@@ -1211,7 +1313,8 @@ bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error
 	if (repair) *repair = repaired;
 	if (repaired.repaired())
 		qInfo().noquote() << "QetDbFile:" << QFileInfo(path).fileName() << "was damaged;"
-						  << repaired.bad_pages << "pages repaired" << (repaired.header ? "and its header" : "");
+						  << repaired.bad_pages << "pages repaired" << (repaired.header ? "and its header" : "")
+						  << (repaired.scanned ? "(its repair data read from its pages)" : "");
 	else if (repaired.beyond)
 		qWarning().noquote() << "QetDbFile:" << QFileInfo(path).fileName() << "has" << repaired.bad_pages
 							 << "damaged pages, more in" << repaired.beyond << "groups than its repair data covers";

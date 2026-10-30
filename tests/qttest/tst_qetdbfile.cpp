@@ -850,6 +850,9 @@ private slots:
 		QTest::newRow("a run of 5 pages") << QStringLiteral("run") << true;
 		QTest::newRow("the header") << QStringLiteral("header") << true;
 		QTest::newRow("1 % of the pages") << QStringLiteral("scatter1") << true;
+			//SQLite reads nothing of it: the repair data found in its pages (P4)
+		QTest::newRow("page 1 but its header") << QStringLiteral("schema") << true;
+		QTest::newRow("page 1") << QStringLiteral("page1") << true;
 		QTest::newRow("30 % of the pages") << QStringLiteral("scatter30") << false;
 	}
 
@@ -884,6 +887,8 @@ private slots:
 		else if (damage == QLatin1String("run"))
 			for (int p = pages / 2 ; p < pages / 2 + 5 ; ++p) spoil(p, '\0');
 		else if (damage == QLatin1String("header")) bytes.replace(16, 8, QByteArray(8, '\0'));
+		else if (damage == QLatin1String("schema")) bytes.replace(100, page - 100, QByteArray(page - 100, '\0'));
+		else if (damage == QLatin1String("page1")) spoil(0, '\0');
 		else if (damage.startsWith(QLatin1String("scatter"))) {
 			const int step = 100 / damage.mid(7).toInt();
 			for (int p = 1 ; p < pages * 8 / 10 ; p += step) spoil(p, '\x5a');
@@ -898,6 +903,8 @@ private slots:
 		QVERIFY2(code >= 0, "QElectroTech crashed");
 		if (repaired) {
 			QVERIFY2(code == 0 && log.contains(QStringLiteral("pages repaired")), qPrintable(log.right(800)));
+			QCOMPARE(log.contains(QStringLiteral("read from its pages")),
+					 damage == QLatin1String("schema") || damage == QLatin1String("page1"));
 			QFile o(out);
 			QVERIFY(o.open(QIODevice::ReadOnly));
 			QVERIFY2(o.readAll() == expected, "the repaired project is not the one saved");
