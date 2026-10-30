@@ -18,10 +18,13 @@
 */
 #include "qetparity.h"
 
+#include <QtConcurrent>
+
 #include <algorithm>
 #include <atomic>
 #include <cmath>
 #include <cstring>
+#include <numeric>
 #include <vector>
 
 #if (defined(__GNUC__) || defined(__clang__)) && (defined(__x86_64__) || defined(__i386__))
@@ -194,17 +197,24 @@ QByteArray QetParity::encode(const QByteArray &data, int page_size, int k, int m
 	if (!validLayout(page_size, k, m)) return {};
 	const int n = int((data.size() + page_size - 1) / page_size);
 	const int groups = (n + k - 1) / k;
-	QByteArray padded = data;
-	padded.append(QByteArray(qsizetype(n) * page_size - data.size(), '\0'));
+		//Only a last part page is copied, not the data
+	QByteArray last(page_size, '\0');
+	if (data.size() % page_size)
+		std::memcpy(last.data(), data.constData() + qsizetype(n - 1) * page_size, size_t(data.size() % page_size));
 	QByteArray parity(qsizetype(groups) * m * page_size, '\0');
 	auto *par = reinterpret_cast<quint8 *>(parity.data());
-	const auto *pages = reinterpret_cast<const quint8 *>(padded.constData());
-	for (int i = 0 ; i < n ; ++i) {
-		const int g = i % groups, li = i / groups;
-		for (int j = 0 ; j < m ; ++j)
-			mulAdd(par + (qsizetype(g) * m + j) * page_size, pages + qsizetype(i) * page_size,
-				   coefficient(j, li, m), page_size);
-	}
+	const auto page = [&](int i) {
+		return reinterpret_cast<const quint8 *>(
+				(data.size() % page_size && i == n - 1) ? last.constData() : data.constData() + qsizetype(i) * page_size);
+	};
+		//Each group writes only its own parity pages: the groups in parallel
+	QList<int> each(groups);
+	std::iota(each.begin(), each.end(), 0);
+	QtConcurrent::blockingMap(each, [&](int g) {
+		for (int i = g, li = 0 ; i < n ; i += groups, ++li)
+			for (int j = 0 ; j < m ; ++j)
+				mulAdd(par + (qsizetype(g) * m + j) * page_size, page(i), coefficient(j, li, m), page_size);
+	});
 	return parity;
 }
 

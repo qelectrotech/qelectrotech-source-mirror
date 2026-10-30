@@ -843,6 +843,27 @@ private slots:
 		QVERIFY2(code == 0, qPrintable(log.right(800)));
 	}
 
+	// Speed first (QETDB-S4C-PLAN.md P7): a file that opens as saved has its
+	// pages checked against its repair data only when another program's
+	// journal is beside it
+	void undamagedOpenChecksNoPages()
+	{
+		const QString path = m_dir.filePath(QStringLiteral("undamaged-open.qetdb"));
+		QFile::remove(path);
+		QVERIFY(QFile::copy(industrial(), path));
+		int code = -1;
+		QString log = run({QStringLiteral("--resave"), path, path + QStringLiteral(".qet")}, false, &code,
+						  {QStringLiteral("QET_QETDB_SAVE_TIMES=1")});
+		QVERIFY2(code == 0 && !log.contains(QStringLiteral("pages checked in")), qPrintable(log.right(800)));
+		QFile journal(path + QStringLiteral("-journal"));
+		QVERIFY(journal.open(QIODevice::WriteOnly));
+		journal.close();
+		log = run({QStringLiteral("--resave"), path, path + QStringLiteral(".qet")}, false, &code,
+				  {QStringLiteral("QET_QETDB_SAVE_TIMES=1")});
+		QVERIFY2(log.contains(QStringLiteral("pages checked in")), qPrintable(log.right(800)));
+		QFile::remove(journal.fileName());
+	}
+
 	// Damaged pages are repaired on opening, from the repair data the file
 	// carries (QETDB-S4C-PLAN.md P3): the project opens as it was saved, and
 	// the file itself is not written. Beyond the repair data, it is refused
@@ -859,6 +880,9 @@ private slots:
 			//SQLite reads nothing of it: the repair data found in its pages (P4)
 		QTest::newRow("page 1 but its header") << QStringLiteral("schema") << true;
 		QTest::newRow("page 1") << QStringLiteral("page1") << true;
+			//SQLite's quick check and the content digest both pass it: only
+			//the pages checked beside the read find it (P7)
+		QTest::newRow("one bit of an index key") << QStringLiteral("index") << true;
 		QTest::newRow("30 % of the pages") << QStringLiteral("scatter30") << false;
 	}
 
@@ -873,6 +897,8 @@ private slots:
 		QFile::remove(path);
 		QVERIFY(QFile::copy(industrial(), path));
 		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		const int index_root = pragma(path, QStringLiteral("SELECT rootpage FROM sqlite_master "
+														   "WHERE name = 'idx_element_diagram'")).toInt();
 		QFile f(path);
 		QVERIFY(f.open(QIODevice::ReadWrite));
 		QByteArray bytes = f.readAll();
@@ -891,6 +917,17 @@ private slots:
 		else if (damage == QLatin1String("header")) bytes.replace(16, 8, QByteArray(8, '\0'));
 		else if (damage == QLatin1String("schema")) bytes.replace(100, page - 100, QByteArray(page - 100, '\0'));
 		else if (damage == QLatin1String("page1")) spoil(0, '\0');
+		else if (damage == QLatin1String("index")) {
+				//Down the right of the index to a leaf, its first key
+			int p = index_root;
+			QVERIFY(p > 1);
+			while (uchar(bytes.at(qsizetype(p - 1) * page)) == 0x02)
+				p = int(qFromBigEndian<quint32>(bytes.constData() + qsizetype(p - 1) * page + 8));
+			const qsizetype at = qsizetype(p - 1) * page;
+			QCOMPARE(uchar(bytes.at(at)), uchar(0x0a));
+			const qsizetype key = at + qFromBigEndian<quint16>(bytes.constData() + at + 8) + 4;
+			bytes[key] = char(bytes.at(key) ^ 0x01);
+		}
 		else if (damage.startsWith(QLatin1String("scatter"))) {
 			const int step = 100 / damage.mid(7).toInt();
 			for (int p = 1 ; p < pages * 8 / 10 ; p += step) spoil(p, '\x5a');

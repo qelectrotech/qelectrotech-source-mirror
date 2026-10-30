@@ -837,15 +837,18 @@ bool seal(const QString &path, QString *error)
 		}))
 		return false;
 	lap("rows");
-		//Nothing it covers changed, and the counter is the one it says
+		//The counter is the one it says. Nothing it covers changed: compared
+		//byte for byte only under QET_QETDB_CHECK_DIGEST=1 (tests), 76 ms of
+		//f2099's save otherwise (speed first, the user, 2026-10-31)
+	const bool compare = qEnvironmentVariableIntValue("QET_QETDB_CHECK_DIGEST") == 1;
 	bool same = file.open(QIODevice::ReadOnly);
 	if (same) {
-		const QByteArray after = file.read(before.size());
+		const QByteArray after = file.read(compare ? before.size() : 100);
 		file.close();
-		same = after.size() == before.size()
+		same = after.size() >= 100 && file.size() > before.size()
 				&& qFromBigEndian<quint32>(after.constData() + 24) == counter
 				&& qFromBigEndian<quint32>(after.constData() + 92) == counter
-				&& coveredPages(after, page_size, root) == pages;
+				&& (!compare || (after.size() == before.size() && coveredPages(after, page_size, root) == pages));
 	}
 	lap("verify");
 	if (!same) {
@@ -1007,7 +1010,9 @@ void scanParityRows(const QByteArray &data, int page_size,
 	//since (@p path's header or a -wal/-journal beside it says so) is left
 	//as it is: its new pages are not damage. Unless @p back_to_save: then
 	//its pages are rebuilt as saved too, as the user chose (P5)
-QetDbFile::Repair repairPages(const QString &copy, const QString &path, bool back_to_save = false)
+	//@p dry: what is wrong found, nothing written or rebuilt (an open's
+	//check beside its read)
+QetDbFile::Repair repairPages(const QString &copy, const QString &path, bool back_to_save = false, bool dry = false)
 {
 	QetDbFile::Repair r;
 	QFile file(copy);
@@ -1024,6 +1029,10 @@ QetDbFile::Repair repairPages(const QString &copy, const QString &path, bool bac
 		//included, without one
 	QByteArray data = original;
 	const bool header_bad = !headerUsable(data, page_size);
+	if (header_bad && dry) {
+		r.header = true;
+		return r;
+	}
 	if (header_bad) {
 		data = qetdbHeader(page_size, quint32(data.size() / page_size), 1) + data.mid(100);
 		if (!writeWhole(copy, data)) return r;
@@ -1122,8 +1131,10 @@ QetDbFile::Repair repairPages(const QString &copy, const QString &path, bool bac
 		//or the file is shorter than its header says)
 	const bool parity_damaged = shards.size() < expected || r.scanned
 			|| original.size() < qsizetype(qFromBigEndian<quint32>(data.constData() + 28)) * page_size;
-	if (bad.isEmpty() && !header_bad && !parity_damaged && !r.edited)
+	if (dry || (bad.isEmpty() && !header_bad && !parity_damaged && !r.edited)) {
+		r.parity_damaged = dry && parity_damaged;
 		return r;
+	}
 	r.parity_damaged = parity_damaged;
 	if (!bad.isEmpty()) {
 		QList<std::pair<int, int>> lost_parity;
@@ -1276,9 +1287,11 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 {
 	const QString saving = path + QStringLiteral(".saving");
 	QFuture<QByteArray> hashing;
-	const auto give_up = [&saving, &hashing]() {
+	QFuture<bool> early_flush;
+	const auto give_up = [&saving, &hashing, &early_flush]() {
 			//Not removed while it is read (Windows refuses)
 		if (hashing.isValid()) hashing.waitForFinished();
+		if (early_flush.isValid()) early_flush.waitForFinished();
 		for (const char *suffix : {"", "-journal", "-wal", "-shm"})
 			QFile::remove(saving + QLatin1String(suffix));
 		return false;
@@ -1293,8 +1306,13 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 		return true;
 	};
 	QHash<QString, QByteArray> digests;
-	if (!database.copyTo(saving, error) || !lap("copy")
-			|| !finish(saving, error, database.unchangedDigests(), &digests) || !lap("finish")
+	if (!database.copyTo(saving, error) || !lap("copy"))
+		return give_up();
+		//Most of its pages, written by the copy, on their way to disk while
+		//the rest is done: the flush before it replaces anything then has
+		//only the last changes to write (110 ms of f2099's save otherwise)
+	early_flush = QtConcurrent::run([saving]() { return flushFile(saving); });
+	if (!finish(saving, error, database.unchangedDigests(), &digests) || !lap("finish")
 			|| !recordRevision(saving, previous.isEmpty() ? path : previous, error) || !lap("revision")
 			|| !seal(saving, error) || !lap("seal"))
 		return give_up();
@@ -1310,7 +1328,10 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 		});
 		//Flushed while it is checked: neither changes it, and it replaces
 		//nothing before both are done
-	QFuture<bool> flushing = QtConcurrent::run([saving]() { return flushFile(saving); });
+	QFuture<bool> flushing = QtConcurrent::run([saving, early_flush]() mutable {
+		early_flush.waitForFinished();
+		return flushFile(saving);
+	});
 	const bool checked = check(saving, error);
 	lap("check");
 	const bool flushed = flushing.result();
@@ -1345,10 +1366,38 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 	for projectDataBase::writeFolioContent().
 	@return false, with @p error saying why, if it cannot be read
 */
+static bool readCopy(const QString &path, QDomDocument *document, QString *error,
+					 const std::function<bool(const QString &copy)> &with_copy, QetDbFile::Repair *repair,
+					 QetDbFile::OutsideEdit outside, bool pages_first, bool *again);
+
 bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error,
 					 const std::function<bool(const QString &copy)> &with_copy, Repair *repair,
 					 OutsideEdit outside)
 {
+		//Speed first (the user, 2026-10-31): the pages are checked against
+		//the repair data beside the read, not before it (111 ms of f2099's
+		//open); a file that does not open as saved, or whose pages are not
+		//as saved, is read again with them repaired first. Another
+		//program's journal beside it, or going back to its save, first
+	bool again = false;
+	const bool pages_first = outside == OutsideEdit::BackToSave || QFileInfo::exists(path + QLatin1String("-wal"))
+			|| QFileInfo::exists(path + QLatin1String("-journal"));
+	const bool ok = readCopy(path, document, error, with_copy, repair, outside, pages_first, &again);
+	if (!again && (ok || pages_first)) return ok;
+	if (document) *document = QDomDocument();
+	if (error) error->clear();
+	return readCopy(path, document, error, with_copy, repair, outside, true, nullptr);
+}
+
+	//QetDbFile::read(), with the pages checked first (@p pages_first), or
+	//@p again set where a file that does not open as saved should be read
+	//again with them checked first
+static bool readCopy(const QString &path, QDomDocument *document, QString *error,
+					 const std::function<bool(const QString &copy)> &with_copy, QetDbFile::Repair *repair,
+					 QetDbFile::OutsideEdit outside, bool pages_first, bool *again)
+{
+	using QetDbFile::Repair;
+	using QetDbFile::OutsideEdit;
 	QTemporaryDir dir;
 	const QString copy = dir.filePath(QStringLiteral("project.qetdb"));
 	if (!dir.isValid() || !QFile::copy(path, copy)) {
@@ -1359,7 +1408,7 @@ bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error
 		//carries; the file itself is written by the next save only
 	QElapsedTimer timer;
 	timer.start();
-	Repair repaired = repairPages(copy, path, outside == OutsideEdit::BackToSave);
+	Repair repaired = pages_first ? repairPages(copy, path, outside == OutsideEdit::BackToSave) : Repair();
 	if (repair) *repair = repaired;
 	if (repaired.back_to_save)
 		qInfo().noquote() << "QetDbFile:" << QFileInfo(path).fileName() << "was changed by another program;"
@@ -1372,9 +1421,13 @@ bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error
 	else if (repaired.beyond)
 		qWarning().noquote() << "QetDbFile:" << QFileInfo(path).fileName() << "has" << repaired.bad_pages
 							 << "damaged pages, more in" << repaired.beyond << "groups than its repair data covers";
-	if (qEnvironmentVariableIntValue("QET_QETDB_SAVE_TIMES") == 1)
+	if (pages_first && qEnvironmentVariableIntValue("QET_QETDB_SAVE_TIMES") == 1)
 		qInfo().noquote() << "QetDbFile::read: pages checked in" << timer.elapsed() << "ms";
 	if (!check(copy, error)) {
+		if (again) {
+			*again = true;
+			return false;
+		}
 		if (repaired.beyond && error)
 			*error = QObject::tr("%n of its pages are damaged, more than the repair data it keeps can rebuild",
 								 nullptr, repaired.bad_pages);
@@ -1398,11 +1451,27 @@ bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error
 		digest = QtConcurrent::run([copy]() {
 			return contentDigest(copy);
 		});
+		//A damaged index passes SQLite's quick check and the digest: the
+		//pages checked too, on a thread of their own, nothing written
+	QFuture<Repair> pages;
+	if (again)
+		pages = QtConcurrent::run([copy, path]() {
+			return repairPages(copy, path, false, true);
+		});
+	const auto damaged = [&pages, &digest, again]() {
+		if (!pages.isValid()) return false;
+		const Repair found = pages.result();
+		*again = !found.edited && (found.header || found.bad_pages || found.parity_damaged);
+			//The copy is not removed while it is read
+		if (*again && digest.isValid()) digest.waitForFinished();
+		return *again;
+	};
 		//The checked copy, for the project database to start from (S4x X2):
 		//if it did, the folios' items are left in it until each is built
 		//(S4x X3)
 	const bool deferred = with_copy && with_copy(copy);
 	const bool read = projectDataBase::readDocument(copy, document, error, deferred);
+	if (damaged()) return false;
 	if (!saved_digest.isEmpty() && digest.result() != saved_digest) {
 			//It passed every other check: the user may open it as it is,
 			//rather than be locked out of it (the user, 2026-10-30)
@@ -1413,6 +1482,10 @@ bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error
 								 << "opened with content that is not what QElectroTech saved, as the user chose;"
 									" its content check was skipped";
 			return read;
+		}
+		if (again) {
+			*again = true;
+			return false;
 		}
 		repaired.content_differs = true;
 		if (repair) *repair = repaired;

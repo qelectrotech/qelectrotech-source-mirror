@@ -1840,7 +1840,7 @@ add_executable(
   ${QET_DIR}/sources/dataBase/qetparity.cpp)
 add_test(NAME tst_qetdbfile COMMAND tst_qetdbfile)
 add_dependencies(tst_qetdbfile qelectrotech)
-target_link_libraries(tst_qetdbfile PRIVATE Qt::Test Qt::Sql)
+target_link_libraries(tst_qetdbfile PRIVATE Qt::Test Qt::Sql Qt::Concurrent)
 target_compile_definitions(tst_qetdbfile PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
@@ -1853,7 +1853,7 @@ add_executable(
   tst_qetparity.cpp
   ${QET_DIR}/sources/dataBase/qetparity.cpp)
 add_test(NAME tst_qetparity COMMAND tst_qetparity)
-target_link_libraries(tst_qetparity PRIVATE Qt::Test)
+target_link_libraries(tst_qetparity PRIVATE Qt::Test Qt::Concurrent)
 
 # The repair data of a .qetdb against parity.py's kinds of damage, through
 # --qetdb-repair: what it covers comes back exactly, the rest is refused,
