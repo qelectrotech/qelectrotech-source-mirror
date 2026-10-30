@@ -501,6 +501,7 @@ class QETProject : public QObject
 		bool writeContainerFile(const QString &path, QString *error = nullptr);
 		bool writeDatabaseFile(const QString &path, QString *error = nullptr);
 		bool setKeepHistory(bool on, QString *error = nullptr);
+		bool setHistoryLimit(int saves, QString *error = nullptr);
 	private:
 		static QUuid derivedUuid(const QByteArray &content);
 		void refresh();

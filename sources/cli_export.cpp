@@ -97,6 +97,8 @@ const QHash<QString, QString> &exportFlags()
 		{"--history-on", "historyon"},
 		{"--history-off", "historyoff"},
 		{"--history-diff", "historydiff"},
+		{"--last-change", "lastchange"},
+		{"--history-keep", "historykeep"},
 		{"--revision", "revision"},
 		{"--export-delivery", "delivery"},
 		{"--from-database", "fromdb"},
@@ -1312,6 +1314,40 @@ int run(const QStringList &args)
 		}
 		for (const QString &line : lines)
 			out << line << "\n";
+		out.flush();
+		return 0;
+	}
+
+	// --history-keep keeps only a .qetdb's last saves (QETDB-S6-SCOPE.md S6-6)
+	if (format == "historykeep") {
+		bool number = false;
+		const int saves = rest.value(1).toInt(&number);
+		if (rest.size() < 2 || !number || !QetDbFile::isDatabasePath(rest.at(0))) {
+			err << "Usage: qelectrotech --history-keep <project.qetdb> <saves, 0 for all>\n";
+			return 2;
+		}
+		QString error;
+		if (!QetDbFile::setHistoryLimit(rest.at(0), saves, &error)) {
+			err << "Cannot limit the history of " << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		return 0;
+	}
+
+	// --last-change says which save last changed a symbol, a wire or a
+	// folio (QETDB-S6-SCOPE.md S6-5)
+	if (format == "lastchange") {
+		if (rest.size() < 2 || !QetDbFile::isDatabasePath(rest.at(0))) {
+			err << "Usage: qelectrotech --last-change <project.qetdb> <uuid>\n";
+			return 2;
+		}
+		QString error;
+		const QString line = QetDbFile::lastChange(rest.at(0), rest.at(1), &error);
+		if (!error.isEmpty()) {
+			err << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		out << (line.isEmpty() ? QStringLiteral("not changed by a save it keeps") : line) << "\n";
 		out.flush();
 		return 0;
 	}

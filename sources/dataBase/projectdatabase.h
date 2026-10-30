@@ -95,6 +95,12 @@ class projectDataBase : public QObject
 		QSet<QUuid> foliosWithCableWires() const;
 		QString stateDump() const;
 		bool copyTo(const QString &file, QString *error = nullptr);
+			/// The content digests (QetDbFile) of the tables the last
+			/// copyTo() copied that no one wrote to since the file saved
+			/// before it: a save reuses them. savedDigests() says that file
+			/// was saved, with each table's (QETDB-S6-SCOPE.md §8 H5)
+		QHash<QString, QByteArray> unchangedDigests() const {return m_copy_reuse;}
+		void savedDigests(const QHash<QString, QByteArray> &digests);
 		QString workingCopyPath() const {return m_working_copy_path;}
 			/// The project is open: first commit, the copy is ready
 		void workingCopyOpened();
@@ -494,7 +500,12 @@ class projectDataBase : public QObject
 		void removeWorkingCopy();
 		void endTransaction();
 		void beginTransaction();
+		void markCopy(QSqlQuery &query);
 		qint64 totalChanges() const;
+			//What the save of the file copyTo() wrote may reuse, and the
+			//write generation it was copied at (markCopy())
+		QHash<QString, QByteArray> m_saved_digests, m_copy_reuse;
+		qint64 m_copy_generation = -1;
 		bool m_working_copy = false, m_working_copy_ready = false;
 		bool m_adopted = false;
 		void loadCaches();

@@ -787,6 +787,78 @@ bool projectDataBase::writeProjectFromDatabase(const QString &project_file, QStr
 }
 
 /**
+	@brief projectDataBase::markCopy
+	Which tables the file copyTo() just wrote holds as the file saved
+	before it did, and from now on which tables are written: a trigger of
+	this connection's own on each (temp, so never in a copy) marks the
+	table with the write generation, raised at each copy. A table is
+	unchanged if it has its three triggers and no mark; a table made since
+	gets its triggers now, with nothing written to it yet (copyTo() runs
+	this right after the copy, outside any transaction).
+	QETDB-S6-SCOPE.md §8 H5.
+*/
+void projectDataBase::markCopy(QSqlQuery &query)
+{
+	m_copy_generation = -1;
+	if (!query.exec(QStringLiteral("CREATE TEMP TABLE IF NOT EXISTS qet_written (name TEXT PRIMARY KEY, generation INTEGER NOT NULL)"))
+			|| !query.exec(QStringLiteral("CREATE TEMP TABLE IF NOT EXISTS qet_generation (value INTEGER NOT NULL)"))
+			|| !query.exec(QStringLiteral("INSERT INTO qet_generation SELECT 1 WHERE NOT EXISTS (SELECT 1 FROM qet_generation)"))
+			|| !query.exec(QStringLiteral("SELECT value FROM qet_generation")) || !query.next())
+		return;
+	const qint64 generation = query.value(0).toLongLong();
+	QHash<QString, int> triggers;
+	if (!query.exec(QStringLiteral("SELECT tbl_name FROM temp.sqlite_master WHERE type = 'trigger' "
+								   "AND name LIKE 'qet\\_written\\_%' ESCAPE '\\'")))
+		return;
+	while (query.next()) ++triggers[query.value(0).toString()];
+	QSet<QString> written;
+	if (!query.exec(QStringLiteral("SELECT name FROM qet_written"))) return;
+	while (query.next()) written.insert(query.value(0).toString());
+	for (auto it = m_saved_digests.constBegin() ; it != m_saved_digests.constEnd() ; ++it)
+		if (triggers.value(it.key()) == 3 && !written.contains(it.key()))
+			m_copy_reuse.insert(it.key(), it.value());
+	if (!query.exec(QStringLiteral("UPDATE qet_generation SET value = value + 1"))) {
+		m_copy_reuse.clear();
+		return;
+	}
+	m_copy_generation = generation;
+
+	QStringList tables;
+	if (!query.exec(QStringLiteral("SELECT name FROM main.sqlite_master WHERE type = 'table' "
+								   "AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\'")))
+		return;
+	while (query.next()) tables << query.value(0).toString();
+	for (const QString &table : std::as_const(tables)) {
+		if (triggers.value(table) == 3) continue;
+		for (const char *event : {"INSERT", "UPDATE", "DELETE"})
+			query.exec(QStringLiteral("CREATE TEMP TRIGGER IF NOT EXISTS \"qet_written_%1_%2\" AFTER %1 ON main.\"%2\" "
+									  "BEGIN INSERT OR REPLACE INTO qet_written (name, generation) "
+									  "VALUES ('%2', (SELECT value FROM qet_generation)); END")
+					   .arg(QLatin1String(event), table));
+	}
+}
+
+/**
+	@brief projectDataBase::savedDigests
+	The file the last copyTo() wrote was saved, @p digests its tables'
+	content digests: the next save reuses those of the tables no one
+	writes to before it (markCopy())
+*/
+void projectDataBase::savedDigests(const QHash<QString, QByteArray> &digests)
+{
+	if (m_copy_generation < 0) {
+		m_saved_digests.clear();
+		return;
+	}
+	QSqlQuery query(m_data_base);
+	if (!query.exec(QStringLiteral("DELETE FROM qet_written WHERE generation <= %1").arg(m_copy_generation))) {
+		m_saved_digests.clear();
+		return;
+	}
+	m_saved_digests = digests;
+}
+
+/**
 	@brief projectDataBase::copyTo
 	Bring every table up to date and copy the database to the new file
 	@p file (VACUUM INTO), as it then holds the whole project.
@@ -812,6 +884,8 @@ bool projectDataBase::copyTo(const QString &file, QString *error)
 	QSqlQuery query(m_data_base);
 	query.setForwardOnly(true);
 	const bool copied = query.exec(QStringLiteral("VACUUM INTO '%1'").arg(QString(file).replace(QLatin1Char('\''), QStringLiteral("''"))));
+	m_copy_reuse.clear();
+	if (copied) markCopy(query);
 	beginTransaction();
 	if (qEnvironmentVariableIntValue("QET_QETDB_SAVE_TIMES") == 1)
 		qInfo().noquote() << "projectDataBase::copyTo (ms): update and flush" << update_ms

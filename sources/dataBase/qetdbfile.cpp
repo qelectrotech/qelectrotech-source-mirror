@@ -26,6 +26,7 @@
 #include <QDateTime>
 #include <QDir>
 #include <QFuture>
+#include <QHash>
 #include <QtConcurrent>
 #include <QElapsedTimer>
 #include <QFile>
@@ -75,6 +76,11 @@ const QString history_schema = QStringLiteral(
 	"ord INTEGER NOT NULL, author TEXT, host TEXT, time TEXT NOT NULL, message TEXT, "
 	"kind TEXT NOT NULL, release_label TEXT, digest TEXT, prev_digest TEXT); "
 	"CREATE TABLE IF NOT EXISTS revision_changes (revision TEXT PRIMARY KEY NOT NULL, changeset BLOB)");
+	//How many saves the history keeps (S6-6): only in a file told to keep
+	//fewer than all, so that a file without a limit is one the history's
+	//first version reads too
+const QString history_setting_schema = QStringLiteral(
+	"CREATE TABLE IF NOT EXISTS revision_setting (key TEXT PRIMARY KEY NOT NULL, value TEXT)");
 
 template <typename Work>
 bool withConnection(const QString &path, QString *error, Work work);
@@ -83,20 +89,25 @@ bool withConnection(const QString &path, QString *error, Work work);
 	//order: SQLite's checks see broken pages, not a changed value inside
 	//one (QET-SQL-FORMAT-SCOPE.md 5.4). Each table on a connection of its
 	//own in parallel, BLAKE2b: 1 s of f2099's save and open as one SHA-256
-	//read row by row. Empty if it cannot be read.
-QString contentDigest(const QString &path)
+	//read row by row. Empty if it cannot be read. The tables in @p reuse
+	//are not read again: their digests are taken from it (a save, of the
+	//tables no one wrote to since the file before, QETDB-S6-SCOPE.md §8
+	//H5). @p table_digests, if given, gets each table's.
+QString contentDigest(const QString &path, const QHash<QString, QByteArray> &reuse = {},
+					  QHash<QString, QByteArray> *table_digests = nullptr)
 {
 	QStringList tables;
 	withConnection(path, nullptr, [&tables](QSqlQuery &query) {
 		if (!query.exec(QStringLiteral("SELECT name FROM sqlite_master WHERE type = 'table' "
 									   "AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\' "
-									   "AND name NOT IN ('qet_format', 'revision', 'revision_changes') ORDER BY name")))
+									   "AND name NOT IN ('qet_format', 'revision', 'revision_changes', 'revision_setting') ORDER BY name")))
 			return false;
 		while (query.next()) tables << query.value(0).toString();
 		return true;
 	});
 	if (tables.isEmpty()) return {};
-	const auto table_digest = [&path](const QString &table) {
+	const auto table_digest = [&path, &reuse](const QString &table) {
+		if (reuse.contains(table)) return reuse.value(table);
 		QCryptographicHash hash(QCryptographicHash::Blake2b_256);
 		const auto add = [&hash](char tag, const QByteArray &bytes) {
 			const quint64 size = quint64(bytes.size());
@@ -133,6 +144,7 @@ QString contentDigest(const QString &path)
 		if (digests.at(i).isEmpty()) return {};
 		all.addData(tables.at(i).toUtf8());
 		all.addData(digests.at(i));
+		if (table_digests) table_digests->insert(tables.at(i), digests.at(i));
 	}
 	return QStringLiteral("blake2b:") + QString::fromLatin1(all.result().toHex());
 }
@@ -195,8 +207,10 @@ bool withConnection(const QString &path, QString *error, Work work)
 
 	//What a .qetdb is beside the project database: who wrote it, its
 	//format, at rest with nothing beside it; the database's own indexes
-	//and the working copy's row left out (QETDB-S4-SCOPE.md 3.1, E7)
-bool finish(const QString &path, QString *error)
+	//and the working copy's row left out (QETDB-S4-SCOPE.md 3.1, E7).
+	//@p reuse and @p table_digests: contentDigest()'s
+bool finish(const QString &path, QString *error, const QHash<QString, QByteArray> &reuse = {},
+			QHash<QString, QByteArray> *table_digests = nullptr)
 {
 		//QET_QETDB_SAVE_TIMES=1: its own steps, in ms
 	QElapsedTimer timer;
@@ -206,7 +220,7 @@ bool finish(const QString &path, QString *error)
 		times << QStringLiteral("%1 %2").arg(QLatin1String(step)).arg(timer.restart());
 		return true;
 	};
-	const bool ok = withConnection(path, error, [&path, &lap](QSqlQuery &query) {
+	const bool ok = withConnection(path, error, [&path, &lap, &reuse, table_digests, error](QSqlQuery &query) {
 			//The file is not the project's until it is flushed whole and
 			//put in its place (QetDbFile::save()): a crash before leaves
 			//only it, thrown away by the next save. So no journal on disk
@@ -240,8 +254,30 @@ bool finish(const QString &path, QString *error)
 				|| !query.exec(QStringLiteral("PRAGMA journal_mode = DELETE"))
 				|| !lap("pragmas"))
 			return false;
-		const QString digest = contentDigest(path);
+		const QString digest = contentDigest(path, reuse, table_digests);
 		if (digest.isEmpty() || !lap("digest")) return false;
+			//QET_QETDB_CHECK_DIGEST=1 (tests): the reused digests are what
+			//reading every table again gives
+		if (!reuse.isEmpty() && qEnvironmentVariableIntValue("QET_QETDB_CHECK_DIGEST") == 1) {
+			QHash<QString, QByteArray> read_again;
+			contentDigest(path, {}, &read_again);
+			QStringList wrong;
+			for (auto it = reuse.constBegin() ; it != reuse.constEnd() ; ++it)
+				if (read_again.value(it.key()) != it.value()) wrong << it.key();
+			QStringList read;
+			for (auto it = read_again.constBegin() ; it != read_again.constEnd() ; ++it)
+				if (!reuse.contains(it.key())) read << it.key();
+			read.sort();
+			qInfo().noquote() << "QetDbFile: content digest reused for" << reuse.size() << "of"
+							  << read_again.size() << "tables; read:" << read.join(QStringLiteral(", "));
+			if (!wrong.isEmpty()) {
+				const QString why = QStringLiteral("content digest reused for changed tables: ")
+						+ wrong.join(QStringLiteral(", "));
+				qWarning().noquote() << "QetDbFile:" << why;
+				if (error) *error = why;
+				return false;
+			}
+		}
 		query.prepare(QStringLiteral("INSERT INTO qet_format (key, value) VALUES ('content_digest', :digest)"));
 		query.bindValue(QStringLiteral(":digest"), digest);
 		return query.exec() && lap("digest row");
@@ -532,6 +568,20 @@ QString changeSummary(const QByteArray &changeset, QStringList *objects = nullpt
 			+ (tables.isEmpty() ? QString() : QStringLiteral(" (%1)").arg(tables.join(QStringLiteral(", "))));
 }
 
+	//The history @p file keeps cut to the number of saves its
+	//revision_setting "keep" says, if it says one (QETDB-S6-SCOPE.md S6-6):
+	//the oldest revisions dropped, the oldest kept still one to go back to
+bool keepLimit(Sqlite &file)
+{
+	const auto rows = file.select(QStringLiteral(
+		"SELECT CAST(value AS INTEGER) FROM revision_setting WHERE key = 'keep'"));
+	const qint64 keep = rows.isEmpty() ? 0 : rows.first().value(0).toLongLong();
+	if (keep <= 0) return true;
+	return file.run(QStringLiteral("DELETE FROM revision_changes WHERE revision IN (SELECT uuid FROM revision "
+								   "WHERE ord <= (SELECT max(ord) FROM revision) - ?)"), {keep})
+		&& file.run(QStringLiteral("DELETE FROM revision WHERE ord <= (SELECT max(ord) FROM revision) - ?"), {keep});
+}
+
 	//The revision of this save, if the project keeps a history (the file
 	//it replaces, @p previous, has one): what changed from @p previous to
 	//@p saving as SQLite's session extension finds it, table by table,
@@ -557,7 +607,7 @@ bool recordRevision(const QString &saving, const QString &previous, QString *err
 	QStringList tables;
 	for (const QVariantList &row : file.select(QStringLiteral(
 			"SELECT name FROM main.sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\' "
-			"AND name NOT IN ('qet_format', 'revision', 'revision_changes') ORDER BY name")))
+			"AND name NOT IN ('qet_format', 'revision', 'revision_changes', 'revision_setting') ORDER BY name")))
 		tables << row.value(0).toString();
 
 	bool recorded = true;
@@ -589,6 +639,9 @@ bool recordRevision(const QString &saving, const QString &previous, QString *err
 			&& file.exec(history_schema)
 			&& file.exec(QStringLiteral("INSERT INTO main.revision SELECT * FROM prev.revision"))
 			&& file.exec(QStringLiteral("INSERT INTO main.revision_changes SELECT * FROM prev.revision_changes"))
+			&& (!has_table(QStringLiteral("prev"), QStringLiteral("revision_setting"))
+				|| (file.exec(history_setting_schema)
+					&& file.exec(QStringLiteral("INSERT INTO main.revision_setting SELECT * FROM prev.revision_setting"))))
 			&& file.run(QStringLiteral("INSERT INTO main.revision (uuid, parent_uuid, ord, author, host, time, kind, "
 									   "digest, prev_digest) VALUES (?, ?, ?, ?, ?, ?, 'save', ?, ?)"),
 						{uuid, parent.isEmpty() ? QVariant() : parent.first().value(0),
@@ -598,6 +651,7 @@ bool recordRevision(const QString &saving, const QString &previous, QString *err
 						 digestOf(file, QStringLiteral("main")), digestOf(file, QStringLiteral("prev"))})
 			&& file.run(QStringLiteral("INSERT INTO main.revision_changes (revision, changeset) VALUES (?, ?)"),
 						{uuid, recorded ? QVariant(qCompress(changeset, 9)) : QVariant()})
+			&& keepLimit(file)
 			&& file.exec(QStringLiteral("COMMIT"));
 	if (!ok) {
 		if (error) *error = file.error();
@@ -725,7 +779,9 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 		times << QStringLiteral("%1 %2").arg(QLatin1String(step)).arg(timer.restart());
 		return true;
 	};
-	if (!database.copyTo(saving, error) || !lap("copy") || !finish(saving, error) || !lap("finish")
+	QHash<QString, QByteArray> digests;
+	if (!database.copyTo(saving, error) || !lap("copy")
+			|| !finish(saving, error, database.unchangedDigests(), &digests) || !lap("finish")
 			|| !recordRevision(saving, previous.isEmpty() ? path : previous, error) || !lap("revision"))
 		return give_up();
 		//The file is complete and no one else's yet: hashed beside its
@@ -758,6 +814,7 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 	if (!replace(saving, path, error))
 		return give_up();
 	lap("replace");
+	database.savedDigests(digests);
 	if (qEnvironmentVariableIntValue("QET_QETDB_SAVE_TIMES") == 1)
 		qInfo().noquote() << "QetDbFile::save (ms):" << times.join(QStringLiteral(", "));
 	return true;
@@ -841,6 +898,7 @@ bool QetDbFile::setHistory(const QString &path, bool on, QString *error)
 				//in it travel with every copy
 			ok = file.exec(QStringLiteral("DROP TABLE IF EXISTS revision"))
 					&& file.exec(QStringLiteral("DROP TABLE IF EXISTS revision_changes"))
+					&& file.exec(QStringLiteral("DROP TABLE IF EXISTS revision_setting"))
 					&& file.exec(QStringLiteral("VACUUM"));
 		}
 		if (!ok && error) *error = file.error();
@@ -859,10 +917,60 @@ bool QetDbFile::exportDelivery(const QString &path, const QString &output, QStri
 	return rewrite(path, output, [](Sqlite &file, QString *error) {
 		const bool ok = file.exec(QStringLiteral("DROP TABLE IF EXISTS revision"))
 				&& file.exec(QStringLiteral("DROP TABLE IF EXISTS revision_changes"))
+				&& file.exec(QStringLiteral("DROP TABLE IF EXISTS revision_setting"))
 				&& file.exec(QStringLiteral("VACUUM"));
 		if (!ok && error) *error = file.error();
 		return ok;
 	}, false, error);
+}
+
+/**
+	@brief QetDbFile::setHistoryLimit
+	Make the history the .qetdb @p path keeps hold only its last @p saves
+	revisions, cut now and at every save after; 0 keeps them all
+	(QETDB-S6-SCOPE.md S6-6). At least 2, so that one is left to go back
+	to. A new file in its place, as a save writes.
+*/
+bool QetDbFile::setHistoryLimit(const QString &path, int saves, QString *error)
+{
+	if (saves == 1 || saves < 0) {
+		if (error) *error = QObject::tr("keep at least 2 saves, or 0 for all");
+		return false;
+	}
+	return rewrite(path, path, [saves](Sqlite &file, QString *error) {
+		if (file.select(QStringLiteral(
+				"SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'revision'")).isEmpty()) {
+			if (error) *error = QObject::tr("it keeps no history");
+			return false;
+		}
+		const bool ok = file.exec(QStringLiteral("BEGIN"))
+				&& file.exec(history_setting_schema)
+				&& file.run(QStringLiteral("INSERT OR REPLACE INTO revision_setting (key, value) VALUES ('keep', ?)"),
+							{qlonglong(saves)})
+				&& keepLimit(file)
+				&& file.exec(QStringLiteral("COMMIT"))
+				&& file.exec(QStringLiteral("VACUUM"));
+		if (!ok) {
+			if (error) *error = file.error();
+			file.exec(QStringLiteral("ROLLBACK"));
+		}
+		return ok;
+	}, false, error);
+}
+
+/**
+	@return how many saves the history of the .qetdb @p path is limited to,
+	0 if it keeps them all or keeps none
+*/
+int QetDbFile::historyLimit(const QString &path)
+{
+	Sqlite file(path, false);
+	if (file.select(QStringLiteral(
+			"SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'revision_setting'")).isEmpty())
+		return 0;
+	const auto rows = file.select(QStringLiteral(
+		"SELECT CAST(value AS INTEGER) FROM revision_setting WHERE key = 'keep'"));
+	return rows.isEmpty() ? 0 : int(rows.first().value(0).toLongLong());
 }
 
 /**
@@ -979,6 +1087,41 @@ QStringList QetDbFile::historyDiff(const QString &path, qint64 from, qint64 to, 
 	QStringList objects;
 	const QString summary = changeSummary(changes, &objects);
 	return QStringList{QStringLiteral("%1 to %2: %3").arg(from).arg(to).arg(summary)} + objects;
+}
+
+/**
+	@brief QetDbFile::lastChange
+	Who last changed the symbol, wire or folio @p uuid in the .qetdb
+	@p path: the newest save whose recorded changes name it, as
+	"ord  time  who@host  added|changed" (QETDB-S6-SCOPE.md S6-5). Empty if
+	none of the saves it keeps did, or it keeps no history (@p error then
+	says so); a save whose changes were not recorded is passed over.
+*/
+QString QetDbFile::lastChange(const QString &path, const QString &uuid, QString *error)
+{
+	Sqlite file(path, false);
+	if (!file.db() || file.select(QStringLiteral(
+			"SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'revision'")).isEmpty()) {
+		if (error) *error = file.db() ? QObject::tr("it keeps no history") : file.error();
+		return {};
+	}
+		//changeSummary() names objects by the text of their key
+	const QString suffix = QLatin1Char(' ') + uuid + QStringLiteral(": ");
+	for (const QVariantList &row : file.select(QStringLiteral(
+			"SELECT r.ord, r.time, r.author, r.host, c.changeset FROM revision r "
+			"JOIN revision_changes c ON c.revision = r.uuid "
+			"WHERE r.kind = 'save' AND c.changeset IS NOT NULL ORDER BY r.ord DESC"))) {
+		QStringList objects;
+		changeSummary(qUncompress(row.value(4).toByteArray()), &objects);
+		for (const QString &object : std::as_const(objects)) {
+			const int at = object.indexOf(suffix);
+			if (at < 0) continue;
+			return QStringLiteral("%1  %2  %3@%4  %5").arg(row.value(0).toString(), row.value(1).toString(),
+														   row.value(2).toString(), row.value(3).toString(),
+														   object.mid(at + suffix.size()));
+		}
+	}
+	return {};
 }
 
 /**

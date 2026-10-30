@@ -2992,6 +2992,28 @@ bool QETProject::setKeepHistory(bool on, QString *error)
 }
 
 /**
+	@brief QETProject::setHistoryLimit
+	Make this project's .qetdb keep only its last @p saves revisions, 0 for
+	all (QETDB-S6-SCOPE.md S6-6): written to its file at once, as
+	setKeepHistory() does.
+*/
+bool QETProject::setHistoryLimit(int saves, QString *error)
+{
+	if (!QetDbFile::isDatabasePath(m_file_path) || !QFileInfo::exists(m_file_path)) {
+		if (error) *error = tr("a history is kept only in a project saved as .qetdb");
+		return false;
+	}
+	if (changedOnDisk()) {
+		if (error) *error = tr("the file was changed on disk since it was opened or saved");
+		return false;
+	}
+	if (!QetDbFile::setHistoryLimit(m_file_path, saves, error))
+		return false;
+	rememberDiskState();
+	return true;
+}
+
+/**
 	@brief QETProject::writeContainerFile
 	Write this project to @p path as a .qetz
 */
