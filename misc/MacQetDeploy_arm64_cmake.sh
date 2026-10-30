@@ -53,6 +53,16 @@ if [ -z "$QT_PREFIX" ] || [ ! -d "$QT_PREFIX/lib/QtCore.framework" ] ; then
 fi
 export CMAKE_PREFIX_PATH="$QT_PREFIX:$CMAKE_PREFIX_PATH"
 
+# SQLite de Homebrew : le sqlite3.h du SDK macOS n'a pas l'extension session
+# (sqlite3session_*, sqlite3changeset_*) utilisee par QetDbFile pour
+# l'historique des .qetdb. La formule sqlite est keg-only, donc absente de
+# /opt/homebrew/include : on la designe explicitement a CMake.
+SQLITE_PREFIX=$(brew --prefix sqlite 2>/dev/null || true)
+if [ -z "$SQLITE_PREFIX" ] || [ ! -f "$SQLITE_PREFIX/include/sqlite3.h" ] ; then
+    echo "ERROR: cannot find SQLite via Homebrew. Run: brew install sqlite"
+    exit 1
+fi
+
 ### GIT ####################################################
 echo
 echo "______________________________________________________________"
@@ -106,7 +116,8 @@ cmake -S . -B "$BUILD_DIR" -G Ninja \
     -DQET_EXPORT_PROJECT_DB=ON \
     -DPACKAGE_TESTS=OFF \
     -DQET_ENABLE_SPACEMOUSE=ON \
-    -DQET_SPACEMOUSE_BACKEND=hid 
+    -DQET_SPACEMOUSE_BACKEND=hid \
+    -DSQLite3_ROOT="$SQLITE_PREFIX"
 
 if [ $? -ne 0 ]; then
     echo "ERROR: cmake configure failed."
