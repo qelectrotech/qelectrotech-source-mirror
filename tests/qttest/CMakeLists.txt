@@ -366,6 +366,10 @@ target_compile_definitions(tst_multielementinfo PRIVATE
 # collection paths just chosen, not the ones they replace.
 qet_add_app_test(tst_assistantinfopaths tst_assistantinfopaths.cpp)
 
+# Formatting the text of several title block cells at once: only what is
+# checked changes, one undo step, saved with the cell and drawn.
+qet_add_app_test(tst_titleblockbulkformat tst_titleblockbulkformat.cpp)
+
 # %T in a report or cross reference formula is the target folio's title.
 qet_add_app_test(tst_reportfoliotitle tst_reportfoliotitle.cpp)
 
