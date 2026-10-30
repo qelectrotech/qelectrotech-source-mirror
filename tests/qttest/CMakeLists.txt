@@ -366,6 +366,10 @@ target_compile_definitions(tst_multielementinfo PRIVATE
 # collection paths just chosen, not the ones they replace.
 qet_add_app_test(tst_assistantinfopaths tst_assistantinfopaths.cpp)
 
+# Formatting the text of several title block cells at once: only what is
+# checked changes, one undo step, saved with the cell and drawn.
+qet_add_app_test(tst_titleblockbulkformat tst_titleblockbulkformat.cpp)
+
 # %T in a report or cross reference formula is the target folio's title.
 qet_add_app_test(tst_reportfoliotitle tst_reportfoliotitle.cpp)
 
@@ -1822,6 +1826,10 @@ target_link_libraries(tst_workingcopypoll PRIVATE Qt::Xml)
 target_compile_definitions(tst_workingcopypoll PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# The status bar: the grid step with its menu, a magnet for snapping, the
+# zoom with fixed ones.
+qet_add_app_test(tst_statusgridzoom tst_statusgridzoom.cpp)
+
 # Which working copies a QElectroTech that did not close normally left are
 # offered at the next start, and which are deleted. QET-SQL-FORMAT S3z3.
 add_executable(
@@ -1914,3 +1922,8 @@ if(MSVC)
       "PATH=path_list_prepend:$<TARGET_FILE_DIR:Qt6::Core>")
   endif()
 endif()
+
+# Upright symbol texts read from bottom to top, when the setting asks.
+qet_add_app_test(tst_uprighttexts tst_uprighttexts.cpp)
+target_compile_definitions(tst_uprighttexts PRIVATE
+  QET_ELEMENTS_DIR="${QET_DIR}/elements")

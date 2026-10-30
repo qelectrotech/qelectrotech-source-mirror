@@ -108,6 +108,9 @@ class DynamicElementTextItem : public DiagramTextItem
 		QString text() const;
 		void setText(const QString &text);
 		static QString xmlTagName() {return QString("dynamic_elmt_text");}
+		static bool verticalFromBottom();
+		static void setVerticalFromBottom(bool from_bottom);
+		void updateReadingDirection();
 		void setInfoName(const QString &info_name);
 		QString infoName() const;
 		Element *linkedElementShown() const;

@@ -257,6 +257,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_vertical_texts_from_bottom_cb">
+         <property name="toolTip">
+          <string>A symbol's text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires' texts. Unticked by default: texts turn with their symbol.</string>
+         </property>
+         <property name="text">
+          <string>Upright symbol texts read from bottom to top</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="guides_startup_cb">
          <property name="text">
           <string>Show default guides (applies from the next time the programme is launched)</string>
@@ -446,7 +456,7 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
+       <item row="9" column="0">
         <widget class="QLabel" name="m_previous_versions_label">
          <property name="text">
           <string>Previous versions kept when saving a project</string>
@@ -456,7 +466,7 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="2">
+       <item row="9" column="2">
         <widget class="QSpinBox" name="m_previous_versions_sb">
          <property name="toolTip">
           <string>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with "-backups". Only the newest are kept.</string>
@@ -469,7 +479,7 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="0">
+       <item row="10" column="0">
         <widget class="QCheckBox" name="m_working_copy_recovery">
          <property name="text">
           <string>After a crash, offer projects as they were after their last edit (experimental)</string>
@@ -479,7 +489,7 @@
          </property>
         </widget>
        </item>
-       <item row="10" column="0">
+       <item row="11" column="0">
         <widget class="QCheckBox" name="m_qetdb_enabled">
          <property name="text">
           <string>Offer saving a project as one database file, .qetdb (experimental)</string>
@@ -489,7 +499,7 @@
          </property>
         </widget>
        </item>
-       <item row="11" column="0">
+       <item row="12" column="0">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -677,7 +687,7 @@
             </item>
            </widget>
           </item>
-          <item row="8" column="1">
+          <item row="9" column="1">
            <widget class="QLabel" name="label_9">
             <property name="text">
              <string>(Reload the elements collections to apply the changes)</string>
@@ -725,14 +735,14 @@
             </item>
            </layout>
           </item>
-          <item row="9" column="0">
+          <item row="8" column="0">
            <widget class="QLabel" name="m_cable_type_list_label">
             <property name="text">
              <string>Cable type list file</string>
             </property>
            </widget>
           </item>
-          <item row="9" column="1">
+          <item row="8" column="1">
            <layout class="QHBoxLayout" name="m_cable_type_list_layout">
             <item>
              <widget class="QLineEdit" name="m_cable_type_list_path_le">
@@ -1039,7 +1049,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="label_cable_textes">
             <property name="text">
-             <string>Designation, type, plant, location, length :</string>
+             <string>Designation, type, plant, location, length:</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -1072,7 +1082,7 @@
           <item row="1" column="0">
            <widget class="QLabel" name="label_cable_core_textes">
             <property name="text">
-             <string>Core colors (all of them) :</string>
+             <string>Core colors (all of them):</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -1105,7 +1115,7 @@
           <item row="2" column="0">
            <widget class="QLabel" name="label_cable_align">
             <property name="text">
-             <string>Text alignment :</string>
+             <string>Text alignment:</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>

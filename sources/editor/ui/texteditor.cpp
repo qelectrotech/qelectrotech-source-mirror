@@ -255,7 +255,8 @@ void TextEditor::setUpEditConnection()
 void TextEditor::on_m_font_pb_clicked()
 {
 	bool ok;
-	QFont font_ = QFontDialog::getFont(&ok, m_text -> font(), this);
+	QFont font_ = QFontDialog::getFont(&ok, m_text -> font(), this, QString(),
+									   QFontDialog::DontUseNativeDialog);
 
 	if (ok && font_ != m_text -> font()) {
 		m_size_sb -> blockSignals(true);

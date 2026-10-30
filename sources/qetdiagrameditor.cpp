@@ -173,6 +173,42 @@ namespace {
 		}
 		return icon;
 	}
+
+	/**
+		A horseshoe magnet, for snapping to the grid: red with its poles
+		when on, a grey outline when off
+	*/
+	QIcon magnetIcon()
+	{
+		QIcon icon;
+		const QColor ink = QApplication::palette().color(QPalette::WindowText);
+		for (int size : {16, 22, 32})
+			for (const bool on : {true, false})
+			{
+				QPixmap pixmap(size, size);
+				pixmap.fill(Qt::transparent);
+				QPainter painter(&pixmap);
+				painter.setRenderHint(QPainter::Antialiasing);
+				painter.scale(size / 24.0, size / 24.0);
+					//The bow, opening downwards, and its two legs
+				QPainterPath bow;
+				bow.moveTo(4, 20);
+				bow.lineTo(4, 11);
+				bow.arcTo(QRectF(4, 3, 16, 16), 180, -180);
+				bow.lineTo(20, 20);
+				const QColor body = on ? QColor(200, 30, 30) : QColor(140, 140, 140);
+				painter.setBrush(Qt::NoBrush);
+				painter.setPen(QPen(body, 5, Qt::SolidLine, Qt::FlatCap));
+				painter.drawPath(bow);
+					//The poles
+				painter.setPen(QPen(on ? ink : QColor(140, 140, 140), 5, Qt::SolidLine, Qt::FlatCap));
+				painter.drawLine(QPointF(4, 18), QPointF(4, 22));
+				painter.drawLine(QPointF(20, 18), QPointF(20, 22));
+				painter.end();
+				icon.addPixmap(pixmap, QIcon::Normal, on ? QIcon::On : QIcon::Off);
+			}
+		return icon;
+	}
 }
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
@@ -717,8 +753,9 @@ void QETDiagramEditor::setUpActions()
 	m_grid_snap->setStatusTip(tr("Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point"));
 	m_grid_snap->setCheckable(true);
 	m_grid_snap->setChecked(Diagram::gridSnap());
-	connect(m_grid_snap, &QAction::triggered, this, [](bool on) {
+	connect(m_grid_snap, &QAction::triggered, this, [this](bool on) {
 		Diagram::setGridSnap(on);
+		updateGridStepButton();
 	});
 
 		//The grid step, fine, medium or coarse: align blocks on a coarse
@@ -850,9 +887,48 @@ void QETDiagramEditor::setUpActions()
 	m_hidden_kinds_label = new QLabel(this);
 	m_hidden_kinds_label->setToolTip(tr("See Display > Show"));
 	statusBar()->addPermanentWidget(m_hidden_kinds_label);
-	m_zoom_label = new QLabel(this);
-	m_zoom_label->setToolTip(tr("Zoom of the folio on screen"));
-	statusBar()->addPermanentWidget(m_zoom_label);
+		//The grid step beside the zoom, always in sight; a click on it
+		//picks another, as on the toolbar
+	m_grid_status_button = new QToolButton(this);
+	m_grid_status_button->setMenu(m_grid_step_menu);
+	m_grid_status_button->setPopupMode(QToolButton::InstantPopup);
+	m_grid_status_button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	m_grid_status_button->setAutoRaise(true);
+	m_grid_status_button->setToolTip(m_grid_step_button->toolTip());
+	statusBar()->addPermanentWidget(m_grid_status_button);
+		//Beside it a magnet: snapping on or off, at a click
+	m_snap_status_button = new QToolButton(this);
+	m_snap_status_button->setIcon(magnetIcon());
+	m_snap_status_button->setCheckable(true);
+	m_snap_status_button->setChecked(m_grid_snap->isChecked());
+	m_snap_status_button->setAutoRaise(true);
+	m_snap_status_button->setToolTip(QStringLiteral("%1 (%2)").arg(m_grid_snap->text(),
+			m_grid_snap->shortcut().toString(QKeySequence::NativeText)));
+		//Not its default action: the button would take the action's icon
+	connect(m_snap_status_button, &QToolButton::clicked, m_grid_snap, &QAction::trigger);
+	connect(m_grid_snap, &QAction::toggled, m_snap_status_button, &QToolButton::setChecked);
+	statusBar()->addPermanentWidget(m_snap_status_button);
+	updateGridStepButton();
+		//The zoom, and at a click a few fixed ones
+	m_zoom_button = new QToolButton(this);
+	m_zoom_button->setToolTip(tr("Zoom of the folio on screen; a click offers fixed ones"));
+	m_zoom_button->setPopupMode(QToolButton::InstantPopup);
+	m_zoom_button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	m_zoom_button->setAutoRaise(true);
+	auto zoom_menu = new QMenu(m_zoom_button);
+	for (const int percent : {50, 75, 100, 125}) {
+		zoom_menu->addAction(tr("%1 %").arg(percent), this, [this, percent] {
+			if (DiagramView *dv = currentDiagramView())
+				dv->zoom(percent / 100.0 / dv->transform().m11());
+		});
+	}
+	zoom_menu->addSeparator();
+	zoom_menu->addAction(tr("Whole folio"), this, [this] {
+		if (DiagramView *dv = currentDiagramView())
+			dv->zoomFit();
+	});
+	m_zoom_button->setMenu(zoom_menu);
+	statusBar()->addPermanentWidget(m_zoom_button);
 	connect(QETApp::instance(), &QETApp::shownKindsChanged,
 			this, &QETDiagramEditor::updateShownKinds);
 	updateShownKinds();
@@ -4450,13 +4526,13 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 */
 void QETDiagramEditor::updateZoomLabel()
 {
-	if (!m_zoom_label)
+	if (!m_zoom_button)
 		return;
 	DiagramView *dv = currentDiagramView();
 		//Four digits, not rounded to a whole percent: the grid's cutoff
 		//(Settings > General) compares the exact zoom, so 77.6 % shows as
 		//such, not as 78 %
-	m_zoom_label->setText(dv ? tr("Zoom %1 %").arg(QLocale().toString(dv->transform().m11() * 100, 'g', 4))
+	m_zoom_button->setText(dv ? tr("Zoom %1 %").arg(QLocale().toString(dv->transform().m11() * 100, 'g', 4))
 				 : QString());
 }
 
@@ -5296,9 +5372,9 @@ void QETDiagramEditor::updateShownKinds()
 
 /**
 	@brief QETDiagramEditor::updateGridStepButton
-	Show the current grid step on its toolbar button and check it in its
-	menu; a step set in the settings that the menu does not offer shows
-	as its number.
+	Show the current grid step on its toolbar button and in the status
+	bar, and check it in its menu; a step set in the settings that the
+	menu does not offer shows as its number.
 */
 void QETDiagramEditor::updateGridStepButton()
 {
@@ -5307,8 +5383,11 @@ void QETDiagramEditor::updateGridStepButton()
 	const int y_step = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 	for (QAction *action : m_grid_step_menu->actions())
 		action->setChecked(x_step == y_step && action->data().toInt() == x_step);
-	m_grid_step_button->setText(x_step == y_step ? tr("Grid %1").arg(x_step)
-						     : tr("Grid %1 × %2").arg(x_step).arg(y_step));
+	const QString text = x_step == y_step ? tr("Grid %1").arg(x_step)
+					      : tr("Grid %1 × %2").arg(x_step).arg(y_step);
+	m_grid_step_button->setText(text);
+	if (m_grid_status_button)
+		m_grid_status_button->setText(text);
 }
 
 /**

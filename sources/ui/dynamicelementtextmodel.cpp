@@ -1778,7 +1778,8 @@ QWidget *DynamicTextItemDelegate::createEditor(
 		case DynamicElementTextModel::font:
 		{
 			bool ok;
-			QFont font = QFontDialog::getFont(&ok, index.data(Qt::UserRole+2).value<QFont>(), parent);
+			QFont font = QFontDialog::getFont(&ok, index.data(Qt::UserRole+2).value<QFont>(), parent,
+											  QString(), QFontDialog::DontUseNativeDialog);
 			QWidget *w = new QWidget(parent);
 			if (ok)
 			{

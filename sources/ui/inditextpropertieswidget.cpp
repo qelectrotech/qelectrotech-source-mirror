@@ -498,7 +498,8 @@ void IndiTextPropertiesWidget::on_m_font_pb_clicked()
 	}
 	bool ok;
 	QFont font = m_text ? m_text->font() : m_text_list.first()->font();
-	m_selected_font = QFontDialog::getFont(&ok, font, this);
+	m_selected_font = QFontDialog::getFont(&ok, font, this, QString(),
+										   QFontDialog::DontUseNativeDialog);
 	if (ok) {
 		m_font_is_selected = true;
 		ui->m_font_pb->setText(font.family());
