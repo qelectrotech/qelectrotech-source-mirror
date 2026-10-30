@@ -19,6 +19,7 @@
 #include "qetdbfile.h"
 
 #include "projectdatabase.h"
+#include "qetparity.h"
 #include "../qetversion.h"
 #include "../utils/syncfolder.h"
 
@@ -42,6 +43,10 @@
 #include <QThreadPool>
 #include <QUrl>
 #include <QUuid>
+#include <QtEndian>
+
+#include <algorithm>
+#include <cstring>
 
 	//The session extension's API is declared only with these
 #define SQLITE_ENABLE_SESSION
@@ -684,13 +689,167 @@ bool recordRevision(const QString &saving, const QString &previous, QString *err
 	return ok;
 }
 
+	//The repair data in a .qetdb (QET-SQL-FORMAT-SCOPE.md 5.8, QETDB-S4C-PLAN.md):
+	//one row of qet_parity per parity page, marked by parity_magic and
+	//carrying the layout, little-endian: k, m, the file's page count,
+	//qet_parity's root page, the row's group, the header's change counter
+	//once the rows are written, the page size. The first parity_hash_copies
+	//rows of each group also carry the hashes of its pages, so that no single
+	//row is one the repair depends on. As tools/qet-sqlite/parity.py writes
+const QByteArray parity_magic("QETPAR3\0", 8);
+constexpr int parity_percent = 10;
+constexpr int parity_hash_copies = 4;
+
+	//The 8 bytes a page is checked against
+QByteArray pageHash(QByteArrayView bytes)
+{
+	return QCryptographicHash::hash(bytes, QCryptographicHash::Blake2b_256).left(8);
+}
+
+	//The pages of the file @p file the repair data covers, one after the
+	//other: all but qet_parity's root page @p root, page 1 without the
+	//header (its first 100 bytes, which each write changes)
+QByteArray coveredPages(const QByteArray &file, int page_size, int root)
+{
+	QByteArray pages;
+	const int count = int(file.size() / page_size);
+	pages.reserve(qsizetype(count) * page_size);
+	for (int p = 1 ; p <= count ; ++p) {
+		if (p == root) continue;
+		pages.append(file.constData() + qsizetype(p - 1) * page_size, page_size);
+	}
+	if (!pages.isEmpty()) std::memset(pages.data(), 0, 100);
+	return pages;
+}
+
+	//pageHash() of each page of @p pages, in parallel
+QByteArray pageHashes(const QByteArray &pages, int page_size)
+{
+	const int count = int(pages.size() / page_size);
+	QByteArray hashes(qsizetype(count) * 8, '\0');
+	char *out = hashes.data();
+	constexpr int chunk = 256;
+	QList<int> firsts;
+	for (int first = 0 ; first < count ; first += chunk) firsts << first;
+	QtConcurrent::blockingMap(firsts, [&pages, page_size, count, out](int first) {
+		for (int i = first ; i < std::min(count, first + chunk) ; ++i)
+			std::memcpy(out + qsizetype(i) * 8,
+						pageHash(QByteArrayView(pages.constData() + qsizetype(i) * page_size, page_size)).constData(), 8);
+	});
+	return hashes;
+}
+
 	//The last write to a new file before it is checked, flushed and put in
-	//place, by every way of writing one (a save, rewrite()): what must
-	//cover the file as it ends goes here (the repair data, QETDB-S4C-PLAN.md P2)
+	//place, by every way of writing one (a save, rewrite()): the repair data,
+	//which covers the file as it ends. If writing it changed a page it
+	//covers, the file is kept without it, and says so in the log.
+	//QET_QETDB_PARITY=0 leaves it out (tests, measurements)
 bool seal(const QString &path, QString *error)
 {
-	Q_UNUSED(path)
-	Q_UNUSED(error)
+	if (qEnvironmentVariable("QET_QETDB_PARITY") == QLatin1String("0")) return true;
+	QElapsedTimer timer;
+	timer.start();
+	QStringList times;
+	const auto lap = [&timer, &times](const char *step) {
+		times << QStringLiteral("%1 %2").arg(QLatin1String(step)).arg(timer.restart());
+	};
+	int page_size = 0, root = 0;
+		//Rows from the file it was written from are not this one's; the
+		//pages they free are compacted away, so that the new rows only
+		//add pages after the ones they cover
+	if (!withConnection(path, error, [&page_size, &root](QSqlQuery &query) {
+			if (!query.exec(QStringLiteral("PRAGMA synchronous = OFF"))
+					|| !query.exec(QStringLiteral("CREATE TABLE IF NOT EXISTS qet_parity (id INTEGER PRIMARY KEY, "
+												  "grp INTEGER, j INTEGER, hash BLOB, info BLOB, data BLOB)"))
+					|| !query.exec(QStringLiteral("DELETE FROM qet_parity"))
+					|| !query.exec(QStringLiteral("PRAGMA freelist_count")) || !query.next())
+				return false;
+			if (query.value(0).toInt() > 0 && !query.exec(QStringLiteral("VACUUM")))
+				return false;
+			if (!query.exec(QStringLiteral("PRAGMA page_size")) || !query.next()) return false;
+			page_size = query.value(0).toInt();
+			if (!query.exec(QStringLiteral("SELECT rootpage FROM sqlite_master WHERE type = 'table' AND name = 'qet_parity'"))
+					|| !query.next())
+				return false;
+			root = query.value(0).toInt();
+			return true;
+		}))
+		return false;
+	lap("table");
+	QFile file(path);
+	if (!file.open(QIODevice::ReadOnly)) {
+		if (error) *error = file.errorString();
+		return false;
+	}
+	const QByteArray before = file.readAll();
+	file.close();
+	if (page_size < 512 || before.size() < 100 || before.size() % page_size) {
+		if (error) *error = QObject::tr("the file could not be read back");
+		return false;
+	}
+	const int file_pages = int(before.size() / page_size);
+	const QByteArray pages = coveredPages(before, page_size, root);
+	const int count = int(pages.size() / page_size);
+	lap("read");
+	const QByteArray hashes = pageHashes(pages, page_size);
+	lap("hash");
+	const QetParity::Layout layout = QetParity::layout(count, parity_percent);
+	const QByteArray parity = QetParity::encode(pages, page_size, layout.k, layout.m);
+	lap("encode");
+		//Written in one transaction, which raises the change counter by one
+	const quint32 counter = qFromBigEndian<quint32>(before.constData() + 24) + 1;
+	if (!withConnection(path, error, [&](QSqlQuery &query) {
+			if (!query.exec(QStringLiteral("PRAGMA synchronous = OFF")) || !query.exec(QStringLiteral("BEGIN")))
+				return false;
+			query.prepare(QStringLiteral("INSERT INTO qet_parity (grp, j, hash, info, data) VALUES (?, ?, ?, ?, ?)"));
+				//j first: a run of bad pages in the file costs each group one row
+			for (int j = 0 ; j < layout.m ; ++j) {
+				for (int g = 0 ; g < layout.groups ; ++g) {
+					QByteArray info = parity_magic;
+					for (quint32 value : {quint32(layout.k), quint32(layout.m), quint32(file_pages), quint32(root),
+										  quint32(g), counter, quint32(page_size)}) {
+						const quint32 le = qToLittleEndian(value);
+						info.append(reinterpret_cast<const char *>(&le), sizeof le);
+					}
+					if (j < parity_hash_copies)
+						for (int i = g ; i < count ; i += layout.groups)
+							info.append(hashes.constData() + qsizetype(i) * 8, 8);
+					const QByteArray shard = parity.mid((qsizetype(g) * layout.m + j) * page_size, page_size);
+					query.bindValue(0, g);
+					query.bindValue(1, j);
+					query.bindValue(2, pageHash(shard + info));
+					query.bindValue(3, info);
+					query.bindValue(4, shard);
+					if (!query.exec()) return false;
+				}
+			}
+			return query.exec(QStringLiteral("COMMIT"));
+		}))
+		return false;
+	lap("rows");
+		//Nothing it covers changed, and the counter is the one it says
+	bool same = file.open(QIODevice::ReadOnly);
+	if (same) {
+		const QByteArray after = file.read(before.size());
+		file.close();
+		same = after.size() == before.size()
+				&& qFromBigEndian<quint32>(after.constData() + 24) == counter
+				&& qFromBigEndian<quint32>(after.constData() + 92) == counter
+				&& coveredPages(after, page_size, root) == pages;
+	}
+	lap("verify");
+	if (!same) {
+		qWarning().noquote() << "QetDbFile: writing the repair data changed the pages it covers; "
+								"the file is saved without it";
+		if (!withConnection(path, error, [](QSqlQuery &query) {
+				return query.exec(QStringLiteral("DELETE FROM qet_parity"));
+			}))
+			return false;
+	}
+	if (qEnvironmentVariableIntValue("QET_QETDB_SAVE_TIMES") == 1)
+		qInfo().noquote() << "seal (ms):" << times.join(QStringLiteral(", "))
+						  << QStringLiteral("; %1 pages, %2 groups of %3 + %4").arg(count).arg(layout.groups)
+							 .arg(layout.k).arg(layout.m);
 	return true;
 }
 

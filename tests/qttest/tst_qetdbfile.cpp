@@ -4,7 +4,11 @@
 // QElectroTech cannot read is refused, and that a failed save leaves the
 // previous file. Runs the real binary.
 
+#include "../../sources/dataBase/qetparity.h"
+
 #include <QtTest>
+#include <QCryptographicHash>
+#include <QtEndian>
 
 #include <QDir>
 #include <QFile>
@@ -737,6 +741,96 @@ private slots:
 				"UPDATE element_info SET label = 'CHANGED' WHERE rowid = (SELECT min(rowid) FROM element_info)")));
 		log = resave(path, path + QStringLiteral(".3.qet"), &code);
 		QVERIFY2(code != 0 && log.contains(QStringLiteral("not what QElectroTech saved")), qPrintable(log.right(800)));
+	}
+
+	// The repair data a save writes (QETDB-S4C-PLAN.md P2): read back from
+	// the file's own rows, it rebuilds lost pages of the file exactly. As
+	// a save writes it, and as a rewrite (--history-on) writes it again
+	static QString parityProblem(const QString &path)
+	{
+		struct Row { int g, j; QByteArray hash, info, data; };
+		QList<Row> rows;
+		{
+			QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("parity"));
+			db.setDatabaseName(path);
+			if (db.open()) {
+				QSqlQuery query(db);
+				query.exec(QStringLiteral("SELECT grp, j, hash, info, data FROM qet_parity ORDER BY id"));
+				while (query.next())
+					rows << Row{query.value(0).toInt(), query.value(1).toInt(), query.value(2).toByteArray(),
+								query.value(3).toByteArray(), query.value(4).toByteArray()};
+			}
+			db.close();
+		}
+		QSqlDatabase::removeDatabase(QStringLiteral("parity"));
+		if (rows.isEmpty()) return QStringLiteral("no repair data");
+		const auto h8 = [](const QByteArray &bytes) {
+			return QCryptographicHash::hash(bytes, QCryptographicHash::Blake2b_256).left(8);
+		};
+		const auto field = [](const QByteArray &info, int i) {
+			return int(qFromLittleEndian<quint32>(info.constData() + 8 + 4 * i));
+		};
+		const QByteArray &info = rows.first().info;
+		if (!info.startsWith(QByteArray("QETPAR3\0", 8)) || info.size() < 36) return QStringLiteral("no marker");
+		const int k = field(info, 0), m = field(info, 1), file_pages = field(info, 2), root = field(info, 3),
+				counter = field(info, 5), page = field(info, 6);
+		QFile f(path);
+		if (!f.open(QIODevice::ReadOnly)) return QStringLiteral("unreadable");
+		const QByteArray file = f.readAll();
+		if (qFromBigEndian<quint32>(file.constData() + 24) != quint32(counter))
+			return QStringLiteral("change counter differs");
+		QByteArray pages;
+		for (int p = 1 ; p <= file_pages ; ++p)
+			if (p != root) pages.append(file.mid(qsizetype(p - 1) * page, page));
+		pages.replace(0, 100, QByteArray(100, '\0'));
+		const int count = int(pages.size() / page);
+		const QetParity::Layout layout = QetParity::layout(count, 10);
+		if (layout.k != k || layout.m != m || rows.size() != layout.groups * m)
+			return QStringLiteral("layout %1+%2, %3 rows").arg(k).arg(m).arg(rows.size());
+		QByteArray parity(qsizetype(layout.groups) * m * page, '\0');
+		for (const Row &row : std::as_const(rows)) {
+			if (h8(row.data + row.info) != row.hash) return QStringLiteral("row hash wrong");
+			if (field(row.info, 4) != row.g) return QStringLiteral("row group wrong");
+			parity.replace((qsizetype(row.g) * m + row.j) * page, page, row.data);
+				//The page hashes it carries are those of the pages
+			if (row.j < 4)
+				for (int i = row.g, li = 0 ; i < count ; i += layout.groups, ++li)
+					if (row.info.mid(36 + 8 * li, 8) != h8(pages.mid(qsizetype(i) * page, page)))
+						return QStringLiteral("page %1's hash wrong").arg(i);
+		}
+			//m pages of group 0, one of every other group, lost: rebuilt
+		QByteArray damaged = pages;
+		QList<int> lost;
+		for (int li = 0 ; li < m ; ++li) lost << li * layout.groups;
+		for (int g = 1 ; g < layout.groups ; ++g) lost << g;
+		for (int i : std::as_const(lost))
+			damaged.replace(qsizetype(i) * page, page, QByteArray(page, '\xa5'));
+		if (QetParity::decode(damaged, page, parity, k, m, lost, {}) != 0 || damaged != pages)
+			return QStringLiteral("not rebuilt");
+		return {};
+	}
+
+	void parityRebuildsTheSavedFile()
+	{
+		QCOMPARE(parityProblem(industrial()), QString());
+
+		const QString path = m_dir.filePath(QStringLiteral("parity.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString log = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(log.right(800)));
+		QCOMPARE(parityProblem(path), QString());
+
+			//Off for measurements: the table, no rows
+		const QString off = m_dir.filePath(QStringLiteral("noparity.qetdb"));
+		log = run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), off}, false, &code,
+				  {QStringLiteral("QET_QETDB_PARITY=0")});
+		QVERIFY2(code == 0, qPrintable(log.right(800)));
+		QCOMPARE(parityProblem(off), QStringLiteral("no repair data"));
+			//It opens all the same
+		log = resave(off, off + QStringLiteral(".qet"), &code);
+		QVERIFY2(code == 0, qPrintable(log.right(800)));
 	}
 
 	// A save that cannot finish leaves the previous file as it was

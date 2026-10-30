@@ -1836,7 +1836,8 @@ target_link_libraries(tst_workingcopyrecovery PRIVATE Qt::Test Qt::Sql)
 # that a failed save keeps the previous file. QET-SQL-FORMAT S4a.
 add_executable(
   tst_qetdbfile
-  tst_qetdbfile.cpp)
+  tst_qetdbfile.cpp
+  ${QET_DIR}/sources/dataBase/qetparity.cpp)
 add_test(NAME tst_qetdbfile COMMAND tst_qetdbfile)
 add_dependencies(tst_qetdbfile qelectrotech)
 target_link_libraries(tst_qetdbfile PRIVATE Qt::Test Qt::Sql)
