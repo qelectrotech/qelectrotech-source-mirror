@@ -112,6 +112,15 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
   set_tests_properties(tst_crosshairintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # The label of a terminal strip at its first terminal: it moves with it,
+  # goes to a new first terminal, follows a rename; not saved.
+  add_test(NAME tst_striplabelintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_strip_label_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/strip_label_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/strip_labels.qet)
+  set_tests_properties(tst_striplabelintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The pointer: a four-way arrow over what a drag moves; with the
   # crosshair, drawn on its grid point in place of the system's.
   add_test(NAME tst_movepointerintegration

@@ -711,6 +711,26 @@ void QETDiagramEditor::setUpActions()
 			pv->project()->setAutoBreakConductor(abc);
 	});
 
+		//The label of each terminal strip at its first terminal, as in EPLAN
+	m_terminal_strip_labels = new QAction(QET::Icons::TerminalStrip, tr("Show terminal strip labels at their first terminal"), this);
+	m_terminal_strip_labels->setStatusTip(tr("The label of each terminal strip stands at its first terminal on every folio and moves with it"));
+	m_terminal_strip_labels->setCheckable(true);
+	ShortcutManager::instance().registerAction(m_terminal_strip_labels, "diagrameditor.terminal_strip_labels", tr("Diagram editors"), QKeySequence());
+	connect(m_terminal_strip_labels, &QAction::triggered, [this](bool on) {
+		if (ProjectView *pv = currentProjectView())
+			pv->project()->setTerminalStripLabelsShown(on);
+	});
+
+		//The bridges of the terminal strip editor, drawn between the terminals
+	m_terminal_strip_bridges = new QAction(QET::Icons::TerminalStrip, tr("Show terminal strip bridges between their terminals"), this);
+	m_terminal_strip_bridges->setStatusTip(tr("Two bridged terminals side by side in a row are joined by a line on every folio"));
+	m_terminal_strip_bridges->setCheckable(true);
+	ShortcutManager::instance().registerAction(m_terminal_strip_bridges, "diagrameditor.terminal_strip_bridges", tr("Diagram editors"), QKeySequence());
+	connect(m_terminal_strip_bridges, &QAction::triggered, [this](bool on) {
+		if (ProjectView *pv = currentProjectView())
+			pv->project()->setTerminalStripBridgesShown(on);
+	});
+
 		//Diagram background color picker
 	m_background_color_button = new DiagramBgColorToolButton(this, this);
 	ShortcutManager::instance().registerAction(m_background_color_button->darkModeAction(),
@@ -1899,6 +1919,8 @@ void QETDiagramEditor::setUpMenu()
 		//Sits beside m_auto_conductor, the setting it pairs with. It was
 		//toolbar-only and so had no keyboard route at all.
 	menu_project -> addAction(m_auto_break_conductor);
+	menu_project -> addAction(m_terminal_strip_labels);
+	menu_project -> addAction(m_terminal_strip_bridges);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_project_add_diagram);
 	menu_project -> addAction(m_remove_diagram_from_project);
@@ -3624,10 +3646,16 @@ void QETDiagramEditor::slot_updateModeActions()
 		m_auto_conductor -> setChecked (pv -> project() -> autoConductor());
 		m_auto_break_conductor -> setEnabled (true);
 		m_auto_break_conductor -> setChecked (pv -> project() -> autoBreakConductor());
+		m_terminal_strip_labels -> setEnabled (true);
+		m_terminal_strip_labels -> setChecked (pv -> project() -> terminalStripLabelsShown());
+		m_terminal_strip_bridges -> setEnabled (true);
+		m_terminal_strip_bridges -> setChecked (pv -> project() -> terminalStripBridgesShown());
 	}
 	else
 	{
 		m_auto_conductor -> setDisabled(true);
+		m_terminal_strip_labels -> setDisabled(true);
+		m_terminal_strip_bridges -> setDisabled(true);
 		m_auto_break_conductor -> setDisabled(true);
 	}
 
