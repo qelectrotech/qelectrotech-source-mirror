@@ -792,16 +792,22 @@ private slots:
 		if (layout.k != k || layout.m != m || rows.size() != layout.groups * m)
 			return QStringLiteral("layout %1+%2, %3 rows").arg(k).arg(m).arg(rows.size());
 		QByteArray parity(qsizetype(layout.groups) * m * page, '\0');
+		QHash<int, int> carriers;
 		for (const Row &row : std::as_const(rows)) {
 			if (h8(row.data + row.info) != row.hash) return QStringLiteral("row hash wrong");
 			if (field(row.info, 4) != row.g) return QStringLiteral("row group wrong");
 			parity.replace((qsizetype(row.g) * m + row.j) * page, page, row.data);
-				//The page hashes it carries are those of the pages
-			if (row.j < 4)
+					//The page hashes it carries, in four rows of each group, are
+				//those of the pages
+			if (row.info.size() > 36)
+				carriers[row.g] += 1;
+			if (row.info.size() > 36)
 				for (int i = row.g, li = 0 ; i < count ; i += layout.groups, ++li)
 					if (row.info.mid(36 + 8 * li, 8) != h8(pages.mid(qsizetype(i) * page, page)))
 						return QStringLiteral("page %1's hash wrong").arg(i);
 		}
+		for (int g = 0 ; g < layout.groups ; ++g)
+			if (carriers.value(g) != 4) return QStringLiteral("group %1: %2 rows carry its hashes").arg(g).arg(carriers.value(g));
 			//m pages of group 0, one of every other group, lost: rebuilt
 		QByteArray damaged = pages;
 		QList<int> lost;

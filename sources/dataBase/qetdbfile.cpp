@@ -46,6 +46,7 @@
 #include <QtEndian>
 
 #include <algorithm>
+#include <limits>
 #include <cstring>
 
 	//The session extension's API is declared only with these
@@ -693,12 +694,20 @@ bool recordRevision(const QString &saving, const QString &previous, QString *err
 	//one row of qet_parity per parity page, marked by parity_magic and
 	//carrying the layout, little-endian: k, m, the file's page count,
 	//qet_parity's root page, the row's group, the header's change counter
-	//once the rows are written, the page size. The first parity_hash_copies
-	//rows of each group also carry the hashes of its pages, so that no single
-	//row is one the repair depends on. As tools/qet-sqlite/parity.py writes
+	//once the rows are written, the page size. Four rows of each group also
+	//carry the hashes of its pages (carriesHashes()), so that no single row
+	//is one the repair depends on. As tools/qet-sqlite/parity.py writes
 const QByteArray parity_magic("QETPAR3\0", 8);
 constexpr int parity_percent = 10;
-constexpr int parity_hash_copies = 4;
+
+	//Whether parity row @p j of @p m carries its group's page hashes: four
+	//spread over the rows, which are written j after j, so that one run of
+	//bad pages cannot take them all (with the last data pages before them).
+	//A reader takes the hashes from any row that has them
+bool carriesHashes(int j, int m)
+{
+	return j == 0 || j == m / 3 || j == 2 * m / 3 || j == m - 1;
+}
 
 	//The 8 bytes a page is checked against
 QByteArray pageHash(QByteArrayView bytes)
@@ -812,7 +821,7 @@ bool seal(const QString &path, QString *error)
 						const quint32 le = qToLittleEndian(value);
 						info.append(reinterpret_cast<const char *>(&le), sizeof le);
 					}
-					if (j < parity_hash_copies)
+					if (carriesHashes(j, layout.m))
 						for (int i = g ; i < count ; i += layout.groups)
 							info.append(hashes.constData() + qsizetype(i) * 8, 8);
 					const QByteArray shard = parity.mid((qsizetype(g) * layout.m + j) * page_size, page_size);
@@ -943,7 +952,9 @@ void scanParityRows(const QByteArray &data, int page_size,
 			if (at + local + 4 > end) continue;
 			QByteArray payload(reinterpret_cast<const char *>(bytes + at), local);
 			quint32 next = be32(at + local);
-			for (int hops = 0 ; quint64(payload.size()) < size && next >= 1 && int(next) <= pages && hops < 8 ; ++hops) {
+				//A page number from a damaged page can be anything: unsigned
+				//throughout, so that a huge one is not taken for a small one
+			for (int hops = 0 ; quint64(payload.size()) < size && next >= 1 && next <= quint32(pages) && hops < 8 ; ++hops) {
 				const qsizetype o = qsizetype(next - 1) * page_size;
 				next = be32(o);
 				payload.append(reinterpret_cast<const char *>(bytes + o + 4),
@@ -1031,6 +1042,11 @@ QetDbFile::Repair repairPages(const QString &copy, const QString &path, bool bac
 		if (g != grp || int(at(6)) != page_size || shard.size() != page_size || j < 0 || int(at(1)) <= j)
 			return;
 		if (!k) {
+				//A layout that can be: nothing read from a file is trusted
+				//to bound what is read or written after
+			if (at(0) < 1 || at(1) < 1 || at(0) + at(1) > 255 || at(2) < 1
+					|| at(2) > quint32(std::numeric_limits<int>::max() / page_size) || at(3) < 2 || at(3) > at(2))
+				return;
 			k = int(at(0)); m = int(at(1)); file_pages = int(at(2)); root = int(at(3)); counter = at(5);
 		}
 		if (int(at(0)) != k || int(at(1)) != m) return;
