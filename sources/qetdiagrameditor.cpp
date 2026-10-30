@@ -2253,7 +2253,7 @@ void QETDiagramEditor::tellRepair(QETProject *project)
 	if (repaired.back_to_save)
 		text = tr("The changes another program made to %1 were undone: it is open as QElectroTech saved it.").arg(name);
 	else if (repaired.bad_pages)
-		text = tr("%1 was damaged: QElectroTech repaired %n pages of it from the repair data the file keeps.",
+		text = tr("%1 was damaged: QElectroTech repaired %n page(s) of it from the repair data the file keeps.",
 				  nullptr, repaired.bad_pages).arg(name);
 	else if (repaired.header)
 		text = tr("%1 was damaged: QElectroTech repaired its header.").arg(name);

@@ -1429,7 +1429,7 @@ static bool readCopy(const QString &path, QDomDocument *document, QString *error
 			return false;
 		}
 		if (repaired.beyond && error)
-			*error = QObject::tr("%n of its pages are damaged, more than the repair data it keeps can rebuild",
+			*error = QObject::tr("it has %n damaged page(s), more than the repair data it keeps can rebuild",
 								 nullptr, repaired.bad_pages);
 		return false;
 	}
