@@ -860,11 +860,7 @@ private slots:
 	{
 		QFETCH(QString, damage);
 		QFETCH(bool, repaired);
-		const QString base = m_dir.filePath(QStringLiteral("undamaged.qet"));
-		if (!QFile::exists(base)) resave(industrial(), base);
-		QFile b(base);
-		QVERIFY(b.open(QIODevice::ReadOnly));
-		const QByteArray expected = b.readAll();
+		const QByteArray expected = undamaged();
 		QVERIFY(!expected.isEmpty());
 
 		const QString path = m_dir.filePath(QStringLiteral("damaged-%1.qetdb").arg(damage));
@@ -916,6 +912,122 @@ private slots:
 			QVERIFY2(code != 0 && log.contains(QStringLiteral("than its repair data covers")),
 					 qPrintable(log.right(800)));
 			QVERIFY(!QFile::exists(out));
+		}
+	}
+
+	// A file another program changed since its save (QETDB-S4C-PLAN.md P5):
+	// refused as it is; opened with its changes, or back at its saved state,
+	// as the user chooses (QET_QETDB_OUTSIDE_EDIT stands for the question);
+	// --qetdb-repair says so by its exit code, and goes back on request.
+	// No one is locked out of a file whose other checks pass
+	QByteArray undamaged()
+	{
+		const QString base = m_dir.filePath(QStringLiteral("undamaged.qet"));
+		if (!QFile::exists(base)) resave(industrial(), base);
+		QFile b(base);
+		return b.open(QIODevice::ReadOnly) ? b.readAll() : QByteArray();
+	}
+
+	QString changedByAnotherProgram(const QString &name, bool vacuum = false)
+	{
+		const QString path = m_dir.filePath(name);
+		QFile::remove(path);
+		if (!QFile::copy(industrial(), path)) return {};
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+			//A symbol's manufacturer, as the project is built from it (a
+			//label may come from a formula, worked out again on opening)
+		exec(path, QStringLiteral("UPDATE element_information SET value = 'CHANGED' "
+								  "WHERE rowid = (SELECT min(rowid) FROM element_information WHERE name = 'manufacturer')"));
+		if (vacuum) exec(path, QStringLiteral("VACUUM"));
+		return path;
+	}
+
+	static QByteArray contentOf(const QString &path)
+	{
+		QFile f(path);
+		return f.open(QIODevice::ReadOnly) ? f.readAll() : QByteArray();
+	}
+
+	void outsideEditChoices()
+	{
+		const QByteArray saved = undamaged();
+		QVERIFY(!saved.isEmpty());
+		QVERIFY(!saved.contains("CHANGED"));
+		const QString path = changedByAnotherProgram(QStringLiteral("outside.qetdb"));
+		const QByteArray before = contentOf(path);
+		int code = -1;
+		QString log = resave(path, path + QStringLiteral(".refused.qet"), &code);
+		QVERIFY2(code != 0 && log.contains(QStringLiteral("not what QElectroTech saved")), qPrintable(log.right(800)));
+
+		log = run({QStringLiteral("--resave"), path, path + QStringLiteral(".kept.qet")}, false, &code,
+				  {QStringLiteral("QET_QETDB_OUTSIDE_EDIT=keep")});
+		QVERIFY2(code == 0 && log.contains(QStringLiteral("as the user chose")), qPrintable(log.right(800)));
+		QVERIFY(contentOf(path + QStringLiteral(".kept.qet")).contains("CHANGED"));
+
+		log = run({QStringLiteral("--resave"), path, path + QStringLiteral(".back.qet")}, false, &code,
+				  {QStringLiteral("QET_QETDB_OUTSIDE_EDIT=back")});
+		QVERIFY2(code == 0 && log.contains(QStringLiteral("rebuilt as saved")), qPrintable(log.right(800)));
+		QVERIFY(contentOf(path + QStringLiteral(".back.qet")) == saved);
+			//None of it wrote the file
+		QVERIFY(contentOf(path) == before);
+
+			//The command line: exit 3 as it is, the saved state on request
+		const QString out = m_dir.filePath(QStringLiteral("outside-fixed.qetdb"));
+		log = run({QStringLiteral("--qetdb-repair"), path, out}, false, &code);
+		QVERIFY2(code == 3 && log.contains(QStringLiteral("another program changed it")), qPrintable(log.right(800)));
+		QVERIFY(!QFile::exists(out));
+		log = run({QStringLiteral("--qetdb-repair"), path, out, QStringLiteral("--back-to-save")}, false, &code);
+		QVERIFY2(code == 0 && log.contains(QStringLiteral("back to the saved state")), qPrintable(log.right(800)));
+		log = resave(out, out + QStringLiteral(".qet"), &code);
+		QVERIFY2(code == 0 && !log.contains(QStringLiteral("pages repaired")), qPrintable(log.right(800)));
+		QVERIFY(contentOf(out + QStringLiteral(".qet")) == saved);
+
+			//Every page moved (VACUUM): no going back, its changes still open
+		const QString moved = changedByAnotherProgram(QStringLiteral("outside-vacuum.qetdb"), true);
+		log = run({QStringLiteral("--resave"), moved, moved + QStringLiteral(".back.qet")}, false, &code,
+				  {QStringLiteral("QET_QETDB_OUTSIDE_EDIT=back")});
+		QVERIFY2(code != 0, qPrintable(log.right(800)));
+		log = run({QStringLiteral("--resave"), moved, moved + QStringLiteral(".kept.qet")}, false, &code,
+				  {QStringLiteral("QET_QETDB_OUTSIDE_EDIT=keep")});
+		QVERIFY2(code == 0, qPrintable(log.right(800)));
+		QVERIFY(contentOf(moved + QStringLiteral(".kept.qet")).contains("CHANGED"));
+	}
+
+	// --qetdb-repair on damage: repaired (exit 0) within the repair data,
+	// not written (exit 1) beyond it; the input is never written
+	void repairCommand()
+	{
+		const QByteArray saved = undamaged();
+		for (const auto &[pct, expected] : {std::pair{0, 0}, std::pair{2, 0}, std::pair{30, 1}}) {
+			const QString path = m_dir.filePath(QStringLiteral("cmd-%1.qetdb").arg(pct));
+			QFile::remove(path);
+			QVERIFY(QFile::copy(industrial(), path));
+			QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+			QFile f(path);
+			QVERIFY(f.open(QIODevice::ReadWrite));
+			QByteArray bytes = f.readAll();
+			const int page = 4096, pages = int(bytes.size() / page);
+			if (pct)
+				for (int p = 1 ; p < pages * 8 / 10 ; p += 100 / pct)
+					bytes.replace(qsizetype(p) * page, page, QByteArray(page, '\x5a'));
+			QVERIFY(f.seek(0));
+			f.write(bytes);
+			f.close();
+			const QString out = m_dir.filePath(QStringLiteral("cmd-%1-fixed.qetdb").arg(pct));
+			int code = -1;
+			const QString log = run({QStringLiteral("--qetdb-repair"), path, out}, false, &code);
+			QVERIFY2(code == expected, qPrintable(log.right(800)));
+			QVERIFY(contentOf(path) == bytes);
+			if (expected) {
+				QVERIFY(!QFile::exists(out));
+				continue;
+			}
+			QVERIFY2(log.contains(pct ? QStringLiteral("(repaired)") : QStringLiteral("(nothing to repair)")),
+					 qPrintable(log));
+			QVERIFY(contentOf(out) != bytes || !pct);
+			const QString again = run({QStringLiteral("--resave"), out, out + QStringLiteral(".qet")}, false, &code);
+			QVERIFY2(code == 0 && !again.contains(QStringLiteral("pages repaired")), qPrintable(again.right(800)));
+			QVERIFY(contentOf(out + QStringLiteral(".qet")) == saved);
 		}
 	}
 

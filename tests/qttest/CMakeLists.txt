@@ -1855,6 +1855,20 @@ add_executable(
 add_test(NAME tst_qetparity COMMAND tst_qetparity)
 target_link_libraries(tst_qetparity PRIVATE Qt::Test)
 
+# The repair data of a .qetdb against parity.py's kinds of damage, through
+# --qetdb-repair: what it covers comes back exactly, the rest is refused,
+# another program's writes are not damage. QETDB-S4C-PLAN.md P6.
+add_executable(
+  tst_qetdbparity
+  tst_qetdbparity.cpp)
+add_test(NAME tst_qetdbparity COMMAND tst_qetdbparity)
+add_dependencies(tst_qetdbparity qelectrotech)
+target_link_libraries(tst_qetdbparity PRIVATE Qt::Test Qt::Sql)
+target_compile_definitions(tst_qetdbparity PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
 # --query: one read-only query over several projects through the public
 # qet_ views; their columns, refused writes, the same rows from .qet, .qetz
 # and .qetdb. QETDB-S10 Q1 + Q2.
