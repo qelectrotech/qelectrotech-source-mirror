@@ -666,9 +666,11 @@ private slots:
 		QString log = resave(newer, m_dir.filePath(QStringLiteral("newer.qet")), &code);
 		QVERIFY2(code != 0 && log.contains(QStringLiteral("newer QElectroTech")), qPrintable(log.right(800)));
 
+			//Without the repair data a save writes, which would repair it
 		const QString damaged = m_dir.filePath(QStringLiteral("damaged.qetdb"));
-		QVERIFY(QFile::copy(industrial(), damaged));
-		QFile::setPermissions(damaged, QFile::ReadOwner | QFile::WriteOwner);
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), damaged}, false, &code,
+			{QStringLiteral("QET_QETDB_PARITY=0")});
+		QVERIFY(QFile::exists(damaged));
 		QFile f(damaged);
 		QVERIFY(f.open(QIODevice::ReadWrite));
 		QVERIFY(f.seek(f.size() / 2));
@@ -713,6 +715,8 @@ private slots:
 		const QString log = resave(path, out, &code);
 		QVERIFY2(code != 0 && log.contains(why), qPrintable(log.right(800)));
 		QVERIFY(!QFile::exists(out));
+			//A change through SQLite is not damage: nothing "repaired"
+		QVERIFY2(!log.contains(QStringLiteral("repaired")), qPrintable(log.right(800)));
 	}
 
 	// A table a later QElectroTech adds beside the project (as the repair
@@ -831,6 +835,81 @@ private slots:
 			//It opens all the same
 		log = resave(off, off + QStringLiteral(".qet"), &code);
 		QVERIFY2(code == 0, qPrintable(log.right(800)));
+	}
+
+	// Damaged pages are repaired on opening, from the repair data the file
+	// carries (QETDB-S4C-PLAN.md P3): the project opens as it was saved, and
+	// the file itself is not written. Beyond the repair data, it is refused
+	// as before, and nothing crashes
+	void damagedPagesRepairedOnOpen_data()
+	{
+		QTest::addColumn<QString>("damage");
+		QTest::addColumn<bool>("repaired");
+		QTest::newRow("one page") << QStringLiteral("page") << true;
+		QTest::newRow("bits in 3 pages") << QStringLiteral("bits") << true;
+		QTest::newRow("a run of 5 pages") << QStringLiteral("run") << true;
+		QTest::newRow("the header") << QStringLiteral("header") << true;
+		QTest::newRow("1 % of the pages") << QStringLiteral("scatter1") << true;
+		QTest::newRow("30 % of the pages") << QStringLiteral("scatter30") << false;
+	}
+
+	void damagedPagesRepairedOnOpen()
+	{
+		QFETCH(QString, damage);
+		QFETCH(bool, repaired);
+		const QString base = m_dir.filePath(QStringLiteral("undamaged.qet"));
+		if (!QFile::exists(base)) resave(industrial(), base);
+		QFile b(base);
+		QVERIFY(b.open(QIODevice::ReadOnly));
+		const QByteArray expected = b.readAll();
+		QVERIFY(!expected.isEmpty());
+
+		const QString path = m_dir.filePath(QStringLiteral("damaged-%1.qetdb").arg(damage));
+		QFile::remove(path);
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		QFile f(path);
+		QVERIFY(f.open(QIODevice::ReadWrite));
+		QByteArray bytes = f.readAll();
+		const int page = 4096, pages = int(bytes.size() / page);
+			//In the first 80 % of the file: its project tables, not the
+			//repair data's own root page
+		const auto spoil = [&bytes, page](int p, char with) {
+			bytes.replace(qsizetype(p) * page, page, QByteArray(page, with));
+		};
+		if (damage == QLatin1String("page")) spoil(pages * 3 / 10, '\xa5');
+		else if (damage == QLatin1String("bits"))
+			for (int p : {pages / 5, pages / 3, pages / 2})
+				bytes[qsizetype(p) * page + 1000] = char(bytes.at(qsizetype(p) * page + 1000) ^ 0x10);
+		else if (damage == QLatin1String("run"))
+			for (int p = pages / 2 ; p < pages / 2 + 5 ; ++p) spoil(p, '\0');
+		else if (damage == QLatin1String("header")) bytes.replace(16, 8, QByteArray(8, '\0'));
+		else if (damage.startsWith(QLatin1String("scatter"))) {
+			const int step = 100 / damage.mid(7).toInt();
+			for (int p = 1 ; p < pages * 8 / 10 ; p += step) spoil(p, '\x5a');
+		}
+		QVERIFY(f.seek(0));
+		QCOMPARE(f.write(bytes), bytes.size());
+		f.close();
+
+		int code = -1;
+		const QString out = path + QStringLiteral(".qet");
+		const QString log = run({QStringLiteral("--resave"), path, out}, false, &code);
+		QVERIFY2(code >= 0, "QElectroTech crashed");
+		if (repaired) {
+			QVERIFY2(code == 0 && log.contains(QStringLiteral("pages repaired")), qPrintable(log.right(800)));
+			QFile o(out);
+			QVERIFY(o.open(QIODevice::ReadOnly));
+			QVERIFY2(o.readAll() == expected, "the repaired project is not the one saved");
+				//The file is as it was: an open writes nothing
+			QFile again(path);
+			QVERIFY(again.open(QIODevice::ReadOnly));
+			QVERIFY(again.readAll() == bytes);
+		} else {
+			QVERIFY2(code != 0 && log.contains(QStringLiteral("than its repair data covers")),
+					 qPrintable(log.right(800)));
+			QVERIFY(!QFile::exists(out));
+		}
 	}
 
 	// A save that cannot finish leaves the previous file as it was

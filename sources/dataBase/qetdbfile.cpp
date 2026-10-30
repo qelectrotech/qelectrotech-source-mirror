@@ -707,12 +707,13 @@ QByteArray pageHash(QByteArrayView bytes)
 }
 
 	//The pages of the file @p file the repair data covers, one after the
-	//other: all but qet_parity's root page @p root, page 1 without the
-	//header (its first 100 bytes, which each write changes)
-QByteArray coveredPages(const QByteArray &file, int page_size, int root)
+	//other: its first @p count pages (all if -1) but qet_parity's root page
+	//@p root, page 1 without the header (its first 100 bytes, which each
+	//write changes)
+QByteArray coveredPages(const QByteArray &file, int page_size, int root, int count = -1)
 {
 	QByteArray pages;
-	const int count = int(file.size() / page_size);
+	if (count < 0) count = int(file.size() / page_size);
 	pages.reserve(qsizetype(count) * page_size);
 	for (int p = 1 ; p <= count ; ++p) {
 		if (p == root) continue;
@@ -851,6 +852,175 @@ bool seal(const QString &path, QString *error)
 						  << QStringLiteral("; %1 pages, %2 groups of %3 + %4").arg(count).arg(layout.groups)
 							 .arg(layout.k).arg(layout.m);
 	return true;
+}
+
+	//The header QElectroTech writes, for a file whose own is destroyed:
+	//SQLite refuses the whole file without one (as tools/qet-sqlite/rescue.py)
+QByteArray qetdbHeader(int page_size, quint32 pages, quint32 counter)
+{
+	QByteArray h(100, '\0');
+	char *d = h.data();
+	std::memcpy(d, "SQLite format 3", 16);
+	qToBigEndian<quint16>(quint16(page_size == 65536 ? 1 : page_size), d + 16);
+	d[18] = 1; d[19] = 1; d[21] = 64; d[22] = 32; d[23] = 32;
+	qToBigEndian<quint32>(counter, d + 24);
+	qToBigEndian<quint32>(pages, d + 28);
+	qToBigEndian<quint32>(1, d + 40);
+	qToBigEndian<quint32>(4, d + 44);
+	qToBigEndian<quint32>(1, d + 56);
+	qToBigEndian<quint32>(quint32(QetDbFile::format), d + 60);
+	qToBigEndian<quint32>(quint32(QetDbFile::applicationId), d + 68);
+	qToBigEndian<quint32>(counter, d + 92);
+	qToBigEndian<quint32>(SQLITE_VERSION_NUMBER, d + 96);
+	return h;
+}
+
+	//The fields of @p data's header that every .qetdb has the same
+bool headerUsable(const QByteArray &data, int page_size)
+{
+	if (data.size() < 100) return false;
+	const QByteArray ref = qetdbHeader(page_size, 0, 0);
+	for (const auto &[from, to] : {std::pair{0, 24}, {44, 48}, {56, 60}, {68, 72}})
+		if (data.mid(from, to - from) != ref.mid(from, to - from)) return false;
+	return true;
+}
+
+bool writeWhole(const QString &path, const QByteArray &bytes)
+{
+	QFile::setPermissions(path, QFile::permissions(path) | QFile::WriteOwner);
+	QFile file(path);
+	return file.open(QIODevice::WriteOnly | QIODevice::Truncate) && file.write(bytes) == bytes.size();
+}
+
+	//The pages of the .qetdb @p copy that are not what its save wrote,
+	//rebuilt in place from the repair data it carries (QETDB-S4C-PLAN.md
+	//P3), before anything else reads it. A file another program wrote to
+	//since (@p path's header or a -wal/-journal beside it says so) is left
+	//as it is: its new pages are not damage
+QetDbFile::Repair repairPages(const QString &copy, const QString &path)
+{
+	QetDbFile::Repair r;
+	QFile file(copy);
+	if (!file.open(QIODevice::ReadOnly)) return r;
+	const QByteArray original = file.readAll();
+	file.close();
+	int page_size = 4096;
+	if (original.size() >= 18) {
+		const int field = qFromBigEndian<quint16>(original.constData() + 16);
+		const int size = field == 1 ? 65536 : field;
+		if (size >= 512 && size <= 65536 && !(size & (size - 1))) page_size = size;
+	}
+		//A destroyed header first: SQLite reads nothing, the repair data
+		//included, without one
+	QByteArray data = original;
+	const bool header_bad = !headerUsable(data, page_size);
+	if (header_bad) {
+		data = qetdbHeader(page_size, quint32(data.size() / page_size), 1) + data.mid(100);
+		if (!writeWhole(copy, data)) return r;
+	}
+
+	int k = 0, m = 0, file_pages = 0, root = 0;
+	quint32 counter = 0;
+	QHash<std::pair<int, int>, QByteArray> shards;
+	QHash<int, QByteArray> group_hashes;
+	const QString name = QStringLiteral("qetdb_repair_") + QUuid::createUuid().toString();
+	{
+		QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), name);
+		db.setConnectOptions(QStringLiteral("QSQLITE_OPEN_READONLY"));
+		db.setDatabaseName(copy);
+		if (db.open()) {
+			QSqlQuery query(db);
+			query.setForwardOnly(true);
+				//Each row checks itself: a damaged one is left out, as
+				//are those after an error part way through the table
+			if (query.exec(QStringLiteral("SELECT grp, j, hash, info, data FROM qet_parity"))) {
+				while (query.next()) {
+					const QByteArray info = query.value(3).toByteArray();
+					const QByteArray shard = query.value(4).toByteArray();
+					if (info.size() < 36 || !info.startsWith(parity_magic)
+							|| pageHash(shard + info) != query.value(2).toByteArray())
+						continue;
+					const auto at = [&info](int i) { return qFromLittleEndian<quint32>(info.constData() + 8 + 4 * i); };
+					const int g = int(at(4)), j = query.value(1).toInt();
+					if (g != query.value(0).toInt() || int(at(6)) != page_size || shard.size() != page_size
+							|| j < 0 || int(at(1)) <= j)
+						continue;
+					if (!k) {
+						k = int(at(0)); m = int(at(1)); file_pages = int(at(2)); root = int(at(3)); counter = at(5);
+					}
+					if (int(at(0)) != k || int(at(1)) != m) continue;
+					if (info.size() > 36 && !group_hashes.contains(g)) group_hashes.insert(g, info.mid(36));
+					shards.insert({g, j}, shard);
+				}
+			}
+		}
+		db.close();
+	}
+	QSqlDatabase::removeDatabase(name);
+	if (!k || !m || file_pages < 1) {
+		if (header_bad) writeWhole(copy, original);
+		return r;
+	}
+	r.parity = true;
+
+		//Damage, or another program's write? A write through SQLite raises
+		//the header's change counter and its copy at byte 92 together;
+		//damage moves neither, or only one (QET-SQL-FORMAT-SCOPE.md 5.8)
+	for (const char *suffix : {"-wal", "-journal"})
+		r.edited = r.edited || QFileInfo::exists(path + QLatin1String(suffix));
+	if (!r.edited && original.size() >= 100 && original.startsWith(QByteArray("SQLite format 3\0", 16))) {
+		const quint32 c = qFromBigEndian<quint32>(original.constData() + 24);
+		r.edited = c == qFromBigEndian<quint32>(original.constData() + 92) && c != counter;
+	}
+	if (r.edited) {
+		if (header_bad) writeWhole(copy, original);
+		return r;
+	}
+	r.header = header_bad;
+
+		//A file cut short: its lost end is lost pages
+	if (data.size() < qsizetype(file_pages) * page_size)
+		data.append(QByteArray(qsizetype(file_pages) * page_size - data.size(), '\0'));
+	const QByteArray pages = coveredPages(data, page_size, root, file_pages);
+	const int count = int(pages.size() / page_size);
+	const int groups = (count + k - 1) / k;
+	const QByteArray hashes = pageHashes(pages, page_size);
+		//A page is checked against its group's hashes; a group whose rows
+		//carrying them are all lost cannot be checked
+	QList<int> bad;
+	for (int i = 0 ; i < count ; ++i) {
+		const QByteArray group = group_hashes.value(i % groups);
+		const int at = (i / groups) * 8;
+		if (group.size() >= at + 8 && QByteArrayView(group).sliced(at, 8) != QByteArrayView(hashes).sliced(qsizetype(i) * 8, 8))
+			bad << i;
+	}
+	r.bad_pages = int(bad.size());
+	if (bad.isEmpty())
+		return r;
+	QList<std::pair<int, int>> lost_parity;
+	QByteArray parity(qsizetype(groups) * m * page_size, '\0');
+	for (int g = 0 ; g < groups ; ++g)
+		for (int j = 0 ; j < m ; ++j) {
+			const auto it = shards.constFind({g, j});
+			if (it == shards.constEnd()) lost_parity << std::pair{g, j};
+			else parity.replace((qsizetype(g) * m + j) * page_size, page_size, *it);
+		}
+	QByteArray rebuilt = pages;
+	r.beyond = QetParity::decode(rebuilt, page_size, parity, k, m, bad, lost_parity);
+	if (r.beyond < 0) {
+		r.beyond = groups;
+		return r;
+	}
+		//Back in their places; page 1's header stays as it is now
+	for (int i = 0, p = 1 ; i < count ; ++p) {
+		if (p == root) continue;
+		const qsizetype from = qsizetype(p - 1) * page_size + (p == 1 ? 100 : 0);
+		data.replace(from, page_size - (p == 1 ? 100 : 0),
+					 rebuilt.constData() + qsizetype(i) * page_size + (p == 1 ? 100 : 0), page_size - (p == 1 ? 100 : 0));
+		++i;
+	}
+	writeWhole(copy, data);
+	return r;
 }
 
 	//@p to written as @p from with @p edit made to it, as a save writes a
@@ -1025,7 +1195,7 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 	@return false, with @p error saying why, if it cannot be read
 */
 bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error,
-					 const std::function<bool(const QString &copy)> &with_copy)
+					 const std::function<bool(const QString &copy)> &with_copy, Repair *repair)
 {
 	QTemporaryDir dir;
 	const QString copy = dir.filePath(QStringLiteral("project.qetdb"));
@@ -1033,6 +1203,20 @@ bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error
 		if (error) *error = QObject::tr("the file could not be read");
 		return false;
 	}
+		//Bad pages rebuilt in the copy first, from the repair data the file
+		//carries; the file itself is written by the next save only
+	QElapsedTimer timer;
+	timer.start();
+	const Repair repaired = repairPages(copy, path);
+	if (repair) *repair = repaired;
+	if (repaired.repaired())
+		qInfo().noquote() << "QetDbFile:" << QFileInfo(path).fileName() << "was damaged;"
+						  << repaired.bad_pages << "pages repaired" << (repaired.header ? "and its header" : "");
+	else if (repaired.beyond)
+		qWarning().noquote() << "QetDbFile:" << QFileInfo(path).fileName() << "has" << repaired.bad_pages
+							 << "damaged pages, more in" << repaired.beyond << "groups than its repair data covers";
+	if (qEnvironmentVariableIntValue("QET_QETDB_SAVE_TIMES") == 1)
+		qInfo().noquote() << "QetDbFile::read: pages checked in" << timer.elapsed() << "ms";
 	if (!check(copy, error))
 		return false;
 	QString saved_digest;

@@ -50,8 +50,19 @@ namespace QetDbFile
 		/// the new file (QETDB-S6-SCOPE.md R4)
 	bool save(projectDataBase &database, const QString &path, QString *error, QByteArray *sha1 = nullptr,
 			  const QString &previous = QString());
+		/// What opening a .qetdb found wrong with its pages, and repaired
+		/// from the repair data it carries (QETDB-S4C-PLAN.md P3)
+	struct Repair
+	{
+		bool parity = false;  ///< it carries repair data that could be read
+		bool edited = false;  ///< another program wrote to it since its save: nothing repaired
+		bool header = false;  ///< its header was destroyed and is written again
+		int bad_pages = 0;    ///< pages not as its save wrote them
+		int beyond = 0;       ///< groups of pages with more bad ones than repair data
+		bool repaired() const { return (bad_pages > 0 || header) && !beyond; }
+	};
 	bool read(const QString &path, QDomDocument *document, QString *error,
-			  const std::function<bool(const QString &copy)> &with_copy = {});
+			  const std::function<bool(const QString &copy)> &with_copy = {}, Repair *repair = nullptr);
 		/// History of the saves, kept in the file when switched on
 		/// (QETDB-S6-SCOPE.md): on or off, and each revision as a line
 	bool setHistory(const QString &path, bool on, QString *error);
