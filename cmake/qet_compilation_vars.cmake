@@ -701,6 +701,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/titleblock/qettemplateeditor.h
   ${QET_DIR}/sources/titleblock/splittedhelpercell.cpp
   ${QET_DIR}/sources/titleblock/splittedhelpercell.h
+  ${QET_DIR}/sources/titleblock/titleblockbulkformat.cpp
+  ${QET_DIR}/sources/titleblock/titleblockbulkformat.h
   ${QET_DIR}/sources/titleblock/templatecellsset.cpp
   ${QET_DIR}/sources/titleblock/templatecellsset.h
   ${QET_DIR}/sources/titleblock/templatecellwidget.cpp
