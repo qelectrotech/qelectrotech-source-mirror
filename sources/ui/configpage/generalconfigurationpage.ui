@@ -1049,7 +1049,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="label_cable_textes">
             <property name="text">
-             <string>Designation, type, plant, location, length :</string>
+             <string>Designation, type, plant, location, length:</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -1082,7 +1082,7 @@
           <item row="1" column="0">
            <widget class="QLabel" name="label_cable_core_textes">
             <property name="text">
-             <string>Core colors (all of them) :</string>
+             <string>Core colors (all of them):</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -1115,7 +1115,7 @@
           <item row="2" column="0">
            <widget class="QLabel" name="label_cable_align">
             <property name="text">
-             <string>Text alignment :</string>
+             <string>Text alignment:</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
