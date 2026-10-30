@@ -711,6 +711,34 @@ private slots:
 		QVERIFY(!QFile::exists(out));
 	}
 
+	// A table a later QElectroTech adds beside the project (as the repair
+	// data, QETDB-S4C-PLAN.md P0) opens once the file names it among the
+	// tables its digest leaves out; a project table named there still
+	// counts, so a change to it is still found
+	void laterTablesNamedInTheFileOpen()
+	{
+		QVERIFY(pragma(industrial(), QStringLiteral("SELECT value FROM qet_format WHERE key = 'digest_skips'"))
+				.toString().split(QLatin1Char(',')).contains(QStringLiteral("qet_parity")));
+		const QString path = m_dir.filePath(QStringLiteral("later.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		QVERIFY(exec(path, QStringLiteral("CREATE TABLE qet_later (x TEXT)")));
+		QVERIFY(exec(path, QStringLiteral("INSERT INTO qet_later VALUES ('from a later QElectroTech')")));
+		int code = 0;
+		QString log = resave(path, path + QStringLiteral(".1.qet"), &code);
+		QVERIFY2(code != 0 && log.contains(QStringLiteral("not what QElectroTech saved")), qPrintable(log.right(800)));
+
+		QVERIFY(exec(path, QStringLiteral("UPDATE qet_format SET value = value || ',qet_later' WHERE key = 'digest_skips'")));
+		log = resave(path, path + QStringLiteral(".2.qet"), &code);
+		QVERIFY2(code == 0, qPrintable(log.right(800)));
+
+		QVERIFY(exec(path, QStringLiteral("UPDATE qet_format SET value = value || ',element_info' WHERE key = 'digest_skips'")));
+		QVERIFY(exec(path, QStringLiteral(
+				"UPDATE element_info SET label = 'CHANGED' WHERE rowid = (SELECT min(rowid) FROM element_info)")));
+		log = resave(path, path + QStringLiteral(".3.qet"), &code);
+		QVERIFY2(code != 0 && log.contains(QStringLiteral("not what QElectroTech saved")), qPrintable(log.right(800)));
+	}
+
 	// A save that cannot finish leaves the previous file as it was
 	void failedSaveKeepsTheFile()
 	{

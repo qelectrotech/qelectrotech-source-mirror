@@ -82,6 +82,22 @@ const QString history_schema = QStringLiteral(
 const QString history_setting_schema = QStringLiteral(
 	"CREATE TABLE IF NOT EXISTS revision_setting (key TEXT PRIMARY KEY NOT NULL, value TEXT)");
 
+	//The tables neither the content digest nor a revision covers: what the
+	//file says of itself, its history and its repair data (QETDB-S4C-PLAN.md).
+	//Each save names them in qet_format's digest_skips, so that a table a
+	//later QElectroTech adds there does not make the file unreadable to
+	//this one. Only names a project table never has are taken from a file
+const QStringList unsigned_tables{QStringLiteral("qet_format"), QStringLiteral("qet_parity"),
+								  QStringLiteral("revision"), QStringLiteral("revision_changes"),
+								  QStringLiteral("revision_setting")};
+
+bool isUnsigned(const QString &table, const QStringList &listed)
+{
+	return unsigned_tables.contains(table)
+			|| (listed.contains(table) && (table.startsWith(QLatin1String("qet_"))
+										   || table.startsWith(QLatin1String("revision"))));
+}
+
 template <typename Work>
 bool withConnection(const QString &path, QString *error, Work work);
 
@@ -98,11 +114,14 @@ QString contentDigest(const QString &path, const QHash<QString, QByteArray> &reu
 {
 	QStringList tables;
 	withConnection(path, nullptr, [&tables](QSqlQuery &query) {
+		QStringList listed;
+		if (query.exec(QStringLiteral("SELECT value FROM qet_format WHERE key = 'digest_skips'")) && query.next())
+			listed = query.value(0).toString().split(QLatin1Char(','), Qt::SkipEmptyParts);
 		if (!query.exec(QStringLiteral("SELECT name FROM sqlite_master WHERE type = 'table' "
-									   "AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\' "
-									   "AND name NOT IN ('qet_format', 'revision', 'revision_changes', 'revision_setting') ORDER BY name")))
+									   "AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\' ORDER BY name")))
 			return false;
-		while (query.next()) tables << query.value(0).toString();
+		while (query.next())
+			if (!isUnsigned(query.value(0).toString(), listed)) tables << query.value(0).toString();
 		return true;
 	});
 	if (tables.isEmpty()) return {};
@@ -240,6 +259,7 @@ bool finish(const QString &path, QString *error, const QHash<QString, QByteArray
 				//The qet_ views' version (projectDataBase::publicViews())
 			{QStringLiteral("views"), QString::number(projectDataBase::PublicViewsVersion)},
 			{QStringLiteral("writer"), QetVersion::displayedVersion()},
+			{QStringLiteral("digest_skips"), unsigned_tables.join(QLatin1Char(','))},
 			{QStringLiteral("saved"), QDateTime::currentDateTimeUtc().toString(Qt::ISODate)}};
 		query.prepare(QStringLiteral("INSERT INTO qet_format (key, value) VALUES (:key, :value)"));
 		for (const auto &[key, value] : rows) {
@@ -604,11 +624,14 @@ bool recordRevision(const QString &saving, const QString &previous, QString *err
 		file.exec(QStringLiteral("DETACH DATABASE prev"));
 		return true;
 	}
-	QStringList tables;
+	QStringList tables, listed;
+	for (const QVariantList &row : file.select(QStringLiteral(
+			"SELECT value FROM main.qet_format WHERE key = 'digest_skips'")))
+		listed = row.value(0).toString().split(QLatin1Char(','), Qt::SkipEmptyParts);
 	for (const QVariantList &row : file.select(QStringLiteral(
 			"SELECT name FROM main.sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\' "
-			"AND name NOT IN ('qet_format', 'revision', 'revision_changes', 'revision_setting') ORDER BY name")))
-		tables << row.value(0).toString();
+			"ORDER BY name")))
+		if (!isUnsigned(row.value(0).toString(), listed)) tables << row.value(0).toString();
 
 	bool recorded = true;
 	QByteArray changeset;
@@ -661,6 +684,16 @@ bool recordRevision(const QString &saving, const QString &previous, QString *err
 	return ok;
 }
 
+	//The last write to a new file before it is checked, flushed and put in
+	//place, by every way of writing one (a save, rewrite()): what must
+	//cover the file as it ends goes here (the repair data, QETDB-S4C-PLAN.md P2)
+bool seal(const QString &path, QString *error)
+{
+	Q_UNUSED(path)
+	Q_UNUSED(error)
+	return true;
+}
+
 	//@p to written as @p from with @p edit made to it, as a save writes a
 	//file: a new one in its place, checked and on disk before it replaces
 	//anything, so that a previous version sharing @p to's bytes is not
@@ -681,7 +714,7 @@ bool rewrite(const QString &from, const QString &to, const std::function<bool(Sq
 		Sqlite file(saving, true);
 		ok = edit(file, error);
 	}
-	ok = ok && (!refinish || finish(saving, error)) && check(saving, error) && flushFile(saving)
+	ok = ok && (!refinish || finish(saving, error)) && seal(saving, error) && check(saving, error) && flushFile(saving)
 			&& replace(saving, to, error);
 	if (!ok) QFile::remove(saving);
 	return ok;
@@ -782,7 +815,8 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 	QHash<QString, QByteArray> digests;
 	if (!database.copyTo(saving, error) || !lap("copy")
 			|| !finish(saving, error, database.unchangedDigests(), &digests) || !lap("finish")
-			|| !recordRevision(saving, previous.isEmpty() ? path : previous, error) || !lap("revision"))
+			|| !recordRevision(saving, previous.isEmpty() ? path : previous, error) || !lap("revision")
+			|| !seal(saving, error) || !lap("seal"))
 		return give_up();
 		//The file is complete and no one else's yet: hashed beside its
 		//check and flush, not read again once it is the project
