@@ -25292,4 +25292,173 @@ The following variables can be used:
         <translation>What:</translation>
     </message>
 </context>
+<context>
+    <name>QETDiagramEditor</name>
+    <message>
+        <source>Tape measure</source>
+        <translation>Tape measure</translation>
+    </message>
+    <message>
+        <source>Add linear dimension</source>
+        <translation>Add linear dimension</translation>
+    </message>
+    <message>
+        <source>Add chain dimension</source>
+        <translation>Add chain dimension</translation>
+    </message>
+    <message>
+        <source>Adds a linear dimension to the current sheet</source>
+        <translation>Adds a linear dimension to the current sheet</translation>
+    </message>
+    <message>
+        <source>Adds a chain dimension to the current sheet</source>
+        <translation>Adds a chain dimension to the current sheet</translation>
+    </message>
+</context>
+<context>
+    <name>DimensionPropertiesWidget</name>
+    <message>
+        <source>Dimension Properties</source>
+        <translation>Dimension Properties</translation>
+    </message>
+    <message>
+        <source>Dimension</source>
+        <translation>Dimension</translation>
+    </message>
+    <message>
+        <source>Calculated:</source>
+        <translation>Calculated:</translation>
+    </message>
+    <message>
+        <source>Automatic calculation</source>
+        <translation>Automatic calculation (2px = 1mm)</translation>
+    </message>
+    <message>
+        <source>Custom label:</source>
+        <translation>Custom label:</translation>
+    </message>
+    <message>
+        <source>Offset:</source>
+        <translation>Offset:</translation>
+    </message>
+    <message>
+        <source>Termination:</source>
+        <translation>Termination:</translation>
+    </message>
+    <message>
+        <source>Dimension Properties...</source>
+        <translation>Dimension Properties...</translation>
+    </message>
+    <message>
+        <source>Arrows</source>
+        <translation>Arrows</translation>
+    </message>
+    <message>
+        <source>Architectural Slashes</source>
+        <translation>Architectural Slashes</translation>
+    </message>
+    <message>
+        <source>Auto (parallel to line)</source>
+        <translation>Auto (parallel to line)</translation>
+    </message>
+    <message>
+        <source>Horizontal</source>
+        <translation>Horizontal</translation>
+    </message>
+</context>
+<context>
+    <name>DimensionPropertiesDialog</name>
+    <message>
+        <source>Edit dimension properties</source>
+        <translation>Edit dimension properties</translation>
+    </message>
+    <message>
+        <source>Arrows</source>
+        <translation>Arrows</translation>
+    </message>
+    <message>
+        <source>Architectural Slashes</source>
+        <translation>Architectural Slashes</translation>
+    </message>
+</context>
+<context>
+    <name>DiagramEventAddDimension</name>
+    <message>
+        <source>Linear Dimension: Click to set the first reference point (P1)</source>
+        <translation>Linear Dimension: Click to set the first reference point (P1)</translation>
+    </message>
+    <message>
+        <source>Chain Dimension: Click to set the start reference point (P1)</source>
+        <translation>Chain Dimension: Click to set the start reference point (P1)</translation>
+    </message>
+    <message>
+        <source>Dimension: Click to set the second reference point (P2) - Length: %1 mm</source>
+        <translation>Dimension: Click to set the second reference point (P2) - Length: %1 mm</translation>
+    </message>
+    <message>
+        <source>Dimension: Move mouse to set offset distance and side (%1 mm), click to fix</source>
+        <translation>Dimension: Move mouse to set offset distance and side (%1 mm), click to fix</translation>
+    </message>
+    <message>
+        <source>Chain Dimension: Click to place next segment (%1 mm) | Press Enter to finish, Esc to exit</source>
+        <translation>Chain Dimension: Click to place next segment (%1 mm) | Press Enter to finish, Esc to exit</translation>
+    </message>
+</context>
+<context>
+    <name>DimensionItem</name>
+    <message>
+        <source>Apply dimension format</source>
+        <translation>Apply dimension format</translation>
+    </message>
+    <message>
+        <source>Move dimension point</source>
+        <translation>Move dimension point</translation>
+    </message>
+    <message>
+        <source>Change dimension offset</source>
+        <translation>Change dimension offset</translation>
+    </message>
+</context>
+<context>
+    <name>QETElementEditor</name>
+    <message>
+        <source>Tape measure</source>
+        <translation>Tape measure</translation>
+    </message>
+    <message>
+        <source>Measure distance and angle between points</source>
+        <translation>Measure distance and angle between points</translation>
+    </message>
+    <message>
+        <source>Clear measurements</source>
+        <translation>Clear measurements</translation>
+    </message>
+    <message>
+        <source>Clear all tape measurements from the editor</source>
+        <translation>Clear all tape measurements from the editor</translation>
+    </message>
+</context>
+<context>
+    <name>ESEventMeasure</name>
+    <message>
+        <source>Tape measure: Click to set the first reference point (P1), Esc to exit</source>
+        <translation>Tape measure: Click to set the first reference point (P1), Esc to exit</translation>
+    </message>
+    <message>
+        <source>Tape measure: Click to set the second reference point (P2)</source>
+        <translation>Tape measure: Click to set the second reference point (P2)</translation>
+    </message>
+    <message>
+        <source>Tape measure: %1 mm (%2 px) | ΔX: %3 mm | ΔY: %4 mm | Angle: %5°</source>
+        <translation>Tape measure: %1 mm (%2 px) | ΔX: %3 mm | ΔY: %4 mm | Angle: %5°</translation>
+    </message>
+    <message>
+        <source>Measurements cleared</source>
+        <translation>Measurements cleared</translation>
+    </message>
+    <message>
+        <source>Measurements cleared. Press Esc again to exit</source>
+        <translation>Measurements cleared. Press Esc again to exit</translation>
+    </message>
+</context>
 </TS>
