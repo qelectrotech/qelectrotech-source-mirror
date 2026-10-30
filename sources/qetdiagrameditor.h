@@ -179,6 +179,9 @@ class QETDiagramEditor : public QETMainWindow
 		void editProjectProperties(ProjectView *);
 		void editProjectProperties(QETProject *);
 		void showProjectHistory();
+		void exportForDelivery();
+		bool openProjectRevision(QETProject *project, qint64 number);
+		void showProjectChanges(QETProject *project, qint64 from, qint64 to, QWidget *parent);
 		void slot_terminalNumbering();
 		void slot_cableNumbering();
 		void slot_reloadElementDrawings();
@@ -279,6 +282,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_cell_lines = nullptr,	///< Draw the folio column/row limits across the drawing or not
 		*m_project_edit_properties,	///< Edit the properties of the current project.
 		*m_project_history,	///< The saves the current project's .qetdb keeps
+		*m_export_delivery,	///< A copy of the current .qetdb without its history
 		*m_project_add_diagram,		///< Add a diagram to the current project.
 		*m_remove_diagram_from_project,	///< Delete a diagram from the current project
 		*m_clean_project,		///< Clean the content of the current project by removing useless items

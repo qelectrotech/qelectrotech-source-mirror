@@ -443,6 +443,137 @@ private slots:
 		QCOMPARE(code, 1);
 	}
 
+	// Who last changed a symbol: the newest save that names it, and none
+	// for a symbol no save changed (QETDB-S6-SCOPE.md S6-5)
+	void lastChangeNamesTheSave()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("blame.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString out = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QFile js(m_dir.filePath(QStringLiteral("blame.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("var us = qet.elementUuids(3).sort();\n"
+				 "qet.log('UUIDS ' + us[0] + ' ' + us[1]);\n"
+				 "qet.setElementInfo(3, us[0], 'comment', 'BLAME1');\n"
+				 "qet.log('SAVED1 ' + qet.save(''));\n"
+				 "qet.setElementInfo(3, us[1], 'comment', 'BLAME2');\n"
+				 "qet.log('SAVED2 ' + qet.save(''));\n");
+		js.close();
+		out = run({QStringLiteral("--run"), js.fileName(), path});
+		QVERIFY2(out.contains(QStringLiteral("SAVED2 true")), qPrintable(out.right(800)));
+		const QRegularExpressionMatch uuids = QRegularExpression(QStringLiteral("UUIDS (\\S+) (\\S+)")).match(out);
+		QVERIFY2(uuids.hasMatch(), qPrintable(out.right(800)));
+			//The first save after opening may change many symbols' texts:
+			//one never changed is one the project does not have
+		const auto last = [&](int i) {
+			int exit = -1;
+			const QString uuid = i ? uuids.captured(i) : QStringLiteral("{00000000-0000-4000-8000-000000000001}");
+			const QString line = run({QStringLiteral("--last-change"), path, uuid}, false, &exit)
+					.split(QLatin1Char('\n')).filter(QRegularExpression(QStringLiteral("^\\d+  |^not changed"))).value(0);
+			return exit == 0 ? line : QStringLiteral("exit %1").arg(exit);
+		};
+		QVERIFY2(last(1).startsWith(QStringLiteral("2  ")) && last(1).endsWith(QStringLiteral("changed")), qPrintable(last(1)));
+		QVERIFY2(last(2).startsWith(QStringLiteral("3  ")), qPrintable(last(2)));
+		QVERIFY2(last(0).startsWith(QStringLiteral("not changed")), qPrintable(last(0)));
+		run({QStringLiteral("--last-change"), industrial(), uuids.captured(1)}, false, &code);
+		QCOMPARE(code, 1);
+	}
+
+	// Only the last saves kept: the oldest dropped at each save, the
+	// oldest kept one still to go back to (QETDB-S6-SCOPE.md S6-6)
+	void historyKeepsTheLastSaves()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("keep.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString out = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		run({QStringLiteral("--history-keep"), path, QStringLiteral("1")}, false, &code);
+		QCOMPARE(code, 1);
+		out = run({QStringLiteral("--history-keep"), path, QStringLiteral("3")}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QFile js(m_dir.filePath(QStringLiteral("keep.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("var us = qet.elementUuids(3).sort();\n"
+				 "for (var i = 0; i < 4; ++i) {\n"
+				 "  qet.setElementInfo(3, us[i], 'comment', 'KEEP' + i);\n"
+				 "  qet.log('SAVED' + i + ' ' + qet.save(''));\n"
+				 "}\n");
+		js.close();
+		out = run({QStringLiteral("--run"), js.fileName(), path});
+		QVERIFY2(out.contains(QStringLiteral("SAVED3 true")), qPrintable(out.right(800)));
+		const auto numbers = [this, &path]() {
+			QStringList found;
+			for (const QString &line : run({QStringLiteral("--history"), path}).split(QLatin1Char('\n')))
+				if (line.contains(QRegularExpression(QStringLiteral("^\\d+  "))))
+					found << line.section(QStringLiteral("  "), 0, 0);
+			return found;
+		};
+		QCOMPARE(numbers(), QStringList({QStringLiteral("3"), QStringLiteral("4"), QStringLiteral("5")}));
+		const QString old = m_dir.filePath(QStringLiteral("keep-3.qetdb"));
+		out = run({QStringLiteral("--revision"), path, QStringLiteral("3"), old}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		const QByteArray then = built(old);
+		QVERIFY(then.contains("KEEP1") && !then.contains("KEEP2"));
+		run({QStringLiteral("--revision"), path, QStringLiteral("2"), old}, false, &code);
+		QCOMPARE(code, 1);
+		out = run({QStringLiteral("--history-keep"), path, QStringLiteral("0")}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QCOMPARE(numbers().size(), 3);
+	}
+
+	// A save reads again only the tables written since the file before:
+	// the others keep their digest, and the file still opens (its digest
+	// read whole). QET_QETDB_CHECK_DIGEST=1 reads every table again at
+	// each save and fails it if a reused digest is not the table's
+	// (QETDB-S6-SCOPE.md §8 H5)
+	void unchangedTablesKeepTheirDigest()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("reuse.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		QFile js(m_dir.filePath(QStringLiteral("reuse.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("var us = qet.elementUuids(3).sort();\n"
+				 "qet.log('SAVED0 ' + qet.save(''));\n"
+				 "qet.setElementInfo(3, us[0], 'comment', 'REUSE1');\n"
+				 "qet.log('SAVED1 ' + qet.save(''));\n"
+				 "qet.log('SAVED2 ' + qet.save(''));\n"
+				 "qet.moveElement(3, us[1], 20, 0);\n"
+				 "qet.setElementLabel(4, qet.elementUuids(4).sort()[0], 'REUSE3');\n"
+				 "qet.log('SAVED3 ' + qet.save(''));\n");
+		js.close();
+		const QString out = run({QStringLiteral("--run"), js.fileName(), path}, false, nullptr,
+								{QStringLiteral("QET_QETDB_CHECK_DIGEST=1")});
+		for (const char *saved : {"SAVED0 true", "SAVED1 true", "SAVED2 true", "SAVED3 true"})
+			QVERIFY2(out.contains(QLatin1String(saved)), qPrintable(out.right(1200)));
+		QVERIFY2(!out.contains(QStringLiteral("reused for changed tables")), qPrintable(out.right(1200)));
+			//Saves 1 to 3 each reuse some tables, and save 2 (nothing
+			//changed) all of them
+		QList<QRegularExpressionMatch> reused;
+		auto it = QRegularExpression(QStringLiteral("reused for (\\d+) of (\\d+) tables")).globalMatch(out);
+		while (it.hasNext()) reused << it.next();
+		QVERIFY2(reused.size() == 3, qPrintable(out.right(1200)));
+		QVERIFY2(reused.at(1).captured(1) == reused.at(1).captured(2), qPrintable(reused.at(1).captured(0)));
+		const QString back = m_dir.filePath(QStringLiteral("reuse-back.qetdb"));
+		const QString log = resave(path, back);
+		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
+		QVERIFY(built(path).contains("REUSE3"));
+	}
+
 	// A symbol whose definition is missing is kept as read (F127): opened
 	// from the file's tables and saved again, a folio not built keeps it
 	void keptSymbolSurvivesResave()

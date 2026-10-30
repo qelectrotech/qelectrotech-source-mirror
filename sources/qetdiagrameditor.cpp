@@ -124,7 +124,12 @@
 #include <QDialogButtonBox>
 #include <QHeaderView>
 #include "dataBase/qetdbfile.h"
+#include "dataBase/projectdatabase.h"
+#include "qetgraphicsitem/element.h"
+#include <QSqlQuery>
 #include <QCheckBox>
+#include <QFileDialog>
+#include <QSpinBox>
 #include <QDockWidget>
 #include <QJsonObject>
 #include <QTime>
@@ -875,6 +880,11 @@ void QETDiagramEditor::setUpActions()
 	m_project_history = new QAction(tr("History of saves..."), this);
 	ShortcutManager::instance().registerAction(m_project_history, "diagrameditor.project_history", tr("Diagram editors"), QKeySequence());
 	connect(m_project_history, &QAction::triggered, this, &QETDiagramEditor::showProjectHistory);
+		//A copy of a .qetdb without its history, for a client (S6-6)
+	m_export_delivery = new QAction(tr("Export for delivery..."), this);
+	m_export_delivery->setStatusTip(tr("Write a copy of the project without the history of its saves"));
+	ShortcutManager::instance().registerAction(m_export_delivery, "diagrameditor.export_delivery", tr("Diagram editors"), QKeySequence());
+	connect(m_export_delivery, &QAction::triggered, this, &QETDiagramEditor::exportForDelivery);
 
 		//Add new folio to current project
 	m_project_add_diagram = new QAction(QET::Icons::DiagramAdd, tr("Add a sheet"), this);
@@ -1728,6 +1738,7 @@ void QETDiagramEditor::setUpMenu()
 	//menu_fichier -> addAction(import_diagram);
 	menu_fichier -> addAction(m_export_to_images);
 	menu_fichier -> addAction(m_export_to_pdf);
+	menu_fichier -> addAction(m_export_delivery);
 	menu_fichier -> addAction(m_print);
 	menu_fichier -> addSeparator();
 	menu_fichier -> addAction(m_quit_editor);
@@ -3230,6 +3241,7 @@ void QETDiagramEditor::slot_updateActions()
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
 	m_project_history             -> setEnabled(opened_project);
+	m_export_delivery             -> setEnabled(opened_project);
 	m_project_add_diagram         -> setEnabled(editable_project);
 	m_remove_diagram_from_project -> setEnabled(editable_project);
 	m_clean_project               -> setEnabled(editable_project);
@@ -5318,18 +5330,55 @@ void QETDiagramEditor::showProjectHistory()
 	dialog.setWindowTitle(tr("History of saves"));
 	auto *layout = new QVBoxLayout(&dialog);
 	auto *keep = new QCheckBox(tr("Keep a history of saves in this file"), &dialog);
+	auto *limit_row = new QHBoxLayout();
+	auto *limit = new QSpinBox(&dialog);
+	limit->setRange(0, 9999);
+	limit->setSpecialValueText(tr("all"));
+	limit->setToolTip(tr("The oldest saves are dropped from the history at each save beyond this number"));
+	limit_row->addWidget(new QLabel(tr("Saves to keep:"), &dialog));
+	limit_row->addWidget(limit);
+	limit_row->addStretch();
 	auto *note = new QLabel(&dialog);
 	note->setWordWrap(true);
 	auto *list = new QTreeWidget(&dialog);
 	list->setHeaderLabels({tr("No."), tr("Saved"), tr("By"), tr("Changes")});
 	list->setRootIsDecorated(false);
+	list->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	list->header()->setStretchLastSection(true);
 	layout->addWidget(keep);
+	layout->addLayout(limit_row);
 	layout->addWidget(note);
 	layout->addWidget(list);
 	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Close, &dialog);
+	auto *open = buttons->addButton(tr("Open as it was"), QDialogButtonBox::ActionRole);
+	open->setToolTip(tr("Open the project as it was after the selected save, read-only"));
+	auto *compare = buttons->addButton(tr("Compare"), QDialogButtonBox::ActionRole);
+	compare->setToolTip(tr("What the selected save changed, or what changed between two selected saves"));
 	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
 	layout->addWidget(buttons);
+		//The numbers of the selected saves, oldest first
+	const auto selected = [list]() {
+		QList<qint64> numbers;
+		for (const QTreeWidgetItem *item : list->selectedItems())
+			numbers << item->text(0).toLongLong();
+		std::sort(numbers.begin(), numbers.end());
+		return numbers;
+	};
+	const auto enable = [=]() {
+		const QList<qint64> numbers = selected();
+		open->setEnabled(numbers.size() == 1);
+		compare->setEnabled(numbers.size() == 2 || (numbers.size() == 1 && numbers.first() > 1));
+	};
+	connect(list, &QTreeWidget::itemSelectionChanged, &dialog, enable);
+	connect(open, &QPushButton::clicked, &dialog, [=, &dialog]() {
+		if (openProjectRevision(project, selected().first()))
+			dialog.accept();
+	});
+	connect(compare, &QPushButton::clicked, &dialog, [=, &dialog]() {
+		const QList<qint64> numbers = selected();
+		showProjectChanges(project, numbers.size() == 2 ? numbers.first() : numbers.first() - 1,
+						   numbers.last(), &dialog);
+	});
 
 	const bool database = QetDbFile::isDatabasePath(project->filePath())
 			&& QFileInfo::exists(project->filePath());
@@ -5340,12 +5389,15 @@ void QETDiagramEditor::showProjectHistory()
 		const QSignalBlocker blocker(keep);
 		keep->setChecked(!lines.isEmpty());
 		keep->setEnabled(database);
+		const QSignalBlocker limit_blocker(limit);
+		limit->setValue(lines.isEmpty() ? 0 : QetDbFile::historyLimit(project->filePath()));
+		limit->setEnabled(!lines.isEmpty());
 		note->setText(!database ? tr("A history is kept only in a project saved as .qetdb (File > Save as).")
 								: lines.isEmpty() ? tr("This file keeps no history. Switched on, each save "
 													   "records who saved, when and what changed.")
 												  : tr("Each save records who saved, when and what changed. "
 													   "Copies of the file carry this history: use "
-													   "--export-delivery to send a project without it."));
+													   "File > Export for delivery to send a project without it."));
 			//"ord  time  who@host  kind: changes", newest first
 		for (auto it = lines.crbegin() ; it != lines.crend() ; ++it) {
 			const QString &line = *it;
@@ -5358,6 +5410,7 @@ void QETDiagramEditor::showProjectHistory()
 			item->setToolTip(3, what);
 		}
 		for (int i = 0 ; i < 3 ; ++i) list->resizeColumnToContents(i);
+		enable();
 	};
 	connect(keep, &QCheckBox::toggled, &dialog, [&](bool on) {
 		if (!on && QMessageBox::question(&dialog, tr("History of saves"),
@@ -5372,7 +5425,192 @@ void QETDiagramEditor::showProjectHistory()
 								 tr("The history could not be changed: %1").arg(error));
 		refresh();
 	});
+	connect(limit, &QSpinBox::editingFinished, &dialog, [&]() {
+		const int saves = limit->value() == 1 ? 2 : limit->value();
+		if (saves == QetDbFile::historyLimit(project->filePath())) {
+			refresh();
+			return;
+		}
+		QString error;
+		if (!project->setHistoryLimit(saves, &error))
+			QMessageBox::warning(&dialog, tr("History of saves"),
+								 tr("The history could not be changed: %1").arg(error));
+		refresh();
+	});
 	refresh();
 	dialog.resize(720, 420);
+	dialog.exec();
+}
+
+/**
+	@brief QETDiagramEditor::exportForDelivery
+	Write a copy of the current project's .qetdb without the history of
+	its saves: for a client, who should get the drawings, not who changed
+	them and when (QET-SQL-FORMAT-SCOPE.md 6.5). Made from the file, so
+	unsaved changes are saved first.
+*/
+void QETDiagramEditor::exportForDelivery()
+{
+	ProjectView *view = currentProjectView();
+	if (!view) return;
+	QETProject *project = view->project();
+	if (!QetDbFile::isDatabasePath(project->filePath()) || !QFileInfo::exists(project->filePath())) {
+		QMessageBox::information(this, tr("Export for delivery"),
+								 tr("Only a project saved as .qetdb keeps a history to leave out "
+									"(File > Save as)."));
+		return;
+	}
+	if (project->projectWasModified()) {
+		if (QMessageBox::question(this, tr("Export for delivery"),
+								  tr("The copy is made from the saved file. Save the project first?"),
+								  QMessageBox::Save | QMessageBox::Cancel) != QMessageBox::Save
+				|| !view->save().isOk())
+			return;
+	}
+	const QFileInfo info(project->filePath());
+	QString path = QFileDialog::getSaveFileName(
+				this, tr("Export for delivery"),
+				info.dir().filePath(tr("%1 - delivery.qetdb").arg(info.completeBaseName())),
+				tr("QElectroTech project (*.qetdb)"));
+	if (path.isEmpty()) return;
+	if (!QetDbFile::isDatabasePath(path)) path += QStringLiteral(".qetdb");
+	if (QFileInfo(path).absoluteFilePath() == info.absoluteFilePath()) {
+		QMessageBox::warning(this, tr("Export for delivery"),
+							 tr("Choose another file than the project's own."));
+		return;
+	}
+	QString error;
+	if (!QetDbFile::exportDelivery(project->filePath(), path, &error)) {
+		QMessageBox::warning(this, tr("Export for delivery"),
+							 tr("The copy could not be written: %1").arg(error));
+		return;
+	}
+	statusBar()->showMessage(tr("Copy without history written to %1").arg(QDir::toNativeSeparators(path)), 5000);
+}
+
+/**
+	@brief QETDiagramEditor::openProjectRevision
+	Open @p project as it was after its save @p number: written from the
+	history its .qetdb keeps to a file of its own in the temporary folder,
+	and opened read-only beside it (QETDB-S6-SCOPE.md S6-3).
+	@return true if it was opened
+*/
+bool QETDiagramEditor::openProjectRevision(QETProject *project, qint64 number)
+{
+	const QDir folder(QDir::temp().filePath(QStringLiteral("QElectroTech saves")));
+	if (!folder.exists() && !QDir().mkpath(folder.path())) return false;
+	const QString path = folder.filePath(tr("%1 - save %2.qetdb")
+										 .arg(QFileInfo(project->filePath()).completeBaseName())
+										 .arg(number));
+		//Already open: shown again as it is
+	if (QETApp::diagramEditorForFile(path)) return openAndAddProject(path);
+	if (QFile::exists(path)) {
+		QFile::setPermissions(path, QFile::permissions(path) | QFile::WriteOwner);
+		QFile::remove(path);
+	}
+	QString error;
+	if (!QetDbFile::writeRevision(project->filePath(), number, path, &error)) {
+		QMessageBox::warning(this, tr("History of saves"),
+							 tr("Save %1 could not be written again: %2").arg(number).arg(error));
+		return false;
+	}
+	QFile::setPermissions(path, QFile::ReadOwner | QFile::ReadUser | QFile::ReadGroup | QFile::ReadOther);
+	if (!openAndAddProject(path, false)) return false;
+	if (ProjectView *view = viewForFile(path))
+		view->project()->setReadOnly(true);
+	return true;
+}
+
+/**
+	@brief QETDiagramEditor::showProjectChanges
+	What changed in @p project's .qetdb from its save @p from to its save
+	@p to: each symbol, wire and folio, named as the project now names it;
+	a double click shows it on its folio (QETDB-S6-SCOPE.md S6-4).
+*/
+void QETDiagramEditor::showProjectChanges(QETProject *project, qint64 from, qint64 to, QWidget *parent)
+{
+	QString error;
+	const QStringList lines = QetDbFile::historyDiff(project->filePath(), from, to, &error);
+	if (lines.isEmpty()) {
+		QMessageBox::warning(parent, tr("History of saves"),
+							 tr("The saves could not be compared: %1").arg(error));
+		return;
+	}
+		//Names as the project database has them now (not the folios'
+		//items: a folio need not be built to be named)
+	QHash<QUuid, QPair<QString, QString>> names;	// uuid -> folio, name
+	QHash<QUuid, QUuid> folio_of;
+	const auto read = [&](const QString &sql) {
+		QSqlQuery query = project->dataBase()->newQuery(sql);
+		if (!query.exec()) return;
+		while (query.next()) {
+			const QUuid uuid(query.value(0).toString());
+			names.insert(uuid, {query.value(1).toString(), query.value(2).toString()});
+			folio_of.insert(uuid, QUuid(query.value(3).toString()));
+		}
+	};
+	read(QStringLiteral("SELECT device_uuid, folio, label, folio_uuid FROM qet_devices"));
+	read(QStringLiteral("SELECT wire_uuid, folio, coalesce(nullif(wire_number, ''), "
+						"from_device || ':' || from_terminal || ' - ' || to_device || ':' || to_terminal), "
+						"folio_uuid FROM qet_wires"));
+	read(QStringLiteral("SELECT folio_uuid, folio, title, folio_uuid FROM qet_folios"));
+
+	QDialog dialog(parent);
+	dialog.setWindowTitle(tr("Changes from save %1 to save %2").arg(from).arg(to));
+	auto *layout = new QVBoxLayout(&dialog);
+	auto *summary = new QLabel(lines.first().section(QStringLiteral(": "), 1), &dialog);
+	summary->setWordWrap(true);
+	auto *list = new QTreeWidget(&dialog);
+	list->setHeaderLabels({tr("Kind"), tr("Folio"), tr("Name"), tr("Change")});
+	list->setRootIsDecorated(false);
+	list->setSortingEnabled(true);
+	layout->addWidget(summary);
+	layout->addWidget(list);
+	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Close, &dialog);
+	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+	layout->addWidget(buttons);
+
+	const QHash<QString, QString> kinds{{QStringLiteral("symbol"), tr("Symbol")},
+										{QStringLiteral("wire"), tr("Wire")},
+										{QStringLiteral("folio"), tr("Folio")},
+										{QStringLiteral("drawn item"), tr("Drawn item")}};
+	const QHash<QString, QString> changes{{QStringLiteral("added"), tr("added")},
+										  {QStringLiteral("removed"), tr("removed")},
+										  {QStringLiteral("changed"), tr("changed")}};
+		//"<kind> <uuid>: <change>"
+	for (const QString &line : lines.mid(1)) {
+		const QString kind = line.section(QLatin1Char(' '), 0, -3).trimmed();
+		const QUuid uuid(line.section(QLatin1Char(' '), -2, -2).chopped(1));
+		const QString change = line.section(QStringLiteral(": "), -1);
+		const auto name = names.value(uuid);
+		auto *item = new QTreeWidgetItem(list, {kinds.value(kind, kind), name.first,
+												name.second.isEmpty() ? uuid.toString() : name.second,
+												changes.value(change, change)});
+		item->setData(0, Qt::UserRole, uuid);
+		item->setData(1, Qt::UserRole, folio_of.value(uuid));
+		if (!names.contains(uuid))
+			item->setToolTip(2, tr("Not in the project now"));
+	}
+	list->sortByColumn(1, Qt::AscendingOrder);
+	for (int i = 0 ; i < 3 ; ++i) list->resizeColumnToContents(i);
+	connect(list, &QTreeWidget::itemDoubleClicked, &dialog, [project](QTreeWidgetItem *item) {
+		const QUuid uuid = item->data(0, Qt::UserRole).toUuid();
+		Diagram *diagram = project->diagramByUuid(item->data(1, Qt::UserRole).toUuid());
+		if (!diagram) return;
+		diagram->showMe();
+		diagram->clearSelection();
+			//Only this folio's items, to select the one named
+		for (QGraphicsItem *graphics : diagram->items()) {
+			const auto *element = qgraphicsitem_cast<Element *>(graphics);
+			const auto *conductor = qgraphicsitem_cast<Conductor *>(graphics);
+			if ((element && element->uuid() == uuid) || (conductor && conductor->uuid() == uuid)) {
+				graphics->setSelected(true);
+				for (QGraphicsView *view : diagram->views())
+					view->centerOn(graphics);
+				break;
+			}
+		}
+	});
+	dialog.resize(640, 420);
 	dialog.exec();
 }

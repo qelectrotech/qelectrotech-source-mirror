@@ -57,7 +57,13 @@ namespace QetDbFile
 	bool setHistory(const QString &path, bool on, QString *error);
 	QStringList history(const QString &path, QString *error);
 	QStringList historyDiff(const QString &path, qint64 from, qint64 to, QString *error);
+		/// The last save that changed the symbol, wire or folio @p uuid,
+		/// as "ord  time  who@host  added|changed"; empty if none did
+	QString lastChange(const QString &path, const QString &uuid, QString *error);
 	bool exportDelivery(const QString &path, const QString &output, QString *error);
+		/// Only the last @p saves revisions kept, 0 for all (S6-6)
+	bool setHistoryLimit(const QString &path, int saves, QString *error);
+	int historyLimit(const QString &path);
 	bool writeRevision(const QString &path, qint64 ord, const QString &output, QString *error,
 					   bool *same_digest = nullptr);
 		/// The checks a file passes before it is opened: not damaged,
