@@ -481,6 +481,10 @@ private slots:
 		QVERIFY2(last(1).startsWith(QStringLiteral("2  ")) && last(1).endsWith(QStringLiteral("changed")), qPrintable(last(1)));
 		QVERIFY2(last(2).startsWith(QStringLiteral("3  ")), qPrintable(last(2)));
 		QVERIFY2(last(0).startsWith(QStringLiteral("not changed")), qPrintable(last(0)));
+			//No limit asked, none written: the file stays one the history's
+			//first version reads
+		QCOMPARE(pragma(path, QStringLiteral(
+			"SELECT count(*) FROM sqlite_master WHERE name = 'revision_setting'")).toInt(), 0);
 		run({QStringLiteral("--last-change"), industrial(), uuids.captured(1)}, false, &code);
 		QCOMPARE(code, 1);
 	}

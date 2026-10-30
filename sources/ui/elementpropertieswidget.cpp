@@ -474,10 +474,9 @@ QWidget *ElementPropertiesWidget::generalWidget()
 					.arg(usage.other);
 		}
 	}
-	description_string += QString(tr("Location : %1\n")).arg(m_element.data()->location().toString());
-
 		//Who last changed it, from the history its .qetdb keeps if it
-		//keeps one: as saved, not the edits since (QETDB-S6-SCOPE.md S6-5)
+		//keeps one: as saved, not the edits since (QETDB-S6-SCOPE.md S6-5).
+		//Before the location, which can wrap onto several lines
 	QETProject *project = m_diagram->project();
 	if (project && QetDbFile::isDatabasePath(project->filePath()) && QFileInfo::exists(project->filePath())) {
 			//"ord  time  who@host  added|changed"
@@ -490,6 +489,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 						 last.section(QStringLiteral("  "), 2, 2).section(QLatin1Char('@'), 0, 0));
 		}
 	}
+	description_string += QString(tr("Location : %1\n")).arg(m_element.data()->location().toString());
 
 		// widget himself
 	QWidget *general_widget = new QWidget (m_tab);

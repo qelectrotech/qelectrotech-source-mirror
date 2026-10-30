@@ -75,7 +75,11 @@ const QString history_schema = QStringLiteral(
 	"CREATE TABLE IF NOT EXISTS revision (uuid TEXT PRIMARY KEY NOT NULL, parent_uuid TEXT, "
 	"ord INTEGER NOT NULL, author TEXT, host TEXT, time TEXT NOT NULL, message TEXT, "
 	"kind TEXT NOT NULL, release_label TEXT, digest TEXT, prev_digest TEXT); "
-	"CREATE TABLE IF NOT EXISTS revision_changes (revision TEXT PRIMARY KEY NOT NULL, changeset BLOB); "
+	"CREATE TABLE IF NOT EXISTS revision_changes (revision TEXT PRIMARY KEY NOT NULL, changeset BLOB)");
+	//How many saves the history keeps (S6-6): only in a file told to keep
+	//fewer than all, so that a file without a limit is one the history's
+	//first version reads too
+const QString history_setting_schema = QStringLiteral(
 	"CREATE TABLE IF NOT EXISTS revision_setting (key TEXT PRIMARY KEY NOT NULL, value TEXT)");
 
 template <typename Work>
@@ -636,7 +640,8 @@ bool recordRevision(const QString &saving, const QString &previous, QString *err
 			&& file.exec(QStringLiteral("INSERT INTO main.revision SELECT * FROM prev.revision"))
 			&& file.exec(QStringLiteral("INSERT INTO main.revision_changes SELECT * FROM prev.revision_changes"))
 			&& (!has_table(QStringLiteral("prev"), QStringLiteral("revision_setting"))
-				|| file.exec(QStringLiteral("INSERT INTO main.revision_setting SELECT * FROM prev.revision_setting")))
+				|| (file.exec(history_setting_schema)
+					&& file.exec(QStringLiteral("INSERT INTO main.revision_setting SELECT * FROM prev.revision_setting"))))
 			&& file.run(QStringLiteral("INSERT INTO main.revision (uuid, parent_uuid, ord, author, host, time, kind, "
 									   "digest, prev_digest) VALUES (?, ?, ?, ?, ?, ?, 'save', ?, ?)"),
 						{uuid, parent.isEmpty() ? QVariant() : parent.first().value(0),
@@ -939,7 +944,7 @@ bool QetDbFile::setHistoryLimit(const QString &path, int saves, QString *error)
 			return false;
 		}
 		const bool ok = file.exec(QStringLiteral("BEGIN"))
-				&& file.exec(history_schema)
+				&& file.exec(history_setting_schema)
 				&& file.run(QStringLiteral("INSERT OR REPLACE INTO revision_setting (key, value) VALUES ('keep', ?)"),
 							{qlonglong(saves)})
 				&& keepLimit(file)
