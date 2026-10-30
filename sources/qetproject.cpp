@@ -597,7 +597,11 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//A .qetdb (experimental): the project it holds, as a .qet's document,
 		//handed over without being written as text. Its state on disk is that
 		//of the file itself
-	const bool database = QetDbFile::isDatabase(content.left(16));
+		//A .qetdb whose first page is damaged no longer says it is one: its
+		//name does, unless it holds XML or a zip (QETDB-S4C-PLAN.md P4)
+	const bool database = QetDbFile::isDatabase(content.left(16))
+			|| (QetDbFile::isDatabasePath(fi.fileName()) && !content.trimmed().startsWith('<')
+				&& !content.startsWith("PK\x03\x04"));
 	QDomDocument xml_project;
 		//The bytes just read are those of the file: hashed for
 		//changedOnDisk() while the open goes on (0.2 s of a 44 MB file)
