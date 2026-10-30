@@ -1700,7 +1700,7 @@ void ElementPropertiesEditorWidget::plcSelectHeaderFont()
 {
 	bool ok;
 	QFont font = QFontDialog::getFont(&ok, m_plc_header_font, this,
-		tr("Column header formatting"));
+		tr("Column header formatting"), QFontDialog::DontUseNativeDialog);
 	if (ok) {
 		m_plc_header_font = font;
 		m_plc_header_font_btn->setText(tr("Heading font size: %1 %2pt")
@@ -1716,7 +1716,7 @@ void ElementPropertiesEditorWidget::plcSelectCellFont()
 {
 	bool ok;
 	QFont font = QFontDialog::getFont(&ok, m_plc_cell_font, this,
-		tr("Cell text font"));
+		tr("Cell text font"), QFontDialog::DontUseNativeDialog);
 	if (ok) {
 		m_plc_cell_font = font;
 		m_plc_cell_font_btn->setText(tr("Font size: %1 %2pt")

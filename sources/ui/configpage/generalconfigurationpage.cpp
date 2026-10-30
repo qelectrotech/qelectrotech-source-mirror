@@ -672,7 +672,8 @@ void GeneralConfigurationPage::on_m_font_pb_clicked()
 	QFont curFont = QFont(settings.value("diagramitemfont", "Liberation Sans").toString());
 	curFont.setPointSizeF(settings.value("diagramitemsize", "9").toInt());
 	curFont.setStyleName (settings.value("diagramitemstyle", "Regular").toString());
-	QFont font = QFontDialog::getFont(&ok, curFont, this);
+	QFont font = QFontDialog::getFont(&ok, curFont, this, QString(),
+									  QFontDialog::DontUseNativeDialog);
 	if (ok)
 	{
 		settings.setValue("diagramitemfont", font.family());
@@ -696,7 +697,8 @@ void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 	QSettings settings;
 	QFont curFont;
 	QETUtils::fontFromString(curFont, settings.value("diagrameditor/dynamic_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
-	QFont font = QFontDialog::getFont(&ok, curFont, this);
+	QFont font = QFontDialog::getFont(&ok, curFont, this, QString(),
+									  QFontDialog::DontUseNativeDialog);
 	if (ok)
 	{
 		settings.setValue("diagrameditor/dynamic_text_font", QETUtils::fontToString(font));
@@ -720,7 +722,7 @@ void GeneralConfigurationPage::on_m_cable_text_font_pb_clicked()
 {
 	bool ok = false;
 	const QFont font = QFontDialog::getFont(&ok, QETApp::cableTextsFont(), this,
-			tr("Cable text font"));
+			tr("Cable text font"), QFontDialog::DontUseNativeDialog);
 	if (!ok) return;
 
 	QSettings settings;
@@ -738,7 +740,7 @@ void GeneralConfigurationPage::on_m_cable_core_font_pb_clicked()
 {
 	bool ok = false;
 	const QFont font = QFontDialog::getFont(&ok, QETApp::cableCoreFont(), this,
-			tr("Core colors font"));
+			tr("Core colors font"), QFontDialog::DontUseNativeDialog);
 	if (!ok) return;
 
 	QSettings settings;
@@ -1053,7 +1055,8 @@ void GeneralConfigurationPage::on_m_indi_text_font_pb_clicked()
 	QSettings settings;
 	QFont curFont;
 	QETUtils::fontFromString(curFont, settings.value("diagrameditor/independent_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
-	QFont font = QFontDialog::getFont(&ok, curFont, this);
+	QFont font = QFontDialog::getFont(&ok, curFont, this, QString(),
+									  QFontDialog::DontUseNativeDialog);
 	if (ok)
 	{
 		settings.setValue("diagrameditor/independent_text_font", QETUtils::fontToString(font));
