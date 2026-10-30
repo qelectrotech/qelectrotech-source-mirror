@@ -11,7 +11,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="30"/>
         <source>About</source>
-        <translation>A cercad de</translation>
+        <translation>Acerca de</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="53"/>
