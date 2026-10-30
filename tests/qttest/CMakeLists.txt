@@ -1897,7 +1897,8 @@ add_executable(
   tst_qetdbrobust
   tst_qetdbrobust.cpp)
 add_test(NAME tst_qetdbrobust COMMAND tst_qetdbrobust)
-set_tests_properties(tst_qetdbrobust PROPERTIES TIMEOUT 900)
+math(EXPR qet_qetdbrobust_timeout "900 * ${qet_test_timeout_scale}")
+set_tests_properties(tst_qetdbrobust PROPERTIES TIMEOUT ${qet_qetdbrobust_timeout})
 add_dependencies(tst_qetdbrobust qelectrotech)
 target_link_libraries(tst_qetdbrobust PRIVATE Qt::Test Qt::Sql)
 target_compile_definitions(tst_qetdbrobust PRIVATE
@@ -1909,6 +1910,8 @@ target_compile_definitions(tst_qetdbrobust PRIVATE
 qet_add_app_test(tst_uprighttexts tst_uprighttexts.cpp)
 target_compile_definitions(tst_uprighttexts PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
+
+# New tests go above this line: the blocks below apply to the tests above them.
 
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of

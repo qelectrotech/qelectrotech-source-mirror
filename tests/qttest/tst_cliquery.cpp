@@ -16,6 +16,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 class tst_cliquery : public QObject
 {
@@ -47,7 +48,7 @@ class tst_cliquery : public QObject
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   QStringList{QStringLiteral("--common-elements-dir=" QET_ELEMENTS_DIR "/")} + args);
 		Result result;
-		if (!proc.waitForFinished(300000)) return result;
+		if (!proc.waitForFinished(QetTest::timeout(300000))) return result;
 		result.code = proc.exitCode();
 		result.out = QString::fromUtf8(proc.readAllStandardOutput());
 		result.err = QString::fromUtf8(proc.readAllStandardError());

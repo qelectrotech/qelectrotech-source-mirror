@@ -206,7 +206,7 @@ private slots:
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), js, QStringLiteral(QET_EXAMPLES_DIR "/grafcet.qet")});
-		QVERIFY(proc.waitForFinished(120000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(120000)));
 		const QString log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		QVERIFY2(log.contains(QStringLiteral("ON drawing_item (folio_uuid)"))
 				 && log.contains(QStringLiteral("ON drawing_item (item_uuid)")), qPrintable(log.right(600)));
