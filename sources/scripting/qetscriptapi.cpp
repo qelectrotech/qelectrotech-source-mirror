@@ -4377,8 +4377,9 @@ bool QetScriptApi::useElementAutoNum(const QString &name)
 	right after placing one.
 
 	Refused where setUpFormula() would do nothing, rather than reporting
-	success: a slave or a report takes its label from its master, and with no
-	current context there is no formula to apply.
+	success: a slave or a report takes its label from its master, a
+	conductor definition labels a wire rather than naming an item, and
+	with no current context there is no formula to apply.
 */
 bool QetScriptApi::numberElement(int folioIndex, const QString &elementUuid)
 {
@@ -4390,8 +4391,8 @@ bool QetScriptApi::numberElement(int folioIndex, const QString &elementUuid)
 	}
 	Element *element = findElement(folioIndex, elementUuid);
 	if (!element) return false;
-	if (element->linkType() == Element::Slave || (element->linkType() & Element::AllReport)) {
-		log(QStringLiteral("qet.%1: a slave or a report takes its label from its master").arg(caller));
+	if (!element->takesSchemeNumber()) {
+		log(QStringLiteral("qet.%1: a slave, a report or a conductor definition takes no number from a scheme").arg(caller));
 		return false;
 	}
 	if (m_project->elementAutoNumCurrentFormula().isEmpty()) {

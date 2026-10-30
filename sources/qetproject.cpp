@@ -2133,8 +2133,7 @@ QList<QETProject::SymbolNumbering> QETProject::symbolNumbering() const
 			symbol.formula = info.value(QETInformation::ELMT_FORMULA).toString();
 			symbol.scheme = QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString());
 			symbol.sequence = el->sequenceStruct();
-			symbol.numbered = el->linkType() != Element::Slave
-					&& !(el->linkType() & Element::AllReport);
+			symbol.numbered = el->takesSchemeNumber();
 			list << symbol;
 		}
 	}
@@ -2165,8 +2164,7 @@ QList<QETProject::SymbolNumbering> QETProject::symbolNumbering() const
 							   : QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString());
 		symbol.sequence = row.sequence;
 		const ElementData::Type kind = ElementData::typeFromString(row.kind);
-		symbol.numbered = kind != ElementData::Slave
-				&& !(kind & ElementData::AllReport);
+		symbol.numbered = ElementData::takesSchemeNumber(kind);
 		list << symbol;
 	}
 	return list;

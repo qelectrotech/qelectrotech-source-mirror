@@ -303,6 +303,14 @@ class Element : public QetGraphicsItem
 		 */
 		virtual kind linkType() const {return m_link_type;} // return the linkable type
 		/**
+		 * @brief takesSchemeNumber
+		 * Whether this element is given a number by an element numbering
+		 * scheme (@sa ElementData::takesSchemeNumber): a slave, a report or
+		 * a conductor definition is not numbered.
+		 * @return true when the element numbering schemes apply to it
+		 */
+		bool takesSchemeNumber() const;
+		/**
 		 * @brief linkTypeToString
 		 * use elementData function instead
 		 * @return
