@@ -307,8 +307,17 @@ echo
 echo "______________________________________________________________"
 echo "Install Info.plist and app icon:"
 
-cp -R ${current_dir}/misc/Info.plist $BUNDLE/Contents/
-cp -R ${current_dir}/ico/mac_icon/*.icns $BUNDLE/Contents/Resources/
+# The files of the built bundle can come out read-only (Homebrew installs
+# its templates 444 and CMake keeps their permissions), and depending on
+# the CMake/Qt versions Contents/Resources may not exist yet: make the
+# bundle writable and create the folder before copying into it. Stop on
+# any failed copy instead of signing an incomplete bundle.
+chmod -R u+w "$BUNDLE"
+mkdir -p "$BUNDLE/Contents/Resources"
+cp -f "${current_dir}/misc/Info.plist" "$BUNDLE/Contents/Info.plist" \
+    || { echo "ERROR: cannot install Info.plist"; exit 1; }
+cp -f "${current_dir}"/ico/mac_icon/*.icns "$BUNDLE/Contents/Resources/" \
+    || { echo "ERROR: cannot install the .icns icons"; exit 1; }
 /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION r$HEAD" "$BUNDLE/Contents/Info.plist"
 /usr/libexec/PlistBuddy -c "Set :LSMinimumSystemVersion 14.0.0" "$BUNDLE/Contents/Info.plist"
 
@@ -324,11 +333,17 @@ QET_EXAMPLES_DIR="${current_dir}/examples/"
 QET_FONTS_DIR="${current_dir}/fonts/"
 QET_LICENSES_DIR="${current_dir}/licenses/"
 
-if [ -d "${QET_ELMT_DIR}" ]; then
-    cp -R ${QET_ELMT_DIR} $BUNDLE/Contents/Resources/elements
+# elements/ is a git submodule: an empty folder means it is not checked out.
+if [ -z "$(ls -A "${QET_ELMT_DIR}" 2>/dev/null)" ]; then
+    echo "ERROR: ${QET_ELMT_DIR} is empty or missing."
+    echo "       Run: git submodule update --init elements"
+    exit 1
 fi
+cp -R "${QET_ELMT_DIR}" "$BUNDLE/Contents/Resources/elements" \
+    || { echo "ERROR: cannot copy the elements collection"; exit 1; }
 if [ -d "${QET_TBT_DIR}" ]; then
-    cp -R ${QET_TBT_DIR} $BUNDLE/Contents/Resources/titleblocks
+    cp -R "${QET_TBT_DIR}" "$BUNDLE/Contents/Resources/titleblocks" \
+        || { echo "ERROR: cannot copy the titleblocks"; exit 1; }
 fi
 # Traductions : depuis la PR #751, les .qm ne sont plus versionnes ; lrelease
 # les genere dans $BUILD_DIR/lang/. Jeu attendu = les .ts listes dans TS_FILES
