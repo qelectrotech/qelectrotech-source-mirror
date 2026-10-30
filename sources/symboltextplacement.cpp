@@ -24,6 +24,9 @@
 
 #include <QApplication>
 #include <QCoreApplication>
+#include <QDomElement>
+#include <QFontMetricsF>
+#include <QLineF>
 #include <QPainter>
 #include <QPalette>
 #include <QPixmap>
@@ -50,6 +53,103 @@ struct Line
 		/// anew, and undoing it to AlignJustify lays out nothing
 	QList<QPair<DynamicElementTextItem *, QPointF>> old_texts;
 };
+
+	/// The drawing of @a element without the leads to its terminals, in its
+	/// own coordinates: a straight line from a terminal in its direction is
+	/// where the wire goes on, not the body of the symbol. The whole drawing
+	/// when nothing else is drawn.
+QRectF bodyRect(Element *element)
+{
+	const QDomElement description = element->location().xml()
+			.firstChildElement(QStringLiteral("description"));
+	struct Lead { QPointF at; bool vertical; };
+	QList<Lead> leads;
+	for (QDomElement t = description.firstChildElement(QStringLiteral("terminal"));
+		 !t.isNull(); t = t.nextSiblingElement(QStringLiteral("terminal")))
+	{
+		const QString orientation = t.attribute(QStringLiteral("orientation"));
+		leads.append({QPointF(t.attribute(QStringLiteral("x")).toDouble(),
+							  t.attribute(QStringLiteral("y")).toDouble()),
+					  orientation == QLatin1String("n") || orientation == QLatin1String("s")});
+	}
+	auto onLead = [&](const QPointF &end, const QPointF &other) {
+		for (const Lead &lead : leads)
+			if (QLineF(end, lead.at).length() < 0.5
+				&& qAbs(lead.vertical ? end.x() - other.x() : end.y() - other.y()) < 0.5)
+				return true;
+		return false;
+	};
+
+	qreal left = 0, top = 0, right = 0, bottom = 0;
+	bool any = false;
+	auto add = [&](const QPointF &p) {
+		left   = any ? qMin(left, p.x())   : p.x();
+		right  = any ? qMax(right, p.x())  : p.x();
+		top    = any ? qMin(top, p.y())    : p.y();
+		bottom = any ? qMax(bottom, p.y()) : p.y();
+		any = true;
+	};
+	auto addSegment = [&](const QPointF &a, const QPointF &b) {
+		const bool a_lead = onLead(a, b), b_lead = onLead(b, a);
+		if (!a_lead) add(a);
+		if (!b_lead) add(b);
+	};
+	auto real = [](const QDomElement &e, const QString &name) {
+		return e.attribute(name).toDouble();
+	};
+	for (QDomElement e = description.firstChildElement(); !e.isNull(); e = e.nextSiblingElement())
+	{
+		const QString tag = e.tagName();
+		if (tag == QLatin1String("line"))
+			addSegment(QPointF(real(e, "x1"), real(e, "y1")), QPointF(real(e, "x2"), real(e, "y2")));
+		else if (tag == QLatin1String("polygon"))
+		{
+			QList<QPointF> points;
+			for (int i = 1; e.hasAttribute(QStringLiteral("x%1").arg(i)); ++i)
+				points << QPointF(real(e, QStringLiteral("x%1").arg(i)), real(e, QStringLiteral("y%1").arg(i)));
+			if (points.size() == 1)
+				add(points.first());
+			for (int i = 1; i < points.size(); ++i)
+				addSegment(points[i - 1], points[i]);
+			if (points.size() > 2 && e.attribute(QStringLiteral("closed")) != QLatin1String("false"))
+				addSegment(points.last(), points.first());
+		}
+		else if (tag == QLatin1String("rect") || tag == QLatin1String("ellipse") || tag == QLatin1String("arc"))
+		{
+			add(QPointF(real(e, "x"), real(e, "y")));
+			add(QPointF(real(e, "x") + real(e, "width"), real(e, "y") + real(e, "height")));
+		}
+		else if (tag == QLatin1String("circle"))
+		{
+			add(QPointF(real(e, "x"), real(e, "y")));
+			add(QPointF(real(e, "x") + real(e, "diameter"), real(e, "y") + real(e, "diameter")));
+		}
+	}
+	return any ? QRectF(QPointF(left, top), QPointF(right, bottom)) : element->drawingRect();
+}
+
+	/// Where the letters of @a item stand in the folio: from the top of the
+	/// capitals of its first line to the baseline of its last, without the
+	/// room the font keeps above and below them
+QRectF lettersRect(QGraphicsItem *item)
+{
+	if (auto *group = dynamic_cast<ElementTextItemGroup *>(item))
+	{
+		QRectF letters;
+		for (DynamicElementTextItem *text : group->texts())
+			if (text->isVisible())
+				letters |= lettersRect(text);
+		return letters.isNull() ? item->sceneBoundingRect() : letters;
+	}
+	if (auto *text = dynamic_cast<DynamicElementTextItem *>(item))
+	{
+		const QFontMetricsF metrics(text->font());
+		const QRectF written = text->writtenRect().adjusted(
+					1, 1 + metrics.ascent() - metrics.capHeight(), -1, -1 - metrics.descent());
+		return text->mapRectToScene(written);
+	}
+	return item->sceneBoundingRect();
+}
 
 	/// Move @a item so that the top left of its box in the folio is at @a to
 void moveTo(QGraphicsItem *item, const QPointF &to)
@@ -96,9 +196,12 @@ bool placeOne(Element *element, Qt::Alignment where, QUndoCommand *parent)
 		line.object->setProperty("alignment", QVariant::fromValue(a));
 	}
 
-	QRectF block;
+	QRectF block, letters;
 	for (const Line &line : lines)
+	{
 		block |= line.item->sceneBoundingRect();
+		letters |= lettersRect(line.item);
+	}
 
 	const QRectF body = element->mapRectToScene(element->drawingRect());
 	const qreal gap = SymbolTextPlacement::gap;
@@ -106,11 +209,16 @@ bool placeOne(Element *element, Qt::Alignment where, QUndoCommand *parent)
 	if (where & Qt::AlignLeft)        to.moveRight(body.left() - gap);
 	else if (where & Qt::AlignRight)  to.moveLeft(body.right() + gap);
 	else                              to.moveLeft(body.center().x() - block.width() / 2);
-		//Beside the symbol, a corner is level with its top or bottom edge;
-		//above and below it, the block stands clear of the drawing
+		//Beside the symbol, a corner is level with the top or bottom of its
+		//body, the leads to its terminals left out: the capitals of the
+		//first line on its top, the baseline of the last on its bottom.
+		//Above and below it, the block stands clear of the drawing.
 	const bool beside = where & (Qt::AlignLeft | Qt::AlignRight);
-	if (where & Qt::AlignTop)         beside ? to.moveTop(body.top()) : to.moveBottom(body.top() - gap);
-	else if (where & Qt::AlignBottom) beside ? to.moveBottom(body.bottom()) : to.moveTop(body.bottom() + gap);
+	const QRectF core = element->mapRectToScene(bodyRect(element));
+	if (where & Qt::AlignTop)         beside ? to.moveTop(core.top() - (letters.top() - block.top()))
+											 : to.moveBottom(body.top() - gap);
+	else if (where & Qt::AlignBottom) beside ? to.moveBottom(core.bottom() + (block.bottom() - letters.bottom()))
+											 : to.moveTop(body.bottom() + gap);
 	else                              to.moveTop(body.center().y() - block.height() / 2);
 
 	for (const Line &line : lines)

@@ -11,6 +11,7 @@
 // placed in the folio's directions, and one undo puts everything back.
 #include <QApplication>
 #include <QFontDatabase>
+#include <QFontMetricsF>
 #include <QImage>
 #include <QPainter>
 #include <QSettings>
@@ -36,6 +37,21 @@ static void check(bool value, const char *message)
 static bool same(qreal a, qreal b) { return qAbs(a - b) < 0.6; }
 
 static QRectF body(Element *e) { return e->mapRectToScene(e->drawingRect()); }
+
+	// The contact without the leads to its two terminals: the top of the
+	// switch to the end of its lower lead, as the fixture draws it
+static QRectF core(Element *e) { return e->mapRectToScene(QRectF(QPointF(-4, -10), QPointF(6, 10))); }
+
+	// From the top of the capitals of the first line to the baseline of the last
+static QRectF letters(const QList<DynamicElementTextItem *> &texts)
+{
+	QRectF r;
+	for (DynamicElementTextItem *t : texts) {
+		const QFontMetricsF m(t->font());
+		r |= t->mapRectToScene(t->writtenRect().adjusted(1, 1 + m.ascent() - m.capHeight(), -1, -1 - m.descent()));
+	}
+	return r;
+}
 
 static QRectF block(const QList<DynamicElementTextItem *> &texts)
 {
@@ -125,16 +141,18 @@ int main(int argc, char **argv)
 		check(same(b.bottom(), body(element).top() - SymbolTextPlacement::gap), "above: the block ends 3 px above the drawing");
 		check(same(texts[0]->sceneBoundingRect().center().x(), body(element).center().x()), "above: the lines are centred on it");
 
-		// Corners beside it: level with its top or bottom edge, not above
-		// or below it.
+		// Corners beside it: level with the top or bottom of its body, the
+		// leads to its terminals left out, not above or below it; the
+		// capitals on the top, the baseline on the bottom.
 		scene->undoStack().push(SymbolTextPlacement::place({element}, Qt::AlignLeft | Qt::AlignTop));
 		b = block(texts);
-		check(same(b.top(), body(element).top()) && same(b.right(), body(element).left() - SymbolTextPlacement::gap),
-			  "top left: the block's top on the drawing's top, left of it");
+		check(core(element).top() > body(element).top() + 5, "the body starts below the lead to the upper terminal");
+		check(same(letters(texts).top(), core(element).top()) && same(b.right(), body(element).left() - SymbolTextPlacement::gap),
+			  "top left: the capitals on the top of the body, left of it");
 		scene->undoStack().push(SymbolTextPlacement::place({element}, Qt::AlignRight | Qt::AlignBottom));
 		b = block(texts);
-		check(same(b.bottom(), body(element).bottom()) && same(b.left(), body(element).right() + SymbolTextPlacement::gap),
-			  "bottom right: the block's bottom on the drawing's bottom, right of it");
+		check(same(letters(texts).bottom(), core(element).bottom()) && same(b.left(), body(element).right() + SymbolTextPlacement::gap),
+			  "bottom right: the baseline on the bottom of the body, right of it");
 
 		// A turned symbol: left in the folio is still left.
 		element->setRotation(90);
@@ -144,12 +162,12 @@ int main(int argc, char **argv)
 			// and a corner of a turned symbol: level with its top in the folio
 		scene->undoStack().push(SymbolTextPlacement::place({element}, Qt::AlignLeft | Qt::AlignTop));
 		b = block(texts);
-		check(same(b.top(), body(element).top()) && same(b.right(), body(element).left() - SymbolTextPlacement::gap),
-			  "turned symbol, top left: the block's top on its top in the folio, left of it");
+		check(same(letters(texts).top(), core(element).top()) && same(b.right(), body(element).left() - SymbolTextPlacement::gap),
+			  "turned symbol, top left: the capitals on the top of its body in the folio, left of it");
 		scene->undoStack().push(SymbolTextPlacement::place({element}, Qt::AlignRight | Qt::AlignBottom));
 		b = block(texts);
-		check(same(b.bottom(), body(element).bottom()) && same(b.left(), body(element).right() + SymbolTextPlacement::gap),
-			  "turned symbol, bottom right: the block's bottom on its bottom in the folio, right of it");
+		check(same(letters(texts).bottom(), core(element).bottom()) && same(b.left(), body(element).right() + SymbolTextPlacement::gap),
+			  "turned symbol, bottom right: the baseline on the bottom of its body in the folio, right of it");
 		element->setRotation(0);
 
 		// A group of texts is one line of the block, aligned like it.
