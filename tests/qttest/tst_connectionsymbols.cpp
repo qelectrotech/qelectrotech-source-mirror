@@ -23,6 +23,13 @@
 #include "qetapptest.h"
 #include "connectionsymbols.h"
 #include "qetmessagebox.h"
+#include "diagramevent/diagrameventaddelement.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/terminal.h"
+
+#include <QGraphicsSceneMouseEvent>
+#include <QUndoStack>
 
 #include <QToolBar>
 #include <QToolButton>
@@ -35,6 +42,31 @@ class TstConnectionSymbols : public QObject
 		QAction *button(ConnectionSymbols::Kind kind)
 		{
 			return QetAppTest::action(ConnectionSymbols::commandId(kind).section('.', 1));
+		}
+
+		/// A click with the corner's tool at @a at: one placed
+		void placeCorner(Diagram *diagram, const QPointF &at)
+		{
+			ElementsLocation corner = ConnectionSymbols::location(ConnectionSymbols::Corner);
+			DiagramEventAddElement tool(corner, diagram);
+			for (QEvent::Type type : {QEvent::GraphicsSceneMouseMove, QEvent::GraphicsSceneMousePress,
+						  QEvent::GraphicsSceneMouseRelease}) {
+				QGraphicsSceneMouseEvent event(type);
+				event.setButton(Qt::LeftButton);
+				event.setButtons(type == QEvent::GraphicsSceneMousePress ? Qt::LeftButton : Qt::NoButton);
+				event.setScenePos(at);
+				if (type == QEvent::GraphicsSceneMouseMove) tool.mouseMoveEvent(&event);
+				else if (type == QEvent::GraphicsSceneMousePress) tool.mousePressEvent(&event);
+				else tool.mouseReleaseEvent(&event);
+			}
+		}
+
+		QList<Element *> cornersAt(Diagram *diagram, const QPointF &at)
+		{
+			QList<Element *> found;
+			for (Element *e : diagram->elements())
+				if (QLineF(e->scenePos(), at).length() < 0.5) found << e;
+			return found;
 		}
 
 	private slots:
@@ -75,6 +107,51 @@ class TstConnectionSymbols : public QObject
 			QVERIFY(!ConnectionSymbols::location(ConnectionSymbols::Interruption).exist());
 			button(ConnectionSymbols::Interruption)->trigger();
 			QVERIFY(!diagram->eventInterfaceIsRunning());
+		}
+
+			//Off, as before: a second corner on the first one, both stay
+		void secondCornerStaysByDefault()
+		{
+			Diagram *diagram = QetAppTest::diagram();
+			const QPointF at(400, 300);
+			placeCorner(diagram, at);
+			placeCorner(diagram, at);
+			QCOMPARE(cornersAt(diagram, at).size(), 2);
+			diagram->undoStack().undo();
+			diagram->undoStack().undo();
+		}
+
+			//On: the new corner takes the old one's place and its wire
+		void newCornerReplacesOld()
+		{
+			ConnectionSymbols::setNewJunctionReplacesOld(true);
+			Diagram *diagram = QetAppTest::diagram();
+			const QPointF at(400, 300), far(400, 500);
+			placeCorner(diagram, at);
+			placeCorner(diagram, far);
+			Element *old = cornersAt(diagram, at).value(0);
+			Element *other = cornersAt(diagram, far).value(0);
+			QVERIFY(old && other);
+			auto *wire = new Conductor(old->terminals().first(), other->terminals().first());
+			diagram->addItem(wire);
+			const QPointF dock = old->terminals().first()->dockConductor();
+
+			placeCorner(diagram, at);
+			const QList<Element *> now = cornersAt(diagram, at);
+			QCOMPARE(now.size(), 1);
+			QVERIFY(now.first() != old);
+			bool wired = false;
+			for (Terminal *t : now.first()->terminals())
+				for (Conductor *c : t->conductors())
+					wired |= QLineF(t->dockConductor(), dock).length() < 0.5
+						&& (c->terminal1->parentElement() == other || c->terminal2->parentElement() == other);
+			QVERIFY2(wired, "the old corner's wire goes to the new one");
+
+				//One undo brings the old one back, with its wire
+			diagram->undoStack().undo();
+			QCOMPARE(cornersAt(diagram, at), QList<Element *>{old});
+			QCOMPARE(old->conductors().size(), 1);
+			ConnectionSymbols::setNewJunctionReplacesOld(false);
 		}
 
 		void chosenSymbolIsPlaced()
