@@ -178,7 +178,7 @@ class Element : public QetGraphicsItem
 		void freezeLabel(bool freeze);
 		bool isFreezeLabel() const {return m_freeze_label;}
 		void freezeNewAddedElement();
-		QString actualLabel();
+		QString actualLabel() const;
 			/**
 				What the drawing shows of the label and of the terminal
 				number, the terminal labelling of the project being

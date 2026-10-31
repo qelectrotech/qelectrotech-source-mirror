@@ -156,6 +156,7 @@ class QETDiagramEditor : public QETMainWindow
 		void rowColumnGroupTriggered (QAction *action);
 		void slot_updateActions();
 		void updateZoomLabel();
+		void updateItemInfo();
 		void slot_updateUndoStack();
 		void slot_updateModeActions();
 		void slot_updateComplexActions();
@@ -358,6 +359,7 @@ class QETDiagramEditor : public QETMainWindow
 		QToolButton *m_text_grid_button = nullptr;
 		QMenu *m_shown_kinds_menu = nullptr;		///< View > Show, kinds of items (#301)
 		QLabel *m_hidden_kinds_label = nullptr;	///< Status bar: how many kinds are hidden
+		QLabel *m_item_info_label = nullptr;	///< Status bar, left: what the mouse points at, or what is selected
 		QToolButton *m_zoom_button = nullptr;	///< Status bar: the zoom of the folio on screen, fixed steps on a click
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar

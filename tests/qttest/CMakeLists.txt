@@ -2115,6 +2115,9 @@ target_compile_definitions(tst_uprighttexts PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
 
 # New tests go above this line: the blocks below apply to the tests above them.
+# What the status bar says an item of a folio is: a symbol with its label
+# and name, a text of a symbol, a free text, a wire, a shape...
+qet_add_app_test(tst_itemdescription tst_itemdescription.cpp)
 # The selection properties dock scrolls its editors in a low window rather
 # than its smallest height pushing the dock below over its last rows.
 qet_add_app_test(tst_propertiesdockscroll tst_propertiesdockscroll.cpp)
