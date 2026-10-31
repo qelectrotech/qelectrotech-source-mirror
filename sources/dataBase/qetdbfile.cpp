@@ -43,7 +43,10 @@
 #include <QUrl>
 #include <QUuid>
 
-	//The session extension's API is declared only with these
+	//The session extension's API is declared only with these. Where the
+	//SQLite found lacks it (the macOS SDK's), CMake defines
+	//QET_NO_SQLITE_SESSION: saves then record no changes, and the history
+	//is listed without them
 #define SQLITE_ENABLE_SESSION
 #define SQLITE_ENABLE_PREUPDATE_HOOK
 #include <sqlite3.h>
@@ -500,6 +503,7 @@ QString digestOf(Sqlite &file, const QString &schema)
 	//What a row of @p table is part of, for a revision's summary: a
 	//symbol, a wire, a folio or a drawn item, by the uuid its key starts
 	//with; empty for the rest (a terminal's key starts with its own)
+#ifndef QET_NO_SQLITE_SESSION
 QString objectKind(const QString &table)
 {
 	if (table == QLatin1String("link") || (table.startsWith(QLatin1String("element"))))
@@ -512,6 +516,7 @@ QString objectKind(const QString &table)
 		return QStringLiteral("drawn item");
 	return {};
 }
+#endif
 
 	//What @p changeset changes: how many symbols, wires, folios and drawn
 	//items (each by the uuid its rows start their key with) and how many
@@ -526,6 +531,7 @@ QString changeSummary(const QByteArray &changeset, QStringList *objects = nullpt
 	QMap<QString, int> counts;
 	QMap<QString, QMap<QString, QString>> changed_objects;
 	int rows = 0;
+#ifndef QET_NO_SQLITE_SESSION
 	sqlite3_changeset_iter *iter = nullptr;
 	if (sqlite3changeset_start(&iter, int(changeset.size()), const_cast<char *>(changeset.constData())) == SQLITE_OK) {
 		while (sqlite3changeset_next(iter) == SQLITE_ROW) {
@@ -555,6 +561,10 @@ QString changeSummary(const QByteArray &changeset, QStringList *objects = nullpt
 		}
 		sqlite3changeset_finalize(iter);
 	}
+#else
+	Q_UNUSED(changeset)
+	Q_UNUSED(objects)
+#endif
 	QStringList changed, tables;
 	for (const QString &kind : {QStringLiteral("symbol"), QStringLiteral("wire"),
 								QStringLiteral("folio"), QStringLiteral("drawn item")}) {
@@ -616,6 +626,9 @@ bool recordRevision(const QString &saving, const QString &previous, QString *err
 
 	bool recorded = true;
 	QByteArray changeset;
+#ifdef QET_NO_SQLITE_SESSION
+	recorded = false;
+#else
 	sqlite3_session *session = nullptr;
 	if (sqlite3session_create(file.db(), "main", &session) != SQLITE_OK)
 		recorded = false;
@@ -636,6 +649,7 @@ bool recordRevision(const QString &saving, const QString &previous, QString *err
 		sqlite3_free(bytes);
 	}
 	if (session) sqlite3session_delete(session);
+#endif
 
 	const auto parent = file.select(QStringLiteral("SELECT uuid, ord FROM prev.revision ORDER BY ord DESC LIMIT 1"));
 	const QString uuid = QUuid::createUuid().toString(QUuid::WithoutBraces);
@@ -706,6 +720,9 @@ bool windBack(Sqlite &file, qint64 ord, QString *error)
 		file.exec(QStringLiteral("ROLLBACK"));
 		return false;
 	};
+#ifdef QET_NO_SQLITE_SESSION
+	return fail(QObject::tr("this build of QElectroTech has no SQLite session support"));
+#else
 	if (!file.exec(QStringLiteral("BEGIN"))) return fail(file.error());
 	for (const QVariantList &row : file.select(QStringLiteral(
 			"SELECT r.ord, c.changeset FROM revision r LEFT JOIN revision_changes c ON c.revision = r.uuid "
@@ -735,6 +752,7 @@ bool windBack(Sqlite &file, qint64 ord, QString *error)
 			|| !file.exec(QStringLiteral("COMMIT")))
 		return fail(file.error());
 	return true;
+#endif
 }
 
 } // namespace
@@ -1077,6 +1095,10 @@ QStringList QetDbFile::historyDiff(const QString &path, qint64 from, qint64 to, 
 			continue;
 		}
 		if (next.isEmpty()) continue;
+#ifdef QET_NO_SQLITE_SESSION
+		if (error) *error = QObject::tr("this build of QElectroTech has no SQLite session support");
+		return {};
+#else
 		int size = 0;
 		void *both = nullptr;
 		if (sqlite3changeset_concat(int(changes.size()), changes.data(), int(next.size()), next.data(),
@@ -1087,6 +1109,7 @@ QStringList QetDbFile::historyDiff(const QString &path, qint64 from, qint64 to, 
 		}
 		changes = QByteArray(static_cast<const char *>(both), size);
 		sqlite3_free(both);
+#endif
 	}
 	QStringList objects;
 	const QString summary = changeSummary(changes, &objects);

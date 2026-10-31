@@ -275,6 +275,9 @@ private slots:
 	// history goes when told to
 	void historyRecordsEachSave()
 	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif
@@ -354,6 +357,9 @@ private slots:
 	// no history at all
 	void historyGivesBackARevision()
 	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif
@@ -399,6 +405,9 @@ private slots:
 	// symbols each one touched and only those (QETDB-S6-SCOPE.md S6-3)
 	void historyComparesTwoRevisions()
 	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif
@@ -448,6 +457,9 @@ private slots:
 	// for a symbol no save changed (QETDB-S6-SCOPE.md S6-5)
 	void lastChangeNamesTheSave()
 	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif

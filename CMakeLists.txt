@@ -138,6 +138,24 @@ if(NOT TARGET SQLite3::SQLite3 AND TARGET SQLite::SQLite3)
     add_library(SQLite3::SQLite3 ALIAS SQLite::SQLite3)
 endif()
 
+# The history of saves (QetDbFile) uses SQLite's session extension. Not every
+# SQLite has it: the macOS SDK's sqlite3.h does not, and the build fails
+# there. Without it saves still work but keep no changes.
+include(CheckSymbolExists)
+set(CMAKE_REQUIRED_DEFINITIONS -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_PREUPDATE_HOOK)
+set(CMAKE_REQUIRED_INCLUDES ${SQLite3_INCLUDE_DIRS})
+set(CMAKE_REQUIRED_LIBRARIES ${SQLite3_LIBRARIES})
+check_symbol_exists(sqlite3session_create sqlite3.h QET_HAVE_SQLITE_SESSION)
+unset(CMAKE_REQUIRED_DEFINITIONS)
+unset(CMAKE_REQUIRED_INCLUDES)
+unset(CMAKE_REQUIRED_LIBRARIES)
+if(NOT QET_HAVE_SQLITE_SESSION)
+    message(WARNING
+        "SQLite has no session extension: the history of saves will record "
+        "no changes. On macOS, point CMake at Homebrew's SQLite to keep them.")
+    add_compile_definitions(QET_NO_SQLITE_SESSION)
+endif()
+
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 
 include(cmake/fetch_kdeaddons.cmake)
