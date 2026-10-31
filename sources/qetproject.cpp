@@ -2828,6 +2828,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeUsageXml(project_root);
 	writeWireHopsXml(project_root);
 	writeSymbolTextsXml(project_root);
+	writeLanguagesXml(project_root);
 	writeTerminalLabelSplitXml(project_root);
 	writeWiringRulesXml(project_root);
 	writeChainedReportsXml(project_root);
@@ -3913,6 +3914,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readUsageXml(xml_project);
 	readWireHopsXml(xml_project);
 	readSymbolTextsXml(xml_project);
+	readLanguagesXml(xml_project);
 	readTerminalLabelSplitXml(xml_project);
 	readWiringRulesXml(xml_project);
 	readChainedReportsXml(xml_project);
@@ -4932,6 +4934,79 @@ void QETProject::writeOriginXml(QDomElement& xml_element)
 }
 
 /**
+	@brief QETProject::setLanguages
+	Set the texts in other languages and the language the folios are shown
+	in, and redraw the folios built.
+	@param languages
+*/
+void QETProject::setLanguages(const ProjectLanguages &languages)
+{
+	if (languages == m_languages) {
+		return;
+	}
+	m_languages = languages;
+	storeSettings();
+	setModified(true);
+	for (Diagram *diagram : folios()) {
+		diagram->update();
+	}
+}
+
+/**
+	@brief QETProject::translatableTexts
+	@return the texts drawn in the project that are words (not references or
+	values), read from the project database
+*/
+QStringList QETProject::translatableTexts()
+{
+		//Independent texts, the texts typed into a symbol's text, and the
+		//words symbols carry (comment, function, description)
+	static const QString sql = QStringLiteral(
+			"SELECT text FROM independent_text "
+			"UNION SELECT value FROM element_text_value "
+			"WHERE name = '#text' AND section LIKE 'dynamic_texts/dynamic_elmt_text%/text' "
+			"UNION SELECT value FROM element_information "
+			"WHERE name IN ('comment', 'function', 'description', 'designation')");
+	QSet<QString> found;
+	QSqlQuery query = m_data_base.newQuery(sql);
+	while (query.next()) {
+		const QString text = query.value(0).toString();
+		if (ProjectLanguages::isTranslatable(text)) {
+			found.insert(text);
+		}
+	}
+	QStringList result(found.cbegin(), found.cend());
+	result.sort();
+	return result;
+}
+
+/**
+	@brief QETProject::readLanguagesXml
+	Read the <languages> element of the project, if any. A project without
+	it is shown as drawn.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readLanguagesXml(QDomDocument &xml_project)
+{
+	m_languages = ProjectLanguages::fromXml(xml_project.documentElement()
+			.firstChildElement(QStringLiteral("languages")));
+}
+
+/**
+	@brief QETProject::writeLanguagesXml
+	Write the <languages> element, only when the project has any.
+	@param xml_element : the <project> element
+*/
+void QETProject::writeLanguagesXml(QDomElement &xml_element)
+{
+	if (m_languages.isEmpty()) {
+		return;
+	}
+	QDomDocument document = xml_element.ownerDocument();
+	xml_element.appendChild(m_languages.toXml(document));
+}
+
+/**
 	@brief QETProject::writeSymbolTextsXml
 	Export whether the texts of turned symbols stay horizontal, as a
 	<symbol_texts> child of \a xml_element. Written only when on, so a
@@ -5133,6 +5208,7 @@ void QETProject::storeSettings()
 	root.appendChild(properties);
 	writeWireHopsXml(root);
 	writeSymbolTextsXml(root);
+	writeLanguagesXml(root);
 	writeTerminalLabelSplitXml(root);
 	writeWiringRulesXml(root);
 	writeChainedReportsXml(root);

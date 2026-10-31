@@ -20,6 +20,8 @@
 
 #include <QGraphicsTextItem>
 #include <QFont>
+#include <QSharedPointer>
+#include <QTextDocument>
 
 class Diagram;
 class QDomElement;
@@ -98,6 +100,9 @@ class DiagramTextItem : public QGraphicsTextItem
 		void refreshTextResizeHandles();
 		TextResizeHandles *textResizeHandles() const {return m_resize_handles;}
 
+		void paintText(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
+		const QTextDocument *translatedDocument() const;
+
 		void paint(QPainter *,
 			   const QStyleOptionGraphicsItem *,
 			   QWidget *) override;
@@ -143,6 +148,8 @@ class DiagramTextItem : public QGraphicsTextItem
 							   QPointF old_pos, QPointF new_pos);
 
 		QRectF m_alignment_rect;
+			/// The text in the project's active language, see translatedDocument()
+		mutable QSharedPointer<QTextDocument> m_translated;
 		TextResizeHandles *m_resize_handles = nullptr;
 		Qt::Alignment m_alignment = (Qt::AlignTop | Qt::AlignLeft);
 };
