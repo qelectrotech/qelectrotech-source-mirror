@@ -242,9 +242,11 @@ downloads and compiles KDE Frameworks itself, which is slow.
    ```bat
    vcpkg install sqlite3[session]:x64-windows
    ```
-   vcpkg leaves the session extension out by default, and QElectroTech does
-   not link without it. A SQLite built from another source needs
-   `SQLITE_ENABLE_SESSION` and `SQLITE_ENABLE_PREUPDATE_HOOK` too.
+   vcpkg leaves the session extension out by default. QElectroTech still
+   builds without it, with a warning from CMake, but the history of a
+   `.qetdb`'s saves then records no changes. A SQLite built from another
+   source needs `SQLITE_ENABLE_SESSION` and `SQLITE_ENABLE_PREUPDATE_HOOK`
+   for that too.
 3. Configure and build from an "x64 Native Tools Command Prompt for VS":
    ```bat
    mkdir build && cd build
