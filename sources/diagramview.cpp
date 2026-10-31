@@ -30,8 +30,6 @@
 #include "cable/cablecopy.h"
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
-#include "bridge/bridgepart.h"
-#include "bridge/bridgeundocommands.h"
 #include "diagramevent/diagrameventaddelement.h"
 #include "diagramevent/diagrameventaddmacro.h"
 #include "dvevent/dveventinterface.h"

@@ -345,10 +345,21 @@ RemoveBridgeCommand::RemoveBridgeCommand(const QList<BridgePart *> &parts)
 		entry.part = part;
 		entry.folio = part->diagram();
 		entry.bridge = part->bridge();
+			//The whole section as the bridge holds it, docks included:
+			//an end standing on a pin sticks to it again when the undo
+			//puts the line back, and only the drawn ends are said anew
 		entry.data.uuid = part->partUuid();
 		entry.data.diagram = entry.folio ? entry.folio->uuid() : QUuid();
 		entry.data.p1 = part->firstPoint();
 		entry.data.p2 = part->secondPoint();
+		const auto held = entry.bridge ? entry.bridge->parts() : QList<BridgePartData>();
+		for (const BridgePartData &data : held) {
+			if (data.uuid == entry.data.uuid) {
+				entry.data.dock1 = data.dock1;
+				entry.data.dock2 = data.dock2;
+				break;
+			}
+		}
 		m_entries << entry;
 	}
 
