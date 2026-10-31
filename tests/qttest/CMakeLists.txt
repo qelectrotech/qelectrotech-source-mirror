@@ -1143,6 +1143,19 @@ if(QET_HAS_SCRIPTING)
   target_compile_definitions(tst_savedstamps PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+  # A .qet kept in git changes only where the project did (#1512): an
+  # unchanged project saved in another language, time zone or folder is
+  # the same file; a moved symbol changes its own lines, its wires' and
+  # the saved stamps only.
+  add_executable(
+    tst_stableqet
+    tst_stableqet.cpp)
+  add_test(NAME tst_stableqet COMMAND tst_stableqet)
+  add_dependencies(tst_stableqet qelectrotech)
+  target_link_libraries(tst_stableqet PRIVATE Qt::Test)
+  target_compile_definitions(tst_stableqet PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
   # Deleting a symbol whose terminal held several wires joins them with a
   # new wire; its uuid comes from its two ends, so the same deletion saves
   # the same file every time (F115): examples/affuteuse_250h.qet.
