@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "element.h"
+
+#include "../bridge/bridgemanager.h"
 #include "../qetapp.h"
 #include "../qetproject.h"
 #include "../dataBase/projectdatabase.h"
@@ -170,6 +172,10 @@ Element::Element(
 			if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi))
 				t->updateConductor();
 		}
+			//An end of a bridge docked to a pin of this symbol goes
+			//along: the line grows or shrinks with it the way a wire
+			//follows the terminal it is docked to
+		BridgeManager::followDocks(diagram() ? diagram()->project() : nullptr, this);
 	};
 	connect(this, &Element::rotationChanged, update_docked_conductors);
 	connect(this, &Element::xChanged, update_docked_conductors);

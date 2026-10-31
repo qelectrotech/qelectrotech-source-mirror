@@ -54,6 +54,7 @@ class ElementsMover {
 		bool isReady() const;
 		int  beginMovement(Diagram *, QGraphicsItem * = nullptr);
 		void continueMovement(const QPointF &);
+		void applyMovement(const QPointF &);
 		void endMovement();
 		bool holds(const QGraphicsItem *item) const;
 			/**
