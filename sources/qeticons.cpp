@@ -37,6 +37,7 @@ namespace QET {
 		QIcon ArrowRightDouble;
 		QIcon Autoconnect;
 		QIcon BringForward;
+		QIcon Cable;
 		QIcon Cancel;
 		QIcon Company;
 		QIcon Conductor;
@@ -74,6 +75,8 @@ namespace QET {
 		QIcon EditDelete;
 		QIcon EditOpacity;		
 		QIcon EditPaste;
+		QIcon CopyElementTextFormat;
+		QIcon ApplyElementTextFormat;
 		QIcon EditRedo;
 		QIcon EditRename;
 		QIcon EditSelectAll;
@@ -215,6 +218,7 @@ namespace QET {
 		QIcon it;
 		QIcon jp;
 		QIcon ko;
+		QIcon lv;
 		QIcon pl;
 		QIcon pt;
 		QIcon ro;
@@ -416,6 +420,7 @@ void QET::Icons::initIcons()
 	ArrowRightDouble    = QIcon::fromTheme("arrow-right-double");
 	Autoconnect         = QIcon::fromTheme("autoconnect");
 	BringForward        = QIcon::fromTheme("bring_forward");
+	Cable               = QIcon::fromTheme("cable");
 	Cancel              = QIcon::fromTheme("item-cancel");
 	Company             = QIcon::fromTheme("go-company");
 	Conductor           = QIcon::fromTheme("conductor");
@@ -462,6 +467,8 @@ void QET::Icons::initIcons()
 	EditDelete          = QIcon::fromTheme("edit-delete");
 	EditOpacity         = QIcon::fromTheme("edit-opacity");
 	EditPaste           = QIcon::fromTheme("edit-paste");
+	CopyElementTextFormat = QIcon(":/ico/format-copy.svg");
+	ApplyElementTextFormat = QIcon(":/ico/format-apply.svg");
 	if (rtl) {
 		EditRedo.addPixmap(QIcon::fromTheme("edit-redo").pixmap(16).transformed(reverse));
 		EditRedo.addPixmap(QIcon::fromTheme("edit-redo").pixmap(22).transformed(reverse));
@@ -632,6 +639,7 @@ void QET::Icons::initIcons()
 	it.addFile(":/ico/flags/it.png");
 	jp.addFile(":/ico/flags/jp.png");
 	ko.addFile(":/ico/flags/kr.png");
+	lv.addFile(":/ico/flags/lv.png");
 	pl.addFile(":/ico/flags/pl.png");
 	pt.addFile(":/ico/flags/pt.png");
 	ro.addFile(":/ico/flags/ro.png");

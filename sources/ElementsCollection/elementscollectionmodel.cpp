@@ -526,6 +526,13 @@ void ElementsCollectionModel::removeProject(QETProject *project)
 	if (!m_project_list.contains(project))
 		return;
 
+		//A loading may be setting up this project's items on worker
+		//threads: let it end, and keep the items about to be deleted out of
+		//the list applied when it is finished.
+	m_future.waitForFinished();
+	for (ElementCollectionItem *eci : projectItems(project))
+		m_items_list_to_setUp.removeOne(eci);
+
 	int row = m_project_list.indexOf(project);
 	if (removeRows(row, 1, QModelIndex())) {
 		m_project_list.removeOne(project);

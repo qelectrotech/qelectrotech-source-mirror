@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectview.h"
+#include "utils/qetsettings.h"
 
 #include "ElementsCollection/xmlelementcollection.h"
 #include "autoNum/assignvariables.h"
@@ -268,7 +269,9 @@ bool ProjectView::tryClosing()
 		QString filepath = askUserForFilePath();
 		if (filepath.isEmpty()) return(false); // users may cancel the closing
 	}
-	QETResult result = m_project -> write();
+	bool cancelled = false;
+	QETResult result = writeProject(&cancelled);
+	if (cancelled) return(false);
 	updateWindowTitle();
 	if (!result.isOk()) emit(errorEncountered(result.errorMessage()));
 	return(result.isOk());
@@ -339,11 +342,23 @@ int ProjectView::tryClosingDiagrams()
 */
 QString ProjectView::askUserForFilePath(bool assign) {
 	// ask the user for a filepath in order to save the project
+	const QString qet_filter = tr("Project QElectroTech (*.qet)", "filetypes allowed when saving a project file");
+	const QString qetz_filter = tr("Zipped project QElectroTech (*.qetz)", "filetypes allowed when saving a project file");
+		//One SQLite file, offered only with its setting on (experimental)
+	const QString qetdb_filter = tr("Project QElectroTech, one database file (*.qetdb)", "filetypes allowed when saving a project file");
+		//A project is saved as a .qetz unless a .qet is chosen
+		//(stage D1)
+	QString selected_filter = qetz_filter;
+	QString filters = qetz_filter + ";;" + qet_filter;
+	if (QetSettings::qetdbEnabled())
+		filters += ";;" + qetdb_filter;
 	QString filepath = QFileDialog::getSaveFileName(
 		this,
 		tr("Save as", "dialog title"),
-		m_project -> currentDir() + "/" + tr("untitled") + ".qet",
-		tr("Project QElectroTech (*.qet)", "filetypes allowed when saving a project file")
+		m_project -> currentDir() + "/" + tr("untitled")
+				+ (selected_filter == qetz_filter ? ".qetz" : ".qet"),
+		filters,
+		&selected_filter
 	);
 
 	// if no filepath is provided, return an empty string
@@ -359,9 +374,29 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	// extension at all whenever the portal didn't (bugtracker #270).
 	// Stripping any existing suffix first and re-appending it once is
 	// correct either way.
-	if (filepath.endsWith(".qet", Qt::CaseInsensitive))
-		filepath.chop(4);
-	filepath += ".qet";
+	// Zipped (.qetz) when that file type is chosen, or when the name typed
+	// says .qetz anywhere in its trailing extensions: typing "plan.qetz"
+	// over the selected "untitled" of "untitled.qet" gives "plan.qetz.qet"
+	// with the GTK dialog, and still means a .qetz.
+	bool zipped = selected_filter == qetz_filter;
+	bool database = selected_filter == qetdb_filter;
+	for (;;) {
+		if (filepath.endsWith(".qetz", Qt::CaseInsensitive)) {
+			filepath.chop(5);
+			zipped = true;
+		} else if (filepath.endsWith(".qetdb", Qt::CaseInsensitive)) {
+			filepath.chop(6);
+			database = QetSettings::qetdbEnabled();
+		} else if (filepath.endsWith(".qet", Qt::CaseInsensitive)) {
+			filepath.chop(4);
+		} else {
+			break;
+		}
+	}
+	filepath += database ? ".qetdb" : zipped ? ".qetz" : ".qet";
+
+		//Not onto a file someone else has open
+	if (!refuseIfLockedByOther(filepath)) return(QString());
 
 	if (assign) {
 		// assign the provided filepath to the currently edited project
@@ -369,6 +404,26 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	}
 
 	return(filepath);
+}
+
+/**
+	@brief ProjectView::refuseIfLockedByOther
+	@return false, after telling the user, when another session holds the
+	lock of the file @p filepath this project is about to be saved to
+*/
+bool ProjectView::refuseIfLockedByOther(const QString &filepath)
+{
+	if (!ProjectLock::mayTake()) return(true);
+	const ProjectLock::Holder holder = ProjectLock::liveHolder(
+				filepath, m_project && m_project->lock() ? m_project->lock()->session() : QString());
+	if (!holder.valid) return(true);
+	QMessageBox::warning(
+		this,
+		tr("Project in use", "message box title"),
+		tr("%1 is open by %2 on %3. Choose another file name, or save again "
+		   "once it has been closed there.")
+			.arg(QFileInfo(filepath).fileName(), holder.user, holder.host));
+	return(false);
 }
 
 /**
@@ -708,6 +763,76 @@ QETResult ProjectView::saveAs()
 }
 
 /**
+	@brief ProjectView::saveCopyForOlderVersions
+	Ask for a .qet path and write the project there, for a version of
+	QElectroTech that cannot open a .qetz. The project keeps its file.
+	@return a QETResult object reflecting the situation; a valid one if
+	the operation was cancelled
+*/
+QETResult ProjectView::saveCopyForOlderVersions()
+{
+	if (!m_project) return(noProjectResult());
+
+	QString base = m_project->filePath().isEmpty()
+			? m_project->currentDir() + "/" + tr("untitled")
+			: m_project->filePath();
+	for (const QString &suffix : {QStringLiteral(".qetz"), QStringLiteral(".qet")})
+		if (base.endsWith(suffix, Qt::CaseInsensitive)) base.chop(suffix.size());
+	QString path = QFileDialog::getSaveFileName(
+				this,
+				tr("Save a copy for an older QElectroTech", "dialog title"),
+				base + ".qet",
+				tr("Project QElectroTech (*.qet)", "filetypes allowed when saving a project file"));
+	if (path.isEmpty()) return(QETResult());
+	if (!path.endsWith(".qet", Qt::CaseInsensitive)) path += ".qet";
+	return(m_project->writeCopyForOlderVersions(path));
+}
+
+/**
+	@brief ProjectView::writeProject
+	Write the project file. If the file was changed on disk since this QET
+	read or wrote it, ask what to do first: a plain save would replace
+	the other change.
+	@param cancelled set to true if the user gave up, or chose to save a
+	copy and did not complete it: nothing was saved to the project's file
+	@return the result of the write
+*/
+QETResult ProjectView::writeProject(bool *cancelled)
+{
+	*cancelled = false;
+	QDateTime when;
+	if (!m_project -> changedOnDisk(&when)) {
+		return(m_project -> write());
+	}
+
+	const QString name = QFileInfo(m_project -> filePath()).fileName();
+	QMessageBox box(QMessageBox::Warning,
+					tr("File changed on disk", "message box title"),
+					tr("Someone else changed %1 on disk at %2 since you opened it.\n\n"
+					   "Saving over it would lose their changes.")
+						.arg(name, QLocale::system().toString(when, QLocale::ShortFormat)),
+					QMessageBox::NoButton, this);
+	QPushButton *copy_button = box.addButton(tr("Save as a copy"), QMessageBox::AcceptRole);
+	QPushButton *overwrite_button = box.addButton(tr("Overwrite"), QMessageBox::DestructiveRole);
+	box.addButton(QMessageBox::Cancel);
+	box.setDefaultButton(copy_button);
+	box.setEscapeButton(QMessageBox::Cancel);
+	box.exec();
+
+	if (box.clickedButton() == overwrite_button) {
+		return(m_project -> write(true));
+	}
+	if (box.clickedButton() == copy_button) {
+		QETResult result = saveAs();
+			//The Save As dialog was cancelled: the project is still modified
+		if (m_project -> projectWasModified()) *cancelled = true;
+		return(result);
+	}
+	*cancelled = true;
+	return(QETResult());
+}
+
+/**
 	Save project content, then write the project file. May
 	call saveAs if no filepath was provided before.
 	@return a QETResult object reflecting the situation; note that a valid
@@ -724,7 +849,9 @@ QETResult ProjectView::doSave()
 	}
 
 	// write to file
-	QETResult result = m_project -> write();
+	bool cancelled = false;
+	QETResult result = writeProject(&cancelled);
+	if (cancelled) return(QETResult());
 	updateWindowTitle();
 	// This marks the stack's current index as the new "saved" point (so isClean()/cleanChanged() correctly
 	// resume tracking unsaved changes from here) without discarding the undo history. Edits made before this save 
@@ -941,7 +1068,9 @@ void ProjectView::loadDiagrams()
 {
 	if (!m_project) return;
 
-	setDisplayFallbackWidget(m_project -> diagrams().isEmpty());
+		//The folios' items are built when their tab is first shown
+		//(tabChanged()), not here: a tab needs only the folio's own data
+	setDisplayFallbackWidget(m_project -> folios().isEmpty());
 
 	auto dialog = DialogWaiting::instance();
 	if(dialog)
@@ -950,7 +1079,7 @@ void ProjectView::loadDiagrams()
 												"...</b><br/>Creating sheet tabs :</p>"));
 	}
 
-	for(auto diagram : m_project->diagrams())
+	for(auto diagram : m_project->folios())
 	{
 		if(dialog)
 		{
@@ -1184,6 +1313,12 @@ void ProjectView::rebuildDiagramsMap()
 */
 void ProjectView::tabChanged(int tab_id)
 {
+		//A folio opened without its items (lazy folios) is built when
+		//its tab is first shown. Read the tab itself: the first tab is
+		//shown while loadDiagrams() is still filling m_diagram_ids
+	if (auto dv = qobject_cast<DiagramView *>(m_tab->widget(tab_id)))
+		dv->buildFolio();
+
 	if (tab_id == -1)
 		setDisplayFallbackWidget(true);
 	else if(m_tab->count() == 1)

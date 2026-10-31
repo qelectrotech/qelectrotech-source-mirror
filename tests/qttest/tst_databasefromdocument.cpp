@@ -10,6 +10,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // A project's database, filled from the file as it is read, holds exactly
 // what the same database filled from the built folios holds. Every example
@@ -38,24 +39,26 @@ class tst_databasefromdocument : public QObject
 		return e;
 	}
 
-	QString run(const QStringList &args, bool from_folios = false)
+	QString run(const QStringList &args, bool from_folios = false, bool eager = false)
 	{
 		QProcessEnvironment e = env();
 		if (from_folios)
 			e.insert(QStringLiteral("QET_DATABASE_FROM_FOLIOS"), QStringLiteral("1"));
+		if (eager)
+			e.insert(QStringLiteral("QET_EAGER_FOLIOS"), QStringLiteral("1"));
 		QProcess proc;
 		proc.setProcessEnvironment(e);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), args);
-		if (!proc.waitForFinished(180000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(180000))) return {};
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
 
 	// The seven tables, each as a sorted list of its rows, and which way the
 	// database was filled.
-	QJsonObject dump(const QString &project, bool from_folios, QString *how)
+	QJsonObject dump(const QString &project, bool from_folios, QString *how, bool eager = false)
 	{
 		const QString out = run({QStringLiteral("--run"), m_dir.filePath(QStringLiteral("dump.js")),
-								 project}, from_folios);
+								 project}, from_folios, eager);
 		return tablesIn(out, how);
 	}
 
@@ -386,6 +389,56 @@ private slots:
 		}
 	}
 
+	// After a folio not built is removed and the removal undone, the
+	// element, element_info, terminal, conductor and link tables hold what
+	// they held before. They used to keep none of its rows, nor the links
+	// to its symbols: undoing puts back what the folio's built symbols
+	// write, and a folio not built has none.
+	void unbuiltFolioRemovalUndone()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("undone.qet"));
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/affuteuse_250h.qet"), saved});
+		QVERIFY(QFile::exists(saved));
+		QFile js(m_dir.filePath(QStringLiteral("undone.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write(QByteArrayLiteral(
+				 "function dump(tag) {\n"
+				 "  var out = {};\n"
+				 "  ['element', 'element_info', 'terminal', 'conductor', 'link'].forEach(function (t) {\n"
+				 "    out[t] = qet.query('SELECT * FROM ' + t); });\n"
+				 "  qet.log(tag + JSON.stringify(out));\n"
+				 "}\n"
+				 "dump('BEFORE ');\n"
+				 "qet.log('REMOVED ' + qet.removeFolio(6));\n"
+				 "qet.log('UNDONE ' + qet.undo());\n"
+				 "dump('DUMP ');\n"));
+		js.close();
+		QProcessEnvironment e = env();
+		e.remove(QStringLiteral("QET_EAGER_FOLIOS"));
+		e.insert(QStringLiteral("QET_LAZY_FOLIOS_TRACE"), QStringLiteral("1"));
+		QProcess proc;
+		proc.setProcessEnvironment(e);
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js.fileName(), saved});
+		QVERIFY(proc.waitForFinished(QetTest::timeout(180000)));
+		const QString log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
+		QVERIFY2(log.contains(QStringLiteral("opened with 12 of 12 folios not built")), qPrintable(log.left(400)));
+		QVERIFY2(log.contains(QStringLiteral("REMOVED true")) && log.contains(QStringLiteral("UNDONE true")),
+				 qPrintable(log.right(400)));
+		QString unused;
+		const QJsonObject after = tablesIn(log, &unused);
+		QString before_log = log;
+		before_log.replace(QStringLiteral("DUMP "), QStringLiteral("AFTER "))
+				.replace(QStringLiteral("BEFORE "), QStringLiteral("DUMP "));
+		const QJsonObject before = tablesIn(before_log, &unused);
+		QCOMPARE(before.keys().size(), 5);
+		for (const QString &table : before.keys()) {
+			const QJsonArray a = before.value(table).toArray(), b = after.value(table).toArray();
+			QVERIFY2(!a.isEmpty(), qPrintable(table));
+			QVERIFY2(a == b, qPrintable(QStringLiteral("%1: %2 rows before, %3 after the undo, or different")
+										.arg(table).arg(a.size()).arg(b.size())));
+		}
+	}
+
 	// After an element is moved several columns, its folio cell in the
 	// element table is the one a fresh open of the saved project gives.
 	// It used to stay where the element was added.
@@ -450,13 +503,84 @@ private slots:
 									.arg(a.size()).arg(b.size())));
 	}
 
-	// A file whose items carry no saved uuid is filled from the folios,
-	// which work those uuids out as they are built, and says why.
+	// A symbol with two terminals sharing a uuid (copied in the symbol
+	// editor, F139): a wire to it docks on the first in the element's
+	// terminal order, and both fills give that terminal's index. The copy
+	// comes after the original in the file and sorts after it.
+	void copiedTerminalUuid()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("copied-terminal.qet"));
+		QDomDocument document = resaved(saved);
+		const QDomElement conductor = document.elementsByTagName(QStringLiteral("conductor")).at(0).toElement();
+		const QString uuid = conductor.attribute(QStringLiteral("terminal1"));
+		QVERIFY(!uuid.isEmpty());
+		bool copied = false;
+		const QDomNodeList terminals = document.elementsByTagName(QStringLiteral("terminal"));
+		for (int i = 0 ; i < terminals.size() && !copied ; ++i) {
+			QDomElement terminal = terminals.at(i).toElement();
+			if (terminal.attribute(QStringLiteral("uuid")) != uuid
+				|| terminal.parentNode().nodeName() != QLatin1String("description"))
+				continue;
+			QDomElement copy = terminal.cloneNode().toElement();
+			copy.setAttribute(QStringLiteral("y"), QStringLiteral("1000"));
+			terminal.parentNode().appendChild(copy);
+			copied = true;
+		}
+		QVERIFY(copied);
+		QVERIFY(write(saved, document));
+		compareBothWays(saved);
+		const QString rows = QString::fromUtf8(QJsonDocument(m_last.value(QStringLiteral("terminal")).toArray())
+												   .toJson(QJsonDocument::Compact));
+		QVERIFY2(rows.contains(uuid), qPrintable(rows.left(400)));
+	}
+
+	// A file from an older QElectroTech, as shipped: the uuids and wire ends
+	// written into it on opening are those its folios give themselves when
+	// built (every folio built, without the fill). Each example as it is;
+	// those still filled from the folios compare too.
+	void olderFileFilledFromDocument_data()
+	{
+		QTest::addColumn<QString>("project");
+		const QDir examples(QStringLiteral(QET_EXAMPLES_DIR));
+		for (const QString &f : examples.entryList({QStringLiteral("*.qet")}, QDir::Files, QDir::Name))
+			QTest::newRow(f.toUtf8().constData()) << examples.filePath(f);
+	}
+
+	void olderFileFilledFromDocument()
+	{
+		QFETCH(QString, project);
+		QString how_document, how_folios;
+		const QJsonObject document = dump(project, false, &how_document);
+		const QJsonObject folios = dump(project, true, &how_folios, true);
+		QCOMPARE(document.keys().size(), 7);
+		for (const QString &table : folios.keys()) {
+			const QJsonArray a = document.value(table).toArray(), b = folios.value(table).toArray();
+			QVERIFY2(a == b, qPrintable(QStringLiteral("%1: %2 rows from the document, %3 from the folios")
+										.arg(table).arg(a.size()).arg(b.size())));
+		}
+	}
+
+	// Older files, their folios without uuids and their wires' ends named
+	// the older way, are filled from the document, so open with folios
+	// not built
+	void olderFileOpensFromDocument()
+	{
+		for (const char *f : {"industrial.qet", "tremie_vibrante.qet"}) {
+			QString how;
+			dump(QStringLiteral(QET_EXAMPLES_DIR "/") + QLatin1String(f), false, &how);
+			QVERIFY2(how == QLatin1String("Project database filled from the document"), qPrintable(how));
+		}
+	}
+
+	// A file whose wire ends cannot be paired from the document (a terminal
+	// moved since it was saved, or numbered alike on one folio) is filled
+	// from the folios, which pair them as they are built, and says why.
 	void olderFileFallsBack()
 	{
 		QString how;
-		dump(QStringLiteral(QET_EXAMPLES_DIR "/tremie_vibrante.qet"), false, &how);
-		QCOMPARE(how, QStringLiteral("Project database filled from the folios: a folio has no saved uuid"));
+		dump(QStringLiteral(QET_EXAMPLES_DIR "/photovoltaique.qet"), false, &how);
+		QCOMPARE(how, QStringLiteral("Project database filled from the folios: "
+									 "a conductor has no saved uuid, or names its ends the older way"));
 	}
 };
 

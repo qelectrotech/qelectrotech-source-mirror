@@ -172,6 +172,32 @@ namespace
 }
 
 /**
+ * @brief TerminalStripLayoutPattern::drawStyleToString
+ * @return the string used to save @a style in the project xml (terminal strip item)
+ */
+QString TerminalStripLayoutPattern::drawStyleToString(DrawStyle style)
+{
+	switch (style) {
+		case DrawStyle::RealisticPushIn : return QStringLiteral("realistic_push_in");
+		case DrawStyle::RealisticScrew  : return QStringLiteral("realistic_screw");
+		default                         : return QStringLiteral("schematic");
+	}
+}
+
+/**
+ * @brief TerminalStripLayoutPattern::drawStyleFromString
+ * @return the style saved as @a string, or @a default_style if @a string is unknown or empty
+ * (item saved before the drawing styles : the schematic style is kept).
+ */
+TerminalStripLayoutPattern::DrawStyle TerminalStripLayoutPattern::drawStyleFromString(const QString &string, DrawStyle default_style)
+{
+	if (string == QLatin1String("schematic")) return DrawStyle::Schematic;
+	if (string == QLatin1String("realistic_push_in") || string == QLatin1String("realistic")) return DrawStyle::RealisticPushIn;
+	if (string == QLatin1String("realistic_screw")) return DrawStyle::RealisticScrew;
+	return default_style;
+}
+
+/**
  * @brief TerminalStripLayoutPattern::xmlTagName
  * @return the tag name of the xml element used by toXml / fromXml
  */
@@ -227,6 +253,11 @@ QDomElement TerminalStripLayoutPattern::toXml(QDomDocument &document) const
 	for (auto i = 0; i < m_bridge_point_y_offset.size(); ++i) {
 		element.setAttribute(QStringLiteral("bridge_point_y_offset_%1").arg(i), m_bridge_point_y_offset.at(i));
 	}
+
+	element.setAttribute(QStringLiteral("realistic_px_per_mm"), m_realistic_px_per_mm);
+	element.setAttribute(QStringLiteral("realistic_length_mm"), m_realistic_length_mm);
+	element.setAttribute(QStringLiteral("realistic_end_stops"), m_realistic_end_stops ? 1 : 0);
+	element.setAttribute(QStringLiteral("realistic_group_marker"), m_realistic_group_marker ? 1 : 0);
 
 	return element;
 }
@@ -289,5 +320,20 @@ void TerminalStripLayoutPattern::fromXml(const QDomElement &layout_element)
 	m_bridge_point_d = realFromXml(layout_element, QStringLiteral("bridge_point_d"), m_bridge_point_d);
 	for (auto i = 0; i < m_bridge_point_y_offset.size(); ++i) {
 		m_bridge_point_y_offset[i] = realFromXml(layout_element, QStringLiteral("bridge_point_y_offset_%1").arg(i), m_bridge_point_y_offset.at(i));
+	}
+
+	const auto px_per_mm_ = realFromXml(layout_element, QStringLiteral("realistic_px_per_mm"), m_realistic_px_per_mm);
+	if (px_per_mm_ > 0) {
+		m_realistic_px_per_mm = px_per_mm_;
+	}
+	const auto length_mm_ = realFromXml(layout_element, QStringLiteral("realistic_length_mm"), m_realistic_length_mm);
+	if (length_mm_ > 0) {
+		m_realistic_length_mm = length_mm_;
+	}
+	if (layout_element.hasAttribute(QStringLiteral("realistic_end_stops"))) {
+		m_realistic_end_stops = layout_element.attribute(QStringLiteral("realistic_end_stops")).toInt() != 0;
+	}
+	if (layout_element.hasAttribute(QStringLiteral("realistic_group_marker"))) {
+		m_realistic_group_marker = layout_element.attribute(QStringLiteral("realistic_group_marker")).toInt() != 0;
 	}
 }

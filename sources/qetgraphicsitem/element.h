@@ -22,11 +22,13 @@
 #include <NameList/nameslist.h>
 #include <autoNum/assignvariables.h>
 #include <diagramcontext.h>
+#include <dataBase/elementplacement.h>
 #include <qet.h>
 #include "qetgraphicsitem.h"
 #include <properties/elementdata.h>
 
 #include <QHash>
+#include <QSet>
 #include <QPicture>
 #include <algorithm>
 
@@ -40,6 +42,8 @@ class QUndoCommand;
 /**
 	This is the base class for electrical elements.
 */
+class projectDataBase;
+
 class Element : public QetGraphicsItem
 {
 	friend class DiagramEventAddElement;
@@ -130,8 +134,9 @@ class Element : public QetGraphicsItem
 		}
 
 			//METHODS related to information
-		DiagramContext elementInformations()const
-		{return m_data.m_informations;}
+		DiagramContext elementInformations()const;
+			/// This symbol's own copy of its information, whatever the store holds
+		DiagramContext ownInformations() const {return m_data.m_informations;}
 		virtual void setElementInformations(DiagramContext dc);
 
 		ElementData elementData() const;
@@ -143,16 +148,29 @@ class Element : public QetGraphicsItem
 		 * use elementData function instead
 		 * @return
 		 */
-		DiagramContext kindInformations() const
-		{return m_kind_informations;}
+		DiagramContext kindInformations() const;
+			/// This symbol's own copy of its kind information, whatever the store holds
+		DiagramContext ownKindInformations() const {return m_kind_informations;}
+			/// Where this symbol comes from and sits, from its own members,
+			/// never from the store
+		ElementPlacement ownPlacement() const;
+		void storePlacement();
+			/// This symbol's texts and text groups as it saves them, in an
+			/// <element> made in @p document, from its own items
+		QDomElement ownTextsXml(QDomDocument &document) const;
+			/// What this symbol saves that no other table holds, in an
+			/// <element> made in @p document, from its own members
+		QDomElement ownValuesXml(QDomDocument &document) const;
+		void setMovable(bool movable) override;
 		//@kind_information_ is used to store more information
 		//about the herited class like contactelement for know
 		// kind of contact (simple tempo) or number of contact show by the element.
 
 		autonum::sequentialNumbers sequenceStruct() const
 		{return m_autoNum_seq;}
-		autonum::sequentialNumbers& rSequenceStruct()
-		{return m_autoNum_seq;}
+			/// Replace the numbers and tell the project database
+		void setSequenceStruct(const autonum::sequentialNumbers &numbers);
+		void storeSequence();
 		void setUpFormula(bool code_letter = true, QUndoCommand *parent_undo = nullptr);
 		void setFormulaSchemeId(const QUuid &id);
 		void setPrefix(QString);
@@ -161,6 +179,25 @@ class Element : public QetGraphicsItem
 		bool isFreezeLabel() const {return m_freeze_label;}
 		void freezeNewAddedElement();
 		QString actualLabel();
+			/**
+				What the drawing shows of the label and of the terminal
+				number, the terminal labelling of the project being
+				read (@sa QETProject::terminalLabelSplit). The label itself
+				is never changed by any of them.
+			*/
+		QString labelForDisplay();
+		QString terminalNumberForDisplay();
+		QString infoForDisplay(const QString &info_name);
+		bool hasTerminalNumberText() const;
+		bool labelShown() const;
+			/**
+				The fields which draw the label draw it again: called when
+				what they show of the label has changed under them, a
+				field for the terminal number added or removed, or the
+				terminal labelling setting of the project switched (@sa
+				QETProject::terminalLabelSplit).
+			*/
+		void refreshLabelFields();
 
 		QString name() const override;
 		ElementsLocation location() const;
@@ -172,13 +209,20 @@ class Element : public QetGraphicsItem
 		};
 		ReloadPictureResult reloadPicture();
 		virtual void setHighlighted(bool);
+		void showAsJumpTarget();
+		bool isShownAsJumpTarget() const { return m_jump_highlight > 0; }
+		Element *jumpTarget() const;
+		static void jumpTo(Element *target);
 		void displayHelpLine(bool b = true);
 		QSize size() const;
 		QPixmap pixmap();
 		QPoint setHotspot(QPoint);
 		QPoint hotspot() const;
+			/// The area the symbol is drawn on, in its own coordinates
+		QRectF drawingRect() const;
 		void editProperty() override;
 		static bool valideXml(QDomElement &);
+		static QUuid savedTerminalUuid(const QList<QDomElement> &records, int index);
 		virtual bool fromXml(
 				QDomElement &,
 				QHash<int,
@@ -222,6 +266,12 @@ class Element : public QetGraphicsItem
 		virtual void unlinkAllElements() {}
 		virtual void unlinkElement(Element *) {}
 		virtual void initLink(QETProject *);
+			/// The links this symbol was read with (its file's links_uuids),
+			/// until it is linked: the project database writes its link rows
+			/// from them while it holds none for it (opening)
+		QList<std::pair<QUuid, int>> savedLinkList() const;
+		void dropSavedLinks() {tmp_uuids_link.clear();}
+		void restoreLinkOrder(const QList<QUuid> &order);
 			/**
 				Resolve tmp_uuids_link against a caller-supplied candidate
 				list instead of a project-wide search (bugtracker #607).
@@ -252,6 +302,18 @@ class Element : public QetGraphicsItem
 		 * @return
 		 */
 		virtual kind linkType() const {return m_link_type;} // return the linkable type
+			/// A corner only turns a wire: QElectroTech's own corner
+			/// symbol, or any symbol whose definition says so with the
+			/// kind information "corner" set to "true"
+		bool isCorner() const {return m_corner;}
+		/**
+		 * @brief takesSchemeNumber
+		 * Whether this element is given a number by an element numbering
+		 * scheme (@sa ElementData::takesSchemeNumber): a slave, a report or
+		 * a conductor definition is not numbered.
+		 * @return true when the element numbering schemes apply to it
+		 */
+		bool takesSchemeNumber() const;
 		/**
 		 * @brief linkTypeToString
 		 * use elementData function instead
@@ -259,8 +321,8 @@ class Element : public QetGraphicsItem
 		 */
 		QString linkTypeToString() const;
 
-		void newUuid() {m_uuid = QUuid::createUuid();} 	//create new uuid for this element
-		void setUuid(const QUuid &uuid) {m_uuid = uuid;}
+		void newUuid() {setUuid(QUuid::createUuid());} 	//create new uuid for this element
+		void setUuid(const QUuid &uuid);
 
 	protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
@@ -276,6 +338,23 @@ class Element : public QetGraphicsItem
 		DynamicElementTextItem *parseDynamicText(
 				const QDomElement &dom_element);
 		Terminal *parseTerminal(const QDomElement &dom_element);
+		void matchMovedTerminals(const QList<QDomElement> &records,
+								 const QSet<int> &matched_records,
+								 const QSet<Terminal *> &matched_terminals,
+								 QHash<int, Terminal *> &id_adr);
+
+	public:
+		Terminal *terminalFromOldPlace(const QUuid &old_place_uuid) const;
+		bool terminalWasMoved(const Terminal *terminal) const;
+
+	private:
+			/// How far, in x and y, a terminal may have moved from where
+			/// a project saved it and still be recognised
+		static constexpr qreal moved_terminal_reach = 5.0;
+			/// Terminals paired with a saved one that was elsewhere,
+			/// and the uuid derived from that old place
+		QHash<QUuid, Terminal *> m_old_place_terminals;
+		QSet<Terminal *> m_moved_terminals;
 
 		//Reimplemented from QGraphicsItem
 	public:
@@ -288,6 +367,7 @@ class Element : public QetGraphicsItem
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent(
 				QGraphicsSceneMouseEvent *event) override;
+		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
@@ -296,6 +376,7 @@ class Element : public QetGraphicsItem
 			//ATTRIBUTES related to linked element
 		QList <Element *> connected_elements;
 		QList <LinkInfo>  tmp_uuids_link;
+		bool m_corner = false;
 		QHash <Element *, int> m_group_index_map;  ///< Maps linked elements to their group index (for slave->master links)
 		QUuid             m_uuid;
 		kind              m_link_type = Element::Simple;
@@ -328,8 +409,19 @@ class Element : public QetGraphicsItem
 		QList<QPointF> plcTablePositions() const { return m_plc_table_positions; }
 
 	private:
-		void restoreSavedLinkOrder();
+		void storeInformation();
+		projectDataBase *placedStore() const;
+		void appendTextsXml(QDomDocument &document, QDomElement &element) const;
+		void appendDataXml(QDomDocument &document, QDomElement &element) const;
+		void scheduleTextsStore();
+		void connectTextStore(DynamicElementTextItem *deti);
+		void connectTextStore(ElementTextItemGroup *group);
+			/// Set while the texts are being written: taking a group's
+			/// texts out to write them moves them, which is no change
+		mutable bool m_writing_texts = false;
 		bool m_must_highlight = false;
+		int m_jump_highlight = 0;  ///< pending jump-target highlights, see showAsJumpTarget()
+		bool m_jump_cursor = false;
 		QSize   dimensions;
 		QPoint  hotspot_coord;
 		bool m_mouse_over = false;

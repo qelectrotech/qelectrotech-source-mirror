@@ -156,9 +156,11 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project,
 
 	if (first_add){
 		qtwi_project -> setExpanded(true);
-		// on adding an project select first diagram
-		setCurrentItem(qtwi_project -> child(0));
-		qtwi_project -> child(0)->setSelected(true);
+		// on adding a project select first diagram, once the project item is attached
+		if (qtwi_project -> treeWidget()) {
+			setCurrentItem(qtwi_project -> child(0));
+			qtwi_project -> child(0)->setSelected(true);
+		}
 	}
 	else {
 		// 2. Check whether we can restore the previous selection
@@ -420,10 +422,20 @@ void ElementsPanel::projectWasOpened(QETProject *project) {
 	@param project Projet a enlever du panel
 */
 void ElementsPanel::projectWasClosed(QETProject *project) {
-	if (QTreeWidgetItem *item_to_remove = itemForProject(project)) {
-		GenericPanel::deleteItem(item_to_remove);
-		projects_to_display_.remove(project);
+		//Stop listening to the project and its sheets: the project still
+		//emits while it is torn down (setModified() ->
+		//projectInformationsChanged()), which put its item back, with items
+		//for sheets about to be freed
+	if (project) {
+		disconnect(project, nullptr, this, nullptr);
+		disconnect(project->embeddedTitleBlockTemplatesCollection(), nullptr, this, nullptr);
 	}
+	if (QTreeWidgetItem *item_to_remove = itemForProject(project)) {
+		for (QTreeWidgetItem *sheet : childItems(item_to_remove, QET::Diagram))
+			disconnect(valueForItem<Diagram *>(sheet), nullptr, this, nullptr);
+		GenericPanel::deleteItem(item_to_remove);
+	}
+	projects_to_display_.remove(project);
 	emit(panelContentChanged());
 }
 

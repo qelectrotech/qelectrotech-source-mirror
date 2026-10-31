@@ -27,6 +27,7 @@ namespace Ui {
 }
 
 class QETProject;
+class Cable;
 class TerminalStrip;
 
 /**
@@ -54,9 +55,13 @@ class TerminalStripEditor : public QWidget
 		void pasteFromClipboard();
 		void clearSelectedTexts();
         void clear();
+		void setManufacturerFilter(const QString &manufacturer);
 		void spanMultiLevelTerminals();
 		void selectionChanged();
 		QSize setUpBridgeCellWidth();
+		void watchCableChanges();
+		void watchCable(Cable *cable);
+		void reloadOnCableChange();
 		TerminalStripModel::Column isSingleColumnSelected() const;
 		QPair<TerminalStripModel::Column, QVector<modelRealTerminalData>> singleColumnData() const;
 
@@ -73,10 +78,14 @@ class TerminalStripEditor : public QWidget
 		void on_m_unbridge_terminals_pb_clicked();
 		void on_m_bridge_color_cb_activated(const QColor &col);
 		void on_m_move_to_pb_clicked();
+		void on_m_add_spare_pb_clicked();
 
 	private:
 		Ui::TerminalStripEditor *ui;
         QPointer<QETProject> m_project;
+			//The project whose cables this editor follows, which is not
+			//always m_project yet when watchCableChanges() runs again
+		QPointer<QETProject> m_watched_project;
         QPointer<TerminalStrip> m_current_strip;
         TerminalStripModel *m_model {nullptr};
 };

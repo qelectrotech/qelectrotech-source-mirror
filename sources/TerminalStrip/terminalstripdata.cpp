@@ -52,6 +52,9 @@ QDomElement TerminalStripData::toXml(QDomDocument &xml_document) const
 	if (!m_description.isEmpty()) {
 		info_elmt.appendChild(infoToXml(xml_document, QStringLiteral("description"), m_description));
 	}
+	if (!m_manufacturer.isEmpty()) {
+		info_elmt.appendChild(infoToXml(xml_document, QStringLiteral("manufacturer"), m_manufacturer));
+	}
 
 	return root_elmt;
 }
@@ -79,6 +82,7 @@ bool TerminalStripData::fromXml(const QDomElement &xml_element)
 		else if (name == QLatin1String("name"))        {m_name = value;}
 		else if (name == QLatin1String("comment"))     {m_comment = value;}
 		else if (name == QLatin1String("description")) {m_description = value;}
+		else if (name == QLatin1String("manufacturer")) {m_manufacturer = value;}
 	}
 
 	return true;
@@ -91,6 +95,7 @@ TerminalStripData &TerminalStripData::operator=(const TerminalStripData &other)
 	m_name = other.m_name;
 	m_comment = other.m_comment;
 	m_description = other.m_description;
+	m_manufacturer = other.m_manufacturer;
 	m_uuid = other.m_uuid;
 
 	return *this;

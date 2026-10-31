@@ -437,6 +437,11 @@ class EditValidation(unittest.TestCase):
             "set_element_text": el + [{"op": "set_element_text", "folio": "$f", "element": "$e", "index": 0,
                                        "property": "x", "value": "5"}],
             "delete_element_text": el + [{"op": "delete_element_text", "folio": "$f", "element": "$e", "index": 0}],
+            "place_element_texts": el + [{"op": "place_element_texts", "folio": "$f", "elements": ["$e"],
+                                          "where": "top-left"}],
+            "add_cable": [f, {"op": "add_cable", "id": "k", "folio": "$f", "designation": "-W1",
+                              "type": "NYM-J 3x1,5", "core_colors": ["BN", "BU", "GNYE"],
+                              "length": "2 m", "x1": 0, "y1": 0, "x2": 100, "y2": 0}],
             "add_terminal_strip": [{"op": "add_terminal_strip", "installation": "a", "location": "b", "name": "c"}],
             "remove_terminal_strip": [{"op": "remove_terminal_strip", "strip": 0}],
             "add_to_strip": el + [{"op": "add_to_strip", "strip": 0, "folio": "$f", "element": "$e"}],
@@ -4534,11 +4539,27 @@ class Integration(unittest.TestCase):
               for i in range(4)],
             {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e1", "to_terminal": 0},
             {"op": "add_conductor", "folio": "$f", "from": "$e2", "from_terminal": 0, "to": "$e3", "to_terminal": 0},
+            {"op": "set_conductor", "folio": "$f", "element": "$e2", "terminal": 0, "property": "num", "value": "W2"},
             {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e2", "to_terminal": 0},
         ], self.sb.p("conflict.qet"), elements_dir=ELEMENTS, timeout=60)
         self.assertFalse(r.get("timed_out"), "the call hung on a modal dialog")
         self.assertFalse(r["ok"])
         self.assertEqual(r["operations"][-1]["result"], False)
+
+    def test_joining_two_agreeing_potentials_asks_nothing(self):
+        """Two potentials with the same properties leave nothing to choose:
+        the wire joining them is drawn, headless as well."""
+        base = self.sb.new()
+        r = self.ok(self.sb.edit(base, [
+            {"op": "add_folio", "id": "f"},
+            *[{"op": "add_element", "id": f"e{i}", "folio": "$f", "path": COIL, "x": 100 + i * 200, "y": 100}
+              for i in range(4)],
+            {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e1", "to_terminal": 0},
+            {"op": "set_conductor", "folio": "$f", "element": "$e0", "terminal": 0, "property": "num", "value": "N"},
+            {"op": "add_conductor", "folio": "$f", "from": "$e2", "from_terminal": 0, "to": "$e3", "to_terminal": 0},
+            {"op": "set_conductor", "folio": "$f", "element": "$e2", "terminal": 0, "property": "num", "value": "N"},
+            {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e2", "to_terminal": 0}]))
+        self.assertEqual([c["num"] for c in m.tool_conductors(r["output"])["conductors"]], ["N"] * 3)
 
     # ---- edit: conductor properties, potentials ----
 
@@ -4554,6 +4575,53 @@ class Integration(unittest.TestCase):
         r = self.ok(self.sb.edit(base, hub))
         rows = m.tool_conductors(r["output"])["conductors"]
         self.assertEqual([c["num"] for c in rows], ["W7", "W7"])
+
+    def test_new_conductor_inherits_a_potential_through_terminal_and_report(self):
+        """A wire drawn to the free side of a terminal element, or to a
+        report linked to a wired one, is on that potential already: it
+        takes the potential's number and line style, not the folio's
+        defaults (ConductorCreator::existingPotential)."""
+        base = self.sb.new()
+        ops = [{"op": "add_folio", "id": "f"}, {"op": "add_folio", "id": "g"},
+               {"op": "add_element", "id": "a", "folio": "$f", "path": COIL, "x": 100, "y": 100},
+               {"op": "add_element", "id": "t", "folio": "$f", "path": TERMINAL, "x": 300, "y": 300},
+               {"op": "add_element", "id": "b", "folio": "$f", "path": COIL, "x": 500, "y": 100},
+               {"op": "add_element", "id": "go", "folio": "$f", "path": NEXT_REPORT, "x": 700, "y": 100},
+               {"op": "add_element", "id": "in", "folio": "$g", "path": PREVIOUS_REPORT, "x": 100, "y": 100},
+               {"op": "add_element", "id": "c", "folio": "$g", "path": COIL, "x": 300, "y": 100},
+               {"op": "link_elements", "folio": "$f", "element": "$go", "to_folio": "$g", "to": "$in"},
+               {"op": "add_conductor", "folio": "$f", "from": "$a", "from_terminal": 0, "to": "$t", "to_terminal": 0},
+               {"op": "set_conductor", "folio": "$f", "element": "$a", "terminal": 0, "property": "num", "value": "W7"},
+               {"op": "set_conductor", "folio": "$f", "element": "$a", "terminal": 0, "property": "style", "value": "dashed"},
+               # the terminal's other side, then on through the report
+               {"op": "add_conductor", "folio": "$f", "from": "$t", "from_terminal": 1, "to": "$b", "to_terminal": 0},
+               {"op": "add_conductor", "folio": "$f", "from": "$b", "from_terminal": 0, "to": "$go", "to_terminal": 0},
+               {"op": "add_conductor", "folio": "$g", "from": "$in", "from_terminal": 0, "to": "$c", "to_terminal": 0}]
+        r = self.ok(self.sb.edit(base, ops))
+        rows = m.tool_conductors(r["output"])["conductors"]
+        self.assertEqual([c["num"] for c in rows], ["W7"] * 4)
+        styles = {c["value"] for c in m.tool_conductors(r["output"], attribute="style")["conductors"]}
+        self.assertEqual(len(styles), 1, styles)
+        self.assertIn("dash", styles.pop())
+
+    def test_nomenclature_takes_the_place_of_the_folio(self):
+        """An element without its own plant / location is where its folio
+        is: element_nomenclature_view (BOM, nomenclature tables) shows the
+        folio's =plant +location; an element's own value still wins."""
+        base = self.sb.new()
+        ops = [{"op": "add_folio", "id": "f"},
+               {"op": "set_folio", "folio": "$f", "property": "plant", "value": "HAUS"},
+               {"op": "set_folio", "folio": "$f", "property": "locmach", "value": "UV1"},
+               {"op": "add_element", "id": "a", "folio": "$f", "path": COIL, "x": 100, "y": 100},
+               {"op": "set_label", "folio": "$f", "element": "$a", "label": "KA1"},
+               {"op": "add_element", "id": "b", "folio": "$f", "path": COIL, "x": 300, "y": 100},
+               {"op": "set_label", "folio": "$f", "element": "$b", "label": "KA2"},
+               {"op": "set_info", "folio": "$f", "element": "$b", "key": "location", "value": "UV2"}]
+        r = self.ok(self.sb.edit(base, ops))
+        q = m.tool_query(BINARY, r["output"], "SELECT label, plant, location FROM "
+                         "element_nomenclature_view ORDER BY label")
+        self.assertEqual(q["rows"], [{"label": "KA1", "plant": "HAUS", "location": "UV1"},
+                                     {"label": "KA2", "plant": "HAUS", "location": "UV2"}])
 
     # ---- conductor manual routing ----
 
@@ -5828,6 +5896,22 @@ class Integration(unittest.TestCase):
         line = [l for l in (out["stdout"] + out["stderr"]).splitlines() if l.startswith("DB ")][0]
         self.assertEqual(json.loads(line[3:]), [{"wire_number": "W1"}])
 
+    def test_duplicate_labels_are_counted_per_location(self):
+        """-F1 in two distribution boards is two devices: the folio's
+        location (+UV1, +UV2) is part of the name, as %LM shows it. KM1 on
+        +UV1 and +UV2 is fine, a second KM1 on +UV2 is the finding."""
+        base = self.sb.new(folios=3)
+        ops = []
+        for folio, ort in enumerate(("UV1", "UV2", "UV2")):
+            ops += [{"op": "set_folio", "folio": folio, "property": "locmach", "value": ort},
+                    {"op": "add_element", "id": f"k{folio}", "folio": folio, "path": COIL,
+                     "x": 100, "y": 100},
+                    {"op": "set_label", "folio": folio, "element": f"$k{folio}", "label": "KM1"}]
+        r = self.ok(self.sb.edit(base, ops))
+        found = {f["check"]: f for f in m.tool_check(BINARY, r["output"])["findings"]}
+        self.assertEqual(found["duplicate_master_labels"]["rows"],
+                         [{"label": "KM1", "plant": "", "location": "UV2", "n": 2}])
+
     def test_check_fires_on_a_project_with_known_defects(self):
         """Newly placed elements store NULL where a loaded file stores '', and
         `col = ''` matches only the second: the first version of these checks
@@ -6474,6 +6558,173 @@ class CorpusIntegration(unittest.TestCase):
                     self.assertEqual(r["diff"]["elements"]["info_changed"], [])
         finally:
             sb.close()
+
+
+class ZippedProjectWithoutBinary(unittest.TestCase):
+    def test_reading_a_qetz_without_qelectrotech_says_what_to_set(self):
+        """A .qetz is read through QElectroTech (m._as_qet()): with none
+        configured, the answer names QET_BINARY rather than failing to
+        parse a zip as XML."""
+        with tempfile.TemporaryDirectory() as tmp:
+            z = Path(tmp) / "p.qetz"
+            z.write_bytes(b"PK\x03\x04 not read")
+            with mock.patch.object(m, "resolve_binary", return_value=None):
+                with self.assertRaises(ValueError) as caught:
+                    m.tool_project_info(str(z))
+            self.assertIn("QET_BINARY", str(caught.exception))
+
+    QET = '<project><diagram><conductors><conductor cable="W1"/></conductors></diagram></project>'
+
+    def fake_resave(self, ok=True, timed_out=False):
+        """A _run_qet that writes a small .qet where --resave was asked to"""
+        def run(binary, args, timeout=180, **kw):
+            Path(args[2]).write_text(self.QET)
+            if timed_out:
+                return {"ok": False, "timed_out": True, "timeout_s": timeout}
+            return {"ok": ok, "exit_code": 0 if ok else 1, "stderr": "", "stdout": ""}
+        return run
+
+    def qetz_files(self, tmp, n):
+        files = []
+        for i in range(n):
+            z = Path(tmp) / f"p{i}.qetz"
+            z.write_bytes(b"PK")
+            files.append(z)
+        return files
+
+    def test_a_failed_or_timed_out_conversion_is_not_kept(self):
+        """A .qet left behind by a run that did not finish is not read"""
+        for kind in ({"ok": False}, {"timed_out": True}):
+            with self.subTest(**kind), tempfile.TemporaryDirectory() as tmp:
+                m._forget_qetz_copies()
+                z, = self.qetz_files(tmp, 1)
+                with mock.patch.object(m, "resolve_binary", return_value="qet"), \
+                     mock.patch.object(m, "_run_qet", side_effect=self.fake_resave(**kind)):
+                    with self.assertRaises(ValueError):
+                        m._as_qet(z)
+                self.assertEqual(m._QETZ_COPIES, {})
+
+    def test_only_the_newest_conversions_are_kept_on_disk(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            m._forget_qetz_copies()
+            files = self.qetz_files(tmp, m._QETZ_COPIES_MAX + 2)
+            with mock.patch.object(m, "resolve_binary", return_value="qet"), \
+                 mock.patch.object(m, "_run_qet", side_effect=self.fake_resave()):
+                copies = [m._as_qet(z) for z in files]
+                self.assertEqual(len(m._QETZ_COPIES), m._QETZ_COPIES_MAX)
+                self.assertFalse(copies[0].parent.exists())
+                self.assertTrue(copies[-1].is_file())
+                    # A new version of a file replaces its old copy
+                os.utime(files[-1], ns=(1, 1))
+                newer = m._as_qet(files[-1])
+                self.assertFalse(copies[-1].parent.exists())
+            m._forget_qetz_copies()
+            self.assertFalse(newer.parent.exists())
+
+    def test_scan_reads_at_most_max_qetz(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            m._forget_qetz_copies()
+            self.qetz_files(tmp, 3)
+            with mock.patch.object(m, "resolve_binary", return_value="qet"), \
+                 mock.patch.object(m, "_run_qet", side_effect=self.fake_resave()) as run:
+                scan = m.tool_scan(tmp, max_qetz=2)
+            m._forget_qetz_copies()
+        self.assertEqual(run.call_count, 2)
+        self.assertEqual((scan["total"], scan["non_empty"]), (2, 2))
+        self.assertEqual(scan["skipped_qetz"], ["p2.qetz"])
+
+
+@needs_examples
+class ZippedProjects(unittest.TestCase):
+    """Every tool reads and writes QElectroTech's zipped project (.qetz) as
+    it does the .qet: the XML tools read the .qet QElectroTech saves from
+    it, the tools that launch QElectroTech hand it the .qetz."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.TemporaryDirectory()
+        root = Path(cls.tmp.name)
+        cls.env = mock.patch.dict(os.environ, {"QET_BINARY": BINARY, "QET_ENABLE_SCRIPTING": "1",
+                                               "QET_MCP_SCRIPTS_DIR": str(root / "scripts"),
+                                               "QET_MCP_INFO_FILE": str(root / "none.json")})
+        cls.env.start()
+        cls.qet, cls.qetz = root / "p.qet", root / "p.qetz"
+        source = str(Path(EXAMPLES) / "industrial.qet")
+        for out in (cls.qet, cls.qetz):
+            r = m._run_qet(BINARY, ["--resave", source, str(out)], timeout=600)
+            assert out.is_file(), r
+        assert cls.qetz.read_bytes()[:2] == b"PK"
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.env.stop()
+        cls.tmp.cleanup()
+
+    def test_read_tools_answer_as_for_the_qet(self):
+        def strip(d):
+            return {k: v for k, v in d.items() if k not in ("path", "file")}
+        for tool in (m.tool_project_info, m.tool_elements, m.tool_conductors, m.tool_items):
+            self.assertEqual(strip(tool(str(self.qetz))), strip(tool(str(self.qet))), tool.__name__)
+
+    def test_diff_finds_nothing_between_the_qet_and_the_qetz(self):
+        d = m.tool_diff(str(self.qet), str(self.qetz))
+        self.assertTrue(d.get("identical") or not any(
+            v.get("added") or v.get("removed") or v.get("changed")
+            for v in d.values() if isinstance(v, dict)), d)
+
+    def test_scan_counts_a_qetz(self):
+        folder = Path(self.tmp.name) / "scan"
+        folder.mkdir(exist_ok=True)
+        for f in (self.qet, self.qetz):
+            shutil.copy2(f, folder / f.name)
+        scan = m.tool_scan(str(folder), "conductor", "cable", recursive=False)
+        self.assertEqual(scan["files"], 2)
+        self.assertEqual(scan["unreadable"], [])
+        self.assertEqual(scan["per_file"][0]["conductor"], scan["per_file"][1]["conductor"])
+
+    def test_a_qetz_is_converted_once_while_it_does_not_change(self):
+        m._QETZ_COPIES.clear()
+        real = m._run_qet
+        with mock.patch.object(m, "_run_qet", side_effect=real) as run:
+            m.tool_project_info(str(self.qetz))
+            m.tool_elements(str(self.qetz))
+        self.assertEqual(run.call_count, 1)
+
+    def test_query_reads_the_qetz_itself(self):
+        sql = "SELECT COUNT(*) AS n FROM element"
+        self.assertEqual(m.tool_query(BINARY, str(self.qetz), sql)["rows"],
+                         m.tool_query(BINARY, str(self.qet), sql)["rows"])
+
+    def test_edit_writes_a_qetz(self):
+        first = m.tool_elements(str(self.qetz))["elements"][0]
+        out = Path(self.tmp.name) / "edited.qetz"
+        r = m.tool_edit(BINARY, str(self.qetz),
+                        [{"op": "rotate_element", "folio": first["folio"] - 1,
+                          "element": first["uuid"], "angle": 90}],
+                        str(out), ELEMENTS or None)
+        self.assertTrue(r.get("ok"), r)
+        self.assertEqual(out.read_bytes()[:2], b"PK")
+            # The rotation is what the diff of the two .qetz finds
+        rotated = m.tool_diff(str(self.qetz), str(out))["elements"]["rotated"]
+        self.assertEqual([r["uuid"] for r in rotated], [first["uuid"]])
+        self.assertNotEqual(*rotated[0]["orientation"])
+
+
+class TestKeepTail(unittest.TestCase):
+    """A large edit logs more than the kept tail; the script's own report
+    lines must survive the cut, or qet_edit says the script never ran."""
+
+    def test_short_output_is_untouched(self):
+        self.assertEqual(m._keep_tail("a\nb", 100), "a\nb")
+
+    def test_marker_lines_survive_the_cut(self):
+        first = 'QETEDIT {"kind": "capabilities", "missing": []}'
+        text = first + "\n" + "x" * 1000 + "\n" + 'QETEDIT {"kind": "save", "result": true}'
+        kept = m._keep_tail(text, 100)
+        self.assertIn(first, kept)
+        self.assertIn('"kind": "save"', kept)
+        self.assertEqual(kept.count('"kind": "save"'), 1)
+        self.assertEqual(m._parse_script_output(kept).get("missing_methods"), [])
 
 
 if __name__ == "__main__":

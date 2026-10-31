@@ -46,6 +46,11 @@ class QetGraphicsTableItem : public QetGraphicsItem
 	Q_PROPERTY(QSize size READ size WRITE setSize)
 	Q_PROPERTY(int displayNRow READ displayNRow WRITE setDisplayNRow)
 
+	signals:
+			/// Something the table saves changed (size, name, rows shown,
+			/// model, column widths, links)
+		void changed();
+
 	public :
 		static void adjustTableToFolio(
 				QetGraphicsTableItem *table,
@@ -84,6 +89,8 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		QPointer<QetGraphicsTableItem> nextTable() const;
 		void setToMinimumHeight();
 		void initLink();
+		bool hasPendingLink() const {return !m_pending_previous_table_uuid.isNull();}
+		QUuid previousTableUuid() const;
 		QUuid uuid() const {return m_uuid;}
 		int minimumRowHeight() const;
 

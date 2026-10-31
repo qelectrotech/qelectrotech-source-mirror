@@ -548,6 +548,12 @@ void ElementQueryWidget::setUpItems()
 	{
 		if (key == "formula" || key == "exclude_from_bom")
 			continue;
+		// Terminal number is read-only and not a column of the nomenclature
+		// query, so offering it as an export/query column would break the
+		// export (query fails with "no such column"). It stays available as a
+		// text variable (%{terminal_number}) in the element editor.
+		if (key == QETInformation::ELMT_TERMINAL_NUMBER)
+			continue;
 
 		auto item = new QListWidgetItem(QETInformation::translatedInfoKey(key), ui->m_var_list);
 		item->setData(Qt::UserRole, key);

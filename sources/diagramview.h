@@ -22,6 +22,9 @@
 #include "titleblock/templatelocation.h"
 
 #include <QClipboard>
+#include <QGraphicsObject>
+#include <QPointer>
+#include <memory>
 #include "palettegraphicsview.h"
 
 class CellRuler;
@@ -74,6 +77,28 @@ class DiagramView : public PaletteGraphicsView
 		QPoint            m_gesture_origin;
 		DiagramGestureOverlay *m_gesture_overlay = nullptr;
 		QPoint            m_last_mouse_pos = QPoint(-1, -1);
+		QPointF           m_crosshair_pos;
+		bool              m_crosshair_visible = false;
+		void moveCrosshair(const QPoint &viewport_pos);
+			/// A handle near the mouse catches the crosshair and the
+			/// pointer, as a grid point does; a press then grabs it as if
+			/// the mouse were on it, and the drag keeps that offset
+		QPointer<QGraphicsObject> m_caught_handle;
+		QPointF           m_grab_offset;
+		bool              m_grabbing_caught = false;
+		QGraphicsObject *handleNear(const QPoint &viewport_pos) const;
+		QMouseEvent *onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseEvent> &shifted);
+		void hideCrosshair();
+		QRect crosshairArea(const QPointF &scene_pos) const;
+			/// The pointer: a four-way arrow over what can be moved; with
+			/// the crosshair, drawn on the grid point in place of the
+			/// system's, which a program may not move on every platform
+		enum class Pointer { System, Arrow, Move };
+		Pointer           m_pointer = Pointer::System;
+			/// The view's cursor was set by updatePointer()
+		bool              m_pointer_set = false;
+		void updatePointer(const QPoint &viewport_pos, Qt::MouseButtons buttons);
+		void drawPointer(QPainter *painter) const;
 		QPointF           m_drag_last_pos;
 		bool              m_fresh_focus_in,
 						  m_first_activation = true;
@@ -88,6 +113,7 @@ class DiagramView : public PaletteGraphicsView
 		bool m_cell_rulers_shown = false;
 		/// Last viewport transform the rulers were painted for
 		QTransform m_rulers_transform;
+		qreal m_shown_zoom = 0;
 		bool m_cell_lines_shown = false;
 
 		
@@ -111,6 +137,17 @@ class DiagramView : public PaletteGraphicsView
 		QPointF defaultPlacementPos() const;
 		void setCellRulersShown(bool shown);
 		void setCellLinesShown(bool shown);
+			/// The folio-wide crosshair under the mouse (Display menu),
+			/// one setting for every view
+		static bool crosshairShown();
+		static void setCrosshairShown(bool shown);
+		static bool pointerAids();
+		static void setPointerAids(bool on);
+		bool crosshairVisible() const { return m_crosshair_visible; }
+			/// The pointer drawn on the crosshair's grid point, if any:
+			/// 0 none (the system's shows), 1 an arrow, 2 a four-way arrow
+		int drawnPointer() const { return int(m_pointer); }
+		QPointF crosshairPos() const { return m_crosshair_pos; }
 
 	protected:
 		void mouseDoubleClickEvent(QMouseEvent *) override;
@@ -127,7 +164,10 @@ class DiagramView : public PaletteGraphicsView
 		void paintEvent(QPaintEvent *event) override;
 		bool viewportEvent(QEvent *event) override;
 		void drawBackground(QPainter *painter, const QRectF &rect) override;
+		void drawForeground(QPainter *painter, const QRectF &rect) override;
 		void paintingInverted(bool inverted) override;
+		QET::Palette::SheetInk sheetInk() const override;
+		InkKind inkKind(const QGraphicsItem *item) const override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;
 		void mouseReleaseEvent(QMouseEvent *) override;
@@ -143,6 +183,20 @@ class DiagramView : public PaletteGraphicsView
 	private:
 		void handleElementDrop(QDropEvent *);
 		void updateFolioReportMenu();
+			/**
+				The menu of one single core: the right button coming down
+				on a colour label which stands on a line asks about that
+				core rather than about the whole folio -- taking it off the
+				line, which is the exact opposite of the menu the free
+				cores offer, of putting one down on a line.
+
+				Nothing opens when the point carries no colour label: the
+				folio's own menu is then still the right one.
+				@param menu_pos where he right-clicked, in view coordinates
+				@param global_pos the same place, in global coordinates
+				@return true when that menu was the one to open
+			*/
+		bool cableCoreMenu(const QPoint &menu_pos, const QPoint &global_pos);
 		void handleTitleBlockDrop(QDropEvent *);
 		void handleTextDrop(QDropEvent *);
 		void handleImageFilesDrop(QDropEvent *);
@@ -178,6 +232,8 @@ class DiagramView : public PaletteGraphicsView
 			/// Signal emitted when the placement mode is entered for an
 			/// element (not a macro), whether from a drop or not.
 		void elementPlacementStarted(const ElementsLocation &);
+			/// The view's scale changed: 1 is 100 %
+		void zoomChanged(qreal factor);
 	
 	public slots:
 		void setVisualisationMode();
@@ -193,6 +249,7 @@ class DiagramView : public PaletteGraphicsView
 		void paste(const QPointF & = QPointF(), QClipboard::Mode = QClipboard::Clipboard);
 		void pasteHere();
 		void duplicate(const QPoint &stepOffset);
+		void buildFolio();
 		void adjustSceneRect();
 		void updateWindowTitle();
 		void resetConductors();

@@ -18,6 +18,7 @@
 #include "deleteqgraphicsitemcommand.h"
 #include <wiringrules.h>
 
+#include <cable/cablemanager.h>
 #include <diagram.h>
 #include <qetproject.h>
 #include "addgraphicsobjectcommand.h"
@@ -258,6 +259,22 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 					qInfo() << "m_connected_terminals" << m_connected_terminals;
 					Conductor *new_cond = new Conductor(new_pair.first, new_pair.second);
 					new_cond->setProperties(properties);
+						//The wire that joins the two left by the removed
+						//symbol gets its uuid from its two ends, as a wire
+						//saved without one does on load (Diagram::fromXml()):
+						//the same deletion then saves the same file every
+						//time, not a random uuid each run (F115)
+					if (QETProject *wire_project = new_pair.second->diagram()
+							? new_pair.second->diagram()->project() : nullptr) {
+						auto end = [](const Terminal *t) {
+							return t->parentElement()->uuid().toString()
+									+ QLatin1Char('/') + t->stableUuid().toString();
+						};
+						QStringList ends{end(new_pair.first), end(new_pair.second)};
+						ends.sort();
+						new_cond->setUuid(wire_project->derivedItemUuid(
+								QStringLiteral("conductor"), ends.join(QLatin1Char('\n'))));
+					}
 					new AddGraphicsObjectCommand(new_cond, new_pair.second->diagram(), QPointF(), this);
 				}
 			}
@@ -337,6 +354,15 @@ void DeleteQGraphicsItemCommand::undo()
 		}
 	}
 
+		//Back on the sheet and linked again: the cables which run over
+		//this report claim their wire on the other side once more.
+	for (Element *e : m_removed_contents.m_elements) {
+		if (e && (e->linkType() & Element::AllReport)) {
+			CableManager::refreshLabels(m_diagram->project());
+			break;
+		}
+	}
+
 	QUndoCommand::undo();
 }
 
@@ -389,6 +415,17 @@ void DeleteQGraphicsItemCommand::redo()
 
 	for(QGraphicsItem *item : m_removed_contents.items())
 		m_diagram->removeItem(item);
+
+		//A folio report carries a cable core over to the next sheet:
+		//taking one away (putting it back is undo, below) changes which
+		//wires belong to which cable, so the cable fields are worked
+		//out again straight away.
+	for (Element *e : m_removed_contents.m_elements) {
+		if (e && (e->linkType() & Element::AllReport)) {
+			CableManager::refreshLabels(m_diagram->project());
+			break;
+		}
+	}
 
 	QUndoCommand::redo();
 }

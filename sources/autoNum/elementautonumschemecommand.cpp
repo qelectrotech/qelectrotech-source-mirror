@@ -249,8 +249,7 @@ QSet<QString> ElementAutoNumSchemeCommand::reservedLabels(
 	for (const Element *el : followers)
 	{
 		if (moving.contains(el)
-				|| el->linkType() == Element::Slave
-				|| (el->linkType() & Element::AllReport)) {
+				|| !el->takesSchemeNumber()) {
 			continue;
 		}
 		const QString label = el->elementInformations().value(QETInformation::ELMT_LABEL).toString();
@@ -302,7 +301,7 @@ RenumberElementsCommand *ElementAutoNumSchemeCommand::renumber(
 		const auto followers = project->elementsUsingElementAutoNum(key);
 		for (Element *el : followers)
 		{
-			if (el->linkType() == Element::Slave || (el->linkType() & Element::AllReport)) {
+			if (!el->takesSchemeNumber()) {
 				continue;
 			}
 			if (el->isFreezeLabel()) {
@@ -369,10 +368,19 @@ ElementAutoNumSchemeCommand::NumberSupport ElementAutoNumSchemeCommand::numberSu
 std::optional<int> ElementAutoNumSchemeCommand::numberOf(const NumberSupport &support,
 														 const Element *element)
 {
-	if (!support.supported || !element) {
+	if (!element) {
 		return std::nullopt;
 	}
-	const autonum::sequentialNumbers seq = element->sequenceStruct();
+	return numberOf(support, element->sequenceStruct());
+}
+
+/// @return the number the sequential numbers @p seq give, if the scheme knows it
+std::optional<int> ElementAutoNumSchemeCommand::numberOf(const NumberSupport &support,
+														 const autonum::sequentialNumbers &seq)
+{
+	if (!support.supported) {
+		return std::nullopt;
+	}
 	const QStringList &list = support.type == QLatin1String("unit") ? seq.unit
 							: support.type == QLatin1String("ten") ? seq.ten
 							: seq.hundred;
@@ -385,14 +393,18 @@ std::optional<int> ElementAutoNumSchemeCommand::numberOf(const NumberSupport &su
 }
 
 namespace {
-/// The elements of @p project which follow the scheme @p title and are not slaves or reports
-QVector<Element *> numberedFollowers(const QETProject *project, const QString &title)
+/// The symbols of @p project which follow the scheme @p title and are not
+/// slaves or reports, built or not (QETProject::symbolNumbering())
+QList<QETProject::SymbolNumbering> numberedFollowers(const QETProject *project, const QString &title)
 {
-	QVector<Element *> list;
-	const auto followers = project->elementsUsingElementAutoNum(title);
-	for (Element *el : followers) {
-		if (el->linkType() != Element::Slave && !(el->linkType() & Element::AllReport)) {
-			list << el;
+	QList<QETProject::SymbolNumbering> list;
+	const QUuid id = project->elementAutoNumId(title);
+	if (id.isNull()) {
+		return list;
+	}
+	for (const auto &symbol : project->symbolNumbering()) {
+		if (symbol.numbered && !symbol.formula.isEmpty() && symbol.scheme == id) {
+			list << symbol;
 		}
 	}
 	return list;
@@ -411,13 +423,10 @@ QSet<QString> ElementAutoNumSchemeCommand::labelsHeldBesides(const QETProject *p
 	if (!project) {
 		return labels;
 	}
-	for (Diagram *d : project->diagrams()) {
-		for (QGraphicsItem *item : d->items()) {
-			if (auto *el = qgraphicsitem_cast<Element *>(item)) {
-				if (el != element) {
-					labels << el->elementInformations().value(QETInformation::ELMT_LABEL).toString();
-				}
-			}
+		//Folios not built yet answer from what building them would give
+	for (const auto &symbol : project->symbolNumbering()) {
+		if (symbol.element != element) {
+			labels << symbol.label;
 		}
 	}
 	labels.remove(QString());
@@ -453,8 +462,8 @@ std::optional<ElementAutoNumSchemeCommand::CounterConflict> ElementAutoNumScheme
 
 	CounterConflict conflict;
 	conflict.counter = counter;
-	for (const Element *el : numberedFollowers(project, title)) {
-		if (const auto number = numberOf(support, el)) {
+	for (const auto &symbol : numberedFollowers(project, title)) {
+		if (const auto number = numberOf(support, symbol.sequence)) {
 			if (*number >= counter) {
 				++conflict.count;
 				conflict.highest = std::max(conflict.highest, *number);
@@ -486,8 +495,8 @@ QList<ElementAutoNumSchemeCommand::GapRange> ElementAutoNumSchemeCommand::gapRan
 		return ranges;
 	}
 	QSet<int> used;
-	for (const Element *el : numberedFollowers(project, title)) {
-		if (const auto number = numberOf(support, el)) {
+	for (const auto &symbol : numberedFollowers(project, title)) {
+		if (const auto number = numberOf(support, symbol.sequence)) {
 			used << *number;
 		}
 	}
@@ -559,22 +568,19 @@ QList<int> ElementAutoNumSchemeCommand::freeNumbers(const QETProject *project,
 
 	QSet<int> used;
 	int highest = context.itemAt(support.partIndex).value(1).toInt();
-	for (const Element *el : numberedFollowers(project, title)) {
-		if (el == element) continue;
-		if (const auto number = numberOf(support, el)) {
+	for (const auto &symbol : numberedFollowers(project, title)) {
+		if (symbol.element == element) continue;
+		if (const auto number = numberOf(support, symbol.sequence)) {
 			used << *number;
 			highest = std::max(highest, *number);
 		}
 	}
 
 	QSet<QString> labels;
-	for (Diagram *d : project->diagrams()) {
-		for (QGraphicsItem *item : d->items()) {
-			if (auto *el = qgraphicsitem_cast<Element *>(item)) {
-				if (el != element) {
-					labels << el->elementInformations().value(QETInformation::ELMT_LABEL).toString();
-				}
-			}
+		//Folios not built yet answer from what building them would give
+	for (const auto &symbol : project->symbolNumbering()) {
+		if (symbol.element != element) {
+			labels << symbol.label;
 		}
 	}
 	labels.remove(QString());
@@ -678,8 +684,7 @@ ElementAutoNumSchemeCommand::Skipped ElementAutoNumSchemeCommand::skipReason(
 	if (!project || !element) {
 		return Skipped::Linked;
 	}
-	if (element->linkType() == Element::Slave
-			|| (element->linkType() & Element::AllReport)) {
+	if (!element->takesSchemeNumber()) {
 		return Skipped::Linked;
 	}
 	const DiagramContext &info = element->elementInformations();
@@ -735,11 +740,11 @@ ElementAutoNumSchemeCommand::AssignPlan ElementAutoNumSchemeCommand::assignPlan(
 
 /**
 	@brief ElementAutoNumSchemeCommand::numberElements
-	Give every one of @p elements (a slave or a report excepted) the
-	element numbering scheme @p title: its formula and the next number of
-	the scheme, in folio and position order, the scheme's counter moving
-	on. The numbering goes past the labels the other elements which follow
-	the scheme keep. One undo step.
+	Give every one of @p elements (a slave, a report or a conductor
+	definition excepted) the element numbering scheme @p title: its
+	formula and the next number of the scheme, in folio and position
+	order, the scheme's counter moving on. The numbering goes past the
+	labels the other elements which follow the scheme keep. One undo step.
 	@param freeze : what the frozen state of the elements becomes
 	@param parent : parent undo command, if the numbering is a part of one
 	@return the command, nullptr if there is nothing to number
@@ -757,7 +762,7 @@ RenumberElementsCommand *ElementAutoNumSchemeCommand::numberElements(
 	}
 	QVector<Element *> todo;
 	for (Element *el : elements) {
-		if (el && el->linkType() != Element::Slave && !(el->linkType() & Element::AllReport)) {
+		if (el && el->takesSchemeNumber()) {
 			todo << el;
 		}
 	}
@@ -792,10 +797,11 @@ RenumberElementsCommand *ElementAutoNumSchemeCommand::numberElements(
 	position order, and the scheme's counter moves on. One undo step.
 
 	An element is left alone (see assignPlan()) when it follows the scheme
-	already, is a slave or a report, or when something would be lost: a
-	frozen label, or a formula it follows or holds already, unless
-	@p overwrite. An element with a label typed by hand and no formula is
-	given the scheme; its label is replaced by the number.
+	already, is a slave, a report or a conductor definition, or when
+	something would be lost: a frozen label, or a formula it follows or
+	holds already, unless @p overwrite. An element with a label typed by
+	hand and no formula is given the scheme; its label is replaced by the
+	number.
 	@param skipped : if not null, receives how many elements were left alone
 	@return the command, nullptr if there is nothing to give
 */
@@ -962,7 +968,7 @@ QList<ElementAutoNumSchemeCommand::Scheme> ElementAutoNumSchemeCommand::missingF
 	}
 	QSet<QUuid> followed;
 	for (const Element *el : pasted) {
-		if (el->linkType() == Element::Slave || (el->linkType() & Element::AllReport)) {
+		if (!el->takesSchemeNumber()) {
 			continue;
 		}
 		followed << QUuid(el->elementInformations().value(QETInformation::ELMT_FORMULA_ID).toString());
@@ -992,7 +998,8 @@ QList<ElementAutoNumSchemeCommand::Scheme> ElementAutoNumSchemeCommand::missingF
 	it names none (the element comes from another project, or from a file
 	written before the ids), when one has its formula (see
 	schemeForFormula()). A slave or a report follows none: it takes its
-	label from its master.
+	label from its master. A conductor definition follows none either: it
+	labels a wire rather than naming an item.
 */
 QMap<QString, QVector<Element *>> ElementAutoNumSchemeCommand::pastedSchemes(
 		const QETProject *project,
@@ -1005,7 +1012,7 @@ QMap<QString, QVector<Element *>> ElementAutoNumSchemeCommand::pastedSchemes(
 
 	for (Element *el : elements)
 	{
-		if (!el || el->linkType() == Element::Slave || (el->linkType() & Element::AllReport)) {
+		if (!el || !el->takesSchemeNumber()) {
 			continue;
 		}
 		const DiagramContext &info = el->elementInformations();
@@ -1168,7 +1175,7 @@ ElementAutoNumSchemeCommand *ElementAutoNumSchemeCommand::edit(
 		const auto followers = project->elementsUsingElementAutoNum(old_title);
 		for (Element *el : followers)
 		{
-			if (el->linkType() == Element::Slave || (el->linkType() & Element::AllReport)) {
+			if (!el->takesSchemeNumber()) {
 				continue;
 			}
 			elements << el;

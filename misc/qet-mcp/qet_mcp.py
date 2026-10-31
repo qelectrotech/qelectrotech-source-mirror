@@ -56,6 +56,7 @@ workspace policy applies exactly as it does over stdio.
 
 from __future__ import annotations
 
+import atexit
 import datetime
 import json
 import re
@@ -97,9 +98,78 @@ def _root(path: str) -> ET.Element:
     if not p.is_file():
         raise ValueError(f"no such file: {p}")
     try:
-        return ET.parse(p).getroot()
+        return ET.parse(_as_qet(p)).getroot()
     except ET.ParseError as exc:
         raise ValueError(f"{p.name} is not parseable XML: {exc}") from exc
+
+
+# --------------------------------------------------------------------------
+# zipped projects (.qetz)
+# --------------------------------------------------------------------------
+
+# A .qetz is QElectroTech's zipped project: a database and one file per
+# folio. The tools that read a project's XML read the .qet QElectroTech
+# saves from it, so they read what QElectroTech reads, whatever the zipped
+# format holds; one copy per version of the file (path, size, time).
+# Only the newest few are kept, and the server removes them when it exits.
+_QETZ_COPIES: dict = {}
+_QETZ_COPIES_MAX = 8
+
+
+def _forget_qetz_copy(key) -> None:
+    out = _QETZ_COPIES.pop(key, None)
+    if out is not None:
+        shutil.rmtree(out.parent, ignore_errors=True)
+
+
+@atexit.register
+def _forget_qetz_copies() -> None:
+    for key in list(_QETZ_COPIES):
+        _forget_qetz_copy(key)
+
+
+def _is_qetz(path) -> bool:
+    return str(path).lower().endswith(".qetz")
+
+
+def _as_qet(path) -> Path:
+    """The file the XML tools read for `path`: itself, or for a .qetz the
+    .qet QElectroTech saves from it (made with the configured binary)."""
+    p = Path(path).expanduser()
+    if not _is_qetz(p):
+        return p
+    if not p.is_file():
+        raise ValueError(f"no such file: {p}")
+    st = p.stat()
+    key = (str(p.resolve()), st.st_size, st.st_mtime_ns)
+    cached = _QETZ_COPIES.get(key)
+    if cached is not None and cached.is_file():
+        _QETZ_COPIES[key] = _QETZ_COPIES.pop(key)   # newest last
+        return cached
+    binary = resolve_binary()
+    if not binary:
+        raise ValueError(f"{p.name} is a zipped project (.qetz): reading it needs "
+                         "QElectroTech; set QET_BINARY")
+    folder = Path(tempfile.mkdtemp(prefix="qet-mcp-qetz-"))
+    out = folder / (p.stem + ".qet")
+    # Saving as .qet builds every folio: allow a big project its time
+    result = _run_qet(str(binary), ["--resave", str(p), str(out)], timeout=900)
+    # A run that timed out or failed may have left part of a .qet behind
+    if not result.get("ok") or not out.is_file() or out.stat().st_size == 0:
+        shutil.rmtree(folder, ignore_errors=True)
+        if result.get("timed_out"):
+            detail = f"timed out after {result.get('timeout_s')} s"
+        else:
+            detail = (result.get("stderr") or result.get("stdout") or "").strip()[-400:]
+        raise ValueError(f"QElectroTech could not read {p.name}"
+                         + (f": {detail}" if detail else ""))
+    # An older version of the same file is not read again
+    for old in [k for k in _QETZ_COPIES if k[0] == key[0]]:
+        _forget_qetz_copy(old)
+    _QETZ_COPIES[key] = out
+    while len(_QETZ_COPIES) > _QETZ_COPIES_MAX:
+        _forget_qetz_copy(next(iter(_QETZ_COPIES)))
+    return out
 
 
 def _element_info(el: ET.Element) -> dict:
@@ -795,23 +865,35 @@ def _num(v) -> float:
 
 
 def tool_scan(directory: str, tag: str = "conductor",
-              attribute: str = "cable", recursive: bool = True) -> dict:
-    """Sweep every .qet in a directory, counting how many <tag> carry a
+              attribute: str = "cable", recursive: bool = True,
+              max_qetz: int = 20) -> dict:
+    """Sweep every .qet and .qetz in a directory, counting how many <tag> carry a
     non-empty `attribute`.
 
     This is the corpus question: "3190 conductors, 0 cable values across
     25 projects" is exactly one call to this tool.
+
+    Each .qetz is read by QElectroTech saving it as a .qet, which can take
+    minutes for a big project, so only the first `max_qetz` are read; the
+    others are listed as skipped.
     """
     d = Path(directory).expanduser()
     if not d.is_dir():
         raise ValueError(f"not a directory: {d}")
-    files = sorted(d.rglob("*.qet") if recursive else d.glob("*.qet"))
+    files = sorted([f for pattern in ("*.qet", "*.qetz")
+                    for f in (d.rglob(pattern) if recursive else d.glob(pattern))])
     total = non_empty = 0
-    per_file, values, unreadable = [], {}, []
+    per_file, values, unreadable, skipped = [], {}, [], []
+    qetz_read = 0
     for f in files:
+        if _is_qetz(f):
+            if qetz_read >= max_qetz:
+                skipped.append(f.name)
+                continue
+            qetz_read += 1
         try:
-            root = ET.parse(f).getroot()
-        except ET.ParseError as exc:
+            root = ET.parse(_as_qet(f)).getroot()
+        except (ET.ParseError, ValueError) as exc:
             unreadable.append({"file": f.name, "error": str(exc)})
             continue
         n = ne = 0
@@ -826,6 +908,9 @@ def tool_scan(directory: str, tag: str = "conductor",
         per_file.append({"file": f.name, tag: n, "non_empty": ne})
     return {
         "directory": str(d), "files": len(files), "unreadable": unreadable,
+        **({"skipped_qetz": skipped,
+            "note": f"only the first {max_qetz} .qetz were read (max_qetz)"}
+           if skipped else {}),
         "tag": tag, "attribute": attribute,
         "total": total, "non_empty": non_empty,
         "distinct_values": sorted(values.items(), key=lambda kv: -kv[1])[:25],
@@ -987,6 +1072,23 @@ def _user_collections() -> dict:
     return found
 
 
+def _keep_tail(text: str, tail: int) -> str:
+    """The last `tail` characters of a run's output, but every line an edit
+    script reported through its marker kept whole, wherever it stands.
+
+    A large qet_edit logs far more than `tail` characters; cut from the
+    front, it lost the capability report the script makes first, and the
+    tool then said the binary had never run the script."""
+    if len(text) <= tail:
+        return text
+    marked = [ln for ln in text.splitlines() if "QETEDIT " in ln]
+    rest = text[-tail:]
+    if not marked:
+        return rest
+    kept = set(rest.splitlines())
+    return "\n".join([ln for ln in marked if ln not in kept] + [rest])
+
+
 def _run_qet(binary: str, args: list[str], timeout: int = 180,
              elements_dir: str | None = None,
              script: str | None = None, tail: int = 4000,
@@ -1065,7 +1167,7 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
                     "hint": "a modal dialog during load will hang a headless "
                             "run; check the project's format version"}
         result = {"ok": p.returncode == 0, "exit_code": p.returncode,
-                  "stdout": p.stdout[-tail:], "stderr": p.stderr[-tail:]}
+                  "stdout": _keep_tail(p.stdout, tail), "stderr": _keep_tail(p.stderr, tail)}
         # QElectroTech refuses --run when scripting is switched off, which
         # it is by default. Its own message is clear but French, and it
         # names a settings dialog that nobody driving this server is
@@ -1496,6 +1598,13 @@ OPS = {
     "remove_folio":     ("removeFolio",         [("folio", "folio")]),
     "set_folio":        ("setFolioProperty",    [("folio", "folio"), ("property", "str"),
                                                  ("value", "str")]),
+    # A cable drawn across conductors, as the cable tool draws it: every
+    # conductor the line crosses gets the next core and its colour.
+    "add_cable":             ("addCable",            [("folio", "folio"), ("designation", "str"),
+                                                      ("type", "str"), ("core_colors", "list"),
+                                                      ("length", "str"),
+                                                      ("x1", "num"), ("y1", "num"),
+                                                      ("x2", "num"), ("y2", "num")]),
     "add_terminal_strip":    ("addTerminalStrip",    [("installation", "str"), ("location", "str"),
                                                       ("name", "str")]),
     "remove_terminal_strip": ("removeTerminalStrip", [("strip", "folio")]),
@@ -1529,6 +1638,11 @@ OPS = {
                                                        ("value", "str")]),
     "delete_element_text": ("deleteElementText",      [("folio", "folio"), ("element", "elmt"),
                                                        ("index", "element_text")]),
+    # The label and notes of each symbol as one block at one of nine points
+    # around it (Edit > Place symbol texts): top-left, top, top-right,
+    # left, center, right, bottom-left, bottom, bottom-right.
+    "place_element_texts": ("placeElementTexts",      [("folio", "folio"), ("elements", "elmts"),
+                                                       ("where", "str")]),
     # Returns the uuids of the copies IN THE ORDER the elements were named,
     # so "$copies[0]" is the copy of the first one. Conductors between the
     # copied elements are copied with them; copies arrive without labels or
@@ -2687,22 +2801,34 @@ def tool_element_search(directory: str, query: str = "", link_type: str | None =
 #   either would bury the real findings.
 # - "simple" elements are checked for duplicates too but only as a warning:
 #   industrial.qet reuses V1..V6 across folios on purpose.
+#
+# A label names one device per place: the same "-F1" in two distribution
+# boards (+UV1-F1, +UV2-F1) is two devices, as in IEC 81346 / EPLAN. The
+# place is the element's own plant/location, else its folio's -- what the
+# label formulas %M/%LM show. element_nomenclature_view carries only the
+# element's, so these two checks read the tables.
+_LABELS_PER_PLACE_SQL = (
+    "SELECT ei.label AS label, "
+    "COALESCE(NULLIF(ei.plant,''), di.plant, '') AS plant, "
+    "COALESCE(NULLIF(ei.location,''), di.locmach, '') AS location, COUNT(*) AS n "
+    "FROM element_info ei JOIN element e ON ei.element_uuid = e.uuid "
+    "JOIN diagram_info di ON di.diagram_uuid = e.diagram_uuid "
+    "WHERE COALESCE(ei.label,'') <> '' AND e.type = '{type}' "
+    "AND COALESCE(LOWER(TRIM(ei.exclude_from_bom)), '') NOT IN ('true', '1', 'yes', 'on') "
+    "GROUP BY ei.label, 2, 3 HAVING n > 1 ORDER BY n DESC, ei.label")
+
 CHECKS = {
     "duplicate_master_labels": {
         "severity": "error",
         "note": "Two master elements with the same label are ambiguous in every "
                 "report that keys on it (BOM, cross-references, wiring list).",
-        "sql": "SELECT label, COUNT(*) AS n FROM element_nomenclature_view "
-               "WHERE COALESCE(label,'') <> '' AND element_type = 'master' "
-               "GROUP BY label HAVING n > 1 ORDER BY n DESC, label",
+        "sql": _LABELS_PER_PLACE_SQL.format(type="master"),
     },
     "duplicate_simple_labels": {
         "severity": "warning",
         "note": "Legitimate when a label is reused on purpose across folios "
                 "(industrial.qet does); worth a look otherwise.",
-        "sql": "SELECT label, COUNT(*) AS n FROM element_nomenclature_view "
-               "WHERE COALESCE(label,'') <> '' AND element_type = 'simple' "
-               "GROUP BY label HAVING n > 1 ORDER BY n DESC, label",
+        "sql": _LABELS_PER_PLACE_SQL.format(type="simple"),
     },
     "unlabelled_masters": {
         "severity": "warning",
@@ -3919,8 +4045,10 @@ def scripts_dir() -> Path:
 
 SERVER_INSTRUCTIONS = (
     "This server works with QElectroTech, a free editor for electrical "
-    "diagrams. A project (.qet) holds folios (sheets) of symbols "
-    "(elements) joined by wires (conductors). Folio indexes count from 0.\n"
+    "diagrams. A project (.qet, or .qetz: the same project zipped) holds "
+    "folios (sheets) of symbols (elements) joined by wires (conductors). "
+    "Every tool takes either; a .qetz is read through QElectroTech, so the "
+    "first read of a big one takes a while. Folio indexes count from 0.\n"
     "Start with qet_about: where QElectroTech keeps things, what is "
     "switched on, the stored scripts, and house_style -- this "
     "installation's own drawing conventions if the user set any. Follow "
@@ -4854,10 +4982,12 @@ TOOLS = [
     },
     {
         "name": "qet_scan",
-        "description": "Sweep every .qet in a directory and count how many nodes of "
-                       "a given tag carry a non-empty attribute, with the distinct "
-                       "values found. For corpus questions such as how many "
-                       "conductors in the shipped examples have a cable value.",
+        "description": "Sweep every .qet and .qetz in a directory and count how many "
+                       "nodes of a given tag carry a non-empty attribute, with the "
+                       "distinct values found. For corpus questions such as how many "
+                       "conductors in the shipped examples have a cable value. Each "
+                       ".qetz is read through QElectroTech, which can take minutes "
+                       "for a big project: only the first max_qetz are read.",
         "inputSchema": {
             "type": "object",
             "properties": {
@@ -4865,12 +4995,14 @@ TOOLS = [
                 "tag": {"type": "string", "default": "conductor"},
                 "attribute": {"type": "string", "default": "cable"},
                 "recursive": {"type": "boolean", "default": True},
+                "max_qetz": {"type": "integer", "default": 20},
             },
             "required": ["directory"],
         },
         "handler": lambda a: tool_scan(a["directory"], a.get("tag", "conductor"),
                                        a.get("attribute", "cable"),
-                                       a.get("recursive", True)),
+                                       a.get("recursive", True),
+                                       a.get("max_qetz", 20)),
     },
     {
         "name": "qet_element_info",
@@ -5051,7 +5183,7 @@ TOOLS = [
                         "it to one element AFTER it is placed (add_element does not number "
                         "what it places); slaves and reports are refused, since they take "
                         "their label from their master. "
-                        "Terminal strips: add_terminal_strip returns an index (name "
+                        "Cables: add_cable (folio, designation -- empty for the next free name --, type, core_colors, length, x1, y1, x2, y2) draws a new cable's trunk line across the conductors between the two points, as the cable tool does: each crossed conductor, in order along the line, gets the next core and the colour core_colors lists at that place; a conductor another cable already holds makes the op fail. Returns the cable's uuid. Terminal strips: add_terminal_strip returns an index (name "
                         "it \"$id\"); add_to_strip puts a terminal-type element on "
                         "it, and refuses any other kind. group_terminals/bridge_terminals "
                         "take \"indices\" (at least two) into that strip's real-terminal "
@@ -5166,6 +5298,10 @@ TOOLS = [
                         "shape's points can reorder it relative to the others -- re-list "
                         "before addressing one by index again if more than one is being "
                         "edited in the same run, or address it by uuid. "
+                        "place_element_texts (folio, elements, where: top-left, top, "
+                        "top-right, left, center, right, bottom-left, bottom or bottom-right) "
+                        "puts each symbol's label and notes as one block at that point, as "
+                        "Edit > Place symbol texts does, in one undo step. "
                         "set_table_position/delete_table take a table's index or its uuid, "
                         "and set_element_text/delete_element_text a text field's index or "
                         "its uuid (the field's own, looked up within the op's element) "

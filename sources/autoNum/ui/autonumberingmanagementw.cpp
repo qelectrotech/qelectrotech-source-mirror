@@ -175,7 +175,8 @@ void AutoNumberingManagementW::on_m_apply_folios_rb_clicked()
 		if (ui->m_from_folios_cb->count()<=0) {
 			ui->m_from_folios_cb->clear();
 			ui->m_from_folios_cb->addItem("");
-			foreach (Diagram *diagram, project_->diagrams()){
+				//Titles and positions only: folios() builds nothing
+			foreach (Diagram *diagram, project_->folios()){
 				if (diagram->title() != "")
 					ui->m_from_folios_cb->addItem(
 							diagram->title(),
@@ -206,16 +207,17 @@ void AutoNumberingManagementW::on_m_from_folios_cb_currentIndexChanged(
 	if (index > 0) {
 		ui->m_to_folios_cb->setEnabled(true);
 		ui->m_to_folios_cb->addItem("");
-		for (int i=index;i<project_->diagrams().size();i++) {
-				if (project_->diagrams().at(i)->title() != "") {
+		const QList<Diagram *> folios = project_->folios();
+		for (int i=index;i<folios.size();i++) {
+				if (folios.at(i)->title() != "") {
 					ui->m_to_folios_cb->addItem(
-						project_->diagrams().at(i)->title(),
-						project_->diagrams().at(i)->folioIndex());
+						folios.at(i)->title(),
+						folios.at(i)->folioIndex());
 				}
 				else ui->m_to_folios_cb->addItem(
 					QString::number(
-						project_->diagrams().at(i)->folioIndex()),
-							project_->diagrams().at(i)->folioIndex());
+						folios.at(i)->folioIndex()),
+							folios.at(i)->folioIndex());
 		}
 		applyEnable(true);
 		ui->m_selected_folios_le->clear();

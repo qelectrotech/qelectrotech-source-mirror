@@ -45,6 +45,21 @@ namespace SpaceMouseHid
 	bool isSpaceMouse(unsigned short vendor, unsigned short product,
 			  unsigned short usage_page, unsigned short usage);
 
+		/// A vendor and product id as hid_enumerate() takes them, where 0
+		/// matches every vendor or every product.
+	struct DeviceId
+	{
+		unsigned short vendor = 0;
+		unsigned short product = 0;
+	};
+
+		/// @return what a scan asks hidapi for where hidapi reads each
+		/// matching device's name strings from the device itself, as on
+		/// Windows (issue #1553): every 3Dconnexion device, and Logitech's
+		/// 3D mice by product id, since most other mice and keyboards carry
+		/// Logitech's id too.
+	QList<DeviceId> scanIds();
+
 		/// Where one value sits in the reports, per the report descriptor.
 	struct Field
 	{

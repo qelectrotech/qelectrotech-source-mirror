@@ -26,6 +26,11 @@
 //#define TITLEBLOCK_TEMPLATE_DEBUG
 
 #include <QRegularExpression>
+#include <QTextBlockFormat>
+#include <QTextCharFormat>
+#include <QTextCursor>
+#include <QTextDocument>
+#include <QTextOption>
 #include <QRegularExpressionMatch>
 #include <algorithm>
 /**
@@ -1776,8 +1781,12 @@ void TitleBlockTemplate::renderCell(QPainter &painter,
 			}
 		}
 	} else if (cell.type() == TitleBlockCell::TextCell) {
-		QString final_text = finalTextForCell(cell, diagram_context);
-		renderTextCell(painter, final_text, cell, cell_rect);
+		if (cell.hasTextStyle()) {
+			renderStyledTextCell(painter, cell, diagram_context, cell_rect);
+		} else {
+			QString final_text = finalTextForCell(cell, diagram_context);
+			renderTextCell(painter, final_text, cell, cell_rect);
+		}
 	}
 	painter.restore();
 
@@ -1964,6 +1973,95 @@ void TitleBlockTemplate::renderTextCell(QPainter &painter,
 
 	// Still here? Let's draw the text normally
 	painter.drawText(cell_rect, cell.alignment, text);
+}
+
+/**
+	@brief TitleBlockTemplate::renderStyledTextCell
+	Render a text \a cell whose label or value has its own font or colour.
+	The text and the alignment are the same as renderTextCell() draws, only
+	the label and the value are formatted separately.
+	@param painter :
+	QPainter used to render the text
+	@param cell :
+	Cell to render
+	@param diagram_context :
+	Diagram context to use to generate the label and the value
+	@param cell_rect :
+	Rectangle delimiting the cell area
+*/
+void TitleBlockTemplate::renderStyledTextCell(QPainter &painter,
+					const TitleBlockCell &cell,
+					const DiagramContext &diagram_context,
+					const QRectF &cell_rect) const
+{
+	// same text as finalTextForCell(), cut in the part that belongs to the
+	// label and the part that belongs to the value
+	const QChar value_mark(0x1);
+	QString label;
+	QString value = interpreteVariables(cell.value.name(), diagram_context);
+	QString after_value;
+	if (cell.display_label && !cell.label.isEmpty()) {
+		label = tr(" %1: %2", "titleblock content - please let the blank space at the beginning")
+			.arg(interpreteVariables(cell.label.name(), diagram_context))
+			.arg(value_mark);
+	} else {
+		label = tr(" %1").arg(value_mark);
+	}
+	const int mark_position = label.indexOf(value_mark);
+	after_value = label.mid(mark_position + 1);
+	label.truncate(mark_position);
+	value += after_value;
+	if (label.trimmed().isEmpty() && value.isEmpty()) return;
+
+	const QFont cell_font = TitleBlockTemplate::fontForCell(cell);
+	auto add_text = [&](QTextCursor &cursor,
+			    const QString &text,
+			    const QString &font_description,
+			    const QColor &color) {
+		QTextCharFormat format;
+		QFont font = cell_font;
+		if (!font_description.isEmpty()) font.fromString(font_description);
+		format.setFont(font);
+		format.setForeground(color.isValid() ? color : painter.pen().color());
+		cursor.insertText(text, format);
+	};
+
+	QTextDocument document;
+	document.setDocumentMargin(0);
+	document.setDefaultFont(cell_font);
+	// like renderTextCell(), never wrap: a text too wide is shrunk or clipped
+	QTextOption text_option;
+	text_option.setWrapMode(QTextOption::NoWrap);
+	document.setDefaultTextOption(text_option);
+	QTextCursor cursor(&document);
+	QTextBlockFormat block_format;
+	block_format.setAlignment(Qt::Alignment(cell.alignment & Qt::AlignHorizontal_Mask));
+	cursor.setBlockFormat(block_format);
+	add_text(cursor, label, cell.label_font, cell.label_color);
+	add_text(cursor, value, cell.value_font, cell.value_color);
+
+	// as renderTextCell() does, shrink a text that does not fit the cell
+	document.adjustSize();
+	qreal ratio = 1.0;
+	if (cell.hadjust && document.idealWidth() > cell_rect.width()) {
+		ratio = cell_rect.width() / document.idealWidth();
+	}
+	document.setTextWidth(cell_rect.width() / ratio);
+
+	qreal y = cell_rect.top();
+	const qreal text_height = document.size().height() * ratio;
+	if (cell.alignment & Qt::AlignVCenter) {
+		y += (cell_rect.height() - text_height) / 2;
+	} else if (cell.alignment & Qt::AlignBottom) {
+		y += cell_rect.height() - text_height;
+	}
+
+	painter.save();
+	painter.setClipRect(cell_rect, Qt::IntersectClip);
+	painter.translate(cell_rect.left(), y);
+	painter.scale(ratio, ratio);
+	document.drawContents(&painter);
+	painter.restore();
 }
 
 /**

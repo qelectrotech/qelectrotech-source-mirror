@@ -41,6 +41,8 @@
 	vanish. The generated pixmap is cached per icon and cannot tell a
 	menu from a toolbar, so drawControl(CE_MenuItem) hands the base style
 	an icon whose Active pixmap is the icon in the highlighted-text color.
+	The Windows 11 style draws no highlight bar (see hasMenuHighlightBar()),
+	so its highlighted menu items keep the hover tint.
 */
 class QETStyle : public QProxyStyle
 {
@@ -66,6 +68,7 @@ class QETStyle : public QProxyStyle
 		static QPixmap tinted(const QPixmap &pixmap, const QColor &color);
 
 	private:
+		bool hasMenuHighlightBar() const;
 		QIcon menuIcon(const QIcon &icon, const QPalette &palette, int size, qreal dpr) const;
 		mutable QHash<QString, QIcon> menu_icons_;
 };

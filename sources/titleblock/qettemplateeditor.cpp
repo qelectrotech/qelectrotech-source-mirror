@@ -24,6 +24,7 @@
 #include <qetproject.h>
 #include "templatecellwidget.h"
 #include "templatecommands.h"
+#include "titleblockbulkformat.h"
 #include "templatelocationsaver.h"
 #include "templatelogomanager.h"
 #include "templateview.h"
@@ -400,6 +401,7 @@ void QETTitleBlockTemplateEditor::initActions()
 	add_col_        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Add a &column",    "menu entry"), this);
 	merge_cells_    = new QAction(QET::Icons::EditTableCellMerge,   tr("&Merge cells",      "menu entry"), this);
 	split_cell_     = new QAction(QET::Icons::EditTableCellSplit,   tr("&Split cells",     "menu entry"), this);
+	format_cells_   = new QAction(tr("&Format text of cells...", "menu entry"), this);
 
 	undo_ -> setIcon(QET::Icons::EditUndo);
 	redo_ -> setIcon(QET::Icons::EditRedo);
@@ -419,6 +421,7 @@ void QETTitleBlockTemplateEditor::initActions()
 	ShortcutManager::instance().registerAction(edit_info_, "titleblockeditor.edit_info", tr("Title block template editors"), Qt::CTRL | Qt::Key_Y);
 	ShortcutManager::instance().registerAction(merge_cells_, "titleblockeditor.merge_cells", tr("Title block template editors"), Qt::CTRL | Qt::Key_J);
 	ShortcutManager::instance().registerAction(split_cell_, "titleblockeditor.split_cell", tr("Title block template editors"), Qt::CTRL | Qt::Key_K);
+	ShortcutManager::instance().registerAction(format_cells_, "titleblockeditor.format_cells", tr("Title block template editors"), QKeySequence());
 	ShortcutManager::instance().registerAction(zoom_in_, "titleblockeditor.zoom_in", tr("Title block template editors"), QKeySequence::ZoomIn);
 	ShortcutManager::instance().registerAction(zoom_out_, "titleblockeditor.zoom_out", tr("Title block template editors"), QKeySequence::ZoomOut);
 	ShortcutManager::instance().registerAction(zoom_fit_, "titleblockeditor.zoom_fit", tr("Title block template editors"), Qt::CTRL | Qt::Key_9);
@@ -444,6 +447,7 @@ void QETTitleBlockTemplateEditor::initActions()
 	connect(add_col_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::addColumnAtEnd);
 	connect(merge_cells_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::mergeSelectedCells);
 	connect(split_cell_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::splitSelectedCell);
+	connect(format_cells_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::formatCells);
 }
 
 /**
@@ -475,6 +479,7 @@ void QETTitleBlockTemplateEditor::initMenus()
 	edit_menu_   -> addAction(add_col_);
 	edit_menu_   -> addAction(merge_cells_);
 	edit_menu_   -> addAction(split_cell_);
+	edit_menu_   -> addAction(format_cells_);
 	edit_menu_   -> addSeparator();
 	edit_menu_   -> addAction(edit_logos_);
 	edit_menu_   -> addAction(edit_info_);
@@ -787,6 +792,7 @@ void QETTitleBlockTemplateEditor::updateActions()
 	add_col_ -> setEnabled(!read_only_);
 	merge_cells_ -> setEnabled(!read_only_ && can_merge);
 	split_cell_ -> setEnabled(!read_only_ && can_split);
+	format_cells_ -> setEnabled(!read_only_);
 }
 
 /**
@@ -1046,6 +1052,37 @@ void QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings(
 	Q_UNUSED(former_preview_width)
 	QSettings settings;
 	settings.setValue("titleblocktemplateeditor/preview_width", new_preview_width);
+}
+
+/**
+	Ask the user for a text format and apply it to the selected cells,
+	or to every text cell, as one undoable change.
+*/
+void QETTitleBlockTemplateEditor::formatCells()
+{
+	if (read_only_) return;
+
+	TitleBlockBulkFormat format;
+	const QList<TitleBlockCell *> selection =
+		template_edition_area_view_->selectedCells();
+	if (!TitleBlockBulkFormat::getFromUser(format, !selection.isEmpty(), this)) {
+		return;
+	}
+
+	QList<TitleBlockCell *> cells = selection;
+	if (format.all_cells) {
+		cells.clear();
+		for (int row = 0; row < tb_template_->rowsCount(); ++row) {
+			for (int col = 0; col < tb_template_->columnsCount(); ++col) {
+				cells << tb_template_->cell(row, col);
+			}
+		}
+	}
+
+	if (QUndoCommand *command = format.createCommand(
+			cells, template_edition_area_view_)) {
+		undo_stack_->push(command);
+	}
 }
 
 /**

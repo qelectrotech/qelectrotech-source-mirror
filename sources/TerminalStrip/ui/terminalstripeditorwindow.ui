@@ -51,6 +51,8 @@
    <addaction name="m_add_terminal_strip"/>
    <addaction name="m_remove_terminal"/>
    <addaction name="m_reload"/>
+   <addaction name="m_import_free_terminals"/>
+   <addaction name="m_regroup_terminals"/>
   </widget>
   <action name="m_add_terminal_strip">
    <property name="icon">
@@ -83,6 +85,28 @@
    </property>
    <property name="toolTip">
     <string>Reload the terminals</string>
+   </property>
+  </action>
+  <action name="m_import_free_terminals">
+   <property name="icon">
+    <iconset theme="list-add"/>
+   </property>
+   <property name="text">
+    <string>Assign free terminals</string>
+   </property>
+   <property name="toolTip">
+    <string>Add the free terminals to the terminal strips named after their labels ("X1:2" goes to the strip "X1"), creating the strips when needed. Terminals already assigned to a strip are never touched. Asks for confirmation.</string>
+   </property>
+  </action>
+  <action name="m_regroup_terminals">
+   <property name="icon">
+    <iconset theme="start"/>
+   </property>
+   <property name="text">
+    <string>Re-group all terminals</string>
+   </property>
+   <property name="toolTip">
+    <string>Assign the free terminals and also move every terminal whose label prefix or plant and location no longer match its strip. Existing strips are never re-sorted. Asks for confirmation.</string>
    </property>
   </action>
  </widget>

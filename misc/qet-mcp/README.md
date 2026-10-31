@@ -25,6 +25,13 @@ here read the model.
 
 ## Tools
 
+Every tool takes a `.qet` or a `.qetz` (the same project, zipped). The
+tools that read a project's XML read the `.qet` QElectroTech saves from a
+`.qetz`, made once per version of the file with the configured
+QElectroTech (`QET_BINARY`); the first read of a big `.qetz` takes as long
+as QElectroTech needs to save it. The tools that launch QElectroTech hand
+it the `.qetz` itself, and write one when the output path ends in `.qetz`.
+
 | Tool | What it answers |
 |---|---|
 | `qet_project_info` | title, format version, folios with their uuids, element and conductor counts |
@@ -797,6 +804,7 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   looking fine in XML.
 - **QElectroTech interrupts a script at 30 s** of its own accord, separately
   from this tool's `timeout`. A very long operation list will hit that
-  first.
+  first. The environment variable `QET_SCRIPT_TIMEOUT_MS` (milliseconds)
+  changes that limit for the QElectroTech it is set for.
 - **`qet_edit` never writes the input.** It saves to a separate file and
   diffs the two, so the original is always the thing the diff is against.

@@ -135,6 +135,7 @@ void AboutQETDialog::setTranslators()
 	addAuthor(ui->m_translators_label, "Jung Kwang-Ho",                             "jkh2rokmc@daum.net",             tr("Translation into Korean"));
 	addAuthor(ui->m_translators_label, "Nathalie",                                  "nathalie.roussier@giz.de",       tr("Mongolian Translation"));
 	addAuthor(ui->m_translators_label, "Uroš Platiše",                              "uros.platise@energycon.eu",      tr("Slovenian translation"));
+	addAuthor(ui->m_translators_label, "Magnus Hellströmer",                        "",                               tr("Swedish translation (partly AI-generated)"));
 }
 
 /**

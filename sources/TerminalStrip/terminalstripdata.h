@@ -44,11 +44,12 @@ class TerminalStripData : public PropertiesInterface
 	private :
 		static QDomElement infoToXml(QDomDocument &xml_doc, const QString &name, const QString &value);
 
-		QString m_installation = QStringLiteral("="),
-				m_location = QStringLiteral("+"),
+		QString m_installation,
+				m_location,
 				m_name,
 				m_comment,
-				m_description;
+				m_description,
+				m_manufacturer;	//Manufacturer of the terminals proposed in the editor, empty = all
 		QUuid m_uuid = QUuid::createUuid();
 
 };

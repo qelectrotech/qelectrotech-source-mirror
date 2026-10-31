@@ -71,6 +71,7 @@ class ProjectDBModel : public QAbstractTableModel
 		void setIdentifier(const QString &identifier);
 		QString identifier() const {return m_identifier;}
 		static QString xmlTagName() {return QString("project_data_base_model");}
+		void folioBuilt();
 
 	private:
 		void dataBaseUpdated();
@@ -79,6 +80,7 @@ class ProjectDBModel : public QAbstractTableModel
 
 	private:
 		QPointer<QETProject> m_project;
+		bool m_fill_when_built = false;
 		QString m_query;
 		QVector<QStringList> m_record;
 		//First int = section, second int = Qt::role, QVariant = value

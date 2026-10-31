@@ -18,9 +18,11 @@
 #ifndef CONDUCTOR_PROPERTIES_H
 #define CONDUCTOR_PROPERTIES_H
 
+#include "conductordashpattern.h"
 #include "qet.h"
 #include <QColor>
 #include <QSettings>
+#include <QUuid>
 
 class QPainter;
 
@@ -38,6 +40,7 @@ class SingleLineProperties {
 	bool isPen() const;
 	void draw(QPainter *, QET::ConductorSegmentType, const QRectF &);
 	void toXml(QDomElement &) const;
+	QList<QPair<QString, QString>> attributes() const;
 	void fromXml(QDomElement &);
 	void toSettings(QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
@@ -97,6 +100,14 @@ class ConductorProperties
 		m_bus,
 		m_cable;
 
+			/// The cable of the project this conductor is a core of, null
+			/// when it belongs to no cable. The text shown in m_cable is
+			/// generated from the cable and never typed in: this reference
+			/// plus the slot below is all it takes to work it out again.
+		QUuid m_cable_uuid;
+			/// Which core of that cable this conductor shows, -1 when none
+		int m_cable_slot = -1;
+
 		int
 		text_size,
 		m_dash_size = 1;
@@ -111,16 +122,30 @@ class ConductorProperties
 		m_one_text_per_folio,
 		m_bicolor = false;
 
+			/// A slanted stroke across the conductor with its colour
+			/// and section beside it (ConductorDefinitionMark), and where
+			/// it stands, as a share of the conductor's length from its
+			/// start (0 to 1), so it keeps its place when the conductor
+			/// gets longer or shorter; -1 is the middle of its longest
+			/// stretch
+		bool m_definition_mark = false;
+		qreal m_definition_mark_at = -1;
+			/// The stroke stands in for the conductor's own text
+		bool m_definition_mark_hides_text = false;
+
 		Qt::Alignment
 		m_horizontal_alignment = Qt::AlignBottom,
 		m_vertical_alignment = Qt::AlignRight;
 
 		Qt::PenStyle style;
+			/// Lengths of the dashes, used only when enabled
+		ConductorDashPattern m_dash_pattern;
 
 		SingleLineProperties singleLineProperties;
 
 		// methods
 		void toXml(QDomElement &) const;
+		QList<QPair<QString, QString>> attributes() const;
 		void fromXml(QDomElement &);
 		void toSettings(QSettings &, const QString & = QString()) const;
 		void fromSettings(QSettings &, const QString & = QString());
@@ -128,6 +153,8 @@ class ConductorProperties
 		void applyForEqualAttributes(QList<ConductorProperties> list);
 		void applyChanges(const ConductorProperties &before,
 				  const ConductorProperties &after);
+		void applyTensionProtocolChange(const ConductorProperties &before,
+					      const ConductorProperties &after);
 
 		static ConductorProperties defaultProperties();
 

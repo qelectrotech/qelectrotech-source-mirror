@@ -44,6 +44,37 @@ class TerminalStripLayoutPattern
 	public:
 		TerminalStripLayoutPattern();
 
+			/**
+			 * @brief The DrawStyle enum
+			 * How the terminals of a strip are drawn.
+			 * The style is chosen for each terminal strip item, when the item is
+			 * added to a folio (see TerminalStripItem::setDrawStyle), the layout
+			 * only hold the values used by the styles.
+			 * Schematic : the classic drawing (header, xrefs, symbols, connections, cables).
+			 * RealisticPushIn : the strip seen from above, at scale, like the mounting
+			 * drawing of a cabinet : end stops, group marker, push-in wire entries.
+			 * RealisticScrew : same as RealisticPushIn, with screw clamps.
+			 * The schematic style use most of the values of this class,
+			 * the realistic styles use the values prefixed by m_realistic_.
+			 */
+		enum class DrawStyle {
+			Schematic = 0,
+			RealisticPushIn = 1,
+			RealisticScrew = 2
+		};
+		static QString drawStyleToString(DrawStyle style);
+		static DrawStyle drawStyleFromString(const QString &string, DrawStyle default_style);
+
+			//Realistic style
+			//Scale of the drawing : number of pixels for one millimeter
+		qreal m_realistic_px_per_mm{4.0};
+			//Length (mm) of a terminal along the wires, from the top to the bottom
+		qreal m_realistic_length_mm{60.0};
+			//Draw an end stop at each end of the strip
+		bool m_realistic_end_stops{true};
+			//Draw a group marker carrier with the name of the strip, after the first end stop
+		bool m_realistic_group_marker{true};
+
 			//Header of terminal strip
         QRectF m_header_rect{0,30,50,146};
 		Qt::Orientation m_header_text_orientation{Qt::Horizontal};
@@ -96,8 +127,11 @@ class TerminalStripLayoutPattern
 		qreal m_cable_wire_length{40};
 			//Length of the cable
 		qreal m_cable_length{60};
-			//Length of the wires after the cable
-		qreal m_cable_end_length{40};
+			//Length of the wires after the cable. It leaves the room the box
+			//naming where the cable goes needs: three lines (Installation,
+			//Location, Label) at the default font of 15 px, so the box does
+			//not have to shrink its text down.
+		qreal m_cable_end_length{80};
         qreal m_bridge_point_d{5};
         QVector<qreal> m_bridge_point_y_offset{50,70,90,110};
 

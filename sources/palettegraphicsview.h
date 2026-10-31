@@ -22,6 +22,10 @@
 #include <QImage>
 #include <QPainter>
 
+#include <functional>
+
+#include "qetpalette.h"
+
 /**
 	A QGraphicsView that shows its scene with inverted lightness while the
 	application palette is dark: white becomes the palette's Base color,
@@ -52,6 +56,13 @@
 	sheet, behind at every step (#954).
 
 	The CacheBackground cache mode is not supported on the inverted path.
+
+	On a custom sheet color the scene is not inverted, but a dark sheet
+	needs light lines: sheetInk() then gives the colors, and the items
+	are drawn on the same off-screen path, each kind on a layer of its
+	own that is tinted in its color (QET::Palette::tintLayer()) before it
+	goes onto the sheet, in the items' stacking order (see drawTinted()).
+	The background and the foreground are drawn as they are.
 */
 class PaletteGraphicsView : public QGraphicsView
 {
@@ -65,6 +76,25 @@ class PaletteGraphicsView : public QGraphicsView
 
 		static void setCustomBackgroundColor(bool custom) { s_custom_bg = custom; }
 		static bool customBackgroundColor() { return s_custom_bg; }
+		/// Yellow symbols and red conductors on a custom sheet, instead
+		/// of one light ink for all (see QET::Palette::sheetInk()).
+		static void setColoredInk(bool colored) { s_colored_ink = colored; }
+		static bool coloredInk() { return s_colored_ink; }
+
+		/// The kinds of item that are tinted each in their own ink.
+		enum class InkKind { Untouched, Symbols, Wires, DashedWires, DashDottedWires, Other };
+		/// @return the ink the items are shown in, null when they are
+		/// shown as drawn. Null by default.
+		virtual QET::Palette::SheetInk sheetInk() const;
+		/// The ink \a widget is painted in right now: while a view
+		/// tints its items, the ink of that view when \a widget is its
+		/// viewport, else null, so printing, exporting or another view
+		/// get null. An item passes the widget its paint() is given. An
+		/// item drawn in several inks (a cable, its line in one, its
+		/// label in another) draws the part that does not take its
+		/// kind's ink in that ink's own color, which the tint leaves as
+		/// it is, and a picked item a color that stands out in it.
+		static QET::Palette::SheetInk paintingInk(const QWidget *widget);
 
 	protected:
 		bool eventFilter(QObject *watched, QEvent *event) override;
@@ -80,6 +110,11 @@ class PaletteGraphicsView : public QGraphicsView
 			nothing by default.
 		*/
 		virtual void paintingInverted(bool inverted);
+		/// @return which ink \a item is shown in when sheetInk() is not
+		/// null: Other by default. The scene draws an item with its
+		/// whole top-level item, so all items under one top-level item
+		/// must be given the same kind.
+		virtual InkKind inkKind(const QGraphicsItem *item) const;
 		/// @return the painter the scene really paints with: the
 		/// off-screen image's while painting inverted, else \a painter.
 		/// For subclasses that draw more in drawBackground().
@@ -91,6 +126,11 @@ class PaletteGraphicsView : public QGraphicsView
 		void blitInverted(const QRect &area);
 		void drawRubberBand(QPainter &painter);
 		void flushLayer(bool invert, const QRect &bounds = QRect());
+		void drawTinted(int count, QGraphicsItem *items[],
+		                const QStyleOptionGraphicsItem options[]);
+		struct TintBatch;
+		void drawBatch(TintBatch &batch);
+		void paintOnBuffer(const std::function<void(QPainter &)> &paint);
 
 		/// The off-screen image the hooks paint into while m_inverting:
 		/// the viewport's size, in its coordinates. Kept between paints,
@@ -102,7 +142,12 @@ class PaletteGraphicsView : public QGraphicsView
 		QPainter m_buffer_painter;
 		/// True while paintEvent() paints for an inverted display.
 		bool m_inverting = false;
+		/// The ink of the paint in progress, null when not tinting.
+		QET::Palette::SheetInk m_ink;
+		/// The layer one kind of item is drawn on before it is tinted.
+		QImage m_tint_layer;
 		static inline bool s_custom_bg = false;
+		static inline bool s_colored_ink = false;
 };
 
 #endif

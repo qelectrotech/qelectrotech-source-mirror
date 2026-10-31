@@ -16,7 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetdiagrameditor.h"
+#include "container/qetcontainer.h"
+#include "container/qetzip.h"
+#include "utils/previousversions.h"
 #include "shownkinds.h"
+#include "symboltextplacement.h"
 #ifdef QET_HAS_SCRIPTING
 #include "scripting/qetscripting.h"
 #include "scripting/scriptlibrary.h"
@@ -25,9 +29,12 @@
 #include "scripting/macrorecorder.h"
 #include "scripting/assistantinfo.h"
 #endif
+#include <QDomDocument>
+#include <QTemporaryDir>
 #include <QCoreApplication>
 #include <QToolButton>
 #include <QWidgetAction>
+#include <QGridLayout>
 #include "ElementsCollection/elementscollectionwidget.h"
 #include "ElementsCollection/elementpickerpopup.h"
 #include "shortcutbarsettings.h"
@@ -46,28 +53,37 @@
 #endif
 #include "diagramevent/diagrameventaddshape.h"
 #include "diagramevent/diagrameventaddpath.h"
+#include "diagramevent/diagrameventaddcable.h"
 #include "diagramevent/diagrameventfillet.h"
 #include "diagramevent/diagrameventaddtext.h"
+#include "cable/cablepart.h"
+#include "cable/editcablecommand.h"
 #include "diagramevent/diagrameventaddpaste.h"
 #include "diagramview.h"
+#include "elementtextpattern.h"
 #include "elementspanelwidget.h"
 #include "factory/elementpicturefactory.h"
 #include "factory/qetgraphicstablefactory.h"
 #include "print/projectprintwindow.h"
 #include "project/projectpropertieshandler.h"
+#include "ui/multielementinfowidget.h"
+#include "ui/projectpropertiesdialog.h"
 #include "projectview.h"
 #include "qetproject.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qeticons.h"
+#include "ui/dockfit.h"
 #include "qetmessagebox.h"
 #include "recentfiles.h"
 #include "textgrid.h"
 #include "shortcutmanager.h"
+#include "cablelist/cableexportdialog.h"
 #include "ui/bomexportdialog.h"
 #include "ui/conductorcolortoolbutton.h"
 #include "ui/diagrambgcolorbutton.h"
+#include "ui/duplicatelabelsdialog.h"
 #include "ui/duplicateoffsetdialog.h"
 #include "ui/jumptoelementdialog.h"
 #include "ui/diagrampropertieseditordockwidget.h"
@@ -90,6 +106,7 @@
 #include "wiringlistexport.h"
 #include "ui/wiringlistdialog.h"
 #include "ui/terminalnumberingdialog.h"
+#include "ui/cablenumberingdialog.h"
 #include "toolbarsettings.h"
 #include <QDateTime>
 #include <QDebug>
@@ -104,7 +121,17 @@
 #include <QJsonArray>
 #include <QVBoxLayout>
 #include <QListWidget>
+#include <QTreeWidget>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QHeaderView>
+#include "dataBase/qetdbfile.h"
+#include "dataBase/projectdatabase.h"
+#include "qetgraphicsitem/element.h"
+#include <QSqlQuery>
 #include <QCheckBox>
+#include <QFileDialog>
+#include <QSpinBox>
 #include <QDockWidget>
 #include <QJsonObject>
 #include <QTime>
@@ -113,6 +140,78 @@
 #include <QLabel>
 #include <QUrl>
 #include <algorithm>
+#include "foliogrid.h"
+
+namespace {
+	/**
+		The icon of View > Snap to the grid: a grid of dots and a pointer
+		whose tip sits on the middle one, in the palette's text color.
+	*/
+	QIcon gridSnapIcon()
+	{
+		QIcon icon;
+		const QColor ink = QApplication::palette().color(QPalette::WindowText);
+		for (int size : {16, 22, 32, 48})
+		{
+			QPixmap pixmap(size, size);
+			pixmap.fill(Qt::transparent);
+			QPainter painter(&pixmap);
+			painter.setRenderHint(QPainter::Antialiasing);
+			painter.scale(size / 24.0, size / 24.0);
+			painter.setPen(Qt::NoPen);
+			painter.setBrush(ink);
+			for (int x : {4, 12, 20})
+				for (int y : {4, 12, 20})
+					painter.drawEllipse(QPointF(x, y), 1.4, 1.4);
+				//The pointer, its tip on the middle dot
+			painter.setPen(QPen(ink, 1.2));
+			painter.setBrush(QApplication::palette().color(QPalette::Window));
+			painter.drawPolygon(QPolygonF({{12, 12}, {12, 23}, {14.8, 20.3}, {16.8, 24}, {18.6, 23.1}, {16.6, 19.4}, {20.5, 19.4}}));
+			painter.setPen(Qt::NoPen);
+			painter.setBrush(ink);
+			painter.drawEllipse(QPointF(12, 12), 2.4, 2.4);
+			painter.end();
+			icon.addPixmap(pixmap);
+		}
+		return icon;
+	}
+
+	/**
+		A horseshoe magnet, for snapping to the grid: red with its poles
+		when on, a grey outline when off
+	*/
+	QIcon magnetIcon()
+	{
+		QIcon icon;
+		const QColor ink = QApplication::palette().color(QPalette::WindowText);
+		for (int size : {16, 22, 32})
+			for (const bool on : {true, false})
+			{
+				QPixmap pixmap(size, size);
+				pixmap.fill(Qt::transparent);
+				QPainter painter(&pixmap);
+				painter.setRenderHint(QPainter::Antialiasing);
+				painter.scale(size / 24.0, size / 24.0);
+					//The bow, opening downwards, and its two legs
+				QPainterPath bow;
+				bow.moveTo(4, 20);
+				bow.lineTo(4, 11);
+				bow.arcTo(QRectF(4, 3, 16, 16), 180, -180);
+				bow.lineTo(20, 20);
+				const QColor body = on ? QColor(200, 30, 30) : QColor(140, 140, 140);
+				painter.setBrush(Qt::NoBrush);
+				painter.setPen(QPen(body, 5, Qt::SolidLine, Qt::FlatCap));
+				painter.drawPath(bow);
+					//The poles
+				painter.setPen(QPen(on ? ink : QColor(140, 140, 140), 5, Qt::SolidLine, Qt::FlatCap));
+				painter.drawLine(QPointF(4, 18), QPointF(4, 22));
+				painter.drawLine(QPointF(20, 18), QPointF(20, 22));
+				painter.end();
+				icon.addPixmap(pixmap, QIcon::Normal, on ? QIcon::On : QIcon::Off);
+			}
+		return icon;
+	}
+}
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -136,6 +235,10 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	m_file_actions_group       (this),
 	open_dialog_dir            (QETApp::documentDir())
 {
+		//With the setting, the docked panels can be made narrow: their
+		//texts wrap, and what cannot wrap scrolls sideways
+	DockFit::install();
+
 		//Trivial property use to set the graphics handler size
 	setProperty("graphics_handler_size", 10);
 
@@ -463,6 +566,75 @@ void QETDiagramEditor::setUpActions()
 	connect(m_paste_element_info, &QAction::triggered,
 			this, &QETDiagramEditor::pasteElementInformations);
 
+	//Format painter actions
+	m_copy_text_format  = new QAction(QET::Icons::CopyElementTextFormat,  tr("Copy text format"), this);
+	m_apply_text_format = new QAction(QET::Icons::ApplyElementTextFormat, tr("Apply text format"), this);
+
+	ShortcutManager::instance().registerAction(m_copy_text_format, "diagrameditor.copy_text_format", tr("Diagram editors"), QKeySequence(Qt::CTRL | Qt::ALT | Qt::Key_C));
+	ShortcutManager::instance().registerAction(m_apply_text_format, "diagrameditor.apply_text_format", tr("Diagram editors"), QKeySequence(Qt::CTRL | Qt::ALT | Qt::Key_V));
+
+	m_copy_text_format  -> setStatusTip(tr("Copy the text format of the selected element as a template", "status bar tip"));
+	m_apply_text_format -> setStatusTip(tr("Apply the copied text format to the selected elements", "status bar tip"));
+
+	connect(m_copy_text_format,  &QAction::triggered, this, &QETDiagramEditor::copyTextFormat);
+	connect(m_apply_text_format, &QAction::triggered, this, &QETDiagramEditor::applyTextFormat);
+
+		//The texts of the selected symbols, label and notes, as one block at
+		//one of nine points around the symbol: the nine points of the text
+		//alignment dialog. A click places them at the point chosen last.
+	const auto chosen_point = []() {
+		return Qt::Alignment(QSettings().value(QStringLiteral("diagrameditor/place_texts_point"),
+											   int(Qt::AlignLeft | Qt::AlignVCenter)).toInt());
+	};
+		//The button shows where its click will put the texts
+	m_place_texts = new QAction(SymbolTextPlacement::icon(chosen_point()), tr("Place symbol texts"), this);
+	m_place_texts->setStatusTip(tr("Place the label and the notes of the selected symbols as one block beside them", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_place_texts, "diagrameditor.place_symbol_texts", tr("Diagram editors"), QKeySequence());
+	{
+		auto *menu = new QMenu(this);
+		auto *grid_widget = new QWidget(menu);
+		auto *grid = new QGridLayout(grid_widget);
+		grid->setContentsMargins(6, 6, 6, 6);
+		grid->setSpacing(2);
+		const struct { Qt::Alignment where; const char *tip; } points[] = {
+			{Qt::AlignLeft | Qt::AlignTop,        QT_TR_NOOP("Above, left")},
+			{Qt::AlignHCenter | Qt::AlignTop,     QT_TR_NOOP("Above")},
+			{Qt::AlignRight | Qt::AlignTop,       QT_TR_NOOP("Above, right")},
+			{Qt::AlignLeft | Qt::AlignVCenter,    QT_TR_NOOP("Left")},
+			{Qt::AlignCenter,                     QT_TR_NOOP("On the symbol")},
+			{Qt::AlignRight | Qt::AlignVCenter,   QT_TR_NOOP("Right")},
+			{Qt::AlignLeft | Qt::AlignBottom,     QT_TR_NOOP("Below, left")},
+			{Qt::AlignHCenter | Qt::AlignBottom,  QT_TR_NOOP("Below")},
+			{Qt::AlignRight | Qt::AlignBottom,    QT_TR_NOOP("Below, right")}};
+		int n = 0;
+		for (const auto &point : points)
+		{
+			auto *button = new QToolButton(grid_widget);
+			button->setIcon(SymbolTextPlacement::icon(point.where));
+			button->setIconSize(QSize(32, 32));
+			button->setToolTip(tr(point.tip));
+			button->setObjectName(QStringLiteral("place_texts_%1").arg(n));
+			button->setFixedSize(38, 38);
+			button->setAutoRaise(true);
+			const Qt::Alignment where = point.where;
+			connect(button, &QToolButton::clicked, this, [this, menu, where]() {
+				menu->close();
+				QSettings().setValue(QStringLiteral("diagrameditor/place_texts_point"), int(where));
+				m_place_texts->setIcon(SymbolTextPlacement::icon(where));
+				placeSymbolTexts(where);
+			});
+			grid->addWidget(button, n / 3, n % 3);
+			++n;
+		}
+		auto *grid_action = new QWidgetAction(menu);
+		grid_action->setDefaultWidget(grid_widget);
+		menu->addAction(grid_action);
+		m_place_texts->setMenu(menu);
+	}
+	connect(m_place_texts, &QAction::triggered, this, [this, chosen_point]() {
+		placeSymbolTexts(chosen_point());
+	});
+
 		//Duplicate: copy the selection and place it at a configured,
 		//grid-step offset immediately -- no interactive follow-the-
 		//cursor step, unlike Ctrl+V above. That is deliberate (#991):
@@ -545,8 +717,30 @@ void QETDiagramEditor::setUpActions()
 			pv->project()->setAutoBreakConductor(abc);
 	});
 
+		//The label of each terminal strip at its first terminal, as in EPLAN
+	m_terminal_strip_labels = new QAction(QET::Icons::TerminalStrip, tr("Show terminal strip labels at their first terminal"), this);
+	m_terminal_strip_labels->setStatusTip(tr("The label of each terminal strip stands at its first terminal on every folio and moves with it"));
+	m_terminal_strip_labels->setCheckable(true);
+	ShortcutManager::instance().registerAction(m_terminal_strip_labels, "diagrameditor.terminal_strip_labels", tr("Diagram editors"), QKeySequence());
+	connect(m_terminal_strip_labels, &QAction::triggered, [this](bool on) {
+		if (ProjectView *pv = currentProjectView())
+			pv->project()->setTerminalStripLabelsShown(on);
+	});
+
+		//The bridges of the terminal strip editor, drawn between the terminals
+	m_terminal_strip_bridges = new QAction(QET::Icons::TerminalStrip, tr("Show terminal strip bridges between their terminals"), this);
+	m_terminal_strip_bridges->setStatusTip(tr("Two bridged terminals side by side in a row are joined by a line on every folio"));
+	m_terminal_strip_bridges->setCheckable(true);
+	ShortcutManager::instance().registerAction(m_terminal_strip_bridges, "diagrameditor.terminal_strip_bridges", tr("Diagram editors"), QKeySequence());
+	connect(m_terminal_strip_bridges, &QAction::triggered, [this](bool on) {
+		if (ProjectView *pv = currentProjectView())
+			pv->project()->setTerminalStripBridgesShown(on);
+	});
+
 		//Diagram background color picker
 	m_background_color_button = new DiagramBgColorToolButton(this, this);
+	ShortcutManager::instance().registerAction(m_background_color_button->darkModeAction(),
+						   "diagrameditor.dark_mode", tr("Diagram editors"), QKeySequence());
 
 		//Draw or not the background grid
 	m_draw_grid = new QAction ( QET::Icons::Grid, tr("Display the grid"), this);
@@ -556,12 +750,73 @@ void QETDiagramEditor::setUpActions()
 	m_draw_grid->setCheckable(true);
 	m_draw_grid->setChecked(settings.value("diagrameditor/grid_display_startup", true).toBool());
 	connect(m_draw_grid, &QAction::triggered, [this](bool checked) {
+			//The folio's own setting: folios() builds nothing
 		foreach (ProjectView *prjv, this->openedProjects())
-			foreach (Diagram *d, prjv->project()->diagrams()) {
+			foreach (Diagram *d, prjv->project()->folios()) {
 				d->setDisplayGrid(checked);
 				d->update();
 			}
 	});
+
+		//A crosshair across the whole folio under the mouse, to see
+		//whether symbols and terminals are in line
+	m_crosshair = new QAction(tr("Folio-wide crosshair"), this);
+	ShortcutManager::instance().registerAction(m_crosshair, "diagrameditor.crosshair", tr("Diagram editors"), QKeySequence());
+	m_crosshair->setStatusTip(tr("Show two lines across the whole folio under the mouse, to see whether parts are in line"));
+	m_crosshair->setCheckable(true);
+	m_crosshair->setChecked(DiagramView::crosshairShown());
+	connect(m_crosshair, &QAction::triggered, [this](bool checked) {
+		DiagramView::setCrosshairShown(checked);
+		for (DiagramView *view : findChildren<DiagramView *>())
+			view->viewport()->update();
+	});
+
+		//Snap to the grid, on or off: off, the pointer and whatever is
+		//moved or placed go to the nearest point, as with Ctrl held
+	m_grid_snap = new QAction(gridSnapIcon(), tr("Snap to the grid"), this);
+	ShortcutManager::instance().registerAction(m_grid_snap, "diagrameditor.grid_snap", tr("Diagram editors"),
+						   QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_G));
+	m_grid_snap->setStatusTip(tr("Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point"));
+	m_grid_snap->setCheckable(true);
+	m_grid_snap->setChecked(Diagram::gridSnap());
+	connect(m_grid_snap, &QAction::triggered, this, [this](bool on) {
+		Diagram::setGridSnap(on);
+		updateGridStepButton();
+	});
+
+		//The grid step, fine, medium or coarse: align blocks on a coarse
+		//grid, work them out on a fine one
+	m_grid_step_menu = new QMenu(tr("Grid step"), this);
+	m_grid_step_menu->setIcon(QET::Icons::Grid);
+	m_grid_step_button = new QToolButton(this);
+	m_grid_step_button->setMenu(m_grid_step_menu);
+	m_grid_step_button->setPopupMode(QToolButton::InstantPopup);
+	m_grid_step_button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	m_grid_step_button->setToolTip(tr("The step of the grid that symbols, conductors and the pointer snap to"));
+	auto grid_step_group = new QActionGroup(this);
+	const struct { const char *id; const char *name; int step; Qt::Key key; } grid_steps[] = {
+		{"diagrameditor.grid_step_fine",   QT_TR_NOOP("Fine (5)"),    5, Qt::Key_1},
+		{"diagrameditor.grid_step_medium", QT_TR_NOOP("Medium (10)"), 10, Qt::Key_2},
+		{"diagrameditor.grid_step_coarse", QT_TR_NOOP("Coarse (20)"), 20, Qt::Key_3},
+	};
+	for (const auto &grid_step : grid_steps)
+	{
+		QAction *action = m_grid_step_menu->addAction(tr(grid_step.name));
+		ShortcutManager::instance().registerAction(action, grid_step.id, tr("Diagram editors"),
+							   QKeySequence(Qt::CTRL | Qt::ALT | grid_step.key));
+		action->setCheckable(true);
+		action->setData(grid_step.step);
+		grid_step_group->addAction(action);
+	}
+	connect(grid_step_group, &QActionGroup::triggered, this, [this](QAction *action) {
+		QSettings settings;
+		settings.setValue(FolioGrid::x_key, action->data());
+		settings.setValue(FolioGrid::y_key, action->data());
+		updateGridStepButton();
+		for (DiagramView *view : findChildren<DiagramView *>())
+			view->viewport()->update();
+	});
+	updateGridStepButton();
 
 		//Snap step for dragged texts, as a fraction of the folio grid
 	m_text_grid_menu = new QMenu(tr("Text grid"), this);
@@ -597,8 +852,9 @@ void QETDiagramEditor::setUpActions()
 	m_draw_guides->setCheckable(true);
 	m_draw_guides->setChecked(settings.value("diagrameditor/guides_display_startup", false).toBool());
 	connect(m_draw_guides, &QAction::triggered, [this](bool checked) {
+			//The folio's own setting: folios() builds nothing
 		foreach (ProjectView *prjv, this->openedProjects())
-			foreach (Diagram *d, prjv->project()->diagrams()) {
+			foreach (Diagram *d, prjv->project()->folios()) {
 				d->setDisplayGuides(checked);
 			}
 	});
@@ -646,8 +902,10 @@ void QETDiagramEditor::setUpActions()
 		action->setData(int(kind.first));
 		connect(action, &QAction::triggered, this, [kind](bool checked) {
 			ShownKinds::setShown(kind.first, checked);
+				//Items built later are shown or hidden as they are made
+				//(ShownKinds::tag())
 			for (QETProject *project : QETApp::registeredProjects())
-				for (Diagram *diagram : project->diagrams())
+				for (Diagram *diagram : project->builtFolios())
 					ShownKinds::apply(diagram, kind.first);
 			emit QETApp::instance()->shownKindsChanged();
 		});
@@ -655,6 +913,48 @@ void QETDiagramEditor::setUpActions()
 	m_hidden_kinds_label = new QLabel(this);
 	m_hidden_kinds_label->setToolTip(tr("See Display > Show"));
 	statusBar()->addPermanentWidget(m_hidden_kinds_label);
+		//The grid step beside the zoom, always in sight; a click on it
+		//picks another, as on the toolbar
+	m_grid_status_button = new QToolButton(this);
+	m_grid_status_button->setMenu(m_grid_step_menu);
+	m_grid_status_button->setPopupMode(QToolButton::InstantPopup);
+	m_grid_status_button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	m_grid_status_button->setAutoRaise(true);
+	m_grid_status_button->setToolTip(m_grid_step_button->toolTip());
+	statusBar()->addPermanentWidget(m_grid_status_button);
+		//Beside it a magnet: snapping on or off, at a click
+	m_snap_status_button = new QToolButton(this);
+	m_snap_status_button->setIcon(magnetIcon());
+	m_snap_status_button->setCheckable(true);
+	m_snap_status_button->setChecked(m_grid_snap->isChecked());
+	m_snap_status_button->setAutoRaise(true);
+	m_snap_status_button->setToolTip(QStringLiteral("%1 (%2)").arg(m_grid_snap->text(),
+			m_grid_snap->shortcut().toString(QKeySequence::NativeText)));
+		//Not its default action: the button would take the action's icon
+	connect(m_snap_status_button, &QToolButton::clicked, m_grid_snap, &QAction::trigger);
+	connect(m_grid_snap, &QAction::toggled, m_snap_status_button, &QToolButton::setChecked);
+	statusBar()->addPermanentWidget(m_snap_status_button);
+	updateGridStepButton();
+		//The zoom, and at a click a few fixed ones
+	m_zoom_button = new QToolButton(this);
+	m_zoom_button->setToolTip(tr("Zoom of the folio on screen; a click offers fixed ones"));
+	m_zoom_button->setPopupMode(QToolButton::InstantPopup);
+	m_zoom_button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	m_zoom_button->setAutoRaise(true);
+	auto zoom_menu = new QMenu(m_zoom_button);
+	for (const int percent : {50, 75, 100, 125}) {
+		zoom_menu->addAction(tr("%1 %").arg(percent), this, [this, percent] {
+			if (DiagramView *dv = currentDiagramView())
+				dv->zoom(percent / 100.0 / dv->transform().m11());
+		});
+	}
+	zoom_menu->addSeparator();
+	zoom_menu->addAction(tr("Whole folio"), this, [this] {
+		if (DiagramView *dv = currentDiagramView())
+			dv->zoomFit();
+	});
+	m_zoom_button->setMenu(zoom_menu);
+	statusBar()->addPermanentWidget(m_zoom_button);
 	connect(QETApp::instance(), &QETApp::shownKindsChanged,
 			this, &QETDiagramEditor::updateShownKinds);
 	updateShownKinds();
@@ -677,6 +977,39 @@ void QETDiagramEditor::setUpActions()
 	connect(m_project_edit_properties, &QAction::triggered, [this]() {
 		editProjectProperties(currentProjectView());
 	});
+
+	// Find duplicate identifiers throughout the current project
+	m_find_duplicate_labels =
+		new QAction(tr("Find duplicate signals and components..."), this);
+	m_find_duplicate_labels->setObjectName(
+		QStringLiteral("findDuplicateLabels"));
+	ShortcutManager::instance().registerAction(
+		m_find_duplicate_labels,
+		"diagrameditor.find_duplicate_labels",
+		tr("Diagram editors"),
+		QKeySequence());
+	connect(
+		m_find_duplicate_labels,
+		&QAction::triggered,
+		this,
+		[this]()
+		{
+			if (ProjectView* view = currentProjectView())
+			{
+				auto* dialog = new DuplicateLabelsDialog(view->project(), this);
+				dialog->setAttribute(Qt::WA_DeleteOnClose);
+				dialog->show();
+			}
+		});
+		//The saves a .qetdb keeps, and keeping them or not (QETDB-S6-SCOPE.md)
+	m_project_history = new QAction(tr("History of saves..."), this);
+	ShortcutManager::instance().registerAction(m_project_history, "diagrameditor.project_history", tr("Diagram editors"), QKeySequence());
+	connect(m_project_history, &QAction::triggered, this, &QETDiagramEditor::showProjectHistory);
+		//A copy of a .qetdb without its history, for a client (S6-6)
+	m_export_delivery = new QAction(tr("Export for delivery..."), this);
+	m_export_delivery->setStatusTip(tr("Write a copy of the project without the history of its saves"));
+	ShortcutManager::instance().registerAction(m_export_delivery, "diagrameditor.export_delivery", tr("Diagram editors"), QKeySequence());
+	connect(m_export_delivery, &QAction::triggered, this, &QETDiagramEditor::exportForDelivery);
 
 		//Add new folio to current project
 	m_project_add_diagram = new QAction(QET::Icons::DiagramAdd, tr("Add a sheet"), this);
@@ -744,6 +1077,27 @@ void QETDiagramEditor::setUpActions()
 	ShortcutManager::instance().registerAction(m_project_terminalBloc, "diagrameditor.terminal_strip_plugin", tr("Diagram editors"), QKeySequence());
 	connect(m_project_terminalBloc, &QAction::triggered, this, &QETDiagramEditor::generateTerminalBlock);
 
+		//Add a cable list
+	m_add_cable_list = new QAction(QET::Icons::TableOfContent, tr("Add a cable list"), this);
+	connect(m_add_cable_list, &QAction::triggered, this, [this]() {
+		if (this->currentDiagramView()) {
+			QetGraphicsTableFactory::createAndAddCableList(this->currentDiagramView()->diagram());
+		}
+	});
+
+		//Export the whole cable list to CSV, every column of the list
+	m_export_cable_list = new QAction(QET::Icons::DocumentSpreadsheet, tr("Export the cable list to CSV format"), this);
+	connect(m_export_cable_list, &QAction::triggered, [this]() {
+		QETProject *project = this->currentProject();
+		if (!project) {
+			return;
+		}
+			//The same dialog the material list is exported with, only
+			//with the columns of the cable list
+		CableExportDialog dialog(project, this);
+		dialog.exec();
+	});
+
 	//Export conductor num to csv
 	m_project_export_conductor_num = new QAction(QET::Icons::DocumentSpreadsheet, tr("Export the list of names of wires"), this);
 	ShortcutManager::instance().registerAction(m_project_export_conductor_num, "diagrameditor.export_conductor_names", tr("Diagram editors"), QKeySequence());
@@ -783,6 +1137,14 @@ void QETDiagramEditor::setUpActions()
 	m_terminal_numbering = new QAction(QET::Icons::TerminalStrip, tr("Automatic numbering of terminals"), this);
 	ShortcutManager::instance().registerAction(m_terminal_numbering, "diagrameditor.terminal_numbering", tr("Diagram editors"), QKeySequence());
 	connect(m_terminal_numbering, &QAction::triggered, this, &QETDiagramEditor::slot_terminalNumbering);
+
+	// Cable numbering: the rule the project numbers its cables with, and
+	// the numbering of every cable of that project at once
+	m_cable_numbering = new QAction(QET::Icons::AutoNum, tr("Cable numbering"), this);
+	m_cable_numbering->setStatusTip(
+		tr("Shows the cable numbering rule of the project and "
+		   "renumbers its cables with it"));
+	connect(m_cable_numbering, &QAction::triggered, this, &QETDiagramEditor::slot_cableNumbering);
 
 	// Reload element drawings from their current definition (bugtracker #802)
 	m_reload_element_drawings = new QAction(QET::Icons::ViewRefresh, tr("Reload element drawings"), this);
@@ -939,6 +1301,8 @@ void QETDiagramEditor::setUpActions()
 	QAction *open_file = m_file_actions_group.addAction(QET::Icons::DocumentOpen,   tr("&Open"));
 	m_save_file        = m_file_actions_group.addAction(QET::Icons::DocumentSave,   tr("&Save"));
 	m_save_file_as     = m_file_actions_group.addAction(QET::Icons::DocumentSaveAs, tr("Save as"));
+	m_save_copy_for_older = m_file_actions_group.addAction(QET::Icons::DocumentSaveAs,
+														   tr("Save a copy for an older QElectroTech"));
 	m_close_file       = m_file_actions_group.addAction(QET::Icons::ProjectClose,   tr("&Close"));
 
 	ShortcutManager::instance().registerAction(new_file, "diagrameditor.new_file", tr("Diagram editors"), QKeySequence::New);
@@ -952,6 +1316,19 @@ void QETDiagramEditor::setUpActions()
 	m_close_file ->setStatusTip( tr("Closes the current project", "status bar tip") );
 	m_save_file    ->setStatusTip( tr("Saves the current project and all its sheets", "status bar tip") );
 	m_save_file_as ->setStatusTip( tr("Saves the current project with a different file name", "status bar tip") );
+	m_save_copy_for_older->setStatusTip(tr("Writes a copy of the current project as a .qet file, which "
+										   "versions of QElectroTech that cannot open a .qetz open",
+										   "status bar tip"));
+	ShortcutManager::instance().registerAction(m_save_copy_for_older, "diagrameditor.save_copy_for_older",
+											   tr("Diagram editors"), QKeySequence());
+	connect(m_save_copy_for_older, &QAction::triggered, this, [this]() {
+		if (ProjectView *project_view = currentProjectView()) {
+			const QETResult result = project_view->saveCopyForOlderVersions();
+			if (!result.isOk()) {
+				showError(result);
+			}
+		}
+	});
 
 	connect(m_save_file_as, &QAction::triggered, this, &QETDiagramEditor::saveAs);
 	connect(m_save_file,    &QAction::triggered, this, &QETDiagramEditor::save);
@@ -1243,6 +1620,9 @@ void QETDiagramEditor::setUpActions()
 	QAction *add_fillet    = m_add_item_actions_group.addAction(QET::Icons::DrawFillet,   tr("Add a fillet"));
 	QAction *add_terminal_strip = m_add_item_actions_group.addAction(QET::Icons::TerminalStrip, tr("Add a terminal plan"));
 	QAction *add_generic_device = m_add_item_actions_group.addAction(QET::Icons::GenericDevice, tr("Add a generic device…"));
+		//Not an element of the drawing but a line drawn across the
+		//conductors: what it crosses becomes the cores of a cable.
+	m_add_cable		   = m_add_item_actions_group.addAction(QET::Icons::Cable,      tr("Draw a cable"));
 
 	add_text     ->setStatusTip(tr("Adds a text field to the current sheet"));
 	add_image    ->setStatusTip(tr("Add an image to the current sheet"));
@@ -1258,6 +1638,7 @@ void QETDiagramEditor::setUpActions()
 	add_fillet   ->setStatusTip(tr("Rounds the corner between two lines of the current sheet"));
 	add_terminal_strip->setStatusTip(tr("Adds a terminal plan to the current sheet"));
 	add_generic_device->setStatusTip(tr("Makes a box symbol with terminals on any side and places it on the current sheet"));
+	m_add_cable     ->setStatusTip(tr("Draws the main line of a cable: every conductor crossed becomes one of its cores"));
 
 	add_text     ->setData(QStringLiteral("text"));
 	add_image    ->setData(QStringLiteral("image"));
@@ -1273,6 +1654,7 @@ void QETDiagramEditor::setUpActions()
 	add_fillet   ->setData(QStringLiteral("fillet"));
 	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
 	add_generic_device->setData(QStringLiteral("generic_device"));
+	m_add_cable     ->setData(QStringLiteral("cable"));
 
 	add_text->setCheckable(true);
 	add_line->setCheckable(true);
@@ -1281,6 +1663,7 @@ void QETDiagramEditor::setUpActions()
 	add_arc->setCheckable(true);
 	add_polyline->setCheckable(true);
 	add_path->setCheckable(true);
+	m_add_cable->setCheckable(true);
 	add_fillet->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
@@ -1356,6 +1739,7 @@ void QETDiagramEditor::setUpToolBar()
 	};
 	add_widget(QStringLiteral("widget:handler_size"), new DiagramEditorHandlerSizeWidget(this));
 	add_widget(QStringLiteral("widget:text_grid"), m_text_grid_button);
+	add_widget(QStringLiteral("widget:grid_step"), m_grid_step_button);
 	add_widget(QStringLiteral("widget:background_color"), m_background_color_button);
 		//Sits with the conductor actions it works alongside: it colours
 		//the selected conductors and sets the colour of the next one drawn.
@@ -1442,6 +1826,10 @@ void QETDiagramEditor::setUpMenu()
 	QMenu* menu_fichier	  = new QMenu(tr("&File"), this);
 	QMenu* menu_edition	  = new QMenu(tr("&Edit"), this);
 	QMenu* menu_project	  = new QMenu(tr("&Project"), this);
+		//Numbering of everything the project numbers, kept together
+		//and sitting right behind the project it belongs to
+	QMenu* menu_numbering = new QMenu(tr("Numbering"), this);
+	QMenu* menu_lists     = new QMenu(tr("Lists"), this);
 	QMenu* menu_affichage = new QMenu(tr("Displ&ay"), this);
 	// QMenu *menu_outils    = new QMenu(tr("O&utils"), this);
 	windows_menu = new QMenu(tr("Wi&ndows"), this);
@@ -1449,6 +1837,8 @@ void QETDiagramEditor::setUpMenu()
 	insertMenu(settings_menu_, menu_fichier);
 	insertMenu(settings_menu_, menu_edition);
 	insertMenu(settings_menu_, menu_project);
+	insertMenu(settings_menu_, menu_numbering);
+	insertMenu(settings_menu_, menu_lists);
 	insertMenu(settings_menu_, menu_affichage);
 	insertMenu(help_menu_, windows_menu);
 
@@ -1473,6 +1863,7 @@ void QETDiagramEditor::setUpMenu()
 	//menu_fichier -> addAction(import_diagram);
 	menu_fichier -> addAction(m_export_to_images);
 	menu_fichier -> addAction(m_export_to_pdf);
+	menu_fichier -> addAction(m_export_delivery);
 	menu_fichier -> addAction(m_print);
 	menu_fichier -> addSeparator();
 	menu_fichier -> addAction(m_quit_editor);
@@ -1484,6 +1875,9 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_cut);
 	menu_edition -> addAction(m_copy);
 	menu_edition -> addAction(m_paste);
+	menu_edition -> addAction(m_copy_text_format);
+	menu_edition -> addAction(m_apply_text_format);
+	menu_edition -> addAction(m_place_texts);
 	menu_edition -> addAction(m_paste_origin);
 	menu_edition -> addAction(m_paste_element_info);
 	menu_edition -> addAction(m_duplicate);
@@ -1511,6 +1905,8 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_rotate_selection);
 	menu_edition -> addAction(m_rotate_group_selection);
 	menu_edition -> addAction(m_rotate_texts);
+	menu_edition -> addAction(m_mirror_horizontal);
+	menu_edition -> addAction(m_mirror_vertical);
 	menu_edition -> addAction(m_find_element);
 	menu_edition -> addAction(m_edit_selection);
 	QMenu *group_menu = menu_edition -> addMenu(QET::Icons::textGroup, tr("Group", "fr: Grouper"));
@@ -1547,24 +1943,24 @@ void QETDiagramEditor::setUpMenu()
 
 	// menu Projet
 	menu_project -> addAction(m_project_edit_properties);
+	menu_project -> addAction(m_project_history);
 	menu_project -> addAction(m_auto_conductor);
 		//Sits beside m_auto_conductor, the setting it pairs with. It was
 		//toolbar-only and so had no keyboard route at all.
 	menu_project -> addAction(m_auto_break_conductor);
+	menu_project -> addAction(m_terminal_strip_labels);
+	menu_project -> addAction(m_terminal_strip_bridges);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_project_add_diagram);
 	menu_project -> addAction(m_remove_diagram_from_project);
 	menu_project -> addAction(m_clean_project);
+	menu_project->addAction(m_find_duplicate_labels);
 	menu_project -> addSeparator();
-	menu_project -> addAction(m_add_summary);
-	menu_project -> addAction(m_add_nomenclature);
 	menu_project -> addAction(m_csv_export);
+	menu_project -> addAction(m_export_cable_list);
 	menu_project -> addAction(m_project_export_conductor_num);
-	menu_project -> addAction(m_terminal_strip_dialog);
-	menu_project -> addAction(m_project_terminalBloc);
 	menu_project -> addAction(m_project_export_wiring_list);
 	menu_project -> addAction(m_project_wiring_list_view);
-	menu_project -> addAction(m_terminal_numbering);
 	menu_project -> addAction(m_reload_element_drawings);
 #ifdef QET_HAS_SCRIPTING
 	m_scripts_menu = menu_project -> addMenu(tr("Scripts"));
@@ -1577,6 +1973,27 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_export_project_db);
 #endif
+
+	// menu Numbering
+		//Everything the project numbers sits here together: the
+		//terminals have come out of the project menu, the cables are
+		//the new one
+	menu_numbering -> addAction(m_terminal_numbering);
+	menu_numbering -> addAction(m_cable_numbering);
+
+	// menu Listes
+		//Everything which drops a table or a list onto the sheets has
+		//come out of the project menu and sits here together: the
+		//summary, the material list, the terminal strip tools and the
+		//cable list. The CSV exports stay with the other exports in the
+		//project menu, the cable list's among them.
+	menu_lists -> addAction(m_add_summary);
+	menu_lists -> addAction(m_add_nomenclature);
+	menu_lists -> addSeparator();
+	menu_lists -> addAction(m_terminal_strip_dialog);
+	menu_lists -> addAction(m_project_terminalBloc);
+	menu_lists -> addSeparator();
+	menu_lists -> addAction(m_add_cable_list);
 
 	main_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Display or hide the main toolbar"));
 	view_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Display or hide the Display toolbar"));
@@ -1596,12 +2013,16 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_mode_visualise);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(m_draw_grid);
+	menu_affichage -> addAction(m_grid_snap);
+	menu_affichage -> addMenu(m_grid_step_menu);
+	menu_affichage -> addAction(m_crosshair);
 	menu_affichage -> addMenu(m_text_grid_menu);
 	menu_affichage -> addAction(m_draw_guides);
 	menu_affichage -> addAction(m_cell_rulers);
 	menu_affichage -> addAction(m_cell_lines);
 	menu_affichage -> addMenu(m_shown_kinds_menu);
 	menu_affichage -> addMenu(m_background_color_button->menu());
+	menu_affichage -> addAction(m_background_color_button->darkModeAction());
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
 
@@ -1745,7 +2166,7 @@ bool QETDiagramEditor::openProject()
 		this,
 		tr("Open a file"),
 		open_dialog_dir.absolutePath(),
-		tr("QElectroTech project(*.qet);;XML Files (*.xml);;All files (*)")
+		QETProject::openFileFilter() + ";;" + tr("XML Files (*.xml);;All files (*)")
 	);
 	if (filepath.isEmpty()) return(false);
 
@@ -1785,6 +2206,226 @@ bool QETDiagramEditor::closeProject(QETProject *project)
 		return(closeProject(project_view));
 	}
 	return(true);
+}
+
+/**
+	@brief QETDiagramEditor::askAboutLock
+	Tell the user who has the project @p filepath open and let them choose.
+	Read-only is the default: opening anyway can lose the other person's
+	work, and a lock left by a crash on another machine cannot be told from
+	a live one, which is why the age of the last sign of life is shown.
+*/
+QETDiagramEditor::LockChoice QETDiagramEditor::askAboutLock(
+		const QString &filepath,
+		const ProjectLock::Holder &holder)
+{
+	const QString name = QFileInfo(filepath).fileName();
+	QString text;
+	if (holder.session == QLatin1String("?")) {
+		text = tr("%1 is being opened by another session of QElectroTech.").arg(name);
+	} else {
+		const QString since = QLocale::system().toString(holder.since.toLocalTime(), QLocale::ShortFormat);
+		text = tr("%1 is open by %2 on %3 since %4").arg(name, holder.user, holder.host, since);
+		const qint64 minutes = holder.heartbeat.isValid()
+				? holder.heartbeat.secsTo(QDateTime::currentDateTimeUtc()) / 60
+				: -1;
+		if (minutes >= 0) {
+			text += minutes < 1
+					? tr(" (active just now).")
+					: tr(" (active %n minute(s) ago).", nullptr, static_cast<int>(minutes));
+		} else {
+			text += QLatin1Char('.');
+		}
+	}
+
+	QMessageBox box(QMessageBox::Warning, tr("Project in use", "message box title"), text, QMessageBox::NoButton, this);
+	box.setInformativeText(tr("Open it read-only to look at it without changing it. "
+							  "Open it anyway only if you know that session is not "
+							  "using it any more: both of you could then save over each other."));
+	QPushButton *read_only = box.addButton(tr("Open read-only"), QMessageBox::AcceptRole);
+	QPushButton *anyway = box.addButton(tr("Open anyway"), QMessageBox::DestructiveRole);
+	box.addButton(QMessageBox::Cancel);
+	box.setDefaultButton(read_only);
+	box.setEscapeButton(box.button(QMessageBox::Cancel));
+	box.exec();
+	if (box.clickedButton() == read_only) return LockChoice::ReadOnly;
+	if (box.clickedButton() == anyway) return LockChoice::OpenAnyway;
+	return LockChoice::Cancel;
+}
+
+/**
+	@brief QETDiagramEditor::offerToRecover
+	@p filepath could not be read (@p reason): say why, and offer its newest
+	previous version (PreviousVersions) and, for a .qetz, what can be read
+	of it (QetContainer::recover()). Either opens as a new project,
+	"<name> (recovered)"; @p filepath is never moved or written.
+	@return true if a project was opened
+*/
+bool QETDiagramEditor::offerToRecover(const QString &filepath, const QString &reason)
+{
+	const QFileInfo info(filepath);
+	QFile file(filepath);
+	const bool zip = file.open(QIODevice::ReadOnly) && QetContainer::isZip(file.peek(4));
+	file.close();
+	const QStringList versions = PreviousVersions::kept(filepath);
+
+	QMessageBox box(QMessageBox::Warning, tr("Cannot open %1").arg(info.fileName()),
+					reason.isEmpty()
+					? tr("The file %1 cannot be read as a QElectroTech project.").arg(info.fileName())
+					: tr("The project file is damaged:\n%1").arg(reason),
+					QMessageBox::Cancel, this);
+	QAbstractButton *previous = nullptr, *recover = nullptr;
+	if (!versions.isEmpty()) {
+		const QDateTime saved = QFileInfo(versions.first()).lastModified();
+		previous = box.addButton(tr("Open the version saved %1")
+								 .arg(QLocale().toString(saved, QLocale::ShortFormat)),
+								 QMessageBox::AcceptRole);
+	}
+	if (zip)
+		recover = box.addButton(tr("Recover what can be read"), QMessageBox::AcceptRole);
+	if (previous || recover)
+		box.setInformativeText(tr("Either opens as a new project, \"%1\"; %2 is left as it is.")
+							   .arg(recoveredPath(filepath, info.suffix()).section(QLatin1Char('/'), -1),
+									info.fileName()));
+	box.exec();
+
+	if (previous && box.clickedButton() == previous)
+		return openAsRecovered(versions.first(), filepath);
+	if (recover && box.clickedButton() == recover) {
+		file.open(QIODevice::ReadOnly);
+		QDomDocument document;
+		QStringList lost;
+		QString error;
+		if (!QetContainer::recover(file.readAll(), &document, &lost, &error)) {
+			QET::QetMessageBox::warning(this, tr("Cannot open %1").arg(info.fileName()),
+										tr("Nothing can be recovered from it:\n%1").arg(error));
+			return false;
+		}
+			//Opened from a .qetz written of it, as the project it replaces
+		QTemporaryDir dir;
+		const QString read = dir.filePath(info.completeBaseName() + QStringLiteral(".qetz"));
+		const QList<QetZip::Entry> parts = QetContainer::split(document, QString(), &error);
+		if (!dir.isValid() || parts.isEmpty() || !QetZip::write(read, parts, &error)
+				|| !openAsRecovered(read, filepath)) {
+			if (!error.isEmpty())
+				QET::QetMessageBox::warning(this, tr("Cannot open %1").arg(info.fileName()), error);
+			return false;
+		}
+		if (!lost.isEmpty()) {
+			QMessageBox done(QMessageBox::Information, tr("Project recovered"),
+							 tr("What could be read of %1 is open as a new project. "
+								"Some parts could not be read and were left out: see the details.")
+							 .arg(info.fileName()),
+							 QMessageBox::Ok, this);
+			done.setDetailedText(lost.join(QLatin1Char('\n')));
+			done.exec();
+		}
+		return true;
+	}
+	return false;
+}
+
+/**
+	@brief QETDiagramEditor::askOutsideEdit
+	@p filepath, a .qetdb, holds content that is not what QElectroTech saved,
+	though SQLite's and QElectroTech's other checks pass (@p repair): ask
+	whether to open it with that content, or, when it carries repair data,
+	another program changed it and @p can_go_back, go back to the saved
+	state. Neither writes the file (QETDB-S4C-PLAN.md P5).
+	@return the choice; OutsideEdit::Refuse if the user cancelled
+*/
+QetDbFile::OutsideEdit QETDiagramEditor::askOutsideEdit(const QString &filepath, const QetDbFile::Repair &repair,
+													   bool can_go_back)
+{
+	const QString name = QFileInfo(filepath).fileName();
+	QMessageBox box(QMessageBox::Question, tr("%1 was changed").arg(name),
+					repair.edited
+					? tr("Another program changed %1 since QElectroTech saved it.").arg(name)
+					: tr("The content of %1 is not what QElectroTech saved: another program changed it, "
+						 "or it is damaged.").arg(name),
+					QMessageBox::Cancel, this);
+	QAbstractButton *back = nullptr;
+	if (repair.parity && repair.edited && can_go_back)
+		back = box.addButton(tr("Go back to the saved state"), QMessageBox::AcceptRole);
+	QAbstractButton *keep = box.addButton(tr("Open it with its changes"), QMessageBox::AcceptRole);
+	box.setInformativeText(back
+						   ? tr("Going back rebuilds the project as QElectroTech saved it, from the repair "
+								"data the file keeps. The file is written only when you save.")
+						   : tr("The file is written only when you save."));
+	box.exec();
+	if (back && box.clickedButton() == back) return QetDbFile::OutsideEdit::BackToSave;
+	if (box.clickedButton() == keep) return QetDbFile::OutsideEdit::KeepChanges;
+	return QetDbFile::OutsideEdit::Refuse;
+}
+
+/**
+	@brief QETDiagramEditor::tellRepair
+	@p project was just opened from a .qetdb that was damaged and repaired,
+	or brought back to its saved state, or opened with content that is not
+	what was saved: it is marked changed, so that saving writes a sound file,
+	and the user is told what happened. Nothing for a file opened as saved.
+	@p project null: nothing (an open that is not interactive)
+*/
+void QETDiagramEditor::tellRepair(QETProject *project)
+{
+	if (!project) return;
+	const QetDbFile::Repair repaired = project->qetdbRepair();
+	if (!repaired.repaired() && !repaired.kept_changes) return;
+	project->setModified(true);
+	const QString name = QFileInfo(project->filePath()).fileName();
+	if (repaired.kept_changes) {
+		statusBar()->showMessage(tr("%1 is open with the changes another program made to it.").arg(name), 30000);
+		return;
+	}
+	QString text;
+	if (repaired.back_to_save)
+		text = tr("The changes another program made to %1 were undone: it is open as QElectroTech saved it.").arg(name);
+	else if (repaired.bad_pages)
+		text = tr("%1 was damaged: QElectroTech repaired %n page(s) of it from the repair data the file keeps.",
+				  nullptr, repaired.bad_pages).arg(name);
+	else if (repaired.header)
+		text = tr("%1 was damaged: QElectroTech repaired its header.").arg(name);
+	else
+		text = tr("The repair data %1 keeps was damaged; the project itself was not.").arg(name);
+	QET::QetMessageBox::information(this, tr("Project repaired"),
+									text + QLatin1Char(' ') + tr("Save the project to keep it so."));
+}
+
+/**
+	@brief QETDiagramEditor::recoveredPath
+	@return where a project recovered from @p filepath is saved: beside it,
+	"<name> (recovered).<suffix>", numbered if that is taken
+*/
+QString QETDiagramEditor::recoveredPath(const QString &filepath, const QString &suffix)
+{
+	const QFileInfo info(filepath);
+	QString path = info.absoluteDir().filePath(tr("%1 (recovered)").arg(info.completeBaseName())
+											   + QLatin1Char('.') + suffix);
+	for (int n = 2 ; QFileInfo::exists(path) ; ++n)
+		path = info.absoluteDir().filePath(tr("%1 (recovered %2)").arg(info.completeBaseName()).arg(n)
+										   + QLatin1Char('.') + suffix);
+	return path;
+}
+
+/**
+	@brief QETDiagramEditor::openAsRecovered
+	Open @p source as a new project saved beside @p original, of its type
+	(recoveredPath()), not saved yet.
+	@return true if it opened
+*/
+bool QETDiagramEditor::openAsRecovered(const QString &source, const QString &original)
+{
+	QETProject *project = new QETProject(source);
+	if (project->state() != QETProject::Ok) {
+		QET::QetMessageBox::warning(this, tr("Cannot open %1").arg(QFileInfo(source).fileName()),
+									project->openError());
+		delete project;
+		return false;
+	}
+	project->setFilePath(recoveredPath(original, QFileInfo(original).suffix()));
+	project->setModified(true);
+	addProject(project);
+	return true;
 }
 
 /**
@@ -1865,6 +2506,40 @@ bool QETDiagramEditor::openAndAddProject(
 		}
 	}
 
+		//Is someone else working on this file? Taken before the project is
+		//read, so a cancel costs nothing. Never blocks opening: a folder
+		//the lock cannot be made in, or the setting off, opens as before.
+	std::unique_ptr<ProjectLock> lock;
+	bool opened_read_only_by_lock = false;
+	if (ProjectLock::mayTake() && filepath_info.isWritable())
+	{
+		lock = std::make_unique<ProjectLock>();
+		if (lock->acquire(filepath) == ProjectLock::Result::Held)
+		{
+			const ProjectLock::Holder holder = lock->blockingHolder();
+			bool take_over = false;
+			if (interactive) {
+				switch (askAboutLock(filepath, holder)) {
+				case LockChoice::Cancel:
+					return(false);
+				case LockChoice::OpenAnyway:
+					take_over = true;
+					break;
+				case LockChoice::ReadOnly:
+					break;
+				}
+			}
+				//Not interactive (an assistant opening it): read-only, which
+				//is the safe answer to a question nobody is there to ask
+			if (take_over && lock->acquire(filepath, true) == ProjectLock::Result::Acquired) {
+				// ours now
+			} else if (!take_over) {
+				lock.reset();
+				opened_read_only_by_lock = true;
+			}
+		}
+	}
+
 	//Create the project
 	DialogWaiting::instance(this);
 
@@ -1876,9 +2551,38 @@ bool QETDiagramEditor::openAndAddProject(
 	QETUtils::FontRestorationScope font_scope;
 
 	QETProject *project = new QETProject(filepath);
+		//A .qetdb whose content is not what was saved, though every other
+		//check passes (another program changed it): the user goes back to
+		//the saved state or opens it with its changes, rather than being
+		//locked out of it (QETDB-S4C-PLAN.md P5). Cancel: the choices of a
+		//damaged file follow
+	for (bool can_go_back = true ; interactive && project->state() == QETProject::XmlParsingFailed
+			 && project->qetdbRepair().content_differs ; ) {
+		const QetDbFile::OutsideEdit outside = askOutsideEdit(filepath, project->qetdbRepair(), can_go_back);
+		if (outside == QetDbFile::OutsideEdit::Refuse) break;
+		delete project;
+		project = new QETProject(filepath, outside);
+		if (outside == QetDbFile::OutsideEdit::BackToSave && project->state() != QETProject::Ok) {
+			QET::QetMessageBox::warning(this, tr("Cannot go back to the saved state"),
+										tr("The other program rewrote too much of %1 for its repair data "
+										   "to rebuild the state QElectroTech saved.")
+										.arg(QFileInfo(filepath).fileName()));
+			can_go_back = false;
+		}
+	}
 	if (project -> state() != QETProject::Ok)
 	{
-		if (interactive && project -> state() != QETProject::FileOpenDiscard)
+			//A damaged project: its previous version or what can be read
+			//of it, as a new project; the file itself is left as it is
+		if (interactive && project->state() == QETProject::XmlParsingFailed
+				&& offerToRecover(filepath, project->openError()))
+		{
+			delete project;
+			DialogWaiting::dropInstance();
+			return(true);
+		}
+		if (interactive && project -> state() != QETProject::FileOpenDiscard
+				&& project -> state() != QETProject::XmlParsingFailed)
 		{
 			QET::QetMessageBox::warning(
 				this,
@@ -1897,9 +2601,35 @@ bool QETDiagramEditor::openAndAddProject(
 		return(false);
 	}
 
+	if (opened_read_only_by_lock) project->setOpenedReadOnlyByLock(true);
+	if (lock && lock->isHeld()) {
+		connect(lock.get(), &ProjectLock::lockTaken, this, [this, project](const ProjectLock::Holder &by) {
+			statusBar()->showMessage(
+				tr("%1 on %2 has taken over %3. Save your changes with Save As to keep them.")
+					.arg(by.user, by.host, QFileInfo(project->filePath()).fileName()),
+				30000);
+		});
+		project->setLock(std::move(lock));
+	}
+
 	QETApp::projectsRecentFiles() -> fileWasOpened(filepath);
 	addProject(project);
 	DialogWaiting::dropInstance();
+	tellRepair(interactive ? project : nullptr);
+	if (!interactive) {
+		const QetDbFile::Repair repaired = project->qetdbRepair();
+		if (repaired.repaired() || repaired.kept_changes) project->setModified(true);
+	}
+
+	if (interactive && project->isFromLaterVersion()) {
+		QET::QetMessageBox::warning(
+			this,
+			tr("Opening the file read-only", "message box title"),
+			tr("This project was saved by a later version of QElectroTech. "
+			   "It is opened read-only, so that saving it cannot lose what "
+			   "this version does not know. Use Save As to keep a copy "
+			   "in this version's format."));
+	}
 
 		//Report font descriptions which could not be read as-is (written by
 		//an incompatible Qt version or corrupted), so the user learns about
@@ -1936,27 +2666,49 @@ bool QETDiagramEditor::openAndAddProject(
 		);
 	}
 
-		//Report wires left out of the load because a terminal they join
-		//was not found: they would otherwise vanish on the next save
-		//without the user ever being told.
-	QStringList lost_wires;
-	for (Diagram *diagram : project->diagrams()) {
+		//Report the elements and wires left out of the load: an element
+		//whose definition is missing, a wire whose terminal was not found.
+		//They are kept in the file as they were (F127, F128), but are not
+		//shown.
+	QStringList lost_elements, lost_wires;
+	for (Diagram *diagram : project->folios()) {
+		if (!diagram->isLoaded()) continue;
+		for (const QString &element : diagram->symbolsNotLoaded())
+			lost_elements << tr("Sheet %1: %2").arg(diagram->folioIndex() + 1).arg(element);
+	}
+	for (Diagram *diagram : project->foliosWithWiresNotReconnected()) {
 		for (const QString &wire : diagram->wiresNotReconnected()) {
 			lost_wires << tr("Sheet %1: %2").arg(diagram->folioIndex() + 1).arg(wire);
 		}
+	}
+	if (interactive && !lost_elements.isEmpty())
+	{
+		QMessageBox box(QMessageBox::Warning,
+						tr("Elements not loaded", "message box title"),
+						tr("%n elements could not be loaded: their definition is "
+						   "missing from the project and from the collections.\n"
+						   "\n"
+						   "They are not shown, but they are kept in the file as they "
+						   "are, with their conductors, and come back once their "
+						   "definition is available again.",
+						   "message box content",
+						   lost_elements.size()),
+						QMessageBox::Ok,
+						this);
+		box.setDetailedText(lost_elements.join(QLatin1Char('\n')));
+		box.exec();
 	}
 	if (interactive && !lost_wires.isEmpty())
 	{
 		QMessageBox box(QMessageBox::Warning,
 						tr("Conductors not loaded", "message box title"),
 						tr("%n conductors could not be joined to their terminals and "
-						   "were not loaded. The element's definition in the project "
-						   "was probably replaced by another one with different "
-						   "terminals.\n"
+						   "were not loaded. The element's definition is missing, or "
+						   "was replaced by another one with different terminals.\n"
 						   "\n"
-						   "If you save the project, these conductors will disappear "
-						   "from the file. Close it without saving to keep the file as "
-						   "it is.",
+						   "They are not shown, but they are kept in the file as they "
+						   "are, and join their terminals again once the definition "
+						   "has them where they were.",
 						   "message box content",
 						   lost_wires.size()),
 						QMessageBox::Ok,
@@ -2243,6 +2995,90 @@ void QETDiagramEditor::selectGroupTriggered(QAction *action)
 }
 
 /**
+	@brief QETDiagramEditor::cableNumberingGate
+	Decide whether the cable tool may start, asking about the numbering
+	rule when the project numbers its cables by no rule at all.
+
+	A project which does have one is asked nothing: the tool starts and
+	that rule gives the numbers. A project which has none is asked once
+	whether one should be defined now:
+
+	- Oui opens the window where the rule is written, straight onto the
+	  cable page of its automatic numbering; whatever he does in there,
+	  the tool only starts if a rule really exists by the time that
+	  window is closed.
+	- Non says no, and says it for good: it is remembered in the program
+	  settings so the question does not come up on the next start
+	  either. Drawing goes on all the same, with W as the cable's name:
+	  no number is worked out where none has been defined.
+	- Annuler leaves everything as it was, the tool does not start, and
+	  the question comes again the next time he picks the tool up.
+
+	@param diagram the folio the cable would be drawn on
+	@return true when the cable tool may start
+*/
+bool QETDiagramEditor::cableNumberingGate(Diagram *diagram)
+{
+	if (!diagram || !diagram->project()) return true;
+	QETProject *project = diagram->project();
+	if (project->hasCableAutoNum()) return true;
+
+		//A read-only project is left alone without a question: there is
+		//nowhere to define a rule in it, so asking whether he wants to
+		//would be a way to nowhere. Its cables are drawn called W, the
+		//same as any project without a rule.
+	if (project->isReadOnly()) return true;
+
+		//Whether he has once answered no in THIS project. The answer is
+		//kept with the project rather than in the program settings, so
+		//one project being answered with no does not stop every other
+		//project from being asked.
+	if (!project->cableAskNumbering()) {
+		return true;
+	}
+
+	QMessageBox box(QMessageBox::Question,
+					tr("Automatic numbering", "window title"),
+					tr("No automatic cable numbering is defined.",
+					   "shown when a project has no cable numbering rule"),
+					QMessageBox::NoButton,
+					this);
+	box.setInformativeText(tr(
+		"Do you want to define one now?\n\n"
+		"You can also number the cables automatically later: the rule "
+		"is set at any time in the project properties, on the "
+		"\"Auto Numbering\" page.",
+		"ask whether a cable numbering rule should be defined now"));
+	QPushButton *define_button = box.addButton(tr("Yes", "yes"), QMessageBox::YesRole);
+	QPushButton *later_button  = box.addButton(tr("No", "no"),  QMessageBox::NoRole);
+	box.addButton(tr("Cancel", "cancel"), QMessageBox::RejectRole);
+	box.setDefaultButton(later_button);
+	box.exec();
+
+	if (box.clickedButton() == later_button) {
+			//With this project only: he has answered once here and
+			//should not be asked again every time he picks the tool
+			//up in this project -- another project is free to ask.
+		project->setCableAskNumbering(false);
+		project->setModified(true);
+		return true;
+	}
+	if (box.clickedButton() != define_button) {
+		return false;
+	}
+
+		//Oui: the window itself, opened where the rule is written. It
+		//has to really be there by the time that window is closed --
+		//a Cancel in it must not leave the tool running all the same.
+	ProjectPropertiesDialog dialog(diagram->project(), this);
+	dialog.setCurrentPage(ProjectPropertiesDialog::Autonum);
+	dialog.changeToCable();
+	dialog.exec();
+
+	return diagram->project()->hasCableAutoNum();
+}
+
+/**
 	@brief QETDiagramEditor::addItemGroupTriggered
 	This slot is called when an item must be added to the current diagram,
 	this slot use the DVEventInterface to add item
@@ -2293,6 +3129,22 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 	else if (value == "path")
 	{
 		diagram_event = new DiagramEventAddPath (d);
+	}
+	else if (value == QLatin1String("cable"))
+	{
+			//The rule the number comes from -- or the word about there
+			//being no rule yet -- comes before anything is drawn.
+		if (!cableNumberingGate(d))
+		{
+				//Nothing is drawn, so the button must not go on looking
+				//like a tool which is running, and whichever tool was
+				//active before this click must not keep going with its
+				//own button unchecked either.
+			action->setChecked(false);
+			d->clearEventInterface();
+			return;
+		}
+		diagram_event = new DiagramEventAddCable(d);
 	}
 	else if (value == "fillet")
 		diagram_event = new DiagramEventFillet (d);
@@ -2388,8 +3240,30 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 												   "Unbridge and/or remove the levels from the affected terminals so that they can be "
 												   "deleted"));
             } else {
+					//A cable line is not held by DiagramContent: it is
+					//removed by its own command, which also lets the cable
+					//it belongs to go when no line of it is left anywhere.
+				QList<CablePart *> cable_parts;
+				for (QGraphicsItem *item : diagram->selectedItems()) {
+					if (auto *part = qgraphicsitem_cast<CablePart *>(item)) {
+						cable_parts << part;
+					}
+				}
+				const bool other_items = dc.hasDeletableItems();
+
                 diagram->clearSelection();
-                diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
+
+				if (cable_parts.isEmpty()) {
+					diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
+				} else if (!other_items) {
+					diagram->undoStack().push(new RemoveCableCommand(diagram, cable_parts));
+				} else {
+						//One single step, so a selection holding both a
+						//cable and ordinary drawings comes back whole.
+					diagram->undoStack().push(new BatchCommand(
+						new DeleteQGraphicsItemCommand(diagram, dc),
+						new RemoveCableCommand(diagram, cable_parts)));
+				}
                 dv->adjustSceneRect();
             }
         }
@@ -2556,10 +3430,12 @@ void QETDiagramEditor::slot_updateActions()
 	bool opened_project = pv;
 	bool opened_diagram = dv;
 	bool editable_project = (pv && !pv -> project() -> isReadOnly());
+	updateZoomLabel();
 
 	m_close_file->                  setEnabled(opened_project);
 	m_save_file->                   setEnabled(opened_project);
 	m_save_file_as->                setEnabled(opened_project);
+	m_save_copy_for_older->         setEnabled(opened_project);
 	m_rotate_texts->                setEnabled(editable_project);
 	m_export_to_images->            setEnabled(opened_diagram);
 	m_print->                       setEnabled(opened_diagram);
@@ -2582,6 +3458,9 @@ void QETDiagramEditor::slot_updateActions()
 
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
+	m_find_duplicate_labels->setEnabled(opened_project);
+	m_project_history             -> setEnabled(opened_project);
+	m_export_delivery             -> setEnabled(opened_project);
 	m_project_add_diagram         -> setEnabled(editable_project);
 	m_remove_diagram_from_project -> setEnabled(editable_project);
 	m_clean_project               -> setEnabled(editable_project);
@@ -2593,6 +3472,9 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_export_wiring_list  -> setEnabled(opened_project);
 	m_project_wiring_list_view    -> setEnabled(opened_project);
 	m_terminal_numbering          -> setEnabled(editable_project);
+	m_cable_numbering             -> setEnabled(editable_project);
+	m_add_cable_list              -> setEnabled(editable_project);
+	m_export_cable_list           -> setEnabled(editable_project);
 	m_reload_element_drawings     -> setEnabled(opened_project);
 #ifdef QET_HAS_SCRIPTING
 	m_run_script                  -> setEnabled(opened_project);
@@ -2633,6 +3515,21 @@ void QETDiagramEditor::slot_updateUndoStack()
 	if(currentProjectView())
 		undo_group.setActiveStack(currentProjectView()->project()->undoStack());
 }
+
+namespace {
+/**
+	@return the elements of @p diagram's selection which take information
+*/
+QList<Element *> selectedInformationElements(Diagram *diagram)
+{
+	QList<Element *> list;
+	for (Element *element : DiagramContent(diagram).m_elements) {
+		if (MultiElementInfoWidget::takesInformations(element))
+			list << element;
+	}
+	return list;
+}
+} // namespace
 
 /**
 	@brief QETDiagramEditor::slot_updateComplexActions
@@ -2682,12 +3579,27 @@ void QETDiagramEditor::slot_updateComplexActions()
 	// number of selected elements
 	int selected_elements_count = dc.count(DiagramContent::Elements);
 	m_find_element->setEnabled(selected_elements_count == 1);
+	m_copy_text_format->setEnabled(selected_elements_count >= 1);
+	m_apply_text_format->setEnabled(!ro && selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern());
+	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
 	m_mirror_horizontal->setEnabled(!ro && selected_elements_count);
 	m_mirror_vertical->setEnabled(!ro && selected_elements_count);
 
 	//Actions that need items (elements, conductors, texts...) selected, to be enabled
-	bool copiable_items  = dc.hasCopiableItems();
-	bool deletable_items = dc.hasDeletableItems();
+		//A cable line is drawn on the folio but held by the cable, not
+		//by DiagramContent: it counts on its own for deleting and editing.
+	int selected_cables = 0;
+	for (QGraphicsItem *item : diagram_->selectedItems()) {
+		if (item && item->type() == CablePart::Type) {
+			selected_cables++;
+		}
+	}
+
+		//A drawn cable line is copyable, cuttable and duplicatable on
+		//its own, although it belongs to its cable rather than to the
+		//folio and DiagramContent never sees it.
+	bool copiable_items  = dc.hasCopiableItems() || selected_cables > 0;
+	bool deletable_items = dc.hasDeletableItems() || selected_cables > 0;
 	m_cut              -> setEnabled(!ro && copiable_items);
 	m_copy             -> setEnabled(copiable_items);
 	m_duplicate        -> setEnabled(!ro && copiable_items);
@@ -2743,9 +3655,19 @@ void QETDiagramEditor::slot_updateComplexActions()
 			   - selected_dynamic_elmt_text)
 			+ selected_image
 			+ selected_shape
-			+ selected_conductors_count;
+			+ selected_conductors_count
+			+ selected_cables;
 
-	if (selected_editable == 1)
+		//Several elements and nothing else: edit their information together (#1439)
+	if (!ro && selected_editable > 1 && selected_editable == selected_elements_count
+			&& selectedInformationElements(diagram_).size() > 1)
+	{
+		m_edit_selection -> setEnabled(true);
+		m_edit_selection -> setText(tr("Edit the information of the elements",
+					       "edit several elements"));
+		m_edit_selection -> setIcon(QET::Icons::ElementEdit);
+	}
+	else if (selected_editable == 1)
 	{
 		m_edit_selection -> setEnabled(true);
 		//edit element
@@ -2768,6 +3690,13 @@ void QETDiagramEditor::slot_updateComplexActions()
 			m_edit_selection -> setText(tr("Edit the image",
 						       "edit image"));
 			m_edit_selection -> setIcon(QET::Icons::resize_image);
+		}
+		//edit cable
+		else if (selected_cables)
+		{
+			m_edit_selection -> setText(tr("Edit the cable",
+						       "edit cable"));
+			m_edit_selection -> setIcon(QET::Icons::Cable);
 		}
 		//edit conductor
 		else if (selected_conductors_count)
@@ -2838,10 +3767,16 @@ void QETDiagramEditor::slot_updateModeActions()
 		m_auto_conductor -> setChecked (pv -> project() -> autoConductor());
 		m_auto_break_conductor -> setEnabled (true);
 		m_auto_break_conductor -> setChecked (pv -> project() -> autoBreakConductor());
+		m_terminal_strip_labels -> setEnabled (true);
+		m_terminal_strip_labels -> setChecked (pv -> project() -> terminalStripLabelsShown());
+		m_terminal_strip_bridges -> setEnabled (true);
+		m_terminal_strip_bridges -> setChecked (pv -> project() -> terminalStripBridgesShown());
 	}
 	else
 	{
 		m_auto_conductor -> setDisabled(true);
+		m_terminal_strip_labels -> setDisabled(true);
+		m_terminal_strip_bridges -> setDisabled(true);
 		m_auto_break_conductor -> setDisabled(true);
 	}
 
@@ -2849,39 +3784,6 @@ void QETDiagramEditor::slot_updateModeActions()
 		m_conductor_color_button->updateEnabledState();
 	}
 }
-
-namespace {
-/**
-	@return true if @p element has information the user can edit, the
-	same element kinds ElementPropertiesWidget gives an ElementInfoWidget.
-	Plain slaves and folio reports take theirs from what they are linked to.
-*/
-bool takesElementInformations(const Element *element)
-{
-	switch (element->linkType()) {
-		case Element::Simple:
-		case Element::Thumbnail:
-		case Element::Master:
-		case Element::Terminale:
-			return true;
-		default:
-			return false;
-	}
-}
-
-/**
-	@return the elements of @p diagram's selection which take information
-*/
-QList<Element *> selectedInformationElements(Diagram *diagram)
-{
-	QList<Element *> list;
-	for (Element *element : DiagramContent(diagram).m_elements) {
-		if (takesElementInformations(element))
-			list << element;
-	}
-	return list;
-}
-} // namespace
 
 /**
 	@brief QETDiagramEditor::slot_updatePasteAction
@@ -2975,7 +3877,8 @@ void QETDiagramEditor::pasteElementInformations()
 			new_info.remove(QETInformation::ELMT_FORMULA_ID);
 		}
 		for (const QString &key : source.keys()) {
-			if (key == QETInformation::ELMT_FORMULA_ID && !keep_scheme_id)
+			if (key == QETInformation::ELMT_FORMULA_ID && !keep_scheme_id
+					|| key == "exclude_from_bom")
 				continue;
 			new_info.addValue(key, source.value(key), source.keyMustShow(key));
 		}
@@ -3149,6 +4052,52 @@ void QETDiagramEditor::openBackupFiles(QList<KAutoSaveFile *> backup_files)
 		DialogWaiting::dropInstance();
 	}
 }
+/**
+	@brief QETDiagramEditor::openWorkingCopies
+	Open the projects the working copies @p copies left by a QElectroTech
+	that did not close normally (QET-SQL-FORMAT S3z3): each is written as
+	a .qet, which is opened as the project it was, unsaved, as a project
+	reopened from a recovery file. The working copies are deleted.
+	@param copies
+*/
+void QETDiagramEditor::openWorkingCopies(const QList<WorkingCopyRecovery::LeftWorkingCopy> &copies)
+{
+	for (const auto &copy : copies)
+	{
+		DialogWaiting::instance(this);
+		QETProject *project = nullptr;
+		QTemporaryDir dir;
+		const QString recovered = dir.filePath(QStringLiteral("recovered.qet"));
+		QString error;
+		if (dir.isValid() && projectDataBase::writeWorkingCopy(copy.path, recovered, &error))
+		{
+			project = new QETProject(recovered, copy.project_file, this);
+			if (project->state() != QETProject::Ok) {
+				delete project;
+				project = nullptr;
+			}
+		}
+		else {
+			qWarning() << "Working copy" << copy.path << "not recovered:" << error;
+		}
+		WorkingCopyRecovery::remove(copy.path);
+		DialogWaiting::dropInstance();
+		if (!project)
+		{
+			QET::QetMessageBox::warning(
+				this,
+				tr("Unable to open project", "message box title"),
+				QString(tr(
+					"An error occurred while opening file %1.",
+					"message box content")).arg(
+						copy.project_file.isEmpty() ? copy.path
+													: QFileInfo(copy.project_file).fileName()));
+			continue;
+		}
+		addProject(project);
+	}
+}
+
 /**
 	met a jour le menu "Fenetres"
 */
@@ -3626,6 +4575,24 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 		&QETDiagramEditor::slot_updateComplexActions);
 	connect(dv, &DiagramView::modeChanged, this, &QETDiagramEditor::slot_updateModeActions);
 	connect(dv, &DiagramView::elementPlacementStarted, this, &QETDiagramEditor::rememberPlacedElement);
+	connect(dv, &DiagramView::zoomChanged, this, &QETDiagramEditor::updateZoomLabel);
+}
+
+/**
+	@brief QETDiagramEditor::updateZoomLabel
+	Show the zoom of the folio on screen in the status bar, nothing when
+	no folio is shown.
+*/
+void QETDiagramEditor::updateZoomLabel()
+{
+	if (!m_zoom_button)
+		return;
+	DiagramView *dv = currentDiagramView();
+		//Four digits, not rounded to a whole percent: the grid's cutoff
+		//(Settings > General) compares the exact zoom, so 77.6 % shows as
+		//such, not as 78 %
+	m_zoom_button->setText(dv ? tr("Zoom %1 %").arg(QLocale().toString(dv->transform().m11() * 100, 'g', 4))
+				 : QString());
 }
 
 /**
@@ -4009,6 +4976,21 @@ void QETDiagramEditor::slot_terminalNumbering() {
 			undo_group.activeStack()->push(macro);
 		}
 	}
+}
+
+/**
+ * @brief QETDiagramEditor::slot_cableNumbering
+ * Opens the window holding the numbering rule of the project's cables
+ * and the button which numbers every one of them again. The window
+ * writes the project and pushes its own undo step itself, so nothing
+ * is done with its result here beyond letting it work.
+ */
+void QETDiagramEditor::slot_cableNumbering() {
+	QETProject *project = currentProject();
+	if (!project) return;
+
+	CableNumberingDialog dialog(project, this);
+	dialog.exec();
 }
 
 /**
@@ -4448,6 +5430,26 @@ void QETDiagramEditor::updateShownKinds()
 }
 
 /**
+	@brief QETDiagramEditor::updateGridStepButton
+	Show the current grid step on its toolbar button and in the status
+	bar, and check it in its menu; a step set in the settings that the
+	menu does not offer shows as its number.
+*/
+void QETDiagramEditor::updateGridStepButton()
+{
+	QSettings settings;
+	const int x_step = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int y_step = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
+	for (QAction *action : m_grid_step_menu->actions())
+		action->setChecked(x_step == y_step && action->data().toInt() == x_step);
+	const QString text = x_step == y_step ? tr("Grid %1").arg(x_step)
+					      : tr("Grid %1 × %2").arg(x_step).arg(y_step);
+	m_grid_step_button->setText(text);
+	if (m_grid_status_button)
+		m_grid_status_button->setText(text);
+}
+
+/**
 	@brief QETDiagramEditor::updateTextGridButton
 	Show the current text grid on its toolbar button and check it in its menu.
 */
@@ -4465,4 +5467,378 @@ void QETDiagramEditor::updateTextGridButton()
 	}
 		//A divisor the menu does not offer, set by hand in the config file
 	m_text_grid_button->setText(tr("Texts %1").arg(TextGrid::ratioLabel(divisor)));
+}
+/**
+ * @brief QETDiagramEditor::copyTextFormat
+ * Copies the text/label layout and formatting from the currently selected element as a template.
+ */
+void QETDiagramEditor::copyTextFormat()
+{
+	DiagramView *dv = currentDiagramView();
+	if (!dv || !dv->diagram()) return;
+
+	Element *sourceElmt = nullptr;
+	for (QGraphicsItem *item : dv->diagram()->selectedItems()) {
+		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
+			sourceElmt = elmt;
+			break;
+		}
+	}
+
+	if (!sourceElmt) return;
+
+	ElementTextFormatPattern pattern = ElementTextFormatPattern::fromElement(sourceElmt);
+	if (pattern.isValid()) {
+		ElementTextFormatPattern::setCurrentPattern(pattern);
+		slot_updateComplexActions();
+		statusBar()->showMessage(tr("Text format of \"%1\" copied").arg(sourceElmt->name()), 3000);
+	}
+}
+
+/**
+ * @brief QETDiagramEditor::applyTextFormat
+ * Applies the stored text formatting template to all selected elements in the active diagram.
+ */
+/**
+	@brief QETDiagramEditor::placeSymbolTexts
+	Place the texts of the selected symbols as one block at @a where,
+	one of nine points around each symbol, in one undo step.
+	@param where : see SymbolTextPlacement::place()
+*/
+void QETDiagramEditor::placeSymbolTexts(Qt::Alignment where)
+{
+	DiagramView *dv = currentDiagramView();
+	if (!dv || !dv->diagram() || dv->diagram()->isReadOnly()) return;
+
+	QList<Element *> elements;
+	for (QGraphicsItem *item : dv->diagram()->selectedItems())
+		if (Element *element = qgraphicsitem_cast<Element *>(item))
+			elements.append(element);
+	if (elements.isEmpty()) return;
+
+	if (QUndoCommand *undo = SymbolTextPlacement::place(elements, where))
+		dv->diagram()->undoStack().push(undo);
+}
+
+void QETDiagramEditor::applyTextFormat()
+{
+	if (!ElementTextFormatPattern::hasPattern()) return;
+
+	DiagramView *dv = currentDiagramView();
+	if (!dv || !dv->diagram()) return;
+	if (dv->diagram()->isReadOnly()) return;
+
+	QList<Element *> targetElements;
+	for (QGraphicsItem *item : dv->diagram()->selectedItems()) {
+		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
+			targetElements.append(elmt);
+		}
+	}
+
+	if (targetElements.isEmpty()) return;
+
+	const ElementTextFormatPattern &pattern = ElementTextFormatPattern::currentPattern();
+	dv->diagram()->undoStack().push(new ApplyElementTextFormatCommand(targetElements, pattern));
+
+	statusBar()->showMessage(tr("Text format applied to %n element(s)", "", targetElements.size()), 3000);
+}
+
+/**
+	@brief QETDiagramEditor::showProjectHistory
+	The saves the current project's .qetdb keeps, newest first: when, who,
+	and what each changed; and whether the file keeps them (off unless
+	switched on: names and history travel with every copy, #1512).
+*/
+void QETDiagramEditor::showProjectHistory()
+{
+	QETProject *project = currentProject();
+	if (!project) return;
+
+	QDialog dialog(this);
+	dialog.setWindowTitle(tr("History of saves"));
+	auto *layout = new QVBoxLayout(&dialog);
+	auto *keep = new QCheckBox(tr("Keep a history of saves in this file"), &dialog);
+	auto *limit_row = new QHBoxLayout();
+	auto *limit = new QSpinBox(&dialog);
+	limit->setRange(0, 9999);
+	limit->setSpecialValueText(tr("all"));
+	limit->setToolTip(tr("The oldest saves are dropped from the history at each save beyond this number"));
+	limit_row->addWidget(new QLabel(tr("Saves to keep:"), &dialog));
+	limit_row->addWidget(limit);
+	limit_row->addStretch();
+	auto *note = new QLabel(&dialog);
+	note->setWordWrap(true);
+	auto *list = new QTreeWidget(&dialog);
+	list->setHeaderLabels({tr("No."), tr("Saved"), tr("By"), tr("Changes")});
+	list->setRootIsDecorated(false);
+	list->setSelectionMode(QAbstractItemView::ExtendedSelection);
+	list->header()->setStretchLastSection(true);
+	layout->addWidget(keep);
+	layout->addLayout(limit_row);
+	layout->addWidget(note);
+	layout->addWidget(list);
+	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Close, &dialog);
+	auto *open = buttons->addButton(tr("Open as it was"), QDialogButtonBox::ActionRole);
+	open->setToolTip(tr("Open the project as it was after the selected save, read-only"));
+	auto *compare = buttons->addButton(tr("Compare"), QDialogButtonBox::ActionRole);
+	compare->setToolTip(tr("What the selected save changed, or what changed between two selected saves"));
+	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+	layout->addWidget(buttons);
+		//The numbers of the selected saves, oldest first
+	const auto selected = [list]() {
+		QList<qint64> numbers;
+		for (const QTreeWidgetItem *item : list->selectedItems())
+			numbers << item->text(0).toLongLong();
+		std::sort(numbers.begin(), numbers.end());
+		return numbers;
+	};
+	const auto enable = [=]() {
+		const QList<qint64> numbers = selected();
+		open->setEnabled(numbers.size() == 1);
+		compare->setEnabled(numbers.size() == 2 || (numbers.size() == 1 && numbers.first() > 1));
+	};
+	connect(list, &QTreeWidget::itemSelectionChanged, &dialog, enable);
+	connect(open, &QPushButton::clicked, &dialog, [=, &dialog]() {
+		if (openProjectRevision(project, selected().first()))
+			dialog.accept();
+	});
+	connect(compare, &QPushButton::clicked, &dialog, [=, &dialog]() {
+		const QList<qint64> numbers = selected();
+		showProjectChanges(project, numbers.size() == 2 ? numbers.first() : numbers.first() - 1,
+						   numbers.last(), &dialog);
+	});
+
+	const bool database = QetDbFile::isDatabasePath(project->filePath())
+			&& QFileInfo::exists(project->filePath());
+	const auto refresh = [&]() {
+		list->clear();
+		QString error;
+		const QStringList lines = database ? QetDbFile::history(project->filePath(), &error) : QStringList();
+		const QSignalBlocker blocker(keep);
+		keep->setChecked(!lines.isEmpty());
+		keep->setEnabled(database);
+		const QSignalBlocker limit_blocker(limit);
+		limit->setValue(lines.isEmpty() ? 0 : QetDbFile::historyLimit(project->filePath()));
+		limit->setEnabled(!lines.isEmpty());
+		note->setText(!database ? tr("A history is kept only in a project saved as .qetdb (File > Save as).")
+								: lines.isEmpty() ? tr("This file keeps no history. Switched on, each save "
+													   "records who saved, when and what changed.")
+												  : tr("Each save records who saved, when and what changed. "
+													   "Copies of the file carry this history: use "
+													   "File > Export for delivery to send a project without it."));
+			//"ord  time  who@host  kind: changes", newest first
+		for (auto it = lines.crbegin() ; it != lines.crend() ; ++it) {
+			const QString &line = *it;
+			const QString what = line.section(QStringLiteral("  "), 3);
+			auto *item = new QTreeWidgetItem(list, {line.section(QStringLiteral("  "), 0, 0),
+													line.section(QStringLiteral("  "), 1, 1),
+													line.section(QStringLiteral("  "), 2, 2),
+													what == QLatin1String("import") ? tr("History started")
+																					: what.section(QStringLiteral(": "), 1)});
+			item->setToolTip(3, what);
+		}
+		for (int i = 0 ; i < 3 ; ++i) list->resizeColumnToContents(i);
+		enable();
+	};
+	connect(keep, &QCheckBox::toggled, &dialog, [&](bool on) {
+		if (!on && QMessageBox::question(&dialog, tr("History of saves"),
+										 tr("Delete the history this file keeps? It cannot be undone."))
+				!= QMessageBox::Yes) {
+			refresh();
+			return;
+		}
+		QString error;
+		if (!project->setKeepHistory(on, &error))
+			QMessageBox::warning(&dialog, tr("History of saves"),
+								 tr("The history could not be changed: %1").arg(error));
+		refresh();
+	});
+	connect(limit, &QSpinBox::editingFinished, &dialog, [&]() {
+		const int saves = limit->value() == 1 ? 2 : limit->value();
+		if (saves == QetDbFile::historyLimit(project->filePath())) {
+			refresh();
+			return;
+		}
+		QString error;
+		if (!project->setHistoryLimit(saves, &error))
+			QMessageBox::warning(&dialog, tr("History of saves"),
+								 tr("The history could not be changed: %1").arg(error));
+		refresh();
+	});
+	refresh();
+	dialog.resize(720, 420);
+	dialog.exec();
+}
+
+/**
+	@brief QETDiagramEditor::exportForDelivery
+	Write a copy of the current project's .qetdb without the history of
+	its saves: for a client, who should get the drawings, not who changed
+	them and when (QET-SQL-FORMAT-SCOPE.md 6.5). Made from the file, so
+	unsaved changes are saved first.
+*/
+void QETDiagramEditor::exportForDelivery()
+{
+	ProjectView *view = currentProjectView();
+	if (!view) return;
+	QETProject *project = view->project();
+	if (!QetDbFile::isDatabasePath(project->filePath()) || !QFileInfo::exists(project->filePath())) {
+		QMessageBox::information(this, tr("Export for delivery"),
+								 tr("Only a project saved as .qetdb keeps a history to leave out "
+									"(File > Save as)."));
+		return;
+	}
+	if (project->projectWasModified()) {
+		if (QMessageBox::question(this, tr("Export for delivery"),
+								  tr("The copy is made from the saved file. Save the project first?"),
+								  QMessageBox::Save | QMessageBox::Cancel) != QMessageBox::Save
+				|| !view->save().isOk())
+			return;
+	}
+	const QFileInfo info(project->filePath());
+	QString path = QFileDialog::getSaveFileName(
+				this, tr("Export for delivery"),
+				info.dir().filePath(tr("%1 - delivery.qetdb").arg(info.completeBaseName())),
+				tr("QElectroTech project (*.qetdb)"));
+	if (path.isEmpty()) return;
+	if (!QetDbFile::isDatabasePath(path)) path += QStringLiteral(".qetdb");
+	if (QFileInfo(path).absoluteFilePath() == info.absoluteFilePath()) {
+		QMessageBox::warning(this, tr("Export for delivery"),
+							 tr("Choose another file than the project's own."));
+		return;
+	}
+	QString error;
+	if (!QetDbFile::exportDelivery(project->filePath(), path, &error)) {
+		QMessageBox::warning(this, tr("Export for delivery"),
+							 tr("The copy could not be written: %1").arg(error));
+		return;
+	}
+	statusBar()->showMessage(tr("Copy without history written to %1").arg(QDir::toNativeSeparators(path)), 5000);
+}
+
+/**
+	@brief QETDiagramEditor::openProjectRevision
+	Open @p project as it was after its save @p number: written from the
+	history its .qetdb keeps to a file of its own in the temporary folder,
+	and opened read-only beside it (QETDB-S6-SCOPE.md S6-3).
+	@return true if it was opened
+*/
+bool QETDiagramEditor::openProjectRevision(QETProject *project, qint64 number)
+{
+	const QDir folder(QDir::temp().filePath(QStringLiteral("QElectroTech saves")));
+	if (!folder.exists() && !QDir().mkpath(folder.path())) return false;
+	const QString path = folder.filePath(tr("%1 - save %2.qetdb")
+										 .arg(QFileInfo(project->filePath()).completeBaseName())
+										 .arg(number));
+		//Already open: shown again as it is
+	if (QETApp::diagramEditorForFile(path)) return openAndAddProject(path);
+	if (QFile::exists(path)) {
+		QFile::setPermissions(path, QFile::permissions(path) | QFile::WriteOwner);
+		QFile::remove(path);
+	}
+	QString error;
+	if (!QetDbFile::writeRevision(project->filePath(), number, path, &error)) {
+		QMessageBox::warning(this, tr("History of saves"),
+							 tr("Save %1 could not be written again: %2").arg(number).arg(error));
+		return false;
+	}
+	QFile::setPermissions(path, QFile::ReadOwner | QFile::ReadUser | QFile::ReadGroup | QFile::ReadOther);
+	if (!openAndAddProject(path, false)) return false;
+	if (ProjectView *view = viewForFile(path))
+		view->project()->setReadOnly(true);
+	return true;
+}
+
+/**
+	@brief QETDiagramEditor::showProjectChanges
+	What changed in @p project's .qetdb from its save @p from to its save
+	@p to: each symbol, wire and folio, named as the project now names it;
+	a double click shows it on its folio (QETDB-S6-SCOPE.md S6-4).
+*/
+void QETDiagramEditor::showProjectChanges(QETProject *project, qint64 from, qint64 to, QWidget *parent)
+{
+	QString error;
+	const QStringList lines = QetDbFile::historyDiff(project->filePath(), from, to, &error);
+	if (lines.isEmpty()) {
+		QMessageBox::warning(parent, tr("History of saves"),
+							 tr("The saves could not be compared: %1").arg(error));
+		return;
+	}
+		//Names as the project database has them now (not the folios'
+		//items: a folio need not be built to be named)
+	QHash<QUuid, QPair<QString, QString>> names;	// uuid -> folio, name
+	QHash<QUuid, QUuid> folio_of;
+	const auto read = [&](const QString &sql) {
+		QSqlQuery query = project->dataBase()->newQuery(sql);
+		if (!query.exec()) return;
+		while (query.next()) {
+			const QUuid uuid(query.value(0).toString());
+			names.insert(uuid, {query.value(1).toString(), query.value(2).toString()});
+			folio_of.insert(uuid, QUuid(query.value(3).toString()));
+		}
+	};
+	read(QStringLiteral("SELECT device_uuid, folio, label, folio_uuid FROM qet_devices"));
+	read(QStringLiteral("SELECT wire_uuid, folio, coalesce(nullif(wire_number, ''), "
+						"from_device || ':' || from_terminal || ' - ' || to_device || ':' || to_terminal), "
+						"folio_uuid FROM qet_wires"));
+	read(QStringLiteral("SELECT folio_uuid, folio, title, folio_uuid FROM qet_folios"));
+
+	QDialog dialog(parent);
+	dialog.setWindowTitle(tr("Changes from save %1 to save %2").arg(from).arg(to));
+	auto *layout = new QVBoxLayout(&dialog);
+	auto *summary = new QLabel(lines.first().section(QStringLiteral(": "), 1), &dialog);
+	summary->setWordWrap(true);
+	auto *list = new QTreeWidget(&dialog);
+	list->setHeaderLabels({tr("Kind"), tr("Folio"), tr("Name"), tr("Change")});
+	list->setRootIsDecorated(false);
+	list->setSortingEnabled(true);
+	layout->addWidget(summary);
+	layout->addWidget(list);
+	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Close, &dialog);
+	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+	layout->addWidget(buttons);
+
+	const QHash<QString, QString> kinds{{QStringLiteral("symbol"), tr("Symbol")},
+										{QStringLiteral("wire"), tr("Wire")},
+										{QStringLiteral("folio"), tr("Folio")},
+										{QStringLiteral("drawn item"), tr("Drawn item")}};
+	const QHash<QString, QString> changes{{QStringLiteral("added"), tr("added")},
+										  {QStringLiteral("removed"), tr("removed")},
+										  {QStringLiteral("changed"), tr("changed")}};
+		//"<kind> <uuid>: <change>"
+	for (const QString &line : lines.mid(1)) {
+		const QString kind = line.section(QLatin1Char(' '), 0, -3).trimmed();
+		const QUuid uuid(line.section(QLatin1Char(' '), -2, -2).chopped(1));
+		const QString change = line.section(QStringLiteral(": "), -1);
+		const auto name = names.value(uuid);
+		auto *item = new QTreeWidgetItem(list, {kinds.value(kind, kind), name.first,
+												name.second.isEmpty() ? uuid.toString() : name.second,
+												changes.value(change, change)});
+		item->setData(0, Qt::UserRole, uuid);
+		item->setData(1, Qt::UserRole, folio_of.value(uuid));
+		if (!names.contains(uuid))
+			item->setToolTip(2, tr("Not in the project now"));
+	}
+	list->sortByColumn(1, Qt::AscendingOrder);
+	for (int i = 0 ; i < 3 ; ++i) list->resizeColumnToContents(i);
+	connect(list, &QTreeWidget::itemDoubleClicked, &dialog, [project](QTreeWidgetItem *item) {
+		const QUuid uuid = item->data(0, Qt::UserRole).toUuid();
+		Diagram *diagram = project->diagramByUuid(item->data(1, Qt::UserRole).toUuid());
+		if (!diagram) return;
+		diagram->showMe();
+		diagram->clearSelection();
+			//Only this folio's items, to select the one named
+		for (QGraphicsItem *graphics : diagram->items()) {
+			const auto *element = qgraphicsitem_cast<Element *>(graphics);
+			const auto *conductor = qgraphicsitem_cast<Conductor *>(graphics);
+			if ((element && element->uuid() == uuid) || (conductor && conductor->uuid() == uuid)) {
+				graphics->setSelected(true);
+				for (QGraphicsView *view : diagram->views())
+					view->centerOn(graphics);
+				break;
+			}
+		}
+	});
+	dialog.resize(640, 420);
+	dialog.exec();
 }

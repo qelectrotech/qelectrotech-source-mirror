@@ -38,12 +38,21 @@ namespace QetSettings
 	bool scriptingEnabled();
 	void setScriptingEnabled(bool enabled);
 	bool scriptingForcedByEnvironment();
+	bool qetdbEnabled();
+	void setQetdbEnabled(bool enabled);
+	bool workingCopyRecovery();
+	void setWorkingCopyRecovery(bool enabled);
 	bool liveAssistantEnabled();
 	void setLiveAssistantEnabled(bool enabled);
 	bool liveSkipStartWarning();
 	void setLiveSkipStartWarning(bool skip);
 	bool liveAskFirst();
 	void setLiveAskFirst(bool ask);
+
+		// Whether labels differing only in letter case (K1, k1) are distinct
+		// for the duplicate check.
+	bool duplicateLabelsCaseSensitive();
+	void setDuplicateLabelsCaseSensitive(bool sensitive);
 
 	/**
 		@brief Free-text drawing conventions for this installation (grid,
@@ -69,6 +78,9 @@ namespace QetSettings
 	{
 		QColor color;
 		bool custom = false;
+		/// Yellow symbols and red conductors on the sheet instead of one
+		/// light ink (PaletteGraphicsView::setColoredInk()).
+		bool colored_ink = false;
 	};
 
 	SheetBackground sheetBackground();

@@ -33,10 +33,16 @@
  <summary xml:lang="sk">Editor elektrických schém</summary>
  <summary xml:lang="sl">Urejevalnik električnih shem</summary>
  <summary xml:lang="sr">Уређивач електричних дијаграма</summary>
- <summary xml:lang="sv">Elektriskt diagramredigerare</summary>
+ <summary xml:lang="sv">Redigerare för elscheman</summary>
  <summary xml:lang="tr">Elektrik şeması düzenleyici</summary>
  <summary xml:lang="uk">Редактор електричних схем</summary>
  <summary xml:lang="zh">电气图编辑器</summary>
+ <provides>
+  <mediatype>application/x-qet-project</mediatype>
+  <mediatype>application/x-qet-project+zip</mediatype>
+  <mediatype>application/x-qet-element</mediatype>
+  <mediatype>application/x-qet-titleblock</mediatype>
+ </provides>
  <content_rating type="oars-1.1"/>
  <releases>
      <release version="0.100.1-dev" date="2026"/>
@@ -143,8 +149,8 @@
    Користи XML датотеке за елементе и шеме, и укључује уређивач шема, уређивач елемената и уређивач заглавља.
   </p>
   <p xml:lang="sv">
-   QElectroTech är ett Qt5-program för att rita elektriska schema.
-   Det använder XML-filer för element och schema, och inkluderar en schemaredigerare, en elementredigerare och en titelblocksredigerare.
+   QElectroTech är ett Qt5-program för att rita elscheman.
+   Det använder XML-filer för symboler och scheman, och innehåller en schemaredigerare, en symbolredigerare och en ritningshuvudredigerare.
   </p>
   <p xml:lang="tr">
    QElectroTech, elektrik şemaları tasarlamak için bir Qt5 uygulamasıdır.

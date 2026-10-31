@@ -16,16 +16,23 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "generalconfigurationpage.h"
+
+#include <qetgraphicsitem/dynamicelementtextitem.h>
 #include <scripting/liveserver.h>
 #include <scripting/assistantinfo.h>
 
 #include <qetapp.h>
+#include <diagramview.h>
+#include <ui/dockfit.h>
 #include <qeticons.h>
 #include "ui_generalconfigurationpage.h"
 #include <materiallist/materiallist.h>
+#include <cablelist/cabletypelist.h>
 #include <utils/qetsettings.h>
 #include <utils/qetutils.h>
+#include <utils/previousversions.h>
 #include <qetmessagebox.h>
+#include <foliogrid.h>
 #include <textgrid.h>
 #include <wiringrules.h>
 #include <ui/wiringruleswarning.h>
@@ -33,12 +40,42 @@
 #include <ElementsCollection/qetlabelsfile.h>
 #include <ui/prefixconfigurationdialog.h>
 #include <ui/nokde/kcolorbutton.h>
+#include <QCoreApplication>
 #include <QDir>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QFontDialog>
 #include <QMessageBox>
 #include <QSettings>
+
+#include <diagram.h>
+#include <qetproject.h>
+
+namespace {
+	/**
+		@brief What one of those font buttons says: the family, the size
+		and the style, the way it would read on the sheet.
+		@param font the font that text is written with
+		@return e.g. "Liberation Sans 8,1 (Regular)"
+	*/
+	QString fontButtonLabel(const QFont &font)
+	{
+		QString style = font.styleName();
+		if (font.bold()) {
+			style = font.italic()
+					? QCoreApplication::translate("GeneralConfigurationPage",
+												  "Bold italic")
+					: QCoreApplication::translate("GeneralConfigurationPage", "Bold");
+		} else if (font.italic()) {
+			style = QCoreApplication::translate("GeneralConfigurationPage", "Italic");
+		} else if (style.isEmpty()) {
+			style = QCoreApplication::translate("GeneralConfigurationPage", "Normal");
+		}
+		return font.family() + QLatin1Char(' ')
+				+ QString::number(font.pointSizeF(), 'g', 3)
+				+ QLatin1String(" (") + style + QLatin1Char(')');
+	}
+}
 
 /**
 	@brief GeneralConfigurationPage::GeneralConfigurationPage
@@ -77,6 +114,10 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	}
 
 	ui->grid_startup_cb->setChecked(settings.value("diagrameditor/grid_display_startup", true).toBool());
+	ui->m_grid_min_spacing_sb->setRange(FolioGrid::min_dot_spacing_lowest,
+					      FolioGrid::min_dot_spacing_highest);
+	ui->m_grid_min_spacing_sb->setValue(
+				FolioGrid::minDotSpacing(settings.value(FolioGrid::min_dot_spacing_key)));
 	ui->guides_startup_cb->setChecked(settings.value("diagrameditor/guides_display_startup", false).toBool());
 		//Stored as "inserts" but presented as "edits", so the default (insert)
 		//is the unchecked state -- a preference reads better as an opt-out.
@@ -84,6 +125,9 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_collection_search_flat_cb->setChecked(settings.value("elementscollection/search-flat-list", true).toBool());
 	ui->m_context_toolbar_cb->setChecked(settings.value("diagrameditor/context_toolbar", true).toBool());
 	ui->m_mouse_gestures_cb->setChecked(settings.value("diagrameditor/mouse_gestures", true).toBool());
+	ui->m_pointer_aids_cb->setChecked(DiagramView::pointerAids());
+	ui->m_vertical_texts_from_bottom_cb->setChecked(DynamicElementTextItem::verticalFromBottom());
+	ui->m_narrow_docks_cb->setChecked(DockFit::enabled());
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
 	for (const qreal divisor : TextGrid::divisors)
@@ -132,6 +176,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
 	ui->m_autonumber_pasted->setChecked(settings.value("diagramcommands/autonumber-pasted-elements", true).toBool());
+	ui->m_enable_chained_reports->setChecked(settings.value("project/enable-chained-reports", false).toBool());
 	ui->m_enable_scripting->setChecked(QetSettings::scriptingEnabled());
 #ifdef QET_HAS_SCRIPTING
 	if (QetSettings::scriptingForcedByEnvironment()) {
@@ -159,6 +204,10 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_use_folio_label->setChecked(settings.value("genericpanel/folio", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
+	ui->m_project_lock->setChecked(settings.value("projectlock/enabled", true).toBool());
+	ui->m_working_copy_recovery->setChecked(QetSettings::workingCopyRecovery());
+	ui->m_qetdb_enabled->setChecked(QetSettings::qetdbEnabled());
+	ui->m_previous_versions_sb->setValue(PreviousVersions::count());
 	
 	QString fontInfos = settings.value("diagramitemfont", "Liberation Sans").toString() + " " +
 			settings.value("diagramitemsize", "9").toString() + " (" +
@@ -192,6 +241,17 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 							font.styleName() + ")";
 		ui->m_indi_text_font_pb->setText(fontInfos);
 	} else { ui->m_indi_text_font_pb->setText("Liberation Sans 9 (Regular)"); }
+
+		//Cable texts: what every cable writes along its own line when
+		//it has not been given a font of its own.
+	ui->m_cable_text_font_pb->setText(fontButtonLabel(QETApp::cableTextsFont()));
+	ui->m_cable_core_font_pb->setText(fontButtonLabel(QETApp::cableCoreFont()));
+
+		//Where those texts stop in relation to the beginning of their
+		//own line, for the cables which say nothing about it themselves
+	const int align_index = int(QETApp::cableTextAlignment()) == int(Qt::AlignLeft) ? 2
+							: (int(QETApp::cableTextAlignment()) == int(Qt::AlignHCenter) ? 1 : 0);
+	ui->m_cable_align_cb->setCurrentIndex(align_index);
 	
 	ui->m_highlight_integrated_elements->setChecked(settings.value("diagrameditor/highlight-integrated-elements", true).toBool());
 	ui->m_default_elements_info->setPlainText(settings.value("elementeditor/default-informations", "").toString());
@@ -271,6 +331,17 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 				.arg(MaterialList::defaultPath()));
 	}
 
+		//CABLE TYPE FILE
+	path = CableTypeList::configuredPath();
+	ui->m_cable_type_list_path_le->setText(path);
+	if (path.isEmpty())
+	{
+		ui->m_cable_type_list_path_le->setPlaceholderText(
+			tr("Not set (default: %1)",
+			   "hint shown in the cable type file field when no file is configured yet")
+				.arg(CableTypeList::defaultPath()));
+	}
+
 	fillLang();	
 }
 
@@ -324,6 +395,7 @@ void GeneralConfigurationPage::applyConf()
 		//DIAGRAM COMMAND
 	settings.setValue("diagramcommands/erase-label-on-copy", ui->m_save_label_paste->isChecked());
 	settings.setValue("diagramcommands/autonumber-pasted-elements", ui->m_autonumber_pasted->isChecked());
+	settings.setValue("project/enable-chained-reports", ui->m_enable_chained_reports->isChecked());
 
 		//SCRIPTING
 		//Left alone while the environment forces it on: the box is disabled
@@ -339,9 +411,6 @@ void GeneralConfigurationPage::applyConf()
 		if (!ui->m_live_assistant->isChecked()) LiveServer::instance().stop();
 #endif
 	}
-		//What an assistant reads about this QElectroTech follows the change
-	AssistantInfo::write();
-
 		//GENERIC PANEL
 	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());
 
@@ -364,13 +433,22 @@ void GeneralConfigurationPage::applyConf()
 		}
 	}
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
+	settings.setValue("projectlock/enabled", ui->m_project_lock->isChecked());
+	QetSettings::setWorkingCopyRecovery(ui->m_working_copy_recovery->isChecked());
+	QetSettings::setQetdbEnabled(ui->m_qetdb_enabled->isChecked());
+	PreviousVersions::setCount(ui->m_previous_versions_sb->value());
 
 	settings.setValue("diagrameditor/grid_display_startup", ui->grid_startup_cb->isChecked());
+	settings.setValue(FolioGrid::min_dot_spacing_key, ui->m_grid_min_spacing_sb->value());
 	settings.setValue("diagrameditor/guides_display_startup", ui->guides_startup_cb->isChecked());
 	settings.setValue("elementscollection/double-click-inserts", !ui->m_collection_dblclick_edits->isChecked());
 	settings.setValue("elementscollection/search-flat-list", ui->m_collection_search_flat_cb->isChecked());
 	settings.setValue("diagrameditor/context_toolbar", ui->m_context_toolbar_cb->isChecked());
 	settings.setValue("diagrameditor/mouse_gestures", ui->m_mouse_gestures_cb->isChecked());
+	DiagramView::setPointerAids(ui->m_pointer_aids_cb->isChecked());
+	if (ui->m_vertical_texts_from_bottom_cb->isChecked() != DynamicElementTextItem::verticalFromBottom())
+		DynamicElementTextItem::setVerticalFromBottom(ui->m_vertical_texts_from_bottom_cb->isChecked());
+	DockFit::setEnabled(ui->m_narrow_docks_cb->isChecked());
 		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());
@@ -483,6 +561,36 @@ void GeneralConfigurationPage::applyConf()
 		//kept as chosen even when it doesn't exist yet : the user may well
 		//point QElectroTech at a file he intends to write later.
 	MaterialList::setConfiguredPath(ui->m_material_list_path_le->text().trimmed());
+
+		//CABLE TYPE FILE
+		//Same rule as the material file : it is a plain file, kept as
+		//chosen even when it doesn't exist yet.
+	CableTypeList::setConfiguredPath(ui->m_cable_type_list_path_le->text().trimmed());
+
+		//The way a cable lines up its texts at the beginning of its
+		//line, for every cable which says nothing about it itself --
+		//written now, so the sheets drawn again just below show it.
+	const int align_index = ui->m_cable_align_cb->currentIndex();
+	QETApp::setCableTextAlignment(align_index == 2 ? Qt::AlignLeft
+												   : (align_index == 1
+													  ? Qt::AlignHCenter
+													  : Qt::AlignRight));
+
+		//Every folio is drawn again: the texts of the cables are written
+		//from the settings, so that what he just picked reaches the
+		//sheets without his having to touch anything on them first.
+	for (QETProject *project : QETApp::registeredProjects())
+	{
+		for (Diagram *diagram : project->diagrams()) {
+			diagram->update();
+		}
+	}
+
+		//What an assistant reads about this QElectroTech follows the
+		//change. Written last: the collection and title block paths are
+		//applied above, and an assistant launching a headless run takes
+		//the user and company collections from this file.
+	AssistantInfo::write();
 }
 
 /**
@@ -527,6 +635,7 @@ void GeneralConfigurationPage::fillLang()
 	ui->m_lang_cb->addItem(QET::Icons::it,		tr("Italian"), "it");
 	ui->m_lang_cb->addItem(QET::Icons::jp,		tr("Japanese"), "ja");
 	ui->m_lang_cb->addItem(QET::Icons::ko,		tr("Korean"), "ko");
+	ui->m_lang_cb->addItem(QET::Icons::lv,		tr("Latvian"), "lv");
 	ui->m_lang_cb->addItem(QET::Icons::pl,		tr("Polish"), "pl");
 	ui->m_lang_cb->addItem(QET::Icons::pt,		tr("Portuguese"), "pt");
 	ui->m_lang_cb->addItem(QET::Icons::ro,		tr("Romanian"), "ro");
@@ -540,6 +649,7 @@ void GeneralConfigurationPage::fillLang()
 	ui->m_lang_cb->addItem(QET::Icons::mn,		tr("Mongolian"), "mn");
 	ui->m_lang_cb->addItem(QET::Icons::uk,		tr("Ukrainian"), "uk");
 	ui->m_lang_cb->addItem(QET::Icons::zh,		tr("Chinese"), "zh");
+	ui->m_lang_cb->addItem(QET::Icons::zh,		tr("Chinese (Traditional)"), "zh_TW");
 	ui->m_lang_cb->addItem(QET::Icons::se,		tr("Swedish"), "sv");
 		//set current index to the lang found in setting file
 		//if lang doesn't exist set to system
@@ -566,7 +676,8 @@ void GeneralConfigurationPage::on_m_font_pb_clicked()
 	QFont curFont = QFont(settings.value("diagramitemfont", "Liberation Sans").toString());
 	curFont.setPointSizeF(settings.value("diagramitemsize", "9").toInt());
 	curFont.setStyleName (settings.value("diagramitemstyle", "Regular").toString());
-	QFont font = QFontDialog::getFont(&ok, curFont, this);
+	QFont font = QFontDialog::getFont(&ok, curFont, this, QString(),
+									  QFontDialog::DontUseNativeDialog);
 	if (ok)
 	{
 		settings.setValue("diagramitemfont", font.family());
@@ -590,7 +701,8 @@ void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 	QSettings settings;
 	QFont curFont;
 	QETUtils::fontFromString(curFont, settings.value("diagrameditor/dynamic_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
-	QFont font = QFontDialog::getFont(&ok, curFont, this);
+	QFont font = QFontDialog::getFont(&ok, curFont, this, QString(),
+									  QFontDialog::DontUseNativeDialog);
 	if (ok)
 	{
 		settings.setValue("diagrameditor/dynamic_text_font", QETUtils::fontToString(font));
@@ -599,6 +711,45 @@ void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 							font.styleName() + ")";
 		ui->m_dyn_text_font_pb->setText(fontInfos);
 	}
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_cable_text_font_pb_clicked
+	Let him pick the font the texts of a cable are written with by
+	default: designation, type, installation, location and length.
+
+	Every cable which has not been given a font of its own follows it,
+	from now on: one which has keeps the one it was given, which is why
+	those are set on the cable itself rather than here.
+*/
+void GeneralConfigurationPage::on_m_cable_text_font_pb_clicked()
+{
+	bool ok = false;
+	const QFont font = QFontDialog::getFont(&ok, QETApp::cableTextsFont(), this,
+			tr("Cable text font"), QFontDialog::DontUseNativeDialog);
+	if (!ok) return;
+
+	QSettings settings;
+	settings.setValue("cable-management/cable-text-font", QETUtils::fontToString(font));
+	ui->m_cable_text_font_pb->setText(fontButtonLabel(QETApp::cableTextsFont()));
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_cable_core_font_pb_clicked
+	Let him pick the font the colours of the cores are written with by
+	default -- all of them together, the way they are drawn: one row of
+	colours beside the line, never set apart from each other.
+*/
+void GeneralConfigurationPage::on_m_cable_core_font_pb_clicked()
+{
+	bool ok = false;
+	const QFont font = QFontDialog::getFont(&ok, QETApp::cableCoreFont(), this,
+			tr("Core colors font"), QFontDialog::DontUseNativeDialog);
+	if (!ok) return;
+
+	QSettings settings;
+	settings.setValue("cable-management/cable-core-font", QETUtils::fontToString(font));
+	ui->m_cable_core_font_pb->setText(fontButtonLabel(QETApp::cableCoreFont()));
 }
 
 
@@ -838,13 +989,78 @@ void GeneralConfigurationPage::on_m_material_list_create_pb_clicked()
 	ui->m_material_list_path_le->setText(path);
 }
 
+/**
+	@brief GeneralConfigurationPage::on_m_cable_type_list_browse_pb_clicked
+	Let the user pick an existing cable type file.
+*/
+void GeneralConfigurationPage::on_m_cable_type_list_browse_pb_clicked()
+{
+	QString start_dir = ui->m_cable_type_list_path_le->text();
+	start_dir = start_dir.isEmpty()
+			? QETApp::documentDir()
+			: QFileInfo(start_dir).absolutePath();
+
+	const QString path = QFileDialog::getOpenFileName(
+		this,
+		tr("Select the cable types file"),
+		start_dir,
+		tr("CSV files (*.csv)"));
+
+	if (!path.isEmpty()) {
+		ui->m_cable_type_list_path_le->setText(path);
+	}
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_cable_type_list_create_pb_clicked
+	Create the cable type file with its header line, so the columns are
+	known before the user fills them from his spreadsheet.
+*/
+void GeneralConfigurationPage::on_m_cable_type_list_create_pb_clicked()
+{
+	QString path = ui->m_cable_type_list_path_le->text();
+	path = path.isEmpty()
+			? CableTypeList::defaultPath()
+			: QFileInfo(path).absolutePath() + QLatin1Char('/') + CableTypeList::defaultFileName();
+
+	path = QFileDialog::getSaveFileName(
+		this,
+		tr("Create the cable types file"),
+		path,
+		tr("CSV files (*.csv)"));
+	if (path.isEmpty()) {
+		return;
+	}
+	if (QFileInfo(path).suffix().isEmpty()) {
+		path += QStringLiteral(".csv");
+	}
+
+		//An existing file is kept as it is : this button creates the
+		//header, it never overwrites a catalogue.
+	if (CableTypeList::isEmptyFile(path))
+	{
+		QString error;
+		if (!CableTypeList::createFile(path, &error))
+		{
+			QET::QetMessageBox::critical(this,
+										 tr("Cannot be created"),
+										 tr("Cannot create the file:\n%1\n%2")
+											.arg(path, error));
+			return;
+		}
+	}
+
+	ui->m_cable_type_list_path_le->setText(path);
+}
+
 void GeneralConfigurationPage::on_m_indi_text_font_pb_clicked()
 {
 	bool ok;
 	QSettings settings;
 	QFont curFont;
 	QETUtils::fontFromString(curFont, settings.value("diagrameditor/independent_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
-	QFont font = QFontDialog::getFont(&ok, curFont, this);
+	QFont font = QFontDialog::getFont(&ok, curFont, this, QString(),
+									  QFontDialog::DontUseNativeDialog);
 	if (ok)
 	{
 		settings.setValue("diagrameditor/independent_text_font", QETUtils::fontToString(font));

@@ -136,7 +136,8 @@ void FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked()
 	if (ui->m_from_cb->count()<=0){
 		ui->m_from_cb->clear();
 		ui->m_from_cb->addItem("");
-		foreach (Diagram *diagram, project_->diagrams()){
+			//Titles only: folios() builds nothing
+		foreach (Diagram *diagram, project_->folios()){
 			ui->m_from_cb->addItem(diagram->title());
 		}
 	}
@@ -164,9 +165,9 @@ void FolioAutonumberingW::on_m_from_cb_currentIndexChanged(int)
 	ui->m_to_cb->clear();
 	if (index > 0){
 		ui->m_to_cb->setEnabled(true);
-		for (int i=index;i<project_->diagrams().size();i++)
-			ui->m_to_cb->addItem(project_
-					     ->diagrams().at(i)->title());
+		const QList<Diagram *> folios = project_->folios();
+		for (int i=index;i<folios.size();i++)
+			ui->m_to_cb->addItem(folios.at(i)->title());
 		applyEnable(true);
 	}
 	else{

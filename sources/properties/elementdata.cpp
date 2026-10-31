@@ -713,6 +713,28 @@ ElementData::Type ElementData::typeFromString(const QString &string)
 	return ElementData::Simple;
 }
 
+/**
+	@brief ElementData::takesSchemeNumber
+	Whether an element of this kind is given a number by an element
+	numbering scheme.
+	A slave or a report takes its name from the element it is linked to,
+	and a conductor definition labels a wire rather than naming an item of
+	the drawing: numbering one of them would give a wire label a BMK and
+	advance a scheme's counter for nothing.
+	@param type the kind of element
+	@return true when the element numbering schemes apply to this kind
+*/
+bool ElementData::takesSchemeNumber(const ElementData::Type type)
+{
+	if (type == ElementData::Slave) {
+		return false;
+	}
+	if (type & ElementData::AllReport) {
+		return false;
+	}
+	return type != ElementData::ConductorDefinition;
+}
+
 QString ElementData::masterTypeToString() const {
 	if (m_type == Master)
 		return masterTypeToString(m_master_type);

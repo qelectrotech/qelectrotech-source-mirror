@@ -198,7 +198,8 @@ QWidget *AddTableDialog::contentWidget() const
 void AddTableDialog::on_m_header_font_pb_clicked()
 {
 	bool b;
-	auto font = QFontDialog::getFont(&b, m_header_font, this, tr("Select the font at the top of the table"));
+	auto font = QFontDialog::getFont(&b, m_header_font, this, tr("Select the font at the top of the table"),
+									 QFontDialog::DontUseNativeDialog);
 	if (b) {
 		m_header_font = font;
 		ui->m_header_font_pb->setText(font.family());
@@ -209,7 +210,8 @@ void AddTableDialog::on_m_header_font_pb_clicked()
 void AddTableDialog::on_m_table_font_pb_clicked()
 {
 	bool b;
-	auto font = QFontDialog::getFont(&b, m_table_font, this, tr("Select the font of the table cells"));
+	auto font = QFontDialog::getFont(&b, m_table_font, this, tr("Select the font of the table cells"),
+									 QFontDialog::DontUseNativeDialog);
 	if (b) {
 		m_table_font = font;
 		ui->m_table_font_pb->setText(font.family());

@@ -24,6 +24,7 @@
 
 #include <QColor>
 #include <QFont>
+#include <QImage>
 #include <QList>
 #include <QUuid>
 #include <QStyleOptionGraphicsItem>
@@ -88,6 +89,10 @@ class DiagramImageItem : public QetGraphicsItem {
 	void setImageSourceVariant(const QVariant &source);
 	QRect cropRect() const { return m_crop_rect; }
 	bool applyCrop(const QRect &cropRect);
+	bool isCropping() const { return m_handleMode == HandleMode::Crop; }
+	void enterCropMode();
+	void finishCropMode(bool apply);
+	void resetCrop();
 	
 	// attributes
 	public:
@@ -103,8 +108,8 @@ class DiagramImageItem : public QetGraphicsItem {
 	// not shared code, since the two classes' broader handle roles
 	// differ too much (no path/polygon/arc concepts here) for sharing
 	// the dispatcher itself to be worth an indirect abstraction.
-	enum class HandleMode { Size, RotateSkew };
-	enum class HandleRole { Resize, Rotate, SkewEdge, Pivot };
+	enum class HandleMode { Size, RotateSkew, Crop };
+	enum class HandleRole { Resize, Rotate, SkewEdge, Pivot, CropEdge };
 	
 	// methods
 	public:
@@ -115,7 +120,20 @@ class DiagramImageItem : public QetGraphicsItem {
 	*/
 	int type() const override { return Type; }
 	
+	/// A picture as read from its <image> element, before and after
+	/// decodePicture(), which may run outside the GUI thread.
+	struct Picture {
+		QString base64;		///< text of <image>, decoded when bytes is empty
+		QByteArray bytes;	///< the picture file (PNG, JPEG...)
+		QImage image;		///< bytes, decoded
+		bool found = true;	///< false : neither bytes nor text
+	};
+	static Picture pictureOf(const QDomElement &, const QByteArray &picture);
+	static void decodePicture(Picture &picture);
+
 	virtual bool fromXml(const QDomElement &);
+	bool fromXml(const QDomElement &, const QByteArray &picture);
+	bool fromXml(const QDomElement &, Picture picture);
 	virtual QDomElement toXml(QDomDocument &) const;
 	QUuid uuid() const {return m_uuid;}
 	void setUuid(const QUuid &uuid) {m_uuid = uuid; emit uuidChanged();}
@@ -171,6 +189,9 @@ class DiagramImageItem : public QetGraphicsItem {
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
 	void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) override;
 	void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+	void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+	void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+	void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
 	void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 	void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 	bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
@@ -206,6 +227,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	void handlerMouseReleaseEvent(int index);
 	void cancelHandleDrag();
 	void endHandleDrag();
+	void releaseKeyboardItem();
 	void dragResize(int index, const QPointF &localPos, Qt::KeyboardModifiers mods);
 	void dragRotateHandle(int cornerIndex, const QPointF &scenePos, Qt::KeyboardModifiers mods);
 	void dragSkewHandle(int edgeIndex, const QPointF &scenePos, Qt::KeyboardModifiers mods);
@@ -268,6 +290,16 @@ class DiagramImageItem : public QetGraphicsItem {
 	int m_vector_index = -1;
 	QPointF m_original_pos;   // scene position at the start of a resize/rotate/pivot drag, for Escape-to-cancel
 	bool m_drag_cancelled = false;   // Escape pressed: ignore the rest of this mouse gesture
+	// Crop mode: the crop being edited, in the original's pixels; the
+	// whole original, colour-keyed, shown dimmed around it; and the
+	// state of a drag that moves the crop window.
+	QRectF m_pending_crop;
+	QPixmap m_crop_preview;
+	bool m_crop_moving = false;
+	QPointF m_crop_move_start;
+	QRectF m_crop_move_origin;
+	QRectF cropFrameLocal() const;
+	void dragCropHandle(int index, const QPointF &scenePos);
 	ShapeTransform m_original_transform;
 	bool m_original_pivotIsCustom = false;
 	bool m_deferHandleReposition = false;   // see setPivot()'s comment

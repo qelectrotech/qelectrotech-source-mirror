@@ -18,6 +18,7 @@
 #ifndef ELEMENTAUTONUMSCHEMECOMMAND_H
 #define ELEMENTAUTONUMSCHEMECOMMAND_H
 
+#include "assignvariables.h"
 #include "numerotationcontext.h"
 #include "renumberelementscommand.h"
 
@@ -127,7 +128,7 @@ class ElementAutoNumSchemeCommand : public QUndoCommand
 			FollowsAlready,   ///< already follows this scheme
 			Frozen,           ///< its label is frozen
 			OtherFormula,     ///< follows another scheme or has a formula of its own
-			Linked            ///< slave or report: takes its label from its master
+			Linked            ///< slave, report or conductor definition: not numbered by a scheme
 		};
 		static Skipped skipReason(const QETProject *project,
 								  const QString &title,
@@ -139,7 +140,7 @@ class ElementAutoNumSchemeCommand : public QUndoCommand
 			QVector<Element *> frozen;        ///< a frozen label: left alone unless overwrite
 			QVector<Element *> otherFormula;  ///< follow or hold another formula: left alone unless overwrite
 			int followsAlready = 0;           ///< follow this scheme already
-			int linked = 0;                   ///< slave or report: take their label from their master
+			int linked = 0;                   ///< slaves, reports or conductor definitions: not numbered
 		};
 		static AssignPlan assignPlan(const QETProject *project,
 									 const QString &title,
@@ -201,6 +202,8 @@ class ElementAutoNumSchemeCommand : public QUndoCommand
 		static QSet<QString> labelsHeldBesides(const QETProject *project, const Element *element);
 		static NumberSupport numberSupport(const NumerotationContext &context);
 		static std::optional<int> numberOf(const NumberSupport &support, const Element *element);
+		static std::optional<int> numberOf(const NumberSupport &support,
+										   const autonum::sequentialNumbers &seq);
 		static QList<GapRange> gapRanges(const QETProject *project, const QString &title);
 		static QList<int> freeNumbers(const QETProject *project, const QString &title,
 									  const Element *element, int limit = 500);

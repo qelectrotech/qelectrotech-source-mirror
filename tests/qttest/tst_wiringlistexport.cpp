@@ -6,6 +6,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // The wiring list (--export-cables, and the wiring plan CSV export of the
 // GUI) joins the two halves of a wire drawn to a folio report. The fixture
@@ -47,7 +48,7 @@ class tst_wiringlistexport : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--export-cables"), project, out});
-		if (!proc.waitForFinished(60000) || proc.exitCode() != 0)
+		if (!proc.waitForFinished(QetTest::timeout(60000)) || proc.exitCode() != 0)
 			return {};
 
 		QFile file(out);

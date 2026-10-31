@@ -78,7 +78,7 @@ void RenumberElementsCommand::applyChange(const ElementChange &c, bool use_new)
     const bool was_frozen = c.element->isFreezeLabel();
     if (was_frozen) c.element->freezeLabel(false);
 
-    c.element->rSequenceStruct() = seq;
+    c.element->setSequenceStruct(seq);
     c.element->setElementInformations(infos);
     c.element->freezeLabel(frozen);
 }

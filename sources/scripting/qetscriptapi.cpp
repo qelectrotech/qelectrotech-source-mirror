@@ -23,7 +23,11 @@
 #include <ElementsCollection/elementslocation.h>
 #include <QPropertyUndoCommand/qpropertyundocommand.h>
 #include <cli_export.h>
+#include <dataBase/qetdbfile.h>
 #include <diagram.h>
+#include <bomexport.h>
+#include <cablelist/cablelistrows.h>
+#include <cablelist/cablequerywidget.h>
 #include <dataBase/ui/elementquerywidget.h>
 #include <dataBase/ui/summaryquerywidget.h>
 #include <diagramcontent.h>
@@ -39,6 +43,7 @@
 #include <dataBase/projectdatabase.h>
 #include <qetapp.h>
 #include <qetproject.h>
+#include <projectlock.h>
 #include <qetresult.h>
 #include <qetgraphicsitem/conductor.h>
 #include <qetgraphicsitem/conductortextitem.h>
@@ -79,6 +84,7 @@
 #include <borderproperties.h>
 #include <titleblock/templatescollection.h>
 #include <diagramcommands.h>
+#include <symboltextplacement.h>
 #include <qetgraphicsitem/terminal.h>
 #include <qetgraphicsitem/terminalelement.h>
 #include <qetinformation.h>
@@ -98,6 +104,10 @@
 #include <QDir>
 #include <QDomDocument>
 #include <QFileInfo>
+#include <cable/addcablecommand.h>
+#include <cable/cable.h>
+#include <cable/cablemanager.h>
+#include <cable/cablepart.h>
 #include <QFont>
 #include <QImage>
 #include <QPixmap>
@@ -123,7 +133,7 @@ QString QetScriptApi::filePath() const
 
 int QetScriptApi::folioCount() const
 {
-	return m_project ? m_project->diagrams().count() : 0;
+	return m_project ? m_project->folios().count() : 0;
 }
 
 /**
@@ -180,7 +190,7 @@ QStringList QetScriptApi::signatures()
 int QetScriptApi::currentFolio() const
 {
 	if (!m_project) return -1;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (m_view && m_view->diagram()) {
 		return diagrams.indexOf(m_view->diagram());
 	}
@@ -190,7 +200,7 @@ int QetScriptApi::currentFolio() const
 QString QetScriptApi::folioTitle(int index) const
 {
 	if (!m_project) return QString();
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (index < 0 || index >= diagrams.count()) return QString();
 	return diagrams.at(index)->title();
 }
@@ -204,7 +214,7 @@ QString QetScriptApi::folioTitle(int index) const
 QString QetScriptApi::folioUuid(int index) const
 {
 	if (!m_project) return QString();
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (index < 0 || index >= diagrams.count()) return QString();
 	return diagrams.at(index)->uuid().toString();
 }
@@ -219,7 +229,7 @@ int QetScriptApi::folioIndex(const QString &uuid) const
 	if (!m_project) return -1;
 	const QUuid wanted(uuid);
 	if (wanted.isNull()) return -1;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	for (int i = 0 ; i < diagrams.count() ; ++i) {
 		if (diagrams.at(i)->uuid() == wanted) return i;
 	}
@@ -229,18 +239,18 @@ int QetScriptApi::folioIndex(const QString &uuid) const
 int QetScriptApi::elementCount(int folioIndex) const
 {
 	if (!m_project) return 0;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return 0;
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	return content.m_elements.count();
 }
 
 int QetScriptApi::conductorCount(int folioIndex) const
 {
 	if (!m_project) return 0;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return 0;
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	return content.conductors(DiagramContent::AnyConductor).count();
 }
 
@@ -266,6 +276,9 @@ bool QetScriptApi::runFlag(const QString &flag, const QStringList &args)
 	}
 	QStringList full_args;
 	full_args << flag << path << args;
+		//The project's own file, which this session has locked, is no conflict
+	if (m_project->lock() && m_project->lock()->isHeld() && args.value(0) == path)
+		full_args << QStringLiteral("--ignore-lock");
 
 	if (m_view)
 	{
@@ -336,6 +349,31 @@ bool QetScriptApi::exportBom(const QString &output, bool noSlaves,
 	return runFlag(QStringLiteral("--export-bom"), args);
 }
 
+/**
+	@brief QetScriptApi::exportCableList
+	Write the cable list of this project to @p output as CSV -- the same
+	bytes the "Exporter la liste des câbles au format CSV" action writes,
+	every column of CableList, every cable of the project. Written from
+	the project in memory rather than through runFlag(): the rows are
+	worked out from the cables themselves, there is no CLI flag and no
+	reopening of the file to do it through.
+	@param output path of the file to write
+	@return true when the file was written
+*/
+bool QetScriptApi::exportCableList(const QString &output)
+{
+	if (!m_project) {
+		log(QStringLiteral("qet.exportCableList: no project"));
+		return false;
+	}
+	QString error;
+	if (!BomExport::writeCsv(output, CableList::toCsv(m_project), &error)) {
+		log(QStringLiteral("qet.exportCableList: %1").arg(error));
+		return false;
+	}
+	return true;
+}
+
 bool QetScriptApi::exportWiring(const QString &output)
 {
 	return runFlag(QStringLiteral("--export-wiring"), {output});
@@ -364,6 +402,22 @@ bool QetScriptApi::setTitleBlock(const QString &output, const QStringList &assig
 }
 
 /**
+	@brief QetScriptApi::saveFromDatabase
+	Write @p output from the project database alone (QET-SQL-FORMAT S3z1).
+	@return false if the database could not be copied or the file written
+*/
+bool QetScriptApi::saveFromDatabase(const QString &output)
+{
+	if (!m_project || output.isEmpty()) return false;
+	QString error;
+	if (!m_project->dataBase()->writeProjectFromDatabase(output, &error)) {
+		log(QStringLiteral("qet.saveFromDatabase: %1").arg(error));
+		return false;
+	}
+	return true;
+}
+
+/**
 	@brief QetScriptApi::save
 	Write this project's own current in-memory state -- unlike every export
 	method above, this does NOT go through runFlag()/CLIExport::run(): that
@@ -385,12 +439,27 @@ bool QetScriptApi::setTitleBlock(const QString &output, const QStringList &assig
 	the project's own filePath() or read-only state, the same way "Save As"
 	targeting a writable location is allowed even for a project opened
 	read-only.
+	An output path ending in .qetdb is written as one, keeping the history
+	the project's file keeps (QETProject::writeDatabaseFile()).
 	@param output path to write to; the project's own file path if empty
 	@return false if there is no output path to use, or the write failed
 */
 bool QetScriptApi::save(const QString &output)
 {
 	if (!m_project) return false;
+
+		//Not onto a file someone else has open (their lock beside it); the
+		//lock this project holds itself is no conflict
+	{
+		const QString target = output.isEmpty() ? m_project->filePath() : output;
+		const ProjectLock::Holder holder = target.isEmpty() ? ProjectLock::Holder()
+			: ProjectLock::liveHolder(target, m_project->lock() ? m_project->lock()->session() : QString());
+		if (holder.valid) {
+			log(QStringLiteral("qet.save: %1 is open by %2 on %3 (lock file %4); not written -- pass another output path")
+				.arg(target, holder.user, holder.host, ProjectLock::lockPathFor(target)));
+			return false;
+		}
+	}
 
 	if (output.isEmpty())
 	{
@@ -406,9 +475,13 @@ bool QetScriptApi::save(const QString &output)
 		return true;
 	}
 
-	QDomDocument xml_doc(m_project->toXml());
 	QString error_message;
-	if (!QET::writeXmlFile(xml_doc, output, &error_message)) {
+	if (QetDbFile::isDatabasePath(output)
+			? !m_project->writeDatabaseFile(output, &error_message)
+			: QETProject::isContainerPath(output)
+			? !m_project->writeContainerFile(output, &error_message)
+			: ![&]() { QDomDocument xml_doc(m_project->toXml());
+					   return QET::writeXmlFile(xml_doc, output, &error_message); }()) {
 		log(QStringLiteral("qet.save: %1").arg(error_message));
 		return false;
 	}
@@ -433,6 +506,41 @@ void QetScriptApi::setLive(QStringList *log)
 }
 
 /**
+	@brief QetScriptApi::unbuiltInformation
+	@return the information of the symbol @p elementUuid on the folio
+	@p folioIndex when that folio is not built (lazy folios) and the
+	symbol's information can be read and changed through the project
+	database alone (projectDataBase::canEditUnbuilt()); nothing otherwise,
+	the folio to be built
+*/
+std::optional<DiagramContext> QetScriptApi::unbuiltInformation(int folioIndex, const QString &elementUuid) const
+{
+	if (!m_project || folioIndex < 0 || folioIndex >= m_project->folios().count()) return std::nullopt;
+	Diagram *folio = m_project->folios().at(folioIndex);
+	const QUuid uuid(elementUuid);
+	projectDataBase *database = m_project->dataBase();
+	if (folio->isLoaded() || !database->rowsFromDocument()
+			|| !database->folioUuidsOfElements({uuid}).contains(folio->uuid())
+			|| !database->canEditUnbuilt(uuid)) {
+		return std::nullopt;
+	}
+	return database->elementInformation(uuid);
+}
+
+/**
+	@brief QetScriptApi::built
+	@return @p folio, built if it was not yet (lazy folios), as showing
+	it builds it: what a call reading or changing its items needs. A
+	folio's own data (title block, border, wire defaults) needs no build.
+*/
+Diagram *QetScriptApi::built(Diagram *folio) const
+{
+	if (folio && m_project)
+		m_project->buildFolioToShow(folio);
+	return folio;
+}
+
+/**
 	@brief QetScriptApi::findElement
 	@param folioIndex
 	@param elementUuid as returned by addElement(), or read from the
@@ -442,9 +550,9 @@ void QetScriptApi::setLive(QStringList *log)
 Element *QetScriptApi::findElement(int folioIndex, const QString &elementUuid) const
 {
 	if (!m_project) return nullptr;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return nullptr;
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	for (Element *elmt : std::as_const(content.m_elements)) {
 		if (elmt->uuid().toString() == elementUuid)
 			return elmt;
@@ -624,6 +732,19 @@ bool QetScriptApi::setInfoKey(int folioIndex, const QString &elementUuid,
 				.arg(caller, key));
 		return false;
 	}
+		//A symbol on a folio not built whose information nothing else
+		//shows is changed through the project database, its folio left
+		//unbuilt (stage D5)
+	if (key != QETInformation::ELMT_FORMULA) {
+		if (const auto stored = unbuiltInformation(folioIndex, elementUuid)) {
+			if (stored->value(key).toString() == value) return true; // nothing to push
+			DiagramContext new_info = *stored;
+			new_info.addValue(key, value);
+			m_project->undoStack()->push(new ChangeStoredElementInformationCommand(
+											 m_project, QUuid(elementUuid), *stored, new_info));
+			return true;
+		}
+	}
 	Element *element = findElement(folioIndex, elementUuid);
 	if (!element) return false;
 
@@ -675,9 +796,9 @@ QString QetScriptApi::addElement(int folioIndex, const QString &locationPath, do
 		log(QStringLiteral("qet.addElement: project is read-only"));
 		return QString();
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 
 	// ElementsLocation::setPath() forces ANY path to embed:// as soon as a
 	// non-null project is given, common://custom:// included -- passing
@@ -787,7 +908,7 @@ bool QetScriptApi::deleteElement(int folioIndex, const QString &elementUuid)
 	}
 	Element *element = findElement(folioIndex, elementUuid);
 	if (!element) return false;
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 
 	DiagramContent content;
 	content.m_elements << element;
@@ -876,9 +997,9 @@ QStringList QetScriptApi::elementUuids(int folioIndex) const
 {
 	QStringList uuids;
 	if (!m_project) return uuids;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return uuids;
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	for (Element *elmt : std::as_const(content.m_elements)) {
 		uuids << elmt->uuid().toString();
 	}
@@ -966,6 +1087,8 @@ int QetScriptApi::terminalIndex(int folioIndex, const QString &elementUuid,
 
 QString QetScriptApi::elementInfo(int folioIndex, const QString &elementUuid, const QString &key) const
 {
+	if (const auto stored = unbuiltInformation(folioIndex, elementUuid))
+		return stored->value(key).toString();
 	Element *element = findElement(folioIndex, elementUuid);
 	if (!element) return QString();
 	return element->elementInformations().value(key).toString();
@@ -1047,7 +1170,7 @@ bool QetScriptApi::addConductor(int folioIndex,
 		return false;
 	}
 
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 	ConductorCreator creator(diagram, terminals);
 	Q_UNUSED(creator)
 
@@ -1080,10 +1203,10 @@ QStringList QetScriptApi::conductors(int folioIndex) const
 {
 	QStringList list;
 	if (!m_project) return list;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return list;
 
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	const QList<Conductor *> all = content.conductors(DiagramContent::AnyConductor);
 	for (Conductor *c : all)
 	{
@@ -1102,10 +1225,10 @@ QStringList QetScriptApi::conductorUuids(int folioIndex) const
 {
 	QStringList list;
 	if (!m_project) return list;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return list;
 
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	for (Conductor *c : content.conductors(DiagramContent::AnyConductor))
 		list << c->uuid().toString();
 	return list;
@@ -1122,12 +1245,12 @@ QStringList QetScriptApi::conductorUuids(int folioIndex) const
 QStringList QetScriptApi::conductorEnds(int folioIndex, const QString &uuid) const
 {
 	if (!m_project) return {};
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
 	const QUuid wanted(uuid);
 	if (wanted.isNull()) return {};
 
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	for (Conductor *c : content.conductors(DiagramContent::AnyConductor))
 		if (c->uuid() == wanted)
 			return {describeEnd(c->terminal1), describeEnd(c->terminal2)};
@@ -1159,6 +1282,10 @@ QString QetScriptApi::conductorProperty(int folioIndex, const QString &elementUu
 	describes a potential and not one drawn segment. Setting it on one
 	conductor and leaving the rest of the potential disagreeing would
 	produce a file no GUI action could have produced.
+
+	One thing stops at a terminal element with its function separation
+	enabled: every property but the voltage / protocol, which still
+	crosses it (@see Conductor::functionSeparatedConductors).
 	@return true if anything was changed, or if it already held that value
 */
 bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUuid,
@@ -1185,7 +1312,21 @@ bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUu
 			.arg(caller, value, property));
 		return false;
 	}
-	if (properties == conductor->properties()) return true; // already so
+	return applyConductorProperties(conductor, properties);
+}
+
+/**
+	@brief QetScriptApi::applyConductorProperties
+	Give @p conductor and every wire at its potential the properties
+	@p properties, one undo step
+*/
+bool QetScriptApi::applyConductorProperties(Conductor *conductor, const ConductorProperties &properties)
+{
+	//Captured before the pushes below: QPropertyUndoCommand applies on
+	//push, so reading the properties afterwards would already give back
+	//@a properties.
+	const ConductorProperties before = conductor->properties();
+	if (properties == before) return true; // already so
 
 	QSet<Conductor *> potential = conductor->relatedPotentialConductors(true);
 	potential << conductor;
@@ -1198,8 +1339,195 @@ bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUu
 		new_value.setValue(properties);
 		m_project->undoStack()->push(new QPropertyUndoCommand(c, "properties", old_value, new_value));
 	}
+		//The other side of a function separated terminal element gets the
+		//voltage / protocol only: it is the one property that still
+		//describes the electrical node rather than one side of it. And it
+		//only arrives when this call really changed it -- before / after
+		//is the edit, not the far wire's own value, which differs from it
+		//just as often as not and would then be overwritten by every call,
+		//colour included.
+	for (Conductor *c : conductor->functionSeparatedConductors(true))
+	{
+		ConductorProperties separated_properties = c->properties();
+		separated_properties.applyTensionProtocolChange(before, properties);
+		if (separated_properties == c->properties())
+			continue;
+
+		QVariant old_value, new_value;
+		old_value.setValue(c->properties());
+		new_value.setValue(separated_properties);
+		m_project->undoStack()->push(new QPropertyUndoCommand(c, "properties", old_value, new_value));
+	}
 	m_project->undoStack()->endMacro();
 	return true;
+}
+
+namespace {
+	//The wire properties a .qetz's database holds in its own columns, which
+	//nothing on a folio computes from but a wire's number formula
+const QStringList &storedConductorPropertyNames()
+{
+	static const QStringList names {
+		QStringLiteral("num"), QStringLiteral("function"), QStringLiteral("bus"),
+		QStringLiteral("cable"), QStringLiteral("tension_protocol"),
+		QStringLiteral("conductor_color"), QStringLiteral("conductor_section")};
+	return names;
+}
+
+	//true if @p a and @p b differ only in storedConductorPropertyNames()
+bool differOnlyInStored(const ConductorProperties &a, const ConductorProperties &b)
+{
+	QHash<QString, QString> left, right;
+	for (const auto &attribute : a.attributes()) left.insert(attribute.first, attribute.second);
+	for (const auto &attribute : b.attributes()) right.insert(attribute.first, attribute.second);
+	QSet<QString> names(left.keyBegin(), left.keyEnd());
+	for (const QString &name : right.keys()) names.insert(name);
+	for (const QString &name : std::as_const(names))
+		if (left.value(name) != right.value(name) && !storedConductorPropertyNames().contains(name))
+			return false;
+	return true;
+}
+
+	//Wires given their properties by uuid, built or not (lazy folios):
+	//projectDataBase::setPlacedConductorProperties()
+class ChangeStoredConductorPropertiesCommand : public QUndoCommand
+{
+	public:
+		ChangeStoredConductorPropertiesCommand(QETProject *project,
+											   const QHash<QUuid, std::pair<ConductorProperties, ConductorProperties>> &changes) :
+			m_project(project), m_changes(changes)
+		{ setText(QObject::tr("Edit the conductor properties")); }
+		void undo() override { apply(false); }
+		void redo() override { apply(true); }
+	private:
+		void apply(bool forward) {
+			if (!m_project) return;
+			for (auto it = m_changes.cbegin() ; it != m_changes.cend() ; ++it)
+				m_project->dataBase()->setPlacedConductorProperties(
+							it.key(), forward ? it->second : it->first);
+		}
+		QPointer<QETProject> m_project;
+		QHash<QUuid, std::pair<ConductorProperties, ConductorProperties>> m_changes;
+};
+}
+
+/**
+	@brief QetScriptApi::findConductorByUuid
+	@return the wire @p conductorUuid of the folio @p folioIndex, the folio
+	built, or nullptr (said in the log)
+*/
+Conductor *QetScriptApi::findConductorByUuid(int folioIndex, const QString &conductorUuid,
+											 const QString &caller)
+{
+	if (!m_project || folioIndex < 0 || folioIndex >= m_project->folios().count()) {
+		log(QStringLiteral("qet.%1: no folio at index %2").arg(caller).arg(folioIndex));
+		return nullptr;
+	}
+	const QUuid wanted(conductorUuid);
+	for (Conductor *c : built(m_project->folios().at(folioIndex))->conductors())
+		if (c->uuid() == wanted) return c;
+	log(QStringLiteral("qet.%1: no conductor %2 on folio %3").arg(caller, conductorUuid).arg(folioIndex));
+	return nullptr;
+}
+
+/**
+	@brief QetScriptApi::unbuiltConductorChange
+	Change the property @p property of the wire @p wire, on the folio
+	@p folioIndex not built (lazy folios), and of every wire at its potential,
+	through the project database, as applyConductorProperties() would: when
+	they are all on folios not built, none is numbered by a formula, and what
+	changes in each is only what the .qetz database holds
+	(storedConductorPropertyNames()) -- nothing then is computed from it.
+	@return true if done; false for the folio to be built, @p refused set when
+	the value itself is not one
+*/
+bool QetScriptApi::unbuiltConductorChange(int folioIndex, const QUuid &wire, const QString &property,
+										  const QString &value, bool *refused)
+{
+	*refused = false;
+	projectDataBase *database = m_project->dataBase();
+	Diagram *folio = m_project->folios().at(folioIndex);
+	QUuid on;
+	if (folio->isLoaded() || !database->rowsFromDocument() || !storedConductorPropertyNames().contains(property)
+			|| !database->unbuiltWire(wire, &on) || on != folio->uuid()) {
+		return false;
+	}
+	ConductorProperties properties = database->conductorProperties(wire);
+	if (!setConductorPropertyValue(properties, property, value)) {
+		*refused = true;
+		return false;
+	}
+	if (!properties.m_formula.isEmpty()) {
+		return false;
+	}
+	const auto potential = database->potentialWires(wire);
+	if (!potential) {
+		return false;
+	}
+	QHash<QUuid, std::pair<ConductorProperties, ConductorProperties>> changes;
+	for (const QUuid &other : *potential) {
+		if (!database->unbuiltWire(other)) return false;
+		const ConductorProperties old = database->conductorProperties(other);
+		if (!differOnlyInStored(old, properties)) return false;
+		if (!(old == properties)) changes.insert(other, {old, properties});
+	}
+	if (!changes.isEmpty())
+		m_project->undoStack()->push(new ChangeStoredConductorPropertiesCommand(m_project, changes));
+	return true;
+}
+
+QString QetScriptApi::conductorPropertyByUuid(int folioIndex, const QString &conductorUuid,
+											  const QString &property) const
+{
+	if (!m_project || folioIndex < 0 || folioIndex >= m_project->folios().count()) return QString();
+	Diagram *folio = m_project->folios().at(folioIndex);
+	projectDataBase *database = m_project->dataBase();
+	QUuid on;
+	if (!folio->isLoaded() && database->rowsFromDocument()
+			&& database->unbuiltWire(QUuid(conductorUuid), &on) && on == folio->uuid())
+		return conductorPropertyValue(database->conductorProperties(QUuid(conductorUuid)), property);
+	auto *self = const_cast<QetScriptApi *>(this);
+	Conductor *conductor = self->findConductorByUuid(folioIndex, conductorUuid,
+													 QStringLiteral("conductorPropertyByUuid"));
+	return conductor ? conductorPropertyValue(conductor->properties(), property) : QString();
+}
+
+bool QetScriptApi::setConductorPropertyByUuid(int folioIndex, const QString &conductorUuid,
+											  const QString &property, const QString &value)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("setConductorPropertyByUuid");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	if (!conductorPropertyNames().contains(property)) {
+		log(QStringLiteral("qet.%1: unknown property '%2'; expected one of %3")
+			.arg(caller, property, conductorPropertyNames().join(QStringLiteral(", "))));
+		return false;
+	}
+	if (folioIndex < 0 || folioIndex >= m_project->folios().count()) {
+		log(QStringLiteral("qet.%1: no folio at index %2").arg(caller).arg(folioIndex));
+		return false;
+	}
+		//The folio left unbuilt when the change can go through the project
+		//database (stage D5)
+	bool refused = false;
+	if (unbuiltConductorChange(folioIndex, QUuid(conductorUuid), property, value, &refused))
+		return true;
+	if (refused) {
+		log(QStringLiteral("qet.%1: '%2' is not a valid value for %3").arg(caller, value, property));
+		return false;
+	}
+	Conductor *conductor = findConductorByUuid(folioIndex, conductorUuid, caller);
+	if (!conductor) return false;
+	ConductorProperties properties = conductor->properties();
+	if (!setConductorPropertyValue(properties, property, value)) {
+		log(QStringLiteral("qet.%1: '%2' is not a valid value for %3")
+			.arg(caller, value, property));
+		return false;
+	}
+	return applyConductorProperties(conductor, properties);
 }
 
 /**
@@ -1757,18 +2085,18 @@ QList<T *> sortedByPosition(const QSet<T *> &items)
 QList<IndependentTextItem *> QetScriptApi::sortedTexts(int folioIndex) const
 {
 	if (!m_project) return {};
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	return sortedByPosition(content.m_text_fields);
 }
 
 QList<QetShapeItem *> QetScriptApi::sortedShapes(int folioIndex) const
 {
 	if (!m_project) return {};
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	return sortedByPosition(content.m_shapes);
 }
 
@@ -1813,9 +2141,9 @@ int QetScriptApi::addText(int folioIndex, const QString &text, double x, double 
 		log(QStringLiteral("qet.addText: project is read-only"));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 
 	auto *item = new IndependentTextItem();
 	item->setPlainText(text);
@@ -1899,7 +2227,7 @@ bool QetScriptApi::deleteText(int folioIndex, int textIndex)
 	}
 	IndependentTextItem *item = findText(folioIndex, textIndex, QStringLiteral("deleteText"));
 	if (!item) return false;
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 
 	DiagramContent content;
 	content.m_text_fields << item;
@@ -1939,7 +2267,7 @@ int QetScriptApi::addShape(int folioIndex, const QString &type,
 		log(QStringLiteral("qet.addShape: project is read-only"));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
 
 	QetShapeItem::ShapeType shape_type;
@@ -1954,10 +2282,112 @@ int QetScriptApi::addShape(int folioIndex, const QString &type,
 		return -1;
 	}
 
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 	auto *shape = new QetShapeItem(QPointF(x1, y1), QPointF(x2, y2), shape_type);
 	diagram->undoStack().push(new AddGraphicsObjectCommand(shape, diagram, QPointF(0, 0)));
 	return sortedShapes(folioIndex).indexOf(shape);
+}
+
+/**
+	@brief QetScriptApi::addCable
+	Draw a cable across conductors, as the cable tool does: the line from
+	(x1, y1) to (x2, y2) on the folio becomes the cable's trunk, every
+	conductor it crosses gets the next core, in order along the line, and
+	with it the colour @p coreColors lists at that place. The cable is a
+	new one, named @p designation (the next free name when empty), of
+	type @p type, as long as @p length says. One undo step, through the
+	same AddCableCommand the tool pushes.
+	A conductor another cable already holds is not taken away from it:
+	the call is refused instead, since a script cannot be asked, as the
+	tool's dialog asks, whether to move it.
+	@return the cable's uuid, or an empty string
+*/
+QString QetScriptApi::addCable(int folioIndex, const QString &designation,
+							   const QString &type, const QStringList &coreColors,
+							   const QString &length,
+							   double x1, double y1, double x2, double y2)
+{
+	if (!m_project) return QString();
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addCable: project is read-only"));
+		return QString();
+	}
+	const QList<Diagram *> diagrams = m_project->folios();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
+	Diagram *diagram = built(diagrams.at(folioIndex));
+
+	const QLineF line(QPointF(x1, y1), QPointF(x2, y2));
+	const QList<CableCrossing> crossings = CableManager::crossedConductors(diagram, line);
+	if (crossings.isEmpty()) {
+		log(QStringLiteral("qet.addCable: the line crosses no conductor"));
+		return QString();
+	}
+	for (const CableCrossing &crossing : crossings) {
+		if (crossing.conductor && !crossing.conductor->properties().m_cable_uuid.isNull()) {
+			log(QStringLiteral("qet.addCable: a crossed conductor already belongs to a cable"));
+			return QString();
+		}
+	}
+
+	Cable *cable = m_project->newCable();
+	cable->setType(type);
+	cable->setCoreCount(qMax(int(coreColors.size()), int(crossings.size())));
+	cable->setCoreColors(coreColors);
+	cable->setLength(length);
+	if (designation.trimmed().isEmpty()) {
+		cable->setDesignation(CableManager::nextDesignation(m_project, diagram));
+	} else {
+		cable->setDesignation(designation.trimmed());
+		cable->setDesignationByHand(true);
+	}
+
+	CablePartData part;
+	part.uuid = QUuid::createUuid();
+	part.diagram = diagram->uuid();
+	part.p1 = line.p1();
+	part.p2 = line.p2();
+	cable->addPart(part);
+
+	int core_number = 0;
+	for (const CableCrossing &crossing : crossings)
+	{
+		Conductor *conductor = crossing.conductor;
+		if (!conductor) continue;
+		CableManager::claimConductor(m_project, conductor, cable);
+			//A cable binds a conductor by its identity (@see
+			//CableCreateDialog::assignCrossings)
+		conductor->setUuid(conductor->uuid());
+		CableCore core;
+		core.core = core_number++;
+		core.part = part.uuid;
+		core.conductor = conductor->uuid();
+		core.position = crossing.position;
+		cable->setCore(core);
+	}
+
+	auto *item = new CablePart(part);
+	item->setCable(cable);
+	diagram->addItem(item);
+	m_project->undoStack()->push(new AddCableCommand(cable, item, diagram, true));
+	return cable->uuid().toString();
+}
+
+/**
+	@brief QetScriptApi::cables
+	@return one line per cable of the project: designation, type, cores
+	used of cores, length and uuid
+*/
+QStringList QetScriptApi::cables() const
+{
+	QStringList out;
+	if (!m_project) return out;
+	for (Cable *cable : m_project->cables()) {
+		out << QStringLiteral("%1: %2, %3/%4 cores, %5 %6")
+				.arg(cable->designation(), cable->type())
+				.arg(cable->usedCoreCount()).arg(cable->coreCount())
+				.arg(cable->length(), cable->uuid().toString());
+	}
+	return out;
 }
 
 namespace {
@@ -2086,7 +2516,7 @@ bool QetScriptApi::deleteShape(int folioIndex, int shapeIndex)
 			.arg(folioIndex).arg(list.count()).arg(shapeIndex));
 		return false;
 	}
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 
 	DiagramContent content;
 	content.m_shapes << list.at(shapeIndex);
@@ -2193,7 +2623,7 @@ int QetScriptApi::addPolygon(int folioIndex, const QVariantList &points, bool cl
 		log(QStringLiteral("qet.addPolygon: project is read-only"));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
 	if (points.count() < 2) {
 		log(QStringLiteral("qet.addPolygon: at least 2 points are required, got %1")
@@ -2207,7 +2637,7 @@ int QetScriptApi::addPolygon(int folioIndex, const QVariantList &points, bool cl
 		return -1;
 	}
 
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 	auto *shape = new QetShapeItem(poly.first(), poly.last(), QetShapeItem::Polygon);
 	shape->setPolygon(poly);
 	shape->setClosed(closed);
@@ -2291,7 +2721,7 @@ int QetScriptApi::addPath(int folioIndex, const QVariantList &nodes, bool closed
 		log(QStringLiteral("qet.addPath: project is read-only"));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
 	if (nodes.count() < 2) {
 		log(QStringLiteral("qet.addPath: at least 2 nodes are required, got %1").arg(nodes.count()));
@@ -2308,7 +2738,7 @@ int QetScriptApi::addPath(int folioIndex, const QVariantList &nodes, bool closed
 		path_nodes << node;
 	}
 
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 	auto *shape = new QetShapeItem(path_nodes.first().anchor, path_nodes.last().anchor,
 								   QetShapeItem::Path);
 	shape->setPathNodes(path_nodes);
@@ -2552,7 +2982,7 @@ bool QetScriptApi::deleteConductor(int folioIndex, const QString &elementUuid, i
 	}
 	Conductor *conductor = findConductor(folioIndex, elementUuid, terminalIndex, caller);
 	if (!conductor) return false;
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 
 	DiagramContent content;
 	content.m_conductors_to_move << conductor;
@@ -2573,10 +3003,10 @@ bool QetScriptApi::removeFolio(int folioIndex)
 		log(QStringLiteral("qet.removeFolio: project is read-only"));
 		return false;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
 	m_project->undoStack()->push(new RemoveDiagramCommand(m_project, diagrams.at(folioIndex)));
-	return m_project->diagrams().count() == diagrams.count() - 1;
+	return m_project->folios().count() == diagrams.count() - 1;
 }
 
 namespace {
@@ -2610,7 +3040,7 @@ const QStringList &titleBlockFieldNames()
 QString QetScriptApi::folioProperty(int folioIndex, const QString &property) const
 {
 	if (!m_project) return QString();
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
 	Diagram *diagram = diagrams.at(folioIndex);
 	if (property == QLatin1String("template"))
@@ -2635,7 +3065,7 @@ bool QetScriptApi::setFolioProperty(int folioIndex, const QString &property, con
 		log(QStringLiteral("qet.setFolioProperty: project is read-only"));
 		return false;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
 	Diagram *diagram = diagrams.at(folioIndex);
 
@@ -2906,8 +3336,9 @@ bool QetScriptApi::bridgeTerminals(int stripIndex, const QVariantList &realTermi
 
 /**
 	@brief QetScriptApi::sortTerminalStrip
-	Reorder a strip's physical positions into the canonical order the
-	editor's own "sort" button computes, through SortTerminalStripCommand.
+	Reorder a strip's physical positions into the order the plan is
+	drawn in -- folio by folio, then left to right -- the same
+	SortTerminalStripCommand the editor's own "sort" button pushes.
 */
 bool QetScriptApi::sortTerminalStrip(int stripIndex)
 {
@@ -2928,9 +3359,9 @@ bool QetScriptApi::sortTerminalStrip(int stripIndex)
 QList<QetGraphicsTableItem *> QetScriptApi::sortedTables(int folioIndex) const
 {
 	if (!m_project) return {};
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	return sortedByPosition(content.m_tables);
 }
 
@@ -2962,12 +3393,16 @@ QStringList QetScriptApi::tables(int folioIndex) const
 	file, so one call creates exactly the one table asked for. A script
 	that wants either behaviour can resize the result or add a folio itself.
 
-	kind is "nomenclature" (an ElementQueryWidget, over placed elements) or
-	"summary" (a SummaryQueryWidget, over folios); query is required, since
+	kind is "nomenclature" (an ElementQueryWidget, over placed elements),
+	"summary" (a SummaryQueryWidget, over folios) or "cable_list" (a
+	CableQueryWidget, over the cables of the project); query is required
+	for the first two, since
 	both widgets otherwise build their own from a set of checkboxes that
 	default to none checked, and "SELECT with no columns" is not a useful
 	table -- query() against element_nomenclature_view or
-	project_summary_view is the way to find one that is.
+	project_summary_view is the way to find one that is. For
+	"cable_list" the query is comma-joined column keys of CableList, and
+	empty means the default columns.
 
 	Not undoable: newTable(), which create() calls, calls
 	Diagram::addItem() directly, with no undo command of its own, in the
@@ -2986,12 +3421,12 @@ int QetScriptApi::addTable(int folioIndex, const QString &kind, const QString &n
 		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) {
 		log(QStringLiteral("qet.%1: no folio at index %2").arg(caller).arg(folioIndex));
 		return -1;
 	}
-	if (query.isEmpty()) {
+	if (query.isEmpty() && kind != QLatin1String("cable_list")) {
 		// Both widgets build their query from a set of checkboxes that
 		// default to none checked, so "no query" is not "the sensible
 		// default" here the way it might look -- it is SELECT with no
@@ -3000,6 +3435,9 @@ int QetScriptApi::addTable(int folioIndex, const QString &kind, const QString &n
 		// instead, over query() -- the same project database and the same
 		// two views this project already exposes, element_nomenclature_view
 		// for a nomenclature table and project_summary_view for a summary.
+		// A cable list is not read from that database (its rows come
+		// straight from the cables of the project), so for that kind an
+		// empty query is allowed and simply means "the default columns".
 		log(QStringLiteral("qet.%1: a query is required -- try qet.query() against "
 						   "element_nomenclature_view or project_summary_view first "
 						   "to find one that returns what is wanted").arg(caller));
@@ -3015,8 +3453,27 @@ int QetScriptApi::addTable(int folioIndex, const QString &kind, const QString &n
 		auto *w = new SummaryQueryWidget();
 		w->setQuery(query);
 		content = w;
+	} else if (kind == QLatin1String("cable_list")) {
+		auto *w = new CableQueryWidget();
+		if (!query.isEmpty()) {
+			// Comma-joined column keys; keys the list does not know are
+			// ignored by setFields(), and an empty list of usable keys
+			// leaves the default columns rather than a blank table.
+			const QStringList fields = query.split(QLatin1Char(','), Qt::SkipEmptyParts);
+			w->setFields(fields);
+			if (w->selectedKeys().isEmpty()) {
+				w->setFields(CableList::defaultKeys());
+			}
+		} else {
+			// No query for this kind means the default columns, as
+			// promised above. The dialog a user opens leaves an empty
+			// table when nothing is picked, but a script asking for
+			// "a cable list" asks for the columns everybody gets.
+			w->setFields(CableList::defaultKeys());
+		}
+		content = w;
 	} else {
-		log(QStringLiteral("qet.%1: unknown kind '%2'; expected nomenclature or summary").arg(caller, kind));
+		log(QStringLiteral("qet.%1: unknown kind '%2'; expected nomenclature, summary or cable_list").arg(caller, kind));
 		return -1;
 	}
 
@@ -3033,7 +3490,7 @@ int QetScriptApi::addTable(int folioIndex, const QString &kind, const QString &n
 	dialog.setAddNewTableToNewDiagram(false);
 
 	const QList<QetGraphicsTableItem *> before = sortedTables(folioIndex);
-	QetGraphicsTableFactory::create(diagrams.at(folioIndex), &dialog);
+	QetGraphicsTableFactory::create(built(diagrams.at(folioIndex)), &dialog);
 	const QList<QetGraphicsTableItem *> after = sortedTables(folioIndex);
 	for (QetGraphicsTableItem *t : after) {
 		if (!before.contains(t)) return after.indexOf(t);
@@ -3049,9 +3506,9 @@ bool QetScriptApi::deleteTable(int folioIndex, int tableIndex)
 		log(QStringLiteral("qet.deleteTable: project is read-only"));
 		return false;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 
 	const QList<QetGraphicsTableItem *> all = sortedTables(folioIndex);
 	if (tableIndex < 0 || tableIndex >= all.count()) {
@@ -3325,7 +3782,7 @@ bool QetScriptApi::useConductorAutoNum(int folioIndex, const QString &name)
 		log(QStringLiteral("qet.useConductorAutoNum: project is read-only"));
 		return false;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
 	if (!name.isEmpty() && !m_project->conductorAutoNum().contains(name)) {
 		log(QStringLiteral("qet.useConductorAutoNum: no conductor auto-numbering named '%1'").arg(name));
@@ -3339,9 +3796,9 @@ bool QetScriptApi::useConductorAutoNum(int folioIndex, const QString &name)
 QList<DiagramImageItem *> QetScriptApi::sortedImages(int folioIndex) const
 {
 	if (!m_project) return {};
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	return sortedByPosition(content.m_images);
 }
 
@@ -3435,7 +3892,7 @@ int QetScriptApi::addImage(int folioIndex, const QString &filePath, double x, do
 		log(QStringLiteral("qet.addImage: project is read-only"));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
 
 	// Same checks as a picture dropped on a folio: a regular file of at
@@ -3447,7 +3904,7 @@ int QetScriptApi::addImage(int folioIndex, const QString &filePath, double x, do
 		return -1;
 	}
 
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 	auto *item = new DiagramImageItem(QPixmap::fromImage(image));
 	diagram->undoStack().push(new AddGraphicsObjectCommand(item, diagram, QPointF(x, y)));
 	return sortedImages(folioIndex).indexOf(item);
@@ -3563,7 +4020,7 @@ bool QetScriptApi::deleteImage(int folioIndex, int imageIndex)
 			.arg(folioIndex).arg(list.count()).arg(imageIndex));
 		return false;
 	}
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 	DiagramContent content;
 	content.m_images << list.at(imageIndex);
 	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
@@ -3619,7 +4076,7 @@ int QetScriptApi::addPdfPage(int folioIndex, const QString &pdfPath, int pageNum
 		log(QStringLiteral("qet.addPdfPage: project is read-only"));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
 	if (dpi <= 0) {
 		log(QStringLiteral("qet.addPdfPage: dpi must be positive, got %1").arg(dpi));
@@ -3668,7 +4125,7 @@ int QetScriptApi::addPdfPage(int folioIndex, const QString &pdfPath, int pageNum
 	painter.drawImage(0, 0, rendered);
 	painter.end();
 
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 	auto *item = new DiagramImageItem(QPixmap::fromImage(background));
 	diagram->undoStack().push(new AddGraphicsObjectCommand(item, diagram, QPointF(x, y)));
 	return sortedImages(folioIndex).indexOf(item);
@@ -3892,10 +4349,73 @@ bool QetScriptApi::deleteElementText(int folioIndex, const QString &elementUuid,
 	DynamicElementTextItem *t = findElementText(folioIndex, elementUuid, textIndex,
 												QStringLiteral("deleteElementText"));
 	if (!t) return false;
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 	DiagramContent content;
 	content.m_element_texts << t;
 	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
+	return true;
+}
+
+/**
+	@brief QetScriptApi::placeElementTexts
+	Place the texts of symbols -- the label and the notes beside it -- as
+	one block at one of nine points around each symbol, as Edit > Place
+	symbol texts does for the selection (SymbolTextPlacement): left of the
+	symbol the lines are aligned right, right of it left, else centred.
+	@param elementUuids : the symbols, all on folio @a folioIndex
+	@param where : top-left, top, top-right, left, center, right,
+	bottom-left, bottom or bottom-right
+	@return true when the texts of at least one symbol were placed, in
+	one undo step
+*/
+bool QetScriptApi::placeElementTexts(int folioIndex, const QStringList &elementUuids,
+				     const QString &where)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.placeElementTexts: project is read-only"));
+		return false;
+	}
+	static const QHash<QString, Qt::Alignment> points {
+		{QStringLiteral("top-left"),     Qt::AlignLeft    | Qt::AlignTop},
+		{QStringLiteral("top"),          Qt::AlignHCenter | Qt::AlignTop},
+		{QStringLiteral("top-right"),    Qt::AlignRight   | Qt::AlignTop},
+		{QStringLiteral("left"),         Qt::AlignLeft    | Qt::AlignVCenter},
+		{QStringLiteral("center"),       Qt::AlignCenter},
+		{QStringLiteral("right"),        Qt::AlignRight   | Qt::AlignVCenter},
+		{QStringLiteral("bottom-left"),  Qt::AlignLeft    | Qt::AlignBottom},
+		{QStringLiteral("bottom"),       Qt::AlignHCenter | Qt::AlignBottom},
+		{QStringLiteral("bottom-right"), Qt::AlignRight   | Qt::AlignBottom}};
+	if (!points.contains(where)) {
+		log(QStringLiteral("qet.placeElementTexts: unknown point '%1'").arg(where));
+		return false;
+	}
+	const QList<Diagram *> diagrams = m_project->folios();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) {
+		log(QStringLiteral("qet.placeElementTexts: no folio %1").arg(folioIndex));
+		return false;
+	}
+		//The folio's symbols looked up once, not once per uuid
+	QHash<QString, Element *> on_folio;
+	const DiagramContent content(built(diagrams.at(folioIndex)), false);
+	for (Element *elmt : std::as_const(content.m_elements))
+		on_folio.insert(elmt->uuid().toString(), elmt);
+	QList<Element *> elements;
+	for (const QString &uuid : elementUuids) {
+		Element *element = on_folio.value(uuid);
+		if (!element) {
+			log(QStringLiteral("qet.placeElementTexts: no symbol %1 on folio %2")
+				.arg(uuid).arg(folioIndex));
+			return false;
+		}
+		elements << element;
+	}
+	QUndoCommand *cmd = SymbolTextPlacement::place(elements, points.value(where));
+	if (!cmd) {
+		log(QStringLiteral("qet.placeElementTexts: none of the symbols has a text"));
+		return false;
+	}
+	built(m_project->folios().at(folioIndex))->undoStack().push(cmd);
 	return true;
 }
 
@@ -3926,8 +4446,9 @@ bool QetScriptApi::useElementAutoNum(const QString &name)
 	right after placing one.
 
 	Refused where setUpFormula() would do nothing, rather than reporting
-	success: a slave or a report takes its label from its master, and with no
-	current context there is no formula to apply.
+	success: a slave or a report takes its label from its master, a
+	conductor definition labels a wire rather than naming an item, and
+	with no current context there is no formula to apply.
 */
 bool QetScriptApi::numberElement(int folioIndex, const QString &elementUuid)
 {
@@ -3939,8 +4460,8 @@ bool QetScriptApi::numberElement(int folioIndex, const QString &elementUuid)
 	}
 	Element *element = findElement(folioIndex, elementUuid);
 	if (!element) return false;
-	if (element->linkType() == Element::Slave || (element->linkType() & Element::AllReport)) {
-		log(QStringLiteral("qet.%1: a slave or a report takes its label from its master").arg(caller));
+	if (!element->takesSchemeNumber()) {
+		log(QStringLiteral("qet.%1: a slave, a report or a conductor definition takes no number from a scheme").arg(caller));
 		return false;
 	}
 	if (m_project->elementAutoNumCurrentFormula().isEmpty()) {
@@ -4122,7 +4643,7 @@ QStringList QetScriptApi::duplicateElements(int fromFolioIndex, const QStringLis
 		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
 		return created;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (fromFolioIndex < 0 || fromFolioIndex >= diagrams.count()
 		|| toFolioIndex < 0 || toFolioIndex >= diagrams.count()) {
 		log(QStringLiteral("qet.%1: folio index out of range").arg(caller));
@@ -4132,8 +4653,8 @@ QStringList QetScriptApi::duplicateElements(int fromFolioIndex, const QStringLis
 		log(QStringLiteral("qet.%1: no elements named").arg(caller));
 		return created;
 	}
-	Diagram *source = diagrams.at(fromFolioIndex);
-	Diagram *target = diagrams.at(toFolioIndex);
+	Diagram *source = built(diagrams.at(fromFolioIndex));
+	Diagram *target = built(diagrams.at(toFolioIndex));
 
 	QList<Element *> chosen;
 	for (const QString &uuid : elementUuids) {
@@ -4217,7 +4738,7 @@ const QStringList &folioBorderNames()
 QString QetScriptApi::folioBorder(int folioIndex, const QString &property) const
 {
 	if (!m_project) return QString();
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
 	const BorderProperties b = diagrams.at(folioIndex)->border_and_titleblock.exportBorder();
 	if (property == QLatin1String("columns"))         return QString::number(b.columns_count);
@@ -4356,7 +4877,7 @@ bool QetScriptApi::setFolioBorder(int folioIndex, const QString &property, const
 			.arg(caller, property, folioBorderNames().join(QStringLiteral(", "))));
 		return false;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
 	Diagram *diagram = diagrams.at(folioIndex);
 
@@ -4442,7 +4963,7 @@ QString QetScriptApi::conductorDefault(int folioIndex, const QString &property) 
 	if (folioIndex == -1) {
 		p = m_project->defaultConductorProperties();
 	} else {
-		const QList<Diagram *> diagrams = m_project->diagrams();
+		const QList<Diagram *> diagrams = m_project->folios();
 		if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
 		p = diagrams.at(folioIndex)->defaultConductorProperties;
 	}
@@ -4468,7 +4989,7 @@ bool QetScriptApi::setConductorDefault(int folioIndex, const QString &property, 
 	}
 	Diagram *diagram = nullptr;
 	if (folioIndex != -1) {
-		const QList<Diagram *> diagrams = m_project->diagrams();
+		const QList<Diagram *> diagrams = m_project->folios();
 		if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
 		diagram = diagrams.at(folioIndex);
 	}
@@ -4494,6 +5015,7 @@ bool QetScriptApi::setConductorDefault(int folioIndex, const QString &property, 
 		return true;
 	}
 	diagram->defaultConductorProperties = new_p;
+	diagram->queueValuesStore();
 	// Show or hide the conductor texts now, as the Folio properties dialog
 	// does (DiagramPropertiesDialog), or an export later in this run would
 	// draw them as they were.
@@ -4577,12 +5099,12 @@ QVariantMap QetScriptApi::terminalPosition(int folioIndex, const QString &elemen
 QVariantList QetScriptApi::conductorPath(int folioIndex, const QString &conductorUuid) const
 {
 	if (!m_project) return {};
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
 	const QUuid wanted(conductorUuid);
 	if (wanted.isNull()) return {};
 
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	for (Conductor *c : content.conductors(DiagramContent::AnyConductor)) {
 		if (c->uuid() != wanted) continue;
 		QVariantList points;
@@ -4617,14 +5139,14 @@ int QetScriptApi::insertFolio(int position)
 		log(QStringLiteral("qet.insertFolio: project is read-only"));
 		return -1;
 	}
-	if (position < 0 || position > m_project->diagrams().count()) {
+	if (position < 0 || position > m_project->folios().count()) {
 		log(QStringLiteral("qet.insertFolio: position %1 is outside 0..%2")
-			.arg(position).arg(m_project->diagrams().count()));
+			.arg(position).arg(m_project->folios().count()));
 		return -1;
 	}
 	Diagram *diagram = m_project->addNewDiagram(position);
 	if (!diagram) return -1;
-	return m_project->diagrams().indexOf(diagram);
+	return m_project->folios().indexOf(diagram);
 }
 
 /**
@@ -4704,7 +5226,7 @@ int QetScriptApi::addFolio()
 	}
 	Diagram *diagram = m_project->addNewDiagram();
 	if (!diagram) return -1;
-	return m_project->diagrams().indexOf(diagram);
+	return m_project->folios().indexOf(diagram);
 }
 
 bool QetScriptApi::setFolioTitle(int folioIndex, const QString &title)
@@ -4714,7 +5236,7 @@ bool QetScriptApi::setFolioTitle(int folioIndex, const QString &title)
 		log(QStringLiteral("qet.setFolioTitle: project is read-only"));
 		return false;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
 	Diagram *diagram = diagrams.at(folioIndex);
 
@@ -5051,6 +5573,15 @@ QVariantList QetScriptApi::checkContinuity(int folioIndex)
 			QHash<QString, QSet<QString>> distinct_values;
 			for (Conductor *pc : std::as_const(potential)) {
 				for (const QString &prop : checked_properties) {
+						//A conductor held by a cable carries its core's label
+						//(15W1:BN) in the cable field, written by CableManager:
+						//one conductor, one core. Two conductors of a potential
+						//running in two cables are the normal case, not a
+						//divergence.
+					if (prop == QLatin1String("cable")
+							&& !pc->properties().m_cable_uuid.isNull()) {
+						continue;
+					}
 					distinct_values[prop].insert(conductorPropertyValue(pc->properties(), prop));
 				}
 			}
@@ -5146,7 +5677,15 @@ QVariantList QetScriptApi::checkContinuity(int folioIndex)
 bool QetScriptApi::selectElement(const QString &elementUuid)
 {
 	if (!m_project) return false;
-	for (Diagram *diagram : m_project->diagrams()) {
+		//The folio the project database places it on, built; every folio
+		//when it places it on none
+	QList<Diagram *> folios;
+	const QSet<QUuid> on = m_project->dataBase()->folioUuidsOfElements({QUuid(elementUuid)});
+	for (Diagram *diagram : m_project->folios())
+		if (on.contains(diagram->uuid())) folios << built(diagram);
+	if (folios.isEmpty())
+		folios = m_project->diagrams();
+	for (Diagram *diagram : std::as_const(folios)) {
 		DiagramContent content(diagram, false);
 		for (Element *elmt : std::as_const(content.m_elements)) {
 			if (elmt->uuid().toString() == elementUuid) {
@@ -5162,7 +5701,7 @@ QStringList QetScriptApi::selectedElements(int folioIndex) const
 {
 	QStringList list;
 	if (!m_project) return list;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return list;
 	for (QGraphicsItem *item : diagrams.at(folioIndex)->selectedItems()) {
 		if (item->type() == Element::Type) {
@@ -5176,7 +5715,7 @@ QStringList QetScriptApi::selectedElements(int folioIndex) const
 void QetScriptApi::deselectAll(int folioIndex)
 {
 	if (!m_project) return;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return;
 	diagrams.at(folioIndex)->clearSelection();
 }

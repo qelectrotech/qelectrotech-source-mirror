@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -51,6 +51,7 @@ class DynamicElementTextItem : public DiagramTextItem
 	Q_PROPERTY(QString compositeText READ compositeText WRITE setCompositeText NOTIFY compositeTextChanged)
 	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
+	Q_PROPERTY(qreal textHeight READ textHeight WRITE setTextHeight NOTIFY textHeightChanged)
 	Q_PROPERTY(bool keepVisualRotation READ keepVisualRotation WRITE setKeepVisualRotation NOTIFY keepVisualRotationChanged)
 	Q_PROPERTY(bool rotationPointCenter READ rotationPointCenter WRITE setRotationPointCenter NOTIFY rotationPointCenterChanged)
 	public:
@@ -72,6 +73,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void frameChanged(bool frame);
 		void plainTextChanged();
 		void textWidthChanged(qreal width);
+		void textHeightChanged(qreal height);
 		void keepVisualRotationChanged(bool keep);
 		void rotationPointCenterChanged(bool center);
 
@@ -97,14 +99,24 @@ class DynamicElementTextItem : public DiagramTextItem
 		ElementTextItemGroup *parentGroup() const;
 		Element *elementUseForInfo() const;
 		void refreshLabelConnection();
+		/// Re-evaluate the text of a folio report (label / cross reference).
+		void refreshReportText() { updateReportText(); }
+		void refreshLabelShown();
 
 		DynamicElementTextItem::TextFrom textFrom() const;
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);
 		QString text() const;
 		void setText(const QString &text);
 		static QString xmlTagName() {return QString("dynamic_elmt_text");}
+		static bool verticalFromBottom();
+		static void setVerticalFromBottom(bool from_bottom);
+		void updateReadingDirection();
 		void setInfoName(const QString &info_name);
 		QString infoName() const;
+		Element *linkedElementShown() const;
+			/// Shaded blue for a moment: its symbol is where a jump landed
+		void setJumpHighlight(bool on);
+		bool isJumpHighlighted() const {return m_jump_highlight;}
 		void setCompositeText(const QString &text);
 		QString compositeText() const;
 		void setFrame(const bool frame);
@@ -117,6 +129,13 @@ class DynamicElementTextItem : public DiagramTextItem
 			//centred or right-aligned, but the width is still "auto" (-1).
 		qreal textWidth() const {return m_text_width;}
 		void setTextWidth(qreal width);
+			//A height set by the user, -1 for "auto": lines that do not
+			//fit are cut off, as a text field of fixed size does
+		qreal textHeight() const {return m_text_height;}
+		void setTextHeight(qreal height);
+		QRectF boundingRect() const override;
+		QPainterPath shape() const override;
+		bool contains(const QPointF &point) const override;
 		void setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset = 0);
 
 		void setKeepVisualRotation(bool set);
@@ -166,6 +185,8 @@ class DynamicElementTextItem : public DiagramTextItem
 		void addResizeHandles();
 		void removeResizeHandles();
 		void updateResizeHandlesPos();
+		QPointF resizeAnchor() const;
+		qreal minimumTextWidth() const;
 		void fitAutoTextWidth();
 		void handlerMousePressEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event);
 		void handlerMouseMoveEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event);
@@ -196,6 +217,10 @@ class DynamicElementTextItem : public DiagramTextItem
 		CrossRefItem *m_Xref_item = nullptr;
 		QGraphicsTextItem *m_slave_Xref_item = nullptr;
 		qreal m_text_width = -1;
+		bool m_jump_highlight = false;
+		qreal m_text_height = -1;
+			/// The text was emptied with its alignment kept (setPlainText())
+		bool m_emptied_aligned = false;
 		QPointF m_initial_position;
 		bool m_keep_visual_rotation = true;
 		bool m_rotation_point_center = false;
@@ -206,6 +231,9 @@ class DynamicElementTextItem : public DiagramTextItem
 		qreal m_resize_original_width = -1;
 		qreal m_resize_baseline_width = -1;
 		qreal m_resize_start_local_x = 0;
+		QPointF m_resize_start_pos,
+				m_resize_fixed_parent;
+		QTransform m_resize_scene_to_local;
 		QMetaObject::Connection m_resize_handles_con;
 };
 

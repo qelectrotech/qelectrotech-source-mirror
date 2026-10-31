@@ -18,6 +18,7 @@
 #ifndef TERMINALSTRIPDRAWER_H
 #define TERMINALSTRIPDRAWER_H
 
+#include <QColor>
 #include <QPointer>
 #include <QUuid>
 
@@ -36,6 +37,18 @@ namespace TerminalStripDrawer
 	 * If mouse don't hover a Xref the value is set to -1;
 	 */
 	struct hoverTerminal{
+		int physical{-1};
+		int real{-1};
+	};
+
+	/**
+	 * @brief The XrefRect struct
+	 * Where the xref text of a real terminal was drawn, in the coordinates
+	 * of the item, with the physical and real index of that terminal.
+	 * Filled by paint(): used to make the xref clickable in an exported PDF.
+	 */
+	struct XrefRect{
+		QRectF rect;
 		int physical{-1};
 		int real{-1};
 	};
@@ -65,6 +78,24 @@ namespace TerminalStripDrawer
 			virtual QString cable() const { return QString(); }
 			virtual QString cableWire() const { return QString(); }
 			virtual bool isShield() const { return false; }
+			//Installation, Location and Label (BMK) of the piece the cable
+			//goes to at its far end -- the same three fields the cable list
+			//shows for a target -- drawn in a box under the cable. Empty
+			//when the terminal has no cable, or when the cable lands on
+			//nothing past the strip's own terminals.
+			virtual QVector<QString> cableTarget() const { return QVector<QString>(); }
+			//Color and width (mm) of the terminal, only used to draw the terminal.
+			//An invalid color means "no override" : the default color of the type is used.
+			//A width <= 0 means "unknown" : the default width of the layout is used.
+			virtual QColor color() const { return QColor(); }
+			//Second color of a two-tone color (like green/yellow), drawn as stripes over color()
+			virtual QColor stripeColor() const { return QColor(); }
+			virtual qreal widthMm() const { return 0; }
+			//Label of the terminal chosen in the catalog (TerminalCatalog), empty if unknown.
+			//The realistic styles draw its clamp (screw or push-in) instead of the one of the layout.
+			virtual QString catalogEntry() const { return QString(); }
+			//A separator plate is mounted after the terminal (drawn by the realistic styles)
+			virtual bool hasSeparatorAfter() const { return false; }
     };
 
 	class AbstractPhysicalTerminalInterface
@@ -101,10 +132,15 @@ namespace TerminalStripDrawer
 
 			void setPreviewDraw(bool draw = true);
 
+			void setDrawStyle(TerminalStripLayoutPattern::DrawStyle style);
+			TerminalStripLayoutPattern::DrawStyle drawStyle() const;
+
 			void setMouseHoverPos(const QPointF &pos);
 			bool mouseHoverXref() const;
 			bool needUpdate();
 			hoverTerminal hoveredXref() const;
+			hoverTerminal xrefAt(const QPointF &pos) const;
+			QVector<XrefRect> xrefRects() const;
 
         private:
             qreal height() const;
@@ -114,10 +150,12 @@ namespace TerminalStripDrawer
             QSharedPointer <AbstractTerminalStripInterface> m_strip;
             QSharedPointer<TerminalStripLayoutPattern> m_pattern;
             bool m_preview_draw { false };
+			TerminalStripLayoutPattern::DrawStyle m_draw_style { TerminalStripLayoutPattern::DrawStyle::Schematic };
 			QPointF m_mouse_hover_pos;
 			QRectF m_united_xref_text_rect;
 			bool m_last_mouse_pos_in_xrefs_rect{false};
 			hoverTerminal m_hovered_xref;
+			QVector<XrefRect> m_xref_rects;
     };
 }
 

@@ -27,7 +27,7 @@ git submodule update --init --recursive
 | C++17 compiler | required | GCC or Clang on Unix-like platforms; MSVC or MinGW-w64 g++ on Windows — see [Choosing a compiler](#3-choosing-a-compiler-unix) / [Building on Windows](#6-building-on-windows-msvc--mingw) |
 | Qt6 base + widgets | required | |
 | Qt6 **GuiPrivate** headers | required | needed for clickable PDF hyperlinks; **hard build failure** at CMake generate time if missing, see below |
-| SQLite3 | required | used by the nomenclature/summary database |
+| SQLite3 | required | used by the nomenclature/summary database; needs the session extension (`SQLITE_ENABLE_SESSION`, `SQLITE_ENABLE_PREUPDATE_HOOK`) for the history of a `.qetdb`'s saves |
 | Qt Linguist tools (`lrelease`) | required | compiles the tracked `.ts` files into `.qm` as part of every normal build |
 | pugixml | handled automatically | fetched and built via CMake FetchContent if not already present on the system — see [pugixml](#8-pugixml) below |
 | Qt Test module | required if building tests | `PACKAGE_TESTS` is `ON` by default; QtTest ships as part of the base Qt6 dev packages listed below on every platform, no extra package needed |
@@ -227,9 +227,11 @@ for why this matters).
 `QtPdf` is available as an optional component in the Qt Online Installer
 (look for "Qt PDF" under the Qt 6.4+ node); if you skip it, PDF page import
 is silently disabled exactly as on the other platforms. KDE Frameworks are
-not prebuilt for Windows by any of the routes below, so Windows builds
-normally use `-DBUILD_WITH_KF=OFF` (see the
-[autosave caveat](#9-building-without-kde-frameworks)).
+prebuilt for Windows only in MSYS2's UCRT64 and CLANG64 environments (the
+UCRT64 route below, which is also what the official Windows build uses).
+With MSVC or any other MinGW, use `-DBUILD_WITH_KF=OFF` (see the
+[autosave caveat](#9-building-without-kde-frameworks)); otherwise the build
+downloads and compiles KDE Frameworks itself, which is slow.
 
 ### MSVC (Visual Studio 2019 / 2022)
 
@@ -238,8 +240,13 @@ normally use `-DBUILD_WITH_KF=OFF` (see the
    via the [Qt Online Installer](https://www.qt.io/download-qt-installer).
 2. Get SQLite3 — the simplest route is [vcpkg](https://vcpkg.io):
    ```bat
-   vcpkg install sqlite3:x64-windows
+   vcpkg install sqlite3[session]:x64-windows
    ```
+   vcpkg leaves the session extension out by default. QElectroTech still
+   builds without it, with a warning from CMake, but the history of a
+   `.qetdb`'s saves then records no changes. A SQLite built from another
+   source needs `SQLITE_ENABLE_SESSION` and `SQLITE_ENABLE_PREUPDATE_HOOK`
+   for that too.
 3. Configure and build from an "x64 Native Tools Command Prompt for VS":
    ```bat
    mkdir build && cd build
@@ -252,6 +259,17 @@ normally use `-DBUILD_WITH_KF=OFF` (see the
    Ninja works too, in place of the Visual Studio generator, if you prefer
    (`-G Ninja -DCMAKE_BUILD_TYPE=Release`, run from the same VS developer
    prompt so `cl.exe` is on `PATH`).
+4. Optionally, install it in a folder laid out as the Windows installers
+   lay QET out (the program in `bin\`, the elements, title blocks and
+   translations beside it):
+   ```bat
+   cmake --install . --config Release --prefix C:\QElectroTech
+   ```
+   SQLite's DLL is installed with it only when you tell CMake where it is,
+   at the configure step:
+   `-DSQLite3_DLL="C:\vcpkg\installed\x64-windows\bin\sqlite3.dll"`.
+   Qt's DLLs are not installed: run Qt's `windeployqt` on
+   `C:\QElectroTech\bin\qelectrotech.exe` for those.
 
 ### MinGW-w64 (gcc)
 
@@ -259,25 +277,35 @@ Two common ways to get a MinGW toolchain that matches a Qt6 MinGW kit: Qt's
 own bundled MinGW (installed alongside a `mingw_64` Qt kit via the Qt
 Online Installer), or [MSYS2](https://www.msys2.org).
 
-Using MSYS2, from a **MINGW64** shell:
+Using MSYS2, from a **UCRT64** shell (the same packages and options as
+`.github/workflows/windows-build.yml`):
 ```sh
 pacman -S --needed \
-    mingw-w64-x86_64-toolchain \
-    mingw-w64-x86_64-qt6-base mingw-w64-x86_64-qt6-tools \
-    mingw-w64-x86_64-cmake mingw-w64-x86_64-ninja \
-    mingw-w64-x86_64-sqlite3
+    mingw-w64-ucrt-x86_64-toolchain \
+    mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-svg \
+    mingw-w64-ucrt-x86_64-qt6-tools mingw-w64-ucrt-x86_64-qt6-translations \
+    mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-ninja \
+    mingw-w64-ucrt-x86_64-pkg-config mingw-w64-ucrt-x86_64-sqlite3 \
+    mingw-w64-ucrt-x86_64-kcoreaddons mingw-w64-ucrt-x86_64-kwidgetsaddons \
+    mingw-w64-ucrt-x86_64-extra-cmake-modules
 
 mkdir build && cd build
-cmake .. -G Ninja -DBUILD_WITH_KF=OFF -DCMAKE_BUILD_TYPE=Release
+cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/ucrt64 \
+    -DBUILD_WITH_KF=ON -DBUILD_KF=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DSQLite3_INCLUDE_DIR=/ucrt64/include \
+    -DSQLite3_LIBRARY=/ucrt64/lib/libsqlite3.dll.a
 cmake --build .
 ```
 
-If `libbacktrace` is installed in your MSYS2 environment, pass the following
+`-DBUILD_KF=OFF` makes the build use the KDE Frameworks packages just
+installed instead of downloading and compiling its own.
+
+If `libbacktrace` is installed in your MSYS2 environment, add the following
 cached CMake variables when configuring. They are only necessary in that
 case, because `FindBacktrace` needs them to locate the library:
 
 ```sh
-cmake .. -G Ninja -DBUILD_WITH_KF=OFF -DCMAKE_BUILD_TYPE=Release \
     -DBacktrace_INCLUDE_DIR=/c/msys64/clang64/include \
     -DBacktrace_LIBRARY=/c/msys64/clang64/lib/libbacktrace.a
 ```
@@ -287,7 +315,10 @@ and `Backtrace_LIBRARY` to the `libbacktrace.a` file. The paths above are the
 usual locations for the MSYS2 `clang64` environment; adjust them if your
 installation uses a different prefix.
 
-(KF6 isn't packaged in MSYS2 either, hence `-DBUILD_WITH_KF=OFF` again.)
+KF6 is packaged for MSYS2's UCRT64 and CLANG64 environments only. In a
+**MINGW64** shell (`mingw-w64-x86_64-*` packages) it is not available: install
+the same packages without the three KDE ones and configure with
+`-DBUILD_WITH_KF=OFF` instead of `-DBUILD_WITH_KF=ON -DBUILD_KF=OFF`.
 
 Using the Qt Online Installer's bundled MinGW kit instead: point
 `CMAKE_PREFIX_PATH` at that kit (e.g. `C:\Qt\6.x.x\mingw_64`) and make sure
@@ -332,7 +363,8 @@ platforms, including FreeBSD as of this writing.
 `BUILD_WITH_KF=OFF` builds QET against a bundled fallback UI layer instead
 of KDE Frameworks (`kcoreaddons`/`kwidgetsaddons`). This is a fully
 supported configuration and is, in practice, the default on platforms where
-KF6 isn't readily packaged (macOS and Windows in particular).
+KF6 isn't readily packaged (macOS, and Windows outside MSYS2's UCRT64 and
+CLANG64 environments).
 
 Almost everything works identically either way. The one known caveat:
 **autosave behavior is not as polished without KF**, since QET relies on

@@ -81,6 +81,8 @@ class tst_qetpalette : public QObject
 		void invertedViewReadsOnDarkSheet();
 		void invertLightnessSpeed();
 		void gridDotColorSoftensInvertedDots();
+		void tintLayerKeepsColorsPaleOrNot();
+		void pickAndHighlightStandOutInDarkMode();
 		void paletteViewFollowsThePalette();
 		void paletteViewKeepsSceneUpdatesFlowing();
 		void paletteViewDrawsTheRubberBand();
@@ -660,6 +662,7 @@ void tst_qetpalette::gridDotColorSoftensInvertedDots()
 	QCOMPARE(QET::Palette::gridDotColor(Qt::darkGray, true), QColor(85, 85, 85));
 	QCOMPARE(QET::Palette::gridDotColor(Qt::black, false), QColor(Qt::white));
 	QCOMPARE(QET::Palette::gridDotColor(Qt::black, true), QColor(Qt::white));
+	QCOMPARE(QET::Palette::gridDotColor(QColor(0x40, 0x40, 0x40), false), QColor(Qt::white));
 }
 
 /**
@@ -1015,6 +1018,52 @@ void tst_qetpalette::styleSheetWidgetsFollowPaletteChange()
 		QTest::qWait(50);
 		QCOMPARE(background(button), window(palette));
 	}
+}
+
+/**
+	@brief tst_qetpalette::tintLayerKeepsColorsPaleOrNot
+	tintLayer() redraws gray in the ink and leaves colors alone -- also
+	pale ones, whose channels lie close together near white (a light blue
+	fill), which a spread measured against the alpha alone took for gray.
+*/
+void tst_qetpalette::tintLayerKeepsColorsPaleOrNot()
+{
+	const QColor sheet(Qt::black), ink(Qt::white);
+	auto tinted = [&](const QColor &c) {
+		QImage image(1, 1, QImage::Format_ARGB32_Premultiplied);
+		image.setPixelColor(0, 0, c);
+		QET::Palette::tintLayer(image, sheet, ink);
+		return image.pixelColor(0, 0);
+	};
+	QCOMPARE(tinted(Qt::black), ink);
+	QCOMPARE(tinted(Qt::white), sheet);
+	QCOMPARE(tinted(QColor(128, 128, 128)).red(), 127);
+		//An antialiased gray edge near white is still gray
+	QVERIFY(tinted(QColor(250, 251, 252)).red() < 10);
+		//Colors stay, pale or full
+	QCOMPARE(tinted(QColor(220, 240, 255)), QColor(220, 240, 255));
+	QCOMPARE(tinted(QColor(255, 230, 230)), QColor(255, 230, 230));
+	QCOMPARE(tinted(QColor(255, 0, 0)), QColor(255, 0, 0));
+	QCOMPARE(tinted(QColor(69, 137, 255)), QColor(69, 137, 255));
+}
+
+/**
+	@brief tst_qetpalette::pickAndHighlightStandOutInDarkMode
+	Red conductors in the dark mode: a pick is magenta there and a
+	highlight green; elsewhere red and blue, as before.
+*/
+void tst_qetpalette::pickAndHighlightStandOutInDarkMode()
+{
+	const auto dark_mode = QET::Palette::sheetInk(Qt::black, true);
+	const auto one_ink = QET::Palette::sheetInk(Qt::black, false);
+	QCOMPARE(QET::Palette::pickedColor({}), QColor(Qt::red));
+	QCOMPARE(QET::Palette::pickedColor(one_ink), QColor(Qt::red));
+	QCOMPARE(QET::Palette::pickedColor(dark_mode), QColor(255, 0, 255));
+	QCOMPARE(QET::Palette::highlightColor({}), QColor(69, 137, 255));
+	QCOMPARE(QET::Palette::highlightColor(dark_mode), QColor(0, 210, 0));
+		//Both are bright, so they differ in hue rather than in lightness
+	const int apart = qAbs(QET::Palette::pickedColor(dark_mode).hsvHue() - dark_mode.wires.hsvHue());
+	QVERIFY(qMin(apart, 360 - apart) >= 45);
 }
 
 int main(int argc, char **argv)

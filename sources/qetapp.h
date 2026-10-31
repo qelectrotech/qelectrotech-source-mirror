@@ -19,6 +19,7 @@
 #define QET_APP_H
 
 #include "ElementsCollection/elementslocation.h"
+#include "dataBase/workingcopyrecovery.h"
 #include "qetarguments.h"
 #include "titleblock/templatelocation.h"
 
@@ -175,6 +176,24 @@ class QETApp : public QObject
 		static QFont diagramTextsItemFont(qreal = -1.0);
 		static QFont dynamicTextsItemFont(qreal = -1.0);
 		static QFont indiTextsItemFont (qreal = -1.0);
+		/**
+			@brief The font the texts of a cable (designation, type,
+			installation, location, length) are written with when the
+			cable itself asks for none.
+		*/
+		static QFont cableTextsFont();
+		/**
+			@brief The font the colour labels of the cores of a cable
+			are written with when the cable itself asks for none.
+		*/
+		static QFont cableCoreFont();
+		/**
+			@brief How the texts of a cable line up at the left end of
+			their line when the cable asks for nothing itself: right,
+			centred or left of where the line begins.
+		*/
+		static Qt::Alignment cableTextAlignment();
+		static void setCableTextAlignment(Qt::Alignment alignment);
 		static QETDiagramEditor *diagramEditorForFile(const QString &);
 		static QETDiagramEditor *diagramEditorAncestorOf (const QWidget *child);
 		static QList<QETDiagramEditor *> diagramEditors();
@@ -319,7 +338,8 @@ class QETApp : public QObject
 		void initSystemTray();
 		void buildSystemTrayMenu();
 		void checkBackupFiles();
-		void offerBackupFiles(const QList<KAutoSaveFile *> &stale_files);
+		void offerBackupFiles(const QList<KAutoSaveFile *> &stale_files,
+				      const QList<WorkingCopyRecovery::LeftWorkingCopy> &working_copies);
 		void checkCrashDump();
 		void fetchWindowStats(
 			const QList<QETDiagramEditor *> &,

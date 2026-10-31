@@ -58,15 +58,24 @@ class TerminalStripModel : public QAbstractTableModel
 			XRef = 8,
 			Cable = 9,
 			CableWire = 10,
-			Type = 11,
-			Function = 12,
-			Led = 13,
-			Shield = 14,
+			CableTarget = 11,
+			Type = 12,
+			Function = 13,
+			Led = 14,
+			Shield = 15,
+			Color = 16,
+			Section = 17,
+			Width = 18,
+			Separator = 19,
 			Invalid = 99
 		};
 
 		static int levelForColumn(TerminalStripModel::Column column);
 		static TerminalStripModel::Column columnTypeForIndex(const QModelIndex &index);
+
+			///Role of the Width column : the label of the terminal chosen in the catalog.
+			///setData() with this role takes a QVariantMap {"mm": width, "entry": label}
+		static constexpr int CatalogEntryRole = Qt::UserRole + 1;
 
 		Q_OBJECT
 	public:
@@ -98,9 +107,24 @@ class TerminalStripModel : public QAbstractTableModel
 		QPixmap bridgePixmapFor(const QModelIndex &index) const;
 
 	private:
+			//Where the data of one row of the table sit in m_physical_data.
+			//The view asks for every cell of every row, over and over (paint,
+			//flags, row height), so looking a row up must be a lookup and not
+			//a walk through the whole strip each time.
+		struct RowPlace
+		{
+			int physical_;	//index in m_physical_data
+			int real_;		//index in the real_data of that physical terminal
+		};
+
 		QPointer<TerminalStrip> m_terminal_strip;
-		QHash<QPointer<Element>, QVector<bool>> m_modified_cell;
+			//Modified cells of each real terminal (spare terminals have no element)
+		QHash<const RealTerminal *, QVector<bool>> m_modified_cell;
 		QVector<modelPhysicalTerminalData> m_physical_data;
+			//One RowPlace by row, filled with m_physical_data (see fillPhysicalTerminalData)
+		QVector<RowPlace> m_row_index;
+			//Number of rows held in m_row_index, so rowCount() needs no walk
+		int m_row_count = 0;
 		struct BridgePixmap
 		{
 				QPixmap top_,
@@ -124,12 +148,22 @@ class TerminalStripModelDelegate : public QStyledItemDelegate
 				QWidget *parent,
 				const QStyleOptionViewItem &option,
 				const QModelIndex &index) const override;
+		void setEditorData(
+				QWidget *editor,
+				const QModelIndex &index) const override;
 		void setModelData(
 				QWidget *editor,
 				QAbstractItemModel *model,
 				const QModelIndex &index) const override;
+		bool eventFilter(QObject *object, QEvent *event) override;
 
 		void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
+
+		void setManufacturer(const QString &manufacturer);
+
+	private:
+			///Manufacturer of the terminals proposed in the Width column, empty = all
+		QString m_manufacturer;
 };
 
 #endif // TERMINALSTRIPMODEL_H

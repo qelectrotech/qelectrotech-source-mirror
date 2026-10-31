@@ -19,6 +19,7 @@
 #define TERMINALSTRIPLAYOUTSHANDLER_H
 
 #include <QDomElement>
+#include <QObject>
 #include <QSet>
 #include <QSharedPointer>
 
@@ -28,14 +29,20 @@
  * @brief The TerminalStripLayoutsHandler class
  * Manage and provide TerminalStripLayoutPattern
  */
-class TerminalStripLayoutsHandler
+class TerminalStripLayoutsHandler : public QObject
 {
+	Q_OBJECT
+
 	public:
 		TerminalStripLayoutsHandler();
 		QSharedPointer<TerminalStripLayoutPattern> defaultLayout();
 
 		void toXml(QDomElement &parent_element) const;
 		void fromXml(const QDomElement &parent_element);
+
+	signals:
+			//The default layout was edited
+		void changed();
 
 	private:
 		QSet<QSharedPointer<TerminalStripLayoutPattern>> m_layout_set;

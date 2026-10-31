@@ -17,6 +17,8 @@
 */
 #include "assignvariables.h"
 
+#include <QRegularExpression>
+
 #include <diagram.h>
 #include <diagramposition.h>
 #include <qetapp.h>
@@ -229,6 +231,7 @@ namespace autonum
 		FormulaContext context;
 		const BorderTitleBlock &border = diagram->border_and_titleblock;
 		context.folio = border.folio();
+		context.folio_title = border.title();
 		context.folio_index = diagram->folioIndex();
 		context.folio_total = border.folioTotal();
 		context.plant = border.plant();
@@ -412,9 +415,9 @@ namespace autonum
 		m_assigned_label.replace("%M", m_context.plant);
 		m_assigned_label.replace("%LM", m_context.locmach);
 
-		QSettings settings;
 		if (m_context.has_element)
 		{
+		QSettings settings;
 		if (settings.value("border-columns_0", true).toBool()){
 			m_assigned_label.replace("%c", QString::number(m_context.element_position.number() - 1));
 			}else{
@@ -435,6 +438,12 @@ namespace autonum
 		assignTitleBlockVar();
 		assignProjectVar();
 		assignSequence();
+
+			//The folio title last: it is free text, and a title such as
+			//"Schema %c" must stay as typed, not have the variables in it
+			//replaced. %T on its own only, not the start of a longer word.
+		static const QRegularExpression folio_title(QStringLiteral("%T(?![A-Za-z0-9_])"));
+		m_assigned_label.replace(folio_title, m_context.folio_title);
 	}
 
 	void AssignVariables::assignTitleBlockVar()
@@ -647,6 +656,74 @@ namespace autonum
 				autonum::setSequentialToList(seqStruct.alpha, context,"alpha");
 			}
 		}
+	}
+
+	/**
+		@brief resetFolioCounters
+		@param nc the rule to read
+		@return the same rule, with the parts whose counter belongs to a
+		single folio put back to the beginning that folio is numbered
+		from -- the initial value the rule carries for it -- while the
+		parts counting over the whole project are left alone
+	*/
+	NumerotationContext resetFolioCounters(const NumerotationContext &nc)
+	{
+		NumerotationContext out = nc;
+		for (int i = 0; i < out.size(); ++i)
+		{
+			const QStringList parts = out.itemAt(i);
+			if (parts.isEmpty()) continue;
+
+			const QString &type = parts.at(0);
+			if (type == QLatin1String("unitfolio")
+					|| type == QLatin1String("tenfolio")
+					|| type == QLatin1String("hundredfolio"))
+			{
+					//The beginning a folio is numbered from is the one
+					//written into the rule, never a hard 1: a counter
+					//starting at 5 starts every folio at 5.
+				const bool has_start = parts.size() > 3
+						&& !parts.at(3).isEmpty();
+				out.replaceValue(i, has_start ? parts.at(3)
+											  : QStringLiteral("1"));
+			}
+		}
+		return out;
+	}
+
+	/**
+		@brief resetContextCounters
+		@param nc the rule to read
+		@return the same rule, with every part which counts set back to
+		the value it started from
+	*/
+	NumerotationContext resetContextCounters(const NumerotationContext &nc)
+	{
+		NumerotationContext out = resetFolioCounters(nc);
+		for (int i = 0; i < out.size(); ++i)
+		{
+			const QStringList parts = out.itemAt(i);
+			if (parts.isEmpty()) continue;
+
+			const QString &type = parts.at(0);
+			if (type == QLatin1String("unit")
+					|| type == QLatin1String("ten")
+					|| type == QLatin1String("hundred"))
+			{
+				out.replaceValue(i, QStringLiteral("1"));
+			}
+			else if (type == QLatin1String("wrap"))
+			{
+					//A cyclic part walks over [0, modulus), so it goes
+					//back to 0 rather than to 1
+				out.replaceValue(i, QStringLiteral("0"));
+			}
+			else if (type == QLatin1String("alpha"))
+			{
+				out.replaceValue(i, QStringLiteral("a"));
+			}
+		}
+		return out;
 	}
 
 	/**

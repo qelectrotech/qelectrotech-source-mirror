@@ -56,22 +56,30 @@ TerminalStrip::TerminalStrip(const QString &installation, const QString &locatio
 
 void TerminalStrip::setInstallation(const QString &installation) {
 	m_data.m_installation = installation;
+	emit dataChanged();
 }
 
 void TerminalStrip::setLocation(const QString &location) {
 	m_data.m_location = location;
+	emit dataChanged();
 }
 
 void TerminalStrip::setName(const QString &name) {
+	if (name == m_data.m_name)
+		return;
 	m_data.m_name = name;
+		//The strip's label at its first terminal reads the name
+	emit dataChanged();
 }
 
 void TerminalStrip::setComment(const QString &comment) {
 	m_data.m_comment = comment;
+	emit dataChanged();
 }
 
 void TerminalStrip::setDescription(const QString &description) {
 	m_data.m_description = description;
+	emit dataChanged();
 }
 
 /**
@@ -100,6 +108,17 @@ TerminalStripData TerminalStrip::data() const {
  */
 void TerminalStrip::setData(const TerminalStripData &data) {
 	m_data = data;
+	emit dataChanged();
+}
+
+/**
+ * @brief TerminalStrip::terminalDataChanged
+ * Called when the data of the element of one of the terminals of this strip
+ * is changed (Element::setElementData(), Element::setElementInformations()) :
+ * the items which draw this strip on the folios are redrawn.
+ */
+void TerminalStrip::terminalDataChanged() {
+	emit dataChanged();
 }
 
 bool TerminalStrip::addTerminal(QSharedPointer<RealTerminal> real_t)
@@ -377,6 +396,60 @@ void TerminalStrip::removeTerminals(QVector<QSharedPointer<PhysicalTerminal> > p
 	}
 
 	if (removed_) {
+		emit orderChanged();
+	}
+}
+
+/**
+ * @brief TerminalStrip::insertSpareTerminals
+ * Insert in this strip, at position @a pos, one physical terminal
+ * for each spare terminal of @a spare_terminals.
+ * @param pos : position of the first inserted terminal,
+ * out of range (-1...) to add the terminals at the end of the strip.
+ * @param spare_terminals : spare terminals not owned by a strip
+ * (RealTerminal::createSpare())
+ * @return the inserted physical terminals
+ */
+QVector<QSharedPointer<PhysicalTerminal>> TerminalStrip::insertSpareTerminals(int pos, const QVector<QSharedPointer<RealTerminal>> &spare_terminals)
+{
+	QVector<QSharedPointer<PhysicalTerminal>> phy_vector;
+	for (const auto &real_t : spare_terminals)
+	{
+		if (real_t && real_t->isSpare() && !real_t->parentStrip()) {
+			auto raw_phy_ptr = new PhysicalTerminal(nullptr, QVector<QSharedPointer<RealTerminal>>{real_t});
+			phy_vector.append(raw_phy_ptr->sharedRef());
+		}
+	}
+	insertTerminals(pos, phy_vector);
+	return phy_vector;
+}
+
+/**
+ * @brief TerminalStrip::insertTerminals
+ * Insert @a phy_t_vector in this strip at position @a pos, in this order.
+ * The physical terminals already owned by a strip are ignored.
+ * @param pos : position of the first inserted terminal,
+ * out of range (-1...) to add the terminals at the end of the strip.
+ * @param phy_t_vector
+ */
+void TerminalStrip::insertTerminals(int pos, const QVector<QSharedPointer<PhysicalTerminal>> &phy_t_vector)
+{
+	if (pos < 0 || pos > m_physical_terminals.size()) {
+		pos = m_physical_terminals.size();
+	}
+
+	bool added_{false};
+	for (const auto &phy_t : phy_t_vector)
+	{
+		if (!phy_t || phy_t->terminalStrip()) {
+			continue;
+		}
+		m_physical_terminals.insert(pos++, phy_t);
+		phy_t->setParentStrip(this);
+		added_ = true;
+	}
+
+	if (added_) {
 		emit orderChanged();
 	}
 }
@@ -1011,8 +1084,23 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 	auto xml_layout = xml_element.firstChildElement(QStringLiteral("layout"));
 	if (!xml_layout.isNull())
 	{
-			//Get all free elements terminal of the project
-		const ElementProvider ep(m_project);
+			//The folios holding its terminals are built (lazy folios):
+			//a strip is read with the project, before the database could
+			//tell where any symbol is
+		QSet<QUuid> terminals;
+		const QDomNodeList xml_reals = xml_layout.elementsByTagName(RealTerminal::xmlTagName());
+		for (int i = 0 ; i < xml_reals.size() ; ++i) {
+				//A spare terminal is on no folio
+			const auto element_uuid_ = xml_reals.at(i).toElement().attribute(QStringLiteral("element_uuid"));
+			if (!element_uuid_.isEmpty()) {
+				terminals.insert(QUuid(element_uuid_));
+			}
+		}
+		m_project->buildFoliosHoldingSymbols(terminals);
+
+			//Get all free elements terminal of the project: its own are on
+			//the folios just built
+		const ElementProvider ep(m_project->builtFolios());
 		auto free_terminals = ep.freeTerminal();
 
 			//Read each physical terminal
@@ -1023,7 +1111,14 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 				//Read each real terminal of the current physical terminal of the loop
 			for (auto &xml_real : QETXML::findInDomElement(xml_physical, RealTerminal::xmlTagName()))
 			{
+					//A spare terminal (on no folio) has its own data
+				if (auto spare_ = RealTerminal::spareFromXml(xml_real)) {
+					real_t_vector.append(spare_);
+					continue;
+				}
+
 				const auto uuid_ = QUuid(xml_real.attribute(QStringLiteral("element_uuid")));
+				bool found = false;
 				for (auto terminal_elmt : std::as_const(free_terminals))
 				{
 					if (terminal_elmt->uuid() == uuid_)
@@ -1032,8 +1127,14 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 							//Remove the actual terminal element from the vector, they dicrease the size
 							//of the vector and so each iteration have less terminal element to check
 						free_terminals.removeOne(terminal_elmt);
+						found = true;
 						break;
 					}
+				}
+				if (!found) {
+					qWarning() << "TerminalStrip::fromXml: strip" << name()
+							   << "lists terminal" << uuid_.toString()
+							   << "but no free terminal symbol has this uuid; it is left out";
 				}
 			}
 

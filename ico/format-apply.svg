@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- Paint brush handle -->
+  <path d="M19.7 4.3a2.5 2.5 0 0 0-3.5 0l-7.7 7.7a3.5 3.5 0 0 0-.9 1.6l-.6 2.4 2.4-.6a3.5 3.5 0 0 0 1.6-.9l7.7-7.7a2.5 2.5 0 0 0 0-3.5z" 
+        fill="#f39c12" stroke="#d68910" stroke-width="0.8" stroke-linejoin="round"/>
+  <!-- Ferrule (metal band) -->
+  <path d="M14.5 9.5 l-2-2 l1.2-1.2 l2 2 z" fill="#bdc3c7"/>
+  <!-- Brush tip / bristles with active paint -->
+  <path d="M7 16c-1.5.5-3.5 1.5-4 4 1.5 0 3.5-.5 4.5-1.5s1-2.5-.5-2.5z" 
+        fill="#27ae60" stroke="#1e8449" stroke-width="0.5"/>
+  <!-- Paint stroke / apply check badge in bottom-right -->
+  <circle cx="17.5" cy="17.5" r="5" fill="#27ae60" stroke="#ffffff" stroke-width="1.2"/>
+  <polyline points="15.2,17.5 16.8,19.2 20,15.8" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

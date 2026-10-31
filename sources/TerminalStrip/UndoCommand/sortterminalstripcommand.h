@@ -20,10 +20,12 @@
 
 #include <QUndoCommand>
 #include <QPointer>
+#include <QSharedPointer>
 #include <QVector>
 
 class TerminalStrip;
 class PhysicalTerminal;
+class RealTerminal;
 
 /**
  * @brief The SortTerminalStripCommand class
@@ -37,6 +39,25 @@ class SortTerminalStripCommand : public QUndoCommand
 
 		void undo() override;
 		void redo() override;
+
+		/**
+		 * @brief planOrderLessThan
+		 * Order two real terminals the way the plan is drawn : folio by
+		 * folio, then left to right (top to bottom only breaks ties
+		 * within a column). A spare has no folio and comes last, by
+		 * label, and the label breaks every remaining tie (two
+		 * terminals at the very same spot), which keeps the result
+		 * stable.
+		 *
+		 * The auto import sorts with it too, so the order it works out
+		 * cannot be rewritten by the SortTerminalStripCommand it then
+		 * pushes for the strip it just created.
+		 * @param a_ : first terminal
+		 * @param b_ : second terminal
+		 * @return true if @a a_ comes before @a b_
+		 */
+		static bool planOrderLessThan(const QSharedPointer<RealTerminal> &a_,
+									  const QSharedPointer<RealTerminal> &b_);
 
 	private:
 		void sort();

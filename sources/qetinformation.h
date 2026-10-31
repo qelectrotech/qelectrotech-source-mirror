@@ -39,6 +39,10 @@ namespace QETInformation
 {
 	/** Default information related to element **/
 	static QString ELMT_LABEL                        = "label";
+		//The part of the label behind its last colon ("1" in "X1:1"),
+		//shown in a text field of its own when the terminal labelling
+		//is drawn split (@sa QETProject::terminalLabelSplit)
+	static QString ELMT_TERMINAL_NUMBER              = "terminal_number";
 	static QString ELMT_FORMULA                      = "formula";
 	/**
 		Uuid of the project's element numbering scheme the element's

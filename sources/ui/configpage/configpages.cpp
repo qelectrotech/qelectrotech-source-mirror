@@ -108,24 +108,68 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 		auto saw_conductor = new SelectAutonumW(1);
 		auto saw_element = new SelectAutonumW(0);
 		auto saw_folio = new SelectAutonumW(2);
+		auto saw_cable = new SelectAutonumW(3);
+			//A cable is numbered by one rule and that is all there is:
+			//the row which lists the available numberings is hidden.
+		saw_cable->setSingleRuleMode(true);
 
 		initAutoNumTab(m_autonum_conductor, saw_conductor, QStringLiteral("autonum/conductor"));
 		initAutoNumTab(m_autonum_element, saw_element, QStringLiteral("autonum/element"));
 		initAutoNumTab(m_autonum_folio, saw_folio, QStringLiteral("autonum/folio"));
+		initAutoNumTab(m_autonum_cable, saw_cable, QStringLiteral("autonum/cable"));
+		m_autonum_cable.fixed_name = QETProject::cableAutoNumRuleName();
 
 		QSettings autonum_settings;
 		loadAutoNumTab(m_autonum_conductor, autonum_settings);
 		loadAutoNumTab(m_autonum_element, autonum_settings);
 		loadAutoNumTab(m_autonum_folio, autonum_settings);
+		loadAutoNumTab(m_autonum_cable, autonum_settings);
 
 		// Intercept Return key in the combo line edits so it doesn't
 		// activate the dialog's default button (OK).
-		for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio}) {
+		for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio, &m_autonum_cable}) {
 			if (QComboBox *combo = tab->widget->contextComboBox()) {
 				if (combo->lineEdit()) {
 					combo->lineEdit()->installEventFilter(this);
 				}
 			}
+		}
+	}
+
+		//How the terminals of a new project draw their label, built for
+		//the application's defaults only: per project this is a project
+		//property (project properties > General page), which is where the
+		//project gets it from. Same group box, same words, same choice as
+		//there -- only what a new project starts with is read and written
+		//here, in the settings (diagrameditor/defaultterminallabelling).
+	if (!m_project) {
+		m_terminal_label_gb = new QGroupBox(tr("Display of the terminal labelling", "group box title"));
+		m_terminal_label_combined_rb = new QRadioButton(
+					tr("Show the label and the terminal number in one field", "radio button label"));
+		m_terminal_label_combined_rb -> setToolTip(tr(
+				"A terminal's label (X1:1) is drawn as a whole, the way it has always been.",
+				"tooltip"));
+		m_terminal_label_split_rb = new QRadioButton(tr("Split the label and the terminal number",
+														"radio button label"));
+		m_terminal_label_split_rb -> setToolTip(tr(
+				"The label (X1) is drawn in one field and the terminal number (1) in another, "
+				"which a terminal symbol may place where it wants -- and hide when it must. "
+				"A symbol without such a field shows the two, one under the other.",
+				"tooltip"));
+		m_terminal_label_help = new QLabel(tr("Only the drawing changes: what is written in the element, "
+											  "the numbering, the sorting and the exports keep the whole label.",
+											  "informative label"));
+		m_terminal_label_help -> setWordWrap(true);
+
+		QVBoxLayout *terminal_label_layout = new QVBoxLayout(m_terminal_label_gb);
+		terminal_label_layout -> addWidget(m_terminal_label_combined_rb);
+		terminal_label_layout -> addWidget(m_terminal_label_split_rb);
+		terminal_label_layout -> addWidget(m_terminal_label_help);
+
+		if (settings.value(QStringLiteral("diagrameditor/defaultterminallabelling"), false).toBool()) {
+			m_terminal_label_split_rb -> setChecked(true);
+		} else {
+			m_terminal_label_combined_rb -> setChecked(true);
 		}
 	}
 
@@ -151,8 +195,28 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 	QVBoxLayout *diagram_layout = new QVBoxLayout(diagram_widget);
 
 	diagram_layout -> addWidget(bpw);
-	diagram_layout -> addWidget(ipw);
-	tab_widget->setMinimumSize(800, 650);
+		//The free height of the tab belongs to the title block widget:
+		//the stretch factor says so outright, here on the application's
+		//defaults as well as on a project's own page (which ends here),
+		//so a widget added after it later -- the way the labelling group
+		//was added at the end of the tab -- cannot take the height away
+		//from it and bring the empty band at the bottom back. Nothing
+		//here grows to reach for the height either: the group box is
+		//Preferred like every QGroupBox, and what the title block does
+		//with the height says titleblockpropertieswidget.ui -- the
+		//pages of its tab take it, the Template row keeps its own.
+	diagram_layout -> addWidget(ipw, 1);
+		//The default labelling of the terminals, application's defaults
+		//only. It sits at its natural height at the end of the tab.
+	if (m_terminal_label_gb) {
+		diagram_layout -> addWidget(m_terminal_label_gb);
+	}
+		//A width only: a minimum height set by hand replaces the one the
+		//tabs ask for, so on a low screen (1080p with display scaling,
+		//#1562) the dialog's scroll area never scrolled and the tallest
+		//tab (cross-references) was squeezed, its widgets drawn on top
+		//of each other. Without it the dialog scrolls instead.
+	tab_widget->setMinimumWidth(800);
 
 	tab_widget -> addTab (diagram_widget, tr("Sheet"));
 	tab_widget -> addTab (m_cpw,            tr("Conductor"));
@@ -169,6 +233,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 		autonum_inner_tab->addTab(m_autonum_conductor.widget, tr("Conductors"));
 		autonum_inner_tab->addTab(m_autonum_element.widget, tr("Elements"));
 		autonum_inner_tab->addTab(m_autonum_folio.widget, tr("Sheets"));
+		autonum_inner_tab->addTab(m_autonum_cable.widget, tr("Cables"));
 		autonum_layout->addWidget(autonum_inner_tab);
 		tab_widget -> addTab (autonum_widget, tr("Auto Numbering"));
 	}
@@ -279,7 +344,28 @@ void NewDiagramPage::applyConf()
 		}
 		settings.endArray();
 
+		// How a new project's terminals draw their label. Kept with the
+		// other defaults of a new project (the key starts with
+		// "diagrameditor/default", the prefix of that part of a
+		// configuration profile, see ConfigProfile::partOf())
+		settings.setValue(QStringLiteral("diagrameditor/defaultterminallabelling"),
+						  m_terminal_label_split_rb -> isChecked());
+
 		// save global auto-numbering defaults
+		//
+		// The cable rule is written here as well as by its own Apply
+		// button. The cable tool asks a project for that rule the
+		// moment he tries to draw a cable, and a project built out of
+		// settings he has just filled in and confirmed must not turn
+		// up without one -- which is what would happen if only the
+		// Apply button of that one tab could save it. A rule nobody
+		// has finished filling in is left alone, and a tab he has not
+		// touched writes nothing at all.
+		if (m_autonum_cable.widget
+			&& m_autonum_cable.widget->isModified()
+			&& m_autonum_cable.widget->isValid()) {
+			saveAutoNumContext(m_autonum_cable);
+		}
 		persistAutonumSettings();
 	}
 }
@@ -393,6 +479,12 @@ void NewDiagramPage::loadAutoNumTab(AutoNumTab &tab, QSettings &settings)
 		tab.widget->contextComboBox()->setCurrentText(data.second);
 		tab.widget->setContext(tab.contexts.value(data.second));
 	}
+		//A tab which keeps one single rule can take it away again with
+		//a button of its own -- the row the others delete from is
+		//hidden here -- but only when there really is one to take away.
+	if (!tab.fixed_name.isEmpty()) {
+		tab.widget->setRuleRemovable(tab.contexts.contains(tab.fixed_name));
+	}
 }
 
 /**
@@ -402,15 +494,25 @@ void NewDiagramPage::loadAutoNumTab(AutoNumTab &tab, QSettings &settings)
 */
 void NewDiagramPage::saveAutoNumContext(AutoNumTab &tab)
 {
-	QString name = tab.widget->contextComboBox()->currentText().trimmed();
-	if (name.isEmpty() || isPlaceholder(tab.widget->contextComboBox(), name)) {
-		return;
+	// A tab which keeps one single rule has no visible combo box to name
+	// it with (the row is hidden): it saves under its fixed name.
+	QString name = tab.fixed_name;
+	if (name.isEmpty()) {
+		name = tab.widget->contextComboBox()->currentText().trimmed();
+		if (name.isEmpty() || isPlaceholder(tab.widget->contextComboBox(), name)) {
+			return;
+		}
 	}
 	tab.contexts.insert(name, tab.widget->toNumContext());
 	if (tab.widget->contextComboBox()->findText(name) == -1) {
 		tab.widget->contextComboBox()->addItem(name);
 	}
+	tab.widget->contextComboBox()->setCurrentText(name);
 	persistAutonumSettings();
+		//There is a rule now, so there is something to take away again.
+	if (!tab.fixed_name.isEmpty()) {
+		tab.widget->setRuleRemovable(true);
+	}
 }
 
 /**
@@ -419,17 +521,35 @@ void NewDiagramPage::saveAutoNumContext(AutoNumTab &tab)
 */
 void NewDiagramPage::removeAutoNumContext(AutoNumTab &tab)
 {
-	QString name = tab.widget->contextComboBox()->currentText().trimmed();
-	if (name.isEmpty() || isPlaceholder(tab.widget->contextComboBox(), name)) {
-		return;
+	QString name = tab.fixed_name;
+	if (name.isEmpty()) {
+		name = tab.widget->contextComboBox()->currentText().trimmed();
+		if (name.isEmpty() || isPlaceholder(tab.widget->contextComboBox(), name)) {
+			return;
+		}
 	}
 	int idx = tab.widget->contextComboBox()->findText(name);
-	if (idx == -1) return;
+		// A name which is not in the list was never saved, so there is
+		// nothing to take out -- unless it is a single rule, which is
+		// always under its fixed name whether the combo knows it or not.
+	if (idx == -1 && tab.fixed_name.isEmpty()) return;
+	if (idx != -1) {
+		tab.widget->contextComboBox()->removeItem(idx);
+		tab.widget->contextComboBox()->setCurrentText(QString());
+	}
 	tab.contexts.remove(name);
-	tab.widget->contextComboBox()->removeItem(idx);
-	tab.widget->contextComboBox()->setCurrentText(QString());
 	tab.widget->setContext(NumerotationContext());
 	persistAutonumSettings();
+
+		//A tab which keeps one single rule has no list to delete it
+		//from, so this is where the button of its own goes away too.
+		//And having just taken the rule away means numbering cables by
+		//hand again: every project of its own asks once more whether
+		//one should be defined -- that answer is kept per project, so
+		//there is nothing to take back here.
+	if (!tab.fixed_name.isEmpty()) {
+		tab.widget->setRuleRemovable(false);
+	}
 }
 
 /**
@@ -439,12 +559,21 @@ void NewDiagramPage::removeAutoNumContext(AutoNumTab &tab)
 void NewDiagramPage::persistAutonumSettings()
 {
 	QSettings settings;
-	for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio}) {
+	for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio, &m_autonum_cable}) {
 		QString current;
-		QComboBox *combo = tab->widget->contextComboBox();
-		if (!isPlaceholder(combo, combo->currentText().trimmed())
-		    && tab->contexts.contains(combo->currentText().trimmed())) {
-			current = combo->currentText().trimmed();
+		if (!tab->fixed_name.isEmpty()) {
+			// The one rule of a single-rule tab is in use as soon as
+			// it exists: there is nothing to choose between.
+			if (tab->contexts.contains(tab->fixed_name)) {
+				current = tab->fixed_name;
+			}
+		}
+		else {
+			QComboBox *combo = tab->widget->contextComboBox();
+			if (!isPlaceholder(combo, combo->currentText().trimmed())
+			    && tab->contexts.contains(combo->currentText().trimmed())) {
+				current = combo->currentText().trimmed();
+			}
 		}
 		NumerotationContext::saveToSettings(tab->contexts, current,
 						   settings, tab->prefix);
@@ -462,7 +591,7 @@ bool NewDiagramPage::eventFilter(QObject *obj, QEvent *event)
 		auto *ke = static_cast<QKeyEvent *>(event);
 		if ((ke->key() == Qt::Key_Return || ke->key() == Qt::Key_Enter)) {
 			// Check if this is a line edit inside one of our autonum combos
-			for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio}) {
+			for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio, &m_autonum_cable}) {
 				if (QComboBox *combo = tab->widget->contextComboBox()) {
 					if (combo->lineEdit() && combo->lineEdit() == obj) {
 						return true; // eat the event

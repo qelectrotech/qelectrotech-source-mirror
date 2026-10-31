@@ -16,18 +16,22 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "cli_export.h"
+#include "projectlock.h"
 #include "bomexport.h"
 
 #include "bordertitleblock.h"
 #include "conductornumexport.h"
 #include "conductorproperties.h"
 #include "dataBase/projectdatabase.h"
+#include "dataBase/qetdbfile.h"
+#include "dataBase/sqlreadonly.h"
 #include "diagram.h"
 #include "diagramcontext.h"
 #include "editor/terminalnamecheck.h"
 #include "dxfexport.h"
 #include "exportproperties.h"
 #include "pdf_links.h"
+#include "container/qetcontainer.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/element.h"
@@ -58,10 +62,13 @@
 #include <QSet>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QSqlRecord>
 #include <QSvgGenerator>
+#include <QTemporaryDir>
 #include <QTextStream>
 #include <QTimeZone>
 #include <QTransform>
+#include <QUuid>
 
 namespace {
 
@@ -85,7 +92,19 @@ const QHash<QString, QString> &exportFlags()
 		{"--info", "info"},
 		{"--check-elements", "check"},
 		{"--resave", "resave"},
+		{"--recover", "recover"},
+		{"--history", "history"},
+		{"--history-on", "historyon"},
+		{"--history-off", "historyoff"},
+		{"--history-diff", "historydiff"},
+		{"--last-change", "lastchange"},
+		{"--history-keep", "historykeep"},
+		{"--qetdb-repair", "qetdbrepair"},
+		{"--revision", "revision"},
+		{"--export-delivery", "delivery"},
+		{"--from-database", "fromdb"},
 		{"--set-titleblock", "settb"},
+		{"--query", "query"},
 	};
 	return flags;
 }
@@ -283,7 +302,8 @@ int exportPdf(QETProject &project, const QString &output,
 }
 
 int exportImages(QETProject &project, const QString &format,
-				 const QString &out_dir, bool showTerminals = false)
+				 const QString &out_dir, bool showTerminals = false,
+				 bool svgSmallPictures = false)
 {
 	const QList<Diagram *> diagrams = project.diagrams();
 	if (diagrams.isEmpty()) {
@@ -306,8 +326,10 @@ int exportImages(QETProject &project, const QString &format,
 			gen.setViewBox(QRect(0, 0, r.width(), r.height()));
 			gen.setTitle(diagram->title());
 			QPainter painter(&gen);
+			diagram->setSmallPictures(svgSmallPictures);
 			renderDiagram(diagram, painter, QRectF(QPointF(0, 0), r.size()),
 						 showTerminals);
+			diagram->setSmallPictures(false);
 			painter.end();
 		} else { // png
 			QImage image(r.size(), QImage::Format_ARGB32);
@@ -867,17 +889,74 @@ int exportLinks(QETProject &project, const QString &output)
 
 /// Round-trip: load the project and write its XML back out, so an external
 /// diff can reveal markup QET silently normalises (tolerated-but-invalid XML).
-int resaveProject(QETProject &project, const QString &output)
+/// What can be read of the damaged .qetz @p input, written to the .qet
+/// @p output, and what was left out (QetContainer::recover()).
+int recoverProject(const QString &input, const QString &output)
 {
-	const QDomDocument doc = project.toXml();
-	QFile file(output);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		err << "Cannot open '" << output << "' for writing.\n";
+	QFile file(input);
+	if (!file.open(QIODevice::ReadOnly)) {
+		err << "Cannot read '" << input << "': " << file.errorString() << "\n";
+		return 2;
+	}
+	const QByteArray content = file.readAll();
+	if (!QetContainer::isZip(content)) {
+		err << "'" << input << "' is not a .qetz project; a .qet opens as it is, or can be fixed in a text editor\n";
+		return 2;
+	}
+	QDomDocument document;
+	QStringList lost;
+	QString error;
+	if (!QetContainer::recover(content, &document, &lost, &error)) {
+		err << "Nothing can be recovered from '" << input << "': " << error << "\n";
 		return 1;
 	}
-	QTextStream fout(&file);
-	fout << doc.toString(4);
-	file.close();
+	if (!QET::writeXmlFile(document, output, &error)) {
+		err << "Cannot write '" << output << "': " << error << "\n";
+		return 1;
+	}
+	out << "Recovered " << input << " -> " << output << "\n";
+	if (lost.isEmpty()) {
+		out << "Nothing was left out.\n";
+	} else {
+		out << "Left out:\n";
+		for (const QString &item : std::as_const(lost))
+			out << "  " << item << "\n";
+	}
+	return 0;
+}
+
+int resaveProject(QETProject &project, const QString &output)
+{
+		//A .qetdb (experimental), whatever the setting: tests and conversions
+	if (QetDbFile::isDatabasePath(output)) {
+		QString error;
+		if (!QetDbFile::save(*project.dataBase(), output, &error)) {
+			err << "Cannot write '" << output << "': " << error << "\n";
+			return 1;
+		}
+		out << "Re-saved project -> " << output << "\n";
+		return 0;
+	}
+	if (QETProject::isContainerPath(output)) {
+		QString error;
+		if (!project.writeContainerFile(output, &error)) {
+			err << "Cannot write '" << output << "': " << error << "\n";
+			return 1;
+		}
+		out << "Re-saved project -> " << output << "\n";
+		return 0;
+	}
+		//Folios not built (lazy folios) written as read when that is
+		//what building them would write (QETProject::toXml())
+	QHash<int, QByteArray> kept_folios;
+	const QDomDocument doc = project.toXml(&kept_folios);
+		//Through a temporary file, as the GUI saves: a run stopped
+		//part-way leaves the previous file
+	QString error;
+	if (!QET::writeXmlText(QETProject::spliceKeptFolios(doc.toString(4), kept_folios), output, &error)) {
+		err << "Cannot write '" << output << "': " << error << "\n";
+		return 1;
+	}
 	out << "Re-saved project -> " << output << "\n";
 	return 0;
 }
@@ -954,18 +1033,182 @@ int setTitleBlock(QETProject &project, const QString &output,
 		++folios;
 	}
 
-	const QDomDocument doc = project.toXml();
-	QFile file(output);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		err << "Cannot open '" << output << "' for writing.\n";
-		return 1;
+	if (QETProject::isContainerPath(output)) {
+		QString error;
+		if (!project.writeContainerFile(output, &error)) {
+			err << "Cannot write '" << output << "': " << error << "\n";
+			return 1;
+		}
+	} else {
+			//Folios not built (lazy folios) written as read when that
+			//is what building them would write (QETProject::toXml())
+		QHash<int, QByteArray> kept_folios;
+		const QDomDocument doc = project.toXml(&kept_folios);
+		QString error;
+		if (!QET::writeXmlText(QETProject::spliceKeptFolios(doc.toString(4), kept_folios), output, &error)) {
+			err << "Cannot write '" << output << "': " << error << "\n";
+			return 1;
+		}
 	}
-	QTextStream fout(&file);
-	fout << doc.toString(4);
-	file.close();
 	out << "Stamped " << fields.size() << " field(s) on "
 		<< folios << " folio(s) -> " << output << "\n";
 	return 0;
+}
+
+/// One CSV field as RFC 4180 has it: quoted when it holds a comma, a quote
+/// or a line break, its quotes doubled.
+QString rfcCsvField(const QString &value)
+{
+	if (value.contains(QLatin1Char(',')) || value.contains(QLatin1Char('"'))
+			|| value.contains(QLatin1Char('\n')) || value.contains(QLatin1Char('\r')))
+	{
+		QString escaped = value;
+		escaped.replace(QLatin1Char('"'), QStringLiteral("\"\""));
+		return QLatin1Char('"') % escaped % QLatin1Char('"');
+	}
+	return value;
+}
+
+/// Run @p sql on the .qetdb @p file itself, without opening the project:
+/// on a copy, once it passes the checks of an open, read-only, with the
+/// public views made as TEMP views (a file saved before them answers the
+/// same). @p print is given the rows.
+/// @return 0, 1 with @p error saying why, or 2 when @p print failed and
+/// said why itself
+template <typename Print>
+int queryDatabaseFile(const QString &file, const QString &sql, Print print, QString *error)
+{
+	QTemporaryDir dir;
+	const QString copy = dir.filePath(QStringLiteral("query.qetdb"));
+	if (!dir.isValid() || !QFile::copy(file, copy)) {
+		*error = QStringLiteral("the file could not be read");
+		return 1;
+	}
+	if (!QetDbFile::isReadable(copy, error)) return 1;
+	const QString name = QStringLiteral("qet_query_") + QUuid::createUuid().toString();
+	int result = 1;
+	{
+		QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), name);
+		db.setDatabaseName(copy);
+		db.setConnectOptions(QStringLiteral("QSQLITE_OPEN_READONLY"));
+		if (!db.open()) {
+			*error = db.lastError().text();
+		} else {
+			{
+				QSqlQuery views(db);
+				for (QString statement : projectDataBase::publicViewStatements()) {
+					statement.replace(QStringLiteral("CREATE VIEW "), QStringLiteral("CREATE TEMP VIEW "));
+					if (!views.exec(statement)) {
+						*error = views.lastError().text();
+						break;
+					}
+				}
+			}
+			if (error->isEmpty() && projectDataBase::isReadOnlySelect(sql, error)) {
+				QSqlQuery query = QETSql::execReadOnly(db, sql, error);
+				if (error->isEmpty() && query.lastError().isValid())
+					*error = query.lastError().text();
+				if (error->isEmpty())
+					result = print(file, query) ? 0 : 2;
+			}
+			db.close();
+		}
+	}
+	QSqlDatabase::removeDatabase(name);
+	return result;
+}
+
+/// --query: run @p sql on the project database of each of @p files in
+/// turn, as qet.query() runs it (read-only, one SELECT), and print every
+/// row with the file it came from first: CSV, or a JSON array of objects
+/// with @p json. A .qetdb is read itself, without opening the project
+/// (QET_QUERY_OPEN_PROJECT=1 opens it as the others). A file that cannot
+/// be opened or queried is reported on stderr and the others still run;
+/// the exit code says whether any failed.
+int queryProjects(const QString &sql, const QStringList &files, bool json)
+{
+	QStringList columns;
+	QJsonArray json_rows;
+		//The rows of @p query, run on @p file; false, said on stderr, if
+		//they could not all be printed
+	const auto print = [&](const QString &file, QSqlQuery &query) {
+		const QSqlRecord record = query.record();
+		QStringList names{QStringLiteral("project")};
+		for (int i = 0 ; i < record.count() ; ++i)
+			names << record.fieldName(i);
+		if (columns.isEmpty()) {
+			columns = names;
+			if (!json) {
+				QStringList header;
+				for (const QString &name : std::as_const(columns))
+					header << rfcCsvField(name);
+				out << header.join(QLatin1Char(',')) << "\n";
+			}
+		} else if (names != columns) {
+			err << file << ": the query gives other columns than for the first file\n";
+			return false;
+		}
+		int rows = 0;
+		bool complete = true;
+		while (query.next()) {
+				//A query that never stops producing rows (a recursive CTE)
+				//stops here, as qet.query() does
+			if (++rows > projectDataBase::MaxResultRows) {
+				err << file << ": result cut at " << projectDataBase::MaxResultRows
+					<< " rows; add a LIMIT or a WHERE clause\n";
+				complete = false;
+				break;
+			}
+			if (json) {
+				QJsonObject row{{QStringLiteral("project"), file}};
+				for (int i = 0 ; i < record.count() ; ++i)
+					row.insert(record.fieldName(i), QJsonValue::fromVariant(query.value(i)));
+				json_rows.append(row);
+			} else {
+				QStringList fields{rfcCsvField(file)};
+				for (int i = 0 ; i < record.count() ; ++i)
+					fields << (query.isNull(i) ? QString() : rfcCsvField(query.value(i).toString()));
+				out << fields.join(QLatin1Char(',')) << "\n";
+			}
+		}
+		out.flush();
+		return complete;
+	};
+
+	const bool open_every_project = qEnvironmentVariableIntValue("QET_QUERY_OPEN_PROJECT") == 1;
+	bool failed = false;
+	for (const QString &file : files) {
+		if (!QFileInfo::exists(file)) {
+			err << file << ": not found\n";
+			failed = true;
+			continue;
+		}
+		QString error;
+		if (QetDbFile::isDatabasePath(file) && !open_every_project) {
+			const int result = queryDatabaseFile(file, sql, print, &error);
+			if (result == 1) err << file << ": " << error << "\n";
+			if (result != 0) failed = true;
+			continue;
+		}
+		QETProject project(file);
+		if (project.state() != QETProject::Ok) {
+			err << file << ": cannot be opened (state " << project.state() << ")\n";
+			failed = true;
+			continue;
+		}
+		QSqlQuery query = project.dataBase()->newQuery(sql, &error);
+		if (error.isEmpty() && query.lastError().isValid())
+			error = query.lastError().text();
+		if (!error.isEmpty()) {
+			err << file << ": " << error << "\n";
+			failed = true;
+			continue;
+		}
+		if (!print(file, query)) failed = true;
+	}
+	if (json)
+		out << QJsonDocument(json_rows).toJson(QJsonDocument::Indented);
+	return failed ? 1 : 0;
 }
 
 } // anonymous namespace
@@ -989,9 +1232,12 @@ int run(const QStringList &args)
 	const bool showTerminals = filtered.removeAll("--show-terminals") > 0;
 	const bool dxfBlocks = filtered.removeAll("--dxf-blocks") > 0;
 	const bool dxfAttributes = filtered.removeAll("--dxf-attributes") > 0;
+	const bool svgSmallPictures = filtered.removeAll("--svg-small-pictures") > 0;
 	// --no-slaves and --no-junctions leave rows out of --export-bom.
 	const bool includeSlaves = filtered.removeAll("--no-slaves") == 0;
 	const bool includeJunctions = filtered.removeAll("--no-junctions") == 0;
+	const bool ignoreLock = filtered.removeAll("--ignore-lock") > 0;
+	const bool json = filtered.removeAll("--json") > 0;
 
 	QString flag;
 	QStringList rest;
@@ -1013,6 +1259,183 @@ int run(const QStringList &args)
 			return 2;
 		}
 		return checkElements(rest.at(0));
+	}
+
+	// --recover reads what it can of a damaged .qetz, which a project
+	// cannot be opened from.
+	if (format == "recover") {
+		if (rest.size() < 2) {
+			err << "Usage: qelectrotech --recover <damaged.qetz> <output.qet>\n";
+			return 2;
+		}
+		return recoverProject(rest.at(0), rest.at(1));
+	}
+
+	// --history lists the saves a .qetdb keeps; --history-on and
+	// --history-off make it keep them or drop them (QETDB-S6-SCOPE.md)
+	if (format == "history" || format == "historyon" || format == "historyoff") {
+		if (rest.isEmpty() || !QetDbFile::isDatabasePath(rest.at(0))) {
+			err << "Usage: qelectrotech " << flag << " <project.qetdb>\n";
+			return 2;
+		}
+		QString error;
+		if (format == "history") {
+			const QStringList lines = QetDbFile::history(rest.at(0), &error);
+			if (lines.isEmpty()) {
+				err << rest.at(0) << ": " << error << "\n";
+				return 1;
+			}
+			for (const QString &line : lines)
+				out << line << "\n";
+			out.flush();
+			return 0;
+		}
+		if (!QetDbFile::setHistory(rest.at(0), format == "historyon", &error)) {
+			err << "Cannot change the history of " << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		return 0;
+	}
+
+	// --history-diff says what changed between two of a .qetdb's revisions
+	// (QETDB-S6-SCOPE.md S6-3)
+	if (format == "historydiff") {
+		bool from_number = false, to_number = false;
+		const qint64 from = rest.value(1).toLongLong(&from_number);
+		const qint64 to = rest.value(2).toLongLong(&to_number);
+		if (rest.size() < 3 || !from_number || !to_number || !QetDbFile::isDatabasePath(rest.at(0))) {
+			err << "Usage: qelectrotech --history-diff <project.qetdb> <revision> <later revision>\n";
+			return 2;
+		}
+		QString error;
+		const QStringList lines = QetDbFile::historyDiff(rest.at(0), from, to, &error);
+		if (lines.isEmpty()) {
+			err << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		for (const QString &line : lines)
+			out << line << "\n";
+		out.flush();
+		return 0;
+	}
+
+	// --history-keep keeps only a .qetdb's last saves (QETDB-S6-SCOPE.md S6-6)
+	if (format == "historykeep") {
+		bool number = false;
+		const int saves = rest.value(1).toInt(&number);
+		if (rest.size() < 2 || !number || !QetDbFile::isDatabasePath(rest.at(0))) {
+			err << "Usage: qelectrotech --history-keep <project.qetdb> <saves, 0 for all>\n";
+			return 2;
+		}
+		QString error;
+		if (!QetDbFile::setHistoryLimit(rest.at(0), saves, &error)) {
+			err << "Cannot limit the history of " << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		return 0;
+	}
+
+	// --qetdb-repair writes a .qetdb with its damaged pages rebuilt from the
+	// repair data it keeps, never the file itself (QETDB-S4C-PLAN.md P5).
+	// Exit 0: a sound file written; 1: not repairable; 3: another program
+	// changed it, written only with --back-to-save
+	if (format == "qetdbrepair") {
+		const bool back = rest.contains(QStringLiteral("--back-to-save"));
+		rest.removeAll(QStringLiteral("--back-to-save"));
+		if (rest.size() < 2 || !QetDbFile::isDatabasePath(rest.at(0)) || !QetDbFile::isDatabasePath(rest.at(1))
+				|| QFileInfo(rest.at(0)).absoluteFilePath() == QFileInfo(rest.at(1)).absoluteFilePath()) {
+			err << "Usage: qelectrotech --qetdb-repair <damaged.qetdb> <repaired.qetdb> [--back-to-save]\n";
+			return 2;
+		}
+		QString error;
+		QetDbFile::Repair found;
+		const bool ok = QetDbFile::repair(rest.at(0), rest.at(1), &found, &error, back);
+		out << "repair data: " << (found.parity ? (found.scanned ? "yes, read from its pages" : "yes") : "none") << "\n";
+		if (found.edited) out << "another program changed it since its save\n";
+		out << "damaged pages: " << found.bad_pages << "\n";
+		if (found.header) out << "header rebuilt\n";
+		if (found.parity_damaged) out << "its repair data was damaged: written again\n";
+		if (found.beyond) out << "groups beyond repair: " << found.beyond << "\n";
+		if (ok)
+			out << "written: " << rest.at(1)
+				<< (found.back_to_save ? " (back to the saved state)"
+									   : found.repaired() ? " (repaired)" : " (nothing to repair)") << "\n";
+		out.flush();
+		if (ok) return 0;
+		err << "Not written: " << error << "\n";
+		return found.edited && !back ? 3 : 1;
+	}
+
+	// --last-change says which save last changed a symbol, a wire or a
+	// folio (QETDB-S6-SCOPE.md S6-5)
+	if (format == "lastchange") {
+		if (rest.size() < 2 || !QetDbFile::isDatabasePath(rest.at(0))) {
+			err << "Usage: qelectrotech --last-change <project.qetdb> <uuid>\n";
+			return 2;
+		}
+		QString error;
+		const QString line = QetDbFile::lastChange(rest.at(0), rest.at(1), &error);
+		if (!error.isEmpty()) {
+			err << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		out << (line.isEmpty() ? QStringLiteral("not changed by a save it keeps") : line) << "\n";
+		out.flush();
+		return 0;
+	}
+
+	// --revision writes a .qetdb as it was at one of its revisions;
+	// --export-delivery writes it without its history (QETDB-S6-SCOPE.md)
+	if (format == "revision" || format == "delivery") {
+		const int needed = format == "revision" ? 3 : 2;
+		bool number = true;
+		const qint64 ord = format == "revision" ? rest.value(1).toLongLong(&number) : 0;
+		if (rest.size() < needed || !number || !QetDbFile::isDatabasePath(rest.at(0))
+				|| !QetDbFile::isDatabasePath(rest.at(needed - 1))) {
+			err << (format == "revision"
+					? "Usage: qelectrotech --revision <project.qetdb> <number> <output.qetdb>\n"
+					: "Usage: qelectrotech --export-delivery <project.qetdb> <output.qetdb>\n");
+			return 2;
+		}
+		QString error;
+		bool same_digest = false;
+		const bool ok = format == "revision"
+				? QetDbFile::writeRevision(rest.at(0), ord, rest.at(2), &error, &same_digest)
+				: QetDbFile::exportDelivery(rest.at(0), rest.at(1), &error);
+		if (!ok) {
+			err << "Cannot write " << rest.at(needed - 1) << " from " << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		if (format == "revision")
+			out << "Revision " << ord << " written to " << rest.at(2) << "; content digest "
+				<< (same_digest ? "the one it was saved with" : "differs from the one it was saved with")
+				<< "\n";
+		out.flush();
+		return 0;
+	}
+
+	// --from-database writes a project from the working copy a QElectroTech
+	// that ended left behind, which a project cannot be opened from.
+	if (format == "fromdb") {
+		if (rest.size() < 2) {
+			err << "Usage: qelectrotech --from-database <working-copy.sqlite> <output.qet>\n";
+			return 2;
+		}
+		QString error;
+		if (!projectDataBase::writeWorkingCopy(rest.at(0), rest.at(1), &error)) {
+			err << "Cannot write " << rest.at(1) << " from " << rest.at(0) << ": " << error << "\n";
+			return 1;
+		}
+		return 0;
+	}
+
+	// --query runs one query on many projects, each opened in turn.
+	if (format == "query") {
+		if (rest.size() < 2) {
+			err << "Usage: qelectrotech --query <SQL> <project>... [--json]\n";
+			return 2;
+		}
+		return queryProjects(rest.at(0), rest.mid(1), json);
 	}
 
 	const QString input = rest.value(0);
@@ -1056,11 +1479,25 @@ int run(const QStringList &args)
 		return exportNets(project, output);
 	if (format == "links")
 		return exportLinks(project, output);
+		//The verbs that write a project file leave alone one that someone
+		//has open (their lock beside it), unless told to: the read-only
+		//verbs above never look at locks
+	if ((format == "resave" || format == "settb") && !ignoreLock) {
+		const ProjectLock::Holder holder = ProjectLock::liveHolder(output);
+		if (holder.valid) {
+			err << "'" << output << "' is open by " << holder.user << " on "
+				<< holder.host << " (lock file " << ProjectLock::lockPathFor(output)
+				<< "). Not writing it; close it there, write to another file, "
+				   "or pass --ignore-lock.\n";
+			return 1;
+		}
+	}
 	if (format == "resave")
 		return resaveProject(project, output);
 	if (format == "settb")
 		return setTitleBlock(project, output, rest.mid(2));
-	return exportImages(project, format, output, showTerminals);
+	return exportImages(project, format, output, showTerminals,
+						svgSmallPictures);
 }
 
 } // namespace CLIExport

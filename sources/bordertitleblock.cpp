@@ -27,7 +27,11 @@
 #include "qetversion.h"
 #include "titleblocktemplate.h"
 #include "titleblocktemplaterenderer.h"
+#include "projectorigin.h"
 
+#include "diagram.h"
+#include "qetproject.h"
+#include "dataBase/projectdatabase.h"
 
 #include <QLocale>
 #include <QPainter>
@@ -282,26 +286,147 @@ void BorderTitleBlock::borderFromXml(const QDomElement &xml_elmt) {
 	@return the properties of the titleblock
 	\~French les proprietes du cartouches
 */
-TitleBlockProperties BorderTitleBlock::exportTitleBlock()
+TitleBlockProperties BorderTitleBlock::exportTitleBlock() const
+{
+	return current();
+}
+
+/**
+	@brief BorderTitleBlock::localTitleBlock
+	@return the properties of the titleblock this object holds itself,
+	whether or not its folio is placed in a project
+*/
+TitleBlockProperties BorderTitleBlock::localTitleBlock() const
 {
 	TitleBlockProperties ip;
 
-	ip.author = author();
-	ip.date = date();
-	ip.title = title();
-	ip.filename = fileName();
-	ip.plant = plant();
-	ip.locmach = locmach();
-	ip.indexrev = indexrev();
-	ip.version = version();
-	ip.folio = folio();
+	ip.author = btb_author_;
+	ip.date = btb_date_;
+	ip.title = btb_title_;
+	ip.filename = btb_filename_;
+	ip.plant = btb_plant_;
+	ip.locmach = btb_locmach_;
+	ip.indexrev = btb_indexrev_;
+	ip.version = btb_version_;
+	ip.folio = btb_folio_;
 	ip.template_name = titleBlockTemplateName();
 	ip.display_at = m_edge;
-	ip.auto_page_num = autoPageNum();
+	ip.auto_page_num = btb_auto_page_num_;
 	ip.context = additional_fields_;
 	ip.collection = QET::QetCollection::Embedded;
 
 	return(ip);
+}
+
+/**
+	@brief BorderTitleBlock::current
+	@return the properties of the titleblock: for a folio placed in a
+	project the project's store holds them, for any other this object's
+	own copy.
+*/
+TitleBlockProperties BorderTitleBlock::current() const
+{
+	if (const TitleBlockProperties *s = stored())
+		return *s;
+	return localTitleBlock();
+}
+
+/**
+	@brief BorderTitleBlock::stored
+	@return the properties the project's store holds for this titleblock's
+	folio, or nullptr if it is not placed. Read at once: the getters use it
+	field by field, as label formulas ask for the folio and title of every
+	symbol's folio, and copying the whole properties each time costs.
+*/
+const TitleBlockProperties *BorderTitleBlock::stored() const
+{
+	if (projectDataBase *store = placedStore())
+		return store->storedFolioTitleBlock(m_owner_folio->uuid());
+	return nullptr;
+}
+
+/**
+	@brief BorderTitleBlock::storedBorder
+	@return the properties the project's store holds for this folio's
+	border, or nullptr if it is not placed.
+*/
+const BorderProperties *BorderTitleBlock::storedBorder() const
+{
+	if (projectDataBase *store = placedStore())
+		return store->storedFolioBorder(m_owner_folio->uuid());
+	return nullptr;
+}
+
+/**
+	@brief BorderTitleBlock::storedFolioNumber
+	@param index set to the stored folio index, when found
+	@param total set to the stored folio total, when found
+	@return whether the project's store holds a number for this folio
+*/
+bool BorderTitleBlock::storedFolioNumber(int *index, int *total) const
+{
+	if (projectDataBase *store = placedStore())
+		return store->storedFolioNumber(m_owner_folio->uuid(), index, total);
+	return false;
+}
+
+/**
+	@brief BorderTitleBlock::setOwnerFolio
+	@param folio : the folio this border and title block belongs to
+*/
+void BorderTitleBlock::setOwnerFolio(Diagram *folio)
+{
+	m_owner_folio = folio;
+}
+
+/**
+	@brief BorderTitleBlock::placedStore
+	@return the project database holding this titleblock's properties, or
+	nullptr if its folio is not placed in a project
+*/
+projectDataBase *BorderTitleBlock::placedStore() const
+{
+	QETProject *project = m_owner_folio ? m_owner_folio->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	return store && store->placedFolio(m_owner_folio->uuid()) == m_owner_folio
+			? store : nullptr;
+}
+
+/**
+	@brief BorderTitleBlock::storeTitleBlock
+	Write this titleblock's properties to its project's store, once its
+	folio is placed: every change of them comes through here.
+*/
+void BorderTitleBlock::storeTitleBlock()
+{
+	if (projectDataBase *store = placedStore())
+		store->storeFolioTitleBlock(m_owner_folio->uuid(), localTitleBlock());
+}
+
+/**
+	@brief BorderTitleBlock::storeBorder
+	Write this folio's border properties to its project's store, once its
+	folio is placed: every change of them comes through here.
+*/
+void BorderTitleBlock::storeBorder()
+{
+	if (projectDataBase *store = placedStore())
+		store->storeFolioBorder(m_owner_folio->uuid(), exportBorder());
+}
+
+/**
+	@brief BorderTitleBlock::storeFolioNumber
+	Write this folio's index and total to its project's store, once its
+	folio is placed: every change of them comes through here.
+*/
+void BorderTitleBlock::storeFolioNumber()
+{
+	//Read the members directly, not the getters: the getters check the
+	//store first, which this call is about to update -- going through
+	//them here would echo back the old stored value instead of the new
+	//one, the same trap storeBorder() avoids with exportBorder().
+	if (projectDataBase *store = placedStore())
+		store->storeFolioNumber(m_owner_folio->uuid(), folio_index_, folio_total_);
 }
 
 /**
@@ -333,6 +458,7 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip)
 	// through setFolioData(),
 	// which in turn calls updateDiagramContextForTitleBlock().
 	emit(needTitleBlockTemplate(ip.template_name));
+	storeTitleBlock();
 	emit informationChanged();
 }
 
@@ -343,15 +469,19 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip)
 */
 BorderProperties BorderTitleBlock::exportBorder()
 {
+		//Read the members directly, not the getters: a folio placed in a
+		//project reads those back from the store, which storeBorder() is
+		//about to update from this very value -- going through them here
+		//would echo back the old stored value instead of the new one.
 	BorderProperties bp;
-	bp.columns_count = columnsCount();
-	bp.columns_width = columnsWidth();
-	bp.columns_header_height = columnsHeaderHeight();
-	bp.display_columns = columnsAreDisplayed();
-	bp.rows_count = rowsCount();
-	bp.rows_height = rowsHeight();
-	bp.rows_header_width = rowsHeaderWidth();
-	bp.display_rows = rowsAreDisplayed();
+	bp.columns_count = columns_count_;
+	bp.columns_width = columns_width_;
+	bp.columns_header_height = columns_header_height_;
+	bp.display_columns = display_columns_;
+	bp.rows_count = rows_count_;
+	bp.rows_height = rows_height_;
+	bp.rows_header_width = rows_header_width_;
+	bp.display_rows = display_rows_;
 	return(bp);
 }
 
@@ -391,6 +521,7 @@ void BorderTitleBlock::setTitleBlockTemplate(
 		const TitleBlockTemplate *titleblock_template) {
 	m_titleblock_template_renderer -> setTitleBlockTemplate(
 				titleblock_template);
+	storeTitleBlock();
 }
 
 /**
@@ -454,7 +585,10 @@ void BorderTitleBlock::displayTitleBlock(bool di) {
 void BorderTitleBlock::displayColumns(bool dc) {
 	bool change = (dc != display_columns_);
 	display_columns_ = dc;
-	if (change) emit(displayChanged());
+	if (change) {
+		storeBorder();
+		emit(displayChanged());
+	}
 }
 
 /**
@@ -465,7 +599,10 @@ void BorderTitleBlock::displayColumns(bool dc) {
 void BorderTitleBlock::displayRows(bool dr) {
 	bool change = (dr != display_rows_);
 	display_rows_ = dr;
-	if (change) emit(displayChanged());
+	if (change) {
+		storeBorder();
+		emit(displayChanged());
+	}
 }
 
 /**
@@ -481,6 +618,50 @@ void BorderTitleBlock::displayBorder(bool db) {
 	bool change = (db != display_border_);
 	display_border_  = db;
 	if (change) emit(displayChanged());
+}
+
+/**
+	@brief BorderTitleBlock::origin
+	@return the corner the cells are counted from: the project's, or the one
+	given to setOrigin() for a border that belongs to no built folio.
+*/
+ProjectOrigin::Mode BorderTitleBlock::origin() const
+{
+	if (m_owner_folio && m_owner_folio->project())
+		return m_owner_folio->project()->Origin();
+	return m_origin;
+}
+
+/**
+	@brief BorderTitleBlock::setOrigin
+	For a border that belongs to no folio (one read from a project file);
+	a folio's border follows its project.
+*/
+void BorderTitleBlock::setOrigin(ProjectOrigin::Mode mode)
+{
+	m_origin = mode;
+}
+
+/**
+	@brief BorderTitleBlock::columnAt
+	@param i : the i-th column from the left, starting at 1
+	@return the number that column carries: counted from the right when the
+	origin is on the right
+*/
+int BorderTitleBlock::columnAt(int i) const
+{
+	return ProjectOrigin::reversedIsColumns(origin()) ? columns_count_ - i + 1 : i;
+}
+
+/**
+	@brief BorderTitleBlock::rowAt
+	@param i : the i-th row from the top, starting at 1
+	@return the number of that row: counted from the bottom when the origin
+	is at the bottom
+*/
+int BorderTitleBlock::rowAt(int i) const
+{
+	return ProjectOrigin::reversedIsRows(origin()) ? rows_count_ - i + 1 : i;
 }
 
 /**
@@ -551,7 +732,8 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> drawText(numbered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-					    BorderCellLabels::columnLabel(i, columns_start_at_zero));
+				BorderCellLabels::columnLabel(
+					columnAt(i), columns_start_at_zero));
 		}
 	}
 
@@ -572,7 +754,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> drawText(lettered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-					    BorderCellLabels::rowLabel(i));
+				BorderCellLabels::rowLabel(rowAt(i)));
 		}
 	}
 
@@ -656,7 +838,7 @@ void BorderTitleBlock::drawDxf(
 						 recWidth, recHeight, color);
 
 			Createdxf::drawTextAligned(file_path,
-			   QString::number(i + offset),
+				QString::number(columnAt(i) + offset),
 			   xCoord+recWidth/4,
 			   yCoord + recHeight*0.5,
 						   recHeight*0.7,
@@ -673,7 +855,6 @@ void BorderTitleBlock::drawDxf(
 	// draw line numbering
 	// dessine la numerotation des lignes
 	if (display_border_ && display_rows_) {
-		QString row_string("A");
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			double xCoord = diagram_rect_.topLeft().x()
 					* Createdxf::xScale;
@@ -690,7 +871,7 @@ void BorderTitleBlock::drawDxf(
 			Createdxf::drawRectangle(file_path, xCoord, yCoord,
 						 recWidth, recHeight, color);
 			Createdxf::drawTextAligned(file_path,
-						   row_string,
+				BorderCellLabels::rowLabel(rowAt(i)),
 			   xCoord+recWidth*0.1,
 			   yCoord + recHeight*0.4,
 						   recWidth*0.7,
@@ -701,7 +882,6 @@ void BorderTitleBlock::drawDxf(
 						   xCoord+recWidth/2,
 			   1,
 			   color);
-			row_string = incrementLetters(row_string);
 		}
 	}
 
@@ -755,6 +935,7 @@ void BorderTitleBlock::setColumnsCount(int nb_c) {
 	if (nb_c == columnsCount()) return;
 	columns_count_ = qMax(MIN_COLUMN_COUNT , nb_c);
 	updateRectangles();
+	storeBorder();
 }
 
 /**
@@ -774,6 +955,7 @@ void BorderTitleBlock::setColumnsWidth(const qreal &new_cw) {
 	if (new_cw == columnsWidth()) return;
 	columns_width_ = qMax(MIN_COLUMN_WIDTH , new_cw);
 	updateRectangles();
+	storeBorder();
 }
 
 /**
@@ -789,6 +971,7 @@ void BorderTitleBlock::setColumnsWidth(const qreal &new_cw) {
 void BorderTitleBlock::setColumnsHeaderHeight(const qreal &new_chh) {
 	columns_header_height_ = qBound(qreal(5.0), new_chh, qreal(50.0));
 	updateRectangles();
+	storeBorder();
 }
 
 /**
@@ -808,6 +991,7 @@ void BorderTitleBlock::setRowsCount(int nb_r) {
 	if (nb_r == rowsCount()) return;
 	rows_count_ = qMax(MIN_ROW_COUNT, nb_r);
 	updateRectangles();
+	storeBorder();
 }
 
 /**
@@ -827,6 +1011,7 @@ void BorderTitleBlock::setRowsHeight(const qreal &new_rh) {
 	if (new_rh == rowsHeight()) return;
 	rows_height_ = qMax(MIN_ROW_HEIGHT, new_rh);
 	updateRectangles();
+	storeBorder();
 }
 
 /**
@@ -842,6 +1027,7 @@ void BorderTitleBlock::setRowsHeight(const qreal &new_rh) {
 void BorderTitleBlock::setRowsHeaderWidth(const qreal &new_rhw) {
 	rows_header_width_ = qBound(qreal(5.0), new_rhw, qreal(50.0));
 	updateRectangles();
+	storeBorder();
 }
 
 /**
@@ -875,11 +1061,11 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 	int row_number    = int(ceil(relative_pos.x() / columnsWidth()));
 	int column_number = int(ceil(relative_pos.y() / rowsHeight()));
 
-	QString letter = "A";
-	for (int i = 1 ; i < column_number ; ++ i)
-		letter = incrementLetters(letter);
+		//The mirror image of the drawn labels, see columnAt() and rowAt()
+	row_number = columnAt(row_number);
+	column_number = rowAt(column_number);
 
-	return(DiagramPosition(letter, row_number));
+	return(DiagramPosition(BorderCellLabels::rowLabel(column_number), row_number));
 }
 
 /**
@@ -889,7 +1075,19 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 void BorderTitleBlock::setFolio(const QString &folio)
 {
 	btb_folio_ = folio;
+	storeTitleBlock();
 	emit (titleBlockFolioChanged(folio));
+}
+
+/**
+	@brief BorderTitleBlock::setAutoPageNum
+	@param title : the title of the folio numbering this folio follows,
+	nothing else changes
+*/
+void BorderTitleBlock::setAutoPageNum(const QString &title)
+{
+	btb_auto_page_num_ = title;
+	storeTitleBlock();
 }
 
 /**
@@ -915,9 +1113,10 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 	// So an empty page-level value is skipped only when a real project-level
 	// one is already there to show through; otherwise it still goes in
 	// empty, which is what makes the placeholder resolve to nothing.
+	const TitleBlockProperties tb = current();
 	DiagramContext context = initial_context;
-	foreach (QString key, additional_fields_.keys()) {
-		const QVariant value = additional_fields_[key];
+	foreach (QString key, tb.context.keys()) {
+		const QVariant value = tb.context[key];
 		if (!value.toString().isEmpty() || !context.contains(key))
 			context.addValue(key, value);
 	}
@@ -925,20 +1124,20 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 	// ... overridden by the historical and/or dynamically generated fields
 	QLocale var;
 	var.dateFormat(QLocale::ShortFormat);
-	context.addValue("author",      btb_author_);
+	context.addValue("author",      tb.author);
 	context.addValue(
 		"date",
-		QLocale::system().toString(btb_date_, QLocale::ShortFormat));
-	context.addValue("title",       btb_title_);
-	context.addValue("filename",    btb_filename_);
-	context.addValue("plant",     btb_plant_);
-	context.addValue("locmach",     btb_locmach_);
-	context.addValue("indexrev",    btb_indexrev_);
-	context.addValue("version",     btb_version_);
+		QLocale::system().toString(tb.date, QLocale::ShortFormat));
+	context.addValue("title",       tb.title);
+	context.addValue("filename",    tb.filename);
+	context.addValue("plant",     tb.plant);
+	context.addValue("locmach",     tb.locmach);
+	context.addValue("indexrev",    tb.indexrev);
+	context.addValue("version",     tb.version);
 	context.addValue("folio",       btb_final_folio_);
 	context.addValue("folio-id",    folio_index_);
 	context.addValue("folio-total", folio_total_);
-	context.addValue("auto_page_num", btb_auto_page_num_);
+	context.addValue("auto_page_num", tb.auto_page_num);
 	context.addValue("previous-folio-num", m_previous_folio_num);
 	context.addValue("next-folio-num", m_next_folio_num);
 
@@ -977,6 +1176,10 @@ QRectF BorderTitleBlock::cellRect(const QString &cell) const
 
 	if (row < 1 || column < 1 || column > columns_count_)
 		return QRectF();
+
+		//The label is the mirror image of the position, see convertPosition()
+	row = rowAt(row);
+	column = columnAt(column);
 
 	const QPointF top_left = insideBorderRect().topLeft();
 	return QRectF(top_left.x() + (column - 1) * columns_width_,
@@ -1041,14 +1244,16 @@ void BorderTitleBlock::setFolioData(
 
 	// regenerate the content of the folio field
 	// regenere le contenu du champ folio
-	btb_final_folio_ = btb_folio_;
+	btb_final_folio_ = folio();
 
 	if (btb_final_folio_.contains("%autonum")){
 		btb_final_folio_.replace("%autonum", autonum);
 		btb_folio_ = btb_final_folio_;
+		storeTitleBlock();
 	}
 	btb_final_folio_.replace("%id",    QString::number(folio_index_));
 	btb_final_folio_.replace("%total", QString::number(folio_total_));
+	storeFolioNumber();
 
 	updateDiagramContextForTitleBlock(project_properties);
 }

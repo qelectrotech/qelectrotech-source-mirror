@@ -141,6 +141,11 @@ void ElementsCollectionWidget::addProject(QETProject *project)
 }
 
 void ElementsCollectionWidget::removeProject(QETProject *project) {
+		//Before the first load and during a load, the project is also
+		//waiting to be loaded, or in the model being loaded
+	m_waiting_project.removeAll(project);
+	if (m_new_model)
+		m_new_model->removeProject(project);
 	if (m_model)
 		m_model->removeProject(project);
 }

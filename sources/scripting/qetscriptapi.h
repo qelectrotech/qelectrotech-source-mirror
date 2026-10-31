@@ -24,11 +24,17 @@
 #include <QVariantList>
 #include <QVariantMap>
 
+#include <optional>
+
+#include <diagramcontext.h>
+
 class QETProject;
+class Diagram;
 class DiagramView;
 class Element;
 class Terminal;
 class Conductor;
+class ConductorProperties;
 class IndependentTextItem;
 class QetShapeItem;
 class DiagramImageItem;
@@ -189,7 +195,8 @@ class QetGraphicsTableItem;
 	  button applies, not a rule reimplemented here. sortTerminalStrip()
 	  reorders the strip's physical positions into the canonical order the
 	  editor's own sort button computes.
-	- @b Tables: a BOM/nomenclature or a summary (table of contents) placed
+	- @b Tables: a BOM/nomenclature, a summary (table of contents) or a
+	  cable list placed
 	  on a folio, through QetGraphicsTableFactory::create() -- the same
 	  factory call the "add table" menu action makes, minus the modal
 	  AddTableDialog it collects its settings from first. That dialog is
@@ -201,7 +208,11 @@ class QetGraphicsTableItem;
 	  calling addTable() once should create exactly the one table it asked
 	  for, not possibly several spread across folios it never asked to add.
 	  A script that wants either behaviour can resize the result itself or
-	  add its own folio.
+	  add its own folio. kind is "nomenclature" (over placed elements),
+	  "summary" (over folios) or "cable_list" (over the cables of the
+	  project): the first two require a real SQL query, the last takes
+	  comma-joined column keys instead and accepts an empty query, which
+	  means its default columns.
 
 	  Neither creating nor deleting a table is undoable:
 	  QetGraphicsTableFactory::newTable(), which create() calls, calls
@@ -386,12 +397,17 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool exportWires(const QString &output);
 		Q_INVOKABLE bool exportBom(const QString &output, bool noSlaves = false,
 								   bool noJunctions = false);
+		Q_INVOKABLE bool exportCableList(const QString &output);
 		Q_INVOKABLE bool exportWiring(const QString &output);
 		Q_INVOKABLE bool exportNets(const QString &output);
 		Q_INVOKABLE bool exportLinks(const QString &output);
 		Q_INVOKABLE bool exportInfo(const QString &output);
 		Q_INVOKABLE bool setTitleBlock(const QString &output, const QStringList &assignments);
 		Q_INVOKABLE bool save(const QString &output);
+			/// Write @p output from the project database alone, read back
+			/// from a copy of it (QET-SQL-FORMAT S3z1): a test of whether
+			/// the database holds the whole project
+		Q_INVOKABLE bool saveFromDatabase(const QString &output);
 
 		// -- edit geometry, through the real undo commands --
 		Q_INVOKABLE QString addElement(int folioIndex, const QString &locationPath, double x, double y);
@@ -429,6 +445,11 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool setConductorProperty(int folioIndex, const QString &elementUuid,
 											  int terminalIndex, const QString &property,
 											  const QString &value);
+			// The same, the wire named by its uuid (conductorUuids())
+		Q_INVOKABLE QString conductorPropertyByUuid(int folioIndex, const QString &conductorUuid,
+													const QString &property) const;
+		Q_INVOKABLE bool setConductorPropertyByUuid(int folioIndex, const QString &conductorUuid,
+													const QString &property, const QString &value);
 
 		// -- a conductor's own drawn path, not the whole potential's
 		// properties above -- one conductor only, addressed the same way --
@@ -472,6 +493,13 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool setTextColor(int folioIndex, int textIndex, const QString &color);
 		Q_INVOKABLE bool setTextRotation(int folioIndex, int textIndex, double angle);
 		Q_INVOKABLE bool deleteText(int folioIndex, int textIndex);
+
+		// -- cables --
+		Q_INVOKABLE QString addCable(int folioIndex, const QString &designation,
+									 const QString &type, const QStringList &coreColors,
+									 const QString &length,
+									 double x1, double y1, double x2, double y2);
+		Q_INVOKABLE QStringList cables() const;
 
 		Q_INVOKABLE QStringList shapes(int folioIndex) const;
 		Q_INVOKABLE int shapeIndex(int folioIndex, const QString &uuid) const;
@@ -563,6 +591,8 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool deleteElementText(int folioIndex, const QString &elementUuid, int textIndex);
 		Q_INVOKABLE QVariantMap elementTextGeometry(int folioIndex, const QString &elementUuid,
 													int textIndex) const;
+		Q_INVOKABLE bool placeElementTexts(int folioIndex, const QStringList &elementUuids,
+										   const QString &where);
 
 		// -- copy elements (with the conductors between them) to a position --
 		Q_INVOKABLE QStringList duplicateElements(int fromFolioIndex, const QStringList &elementUuids,
@@ -636,6 +666,12 @@ class QetScriptApi : public QObject
 
 	private:
 		bool runFlag(const QString &flag, const QStringList &args);
+		Diagram *built(Diagram *folio) const;
+		Conductor *findConductorByUuid(int folioIndex, const QString &conductorUuid, const QString &caller);
+		bool applyConductorProperties(Conductor *conductor, const ConductorProperties &properties);
+		bool unbuiltConductorChange(int folioIndex, const QUuid &wire, const QString &property,
+									const QString &value, bool *refused);
+		std::optional<DiagramContext> unbuiltInformation(int folioIndex, const QString &elementUuid) const;
 		Element *findElement(int folioIndex, const QString &elementUuid) const;
 		Terminal *findTerminal(int folioIndex, const QString &elementUuid, int terminalIndex,
 							   const QString &caller);

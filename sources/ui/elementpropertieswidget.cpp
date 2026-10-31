@@ -20,6 +20,8 @@
 #include <diagram.h>
 #include <diagramposition.h>
 #include <qetapp.h>
+#include <qetproject.h>
+#include <QSettings>
 #include <qetgraphicsitem/dynamicelementtextitem.h>
 #include <qetgraphicsitem/element.h>
 #include <qetgraphicsitem/elementtextitemgroup.h>
@@ -30,11 +32,24 @@
 #include "linksingleelementwidget.h"
 #include "masterpropertieswidget.h"
 #include "plclinkwidget.h"
+#include "dockfit.h"
+
+#include <dataBase/qetdbfile.h>
 
 #include <QCheckBox>
+#include <QDateTime>
+#include <QFileInfo>
+#include <QClipboard>
+#include <QGuiApplication>
 #include <QLabel>
+#include <QLocale>
 #include <QUndoStack>
 #include <QVBoxLayout>
+
+namespace {
+	//The tab last picked in the selection properties panel
+QString s_live_tab;
+}
 
 /**
 	@brief ElementPropertiesWidget::ElementPropertiesWidget
@@ -118,12 +133,20 @@ void ElementPropertiesWidget::setElement(Element *element)
 			//If previous element is same type as new element we just call setElement for each editor
 		if(previous_element->linkType() == m_element->linkType())
 		{
-			foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
-			{
-				aepew->setElement(m_element);
-				addGeneralWidget();
+			bool chained_changed = false;
+			if (m_element->linkType() & Element::AllReport) {
+				bool prev_chained = previous_element->diagram() && previous_element->diagram()->project() && previous_element->diagram()->project()->chainedReports();
+				bool new_chained = m_element->diagram() && m_element->diagram()->project() && m_element->diagram()->project()->chainedReports();
+				chained_changed = (prev_chained != new_chained);
 			}
-			return;
+			if (!chained_changed) {
+				foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
+				{
+					aepew->setElement(m_element);
+					addGeneralWidget();
+				}
+				return;
+			}
 		}
 	}
 	updateUi();
@@ -149,6 +172,7 @@ void ElementPropertiesWidget::setDynamicText(DynamicElementTextItem *text)
 			{
 				DynamicElementTextItemEditor *detie = static_cast<DynamicElementTextItemEditor *>(aepew);
 				m_tab->setCurrentWidget(detie);
+				m_text_tab_wanted = true;
 				detie->setCurrentText(text);
 			}
 		}
@@ -175,6 +199,7 @@ void ElementPropertiesWidget::setTextsGroup(ElementTextItemGroup *group)
 			{
 				DynamicElementTextItemEditor *detie = static_cast<DynamicElementTextItemEditor *>(aepew);
 				m_tab->setCurrentWidget(detie);
+				m_text_tab_wanted = true;
 				detie->setCurrentGroup(group);
 			}
 		}
@@ -225,6 +250,18 @@ bool ElementPropertiesWidget::setLiveEdit(bool live_edit)
 	foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
 		aepew->setLiveEdit(m_live_edit);
 
+	if (m_live_edit && !m_text_tab_wanted && !s_live_tab.isEmpty())
+	{
+		for (int i = 0 ; i < m_tab->count() ; ++i)
+		{
+			if (m_tab->tabText(i) == s_live_tab)
+			{
+				m_tab->setCurrentIndex(i);
+				break;
+			}
+		}
+	}
+
 	return true;
 }
 
@@ -262,6 +299,14 @@ void ElementPropertiesWidget::editElement()
 void ElementPropertiesWidget::buildGui()
 {
 	m_tab = new QTabWidget(this);
+		//The selection properties panel builds a new editor each time
+		//the selection goes from one element to something else and back:
+		//it opens on the tab last picked there (#1439)
+	connect(m_tab, &QTabWidget::tabBarClicked, this, [this](int index) {
+		if (m_live_edit && index >= 0) {
+			s_live_tab = m_tab->tabText(index);
+		}
+	});
 	QVBoxLayout *main_layout = new QVBoxLayout(this);
 	main_layout -> addWidget(m_tab);
 	setLayout(main_layout);
@@ -296,11 +341,19 @@ void ElementPropertiesWidget::updateUi()
 			m_list_editor << new ElementInfoWidget(m_element, this);
 			break;
 		case Element::NextReport:
+		case Element::PreviousReport: {
+			bool enable_chained = false;
+			if (m_element->diagram() && m_element->diagram()->project()) {
+				enable_chained = m_element->diagram()->project()->chainedReports();
+			} else {
+				enable_chained = QSettings().value(QStringLiteral("project/enable-chained-reports"), false).toBool();
+			}
+			if (enable_chained) {
+				m_list_editor << new ElementInfoWidget(m_element, this);
+			}
 			m_list_editor << new LinkSingleElementWidget(m_element, this);
 			break;
-		case Element::PreviousReport:
-			m_list_editor << new LinkSingleElementWidget(m_element, this);
-			break;
+		}
 		case Element::Master:
 			m_list_editor << new MasterPropertiesWidget(m_element, this);
 			m_list_editor << new ElementInfoWidget(m_element, this);
@@ -424,7 +477,28 @@ QWidget *ElementPropertiesWidget::generalWidget()
 					.arg(usage.other);
 		}
 	}
-	description_string += QString(tr("Location : %1\n")).arg(m_element.data()->location().toString());
+		//Who last changed it, from the history its .qetdb keeps if it
+		//keeps one: as saved, not the edits since (QETDB-S6-SCOPE.md S6-5).
+		//Before the location, which can wrap onto several lines
+	QETProject *project = m_diagram->project();
+	if (project && QetDbFile::isDatabasePath(project->filePath()) && QFileInfo::exists(project->filePath())) {
+			//"ord  time  who@host  added|changed"
+		const QString last = QetDbFile::lastChange(project->filePath(), m_element->uuid().toString(), nullptr);
+		if (!last.isEmpty()) {
+			const QDateTime when = QDateTime::fromString(last.section(QStringLiteral("  "), 1, 1), Qt::ISODate);
+			description_string += tr("Last changed: save %1, %2, by %3\n")
+					.arg(last.section(QStringLiteral("  "), 0, 0),
+						 QLocale().toString(when.toLocalTime(), QLocale::ShortFormat),
+						 last.section(QStringLiteral("  "), 2, 2).section(QLatin1Char('@'), 0, 0));
+		}
+	}
+		//Narrow docks: a zero-width space after each slash lets the long
+		//path wrap there, rather than hold the panel at its whole length
+	const bool narrow = DockFit::enabled();
+	QString location = m_element.data()->location().toString();
+	if (narrow)
+		location.replace(QLatin1Char('/'), QStringLiteral("/\u200B"));
+	description_string += QString(tr("Location : %1\n")).arg(location);
 
 		// widget himself
 	QWidget *general_widget = new QWidget (m_tab);
@@ -436,6 +510,15 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	label->setWordWrap(true);
 	label->setTextInteractionFlags(Qt::TextEditorInteraction);
 	vlayout_->addWidget(label);
+	if (narrow) {
+			//What is copied from the text gets no zero-width spaces
+		connect(QGuiApplication::clipboard(), &QClipboard::dataChanged, label, [label] {
+			QClipboard *clipboard = QGuiApplication::clipboard();
+			const QString text = clipboard->text();
+			if (label->hasFocus() && text.contains(QChar(0x200B)))
+				clipboard->setText(QString(text).remove(QChar(0x200B)));
+		});
+	}
 
 		//checkbox to lock the element position on the diagram
 		//(same mechanism already used by images and drawn shapes)
@@ -459,10 +542,17 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	connect(find_in_panel, &QPushButton::clicked, this, &ElementPropertiesWidget::findInPanel);
 	QPushButton *edit_element = new QPushButton(QET::Icons::ElementEdit, tr("Edit element"), general_widget);
 	connect(edit_element, &QPushButton::clicked, this, &ElementPropertiesWidget::editElement);
-	QHBoxLayout *hlayout_ = new QHBoxLayout;
-	hlayout_->addWidget(find_in_panel);
-	hlayout_->addWidget(edit_element);
-	vlayout_->addLayout(hlayout_);
+	if (narrow) {
+			//Below each other: side by side, the two held the panel at
+			//the width of both
+		vlayout_->addWidget(find_in_panel);
+		vlayout_->addWidget(edit_element);
+	} else {
+		QHBoxLayout *hlayout_ = new QHBoxLayout;
+		hlayout_->addWidget(find_in_panel);
+		hlayout_->addWidget(edit_element);
+		vlayout_->addLayout(hlayout_);
+	}
 
 		//Set the maximum size of the pixmap to the minimum size of the layout
 	QPixmap pixmap = m_element->pixmap();

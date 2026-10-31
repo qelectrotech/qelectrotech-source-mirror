@@ -32,9 +32,62 @@
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>qet</string>
+				<string>qetz</string>
 			</array>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.qelectrotech.project</string>
+				<string>org.qelectrotech.project-zip</string>
+			</array>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+		</dict>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>org.qelectrotech.project</string>
+			<key>UTTypeDescription</key>
+			<string>QElectroTech project</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.xml</string>
+			</array>
+			<key>UTTypeIconFile</key>
+			<string>qet</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>qet</string>
+				</array>
+				<key>public.mime-type</key>
+				<string>application/x-qet-project</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>org.qelectrotech.project-zip</string>
+			<key>UTTypeDescription</key>
+			<string>QElectroTech zipped project</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.zip-archive</string>
+			</array>
+			<key>UTTypeIconFile</key>
+			<string>qet</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>qetz</string>
+				</array>
+				<key>public.mime-type</key>
+				<string>application/x-qet-project+zip</string>
+			</dict>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>

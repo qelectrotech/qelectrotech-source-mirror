@@ -129,12 +129,83 @@ void QET::Palette::invertLightnessLayer(QImage &image, const QColor &sheet, cons
 	}
 }
 
+QET::Palette::SheetInk QET::Palette::sheetInk(const QColor &sheet, bool colored)
+{
+	if (sheet.lightness() >= 128)
+		return {};
+	if (colored)
+		return {sheet, QColor(255, 255, 0), QColor(255, 64, 64), QColor(110, 190, 255),
+		        QColor(255, 255, 0), QColor(Qt::white)};
+	return {sheet, QColor(Qt::white), QColor(Qt::white), QColor(Qt::white),
+	        QColor(Qt::white), QColor(Qt::white)};
+}
+
+void QET::Palette::tintLayer(QImage &image, const QColor &sheet, const QColor &ink)
+{
+	Q_ASSERT(image.format() == QImage::Format_ARGB32_Premultiplied);
+	const int sheet_rgb[3] = {sheet.red(), sheet.green(), sheet.blue()};
+	const int ink_rgb[3] = {ink.red(), ink.green(), ink.blue()};
+
+	/* The layer is premultiplied: a pixel of alpha a has its channels in
+	   0..a. Its gray level g (0..a) is the white part, a - g the black
+	   part, so each channel becomes (sheet * g + ink * (a - g)) / 255,
+	   which is again premultiplied by a. A colored pixel (a highlight, a
+	   red terminal, a pale blue fill) is left alone: one whose saturation
+	   as in HSL -- the spread of its channels against how far its
+	   lightness is from black or white -- is above one half, and whose
+	   spread is not mere rounding noise. A spread against the alpha
+	   alone missed pale tints, whose channels lie close together near
+	   white. */
+	for (int y = 0; y < image.height(); ++y) {
+		quint32 *line = reinterpret_cast<quint32 *>(image.scanLine(y));
+		for (int x = 0, width = image.width(); x < width; ++x) {
+			const quint32 pixel = line[x];
+			const int alpha = pixel >> 24;
+			if (alpha == 0) continue;
+			const int red   = (pixel >> 16) & 0xff;
+			const int green = (pixel >> 8) & 0xff;
+			const int blue  = pixel & 0xff;
+			const int highest = qMax(red, qMax(green, blue));
+			const int lowest  = qMin(red, qMin(green, blue));
+			const int spread = highest - lowest;
+			const int room = alpha - qAbs(highest + lowest - alpha);
+			if (spread * 32 > alpha && spread * 2 > room) continue;
+			const int gray = (red + green + blue) / 3;
+			const int dark = alpha - gray;
+			quint32 out = quint32(alpha) << 24;
+			for (int c = 0; c < 3; ++c)
+				out |= quint32((sheet_rgb[c] * gray + ink_rgb[c] * dark) / 255) << (16 - 8 * c);
+			line[x] = out;
+		}
+	}
+}
+
+namespace {
+	/// The dark mode: conductors in a color of their own, not one ink
+	bool coloredWires(const QET::Palette::SheetInk &ink)
+	{
+		return !ink.isNull() && ink.wires != ink.symbols;
+	}
+}
+
+QColor QET::Palette::pickedColor(const SheetInk &ink)
+{
+	return coloredWires(ink) ? QColor(255, 0, 255) : QColor(Qt::red);
+}
+
+QColor QET::Palette::highlightColor(const SheetInk &ink)
+{
+	return coloredWires(ink) ? QColor(0, 210, 0) : QColor(69, 137, 255);
+}
+
 QColor QET::Palette::gridDotColor(const QColor &sheet, bool inverted)
 {
 	if (sheet == QColor(Qt::black))
 		return Qt::white;
 	if (inverted)
 		return QColor(sheet.red() * 2 / 3, sheet.green() * 2 / 3, sheet.blue() * 2 / 3);
+	if (sheet.lightness() < 128)
+		return Qt::white;
 	return Qt::black;
 }
 

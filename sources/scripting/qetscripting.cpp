@@ -113,6 +113,15 @@ namespace {
 	// error QJSValue, which the normal error-reporting path below already
 	// handles.
 	constexpr int kScriptTimeoutMs = 30000;
+
+	// QET_SCRIPT_TIMEOUT_MS raises it for a slow build: the tests that run
+	// a dozen edits on industrial.qet need longer under AddressSanitizer.
+	int scriptTimeoutMs()
+	{
+		bool ok = false;
+		const int ms = qEnvironmentVariableIntValue("QET_SCRIPT_TIMEOUT_MS", &ok);
+		return ok && ms > 0 ? ms : kScriptTimeoutMs;
+	}
 }
 
 bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view,
@@ -171,7 +180,7 @@ bool runSource(const QString &source, const QString &fileName, const QString &ti
 	std::condition_variable cv;
 	std::thread watchdog([&]() {
 		std::unique_lock<std::mutex> lock(mtx);
-		cv.wait_for(lock, std::chrono::milliseconds(kScriptTimeoutMs), [&finished]{ return finished; });
+		cv.wait_for(lock, std::chrono::milliseconds(scriptTimeoutMs()), [&finished]{ return finished; });
 		if (!finished) {
 			engine.setInterrupted(true);
 		}

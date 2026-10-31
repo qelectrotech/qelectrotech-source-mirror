@@ -82,16 +82,32 @@ void HidBackend::scan()
 		return;
 	}
 
-	hid_device_info *list = hid_enumerate(0, 0);
-	for (hid_device_info *info = list; info && !m_device; info = info->next)
+		//On Linux and macOS hidapi takes the name strings of the devices it
+		//lists from the system, and one call listing every device is the
+		//cheapest scan. Elsewhere, such as on Windows, it reads them from
+		//each device itself, so only 3D mice are asked for (see
+		//SpaceMouseHid::scanIds()).
+#if defined(Q_OS_LINUX) || defined(Q_OS_MACOS)
+	const QList<SpaceMouseHid::DeviceId> ids = {SpaceMouseHid::DeviceId()};
+#else
+	const QList<SpaceMouseHid::DeviceId> ids = SpaceMouseHid::scanIds();
+#endif
+	for (const SpaceMouseHid::DeviceId &id : ids)
 	{
-		if (!SpaceMouseHid::isSpaceMouse(info->vendor_id, info->product_id,
-						 info->usage_page, info->usage)) {
-			continue;
+		hid_device_info *list = hid_enumerate(id.vendor, id.product);
+		for (hid_device_info *info = list; info && !m_device; info = info->next)
+		{
+			if (!SpaceMouseHid::isSpaceMouse(info->vendor_id, info->product_id,
+							 info->usage_page, info->usage)) {
+				continue;
+			}
+			m_device = hid_open_path(info->path);
 		}
-		m_device = hid_open_path(info->path);
+		hid_free_enumeration(list);
+		if (m_device) {
+			break;
+		}
 	}
-	hid_free_enumeration(list);
 
 	if (!m_device) {
 		m_scan_timer->start();

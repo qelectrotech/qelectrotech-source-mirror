@@ -19,7 +19,9 @@
 #define REALTERMINAL_H
 
 #include <QSharedPointer>
+#include <QColor>
 #include <QDomElement>
+#include <QUuid>
 #include <properties/elementdata.h>
 
 class TerminalStrip;
@@ -53,8 +55,19 @@ class RealTerminal
 
 		void setPhysicalTerminal(const QSharedPointer<PhysicalTerminal> &phy_t);
 
+			///Where the wires of a cable land, worked out from the project:
+			///empty when no cable lands on a piece worth naming (cableTarget()
+			///then falls back on the text typed in by hand).
+		QVector<QString> automaticCableTarget() const;
+
 	public:
 		~RealTerminal();
+		static QSharedPointer<RealTerminal> createSpare(const ElementData &data, const QUuid &uuid = QUuid());
+		static QSharedPointer<RealTerminal> spareFromXml(const QDomElement &xml_element);
+		bool isSpare() const;
+		ElementData spareData() const;
+		void setSpareData(const ElementData &data);
+		ElementData terminalData() const;
 		TerminalStrip *parentStrip() const noexcept;
 		QSharedPointer<PhysicalTerminal> physicalTerminal() const noexcept;
 
@@ -65,12 +78,36 @@ class RealTerminal
 		QString Xref() const;
 		QString cable() const;
 		QString cableWire() const;
+		bool cableIsAutomatic() const;
 		bool isShield() const;
+		QVector<QString> cableTarget() const;
+			///True when cableTarget() is worked out from the project (read only),
+			///false when it is the text typed in by hand (which may be edited)
+		bool cableTargetIsAutomatic() const;
+		QColor color() const;
+		QColor stripeColor() const;
+		qreal section() const;
+		qreal widthMm() const;
+		QString catalogEntry() const;
+		bool hasSeparatorAfter() const;
 
 		//Keys used to store the cable data in the element informations
 		static QString cableInfoKey()     { return QStringLiteral("terminal_cable"); }
 		static QString cableWireInfoKey() { return QStringLiteral("terminal_cable_wire"); }
+			//Target typed in by hand, only read when the cables give none
+		static QString cableTargetInfoKey() { return QStringLiteral("terminal_cable_target"); }
 		static QString shieldInfoKey()    { return QStringLiteral("terminal_shield"); }
+		//Keys used to store the color and the section (mm2) of the terminal
+		static QString colorInfoKey()     { return QStringLiteral("terminal_color"); }
+		static QString sectionInfoKey()   { return QStringLiteral("terminal_section"); }
+		//Key used to store the width (mm) of the terminal, drawn in the terminal strip
+		static QString widthInfoKey()     { return QStringLiteral("terminal_width"); }
+		//Key used to store the terminal chosen in the catalog (TerminalCatalog::WidthEntry::label)
+		static QString catalogEntryInfoKey() { return QStringLiteral("terminal_catalog_entry"); }
+		//Key used to store if a separator plate is mounted after the terminal
+		static QString separatorInfoKey() { return QStringLiteral("terminal_separator"); }
+
+		static void applyCatalogEntry(DiagramContext &informations, const QString &entry_label);
 
 		QString conductor() const;
 
@@ -89,7 +126,13 @@ class RealTerminal
 		static QString xmlTagName();
 
 	private :
+		bool hasData() const;
+
 		QPointer<Element> m_element;
+			//A spare terminal has no element : it is on no folio, its data are its own
+		bool m_spare = false;
+		QUuid m_spare_uuid;
+		ElementData m_spare_data;
 		QWeakPointer<RealTerminal> m_this_weak;
 		QSharedPointer<PhysicalTerminal> m_physical_terminal;
 };

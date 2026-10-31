@@ -155,6 +155,58 @@
         </widget>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="m_grid_min_spacing_layout">
+         <item>
+          <widget class="QLabel" name="m_grid_min_spacing_label">
+           <property name="text">
+            <string>Hide the grid when its dots are closer on screen than</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_grid_min_spacing_sb</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="m_grid_min_spacing_sb">
+           <property name="toolTip">
+            <string>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</string>
+           </property>
+           <property name="suffix">
+            <string> px</string>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>50.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.500000000000000</double>
+           </property>
+           <property name="value">
+            <double>7.500000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="m_grid_min_spacing_spacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_collection_dblclick_edits">
          <property name="toolTip">
           <string>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</string>
@@ -191,6 +243,36 @@
          </property>
          <property name="text">
           <string>Right-button mouse gestures</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_pointer_aids_cb">
+         <property name="toolTip">
+          <string>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</string>
+         </property>
+         <property name="text">
+          <string>Four-way arrow and handle catching with the crosshair</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_vertical_texts_from_bottom_cb">
+         <property name="toolTip">
+          <string>A symbol's text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires' texts. Unticked by default: texts turn with their symbol.</string>
+         </property>
+         <property name="text">
+          <string>Upright symbol texts read from bottom to top</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+        <widget class="QCheckBox" name="m_narrow_docks_cb">
+         <property name="toolTip">
+          <string>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</string>
+         </property>
+         <property name="text">
+          <string>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</string>
          </property>
         </widget>
        </item>
@@ -337,6 +419,16 @@
          </property>
         </widget>
        </item>
+       <item row="8" column="0">
+        <widget class="QCheckBox" name="m_project_lock">
+         <property name="toolTip">
+          <string>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</string>
+         </property>
+         <property name="text">
+          <string>Tell others who has a project open (lock file beside the project)</string>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0">
         <widget class="QCheckBox" name="m_save_label_paste">
          <property name="text">
@@ -365,6 +457,59 @@
         </widget>
        </item>
        <item row="7" column="0">
+        <widget class="QCheckBox" name="m_enable_chained_reports">
+         <property name="text">
+          <string>Enable chained folio reports for report elements</string>
+         </property>
+         <property name="toolTip">
+          <string>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <widget class="QLabel" name="m_previous_versions_label">
+         <property name="text">
+          <string>Previous versions kept when saving a project</string>
+         </property>
+         <property name="toolTip">
+          <string>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with "-backups". Only the newest are kept.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="2">
+        <widget class="QSpinBox" name="m_previous_versions_sb">
+         <property name="toolTip">
+          <string>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with "-backups". Only the newest are kept.</string>
+         </property>
+         <property name="specialValueText">
+          <string>None</string>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QCheckBox" name="m_working_copy_recovery">
+         <property name="text">
+          <string>After a crash, offer projects as they were after their last edit (experimental)</string>
+         </property>
+         <property name="toolTip">
+          <string>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0">
+        <widget class="QCheckBox" name="m_qetdb_enabled">
+         <property name="text">
+          <string>Offer saving a project as one database file, .qetdb (experimental)</string>
+         </property>
+         <property name="toolTip">
+          <string>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="0">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -552,7 +697,7 @@
             </item>
            </widget>
           </item>
-          <item row="8" column="1">
+          <item row="9" column="1">
            <widget class="QLabel" name="label_9">
             <property name="text">
              <string>(Reload the elements collections to apply the changes)</string>
@@ -592,6 +737,47 @@
              <widget class="QPushButton" name="m_material_list_create_pb">
               <property name="toolTip">
                <string extracomment="tooltip of the button creating the material file with its header line">Create the list file with its headers</string>
+              </property>
+              <property name="text">
+               <string>Create...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="m_cable_type_list_label">
+            <property name="text">
+             <string>Cable type list file</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <layout class="QHBoxLayout" name="m_cable_type_list_layout">
+            <item>
+             <widget class="QLineEdit" name="m_cable_type_list_path_le">
+              <property name="toolTip">
+               <string extracomment="tooltip of the cable type file path field">Directory of the cable types used to define a cable (number of cores, colors, cross-section)</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="placeholderText">
+               <string extracomment="hint shown when no cable type file is configured yet">Not set</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="m_cable_type_list_browse_pb">
+              <property name="text">
+               <string>Browse...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="m_cable_type_list_create_pb">
+              <property name="toolTip">
+               <string extracomment="tooltip of the button creating the cable type file with its header line">Create the cable type list file with its header line</string>
               </property>
               <property name="text">
                <string>Create...</string>
@@ -865,6 +1051,113 @@
         </widget>
        </item>
        <item>
+        <widget class="QGroupBox" name="groupBox_cable_textes">
+         <property name="title">
+          <string>Cable texts</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_cable_textes">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_cable_textes">
+            <property name="text">
+             <string>Designation, type, plant, location, length:</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer_cable_textes">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="2">
+           <widget class="QPushButton" name="m_cable_text_font_pb">
+            <property name="toolTip">
+             <string>Font of the texts written along the cable line; a cable which has its own keeps it.</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_cable_core_textes">
+            <property name="text">
+             <string>Core colors (all of them):</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <spacer name="horizontalSpacer_cable_core_textes">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="2">
+           <widget class="QPushButton" name="m_cable_core_font_pb">
+            <property name="toolTip">
+             <string>Font of the core colors written along the line; a cable which has its own keeps it.</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_cable_align">
+            <property name="text">
+             <string>Text alignment:</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" colspan="2">
+           <widget class="QComboBox" name="m_cable_align_cb">
+            <property name="toolTip">
+             <string>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>Right aligned</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Centred</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Left aligned</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_4">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -1077,7 +1370,7 @@
        <item>
         <widget class="QGroupBox" name="groupBox_4">
          <property name="title">
-          <string>Keyboard movement with the ALT key: 1 - 9</string>
+          <string>Keyboard movement with the Ctrl key: 1 - 9</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_11">
           <item row="0" column="1">
@@ -1383,9 +1676,11 @@
   <tabstop>m_use_tab_mode_rb</tabstop>
   <tabstop>m_save_label_paste</tabstop>
   <tabstop>m_autonumber_pasted</tabstop>
+  <tabstop>m_project_lock</tabstop>
   <tabstop>m_use_folio_label</tabstop>
   <tabstop>m_border_0</tabstop>
   <tabstop>m_autosave_sb</tabstop>
+  <tabstop>m_previous_versions_sb</tabstop>
   <tabstop>m_common_elmt_path_cb</tabstop>
   <tabstop>m_custom_elmt_path_cb</tabstop>
   <tabstop>m_custom_tbt_path_cb</tabstop>

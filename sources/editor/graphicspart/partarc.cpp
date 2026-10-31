@@ -89,6 +89,21 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 		drawCross(m_rect.center(), painter);
 }
 
+
+void PartArc::normalizeAngles(qreal &start, qreal &angle)
+{
+    constexpr qreal CIRCLE = 360.0 * 16.0; // internal representation of angles in 1/16 degree
+
+    while (start <     0.0) { start += CIRCLE; } // always positive start
+    while (start >= CIRCLE) { start -= CIRCLE; } // within 0 ... 360
+    if (angle < 0.0) {
+        start  = (start + angle + CIRCLE);
+        while (start <     0.0) { start += CIRCLE; }
+        while (start >= CIRCLE) { start -= CIRCLE; }
+        angle *= (-1.0);
+    }
+}
+
 /**
 	@brief PartArc::toXml
 	Export this arc in xml
@@ -100,12 +115,17 @@ const QDomElement PartArc::toXml(QDomDocument &xml_document) const
 	QDomElement xml_element = xml_document.createElement("arc");
 	QPointF top_left(sceneTopLeft());
 	
+	// normalize the angles:
+	qreal start_angle = m_start_angle;
+	qreal span_angle = m_span_angle;
+	normalizeAngles(start_angle, span_angle);
+
 	qreal x = qRound(top_left.x()    * 100.0) / 100.0;
 	qreal y = qRound(top_left.y()    * 100.0) / 100.0;
 	qreal w = qRound(rect().width()  * 100.0) / 100.0;
 	qreal h = qRound(rect().height() * 100.0) / 100.0;
-	qreal s = qRound(m_start_angle   * 100.0) / 100.0;
-	qreal a = qRound(m_span_angle    * 100.0) / 100.0;
+	qreal s = qRound(start_angle     * 100.0) / 100.0;
+	qreal a = qRound(span_angle      * 100.0) / 100.0;
 
 	xml_element.setAttribute("x", QString("%1").arg(x));
 	xml_element.setAttribute("y", QString("%1").arg(y));
@@ -132,6 +152,9 @@ void PartArc::fromXml(const QDomElement &qde) {
 
 	m_start_angle = qde.attribute("start", "0").toDouble() * 16;
 	m_span_angle  = qde.attribute("angle", "-1440").toDouble() * 16;
+
+	// normalize the angles:
+	normalizeAngles(m_start_angle, m_span_angle);
 }
 
 /**

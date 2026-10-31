@@ -346,7 +346,10 @@ void ConductorPropertiesEditorWidget::updateUi()
 	When "apply to all" is ticked, every conductor on the same potential as
 	an edited one is updated too, in the same undo step (one undo reverts
 	them all), as the modal dialog does
-	(ConductorPropertiesDialog::PropertiesDialog).
+	(ConductorPropertiesDialog::PropertiesDialog). A terminal element with
+	its function separation enabled is not crossed by any of that -- its
+	other side keeps its own text, function, color... -- but the voltage /
+	protocol still crosses (@see Conductor::functionSeparatedConductors).
 */
 QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 {
@@ -360,10 +363,12 @@ QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 		if (c)
 			selected << c.data();
 
-	return ConductorMultiEdit::undo(
-		ConductorMultiEdit::targets(
-			selected, m_apply_all_cb && m_apply_all_cb->isChecked()),
-		m_shown, edited);
+	QSet<Conductor *> function_separated;
+	const QList<Conductor *> targets = ConductorMultiEdit::targets(
+		selected, m_apply_all_cb && m_apply_all_cb->isChecked(),
+		&function_separated);
+
+	return ConductorMultiEdit::undo(targets, m_shown, edited, function_separated);
 }
 
 /**

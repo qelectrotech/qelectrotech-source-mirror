@@ -19,6 +19,7 @@
 #include <shownkinds.h>
 #include <qetproject.h>
 #include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <cablelist/cablelistmodel.h>
 #include <createdxf.h>
 #include <diagram.h>
 #include <elementprovider.h>
@@ -155,6 +156,8 @@ QetGraphicsTableItem::QetGraphicsTableItem(QGraphicsItem *parent) :
 	{
 		m_header_item->setPos(0, 0-m_header_item->rect().height());
 	});
+	connect(m_header_item, &QetGraphicsHeaderItem::sectionResized,
+		this, &QetGraphicsTableItem::changed);
 		//Init the size of table without a model
 	setModel();
 }
@@ -206,6 +209,7 @@ void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
 	if (m_next_table) {
 		m_next_table->setModel(m_model);
 	}
+	emit changed();
 }
 
 /**
@@ -349,6 +353,7 @@ void QetGraphicsTableItem::setSize(const QSize &size)
 	m_current_size = new_size;
 	adjustColumnsWidth();
 	setUpBoundingRect();
+	emit changed();
 }
 
 /**
@@ -407,6 +412,7 @@ void QetGraphicsTableItem::setDisplayNRow(const int &number)
 	setToMinimumHeight();
 	if (m_next_table)
 		m_next_table->previousTableDisplayRowChanged();
+	emit changed();
 }
 
 /**
@@ -450,8 +456,15 @@ void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
 	}
 	else if (old_previous_table->model()) //Copie the model of old previous table
 	{
-		setModel(new ProjectDBModel(*static_cast<ProjectDBModel *>(old_previous_table->model())));
+		auto *old_model = old_previous_table ? old_previous_table->model() : nullptr;
+		if (auto *db_model = dynamic_cast<ProjectDBModel *>(old_model)) {
+			setModel(new ProjectDBModel(*db_model));
+		}
+		else if (auto *cable_model = dynamic_cast<CableListModel *>(old_model)) {
+			setModel(new CableListModel(*cable_model));
+		}
 	}
+	emit changed();
 
 	if (old_previous_table &&
 		old_previous_table->nextTable() == this) {
@@ -489,6 +502,7 @@ void QetGraphicsTableItem::setNextTable(QetGraphicsTableItem *table)
 void QetGraphicsTableItem::setTableName(const QString &name)
 {
 	m_name = name;
+	emit changed();
 }
 
 QString QetGraphicsTableItem::tableName() const
@@ -558,13 +572,32 @@ void QetGraphicsTableItem::initLink()
 {
 	if (!m_pending_previous_table_uuid.isNull())
 	{
-		ElementProvider provider_(this->diagram()->project());
-		if (auto previous_table = provider_.tableFromUuid(m_pending_previous_table_uuid)) {
+			//The built folios only: a previous table on a folio not built
+			//yet (lazy folios) is linked when that folio is
+		QETProject *project = this->diagram()->project();
+		ElementProvider provider_(project->builtFolios());
+		auto previous_table = provider_.tableFromUuid(m_pending_previous_table_uuid);
+		if (previous_table) {
 			setPreviousTable(previous_table);
 		}
-		m_pending_previous_table_uuid = QUuid(); //Set to null in case initLink is called again
+		if (previous_table || !project->unloadedFolioCount()) {
+			m_pending_previous_table_uuid = QUuid(); //Set to null in case initLink is called again
+		}
 	}
 	setSize(m_pending_size);
+}
+
+/**
+	@brief QetGraphicsTableItem::previousTableUuid
+	@return the uuid of the table before this one in its chain, linked or
+	still waiting for its folio to be built (lazy folios); null if none
+*/
+QUuid QetGraphicsTableItem::previousTableUuid() const
+{
+	if (m_previous_table) {
+		return m_previous_table->uuid();
+	}
+	return m_pending_previous_table_uuid;
 }
 
 /**
@@ -603,7 +636,7 @@ QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
 	const auto project_ = diagram() ? diagram()->project() : nullptr;
 	auto in_project = [project_](const QetGraphicsTableItem *table) {
 		return project_ && table->diagram()
-				&& project_->diagrams().contains(table->diagram());
+				&& project_->folios().contains(table->diagram());
 	};
 	QetGraphicsTableItem *previous_ = m_previous_table;
 	while (previous_ && !in_project(previous_)) {
@@ -619,8 +652,12 @@ QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
 	{
 			//Add model
 		auto dom_model = dom_document.createElement("model");
-		auto project_db_model = static_cast<ProjectDBModel *>(m_model.data());
-		dom_model.appendChild(project_db_model->toXml(dom_document));
+		if (auto project_db_model = dynamic_cast<ProjectDBModel *>(m_model.data())) {
+			dom_model.appendChild(project_db_model->toXml(dom_document));
+		}
+		else if (auto cable_model = dynamic_cast<CableListModel *>(m_model.data())) {
+			dom_model.appendChild(cable_model->toXml(dom_document));
+		}
 		dom_table.appendChild(dom_model);
 
 	}
@@ -672,22 +709,37 @@ void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 	}
 	else if (this->diagram()) //The table haven't got a previous table, so there should be a model save to xml
 	{
-		//Get table
-		auto model_ = new ProjectDBModel(
-					this->diagram()->project(),
-					this->diagram()->project());
-		model_->fromXml(
-					dom_element
-					.firstChildElement("model")
-					.firstChildElement(
-						ProjectDBModel::xmlTagName()));
-		this->setModel(model_);
+			//Get table: which model wrote itself in there decides which
+			//class reads it back -- a cable list is not a database query
+		auto model_element = dom_element.firstChildElement("model");
+		auto project_model_element = model_element.firstChildElement(
+					ProjectDBModel::xmlTagName());
+		auto cable_model_element = model_element.firstChildElement(
+					CableListModel::xmlTagName());
+
+		if (!cable_model_element.isNull())
+		{
+			auto model_ = new CableListModel(
+						this->diagram()->project(),
+						this->diagram()->project());
+			model_->fromXml(cable_model_element);
+			this->setModel(model_);
+		}
+		else
+		{
+			auto model_ = new ProjectDBModel(
+						this->diagram()->project(),
+						this->diagram()->project());
+			model_->fromXml(project_model_element);
+			this->setModel(model_);
+		}
 	}
 
 	//Restore the header from xml
 	m_header_item->fromXml(
 				dom_element.firstChildElement(
 					QetGraphicsHeaderItem::xmlTagName()));
+	emit changed();
 }
 
 /**
@@ -1053,6 +1105,7 @@ void QetGraphicsTableItem::dataChanged(
 	setUpColumnAndRowMinimumSize();
 	adjustSize();
 	update();
+	emit changed();
 }
 
 /**

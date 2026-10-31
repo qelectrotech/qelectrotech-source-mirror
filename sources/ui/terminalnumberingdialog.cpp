@@ -13,6 +13,16 @@
 #include <QSet>
 #include <algorithm>
 
+namespace {
+	//The folios holding a terminal, built: a folio not built yet
+	//(lazy folios) holding none is not built for this
+QList<Diagram *> terminalFolios(QETProject *project)
+{
+	project->buildFoliosHolding(ElementData::Terminal, false);
+	return project->builtFolios();
+}
+}
+
 /**
  * @brief TerminalNumberingDialog::TerminalNumberingDialog
  * Constructor
@@ -31,7 +41,7 @@ TerminalNumberingDialog::TerminalNumberingDialog(QWidget *parent, QETProject *pr
     // Collect all unique terminal strip prefixes from the project
     if (project) {
         QSet<QString> prefixes;
-        foreach (Diagram *diagram, project->diagrams()) {
+        foreach (Diagram *diagram, terminalFolios(project)) {
             foreach (QGraphicsItem *qgi, diagram->items()) {
                 if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
                     if (elmt->elementData().m_type == ElementData::Terminal) {
@@ -153,7 +163,7 @@ QUndoCommand* TerminalNumberingDialog::getUndoCommand(QETProject *project) const
     QList<TermInfo> termList;
 
     // 2. Collect all terminals from all folios in the project
-    foreach (Diagram *diagram, project->diagrams()) {
+    foreach (Diagram *diagram, terminalFolios(project)) {
         int fIndex = diagram->folioIndex();
         foreach (QGraphicsItem *qgi, diagram->items()) {
             if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {

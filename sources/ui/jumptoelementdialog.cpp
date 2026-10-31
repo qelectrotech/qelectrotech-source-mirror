@@ -169,7 +169,7 @@ void JumpToElementDialog::activateCurrentItem()
 	const int index = current->data(Qt::UserRole).toInt();
 	if (index == -1) {
 		const QList<Diagram *> diagrams = m_diagram->project()
-				? m_diagram->project()->diagrams()
+				? m_diagram->project()->folios()
 				: QList<Diagram *>();
 		const int folio = current->data(Qt::UserRole + 2).toInt();
 		if (folio >= 0 && folio < diagrams.size()) {
@@ -208,7 +208,8 @@ QListWidgetItem *JumpToElementDialog::cellItem(const QString &needle) const
 	if (!m_diagram || !m_diagram->project()) {
 		return nullptr;
 	}
-	const QList<Diagram *> diagrams = m_diagram->project()->diagrams();
+		//Folios' cells only (their border): folios() builds nothing
+	const QList<Diagram *> diagrams = m_diagram->project()->folios();
 
 	Diagram *diagram = m_diagram;
 	QString cell = needle;

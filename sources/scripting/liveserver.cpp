@@ -919,9 +919,11 @@ QJsonObject LiveServer::snapshot(const QString &raw_path)
 	if (raw_path.trimmed().isEmpty() || info.isRelative())
 		return failure(QStringLiteral("path must be absolute"));
 	if (info.exists()) return failure(QStringLiteral("%1 already exists").arg(raw_path));
-	QDomDocument xml(project->toXml());
 	QString error;
-	if (!QET::writeXmlFile(xml, info.absoluteFilePath(), &error))
+	if (QETProject::isContainerPath(info.absoluteFilePath())
+			? !project->writeContainerFile(info.absoluteFilePath(), &error)
+			: ![&]() { QDomDocument xml(project->toXml());
+					   return QET::writeXmlFile(xml, info.absoluteFilePath(), &error); }())
 		return failure(QStringLiteral("snapshot not written: %1").arg(error));
 	return {{QStringLiteral("ok"), true}, {QStringLiteral("path"), info.absoluteFilePath()},
 		{QStringLiteral("folio"), e->currentDiagramView()

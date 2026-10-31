@@ -42,6 +42,11 @@ void TerminalStripProjectConfigPage::initWidgets()
 	m_layout_editor = new TerminalStripLayoutEditor{ project()->projectPropertiesHandler().terminalStripLayoutHandler().defaultLayout(),
 													this };
 
+		//The project database keeps the layout up to date
+	connect(m_layout_editor, &TerminalStripLayoutEditor::layoutEdited,
+			&project()->projectPropertiesHandler().terminalStripLayoutHandler(),
+			&TerminalStripLayoutsHandler::changed);
+
 	auto v_layout = new QVBoxLayout { this };
 	v_layout->addWidget(m_layout_editor);
 	setLayout(v_layout);

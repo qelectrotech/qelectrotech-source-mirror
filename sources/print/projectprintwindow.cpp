@@ -208,7 +208,7 @@ void ProjectPrintWindow::requestPaint()
 			#endif
 		#endif
 
-	if (!m_project->diagrams().count()) {
+	if (!m_project->folios().count()) {
 		return;
 	}
 
@@ -232,6 +232,20 @@ void ProjectPrintWindow::requestPaint()
 		}
 	}
 
+	// A PDF export turns each page to its folio's orientation (#1480): a
+	// portrait folio gets a portrait page instead of being shrunk onto a
+	// landscape one. Only the real export, with one page per folio: the
+	// preview draws every page at one paper size, and only Qt's PDF engine
+	// accepts a new page layout once printing has started.
+	const bool per_folio_orientation = m_printing
+		&& m_printer->outputFormat() == QPrinter::PdfFormat
+		&& ui->m_fit_in_page_cb->isChecked();
+	const auto chosen_orientation = m_printer->pageLayout().orientation();
+	const auto diagrams = selectedDiagram();
+	if (per_folio_orientation && !diagrams.isEmpty()) {
+		setOrientationForDiagram(diagrams.first());
+	}
+
 	bool first = true;
 	QPainter painter(m_printer);
 	int annotIndex = 0;
@@ -245,10 +259,21 @@ void ProjectPrintWindow::requestPaint()
 // should be fixed by original author by evaluating function-result!
 	(void)pdfExport;
 
-	for (auto diagram : selectedDiagram())
+	for (auto diagram : diagrams)
 	{
-		first ? first = false : m_printer->newPage();
+		if (first) {
+			first = false;
+		} else {
+			if (per_folio_orientation) {
+				setOrientationForDiagram(diagram);
+			}
+			m_printer->newPage();
+		}
 		printDiagram(diagram, ui->m_fit_in_page_cb->isChecked(), &painter, m_printer, diagramPageMap, annotIndex);
+	}
+
+	if (per_folio_orientation) {
+		m_printer->setPageOrientation(chosen_orientation);
 	}
 
 	// Note: do NOT call painter.end() or pdfConvertUriToGoTo() here.
@@ -257,6 +282,19 @@ void ProjectPrintWindow::requestPaint()
 	// closing the QPainter manually inside this slot leaves the backing
 	// store in an undefined state, producing a black screen after export.
 	// pdfConvertUriToGoTo() is deferred to print() via QTimer::singleShot(0).
+}
+
+/**
+ * @brief ProjectPrintWindow::setOrientationForDiagram
+ * Turn the next page to portrait or landscape, as @diagram is drawn.
+ * @param diagram
+ */
+void ProjectPrintWindow::setOrientationForDiagram(Diagram *diagram)
+{
+	const QRect rect = diagramRect(diagram, exportProperties());
+	m_printer->setPageOrientation(rect.height() > rect.width()
+									  ? QPageLayout::Portrait
+									  : QPageLayout::Landscape);
 }
 
 /**
@@ -356,8 +394,12 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 			// est revenu a l'identite ici. On reconstruit DONC explicitement la
 			// transform appliquee par :
 			//   diagram->render(painter, QRectF(), diagram_rect, KeepAspectRatio)
-			// cible vide => painter->viewport() ; source = diagram_rect ; centre.
-			const QRectF target = QRectF(painter->viewport());
+			// cible vide => taille du device ; source = diagram_rect ; centre.
+			// The target render() used for an empty one: the device's
+			// size. Not painter->viewport(), which is set once when the
+			// painter opens and misses a page turned since (#1480).
+			const QRectF target(0, 0, painter->device()->width(),
+								painter->device()->height());
 			const QRectF source = QRectF(diagram_rect); // meme source que render()
 
 			// render() ANCRE en haut-gauche (pas de centrage) :
@@ -852,8 +894,10 @@ void ProjectPrintWindow::print()
 	const bool isPdf = (m_printer->outputFormat() == QPrinter::PdfFormat);
 	const QString pdfFile = isPdf ? m_printer->outputFileName() : QString();
 
+	m_printing = true;
 	m_preview->print();   // triggers requestPaint() synchronously; painter
 	                      // is created/destroyed inside that call
+	m_printing = false;
 
 	savePageSetupForCurrentPrinter();
 	savePrintProperties();

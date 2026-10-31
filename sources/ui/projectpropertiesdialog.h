@@ -41,6 +41,8 @@ class ProjectPropertiesDialog : public QObject {
 		void exec();
 		void setCurrentPage(ProjectPropertiesDialog::Page);
 		void changeToFolio();
+			///Show the automatic numbering page with the cable tab on top
+		void changeToCable();
 		void changeToElement();
 
 	private:

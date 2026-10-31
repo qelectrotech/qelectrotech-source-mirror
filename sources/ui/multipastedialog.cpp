@@ -195,7 +195,7 @@ void MultiPasteDialog::on_m_button_box_accepted()
 								if(autonum::numerotationContextToFormula(hash_iterator.value()) == formula)
 								{
 									m_diagram->project()->setCurrentConductorAutoNum(hash_iterator.key());
-									c->rSequenceNum().clear();
+									c->replaceSequenceNum(autonum::sequentialNumbers());
 									ConductorAutoNumerotation can(c, m_diagram);
 									can.numerate();
 									if (m_diagram->freezeNewConductors() || m_diagram->project()->isFreezeNewConductors())

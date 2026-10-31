@@ -44,18 +44,7 @@ class TerminalStripEditorWindow : public QMainWindow
 		static QPointer<TerminalStripEditorWindow> window_;
 
     public:
-        static TerminalStripEditorWindow* instance(QETProject *project, QWidget *parent = nullptr) {
-            static QMutex mutex_;
-            if (!window_) {
-                mutex_.lock();
-                if (!window_)
-                    window_ = new TerminalStripEditorWindow{project, parent};
-                mutex_.unlock();
-            } else {
-                window_->setProject(project);
-            }
-            return window_;
-        }
+		static TerminalStripEditorWindow* instance(QETProject *project, QWidget *parent = nullptr);
 
 		static void dropInstance () {
 			static QMutex mutex;
@@ -80,6 +69,8 @@ class TerminalStripEditorWindow : public QMainWindow
 		void on_m_add_terminal_strip_triggered();
 		void on_m_remove_terminal_triggered();
 		void on_m_reload_triggered();
+		void on_m_import_free_terminals_triggered();
+		void on_m_regroup_terminals_triggered();
 		void on_m_button_box_clicked(QAbstractButton *button);
 		void on_m_stacked_widget_currentChanged(int arg1);
 
@@ -87,6 +78,7 @@ class TerminalStripEditorWindow : public QMainWindow
 		void addTreeDockWidget();
 		void currentStripChanged(TerminalStrip *strip);
 		void updateUi();
+		void importFreeTerminals(bool move_placed);
 
 	private:
 		Ui::TerminalStripEditorWindow *ui{nullptr};

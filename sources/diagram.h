@@ -30,14 +30,18 @@
 #include <QPointer>
 #include <QUuid>
 #include <QtWidgets>
+
+#include <functional>
 #include <QtXml>
 
 class Conductor;
+class CablePart;
 class CustomElement;
 class DiagramContent;
 class DiagramPosition;
 class DiagramTextItem;
 class Element;
+class Terminal;
 class ElementsLocation;
 class DiagramImageItem;
 class DiagramEventInterface;
@@ -132,6 +136,7 @@ class Diagram : public QGraphicsScene
 		bool draw_terminals_;
 		bool draw_terminal_names_;
 		bool draw_colored_conductors_;
+		bool m_small_pictures = false;
 
 		QString m_conductors_autonum_name;
 		DiagramEventInterface *m_event_interface;
@@ -139,6 +144,17 @@ class Diagram : public QGraphicsScene
 		bool m_freeze_new_elements;
 		bool m_freeze_new_conductors_;
 		QUuid m_uuid = QUuid::createUuid();
+			/// The XML of this folio's items, while they are not built yet
+		QDomElement m_deferred;
+		QString m_kept_part;
+		QHash<QUuid, Element *> m_partial_elements;
+		QHash<int, Terminal *> m_partial_table;
+		bool m_partial_changed = false;
+		Element *buildElement(QDomElement element_xml, QHash<int, Terminal *> &table_adr_id,
+							  bool consider_informations);
+		QString m_opened_header;
+		QByteArray m_kept_text;
+		bool m_loading_deferred = false;
 
 			//Selection before the current click, see completeGroupSelection()
 		QList<QPointer<QGraphicsObject>> m_previous_selection;
@@ -149,9 +165,36 @@ class Diagram : public QGraphicsScene
 
 		bool uuidUsedByOtherDiagram(const QUuid &uuid) const;
 		QUuid derivedUuid(const QDomElement &root, const QString &reason) const;
+	public:
+		static QUuid derivedUuid(const QString &reason, const QString &project_title,
+								 int index, const QString &title,
+								 const std::function<bool(const QUuid &)> &used);
+	private:
 
 			//Wires of the loaded file whose ends could not be found
 		QStringList m_wires_not_reconnected;
+			//Symbols of the loaded file that could not be built
+		QStringList m_symbols_not_loaded;
+
+			//What the folio could not load, written back as it was read
+			//(F127, F128): symbols whose definition is missing, and wires
+			//to a terminal not found
+		struct KeptWire {
+			QDomElement xml;
+			QPointer<Terminal> end[2]; ///< an end found, null if not
+			bool found[2] = {false, false};
+			QUuid element[2];          ///< an end not found: its symbol
+			QUuid terminal[2];         ///< and its terminal
+			bool as_read = false;      ///< no end can be read: written unchanged
+		};
+		QDomDocument m_kept_document;
+		QList<QDomElement> m_kept_symbols;
+		QList<KeptWire> m_kept_wires;
+		QUuid derivedSymbolUuid(const QDomElement &element_xml) const;
+		void keepWire(const QDomElement &wire, Terminal *found1, Terminal *found2,
+					  const QList<QPair<QUuid, QDomElement>> &symbols);
+		void writeKept(QDomDocument &document, QDomElement &elements,
+					   QDomElement &conductors, const QHash<Terminal *, int> &table_adr_id) const;
 
 	// METHODS
 	protected:
@@ -176,6 +219,8 @@ class Diagram : public QGraphicsScene
 		void restoreText(Element* elmt);
 		QUuid uuid();
 		QStringList wiresNotReconnected() const;
+		QStringList symbolsNotLoaded() const;
+		QSet<QUuid> keptSymbolUuids() const;
 		void setEventInterface (DiagramEventInterface *event_interface);
 		void clearEventInterface();
 
@@ -199,18 +244,60 @@ class Diagram : public QGraphicsScene
 	
 		// methods related to XML import/export
 		QDomDocument toXml(bool wholeContent = true, bool is_copy_command = false);
+		void writeHeader(QDomDocument &document, QDomElement &dom_root);
+		void appendValuesXml(QDomDocument &document, QDomElement &dom_root) const;
+			/// What this folio saves that no other table of the project
+			/// database holds, in a <diagram> made in @p document
+		QDomElement ownValuesXml(QDomDocument &document) const;
+		void queueValuesStore();
+		QList<QDomElement> keptXml(QDomDocument &document) const;
 		bool initFromXml(QDomElement &,
 				 QPointF = QPointF(),
 				 bool = true,
 				 DiagramContent * = nullptr);
+			/// false while this folio's items wait in its XML to be
+			/// built (lazy folios)
+		bool isLoaded() const {return m_deferred.isNull();}
+		QDomElement deferredXml() const;
+			/// The part @p file of the .qetz the project was opened from
+			/// holds this folio as it is while not built: saving may copy it
+			/// (QETProject::toXml(), stage D4)
+		void setKeptPart(const QString &file) {m_kept_part = file;}
+		QString keptPart() const {return m_kept_part;}
+		QList<Element *> buildSymbols(const QSet<QUuid> &uuids);
+			/// Symbols built as partners (buildSymbols()) changed since:
+			/// the folio must be built to be saved
+		bool partialChanged() const {return m_partial_changed;}
+			/// The symbols built as partners (buildSymbols()), by uuid
+		QHash<QUuid, Element *> partialElements() const {return m_partial_elements;}
+		QString headerXml();
+			/// The folio's text in the file it was read from, while it is
+			/// not built (QETProject::toXml())
+		QByteArray keptText() const {return m_kept_text;}
+		void setKeptText(const QByteArray &text) {m_kept_text = text;}
+			/// Remember the folio's own data as it is now, for
+			/// headerChanged() (QETProject::toXml())
+		void rememberHeader() {m_opened_header = headerXml();}
+		bool headerChanged() {return headerXml() != m_opened_header;}
+		bool headerChangeShowsOnly();
+		QDomElement deferredXmlWithHeader(QDomDocument &document);
+		void ensureLoaded();
+		bool buildDeferred();
+			//The last argument is only for a copy fragment: when it is
+			//given, the cable lines that fragment carries are built as
+			//well and handed back through it -- they are not part of a
+			//DiagramContent, so the caller has to know about them to
+			//put them on the undo stack (see CableCopy)
 		bool fromXml(QDomDocument &,
 			     QPointF = QPointF(),
 			     bool = true,
-			     DiagramContent * = nullptr);
+			     DiagramContent * = nullptr,
+			     QList<CablePart *> * = nullptr);
 		bool fromXml(QDomElement &,
 			     QPointF = QPointF(),
 			     bool = true,
-			     DiagramContent * = nullptr);
+			     DiagramContent * = nullptr,
+			     QList<CablePart *> * = nullptr);
 		void folioSequentialsToXml(QHash<QString,
 					   QStringList>*,
 					   QDomElement *,
@@ -223,7 +310,9 @@ class Diagram : public QGraphicsScene
 					     const QString&,
 					     const QString&,
 					     const QString&,
-					     const QString&);
+					     const QString&,
+					     const QString &owner = QString(),
+					     const QString &level = QString());
 	
 		void refreshContents();
 	
@@ -231,6 +320,7 @@ class Diagram : public QGraphicsScene
 		virtual void addItem    (QGraphicsItem *item);
 		virtual void removeItem (QGraphicsItem *item);
 		bool eventInterfaceIsRunning() const;
+		bool cableToolIsRunning() const;
 	
 		// methods related to graphics options
 		ExportProperties applyProperties(const ExportProperties &);
@@ -246,6 +336,11 @@ class Diagram : public QGraphicsScene
 		BorderOptions borderOptions();
 		DiagramPosition convertPosition(const QPointF &);
 		static QPointF snapToGrid(const QPointF &p);
+			/// Snap to the grid on (the default) or off: off, snapToGrid()
+			/// gives the nearest point, as with Ctrl held. Kept in the
+			/// settings.
+		static bool gridSnap();
+		static void setGridSnap(bool snap);
 		static QPointF snapToTextGrid(const QPointF &p);
 	
 		bool drawTerminals() const;
@@ -254,6 +349,11 @@ class Diagram : public QGraphicsScene
 		void setDrawTerminalNames(bool);
 		bool drawColoredConductors() const;
 		void setDrawColoredConductors(bool);
+			/// While true, pictures draw a copy of a few times the size
+			/// they are drawn at, not their full resolution (SVG export,
+			/// ExportProperties::svg_small_pictures)
+		bool smallPictures() const {return m_small_pictures;}
+		void setSmallPictures(bool small) {m_small_pictures = small;}
 	
 		QString title() const;
 		bool toPaintDevice(QPaintDevice &, int = -1, int = -1,
@@ -296,7 +396,8 @@ class Diagram : public QGraphicsScene
 		void insertFolioSeqHash (QHash<QString, QStringList> *hash,
 					 const QString& title,
 					 const QString& seq,
-					 NumerotationContext *nc);
+					 NumerotationContext *nc,
+					 const QString &owner = QString());
 		void loadFolioSeqHash (QHash<QString, QStringList> *hash,
 				       const QString& title, const QString& seq,
 				       NumerotationContext *nc);

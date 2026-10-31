@@ -53,6 +53,9 @@ class TerminalStrip : public QObject
 		void orderChanged(); //Emitted when the order of the physical terminal is changed
 		void bridgeChanged();
 		void bridgeColorChanged(QSharedPointer<TerminalStripBridge> bridge);
+			//Emitted when the data of the strip (name...) or of one of its
+			//terminals (width, color, type...) is changed : what is drawn changes
+		void dataChanged();
 	public:
 
 		TerminalStrip(QETProject *project);
@@ -72,11 +75,14 @@ class TerminalStrip : public QObject
 		QString comment() const {return m_data.m_comment;}
 		void setDescription(const QString &description);
 		QString description() const {return m_data.m_description;}
+			///Manufacturer of the terminals proposed by the editor, empty = all
+		QString manufacturer() const {return m_data.m_manufacturer;}
 		QUuid uuid() const {return m_data.m_uuid;}
 		QETProject *project() const;
 
 		TerminalStripData data() const;
 		void setData(const TerminalStripData &data);
+		void terminalDataChanged();
 
 		bool addTerminal (QSharedPointer<RealTerminal> real_t);
 		void addTerminals (QVector<QSharedPointer<RealTerminal>> real_t_vector);
@@ -89,6 +95,8 @@ class TerminalStrip : public QObject
 		void addTerminals (QVector<QSharedPointer<PhysicalTerminal>> phy_t_vector);
 		bool removeTerminal (QSharedPointer<PhysicalTerminal> phy_t);
 		void removeTerminals (QVector<QSharedPointer<PhysicalTerminal>> phy_t_vector);
+		QVector<QSharedPointer<PhysicalTerminal>> insertSpareTerminals(int pos, const QVector<QSharedPointer<RealTerminal>> &spare_terminals);
+		void insertTerminals(int pos, const QVector<QSharedPointer<PhysicalTerminal>> &phy_t_vector);
 
 		int pos(const QSharedPointer<PhysicalTerminal> &terminal) const;
 		int physicalTerminalCount() const;
@@ -110,6 +118,10 @@ class TerminalStrip : public QObject
 		void unBridge(const QVector<QSharedPointer<RealTerminal>> &real_terminals);
 		bool canUnBridge(const QVector <QSharedPointer<RealTerminal>> &real_terminals) const;
 		QSharedPointer<TerminalStripBridge> isBridged(const QSharedPointer<RealTerminal> real_terminal) const;
+			///True when at least one bridge joins terminals of this strip :
+			///the bridge cells of the terminal strip editor are the only thing
+			///drawn from them (see TerminalStripModel::bridgePixmapFor)
+		bool hasBridges() const { return !m_bridge.isEmpty(); }
 		QSharedPointer<TerminalStripBridge> bridgeFor (const QVector<QSharedPointer<RealTerminal>> &terminal_vector) const;
 
 		QSharedPointer<RealTerminal> previousTerminalInLevel(const QSharedPointer<RealTerminal> &real_terminal) const;

@@ -200,6 +200,72 @@ void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 }
 
 /**
+	@brief ElementTextItemGroup::anchorX
+	@param width : the width of the group's texts
+	@return where, along the group, the point it is aligned on lies
+*/
+qreal ElementTextItemGroup::anchorX(qreal width) const
+{
+	if (m_alignment == Qt::AlignRight)
+		return width;
+	if (m_alignment == Qt::AlignVCenter)
+		return width / 2;
+	return 0;
+}
+
+/**
+	@brief ElementTextItemGroup::layoutAnchor
+	Where the point the group is aligned on lay at its last layout, read
+	from a text whose width has not changed since: that text still stands
+	where the layout put it. The text that grew or shrank cannot tell, and
+	neither can a text read from the file whose content is filled in only
+	after the group was read (an element's label): its width then differs.
+	@param anchor : the point, in the parent's coordinates
+	@return false when the group is not aligned right or centred, its
+	alignment changed since the last layout (it is then laid out on the
+	new alignment where it stands, as before), its texts are not the ones
+	laid out last time (a group being built), or every one of them
+	changed: the group then keeps its position.
+*/
+bool ElementTextItemGroup::layoutAnchor(QPointF *anchor) const
+{
+	if (m_alignment != Qt::AlignRight && m_alignment != Qt::AlignVCenter)
+		return false;
+	if (m_alignment != m_layout_alignment)
+		return false;
+	const QList<DynamicElementTextItem *> texts = this->texts();
+	if (texts.size() < 2 || texts.size() != m_layout_widths.size())
+		return false;
+	for (DynamicElementTextItem *text : texts)
+		if (!m_layout_widths.contains(text))
+			return false;
+
+	for (DynamicElementTextItem *text : texts)
+	{
+		const qreal width = text->boundingRect().width();
+		if (!qFuzzyCompare(m_layout_widths.value(text), width))
+			continue;
+		const qreal x = text->pos().x() + (m_alignment == Qt::AlignRight ? width : width / 2);
+		*anchor = mapToParent(QPointF(x, 0));
+		return true;
+	}
+	return false;
+}
+
+/**
+	@brief ElementTextItemGroup::rememberLayout
+	Keep the width each text has now and the alignment, so that the next
+	layout can find where the group's alignment point was.
+*/
+void ElementTextItemGroup::rememberLayout()
+{
+	m_layout_alignment = m_alignment;
+	m_layout_widths.clear();
+	for (DynamicElementTextItem *text : texts())
+		m_layout_widths.insert(text, text->boundingRect().width());
+}
+
+/**
 	@brief ElementTextItemGroup::blockAlignmentUpdate
 	If true, the texts in this group are never aligned, moved, rotated etc...
 	the texts stay as it was, until blockAlignmentUpdate is set to false.
@@ -241,6 +307,13 @@ void ElementTextItemGroup::updateAlignment()
 	prepareGeometryChange();
 	
 	QList <DynamicElementTextItem *> texts = this->texts();
+
+		//The point the group is aligned on -- its right edge when aligned
+		//right, its middle when centred -- stays where it is when a text
+		//grows or shrinks, as a reference point does: the group grows away
+		//from it.
+	QPointF anchor_before;
+	const bool keep_anchor = layoutAnchor(&anchor_before);
 
 		//The mirror of a mirrored element's group depends on the size of
 		//the group: drop it while the texts are laid out, set it back after
@@ -317,6 +390,17 @@ void ElementTextItemGroup::updateAlignment()
 	setRotation(rotation_);
 	if (m_parent_element)
 		m_parent_element->keepReadable(this);
+
+	if (keep_anchor)
+	{
+		qreal width = 0;
+		for (QGraphicsItem *item : texts)
+			width = qMax(width, item->boundingRect().width());
+		const QPointF anchor_after = mapToParent(QPointF(anchorX(width), 0));
+		if (anchor_after != anchor_before)
+			setPos(pos() + anchor_before - anchor_after);
+	}
+	rememberLayout();
 	
 	if(m_Xref_item)
 		m_Xref_item->autoPos();
@@ -563,6 +647,8 @@ void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 				parentElement()->addTextToGroup(deti, this);
 		}
 		m_block_alignment_update = false;
+			//As read: the next change keeps the group's alignment point
+		rememberLayout();
 	}
 }
 
@@ -874,7 +960,8 @@ void ElementTextItemGroup::updateXref()
 					if(deti->textFrom() == DynamicElementTextItem::ElementInfo && deti->infoName() == "xref")
 					{
 						QString xref_label = xrp.slaveLabel();
-						xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+						autonum::sequentialNumbers seq_copy = master_elmt->sequenceStruct();
+						xref_label = autonum::AssignVariables::formulaToLabel(xref_label, seq_copy, master_elmt->diagram(), master_elmt);
 
 						DiagramContext dc = m_parent_element->elementInformations();
 						if(dc.value("xref").toString() != xref_label)
@@ -905,7 +992,8 @@ void ElementTextItemGroup::updateXref()
 				   (deti->textFrom() == DynamicElementTextItem::CompositeText && deti->compositeText().contains("%{label")))
 				{
 					QString xref_label = xrp.slaveLabel();
-					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+					autonum::sequentialNumbers seq_copy = master_elmt->sequenceStruct();
+					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, seq_copy, master_elmt->diagram(), master_elmt);
 					
 					if(!m_slave_Xref_item)
 					{
@@ -957,7 +1045,8 @@ void ElementTextItemGroup::updateXref()
 				if(xrp.getXrefPos() == Qt::AlignHCenter)
 				{
 					QString xref_label = xrp.slaveLabel();
-					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+					autonum::sequentialNumbers seq_copy = master_elmt->sequenceStruct();
+					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, seq_copy, master_elmt->diagram(), master_elmt);
 
 					DiagramContext dc = m_parent_element->elementInformations();
 					if(dc.value("xref").toString() != xref_label)

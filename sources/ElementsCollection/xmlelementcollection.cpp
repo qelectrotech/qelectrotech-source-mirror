@@ -87,6 +87,8 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 	names.addName("el",    QString(greek_data, 18));
 	//names.addName("el",    "Εισηγμένα στοιχεία);
 	names.addName("en",    "Imported elements");
+	names.addName("en", "Imported elements");
+	names.addName("lv", "Importētie elementi");
 	names.addName("es",    "Elementos importados");
 	names.addName("fr",    "Éléments importés");
 	names.addName("hr",    "Uvezeni elementi");

@@ -41,6 +41,7 @@ class ElementProvider
 	public:
 		ElementProvider(QETProject *prj, Diagram *diagram=nullptr);
 		ElementProvider(Diagram *diag);
+		explicit ElementProvider(const QList<Diagram *> &diagrams);
 		QVector <QPointer<Element>> freeElement(ElementData::Types filter) const;
 		QList <Element *> fromUuids(QList <QUuid>) const;
 		QVector<QPointer<Element> > find(ElementData::Types elmt_type) const;
@@ -49,7 +50,15 @@ class ElementProvider
 		QVector<TerminalElement *> freeTerminal() const;
 
 	private:
+		QList<Diagram *> folios(ElementData::Types kinds, bool free_only) const;
+		QList<Diagram *> allFolios() const;
+
 		QList <Diagram *> m_diagram_list;
+			//Searching a project: its folios are asked for when searched,
+			//so that a project opened with lazy folios builds only
+			//those a search can find something on
+		QETProject *m_project = nullptr;
+		Diagram *m_excluded = nullptr;
 };
 
 #endif // ELEMENTPROVIDER_H

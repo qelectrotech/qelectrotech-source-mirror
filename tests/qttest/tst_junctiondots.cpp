@@ -8,6 +8,7 @@
 #include <QRegularExpression>
 #include <QSet>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // fixtures/junction_dot_shared_potential.qet: four contacts K1..K4 in a row,
 // wired K1-K2, K1-K4 and K2-K3. All three wires run along one line above the
@@ -38,7 +39,7 @@ class tst_junctiondots : public QObject
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--export-svg"),
 					QFINDTESTDATA("fixtures/junction_dot_shared_potential.qet"), out});
-		if (!proc.waitForFinished(60000) || proc.exitCode() != 0)
+		if (!proc.waitForFinished(QetTest::timeout(60000)) || proc.exitCode() != 0)
 			return {};
 
 		const QStringList svgs = QDir(out).entryList({QStringLiteral("*.svg")});

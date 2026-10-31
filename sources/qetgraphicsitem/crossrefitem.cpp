@@ -1580,9 +1580,10 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
 */
 void CrossRefItem::AddExtraInfo(QPainter &painter, const QString& type)
 {
+	autonum::sequentialNumbers seq_copy = m_element->sequenceStruct();
 	QString text = autonum::AssignVariables::formulaToLabel(
 				m_element->elementInformations()[type].toString(),
-				m_element->rSequenceStruct(),
+				seq_copy,
 				m_element->diagram(),
 				m_element);
 	bool must_show  = m_element -> elementInformations().keyMustShow(type);

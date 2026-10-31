@@ -107,10 +107,11 @@ class TerminalData : public PropertiesInterface
 			@brief m_potential
 			An optional, symbol-author-chosen grouping identifier shared by
 			terminals that belong to the same physical terminal within
-			a multi-terminal block. When potential_isolating is enabled
+			a multi-terminal block. When the function separation checkbox
+			(element information potential_isolating) is enabled
 			on the parent element, terminals sharing a non-empty,
 			matching m_potential stay linked to each other; terminals
-			with different (or empty) values become isolated from each
+			with different (or empty) values become separated from each
 			other. Empty by default.
 		*/
 		QString m_potential;

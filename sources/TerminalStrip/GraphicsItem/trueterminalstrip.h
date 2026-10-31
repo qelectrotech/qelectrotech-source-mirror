@@ -64,6 +64,12 @@ namespace TerminalStripDrawer
 			QString cable() const override;
 			QString cableWire() const override;
 			bool isShield() const override;
+			QVector<QString> cableTarget() const override;
+			QColor color() const override;
+			QColor stripeColor() const override;
+			qreal widthMm() const override;
+			QString catalogEntry() const override;
+			bool hasSeparatorAfter() const override;
 
 		private:
 			QSharedPointer<RealTerminal> m_real;

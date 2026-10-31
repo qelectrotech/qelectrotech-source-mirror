@@ -89,7 +89,15 @@ bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
 void ChangeElementInformationCommand::undo()
 {
 	for (auto element : m_map.keys()) {
-		element->setElementInformations(m_map.value(element).first);
+		if (element) {
+			element->setElementInformations(m_map.value(element).first);
+			if (m_unlinked_reports.contains(element)) {
+				Element *partner = m_unlinked_reports.value(element).data();
+				if (partner) {
+					element->linkToElement(partner);
+				}
+			}
+		}
 	}
 	updateProjectDB();
 }
@@ -100,7 +108,23 @@ void ChangeElementInformationCommand::undo()
 void ChangeElementInformationCommand::redo()
 {
 	for (auto element : m_map.keys()) {
-		element->setElementInformations(m_map.value(element).second);
+		if (element) {
+			if (element->linkType() & Element::AllReport) {
+				bool label_changed = m_map.value(element).first.value("label").toString() !=
+				                     m_map.value(element).second.value("label").toString();
+				if (label_changed && element->diagram() && element->diagram()->project() &&
+				    element->diagram()->project()->chainedReports()) {
+					if (!element->isFree()) {
+						Element *partner = element->jumpTarget();
+						if (partner) {
+							m_unlinked_reports.insert(element, partner);
+						}
+						element->unlinkAllElements();
+					}
+				}
+			}
+			element->setElementInformations(m_map.value(element).second);
+		}
 	}
 	updateProjectDB();
 }
@@ -118,4 +142,28 @@ void ChangeElementInformationCommand::updateProjectDB()
 
 		elmt->diagram()->project()->dataBase()->elementInfoChanged(list_);
 	}
+}
+
+ChangeStoredElementInformationCommand::ChangeStoredElementInformationCommand(
+		QETProject *project, const QUuid &element, const DiagramContext &old_info,
+		const DiagramContext &new_info, QUndoCommand *parent) :
+	QUndoCommand(parent),
+	m_project(project),
+	m_element(element),
+	m_old_info(old_info),
+	m_new_info(new_info)
+{
+	setText(QObject::tr("Change the information of the element"));
+}
+
+void ChangeStoredElementInformationCommand::undo()
+{
+	if (m_project)
+		m_project->dataBase()->setPlacedElementInformation(m_element, m_old_info);
+}
+
+void ChangeStoredElementInformationCommand::redo()
+{
+	if (m_project)
+		m_project->dataBase()->setPlacedElementInformation(m_element, m_new_info);
 }

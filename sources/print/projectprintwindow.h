@@ -96,6 +96,7 @@ class ProjectPrintWindow : public QMainWindow
 		void saveReloadDiagramParameters(Diagram *diagram, const ExportProperties &options, bool save);
 		QList<Diagram *> selectedDiagram() const;
 		void exportToPDF();
+		void setOrientationForDiagram(Diagram *diagram);
 
 
 	private:
@@ -106,6 +107,7 @@ class ProjectPrintWindow : public QMainWindow
 		QColor m_backup_diagram_background_color;
 		QHash<Diagram *, QCheckBox *> m_diagram_list_hash;
 		QList<PdfLinks::ComponentInfo> m_componentInfoList;
+		bool m_printing = false;
 };
 
 #endif // PROJECTPRINTWINDOW_H

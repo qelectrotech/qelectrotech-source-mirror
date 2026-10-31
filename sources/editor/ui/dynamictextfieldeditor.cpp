@@ -478,7 +478,8 @@ void DynamicTextFieldEditor::on_m_alignment_pb_clicked()
 void DynamicTextFieldEditor::on_m_font_pb_clicked()
 {
 	bool ok;
-	QFont font_ = QFontDialog::getFont(&ok, m_text_field -> font(), this);
+	QFont font_ = QFontDialog::getFont(&ok, m_text_field -> font(), this, QString(),
+									   QFontDialog::DontUseNativeDialog);
 	if (ok && font_ != this -> font()) {
 		ui -> m_font_pb -> setText(font_.family());
 		ui -> m_size_sb -> setValue(font_.pointSize());

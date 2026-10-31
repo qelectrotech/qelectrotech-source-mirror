@@ -16,14 +16,22 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstripdrawer.h"
+#include "terminalstripdrawerhelpers.h"
+#include "realisticterminalstripdrawer.h"
 
 #include <QPainter>
+#include <QPolygonF>
+#include <QPainterPath>
 #include <QFontMetricsF>
 #include <QHash>
 
 #include <algorithm>
 
 namespace TerminalStripDrawer {
+
+	//The cells of a cable drawing live with the helpers, so both drawing
+	//styles build the same thing and pass it to Helpers::drawCables()
+using Helpers::CableCell;
 
 /**
  * @brief TerminalStripDrawer::TerminalStripDrawer
@@ -256,24 +264,176 @@ void drawConnections(QPainter *painter, const QRectF &terminal_rect, qreal lengt
 }
 
 /**
- * @brief The CableCell struct
- * What is needed to draw the cable under a terminal.
- */
-struct CableCell
+	One box at the end of a cable : which terminals the cable has and
+	where the box goes. The boxes of a strip are all measured before any
+	of them is drawn, so a box reaching into another one can be set
+	lower than it instead of being written over it.
+*/
+struct TargetBox
 {
-	qreal x{0};          ///< x of the middle of the terminal, in the strip coordinates
-	qreal bottom{0};     ///< y of the bottom of the terminal
-	QString cable;       ///< name of the cable (hose)
-	QString wire;        ///< color / number of the wire
-	bool shield{false};  ///< true if the terminal is the shield of the cable
+	int first{-1};          ///<First terminal of the cable, in the cells
+	QVector<QString> lines; ///<One line per field, empty when there is no box
+	qreal bar_2_y{0};       ///<Cross bar the cable ends on
+	qreal cable_x{0};       ///<Middle of the cable the box hangs on
+	qreal min_x{0};         ///<Cross bar the box spans
+	qreal max_x{0};
+	qreal top{0};           ///<Top of the box, the end of the stub
+	qreal width{0};
+	qreal height{0};
+
+	qreal bottom() const { return top + height; }
+
+		///True when the two boxes would stand the one over the other, the
+		///way two texts written on the same line reach into each other
+		///when they are wider than the room between them
+	bool reachesInto(const TargetBox &other) const {
+		return cable_x - width / 2 < other.cable_x + other.width / 2
+			&& cable_x + width / 2 > other.cable_x - other.width / 2
+			&& top < other.bottom() && bottom() > other.top;
+	}
 };
+
+/**
+ * @brief boxFont
+ * The font of a box naming where a cable goes : the font of the drawing,
+ * shrunk only while the lines of the target do not fit the height left
+ * for the box. The width never shrinks anything -- a line too long for
+ * the cross bar gives a wider box, it never gives a smaller text.
+ * @param room : the height left for the box
+ * @return the font the lines are written with
+ */
+QFont boxFont(const QFont &font, const QVector<QString> &lines, qreal room)
+{
+	QFont box_font{font};
+	if (box_font.pixelSize() <= 0 && box_font.pointSizeF() > 0) {
+		box_font.setPixelSize(qMax(4, qRound(box_font.pointSizeF() * 96.0 / 72.0)));
+	}
+	const auto fits_the_height = [&lines, room](const QFont &font_) {
+		return QFontMetricsF{font_}.height() * lines.size() + 4 <= room;
+	};
+	while (!fits_the_height(box_font) && box_font.pixelSize() > 4) {
+		box_font.setPixelSize(box_font.pixelSize() - 1);
+	}
+	return box_font;
+}
+
+/**
+ * @brief targetBoxes
+ * Where the boxes naming where the cables go stand, and how big they
+ * are. Every box is measured first -- the lines of the target at the
+ * font of the drawing, a width of the widest line or of the cross bar
+ * the cable ends on, whichever is wider -- and they are then placed
+ * from the left to the right : a box which would reach into one
+ * already placed is set just low enough to stand clear of it, its stub
+ * drawn longer. Two cables of one strip therefore never write their
+ * boxes the one over the other, and no text is ever cut down to fit.
+ * @return one entry per cable which has something to name at its end
+ */
+QVector<TargetBox> targetBoxes(const QVector<CableCell> &cells,
+							   const TerminalStripLayoutPattern &pattern,
+							   const QFont &font)
+{
+	QVector<TargetBox> boxes;
+	const qreal wire_length{pattern.m_cable_wire_length};
+	if (wire_length <= 0) {
+		return boxes;
+	}
+	const qreal cable_length{qMax<qreal>(0, pattern.m_cable_length)};
+	const qreal end_length{qMax<qreal>(0, pattern.m_cable_end_length)};
+	const qreal stub{qMin<qreal>(6, end_length)};
+	if (end_length - stub <= 4) {
+		return boxes;
+	}
+	constexpr qreal box_gap{2};
+
+	auto first{0};
+	while (first < cells.size())
+	{
+		if (cells.at(first).cable.isEmpty()) {
+			++first;
+			continue;
+		}
+
+			//Find the last terminal of the cable, the same groups the
+			//drawing makes
+		auto last{first};
+		while (last + 1 < cells.size() &&
+			   cells.at(last + 1).cable == cells.at(first).cable) {
+			++last;
+		}
+
+		QVector<int> wires, shields;
+		qreal max_bottom{cells.at(first).bottom};
+		for (auto i = first ; i <= last ; ++i)
+		{
+			max_bottom = qMax(max_bottom, cells.at(i).bottom);
+			if (cells.at(i).shield) {
+				shields << i;
+			} else {
+				wires << i;
+			}
+		}
+			//A cable with only a shield is drawn like a cable with only one wire
+		if (wires.isEmpty()) {
+			wires = shields;
+		}
+
+		const auto &first_wire{cells.at(wires.first())};
+		TargetBox box;
+		box.first = first;
+		box.bar_2_y = max_bottom + wire_length + cable_length;
+		box.min_x = first_wire.x;
+		box.max_x = cells.at(wires.last()).x;
+		box.cable_x = (box.min_x + box.max_x) / 2;
+		box.lines = first_wire.terminal ? first_wire.terminal->cableTarget()
+										: QVector<QString>();
+
+		if (!box.lines.isEmpty())
+		{
+			const QFontMetricsF metrics{boxFont(font, box.lines, end_length - stub)};
+			box.width = qMax<qreal>(box.max_x - box.min_x, 16);
+			for (const QString &line_ : std::as_const(box.lines)) {
+				box.width = qMax(box.width, metrics.horizontalAdvance(line_) + 6);
+			}
+			box.height = metrics.height() * box.lines.size() + 4;
+			box.top = box.bar_2_y + stub;
+			boxes << box;
+		}
+
+		first = last + 1;
+	}
+
+		//Place them : a box reaching into one already placed goes just
+		//under it, and the boxes set aside settle down again with it
+	for (auto i = 0 ; i < boxes.size() ; ++i)
+	{
+		bool settled{false};
+		for (auto guard = 0 ; !settled && guard < boxes.size() + 2 ; ++guard)
+		{
+			settled = true;
+			for (auto j = 0 ; j < i ; ++j)
+			{
+				if (boxes.at(i).reachesInto(boxes.at(j))
+					&& boxes.at(i).top < boxes.at(j).bottom() + box_gap)
+				{
+					boxes[i].top = boxes.at(j).bottom() + box_gap;
+					settled = false;
+				}
+			}
+		}
+	}
+	return boxes;
+}
 
 /**
  * @brief drawCables
  * Draw the cables under the terminals. Consecutive terminals who have the same cable name
- * share the same cable: the wires go down from the terminals, join in the cable,
- * and leave the cable with the same wire marks. The shield is linked to a dashed ellipse
- * drawn around the cable.
+ * share the same cable: the wires go down from the terminals and join in the cable.
+ * The cable ends together -- a short stub, then a box naming where the cable goes
+ * (Installation, Location and Label of the piece it lands on). It does not fan out
+ * again after the cable: the wires drawn there suggested each core went its own way
+ * towards the target, which said nothing about where that target is.
+ * The shield is linked to a dashed ellipse drawn around the cable.
  * @param painter : the pen and the font must be set
  * @param cells : one cell per terminal, in the drawing order
  * @param pattern
@@ -291,23 +451,58 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 	const qreal text_height{font_metrics.height()};
 
 		//Draw a mark (small oblique line) on a wire and the number of the wire next to it.
-		//The text is written from the bottom to the top, at the left of the wire.
-	const auto draw_wire_mark = [&](qreal x, qreal mark_y, const QString &text, bool text_above)
+		//The text is written from the bottom to the top, at the left of the wire, starting
+		//above the mark and running towards the terminal: the font shrinks while the text
+		//is longer than the room left between the mark and the terminal, and what still
+		//does not fit is clipped away, so a long number never runs into the drawing of
+		//the terminal. The room left is @a terminal_bottom the bottom of that terminal.
+	const auto draw_wire_mark = [&](qreal x, qreal mark_y, qreal terminal_bottom, const QString &text)
 	{
 		painter->drawLine(QPointF{x - 3, mark_y + 3}, QPointF{x + 3, mark_y - 3});
 		if (text.isEmpty()) {
 			return;
 		}
 
-		const qreal text_width{font_metrics.horizontalAdvance(text)};
+			//Room left between the mark and the terminal
+		const qreal room{mark_y - 4 - (terminal_bottom + 2)};
+		if (room <= 0) {
+			return;
+		}
+
+		QFont text_font{painter->font()};
+		if (text_font.pixelSize() <= 0 && text_font.pointSizeF() > 0) {
+			text_font.setPixelSize(qMax(4, qRound(text_font.pointSizeF() * 96.0 / 72.0)));
+		}
+		while (QFontMetricsF{text_font}.horizontalAdvance(text) > room &&
+			   text_font.pixelSize() > 4) {
+			text_font.setPixelSize(text_font.pixelSize() - 1);
+		}
+
+		const QFontMetricsF fitted_metrics{text_font};
+		const qreal fitted_width{fitted_metrics.horizontalAdvance(text)};
+		const qreal fitted_height{fitted_metrics.height()};
 		painter->save();
-		painter->translate(x - 1, text_above ? mark_y - 4 : mark_y + 4 + text_width);
+		painter->setFont(text_font);
+			//The clip keeps the text under the terminal even when a number is
+			//so long that the smallest font does not fit it any more
+		painter->setClipRect(QRectF{x - 1 - fitted_height, terminal_bottom + 2,
+									fitted_height + 1, room});
+		painter->translate(x - 1, mark_y - 4);
 		painter->rotate(270);
-		painter->drawText(QRectF{0, -text_height, text_width + 2, text_height},
+		painter->drawText(QRectF{0, -fitted_height, fitted_width + 2, fitted_height},
 						  Qt::AlignLeft | Qt::AlignVCenter,
 						  text);
 		painter->restore();
 	};
+
+		//Where every box stands, worked out for the whole strip before
+		//any of them is drawn: a box reaching into another one is set
+		//lower than it, never written over it
+	QHash<int, TargetBox> box_of;
+	const auto boxes{targetBoxes(cells, pattern, painter->font())};
+	for (const TargetBox &box_ : boxes) {
+		box_of.insert(box_.first, box_);
+	}
 
 	auto first{0};
 	while (first < cells.size())
@@ -346,25 +541,61 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 		const qreal cable_x{(min_x + max_x) / 2};
 		const qreal bar_1_y{max_bottom + wire_length};
 		const qreal bar_2_y{bar_1_y + cable_length};
-		const qreal end_y{bar_2_y + end_length};
 
 			//Wires between the terminals and the cable
 		for (const auto &wire : std::as_const(wires))
 		{
 			painter->drawLine(QPointF{wire.x, wire.bottom}, QPointF{wire.x, bar_1_y});
-			draw_wire_mark(wire.x, qMax(wire.bottom + 4, bar_1_y - 10), wire.wire, true);
+			draw_wire_mark(wire.x, qMax(wire.bottom + 4, bar_1_y - 10), wire.bottom, wire.wire);
 		}
 		painter->drawLine(QPointF{min_x, bar_1_y}, QPointF{max_x, bar_1_y});
 
 			//The cable
 		painter->drawLine(QPointF{cable_x, bar_1_y}, QPointF{cable_x, bar_2_y});
 
-			//Wires after the cable
+			//The bundle stays together at the end: the cross bar, a short
+			//stub, and a box naming where the cable goes -- the Installation,
+			//Location and Label (BMK) of the piece it lands on, the same
+			//three fields the cable list shows. The box spans the cross bar
+			//and never shrinks its text down to fit: when its lines are
+			//longer than the cross bar, the box is the one which grows. A
+			//box standing in the way of another one is set lower instead,
+			//its stub drawn longer, so no box is ever written over another.
 		painter->drawLine(QPointF{min_x, bar_2_y}, QPointF{max_x, bar_2_y});
-		for (const auto &wire : std::as_const(wires))
+		const qreal stub{qMin<qreal>(6, end_length)};
+		const TargetBox box{box_of.value(first)};
+		if (box.lines.isEmpty())
 		{
-			painter->drawLine(QPointF{wire.x, bar_2_y}, QPointF{wire.x, end_y});
-			draw_wire_mark(wire.x, qMin(bar_2_y + 10, end_y), wire.wire, false);
+			painter->drawLine(QPointF{cable_x, bar_2_y},
+							  QPointF{cable_x, bar_2_y + stub});
+		}
+		else
+		{
+				//The stub goes down to the box, which stands lower than the
+				//end zone when another box of this strip was in its way
+			painter->drawLine(QPointF{cable_x, bar_2_y},
+							  QPointF{cable_x, box.top});
+
+				//The font of the drawing, shrunk only while the lines do not
+				//fit the height the settings leave for the box
+			const QFont box_font{boxFont(painter->font(), box.lines,
+										 end_length - stub)};
+			const QFontMetricsF box_metrics{box_font};
+			const QRectF box_rect{cable_x - box.width / 2, box.top,
+								  box.width, box.height};
+
+			painter->save();
+			painter->setFont(box_font);
+			painter->drawRect(box_rect);
+			for (auto i = 0 ; i < box.lines.size() ; ++i)
+			{
+				painter->drawText(QRectF{box_rect.left() + 3,
+										  box_rect.top() + 2 + i * box_metrics.height(),
+										  box_rect.width() - 6, box_metrics.height()},
+								  Qt::AlignCenter,
+								  box.lines.at(i));
+			}
+			painter->restore();
 		}
 
 			//The shield, linked to an ellipse around the cable
@@ -405,7 +636,529 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 	}
 }
 
+/*
+ * Width and color of a terminal.
+ */
+
+/**
+ * The width of the terminals of the layout is the width of a terminal
+ * of 5.2 mm (the usual width of the terminals of 2.5 mm2).
+ * The width set by the user, in mm, is converted according to this reference.
+ */
+constexpr qreal reference_terminal_width_mm{5.2};
+
+/**
+ * @brief terminalRect
+ * @param pattern
+ * @param index : level of the terminal (0 to 3)
+ * @param real_t : can be null
+ * @return The rectangle of the terminal : the one of the layout,
+ * with the width adapted to the width (in mm) of @a real_t if it is set.
+ */
+QRectF terminalRect(const TerminalStripLayoutPattern &pattern,
+					int index,
+					const QSharedPointer<AbstractRealTerminalInterface> &real_t)
+{
+	auto rect_{pattern.m_terminal_rect[index]};
+	if (real_t && real_t->widthMm() > 0) {
+		rect_.setWidth(rect_.width() * real_t->widthMm() / reference_terminal_width_mm);
+	}
+	return rect_;
+}
+
+/**
+ * @brief cableCells
+ * The cells the cables are drawn from : one per real terminal of the
+ * strip, in the order they stand. The paint loop and the depth the
+ * strip reserves under its terminals both work on this list, so a box
+ * set lower than the others is never cut off by the drawing area.
+ * @param strip
+ * @param pattern
+ * @return the cells to hand over to Helpers::drawCables()
+ */
+QVector<CableCell> cableCells(const AbstractTerminalStripInterface &strip,
+							  const TerminalStripLayoutPattern &pattern)
+{
+	QVector<CableCell> cells;
+	qreal x_offset{pattern.m_header_rect.width() + pattern.m_spacer_rect.width()};
+	for (const auto &physical_t : strip.physicalTerminal())
+	{
+		const QVector<QSharedPointer<AbstractRealTerminalInterface>> real_terminal_vector{physical_t->realTerminals()};
+		const auto real_t_count{real_terminal_vector.size()};
+		const auto offset_{4 - real_t_count};
+
+		for (auto i=0 ; i<real_t_count ; ++i)
+		{
+			const auto index_ = offset_ + i;
+			if (index_ >= 4) {
+				break;
+			}
+
+			const auto terminal_rect{terminalRect(pattern, index_,
+												 real_terminal_vector[i])};
+			CableCell cell;
+			cell.x = x_offset + terminal_rect.width()/2;
+			cell.bottom = terminal_rect.y() + terminal_rect.height();
+			if (real_terminal_vector[i])
+			{
+				cell.cable = real_terminal_vector[i]->cable();
+				cell.wire = real_terminal_vector[i]->cableWire();
+				cell.shield = real_terminal_vector[i]->isShield();
+				cell.terminal = real_terminal_vector[i];
+			}
+			cells.append(cell);
+			x_offset += terminal_rect.width();
+		}
+	}
+	return cells;
+}
+
+/**
+ * @brief The TerminalColors struct
+ * Colors used to fill the rectangle of a terminal.
+ * An invalid fill color means that the rectangle is not filled.
+ * The stripe color (if valid) is drawn as stripes over the fill color.
+ */
+struct TerminalColors
+{
+	QColor fill;
+	QColor stripe;
+};
+
+/**
+ * @brief terminalColors
+ * @param real_t : can be null
+ * @return The colors of the terminal : the color set by the user,
+ * else the default color of the type of the terminal.
+ */
+TerminalColors terminalColors(const QSharedPointer<AbstractRealTerminalInterface> &real_t)
+{
+	if (!real_t) {
+		return {};
+	}
+	if (real_t->color().isValid()) {
+		return {real_t->color(), real_t->stripeColor()};
+	}
+	switch (real_t->type()) {
+		case ElementData::TTGround: return {QColor(255, 216, 0), QColor(46, 158, 46)};	//Green/Yellow
+		default: return {QColor(150, 150, 150), QColor()};	//Grey housing, like a real terminal block
+	}
+}
+
+/**
+ * @brief terminalBodyPath
+ * @param rect : rectangle of the terminal
+ * @return The outline of a terminal block seen from the front : a body of the full width
+ * with, at the top and at the bottom, a slightly narrower cap (the wire entry),
+ * linked to the body by a small slope.
+ * Two neighbouring terminals touch each other by their bodies and leave a small notch between their caps.
+ */
+QPainterPath terminalBodyPath(const QRectF &rect)
+{
+	QPainterPath path_;
+	if (rect.width() <= 0 || rect.height() <= 0) {
+		return path_;
+	}
+
+	const qreal inset_ = qMin(qreal(1.0), rect.width() * 0.1);
+	const qreal cap_ = qMin(qreal(6.0), rect.height() * 0.06);
+	const qreal slope_ = qMin(qreal(2.0), rect.height() * 0.03);
+	const qreal l_ = rect.left(), r_ = rect.right(), t_ = rect.top(), b_ = rect.bottom();
+
+	QPolygonF outline_;
+	outline_ << QPointF(l_ + inset_, t_)
+			 << QPointF(r_ - inset_, t_)
+			 << QPointF(r_ - inset_, t_ + cap_)
+			 << QPointF(r_, t_ + cap_ + slope_)
+			 << QPointF(r_, b_ - cap_ - slope_)
+			 << QPointF(r_ - inset_, b_ - cap_)
+			 << QPointF(r_ - inset_, b_)
+			 << QPointF(l_ + inset_, b_)
+			 << QPointF(l_ + inset_, b_ - cap_)
+			 << QPointF(l_, b_ - cap_ - slope_)
+			 << QPointF(l_, t_ + cap_ + slope_)
+			 << QPointF(l_ + inset_, t_ + cap_);
+	path_.addPolygon(outline_);
+	path_.closeSubpath();
+	return path_;
+}
+
+/**
+ * @brief The Zone struct
+ * A vertical zone (relative to the top of a terminal) already used by a text or a symbol.
+ */
+struct Zone
+{
+	qreal top{0};
+	qreal bottom{0};
+};
+
+/**
+ * @brief drawTerminalBody Draw a terminal housing seen from the front,
+ * like in a terminal line-up diagram : a grey body with wire entries (caps) at both ends,
+ * and clamping screws drawn in the free zones of the body.
+ * @param painter
+ * @param rect : rectangle of the terminal
+ * @param used_zones : zones used by the texts and the symbols (in the frame of the strip),
+ * the screws are drawn out of them.
+ * @param bottom_line : draw the line between the body and the lower wire entry.
+ * Must be false if a symbol (fuse, led...) is drawn over this line.
+ * The details are deliberately schematic and scale with the terminal width.
+ */
+void drawTerminalBody(QPainter *painter, const QRectF &rect, const QVector<Zone> &used_zones, bool bottom_line)
+{
+	if (rect.width() <= 0 || rect.height() <= 0) {
+		return;
+	}
+
+	painter->drawPath(terminalBodyPath(rect));
+
+	if (rect.width() < 5.0 || rect.height() < 12.0) {
+		return;
+	}
+
+	const qreal cap_ = qMin(qreal(6.0), rect.height() * 0.06);
+	const qreal slope_ = qMin(qreal(2.0), rect.height() * 0.03);
+	const qreal body_top_ = rect.top() + cap_ + slope_;
+	const qreal body_bottom_ = rect.bottom() - cap_ - slope_;
+
+		//Limit between the body and the wire entries
+	painter->drawLine(QPointF(rect.left(), body_top_),
+					  QPointF(rect.right(), body_top_));
+	if (bottom_line) {
+		painter->drawLine(QPointF(rect.left(), body_bottom_),
+						  QPointF(rect.right(), body_bottom_));
+	}
+
+		//Free zones of the body : what remains when the used zones are removed
+	QVector<Zone> free_zones_;
+	free_zones_.append(Zone{body_top_, body_bottom_});
+	const qreal margin_ = 2.5;
+	for (const auto &used_ : used_zones)
+	{
+		QVector<Zone> new_free_;
+		for (const auto &free_ : std::as_const(free_zones_))
+		{
+			if (used_.bottom + margin_ <= free_.top || used_.top - margin_ >= free_.bottom) {
+				new_free_.append(free_);
+				continue;
+			}
+			if (used_.top - margin_ > free_.top) {
+				new_free_.append(Zone{free_.top, used_.top - margin_});
+			}
+			if (used_.bottom + margin_ < free_.bottom) {
+				new_free_.append(Zone{used_.bottom + margin_, free_.bottom});
+			}
+		}
+		free_zones_ = new_free_;
+	}
+
+		//In each free zone, draw the clamping parts like on a terminal block seen from the front :
+		//screw, castle tab, big center circle, castle tab, screw.
+		//If the zone is too small, only the center circle or one screw is drawn.
+	const qreal screw_r_ = qMin(qreal(5.0), rect.width() * 0.3);
+	const qreal center_r_ = qMin(screw_r_ * 1.5, rect.width() * 0.4);
+	if (screw_r_ < 1.0) {
+		return;
+	}
+	const qreal screw_h_ = screw_r_ * 2 + 3;
+	const qreal center_h_ = center_r_ * 2 + 2;
+	const qreal tab_h_ = 4.0;
+	const qreal tab_w_ = qMin(rect.width() * 0.3, qreal(5.0));
+	const qreal cx_ = rect.center().x();
+
+	auto draw_screw = [&](qreal y_, qreal r_, bool window_)
+	{
+		const QPointF c_{cx_, y_};
+		if (window_) {
+			const qreal half_{qMin(r_ + 1.5, rect.width() / 2 - 0.8)};
+			if (half_ > r_ + 0.3) {
+				painter->drawRoundedRect(QRectF(cx_ - half_, c_.y() - half_, half_ * 2, half_ * 2), 1.0, 1.0);
+			}
+		}
+		painter->drawEllipse(c_, r_, r_);
+		painter->drawLine(QPointF(c_.x() - r_ * 0.6, c_.y()), QPointF(c_.x() + r_ * 0.6, c_.y()));
+	};
+	auto draw_tab = [&](qreal y_)
+	{
+		painter->drawRect(QRectF(cx_ - tab_w_, y_ - tab_h_ / 2, tab_w_ * 2, tab_h_));
+	};
+
+	for (const auto &free_ : std::as_const(free_zones_))
+	{
+		const qreal h_ = free_.bottom - free_.top;
+		if (h_ >= screw_h_ * 2 + center_h_ + tab_h_ * 2 + 2)
+		{
+			const qreal top_y_ = free_.top + screw_h_ / 2;
+			const qreal bottom_y_ = free_.bottom - screw_h_ / 2;
+			const qreal middle_y_ = (top_y_ + bottom_y_) / 2;
+			draw_screw(top_y_, screw_r_, true);
+			draw_tab((top_y_ + screw_h_ / 2 + middle_y_ - center_h_ / 2) / 2);
+			draw_screw(middle_y_, center_r_, false);
+			draw_tab((middle_y_ + center_h_ / 2 + bottom_y_ - screw_h_ / 2) / 2);
+			draw_screw(bottom_y_, screw_r_, true);
+		}
+		else if (h_ >= center_h_ + 2) {
+			draw_screw((free_.top + free_.bottom) / 2, center_r_, false);
+		}
+		else if (h_ >= screw_h_) {
+			draw_screw((free_.top + free_.bottom) / 2, screw_r_, true);
+		}
+	}
+}
+
+/**
+ * @brief markerTagLength
+ * Like the real marker tags, every tag of a strip have the same size,
+ * whatever the text written on it ("1", "10"...).
+ * The length is the one needed by the longest number of the strip
+ * (at least two digits), limited to the text zone.
+ * @param metrics : metrics of the font used to draw the text
+ * @param longest_number : the longest number of the strip
+ * @param zone_length : length of the text zone, along the text
+ * @return the length of the marker tag along the text
+ */
+qreal markerTagLength(const QFontMetricsF &metrics, const QString &longest_number, qreal zone_length)
+{
+	const qreal text_ = qMax(metrics.horizontalAdvance(QStringLiteral("00")),
+							 metrics.horizontalAdvance(longest_number));
+	return qMin(zone_length, text_ + 4.0);
+}
+
+/**
+ * @brief markerTagZone
+ * @return The vertical zone (in the frame of the strip) really covered by the marker tag of a text,
+ * which is smaller than the rectangle of the text.
+ * @param metrics : metrics of the font used to draw the text
+ * @param text_y : y of the rectangle of the text
+ * @param text_height : height of the rectangle of the text
+ * @param text : text drawn
+ * @param option : option used to draw the text
+ * @param vertical : true if the text is rotated
+ * @param tag_length : length of the marker tags of the strip, along the text
+ */
+Zone markerTagZone(const QFontMetricsF &metrics, qreal text_y, qreal text_height,
+				   const QString &text, const QTextOption &option, bool vertical,
+				   qreal tag_length)
+{
+	if (!vertical)
+	{
+		const qreal cross_ = qMin(text_height, metrics.height() + 2);
+		return Zone{text_y + (text_height - cross_) / 2, text_y + (text_height + cross_) / 2};
+	}
+	Q_UNUSED(text)
+		//Same length for every terminal, so the body of every terminal is drawn the same way
+	const qreal along_ = qMin(text_height, tag_length);
+	if (option.alignment() & Qt::AlignRight) {
+		return Zone{text_y, text_y + along_};
+	}
+	if (option.alignment() & Qt::AlignHCenter) {
+		return Zone{text_y + (text_height - along_) / 2, text_y + (text_height + along_) / 2};
+	}
+	return Zone{text_y + text_height - along_, text_y + text_height};
+}
+
+/**
+ * @brief drawMarkerTag
+ * Draw the marker tag of a terminal (white, or black and ribbed for an isolating terminal)
+ * behind a text. The tag fits the text and follows its alignment.
+ * Must be called with the painter in the frame of @a text_rect (the one used to draw the text).
+ * @param painter
+ * @param text_rect : rectangle used to draw the text
+ * @param text : text drawn
+ * @param option : option used to draw the text
+ * @param vertical : true if the text is rotated
+ * @param sectional : true for an isolating terminal
+ * @param tag_length : length of the marker tags of the strip, along the text
+ */
+void drawMarkerTag(QPainter *painter, const QRectF &text_rect, const QString &text,
+				   const QTextOption &option, bool vertical, bool sectional,
+				   qreal tag_length)
+{
+	if (text.isEmpty()) {
+		return;
+	}
+	const QFontMetricsF metrics_{painter->font()};
+		//Vertical text : fixed length, like a real marker tag.
+		//Horizontal text : the tag take the whole width of the terminal.
+	const qreal along_ = vertical ? qMin(text_rect.width(), tag_length) : text_rect.width();
+	const qreal cross_ = vertical ?
+							 text_rect.height() - 2 * qMin(qreal(1.2), text_rect.height() * 0.12) :
+							 qMin(text_rect.height(), metrics_.height() + 2);
+	qreal x_{text_rect.left()};
+	if (option.alignment() & Qt::AlignRight) {
+		x_ = text_rect.right() - along_;
+	} else if (option.alignment() & Qt::AlignHCenter) {
+		x_ = text_rect.left() + (text_rect.width() - along_) / 2;
+	}
+	const QRectF tag_rect_{x_, text_rect.top() + (text_rect.height() - cross_) / 2, along_, cross_};
+
+	painter->save();
+	painter->setBrush(sectional ? Qt::black : Qt::white);
+	painter->drawRoundedRect(tag_rect_, 0.8, 0.8);
+	if (sectional)
+	{
+			//Ribbed grip of the isolating terminals
+		painter->setPen(QPen(QColor(90, 90, 90), 0));
+		for (auto rib_x_ = tag_rect_.left() + 1.5 ; rib_x_ < tag_rect_.right() - 0.5 ; rib_x_ += 1.5) {
+			painter->drawLine(QPointF(rib_x_, tag_rect_.top() + 0.5),
+							  QPointF(rib_x_, tag_rect_.bottom() - 0.5));
+		}
+	}
+	painter->restore();
+	painter->setPen(sectional ? Qt::white : Qt::black);
+
+		//The text is longer than the tag ("100", "PE"...) : reduce the font, like on a real tag.
+	const qreal available_ = along_ - 2.0;
+	const qreal text_length_ = metrics_.horizontalAdvance(text);
+	if (text_length_ > available_ && available_ > 0)
+	{
+		auto font_{painter->font()};
+		const auto size_{font_.pixelSize() > 0 ? qreal(font_.pixelSize()) : font_.pointSizeF()};
+		const auto new_size_{std::max<qreal>(3.0, size_ * available_ / text_length_)};
+		if (font_.pixelSize() > 0) {
+			font_.setPixelSize(std::max(1, static_cast<int>(new_size_)));
+		} else {
+			font_.setPointSizeF(new_size_);
+		}
+		painter->setFont(font_);
+	}
+}
+
+/**
+ * @brief terminalNumber
+ * @param label : label of a terminal, for example "XAUZ1:1"
+ * @return The number of the terminal, the part after the last ':' ("1").
+ * The strip name is already written in the header of the strip.
+ * If the label have no ':', return the label.
+ */
+QString terminalNumber(const QString &label)
+{
+	const auto index_ = label.lastIndexOf(QLatin1Char(':'));
+	return index_ < 0 ? label : label.mid(index_ + 1).trimmed();
+}
+
+/**
+ * @brief fitTextToCell
+ * The text of a terminal is drawn vertically (or not) inside the width of the terminal.
+ * If the font is too big for a narrow terminal, the text overlaps the next ones.
+ * Clip the painter to the width of the terminal and reduce the font if needed.
+ * Must be called with the painter at the left of the terminal, before any rotation.
+ * @param painter
+ * @param cell_width : width of the terminal
+ * @param text_is_vertical : true if the text is rotated (the height of the font is then along the width of the terminal)
+ */
+void fitTextToCell(QPainter *painter, qreal cell_width, bool text_is_vertical)
+{
+	painter->setClipRect(QRectF(0, -100000, cell_width, 200000), Qt::IntersectClip);
+
+	if (!text_is_vertical || cell_width <= 0) {
+		return;
+	}
+	auto font_{painter->font()};
+	const auto available_{std::max<qreal>(1.0, cell_width - 1.0)};
+	const QFontMetricsF metrics_{font_};
+	if (metrics_.height() > available_ && metrics_.height() > 0)
+	{
+		const auto size_{font_.pixelSize() > 0 ? qreal(font_.pixelSize()) : font_.pointSizeF()};
+		const auto new_size_{std::max<qreal>(3.0, size_ * available_ / metrics_.height())};
+		if (font_.pixelSize() > 0) {
+			font_.setPixelSize(static_cast<int>(new_size_));
+		} else {
+			font_.setPointSizeF(new_size_);
+		}
+		painter->setFont(font_);
+	}
+}
+
+/**
+ * @brief drawStripes
+ * Draw diagonal stripes of @a color inside @a rect.
+ */
+void drawStripes(QPainter *painter, const QRectF &rect, const QColor &color)
+{
+	painter->save();
+	painter->setClipPath(terminalBodyPath(rect));
+	painter->setPen(Qt::NoPen);
+	painter->setBrush(color);
+
+	const auto band_{std::max<qreal>(2, rect.width() / 2)};
+	for (auto x = rect.left() - rect.height() ; x < rect.right() ; x += 2 * band_)
+	{
+		QPolygonF polygon_;
+		polygon_ << QPointF(x, rect.bottom())
+				 << QPointF(x + band_, rect.bottom())
+				 << QPointF(x + band_ + rect.height(), rect.top())
+				 << QPointF(x + rect.height(), rect.top());
+		painter->drawPolygon(polygon_);
+	}
+	painter->restore();
+}
+
+/**
+ * @return The color (black or white) the more readable on @a background.
+ * If @a background is invalid, return black.
+ */
+QColor contrastColor(const QColor &background)
+{
+	if (!background.isValid()) {
+		return Qt::black;
+	}
+	const auto luminance_{0.299 * background.redF() + 0.587 * background.greenF() + 0.114 * background.blueF()};
+	return luminance_ < 0.5 ? QColor(Qt::white) : QColor(Qt::black);
+}
+
 } //End anonymous namespace
+
+/*
+ * Helpers : give to the other drawing styles access to
+ * the functions of the anonymous namespace.
+ */
+qreal Helpers::referenceTerminalWidthMm() {
+	return reference_terminal_width_mm;
+}
+
+void Helpers::terminalColors(const QSharedPointer<AbstractRealTerminalInterface> &real_t,
+							 QColor &fill, QColor &stripe)
+{
+	const auto colors_{::TerminalStripDrawer::terminalColors(real_t)};
+	fill = colors_.fill;
+	stripe = colors_.stripe;
+}
+
+QColor Helpers::contrastColor(const QColor &background) {
+	return ::TerminalStripDrawer::contrastColor(background);
+}
+
+QString Helpers::terminalNumber(const QString &label) {
+	return ::TerminalStripDrawer::terminalNumber(label);
+}
+
+void Helpers::drawTypeSymbol(QPainter *painter, const QRectF &box,
+							 ElementData::TerminalType type, bool led) {
+	::TerminalStripDrawer::drawTypeSymbol(painter, box, type, led);
+}
+
+void Helpers::drawCables(QPainter *painter, const QVector<CableCell> &cells,
+						 const TerminalStripLayoutPattern &pattern) {
+	::TerminalStripDrawer::drawCables(painter, cells, pattern);
+}
+
+qreal Helpers::cableBoxesExtraDepth(const QVector<CableCell> &cells,
+									const TerminalStripLayoutPattern &pattern)
+{
+	const qreal end_length{qMax<qreal>(0, pattern.m_cable_end_length)};
+	qreal extra{0};
+	for (const auto &box_ : ::TerminalStripDrawer::targetBoxes(cells, pattern,
+															   pattern.font()))
+	{
+			//How much deeper than the end zone the strip reserves this box
+			//stands -- the zone is the room of the box, a box set lower
+			//than the others needs room the strip must reserve too
+		extra = qMax(extra, box_.bottom() - (box_.bar_2_y + end_length));
+	}
+	return qMax<qreal>(0, extra);
+}
 
 /**
  * @brief TerminalStripDrawer::paint
@@ -413,9 +1166,33 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
  */
 void TerminalStripDrawer::paint(QPainter *painter)
 {
+	if (m_strip && m_pattern && m_draw_style != TerminalStripLayoutPattern::DrawStyle::Schematic)
+	{
+			//The realistic styles don't write the xrefs, but each terminal
+			//is a clickable zone, like the xref text of the schematic style.
+		m_united_xref_text_rect = QRectF();
+		m_xref_rects.clear();
+		m_hovered_xref = hoverTerminal{};
+		Realistic::paint(painter, *m_strip, *m_pattern, m_draw_style, m_preview_draw,
+						 m_mouse_hover_pos, &m_xref_rects);
+		for (const auto &xref_rect : std::as_const(m_xref_rects))
+		{
+			m_united_xref_text_rect = m_united_xref_text_rect.isNull() ?
+										  xref_rect.rect :
+										  m_united_xref_text_rect.united(xref_rect.rect);
+			if (m_hovered_xref.physical < 0 && !m_mouse_hover_pos.isNull()
+				&& xref_rect.rect.contains(m_mouse_hover_pos)) {
+				m_hovered_xref.physical = xref_rect.physical;
+				m_hovered_xref.real = xref_rect.real;
+			}
+		}
+		return;
+	}
+
     if (m_strip && m_pattern)
     {
 		m_united_xref_text_rect = QRectF();
+		m_xref_rects.clear();
             //To draw text, QPainter need a Qrect. Instead of create an instance
             //for each text, we re-use the same instance of QRect.
         QRect text_rect;
@@ -488,9 +1265,50 @@ void TerminalStripDrawer::paint(QPainter *painter)
 		QRectF xref_rect;
 
 		QHash<QUuid, QVector<QPointF>> bridges_anchor_points;
-		QVector<CableCell> cable_cells;
+			//The cells the cables are drawn from, worked out once for the
+			//whole strip: the depth the strip reserves under its terminals
+			//is built on the same list (boundingRect()), so a box set lower
+			//than the others is never cut off
+		QVector<CableCell> cable_cells{cableCells(*m_strip, *m_pattern)};
+		auto cell_index{0};
 
 		m_hovered_xref = hoverTerminal{};
+
+			//Length of the longest xref of the strip, used to reserve the same
+			//zone in the body of every terminal.
+		qreal xref_zone_length_{0};
+		{
+			const QFontMetricsF xref_metrics_{painter->font()};
+			for (const auto &physical_t : m_strip->physicalTerminal()) {
+				for (const auto &real_t : physical_t->realTerminals()) {
+					if (real_t && !real_t->xref().isEmpty()) {
+						xref_zone_length_ = qMax(xref_zone_length_,
+												 xref_metrics_.horizontalAdvance(real_t->xref()) + 4.0);
+					}
+				}
+			}
+			xref_zone_length_ = qMin(xref_zone_length_, qreal(xref_text_height));
+		}
+
+			//Length of the marker tags of the strip, calibrated on the longest number
+		qreal tag_length_{0};
+		{
+			QString longest_number_;
+			const QFontMetricsF tag_metrics_{painter->font()};
+			for (const auto &physical_t : m_strip->physicalTerminal()) {
+				for (const auto &real_t : physical_t->realTerminals()) {
+					if (!real_t) {
+						continue;
+					}
+					const auto number_{terminalNumber(real_t->label())};
+					if (tag_metrics_.horizontalAdvance(number_) > tag_metrics_.horizontalAdvance(longest_number_)) {
+						longest_number_ = number_;
+					}
+				}
+			}
+			tag_length_ = markerTagLength(tag_metrics_, longest_number_, terminals_text_height);
+		}
+
 		int physical_index = 0;
             //Loop over physical terminals
         for (const auto &physical_t : m_strip->physicalTerminal())
@@ -508,31 +1326,80 @@ void TerminalStripDrawer::paint(QPainter *painter)
 					break;
 				}
 
-                terminal_rect = m_pattern->m_terminal_rect[index_];
+                terminal_rect = terminalRect(*m_pattern, index_, real_terminal_vector[i]);
 
-					//Cable (hose) of this terminal
-				CableCell cable_cell;
+					//Cable (hose) of this terminal, and where this
+					//terminal stands: the very cell the depth of the strip
+					//was worked out from, so the drawing and the room it
+					//is given can never disagree
+				const CableCell &cable_cell{cable_cells.at(cell_index++)};
+				x_offset = cable_cell.x - terminal_rect.width()/2;
+				const bool have_cable{m_pattern->m_cable_wire_length > 0 && !cable_cell.cable.isEmpty()};
+                    //Draw terminal rect, filled with the color of the terminal (if any)
+				const auto colors_{terminalColors(real_terminal_vector[i])};
+				const auto fill_color_{colors_.fill};
+				const auto text_color_{contrastColor(fill_color_)};
+				painter->save();
+				if (fill_color_.isValid()) {
+					painter->setBrush(QBrush(fill_color_));
+				}
+				QVector<Zone> used_zones_;
 				if (real_terminal_vector[i])
 				{
-					cable_cell.x = x_offset + terminal_rect.width()/2;
-					cable_cell.bottom = terminal_rect.y() + terminal_rect.height();
-					cable_cell.cable = real_terminal_vector[i]->cable();
-					cable_cell.wire = real_terminal_vector[i]->cableWire();
-					cable_cell.shield = real_terminal_vector[i]->isShield();
+					const QFontMetricsF metrics_{painter->font()};
+					used_zones_.append(markerTagZone(metrics_, terminals_text_y, terminals_text_height,
+													 terminalNumber(real_terminal_vector[i]->label()),
+													 terminals_text_option,
+													 terminals_text_orientation == Qt::Vertical,
+													 tag_length_));
+						//The zone of the xref have the length of the longest xref of the strip,
+						//so the body of every terminal is drawn the same way.
+					if (xref_text_orientation == Qt::Vertical)
+					{
+						if (xref_text_option.alignment() & Qt::AlignRight) {
+							used_zones_.append(Zone{xref_text_y, xref_text_y + xref_zone_length_});
+						} else if (xref_text_option.alignment() & Qt::AlignHCenter) {
+							used_zones_.append(Zone{xref_text_y + (xref_text_height - xref_zone_length_) / 2,
+													xref_text_y + (xref_text_height + xref_zone_length_) / 2});
+						} else {
+							used_zones_.append(Zone{xref_text_y + xref_text_height - xref_zone_length_,
+													xref_text_y + xref_text_height});
+						}
+					} else {
+						const qreal cross_ = qMin(xref_text_height, metrics_.height() + 2);
+						used_zones_.append(Zone{xref_text_y + (xref_text_height - cross_) / 2,
+												xref_text_y + (xref_text_height + cross_) / 2});
+					}
 				}
-				const bool have_cable{m_pattern->m_cable_wire_length > 0 && !cable_cell.cable.isEmpty()};
-				cable_cells.append(cable_cell);
-                    //Draw terminal rect
-                painter->drawRect(terminal_rect);
+				const bool have_symbol_{m_pattern->m_type_symbol_height > 0 && real_terminal_vector[i]
+										&& (real_terminal_vector[i]->type() != ElementData::TTGeneric
+											|| real_terminal_vector[i]->isLed())};
+				if (have_symbol_) {
+					used_zones_.append(Zone{m_pattern->m_type_symbol_y,
+											m_pattern->m_type_symbol_y + m_pattern->m_type_symbol_height});
+				}
+                drawTerminalBody(painter, terminal_rect, used_zones_, !have_symbol_);
+				if (colors_.stripe.isValid())
+				{
+					drawStripes(painter, terminal_rect, colors_.stripe);
+					painter->setBrush(Qt::NoBrush);
+					drawTerminalBody(painter, terminal_rect, used_zones_, !have_symbol_);	//Draw again the outline and the details, hidden by stripes
+				}
+				painter->restore();
 
 					//Draw the symbol of the terminal type (fuse, ground, led...)
 				if (m_pattern->m_type_symbol_height > 0 && real_terminal_vector[i])
 				{
+					painter->save();
+					if (fill_color_.isValid()) {
+						painter->setPen(text_color_);
+					}
 					drawTypeSymbol(painter,
 								   QRectF{0, m_pattern->m_type_symbol_y,
 										  terminal_rect.width(), m_pattern->m_type_symbol_height},
 								   real_terminal_vector[i]->type(),
 								   real_terminal_vector[i]->isLed());
+					painter->restore();
 				}
 
 					//Draw the connections, above and under the terminal
@@ -569,6 +1436,10 @@ void TerminalStripDrawer::paint(QPainter *painter)
 
                     //Draw text
                 painter->save();
+				if (fill_color_.isValid()) {
+					painter->setPen(text_color_);
+				}
+                fitTextToCell(painter, terminal_rect.width(), terminals_text_orientation == Qt::Vertical);
                 text_rect.setRect(0, terminals_text_y, terminal_rect.width(), terminals_text_height);
                 if (terminals_text_orientation == Qt::Vertical)
                 {
@@ -578,8 +1449,14 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 }
 
                 const auto shared_real_terminal{real_terminal_vector[i]};
+				if (shared_real_terminal && terminal_rect.width() >= 4.0) {
+					drawMarkerTag(painter, text_rect, terminalNumber(shared_real_terminal->label()),
+								  terminals_text_option, terminals_text_orientation == Qt::Vertical,
+								  shared_real_terminal->type() == ElementData::TTSectional,
+								  tag_length_);
+				}
 				painter->drawText(text_rect,
-								  shared_real_terminal ? shared_real_terminal->label() : QLatin1String(),
+								  shared_real_terminal ? terminalNumber(shared_real_terminal->label()) : QString(),
 								  terminals_text_option);
 
 				if (m_preview_draw)
@@ -593,6 +1470,10 @@ void TerminalStripDrawer::paint(QPainter *painter)
 					//Draw xref
 				xref_rect.setRect(0, xref_text_y, terminal_rect.width(), xref_text_height);
 				painter->save();
+				if (fill_color_.isValid()) {
+					painter->setPen(text_color_);
+				}
+				fitTextToCell(painter, terminal_rect.width(), xref_text_orientation == Qt::Vertical);
 				if (xref_text_orientation == Qt::Vertical)
 				{
 					painter->translate(xref_rect.bottomLeft());
@@ -612,6 +1493,9 @@ void TerminalStripDrawer::paint(QPainter *painter)
 				auto xref_string = shared_real_terminal->xref();
 
 				const auto mapped_xref_text_rect = transform.mapRect(painter->boundingRect(xref_rect, xref_string, xref_text_option));
+				if (!xref_string.isEmpty()) {
+					m_xref_rects.append({mapped_xref_text_rect, physical_index, i});
+				}
 				if (m_united_xref_text_rect.isNull()) {
 					m_united_xref_text_rect = mapped_xref_text_rect;
 				} else {
@@ -660,6 +1544,25 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 painter->translate(terminal_rect.width(),0);
                 x_offset += terminal_rect.width();
             }
+
+				//Separator plate after the physical terminal : a thick line
+				//on the full height of the terminal, after its last level
+			const bool separator_after_ = std::any_of(real_terminal_vector.cbegin(), real_terminal_vector.cend(),
+													  [](const QSharedPointer<AbstractRealTerminalInterface> &real_t) {
+				return real_t && real_t->hasSeparatorAfter();
+			});
+			if (separator_after_ && real_t_count > 0 && offset_ >= 0 && offset_ < 4)
+			{
+				const auto &rect_{m_pattern->m_terminal_rect.at(offset_)};
+				painter->save();
+				QPen separator_pen_{painter->pen()};
+				separator_pen_.setColor(Qt::black);
+				separator_pen_.setWidthF(3);
+				separator_pen_.setCapStyle(Qt::FlatCap);
+				painter->setPen(separator_pen_);
+				painter->drawLine(QPointF{0, rect_.top() - 3}, QPointF{0, rect_.top() + rect_.height() + 3});
+				painter->restore();
+			}
 			physical_index++;
         }
         painter->restore();
@@ -683,13 +1586,17 @@ void TerminalStripDrawer::paint(QPainter *painter)
 		painter->setPen(cable_pen);
 		painter->setFont(m_pattern->font());
 		painter->setBrush(Qt::NoBrush);
-		drawCables(painter, cable_cells, *m_pattern);
+		Helpers::drawCables(painter, cable_cells, *m_pattern);
 		painter->restore();
 	}
 }
 
 QRectF TerminalStripDrawer::boundingRect() const
 {
+	if (m_pattern && m_draw_style != TerminalStripLayoutPattern::DrawStyle::Schematic) {
+		return Realistic::boundingRect(m_strip.data(), *m_pattern);
+	}
+
 	QRectF rect_{0, 0, width(), height()};
 
 	if (m_pattern)
@@ -728,12 +1635,18 @@ QRectF TerminalStripDrawer::boundingRect() const
 
 			if (have_cable)
 			{
-					//4 is the diameter of the circle at the end of the wires
+					//4 is the diameter of the circle at the end of the wires.
+					//A box standing in the way of another one is drawn lower
+					//than the end zone, and the room for it is reserved too
+					//(same rule, same cells as the drawing) or it is cut off
 				extra_bottom = std::max(extra_bottom,
 										m_pattern->m_cable_wire_length
 										+ std::max<qreal>(0, m_pattern->m_cable_length)
 										+ std::max<qreal>(0, m_pattern->m_cable_end_length)
-										+ 4);
+										+ 4
+										+ Helpers::cableBoxesExtraDepth(
+											cableCells(*m_strip, *m_pattern),
+											*m_pattern));
 			}
 		}
 
@@ -755,6 +1668,35 @@ bool TerminalStripDrawer::haveLayout() const
 
 void TerminalStripDrawer::setPreviewDraw(bool draw) {
 	m_preview_draw = draw;
+}
+
+/**
+ * @brief TerminalStripDrawer::setDrawStyle
+ * Set how the terminals are drawn (schematic, realistic...).
+ * The values used by each style come from the layout.
+ */
+void TerminalStripDrawer::setDrawStyle(TerminalStripLayoutPattern::DrawStyle style) {
+	m_draw_style = style;
+}
+
+TerminalStripLayoutPattern::DrawStyle TerminalStripDrawer::drawStyle() const {
+	return m_draw_style;
+}
+
+/**
+ * @brief TerminalStripDrawer::xrefAt
+ * @param pos : position in the coordinates of the item
+ * @return the physical and real index of the terminal whose xref zone
+ * (drawn by the last call of paint()) contains @a pos, or -1 if none.
+ */
+hoverTerminal TerminalStripDrawer::xrefAt(const QPointF &pos) const
+{
+	for (const auto &xref_rect : m_xref_rects) {
+		if (xref_rect.rect.contains(pos)) {
+			return hoverTerminal{xref_rect.physical, xref_rect.real};
+		}
+	}
+	return hoverTerminal{};
 }
 
 void TerminalStripDrawer::setMouseHoverPos(const QPointF &pos)
@@ -790,6 +1732,16 @@ bool TerminalStripDrawer::needUpdate()
 hoverTerminal TerminalStripDrawer::hoveredXref() const
 {
 	return m_hovered_xref;
+}
+
+/**
+ * @brief TerminalStripDrawer::xrefRects
+ * @return the rectangle of every xref text drawn by the last call
+ * of paint(), in the coordinates of the painter.
+ */
+QVector<XrefRect> TerminalStripDrawer::xrefRects() const
+{
+	return m_xref_rects;
 }
 
 qreal TerminalStripDrawer::height() const
@@ -834,7 +1786,7 @@ qreal TerminalStripDrawer::width() const
 						break;
 					}
 
-					width_ += m_pattern->m_terminal_rect[index_].width();
+					width_ += terminalRect(*m_pattern, index_, real_terminal_vector[i]).width();
 				}
 			}
 		}

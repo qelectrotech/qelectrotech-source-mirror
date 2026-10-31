@@ -42,6 +42,8 @@ class ConductorCreator
 
 	private:
 		static QList<Conductor *> existingPotential(const QList<Terminal *> &terminals_list);
+		static ConductorProperties inheritedProperties(const Conductor *conductor);
+		static QList<ConductorProperties> distinctProperties(const QList<Conductor *> &potentials);
 		bool setUpPropertieToUse();
 		Terminal *hubTerminal();
 		QList<QPair<Terminal *, Terminal *>> terminalPairs(bool chain);

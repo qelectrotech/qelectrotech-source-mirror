@@ -27,6 +27,7 @@
 #include <QRegularExpression>
 #include <QSize>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 /**
 	Undoing a crop restores the crop rectangle too, not only the pixels
@@ -66,7 +67,7 @@ class tst_imagecropundo : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), path, project});
-		if (!proc.waitForFinished(120000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(120000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput()
 											  + proc.readAllStandardError());
 		const QString mark = QStringLiteral("PROBE ");

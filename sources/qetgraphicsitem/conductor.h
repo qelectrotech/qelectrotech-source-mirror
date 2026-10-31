@@ -19,6 +19,8 @@
 #define CONDUCTOR_H
 #include <autoNum/assignvariables.h>
 #include <conductorproperties.h>
+#include <dataBase/conductorlayout.h>
+#include <dataBase/conductorpath.h>
 
 #include <QGraphicsPathItem>
 #include <QSet>
@@ -27,9 +29,11 @@
 class ConductorProfile;
 class ConductorSegmentProfile;
 class Diagram;
+class projectDataBase;
 class Terminal;
 class ConductorSegment;
 class ConductorTextItem;
+class ConductorDefinitionMark;
 class Element;
 class QETDiagramEditor;
 class NumerotationContext;
@@ -80,8 +84,8 @@ class Conductor : public QGraphicsObject
 		Diagram *diagram() const;
 		ConductorTextItem *textItem() const;
 		QUuid uuid() const {return m_uuid;}
-		void newUuid() {m_uuid = QUuid::createUuid(); m_persist_uuid = true;}	//create new uuid for this conductor
-		void setUuid(const QUuid &uuid) {m_uuid = uuid; m_persist_uuid = true;}	//saved from now on
+		void newUuid();	//create new uuid for this conductor
+		void setUuid(const QUuid &uuid);	//saved from now on
 		void updatePath(const QRectF & = QRectF());
 
 		//This method do nothing, it's only made to be used with Q_PROPERTY
@@ -125,26 +129,55 @@ class Conductor : public QGraphicsObject
 				bool only_text = false);
 		void setProperties(const ConductorProperties &property);
 		ConductorProperties properties() const;
+			/// This wire's own copy of its properties, whatever the store holds
+		ConductorProperties ownProperties() const {return m_properties;}
+			/// Where this wire sits and how its text was placed, from its own
+			/// members, never from the store
+		ConductorLayout ownLayout() const;
+		void storeLayout();
+			/// The segments toXml() writes for this wire (none if the user
+			/// did not reshape it), from its own members, never from the store
+		ConductorPath ownPath() const;
+		void storePath();
+			/// The order wires were made in this session: a project's are
+			/// made in the order its file lists them
+		quint64 creationRank() const {return m_creation_rank;}
+			/// Records which cable core this conductor shows and writes the
+			/// label that assignment generates (15W1:br) into its cable
+			/// field. Deliberately not routed through
+			/// setPropertyToPotential(): a core of a cable belongs to this
+			/// conductor alone and must never spill over a pass-through
+			/// terminal onto the neighbouring half conductor.
+		void setCableReference(const QString &label,
+							   const QUuid &cable_uuid,
+							   int slot);
 
 		void setProfile(const ConductorProfile &, Qt::Corner);
 		ConductorProfile profile(Qt::Corner) const;
 		void setProfiles(const ConductorProfilesGroup &);
 		ConductorProfilesGroup profiles() const;
 		void calculateTextItemPosition();
+		void updateDefinitionMark();
+		QList<Conductor *> cornerChain();
 		void updateTextVisibility();
 		virtual Highlight highlight() const;
 		virtual void setHighlighted(Highlight);
 		QSet<Conductor *> relatedPotentialConductors(
 				const bool all_diagram = true,
-				QList <Terminal *> *t_list=nullptr);
+				QList <Terminal *> *t_list=nullptr,
+				const bool ignore_function_separation = false);
+		QSet<Conductor *> functionSeparatedConductors(
+				const bool all_diagram = true);
 		QETDiagramEditor* diagramEditor() const;
 		void editProperty ();
 
 		autonum::sequentialNumbers sequenceNum () const
 		{return m_autoNum_seq;}
-		autonum::sequentialNumbers& rSequenceNum()
-		{return m_autoNum_seq;}
+			/// Replace the numbers without redrawing the text; the project
+			/// database follows
+		void replaceSequenceNum(const autonum::sequentialNumbers& sn);
 		void setSequenceNum(const autonum::sequentialNumbers& sn);
+		void storeSequence();
 
 		QList<QPointF> junctions() const;
 		QPainterPath paintedPath() const;
@@ -156,6 +189,8 @@ class Conductor : public QGraphicsObject
 
 	public:
 		void setFreezeLabel(bool freeze);
+		bool isFreezeLabel() const { return m_freeze_label; }
+		bool markReplacesText() const;
 	
 	public slots:
 		void displayedTextChanged();
@@ -200,6 +235,7 @@ class Conductor : public QGraphicsObject
 		ConductorProperties m_properties;
 			/// Text input for non simple, non-singleline conductors
 		ConductorTextItem *m_text_item;
+		ConductorDefinitionMark *m_definition_mark = nullptr;
 			/// Segments composing the conductor
 		ConductorSegment *segments;
 			/// Attributes related to mouse interaction
@@ -224,6 +260,10 @@ class Conductor : public QGraphicsObject
 			/// file had none -- toXml() must not persist that value, or
 			/// every reload mints and saves a new random one (see #754).
 		bool m_persist_uuid = true;
+		quint64 m_creation_rank = 0;
+		void uuidChanged(const QUuid &old_uuid);
+		projectDataBase *placedStore() const;
+		void storeProperties();
 
 			/// QPen et QBrush objects used to draw conductors
 		static QPen conductor_pen;

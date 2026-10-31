@@ -24,12 +24,93 @@
 #include <qetproject.h>
 #include <TerminalStrip/realterminal.h>
 #include <TerminalStrip/terminalstrip.h>
+#include <TerminalStrip/terminalstripautoimport.h>
 #include "terminalstripcreatordialog.h"
 #include "terminalstripeditor.h"
 #include "terminalstripeditorwindow.h"
 #include "terminalstriptreedockwidget.h"
 
+#include <QApplication>
+#include <QElapsedTimer>
+#include <QMessageBox>
+#include <QProgressDialog>
+#include <QThread>
+#include <QWindow>
+
 QPointer<TerminalStripEditorWindow> TerminalStripEditorWindow::window_;
+
+/**
+ * @brief TerminalStripEditorWindow::instance
+ * @param project : the project to edit
+ * @param parent : parent widget of the window, when it is created
+ * @return the terminal block manager window, created the first time,
+ * showing the terminal strips of @a project.
+ * Opening it reads every terminal of the project (and builds the folios
+ * not built yet) : it can take a while on a big project. A message and a
+ * busy cursor say that it is opening, so that the user does not think
+ * that nothing happens.
+ */
+TerminalStripEditorWindow *TerminalStripEditorWindow::instance(QETProject *project, QWidget *parent)
+{
+	QProgressDialog busy_(tr("Opening the terminal block manager..."), QString(), 0, 0, parent);
+	busy_.setWindowTitle(tr("Terminal block manager"));
+		//Only a title : nothing to minimize, maximize or close
+	busy_.setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint);
+	busy_.setWindowModality(Qt::ApplicationModal);
+	busy_.setCancelButton(nullptr);
+	busy_.setMinimumDuration(0);
+	busy_.show();
+		//Paint the message before the long work starts. One pass of the
+		//event loop is not enough : the window is shown by the window system
+		//(Wayland compositor...) a bit later. Wait for it to be exposed,
+		//a short time at most, then paint it.
+	QElapsedTimer timer_;
+	timer_.start();
+	while (timer_.elapsed() < 500)
+	{
+		QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents, 20);
+		if (busy_.windowHandle() && busy_.windowHandle()->isExposed()) {
+			break;
+		}
+		QThread::msleep(5);
+	}
+	busy_.repaint();
+	QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+	QApplication::setOverrideCursor(Qt::WaitCursor);
+
+		//The folios not built yet (lazy folios) are built now : show the
+		//progress, and run the event loop between two folios, so that the
+		//window system still gets answers (else the message is said
+		//"not responding")
+	if (project)
+	{
+		project->setFolioBuildObserver([&busy_](int built, int total)
+		{
+			if (busy_.maximum() != total) {
+				busy_.setMaximum(total);
+			}
+			busy_.setLabelText(tr("Reading folio %1 of %2...").arg(built).arg(total));
+			busy_.setValue(built);
+			QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+		});
+	}
+
+	static QMutex mutex_;
+	if (!window_) {
+		mutex_.lock();
+		if (!window_)
+			window_ = new TerminalStripEditorWindow{project, parent};
+		mutex_.unlock();
+	} else {
+		window_->setProject(project);
+	}
+
+	if (project) {
+		project->setFolioBuildObserver({});
+	}
+	QApplication::restoreOverrideCursor();
+	return window_;
+}
 
 static const int EMPTY_PAGE = 0;
 static const int FREE_TERMINAL_PAGE = 1;
@@ -75,6 +156,11 @@ TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidge
 	ui->m_stacked_widget->insertWidget(EMPTY_PAGE, new QWidget(ui->m_stacked_widget));
 	ui->m_stacked_widget->insertWidget(FREE_TERMINAL_PAGE, m_free_terminal_editor);
 	ui->m_stacked_widget->insertWidget(TERMINAL_STRIP_PAGE, m_terminal_strip_editor);
+
+		//The strips are worked out from the labels of the free terminals,
+		//so that the user does not create them one by one : only the
+		//toolbar actions run the import, opening the window changes
+		//nothing
 }
 
 /**
@@ -95,6 +181,81 @@ void TerminalStripEditorWindow::setProject(QETProject *project)
     m_tree_dock->setProject(project);
     m_free_terminal_editor->setProject(project);
     m_terminal_strip_editor->setProject(project);
+}
+
+/**
+ * @brief TerminalStripEditorWindow::importFreeTerminals
+ * Run one of the two import actions of the window, after the user has
+ * confirmed it : @a move_placed false assigns the free terminals only,
+ * true re-groups every terminal and also moves placed ones. Both run as
+ * one undoable step and say what has been done.
+ */
+void TerminalStripEditorWindow::importFreeTerminals(bool move_placed)
+{
+	if (!m_project) {
+		return;
+	}
+		//A reload of the free terminal table would lose its unapplied edits
+	if (m_free_terminal_editor && m_free_terminal_editor->hasPendingEdits())
+	{
+		QMessageBox::information(
+			this, tr("Unapplied edits"),
+			tr("Apply or discard the pending edits of the free terminals "
+			   "table first."));
+		return;
+	}
+
+	const auto title_ = move_placed ? tr("Re-group all terminals")
+									: tr("Assign free terminals");
+	const auto text_ = move_placed
+		? tr("Free terminals will be added to the terminal strips named "
+			 "after their labels, and every terminal whose label prefix "
+			 "or plant and location no longer match its strip will be "
+			 "moved to the right strip.\n\n"
+			 "Terminals you placed by hand in a strip whose name does "
+			 "not match their label will be moved too. Existing strips "
+			 "are never re-sorted.\n\n"
+			 "This action can be undone with a single Undo.")
+		: tr("Every free terminal will be added to the terminal strip "
+			 "named after its label (\"X1:2\" goes to the strip \"X1\"), "
+			 "creating the strips when needed.\n\n"
+			 "Terminals that already belong to a strip are not touched "
+			 "and no strip is re-sorted.\n\n"
+			 "This action can be undone with a single Undo.");
+
+	if (QMessageBox::question(this, title_, text_,
+							  QMessageBox::Yes | QMessageBox::No,
+							  QMessageBox::No) != QMessageBox::Yes) {
+		return;
+	}
+
+	const auto result_ = TerminalStripAutoImport::importFreeTerminals(
+		m_project, move_placed);
+	if (result_.terminals == 0 && result_.strips == 0) {
+		return;
+	}
+
+	m_tree_dock->reload();
+
+	if (move_placed) {
+		statusBar()->showMessage(
+			tr("%1 terminal(s) assigned or moved to a terminal strip.",
+			   "", result_.terminals).arg(result_.terminals),
+			10000);
+	} else {
+		statusBar()->showMessage(
+			tr("%1 free terminal(s) added to the terminal strips.",
+			   "", result_.terminals).arg(result_.terminals),
+			10000);
+	}
+}
+
+void TerminalStripEditorWindow::on_m_import_free_terminals_triggered() {
+	importFreeTerminals(false);
+}
+
+void TerminalStripEditorWindow::on_m_regroup_terminals_triggered() {
+	importFreeTerminals(true);
 }
 
 void TerminalStripEditorWindow::setCurrentStrip(TerminalStrip *strip) {

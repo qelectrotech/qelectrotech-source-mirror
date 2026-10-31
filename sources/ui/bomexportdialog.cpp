@@ -99,7 +99,7 @@ QByteArray BOMExportDialog::getBom(QString *error)
 	}
 	m_project->dataBase()->updateDB();
 	QString rejection;
-	auto query_ = m_project->dataBase()->newQuery(m_query_widget->queryStr(), &rejection);
+	auto query_ = m_project->dataBase()->newQuery(currentQuery(), &rejection);
 
 	if (!rejection.isEmpty()) {
 		if (error) {
@@ -129,6 +129,8 @@ QByteArray BOMExportDialog::getBom(QString *error)
 				header_names << tr("Sheet position");
 			} else if (field_name == QLatin1String("designation_qty")) {
 				header_names << tr("Designation quantity", "Special field with name : designation quantity");
+			} else if (ui->m_group_parts->isChecked() && groupedHeader(field_name) != field_name) {
+				header_names << groupedHeader(field_name);
 			} else {
 				const auto translated = QETInformation::translatedInfoKey(field_name);
 				header_names << (translated.isEmpty() ? field_name : translated);
@@ -146,6 +148,44 @@ QByteArray BOMExportDialog::getBom(QString *error)
 void BOMExportDialog::on_m_format_as_bom_clicked(bool checked) {
 	m_query_widget->setGroupBy("designation", checked);
 	m_query_widget->setCount("COUNT(*) AS designation_qty", checked);
+}
+
+/**
+	@brief BOMExportDialog::on_m_group_parts_clicked
+	@param checked : true replaces the query of the fields with the grouped
+	parts list, see BomExport::groupedQuery()
+*/
+void BOMExportDialog::on_m_group_parts_clicked(bool checked)
+{
+	m_query_widget->setEnabled(!checked);
+	ui->m_format_as_bom->setEnabled(!checked);
+	ui->m_no_junctions->setEnabled(!checked);
+}
+
+/**
+	@return the query to run: the grouped parts list, or what the fields say
+*/
+QString BOMExportDialog::currentQuery() const
+{
+	return ui->m_group_parts->isChecked()
+			? BomExport::groupedQuery()
+			: m_query_widget->queryStr();
+}
+
+/**
+	@return the heading of a column of the grouped parts list, \a field_name
+	itself for any other column
+*/
+QString BOMExportDialog::groupedHeader(const QString &field_name)
+{
+	if (field_name == QLatin1String("number"))      return tr("No.");
+	if (field_name == QLatin1String("quantity"))    return tr("Quantity");
+	if (field_name == QLatin1String("name"))        return tr("Name");
+	if (field_name == QLatin1String("part_number")) return tr("Part number");
+	if (field_name == QLatin1String("references"))  return tr("References");
+	if (field_name == QLatin1String("manufacturer")) return tr("Manufacturer");
+	if (field_name == QLatin1String("unit"))        return tr("Unit");
+	return field_name;
 }
 
 /**
@@ -167,7 +207,7 @@ void BOMExportDialog::on_m_preview_pb_clicked()
 {
 	m_project->dataBase()->updateDB();
 	QString rejection;
-	auto query_ = m_project->dataBase()->newQuery(m_query_widget->queryStr(), &rejection);
+	auto query_ = m_project->dataBase()->newQuery(currentQuery(), &rejection);
 
 	if (!rejection.isEmpty()) {
 		QMessageBox::warning(this, tr("Request refused"), rejection);
@@ -185,8 +225,10 @@ void BOMExportDialog::on_m_preview_pb_clicked()
 	for (int i = 0; i < m_preview_model->columnCount(); ++i)
 	{
 		const auto field_name = m_preview_model->record().fieldName(i);
-		const auto translated = QETInformation::translatedInfoKey(field_name);
-		if (!translated.isEmpty()) {
+		const auto translated = ui->m_group_parts->isChecked()
+				? groupedHeader(field_name)
+				: QETInformation::translatedInfoKey(field_name);
+		if (!translated.isEmpty() && translated != field_name) {
 			m_preview_model->setHeaderData(i, Qt::Horizontal, translated);
 		}
 	}
