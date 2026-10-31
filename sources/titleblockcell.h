@@ -18,6 +18,7 @@
 #ifndef TITLEBLOCK_CELL_H
 #define TITLEBLOCK_CELL_H
 #include "NameList/nameslist.h"
+#include <QColor>
 
 /**
 	This class is a container for the various parameters of a titleblock cell
@@ -74,5 +75,10 @@ class TitleBlockCell {
 	int font_size;                     ///< Font size the text should be rendered with
 	bool hadjust;                      ///< Whether to reduce the font size if the text does not fit in the cell
 	QString logo_reference;            ///< Logo displayed by this cell, it it is a logo cell
+	QString label_font;                ///< QFont description of the label text, empty to use the cell font
+	QString value_font;                ///< QFont description of the value text, empty to use the cell font
+	QColor label_color;                ///< Colour (with opacity) of the label text, invalid to use the default
+	QColor value_color;                ///< Colour (with opacity) of the value text, invalid to use the default
+	bool hasTextStyle() const;
 };
 #endif

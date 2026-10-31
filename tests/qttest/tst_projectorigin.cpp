@@ -6,6 +6,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 #include "projectorigin.h"
 
@@ -39,7 +40,7 @@ class tst_projectorigin : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--resave"), in, out});
-		if (!proc.waitForFinished(120000) || proc.exitCode() != 0)
+		if (!proc.waitForFinished(QetTest::timeout(120000)) || proc.exitCode() != 0)
 			return {};
 		QFile file(out);
 		if (!file.open(QIODevice::ReadOnly | QIODevice::Text))

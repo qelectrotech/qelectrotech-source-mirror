@@ -9,6 +9,7 @@
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
 #include <QUuid>
+#include "qettesttimeout.h"
 
 // qet.terminalPosition(folio, element, terminal) and qet.conductorPath(folio,
 // uuid): where a wire docks on a terminal and which way it leaves, and a
@@ -45,7 +46,7 @@ class tst_scriptlayoutreads : public QObject
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), path,
 					QFINDTESTDATA("fixtures/qet_bug_repro_resaved.qet")});
-		if (!proc.waitForFinished(60000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(60000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput()
 											  + proc.readAllStandardError());
 		const QString mark = QStringLiteral("PROBE ");

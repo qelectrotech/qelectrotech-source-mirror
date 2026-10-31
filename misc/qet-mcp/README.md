@@ -804,6 +804,7 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   looking fine in XML.
 - **QElectroTech interrupts a script at 30 s** of its own accord, separately
   from this tool's `timeout`. A very long operation list will hit that
-  first.
+  first. The environment variable `QET_SCRIPT_TIMEOUT_MS` (milliseconds)
+  changes that limit for the QElectroTech it is set for.
 - **`qet_edit` never writes the input.** It saves to a separate file and
   diffs the two, so the original is always the thing the diff is against.

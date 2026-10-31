@@ -84,8 +84,10 @@ inline QAction *action(const QString &name)
 /// Run @p test inside a QETApp whose settings, configuration and data
 /// live in a temporary folder, so that no test reads or changes the
 /// user's own.
+/// @p prepare, if any, runs once the settings are in the temporary
+/// folder and before the QETApp starts: for a setting read at start.
 template <typename Test>
-int run(int argc, char **argv)
+int run(int argc, char **argv, void (*prepare)() = nullptr)
 {
 		//Some files are written to the standard folders whatever
 		//--data-dir says (qet-assistant.json, with the live-mode token, as
@@ -104,6 +106,8 @@ int run(int argc, char **argv)
 	QETApp::applyDirectoryArguments(QETArguments(QList<QString>{
 		"--config-dir=" + home.filePath("config"),
 		"--data-dir=" + home.filePath("data")}));
+	if (prepare)
+		prepare();
 	QETApp qetapp;
 	QCoreApplication::processEvents();
 	Test test;
@@ -114,5 +118,8 @@ int run(int argc, char **argv)
 
 #define QET_APP_TEST_MAIN(Test) \
 	int main(int argc, char **argv) { return QetAppTest::run<Test>(argc, argv); }
+
+#define QET_APP_TEST_MAIN_PREPARED(Test, prepare) \
+	int main(int argc, char **argv) { return QetAppTest::run<Test>(argc, argv, prepare); }
 
 #endif

@@ -18,6 +18,7 @@
 #include <QtTest>
 #include <QProcess>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 /**
 	--export-dxf writes a symbol text wrapped to its width line by line,
@@ -41,7 +42,7 @@ private slots:
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--export-dxf"), project, dir.path()});
-		QVERIFY2(proc.waitForFinished(60000), "--export-dxf timed out");
+		QVERIFY2(proc.waitForFinished(QetTest::timeout(60000)), "--export-dxf timed out");
 		QCOMPARE(proc.exitCode(), 0);
 
 		QFile file(dir.filePath(QStringLiteral("01_diagram.dxf")));

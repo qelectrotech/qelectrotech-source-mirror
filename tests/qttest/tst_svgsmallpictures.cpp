@@ -25,6 +25,7 @@
 #include <QRegularExpression>
 #include <QSvgGenerator>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 /**
 	SVG export with "smaller pictures" (ExportProperties::svg_small_pictures,
@@ -64,7 +65,7 @@ class tst_svgsmallpictures : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   QStringList{QStringLiteral("--export-svg"), m_fixture, dir.path()} + extra);
-		if (!proc.waitForFinished(60000) || proc.exitCode() != 0)
+		if (!proc.waitForFinished(QetTest::timeout(60000)) || proc.exitCode() != 0)
 			return {};
 		const QStringList files = QDir(dir.path()).entryList({QStringLiteral("*.svg")});
 		QFile svg(QDir(dir.path()).filePath(files.value(0)));

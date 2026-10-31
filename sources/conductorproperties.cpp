@@ -304,6 +304,17 @@ QList<QPair<QString, QString>> ConductorProperties::attributes() const
 	add("color2", m_color_2.name());
 	add("dash-size", QString::number(m_dash_size));
 
+		//Written only when set, so a project without a custom pattern
+		//is saved exactly as before
+	if (m_dash_pattern != ConductorDashPattern())
+	{
+		add("custom-dash-pattern", m_dash_pattern.enabled? "true" : "false");
+		add("pattern-dash", QString::number(m_dash_pattern.dash, 'g', 17));
+		add("pattern-gap", QString::number(m_dash_pattern.gap, 'g', 17));
+		add("pattern-dot", QString::number(m_dash_pattern.dot, 'g', 17));
+		add("pattern-dot-gap", QString::number(m_dash_pattern.dot_gap, 'g', 17));
+	}
+
 	if (type == Single)
 		a << singleLineProperties.attributes();
 
@@ -331,6 +342,13 @@ QList<QPair<QString, QString>> ConductorProperties::attributes() const
 	add("onetextperfolio", QString::number(m_one_text_per_folio));
 	add("vertirotatetext", QString::number(verti_rotate_text));
 	add("horizrotatetext", QString::number(horiz_rotate_text));
+		//Only written when shown: a project without marks stays as it was
+	if (m_definition_mark) {
+		add("definition_mark", QStringLiteral("1"));
+		add("definition_mark_at", QString::number(m_definition_mark_at));
+		if (m_definition_mark_hides_text)
+			add("definition_mark_hides_text", QStringLiteral("1"));
+	}
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	add("horizontal-alignment", QString::fromLatin1(me.valueToKey(m_horizontal_alignment)));
@@ -361,6 +379,15 @@ void ConductorProperties::fromXml(QDomElement &e)
 	m_color_2 = xml_color_2.isValid()? xml_color_2 : QColor(Qt::black);
 
 	m_dash_size = e.attribute("dash-size", QString::number(1)).toInt();
+
+	m_dash_pattern = ConductorDashPattern();
+	m_dash_pattern.enabled = e.attribute("custom-dash-pattern", "false") == "true";
+	m_dash_pattern.dash    = e.attribute("pattern-dash", "6").toDouble();
+	m_dash_pattern.gap     = e.attribute("pattern-gap", "4").toDouble();
+	m_dash_pattern.dot     = e.attribute("pattern-dot", "1").toDouble();
+	m_dash_pattern.dot_gap = e.attribute("pattern-dot-gap", "4").toDouble();
+	if (!m_dash_pattern.valid())
+		m_dash_pattern = ConductorDashPattern();
 
 		// read style of conductor
 	readStyle(e.attribute("style"));
@@ -393,6 +420,10 @@ void ConductorProperties::fromXml(QDomElement &e)
 	m_one_text_per_folio = e.attribute("onetextperfolio", QString::number(0)).toInt();
 	verti_rotate_text    = e.attribute("vertirotatetext").toDouble();
 	horiz_rotate_text    = e.attribute("horizrotatetext").toDouble();
+	m_definition_mark    = e.attribute("definition_mark").toInt();
+	m_definition_mark_at = e.attribute("definition_mark_at", QStringLiteral("-1")).toDouble();
+	m_definition_mark_hides_text = e.attribute("definition_mark_hides_text").toInt();
+	if (!qIsFinite(m_definition_mark_at) || m_definition_mark_at > 1) m_definition_mark_at = -1;
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	m_horizontal_alignment = Qt::Alignment(
@@ -419,6 +450,11 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "bicolor", m_bicolor);
 	settings.setValue(prefix + "color2", m_color_2.name());
 	settings.setValue(prefix + "dash-size", m_dash_size);
+	settings.setValue(prefix + "custom-dash-pattern", m_dash_pattern.enabled);
+	settings.setValue(prefix + "pattern-dash", m_dash_pattern.dash);
+	settings.setValue(prefix + "pattern-gap", m_dash_pattern.gap);
+	settings.setValue(prefix + "pattern-dot", m_dash_pattern.dot);
+	settings.setValue(prefix + "pattern-dot-gap", m_dash_pattern.dot_gap);
 	settings.setValue(prefix + "style", writeStyle());
 	settings.setValue(prefix + "type", typeToString(type));
 	settings.setValue(prefix + "text", text);
@@ -436,6 +472,8 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "onetextperfolio", m_one_text_per_folio);
 	settings.setValue(prefix + "vertirotatetext", QString::number(verti_rotate_text));
 	settings.setValue(prefix + "horizrotatetext", QString::number(horiz_rotate_text));
+	settings.setValue(prefix + "definition_mark", m_definition_mark);
+	settings.setValue(prefix + "definition_mark_hides_text", m_definition_mark_hides_text);
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	settings.setValue(prefix + "horizontal-alignment", me.valueToKey(m_horizontal_alignment));
@@ -458,6 +496,14 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 
 	m_bicolor   = settings.value(prefix + "bicolor", false).toBool();
 	m_dash_size = settings.value(prefix + "dash-size", 1).toInt();
+	m_dash_pattern = ConductorDashPattern();
+	m_dash_pattern.enabled = settings.value(prefix + "custom-dash-pattern", false).toBool();
+	m_dash_pattern.dash    = settings.value(prefix + "pattern-dash", 6).toDouble();
+	m_dash_pattern.gap     = settings.value(prefix + "pattern-gap", 4).toDouble();
+	m_dash_pattern.dot     = settings.value(prefix + "pattern-dot", 1).toDouble();
+	m_dash_pattern.dot_gap = settings.value(prefix + "pattern-dot-gap", 4).toDouble();
+	if (!m_dash_pattern.valid())
+		m_dash_pattern = ConductorDashPattern();
 
 	QString setting_type = settings.value(prefix + "type", typeToString(Multi)).toString();
 	type = (setting_type == typeToString(Single)? Single : Multi);
@@ -483,6 +529,8 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	m_one_text_per_folio = settings.value(prefix + "onetextperfolio", false).toBool();
 	verti_rotate_text    = settings.value((prefix + "vertirotatetext"), "270").toDouble();
 	horiz_rotate_text    = settings.value((prefix + "horizrotatetext"), "0").toDouble();
+	m_definition_mark    = settings.value(prefix + "definition_mark", false).toBool();
+	m_definition_mark_hides_text = settings.value(prefix + "definition_mark_hides_text", false).toBool();
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	m_horizontal_alignment = Qt::Alignment(me.keyToValue(settings.value(prefix + "horizontal-alignment", "AlignBottom").toString().toStdString().data()));
@@ -524,6 +572,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_bicolor            = cp.m_bicolor;
 		m_color_2            = cp.m_color_2;
 		m_dash_size          = cp.m_dash_size;
+		m_dash_pattern       = cp.m_dash_pattern;
 		text                 = cp.text;
 		text_color           = cp.text_color;
 		m_formula            = cp.m_formula;
@@ -542,6 +591,9 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_vertical_alignment = cp.m_vertical_alignment;
 		m_horizontal_alignment = cp.m_horizontal_alignment;
 		style                = cp.style;
+		m_definition_mark    = cp.m_definition_mark;
+		m_definition_mark_at = cp.m_definition_mark_at;
+		m_definition_mark_hides_text = cp.m_definition_mark_hides_text;
 
 		return;
 	}
@@ -597,6 +649,22 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	if (equal)
 		m_dash_size = i_value;
 	equal = true;
+
+		//Dash pattern, each length on its own
+	const auto common_pattern_field = [this, &clist](auto member) {
+		const auto value = clist.first().m_dash_pattern.*member;
+		for (const ConductorProperties &cp : clist)
+		{
+			if (cp.m_dash_pattern.*member != value)
+				return;
+		}
+		m_dash_pattern.*member = value;
+	};
+	common_pattern_field(&ConductorDashPattern::enabled);
+	common_pattern_field(&ConductorDashPattern::dash);
+	common_pattern_field(&ConductorDashPattern::gap);
+	common_pattern_field(&ConductorDashPattern::dot);
+	common_pattern_field(&ConductorDashPattern::dot_gap);
 
 		//style
 	Qt::PenStyle pen_style;
@@ -743,6 +811,37 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_show_text = b_value;
 	equal = true;
 
+		//Definition mark, and where it stands
+	b_value = clist.first().m_definition_mark;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_definition_mark != b_value)
+			equal = false;
+	}
+	if (equal)
+		m_definition_mark = b_value;
+	equal = true;
+
+	d_value = clist.first().m_definition_mark_at;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_definition_mark_at != d_value)
+			equal = false;
+	}
+	if (equal)
+		m_definition_mark_at = d_value;
+	equal = true;
+
+	b_value = clist.first().m_definition_mark_hides_text;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_definition_mark_hides_text != b_value)
+			equal = false;
+	}
+	if (equal)
+		m_definition_mark_hides_text = b_value;
+	equal = true;
+
 		//One text per folio
 	b_value = clist.first().m_one_text_per_folio;
 	for(ConductorProperties cp : clist)
@@ -822,6 +921,11 @@ void ConductorProperties::applyChanges(const ConductorProperties &before,
 	take(m_bicolor,              before.m_bicolor,              after.m_bicolor);
 	take(m_color_2,              before.m_color_2,              after.m_color_2);
 	take(m_dash_size,            before.m_dash_size,            after.m_dash_size);
+	take(m_dash_pattern.enabled, before.m_dash_pattern.enabled, after.m_dash_pattern.enabled);
+	take(m_dash_pattern.dash,    before.m_dash_pattern.dash,    after.m_dash_pattern.dash);
+	take(m_dash_pattern.gap,     before.m_dash_pattern.gap,     after.m_dash_pattern.gap);
+	take(m_dash_pattern.dot,     before.m_dash_pattern.dot,     after.m_dash_pattern.dot);
+	take(m_dash_pattern.dot_gap, before.m_dash_pattern.dot_gap, after.m_dash_pattern.dot_gap);
 	take(style,                  before.style,                  after.style);
 	take(text,                   before.text,                   after.text);
 	take(text_color,             before.text_color,             after.text_color);
@@ -840,6 +944,9 @@ void ConductorProperties::applyChanges(const ConductorProperties &before,
 	take(m_one_text_per_folio,   before.m_one_text_per_folio,   after.m_one_text_per_folio);
 	take(m_horizontal_alignment, before.m_horizontal_alignment, after.m_horizontal_alignment);
 	take(m_vertical_alignment,   before.m_vertical_alignment,   after.m_vertical_alignment);
+	take(m_definition_mark,      before.m_definition_mark,      after.m_definition_mark);
+	take(m_definition_mark_at,  before.m_definition_mark_at,  after.m_definition_mark_at);
+	take(m_definition_mark_hides_text, before.m_definition_mark_hides_text, after.m_definition_mark_hides_text);
 
 		//Single-line symbols, one by one
 	SingleLineProperties slp_before = before.singleLineProperties;
@@ -904,6 +1011,7 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 		other.m_bicolor == m_bicolor &&\
 		other.m_color_2 == m_color_2 &&\
 		other.m_dash_size == m_dash_size &&\
+		other.m_dash_pattern == m_dash_pattern &&\
 		other.style == style &&\
 		other.text == text &&\
 		other.text_color == text_color &&\
@@ -924,7 +1032,10 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 		other.singleLineProperties == singleLineProperties &&\
 		other.m_one_text_per_folio == m_one_text_per_folio &&\
 		other.m_horizontal_alignment == m_horizontal_alignment &&\
-		other.m_vertical_alignment == m_vertical_alignment
+		other.m_vertical_alignment == m_vertical_alignment &&\
+		other.m_definition_mark == m_definition_mark &&\
+		other.m_definition_mark_at == m_definition_mark_at &&\
+		other.m_definition_mark_hides_text == m_definition_mark_hides_text
 	);
 }
 

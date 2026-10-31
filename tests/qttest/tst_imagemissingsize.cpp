@@ -20,6 +20,7 @@
 #include <QDomDocument>
 #include <QProcess>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 /**
 	A picture on a folio (<image>, without a <transform> child) whose size
@@ -44,7 +45,7 @@ class tst_imagemissingsize : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), arguments);
-		return proc.waitForFinished(60000)
+		return proc.waitForFinished(QetTest::timeout(60000))
 				&& proc.exitStatus() == QProcess::NormalExit
 				&& proc.exitCode() == 0;
 	}

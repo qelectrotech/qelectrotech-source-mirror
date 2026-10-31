@@ -31,7 +31,33 @@
      <number>0</number>
     </property>
     <item>
-     <layout class="QVBoxLayout" name="m_main_vlayout"/>
+     <widget class="QScrollArea" name="m_scroll_area">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="m_scroll_contents">
+       <layout class="QVBoxLayout" name="m_main_vlayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+       </layout>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>

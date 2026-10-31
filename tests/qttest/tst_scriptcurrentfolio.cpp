@@ -8,6 +8,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // qet.currentFolio() is the folio on screen in the editor. Through --run
 // there is none, so it stands in with the first folio, or -1 when the
@@ -43,7 +44,7 @@ class tst_scriptcurrentfolio : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), path, project});
-		if (!proc.waitForFinished(120000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(120000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput()
 											  + proc.readAllStandardError());
 		const QString mark = QStringLiteral("PROBE ");
@@ -108,6 +109,34 @@ private slots:
 			"bool exportPdf(QString output, bool showTerminals)")));
 		QCOMPARE(sigs.filter(QStringLiteral(" exportPdf(")).size(), 1);
 		QVERIFY(sigs.filter(QStringLiteral("setUndoGrouped")).isEmpty());
+	}
+
+	// Top left: the texts of a symbol go left of its drawing, level with
+	// its top (lines aligned right, so they end at the symbol). An unknown
+	// point is refused.
+	void placeElementTextsTopLeft()
+	{
+		const QJsonObject r = run(QStringLiteral(
+			"var f = 0, uuid = null;\n"
+			"var ids = qet.elementUuids(f);\n"
+			"for (var i = 0; i < ids.length && !uuid; ++i)\n"
+			"  if (qet.elementTexts(f, ids[i]).length) uuid = ids[i];\n"
+			"var bad = qet.placeElementTexts(f, [uuid], 'somewhere');\n"
+			"var ok = qet.placeElementTexts(f, [uuid], 'top-left');\n"
+			"var e = qet.elementGeometry(f, uuid);\n"
+			"var t = qet.elementTextGeometry(f, uuid, 0);\n"
+			"qet.log('PROBE ' + JSON.stringify({found: !!uuid, bad: bad, ok: ok, e: e, t: t}));\n"),
+			QStringLiteral(QET_EXAMPLES_DIR "/../tests/qttest/fixtures/unlinked_contact_label.qet"));
+		QVERIFY2(!r.isEmpty(), "the script logged nothing");
+		QVERIFY(r.value(QStringLiteral("found")).toBool());
+		QVERIFY(!r.value(QStringLiteral("bad")).toBool());
+		QVERIFY(r.value(QStringLiteral("ok")).toBool());
+		const QJsonObject e = r.value(QStringLiteral("e")).toObject();
+		const QJsonObject t = r.value(QStringLiteral("t")).toObject();
+		auto v = [](const QJsonObject &o, const char *key) { return o.value(QLatin1String(key)).toDouble(); };
+		QVERIFY2(v(t, "top") >= v(e, "top") - 0.5 && v(t, "top") < v(e, "bottom"),
+				 "the text starts level with the symbol, not above it");
+		QVERIFY2(v(t, "right") * 2 < v(e, "left") + v(e, "right"), "and ends left of its middle");
 	}
 
 	void headlessUndoStaysPerCall()

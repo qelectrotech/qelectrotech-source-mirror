@@ -31,6 +31,11 @@ class QUndoCommand;
 	text alignment dialog. Left of the symbol, the lines are aligned right,
 	so that the block hangs on the symbol and a longer text grows away
 	from it; right of it, aligned left; above, below and on it, centred.
+	A corner beside the symbol is level with the edge of its body, the
+	leads to its terminals left out: top left puts the capitals of the
+	first line on the top of the body, left of it; bottom left the
+	baseline of the last line on its bottom. Above and below the symbol,
+	the block stands clear of the drawing.
 	The lines keep their order and their spacing; a group of texts is
 	placed as one line of the block, with the same alignment.
 */

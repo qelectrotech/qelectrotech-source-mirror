@@ -7,6 +7,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 #include "wiringrules.h"
 
@@ -87,7 +88,7 @@ class tst_wiringrules : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(sandbox());
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--resave"), in, out});
-		if (!proc.waitForFinished(120000) || proc.exitCode() != 0)
+		if (!proc.waitForFinished(QetTest::timeout(120000)) || proc.exitCode() != 0)
 			return {};
 		QFile file(out);
 		if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -124,7 +125,7 @@ class tst_wiringrules : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(sandbox(master_off, application_max_wires));
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), script_path, project});
-		if (!proc.waitForFinished(60000))
+		if (!proc.waitForFinished(QetTest::timeout(60000)))
 			return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput()
 											  + proc.readAllStandardError());
@@ -167,7 +168,7 @@ class tst_wiringrules : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(sandbox());
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), script_path, project});
-		if (!proc.waitForFinished(60000))
+		if (!proc.waitForFinished(QetTest::timeout(60000)))
 			return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput()
 											  + proc.readAllStandardError());

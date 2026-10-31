@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "physicalterminal.h"
+#include "terminalstriplabels.h"
+#include "../qetgraphicsitem/element.h"
 #include "realterminal.h"
 #include "terminalstrip.h"
 
@@ -139,6 +141,11 @@ bool PhysicalTerminal::setLevelOf(const QSharedPointer<RealTerminal> &terminal, 
 void PhysicalTerminal::setParentStrip(TerminalStrip *strip)
 {
 	m_parent_terminal_strip = strip;
+		//Its terminals now head, or no longer head, a strip on their folio
+	for (const auto &real_t : std::as_const(m_real_terminal))
+		if (real_t && real_t->element())
+			if (auto *diagram = real_t->element()->diagram())
+				TerminalStripLabels::schedule(diagram);
 }
 
 PhysicalTerminal::~PhysicalTerminal()
