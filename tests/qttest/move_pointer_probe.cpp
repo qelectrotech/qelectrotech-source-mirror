@@ -189,6 +189,41 @@ int main(int argc, char **argv)
 		folio->undoStack().undo();
 		QApplication::processEvents();
 
+			//A press on the symbol's terminal draws a wire, one on its text
+			//drags the text: the symbol stays, and the crosshair follows
+			//the mouse on the grid, not the symbol's terminals
+		{
+			Terminal *terminal = element->terminals().first();
+			const QPoint on_terminal = view.mapFromScene(terminal->sceneBoundingRect().center());
+			check(view.itemAt(on_terminal) == terminal, "the press below lands on the terminal");
+			const QPoint away = on_terminal + QPoint(80, 50);
+			moveTo(view, on_terminal);
+			send(QEvent::MouseButtonPress, on_terminal, Qt::LeftButton);
+			send(QEvent::MouseMove, away, Qt::LeftButton);
+			check(view.crosshairPos() == Diagram::snapToGrid(view.mapToScene(away)),
+			      "drawing a wire from a terminal, the crosshair follows the mouse");
+			send(QEvent::MouseButtonRelease, away, Qt::NoButton);
+			while (folio->undoStack().canUndo() && folio->undoStack().index() > 0
+			       && folio->undoStack().text(folio->undoStack().index() - 1).contains(QObject::tr("conductor"), Qt::CaseInsensitive))
+				folio->undoStack().undo();
+			QApplication::processEvents();
+		}
+		if (!element->dynamicTextItems().isEmpty()) {
+			DynamicElementTextItem *text = element->dynamicTextItems().first();
+			const QPoint on_text = view.mapFromScene(text->sceneBoundingRect().center());
+			if (view.itemAt(on_text) == text) {
+				const QPoint away = on_text + QPoint(70, 40);
+				moveTo(view, on_text);
+				send(QEvent::MouseButtonPress, on_text, Qt::LeftButton);
+				send(QEvent::MouseMove, away, Qt::LeftButton);
+				check(view.crosshairPos() == Diagram::snapToGrid(view.mapToScene(away)),
+				      "dragging a symbol's text, the crosshair follows the mouse");
+				send(QEvent::MouseButtonRelease, away, Qt::NoButton);
+				folio->undoStack().undo();
+				QApplication::processEvents();
+			}
+		}
+
 			//After a drag, the pointer of where it ended at once: a
 			//rubber band from the empty folio onto the symbol
 		moveTo(view, empty);

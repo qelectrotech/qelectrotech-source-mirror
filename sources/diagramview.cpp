@@ -927,11 +927,13 @@ void DiagramView::mousePressEvent(QMouseEvent *original)
 	}
 
 		//A press on a symbol drags it from here on: the crosshair goes to
-		//the terminal of it nearest the mouse
+		//the terminal of it nearest the mouse. Not a press on one of its
+		//terminals, which draws a wire, nor on one of its texts, which
+		//drags the text: the symbol stays where it is then
 	if (e->button() == Qt::LeftButton && !m_press_places && itemAt(e->pos())) {
 		m_press_places = true;
-		QGraphicsItem *top = itemAt(e->pos())->topLevelItem();
-		m_dragged_element = top->type() == Element::Type ? static_cast<Element *>(top) : nullptr;
+		QGraphicsItem *pressed = itemAt(e->pos());
+		m_dragged_element = pressed->type() == Element::Type ? static_cast<Element *>(pressed) : nullptr;
 		moveCrosshair(e->pos());
 	}
 
