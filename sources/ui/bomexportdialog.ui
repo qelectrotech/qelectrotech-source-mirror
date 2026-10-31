@@ -41,6 +41,19 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="m_group_parts">
+        <property name="toolTip">
+         <string>One line per part: identical manufacturer, part number and unit are added up, with the labels of the elements using it. Replaces the choices of the fields below.</string>
+        </property>
+        <property name="text">
+         <string>Group identical parts and add up the quantities</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QCheckBox" name="m_no_junctions">
         <property name="toolTip">
          <string>Terminals with no label, designation, manufacturer or manufacturer reference</string>

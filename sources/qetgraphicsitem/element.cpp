@@ -859,6 +859,9 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	m_kind_informations.fromXml(
 				xml_def_elmt.firstChildElement(QStringLiteral("kindInformations")),
 				QStringLiteral("kindInformation"));
+	m_corner = m_kind_informations.value(QStringLiteral("corner")).toString() == QLatin1String("true")
+		|| QUuid(xml_def_elmt.firstChildElement(QStringLiteral("uuid")).attribute(QStringLiteral("uuid")))
+			== QUuid(QStringLiteral("{b4bba5d9-a60d-8f6c-a61d-1b18a5c9397d}")); //114_connections/corner.elmt
 		//load element information
 	m_data.m_informations.fromXml(
 				xml_def_elmt.firstChildElement(QStringLiteral("elementInformations")),
@@ -2129,6 +2132,20 @@ QString Element::linkTypeToString() const
 }
 
 /**
+ * @brief Element::takesSchemeNumber
+ * Whether this element is given a number by an element numbering scheme.
+ * A slave or a report takes its name from the element it is linked to, and
+ * a conductor definition labels a wire rather than naming an item of the
+ * drawing: numbering one of them would give a wire label a BMK and advance
+ * a scheme's counter for nothing.
+ * @return true when the element numbering schemes apply to this element
+ */
+bool Element::takesSchemeNumber() const
+{
+	return ElementData::takesSchemeNumber(m_data.m_type);
+}
+
+/**
  * @brief Element::groupIndexForElement
  * Returns the group index assigned to the given linked element.
  * For slave elements, this indicates which contact group of the master
@@ -2831,7 +2848,7 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 {
 	Q_UNUSED(code_letter)
 
-	if (linkType() == Element::Slave || linkType() & Element::AllReport)
+	if (!takesSchemeNumber())
 		return;
 
 	if (diagram())

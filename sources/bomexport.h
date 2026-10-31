@@ -30,6 +30,20 @@ namespace BomExport
 	QString defaultQuery(bool include_slaves = true,
 						 bool include_junctions = true);
 	QString junctionFilter();
+
+		/// What the grouped parts list shows, see groupedQuery()
+	struct GroupedOptions
+	{
+			/// Add up each part's quantity field; false counts the rows
+		bool sum_quantity = true;
+			/// A column with the labels of the elements using the part
+		bool references = true;
+			/// A first column numbering the lines
+		bool numbering = true;
+			/// The auxiliary blocks of an element are parts of their own
+		bool auxiliaries = true;
+	};
+	QString groupedQuery(const GroupedOptions &options = GroupedOptions());
 		/// One CSV record: every field quoted, ';' between them, '\n'
 		/// after -- the format every CSV export of this program writes.
 		/// Public so a list which is not read from the project database

@@ -19,6 +19,8 @@
 #include "terminalstrip.h"
 #include "../qetgraphicsitem/terminalelement.h"
 #include "physicalterminal.h"
+#include "terminalstriplabels.h"
+#include "../diagram.h"
 #include "terminalcolor.h"
 #include "terminalcatalog.h"
 #include "../qetgraphicsitem/conductor.h"
@@ -270,6 +272,10 @@ QDomElement RealTerminal::toXml(QDomDocument &parent_document) const
  */
 void RealTerminal::setPhysicalTerminal(const QSharedPointer<PhysicalTerminal> &phy_t) {
 	m_physical_terminal = phy_t;
+		//Every way into or out of a strip comes here: the terminal may now
+		//head, or no longer head, a strip on its folio
+	if (m_element && m_element->diagram())
+		TerminalStripLabels::schedule(m_element->diagram());
 }
 
 /**

@@ -126,6 +126,21 @@ else()
         "without a backtrace")
 endif()
 
+# Homebrew's sqlite has the session extension the history of saves needs
+# (see below) but is keg-only, so find_package() does not see it unless
+# pointed at it (#1667)
+if(APPLE AND NOT SQLite3_ROOT AND NOT DEFINED ENV{SQLite3_ROOT})
+    find_program(BREW_EXECUTABLE brew)
+    if(BREW_EXECUTABLE)
+        execute_process(COMMAND ${BREW_EXECUTABLE} --prefix sqlite
+                        OUTPUT_VARIABLE BREW_SQLITE_PREFIX
+                        OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET)
+        if(EXISTS "${BREW_SQLITE_PREFIX}/include/sqlite3.h")
+            set(SQLite3_ROOT "${BREW_SQLITE_PREFIX}")
+        endif()
+    endif()
+endif()
+
 find_package(SQLite3 REQUIRED)
 
 # CMake < 4.3 only creates the SQLite::SQLite3 target (no SQLite3::SQLite3
@@ -136,6 +151,24 @@ find_package(SQLite3 REQUIRED)
 # current Linux distros).
 if(NOT TARGET SQLite3::SQLite3 AND TARGET SQLite::SQLite3)
     add_library(SQLite3::SQLite3 ALIAS SQLite::SQLite3)
+endif()
+
+# The history of saves (QetDbFile) uses SQLite's session extension. Not every
+# SQLite has it: the macOS SDK's sqlite3.h does not, and the build fails
+# there. Without it saves still work but keep no changes.
+include(CheckSymbolExists)
+set(CMAKE_REQUIRED_DEFINITIONS -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_PREUPDATE_HOOK)
+set(CMAKE_REQUIRED_INCLUDES ${SQLite3_INCLUDE_DIRS})
+set(CMAKE_REQUIRED_LIBRARIES ${SQLite3_LIBRARIES})
+check_symbol_exists(sqlite3session_create sqlite3.h QET_HAVE_SQLITE_SESSION)
+unset(CMAKE_REQUIRED_DEFINITIONS)
+unset(CMAKE_REQUIRED_INCLUDES)
+unset(CMAKE_REQUIRED_LIBRARIES)
+if(NOT QET_HAVE_SQLITE_SESSION)
+    message(WARNING
+        "SQLite has no session extension: the history of saves will record "
+        "no changes. On macOS, point CMake at Homebrew's SQLite to keep them.")
+    add_compile_definitions(QET_NO_SQLITE_SESSION)
 endif()
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
@@ -379,6 +412,17 @@ install(TARGETS ${PROJECT_NAME}
     BUNDLE DESTINATION .
     RUNTIME DESTINATION ${QET_BINARY_PATH}
 )
+
+if(WIN32)
+    # QET needs SQLite's DLL beside it, and find_package(SQLite3) only
+    # knows its import library. Set SQLite3_DLL to the DLL to install it
+    # with QET; left empty, nothing more is installed.
+    set(SQLite3_DLL "" CACHE FILEPATH
+        "SQLite's DLL, installed beside QElectroTech (Windows)")
+    if(SQLite3_DLL)
+        install(FILES ${SQLite3_DLL} DESTINATION ${QET_BINARY_PATH})
+    endif()
+endif()
 
 install(DIRECTORY ico/breeze-icons/16x16   DESTINATION ${QET_ICONS_PATH})
 install(DIRECTORY ico/breeze-icons/22x22   DESTINATION ${QET_ICONS_PATH})

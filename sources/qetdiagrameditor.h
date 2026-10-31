@@ -19,6 +19,7 @@
 #define QET_DIAGRAM_EDITOR_H
 
 #include "SearchAndReplace/ui/searchandreplacewidget.h"
+#include "dataBase/qetdbfile.h"
 #include "dataBase/workingcopyrecovery.h"
 #include "diagramcontext.h"
 #include "projectlock.h"
@@ -92,6 +93,9 @@ class QETDiagramEditor : public QETMainWindow
 		bool event(QEvent *) override;
 	private:
 		bool offerToRecover(const QString &filepath, const QString &reason);
+		QetDbFile::OutsideEdit askOutsideEdit(const QString &filepath, const QetDbFile::Repair &repair,
+											   bool can_go_back);
+		void tellRepair(QETProject *project);
 		bool openAsRecovered(const QString &source, const QString &original);
 		static QString recoveredPath(const QString &filepath, const QString &suffix);
 		// Declared first so it is initialised before any member whose
@@ -258,6 +262,8 @@ class QETDiagramEditor : public QETMainWindow
 		m_select_actions_group,   ///Action related to global selections
 		m_file_actions_group;     ///Actions related to file (open, close, save...)
 		
+		QAction* m_find_duplicate_labels = nullptr;
+
 		QAction
 		*m_tabbed_view_mode,		///< Display projects as tabs
 		*m_windowed_view_mode,		///< Display projects as windows
@@ -275,6 +281,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_configure_duplicate,		///< Reopen the duplicate offset/direction dialog (#991)
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
 		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
+		*m_terminal_strip_labels = nullptr,	///< Show each strip's label at its first terminal
+		*m_terminal_strip_bridges = nullptr,	///< Draw the strips' bridges between their terminals
 		*m_crosshair,			///< Show the folio-wide crosshair
 		*m_live_auto_connect,		///< Keep automatic wires up to date (AutoConnect)
 		*m_connect_aligned,		///< Connect the aligned free terminals of the folio

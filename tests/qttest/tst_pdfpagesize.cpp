@@ -8,6 +8,7 @@
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // --export-pdf sizes each page to its folio, and QPageSize rounds a size
 // within 3 pt of a standard sheet to the sheet. It knows the sheets upright
@@ -40,7 +41,7 @@ class tst_pdfpagesize : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--export-pdf"), project, out});
-		if (!proc.waitForFinished(60000) || proc.exitCode() != 0)
+		if (!proc.waitForFinished(QetTest::timeout(60000)) || proc.exitCode() != 0)
 			return {};
 
 		QFile file(out);

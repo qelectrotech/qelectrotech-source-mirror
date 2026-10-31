@@ -99,6 +99,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--history-diff", "historydiff"},
 		{"--last-change", "lastchange"},
 		{"--history-keep", "historykeep"},
+		{"--qetdb-repair", "qetdbrepair"},
 		{"--revision", "revision"},
 		{"--export-delivery", "delivery"},
 		{"--from-database", "fromdb"},
@@ -1332,6 +1333,37 @@ int run(const QStringList &args)
 			return 1;
 		}
 		return 0;
+	}
+
+	// --qetdb-repair writes a .qetdb with its damaged pages rebuilt from the
+	// repair data it keeps, never the file itself (QETDB-S4C-PLAN.md P5).
+	// Exit 0: a sound file written; 1: not repairable; 3: another program
+	// changed it, written only with --back-to-save
+	if (format == "qetdbrepair") {
+		const bool back = rest.contains(QStringLiteral("--back-to-save"));
+		rest.removeAll(QStringLiteral("--back-to-save"));
+		if (rest.size() < 2 || !QetDbFile::isDatabasePath(rest.at(0)) || !QetDbFile::isDatabasePath(rest.at(1))
+				|| QFileInfo(rest.at(0)).absoluteFilePath() == QFileInfo(rest.at(1)).absoluteFilePath()) {
+			err << "Usage: qelectrotech --qetdb-repair <damaged.qetdb> <repaired.qetdb> [--back-to-save]\n";
+			return 2;
+		}
+		QString error;
+		QetDbFile::Repair found;
+		const bool ok = QetDbFile::repair(rest.at(0), rest.at(1), &found, &error, back);
+		out << "repair data: " << (found.parity ? (found.scanned ? "yes, read from its pages" : "yes") : "none") << "\n";
+		if (found.edited) out << "another program changed it since its save\n";
+		out << "damaged pages: " << found.bad_pages << "\n";
+		if (found.header) out << "header rebuilt\n";
+		if (found.parity_damaged) out << "its repair data was damaged: written again\n";
+		if (found.beyond) out << "groups beyond repair: " << found.beyond << "\n";
+		if (ok)
+			out << "written: " << rest.at(1)
+				<< (found.back_to_save ? " (back to the saved state)"
+									   : found.repaired() ? " (repaired)" : " (nothing to repair)") << "\n";
+		out.flush();
+		if (ok) return 0;
+		err << "Not written: " << error << "\n";
+		return found.edited && !back ? 3 : 1;
 	}
 
 	// --last-change says which save last changed a symbol, a wire or a

@@ -1,4 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
+#include <QFontDatabase>
+#include <QFontInfo>
 #include <QFontMetricsF>
 #include <QtTest>
 
@@ -63,6 +65,17 @@ class tst_genericdevice : public QObject
 	Q_OBJECT
 
 private slots:
+		/// The sizes below are measured with Liberation Sans, which
+		/// QElectroTech ships: load it, so that they do not depend on the
+		/// fonts installed (a font folder Qt finds, or fontconfig's choice
+		/// for a font it does not have)
+	void initTestCase()
+	{
+		QVERIFY(QFontDatabase::addApplicationFont(
+			QStringLiteral(QET_FONTS_DIR "/LiberationSans-Regular.ttf")) >= 0);
+		QCOMPARE(QFontInfo(fonts().label).family(), QStringLiteral("Liberation Sans"));
+	}
+
 	void expandPattern_data()
 	{
 		QTest::addColumn<QString>("pattern");

@@ -11,6 +11,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // The project's own symbols, their categories and its title-block templates
 // are in the project database, each whole as the project saves it, one row
@@ -95,7 +96,7 @@ class tst_projectcollectionrows : public QObject
 				   {QStringLiteral("--common-elements-dir=" QET_ELEMENTS_DIR "/"),
 					QStringLiteral("--common-tbt-dir=" QET_TITLEBLOCKS_DIR "/"),
 					QStringLiteral("--run"), js, in});
-		if (!proc.waitForFinished(180000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(180000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		if (log) *log = out;
 		QHash<QString, Rows> result;

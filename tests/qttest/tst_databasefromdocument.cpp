@@ -10,6 +10,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // A project's database, filled from the file as it is read, holds exactly
 // what the same database filled from the built folios holds. Every example
@@ -48,7 +49,7 @@ class tst_databasefromdocument : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(e);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), args);
-		if (!proc.waitForFinished(180000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(180000))) return {};
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
 
@@ -418,7 +419,7 @@ private slots:
 		QProcess proc;
 		proc.setProcessEnvironment(e);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js.fileName(), saved});
-		QVERIFY(proc.waitForFinished(180000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(180000)));
 		const QString log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		QVERIFY2(log.contains(QStringLiteral("opened with 12 of 12 folios not built")), qPrintable(log.left(400)));
 		QVERIFY2(log.contains(QStringLiteral("REMOVED true")) && log.contains(QStringLiteral("UNDONE true")),
