@@ -1989,6 +1989,9 @@ target_compile_definitions(tst_workingcopypoll PRIVATE
 # zoom with fixed ones.
 qet_add_app_test(tst_statusgridzoom tst_statusgridzoom.cpp)
 
+# The shaded lines from a dragged symbol's terminals: on by default, none
+# with the setting off.
+qet_add_app_test(tst_terminalhelplines tst_terminalhelplines.cpp)
 # While placing, the folio knows the symbol that follows the mouse: the
 # crosshair leaves it out, so a corner turned by Space stays visible.
 qet_add_app_test(tst_pendingelement tst_pendingelement.cpp)

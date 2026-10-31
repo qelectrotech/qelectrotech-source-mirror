@@ -2156,6 +2156,7 @@ namespace {
 		/// The settings, read once and then kept here for every view
 	int s_crosshair = -1;
 	int s_pointer_aids = -1;
+	int s_terminal_help_lines = -1;
 }
 
 /**
@@ -2212,6 +2213,33 @@ void DiagramView::setPointerAids(bool on)
 	s_pointer_aids = on;
 	QSettings settings;
 	settings.setValue(QStringLiteral("diagrameditor/pointer_aids"), on);
+}
+
+/**
+	@brief DiagramView::terminalHelpLinesShown
+	@return true when a symbol being placed or dragged draws a shaded line
+	from each of its terminals to the terminal in line with it; on by
+	default, as always before.
+*/
+bool DiagramView::terminalHelpLinesShown()
+{
+	if (s_terminal_help_lines < 0) {
+		QSettings settings;
+		s_terminal_help_lines = settings.value(QStringLiteral("diagrameditor/terminal_help_lines"), true).toBool();
+	}
+	return s_terminal_help_lines;
+}
+
+/**
+	@brief DiagramView::setTerminalHelpLinesShown
+	@param shown : see terminalHelpLinesShown(); kept in the settings, for
+	the next drag.
+*/
+void DiagramView::setTerminalHelpLinesShown(bool shown)
+{
+	s_terminal_help_lines = shown;
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/terminal_help_lines"), shown);
 }
 
 /**
