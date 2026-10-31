@@ -252,11 +252,16 @@ QList<ElementCollectionItem *> ElementCollectionItem::items() const
 
 /**
 	@brief onGuiThread
-	@return true when called from the thread the application lives in
+	@return true when called from the thread the application lives in.
+	False once the application object is gone: a worker of
+	ElementsCollectionModel::loadCollections() can still be setting up
+	items while the program quits, after the application was destroyed,
+	and it then keeps the values on the item as from any worker thread.
 */
 static bool onGuiThread()
 {
-	return QThread::currentThread() == QCoreApplication::instance()->thread();
+	const QCoreApplication *app = QCoreApplication::instance();
+	return app && QThread::currentThread() == app->thread();
 }
 
 /**

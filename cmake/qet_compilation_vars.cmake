@@ -424,6 +424,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramevent/diagrameventaddpath.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddcable.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddcable.h
+  ${QET_DIR}/sources/diagramevent/diagrameventaddbridge.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventaddbridge.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.h
   ${QET_DIR}/sources/diagramevent/diagrameventinterface.cpp
@@ -832,6 +834,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/conductorcolortoolbutton.h
   ${QET_DIR}/sources/ui/diagrambgcolorbutton.cpp
   ${QET_DIR}/sources/ui/diagrambgcolorbutton.h
+  ${QET_DIR}/sources/ui/dockfold.cpp
+  ${QET_DIR}/sources/ui/dockfold.h
   ${QET_DIR}/sources/ui/dockfit.cpp
   ${QET_DIR}/sources/ui/dockfit.h
   ${QET_DIR}/sources/ui/conductorpropertieswidget.cpp
@@ -914,6 +918,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.h
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.cpp
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.h
+  ${QET_DIR}/sources/ui/xrefdisplaydialog.cpp
+  ${QET_DIR}/sources/ui/xrefdisplaydialog.h
   ${QET_DIR}/sources/ui/xrefpropertieswidget.cpp
   ${QET_DIR}/sources/ui/xrefpropertieswidget.h
   ${QET_DIR}/sources/ui/configpage/configpage.h
@@ -1010,6 +1016,21 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/cablelist/cablelistrows.h
   ${QET_DIR}/sources/cablelist/cablequerywidget.cpp
   ${QET_DIR}/sources/cablelist/cablequerywidget.h
+
+  ${QET_DIR}/sources/bridge/addbridgecommand.cpp
+  ${QET_DIR}/sources/bridge/addbridgecommand.h
+  ${QET_DIR}/sources/bridge/bridge.cpp
+  ${QET_DIR}/sources/bridge/bridge.h
+  ${QET_DIR}/sources/bridge/bridgecopy.cpp
+  ${QET_DIR}/sources/bridge/bridgecopy.h
+  ${QET_DIR}/sources/bridge/bridgecreatedialog.cpp
+  ${QET_DIR}/sources/bridge/bridgecreatedialog.h
+  ${QET_DIR}/sources/bridge/bridgemanager.cpp
+  ${QET_DIR}/sources/bridge/bridgemanager.h
+  ${QET_DIR}/sources/bridge/bridgepart.cpp
+  ${QET_DIR}/sources/bridge/bridgepart.h
+  ${QET_DIR}/sources/bridge/bridgeundocommands.cpp
+  ${QET_DIR}/sources/bridge/bridgeundocommands.h
 
   ${QET_DIR}/sources/cable/addcablecommand.cpp
   ${QET_DIR}/sources/cable/addcablecommand.h

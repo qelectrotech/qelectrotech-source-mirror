@@ -35,6 +35,7 @@
 #include <QtXml>
 
 class Conductor;
+class Bridge;
 class CablePart;
 class CustomElement;
 class DiagramContent;
@@ -292,12 +293,14 @@ class Diagram : public QGraphicsScene
 			     QPointF = QPointF(),
 			     bool = true,
 			     DiagramContent * = nullptr,
-			     QList<CablePart *> * = nullptr);
+			     QList<CablePart *> * = nullptr,
+			     QList<Bridge *> * = nullptr);
 		bool fromXml(QDomElement &,
 			     QPointF = QPointF(),
 			     bool = true,
 			     DiagramContent * = nullptr,
-			     QList<CablePart *> * = nullptr);
+			     QList<CablePart *> * = nullptr,
+			     QList<Bridge *> * = nullptr);
 		void folioSequentialsToXml(QHash<QString,
 					   QStringList>*,
 					   QDomElement *,
@@ -321,6 +324,7 @@ class Diagram : public QGraphicsScene
 		virtual void removeItem (QGraphicsItem *item);
 		bool eventInterfaceIsRunning() const;
 		bool cableToolIsRunning() const;
+		Element *pendingElement() const;
 	
 		// methods related to graphics options
 		ExportProperties applyProperties(const ExportProperties &);

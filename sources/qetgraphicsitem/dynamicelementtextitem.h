@@ -79,6 +79,12 @@ class DynamicElementTextItem : public DiagramTextItem
 
 	public:
 		DynamicElementTextItem(Element *parent_element);
+
+			///Read again what hangs on the symbol of this text: a wire,
+			///or a bridge landed on it since. The texts of a sheet
+			///reference are asked when one of those comes or goes, so
+			///what the reference says follows the drawing.
+		void refreshConnection();
 		~DynamicElementTextItem() override;
 		static QMetaEnum textFromMetaEnum();
 	private:

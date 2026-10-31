@@ -62,7 +62,7 @@ void MasterElement::linkToElement(Element *elmt)
 		connected_elements << elmt;
 		elmt->linkToElement(this);
 
-		XRefProperties xrp = diagram()->project()->defaultXRefProperties(kindInformations()["type"].toString());
+		XRefProperties xrp = CrossRefItem::propertiesFor(this);
 		if (!m_Xref_item && (xrp.snapTo() == XRefProperties::Bottom ||
 			m_data.m_master_type == ElementData::PLC))
 			m_Xref_item = new CrossRefItem(this); //create cross ref item if not yet	
@@ -184,7 +184,7 @@ void MasterElement::xrefPropertiesChanged()
 	if(!diagram())
 		return;
 
-	XRefProperties xrp = diagram()->project()->defaultXRefProperties(kindInformations()["type"].toString());
+	XRefProperties xrp = CrossRefItem::propertiesFor(this);
 	if(xrp.snapTo() == XRefProperties::Bottom)
 	{
 			//We create a Xref, and just after we call aboutDeleteXref,
@@ -214,8 +214,7 @@ bool MasterElement::mustShowXrefWithoutSlave() const
 	if (!diagram() || !diagram()->project())
 		return false;
 
-	const XRefProperties xrp = diagram()->project()->defaultXRefProperties(
-				kindInformations()["type"].toString());
+	const XRefProperties xrp = CrossRefItem::propertiesFor(this);
 
 	return xrp.snapTo() == XRefProperties::Bottom
 			&& CrossRefItem::showAllConfiguredSlaves(this, xrp);
@@ -240,7 +239,7 @@ void MasterElement::aboutDeleteXref()
 	if (m_data.m_master_type == ElementData::PLC)
 		return;
 
-	XRefProperties xrp = diagram()->project()->defaultXRefProperties(kindInformations()["type"].toString());
+	XRefProperties xrp = CrossRefItem::propertiesFor(this);
 	if (xrp.snapTo() != XRefProperties::Bottom && m_Xref_item)
 	{
 		delete m_Xref_item;
