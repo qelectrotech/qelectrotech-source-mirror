@@ -302,6 +302,10 @@ class Element : public QetGraphicsItem
 		 * @return
 		 */
 		virtual kind linkType() const {return m_link_type;} // return the linkable type
+			/// A corner only turns a wire: QElectroTech's own corner
+			/// symbol, or any symbol whose definition says so with the
+			/// kind information "corner" set to "true"
+		bool isCorner() const {return m_corner;}
 		/**
 		 * @brief linkTypeToString
 		 * use elementData function instead
@@ -364,6 +368,7 @@ class Element : public QetGraphicsItem
 			//ATTRIBUTES related to linked element
 		QList <Element *> connected_elements;
 		QList <LinkInfo>  tmp_uuids_link;
+		bool m_corner = false;
 		QHash <Element *, int> m_group_index_map;  ///< Maps linked elements to their group index (for slave->master links)
 		QUuid             m_uuid;
 		kind              m_link_type = Element::Simple;

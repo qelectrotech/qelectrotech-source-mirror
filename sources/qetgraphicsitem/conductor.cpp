@@ -32,6 +32,7 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../ui/conductorpropertiesdialog.h"
 #include "conductortextitem.h"
+#include "conductordefinitionmark.h"
 #include "element.h"
 #include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "../utils/qetutils.h"
@@ -1565,7 +1566,18 @@ void Conductor::updateTextVisibility()
 {
 	ShownKinds::setVisible(m_text_item,
 						   m_properties.type == ConductorProperties::Multi
-						   && m_properties.m_show_text);
+						   && m_properties.m_show_text
+						   && !markReplacesText());
+}
+
+/**
+	@brief Conductor::markReplacesText
+	@return true when the stroke with colour and section is shown and its
+	properties ask it to stand in for the conductor's text
+*/
+bool Conductor::markReplacesText() const
+{
+	return m_properties.m_definition_mark && m_properties.m_definition_mark_hides_text;
 }
 
 /**
@@ -1576,6 +1588,7 @@ void Conductor::updateTextVisibility()
 */
 void Conductor::calculateTextItemPosition()
 {
+	updateDefinitionMark();
 	if (!m_text_item || !diagram() || m_properties.type != ConductorProperties::Multi)
 		return;
 
@@ -1599,7 +1612,7 @@ void Conductor::calculateTextItemPosition()
 		}
 			//Make sure text item is visible, unless wire numbers are hidden
 			//(View > Show)
-		ShownKinds::setVisible(m_text_item, true);
+		ShownKinds::setVisible(m_text_item, !markReplacesText());
 	}
 
 		//position
@@ -1663,6 +1676,76 @@ void Conductor::calculateTextItemPosition()
 				else
 					return; //avoid infinite loop
 			}
+		}
+	}
+}
+
+/**
+	@brief Conductor::cornerChain
+	@return this conductor and those joined to it through corners only,
+	with the same colour and section: one run of wire, ending at a
+	terminal of anything else (a T-junction, a device) or where the wire
+	changes
+*/
+QList<Conductor *> Conductor::cornerChain()
+{
+	QList<Conductor *> chain {this};
+	for (int i = 0 ; i < chain.size() ; ++i)
+	{
+		Conductor *c = chain.at(i);
+		for (Terminal *end : {c->terminal1, c->terminal2})
+		{
+			if (!end || !end->parentElement() || !end->parentElement()->isCorner())
+				continue;
+			for (Terminal *other : end->parentElement()->terminals())
+				for (Conductor *next : other->conductors())
+					if (!chain.contains(next)
+					    && next->m_properties.m_wire_color == c->m_properties.m_wire_color
+					    && next->m_properties.m_wire_section == c->m_properties.m_wire_section)
+						chain << next;
+		}
+	}
+	return chain;
+}
+
+/**
+	@brief Conductor::updateDefinitionMark
+	Show, move or remove the stroke with this conductor's colour and
+	section, as its properties ask. A run turned by corners shows one
+	stroke, on its longest conductor that asks for one.
+*/
+void Conductor::updateDefinitionMark()
+{
+		//Taken off the folio: its terminals no longer list it, the run it
+		//was part of shows its stroke on another conductor
+	if (!scene()) {
+		delete m_definition_mark;
+		m_definition_mark = nullptr;
+		const QList<Conductor *> run = cornerChain();
+		for (Conductor *c : run)
+			if (c != this && c->scene())
+				c->updateDefinitionMark();
+		return;
+	}
+	const auto wants = [](const Conductor *c) {
+		return c->m_properties.m_definition_mark
+			&& c->m_properties.type == ConductorProperties::Multi;
+	};
+	Conductor *shown = nullptr;
+	const QList<Conductor *> chain = cornerChain();
+	for (Conductor *c : chain)
+		if (wants(c) && (!shown || c->length() > shown->length()))
+			shown = c;
+
+	for (Conductor *c : chain)
+	{
+		if (c != shown) {
+			delete c->m_definition_mark;
+			c->m_definition_mark = nullptr;
+		} else if (!c->m_definition_mark) {
+			c->m_definition_mark = new ConductorDefinitionMark(c);
+		} else {
+			c->m_definition_mark->refresh();
 		}
 	}
 }
@@ -1834,6 +1917,8 @@ void Conductor::setProperties(const ConductorProperties &property)
 {
 	if (m_properties == property) return;
 
+		//The run this conductor was part of, which may part now
+	const QList<Conductor *> old_run = cornerChain();
 	QString formula = m_properties.m_formula;
 	m_properties = property;
 
@@ -1861,6 +1946,9 @@ void Conductor::setProperties(const ConductorProperties &property)
 
 	updateTextVisibility();
 	calculateTextItemPosition();
+	for (Conductor *c : old_run)
+		if (c != this)
+			c->updateDefinitionMark();
 	update();
 
 	storeProperties();

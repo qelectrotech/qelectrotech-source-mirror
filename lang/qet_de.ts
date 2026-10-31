@@ -2538,7 +2538,45 @@ Möchten Sie diese ebenfalls neu nummerieren?</numerusform>
     </message>
 </context>
 <context>
+    <name>ConductorDefinitionMark</name>
+    <message>
+        <location filename="../sources/qetgraphicsitem/conductordefinitionmark.cpp" line="1"/>
+        <source>Drag along the conductor to move the colour and section</source>
+        <translation>Am Leiter entlang ziehen, um Farbe und Querschnitt zu verschieben</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/conductordefinitionmark.cpp" line="1"/>
+        <source>Move the colour and section</source>
+        <translation>Farbe und Querschnitt verschieben</translation>
+    </message>
+</context>
+<context>
     <name>ConductorPropertiesWidget</name>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="1"/>
+        <source>A slanted stroke across the conductor, with its colour above and its section below. Drag it along the conductor to move it.</source>
+        <translation>Ein Schrägstrich über dem Leiter, darüber die Farbe, darunter der Querschnitt. Am Leiter entlang ziehen, um ihn zu verschieben.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="1"/>
+        <source>Stroke with colour and section</source>
+        <translation>Schrägstrich mit Farbe und Querschnitt</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="1"/>
+        <source>From the start :</source>
+        <translation>Abstand vom Anfang:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="1"/>
+        <source>How far from the conductor&apos;s start the stroke stands. &quot;Middle&quot;: the middle of its longest stretch.</source>
+        <translation>Wie weit der Schrägstrich vom Anfang des Leiters entfernt steht. „Mitte“: Mitte seines längsten Abschnitts.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="1"/>
+        <source>Middle</source>
+        <translation>Mitte</translation>
+    </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
