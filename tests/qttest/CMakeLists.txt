@@ -454,11 +454,11 @@ qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 # and cleared fields, restore and reset, one undo step, the selection
 # panel's editor and the Edit action.
 qet_add_app_test(tst_multielementinfo tst_multielementinfo.cpp)
+target_compile_definitions(tst_multielementinfo PRIVATE
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
 # An elements collection item set up after the application object is gone.
 qet_add_app_test(tst_collectionitemafterquit tst_collectionitemafterquit.cpp)
-target_compile_definitions(tst_multielementinfo PRIVATE
-  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
 # Accepting the settings dialog writes qet-assistant.json with the
 # collection paths just chosen, not the ones they replace.
