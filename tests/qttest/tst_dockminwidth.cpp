@@ -26,6 +26,9 @@
 #include <QDockWidget>
 #include <QFile>
 #include <QLabel>
+#include <QLineEdit>
+#include <QGridLayout>
+#include <QGroupBox>
 #include <QRadioButton>
 #include <QScrollArea>
 #include <QScrollBar>
@@ -169,6 +172,46 @@ class tst_dockminwidth : public QObject
 				 qPrintable(QString("Appearance %1 px, Type %2 px")
 					    .arg(tabs->maximumHeight()).arg(type_height)));
 			QVERIFY(tabs->height() <= tabs->maximumHeight());
+		}
+
+			//A field taken out of a group's grid after the grid learned
+			//its places (an editor rebuilding its rows): going narrow and
+			//wide again uses only what is still in the grid
+		void gridReflowAfterAFieldIsGone()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			auto *dock = new QDockWidget(QStringLiteral("Reflow"), editor);
+			auto *content = new QWidget(dock);
+			auto *outer = new QVBoxLayout(content);
+			auto *group = new QGroupBox(QStringLiteral("Group"), content);
+			auto *grid = new QGridLayout(group);
+			QList<QLineEdit *> fields;
+			for (int r = 0; r < 3; ++r)
+				for (int c = 0; c < 2; ++c) {
+					grid->addWidget(new QLabel(QStringLiteral("Name %1").arg(r * 2 + c), group), r, c * 2);
+					fields << new QLineEdit(group);
+					fields.last()->setMinimumWidth(120);
+					grid->addWidget(fields.last(), r, c * 2 + 1);
+				}
+			outer->addWidget(group);
+			dock->setWidget(content);
+			editor->addDockWidget(Qt::RightDockWidgetArea, dock);
+			dock->show();
+			editor->resizeDocks({dock}, {700}, Qt::Horizontal);
+			QTest::qWait(100);
+			const int before = grid->count();
+				//Its layout item goes with the widget
+			delete fields.takeAt(1);
+			QCOMPARE(grid->count(), before - 1);
+			for (int width : {150, 700, 150}) {
+				editor->resizeDocks({dock}, {width}, Qt::Horizontal);
+				QTest::qWait(100);
+			}
+			QCOMPARE(grid->count(), before - 1);
+			for (QLineEdit *field : std::as_const(fields))
+				QVERIFY(grid->indexOf(field) >= 0);
+			editor->removeDockWidget(dock);
+			delete dock;
 		}
 
 		void everyDockTextWraps()

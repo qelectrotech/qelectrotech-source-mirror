@@ -307,30 +307,35 @@ namespace {
 			GridReflow(QGridLayout *grid, QWidget *owner) :
 				QObject(owner), m_grid(grid), m_owner(owner)
 			{
-				const int split = (grid->columnCount() + 1) / 2;
-				for (int i = 0; i < grid->count(); ++i) {
-					Place place;
-					place.item = grid->itemAt(i);
-					grid->getItemPosition(i, &place.row, &place.column,
-							      &place.row_span, &place.column_span);
-					place.narrow_row = place.row * 2 + (place.column >= split ? 1 : 0);
-					place.narrow_column = place.column >= split ? place.column - split
-										    : place.column;
-					place.narrow_span = qMax(1, qMin(place.column_span,
-							split - place.narrow_column));
-					m_places << place;
-				}
+				learnPlaces();
 			}
 
 				/// Side by side when @a width is enough for it, else one half
 				/// below the other
 			void fit(int width)
 			{
+				if (!m_grid)
+					return;
 				if (!m_narrow)
 					m_wide_width = m_owner->minimumSizeHint().width();
 				const bool narrow = m_wide_width > 0 && width < m_wide_width;
 				if (narrow == m_narrow)
 					return;
+					//An editor may have taken items out of the grid, or put
+					//new ones in, since the places were learned: a widget
+					//deleted takes its layout item with it, which must not
+					//be put back. Looked up by address only, never used
+				bool changed = m_grid->count() != m_places.size();
+				for (int i = m_places.size() - 1; i >= 0; --i)
+					if (m_grid->indexOf(m_places.at(i).item) < 0) {
+						m_places.removeAt(i);
+						changed = true;
+					}
+				if (changed) {
+					if (m_narrow)
+						return; // leave it as it is rather than guess
+					learnPlaces();
+				}
 				m_narrow = narrow;
 				for (const Place &place : std::as_const(m_places))
 					m_grid->removeItem(place.item);
@@ -348,6 +353,26 @@ namespace {
 			}
 
 		private:
+				/// Where each item of the grid stands, wide and narrow
+			void learnPlaces()
+			{
+				m_places.clear();
+				QGridLayout *grid = m_grid;
+				const int split = (grid->columnCount() + 1) / 2;
+				for (int i = 0; i < grid->count(); ++i) {
+					Place place;
+					place.item = grid->itemAt(i);
+					grid->getItemPosition(i, &place.row, &place.column,
+							      &place.row_span, &place.column_span);
+					place.narrow_row = place.row * 2 + (place.column >= split ? 1 : 0);
+					place.narrow_column = place.column >= split ? place.column - split
+										    : place.column;
+					place.narrow_span = qMax(1, qMin(place.column_span,
+							split - place.narrow_column));
+					m_places << place;
+				}
+			}
+
 			struct Place {
 				QLayoutItem *item = nullptr;
 				int row = 0, column = 0, row_span = 1, column_span = 1;
