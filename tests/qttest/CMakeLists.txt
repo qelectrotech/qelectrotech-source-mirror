@@ -2080,3 +2080,17 @@ if(qet_test_timeout_scale GREATER 1 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
     endif()
   endforeach()
 endif()
+
+# The folio properties dialog's paper size: choosing A4, A3 and A4 again
+# must give the first A4 back (issue 1662). QETApp and the title block
+# are stubbed in the test.
+add_executable(
+  tst_borderpropertiespaper
+  tst_borderpropertiespaper.cpp
+  ${QET_DIR}/sources/ui/borderpropertieswidget.cpp
+  ${QET_DIR}/sources/ui/borderpropertieswidget.h
+  ${QET_DIR}/sources/borderproperties.cpp)
+add_test(NAME tst_borderpropertiespaper COMMAND tst_borderpropertiespaper)
+set_tests_properties(tst_borderpropertiespaper PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_borderpropertiespaper PRIVATE ${QET_DIR}/sources ${QET_DIR}/sources/ui)
+target_link_libraries(tst_borderpropertiespaper PRIVATE Qt::Test Qt::Widgets Qt::Xml Qt::Svg Qt::Sql Qt::PrintSupport Qt::Concurrent)

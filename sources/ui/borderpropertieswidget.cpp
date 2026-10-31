@@ -134,7 +134,13 @@ BorderPropertiesWidget::BorderPropertiesWidget(const BorderProperties &bp, QWidg
 	for (QSpinBox *sb : {ui->m_colums_count_sp, ui->m_columns_width_sp,
 						 ui->m_rows_count_sp, ui->m_rows_height_sp})
 		connect(sb, qOverload<int>(&QSpinBox::valueChanged),
-				this, &BorderPropertiesWidget::showMatchingPaperSize);
+				this, [this]() {
+					if (!m_updating) {
+						m_wanted_column_width = ui->m_columns_width_sp->value();
+						m_wanted_row_height = ui->m_rows_height_sp->value();
+					}
+					showMatchingPaperSize();
+				});
 
 	setProperties(bp);
 }
@@ -265,11 +271,11 @@ bool BorderPropertiesWidget::fitPaperSize(int index, bool landscape,
 		return false;
 
 	const QPair<int, int> c = fitCells(width,
-									   ui->m_columns_width_sp->value(),
+									   m_wanted_column_width,
 									   min_cell,
 									   ui->m_colums_count_sp->maximum());
 	const QPair<int, int> r = fitCells(height,
-									   ui->m_rows_height_sp->value(),
+									   m_wanted_row_height,
 									   min_cell,
 									   ui->m_rows_count_sp->maximum());
 	columns = c.first;
