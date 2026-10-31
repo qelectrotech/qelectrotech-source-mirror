@@ -70,6 +70,7 @@
 #include "print/projectprintwindow.h"
 #include "project/projectpropertieshandler.h"
 #include "ui/multielementinfowidget.h"
+#include "ui/projectlanguagesdialog.h"
 #include "ui/projectpropertiesdialog.h"
 #include "projectview.h"
 #include "qetproject.h"
@@ -1053,6 +1054,18 @@ void QETDiagramEditor::setUpActions()
 				dialog->show();
 			}
 		});
+		//The texts of the project in other languages
+	m_project_languages = new QAction(tr("Project languages..."), this);
+	m_project_languages->setStatusTip(tr("Show the texts of the project in another language"));
+	ShortcutManager::instance().registerAction(m_project_languages, "diagrameditor.project_languages", tr("Diagram editors"), QKeySequence());
+	connect(m_project_languages, &QAction::triggered, this, [this]() {
+		ProjectView *view = currentProjectView();
+		if (!view) return;
+		QETProject *project = view->project();
+		ProjectLanguagesDialog dialog(project->languages(), project->translatableTexts(), this);
+		if (dialog.exec() == QDialog::Accepted)
+			project->setLanguages(dialog.languages());
+	});
 		//The saves a .qetdb keeps, and keeping them or not (QETDB-S6-SCOPE.md)
 	m_project_history = new QAction(tr("History of saves..."), this);
 	ShortcutManager::instance().registerAction(m_project_history, "diagrameditor.project_history", tr("Diagram editors"), QKeySequence());
@@ -2019,6 +2032,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_remove_diagram_from_project);
 	menu_project -> addAction(m_clean_project);
 	menu_project->addAction(m_find_duplicate_labels);
+	menu_project->addAction(m_project_languages);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_csv_export);
 	menu_project -> addAction(m_export_cable_list);
@@ -3580,6 +3594,7 @@ void QETDiagramEditor::slot_updateActions()
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
 	m_find_duplicate_labels->setEnabled(opened_project);
+	m_project_languages->setEnabled(opened_project);
 	m_project_history             -> setEnabled(opened_project);
 	m_export_delivery             -> setEnabled(opened_project);
 	m_project_add_diagram         -> setEnabled(editable_project);

@@ -595,6 +595,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/properties/deviceinformation.h
   ${QET_DIR}/sources/properties/elementdata.cpp
   ${QET_DIR}/sources/properties/elementdata.h
+  ${QET_DIR}/sources/properties/projectlanguages.cpp
+  ${QET_DIR}/sources/properties/projectlanguages.h
   ${QET_DIR}/sources/properties/propertiesinterface.cpp
   ${QET_DIR}/sources/properties/propertiesinterface.h
   ${QET_DIR}/sources/properties/reportproperties.cpp
@@ -908,6 +910,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/potentialselectordialog.h
   ${QET_DIR}/sources/ui/prefixconfigurationdialog.cpp
   ${QET_DIR}/sources/ui/prefixconfigurationdialog.h
+  ${QET_DIR}/sources/ui/projectlanguagesdialog.cpp
+  ${QET_DIR}/sources/ui/projectlanguagesdialog.h
   ${QET_DIR}/sources/ui/projectpropertiesdialog.cpp
   ${QET_DIR}/sources/ui/projectpropertiesdialog.h
   ${QET_DIR}/sources/ui/reportpropertiewidget.cpp
