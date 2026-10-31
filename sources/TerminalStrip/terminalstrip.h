@@ -117,6 +117,42 @@ class TerminalStrip : public QObject
 		bool setBridge(const QSharedPointer<TerminalStripBridge> &bridge, const QVector<QSharedPointer<RealTerminal>> &real_terminals);
 		void unBridge(const QVector<QSharedPointer<RealTerminal>> &real_terminals);
 		bool canUnBridge(const QVector <QSharedPointer<RealTerminal>> &real_terminals) const;
+
+			/**
+				A bridge the drawing brought here: the bridges drawn on the
+				plan become bridges of this strip when its terminals are
+				sorted, and what the drawing says, those bridges say. They
+				are read-only here -- only the bridges he set by hand are
+				his to change.
+			*/
+		struct DrawingBridge
+		{
+				///The drawn bridge it comes from
+			QUuid source;
+			QVector<QSharedPointer<RealTerminal>> real_terminals;
+			QColor color;
+				///Which of the four grooves its bar sits in
+			int track = 1;
+		};
+		QList<DrawingBridge> automaticBridges() const;
+		void setAutomaticBridges(const QList<DrawingBridge> &bridges);
+
+			/**
+				Every bridge this terminal sits in: a terminal may lie
+				under several bars at once -- they run side by side in the
+				grooves of the rail -- and asking for "the" bridge of a
+				terminal only ever gave back one of them, so the others
+				were never drawn at all.
+			*/
+		QVector<QSharedPointer<TerminalStripBridge>> bridgesOf(
+				const QSharedPointer<RealTerminal> &real_terminal) const;
+
+	private:
+			///The first groove (1 to 4) no bar of a bridge lying across
+			///the same terminals already sits in
+		int freeTrackFor(const QVector<QSharedPointer<RealTerminal>> &real_terminals) const;
+
+	public:
 		QSharedPointer<TerminalStripBridge> isBridged(const QSharedPointer<RealTerminal> real_terminal) const;
 			///True when at least one bridge joins terminals of this strip :
 			///the bridge cells of the terminal strip editor are the only thing

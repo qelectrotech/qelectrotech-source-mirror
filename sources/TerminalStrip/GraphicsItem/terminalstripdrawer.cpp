@@ -1522,11 +1522,23 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 if (shared_real_terminal->isBridged())
                 {
                     painter->save();
-                    if (QScopedPointer<AbstractBridgeInterface> bridge_ {
-                        shared_real_terminal->bridge() })
-                    {
+						//Every bar lying across this terminal gets its
+						//point here: several of them run side by side,
+						//one per groove, and asking for "the" bridge of a
+						//terminal only ever drew one of them
+					const auto bridge_list{shared_real_terminal->bridges()};
+					for (auto *bridge_ : bridge_list)
+					{
+						const QScopedPointer<AbstractBridgeInterface> holder{bridge_};
+						if (!bridge_) {
+							continue;
+						}
                         const auto x_anchor{terminal_rect.width()/2};
-                        const auto y_anchor {m_pattern->m_bridge_point_y_offset[index_]};
+							//Which groove the bar sits in is the bridge's
+							//own: two bars lying across the same terminals
+							//run side by side, one per groove
+                        const auto track_ = qBound(1, bridge_->track(), 4) - 1;
+                        const auto y_anchor {m_pattern->m_bridge_point_y_offset[track_]};
                         const auto radius_anchor{m_pattern->m_bridge_point_d/2};
 
 						painter->setBrush(Qt::SolidPattern);

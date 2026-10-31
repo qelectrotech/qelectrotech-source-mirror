@@ -19,6 +19,7 @@
 #include "conductorpropertiesdialog.h"
 
 #include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <bridge/bridgemanager.h>
 #include <diagram.h>
 #include <qetgraphicsitem/conductor.h>
 #include "conductorpropertieswidget.h"
@@ -116,6 +117,36 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
 			separated_new_value.setValue(separated_properties);
 			new QPropertyUndoCommand (separated_conductor, "properties",
 						  separated_old_value, separated_new_value, undo);
+		}
+	}
+
+		//A bridge sits across the terminals it lands on, so the voltage
+		//of one of their wires reaches every wire of every terminal of it
+		//-- and only the voltage crosses a bridge, never the function: a
+		//separated function stays separated however many bridges sit on
+		//it. The same rule as the wires themselves: what reaches the
+		//potential reaches what the bridge joins to it.
+	if (cpd.applyAll())
+	{
+		const ConductorProperties shown_for_bridge = conductor->properties();
+		const auto over_bridges = BridgeManager::conductorsOverBridges(
+					conductor->diagram()->project(), QList<Conductor *>{conductor});
+		for (Conductor *over : over_bridges)
+		{
+			if (!over || over == conductor) {
+				continue;
+			}
+			ConductorProperties over_properties = over->properties();
+			over_properties.applyTensionProtocolChange(
+						shown_for_bridge, cpd.properties());
+			if (over_properties == over->properties()) {
+				continue;
+			}
+			QVariant over_old_value, over_new_value;
+			over_old_value.setValue(over->properties());
+			over_new_value.setValue(over_properties);
+			new QPropertyUndoCommand(over, "properties",
+						  over_old_value, over_new_value, undo);
 		}
 	}
 

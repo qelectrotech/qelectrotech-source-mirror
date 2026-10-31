@@ -881,131 +881,72 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 
 	auto mrtd = modelRealTerminalDataForIndex(index);
 
-		//Terminal level correspond to the column level of index
-	if (level_column == mrtd.level_)
+		//Which of the four columns a bar sits in is the groove of the
+		//bridge itself: two bars lying across the same terminals run side
+		//by side, one per column, and the second one would vanish inside
+		//the first if they shared one. The columns of the table are those
+		//four grooves and nothing else -- they only ever draw bridges.
+	const auto bar_in_column =
+			[this](const QSharedPointer<RealTerminal> &real_t, int column)
+			-> QSharedPointer<TerminalStripBridge>
 	{
-		if (mrtd.bridged_)
-		{
-			auto bridge_ = m_terminal_strip->isBridged(mrtd.real_terminal);
-			if (bridge_)
-			{
-				const auto previous_t = m_terminal_strip->previousTerminalInLevel(mrtd.real_terminal);
-				QSharedPointer<TerminalStripBridge> previous_bridge;
-				if (previous_t)
-					previous_bridge = previous_t->bridge();
-
-				const auto next_t = m_terminal_strip->nextTerminalInLevel(mrtd.real_terminal);
-				QSharedPointer<TerminalStripBridge> next_bridge;
-				if (next_t)
-					next_bridge = next_t->bridge();
-
-				auto color_ = bridge_->color();
-				auto pixmap_ = m_bridges_pixmaps.value(color_);
-
-				//Current real terminal between two bridged terminal
-				if ((bridge_ == previous_bridge) &&
-					(bridge_ == next_bridge)) {
-					return pixmap_.middle_;
-				} else if (bridge_ == previous_bridge) {
-					return pixmap_.bottom_;
-				} else if (bridge_ == next_bridge) {
-					return pixmap_.top_;
-				}
+		if (!real_t) {
+			return {};
+		}
+		for (const auto &bridge_ : m_terminal_strip->bridgesOf(real_t)) {
+			if (bridge_ && qBound(1, bridge_->track(), 4) - 1 == column) {
+				return bridge_;
 			}
+		}
+		return {};
+	};
+
+		//A bar of this terminal sits in this column -- several bars may
+		//lie across one terminal, one per column, and the one drawn here
+		//is the one whose groove this column is. A terminal the bar only
+		//runs across holds none of them: the bar is plugged into the
+		//terminals it was drawn over and no other.
+	const auto bridge_here = bar_in_column(mrtd.real_terminal.toStrongRef(), level_column);
+
+		//The nearest bar of this column above and below: it answers
+		//whether this one runs on, and what runs over a terminal it is
+		//not plugged into. Rows stand in strip order, so the neighbour of
+		//a row is the row next to it -- and a bar runs across as many
+		//rows between its terminals as the strip has there.
+	QSharedPointer<TerminalStripBridge> previous_bridge, next_bridge;
+	for (int row = index.row() - 1 ; row >= 0 ; --row) {
+		previous_bridge = bar_in_column(dataAtRow(row).real_terminal.toStrongRef(), level_column);
+		if (previous_bridge) {
+			break;
 		}
 	}
-		//Terminal level ins't in the same column level of index
-		//Check if we need to draw a none bridge pixmap
-
-		//Check previous. The rows of the table hold the terminals of the
-		//strip in strip order, so the neighbour of a row is the row next
-		//to it: asking the strip for its neighbour walked to the head of
-		//the strip every time, for every bridge cell the view paints and
-		//measures (and on every layout of the table).
-	auto current_row = index.row();
-	auto current_t = mrtd.real_terminal.toStrongRef();
-	auto current_phy_uuid = current_t->physicalTerminal()->uuid();
-	bool already_jumped_to_previous = false;
-	modelRealTerminalData previous_data;
-
-	do {
-		--current_row;
-		const auto previous_t = current_row >= 0
-				? dataAtRow(current_row).real_terminal.toStrongRef()
-				: QSharedPointer<RealTerminal>();
-		const auto current_real_terminal = bridgeWalkStep(previous_t);
-
-		if (current_real_terminal.level_ == -1) {
+	for (int row = index.row() + 1 ; row < m_row_count ; ++row) {
+		next_bridge = bar_in_column(dataAtRow(row).real_terminal.toStrongRef(), level_column);
+		if (next_bridge) {
 			break;
 		}
+	}
 
-			//We are in the same physical terminal as previous loop
-		if (current_phy_uuid == previous_t->physicalTerminal()->uuid())
-		{
-			if (current_real_terminal.bridged_ &&
-				current_real_terminal.level_ == level_column) {
-				previous_data = current_real_terminal;
-				break;
-			}
-		}
-		else if (already_jumped_to_previous) { //We are not in same physical terminal as previous loop
-			break;
-		} else {
-			already_jumped_to_previous = true;
-			current_phy_uuid = previous_t->physicalTerminal()->uuid();
-			if (current_real_terminal.bridged_ &&
-				current_real_terminal.level_ == level_column) {
-				previous_data = current_real_terminal;
-				break;
-			}
-		}
-	} while(true);
-
-		//Check next
-	current_row = index.row();
-	current_phy_uuid = current_t->physicalTerminal()->uuid();
-	bool already_jumped_to_next = false;
-	modelRealTerminalData next_data;
-
-	do {
-		++current_row;
-		const auto next_t = current_row < m_row_count
-				? dataAtRow(current_row).real_terminal.toStrongRef()
-				: QSharedPointer<RealTerminal>();
-		const auto current_real_terminal = bridgeWalkStep(next_t);
-
-		if (current_real_terminal.level_ == -1) {
-			break;
-		}
-
-			//We are in the same physical terminal as previous loop
-		if (current_phy_uuid == next_t->physicalTerminal()->uuid())
-		{
-			if (current_real_terminal.bridged_ &&
-				current_real_terminal.level_ == level_column) {
-				next_data = current_real_terminal;
-				break;
-			}
-		}
-		else if (already_jumped_to_next) { //We are not in same physical terminal as previous loop
-			break;
-		} else {
-			already_jumped_to_next = true;
-			current_phy_uuid = next_t->physicalTerminal()->uuid();
-			if (current_real_terminal.bridged_ &&
-				current_real_terminal.level_ == level_column) {
-				next_data = current_real_terminal;
-				break;
-			}
-		}
-	} while(true);
-
-	auto previous_bridge = m_terminal_strip->isBridged(previous_data.real_terminal);
-	if (previous_bridge == m_terminal_strip->isBridged(next_data.real_terminal))
+	if (bridge_here)
 	{
-		if (previous_bridge) {
-			return m_bridges_pixmaps.value(previous_bridge->color()).none_;
+		const bool runs_up = (previous_bridge == bridge_here);
+		const bool runs_down = (next_bridge == bridge_here);
+		const auto pixmap_ = m_bridges_pixmaps.value(bridge_here->color());
+		if (runs_up && runs_down) {
+			return pixmap_.middle_;
+		} else if (runs_up) {
+			return pixmap_.bottom_;
+		} else if (runs_down) {
+			return pixmap_.top_;
 		}
+			//Plugged in here alone: there is no bar to draw between it
+			//and anything
+		return QPixmap();
+	}
+
+		//A bar running across a terminal it is not plugged into
+	if (previous_bridge && previous_bridge == next_bridge) {
+		return m_bridges_pixmaps.value(previous_bridge->color()).none_;
 	}
 
 	return QPixmap();

@@ -54,10 +54,13 @@
 #include "diagramevent/diagrameventaddshape.h"
 #include "diagramevent/diagrameventaddpath.h"
 #include "diagramevent/diagrameventaddcable.h"
+#include "diagramevent/diagrameventaddbridge.h"
 #include "diagramevent/diagrameventfillet.h"
 #include "diagramevent/diagrameventaddtext.h"
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
+#include "bridge/bridgepart.h"
+#include "bridge/bridgeundocommands.h"
 #include "diagramevent/diagrameventaddpaste.h"
 #include "diagramview.h"
 #include "elementtextpattern.h"
@@ -1623,6 +1626,9 @@ void QETDiagramEditor::setUpActions()
 		//Not an element of the drawing but a line drawn across the
 		//conductors: what it crosses becomes the cores of a cable.
 	m_add_cable		   = m_add_item_actions_group.addAction(QET::Icons::Cable,      tr("Draw a cable"));
+		//A bridge across terminals: what it crosses becomes the terminals
+		//the bridge lands on.
+	m_add_bridge	   = m_add_item_actions_group.addAction(QET::Icons::Bridge,     tr("Draw a bridge"));
 
 	add_text     ->setStatusTip(tr("Adds a text field to the current sheet"));
 	add_image    ->setStatusTip(tr("Add an image to the current sheet"));
@@ -1639,6 +1645,7 @@ void QETDiagramEditor::setUpActions()
 	add_terminal_strip->setStatusTip(tr("Adds a terminal plan to the current sheet"));
 	add_generic_device->setStatusTip(tr("Makes a box symbol with terminals on any side and places it on the current sheet"));
 	m_add_cable     ->setStatusTip(tr("Draws the main line of a cable: every conductor crossed becomes one of its cores"));
+	m_add_bridge    ->setStatusTip(tr("Draws a bridge over terminals: every terminal crossed becomes one of its connections"));
 
 	add_text     ->setData(QStringLiteral("text"));
 	add_image    ->setData(QStringLiteral("image"));
@@ -1655,6 +1662,7 @@ void QETDiagramEditor::setUpActions()
 	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
 	add_generic_device->setData(QStringLiteral("generic_device"));
 	m_add_cable     ->setData(QStringLiteral("cable"));
+	m_add_bridge    ->setData(QStringLiteral("bridge"));
 
 	add_text->setCheckable(true);
 	add_line->setCheckable(true);
@@ -1664,6 +1672,7 @@ void QETDiagramEditor::setUpActions()
 	add_polyline->setCheckable(true);
 	add_path->setCheckable(true);
 	m_add_cable->setCheckable(true);
+	m_add_bridge->setCheckable(true);
 	add_fillet->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
@@ -2036,6 +2045,15 @@ void QETDiagramEditor::setUpMenu()
 */
 void QETDiagramEditor::closeEvent(QCloseEvent *qce)
 {
+		//The projects open now, for QETApp::reopenLastProjects(), when this
+		//is the last window: closing one of several mid-session keeps
+		//nothing, and File > Quit records those of every window itself
+		//(QETApp::closeEveryEditor())
+	QStringList open_here;
+	for (ProjectView *project_view : openedProjects())
+		if (!project_view->project()->filePath().isEmpty())
+			open_here << project_view->project()->filePath();
+
 	// quitte directement s'il n'y a aucun projet ouvert
 	bool can_quit = true;
 	if (openedProjects().count()) {
@@ -2054,6 +2072,8 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce)
 		}
 	}
 	if (can_quit) {
+		if (QETApp::diagramEditors().size() <= 1)
+			QSettings().setValue(QStringLiteral("projects/open_at_quit"), open_here);
 		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
 		qce -> accept();
@@ -3146,6 +3166,10 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		}
 		diagram_event = new DiagramEventAddCable(d);
 	}
+	else if (value == QLatin1String("bridge"))
+	{
+		diagram_event = new DiagramEventAddBridge(d);
+	}
 	else if (value == "fillet")
 		diagram_event = new DiagramEventFillet (d);
 	else if (value == "image")
@@ -3243,26 +3267,39 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 					//A cable line is not held by DiagramContent: it is
 					//removed by its own command, which also lets the cable
 					//it belongs to go when no line of it is left anywhere.
+					//A bridge line the same way -- and one takes the whole
+					//bridge with it, every line of it.
 				QList<CablePart *> cable_parts;
+				QList<BridgePart *> bridge_parts;
 				for (QGraphicsItem *item : diagram->selectedItems()) {
 					if (auto *part = qgraphicsitem_cast<CablePart *>(item)) {
 						cable_parts << part;
+					}
+					if (auto *part = qgraphicsitem_cast<BridgePart *>(item)) {
+						bridge_parts << part;
 					}
 				}
 				const bool other_items = dc.hasDeletableItems();
 
                 diagram->clearSelection();
 
-				if (cable_parts.isEmpty()) {
-					diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
-				} else if (!other_items) {
-					diagram->undoStack().push(new RemoveCableCommand(diagram, cable_parts));
+				QList<QUndoCommand *> steps;
+				if (other_items || (cable_parts.isEmpty() && bridge_parts.isEmpty())) {
+					steps << new DeleteQGraphicsItemCommand(diagram, dc);
+				}
+				if (!cable_parts.isEmpty()) {
+					steps << new RemoveCableCommand(diagram, cable_parts);
+				}
+				if (!bridge_parts.isEmpty()) {
+					steps << new RemoveBridgeCommand(bridge_parts);
+				}
+
+					//One single step, so a selection holding both a line
+					//and ordinary drawings comes back whole.
+				if (steps.size() == 1) {
+					diagram->undoStack().push(steps.first());
 				} else {
-						//One single step, so a selection holding both a
-						//cable and ordinary drawings comes back whole.
-					diagram->undoStack().push(new BatchCommand(
-						new DeleteQGraphicsItemCommand(diagram, dc),
-						new RemoveCableCommand(diagram, cable_parts)));
+					diagram->undoStack().push(new BatchCommand(steps, tr("Delete")));
 				}
                 dv->adjustSceneRect();
             }
@@ -3588,18 +3625,27 @@ void QETDiagramEditor::slot_updateComplexActions()
 	//Actions that need items (elements, conductors, texts...) selected, to be enabled
 		//A cable line is drawn on the folio but held by the cable, not
 		//by DiagramContent: it counts on its own for deleting and editing.
+		//A bridge line the same way: deleting it takes its whole bridge.
 	int selected_cables = 0;
+	int selected_bridge_parts = 0;
 	for (QGraphicsItem *item : diagram_->selectedItems()) {
 		if (item && item->type() == CablePart::Type) {
 			selected_cables++;
+		}
+		if (item && item->type() == BridgePart::Type) {
+			selected_bridge_parts++;
 		}
 	}
 
 		//A drawn cable line is copyable, cuttable and duplicatable on
 		//its own, although it belongs to its cable rather than to the
-		//folio and DiagramContent never sees it.
-	bool copiable_items  = dc.hasCopiableItems() || selected_cables > 0;
-	bool deletable_items = dc.hasDeletableItems() || selected_cables > 0;
+		//folio and DiagramContent never sees it. A bridge line the
+		//same way: it travels beside the folio's own XML, and what is
+		//pasted is a bridge of its own.
+	bool copiable_items  = dc.hasCopiableItems() || selected_cables > 0
+			|| selected_bridge_parts > 0;
+	bool deletable_items = dc.hasDeletableItems() || selected_cables > 0
+			|| selected_bridge_parts > 0;
 	m_cut              -> setEnabled(!ro && copiable_items);
 	m_copy             -> setEnabled(copiable_items);
 	m_duplicate        -> setEnabled(!ro && copiable_items);

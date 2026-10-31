@@ -26,6 +26,7 @@
 #include <QPointer>
 #include <QSet>
 
+class Bridge;
 class CablePart;
 class QStatusBar;
 
@@ -98,20 +99,26 @@ class DiagramEventAddPaste : public DiagramEventInterface
 		///they travel beside it: moved with the rest of the paste,
 		///wired where it lands, and taken away whole if it never lands.
 	QList<CablePart *> m_cables;
-		///The cable lines among them, as plain items. Their setPos() is
+		///The bridge lines the same fragment carried, if any. The
+		///bridge owns them and the project holds the bridge, so they
+		///travel beside the content as well: moved with the rest of
+		///the paste, landed where it is put down, and taken away whole
+		///if it never lands.
+	QList<Bridge *> m_bridges;
+		///The cable and bridge lines among them, as plain items. Their setPos() is
 		///a translation rather than a move: CablePart works in scene
 		///coordinates and keeps itself at the origin, folding whatever
 		///it is handed into its own geometry and into the colour labels
-		///it carries (CablePart::itemChange). Everything else in
+		///it carries (CablePart::itemChange, BridgePart::itemChange). Everything else in
 		///m_relative_pos is given a place to stand; these are given a
 		///step to take.
-	QSet<QGraphicsItem *> m_cable_items;
-		///The step already handed to those cable lines. They take the
+	QSet<QGraphicsItem *> m_step_items;
+		///The step already handed to those lines. They take the
 		///difference to the new one, because for them a setPos() is an
 		///addition: handing them the baseline-relative position on every
 		///mouse move would add it again each time and let the line run
 		///away from the rest of the paste.
-	QPointF m_cable_delta;
+	QPointF m_step_delta;
 		/// The numberings the pasted copy carries
 	QList<ElementAutoNumSchemeCommand::Scheme> m_copied_schemes;
 		///Each movable item's position relative to the group's top left,

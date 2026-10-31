@@ -18,6 +18,10 @@
 #ifndef SORTTERMINALSTRIPCOMMAND_H
 #define SORTTERMINALSTRIPCOMMAND_H
 
+#include <TerminalStrip/terminalstrip.h>
+
+#include <QHash>
+#include <QList>
 #include <QUndoCommand>
 #include <QPointer>
 #include <QSharedPointer>
@@ -66,6 +70,14 @@ class SortTerminalStripCommand : public QUndoCommand
 		QPointer<TerminalStrip> m_strip;
 		QVector<QSharedPointer<PhysicalTerminal>> m_old_order,
 												  m_new_order;
+			//What the drawing says about the bridges before and after:
+			//the sorting brings the bridges in step with the plan too,
+			//and one undo takes both back
+			//What the drawing says about the bridges, for every strip of
+			//the project: one click brings them all in step, whichever
+			//strip the button was pressed in
+		QHash<TerminalStrip *, QList<TerminalStrip::DrawingBridge>> m_bridges_before;
+		QHash<TerminalStrip *, QList<TerminalStrip::DrawingBridge>> m_bridges_after;
 };
 
 #endif // SORTTERMINALSTRIPCOMMAND_H

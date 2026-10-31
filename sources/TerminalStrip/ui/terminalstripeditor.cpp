@@ -82,6 +82,13 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 		//Setup the bridge color
 	ui->m_bridge_color_cb->setColors(TerminalStripBridge::bridgeColor().toList());
 
+		//What the button really does is more than its label says: it
+		//brings the bridges of the drawing in with the sorting
+	ui->m_auto_ordering_pb->setToolTip(tr(
+		"Sort the terminals the way the drawing is laid out, and bring "
+		"the bridges drawn there in with them. What the drawing brought "
+		"is read-only here: it is changed in the drawing or not at all."));
+
 		//Call for update the state of child widgets
 	selectionChanged();
 
@@ -1060,6 +1067,21 @@ void TerminalStripEditor::on_m_bridge_terminals_pb_clicked()
 			}
 
 			if (m_current_strip->isBridgeable(match_vector)) {
+					//A bridge set here is his own: the drawing knows
+					//nothing of it and never will. Say so once -- the way
+					//the plan would grow it is to draw it there -- and let
+					//him do it anyway.
+				const QMessageBox::StandardButton answer = QMessageBox::warning(
+							this,
+							tr("A bridge of your own"),
+							tr("This bridge is set here only: it is not added to "
+							   "the drawing, where bridges belong.\n\n"
+							   "Set it here anyway?"),
+							QMessageBox::Yes | QMessageBox::No,
+							QMessageBox::No);
+				if (answer != QMessageBox::Yes) {
+					return;
+				}
 				m_project->undoStack()->push(new BridgeTerminalsCommand(m_current_strip, match_vector));
 			}
 		}
@@ -1112,6 +1134,12 @@ void TerminalStripEditor::on_m_bridge_color_cb_activated(const QColor &col)
 		{
 			if (mrtd.level_ == level_ && mrtd.bridged_) {
 				auto bridge_ = mrtd.real_terminal.toStrongRef()->bridge();
+					//The colour of a bridge the drawing brought here is
+					//the drawing's business: it is changed there or not
+					//at all
+				if (bridge_ && bridge_->automatic()) {
+					break;
+				}
 				if (bridge_->color() != col)
 					m_project->undoStack()->push(new ChangeTerminalStripColor(bridge_, col));
 				break;

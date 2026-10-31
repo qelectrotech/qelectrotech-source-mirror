@@ -17,6 +17,8 @@
 */
 #include "conductorpropertieseditorwidget.h"
 
+#include <bridge/bridgemanager.h>
+
 #include <conductormultiedit.h>
 #include <diagram.h>
 #include <qetgraphicsitem/conductor.h>
@@ -368,7 +370,27 @@ QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 		selected, m_apply_all_cb && m_apply_all_cb->isChecked(),
 		&function_separated);
 
-	return ConductorMultiEdit::undo(targets, m_shown, edited, function_separated);
+		//A bridge sits across the terminals it lands on, so the voltage
+		//of one of their wires reaches every wire of every terminal of it
+		//-- and only the voltage crosses a bridge, never the function. The
+		//same rule as the wires themselves, so those wires go with the
+		//edit the way a function separated one does.
+	QList<Conductor *> all_targets = targets;
+	if (!targets.isEmpty() && targets.first()->diagram())
+	{
+		const auto over_bridges = BridgeManager::conductorsOverBridges(
+					targets.first()->diagram()->project(), targets);
+		for (Conductor *conductor : over_bridges)
+		{
+			if (conductor && !all_targets.contains(conductor))
+			{
+				all_targets << conductor;
+				function_separated.insert(conductor);
+			}
+		}
+	}
+
+	return ConductorMultiEdit::undo(all_targets, m_shown, edited, function_separated);
 }
 
 /**
