@@ -1195,13 +1195,13 @@ Piezīme: šīs opcijas neieslēdz un nebloķē automātisko numerāciju, bet no
         <location filename="../sources/ui/backuprestoredialog.cpp" line="84"/>
         <source>A project never saved</source>
         <comment>recovery files</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nekad nesaglabāts projekts</translation>
     </message>
     <message>
         <location filename="../sources/ui/backuprestoredialog.cpp" line="90"/>
         <source>%1 (after the last edit)</source>
         <comment>recovery generation label</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (pēc pēdējā labojuma)</translation>
     </message>
     <message>
         <location filename="../sources/ui/backuprestoredialog.cpp" line="101"/>
@@ -2516,12 +2516,12 @@ Vai vēlaties tos arī pārnumurēt?</numerusform>
     <message>
         <location filename="../sources/qetgraphicsitem/conductordefinitionmark.cpp" line="47"/>
         <source>Drag along the conductor to move the colour and section</source>
-        <translation type="unfinished"></translation>
+        <translation>Velc gar vadītāju, lai pārvietotu krāsu un šķērsgriezumu</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/conductordefinitionmark.cpp" line="304"/>
         <source>Move the colour and section</source>
-        <translation type="unfinished"></translation>
+        <translation>Pārvietot krāsu un šķērsgriezumu</translation>
     </message>
 </context>
 <context>
@@ -2748,42 +2748,42 @@ To nosaka šīs lapas opcija “Rādīt vienu potenciāla tekstu katrā lapā”
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="168"/>
         <source>A slanted stroke across the conductor, with its colour above and its section below. Drag it along the conductor to move it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Slīpa svītra pāri vadītājam; tās krāsa redzama virs svītras, bet šķērsgriezums — zem tās. Velc svītru gar vadītāju, lai to pārvietotu.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="171"/>
         <source>Stroke with colour and section</source>
-        <translation type="unfinished"></translation>
+        <translation>Svītra ar krāsu un šķērsgriezumu</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="178"/>
         <source>From the start :</source>
-        <translation type="unfinished"></translation>
+        <translation>No sākuma:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="185"/>
         <source>Where the stroke stands, as a share of the conductor&apos;s length from its start. &quot;Middle&quot;: the middle of its longest stretch.</source>
-        <translation type="unfinished"></translation>
+        <translation>Svītras novietojums, izteikts kā daļa no vadītāja garuma, mērot no tā sākuma. “Vidus” ir garākā posma viduspunkts.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="188"/>
         <source>Middle</source>
-        <translation type="unfinished">Vidū</translation>
+        <translation>Vidū</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="191"/>
         <source> %</source>
-        <translation type="unfinished"> %</translation>
+        <translation> %</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>With the stroke shown, the conductor&apos;s own text is hidden: the stroke already gives the colour and the section.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ja svītra ir redzama, vadītāja teksts tiek paslēpts, jo svītra jau parāda krāsu un šķērsgriezumu.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="213"/>
         <source>The stroke replaces the conductor&apos;s text</source>
-        <translation type="unfinished"></translation>
+        <translation>Svītra aizstāj vadītāja tekstu</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="315"/>
@@ -2845,12 +2845,12 @@ To nosaka šīs lapas opcija “Rādīt vienu potenciāla tekstu katrā lapā”
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="544"/>
         <source>Custom dash pattern</source>
-        <translation type="unfinished"></translation>
+        <translation>Pielāgots pārtraukto līniju raksts</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="559"/>
         <source>Dash length :</source>
-        <translation type="unfinished"></translation>
+        <translation>Svītras garums:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="566"/>
@@ -2858,27 +2858,27 @@ To nosaka šīs lapas opcija “Rādīt vienu potenciāla tekstu katrā lapā”
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="618"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="644"/>
         <source> du</source>
-        <translation type="unfinished"></translation>
+        <translation> du</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="585"/>
         <source>Gap after dash :</source>
-        <translation type="unfinished"></translation>
+        <translation>Atstarpe pēc svītras:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="611"/>
         <source>Dot length :</source>
-        <translation type="unfinished"></translation>
+        <translation>Punkta garums:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="637"/>
         <source>Gap after dot :</source>
-        <translation type="unfinished"></translation>
+        <translation>Atstarpe pēc punkta:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="663"/>
         <source>Drawing units, independent of the line size. Scaling the page scales the pattern.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mērvienības ir zīmēšanas vienības un nav atkarīgas no līnijas biezuma. Lapas mērogošana maina arī raksta mērogu.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="689"/>
@@ -5633,7 +5633,8 @@ Vai turpināt?</translation>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="486"/>
         <source>Last changed: save %1, %2, by %3
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Pēdējās izmaiņas: saglabāts %1, %2; autors: %3
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="492"/>
@@ -7229,17 +7230,17 @@ Pieejamas arī teksta un skaitļu vērtības.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1052"/>
         <source>Designation, type, plant, location, length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Apzīmējums, tips, iekārta, atrašanās vieta, garums:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1085"/>
         <source>Core colors (all of them):</source>
-        <translation type="unfinished"></translation>
+        <translation>Dzīslu krāsas (visas):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1118"/>
         <source>Text alignment:</source>
-        <translation type="unfinished"></translation>
+        <translation>Teksta līdzinājums:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1167"/>
@@ -7369,12 +7370,12 @@ Pieejamas arī teksta un skaitļu vērtības.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
         <source>A symbol&apos;s text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires&apos; texts. Unticked by default: texts turn with their symbol.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagriežot simbolu, tā teksts, kas lasāms no augšas uz leju, tiek apgriezts tajā pašā vietā, lai vertikālie teksti būtu lasāmi no apakšas uz augšu, tāpat kā vadu teksti. Pēc noklusējuma opcija nav atzīmēta, un teksts pagriežas kopā ar simbolu.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
         <source>Upright symbol texts read from bottom to top</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertikālie simbolu teksti lasāmi no apakšas uz augšu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
@@ -7455,22 +7456,22 @@ Pieejamas arī teksta un skaitļu vērtības.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="485"/>
         <source>After a crash, offer projects as they were after their last edit (experimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>Pēc avārijas piedāvāt projektus to stāvoklī pēc pēdējās rediģēšanas (eksperimentāli)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="488"/>
         <source>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kamēr projekts ir atvērts, QElectroTech savā datu mapē glabā tā kopiju, ko atjaunina pēc katras izmaiņas. Ja QElectroTech netiek aizvērts normāli, nākamajā palaišanas reizē šī kopija tiek piedāvāta kopā ar atkopšanas failiem.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="495"/>
         <source>Offer saving a project as one database file, .qetdb (experimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>Piedāvāt saglabāt projektu vienā datubāzes failā .qetdb (eksperimentāli)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="498"/>
         <source>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialogā “Saglabāt kā” būs pieejams .qetdb — viss projekts vienā SQLite failā. Formāts vēl var mainīties, tāpēc svarīgiem projektiem saglabā arī .qet vai .qetz kopiju.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="557"/>
@@ -7904,7 +7905,7 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="635"/>
         <source>Latvian</source>
-        <translation type="unfinished"></translation>
+        <translation>Latviešu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="636"/>
@@ -11636,37 +11637,37 @@ Vispirms piešķiriet lapām citu numerāciju.</numerusform>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="344"/>
         <source>Origin (of a coordinate system):</source>
-        <translation type="unfinished"></translation>
+        <translation>Koordinātu sistēmas sākumpunkts:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="346"/>
         <source>Top-Left</source>
         <comment>project origin</comment>
-        <translation type="unfinished"></translation>
+        <translation>Augšējais kreisais stūris</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="348"/>
         <source>Top-Right</source>
         <comment>project origin</comment>
-        <translation type="unfinished"></translation>
+        <translation>Augšējais labais stūris</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="350"/>
         <source>Bottom-Left</source>
         <comment>project origin</comment>
-        <translation type="unfinished"></translation>
+        <translation>Apakšējais kreisais stūris</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="352"/>
         <source>Bottom-Right</source>
         <comment>project origin</comment>
-        <translation type="unfinished"></translation>
+        <translation>Apakšējais labais stūris</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="354"/>
         <source>Which corner to use as the origin (coordinate system origin) Top - Left corner(default), Top - Right, Bottom - Left, Bottom - Right.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Izvēlies koordinātu sistēmas sākumpunkta stūri: augšējo kreiso (noklusējums), augšējo labo, apakšējo kreiso vai apakšējo labo.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="440"/>
@@ -12039,7 +12040,7 @@ Lai izveidotu failu QElectroTech versijai, kas nevar atvērt %2, izvēlnē Fails
         <location filename="../sources/projectview.cpp" line="348"/>
         <source>Project QElectroTech, one database file (*.qetdb)</source>
         <comment>filetypes allowed when saving a project file</comment>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech projekts — viens datubāzes fails (*.qetdb)</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="435"/>
@@ -13450,22 +13451,22 @@ Pieejamās opcijas:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="715"/>
         <source>Show terminal strip labels at their first terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Rādīt spaiļu joslu apzīmējumus pie to pirmās spailes</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="716"/>
         <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
-        <translation type="unfinished"></translation>
+        <translation>Katras spaiļu joslas apzīmējums tiek rādīts pie tās pirmās spailes katrā lapā un pārvietojas kopā ar to</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
         <source>Show terminal strip bridges between their terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Rādīt tiltsavienojumus starp spailēm</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="726"/>
         <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Katrā lapā blakus esošas ar tiltu savienotas spailes tiek savienotas ar līniju</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="816"/>
@@ -13552,32 +13553,32 @@ Lai novietotu brīvi, pārvietošanas laikā turiet nospiestu Ctrl.</translation
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="934"/>
         <source>Zoom of the folio on screen; a click offers fixed ones</source>
-        <translation type="unfinished"></translation>
+        <translation>Lapas mērogs ekrānā; noklikšķinot, var izvēlēties fiksētu mērogu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="940"/>
         <source>%1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 %</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="946"/>
         <source>Whole folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa lapa</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="976"/>
         <source>History of saves...</source>
-        <translation type="unfinished"></translation>
+        <translation>Saglabāšanas vēsture...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="980"/>
         <source>Export for delivery...</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportēt nodošanai...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="981"/>
         <source>Write a copy of the project without the history of its saves</source>
-        <translation type="unfinished"></translation>
+        <translation>Izveidot projekta kopiju bez saglabāšanas vēstures</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1019"/>
@@ -14073,86 +14074,86 @@ Lai novietotu brīvi, pārvietošanas laikā turiet nospiestu Ctrl.</translation
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2311"/>
         <source>%1 was changed</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ir mainīts</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2313"/>
         <source>Another program changed %1 since QElectroTech saved it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cita programma ir mainījusi %1 kopš QElectroTech pēdējās saglabāšanas.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2314"/>
         <source>The content of %1 is not what QElectroTech saved: another program changed it, or it is damaged.</source>
-        <translation type="unfinished"></translation>
+        <translation>Faila %1 saturs neatbilst QElectroTech saglabātajam: to ir mainījusi cita programma vai fails ir bojāts.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2319"/>
         <source>Go back to the saved state</source>
-        <translation type="unfinished"></translation>
+        <translation>Atjaunot saglabāto stāvokli</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2320"/>
         <source>Open it with its changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Atvērt ar veiktajām izmaiņām</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2322"/>
         <source>Going back rebuilds the project as QElectroTech saved it, from the repair data the file keeps. The file is written only when you save.</source>
-        <translation type="unfinished"></translation>
+        <translation>Atjaunojot saglabāto stāvokli, projekts tiek izveidots no jauna, izmantojot failā glabātos labošanas datus. Fails tiek ierakstīts tikai tad, kad saglabā projektu.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2324"/>
         <source>The file is written only when you save.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fails tiek ierakstīts tikai tad, kad saglabā projektu.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2347"/>
         <source>%1 is open with the changes another program made to it.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ir atvērts ar citas programmas veiktajām izmaiņām.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2352"/>
         <source>The changes another program made to %1 were undone: it is open as QElectroTech saved it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Citas programmas veiktās izmaiņas failā %1 ir atsauktas; tas ir atvērts tādā stāvoklī, kādu saglabāja QElectroTech.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2354"/>
         <source>%1 was damaged: QElectroTech repaired %n page(s) of it from the repair data the file keeps.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 bija bojāts. Izmantojot failā glabātos labošanas datus, QElectroTech atjaunoja %n lapu.</numerusform>
+            <numerusform>%1 bija bojāts. Izmantojot failā glabātos labošanas datus, QElectroTech atjaunoja %n lapas.</numerusform>
+            <numerusform>%1 bija bojāts. Izmantojot failā glabātos labošanas datus, QElectroTech atjaunoja %n lapu.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2357"/>
         <source>%1 was damaged: QElectroTech repaired its header.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 bija bojāts. QElectroTech atjaunoja tā galveni.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2359"/>
         <source>The repair data %1 keeps was damaged; the project itself was not.</source>
-        <translation type="unfinished"></translation>
+        <translation>Failā %1 glabātie labošanas dati bija bojāti; pats projekts nebija bojāts.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2360"/>
         <source>Project repaired</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekts ir atjaunots</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2361"/>
         <source>Save the project to keep it so.</source>
-        <translation type="unfinished"></translation>
+        <translation>Saglabā projektu, lai saglabātu šo stāvokli.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2536"/>
         <source>Cannot go back to the saved state</source>
-        <translation type="unfinished"></translation>
+        <translation>Saglabāto stāvokli nevar atjaunot</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2537"/>
         <source>The other program rewrote too much of %1 for its repair data to rebuild the state QElectroTech saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cita programma failā %1 ir veikusi pārāk daudz izmaiņu, lai ar failā glabātajiem labošanas datiem varētu atjaunot QElectroTech saglabāto stāvokli.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2657"/>
@@ -14218,98 +14219,98 @@ Vadītāji netiek rādīti, bet paliek failā un atkal tiks savienoti ar spailē
         <location filename="../sources/qetdiagrameditor.cpp" line="5710"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="5732"/>
         <source>History of saves</source>
-        <translation type="unfinished"></translation>
+        <translation>Saglabāšanas vēsture</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5529"/>
         <source>Keep a history of saves in this file</source>
-        <translation type="unfinished"></translation>
+        <translation>Glabāt šajā failā saglabāšanas vēsturi</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5533"/>
         <source>all</source>
-        <translation type="unfinished">visi</translation>
+        <translation>visi</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5534"/>
         <source>The oldest saves are dropped from the history at each save beyond this number</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikreiz, kad saglabāšanas reižu skaits pārsniedz šo vērtību, no vēstures tiek dzēsti vecākie saglabājumi</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5535"/>
         <source>Saves to keep:</source>
-        <translation type="unfinished"></translation>
+        <translation>Saglabājamo versiju skaits:</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5541"/>
         <source>No.</source>
-        <translation type="unfinished">Nr.</translation>
+        <translation>Nr.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5541"/>
         <source>Saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Saglabāts</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5541"/>
         <source>By</source>
-        <translation type="unfinished"></translation>
+        <translation>Autors</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5541"/>
         <source>Changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Izmaiņas</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5550"/>
         <source>Open as it was</source>
-        <translation type="unfinished"></translation>
+        <translation>Atvērt iepriekšējā stāvoklī</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5551"/>
         <source>Open the project as it was after the selected save, read-only</source>
-        <translation type="unfinished"></translation>
+        <translation>Atvērt projektu tādā stāvoklī, kādā tas bija pēc atlasītās saglabāšanas reizes; tikai lasīšanai</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5552"/>
         <source>Compare</source>
-        <translation type="unfinished"></translation>
+        <translation>Salīdzināt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5553"/>
         <source>What the selected save changed, or what changed between two selected saves</source>
-        <translation type="unfinished"></translation>
+        <translation>Atlasītās saglabāšanas reizes veiktās izmaiņas vai izmaiņas starp divām atlasītajām saglabāšanas reizēm</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5592"/>
         <source>A history is kept only in a project saved as .qetdb (File &gt; Save as).</source>
-        <translation type="unfinished"></translation>
+        <translation>Vēsture tiek glabāta tikai projektā, kas saglabāts kā .qetdb (Fails &gt; Saglabāt kā).</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5593"/>
         <source>This file keeps no history. Switched on, each save records who saved, when and what changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Šajā failā vēsture netiek glabāta. Ieslēdzot šo opciju, katrā saglabāšanas reizē tiek reģistrēts, kurš un kad saglabāja failu un kādas izmaiņas veica.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5595"/>
         <source>Each save records who saved, when and what changed. Copies of the file carry this history: use File &gt; Export for delivery to send a project without it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Katrā saglabāšanas reizē tiek reģistrēts, kurš un kad saglabāja failu un kādas izmaiņas veica. Šī vēsture tiek saglabāta arī faila kopijās. Lai nosūtītu projektu bez vēstures, izmanto “Fails &gt; Eksportēt nodošanai”.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5605"/>
         <source>History started</source>
-        <translation type="unfinished"></translation>
+        <translation>Vēstures sākums</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5614"/>
         <source>Delete the history this file keeps? It cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dzēst šajā failā saglabāto vēsturi? Šo darbību nevar atsaukt.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5622"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="5634"/>
         <source>The history could not be changed: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Neizdevās mainīt vēsturi: %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5655"/>
@@ -14318,118 +14319,118 @@ Vadītāji netiek rādīti, bet paliek failā un atkal tiks savienoti ar spailē
         <location filename="../sources/qetdiagrameditor.cpp" line="5675"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="5681"/>
         <source>Export for delivery</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportēt nodošanai</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5656"/>
         <source>Only a project saved as .qetdb keeps a history to leave out (File &gt; Save as).</source>
-        <translation type="unfinished"></translation>
+        <translation>Izlaižamo vēsturi glabā tikai projekti, kas saglabāti kā .qetdb (Fails &gt; Saglabāt kā).</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5662"/>
         <source>The copy is made from the saved file. Save the project first?</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopija tiks izveidota no saglabātā faila. Vai vispirms saglabāt projektu?</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5670"/>
         <source>%1 - delivery.qetdb</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 — nodošanai.qetdb</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5671"/>
         <source>QElectroTech project (*.qetdb)</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech projekts (*.qetdb)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5676"/>
         <source>Choose another file than the project&apos;s own.</source>
-        <translation type="unfinished"></translation>
+        <translation>Izvēlies citu failu, nevis pašu projekta failu.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5682"/>
         <source>The copy could not be written: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Neizdevās ierakstīt kopiju: %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5685"/>
         <source>Copy without history written to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopija bez vēstures ir izveidota: %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5699"/>
         <source>%1 - save %2.qetdb</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 — saglabājums %2.qetdb</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5711"/>
         <source>Save %1 could not be written again: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Neizdevās vēlreiz ierakstīt saglabājumu %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5733"/>
         <source>The saves could not be compared: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Neizdevās salīdzināt saglabājumus: %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5756"/>
         <source>Changes from save %1 to save %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Izmaiņas no saglabājuma %1 līdz saglabājumam %2</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5761"/>
         <source>Kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Veids</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5761"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="5772"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Lapa</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5761"/>
         <source>Name</source>
-        <translation type="unfinished">Nosaukums</translation>
+        <translation>Nosaukums</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5761"/>
         <source>Change</source>
-        <translation type="unfinished"></translation>
+        <translation>Izmaiņa</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5770"/>
         <source>Symbol</source>
-        <translation type="unfinished">Simbols</translation>
+        <translation>Simbols</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5771"/>
         <source>Wire</source>
-        <translation type="unfinished">Vads</translation>
+        <translation>Vads</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5773"/>
         <source>Drawn item</source>
-        <translation type="unfinished"></translation>
+        <translation>Zīmējuma elements</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5774"/>
         <source>added</source>
-        <translation type="unfinished"></translation>
+        <translation>pievienots</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5775"/>
         <source>removed</source>
-        <translation type="unfinished"></translation>
+        <translation>noņemts</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5776"/>
         <source>changed</source>
-        <translation type="unfinished"></translation>
+        <translation>mainīts</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5789"/>
         <source>Not in the project now</source>
-        <translation type="unfinished"></translation>
+        <translation>Projektā vairs nav</translation>
     </message>
     <message>
         <source>QElectroTech project(*.qet);;XML Files (*.xml);;All files (*)</source>
@@ -16226,19 +16227,19 @@ Kā rīkoties?</translation>
     <message>
         <location filename="../sources/qetproject.cpp" line="3013"/>
         <source>QElectroTech project (*.qet *.qetz *.qetdb)</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech projekts (*.qet *.qetz *.qetdb)</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="3041"/>
         <location filename="../sources/qetproject.cpp" line="3063"/>
         <source>a history is kept only in a project saved as .qetdb</source>
-        <translation type="unfinished"></translation>
+        <translation>Vēsture tiek glabāta tikai projektā, kas saglabāts kā .qetdb</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="3045"/>
         <location filename="../sources/qetproject.cpp" line="3067"/>
         <source>the file was changed on disk since it was opened or saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Fails diskā ir mainīts kopš tā atvēršanas vai pēdējās saglabāšanas</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="4293"/>
@@ -16437,7 +16438,7 @@ Kā rīkoties?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="404"/>
         <source>&amp;Format text of cells...</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Formatēt šūnu tekstu...</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="409"/>
@@ -17173,25 +17174,25 @@ Kā rīkoties?</translation>
         <location filename="../sources/titleblockcell.cpp" line="149"/>
         <source>label font</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lauka nosaukuma fonts</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="151"/>
         <source>value font</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vērtības fonts</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="153"/>
         <source>label colour</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lauka nosaukuma krāsa</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="155"/>
         <source>value colour</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vērtības krāsa</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="290"/>
@@ -18803,107 +18804,107 @@ Lai to iespējotu: atveriet Konfigurēt QElectroTech &gt; Vispārīgi &gt; Proje
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="332"/>
         <source>the file is damaged</source>
-        <translation type="unfinished"></translation>
+        <translation>Fails ir bojāts</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="337"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="342"/>
         <source>the file is not a QElectroTech project</source>
-        <translation type="unfinished"></translation>
+        <translation>Fails nav QElectroTech projekts</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="350"/>
         <source>it was saved by a newer QElectroTech (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tas ir saglabāts ar jaunāku QElectroTech versiju (%1)</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="360"/>
         <source>the file holds SQL that QElectroTech does not expect (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Failā ir SQL komanda, ko QElectroTech neparedz (%1)</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="366"/>
         <source>the file is damaged: an item refers to one that is not there</source>
-        <translation type="unfinished"></translation>
+        <translation>Fails ir bojāts: viens elements atsaucas uz neesošu elementu</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="399"/>
         <source>the file could not be replaced (error %1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Failu neizdevās aizstāt (kļūda %1)</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="442"/>
         <source>the file could not be opened</source>
-        <translation type="unfinished"></translation>
+        <translation>Failu neizdevās atvērt</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="815"/>
         <source>the file could not be read back</source>
-        <translation type="unfinished"></translation>
+        <translation>Failu neizdevās nolasīt atkārtoti</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1217"/>
         <source>the file could not be written</source>
-        <translation type="unfinished"></translation>
+        <translation>Failu neizdevās ierakstīt</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1239"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1747"/>
         <source>it keeps no revision %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Tajā nav saglabāta versija %1</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1248"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1765"/>
         <source>this build of QElectroTech has no SQLite session support</source>
-        <translation type="unfinished"></translation>
+        <translation>Šim QElectroTech būvējumam nav SQLite sesiju atbalsta</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1255"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1755"/>
         <source>the changes of revision %1 were not recorded</source>
-        <translation type="unfinished"></translation>
+        <translation>Versijas %1 izmaiņas netika reģistrētas</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1260"/>
         <source>revision %1 cannot be undone</source>
-        <translation type="unfinished"></translation>
+        <translation>Versiju %1 nevar atsaukt</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1270"/>
         <source>revision %1 does not undo cleanly</source>
-        <translation type="unfinished"></translation>
+        <translation>Versijas %1 atsaukšana neizdodas bez kļūdām</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1364"/>
         <source>the file could not be written to disk</source>
-        <translation type="unfinished"></translation>
+        <translation>Failu neizdevās ierakstīt diskā</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1426"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1537"/>
         <source>the file could not be read</source>
-        <translation type="unfinished"></translation>
+        <translation>Failu neizdevās nolasīt</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1454"/>
         <source>it has %n damaged page(s), more than the repair data it keeps can rebuild</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Tajā ir %n bojāta lapa — vairāk, nekā var atjaunot ar tajā saglabātajiem labošanas datiem.</numerusform>
+            <numerusform>Tajā ir %n bojātas lapas — vairāk, nekā var atjaunot ar tajā saglabātajiem labošanas datiem.</numerusform>
+            <numerusform>Tajā ir %n bojātu lapu — vairāk, nekā var atjaunot ar tajā saglabātajiem labošanas datiem.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1514"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1554"/>
         <source>its content is not what QElectroTech saved: it is damaged, or another program changed it</source>
-        <translation type="unfinished"></translation>
+        <translation>Faila saturs neatbilst QElectroTech saglabātajam: fails ir bojāts vai arī to ir mainījusi cita programma</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1625"/>
         <source>keep at least 2 saves, or 0 for all</source>
-        <translation type="unfinished"></translation>
+        <translation>Saglabāt vismaz 2 versijas; 0 nozīmē saglabāt visas</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1631"/>
@@ -18911,133 +18912,133 @@ Lai to iespējotu: atveriet Konfigurēt QElectroTech &gt; Vispārīgi &gt; Proje
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1738"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1798"/>
         <source>it keeps no history</source>
-        <translation type="unfinished"></translation>
+        <translation>Tajā netiek glabāta izmaiņu vēsture</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1742"/>
         <source>revision %1 does not come before revision %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Versija %1 nav pirms versijas %2</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1773"/>
         <source>the changes of revision %1 do not follow on</source>
-        <translation type="unfinished"></translation>
+        <translation>Versijas %1 izmaiņas nav secīgs turpinājums</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="110"/>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="168"/>
         <source>Format title block cells</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatēt pamatuzraksta šūnas</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="171"/>
         <source>Only the checked properties are changed. Alignment applies to the whole cell.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiek mainīti tikai atzīmētie rekvizīti. Līdzinājums attiecas uz visu šūnu.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="178"/>
         <source>Selected cells</source>
-        <translation type="unfinished"></translation>
+        <translation>Atlasītās šūnas</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="179"/>
         <source>All text cells</source>
-        <translation type="unfinished"></translation>
+        <translation>Visas teksta šūnas</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="181"/>
         <source>Apply to</source>
-        <translation type="unfinished"></translation>
+        <translation>Lietot:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="184"/>
         <source>Captions and values</source>
-        <translation type="unfinished"></translation>
+        <translation>Lauku nosaukumi un vērtības</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="185"/>
         <source>Captions only</source>
-        <translation type="unfinished"></translation>
+        <translation>Tikai lauku nosaukumi</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="186"/>
         <source>Values only</source>
-        <translation type="unfinished"></translation>
+        <translation>Tikai vērtības</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="202"/>
         <source>Unchanged</source>
-        <translation type="unfinished"></translation>
+        <translation>Nemainīt</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="203"/>
         <source>On</source>
-        <translation type="unfinished"></translation>
+        <translation>Ieslēgts</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="204"/>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Izslēgts</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="211"/>
         <source>Choose font...</source>
-        <translation type="unfinished"></translation>
+        <translation>Izvēlēties fontu...</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="213"/>
         <source>Font family</source>
-        <translation type="unfinished"></translation>
+        <translation>Fontu saime</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="214"/>
         <source>Font size</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonta lielums</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="215"/>
         <source>Bold</source>
-        <translation type="unfinished">Treknraksts</translation>
+        <translation>Treknraksts</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="216"/>
         <source>Italic</source>
-        <translation type="unfinished">Kursīvs</translation>
+        <translation>Kursīvs</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="231"/>
         <source>Choose colour...</source>
-        <translation type="unfinished"></translation>
+        <translation>Izvēlēties krāsu...</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="233"/>
         <source>Text colour</source>
-        <translation type="unfinished"></translation>
+        <translation>Teksta krāsa</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="246"/>
         <source>Opacity</source>
-        <translation type="unfinished"></translation>
+        <translation>Necaurspīdīgums</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="249"/>
         <source>Left</source>
-        <translation type="unfinished">Pa kreisi</translation>
+        <translation>Pa kreisi</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="250"/>
         <source>Centre</source>
-        <translation type="unfinished"></translation>
+        <translation>Centrēt</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="251"/>
         <source>Right</source>
-        <translation type="unfinished">Pa labi</translation>
+        <translation>Pa labi</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="252"/>
         <source>Horizontal alignment</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontālais līdzinājums</translation>
     </message>
 </context>
 <context>
