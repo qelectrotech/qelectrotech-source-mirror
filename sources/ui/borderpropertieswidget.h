@@ -22,6 +22,8 @@
 
 #include <QWidget>
 
+class QLabel;
+
 namespace Ui {
 	class BorderPropertiesWidget;
 }
@@ -46,11 +48,13 @@ class BorderPropertiesWidget : public QWidget
 	private:
 		void applyPaperSize();
 		void showMatchingPaperSize();
+		void showFolioSize();
 		bool fitPaperSize(int index, bool landscape,
 						  int &columns, int &column_width,
 						  int &rows, int &row_height) const;
 
 		Ui::BorderPropertiesWidget *ui;
+		QLabel *m_folio_size_label = nullptr;
 		BorderProperties m_properties;
 			/// height of the title block the folio is drawn with, and
 			/// the edge it sits on: it counts in the size of the page
@@ -61,6 +65,11 @@ class BorderPropertiesWidget : public QWidget
 			/// true once the user picked a paper size, until the columns or
 			/// rows are edited by hand
 		bool m_paper_picked = false;
+			/// the column width and row height last set by hand: a paper
+			/// size is fitted from these, not from what a previous paper
+			/// size left, so A4, A3 and A4 again gives the first A4 back
+		int m_wanted_column_width = 0;
+		int m_wanted_row_height = 0;
 };
 
 #endif // BORDERPROPERTIESWIDGET_H
