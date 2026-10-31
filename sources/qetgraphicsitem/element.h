@@ -307,6 +307,14 @@ class Element : public QetGraphicsItem
 			/// kind information "corner" set to "true"
 		bool isCorner() const {return m_corner;}
 		/**
+		 * @brief takesSchemeNumber
+		 * Whether this element is given a number by an element numbering
+		 * scheme (@sa ElementData::takesSchemeNumber): a slave, a report or
+		 * a conductor definition is not numbered.
+		 * @return true when the element numbering schemes apply to it
+		 */
+		bool takesSchemeNumber() const;
+		/**
 		 * @brief linkTypeToString
 		 * use elementData function instead
 		 * @return
