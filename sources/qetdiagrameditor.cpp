@@ -2036,6 +2036,15 @@ void QETDiagramEditor::setUpMenu()
 */
 void QETDiagramEditor::closeEvent(QCloseEvent *qce)
 {
+		//The projects open now, for QETApp::reopenLastProjects(), when this
+		//is the last window: closing one of several mid-session keeps
+		//nothing, and File > Quit records those of every window itself
+		//(QETApp::closeEveryEditor())
+	QStringList open_here;
+	for (ProjectView *project_view : openedProjects())
+		if (!project_view->project()->filePath().isEmpty())
+			open_here << project_view->project()->filePath();
+
 	// quitte directement s'il n'y a aucun projet ouvert
 	bool can_quit = true;
 	if (openedProjects().count()) {
@@ -2054,6 +2063,8 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce)
 		}
 	}
 	if (can_quit) {
+		if (QETApp::diagramEditors().size() <= 1)
+			QSettings().setValue(QStringLiteral("projects/open_at_quit"), open_here);
 		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
 		qce -> accept();

@@ -399,6 +399,11 @@ add_dependencies(tst_duplicatelabels qelectrotech_lrelease)
 qet_add_app_test(tst_conductordefinitionmark tst_conductordefinitionmark.cpp)
 target_compile_definitions(tst_conductordefinitionmark PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
+# The projects of the last session are opened again at start, and the
+# ones open when the editor closes are kept for the next start.
+qet_add_app_test(tst_reopenprojects tst_reopenprojects.cpp)
+target_compile_definitions(tst_reopenprojects PRIVATE
+  QET_FIXTURE="${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet")
 
 # Space on a picture turns its own transform, which the file saves (#1413),
 # alone and with a group.

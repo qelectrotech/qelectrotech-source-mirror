@@ -205,6 +205,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
 	ui->m_project_lock->setChecked(settings.value("projectlock/enabled", true).toBool());
+	ui->m_reopen_projects->setChecked(settings.value("projects/reopen_at_start", false).toBool());
+	ui->m_offer_backups->setChecked(settings.value("projects/offer_backups", true).toBool());
 	ui->m_working_copy_recovery->setChecked(QetSettings::workingCopyRecovery());
 	ui->m_qetdb_enabled->setChecked(QetSettings::qetdbEnabled());
 	ui->m_previous_versions_sb->setValue(PreviousVersions::count());
@@ -434,6 +436,8 @@ void GeneralConfigurationPage::applyConf()
 	}
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
 	settings.setValue("projectlock/enabled", ui->m_project_lock->isChecked());
+	settings.setValue("projects/reopen_at_start", ui->m_reopen_projects->isChecked());
+	settings.setValue("projects/offer_backups", ui->m_offer_backups->isChecked());
 	QetSettings::setWorkingCopyRecovery(ui->m_working_copy_recovery->isChecked());
 	QetSettings::setQetdbEnabled(ui->m_qetdb_enabled->isChecked());
 	PreviousVersions::setCount(ui->m_previous_versions_sb->value());
