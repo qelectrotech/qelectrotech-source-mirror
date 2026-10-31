@@ -18,6 +18,7 @@
 #ifndef CROSSREFITEM_H
 #define CROSSREFITEM_H
 
+#include "../properties/elementdata.h"
 #include "../properties/xrefproperties.h"
 
 #include <QGraphicsObject>
@@ -73,6 +74,9 @@ class CrossRefItem : public QGraphicsObject
 				const Element *elmt,
 				const XRefProperties &xrp);
 
+		static XRefProperties propertiesFor(const Element *elmt);
+		bool followsOwnPosition() const;
+
 		/**
 			@brief The CONTACTS enum
 		*/
@@ -121,6 +125,9 @@ class CrossRefItem : public QGraphicsObject
 		void mouseDoubleClickEvent (
 				QGraphicsSceneMouseEvent * event ) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
+		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 		void hoverMoveEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 
@@ -151,6 +158,9 @@ class CrossRefItem : public QGraphicsObject
 		QRectF m_bounding_rect;
 		QPainterPath m_shape_path;
 		XRefProperties m_properties;
+		ElementData::XRefDisplay m_display; //the master's own display
+		bool m_dragging = false;
+		QPointF m_drag_origin, m_drag_mouse;
 		int m_drawed_contacts;
 		bool m_update_map = false;
 		QMultiMap <Element *, QRectF> m_hovered_contacts_map;

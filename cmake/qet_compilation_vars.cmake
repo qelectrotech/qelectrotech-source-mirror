@@ -916,6 +916,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.h
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.cpp
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.h
+  ${QET_DIR}/sources/ui/xrefdisplaydialog.cpp
+  ${QET_DIR}/sources/ui/xrefdisplaydialog.h
   ${QET_DIR}/sources/ui/xrefpropertieswidget.cpp
   ${QET_DIR}/sources/ui/xrefpropertieswidget.h
   ${QET_DIR}/sources/ui/configpage/configpage.h
