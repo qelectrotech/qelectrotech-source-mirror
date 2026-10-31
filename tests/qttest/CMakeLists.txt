@@ -141,7 +141,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/strip_label_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/strip_labels.qet)
-  set_tests_properties(tst_striplabelintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_striplabelintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The pointer: a four-way arrow over what a drag moves; with the
   # crosshair, drawn on its grid point in place of the system's.
@@ -233,7 +233,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/sheet_tab_layout_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_sheettablayout PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_sheettablayout PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 
