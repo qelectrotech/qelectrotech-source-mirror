@@ -88,7 +88,19 @@ class projectDataBase : public QObject
 			*/
 		bool hasWorkingCopy() const {return m_working_copy;}
 		static QString workingCopyDir();
+			/// Start from the tables of the checked .qetdb copy @p file
+			/// (S4x X2, projectdatabaseadopt.cpp)
+		bool adoptFile(const QString &file, QString *error = nullptr);
+		bool adopted() const {return m_adopted;}
+		QSet<QUuid> foliosWithCableWires() const;
+		QString stateDump() const;
 		bool copyTo(const QString &file, QString *error = nullptr);
+			/// The content digests (QetDbFile) of the tables the last
+			/// copyTo() copied that no one wrote to since the file saved
+			/// before it: a save reuses them. savedDigests() says that file
+			/// was saved, with each table's (QETDB-S6-SCOPE.md §8 H5)
+		QHash<QString, QByteArray> unchangedDigests() const {return m_copy_reuse;}
+		void savedDigests(const QHash<QString, QByteArray> &digests);
 		QString workingCopyPath() const {return m_working_copy_path;}
 			/// The project is open: first commit, the copy is ready
 		void workingCopyOpened();
@@ -146,6 +158,16 @@ class projectDataBase : public QObject
 				says so rather than truncating quietly.
 			*/
 		static constexpr int MaxResultRows = 100000;
+			/**
+				The views other tools may rely on (QETDB-S10, Q1): folios,
+				devices, wires and links, in engineering words.
+				They keep their names and columns from one QElectroTech to
+				the next; a column is only ever added. PublicViewsVersion is
+				written to a .qetdb's qet_format as "views".
+			*/
+		static constexpr int PublicViewsVersion = 1;
+		static QStringList publicViews();
+		static QStringList publicViewStatements();
 		QSqlDatabase database() const {return m_data_base;}
 		int excludedConductorCount() const;
 
@@ -248,7 +270,7 @@ class projectDataBase : public QObject
 		static QList<ProjectSetting> elementTextRowsOf(const QDomElement &element);
 		bool storeElementTexts(const QUuid &element, const QList<ProjectSetting> &rows);
 		QList<ProjectSetting> elementTextRows(const QUuid &element) const {
-			return m_element_texts.value(element);}
+			readElementTexts(element); return m_element_texts.value(element);}
 		void forgetElementTexts(const QUuid &element);
 		static QList<ProjectSetting> elementValueRowsOf(const QDomElement &element);
 		bool storeElementValues(const QUuid &element, const QList<ProjectSetting> &rows);
@@ -340,7 +362,13 @@ class projectDataBase : public QObject
 		static Numbering numberingOf(const QSqlDatabase &db);
 			/// The project @p db holds, written from its tables alone
 			/// (projectdatabasewriter.cpp)
-		static QDomDocument toDocument(const QSqlDatabase &db);
+		static QDomDocument toDocument(const QSqlDatabase &db, bool deferred_folios = false);
+		static bool readDocument(const QString &database_file, QDomDocument *document,
+								 QString *error = nullptr, bool deferred_folios = false);
+			/// The attribute of a folio element whose items are still in the
+			/// database (S4x X3)
+		static constexpr const char *deferred_content = "qetdb-deferred";
+		void writeFolioContent(QDomElement &folio) const;
 		static bool writeDocument(const QString &database_file, const QString &project_file,
 								  QString *error = nullptr);
 		bool writeProjectFromDatabase(const QString &project_file, QString *error = nullptr);
@@ -472,8 +500,16 @@ class projectDataBase : public QObject
 		void removeWorkingCopy();
 		void endTransaction();
 		void beginTransaction();
+		void markCopy(QSqlQuery &query);
 		qint64 totalChanges() const;
+			//What the save of the file copyTo() wrote may reuse, and the
+			//write generation it was copied at (markCopy())
+		QHash<QString, QByteArray> m_saved_digests, m_copy_reuse;
+		qint64 m_copy_generation = -1;
 		bool m_working_copy = false, m_working_copy_ready = false;
+		bool m_adopted = false;
+		void loadCaches();
+		void recountBlobs();
 		QString m_working_copy_path;
 		std::unique_ptr<QLockFile> m_working_copy_lock;
 		QTimer *m_working_copy_poll = nullptr;
@@ -483,6 +519,7 @@ class projectDataBase : public QObject
 		void createSummaryView();
 		void createWiringListView();
 		void createDrawingItemView();
+		void createPublicViews();
 		void populateDiagramTable();
 		void updateFolioPositions();
 		void flushElementPositions();
@@ -526,7 +563,7 @@ class projectDataBase : public QObject
 		bool linksLater(const QUuid &uuid) const;
 		QList<std::pair<QUuid, int>> rowsToWrite(Element *element, const std::function<bool(const QUuid &)> &waiting,
 												 const QList<std::pair<QUuid, int>> &old_rows) const;
-		void populateDrawingItemTables();
+		void populateDrawingItemTables(bool keep_rows = false);
 		bool populateFromDocument(const QDomDocument &document, QString *why = nullptr);
 		bool writeDrawingItem(QObject *object);
 		void writeDrawnItem(QObject *object, const QUuid &uuid, Diagram *diagram);
@@ -643,7 +680,14 @@ class projectDataBase : public QObject
 		QHash<QUuid, DiagramContext> m_element_kind_information;
 		QHash<QUuid, ElementPlacement> m_element_placements;
 		QHash<QUuid, autonum::sequentialNumbers> m_sequences;
-		QHash<QUuid, QList<ProjectSetting>> m_element_texts;
+			//Read from an adopted file one symbol at a time, the first time
+			//it is asked for (readElementTexts()): most of the rows of a big
+			//project, and most are never asked for
+		mutable QHash<QUuid, QList<ProjectSetting>> m_element_texts;
+		mutable QSet<QUuid> m_element_texts_read;
+		mutable bool m_element_texts_lazy = false;
+		void readElementTexts(const QUuid &element) const;
+		void readAllElementTexts() const;
 		QHash<QUuid, QList<ProjectSetting>> m_element_values;
 		QHash<QUuid, QList<ProjectSetting>> m_folio_values;
 		QHash<QUuid, QList<ProjectSetting>> m_cable_values;

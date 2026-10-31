@@ -343,7 +343,8 @@ void TerminalEditor::labelFontClicked()
 	m_locked = true;
 
 	bool ok;
-	QFont font = QFontDialog::getFont(&ok, m_part->labelFont(), this);
+	QFont font = QFontDialog::getFont(&ok, m_part->labelFont(), this, QString(),
+									  QFontDialog::DontUseNativeDialog);
 	if (ok && font != m_part->labelFont()) {
 		ui->m_font_pb->setText(font.family());
 		ui->m_label_size_sb->blockSignals(true);

@@ -9,6 +9,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // The shapes, free texts and tables of a folio are in the project database,
 // one drawing_item row per value of what their toXml() writes, whether the
@@ -109,7 +110,7 @@ class tst_drawingitemrows : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js, in});
-		if (!proc.waitForFinished(120000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(120000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		if (log) *log = out;
 		QStringList result;
@@ -161,7 +162,7 @@ class tst_drawingitemrows : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/") + example, saved});
-		QVERIFY(proc.waitForFinished(180000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(180000)));
 		QVERIFY(QFile::exists(saved));
 
 		QString lazy_log;
@@ -180,6 +181,35 @@ private slots:
 	{
 		QVERIFY(m_dir.isValid());
 		QVERIFY(QFile::exists(QStringLiteral(QET_TEST_BINARY_PATH)));
+	}
+
+	// An item's rows are rewritten by its uuid and a folio's read by the
+	// folio's: both are indexed, or a project with many shapes and texts
+	// looks through every row for each (a 136-folio one took 6 s to open)
+	void drawnRowsAreIndexed()
+	{
+		const QString js = m_dir.filePath(QStringLiteral("indexes.js"));
+		const QString home = m_dir.filePath(QStringLiteral("home-indexes"));
+		QDir().mkpath(home);
+		QFile s(js);
+		QVERIFY(s.open(QIODevice::WriteOnly));
+		s.write("qet.log('INDEXES ' + JSON.stringify(qet.query(\"SELECT sql FROM sqlite_master "
+				"WHERE type = 'index' AND tbl_name = 'drawing_item' ORDER BY name\")));");
+		s.close();
+		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
+		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
+		env.insert(QStringLiteral("HOME"), home);
+		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
+		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
+		QProcess proc;
+		proc.setProcessEnvironment(env);
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
+				   {QStringLiteral("--run"), js, QStringLiteral(QET_EXAMPLES_DIR "/grafcet.qet")});
+		QVERIFY(proc.waitForFinished(QetTest::timeout(120000)));
+		const QString log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
+		QVERIFY2(log.contains(QStringLiteral("ON drawing_item (folio_uuid)"))
+				 && log.contains(QStringLiteral("ON drawing_item (item_uuid)")), qPrintable(log.right(600)));
 	}
 
 	// Each shape is rows of what it saves: its attributes in name order,

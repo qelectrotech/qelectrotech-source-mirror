@@ -18,6 +18,7 @@
 #include <QtTest>
 #include <QProcess>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 /**
 	A label formula with ten or more sequential numbers: %sequ_10 must get
@@ -40,7 +41,7 @@ class tst_tensequentialnumbers : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), arguments);
-		return proc.waitForFinished(60000)
+		return proc.waitForFinished(QetTest::timeout(60000))
 				&& proc.exitStatus() == QProcess::NormalExit
 				&& proc.exitCode() == 0;
 	}

@@ -8,6 +8,7 @@
 #include <QRegularExpression>
 #include <QTemporaryDir>
 #include <QUuid>
+#include "qettesttimeout.h"
 
 // A project saves, for every placed symbol, where each terminal docked, and
 // its wires name the terminals by that number or by the uuid worked out from
@@ -180,7 +181,7 @@ class tst_movedterminals : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--resave"), in, out});
-		if (!proc.waitForFinished(120000) || proc.exitCode() != 0) return {};
+		if (!proc.waitForFinished(QetTest::timeout(120000)) || proc.exitCode() != 0) return {};
 		Result r;
 		r.log = QString::fromUtf8(proc.readAllStandardError() + proc.readAllStandardOutput());
 		QDomDocument doc;

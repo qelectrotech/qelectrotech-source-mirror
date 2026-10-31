@@ -17,12 +17,17 @@
 */
 #include "previousversions.h"
 
-#include <QCryptographicHash>
 #include <QDateTime>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
 #include <QSettings>
+
+#ifdef Q_OS_WIN
+#	include <windows.h>
+#else
+#	include <unistd.h>
+#endif
 
 namespace {
 const QString CountKey = QStringLiteral("diagrameditor/previous-versions");
@@ -35,13 +40,38 @@ QString versionPrefix(const QFileInfo &info)
 	return info.completeBaseName() + QLatin1Char(' ');
 }
 
-QByteArray digest(const QString &path)
+	//True if the files @p a and @p b hold the same bytes, read until the
+	//first that differs: a saved project differs from its previous
+	//version within its first pages, where hashing both read them whole
+bool sameContent(const QString &a, const QString &b)
 {
-	QFile file(path);
-	if (!file.open(QIODevice::ReadOnly)) return {};
-	QCryptographicHash hash(QCryptographicHash::Sha256);
-	hash.addData(&file);
-	return hash.result();
+	QFile first(a), second(b);
+	if (!first.open(QIODevice::ReadOnly) || !second.open(QIODevice::ReadOnly)
+			|| first.size() != second.size())
+		return false;
+	constexpr qint64 chunk = 1 << 16;
+	while (!first.atEnd()) {
+		const QByteArray x = first.read(chunk), y = second.read(chunk);
+		if (x.isEmpty() || x != y) return false;
+	}
+	return second.atEnd();
+}
+
+	//@p target as a second name of the file @p path, without copying it.
+	//Only for a .qetdb: its save puts a new file in place by rename
+	//(QetDbFile::save()), never writing the old one, which then has no
+	//other name than @p target. False where the folder's file system
+	//has no hard links, and the version is copied
+bool linkVersion(const QString &path, const QString &target)
+{
+	if (!path.endsWith(QLatin1String(".qetdb"), Qt::CaseInsensitive)) return false;
+#ifdef Q_OS_WIN
+	return CreateHardLinkW(reinterpret_cast<const wchar_t *>(QDir::toNativeSeparators(target).utf16()),
+						   reinterpret_cast<const wchar_t *>(QDir::toNativeSeparators(path).utf16()),
+						   nullptr);
+#else
+	return ::link(QFile::encodeName(path).constData(), QFile::encodeName(target).constData()) == 0;
+#endif
 }
 }
 
@@ -66,12 +96,13 @@ QStringList PreviousVersions::kept(const QString &file_path)
 	const QFileInfo info(file_path);
 	const QDir dir(folder(file_path));
 		//Each copy has the time its version was saved (keep()); a .qet and
-		//a .qetz of the same project are versions of it alike
+		//a .qetz or a .qetdb of the same project are versions of it alike
 		//"????-??-?? ??-??-??" written with "\?", so that the compiler doesn't
 		//see the trigraph "??-" in it (-Wtrigraphs)
 	const QString stamp_ = QStringLiteral("?\?\?\?-?\?-?\? ?\?-?\?-?\?");
 	QStringList names = dir.entryList({versionPrefix(info) + stamp_ + QStringLiteral("*.qet"),
-									   versionPrefix(info) + stamp_ + QStringLiteral("*.qetz")},
+									   versionPrefix(info) + stamp_ + QStringLiteral("*.qetz"),
+									   versionPrefix(info) + stamp_ + QStringLiteral("*.qetdb")},
 									  QDir::Files, QDir::Time);
 	QStringList paths;
 	for (const QString &name : std::as_const(names))
@@ -85,8 +116,7 @@ bool PreviousVersions::keep(const QString &file_path, int count, QString *error)
 	if (count <= 0 || !info.isFile()) return true;
 
 	const QStringList versions = kept(file_path);
-	if (!versions.isEmpty() && QFileInfo(versions.first()).size() == info.size()
-			&& digest(versions.first()) == digest(file_path))
+	if (!versions.isEmpty() && sameContent(versions.first(), file_path))
 		return true;
 
 	QDir dir(folder(file_path));
@@ -101,13 +131,15 @@ bool PreviousVersions::keep(const QString &file_path, int count, QString *error)
 	QString target = dir.filePath(stem + QLatin1Char('.') + info.suffix());
 	for (int n = 2 ; QFileInfo::exists(target) ; ++n)
 		target = dir.filePath(stem + QStringLiteral(" (%1).").arg(n) + info.suffix());
-	if (!QFile::copy(file_path, target)) {
-		if (error) *error = QStringLiteral("cannot copy %1 to %2").arg(file_path, target);
-		return false;
+	if (!linkVersion(file_path, target)) {
+		if (!QFile::copy(file_path, target)) {
+			if (error) *error = QStringLiteral("cannot copy %1 to %2").arg(file_path, target);
+			return false;
+		}
+		QFile copy(target);
+		if (copy.open(QIODevice::ReadWrite))
+			copy.setFileTime(saved, QFileDevice::FileModificationTime);
 	}
-	QFile copy(target);
-	if (copy.open(QIODevice::ReadWrite))
-		copy.setFileTime(saved, QFileDevice::FileModificationTime);
 
 	const QStringList all = kept(file_path);
 	for (int i = count ; i < all.size() ; ++i)

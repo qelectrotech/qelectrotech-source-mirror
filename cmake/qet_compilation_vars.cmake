@@ -200,6 +200,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductornumexport.h
   ${QET_DIR}/sources/bomexport.cpp
   ${QET_DIR}/sources/bomexport.h
+  ${QET_DIR}/sources/conductordashpattern.cpp
+  ${QET_DIR}/sources/conductordashpattern.h
   ${QET_DIR}/sources/conductorprofile.cpp
   ${QET_DIR}/sources/conductorprofile.h
   ${QET_DIR}/sources/conductorproperties.cpp
@@ -386,7 +388,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/dataBase/workingcopyrecovery.cpp
   ${QET_DIR}/sources/dataBase/workingcopyrecovery.h
   ${QET_DIR}/sources/dataBase/qetdbfile.cpp
+  ${QET_DIR}/sources/dataBase/projectdatabaseadopt.cpp
   ${QET_DIR}/sources/dataBase/qetdbfile.h
+  ${QET_DIR}/sources/dataBase/qetparity.cpp
+  ${QET_DIR}/sources/dataBase/qetparity.h
   ${QET_DIR}/sources/dataBase/conductorlayout.h
   ${QET_DIR}/sources/dataBase/conductorpath.h
   ${QET_DIR}/sources/dataBase/elementplacement.h
@@ -603,6 +608,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/qetgraphicsitem/conductor.cpp
   ${QET_DIR}/sources/qetgraphicsitem/conductor.h
+  ${QET_DIR}/sources/qetgraphicsitem/conductordefinitionmark.cpp
+  ${QET_DIR}/sources/qetgraphicsitem/conductordefinitionmark.h
   ${QET_DIR}/sources/qetgraphicsitem/conductortextitem.cpp
   ${QET_DIR}/sources/qetgraphicsitem/conductortextitem.h
   ${QET_DIR}/sources/qetgraphicsitem/crossrefitem.cpp
@@ -700,6 +707,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/titleblock/qettemplateeditor.h
   ${QET_DIR}/sources/titleblock/splittedhelpercell.cpp
   ${QET_DIR}/sources/titleblock/splittedhelpercell.h
+  ${QET_DIR}/sources/titleblock/titleblockbulkformat.cpp
+  ${QET_DIR}/sources/titleblock/titleblockbulkformat.h
   ${QET_DIR}/sources/titleblock/templatecellsset.cpp
   ${QET_DIR}/sources/titleblock/templatecellsset.h
   ${QET_DIR}/sources/titleblock/templatecellwidget.cpp
@@ -732,6 +741,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/TerminalStrip/terminalstripbridge.h
   ${QET_DIR}/sources/TerminalStrip/terminalstrip.cpp
   ${QET_DIR}/sources/TerminalStrip/terminalstrip.h
+  ${QET_DIR}/sources/TerminalStrip/terminalstriplabels.cpp
+  ${QET_DIR}/sources/TerminalStrip/terminalstriplabels.h
   ${QET_DIR}/sources/TerminalStrip/terminalstripautoimport.cpp
   ${QET_DIR}/sources/TerminalStrip/terminalstripautoimport.h
   ${QET_DIR}/sources/TerminalStrip/terminalstripdata.cpp

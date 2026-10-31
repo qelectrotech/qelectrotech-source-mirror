@@ -20,6 +20,7 @@
 #include <QDomDocument>
 #include <QProcess>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 /**
 	The title block variables of a save (saveddate, savedtime,
@@ -59,7 +60,7 @@ class tst_savedstamps : public QObject
 		proc.setProcessEnvironment(env);
 		proc.setProcessChannelMode(QProcess::MergedChannels);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), arguments);
-		if (!proc.waitForFinished(120000) || proc.exitStatus() != QProcess::NormalExit
+		if (!proc.waitForFinished(QetTest::timeout(120000)) || proc.exitStatus() != QProcess::NormalExit
 				|| proc.exitCode() != 0)
 			return QString();
 		return QString::fromUtf8(proc.readAll()) + QStringLiteral("\nEXIT 0");

@@ -25,6 +25,7 @@
 #include "borderproperties.h"
 #include "conductorproperties.h"
 #include "dataBase/projectdatabase.h"
+#include "dataBase/qetdbfile.h"
 #include "properties/reportproperties.h"
 #include "properties/xrefproperties.h"
 #include "titleblock/templatescollection.h"
@@ -115,6 +116,7 @@ class QETProject : public QObject
 	public:
 		QETProject (QObject *parent = nullptr);
 		QETProject (const QString &path, QObject * = nullptr);
+		QETProject (const QString &path, QetDbFile::OutsideEdit outside, QObject *parent = nullptr);
 		QETProject (KAutoSaveFile *backup, QObject *parent=nullptr);
 		QETProject (const QString &recovered, const QString &file_path, QObject *parent=nullptr);
 		~QETProject() override;
@@ -136,6 +138,7 @@ class QETProject : public QObject
 		QByteArray containerPicture(const QString &file) const;
 		ProjectState state() const;
 		QString openError() const;
+		QetDbFile::Repair qetdbRepair() const;
 		QList<Diagram *> diagrams() const;
 			//The folios whether their items are built or not
 			//(lazy folios); diagrams() builds them
@@ -341,6 +344,15 @@ class QETProject : public QObject
 		WiringRules::Settings projectWiringRules() const;
 		void setWiringRules(const WiringRules::Settings &rules);
 		void setAutoBreakConductor (bool abc);
+			/// The label of each terminal strip at its first terminal on
+			/// every folio (TerminalStripLabels), off by default
+		bool terminalStripLabelsShown() const { return m_terminal_strip_labels; }
+		void setTerminalStripLabelsShown(bool shown);
+			/// The bridges of the terminal strip editor drawn between
+			/// their terminals on every folio (TerminalStripLabels), off
+			/// by default
+		bool terminalStripBridgesShown() const { return m_terminal_strip_bridges; }
+		void setTerminalStripBridgesShown(bool shown);
 		void setAutoElement (bool ae);
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, const QString&);
@@ -352,7 +364,7 @@ class QETProject : public QObject
 		static QString spliceKeptFolios(QString text, const QHash<int, QByteArray> &kept_folios);
 		bool close();
 		QETResult write(bool overwrite_changed = false);
-		void rememberDiskState(const QByteArray *content = nullptr);
+		void rememberDiskState(const QByteArray *content = nullptr, const QByteArray *hash = nullptr);
 		bool changedOnDisk(QDateTime *when = nullptr) const;
 		bool isReadOnly() const;
 			/// Opened from a .qetz of a later format (opened read-only)
@@ -499,6 +511,9 @@ class QETProject : public QObject
 		static QString openFileFilter();
 		QETResult writeCopyForOlderVersions(const QString &path);
 		bool writeContainerFile(const QString &path, QString *error = nullptr);
+		bool writeDatabaseFile(const QString &path, QString *error = nullptr);
+		bool setKeepHistory(bool on, QString *error = nullptr);
+		bool setHistoryLimit(int saves, QString *error = nullptr);
 	private:
 		static QUuid derivedUuid(const QByteArray &content);
 		void refresh();
@@ -564,6 +579,10 @@ class QETProject : public QObject
 				QHash<QUuid, QString> *title_cache = nullptr,
 				QHash<QString, QUuid> *id_cache = nullptr) const;
 		bool m_deferring_folios = false;
+			/// readDiagramsXml() is reading the folios; and whether one read
+			/// so far numbers itself with %autonum (updateDiagramsFolioData())
+		bool m_reading_folios = false;
+		bool m_reading_autonum_folio = false;
 			/// Opening with folios built only when needed: QET_LAZY_FOLIOS
 			/// is set and the database can be filled from the document
 		bool m_lazy_open = false;
@@ -609,6 +628,8 @@ class QETProject : public QObject
 			/// a project saved without it), see terminalLabelSplit()
 		bool m_terminal_label_split = false;
 		WiringRules::Settings m_wiring_rules;
+	bool m_terminal_strip_labels = false;
+	bool m_terminal_strip_bridges = false;
 		XmlElementCollection *m_elements_collection = nullptr;
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
@@ -617,6 +638,10 @@ class QETProject : public QObject
 		std::array<KAutoSaveFile, BackupGenerations> m_backup_files;
 			/// Why the file could not be read, see openError()
 		QString m_open_error;
+			/// What opening a .qetdb found and repaired, see qetdbRepair()
+		QetDbFile::Repair m_qetdb_repair;
+			/// What the open does with a .qetdb another program wrote to
+		QetDbFile::OutsideEdit m_outside_edit = QetDbFile::OutsideEdit::Refuse;
 		int m_next_backup_slot = 0;
 		QUuid m_uuid = QUuid::createUuid();
 		QHash<QString, int> m_derived_uuid_keys;

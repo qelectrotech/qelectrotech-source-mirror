@@ -10,6 +10,7 @@
 #include <QRegularExpression>
 #include <QTemporaryDir>
 #include <QUuid>
+#include "qettesttimeout.h"
 
 // A wire saved without a uuid must get one that is the same on every load,
 // is written on save, and survives the edits people make before that save:
@@ -129,7 +130,7 @@ class tst_derivedwireuuid : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--resave"), in, out});
-		if (!proc.waitForFinished(120000) || proc.exitCode() != 0) return {};
+		if (!proc.waitForFinished(QetTest::timeout(120000)) || proc.exitCode() != 0) return {};
 		return load(out);
 	}
 

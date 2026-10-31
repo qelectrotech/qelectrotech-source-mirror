@@ -7,6 +7,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // A folio report shows where its partner is. Changing any other
 // information of the report wrote back the label stored in its
@@ -96,7 +97,7 @@ private slots:
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), script,
 					QStringLiteral(QET_EXAMPLES_DIR "/iso_sfc_example.qet")});
-		QVERIFY(proc.waitForFinished(120000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(120000)));
 
 			// The partner, moved, and the report that shows where it is
 		QCOMPARE(labelText(saved, QStringLiteral("{016d0266-33ac-4255-8fe2-4d9629a12d86}")),

@@ -23,6 +23,7 @@
 #include "../ElementsCollection/elementslocation.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../cli_export.h"
+#include "../dataBase/qetdbfile.h"
 #include "../diagram.h"
 #include "../bomexport.h"
 #include "../cablelist/cablelistrows.h"
@@ -437,6 +438,8 @@ bool QetScriptApi::saveFromDatabase(const QString &output)
 	the project's own filePath() or read-only state, the same way "Save As"
 	targeting a writable location is allowed even for a project opened
 	read-only.
+	An output path ending in .qetdb is written as one, keeping the history
+	the project's file keeps (QETProject::writeDatabaseFile()).
 	@param output path to write to; the project's own file path if empty
 	@return false if there is no output path to use, or the write failed
 */
@@ -472,7 +475,9 @@ bool QetScriptApi::save(const QString &output)
 	}
 
 	QString error_message;
-	if (QETProject::isContainerPath(output)
+	if (QetDbFile::isDatabasePath(output)
+			? !m_project->writeDatabaseFile(output, &error_message)
+			: QETProject::isContainerPath(output)
 			? !m_project->writeContainerFile(output, &error_message)
 			: ![&]() { QDomDocument xml_doc(m_project->toXml());
 					   return QET::writeXmlFile(xml_doc, output, &error_message); }()) {
@@ -4377,8 +4382,9 @@ bool QetScriptApi::useElementAutoNum(const QString &name)
 	right after placing one.
 
 	Refused where setUpFormula() would do nothing, rather than reporting
-	success: a slave or a report takes its label from its master, and with no
-	current context there is no formula to apply.
+	success: a slave or a report takes its label from its master, a
+	conductor definition labels a wire rather than naming an item, and
+	with no current context there is no formula to apply.
 */
 bool QetScriptApi::numberElement(int folioIndex, const QString &elementUuid)
 {
@@ -4390,8 +4396,8 @@ bool QetScriptApi::numberElement(int folioIndex, const QString &elementUuid)
 	}
 	Element *element = findElement(folioIndex, elementUuid);
 	if (!element) return false;
-	if (element->linkType() == Element::Slave || (element->linkType() & Element::AllReport)) {
-		log(QStringLiteral("qet.%1: a slave or a report takes its label from its master").arg(caller));
+	if (!element->takesSchemeNumber()) {
+		log(QStringLiteral("qet.%1: a slave, a report or a conductor definition takes no number from a scheme").arg(caller));
 		return false;
 	}
 	if (m_project->elementAutoNumCurrentFormula().isEmpty()) {

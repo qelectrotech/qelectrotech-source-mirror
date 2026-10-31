@@ -4,15 +4,22 @@
 // QElectroTech cannot read is refused, and that a failed save leaves the
 // previous file. Runs the real binary.
 
+#include "../../sources/dataBase/qetparity.h"
+
 #include <QtTest>
+#include <QCryptographicHash>
+#include <QtEndian>
 
 #include <QDir>
 #include <QFile>
 #include <QProcess>
+#include <QRegularExpression>
+#include <QSet>
 #include <QProcessEnvironment>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 class tst_qetdbfile : public QObject
 {
@@ -21,7 +28,8 @@ class tst_qetdbfile : public QObject
 	QTemporaryDir m_dir;
 	int m_run = 0;
 
-	QString run(const QStringList &args, bool eager = false, int *code = nullptr)
+	QString run(const QStringList &args, bool eager = false, int *code = nullptr,
+				const QStringList &extra_env = {})
 	{
 		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(m_run++));
 		QDir().mkpath(home);
@@ -33,11 +41,13 @@ class tst_qetdbfile : public QObject
 		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
 		env.remove(QStringLiteral("QET_EAGER_FOLIOS"));
 		if (eager) env.insert(QStringLiteral("QET_EAGER_FOLIOS"), QStringLiteral("1"));
+		for (const QString &pair : extra_env)
+			env.insert(pair.section(QLatin1Char('='), 0, 0), pair.section(QLatin1Char('='), 1));
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   QStringList{QStringLiteral("--common-elements-dir=" QET_ELEMENTS_DIR "/")} + args);
-		if (!proc.waitForFinished(300000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(300000))) return {};
 		if (code) *code = proc.exitCode();
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
@@ -85,6 +95,31 @@ class tst_qetdbfile : public QObject
 		return ok;
 	}
 
+	// The tables of @p path without a primary key
+	static QStringList tablesWithoutKey(const QString &path)
+	{
+		QStringList tables, keyless;
+		{
+			QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("keys"));
+			db.setDatabaseName(path);
+			if (db.open()) {
+				QSqlQuery query(db);
+				query.exec(QStringLiteral("SELECT name FROM sqlite_master WHERE type = 'table' "
+										  "AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\'"));
+				while (query.next()) tables << query.value(0).toString();
+				for (const QString &table : std::as_const(tables)) {
+					bool key = false;
+					query.exec(QStringLiteral("PRAGMA table_info(\"%1\")").arg(table));
+					while (query.next()) key = key || query.value(5).toInt() > 0;
+					if (!key) keyless << table;
+				}
+			}
+			db.close();
+		}
+		QSqlDatabase::removeDatabase(QStringLiteral("keys"));
+		return tables.isEmpty() ? QStringList{QStringLiteral("(no tables)")} : keyless;
+	}
+
 	QString industrial()
 	{
 		const QString path = m_dir.filePath(QStringLiteral("industrial.qetdb"));
@@ -101,7 +136,7 @@ private slots:
 	}
 
 	// What the file is: ours, its format, at rest with nothing beside it,
-	// without the database's own indexes or the working copy's row
+	// with the database's own indexes, without the working copy's row
 	void fileIsOneDatabase()
 	{
 		const QString path = industrial();
@@ -111,7 +146,13 @@ private slots:
 		QCOMPARE(pragma(path, QStringLiteral("PRAGMA journal_mode")).toString(), QStringLiteral("delete"));
 		QCOMPARE(pragma(path, QStringLiteral("SELECT value FROM qet_format WHERE key = 'format'")).toString(),
 				 QStringLiteral("1"));
-		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name LIKE 'idx_%'")).toInt(), 0);
+			//The public views other tools read it through (QETDB-S10)
+		QCOMPARE(pragma(path, QStringLiteral("SELECT value FROM qet_format WHERE key = 'views'")).toString(),
+				 QStringLiteral("1"));
+		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE type = 'view' "
+											 "AND name IN ('qet_folios', 'qet_devices', 'qet_wires', 'qet_links')")).toInt(), 4);
+			//The indexes stay: speed matters more than size
+		QVERIFY(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'idx_conductor_diagram'")).toInt() == 1);
 		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'working_copy'")).toInt(), 0);
 		const QStringList beside = QDir(m_dir.path()).entryList({QStringLiteral("industrial.qetdb*")}, QDir::Files);
 		QCOMPARE(beside, QStringList{QStringLiteral("industrial.qetdb")});
@@ -128,6 +169,485 @@ private slots:
 		const QByteArray a = built(back), b = built(plain);
 		QVERIFY(a.size() > 100000);
 		QVERIFY(a == b);
+	}
+
+	// Opened from its own tables, a .qetdb gives the project database that
+	// filling it from the document read out of it gives: every table and
+	// every cache in front of them (QET_DUMP_DB_STATE). Shapes, texts and
+	// pictures may have more rows when adopted, never fewer: the file keeps
+	// those of folios the document's fill has not built (F140)
+	void tablesGiveTheDocumentsDatabase_data()
+	{
+		QTest::addColumn<QString>("example");
+		for (const char *name : {"industrial", "affuteuse_250h", "Projet_vierge", "m_000",
+								 "2612_ats_singlephase", "tremie_vibrante"})
+			QTest::newRow(name) << QString::fromLatin1(name);
+	}
+
+	void tablesGiveTheDocumentsDatabase()
+	{
+		QFETCH(QString, example);
+		const QString file = m_dir.filePath(example + QStringLiteral(".dump.qetdb"));
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/") + example + QStringLiteral(".qet"), file});
+		QVERIFY(QFile::exists(file));
+		const QString adopted = m_dir.filePath(example + QStringLiteral(".adopted.txt"));
+		const QString filled = m_dir.filePath(example + QStringLiteral(".filled.txt"));
+		const QString out = m_dir.filePath(QStringLiteral("dump-out.qet"));
+		const QString log = run({QStringLiteral("--resave"), file, out}, false, nullptr,
+								{QStringLiteral("QET_DUMP_DB_STATE=") + adopted});
+		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
+		run({QStringLiteral("--resave"), file, out}, false, nullptr,
+			{QStringLiteral("QET_DUMP_DB_STATE=") + filled, QStringLiteral("QET_QETDB_NO_ADOPT=1")});
+			//Each section by its name, without its count
+		const auto sections = [](const QString &path) {
+			QFile f(path);
+			QMap<QString, QSet<QString>> result;
+			if (!f.open(QIODevice::ReadOnly)) return result;
+			QString current;
+			for (const QString &line : QString::fromUtf8(f.readAll()).split(QLatin1Char('\n'))) {
+				if (line.startsWith(QStringLiteral("== "))) {
+					current = line.section(QStringLiteral(" ("), 0, 0);
+					result[current];	//an empty section is one too
+				} else result[current] << line;
+			}
+			return result;
+		};
+		const auto a = sections(adopted), b = sections(filled);
+		QVERIFY(a.size() > 30);
+		QCOMPARE(a.keys(), b.keys());
+		static const QSet<QString> index_tables{QStringLiteral("== table shape"),
+			QStringLiteral("== table independent_text"), QStringLiteral("== table image")};
+		QStringList differing;
+		for (auto it = a.constBegin() ; it != a.constEnd() ; ++it) {
+			const QSet<QString> &from_document = b.value(it.key());
+			if (index_tables.contains(it.key()) ? !it.value().contains(from_document)
+												: it.value() != from_document)
+				differing << it.key();
+		}
+		QVERIFY2(differing.isEmpty(), qPrintable(differing.join(QLatin1Char('\n'))));
+	}
+
+	// Every table has a primary key: a revision is what SQLite's session
+	// extension finds changed between two saves, and it leaves out a table
+	// without one (QETDB-S6-SCOPE.md 2.3)
+	void everyTableHasAKey()
+	{
+		QCOMPARE(tablesWithoutKey(industrial()), QStringList());
+	}
+
+	// A file saved before the tables had keys opens from its tables, and
+	// saved again it has them, with every row
+	void fileWithoutKeysOpens()
+	{
+		const QString old = m_dir.filePath(QStringLiteral("without-keys.qetdb"));
+		QVERIFY(QFile::copy(industrial(), old));
+		QFile::setPermissions(old, QFile::ReadOwner | QFile::WriteOwner);
+		static const QStringList keyed{QStringLiteral("element_text_value"), QStringLiteral("drawing_item"),
+			QStringLiteral("element_value"), QStringLiteral("folio_value"), QStringLiteral("project_setting"),
+			QStringLiteral("cable_value"), QStringLiteral("terminal_strip_value"), QStringLiteral("kept_item")};
+		for (const QString &table : keyed) {
+			QVERIFY(exec(old, QStringLiteral("CREATE TABLE old_%1 AS SELECT * FROM %1 ORDER BY rowid").arg(table)));
+			QVERIFY(exec(old, QStringLiteral("DROP TABLE %1").arg(table)));
+			QVERIFY(exec(old, QStringLiteral("ALTER TABLE old_%1 RENAME TO %1").arg(table)));
+		}
+		QCOMPARE(tablesWithoutKey(old).size(), keyed.size());
+		const QString again = m_dir.filePath(QStringLiteral("with-keys.qetdb"));
+		const QString log = resave(old, again);
+		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
+		QCOMPARE(tablesWithoutKey(again), QStringList());
+		for (const QString &table : keyed) {
+			const QString count = QStringLiteral("SELECT count(*) FROM %1").arg(table);
+			QVERIFY2(pragma(again, count).toInt() == pragma(old, count).toInt(), qPrintable(table));
+		}
+		QVERIFY(pragma(again, QStringLiteral("SELECT count(*) FROM element_text_value")).toInt() > 0);
+	}
+
+	// A project keeps no history unless told to (#1512: names and history
+	// travel with every copy)
+	void noHistoryByDefault()
+	{
+		QCOMPARE(pragma(industrial(), QStringLiteral(
+			"SELECT count(*) FROM sqlite_master WHERE name IN ('revision', 'revision_changes')")).toInt(), 0);
+		int code = 0;
+		const QString out = run({QStringLiteral("--history"), industrial()}, false, &code);
+		QVERIFY2(code == 1 && out.contains(QStringLiteral("keeps no history")), qPrintable(out));
+	}
+
+	// Told to, each save is a revision: who, when, and the rows it changed,
+	// as SQLite's session extension finds them between the file it replaces
+	// and the new one. The file still opens from its tables, and the
+	// history goes when told to
+	void historyRecordsEachSave()
+	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("history.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString out = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QFile js(m_dir.filePath(QStringLiteral("history.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("var us = qet.elementUuids(3).sort();\n"
+				 "qet.setElementInfo(3, us[0], 'comment', 'REV1');\n"
+				 "qet.log('SAVED1 ' + qet.save(''));\n"
+				 "qet.setElementInfo(3, us[1], 'comment', 'REV2');\n"
+				 "qet.log('SAVED2 ' + qet.save(''));\n");
+		js.close();
+		out = run({QStringLiteral("--run"), js.fileName(), path});
+		QVERIFY2(out.contains(QStringLiteral("SAVED1 true")) && out.contains(QStringLiteral("SAVED2 true")),
+				 qPrintable(out.right(800)));
+		out = run({QStringLiteral("--history"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		const QStringList lines = out.split(QLatin1Char('\n')).filter(QRegularExpression(QStringLiteral("^\\d+  ")));
+		QVERIFY2(lines.size() == 3, qPrintable(out));
+		QVERIFY2(lines.at(0).startsWith(QStringLiteral("1  ")) && lines.at(0).endsWith(QStringLiteral("import")),
+				 qPrintable(out));
+		for (int i : {1, 2})
+			QVERIFY2(lines.at(i).contains(QStringLiteral(" save: ")) && lines.at(i).contains(QStringLiteral("element_info"))
+					 && lines.at(i).contains(QRegularExpression(QStringLiteral(": \\d+ symbols?[;,]")))
+					 && !lines.at(i).contains(QStringLiteral("not recorded")), qPrintable(out));
+		const QString back = m_dir.filePath(QStringLiteral("history-back.qetdb"));
+		const QString log = resave(path, back);
+		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
+		out = run({QStringLiteral("--history-off"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QCOMPARE(pragma(path, QStringLiteral(
+			"SELECT count(*) FROM sqlite_master WHERE name IN ('revision', 'revision_changes')")).toInt(), 0);
+		QVERIFY(resave(path, back).contains(QStringLiteral("Project database read from the file")));
+	}
+
+	// A copy written by a script (qet.save(path)) is a .qetdb, and the
+	// history the project's file keeps goes on in it: the copy has the save,
+	// the project's own file not (QETDB-S6-SCOPE.md R4)
+	void historyGoesOnInACopy()
+	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("own.qetdb"));
+		const QString copy = m_dir.filePath(QStringLiteral("copy.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString out = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QFile js(m_dir.filePath(QStringLiteral("copy.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write(QStringLiteral("var us = qet.elementUuids(0).sort();\n"
+								"qet.setElementLabel(0, us[0], 'COPY1');\n"
+								"qet.log('COPIED ' + qet.save('%1'));\n").arg(copy).toUtf8());
+		js.close();
+		out = run({QStringLiteral("--run"), js.fileName(), path});
+		QVERIFY2(out.contains(QStringLiteral("COPIED true")), qPrintable(out.right(800)));
+		QCOMPARE(pragma(copy, QStringLiteral("PRAGMA application_id")).toInt(), 0x51455444);
+		const auto revisions = [this](const QString &file) {
+			return run({QStringLiteral("--history"), file}).split(QLatin1Char('\n'))
+					.filter(QRegularExpression(QStringLiteral("^\\d+  ")));
+		};
+		const QStringList in_copy = revisions(copy), in_own = revisions(path);
+		QVERIFY2(in_copy.size() == 2 && in_copy.at(1).contains(QStringLiteral("element_info")),
+				 qPrintable(in_copy.join(QLatin1Char('\n'))));
+		QCOMPARE(in_own.size(), 1);
+	}
+
+	// A revision written again from the history: two saves undone give the
+	// project as it was when the history began, and a copy for delivery has
+	// no history at all
+	void historyGivesBackARevision()
+	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("revisions.qetdb"));
+		const QString first = m_dir.filePath(QStringLiteral("revisions-first.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString out = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QVERIFY(QFile::copy(path, first));
+		QFile js(m_dir.filePath(QStringLiteral("revisions.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("var us = qet.elementUuids(3).sort();\n"
+				 "qet.setElementInfo(3, us[0], 'comment', 'UNDO1');\n"
+				 "qet.moveElement(3, us[1], 20, 0);\n"
+				 "qet.log('SAVED1 ' + qet.save(''));\n"
+				 "qet.setElementInfo(3, us[2], 'comment', 'UNDO2');\n"
+				 "qet.log('SAVED2 ' + qet.save(''));\n");
+		js.close();
+		out = run({QStringLiteral("--run"), js.fileName(), path});
+		QVERIFY2(out.contains(QStringLiteral("SAVED1 true")) && out.contains(QStringLiteral("SAVED2 true")),
+				 qPrintable(out.right(800)));
+		const QString old = m_dir.filePath(QStringLiteral("revision-1.qetdb"));
+		out = run({QStringLiteral("--revision"), path, QStringLiteral("1"), old}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		const QByteArray then = built(old), before = built(first);
+		QVERIFY(before.size() > 100000);
+		QVERIFY(!then.contains("UNDO1") && !then.contains("UNDO2"));
+		QVERIFY(then == before);
+		QVERIFY(built(path).contains("UNDO2"));
+		out = run({QStringLiteral("--revision"), path, QStringLiteral("9"), old}, false, &code);
+		QVERIFY2(code == 1, qPrintable(out));
+		const QString delivery = m_dir.filePath(QStringLiteral("delivery.qetdb"));
+		out = run({QStringLiteral("--export-delivery"), path, delivery}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QCOMPARE(pragma(delivery, QStringLiteral(
+			"SELECT count(*) FROM sqlite_master WHERE name IN ('revision', 'revision_changes')")).toInt(), 0);
+		QVERIFY(built(delivery).contains("UNDO2"));
+	}
+
+	// Two revisions compared: the changes of every save between them, the
+	// symbols each one touched and only those (QETDB-S6-SCOPE.md S6-3)
+	void historyComparesTwoRevisions()
+	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("compare.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString out = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QFile js(m_dir.filePath(QStringLiteral("compare.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("var us = qet.elementUuids(3).sort();\n"
+				 "qet.log('UUIDS ' + us[0] + ' ' + us[1] + ' ' + us[2]);\n"
+				 "qet.setElementInfo(3, us[0], 'comment', 'DIFF1');\n"
+				 "qet.log('SAVED1 ' + qet.save(''));\n"
+				 "qet.setElementInfo(3, us[1], 'comment', 'DIFF2');\n"
+				 "qet.log('SAVED2 ' + qet.save(''));\n"
+				 "qet.moveElement(3, us[2], 20, 0);\n"
+				 "qet.log('SAVED3 ' + qet.save(''));\n");
+		js.close();
+		out = run({QStringLiteral("--run"), js.fileName(), path});
+		QVERIFY2(out.contains(QStringLiteral("SAVED3 true")), qPrintable(out.right(800)));
+		const QRegularExpressionMatch uuids = QRegularExpression(QStringLiteral("UUIDS (\\S+) (\\S+) (\\S+)")).match(out);
+		QVERIFY2(uuids.hasMatch(), qPrintable(out.right(800)));
+		const auto symbol = [&uuids](int i) {
+			return QStringLiteral("symbol %1: changed").arg(uuids.captured(i));
+		};
+
+		out = run({QStringLiteral("--history-diff"), path, QStringLiteral("1"), QStringLiteral("4")}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QVERIFY2(out.contains(QRegularExpression(QStringLiteral("^1 to 4: \\d+ symbols?[;,].* rows changed"),
+												 QRegularExpression::MultilineOption)), qPrintable(out));
+		for (int i : {1, 2, 3})
+			QVERIFY2(out.contains(symbol(i)), qPrintable(out));
+
+		out = run({QStringLiteral("--history-diff"), path, QStringLiteral("2"), QStringLiteral("3")}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QVERIFY2(out.contains(symbol(2)) && !out.contains(symbol(1)) && !out.contains(symbol(3)), qPrintable(out));
+
+		run({QStringLiteral("--history-diff"), path, QStringLiteral("3"), QStringLiteral("2")}, false, &code);
+		QCOMPARE(code, 1);
+		run({QStringLiteral("--history-diff"), path, QStringLiteral("1"), QStringLiteral("9")}, false, &code);
+		QCOMPARE(code, 1);
+	}
+
+	// Who last changed a symbol: the newest save that names it, and none
+	// for a symbol no save changed (QETDB-S6-SCOPE.md S6-5)
+	void lastChangeNamesTheSave()
+	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("blame.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString out = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QFile js(m_dir.filePath(QStringLiteral("blame.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("var us = qet.elementUuids(3).sort();\n"
+				 "qet.log('UUIDS ' + us[0] + ' ' + us[1]);\n"
+				 "qet.setElementInfo(3, us[0], 'comment', 'BLAME1');\n"
+				 "qet.log('SAVED1 ' + qet.save(''));\n"
+				 "qet.setElementInfo(3, us[1], 'comment', 'BLAME2');\n"
+				 "qet.log('SAVED2 ' + qet.save(''));\n");
+		js.close();
+		out = run({QStringLiteral("--run"), js.fileName(), path});
+		QVERIFY2(out.contains(QStringLiteral("SAVED2 true")), qPrintable(out.right(800)));
+		const QRegularExpressionMatch uuids = QRegularExpression(QStringLiteral("UUIDS (\\S+) (\\S+)")).match(out);
+		QVERIFY2(uuids.hasMatch(), qPrintable(out.right(800)));
+			//The first save after opening may change many symbols' texts:
+			//one never changed is one the project does not have
+		const auto last = [&](int i) {
+			int exit = -1;
+			const QString uuid = i ? uuids.captured(i) : QStringLiteral("{00000000-0000-4000-8000-000000000001}");
+			const QString line = run({QStringLiteral("--last-change"), path, uuid}, false, &exit)
+					.split(QLatin1Char('\n')).filter(QRegularExpression(QStringLiteral("^\\d+  |^not changed"))).value(0);
+			return exit == 0 ? line : QStringLiteral("exit %1").arg(exit);
+		};
+		QVERIFY2(last(1).startsWith(QStringLiteral("2  ")) && last(1).endsWith(QStringLiteral("changed")), qPrintable(last(1)));
+		QVERIFY2(last(2).startsWith(QStringLiteral("3  ")), qPrintable(last(2)));
+		QVERIFY2(last(0).startsWith(QStringLiteral("not changed")), qPrintable(last(0)));
+			//No limit asked, none written: the file stays one the history's
+			//first version reads
+		QCOMPARE(pragma(path, QStringLiteral(
+			"SELECT count(*) FROM sqlite_master WHERE name = 'revision_setting'")).toInt(), 0);
+		run({QStringLiteral("--last-change"), industrial(), uuids.captured(1)}, false, &code);
+		QCOMPARE(code, 1);
+	}
+
+	// Only the last saves kept: the oldest dropped at each save, the
+	// oldest kept one still to go back to (QETDB-S6-SCOPE.md S6-6)
+	void historyKeepsTheLastSaves()
+	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("keep.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString out = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		run({QStringLiteral("--history-keep"), path, QStringLiteral("1")}, false, &code);
+		QCOMPARE(code, 1);
+		out = run({QStringLiteral("--history-keep"), path, QStringLiteral("3")}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QFile js(m_dir.filePath(QStringLiteral("keep.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("var us = qet.elementUuids(3).sort();\n"
+				 "for (var i = 0; i < 4; ++i) {\n"
+				 "  qet.setElementInfo(3, us[i], 'comment', 'KEEP' + i);\n"
+				 "  qet.log('SAVED' + i + ' ' + qet.save(''));\n"
+				 "}\n");
+		js.close();
+		out = run({QStringLiteral("--run"), js.fileName(), path});
+		QVERIFY2(out.contains(QStringLiteral("SAVED3 true")), qPrintable(out.right(800)));
+		const auto numbers = [this, &path]() {
+			QStringList found;
+			for (const QString &line : run({QStringLiteral("--history"), path}).split(QLatin1Char('\n')))
+				if (line.contains(QRegularExpression(QStringLiteral("^\\d+  "))))
+					found << line.section(QStringLiteral("  "), 0, 0);
+			return found;
+		};
+		QCOMPARE(numbers(), QStringList({QStringLiteral("3"), QStringLiteral("4"), QStringLiteral("5")}));
+		const QString old = m_dir.filePath(QStringLiteral("keep-3.qetdb"));
+		out = run({QStringLiteral("--revision"), path, QStringLiteral("3"), old}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		const QByteArray then = built(old);
+		QVERIFY(then.contains("KEEP1") && !then.contains("KEEP2"));
+		run({QStringLiteral("--revision"), path, QStringLiteral("2"), old}, false, &code);
+		QCOMPARE(code, 1);
+		out = run({QStringLiteral("--history-keep"), path, QStringLiteral("0")}, false, &code);
+		QVERIFY2(code == 0, qPrintable(out));
+		QCOMPARE(numbers().size(), 3);
+	}
+
+	// A save reads again only the tables written since the file before:
+	// the others keep their digest, and the file still opens (its digest
+	// read whole). QET_QETDB_CHECK_DIGEST=1 reads every table again at
+	// each save and fails it if a reused digest is not the table's
+	// (QETDB-S6-SCOPE.md §8 H5)
+	void unchangedTablesKeepTheirDigest()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("reuse.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		QFile js(m_dir.filePath(QStringLiteral("reuse.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("var us = qet.elementUuids(3).sort();\n"
+				 "qet.log('SAVED0 ' + qet.save(''));\n"
+				 "qet.setElementInfo(3, us[0], 'comment', 'REUSE1');\n"
+				 "qet.log('SAVED1 ' + qet.save(''));\n"
+				 "qet.log('SAVED2 ' + qet.save(''));\n"
+				 "qet.moveElement(3, us[1], 20, 0);\n"
+				 "qet.setElementLabel(4, qet.elementUuids(4).sort()[0], 'REUSE3');\n"
+				 "qet.log('SAVED3 ' + qet.save(''));\n");
+		js.close();
+		const QString out = run({QStringLiteral("--run"), js.fileName(), path}, false, nullptr,
+								{QStringLiteral("QET_QETDB_CHECK_DIGEST=1")});
+		for (const char *saved : {"SAVED0 true", "SAVED1 true", "SAVED2 true", "SAVED3 true"})
+			QVERIFY2(out.contains(QLatin1String(saved)), qPrintable(out.right(1200)));
+		QVERIFY2(!out.contains(QStringLiteral("reused for changed tables")), qPrintable(out.right(1200)));
+			//Saves 1 to 3 each reuse some tables, and save 2 (nothing
+			//changed) all of them
+		QList<QRegularExpressionMatch> reused;
+		auto it = QRegularExpression(QStringLiteral("reused for (\\d+) of (\\d+) tables")).globalMatch(out);
+		while (it.hasNext()) reused << it.next();
+		QVERIFY2(reused.size() == 3, qPrintable(out.right(1200)));
+		QVERIFY2(reused.at(1).captured(1) == reused.at(1).captured(2), qPrintable(reused.at(1).captured(0)));
+		const QString back = m_dir.filePath(QStringLiteral("reuse-back.qetdb"));
+		const QString log = resave(path, back);
+		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
+		QVERIFY(built(path).contains("REUSE3"));
+	}
+
+	// A symbol whose definition is missing is kept as read (F127): opened
+	// from the file's tables and saved again, a folio not built keeps it
+	void keptSymbolSurvivesResave()
+	{
+		QFile source(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
+		QVERIFY(source.open(QIODevice::ReadOnly));
+		QByteArray text = source.readAll();
+		const qsizetype last = text.lastIndexOf("<elements>");
+		QVERIFY(last > 0);
+		text.insert(last + qsizetype(qstrlen("<elements>")),
+					"<element type=\"embed://import/missing/nowhere.elmt\" x=\"100\" y=\"100\" z=\"10\" "
+					"orientation=\"0\" prefix=\"\" freezeLabel=\"false\" "
+					"uuid=\"{5e1f0c3a-7d2b-4c11-9a4e-0b6c2d8e9f10}\"><terminals/><inputs/></element>");
+		const QString with_missing = m_dir.filePath(QStringLiteral("missing.qet"));
+		QFile out(with_missing);
+		QVERIFY(out.open(QIODevice::WriteOnly));
+		out.write(text);
+		out.close();
+		const QString first = m_dir.filePath(QStringLiteral("missing.qetdb"));
+		const QString second = m_dir.filePath(QStringLiteral("missing-again.qetdb"));
+		resave(with_missing, first);
+		const QString log = resave(first, second);
+		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
+		const QString count = QStringLiteral("SELECT count(*) FROM kept_item WHERE content LIKE '%5e1f0c3a%'");
+		QCOMPARE(pragma(first, count).toInt(), 1);
+		QCOMPARE(pragma(second, count).toInt(), 1);
+		const QString back = m_dir.filePath(QStringLiteral("missing-back.qet"));
+		resave(second, back);
+		QFile f(back);
+		QVERIFY(f.open(QIODevice::ReadOnly));
+		QVERIFY(f.readAll().contains("5e1f0c3a-7d2b-4c11-9a4e-0b6c2d8e9f10"));
+	}
+
+	// The shape and text rows a file holds stay when it is opened from its
+	// tables and saved again with its folios not built
+	void drawingRowsSurviveResave()
+	{
+		const QString first = m_dir.filePath(QStringLiteral("drawn.qetdb"));
+		const QString second = m_dir.filePath(QStringLiteral("drawn-again.qetdb"));
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), first}, true);
+		const QString log = resave(first, second);
+		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
+		for (const QString &table : {QStringLiteral("shape"), QStringLiteral("independent_text")}) {
+			const QString count = QStringLiteral("SELECT count(*) FROM %1").arg(table);
+			QVERIFY2(pragma(first, count).toInt() > 0, qPrintable(table));
+			QCOMPARE(pragma(second, count).toInt(), pragma(first, count).toInt());
+		}
 	}
 
 	// An edit saved through the project's own save is in the file
@@ -165,9 +685,11 @@ private slots:
 		QString log = resave(newer, m_dir.filePath(QStringLiteral("newer.qet")), &code);
 		QVERIFY2(code != 0 && log.contains(QStringLiteral("newer QElectroTech")), qPrintable(log.right(800)));
 
+			//Without the repair data a save writes, which would repair it
 		const QString damaged = m_dir.filePath(QStringLiteral("damaged.qetdb"));
-		QVERIFY(QFile::copy(industrial(), damaged));
-		QFile::setPermissions(damaged, QFile::ReadOwner | QFile::WriteOwner);
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), damaged}, false, &code,
+			{QStringLiteral("QET_QETDB_PARITY=0")});
+		QVERIFY(QFile::exists(damaged));
 		QFile f(damaged);
 		QVERIFY(f.open(QIODevice::ReadWrite));
 		QVERIFY(f.seek(f.size() / 2));
@@ -176,6 +698,399 @@ private slots:
 		log = resave(damaged, m_dir.filePath(QStringLiteral("damaged.qet")), &code);
 		QVERIFY2(code != 0, qPrintable(log.right(800)));
 		QVERIFY(!QFile::exists(m_dir.filePath(QStringLiteral("damaged.qet"))));
+	}
+
+	// What SQLite's own check passes but the file must not hold: a value
+	// changed since the save, SQL that would run on its own, an item
+	// referring to one that is not there. Each refused, with why.
+	void tamperedRefused_data()
+	{
+		QTest::addColumn<QString>("sql");
+		QTest::addColumn<QString>("why");
+		QTest::newRow("value changed") << QStringLiteral(
+				"UPDATE element_info SET label = 'CHANGED' WHERE rowid = (SELECT min(rowid) FROM element_info)")
+				<< QStringLiteral("not what QElectroTech saved");
+		QTest::newRow("trigger") << QStringLiteral(
+				"CREATE TRIGGER t AFTER INSERT ON element BEGIN DELETE FROM element; END")
+				<< QStringLiteral("does not expect (t)");
+		QTest::newRow("view") << QStringLiteral("CREATE VIEW extra AS SELECT 1")
+				<< QStringLiteral("does not expect (extra)");
+		QTest::newRow("missing item") << QStringLiteral(
+				"DELETE FROM diagram WHERE rowid = (SELECT min(rowid) FROM diagram)")
+				<< QStringLiteral("refers to one that is not there");
+	}
+
+	void tamperedRefused()
+	{
+		QFETCH(QString, sql);
+		QFETCH(QString, why);
+		const QString path = m_dir.filePath(QStringLiteral("tampered%1.qetdb").arg(m_run));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		QVERIFY(exec(path, sql));
+		QCOMPARE(pragma(path, QStringLiteral("PRAGMA quick_check")).toString(), QStringLiteral("ok"));
+		int code = 0;
+		const QString out = path + QStringLiteral(".qet");
+		const QString log = resave(path, out, &code);
+		QVERIFY2(code != 0 && log.contains(why), qPrintable(log.right(800)));
+		QVERIFY(!QFile::exists(out));
+			//A change through SQLite is not damage: nothing "repaired"
+		QVERIFY2(!log.contains(QStringLiteral("repaired")), qPrintable(log.right(800)));
+	}
+
+	// A table a later QElectroTech adds beside the project (as the repair
+	// data, QETDB-S4C-PLAN.md P0) opens once the file names it among the
+	// tables its digest leaves out; a project table named there still
+	// counts, so a change to it is still found
+	void laterTablesNamedInTheFileOpen()
+	{
+		QVERIFY(pragma(industrial(), QStringLiteral("SELECT value FROM qet_format WHERE key = 'digest_skips'"))
+				.toString().split(QLatin1Char(',')).contains(QStringLiteral("qet_parity")));
+		const QString path = m_dir.filePath(QStringLiteral("later.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		QVERIFY(exec(path, QStringLiteral("CREATE TABLE qet_later (x TEXT)")));
+		QVERIFY(exec(path, QStringLiteral("INSERT INTO qet_later VALUES ('from a later QElectroTech')")));
+		int code = 0;
+		QString log = resave(path, path + QStringLiteral(".1.qet"), &code);
+		QVERIFY2(code != 0 && log.contains(QStringLiteral("not what QElectroTech saved")), qPrintable(log.right(800)));
+
+		QVERIFY(exec(path, QStringLiteral("UPDATE qet_format SET value = value || ',qet_later' WHERE key = 'digest_skips'")));
+		log = resave(path, path + QStringLiteral(".2.qet"), &code);
+		QVERIFY2(code == 0, qPrintable(log.right(800)));
+
+		QVERIFY(exec(path, QStringLiteral("UPDATE qet_format SET value = value || ',element_info' WHERE key = 'digest_skips'")));
+		QVERIFY(exec(path, QStringLiteral(
+				"UPDATE element_info SET label = 'CHANGED' WHERE rowid = (SELECT min(rowid) FROM element_info)")));
+		log = resave(path, path + QStringLiteral(".3.qet"), &code);
+		QVERIFY2(code != 0 && log.contains(QStringLiteral("not what QElectroTech saved")), qPrintable(log.right(800)));
+	}
+
+	// The repair data a save writes (QETDB-S4C-PLAN.md P2): read back from
+	// the file's own rows, it rebuilds lost pages of the file exactly. As
+	// a save writes it, and as a rewrite (--history-on) writes it again
+	static QString parityProblem(const QString &path)
+	{
+		struct Row { int g, j; QByteArray hash, info, data; };
+		QList<Row> rows;
+		{
+			QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("parity"));
+			db.setDatabaseName(path);
+			if (db.open()) {
+				QSqlQuery query(db);
+				query.exec(QStringLiteral("SELECT grp, j, hash, info, data FROM qet_parity ORDER BY id"));
+				while (query.next())
+					rows << Row{query.value(0).toInt(), query.value(1).toInt(), query.value(2).toByteArray(),
+								query.value(3).toByteArray(), query.value(4).toByteArray()};
+			}
+			db.close();
+		}
+		QSqlDatabase::removeDatabase(QStringLiteral("parity"));
+		if (rows.isEmpty()) return QStringLiteral("no repair data");
+		const auto h8 = [](const QByteArray &bytes) {
+			return QCryptographicHash::hash(bytes, QCryptographicHash::Blake2b_256).left(8);
+		};
+		const auto field = [](const QByteArray &info, int i) {
+			return int(qFromLittleEndian<quint32>(info.constData() + 8 + 4 * i));
+		};
+		const QByteArray &info = rows.first().info;
+		if (!info.startsWith(QByteArray("QETPAR3\0", 8)) || info.size() < 36) return QStringLiteral("no marker");
+		const int k = field(info, 0), m = field(info, 1), file_pages = field(info, 2), root = field(info, 3),
+				counter = field(info, 5), page = field(info, 6);
+		QFile f(path);
+		if (!f.open(QIODevice::ReadOnly)) return QStringLiteral("unreadable");
+		const QByteArray file = f.readAll();
+		if (qFromBigEndian<quint32>(file.constData() + 24) != quint32(counter))
+			return QStringLiteral("change counter differs");
+		QByteArray pages;
+		for (int p = 1 ; p <= file_pages ; ++p)
+			if (p != root) pages.append(file.mid(qsizetype(p - 1) * page, page));
+		pages.replace(0, 100, QByteArray(100, '\0'));
+		const int count = int(pages.size() / page);
+		const QetParity::Layout layout = QetParity::layout(count, 10);
+		if (layout.k != k || layout.m != m || rows.size() != layout.groups * m)
+			return QStringLiteral("layout %1+%2, %3 rows").arg(k).arg(m).arg(rows.size());
+		QByteArray parity(qsizetype(layout.groups) * m * page, '\0');
+		QHash<int, int> carriers;
+		for (const Row &row : std::as_const(rows)) {
+			if (h8(row.data + row.info) != row.hash) return QStringLiteral("row hash wrong");
+			if (field(row.info, 4) != row.g) return QStringLiteral("row group wrong");
+			parity.replace((qsizetype(row.g) * m + row.j) * page, page, row.data);
+					//The page hashes it carries, in four rows of each group, are
+				//those of the pages
+			if (row.info.size() > 36)
+				carriers[row.g] += 1;
+			if (row.info.size() > 36)
+				for (int i = row.g, li = 0 ; i < count ; i += layout.groups, ++li)
+					if (row.info.mid(36 + 8 * li, 8) != h8(pages.mid(qsizetype(i) * page, page)))
+						return QStringLiteral("page %1's hash wrong").arg(i);
+		}
+		for (int g = 0 ; g < layout.groups ; ++g)
+			if (carriers.value(g) != 4) return QStringLiteral("group %1: %2 rows carry its hashes").arg(g).arg(carriers.value(g));
+			//m pages of group 0, one of every other group, lost: rebuilt
+		QByteArray damaged = pages;
+		QList<int> lost;
+		for (int li = 0 ; li < m ; ++li) lost << li * layout.groups;
+		for (int g = 1 ; g < layout.groups ; ++g) lost << g;
+		for (int i : std::as_const(lost))
+			damaged.replace(qsizetype(i) * page, page, QByteArray(page, '\xa5'));
+		if (QetParity::decode(damaged, page, parity, k, m, lost, {}) != 0 || damaged != pages)
+			return QStringLiteral("not rebuilt");
+		return {};
+	}
+
+	void parityRebuildsTheSavedFile()
+	{
+		QCOMPARE(parityProblem(industrial()), QString());
+
+		const QString path = m_dir.filePath(QStringLiteral("parity.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		QString log = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 0, qPrintable(log.right(800)));
+		QCOMPARE(parityProblem(path), QString());
+
+			//Off for measurements: the table, no rows
+		const QString off = m_dir.filePath(QStringLiteral("noparity.qetdb"));
+		log = run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), off}, false, &code,
+				  {QStringLiteral("QET_QETDB_PARITY=0")});
+		QVERIFY2(code == 0, qPrintable(log.right(800)));
+		QCOMPARE(parityProblem(off), QStringLiteral("no repair data"));
+			//It opens all the same
+		log = resave(off, off + QStringLiteral(".qet"), &code);
+		QVERIFY2(code == 0, qPrintable(log.right(800)));
+	}
+
+	// Speed first (QETDB-S4C-PLAN.md P7): a file that opens as saved has its
+	// pages checked against its repair data only when another program's
+	// journal is beside it
+	void undamagedOpenChecksNoPages()
+	{
+		const QString path = m_dir.filePath(QStringLiteral("undamaged-open.qetdb"));
+		QFile::remove(path);
+		QVERIFY(QFile::copy(industrial(), path));
+		int code = -1;
+		QString log = run({QStringLiteral("--resave"), path, path + QStringLiteral(".qet")}, false, &code,
+						  {QStringLiteral("QET_QETDB_SAVE_TIMES=1")});
+		QVERIFY2(code == 0 && !log.contains(QStringLiteral("pages checked in")), qPrintable(log.right(800)));
+		QFile journal(path + QStringLiteral("-journal"));
+		QVERIFY(journal.open(QIODevice::WriteOnly));
+		journal.close();
+		log = run({QStringLiteral("--resave"), path, path + QStringLiteral(".qet")}, false, &code,
+				  {QStringLiteral("QET_QETDB_SAVE_TIMES=1")});
+		QVERIFY2(log.contains(QStringLiteral("pages checked in")), qPrintable(log.right(800)));
+		QFile::remove(journal.fileName());
+	}
+
+	// Damaged pages are repaired on opening, from the repair data the file
+	// carries (QETDB-S4C-PLAN.md P3): the project opens as it was saved, and
+	// the file itself is not written. Beyond the repair data, it is refused
+	// as before, and nothing crashes
+	void damagedPagesRepairedOnOpen_data()
+	{
+		QTest::addColumn<QString>("damage");
+		QTest::addColumn<bool>("repaired");
+		QTest::newRow("one page") << QStringLiteral("page") << true;
+		QTest::newRow("bits in 3 pages") << QStringLiteral("bits") << true;
+		QTest::newRow("a run of 5 pages") << QStringLiteral("run") << true;
+		QTest::newRow("the header") << QStringLiteral("header") << true;
+		QTest::newRow("1 % of the pages") << QStringLiteral("scatter1") << true;
+			//SQLite reads nothing of it: the repair data found in its pages (P4)
+		QTest::newRow("page 1 but its header") << QStringLiteral("schema") << true;
+		QTest::newRow("page 1") << QStringLiteral("page1") << true;
+			//SQLite's quick check and the content digest both pass it: only
+			//the pages checked beside the read find it (P7)
+		QTest::newRow("one bit of an index key") << QStringLiteral("index") << true;
+		QTest::newRow("30 % of the pages") << QStringLiteral("scatter30") << false;
+	}
+
+	void damagedPagesRepairedOnOpen()
+	{
+		QFETCH(QString, damage);
+		QFETCH(bool, repaired);
+		const QByteArray expected = undamaged();
+		QVERIFY(!expected.isEmpty());
+
+		const QString path = m_dir.filePath(QStringLiteral("damaged-%1.qetdb").arg(damage));
+		QFile::remove(path);
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		const int index_root = pragma(path, QStringLiteral("SELECT rootpage FROM sqlite_master "
+														   "WHERE name = 'idx_element_diagram'")).toInt();
+		QFile f(path);
+		QVERIFY(f.open(QIODevice::ReadWrite));
+		QByteArray bytes = f.readAll();
+		const int page = 4096, pages = int(bytes.size() / page);
+			//In the first 80 % of the file: its project tables, not the
+			//repair data's own root page
+		const auto spoil = [&bytes, page](int p, char with) {
+			bytes.replace(qsizetype(p) * page, page, QByteArray(page, with));
+		};
+		if (damage == QLatin1String("page")) spoil(pages * 3 / 10, '\xa5');
+		else if (damage == QLatin1String("bits"))
+			for (int p : {pages / 5, pages / 3, pages / 2})
+				bytes[qsizetype(p) * page + 1000] = char(bytes.at(qsizetype(p) * page + 1000) ^ 0x10);
+		else if (damage == QLatin1String("run"))
+			for (int p = pages / 2 ; p < pages / 2 + 5 ; ++p) spoil(p, '\0');
+		else if (damage == QLatin1String("header")) bytes.replace(16, 8, QByteArray(8, '\0'));
+		else if (damage == QLatin1String("schema")) bytes.replace(100, page - 100, QByteArray(page - 100, '\0'));
+		else if (damage == QLatin1String("page1")) spoil(0, '\0');
+		else if (damage == QLatin1String("index")) {
+				//Down the right of the index to a leaf, its first key
+			int p = index_root;
+			QVERIFY(p > 1);
+			while (uchar(bytes.at(qsizetype(p - 1) * page)) == 0x02)
+				p = int(qFromBigEndian<quint32>(bytes.constData() + qsizetype(p - 1) * page + 8));
+			const qsizetype at = qsizetype(p - 1) * page;
+			QCOMPARE(uchar(bytes.at(at)), uchar(0x0a));
+			const qsizetype key = at + qFromBigEndian<quint16>(bytes.constData() + at + 8) + 4;
+			bytes[key] = char(bytes.at(key) ^ 0x01);
+		}
+		else if (damage.startsWith(QLatin1String("scatter"))) {
+			const int step = 100 / damage.mid(7).toInt();
+			for (int p = 1 ; p < pages * 8 / 10 ; p += step) spoil(p, '\x5a');
+		}
+		QVERIFY(f.seek(0));
+		QCOMPARE(f.write(bytes), bytes.size());
+		f.close();
+
+		int code = -1;
+		const QString out = path + QStringLiteral(".qet");
+		const QString log = run({QStringLiteral("--resave"), path, out}, false, &code);
+		QVERIFY2(code >= 0, "QElectroTech crashed");
+		if (repaired) {
+			QVERIFY2(code == 0 && log.contains(QStringLiteral("pages repaired")), qPrintable(log.right(800)));
+			QCOMPARE(log.contains(QStringLiteral("read from its pages")),
+					 damage == QLatin1String("schema") || damage == QLatin1String("page1"));
+			QFile o(out);
+			QVERIFY(o.open(QIODevice::ReadOnly));
+			QVERIFY2(o.readAll() == expected, "the repaired project is not the one saved");
+				//The file is as it was: an open writes nothing
+			QFile again(path);
+			QVERIFY(again.open(QIODevice::ReadOnly));
+			QVERIFY(again.readAll() == bytes);
+		} else {
+			QVERIFY2(code != 0 && log.contains(QStringLiteral("than its repair data covers")),
+					 qPrintable(log.right(800)));
+			QVERIFY(!QFile::exists(out));
+		}
+	}
+
+	// A file another program changed since its save (QETDB-S4C-PLAN.md P5):
+	// refused as it is; opened with its changes, or back at its saved state,
+	// as the user chooses (QET_QETDB_OUTSIDE_EDIT stands for the question);
+	// --qetdb-repair says so by its exit code, and goes back on request.
+	// No one is locked out of a file whose other checks pass
+	QByteArray undamaged()
+	{
+		const QString base = m_dir.filePath(QStringLiteral("undamaged.qet"));
+		if (!QFile::exists(base)) resave(industrial(), base);
+		QFile b(base);
+		return b.open(QIODevice::ReadOnly) ? b.readAll() : QByteArray();
+	}
+
+	QString changedByAnotherProgram(const QString &name, bool vacuum = false)
+	{
+		const QString path = m_dir.filePath(name);
+		QFile::remove(path);
+		if (!QFile::copy(industrial(), path)) return {};
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+			//A symbol's manufacturer, as the project is built from it (a
+			//label may come from a formula, worked out again on opening)
+		exec(path, QStringLiteral("UPDATE element_information SET value = 'CHANGED' "
+								  "WHERE rowid = (SELECT min(rowid) FROM element_information WHERE name = 'manufacturer')"));
+		if (vacuum) exec(path, QStringLiteral("VACUUM"));
+		return path;
+	}
+
+	static QByteArray contentOf(const QString &path)
+	{
+		QFile f(path);
+		return f.open(QIODevice::ReadOnly) ? f.readAll() : QByteArray();
+	}
+
+	void outsideEditChoices()
+	{
+		const QByteArray saved = undamaged();
+		QVERIFY(!saved.isEmpty());
+		QVERIFY(!saved.contains("CHANGED"));
+		const QString path = changedByAnotherProgram(QStringLiteral("outside.qetdb"));
+		const QByteArray before = contentOf(path);
+		int code = -1;
+		QString log = resave(path, path + QStringLiteral(".refused.qet"), &code);
+		QVERIFY2(code != 0 && log.contains(QStringLiteral("not what QElectroTech saved")), qPrintable(log.right(800)));
+
+		log = run({QStringLiteral("--resave"), path, path + QStringLiteral(".kept.qet")}, false, &code,
+				  {QStringLiteral("QET_QETDB_OUTSIDE_EDIT=keep")});
+		QVERIFY2(code == 0 && log.contains(QStringLiteral("as the user chose")), qPrintable(log.right(800)));
+		QVERIFY(contentOf(path + QStringLiteral(".kept.qet")).contains("CHANGED"));
+
+		log = run({QStringLiteral("--resave"), path, path + QStringLiteral(".back.qet")}, false, &code,
+				  {QStringLiteral("QET_QETDB_OUTSIDE_EDIT=back")});
+		QVERIFY2(code == 0 && log.contains(QStringLiteral("rebuilt as saved")), qPrintable(log.right(800)));
+		QVERIFY(contentOf(path + QStringLiteral(".back.qet")) == saved);
+			//None of it wrote the file
+		QVERIFY(contentOf(path) == before);
+
+			//The command line: exit 3 as it is, the saved state on request
+		const QString out = m_dir.filePath(QStringLiteral("outside-fixed.qetdb"));
+		log = run({QStringLiteral("--qetdb-repair"), path, out}, false, &code);
+		QVERIFY2(code == 3 && log.contains(QStringLiteral("another program changed it")), qPrintable(log.right(800)));
+		QVERIFY(!QFile::exists(out));
+		log = run({QStringLiteral("--qetdb-repair"), path, out, QStringLiteral("--back-to-save")}, false, &code);
+		QVERIFY2(code == 0 && log.contains(QStringLiteral("back to the saved state")), qPrintable(log.right(800)));
+		log = resave(out, out + QStringLiteral(".qet"), &code);
+		QVERIFY2(code == 0 && !log.contains(QStringLiteral("pages repaired")), qPrintable(log.right(800)));
+		QVERIFY(contentOf(out + QStringLiteral(".qet")) == saved);
+
+			//Every page moved (VACUUM): no going back, its changes still open
+		const QString moved = changedByAnotherProgram(QStringLiteral("outside-vacuum.qetdb"), true);
+		log = run({QStringLiteral("--resave"), moved, moved + QStringLiteral(".back.qet")}, false, &code,
+				  {QStringLiteral("QET_QETDB_OUTSIDE_EDIT=back")});
+		QVERIFY2(code != 0, qPrintable(log.right(800)));
+		log = run({QStringLiteral("--resave"), moved, moved + QStringLiteral(".kept.qet")}, false, &code,
+				  {QStringLiteral("QET_QETDB_OUTSIDE_EDIT=keep")});
+		QVERIFY2(code == 0, qPrintable(log.right(800)));
+		QVERIFY(contentOf(moved + QStringLiteral(".kept.qet")).contains("CHANGED"));
+	}
+
+	// --qetdb-repair on damage: repaired (exit 0) within the repair data,
+	// not written (exit 1) beyond it; the input is never written
+	void repairCommand()
+	{
+		const QByteArray saved = undamaged();
+		for (const auto &[pct, expected] : {std::pair{0, 0}, std::pair{2, 0}, std::pair{30, 1}}) {
+			const QString path = m_dir.filePath(QStringLiteral("cmd-%1.qetdb").arg(pct));
+			QFile::remove(path);
+			QVERIFY(QFile::copy(industrial(), path));
+			QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+			QFile f(path);
+			QVERIFY(f.open(QIODevice::ReadWrite));
+			QByteArray bytes = f.readAll();
+			const int page = 4096, pages = int(bytes.size() / page);
+			if (pct)
+				for (int p = 1 ; p < pages * 8 / 10 ; p += 100 / pct)
+					bytes.replace(qsizetype(p) * page, page, QByteArray(page, '\x5a'));
+			QVERIFY(f.seek(0));
+			f.write(bytes);
+			f.close();
+			const QString out = m_dir.filePath(QStringLiteral("cmd-%1-fixed.qetdb").arg(pct));
+			int code = -1;
+			const QString log = run({QStringLiteral("--qetdb-repair"), path, out}, false, &code);
+			QVERIFY2(code == expected, qPrintable(log.right(800)));
+			QVERIFY(contentOf(path) == bytes);
+			if (expected) {
+				QVERIFY(!QFile::exists(out));
+				continue;
+			}
+			QVERIFY2(log.contains(pct ? QStringLiteral("(repaired)") : QStringLiteral("(nothing to repair)")),
+					 qPrintable(log));
+			QVERIFY(contentOf(out) != bytes || !pct);
+			const QString again = run({QStringLiteral("--resave"), out, out + QStringLiteral(".qet")}, false, &code);
+			QVERIFY2(code == 0 && !again.contains(QStringLiteral("pages repaired")), qPrintable(again.right(800)));
+			QVERIFY(contentOf(out + QStringLiteral(".qet")) == saved);
+		}
 	}
 
 	// A save that cannot finish leaves the previous file as it was

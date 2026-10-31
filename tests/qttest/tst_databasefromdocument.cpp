@@ -10,6 +10,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // A project's database, filled from the file as it is read, holds exactly
 // what the same database filled from the built folios holds. Every example
@@ -48,7 +49,7 @@ class tst_databasefromdocument : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(e);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), args);
-		if (!proc.waitForFinished(180000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(180000))) return {};
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
 
@@ -418,7 +419,7 @@ private slots:
 		QProcess proc;
 		proc.setProcessEnvironment(e);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js.fileName(), saved});
-		QVERIFY(proc.waitForFinished(180000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(180000)));
 		const QString log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		QVERIFY2(log.contains(QStringLiteral("opened with 12 of 12 folios not built")), qPrintable(log.left(400)));
 		QVERIFY2(log.contains(QStringLiteral("REMOVED true")) && log.contains(QStringLiteral("UNDONE true")),
@@ -500,6 +501,37 @@ private slots:
 		const QJsonArray b = dump(edited, false, &unused).value(QStringLiteral("terminal")).toArray();
 		QVERIFY2(a == b, qPrintable(QStringLiteral("%1 terminal rows after the edits, %2 on reopening")
 									.arg(a.size()).arg(b.size())));
+	}
+
+	// A symbol with two terminals sharing a uuid (copied in the symbol
+	// editor, F139): a wire to it docks on the first in the element's
+	// terminal order, and both fills give that terminal's index. The copy
+	// comes after the original in the file and sorts after it.
+	void copiedTerminalUuid()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("copied-terminal.qet"));
+		QDomDocument document = resaved(saved);
+		const QDomElement conductor = document.elementsByTagName(QStringLiteral("conductor")).at(0).toElement();
+		const QString uuid = conductor.attribute(QStringLiteral("terminal1"));
+		QVERIFY(!uuid.isEmpty());
+		bool copied = false;
+		const QDomNodeList terminals = document.elementsByTagName(QStringLiteral("terminal"));
+		for (int i = 0 ; i < terminals.size() && !copied ; ++i) {
+			QDomElement terminal = terminals.at(i).toElement();
+			if (terminal.attribute(QStringLiteral("uuid")) != uuid
+				|| terminal.parentNode().nodeName() != QLatin1String("description"))
+				continue;
+			QDomElement copy = terminal.cloneNode().toElement();
+			copy.setAttribute(QStringLiteral("y"), QStringLiteral("1000"));
+			terminal.parentNode().appendChild(copy);
+			copied = true;
+		}
+		QVERIFY(copied);
+		QVERIFY(write(saved, document));
+		compareBothWays(saved);
+		const QString rows = QString::fromUtf8(QJsonDocument(m_last.value(QStringLiteral("terminal")).toArray())
+												   .toJson(QJsonDocument::Compact));
+		QVERIFY2(rows.contains(uuid), qPrintable(rows.left(400)));
 	}
 
 	// A file from an older QElectroTech, as shipped: the uuids and wire ends

@@ -1568,7 +1568,7 @@ QFont QETApp::cableTextsFont()
 		}
 	}
 
-	QFont font = QApplication::font();
+	QFont font = diagramTextsItemFont();
 	font.setPointSizeF(font.pointSizeF() * 0.9);
 	return font;
 }
