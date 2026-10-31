@@ -90,7 +90,7 @@ private slots:
 		QString text = QString::fromUtf8(source.readAll());
 		const int newdiagrams = text.indexOf(QLatin1String("<newdiagrams"));
 		QVERIFY(newdiagrams > 0);
-		text.insert(newdiagrams, QStringLiteral("<cell_orign corner=\"bottom-right\"/>\n    "));
+		text.insert(newdiagrams, QStringLiteral("<cell_origin corner=\"bottom-right\"/>\n    "));
 		const QString with_setting = m_dir.filePath(QStringLiteral("with_setting.qet"));
 		QFile out(with_setting);
 		QVERIFY(out.open(QIODevice::WriteOnly | QIODevice::Text));
@@ -99,7 +99,7 @@ private slots:
 
 		const QString saved = resave(with_setting);
 		QVERIFY2(!saved.isEmpty(), "--resave failed");
-		QVERIFY2(saved.contains(QLatin1String("<cell_orign corner=\"bottom-right\"/>")),
+		QVERIFY2(saved.contains(QLatin1String("<cell_origin corner=\"bottom-right\"/>")),
 				 "the setting was lost on save");
 	}
 };

@@ -1223,8 +1223,8 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		//(the project's own may not be read yet): the cells it names must
 		//be the ones the built folios name.
 	reader.setOrigin(ProjectOrigin::fromString(
-		document.documentElement().firstChildElement(QStringLiteral("style"))
-			.attribute(QStringLiteral("origin"))));
+		document.documentElement().firstChildElement(QStringLiteral("cell_origin"))
+			.attribute(QStringLiteral("corner"))));
 	QList<DiagramContext> diagram_infos;
 	QList<QDate> diagram_dates;
 	QList<QUuid> diagram_uuids;

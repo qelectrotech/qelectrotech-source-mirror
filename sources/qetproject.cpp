@@ -2510,13 +2510,13 @@ void QETProject::setOrigin(ProjectOrigin::Mode mode)
 {
 	if (mode == m_origin) { return; }
 	m_origin = mode;
+	storeSettings();
 	for (Diagram* diagram : folios())
 	{
 		diagram->refreshContents();
 		diagram->border_and_titleblock.setOrigin(mode);
 	}
 	m_data_base.updateDBForce();
-	m_data_base.dataBaseUpdated();
 }
 
 /**
@@ -4011,7 +4011,7 @@ void QETProject::readOriginXml(QDomDocument& xml_project)
 {
 	const QDomElement style =
 		xml_project.documentElement().firstChildElement(
-			QStringLiteral("cell_orign"));
+			QStringLiteral("cell_origin"));
 	m_origin = style.isNull() 
 		    ? ProjectOrigin::Mode::TopLeft 
 			: ProjectOrigin::fromString(style.attribute(QStringLiteral("corner")));
@@ -4368,7 +4368,7 @@ void QETProject::writeOriginXml(QDomElement& xml_element)
 		return; 
 	}
 	QDomElement style = xml_element.ownerDocument().createElement(
-		QStringLiteral("cell_orign"));
+		QStringLiteral("cell_origin"));
 	style.setAttribute(
 		QStringLiteral("corner"),
 		ProjectOrigin::toString(m_origin));
