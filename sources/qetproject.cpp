@@ -2593,6 +2593,25 @@ void QETProject::setAutoBreakConductor(bool abc)
 }
 
 /**
+	@brief QETProject::liveAutoConnect
+	@return true if the project keeps automatic connections up to date,
+	see AutoConnect. Chosen when the project is created.
+*/
+bool QETProject::liveAutoConnect() const
+{
+	return m_data_base.numberingFlag(QStringLiteral("live_auto_connect"), false);
+}
+
+/**
+	@brief QETProject::setLiveAutoConnect
+	@param on
+*/
+void QETProject::setLiveAutoConnect(bool on)
+{
+	m_data_base.setNumberingFlag(QStringLiteral("live_auto_connect"), on);
+}
+
+/**
 	@brief QETProject::setTerminalStripLabelsShown
 	Show the label of each terminal strip at its first terminal on every
 	folio, or not; the folios built so far show it at once.
@@ -4653,6 +4672,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	numbering.freeze_new_conductors = isFreezeNewConductors();
 	numbering.freeze_new_elements = isFreezeNewElements();
 	numbering.auto_break_conductors = autoBreakConductor();
+	numbering.live_auto_connect = liveAutoConnect();
 	numbering.cable_x_axis_first = cableXAxisFirst();
 	numbering.cable_ask_numbering = cableAskNumbering();
 	auto element_title = [&element_autonum_id](const QUuid &id) {
@@ -4664,6 +4684,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 		numbering.current_conductor = conds_autonums.attribute(QStringLiteral("current_autonum"));
 		numbering.freeze_new_conductors = conds_autonums.attribute(QStringLiteral("freeze_new_conductors")) == QLatin1String("true");
 		numbering.auto_break_conductors = conds_autonums.attribute(QStringLiteral("auto_break_conductors")) == QLatin1String("true");
+		numbering.live_auto_connect = conds_autonums.attribute(QStringLiteral("live_auto_connect")) == QLatin1String("true");
 		for (auto elmt : QET::findInDomElement(conds_autonums, QStringLiteral("conductor_autonum")))
 		{
 			NumerotationContext nc;
@@ -5262,6 +5283,8 @@ void QETProject::writeNumberingXml(const projectDataBase::Numbering &numbering,
 	conductor_autonums.setAttribute("current_autonum", numbering.current_conductor);
 	conductor_autonums.setAttribute("freeze_new_conductors", numbering.freeze_new_conductors ? "true" : "false");
 	conductor_autonums.setAttribute("auto_break_conductors", numbering.auto_break_conductors ? "true" : "false");
+	if (numbering.live_auto_connect)
+		conductor_autonums.setAttribute(QStringLiteral("live_auto_connect"), QStringLiteral("true"));
 	for (auto scheme : schemes(QStringLiteral("conductor"))) {
 	QDomElement conductor_autonum = scheme.context.toXml(xml_document, "conductor_autonum");
 		if (scheme.title != "" && formula(scheme) != "") {

@@ -349,6 +349,8 @@ class QETProject : public QObject
 		WiringRules::Settings projectWiringRules() const;
 		void setWiringRules(const WiringRules::Settings &rules);
 		void setAutoBreakConductor (bool abc);
+		bool liveAutoConnect() const;
+		void setLiveAutoConnect(bool on);
 			/// The label of each terminal strip at its first terminal on
 			/// every folio (TerminalStripLabels), off by default
 		bool terminalStripLabelsShown() const { return m_terminal_strip_labels; }
