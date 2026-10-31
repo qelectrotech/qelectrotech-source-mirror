@@ -389,6 +389,11 @@ function(qet_add_app_test name)
   target_link_libraries(${name} PRIVATE qelectrotech_objects Qt::Test)
 endfunction()
 
+# The Connections toolbar: a button per symbol on the wires, a click
+# places it, and the symbol of a button can be changed.
+qet_add_app_test(tst_connectionsymbols tst_connectionsymbols.cpp)
+target_compile_definitions(tst_connectionsymbols PRIVATE
+  QET_ELEMENTS_DIR="${QET_DIR}/elements")
 # Connectivity-aware duplicate labels and clickable occurrences, through the
 # real application.
 qet_add_app_test(tst_duplicatelabels tst_duplicatelabels.cpp)

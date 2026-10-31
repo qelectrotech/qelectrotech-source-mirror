@@ -165,6 +165,7 @@ class QETDiagramEditor : public QETMainWindow
 		void slot_updateAutoNumDock();
 		void insertElementFromCollection(const ElementsLocation &location);
 		void insertLastElement();
+		void placeConnectionSymbol(int kind);
 		void rememberPlacedElement(const ElementsLocation &location);
 		void showElementPicker();
 		void showShortcutBar();
@@ -395,11 +396,15 @@ class QETDiagramEditor : public QETMainWindow
 		*diagram_tool_bar    = nullptr,
 		*m_add_item_tool_bar = nullptr,
 		*m_depth_tool_bar    = nullptr,
+		*m_connections_tool_bar = nullptr,	///< Symbols on the wires (ConnectionSymbols)
 		*m_scripts_tool_bar  = nullptr;	///< One button per stored script
 			/// Toolbars the user added (DiagramToolbarSettings)
 		QList<QToolBar *> m_custom_tool_bars;
 			/// The toolbar buttons that are widgets, by DiagramToolbarSettings id
 		QHash<QString, QAction *> m_toolbar_widgets;
+			/// One per ConnectionSymbols::Kind
+		QHash<int, QAction *> m_connection_actions;
+		void updateConnectionAction(int kind);
 #ifdef QET_HAS_SCRIPTING
 		QMenu *m_scripts_menu = nullptr;
 		QList<QAction *> m_script_actions;	///< One per stored script, rebuilt when the folder changes
