@@ -28,6 +28,9 @@
 #include "../qetapp.h"
 #include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../bridge/bridge.h"
+#include "../bridge/bridgecopy.h"
+#include "../bridge/bridgepart.h"
 #include "../qetproject.h"
 
 #include <QSettings>
@@ -86,7 +89,8 @@
 		//content: the cable owns it, so it is not one of the folio's
 		//items -- and it travels as a whole, colour labels and all,
 		//whether or not the place it is going to holds a wire.
-	m_diagram->fromXml(document_xml, QPointF(), false, &m_content, &m_cables);
+	m_diagram->fromXml(document_xml, QPointF(), false, &m_content, &m_cables,
+						   &m_bridges);
 	m_copied_schemes = PasteNumberingImport::copiedBy(document_xml);
 
 	if (db) {
@@ -94,16 +98,28 @@
 		db->setUpdateBlocked(false);
 		db->updateDB();
 	}
-	if (!m_content.count() && m_cables.isEmpty()) return;
+	if (!m_content.count() && m_cables.isEmpty() && m_bridges.isEmpty()) return;
 
 	QList<QGraphicsItem *> movable = m_content.items(MovableItems);
 	for (CablePart *part : std::as_const(m_cables)) {
 		if (part) {
 			movable << part;
-			m_cable_items.insert(part);
+			m_step_items.insert(part);
 		}
 	}
-	if (movable.isEmpty()) return;
+			//A bridge line folds a setPos() into its own geometry and
+		//keeps itself at the origin the very way a cable line does
+		//(BridgePart::itemChange): it is given a step to take with
+		//them rather than a place to stand.
+	for (Bridge *bridge : std::as_const(m_bridges)) {
+		for (BridgePart *part : BridgePart::allParts()) {
+			if (part && part->bridge() == bridge) {
+				movable << part;
+				m_step_items.insert(part);
+			}
+		}
+	}
+if (movable.isEmpty()) return;
 
 		//Compute the top-left of all items' actual on-screen bounding
 		//boxes (not their raw pos()) and snap to grid: this is the point
@@ -329,21 +345,21 @@ void DiagramEventAddPaste::moveTo(const QPointF &scene_pos)
 		//A cable line is handed a step rather than a place to stand: it
 		//folds a translation into its own geometry and into the colour
 		//labels it carries and keeps its own pos() at (0, 0)
-		//(CablePart::itemChange), so the position stored above -- always
+		//(CablePart::itemChange, BridgePart::itemChange), so the position stored above -- always
 		//(0, 0) for it -- would be an addition again on every mouse move
 		//and the line would run away from the group it was pasted with.
 		//The difference to the last step keeps the translation the same
 		//one the rest of the paste gets, expressed their way: a place.
-	const QPointF cable_step = delta - m_cable_delta;
+	const QPointF step = delta - m_step_delta;
 	for (auto it = m_relative_pos.constBegin() ; it != m_relative_pos.constEnd() ; ++it) {
 		if (!it.key()) continue;
-		if (m_cable_items.contains(it.key())) {
-			it.key()->setPos(cable_step);
+		if (m_step_items.contains(it.key())) {
+			it.key()->setPos(step);
 		} else {
 			it.key()->setPos(it.value() + delta);
 		}
 	}
-	m_cable_delta = delta;
+	m_step_delta = delta;
 
 		//Update conductor paths so they follow the moved terminals.
 	const QList<Conductor *> conductors = m_content.conductors(DiagramContent::AnyConductor);
@@ -441,8 +457,20 @@ void DiagramEventAddPaste::commit()
 		//Asks whether to import the numberings the copy brings, if the
 		//project has not got them; the paste itself and the cable lines
 		//travel inside the same step of the undo stack.
-	PasteNumberingImport::push(m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first(),
-							   m_diagram, m_content, m_copied_schemes, cable_commands);
+			//The bridge lines the same: what they land on is worked
+		//out now, at the place the hand left them -- one Ctrl+Z takes
+		//the whole of it back in one go.
+	QList<QUndoCommand *> bridge_commands;
+	for (Bridge *bridge : std::as_const(m_bridges)) {
+		for (QUndoCommand *added : BridgeCopy::land(m_diagram, bridge)) {
+			added->setText(QCoreApplication::translate("BridgeCopy", "Paste a bridge"));
+			bridge_commands << added;
+		}
+	}
+	m_bridges.clear();
+
+PasteNumberingImport::push(m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first(),
+							   m_diagram, m_content, m_copied_schemes, cable_commands + bridge_commands);
 
 		//The undo stack has just run its first redo, which may have
 		//renewed the identity of a pasted conductor: the cores are
@@ -487,6 +515,13 @@ void DiagramEventAddPaste::removeItems()
 		CableCopy::discard(m_diagram, part);
 	}
 	m_cables.clear();
+
+		//The bridge lines likewise: the bridges they were made
+		//for go away whole, leaving no trace of having been there.
+	for (Bridge *bridge : std::as_const(m_bridges)) {
+		BridgeCopy::discard(m_diagram, bridge);
+	}
+	m_bridges.clear();
 
 	m_content.clear();
 	m_relative_pos.clear();

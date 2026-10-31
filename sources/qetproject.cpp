@@ -31,6 +31,8 @@
 #include "cable/cable.h"
 #include "cable/cablemanager.h"
 #include "cable/cablepart.h"
+#include "bridge/bridge.h"
+#include "bridge/bridgepart.h"
 #include "autoNum/elementautonumschemecommand.h"
 #include "diagram.h"
 #include "qetgraphicsitem/element.h"
@@ -2960,6 +2962,18 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 		project_root.appendChild(xml_cables);
 	}
 
+		//Write the bridges to xml, the same way: their sections are
+		//written here too, so a bridge and everything drawn for it are
+		//read back together.
+	if (m_bridges.count())
+	{
+		auto xml_bridges = xml_doc.createElement(QStringLiteral("bridges"));
+		for (auto &bridge : m_bridges) {
+			xml_bridges.appendChild(bridge->toXml(xml_doc));
+		}
+		project_root.appendChild(xml_bridges);
+	}
+
 	// Write the elements collection.
 	project_root.appendChild(m_elements_collection->root().cloneNode(true));
 
@@ -3980,6 +3994,8 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 
 		//Load the cables, after the diagrams their sections are drawn on
 	readCableXml(xml_project);
+		//The bridges the same way: their sections are drawn on the folios
+	readBridgeXml(xml_project);
 	const qint64 cables_ms = phase_timer.restart();
 
 		//Now that all are loaded we refresh content of the project.
@@ -4839,6 +4855,46 @@ void QETProject::readCableXml(const QDomDocument &xml_project)
 }
 
 /**
+ * @brief QETProject::readBridgeXml
+ * Read the bridges of the project, and draw a section for each of them
+ * on the folio it belongs to -- the same rule as the cables: a folio is
+ * identified by its uuid, so reordering or renumbering pages never
+ * moves a bridge onto the wrong one.
+ * @param xml_project
+ */
+void QETProject::readBridgeXml(const QDomDocument &xml_project)
+{
+	auto xml_elmt = xml_project.documentElement();
+	auto xml_bridges = xml_elmt.firstChildElement(QStringLiteral("bridges"));
+	if (xml_bridges.isNull()) return;
+
+	for (auto xml_bridge = xml_bridges.firstChildElement(Bridge::xmlTagName());
+		 !xml_bridge.isNull();
+		 xml_bridge = xml_bridge.nextSiblingElement(Bridge::xmlTagName()))
+	{
+		auto bridge = new Bridge(this);
+		bridge->fromXml(xml_bridge);
+		addBridge(bridge);
+
+		for (const BridgePartData &part_data : bridge->parts())
+		{
+			Diagram *diagram = diagramByUuid(part_data.diagram);
+			if (!diagram)
+			{
+					//The folio this section was drawn on has been removed:
+					//the section goes with it.
+				bridge->removePart(part_data.uuid);
+				continue;
+			}
+
+			auto part = new BridgePart(part_data);
+			part->setBridge(bridge);
+			diagram->addItem(part);
+		}
+	}
+}
+
+/**
 	Export project properties under the \a xml_element XML element.
 */
 void QETProject::writeProjectPropertiesXml(QDomElement &xml_element) {
@@ -5535,6 +5591,65 @@ bool QETProject::removeCable(Cable *cable) {
 	CableManager::refreshLabels(this);
 	setModified(true);
 	emit cableRemoved(cable);
+	return true;
+}
+
+/**
+ * @brief QETProject::bridges
+ * @return every bridge of this project
+ */
+QVector<Bridge *> QETProject::bridges() const {
+	return m_bridges;
+}
+
+/**
+ * @brief QETProject::newBridge
+ * Create a bridge owned by this project.
+ * @return the new bridge
+ */
+Bridge *QETProject::newBridge()
+{
+	auto bridge = new Bridge(this);
+	addBridge(bridge);
+	return bridge;
+}
+
+/**
+ * @brief QETProject::addBridge
+ * @param bridge
+ * @return true when the bridge is now held by this project
+ */
+bool QETProject::addBridge(Bridge *bridge)
+{
+	if (!bridge || bridge->parent() != this)
+		return false;
+
+	if (m_bridges.contains(bridge))
+		return true;
+
+	m_bridges.append(bridge);
+	connect(bridge, &Bridge::changed, this, [this]() {
+		setModified(true);
+	});
+	emit bridgeAdded(bridge);
+	return true;
+}
+
+/**
+ * @brief QETProject::removeBridge
+ * Bridge is removed from the list but not deleted, so an undo command
+ * can put it back.
+ * @param bridge
+ * @return true when the bridge was in the list
+ */
+bool QETProject::removeBridge(Bridge *bridge)
+{
+	if (!m_bridges.removeOne(bridge))
+		return false;
+
+	disconnect(bridge, nullptr, this, nullptr);
+	setModified(true);
+	emit bridgeRemoved(bridge);
 	return true;
 }
 

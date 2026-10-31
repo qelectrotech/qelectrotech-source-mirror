@@ -55,10 +55,13 @@
 #include "diagramevent/diagrameventaddshape.h"
 #include "diagramevent/diagrameventaddpath.h"
 #include "diagramevent/diagrameventaddcable.h"
+#include "diagramevent/diagrameventaddbridge.h"
 #include "diagramevent/diagrameventfillet.h"
 #include "diagramevent/diagrameventaddtext.h"
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
+#include "bridge/bridgepart.h"
+#include "bridge/bridgeundocommands.h"
 #include "diagramevent/diagrameventaddpaste.h"
 #include "diagramview.h"
 #include "elementtextpattern.h"
@@ -129,6 +132,9 @@
 #include "dataBase/qetdbfile.h"
 #include "dataBase/projectdatabase.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/crossrefitem.h"
+#include "undocommand/changeelementdatacommand.h"
+#include "ui/xrefdisplaydialog.h"
 #include <QSqlQuery>
 #include <QCheckBox>
 #include <QFileDialog>
@@ -144,6 +150,34 @@
 #include "foliogrid.h"
 
 namespace {
+	/**
+		@return the one master relay (not a PLC) selected in @p diagram, or
+		whose label is, or nullptr when there is none or more than one
+	*/
+	Element *selectedContactMaster(Diagram *diagram)
+	{
+		if (!diagram)
+			return nullptr;
+		Element *found = nullptr;
+		for (QGraphicsItem *item : diagram->selectedItems())
+		{
+			for (QGraphicsItem *parent = item; parent; parent = parent->parentItem())
+			{
+				auto *element = dynamic_cast<Element *>(parent);
+				if (!element)
+					continue;
+				if (element->linkType() != Element::Master
+					|| element->elementData().m_master_type == ElementData::PLC)
+					return nullptr;
+				if (found && found != element)
+					return nullptr;
+				found = element;
+				break;
+			}
+		}
+		return found;
+	}
+
 	/**
 		The icon of View > Snap to the grid: a grid of dots and a pointer
 		whose tip sits on the middle one, in the palette's text color.
@@ -1401,6 +1435,7 @@ void QETDiagramEditor::setUpActions()
 	m_mirror_horizontal    = m_selection_actions_group.addAction( QET::Icons::ImageFlipHorizontal, tr("Horizontal mirror")       );
 	m_mirror_vertical      = m_selection_actions_group.addAction( QET::Icons::ImageFlipVertical,   tr("Vertical mirror")         );
 	m_find_element         = m_selection_actions_group.addAction( QET::Icons::ZoomDraw,          tr("Find in the panel")   );
+	m_contact_display      = m_selection_actions_group.addAction( tr("Relay contact display...") );
 	m_edit_selection       = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Edit the selected item") );
 	m_group_selected_texts = m_selection_actions_group.addAction( QET::Icons::textGroup,         tr("Group selected texts"));
 	m_group_selection      = m_selection_actions_group.addAction( tr("Group", "fr: Grouper") );
@@ -1414,6 +1449,7 @@ void QETDiagramEditor::setUpActions()
 	ShortcutManager::instance().registerAction(m_mirror_horizontal, "diagrameditor.mirror_horizontal", tr("Diagram editors"), Qt::Key_M);
 	ShortcutManager::instance().registerAction(m_mirror_vertical, "diagrameditor.mirror_vertical", tr("Diagram editors"), Qt::Key_F);
 	ShortcutManager::instance().registerAction(m_find_element, "diagrameditor.find_element", tr("Diagram editors"), QKeySequence());
+	ShortcutManager::instance().registerAction(m_contact_display, "diagrameditor.contact_display", tr("Diagram editors"), QKeySequence());
 	ShortcutManager::instance().registerAction(m_group_selected_texts, "diagrameditor.group_selected_texts", tr("Diagram editors"), QKeySequence());
 	ShortcutManager::instance().registerAction(m_edit_selection, "diagrameditor.edit_selection", tr("Diagram editors"), Qt::CTRL | Qt::Key_E);
 
@@ -1509,6 +1545,7 @@ void QETDiagramEditor::setUpActions()
 	m_mirror_horizontal->setStatusTip( tr("Flips the selected elements from left to right", "status bar tip"));
 	m_mirror_vertical ->setStatusTip( tr("Flips the selected elements from top to bottom", "status bar tip"));
 	m_find_element    ->setStatusTip( tr("Find the selected item in the panel", "status bar tip"));
+	m_contact_display ->setStatusTip( tr("Choose how the contacts of the selected relay are shown", "status bar tip"));
 
 	m_delete_selection    ->setData("delete_selection");
 	m_rotate_selection    ->setData("rotate_selection");
@@ -1517,6 +1554,7 @@ void QETDiagramEditor::setUpActions()
 	m_mirror_horizontal   ->setData("mirror_horizontal");
 	m_mirror_vertical     ->setData("mirror_vertical");
 	m_find_element        ->setData("find_selected_element");
+	m_contact_display     ->setData("contact_display");
 	m_edit_selection      ->setData("edit_selected_element");
 	m_group_selected_texts->setData("group_selected_texts");
 	m_group_selection     ->setData("group_selection");
@@ -1652,6 +1690,9 @@ void QETDiagramEditor::setUpActions()
 		//Not an element of the drawing but a line drawn across the
 		//conductors: what it crosses becomes the cores of a cable.
 	m_add_cable		   = m_add_item_actions_group.addAction(QET::Icons::Cable,      tr("Draw a cable"));
+		//A bridge across terminals: what it crosses becomes the terminals
+		//the bridge lands on.
+	m_add_bridge	   = m_add_item_actions_group.addAction(QET::Icons::Bridge,     tr("Draw a bridge"));
 
 	add_text     ->setStatusTip(tr("Adds a text field to the current sheet"));
 	add_image    ->setStatusTip(tr("Add an image to the current sheet"));
@@ -1668,6 +1709,7 @@ void QETDiagramEditor::setUpActions()
 	add_terminal_strip->setStatusTip(tr("Adds a terminal plan to the current sheet"));
 	add_generic_device->setStatusTip(tr("Makes a box symbol with terminals on any side and places it on the current sheet"));
 	m_add_cable     ->setStatusTip(tr("Draws the main line of a cable: every conductor crossed becomes one of its cores"));
+	m_add_bridge    ->setStatusTip(tr("Draws a bridge over terminals: every terminal crossed becomes one of its connections"));
 
 	add_text     ->setData(QStringLiteral("text"));
 	add_image    ->setData(QStringLiteral("image"));
@@ -1684,6 +1726,7 @@ void QETDiagramEditor::setUpActions()
 	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
 	add_generic_device->setData(QStringLiteral("generic_device"));
 	m_add_cable     ->setData(QStringLiteral("cable"));
+	m_add_bridge    ->setData(QStringLiteral("bridge"));
 
 	add_text->setCheckable(true);
 	add_line->setCheckable(true);
@@ -1693,6 +1736,7 @@ void QETDiagramEditor::setUpActions()
 	add_polyline->setCheckable(true);
 	add_path->setCheckable(true);
 	m_add_cable->setCheckable(true);
+	m_add_bridge->setCheckable(true);
 	add_fillet->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
@@ -1937,6 +1981,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_mirror_horizontal);
 	menu_edition -> addAction(m_mirror_vertical);
 	menu_edition -> addAction(m_find_element);
+	menu_edition -> addAction(m_contact_display);
 	menu_edition -> addAction(m_edit_selection);
 	QMenu *group_menu = menu_edition -> addMenu(QET::Icons::textGroup, tr("Group", "fr: Grouper"));
 	group_menu -> addAction(m_group_selection);
@@ -3203,6 +3248,10 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		}
 		diagram_event = new DiagramEventAddCable(d);
 	}
+	else if (value == QLatin1String("bridge"))
+	{
+		diagram_event = new DiagramEventAddBridge(d);
+	}
 	else if (value == "fillet")
 		diagram_event = new DiagramEventFillet (d);
 	else if (value == "image")
@@ -3300,17 +3349,23 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 					//A cable line is not held by DiagramContent: it is
 					//removed by its own command, which also lets the cable
 					//it belongs to go when no line of it is left anywhere.
+					//A bridge line the same way -- and one takes the whole
+					//bridge with it, every line of it.
 				QList<CablePart *> cable_parts;
+				QList<BridgePart *> bridge_parts;
 				for (QGraphicsItem *item : diagram->selectedItems()) {
 					if (auto *part = qgraphicsitem_cast<CablePart *>(item)) {
 						cable_parts << part;
+					}
+					if (auto *part = qgraphicsitem_cast<BridgePart *>(item)) {
+						bridge_parts << part;
 					}
 				}
 				const bool other_items = dc.hasDeletableItems();
 
                 diagram->clearSelection();
 
-				if (cable_parts.isEmpty() && AutoConnect::isOn(diagram)) {
+				if (cable_parts.isEmpty() && bridge_parts.isEmpty() && AutoConnect::isOn(diagram)) {
 						//The terminals the removed symbols stood between, or
 						//were wired to, look for a new partner in the same step
 					auto *undo = new QUndoCommand(QObject::tr("Delete"));
@@ -3320,16 +3375,25 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 					AutoConnect::update(diagram, {}, {}, undo,
 										QSet<Element *>(elements.begin(), elements.end()));
 					diagram->undoStack().push(undo);
-				} else if (cable_parts.isEmpty()) {
-					diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
-				} else if (!other_items) {
-					diagram->undoStack().push(new RemoveCableCommand(diagram, cable_parts));
 				} else {
-						//One single step, so a selection holding both a
-						//cable and ordinary drawings comes back whole.
-					diagram->undoStack().push(new BatchCommand(
-						new DeleteQGraphicsItemCommand(diagram, dc),
-						new RemoveCableCommand(diagram, cable_parts)));
+					QList<QUndoCommand *> steps;
+					if (other_items || (cable_parts.isEmpty() && bridge_parts.isEmpty())) {
+						steps << new DeleteQGraphicsItemCommand(diagram, dc);
+					}
+					if (!cable_parts.isEmpty()) {
+						steps << new RemoveCableCommand(diagram, cable_parts);
+					}
+					if (!bridge_parts.isEmpty()) {
+						steps << new RemoveBridgeCommand(bridge_parts);
+					}
+
+						//One single step, so a selection holding both a line
+						//and ordinary drawings comes back whole.
+					if (steps.size() == 1) {
+						diagram->undoStack().push(steps.first());
+					} else {
+						diagram->undoStack().push(new BatchCommand(steps, tr("Delete")));
+					}
 				}
                 dv->adjustSceneRect();
             }
@@ -3349,6 +3413,35 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 		RotateSelectionCommand *c = new RotateSelectionCommand(diagram, 90, nullptr, whole_group);
 		if(c->isValid())
 			diagram->undoStack().push(c);
+	}
+	else if (value == "contact_display")
+	{
+		if (Element *master = selectedContactMaster(diagram))
+		{
+			ElementData::XRefDisplay start = master->elementData().m_xref_display;
+			if (!start.enabled)
+			{
+					//Start from what the project's setting shows now
+				const XRefProperties xrp = CrossRefItem::propertiesFor(master);
+				start.contacts = xrp.displayHas() == XRefProperties::Contacts;
+				start.position = xrp.snapTo() == XRefProperties::Label
+						? ElementData::XRefDisplay::UnderLabel : ElementData::XRefDisplay::Footer;
+				start.showUnlinked = xrp.showAllConfiguredSlaves();
+			}
+			const QRectF body = master->mapRectToScene(master->drawingRect());
+			XRefDisplayDialog dialog(start, QPointF(body.left(), body.bottom() + 10) - master->scenePos(), this);
+			if (dialog.exec() == QDialog::Accepted)
+			{
+				ElementData data = master->elementData();
+				data.m_xref_display = dialog.display();
+				if (data != master->elementData())
+				{
+					auto *command = new ChangeElementDataCommand(master, data);
+					command->setText(tr("Change relay contact display"));
+					diagram->undoStack().push(command);
+				}
+			}
+		}
 	}
 	else if (value == "mirror_horizontal" || value == "mirror_vertical")
 	{
@@ -3614,6 +3707,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 		QList <QAction *> action_list;
 		action_list << m_conductor_reset
 			    << m_find_element
+			    << m_contact_display
 			    << m_cut
 			    << m_copy
 			    << m_paste_element_info
@@ -3646,6 +3740,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	// number of selected elements
 	int selected_elements_count = dc.count(DiagramContent::Elements);
 	m_find_element->setEnabled(selected_elements_count == 1);
+	m_contact_display->setEnabled(!ro && selectedContactMaster(diagram_));
 	m_copy_text_format->setEnabled(selected_elements_count >= 1);
 	m_apply_text_format->setEnabled(!ro && selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern());
 	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
@@ -3655,18 +3750,27 @@ void QETDiagramEditor::slot_updateComplexActions()
 	//Actions that need items (elements, conductors, texts...) selected, to be enabled
 		//A cable line is drawn on the folio but held by the cable, not
 		//by DiagramContent: it counts on its own for deleting and editing.
+		//A bridge line the same way: deleting it takes its whole bridge.
 	int selected_cables = 0;
+	int selected_bridge_parts = 0;
 	for (QGraphicsItem *item : diagram_->selectedItems()) {
 		if (item && item->type() == CablePart::Type) {
 			selected_cables++;
+		}
+		if (item && item->type() == BridgePart::Type) {
+			selected_bridge_parts++;
 		}
 	}
 
 		//A drawn cable line is copyable, cuttable and duplicatable on
 		//its own, although it belongs to its cable rather than to the
-		//folio and DiagramContent never sees it.
-	bool copiable_items  = dc.hasCopiableItems() || selected_cables > 0;
-	bool deletable_items = dc.hasDeletableItems() || selected_cables > 0;
+		//folio and DiagramContent never sees it. A bridge line the
+		//same way: it travels beside the folio's own XML, and what is
+		//pasted is a bridge of its own.
+	bool copiable_items  = dc.hasCopiableItems() || selected_cables > 0
+			|| selected_bridge_parts > 0;
+	bool deletable_items = dc.hasDeletableItems() || selected_cables > 0
+			|| selected_bridge_parts > 0;
 	m_cut              -> setEnabled(!ro && copiable_items);
 	m_copy             -> setEnabled(copiable_items);
 	m_duplicate        -> setEnabled(!ro && copiable_items);

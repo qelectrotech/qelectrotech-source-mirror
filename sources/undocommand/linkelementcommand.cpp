@@ -17,6 +17,8 @@
 */
 #include "linkelementcommand.h"
 
+#include "../bridge/bridgemanager.h"
+
 #include "../cable/cablemanager.h"
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
@@ -205,6 +207,19 @@ void LinkElementCommand::setLink(const QList<Element *>& element_list)
 {
 	m_linked_after.clear();
 	setUpNewLink(element_list, true);
+
+		//What is one bridge carried on over the sheets is one bridge:
+		//linking two sheet references joins the bridges they carry in
+		//that very moment, as if the new half had been packed onto the
+		//existing one by hand. Said here, in the step itself, so it
+		//happens wherever a link is made -- one undo step for both.
+	if (m_element && m_linked_after.size() == 1
+		&& (m_element->linkType() & Element::AllReport))
+	{
+		QETProject *project = m_element->diagram()
+				? m_element->diagram()->project() : nullptr;
+		BridgeManager::joinOverLink(project, m_element, m_linked_after.first(), this);
+	}
 }
 
 /**

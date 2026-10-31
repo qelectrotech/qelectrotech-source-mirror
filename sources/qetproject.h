@@ -68,6 +68,7 @@ class XmlElementCollection;
 class QTimer;
 class TerminalStrip;
 class Cable;
+class Bridge;
 
 
 #include <QColor>
@@ -401,6 +402,11 @@ class QETProject : public QObject
 		Cable *newCable();
 		bool addCable(Cable *cable);
 		bool removeCable(Cable *cable);
+
+		QVector<Bridge *> bridges() const;
+		Bridge *newBridge();
+		bool addBridge(Bridge *bridge);
+		bool removeBridge(Bridge *bridge);
 		Diagram *diagramByUuid(const QUuid &uuid);
 
 	public slots:
@@ -442,6 +448,10 @@ class QETProject : public QObject
 			/// signal at a time, long after the folios were read.
 		void cableAdded(Cable *cable);
 		void cableRemoved(Cable *cable);
+			/// A bridge joined or left this project. Views over the
+			/// bridges listen to both to work their rows out again.
+		void bridgeAdded(Bridge *bridge);
+		void bridgeRemoved(Bridge *bridge);
 
 	private slots:
 		void updateDiagramsFolioData();
@@ -480,6 +490,7 @@ class QETProject : public QObject
 		void readDefaultPropertiesXml(QDomDocument &xml_project);
 		void readTerminalStripXml(const QDomDocument &xml_project);
 		void readCableXml(const QDomDocument &xml_project);
+		void readBridgeXml(const QDomDocument &xml_project);
 		void readUsageXml(QDomDocument &xml_project);
 		void readWireHopsXml(QDomDocument &xml_project);
 		void readOriginXml(QDomDocument& xml_project);
@@ -657,6 +668,7 @@ class QETProject : public QObject
 			//Called after each folio built, see setFolioBuildObserver()
 		std::function<void(int, int)> m_folio_build_observer;
 		QVector<Cable *> m_cables;
+		QVector<Bridge *> m_bridges;
 
 		ProjectPropertiesHandler m_project_properties_handler;
 };
