@@ -35,7 +35,7 @@ QString ProjectOrigin::toString(Mode mode)
 }
 
 /**
-	@brief WireHops::fromString
+	@brief ProjectOrigin::fromString
 	@return the mode written as @a string in a project file,
 	Mode::TopLeft for anything else, so an unknown value.
 */

@@ -339,6 +339,17 @@ void projectDataBase::updateDB()
 }
 
 /**
+	@brief projectDataBase::updateForceDB
+	Force an update of all database content.
+*/
+void projectDataBase::updateDBForce()
+{
+	m_content_changed = true;
+	m_rebuild_all	  = true;
+	updateDB();
+}
+
+/**
 	@brief projectDataBase::refresh
 	Bring the tables up to date: write the queued rows, and rebuild the
 	rows of the folios that changed (refreshChangedFolios()), or of every
@@ -1238,8 +1249,8 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		//(the project's own may not be read yet): the cells it names must
 		//be the ones the built folios name.
 	reader.setOrigin(ProjectOrigin::fromString(
-		document.documentElement().firstChildElement(QStringLiteral("style"))
-			.attribute(QStringLiteral("origin"))));
+		document.documentElement().firstChildElement(QStringLiteral("cell_origin"))
+			.attribute(QStringLiteral("corner"))));
 	QList<DiagramContext> diagram_infos;
 	QList<QDate> diagram_dates;
 	QList<QUuid> diagram_uuids;
