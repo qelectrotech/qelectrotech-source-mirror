@@ -255,6 +255,11 @@ add_test(NAME tst_diagramsortkeys COMMAND tst_diagramsortkeys)
 target_include_directories(tst_diagramsortkeys PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_diagramsortkeys PRIVATE Qt::Test)
 
+add_executable(tst_dimensionitem tst_dimensionitem.cpp)
+add_test(NAME tst_dimensionitem COMMAND tst_dimensionitem)
+target_include_directories(tst_dimensionitem PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_dimensionitem PRIVATE qelectrotech_objects Qt::Test)
+
 # positionorder.h is header-only: the position comparisons behind element
 # renumbering and terminal numbering, as strict weak orderings for std::sort.
 add_executable(tst_positionorder tst_positionorder.cpp)
@@ -288,6 +293,27 @@ add_executable(tst_foliogrid tst_foliogrid.cpp)
 target_include_directories(tst_foliogrid PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_foliogrid PRIVATE Qt::Test Qt::Core)
 add_test(NAME tst_foliogrid COMMAND tst_foliogrid)
+
+# ProjectLanguages is the project's texts in other languages: what is shown
+# for a text, the XML it is saved as and the CSV a translator works with.
+add_executable(tst_projectlanguages tst_projectlanguages.cpp
+  ${QET_DIR}/sources/properties/projectlanguages.cpp)
+add_test(NAME tst_projectlanguages COMMAND tst_projectlanguages)
+target_include_directories(tst_projectlanguages PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_projectlanguages PRIVATE Qt::Test Qt::Core Qt::Xml)
+
+# The project's texts in other languages are saved as read, only when there
+# are any, and held by the project database (project_setting).
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_projectlanguagesfile
+    tst_projectlanguagesfile.cpp)
+  add_test(NAME tst_projectlanguagesfile COMMAND tst_projectlanguagesfile)
+  add_dependencies(tst_projectlanguagesfile qelectrotech)
+  target_link_libraries(tst_projectlanguagesfile PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_projectlanguagesfile PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+endif()
 
 # textlines.h is header-only: the lines of a text as they are laid out,
 # for the exports that write a text line by line.
@@ -1968,6 +1994,9 @@ target_compile_definitions(tst_workingcopypoll PRIVATE
 # zoom with fixed ones.
 qet_add_app_test(tst_statusgridzoom tst_statusgridzoom.cpp)
 
+# The shaded lines from a dragged symbol's terminals: on by default, none
+# with the setting off.
+qet_add_app_test(tst_terminalhelplines tst_terminalhelplines.cpp)
 # While placing, the folio knows the symbol that follows the mouse: the
 # crosshair leaves it out, so a corner turned by Space stays visible.
 qet_add_app_test(tst_pendingelement tst_pendingelement.cpp)

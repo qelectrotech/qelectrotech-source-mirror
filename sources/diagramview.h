@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -100,7 +100,7 @@ class DiagramView : public PaletteGraphicsView
 			/// The pointer: a four-way arrow over what can be moved; with
 			/// the crosshair, drawn on the grid point in place of the
 			/// system's, which a program may not move on every platform
-		enum class Pointer { System, Arrow, Move };
+		enum class Pointer { System, Arrow, Move, Dimension };
 		Pointer           m_pointer = Pointer::System;
 			/// The view's cursor was set by updatePointer()
 		bool              m_pointer_set = false;
@@ -150,6 +150,10 @@ class DiagramView : public PaletteGraphicsView
 		static void setCrosshairShown(bool shown);
 		static bool pointerAids();
 		static void setPointerAids(bool on);
+			/// The shaded lines from a dragged symbol's terminals to the
+			/// terminals in line with them; on by default
+		static bool terminalHelpLinesShown();
+		static void setTerminalHelpLinesShown(bool shown);
 		bool crosshairVisible() const { return m_crosshair_visible; }
 			/// The pointer drawn on the crosshair's grid point, if any:
 			/// 0 none (the system's shows), 1 an arrow, 2 a four-way arrow

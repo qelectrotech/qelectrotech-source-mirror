@@ -117,6 +117,8 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/potentialselectordialog.ui
   ${QET_DIR}/sources/ui/reportpropertiewidget.ui
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.ui
+  ${QET_DIR}/sources/ui/dimensionpropertiesdialog.ui
+  ${QET_DIR}/sources/ui/dimensionpropertieswidget.ui
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.ui
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.ui
   ${QET_DIR}/sources/ui/xrefpropertieswidget.ui
@@ -420,6 +422,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramevent/diagrameventaddimage.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.h
+  ${QET_DIR}/sources/diagramevent/diagrameventadddimension.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventadddimension.h
   ${QET_DIR}/sources/diagramevent/diagrameventfillet.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventfillet.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddpath.cpp
@@ -480,6 +484,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/editor/esevent/eseventaddtext.h
   ${QET_DIR}/sources/editor/esevent/eseventinterface.cpp
   ${QET_DIR}/sources/editor/esevent/eseventinterface.h
+  ${QET_DIR}/sources/editor/esevent/elementmeasureitem.cpp
+  ${QET_DIR}/sources/editor/esevent/elementmeasureitem.h
+  ${QET_DIR}/sources/editor/esevent/eseventmeasure.cpp
+  ${QET_DIR}/sources/editor/esevent/eseventmeasure.h
 
   ${QET_DIR}/sources/editor/graphicspart/abstractpartellipse.cpp
   ${QET_DIR}/sources/editor/graphicspart/abstractpartellipse.h
@@ -597,6 +605,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/properties/deviceinformation.h
   ${QET_DIR}/sources/properties/elementdata.cpp
   ${QET_DIR}/sources/properties/elementdata.h
+  ${QET_DIR}/sources/properties/projectlanguages.cpp
+  ${QET_DIR}/sources/properties/projectlanguages.h
   ${QET_DIR}/sources/properties/propertiesinterface.cpp
   ${QET_DIR}/sources/properties/propertiesinterface.h
   ${QET_DIR}/sources/properties/reportproperties.cpp
@@ -641,6 +651,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetgraphicsitem/qetgraphicsitem.h
   ${QET_DIR}/sources/qetgraphicsitem/qetshapeitem.cpp
   ${QET_DIR}/sources/qetgraphicsitem/qetshapeitem.h
+  ${QET_DIR}/sources/qetgraphicsitem/dimensionitem.cpp
+  ${QET_DIR}/sources/qetgraphicsitem/dimensionitem.h
   ${QET_DIR}/sources/qetgraphicsitem/shapetransform.cpp
   ${QET_DIR}/sources/qetgraphicsitem/shapetransform.h
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.cpp
@@ -910,12 +922,18 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/potentialselectordialog.h
   ${QET_DIR}/sources/ui/prefixconfigurationdialog.cpp
   ${QET_DIR}/sources/ui/prefixconfigurationdialog.h
+  ${QET_DIR}/sources/ui/projectlanguagesdialog.cpp
+  ${QET_DIR}/sources/ui/projectlanguagesdialog.h
   ${QET_DIR}/sources/ui/projectpropertiesdialog.cpp
   ${QET_DIR}/sources/ui/projectpropertiesdialog.h
   ${QET_DIR}/sources/ui/reportpropertiewidget.cpp
   ${QET_DIR}/sources/ui/reportpropertiewidget.h
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.cpp
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.h
+  ${QET_DIR}/sources/ui/dimensionpropertiesdialog.cpp
+  ${QET_DIR}/sources/ui/dimensionpropertiesdialog.h
+  ${QET_DIR}/sources/ui/dimensionpropertieswidget.cpp
+  ${QET_DIR}/sources/ui/dimensionpropertieswidget.h
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.cpp
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.h
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.cpp

@@ -25314,6 +25314,175 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     </message>
 </context>
 <context>
+    <name>QETDiagramEditor</name>
+    <message>
+        <source>Tape measure</source>
+        <translation>Mètre à ruban</translation>
+    </message>
+    <message>
+        <source>Add linear dimension</source>
+        <translation>Cotation linéaire</translation>
+    </message>
+    <message>
+        <source>Add chain dimension</source>
+        <translation>Cotation en continu</translation>
+    </message>
+    <message>
+        <source>Adds a linear dimension to the current sheet</source>
+        <translation>Ajoute une cotation linéaire au folio courant</translation>
+    </message>
+    <message>
+        <source>Adds a chain dimension to the current sheet</source>
+        <translation>Ajoute une cotation en continu au folio courant</translation>
+    </message>
+</context>
+<context>
+    <name>DimensionPropertiesWidget</name>
+    <message>
+        <source>Dimension Properties</source>
+        <translation>Propriétés de la cotation</translation>
+    </message>
+    <message>
+        <source>Dimension</source>
+        <translation>Cotation</translation>
+    </message>
+    <message>
+        <source>Calculated:</source>
+        <translation>Calculé :</translation>
+    </message>
+    <message>
+        <source>Automatic calculation</source>
+        <translation>Calcul automatique (2px = 1mm)</translation>
+    </message>
+    <message>
+        <source>Custom label:</source>
+        <translation>Texte personnalisé :</translation>
+    </message>
+    <message>
+        <source>Offset:</source>
+        <translation>Décalage :</translation>
+    </message>
+    <message>
+        <source>Termination:</source>
+        <translation>Extrémités :</translation>
+    </message>
+    <message>
+        <source>Dimension Properties...</source>
+        <translation>Propriétés de la cotation...</translation>
+    </message>
+    <message>
+        <source>Arrows</source>
+        <translation>Flèches</translation>
+    </message>
+    <message>
+        <source>Architectural Slashes</source>
+        <translation>Barres obliques (CAD)</translation>
+    </message>
+    <message>
+        <source>Auto (parallel to line)</source>
+        <translation>Automatique (parallèle)</translation>
+    </message>
+    <message>
+        <source>Horizontal</source>
+        <translation>Horizontal</translation>
+    </message>
+</context>
+<context>
+    <name>DimensionPropertiesDialog</name>
+    <message>
+        <source>Edit dimension properties</source>
+        <translation>Éditer les propriétés de la cotation</translation>
+    </message>
+    <message>
+        <source>Arrows</source>
+        <translation>Flèches</translation>
+    </message>
+    <message>
+        <source>Architectural Slashes</source>
+        <translation>Barres obliques (CAD)</translation>
+    </message>
+</context>
+<context>
+    <name>DiagramEventAddDimension</name>
+    <message>
+        <source>Linear Dimension: Click to set the first reference point (P1)</source>
+        <translation>Cotation linéaire : Cliquez pour placer le premier point de référence (P1)</translation>
+    </message>
+    <message>
+        <source>Chain Dimension: Click to set the start reference point (P1)</source>
+        <translation>Cotation en continu : Cliquez pour placer le point de référence initial (P1)</translation>
+    </message>
+    <message>
+        <source>Dimension: Click to set the second reference point (P2) - Length: %1 mm</source>
+        <translation>Cotation : Cliquez pour placer le second point de référence (P2) - Longueur : %1 mm</translation>
+    </message>
+    <message>
+        <source>Dimension: Move mouse to set offset distance and side (%1 mm), click to fix</source>
+        <translation>Cotation : Déplacez la souris pour régler le décalage (%1 mm), cliquez pour valider</translation>
+    </message>
+    <message>
+        <source>Chain Dimension: Click to place next segment (%1 mm) | Press Enter to finish, Esc to exit</source>
+        <translation>Cotation en continu : Cliquez pour placer le segment suivant (%1 mm) | Entrée pour terminer, Échap pour quitter</translation>
+    </message>
+</context>
+<context>
+    <name>DimensionItem</name>
+    <message>
+        <source>Apply dimension format</source>
+        <translation>Appliquer le format de cotation</translation>
+    </message>
+    <message>
+        <source>Move dimension point</source>
+        <translation>Déplacer le point de cotation</translation>
+    </message>
+    <message>
+        <source>Change dimension offset</source>
+        <translation>Modifier le décalage de cotation</translation>
+    </message>
+</context>
+<context>
+    <name>QETElementEditor</name>
+    <message>
+        <source>Tape measure</source>
+        <translation>Mètre à ruban</translation>
+    </message>
+    <message>
+        <source>Measure distance and angle between points</source>
+        <translation>Mesurer la distance et l'angle entre deux points</translation>
+    </message>
+    <message>
+        <source>Clear measurements</source>
+        <translation>Effacer les mesures</translation>
+    </message>
+    <message>
+        <source>Clear all tape measurements from the editor</source>
+        <translation>Effacer toutes les mesures du mètre à ruban dans l'éditeur</translation>
+    </message>
+</context>
+<context>
+    <name>ESEventMeasure</name>
+    <message>
+        <source>Tape measure: Click to set the first reference point (P1), Esc to exit</source>
+        <translation>Mètre à ruban : Cliquez pour placer le premier point de référence (P1), Échap pour quitter</translation>
+    </message>
+    <message>
+        <source>Tape measure: Click to set the second reference point (P2)</source>
+        <translation>Mètre à ruban : Cliquez pour placer le second point de référence (P2)</translation>
+    </message>
+    <message>
+        <source>Tape measure: %1 mm (%2 px) | ΔX: %3 mm | ΔY: %4 mm | Angle: %5°</source>
+        <translation>Mètre à ruban : %1 mm (%2 px) | ΔX : %3 mm | ΔY : %4 mm | Angle : %5°</translation>
+    </message>
+    <message>
+        <source>Measurements cleared</source>
+        <translation>Mesures effacées</translation>
+    </message>
+    <message>
+        <source>Measurements cleared. Press Esc again to exit</source>
+        <translation>Mesures effacées. Appuyez à nouveau sur Échap pour quitter</translation>
+    </message>
+</context>
+<context>
     <name>DuplicateLabelsDialog</name>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="48"/>

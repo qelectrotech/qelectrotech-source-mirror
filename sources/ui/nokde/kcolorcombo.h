@@ -30,6 +30,8 @@ class KColorCombo : public QComboBox
 
 		void setColors(const QList<QColor> &colors);
 		QColor color(int index) const;
+		QColor color() const;
+		void setColor(const QColor &color);
 
 	signals:
 		void activated(const QColor &color);
