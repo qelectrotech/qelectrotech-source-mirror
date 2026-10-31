@@ -141,7 +141,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/strip_label_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/strip_labels.qet)
-  set_tests_properties(tst_striplabelintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_striplabelintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The pointer: a four-way arrow over what a drag moves; with the
   # crosshair, drawn on its grid point in place of the system's.
@@ -233,7 +233,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/sheet_tab_layout_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_sheettablayout PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_sheettablayout PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 
@@ -474,6 +474,8 @@ qet_add_app_test(tst_selectionpanelheight tst_selectionpanelheight.cpp)
 # The Auto numbering panel's Increment spin boxes get the width their style
 # asks for; a fixed 55 px cut the number off on Windows (#1566).
 qet_add_app_test(tst_autonumincrementwidth tst_autonumincrementwidth.cpp)
+# An arrow beside the drawing folds the docks of its side away and back.
+qet_add_app_test(tst_dockfold tst_dockfold.cpp)
 
 # View > Snap to the grid switches every snap off and on, as Ctrl held does;
 # View > Grid step sets a fine, medium or coarse step.
@@ -1146,6 +1148,19 @@ if(QET_HAS_SCRIPTING)
   add_dependencies(tst_savedstamps qelectrotech)
   target_link_libraries(tst_savedstamps PRIVATE Qt::Test Qt::Xml)
   target_compile_definitions(tst_savedstamps PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+  # A .qet kept in git changes only where the project did (#1512): an
+  # unchanged project saved in another language, time zone or folder is
+  # the same file; a moved symbol changes its own lines, its wires' and
+  # the saved stamps only.
+  add_executable(
+    tst_stableqet
+    tst_stableqet.cpp)
+  add_test(NAME tst_stableqet COMMAND tst_stableqet)
+  add_dependencies(tst_stableqet qelectrotech)
+  target_link_libraries(tst_stableqet PRIVATE Qt::Test)
+  target_compile_definitions(tst_stableqet PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
   # Deleting a symbol whose terminal held several wires joins them with a
@@ -1952,6 +1967,10 @@ target_compile_definitions(tst_workingcopypoll PRIVATE
 # The status bar: the grid step with its menu, a magnet for snapping, the
 # zoom with fixed ones.
 qet_add_app_test(tst_statusgridzoom tst_statusgridzoom.cpp)
+
+# While placing, the folio knows the symbol that follows the mouse: the
+# crosshair leaves it out, so a corner turned by Space stays visible.
+qet_add_app_test(tst_pendingelement tst_pendingelement.cpp)
 
 # Which working copies a QElectroTech that did not close normally left are
 # offered at the next start, and which are deleted. QET-SQL-FORMAT S3z3.

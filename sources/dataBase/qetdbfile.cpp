@@ -1390,11 +1390,12 @@ bool QetDbFile::save(projectDataBase &database, const QString &path, QString *er
 */
 static bool readCopy(const QString &path, QDomDocument *document, QString *error,
 					 const std::function<bool(const QString &copy)> &with_copy, QetDbFile::Repair *repair,
-					 QetDbFile::OutsideEdit outside, bool pages_first, bool *again);
+					 QetDbFile::OutsideEdit outside, bool pages_first, bool *again,
+					 QHash<QString, QByteArray> *table_digests);
 
 bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error,
 					 const std::function<bool(const QString &copy)> &with_copy, Repair *repair,
-					 OutsideEdit outside)
+					 OutsideEdit outside, QHash<QString, QByteArray> *table_digests)
 {
 		//Speed first (the user, 2026-10-31): the pages are checked against
 		//the repair data beside the read, not before it (111 ms of f2099's
@@ -1404,11 +1405,11 @@ bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error
 	bool again = false;
 	const bool pages_first = outside == OutsideEdit::BackToSave || QFileInfo::exists(path + QLatin1String("-wal"))
 			|| QFileInfo::exists(path + QLatin1String("-journal"));
-	const bool ok = readCopy(path, document, error, with_copy, repair, outside, pages_first, &again);
+	const bool ok = readCopy(path, document, error, with_copy, repair, outside, pages_first, &again, table_digests);
 	if (!again && (ok || pages_first)) return ok;
 	if (document) *document = QDomDocument();
 	if (error) error->clear();
-	return readCopy(path, document, error, with_copy, repair, outside, true, nullptr);
+	return readCopy(path, document, error, with_copy, repair, outside, true, nullptr, table_digests);
 }
 
 	//QetDbFile::read(), with the pages checked first (@p pages_first), or
@@ -1416,9 +1417,11 @@ bool QetDbFile::read(const QString &path, QDomDocument *document, QString *error
 	//again with them checked first
 static bool readCopy(const QString &path, QDomDocument *document, QString *error,
 					 const std::function<bool(const QString &copy)> &with_copy, QetDbFile::Repair *repair,
-					 QetDbFile::OutsideEdit outside, bool pages_first, bool *again)
+					 QetDbFile::OutsideEdit outside, bool pages_first, bool *again,
+					 QHash<QString, QByteArray> *table_digests)
 {
 	using QetDbFile::Repair;
+	if (table_digests) table_digests->clear();
 	using QetDbFile::OutsideEdit;
 	QTemporaryDir dir;
 	const QString copy = dir.filePath(QStringLiteral("project.qetdb"));
@@ -1468,10 +1471,14 @@ static bool readCopy(const QString &path, QDomDocument *document, QString *error
 		//The content digest, worked out on a connection of its own beside
 		//what follows, which only reads the copy too: a second off f2099's
 		//open
-	QFuture<QString> digest;
+		//Each table's too: the first save reuses those of the tables not
+		//written after the open (projectDataBase::openedDigests())
+	QFuture<std::pair<QString, QHash<QString, QByteArray>>> digest;
 	if (!saved_digest.isEmpty())
 		digest = QtConcurrent::run([copy]() {
-			return contentDigest(copy);
+			QHash<QString, QByteArray> tables;
+			QString all = contentDigest(copy, {}, &tables);
+			return std::make_pair(all, tables);
 		});
 		//A damaged index passes SQLite's quick check and the digest: the
 		//pages checked too, on a thread of their own, nothing written
@@ -1494,7 +1501,8 @@ static bool readCopy(const QString &path, QDomDocument *document, QString *error
 	const bool deferred = with_copy && with_copy(copy);
 	const bool read = projectDataBase::readDocument(copy, document, error, deferred);
 	if (damaged()) return false;
-	if (!saved_digest.isEmpty() && digest.result() != saved_digest) {
+	if (!saved_digest.isEmpty() && read && table_digests) *table_digests = digest.result().second;
+	if (!saved_digest.isEmpty() && digest.result().first != saved_digest) {
 			//It passed every other check: the user may open it as it is,
 			//rather than be locked out of it (the user, 2026-10-30)
 		if (outside == OutsideEdit::KeepChanges) {

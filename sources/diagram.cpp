@@ -31,6 +31,7 @@
 #include "diagramcontent.h"
 #include "diagramevent/diagrameventaddcable.h"
 #include "diagramevent/diagrameventadddimension.h"
+#include "diagramevent/diagrameventaddelement.h"
 #include "diagramevent/diagrameventinterface.h"
 #include "diagramposition.h"
 #include "factory/elementfactory.h"
@@ -1227,6 +1228,16 @@ void Diagram::clearEventInterface()
 bool Diagram::eventInterfaceIsRunning() const
 {
 	return m_event_interface && m_event_interface->isRunning();
+}
+
+/**
+	@brief Diagram::pendingElement
+	@return the symbol that follows the mouse while one is placed, else nullptr
+*/
+Element *Diagram::pendingElement() const
+{
+	auto *placing = qobject_cast<DiagramEventAddElement *>(m_event_interface);
+	return placing && placing->isRunning() ? placing->pendingElement() : nullptr;
 }
 
 /**

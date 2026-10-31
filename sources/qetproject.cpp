@@ -643,7 +643,9 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		const QString chosen = qEnvironmentVariable("QET_QETDB_OUTSIDE_EDIT");
 		if (chosen == QLatin1String("back")) outside = QetDbFile::OutsideEdit::BackToSave;
 		else if (chosen == QLatin1String("keep")) outside = QetDbFile::OutsideEdit::KeepChanges;
-		if (!QetDbFile::read(fi.absoluteFilePath(), &xml_project, &error, adopt, &m_qetdb_repair, outside)) {
+		QHash<QString, QByteArray> table_digests;
+		if (!QetDbFile::read(fi.absoluteFilePath(), &xml_project, &error, adopt, &m_qetdb_repair, outside,
+							 &table_digests)) {
 			qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << error;
 			m_open_error = error;
 			if (opened_here) {
@@ -651,6 +653,8 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 			}
 			return XmlParsingFailed;
 		}
+			//The first save hashes again only the tables written since
+		m_data_base.openedDigests(table_digests);
 	}
 	if (database) {
 		const QByteArray hash = database_hash.result();

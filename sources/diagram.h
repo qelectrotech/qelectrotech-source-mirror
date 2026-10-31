@@ -326,6 +326,7 @@ class Diagram : public QGraphicsScene
 		bool cableToolIsRunning() const;
 		bool dimensionToolIsRunning() const;
 		DiagramEventInterface *eventInterface() const { return m_event_interface; }
+		Element *pendingElement() const;
 	
 		// methods related to graphics options
 		ExportProperties applyProperties(const ExportProperties &);
