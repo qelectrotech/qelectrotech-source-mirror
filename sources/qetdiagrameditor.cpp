@@ -40,6 +40,7 @@
 #include "ElementsCollection/elementpickerpopup.h"
 #include "shortcutbarsettings.h"
 #include "diagramtoolbarsettings.h"
+#include "connectionsymbols.h"
 #include "qetgraphicsitem/conductor.h"
 #include "itemgroups.h"
 #include "commandsearchpopup.h"
@@ -1504,6 +1505,40 @@ void QETDiagramEditor::setUpActions()
 	connect(m_insert_last_element, &QAction::triggered,
 		this, &QETDiagramEditor::insertLastElement);
 	addAction(m_insert_last_element);
+
+		//The symbols on the wires, each placed with one click from the
+		//Connections toolbar. The button's menu picks the symbol: the one
+		//highlighted in the collection, or the default.
+	for (ConnectionSymbols::Kind kind : ConnectionSymbols::kinds())
+	{
+		auto *action = new QAction(ConnectionSymbols::title(kind), this);
+		action->setData(ConnectionSymbols::commandId(kind).section('.', 1));
+		ShortcutManager::instance().registerAction(
+			action, ConnectionSymbols::commandId(kind), tr("Diagram editors"), QKeySequence());
+		connect(action, &QAction::triggered, this, [this, kind]() { placeConnectionSymbol(kind); });
+		auto *menu = new QMenu(this);
+		connect(menu->addAction(tr("Use the symbol highlighted in the collection")), &QAction::triggered,
+			this, [this, kind]() {
+			const ElementsLocation location = m_element_collection_widget->currentElementLocation();
+			if (!location.isElement()) {
+				QET::QetMessageBox::information(this, ConnectionSymbols::title(kind),
+					tr("Highlight a symbol in the collection first."));
+				return;
+			}
+			ConnectionSymbols::setPath(kind, location.collectionPath());
+			for (QETDiagramEditor *editor : QETApp::diagramEditors())
+				editor->updateConnectionAction(kind);
+		});
+		connect(menu->addAction(tr("Default symbol")), &QAction::triggered, this, [kind]() {
+			ConnectionSymbols::resetPath(kind);
+			for (QETDiagramEditor *editor : QETApp::diagramEditors())
+				editor->updateConnectionAction(kind);
+		});
+		action->setMenu(menu);
+		addAction(action);
+		m_connection_actions.insert(kind, action);
+		updateConnectionAction(kind);
+	}
 		//Type to find and run any command, as SolidWorks' "Search Commands"
 		//and the command palette of many editors. Ctrl+Shift+P, the key those
 		//editors use, is taken by the autonumbering dock; M for "menu".
@@ -1842,6 +1877,9 @@ void QETDiagramEditor::setUpToolBar()
 	m_depth_tool_bar = new QToolBar(tr("Depth", "toolbar title"));
 	m_depth_tool_bar->setObjectName("diagram_depth_toolbar");
 
+	m_connections_tool_bar = new QToolBar(tr("Connections", "toolbar title"), this);
+	m_connections_tool_bar->setObjectName("connections");
+
 		//The toolbar buttons that are widgets, not commands. Each is held by
 		//an action of this window, so it survives being taken off a toolbar.
 	auto add_widget = [this](const QString &id, QWidget *widget) {
@@ -1863,6 +1901,10 @@ void QETDiagramEditor::setUpToolBar()
 	addToolBar(Qt::TopToolBarArea, view_tool_bar);
 	addToolBar(Qt::TopToolBarArea, diagram_tool_bar);
 	addToolBar(Qt::TopToolBarArea, m_add_item_tool_bar);
+	addToolBar(Qt::TopToolBarArea, m_connections_tool_bar);
+		//New: hidden until switched on in the toolbars' context menu, so
+		//the window looks as before for everyone
+	m_connections_tool_bar->hide();
 	addToolBar(Qt::TopToolBarArea, m_depth_tool_bar);
 
 	DiagramToolbarSettings::markWindow(this);
@@ -1924,9 +1966,13 @@ void QETDiagramEditor::rebuildToolBars()
 		return ShortcutManager::instance().action(id, this);
 	};
 	const QList<QToolBar *> built_in {main_tool_bar, view_tool_bar, diagram_tool_bar,
-					   m_add_item_tool_bar, m_depth_tool_bar};
+					   m_add_item_tool_bar, m_connections_tool_bar, m_depth_tool_bar};
 	for (QToolBar *toolbar : built_in + m_custom_tool_bars) {
 		DiagramToolbarSettings::fill(toolbar, DiagramToolbarSettings::ids(toolbar->objectName()), resolve);
+			//A click places the symbol, the arrow beside it chooses it
+		for (QAction *action : m_connection_actions)
+			if (auto *button = qobject_cast<QToolButton *>(toolbar->widgetForAction(action)))
+				button->setPopupMode(QToolButton::MenuButtonPopup);
 	}
 }
 
@@ -3658,6 +3704,8 @@ void QETDiagramEditor::slot_updateActions()
 	m_select_actions_group.         setEnabled(opened_diagram);
 	m_add_item_actions_group.       setEnabled(editable_project);
 	m_insert_last_element->         setEnabled(opened_diagram && editable_project && !m_last_inserted_element.isNull());
+	for (QAction *action : std::as_const(m_connection_actions))
+		action->setEnabled(opened_diagram && editable_project);
 	m_show_element_picker->         setEnabled(opened_diagram && editable_project);
 	m_show_shortcut_bar->           setEnabled(opened_diagram && editable_project);
 	m_repeat_last_command->         setEnabled(opened_diagram && editable_project
@@ -4949,6 +4997,48 @@ void QETDiagramEditor::insertElementFromCollection(const ElementsLocation &locat
 		//Nowhere to place it: no folio open, or a read-only project. Do what
 		//a double click did before it placed, rather than nothing.
 	m_element_collection_widget->editLocation(location);
+}
+
+/**
+	@brief QETDiagramEditor::placeConnectionSymbol
+	Place the symbol chosen for @a kind (ConnectionSymbols::Kind) on the
+	current folio, as a symbol taken from the collection is placed: it
+	follows the mouse.
+*/
+void QETDiagramEditor::placeConnectionSymbol(int kind)
+{
+	const auto k = static_cast<ConnectionSymbols::Kind>(kind);
+	const ElementsLocation location = ConnectionSymbols::location(k);
+	if (!location.exist()) {
+		QET::QetMessageBox::information(this, ConnectionSymbols::title(k),
+			tr("No symbol is chosen for this button. Highlight one in the collection, "
+			   "then choose \"Use the symbol highlighted in the collection\" from the "
+			   "arrow beside the button."));
+		return;
+	}
+	DiagramView *dv = currentDiagramView();
+	if (dv)
+		dv->startElementPlacement(location, dv->defaultPlacementPos());
+}
+
+/**
+	@brief QETDiagramEditor::updateConnectionAction
+	Show on the button of @a kind the symbol it places, its icon and name.
+*/
+void QETDiagramEditor::updateConnectionAction(int kind)
+{
+	QAction *action = m_connection_actions.value(kind);
+	if (!action)
+		return;
+	const auto k = static_cast<ConnectionSymbols::Kind>(kind);
+	const ElementsLocation location = ConnectionSymbols::location(k);
+	const bool chosen = location.exist();
+	action->setIcon(chosen ? location.icon() : QET::Icons::ElementNew);
+	const QString tip = chosen
+		? tr("%1: place \"%2\". The arrow beside it chooses the symbol.").arg(ConnectionSymbols::title(k), location.name())
+		: tr("%1: no symbol chosen yet. The arrow beside it chooses one.").arg(ConnectionSymbols::title(k));
+	action->setToolTip(tip);
+	action->setStatusTip(tip);
 }
 
 /**

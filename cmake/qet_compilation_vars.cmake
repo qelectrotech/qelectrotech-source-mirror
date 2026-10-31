@@ -329,6 +329,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/shortcutmanager.h
   ${QET_DIR}/sources/shortcutbarsettings.cpp
   ${QET_DIR}/sources/shortcutbarsettings.h
+  ${QET_DIR}/sources/connectionsymbols.cpp
+  ${QET_DIR}/sources/connectionsymbols.h
   ${QET_DIR}/sources/diagramtoolbarsettings.cpp
   ${QET_DIR}/sources/diagramtoolbarsettings.h
   ${QET_DIR}/sources/toolbarsettings.cpp

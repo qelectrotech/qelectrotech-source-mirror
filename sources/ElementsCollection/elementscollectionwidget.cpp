@@ -178,6 +178,21 @@ void ElementsCollectionWidget::setCurrentLocation(
 }
 
 /**
+	@brief ElementsCollectionWidget::currentElementLocation
+	@return the symbol highlighted in the collections tree, or a null
+	location when it is a folder or nothing is highlighted
+*/
+ElementsLocation ElementsCollectionWidget::currentElementLocation()
+{
+	if (!m_tree_view)
+		return ElementsLocation();
+	ElementCollectionItem *eci = elementCollectionItemForIndex(m_tree_view->currentIndex());
+	if (!eci || !eci->isElement())
+		return ElementsLocation();
+	return ElementsLocation(eci->collectionPath());
+}
+
+/**
 	@brief ElementsCollectionWidget::addTemplate
 	Show a newly saved template in the templates tab, which is otherwise
 	only read when the collections are loaded or reloaded.
