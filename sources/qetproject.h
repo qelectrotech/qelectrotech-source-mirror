@@ -363,7 +363,7 @@ class QETProject : public QObject
 		void setAutoElement (bool ae);
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, const QString&);
-		ProjectOrigin::Mode Origin() const;
+		ProjectOrigin::Mode origin() const;
 		void setOrigin(ProjectOrigin::Mode mode);
 
 		QDomDocument toXml(QHash<int, QByteArray> *kept_folios = nullptr,
