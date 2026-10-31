@@ -1382,6 +1382,19 @@ if(QET_HAS_SCRIPTING)
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 endif()
 
+# A master can show its contacts its own way (<xrefDisplay> on the element),
+# saved only when set and held by the project database.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_xrefdisplay
+    tst_xrefdisplay.cpp)
+  add_test(NAME tst_xrefdisplay COMMAND tst_xrefdisplay)
+  add_dependencies(tst_xrefdisplay qelectrotech)
+  target_link_libraries(tst_xrefdisplay PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_xrefdisplay PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+endif()
+
 # The texts of a placed symbol and their groups are in the project database
 # (element_text_value), from a built folio or from the document. QET-SQL-FORMAT S3l.
 if(QET_HAS_SCRIPTING)

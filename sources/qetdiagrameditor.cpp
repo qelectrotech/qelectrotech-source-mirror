@@ -126,6 +126,9 @@
 #include "dataBase/qetdbfile.h"
 #include "dataBase/projectdatabase.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/crossrefitem.h"
+#include "undocommand/changeelementdatacommand.h"
+#include "ui/xrefdisplaydialog.h"
 #include <QSqlQuery>
 #include <QCheckBox>
 #include <QFileDialog>
@@ -141,6 +144,34 @@
 #include "foliogrid.h"
 
 namespace {
+	/**
+		@return the one master relay (not a PLC) selected in @p diagram, or
+		whose label is, or nullptr when there is none or more than one
+	*/
+	Element *selectedContactMaster(Diagram *diagram)
+	{
+		if (!diagram)
+			return nullptr;
+		Element *found = nullptr;
+		for (QGraphicsItem *item : diagram->selectedItems())
+		{
+			for (QGraphicsItem *parent = item; parent; parent = parent->parentItem())
+			{
+				auto *element = dynamic_cast<Element *>(parent);
+				if (!element)
+					continue;
+				if (element->linkType() != Element::Master
+					|| element->elementData().m_master_type == ElementData::PLC)
+					return nullptr;
+				if (found && found != element)
+					return nullptr;
+				found = element;
+				break;
+			}
+		}
+		return found;
+	}
+
 	/**
 		The icon of View > Snap to the grid: a grid of dots and a pointer
 		whose tip sits on the middle one, in the palette's text color.
@@ -1343,6 +1374,7 @@ void QETDiagramEditor::setUpActions()
 	m_mirror_horizontal    = m_selection_actions_group.addAction( QET::Icons::ImageFlipHorizontal, tr("Horizontal mirror")       );
 	m_mirror_vertical      = m_selection_actions_group.addAction( QET::Icons::ImageFlipVertical,   tr("Vertical mirror")         );
 	m_find_element         = m_selection_actions_group.addAction( QET::Icons::ZoomDraw,          tr("Find in the panel")   );
+	m_contact_display      = m_selection_actions_group.addAction( tr("Relay contact display...") );
 	m_edit_selection       = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Edit the selected item") );
 	m_group_selected_texts = m_selection_actions_group.addAction( QET::Icons::textGroup,         tr("Group selected texts"));
 	m_group_selection      = m_selection_actions_group.addAction( tr("Group", "fr: Grouper") );
@@ -1356,6 +1388,7 @@ void QETDiagramEditor::setUpActions()
 	ShortcutManager::instance().registerAction(m_mirror_horizontal, "diagrameditor.mirror_horizontal", tr("Diagram editors"), Qt::Key_M);
 	ShortcutManager::instance().registerAction(m_mirror_vertical, "diagrameditor.mirror_vertical", tr("Diagram editors"), Qt::Key_F);
 	ShortcutManager::instance().registerAction(m_find_element, "diagrameditor.find_element", tr("Diagram editors"), QKeySequence());
+	ShortcutManager::instance().registerAction(m_contact_display, "diagrameditor.contact_display", tr("Diagram editors"), QKeySequence());
 	ShortcutManager::instance().registerAction(m_group_selected_texts, "diagrameditor.group_selected_texts", tr("Diagram editors"), QKeySequence());
 	ShortcutManager::instance().registerAction(m_edit_selection, "diagrameditor.edit_selection", tr("Diagram editors"), Qt::CTRL | Qt::Key_E);
 
@@ -1451,6 +1484,7 @@ void QETDiagramEditor::setUpActions()
 	m_mirror_horizontal->setStatusTip( tr("Flips the selected elements from left to right", "status bar tip"));
 	m_mirror_vertical ->setStatusTip( tr("Flips the selected elements from top to bottom", "status bar tip"));
 	m_find_element    ->setStatusTip( tr("Find the selected item in the panel", "status bar tip"));
+	m_contact_display ->setStatusTip( tr("Choose how the contacts of the selected relay are shown", "status bar tip"));
 
 	m_delete_selection    ->setData("delete_selection");
 	m_rotate_selection    ->setData("rotate_selection");
@@ -1459,6 +1493,7 @@ void QETDiagramEditor::setUpActions()
 	m_mirror_horizontal   ->setData("mirror_horizontal");
 	m_mirror_vertical     ->setData("mirror_vertical");
 	m_find_element        ->setData("find_selected_element");
+	m_contact_display     ->setData("contact_display");
 	m_edit_selection      ->setData("edit_selected_element");
 	m_group_selected_texts->setData("group_selected_texts");
 	m_group_selection     ->setData("group_selection");
@@ -1879,6 +1914,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_mirror_horizontal);
 	menu_edition -> addAction(m_mirror_vertical);
 	menu_edition -> addAction(m_find_element);
+	menu_edition -> addAction(m_contact_display);
 	menu_edition -> addAction(m_edit_selection);
 	QMenu *group_menu = menu_edition -> addMenu(QET::Icons::textGroup, tr("Group", "fr: Grouper"));
 	group_menu -> addAction(m_group_selection);
@@ -3253,6 +3289,35 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 		if(c->isValid())
 			diagram->undoStack().push(c);
 	}
+	else if (value == "contact_display")
+	{
+		if (Element *master = selectedContactMaster(diagram))
+		{
+			ElementData::XRefDisplay start = master->elementData().m_xref_display;
+			if (!start.enabled)
+			{
+					//Start from what the project's setting shows now
+				const XRefProperties xrp = CrossRefItem::propertiesFor(master);
+				start.contacts = xrp.displayHas() == XRefProperties::Contacts;
+				start.position = xrp.snapTo() == XRefProperties::Label
+						? ElementData::XRefDisplay::UnderLabel : ElementData::XRefDisplay::Footer;
+				start.showUnlinked = xrp.showAllConfiguredSlaves();
+			}
+			const QRectF body = master->mapRectToScene(master->drawingRect());
+			XRefDisplayDialog dialog(start, QPointF(body.left(), body.bottom() + 10) - master->scenePos(), this);
+			if (dialog.exec() == QDialog::Accepted)
+			{
+				ElementData data = master->elementData();
+				data.m_xref_display = dialog.display();
+				if (data != master->elementData())
+				{
+					auto *command = new ChangeElementDataCommand(master, data);
+					command->setText(tr("Change relay contact display"));
+					diagram->undoStack().push(command);
+				}
+			}
+		}
+	}
 	else if (value == "mirror_horizontal" || value == "mirror_vertical")
 	{
 		auto *c = new MirrorSelectionCommand(
@@ -3516,6 +3581,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 		QList <QAction *> action_list;
 		action_list << m_conductor_reset
 			    << m_find_element
+			    << m_contact_display
 			    << m_cut
 			    << m_copy
 			    << m_paste_element_info
@@ -3548,6 +3614,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	// number of selected elements
 	int selected_elements_count = dc.count(DiagramContent::Elements);
 	m_find_element->setEnabled(selected_elements_count == 1);
+	m_contact_display->setEnabled(!ro && selectedContactMaster(diagram_));
 	m_copy_text_format->setEnabled(selected_elements_count >= 1);
 	m_apply_text_format->setEnabled(!ro && selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern());
 	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);

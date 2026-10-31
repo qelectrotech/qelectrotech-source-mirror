@@ -1993,7 +1993,7 @@ void DynamicElementTextItem::updateXref()
 	{
 		if(m_parent_element.data()->linkType() == Element::Master)
 		{
-			XRefProperties xrp = diagram()->project()->defaultXRefProperties(m_parent_element.data()->kindInformations()["type"].toString());
+			XRefProperties xrp = CrossRefItem::propertiesFor(m_parent_element.data());
 			
 			if(m_text_from == DynamicElementTextItem::ElementInfo &&
 			   m_info_name == "label" &&

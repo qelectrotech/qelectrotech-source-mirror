@@ -324,6 +324,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_mirror_horizontal = nullptr, ///< Mirror the selected elements, left and right swap (#1335)
 		*m_mirror_vertical = nullptr,   ///< Mirror the selected elements, top and bottom swap (#1335)
 		*m_find_element,		///< Find the selected element in the panel
+		*m_contact_display = nullptr,	///< Choose how the selected relay shows its contacts
 		*m_group_selected_texts = nullptr,
 		*m_group_selection = nullptr,   ///< Group the selected items (#1070)
 		*m_ungroup_selection = nullptr, ///< Ungroup the selected groups
