@@ -7,6 +7,7 @@
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // QET_SETTINGS_DIR makes QElectroTech keep its settings in an INI file in
 // that folder (issue #1178). On Windows and macOS that is the only way to
@@ -80,7 +81,7 @@ class tst_settingsdir : public QObject
 		proc.setProcessEnvironment(env);
 		proc.setProcessChannelMode(QProcess::MergedChannels);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), script, project});
-		if (!proc.waitForFinished(60000))
+		if (!proc.waitForFinished(QetTest::timeout(60000)))
 			return QString();
 		const QString out = QString::fromUtf8(proc.readAll());
 		static const QRegularExpression result(QStringLiteral("RESULT ([a-z ]+)"));

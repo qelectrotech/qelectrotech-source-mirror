@@ -8,6 +8,7 @@
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
 #include <QThread>
+#include "qettesttimeout.h"
 
 #include <functional>
 
@@ -64,7 +65,7 @@ class tst_changedondisk : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), args);
 		if (meanwhile) meanwhile();
-		if (!proc.waitForFinished(120000)) return QString();
+		if (!proc.waitForFinished(QetTest::timeout(120000))) return QString();
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
 

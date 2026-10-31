@@ -7,6 +7,7 @@
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // A project can keep the texts drawn in its turned symbols horizontal
 // (<symbol_texts upright="true"/>, Project properties). Through the real
@@ -39,7 +40,7 @@ class tst_uprightsymboltexts : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(environment());
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), arguments);
-		return proc.waitForFinished(120000) && proc.exitCode() == 0;
+		return proc.waitForFinished(QetTest::timeout(120000)) && proc.exitCode() == 0;
 	}
 
 	// The rotation (DXF group code 50) of every TEXT entity of @p dxf whose

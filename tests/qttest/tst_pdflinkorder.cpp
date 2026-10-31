@@ -11,6 +11,7 @@
 #include <QRegularExpression>
 #include <QTemporaryDir>
 #include <QtTest>
+#include "qettesttimeout.h"
 
 class tst_pdflinkorder : public QObject
 {
@@ -37,7 +38,7 @@ class tst_pdflinkorder : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--export-pdf"), project, out});
-		if (!proc.waitForFinished(120000) || proc.exitCode() != 0)
+		if (!proc.waitForFinished(QetTest::timeout(120000)) || proc.exitCode() != 0)
 			return {};
 
 		QFile file(out);

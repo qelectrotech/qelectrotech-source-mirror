@@ -26,6 +26,7 @@
 #include "factory/elementpicturefactory.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/conductordefinitionmark.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/crossrefitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
@@ -41,6 +42,7 @@
 #include <QFontMetricsF>
 #include <QGraphicsSimpleTextItem>
 #include <QSet>
+#include <QtMath>
 #include <cmath>
 #include <utility>
 
@@ -222,13 +224,25 @@ namespace {
 			parent = parent->parentItem();
 		}
 
+			//The text's own transform: a symbol's text turned half a turn
+			//to read from bottom to top (see
+			//DynamicElementTextItem::verticalFromBottom()) starts where its
+			//drawing starts, at the other end of its box, and runs the
+			//other way
+		QPointF origin = dti->scenePos();
+		const QTransform own = dti->transform();
+		if (!own.isIdentity()) {
+			origin = dti->mapToScene(QPointF());
+			angle += qRadiansToDegrees(qAtan2(own.m12(), own.m11()));
+		}
+
 		qreal angler = angle * M_PI/180;
 		int xdir = -sin(angler);
 		int ydir = -cos(angler);
-		qreal x = (dti->scenePos().x())
+		qreal x = origin.x()
 				+ xdir * fontSize * 1.8
 				- ydir * fontSize;
-		qreal y = dti->scenePos().y()
+		qreal y = origin.y()
 				- ydir * fontSize * 1.8
 				- xdir * fontSize * 0.9;
 			//As drawn: a text with a width is wrapped
@@ -329,6 +343,9 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 		//drawAsPlcTable), so instead of hand-porting each one it's replayed
 		//through DxfPaintEngine, which reuses paint() unmodified.
 	QList<CrossRefItem *> list_master_xrefs;
+		//The stroke with a conductor's colour and section, replayed through
+		//DxfPaintEngine like the cross-reference items
+	QList<ConductorDefinitionMark *> list_definition_marks;
 	QList<QLineF *> list_lines;
 	QList<QRectF *> list_rectangles;
 	//QList<QRectF *> list_ellipses;
@@ -363,6 +380,9 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			list_elements << elmt;
 		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
 			list_conductors << f;
+		} else if (auto *mark = qgraphicsitem_cast<ConductorDefinitionMark *>(qgi)) {
+			if (mark->isVisible())
+				list_definition_marks << mark;
 		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
 			list_texts << iti;
 		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
@@ -723,6 +743,16 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 	//actually turns the drawPixmap() call inside paint() into a
 	//placeholder outline, since this DXF dialect has no raster image
 	//entity to draw instead.
+	Createdxf::layer = Layer::Wires;
+	for (ConductorDefinitionMark *mark : std::as_const(list_definition_marks))
+	{
+		DxfPaintDevice dxf_device(file_path);
+		QPainter painter(&dxf_device);
+		painter.setWorldTransform(mark->sceneTransform());
+		mark->paint(&painter, nullptr, nullptr);
+		painter.end();
+	}
+
 	Createdxf::layer = Layer::Images;
 	for (DiagramImageItem *image : std::as_const(list_images))
 	{

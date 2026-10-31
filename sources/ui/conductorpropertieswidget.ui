@@ -162,6 +162,58 @@
                 </property>
                </widget>
               </item>
+              <item row="9" column="0" colspan="3">
+               <widget class="QCheckBox" name="m_definition_mark_cb">
+                <property name="toolTip">
+                 <string>A slanted stroke across the conductor, with its colour above and its section below. Drag it along the conductor to move it.</string>
+                </property>
+                <property name="text">
+                 <string>Stroke with colour and section</string>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="3">
+               <widget class="QLabel" name="m_definition_mark_at_label">
+                <property name="text">
+                 <string>From the start :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="4">
+               <widget class="QSpinBox" name="m_definition_mark_at_sb">
+                <property name="toolTip">
+                 <string>Where the stroke stands, as a share of the conductor's length from its start. "Middle": the middle of its longest stretch.</string>
+                </property>
+                <property name="specialValueText">
+                 <string>Middle</string>
+                </property>
+                <property name="suffix">
+                 <string> %</string>
+                </property>
+                <property name="minimum">
+                 <number>-1</number>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="singleStep">
+                 <number>5</number>
+                </property>
+                <property name="value">
+                 <number>-1</number>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="0" colspan="5">
+               <widget class="QCheckBox" name="m_definition_mark_hides_text_cb">
+                <property name="toolTip">
+                 <string>With the stroke shown, the conductor's own text is hidden: the stroke already gives the colour and the section.</string>
+                </property>
+                <property name="text">
+                 <string>The stroke replaces the conductor's text</string>
+                </property>
+               </widget>
+              </item>
               <item row="8" column="0" colspan="5">
                <layout class="QGridLayout" name="m_text_angle_gl">
                 <item row="1" column="0">
@@ -463,7 +515,7 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="5" column="1">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -487,6 +539,151 @@
         </widget>
        </item>
        <item row="3" column="0" colspan="2">
+        <widget class="QGroupBox" name="m_custom_dash_gb">
+         <property name="title">
+          <string>Custom dash pattern</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_dash">
+          <item row="0" column="0">
+           <widget class="QLabel" name="m_pattern_dash_label">
+            <property name="text">
+             <string>Dash length :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QDoubleSpinBox" name="m_pattern_dash_sb">
+            <property name="suffix">
+             <string> du</string>
+            </property>
+            <property name="minimum">
+             <double>0.100000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>1000.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.500000000000000</double>
+            </property>
+            <property name="value">
+             <double>6.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="m_pattern_gap_label">
+            <property name="text">
+             <string>Gap after dash :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QDoubleSpinBox" name="m_pattern_gap_sb">
+            <property name="suffix">
+             <string> du</string>
+            </property>
+            <property name="minimum">
+             <double>0.100000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>1000.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.500000000000000</double>
+            </property>
+            <property name="value">
+             <double>4.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="m_pattern_dot_label">
+            <property name="text">
+             <string>Dot length :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QDoubleSpinBox" name="m_pattern_dot_sb">
+            <property name="suffix">
+             <string> du</string>
+            </property>
+            <property name="minimum">
+             <double>0.100000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>1000.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.500000000000000</double>
+            </property>
+            <property name="value">
+             <double>1.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="m_pattern_dot_gap_label">
+            <property name="text">
+             <string>Gap after dot :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QDoubleSpinBox" name="m_pattern_dot_gap_sb">
+            <property name="suffix">
+             <string> du</string>
+            </property>
+            <property name="minimum">
+             <double>0.100000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>1000.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.500000000000000</double>
+            </property>
+            <property name="value">
+             <double>4.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" colspan="2">
+           <widget class="QLabel" name="m_pattern_units_label">
+            <property name="text">
+             <string>Drawing units, independent of the line size. Scaling the page scales the pattern.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0" colspan="2">
+           <widget class="QLabel" name="m_pattern_preview_label">
+            <property name="minimumSize">
+             <size>
+              <width>280</width>
+              <height>36</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2">
         <widget class="QGroupBox" name="m_color_2_gb">
          <property name="title">
           <string>Secondary color :</string>

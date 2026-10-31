@@ -17,6 +17,7 @@
 */
 
 #include "qetproject.h"
+#include "TerminalStrip/terminalstriplabels.h"
 #include "container/qetcontainer.h"
 #include "container/qetcontainerdb.h"
 #include "container/qetzwriter.h"
@@ -169,11 +170,22 @@ ProjectPropertiesHandler &QETProject::projectPropertiesHandler()
 	@param parent : parent QObject
 */
 QETProject::QETProject(const QString &path, QObject *parent) :
+	QETProject(path, QetDbFile::OutsideEdit::Refuse, parent)
+{
+}
+
+/**
+	@brief QETProject::QETProject
+	Construct a project from a file, a .qetdb another program wrote to
+	since its save opened as @p outside says (QetDbFile::read())
+*/
+QETProject::QETProject(const QString &path, QetDbFile::OutsideEdit outside, QObject *parent) :
 	QObject              (parent),
 	m_titleblocks_collection(this),
 	m_data_base(this, this),
 	m_project_properties_handler{this}
 {
+	m_outside_edit = outside;
 	QFile file(path);
 	m_state = openFile(&file);
 	if (m_state != ProjectState::Ok) {
@@ -597,7 +609,11 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//A .qetdb (experimental): the project it holds, as a .qet's document,
 		//handed over without being written as text. Its state on disk is that
 		//of the file itself
-	const bool database = QetDbFile::isDatabase(content.left(16));
+		//A .qetdb whose first page is damaged no longer says it is one: its
+		//name does, unless it holds XML or a zip (QETDB-S4C-PLAN.md P4)
+	const bool database = QetDbFile::isDatabase(content.left(16))
+			|| (QetDbFile::isDatabasePath(fi.fileName()) && !content.trimmed().startsWith('<')
+				&& !content.startsWith("PK\x03\x04"));
 	QDomDocument xml_project;
 		//The bytes just read are those of the file: hashed for
 		//changedOnDisk() while the open goes on (0.2 s of a 44 MB file)
@@ -619,7 +635,13 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 			}
 			return lazyFolios();
 		};
-		if (!QetDbFile::read(fi.absoluteFilePath(), &xml_project, &error, adopt)) {
+			//QET_QETDB_OUTSIDE_EDIT=back|keep: the choice the editor asks
+			//for, from the command line (tests)
+		QetDbFile::OutsideEdit outside = m_outside_edit;
+		const QString chosen = qEnvironmentVariable("QET_QETDB_OUTSIDE_EDIT");
+		if (chosen == QLatin1String("back")) outside = QetDbFile::OutsideEdit::BackToSave;
+		else if (chosen == QLatin1String("keep")) outside = QetDbFile::OutsideEdit::KeepChanges;
+		if (!QetDbFile::read(fi.absoluteFilePath(), &xml_project, &error, adopt, &m_qetdb_repair, outside)) {
 			qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << error;
 			m_open_error = error;
 			if (opened_here) {
@@ -755,6 +777,16 @@ QETProject::ProjectState QETProject::state() const
 QString QETProject::openError() const
 {
 	return m_open_error;
+}
+
+/**
+	@brief QETProject::qetdbRepair
+	@return what opening a .qetdb found wrong with it and repaired, or why
+	it was refused (QETDB-S4C-PLAN.md P5); empty for other files
+*/
+QetDbFile::Repair QETProject::qetdbRepair() const
+{
+	return m_qetdb_repair;
 }
 
 /**
@@ -2133,8 +2165,7 @@ QList<QETProject::SymbolNumbering> QETProject::symbolNumbering() const
 			symbol.formula = info.value(QETInformation::ELMT_FORMULA).toString();
 			symbol.scheme = QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString());
 			symbol.sequence = el->sequenceStruct();
-			symbol.numbered = el->linkType() != Element::Slave
-					&& !(el->linkType() & Element::AllReport);
+			symbol.numbered = el->takesSchemeNumber();
 			list << symbol;
 		}
 	}
@@ -2165,8 +2196,7 @@ QList<QETProject::SymbolNumbering> QETProject::symbolNumbering() const
 							   : QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString());
 		symbol.sequence = row.sequence;
 		const ElementData::Type kind = ElementData::typeFromString(row.kind);
-		symbol.numbered = kind != ElementData::Slave
-				&& !(kind & ElementData::AllReport);
+		symbol.numbered = ElementData::takesSchemeNumber(kind);
 		list << symbol;
 	}
 	return list;
@@ -2554,6 +2584,36 @@ bool QETProject::autoBreakConductor() const
 void QETProject::setAutoBreakConductor(bool abc)
 {
 	m_data_base.setNumberingFlag(QStringLiteral("auto_break_conductors"), abc);
+}
+
+/**
+	@brief QETProject::setTerminalStripLabelsShown
+	Show the label of each terminal strip at its first terminal on every
+	folio, or not; the folios built so far show it at once.
+*/
+void QETProject::setTerminalStripLabelsShown(bool shown)
+{
+	if (shown == m_terminal_strip_labels)
+		return;
+	m_terminal_strip_labels = shown;
+	for (Diagram *diagram : builtFolios())
+		TerminalStripLabels::refresh(diagram);
+	setModified(true);
+}
+
+/**
+	@brief QETProject::setTerminalStripBridgesShown
+	Draw the bridges of the terminal strip editor between their terminals
+	on every folio, or not; the folios built so far show them at once.
+*/
+void QETProject::setTerminalStripBridgesShown(bool shown)
+{
+	if (shown == m_terminal_strip_bridges)
+		return;
+	m_terminal_strip_bridges = shown;
+	for (Diagram *diagram : builtFolios())
+		TerminalStripLabels::refresh(diagram);
+	setModified(true);
 }
 
 /**
@@ -4498,6 +4558,10 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	if (newdiagrams_nodes.isEmpty()) return;
 
 	QDomElement newdiagrams_elmt = newdiagrams_nodes.at(0).toElement();
+	m_terminal_strip_labels = newdiagrams_elmt.firstChildElement(QStringLiteral("terminal_strip_labels"))
+			.attribute(QStringLiteral("at_first_terminal")) == QLatin1String("true");
+	m_terminal_strip_bridges = newdiagrams_elmt.firstChildElement(QStringLiteral("terminal_strip_bridges"))
+			.attribute(QStringLiteral("between_terminals")) == QLatin1String("true");
 
 		// By default, use value find in the global conf of QElectroTech
 	default_border_properties_	   = BorderProperties::    defaultProperties();
@@ -4696,6 +4760,11 @@ void QETProject::readTerminalStripXml(const QDomDocument &xml_project)
 			terminal_strip->fromXml(xml_strip);
 			addTerminalStrip(terminal_strip);
 		}
+			//A strip reads its terminals before its bridges: the labels
+			//and bridges of the folios built so far are worked out again
+			//with the bridges known
+		for (Diagram *diagram : builtFolios())
+			TerminalStripLabels::refresh(diagram);
 	}
 }
 
@@ -4955,6 +5024,17 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 		xrefs_elmt.appendChild(xref_dom);
 	}
 	xml_element.appendChild(xrefs_elmt);
+
+	if (m_terminal_strip_labels) {
+		QDomElement labels = xml_document.createElement(QStringLiteral("terminal_strip_labels"));
+		labels.setAttribute(QStringLiteral("at_first_terminal"), QStringLiteral("true"));
+		xml_element.appendChild(labels);
+	}
+	if (m_terminal_strip_bridges) {
+		QDomElement bridges = xml_document.createElement(QStringLiteral("terminal_strip_bridges"));
+		bridges.setAttribute(QStringLiteral("between_terminals"), QStringLiteral("true"));
+		xml_element.appendChild(bridges);
+	}
 
 		//The numbering is written from the project database, its only
 		//home (QETZ-DB-FIRST stage 2b)

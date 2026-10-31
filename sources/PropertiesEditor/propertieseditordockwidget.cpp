@@ -19,7 +19,14 @@
 #include "ui_propertieseditordockwidget.h"
 #include "propertieseditorwidget.h"
 
+#include <QAbstractScrollArea>
+#include <QAbstractSlider>
+#include <QAbstractSpinBox>
+#include <QComboBox>
+#include <QEvent>
 #include <QMainWindow>
+#include <QScrollArea>
+#include <QScrollBar>
 #include <QTimer>
 
 /**
@@ -32,6 +39,14 @@ PropertiesEditorDockWidget::PropertiesEditorDockWidget(QWidget *parent) :
 	ui(new Ui::PropertiesEditorDockWidget)
 {
 	ui->setupUi(this);
+		// The editors scroll when the dock is lower than they are, rather
+		// than spilling over the dock below; see fitScrollArea()
+	ui->m_scroll_contents->installEventFilter(this);
+		// The background of the dock, not of a text field, in every theme
+	ui->m_scroll_area->setBackgroundRole(QPalette::Window);
+	ui->m_scroll_area->viewport()->setBackgroundRole(QPalette::Window);
+	ui->m_scroll_contents->setAutoFillBackground(false);
+	fitScrollArea();
 		// Tabbed or not can change without the selection changing
 	connect(this, &QDockWidget::dockLocationChanged,
 		this, &PropertiesEditorDockWidget::updateSizeConstraint);
@@ -194,8 +209,20 @@ void PropertiesEditorDockWidget::rememberHeight()
 */
 void PropertiesEditorDockWidget::restoreHeight()
 {
-	if (m_area_docks.isEmpty() || m_restore_pending)
+	if (m_restore_pending)
 		return;
+		// Nothing to give back (the first editor): the editors' height,
+		// which the scroll area alone would not ask for
+	if (m_area_docks.isEmpty()) {
+		QTimer::singleShot(0, this, [this]() {
+			auto main_window = qobject_cast<QMainWindow *>(parentWidget());
+			if (main_window && !isFloating() && isVisible()
+				&& !m_editor_list.isEmpty() && !isTabbed()
+				&& height() < sizeHint().height())
+				main_window->resizeDocks({this}, {sizeHint().height()}, Qt::Vertical);
+		});
+		return;
+	}
 
 	m_restore_pending = true;
 		// Once the layout has given the dock its maximum height back
@@ -235,6 +262,7 @@ void PropertiesEditorDockWidget::restoreHeight()
 void PropertiesEditorDockWidget::updateSizeConstraint()
 {
 	const bool tabbed = isTabbed();
+	fitScrollArea();
 	const QLayout::SizeConstraint constraint = tabbed
 			? QLayout::SetDefaultConstraint
 			: QLayout::SetMaximumSize;
@@ -245,6 +273,80 @@ void PropertiesEditorDockWidget::updateSizeConstraint()
 		// SetMaximumSize left its maximum on the contents
 	if (tabbed)
 		ui->dockWidgetContents->setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
+}
+
+/**
+	@brief PropertiesEditorDockWidget::eventFilter
+	Fit the scroll area again whenever the editors' layout changes: an
+	editor came or went, or one shows or hides a part of itself.
+*/
+bool PropertiesEditorDockWidget::eventFilter(QObject *watched, QEvent *event)
+{
+	if (watched == ui->m_scroll_contents && event->type() == QEvent::LayoutRequest)
+		fitScrollArea();
+		// The wheel over a field that is not being edited scrolls the
+		// dock, rather than changing the field's value under the mouse
+	if (event->type() == QEvent::Wheel && watched != ui->m_scroll_contents) {
+		auto *field = qobject_cast<QWidget *>(watched);
+		if (field && !field->hasFocus()) {
+			QCoreApplication::sendEvent(ui->m_scroll_area->verticalScrollBar(), event);
+			return true;
+		}
+	}
+	return QDockWidget::eventFilter(watched, event);
+}
+
+/**
+	@brief PropertiesEditorDockWidget::fitScrollArea
+	The scroll area is no higher than the editors in it, so the dock still
+	shrinks to them, and to its title bar when it has none; it may be lower,
+	and then scrolls. Its width follows the editors', the scroll bar
+	included, as the editors do not scroll sideways.
+*/
+void PropertiesEditorDockWidget::fitScrollArea()
+{
+	const QSize hint = ui->m_scroll_contents->sizeHint();
+		// An editor that grows with the dock (the wire editor, #500) or
+		// has a list of its own that scrolls would be held to its size
+		// hint by a maximum: none then
+	bool grows = false;
+	for (QWidget *editor : std::as_const(m_editor_list))
+		if ((editor->sizePolicy().verticalPolicy() & QSizePolicy::ExpandFlag)
+		    || editor->findChild<QAbstractScrollArea *>())
+			grows = true;
+		// Tabbed, the stack takes the smallest maximum height of its tabs
+		// (see updateSizeConstraint()): no maximum here then either
+	ui->m_scroll_area->setMaximumHeight(isTabbed() || grows
+			? QWIDGETSIZE_MAX
+			: m_editor_list.isEmpty() ? 0 : hint.height());
+	for (QWidget *field : ui->m_scroll_contents->findChildren<QWidget *>())
+		if ((qobject_cast<QAbstractSpinBox *>(field) || qobject_cast<QComboBox *>(field)
+		     || qobject_cast<QAbstractSlider *>(field))
+		    && !field->property("qetWheelWatched").toBool()) {
+			field->setProperty("qetWheelWatched", true);
+			field->setFocusPolicy(Qt::StrongFocus);
+			field->installEventFilter(this);
+		}
+	ui->m_scroll_area->setMinimumWidth(
+				ui->m_scroll_contents->minimumSizeHint().width()
+				+ ui->m_scroll_area->verticalScrollBar()->sizeHint().width());
+	updateGeometry();
+}
+
+/**
+	@brief PropertiesEditorDockWidget::sizeHint
+	The height the editors want, as without the scroll area around them:
+	the main window gives a dock its size hint when the selection changes,
+	and the scroll area alone asks for next to nothing. The dock can still
+	be made lower, and then scrolls.
+*/
+QSize PropertiesEditorDockWidget::sizeHint() const
+{
+	QSize hint = QDockWidget::sizeHint();
+	if (!m_editor_list.isEmpty())
+		hint.rheight() += qMax(0, ui->m_scroll_contents->sizeHint().height()
+				       - ui->m_scroll_area->sizeHint().height());
+	return hint;
 }
 
 /**

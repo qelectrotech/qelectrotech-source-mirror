@@ -19,6 +19,7 @@
 #include <QDomDocument>
 #include <QProcess>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 /**
 	A terminal in a symbol's definition with no orientation attribute
@@ -53,7 +54,7 @@ private slots:
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--resave"), fixture, out});
-		QVERIFY(proc.waitForFinished(60000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(60000)));
 		QCOMPARE(proc.exitStatus(), QProcess::NormalExit);
 		QCOMPARE(proc.exitCode(), 0);
 
