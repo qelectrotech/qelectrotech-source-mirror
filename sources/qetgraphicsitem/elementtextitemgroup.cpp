@@ -924,7 +924,7 @@ void ElementTextItemGroup::updateXref()
 		
 		if(m_parent_element->linkType() == Element::Master)
 		{
-			XRefProperties xrp = project->defaultXRefProperties(m_parent_element->kindInformations()["type"].toString());
+			XRefProperties xrp = CrossRefItem::propertiesFor(m_parent_element);
 
 			if(xrp.snapTo() == XRefProperties::Label &&
 			   (!m_parent_element->linkedElements().isEmpty()
@@ -1097,7 +1097,7 @@ void ElementTextItemGroup::autoPos()
 			return;
 		
 		MasterElement *master = static_cast<MasterElement *>(m_parent_element);
-		XRefProperties xrp = diagram()->project()->defaultXRefProperties(master->kindInformations()["type"].toString());
+		XRefProperties xrp = CrossRefItem::propertiesFor(master);
 		if(xrp.snapTo() == XRefProperties::Bottom)
 		{
 			QRectF rectXref = master->XrefBoundingRect();

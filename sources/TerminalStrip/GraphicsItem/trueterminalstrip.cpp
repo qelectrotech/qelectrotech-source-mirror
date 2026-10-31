@@ -183,6 +183,20 @@ namespace TerminalStripDrawer
 		return m_real ? m_real->hasSeparatorAfter() : false;
 	}
 
+	QVector<AbstractBridgeInterface *> TrueRealTerminal::bridges() const
+	{
+		QVector<AbstractBridgeInterface *> list;
+		const auto real_t = m_real;
+		TerminalStrip *strip = real_t ? real_t->parentStrip() : nullptr;
+		if (!strip) {
+			return list;
+		}
+		for (const auto &bridge : strip->bridgesOf(real_t)) {
+			list << new TrueBridge(bridge);
+		}
+		return list;
+	}
+
     TrueBridge::TrueBridge(QSharedPointer<TerminalStripBridge> bridge) :
         m_bridge { bridge }
     {}
@@ -194,5 +208,10 @@ namespace TerminalStripDrawer
 		} else {
 			return QUuid();
 		}
+	}
+
+	int TrueBridge::track() const
+	{
+		return m_bridge ? m_bridge->track() : 1;
 	}
 }

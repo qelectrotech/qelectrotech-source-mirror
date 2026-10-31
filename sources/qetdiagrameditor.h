@@ -285,6 +285,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_terminal_strip_bridges = nullptr,	///< Draw the strips' bridges between their terminals
 		*m_crosshair,			///< Show the folio-wide crosshair
 		*m_add_cable = nullptr,		///< Draw the trunk line of a cable
+		*m_add_bridge = nullptr,	///< Draw a bridge over terminals
 		*m_draw_grid,			///< Switch the background grid display or not
 		*m_draw_guides = nullptr,	///< Switch the custom guides display or not
 		*m_cell_rulers = nullptr,	///< Keep the folio column/row headers in sight or not
@@ -327,6 +328,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_mirror_horizontal = nullptr, ///< Mirror the selected elements, left and right swap (#1335)
 		*m_mirror_vertical = nullptr,   ///< Mirror the selected elements, top and bottom swap (#1335)
 		*m_find_element,		///< Find the selected element in the panel
+		*m_contact_display = nullptr,	///< Choose how the selected relay shows its contacts
 		*m_group_selected_texts = nullptr,
 		*m_group_selection = nullptr,   ///< Group the selected items (#1070)
 		*m_ungroup_selection = nullptr, ///< Ungroup the selected groups

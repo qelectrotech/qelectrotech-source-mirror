@@ -79,7 +79,7 @@ namespace QetDbFile
 	};
 	bool read(const QString &path, QDomDocument *document, QString *error,
 			  const std::function<bool(const QString &copy)> &with_copy = {}, Repair *repair = nullptr,
-			  OutsideEdit outside = OutsideEdit::Refuse);
+			  OutsideEdit outside = OutsideEdit::Refuse, QHash<QString, QByteArray> *table_digests = nullptr);
 		/// The .qetdb @p path repaired into @p output, from the repair data it
 		/// carries, and sealed with new repair data; @p path is not written.
 		/// @p back_to_save: another program's changes undone too

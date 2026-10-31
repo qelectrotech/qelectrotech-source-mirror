@@ -12,6 +12,8 @@ QetShapItem         + 1008
 crossRefItem        + 1009
 DynamiqueElementTextItem  + 1010
 TerminalStripItem   +1011
+CablePart           +1012
+BridgePart          +1013
 ElementPrimitiveDecorator + 2200
 
 ###ELEMENT EDITOR###

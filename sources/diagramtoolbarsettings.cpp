@@ -206,6 +206,7 @@ QStringList DiagramToolbarSettings::defaultIds(const QString &name)
 				//the shapes of the "Ajouter" toolbar.
 			sep,
 			QStringLiteral("diagrameditor.add_cable"),
+			QStringLiteral("diagrameditor.add_bridge"),
 			QStringLiteral("widget:conductor_color"),
 			sep,
 			QStringLiteral("diagrameditor.place_symbol_texts")};
