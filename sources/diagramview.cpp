@@ -68,6 +68,7 @@
 #include "genericdevice/genericdevicewizard.h"
 #include "qetapp.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/terminal.h"
 #include "qetinformation.h"
 #include "qetversion.h"
 #include <QApplication>
@@ -982,6 +983,17 @@ void DiagramView::mousePressEvent(QMouseEvent *original)
 		m_fresh_focus_in = false;
 	}
 
+		//A press on a symbol drags it from here on: the crosshair goes to
+		//the terminal of it nearest the mouse. Not a press on one of its
+		//terminals, which draws a wire, nor on one of its texts, which
+		//drags the text: the symbol stays where it is then
+	if (e->button() == Qt::LeftButton && !m_press_places && itemAt(e->pos())) {
+		m_press_places = true;
+		QGraphicsItem *pressed = itemAt(e->pos());
+		m_dragged_element = pressed->type() == Element::Type ? static_cast<Element *>(pressed) : nullptr;
+		moveCrosshair(e->pos());
+	}
+
 	if (m_event_interface && m_event_interface->mousePressEvent(e)) return;
 
 	if (e->button() == Qt::LeftButton) {
@@ -1117,7 +1129,19 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 	const AcceptedBack accepted_back{e, original};
 	m_last_mouse_pos = e->pos();
 	setToolTip(tr("X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
+		//A press whose release never came (it went to a menu or a
+		//dialog): a move without the button ends the drag
+	if (m_press_places && !(e->buttons() & Qt::LeftButton)) {
+		m_press_places = false;
+		m_dragged_element = nullptr;
+	}
 	moveCrosshair(e->pos());
+		//The symbol moves after the crosshair did: put the crosshair on
+		//its terminal again once it stands where it goes
+	const auto follow_symbol = qScopeGuard([this, e] {
+		if (m_dragged_element)
+			moveCrosshair(e->pos());
+	});
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) {
 		updatePointer(e->pos(), e->buttons());
 		return;
@@ -1323,6 +1347,15 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *original)
 		//After a drag the mouse may stand over another item: its pointer
 		//now, not at the next move
 	const auto pointer_after = qScopeGuard([this, e] { updatePointer(e->pos(), e->buttons()); });
+		//Runs before pointer_after: the drag is over, the crosshair
+		//goes back to the grid point under the mouse
+	const auto placed = qScopeGuard([this, e] {
+		if (m_press_places && !(e->buttons() & Qt::LeftButton)) {
+			m_press_places = false;
+			m_dragged_element = nullptr;
+			moveCrosshair(e->pos());
+		}
+	});
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
 		//A plain right click on a running tool falls through: the tool
@@ -1730,6 +1763,9 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 
 	switchToVisualisationModeIfNeeded(e);
 	QGraphicsView::keyPressEvent(e);
+	if (e->key() == Qt::Key_Left || e->key() == Qt::Key_Right
+	    || e->key() == Qt::Key_Up || e->key() == Qt::Key_Down)
+		crosshairOnMovedSelection();
 }
 
 /**
@@ -2167,11 +2203,28 @@ void DiagramView::moveCrosshair(const QPoint &viewport_pos)
 		hideCrosshair();
 		return;
 	}
-		//A handle near the mouse catches it before the grid does
-	QGraphicsObject *handle = m_grabbing_caught ? nullptr : handleNear(viewport_pos);
+		//A handle near the mouse catches it before the grid does; not
+		//while a press drags something: the crosshair shows where it
+		//lands, not the handles it passes
+	QGraphicsObject *handle = m_grabbing_caught || m_press_places
+			? nullptr : handleNear(viewport_pos);
 	m_caught_handle = handle;
-	const QPointF pos = handle ? handle->scenePos()
-				   : Diagram::snapToGrid(mapToScene(viewport_pos));
+	QPointF pos = handle ? handle->scenePos()
+			     : Diagram::snapToGrid(mapToScene(viewport_pos));
+		//Dragging a symbol: on its terminal nearest the mouse, where that
+		//terminal lands, not on the mouse, which holds the symbol
+		//somewhere beside it
+	if (m_dragged_element && m_press_places && !handle) {
+		const QPointF mouse = mapToScene(viewport_pos);
+		qreal nearest = -1;
+		for (const Terminal *t : m_dragged_element->terminals()) {
+			const qreal d = QLineF(mouse, t->dockConductor()).length();
+			if (nearest < 0 || d < nearest) {
+				nearest = d;
+				pos = t->dockConductor();
+			}
+		}
+	}
 	if (m_crosshair_visible && pos == m_crosshair_pos)
 		return;
 	if (m_crosshair_visible)
@@ -2242,6 +2295,54 @@ QMouseEvent *DiagramView::onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseE
 }
 
 /**
+	@brief DiagramView::crosshairOnMovedSelection
+	After the arrow keys moved the selection, the crosshair stands on the
+	point that moved: of the selected items, the one nearest where the
+	crosshair was -- a symbol's terminal, or else the item's own origin --
+	so that a symbol can be brought in line with another one by eye, with
+	the mouse left where it is. The next mouse move takes it back.
+*/
+void DiagramView::crosshairOnMovedSelection()
+{
+	if (!m_diagram || !crosshairShown())
+		return;
+	DiagramContent dc(m_diagram);
+	if (dc.hasTextEditing())
+		return;
+	QList<QPointF> points;
+	for (QGraphicsItem *item : m_diagram->selectedItems()) {
+		if (item->type() == Element::Type) {
+			const auto terminals = static_cast<Element *>(item)->terminals();
+			for (const Terminal *t : terminals)
+				points << t->dockConductor();
+			if (!terminals.isEmpty())
+				continue;
+		}
+		if (item->type() != Conductor::Type)
+			points << item->scenePos();
+	}
+	if (points.isEmpty())
+		return;
+	const QPointF from = m_crosshair_visible ? m_crosshair_pos
+			: mapToScene(viewport()->rect().center());
+	QPointF pos = points.first();
+	qreal nearest = QLineF(from, pos).length();
+	for (const QPointF &p : std::as_const(points)) {
+		const qreal d = QLineF(from, p).length();
+		if (d < nearest) {
+			nearest = d;
+			pos = p;
+		}
+	}
+	if (m_crosshair_visible)
+		viewport()->update(crosshairArea(m_crosshair_pos));
+	m_caught_handle = nullptr;
+	m_crosshair_pos = pos;
+	m_crosshair_visible = true;
+	viewport()->update(crosshairArea(m_crosshair_pos));
+}
+
+/**
 	@brief DiagramView::hideCrosshair
 	Take the crosshair away, when the mouse leaves the view or the
 	setting is switched off.
@@ -2281,8 +2382,25 @@ void DiagramView::drawForeground(QPainter *painter, const QRectF &rect)
 	pen.setWidthF(0);
 	p->setPen(pen);
 	p->setRenderHint(QPainter::Antialiasing, false);
-	p->drawLine(QLineF(area.left(), m_crosshair_pos.y(), area.right(), m_crosshair_pos.y()));
-	p->drawLine(QLineF(m_crosshair_pos.x(), area.top(), m_crosshair_pos.x(), area.bottom()));
+		//The crosshair stands on a terminal of the symbol being placed, so
+		//it would hide the symbol's own lines -- a corner and its turn by
+		//Space entirely. It leaves the symbol out.
+	QRectF gap;
+	if (Element *pending = m_diagram->pendingElement())
+		gap = pending->sceneBoundingRect().adjusted(-2, -2, 2, 2);
+	const qreal x = m_crosshair_pos.x(), y = m_crosshair_pos.y();
+	if (gap.isNull() || y < gap.top() || y > gap.bottom()) {
+		p->drawLine(QLineF(area.left(), y, area.right(), y));
+	} else {
+		p->drawLine(QLineF(area.left(), y, gap.left(), y));
+		p->drawLine(QLineF(gap.right(), y, area.right(), y));
+	}
+	if (gap.isNull() || x < gap.left() || x > gap.right()) {
+		p->drawLine(QLineF(x, area.top(), x, area.bottom()));
+	} else {
+		p->drawLine(QLineF(x, area.top(), x, gap.top()));
+		p->drawLine(QLineF(x, gap.bottom(), x, area.bottom()));
+	}
 	p->restore();
 	drawPointer(p);
 }
