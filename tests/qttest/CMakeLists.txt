@@ -558,6 +558,16 @@ add_test(NAME tst_smart_device COMMAND tst_smart_device)
 target_include_directories(tst_smart_device PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_smart_device PRIVATE Qt::Test Qt::Sql)
 
+# BomExport::groupedQuery(): identical parts become one line, quantities added.
+add_executable(
+  tst_groupedbom
+  tst_groupedbom.cpp
+  ${QET_DIR}/sources/bomexport.cpp
+  ${QET_DIR}/sources/bomexport.h)
+add_test(NAME tst_groupedbom COMMAND tst_groupedbom)
+target_include_directories(tst_groupedbom PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_groupedbom PRIVATE Qt::Test Qt::Sql)
+
 # qet.cpp carries the SingleApplication argument wire format
 # (joinWithSpaces/splitWithSpaces); it pulls in qeticons and shortcutmanager,
 # so those are compiled alongside rather than linking the whole application.
