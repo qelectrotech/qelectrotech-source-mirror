@@ -38,6 +38,10 @@ namespace QetSettings
 	bool scriptingEnabled();
 	void setScriptingEnabled(bool enabled);
 	bool scriptingForcedByEnvironment();
+	bool qetdbEnabled();
+	void setQetdbEnabled(bool enabled);
+	bool workingCopyRecovery();
+	void setWorkingCopyRecovery(bool enabled);
 	bool liveAssistantEnabled();
 	void setLiveAssistantEnabled(bool enabled);
 	bool liveSkipStartWarning();
@@ -74,6 +78,9 @@ namespace QetSettings
 	{
 		QColor color;
 		bool custom = false;
+		/// Yellow symbols and red conductors on the sheet instead of one
+		/// light ink (PaletteGraphicsView::setColoredInk()).
+		bool colored_ink = false;
 	};
 
 	SheetBackground sheetBackground();

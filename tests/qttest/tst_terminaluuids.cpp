@@ -11,6 +11,7 @@
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
 #include <QUuid>
+#include "qettesttimeout.h"
 
 // Replacing a symbol's definition in a project must not cost the wires on
 // it. A wire is saved against the uuids of the terminals it joins and is
@@ -81,7 +82,7 @@ class tst_terminaluuids : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), args);
-		if (!proc.waitForFinished(120000) || proc.exitCode() != 0)
+		if (!proc.waitForFinished(QetTest::timeout(120000)) || proc.exitCode() != 0)
 			return false;
 		*log = QString::fromUtf8(proc.readAllStandardError());
 		*out = proc.readAllStandardOutput();

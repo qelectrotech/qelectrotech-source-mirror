@@ -128,7 +128,7 @@ class ElementAutoNumSchemeCommand : public QUndoCommand
 			FollowsAlready,   ///< already follows this scheme
 			Frozen,           ///< its label is frozen
 			OtherFormula,     ///< follows another scheme or has a formula of its own
-			Linked            ///< slave or report: takes its label from its master
+			Linked            ///< slave, report or conductor definition: not numbered by a scheme
 		};
 		static Skipped skipReason(const QETProject *project,
 								  const QString &title,
@@ -140,7 +140,7 @@ class ElementAutoNumSchemeCommand : public QUndoCommand
 			QVector<Element *> frozen;        ///< a frozen label: left alone unless overwrite
 			QVector<Element *> otherFormula;  ///< follow or hold another formula: left alone unless overwrite
 			int followsAlready = 0;           ///< follow this scheme already
-			int linked = 0;                   ///< slave or report: take their label from their master
+			int linked = 0;                   ///< slaves, reports or conductor definitions: not numbered
 		};
 		static AssignPlan assignPlan(const QETProject *project,
 									 const QString &title,

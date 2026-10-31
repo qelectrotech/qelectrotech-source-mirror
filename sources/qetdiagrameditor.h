@@ -19,6 +19,8 @@
 #define QET_DIAGRAM_EDITOR_H
 
 #include "SearchAndReplace/ui/searchandreplacewidget.h"
+#include "dataBase/qetdbfile.h"
+#include "dataBase/workingcopyrecovery.h"
 #include "diagramcontext.h"
 #include "projectlock.h"
 #include "qetmainwindow.h"
@@ -85,11 +87,15 @@ class QETDiagramEditor : public QETMainWindow
 		void templateSaved(const ElementsLocation &location);
 		bool drawGrid() const;
 		void openBackupFiles (QList<KAutoSaveFile *> backup_files);
+		void openWorkingCopies(const QList<WorkingCopyRecovery::LeftWorkingCopy> &copies);
 
 	  protected:
 		bool event(QEvent *) override;
 	private:
 		bool offerToRecover(const QString &filepath, const QString &reason);
+		QetDbFile::OutsideEdit askOutsideEdit(const QString &filepath, const QetDbFile::Repair &repair,
+											   bool can_go_back);
+		void tellRepair(QETProject *project);
 		bool openAsRecovered(const QString &source, const QString &original);
 		static QString recoveredPath(const QString &filepath, const QString &suffix);
 		// Declared first so it is initialised before any member whose
@@ -148,6 +154,7 @@ class QETDiagramEditor : public QETMainWindow
 		void alignGroupTriggered     (QAction *action);
 		void rowColumnGroupTriggered (QAction *action);
 		void slot_updateActions();
+		void updateZoomLabel();
 		void slot_updateUndoStack();
 		void slot_updateModeActions();
 		void slot_updateComplexActions();
@@ -175,6 +182,10 @@ class QETDiagramEditor : public QETMainWindow
 		void projectWasClosed(ProjectView *);
 		void editProjectProperties(ProjectView *);
 		void editProjectProperties(QETProject *);
+		void showProjectHistory();
+		void exportForDelivery();
+		bool openProjectRevision(QETProject *project, qint64 number);
+		void showProjectChanges(QETProject *project, qint64 from, qint64 to, QWidget *parent);
 		void slot_terminalNumbering();
 		void slot_cableNumbering();
 		void slot_reloadElementDrawings();
@@ -214,6 +225,7 @@ class QETDiagramEditor : public QETMainWindow
 
 	private slots:
 		void updateTextGridButton();
+		void updateGridStepButton();
 		void updateShownKinds();
 		void selectionChanged();
 
@@ -268,6 +280,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_configure_duplicate,		///< Reopen the duplicate offset/direction dialog (#991)
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
 		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
+		*m_terminal_strip_labels = nullptr,	///< Show each strip's label at its first terminal
+		*m_terminal_strip_bridges = nullptr,	///< Draw the strips' bridges between their terminals
 		*m_crosshair,			///< Show the folio-wide crosshair
 		*m_add_cable = nullptr,		///< Draw the trunk line of a cable
 		*m_draw_grid,			///< Switch the background grid display or not
@@ -275,6 +289,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_cell_rulers = nullptr,	///< Keep the folio column/row headers in sight or not
 		*m_cell_lines = nullptr,	///< Draw the folio column/row limits across the drawing or not
 		*m_project_edit_properties,	///< Edit the properties of the current project.
+		*m_project_history,	///< The saves the current project's .qetdb keeps
+		*m_export_delivery,	///< A copy of the current .qetdb without its history
 		*m_project_add_diagram,		///< Add a diagram to the current project.
 		*m_remove_diagram_from_project,	///< Delete a diagram from the current project
 		*m_clean_project,		///< Clean the content of the current project by removing useless items
@@ -325,9 +341,15 @@ class QETDiagramEditor : public QETMainWindow
 		///< Diagram background color picker, in the "Affichage" toolbar
 		DiagramBgColorToolButton *m_background_color_button = nullptr;
 		QMenu *m_text_grid_menu = nullptr;		///< Snap step used when dragging texts
+		QAction *m_grid_snap = nullptr;			///< Snap to the grid, on or off
+		QMenu *m_grid_step_menu = nullptr;		///< Fine, medium or coarse grid
+		QToolButton *m_grid_step_button = nullptr;
+		QToolButton *m_grid_status_button = nullptr;	///< Status bar: the grid step, with the same menu
+		QToolButton *m_snap_status_button = nullptr;	///< Status bar: snapping on or off, a magnet
 		QToolButton *m_text_grid_button = nullptr;
 		QMenu *m_shown_kinds_menu = nullptr;		///< View > Show, kinds of items (#301)
 		QLabel *m_hidden_kinds_label = nullptr;	///< Status bar: how many kinds are hidden
+		QToolButton *m_zoom_button = nullptr;	///< Status bar: the zoom of the folio on screen, fixed steps on a click
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
 

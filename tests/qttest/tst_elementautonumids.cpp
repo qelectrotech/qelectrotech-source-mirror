@@ -33,6 +33,7 @@
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
 #include <QUuid>
+#include "qettesttimeout.h"
 
 class tst_elementautonumids : public QObject
 {
@@ -74,7 +75,7 @@ class tst_elementautonumids : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(environment());
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--resave"), in, out});
-		if (!proc.waitForFinished(180000) || proc.exitCode() != 0) return {};
+		if (!proc.waitForFinished(QetTest::timeout(180000)) || proc.exitCode() != 0) return {};
 		return out;
 	}
 
@@ -89,7 +90,7 @@ class tst_elementautonumids : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(environment());
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), path, project});
-		if (!proc.waitForFinished(180000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(180000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput()
 											  + proc.readAllStandardError());
 		const QString mark = QStringLiteral("PROBE ");
@@ -784,7 +785,7 @@ qet.log('PROBE ' + JSON.stringify({saves: saves, wrong: wrong}));
 		proc.setProcessEnvironment(environment());
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), path, QStringLiteral(QET_EXAMPLES_DIR "/741.qet")});
-		QVERIFY(proc.waitForFinished(180000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(180000)));
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 
 		QVERIFY2(out.contains(QLatin1String("PROBE {\"saves\":23,\"wrong\":[]}")), qPrintable(out.right(2000)));

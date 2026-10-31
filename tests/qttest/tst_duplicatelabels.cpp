@@ -4,6 +4,7 @@
 #include "ElementsCollection/xmlelementcollection.h"
 #include "TerminalStrip/realterminal.h"
 #include "TerminalStrip/terminalstrip.h"
+#include "container/qetzwriter.h"
 #include "duplicatelabels.h"
 #include "elementspanel.h"
 #include "elementspanelwidget.h"
@@ -896,7 +897,7 @@ class tst_duplicatelabels : public QObject
 		const QString path = m_definitions.filePath("roundtrip.qetz");
 		QString		  error;
 		QVERIFY2(
-			QETProject::writeContainer(project.toXml(), path, &error),
+			QetzWriter::write(project.toXml(), path, &error),
 			qPrintable(error));
 		QETProject reopened(path);
 		QCOMPARE(reopened.state(), QETProject::Ok);

@@ -366,7 +366,8 @@ void XRefPropertiesWidget::chooseXRefFont()
 
 	bool ok = false;
 	const QFont font = QFontDialog::getFont(&ok, initial, this,
-											tr("Font of the cross-reference text"));
+											tr("Font of the cross-reference text"),
+											QFontDialog::DontUseNativeDialog);
 	if (!ok) return;
 
 	m_current_font = QETUtils::fontToString(font);

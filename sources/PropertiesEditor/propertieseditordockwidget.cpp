@@ -32,6 +32,13 @@ PropertiesEditorDockWidget::PropertiesEditorDockWidget(QWidget *parent) :
 	ui(new Ui::PropertiesEditorDockWidget)
 {
 	ui->setupUi(this);
+		// Tabbed or not can change without the selection changing
+	connect(this, &QDockWidget::dockLocationChanged,
+		this, &PropertiesEditorDockWidget::updateSizeConstraint);
+	connect(this, &QDockWidget::topLevelChanged,
+		this, &PropertiesEditorDockWidget::updateSizeConstraint);
+	connect(this, &QDockWidget::visibilityChanged,
+		this, &PropertiesEditorDockWidget::updateSizeConstraint);
 }
 
 /**
@@ -62,6 +69,7 @@ void PropertiesEditorDockWidget::clear()
 	}
 
 	m_editor_list.clear();
+	updateSizeConstraint();
 }
 
 /**
@@ -105,6 +113,7 @@ bool PropertiesEditorDockWidget::addEditor(PropertiesEditorWidget *editor,
 	m_editor_list << editor;
 	if (was_empty)
 		restoreHeight();
+	updateSizeConstraint();
 	return true;
 }
 
@@ -133,6 +142,7 @@ bool PropertiesEditorDockWidget::removeEditor(PropertiesEditorWidget *editor)
 	bool result = m_editor_list.removeOne(editor);
 	if (result)
 		ui -> m_main_vlayout -> removeWidget(editor);
+	updateSizeConstraint();
 
 	return result;
 }
@@ -150,6 +160,12 @@ void PropertiesEditorDockWidget::rememberHeight()
 		// before the heights were given back
 	if (m_restore_pending || isFloating() || !isVisible())
 		return;
+		// A tabbed dock does not shrink: nothing to give back
+	if (isTabbed()) {
+		m_area_docks.clear();
+		m_area_heights.clear();
+		return;
+	}
 	auto main_window = qobject_cast<QMainWindow *>(parentWidget());
 	if (!main_window)
 		return;
@@ -187,7 +203,7 @@ void PropertiesEditorDockWidget::restoreHeight()
 		m_restore_pending = false;
 		auto main_window = qobject_cast<QMainWindow *>(parentWidget());
 		if (!main_window || isFloating() || !isVisible()
-			|| m_editor_list.isEmpty())
+			|| m_editor_list.isEmpty() || isTabbed())
 			return;
 
 		QList<QDockWidget *> docks;
@@ -207,4 +223,38 @@ void PropertiesEditorDockWidget::restoreHeight()
 		if (docks.contains(this))
 			main_window->resizeDocks(docks, heights, Qt::Vertical);
 	});
+}
+
+/**
+	@brief PropertiesEditorDockWidget::updateSizeConstraint
+	The empty dock shrinks to its title bar, but not while it shares a tab
+	stack with other docks: the stack takes the smallest maximum height of
+	its tabs, so the empty dock would hold every other tab at its title bar
+	and the stack could not be resized.
+*/
+void PropertiesEditorDockWidget::updateSizeConstraint()
+{
+	const bool tabbed = isTabbed();
+	const QLayout::SizeConstraint constraint = tabbed
+			? QLayout::SetDefaultConstraint
+			: QLayout::SetMaximumSize;
+	if (ui->verticalLayout->sizeConstraint() == constraint)
+		return;
+
+	ui->verticalLayout->setSizeConstraint(constraint);
+		// SetMaximumSize left its maximum on the contents
+	if (tabbed)
+		ui->dockWidgetContents->setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
+}
+
+/**
+	@brief PropertiesEditorDockWidget::isTabbed
+	@return true if this dock shares a tab stack with other docks
+*/
+bool PropertiesEditorDockWidget::isTabbed() const
+{
+	auto main_window = qobject_cast<QMainWindow *>(parentWidget());
+	return main_window && !isFloating()
+			&& !main_window->tabifiedDockWidgets(
+				const_cast<PropertiesEditorDockWidget *>(this)).isEmpty();
 }

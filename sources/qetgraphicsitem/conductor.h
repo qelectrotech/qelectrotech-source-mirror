@@ -19,6 +19,8 @@
 #define CONDUCTOR_H
 #include "../autoNum/assignvariables.h"
 #include "../conductorproperties.h"
+#include "../dataBase/conductorlayout.h"
+#include "../dataBase/conductorpath.h"
 
 #include <QGraphicsPathItem>
 #include <QSet>
@@ -31,6 +33,7 @@ class projectDataBase;
 class Terminal;
 class ConductorSegment;
 class ConductorTextItem;
+class ConductorDefinitionMark;
 class Element;
 class QETDiagramEditor;
 class NumerotationContext;
@@ -128,6 +131,14 @@ class Conductor : public QGraphicsObject
 		ConductorProperties properties() const;
 			/// This wire's own copy of its properties, whatever the store holds
 		ConductorProperties ownProperties() const {return m_properties;}
+			/// Where this wire sits and how its text was placed, from its own
+			/// members, never from the store
+		ConductorLayout ownLayout() const;
+		void storeLayout();
+			/// The segments toXml() writes for this wire (none if the user
+			/// did not reshape it), from its own members, never from the store
+		ConductorPath ownPath() const;
+		void storePath();
 			/// The order wires were made in this session: a project's are
 			/// made in the order its file lists them
 		quint64 creationRank() const {return m_creation_rank;}
@@ -146,6 +157,8 @@ class Conductor : public QGraphicsObject
 		void setProfiles(const ConductorProfilesGroup &);
 		ConductorProfilesGroup profiles() const;
 		void calculateTextItemPosition();
+		void updateDefinitionMark();
+		QList<Conductor *> cornerChain();
 		void updateTextVisibility();
 		virtual Highlight highlight() const;
 		virtual void setHighlighted(Highlight);
@@ -160,9 +173,11 @@ class Conductor : public QGraphicsObject
 
 		autonum::sequentialNumbers sequenceNum () const
 		{return m_autoNum_seq;}
-		autonum::sequentialNumbers& rSequenceNum()
-		{return m_autoNum_seq;}
+			/// Replace the numbers without redrawing the text; the project
+			/// database follows
+		void replaceSequenceNum(const autonum::sequentialNumbers& sn);
 		void setSequenceNum(const autonum::sequentialNumbers& sn);
+		void storeSequence();
 
 		QList<QPointF> junctions() const;
 		QPainterPath paintedPath() const;
@@ -175,6 +190,7 @@ class Conductor : public QGraphicsObject
 	public:
 		void setFreezeLabel(bool freeze);
 		bool isFreezeLabel() const { return m_freeze_label; }
+		bool markReplacesText() const;
 	
 	public slots:
 		void displayedTextChanged();
@@ -219,6 +235,7 @@ class Conductor : public QGraphicsObject
 		ConductorProperties m_properties;
 			/// Text input for non simple, non-singleline conductors
 		ConductorTextItem *m_text_item;
+		ConductorDefinitionMark *m_definition_mark = nullptr;
 			/// Segments composing the conductor
 		ConductorSegment *segments;
 			/// Attributes related to mouse interaction

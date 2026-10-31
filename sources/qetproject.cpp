@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -17,8 +17,11 @@
 */
 
 #include "qetproject.h"
+#include "TerminalStrip/terminalstriplabels.h"
 #include "container/qetcontainer.h"
 #include "container/qetcontainerdb.h"
+#include "container/qetzwriter.h"
+#include "dataBase/qetdbfile.h"
 
 #include "ElementsCollection/xmlelementcollection.h"
 #include "autoNum/assignvariables.h"
@@ -32,6 +35,8 @@
 #include "diagram.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/terminal.h"
+#include "properties/terminaldata.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/ViewItem/projectdbmodel.h"
@@ -95,6 +100,16 @@ m_project_properties_handler{this}
 		//Read auto break conductor default from global settings
 	setAutoBreakConductor(settings.value(QStringLiteral("diagrameditor/auto_break_conductor"), false).toBool());
 
+		//A new project draws its terminals the way the settings chose it
+		//for new projects (Configure QElectroTech > New project), off when
+		//they say nothing: the drawing is then the one it always was. Every
+		//project saved after that keeps its own choice (readTerminalLabelSplitXml())
+	setTerminalLabelSplit(settings.value(QStringLiteral("diagrameditor/defaultterminallabelling"), false).toBool());
+
+		//Read chained reports default from global settings (enabled for newly created projects when setting is on)
+	m_chained_reports = settings.value(QStringLiteral("project/enable-chained-reports"), false).toBool();
+	m_has_chained_reports_attribute = true;
+
 	int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
 	for (int i = 0; i < size; ++i) {
 		settings.setArrayIndex(i);
@@ -140,6 +155,7 @@ m_project_properties_handler{this}
 			setCurrentCableAutoNum(cableData.second);
 		}
 	}
+	storeSettings();
 }
 
 ProjectPropertiesHandler &QETProject::projectPropertiesHandler()
@@ -154,11 +170,22 @@ ProjectPropertiesHandler &QETProject::projectPropertiesHandler()
 	@param parent : parent QObject
 */
 QETProject::QETProject(const QString &path, QObject *parent) :
+	QETProject(path, QetDbFile::OutsideEdit::Refuse, parent)
+{
+}
+
+/**
+	@brief QETProject::QETProject
+	Construct a project from a file, a .qetdb another program wrote to
+	since its save opened as @p outside says (QetDbFile::read())
+*/
+QETProject::QETProject(const QString &path, QetDbFile::OutsideEdit outside, QObject *parent) :
 	QObject              (parent),
 	m_titleblocks_collection(this),
 	m_data_base(this, this),
 	m_project_properties_handler{this}
 {
+	m_outside_edit = outside;
 	QFile file(path);
 	m_state = openFile(&file);
 	if (m_state != ProjectState::Ok) {
@@ -169,6 +196,16 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 		//there is nothing to back up until the project is changed.
 	m_backup_needed = false;
 	init();
+
+		//The project database as the open leaves it, for comparing two ways
+		//of opening (S4x X2: from a .qetdb's tables or from its document)
+	const QString dump_path = qEnvironmentVariable("QET_DUMP_DB_STATE");
+	if (!dump_path.isEmpty()) {
+		m_data_base.updateDB();
+		QFile dump(dump_path);
+		if (dump.open(QIODevice::WriteOnly | QIODevice::Truncate))
+			dump.write(m_data_base.stateDump().toUtf8());
+	}
 }
 
 /**
@@ -204,6 +241,39 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 	setReadOnly(!fi.isWritable());
 
 	init();
+}
+
+/**
+	@brief QETProject::QETProject
+	Construct a project recovered from the working copy a QElectroTech
+	that did not close normally left (QET-SQL-FORMAT S3z3)
+	@param recovered : the .qet written from the working copy
+	@param file_path : the file of the project it was, empty if never saved
+	@param parent : parent QObject
+*/
+QETProject::QETProject(const QString &recovered, const QString &file_path, QObject *parent) :
+	QObject              (parent),
+	m_titleblocks_collection(this),
+	m_data_base(this, this),
+	m_project_properties_handler{this}
+{
+	QFile file(recovered);
+	m_state = openFile(&file);
+	if (m_state != ProjectState::Ok) {
+		return;
+	}
+		//The path of the project, instead of the one written from the copy
+	setFilePath(file_path);
+	const QFileInfo fi(m_file_path);
+	setReadOnly(fi.exists() && !fi.isWritable());
+
+	init();
+		//What the file lacks: it has to be saved, as a project reopened
+		//from a recovery file. The working copy's first commit, in init(),
+		//noted it unmodified: commit again, or a second crash before an
+		//edit would leave a copy with nothing to recover.
+	setModified(true);
+	m_data_base.commitWorkingCopy();
 }
 
 /**
@@ -294,7 +364,7 @@ QUuid QETProject::uuid() const
 */
 QByteArray QETProject::containerPicture(const QString &file) const
 {
-	return m_container_pictures.value(file);
+	return m_container.picture(file);
 }
 
 /**
@@ -362,6 +432,10 @@ void QETProject::init()
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, &QETProject::updateDiagramsTitleBlockTemplate);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, &QETProject::removeDiagramsTitleBlockTemplate);
 
+		//The default layout of the terminal strips is a setting of the project
+	connect(&m_project_properties_handler.terminalStripLayoutHandler(), &TerminalStripLayoutsHandler::changed,
+			this, &QETProject::storeSettings);
+
 		//What changes the saved items of folios not built (lazy folios):
 		//a folio's position, number or the folio total in their texts,
 		//the report and cross-reference settings, a symbol's definition.
@@ -376,6 +450,8 @@ void QETProject::init()
 		//Folios not built are saved as read until something is edited
 		//(m_edited_since_open, toXml())
 	connect(m_undo_stack, &QUndoStack::indexChanged, this, [this]() {m_edited_since_open = true;});
+		//An edit may give a folio shown partners not built
+	connect(m_undo_stack, &QUndoStack::indexChanged, this, [this]() {m_folios_shown.clear();});
 	connect(m_undo_stack, &QUndoStack::cleanChanged, this, &QETProject::undoStackChanged);
 
 		//What counts as a change for writeBackup(): the undo stack moving,
@@ -383,6 +459,10 @@ void QETProject::init()
 		//without going through either.
 	const auto backup_needed = [this]() { m_backup_needed = true; };
 	connect(m_undo_stack, &QUndoStack::indexChanged, this, backup_needed);
+		//Each step of the undo stack reaches the working copy at once (S3z2):
+		//no event loop runs during a --run script. The database is the
+		//context: it is gone before the stack's clear() in the teardown.
+	connect(m_undo_stack, &QUndoStack::indexChanged, &m_data_base, &projectDataBase::commitWorkingCopy);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, backup_needed);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::elementAdded, this, backup_needed);
@@ -391,6 +471,21 @@ void QETProject::init()
 	connect(m_elements_collection, &XmlElementCollection::elementRemoved, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::directorieAdded, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::directoryRemoved, this, backup_needed);
+		//The project database holds the embedded symbols and templates as
+		//saved; a template is removed after aboutToRemove(), so they are
+		//written when the database is next read
+	const auto collections_changed = [this]() { m_data_base.queueCollections(); };
+	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, collections_changed);
+	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::elementAdded, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::elementChanged, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::elementRemoved, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::directorieAdded, this, collections_changed);
+	connect(m_elements_collection, &XmlElementCollection::directoryRemoved, this, collections_changed);
+		//Taken from a .qetdb's tables, they hold the collection this project
+		//was read from (S4x X2): comparing it again costs 0.5 s on f2099
+	if (!m_data_base.adopted())
+		m_data_base.queueCollections();
 
 	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
 	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
@@ -422,6 +517,9 @@ void QETProject::init()
 		m_autosave_timer.start();
 	}
 
+		//The project is open: the first commit makes its working copy one
+		//to recover after a crash (S3z2)
+	m_data_base.workingCopyOpened();
 }
 
 /**
@@ -470,6 +568,8 @@ QUuid QETProject::derivedUuid(const QByteArray &content)
 	return QUuid::fromRfc4122(bytes);
 }
 
+static QByteArray diskHash(const QString &path, const QByteArray *content = nullptr);
+
 /**
 	@brief QETProject::openFile
 	@param file
@@ -489,7 +589,9 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		if (!file->open(QIODevice::ReadOnly)) {
 			return FileOpenFailed;
 		}
-		if (!QetContainer::isZip(file->peek(4))) {
+			//A .qetdb is read as bytes too
+		const QByteArray head = file->peek(16);
+		if (!QetContainer::isZip(head.left(4)) && !QetDbFile::isDatabase(head)) {
 			file->close();
 			if (!file->open(QIODevice::ReadOnly | QIODevice::Text)) {
 				return FileOpenFailed;
@@ -503,13 +605,61 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 
 		//Extract the content of the xml. The raw bytes are kept : a project
 		//file without a persisted uuid derives its uuid from them.
-	const QByteArray content = file->readAll();
-	rememberDiskState();
+	QByteArray content = file->readAll();
+		//A .qetdb (experimental): the project it holds, as a .qet's document,
+		//handed over without being written as text. Its state on disk is that
+		//of the file itself
+		//A .qetdb whose first page is damaged no longer says it is one: its
+		//name does, unless it holds XML or a zip (QETDB-S4C-PLAN.md P4)
+	const bool database = QetDbFile::isDatabase(content.left(16))
+			|| (QetDbFile::isDatabasePath(fi.fileName()) && !content.trimmed().startsWith('<')
+				&& !content.startsWith("PK\x03\x04"));
+	QDomDocument xml_project;
+		//The bytes just read are those of the file: hashed for
+		//changedOnDisk() while the open goes on (0.2 s of a 44 MB file)
+	QFuture<QByteArray> database_hash;
+	if (database) {
+		QString error;
+		database_hash = QtConcurrent::run([content]() { return diskHash(QString(), &content); });
+		content.clear();
+			//The project database starts from the file's tables (S4x X2);
+			//QET_QETDB_NO_ADOPT=1 fills it from the document instead
+			//With lazy folios, each folio's items are read from it when the
+			//folio is built (S4x X3)
+		const auto adopt = [this](const QString &copy) {
+			if (qEnvironmentVariableIntValue("QET_QETDB_NO_ADOPT") == 1) return false;
+			QString why;
+			if (!m_data_base.adoptFile(copy, &why)) {
+				qInfo().noquote() << "Project database not read from the file:" << why;
+				return false;
+			}
+			return lazyFolios();
+		};
+			//QET_QETDB_OUTSIDE_EDIT=back|keep: the choice the editor asks
+			//for, from the command line (tests)
+		QetDbFile::OutsideEdit outside = m_outside_edit;
+		const QString chosen = qEnvironmentVariable("QET_QETDB_OUTSIDE_EDIT");
+		if (chosen == QLatin1String("back")) outside = QetDbFile::OutsideEdit::BackToSave;
+		else if (chosen == QLatin1String("keep")) outside = QetDbFile::OutsideEdit::KeepChanges;
+		if (!QetDbFile::read(fi.absoluteFilePath(), &xml_project, &error, adopt, &m_qetdb_repair, outside)) {
+			qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << error;
+			m_open_error = error;
+			if (opened_here) {
+				file->close();
+			}
+			return XmlParsingFailed;
+		}
+	}
+	if (database) {
+		const QByteArray hash = database_hash.result();
+		rememberDiskState(nullptr, &hash);
+	} else {
+		rememberDiskState(&content);
+	}
 		//Each folio's text is kept while it is not built (readDiagramsXml()):
 		//from a .qet only, a .qetz is a zip of parts
 	if (!content.startsWith("PK\x03\x04"))
 		m_opened_content = content;
-	QDomDocument xml_project;
 	// PreserveSpacingOnlyNodes: without it, a text node that is entirely
 	// whitespace -- e.g. a title-block custom variable deliberately set to
 	// a single space, the only way to give it a value other than blank
@@ -528,27 +678,10 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	QString read_error;
 		//A .qetz: its entries are kept, for a save to copy the parts of the
 		//folios not built (stage D4)
-	m_container_files.clear();
-	m_folio_parts.clear();
-	bool read = false;
-	int container_format = 0;
-	if (QetContainer::isZip(content)) {
-		QList<QetZip::Entry> entries;
-		read = QetZip::fromBytes(content, &entries, &read_error)
-				&& QetContainer::join(entries, &xml_project, &read_error, &m_folio_parts,
-									  &m_container_pictures, &container_format);
-		if (read)
-			for (const QetZip::Entry &entry : std::as_const(entries))
-				m_container_files.insert(entry.name, entry.data);
-	} else {
-		read = QetContainer::readDocument(content, &xml_project, &read_error);
-	}
-	if (!read)
+	if (!database && !m_container.read(content, &xml_project, &read_error))
 	{
 		qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << read_error;
 		m_open_error = read_error;
-		m_container_pictures.clear();
-		m_folio_parts.clear();
 		if(opened_here) {
 			file->close();
 		}
@@ -563,13 +696,14 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	if (root_elmt.tagName() == QLatin1String("project"))
 	{
 		const QUuid persisted_uuid(root_elmt.attribute(QStringLiteral("uuid")));
-		m_uuid = persisted_uuid.isNull() ? derivedUuid(content)
+		m_uuid = persisted_uuid.isNull() ? derivedUuid(database ? xml_project.toByteArray() : content)
 										 : persisted_uuid;
 	}
 
 		//Build the project from the xml
 	readProjectXml(xml_project);
 	m_opened_content.clear();
+
 
 	const qint64 total_ms = load_timer.elapsed();
 	qInfo().nospace().noquote()
@@ -581,13 +715,13 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 
 		//Written by a later QElectroTech that lets this one read it: saving
 		//here would drop what this version does not know
-	m_from_later_version = container_format > QetContainer::Format;
+	m_from_later_version = m_container.format() > QetContainer::Format;
 	if (!fi.isWritable() || m_from_later_version) {
 		setReadOnly(true);
 	}
 	if (m_from_later_version) {
 		qInfo().noquote() << QStringLiteral("Project %1 is of .qetz format %2 (this version writes %3): opened read-only")
-							 .arg(fi.fileName()).arg(container_format).arg(QetContainer::Format);
+							 .arg(fi.fileName()).arg(m_container.format()).arg(QetContainer::Format);
 	}
 	if(opened_here) {
 		file->close();
@@ -646,6 +780,16 @@ QString QETProject::openError() const
 }
 
 /**
+	@brief QETProject::qetdbRepair
+	@return what opening a .qetdb found wrong with it and repaired, or why
+	it was refused (QETDB-S4C-PLAN.md P5); empty for other files
+*/
+QetDbFile::Repair QETProject::qetdbRepair() const
+{
+	return m_qetdb_repair;
+}
+
+/**
 	@return la liste des schemas de ce projet
 */
 QList<Diagram *> QETProject::diagrams() const
@@ -681,6 +825,15 @@ QList<Diagram *> QETProject::cableLabelFolios()
 		return diagrams();
 	}
 	QList<Diagram *> referring;
+		//Opened from a .qetdb's tables: its wires' rows say it, without
+		//writing out every folio's items (S4x X3)
+	if (m_data_base.adopted()) {
+		const QSet<QUuid> with_cables = m_data_base.foliosWithCableWires();
+		for (Diagram *d : std::as_const(m_diagrams_list))
+			if (!d->isLoaded() && with_cables.contains(d->uuid())) referring << d;
+		buildFolios(referring);
+		return builtFolios();
+	}
 	for (Diagram *d : std::as_const(m_diagrams_list)) {
 		if (d->isLoaded()) continue;
 		for (const QDomElement &wire : QET::findInDomElement(d->deferredXml(), QStringLiteral("conductors"),
@@ -1062,6 +1215,12 @@ void QETProject::buildFolioToShow(Diagram *folio)
 	if (!folio || !unloadedFolioCount()) {
 		return;
 	}
+		//Asked again with nothing edited (a script reads a folio item by
+		//item): the scan below costs a query per symbol, each time
+	if (m_folios_shown.contains(folio)) {
+		return;
+	}
+	m_folios_shown.insert(folio);
 		//A table chain is built at once: its model is in its first table
 	QSet<Diagram *> chained = tableChainFolios(folio);
 	chained.insert(folio);
@@ -1315,6 +1474,7 @@ void QETProject::setTitle(const QString &title) {
 	if (project_title_ == title) return;
 
 	project_title_ = title;
+	storeSettings();
 	emit projectTitleChanged(this, project_title_);
 	emit projectInformationsChanged(this);
 	updateDiagramsFolioData();
@@ -1336,6 +1496,7 @@ BorderProperties QETProject::defaultBorderProperties() const
 */
 void QETProject::setDefaultBorderProperties(const BorderProperties &border) {
 	default_border_properties_ = border;
+	storeSettings();
 }
 
 /**
@@ -1354,6 +1515,7 @@ QList<GuideProperties> QETProject::defaultGuides() const {
 void QETProject::setDefaultGuides(const QList<GuideProperties> &guides) {
 	if (m_default_guides != guides) {
 		m_default_guides = guides;
+		storeSettings();
 		setModified(true);
 
 		for (Diagram *diagram : m_diagrams_list) {
@@ -1371,6 +1533,7 @@ void QETProject::setDefaultGuides(const QList<GuideProperties> &guides) {
 */
 void QETProject::setDefaultTitleBlockProperties(const TitleBlockProperties &titleblock) {
 	default_titleblock_properties_ = titleblock;
+	storeSettings();
 		//Integrate the title block in this project
 	if (!titleblock.template_name.isEmpty())
 	{
@@ -1412,6 +1575,7 @@ ConductorProperties QETProject::defaultConductorProperties() const
 */
 void QETProject::setDefaultConductorProperties(const ConductorProperties &conductor) {
 	default_conductor_properties_ = conductor;
+	storeSettings();
 }
 
 QString QETProject::defaultReportProperties() const
@@ -1423,18 +1587,21 @@ void QETProject::setDefaultReportProperties(const QString &properties)
 {
 	QString old = m_default_report_properties;
 	m_default_report_properties = properties;
+	storeSettings();
 
 	emit reportPropertiesChanged(old, properties);
 }
 
 void QETProject::setDefaultXRefProperties(const QString& type, const XRefProperties &properties) {
 	m_default_xref_properties.insert(type, properties);
+	storeSettings();
 	emit XRefPropertiesChanged();
 }
 
 void QETProject::setDefaultXRefProperties(QHash<QString, XRefProperties> hash)
 {
 	m_default_xref_properties.swap(hash);
+	storeSettings();
 	emit XRefPropertiesChanged();
 }
 
@@ -1784,6 +1951,7 @@ bool QETProject::renameElementAutoNum(const QString &old_title, const QString &n
 			}
 		}
 	}
+	m_data_base.renameFolioCounterScheme(QStringLiteral("element"), old_title, new_title);
 
 	emit elementAutoNumRemoved(old_title);
 	emit elementAutoNumAdded(new_title);
@@ -1997,8 +2165,7 @@ QList<QETProject::SymbolNumbering> QETProject::symbolNumbering() const
 			symbol.formula = info.value(QETInformation::ELMT_FORMULA).toString();
 			symbol.scheme = QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString());
 			symbol.sequence = el->sequenceStruct();
-			symbol.numbered = el->linkType() != Element::Slave
-					&& !(el->linkType() & Element::AllReport);
+			symbol.numbered = el->takesSchemeNumber();
 			list << symbol;
 		}
 	}
@@ -2029,8 +2196,7 @@ QList<QETProject::SymbolNumbering> QETProject::symbolNumbering() const
 							   : QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString());
 		symbol.sequence = row.sequence;
 		const ElementData::Type kind = ElementData::typeFromString(row.kind);
-		symbol.numbered = kind != ElementData::Slave
-				&& !(kind & ElementData::AllReport);
+		symbol.numbered = ElementData::takesSchemeNumber(kind);
 		list << symbol;
 	}
 	return list;
@@ -2293,6 +2459,7 @@ void QETProject::setWireHops(WireHops::Mode mode)
 		return;
 	}
 	m_wire_hops = mode;
+	storeSettings();
 		//A folio not built yet reads the mode when its wires are drawn
 	for (Diagram *diagram : folios()) {
 		diagram->update();
@@ -2321,12 +2488,47 @@ void QETProject::setUprightSymbolTexts(bool upright)
 		return;
 	}
 	m_upright_symbol_texts = upright;
+	storeSettings();
 		//A folio not built yet reads the setting when its symbols are drawn
 	for (Diagram *diagram : folios()) {
 		for (QGraphicsItem *item : diagram->items()) {
 			if (Element *element = qgraphicsitem_cast<Element *>(item)) {
 				element->updateSymbolPictures();
 			}
+		}
+	}
+}
+
+/**
+	@brief QETProject::terminalLabelSplit
+	@return whether the terminals of this project draw their label split,
+	the label ("X1") and the terminal number ("1") each in their own text
+	field, instead of the whole label ("X1:1") in one field. Off unless
+	the project says otherwise, so a project saved without it draws as it
+	always did. This is a setting of the project, not of the application:
+	the same file draws the same way on every machine which opens it.
+	@sa setTerminalLabelSplit
+*/
+bool QETProject::terminalLabelSplit() const {
+	return m_terminal_label_split;
+}
+
+/**
+	@brief QETProject::setTerminalLabelSplit
+	Set whether the terminals of this project draw their label split, and
+	tell the labels of the drawings already open to draw it again.
+	@param split
+*/
+void QETProject::setTerminalLabelSplit(bool split)
+{
+	if (split == m_terminal_label_split) {
+		return;
+	}
+	m_terminal_label_split = split;
+	storeSettings();
+	for (Diagram *diagram : diagrams()) {
+		for (Element *element : diagram->elements()) {
+			element->refreshLabelFields();
 		}
 	}
 }
@@ -2360,6 +2562,7 @@ WiringRules::Settings QETProject::projectWiringRules() const {
 void QETProject::setWiringRules(const WiringRules::Settings &rules)
 {
 	m_wiring_rules = rules;
+	storeSettings();
 }
 
 /**
@@ -2381,6 +2584,36 @@ bool QETProject::autoBreakConductor() const
 void QETProject::setAutoBreakConductor(bool abc)
 {
 	m_data_base.setNumberingFlag(QStringLiteral("auto_break_conductors"), abc);
+}
+
+/**
+	@brief QETProject::setTerminalStripLabelsShown
+	Show the label of each terminal strip at its first terminal on every
+	folio, or not; the folios built so far show it at once.
+*/
+void QETProject::setTerminalStripLabelsShown(bool shown)
+{
+	if (shown == m_terminal_strip_labels)
+		return;
+	m_terminal_strip_labels = shown;
+	for (Diagram *diagram : builtFolios())
+		TerminalStripLabels::refresh(diagram);
+	setModified(true);
+}
+
+/**
+	@brief QETProject::setTerminalStripBridgesShown
+	Draw the bridges of the terminal strip editor between their terminals
+	on every folio, or not; the folios built so far show them at once.
+*/
+void QETProject::setTerminalStripBridgesShown(bool shown)
+{
+	if (shown == m_terminal_strip_bridges)
+		return;
+	m_terminal_strip_bridges = shown;
+	for (Diagram *diagram : builtFolios())
+		TerminalStripLabels::refresh(diagram);
+	setModified(true);
 }
 
 /**
@@ -2420,6 +2653,26 @@ void QETProject::autoFolioNumberingSelectedFolios(int from,
 					autonum,nCC.next());
 		m_diagrams_list[i] -> update();
 	}
+}
+
+/**
+	@brief QETProject::Origin
+	@return specifies the origin for the sheet
+*/
+ProjectOrigin::Mode QETProject::Origin() const { return m_origin; }
+
+/**
+	@brief QETProject::setOrigin
+	Specifies which corner is used as the origin (coordinate system starting point)
+	and redraws all project sheets.
+	@param mode
+*/
+void QETProject::setOrigin(ProjectOrigin::Mode mode)
+{
+	if (mode == m_origin) { return; }
+	m_origin = mode;
+	storeSettings();
+	for (Diagram* diagram : diagrams()) { diagram->update(); }
 }
 
 /**
@@ -2569,7 +2822,10 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeUsageXml(project_root);
 	writeWireHopsXml(project_root);
 	writeSymbolTextsXml(project_root);
+	writeTerminalLabelSplitXml(project_root);
 	writeWiringRulesXml(project_root);
+	writeChainedReportsXml(project_root);
+	writeOriginXml(project_root);
 
 	// Properties for news diagrams
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
@@ -2749,27 +3005,72 @@ bool QETProject::isContainerPath(const QString &path)
 
 /**
 	@brief QETProject::openFileFilter
-	@return the file-dialog filter for a project to open: .qet and .qetz
+	@return the file-dialog filter for a project to open: .qet, .qetz and
+	.qetdb (experimental)
 */
 QString QETProject::openFileFilter()
 {
-	return tr("QElectroTech project (*.qet *.qetz)");
+	return tr("QElectroTech project (*.qet *.qetz *.qetdb)");
 }
 
 /**
-	@brief QETProject::writeContainer
-	Write the project document @p project to @p path as a .qetz: the same
-	document, in parts, zipped (#1440). The file is replaced only once
-	the whole archive is written.
+	@brief QETProject::writeDatabaseFile
+	Write this project to @p path as a .qetdb, a copy: the project's own
+	file and what it remembers of it stay as they are. A history the
+	project's file keeps goes on in the copy (QETDB-S6-SCOPE.md R4)
 */
-bool QETProject::writeContainer(const QDomDocument &project, const QString &path, QString *error,
-								const QHash<QString, QByteArray> &kept_from)
+bool QETProject::writeDatabaseFile(const QString &path, QString *error)
 {
-	QList<QetZip::Entry> entries = QetContainer::split(
-				project,
-				QStringLiteral("QElectroTech %1").arg(QetVersion::currentVersion().toString()),
-				error, kept_from);
-	return !entries.isEmpty() && QetZip::write(path, entries, error);
+	storeSettings();
+	const QString previous = QetDbFile::isDatabasePath(m_disk_path) ? m_disk_path : QString();
+	return QetDbFile::save(m_data_base, path, error, nullptr,
+						   previous.isEmpty() || previous == path ? QString() : previous);
+}
+
+/**
+	@brief QETProject::setKeepHistory
+	Make this project's .qetdb keep a history of its saves, or drop the one
+	it keeps (QETDB-S6-SCOPE.md): written to its file at once, which this
+	project then remembers as its own, so the next save sees no change on
+	disk. Refused for a project not saved as .qetdb, or whose file someone
+	else changed.
+*/
+bool QETProject::setKeepHistory(bool on, QString *error)
+{
+	if (!QetDbFile::isDatabasePath(m_file_path) || !QFileInfo::exists(m_file_path)) {
+		if (error) *error = tr("a history is kept only in a project saved as .qetdb");
+		return false;
+	}
+	if (changedOnDisk()) {
+		if (error) *error = tr("the file was changed on disk since it was opened or saved");
+		return false;
+	}
+	if (!QetDbFile::setHistory(m_file_path, on, error))
+		return false;
+	rememberDiskState();
+	return true;
+}
+
+/**
+	@brief QETProject::setHistoryLimit
+	Make this project's .qetdb keep only its last @p saves revisions, 0 for
+	all (QETDB-S6-SCOPE.md S6-6): written to its file at once, as
+	setKeepHistory() does.
+*/
+bool QETProject::setHistoryLimit(int saves, QString *error)
+{
+	if (!QetDbFile::isDatabasePath(m_file_path) || !QFileInfo::exists(m_file_path)) {
+		if (error) *error = tr("a history is kept only in a project saved as .qetdb");
+		return false;
+	}
+	if (changedOnDisk()) {
+		if (error) *error = tr("the file was changed on disk since it was opened or saved");
+		return false;
+	}
+	if (!QetDbFile::setHistoryLimit(m_file_path, saves, error))
+		return false;
+	rememberDiskState();
+	return true;
 }
 
 /**
@@ -2782,8 +3083,8 @@ bool QETProject::writeContainerFile(const QString &path, QString *error)
 		//what building them would write (toXml()); every other folio built
 	QStringList kept;
 	const QDomDocument document = toXml(nullptr, &kept);
-	return writeContainer(document, path, error,
-						  kept.isEmpty() ? QHash<QString, QByteArray>() : m_container_files);
+	return QetzWriter::write(document, path, error,
+							 kept.isEmpty() ? QHash<QString, QByteArray>() : m_container.files());
 }
 
 /**
@@ -2803,16 +3104,38 @@ QETResult QETProject::writeCopyForOlderVersions(const QString &path)
 }
 
 /**
-	@brief QETProject::rememberDiskState
-	Remember the size and modification time of the project file, as this QET
-	has just read or written it. changedOnDisk() compares against them.
+	@brief diskHash
+	@return the SHA-1 of @p content, or of the file at @p path when
+	@p content is null; empty if the file cannot be read
 */
-void QETProject::rememberDiskState()
+static QByteArray diskHash(const QString &path, const QByteArray *content)
+{
+	QCryptographicHash hash(QCryptographicHash::Sha1);
+	if (content) {
+		hash.addData(*content);
+		return hash.result();
+	}
+	QFile file(path);
+	if (!file.open(QIODevice::ReadOnly) || !hash.addData(&file))
+		return QByteArray();
+	return hash.result();
+}
+
+/**
+	@brief QETProject::rememberDiskState
+	Remember the size, modification time and content hash of the project
+	file, as this QET has just read or written it. changedOnDisk() compares
+	against them.
+	@param content the bytes just read from the file, if they are at hand
+	@param hash their hash, if already made
+*/
+void QETProject::rememberDiskState(const QByteArray *content, const QByteArray *hash)
 {
 	const QFileInfo info(m_file_path);
 	m_disk_path = m_file_path;
 	m_disk_size = info.exists() ? info.size() : -1;
 	m_disk_mtime = info.exists() ? info.lastModified() : QDateTime();
+	m_disk_hash = !info.exists() ? QByteArray() : hash ? *hash : diskHash(m_file_path, content);
 }
 
 /**
@@ -2822,6 +3145,10 @@ void QETProject::rememberDiskState()
 	last read or wrote: another user, another program or another QET saved
 	it since. A file that does not exist yet, or one this QET never read
 	or wrote (Save As to another name), is not a change.
+	A different size or time alone is not enough: right after a save, a
+	network share (CIFS with its attribute cache, #1579) can report the size
+	and time from before the server settled them. The file is a change only
+	if its content differs from what this QET read or wrote.
 */
 bool QETProject::changedOnDisk(QDateTime *when) const
 {
@@ -2832,6 +3159,8 @@ bool QETProject::changedOnDisk(QDateTime *when) const
 	if (!info.exists())
 		return false;
 	if (info.size() == m_disk_size && info.lastModified() == m_disk_mtime)
+		return false;
+	if (!m_disk_hash.isEmpty() && diskHash(target) == m_disk_hash)
 		return false;
 	if (when)
 		*when = info.lastModified();
@@ -2906,6 +3235,13 @@ QETResult QETProject::write(bool overwrite_changed)
 			return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
 	}
 
+		//QET_QETDB_SAVE_TIMES=1: how long each step of the save took, in ms
+	QElapsedTimer save_timer;
+	save_timer.start();
+	QStringList save_times;
+	const auto save_lap = [&save_timer, &save_times](const char *step) {
+		save_times << QStringLiteral("%1 %2").arg(QLatin1String(step)).arg(save_timer.restart());
+	};
 	if (!overwrite_changed && qEnvironmentVariableIntValue("QET_OVERWRITE_CHANGED") == 0) {
 		QDateTime when;
 		if (changedOnDisk(&when))
@@ -2918,9 +3254,11 @@ QETResult QETProject::write(bool overwrite_changed)
 		//The file as it was goes among its previous versions first
 		//(Settings > General > Projects); a copy that fails does not stop
 		//the save
+	save_lap("changed on disk");
 	QString backup_error;
 	if (!PreviousVersions::keep(m_file_path, PreviousVersions::count(), &backup_error))
 		qWarning().noquote() << "Previous version of" << m_file_path << "not kept:" << backup_error;
+	save_lap("previous version");
 
 		//The saved date, time and path go into the file being written, and
 		//only when there is something new to save: an unchanged project
@@ -2928,6 +3266,7 @@ QETResult QETProject::write(bool overwrite_changed)
 		//failed write puts the previous values back.
 	const DiagramContext stamped_before = m_project_properties;
 	const bool stamped = stampSaved();
+	save_lap("stamp");
 	const auto failed_stamped = [&](const QString &error) {
 		if (stamped) {
 			m_project_properties = stamped_before;
@@ -2938,7 +3277,28 @@ QETResult QETProject::write(bool overwrite_changed)
 	};
 
 	QString error_message;
-	if (isContainerPath(m_file_path))
+		//The SHA-1 of a .qetdb written, made by its save (rememberDiskState())
+	QByteArray saved_hash;
+	if (QetDbFile::isDatabasePath(m_file_path))
+	{
+			//Written from the project database, the saved date and path
+			//above included (experimental, QET-SQL-FORMAT S4a)
+		storeSettings();
+		save_lap("settings");
+			//After Save As, the history goes on from the file it was
+			//(QETDB-S6-SCOPE.md R4)
+		const QString previous = QetDbFile::isDatabasePath(m_disk_path) && m_disk_path != m_file_path
+				? m_disk_path : QString();
+		if (!QetDbFile::save(m_data_base, m_file_path, &error_message, &saved_hash, previous)) {
+			const QETResult result = failed_stamped(error_message);
+			storeSettings();
+			return result;
+		}
+		save_lap("file");
+		if (qEnvironmentVariableIntValue("QET_QETDB_SAVE_TIMES") == 1)
+			qInfo().noquote() << "QETProject::write (ms):" << save_times.join(QStringLiteral(", "));
+	}
+	else if (isContainerPath(m_file_path))
 	{
 			//A container is written from the whole document: every folio
 			//built (stage D4 writes it from the database)
@@ -2956,7 +3316,10 @@ QETResult QETProject::write(bool overwrite_changed)
 			return(failed_stamped(error_message));
 	}
 
-	rememberDiskState();
+	if (saved_hash.isEmpty())
+		rememberDiskState();
+	else
+		rememberDiskState(nullptr, &saved_hash);
 
 		// The project has just been written to a writable file (e.g. saved to
 		// a new location with "Save As"), so it is no longer read-only.
@@ -2977,6 +3340,8 @@ QETResult QETProject::write(bool overwrite_changed)
 	m_stamped_path = m_file_path;
 	m_stamped_undo_index = m_undo_stack->index();
 	setModified(false);
+		//The working copy now says it matches the file
+	m_data_base.commitWorkingCopy();
 	return(QETResult());
 }
 
@@ -3381,6 +3746,7 @@ Diagram *QETProject::addNewDiagram(int pos)
 	diagram->border_and_titleblock.importBorder(defaultBorderProperties());
 	diagram->border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
 	diagram->defaultConductorProperties = defaultConductorProperties();
+	diagram->queueValuesStore();
 
 	m_undo_stack->push(new AddDiagramCommand(this, diagram, pos));
 	return(diagram);
@@ -3529,10 +3895,14 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readUsageXml(xml_project);
 	readWireHopsXml(xml_project);
 	readSymbolTextsXml(xml_project);
+	readTerminalLabelSplitXml(xml_project);
 	readWiringRulesXml(xml_project);
+	readChainedReportsXml(xml_project);
+	readOriginXml(xml_project);
 
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
+	storeSettings();
 
 		//load the embedded titleblock templates
 	m_titleblocks_collection.fromXml(xml_project.documentElement());
@@ -3553,6 +3923,12 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//Load the layout of the terminal strip (font, size of cells...),
 		//before the diagrams because the terminal strip items use it
 	m_project_properties_handler.terminalStripLayoutHandler().fromXml(xml_project.documentElement());
+	storeSettings();
+
+		//An older file's folios and wires get the uuids building them
+		//would give, so that the database can be filled from it
+	if (lazyFolios())
+		fillDerivedUuids(xml_project);
 
 		//The stores of symbol information, folio title blocks and wire
 		//properties are filled from the document before the folios are
@@ -3600,6 +3976,10 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//it recomputes everything from the project as it now stands.
 	CableManager::refreshLabels(this);
 
+	if (m_chained_reports) {
+		autoLinkReportElements();
+	}
+
 	m_data_base.blockSignals(false);
 	m_data_base.setUpdateBlocked(false);
 	m_data_base.updateDB(xml_project);
@@ -3623,10 +4003,10 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	for (Diagram *diagram : std::as_const(m_diagrams_list))
 		if (!diagram->isLoaded() && diagram->keptText().isEmpty())
 			m_kept_folios_trusted = false;
-	m_kept_parts_trusted = !m_folio_parts.isEmpty() && unloadedFolioCount() > 0
+	m_kept_parts_trusted = !m_container.folioParts().isEmpty() && unloadedFolioCount() > 0
 			&& m_project_qet_version == QetVersion::currentVersion()
 			&& m_data_base.rowsFromDocument()
-			&& QetContainerDb::currentFormat(m_container_files.value(QStringLiteral("project.sqlite")));
+			&& QetContainerDb::currentFormat(m_container.file(QStringLiteral("project.sqlite")));
 	for (Diagram *diagram : std::as_const(m_diagrams_list))
 		if (!diagram->isLoaded() && diagram->keptPart().isEmpty())
 			m_kept_parts_trusted = false;
@@ -3662,6 +4042,233 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 bool QETProject::lazyFolios()
 {
 	return qEnvironmentVariableIntValue("QET_EAGER_FOLIOS") != 1;
+}
+
+/**
+	@brief QETProject::fillDerivedUuids
+	A file from an older QElectroTech has no folio uuids, and often no wire
+	uuids: the project database cannot be filled from it, so every folio
+	is built at once (projectDataBase::documentRefusal()), slowly. Write
+	into @p xml_project the uuids building the folios gives them: a
+	folio's from its place and title (Diagram::derivedUuid()), a wire's
+	from the symbol and terminal uuids that name its ends
+	(Diagram::fromXml()). They are saved from then on either way.
+	A wire whose ends are named the older way, by a number each symbol's
+	saved terminal carries, is named by the symbol's and the terminal's
+	uuid instead, as its next save names it: the terminal is the one of
+	the symbol's definition at the saved terminal's place, the last if
+	several are there, as Element::fromXml() pairs them. A symbol with a
+	saved terminal at no terminal's place (moved since:
+	Element::matchMovedTerminals()), and a folio whose symbols number their
+	terminals alike, are left to their folio. So are the wires of a
+	project whose symbols lack uuids or share one: those are renewed when
+	their folio is built.
+	A symbol whose label follows a numbering scheme gets the scheme's id
+	(formula_id) as linkElementsToElementAutoNums() gives a built one, and
+	a text, picture or shape saved without a uuid the one Diagram::fromXml()
+	derives from its folio's.
+*/
+void QETProject::fillDerivedUuids(QDomDocument &xml_project)
+{
+	const QString project_title = xml_project.documentElement().attribute(QStringLiteral("title"));
+	const QDomNodeList diagram_nodes = xml_project.elementsByTagName(QStringLiteral("diagram"));
+	QList<QUuid> folios;
+	const auto used = [&folios](const QUuid &uuid) { return folios.contains(uuid); };
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i) {
+		QDomElement folio = diagram_nodes.at(i).toElement();
+		const QUuid persisted(folio.attribute(QStringLiteral("uuid")));
+		QUuid uuid = persisted;
+		if (persisted.isNull())
+			uuid = Diagram::derivedUuid(QStringLiteral("legacy"), project_title, i,
+										folio.attribute(QStringLiteral("title")), used);
+		else if (used(persisted))
+			uuid = Diagram::derivedUuid(QStringLiteral("duplicate ") + persisted.toString(),
+										project_title, i, folio.attribute(QStringLiteral("title")), used);
+		if (uuid != persisted)
+			folio.setAttribute(QStringLiteral("uuid"), uuid.toString());
+		folios << uuid;
+
+			//As Diagram::fromXml()'s settle_uuid, in its order
+		QSet<QUuid> used;
+		for (const auto &[list, item] : {std::pair{QStringLiteral("inputs"), QStringLiteral("input")},
+										 std::pair{QStringLiteral("images"), QStringLiteral("image")},
+										 std::pair{QStringLiteral("shapes"), QStringLiteral("shape")}}) {
+			int index = 0;
+			for (QDomElement xml : QET::findInDomElement(folio, list, item)) {
+				const QUuid saved(xml.attribute(QStringLiteral("uuid")));
+				QUuid given = saved;
+				if (saved.isNull() || used.contains(saved)) {
+					given = QUuid::createUuidV5(uuid, QStringLiteral("%1\n%2\n%3")
+												.arg(item).arg(index).arg(saved.toString()));
+					xml.setAttribute(QStringLiteral("uuid"), given.toString());
+				}
+				used.insert(given);
+				++index;
+			}
+		}
+	}
+
+		//The numbering scheme each symbol's label follows
+	const QHash<QString, QStringList> titles_by_formula = elementAutoNumTitlesByFormula();
+	QHash<QUuid, QString> title_cache;
+	QHash<QString, QUuid> id_cache;
+	const QString formula_id = QStringLiteral("formula_id");
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i)
+		for (QDomElement element : QET::findInDomElement(diagram_nodes.at(i).toElement(),
+														  QStringLiteral("elements"), QStringLiteral("element"))) {
+			if (!Element::valideXml(element))
+				continue;
+			QDomElement informations = element.firstChildElement(QStringLiteral("elementInformations"));
+			DiagramContext information;
+			information.fromXml(informations, QStringLiteral("elementInformation"));
+			const auto id = elementAutoNumIdToLink(information, titles_by_formula, &title_cache, &id_cache);
+			if (!id)
+				continue;
+			QDomElement before;
+			for (QDomElement info = informations.firstChildElement(QStringLiteral("elementInformation")) ;
+				 !info.isNull() ; ) {
+				const QDomElement next = info.nextSiblingElement(QStringLiteral("elementInformation"));
+				if (info.attribute(QStringLiteral("name")) == formula_id)
+					informations.removeChild(info);
+				else if (before.isNull() && info.attribute(QStringLiteral("name")) > formula_id)
+					before = info;
+				info = next;
+			}
+			if (id->isNull())
+				continue;
+			if (informations.isNull())
+				informations = element.appendChild(
+						xml_project.createElement(QStringLiteral("elementInformations"))).toElement();
+			QDomElement info = xml_project.createElement(QStringLiteral("elementInformation"));
+			info.setAttribute(QStringLiteral("show"), QStringLiteral("0"));
+			info.setAttribute(QStringLiteral("name"), formula_id);
+			info.appendChild(xml_project.createTextNode(id->toString()));
+			informations.insertBefore(info, before);
+		}
+
+	QSet<QUuid> elements;
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i)
+		for (QDomElement element : QET::findInDomElement(diagram_nodes.at(i).toElement(),
+														  QStringLiteral("elements"), QStringLiteral("element"))) {
+			if (!Element::valideXml(element))
+				continue;
+			const QUuid uuid(element.attribute(QStringLiteral("uuid")));
+			if (uuid.isNull() || elements.contains(uuid))
+				return;
+			elements.insert(uuid);
+		}
+
+		//Wire ends named the older way
+	const QHash<QString, QDomElement> definitions = m_data_base.embeddedDefinitions();
+	QHash<QString, QList<TerminalData *>> definition_terminals;
+	const auto terminalsOf = [&](const QString &type) -> const QList<TerminalData *> & {
+		auto known = definition_terminals.find(type);
+		if (known != definition_terminals.end())
+			return known.value();
+		QList<TerminalData *> terminals;
+		const QDomElement definition = definitions.value(type);
+		for (QDomElement d = definition.firstChildElement(QStringLiteral("description")) ;
+			 !d.isNull() ; d = d.nextSiblingElement(QStringLiteral("description")))
+			for (QDomElement t = d.firstChildElement(QStringLiteral("terminal")) ;
+				 !t.isNull() ; t = t.nextSiblingElement(QStringLiteral("terminal"))) {
+				auto data = new TerminalData();
+				if (data->fromXml(t) && !data->m_uuid.isNull()) terminals << data;
+				else delete data;
+			}
+		return definition_terminals.insert(type, terminals).value();
+	};
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i) {
+		const QDomElement folio = diagram_nodes.at(i).toElement();
+			//saved terminal number -> symbol uuid, terminal uuid
+		QHash<int, std::pair<QString, QString>> ends;
+		QSet<int> numbers;
+		bool clash = false;
+		for (QDomElement element : QET::findInDomElement(folio, QStringLiteral("elements"),
+														  QStringLiteral("element"))) {
+			if (!Element::valideXml(element))
+				continue;
+			QList<QDomElement> records;
+			for (QDomElement record : QET::findInDomElement(element, QStringLiteral("terminals"),
+															 QStringLiteral("terminal")))
+				if (Terminal::valideXml(record)) records << record;
+			for (const QDomElement &record : std::as_const(records)) {
+				const int number = record.attribute(QStringLiteral("id")).toInt();
+				clash = clash || numbers.contains(number);
+				numbers.insert(number);
+			}
+			const QList<TerminalData *> &terminals = terminalsOf(element.attribute(QStringLiteral("type")));
+			QHash<int, QString> paired;
+			bool exact = !terminals.isEmpty();
+			for (const QDomElement &record : std::as_const(records)) {
+				const TerminalData *match = nullptr;
+				for (const TerminalData *t : terminals) {
+					QPointF dock = t->m_pos;
+					switch (t->m_orientation) {
+						case Qet::North: dock += QPointF(0, Terminal::terminalSize); break;
+						case Qet::East : dock += QPointF(-Terminal::terminalSize, 0); break;
+						case Qet::West : dock += QPointF(Terminal::terminalSize, 0); break;
+						case Qet::South: dock += QPointF(0, -Terminal::terminalSize); break;
+					}
+					if (qFuzzyCompare(record.attribute(QStringLiteral("x")).toDouble(), dock.x())
+						&& qFuzzyCompare(record.attribute(QStringLiteral("y")).toDouble(), dock.y())
+						&& record.attribute(QStringLiteral("orientation")).toInt() == t->m_orientation)
+						match = t;
+				}
+				exact = exact && match;
+				if (!exact)
+					break;
+				paired.insert(record.attribute(QStringLiteral("id")).toInt(), match->m_uuid.toString());
+			}
+			if (!exact)
+				continue;
+			const QString uuid = QUuid(element.attribute(QStringLiteral("uuid"))).toString();
+			for (auto it = paired.cbegin() ; it != paired.cend() ; ++it)
+				ends.insert(it.key(), {uuid, it.value()});
+		}
+		if (clash)
+			continue;
+		for (QDomElement wire : QET::findInDomElement(folio, QStringLiteral("conductors"),
+													   QStringLiteral("conductor"))) {
+			if (wire.hasAttribute(QStringLiteral("element1")) || wire.hasAttribute(QStringLiteral("element2"))
+					|| !Conductor::valideXml(wire))
+				continue;
+			const int one = wire.attribute(QStringLiteral("terminal1")).toInt();
+			const int two = wire.attribute(QStringLiteral("terminal2")).toInt();
+			if (!ends.contains(one) || !ends.contains(two))
+				continue;
+			wire.setAttribute(QStringLiteral("element1"), ends.value(one).first);
+			wire.setAttribute(QStringLiteral("terminal1"), ends.value(one).second);
+			wire.setAttribute(QStringLiteral("element2"), ends.value(two).first);
+			wire.setAttribute(QStringLiteral("terminal2"), ends.value(two).second);
+		}
+	}
+	for (const QList<TerminalData *> &terminals : std::as_const(definition_terminals))
+		qDeleteAll(terminals);
+
+		//As readDiagramsXml() does, before deriving any
+	for (const QString &tag : {QStringLiteral("element"), QStringLiteral("conductor")}) {
+		const QDomNodeList nodes = xml_project.elementsByTagName(tag);
+		for (int i = 0; i < nodes.size(); ++i) {
+			const QUuid saved(nodes.at(i).toElement().attribute(QStringLiteral("uuid")));
+			if (!saved.isNull())
+				m_saved_item_uuids.insert(saved);
+		}
+	}
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i)
+		for (QDomElement wire : QET::findInDomElement(diagram_nodes.at(i).toElement(),
+													   QStringLiteral("conductors"), QStringLiteral("conductor"))) {
+			if (!QUuid(wire.attribute(QStringLiteral("uuid"))).isNull() || !Conductor::valideXml(wire)
+					|| !wire.hasAttribute(QStringLiteral("element1"))
+					|| !wire.hasAttribute(QStringLiteral("element2")))
+				continue;
+			QStringList ends;
+			for (const QString n : {QStringLiteral("1"), QStringLiteral("2")})
+				ends << QUuid(wire.attribute(QStringLiteral("element") + n)).toString()
+						+ QLatin1Char('/') + QUuid(wire.attribute(QStringLiteral("terminal") + n)).toString();
+			ends.sort();
+			wire.setAttribute(QStringLiteral("uuid"),
+							  derivedItemUuid(QStringLiteral("conductor"), ends.join(QLatin1Char('\n'))).toString());
+		}
 }
 
 /**
@@ -3772,6 +4379,8 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		return text;
 	};
 
+	m_reading_folios = true;
+	m_reading_autonum_folio = false;
 	for (int i = 0 ; i < diagram_nodes.length() ; ++ i)
 	{
 		if(dlgWaiting)
@@ -3795,14 +4404,15 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 			m_deferring_folios = false;
 			if (!diagram->isLoaded() && !line_starts.isEmpty())
 				diagram->setKeptText(folio_text(diagram_xml_element));
-			if (!diagram->isLoaded() && m_folio_parts.size() == diagram_nodes.length())
-				diagram->setKeptPart(m_folio_parts.at(i));
+			if (!diagram->isLoaded() && m_container.folioParts().size() == diagram_nodes.length())
+				diagram->setKeptPart(m_container.folioParts().at(i));
 			m_data_base.placeFolio(diagram);
 			if(dlgWaiting)
 				dlgWaiting->setDetail(diagram->title());
 		}
 	}
 
+	m_reading_folios = false;
 	m_shared_uuid_keepers.clear();
 	updateDiagramsFolioData();
 
@@ -3879,6 +4489,22 @@ void QETProject::readWireHopsXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readOriginXml
+	Read the <style> element and "origin" attribute of the project, if any.
+	A project without it draws origin top-left.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readOriginXml(QDomDocument& xml_project)
+{
+	const QDomElement style =
+		xml_project.documentElement().firstChildElement(
+			QStringLiteral("style"));
+	m_origin = style.isNull() 
+		    ? ProjectOrigin::Mode::TopLeft 
+			: ProjectOrigin::fromString(style.attribute(QStringLiteral("origin")));
+}
+
+/**
 	@brief QETProject::readSymbolTextsXml
 	Read the <symbol_texts> element of the project, if any. A project
 	without it was saved before the setting existed, or with it off, and
@@ -3891,6 +4517,21 @@ void QETProject::readSymbolTextsXml(QDomDocument &xml_project)
 			.firstChildElement(QStringLiteral("symbol_texts"));
 	m_upright_symbol_texts = !texts.isNull()
 			&& texts.attribute(QStringLiteral("upright")) == QLatin1String("true");
+}
+
+/**
+	@brief QETProject::readTerminalLabelSplitXml
+	Read the <terminal_labelling> element of the project, if any. A
+	project without it was saved before the setting existed, or with it
+	off, and draws the whole label of each terminal in one field.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readTerminalLabelSplitXml(QDomDocument &xml_project)
+{
+	const QDomElement labelling = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("terminal_labelling"));
+	m_terminal_label_split = !labelling.isNull()
+			&& labelling.attribute(QStringLiteral("split")) == QLatin1String("true");
 }
 
 /**
@@ -3917,6 +4558,10 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	if (newdiagrams_nodes.isEmpty()) return;
 
 	QDomElement newdiagrams_elmt = newdiagrams_nodes.at(0).toElement();
+	m_terminal_strip_labels = newdiagrams_elmt.firstChildElement(QStringLiteral("terminal_strip_labels"))
+			.attribute(QStringLiteral("at_first_terminal")) == QLatin1String("true");
+	m_terminal_strip_bridges = newdiagrams_elmt.firstChildElement(QStringLiteral("terminal_strip_bridges"))
+			.attribute(QStringLiteral("between_terminals")) == QLatin1String("true");
 
 		// By default, use value find in the global conf of QElectroTech
 	default_border_properties_	   = BorderProperties::    defaultProperties();
@@ -4115,6 +4760,11 @@ void QETProject::readTerminalStripXml(const QDomDocument &xml_project)
 			terminal_strip->fromXml(xml_strip);
 			addTerminalStrip(terminal_strip);
 		}
+			//A strip reads its terminals before its bridges: the labels
+			//and bridges of the folios built so far are worked out again
+			//with the bridges known
+		for (Diagram *diagram : builtFolios())
+			TerminalStripLabels::refresh(diagram);
 	}
 }
 
@@ -4201,6 +4851,27 @@ void QETProject::writeWireHopsXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::writeOriginXml
+	Export information regarding which corner is used as the origin (the reference
+	point for the coordinate system) as a child `<style>` element within
+	`xml_element`. This data is recorded only if a setting other than "Top-left" is
+	selected; consequently, for projects where this feature has never been used,
+	nothing will change.
+*/
+void QETProject::writeOriginXml(QDomElement& xml_element)
+{
+	if (m_origin == ProjectOrigin::Mode::TopLeft){
+		return; 
+	}
+	QDomElement style = xml_element.ownerDocument().createElement(
+		QStringLiteral("style"));
+	style.setAttribute(
+		QStringLiteral("origin"),
+		ProjectOrigin::toString(m_origin));
+	xml_element.appendChild(style);
+}
+
+/**
 	@brief QETProject::writeSymbolTextsXml
 	Export whether the texts of turned symbols stay horizontal, as a
 	<symbol_texts> child of \a xml_element. Written only when on, so a
@@ -4218,6 +4889,23 @@ void QETProject::writeSymbolTextsXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::writeTerminalLabelSplitXml
+	Export whether the terminals draw their label split, as a
+	<terminal_labelling> child of \a xml_element. Written only when on,
+	so a project with it off saves exactly as before.
+*/
+void QETProject::writeTerminalLabelSplitXml(QDomElement &xml_element)
+{
+	if (!m_terminal_label_split) {
+		return;
+	}
+	QDomElement labelling = xml_element.ownerDocument()
+			.createElement(QStringLiteral("terminal_labelling"));
+	labelling.setAttribute(QStringLiteral("split"), QStringLiteral("true"));
+	xml_element.appendChild(labelling);
+}
+
+/**
 	@brief QETProject::writeWiringRulesXml
 	Export the project's wiring rules as a <wiring_rules> child of
 	\a xml_element, only when one is set.
@@ -4225,6 +4913,64 @@ void QETProject::writeSymbolTextsXml(QDomElement &xml_element)
 void QETProject::writeWiringRulesXml(QDomElement &xml_element)
 {
 	WiringRules::toXml(m_wiring_rules, xml_element);
+}
+
+/**
+	@brief QETProject::readChainedReportsXml
+	Read the <chained_reports> element of the project, if any.
+	A project without it was saved before this feature existed.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readChainedReportsXml(QDomDocument &xml_project)
+{
+	const QDomElement cr_elmt = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("chained_reports"));
+	if (!cr_elmt.isNull()) {
+		m_has_chained_reports_attribute = true;
+		m_chained_reports = (cr_elmt.attribute(QStringLiteral("enabled"), QStringLiteral("false")) == QLatin1String("true"));
+	} else {
+		m_has_chained_reports_attribute = false;
+		m_chained_reports = false;
+	}
+}
+
+/**
+	@brief QETProject::writeChainedReportsXml
+	Save the chained reports setting into the project XML.
+	@param xml_element : the root project element
+*/
+void QETProject::writeChainedReportsXml(QDomElement &xml_element)
+{
+	if (!m_has_chained_reports_attribute && !m_chained_reports) {
+		return;
+	}
+	QDomElement cr_elmt = xml_element.ownerDocument()
+			.createElement(QStringLiteral("chained_reports"));
+	cr_elmt.setAttribute(QStringLiteral("enabled"), m_chained_reports ? QStringLiteral("true") : QStringLiteral("false"));
+	xml_element.appendChild(cr_elmt);
+}
+
+bool QETProject::chainedReports() const
+{
+	return m_chained_reports;
+}
+
+void QETProject::setChainedReports(bool enable)
+{
+	if (enable == m_chained_reports && m_has_chained_reports_attribute) {
+		return;
+	}
+	m_chained_reports = enable;
+	m_has_chained_reports_attribute = true;
+	storeSettings();
+	if (m_chained_reports) {
+		autoLinkReportElements();
+	}
+}
+
+bool QETProject::hasChainedReportsAttribute() const
+{
+	return m_has_chained_reports_attribute;
 }
 
 /**
@@ -4279,6 +5025,17 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	}
 	xml_element.appendChild(xrefs_elmt);
 
+	if (m_terminal_strip_labels) {
+		QDomElement labels = xml_document.createElement(QStringLiteral("terminal_strip_labels"));
+		labels.setAttribute(QStringLiteral("at_first_terminal"), QStringLiteral("true"));
+		xml_element.appendChild(labels);
+	}
+	if (m_terminal_strip_bridges) {
+		QDomElement bridges = xml_document.createElement(QStringLiteral("terminal_strip_bridges"));
+		bridges.setAttribute(QStringLiteral("between_terminals"), QStringLiteral("true"));
+		xml_element.appendChild(bridges);
+	}
+
 		//The numbering is written from the project database, its only
 		//home (QETZ-DB-FIRST stage 2b)
 	writeNumberingXml(m_data_base.numbering(), xml_element);
@@ -4293,6 +5050,44 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 		guides_elmt.appendChild(guide_elmt);
 	}
 	xml_element.appendChild(guides_elmt);
+}
+
+/**
+	@brief QETProject::storeSettings
+	Write the project's settings to the project database, one row per value
+	(projectDataBase::storeProjectSettings()), as a save writes them: the
+	title and uuid, the project properties, wire hops, upright texts, wiring rules
+	and the defaults for new folios. Not the numbering (its own tables,
+	QETZ-DB-FIRST 2b) nor the usage time (counted while the project is open,
+	written at save).
+*/
+void QETProject::storeSettings()
+{
+	QDomDocument document;
+	QDomElement root = document.createElement(QStringLiteral("project"));
+	document.appendChild(root);
+	root.setAttribute(QStringLiteral("title"), project_title_);
+	root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
+	QDomElement properties = document.createElement(QStringLiteral("properties"));
+	writeProjectPropertiesXml(properties);
+	root.appendChild(properties);
+	writeWireHopsXml(root);
+	writeSymbolTextsXml(root);
+	writeTerminalLabelSplitXml(root);
+	writeWiringRulesXml(root);
+	writeChainedReportsXml(root);
+	writeOriginXml(root);
+	QDomElement new_diagrams = document.createElement(QStringLiteral("newdiagrams"));
+	writeDefaultPropertiesXml(new_diagrams);
+	for (const QString &numbering : {QStringLiteral("conductors_autonums"), QStringLiteral("folio_autonums"),
+									 QStringLiteral("element_autonums"), QStringLiteral("cable_autonums")})
+		new_diagrams.removeChild(new_diagrams.firstChildElement(numbering));
+	root.appendChild(new_diagrams);
+		//The default layout of the terminal strips, written only when the
+		//project has strips, as a save does
+	if (m_terminal_strip_vector.count())
+		m_project_properties_handler.terminalStripLayoutHandler().toXml(root);
+	m_data_base.storeProjectSettings(root);
 }
 
 /**
@@ -4441,6 +5236,7 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 	} else {
 		m_diagrams_list.insert(pos, diagram);
 	}
+	m_folios_shown.clear();
 
 	updateDiagramsFolioData();
 	emit diagramAdded(this, diagram);
@@ -4466,6 +5262,7 @@ void QETProject::detachDiagram(Diagram *diagram)
 		&QETProject::updateDiagramsFolioData);
 	disconnect(diagram, &Diagram::usedTitleBlockTemplateChanged,
 		this, &QETProject::usedTitleBlockTemplateChanged);
+	m_folios_shown.clear();
 
 		//A folio that holds a table or a symbol is removed: tables on folios
 		//not built yet (lazy folios) are built while it is still in the
@@ -4544,6 +5341,7 @@ DiagramContext QETProject::projectProperties()
 */
 void QETProject::setProjectProperties(const DiagramContext &context) {
 	m_project_properties = context;
+	storeSettings();
 		//Folio and symbol texts are made from them
 	markKeptFoliosStale();
 	updateDiagramsFolioData();
@@ -4595,6 +5393,21 @@ void QETProject::watchTerminalStrip(TerminalStrip *strip, bool watch)
 	if (watch) {
 		connect(strip, &TerminalStrip::orderChanged, &m_data_base, &projectDataBase::spareTerminalsChanged);
 		connect(strip, &TerminalStrip::dataChanged, &m_data_base, &projectDataBase::spareTerminalsChanged);
+			//Whatever the strip saves is written through to the database
+		auto store = [this, strip] {m_data_base.storeTerminalStrip(strip);};
+		connect(strip, &TerminalStrip::orderChanged, &m_data_base, store);
+		connect(strip, &TerminalStrip::dataChanged, &m_data_base, store);
+		connect(strip, &TerminalStrip::bridgeChanged, &m_data_base, store);
+		connect(strip, &TerminalStrip::bridgeColorChanged, &m_data_base, store);
+		store();
+	}
+	if (!watch) {
+		m_data_base.forgetTerminalStrip(strip->uuid());
+	}
+		//The layout is saved only while there are strips: the first one
+		//added and the last one removed change the settings
+	if (m_terminal_strip_vector.count() == (watch ? 1 : 0)) {
+		storeSettings();
 	}
 	m_data_base.spareTerminalsChanged();
 }
@@ -4670,7 +5483,9 @@ bool QETProject::addCable(Cable *cable)
 		return true;
 
 	m_cables.append(cable);
+	m_data_base.queueCables();
 	connect(cable, &Cable::changed, this, [this]() {
+		m_data_base.queueCables();
 		CableManager::refreshLabels(this);
 		setModified(true);
 	});
@@ -4690,6 +5505,7 @@ bool QETProject::removeCable(Cable *cable) {
 		return false;
 
 	disconnect(cable, nullptr, this, nullptr);
+	m_data_base.queueCables();
 
 		//A cable which is no longer one of ours stops writing its labels
 		//into the conductors it used to feed.
@@ -4760,7 +5576,22 @@ void QETProject::updateDiagramsFolioData()
 
 	const DiagramContext project_wide_properties = projectWideProperties();
 
-	for (int i = 0 ; i < total_folio ; ++ i)
+		//While the folios are read, each one asks as its title block is
+		//read: only that folio, the last one so far, needs its data then,
+		//and every folio gets it again once all are read (readDiagramsXml()).
+		//Walking every folio each time made a 136-folio open spend 0.7 s
+		//here. Not once a folio numbered with %autonum is read: each pass
+		//moves its counter, so the passes must stay as they were.
+	int first = 0;
+	if (m_reading_folios && total_folio) {
+		const BorderTitleBlock &last = m_diagrams_list.last()->border_and_titleblock;
+		if (last.folio().contains("%autonum") && !last.autoPageNum().isNull())
+			m_reading_autonum_folio = true;
+		if (!m_reading_autonum_folio)
+			first = total_folio - 1;
+	}
+
+	for (int i = first ; i < total_folio ; ++ i)
 	{
 		QString autopagenum = m_diagrams_list[i]->border_and_titleblock.autoPageNum();
 		NumerotationContext nC = folioAutoNum(autopagenum);
@@ -4790,8 +5621,8 @@ void QETProject::updateDiagramsFolioData()
 		}
 	}
 
-	for (const auto &diagram_ : std::as_const(m_diagrams_list)) {
-		diagram_->update();
+	for (int i = first ; i < total_folio ; ++ i) {
+		m_diagrams_list.at(i)->update();
 	}
 }
 
@@ -4828,4 +5659,125 @@ void QETProject::removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection 
 */
 void QETProject::usedTitleBlockTemplateChanged(const QString &template_name) {
 	emit diagramUsedTemplate(embeddedTitleBlockTemplatesCollection(), template_name);
+}
+
+#include "elementprovider.h"
+#include "qetgraphicsitem/reportelement.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
+
+void QETProject::scheduleAutoLink()
+{
+	if (!m_chained_reports || m_pending_auto_link) {
+		return;
+	}
+	m_pending_auto_link = true;
+	QTimer::singleShot(0, this, [this]() {
+		m_pending_auto_link = false;
+		autoLinkReportElements();
+	});
+}
+
+void QETProject::autoLinkReportElements()
+{
+	if (!m_chained_reports) {
+		return;
+	}
+
+	ElementProvider ep(this);
+	const QVector<QPointer<Element>> all_report_elmts = ep.find(ElementData::AllReport);
+
+	QHash<QString, QList<ReportElement*>> freeReportsByLabel;
+	QList<ReportElement*> all_reports;
+
+	for (const auto &elmt_ptr : all_report_elmts) {
+		if (!elmt_ptr) continue;
+		ReportElement *report = dynamic_cast<ReportElement*>(elmt_ptr.data());
+		if (!report) continue;
+
+		all_reports.append(report);
+
+		// Only auto-link reports that are currently unlinked (isFree() == true)
+		// and have a non-empty label! Never overwrite existing or manual links.
+		if (report->isFree()) {
+			QString label = report->elementInformations().value(QStringLiteral("label")).toString().trimmed();
+			if (!label.isEmpty()) {
+				freeReportsByLabel[label].append(report);
+			}
+		}
+	}
+
+	bool linked_any = false;
+
+	for (auto it = freeReportsByLabel.begin(); it != freeReportsByLabel.end(); ++it) {
+		QList<ReportElement*> &reports = it.value();
+		if (reports.size() < 2) continue;
+
+		std::sort(reports.begin(), reports.end(), [this](ReportElement *a, ReportElement *b) {
+			int idxA = m_diagrams_list.indexOf(a->diagram());
+			int idxB = m_diagrams_list.indexOf(b->diagram());
+			if (idxA != idxB) return idxA < idxB;
+			if (a->scenePos().x() != b->scenePos().x()) return a->scenePos().x() < b->scenePos().x();
+			return a->scenePos().y() < b->scenePos().y();
+		});
+
+		QList<ReportElement*> unmatched_next;
+		QList<ReportElement*> unmatched_prev;
+
+		auto takeOnOtherDiagram = [](QList<ReportElement*> &list, Diagram *diagram) -> ReportElement* {
+			for (int i = 0; i < list.size(); ++i) {
+				if (list.at(i)->diagram() != diagram) {
+					return list.takeAt(i);
+				}
+			}
+			return nullptr;
+		};
+
+		auto linkPair = [&linked_any](ReportElement *next_rep, ReportElement *prev_rep) {
+			if (next_rep->isFree() && prev_rep->isFree()) {
+				next_rep->linkToElement(prev_rep);
+				linked_any = true;
+			}
+		};
+
+		for (ReportElement *report : reports) {
+			if (report->linkType() == Element::NextReport) {
+				unmatched_next.append(report);
+			} else if (report->linkType() == Element::PreviousReport) {
+				if (ReportElement *next_rep = takeOnOtherDiagram(unmatched_next, report->diagram())) {
+					linkPair(next_rep, report);
+				} else {
+					unmatched_prev.append(report);
+				}
+			}
+		}
+
+		// Backward cross-references (e.g., Folio 5 to Folio 2)
+		for (int i = 0; i < unmatched_next.size(); ) {
+			ReportElement *next_rep = unmatched_next.at(i);
+			if (ReportElement *prev_rep = takeOnOtherDiagram(unmatched_prev, next_rep->diagram())) {
+				linkPair(next_rep, prev_rep);
+				unmatched_next.removeAt(i);
+			} else {
+				++i;
+			}
+		}
+		// NOTE: Never pair on the same diagram! Any remaining reports stay unlinked.
+	}
+
+	if (linked_any) {
+		setModified(true);
+	}
+
+	// Make sure every report shows the text matching its current link state.
+	for (ReportElement *report : std::as_const(all_reports)) {
+		for (DynamicElementTextItem *deti : report->dynamicTextItems()) {
+			deti->refreshReportText();
+		}
+		for (ElementTextItemGroup *group : report->textGroups()) {
+			for (DynamicElementTextItem *deti : group->texts()) {
+				deti->refreshReportText();
+			}
+		}
+	}
 }

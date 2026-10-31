@@ -238,6 +238,11 @@ class TitleBlockTemplate : public QObject {
 			const QString &,
 			const TitleBlockCell &,
 			const QRectF &) const;
+	void renderStyledTextCell(
+			QPainter &painter,
+			const TitleBlockCell &cell,
+			const DiagramContext &diagram_context,
+			const QRectF &cell_rect) const;
 	void renderTextCellDxf(
 			QString &,
 			const QString &,

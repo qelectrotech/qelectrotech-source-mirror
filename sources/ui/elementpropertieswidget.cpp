@@ -20,6 +20,8 @@
 #include "../diagram.h"
 #include "../diagramposition.h"
 #include "../qetapp.h"
+#include "../qetproject.h"
+#include <QSettings>
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/elementtextitemgroup.h"
@@ -31,8 +33,13 @@
 #include "masterpropertieswidget.h"
 #include "plclinkwidget.h"
 
+#include "../dataBase/qetdbfile.h"
+
 #include <QCheckBox>
+#include <QDateTime>
+#include <QFileInfo>
 #include <QLabel>
+#include <QLocale>
 #include <QUndoStack>
 #include <QVBoxLayout>
 
@@ -123,12 +130,20 @@ void ElementPropertiesWidget::setElement(Element *element)
 			//If previous element is same type as new element we just call setElement for each editor
 		if(previous_element->linkType() == m_element->linkType())
 		{
-			foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
-			{
-				aepew->setElement(m_element);
-				addGeneralWidget();
+			bool chained_changed = false;
+			if (m_element->linkType() & Element::AllReport) {
+				bool prev_chained = previous_element->diagram() && previous_element->diagram()->project() && previous_element->diagram()->project()->chainedReports();
+				bool new_chained = m_element->diagram() && m_element->diagram()->project() && m_element->diagram()->project()->chainedReports();
+				chained_changed = (prev_chained != new_chained);
 			}
-			return;
+			if (!chained_changed) {
+				foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
+				{
+					aepew->setElement(m_element);
+					addGeneralWidget();
+				}
+				return;
+			}
 		}
 	}
 	updateUi();
@@ -323,11 +338,19 @@ void ElementPropertiesWidget::updateUi()
 			m_list_editor << new ElementInfoWidget(m_element, this);
 			break;
 		case Element::NextReport:
+		case Element::PreviousReport: {
+			bool enable_chained = false;
+			if (m_element->diagram() && m_element->diagram()->project()) {
+				enable_chained = m_element->diagram()->project()->chainedReports();
+			} else {
+				enable_chained = QSettings().value(QStringLiteral("project/enable-chained-reports"), false).toBool();
+			}
+			if (enable_chained) {
+				m_list_editor << new ElementInfoWidget(m_element, this);
+			}
 			m_list_editor << new LinkSingleElementWidget(m_element, this);
 			break;
-		case Element::PreviousReport:
-			m_list_editor << new LinkSingleElementWidget(m_element, this);
-			break;
+		}
 		case Element::Master:
 			m_list_editor << new MasterPropertiesWidget(m_element, this);
 			m_list_editor << new ElementInfoWidget(m_element, this);
@@ -449,6 +472,21 @@ QWidget *ElementPropertiesWidget::generalWidget()
 					.arg(usage.nc)
 					.arg(usage.sw)
 					.arg(usage.other);
+		}
+	}
+		//Who last changed it, from the history its .qetdb keeps if it
+		//keeps one: as saved, not the edits since (QETDB-S6-SCOPE.md S6-5).
+		//Before the location, which can wrap onto several lines
+	QETProject *project = m_diagram->project();
+	if (project && QetDbFile::isDatabasePath(project->filePath()) && QFileInfo::exists(project->filePath())) {
+			//"ord  time  who@host  added|changed"
+		const QString last = QetDbFile::lastChange(project->filePath(), m_element->uuid().toString(), nullptr);
+		if (!last.isEmpty()) {
+			const QDateTime when = QDateTime::fromString(last.section(QStringLiteral("  "), 1, 1), Qt::ISODate);
+			description_string += tr("Last changed: save %1, %2, by %3\n")
+					.arg(last.section(QStringLiteral("  "), 0, 0),
+						 QLocale().toString(when.toLocalTime(), QLocale::ShortFormat),
+						 last.section(QStringLiteral("  "), 2, 2).section(QLatin1Char('@'), 0, 0));
 		}
 	}
 	description_string += QString(tr("Location : %1\n")).arg(m_element.data()->location().toString());

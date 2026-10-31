@@ -31,6 +31,8 @@
 #include "qetstyle.h"
 #include "utils/qetutils.h"
 #include "utils/configprofile.h"
+#include "utils/qetsettings.h"
+#include "dataBase/projectdatabase.h"
 #include "qetmessagebox.h"
 #include "qetproject.h"
 #include "qtextorientationspinboxwidget.h"
@@ -871,7 +873,11 @@ QString QETApp::commonTitleBlockTemplatesDir()
 	 */
 	return(QCoreApplication::applicationDirPath() + "/titleblocks/");
 #else
-	#ifndef QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
+	/* QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH used to decide
+	 *  this path too, so it still does
+	 */
+	#if !defined(QET_COMMON_TBT_PATH_RELATIVE_TO_BINARY_PATH) \
+		&& !defined(QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH)
 		// the compile-time option represents a usual path
 		// (be it absolute or relative)
 		return(resolveConfiguredDataPath(QUOTE(QET_COMMON_TBT_PATH)));
@@ -1180,6 +1186,7 @@ QStringList QETApp::handledFileExtensions()
 	if (!ext.count()) {
 		ext << "qet";
 		ext << "qetz";
+		ext << "qetdb";
 		ext << "elmt";
 		ext << QString(TITLEBLOCKS_FILE_EXTENSION).remove(QRegularExpression("^\\."));
 	}
@@ -1561,7 +1568,7 @@ QFont QETApp::cableTextsFont()
 		}
 	}
 
-	QFont font = QApplication::font();
+	QFont font = diagramTextsItemFont();
 	font.setPointSizeF(font.pointSizeF() * 0.9);
 	return font;
 }
@@ -1924,9 +1931,15 @@ void QETApp::invertMainWindowVisibility(QWidget *window) {
 	false pour utiliser celles du theme en cours
 */
 void QETApp::useSystemPalette(bool use) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	// Follow the system light/dark setting again (see useCustomPalette()).
+	qApp->styleHints()->unsetColorScheme();
+#endif
 	// The base palette is always initial_palette_ (see initStyle()); the
 	// setting only decides whether the user's style.css is layered on top.
 	qApp->setPalette(initial_palette_);
+	// A custom color may have switched the icon theme; switch it back.
+	applyIconTheme(initial_palette_);
 	if (use) {
 		// Drop any stylesheet previously loaded from style.css: with system
 		// colors requested, the palette set just above is what provides them.
@@ -2018,6 +2031,15 @@ void QETApp::useCustomPalette(const QColor &color) {
 	p.setColor(QPalette::Disabled, QPalette::Text,       disabled_text);
 	p.setColor(QPalette::Disabled, QPalette::ButtonText, disabled_text);
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	// Tell the style whether the chosen color is light or dark. Some
+	// styles draw part of their text from the system color scheme, not
+	// from the palette: the Windows 11 style keeps white menu bar and
+	// toolbar text on a light custom color when Windows is in dark
+	// mode (issue #1591).
+	qApp->styleHints()->setColorScheme(dark ? Qt::ColorScheme::Dark
+	                                        : Qt::ColorScheme::Light);
+#endif
 	qApp->setPalette(p);
 	qApp->setStyleSheet(QString());
 
@@ -2920,11 +2942,16 @@ void QETApp::initStyle()
 	{
 		if (!QET::Palette::styleIsFusion(qApp->style()))
 			return;
+		QSettings settings;
+		// A custom color keeps its palette whatever the OS does; it also
+		// requests its own color scheme, which lands here too.
+		if (!settings.value("usesystemcolors", true).toBool()
+		    && settings.contains("customapplicationcolor"))
+			return;
 		initial_palette_ = scheme == Qt::ColorScheme::Dark
 		                   ? QET::Palette::fusionDark()
 		                   : QET::Palette::fusionLight();
 		applyIconTheme(initial_palette_);
-		QSettings settings;
 		useSystemPalette(settings.value("usesystemcolors", true).toBool());
 	});
 #endif
@@ -3224,8 +3251,18 @@ void QETApp::checkBackupFiles()
 		}
 	}
 
-	if (!stale_files.isEmpty()) {
-		offerBackupFiles(stale_files);
+		//The working copies left by projects open when QElectroTech did not
+		//close normally (QET-SQL-FORMAT S3z3). Those with nothing to
+		//recover are deleted even with the setting off; the others wait
+		//for it to be turned on.
+	QList<WorkingCopyRecovery::LeftWorkingCopy> working_copies =
+			WorkingCopyRecovery::leftWorkingCopies(projectDataBase::workingCopyDir());
+	if (!QetSettings::workingCopyRecovery()) {
+		working_copies.clear();
+	}
+
+	if (!stale_files.isEmpty() || !working_copies.isEmpty()) {
+		offerBackupFiles(stale_files, working_copies);
 	}
 
 	// Discussion #644 step 5 asks that the recovery prompt and the crash
@@ -3245,8 +3282,11 @@ void QETApp::checkBackupFiles()
 	files, one per snapshot (@see QETProject::writeBackup): they are grouped
 	by project, and the user picks which one to reopen, the newest by default.
 	@param stale_files : the recovery files to offer
+	@param working_copies : the working copies to offer, above the recovery
+	files of their project. Deleted once opened, or if not picked.
 */
-void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files)
+void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files,
+			      const QList<WorkingCopyRecovery::LeftWorkingCopy> &working_copies)
 {
 		//Group the snapshots by the project they recover, newest first.
 	QHash<QString, QList<KAutoSaveFile *>> groups;
@@ -3261,9 +3301,35 @@ void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files)
 			});
 	}
 
-	BackupRestoreDialog dialog(groups, nullptr);
+	QHash<QString, WorkingCopyRecovery::LeftWorkingCopy> copy_for_key;
+	QHash<QString, QDateTime> committed;
+	for (const auto &copy : working_copies) {
+			//Keyed as the recovery files are, by the path of a URL
+		const QString key = copy.project_file.isEmpty()
+				? BackupRestoreDialog::neverSavedKey(copy.path)
+				: QUrl::fromLocalFile(copy.project_file).path();
+			//Newest first: a second copy of the same project is older
+		if (copy_for_key.contains(key)) {
+			WorkingCopyRecovery::remove(copy.path);
+			continue;
+		}
+		copy_for_key.insert(key, copy);
+		committed.insert(key, copy.committed);
+	}
+
+	BackupRestoreDialog dialog(groups, nullptr, committed);
 	if (dialog.exec() == QDialog::Accepted)
 	{
+		QList<WorkingCopyRecovery::LeftWorkingCopy> copies_to_open;
+		const QStringList picked = dialog.selectedWorkingCopies();
+		for (auto it = copy_for_key.constBegin(); it != copy_for_key.constEnd(); ++it) {
+			if (picked.contains(it.key())) {
+				copies_to_open << it.value();
+			} else {
+				WorkingCopyRecovery::remove(it.value().path);
+			}
+		}
+
 			//The snapshots not picked are no longer needed.
 		for (KAutoSaveFile *discarded : dialog.discardedFiles())
 		{
@@ -3277,15 +3343,20 @@ void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files)
 		{
 			diagramEditors().first()->setVisible(true);
 			diagramEditors().first()->openBackupFiles(to_open);
+			diagramEditors().first()->openWorkingCopies(copies_to_open);
 		}
 		else
 		{
 			QETDiagramEditor *editor = new QETDiagramEditor();
 			editor->openBackupFiles(to_open);
+			editor->openWorkingCopies(copies_to_open);
 		}
 	}
 	else //Clear backup file
 	{
+		for (const auto &copy : std::as_const(copy_for_key)) {
+			WorkingCopyRecovery::remove(copy.path);
+		}
 		//Remove the stale files
 		for (KAutoSaveFile *stale : stale_files)
 		{

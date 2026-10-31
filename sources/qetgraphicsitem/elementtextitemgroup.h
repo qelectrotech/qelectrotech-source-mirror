@@ -19,6 +19,7 @@
 #define ELEMENTTEXTITEMGROUP_H
 
 #include <QGraphicsItemGroup>
+#include <QHash>
 #include <QObject>
 #include <QDomElement>
 
@@ -118,6 +119,13 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		m_frame = false;
 		QPointF m_initial_position;
 		int m_vertical_adjustment = 0;
+			/// The width of each text at the last layout, to find the point
+			/// the group is aligned on at the next one
+		QHash<DynamicElementTextItem *, qreal> m_layout_widths;
+		Qt::Alignment m_layout_alignment = Qt::AlignLeft;
+		qreal anchorX(qreal width) const;
+		bool layoutAnchor(QPointF *anchor) const;
+		void rememberLayout();
 		CrossRefItem *m_Xref_item = nullptr;
 		Element *m_parent_element = nullptr;
 		QList<QMetaObject::Connection> m_update_slave_Xref_connection;

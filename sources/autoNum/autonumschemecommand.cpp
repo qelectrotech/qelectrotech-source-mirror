@@ -245,6 +245,7 @@ void AutoNumSchemeCommand::rename(const QString &from, const QString &to)
 				}
 			}
 		}
+		m_project->dataBase()->renameFolioCounterScheme(QStringLiteral("conductor"), from, to);
 	} else {
 		m_project->removeFolioAutoNum(from);
 		m_project->addFolioAutoNum(to, context);

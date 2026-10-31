@@ -126,6 +126,21 @@ else()
         "without a backtrace")
 endif()
 
+# Homebrew's sqlite has the session extension the history of saves needs
+# (see below) but is keg-only, so find_package() does not see it unless
+# pointed at it (#1667)
+if(APPLE AND NOT SQLite3_ROOT AND NOT DEFINED ENV{SQLite3_ROOT})
+    find_program(BREW_EXECUTABLE brew)
+    if(BREW_EXECUTABLE)
+        execute_process(COMMAND ${BREW_EXECUTABLE} --prefix sqlite
+                        OUTPUT_VARIABLE BREW_SQLITE_PREFIX
+                        OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET)
+        if(EXISTS "${BREW_SQLITE_PREFIX}/include/sqlite3.h")
+            set(SQLite3_ROOT "${BREW_SQLITE_PREFIX}")
+        endif()
+    endif()
+endif()
+
 find_package(SQLite3 REQUIRED)
 
 # CMake < 4.3 only creates the SQLite::SQLite3 target (no SQLite3::SQLite3
@@ -136,6 +151,24 @@ find_package(SQLite3 REQUIRED)
 # current Linux distros).
 if(NOT TARGET SQLite3::SQLite3 AND TARGET SQLite::SQLite3)
     add_library(SQLite3::SQLite3 ALIAS SQLite::SQLite3)
+endif()
+
+# The history of saves (QetDbFile) uses SQLite's session extension. Not every
+# SQLite has it: the macOS SDK's sqlite3.h does not, and the build fails
+# there. Without it saves still work but keep no changes.
+include(CheckSymbolExists)
+set(CMAKE_REQUIRED_DEFINITIONS -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_PREUPDATE_HOOK)
+set(CMAKE_REQUIRED_INCLUDES ${SQLite3_INCLUDE_DIRS})
+set(CMAKE_REQUIRED_LIBRARIES ${SQLite3_LIBRARIES})
+check_symbol_exists(sqlite3session_create sqlite3.h QET_HAVE_SQLITE_SESSION)
+unset(CMAKE_REQUIRED_DEFINITIONS)
+unset(CMAKE_REQUIRED_INCLUDES)
+unset(CMAKE_REQUIRED_LIBRARIES)
+if(NOT QET_HAVE_SQLITE_SESSION)
+    message(WARNING
+        "SQLite has no session extension: the history of saves will record "
+        "no changes. On macOS, point CMake at Homebrew's SQLite to keep them.")
+    add_compile_definitions(QET_NO_SQLITE_SESSION)
 endif()
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
@@ -174,14 +207,20 @@ target_compile_definitions(${PROJECT_NAME}_objects
 
 # On Windows, WIN32 sets /SUBSYSTEM:WINDOWS to suppress the console window.
 # Qt automatically links qtmain.lib which provides the WinMain entry point,
-# so no source code change is needed.
+# so no source code change is needed. On macOS, MACOSX_BUNDLE makes it an
+# .app bundle. Each is ignored on the other systems.
+qt_add_executable(
+    ${PROJECT_NAME}
+    WIN32
+    MACOSX_BUNDLE
+    ${QET_MAIN_FILE}
+    ${QM_FILES}
+)
+# Qml is linked for QJSEngine only (see QET_HAS_SCRIPTING): there are no QML
+# files, so skip the QML import scan qt_add_executable adds for deployment,
+# which would otherwise go through the whole source tree on every build.
+set_target_properties(${PROJECT_NAME} PROPERTIES QT_QML_MODULE_NO_IMPORT_SCAN TRUE)
 if(WIN32)
-    add_executable(
-        ${PROJECT_NAME}
-        WIN32
-        ${QET_MAIN_FILE}
-        ${QM_FILES}
-    )
     # Our own manifest (it declares longPathAware). MSVC merges a .manifest
     # listed as a source; MinGW needs it embedded through a resource file,
     # and ld then keeps it ahead of the toolchain's default manifest.
@@ -194,12 +233,6 @@ if(WIN32)
         target_sources(${PROJECT_NAME} PRIVATE
                        ${CMAKE_CURRENT_BINARY_DIR}/qelectrotech-manifest.rc)
     endif()
-else()
-    add_executable(
-        ${PROJECT_NAME}
-        ${QET_MAIN_FILE}
-        ${QM_FILES}
-    )
 endif()
 target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_objects)
 
@@ -220,7 +253,6 @@ if(APPLE)
     # string without a panel ever appearing, so File > Open and File > Save
     # as do nothing at all.
     set_target_properties(${PROJECT_NAME} PROPERTIES
-        MACOSX_BUNDLE TRUE
         MACOSX_BUNDLE_GUI_IDENTIFIER "org.qelectrotech.QElectroTech"
         MACOSX_BUNDLE_BUNDLE_NAME "QElectroTech"
         MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
@@ -378,28 +410,28 @@ endif()
 
 install(TARGETS ${PROJECT_NAME}
     BUNDLE DESTINATION .
+    RUNTIME DESTINATION ${QET_BINARY_PATH}
 )
 
-if (NOT MINGW)
-    install(DIRECTORY ico/breeze-icons/16x16   DESTINATION ${QET_ICONS_PATH})
-    install(DIRECTORY ico/breeze-icons/22x22   DESTINATION ${QET_ICONS_PATH})
-    install(DIRECTORY ico/breeze-icons/32x32   DESTINATION ${QET_ICONS_PATH})
-    install(DIRECTORY ico/breeze-icons/48x48   DESTINATION ${QET_ICONS_PATH})
-    install(DIRECTORY ico/breeze-icons/64x64   DESTINATION ${QET_ICONS_PATH})
-    install(DIRECTORY ico/breeze-icons/128x128 DESTINATION ${QET_ICONS_PATH})
-    install(DIRECTORY ico/breeze-icons/256x256 DESTINATION ${QET_ICONS_PATH})
-    install(DIRECTORY elements    DESTINATION share/qelectrotech)
-    install(DIRECTORY examples    DESTINATION share/qelectrotech)
-    install(DIRECTORY titleblocks DESTINATION share/qelectrotech)
-    # The MCP server (misc/qet-mcp) finds this QElectroTech and its elements
-    # from here: <prefix>/share/qelectrotech/mcp -> <prefix>/bin.
-    install(PROGRAMS misc/qet-mcp/qet_mcp.py DESTINATION share/qelectrotech/mcp)
-    install(FILES misc/qet-mcp/README.md DESTINATION share/qelectrotech/mcp)
-    install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION share/doc/qelectrotech)
-    if(UNIX AND NOT APPLE)
-        install(FILES misc/org.qelectrotech.qelectrotech.desktop DESTINATION share/applications)
-        install(FILES misc/qelectrotech.xml    DESTINATION ${QET_MIME_PACKAGE_PATH})
-        install(FILES misc/qelectrotech.appdata.xml DESTINATION ${QET_APPDATA_PATH})
-    endif()
-    install(FILES ${QM_FILES} DESTINATION ${QET_LANG_PATH})
+install(DIRECTORY ico/breeze-icons/16x16   DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY ico/breeze-icons/22x22   DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY ico/breeze-icons/32x32   DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY ico/breeze-icons/48x48   DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY ico/breeze-icons/64x64   DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY ico/breeze-icons/128x128 DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY ico/breeze-icons/256x256 DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY elements    DESTINATION ${QET_DATA_PATH})
+install(DIRECTORY examples    DESTINATION ${QET_DATA_PATH})
+install(DIRECTORY titleblocks DESTINATION ${QET_DATA_PATH})
+# The MCP server (misc/qet-mcp) finds this QElectroTech and its elements
+# from here: <prefix>/share/qelectrotech/mcp -> <prefix>/bin, or on Windows
+# <prefix>/mcp -> <prefix>/bin.
+install(PROGRAMS misc/qet-mcp/qet_mcp.py DESTINATION ${QET_DATA_PATH}mcp)
+install(FILES misc/qet-mcp/README.md DESTINATION ${QET_DATA_PATH}mcp)
+install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION ${QET_LICENSE_PATH})
+if(UNIX AND NOT APPLE)
+    install(FILES misc/org.qelectrotech.qelectrotech.desktop DESTINATION ${QET_DESKTOP_PATH})
+    install(FILES misc/qelectrotech.xml    DESTINATION ${QET_MIME_PACKAGE_PATH})
+    install(FILES misc/qelectrotech.appdata.xml DESTINATION ${QET_APPDATA_PATH})
 endif()
+install(FILES ${QM_FILES} DESTINATION ${QET_LANG_PATH})

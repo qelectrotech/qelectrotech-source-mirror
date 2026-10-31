@@ -22,6 +22,7 @@
 #include "../NameList/nameslist.h"
 #include "../autoNum/assignvariables.h"
 #include "../diagramcontext.h"
+#include "../dataBase/elementplacement.h"
 #include "../qet.h"
 #include "qetgraphicsitem.h"
 #include "../properties/elementdata.h"
@@ -147,16 +148,29 @@ class Element : public QetGraphicsItem
 		 * use elementData function instead
 		 * @return
 		 */
-		DiagramContext kindInformations() const
-		{return m_kind_informations;}
+		DiagramContext kindInformations() const;
+			/// This symbol's own copy of its kind information, whatever the store holds
+		DiagramContext ownKindInformations() const {return m_kind_informations;}
+			/// Where this symbol comes from and sits, from its own members,
+			/// never from the store
+		ElementPlacement ownPlacement() const;
+		void storePlacement();
+			/// This symbol's texts and text groups as it saves them, in an
+			/// <element> made in @p document, from its own items
+		QDomElement ownTextsXml(QDomDocument &document) const;
+			/// What this symbol saves that no other table holds, in an
+			/// <element> made in @p document, from its own members
+		QDomElement ownValuesXml(QDomDocument &document) const;
+		void setMovable(bool movable) override;
 		//@kind_information_ is used to store more information
 		//about the herited class like contactelement for know
 		// kind of contact (simple tempo) or number of contact show by the element.
 
 		autonum::sequentialNumbers sequenceStruct() const
 		{return m_autoNum_seq;}
-		autonum::sequentialNumbers& rSequenceStruct()
-		{return m_autoNum_seq;}
+			/// Replace the numbers and tell the project database
+		void setSequenceStruct(const autonum::sequentialNumbers &numbers);
+		void storeSequence();
 		void setUpFormula(bool code_letter = true, QUndoCommand *parent_undo = nullptr);
 		void setFormulaSchemeId(const QUuid &id);
 		void setPrefix(QString);
@@ -165,6 +179,25 @@ class Element : public QetGraphicsItem
 		bool isFreezeLabel() const {return m_freeze_label;}
 		void freezeNewAddedElement();
 		QString actualLabel();
+			/**
+				What the drawing shows of the label and of the terminal
+				number, the terminal labelling of the project being
+				read (@sa QETProject::terminalLabelSplit). The label itself
+				is never changed by any of them.
+			*/
+		QString labelForDisplay();
+		QString terminalNumberForDisplay();
+		QString infoForDisplay(const QString &info_name);
+		bool hasTerminalNumberText() const;
+		bool labelShown() const;
+			/**
+				The fields which draw the label draw it again: called when
+				what they show of the label has changed under them, a
+				field for the terminal number added or removed, or the
+				terminal labelling setting of the project switched (@sa
+				QETProject::terminalLabelSplit).
+			*/
+		void refreshLabelFields();
 
 		QString name() const override;
 		ElementsLocation location() const;
@@ -269,6 +302,18 @@ class Element : public QetGraphicsItem
 		 * @return
 		 */
 		virtual kind linkType() const {return m_link_type;} // return the linkable type
+			/// A corner only turns a wire: QElectroTech's own corner
+			/// symbol, or any symbol whose definition says so with the
+			/// kind information "corner" set to "true"
+		bool isCorner() const {return m_corner;}
+		/**
+		 * @brief takesSchemeNumber
+		 * Whether this element is given a number by an element numbering
+		 * scheme (@sa ElementData::takesSchemeNumber): a slave, a report or
+		 * a conductor definition is not numbered.
+		 * @return true when the element numbering schemes apply to it
+		 */
+		bool takesSchemeNumber() const;
 		/**
 		 * @brief linkTypeToString
 		 * use elementData function instead
@@ -331,6 +376,7 @@ class Element : public QetGraphicsItem
 			//ATTRIBUTES related to linked element
 		QList <Element *> connected_elements;
 		QList <LinkInfo>  tmp_uuids_link;
+		bool m_corner = false;
 		QHash <Element *, int> m_group_index_map;  ///< Maps linked elements to their group index (for slave->master links)
 		QUuid             m_uuid;
 		kind              m_link_type = Element::Simple;
@@ -365,6 +411,14 @@ class Element : public QetGraphicsItem
 	private:
 		void storeInformation();
 		projectDataBase *placedStore() const;
+		void appendTextsXml(QDomDocument &document, QDomElement &element) const;
+		void appendDataXml(QDomDocument &document, QDomElement &element) const;
+		void scheduleTextsStore();
+		void connectTextStore(DynamicElementTextItem *deti);
+		void connectTextStore(ElementTextItemGroup *group);
+			/// Set while the texts are being written: taking a group's
+			/// texts out to write them moves them, which is no change
+		mutable bool m_writing_texts = false;
 		bool m_must_highlight = false;
 		int m_jump_highlight = 0;  ///< pending jump-target highlights, see showAsJumpTarget()
 		bool m_jump_cursor = false;

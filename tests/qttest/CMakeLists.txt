@@ -72,6 +72,16 @@ add_executable(tst_darkimagelayers tst_darkimagelayers.cpp
 add_test(NAME tst_darkimagelayers COMMAND tst_darkimagelayers)
 target_include_directories(tst_darkimagelayers PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_darkimagelayers PRIVATE Qt::Test Qt::Widgets)
+# MSVC's Debug libraries make QElectroTech five to eight times slower than a
+# GCC build, for which the tests' time limits were chosen. Every limit is
+# multiplied by this scale: ctest's below, and the tests' own through
+# QET_TEST_TIMEOUT_SCALE (qettesttimeout.h, ninja_probe.py), set at the end.
+if(MSVC)
+  set(qet_test_timeout_scale 5)
+else()
+  set(qet_test_timeout_scale 1)
+endif()
+math(EXPR qet_probe_ctest_timeout "300 * ${qet_test_timeout_scale}")
 find_package(Python3 QUIET COMPONENTS Interpreter)
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
   add_test(NAME tst_handlersizeintegration
@@ -79,20 +89,31 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/handle_size_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_handlersizeintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_handlersizeintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   add_test(NAME tst_attachedplainpaste
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_attached_plain_paste_probe.py
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/attached_plain_paste_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_attachedplainpaste PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
+  set_tests_properties(tst_attachedplainpaste PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # The probe opens and saves the whole industrial example: about 10 minutes
+  # in a Debug build with GCC, and five to eight times as long with MSVC's
+  # Debug libraries.
+  if(MSVC)
+    set(qet_lazyfolios_timeout 7200)
+  else()
+    set(qet_lazyfolios_timeout 2400)
+  endif()
+  math(EXPR qet_lazyfolios_ctest_timeout "${qet_lazyfolios_timeout} + 600")
   add_test(NAME tst_lazyfolios
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_lazy_folios_probe.py
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/lazy_folios_probe.cpp
-      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/../../examples/industrial.qet)
-  set_tests_properties(tst_lazyfolios PROPERTIES TIMEOUT 3000 RUN_SERIAL TRUE
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/../../examples/industrial.qet
+      --timeout ${qet_lazyfolios_timeout})
+  set_tests_properties(tst_lazyfolios PROPERTIES TIMEOUT ${qet_lazyfolios_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Deleting a cable, undoing the delete twice and then editing anything
   # has both cable commands tearing down the same cable. Runs under the
@@ -102,7 +123,8 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/cable_undo_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_cableundointegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
+  set_tests_properties(tst_cableundointegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The folio-wide crosshair follows the mouse on the grid, on screen
   # only, and goes when the mouse leaves or the option is off.
   add_test(NAME tst_crosshairintegration
@@ -110,7 +132,25 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/crosshair_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_crosshairintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_crosshairintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # The label of a terminal strip at its first terminal: it moves with it,
+  # goes to a new first terminal, follows a rename; not saved.
+  add_test(NAME tst_striplabelintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_strip_label_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/strip_label_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/strip_labels.qet)
+  set_tests_properties(tst_striplabelintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # The pointer: a four-way arrow over what a drag moves; with the
+  # crosshair, drawn on its grid point in place of the system's.
+  add_test(NAME tst_movepointerintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_move_pointer_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/move_pointer_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_movepointerintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # A linked folio report shows a pointing hand and jumps to its other
   # end on a double click, on the arrow and on its label text; the end
@@ -120,7 +160,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/report_jump_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/linked_reports.qet)
-  set_tests_properties(tst_reportjumpintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_reportjumpintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # "Place symbol texts": label and notes as one block at one of nine
   # points beside the drawing, aligned to hang on it; one undo step.
@@ -129,7 +169,34 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/symbol_text_placement_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_symboltextplacementintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_symboltextplacementintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # The outline and the click area of a fixed-width text are the lines
+  # written, not the whole box.
+  add_test(NAME tst_textoutlineintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_text_outline_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/text_outline_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_textoutlineintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # A group of symbol texts keeps the point it is aligned on when a text
+  # grows: the right edge when aligned right, the middle when centred.
+  add_test(NAME tst_textgroupanchorintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_text_group_anchor_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/text_group_anchor_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_textgroupanchorintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # Width and height of a symbol's text, each fixed or not: a fixed
+  # height cuts off the lines that do not fit; saved and undone.
+  add_test(NAME tst_textfixedsizeintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_text_fixed_size_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/text_fixed_size_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_textfixedsizeintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
@@ -138,7 +205,17 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/image_dark_integration_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_darkimageintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
+  set_tests_properties(tst_darkimageintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # A dark custom sheet shows the lines light, or yellow symbols and red
+  # conductors; printing and exporting stay black on white.
+  add_test(NAME tst_sheetinkintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_sheet_ink_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/sheet_ink_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/coil_contact_wired.qet)
+  set_tests_properties(tst_sheetinkintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Dragging the left width handle of a symbol's text keeps its right
   # edge in place, the right handle its left edge; undo restores both.
   add_test(NAME tst_elementtextresizeintegration
@@ -146,7 +223,17 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/element_text_resize_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_elementtextresizeintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_elementtextresizeintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # The Sheet tab gives its free height to the title block widget and
+  # the Template row keeps its own height -- on both pages, so a widget
+  # added after it later cannot bring the empty band at the bottom back.
+  add_test(NAME tst_sheettablayout
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_sheet_tab_layout_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/sheet_tab_layout_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_sheettablayout PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 
@@ -246,6 +333,8 @@ add_test(NAME tst_genericdevice COMMAND tst_genericdevice)
 set_tests_properties(tst_genericdevice PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_genericdevice PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_genericdevice PRIVATE Qt::Test Qt::Gui Qt::Xml)
+target_compile_definitions(tst_genericdevice PRIVATE
+  "QET_FONTS_DIR=\"${QET_DIR}/fonts\"")
 
 # configprofile.h is header-only: which settings a saved configuration
 # profile carries, and how loading one replaces the live settings.
@@ -306,9 +395,19 @@ qet_add_app_test(tst_duplicatelabels tst_duplicatelabels.cpp)
 target_compile_definitions(tst_duplicatelabels PRIVATE
   QET_TEST_TRANSLATIONS_DIR="${CMAKE_BINARY_DIR}/lang")
 add_dependencies(tst_duplicatelabels qelectrotech_lrelease)
+# A conductor's colour and section at a slanted stroke across it.
+qet_add_app_test(tst_conductordefinitionmark tst_conductordefinitionmark.cpp)
+target_compile_definitions(tst_conductordefinitionmark PRIVATE
+  QET_ELEMENTS_DIR="${QET_DIR}/elements")
 
 # Space on a picture turns its own transform, which the file saves (#1413),
 # alone and with a group.
+# Closing a project takes its symbols down with them: their terminals say
+# "a wire left" on the way out, and what a symbol shows of its wire must not
+# be filled while its texts are being deleted -- which took the whole
+# application down with a real drawing.
+qet_add_app_test(tst_symbolteardown tst_symbolteardown.cpp)
+
 qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 
 # Editing the information of several elements at once (#1439): kept, set
@@ -322,6 +421,10 @@ target_compile_definitions(tst_multielementinfo PRIVATE
 # collection paths just chosen, not the ones they replace.
 qet_add_app_test(tst_assistantinfopaths tst_assistantinfopaths.cpp)
 
+# Formatting the text of several title block cells at once: only what is
+# checked changes, one undo step, saved with the cell and drawn.
+qet_add_app_test(tst_titleblockbulkformat tst_titleblockbulkformat.cpp)
+
 # %T in a report or cross reference formula is the target folio's title.
 qet_add_app_test(tst_reportfoliotitle tst_reportfoliotitle.cpp)
 
@@ -329,6 +432,13 @@ qet_add_app_test(tst_reportfoliotitle tst_reportfoliotitle.cpp)
 # the project: wired shows the cable and its core read only, unwired keeps
 # what was typed in, and nothing stale is written into the element.
 qet_add_app_test(tst_terminalcableauto tst_terminalcableauto.cpp)
+
+# A terminal's label is drawn whole in one field, or split into its label
+# and its terminal number: in their own fields when the symbol carries a
+# field for the number, one under the other when it does not. Only the
+# drawing changes; the stored label, the numbering and the exports keep
+# the whole label.
+qet_add_app_test(tst_terminallabeldisplay tst_terminallabeldisplay.cpp)
 
 # Escape during a picture's resize, rotate or pivot drag puts it back, keeps
 # it selected and records no undo step (#1414); the key goes to the view.
@@ -345,6 +455,10 @@ qet_add_app_test(tst_selectionpanelheight tst_selectionpanelheight.cpp)
 # The Auto numbering panel's Increment spin boxes get the width their style
 # asks for; a fixed 55 px cut the number off on Windows (#1566).
 qet_add_app_test(tst_autonumincrementwidth tst_autonumincrementwidth.cpp)
+
+# View > Snap to the grid switches every snap off and on, as Ctrl held does;
+# View > Grid step sets a fine, medium or coarse step.
+qet_add_app_test(tst_gridsnap tst_gridsnap.cpp)
 
 # Opening a project before the elements panel's first reload() left its tree
 # item detached, and selecting the item's first child crashed in QTreeModel
@@ -449,6 +563,16 @@ add_executable(
 add_test(NAME tst_smart_device COMMAND tst_smart_device)
 target_include_directories(tst_smart_device PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_smart_device PRIVATE Qt::Test Qt::Sql)
+
+# BomExport::groupedQuery(): identical parts become one line, quantities added.
+add_executable(
+  tst_groupedbom
+  tst_groupedbom.cpp
+  ${QET_DIR}/sources/bomexport.cpp
+  ${QET_DIR}/sources/bomexport.h)
+add_test(NAME tst_groupedbom COMMAND tst_groupedbom)
+target_include_directories(tst_groupedbom PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_groupedbom PRIVATE Qt::Test Qt::Sql)
 
 # qet.cpp carries the SingleApplication argument wire format
 # (joinWithSpaces/splitWithSpaces); it pulls in qeticons and shortcutmanager,
@@ -932,6 +1056,20 @@ target_link_libraries(tst_wirehops PRIVATE Qt::Test Qt::Gui)
 target_compile_definitions(tst_wirehops PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# Project origin (which corner columns and rows are counted from): the
+# names and directions in projectorigin.cpp, and through the real binary,
+# that --resave keeps the setting and adds none to a project without it.
+add_executable(
+  tst_projectorigin
+  tst_projectorigin.cpp
+  ${QET_DIR}/sources/projectorigin.cpp)
+add_test(NAME tst_projectorigin COMMAND tst_projectorigin)
+add_dependencies(tst_projectorigin qelectrotech)
+target_include_directories(tst_projectorigin PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_projectorigin PRIVATE Qt::Test Qt::Gui)
+target_compile_definitions(tst_projectorigin PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # Wires per terminal (discussion #1158): the rules in wiringrules.cpp, and
 # through the real binary, that --resave keeps the project setting, adds
 # none to a project without it, and that a wire past the limit is refused
@@ -1218,6 +1356,211 @@ target_link_libraries(tst_movedterminals PRIVATE Qt::Test Qt::Xml)
 target_compile_definitions(tst_movedterminals PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# The project's settings are in the project database, one row per value,
+# and kept by every change. QET-SQL-FORMAT S3b.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_projectsettingrows
+    tst_projectsettingrows.cpp)
+  add_test(NAME tst_projectsettingrows COMMAND tst_projectsettingrows)
+  add_dependencies(tst_projectsettingrows qelectrotech)
+  target_link_libraries(tst_projectsettingrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_projectsettingrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\"")
+endif()
+
+# Where a wire sits and how its text was placed is in the project database
+# (conductor_layout), from a built folio or from the document. QET-SQL-FORMAT S3c.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_conductorlayoutrows
+    tst_conductorlayoutrows.cpp)
+  add_test(NAME tst_conductorlayoutrows COMMAND tst_conductorlayoutrows)
+  add_dependencies(tst_conductorlayoutrows qelectrotech)
+  target_link_libraries(tst_conductorlayoutrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_conductorlayoutrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# Where a placed symbol comes from and sits is in the project database
+# (element_placement), from a built folio or from the document. QET-SQL-FORMAT S3d.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_elementplacementrows
+    tst_elementplacementrows.cpp)
+  add_test(NAME tst_elementplacementrows COMMAND tst_elementplacementrows)
+  add_dependencies(tst_elementplacementrows qelectrotech)
+  target_link_libraries(tst_elementplacementrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_elementplacementrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The texts of a placed symbol and their groups are in the project database
+# (element_text_value), from a built folio or from the document. QET-SQL-FORMAT S3l.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_elementtextrows
+    tst_elementtextrows.cpp)
+  add_test(NAME tst_elementtextrows COMMAND tst_elementtextrows)
+  add_dependencies(tst_elementtextrows qelectrotech)
+  target_link_libraries(tst_elementtextrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_elementtextrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The project's own symbols, their categories and its title-block templates
+# are in the project database (symbol_def, symbol_category,
+# titleblock_template). QET-SQL-FORMAT S3m.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_projectcollectionrows
+    tst_projectcollectionrows.cpp)
+  add_test(NAME tst_projectcollectionrows COMMAND tst_projectcollectionrows)
+  add_dependencies(tst_projectcollectionrows qelectrotech)
+  target_link_libraries(tst_projectcollectionrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_projectcollectionrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\""
+    "QET_TITLEBLOCKS_DIR=\"${QET_DIR}/titleblocks\"")
+endif()
+
+# A project written back from its database alone saves as the project does
+# (projectDataBase::toDocument()). QET-SQL-FORMAT S3z1.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_databasewriter
+    tst_databasewriter.cpp)
+  add_test(NAME tst_databasewriter COMMAND tst_databasewriter)
+  add_dependencies(tst_databasewriter qelectrotech)
+  target_link_libraries(tst_databasewriter PRIVATE Qt::Test)
+  target_compile_definitions(tst_databasewriter PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+endif()
+
+# An edit rebuilds the database rows of the folios it touched only, and the
+# tables are still what a full rebuild gives (QET_CHECK_DB_REBUILD).
+# QET-SQL-FORMAT S3z1b.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_folioupdaterows
+    tst_folioupdaterows.cpp)
+  add_test(NAME tst_folioupdaterows COMMAND tst_folioupdaterows)
+  add_dependencies(tst_folioupdaterows qelectrotech)
+  target_link_libraries(tst_folioupdaterows PRIVATE Qt::Test)
+  target_compile_definitions(tst_folioupdaterows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+endif()
+
+# What a symbol, a folio or a cable saves that no other table holds is in the
+# project database (element_value, folio_value, cable_value). QET-SQL-FORMAT S3n.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_savevaluerows
+    tst_savevaluerows.cpp)
+  add_test(NAME tst_savevaluerows COMMAND tst_savevaluerows)
+  add_dependencies(tst_savevaluerows qelectrotech)
+  target_link_libraries(tst_savevaluerows PRIVATE Qt::Test)
+  target_compile_definitions(tst_savevaluerows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+endif()
+
+# The sequential numbers of a symbol or a wire are in the project database
+# (sequential_number), from a built folio or from the document. QET-SQL-FORMAT S3e.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_sequencerows
+    tst_sequencerows.cpp)
+  add_test(NAME tst_sequencerows COMMAND tst_sequencerows)
+  add_dependencies(tst_sequencerows qelectrotech)
+  target_link_libraries(tst_sequencerows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_sequencerows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The segments of a wire the user reshaped are in the project database
+# (conductor_path), from a built folio or from the document. QET-SQL-FORMAT S3f.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_conductorpathrows
+    tst_conductorpathrows.cpp)
+  add_test(NAME tst_conductorpathrows COMMAND tst_conductorpathrows)
+  add_dependencies(tst_conductorpathrows qelectrotech)
+  target_link_libraries(tst_conductorpathrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_conductorpathrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The shapes, free texts and tables of a folio are in the project database
+# (drawing_item), from a built folio or from the document. QET-SQL-FORMAT S3g.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_drawingitemrows
+    tst_drawingitemrows.cpp)
+  add_test(NAME tst_drawingitemrows COMMAND tst_drawingitemrows)
+  add_dependencies(tst_drawingitemrows qelectrotech)
+  target_link_libraries(tst_drawingitemrows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_drawingitemrows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The terminal strips are in the project database (terminal_strip_value
+# rows), opened and written through as they change. QET-SQL-FORMAT S3k1.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_terminalstriprows
+    tst_terminalstriprows.cpp)
+  add_test(NAME tst_terminalstriprows COMMAND tst_terminalstriprows)
+  add_dependencies(tst_terminalstriprows qelectrotech)
+  target_link_libraries(tst_terminalstriprows PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_terminalstriprows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\"")
+endif()
+
+# The pictures of a folio are in the project database (drawing_item rows
+# with a "#blob" hash, and the blob table), from a built folio or from the
+# document, .qet or .qetz. QET-SQL-FORMAT S3j.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_picturerows
+    tst_picturerows.cpp)
+  add_test(NAME tst_picturerows COMMAND tst_picturerows)
+  add_dependencies(tst_picturerows qelectrotech)
+  target_link_libraries(tst_picturerows PRIVATE Qt::Test Qt::Xml Qt::Gui)
+  target_compile_definitions(tst_picturerows PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# A symbol's kind information (NO/NC/SW/power) is queryable from the
+# project database once it is placed, not only from a live Element*.
+# QETZ-DB-FIRST 2d-2a.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_elementkindinformation
+    tst_elementkindinformation.cpp)
+  add_test(NAME tst_elementkindinformation COMMAND tst_elementkindinformation)
+  add_dependencies(tst_elementkindinformation qelectrotech)
+  target_link_libraries(tst_elementkindinformation PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_elementkindinformation PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
 # Symbols sharing one uuid on a folio keep their wires through save and
 # reopen (#1408): nets of examples/Habitat-Schemas_developpes.qet.
 add_executable(
@@ -1333,6 +1676,7 @@ target_compile_definitions(tst_legacysequentialattributes PRIVATE
 add_executable(
   tst_conductorapplychanges
   tst_conductorapplychanges.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
   ${QET_DIR}/sources/conductorproperties.cpp
   ${QET_DIR}/sources/qet.cpp
   ${QET_DIR}/sources/qeticons.cpp
@@ -1341,11 +1685,26 @@ add_test(NAME tst_conductorapplychanges COMMAND tst_conductorapplychanges)
 target_include_directories(tst_conductorapplychanges PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductorapplychanges PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# The custom dash pattern of a conductor: drawing lengths, XML and settings
+# round trips, and that an edit or a multi-selection merges it per field.
+add_executable(
+  tst_conductordashpattern
+  tst_conductordashpattern.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
+  ${QET_DIR}/sources/conductorproperties.cpp
+  ${QET_DIR}/sources/qet.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_conductordashpattern COMMAND tst_conductordashpattern)
+target_include_directories(tst_conductordashpattern PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_conductordashpattern PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
 # ConductorProperties::fromSettings() -- the default conductor width is a
 # decimal and comes back as saved (1.4 used to be read as 0).
 add_executable(
   tst_conductorsizesetting
   tst_conductorsizesetting.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
   ${QET_DIR}/sources/conductorproperties.cpp
   ${QET_DIR}/sources/qet.cpp
   ${QET_DIR}/sources/qeticons.cpp
@@ -1360,6 +1719,7 @@ target_link_libraries(tst_conductorsizesetting PRIVATE Qt::Test Qt::Widgets Qt::
 add_executable(
   tst_conductormultiedit
   tst_conductormultiedit.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
   ${QET_DIR}/sources/conductorproperties.cpp
   ${QET_DIR}/sources/QPropertyUndoCommand/qpropertyundocommand.cpp
   ${QET_DIR}/sources/qet.cpp
@@ -1521,3 +1881,178 @@ qet_add_app_test(tst_collectionclosedproject tst_collectionclosedproject.cpp)
 # A second QElectroTech writes to the shared element cache at once instead of
 # waiting for the first to close (#1571).
 qet_add_app_test(tst_elementcachelock tst_elementcachelock.cpp)
+
+# The working copy: the project database in a file, committed after each
+# edit; killed at random moments, it holds every edit finished, and a clean
+# exit leaves nothing. QET-SQL-FORMAT S3z2.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_workingcopy
+    tst_workingcopy.cpp)
+  add_test(NAME tst_workingcopy COMMAND tst_workingcopy)
+  add_dependencies(tst_workingcopy qelectrotech)
+  target_link_libraries(tst_workingcopy PRIVATE Qt::Test Qt::Xml)
+  # It runs 8 QElectroTech at once: counted as 8 of ctest -j8's slots, so it
+  # does not slow the other tests past their own time limits.
+  math(EXPR qet_workingcopy_timeout "1800 * ${qet_test_timeout_scale}")
+  math(EXPR qet_workingcopy_function_timeout "1500000 * ${qet_test_timeout_scale}")
+  set_tests_properties(tst_workingcopy PROPERTIES TIMEOUT ${qet_workingcopy_timeout} PROCESSORS 8
+    ENVIRONMENT "QTEST_FUNCTION_TIMEOUT=${qet_workingcopy_function_timeout}")
+  target_compile_definitions(tst_workingcopy PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
+# The working copy in the editor: in the data folder, a change outside the
+# undo stack committed within 2 s, deleted on close. QET-SQL-FORMAT S3z2.
+qet_add_app_test(tst_workingcopypoll tst_workingcopypoll.cpp)
+target_link_libraries(tst_workingcopypoll PRIVATE Qt::Xml)
+target_compile_definitions(tst_workingcopypoll PRIVATE
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+# The status bar: the grid step with its menu, a magnet for snapping, the
+# zoom with fixed ones.
+qet_add_app_test(tst_statusgridzoom tst_statusgridzoom.cpp)
+
+# Which working copies a QElectroTech that did not close normally left are
+# offered at the next start, and which are deleted. QET-SQL-FORMAT S3z3.
+add_executable(
+  tst_workingcopyrecovery
+  tst_workingcopyrecovery.cpp
+  ${QET_DIR}/sources/dataBase/workingcopyrecovery.cpp)
+add_test(NAME tst_workingcopyrecovery COMMAND tst_workingcopyrecovery)
+target_link_libraries(tst_workingcopyrecovery PRIVATE Qt::Test Qt::Sql)
+
+# A project saved as one database file, .qetdb (experimental): what the file
+# is, that it gives the project back, that an unreadable one is refused and
+# that a failed save keeps the previous file. QET-SQL-FORMAT S4a.
+add_executable(
+  tst_qetdbfile
+  tst_qetdbfile.cpp
+  ${QET_DIR}/sources/dataBase/qetparity.cpp)
+add_test(NAME tst_qetdbfile COMMAND tst_qetdbfile)
+add_dependencies(tst_qetdbfile qelectrotech)
+target_link_libraries(tst_qetdbfile PRIVATE Qt::Test Qt::Sql Qt::Concurrent)
+target_compile_definitions(tst_qetdbfile PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
+# The repair data of a .qetdb: lost pages rebuilt exactly up to the parity,
+# one more reported, the same bytes as the prototype. QETDB-S4C-PLAN.md P1.
+add_executable(
+  tst_qetparity
+  tst_qetparity.cpp
+  ${QET_DIR}/sources/dataBase/qetparity.cpp)
+add_test(NAME tst_qetparity COMMAND tst_qetparity)
+target_link_libraries(tst_qetparity PRIVATE Qt::Test Qt::Concurrent)
+
+# The repair data of a .qetdb against parity.py's kinds of damage, through
+# --qetdb-repair: what it covers comes back exactly, the rest is refused,
+# another program's writes are not damage. QETDB-S4C-PLAN.md P6.
+add_executable(
+  tst_qetdbparity
+  tst_qetdbparity.cpp)
+add_test(NAME tst_qetdbparity COMMAND tst_qetdbparity)
+add_dependencies(tst_qetdbparity qelectrotech)
+target_link_libraries(tst_qetdbparity PRIVATE Qt::Test Qt::Sql)
+target_compile_definitions(tst_qetdbparity PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
+# --query: one read-only query over several projects through the public
+# qet_ views; their columns, refused writes, the same rows from .qet, .qetz
+# and .qetdb. QETDB-S10 Q1 + Q2.
+add_executable(
+  tst_cliquery
+  tst_cliquery.cpp)
+add_test(NAME tst_cliquery COMMAND tst_cliquery)
+add_dependencies(tst_cliquery qelectrotech)
+target_link_libraries(tst_cliquery PRIVATE Qt::Test Qt::Sql)
+target_compile_definitions(tst_cliquery PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
+# A .qetdb survives a kill during its save, a sync tool copying it during
+# its save, a full disk and a missing folder; damaged files never crash
+# QElectroTech. QET-SQL-FORMAT S5.
+add_executable(
+  tst_qetdbrobust
+  tst_qetdbrobust.cpp)
+add_test(NAME tst_qetdbrobust COMMAND tst_qetdbrobust)
+math(EXPR qet_qetdbrobust_timeout "900 * ${qet_test_timeout_scale}")
+set_tests_properties(tst_qetdbrobust PROPERTIES TIMEOUT ${qet_qetdbrobust_timeout})
+add_dependencies(tst_qetdbrobust qelectrotech)
+target_link_libraries(tst_qetdbrobust PRIVATE Qt::Test Qt::Sql)
+target_compile_definitions(tst_qetdbrobust PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
+# Upright symbol texts read from bottom to top, when the setting asks.
+qet_add_app_test(tst_uprighttexts tst_uprighttexts.cpp)
+target_compile_definitions(tst_uprighttexts PRIVATE
+  QET_ELEMENTS_DIR="${QET_DIR}/elements")
+
+# New tests go above this line: the blocks below apply to the tests above them.
+
+# MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
+# Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
+# PATH for every test above and keeps the ENVIRONMENT each test sets
+# (QT_QPA_PLATFORM=offscreen, ...); it needs CMake 3.22.
+if(MSVC)
+  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+  if(CMAKE_VERSION VERSION_LESS 3.22)
+    message(WARNING
+      "CMake ${CMAKE_VERSION} cannot add Qt's bin folder to the tests' PATH "
+      "(ENVIRONMENT_MODIFICATION needs 3.22): put it on PATH before running "
+      "ctest.")
+  elseif(qet_qttests)
+    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+      "PATH=path_list_prepend:$<TARGET_FILE_DIR:Qt6::Core>")
+  endif()
+endif()
+
+# Windows: a program without a console sends Qt's messages, and with them
+# QtTest's report, to the debugger, so ctest --output-on-failure showed
+# nothing. QT_FORCE_STDERR_LOGGING sends them to stderr, where ctest reads
+# them. ENVIRONMENT_MODIFICATION keeps the ENVIRONMENT each test sets; it
+# needs CMake 3.22.
+if(WIN32 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
+  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+  if(qet_qttests)
+    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+      "QT_FORCE_STDERR_LOGGING=set:1")
+  endif()
+endif()
+
+# MSVC: its Debug libraries make QElectroTech five to eight times slower,
+# and some tests run scripts that then pass QElectroTech's 30 s script limit.
+# QET_SCRIPT_TIMEOUT_MS gives them 300 s. Needs CMake 3.22, as above.
+if(MSVC AND NOT CMAKE_VERSION VERSION_LESS 3.22)
+  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+  if(qet_qttests)
+    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+      "QET_SCRIPT_TIMEOUT_MS=set:300000")
+  endif()
+endif()
+
+# The tests' own time limits, scaled as ctest's are (see
+# qet_test_timeout_scale above), and QtTest's limit for one test function,
+# 300 s by default, unless a test sets its own (scaled where it is set).
+# Needs CMake 3.22, as above.
+if(qet_test_timeout_scale GREATER 1 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
+  math(EXPR qet_test_function_timeout "300000 * ${qet_test_timeout_scale}")
+  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+  foreach(qet_qttest IN LISTS qet_qttests)
+    set_property(TEST ${qet_qttest} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+      "QET_TEST_TIMEOUT_SCALE=set:${qet_test_timeout_scale}")
+    get_test_property(${qet_qttest} ENVIRONMENT qet_test_env)
+    if(NOT qet_test_env MATCHES "QTEST_FUNCTION_TIMEOUT=")
+      set_property(TEST ${qet_qttest} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+        "QTEST_FUNCTION_TIMEOUT=set:${qet_test_function_timeout}")
+    endif()
+  endforeach()
+endif()

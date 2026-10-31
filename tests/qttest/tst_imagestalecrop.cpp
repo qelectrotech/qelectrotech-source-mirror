@@ -24,6 +24,7 @@
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 /**
 	Before #1310, a project saved after a crop was undone kept the undone
@@ -63,7 +64,7 @@ class tst_imagestalecrop : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), path, project});
-		return proc.waitForFinished(120000) && proc.exitStatus() == QProcess::NormalExit;
+		return proc.waitForFinished(QetTest::timeout(120000)) && proc.exitStatus() == QProcess::NormalExit;
 	}
 
 	// Opens @p in and saves it to @p out.
