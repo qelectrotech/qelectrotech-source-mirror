@@ -304,6 +304,17 @@ QList<QPair<QString, QString>> ConductorProperties::attributes() const
 	add("color2", m_color_2.name());
 	add("dash-size", QString::number(m_dash_size));
 
+		//Written only when set, so a project without a custom pattern
+		//is saved exactly as before
+	if (m_dash_pattern != ConductorDashPattern())
+	{
+		add("custom-dash-pattern", m_dash_pattern.enabled? "true" : "false");
+		add("pattern-dash", QString::number(m_dash_pattern.dash, 'g', 17));
+		add("pattern-gap", QString::number(m_dash_pattern.gap, 'g', 17));
+		add("pattern-dot", QString::number(m_dash_pattern.dot, 'g', 17));
+		add("pattern-dot-gap", QString::number(m_dash_pattern.dot_gap, 'g', 17));
+	}
+
 	if (type == Single)
 		a << singleLineProperties.attributes();
 
@@ -369,6 +380,15 @@ void ConductorProperties::fromXml(QDomElement &e)
 
 	m_dash_size = e.attribute("dash-size", QString::number(1)).toInt();
 
+	m_dash_pattern = ConductorDashPattern();
+	m_dash_pattern.enabled = e.attribute("custom-dash-pattern", "false") == "true";
+	m_dash_pattern.dash    = e.attribute("pattern-dash", "6").toDouble();
+	m_dash_pattern.gap     = e.attribute("pattern-gap", "4").toDouble();
+	m_dash_pattern.dot     = e.attribute("pattern-dot", "1").toDouble();
+	m_dash_pattern.dot_gap = e.attribute("pattern-dot-gap", "4").toDouble();
+	if (!m_dash_pattern.valid())
+		m_dash_pattern = ConductorDashPattern();
+
 		// read style of conductor
 	readStyle(e.attribute("style"));
 
@@ -430,6 +450,11 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "bicolor", m_bicolor);
 	settings.setValue(prefix + "color2", m_color_2.name());
 	settings.setValue(prefix + "dash-size", m_dash_size);
+	settings.setValue(prefix + "custom-dash-pattern", m_dash_pattern.enabled);
+	settings.setValue(prefix + "pattern-dash", m_dash_pattern.dash);
+	settings.setValue(prefix + "pattern-gap", m_dash_pattern.gap);
+	settings.setValue(prefix + "pattern-dot", m_dash_pattern.dot);
+	settings.setValue(prefix + "pattern-dot-gap", m_dash_pattern.dot_gap);
 	settings.setValue(prefix + "style", writeStyle());
 	settings.setValue(prefix + "type", typeToString(type));
 	settings.setValue(prefix + "text", text);
@@ -471,6 +496,14 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 
 	m_bicolor   = settings.value(prefix + "bicolor", false).toBool();
 	m_dash_size = settings.value(prefix + "dash-size", 1).toInt();
+	m_dash_pattern = ConductorDashPattern();
+	m_dash_pattern.enabled = settings.value(prefix + "custom-dash-pattern", false).toBool();
+	m_dash_pattern.dash    = settings.value(prefix + "pattern-dash", 6).toDouble();
+	m_dash_pattern.gap     = settings.value(prefix + "pattern-gap", 4).toDouble();
+	m_dash_pattern.dot     = settings.value(prefix + "pattern-dot", 1).toDouble();
+	m_dash_pattern.dot_gap = settings.value(prefix + "pattern-dot-gap", 4).toDouble();
+	if (!m_dash_pattern.valid())
+		m_dash_pattern = ConductorDashPattern();
 
 	QString setting_type = settings.value(prefix + "type", typeToString(Multi)).toString();
 	type = (setting_type == typeToString(Single)? Single : Multi);
@@ -539,6 +572,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_bicolor            = cp.m_bicolor;
 		m_color_2            = cp.m_color_2;
 		m_dash_size          = cp.m_dash_size;
+		m_dash_pattern       = cp.m_dash_pattern;
 		text                 = cp.text;
 		text_color           = cp.text_color;
 		m_formula            = cp.m_formula;
@@ -615,6 +649,22 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	if (equal)
 		m_dash_size = i_value;
 	equal = true;
+
+		//Dash pattern, each length on its own
+	const auto common_pattern_field = [this, &clist](auto member) {
+		const auto value = clist.first().m_dash_pattern.*member;
+		for (const ConductorProperties &cp : clist)
+		{
+			if (cp.m_dash_pattern.*member != value)
+				return;
+		}
+		m_dash_pattern.*member = value;
+	};
+	common_pattern_field(&ConductorDashPattern::enabled);
+	common_pattern_field(&ConductorDashPattern::dash);
+	common_pattern_field(&ConductorDashPattern::gap);
+	common_pattern_field(&ConductorDashPattern::dot);
+	common_pattern_field(&ConductorDashPattern::dot_gap);
 
 		//style
 	Qt::PenStyle pen_style;
@@ -871,6 +921,11 @@ void ConductorProperties::applyChanges(const ConductorProperties &before,
 	take(m_bicolor,              before.m_bicolor,              after.m_bicolor);
 	take(m_color_2,              before.m_color_2,              after.m_color_2);
 	take(m_dash_size,            before.m_dash_size,            after.m_dash_size);
+	take(m_dash_pattern.enabled, before.m_dash_pattern.enabled, after.m_dash_pattern.enabled);
+	take(m_dash_pattern.dash,    before.m_dash_pattern.dash,    after.m_dash_pattern.dash);
+	take(m_dash_pattern.gap,     before.m_dash_pattern.gap,     after.m_dash_pattern.gap);
+	take(m_dash_pattern.dot,     before.m_dash_pattern.dot,     after.m_dash_pattern.dot);
+	take(m_dash_pattern.dot_gap, before.m_dash_pattern.dot_gap, after.m_dash_pattern.dot_gap);
 	take(style,                  before.style,                  after.style);
 	take(text,                   before.text,                   after.text);
 	take(text_color,             before.text_color,             after.text_color);
@@ -956,6 +1011,7 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 		other.m_bicolor == m_bicolor &&\
 		other.m_color_2 == m_color_2 &&\
 		other.m_dash_size == m_dash_size &&\
+		other.m_dash_pattern == m_dash_pattern &&\
 		other.style == style &&\
 		other.text == text &&\
 		other.text_color == text_color &&\

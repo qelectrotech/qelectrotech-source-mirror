@@ -263,6 +263,16 @@
          </property>
          <property name="text">
           <string>Upright symbol texts read from bottom to top</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+        <widget class="QCheckBox" name="m_narrow_docks_cb">
+         <property name="toolTip">
+          <string>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</string>
+         </property>
+         <property name="text">
+          <string>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</string>
          </property>
         </widget>
        </item>

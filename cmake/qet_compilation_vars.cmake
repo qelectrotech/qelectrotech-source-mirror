@@ -186,6 +186,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/cellruler.h
   ${QET_DIR}/sources/conductorautonumerotation.cpp
   ${QET_DIR}/sources/conductorautonumerotation.h
+  ${QET_DIR}/sources/duplicatelabels.h
+  ${QET_DIR}/sources/duplicatelabels.cpp
+  ${QET_DIR}/sources/ui/duplicatelabelsdialog.h
+  ${QET_DIR}/sources/ui/duplicatelabelsdialog.cpp
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
   ${QET_DIR}/sources/wiringlistexport.cpp
@@ -200,6 +204,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductornumexport.h
   ${QET_DIR}/sources/bomexport.cpp
   ${QET_DIR}/sources/bomexport.h
+  ${QET_DIR}/sources/conductordashpattern.cpp
+  ${QET_DIR}/sources/conductordashpattern.h
   ${QET_DIR}/sources/conductorprofile.cpp
   ${QET_DIR}/sources/conductorprofile.h
   ${QET_DIR}/sources/conductorproperties.cpp
@@ -388,6 +394,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/dataBase/qetdbfile.cpp
   ${QET_DIR}/sources/dataBase/projectdatabaseadopt.cpp
   ${QET_DIR}/sources/dataBase/qetdbfile.h
+  ${QET_DIR}/sources/dataBase/qetparity.cpp
+  ${QET_DIR}/sources/dataBase/qetparity.h
   ${QET_DIR}/sources/dataBase/conductorlayout.h
   ${QET_DIR}/sources/dataBase/conductorpath.h
   ${QET_DIR}/sources/dataBase/elementplacement.h
@@ -824,6 +832,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/conductorcolortoolbutton.h
   ${QET_DIR}/sources/ui/diagrambgcolorbutton.cpp
   ${QET_DIR}/sources/ui/diagrambgcolorbutton.h
+  ${QET_DIR}/sources/ui/dockfit.cpp
+  ${QET_DIR}/sources/ui/dockfit.h
   ${QET_DIR}/sources/ui/conductorpropertieswidget.cpp
   ${QET_DIR}/sources/ui/conductorpropertieswidget.h
   ${QET_DIR}/sources/ui/configsaveloaderwidget.cpp
@@ -1128,6 +1138,7 @@ set(TS_FILES
   ${QET_DIR}/lang/qet_it.ts
   ${QET_DIR}/lang/qet_ja.ts
   ${QET_DIR}/lang/qet_ko.ts
+  ${QET_DIR}/lang/qet_lv.ts
   ${QET_DIR}/lang/qet_mn.ts
   ${QET_DIR}/lang/qet_nb.ts
   ${QET_DIR}/lang/qet_nl.ts

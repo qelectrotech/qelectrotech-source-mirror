@@ -389,6 +389,12 @@ function(qet_add_app_test name)
   target_link_libraries(${name} PRIVATE qelectrotech_objects Qt::Test)
 endfunction()
 
+# Connectivity-aware duplicate labels and clickable occurrences, through the
+# real application.
+qet_add_app_test(tst_duplicatelabels tst_duplicatelabels.cpp)
+target_compile_definitions(tst_duplicatelabels PRIVATE
+  QET_TEST_TRANSLATIONS_DIR="${CMAKE_BINARY_DIR}/lang")
+add_dependencies(tst_duplicatelabels qelectrotech_lrelease)
 # A conductor's colour and section at a slanted stroke across it.
 qet_add_app_test(tst_conductordefinitionmark tst_conductordefinitionmark.cpp)
 target_compile_definitions(tst_conductordefinitionmark PRIVATE
@@ -453,6 +459,13 @@ qet_add_app_test(tst_autonumincrementwidth tst_autonumincrementwidth.cpp)
 # View > Snap to the grid switches every snap off and on, as Ctrl held does;
 # View > Grid step sets a fine, medium or coarse step.
 qet_add_app_test(tst_gridsnap tst_gridsnap.cpp)
+
+# The docks of the right side could not be made narrower than about 310 px:
+# the Assistant's check box text never wraps, the Auto numbering fields
+# never shrink.
+qet_add_app_test(tst_dockminwidth tst_dockminwidth.cpp)
+# Without the setting "Narrow docks" (the default) they stay as before.
+qet_add_app_test(tst_dockfitoff tst_dockfitoff.cpp)
 
 # Opening a project before the elements panel's first reload() left its tree
 # item detached, and selecting the item's first child crashed in QTreeModel
@@ -557,6 +570,16 @@ add_executable(
 add_test(NAME tst_smart_device COMMAND tst_smart_device)
 target_include_directories(tst_smart_device PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_smart_device PRIVATE Qt::Test Qt::Sql)
+
+# BomExport::groupedQuery(): identical parts become one line, quantities added.
+add_executable(
+  tst_groupedbom
+  tst_groupedbom.cpp
+  ${QET_DIR}/sources/bomexport.cpp
+  ${QET_DIR}/sources/bomexport.h)
+add_test(NAME tst_groupedbom COMMAND tst_groupedbom)
+target_include_directories(tst_groupedbom PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_groupedbom PRIVATE Qt::Test Qt::Sql)
 
 # qet.cpp carries the SingleApplication argument wire format
 # (joinWithSpaces/splitWithSpaces); it pulls in qeticons and shortcutmanager,
@@ -1673,6 +1696,7 @@ target_compile_definitions(tst_legacysequentialattributes PRIVATE
 add_executable(
   tst_conductorapplychanges
   tst_conductorapplychanges.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
   ${QET_DIR}/sources/conductorproperties.cpp
   ${QET_DIR}/sources/qet.cpp
   ${QET_DIR}/sources/qeticons.cpp
@@ -1681,11 +1705,26 @@ add_test(NAME tst_conductorapplychanges COMMAND tst_conductorapplychanges)
 target_include_directories(tst_conductorapplychanges PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductorapplychanges PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# The custom dash pattern of a conductor: drawing lengths, XML and settings
+# round trips, and that an edit or a multi-selection merges it per field.
+add_executable(
+  tst_conductordashpattern
+  tst_conductordashpattern.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
+  ${QET_DIR}/sources/conductorproperties.cpp
+  ${QET_DIR}/sources/qet.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_conductordashpattern COMMAND tst_conductordashpattern)
+target_include_directories(tst_conductordashpattern PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_conductordashpattern PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
 # ConductorProperties::fromSettings() -- the default conductor width is a
 # decimal and comes back as saved (1.4 used to be read as 0).
 add_executable(
   tst_conductorsizesetting
   tst_conductorsizesetting.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
   ${QET_DIR}/sources/conductorproperties.cpp
   ${QET_DIR}/sources/qet.cpp
   ${QET_DIR}/sources/qeticons.cpp
@@ -1700,6 +1739,7 @@ target_link_libraries(tst_conductorsizesetting PRIVATE Qt::Test Qt::Widgets Qt::
 add_executable(
   tst_conductormultiedit
   tst_conductormultiedit.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
   ${QET_DIR}/sources/conductorproperties.cpp
   ${QET_DIR}/sources/QPropertyUndoCommand/qpropertyundocommand.cpp
   ${QET_DIR}/sources/qet.cpp
@@ -1908,11 +1948,35 @@ target_link_libraries(tst_workingcopyrecovery PRIVATE Qt::Test Qt::Sql)
 # that a failed save keeps the previous file. QET-SQL-FORMAT S4a.
 add_executable(
   tst_qetdbfile
-  tst_qetdbfile.cpp)
+  tst_qetdbfile.cpp
+  ${QET_DIR}/sources/dataBase/qetparity.cpp)
 add_test(NAME tst_qetdbfile COMMAND tst_qetdbfile)
 add_dependencies(tst_qetdbfile qelectrotech)
-target_link_libraries(tst_qetdbfile PRIVATE Qt::Test Qt::Sql)
+target_link_libraries(tst_qetdbfile PRIVATE Qt::Test Qt::Sql Qt::Concurrent)
 target_compile_definitions(tst_qetdbfile PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
+# The repair data of a .qetdb: lost pages rebuilt exactly up to the parity,
+# one more reported, the same bytes as the prototype. QETDB-S4C-PLAN.md P1.
+add_executable(
+  tst_qetparity
+  tst_qetparity.cpp
+  ${QET_DIR}/sources/dataBase/qetparity.cpp)
+add_test(NAME tst_qetparity COMMAND tst_qetparity)
+target_link_libraries(tst_qetparity PRIVATE Qt::Test Qt::Concurrent)
+
+# The repair data of a .qetdb against parity.py's kinds of damage, through
+# --qetdb-repair: what it covers comes back exactly, the rest is refused,
+# another program's writes are not damage. QETDB-S4C-PLAN.md P6.
+add_executable(
+  tst_qetdbparity
+  tst_qetdbparity.cpp)
+add_test(NAME tst_qetdbparity COMMAND tst_qetdbparity)
+add_dependencies(tst_qetdbparity qelectrotech)
+target_link_libraries(tst_qetdbparity PRIVATE Qt::Test Qt::Sql)
+target_compile_definitions(tst_qetdbparity PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
   "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
@@ -1953,6 +2017,9 @@ target_compile_definitions(tst_uprighttexts PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
 
 # New tests go above this line: the blocks below apply to the tests above them.
+# The selection properties dock scrolls its editors in a low window rather
+# than its smallest height pushing the dock below over its last rows.
+qet_add_app_test(tst_propertiesdockscroll tst_propertiesdockscroll.cpp)
 
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
