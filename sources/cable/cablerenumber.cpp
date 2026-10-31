@@ -18,10 +18,10 @@
 #include "cablerenumber.h"
 
 #include "cable.h"
-#include "../autoNum/assignvariables.h"
-#include "../autoNum/numerotationcontextcommands.h"
-#include "../diagram.h"
-#include "../qetproject.h"
+#include <autoNum/assignvariables.h>
+#include <autoNum/numerotationcontextcommands.h>
+#include <diagram.h>
+#include <qetproject.h>
 
 #include <QCoreApplication>
 #include <QSet>

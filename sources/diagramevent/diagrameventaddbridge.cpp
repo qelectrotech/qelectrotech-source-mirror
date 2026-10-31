@@ -17,14 +17,14 @@
 */
 #include "diagrameventaddbridge.h"
 
-#include "../bridge/addbridgecommand.h"
-#include "../bridge/bridge.h"
-#include "../bridge/bridgecreatedialog.h"
-#include "../bridge/bridgepart.h"
-#include "../diagram.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../qetproject.h"
+#include <bridge/addbridgecommand.h>
+#include <bridge/bridge.h>
+#include <bridge/bridgecreatedialog.h>
+#include <bridge/bridgepart.h>
+#include <diagram.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qetproject.h>
 
 #include <QGraphicsLineItem>
 #include <QGraphicsSceneMouseEvent>

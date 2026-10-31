@@ -36,15 +36,15 @@
 
 #include <optional>
 
-#include "../diagramcontext.h"
-#include "../titleblockproperties.h"
-#include "../borderproperties.h"
-#include "../conductorproperties.h"
+#include <diagramcontext.h>
+#include <titleblockproperties.h>
+#include <borderproperties.h>
+#include <conductorproperties.h>
 #include "conductorlayout.h"
 #include "conductorpath.h"
 #include "elementplacement.h"
-#include "../autoNum/assignvariables.h"
-#include "../autoNum/numerotationcontext.h"
+#include <autoNum/assignvariables.h>
+#include <autoNum/numerotationcontext.h>
 
 class Element;
 class QETProject;

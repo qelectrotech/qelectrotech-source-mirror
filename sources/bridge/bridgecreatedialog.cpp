@@ -17,9 +17,9 @@
 */
 #include "bridgecreatedialog.h"
 
-#include "../qetproject.h"
+#include <qetproject.h>
 #include "bridge.h"
-#include "../TerminalStrip/terminalstripbridge.h"
+#include <TerminalStrip/terminalstripbridge.h>
 
 #include <QCheckBox>
 #include <QDialogButtonBox>

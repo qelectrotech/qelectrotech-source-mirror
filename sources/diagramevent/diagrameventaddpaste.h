@@ -19,8 +19,8 @@
 #define DIAGRAMEVENTADDPASTE_H
 
 #include "diagrameventinterface.h"
-#include "../diagramcontent.h"
-#include "../autoNum/elementautonumschemecommand.h"
+#include <diagramcontent.h>
+#include <autoNum/elementautonumschemecommand.h>
 
 #include <QHash>
 #include <QPointer>

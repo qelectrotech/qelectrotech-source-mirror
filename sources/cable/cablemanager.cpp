@@ -18,13 +18,13 @@
 #include "cablemanager.h"
 
 #include "cable.h"
-#include "../autoNum/assignvariables.h"
-#include "../autoNum/numerotationcontextcommands.h"
-#include "../diagram.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/terminal.h"
-#include "../qetproject.h"
+#include <autoNum/assignvariables.h>
+#include <autoNum/numerotationcontextcommands.h>
+#include <diagram.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/terminal.h>
+#include <qetproject.h>
 
 #include <QHash>
 #include <QPainterPath>

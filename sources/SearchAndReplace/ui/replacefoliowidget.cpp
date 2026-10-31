@@ -17,9 +17,9 @@
 */
 #include "replacefoliowidget.h"
 
-#include "../../ui/diagramcontextwidget.h"
-#include "../../qet.h"
-#include "../searchandreplaceworker.h"
+#include <ui/diagramcontextwidget.h>
+#include <qet.h>
+#include <SearchAndReplace/searchandreplaceworker.h>
 #include "ui_replacefoliowidget.h"
 
 #include <QDialogButtonBox>

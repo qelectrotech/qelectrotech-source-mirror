@@ -17,10 +17,10 @@
 */
 #include "eseventaddline.h"
 
-#include "../UndoCommand/addpartcommand.h"
-#include "../elementscene.h"
-#include "../graphicspart/partline.h"
-#include "../ui/qetelementeditor.h"
+#include <editor/UndoCommand/addpartcommand.h>
+#include <editor/elementscene.h>
+#include <editor/graphicspart/partline.h>
+#include <editor/ui/qetelementeditor.h>
 
 #include <QGraphicsSceneMouseEvent>
 #include <QObject>

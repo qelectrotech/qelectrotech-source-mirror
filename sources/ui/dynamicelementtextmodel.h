@@ -18,7 +18,7 @@
 #ifndef DYNAMICELEMENTTEXTMODEL_H
 #define DYNAMICELEMENTTEXTMODEL_H
 
-#include "../qetgraphicsitem/dynamicelementtextitem.h"
+#include <qetgraphicsitem/dynamicelementtextitem.h>
 
 #include <QHash>
 #include <QStandardItemModel>

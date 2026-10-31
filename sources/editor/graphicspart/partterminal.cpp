@@ -17,9 +17,9 @@
 */
 #include "partterminal.h"
 
-#include "../elementscene.h"
-#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../../qetgraphicsitem/terminal.h"
+#include <editor/elementscene.h>
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <qetgraphicsitem/terminal.h>
 
 /**
 	@brief PartTerminal::PartTerminal

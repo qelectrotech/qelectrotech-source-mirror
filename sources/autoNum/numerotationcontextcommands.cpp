@@ -17,7 +17,7 @@
 */
 #include "numerotationcontextcommands.h"
 
-#include "../diagram.h"
+#include <diagram.h>
 
 /**
 	@brief Constructor

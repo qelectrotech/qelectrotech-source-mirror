@@ -17,12 +17,12 @@
 */
 #include "diagrameventfillet.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../diagram.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../qetgraphicsitem/qetshapeitem.h"
-#include "../qgimanager.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <diagram.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qetgraphicsitem/qetshapeitem.h>
+#include <qgimanager.h>
 
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsView>

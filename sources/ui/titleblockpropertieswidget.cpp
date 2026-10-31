@@ -17,10 +17,10 @@
 */
 #include "titleblockpropertieswidget.h"
 
-#include "../qetapp.h"
-#include "../qeticons.h"
-#include "../titleblock/templatescollection.h"
-#include "../titleblocktemplate.h"
+#include <qetapp.h>
+#include <qeticons.h>
+#include <titleblock/templatescollection.h>
+#include <titleblocktemplate.h>
 #include "ui_titleblockpropertieswidget.h"
 
 #include <QMenu>

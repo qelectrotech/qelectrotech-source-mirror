@@ -17,13 +17,13 @@
 */
 #include "templatecellwidget.h"
 
-#include "../NameList/nameslist.h"
-#include "../NameList/ui/namelistdialog.h"
-#include "../NameList/ui/namelistwidget.h"
-#include "../qeticons.h"
-#include "../qetinformation.h"
-#include "../titleblockcell.h"
-#include "../titleblocktemplate.h"
+#include <NameList/nameslist.h>
+#include <NameList/ui/namelistdialog.h>
+#include <NameList/ui/namelistwidget.h>
+#include <qeticons.h>
+#include <qetinformation.h>
+#include <titleblockcell.h>
+#include <titleblocktemplate.h>
 #include "templatecommands.h"
 
 /**

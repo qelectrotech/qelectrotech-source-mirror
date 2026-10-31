@@ -20,7 +20,7 @@
 
 #include "cable.h"
 
-#include "../PropertiesEditor/propertieseditorwidget.h"
+#include <PropertiesEditor/propertieseditorwidget.h>
 
 #include <QList>
 #include <QMetaObject>

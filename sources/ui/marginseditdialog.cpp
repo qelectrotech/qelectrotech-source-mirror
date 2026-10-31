@@ -18,7 +18,7 @@
 #include "marginseditdialog.h"
 #include "ui_marginseditdialog.h"
 
-#include "../qet.h"
+#include <qet.h>
 #include <QScopedPointer>
 
 MarginsEditDialog::MarginsEditDialog(QMargins margins, QWidget *parent) :

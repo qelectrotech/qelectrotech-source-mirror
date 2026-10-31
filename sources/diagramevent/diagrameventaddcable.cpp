@@ -17,13 +17,13 @@
 */
 #include "diagrameventaddcable.h"
 
-#include "../cable/addcablecommand.h"
-#include "../cable/cablecreatedialog.h"
-#include "../cable/cablepart.h"
-#include "../diagram.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../qetproject.h"
+#include <cable/addcablecommand.h>
+#include <cable/cablecreatedialog.h>
+#include <cable/cablepart.h>
+#include <diagram.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qetproject.h>
 
 #include <QGraphicsLineItem>
 #include <QGraphicsSceneMouseEvent>

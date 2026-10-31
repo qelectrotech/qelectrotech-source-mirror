@@ -17,8 +17,8 @@
 */
 #include "cabletypelist.h"
 
-#include "../materiallist/materiallist.h"
-#include "../qetinformation.h"
+#include <materiallist/materiallist.h>
+#include <qetinformation.h>
 
 #include <QCoreApplication>
 #include <QDir>

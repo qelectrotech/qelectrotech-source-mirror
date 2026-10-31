@@ -16,22 +16,22 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventaddpaste.h"
-#include "../autoNum/ui/pastenumberingimport.h"
+#include <autoNum/ui/pastenumberingimport.h>
 
-#include "../cable/addcablecommand.h"
-#include "../cable/cablecopy.h"
-#include "../cable/cablepart.h"
-#include "../cable/editcablecommand.h"
-#include "../diagram.h"
-#include "../foliogrid.h"
-#include "../diagramcommands.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../bridge/bridge.h"
-#include "../bridge/bridgecopy.h"
-#include "../bridge/bridgepart.h"
-#include "../qetproject.h"
+#include <cable/addcablecommand.h>
+#include <cable/cablecopy.h>
+#include <cable/cablepart.h>
+#include <cable/editcablecommand.h>
+#include <diagram.h>
+#include <foliogrid.h>
+#include <diagramcommands.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qetgraphicsitem/conductor.h>
+#include <bridge/bridge.h>
+#include <bridge/bridgecopy.h>
+#include <bridge/bridgepart.h>
+#include <qetproject.h>
 
 #include <QSettings>
 

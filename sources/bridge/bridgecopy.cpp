@@ -22,8 +22,8 @@
 #include "bridgecreatedialog.h"
 #include "bridgepart.h"
 #include "bridgemanager.h"
-#include "../diagram.h"
-#include "../qetproject.h"
+#include <diagram.h>
+#include <qetproject.h>
 
 #include <QDomDocument>
 #include <QColor>

@@ -17,8 +17,8 @@
 */
 #include "bridgepart.h"
 
-#include "../diagram.h"
-#include "../qetproject.h"
+#include <diagram.h>
+#include <qetproject.h>
 #include "bridgecreatedialog.h"
 #include "bridgemanager.h"
 #include "bridgeundocommands.h"

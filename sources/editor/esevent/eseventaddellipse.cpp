@@ -17,9 +17,9 @@
 */
 #include "eseventaddellipse.h"
 
-#include "../UndoCommand/addpartcommand.h"
-#include "../elementscene.h"
-#include "../graphicspart/partellipse.h"
+#include <editor/UndoCommand/addpartcommand.h>
+#include <editor/elementscene.h>
+#include <editor/graphicspart/partellipse.h>
 
 #include <QObject>
 

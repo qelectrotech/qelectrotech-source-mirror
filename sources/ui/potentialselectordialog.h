@@ -18,8 +18,8 @@
 #ifndef POTENTIALSELECTORDIALOG_H
 #define POTENTIALSELECTORDIALOG_H
 
-#include "../autoNum/assignvariables.h"
-#include "../conductorproperties.h"
+#include <autoNum/assignvariables.h>
+#include <conductorproperties.h>
 
 #include <QDialog>
 class Conductor;

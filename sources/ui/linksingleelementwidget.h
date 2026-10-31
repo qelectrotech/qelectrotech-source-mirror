@@ -18,7 +18,7 @@
 #ifndef LINKSINGLEELEMENTWIDGET_H
 #define LINKSINGLEELEMENTWIDGET_H
 
-#include "../properties/elementdata.h"
+#include <properties/elementdata.h>
 #include "abstractelementpropertieseditorwidget.h"
 
 #include <QHash>

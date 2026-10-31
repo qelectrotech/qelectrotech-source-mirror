@@ -20,7 +20,7 @@
 
 #include <QPointer>
 
-#include "../TerminalStrip/GraphicsItem/properties/terminalstriplayoutshandler.h"
+#include <TerminalStrip/GraphicsItem/properties/terminalstriplayoutshandler.h>
 #include "projectusagetracker.h"
 
 class QETProject;

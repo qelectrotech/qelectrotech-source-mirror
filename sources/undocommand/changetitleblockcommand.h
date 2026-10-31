@@ -18,7 +18,7 @@
 #ifndef CHANGETITLEBLOCKCOMMAND_H
 #define CHANGETITLEBLOCKCOMMAND_H
 
-#include "../titleblockproperties.h"
+#include <titleblockproperties.h>
 
 #include <QUndoCommand>
 

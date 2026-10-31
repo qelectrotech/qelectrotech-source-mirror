@@ -18,7 +18,7 @@
 #ifndef TEXTRESIZEHANDLES_H
 #define TEXTRESIZEHANDLES_H
 
-#include "../textresize.h"
+#include <textresize.h>
 
 #include <QCoreApplication>
 #include <QGraphicsObject>

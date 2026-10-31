@@ -17,7 +17,7 @@
 */
 #include "dveventinterface.h"
 
-#include "../diagramview.h"
+#include <diagramview.h>
 
 #include <QMouseEvent>
 

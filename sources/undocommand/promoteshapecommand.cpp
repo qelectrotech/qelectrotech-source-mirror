@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "promoteshapecommand.h"
-#include "../qetgraphicsitem/qetshapeitem.h"
+#include <qetgraphicsitem/qetshapeitem.h>
 
 PromoteShapeCommand::PromoteShapeCommand(
 		QetShapeItem *shape,

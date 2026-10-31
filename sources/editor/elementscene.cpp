@@ -17,13 +17,13 @@
 */
 #include "elementscene.h"
 
-#include "../ElementsCollection/terminaluuids.h"
-#include "../borderproperties.h"
-#include "../NameList/ui/namelistdialog.h"
-#include "../NameList/ui/namelistwidget.h"
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
-#include "../QetGraphicsItemModeler/textresizehandles.h"
+#include <ElementsCollection/terminaluuids.h>
+#include <borderproperties.h>
+#include <NameList/ui/namelistdialog.h>
+#include <NameList/ui/namelistwidget.h>
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <QetGraphicsItemModeler/qetgraphicshandleritem.h>
+#include <QetGraphicsItemModeler/textresizehandles.h>
 #include "editorcommands.h"
 #include "elementcontent.h"
 #include "elementprimitivedecorator.h"
@@ -39,7 +39,7 @@
 #include "graphicspart/parttext.h"
 #include "ui/qetelementeditor.h"
 #include "ui/elementpropertieseditorwidget.h"
-#include "../qetversion.h"
+#include <qetversion.h>
 
 #include <QKeyEvent>
 #include <algorithm>

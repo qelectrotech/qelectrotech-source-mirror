@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "editorcommands.h"
-#include "../diagram.h"
+#include <diagram.h>
 #include "symbolscale.h"
 
 /**

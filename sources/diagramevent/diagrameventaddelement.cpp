@@ -16,19 +16,19 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventaddelement.h"
-#include "../qetproject.h"
-#include "../conductorautonumerotation.h"
-#include "../diagram.h"
-#include "../undocommand/addgraphicsobjectcommand.h"
-#include "../undocommand/deleteqgraphicsitemcommand.h"
-#include "../factory/elementfactory.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/terminal.h"
-#include "../qet.h"
-#include "../autobreakconductor.h"
+#include <qetproject.h>
+#include <conductorautonumerotation.h>
+#include <diagram.h>
+#include <undocommand/addgraphicsobjectcommand.h>
+#include <undocommand/deleteqgraphicsitemcommand.h>
+#include <factory/elementfactory.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/terminal.h>
+#include <qet.h>
+#include <autobreakconductor.h>
 #include <QPainterPath>
 #include <limits>
 

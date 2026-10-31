@@ -18,9 +18,9 @@
 #ifndef QetGraphicsTableItem_H
 #define QetGraphicsTableItem_H
 
-#include "../../QetGraphicsItemModeler/qetgraphicshandleritem.h"
-#include "../../qetapp.h"
-#include "../../qetgraphicsitem/qetgraphicsitem.h"
+#include <QetGraphicsItemModeler/qetgraphicshandleritem.h>
+#include <qetapp.h>
+#include <qetgraphicsitem/qetgraphicsitem.h>
 
 #include <QFont>
 

@@ -18,7 +18,7 @@
 #ifndef DIAGRAMVIEW_H
 #define DIAGRAMVIEW_H
 
-#include "../ElementsCollection/elementslocation.h"
+#include <ElementsCollection/elementslocation.h>
 #include "titleblock/templatelocation.h"
 
 #include <QClipboard>

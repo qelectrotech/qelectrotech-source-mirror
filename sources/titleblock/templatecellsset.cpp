@@ -18,7 +18,7 @@
 
 #include "templatecellsset.h"
 
-#include "../titleblockcell.h"
+#include <titleblockcell.h>
 #include "templateview.h"
 #include "templatevisualcell.h"
 

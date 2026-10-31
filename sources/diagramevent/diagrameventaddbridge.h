@@ -18,7 +18,7 @@
 #ifndef DIAGRAMEVENTADDBRIDGE_H
 #define DIAGRAMEVENTADDBRIDGE_H
 
-#include "../bridge/bridgemanager.h"
+#include <bridge/bridgemanager.h>
 #include "diagrameventinterface.h"
 
 class QGraphicsLineItem;

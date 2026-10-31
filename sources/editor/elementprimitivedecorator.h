@@ -18,7 +18,7 @@
 #ifndef ELEMENTPRIMITIVEDECORATOR_H
 #define ELEMENTPRIMITIVEDECORATOR_H
 
-#include "../qet.h"
+#include <qet.h>
 
 #include <QGraphicsObject>
 

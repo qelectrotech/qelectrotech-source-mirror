@@ -20,7 +20,7 @@
 
 #include "bridge.h"
 
-#include "../qetgraphicsitem/qetgraphicsitem.h"
+#include <qetgraphicsitem/qetgraphicsitem.h>
 
 #include <QPointer>
 

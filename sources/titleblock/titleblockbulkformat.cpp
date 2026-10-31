@@ -17,8 +17,8 @@
 */
 #include "titleblockbulkformat.h"
 
-#include "../titleblockcell.h"
-#include "../titleblocktemplate.h"
+#include <titleblockcell.h>
+#include <titleblocktemplate.h>
 #include "templatecommands.h"
 #include "templateview.h"
 

@@ -17,8 +17,8 @@
 */
 #include "movediagramcommand.h"
 
-#include "../projectview.h"
-#include "../qetproject.h"
+#include <projectview.h>
+#include <qetproject.h>
 
 /**
 	@brief MoveDiagramCommand::MoveDiagramCommand

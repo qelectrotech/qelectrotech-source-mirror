@@ -17,14 +17,14 @@
 */
 #include "diagrameditorhandlersizewidget.h"
 #include "ui_diagrameditorhandlersizewidget.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../projectview.h"
-#include "../diagramview.h"
-#include "../diagram.h"
-#include "../qetproject.h"
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <projectview.h>
+#include <diagramview.h>
+#include <diagram.h>
+#include <qetproject.h>
 #include <QSignalBlocker>
-#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include <QetGraphicsItemModeler/qetgraphicshandleritem.h>
 
 DiagramEditorHandlerSizeWidget::DiagramEditorHandlerSizeWidget(QWidget *parent) :
 	QWidget(parent),

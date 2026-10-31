@@ -17,16 +17,16 @@
 */
 #include "alignselectioncommand.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../alignment.h"
-#include "../diagram.h"
-#include "../foliogrid.h"
-#include "../diagramcontent.h"
-#include "../itemgroups.h"
-#include "../qetgraphicsitem/diagramimageitem.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/independenttextitem.h"
-#include "../qetgraphicsitem/qetshapeitem.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <alignment.h>
+#include <diagram.h>
+#include <foliogrid.h>
+#include <diagramcontent.h>
+#include <itemgroups.h>
+#include <qetgraphicsitem/diagramimageitem.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/independenttextitem.h>
+#include <qetgraphicsitem/qetshapeitem.h>
 
 #include <QHash>
 #include <QSettings>

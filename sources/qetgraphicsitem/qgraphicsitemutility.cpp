@@ -17,7 +17,7 @@
 */
 #include "qgraphicsitemutility.h"
 
-#include "../diagram.h"
+#include <diagram.h>
 #include "element.h"
 
 #include <QDebug>

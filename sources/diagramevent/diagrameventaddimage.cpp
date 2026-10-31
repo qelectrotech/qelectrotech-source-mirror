@@ -17,13 +17,13 @@
 */
 
 #include "diagrameventaddimage.h"
-#include "../imagedrop.h"
+#include <imagedrop.h>
 
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../diagram.h"
-#include "../undocommand/addgraphicsobjectcommand.h"
-#include "../qetgraphicsitem/diagramimageitem.h"
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <diagram.h>
+#include <undocommand/addgraphicsobjectcommand.h>
+#include <qetgraphicsitem/diagramimageitem.h>
 
 #include <QStatusBar>
 #include <QTimer>

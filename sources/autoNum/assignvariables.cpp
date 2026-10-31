@@ -19,14 +19,14 @@
 
 #include <QRegularExpression>
 
-#include "../diagram.h"
-#include "../diagramposition.h"
-#include "../qetapp.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetxml.h"
-#include "../qetproject.h"
-#include "../ElementsCollection/qetlabelsfile.h"
+#include <diagram.h>
+#include <diagramposition.h>
+#include <qetapp.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/element.h>
+#include <qetxml.h>
+#include <qetproject.h>
+#include <ElementsCollection/qetlabelsfile.h>
 #include <QDir>
 #include <QDomDocument>
 #include <QStringList>

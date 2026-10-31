@@ -20,7 +20,7 @@
 
 #include "cable.h"
 #include "cablemanager.h"
-#include "../qetgraphicsitem/qetgraphicsitem.h"
+#include <qetgraphicsitem/qetgraphicsitem.h>
 
 #include <QColor>
 #include <QFont>

@@ -22,7 +22,7 @@
 #include <QColor>
 #include <QDomElement>
 #include <QUuid>
-#include "../properties/elementdata.h"
+#include <properties/elementdata.h>
 
 class TerminalStrip;
 class Element;

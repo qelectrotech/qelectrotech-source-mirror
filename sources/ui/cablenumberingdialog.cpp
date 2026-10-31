@@ -17,10 +17,10 @@
 */
 #include "cablenumberingdialog.h"
 
-#include "../autoNum/ui/selectautonumw.h"
-#include "../cable/cablerenumber.h"
-#include "../cable/editcablecommand.h"
-#include "../qetproject.h"
+#include <autoNum/ui/selectautonumw.h>
+#include <cable/cablerenumber.h>
+#include <cable/editcablecommand.h>
+#include <qetproject.h>
 
 #include <QAbstractButton>
 #include <QDialogButtonBox>

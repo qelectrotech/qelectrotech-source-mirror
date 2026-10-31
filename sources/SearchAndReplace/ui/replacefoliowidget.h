@@ -18,8 +18,8 @@
 #ifndef REPLACEFOLIOWIDGET_H
 #define REPLACEFOLIOWIDGET_H
 
-#include "../../diagramcontext.h"
-#include "../../titleblockproperties.h"
+#include <diagramcontext.h>
+#include <titleblockproperties.h>
 
 #include <QDialog>
 #include <QWidget>

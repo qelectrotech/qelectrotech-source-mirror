@@ -18,8 +18,8 @@
 #ifndef PASTENUMBERINGIMPORT_H
 #define PASTENUMBERINGIMPORT_H
 
-#include "../elementautonumschemecommand.h"
-#include "../../diagramcontent.h"
+#include <autoNum/elementautonumschemecommand.h>
+#include <diagramcontent.h>
 
 #include <QCoreApplication>
 #include <QList>

@@ -18,12 +18,12 @@
 #include "macrorecorder.h"
 
 #include "assistantinfo.h"
-#include "../diagram.h"
-#include "../diagramview.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetproject.h"
+#include <diagram.h>
+#include <diagramview.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qetgraphicsitem/element.h>
+#include <qetproject.h>
 
 #include <QDateTime>
 #include <QDir>

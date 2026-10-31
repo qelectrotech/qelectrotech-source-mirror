@@ -18,7 +18,7 @@
 #ifndef MATERIALSELECTIONDIALOG_H
 #define MATERIALSELECTIONDIALOG_H
 
-#include "../materiallist/materiallist.h"
+#include <materiallist/materiallist.h>
 
 #include <QAbstractTableModel>
 #include <QDialog>

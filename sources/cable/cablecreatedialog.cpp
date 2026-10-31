@@ -18,9 +18,9 @@
 #include "cablecreatedialog.h"
 
 #include "editcablecommand.h"
-#include "../diagram.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetproject.h"
+#include <diagram.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetproject.h>
 
 #include <QAbstractItemView>
 #include <QBrush>

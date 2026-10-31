@@ -18,7 +18,7 @@
 #ifndef TEXTEDITOR_H
 #define TEXTEDITOR_H
 
-#include "../elementitemeditor.h"
+#include <editor/elementitemeditor.h>
 
 #include <QPointer>
 #include <QWidget>

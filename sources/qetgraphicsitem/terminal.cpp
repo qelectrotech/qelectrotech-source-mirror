@@ -15,19 +15,19 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "../qetgraphicsitem/terminal.h"
-#include "../ElementsCollection/terminaluuids.h"
-#include "../qet.h"
-#include "../qetproject.h"
-#include "../dataBase/projectdatabase.h"
-#include "../conductorautonumerotation.h"
-#include "../diagram.h"
-#include "../undocommand/addgraphicsobjectcommand.h"
-#include "../properties/terminaldata.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/element.h"
+#include <qetgraphicsitem/terminal.h>
+#include <ElementsCollection/terminaluuids.h>
+#include <qet.h>
+#include <qetproject.h>
+#include <dataBase/projectdatabase.h>
+#include <conductorautonumerotation.h>
+#include <diagram.h>
+#include <undocommand/addgraphicsobjectcommand.h>
+#include <properties/terminaldata.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/element.h>
 #include "conductortextitem.h"
-#include "../wiringrules.h"
+#include <wiringrules.h>
 
 #include <QToolTip>
 

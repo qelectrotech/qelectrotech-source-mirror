@@ -19,7 +19,7 @@
 #ifndef DUPLICATELABELSDIALOG_H
 #define DUPLICATELABELSDIALOG_H
 
-#include "../duplicatelabels.h"
+#include <duplicatelabels.h>
 
 #include <QDialog>
 #include <QHash>

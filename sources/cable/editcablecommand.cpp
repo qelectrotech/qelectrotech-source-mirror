@@ -19,8 +19,8 @@
 
 #include "cablemanager.h"
 #include "cablepart.h"
-#include "../diagram.h"
-#include "../qetproject.h"
+#include <diagram.h>
+#include <qetproject.h>
 
 #include <QCoreApplication>
 

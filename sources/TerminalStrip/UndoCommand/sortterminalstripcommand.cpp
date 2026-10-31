@@ -17,15 +17,15 @@
 */
 #include "sortterminalstripcommand.h"
 
-#include "../../bridge/bridgemanager.h"
-#include "../../qetproject.h"
-#include "../terminalstrip.h"
-#include "../physicalterminal.h"
-#include "../realterminal.h"
-#include "../../diagram.h"
-#include "../../positionorder.h"
-#include "../../qetgraphicsitem/element.h"
-#include "../../utils/qetutils.h"
+#include <bridge/bridgemanager.h>
+#include <qetproject.h>
+#include <TerminalStrip/terminalstrip.h>
+#include <TerminalStrip/physicalterminal.h>
+#include <TerminalStrip/realterminal.h>
+#include <diagram.h>
+#include <positionorder.h>
+#include <qetgraphicsitem/element.h>
+#include <utils/qetutils.h>
 
 SortTerminalStripCommand::SortTerminalStripCommand(TerminalStrip *strip, QUndoCommand *parent) :
 	QUndoCommand(parent),

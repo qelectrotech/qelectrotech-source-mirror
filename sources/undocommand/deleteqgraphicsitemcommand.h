@@ -18,7 +18,7 @@
 #ifndef DELETEQGRAPHICSITEMCOMMAND_H
 #define DELETEQGRAPHICSITEMCOMMAND_H
 
-#include "../diagramcontent.h"
+#include <diagramcontent.h>
 
 #include <QHash>
 #include <QUndoCommand>

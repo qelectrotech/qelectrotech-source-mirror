@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstripdata.h"
-#include "../qetxml.h"
+#include <qetxml.h>
 #include <QDebug>
 
 TerminalStripData::TerminalStripData()

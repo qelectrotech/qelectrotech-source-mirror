@@ -19,8 +19,8 @@
 #define ELEMENTDATA_H
 
 #include "propertiesinterface.h"
-#include "../diagramcontext.h"
-#include "../NameList/nameslist.h"
+#include <diagramcontext.h>
+#include <NameList/nameslist.h>
 
 #include <QStringList>
 #include <QVector>

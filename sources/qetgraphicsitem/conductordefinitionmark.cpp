@@ -17,12 +17,12 @@
 */
 #include "conductordefinitionmark.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../conductorsegment.h"
-#include "../diagram.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <conductorsegment.h>
+#include <diagram.h>
 #include "conductor.h"
 #include "conductortextitem.h"
-#include "../shownkinds.h"
+#include <shownkinds.h>
 
 #include <QFontMetricsF>
 #include <QGraphicsSceneMouseEvent>

@@ -17,7 +17,7 @@
 */
 #include "projectpropertieshandler.h"
 
-#include "../qetproject.h"
+#include <qetproject.h>
 
 ProjectPropertiesHandler::ProjectPropertiesHandler(QETProject *project) :
 	m_project(project)

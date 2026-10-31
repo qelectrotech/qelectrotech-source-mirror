@@ -15,28 +15,28 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "../qetgraphicsitem/conductor.h"
-#include "../palettegraphicsview.h"
-#include "../shownkinds.h"
-#include "../lastusedstyle.h"
-#include "../qetproject.h"
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../autoNum/numerotationcontextcommands.h"
-#include "../conductorautonumerotation.h"
-#include "../conductorsegment.h"
-#include "../conductorsegmentprofile.h"
-#include "../diagram.h"
-#include "../dataBase/projectdatabase.h"
-#include "../diagramcommands.h"
-#include "../qetdiagrameditor.h"
-#include "../qetgraphicsitem/terminal.h"
-#include "../ui/conductorpropertiesdialog.h"
+#include <qetgraphicsitem/conductor.h>
+#include <palettegraphicsview.h>
+#include <shownkinds.h>
+#include <lastusedstyle.h>
+#include <qetproject.h>
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <autoNum/numerotationcontextcommands.h>
+#include <conductorautonumerotation.h>
+#include <conductorsegment.h>
+#include <conductorsegmentprofile.h>
+#include <diagram.h>
+#include <dataBase/projectdatabase.h>
+#include <diagramcommands.h>
+#include <qetdiagrameditor.h>
+#include <qetgraphicsitem/terminal.h>
+#include <ui/conductorpropertiesdialog.h>
 #include "conductortextitem.h"
 #include "conductordefinitionmark.h"
 #include "element.h"
-#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
-#include "../utils/qetutils.h"
-#include "../wirehops.h"
+#include <QetGraphicsItemModeler/qetgraphicshandleritem.h>
+#include <utils/qetutils.h>
+#include <wirehops.h>
 
 #include <QMultiHash>
 #include <QtDebug>
