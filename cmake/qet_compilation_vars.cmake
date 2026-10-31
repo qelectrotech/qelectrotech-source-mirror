@@ -411,6 +411,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autobreakconductor.h
   ${QET_DIR}/sources/symboltextplacement.cpp
   ${QET_DIR}/sources/symboltextplacement.h
+  ${QET_DIR}/sources/autoconnect.cpp
+  ${QET_DIR}/sources/autoconnect.h
 
   ${QET_DIR}/sources/diagramevent/diagrameventaddelement.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddelement.h

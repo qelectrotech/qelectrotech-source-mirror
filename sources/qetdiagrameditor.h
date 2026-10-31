@@ -143,6 +143,7 @@ class QETDiagramEditor : public QETMainWindow
 		void save();
 		void saveAs();
 		bool newProject();
+		bool newAutoConnectProject();
 		bool openProject();
 		bool openRecentFile(const QString &);
 		bool closeProject(ProjectView *);
@@ -283,6 +284,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_terminal_strip_labels = nullptr,	///< Show each strip's label at its first terminal
 		*m_terminal_strip_bridges = nullptr,	///< Draw the strips' bridges between their terminals
 		*m_crosshair,			///< Show the folio-wide crosshair
+		*m_live_auto_connect,		///< Keep automatic wires up to date (AutoConnect)
+		*m_connect_aligned,		///< Connect the aligned free terminals of the folio
 		*m_add_cable = nullptr,		///< Draw the trunk line of a cable
 		*m_add_bridge = nullptr,	///< Draw a bridge over terminals
 		*m_draw_grid,			///< Switch the background grid display or not
