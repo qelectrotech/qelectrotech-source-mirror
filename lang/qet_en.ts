@@ -14509,6 +14509,11 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <source>Grid %1 × %2</source>
         <translation>Grid %1 × %2</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="785"/>
+        <source>Find duplicate signals and components...</source>
+        <translation>Find duplicate signals and components...</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>
@@ -25459,6 +25464,123 @@ The following variables can be used:
     <message>
         <source>Measurements cleared. Press Esc again to exit</source>
         <translation>Measurements cleared. Press Esc again to exit</translation>
+    </message>
+</context>
+<context>
+    <name>DuplicateLabelsDialog</name>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="48"/>
+        <source>Duplicate signals and components</source>
+        <translation>Duplicate signals and components</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="55"/>
+        <source>Click an occurrence to select and show it on its sheet. Refresh after editing the project.</source>
+        <translation>Click an occurrence to select and show it on its sheet. Refresh after editing the project.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="61"/>
+        <source>Case-sensitive comparison</source>
+        <translation>Case-sensitive comparison</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="63"/>
+        <source>When unchecked, labels differing only in letter case, such as K1 and k1, are duplicates.</source>
+        <translation>When unchecked, labels differing only in letter case, such as K1 and k1, are duplicates.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="78"/>
+        <source>Error / occurrence</source>
+        <translation>Error / occurrence</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="78"/>
+        <source>Sheet</source>
+        <translation>Sheet</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="78"/>
+        <source>Position</source>
+        <translation>Position</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="99"/>
+        <source>Refresh</source>
+        <translation>Refresh</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="120"/>
+        <source>Reading the folios...</source>
+        <translation>Reading the folios...</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="143"/>
+        <source>Reading folio %1 of %2...</source>
+        <translation>Reading folio %1 of %2...</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="164"/>
+        <source>Duplicate signal: %1</source>
+        <translation>Duplicate signal: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="166"/>
+        <source>Duplicate component: %1</source>
+        <translation>Duplicate component: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="171"/>
+        <source>Duplicate component: %1 in %2</source>
+        <extracomment>%2 is the plant and location, such as &quot;=P1+UV1&quot;.</extracomment>
+        <translation>Duplicate component: %1 in %2</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="188"/>
+        <source>Group %1</source>
+        <extracomment>%1 numbers one electrical signal or one linked device among those sharing a label.</extracomment>
+        <translation>Group %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="191"/>
+        <source>Occurrences in the same group belong to one signal or linked device.</source>
+        <translation>Occurrences in the same group belong to one signal or linked device.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="203"/>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="208"/>
+        <source>x: %1, y: %2</source>
+        <translation>x: %1, y: %2</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="218"/>
+        <source>%n occurrences</source>
+        <translation>
+            <numerusform>%n occurrence</numerusform>
+            <numerusform>%n occurrences</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="224"/>
+        <source>No duplicate signals or components found.</source>
+        <translation>No duplicate signals or components found.</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="230"/>
+        <source>%n duplicate labels found.</source>
+        <extracomment>%n counts conflicting identifiers, not wire segments or symbols.</extracomment>
+        <translation>
+            <numerusform>%n duplicate label found.</numerusform>
+            <numerusform>%n duplicate labels found.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="242"/>
+        <source>This occurrence no longer exists. Refresh the results.</source>
+        <translation>This occurrence no longer exists. Refresh the results.</translation>
     </message>
 </context>
 </TS>

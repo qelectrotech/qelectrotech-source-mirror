@@ -261,6 +261,8 @@ class QETDiagramEditor : public QETMainWindow
 		m_select_actions_group,   ///Action related to global selections
 		m_file_actions_group;     ///Actions related to file (open, close, save...)
 		
+		QAction* m_find_duplicate_labels = nullptr;
+
 		QAction
 		*m_tabbed_view_mode,		///< Display projects as tabs
 		*m_windowed_view_mode,		///< Display projects as windows

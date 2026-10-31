@@ -84,6 +84,7 @@
 #include "../borderproperties.h"
 #include "../titleblock/templatescollection.h"
 #include "../diagramcommands.h"
+#include "../symboltextplacement.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetgraphicsitem/terminalelement.h"
 #include "../qetinformation.h"
@@ -4352,6 +4353,69 @@ bool QetScriptApi::deleteElementText(int folioIndex, const QString &elementUuid,
 	DiagramContent content;
 	content.m_element_texts << t;
 	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
+	return true;
+}
+
+/**
+	@brief QetScriptApi::placeElementTexts
+	Place the texts of symbols -- the label and the notes beside it -- as
+	one block at one of nine points around each symbol, as Edit > Place
+	symbol texts does for the selection (SymbolTextPlacement): left of the
+	symbol the lines are aligned right, right of it left, else centred.
+	@param elementUuids : the symbols, all on folio @a folioIndex
+	@param where : top-left, top, top-right, left, center, right,
+	bottom-left, bottom or bottom-right
+	@return true when the texts of at least one symbol were placed, in
+	one undo step
+*/
+bool QetScriptApi::placeElementTexts(int folioIndex, const QStringList &elementUuids,
+				     const QString &where)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.placeElementTexts: project is read-only"));
+		return false;
+	}
+	static const QHash<QString, Qt::Alignment> points {
+		{QStringLiteral("top-left"),     Qt::AlignLeft    | Qt::AlignTop},
+		{QStringLiteral("top"),          Qt::AlignHCenter | Qt::AlignTop},
+		{QStringLiteral("top-right"),    Qt::AlignRight   | Qt::AlignTop},
+		{QStringLiteral("left"),         Qt::AlignLeft    | Qt::AlignVCenter},
+		{QStringLiteral("center"),       Qt::AlignCenter},
+		{QStringLiteral("right"),        Qt::AlignRight   | Qt::AlignVCenter},
+		{QStringLiteral("bottom-left"),  Qt::AlignLeft    | Qt::AlignBottom},
+		{QStringLiteral("bottom"),       Qt::AlignHCenter | Qt::AlignBottom},
+		{QStringLiteral("bottom-right"), Qt::AlignRight   | Qt::AlignBottom}};
+	if (!points.contains(where)) {
+		log(QStringLiteral("qet.placeElementTexts: unknown point '%1'").arg(where));
+		return false;
+	}
+	const QList<Diagram *> diagrams = m_project->folios();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) {
+		log(QStringLiteral("qet.placeElementTexts: no folio %1").arg(folioIndex));
+		return false;
+	}
+		//The folio's symbols looked up once, not once per uuid
+	QHash<QString, Element *> on_folio;
+	const DiagramContent content(built(diagrams.at(folioIndex)), false);
+	for (Element *elmt : std::as_const(content.m_elements))
+		on_folio.insert(elmt->uuid().toString(), elmt);
+	QList<Element *> elements;
+	for (const QString &uuid : elementUuids) {
+		Element *element = on_folio.value(uuid);
+		if (!element) {
+			log(QStringLiteral("qet.placeElementTexts: no symbol %1 on folio %2")
+				.arg(uuid).arg(folioIndex));
+			return false;
+		}
+		elements << element;
+	}
+	QUndoCommand *cmd = SymbolTextPlacement::place(elements, points.value(where));
+	if (!cmd) {
+		log(QStringLiteral("qet.placeElementTexts: none of the symbols has a text"));
+		return false;
+	}
+	built(m_project->folios().at(folioIndex))->undoStack().push(cmd);
 	return true;
 }
 

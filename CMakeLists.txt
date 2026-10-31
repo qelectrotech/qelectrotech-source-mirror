@@ -413,6 +413,17 @@ install(TARGETS ${PROJECT_NAME}
     RUNTIME DESTINATION ${QET_BINARY_PATH}
 )
 
+if(WIN32)
+    # QET needs SQLite's DLL beside it, and find_package(SQLite3) only
+    # knows its import library. Set SQLite3_DLL to the DLL to install it
+    # with QET; left empty, nothing more is installed.
+    set(SQLite3_DLL "" CACHE FILEPATH
+        "SQLite's DLL, installed beside QElectroTech (Windows)")
+    if(SQLite3_DLL)
+        install(FILES ${SQLite3_DLL} DESTINATION ${QET_BINARY_PATH})
+    endif()
+endif()
+
 install(DIRECTORY ico/breeze-icons/16x16   DESTINATION ${QET_ICONS_PATH})
 install(DIRECTORY ico/breeze-icons/22x22   DESTINATION ${QET_ICONS_PATH})
 install(DIRECTORY ico/breeze-icons/32x32   DESTINATION ${QET_ICONS_PATH})

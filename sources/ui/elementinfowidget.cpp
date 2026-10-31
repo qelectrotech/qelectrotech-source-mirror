@@ -17,6 +17,7 @@
 */
 #include "elementinfowidget.h"
 #include "../qet.h"
+#include "dockfit.h"
 #include <QCheckBox>
 #include <QComboBox>
 #include <QHBoxLayout>
@@ -52,6 +53,9 @@ ElementInfoWidget::ElementInfoWidget(Element *elmt, QWidget *parent) :
 	m_first_activation (false)
 {
 	ui->setupUi(this);
+		//Narrow docks: no smallest width of its own
+	if (DockFit::enabled())
+		setMinimumWidth(0);
 	setElement(elmt);
 }
 
