@@ -627,16 +627,22 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		//gaps too short to tell a dashed or a dash-dotted conductor from
 		//a solid one at a normal zoom, so these two get longer gaps
 	final_conductor_pen.setColor(final_conductor_color);
-	if (m_properties.style == Qt::DashLine)
-		final_conductor_pen.setDashPattern({5, 4});
-	else if (m_properties.style == Qt::DashDotLine)
-		final_conductor_pen.setDashPattern({6, 4, 1, 4});
-	else
-		final_conductor_pen.setStyle(m_properties.style);
+	const bool custom_pattern = m_properties.m_dash_pattern.apply(
+				final_conductor_pen, m_properties.style);
+	if (!custom_pattern)
+	{
+		if (m_properties.style == Qt::DashLine)
+			final_conductor_pen.setDashPattern({5, 4});
+		else if (m_properties.style == Qt::DashDotLine)
+			final_conductor_pen.setDashPattern({6, 4, 1, 4});
+		else
+			final_conductor_pen.setStyle(m_properties.style);
+	}
 	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // better rendering with dot
 
-		//Use a cosmetic line, below a certain zoom
-	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
+		//Use a cosmetic line, below a certain zoom. A custom pattern is
+		//in drawing units, which a cosmetic pen cannot follow
+	if (!custom_pattern && options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
 	{
 		final_conductor_pen.setCosmetic(true);
 	}

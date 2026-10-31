@@ -57,6 +57,7 @@ class ConductorPropertiesWidget : public QWidget
 
 	private:
 		void initWidget();
+		void updateDashPatternPreview();
 		void setConductorType(ConductorProperties::ConductorType type);
 
 	protected:

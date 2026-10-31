@@ -22,6 +22,9 @@
 #include "../qtextorientationspinboxwidget.h"
 #include "ui_conductorpropertieswidget.h"
 
+#include <QPainter>
+#include <QPixmap>
+
 /**
 	@brief ConductorPropertiesWidget::ConductorPropertiesWidget
 	Constructor
@@ -82,6 +85,11 @@ void ConductorPropertiesWidget::setProperties(
 
 	ui->m_color_2_gb            -> setChecked  (m_properties.m_bicolor);
 	ui->m_dash_size_sb          -> setValue    (m_properties.m_dash_size);
+	ui->m_custom_dash_gb        -> setChecked  (m_properties.m_dash_pattern.enabled);
+	ui->m_pattern_dash_sb       -> setValue    (m_properties.m_dash_pattern.dash);
+	ui->m_pattern_gap_sb        -> setValue    (m_properties.m_dash_pattern.gap);
+	ui->m_pattern_dot_sb        -> setValue    (m_properties.m_dash_pattern.dot);
+	ui->m_pattern_dot_gap_sb    -> setValue    (m_properties.m_dash_pattern.dot_gap);
 	ui->m_formula_le            -> setText    (m_properties.m_formula);
 	ui->m_text_le               -> setText    (m_properties.text);
 	ui->m_function_le           -> setText    (m_properties.m_function);
@@ -114,6 +122,7 @@ void ConductorPropertiesWidget::setProperties(
 
 	setConductorType(m_properties.type);
 	updatePreview(false);
+	updateDashPatternPreview();
 }
 
 /**
@@ -130,6 +139,11 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.m_bicolor               = ui->m_color_2_gb->isChecked();
 	properties_.m_color_2               = ui->m_color_2_kpb->color();
 	properties_.m_dash_size             = ui->m_dash_size_sb->value();
+	properties_.m_dash_pattern.enabled  = ui->m_custom_dash_gb->isChecked();
+	properties_.m_dash_pattern.dash     = ui->m_pattern_dash_sb->value();
+	properties_.m_dash_pattern.gap      = ui->m_pattern_gap_sb->value();
+	properties_.m_dash_pattern.dot      = ui->m_pattern_dot_sb->value();
+	properties_.m_dash_pattern.dot_gap  = ui->m_pattern_dot_gap_sb->value();
 		//The box starts at 2, so the default size 1 shows as 2: keep the
 		//stored size unless the box shows something else.
 	if (properties_.m_dash_size == qBound(ui->m_dash_size_sb->minimum(),
@@ -303,6 +317,17 @@ void ConductorPropertiesWidget::initWidget()
 
 	ui -> m_update_preview_pb -> setHidden(true);
 
+	for (QDoubleSpinBox *sb : {ui->m_pattern_dash_sb, ui->m_pattern_gap_sb,
+				   ui->m_pattern_dot_sb, ui->m_pattern_dot_gap_sb, ui->m_cond_size_sb})
+		connect(sb, QOverload<double>::of(&QDoubleSpinBox::valueChanged),
+			this, &ConductorPropertiesWidget::updateDashPatternPreview);
+	connect(ui->m_custom_dash_gb, &QGroupBox::toggled,
+		this, &ConductorPropertiesWidget::updateDashPatternPreview);
+	connect(ui->m_line_style_cb, QOverload<int>::of(&QComboBox::currentIndexChanged),
+		this, &ConductorPropertiesWidget::updateDashPatternPreview);
+	connect(ui->m_color_kpb, &KColorButton::changed,
+		this, &ConductorPropertiesWidget::updateDashPatternPreview);
+
 	connect(ui->m_multiwires_gb, &QGroupBox::toggled, [this](bool toggle) {this->ui->m_singlewire_gb->setChecked(!toggle);});
 	connect(ui->m_singlewire_gb, &QGroupBox::toggled, [this](bool toggle) {this->ui->m_multiwires_gb->setChecked(!toggle);});
 	connect(ui->m_formula_le, &QLineEdit::textChanged, [this](QString text) {this->ui->m_text_le->setEnabled(!m_text_locked && text.isEmpty());});
@@ -389,4 +414,43 @@ void ConductorPropertiesWidget::on_m_neutral_cb_toggled(bool checked) {
 void ConductorPropertiesWidget::on_m_update_preview_pb_clicked()
 {
 	updatePreview();
+}
+
+/**
+	@brief ConductorPropertiesWidget::updateDashPatternPreview
+	Enable the custom dash pattern group only for a dashed style, and draw
+	a sample of the conductor with the lengths currently entered.
+*/
+void ConductorPropertiesWidget::updateDashPatternPreview()
+{
+	const ConductorProperties cp = properties();
+	const bool dashed = cp.style == Qt::DashLine || cp.style == Qt::DashDotLine;
+	const bool dotted = cp.style == Qt::DashDotLine;
+	const bool custom = ui->m_custom_dash_gb->isChecked();
+
+	ui->m_custom_dash_gb->setEnabled(dashed);
+	for (QWidget *w : {static_cast<QWidget *>(ui->m_pattern_dot_label),
+			   static_cast<QWidget *>(ui->m_pattern_dot_sb),
+			   static_cast<QWidget *>(ui->m_pattern_dot_gap_label),
+			   static_cast<QWidget *>(ui->m_pattern_dot_gap_sb)})
+		w->setEnabled(dotted && custom);
+
+	const qreal ratio = devicePixelRatioF();
+	QPixmap pixmap(qRound(280 * ratio), qRound(36 * ratio));
+	pixmap.setDevicePixelRatio(ratio);
+	pixmap.fill(palette().color(QPalette::Base));
+	QPainter painter(&pixmap);
+	QPen pen(cp.color);
+	pen.setWidthF(cp.cond_size);
+	if (!cp.m_dash_pattern.apply(pen, cp.style))
+	{
+		if (cp.style == Qt::DashLine)
+			pen.setDashPattern({5, 4});
+		else if (cp.style == Qt::DashDotLine)
+			pen.setDashPattern({6, 4, 1, 4});
+	}
+	painter.setPen(pen);
+	painter.drawLine(QLineF(10, 18, 270, 18));
+	painter.end();
+	ui->m_pattern_preview_label->setPixmap(pixmap);
 }
