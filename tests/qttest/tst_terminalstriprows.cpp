@@ -10,6 +10,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // The terminal strips are in the project database, one terminal_strip_value
 // row per value of what each strip's toXml() writes, written through as the
@@ -91,7 +92,7 @@ class tst_terminalstriprows : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(environment(home));
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js, project});
-		if (!proc.waitForFinished(120000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(120000))) return {};
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
 
@@ -195,7 +196,7 @@ private slots:
 		QProcess proc;
 		proc.setProcessEnvironment(environment(m_dir.filePath(QStringLiteral("home-resave"))));
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--resave"), fixture(), saved});
-		QVERIFY(proc.waitForFinished(180000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(180000)));
 		QVERIFY(QFile::exists(saved));
 
 		QFile f(saved);

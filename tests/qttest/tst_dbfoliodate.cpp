@@ -8,6 +8,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // The project database holds each folio's own date. It used to hold the
 // title block's text read back through the locale's short format, which in a
@@ -52,7 +53,7 @@ private slots:
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), path,
 					QStringLiteral(QET_EXAMPLES_DIR "/741.qet")});
-		QVERIFY(proc.waitForFinished(120000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(120000)));
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput()
 											  + proc.readAllStandardError());
 		QJsonArray rows;

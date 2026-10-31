@@ -9,6 +9,7 @@
 #include <QSet>
 #include <QTemporaryDir>
 #include <QUuid>
+#include "qettesttimeout.h"
 
 // A symbol saved without a uuid must get the same one on every load of the
 // same file, and inserting a folio in front of it must not change it. Until
@@ -106,7 +107,7 @@ class tst_derivedsymboluuid : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--resave"), in, out});
-		if (!proc.waitForFinished(60000) || proc.exitCode() != 0) return {};
+		if (!proc.waitForFinished(QetTest::timeout(60000)) || proc.exitCode() != 0) return {};
 		return load(out);
 	}
 

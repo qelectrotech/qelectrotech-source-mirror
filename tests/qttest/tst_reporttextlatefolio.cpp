@@ -6,6 +6,7 @@
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // A report symbol on folio B shows the function of the wire its partner has
 // on folio A, right-aligned. Deleting the coil on folio B empties that text
@@ -52,7 +53,7 @@ class tst_reporttextlatefolio : public QObject
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), script,
 					QStringLiteral(QET_FIXTURES_DIR "/report_text_late_folio.qet")});
-		if (!proc.waitForFinished(120000))
+		if (!proc.waitForFinished(QetTest::timeout(120000)))
 			return QString();
 		QFile saved(out);
 		if (!saved.open(QIODevice::ReadOnly))

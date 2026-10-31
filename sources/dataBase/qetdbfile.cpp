@@ -49,6 +49,10 @@
 #include <sqlite3.h>
 
 #ifdef Q_OS_WIN
+	//windows.h would otherwise define min and max as macros, and break std::max
+#	ifndef NOMINMAX
+#		define NOMINMAX
+#	endif
 #	include <windows.h>
 #	include <io.h>
 #else

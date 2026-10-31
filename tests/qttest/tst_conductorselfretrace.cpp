@@ -5,6 +5,7 @@
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 namespace {
 
@@ -86,7 +87,7 @@ private slots:
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(binary, {QStringLiteral("--export-svg"), fixture, out_dir.path()});
-		QVERIFY2(proc.waitForFinished(30000), "export --export-svg timed out or failed to start");
+		QVERIFY2(proc.waitForFinished(QetTest::timeout(30000)), "export --export-svg timed out or failed to start");
 		QCOMPARE(proc.exitCode(), 0);
 
 		QDir dir(out_dir.path());

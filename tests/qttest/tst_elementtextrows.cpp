@@ -9,6 +9,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // The texts of a placed symbol and their groups are in the project
 // database, one element_text_value row per value of what the symbol saves
@@ -129,7 +130,7 @@ class tst_elementtextrows : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js, in});
-		if (!proc.waitForFinished(180000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(180000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		if (log) *log = out;
 		QHash<QString, QStringList> result;
@@ -255,7 +256,7 @@ private slots:
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), saved});
-		QVERIFY(proc.waitForFinished(180000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(180000)));
 		QVERIFY(QFile::exists(saved));
 
 		const QString script = QStringLiteral("dump('open');");

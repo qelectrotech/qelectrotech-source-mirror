@@ -21,6 +21,7 @@
 #include <QJsonObject>
 #include <QProcess>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 /**
 	The project database keeps the width of a free text (text_width in the
@@ -55,7 +56,7 @@ class tst_scriptfreetextwidth : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), path, QFINDTESTDATA("fixtures/free_text_width.qet")});
-		if (!proc.waitForFinished(60000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(60000))) return {};
 
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		const QString mark = QStringLiteral("PROBE ");

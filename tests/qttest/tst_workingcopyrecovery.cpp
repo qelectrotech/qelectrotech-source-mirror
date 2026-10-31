@@ -6,13 +6,11 @@
 
 #include "../../sources/dataBase/workingcopyrecovery.h"
 
-#include <QCoreApplication>
 #include <QDir>
 #include <QFile>
 #include <QLockFile>
 #include <QSqlDatabase>
 #include <QSqlQuery>
-#include <QSysInfo>
 #include <QTemporaryDir>
 #include <QtTest>
 
@@ -58,11 +56,19 @@ class tst_workingcopyrecovery : public QObject
 	/// The lock a QElectroTech killed while it held it leaves behind
 	void deadLock(const QString &name)
 	{
-		QFile lock(m_dir.filePath(name + QStringLiteral(".lock")));
+		const QString lock_path = m_dir.filePath(name + QStringLiteral(".lock"));
+		qint64 pid;
+		QString host, application;
+		{
+				//The host as QLockFile names it: on Windows, not as QSysInfo does
+			QLockFile own(lock_path);
+			QVERIFY(own.tryLock(0));
+			QVERIFY(own.getLockInfo(&pid, &host, &application));
+		}
+		QFile lock(lock_path);
 		QVERIFY(lock.open(QIODevice::WriteOnly));
 			//A process id no process has (Linux's highest is 2^22)
-		lock.write(QByteArray("99999999\n") + QCoreApplication::applicationName().toUtf8() + "\n"
-				   + QSysInfo::machineHostName().toUtf8() + "\n");
+		lock.write(QByteArray("99999999\n") + application.toUtf8() + "\n" + host.toUtf8() + "\n");
 	}
 
 	bool gone(const QString &name) const
