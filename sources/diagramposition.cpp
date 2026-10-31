@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "bordercelllabels.h"
 #include "diagramposition.h"
 #include "qetapp.h"
 
@@ -69,7 +70,7 @@ QString DiagramPosition::toString()
 	}
 	QSettings settings;
 
-	if (settings.value("border-columns_0", true).toBool()){
+	if (settings.value("border-columns_0", BorderCellLabels::defaultColumnsFromZero).toBool()){
 	return(QString("%1%2").arg(letter_).arg(number_ - 1));
 	}else{
 	return(QString("%1%2").arg(letter_).arg(number_));
