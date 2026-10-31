@@ -209,8 +209,20 @@ void PropertiesEditorDockWidget::rememberHeight()
 */
 void PropertiesEditorDockWidget::restoreHeight()
 {
-	if (m_area_docks.isEmpty() || m_restore_pending)
+	if (m_restore_pending)
 		return;
+		// Nothing to give back (the first editor): the editors' height,
+		// which the scroll area alone would not ask for
+	if (m_area_docks.isEmpty()) {
+		QTimer::singleShot(0, this, [this]() {
+			auto main_window = qobject_cast<QMainWindow *>(parentWidget());
+			if (main_window && !isFloating() && isVisible()
+				&& !m_editor_list.isEmpty() && !isTabbed()
+				&& height() < sizeHint().height())
+				main_window->resizeDocks({this}, {sizeHint().height()}, Qt::Vertical);
+		});
+		return;
+	}
 
 	m_restore_pending = true;
 		// Once the layout has given the dock its maximum height back
@@ -318,6 +330,23 @@ void PropertiesEditorDockWidget::fitScrollArea()
 	ui->m_scroll_area->setMinimumWidth(
 				ui->m_scroll_contents->minimumSizeHint().width()
 				+ ui->m_scroll_area->verticalScrollBar()->sizeHint().width());
+	updateGeometry();
+}
+
+/**
+	@brief PropertiesEditorDockWidget::sizeHint
+	The height the editors want, as without the scroll area around them:
+	the main window gives a dock its size hint when the selection changes,
+	and the scroll area alone asks for next to nothing. The dock can still
+	be made lower, and then scrolls.
+*/
+QSize PropertiesEditorDockWidget::sizeHint() const
+{
+	QSize hint = QDockWidget::sizeHint();
+	if (!m_editor_list.isEmpty())
+		hint.rheight() += qMax(0, ui->m_scroll_contents->sizeHint().height()
+				       - ui->m_scroll_area->sizeHint().height());
+	return hint;
 }
 
 /**
