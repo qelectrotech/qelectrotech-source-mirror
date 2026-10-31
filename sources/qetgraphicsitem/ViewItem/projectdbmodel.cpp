@@ -233,6 +233,19 @@ QETProject *ProjectDBModel::project() const
 }
 
 /**
+	@brief ProjectDBModel::shownText
+	@param model the model of a table
+	@param source a header or cell text as the table holds it
+	@return the text in the project's active language, or source when the
+	project has no translation for it
+*/
+QString ProjectDBModel::shownText(const QAbstractItemModel *model, const QString &source)
+{
+	const auto *db = qobject_cast<const ProjectDBModel *>(model);
+	return db && db->m_project ? db->m_project->languages().translate(source) : source;
+}
+
+/**
 	@brief ProjectDBModel::toXml
 	Save the model to xml,since model can have unlimited data we only save few data (only these used by qelectrotech).
 	The query, all header data. and some data of index::(0,0). All other data are not saved.
