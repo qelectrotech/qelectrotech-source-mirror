@@ -200,6 +200,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductornumexport.h
   ${QET_DIR}/sources/bomexport.cpp
   ${QET_DIR}/sources/bomexport.h
+  ${QET_DIR}/sources/conductordashpattern.cpp
+  ${QET_DIR}/sources/conductordashpattern.h
   ${QET_DIR}/sources/conductorprofile.cpp
   ${QET_DIR}/sources/conductorprofile.h
   ${QET_DIR}/sources/conductorproperties.cpp

@@ -1660,6 +1660,7 @@ target_compile_definitions(tst_legacysequentialattributes PRIVATE
 add_executable(
   tst_conductorapplychanges
   tst_conductorapplychanges.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
   ${QET_DIR}/sources/conductorproperties.cpp
   ${QET_DIR}/sources/qet.cpp
   ${QET_DIR}/sources/qeticons.cpp
@@ -1668,11 +1669,26 @@ add_test(NAME tst_conductorapplychanges COMMAND tst_conductorapplychanges)
 target_include_directories(tst_conductorapplychanges PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductorapplychanges PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# The custom dash pattern of a conductor: drawing lengths, XML and settings
+# round trips, and that an edit or a multi-selection merges it per field.
+add_executable(
+  tst_conductordashpattern
+  tst_conductordashpattern.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
+  ${QET_DIR}/sources/conductorproperties.cpp
+  ${QET_DIR}/sources/qet.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_conductordashpattern COMMAND tst_conductordashpattern)
+target_include_directories(tst_conductordashpattern PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_conductordashpattern PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
 # ConductorProperties::fromSettings() -- the default conductor width is a
 # decimal and comes back as saved (1.4 used to be read as 0).
 add_executable(
   tst_conductorsizesetting
   tst_conductorsizesetting.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
   ${QET_DIR}/sources/conductorproperties.cpp
   ${QET_DIR}/sources/qet.cpp
   ${QET_DIR}/sources/qeticons.cpp
@@ -1687,6 +1703,7 @@ target_link_libraries(tst_conductorsizesetting PRIVATE Qt::Test Qt::Widgets Qt::
 add_executable(
   tst_conductormultiedit
   tst_conductormultiedit.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
   ${QET_DIR}/sources/conductorproperties.cpp
   ${QET_DIR}/sources/QPropertyUndoCommand/qpropertyundocommand.cpp
   ${QET_DIR}/sources/qet.cpp
