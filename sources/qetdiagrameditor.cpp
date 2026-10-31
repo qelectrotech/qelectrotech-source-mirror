@@ -2296,6 +2296,72 @@ bool QETDiagramEditor::offerToRecover(const QString &filepath, const QString &re
 }
 
 /**
+	@brief QETDiagramEditor::askOutsideEdit
+	@p filepath, a .qetdb, holds content that is not what QElectroTech saved,
+	though SQLite's and QElectroTech's other checks pass (@p repair): ask
+	whether to open it with that content, or, when it carries repair data,
+	another program changed it and @p can_go_back, go back to the saved
+	state. Neither writes the file (QETDB-S4C-PLAN.md P5).
+	@return the choice; OutsideEdit::Refuse if the user cancelled
+*/
+QetDbFile::OutsideEdit QETDiagramEditor::askOutsideEdit(const QString &filepath, const QetDbFile::Repair &repair,
+													   bool can_go_back)
+{
+	const QString name = QFileInfo(filepath).fileName();
+	QMessageBox box(QMessageBox::Question, tr("%1 was changed").arg(name),
+					repair.edited
+					? tr("Another program changed %1 since QElectroTech saved it.").arg(name)
+					: tr("The content of %1 is not what QElectroTech saved: another program changed it, "
+						 "or it is damaged.").arg(name),
+					QMessageBox::Cancel, this);
+	QAbstractButton *back = nullptr;
+	if (repair.parity && repair.edited && can_go_back)
+		back = box.addButton(tr("Go back to the saved state"), QMessageBox::AcceptRole);
+	QAbstractButton *keep = box.addButton(tr("Open it with its changes"), QMessageBox::AcceptRole);
+	box.setInformativeText(back
+						   ? tr("Going back rebuilds the project as QElectroTech saved it, from the repair "
+								"data the file keeps. The file is written only when you save.")
+						   : tr("The file is written only when you save."));
+	box.exec();
+	if (back && box.clickedButton() == back) return QetDbFile::OutsideEdit::BackToSave;
+	if (box.clickedButton() == keep) return QetDbFile::OutsideEdit::KeepChanges;
+	return QetDbFile::OutsideEdit::Refuse;
+}
+
+/**
+	@brief QETDiagramEditor::tellRepair
+	@p project was just opened from a .qetdb that was damaged and repaired,
+	or brought back to its saved state, or opened with content that is not
+	what was saved: it is marked changed, so that saving writes a sound file,
+	and the user is told what happened. Nothing for a file opened as saved.
+	@p project null: nothing (an open that is not interactive)
+*/
+void QETDiagramEditor::tellRepair(QETProject *project)
+{
+	if (!project) return;
+	const QetDbFile::Repair repaired = project->qetdbRepair();
+	if (!repaired.repaired() && !repaired.kept_changes) return;
+	project->setModified(true);
+	const QString name = QFileInfo(project->filePath()).fileName();
+	if (repaired.kept_changes) {
+		statusBar()->showMessage(tr("%1 is open with the changes another program made to it.").arg(name), 30000);
+		return;
+	}
+	QString text;
+	if (repaired.back_to_save)
+		text = tr("The changes another program made to %1 were undone: it is open as QElectroTech saved it.").arg(name);
+	else if (repaired.bad_pages)
+		text = tr("%1 was damaged: QElectroTech repaired %n page(s) of it from the repair data the file keeps.",
+				  nullptr, repaired.bad_pages).arg(name);
+	else if (repaired.header)
+		text = tr("%1 was damaged: QElectroTech repaired its header.").arg(name);
+	else
+		text = tr("The repair data %1 keeps was damaged; the project itself was not.").arg(name);
+	QET::QetMessageBox::information(this, tr("Project repaired"),
+									text + QLatin1Char(' ') + tr("Save the project to keep it so."));
+}
+
+/**
 	@brief QETDiagramEditor::recoveredPath
 	@return where a project recovered from @p filepath is saved: beside it,
 	"<name> (recovered).<suffix>", numbered if that is taken
@@ -2455,6 +2521,25 @@ bool QETDiagramEditor::openAndAddProject(
 	QETUtils::FontRestorationScope font_scope;
 
 	QETProject *project = new QETProject(filepath);
+		//A .qetdb whose content is not what was saved, though every other
+		//check passes (another program changed it): the user goes back to
+		//the saved state or opens it with its changes, rather than being
+		//locked out of it (QETDB-S4C-PLAN.md P5). Cancel: the choices of a
+		//damaged file follow
+	for (bool can_go_back = true ; interactive && project->state() == QETProject::XmlParsingFailed
+			 && project->qetdbRepair().content_differs ; ) {
+		const QetDbFile::OutsideEdit outside = askOutsideEdit(filepath, project->qetdbRepair(), can_go_back);
+		if (outside == QetDbFile::OutsideEdit::Refuse) break;
+		delete project;
+		project = new QETProject(filepath, outside);
+		if (outside == QetDbFile::OutsideEdit::BackToSave && project->state() != QETProject::Ok) {
+			QET::QetMessageBox::warning(this, tr("Cannot go back to the saved state"),
+										tr("The other program rewrote too much of %1 for its repair data "
+										   "to rebuild the state QElectroTech saved.")
+										.arg(QFileInfo(filepath).fileName()));
+			can_go_back = false;
+		}
+	}
 	if (project -> state() != QETProject::Ok)
 	{
 			//A damaged project: its previous version or what can be read
@@ -2500,6 +2585,11 @@ bool QETDiagramEditor::openAndAddProject(
 	QETApp::projectsRecentFiles() -> fileWasOpened(filepath);
 	addProject(project);
 	DialogWaiting::dropInstance();
+	tellRepair(interactive ? project : nullptr);
+	if (!interactive) {
+		const QetDbFile::Repair repaired = project->qetdbRepair();
+		if (repaired.repaired() || repaired.kept_changes) project->setModified(true);
+	}
 
 	if (interactive && project->isFromLaterVersion()) {
 		QET::QetMessageBox::warning(
