@@ -2093,4 +2093,4 @@ add_executable(
 add_test(NAME tst_borderpropertiespaper COMMAND tst_borderpropertiespaper)
 set_tests_properties(tst_borderpropertiespaper PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_borderpropertiespaper PRIVATE ${QET_DIR}/sources ${QET_DIR}/sources/ui)
-target_link_libraries(tst_borderpropertiespaper PRIVATE Qt::Test Qt::Widgets Qt::Xml Qt::Svg Qt::Sql Qt::PrintSupport Qt::Concurrent)
+target_link_libraries(tst_borderpropertiespaper PRIVATE Qt::Test Qt::Widgets Qt::Xml Qt::Svg Qt::Sql Qt::PrintSupport Qt::Concurrent pugixml::pugixml)
