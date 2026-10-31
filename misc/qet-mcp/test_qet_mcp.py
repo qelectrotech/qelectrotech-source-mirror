@@ -437,6 +437,8 @@ class EditValidation(unittest.TestCase):
             "set_element_text": el + [{"op": "set_element_text", "folio": "$f", "element": "$e", "index": 0,
                                        "property": "x", "value": "5"}],
             "delete_element_text": el + [{"op": "delete_element_text", "folio": "$f", "element": "$e", "index": 0}],
+            "place_element_texts": el + [{"op": "place_element_texts", "folio": "$f", "elements": ["$e"],
+                                          "where": "top-left"}],
             "add_cable": [f, {"op": "add_cable", "id": "k", "folio": "$f", "designation": "-W1",
                               "type": "NYM-J 3x1,5", "core_colors": ["BN", "BU", "GNYE"],
                               "length": "2 m", "x1": 0, "y1": 0, "x2": 100, "y2": 0}],
