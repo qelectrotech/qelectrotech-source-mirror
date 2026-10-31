@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- Extension lines -->
+  <line x1="2" y1="4" x2="2" y2="20" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="12" y1="4" x2="12" y2="20" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="22" y1="4" x2="22" y2="20" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Dimension lines -->
+  <line x1="2" y1="12" x2="12" y2="12" stroke="#2563eb" stroke-width="1.5"/>
+  <line x1="12" y1="12" x2="22" y2="12" stroke="#059669" stroke-width="1.5"/>
+  <!-- Arrows / ticks -->
+  <polygon points="2,12 6,10 6,14" fill="#2563eb"/>
+  <polygon points="12,12 8,10 8,14" fill="#2563eb"/>
+  <polygon points="12,12 16,10 16,14" fill="#059669"/>
+  <polygon points="22,12 18,10 18,14" fill="#059669"/>
+</svg>
+

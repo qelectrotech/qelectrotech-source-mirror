@@ -30,6 +30,7 @@
 #include "cable/cablecopy.h"
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
+#include "diagramevent/diagrameventadddimension.h"
 #include "bridge/bridgepart.h"
 #include "bridge/bridgeundocommands.h"
 #include "diagramevent/diagrameventaddelement.h"
@@ -890,7 +891,8 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 
 	const int movable = DiagramContent::Elements | DiagramContent::TextFields
 					   | DiagramContent::Images | DiagramContent::Shapes
-					   | DiagramContent::Tables | DiagramContent::TerminalStrip;
+					   | DiagramContent::Tables | DiagramContent::TerminalStrip
+					   | DiagramContent::Dimensions;
 	for (QGraphicsItem *item : pasted.items(movable))
 		item->setPos(item->pos() + offset);
 		//The new line is stamped beside the original like everything
@@ -1243,6 +1245,8 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 */
 void DiagramView::updatePointer(const QPoint &viewport_pos, Qt::MouseButtons buttons)
 {
+	const bool isDimensionTool = m_diagram && m_diagram->dimensionToolIsRunning();
+
 	if (!pointerAids()) {
 			//Switched off: hand the pointer back once, then leave it to
 			//the view and the items, as before
@@ -1251,6 +1255,9 @@ void DiagramView::updatePointer(const QPoint &viewport_pos, Qt::MouseButtons but
 			m_pointer_set = false;
 			viewport()->unsetCursor();
 			viewport()->update(crosshairArea(m_crosshair_pos));
+		}
+		if (isDimensionTool) {
+			viewport()->setCursor(DiagramEventAddDimension::dimensionCursor());
 		}
 		return;
 	}
@@ -1282,11 +1289,17 @@ void DiagramView::updatePointer(const QPoint &viewport_pos, Qt::MouseButtons but
 
 	Pointer pointer = Pointer::System;
 	if (m_crosshair_visible && crosshairShown() && m_diagram
-			&& m_diagram->border_and_titleblock.insideBorderRect().contains(m_crosshair_pos))
-		pointer = movable ? Pointer::Move : Pointer::Arrow;
+			&& m_diagram->border_and_titleblock.insideBorderRect().contains(m_crosshair_pos)) {
+		if (isDimensionTool)
+			pointer = Pointer::Dimension;
+		else
+			pointer = movable ? Pointer::Move : Pointer::Arrow;
+	}
 
 	if (pointer != Pointer::System)
 		viewport()->setCursor(Qt::BlankCursor);
+	else if (isDimensionTool)
+		viewport()->setCursor(DiagramEventAddDimension::dimensionCursor());
 	else if (!m_event_interface)
 		viewport()->setCursor(movable ? Qt::SizeAllCursor : Qt::ArrowCursor);
 	else if (m_pointer != Pointer::System)
@@ -1319,6 +1332,30 @@ void DiagramView::drawPointer(QPainter *painter) const
 	if (m_pointer == Pointer::Arrow)
 	{
 		path.addPolygon(QPolygonF({{0, 0}, {0, 16}, {4, 12}, {7, 18}, {9.5, 17}, {6.5, 11}, {11.5, 11}, {0, 0}}));
+	}
+	else if (m_pointer == Pointer::Dimension)
+	{
+		path.addPolygon(QPolygonF({{0, 0}, {0, 16}, {4, 12}, {7, 18}, {9.5, 17}, {6.5, 11}, {11.5, 11}, {0, 0}}));
+		painter->drawPath(path);
+
+		painter->save();
+		QPen haloPen(Qt::white, 2.5, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
+		painter->setPen(haloPen);
+		painter->drawLine(QPointF(13, 5), QPointF(13, 15));
+		painter->drawLine(QPointF(27, 5), QPointF(27, 15));
+		painter->drawLine(QPointF(13, 10), QPointF(27, 10));
+
+		QPen darkPen(Qt::black, 1.2, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
+		painter->setPen(darkPen);
+		painter->drawLine(QPointF(13, 5), QPointF(13, 15));
+		painter->drawLine(QPointF(27, 5), QPointF(27, 15));
+		painter->drawLine(QPointF(13, 10), QPointF(27, 10));
+		painter->drawLine(QPointF(13, 10), QPointF(16, 7.5));
+		painter->drawLine(QPointF(13, 10), QPointF(16, 12.5));
+		painter->drawLine(QPointF(27, 10), QPointF(24, 7.5));
+		painter->drawLine(QPointF(27, 10), QPointF(24, 12.5));
+		painter->restore();
+		return;
 	}
 	else
 	{
@@ -2186,9 +2223,11 @@ QRect DiagramView::crosshairArea(const QPointF &scene_pos) const
 {
 	const QPoint p = mapFromScene(scene_pos);
 	const QRect all = viewport()->rect();
+	const int pw = (m_pointer == Pointer::Dimension) ? 45 : 29;
+	const int ph = (m_pointer == Pointer::Dimension) ? 40 : 35;
 	return QRect(all.left(), p.y() - 2, all.width(), 5)
 			| QRect(p.x() - 2, all.top(), 5, all.height())
-			| QRect(p.x() - 14, p.y() - 14, 29, 35);	//the pointer drawn on it
+			| QRect(p.x() - 14, p.y() - 14, pw, ph);	//the pointer drawn on it
 }
 
 /**

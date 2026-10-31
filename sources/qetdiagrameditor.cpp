@@ -52,6 +52,7 @@
 #include "diagramevent/diagrameventaddpdf.h"
 #endif
 #include "diagramevent/diagrameventaddshape.h"
+#include "diagramevent/diagrameventadddimension.h"
 #include "diagramevent/diagrameventaddpath.h"
 #include "diagramevent/diagrameventaddcable.h"
 #include "diagramevent/diagrameventaddbridge.h"
@@ -1679,6 +1680,8 @@ void QETDiagramEditor::setUpActions()
 		//Not an element of the drawing but a line drawn across the
 		//conductors: what it crosses becomes the cores of a cable.
 	m_add_cable		   = m_add_item_actions_group.addAction(QET::Icons::Cable,      tr("Draw a cable"));
+	m_add_dimension_linear = m_add_item_actions_group.addAction(QET::Icons::DimensionLinear, tr("Add linear dimension"));
+	m_add_dimension_chain  = m_add_item_actions_group.addAction(QET::Icons::DimensionChain,  tr("Add chain dimension"));
 		//A bridge across terminals: what it crosses becomes the terminals
 		//the bridge lands on.
 	m_add_bridge	   = m_add_item_actions_group.addAction(QET::Icons::Bridge,     tr("Draw a bridge"));
@@ -1698,6 +1701,8 @@ void QETDiagramEditor::setUpActions()
 	add_terminal_strip->setStatusTip(tr("Adds a terminal plan to the current sheet"));
 	add_generic_device->setStatusTip(tr("Makes a box symbol with terminals on any side and places it on the current sheet"));
 	m_add_cable     ->setStatusTip(tr("Draws the main line of a cable: every conductor crossed becomes one of its cores"));
+	m_add_dimension_linear->setStatusTip(tr("Adds a linear dimension to the current sheet"));
+	m_add_dimension_chain ->setStatusTip(tr("Adds a chain dimension to the current sheet"));
 	m_add_bridge    ->setStatusTip(tr("Draws a bridge over terminals: every terminal crossed becomes one of its connections"));
 
 	add_text     ->setData(QStringLiteral("text"));
@@ -1715,6 +1720,8 @@ void QETDiagramEditor::setUpActions()
 	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
 	add_generic_device->setData(QStringLiteral("generic_device"));
 	m_add_cable     ->setData(QStringLiteral("cable"));
+	m_add_dimension_linear->setData(QStringLiteral("dimension_linear"));
+	m_add_dimension_chain ->setData(QStringLiteral("dimension_chain"));
 	m_add_bridge    ->setData(QStringLiteral("bridge"));
 
 	add_text->setCheckable(true);
@@ -1727,6 +1734,8 @@ void QETDiagramEditor::setUpActions()
 	m_add_cable->setCheckable(true);
 	m_add_bridge->setCheckable(true);
 	add_fillet->setCheckable(true);
+	m_add_dimension_linear->setCheckable(true);
+	m_add_dimension_chain->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
 		//No default key, but an id: they can then be found by the command
@@ -1956,6 +1965,9 @@ void QETDiagramEditor::setUpMenu()
 	m_add_item_menu = menu_edition -> addMenu(tr("&Add"));
 	m_add_item_menu -> setIcon(QET::Icons::Add);
 	m_add_item_menu -> addActions(m_add_item_actions_group.actions());
+	QMenu *tape_menu = menu_edition -> addMenu(QET::Icons::DimensionLinear, tr("Tape measure"));
+	tape_menu -> addAction(m_add_dimension_linear);
+	tape_menu -> addAction(m_add_dimension_chain);
 	menu_edition -> addSeparator();
 		//The menu had grown to over forty entries and no longer fitted on a
 		//laptop screen (issue #1336). Whole families now sit one level down,
@@ -3205,6 +3217,14 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 	{
 		diagram_event = new DiagramEventAddPath (d);
 	}
+	else if (value == "dimension_linear")
+	{
+		diagram_event = new DiagramEventAddDimension (d, DimensionItem::Linear);
+	}
+	else if (value == "dimension_chain")
+	{
+		diagram_event = new DiagramEventAddDimension (d, DimensionItem::Chain);
+	}
 	else if (value == QLatin1String("cable"))
 	{
 			//The rule the number comes from -- or the word about there
@@ -3698,12 +3718,14 @@ void QETDiagramEditor::slot_updateComplexActions()
 	int selected_conductors_count = diagram_->selectedConductors().count();
 	m_conductor_reset->setEnabled(!ro && selected_conductors_count);
 
-	// number of selected elements
+	// number of selected elements and dimensions
 	int selected_elements_count = dc.count(DiagramContent::Elements);
+	int selected_dimensions_count = dc.count(DiagramContent::Dimensions);
 	m_find_element->setEnabled(selected_elements_count == 1);
 	m_contact_display->setEnabled(!ro && selectedContactMaster(diagram_));
-	m_copy_text_format->setEnabled(selected_elements_count >= 1);
-	m_apply_text_format->setEnabled(!ro && selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern());
+	m_copy_text_format->setEnabled(selected_elements_count >= 1 || selected_dimensions_count >= 1);
+	m_apply_text_format->setEnabled(!ro && ((selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern()) ||
+	                                        (selected_dimensions_count >= 1 && DimensionFormatPattern::hasPattern())));
 	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
 	m_mirror_horizontal->setEnabled(!ro && selected_elements_count);
 	m_mirror_vertical->setEnabled(!ro && selected_elements_count);
@@ -5609,12 +5631,22 @@ void QETDiagramEditor::copyTextFormat()
 	DiagramView *dv = currentDiagramView();
 	if (!dv || !dv->diagram()) return;
 
+	DimensionItem *sourceDim = nullptr;
 	Element *sourceElmt = nullptr;
+
 	for (QGraphicsItem *item : dv->diagram()->selectedItems()) {
-		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
+		if (DimensionItem *dim = qgraphicsitem_cast<DimensionItem *>(item)) {
+			sourceDim = dim;
+		} else if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
 			sourceElmt = elmt;
-			break;
 		}
+	}
+
+	if (sourceDim) {
+		DimensionFormatPattern::setCurrentPattern(sourceDim->properties());
+		slot_updateComplexActions();
+		statusBar()->showMessage(tr("Dimension format copied"), 3000);
+		return;
 	}
 
 	if (!sourceElmt) return;
@@ -5654,25 +5686,42 @@ void QETDiagramEditor::placeSymbolTexts(Qt::Alignment where)
 
 void QETDiagramEditor::applyTextFormat()
 {
-	if (!ElementTextFormatPattern::hasPattern()) return;
-
 	DiagramView *dv = currentDiagramView();
-	if (!dv || !dv->diagram()) return;
-	if (dv->diagram()->isReadOnly()) return;
+	if (!dv || !dv->diagram() || dv->diagram()->isReadOnly()) return;
 
-	QList<Element *> targetElements;
-	for (QGraphicsItem *item : dv->diagram()->selectedItems()) {
-		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
-			targetElements.append(elmt);
+	bool applied = false;
+
+	if (DimensionFormatPattern::hasPattern()) {
+		QList<DimensionItem *> targetDimensions;
+		for (QGraphicsItem *item : dv->diagram()->selectedItems()) {
+			if (DimensionItem *dim = qgraphicsitem_cast<DimensionItem *>(item)) {
+				targetDimensions.append(dim);
+			}
+		}
+		if (!targetDimensions.isEmpty()) {
+			const DimensionProperties &pattern = DimensionFormatPattern::currentPattern();
+			dv->diagram()->undoStack().push(new ApplyDimensionFormatCommand(targetDimensions, pattern));
+			statusBar()->showMessage(tr("Dimension format applied to %n dimension(s)", "", targetDimensions.size()), 3000);
+			applied = true;
 		}
 	}
 
-	if (targetElements.isEmpty()) return;
-
-	const ElementTextFormatPattern &pattern = ElementTextFormatPattern::currentPattern();
-	dv->diagram()->undoStack().push(new ApplyElementTextFormatCommand(targetElements, pattern));
-
-	statusBar()->showMessage(tr("Text format applied to %n element(s)", "", targetElements.size()), 3000);
+	if (ElementTextFormatPattern::hasPattern()) {
+		QList<Element *> targetElements;
+		for (QGraphicsItem *item : dv->diagram()->selectedItems()) {
+			if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
+				targetElements.append(elmt);
+			}
+		}
+		if (!targetElements.isEmpty()) {
+			const ElementTextFormatPattern &pattern = ElementTextFormatPattern::currentPattern();
+			dv->diagram()->undoStack().push(new ApplyElementTextFormatCommand(targetElements, pattern));
+			if (!applied) {
+				statusBar()->showMessage(tr("Text format applied to %n element(s)", "", targetElements.size()), 3000);
+			}
+			applied = true;
+		}
+	}
 }
 
 /**
