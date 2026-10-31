@@ -49,6 +49,11 @@ namespace QetSettings
 	bool liveAskFirst();
 	void setLiveAskFirst(bool ask);
 
+		// Whether labels differing only in letter case (K1, k1) are distinct
+		// for the duplicate check.
+	bool duplicateLabelsCaseSensitive();
+	void setDuplicateLabelsCaseSensitive(bool sensitive);
+
 	/**
 		@brief Free-text drawing conventions for this installation (grid,
 		flow direction, routing, tagging, grouping, ...), written once by
