@@ -18,6 +18,7 @@
 #include "generalconfigurationpage.h"
 
 #include "../../qetgraphicsitem/dynamicelementtextitem.h"
+#include "../../connectionsymbols.h"
 #include "../../scripting/liveserver.h"
 #include "../../scripting/assistantinfo.h"
 
@@ -128,6 +129,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_mouse_gestures_cb->setChecked(settings.value("diagrameditor/mouse_gestures", true).toBool());
 	ui->m_pointer_aids_cb->setChecked(DiagramView::pointerAids());
 	ui->m_vertical_texts_from_bottom_cb->setChecked(DynamicElementTextItem::verticalFromBottom());
+	ui->m_junction_replaces_cb->setChecked(ConnectionSymbols::newJunctionReplacesOld());
 	ui->m_dock_fold_cb->setChecked(DockFold::enabled());
 	ui->m_narrow_docks_cb->setChecked(DockFit::enabled());
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
@@ -452,6 +454,7 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/context_toolbar", ui->m_context_toolbar_cb->isChecked());
 	settings.setValue("diagrameditor/mouse_gestures", ui->m_mouse_gestures_cb->isChecked());
 	DiagramView::setPointerAids(ui->m_pointer_aids_cb->isChecked());
+	ConnectionSymbols::setNewJunctionReplacesOld(ui->m_junction_replaces_cb->isChecked());
 	if (ui->m_vertical_texts_from_bottom_cb->isChecked() != DynamicElementTextItem::verticalFromBottom())
 		DynamicElementTextItem::setVerticalFromBottom(ui->m_vertical_texts_from_bottom_cb->isChecked());
 	DockFold::setEnabled(ui->m_dock_fold_cb->isChecked());

@@ -29,6 +29,8 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../qet.h"
 #include "../autobreakconductor.h"
+#include "../connectionsymbols.h"
+#include "../diagramcontent.h"
 #include <QPainterPath>
 #include <limits>
 
@@ -224,6 +226,63 @@ bool DiagramEventAddElement::buildElement()
 	return true;
 }
 
+namespace {
+	bool isJunction(Element *element)
+	{
+		return ConnectionSymbols::isJunction(element->location());
+	}
+
+	/**
+		With ConnectionSymbols::newJunctionReplacesOld(), a corner or
+		T-junction @a element placed where another one stands takes its
+		place: the old one goes, and each of its wires goes to the new
+		one's terminal at the same point, keeping its properties. A wire
+		with no such terminal goes with the old symbol.
+		@return the symbols replaced, still on the folio until @a parent
+		is pushed
+	*/
+	QList<Element *> replaceJunctions(Diagram *diagram, Element *element,
+					  Element *preview, QUndoCommand *parent)
+	{
+		QList<Element *> replaced;
+		if (!ConnectionSymbols::newJunctionReplacesOld() || !isJunction(element))
+			return replaced;
+		for (Element *old : diagram->elements()) {
+			if (old == element || old == preview
+			    || QLineF(old->scenePos(), element->scenePos()).length() > 0.5
+			    || !isJunction(old))
+				continue;
+			replaced << old;
+			DiagramContent content;
+			content.m_elements << old;
+			for (Conductor *c : old->conductors())
+				if (!content.m_other_conductors.contains(c))
+					content.m_other_conductors << c;
+			new DeleteQGraphicsItemCommand(diagram, content, parent);
+			for (Conductor *c : std::as_const(content.m_other_conductors)) {
+				const bool first_is_old = c->terminal1->parentElement() == old;
+				Terminal *at_old = first_is_old ? c->terminal1 : c->terminal2;
+				Terminal *other = first_is_old ? c->terminal2 : c->terminal1;
+				if (other->parentElement() == old)
+					continue;
+				Terminal *taker = nullptr;
+				for (Terminal *t : element->terminals())
+					if (QLineF(t->dockConductor(), at_old->dockConductor()).length() < 0.5)
+						taker = t;
+				if (!taker)
+					continue;
+				auto *moved = new Conductor(taker, other);
+				moved->setProperties(c->properties());
+				new AddGraphicsObjectCommand(moved, diagram, QPointF(), parent);
+			}
+		}
+			//Not in the way of the wiring below
+		for (Element *old : std::as_const(replaced))
+			diagram->removeItem(old);
+		return replaced;
+	}
+}
+
 /**
 	@brief DiagramEventAddElement::addElement
 	Add an element at the current pos and current rotation,
@@ -261,6 +320,7 @@ void DiagramEventAddElement::addElement()
 	//added to the scene so new conductor are created between terminal of the new element
 	//and the opposite terminal of m_element.
 	m_diagram->removeItem(m_element);
+	const QList<Element *> replaced = replaceJunctions(m_diagram, element, m_element, undo_object);
 
 		//Auto break conductor: if a terminal of the new element lies on an existing
 		//conductor, break the conductor and reconnect through the new element's terminal.
@@ -292,6 +352,9 @@ void DiagramEventAddElement::addElement()
 		}
 	}
 	m_diagram->addItem(m_element);
+		//Back until the push takes them away for good, as an undo would
+	for (Element *old : replaced)
+		m_diagram->addItem(old);
 
 		//Autonum the new element before pushing undo_object, so the counter
 		//change it triggers is part of the same undo macro as the element's
