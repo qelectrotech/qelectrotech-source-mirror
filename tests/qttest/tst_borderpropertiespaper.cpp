@@ -21,6 +21,7 @@
 
 #include <QtTest>
 #include <QComboBox>
+#include <QLabel>
 #include <QSpinBox>
 
 TitleBlockTemplate *QETApp::defaultTitleBlockTemplate() { return nullptr; }
@@ -68,6 +69,22 @@ class tst_borderpropertiespaper : public QObject
 				if (again != first) ++bad;
 			}
 		QCOMPARE(bad, 0);
+	}
+
+	/// Issue 1662: a folio with no paper size says which paper holds it
+	/// and how much is left, so the last row can end at the title block
+	void custom_folio_reports_free_space()
+	{
+		BorderProperties bp;
+		BorderPropertiesWidget w(bp);
+		w.setTitleBlockSize(50, Qt::BottomEdge);
+		auto *label = w.findChildren<QLabel *>().last();
+		auto *cw = w.findChild<QSpinBox *>("m_columns_width_sp");
+		auto *rh = w.findChild<QSpinBox *>("m_rows_height_sp");
+		cw->setValue(41);
+		rh->setValue(47);
+		QVERIFY2(label->text().contains("Smallest paper"), qPrintable(label->text()));
+		QVERIFY2(label->text().contains("Folio size:"), qPrintable(label->text()));
 	}
 };
 

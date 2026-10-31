@@ -22,6 +22,9 @@
 #include "../titleblocktemplate.h"
 #include "ui_borderpropertieswidget.h"
 
+#include <QGridLayout>
+#include <QLabel>
+
 #include <iterator>
 #include <tuple>
 
@@ -118,6 +121,11 @@ BorderPropertiesWidget::BorderPropertiesWidget(const BorderProperties &bp, QWidg
 		ui->m_paper_cb->addItem(QString::fromLatin1(paper.name));
 	ui->m_orientation_cb->addItem(tr("Landscape"));
 	ui->m_orientation_cb->addItem(tr("Portrait"));
+
+	m_folio_size_label = new QLabel(this);
+	m_folio_size_label->setWordWrap(true);
+	if (auto *grid = qobject_cast<QGridLayout *>(ui->border_gb->layout()))
+		grid->addWidget(m_folio_size_label, grid->rowCount(), 0, 1, grid->columnCount());
 
 	if (TitleBlockTemplate *tbt = QETApp::defaultTitleBlockTemplate())
 		m_titleblock_height = tbt->height();
@@ -317,4 +325,57 @@ void BorderPropertiesWidget::showMatchingPaperSize()
 	ui->m_paper_cb->setCurrentIndex(found);
 	ui->m_orientation_cb->setCurrentIndex(orientation);
 	ui->m_orientation_cb->setEnabled(found > 0);
+	showFolioSize();
+}
+
+/**
+	@brief BorderPropertiesWidget::showFolioSize
+	Show the size of the folio, title block included, and for a folio that
+	has no paper size the smallest paper that holds it and what is left
+	over, so the last row can be made to end at the title block.
+*/
+void BorderPropertiesWidget::showFolioSize()
+{
+	int width  = qRound(m_properties.rows_header_width) + 1
+			+ ui->m_colums_count_sp->value() * ui->m_columns_width_sp->value();
+	int height = qRound(m_properties.columns_header_height) + 1
+			+ ui->m_rows_count_sp->value() * ui->m_rows_height_sp->value();
+	if (m_titleblock_edge == Qt::BottomEdge)
+		height += m_titleblock_height;
+	else
+		width += m_titleblock_height;
+	const auto mm = [](int px) { return qRound(px * 25.4 / 96.0); };
+
+	QString text = tr("Folio size: %1 × %2 mm").arg(mm(width)).arg(mm(height));
+	if (ui->m_paper_cb->currentIndex() == 0)
+	{
+		const PaperSize *best = nullptr;
+		bool best_landscape = true;
+		for (const PaperSize &paper : paper_sizes)
+		{
+			for (bool landscape : {true, false})
+			{
+				const int pw = mmToPx(landscape ? paper.width_mm  : paper.height_mm);
+				const int ph = mmToPx(landscape ? paper.height_mm : paper.width_mm);
+				if (pw >= width && ph >= height &&
+					(!best || paper.width_mm * paper.height_mm < best->width_mm * best->height_mm))
+				{
+					best = &paper;
+					best_landscape = landscape;
+				}
+			}
+		}
+		if (best)
+		{
+			const int pw = mmToPx(best_landscape ? best->width_mm  : best->height_mm);
+			const int ph = mmToPx(best_landscape ? best->height_mm : best->width_mm);
+			text += tr(". Smallest paper that holds it: %1 %2, %3 mm free across and %4 mm free down")
+					.arg(QString::fromLatin1(best->name),
+						 best_landscape ? tr("landscape") : tr("portrait"))
+					.arg(mm(pw - width)).arg(mm(ph - height));
+		}
+		else
+			text += tr(". It is larger than A0");
+	}
+	m_folio_size_label->setText(text);
 }
