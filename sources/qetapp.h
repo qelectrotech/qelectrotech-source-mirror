@@ -338,6 +338,9 @@ class QETApp : public QObject
 		void initSystemTray();
 		void buildSystemTrayMenu();
 		void checkBackupFiles();
+		void reopenLastProjects();
+			/// A file was handed over by another instance during start-up
+		bool m_files_received = false;
 		void offerBackupFiles(const QList<KAutoSaveFile *> &stale_files,
 				      const QList<WorkingCopyRecovery::LeftWorkingCopy> &working_copies);
 		void checkCrashDump();
