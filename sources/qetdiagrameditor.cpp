@@ -77,6 +77,7 @@
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qeticons.h"
+#include "ui/dockfold.h"
 #include "ui/dockfit.h"
 #include "qetmessagebox.h"
 #include "recentfiles.h"
@@ -340,6 +341,23 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 		//the way while there are none.
 	if (m_script_actions.isEmpty()) m_scripts_tool_bar->hide();
 #endif
+		//A bar at each side of the drawing folds its docks away, also
+		//from the Display menu
+	auto *fold_right = new DockFold(this, Qt::RightDockWidgetArea);
+	auto *fold_left = new DockFold(this, Qt::LeftDockWidgetArea);
+	fold_right->action()->setData(QStringLiteral("fold_right_docks"));
+	fold_left->action()->setData(QStringLiteral("fold_left_docks"));
+	ShortcutManager::instance().registerAction(
+		fold_right->action(), "diagrameditor.fold_right_docks",
+		tr("Diagram editors"), Qt::CTRL | Qt::Key_F5);
+	ShortcutManager::instance().registerAction(
+		fold_left->action(), "diagrameditor.fold_left_docks",
+		tr("Diagram editors"), Qt::CTRL | Qt::SHIFT | Qt::Key_F5);
+	if (auto *display_menu = findChild<QMenu *>(QStringLiteral("display_menu"))) {
+		display_menu->addSeparator();
+		display_menu->addAction(fold_left->action());
+		display_menu->addAction(fold_right->action());
+	}
 
 		//If valid file path is given as arguments
 	uint opened_projects = 0;
@@ -1875,6 +1893,7 @@ void QETDiagramEditor::setUpMenu()
 	QMenu* menu_numbering = new QMenu(tr("Numbering"), this);
 	QMenu* menu_lists     = new QMenu(tr("Lists"), this);
 	QMenu* menu_affichage = new QMenu(tr("Displ&ay"), this);
+	menu_affichage->setObjectName(QStringLiteral("display_menu"));
 	// QMenu *menu_outils    = new QMenu(tr("O&utils"), this);
 	windows_menu = new QMenu(tr("Wi&ndows"), this);
 
