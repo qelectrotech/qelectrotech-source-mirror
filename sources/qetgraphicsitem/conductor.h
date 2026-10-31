@@ -189,6 +189,7 @@ class Conductor : public QGraphicsObject
 
 	public:
 		void setFreezeLabel(bool freeze);
+		bool isFreezeLabel() const { return m_freeze_label; }
 		bool markReplacesText() const;
 	
 	public slots:

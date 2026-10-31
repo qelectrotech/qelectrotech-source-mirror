@@ -226,6 +226,7 @@ namespace QET {
 		extern QIcon it;
 		extern QIcon jp;
 		extern QIcon ko;
+		extern QIcon lv;
 		extern QIcon pl;
 		extern QIcon pt;
 		extern QIcon ro;

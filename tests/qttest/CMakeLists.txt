@@ -389,10 +389,21 @@ function(qet_add_app_test name)
   target_link_libraries(${name} PRIVATE qelectrotech_objects Qt::Test)
 endfunction()
 
+# Connectivity-aware duplicate labels and clickable occurrences, through the
+# real application.
+qet_add_app_test(tst_duplicatelabels tst_duplicatelabels.cpp)
+target_compile_definitions(tst_duplicatelabels PRIVATE
+  QET_TEST_TRANSLATIONS_DIR="${CMAKE_BINARY_DIR}/lang")
+add_dependencies(tst_duplicatelabels qelectrotech_lrelease)
 # A conductor's colour and section at a slanted stroke across it.
 qet_add_app_test(tst_conductordefinitionmark tst_conductordefinitionmark.cpp)
 target_compile_definitions(tst_conductordefinitionmark PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
+# The projects of the last session are opened again at start, and the
+# ones open when the editor closes are kept for the next start.
+qet_add_app_test(tst_reopenprojects tst_reopenprojects.cpp)
+target_compile_definitions(tst_reopenprojects PRIVATE
+  QET_FIXTURE="${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet")
 
 # Space on a picture turns its own transform, which the file saves (#1413),
 # alone and with a group.
@@ -455,6 +466,13 @@ qet_add_app_test(tst_dockfold tst_dockfold.cpp)
 # View > Snap to the grid switches every snap off and on, as Ctrl held does;
 # View > Grid step sets a fine, medium or coarse step.
 qet_add_app_test(tst_gridsnap tst_gridsnap.cpp)
+
+# The docks of the right side could not be made narrower than about 310 px:
+# the Assistant's check box text never wraps, the Auto numbering fields
+# never shrink.
+qet_add_app_test(tst_dockminwidth tst_dockminwidth.cpp)
+# Without the setting "Narrow docks" (the default) they stay as before.
+qet_add_app_test(tst_dockfitoff tst_dockfitoff.cpp)
 
 # Opening a project before the elements panel's first reload() left its tree
 # item detached, and selecting the item's first child crashed in QTreeModel
@@ -559,6 +577,16 @@ add_executable(
 add_test(NAME tst_smart_device COMMAND tst_smart_device)
 target_include_directories(tst_smart_device PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_smart_device PRIVATE Qt::Test Qt::Sql)
+
+# BomExport::groupedQuery(): identical parts become one line, quantities added.
+add_executable(
+  tst_groupedbom
+  tst_groupedbom.cpp
+  ${QET_DIR}/sources/bomexport.cpp
+  ${QET_DIR}/sources/bomexport.h)
+add_test(NAME tst_groupedbom COMMAND tst_groupedbom)
+target_include_directories(tst_groupedbom PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_groupedbom PRIVATE Qt::Test Qt::Sql)
 
 # qet.cpp carries the SingleApplication argument wire format
 # (joinWithSpaces/splitWithSpaces); it pulls in qeticons and shortcutmanager,
@@ -1983,6 +2011,9 @@ target_compile_definitions(tst_uprighttexts PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
 
 # New tests go above this line: the blocks below apply to the tests above them.
+# The selection properties dock scrolls its editors in a low window rather
+# than its smallest height pushing the dock below over its last rows.
+qet_add_app_test(tst_propertiesdockscroll tst_propertiesdockscroll.cpp)
 
 # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
 # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
