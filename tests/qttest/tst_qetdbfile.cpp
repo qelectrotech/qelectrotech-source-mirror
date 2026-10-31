@@ -327,6 +327,9 @@ private slots:
 	// the project's own file not (QETDB-S6-SCOPE.md R4)
 	void historyGoesOnInACopy()
 	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif
@@ -510,6 +513,9 @@ private slots:
 	// oldest kept one still to go back to (QETDB-S6-SCOPE.md S6-6)
 	void historyKeepsTheLastSaves()
 	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif

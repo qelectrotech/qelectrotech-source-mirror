@@ -126,6 +126,21 @@ else()
         "without a backtrace")
 endif()
 
+# Homebrew's sqlite has the session extension the history of saves needs
+# (see below) but is keg-only, so find_package() does not see it unless
+# pointed at it (#1667)
+if(APPLE AND NOT SQLite3_ROOT AND NOT DEFINED ENV{SQLite3_ROOT})
+    find_program(BREW_EXECUTABLE brew)
+    if(BREW_EXECUTABLE)
+        execute_process(COMMAND ${BREW_EXECUTABLE} --prefix sqlite
+                        OUTPUT_VARIABLE BREW_SQLITE_PREFIX
+                        OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET)
+        if(EXISTS "${BREW_SQLITE_PREFIX}/include/sqlite3.h")
+            set(SQLite3_ROOT "${BREW_SQLITE_PREFIX}")
+        endif()
+    endif()
+endif()
+
 find_package(SQLite3 REQUIRED)
 
 # CMake < 4.3 only creates the SQLite::SQLite3 target (no SQLite3::SQLite3
