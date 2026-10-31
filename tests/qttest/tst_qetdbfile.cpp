@@ -269,6 +269,23 @@ private slots:
 		QVERIFY2(code == 1 && out.contains(QStringLiteral("keeps no history")), qPrintable(out));
 	}
 
+	// Built with an SQLite that has no session extension (the macOS SDK's,
+	// #1667), a history is refused, saying why, and the file is left as it was
+	void historyRefusedWithoutSession()
+	{
+#ifdef QET_HAS_SQLITE_SESSION
+		QSKIP("this build's SQLite has the session extension");
+#endif
+		const QString path = m_dir.filePath(QStringLiteral("nosession.qetdb"));
+		QVERIFY(QFile::copy(industrial(), path));
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		int code = 0;
+		const QString out = run({QStringLiteral("--history-on"), path}, false, &code);
+		QVERIFY2(code == 1 && out.contains(QStringLiteral("no session extension")), qPrintable(out));
+		QCOMPARE(pragma(path, QStringLiteral(
+			"SELECT count(*) FROM sqlite_master WHERE name IN ('revision', 'revision_changes')")).toInt(), 0);
+	}
+
 	// Told to, each save is a revision: who, when, and the rows it changed,
 	// as SQLite's session extension finds them between the file it replaces
 	// and the new one. The file still opens from its tables, and the
@@ -277,6 +294,9 @@ private slots:
 	{
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+#ifndef QET_HAS_SQLITE_SESSION
+		QSKIP("needs SQLite's session extension, which this build's SQLite has not");
 #endif
 		const QString path = m_dir.filePath(QStringLiteral("history.qetdb"));
 		QVERIFY(QFile::copy(industrial(), path));
@@ -323,6 +343,9 @@ private slots:
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif
+#ifndef QET_HAS_SQLITE_SESSION
+		QSKIP("needs SQLite's session extension, which this build's SQLite has not");
+#endif
 		const QString path = m_dir.filePath(QStringLiteral("own.qetdb"));
 		const QString copy = m_dir.filePath(QStringLiteral("copy.qetdb"));
 		QVERIFY(QFile::copy(industrial(), path));
@@ -356,6 +379,9 @@ private slots:
 	{
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+#ifndef QET_HAS_SQLITE_SESSION
+		QSKIP("needs SQLite's session extension, which this build's SQLite has not");
 #endif
 		const QString path = m_dir.filePath(QStringLiteral("revisions.qetdb"));
 		const QString first = m_dir.filePath(QStringLiteral("revisions-first.qetdb"));
@@ -401,6 +427,9 @@ private slots:
 	{
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+#ifndef QET_HAS_SQLITE_SESSION
+		QSKIP("needs SQLite's session extension, which this build's SQLite has not");
 #endif
 		const QString path = m_dir.filePath(QStringLiteral("compare.qetdb"));
 		QVERIFY(QFile::copy(industrial(), path));
@@ -451,6 +480,9 @@ private slots:
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif
+#ifndef QET_HAS_SQLITE_SESSION
+		QSKIP("needs SQLite's session extension, which this build's SQLite has not");
+#endif
 		const QString path = m_dir.filePath(QStringLiteral("blame.qetdb"));
 		QVERIFY(QFile::copy(industrial(), path));
 		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
@@ -496,6 +528,9 @@ private slots:
 	{
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+#ifndef QET_HAS_SQLITE_SESSION
+		QSKIP("needs SQLite's session extension, which this build's SQLite has not");
 #endif
 		const QString path = m_dir.filePath(QStringLiteral("keep.qetdb"));
 		QVERIFY(QFile::copy(industrial(), path));

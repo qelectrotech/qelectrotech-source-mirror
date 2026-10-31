@@ -513,12 +513,27 @@ QString objectKind(const QString &table)
 	return {};
 }
 
+#ifndef QET_HAS_SQLITE_SESSION
+	//Why a build whose SQLite has no session extension (the macOS SDK's,
+	//#1667) cannot keep, compare or undo a history
+QString noSessionError()
+{
+	return QObject::tr("this QElectroTech is built with an SQLite that has no session extension, "
+					   "so it cannot keep or read a history");
+}
+#endif
+
 	//What @p changeset changes: how many symbols, wires, folios and drawn
 	//items (each by the uuid its rows start their key with) and how many
 	//rows of which tables. @p objects, if given, gets a line for each of
 	//them: added or removed when the row of its own table is, else changed
 QString changeSummary(const QByteArray &changeset, QStringList *objects = nullptr)
 {
+#ifndef QET_HAS_SQLITE_SESSION
+	Q_UNUSED(changeset)
+	Q_UNUSED(objects)
+	return QStringLiteral("changes recorded, not readable by this build");
+#else
 	static const QMap<QString, QString> own_table{{QStringLiteral("symbol"), QStringLiteral("element")},
 												  {QStringLiteral("wire"), QStringLiteral("conductor")},
 												  {QStringLiteral("folio"), QStringLiteral("diagram")},
@@ -570,6 +585,7 @@ QString changeSummary(const QByteArray &changeset, QStringList *objects = nullpt
 	return QStringLiteral("%1%2 rows changed").arg(changed.isEmpty() ? QString()
 					: changed.join(QStringLiteral(", ")) + QStringLiteral("; ")).arg(rows)
 			+ (tables.isEmpty() ? QString() : QStringLiteral(" (%1)").arg(tables.join(QStringLiteral(", "))));
+#endif
 }
 
 	//The history @p file keeps cut to the number of saves its
@@ -614,8 +630,12 @@ bool recordRevision(const QString &saving, const QString &previous, QString *err
 			"AND name NOT IN ('qet_format', 'revision', 'revision_changes', 'revision_setting') ORDER BY name")))
 		tables << row.value(0).toString();
 
-	bool recorded = true;
 	QByteArray changeset;
+#ifndef QET_HAS_SQLITE_SESSION
+		//The save goes in the history the file keeps, without its changes
+	const bool recorded = false;
+#else
+	bool recorded = true;
 	sqlite3_session *session = nullptr;
 	if (sqlite3session_create(file.db(), "main", &session) != SQLITE_OK)
 		recorded = false;
@@ -636,6 +656,7 @@ bool recordRevision(const QString &saving, const QString &previous, QString *err
 		sqlite3_free(bytes);
 	}
 	if (session) sqlite3session_delete(session);
+#endif
 
 	const auto parent = file.select(QStringLiteral("SELECT uuid, ord FROM prev.revision ORDER BY ord DESC LIMIT 1"));
 	const QString uuid = QUuid::createUuid().toString(QUuid::WithoutBraces);
@@ -712,6 +733,9 @@ bool windBack(Sqlite &file, qint64 ord, QString *error)
 			"WHERE r.ord > ? ORDER BY r.ord DESC"), {ord})) {
 		if (row.value(1).isNull())
 			return fail(QObject::tr("the changes of revision %1 were not recorded").arg(row.value(0).toString()));
+#ifndef QET_HAS_SQLITE_SESSION
+		return fail(noSessionError());
+#else
 		QByteArray changeset = qUncompress(row.value(1).toByteArray());
 		int size = 0;
 		void *inverse = nullptr;
@@ -727,6 +751,7 @@ bool windBack(Sqlite &file, qint64 ord, QString *error)
 		sqlite3_free(inverse);
 		if (applied != SQLITE_OK || conflicts)
 			return fail(QObject::tr("revision %1 does not undo cleanly").arg(row.value(0).toString()));
+#endif
 	}
 	if (!file.run(QStringLiteral("DELETE FROM revision_changes WHERE revision IN "
 								 "(SELECT uuid FROM revision WHERE ord > ?)"), {ord})
@@ -890,6 +915,10 @@ bool QetDbFile::setHistory(const QString &path, bool on, QString *error)
 	return rewrite(path, path, [on](Sqlite &file, QString *error) {
 		bool ok;
 		if (on) {
+#ifndef QET_HAS_SQLITE_SESSION
+			if (error) *error = noSessionError();
+			return false;
+#endif
 			ok = file.exec(history_schema);
 			if (ok && file.select(QStringLiteral("SELECT 1 FROM revision LIMIT 1")).isEmpty())
 				ok = file.run(QStringLiteral("INSERT INTO revision (uuid, ord, author, host, time, kind, digest) "
@@ -1063,6 +1092,10 @@ QStringList QetDbFile::historyDiff(const QString &path, qint64 from, qint64 to, 
 			if (error) *error = QObject::tr("it keeps no revision %1").arg(ord);
 			return {};
 		}
+#ifndef QET_HAS_SQLITE_SESSION
+	if (error) *error = noSessionError();
+	return {};
+#else
 	QByteArray changes;
 	for (const QVariantList &row : file.select(QStringLiteral(
 			"SELECT r.ord, c.changeset FROM revision r LEFT JOIN revision_changes c ON c.revision = r.uuid "
@@ -1091,6 +1124,7 @@ QStringList QetDbFile::historyDiff(const QString &path, qint64 from, qint64 to, 
 	QStringList objects;
 	const QString summary = changeSummary(changes, &objects);
 	return QStringList{QStringLiteral("%1 to %2: %3").arg(from).arg(to).arg(summary)} + objects;
+#endif
 }
 
 /**
@@ -1109,6 +1143,11 @@ QString QetDbFile::lastChange(const QString &path, const QString &uuid, QString 
 		if (error) *error = file.db() ? QObject::tr("it keeps no history") : file.error();
 		return {};
 	}
+#ifndef QET_HAS_SQLITE_SESSION
+	Q_UNUSED(uuid)
+	if (error) *error = noSessionError();
+	return {};
+#else
 		//changeSummary() names objects by the text of their key
 	const QString suffix = QLatin1Char(' ') + uuid + QStringLiteral(": ");
 	for (const QVariantList &row : file.select(QStringLiteral(
@@ -1126,6 +1165,7 @@ QString QetDbFile::lastChange(const QString &path, const QString &uuid, QString 
 		}
 	}
 	return {};
+#endif
 }
 
 /**

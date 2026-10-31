@@ -126,6 +126,21 @@ else()
         "without a backtrace")
 endif()
 
+# The sqlite3.h of the macOS SDK has no session extension, which the
+# history of a .qetdb needs (#1667). Homebrew's sqlite has it but is
+# keg-only, so find_package() would not see it unless pointed at it.
+if(APPLE AND NOT SQLite3_ROOT AND NOT DEFINED ENV{SQLite3_ROOT})
+    find_program(BREW_EXECUTABLE brew)
+    if(BREW_EXECUTABLE)
+        execute_process(COMMAND ${BREW_EXECUTABLE} --prefix sqlite
+                        OUTPUT_VARIABLE BREW_SQLITE_PREFIX
+                        OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET)
+        if(EXISTS "${BREW_SQLITE_PREFIX}/include/sqlite3.h")
+            set(SQLite3_ROOT "${BREW_SQLITE_PREFIX}")
+        endif()
+    endif()
+endif()
+
 find_package(SQLite3 REQUIRED)
 
 # CMake < 4.3 only creates the SQLite::SQLite3 target (no SQLite3::SQLite3
@@ -136,6 +151,26 @@ find_package(SQLite3 REQUIRED)
 # current Linux distros).
 if(NOT TARGET SQLite3::SQLite3 AND TARGET SQLite::SQLite3)
     add_library(SQLite3::SQLite3 ALIAS SQLite::SQLite3)
+endif()
+
+# Without the session extension a .qetdb keeps no history: it still saves
+# and opens, and one made with a history still opens and saves.
+# -DQET_HAS_SQLITE_SESSION=OFF builds that way on purpose.
+include(CheckCXXSourceCompiles)
+set(CMAKE_REQUIRED_LIBRARIES SQLite3::SQLite3)
+check_cxx_source_compiles([=[
+#define SQLITE_ENABLE_SESSION
+#define SQLITE_ENABLE_PREUPDATE_HOOK
+#include <sqlite3.h>
+int main() { sqlite3_session *s = nullptr; return sqlite3session_create(nullptr, "main", &s); }
+]=] QET_HAS_SQLITE_SESSION)
+unset(CMAKE_REQUIRED_LIBRARIES)
+if(QET_HAS_SQLITE_SESSION)
+    add_compile_definitions(QET_HAS_SQLITE_SESSION)
+else()
+    message(STATUS
+        "SQLite has no session extension (${SQLite3_INCLUDE_DIRS}): "
+        "a .qetdb project will keep no history")
 endif()
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
