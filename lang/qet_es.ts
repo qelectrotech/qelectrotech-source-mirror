@@ -9222,7 +9222,7 @@ Por favor use el editor avanzado para esto.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
         <source>Search</source>
-        <translation>Busqueda</translation>
+        <translation>Búsqueda</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="70"/>
@@ -9326,7 +9326,7 @@ Por favor use el editor avanzado para esto.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="236"/>
         <source>Sheet reference</source>
-        <translation>Informe de folio</translation>
+        <translation>Referencia de folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="238"/>
@@ -10751,9 +10751,9 @@ Conductor section : %1</source>
 Please enter a compatible formula for this potential.
 The following variables are incompatible:
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
-        <translation>La fórmula del nuevo potencial contiene variables incompatibles con los informes del folio.
-Se trata de una fórmula compatible con el potencial.
-Las siguientes variables son incompatibles;
+        <translation>La fórmula del nuevo potencial contiene variables incompatibles con las referencias de folio.
+Introduzca una fórmula compatible para este potencial.
+Las siguientes variables son incompatibles:
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</translation>
     </message>
 </context>
@@ -11429,37 +11429,37 @@ Deles primero otra numeración.</numerusform>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="344"/>
         <source>Origin (of a coordinate system):</source>
-        <translation type="unfinished"></translation>
+        <translation>Origen (del sistema de coordenadas):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="346"/>
         <source>Top-Left</source>
         <comment>project origin</comment>
-        <translation type="unfinished"></translation>
+        <translation>Arriba a la izquierda</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="348"/>
         <source>Top-Right</source>
         <comment>project origin</comment>
-        <translation type="unfinished"></translation>
+        <translation>Arriba a la derecha</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="350"/>
         <source>Bottom-Left</source>
         <comment>project origin</comment>
-        <translation type="unfinished"></translation>
+        <translation>Abajo a la izquierda</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="352"/>
         <source>Bottom-Right</source>
         <comment>project origin</comment>
-        <translation type="unfinished"></translation>
+        <translation>Abajo a la derecha</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="354"/>
         <source>Which corner to use as the origin (coordinate system origin) Top - Left corner(default), Top - Right, Bottom - Left, Bottom - Right.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Esquina que se usa como origen del sistema de coordenadas: arriba a la izquierda (predeterminada), arriba a la derecha, abajo a la izquierda o abajo a la derecha.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="440"/>
@@ -19176,7 +19176,7 @@ asociar el nombre de &quot;volta&quot; y el valor &quot;1745&quot; reemplazara %
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Sheet reference label</source>
-        <translation>Etiqueta de informe de folio</translation>
+        <translation>Etiqueta de referencia de folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -19600,7 +19600,7 @@ qet.addText(f, &quot;Texto&quot;, 40, 40);
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="201"/>
         <source>Sheet reference elements</source>
-        <translation>Elementos del informe de folio</translation>
+        <translation>Elementos de referencia de folio</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="207"/>
