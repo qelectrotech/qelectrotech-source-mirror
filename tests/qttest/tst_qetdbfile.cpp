@@ -569,13 +569,16 @@ private slots:
 		for (const char *saved : {"SAVED0 true", "SAVED1 true", "SAVED2 true", "SAVED3 true"})
 			QVERIFY2(out.contains(QLatin1String(saved)), qPrintable(out.right(1200)));
 		QVERIFY2(!out.contains(QStringLiteral("reused for changed tables")), qPrintable(out.right(1200)));
-			//Saves 1 to 3 each reuse some tables, and save 2 (nothing
-			//changed) all of them
+			//Every save reuses some tables: the first those the open read
+			//(a project opened and saved, nothing written, reuses all but
+			//what the save writes itself), and save 2 (nothing changed)
+			//all of them
 		QList<QRegularExpressionMatch> reused;
 		auto it = QRegularExpression(QStringLiteral("reused for (\\d+) of (\\d+) tables")).globalMatch(out);
 		while (it.hasNext()) reused << it.next();
-		QVERIFY2(reused.size() == 3, qPrintable(out.right(1200)));
-		QVERIFY2(reused.at(1).captured(1) == reused.at(1).captured(2), qPrintable(reused.at(1).captured(0)));
+		QVERIFY2(reused.size() == 4, qPrintable(out.right(1200)));
+		QVERIFY2(reused.at(0).captured(1).toInt() > 0, qPrintable(reused.at(0).captured(0)));
+		QVERIFY2(reused.at(2).captured(1) == reused.at(2).captured(2), qPrintable(reused.at(2).captured(0)));
 		const QString back = m_dir.filePath(QStringLiteral("reuse-back.qetdb"));
 		const QString log = resave(path, back);
 		QVERIFY2(log.contains(QStringLiteral("Project database read from the file")), qPrintable(log.right(600)));
