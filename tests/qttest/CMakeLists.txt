@@ -1895,11 +1895,35 @@ target_link_libraries(tst_workingcopyrecovery PRIVATE Qt::Test Qt::Sql)
 # that a failed save keeps the previous file. QET-SQL-FORMAT S4a.
 add_executable(
   tst_qetdbfile
-  tst_qetdbfile.cpp)
+  tst_qetdbfile.cpp
+  ${QET_DIR}/sources/dataBase/qetparity.cpp)
 add_test(NAME tst_qetdbfile COMMAND tst_qetdbfile)
 add_dependencies(tst_qetdbfile qelectrotech)
-target_link_libraries(tst_qetdbfile PRIVATE Qt::Test Qt::Sql)
+target_link_libraries(tst_qetdbfile PRIVATE Qt::Test Qt::Sql Qt::Concurrent)
 target_compile_definitions(tst_qetdbfile PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
+# The repair data of a .qetdb: lost pages rebuilt exactly up to the parity,
+# one more reported, the same bytes as the prototype. QETDB-S4C-PLAN.md P1.
+add_executable(
+  tst_qetparity
+  tst_qetparity.cpp
+  ${QET_DIR}/sources/dataBase/qetparity.cpp)
+add_test(NAME tst_qetparity COMMAND tst_qetparity)
+target_link_libraries(tst_qetparity PRIVATE Qt::Test Qt::Concurrent)
+
+# The repair data of a .qetdb against parity.py's kinds of damage, through
+# --qetdb-repair: what it covers comes back exactly, the rest is refused,
+# another program's writes are not damage. QETDB-S4C-PLAN.md P6.
+add_executable(
+  tst_qetdbparity
+  tst_qetdbparity.cpp)
+add_test(NAME tst_qetdbparity COMMAND tst_qetdbparity)
+add_dependencies(tst_qetdbparity qelectrotech)
+target_link_libraries(tst_qetdbparity PRIVATE Qt::Test Qt::Sql)
+target_compile_definitions(tst_qetdbparity PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
   "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")

@@ -25,6 +25,7 @@
 #include "borderproperties.h"
 #include "conductorproperties.h"
 #include "dataBase/projectdatabase.h"
+#include "dataBase/qetdbfile.h"
 #include "properties/reportproperties.h"
 #include "properties/xrefproperties.h"
 #include "titleblock/templatescollection.h"
@@ -115,6 +116,7 @@ class QETProject : public QObject
 	public:
 		QETProject (QObject *parent = nullptr);
 		QETProject (const QString &path, QObject * = nullptr);
+		QETProject (const QString &path, QetDbFile::OutsideEdit outside, QObject *parent = nullptr);
 		QETProject (KAutoSaveFile *backup, QObject *parent=nullptr);
 		QETProject (const QString &recovered, const QString &file_path, QObject *parent=nullptr);
 		~QETProject() override;
@@ -136,6 +138,7 @@ class QETProject : public QObject
 		QByteArray containerPicture(const QString &file) const;
 		ProjectState state() const;
 		QString openError() const;
+		QetDbFile::Repair qetdbRepair() const;
 		QList<Diagram *> diagrams() const;
 			//The folios whether their items are built or not
 			//(lazy folios); diagrams() builds them
@@ -635,6 +638,10 @@ class QETProject : public QObject
 		std::array<KAutoSaveFile, BackupGenerations> m_backup_files;
 			/// Why the file could not be read, see openError()
 		QString m_open_error;
+			/// What opening a .qetdb found and repaired, see qetdbRepair()
+		QetDbFile::Repair m_qetdb_repair;
+			/// What the open does with a .qetdb another program wrote to
+		QetDbFile::OutsideEdit m_outside_edit = QetDbFile::OutsideEdit::Refuse;
 		int m_next_backup_slot = 0;
 		QUuid m_uuid = QUuid::createUuid();
 		QHash<QString, int> m_derived_uuid_keys;

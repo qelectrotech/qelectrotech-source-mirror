@@ -50,8 +50,42 @@ namespace QetDbFile
 		/// the new file (QETDB-S6-SCOPE.md R4)
 	bool save(projectDataBase &database, const QString &path, QString *error, QByteArray *sha1 = nullptr,
 			  const QString &previous = QString());
+		/// What opening a .qetdb found wrong with its pages, and repaired
+		/// from the repair data it carries (QETDB-S4C-PLAN.md P3)
+	struct Repair
+	{
+		bool parity = false;  ///< it carries repair data that could be read
+		bool edited = false;  ///< another program wrote to it since its save: nothing repaired
+		bool header = false;  ///< its header was destroyed and is written again
+		bool scanned = false; ///< its repair data was found by reading its pages: SQLite could not read it
+		int bad_pages = 0;    ///< pages not as its save wrote them
+		int beyond = 0;       ///< groups of pages with more bad ones than repair data
+			/// Its content is not what was saved, though SQLite and
+			/// QElectroTech's own checks pass: refused, unless the user
+			/// chooses to open it with its changes (OutsideEdit::KeepChanges)
+		bool content_differs = false;
+		bool back_to_save = false;  ///< another program's changes undone, its saved state rebuilt
+		bool kept_changes = false;  ///< opened with content that is not what was saved, as the user chose
+		bool parity_damaged = false; ///< its repair data itself was damaged, and is left out of the copy
+		bool repaired() const { return (bad_pages > 0 || header || parity_damaged) && !beyond; }
+	};
+		/// What an open does with a file whose content is not what was saved,
+		/// another program having written to it (QETDB-S4C-PLAN.md P5)
+	enum class OutsideEdit
+	{
+		Refuse,       ///< refused, with Repair::content_differs set, for the user to choose
+		BackToSave,   ///< its pages rebuilt as saved, from its repair data
+		KeepChanges   ///< opened as it is, the content check skipped: no one is locked out of a file
+	};
 	bool read(const QString &path, QDomDocument *document, QString *error,
-			  const std::function<bool(const QString &copy)> &with_copy = {});
+			  const std::function<bool(const QString &copy)> &with_copy = {}, Repair *repair = nullptr,
+			  OutsideEdit outside = OutsideEdit::Refuse);
+		/// The .qetdb @p path repaired into @p output, from the repair data it
+		/// carries, and sealed with new repair data; @p path is not written.
+		/// @p back_to_save: another program's changes undone too
+		/// @return false, with @p error, if @p output is not a sound file
+	bool repair(const QString &path, const QString &output, Repair *report, QString *error,
+				bool back_to_save = false);
 		/// History of the saves, kept in the file when switched on
 		/// (QETDB-S6-SCOPE.md): on or off, and each revision as a line
 	bool setHistory(const QString &path, bool on, QString *error);

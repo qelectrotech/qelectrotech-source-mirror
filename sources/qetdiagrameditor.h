@@ -19,6 +19,7 @@
 #define QET_DIAGRAM_EDITOR_H
 
 #include "SearchAndReplace/ui/searchandreplacewidget.h"
+#include "dataBase/qetdbfile.h"
 #include "dataBase/workingcopyrecovery.h"
 #include "diagramcontext.h"
 #include "projectlock.h"
@@ -92,6 +93,9 @@ class QETDiagramEditor : public QETMainWindow
 		bool event(QEvent *) override;
 	private:
 		bool offerToRecover(const QString &filepath, const QString &reason);
+		QetDbFile::OutsideEdit askOutsideEdit(const QString &filepath, const QetDbFile::Repair &repair,
+											   bool can_go_back);
+		void tellRepair(QETProject *project);
 		bool openAsRecovered(const QString &source, const QString &original);
 		static QString recoveredPath(const QString &filepath, const QString &suffix);
 		// Declared first so it is initialised before any member whose
