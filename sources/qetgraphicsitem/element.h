@@ -200,6 +200,7 @@ class Element : public QetGraphicsItem
 		void refreshLabelFields();
 
 		QString name() const override;
+		QString englishName() const;
 		ElementsLocation location() const;
 		/// Result of Element::reloadPicture()
 		enum class ReloadPictureResult {

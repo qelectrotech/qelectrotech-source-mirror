@@ -5720,7 +5720,8 @@ QList<projectDataBase::ProjectSetting> projectDataBase::elementValueRowsOf(const
 	rows.append({section, 0, QStringLiteral("is_movable"),
 				 QString::number(int(bool(element.attribute(QStringLiteral("is_movable"), QStringLiteral("1")).toInt())))});
 	rows.append({section, 0, QStringLiteral("prefix"), element.attribute(QStringLiteral("prefix"))});
-	for (const QString &tag : {QStringLiteral("properties"), QStringLiteral("plcMasterData")}) {
+	for (const QString &tag : {QStringLiteral("properties"), QStringLiteral("plcMasterData"),
+							   QStringLiteral("xrefDisplay")}) {
 		const QDomElement child = element.firstChildElement(tag);
 		if (!child.isNull())
 			xmlRows(child, tag, 0, rows);

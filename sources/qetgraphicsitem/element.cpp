@@ -1499,6 +1499,11 @@ bool Element::fromXml(QDomElement &e,
 			m_data.plcMasterDataFromXml(xml_plc);
 	}
 
+		//Load the master's own cross reference display
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type != ElementData::PLC)
+		m_data.xrefDisplayFromXml(e.firstChildElement(QStringLiteral("xrefDisplay")));
+
 	//We must block the update of the alignment when loading the information
 	//otherwise the pos of the text will not be the same as it was at save time.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
@@ -2465,6 +2470,16 @@ void Element::appendDataXml(QDomDocument &document, QDomElement &element) const
 		if (!xml_plc.isNull())
 			element.appendChild(xml_plc);
 	}
+
+		//Written only when set, so a master without its own display saves
+		//exactly as before
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type != ElementData::PLC)
+	{
+		auto xml_display = m_data.xrefDisplayToXml(document);
+		if (!xml_display.isNull())
+			element.appendChild(xml_display);
+	}
 }
 
 /**
@@ -2601,10 +2616,16 @@ void Element::setElementData(ElementData data)
 {
 	dropOrphanFormulaId(data.m_informations);
 	auto old_info = m_data.m_informations;
+	const auto old_display = m_data.m_xref_display;
 	auto old_plc = m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC
 		? m_data.plcMasterData() : ElementData::PlcMasterData();
 	m_data = data;
 	scheduleTextsStore();
+
+		//Every cross reference is laid out again from the project's
+		//setting and its masters' own
+	if (old_display != m_data.m_xref_display && diagram() && diagram()->project())
+		emit diagram()->project()->XRefPropertiesChanged();
 
 	if (old_info != m_data.m_informations) {
 		m_data.m_informations.addValue(QStringLiteral("label"), actualLabel()); //Update the label if there is a formula
@@ -3170,6 +3191,11 @@ QString Element::infoForDisplay(const QString &info_name)
 */
 QString Element::name() const {
 	return m_data.m_names_list.name(m_location.baseName());
+}
+
+	/// The name saved in a file: English, the same from any language
+QString Element::englishName() const {
+	return m_data.m_names_list.englishName(m_location.baseName());
 }
 
 ElementsLocation Element::location() const

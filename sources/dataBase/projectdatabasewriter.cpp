@@ -822,7 +822,25 @@ void projectDataBase::markCopy(QSqlQuery &query)
 		return;
 	}
 	m_copy_generation = generation;
+	trackWrites(query);
+}
 
+/**
+	@brief projectDataBase::trackWrites
+	Give each table without them the triggers that mark it written
+	(markCopy()), the tables they write to made first if need be
+*/
+void projectDataBase::trackWrites(QSqlQuery &query)
+{
+	if (!query.exec(QStringLiteral("CREATE TEMP TABLE IF NOT EXISTS qet_written (name TEXT PRIMARY KEY, generation INTEGER NOT NULL)"))
+			|| !query.exec(QStringLiteral("CREATE TEMP TABLE IF NOT EXISTS qet_generation (value INTEGER NOT NULL)"))
+			|| !query.exec(QStringLiteral("INSERT INTO qet_generation SELECT 1 WHERE NOT EXISTS (SELECT 1 FROM qet_generation)")))
+		return;
+	QHash<QString, int> triggers;
+	if (!query.exec(QStringLiteral("SELECT tbl_name FROM temp.sqlite_master WHERE type = 'trigger' "
+								   "AND name LIKE 'qet\\_written\\_%' ESCAPE '\\'")))
+		return;
+	while (query.next()) ++triggers[query.value(0).toString()];
 	QStringList tables;
 	if (!query.exec(QStringLiteral("SELECT name FROM main.sqlite_master WHERE type = 'table' "
 								   "AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\'")))
@@ -856,6 +874,18 @@ void projectDataBase::savedDigests(const QHash<QString, QByteArray> &digests)
 		return;
 	}
 	m_saved_digests = digests;
+}
+
+/**
+	@brief projectDataBase::openedDigests
+	This database adopted the .qetdb whose tables' content digests are
+	@p digests (adoptFile()): the first save reuses those of the tables no
+	one writes to after the open, as a later save reuses its previous
+	save's (savedDigests())
+*/
+void projectDataBase::openedDigests(const QHash<QString, QByteArray> &digests)
+{
+	if (m_adopted) m_saved_digests = digests;
 }
 
 /**

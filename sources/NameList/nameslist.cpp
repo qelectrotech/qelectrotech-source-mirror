@@ -258,6 +258,20 @@ bool NamesList::operator==(const NamesList &nl) const
  * name to be returned when no adequate name has been found
  * @return The adequate name regarding the current system locale.
  */
+/**
+	@brief NamesList::englishName
+	@return the English name, whatever language the program runs in, else
+	@p fallback_name, else the first one: what a saved file records of a
+	name, the same file from any session (name() follows the language)
+*/
+QString NamesList::englishName(const QString &fallback_name) const
+{
+	if (! map_names["en"].isEmpty()) return (map_names["en"]);
+	if (! fallback_name.isEmpty()) return (fallback_name);
+	if (map_names.count()) return (map_names.begin().value());
+	return (QString(""));
+}
+
 QString NamesList::name(const QString &fallback_name) const
 {
 	QString system_language = QETApp::langFromSetting();

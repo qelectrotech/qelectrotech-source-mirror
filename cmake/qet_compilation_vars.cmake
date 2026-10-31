@@ -834,6 +834,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/conductorcolortoolbutton.h
   ${QET_DIR}/sources/ui/diagrambgcolorbutton.cpp
   ${QET_DIR}/sources/ui/diagrambgcolorbutton.h
+  ${QET_DIR}/sources/ui/dockfold.cpp
+  ${QET_DIR}/sources/ui/dockfold.h
   ${QET_DIR}/sources/ui/dockfit.cpp
   ${QET_DIR}/sources/ui/dockfit.h
   ${QET_DIR}/sources/ui/conductorpropertieswidget.cpp
@@ -916,6 +918,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.h
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.cpp
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.h
+  ${QET_DIR}/sources/ui/xrefdisplaydialog.cpp
+  ${QET_DIR}/sources/ui/xrefdisplaydialog.h
   ${QET_DIR}/sources/ui/xrefpropertieswidget.cpp
   ${QET_DIR}/sources/ui/xrefpropertieswidget.h
   ${QET_DIR}/sources/ui/configpage/configpage.h

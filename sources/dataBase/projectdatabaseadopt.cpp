@@ -154,6 +154,14 @@ bool projectDataBase::adoptFile(const QString &file, QString *error)
 	if (ok) ok = m_data_base.commit();
 	else m_data_base.rollback();
 	query.exec(QStringLiteral("DETACH DATABASE adopted"));
+		//Every table now holds the file's rows: from here on each table
+		//written is marked, for the first save to reuse the others'
+		//content digests (openedDigests()); a mark left by an earlier
+		//adopting of the same project (a read again) is out of date
+	if (ok) {
+		trackWrites(query);
+		query.exec(QStringLiteral("DELETE FROM qet_written"));
+	}
 	beginTransaction();
 	if (!ok) return false;
 

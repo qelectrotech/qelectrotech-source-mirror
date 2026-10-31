@@ -267,6 +267,16 @@
          </widget>
         </item>
         <item>
+        <widget class="QCheckBox" name="m_dock_fold_cb">
+         <property name="toolTip">
+          <string>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice's sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</string>
+         </property>
+         <property name="text">
+          <string>Bars beside the drawing to fold the side panels away</string>
+          </property>
+         </widget>
+        </item>
+        <item>
         <widget class="QCheckBox" name="m_narrow_docks_cb">
          <property name="toolTip">
           <string>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</string>

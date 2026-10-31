@@ -43,6 +43,8 @@ class DiagramEventAddElement : public DiagramEventInterface
 		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
 		void keyPressEvent (QKeyEvent *event) override;
 		void init() override;
+			/// The symbol that follows the mouse, until it is dropped
+		Element *pendingElement() const { return m_element; }
 
 	private:
 		bool buildElement();

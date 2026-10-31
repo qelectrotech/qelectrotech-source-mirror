@@ -30,6 +30,7 @@
 #include "qgraphicsitemutility.h"
 #include "terminal.h"
 #include <properties/elementdata.h>
+#include <undocommand/changeelementdatacommand.h>
 
 #include <algorithm>
 
@@ -96,7 +97,8 @@ void CrossRefItem::init()
 	QETProject *project = m_element->diagram()->project();
 	connect(project, &QETProject::XRefPropertiesChanged, this, &CrossRefItem::updateProperties);
 	
-	m_properties = m_element->diagram()->project()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
+	m_properties = propertiesFor(m_element);
+	m_display = m_element->elementData().m_xref_display;
 	setAcceptHoverEvents(true);
 	
 	setUpConnection();
@@ -241,11 +243,13 @@ bool CrossRefItem::mustDrawAllConfiguredSlaves() const
 */
 void CrossRefItem::updateProperties()
 {
-	XRefProperties xrp = m_element->diagram()->project()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
+	XRefProperties xrp = propertiesFor(m_element);
+	const ElementData::XRefDisplay display = m_element->elementData().m_xref_display;
 	
-	if (m_properties != xrp)
+	if (m_properties != xrp || m_display != display)
 	{
 		m_properties = xrp;
+		m_display = display;
 			//Through ShownKinds: stays hidden while View > Show hides
 			//cross-references
 		ShownKinds::setVisible(this, false);
@@ -278,7 +282,7 @@ void CrossRefItem::updateLabel()
 	QImage dummy(1, 1, QImage::Format_ARGB32_Premultiplied);
 	QPainter qp(&dummy);
 	QPen pen_;
-	pen_.setWidthF(0.5);
+	pen_.setWidthF(m_display.enabled ? m_display.width : 0.5);
 	qp.setPen(pen_);
 	qp.setFont(QETApp::diagramTextsFont(5));
 
@@ -325,6 +329,39 @@ void CrossRefItem::updateLabel()
 }
 
 /**
+	@brief CrossRefItem::propertiesFor
+	@return the cross reference properties of the master @p elmt: its
+	project's setting for that kind of master, with what the master's own
+	display (Element data) overrides
+*/
+XRefProperties CrossRefItem::propertiesFor(const Element *elmt)
+{
+	XRefProperties xrp = elmt->diagram()->project()->defaultXRefProperties(
+				elmt->kindInformations()["type"].toString());
+	const ElementData::XRefDisplay display = elmt->elementData().m_xref_display;
+	if (!display.enabled)
+		return xrp;
+
+	xrp.setDisplayHas(display.contacts ? XRefProperties::Contacts : XRefProperties::Cross);
+	xrp.setSnapTo(display.position == ElementData::XRefDisplay::UnderLabel
+				  ? XRefProperties::Label : XRefProperties::Bottom);
+	xrp.setShowAllConfiguredSlaves(display.showUnlinked);
+	return xrp;
+}
+
+/**
+	@brief CrossRefItem::followsOwnPosition
+	@return true if the master's own display puts this item below its
+	symbol or at a position the user gave, rather than in the folio footer
+*/
+bool CrossRefItem::followsOwnPosition() const
+{
+	return m_display.enabled
+			&& (m_display.position == ElementData::XRefDisplay::BelowSymbol
+				|| m_display.position == ElementData::XRefDisplay::Manual);
+}
+
+/**
 	@brief CrossRefItem::autoPos
 	Calculate and set position automatically.
 */
@@ -334,6 +371,23 @@ void CrossRefItem::autoPos()
 	// m_plc_table_positions - don't override it here.
 	if (m_element->elementData().m_master_type == ElementData::PLC)
 		return;
+
+		//Below the symbol, or where the user put it: a master with its own
+		//display, whose cross reference is a child of the symbol itself
+	if (!m_text && !m_group && m_display.enabled
+		&& (m_display.position == ElementData::XRefDisplay::BelowSymbol
+			|| m_display.position == ElementData::XRefDisplay::Manual))
+	{
+		const QRectF body = m_element->mapRectToScene(m_element->drawingRect());
+		const QPointF target = m_display.position == ElementData::XRefDisplay::Manual
+				? m_element->scenePos() + m_display.manual
+				: QPointF(body.center().x() - boundingRect().width() / 2,
+						  body.bottom() + m_display.gap);
+		setPos(pos() + parentItem()->mapFromScene(target)
+			   - parentItem()->mapFromScene(mapToScene(boundingRect().topLeft())));
+		m_element->keepReadable(this);
+		return;
+	}
 
 	//We calculate the position according to the snapTo of the xrefproperties
 	if (m_properties.snapTo() == XRefProperties::Bottom)
@@ -365,6 +419,7 @@ void CrossRefItem::stackAtBottom()
 		auto xref = static_cast<CrossRefItem *>(item);
 		if (xref->m_properties.snapTo() == XRefProperties::Bottom
 			&& !xref->m_text && !xref->m_group
+			&& !xref->followsOwnPosition()
 			&& xref->m_element->elementData().m_master_type != ElementData::PLC)
 			xrefs << xref;
 	}
@@ -498,7 +553,7 @@ void CrossRefItem::paint(
 	    && !mustDrawAllConfiguredSlaves()) return;
 
 	QPen pen_;
-	pen_.setWidthF(0.5);
+	pen_.setWidthF(m_display.enabled ? m_display.width : 0.5);
 	painter->save();
 	painter->setPen(pen_);
 	painter->setFont(QETApp::diagramTextsFont(5));
@@ -537,6 +592,62 @@ void CrossRefItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 	}
 
 	QetGraphicsItem::showItem(target);
+}
+
+/**
+	@brief CrossRefItem::mousePressEvent
+	Shift and a drag move the display of a master whose position is
+	manual.
+*/
+void CrossRefItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (!m_text && !m_group && event->button() == Qt::LeftButton
+		&& event->modifiers().testFlag(Qt::ShiftModifier)
+		&& m_display.enabled && m_display.position == ElementData::XRefDisplay::Manual
+		&& !m_element->diagram()->isReadOnly())
+	{
+		m_dragging = true;
+		m_drag_origin = mapToScene(boundingRect().topLeft());
+		m_drag_mouse = event->scenePos();
+		event->accept();
+		return;
+	}
+	QGraphicsObject::mousePressEvent(event);
+}
+
+/**
+	@brief CrossRefItem::mouseMoveEvent
+*/
+void CrossRefItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_dragging)
+	{
+		const QPointF target = m_drag_origin + event->scenePos() - m_drag_mouse;
+		setPos(pos() + parentItem()->mapFromScene(target)
+			   - parentItem()->mapFromScene(mapToScene(boundingRect().topLeft())));
+		event->accept();
+		return;
+	}
+	QGraphicsObject::mouseMoveEvent(event);
+}
+
+/**
+	@brief CrossRefItem::mouseReleaseEvent
+	The new position is the master's display, changed through the undo stack.
+*/
+void CrossRefItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_dragging)
+	{
+		m_dragging = false;
+		ElementData data = m_element->elementData();
+		data.m_xref_display.manual = mapToScene(boundingRect().topLeft()) - m_element->scenePos();
+		if (data != m_element->elementData())
+			m_element->diagram()->undoStack().push(new ChangeElementDataCommand(m_element, data));
+		event->accept();
+		return;
+	}
+	QGraphicsObject::mouseReleaseEvent(event);
 }
 
 /**
