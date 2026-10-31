@@ -231,7 +231,7 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 
 			return new ShapeGraphicsItemPropertiesWidget(shapes_list, parent);
 		}
-		case DimensionItem::Type: //1013
+		case DimensionItem::Type: //1014
 		{
 			QList<DimensionItem *> dim_list;
 			for (QGraphicsItem *qgi : items) {

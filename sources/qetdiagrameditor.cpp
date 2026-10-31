@@ -5474,11 +5474,8 @@ void QETDiagramEditor::copyTextFormat()
 	for (QGraphicsItem *item : dv->diagram()->selectedItems()) {
 		if (DimensionItem *dim = qgraphicsitem_cast<DimensionItem *>(item)) {
 			sourceDim = dim;
-			break;
-		} else if (!sourceElmt) {
-			if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
+		} else if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
 			sourceElmt = elmt;
-			}
 		}
 	}
 

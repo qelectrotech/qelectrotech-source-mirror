@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -1228,7 +1228,7 @@ void QETElementEditor::setupActions()
 		}
 	});
 
-	ShortcutManager::instance().registerAction(m_tape_measure_action, "elementeditor.tape_measure", tr("Element editors"), QKeySequence(Qt::Key_M));
+	ShortcutManager::instance().registerAction(m_tape_measure_action, "elementeditor.tape_measure", tr("Element editors"), QKeySequence());
 	ui->m_edit_menu->addAction(m_tape_measure_action);
 
 	m_clear_measure_action = new QAction(tr("Clear measurements"), this);

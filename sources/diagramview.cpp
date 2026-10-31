@@ -855,7 +855,8 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 
 	const int movable = DiagramContent::Elements | DiagramContent::TextFields
 					   | DiagramContent::Images | DiagramContent::Shapes
-					   | DiagramContent::Tables | DiagramContent::TerminalStrip;
+					   | DiagramContent::Tables | DiagramContent::TerminalStrip
+					   | DiagramContent::Dimensions;
 	for (QGraphicsItem *item : pasted.items(movable))
 		item->setPos(item->pos() + offset);
 		//The new line is stamped beside the original like everything
@@ -2129,9 +2130,11 @@ QRect DiagramView::crosshairArea(const QPointF &scene_pos) const
 {
 	const QPoint p = mapFromScene(scene_pos);
 	const QRect all = viewport()->rect();
+	const int pw = (m_pointer == Pointer::Dimension) ? 45 : 29;
+	const int ph = (m_pointer == Pointer::Dimension) ? 40 : 35;
 	return QRect(all.left(), p.y() - 2, all.width(), 5)
 			| QRect(p.x() - 2, all.top(), 5, all.height())
-			| QRect(p.x() - 14, p.y() - 14, 45, 40);	//the pointer drawn on it
+			| QRect(p.x() - 14, p.y() - 14, pw, ph);	//the pointer drawn on it
 }
 
 /**

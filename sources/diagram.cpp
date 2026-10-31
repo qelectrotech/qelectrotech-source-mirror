@@ -2540,6 +2540,7 @@ bool Diagram::fromXml(QDomElement &document,
 		for (auto table   : std::as_const(added_tables     )) added_items << table;
 		for (const auto &strip : std::as_const(added_strips)) added_items << strip;
 		for (const auto &cable : std::as_const(added_cables)) added_items << cable;
+		for (auto dim     : std::as_const(added_dimensions )) added_items << dim;
 
 		//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
@@ -2701,6 +2702,9 @@ bool Diagram::fromXml(QDomElement &document,
 					added_shapes.end());
 		content_ptr->m_terminal_strip.swap(added_strips);
 		content_ptr->m_tables.swap(added_tables);
+		content_ptr -> m_dimensions	= QSet<DimensionItem *>(
+					added_dimensions.begin(),
+					added_dimensions.end());
 	}
 
 	adjustSceneRect();

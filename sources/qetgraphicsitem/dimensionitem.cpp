@@ -19,6 +19,7 @@
 #include "../diagram.h"
 #include "../ui/dimensionpropertiesdialog.h"
 
+#include <algorithm>
 #include <cmath>
 #include <QApplication>
 #include <QCursor>
@@ -1139,16 +1140,19 @@ void DimensionItem::fromXml(const QDomElement &element)
 	m_custom_text = element.attribute(QStringLiteral("text"));
 	m_prefix = element.attribute(QStringLiteral("prefix"));
 	m_suffix = element.attribute(QStringLiteral("suffix"));
-	m_precision = element.attribute(QStringLiteral("precision"), QStringLiteral("1")).toInt();
+	m_precision = std::clamp(element.attribute(QStringLiteral("precision"), QStringLiteral("1")).toInt(), 0, 4);
 	m_unit = element.attribute(QStringLiteral("unit"), QStringLiteral("mm"));
 	m_show_unit = (element.attribute(QStringLiteral("show_unit"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_framed = (element.attribute(QStringLiteral("framed"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_use_comma = (element.attribute(QStringLiteral("comma"), QStringLiteral("true")) == QStringLiteral("true"));
-	m_text_distance = element.attribute(QStringLiteral("distance"), QStringLiteral("4.0")).toDouble();
+	m_text_distance = std::clamp(element.attribute(QStringLiteral("distance"), QStringLiteral("4.0")).toDouble(), 0.0, 100.0);
 	m_text_center = (element.attribute(QStringLiteral("center"), QStringLiteral("true")) == QStringLiteral("true"));
 	m_show_dual_unit = (element.attribute(QStringLiteral("dual_unit"), QStringLiteral("false")) == QStringLiteral("true"));
 	if (element.hasAttribute(QStringLiteral("text_rotation"))) {
 		m_text_rotation = element.attribute(QStringLiteral("text_rotation")).toInt();
+		if (m_text_rotation != -1 && m_text_rotation != 0 && m_text_rotation != 90 && m_text_rotation != 180 && m_text_rotation != 270) {
+			m_text_rotation = -1;
+		}
 		m_text_horizontal = (m_text_rotation == 0);
 	} else {
 		m_text_horizontal = (element.attribute(QStringLiteral("horizontal"), QStringLiteral("false")) == QStringLiteral("true"));
@@ -1156,14 +1160,14 @@ void DimensionItem::fromXml(const QDomElement &element)
 	}
 	m_text_in_line = (element.attribute(QStringLiteral("mid_line"), QStringLiteral("false")) == QStringLiteral("true"));
 	m_suppress_zero = (element.attribute(QStringLiteral("suppress_zero"), QStringLiteral("false")) == QStringLiteral("true"));
-	m_line_width = element.attribute(QStringLiteral("line_width"), QStringLiteral("1.2")).toDouble();
+	m_line_width = std::clamp(element.attribute(QStringLiteral("line_width"), QStringLiteral("1.2")).toDouble(), 0.1, 20.0);
 	m_pen.setWidthF(m_line_width);
-	m_extension_overshoot = element.attribute(QStringLiteral("overshoot"), QStringLiteral("5.0")).toDouble();
-	m_extension_gap = element.attribute(QStringLiteral("gap"), QStringLiteral("0.0")).toDouble();
-	m_arrow_size = element.attribute(QStringLiteral("arrow_size"), QStringLiteral("8.0")).toDouble();
+	m_extension_overshoot = std::clamp(element.attribute(QStringLiteral("overshoot"), QStringLiteral("5.0")).toDouble(), 0.0, 100.0);
+	m_extension_gap = std::clamp(element.attribute(QStringLiteral("gap"), QStringLiteral("0.0")).toDouble(), 0.0, 100.0);
+	m_arrow_size = std::clamp(element.attribute(QStringLiteral("arrow_size"), QStringLiteral("8.0")).toDouble(), 1.0, 100.0);
 	m_mask_background = (element.attribute(QStringLiteral("mask"), QStringLiteral("false")) == QStringLiteral("true"));
-	int fsize = element.attribute(QStringLiteral("font_size"), QStringLiteral("8")).toInt();
-	m_font.setPointSize(fsize > 0 ? fsize : 8);
+	int fsize = std::clamp(element.attribute(QStringLiteral("font_size"), QStringLiteral("8")).toInt(), 4, 144);
+	m_font.setPointSize(fsize);
 
 	QString modeStr = element.attribute(QStringLiteral("mode"), QStringLiteral("linear"));
 	m_mode = (modeStr == QStringLiteral("chain")) ? Chain : Linear;

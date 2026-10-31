@@ -18,6 +18,8 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagram.h"
 #include "diagramcontent.h"
+#include "diagramcommands.h"
+#include "qetgraphicsitem/conductordefinitionmark.h"
 #include "qetgraphicsitem/dimensionitem.h"
 #include "qetproject.h"
 #include "ui/dimensionpropertiesdialog.h"
@@ -68,6 +70,9 @@ class tst_DimensionItem : public QObject
 	void testElementEditorMeasureTeardown();
 	void testElementMeasurePersistenceAcrossToolSwitchAndXml();
 	void testTextRotationAndArrowSizeMax();
+	void testTypeIs1014AndUnique();
+	void testXmlBoundsClamping();
+	void testPasteOffsetAndUndo();
 };
 
 void tst_DimensionItem::testDefaultValues()
@@ -1091,6 +1096,107 @@ void tst_DimensionItem::testTextRotationAndArrowSizeMax()
 	}
 	QCOMPARE(testDim->textRotation(), 90);
 	QCOMPARE(testDim->arrowSize(), 85.0);
+}
+
+void tst_DimensionItem::testTypeIs1014AndUnique()
+{
+	QCOMPARE(int(DimensionItem::Type), int(QGraphicsItem::UserType + 1014));
+	DimensionItem dim;
+	QCOMPARE(dim.type(), int(QGraphicsItem::UserType + 1014));
+	QVERIFY(dim.type() != ConductorDefinitionMark::Type);
+	QCOMPARE(int(ConductorDefinitionMark::Type), int(QGraphicsItem::UserType + 1013));
+}
+
+void tst_DimensionItem::testXmlBoundsClamping()
+{
+	// Test clamping with extreme and malformed values
+	QDomDocument doc;
+	QDomElement xmlHuge = doc.createElement(QStringLiteral("dimension"));
+	xmlHuge.setAttribute(QStringLiteral("precision"), QStringLiteral("9999"));
+	xmlHuge.setAttribute(QStringLiteral("distance"), QStringLiteral("5000.0"));
+	xmlHuge.setAttribute(QStringLiteral("line_width"), QStringLiteral("999.0"));
+	xmlHuge.setAttribute(QStringLiteral("overshoot"), QStringLiteral("888.0"));
+	xmlHuge.setAttribute(QStringLiteral("gap"), QStringLiteral("777.0"));
+	xmlHuge.setAttribute(QStringLiteral("arrow_size"), QStringLiteral("666.0"));
+	xmlHuge.setAttribute(QStringLiteral("font_size"), QStringLiteral("5555"));
+	xmlHuge.setAttribute(QStringLiteral("text_rotation"), QStringLiteral("4242"));
+
+	DimensionItem dimHuge;
+	dimHuge.fromXml(xmlHuge);
+
+	QCOMPARE(dimHuge.precision(), 4);
+	QCOMPARE(dimHuge.textDistance(), 100.0);
+	QCOMPARE(dimHuge.lineWidth(), 20.0);
+	QCOMPARE(dimHuge.extensionOvershoot(), 100.0);
+	QCOMPARE(dimHuge.extensionGap(), 100.0);
+	QCOMPARE(dimHuge.arrowSize(), 100.0);
+	QCOMPARE(dimHuge.fontSize(), 144);
+	QCOMPARE(dimHuge.textRotation(), -1);
+
+	// Test clamping with negative / sub-minimum values
+	QDomElement xmlSmall = doc.createElement(QStringLiteral("dimension"));
+	xmlSmall.setAttribute(QStringLiteral("precision"), QStringLiteral("-10"));
+	xmlSmall.setAttribute(QStringLiteral("distance"), QStringLiteral("-20.0"));
+	xmlSmall.setAttribute(QStringLiteral("line_width"), QStringLiteral("-5.0"));
+	xmlSmall.setAttribute(QStringLiteral("overshoot"), QStringLiteral("-5.0"));
+	xmlSmall.setAttribute(QStringLiteral("gap"), QStringLiteral("-5.0"));
+	xmlSmall.setAttribute(QStringLiteral("arrow_size"), QStringLiteral("-10.0"));
+	xmlSmall.setAttribute(QStringLiteral("font_size"), QStringLiteral("0"));
+
+	DimensionItem dimSmall;
+	dimSmall.fromXml(xmlSmall);
+
+	QCOMPARE(dimSmall.precision(), 0);
+	QCOMPARE(dimSmall.textDistance(), 0.0);
+	QCOMPARE(dimSmall.lineWidth(), 0.1);
+	QCOMPARE(dimSmall.extensionOvershoot(), 0.0);
+	QCOMPARE(dimSmall.extensionGap(), 0.0);
+	QCOMPARE(dimSmall.arrowSize(), 1.0);
+	QCOMPARE(dimSmall.fontSize(), 4);
+}
+
+void tst_DimensionItem::testPasteOffsetAndUndo()
+{
+	QETProject project;
+	Diagram *diag1 = project.addNewDiagram();
+	QVERIFY(diag1 != nullptr);
+
+	auto *dim1 = new DimensionItem(QPointF(20, 30), QPointF(120, 30), 15.0);
+	diag1->undoStack().push(new AddGraphicsObjectCommand(dim1, diag1));
+	QCOMPARE(diag1->items().contains(dim1), true);
+
+	dim1->setSelected(true);
+	QDomDocument doc = diag1->toXml(false, true);
+
+	// Paste into diagram 2 with position offset
+	Diagram *diag2 = project.addNewDiagram();
+	QVERIFY(diag2 != nullptr);
+
+	DiagramContent pastedContent;
+	const QPointF pastePos(200, 300);
+	diag2->fromXml(doc, pastePos, false, &pastedContent);
+
+	QCOMPARE(pastedContent.m_dimensions.count(), 1);
+	DimensionItem *pastedDim = *pastedContent.m_dimensions.begin();
+	QVERIFY(pastedDim != nullptr);
+
+	// Check that pasted dimension was shifted by the position offset
+	QVERIFY(pastedDim->pos() != QPointF(0, 0));
+
+	// Test Undo/Redo of PasteDiagramCommand
+	auto *pasteCmd = new PasteDiagramCommand(diag2, pastedContent);
+	diag2->undoStack().push(pasteCmd);
+
+	// Initially after redo (pushed), dimension is in diag2
+	QVERIFY(diag2->items().contains(pastedDim));
+
+	// Undo paste -> dimension must be removed from scene
+	diag2->undoStack().undo();
+	QVERIFY(!diag2->items().contains(pastedDim));
+
+	// Redo paste -> dimension must be restored in scene
+	diag2->undoStack().redo();
+	QVERIFY(diag2->items().contains(pastedDim));
 }
 
 QTEST_MAIN(tst_DimensionItem)

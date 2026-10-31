@@ -118,7 +118,7 @@ class DimensionItem : public QetGraphicsItem
 	Q_PROPERTY(qreal dimensionValueMM READ dimensionValueMM NOTIFY geometryChanged)
 
 public:
-	enum { Type = UserType + 1013 };
+	enum { Type = UserType + 1014 };
 	int type() const override { return Type; }
 
 	enum DimensionMode {
