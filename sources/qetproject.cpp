@@ -2495,10 +2495,10 @@ void QETProject::autoFolioNumberingSelectedFolios(int from,
 }
 
 /**
-	@brief QETProject::Origin
+	@brief QETProject::origin
 	@return specifies the origin for the sheet
 */
-ProjectOrigin::Mode QETProject::Origin() const { return m_origin; }
+ProjectOrigin::Mode QETProject::origin() const { return m_origin; }
 
 /**
 	@brief QETProject::setOrigin
@@ -2510,8 +2510,13 @@ void QETProject::setOrigin(ProjectOrigin::Mode mode)
 {
 	if (mode == m_origin) { return; }
 	m_origin = mode;
-	storeSettings();
-	for (Diagram* diagram : diagrams()) { diagram->update(); }
+	for (Diagram* diagram : folios())
+	{
+		diagram->refreshContents();
+		diagram->border_and_titleblock.setOrigin(mode);
+	}
+	m_data_base.updateDBForce();
+	m_data_base.dataBaseUpdated();
 }
 
 /**
@@ -4006,10 +4011,10 @@ void QETProject::readOriginXml(QDomDocument& xml_project)
 {
 	const QDomElement style =
 		xml_project.documentElement().firstChildElement(
-			QStringLiteral("style"));
+			QStringLiteral("cell_orign"));
 	m_origin = style.isNull() 
 		    ? ProjectOrigin::Mode::TopLeft 
-			: ProjectOrigin::fromString(style.attribute(QStringLiteral("origin")));
+			: ProjectOrigin::fromString(style.attribute(QStringLiteral("corner")));
 }
 
 /**
@@ -4363,9 +4368,9 @@ void QETProject::writeOriginXml(QDomElement& xml_element)
 		return; 
 	}
 	QDomElement style = xml_element.ownerDocument().createElement(
-		QStringLiteral("style"));
+		QStringLiteral("cell_orign"));
 	style.setAttribute(
-		QStringLiteral("origin"),
+		QStringLiteral("corner"),
 		ProjectOrigin::toString(m_origin));
 	xml_element.appendChild(style);
 }

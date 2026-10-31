@@ -628,7 +628,7 @@ void BorderTitleBlock::displayBorder(bool db) {
 ProjectOrigin::Mode BorderTitleBlock::origin() const
 {
 	if (m_owner_folio && m_owner_folio->project())
-		return m_owner_folio->project()->Origin();
+		return m_owner_folio->project()->origin();
 	return m_origin;
 }
 
@@ -640,6 +640,7 @@ ProjectOrigin::Mode BorderTitleBlock::origin() const
 void BorderTitleBlock::setOrigin(ProjectOrigin::Mode mode)
 {
 	m_origin = mode;
+	emit(displayChanged());
 }
 
 /**

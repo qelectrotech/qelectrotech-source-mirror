@@ -331,6 +331,17 @@ void projectDataBase::updateDB()
 }
 
 /**
+	@brief projectDataBase::updateForceDB
+	Force an update of all database content.
+*/
+void projectDataBase::updateDBForce()
+{
+	m_content_changed = true;
+	m_rebuild_all	  = true;
+	updateDB();
+}
+
+/**
 	@brief projectDataBase::refresh
 	Bring the tables up to date: write the queued rows, and rebuild the
 	rows of the folios that changed (refreshChangedFolios()), or of every
