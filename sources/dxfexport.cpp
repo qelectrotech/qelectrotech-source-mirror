@@ -42,6 +42,7 @@
 #include <QFontMetricsF>
 #include <QGraphicsSimpleTextItem>
 #include <QSet>
+#include <QtMath>
 #include <cmath>
 #include <utility>
 
@@ -223,13 +224,25 @@ namespace {
 			parent = parent->parentItem();
 		}
 
+			//The text's own transform: a symbol's text turned half a turn
+			//to read from bottom to top (see
+			//DynamicElementTextItem::verticalFromBottom()) starts where its
+			//drawing starts, at the other end of its box, and runs the
+			//other way
+		QPointF origin = dti->scenePos();
+		const QTransform own = dti->transform();
+		if (!own.isIdentity()) {
+			origin = dti->mapToScene(QPointF());
+			angle += qRadiansToDegrees(qAtan2(own.m12(), own.m11()));
+		}
+
 		qreal angler = angle * M_PI/180;
 		int xdir = -sin(angler);
 		int ydir = -cos(angler);
-		qreal x = (dti->scenePos().x())
+		qreal x = origin.x()
 				+ xdir * fontSize * 1.8
 				- ydir * fontSize;
-		qreal y = dti->scenePos().y()
+		qreal y = origin.y()
 				- ydir * fontSize * 1.8
 				- xdir * fontSize * 0.9;
 			//As drawn: a text with a width is wrapped
