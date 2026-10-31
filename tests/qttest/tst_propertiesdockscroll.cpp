@@ -81,6 +81,46 @@ class tst_propertiesdockscroll : public QObject
 			QVERIFY(dock->height() > 200);
 		}
 
+			// An editor that grows (the wire editor, #500) or has a list of
+			// its own that scrolls grows with a tall dock: no maximum then
+		void growingEditorGrows()
+		{
+			QFETCH(bool, own_scroll_area);
+			QMainWindow window;
+			auto *dock = new PropertiesEditorDockWidget(&window);
+			window.addDockWidget(Qt::RightDockWidgetArea, dock);
+			window.setCentralWidget(new QWidget(&window));
+			window.resize(600, 900);
+			window.show();
+			QVERIFY(QTest::qWaitForWindowExposed(&window));
+			auto *editor = new PropertiesEditorWidget;
+			auto *layout = new QVBoxLayout(editor);
+			if (own_scroll_area) {
+				auto *list = new QScrollArea(editor);
+				list->setWidget(new QWidget(list));
+				list->widget()->setMinimumHeight(2000);
+				layout->addWidget(list);
+			} else {
+				editor->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+				layout->addWidget(new QSpinBox(editor));
+			}
+			dock->addEditor(editor);
+			QApplication::processEvents();
+			window.resizeDocks({dock}, {800}, Qt::Vertical);
+			QApplication::processEvents();
+			QTest::qWait(50);
+			auto *scroll = dock->findChild<QScrollArea *>(QStringLiteral("m_scroll_area"));
+			QVERIFY(scroll);
+			QCOMPARE(scroll->maximumHeight(), QWIDGETSIZE_MAX);
+			QVERIFY2(editor->height() > 500, qPrintable(QString::number(editor->height())));
+		}
+		void growingEditorGrows_data()
+		{
+			QTest::addColumn<bool>("own_scroll_area");
+			QTest::newRow("expanding") << false;
+			QTest::newRow("own scroll area") << true;
+		}
+
 			// The wheel over a spin box without focus scrolls the dock
 		void wheelScrollsOverFields()
 		{

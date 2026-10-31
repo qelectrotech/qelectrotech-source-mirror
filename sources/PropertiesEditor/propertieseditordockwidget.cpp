@@ -19,6 +19,7 @@
 #include "ui_propertieseditordockwidget.h"
 #include "propertieseditorwidget.h"
 
+#include <QAbstractScrollArea>
 #include <QAbstractSlider>
 #include <QAbstractSpinBox>
 #include <QComboBox>
@@ -293,9 +294,17 @@ bool PropertiesEditorDockWidget::eventFilter(QObject *watched, QEvent *event)
 void PropertiesEditorDockWidget::fitScrollArea()
 {
 	const QSize hint = ui->m_scroll_contents->sizeHint();
+		// An editor that grows with the dock (the wire editor, #500) or
+		// has a list of its own that scrolls would be held to its size
+		// hint by a maximum: none then
+	bool grows = false;
+	for (QWidget *editor : std::as_const(m_editor_list))
+		if ((editor->sizePolicy().verticalPolicy() & QSizePolicy::ExpandFlag)
+		    || editor->findChild<QAbstractScrollArea *>())
+			grows = true;
 		// Tabbed, the stack takes the smallest maximum height of its tabs
-		// (see updateSizeConstraint()): no maximum here then
-	ui->m_scroll_area->setMaximumHeight(isTabbed()
+		// (see updateSizeConstraint()): no maximum here then either
+	ui->m_scroll_area->setMaximumHeight(isTabbed() || grows
 			? QWIDGETSIZE_MAX
 			: m_editor_list.isEmpty() ? 0 : hint.height());
 	for (QWidget *field : ui->m_scroll_contents->findChildren<QWidget *>())
