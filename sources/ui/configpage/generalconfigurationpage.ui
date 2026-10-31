@@ -273,6 +273,16 @@
          </property>
          <property name="text">
           <string>Help lines from the terminals of a dragged symbol</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+        <widget class="QCheckBox" name="m_narrow_docks_cb">
+         <property name="toolTip">
+          <string>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</string>
+         </property>
+         <property name="text">
+          <string>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</string>
          </property>
         </widget>
        </item>
@@ -490,6 +500,26 @@
         </widget>
        </item>
        <item row="10" column="0">
+        <widget class="QCheckBox" name="m_reopen_projects">
+         <property name="text">
+          <string>Reopen the projects of the last session at start</string>
+         </property>
+         <property name="toolTip">
+          <string>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0">
+        <widget class="QCheckBox" name="m_offer_backups">
+         <property name="text">
+          <string>Offer to restore automatic backups at start</string>
+         </property>
+         <property name="toolTip">
+          <string>After a crash, the automatic backups (made every few minutes, see "Automatic backup of projects" above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="0">
         <widget class="QCheckBox" name="m_working_copy_recovery">
          <property name="text">
           <string>After a crash, offer projects as they were after their last edit (experimental)</string>
@@ -499,7 +529,7 @@
          </property>
         </widget>
        </item>
-       <item row="11" column="0">
+       <item row="13" column="0">
         <widget class="QCheckBox" name="m_qetdb_enabled">
          <property name="text">
           <string>Offer saving a project as one database file, .qetdb (experimental)</string>
@@ -509,7 +539,7 @@
          </property>
         </widget>
        </item>
-       <item row="12" column="0">
+       <item row="14" column="0">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -1677,6 +1707,8 @@
   <tabstop>m_save_label_paste</tabstop>
   <tabstop>m_autonumber_pasted</tabstop>
   <tabstop>m_project_lock</tabstop>
+  <tabstop>m_reopen_projects</tabstop>
+  <tabstop>m_offer_backups</tabstop>
   <tabstop>m_use_folio_label</tabstop>
   <tabstop>m_border_0</tabstop>
   <tabstop>m_autosave_sb</tabstop>
