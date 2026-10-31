@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- Extension lines -->
+  <line x1="3" y1="4" x2="3" y2="20" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+  <line x1="21" y1="4" x2="21" y2="20" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+  <!-- Dimension line -->
+  <line x1="3" y1="12" x2="21" y2="12" stroke="#2563eb" stroke-width="1.8"/>
+  <!-- Arrows -->
+  <polygon points="3,12 8,9.5 8,14.5" fill="#2563eb"/>
+  <polygon points="21,12 16,9.5 16,14.5" fill="#2563eb"/>
+</svg>
+

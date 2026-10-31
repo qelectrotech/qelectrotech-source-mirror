@@ -85,6 +85,8 @@ namespace QET {
 		extern QIcon EditPaste;
 		extern QIcon CopyElementTextFormat;
 		extern QIcon ApplyElementTextFormat;
+		extern QIcon DimensionLinear;
+		extern QIcon DimensionChain;
 		extern QIcon EditRedo;
 		extern QIcon EditRename;
 		extern QIcon EditSelectAll;
