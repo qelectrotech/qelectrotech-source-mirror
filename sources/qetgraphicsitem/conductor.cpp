@@ -1219,7 +1219,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 		} else {
 			dom_element.setAttribute("element1_linked", terminal1->parentElement()->linkedElements().last()->actualLabel());
 		}
-		dom_element.setAttribute("element1_name", terminal1->parentElement()->name());
+		dom_element.setAttribute("element1_name", terminal1->parentElement()->englishName());
 		dom_element.setAttribute("terminal1", terminal1->uuid().toString());
 		dom_element.setAttribute("terminalname1", terminal1->name());
 	}
@@ -1236,7 +1236,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 		} else {
 			dom_element.setAttribute("element2_linked", terminal2->parentElement()->linkedElements().last()->actualLabel());
 		}
-		dom_element.setAttribute("element2_name", terminal2->parentElement()->name());
+		dom_element.setAttribute("element2_name", terminal2->parentElement()->englishName());
 		dom_element.setAttribute("terminal2", terminal2->uuid().toString());
 		dom_element.setAttribute("terminalname2", terminal2->name());
 	}

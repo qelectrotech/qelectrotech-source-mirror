@@ -3166,6 +3166,11 @@ QString Element::name() const {
 	return m_data.m_names_list.name(m_location.baseName());
 }
 
+	/// The name saved in a file: English, the same from any language
+QString Element::englishName() const {
+	return m_data.m_names_list.englishName(m_location.baseName());
+}
+
 ElementsLocation Element::location() const
 {
 	return m_location;
