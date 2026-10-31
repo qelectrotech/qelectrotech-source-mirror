@@ -115,6 +115,70 @@ QString BomExport::defaultQuery(bool include_slaves, bool include_junctions)
 			.arg(defaultColumns().join(QStringLiteral(", ")), types, junctions);
 }
 
+/**
+	@brief BomExport::groupedQuery
+	The parts list the way it is ordered: one line per part, however many
+	elements use it. Parts are the same when manufacturer, part number and
+	unit are. An element with no part number is never merged with another,
+	since nothing says they are the same part.
+	Elements with no part number, designation or description are not
+	parts and stay out, which also keeps out junctions and folio arrows.
+	Columns: number (optional), quantity, name, part_number, references
+	(optional), manufacturer, unit.
+	Idea from PR #1650 by victorienea.
+	@param options
+	@return the SQL, to run on element_nomenclature_view
+*/
+QString BomExport::groupedQuery(const GroupedOptions &options)
+{
+		//The main part and each auxiliary block, as the same set of columns.
+		//The row number tells two elements with no part number apart.
+	const auto part = [](const QString &suffix) {
+		return QStringLiteral(
+			"SELECT TRIM(COALESCE(manufacturer%1, '')) AS manufacturer, "
+			"TRIM(COALESCE(manufacturer_reference%1, '')) AS article, "
+			"COALESCE(NULLIF(TRIM(description%1), ''), designation%1, '') AS name, "
+			"label, TRIM(COALESCE(unity%1, '')) AS unit, "
+			"CAST(REPLACE(COALESCE(NULLIF(TRIM(quantity%1), ''), '1'), ',', '.') AS REAL) AS qty, "
+			"'row:' || CAST(ROW_NUMBER() OVER () AS TEXT) || ':%1' AS item_key "
+			"FROM element_nomenclature_view "
+			"WHERE TRIM(COALESCE(manufacturer_reference%1, '')) <> '' "
+			"OR TRIM(COALESCE(designation%1, '')) <> '' "
+			"OR TRIM(COALESCE(description%1, '')) <> ''").arg(suffix);
+	};
+	QString source = part(QString());
+	if (options.auxiliaries)
+	{
+		for (int i = 1 ; i <= 4 ; ++i) {
+			source += QStringLiteral(" UNION ALL ")
+					+ part(QStringLiteral("_auxiliary%1").arg(i));
+		}
+	}
+
+	const QString grouped = QStringLiteral(
+		"SELECT manufacturer, article, MIN(name) AS name, unit, %1 AS qty, "
+		"GROUP_CONCAT(DISTINCT label) AS refs FROM (%2) "
+		"GROUP BY manufacturer, article, unit, "
+		"CASE WHEN TRIM(article) = '' THEN COALESCE(label, '') || item_key ELSE '' END")
+			.arg(options.sum_quantity ? QStringLiteral("SUM(qty)") : QStringLiteral("COUNT(*)"),
+				 source);
+
+	QStringList columns;
+	if (options.numbering) {
+		columns << QStringLiteral("ROW_NUMBER() OVER (ORDER BY manufacturer, article, name, refs) AS number");
+	}
+	columns << QStringLiteral("qty AS quantity")
+			<< QStringLiteral("name")
+			<< QStringLiteral("article AS part_number");
+	if (options.references) {
+		columns << QStringLiteral("refs AS \"references\"");
+	}
+	columns << QStringLiteral("manufacturer") << QStringLiteral("unit");
+
+	return QStringLiteral("SELECT %1 FROM (%2) ORDER BY manufacturer, article, name, refs")
+			.arg(columns.join(QStringLiteral(", ")), grouped);
+}
+
 QByteArray BomExport::toCsv(QSqlQuery &query, const QStringList &headers,
 							bool include_headers, int *row_count)
 {

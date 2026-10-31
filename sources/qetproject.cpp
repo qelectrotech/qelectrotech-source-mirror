@@ -17,6 +17,7 @@
 */
 
 #include "qetproject.h"
+#include "TerminalStrip/terminalstriplabels.h"
 #include "container/qetcontainer.h"
 #include "container/qetcontainerdb.h"
 #include "container/qetzwriter.h"
@@ -2168,8 +2169,7 @@ QList<QETProject::SymbolNumbering> QETProject::symbolNumbering() const
 			symbol.formula = info.value(QETInformation::ELMT_FORMULA).toString();
 			symbol.scheme = QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString());
 			symbol.sequence = el->sequenceStruct();
-			symbol.numbered = el->linkType() != Element::Slave
-					&& !(el->linkType() & Element::AllReport);
+			symbol.numbered = el->takesSchemeNumber();
 			list << symbol;
 		}
 	}
@@ -2200,8 +2200,7 @@ QList<QETProject::SymbolNumbering> QETProject::symbolNumbering() const
 							   : QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString());
 		symbol.sequence = row.sequence;
 		const ElementData::Type kind = ElementData::typeFromString(row.kind);
-		symbol.numbered = kind != ElementData::Slave
-				&& !(kind & ElementData::AllReport);
+		symbol.numbered = ElementData::takesSchemeNumber(kind);
 		list << symbol;
 	}
 	return list;
@@ -2589,6 +2588,36 @@ bool QETProject::autoBreakConductor() const
 void QETProject::setAutoBreakConductor(bool abc)
 {
 	m_data_base.setNumberingFlag(QStringLiteral("auto_break_conductors"), abc);
+}
+
+/**
+	@brief QETProject::setTerminalStripLabelsShown
+	Show the label of each terminal strip at its first terminal on every
+	folio, or not; the folios built so far show it at once.
+*/
+void QETProject::setTerminalStripLabelsShown(bool shown)
+{
+	if (shown == m_terminal_strip_labels)
+		return;
+	m_terminal_strip_labels = shown;
+	for (Diagram *diagram : builtFolios())
+		TerminalStripLabels::refresh(diagram);
+	setModified(true);
+}
+
+/**
+	@brief QETProject::setTerminalStripBridgesShown
+	Draw the bridges of the terminal strip editor between their terminals
+	on every folio, or not; the folios built so far show them at once.
+*/
+void QETProject::setTerminalStripBridgesShown(bool shown)
+{
+	if (shown == m_terminal_strip_bridges)
+		return;
+	m_terminal_strip_bridges = shown;
+	for (Diagram *diagram : builtFolios())
+		TerminalStripLabels::refresh(diagram);
+	setModified(true);
 }
 
 /**
@@ -4533,6 +4562,10 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	if (newdiagrams_nodes.isEmpty()) return;
 
 	QDomElement newdiagrams_elmt = newdiagrams_nodes.at(0).toElement();
+	m_terminal_strip_labels = newdiagrams_elmt.firstChildElement(QStringLiteral("terminal_strip_labels"))
+			.attribute(QStringLiteral("at_first_terminal")) == QLatin1String("true");
+	m_terminal_strip_bridges = newdiagrams_elmt.firstChildElement(QStringLiteral("terminal_strip_bridges"))
+			.attribute(QStringLiteral("between_terminals")) == QLatin1String("true");
 
 		// By default, use value find in the global conf of QElectroTech
 	default_border_properties_	   = BorderProperties::    defaultProperties();
@@ -4731,6 +4764,11 @@ void QETProject::readTerminalStripXml(const QDomDocument &xml_project)
 			terminal_strip->fromXml(xml_strip);
 			addTerminalStrip(terminal_strip);
 		}
+			//A strip reads its terminals before its bridges: the labels
+			//and bridges of the folios built so far are worked out again
+			//with the bridges known
+		for (Diagram *diagram : builtFolios())
+			TerminalStripLabels::refresh(diagram);
 	}
 }
 
@@ -4990,6 +5028,17 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 		xrefs_elmt.appendChild(xref_dom);
 	}
 	xml_element.appendChild(xrefs_elmt);
+
+	if (m_terminal_strip_labels) {
+		QDomElement labels = xml_document.createElement(QStringLiteral("terminal_strip_labels"));
+		labels.setAttribute(QStringLiteral("at_first_terminal"), QStringLiteral("true"));
+		xml_element.appendChild(labels);
+	}
+	if (m_terminal_strip_bridges) {
+		QDomElement bridges = xml_document.createElement(QStringLiteral("terminal_strip_bridges"));
+		bridges.setAttribute(QStringLiteral("between_terminals"), QStringLiteral("true"));
+		xml_element.appendChild(bridges);
+	}
 
 		//The numbering is written from the project database, its only
 		//home (QETZ-DB-FIRST stage 2b)

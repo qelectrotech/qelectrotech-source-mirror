@@ -74,6 +74,7 @@
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qeticons.h"
+#include "ui/dockfit.h"
 #include "qetmessagebox.h"
 #include "recentfiles.h"
 #include "textgrid.h"
@@ -82,6 +83,7 @@
 #include "ui/bomexportdialog.h"
 #include "ui/conductorcolortoolbutton.h"
 #include "ui/diagrambgcolorbutton.h"
+#include "ui/duplicatelabelsdialog.h"
 #include "ui/duplicateoffsetdialog.h"
 #include "ui/jumptoelementdialog.h"
 #include "ui/diagrampropertieseditordockwidget.h"
@@ -233,6 +235,10 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	m_file_actions_group       (this),
 	open_dialog_dir            (QETApp::documentDir())
 {
+		//With the setting, the docked panels can be made narrow: their
+		//texts wrap, and what cannot wrap scrolls sideways
+	DockFit::install();
+
 		//Trivial property use to set the graphics handler size
 	setProperty("graphics_handler_size", 10);
 
@@ -711,6 +717,26 @@ void QETDiagramEditor::setUpActions()
 			pv->project()->setAutoBreakConductor(abc);
 	});
 
+		//The label of each terminal strip at its first terminal, as in EPLAN
+	m_terminal_strip_labels = new QAction(QET::Icons::TerminalStrip, tr("Show terminal strip labels at their first terminal"), this);
+	m_terminal_strip_labels->setStatusTip(tr("The label of each terminal strip stands at its first terminal on every folio and moves with it"));
+	m_terminal_strip_labels->setCheckable(true);
+	ShortcutManager::instance().registerAction(m_terminal_strip_labels, "diagrameditor.terminal_strip_labels", tr("Diagram editors"), QKeySequence());
+	connect(m_terminal_strip_labels, &QAction::triggered, [this](bool on) {
+		if (ProjectView *pv = currentProjectView())
+			pv->project()->setTerminalStripLabelsShown(on);
+	});
+
+		//The bridges of the terminal strip editor, drawn between the terminals
+	m_terminal_strip_bridges = new QAction(QET::Icons::TerminalStrip, tr("Show terminal strip bridges between their terminals"), this);
+	m_terminal_strip_bridges->setStatusTip(tr("Two bridged terminals side by side in a row are joined by a line on every folio"));
+	m_terminal_strip_bridges->setCheckable(true);
+	ShortcutManager::instance().registerAction(m_terminal_strip_bridges, "diagrameditor.terminal_strip_bridges", tr("Diagram editors"), QKeySequence());
+	connect(m_terminal_strip_bridges, &QAction::triggered, [this](bool on) {
+		if (ProjectView *pv = currentProjectView())
+			pv->project()->setTerminalStripBridgesShown(on);
+	});
+
 		//Diagram background color picker
 	m_background_color_button = new DiagramBgColorToolButton(this, this);
 	ShortcutManager::instance().registerAction(m_background_color_button->darkModeAction(),
@@ -952,6 +978,29 @@ void QETDiagramEditor::setUpActions()
 		editProjectProperties(currentProjectView());
 	});
 
+	// Find duplicate identifiers throughout the current project
+	m_find_duplicate_labels =
+		new QAction(tr("Find duplicate signals and components..."), this);
+	m_find_duplicate_labels->setObjectName(
+		QStringLiteral("findDuplicateLabels"));
+	ShortcutManager::instance().registerAction(
+		m_find_duplicate_labels,
+		"diagrameditor.find_duplicate_labels",
+		tr("Diagram editors"),
+		QKeySequence());
+	connect(
+		m_find_duplicate_labels,
+		&QAction::triggered,
+		this,
+		[this]()
+		{
+			if (ProjectView* view = currentProjectView())
+			{
+				auto* dialog = new DuplicateLabelsDialog(view->project(), this);
+				dialog->setAttribute(Qt::WA_DeleteOnClose);
+				dialog->show();
+			}
+		});
 		//The saves a .qetdb keeps, and keeping them or not (QETDB-S6-SCOPE.md)
 	m_project_history = new QAction(tr("History of saves..."), this);
 	ShortcutManager::instance().registerAction(m_project_history, "diagrameditor.project_history", tr("Diagram editors"), QKeySequence());
@@ -1899,10 +1948,13 @@ void QETDiagramEditor::setUpMenu()
 		//Sits beside m_auto_conductor, the setting it pairs with. It was
 		//toolbar-only and so had no keyboard route at all.
 	menu_project -> addAction(m_auto_break_conductor);
+	menu_project -> addAction(m_terminal_strip_labels);
+	menu_project -> addAction(m_terminal_strip_bridges);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_project_add_diagram);
 	menu_project -> addAction(m_remove_diagram_from_project);
 	menu_project -> addAction(m_clean_project);
+	menu_project->addAction(m_find_duplicate_labels);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_csv_export);
 	menu_project -> addAction(m_export_cable_list);
@@ -3406,6 +3458,7 @@ void QETDiagramEditor::slot_updateActions()
 
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
+	m_find_duplicate_labels->setEnabled(opened_project);
 	m_project_history             -> setEnabled(opened_project);
 	m_export_delivery             -> setEnabled(opened_project);
 	m_project_add_diagram         -> setEnabled(editable_project);
@@ -3714,10 +3767,16 @@ void QETDiagramEditor::slot_updateModeActions()
 		m_auto_conductor -> setChecked (pv -> project() -> autoConductor());
 		m_auto_break_conductor -> setEnabled (true);
 		m_auto_break_conductor -> setChecked (pv -> project() -> autoBreakConductor());
+		m_terminal_strip_labels -> setEnabled (true);
+		m_terminal_strip_labels -> setChecked (pv -> project() -> terminalStripLabelsShown());
+		m_terminal_strip_bridges -> setEnabled (true);
+		m_terminal_strip_bridges -> setChecked (pv -> project() -> terminalStripBridgesShown());
 	}
 	else
 	{
 		m_auto_conductor -> setDisabled(true);
+		m_terminal_strip_labels -> setDisabled(true);
+		m_terminal_strip_bridges -> setDisabled(true);
 		m_auto_break_conductor -> setDisabled(true);
 	}
 

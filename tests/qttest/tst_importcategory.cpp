@@ -7,6 +7,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // Placing the same symbol twice in lmdg.qet: its embedded collection has a
 // "k_elem" category before "import". Imported symbols were filed under the
@@ -46,7 +47,7 @@ class tst_importcategory : public QObject
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--common-elements-dir=" QET_ELEMENTS_DIR "/"),
 					QStringLiteral("--run"), path, project});
-		if (!proc.waitForFinished(120000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(120000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput()
 											  + proc.readAllStandardError());
 		const QString mark = QStringLiteral("PROBE ");

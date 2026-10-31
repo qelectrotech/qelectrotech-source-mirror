@@ -11,6 +11,7 @@
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // The project's settings (title, project properties, new-folio defaults)
 // are in the project database, one row per value (project_setting), read
@@ -75,7 +76,7 @@ class tst_projectsettingrows : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js, project_path.isEmpty() ? in : project_path});
-		if (!proc.waitForFinished(60000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(60000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		QStringList result;
 		for (const QString &line : out.split(QLatin1Char('\n'))) {

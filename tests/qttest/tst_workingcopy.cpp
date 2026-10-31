@@ -12,6 +12,7 @@
 #include <QRegularExpression>
 #include <QTemporaryDir>
 #include <QTextStream>
+#include "qettesttimeout.h"
 
 // The working copy (QET-SQL-FORMAT S3z2, QETDB-S3-SCOPE.md 7.4.5): the
 // project database in a file, committed after each edit, so that a
@@ -42,7 +43,7 @@ class tst_workingcopy : public QObject
 		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
 		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
 		// a dozen edits take longer than a script's 30 s under AddressSanitizer
-		env.insert(QStringLiteral("QET_SCRIPT_TIMEOUT_MS"), QStringLiteral("240000"));
+		env.insert(QStringLiteral("QET_SCRIPT_TIMEOUT_MS"), QString::number(QetTest::timeout(240000)));
 		env.insert(QStringLiteral("HOME"), home);
 		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
 		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
@@ -69,7 +70,7 @@ class tst_workingcopy : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), arguments);
-		if (!proc.waitForFinished(300000)) return QStringLiteral("TIMEOUT");
+		if (!proc.waitForFinished(QetTest::timeout(300000))) return QStringLiteral("TIMEOUT");
 		if (exit_code) *exit_code = proc.exitCode();
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
@@ -273,7 +274,7 @@ private slots:
 			}
 			for (int i = 0; i < runs.size(); ++i) {
 				QProcess *proc = runs.at(i);
-				proc->waitForFinished(10000);
+				proc->waitForFinished(QetTest::timeout(10000));
 				const int last = qMax(done.at(i), lastDone(pending.at(i) + QString::fromUtf8(proc->readAll())));
 				delete proc;
 				const QStringList copies = workingCopies(dirs.at(i), QStringLiteral("*.sqlite"));

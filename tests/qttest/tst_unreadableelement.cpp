@@ -6,6 +6,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // qet.addElement() compares the uuid of the symbol it is given with the copy
 // already embedded under the same name. A symbol file that exists but cannot
@@ -62,7 +63,7 @@ class tst_unreadableelement : public QObject
 		proc.setProcessEnvironment(env);
 		proc.setProcessChannelMode(QProcess::MergedChannels);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), script, project});
-		if (!proc.waitForFinished(60000))
+		if (!proc.waitForFinished(QetTest::timeout(60000)))
 			return QString();
 		return QString::fromUtf8(proc.readAll());
 	}

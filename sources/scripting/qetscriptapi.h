@@ -591,6 +591,8 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool deleteElementText(int folioIndex, const QString &elementUuid, int textIndex);
 		Q_INVOKABLE QVariantMap elementTextGeometry(int folioIndex, const QString &elementUuid,
 													int textIndex) const;
+		Q_INVOKABLE bool placeElementTexts(int folioIndex, const QStringList &elementUuids,
+										   const QString &where);
 
 		// -- copy elements (with the conductors between them) to a position --
 		Q_INVOKABLE QStringList duplicateElements(int fromFolioIndex, const QStringList &elementUuids,

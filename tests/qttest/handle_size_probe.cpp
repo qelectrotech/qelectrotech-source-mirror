@@ -43,6 +43,10 @@ static QString canonicalProjectXml(QDomDocument document) {
   std::sort(wires.begin(),wires.end(),[](const QDomElement &a,const QDomElement &b){return a.attribute("uuid")<b.attribute("uuid");});
   for(auto wire:wires)group.appendChild(wire);
  }
+ // The time spent on the project counts the seconds of this run: a slow
+ // build (Debug MSVC) passes a second between the two snapshots.
+ const auto usages=document.elementsByTagName("usage");
+ for(int i=0;i<usages.size();++i)usages.at(i).toElement().removeAttribute("time_spent");
  return document.toString();
 }
 static void mouse(Diagram *scene,QGraphicsItem *item,QEvent::Type type,const QPointF &point,const QPointF *press=nullptr) {

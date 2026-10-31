@@ -19,6 +19,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 class tst_qetdbfile : public QObject
 {
@@ -46,7 +47,7 @@ class tst_qetdbfile : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   QStringList{QStringLiteral("--common-elements-dir=" QET_ELEMENTS_DIR "/")} + args);
-		if (!proc.waitForFinished(300000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(300000))) return {};
 		if (code) *code = proc.exitCode();
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
@@ -278,6 +279,9 @@ private slots:
 	// history goes when told to
 	void historyRecordsEachSave()
 	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif
@@ -323,6 +327,9 @@ private slots:
 	// the project's own file not (QETDB-S6-SCOPE.md R4)
 	void historyGoesOnInACopy()
 	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif
@@ -357,6 +364,9 @@ private slots:
 	// no history at all
 	void historyGivesBackARevision()
 	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif
@@ -402,6 +412,9 @@ private slots:
 	// symbols each one touched and only those (QETDB-S6-SCOPE.md S6-3)
 	void historyComparesTwoRevisions()
 	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif
@@ -451,6 +464,9 @@ private slots:
 	// for a symbol no save changed (QETDB-S6-SCOPE.md S6-5)
 	void lastChangeNamesTheSave()
 	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif
@@ -497,6 +513,9 @@ private slots:
 	// oldest kept one still to go back to (QETDB-S6-SCOPE.md S6-6)
 	void historyKeepsTheLastSaves()
 	{
+#ifdef QET_NO_SQLITE_SESSION
+		QSKIP("needs SQLite session support, which this SQLite lacks");
+#endif
 #ifndef QET_HAS_SCRIPTING
 		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
 #endif

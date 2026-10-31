@@ -6,6 +6,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // A project written back from its database alone (qet.saveFromDatabase(),
 // projectDataBase::toDocument()) saves as the project itself does: the
@@ -41,7 +42,7 @@ class tst_databasewriter : public QObject
 		proc.setProcessEnvironment(environment(home, eager));
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   QStringList{QStringLiteral("--common-elements-dir=" QET_ELEMENTS_DIR "/")} + arguments);
-		if (!proc.waitForFinished(300000)) return false;
+		if (!proc.waitForFinished(QetTest::timeout(300000))) return false;
 		if (log) *log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		return true;
 	}

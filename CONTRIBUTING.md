@@ -76,9 +76,25 @@ paths or toolchain file required by your setup:
 $qtPrefix = 'C:/Qt/6.x.x/msvc2022_64'
 cmake -S . -B build-msvc -G 'Visual Studio 17 2022' -A x64 `
     "-DCMAKE_PREFIX_PATH=$qtPrefix" -DBUILD_WITH_KF=OFF -DPACKAGE_TESTS=ON
-cmake --build build-msvc --config Debug --parallel
-ctest --test-dir build-msvc -C Debug --output-on-failure
+cmake --build build-msvc --config RelWithDebInfo --parallel
+ctest --test-dir build-msvc -C RelWithDebInfo --output-on-failure
 ```
+
+For routine test runs with MSVC, use `RelWithDebInfo`, as above: it is
+optimised, keeps the debug symbols and uses Qt's release DLLs. A `Debug`
+build links MSVC's Debug libraries, which check every container access and
+fill freed memory, and Qt's debug DLLs: QElectroTech runs five to eight
+times slower, and a full run takes about two hours even in parallel (the
+tests' time limits are scaled for MSVC so that they still pass). Those checks, `Q_ASSERT` and the
+C runtime's assertions only exist in `Debug`, though, and catch bugs an
+optimised build hides; use it to investigate a failure, and now and then
+for a full run. A failed assertion in a Debug build opens a dialog that
+holds its test until it is closed, so keep an eye on the screen.
+
+The integration probe tests (`tst_*integration`, `tst_lazyfolios`,
+`tst_attachedplainpaste`) are only registered with the Ninja generator:
+configure with `-G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo` from the same
+developer prompt to include them.
 
 With MSVC, CTest puts the Qt kit's `bin` directory in front of `PATH` for
 each test, so the tests find Qt's DLLs without changing `PATH` (this needs

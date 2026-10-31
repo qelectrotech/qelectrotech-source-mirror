@@ -18,6 +18,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 #include <atomic>
 #include <thread>
@@ -73,7 +74,7 @@ class tst_qetdbrobust : public QObject
 		Q_UNUSED(limit_file_size)
 #endif
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), resaveArgs(in, out));
-		if (!proc.waitForFinished(300000)) return -1;
+		if (!proc.waitForFinished(QetTest::timeout(300000))) return -1;
 		if (log) *log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		return proc.exitStatus() == QProcess::NormalExit ? proc.exitCode() : -1;
 	}
@@ -144,7 +145,7 @@ private slots:
 				QThread::usleep(200);
 			QElapsedTimer writing;
 			writing.start();
-			QVERIFY(proc.waitForFinished(300000));
+			QVERIFY(proc.waitForFinished(QetTest::timeout(300000)));
 			m_writing_ms = writing.elapsed();
 			QVERIFY(m_writing_ms > 0);
 		}
