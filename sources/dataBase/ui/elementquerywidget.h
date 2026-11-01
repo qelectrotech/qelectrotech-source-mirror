@@ -56,6 +56,7 @@ class ElementQueryWidget : public QWidget
 		void on_m_remove_pb_clicked();
 		void on_m_down_pb_clicked();
 		void on_m_edit_sql_query_cb_clicked();
+		void addFormulaColumn();
 		void on_m_filter_le_textEdited(const QString &arg1);
 		void on_m_filter_type_cb_activated(int index);
 		void on_m_load_pb_clicked();

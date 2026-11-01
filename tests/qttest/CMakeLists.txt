@@ -667,6 +667,16 @@ add_test(NAME tst_groupedbom COMMAND tst_groupedbom)
 target_include_directories(tst_groupedbom PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_groupedbom PRIVATE Qt::Test Qt::Sql)
 
+# The formulas of a table column compile to SQLite expressions.
+add_executable(
+  tst_formulabuilder
+  tst_formulabuilder.cpp
+  ${QET_DIR}/sources/formulabuilder.cpp
+  ${QET_DIR}/sources/formulabuilder.h)
+add_test(NAME tst_formulabuilder COMMAND tst_formulabuilder)
+target_include_directories(tst_formulabuilder PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_formulabuilder PRIVATE Qt::Test Qt::Sql)
+
 # qet.cpp carries the SingleApplication argument wire format
 # (joinWithSpaces/splitWithSpaces); it pulls in qeticons and shortcutmanager,
 # so those are compiled alongside rather than linking the whole application.
