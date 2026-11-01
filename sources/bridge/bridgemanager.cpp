@@ -284,15 +284,14 @@ int BridgeManager::freeColumn(QETProject *project, const QList<BridgeTerminal> &
 }
 
 /**
-	@brief BridgeManager::terminalsOfBridge
+	@brief BridgeManager::elementsOnUnbuiltFolios
 	@param project
-	@param bridge
-	@return the terminals the bridge lands on at this very moment,
-	worked out from its lines as they are drawn now: what a line crosses
-	is what it takes. A line moved onto or off a terminal takes it on or
-	drops it again, and the order of the list follows the drawing -- the
-	first terminal of it is the one the bridge takes its information
-	from.
+	@param parts sections of a bridge, each standing for its folio
+	@return the symbols which stand on the parts' folios which are not
+	built at the open (lazy folios): held in their own XML until the
+	folio is built, they are no items to ask -- whatever a bridge holds
+	naming one of them must be kept from that XML instead (review of
+	#1651).
 */
 QSet<QUuid> BridgeManager::elementsOnUnbuiltFolios(QETProject *project,
 												   const QList<BridgePartData> &parts)
@@ -327,6 +326,17 @@ QSet<QUuid> BridgeManager::elementsOnUnbuiltFolios(QETProject *project,
 	return elements;
 }
 
+/**
+	@brief BridgeManager::terminalsOfBridge
+	@param project
+	@param bridge
+	@return the terminals the bridge lands on at this very moment,
+	worked out from its lines as they are drawn now: what a line crosses
+	is what it takes. A line moved onto or off a terminal takes it on or
+	drops it again -- in the order the bridge holds its Klemmen in, the
+	first of them being the one it takes its information from, and
+	whatever the lines cross anew appended behind (review of #1651).
+*/
 QList<BridgeTerminal> BridgeManager::terminalsOfBridge(QETProject *project, Bridge *bridge)
 {
 	if (!project || !bridge) {
@@ -478,7 +488,11 @@ QList<Bridge *> BridgeManager::bridgesOverfilledBy(QETProject *project,
 			if (!element || !element->diagram()) {
 				continue;
 			}
-			const QRectF reach = element->sceneBoundingRect().adjusted(-50, -50, 50, 50);
+			//How far an element reaches for a line beyond its own outline:
+		//close enough to land on it after the step of a gesture
+		constexpr qreal element_reach = 50.0;
+		const QRectF reach = element->sceneBoundingRect().adjusted(
+					-element_reach, -element_reach, element_reach, element_reach);
 			for (const BridgePartData &part : parts) {
 				if (element->diagram()->uuid() != part.diagram) {
 					continue;
