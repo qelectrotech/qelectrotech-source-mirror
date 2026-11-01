@@ -90,7 +90,8 @@ class Element : public QetGraphicsItem
 			Element::kind link_type = Element::Simple);
 		~Element() override;
 	private:
-		bool definitionGeometryMatches(const QDomElement &definition) const;
+		bool definitionGeometryMatches(const QDomElement &definition,
+									   bool check_frame = true) const;
 		Element(const Element &);
 
 		// attributes
@@ -208,7 +209,7 @@ class Element : public QetGraphicsItem
 			Unavailable,       ///< definition missing or unreadable, old drawing kept
 			GeometryChanged    ///< size, hotspot or terminals changed, old drawing kept
 		};
-		ReloadPictureResult reloadPicture();
+		ReloadPictureResult reloadPicture(bool adopt_frame = false);
 		virtual void setHighlighted(bool);
 		void showAsJumpTarget();
 		bool isShownAsJumpTarget() const { return m_jump_highlight > 0; }
