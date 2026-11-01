@@ -424,6 +424,42 @@ if(WIN32)
     endif()
 endif()
 
+# QET_DEPLOY_QT (cmake/start_options.cmake): at install time, Qt's deploy
+# script copies the Qt libraries and plugins QElectroTech uses beside it:
+# windeployqt on Windows, macdeployqt into the bundle on macOS. Qt's
+# translations are left out: QElectroTech reads them from its own lang
+# folder (QETApp::setLanguage()). Linux packages bring Qt their own way, and
+# Qt's deploy there needs a Qt built with an RPATH, which the distributions'
+# Qt is not.
+if(QET_DEPLOY_QT)
+    if(NOT WIN32 AND NOT APPLE)
+        message(FATAL_ERROR
+            "QET_DEPLOY_QT is for Windows and macOS. On Linux, packages bring "
+            "Qt their own way (distributions, snap, Flatpak, the AppImage "
+            "scripts in build-aux/linux/appimage).")
+    endif()
+    if(Qt6_VERSION VERSION_LESS 6.5)
+        message(FATAL_ERROR
+            "QET_DEPLOY_QT needs Qt 6.5 or newer (found ${Qt6_VERSION}).")
+    endif()
+    set(qet_deploy_tool_options)
+    if(WIN32 AND NOT Qt6_VERSION VERSION_LESS 6.7)
+        # Qml is linked for QJSEngine only (see QET_HAS_SCRIPTING): without
+        # these, windeployqt adds Qt Quick, its QML imports and the QML
+        # debugging plugins, which nothing uses. DEPLOY_TOOL_OPTIONS needs
+        # Qt 6.7; before it, those are deployed too.
+        set(qet_deploy_tool_options DEPLOY_TOOL_OPTIONS
+            --no-quick-import --skip-plugin-types qmltooling)
+    endif()
+    qt_generate_deploy_app_script(
+        TARGET ${PROJECT_NAME}
+        OUTPUT_SCRIPT qet_deploy_script
+        NO_TRANSLATIONS
+        ${qet_deploy_tool_options}
+    )
+    install(SCRIPT ${qet_deploy_script})
+endif()
+
 install(DIRECTORY ico/breeze-icons/16x16   DESTINATION ${QET_ICONS_PATH})
 install(DIRECTORY ico/breeze-icons/22x22   DESTINATION ${QET_ICONS_PATH})
 install(DIRECTORY ico/breeze-icons/32x32   DESTINATION ${QET_ICONS_PATH})
