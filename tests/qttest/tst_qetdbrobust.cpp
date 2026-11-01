@@ -107,7 +107,7 @@ class tst_qetdbrobust : public QObject
 	void putOld(const QString &target)
 	{
 			//And no new file left by a save killed before
-		for (const char *suffix : {"", ".saving", ".saving-journal"})
+		for (const char *suffix : {".saving", ".saving-journal"})
 			QFile::remove(target + QLatin1String(suffix));
 			//Written beside it and put in place at once, as a save does:
 			//copiedDuringSave() copies the file while this runs
@@ -116,7 +116,13 @@ class tst_qetdbrobust : public QObject
 		QVERIFY(f.open(QIODevice::WriteOnly));
 		f.write(m_old_bytes);
 		f.close();
-		QVERIFY(QFile::rename(beside, target));
+			//Retried, as a save is: Windows refuses while that copy holds it
+		QElapsedTimer timer;
+		timer.start();
+		while (QFile::remove(target), !QFile::rename(beside, target)) {
+			QVERIFY(timer.elapsed() < QetTest::timeout(5000));
+			QThread::msleep(10);
+		}
 	}
 
 private slots:
@@ -215,12 +221,17 @@ private slots:
 				QThread::msleep(5);
 			}
 		});
-		for (int i = 0 ; i < 3 ; ++i) {
-			QCOMPARE(resave(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), target), 0);
-			putOld(target);
+		QString log;
+		bool saved = true;
+		for (int i = 0 ; i < 3 && saved ; ++i) {
+			saved = resave(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), target, &log) == 0;
+			if (saved) putOld(target);
 		}
+			//Before anything can leave this function: a running std::thread
+			//ends the whole program when it goes out of scope
 		stop = true;
 		copier.join();
+		QVERIFY2(saved, qPrintable(log.right(600)));
 		for (int i = 0 ; i < copies ; ++i)
 			if (!complete(copy_dir + QStringLiteral("/%1.qetdb").arg(i))) ++broken;
 		qInfo().noquote() << copies.load() << "copies taken during 3 saves," << broken.load() << "broken";
