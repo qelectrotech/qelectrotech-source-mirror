@@ -242,7 +242,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_insert_last_element = nullptr, ///< Place the last placed element again
 		*m_copy_text_format = nullptr,  ///< Copy label/text formatting template
 		*m_apply_text_format = nullptr, ///< Apply label/text formatting template
-		*m_place_texts = nullptr;	///< Place the texts of the selected symbols at one of nine points
+		*m_place_texts = nullptr,	///< Place the texts of the selected symbols at one of nine points
+		*m_text_clearance = nullptr;	///< Move texts off the wires they sit on
 		
 		QActionGroup
 		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram

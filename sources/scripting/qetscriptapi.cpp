@@ -38,6 +38,7 @@
 #include <factory/ui/addtabledialog.h>
 #include <qet.h>
 #include <qetgraphicsitem/ViewItem/qetgraphicstableitem.h>
+#include <textclearance.h>
 #include <qetgraphicsitem/element.h>
 #include <qetmessagebox.h>
 #include <dataBase/projectdatabase.h>
@@ -3553,6 +3554,34 @@ bool QetScriptApi::setTablePosition(int folioIndex, int tableIndex, double x, do
 	cmd->setText(QObject::tr("Move %1").arg(table->tableName()));
 	m_project->undoStack()->push(cmd);
 	return true;
+}
+
+/**
+	@brief QetScriptApi::clearTextsFromWires
+	Move the texts of a folio that sit on a wire off it, the shortest way
+	that leaves distance between the text and the wire, as the "Keep texts
+	clear of wires" command does. One undo step.
+	@return the number of texts moved, or -1
+*/
+int QetScriptApi::clearTextsFromWires(int folioIndex, double distance, double maxMove)
+{
+	if (!m_project) return -1;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.clearTextsFromWires: project is read-only"));
+		return -1;
+	}
+	const QList<Diagram *> diagrams = m_project->folios();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) {
+		log(QStringLiteral("qet.clearTextsFromWires: no folio at index %1").arg(folioIndex));
+		return -1;
+	}
+	TextClearance::Settings settings;
+	settings.distance = qBound(0.0, distance, 100.0);
+	settings.maxMove = qBound(1.0, maxMove, 300.0);
+	const TextClearance::Plan plan = TextClearance::plan(diagrams.at(folioIndex), settings, false);
+	if (QUndoCommand *undo = TextClearance::command(plan))
+		m_project->undoStack()->push(undo);
+	return plan.moves.size();
 }
 
 namespace {
