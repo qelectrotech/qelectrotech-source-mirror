@@ -31,6 +31,8 @@
 #include <QLabel>
 #include <QMouseEvent>
 #include <QRadioButton>
+#include <QAbstractScrollArea>
+#include <QHash>
 #include <QScrollArea>
 #include <QScrollBar>
 #include <QSettings>
@@ -247,7 +249,9 @@ namespace {
 		A tab widget as high as its current page, not as its highest one,
 		so a short page leaves no empty space below it: its other pages are
 		ignored by its stack, and its height is held to the current page's,
-		since QTabWidget::sizeHint() still asks every page.
+		since QTabWidget::sizeHint() still asks every page. A page that
+		scrolls, or holds what scrolls (a list, a tree), keeps its own size
+		policy and is not held: it takes the height the dock gives it.
 	*/
 	class TabFit : public QObject
 	{
@@ -264,14 +268,26 @@ namespace {
 				int highest = 0;
 				for (int i = 0; i < m_tabs->count(); ++i) {
 					QWidget *page = m_tabs->widget(i);
+					if (!m_policies.contains(page))
+						m_policies.insert(page, page->sizePolicy());
 					highest = qMax(highest, page->sizeHint().height());
-					const QSizePolicy::Policy policy = i == m_tabs->currentIndex()
-							? QSizePolicy::Preferred : QSizePolicy::Ignored;
-					page->setSizePolicy(policy, policy);
+					if (i != m_tabs->currentIndex())
+						page->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+					else if (scrolls(page))
+						page->setSizePolicy(m_policies.value(page, page->sizePolicy()));
+					else
+						page->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 				}
 				QWidget *current = m_tabs->currentWidget();
 				if (!current)
 					return;
+				if (scrolls(current)) {
+					if (m_tabs->maximumHeight() != QWIDGETSIZE_MAX)
+						m_tabs->setMaximumHeight(QWIDGETSIZE_MAX);
+					m_tabs->updateGeometry();
+					updateScrollAreasAround(m_tabs);
+					return;
+				}
 					//The tab bar and the frame, above and around the page
 				const int around = m_tabs->sizeHint().height() - highest;
 				const int height = qMax(current->sizeHint().height() + around,
@@ -291,7 +307,22 @@ namespace {
 			}
 
 		private:
+				/// A page that scrolls, or shows what scrolls (not the
+				/// hidden list of a combo box)
+			static bool scrolls(QWidget *page)
+			{
+				if (qobject_cast<QAbstractScrollArea *>(page))
+					return true;
+				const auto areas = page->findChildren<QAbstractScrollArea *>();
+				for (QAbstractScrollArea *area : areas)
+					if (area->window() == page->window() && area->isVisibleTo(page))
+						return true;
+				return false;
+			}
+
 			QTabWidget *m_tabs;
+				/// Each page's own size policy, as it was first seen
+			QHash<QWidget *, QSizePolicy> m_policies;
 	};
 
 	/**
