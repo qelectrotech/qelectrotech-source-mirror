@@ -1335,7 +1335,7 @@ Nota: estas opções NÃO permitem nem bloqueiam as numerações automáticas, a
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="349"/>
-        <source>Folio size: %1 � %2 mm</source>
+        <source>Folio size: %1 × %2 mm</source>
         <translation>Tamanho da folha: %1 × %2 mm</translation>
     </message>
     <message>
