@@ -19,14 +19,15 @@
 #include "generalconfigurationpage.h"
 
 #include "../../qetgraphicsitem/dynamicelementtextitem.h"
+#include "../../connectionsymbols.h"
 #include "../../scripting/liveserver.h"
 #include "../../scripting/assistantinfo.h"
 
 #include "../../qetapp.h"
 #include "../../diagramview.h"
-#include "../../qetdiagrameditor.h"
 #include "../dockfold.h"
 #include "../dockfit.h"
+#include "../../qetdiagrameditor.h"
 #include "../../qeticons.h"
 #include "ui_generalconfigurationpage.h"
 #include "../../materiallist/materiallist.h"
@@ -129,11 +130,12 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_context_toolbar_cb->setChecked(settings.value("diagrameditor/context_toolbar", true).toBool());
 	ui->m_mouse_gestures_cb->setChecked(settings.value("diagrameditor/mouse_gestures", true).toBool());
 	ui->m_pointer_aids_cb->setChecked(DiagramView::pointerAids());
-	ui->m_warn_outside_sheet_cb->setChecked(QETDiagramEditor::warnsOutsideSheet());
 	ui->m_vertical_texts_from_bottom_cb->setChecked(DynamicElementTextItem::verticalFromBottom());
+	ui->m_junction_replaces_cb->setChecked(ConnectionSymbols::newJunctionReplacesOld());
 	ui->m_terminal_help_lines_cb->setChecked(DiagramView::terminalHelpLinesShown());
 	ui->m_dock_fold_cb->setChecked(DockFold::enabled());
 	ui->m_narrow_docks_cb->setChecked(DockFit::enabled());
+	ui->m_warn_outside_sheet_cb->setChecked(QETDiagramEditor::warnsOutsideSheet());
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
 	for (const qreal divisor : TextGrid::divisors)
@@ -456,12 +458,13 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/context_toolbar", ui->m_context_toolbar_cb->isChecked());
 	settings.setValue("diagrameditor/mouse_gestures", ui->m_mouse_gestures_cb->isChecked());
 	DiagramView::setPointerAids(ui->m_pointer_aids_cb->isChecked());
-	QETDiagramEditor::setWarnsOutsideSheet(ui->m_warn_outside_sheet_cb->isChecked());
+	ConnectionSymbols::setNewJunctionReplacesOld(ui->m_junction_replaces_cb->isChecked());
 	if (ui->m_vertical_texts_from_bottom_cb->isChecked() != DynamicElementTextItem::verticalFromBottom())
 		DynamicElementTextItem::setVerticalFromBottom(ui->m_vertical_texts_from_bottom_cb->isChecked());
 	DiagramView::setTerminalHelpLinesShown(ui->m_terminal_help_lines_cb->isChecked());
 	DockFold::setEnabled(ui->m_dock_fold_cb->isChecked());
 	DockFit::setEnabled(ui->m_narrow_docks_cb->isChecked());
+	QETDiagramEditor::setWarnsOutsideSheet(ui->m_warn_outside_sheet_cb->isChecked());
 		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());

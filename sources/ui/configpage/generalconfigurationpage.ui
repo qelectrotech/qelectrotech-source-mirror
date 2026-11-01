@@ -307,6 +307,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_junction_replaces_cb">
+         <property name="toolTip">
+          <string>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</string>
+         </property>
+         <property name="text">
+          <string>A new corner or T-junction replaces the one under it</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="guides_startup_cb">
          <property name="text">
           <string>Show default guides (applies from the next time the programme is launched)</string>

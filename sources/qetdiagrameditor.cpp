@@ -22,6 +22,7 @@
 #include "utils/previousversions.h"
 #include "shownkinds.h"
 #include "symboltextplacement.h"
+#include "ui/textclearancedialog.h"
 #include "autoconnect.h"
 #ifdef QET_HAS_SCRIPTING
 #include "scripting/qetscripting.h"
@@ -700,6 +701,18 @@ void QETDiagramEditor::setUpActions()
 	}
 	connect(m_place_texts, &QAction::triggered, this, [this, chosen_point]() {
 		placeSymbolTexts(chosen_point());
+	});
+
+	m_text_clearance = new QAction(tr("Keep texts clear of wires..."), this);
+	m_text_clearance->setStatusTip(tr("Move the texts that sit on a wire off it, in one undo step", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_text_clearance, "diagrameditor.text_clearance", tr("Diagram editors"), QKeySequence());
+	connect(m_text_clearance, &QAction::triggered, this, [this]() {
+		DiagramView *dv = currentDiagramView();
+		if (!dv || !dv->diagram() || dv->diagram()->isReadOnly()) return;
+		TextClearanceDialog dialog(dv->diagram(), this);
+		if (dialog.exec() != QDialog::Accepted) return;
+		if (QUndoCommand *undo = TextClearance::command(dialog.plan()))
+			dv->diagram()->undoStack().push(undo);
 	});
 
 		//Duplicate: copy the selection and place it at a configured,
@@ -2049,6 +2062,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_copy_text_format);
 	menu_edition -> addAction(m_apply_text_format);
 	menu_edition -> addAction(m_place_texts);
+	menu_edition -> addAction(m_text_clearance);
 	menu_edition -> addAction(m_paste_origin);
 	menu_edition -> addAction(m_paste_element_info);
 	menu_edition -> addAction(m_duplicate);
@@ -3862,6 +3876,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_apply_text_format->setEnabled(!ro && ((selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern()) ||
 	                                        (selected_dimensions_count >= 1 && DimensionFormatPattern::hasPattern())));
 	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
+	m_text_clearance->setEnabled(!ro);
 	m_mirror_horizontal->setEnabled(!ro && selected_elements_count);
 	m_mirror_vertical->setEnabled(!ro && selected_elements_count);
 
