@@ -323,8 +323,8 @@ void QetGraphicsTableItem::paint(
 							Qt::TextAlignmentRole
 							).toInt()
 						| Qt::AlignVCenter,
-						m_model->index(index_row, j)
-						.data().toString());
+						ProjectDBModel::shownText(m_model, m_model->index(index_row, j)
+						.data().toString()));
 		}
 	}
 

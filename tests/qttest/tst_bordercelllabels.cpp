@@ -21,6 +21,13 @@ class tst_bordercelllabels : public QObject
 	}
 
 private slots:
+	// The settings page and the sheet share one default (issue #1692): a
+	// fresh install numbers columns from 1, as the unticked box says.
+	void columnsStartAtOneByDefault()
+	{
+		QVERIFY(!BorderCellLabels::defaultColumnsFromZero);
+	}
+
 	void rowLabelsFollowTheBorderSequence()
 	{
 		QString expected(QStringLiteral("A"));

@@ -1,0 +1,180 @@
+<project title="Auto connect drag" uuid="{a7c0c0de-0001-4c1e-9e57-3f0d0f0a7a00}" version="0.200.1">
+    <properties>
+        <property name="saveddate" show="1">10/2/26</property>
+        <property name="saveddate-eu" show="1">02-10-2026</property>
+        <property name="saveddate-us" show="1">2026-10-02</property>
+        <property name="savedfilename" show="1">auto_connect</property>
+        <property name="savedtime" show="1">18:39</property>
+    </properties>
+    <usage enabled="true" time_spent="0"/>
+    <newdiagrams>
+        <border cols="17" colsize="60" displaycols="true" displayrows="true" rows="8" rowsize="80"/>
+        <inset author="" auto_page_num="" date="null" displayAt="bottom" filename="" folio="" indexrev="" locmach="" plant="" title="" version=""/>
+        <conductors bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <report label="%f-%l%c"/>
+        <xrefs>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="coil" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="commutator" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="plc" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="protection" xrefpos="AlignBottom"/>
+        </xrefs>
+        <conductors_autonums auto_break_conductors="false" current_autonum="" freeze_new_conductors="false" live_auto_connect="true"/>
+        <folio_autonums/>
+        <element_autonums current_autonum="" freeze_new_elements="false"/>
+        <guides/>
+    </newdiagrams>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="1" plant="" rows="8" rowsize="80" title="" uuid="{a7c0c0de-00d1-4c1e-9e57-3f0d0f0a7a01}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+                <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/abgang.elmt" uuid="{a7c0c0de-00d2-4c1e-9e57-3f0d0f0a7a01}" x="100" y="100" z="10">
+                <terminals/>
+                <inputs/>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/abgang.elmt" uuid="{a7c0c0de-00d2-4c1e-9e57-3f0d0f0a7a02}" x="140" y="100" z="10">
+                <terminals/>
+                <inputs/>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/abgang.elmt" uuid="{a7c0c0de-00d2-4c1e-9e57-3f0d0f0a7a03}" x="180" y="100" z="10">
+                <terminals/>
+                <inputs/>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/abgang.elmt" uuid="{a7c0c0de-00d2-4c1e-9e57-3f0d0f0a7a04}" x="220" y="100" z="10">
+                <terminals/>
+                <inputs/>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/abgang.elmt" uuid="{a7c0c0de-00d2-4c1e-9e57-3f0d0f0a7a05}" x="300" y="100" z="10">
+                <terminals/>
+                <inputs/>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/abgang.elmt" uuid="{a7c0c0de-00d2-4c1e-9e57-3f0d0f0a7a06}" x="340" y="100" z="10">
+                <terminals/>
+                <inputs/>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/klemme.elmt" uuid="{a7c0c0de-00d2-4c1e-9e57-3f0d0f0a7a07}" x="400" y="210" z="10">
+                <terminals/>
+                <inputs/>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/klemme.elmt" uuid="{a7c0c0de-00d2-4c1e-9e57-3f0d0f0a7a08}" x="400" y="250" z="10">
+                <terminals/>
+                <inputs/>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/klemme.elmt" uuid="{a7c0c0de-00d2-4c1e-9e57-3f0d0f0a7a09}" x="400" y="290" z="10">
+                <terminals/>
+                <inputs/>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/ziel.elmt" uuid="{a7c0c0de-00d2-4c1e-9e57-3f0d0f0a7a10}" x="220" y="400" z="10">
+                <terminals/>
+                <inputs/>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{a7c0c0de-00d2-4c1e-9e57-3f0d0f0a7a04}" element2="{a7c0c0de-00d2-4c1e-9e57-3f0d0f0a7a10}" formula="" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="" numsize="7" onetextperfolio="0" tension_protocol="" terminal1="{a7c0c0de-00d3-4c1e-9e57-3f0d0f0a7a03}" terminal2="{a7c0c0de-00d3-4c1e-9e57-3f0d0f0a7a04}" text_color="#000000" type="multi" uuid="{a7c0c0de-00d4-4c1e-9e57-3f0d0f0a7a01}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0"/>
+        </conductors>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="en">Imported elements</name>
+            </names>
+            <element name="klemme.elmt">
+                <definition height="20" hotspot_x="10" hotspot_y="10" link_type="simple" type="element" version="0.100.0" width="20">
+                    <uuid uuid="{a7c0c0de-00d5-4c1e-9e57-3f0d0f0a7a01}"/>
+                    <names>
+                        <name lang="en">klemme</name>
+                    </names>
+                    <description>
+                        <rect x="-5" y="-5" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+                        <terminal name="W" orientation="w" type="Generic" uuid="{a7c0c0de-00d3-4c1e-9e57-3f0d0f0a7a01}" x="-10" y="0"/>
+                        <terminal name="E" orientation="e" type="Generic" uuid="{a7c0c0de-00d3-4c1e-9e57-3f0d0f0a7a02}" x="10" y="0"/>
+                    </description>
+                </definition>
+            </element>
+            <element name="abgang.elmt">
+                <definition height="20" hotspot_x="10" hotspot_y="10" link_type="simple" type="element" version="0.100.0" width="20">
+                    <uuid uuid="{a7c0c0de-00d5-4c1e-9e57-3f0d0f0a7a02}"/>
+                    <names>
+                        <name lang="en">abgang</name>
+                    </names>
+                    <description>
+                        <rect x="-5" y="-5" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+                        <terminal name="S" orientation="s" type="Generic" uuid="{a7c0c0de-00d3-4c1e-9e57-3f0d0f0a7a03}" x="0" y="10"/>
+                    </description>
+                </definition>
+            </element>
+            <element name="ziel.elmt">
+                <definition height="20" hotspot_x="10" hotspot_y="10" link_type="simple" type="element" version="0.100.0" width="20">
+                    <uuid uuid="{a7c0c0de-00d5-4c1e-9e57-3f0d0f0a7a03}"/>
+                    <names>
+                        <name lang="en">ziel</name>
+                    </names>
+                    <description>
+                        <rect x="-5" y="-5" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+                        <terminal name="N" orientation="n" type="Generic" uuid="{a7c0c0de-00d3-4c1e-9e57-3f0d0f0a7a04}" x="0" y="-10"/>
+                    </description>
+                </definition>
+            </element>
+            <element name="winkel.elmt">
+                <definition height="20" hotspot_x="10" hotspot_y="10" link_type="simple" type="element" version="0.100.0" width="20">
+                    <uuid uuid="{a7c0c0de-00d5-4c1e-9e57-3f0d0f0a7a04}"/>
+                    <names>
+                        <name lang="en">winkel</name>
+                    </names>
+                    <description>
+                        <line x1="0" y1="-5" x2="0" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+                        <line x1="0" y1="0" x2="5" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+                        <terminal name="N" orientation="n" type="Generic" uuid="{a7c0c0de-00d3-4c1e-9e57-3f0d0f0a7a05}" x="0" y="-5"/>
+                        <terminal name="E" orientation="e" type="Generic" uuid="{a7c0c0de-00d3-4c1e-9e57-3f0d0f0a7a06}" x="5" y="0"/>
+                    </description>
+                </definition>
+            </element>
+            <element name="t.elmt">
+                <definition height="20" hotspot_x="10" hotspot_y="10" link_type="simple" type="element" version="0.100.0" width="20">
+                    <uuid uuid="{a7c0c0de-00d5-4c1e-9e57-3f0d0f0a7a05}"/>
+                    <names>
+                        <name lang="en">t</name>
+                    </names>
+                    <description>
+                        <line x1="0" y1="-10" x2="0" y2="10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+                        <line x1="0" y1="0" x2="10" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+                        <terminal name="N" orientation="n" type="Generic" uuid="{a7c0c0de-00d3-4c1e-9e57-3f0d0f0a7a07}" x="0" y="-10"/>
+                        <terminal name="S" orientation="s" type="Generic" uuid="{a7c0c0de-00d3-4c1e-9e57-3f0d0f0a7a08}" x="0" y="10"/>
+                        <terminal name="E" orientation="e" type="Generic" uuid="{a7c0c0de-00d3-4c1e-9e57-3f0d0f0a7a09}" x="10" y="0"/>
+                    </description>
+                </definition>
+            </element>
+            <element name="verweis.elmt">
+                <definition height="20" hotspot_x="10" hotspot_y="10" link_type="next_report" type="element" version="0.100.0" width="20">
+                    <uuid uuid="{a7c0c0de-00d5-4c1e-9e57-3f0d0f0a7a06}"/>
+                    <names>
+                        <name lang="en">verweis</name>
+                    </names>
+                    <description>
+                        <line x1="0" y1="0" x2="4" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+                        <line x1="4" y1="-3" x2="4" y2="3" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+                        <terminal name="1" orientation="w" type="Generic" uuid="{a7c0c0de-00d3-4c1e-9e57-3f0d0f0a7a10}" x="0" y="0"/>
+                    </description>
+                </definition>
+            </element>
+        </category>
+    </collection>
+</project>

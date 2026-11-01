@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramview.h"
+#include "itemdescription.h"
+#include "shownkinds.h"
 #include "autoNum/ui/pastenumberingimport.h"
 #include "cellruler.h"
 #include "lastusedstyle.h"
@@ -30,6 +32,7 @@
 #include "cable/cablecopy.h"
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
+#include "diagramevent/diagrameventadddimension.h"
 #include "bridge/bridgepart.h"
 #include "bridge/bridgeundocommands.h"
 #include "diagramevent/diagrameventaddelement.h"
@@ -890,7 +893,8 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 
 	const int movable = DiagramContent::Elements | DiagramContent::TextFields
 					   | DiagramContent::Images | DiagramContent::Shapes
-					   | DiagramContent::Tables | DiagramContent::TerminalStrip;
+					   | DiagramContent::Tables | DiagramContent::TerminalStrip
+					   | DiagramContent::Dimensions;
 	for (QGraphicsItem *item : pasted.items(movable))
 		item->setPos(item->pos() + offset);
 		//The new line is stamped beside the original like everything
@@ -1119,6 +1123,29 @@ void DiagramView::mousePressEvent(QMouseEvent *original)
 }
 
 /**
+	@brief DiagramView::leaveEvent
+	The mouse points at nothing of this view any more.
+*/
+void DiagramView::leaveEvent(QEvent *event)
+{
+	setPointedDescription(QString());
+	QGraphicsView::leaveEvent(event);
+}
+
+/**
+	@brief DiagramView::setPointedDescription
+	@param description : what the mouse points at now; told on only when
+	it changed
+*/
+void DiagramView::setPointedDescription(const QString &description)
+{
+	if (description == m_pointed_description)
+		return;
+	m_pointed_description = description;
+	emit pointedItemChanged(description);
+}
+
+/**
 	@brief DiagramView::mouseMoveEvent
 	Manage the event move mouse
 */
@@ -1128,6 +1155,21 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 	QMouseEvent *e = onCaughtHandle(original, shifted);
 	const AcceptedBack accepted_back{e, original};
 	m_last_mouse_pos = e->pos();
+		//The topmost item that is one of the folio's: the crosshair and
+		//other aids drawn over the folio say nothing, nor what View > Show
+		//hides. Not while a button is held: a drag or a rubber band is
+		//under way, and the selection is what the status bar shows then.
+	if (e->buttons() == Qt::NoButton) {
+		QString pointed;
+		for (QGraphicsItem *item : items(e->pos())) {
+			if (!item->isVisible() || ShownKinds::isHidden(item))
+				continue;
+			pointed = ItemDescription::of(item);
+			if (!pointed.isEmpty())
+				break;
+		}
+		setPointedDescription(pointed);
+	}
 	setToolTip(tr("X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
 		//A press whose release never came (it went to a menu or a
 		//dialog): a move without the button ends the drag
@@ -1243,6 +1285,8 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 */
 void DiagramView::updatePointer(const QPoint &viewport_pos, Qt::MouseButtons buttons)
 {
+	const bool isDimensionTool = m_diagram && m_diagram->dimensionToolIsRunning();
+
 	if (!pointerAids()) {
 			//Switched off: hand the pointer back once, then leave it to
 			//the view and the items, as before
@@ -1251,6 +1295,9 @@ void DiagramView::updatePointer(const QPoint &viewport_pos, Qt::MouseButtons but
 			m_pointer_set = false;
 			viewport()->unsetCursor();
 			viewport()->update(crosshairArea(m_crosshair_pos));
+		}
+		if (isDimensionTool) {
+			viewport()->setCursor(DiagramEventAddDimension::dimensionCursor());
 		}
 		return;
 	}
@@ -1282,11 +1329,17 @@ void DiagramView::updatePointer(const QPoint &viewport_pos, Qt::MouseButtons but
 
 	Pointer pointer = Pointer::System;
 	if (m_crosshair_visible && crosshairShown() && m_diagram
-			&& m_diagram->border_and_titleblock.insideBorderRect().contains(m_crosshair_pos))
-		pointer = movable ? Pointer::Move : Pointer::Arrow;
+			&& m_diagram->border_and_titleblock.insideBorderRect().contains(m_crosshair_pos)) {
+		if (isDimensionTool)
+			pointer = Pointer::Dimension;
+		else
+			pointer = movable ? Pointer::Move : Pointer::Arrow;
+	}
 
 	if (pointer != Pointer::System)
 		viewport()->setCursor(Qt::BlankCursor);
+	else if (isDimensionTool)
+		viewport()->setCursor(DiagramEventAddDimension::dimensionCursor());
 	else if (!m_event_interface)
 		viewport()->setCursor(movable ? Qt::SizeAllCursor : Qt::ArrowCursor);
 	else if (m_pointer != Pointer::System)
@@ -1319,6 +1372,30 @@ void DiagramView::drawPointer(QPainter *painter) const
 	if (m_pointer == Pointer::Arrow)
 	{
 		path.addPolygon(QPolygonF({{0, 0}, {0, 16}, {4, 12}, {7, 18}, {9.5, 17}, {6.5, 11}, {11.5, 11}, {0, 0}}));
+	}
+	else if (m_pointer == Pointer::Dimension)
+	{
+		path.addPolygon(QPolygonF({{0, 0}, {0, 16}, {4, 12}, {7, 18}, {9.5, 17}, {6.5, 11}, {11.5, 11}, {0, 0}}));
+		painter->drawPath(path);
+
+		painter->save();
+		QPen haloPen(Qt::white, 2.5, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
+		painter->setPen(haloPen);
+		painter->drawLine(QPointF(13, 5), QPointF(13, 15));
+		painter->drawLine(QPointF(27, 5), QPointF(27, 15));
+		painter->drawLine(QPointF(13, 10), QPointF(27, 10));
+
+		QPen darkPen(Qt::black, 1.2, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
+		painter->setPen(darkPen);
+		painter->drawLine(QPointF(13, 5), QPointF(13, 15));
+		painter->drawLine(QPointF(27, 5), QPointF(27, 15));
+		painter->drawLine(QPointF(13, 10), QPointF(27, 10));
+		painter->drawLine(QPointF(13, 10), QPointF(16, 7.5));
+		painter->drawLine(QPointF(13, 10), QPointF(16, 12.5));
+		painter->drawLine(QPointF(27, 10), QPointF(24, 7.5));
+		painter->drawLine(QPointF(27, 10), QPointF(24, 12.5));
+		painter->restore();
+		return;
 	}
 	else
 	{
@@ -2119,6 +2196,7 @@ namespace {
 		/// The settings, read once and then kept here for every view
 	int s_crosshair = -1;
 	int s_pointer_aids = -1;
+	int s_terminal_help_lines = -1;
 }
 
 /**
@@ -2178,6 +2256,33 @@ void DiagramView::setPointerAids(bool on)
 }
 
 /**
+	@brief DiagramView::terminalHelpLinesShown
+	@return true when a symbol being placed or dragged draws a shaded line
+	from each of its terminals to the terminal in line with it; on by
+	default, as always before.
+*/
+bool DiagramView::terminalHelpLinesShown()
+{
+	if (s_terminal_help_lines < 0) {
+		QSettings settings;
+		s_terminal_help_lines = settings.value(QStringLiteral("diagrameditor/terminal_help_lines"), true).toBool();
+	}
+	return s_terminal_help_lines;
+}
+
+/**
+	@brief DiagramView::setTerminalHelpLinesShown
+	@param shown : see terminalHelpLinesShown(); kept in the settings, for
+	the next drag.
+*/
+void DiagramView::setTerminalHelpLinesShown(bool shown)
+{
+	s_terminal_help_lines = shown;
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/terminal_help_lines"), shown);
+}
+
+/**
 	@brief DiagramView::crosshairArea
 	@return the part of the viewport the two lines through @a scene_pos
 	cover, a little wider than the lines
@@ -2186,9 +2291,11 @@ QRect DiagramView::crosshairArea(const QPointF &scene_pos) const
 {
 	const QPoint p = mapFromScene(scene_pos);
 	const QRect all = viewport()->rect();
+	const int pw = (m_pointer == Pointer::Dimension) ? 45 : 29;
+	const int ph = (m_pointer == Pointer::Dimension) ? 40 : 35;
 	return QRect(all.left(), p.y() - 2, all.width(), 5)
 			| QRect(p.x() - 2, all.top(), 5, all.height())
-			| QRect(p.x() - 14, p.y() - 14, 29, 35);	//the pointer drawn on it
+			| QRect(p.x() - 14, p.y() - 14, pw, ph);	//the pointer drawn on it
 }
 
 /**

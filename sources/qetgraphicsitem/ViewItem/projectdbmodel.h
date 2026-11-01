@@ -65,6 +65,7 @@ class ProjectDBModel : public QAbstractTableModel
 		void setQuery(const QString &setQuery);
 		QString queryString() const;
 		QETProject *project() const;
+		static QString shownText(const QAbstractItemModel *model, const QString &source);
 
 		QDomElement toXml(QDomDocument &document) const;
 		void fromXml(const QDomElement &element);
