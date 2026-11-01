@@ -3381,6 +3381,8 @@ void projectDataBase::addDrawingItem(QGraphicsItem *item)
 	}
 	else if (auto text = qobject_cast<IndependentTextItem *>(object)) {
 		connect(text, &IndependentTextItem::uuidChanged, this, &projectDataBase::drawingItemChanged, unique);
+			//Held in the row's saved form (destination attribute)
+		connect(text, &IndependentTextItem::destinationChanged, this, &projectDataBase::drawingItemChanged, unique);
 			//Also changes the height of the text, kept in the row
 		connect(text, &IndependentTextItem::textWidthChanged, this, &projectDataBase::drawingItemChanged, unique);
 			//Sent by the document, not the item: drawingItemChanged() walks

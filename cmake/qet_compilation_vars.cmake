@@ -417,6 +417,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autobreakconductor.h
   ${QET_DIR}/sources/symboltextplacement.cpp
   ${QET_DIR}/sources/symboltextplacement.h
+  ${QET_DIR}/sources/ui/textdestinationdialog.cpp
+  ${QET_DIR}/sources/ui/textdestinationdialog.h
   ${QET_DIR}/sources/autoconnect.cpp
   ${QET_DIR}/sources/autoconnect.h
 
