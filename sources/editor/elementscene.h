@@ -34,6 +34,7 @@ class ESEventInterface;
 class QKeyEvent;
 class CustomElementGraphicPart;
 class TextResizeHandles;
+class ElementMeasureItem;
 /**
 	@brief The ElementScene class
 	This class is the canvas allowing the visual edition of an electrical element.
@@ -129,6 +130,9 @@ class ElementScene : public QGraphicsScene
 		virtual void getPasteArea(const QRectF &);
 		QRectF elementSceneGeometricRect () const;
 		bool containsTerminals() const;
+		void clearMeasureItems();
+		bool hasMeasureItems() const;
+		QList<ElementMeasureItem *> measureItems() const;
 		QUndoStack &undoStack();
 		QGIManager &qgiManager();
 		static bool clipboardMayContainElement();

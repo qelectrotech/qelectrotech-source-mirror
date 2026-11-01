@@ -11,6 +11,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // The project's own symbols, their categories and its title-block templates
 // are in the project database, each whole as the project saves it, one row
@@ -95,7 +96,7 @@ class tst_projectcollectionrows : public QObject
 				   {QStringLiteral("--common-elements-dir=" QET_ELEMENTS_DIR "/"),
 					QStringLiteral("--common-tbt-dir=" QET_TITLEBLOCKS_DIR "/"),
 					QStringLiteral("--run"), js, in});
-		if (!proc.waitForFinished(180000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(180000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		if (log) *log = out;
 		QHash<QString, Rows> result;
@@ -172,6 +173,28 @@ private slots:
 		QVERIFY2(import.contains(QStringLiteral("Imported")) && !import.contains(QStringLiteral("box.elmt")),
 				 qPrintable(import));
 		QVERIFY(r.value(QStringLiteral("titleblock_template")).isEmpty());
+	}
+
+	// Two symbols under one path: QElectroTech uses the first
+	// (XmlElementCollection::child()), so the row is the first. A .qetdb
+	// written from the rows would otherwise show the other one.
+	void firstOfTwoUnderOnePath()
+	{
+		const QString one = QStringLiteral("<element name=\"box.elmt\">");
+		QString text = project();
+		const int at = text.indexOf(one);
+		const int end = text.indexOf(QStringLiteral("</element>"), at) + int(qstrlen("</element>"));
+		const QString second = text.mid(at, end - at).replace(QStringLiteral("<rect "), QStringLiteral("<ellipse "));
+		text.insert(end, second);
+		const QString in = m_dir.filePath(QStringLiteral("two-under-one-path.qet"));
+		QFile f(in);
+		QVERIFY(f.open(QIODevice::WriteOnly));
+		f.write(text.toUtf8());
+		f.close();
+
+		const Rows r = run(QStringLiteral("dump('open');"), in).value(QStringLiteral("open"));
+		const QString box = r.value(QStringLiteral("symbol_def")).value(QStringLiteral("import/t/box.elmt")).content;
+		QVERIFY2(box.contains(QStringLiteral("<rect ")) && !box.contains(QStringLiteral("<ellipse ")), qPrintable(box));
 	}
 
 	// A symbol placed from the library and a template embedded each add

@@ -165,6 +165,38 @@ class ElementData : public PropertiesInterface
 			}
 		};
 
+		/**
+		 * @brief The XRefDisplay struct
+		 * How the cross reference of one master is shown, when it differs
+		 * from the project's setting for that kind of master. Nothing is
+		 * saved while enabled is false.
+		 */
+		struct XRefDisplay {
+			enum Position { UnderLabel, BelowSymbol, Footer, Manual };
+
+			bool enabled = false;
+			bool contacts = false;      ///< contact symbols instead of a cross
+			Position position = UnderLabel;
+			qreal width = 0.5;          ///< line thickness, in drawing units
+			qreal gap = 10;             ///< below the symbol, in drawing units
+			QPointF manual;             ///< top left corner, from the symbol's origin, so it follows the symbol
+			bool showUnlinked = false;  ///< also the contacts nothing is linked to
+
+			bool operator==(const XRefDisplay &other) const {
+				return enabled == other.enabled
+					&& (!enabled
+						|| (contacts == other.contacts
+							&& position == other.position
+							&& qFuzzyCompare(width, other.width)
+							&& qFuzzyCompare(gap, other.gap)
+							&& manual == other.manual
+							&& showUnlinked == other.showUnlinked));
+			}
+			bool operator!=(const XRefDisplay &other) const {
+				return !(*this == other);
+			}
+		};
+
 		static QString plcIOTypeToString(PlcIOType type);
 		static PlcIOType plcIOTypeFromString(const QString &string);
 		static QString translatedPlcIOType(PlcIOType type);
@@ -226,6 +258,8 @@ class ElementData : public PropertiesInterface
 		QDomElement kindInfoToXml(QDomDocument &document);
 	QDomElement plcMasterDataToXml(QDomDocument &document) const;
 	void plcMasterDataFromXml(const QDomElement &xml_plc);
+		QDomElement xrefDisplayToXml(QDomDocument &document) const;
+		void xrefDisplayFromXml(const QDomElement &xml_display);
 
 		void setTerminalType(ElementData::TerminalType t_type);
 		ElementData::TerminalType terminalType() const;
@@ -243,6 +277,16 @@ class ElementData : public PropertiesInterface
 		QString typeToString() const;
 		static QString typeToString(ElementData::Type type);
 		static ElementData::Type typeFromString(const QString &string);
+		/**
+		 * @brief takesSchemeNumber
+		 * Whether an element of this kind is given a number by an element
+		 * numbering scheme.
+		 * A slave or a report takes its name from the element it is linked
+		 * to, and a conductor definition labels a wire rather than naming
+		 * an item of the drawing: none of them is numbered.
+		 * @return true when the element numbering schemes apply to this kind
+		 */
+		static bool takesSchemeNumber(ElementData::Type type);
 
 		QString masterTypeToString() const;
 		static QString masterTypeToString(ElementData::MasterType type);
@@ -279,6 +323,7 @@ class ElementData : public PropertiesInterface
 		bool m_slave_contact_groups_enabled{false};  ///< Whether slave contact groups table is active
 		QVector<SlaveContactGroup> m_slave_contact_groups;  ///< Contact groups defined by master
 		PlcMasterData m_plc_master_data;              ///< PLC master IO table and display settings
+		XRefDisplay m_xref_display;                   ///< This master's own cross reference display
 
 		ElementData::SlaveType  m_slave_type  = ElementData::SSimple;
 		ElementData::SlaveState m_slave_state = ElementData::NO;

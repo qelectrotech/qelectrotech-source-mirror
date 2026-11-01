@@ -261,7 +261,9 @@ void GraphicsTablePropertiesEditor::on_m_header_font_pb_clicked()
 						0,
 						Qt::Horizontal,
 						Qt::FontRole).value<QFont>(),
-					this);
+					this,
+					QString(),
+					QFontDialog::DontUseNativeDialog);
 		if (ok && m_table_item->model())
 		{
 			auto undo = new ModelHeaderDataCommand(m_table_item->model());
@@ -288,7 +290,8 @@ void GraphicsTablePropertiesEditor::on_m_table_font_pb_clicked()
 		auto old_font = m_table_item->model()->data(
 					index,
 					Qt::FontRole).value<QFont>();
-		auto new_font = QFontDialog::getFont(&ok, old_font, this);
+		auto new_font = QFontDialog::getFont(&ok, old_font, this, QString(),
+											 QFontDialog::DontUseNativeDialog);
 
 		if (ok && m_table_item->diagram())
 		{

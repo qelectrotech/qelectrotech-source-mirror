@@ -32,9 +32,17 @@
 #include "linksingleelementwidget.h"
 #include "masterpropertieswidget.h"
 #include "plclinkwidget.h"
+#include "dockfit.h"
+
+#include "../dataBase/qetdbfile.h"
 
 #include <QCheckBox>
+#include <QDateTime>
+#include <QFileInfo>
+#include <QClipboard>
+#include <QGuiApplication>
 #include <QLabel>
+#include <QLocale>
 #include <QUndoStack>
 #include <QVBoxLayout>
 
@@ -469,7 +477,28 @@ QWidget *ElementPropertiesWidget::generalWidget()
 					.arg(usage.other);
 		}
 	}
-	description_string += QString(tr("Location : %1\n")).arg(m_element.data()->location().toString());
+		//Who last changed it, from the history its .qetdb keeps if it
+		//keeps one: as saved, not the edits since (QETDB-S6-SCOPE.md S6-5).
+		//Before the location, which can wrap onto several lines
+	QETProject *project = m_diagram->project();
+	if (project && QetDbFile::isDatabasePath(project->filePath()) && QFileInfo::exists(project->filePath())) {
+			//"ord  time  who@host  added|changed"
+		const QString last = QetDbFile::lastChange(project->filePath(), m_element->uuid().toString(), nullptr);
+		if (!last.isEmpty()) {
+			const QDateTime when = QDateTime::fromString(last.section(QStringLiteral("  "), 1, 1), Qt::ISODate);
+			description_string += tr("Last changed: save %1, %2, by %3\n")
+					.arg(last.section(QStringLiteral("  "), 0, 0),
+						 QLocale().toString(when.toLocalTime(), QLocale::ShortFormat),
+						 last.section(QStringLiteral("  "), 2, 2).section(QLatin1Char('@'), 0, 0));
+		}
+	}
+		//Narrow docks: a zero-width space after each slash lets the long
+		//path wrap there, rather than hold the panel at its whole length
+	const bool narrow = DockFit::enabled();
+	QString location = m_element.data()->location().toString();
+	if (narrow)
+		location.replace(QLatin1Char('/'), QStringLiteral("/\u200B"));
+	description_string += QString(tr("Location : %1\n")).arg(location);
 
 		// widget himself
 	QWidget *general_widget = new QWidget (m_tab);
@@ -481,6 +510,15 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	label->setWordWrap(true);
 	label->setTextInteractionFlags(Qt::TextEditorInteraction);
 	vlayout_->addWidget(label);
+	if (narrow) {
+			//What is copied from the text gets no zero-width spaces
+		connect(QGuiApplication::clipboard(), &QClipboard::dataChanged, label, [label] {
+			QClipboard *clipboard = QGuiApplication::clipboard();
+			const QString text = clipboard->text();
+			if (label->hasFocus() && text.contains(QChar(0x200B)))
+				clipboard->setText(QString(text).remove(QChar(0x200B)));
+		});
+	}
 
 		//checkbox to lock the element position on the diagram
 		//(same mechanism already used by images and drawn shapes)
@@ -504,10 +542,17 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	connect(find_in_panel, &QPushButton::clicked, this, &ElementPropertiesWidget::findInPanel);
 	QPushButton *edit_element = new QPushButton(QET::Icons::ElementEdit, tr("Edit element"), general_widget);
 	connect(edit_element, &QPushButton::clicked, this, &ElementPropertiesWidget::editElement);
-	QHBoxLayout *hlayout_ = new QHBoxLayout;
-	hlayout_->addWidget(find_in_panel);
-	hlayout_->addWidget(edit_element);
-	vlayout_->addLayout(hlayout_);
+	if (narrow) {
+			//Below each other: side by side, the two held the panel at
+			//the width of both
+		vlayout_->addWidget(find_in_panel);
+		vlayout_->addWidget(edit_element);
+	} else {
+		QHBoxLayout *hlayout_ = new QHBoxLayout;
+		hlayout_->addWidget(find_in_panel);
+		hlayout_->addWidget(edit_element);
+		vlayout_->addLayout(hlayout_);
+	}
 
 		//Set the maximum size of the pixmap to the minimum size of the layout
 	QPixmap pixmap = m_element->pixmap();

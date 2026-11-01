@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectview.h"
+#include "utils/qetsettings.h"
 
 #include "ElementsCollection/xmlelementcollection.h"
 #include "autoNum/assignvariables.h"
@@ -343,15 +344,20 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	// ask the user for a filepath in order to save the project
 	const QString qet_filter = tr("Project QElectroTech (*.qet)", "filetypes allowed when saving a project file");
 	const QString qetz_filter = tr("Zipped project QElectroTech (*.qetz)", "filetypes allowed when saving a project file");
+		//One SQLite file, offered only with its setting on (experimental)
+	const QString qetdb_filter = tr("Project QElectroTech, one database file (*.qetdb)", "filetypes allowed when saving a project file");
 		//A project is saved as a .qetz unless a .qet is chosen
 		//(stage D1)
 	QString selected_filter = qetz_filter;
+	QString filters = qetz_filter + ";;" + qet_filter;
+	if (QetSettings::qetdbEnabled())
+		filters += ";;" + qetdb_filter;
 	QString filepath = QFileDialog::getSaveFileName(
 		this,
 		tr("Save as", "dialog title"),
 		m_project -> currentDir() + "/" + tr("untitled")
 				+ (selected_filter == qetz_filter ? ".qetz" : ".qet"),
-		qetz_filter + ";;" + qet_filter,
+		filters,
 		&selected_filter
 	);
 
@@ -373,17 +379,21 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	// over the selected "untitled" of "untitled.qet" gives "plan.qetz.qet"
 	// with the GTK dialog, and still means a .qetz.
 	bool zipped = selected_filter == qetz_filter;
+	bool database = selected_filter == qetdb_filter;
 	for (;;) {
 		if (filepath.endsWith(".qetz", Qt::CaseInsensitive)) {
 			filepath.chop(5);
 			zipped = true;
+		} else if (filepath.endsWith(".qetdb", Qt::CaseInsensitive)) {
+			filepath.chop(6);
+			database = QetSettings::qetdbEnabled();
 		} else if (filepath.endsWith(".qet", Qt::CaseInsensitive)) {
 			filepath.chop(4);
 		} else {
 			break;
 		}
 	}
-	filepath += zipped ? ".qetz" : ".qet";
+	filepath += database ? ".qetdb" : zipped ? ".qetz" : ".qet";
 
 		//Not onto a file someone else has open
 	if (!refuseIfLockedByOther(filepath)) return(QString());

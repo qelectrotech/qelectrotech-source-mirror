@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextitem.h"
+
+#include "../bridge/bridgemanager.h"
 #include <QScopedPointer>
 #include <QTextDocument>
 #include "../QetGraphicsItemModeler/textresizehandles.h"
@@ -45,6 +47,7 @@
 #include <QMimeData>
 #include <QTextCursor>
 #include <QTextDocumentFragment>
+#include <QtMath>
 
 namespace {
 	/**
@@ -139,6 +142,71 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 		fitAutoTextWidth();
 		finishAlignment();
 	});
+		//Turned with its symbol, a text may come to read from top to
+		//bottom: see verticalFromBottom()
+	if (parent_element)
+		connect(parent_element, &Element::rotationChanged, this, &DynamicElementTextItem::updateReadingDirection);
+	connect(this, &DynamicElementTextItem::rotationChanged, this, &DynamicElementTextItem::updateReadingDirection);
+	connect(document()->documentLayout(), &QAbstractTextDocumentLayout::documentSizeChanged,
+		this, &DynamicElementTextItem::updateReadingDirection);
+}
+
+namespace {
+	int s_vertical_from_bottom = -1;
+}
+
+/**
+	@brief DynamicElementTextItem::verticalFromBottom
+	@return true when a symbol's text that its symbol's turn makes read
+	from top to bottom is drawn the other way round, in the same place,
+	so that every upright text on the folio reads from bottom to top, as
+	the wires' texts do. Off by default: texts turn with their symbol.
+*/
+bool DynamicElementTextItem::verticalFromBottom()
+{
+	if (s_vertical_from_bottom < 0) {
+		QSettings settings;
+		s_vertical_from_bottom = settings.value(QStringLiteral("diagrameditor/vertical_texts_from_bottom"), false).toBool();
+	}
+	return s_vertical_from_bottom;
+}
+
+/**
+	@brief DynamicElementTextItem::setVerticalFromBottom
+	@param from_bottom : see verticalFromBottom(); kept in the settings and
+	applied at once to the texts of every open project.
+*/
+void DynamicElementTextItem::setVerticalFromBottom(bool from_bottom)
+{
+	s_vertical_from_bottom = from_bottom;
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/vertical_texts_from_bottom"), from_bottom);
+	for (QETProject *project : QETApp::registeredProjects())
+		for (Diagram *diagram : project->diagrams())
+			for (Element *element : diagram->elements())
+				for (DynamicElementTextItem *text : element->dynamicTextItems())
+					text->updateReadingDirection();
+}
+
+/**
+	@brief DynamicElementTextItem::updateReadingDirection
+	Turn the text half a turn about the middle of its box when it reads
+	from top to bottom on the folio and verticalFromBottom() is on; the
+	box, its place and what is saved stay as they are.
+*/
+void DynamicElementTextItem::updateReadingDirection()
+{
+	QTransform flip;
+	if (verticalFromBottom() && parentItem()) {
+		const QTransform t = QTransform().rotate(rotation()) * parentItem()->sceneTransform();
+		const qreal angle = QET::correctAngle(qRadiansToDegrees(qAtan2(t.m12(), t.m11())), true);
+		if (qAbs(angle - 90) < 1) {
+			const QPointF c = boundingRect().center();
+			flip.translate(c.x(), c.y()).rotate(180).translate(-c.x(), -c.y());
+		}
+	}
+	if (transform() != flip)
+		setTransform(flip);
 }
 
 DynamicElementTextItem::~DynamicElementTextItem()
@@ -913,6 +981,8 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 
 QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
+	if (change == QGraphicsItem::ItemSceneHasChanged)
+		updateReadingDirection();
 		//The first time this text is added to a scene, we make several checking and connection
 		//according to the link type of the parent element
 	if(change == QGraphicsItem::ItemSceneHasChanged && m_first_scene_change)
@@ -1681,6 +1751,31 @@ void DynamicElementTextItem::conductorWasRemoved(Conductor *conductor)
 }
 
 /**
+	@brief DynamicElementTextItem::refreshConnection
+	Read again what hangs on the symbol of this text -- a wire, or a
+	bridge landed on it since -- the way it is read when the text is
+	put down.
+*/
+void DynamicElementTextItem::refreshConnection()
+{
+	if (m_parent_element
+		&& ((m_parent_element.data()->linkType() & Element::AllReport)
+			|| m_parent_element.data()->linkType() == Element::ConductorDefinition))
+	{
+			//What is watched is let go of first: what hangs on the
+			//symbol may be another wire now, or nothing at all, and a
+			//wire watched is a wire kept. Everything is read again.
+		if (!m_watched_conductor.isNull()) {
+			disconnect(m_watched_conductor.data(), &Conductor::propertiesChange,
+					   this, &DynamicElementTextItem::conductorPropertiesChanged);
+			m_watched_conductor.clear();
+		}
+		setPotentialConductor();
+		conductorPropertiesChanged();
+	}
+}
+
+/**
 	@brief DynamicElementTextItem::setPotentialConductor
 	This function is only used when the parent element of this text is a report element
 	Get a conductor in the potential of the parent report
@@ -1718,7 +1813,7 @@ void DynamicElementTextItem::setPotentialConductor()
 		}
 
 		QList<Conductor *> c_list = element_terminals.first()->conductors();
-		
+
 		if(!c_list.isEmpty() && c_list.contains(m_watched_conductor.data()))
 			return;
 		else if(!c_list.isEmpty())
@@ -1737,6 +1832,24 @@ void DynamicElementTextItem::setPotentialConductor()
 			{
 				m_watched_conductor = m_other_report.data()->terminals().first()->conductors().first();
 				connect(m_watched_conductor.data(), &Conductor::propertiesChange, this, &DynamicElementTextItem::conductorPropertiesChanged);
+			}
+		}
+
+			//A bridge plugged into this reference carries it on to the
+			//next sheet: what the texts of the reference read comes from
+			//the wires behind that bridge -- the very values the bridge
+			//carries -- so a reference says what hangs on it whether that
+			//is a wire or a bridge. Read where the text is put down, so
+			//it is filled the moment the reference is set.
+		if (m_watched_conductor.isNull())
+		{
+			QETProject *project = parentElement()->diagram()
+					? parentElement()->diagram()->project() : nullptr;
+			if (Conductor *wire = BridgeManager::wireOfBridgeAt(project, parentElement()))
+			{
+				m_watched_conductor = wire;
+				connect(m_watched_conductor.data(), &Conductor::propertiesChange,
+						this, &DynamicElementTextItem::conductorPropertiesChanged);
 			}
 		}
 		conductorPropertiesChanged();
@@ -1925,7 +2038,7 @@ void DynamicElementTextItem::updateXref()
 	{
 		if(m_parent_element.data()->linkType() == Element::Master)
 		{
-			XRefProperties xrp = diagram()->project()->defaultXRefProperties(m_parent_element.data()->kindInformations()["type"].toString());
+			XRefProperties xrp = CrossRefItem::propertiesFor(m_parent_element.data());
 			
 			if(m_text_from == DynamicElementTextItem::ElementInfo &&
 			   m_info_name == "label" &&

@@ -9,6 +9,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // What a symbol, a folio or a cable saves that no other table holds is in
 // the project database, one row per value: element_value (prefix, frozen
@@ -113,7 +114,7 @@ class tst_savevaluerows : public QObject
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--common-elements-dir=" QET_ELEMENTS_DIR "/"),
 					QStringLiteral("--run"), js, in});
-		if (!proc.waitForFinished(180000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(180000))) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		Dump result;
 		for (const QString &line : out.split(QLatin1Char('\n'))) {
@@ -199,7 +200,7 @@ private slots:
 		QProcess proc;
 		proc.setProcessEnvironment(environment(home));
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js, in});
-		QVERIFY(proc.waitForFinished(180000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(180000)));
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		QVERIFY2(out.contains(QRegularExpression(QStringLiteral("PU \\[\\{\"value\":\"\\{[0-9a-f-]{36}\\}\"\\}\\]"))),
 				 qPrintable(out));
@@ -238,7 +239,7 @@ private slots:
 		resave.setProcessEnvironment(environment(home));
 		resave.start(QStringLiteral(QET_TEST_BINARY_PATH),
 					 {QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), saved});
-		QVERIFY(resave.waitForFinished(180000));
+		QVERIFY(resave.waitForFinished(QetTest::timeout(180000)));
 		QVERIFY(QFile::exists(saved));
 
 		const Dump lazy = run(QStringLiteral("dump('open');"), saved);

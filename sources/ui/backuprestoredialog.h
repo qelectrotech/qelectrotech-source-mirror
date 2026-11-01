@@ -19,10 +19,12 @@
 #ifndef BACKUPRESTOREDIALOG_H
 #define BACKUPRESTOREDIALOG_H
 
+#include <QDateTime>
 #include <QDialog>
 #include <QHash>
 #include <QList>
 #include <QString>
+#include <QStringList>
 
 class KAutoSaveFile;
 class QComboBox;
@@ -40,20 +42,34 @@ class BackupRestoreDialog : public QDialog
 		/// @param groups : managed project file path -> its stale recovery
 		/// generations, each list already sorted newest-first. Ownership of
 		/// the KAutoSaveFile objects stays with the caller.
+		/// @param working_copies : managed project file path -> when the
+		/// working copy it left was last committed (QET-SQL-FORMAT S3z3),
+		/// offered above its generations; a project never saved has the
+		/// key neverSavedKey().
 		explicit BackupRestoreDialog(
 			const QHash<QString, QList<KAutoSaveFile *>> &groups,
-			QWidget *parent = nullptr);
+			QWidget *parent = nullptr,
+			const QHash<QString, QDateTime> &working_copies = {});
 		~BackupRestoreDialog() override;
 
-		/// Valid once accepted: one entry per project, the chosen generation
-		/// (defaults to the most recent one).
+		/// Valid once accepted: one entry per project whose working copy is
+		/// not picked, the chosen generation (defaults to the most recent one).
 		QList<KAutoSaveFile *> selectedFiles() const;
 		/// The generations the user did not pick; the caller should discard
 		/// (release + delete) these.
 		QList<KAutoSaveFile *> discardedFiles() const;
+		/// The projects whose working copy is picked (the default), by key.
+		QStringList selectedWorkingCopies() const;
+
+		/// The key of a project never saved, whose working copy is
+		/// @p working_copy: no file path starts with a line feed.
+		static QString neverSavedKey(const QString &working_copy);
 
 	private:
+		int backupIndex(const QString &path) const;
+
 		QHash<QString, QList<KAutoSaveFile *>> m_groups;
+		QHash<QString, QDateTime> m_working_copies;
 		QHash<QString, QComboBox *> m_combo_for_path;
 };
 

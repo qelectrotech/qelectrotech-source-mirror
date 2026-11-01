@@ -22,6 +22,7 @@
 #include "../dataBase/projectdatabase.h"
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
+#include "../diagramview.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
 #include "../properties/terminaldata.h"
 #include "../qetgraphicsitem/conductor.h"
@@ -373,6 +374,7 @@ void Terminal::paint(
 */
 void Terminal::drawHelpLine(bool draw)
 {
+	if (draw && !DiagramView::terminalHelpLinesShown()) draw = false;
 	if (m_draw_help_line == draw) return;
 
 	m_draw_help_line = draw;
@@ -941,6 +943,17 @@ QUuid Terminal::uuid() const
 
 	@return the terminal's own uuid when it has one, otherwise a derived one
 */
+/**
+	@brief Terminal::newUuid
+	Give this terminal a brand new identity: a copied terminal carries
+	the uuid of the one it was copied from, and two terminals of one
+	name would have every end docked to one of them stolen by the other.
+*/
+void Terminal::newUuid()
+{
+	d->m_uuid = QUuid::createUuid();
+}
+
 QUuid Terminal::stableUuid() const
 {
 	if (!d->m_uuid.isNull()) {

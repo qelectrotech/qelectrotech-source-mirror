@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "element.h"
+
+#include "../bridge/bridgemanager.h"
 #include "../qetapp.h"
 #include "../qetproject.h"
 #include "../dataBase/projectdatabase.h"
@@ -170,6 +172,10 @@ Element::Element(
 			if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi))
 				t->updateConductor();
 		}
+			//An end of a bridge docked to a pin of this symbol goes
+			//along: the line grows or shrinks with it the way a wire
+			//follows the terminal it is docked to
+		BridgeManager::followDocks(diagram() ? diagram()->project() : nullptr, this);
 	};
 	connect(this, &Element::rotationChanged, update_docked_conductors);
 	connect(this, &Element::xChanged, update_docked_conductors);
@@ -859,6 +865,9 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	m_kind_informations.fromXml(
 				xml_def_elmt.firstChildElement(QStringLiteral("kindInformations")),
 				QStringLiteral("kindInformation"));
+	m_corner = m_kind_informations.value(QStringLiteral("corner")).toString() == QLatin1String("true")
+		|| QUuid(xml_def_elmt.firstChildElement(QStringLiteral("uuid")).attribute(QStringLiteral("uuid")))
+			== QUuid(QStringLiteral("{b4bba5d9-a60d-8f6c-a61d-1b18a5c9397d}")); //114_connections/corner.elmt
 		//load element information
 	m_data.m_informations.fromXml(
 				xml_def_elmt.firstChildElement(QStringLiteral("elementInformations")),
@@ -1489,6 +1498,11 @@ bool Element::fromXml(QDomElement &e,
 		if (!xml_plc.isNull())
 			m_data.plcMasterDataFromXml(xml_plc);
 	}
+
+		//Load the master's own cross reference display
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type != ElementData::PLC)
+		m_data.xrefDisplayFromXml(e.firstChildElement(QStringLiteral("xrefDisplay")));
 
 	//We must block the update of the alignment when loading the information
 	//otherwise the pos of the text will not be the same as it was at save time.
@@ -2129,6 +2143,20 @@ QString Element::linkTypeToString() const
 }
 
 /**
+ * @brief Element::takesSchemeNumber
+ * Whether this element is given a number by an element numbering scheme.
+ * A slave or a report takes its name from the element it is linked to, and
+ * a conductor definition labels a wire rather than naming an item of the
+ * drawing: numbering one of them would give a wire label a BMK and advance
+ * a scheme's counter for nothing.
+ * @return true when the element numbering schemes apply to this element
+ */
+bool Element::takesSchemeNumber() const
+{
+	return ElementData::takesSchemeNumber(m_data.m_type);
+}
+
+/**
  * @brief Element::groupIndexForElement
  * Returns the group index assigned to the given linked element.
  * For slave elements, this indicates which contact group of the master
@@ -2442,6 +2470,16 @@ void Element::appendDataXml(QDomDocument &document, QDomElement &element) const
 		if (!xml_plc.isNull())
 			element.appendChild(xml_plc);
 	}
+
+		//Written only when set, so a master without its own display saves
+		//exactly as before
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type != ElementData::PLC)
+	{
+		auto xml_display = m_data.xrefDisplayToXml(document);
+		if (!xml_display.isNull())
+			element.appendChild(xml_display);
+	}
 }
 
 /**
@@ -2578,10 +2616,16 @@ void Element::setElementData(ElementData data)
 {
 	dropOrphanFormulaId(data.m_informations);
 	auto old_info = m_data.m_informations;
+	const auto old_display = m_data.m_xref_display;
 	auto old_plc = m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC
 		? m_data.plcMasterData() : ElementData::PlcMasterData();
 	m_data = data;
 	scheduleTextsStore();
+
+		//Every cross reference is laid out again from the project's
+		//setting and its masters' own
+	if (old_display != m_data.m_xref_display && diagram() && diagram()->project())
+		emit diagram()->project()->XRefPropertiesChanged();
 
 	if (old_info != m_data.m_informations) {
 		m_data.m_informations.addValue(QStringLiteral("label"), actualLabel()); //Update the label if there is a formula
@@ -2831,7 +2875,7 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 {
 	Q_UNUSED(code_letter)
 
-	if (linkType() == Element::Slave || linkType() & Element::AllReport)
+	if (!takesSchemeNumber())
 		return;
 
 	if (diagram())
@@ -2974,7 +3018,7 @@ void Element::freezeNewAddedElement()
 	This function is useful when label is based on formula, because label can change at any time.
 	@return
 */
-QString Element::actualLabel()
+QString Element::actualLabel() const
 {
 		//The symbol's own copy, not the store: this runs while the
 		//information is being changed, before the store has the change.
@@ -3147,6 +3191,11 @@ QString Element::infoForDisplay(const QString &info_name)
 */
 QString Element::name() const {
 	return m_data.m_names_list.name(m_location.baseName());
+}
+
+	/// The name saved in a file: English, the same from any language
+QString Element::englishName() const {
+	return m_data.m_names_list.englishName(m_location.baseName());
 }
 
 ElementsLocation Element::location() const

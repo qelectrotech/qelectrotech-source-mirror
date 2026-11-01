@@ -18,9 +18,14 @@
 #include "elementsmover.h"
 #include "qetproject.h"
 #include "autobreakconductor.h"
+#include "autoconnect.h"
 #include "conductorautonumerotation.h"
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
+#include "bridge/bridgecreatedialog.h"
+#include "bridge/bridgemanager.h"
+#include "bridge/bridgepart.h"
+#include "bridge/bridgeundocommands.h"
 #include "diagram.h"
 #include "itemgroups.h"
 #include "qetgraphicsitem/conductor.h"
@@ -30,6 +35,7 @@
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetgraphicsitem/independenttextitem.h"
+#include "qetgraphicsitem/terminal.h"
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
@@ -118,6 +124,19 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 
 	if (!m_moved_content.count()) return(-1);
 
+		//Live AutoConnect works the automatic wires out anew at the drop:
+		//until then they only follow, grey, so they do not pass for the
+		//wires the drop will give
+	if (AutoConnect::isOn(diagram)) {
+		for (Element *e : std::as_const(m_moved_content.m_elements))
+			for (Terminal *t : e->terminals())
+				for (Conductor *c : t->conductors())
+					if (c->isAutomatic() && !c->isPreview()) {
+						c->setPreview(true);
+						m_preview_wires << c;
+					}
+	}
+
 		//Steps left over by a gesture which never reached its end are
 		//never worth keeping: whatever starts here starts from nothing.
 	qDeleteAll(m_extra_commands);
@@ -153,7 +172,8 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 										   | dc::Images
 										   | dc::Shapes
 										   | dc::ElementTextFields
-										   | dc::TextGroup))
+										   | dc::TextGroup
+										   | dc::Dimensions))
 	{
 		m_start_positions.insert(qgi, qgi->pos());
 	}
@@ -189,12 +209,12 @@ bool ElementsMover::holds(const QGraphicsItem *item) const
 	Add a move to the current movement.
 	@param movement movement to applied
 */
-void ElementsMover::continueMovement(const QPointF &movement)
+/**
+	@brief ElementsMover::applyMovement
+	@param movement the step to apply to everything being moved
+*/
+void ElementsMover::applyMovement(const QPointF &movement)
 {
-	if (!m_movement_running || movement.isNull()) return;
-
-	m_current_movement += movement;
-
 		//Move every movable item, except conductor
 	typedef DiagramContent dc;
 	for (auto &qgi : m_moved_content.items(dc::Elements
@@ -202,7 +222,8 @@ void ElementsMover::continueMovement(const QPointF &movement)
 										   | dc::Images
 										   | dc::Shapes
 										   | dc::ElementTextFields
-										   | dc::TextGroup))
+										   | dc::TextGroup
+										   | dc::Dimensions))
 	{
 		if (qgi == m_movement_driver)
 			continue;
@@ -251,6 +272,50 @@ void ElementsMover::continueMovement(const QPointF &movement)
 }
 
 /**
+	@brief ElementsMover::continueMovement
+	Add a move to the current movement.
+	@param movement movement to applied
+*/
+void ElementsMover::continueMovement(const QPointF &movement)
+{
+	if (!m_movement_running || movement.isNull()) return;
+
+	m_current_movement += movement;
+	applyMovement(movement);
+
+		//A terminal may not come to rest on a bridge which cannot take
+		//one more: what that would build cannot be built in the cabinet.
+		//The step is taken back right away, so the terminal stays at the
+		//mouse and is dropped somewhere else -- and the bridge which
+		//stops it is drawn in the colour of a problem, so the hand sees
+		//what is wrong rather than only finding a message about it.
+	const QList<Bridge *> overfilled =
+			(m_moved_content.m_elements.isEmpty() || !m_diagram)
+			? QList<Bridge *>()
+			: BridgeManager::bridgesOverfilledBy(m_diagram->project(), m_moved_content.m_elements);
+	for (BridgePart *part : BridgePart::allParts()) {
+		part->setRefused(part->bridge() && overfilled.contains(part->bridge()));
+	}
+
+	if (!overfilled.isEmpty())
+	{
+		m_current_movement -= movement;
+		applyMovement(-movement);
+			//The element under the finger moves with its own hand rather
+			//than with the loop above, so it is put back as well: the
+			//terminal comes off the bridge it may not be dropped on and
+			//stays at the mouse, to be dropped somewhere else.
+		if (m_movement_driver) {
+			m_movement_driver->QGraphicsItem::setPos(m_movement_driver->pos() - movement);
+		}
+		if (m_status_bar) {
+			m_status_bar->showMessage(
+				QObject::tr("A terminal may not be dropped on a bridge which cannot take one more."));
+		}
+	}
+}
+
+/**
 	@brief ElementsMover::endMovement
 	Ended the current movement by creating an undo added to the undostack of the diagram.
 	If there is only one element moved, we try to auto-connect new conductor from this element
@@ -260,6 +325,7 @@ void ElementsMover::endMovement()
 {
 		// A movement must be inited
 	if (!m_movement_running) return;
+	endPreview();
 
 		//The lines he marked together with the elements settle first:
 		//they may have to be asked something before they can rest, and
@@ -294,6 +360,105 @@ void ElementsMover::endMovement()
 		undo_object->setText(quc->text());
 	}
 
+		//What a bridge lands on follows the terminals he moved: one
+		//moved onto one of its lines joins the bridge, one moved off it
+		//leaves it -- and the bridge keeps everything else it knows.
+		//Together with the move itself, so one undo puts both back.
+	if (!m_moved_content.m_elements.isEmpty() && m_diagram->project())
+	{
+		for (Bridge *bridge : m_diagram->project()->bridges())
+		{
+			if (!bridge) {
+				continue;
+			}
+			const QList<BridgeTerminal> before = bridge->terminals();
+			const QList<BridgeTerminal> after =
+					BridgeManager::terminalsOfBridge(m_diagram->project(), bridge);
+			if (after == before) {
+				continue;
+			}
+				//The limit is the one thing which is never crossed,
+				//whatever slipped through while the hand was moving: a
+				//bridge which cannot be built is not written either.
+				//A sheet reference is the way to the next sheet and
+				//fills no place of the bridge, so it is not counted.
+				//What is one bridge carried on over the sheets is one
+				//bridge: a symbol brought to the line through a sheet
+				//reference joins the bridge that reference stands for
+			Bridge *joined = BridgeManager::joinTarget(
+						m_diagram->project(), after, bridge);
+			Bridge *unit = joined ? joined : bridge;
+			int gained = 0;
+			for (const BridgeTerminal &terminal : after) {
+				if (!terminal.reference && !unit->hasTerminal(terminal)) {
+					++gained;
+				}
+			}
+			if (gained > 0 && unit->wouldExceed(gained)) {
+				continue;
+			}
+				//One bar lies across one Klemmleiste: a terminal of
+				//another one crosses the line without being connected
+				//to it
+			if (!BridgeManager::clashingStrips(
+						m_diagram->project(), after).isEmpty()) {
+				continue;
+			}
+				//What the bridge carries as information follows the
+				//terminals: when they do not agree the user is asked
+				//which the bridge takes -- its own among the candidates
+				//-- and cancelling keeps the bridge as it was: the
+				//terminal crosses its line without being connected to it.
+				//A unit joined carries its own voltage to the new half.
+			const QString unit_tension = joined
+					? (joined->tensionText().isEmpty()
+					   ? bridge->tensionText() : joined->tensionText())
+					: bridge->tensionText();
+			const BridgeInformation information_before{unit_tension};
+			QList<BridgeInformation> candidates =
+					BridgeManager::informationSets(m_diagram->project(), after);
+			candidates.prepend(information_before);
+			bool take_information = false;
+			const BridgeInformation information =
+					BridgeCreateDialog::askForInformation(candidates, &take_information);
+			if (!take_information) {
+				continue;
+			}
+
+			QList<BridgeTerminal> unit_before = before;
+			QList<BridgeTerminal> unit_after = after;
+			if (joined)
+			{
+					//One step for the two of them: the bridges become one
+					//first, then the unit which now holds the line gets
+					//the terminals it crosses
+				new MergeBridgesCommand(bridge, joined, undo_object);
+				unit_before = joined->terminals();
+				for (const BridgeTerminal &terminal : before) {
+					if (!unit_before.contains(terminal)) {
+						unit_before << terminal;
+					}
+				}
+				unit_after = joined->terminals();
+				for (const BridgeTerminal &terminal : after) {
+					if (!unit_after.contains(terminal)) {
+						unit_after << terminal;
+					}
+				}
+				bridge = joined;
+			}
+			auto *command = new ChangeBridgeTerminalsCommand(bridge, unit_before, unit_after,
+											 information_before, information, undo_object);
+				//A reference which has come to this bridge finds the one
+				//on the other sheet: they link with the move
+			BridgeManager::pairReferences(m_diagram->project(), bridge, command);
+				//Bridge and wires say the same thing: what the bridge
+				//carries goes onto the wires it sits on, in the very same
+				//undo step
+			BridgeManager::writeInformation(m_diagram->project(), unit_after, information, command);
+		}
+	}
+
 		//Auto-break conductors: for each moved element, break any conductor
 		//whose path passes through a terminal dock point, and reconnect through
 		//the element.  The element is already at its final position on screen.
@@ -307,10 +472,24 @@ void ElementsMover::endMovement()
 		}
 	}
 
+		//Live AutoConnect: automatic wires the move left out of line go,
+		//the terminals moved, freed or no longer stood between look for a
+		//partner. It takes the place of the one-shot auto conductor below.
+	typedef DiagramContent dc;
+	const bool live = AutoConnect::isOn(m_diagram);
+	if (live && !m_current_movement.isNull() && !m_moved_content.m_elements.isEmpty())
+	{
+		QList<QRectF> old_rects;
+		for (Element *e : std::as_const(m_moved_content.m_elements))
+			old_rects << e->sceneBoundingRect().translated(-m_current_movement);
+		AutoConnect::update(m_diagram, m_moved_content.m_elements, old_rects, undo_object);
+		if (undo_object->text().isEmpty() && undo_object->childCount())
+			undo_object->setText(QObject::tr("Update automatic connections"));
+	}
+
 		//There is only one element moved, and project authorize auto conductor,
 		//we try auto connection of conductor;
-	typedef DiagramContent dc;
-	if (m_moved_content.items(dc::TextFields
+	if (!live && m_moved_content.items(dc::TextFields
 								| dc::Images
 								| dc::Shapes
 								| dc::TerminalStrip).isEmpty()
@@ -399,6 +578,12 @@ void ElementsMover::endMovement()
 	m_moved_cables.clear();
 	m_start_positions.clear();
 
+		//Nothing is hovering over anything anymore: the lines drawn in
+		//the colour of a problem come back to their own colour
+	for (BridgePart *part : BridgePart::allParts()) {
+		part->setRefused(false);
+	}
+
 		//Keep saying why a held group did not move
 	if (m_status_bar && !m_driver_held) {
 		m_status_bar->clearMessage();
@@ -437,6 +622,7 @@ void ElementsMover::addExtraCommands(const QList<QUndoCommand *> &steps)
 void ElementsMover::cancelMovement()
 {
 	if (!m_movement_running) return;
+	endPreview();
 
 		//Back to the places the gesture found them in: the recorded
 		//ones rather than the movement taken back, since every step of
@@ -471,7 +657,24 @@ void ElementsMover::cancelMovement()
 	m_movement_running = false;
 	m_moved_content.clear();
 
+		//Nothing is hovering over anything anymore: the lines drawn in
+		//the colour of a problem come back to their own colour
+	for (BridgePart *part : BridgePart::allParts()) {
+		part->setRefused(false);
+	}
+
 	if (m_status_bar && !m_driver_held) {
 		m_status_bar->clearMessage();
 	}
+}
+
+/**
+	@brief ElementsMover::endPreview
+	The automatic wires of the moved symbols are drawn as usual again.
+*/
+void ElementsMover::endPreview()
+{
+	for (const QPointer<Conductor> &c : std::as_const(m_preview_wires))
+		if (c) c->setPreview(false);
+	m_preview_wires.clear();
 }

@@ -79,6 +79,12 @@ class DynamicElementTextItem : public DiagramTextItem
 
 	public:
 		DynamicElementTextItem(Element *parent_element);
+
+			///Read again what hangs on the symbol of this text: a wire,
+			///or a bridge landed on it since. The texts of a sheet
+			///reference are asked when one of those comes or goes, so
+			///what the reference says follows the drawing.
+		void refreshConnection();
 		~DynamicElementTextItem() override;
 		static QMetaEnum textFromMetaEnum();
 	private:
@@ -108,6 +114,9 @@ class DynamicElementTextItem : public DiagramTextItem
 		QString text() const;
 		void setText(const QString &text);
 		static QString xmlTagName() {return QString("dynamic_elmt_text");}
+		static bool verticalFromBottom();
+		static void setVerticalFromBottom(bool from_bottom);
+		void updateReadingDirection();
 		void setInfoName(const QString &info_name);
 		QString infoName() const;
 		Element *linkedElementShown() const;

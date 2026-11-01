@@ -19,6 +19,7 @@
 #define QET_APP_H
 
 #include "ElementsCollection/elementslocation.h"
+#include "dataBase/workingcopyrecovery.h"
 #include "qetarguments.h"
 #include "titleblock/templatelocation.h"
 
@@ -337,7 +338,11 @@ class QETApp : public QObject
 		void initSystemTray();
 		void buildSystemTrayMenu();
 		void checkBackupFiles();
-		void offerBackupFiles(const QList<KAutoSaveFile *> &stale_files);
+		void reopenLastProjects();
+			/// A file was handed over by another instance during start-up
+		bool m_files_received = false;
+		void offerBackupFiles(const QList<KAutoSaveFile *> &stale_files,
+				      const QList<WorkingCopyRecovery::LeftWorkingCopy> &working_copies);
 		void checkCrashDump();
 		void fetchWindowStats(
 			const QList<QETDiagramEditor *> &,

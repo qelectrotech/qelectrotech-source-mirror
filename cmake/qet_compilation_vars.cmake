@@ -117,6 +117,8 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/potentialselectordialog.ui
   ${QET_DIR}/sources/ui/reportpropertiewidget.ui
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.ui
+  ${QET_DIR}/sources/ui/dimensionpropertiesdialog.ui
+  ${QET_DIR}/sources/ui/dimensionpropertieswidget.ui
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.ui
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.ui
   ${QET_DIR}/sources/ui/xrefpropertieswidget.ui
@@ -186,6 +188,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/cellruler.h
   ${QET_DIR}/sources/conductorautonumerotation.cpp
   ${QET_DIR}/sources/conductorautonumerotation.h
+  ${QET_DIR}/sources/duplicatelabels.h
+  ${QET_DIR}/sources/duplicatelabels.cpp
+  ${QET_DIR}/sources/ui/duplicatelabelsdialog.h
+  ${QET_DIR}/sources/ui/duplicatelabelsdialog.cpp
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
   ${QET_DIR}/sources/wiringlistexport.cpp
@@ -200,6 +206,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductornumexport.h
   ${QET_DIR}/sources/bomexport.cpp
   ${QET_DIR}/sources/bomexport.h
+  ${QET_DIR}/sources/conductordashpattern.cpp
+  ${QET_DIR}/sources/conductordashpattern.h
   ${QET_DIR}/sources/conductorprofile.cpp
   ${QET_DIR}/sources/conductorprofile.h
   ${QET_DIR}/sources/conductorproperties.cpp
@@ -228,6 +236,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramposition.h
   ${QET_DIR}/sources/diagramview.cpp
   ${QET_DIR}/sources/diagramview.h
+  ${QET_DIR}/sources/itemdescription.cpp
+  ${QET_DIR}/sources/itemdescription.h
   ${QET_DIR}/sources/imagedrop.cpp
   ${QET_DIR}/sources/imagedrop.h
   ${QET_DIR}/sources/elementdialog.cpp
@@ -321,6 +331,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/shortcutmanager.h
   ${QET_DIR}/sources/shortcutbarsettings.cpp
   ${QET_DIR}/sources/shortcutbarsettings.h
+  ${QET_DIR}/sources/connectionsymbols.cpp
+  ${QET_DIR}/sources/connectionsymbols.h
   ${QET_DIR}/sources/diagramtoolbarsettings.cpp
   ${QET_DIR}/sources/diagramtoolbarsettings.h
   ${QET_DIR}/sources/toolbarsettings.cpp
@@ -383,6 +395,13 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/dataBase/projectdatabase.cpp
   ${QET_DIR}/sources/dataBase/projectdatabasewriter.cpp
   ${QET_DIR}/sources/dataBase/projectdatabase.h
+  ${QET_DIR}/sources/dataBase/workingcopyrecovery.cpp
+  ${QET_DIR}/sources/dataBase/workingcopyrecovery.h
+  ${QET_DIR}/sources/dataBase/qetdbfile.cpp
+  ${QET_DIR}/sources/dataBase/projectdatabaseadopt.cpp
+  ${QET_DIR}/sources/dataBase/qetdbfile.h
+  ${QET_DIR}/sources/dataBase/qetparity.cpp
+  ${QET_DIR}/sources/dataBase/qetparity.h
   ${QET_DIR}/sources/dataBase/conductorlayout.h
   ${QET_DIR}/sources/dataBase/conductorpath.h
   ${QET_DIR}/sources/dataBase/elementplacement.h
@@ -398,6 +417,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autobreakconductor.h
   ${QET_DIR}/sources/symboltextplacement.cpp
   ${QET_DIR}/sources/symboltextplacement.h
+  ${QET_DIR}/sources/autoconnect.cpp
+  ${QET_DIR}/sources/autoconnect.h
 
   ${QET_DIR}/sources/diagramevent/diagrameventaddelement.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddelement.h
@@ -405,12 +426,16 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramevent/diagrameventaddimage.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.h
+  ${QET_DIR}/sources/diagramevent/diagrameventadddimension.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventadddimension.h
   ${QET_DIR}/sources/diagramevent/diagrameventfillet.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventfillet.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddpath.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddpath.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddcable.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddcable.h
+  ${QET_DIR}/sources/diagramevent/diagrameventaddbridge.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventaddbridge.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.h
   ${QET_DIR}/sources/diagramevent/diagrameventinterface.cpp
@@ -463,6 +488,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/editor/esevent/eseventaddtext.h
   ${QET_DIR}/sources/editor/esevent/eseventinterface.cpp
   ${QET_DIR}/sources/editor/esevent/eseventinterface.h
+  ${QET_DIR}/sources/editor/esevent/elementmeasureitem.cpp
+  ${QET_DIR}/sources/editor/esevent/elementmeasureitem.h
+  ${QET_DIR}/sources/editor/esevent/eseventmeasure.cpp
+  ${QET_DIR}/sources/editor/esevent/eseventmeasure.h
 
   ${QET_DIR}/sources/editor/graphicspart/abstractpartellipse.cpp
   ${QET_DIR}/sources/editor/graphicspart/abstractpartellipse.h
@@ -580,6 +609,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/properties/deviceinformation.h
   ${QET_DIR}/sources/properties/elementdata.cpp
   ${QET_DIR}/sources/properties/elementdata.h
+  ${QET_DIR}/sources/properties/projectlanguages.cpp
+  ${QET_DIR}/sources/properties/projectlanguages.h
   ${QET_DIR}/sources/properties/propertiesinterface.cpp
   ${QET_DIR}/sources/properties/propertiesinterface.h
   ${QET_DIR}/sources/properties/reportproperties.cpp
@@ -599,6 +630,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/qetgraphicsitem/conductor.cpp
   ${QET_DIR}/sources/qetgraphicsitem/conductor.h
+  ${QET_DIR}/sources/qetgraphicsitem/conductordefinitionmark.cpp
+  ${QET_DIR}/sources/qetgraphicsitem/conductordefinitionmark.h
   ${QET_DIR}/sources/qetgraphicsitem/conductortextitem.cpp
   ${QET_DIR}/sources/qetgraphicsitem/conductortextitem.h
   ${QET_DIR}/sources/qetgraphicsitem/crossrefitem.cpp
@@ -622,6 +655,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetgraphicsitem/qetgraphicsitem.h
   ${QET_DIR}/sources/qetgraphicsitem/qetshapeitem.cpp
   ${QET_DIR}/sources/qetgraphicsitem/qetshapeitem.h
+  ${QET_DIR}/sources/qetgraphicsitem/dimensionitem.cpp
+  ${QET_DIR}/sources/qetgraphicsitem/dimensionitem.h
   ${QET_DIR}/sources/qetgraphicsitem/shapetransform.cpp
   ${QET_DIR}/sources/qetgraphicsitem/shapetransform.h
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.cpp
@@ -696,6 +731,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/titleblock/qettemplateeditor.h
   ${QET_DIR}/sources/titleblock/splittedhelpercell.cpp
   ${QET_DIR}/sources/titleblock/splittedhelpercell.h
+  ${QET_DIR}/sources/titleblock/titleblockbulkformat.cpp
+  ${QET_DIR}/sources/titleblock/titleblockbulkformat.h
   ${QET_DIR}/sources/titleblock/templatecellsset.cpp
   ${QET_DIR}/sources/titleblock/templatecellsset.h
   ${QET_DIR}/sources/titleblock/templatecellwidget.cpp
@@ -728,6 +765,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/TerminalStrip/terminalstripbridge.h
   ${QET_DIR}/sources/TerminalStrip/terminalstrip.cpp
   ${QET_DIR}/sources/TerminalStrip/terminalstrip.h
+  ${QET_DIR}/sources/TerminalStrip/terminalstriplabels.cpp
+  ${QET_DIR}/sources/TerminalStrip/terminalstriplabels.h
   ${QET_DIR}/sources/TerminalStrip/terminalstripautoimport.cpp
   ${QET_DIR}/sources/TerminalStrip/terminalstripautoimport.h
   ${QET_DIR}/sources/TerminalStrip/terminalstripdata.cpp
@@ -813,6 +852,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/conductorcolortoolbutton.h
   ${QET_DIR}/sources/ui/diagrambgcolorbutton.cpp
   ${QET_DIR}/sources/ui/diagrambgcolorbutton.h
+  ${QET_DIR}/sources/ui/dockfold.cpp
+  ${QET_DIR}/sources/ui/dockfold.h
+  ${QET_DIR}/sources/ui/dockfit.cpp
+  ${QET_DIR}/sources/ui/dockfit.h
   ${QET_DIR}/sources/ui/conductorpropertieswidget.cpp
   ${QET_DIR}/sources/ui/conductorpropertieswidget.h
   ${QET_DIR}/sources/ui/configsaveloaderwidget.cpp
@@ -883,16 +926,24 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/potentialselectordialog.h
   ${QET_DIR}/sources/ui/prefixconfigurationdialog.cpp
   ${QET_DIR}/sources/ui/prefixconfigurationdialog.h
+  ${QET_DIR}/sources/ui/projectlanguagesdialog.cpp
+  ${QET_DIR}/sources/ui/projectlanguagesdialog.h
   ${QET_DIR}/sources/ui/projectpropertiesdialog.cpp
   ${QET_DIR}/sources/ui/projectpropertiesdialog.h
   ${QET_DIR}/sources/ui/reportpropertiewidget.cpp
   ${QET_DIR}/sources/ui/reportpropertiewidget.h
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.cpp
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.h
+  ${QET_DIR}/sources/ui/dimensionpropertiesdialog.cpp
+  ${QET_DIR}/sources/ui/dimensionpropertiesdialog.h
+  ${QET_DIR}/sources/ui/dimensionpropertieswidget.cpp
+  ${QET_DIR}/sources/ui/dimensionpropertieswidget.h
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.cpp
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.h
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.cpp
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.h
+  ${QET_DIR}/sources/ui/xrefdisplaydialog.cpp
+  ${QET_DIR}/sources/ui/xrefdisplaydialog.h
   ${QET_DIR}/sources/ui/xrefpropertieswidget.cpp
   ${QET_DIR}/sources/ui/xrefpropertieswidget.h
   ${QET_DIR}/sources/ui/configpage/configpage.h
@@ -989,6 +1040,21 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/cablelist/cablelistrows.h
   ${QET_DIR}/sources/cablelist/cablequerywidget.cpp
   ${QET_DIR}/sources/cablelist/cablequerywidget.h
+
+  ${QET_DIR}/sources/bridge/addbridgecommand.cpp
+  ${QET_DIR}/sources/bridge/addbridgecommand.h
+  ${QET_DIR}/sources/bridge/bridge.cpp
+  ${QET_DIR}/sources/bridge/bridge.h
+  ${QET_DIR}/sources/bridge/bridgecopy.cpp
+  ${QET_DIR}/sources/bridge/bridgecopy.h
+  ${QET_DIR}/sources/bridge/bridgecreatedialog.cpp
+  ${QET_DIR}/sources/bridge/bridgecreatedialog.h
+  ${QET_DIR}/sources/bridge/bridgemanager.cpp
+  ${QET_DIR}/sources/bridge/bridgemanager.h
+  ${QET_DIR}/sources/bridge/bridgepart.cpp
+  ${QET_DIR}/sources/bridge/bridgepart.h
+  ${QET_DIR}/sources/bridge/bridgeundocommands.cpp
+  ${QET_DIR}/sources/bridge/bridgeundocommands.h
 
   ${QET_DIR}/sources/cable/addcablecommand.cpp
   ${QET_DIR}/sources/cable/addcablecommand.h
@@ -1117,6 +1183,7 @@ set(TS_FILES
   ${QET_DIR}/lang/qet_it.ts
   ${QET_DIR}/lang/qet_ja.ts
   ${QET_DIR}/lang/qet_ko.ts
+  ${QET_DIR}/lang/qet_lv.ts
   ${QET_DIR}/lang/qet_mn.ts
   ${QET_DIR}/lang/qet_nb.ts
   ${QET_DIR}/lang/qet_nl.ts

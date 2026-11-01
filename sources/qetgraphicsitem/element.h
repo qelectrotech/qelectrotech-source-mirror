@@ -178,7 +178,7 @@ class Element : public QetGraphicsItem
 		void freezeLabel(bool freeze);
 		bool isFreezeLabel() const {return m_freeze_label;}
 		void freezeNewAddedElement();
-		QString actualLabel();
+		QString actualLabel() const;
 			/**
 				What the drawing shows of the label and of the terminal
 				number, the terminal labelling of the project being
@@ -200,6 +200,7 @@ class Element : public QetGraphicsItem
 		void refreshLabelFields();
 
 		QString name() const override;
+		QString englishName() const;
 		ElementsLocation location() const;
 		/// Result of Element::reloadPicture()
 		enum class ReloadPictureResult {
@@ -302,6 +303,18 @@ class Element : public QetGraphicsItem
 		 * @return
 		 */
 		virtual kind linkType() const {return m_link_type;} // return the linkable type
+			/// A corner only turns a wire: QElectroTech's own corner
+			/// symbol, or any symbol whose definition says so with the
+			/// kind information "corner" set to "true"
+		bool isCorner() const {return m_corner;}
+		/**
+		 * @brief takesSchemeNumber
+		 * Whether this element is given a number by an element numbering
+		 * scheme (@sa ElementData::takesSchemeNumber): a slave, a report or
+		 * a conductor definition is not numbered.
+		 * @return true when the element numbering schemes apply to it
+		 */
+		bool takesSchemeNumber() const;
 		/**
 		 * @brief linkTypeToString
 		 * use elementData function instead
@@ -364,6 +377,7 @@ class Element : public QetGraphicsItem
 			//ATTRIBUTES related to linked element
 		QList <Element *> connected_elements;
 		QList <LinkInfo>  tmp_uuids_link;
+		bool m_corner = false;
 		QHash <Element *, int> m_group_index_map;  ///< Maps linked elements to their group index (for slave->master links)
 		QUuid             m_uuid;
 		kind              m_link_type = Element::Simple;

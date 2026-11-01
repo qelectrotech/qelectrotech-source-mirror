@@ -32,6 +32,7 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../ui/conductorpropertiesdialog.h"
 #include "conductortextitem.h"
+#include "conductordefinitionmark.h"
 #include "element.h"
 #include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "../utils/qetutils.h"
@@ -601,7 +602,9 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		//the red and light blue conductors around them
 	const QET::Palette::SheetInk sheet_ink = PaletteGraphicsView::paintingInk(qw);
 	QColor final_conductor_color(m_properties.color);
-	if (must_highlight_ == Normal) {
+	if (m_preview) {
+		final_conductor_color = QColor(160, 160, 160);
+	} else if (must_highlight_ == Normal) {
 		final_conductor_color = QET::Palette::highlightColor(sheet_ink);
 	} else if (must_highlight_ == Alert) {
 		final_conductor_color =QColor::fromRgb(255, 69, 0, 255);
@@ -626,16 +629,22 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		//gaps too short to tell a dashed or a dash-dotted conductor from
 		//a solid one at a normal zoom, so these two get longer gaps
 	final_conductor_pen.setColor(final_conductor_color);
-	if (m_properties.style == Qt::DashLine)
-		final_conductor_pen.setDashPattern({5, 4});
-	else if (m_properties.style == Qt::DashDotLine)
-		final_conductor_pen.setDashPattern({6, 4, 1, 4});
-	else
-		final_conductor_pen.setStyle(m_properties.style);
+	const bool custom_pattern = m_properties.m_dash_pattern.apply(
+				final_conductor_pen, m_properties.style);
+	if (!custom_pattern)
+	{
+		if (m_properties.style == Qt::DashLine)
+			final_conductor_pen.setDashPattern({5, 4});
+		else if (m_properties.style == Qt::DashDotLine)
+			final_conductor_pen.setDashPattern({6, 4, 1, 4});
+		else
+			final_conductor_pen.setStyle(m_properties.style);
+	}
 	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // better rendering with dot
 
-		//Use a cosmetic line, below a certain zoom
-	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
+		//Use a cosmetic line, below a certain zoom. A custom pattern is
+		//in drawing units, which a cosmetic pen cannot follow
+	if (!custom_pattern && options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
 	{
 		final_conductor_pen.setCosmetic(true);
 	}
@@ -1165,6 +1174,7 @@ bool Conductor::fromXml(QDomElement &dom_element)
 		m_autoNum_seq.fromXml(dom_element.firstChildElement("sequentialNumbers"));
 
 	m_freeze_label = dom_element.attribute("freezeLabel") == "true" ? true : false;
+	m_automatic = dom_element.attribute(QStringLiteral("automatic")) == QLatin1String("true");
 
 		//Changed through the project database while its folio was not
 		//built (lazy folios): the change, not what the file says
@@ -1218,7 +1228,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 		} else {
 			dom_element.setAttribute("element1_linked", terminal1->parentElement()->linkedElements().last()->actualLabel());
 		}
-		dom_element.setAttribute("element1_name", terminal1->parentElement()->name());
+		dom_element.setAttribute("element1_name", terminal1->parentElement()->englishName());
 		dom_element.setAttribute("terminal1", terminal1->uuid().toString());
 		dom_element.setAttribute("terminalname1", terminal1->name());
 	}
@@ -1235,11 +1245,13 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 		} else {
 			dom_element.setAttribute("element2_linked", terminal2->parentElement()->linkedElements().last()->actualLabel());
 		}
-		dom_element.setAttribute("element2_name", terminal2->parentElement()->name());
+		dom_element.setAttribute("element2_name", terminal2->parentElement()->englishName());
 		dom_element.setAttribute("terminal2", terminal2->uuid().toString());
 		dom_element.setAttribute("terminalname2", terminal2->name());
 	}
 	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
+	if (m_automatic)
+		dom_element.setAttribute(QStringLiteral("automatic"), QStringLiteral("true"));
 
 	// on n'exporte les segments du conducteur que si ceux-ci ont
 	// ete modifies par l'utilisateur
@@ -1565,7 +1577,34 @@ void Conductor::updateTextVisibility()
 {
 	ShownKinds::setVisible(m_text_item,
 						   m_properties.type == ConductorProperties::Multi
-						   && m_properties.m_show_text);
+						   && m_properties.m_show_text
+						   && !hidesPlaceholder()
+						   && !markReplacesText());
+}
+
+/**
+	@brief Conductor::markReplacesText
+	@return true when the stroke with colour and section is shown and its
+	properties ask it to stand in for the conductor's text
+*/
+bool Conductor::markReplacesText() const
+{
+	return m_properties.m_definition_mark && m_properties.m_definition_mark_hides_text;
+}
+
+/**
+	@brief Conductor::hidesPlaceholder
+	@return true for an automatic wire whose text is only QElectroTech's
+	placeholder "_" or nothing: it would stand beside every bridge and
+	corner the automatic connections make (as a "|" on an upright wire).
+	Such a wire shows no text; one given a text of its own shows it.
+*/
+bool Conductor::hidesPlaceholder() const
+{
+	if (!m_automatic)
+		return false;
+	const QString text = m_text_item->toPlainText().trimmed();
+	return text.isEmpty() || text == QLatin1String("_");
 }
 
 /**
@@ -1576,6 +1615,7 @@ void Conductor::updateTextVisibility()
 */
 void Conductor::calculateTextItemPosition()
 {
+	updateDefinitionMark();
 	if (!m_text_item || !diagram() || m_properties.type != ConductorProperties::Multi)
 		return;
 
@@ -1599,7 +1639,7 @@ void Conductor::calculateTextItemPosition()
 		}
 			//Make sure text item is visible, unless wire numbers are hidden
 			//(View > Show)
-		ShownKinds::setVisible(m_text_item, true);
+		ShownKinds::setVisible(m_text_item, !hidesPlaceholder() && !markReplacesText());
 	}
 
 		//position
@@ -1663,6 +1703,76 @@ void Conductor::calculateTextItemPosition()
 				else
 					return; //avoid infinite loop
 			}
+		}
+	}
+}
+
+/**
+	@brief Conductor::cornerChain
+	@return this conductor and those joined to it through corners only,
+	with the same colour and section: one run of wire, ending at a
+	terminal of anything else (a T-junction, a device) or where the wire
+	changes
+*/
+QList<Conductor *> Conductor::cornerChain()
+{
+	QList<Conductor *> chain {this};
+	for (int i = 0 ; i < chain.size() ; ++i)
+	{
+		Conductor *c = chain.at(i);
+		for (Terminal *end : {c->terminal1, c->terminal2})
+		{
+			if (!end || !end->parentElement() || !end->parentElement()->isCorner())
+				continue;
+			for (Terminal *other : end->parentElement()->terminals())
+				for (Conductor *next : other->conductors())
+					if (!chain.contains(next)
+					    && next->m_properties.m_wire_color == c->m_properties.m_wire_color
+					    && next->m_properties.m_wire_section == c->m_properties.m_wire_section)
+						chain << next;
+		}
+	}
+	return chain;
+}
+
+/**
+	@brief Conductor::updateDefinitionMark
+	Show, move or remove the stroke with this conductor's colour and
+	section, as its properties ask. A run turned by corners shows one
+	stroke, on its longest conductor that asks for one.
+*/
+void Conductor::updateDefinitionMark()
+{
+		//Taken off the folio: its terminals no longer list it, the run it
+		//was part of shows its stroke on another conductor
+	if (!scene()) {
+		delete m_definition_mark;
+		m_definition_mark = nullptr;
+		const QList<Conductor *> run = cornerChain();
+		for (Conductor *c : run)
+			if (c != this && c->scene())
+				c->updateDefinitionMark();
+		return;
+	}
+	const auto wants = [](const Conductor *c) {
+		return c->m_properties.m_definition_mark
+			&& c->m_properties.type == ConductorProperties::Multi;
+	};
+	Conductor *shown = nullptr;
+	const QList<Conductor *> chain = cornerChain();
+	for (Conductor *c : chain)
+		if (wants(c) && (!shown || c->length() > shown->length()))
+			shown = c;
+
+	for (Conductor *c : chain)
+	{
+		if (c != shown) {
+			delete c->m_definition_mark;
+			c->m_definition_mark = nullptr;
+		} else if (!c->m_definition_mark) {
+			c->m_definition_mark = new ConductorDefinitionMark(c);
+		} else {
+			c->m_definition_mark->refresh();
 		}
 	}
 }
@@ -1834,6 +1944,8 @@ void Conductor::setProperties(const ConductorProperties &property)
 {
 	if (m_properties == property) return;
 
+		//The run this conductor was part of, which may part now
+	const QList<Conductor *> old_run = cornerChain();
 	QString formula = m_properties.m_formula;
 	m_properties = property;
 
@@ -1861,6 +1973,9 @@ void Conductor::setProperties(const ConductorProperties &property)
 
 	updateTextVisibility();
 	calculateTextItemPosition();
+	for (Conductor *c : old_run)
+		if (c != this)
+			c->updateDefinitionMark();
 	update();
 
 	storeProperties();

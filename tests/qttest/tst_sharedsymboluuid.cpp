@@ -10,6 +10,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 // Symbols copied in old versions can share one uuid on a folio. Since every
 // terminal got a uuid (#1118), the wires on them were saved by symbol uuid
@@ -82,7 +83,7 @@ class tst_sharedsymboluuid : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), args);
-		return proc.waitForFinished(120000) && proc.exitCode() == 0;
+		return proc.waitForFinished(QetTest::timeout(120000)) && proc.exitCode() == 0;
 	}
 
 	QString write(const QDomDocument &doc)

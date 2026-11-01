@@ -55,7 +55,7 @@ PasteDiagramCommand::PasteDiagramCommand( Diagram *dia, const DiagramContent &c,
 	QUndoCommand(parent),
 	content(c),
 	diagram(dia),
-	filter(DiagramContent::Elements|DiagramContent::TextFields|DiagramContent::Images|DiagramContent::ConductorsToMove | DiagramContent::Shapes),
+	filter(DiagramContent::Elements|DiagramContent::TextFields|DiagramContent::Images|DiagramContent::ConductorsToMove | DiagramContent::Shapes | DiagramContent::Dimensions),
 	first_redo(true)
 {
 	setText(QObject::tr("paste %1", "undo caption - %1 is a sentence listing the content to paste").arg(content.sentence(filter)));

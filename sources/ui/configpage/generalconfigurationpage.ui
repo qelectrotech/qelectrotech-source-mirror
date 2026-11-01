@@ -263,6 +263,46 @@
          </property>
          <property name="text">
           <string>Warn about items outside the sheet</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+        <widget class="QCheckBox" name="m_vertical_texts_from_bottom_cb">
+         <property name="toolTip">
+          <string>A symbol's text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires' texts. Unticked by default: texts turn with their symbol.</string>
+         </property>
+         <property name="text">
+          <string>Upright symbol texts read from bottom to top</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+        <widget class="QCheckBox" name="m_terminal_help_lines_cb">
+         <property name="toolTip">
+          <string>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</string>
+         </property>
+         <property name="text">
+          <string>Help lines from the terminals of a dragged symbol</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+        <widget class="QCheckBox" name="m_dock_fold_cb">
+         <property name="toolTip">
+          <string>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice's sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</string>
+         </property>
+         <property name="text">
+          <string>Bars beside the drawing to fold the side panels away</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+        <widget class="QCheckBox" name="m_narrow_docks_cb">
+         <property name="toolTip">
+          <string>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</string>
+         </property>
+         <property name="text">
+          <string>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</string>
          </property>
         </widget>
        </item>
@@ -456,7 +496,7 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
+       <item row="9" column="0">
         <widget class="QLabel" name="m_previous_versions_label">
          <property name="text">
           <string>Previous versions kept when saving a project</string>
@@ -466,7 +506,7 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="2">
+       <item row="9" column="2">
         <widget class="QSpinBox" name="m_previous_versions_sb">
          <property name="toolTip">
           <string>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with "-backups". Only the newest are kept.</string>
@@ -479,7 +519,47 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="0">
+       <item row="10" column="0">
+        <widget class="QCheckBox" name="m_reopen_projects">
+         <property name="text">
+          <string>Reopen the projects of the last session at start</string>
+         </property>
+         <property name="toolTip">
+          <string>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0">
+        <widget class="QCheckBox" name="m_offer_backups">
+         <property name="text">
+          <string>Offer to restore automatic backups at start</string>
+         </property>
+         <property name="toolTip">
+          <string>After a crash, the automatic backups (made every few minutes, see "Automatic backup of projects" above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="0">
+        <widget class="QCheckBox" name="m_working_copy_recovery">
+         <property name="text">
+          <string>After a crash, offer projects as they were after their last edit (experimental)</string>
+         </property>
+         <property name="toolTip">
+          <string>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="0">
+        <widget class="QCheckBox" name="m_qetdb_enabled">
+         <property name="text">
+          <string>Offer saving a project as one database file, .qetdb (experimental)</string>
+         </property>
+         <property name="toolTip">
+          <string>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="0">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -667,7 +747,7 @@
             </item>
            </widget>
           </item>
-          <item row="8" column="1">
+          <item row="9" column="1">
            <widget class="QLabel" name="label_9">
             <property name="text">
              <string>(Reload the elements collections to apply the changes)</string>
@@ -715,14 +795,14 @@
             </item>
            </layout>
           </item>
-          <item row="9" column="0">
+          <item row="8" column="0">
            <widget class="QLabel" name="m_cable_type_list_label">
             <property name="text">
              <string>Cable type list file</string>
             </property>
            </widget>
           </item>
-          <item row="9" column="1">
+          <item row="8" column="1">
            <layout class="QHBoxLayout" name="m_cable_type_list_layout">
             <item>
              <widget class="QLineEdit" name="m_cable_type_list_path_le">
@@ -1029,7 +1109,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="label_cable_textes">
             <property name="text">
-             <string>Designation, type, plant, location, length :</string>
+             <string>Designation, type, plant, location, length:</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -1062,7 +1142,7 @@
           <item row="1" column="0">
            <widget class="QLabel" name="label_cable_core_textes">
             <property name="text">
-             <string>Core colors (all of them) :</string>
+             <string>Core colors (all of them):</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -1095,7 +1175,7 @@
           <item row="2" column="0">
            <widget class="QLabel" name="label_cable_align">
             <property name="text">
-             <string>Text alignment :</string>
+             <string>Text alignment:</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -1647,6 +1727,8 @@
   <tabstop>m_save_label_paste</tabstop>
   <tabstop>m_autonumber_pasted</tabstop>
   <tabstop>m_project_lock</tabstop>
+  <tabstop>m_reopen_projects</tabstop>
+  <tabstop>m_offer_backups</tabstop>
   <tabstop>m_use_folio_label</tabstop>
   <tabstop>m_border_0</tabstop>
   <tabstop>m_autosave_sb</tabstop>

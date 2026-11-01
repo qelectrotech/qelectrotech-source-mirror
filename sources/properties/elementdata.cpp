@@ -381,6 +381,57 @@ QDomElement ElementData::plcMasterDataToXml(QDomDocument &document) const
 }
 
 /**
+ * @brief ElementData::xrefDisplayToXml
+ * Serialize this master's own cross reference display. The element is null
+ * when there is none, so nothing is written.
+ */
+QDomElement ElementData::xrefDisplayToXml(QDomDocument &document) const
+{
+	if (!m_xref_display.enabled)
+		return QDomElement();
+
+	static const QStringList positions{QStringLiteral("label"), QStringLiteral("symbol"),
+									   QStringLiteral("footer"), QStringLiteral("manual")};
+	auto xml = document.createElement(QStringLiteral("xrefDisplay"));
+	xml.setAttribute(QStringLiteral("appearance"),
+					 m_xref_display.contacts ? QStringLiteral("contacts") : QStringLiteral("cross"));
+	xml.setAttribute(QStringLiteral("position"), positions.value(m_xref_display.position));
+	xml.setAttribute(QStringLiteral("width"), QString::number(m_xref_display.width));
+	xml.setAttribute(QStringLiteral("gap"), QString::number(m_xref_display.gap));
+	xml.setAttribute(QStringLiteral("x"), QString::number(m_xref_display.manual.x()));
+	xml.setAttribute(QStringLiteral("y"), QString::number(m_xref_display.manual.y()));
+	xml.setAttribute(QStringLiteral("show_unlinked"), QETXML::boolToString(m_xref_display.showUnlinked));
+	return xml;
+}
+
+/**
+ * @brief ElementData::xrefDisplayFromXml
+ * Read what xrefDisplayToXml() wrote. A null element, or a value out of
+ * range, leaves the display to the project's setting.
+ */
+void ElementData::xrefDisplayFromXml(const QDomElement &xml_display)
+{
+	m_xref_display = XRefDisplay();
+	if (xml_display.isNull())
+		return;
+
+	const int position = QStringList{QStringLiteral("label"), QStringLiteral("symbol"),
+									 QStringLiteral("footer"), QStringLiteral("manual")}
+			.indexOf(xml_display.attribute(QStringLiteral("position")));
+	if (position < 0)
+		return;
+
+	m_xref_display.enabled = true;
+	m_xref_display.contacts = xml_display.attribute(QStringLiteral("appearance")) == QLatin1String("contacts");
+	m_xref_display.position = static_cast<XRefDisplay::Position>(position);
+	m_xref_display.width = qBound(0.1, xml_display.attribute(QStringLiteral("width"), QStringLiteral("0.5")).toDouble(), 10.0);
+	m_xref_display.gap = qBound(0.0, xml_display.attribute(QStringLiteral("gap"), QStringLiteral("10")).toDouble(), 500.0);
+	m_xref_display.manual = QPointF(xml_display.attribute(QStringLiteral("x")).toDouble(),
+									xml_display.attribute(QStringLiteral("y")).toDouble());
+	m_xref_display.showUnlinked = QETXML::boolFromString(xml_display.attribute(QStringLiteral("show_unlinked")), false);
+}
+
+/**
  * @brief ElementData::plcMasterDataFromXml
  * Deserialize PLC master data from XML
  */
@@ -589,6 +640,9 @@ bool ElementData::operator==(const ElementData &data) const
 				return false;
 			}
 		}
+		if (data.m_xref_display != m_xref_display) {
+			return false;
+		}
 	}
 	else if (data.m_type == ElementData::Slave) {
 		if (data.m_slave_state   != m_slave_state ||
@@ -711,6 +765,28 @@ ElementData::Type ElementData::typeFromString(const QString &string)
 			 << string
 			 << " don't exist, return failsafe value 'simple";
 	return ElementData::Simple;
+}
+
+/**
+	@brief ElementData::takesSchemeNumber
+	Whether an element of this kind is given a number by an element
+	numbering scheme.
+	A slave or a report takes its name from the element it is linked to,
+	and a conductor definition labels a wire rather than naming an item of
+	the drawing: numbering one of them would give a wire label a BMK and
+	advance a scheme's counter for nothing.
+	@param type the kind of element
+	@return true when the element numbering schemes apply to this kind
+*/
+bool ElementData::takesSchemeNumber(const ElementData::Type type)
+{
+	if (type == ElementData::Slave) {
+		return false;
+	}
+	if (type & ElementData::AllReport) {
+		return false;
+	}
+	return type != ElementData::ConductorDefinition;
 }
 
 QString ElementData::masterTypeToString() const {

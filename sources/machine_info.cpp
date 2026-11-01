@@ -19,6 +19,7 @@
 #include "qetapp.h"
 #include "qetversion.h"
 #include <QSettings>
+#include <cstring>
 #include <QDirIterator>
 
 #include <QScreen>
@@ -317,36 +318,61 @@ void MachineInfo::init_get_cpu_info_linux()
 */
 void MachineInfo::init_get_cpu_info_winnt()
 {
-	QProcess wincpuinfo;
-	wincpuinfo.start("wmic",
-			 QStringList() << "cpu" << "get" << "name");
-	wincpuinfo.waitForFinished();
-	QString windows_output = wincpuinfo.readAllStandardOutput().toUpper();
-	pc.cpu.info=QString(windows_output.toLocal8Bit().constData());
+	// wmic is gone from Windows 11 25H2, so read the registry instead.
+	pc.cpu.info = QStringLiteral("Unknown");
+	pc.gpu.info = QStringLiteral("Unknown");
+	pc.gpu.RAM = QStringLiteral("Unknown");
 
-	QProcess wingpuinfo;
-	wingpuinfo.start("wmic",
-			 QStringList()
-			 << "PATH"
-			 << "Win32_videocontroller"
-			 << "get"
-			 << "VideoProcessor ");
-	wingpuinfo.waitForFinished();
-	QString WinGPUOutput = wingpuinfo.readAllStandardOutput();
-	pc.gpu.info=QString(WinGPUOutput.toLocal8Bit().constData());
+#ifdef Q_OS_WIN
+	QSettings cpu_key(
+				"HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System"
+				"\\CentralProcessor\\0",
+				QSettings::NativeFormat);
+	const QString cpu_name = cpu_key.value("ProcessorNameString")
+			.toString().simplified();
+	if (!cpu_name.isEmpty()) {
+		pc.cpu.info = cpu_name;
+	}
 
-	QProcess wingpuraminfo;
-	wingpuraminfo.start("wmic",
-				QStringList()
-				<< "PATH"
-				<< "Win32_videocontroller"
-				<< "get"
-				<< "AdapterRAM ");
-	wingpuraminfo.waitForFinished();
-	QString WinGPURAMOutput = wingpuraminfo.readAllStandardOutput();
-	pc.gpu.RAM=QString("RAM Total : %1 B").arg(
-	WinGPURAMOutput.toLocal8Bit().constData());
-	wingpuraminfo.close();
+	// First display adapter that reports its memory, else the first named one.
+	QSettings video_class(
+				"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control"
+				"\\Class\\{4d36e968-e325-11ce-bfc1-08002be10318}",
+				QSettings::NativeFormat);
+	bool gpu_found = false;
+	const QStringList adapters = video_class.childGroups();
+	for (const QString &adapter : adapters) {
+		video_class.beginGroup(adapter);
+		const QString name = video_class.value("DriverDesc").toString().trimmed();
+		QVariant memory = video_class.value("HardwareInformation.qwMemorySize");
+		video_class.endGroup();
+		if (name.isEmpty()) {
+			continue;
+		}
+
+		// REG_QWORD may come back as a number or as 8 raw bytes.
+		qulonglong bytes = 0;
+		if (memory.typeId() == QMetaType::QByteArray) {
+			const QByteArray raw = memory.toByteArray();
+			if (raw.size() == 8) {
+				std::memcpy(&bytes, raw.constData(), 8);
+			}
+		} else {
+			bytes = memory.toULongLong();
+		}
+
+		if (!gpu_found) {
+			pc.gpu.info = name;
+			gpu_found = true;
+		}
+		if (bytes > 0) {
+			pc.gpu.info = name;
+			pc.gpu.RAM = QString("RAM Total : %1 MB")
+					.arg(bytes / (1024 * 1024));
+			break;
+		}
+	}
+#endif
 
 #ifdef Q_OS_WIN
 	MEMORYSTATUSEX memory_status;

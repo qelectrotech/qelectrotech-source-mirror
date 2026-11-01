@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -38,6 +38,7 @@
 #include "../esevent/eseventaddtext.h"
 #include "../esevent/eseventaddterminal.h"
 #include "../esevent/eseventadddynamictextfield.h"
+#include "../esevent/eseventmeasure.h"
 #include "../../elementdialog.h"
 #include "../graphicspart/partterminal.h"
 #include "../terminalnamecheck.h"
@@ -99,6 +100,9 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
  */
 QETElementEditor::~QETElementEditor()
 {
+	if (m_elmt_scene) {
+		m_elmt_scene->clearEventInterface();
+	}
 	delete ui;
 	qDeleteAll(m_editors.begin(), m_editors.end());
 }
@@ -113,6 +117,10 @@ void QETElementEditor::contextMenu(QPoint p, QList<QAction *> actions)
 {
 	QMenu menu(this);
 	menu.addActions(std::move(actions));
+	if (m_elmt_scene && m_elmt_scene->hasMeasureItems() && m_clear_measure_action) {
+		menu.addSeparator();
+		menu.addAction(m_clear_measure_action);
+	}
 	menu.addSeparator();
 	menu.addAction(m_undo_action);
 	menu.addAction(m_redo_action);
@@ -537,6 +545,9 @@ void QETElementEditor::fillPartsList()
 void QETElementEditor::UncheckAddPrimitive() {
 	for (auto action : m_add_part_action_grp->actions()) {
 		action->setChecked(false);
+	}
+	if (m_tape_measure_action) {
+		m_tape_measure_action->setChecked(false);
 	}
 }
 
@@ -1197,6 +1208,43 @@ void QETElementEditor::setupActions()
 	parts_toolbar -> setAllowedAreas(Qt::AllToolBarAreas);
 	parts_toolbar -> setObjectName("parts");
 	parts_toolbar -> addActions(m_add_part_action_grp -> actions());
+
+	m_tape_measure_action = new QAction(QET::Icons::DimensionLinear, tr("Tape measure"), this);
+	m_tape_measure_action->setCheckable(true);
+	m_tape_measure_action->setStatusTip(tr("Measure distance and angle between points"));
+	connect(m_tape_measure_action, &QAction::triggered, [this]() {
+		if (m_tape_measure_action->isChecked()) {
+			for (auto action : m_add_part_action_grp->actions()) {
+				action->setChecked(false);
+			}
+			m_elmt_scene->setEventInterface(new ESEventMeasure(m_elmt_scene, m_tape_measure_action));
+		} else {
+			m_elmt_scene->clearEventInterface();
+		}
+	});
+	connect(m_add_part_action_grp, &QActionGroup::triggered, [this]() {
+		if (m_tape_measure_action) {
+			m_tape_measure_action->setChecked(false);
+		}
+	});
+
+	ShortcutManager::instance().registerAction(m_tape_measure_action, "elementeditor.tape_measure", tr("Element editors"), QKeySequence());
+	ui->m_edit_menu->addAction(m_tape_measure_action);
+
+	m_clear_measure_action = new QAction(tr("Clear measurements"), this);
+	m_clear_measure_action->setStatusTip(tr("Clear all tape measurements from the editor"));
+	connect(m_clear_measure_action, &QAction::triggered, [this]() {
+		if (m_elmt_scene) {
+			m_elmt_scene->clearMeasureItems();
+			if (statusBar()) {
+				statusBar()->showMessage(tr("Measurements cleared"), 3000);
+			}
+		}
+	});
+	ui->m_edit_menu->addAction(m_clear_measure_action);
+
+	parts_toolbar->addSeparator();
+	parts_toolbar->addAction(m_tape_measure_action);
 	addToolBar(Qt::LeftToolBarArea, parts_toolbar);
 
 		//Background frame action: a visual-only reference rectangle, never
@@ -1309,6 +1357,11 @@ void QETElementEditor::setupConnection()
 	connect(m_parts_list, &QListWidget::itemSelectionChanged, this, &QETElementEditor::updateSelectionFromPartsList);
 	connect(QApplication::clipboard(),  &QClipboard::dataChanged, this, &QETElementEditor::updateAction);
 	connect(m_elmt_scene, &ElementScene::behaviorChanged,     this, &QETElementEditor::updateAction);
+	connect(m_elmt_scene, &ElementScene::behaviorChanged,     this, [this]() {
+		if (m_elmt_scene && m_elmt_scene->behavior() == ElementScene::Behavior::Normal && m_tape_measure_action) {
+			m_tape_measure_action->setChecked(false);
+		}
+	});
 
 	connect(m_elmt_scene, &ElementScene::selectionChanged, [this]() {
 		this->updateInformations();

@@ -154,6 +154,56 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief qetdbEnabled
+	* @return whether Save As offers a project as one SQLite file, .qetdb
+	* (QET-SQL-FORMAT S4a). Off unless the user turned it on, while the
+	* format is experimental. Opening a .qetdb does not need it.
+	* @sa setQetdbEnabled
+	*/
+	bool qetdbEnabled()
+	{
+		QSettings settings;
+		return settings.value("qetdb/enabled", false).toBool();
+	}
+
+	/**
+	* @brief setQetdbEnabled
+	* Store whether Save As offers .qetdb. @sa qetdbEnabled
+	* @param enabled
+	*/
+	void setQetdbEnabled(bool enabled)
+	{
+		QSettings settings;
+		settings.setValue("qetdb/enabled", enabled);
+	}
+
+	/**
+	* @brief workingCopyRecovery
+	* @return whether the next start offers, with the recovery files, the
+	* working copy of a project that was open when QElectroTech did not
+	* close normally: the project as it was after its last edit
+	* (QET-SQL-FORMAT S3z3). Off unless the user turned it on, while the
+	* .qetdb format is experimental. @sa setWorkingCopyRecovery
+	*/
+	bool workingCopyRecovery()
+	{
+		QSettings settings;
+		return settings.value("workingcopy/recovery", false).toBool();
+	}
+
+	/**
+	* @brief setWorkingCopyRecovery
+	* Store whether working copies are offered at the next start.
+	* @sa workingCopyRecovery
+	* @param enabled
+	*/
+	void setWorkingCopyRecovery(bool enabled)
+	{
+		QSettings settings;
+		settings.setValue("workingcopy/recovery", enabled);
+	}
+
+	/**
 	* @brief liveAssistantEnabled
 	* @return whether an AI assistant may connect to this QElectroTech and
 	* act on the open project while the user watches (live mode, see
@@ -209,6 +259,25 @@ namespace QetSettings
 	{
 		QSettings settings;
 		settings.setValue("scripting/live_ask_first", ask);
+	}
+
+	/**
+	* @brief duplicateLabelsCaseSensitive
+	* @return whether K1 and k1 are different labels when looking for
+	* duplicates. Off by default: schemes rarely tell two devices apart by
+	* letter case alone.
+	* @sa setDuplicateLabelsCaseSensitive
+	*/
+	bool duplicateLabelsCaseSensitive()
+	{
+		QSettings settings;
+		return settings.value("duplicate_labels/case_sensitive", false).toBool();
+	}
+
+	void setDuplicateLabelsCaseSensitive(bool sensitive)
+	{
+		QSettings settings;
+		settings.setValue("duplicate_labels/case_sensitive", sensitive);
 	}
 
 	/**

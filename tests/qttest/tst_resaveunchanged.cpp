@@ -9,6 +9,7 @@
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 #include "container/qetzip.h"
 
@@ -58,7 +59,7 @@ class tst_resaveunchanged : public QObject
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--resave"), in, out});
-		if (!proc.waitForFinished(120000) || proc.exitCode() != 0) return {};
+		if (!proc.waitForFinished(QetTest::timeout(120000)) || proc.exitCode() != 0) return {};
 		return out;
 	}
 
@@ -224,7 +225,7 @@ private slots:
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), script, QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet")});
-		QVERIFY(proc.waitForFinished(180000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(180000)));
 		const QString log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		QVERIFY2(log.contains(QStringLiteral("REMOVED true")) && log.contains(QStringLiteral("SAVED true")),
 				 qPrintable(log.right(400)));
@@ -277,7 +278,7 @@ private slots:
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), script, in});
-		QVERIFY(proc.waitForFinished(180000));
+		QVERIFY(proc.waitForFinished(QetTest::timeout(180000)));
 		const QString log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 		QVERIFY2(log.contains(QStringLiteral("REMOVED true")) && log.contains(QStringLiteral("SAVED true")),
 				 qPrintable(log.right(400)));
@@ -539,6 +540,9 @@ private slots:
 		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
 		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
 		env.insert(QString::fromLatin1(check), QStringLiteral("1"));
+			//A script is stopped after 30 s; beside the other tests (ctest -j8)
+			//the edits below took longer (2026-10-27, 2026-10-28)
+		env.insert(QStringLiteral("QET_SCRIPT_TIMEOUT_MS"), QString::number(QetTest::timeout(240000)));
 		if (eager) {
 			env.insert(QStringLiteral("QET_EAGER_FOLIOS"), QStringLiteral("1")); //every folio built on opening
 		}
@@ -548,7 +552,7 @@ private slots:
 		QProcess proc;
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), args);
-		if (!proc.waitForFinished(180000)) return {};
+		if (!proc.waitForFinished(QetTest::timeout(180000))) return {};
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
 
@@ -825,7 +829,7 @@ private slots:
 				 "}\n"
 				 "qet.log('COPIED ' + copied);\n"
 				 "var wf = 0; while (qet.elementUuids(wf).length < 6) ++wf;\n"
-				 "var wires = qet.conductorCount(wf), w = qet.elementUuids(wf);\n"
+				 "var wires = qet.conductorCount(wf), w = qet.elementUuids(wf).sort();\n"
 				 "qet.log('WIRED ' + qet.duplicateElements(wf, w.slice(0, 6), wf, 300, 300).length"
 				 " + (qet.conductorCount(wf) > wires ? ' with wires' : ''));\n"
 				 "qet.log('ROWS ' + rows());\n"
@@ -840,7 +844,9 @@ private slots:
 										   QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet")});
 		QVERIFY2(edited.contains(QStringLiteral("COPIED 3")) && edited.contains(QStringLiteral("WIRED 6 with wires"))
 				 && edited.contains(QStringLiteral("UNDONE true"))
-				 && edited.contains(QStringLiteral("SAVED true")), qPrintable(edited.right(600)));
+				 && edited.contains(QStringLiteral("SAVED true")),
+				 qPrintable(edited.split(QLatin1Char('\n')).filter(QRegularExpression(
+						QStringLiteral("COPIED|WIRED|UNDONE|SAVED|Script error"))).join(QLatin1Char('\n'))));
 		const QString reopened = runChecked({QStringLiteral("--run"), dump, saved});
 		auto rowsOf = [](const QString &log) {
 			const int at = log.indexOf(QStringLiteral("ROWS "));

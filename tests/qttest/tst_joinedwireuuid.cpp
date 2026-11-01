@@ -19,6 +19,7 @@
 #include <QProcess>
 #include <QRegularExpression>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 /**
 	Deleting a symbol whose terminal held several wires joins the wires
@@ -66,7 +67,7 @@ class tst_joinedwireuuid : public QObject
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
 				   {QStringLiteral("--run"), js,
 					QStringLiteral(QET_EXAMPLES_DIR "/affuteuse_250h.qet")});
-		if (!proc.waitForFinished(180000) || proc.exitCode() != 0
+		if (!proc.waitForFinished(QetTest::timeout(180000)) || proc.exitCode() != 0
 				|| !proc.readAll().contains("DELETED true"))
 			return {};
 		QFile saved(out);

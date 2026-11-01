@@ -33,6 +33,7 @@ class projectDataBase;
 class Terminal;
 class ConductorSegment;
 class ConductorTextItem;
+class ConductorDefinitionMark;
 class Element;
 class QETDiagramEditor;
 class NumerotationContext;
@@ -156,6 +157,8 @@ class Conductor : public QGraphicsObject
 		void setProfiles(const ConductorProfilesGroup &);
 		ConductorProfilesGroup profiles() const;
 		void calculateTextItemPosition();
+		void updateDefinitionMark();
+		QList<Conductor *> cornerChain();
 		void updateTextVisibility();
 		virtual Highlight highlight() const;
 		virtual void setHighlighted(Highlight);
@@ -186,6 +189,15 @@ class Conductor : public QGraphicsObject
 
 	public:
 		void setFreezeLabel(bool freeze);
+		bool isAutomatic() const { return m_automatic; }
+		void setAutomatic(bool automatic) { m_automatic = automatic; updateTextVisibility(); }
+			/// Drawn grey while its symbol is dragged: an automatic wire
+			/// is worked out anew once the symbol is put down
+		bool isPreview() const { return m_preview; }
+		void setPreview(bool preview) { if (m_preview != preview) { m_preview = preview; update(); } }
+		bool hidesPlaceholder() const;
+		bool isFreezeLabel() const { return m_freeze_label; }
+		bool markReplacesText() const;
 	
 	public slots:
 		void displayedTextChanged();
@@ -230,6 +242,7 @@ class Conductor : public QGraphicsObject
 		ConductorProperties m_properties;
 			/// Text input for non simple, non-singleline conductors
 		ConductorTextItem *m_text_item;
+		ConductorDefinitionMark *m_definition_mark = nullptr;
 			/// Segments composing the conductor
 		ConductorSegment *segments;
 			/// Attributes related to mouse interaction
@@ -249,6 +262,9 @@ class Conductor : public QGraphicsObject
 		Highlight must_highlight_;
 		bool m_valid;
 		bool m_freeze_label = false;
+			/// Made by AutoConnect: removed again when its ends leave the line
+		bool m_automatic = false;
+		bool m_preview = false;
 		QUuid m_uuid;
 			/// false when m_uuid was synthesized by fromXml() because the
 			/// file had none -- toXml() must not persist that value, or

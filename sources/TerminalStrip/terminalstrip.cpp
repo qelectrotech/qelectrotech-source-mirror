@@ -65,7 +65,10 @@ void TerminalStrip::setLocation(const QString &location) {
 }
 
 void TerminalStrip::setName(const QString &name) {
+	if (name == m_data.m_name)
+		return;
 	m_data.m_name = name;
+		//The strip's label at its first terminal reads the name
 	emit dataChanged();
 }
 
@@ -800,6 +803,7 @@ bool TerminalStrip::setBridge(const QVector<QSharedPointer<RealTerminal>> &real_
 	{
 		auto br_ = new TerminalStripBridge(this);
 		bridge = br_->sharedRef();
+		bridge->setTrack(freeTrackFor(real_terminals));
 		m_bridge.append(bridge);
 	}
 
@@ -869,6 +873,11 @@ bool TerminalStrip::canUnBridge(const QVector<QSharedPointer<RealTerminal> > &re
 	const auto compar_bridge = isBridged(real_terminals.first());
 	if (compar_bridge)
 	{
+			//A bridge the drawing brought here belongs to the drawing:
+			//it is changed there or not at all
+		if (compar_bridge->automatic()) {
+			return false;
+		}
 		QMap<int, QSharedPointer<RealTerminal>> sorted_terminal;
 
 			//Check if all terminals are bridged and if it's the same bridge.
@@ -914,6 +923,227 @@ bool TerminalStrip::canUnBridge(const QVector<QSharedPointer<RealTerminal> > &re
 	}
 
 	return false;
+}
+
+/**
+ * @brief TerminalStrip::freeTrackFor
+ * @param real_terminals the terminals a bar would lie across
+ * @return the first groove (1 to 4) no bar of a bridge lying across the
+ * same terminals already sits in: two bars beside each other, the way
+ * the real ones run, and never one on top of the other
+ */
+int TerminalStrip::freeTrackFor(const QVector<QSharedPointer<RealTerminal>> &real_terminals) const
+{
+	if (real_terminals.isEmpty()) {
+		return 1;
+	}
+
+	int first = -1, last = -1;
+	for (const auto &real_t : real_terminals) {
+		const auto physical = real_t ? real_t->physicalTerminal() : QSharedPointer<PhysicalTerminal>();
+		if (!physical) {
+			continue;
+		}
+		const int pos = physical->pos();
+		first = (first < 0) ? pos : qMin(first, pos);
+		last = (last < 0) ? pos : qMax(last, pos);
+	}
+
+	bool taken[5] = {false, false, false, false, false};
+	for (const auto &bridge : m_bridge)
+	{
+		if (!bridge) {
+			continue;
+		}
+		int bridge_first = -1, bridge_last = -1;
+		for (const auto &real_t : bridge->realTerminals()) {
+			const auto physical = real_t ? real_t->physicalTerminal() : QSharedPointer<PhysicalTerminal>();
+			if (!physical) {
+				continue;
+			}
+			const int pos = physical->pos();
+			bridge_first = (bridge_first < 0) ? pos : qMin(bridge_first, pos);
+			bridge_last = (bridge_last < 0) ? pos : qMax(bridge_last, pos);
+		}
+		if (bridge_first < 0 || first < 0 || bridge_last < first || bridge_first > last) {
+			continue;
+		}
+		taken[qBound(1, bridge->track(), 4)] = true;
+	}
+
+	for (int track = 1 ; track <= 4 ; ++track) {
+		if (!taken[track]) {
+			return track;
+		}
+	}
+	return 1;
+}
+
+/**
+ * @brief TerminalStrip::bridgesOf
+ * @param real_terminal
+ * @return every bridge this terminal sits in: several bars may lie
+ * across the same terminal, one per groove of the rail
+ */
+QVector<QSharedPointer<TerminalStripBridge>> TerminalStrip::bridgesOf(
+		const QSharedPointer<RealTerminal> &real_terminal) const
+{
+	QVector<QSharedPointer<TerminalStripBridge>> list;
+	if (!real_terminal) {
+		return list;
+	}
+	for (const auto &bridge : m_bridge) {
+		if (bridge && bridge->realTerminals().contains(real_terminal)) {
+			list << bridge;
+		}
+	}
+	return list;
+}
+
+/**
+ * @brief TerminalStrip::automaticBridges
+ * @return the bridges this strip holds which were brought here by the
+ * drawing, as they stand now
+ */
+QList<TerminalStrip::DrawingBridge> TerminalStrip::automaticBridges() const
+{
+	QList<DrawingBridge> list;
+	for (const auto &bridge : m_bridge)
+	{
+		if (!bridge || !bridge->automatic()) {
+			continue;
+		}
+		DrawingBridge drawn;
+		drawn.source = bridge->source();
+		drawn.real_terminals = bridge->realTerminals();
+		drawn.color = bridge->color();
+		drawn.track = bridge->track();
+		list << drawn;
+	}
+	return list;
+}
+
+/**
+ * @brief TerminalStrip::setAutomaticBridges
+ * Bring the bridges of the drawing into this strip: what the drawing
+ * says, these bridges say. A bridge whose line is gone in the drawing
+ * goes, a new one comes, and one which stays is changed where it stands
+ * -- the bridges he set by hand are never touched.
+ * @param bridges what the drawing says, one per drawn bridge
+ */
+void TerminalStrip::setAutomaticBridges(const QList<DrawingBridge> &bridges)
+{
+		//What is no longer drawn goes
+	for (int i = m_bridge.size() - 1 ; i >= 0 ; --i)
+	{
+		const auto bridge = m_bridge.at(i);
+		if (!bridge || !bridge->automatic()) {
+			continue;
+		}
+		bool stays = false;
+		for (const DrawingBridge &wanted : bridges) {
+			if (wanted.source == bridge->source()) {
+				stays = true;
+				break;
+			}
+		}
+		if (!stays) {
+			m_bridge.removeAt(i);
+		}
+	}
+
+		/*
+			Which groove each bar sits in is worked out here, from the way
+			the bars lie across the terminals right now -- and not from the
+			drawing, where the order of the strip was whatever it happened
+			to be when the line was drawn. Two bars lying across the same
+			terminals run side by side, and each takes the first groove no
+			bar beside it already sits in.
+		*/
+	struct Span
+	{
+		int first = -1;
+		int last = -1;
+		int track = 1;
+	};
+	auto span_of = [this](const QVector<QSharedPointer<RealTerminal>> &real_terminals)
+	{
+		Span span;
+		for (const auto &real_t : real_terminals) {
+			const auto physical = real_t ? real_t->physicalTerminal() : QSharedPointer<PhysicalTerminal>();
+			if (!physical) {
+				continue;
+			}
+			const int pos = physical->pos();
+			span.first = (span.first < 0) ? pos : qMin(span.first, pos);
+			span.last = (span.last < 0) ? pos : qMax(span.last, pos);
+		}
+		return span;
+	};
+
+	QList<Span> placed;
+	for (const auto &bridge : std::as_const(m_bridge)) {
+		if (bridge && !bridge->automatic()) {
+			Span span = span_of(bridge->realTerminals());
+			span.track = bridge->track();
+			placed << span;
+		}
+	}
+
+	QList<DrawingBridge> ordered = bridges;
+	std::sort(ordered.begin(), ordered.end(),
+			  [&span_of](const DrawingBridge &a, const DrawingBridge &b)
+	{
+		return span_of(a.real_terminals).first < span_of(b.real_terminals).first;
+	});
+
+		//What is drawn comes
+	for (const DrawingBridge &wanted : ordered)
+	{
+		QSharedPointer<TerminalStripBridge> bridge;
+		for (const auto &candidate : std::as_const(m_bridge)) {
+			if (candidate && candidate->automatic() && candidate->source() == wanted.source) {
+				bridge = candidate;
+				break;
+			}
+		}
+		if (!bridge) {
+			auto br_ = new TerminalStripBridge(this);
+			bridge = br_->sharedRef();
+			bridge->setAutomatic(true);
+			bridge->setSource(wanted.source);
+			m_bridge.append(bridge);
+		}
+
+		bridge->setColor(wanted.color);
+		bridge->removeTerminals(bridge->realTerminals());
+		bridge->addTerminals(wanted.real_terminals);
+
+			//The groove it sits in: the first no bar beside it takes
+		const Span span = span_of(wanted.real_terminals);
+		int track = 1;
+		for (; track <= 4 ; ++track) {
+			bool taken = false;
+			for (const Span &other : std::as_const(placed)) {
+				if (other.track == track
+					&& !(other.last < span.first || other.first > span.last)) {
+					taken = true;
+					break;
+				}
+			}
+			if (!taken) {
+				break;
+			}
+		}
+		bridge->setTrack(qBound(1, track, 4));
+		{
+			Span span_ = span;
+			span_.track = bridge->track();
+			placed << span_;
+		}
+	}
+
+	emit bridgeChanged();
 }
 
 /**

@@ -55,7 +55,15 @@ int TitleBlockCell::verticalAlign() const
 	@param attr_value New value of the changed attribute
 */
 void TitleBlockCell::setAttribute(const QString &attribute, const QVariant &attr_value) {
-	if (attribute == "type") {
+	if (attribute == "label_font") {
+		label_font = attr_value.toString();
+	} else if (attribute == "value_font") {
+		value_font = attr_value.toString();
+	} else if (attribute == "label_color") {
+		label_color = attr_value.value<QColor>();
+	} else if (attribute == "value_color") {
+		value_color = attr_value.value<QColor>();
+	} else if (attribute == "type") {
 		int new_type = attr_value.toInt();
 		if (new_type <= TitleBlockCell::LogoCell) {
 			cell_type = static_cast<TitleBlockCell::TemplateCellType>(new_type);
@@ -84,7 +92,15 @@ void TitleBlockCell::setAttribute(const QString &attribute, const QVariant &attr
 	@return the value of the required attribute
 */
 QVariant TitleBlockCell::attribute(const QString &attribute) {
-	if (attribute == "type") {
+	if (attribute == "label_font") {
+		return(label_font);
+	} else if (attribute == "value_font") {
+		return(value_font);
+	} else if (attribute == "label_color") {
+		return(label_color);
+	} else if (attribute == "value_color") {
+		return(value_color);
+	} else if (attribute == "type") {
 		return(type());
 	} else if (attribute == "name") {
 		return(value_name);
@@ -129,6 +145,14 @@ QString TitleBlockCell::attributeName(const QString &attribute) {
 		return(QObject::tr("font size", "title block cell property human name"));
 	} else if (attribute == "horizontal_adjust") {
 		return(QObject::tr("horizontal adjustment", "title block cell property human name"));
+	} else if (attribute == "label_font") {
+		return(QObject::tr("label font", "title block cell property human name"));
+	} else if (attribute == "value_font") {
+		return(QObject::tr("value font", "title block cell property human name"));
+	} else if (attribute == "label_color") {
+		return(QObject::tr("label colour", "title block cell property human name"));
+	} else if (attribute == "value_color") {
+		return(QObject::tr("value colour", "title block cell property human name"));
 	}
 	return(QString());
 }
@@ -155,6 +179,20 @@ void TitleBlockCell::loadContentFromCell(const TitleBlockCell &other_cell) {
 	font_size = other_cell.font_size;
 	alignment = other_cell.alignment;
 	hadjust = other_cell.hadjust;
+	label_font = other_cell.label_font;
+	value_font = other_cell.value_font;
+	label_color = other_cell.label_color;
+	value_color = other_cell.value_color;
+}
+
+/**
+	@return true if the label or the value of this cell has its own font or
+	colour, instead of the cell font and the default colour
+*/
+bool TitleBlockCell::hasTextStyle() const
+{
+	return !label_font.isEmpty() || !value_font.isEmpty()
+		|| label_color.isValid() || value_color.isValid();
 }
 
 /**
@@ -219,6 +257,12 @@ void TitleBlockCell::loadContentFromXml(const QDomElement &cell_element) {
 		
 		// horizontal text adjustment
 		hadjust = cell_element.attribute("hadjust", "true") == "true";
+
+		// optional text style of the label and of the value
+		label_font = cell_element.attribute("label-font");
+		value_font = cell_element.attribute("value-font");
+		label_color = QColor(cell_element.attribute("label-color"));
+		value_color = QColor(cell_element.attribute("value-color"));
 	}
 }
 
@@ -249,6 +293,18 @@ void TitleBlockCell::saveContentToXml(QDomElement &cell_elmt) {
 		cell_elmt.setAttribute("displaylabel", display_label ? "true" : "false");
 		if (font_size != -1) {
 			cell_elmt.setAttribute("fontsize", font_size);
+		}
+		if (!label_font.isEmpty()) {
+			cell_elmt.setAttribute("label-font", label_font);
+		}
+		if (!value_font.isEmpty()) {
+			cell_elmt.setAttribute("value-font", value_font);
+		}
+		if (label_color.isValid()) {
+			cell_elmt.setAttribute("label-color", label_color.name(QColor::HexArgb));
+		}
+		if (value_color.isValid()) {
+			cell_elmt.setAttribute("value-color", value_color.name(QColor::HexArgb));
 		}
 		
 		if (alignment & Qt::AlignRight) {
