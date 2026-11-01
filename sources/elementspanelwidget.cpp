@@ -75,11 +75,11 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	prj_del_diagram          = new QAction(QET::Icons::DiagramDelete,          tr("Delete this sheet"),              this);
 	prj_move_diagram_up      = new QAction(QET::Icons::GoUp,                   tr("Move this sheet up"),               this);
 	prj_move_diagram_down    = new QAction(QET::Icons::GoDown,                 tr("Move down this sheet"),               this);
-	prj_move_diagram_upx10   = new QAction(QET::Icons::GoUpDouble,             tr("Move this sheet up x10"),           this);
-	prj_move_diagram_upx100  = new QAction(QET::Icons::GoUpDouble,             tr("Move this sheet up x100"),           this);
+	prj_move_diagram_upx10   = new QAction(QET::Icons::GoUpDouble,             tr("Move this sheet up × 10"),           this);
+	prj_move_diagram_upx100  = new QAction(QET::Icons::GoUpDouble,             tr("Move this sheet up × 100"),           this);
 	prj_move_diagram_top     = new QAction(QET::Icons::GoTop,                  tr("Move this sheet to the beginning"),               this);
-	prj_move_diagram_downx10 = new QAction(QET::Icons::GoDownDouble,           tr("Move down this sheet x10"),           this);
-	prj_move_diagram_downx100 = new QAction(QET::Icons::GoDownDouble,           tr("Move down this sheet x100"),           this);
+	prj_move_diagram_downx10 = new QAction(QET::Icons::GoDownDouble,           tr("Move down this sheet × 10"),           this);
+	prj_move_diagram_downx100 = new QAction(QET::Icons::GoDownDouble,           tr("Move down this sheet × 100"),           this);
 	tbt_add               = new QAction(QET::Icons::TitleBlock,                tr("New template"),                   this);
 	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("Edit this template"),              this);
 	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Delete this template"),              this);

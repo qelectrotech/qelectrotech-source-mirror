@@ -28,32 +28,32 @@
      </property>
      <item>
       <property name="text">
-       <string>x 0.25</string>
+       <string>× 0.25</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>x 0.5</string>
+       <string>× 0.5</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>x 0.75</string>
+       <string>× 0.75</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>x 1</string>
+       <string>× 1</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>x 2</string>
+       <string>× 2</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>x 3</string>
+       <string>× 3</string>
       </property>
      </item>
     </widget>
