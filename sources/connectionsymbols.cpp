@@ -105,3 +105,24 @@ void ConnectionSymbols::resetPath(Kind kind)
 {
 	QSettings().remove(key(kind));
 }
+
+bool ConnectionSymbols::newJunctionReplacesOld()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/new_junction_replaces_old"), false).toBool();
+}
+
+void ConnectionSymbols::setNewJunctionReplacesOld(bool replaces)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/new_junction_replaces_old"), replaces);
+}
+
+bool ConnectionSymbols::isJunction(const ElementsLocation &location)
+{
+	const QUuid uuid = location.uuid();
+	if (uuid.isNull())
+		return false;
+	for (Kind kind : {Corner, Tee, TeeMirrored, TeeBranchLeft, TeeBranchRight})
+		if (ConnectionSymbols::location(kind).uuid() == uuid)
+			return true;
+	return false;
+}

@@ -341,6 +341,15 @@ if(QET_HAS_SCRIPTING)
   target_link_libraries(tst_tabletranslation PRIVATE Qt::Test)
   target_compile_definitions(tst_tabletranslation PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+  add_executable(
+    tst_textclearance
+    tst_textclearance.cpp)
+  add_test(NAME tst_textclearance COMMAND tst_textclearance)
+  add_dependencies(tst_textclearance qelectrotech)
+  target_link_libraries(tst_textclearance PRIVATE Qt::Test)
+  target_compile_definitions(tst_textclearance PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 endif()
 
 # textlines.h is header-only: the lines of a text as they are laid out,

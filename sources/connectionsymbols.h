@@ -52,6 +52,13 @@ namespace ConnectionSymbols {
 	ElementsLocation location(Kind kind);
 	void setPath(Kind kind, const QString &path);
 	void resetPath(Kind kind);
+		/// A corner or T-junction placed where one already is takes its
+		/// place, its wires with it; off by default: both stay
+	bool newJunctionReplacesOld();
+	void setNewJunctionReplacesOld(bool replaces);
+		/// The location's definition is a corner or a T-junction of the
+		/// toolbar (whichever symbols its buttons place)
+	bool isJunction(const ElementsLocation &location);
 }
 
 #endif
