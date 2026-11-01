@@ -30,6 +30,7 @@
 #include "conductortextitem.h"
 #include "../wiringrules.h"
 
+#include <QSettings>
 #include <QToolTip>
 
 #include <QtCore/qnumeric.h>
@@ -40,6 +41,38 @@ QColor Terminal::allowedColor      = QColor(Qt::darkGreen);
 QColor Terminal::warningColor      = QColor("#ff8000");
 QColor Terminal::forbiddenColor    = QColor(Qt::red);
 const qreal Terminal::terminalSize = 4.0;
+
+namespace {
+	/// See Terminal::takesConductorColor(); -1 until read from the settings
+	int s_takes_conductor_color = -1;
+}
+
+/**
+	@brief Terminal::takesConductorColor
+	@return true if a connected terminal is drawn in the color of its
+	(first) conductor rather than in red, so it does not stand out within
+	a wire of another color. Off by default.
+*/
+bool Terminal::takesConductorColor()
+{
+	if (s_takes_conductor_color < 0) {
+		QSettings settings;
+		s_takes_conductor_color = settings.value(
+			QStringLiteral("diagrameditor/terminal_takes_conductor_color"), false).toBool();
+	}
+	return s_takes_conductor_color;
+}
+
+/**
+	@brief Terminal::setTakesConductorColor
+	@param takes : see takesConductorColor(); kept in the settings
+*/
+void Terminal::setTakesConductorColor(bool takes)
+{
+	s_takes_conductor_color = takes;
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/terminal_takes_conductor_color"), takes);
+}
 const qreal Terminal::Z = 1000;
 
 /**
@@ -164,6 +197,7 @@ bool Terminal::addConductor(Conductor *conductor)
 			return false; //They already a conductor linked to this and other_terminal
 
 	m_conductors_list.append(conductor);
+	if (takesConductorColor()) update();
 	emit conductorWasAdded(conductor);
 	return(true);
 }
@@ -178,6 +212,7 @@ void Terminal::removeConductor(Conductor *conductor)
 	int index = m_conductors_list.indexOf(conductor);
 	if (index == -1) return;
 	m_conductors_list.removeAt(index);
+	if (takesConductorColor()) update();
 	emit conductorWasRemoved(conductor);
 }
 
@@ -220,7 +255,9 @@ void Terminal::paint(
 	// dessin de la borne en rouge
 	// draw the terminal in red
 	if (!diagram() || diagram()->drawTerminals()) {
-		t.setColor(Qt::red);
+		t.setColor(takesConductorColor() && !m_conductors_list.isEmpty()
+				   ? m_conductors_list.first()->properties().color
+				   : QColor(Qt::red));
 		painter -> setPen(t);
 		painter -> drawLine(c, e);
 
