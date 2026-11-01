@@ -6,6 +6,7 @@
 #include <QProcess>
 #include <QRegularExpression>
 #include <QTemporaryDir>
+#include "qettesttimeout.h"
 
 /**
 	A .qet kept in git changes only where the project did (scorpio810 on
@@ -44,7 +45,7 @@ class tst_stableqet : public QObject
 		proc.setProcessEnvironment(env);
 		proc.setProcessChannelMode(QProcess::MergedChannels);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), arguments);
-		if (!proc.waitForFinished(120000) || proc.exitStatus() != QProcess::NormalExit
+		if (!proc.waitForFinished(QetTest::timeout(120000)) || proc.exitStatus() != QProcess::NormalExit
 				|| proc.exitCode() != 0)
 			return QString();
 		return QString::fromUtf8(proc.readAll()) + QStringLiteral("\nEXIT 0");

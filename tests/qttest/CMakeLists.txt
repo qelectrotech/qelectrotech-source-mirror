@@ -206,7 +206,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/auto_connect_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/auto_connect.qet)
-  set_tests_properties(tst_autoconnectintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_autoconnectintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Corners, T-junctions and folio reports placed along a drag, one on
   # each line it crosses, joined automatically, in one undo step.
@@ -215,7 +215,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/auto_connect_drag_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/auto_connect_drag.qet)
-  set_tests_properties(tst_autoconnectdragintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_autoconnectdragintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
@@ -2147,7 +2147,6 @@ qet_add_app_test(tst_uprighttexts tst_uprighttexts.cpp)
 target_compile_definitions(tst_uprighttexts PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
 
-# New tests go above this line: the blocks below apply to the tests above them.
 # What the status bar says an item of a folio is: a symbol with its label
 # and name, a text of a symbol, a free text, a wire, a shape...
 qet_add_app_test(tst_itemdescription tst_itemdescription.cpp)
@@ -2155,63 +2154,74 @@ qet_add_app_test(tst_itemdescription tst_itemdescription.cpp)
 # than its smallest height pushing the dock below over its last rows.
 qet_add_app_test(tst_propertiesdockscroll tst_propertiesdockscroll.cpp)
 
-# MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
-# Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
-# PATH for every test above and keeps the ENVIRONMENT each test sets
-# (QT_QPA_PLATFORM=offscreen, ...); it needs CMake 3.22.
-if(MSVC)
-  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
-  if(CMAKE_VERSION VERSION_LESS 3.22)
-    message(WARNING
-      "CMake ${CMAKE_VERSION} cannot add Qt's bin folder to the tests' PATH "
-      "(ENVIRONMENT_MODIFICATION needs 3.22): put it on PATH before running "
-      "ctest.")
-  elseif(qet_qttests)
-    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
-      "PATH=path_list_prepend:$<TARGET_FILE_DIR:Qt6::Core>")
-  endif()
-endif()
-
-# Windows: a program without a console sends Qt's messages, and with them
-# QtTest's report, to the debugger, so ctest --output-on-failure showed
-# nothing. QT_FORCE_STDERR_LOGGING sends them to stderr, where ctest reads
-# them. ENVIRONMENT_MODIFICATION keeps the ENVIRONMENT each test sets; it
-# needs CMake 3.22.
-if(WIN32 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
-  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
-  if(qet_qttests)
-    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
-      "QT_FORCE_STDERR_LOGGING=set:1")
-  endif()
-endif()
-
-# MSVC: its Debug libraries make QElectroTech five to eight times slower,
-# and some tests run scripts that then pass QElectroTech's 30 s script limit.
-# QET_SCRIPT_TIMEOUT_MS gives them 300 s. Needs CMake 3.22, as above.
-if(MSVC AND NOT CMAKE_VERSION VERSION_LESS 3.22)
-  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
-  if(qet_qttests)
-    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
-      "QET_SCRIPT_TIMEOUT_MS=set:300000")
-  endif()
-endif()
-
-# The tests' own time limits, scaled as ctest's are (see
-# qet_test_timeout_scale above), and QtTest's limit for one test function,
-# 300 s by default, unless a test sets its own (scaled where it is set).
-# Needs CMake 3.22, as above.
-if(qet_test_timeout_scale GREATER 1 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
-  math(EXPR qet_test_function_timeout "300000 * ${qet_test_timeout_scale}")
-  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
-  foreach(qet_qttest IN LISTS qet_qttests)
-    set_property(TEST ${qet_qttest} APPEND PROPERTY ENVIRONMENT_MODIFICATION
-      "QET_TEST_TIMEOUT_SCALE=set:${qet_test_timeout_scale}")
-    get_test_property(${qet_qttest} ENVIRONMENT qet_test_env)
-    if(NOT qet_test_env MATCHES "QTEST_FUNCTION_TIMEOUT=")
-      set_property(TEST ${qet_qttest} APPEND PROPERTY ENVIRONMENT_MODIFICATION
-        "QTEST_FUNCTION_TIMEOUT=set:${qet_test_function_timeout}")
+# Settings for every test. get_property(... TESTS) only sees the tests added
+# so far, so they wait for the end of this file: a test takes them wherever
+# it is listed. cmake_language(DEFER) needs CMake 3.19, and without
+# ENVIRONMENT_MODIFICATION (3.22) only the warning below is left.
+function(qet_apply_test_settings)
+  # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
+  # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
+  # PATH for every test and keeps the ENVIRONMENT each test sets
+  # (QT_QPA_PLATFORM=offscreen, ...); it needs CMake 3.22.
+  if(MSVC)
+    get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+    if(CMAKE_VERSION VERSION_LESS 3.22)
+      message(WARNING
+        "CMake ${CMAKE_VERSION} cannot add Qt's bin folder to the tests' PATH "
+        "(ENVIRONMENT_MODIFICATION needs 3.22): put it on PATH before running "
+        "ctest.")
+    elseif(qet_qttests)
+      set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+        "PATH=path_list_prepend:$<TARGET_FILE_DIR:Qt6::Core>")
     endif()
-  endforeach()
+  endif()
+
+  # Windows: a program without a console sends Qt's messages, and with them
+  # QtTest's report, to the debugger, so ctest --output-on-failure showed
+  # nothing. QT_FORCE_STDERR_LOGGING sends them to stderr, where ctest reads
+  # them. ENVIRONMENT_MODIFICATION keeps the ENVIRONMENT each test sets; it
+  # needs CMake 3.22.
+  if(WIN32 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
+    get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+    if(qet_qttests)
+      set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+        "QT_FORCE_STDERR_LOGGING=set:1")
+    endif()
+  endif()
+
+  # MSVC: its Debug libraries make QElectroTech five to eight times slower,
+  # and some tests run scripts that then pass QElectroTech's 30 s script limit.
+  # QET_SCRIPT_TIMEOUT_MS gives them 300 s. Needs CMake 3.22, as above.
+  if(MSVC AND NOT CMAKE_VERSION VERSION_LESS 3.22)
+    get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+    if(qet_qttests)
+      set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+        "QET_SCRIPT_TIMEOUT_MS=set:300000")
+    endif()
+  endif()
+
+  # The tests' own time limits, scaled as ctest's are (see
+  # qet_test_timeout_scale above), and QtTest's limit for one test function,
+  # 300 s by default, unless a test sets its own (scaled where it is set).
+  # Needs CMake 3.22, as above.
+  if(qet_test_timeout_scale GREATER 1 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
+    math(EXPR qet_test_function_timeout "300000 * ${qet_test_timeout_scale}")
+    get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+    foreach(qet_qttest IN LISTS qet_qttests)
+      set_property(TEST ${qet_qttest} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+        "QET_TEST_TIMEOUT_SCALE=set:${qet_test_timeout_scale}")
+      get_test_property(${qet_qttest} ENVIRONMENT qet_test_env)
+      if(NOT qet_test_env MATCHES "QTEST_FUNCTION_TIMEOUT=")
+        set_property(TEST ${qet_qttest} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+          "QTEST_FUNCTION_TIMEOUT=set:${qet_test_function_timeout}")
+      endif()
+    endforeach()
+  endif()
+endfunction()
+if(CMAKE_VERSION VERSION_LESS 3.19)
+  qet_apply_test_settings()
+else()
+  cmake_language(DEFER CALL qet_apply_test_settings)
 endif()
 
 # The folio properties dialog's paper size: choosing A4, A3 and A4 again
