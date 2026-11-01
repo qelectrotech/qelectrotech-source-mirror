@@ -1897,7 +1897,7 @@ Om du bekräftar förlorar den andra kabeln dessa ledare. Vill du fortsätta?</n
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="153"/>
         <source>No.</source>
-        <translation>Nr</translation>
+        <translation>Nr.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="154"/>
@@ -12294,7 +12294,7 @@ En kopia av den sparades som:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="636"/>
         <source>No.</source>
-        <translation>Nr</translation>
+        <translation>Nr.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="636"/>
