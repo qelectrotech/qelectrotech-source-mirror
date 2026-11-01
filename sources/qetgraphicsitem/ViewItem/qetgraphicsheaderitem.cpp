@@ -20,6 +20,7 @@
 #include <createdxf.h>
 #include <qetxml.h>
 #include <utils/qetutils.h>
+#include "projectdbmodel.h"
 #include "qabstractitemmodel.h"
 
 #include <QFontMetrics>
@@ -164,10 +165,12 @@ void QetGraphicsHeaderItem::paint(
 						0,
 						Qt::Horizontal,
 						Qt::TextAlignmentRole).toInt(),
-					m_model->headerData(
-						i,
-						Qt::Horizontal,
-						Qt::DisplayRole).toString());
+					ProjectDBModel::shownText(
+						m_model,
+						m_model->headerData(
+							i,
+							Qt::Horizontal,
+							Qt::DisplayRole).toString()));
 
 		top_left.setX(top_left.x() + m_current_sections_width.at(i));
 	}

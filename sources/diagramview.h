@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -78,6 +78,7 @@ class DiagramView : public PaletteGraphicsView
 		QPoint            m_gesture_origin;
 		DiagramGestureOverlay *m_gesture_overlay = nullptr;
 		QPoint            m_last_mouse_pos = QPoint(-1, -1);
+		QString           m_pointed_description;
 		QPointF           m_crosshair_pos;
 		bool              m_crosshair_visible = false;
 		void moveCrosshair(const QPoint &viewport_pos);
@@ -100,7 +101,7 @@ class DiagramView : public PaletteGraphicsView
 			/// The pointer: a four-way arrow over what can be moved; with
 			/// the crosshair, drawn on the grid point in place of the
 			/// system's, which a program may not move on every platform
-		enum class Pointer { System, Arrow, Move };
+		enum class Pointer { System, Arrow, Move, Dimension };
 		Pointer           m_pointer = Pointer::System;
 			/// The view's cursor was set by updatePointer()
 		bool              m_pointer_set = false;
@@ -138,6 +139,9 @@ class DiagramView : public PaletteGraphicsView
 		/// cursor query (QCursor::pos()/setPos() are silently ignored by
 		/// several window managers and compositors, Wayland included).
 		QPoint lastMousePos() const { return m_last_mouse_pos; }
+			/// What the mouse points at, in a few words (ItemDescription);
+			/// nothing over the bare folio or outside the view
+		QString pointedItemDescription() const { return m_pointed_description; }
 	
 		bool startElementPlacement(const ElementsLocation &location,
 					   const QPointF &scene_pos);
@@ -150,6 +154,10 @@ class DiagramView : public PaletteGraphicsView
 		static void setCrosshairShown(bool shown);
 		static bool pointerAids();
 		static void setPointerAids(bool on);
+			/// The shaded lines from a dragged symbol's terminals to the
+			/// terminals in line with them; on by default
+		static bool terminalHelpLinesShown();
+		static void setTerminalHelpLinesShown(bool shown);
 		bool crosshairVisible() const { return m_crosshair_visible; }
 			/// The pointer drawn on the crosshair's grid point, if any:
 			/// 0 none (the system's shows), 1 an arrow, 2 a four-way arrow
@@ -177,6 +185,7 @@ class DiagramView : public PaletteGraphicsView
 		InkKind inkKind(const QGraphicsItem *item) const override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;
+		void leaveEvent(QEvent *) override;
 		void mouseReleaseEvent(QMouseEvent *) override;
 		void dragEnterEvent(QDragEnterEvent *) override;
 		void dragMoveEvent(QDragMoveEvent *) override;
@@ -188,6 +197,7 @@ class DiagramView : public PaletteGraphicsView
 		virtual bool selectedItemHasFocus();
 	
 	private:
+		void setPointedDescription(const QString &description);
 		void handleElementDrop(QDropEvent *);
 		void updateFolioReportMenu();
 			/**
@@ -241,6 +251,8 @@ class DiagramView : public PaletteGraphicsView
 		void elementPlacementStarted(const ElementsLocation &);
 			/// The view's scale changed: 1 is 100 %
 		void zoomChanged(qreal factor);
+			/// The mouse came over another item, or left it
+		void pointedItemChanged(const QString &description);
 	
 	public slots:
 		void setVisualisationMode();

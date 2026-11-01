@@ -28,6 +28,7 @@
 #include "elementcontent.h"
 #include "elementprimitivedecorator.h"
 #include "esevent/eseventinterface.h"
+#include "esevent/elementmeasureitem.h"
 #include "graphicspart/partarc.h"
 #include "graphicspart/partdynamictextfield.h"
 #include "graphicspart/partellipse.h"
@@ -148,6 +149,8 @@ ElementScene::~ElementScene()
 	//Disconnect to avoid crash, see bug report N° 122.
 	disconnect(&m_undo_stack, &QUndoStack::indexChanged, this, &ElementScene::managePrimitivesGroups);
 	delete m_decorator_lock;
+
+	clearMeasureItems();
 
 		//Deleting the event interface resets the behavior; the editor
 		//is already being destroyed, so it must not hear about it.
@@ -853,7 +856,7 @@ void ElementScene::slot_select(const ElementContent &content)
 	QList<QGraphicsItem*> items_list;
 	for (QGraphicsItem *qgi : content)
 	{
-		if(qgi->type() != QetGraphicsHandlerItem::Type)
+		if(qgi->type() != QetGraphicsHandlerItem::Type && qgi->type() != ElementMeasureItem::Type)
 			items_list << qgi;
 	}
 	clearSelection();
@@ -1190,13 +1193,14 @@ void ElementScene::reset()
 {
 	clearSelection();
 	undoStack().clear();
+	clearMeasureItems();
 
 	// We don't add handlers,
 	// because it's the role of the primitive or decorator to remove it.
 	QList<QGraphicsItem*> items_list;
 	for (QGraphicsItem *qgi : items())
 	{
-		if(qgi->type() != QetGraphicsHandlerItem::Type)
+		if(qgi->type() != QetGraphicsHandlerItem::Type && qgi->type() != ElementMeasureItem::Type)
 			items_list << qgi;
 	}
 
@@ -1566,4 +1570,48 @@ void ElementScene::stackAction(ElementEditionCommand *command)
 	}
 
 	undoStack().push(command);
+}
+
+/**
+	@brief ElementScene::clearMeasureItems
+	Removes and deletes all visual CAD tape measurement items from the scene.
+*/
+void ElementScene::clearMeasureItems()
+{
+	const auto all_items = items();
+	for (QGraphicsItem *item : all_items) {
+		if (item && item->type() == ElementMeasureItem::Type) {
+			removeItem(item);
+			delete item;
+		}
+	}
+}
+
+/**
+	@brief ElementScene::hasMeasureItems
+	@return true if there is at least one tape measure item currently in the scene.
+*/
+bool ElementScene::hasMeasureItems() const
+{
+	for (QGraphicsItem *item : items()) {
+		if (item && item->type() == ElementMeasureItem::Type) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+	@brief ElementScene::measureItems
+	@return List of all tape measure items currently in the scene.
+*/
+QList<ElementMeasureItem *> ElementScene::measureItems() const
+{
+	QList<ElementMeasureItem *> list;
+	for (QGraphicsItem *item : items()) {
+		if (item && item->type() == ElementMeasureItem::Type) {
+			list.append(static_cast<ElementMeasureItem *>(item));
+		}
+	}
+	return list;
 }

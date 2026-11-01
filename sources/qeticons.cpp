@@ -78,6 +78,8 @@ namespace QET {
 		QIcon EditPaste;
 		QIcon CopyElementTextFormat;
 		QIcon ApplyElementTextFormat;
+		QIcon DimensionLinear;
+		QIcon DimensionChain;
 		QIcon EditRedo;
 		QIcon EditRename;
 		QIcon EditSelectAll;
@@ -471,6 +473,8 @@ void QET::Icons::initIcons()
 	EditPaste           = QIcon::fromTheme("edit-paste");
 	CopyElementTextFormat = QIcon(":/ico/format-copy.svg");
 	ApplyElementTextFormat = QIcon(":/ico/format-apply.svg");
+	DimensionLinear = QIcon(":/ico/dimension-linear.svg");
+	DimensionChain = QIcon(":/ico/dimension-chain.svg");
 	if (rtl) {
 		EditRedo.addPixmap(QIcon::fromTheme("edit-redo").pixmap(16).transformed(reverse));
 		EditRedo.addPixmap(QIcon::fromTheme("edit-redo").pixmap(22).transformed(reverse));

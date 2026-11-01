@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <bordercelllabels.h>
 #include "assignvariables.h"
 
 #include <QRegularExpression>
@@ -418,7 +419,7 @@ namespace autonum
 		if (m_context.has_element)
 		{
 		QSettings settings;
-		if (settings.value("border-columns_0", true).toBool()){
+		if (settings.value("border-columns_0", BorderCellLabels::defaultColumnsFromZero).toBool()){
 			m_assigned_label.replace("%c", QString::number(m_context.element_position.number() - 1));
 			}else{
 			m_assigned_label.replace("%c", QString::number(m_context.element_position.number()));

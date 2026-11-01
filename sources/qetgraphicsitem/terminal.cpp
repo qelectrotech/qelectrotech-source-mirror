@@ -22,6 +22,7 @@
 #include <dataBase/projectdatabase.h>
 #include <conductorautonumerotation.h>
 #include <diagram.h>
+#include <diagramview.h>
 #include <undocommand/addgraphicsobjectcommand.h>
 #include <properties/terminaldata.h>
 #include <qetgraphicsitem/conductor.h>
@@ -373,6 +374,7 @@ void Terminal::paint(
 */
 void Terminal::drawHelpLine(bool draw)
 {
+	if (draw && !DiagramView::terminalHelpLinesShown()) draw = false;
 	if (m_draw_help_line == draw) return;
 
 	m_draw_help_line = draw;

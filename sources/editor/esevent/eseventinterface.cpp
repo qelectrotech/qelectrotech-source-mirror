@@ -41,10 +41,12 @@ ESEventInterface::ESEventInterface(ElementScene *scene) :
 void ESEventInterface::init()
 {
 	m_scene->setBehavior(ElementScene::Behavior::AddPart);
-	m_editor->elementView()->setDragMode(QGraphicsView::NoDrag);
+	if (m_editor && m_editor->elementView()) {
+		m_editor->elementView()->setDragMode(QGraphicsView::NoDrag);
 		//Keys such as Space must reach the part being added, even when
 		//the focus was left in the parts list (#1177)
-	m_editor->elementView()->setFocus();
+		m_editor->elementView()->setFocus();
+	}
 }
 
 /**
@@ -57,7 +59,9 @@ ESEventInterface::~ESEventInterface()
 	delete m_help_verti;
 
 	m_scene->setBehavior(ElementScene::Behavior::Normal);
-	m_editor->elementView()->setDragMode(QGraphicsView::RubberBandDrag);
+	if (m_editor && m_editor->elementView()) {
+		m_editor->elementView()->setDragMode(QGraphicsView::RubberBandDrag);
+	}
 }
 
 bool ESEventInterface::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {

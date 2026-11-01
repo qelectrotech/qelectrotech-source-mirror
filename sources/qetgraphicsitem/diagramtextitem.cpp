@@ -19,6 +19,7 @@
 
 #include <diagram.h>
 #include <diagramcommands.h>
+#include <qetproject.h>
 #include <qetapp.h>
 #include <richtext/richtexteditor_p.h>
 #include <textanchor.h>
@@ -27,6 +28,7 @@
 
 #include <QAbstractTextDocumentLayout>
 #include <QStyleOptionGraphicsItem>
+#include <QTextCursor>
 #include <QTextBlock>
 #include <QTextLayout>
 
@@ -63,6 +65,9 @@ void DiagramTextItem::build()
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemSendsGeometryChanges);
 	setNoEditable(false);
 	setToolTip(tr("Hold ctrl to free movement"));
+		//The text shown in another language is built again from the source
+	connect(document(), &QTextDocument::contentsChanged, this, [this]() {m_translated.reset();});
+	connect(this, &DiagramTextItem::fontChanged, this, [this]() {m_translated.reset();});
 }
 
 /**
@@ -348,6 +353,61 @@ bool DiagramTextItem::isHtml() const
 }
 
 /**
+	@brief DiagramTextItem::translatedDocument
+	The text in the project's active language, as a copy of the source
+	text: the source itself is never changed, so saving and editing see the
+	words as drawn.
+	@return the copy to show, or nullptr to show the source text
+*/
+const QTextDocument *DiagramTextItem::translatedDocument() const
+{
+	if (isEditing()) {
+		return nullptr;
+	}
+	const Diagram *folio = diagram();
+	const QETProject *project = folio ? folio->project() : nullptr;
+	if (!project) {
+		return nullptr;
+	}
+	const QString source = toPlainText();
+	const QString shown = project->languages().translate(source);
+	if (shown == source) {
+		m_translated.reset();
+		return nullptr;
+	}
+	if (!m_translated || m_translated->toPlainText() != shown) {
+		QTextCursor first(document());
+		first.movePosition(QTextCursor::Right, QTextCursor::KeepAnchor);
+		const QTextCharFormat format = first.charFormat();
+		m_translated.reset(document()->clone());
+		m_translated->setPlainText(shown);
+		QTextCursor all(m_translated.data());
+		all.select(QTextCursor::Document);
+		all.mergeCharFormat(format);
+		m_translated->setDefaultTextOption(document()->defaultTextOption());
+		m_translated->setTextWidth(document()->textWidth());
+	}
+	return m_translated.data();
+}
+
+/**
+	@brief DiagramTextItem::paintText
+	Draw the text: in the project's active language when it has words for
+	it, else as QGraphicsTextItem draws it.
+*/
+void DiagramTextItem::paintText(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+	const QTextDocument *translated = translatedDocument();
+	if (!translated) {
+		QGraphicsTextItem::paint(painter, option, widget);
+		return;
+	}
+	QAbstractTextDocumentLayout::PaintContext context;
+	context.palette.setColor(QPalette::Text, defaultTextColor());
+	translated->documentLayout()->draw(painter, context);
+}
+
+/**
 	@brief DiagramTextItem::paint
 	Draw this text field. This method draws the text by calling QGraphicsTextItem::paint.
 	If text is hovered, this method draws the bounding rect in grey
@@ -366,7 +426,7 @@ void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *o
 	{
 		QStyleOptionGraphicsItem plain(*option);
 		plain.state &= ~(QStyle::State_Selected | QStyle::State_HasFocus);
-		QGraphicsTextItem::paint(painter, &plain, widget);
+		paintText(painter, &plain, widget);
 
 		painter -> save();
 		painter -> setBrush(Qt::NoBrush);
@@ -377,7 +437,7 @@ void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *o
 		painter -> restore();
 	}
 	else
-		QGraphicsTextItem::paint(painter, option, widget);
+		paintText(painter, option, widget);
 
 	if (m_mouse_hover && !isSelected())
 	{

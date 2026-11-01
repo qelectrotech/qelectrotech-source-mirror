@@ -34,6 +34,8 @@
 #include <qetgraphicsitem/elementtextitemgroup.h>
 #include <qetgraphicsitem/independenttextitem.h>
 #include <qetgraphicsitem/qetshapeitem.h>
+#include <qetgraphicsitem/dimensionitem.h>
+#include <ui/dimensionpropertieswidget.h>
 #include <ui/dynamicelementtextitemeditor.h>
 #include <ui/elementpropertieswidget.h>
 #include <ui/conductorpropertieseditorwidget.h>
@@ -228,6 +230,21 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 			}
 
 			return new ShapeGraphicsItemPropertiesWidget(shapes_list, parent);
+		}
+		case DimensionItem::Type: //1014
+		{
+			QList<DimensionItem *> dim_list;
+			for (QGraphicsItem *qgi : items) {
+				dim_list.append(static_cast<DimensionItem*>(qgi));
+			}
+
+			if (class_name == DimensionPropertiesWidget::staticMetaObject.className())
+			{
+				static_cast<DimensionPropertiesWidget*>(editor)->setItems(dim_list);
+				return editor;
+			}
+
+			return new DimensionPropertiesWidget(dim_list, parent);
 		}
 		case DynamicElementTextItem::Type: //1010
 		{
