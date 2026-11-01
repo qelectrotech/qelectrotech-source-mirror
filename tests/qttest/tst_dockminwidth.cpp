@@ -30,6 +30,7 @@
 #include <QGridLayout>
 #include <QGroupBox>
 #include <QRadioButton>
+#include <QAbstractScrollArea>
 #include <QScrollArea>
 #include <QScrollBar>
 #include <QTabWidget>
@@ -172,6 +173,27 @@ class tst_dockminwidth : public QObject
 				 qPrintable(QString("Appearance %1 px, Type %2 px")
 					    .arg(tabs->maximumHeight()).arg(type_height)));
 			QVERIFY(tabs->height() <= tabs->maximumHeight());
+		}
+
+			//A tab page that scrolls (the collection's tree) takes the
+			//dock's height: its tab widget is not held to the page's size
+			//hint, which left the space below empty
+		void tabPageThatScrollsGrows()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			auto *dock = editor->findChild<QDockWidget *>(QStringLiteral("elements_collection_widget"));
+			QVERIFY(dock);
+			auto *tabs = dock->findChild<QTabWidget *>();
+			QVERIFY(tabs);
+			auto *tree = qobject_cast<QAbstractScrollArea *>(tabs->currentWidget());
+			QVERIFY(tree);
+			dock->show();
+			editor->resizeDocks({dock}, {900}, Qt::Vertical);
+			QTest::qWait(100);
+			QCOMPARE(tabs->maximumHeight(), QWIDGETSIZE_MAX);
+			QVERIFY2(tree->height() > tree->sizeHint().height(),
+				 qPrintable(QStringLiteral("tree %1 px, hint %2 px, dock %3 px")
+					    .arg(tree->height()).arg(tree->sizeHint().height()).arg(dock->height())));
 		}
 
 			//A field taken out of a group's grid after the grid learned
