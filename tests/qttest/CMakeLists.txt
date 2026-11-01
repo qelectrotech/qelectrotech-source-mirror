@@ -463,6 +463,8 @@ qet_add_app_test(tst_duplicatelabels tst_duplicatelabels.cpp)
 target_compile_definitions(tst_duplicatelabels PRIVATE
   QET_TEST_TRANSLATIONS_DIR="${CMAKE_BINARY_DIR}/lang")
 add_dependencies(tst_duplicatelabels qelectrotech_lrelease)
+# The labels file behind a symbol's prefix is read once, and again only when it changes.
+qet_add_app_test(tst_labelsfilecache tst_labelsfilecache.cpp)
 # A conductor's colour and section at a slanted stroke across it.
 qet_add_app_test(tst_conductordefinitionmark tst_conductordefinitionmark.cpp)
 target_compile_definitions(tst_conductordefinitionmark PRIVATE

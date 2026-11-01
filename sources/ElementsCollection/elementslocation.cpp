@@ -394,7 +394,9 @@ bool ElementsLocation::addToPath(const QString &string)
 ElementsLocation ElementsLocation::parent() const
 {
 	ElementsLocation copy(*this);
-	QRegularExpression re ("^(?<path_proto>[a-z]+://.*)/.*$");
+		//Built once: this runs for every symbol of a project that is loaded
+		//(elementPrefixForLocation() walks up the folders with it)
+	static const QRegularExpression re ("^(?<path_proto>[a-z]+://.*)/.*$");
 	if (!re.isValid())
 	{
 		qWarning()
