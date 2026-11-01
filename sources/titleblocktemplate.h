@@ -134,7 +134,7 @@ class TitleBlockTemplate : public QObject {
 	int columnTypeTotal(QET::TitleBlockColumnLength);
 	int minimumWidth();
 	int maximumWidth();
-	int width(int);
+	int width(int) const;
 	int height() const;
 	Qt::Alignment align() const;
 	void setAlignment(Qt::Alignment);

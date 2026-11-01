@@ -75,10 +75,13 @@ QSpinBox *TitleBlockDimensionWidget::spinbox() const
 TitleBlockDimension TitleBlockDimensionWidget::value() const
 {
 	QET::TitleBlockColumnLength type = QET::Absolute;
+	Qt::Alignment align= Qt::AlignTop;
 	if (complete_) {
 		type = static_cast<QET::TitleBlockColumnLength>(dimension_type_ -> checkedId());
+	}else{
+		align = align_cb_->currentData().value<Qt::Alignment>();
 	}
-	return(TitleBlockDimension(spinbox_ -> value(), type, align_cb_->currentData().value<Qt::Alignment>()));
+	return(TitleBlockDimension(spinbox_ -> value(), type, align));
 }
 
 /**
@@ -90,7 +93,7 @@ void TitleBlockDimensionWidget::setValue(const TitleBlockDimension &dim) {
 			button -> setChecked(true);
 		}
 	}else{
-		int index = align_cb_->findData(QVariant::fromValue(dim.align));
+		int index = align_cb_->findData(QVariant::fromValue(static_cast<Qt::Alignment>(dim.align)));
 		if (index != -1){
 			align_cb_->setCurrentIndex(index);
 		}
@@ -156,8 +159,11 @@ void TitleBlockDimensionWidget::initWidgets()
 		// basic widgets: label + combobox
 		align_label_ = new QLabel(tr("Alignment:", "default dialog label"));
 		align_cb_ = new QComboBox();
-		align_cb_->addItem(tr("Top", "default dialog label"),Qt::AlignTop);
-		align_cb_->addItem(tr("Bottom", "default dialog label"),Qt::AlignBottom);
+		align_cb_->addItem(tr("Top", "default dialog label"), QVariant::fromValue(static_cast<Qt::Alignment>(Qt::AlignTop)));
+		align_cb_->addItem(tr("Bottom", "default dialog label"), QVariant::fromValue(static_cast<Qt::Alignment>(Qt::AlignBottom)));
+		align_cb_->addItem(tr("Bottom Left", "default dialog label"), QVariant::fromValue(Qt::AlignBottom | Qt::AlignLeft));
+		align_cb_->addItem(tr("Bottom Center", "default dialog label"), QVariant::fromValue(Qt::AlignBottom | Qt::AlignHCenter));
+		align_cb_->addItem(tr("Bottom Right", "default dialog label"), QVariant::fromValue(Qt::AlignBottom | Qt::AlignRight));
 	}
 	
 	updateSpinBoxSuffix();

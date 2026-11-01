@@ -480,12 +480,23 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 	A string describing the alignment of the titleblock
 */
 void TitleBlockTemplate::parseAlign(const QString &align) {
-
-	if (align=="bottom"){
-		m_align_=Qt::AlignBottom;
-	}else{
-		m_align_=Qt::AlignTop;
+	QStringList list = align.split('|',Qt::SkipEmptyParts);
+	m_align_ = Qt::Alignment();
+	for (const QString &item : list) {
+		QString val = item.trimmed().toLower();
+		if(val == "top"){
+			m_align_ |= Qt::AlignTop;
+		} else if (val == "bottom"){
+			m_align_ |= Qt::AlignBottom;
+		} else if (val == "left"){
+			m_align_ |= Qt::AlignLeft;
+		} else if (val == "hcenter"){
+			m_align_ |= Qt::AlignHCenter;
+		} else if (val == "right"){
+			m_align_ |= Qt::AlignRight;
+		}
 	}
+	if (!m_align_) m_align_ = Qt::AlignTop;
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
 	qDebug() << Q_FUNC_INFO << "align:" << m_align_;
 #endif
@@ -611,8 +622,15 @@ void TitleBlockTemplate::saveGrid(QDomElement &xml_element) const
 		cols_attr += col_width.toShortString();
 	grid_element.setAttribute("rows", rows_attr);
 	grid_element.setAttribute("cols", cols_attr);
-	if (m_align_.testFlag(Qt::AlignBottom)){
-		grid_element.setAttribute("align", "bottom");
+
+	if (m_align_!=Qt::AlignTop){	
+		QStringList align_l;
+		if (m_align_.testFlag(Qt::AlignTop)) align_l.append("top");
+		if (m_align_.testFlag(Qt::AlignBottom)) align_l.append("bottom");
+		if (m_align_.testFlag(Qt::AlignLeft)) align_l.append("left");
+		if (m_align_.testFlag(Qt::AlignHCenter)) align_l.append("hcenter");
+		if (m_align_.testFlag(Qt::AlignRight)) align_l.append("right");
+		grid_element.setAttribute("align", align_l.join('|'));
 	}
 
 	saveCells(grid_element);
@@ -1106,7 +1124,8 @@ int TitleBlockTemplate::maximumWidth()
 	@param total_width : The total width initially planned for the rendering
 	@return the total effective width of this template
 */
-int TitleBlockTemplate::width(int total_width) {
+int TitleBlockTemplate::width(int total_width) const
+{
 	int width = 0;
 	foreach (int col_width, columnsWidth(total_width)) {
 		width += col_width;

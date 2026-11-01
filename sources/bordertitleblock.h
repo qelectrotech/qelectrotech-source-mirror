@@ -200,6 +200,7 @@ class BorderTitleBlock : public QObject
 		const TitleBlockTemplate *titleBlockTemplate();
 		void setTitleBlockTemplate(const TitleBlockTemplate *);
 		QString titleBlockTemplateName() const;
+		Qt::Alignment titleBlockTemplateAlign() const;
 		
 	public slots:
 		void titleBlockTemplateChanged(const QString &);

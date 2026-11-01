@@ -88,16 +88,49 @@ BorderTitleBlock::~BorderTitleBlock()
 */
 QRectF BorderTitleBlock::titleBlockRect() const
 {
-	if (m_edge == Qt::BottomEdge)
-		return QRectF(diagram_rect_.bottomLeft(),
+	if (m_edge == Qt::BottomEdge){
+		Qt::Alignment align = titleBlockTemplateAlign();
+		if(align.testFlag(Qt::AlignTop)){
+			return QRectF(diagram_rect_.bottomLeft(),
 			      QSize(diagram_rect_.width(),
 				    m_titleblock_template_renderer -> height()
 				    ));
-	else
+		}else if(align.testFlag(Qt::AlignBottom)){
+			qreal x = diagram_rect_.bottomLeft().x();
+			qreal y = diagram_rect_.bottomLeft().y();
+			qreal w = diagram_rect_.width();
+			if (display_rows_){
+				x += rows_header_width_;
+				w -= rows_header_width_;
+			}
+			qreal wb = m_titleblock_template_renderer -> titleBlockTemplate() -> width(qRound(w));
+			qreal dw = w-wb;
+			if (align.testFlag(Qt::AlignCenter) || align.testFlag(Qt::AlignHCenter)){
+				x += dw/2;
+				w = wb;
+			}else if (align.testFlag(Qt::AlignRight)){
+				x += dw;
+				w = wb;
+			}else if (align.testFlag(Qt::AlignLeft)){
+				w = wb;
+			}
+			y -= m_titleblock_template_renderer -> height();
+			return QRectF(QPointF(x,y),
+			      QSize(wb,
+				    m_titleblock_template_renderer -> height()
+				    ));
+		}else{
+			return QRectF(diagram_rect_.bottomLeft(),
+			      QSize(diagram_rect_.width(),
+				    m_titleblock_template_renderer -> height()
+				    ));
+		}
+	}else{
 		return QRectF(diagram_rect_.topRight(),
 			      QSize(m_titleblock_template_renderer -> height(),
 				    diagram_rect_.height()
 				    ));
+	}
 }
 
 /**
@@ -532,6 +565,15 @@ QString BorderTitleBlock::titleBlockTemplateName() const
 {
 	QString tbt_name = m_titleblock_template_renderer -> titleBlockTemplate() -> name();
 	return((tbt_name == "default") ? "" : tbt_name);
+}
+
+/**
+	@brief BorderTitleBlock::titleBlockTemplateAlign
+	@return Alignment of the template used for rendering the title block.
+*/
+Qt::Alignment BorderTitleBlock::titleBlockTemplateAlign() const
+{
+	return(m_titleblock_template_renderer -> titleBlockTemplate() -> align());
 }
 
 /**
