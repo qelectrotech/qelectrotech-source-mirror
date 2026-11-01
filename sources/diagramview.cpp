@@ -33,8 +33,6 @@
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
 #include "diagramevent/diagrameventadddimension.h"
-#include "bridge/bridgepart.h"
-#include "bridge/bridgeundocommands.h"
 #include "diagramevent/diagrameventaddelement.h"
 #include "diagramevent/diagrameventaddmacro.h"
 #include "dvevent/dveventinterface.h"

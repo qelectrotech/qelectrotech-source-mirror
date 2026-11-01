@@ -366,9 +366,29 @@ void ElementsMover::endMovement()
 		//Together with the move itself, so one undo puts both back.
 	if (!m_moved_content.m_elements.isEmpty() && m_diagram->project())
 	{
+			//Only the bridges a moved element can reach: what a bridge
+			//lands on changes on the folios the movement happens on --
+			//asking every bridge of the project would walk a folio each
+			//for nothing (review of #1651)
+		QSet<QUuid> moved_folios;
+		for (Element *element : m_moved_content.m_elements) {
+			if (element && element->diagram()) {
+				moved_folios.insert(element->diagram()->uuid());
+			}
+		}
 		for (Bridge *bridge : m_diagram->project()->bridges())
 		{
 			if (!bridge) {
+				continue;
+			}
+			bool on_these_folios = false;
+			for (const BridgePartData &part : bridge->parts()) {
+				if (moved_folios.contains(part.diagram)) {
+					on_these_folios = true;
+					break;
+				}
+			}
+			if (!on_these_folios) {
 				continue;
 			}
 			const QList<BridgeTerminal> before = bridge->terminals();

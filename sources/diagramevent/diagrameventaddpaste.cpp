@@ -119,7 +119,7 @@
 			}
 		}
 	}
-if (movable.isEmpty()) return;
+	if (movable.isEmpty()) return;
 
 		//Compute the top-left of all items' actual on-screen bounding
 		//boxes (not their raw pos()) and snap to grid: this is the point

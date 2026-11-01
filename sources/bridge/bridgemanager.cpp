@@ -35,6 +35,7 @@
 #include "../conductorproperties.h"
 #include "../properties/elementdata.h"
 #include "bridgepart.h"
+#include "../qetxml.h"
 
 #include <QPainterPath>
 #include <algorithm>
@@ -293,17 +294,59 @@ int BridgeManager::freeColumn(QETProject *project, const QList<BridgeTerminal> &
 	first terminal of it is the one the bridge takes its information
 	from.
 */
+QSet<QUuid> BridgeManager::elementsOnUnbuiltFolios(QETProject *project,
+												   const QList<BridgePartData> &parts)
+{
+	QSet<QUuid> elements;
+	if (!project) {
+		return elements;
+	}
+	QSet<QUuid> cold_folios;
+	for (const BridgePartData &data : parts) {
+		if (Diagram *folio = project->diagramByUuid(data.diagram)) {
+			if (!folio->isLoaded()) {
+				cold_folios.insert(folio->uuid());
+			}
+		}
+	}
+	for (const QUuid &folio_uuid : std::as_const(cold_folios)) {
+		Diagram *folio = project->diagramByUuid(folio_uuid);
+		if (!folio) {
+			continue;
+		}
+		const QDomElement xml = folio->deferredXml();
+		for (QDomElement element_xml :
+			 QET::findInDomElement(xml, QStringLiteral("elements"),
+								   QStringLiteral("element"))) {
+			const QUuid uuid(element_xml.attribute(QStringLiteral("uuid")));
+			if (!uuid.isNull()) {
+				elements.insert(uuid);
+			}
+		}
+	}
+	return elements;
+}
+
 QList<BridgeTerminal> BridgeManager::terminalsOfBridge(QETProject *project, Bridge *bridge)
 {
-	QList<BridgeTerminal> result;
 	if (!project || !bridge) {
-		return result;
+		return {};
 	}
 
+		//A folio not built at the open holds no items to ask: what the
+		//bridge holds on it is what it held there -- taking those
+		//Klemmen off the answer would mean the shortened list gets
+		//written back the moment any symbol anywhere is moved, and they
+		//would be off the bridge for good (review of #1651)
+	const QSet<QUuid> cold_elements =
+			elementsOnUnbuiltFolios(project, bridge->parts());
+
+		//What the drawn lines cross, on the folios which can answer
+	QList<BridgeTerminal> crossed_now;
 	for (const BridgePartData &data : bridge->parts())
 	{
 		Diagram *folio = project->diagramByUuid(data.diagram);
-		if (!folio) {
+		if (!folio || !folio->isLoaded()) {
 			continue;
 		}
 
@@ -326,13 +369,58 @@ QList<BridgeTerminal> BridgeManager::terminalsOfBridge(QETProject *project, Brid
 			terminal.element = crossing.element->uuid();
 			terminal.terminal = crossing.terminal;
 			terminal.reference = crossing.reference;
-			terminal.terminal = crossing.terminal;
-			if (!result.contains(terminal)) {
-				result << terminal;
+			if (!crossed_now.contains(terminal)) {
+				crossed_now << terminal;
 			}
 		}
 	}
+
+		//What the bridge already holds keeps the order it is held in:
+		//the first of them is where the bridge takes its information
+		//from, and a list in any other order would read as a change and
+		//be written back after any move. Kept where nothing can be asked
+		//(an unbuilt folio), kept where the drawing still says so,
+		//dropped where it does not -- whatever the lines cross anew is
+		//appended, never prepended (review of #1651)
+	const QList<BridgeTerminal> held = bridge->terminals();
+	QList<BridgeTerminal> result;
+	for (const BridgeTerminal &terminal : held) {
+		if (cold_elements.contains(terminal.element)
+			|| crossed_now.contains(terminal)) {
+			result << terminal;
+		}
+	}
+	for (const BridgeTerminal &terminal : crossed_now) {
+		if (!held.contains(terminal)) {
+			result << terminal;
+		}
+	}
 	return result;
+}
+
+/**
+	Where a line and a rectangle meet: a point of either inside the
+	other, or the line crossing one of the rectangle's edges.
+	@param reach
+	@param line
+*/
+static bool rectMeetsLine(const QRectF &reach, const QLineF &line)
+{
+	if (reach.contains(line.p1()) || reach.contains(line.p2())) {
+		return true;
+	}
+	const QLineF edges[4] = {
+		QLineF(reach.topLeft(), reach.topRight()),
+		QLineF(reach.topRight(), reach.bottomRight()),
+		QLineF(reach.bottomRight(), reach.bottomLeft()),
+		QLineF(reach.bottomLeft(), reach.topLeft())};
+	QPointF at;
+	for (const QLineF &edge : edges) {
+		if (line.intersects(edge, &at) == QLineF::BoundedIntersection) {
+			return true;
+		}
+	}
+	return false;
 }
 
 /**
@@ -378,6 +466,33 @@ QList<Bridge *> BridgeManager::bridgesOverfilledBy(QETProject *project,
 			}
 		}
 		if (!on_these_folios) {
+			continue;
+		}
+
+			//Only where one of the moved elements comes near a line of
+			//the bridge: a line they keep out of cannot take anything
+			//from them, and asking a folio anyway walks its items once
+			//for every step of the gesture (review of #1651)
+		bool comes_near = false;
+		for (Element *element : moved) {
+			if (!element || !element->diagram()) {
+				continue;
+			}
+			const QRectF reach = element->sceneBoundingRect().adjusted(-50, -50, 50, 50);
+			for (const BridgePartData &part : parts) {
+				if (element->diagram()->uuid() != part.diagram) {
+					continue;
+				}
+				if (rectMeetsLine(reach, QLineF(part.p1, part.p2))) {
+					comes_near = true;
+					break;
+				}
+			}
+			if (comes_near) {
+				break;
+			}
+		}
+		if (!comes_near) {
 			continue;
 		}
 

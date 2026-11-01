@@ -211,6 +211,16 @@ class BridgeManager
 		static QList<BridgeTerminal> terminalsOfBridge(QETProject *project, Bridge *bridge);
 
 			/**
+				The symbols which stand on the folios of @p parts which
+				are not built at the open (lazy folios): kept in their
+				own XML until then, they are no items to ask -- whatever
+				a bridge holds naming one of them must be kept from that
+				XML instead (review of #1651).
+			*/
+		static QSet<QUuid> elementsOnUnbuiltFolios(QETProject *project,
+												   const QList<BridgePartData> &parts);
+
+			/**
 				The bridges which cannot take what a movement would give
 				them: a terminal moved onto one of their lines joins the
 				bridge, and one which would fill it beyond its limit
