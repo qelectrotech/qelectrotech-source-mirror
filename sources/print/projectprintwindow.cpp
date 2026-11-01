@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectprintwindow.h"
+#include "../qetdiagrameditor.h"
 
 #include "../diagram.h"
 #include "../pdf_links.h"
@@ -891,6 +892,9 @@ void ProjectPrintWindow::on_m_uncheck_all_clicked()
 
 void ProjectPrintWindow::print()
 {
+		//What lies outside the sheet of the folios chosen here
+	if (!QETDiagramEditor::confirmOutsideSheet(this, selectedDiagram()))
+		return;
 	const bool isPdf = (m_printer->outputFormat() == QPrinter::PdfFormat);
 	const QString pdfFile = isPdf ? m_printer->outputFileName() : QString();
 

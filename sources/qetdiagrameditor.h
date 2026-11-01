@@ -73,7 +73,9 @@ class QETDiagramEditor : public QETMainWindow
 			/// Warn about what lies outside the sheet (Settings > General)
 		static bool warnsOutsideSheet();
 		static void setWarnsOutsideSheet(bool on);
-		static QStringList outsideSheetReport(QETProject *project);
+		static QStringList outsideSheetReport(const QList<Diagram *> &folios);
+		static bool confirmOutsideSheet(QWidget *parent, const QList<Diagram *> &folios);
+		static QString outsideSheetSaveHint(QETProject *project);
 		QETDiagramEditor(
 				const QStringList & = QStringList(),
 				QWidget * = nullptr);
@@ -139,7 +141,6 @@ class QETDiagramEditor : public QETMainWindow
 		QMdiSubWindow *subWindowForWidget(QWidget *) const;
 		void updateUsageTrackersActiveState();
 		void updateWindowModifiedState();
-		bool confirmOutsideSheet(QETProject *project);
 		void showOutsideSheetAfterSave(QETProject *project);
 
 	signals:

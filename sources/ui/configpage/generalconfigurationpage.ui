@@ -257,16 +257,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="m_warn_outside_sheet_cb">
-         <property name="toolTip">
-          <string>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</string>
-         </property>
-         <property name="text">
-          <string>Warn about items outside the sheet</string>
-          </property>
-         </widget>
-        </item>
-        <item>
         <widget class="QCheckBox" name="m_vertical_texts_from_bottom_cb">
          <property name="toolTip">
           <string>A symbol's text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires' texts. Unticked by default: texts turn with their symbol.</string>
@@ -313,6 +303,16 @@
          </property>
          <property name="text">
           <string>A new corner or T-junction replaces the one under it</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_warn_outside_sheet_cb">
+         <property name="toolTip">
+          <string>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</string>
+         </property>
+         <property name="text">
+          <string>Warn about items outside the sheet</string>
          </property>
         </widget>
        </item>
