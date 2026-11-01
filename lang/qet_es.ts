@@ -1361,13 +1361,13 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
 <context>
     <name>BridgeCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="793"/>
+        <location filename="../sources/diagramview.cpp" line="791"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="466"/>
         <source>Paste a bridge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="934"/>
+        <location filename="../sources/diagramview.cpp" line="932"/>
         <source>Duplicate a bridge</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1607,13 +1607,13 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
 <context>
     <name>CableCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="778"/>
+        <location filename="../sources/diagramview.cpp" line="776"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="453"/>
         <source>Paste a cable</source>
         <translation>Pegar un cable</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="929"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Duplicate a cable</source>
         <translation>Duplicar un cable</translation>
     </message>
@@ -4211,51 +4211,51 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="149"/>
+        <location filename="../sources/diagramview.cpp" line="147"/>
         <source>Paste Here</source>
         <comment>context menu action</comment>
         <translation>Pegar aquí</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="124"/>
+        <location filename="../sources/diagramview.cpp" line="122"/>
         <source>In this area you conceive your diagrams by adding elements and conductors between their terminals. You may also add independent texts.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>Esto es la zona en la cual concibe sus esquemas añadiendo elementos y colocando conductores entre sus terminales. También es posible añadir texto independiente.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="152"/>
+        <location filename="../sources/diagramview.cpp" line="150"/>
         <source>Multiple paste</source>
         <translation>Collage múltiple</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="159"/>
+        <location filename="../sources/diagramview.cpp" line="157"/>
         <source>Create a template</source>
         <comment>context menu action</comment>
         <translation>Crear una plantilla</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="163"/>
+        <location filename="../sources/diagramview.cpp" line="161"/>
         <source>Make a cabinet thumbnail</source>
         <comment>context menu action</comment>
         <translation>Crear una miniatura de armario</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="167"/>
+        <location filename="../sources/diagramview.cpp" line="165"/>
         <source>Sheet reference</source>
         <translation>Referencia entre folios</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="499"/>
+        <location filename="../sources/diagramview.cpp" line="497"/>
         <source>%1: %2</source>
         <translation>%1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="540"/>
+        <location filename="../sources/diagramview.cpp" line="538"/>
         <source>Add an image</source>
         <translation>Añadir una imagen</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramview.cpp" line="541"/>
+        <location filename="../sources/diagramview.cpp" line="539"/>
         <source>Add %n image(s)</source>
         <translation>
             <numerusform>Añadir %n imagen</numerusform>
@@ -4263,65 +4263,65 @@ Hold Shift and drag to move this text on its own</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="548"/>
+        <location filename="../sources/diagramview.cpp" line="546"/>
         <source>Images not added</source>
         <translation>Imágenes no añadidas</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="549"/>
+        <location filename="../sources/diagramview.cpp" line="547"/>
         <source>These files could not be added:</source>
         <translation>No se han podido añadir estos archivos:</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1173"/>
+        <location filename="../sources/diagramview.cpp" line="1171"/>
         <source>X: %1 Y: %2</source>
         <translation>X: %1 T: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1497"/>
+        <location filename="../sources/diagramview.cpp" line="1495"/>
         <source>Connect the selected terminals</source>
         <translation>Conectar los terminales seleccionados</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1943"/>
+        <location filename="../sources/diagramview.cpp" line="1941"/>
         <source>Untitled</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Sin titulo</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="2926"/>
+        <location filename="../sources/diagramview.cpp" line="2924"/>
         <source>Remove this core from the line</source>
         <translation>Quitar este hilo de la línea</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3211"/>
+        <location filename="../sources/diagramview.cpp" line="3209"/>
         <source>Registered template</source>
         <translation>Plantilla guardada</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3212"/>
+        <location filename="../sources/diagramview.cpp" line="3210"/>
         <source>The template has been successfully saved as :
 %1</source>
         <translation>La plantilla se ha guardado correctamente en:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3215"/>
+        <location filename="../sources/diagramview.cpp" line="3213"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3215"/>
+        <location filename="../sources/diagramview.cpp" line="3213"/>
         <source>The file could not be written.</source>
         <translation>No se ha podido escribir el archivo.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="223"/>
+        <location filename="../sources/diagramview.cpp" line="221"/>
         <source>Choose the new color for this conductor</source>
         <translation>Elegir el nuevo color de este conductor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="246"/>
+        <location filename="../sources/diagramview.cpp" line="244"/>
         <source>Edit conductor properties</source>
         <comment>undo caption</comment>
         <translation>Modificar las propiedades de un conductor</translation>
@@ -5416,7 +5416,7 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>Element</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="2949"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3010"/>
         <source>Automatically number an element</source>
         <comment>undo caption</comment>
         <translation>Numerar automáticamente un elemento</translation>
@@ -13204,66 +13204,66 @@ Deles primero otra numeración.</numerusform>
 <context>
     <name>ProjectView</name>
     <message>
-        <location filename="../sources/projectview.cpp" line="887"/>
+        <location filename="../sources/projectview.cpp" line="924"/>
         <source>Delete unused elements in  the project</source>
         <translation>Elimina los elementos no usados en el proyecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="888"/>
+        <location filename="../sources/projectview.cpp" line="925"/>
         <source>Delete empty categories</source>
         <translation>Elimina las categorías vacias</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="327"/>
+        <location filename="../sources/projectview.cpp" line="334"/>
         <source>The project was modified.
 Do you want to save changes?</source>
         <translation>El proyecto ha sido modificado.
 ¿Quiere guardar los cambios?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="358"/>
-        <location filename="../sources/projectview.cpp" line="777"/>
+        <location filename="../sources/projectview.cpp" line="386"/>
+        <location filename="../sources/projectview.cpp" line="805"/>
         <source>untitled</source>
         <translation>Sin nombre</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="345"/>
-        <location filename="../sources/projectview.cpp" line="785"/>
+        <location filename="../sources/projectview.cpp" line="373"/>
+        <location filename="../sources/projectview.cpp" line="813"/>
         <source>Project QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a project file</comment>
         <translation>Proyecto QElectroTech (*.qet)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="346"/>
+        <location filename="../sources/projectview.cpp" line="374"/>
         <source>Zipped project QElectroTech (*.qetz)</source>
         <comment>filetypes allowed when saving a project file</comment>
         <translation>Proyecto comprimido QElectroTech (*.qetz)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="422"/>
+        <location filename="../sources/projectview.cpp" line="450"/>
         <source>Project in use</source>
         <comment>message box title</comment>
         <translation>Proyecto en uso</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="423"/>
+        <location filename="../sources/projectview.cpp" line="451"/>
         <source>%1 is open by %2 on %3. Choose another file name, or save again once it has been closed there.</source>
         <translation>%1 está abierto por %2 en %3. Elija otro nombre de archivo, o vuelva a guardar cuando se haya cerrado allí.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="458"/>
+        <location filename="../sources/projectview.cpp" line="486"/>
         <source>Delete this sheet ?</source>
         <comment>message box title</comment>
         <translation>¿Eliminar el folio?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="459"/>
+        <location filename="../sources/projectview.cpp" line="487"/>
         <source>Are you sure you want to delete this sheet from the project?</source>
         <comment>message box content</comment>
         <translation>¿Seguro que desea eliminar este folio del proyecto?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="783"/>
+        <location filename="../sources/projectview.cpp" line="811"/>
         <source>Save a copy for an older QElectroTech</source>
         <comment>dialog title</comment>
         <translation>Guardar una copia para un QElectroTech anterior</translation>
@@ -13286,85 +13286,100 @@ Para escribir un archivo para una versión de QElectroTech que no puede abrir %2
         <translation type="vanished">%1 ya existe. ¿Sustituirlo?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="879"/>
+        <location filename="../sources/projectview.cpp" line="916"/>
         <source>Read-only project</source>
         <comment>message box title</comment>
         <translation>Proyecto en sólo lectura</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="880"/>
+        <location filename="../sources/projectview.cpp" line="917"/>
         <source>This project is read-only. Thus it can not be cleaned.</source>
         <comment>message box content</comment>
         <translation>Este proyecto es en sólo lectura. Por eso es imposible limpiarlo.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="886"/>
+        <location filename="../sources/projectview.cpp" line="923"/>
         <source>delete unused templates in the project</source>
         <translation>Eliminar los rótulos no usados en el proyecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="900"/>
+        <location filename="../sources/projectview.cpp" line="937"/>
         <source>Clean project</source>
         <comment>window title</comment>
         <translation>Limpia el proyecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="934"/>
+        <location filename="../sources/projectview.cpp" line="971"/>
         <source>Add a sheet</source>
         <translation>Añadir un folio</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="937"/>
+        <location filename="../sources/projectview.cpp" line="974"/>
         <source>Go back to the start of the project</source>
         <translation>Volver al inicio del proyecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="940"/>
+        <location filename="../sources/projectview.cpp" line="977"/>
         <source>Go to the end of the project</source>
         <translation>Ir al final del proyecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="944"/>
+        <location filename="../sources/projectview.cpp" line="981"/>
         <source>go one page left</source>
         <translation>Ir a la página de la izquierda</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="948"/>
+        <location filename="../sources/projectview.cpp" line="985"/>
         <source>go one page right</source>
         <translation>Ir a la página de la derecha</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="963"/>
+        <location filename="../sources/projectview.cpp" line="1000"/>
         <source>This project does not contain any sheet</source>
         <comment>label displayed when a project contains no diagram</comment>
         <translation>El proyecto no contiene ningún folio</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="357"/>
+        <location filename="../sources/projectview.cpp" line="385"/>
         <source>Save as</source>
         <comment>dialog title</comment>
         <translation>Guardar como</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="348"/>
+        <location filename="../sources/projectview.cpp" line="360"/>
+        <source>Save as .qetdb?</source>
+        <comment>dialog title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/projectview.cpp" line="361"/>
+        <source>%n bridge(s) are drawn in this project. The .qetdb format does not store bridges yet -- they are kept in the normal .qet format only. Save it as .qetdb anyway?</source>
+        <comment>also asked when the file name says .qetdb</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="376"/>
         <source>Project QElectroTech, one database file (*.qetdb)</source>
         <comment>filetypes allowed when saving a project file</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="435"/>
+        <location filename="../sources/projectview.cpp" line="463"/>
         <source>no active project</source>
         <comment>error message</comment>
         <translation>Ningún proyecto nuevo</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="810"/>
+        <location filename="../sources/projectview.cpp" line="838"/>
         <source>File changed on disk</source>
         <comment>message box title</comment>
         <translation>Archivo modificado en el disco</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="811"/>
+        <location filename="../sources/projectview.cpp" line="839"/>
         <source>Someone else changed %1 on disk at %2 since you opened it.
 
 Saving over it would lose their changes.</source>
@@ -13373,22 +13388,22 @@ Saving over it would lose their changes.</source>
 Sobrescribirlo haría perder sus cambios.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="815"/>
+        <location filename="../sources/projectview.cpp" line="843"/>
         <source>Save as a copy</source>
         <translation>Guardar como copia</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="816"/>
+        <location filename="../sources/projectview.cpp" line="844"/>
         <source>Overwrite</source>
         <translation>Sobrescribir</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="1078"/>
+        <location filename="../sources/projectview.cpp" line="1115"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creating sheet tabs :&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Apertura del proyecto en curso...&lt;/b&gt;&lt;br/&gt;Creando pestañas de folio :&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="1119"/>
+        <location filename="../sources/projectview.cpp" line="1156"/>
         <source>Project</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Proyecto</translation>
@@ -18912,12 +18927,12 @@ the translated name of this folder could not be read, so its folder name is disp
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementsmover.cpp" line="487"/>
+        <location filename="../sources/elementsmover.cpp" line="507"/>
         <source>Update automatic connections</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementsmover.cpp" line="511"/>
+        <location filename="../sources/elementsmover.cpp" line="531"/>
         <source>Add %n conductors</source>
         <comment>add a numbers of conductor one or more</comment>
         <translation>
@@ -19182,7 +19197,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="209"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1456"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1846"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3404"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3465"/>
         <source>Type</source>
         <translation>Tipo</translation>
     </message>
@@ -19190,7 +19205,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="210"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1457"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1847"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3405"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3466"/>
         <source>Address</source>
         <translation>Dirección</translation>
     </message>
@@ -19199,7 +19214,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="212"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1459"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1849"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3407"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3468"/>
         <source>Annotation</source>
         <translation>Comentario</translation>
     </message>
@@ -19208,7 +19223,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="213"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1460"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1850"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3408"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3469"/>
         <source>Cross-reference</source>
         <translation>Ref. cruzada</translation>
     </message>
@@ -19218,7 +19233,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="211"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1458"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1848"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3406"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3467"/>
         <source>Function</source>
         <translation>Función</translation>
     </message>

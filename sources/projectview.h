@@ -163,6 +163,9 @@ class ProjectView : public QWidget
 		bool tryClosingElementEditors();
 		int tryClosingDiagrams();
 		QString askUserForFilePath(bool = true);
+			///Ask whether a project which draws bridges may be written
+			///as a .qetdb -- the format does not store them yet
+		static bool askBridgesInQetdb(QWidget *parent, int bridges);
 		bool refuseIfLockedByOther(const QString &filepath);
 		QETResult noProjectResult() const;
 

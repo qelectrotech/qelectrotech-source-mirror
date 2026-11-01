@@ -1373,13 +1373,13 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>BridgeCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="793"/>
+        <location filename="../sources/diagramview.cpp" line="791"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="466"/>
         <source>Paste a bridge</source>
         <translation>Вставить перемычку</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="934"/>
+        <location filename="../sources/diagramview.cpp" line="932"/>
         <source>Duplicate a bridge</source>
         <translation>Дублировать перемычку</translation>
     </message>
@@ -1624,13 +1624,13 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>CableCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="778"/>
+        <location filename="../sources/diagramview.cpp" line="776"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="453"/>
         <source>Paste a cable</source>
         <translation>Вставить кабель</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="929"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Duplicate a cable</source>
         <translation>Дублировать кабель</translation>
     </message>
@@ -4253,51 +4253,51 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="149"/>
+        <location filename="../sources/diagramview.cpp" line="147"/>
         <source>Paste Here</source>
         <comment>context menu action</comment>
         <translation>Вставить здесь</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="124"/>
+        <location filename="../sources/diagramview.cpp" line="122"/>
         <source>In this area you conceive your diagrams by adding elements and conductors between their terminals. You may also add independent texts.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>Это поле для построения схем, куда вы добавляете элементы и соединения между их выводами. Вы также можете добавить произвольные надписи.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="152"/>
+        <location filename="../sources/diagramview.cpp" line="150"/>
         <source>Multiple paste</source>
         <translation>Множественная вставка</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="159"/>
+        <location filename="../sources/diagramview.cpp" line="157"/>
         <source>Create a template</source>
         <comment>context menu action</comment>
         <translation>Создать шаблон</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="163"/>
+        <location filename="../sources/diagramview.cpp" line="161"/>
         <source>Make a cabinet thumbnail</source>
         <comment>context menu action</comment>
         <translation>Создать миниатюру для шкафа</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="167"/>
+        <location filename="../sources/diagramview.cpp" line="165"/>
         <source>Sheet reference</source>
         <translation>Ссылка на страницу</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="499"/>
+        <location filename="../sources/diagramview.cpp" line="497"/>
         <source>%1: %2</source>
         <translation>%1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="540"/>
+        <location filename="../sources/diagramview.cpp" line="538"/>
         <source>Add an image</source>
         <translation>Добавить изображение</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramview.cpp" line="541"/>
+        <location filename="../sources/diagramview.cpp" line="539"/>
         <source>Add %n image(s)</source>
         <translation>
             <numerusform>Добавить %n изображение</numerusform>
@@ -4306,65 +4306,65 @@ Hold Shift and drag to move this text on its own</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="548"/>
+        <location filename="../sources/diagramview.cpp" line="546"/>
         <source>Images not added</source>
         <translation>Изображения не добавлены</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="549"/>
+        <location filename="../sources/diagramview.cpp" line="547"/>
         <source>These files could not be added:</source>
         <translation>Не удалось добавить следующие файлы:</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1173"/>
+        <location filename="../sources/diagramview.cpp" line="1171"/>
         <source>X: %1 Y: %2</source>
         <translation>X: %1 Y: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1497"/>
+        <location filename="../sources/diagramview.cpp" line="1495"/>
         <source>Connect the selected terminals</source>
         <translation>Подключить выводы</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1943"/>
+        <location filename="../sources/diagramview.cpp" line="1941"/>
         <source>Untitled</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Без имени</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="2926"/>
+        <location filename="../sources/diagramview.cpp" line="2924"/>
         <source>Remove this core from the line</source>
         <translation>Убрать эту жилу с линии</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3211"/>
+        <location filename="../sources/diagramview.cpp" line="3209"/>
         <source>Registered template</source>
         <translation>Новый шаблон</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3212"/>
+        <location filename="../sources/diagramview.cpp" line="3210"/>
         <source>The template has been successfully saved as :
 %1</source>
         <translation>Шаблон был успешно сохранен под именем:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3215"/>
+        <location filename="../sources/diagramview.cpp" line="3213"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3215"/>
+        <location filename="../sources/diagramview.cpp" line="3213"/>
         <source>The file could not be written.</source>
         <translation>Не удалось записать файл.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="223"/>
+        <location filename="../sources/diagramview.cpp" line="221"/>
         <source>Choose the new color for this conductor</source>
         <translation>Выбрать новый цвет для проводника</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="246"/>
+        <location filename="../sources/diagramview.cpp" line="244"/>
         <source>Edit conductor properties</source>
         <comment>undo caption</comment>
         <translation>Изменить свойства проводника</translation>
@@ -5460,7 +5460,7 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>Element</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="2949"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3010"/>
         <source>Automatically number an element</source>
         <comment>undo caption</comment>
         <translation>Автоматическая нумерация элемента</translation>
@@ -13299,56 +13299,56 @@ Give them another numbering first.</source>
 <context>
     <name>ProjectView</name>
     <message>
-        <location filename="../sources/projectview.cpp" line="327"/>
+        <location filename="../sources/projectview.cpp" line="334"/>
         <source>The project was modified.
 Do you want to save changes?</source>
         <translation>Этот проект был изменён.
 Хотите сохранить изменения?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="358"/>
-        <location filename="../sources/projectview.cpp" line="777"/>
+        <location filename="../sources/projectview.cpp" line="386"/>
+        <location filename="../sources/projectview.cpp" line="805"/>
         <source>untitled</source>
         <translation>без_имени</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="345"/>
-        <location filename="../sources/projectview.cpp" line="785"/>
+        <location filename="../sources/projectview.cpp" line="373"/>
+        <location filename="../sources/projectview.cpp" line="813"/>
         <source>Project QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a project file</comment>
         <translation>Проект QElectroTech (*.qet)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="346"/>
+        <location filename="../sources/projectview.cpp" line="374"/>
         <source>Zipped project QElectroTech (*.qetz)</source>
         <comment>filetypes allowed when saving a project file</comment>
         <translation>Сжатый проект QElectroTech (*.qetz)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="422"/>
+        <location filename="../sources/projectview.cpp" line="450"/>
         <source>Project in use</source>
         <comment>message box title</comment>
         <translation>Проект используется</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="423"/>
+        <location filename="../sources/projectview.cpp" line="451"/>
         <source>%1 is open by %2 on %3. Choose another file name, or save again once it has been closed there.</source>
         <translation>%1 открыт пользователем %2 на %3. Выберите другое имя файла или сохраните снова, когда его там закроют.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="458"/>
+        <location filename="../sources/projectview.cpp" line="486"/>
         <source>Delete this sheet ?</source>
         <comment>message box title</comment>
         <translation>Удалить этот лист?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="459"/>
+        <location filename="../sources/projectview.cpp" line="487"/>
         <source>Are you sure you want to delete this sheet from the project?</source>
         <comment>message box content</comment>
         <translation>Вы уверены, что хотите удалить этот лист из проекта?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="783"/>
+        <location filename="../sources/projectview.cpp" line="811"/>
         <source>Save a copy for an older QElectroTech</source>
         <comment>dialog title</comment>
         <translation>Сохранить копию для более старой версии QElectroTech</translation>
@@ -13371,95 +13371,111 @@ To write a file for a version of QElectroTech that cannot open %2, use File &gt;
         <translation type="vanished">%1 уже существует. Заменить?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="879"/>
+        <location filename="../sources/projectview.cpp" line="916"/>
         <source>Read-only project</source>
         <comment>message box title</comment>
         <translation>Проект только для чтения</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="880"/>
+        <location filename="../sources/projectview.cpp" line="917"/>
         <source>This project is read-only. Thus it can not be cleaned.</source>
         <comment>message box content</comment>
         <translation>Этот проект доступен только для чтения. Поэтому он не может быть очищен.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="886"/>
+        <location filename="../sources/projectview.cpp" line="923"/>
         <source>delete unused templates in the project</source>
         <translation>Удалить неиспользуемые в проекте шаблоны</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="887"/>
+        <location filename="../sources/projectview.cpp" line="924"/>
         <source>Delete unused elements in  the project</source>
         <translation>Удалить неиспользуемые в проекте элементы</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="888"/>
+        <location filename="../sources/projectview.cpp" line="925"/>
         <source>Delete empty categories</source>
         <translation>Удалить пустые категории</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="900"/>
+        <location filename="../sources/projectview.cpp" line="937"/>
         <source>Clean project</source>
         <comment>window title</comment>
         <translation>Очистить проект</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="934"/>
+        <location filename="../sources/projectview.cpp" line="971"/>
         <source>Add a sheet</source>
         <translation>Добавить лист</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="937"/>
+        <location filename="../sources/projectview.cpp" line="974"/>
         <source>Go back to the start of the project</source>
         <translation>Перейти в начало проекта</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="940"/>
+        <location filename="../sources/projectview.cpp" line="977"/>
         <source>Go to the end of the project</source>
         <translation>Перейти в конец проекта</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="944"/>
+        <location filename="../sources/projectview.cpp" line="981"/>
         <source>go one page left</source>
         <translation>перейти на одну страницу влево</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="948"/>
+        <location filename="../sources/projectview.cpp" line="985"/>
         <source>go one page right</source>
         <translation>перейти на одну страницу вправо</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="963"/>
+        <location filename="../sources/projectview.cpp" line="1000"/>
         <source>This project does not contain any sheet</source>
         <comment>label displayed when a project contains no diagram</comment>
         <translation>Этот проект не содержит листов</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="357"/>
+        <location filename="../sources/projectview.cpp" line="385"/>
         <source>Save as</source>
         <comment>dialog title</comment>
         <translation>Сохранить как</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="348"/>
+        <location filename="../sources/projectview.cpp" line="360"/>
+        <source>Save as .qetdb?</source>
+        <comment>dialog title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/projectview.cpp" line="361"/>
+        <source>%n bridge(s) are drawn in this project. The .qetdb format does not store bridges yet -- they are kept in the normal .qet format only. Save it as .qetdb anyway?</source>
+        <comment>also asked when the file name says .qetdb</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="376"/>
         <source>Project QElectroTech, one database file (*.qetdb)</source>
         <comment>filetypes allowed when saving a project file</comment>
         <translation>Проект QElectroTech, один файл базы данных (*.qetdb)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="435"/>
+        <location filename="../sources/projectview.cpp" line="463"/>
         <source>no active project</source>
         <comment>error message</comment>
         <translation>нет активных проектов</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="810"/>
+        <location filename="../sources/projectview.cpp" line="838"/>
         <source>File changed on disk</source>
         <comment>message box title</comment>
         <translation>Файл изменён на диске</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="811"/>
+        <location filename="../sources/projectview.cpp" line="839"/>
         <source>Someone else changed %1 on disk at %2 since you opened it.
 
 Saving over it would lose their changes.</source>
@@ -13468,22 +13484,22 @@ Saving over it would lose their changes.</source>
 Сохранение поверх него приведёт к потере его изменений.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="815"/>
+        <location filename="../sources/projectview.cpp" line="843"/>
         <source>Save as a copy</source>
         <translation>Сохранить как копию</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="816"/>
+        <location filename="../sources/projectview.cpp" line="844"/>
         <source>Overwrite</source>
         <translation>Перезаписать</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="1078"/>
+        <location filename="../sources/projectview.cpp" line="1115"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creating sheet tabs :&lt;/p&gt;</source>
         <translation>&lt;p align = &quot;center&quot;&gt;&lt;b&gt; Открытие текущего проекта...&lt;/b&gt;&lt;br/&gt; Создание вкладок листов:&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="1119"/>
+        <location filename="../sources/projectview.cpp" line="1156"/>
         <source>Project</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Проект</translation>
@@ -19060,12 +19076,12 @@ the translated name of this folder could not be read, so its folder name is disp
         <translation>Клемму нельзя бросить на перемычку, которая не может принять ещё одну.</translation>
     </message>
     <message>
-        <location filename="../sources/elementsmover.cpp" line="487"/>
+        <location filename="../sources/elementsmover.cpp" line="507"/>
         <source>Update automatic connections</source>
         <translation>Обновить автоматические соединения</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementsmover.cpp" line="511"/>
+        <location filename="../sources/elementsmover.cpp" line="531"/>
         <source>Add %n conductors</source>
         <comment>add a numbers of conductor one or more</comment>
         <translatorcomment>добавить номера одного или нескольких проводников</translatorcomment>
@@ -19326,7 +19342,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="209"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1456"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1846"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3404"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3465"/>
         <source>Type</source>
         <translation>Тип</translation>
     </message>
@@ -19334,7 +19350,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="210"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1457"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1847"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3405"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3466"/>
         <source>Address</source>
         <translation>Адрес</translation>
     </message>
@@ -19343,7 +19359,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="212"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1459"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1849"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3407"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3468"/>
         <source>Annotation</source>
         <translation>Аннотация</translation>
     </message>
@@ -19352,7 +19368,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="213"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1460"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1850"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3408"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3469"/>
         <source>Cross-reference</source>
         <translation>Перекрестная ссылка</translation>
     </message>
@@ -19362,7 +19378,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="211"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1458"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1848"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3406"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3467"/>
         <source>Function</source>
         <translation>Функция</translation>
     </message>
