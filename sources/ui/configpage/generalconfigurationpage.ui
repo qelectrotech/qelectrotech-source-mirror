@@ -64,6 +64,49 @@
         </widget>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="m_zoom_step_layout">
+         <item>
+          <widget class="QLabel" name="m_zoom_step_label">
+           <property name="text">
+            <string>Zoom step:</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_zoom_step_sb</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="m_zoom_step_sb">
+           <property name="minimumSize">
+            <size>
+             <width>120</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>How far the mouse wheel, Ctrl++ / Ctrl+- and the zoom buttons zoom at a time, in percent of the folio's size: with 5 %, 100 % goes to 105 %, 110 % and so on.</string>
+           </property>
+           <property name="specialValueText">
+            <string>Factor 1.15 (as before)</string>
+           </property>
+           <property name="suffix">
+            <string> %</string>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="m_zoom_step_spacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_conductor_properties_panel">
          <property name="text">
           <string>Show the properties of a selected conductor in the Selection properties panel</string>

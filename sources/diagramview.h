@@ -75,6 +75,8 @@ class DiagramView : public PaletteGraphicsView
 		bool              m_menu_from_gesture = false;
 			/// The right press went to a running tool; a drag ends the tool
 		bool              m_gesture_over_tool = false;
+			/// What the mouse wheel turned short of one zoom step
+		int               m_wheel_rest = 0;
 		QPoint            m_gesture_origin;
 		DiagramGestureOverlay *m_gesture_overlay = nullptr;
 		QPoint            m_last_mouse_pos = QPoint(-1, -1);
@@ -158,6 +160,10 @@ class DiagramView : public PaletteGraphicsView
 			/// terminals in line with them; on by default
 		static bool terminalHelpLinesShown();
 		static void setTerminalHelpLinesShown(bool shown);
+			/// How far zooming in or out goes at a time, in percent of
+			/// the folio's size; 0: by a factor of 1.15, as before
+		static int zoomStep();
+		static void setZoomStep(int percent);
 		bool crosshairVisible() const { return m_crosshair_visible; }
 			/// The pointer drawn on the crosshair's grid point, if any:
 			/// 0 none (the system's shows), 1 an arrow, 2 a four-way arrow
@@ -258,6 +264,7 @@ class DiagramView : public PaletteGraphicsView
 		void setVisualisationMode();
 		void setSelectionMode();
 		void zoom(const qreal zoom_factor);
+		void zoomBy(int steps);
 		void zoomFit();
 		void zoomContent();
 		void zoomReset();

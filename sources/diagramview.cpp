@@ -46,6 +46,7 @@
 #include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "qetpalette.h"
 #include <QScopeGuard>
+#include <QtMath>
 #include "titleblock/integrationmovetemplateshandler.h"
 #include "PropertiesEditor/propertieseditordialog.h"
 #include "ui/diagrampropertiesdialog.h"
@@ -603,6 +604,33 @@ void DiagramView::zoom(const qreal zoom_factor)
 	m_diagram->adjustSceneRect();
 	adjustGridToZoom();
 	adjustSceneRect();
+}
+
+/**
+	@brief DiagramView::zoomBy
+	Zoom in (@p steps > 0) or out (< 0) by @p steps steps of zoomStep().
+	A zoom between two steps, after "fit" or a pinch for instance, goes to
+	the next step first, so that the zoom shown stays a whole multiple.
+	@param steps
+*/
+void DiagramView::zoomBy(int steps)
+{
+	if (!steps)
+		return;
+	const int step = zoomStep();
+	if (!step) {
+		for (int i = 0; i < qAbs(steps); ++i)
+			zoom(steps > 0 ? 1.15 : 0.85);
+		return;
+	}
+	const qreal percent = transform().m11() * 100;
+		//A little leeway: 100 % may be 99.9999 % after a few scalings
+	const qreal steps_now = percent / step;
+	const qreal target = steps > 0 ? (qFloor(steps_now + 1e-6) + steps) * step
+								   : (qCeil(steps_now - 1e-6) + steps) * step;
+	if (target <= 0)
+		return;
+	zoom(target / percent);
 }
 
 /**
@@ -1626,6 +1654,14 @@ void DiagramView::wheelEvent(QWheelEvent *event)
 	}
 	else if (event->modifiers() == Qt::NoModifier) //Else we suppose the wheel event are made from a mouse.
 	{
+		if (zoomStep()) {
+				//One step per notch (120); a smooth wheel adds up to one
+			m_wheel_rest += angle.y();
+			const int notches = m_wheel_rest / 120;
+			m_wheel_rest -= notches * 120;
+			zoomBy(notches);
+			return;
+		}
 		qreal value = angle.y();
 		zoom(1 + value/1000);
 	}
@@ -1799,19 +1835,19 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 			}
 			else break;
 		case Qt::Key_ZoomOut:
-			zoom(0.85);
+			zoomBy(-1);
 			return;
 		case Qt::Key_ZoomIn:
-			zoom(1.15);
+			zoomBy(1);
 			return;
 		case Qt::Key_Minus: {
 			if (e->modifiers() & Qt::ControlModifier)
-				zoom(0.85);
+				zoomBy(-1);
 		}
 			break;
 		case Qt::Key_Plus: {
 			if (e->modifiers() & Qt::ControlModifier)
-				zoom(1.15);
+				zoomBy(1);
 		}
 			break;
 		case Qt::Key_Up: {
@@ -2195,6 +2231,7 @@ namespace {
 	int s_crosshair = -1;
 	int s_pointer_aids = -1;
 	int s_terminal_help_lines = -1;
+	int s_zoom_step = -1;
 }
 
 /**
@@ -2278,6 +2315,32 @@ void DiagramView::setTerminalHelpLinesShown(bool shown)
 	s_terminal_help_lines = shown;
 	QSettings settings;
 	settings.setValue(QStringLiteral("diagrameditor/terminal_help_lines"), shown);
+}
+
+/**
+	@brief DiagramView::zoomStep
+	@return how far zoomBy() goes at a time, in percent of the folio's
+	size: with 5, 100 % goes to 105 %, 110 % and so on. 0, the default:
+	by a factor of 1.15 in and 0.85 out, as always before.
+*/
+int DiagramView::zoomStep()
+{
+	if (s_zoom_step < 0) {
+		QSettings settings;
+		s_zoom_step = qBound(0, settings.value(QStringLiteral("diagrameditor/zoom_step"), 0).toInt(), 100);
+	}
+	return s_zoom_step;
+}
+
+/**
+	@brief DiagramView::setZoomStep
+	@param percent : see zoomStep(); kept in the settings, for the next zoom
+*/
+void DiagramView::setZoomStep(int percent)
+{
+	s_zoom_step = qBound(0, percent, 100);
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/zoom_step"), s_zoom_step);
 }
 
 /**
