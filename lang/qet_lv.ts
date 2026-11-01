@@ -1080,16 +1080,26 @@ Piezīme: šīs opcijas neieslēdz un nebloķē automātisko numerāciju, bet no
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="46"/>
+        <source>One line per part: identical manufacturer, part number and unit are added up, with the labels of the elements using it. Replaces the choices of the fields below.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="49"/>
+        <source>Group identical parts and add up the quantities</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="59"/>
         <source>Terminals with no label, designation, manufacturer or manufacturer reference</source>
         <translation>Spailes bez marķējuma, apzīmējuma, ražotāja vai ražotāja atsauces</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="49"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="62"/>
         <source>Leave out junctions</source>
         <translation>Neiekļaut savienojumus</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="77"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="90"/>
         <source>Preview</source>
         <translation>Priekšskatījums</translation>
     </message>
@@ -1110,7 +1120,7 @@ Piezīme: šīs opcijas neieslēdz un nebloķē automātisko numerāciju, bet no
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="86"/>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="179"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="219"/>
         <source>Error</source>
         <translation>Kļūda</translation>
     </message>
@@ -1138,12 +1148,47 @@ Piezīme: šīs opcijas neieslēdz un nebloķē automātisko numerāciju, bet no
         <translation>Apzīmējums, daudzums</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="173"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="181"/>
+        <source>No.</source>
+        <translation type="unfinished">Nr.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="182"/>
+        <source>Quantity</source>
+        <translation type="unfinished">Daudzums</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="183"/>
+        <source>Name</source>
+        <translation type="unfinished">Nosaukums</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="184"/>
+        <source>Part number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="185"/>
+        <source>References</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="186"/>
+        <source>Manufacturer</source>
+        <translation type="unfinished">Ražotājs</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="187"/>
+        <source>Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="213"/>
         <source>Request refused</source>
         <translation>Pieprasījums noraidīts</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="180"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="220"/>
         <source>Error in the request:
 %1</source>
         <translation>Pieprasījuma kļūda:
@@ -1281,31 +1326,307 @@ Piezīme: šīs opcijas neieslēdz un nebloķē automātisko numerāciju, bet no
         <translation>Lapas izmērs</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.cpp" line="116"/>
+        <location filename="../sources/ui/borderpropertieswidget.cpp" line="119"/>
         <source>Custom</source>
         <translation>Pielāgots</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.cpp" line="119"/>
+        <location filename="../sources/ui/borderpropertieswidget.cpp" line="122"/>
         <source>Landscape</source>
         <translation>Ainavorientācija</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.cpp" line="120"/>
+        <location filename="../sources/ui/borderpropertieswidget.cpp" line="123"/>
         <source>Portrait</source>
         <translation>Portretorientācija</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/borderpropertieswidget.cpp" line="349"/>
+        <source>Folio size: %1 � %2 mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/borderpropertieswidget.cpp" line="372"/>
+        <source>. Smallest paper that holds it: %1 %2, %3 mm free across and %4 mm free down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/borderpropertieswidget.cpp" line="374"/>
+        <source>landscape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/borderpropertieswidget.cpp" line="374"/>
+        <source>portrait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/borderpropertieswidget.cpp" line="378"/>
+        <source>. It is larger than A0</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BridgeCopy</name>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="793"/>
+        <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="466"/>
+        <source>Paste a bridge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="934"/>
+        <source>Duplicate a bridge</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BridgeCreateDialog</name>
+    <message numerus="yes">
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="68"/>
+        <source>The bridge over %n Klemme(n)</source>
+        <comment>window title</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="71"/>
+        <source>%n Klemme(n) recognized</source>
+        <comment>how many terminals the line crossed</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="73"/>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="193"/>
+        <source>, %n sheet reference(s) on the way to the next sheet</source>
+        <comment>the way to the next sheet</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="90"/>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="198"/>
+        <source>Terminals this bridge may hold:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="95"/>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="202"/>
+        <source>Unlimited</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="99"/>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="206"/>
+        <source>Line width:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="110"/>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="216"/>
+        <source>Name:</source>
+        <translation type="unfinished">Nosaukums:</translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="114"/>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="219"/>
+        <source>A name to tell this bridge from the next one, like 24V or B1. Empty when nobody names it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="118"/>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="226"/>
+        <source>Bridge colour:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="127"/>
+        <source>New bridge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="134"/>
+        <source>Hide bridges which are full</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="139"/>
+        <source>Hide bridges with fewer free places than terminals recognized</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="153"/>
+        <source>Bridges already there</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="187"/>
+        <source>The bridge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="190"/>
+        <source>%n Klemme(n) on this bridge</source>
+        <comment>how many terminals the bridge lands on</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="237"/>
+        <source>Voltage: %1</source>
+        <comment>what the bridge carries as information</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="238"/>
+        <source>—</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="301"/>
+        <source>Different potentials</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="302"/>
+        <source>The terminals carry different information: choose which the bridge takes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="370"/>
+        <source>This bridge holds %1 terminal(s): it may not be given a limit below that.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="380"/>
+        <source>A bridge holding %1 terminal(s) at most cannot take the %2 just recognized. Give it a higher limit, no limit at all, or draw another bridge.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="390"/>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="396"/>
+        <source>Choose a bridge which can take the %1 terminal(s) just recognized, or draw a new one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="412"/>
+        <source>That bridge cannot be built</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="460"/>
+        <source>unlimited places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="461"/>
+        <source>%1 of %2 places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="469"/>
+        <source>without a name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="471"/>
+        <source>no voltage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="473"/>
+        <source>%1 Klemmen, %2</source>
+        <comment>how much a bridge holds and what is left of it</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="489"/>
+        <source>Not enough free places for the %1 terminal(s) just recognized</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="508"/>
+        <source>The bridge is drawn where you pulled the line and keeps the form you give it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="513"/>
+        <source>Choose a bridge to land on, or draw a new one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="515"/>
+        <source>This bridge is full.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="517"/>
+        <source>This bridge has %1 free place(s) left, %2 requested.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgecreatedialog.cpp" line="520"/>
+        <source>The %1 terminal(s) join this bridge, drawn as another line of it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BridgePart</name>
+    <message>
+        <location filename="../sources/bridge/bridgepart.cpp" line="243"/>
+        <source>bridge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgepart.cpp" line="364"/>
+        <location filename="../sources/bridge/bridgepart.cpp" line="377"/>
+        <source>That bridge cannot be built</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgepart.cpp" line="365"/>
+        <source>The line would land on %1 terminal(s) more than the bridge may hold: it keeps the length it had.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgepart.cpp" line="378"/>
+        <source>A bridge lies across one terminal strip: the line would take terminals of %1, and keeps the length it had.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgepart.cpp" line="414"/>
+        <source>Joining a bridge over a sheet reference</source>
+        <comment>undo command text</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>CableCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="756"/>
-        <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="437"/>
+        <location filename="../sources/diagramview.cpp" line="778"/>
+        <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="453"/>
         <source>Paste a cable</source>
         <translation>Ielīmēt kabeli</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="880"/>
+        <location filename="../sources/diagramview.cpp" line="929"/>
         <source>Duplicate a cable</source>
         <translation>Dublēt kabeli</translation>
     </message>
@@ -2415,13 +2736,13 @@ Vai vēlaties tos arī pārnumurēt?</numerusform>
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2159"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2180"/>
         <source>Edit conductor properties</source>
         <comment>undo caption</comment>
         <translation>Rediģēt vadītāja rekvizītus</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2164"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2185"/>
         <source>Edit the properties of several conductors</source>
         <comment>undo caption</comment>
         <translation>Rediģēt vairāku vadītāju rekvizītus</translation>
@@ -2537,13 +2858,13 @@ Vai vēlaties tos arī pārnumurēt?</numerusform>
         <translation>Lietot rekvizītus visiem šī potenciāla vadītājiem</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="78"/>
+        <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="79"/>
         <source>Edit conductor properties</source>
         <comment>undo caption</comment>
         <translation>Rediģēt vadītāja rekvizītus</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="82"/>
+        <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="83"/>
         <source>Edit the properties of several conductors</source>
         <comment>undo caption</comment>
         <translation>Rediģēt vairāku vadītāju rekvizītus</translation>
@@ -2552,7 +2873,7 @@ Vai vēlaties tos arī pārnumurēt?</numerusform>
 <context>
     <name>ConductorPropertiesEditorWidget</name>
     <message>
-        <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="71"/>
+        <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="73"/>
         <source>Apply properties to all conductors of this potential</source>
         <translation>Lietot rekvizītus visiem šī potenciāla vadītājiem</translation>
     </message>
@@ -2569,12 +2890,12 @@ Vai vēlaties tos arī pārnumurēt?</numerusform>
         <translation>Rediģēt vairāku vadītāju rekvizītus</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="380"/>
+        <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="402"/>
         <source>Conductor</source>
         <translation>Vadītājs</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="171"/>
+        <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="173"/>
         <source>%n conductors selected: only the fields you change are applied to them.</source>
         <comment>selection properties panel</comment>
         <translation>
@@ -2943,6 +3264,49 @@ To nosaka šīs lapas opcija “Rādīt vienu potenciāla tekstu katrā lapā”
     </message>
 </context>
 <context>
+    <name>ConnectionSymbols</name>
+    <message>
+        <location filename="../sources/connectionsymbols.cpp" line="48"/>
+        <source>Corner</source>
+        <translation type="unfinished">Stūris</translation>
+    </message>
+    <message>
+        <location filename="../sources/connectionsymbols.cpp" line="50"/>
+        <source>T-junction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/connectionsymbols.cpp" line="52"/>
+        <source>T-junction, mirrored</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/connectionsymbols.cpp" line="54"/>
+        <source>T-junction, double wire at the branch, from the left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/connectionsymbols.cpp" line="56"/>
+        <source>T-junction, double wire at the branch, from the right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/connectionsymbols.cpp" line="58"/>
+        <source>Interruption point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/connectionsymbols.cpp" line="60"/>
+        <source>Outgoing cross-reference</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/connectionsymbols.cpp" line="62"/>
+        <source>Incoming cross-reference</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ContactGroupSelectionDialog</name>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="38"/>
@@ -3161,7 +3525,7 @@ Vai turpināt?</translation>
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="3204"/>
+        <location filename="../sources/diagram.cpp" line="3286"/>
         <source>Change the depth</source>
         <translation>Mainīt secību</translation>
     </message>
@@ -3309,6 +3673,69 @@ Vai turpināt?</translation>
     </message>
 </context>
 <context>
+    <name>DiagramEventAddBridge</name>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="148"/>
+        <source>Left click: place the bridge start; drag or second click: finish; right click: cancel; Esc: quit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="161"/>
+        <source>Left click or release: finish the line (%n Klemme(n) recognized)</source>
+        <comment>how many terminals the line being drawn already crosses</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="310"/>
+        <source>%n Klemme(n)</source>
+        <comment>counted while the line is pulled</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="312"/>
+        <source>, %n sheet reference(s)</source>
+        <comment>the way to the next sheet</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="382"/>
+        <source>No terminal crossed: the bridge lands on nothing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="454"/>
+        <source>No free track</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="455"/>
+        <source>Four bridges already run side by side at one of these terminals: no track is left for another one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="491"/>
+        <source>That bridge cannot be built</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="492"/>
+        <source>A bridge lies across one terminal strip: the line would take terminals of %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DiagramEventAddCable</name>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddcable.cpp" line="160"/>
@@ -3327,11 +3754,53 @@ Vai turpināt?</translation>
     </message>
 </context>
 <context>
+    <name>DiagramEventAddDimension</name>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventadddimension.cpp" line="364"/>
+        <source>Linear Dimension: Click to set the first reference point (P1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventadddimension.cpp" line="365"/>
+        <source>Chain Dimension: Click to set the start reference point (P1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventadddimension.cpp" line="370"/>
+        <source>Dimension: Click to set the second reference point (P2) - Length: %1 mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventadddimension.cpp" line="377"/>
+        <source>Dimension: Move mouse to set offset distance and side (%1 mm), click to fix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventadddimension.cpp" line="384"/>
+        <source>Chain Dimension: Click to place next segment (%1 mm) | Press Enter to finish, Esc to exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DiagramEventAddElement</name>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="254"/>
+        <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="368"/>
         <source>insert %1</source>
         <translation>ievietot %1</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="494"/>
+        <source>%n symbol(s) along the drag</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="552"/>
+        <source>insert %1 × %2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3345,7 +3814,7 @@ Vai turpināt?</translation>
 <context>
     <name>DiagramEventAddPaste</name>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="290"/>
+        <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="306"/>
         <source>Click to place the pasted content, Esc or right-click to cancel</source>
         <comment>status bar tip while positioning a paste</comment>
         <translation>Noklikšķiniet, lai novietotu ielīmēto saturu; Esc vai klikšķis ar labo pogu — atcelt</translation>
@@ -3732,12 +4201,12 @@ Vai turpināt?</translation>
 <context>
     <name>DiagramTextItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="65"/>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="67"/>
         <source>Hold ctrl to free movement</source>
         <translation>Turiet nospiestu Ctrl, lai pārvietotu brīvi</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="736"/>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="796"/>
         <source>
 Hold Shift and drag to move this text on its own</source>
         <translation>
@@ -3747,27 +4216,27 @@ Turiet nospiestu Shift un velciet, lai pārvietotu tikai šo tekstu</translation
 <context>
     <name>DiagramToolbarSettings</name>
     <message>
-        <location filename="../sources/diagramtoolbarsettings.cpp" line="279"/>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="294"/>
         <source>Handle size</source>
         <translation>Roktura izmērs</translation>
     </message>
     <message>
-        <location filename="../sources/diagramtoolbarsettings.cpp" line="283"/>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="298"/>
         <source>Text grid</source>
         <translation>Teksta režģis</translation>
     </message>
     <message>
-        <location filename="../sources/diagramtoolbarsettings.cpp" line="285"/>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="300"/>
         <source>Sheet background color</source>
         <translation>Lapas fona krāsa</translation>
     </message>
     <message>
-        <location filename="../sources/diagramtoolbarsettings.cpp" line="287"/>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="302"/>
         <source>Conductor color</source>
         <translation>Vadītāja krāsa</translation>
     </message>
     <message>
-        <location filename="../sources/diagramtoolbarsettings.cpp" line="281"/>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="296"/>
         <source>Grid step</source>
         <translation>Režģa solis</translation>
     </message>
@@ -3775,51 +4244,51 @@ Turiet nospiestu Shift un velciet, lai pārvietotu tikai šo tekstu</translation
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="140"/>
+        <location filename="../sources/diagramview.cpp" line="149"/>
         <source>Paste Here</source>
         <comment>context menu action</comment>
         <translation>Ielīmēt šeit</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="115"/>
+        <location filename="../sources/diagramview.cpp" line="124"/>
         <source>In this area you conceive your diagrams by adding elements and conductors between their terminals. You may also add independent texts.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>Šajā apgabalā veidojiet shēmas, pievienojot elementus un vadītājus starp to spailēm. Var pievienot arī neatkarīgus tekstus.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="143"/>
+        <location filename="../sources/diagramview.cpp" line="152"/>
         <source>Multiple paste</source>
         <translation>Vairākkārtēja ielīmēšana</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="150"/>
+        <location filename="../sources/diagramview.cpp" line="159"/>
         <source>Create a template</source>
         <comment>context menu action</comment>
         <translation>Izveidot veidni</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="154"/>
+        <location filename="../sources/diagramview.cpp" line="163"/>
         <source>Make a cabinet thumbnail</source>
         <comment>context menu action</comment>
         <translation>Izveidot skapja sīktēlu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="158"/>
+        <location filename="../sources/diagramview.cpp" line="167"/>
         <source>Sheet reference</source>
         <translation>Lapas atsauce</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="490"/>
+        <location filename="../sources/diagramview.cpp" line="499"/>
         <source>%1: %2</source>
         <translation>%1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="531"/>
+        <location filename="../sources/diagramview.cpp" line="540"/>
         <source>Add an image</source>
         <translation>Pievienot attēlu</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramview.cpp" line="532"/>
+        <location filename="../sources/diagramview.cpp" line="541"/>
         <source>Add %n image(s)</source>
         <translation>
             <numerusform>%n attēls pievienots</numerusform>
@@ -3828,65 +4297,65 @@ Turiet nospiestu Shift un velciet, lai pārvietotu tikai šo tekstu</translation
         </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="539"/>
+        <location filename="../sources/diagramview.cpp" line="548"/>
         <source>Images not added</source>
         <translation>Attēli netika pievienoti</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="540"/>
+        <location filename="../sources/diagramview.cpp" line="549"/>
         <source>These files could not be added:</source>
         <translation>Neizdevās pievienot šos failus:</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1062"/>
+        <location filename="../sources/diagramview.cpp" line="1173"/>
         <source>X: %1 Y: %2</source>
         <translation>X: %1 Y: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1330"/>
+        <location filename="../sources/diagramview.cpp" line="1497"/>
         <source>Connect the selected terminals</source>
         <translation>Savienot atlasītās spailes</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1773"/>
+        <location filename="../sources/diagramview.cpp" line="1943"/>
         <source>Untitled</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Bez nosaukuma</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="2644"/>
+        <location filename="../sources/diagramview.cpp" line="2926"/>
         <source>Remove this core from the line</source>
         <translation>Noņemt šo dzīslu no līnijas</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="2929"/>
+        <location filename="../sources/diagramview.cpp" line="3211"/>
         <source>Registered template</source>
         <translation>Reģistrēta veidne</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="2930"/>
+        <location filename="../sources/diagramview.cpp" line="3212"/>
         <source>The template has been successfully saved as :
 %1</source>
         <translation>Veidne veiksmīgi saglabāta kā:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="2933"/>
+        <location filename="../sources/diagramview.cpp" line="3215"/>
         <source>Error</source>
         <translation>Kļūda</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="2933"/>
+        <location filename="../sources/diagramview.cpp" line="3215"/>
         <source>The file could not be written.</source>
         <translation>Neizdevās ierakstīt failu.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="214"/>
+        <location filename="../sources/diagramview.cpp" line="223"/>
         <source>Choose the new color for this conductor</source>
         <translation>Izvēlieties jaunu krāsu šim vadītājam</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="237"/>
+        <location filename="../sources/diagramview.cpp" line="246"/>
         <source>Edit conductor properties</source>
         <comment>undo caption</comment>
         <translation>Rediģēt vadītāja rekvizītus</translation>
@@ -3908,6 +4377,440 @@ Turiet nospiestu Shift un velciet, lai pārvietotu tikai šo tekstu</translation
         <location filename="../sources/ui/dialogwaiting.ui" line="85"/>
         <source>TextLabel</source>
         <translation>Teksta marķējums</translation>
+    </message>
+</context>
+<context>
+    <name>DimensionPropertiesDialog</name>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="14"/>
+        <source>Dimension properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="45"/>
+        <source>Segments:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="57"/>
+        <source>Select all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="95"/>
+        <source>Dimension</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="104"/>
+        <source>Display &amp; text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="116"/>
+        <source>Prefix:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="136"/>
+        <source>Value:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="158"/>
+        <source>Calculate automatically (2px = 1mm)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="170"/>
+        <source>Suffix:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="193"/>
+        <source>Units &amp; precision</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="205"/>
+        <source>Unit:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="222"/>
+        <source>Show unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="229"/>
+        <source>Precision:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="246"/>
+        <source>Hide trailing zero</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="253"/>
+        <source>Show second unit (inches)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="263"/>
+        <source>Alignment &amp; position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="275"/>
+        <source>Distance from dimension line:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="282"/>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="405"/>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="431"/>
+        <source> mm</source>
+        <translation type="unfinished"> mm</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="301"/>
+        <source>Center value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="311"/>
+        <source>Text rotation:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="321"/>
+        <source>Value inside the dimension line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="348"/>
+        <source>Lines</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="357"/>
+        <source>Dimension line &amp; extension lines</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="372"/>
+        <source>Line width:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="379"/>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="457"/>
+        <source> px</source>
+        <translation type="unfinished"> px</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="398"/>
+        <source>Extension line overshoot:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="424"/>
+        <source>Gap from measured point:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="450"/>
+        <source>Baseline offset:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="479"/>
+        <source>Line ends</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="494"/>
+        <source>Arrow style:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="511"/>
+        <source>Arrow size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="551"/>
+        <source>Format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="560"/>
+        <source>Appearance</source>
+        <translation type="unfinished">Izskats</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="569"/>
+        <source>Draw a box around the value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="579"/>
+        <source>Use decimal comma</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="589"/>
+        <source>Mask background</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="604"/>
+        <source>Font size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="611"/>
+        <source> pt</source>
+        <translation type="unfinished"> pt</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.cpp" line="72"/>
+        <source>Arrows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.cpp" line="73"/>
+        <source>Architectural Slashes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.cpp" line="75"/>
+        <source>Auto (parallel to line)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.cpp" line="76"/>
+        <source>Horizontal</source>
+        <translation type="unfinished">Horizontāli</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.cpp" line="508"/>
+        <source>Edit dimension properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DimensionPropertiesWidget</name>
+    <message>
+        <location filename="../sources/ui/dimensionpropertieswidget.ui" line="14"/>
+        <location filename="../sources/ui/dimensionpropertieswidget.h" line="49"/>
+        <source>Dimension properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertieswidget.ui" line="35"/>
+        <source>Dimension</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertieswidget.ui" line="44"/>
+        <source>Calculated:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertieswidget.ui" line="56"/>
+        <source>0.0 mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertieswidget.ui" line="63"/>
+        <source>Automatic calculation (2px = 1mm)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertieswidget.ui" line="73"/>
+        <source>Custom text:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertieswidget.ui" line="87"/>
+        <source>Offset:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertieswidget.ui" line="107"/>
+        <source>Line ends:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertieswidget.ui" line="117"/>
+        <source>Dimension properties...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertieswidget.cpp" line="32"/>
+        <location filename="../sources/ui/dimensionpropertieswidget.cpp" line="49"/>
+        <source>Arrows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertieswidget.cpp" line="33"/>
+        <location filename="../sources/ui/dimensionpropertieswidget.cpp" line="50"/>
+        <source>Architectural Slashes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DockFold</name>
+    <message>
+        <location filename="../sources/ui/dockfold.cpp" line="264"/>
+        <source>Show the side panels again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dockfold.cpp" line="265"/>
+        <source>Fold the side panels away</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dockfold.cpp" line="267"/>
+        <source>Show the right side panels again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dockfold.cpp" line="267"/>
+        <source>Fold the right side panels away</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dockfold.cpp" line="268"/>
+        <source>Show the left side panels again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dockfold.cpp" line="268"/>
+        <source>Fold the left side panels away</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DuplicateLabelsDialog</name>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="48"/>
+        <source>Duplicate signals and components</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="55"/>
+        <source>Click an occurrence to select and show it on its sheet. Refresh after editing the project.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="61"/>
+        <source>Case-sensitive comparison</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="63"/>
+        <source>When unchecked, labels differing only in letter case, such as K1 and k1, are duplicates.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="78"/>
+        <source>Error / occurrence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="78"/>
+        <source>Sheet</source>
+        <translation type="unfinished">Lapa</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="78"/>
+        <source>Position</source>
+        <translation type="unfinished">Novietojums</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="99"/>
+        <source>Refresh</source>
+        <translation type="unfinished">Atsvaidzināt</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="120"/>
+        <source>Reading the folios...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="143"/>
+        <source>Reading folio %1 of %2...</source>
+        <translation type="unfinished">Nolasa %1. lapu no %2...</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="164"/>
+        <source>Duplicate signal: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="166"/>
+        <source>Duplicate component: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="171"/>
+        <source>Duplicate component: %1 in %2</source>
+        <extracomment>%2 is the plant and location, such as &quot;=P1+UV1&quot;.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="188"/>
+        <source>Group %1</source>
+        <extracomment>%1 numbers one electrical signal or one linked device among those sharing a label.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="191"/>
+        <source>Occurrences in the same group belong to one signal or linked device.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="203"/>
+        <source>%1 — %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="208"/>
+        <source>x: %1, y: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="218"/>
+        <source>%n occurrences</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="224"/>
+        <source>No duplicate signals or components found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="230"/>
+        <source>%n duplicate labels found.</source>
+        <extracomment>%n counts conflicting identifiers, not wire segments or symbols.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="242"/>
+        <source>This occurrence no longer exists. Refresh the results.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3956,17 +4859,17 @@ Turiet nospiestu Shift un velciet, lai pārvietotu tikai šo tekstu</translation
 <context>
     <name>DynamicElementTextItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="104"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="106"/>
         <source>Text</source>
         <translation>Teksts</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="115"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="117"/>
         <source>Edit an element text</source>
         <translation>Rediģēt elementa tekstu</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1314"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1316"/>
         <source>Resize an element text</source>
         <translation>Mainīt elementa teksta izmēru</translation>
     </message>
@@ -4469,6 +5372,36 @@ Turiet nospiestu Shift un velciet, lai pārvietotu tikai šo tekstu</translation
     </message>
 </context>
 <context>
+    <name>ESEventMeasure</name>
+    <message>
+        <location filename="../sources/editor/esevent/eseventmeasure.cpp" line="38"/>
+        <location filename="../sources/editor/esevent/eseventmeasure.cpp" line="107"/>
+        <location filename="../sources/editor/esevent/eseventmeasure.cpp" line="157"/>
+        <source>Tape measure: Click to set the first reference point (P1), Esc to exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/esevent/eseventmeasure.cpp" line="63"/>
+        <source>Tape measure: %1 mm (%2 px) | ΔX: %3 mm | ΔY: %4 mm | Angle: %5°</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/esevent/eseventmeasure.cpp" line="85"/>
+        <source>Tape measure: Click to set the second reference point (P2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/esevent/eseventmeasure.cpp" line="113"/>
+        <source>Measurements cleared</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/esevent/eseventmeasure.cpp" line="164"/>
+        <source>Measurements cleared. Press Esc again to exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EditorDelegate</name>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="71"/>
@@ -4517,7 +5450,7 @@ Turiet nospiestu Shift un velciet, lai pārvietotu tikai šo tekstu</translation
 <context>
     <name>Element</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="2922"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="2949"/>
         <source>Automatically number an element</source>
         <comment>undo caption</comment>
         <translation>Automātiski numurēt elementu</translation>
@@ -4795,7 +5728,7 @@ Elementa attēlojamo nosaukumu var rediģēt atsevišķi elementa rekvizītos.</
         <translation>Informācija</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="336"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="340"/>
         <source>Add a custom property</source>
         <translation>Pievienot pielāgotu rekvizītu</translation>
     </message>
@@ -4804,22 +5737,22 @@ Elementa attēlojamo nosaukumu var rediģēt atsevišķi elementa rekvizītos.</
         <translation type="vanished">Potenciāla atdalītājs</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="344"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="348"/>
         <source>Function separation</source>
         <translation>Funkcijas atdalītājs</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="348"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="352"/>
         <source>Exclude from the bill of materials</source>
         <translation>Neiekļaut materiālu sarakstā</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="514"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="518"/>
         <source>No materials list</source>
         <translation>Nav materiālu saraksta</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="515"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="519"/>
         <source>There is no materials list file at this location:
 %1
 
@@ -4831,12 +5764,12 @@ Create it?</source>
 Vai izveidot to?</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="530"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="534"/>
         <source>Cannot create</source>
         <translation>Nevar izveidot</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="531"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="535"/>
         <source>Cannot create the file:
 %1
 %2</source>
@@ -4845,93 +5778,93 @@ Vai izveidot to?</translation>
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="815"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="819"/>
         <source>Automatic numbering</source>
         <translation>Automātiskā numerācija</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="822"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="826"/>
         <source>…</source>
         <translation>…</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="823"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="827"/>
         <source>Open the project&apos;s element numberings</source>
         <translation>Atvērt projekta elementu numerācijas</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="851"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="855"/>
         <source>Freeze name</source>
         <translation>Fiksēt nosaukumu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="852"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="856"/>
         <source>A frozen name is not changed by automatic numbering, and its number is not given to another element.</source>
         <translation>Automātiskā numerācija nemaina fiksētu nosaukumu, un tā numurs netiek piešķirts citam elementam.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="889"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="893"/>
         <source>Show name</source>
         <translation>Rādīt nosaukumu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="891"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="895"/>
         <source>Untick to not draw the name of this element on the sheet: its data is kept, and a terminal keeps its number.</source>
         <translation>Noņemiet atzīmi, lai šī elementa nosaukums netiktu attēlots lapā. Nosaukuma dati tiek saglabāti, un spaile saglabā savu numuru.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="920"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="924"/>
         <source>Number</source>
         <translation>Numurs</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="924"/>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="988"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="928"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="992"/>
         <source>Only free numbers are offered: an element that must keep its real number can get it back if nobody else has it.</source>
         <translation>Tiek piedāvāti tikai brīvie numuri. Elements var atgūt savu iepriekšējo numuru, ja tas nav piešķirts citam elementam.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="958"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="962"/>
         <source>%1  (current)</source>
         <translation>%1 (pašreizējais)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="960"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="964"/>
         <source>— (unknown number)</source>
         <translation>— (nezināms numurs)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="964"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="968"/>
         <source>%1  →  %2</source>
         <translation>%1  →  %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="986"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="990"/>
         <source>The name is frozen: unfreeze it to change its number.</source>
         <translation>Nosaukums ir fiksēts. Lai mainītu numuru, vispirms atceliet fiksēšanu.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="987"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="991"/>
         <source>The number can be chosen when the element keeps its numbering.</source>
         <translation>Numuru var izvēlēties, ja elements saglabā savu numerāciju.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="1052"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="1056"/>
         <source>None (name entered by hand)</source>
         <translation>Nav (nosaukums ievadīts manuāli)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="1071"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="1075"/>
         <source>Custom formula: %1</source>
         <translation>Pielāgota formula: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="1111"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="1115"/>
         <source>Frozen name</source>
         <translation>Fiksēts nosaukums</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="1112"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="1116"/>
         <source>This element&apos;s name is frozen.
 Changing its numbering will replace or erase it.
 
@@ -5527,134 +6460,134 @@ Vai turpināt?</translation>
 <context>
     <name>ElementPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="410"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="413"/>
         <source>General</source>
         <translation>Vispārīgi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="420"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="423"/>
         <source>Element
 </source>
         <translation>Elements
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="423"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="426"/>
         <source>Name : %1
 </source>
         <translation>Nosaukums: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="426"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="429"/>
         <source>Sheet : %1
 </source>
         <translation>Lapa: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="428"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="431"/>
         <source>Type: %1
 </source>
         <translation>Tips: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="429"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="432"/>
         <source>Sub-type : %1
 </source>
         <translation>Apakštips: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="430"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="433"/>
         <source>Position : %1
 </source>
         <translation>Novietojums: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="431"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="434"/>
         <source>Rotation : %1°
 </source>
         <translation>Pagrieziens: %1°
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="432"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="435"/>
         <source>Dimensions : %1*%2
 </source>
         <translation>Izmēri: %1*%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="433"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="436"/>
         <source>Terminals : %1
 </source>
         <translation>Spailes: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="440"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="443"/>
         <source>Maximum number of slave contacts defined:  not defined
 </source>
         <translation>Maksimālais definēto pakārtoto kontaktu skaits: nav definēts
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="441"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="444"/>
         <source>Maximum number of slave contacts defined:  %1
 </source>
         <translation>Maksimālais definēto pakārtoto kontaktu skaits: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="446"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="449"/>
         <source>Number of slave contacts used : %1
 </source>
         <translation>Izmantoto pakārtoto kontaktu skaits: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="461"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="464"/>
         <source>    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8
 </source>
         <translation>    Kontakti: NO: %1/%2, NC: %3/%4, pārslēdzošie: %5/%6, citi: %7/%8
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="470"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="473"/>
         <source>    Contacts : NO : %1, NC : %2, changeover : %3, other : %4
 </source>
         <translation>    Kontakti: NO: %1, NC: %2, pārslēdzošie: %3, citi: %4
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="486"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="489"/>
         <source>Last changed: save %1, %2, by %3
 </source>
         <translation>Pēdējās izmaiņas: saglabāts %1, %2; autors: %3
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="492"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="501"/>
         <source>Location : %1
 </source>
         <translation>Atrašanās vieta: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="507"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="525"/>
         <source>Lock Position</source>
         <translation>Bloķēt novietojumu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="523"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="541"/>
         <source>Find in the panel</source>
         <translation>Atrast panelī</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="525"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="543"/>
         <source>Edit element</source>
         <translation>Rediģēt elementu</translation>
     </message>
@@ -5833,104 +6766,124 @@ Vai turpināt?</translation>
         <translation>SQL vaicājums:</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="45"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="47"/>
+        <source>Add formula column...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="49"/>
+        <source>Add a column worked out from the others, without writing SQL. The query becomes a custom SQL query.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="53"/>
         <source>Position</source>
         <translation>Novietojums</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="46"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="54"/>
         <source>Sheet title</source>
         <translation>Lapas nosaukums</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="47"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="55"/>
         <source>Sheet position</source>
         <translation>Lapas pozīcija</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="48"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="56"/>
         <source>Sheet number</source>
         <translation>Lapas numurs</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="821"/>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="828"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="686"/>
+        <source>Formula column</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="687"/>
+        <source>The query has no FROM clause to add a column to.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="860"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="867"/>
         <source>Export</source>
         <translation>Eksportēt</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="821"/>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="828"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="860"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="867"/>
         <source>No saved report to export.</source>
         <translation>Nav saglabātu pārskatu, ko eksportēt.</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="833"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="872"/>
         <source>Export reports</source>
         <translation>Eksportēt pārskatus</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="834"/>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="854"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="873"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="893"/>
         <source>JSON files (*.json)</source>
         <translation>JSON faili (*.json)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="841"/>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="861"/>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="871"/>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="914"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="880"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="900"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="910"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="953"/>
         <source>Error</source>
         <translation>Kļūda</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="841"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="880"/>
         <source>Unable to write to %1.</source>
         <translation>Nevar ierakstīt failā %1.</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="854"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="893"/>
         <source>Import reports</source>
         <translation>Importēt pārskatus</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="861"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="900"/>
         <source>Unable to read %1.</source>
         <translation>Nevar nolasīt %1.</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="872"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="911"/>
         <source>%1 does not contain valid QElectroTech reports.</source>
         <translation>%1 nesatur derīgus QElectroTech pārskatus.</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="878"/>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="922"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="917"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="961"/>
         <source>Import</source>
         <translation>Importēt</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="878"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="917"/>
         <source>This file does not contain any report.</source>
         <translation>Šajā failā nav pārskatu.</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="895"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="934"/>
         <source>Report already exists</source>
         <translation>Pārskats jau pastāv</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="896"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="935"/>
         <source>A report named &quot;%1&quot; already exists. Replace it?</source>
         <translation>Pārskats ar nosaukumu “%1” jau pastāv. Vai to aizstāt?</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="914"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="953"/>
         <source>Unable to write the local configuration.</source>
         <translation>Nevar saglabāt lokālo konfigurāciju.</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="923"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="962"/>
         <source>%1 report(s) imported, %2 skipped.</source>
         <translation>Importēti pārskati: %1; izlaisti: %2.</translation>
     </message>
@@ -5938,28 +6891,28 @@ Vai turpināt?</translation>
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="331"/>
+        <location filename="../sources/editor/elementscene.cpp" line="334"/>
         <source>Move a primitive</source>
         <translation>Pārvietot primitīvu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="940"/>
+        <location filename="../sources/editor/elementscene.cpp" line="943"/>
         <source>Edit author information</source>
         <comment>window title</comment>
         <translation>Rediģēt informāciju par autoru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="945"/>
+        <location filename="../sources/editor/elementscene.cpp" line="948"/>
         <source>You can use this field to specify the authors of this element, its license, or any other information you may find useful.</source>
         <translation>Šajā laukā var norādīt elementa autorus, licenci vai citu noderīgu informāciju.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="1043"/>
+        <location filename="../sources/editor/elementscene.cpp" line="1046"/>
         <source>You may enter the element name in several languages.</source>
         <translation>Elementa nosaukumu var ievadīt vairākās valodās.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="1041"/>
+        <location filename="../sources/editor/elementscene.cpp" line="1044"/>
         <source>Edit names</source>
         <comment>window title</comment>
         <translation>Rediģēt nosaukumus</translation>
@@ -6071,95 +7024,95 @@ Vai turpināt?</translation>
 <context>
     <name>ElementsCollectionWidget</name>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="219"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="234"/>
         <source>Import an EPLAN part (.edz)…</source>
         <translation>Importēt EPLAN komponentu (.edz)…</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="858"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="873"/>
         <source>Import an EPLAN part</source>
         <translation>Importēt EPLAN komponentu</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="859"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="874"/>
         <source>EPLAN parts (*.edz)</source>
         <translation>EPLAN komponenti (*.edz)</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="867"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="882"/>
         <source>Import EPLAN</source>
         <translation>Importēt EPLAN</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="868"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="883"/>
         <source>Could not import this part:
 %1</source>
         <translation>Neizdevās importēt šo komponentu:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="203"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="218"/>
         <source>Open the underlying folder</source>
         <translation>Atvērt attiecīgo mapi</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="205"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="220"/>
         <source>Edit element</source>
         <translation>Rediģēt elementu</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="207"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="222"/>
         <source>Delete element</source>
         <translation>Dzēst elementu</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="209"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="224"/>
         <source>Delete folder</source>
         <translation>Dzēst mapi</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="211"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="226"/>
         <source>Reload collections</source>
         <translation>Pārlādēt kolekcijas</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="213"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="228"/>
         <source>Edit folder</source>
         <translation>Rediģēt mapi</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="215"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="230"/>
         <source>New folder</source>
         <translation>Jauna mape</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="217"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="232"/>
         <source>New element</source>
         <translation>Jauns elements</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="221"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="236"/>
         <source>Show only this folder</source>
         <translation>Rādīt tikai šo mapi</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="224"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="239"/>
         <source>Show All Folders</source>
         <translation>Rādīt visas mapes</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="226"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="241"/>
         <source>Folder properties</source>
         <translation>Mapes rekvizīti</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="621"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="636"/>
         <source>Delete element?</source>
         <comment>message box title</comment>
         <translation>Vai dzēst elementu?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="622"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="637"/>
         <source>Do you really wish to delete this element ?
 </source>
         <comment>message box content</comment>
@@ -6167,25 +7120,25 @@ Vai turpināt?</translation>
 </translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="638"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="653"/>
         <source>Deleting element</source>
         <comment>message box title</comment>
         <translation>Dzēš elementu</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="640"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="655"/>
         <source>Deleting element failed.</source>
         <comment>message box content</comment>
         <translation>Neizdevās izdzēst elementu.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="667"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="682"/>
         <source>Deleting folder?</source>
         <comment>message box title</comment>
         <translation>Vai dzēst mapi?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="668"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="683"/>
         <source>Are you sure you want to delete the folder?
 All the elements and contents file in this folder will be deleted.</source>
         <comment>message box content</comment>
@@ -6193,24 +7146,24 @@ All the elements and contents file in this folder will be deleted.</source>
 Tiks dzēsti visi šīs mapes elementi un satura fails.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="685"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="700"/>
         <source>Folder Delete</source>
         <comment>message box title</comment>
         <translation>Mapes dzēšana</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="687"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="702"/>
         <source>Folder deletion failed.</source>
         <comment>message box content</comment>
         <translation>Neizdevās izdzēst mapi.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="787"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="802"/>
         <source>Warning — Importing an EPLAN file (.edz)</source>
         <translation>Brīdinājums — EPLAN faila (.edz) importēšana</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="790"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="805"/>
         <source>The .edz file format can come from two different sources:
 • The EPLAN Data Portal (dataportal.eplan.com), which is subject to the terms of use for the EPLAN Cloud environment;
 • A component manufacturer’s (or distributor’s) website, which makes its .edz files available directly, subject to its own terms and conditions.
@@ -6229,22 +7182,22 @@ Importējot šo failu, jūs apliecināt, ka:
 • ne QElectroTech, ne tā uzturētāji, ne līdzstrādnieki nav atbildīgi par šo datu neatļautu izmantošanu.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="812"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="827"/>
         <source>I have read and accept these terms and conditions.</source>
         <translation>Esmu izlasījis un piekrītu šiem noteikumiem.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="817"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="832"/>
         <source>Import</source>
         <translation>Importēt</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="954"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="969"/>
         <source>the folder %1 contains</source>
         <translation>mapē %1 ir</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="955"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="970"/>
         <source>%n elements, spread</source>
         <translation>
             <numerusform>%n elements</numerusform>
@@ -6253,7 +7206,7 @@ Importējot šo failu, jūs apliecināt, ka:
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="957"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="972"/>
         <source>across %n folders.</source>
         <translation>
             <numerusform>izvietots %n mapē.</numerusform>
@@ -6262,32 +7215,32 @@ Importējot šo failu, jūs apliecināt, ka:
         </translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="959"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="974"/>
         <source>Path of collection :  %1</source>
         <translation>Kolekcijas ceļš: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="948"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="963"/>
         <source>Path in the file system :  %1</source>
         <translation>Ceļš failu sistēmā: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="240"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="255"/>
         <source>Search...</source>
         <translation>Meklēt...</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="267"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="282"/>
         <source>Collections</source>
         <translation>Kolekcijas</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="268"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="283"/>
         <source>Templates</source>
         <translation>Veidnes</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="964"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="979"/>
         <source>Property of the folder %1</source>
         <translation>Mapes %1 rekvizīti</translation>
     </message>
@@ -6910,6 +7863,67 @@ Pieejamas arī teksta un skaitļu vērtības.</translation>
     </message>
 </context>
 <context>
+    <name>FormulaBuilderDialog</name>
+    <message>
+        <location filename="../sources/ui/formulabuilderdialog.cpp" line="226"/>
+        <source>Formula column</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/formulabuilderdialog.cpp" line="230"/>
+        <source>Build the value of a new column. Pick a field, a value or an operation; an operation&apos;s inputs can be operations too. Quotes and brackets are written for you.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/formulabuilderdialog.cpp" line="237"/>
+        <source>Title of the column</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/formulabuilderdialog.cpp" line="238"/>
+        <source>Column title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/formulabuilderdialog.cpp" line="253"/>
+        <source>The SQL this makes (read only)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/formulabuilderdialog.cpp" line="257"/>
+        <source>Add the column</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormulaBuilderDialogPrivate::NodeEditor</name>
+    <message>
+        <location filename="../sources/ui/formulabuilderdialog.cpp" line="101"/>
+        <source>Enter the text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/formulabuilderdialog.cpp" line="106"/>
+        <source>Between the values, for example a space or a dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/formulabuilderdialog.cpp" line="117"/>
+        <source>Add an input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/formulabuilderdialog.cpp" line="118"/>
+        <source>Remove the last input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/formulabuilderdialog.cpp" line="150"/>
+        <source>Input %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FreeTerminalEditor</name>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="14"/>
@@ -7074,12 +8088,12 @@ Pieejamas arī teksta un skaitļu vērtības.</translation>
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="452"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="492"/>
         <source>Enable chained folio reports for report elements</source>
         <translation>Automātiski sasaistīt atsauces starp shēmu lapām</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="455"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="495"/>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
         <translation>Ja šī opcija ir ieslēgta, atsauces elementi ar vienādiem apzīmējumiem dažādās shēmu lapās tiek automātiski sasaistīti. Jaunos projektos šī opcija būs ieslēgta.</translation>
     </message>
@@ -7094,49 +8108,49 @@ Pieejamas arī teksta un skaitļu vērtības.</translation>
         <translation>Lietot sistēmas krāsas</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="787"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="803"/>
         <source>User Collection Path</source>
         <translation>Lietotāja elementu kolekcijas ceļš</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="815"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="831"/>
         <source>User Title blocks Path</source>
         <translation>Lietotāja pamatrakstu ceļš</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="759"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="775"/>
         <source>Path of the Common Collection</source>
         <translation>Kopīgās elementu kolekcijas ceļš</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="565"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="579"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="617"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="645"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="659"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="625"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="639"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="677"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="705"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="719"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="740"/>
         <source>By default</source>
         <translation>Pēc noklusējuma</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="570"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="584"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="622"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="650"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="664"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="685"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="722"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="763"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="630"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="644"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="682"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="710"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="724"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="745"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="782"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="823"/>
         <source>Browse...</source>
         <translation>Pārlūkot...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="753"/>
         <source>(Reload the elements collections to apply the changes)</source>
         <translation>(Lai lietotu izmaiņas, atkārtoti ielādējiet elementu kolekcijas)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="363"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
         <source>Projects</source>
         <translation>Projekti</translation>
     </message>
@@ -7146,39 +8160,39 @@ Pieejamas arī teksta un skaitļu vērtības.</translation>
         <translation>Lietot skārienpaliktņa žestus</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="369"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="409"/>
         <source>Use sheet numbers instead of their position in the project</source>
         <translation>Lietot lapu numurus, nevis to atrašanās vietu projektā</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="531"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Numurēt pamatraksta kolonnas no 0 (citādi — no 1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="386"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="426"/>
         <source>Disabled</source>
         <translation>Atspējots</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="392"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="432"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> min</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="794"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="854"/>
         <source>Highlight freshly integrated elements in the panel</source>
         <translation>Panelī izcelt tikko pievienotos elementus</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="801"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="861"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>Elements var saturēt informāciju par autoru, licenci vai citu noderīgu informāciju. Tālāk norādiet šī teksta lauka noklusējuma vērtību jauniem elementiem:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="837"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="897"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>Tiks lietots nākamajā QElectroTech palaišanas reizē</translation>
     </message>
@@ -7188,77 +8202,77 @@ Pieejamas arī teksta un skaitļu vērtības.</translation>
         <translation>Veidlapa</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="376"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="416"/>
         <source>Automatic backup of projects (applied at the next launch of QElectroTech)</source>
         <translation>Automātiski veidot projektu rezerves kopijas (tiks lietots nākamajā QElectroTech palaišanas reizē)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="539"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="599"/>
         <source>Collections</source>
         <translation>Kolekcijas</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="605"/>
         <source>Access the collections</source>
         <translation>Piekļuve kolekcijām</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="602"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="662"/>
         <source>Common collection directory</source>
         <translation>Kopīgās kolekcijas mape</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="630"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
         <source>User collection directory</source>
         <translation>Lietotāja kolekcijas mape</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="672"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="732"/>
         <source>User title blocks directory</source>
         <translation>Lietotāja pamatrakstu mape</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="785"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="845"/>
         <source>Elements management</source>
         <translation>Elementu pārvaldība</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="877"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="937"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation>Šeit var iestatīt dažādu QElectroTech tekstu noklusējuma izskatu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1052"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1112"/>
         <source>Designation, type, plant, location, length:</source>
         <translation>Apzīmējums, tips, iekārta, atrašanās vieta, garums:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1085"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1145"/>
         <source>Core colors (all of them):</source>
         <translation>Dzīslu krāsas (visas):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1118"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1178"/>
         <source>Text alignment:</source>
         <translation>Teksta līdzinājums:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1167"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1227"/>
         <source>Grid + Keyboard</source>
         <translation>Režģis un tastatūra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1173"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1233"/>
         <source>Grid: 1 - 30</source>
         <translation>Režģis: 1–30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1240"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1300"/>
         <source>DiagramEditor xGrid</source>
         <translation>Shēmas redaktora xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1207"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1267"/>
         <source>DiagramEditor yGrid</source>
         <translation>Shēmas redaktora yGrid</translation>
     </message>
@@ -7379,141 +8393,201 @@ Pieejamas arī teksta un skaitļu vērtības.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
+        <source>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
+        <source>Help lines from the terminals of a dragged symbol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="282"/>
+        <source>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice&apos;s sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="285"/>
+        <source>Bars beside the drawing to fold the side panels away</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="292"/>
+        <source>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="295"/>
+        <source>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
+        <source>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
+        <source>A new corner or T-junction replaces the one under it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="312"/>
         <source>Show default guides (applies from the next time the programme is launched)</source>
         <translation>Rādīt noklusējuma palīglīnijas (tiks lietots no nākamās programmas palaišanas reizes)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="286"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="326"/>
         <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
         <translation>Lietot &amp;Windows stilu (tiks lietots nākamajā QElectroTech palaišanas reizē)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="293"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="333"/>
         <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
         <translation>Lietot &amp;cilnes (tiks lietots nākamajā QElectroTech palaišanas reizē)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="332"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
         <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
         <translation>Augsta pikseļu blīvuma (hdpi) ekrānu mērogošanas metode (tiks lietota nākamajā QElectroTech palaišanas reizē):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="405"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="445"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
         <translation>Automātiski numurēt ielīmētos vai dublētos elementus, kuriem ir numerācija</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="408"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="448"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
         <translation>Ielīmētais elements saņem nākamo numerācijas numuru, nevis kopētā elementa nosaukumu, un numerācija tiek attiecīgi palielināta.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="415"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="455"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
         <translation>Blakus projektam tiek izveidots neliels slēpts fails, kurā norādīts, kurš to ir atvēris. Citi lietotāji tiek par to informēti un var atvērt projektu tikai lasīšanai. Izslēdziet šo opciju, ja koplietojamais disks to neatbalsta.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="418"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="458"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
         <translation>Informēt citus, ka projekts ir atvērts (projekta mapē izveido bloķēšanas failu)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="432"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="472"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
         <translation>Atļaut palaist JavaScript skriptus (Project &gt; Run a script un --run)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="435"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="475"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
         <translation>Skripts darbojas ar jūsu atļaujām: tas var lasīt un mainīt atvērto projektu un rakstīt failos. Pēc noklusējuma šī opcija ir izslēgta; palaidiet tikai skriptus no zināmiem avotiem.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="442"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="482"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
         <translation>Atļaut MI asistentam darboties ar atvērto projektu (tiešsaistes režīms)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="445"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="485"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
         <translation>Ar MCP serveri savienots asistents var palaist skriptus atvērtajā projektā, kamēr jūs vērojat tā darbības. Kamēr šī opcija ir ieslēgta, katrā palaišanas reizē tiek parādīts brīdinājums. Izmaiņas stājas spēkā nākamajā palaišanas reizē; noņemot atzīmi, savienojums tiek nekavējoties aizvērts.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="462"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="502"/>
         <source>Previous versions kept when saving a project</source>
         <translation>Saglabāt iepriekšējās projekta versijas</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="465"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="472"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="505"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="512"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>Pirms projekta saglabāšanas tā pašreizējā versija tiek kopēta blakus esošā mapē ar projekta nosaukumu un galotni &quot;-backups&quot;. Tiek paturētas tikai jaunākās kopijas.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="475"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
         <source>None</source>
         <translation>Nav</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="485"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="525"/>
+        <source>Reopen the projects of the last session at start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="528"/>
+        <source>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
+        <source>Offer to restore automatic backups at start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="538"/>
+        <source>After a crash, the automatic backups (made every few minutes, see &quot;Automatic backup of projects&quot; above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
         <source>After a crash, offer projects as they were after their last edit (experimental)</source>
         <translation>Pēc avārijas piedāvāt projektus to stāvoklī pēc pēdējās rediģēšanas (eksperimentāli)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="488"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="548"/>
         <source>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</source>
         <translation>Kamēr projekts ir atvērts, QElectroTech savā datu mapē glabā tā kopiju, ko atjaunina pēc katras izmaiņas. Ja QElectroTech netiek aizvērts normāli, nākamajā palaišanas reizē šī kopija tiek piedāvāta kopā ar atkopšanas failiem.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="495"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="555"/>
         <source>Offer saving a project as one database file, .qetdb (experimental)</source>
         <translation>Piedāvāt saglabāt projektu vienā datubāzes failā .qetdb (eksperimentāli)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="498"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="558"/>
         <source>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</source>
         <translation>Dialogā “Saglabāt kā” būs pieejams .qetdb — viss projekts vienā SQLite failā. Formāts vēl var mainīties, tāpēc svarīgiem projektiem saglabā arī .qet vai .qetz kopiju.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="557"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="617"/>
         <source>Company collection directory</source>
         <translation>Uzņēmuma elementu kolekcijas mape</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="592"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="652"/>
         <source>Create or change the prefix of the user collection&apos;s folders (qet_labels.xml file)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the user collection</extracomment>
         <translation>Izveidot vai mainīt lietotāja kolekcijas mapju prefiksus (fails qet_labels.xml)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="595"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
         <source>Configure prefixes…</source>
         <extracomment>button opening the dialog where the folder prefixes of the user collection are configured</extracomment>
         <translation>Konfigurēt prefiksus…</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="609"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="669"/>
         <source>Company title-block directory</source>
         <translation>Uzņēmuma pamatrakstu mape</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="637"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="697"/>
         <source>User Macro Directory</source>
         <translation>Lietotāja makro mape</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="760"/>
         <source>Materials list file</source>
         <translation>Materiālu saraksta fails</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="709"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="769"/>
         <source>Materials list used to fill in a symbol&apos;s items</source>
         <extracomment>tooltip of the material file path field</extracomment>
         <translation>Materiālu saraksts simbola pozīciju aizpildīšanai</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="715"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="756"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="775"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="816"/>
         <source>Not set</source>
         <extracomment>hint shown when no material file is configured yet
 ----------
@@ -7521,85 +8595,85 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Nav iestatīts</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="729"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="789"/>
         <source>Create the list file with its headers</source>
         <extracomment>tooltip of the button creating the material file with its header line</extracomment>
         <translation>Izveidot saraksta failu ar galvenēm</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="732"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="773"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="792"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="833"/>
         <source>Create...</source>
         <translation>Izveidot...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="741"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="801"/>
         <source>Cable type list file</source>
         <translation>Kabeļu tipu saraksta fails</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="750"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="810"/>
         <source>Directory of the cable types used to define a cable (number of cores, colors, cross-section)</source>
         <extracomment>tooltip of the cable type file path field</extracomment>
         <translation>Kabeļu tipu mape, kurā norādīts kabeļa dzīslu skaits, krāsas un šķērsgriezums</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="770"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="830"/>
         <source>Create the cable type list file with its header line</source>
         <extracomment>tooltip of the button creating the cable type file with its header line</extracomment>
         <translation>Izveidot kabeļu tipu saraksta failu ar galvenes rindu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="828"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="888"/>
         <source>Languages</source>
         <translation>Valodas</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="871"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="931"/>
         <source>texts</source>
         <translation>teksti</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="891"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="951"/>
         <source>Elements texts</source>
         <translation>Elementu teksti</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="904"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="970"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1016"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="964"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1030"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1076"/>
         <source>Font:</source>
         <translation>Fonts:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="914"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="977"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="974"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1037"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="924"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="984"/>
         <source>Length :</source>
         <translation>Garums:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="934"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="963"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="994"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1023"/>
         <source>Rotation :</source>
         <translation>Rotācija:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="957"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1017"/>
         <source>Independent texts</source>
         <translation>Neatkarīgi teksti</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1010"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1070"/>
         <source>Other texts</source>
         <translation>Citi teksti</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1046"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1106"/>
         <source>Cable texts</source>
         <translation>Kabeļu teksti</translation>
     </message>
@@ -7608,7 +8682,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Apzīmējums, tips, iekārta, atrašanās vieta, garums:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1075"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1135"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>Tekstu fonts, kas tiek rakstīti gar kabeļa līniju; kabelis ar savu fontu to saglabā.</translation>
     </message>
@@ -7617,7 +8691,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Dzīslu krāsas (visas):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1108"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1168"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>Līnijas tekstā norādīto dzīslu krāsu fonts; kabelis ar savu fontu to saglabā.</translation>
     </message>
@@ -7626,53 +8700,53 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Teksta līdzinājums:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1128"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1188"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>Nosaka, kur kabeļa teksts beidzas attiecībā pret tā līnijas sākumu; kabelis ar savu iestatījumu to saglabā.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1132"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1192"/>
         <source>Right aligned</source>
         <translation>Līdzināt pa labi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1137"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1197"/>
         <source>Centred</source>
         <translation>Centrēt</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1142"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1202"/>
         <source>Left aligned</source>
         <translation>Līdzināt pa kreisi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1214"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1274"/>
         <source>The Grid must be active to see the changes.</source>
         <translation>Lai redzētu izmaiņas, jābūt ieslēgtam režģim.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1260"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1320"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>Ar peli pārvietojamo tekstu režģis</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1263"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>Lapas režģa daļa. Lai pārvietotu brīvi, vilkšanas laikā turiet nospiestu Ctrl.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1283"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1343"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>Pārvietošana ar tastatūru: 1–30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1333"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1393"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>DiagramEditor (taustiņi: pa kreisi / pa labi) xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1340"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1400"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>DiagramEditor (taustiņi: augšup / lejup) yGrid</translation>
     </message>
@@ -7681,70 +8755,70 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Pārvietošana ar taustiņu ALT: 1–9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1369"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1429"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>DiagramEditor (taustiņi: pa kreisi / pa labi) xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1398"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1458"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>DiagramEditor (taustiņi: augšup / lejup) yGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1443"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1503"/>
         <source>View grid</source>
         <translation>Skata režģis</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1540"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1547"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1600"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1607"/>
         <source>max:</source>
         <translation>maks.:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1628"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1688"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>Saglabājot simbolu, nepieļaut divas spailes ar vienādu nosaukumu un ziņot par nenosauktām spailēm (IEC 61666).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1631"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1691"/>
         <source>Check terminal names when saving</source>
         <translation>Saglabājot pārbaudīt spaiļu nosaukumus</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1501"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1561"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>Punktu izmērs shēmas redaktorā: 1–5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1363"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1423"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>Pārvietošana ar taustiņu Ctrl: 1–9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1449"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1554"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1509"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1614"/>
         <source>min:</source>
         <translation>min.:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1561"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1621"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>Punktu izmērs elementu redaktorā: 1–5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1585"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1645"/>
         <source>Editor</source>
         <translation>Redaktors</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1593"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1653"/>
         <source>Max. parts in Element Editor List</source>
         <translation>Maksimālais daļu skaits elementu redaktora sarakstā</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="425"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="465"/>
         <source>Do not store the labels of items in the copy paste</source>
         <translation>Kopējot un ielīmējot, nesaglabāt vienumu marķējumus</translation>
     </message>
@@ -7754,266 +8828,266 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Atļaut samazināt mērogu tālāk par lapas robežām</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="65"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="69"/>
         <source>Bold italic</source>
         <translation>Treknraksts un kursīvs</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="67"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="71"/>
         <source>Bold</source>
         <translation>Treknraksts</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="69"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="73"/>
         <source>Italic</source>
         <translation>Kursīvs</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="71"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="75"/>
         <source>Normal</source>
         <translation>Parasts</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="92"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="96"/>
         <source>Rounding up for 0.5 and more</source>
         <translation>Noapaļot uz augšu, sākot no 0.5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="93"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="97"/>
         <source>Always top rounding</source>
         <translation>Vienmēr noapaļot uz augšu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="94"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="98"/>
         <source>Always rounded down</source>
         <translation>Vienmēr noapaļot uz leju</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="95"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="99"/>
         <source>Rounding up for 0.75 and more</source>
         <translation>Noapaļot uz augšu, sākot no 0.75</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="96"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="100"/>
         <source>No rounding</source>
         <translation>Nenoapaļot</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="133"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="141"/>
         <source>Disabled</source>
         <comment>fr: Désactivée</comment>
         <translation>Atspējots</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="185"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="193"/>
         <source>Enabled by the QET_ENABLE_SCRIPTING environment variable; this setting has no effect while it is set.</source>
         <translation>Iespējots ar vides mainīgo QET_ENABLE_SCRIPTING; kamēr tas ir iestatīts, šis iestatījums nedarbojas.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="327"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="337"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
         <translation>Nav iestatīts (noklusējums: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="338"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="348"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
         <translation>Nav iestatīts (noklusējums: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="599"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="615"/>
         <source>General</source>
         <comment>configuration page title</comment>
         <translation>Vispārīgi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="617"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="633"/>
         <source>System</source>
         <translation>Sistēma</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="621"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="637"/>
         <source>Arabic</source>
         <translation>Arābu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="622"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="638"/>
         <source>Brazilian</source>
         <translation>Brazīliešu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="623"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="639"/>
         <source>Catalan</source>
         <translation>Katalāņu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="624"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="640"/>
         <source>Czech</source>
         <translation>Čehu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="625"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="641"/>
         <source>German</source>
         <translation>Vācu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="626"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="642"/>
         <source>Danish</source>
         <translation>Dāņu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="627"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="643"/>
         <source>Greek</source>
         <translation>Grieķu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="628"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="644"/>
         <source>English</source>
         <translation>Angļu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="629"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="645"/>
         <source>Spanish</source>
         <translation>Spāņu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="630"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="646"/>
         <source>French</source>
         <translation>Franču</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="631"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="647"/>
         <source>Croatian</source>
         <translation>Horvātu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="632"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="648"/>
         <source>Italian</source>
         <translation>Itāļu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="649"/>
         <source>Japanese</source>
         <translation>Japāņu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="634"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="650"/>
         <source>Korean</source>
         <translation>Korejiešu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="635"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="651"/>
         <source>Latvian</source>
         <translation>Latviešu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="636"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="652"/>
         <source>Polish</source>
         <translation>Poļu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="637"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="653"/>
         <source>Portuguese</source>
         <translation>Portugāļu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="638"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="654"/>
         <source>Romanian</source>
         <translation>Rumāņu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="639"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="655"/>
         <source>Russian</source>
         <translation>Krievu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="640"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="656"/>
         <source>Slovenian</source>
         <translation>Slovēņu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="641"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="657"/>
         <source>Dutch</source>
         <translation>Nīderlandiešu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="642"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="658"/>
         <source>Norwegian</source>
         <translation>Norvēģu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="659"/>
         <source>Belgium-Flemish</source>
         <translation>Beļģu flāmu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="644"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="660"/>
         <source>Turkish</source>
         <translation>Turku</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="645"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="661"/>
         <source>Hungarian</source>
         <translation>Ungāru</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="646"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="662"/>
         <source>Mongolian</source>
         <translation>Mongoļu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="647"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="663"/>
         <source>Ukrainian</source>
         <translation>Ukraiņu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="648"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="664"/>
         <source>Chinese</source>
         <translation>Ķīniešu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="649"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="665"/>
         <source>Chinese (Traditional)</source>
         <translation>Ķīniešu (tradicionālā)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="650"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="666"/>
         <source>Swedish</source>
         <translation>Zviedru</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="726"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="742"/>
         <source>Cable text font</source>
         <translation>Kabeļa teksta fonts</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="744"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="760"/>
         <source>Core colors font</source>
         <translation>Dzīslu krāsu fonts</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="773"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="789"/>
         <source>Company collection path</source>
         <translation>Uzņēmuma kolekcijas ceļš</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="801"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="817"/>
         <source>Company title-blocks</source>
         <translation>Uzņēmuma pamatraksti</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="829"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="845"/>
         <source>User macro path</source>
         <translation>Lietotāja makro ceļš</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="871"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="887"/>
         <source>Folder not found</source>
         <translation>Mape nav atrasta</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="872"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="888"/>
         <source>The user collection folder:
 %1
 does not exist and could not be created.</source>
@@ -8022,12 +9096,12 @@ does not exist and could not be created.</source>
 nepastāv, un to neizdevās izveidot.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="880"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="896"/>
         <source>No subfolder</source>
         <translation>Nav apakšmapju</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="881"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="897"/>
         <source>The user collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
@@ -8036,34 +9110,34 @@ has no subfolder, so there is no prefix to configure.</source>
 nav apakšmapju, tāpēc nav prefiksa, ko konfigurēt.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="889"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="905"/>
         <source>Prefix file cannot be read</source>
         <translation>Nevar nolasīt prefiksu failu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="898"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="914"/>
         <source>Prefix file damaged</source>
         <translation>Prefiksu fails ir bojāts</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="899"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="915"/>
         <source>The file %1 is not a valid XML file:
 %2</source>
         <translation>Fails %1 nav derīgs XML fails:
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="903"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="919"/>
         <source>Fix the file</source>
         <translation>Labot failu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="904"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="920"/>
         <source>Rebuild</source>
         <translation>Atjaunot</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="905"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="921"/>
         <source>Nothing has been changed yet.
 
 “Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
@@ -8076,36 +9150,36 @@ nav apakšmapju, tāpēc nav prefiksa, ko konfigurēt.</translation>
 “Atjaunot”: mapju struktūra tiek izveidota no jauna, bet visi pašreizējie prefiksi tiek zaudēti. Pirms aizstāšanas pašreizējais fails tiek saglabāts kā qet_labels.xml.bak.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="914"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="930"/>
         <source>File: %1</source>
         <translation>Fails: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="938"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="954"/>
         <source>Select the materials list file</source>
         <translation>Atlasīt materiālu saraksta failu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="940"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="963"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1004"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1027"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="956"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="979"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1020"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1043"/>
         <source>CSV files (*.csv)</source>
         <translation>CSV faili (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="961"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="977"/>
         <source>Create the materials list file</source>
         <translation>Izveidot materiālu saraksta failu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="979"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="995"/>
         <source>Cannot create</source>
         <translation>Nevar izveidot</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="980"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1044"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="996"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1060"/>
         <source>Cannot create the file:
 %1
 %2</source>
@@ -8114,32 +9188,32 @@ nav apakšmapju, tāpēc nav prefiksa, ko konfigurēt.</translation>
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1002"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1018"/>
         <source>Select the cable types file</source>
         <translation>Atlasīt kabeļu tipu failu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1025"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1041"/>
         <source>Create the cable types file</source>
         <translation>Izveidot kabeļu tipu failu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1043"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1059"/>
         <source>Cannot be created</source>
         <translation>Nevar izveidot</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1074"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1090"/>
         <source>Values that are too high might cause the application to crash</source>
         <translation>Pārāk lielas vērtības var izraisīt programmas avāriju</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1109"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1125"/>
         <source>Experimental feature</source>
         <translation>Eksperimentāla funkcija</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1110"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1126"/>
         <source>WARNING:
 Any setting other than “No rounding” may cause rendering errors in the project, depending on:
 
@@ -9273,6 +10347,133 @@ Lūdzu, izmantojiet paplašināto redaktoru.</translation>
     </message>
 </context>
 <context>
+    <name>ItemDescription</name>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="46"/>
+        <source>Master symbol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="47"/>
+        <source>Slave symbol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="49"/>
+        <source>Folio report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="50"/>
+        <source>Terminal</source>
+        <translation type="unfinished">Spaile</translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="51"/>
+        <source>Thumbnail</source>
+        <translation type="unfinished">Sīktēls</translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="52"/>
+        <source>Conductor definition</source>
+        <translation type="unfinished">Vadītāja definīcija</translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="53"/>
+        <source>Symbol</source>
+        <translation type="unfinished">Simbols</translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="70"/>
+        <source>Line (shape)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="71"/>
+        <source>Rectangle (shape)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="72"/>
+        <source>Ellipse (shape)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="73"/>
+        <source>Polygon (shape)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="74"/>
+        <source>Path (shape)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="75"/>
+        <source>Shape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="101"/>
+        <source>Symbol text: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="102"/>
+        <source>Symbol text of %1: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="105"/>
+        <source>Free text: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="108"/>
+        <source>Conductor text: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="113"/>
+        <source>Conductor</source>
+        <translation type="unfinished">Vadītājs</translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="113"/>
+        <source>Conductor %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="120"/>
+        <source>Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="122"/>
+        <source>Table</source>
+        <translation type="unfinished">Tabula</translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="129"/>
+        <source>Text group %1 of %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/itemdescription.cpp" line="130"/>
+        <source>Text group %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/itemdescription.cpp" line="147"/>
+        <source>%n items selected</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>JumpToElementDialog</name>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="43"/>
@@ -9409,87 +10610,107 @@ Lūdzu, izmantojiet paplašināto redaktoru.</translation>
         <translation>Paslēpt pilnībā aizņemtos vadošos elementus</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="516"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="524"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="569"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="577"/>
         <source>Label</source>
         <translation>Marķējums</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="517"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="525"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="570"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="578"/>
         <source>Annotation</source>
         <translation>Anotācija</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="526"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="552"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="579"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="605"/>
         <source>Sheet no.</source>
         <translation>Lapas Nr.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="518"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="541"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="571"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="594"/>
         <source>Sheet label</source>
         <translation>Lapas marķējums</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="520"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="528"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="543"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="554"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="573"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="581"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="596"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="607"/>
         <source>Sheet title</source>
         <translation>Lapas nosaukums</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="519"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="527"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="542"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="553"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="572"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="580"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="595"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="606"/>
         <source>Position</source>
         <translation>Novietojums</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="536"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="547"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="208"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="234"/>
+        <source>That link cannot be made</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="209"/>
+        <source>A bridge and a wire cannot be joined through these items: what one side carries and what the other carries are two different things.
+
+Connect a bridge to a bridge, or a wire to a wire.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="235"/>
+        <source>A bridge lies across one terminal strip: the bridges these items carry are of two of them, and a link would join them.
+
+Bring them into one terminal strip first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="589"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="600"/>
         <source>N° wire</source>
         <translation>Vada Nr.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="537"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="548"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="590"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="601"/>
         <source>Function</source>
         <translation>Funkcija</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="538"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="549"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="591"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="602"/>
         <source>Voltage / Protocol</source>
         <translation>Spriegums / protokols</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="539"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="550"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="592"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="603"/>
         <source>Conductor color</source>
         <translation>Vadītāja krāsa</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="540"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="551"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="593"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="604"/>
         <source>Conductor section</source>
         <translation>Vadītāja šķērsgriezums</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="623"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="676"/>
         <source> (already used)</source>
         <translation> (jau izmantots)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="630"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="683"/>
         <source>Select a PLC I/O</source>
         <translation>Atlasīt PLC ievadi/izvadi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="631"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="684"/>
         <source>Available I/O:</source>
         <translation>Pieejamās ievades/izvades:</translation>
     </message>
@@ -9504,32 +10725,32 @@ Lūdzu, izmantojiet paplašināto redaktoru.</translation>
         <translation>Skatīt saistīto vienumu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="55"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="58"/>
         <source>Link the item</source>
         <translation>Sasaistīt vienumu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="56"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="59"/>
         <source>Show item</source>
         <translation>Rādīt vienumu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="57"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="60"/>
         <source>Show slave element</source>
         <translation>Rādīt pakārtoto elementu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="58"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="61"/>
         <source>Save the layout</source>
         <translation>Saglabāt izkārtojumu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="236"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="289"/>
         <source>Sheet reference</source>
         <translation>Lapas atsauce</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="238"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="291"/>
         <source>Cross-reference (slave)</source>
         <translation>Savstarpējā atsauce (pakārtotais elements)</translation>
     </message>
@@ -11421,12 +12642,12 @@ Vispirms piešķiriet lapām citu numerāciju.</numerusform>
 <context>
     <name>ProjectDBModel</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="377"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="390"/>
         <source>Position</source>
         <translation>Novietojums</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="379"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="392"/>
         <source>Sheet position</source>
         <translation>Lapas pozīcija</translation>
     </message>
@@ -11444,6 +12665,160 @@ Vispirms piešķiriet lapām citu numerāciju.</numerusform>
     <message>
         <source>Reload</source>
         <translation type="vanished">Pārlādēt</translation>
+    </message>
+</context>
+<context>
+    <name>ProjectLanguagesDialog</name>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="48"/>
+        <source>Project languages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="52"/>
+        <source>Add a language, collect the texts of the project, and type the words to show in each language. The folios keep their own text; only what is shown and printed changes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="59"/>
+        <source>Show the folios in</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="63"/>
+        <source>Add language...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="64"/>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="179"/>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="183"/>
+        <source>Remove language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="65"/>
+        <source>Collect texts of the project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="76"/>
+        <source>Export CSV...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="77"/>
+        <source>Import CSV...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="78"/>
+        <source>Add text...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="79"/>
+        <source>Add a text that is not collected, such as a column title of a table.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="135"/>
+        <source>%1 (as drawn)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="147"/>
+        <source>Text as drawn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="162"/>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="167"/>
+        <source>Add language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="163"/>
+        <source>Language code, such as de, fr or pt-BR:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="168"/>
+        <source>&quot;%1&quot; is not a usable language code, or is already there.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="179"/>
+        <source>Select a cell in the column of the language to remove.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="184"/>
+        <source>Remove %1 and all its words?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="200"/>
+        <source>Collect texts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="200"/>
+        <source>%n new text(s) added.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="206"/>
+        <source>Add text</source>
+        <translation type="unfinished">Pievienot tekstu</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="207"/>
+        <source>Text as drawn, for example a column title of a table:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="218"/>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="222"/>
+        <source>Export CSV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="218"/>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="227"/>
+        <source>CSV files (*.csv)</source>
+        <translation type="unfinished">CSV faili (*.csv)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="222"/>
+        <source>Could not write %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="227"/>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="231"/>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="237"/>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="245"/>
+        <source>Import CSV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="231"/>
+        <source>Could not read %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/projectlanguagesdialog.cpp" line="242"/>
+        <source>%n translation(s) imported.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -12096,75 +13471,75 @@ Pārrakstot failu, šīs izmaiņas tiks zaudētas.</translation>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="323"/>
+        <location filename="../sources/qetapp.cpp" line="354"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="525"/>
+        <location filename="../sources/qetapp.cpp" line="556"/>
         <source>QET title blocks</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
         <translation>QET pamatraksti</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="546"/>
+        <location filename="../sources/qetapp.cpp" line="577"/>
         <source>Company title-blocks</source>
         <comment>title of the company&apos;s 					title block templates collection</comment>
         <translation>Uzņēmuma pamatraksti</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="566"/>
+        <location filename="../sources/qetapp.cpp" line="597"/>
         <source>User title blocks</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
         <translation>Lietotāja pamatraksti</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2443"/>
-        <location filename="../sources/qetapp.cpp" line="2517"/>
+        <location filename="../sources/qetapp.cpp" line="2486"/>
+        <location filename="../sources/qetapp.cpp" line="2560"/>
         <source>Save settings as...</source>
         <comment>dialog title</comment>
         <translation>Saglabāt iestatījumus kā...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2519"/>
-        <location filename="../sources/qetapp.cpp" line="2561"/>
+        <location filename="../sources/qetapp.cpp" line="2562"/>
+        <location filename="../sources/qetapp.cpp" line="2604"/>
         <source>QElectroTech settings (*.conf)</source>
         <comment>file dialog filter</comment>
         <translation>QElectroTech iestatījumi (*.conf)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2534"/>
-        <location filename="../sources/qetapp.cpp" line="2574"/>
+        <location filename="../sources/qetapp.cpp" line="2577"/>
+        <location filename="../sources/qetapp.cpp" line="2617"/>
         <source>Error</source>
         <comment>message box title</comment>
         <translation>Kļūda</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2535"/>
+        <location filename="../sources/qetapp.cpp" line="2578"/>
         <source>Cannot save the settings to “%1”.</source>
         <translation>Nevar saglabāt iestatījumus failā “%1”.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2559"/>
+        <location filename="../sources/qetapp.cpp" line="2602"/>
         <source>Load settings...</source>
         <comment>dialog title</comment>
         <translation>Ielādēt iestatījumus...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2575"/>
+        <location filename="../sources/qetapp.cpp" line="2618"/>
         <source>“%1” is not a settings file saved by QElectroTech.</source>
         <translation>“%1” nav QElectroTech saglabāts iestatījumu fails.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2611"/>
-        <location filename="../sources/qetapp.cpp" line="2624"/>
+        <location filename="../sources/qetapp.cpp" line="2654"/>
+        <location filename="../sources/qetapp.cpp" line="2667"/>
         <source>Load settings</source>
         <comment>message box title</comment>
         <translation>Ielādēt iestatījumus</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2583"/>
+        <location filename="../sources/qetapp.cpp" line="2626"/>
         <source>These settings will replace your current ones, except the window layout and the list of recent files.
 
 QElectroTech will then close. Start it again to use the new settings.
@@ -12177,37 +13552,37 @@ Pēc tam QElectroTech tiks aizvērts. Palaidiet programmu no jauna, lai lietotu 
 Vai turpināt?</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2422"/>
+        <location filename="../sources/qetapp.cpp" line="2465"/>
         <source>Toolbars, keyboard shortcuts, mouse and trackpad gestures</source>
         <translation>Rīkjoslas, tastatūras īsceļi, peles un skārienpaliktņa žesti</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2424"/>
+        <location filename="../sources/qetapp.cpp" line="2467"/>
         <source>Defaults for new projects: folio, title block, wires, numbering</source>
         <translation>Jaunu projektu noklusējuma iestatījumi: lapas, pamatraksts, vadi un numerācija</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2427"/>
+        <location filename="../sources/qetapp.cpp" line="2470"/>
         <source>All other settings: appearance, grid, language...</source>
         <translation>Pārējie iestatījumi: izskats, režģis, valoda...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2429"/>
+        <location filename="../sources/qetapp.cpp" line="2472"/>
         <source>Folders of the collections</source>
         <translation>Kolekciju mapes</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2446"/>
+        <location filename="../sources/qetapp.cpp" line="2489"/>
         <source>Settings to save:</source>
         <translation>Saglabājamie iestatījumi:</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2456"/>
+        <location filename="../sources/qetapp.cpp" line="2499"/>
         <source>The folders of your collections are saved only when every part is ticked.</source>
         <translation>Kolekciju mapes tiek saglabātas tikai tad, ja ir atzīmētas visas sadaļas.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2595"/>
+        <location filename="../sources/qetapp.cpp" line="2638"/>
         <source>These settings will replace your current ones for:
 %1
 All your other settings are kept.</source>
@@ -12216,142 +13591,151 @@ All your other settings are kept.</source>
 Pārējie iestatījumi tiks saglabāti.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2601"/>
+        <location filename="../sources/qetapp.cpp" line="2644"/>
         <source>QElectroTech will then close. Start it again to use the new settings.</source>
         <translation>Pēc tam QElectroTech tiks aizvērts. Palaidiet programmu no jauna, lai lietotu jaunos iestatījumus.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2603"/>
+        <location filename="../sources/qetapp.cpp" line="2646"/>
         <source>Projects already open keep their own defaults.</source>
         <translation>Jau atvērtajos projektos saglabāsies to pašreizējie noklusējuma iestatījumi.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2604"/>
+        <location filename="../sources/qetapp.cpp" line="2647"/>
         <source>Do you want to continue?</source>
         <translation>Vai turpināt?</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2625"/>
+        <location filename="../sources/qetapp.cpp" line="2668"/>
         <source>The settings are loaded. They are used for the next new project.</source>
         <translation>Iestatījumi ir ielādēti. Tie tiks lietoti nākamajam jaunajam projektam.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3037"/>
+        <location filename="../sources/qetapp.cpp" line="3080"/>
         <source>&amp;Quit</source>
         <translation>&amp;Iziet</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3039"/>
+        <location filename="../sources/qetapp.cpp" line="3082"/>
         <source>&amp;Hide</source>
         <translation>&amp;Paslēpt</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3041"/>
+        <location filename="../sources/qetapp.cpp" line="3084"/>
         <source>&amp;Show</source>
         <translation>&amp;Rādīt</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3043"/>
+        <location filename="../sources/qetapp.cpp" line="3086"/>
         <source>&amp;Hide diagram editor</source>
         <translation>&amp;Paslēpt shēmas redaktoru</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3046"/>
+        <location filename="../sources/qetapp.cpp" line="3089"/>
         <source>&amp;Show diagram editors</source>
         <translation>&amp;Rādīt shēmu redaktorus</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3049"/>
+        <location filename="../sources/qetapp.cpp" line="3092"/>
         <source>&amp;Hide element editor</source>
         <translation>&amp;Paslēpt elementu redaktoru</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3052"/>
+        <location filename="../sources/qetapp.cpp" line="3095"/>
         <source>&amp;Show element editor</source>
         <translation>&amp;Rādīt elementu redaktoru</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3055"/>
+        <location filename="../sources/qetapp.cpp" line="3098"/>
         <source>&amp;Hide title block template editor</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Paslēpt pamatraksta veidnes redaktoru</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3058"/>
+        <location filename="../sources/qetapp.cpp" line="3101"/>
         <source>&amp;Show title block template editors</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Rādīt pamatrakstu veidņu redaktorus</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3061"/>
+        <location filename="../sources/qetapp.cpp" line="3104"/>
         <source>&amp;New diagram editor</source>
         <translation>&amp;Jauns shēmas redaktors</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3063"/>
+        <location filename="../sources/qetapp.cpp" line="3106"/>
         <source>&amp;New element editor</source>
         <translation>&amp;Jauns elementu redaktors</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3065"/>
+        <location filename="../sources/qetapp.cpp" line="3108"/>
         <source>Closes QElectroTech</source>
         <translation>Aizver QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3066"/>
+        <location filename="../sources/qetapp.cpp" line="3109"/>
         <source>Reduces QElectroTech into the systray</source>
         <translation>Minimizē QElectroTech sistēmas teknē</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3067"/>
+        <location filename="../sources/qetapp.cpp" line="3110"/>
         <source>Restore QElectroTech</source>
         <translation>Atjaunot QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3190"/>
+        <location filename="../sources/qetapp.cpp" line="3233"/>
         <source>Diagram editors</source>
         <translation>Shēmu redaktori</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3200"/>
+        <location filename="../sources/qetapp.cpp" line="3243"/>
         <source>Element editors</source>
         <translation>Elementu redaktori</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3211"/>
+        <location filename="../sources/qetapp.cpp" line="3254"/>
         <source>Title block template editors</source>
         <comment>systray menu entry</comment>
         <translation>Pamatrakstu veidņu redaktori</translation>
     </message>
+    <message numerus="yes">
+        <location filename="../sources/qetapp.cpp" line="3309"/>
+        <source>%n automatic backup(s) kept and not offered: Settings &gt; General, &quot;Offer to restore automatic backups at start&quot;</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3391"/>
+        <location filename="../sources/qetapp.cpp" line="3454"/>
         <source>Crash report</source>
         <translation>Avārijas pārskats</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3392"/>
+        <location filename="../sources/qetapp.cpp" line="3455"/>
         <source>QElectroTech did not close correctly the last time it was run.
 Here are the last messages logged before it closed — you can save them to include them in a bug report.</source>
         <translation>Iepriekšējā palaišanas reizē QElectroTech netika aizvērts pareizi.
 Tālāk redzami pēdējie žurnālā ierakstītie ziņojumi pirms aizvēršanas — varat tos saglabāt un pievienot kļūdas ziņojumam.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3414"/>
+        <location filename="../sources/qetapp.cpp" line="3477"/>
         <source>Diagnostic report</source>
         <translation>Diagnostikas pārskats</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3415"/>
+        <location filename="../sources/qetapp.cpp" line="3478"/>
         <source>This contains the latest log entries for this session. Please check the contents before attaching it to a public bug report.</source>
         <translation>Šeit ir šīs sesijas jaunākie žurnāla ieraksti. Pirms pievienošanas publiskam kļūdas ziņojumam, lūdzu, pārbaudiet to saturu.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3495"/>
+        <location filename="../sources/qetapp.cpp" line="3558"/>
         <source>Usage: </source>
         <translation>Lietošana: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3498"/>
+        <location filename="../sources/qetapp.cpp" line="3561"/>
         <source>QElectroTech, an application to design electric diagrams.
 
 Available options: 
@@ -12368,7 +13752,7 @@ Pieejamās opcijas:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3497"/>
+        <location filename="../sources/qetapp.cpp" line="3560"/>
         <source> [options] [file]...
 
 </source>
@@ -12377,35 +13761,35 @@ Pieejamās opcijas:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3505"/>
+        <location filename="../sources/qetapp.cpp" line="3568"/>
         <source>  --common-elements-dir=DIR     Define the elements collection directory
 </source>
         <translation>  --common-elements-dir=DIR     Norādīt elementu kolekcijas mapi
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3508"/>
+        <location filename="../sources/qetapp.cpp" line="3571"/>
         <source>  --common-tbt-dir=DIR          Define the title block templates collection directory
 </source>
         <translation>  --common-tbt-dir=DIR          Norādīt pamatrakstu veidņu kolekcijas mapi
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3511"/>
+        <location filename="../sources/qetapp.cpp" line="3574"/>
         <source>  --config-dir=DIR              Define configuration directory
 </source>
         <translation>  --config-dir=DIR              Norādīt konfigurācijas mapi
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3514"/>
+        <location filename="../sources/qetapp.cpp" line="3577"/>
         <source>  --data-dir=DIR                Define data directory
 </source>
         <translation>  --data-dir=DIR                Norādīt datu mapi
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3516"/>
+        <location filename="../sources/qetapp.cpp" line="3579"/>
         <source>  --lang-dir=DIR                Define the language files directory
 </source>
         <translation>  --lang-dir=DIR                Norādīt valodu failu mapi
@@ -12430,61 +13814,61 @@ Pieejamās opcijas:
         <translation>Ielādē... Atver failus</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1730"/>
+        <location filename="../sources/qetapp.cpp" line="1771"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1732"/>
+        <location filename="../sources/qetapp.cpp" line="1773"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1734"/>
+        <location filename="../sources/qetapp.cpp" line="1775"/>
         <source>Diagram</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Shēma</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1736"/>
+        <location filename="../sources/qetapp.cpp" line="1777"/>
         <source>Electric</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Elektrisks</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1738"/>
+        <location filename="../sources/qetapp.cpp" line="1779"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2342"/>
+        <location filename="../sources/qetapp.cpp" line="2385"/>
         <source>Configure QElectroTech</source>
         <comment>window title</comment>
         <translation>Konfigurēt QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2788"/>
+        <location filename="../sources/qetapp.cpp" line="2831"/>
         <source>Loading...</source>
         <comment>splash screen caption</comment>
         <translation>Ielādē...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3030"/>
+        <location filename="../sources/qetapp.cpp" line="3073"/>
         <source>Loading... Systray icon</source>
         <comment>splash screen caption</comment>
         <translation>Ielādē... Sistēmas teknes ikonu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3034"/>
+        <location filename="../sources/qetapp.cpp" line="3077"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3096"/>
+        <location filename="../sources/qetapp.cpp" line="3139"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
@@ -12493,1631 +13877,1798 @@ Pieejamās opcijas:
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="584"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="661"/>
         <source>Place symbol texts</source>
         <translation>Novietot simbolu tekstus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="662"/>
         <source>Place the label and the notes of the selected symbols as one block beside them</source>
         <comment>status bar tip</comment>
         <translation>Novietot atlasīto simbolu marķējumus un piezīmes vienā blokā tiem blakus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
         <source>Above, left</source>
         <translation>Augšā pa kreisi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
         <source>Above</source>
         <translation>Augšā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="596"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="673"/>
         <source>Above, right</source>
         <translation>Augšā pa labi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="674"/>
         <source>Left</source>
         <translation>Pa kreisi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="598"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
         <source>On the symbol</source>
         <translation>Uz simbola</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="676"/>
         <source>Right</source>
         <translation>Pa labi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="677"/>
         <source>Below, left</source>
         <translation>Apakšā pa kreisi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="601"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="678"/>
         <source>Below</source>
         <translation>Apakšā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="602"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="679"/>
         <source>Below, right</source>
         <translation>Apakšā pa labi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1804"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2042"/>
         <source>Displ&amp;ay</source>
         <translation>&amp;Attēlojums</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1971"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2220"/>
         <source>Show or hide the elements panel</source>
         <translation>Rādīt vai paslēpt elementu paneli</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1315"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1490"/>
         <source>Add a column</source>
         <translation>Pievienot kolonnu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1223"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1393"/>
         <source>&amp;Cascade</source>
         <translation>&amp;Kaskāde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="500"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="577"/>
         <source>&amp;Paste</source>
         <translation>&amp;Ielīmēt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="499"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
         <source>&amp;Copy</source>
         <translation>&amp;Kopēt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="498"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
         <source>Cu&amp;t</source>
         <translation>&amp;Izgriezt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1507"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1720"/>
         <source>Select none</source>
         <translation>Atcelt atlasi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1798"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2036"/>
         <source>&amp;Edit</source>
         <translation>&amp;Rediģēt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1316"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1491"/>
         <source>Remove a column</source>
         <translation>Noņemt kolonnu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1273"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1444"/>
         <source>&amp;Save</source>
         <translation>&amp;Saglabāt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1274"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1445"/>
         <source>Save as</source>
         <translation>Saglabāt kā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="448"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="525"/>
         <source>&amp;Export</source>
         <translation>&amp;Eksportēt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1806"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2045"/>
         <source>Wi&amp;ndows</source>
         <translation>&amp;Logi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1277"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5252"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1448"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5681"/>
         <source>&amp;Close</source>
         <translation>&amp;Aizvērt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1797"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2035"/>
         <source>&amp;File</source>
         <translation>&amp;Fails</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="459"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="536"/>
         <source>Print</source>
         <translation>Drukāt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1508"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1721"/>
         <source>Invert selection</source>
         <translation>Invertēt atlasi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1399"/>
         <source>Select</source>
         <translation>Atlasīt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="399"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="476"/>
         <source>This panel lists the various changes applied to the current sheet. Clicking a change gets the sheet back to its state right after it was applied.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Šajā panelī ir uzskaitītas pašreizējā lapā veiktās izmaiņas. Noklikšķinot uz izmaiņas, lapa tiek atjaunota stāvoklī tūlīt pēc tās veikšanas.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="740"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="875"/>
         <source>Display the grid</source>
         <translation>Rādīt režģi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="742"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="877"/>
         <source>Display or hide the grid of sheet</source>
         <translation>Rādīt vai paslēpt lapas režģi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="757"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="892"/>
         <source>Folio-wide crosshair</source>
         <translation>Krustveida kursors visā lapā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="759"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="894"/>
         <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
         <translation>Rādīt divas līnijas pāri visai lapai zem peles kursora, lai pārbaudītu detaļu līdzinājumu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="957"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1092"/>
         <source>Sheet properties</source>
         <translation>Lapas rekvizīti</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="986"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1156"/>
         <source>Add a sheet</source>
         <translation>Pievienot lapu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="995"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4329"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4352"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1165"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4694"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4717"/>
         <source>Delete this sheet</source>
         <translation>Dzēst šo lapu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1242"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1412"/>
         <source>Move</source>
         <translation>Pārvietot</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1218"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1388"/>
         <source>&amp;Tile</source>
         <translation>&amp;Flīzes</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="449"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="471"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="482"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="489"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="494"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="504"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="505"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="506"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="507"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="509"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="567"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="568"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="371"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="374"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="526"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="537"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="548"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="559"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="566"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="571"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="581"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="582"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="583"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="584"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="586"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="640"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="664"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="696"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="700"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="718"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="728"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="737"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="741"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="758"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="771"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="844"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="858"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="871"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="958"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="970"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="977"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="982"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="987"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="996"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1001"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1012"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1020"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1029"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1037"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1048"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1074"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1085"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1097"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1109"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1122"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1131"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1160"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1177"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="644"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="645"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="663"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="711"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="734"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="752"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="776"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="787"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="808"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="812"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="836"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="853"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="863"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="872"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="876"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="893"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="906"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="934"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="979"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="993"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1006"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1093"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1105"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1118"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1136"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1147"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1152"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1157"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1166"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1171"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1182"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1194"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1202"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1208"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1219"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1224"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1230"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1243"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1261"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1266"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1190"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1199"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1207"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1218"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1244"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1255"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1267"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1279"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1280"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1281"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1282"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1283"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1294"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1333"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1351"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1292"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1301"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1330"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1347"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1352"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1353"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1354"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1356"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1357"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1358"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1359"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1360"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1377"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1390"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1364"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1372"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1378"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1389"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1394"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1400"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1413"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1427"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1442"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1431"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1436"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1450"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1451"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1452"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1453"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1454"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1455"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1468"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1469"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1479"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1499"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1512"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1513"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1514"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1517"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1518"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1543"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1544"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1545"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1546"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1547"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1548"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1647"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1659"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1670"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1508"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1527"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1528"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1529"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1530"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1532"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1533"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1534"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1535"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1536"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1537"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1554"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1567"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1601"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1624"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1638"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1653"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1681"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1682"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1692"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1712"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1725"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1726"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1727"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1730"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1731"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1756"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1757"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1758"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1759"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1760"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1761"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1874"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1886"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1897"/>
         <source>Diagram editors</source>
         <translation>Shēmu redaktori</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="470"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="547"/>
         <source>Export in pdf</source>
         <translation>Eksportēt PDF formātā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="472"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="549"/>
         <source>Export one or more sheets of the current project</source>
         <comment>status bar tip</comment>
         <translation>Eksportēt vienu vai vairākas pašreizējā projekta lapas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="843"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="978"/>
         <source>View the guides</source>
         <translation>Rādīt palīglīnijas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="845"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="980"/>
         <source>Shows or hides the guides</source>
         <translation>Rāda vai paslēpj palīglīnijas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1011"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1181"/>
         <source>Export to CSV</source>
         <translation>Eksportēt CSV formātā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1036"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1206"/>
         <source>Terminal block manager (DEV)</source>
         <translation>Spaiļu bloku pārvaldnieks (DEV)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1047"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1217"/>
         <source>Launch the terminal block creation plugin</source>
         <translation>Palaist spaiļu bloku izveides spraudni</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1073"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1243"/>
         <source>Export the list of names of wires</source>
         <translation>Eksportēt vadu nosaukumu sarakstu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1084"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1254"/>
         <source>Export the wiring diagram</source>
         <translation>Eksportēt vadu savienojumu shēmu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1108"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1278"/>
         <source>Automatic numbering of terminals</source>
         <translation>Automātiski numurēt spailes</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1193"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1363"/>
         <source>Export the internal project database</source>
         <translation>Eksportēt projekta iekšējo datubāzi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1271"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1441"/>
         <source>&amp;New</source>
         <translation>&amp;Jauns</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1285"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1457"/>
         <source>Creates a new project</source>
         <comment>status bar tip</comment>
         <translation>Izveido jaunu projektu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1286"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1460"/>
         <source>Opens an existing project</source>
         <comment>status bar tip</comment>
         <translation>Atver esošu projektu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1287"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1461"/>
         <source>Closes the current project</source>
         <comment>status bar tip</comment>
         <translation>Aizver pašreizējo projektu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1288"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1462"/>
         <source>Saves the current project and all its sheets</source>
         <comment>status bar tip</comment>
         <translation>Saglabā pašreizējo projektu un visas tā lapas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1289"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1463"/>
         <source>Saves the current project with a different file name</source>
         <comment>status bar tip</comment>
         <translation>Saglabā pašreizējo projektu ar citu faila nosaukumu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1317"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1492"/>
         <source>Add row</source>
         <comment>Add row</comment>
         <translation>Pievienot rindu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1318"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1493"/>
         <source>Remove a row</source>
         <comment>Remove row</comment>
         <translation>Noņemt rindu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1320"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1495"/>
         <source>Add a column to the sheet</source>
         <comment>status bar tip</comment>
         <translation>Pievienot lapai kolonnu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1321"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1496"/>
         <source>Remove a column from the sheet</source>
         <comment>status bar tip</comment>
         <translation>Noņemt kolonnu no lapas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1322"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1497"/>
         <source>Expands the sheet height</source>
         <comment>status bar tip</comment>
         <translation>Palielina lapas augstumu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1323"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1498"/>
         <source>Shrinks the sheet height</source>
         <comment>status bar tip</comment>
         <translation>Samazina lapas augstumu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1447"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1658"/>
         <source>Removes selected elements from the sheet</source>
         <comment>status bar tip</comment>
         <translation>Noņem atlasītos elementus no lapas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1520"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1733"/>
         <source>Selects all elements on the sheet</source>
         <comment>status bar tip</comment>
         <translation>Atlasa visus lapas elementus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1521"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1734"/>
         <source>Deselect all elements on the sheet</source>
         <comment>status bar tip</comment>
         <translation>Atceļ visu lapas elementu atlasi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1550"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1763"/>
         <source>Expand the sheet</source>
         <comment>status bar tip</comment>
         <translation>Palielināt lapu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1551"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1764"/>
         <source>Shrinks the sheet</source>
         <comment>status bar tip</comment>
         <translation>Samazināt lapu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1552"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1765"/>
         <source>Adjusts the zoom to display all the contents of sheet regardless of context</source>
         <translation>Pielāgo mērogu, lai parādītu visu lapas saturu neatkarīgi no konteksta</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1553"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1766"/>
         <source>Adjusts the zoom on exactly the part of the sheet</source>
         <comment>status bar tip</comment>
         <translation>Pielāgo mērogu precīzi atlasītajai lapas daļai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1585"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1798"/>
         <source>Add line</source>
         <comment>Draw line</comment>
         <translation>Pievienot līniju</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1586"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1799"/>
         <source>Add a rectangle</source>
         <translation>Pievienot taisnstūri</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1587"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1800"/>
         <source>Add an ellipse</source>
         <translation>Pievienot elipsi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1589"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1802"/>
         <source>Add a polygon</source>
         <translation>Pievienot daudzstūri</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="450"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="527"/>
         <source>Exports the current sheet to another format</source>
         <comment>status bar tip</comment>
         <translation>Eksportē pašreizējo lapu citā formātā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="461"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="538"/>
         <source>Prints one or more sheet of the current project</source>
         <comment>status bar tip</comment>
         <translation>Drukā vienu vai vairākas pašreizējā projekta lapas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1700"/>
-        <location filename="../sources/diagramtoolbarsettings.cpp" line="75"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1927"/>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="78"/>
         <source>Depth</source>
         <comment>toolbar title</comment>
         <translation>Secība</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3304"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3645"/>
         <source>Group</source>
         <translation>Grupēt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="590"/>
         <source>Pastes elements from the clipboard into the sheet</source>
         <comment>status bar tip</comment>
         <translation>Ielīmē starpliktuves elementus lapā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="959"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1094"/>
         <source>Edits the properties of the sheet (size, title block information, conductor properties...)</source>
         <comment>status bar tip</comment>
         <translation>Rediģē lapas rekvizītus (izmēru, pamatraksta informāciju, vadītāju rekvizītus u. c.)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1244"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1414"/>
         <source>Allows to view the sheet without modifying it</source>
         <comment>status bar tip</comment>
         <translation>Ļauj skatīt lapu, to nemainot</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1688"/>
-        <location filename="../sources/diagramtoolbarsettings.cpp" line="67"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1915"/>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="68"/>
         <source>Tools</source>
         <translation>Rīki</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1272"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1443"/>
         <source>&amp;Open</source>
         <translation>&amp;Atvērt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2137"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2412"/>
         <source>Open a file</source>
         <translation>Atvērt failu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1539"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1752"/>
         <source>Reset zoom</source>
         <translation>Atiestatīt mērogu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1340"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1515"/>
         <source>Rotate</source>
         <translation>Pagriezt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="481"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="558"/>
         <source>&amp;Quit</source>
         <translation>&amp;Iziet</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1339"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1514"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3546"/>
         <source>Delete</source>
         <translation>Dzēst</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1506"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1719"/>
         <source>Select All</source>
         <translation>Atlasīt visu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1538"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1751"/>
         <source>Fit in view</source>
         <translation>Ietilpināt skatā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1536"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1749"/>
         <source>Zoom Out</source>
         <translation>Tālināt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1535"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1748"/>
         <source>Zoom In</source>
         <translation>Tuvināt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="487"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="564"/>
         <source>Undo</source>
         <translation>Atsaukt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="492"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="569"/>
         <source>Redo</source>
         <translation>Atcelt atsaukšanu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="674"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="786"/>
         <source>Reset conductors</source>
         <translation>Atiestatīt vadītājus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1968"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2217"/>
         <source>Display or hide the main toolbar</source>
         <translation>Rādīt vai paslēpt galveno rīkjoslu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1969"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2218"/>
         <source>Display or hide the Display toolbar</source>
         <translation>Rādīt vai paslēpt attēlojuma rīkjoslu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1970"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2219"/>
         <source>Display or hide the Diagram toolbar</source>
         <translation>Rādīt vai paslēpt shēmas rīkjoslu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1691"/>
-        <location filename="../sources/diagramtoolbarsettings.cpp" line="69"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1918"/>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="70"/>
         <source>Display</source>
         <translation>Attēlojums</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1694"/>
-        <location filename="../sources/diagramtoolbarsettings.cpp" line="71"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1921"/>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="72"/>
         <source>Diagram</source>
         <translation>Shēma</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1580"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1793"/>
         <source>Add a textfield</source>
         <translation>Pievienot teksta lauku</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="397"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="474"/>
         <source>No modification</source>
         <translation>Nav izmaiņu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1972"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2221"/>
         <source>Display or hide the undo list</source>
         <translation>Rādīt vai paslēpt atsaukšanas sarakstu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1346"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1522"/>
         <source>Edit the selected item</source>
         <translation>Rediģēt atlasīto vienumu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1347"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1523"/>
         <source>Group selected texts</source>
         <translation>Grupēt atlasītos tekstus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1448"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1659"/>
         <source>Rotate selected elements and texts</source>
         <comment>status bar tip</comment>
         <translation>Pagriezt atlasītos elementus un tekstus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1450"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1661"/>
         <source>Rotate selected texts to a specific angle</source>
         <comment>status bar tip</comment>
         <translation>Pagriezt atlasītos tekstus noteiktā leņķī</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1658"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1885"/>
         <source>Search / Replace</source>
         <translation>Meklēt / aizstāt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1799"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2037"/>
         <source>&amp;Project</source>
         <translation>&amp;Projekts</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1828"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2067"/>
         <source>&amp;Latest files</source>
         <translation>&amp;Nesenie faili</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2066"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2089"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2326"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2349"/>
         <source>Project %1 registered in the directory: %2.</source>
         <translation>Projekts %1 reģistrēts mapē: %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2459"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2734"/>
         <source>The file you try to open does not seem readable and can not be opened. Please check the file permissions.</source>
         <translation>Šķiet, ka failu nevar nolasīt un atvērt. Pārbaudiet faila atļaujas.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2473"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2748"/>
         <source>The project you try to open does not seem writable. It will be opened read-only.</source>
         <translation>Šķiet, ka projektā nevar veikt izmaiņas. Tas tiks atvērts tikai lasīšanai.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1201"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1371"/>
         <source>using tabs</source>
         <translation>izmantojot cilnes</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1207"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1377"/>
         <source>using windows</source>
         <translation>izmantojot logus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1976"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2225"/>
         <source>Display projects</source>
         <translation>Rādīt projektus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="969"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1104"/>
         <source>Project properties</source>
         <translation>Projekta rekvizīti</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1000"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1170"/>
         <source>Clean project</source>
         <translation>Attīrīt projektu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2559"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4011"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4058"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2834"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4376"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4423"/>
         <source>Unable to open project</source>
         <comment>message box title</comment>
         <translation>Neizdevās atvērt projektu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2561"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2836"/>
         <source>The file %1 does not appear to be a QElectroTech project file. Thus it cannot be opened.</source>
         <comment>message box content</comment>
         <translation>Šķiet, ka fails %1 nav QElectroTech projekta fails, tāpēc to nevar atvērt.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="266"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4652"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4655"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5038"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5041"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="268"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="351"/>
         <source>QElectroTech</source>
         <comment>status bar message</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="401"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="478"/>
         <source>Undo</source>
         <comment>dock title</comment>
         <translation>Atsaukt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="398"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="475"/>
         <source>Click an action to get back in the changes you made to your diagram</source>
         <comment>Status tip</comment>
         <translation>Noklikšķiniet uz darbības, lai atgrieztu shēmu iepriekšējā stāvoklī</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1342"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1517"/>
         <source>Choose texts orientation</source>
         <translation>Izvēlēties teksta orientāciju</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1345"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1520"/>
         <source>Find in the panel</source>
         <translation>Atrast panelī</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1581"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1794"/>
         <source>Add a picture</source>
         <translation>Pievienot attēlu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1028"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1198"/>
         <source>Add a summary</source>
         <translation>Pievienot kopsavilkumu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1537"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1750"/>
         <source>Zoom content</source>
         <translation>Tuvināt saturu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="483"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="560"/>
         <source>Closes QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Aizver QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="490"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="567"/>
         <source>Undoes the previous action</source>
         <comment>status bar tip</comment>
         <translation>Atsauc iepriekšējo darbību</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="495"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="572"/>
         <source>Restores the undone action</source>
         <comment>status bar tip</comment>
         <translation>Atjauno atsaukto darbību</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="511"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="588"/>
         <source>Puts selected elements into the clipboard</source>
         <comment>status bar tip</comment>
         <translation>Ievieto atlasītos elementus starpliktuvē</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="512"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="589"/>
         <source>Copies selected elements</source>
         <comment>status bar tip</comment>
         <translation>Kopē atlasītos elementus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1522"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1735"/>
         <source>Inverts selection of elements</source>
         <comment>status bar tip</comment>
         <translation>Invertē elementu atlasi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1453"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1664"/>
         <source>Find the selected item in the panel</source>
         <comment>status bar tip</comment>
         <translation>Atrod atlasīto vienumu panelī</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="676"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="788"/>
         <source>Reset the conductors path ignoring the user changes</source>
         <comment>status bar tip</comment>
         <translation>Atiestata vadītāju maršrutu, ignorējot lietotāja veiktās izmaiņas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="683"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="795"/>
         <source>Automatic creation conductor (s)</source>
         <comment>Tool tip of auto conductor</comment>
         <translation>Automātiski izveidot vadītāju(s)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="331"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="408"/>
         <source>Projects</source>
         <comment>dock title</comment>
         <translation>Projekti</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="366"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="443"/>
         <source>Collections</source>
         <translation>Kolekcijas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="684"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="796"/>
         <source>Using the automatic creation of conductor (s) when possible</source>
         <comment>Status tip of auto conductor</comment>
         <translation>Ja iespējams, automātiski izveidot vadītāju(s)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1554"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1767"/>
         <source>Restores default zoom level</source>
         <comment>status bar tip</comment>
         <translation>Atjauno noklusējuma mērogu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1209"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1379"/>
         <source>Shows the various opened projects in windows</source>
         <comment>status bar tip</comment>
         <translation>Rāda atvērtos projektus atsevišķos logos</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="323"/>
+        <source>What the mouse points at, or else what is selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="578"/>
         <source>Paste at the original position</source>
         <translation>Ielīmēt sākotnējā vietā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="502"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3861"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="579"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4226"/>
         <source>Paste element information</source>
         <translation>Ielīmēt elementa informāciju</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="591"/>
         <source>Places the clipboard&apos;s items at their original position and moves the cursor to that point</source>
         <comment>status bar tip</comment>
         <translation>Ievieto starpliktuves vienumus to sākotnējā vietā un pārvieto kursoru uz šo punktu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="592"/>
         <source>Copies the filled-in information of the element on the clipboard to the selected elements</source>
         <comment>status bar tip</comment>
         <translation>Kopē starpliktuvē esošā elementa aizpildīto informāciju atlasītajos elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="564"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="641"/>
         <source>Copy text format</source>
         <translation>Kopēt teksta formatējumu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="565"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="642"/>
         <source>Apply text format</source>
         <translation>Lietot teksta formatējumu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="570"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="647"/>
         <source>Copy the text format of the selected element as a template</source>
         <comment>status bar tip</comment>
         <translation>Kopēt atlasītā elementa teksta formatējumu kā paraugu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="571"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="648"/>
         <source>Apply the copied text format to the selected elements</source>
         <comment>status bar tip</comment>
         <translation>Lietot nokopēto teksta formatējumu atlasītajiem elementiem</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="639"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="709"/>
+        <source>Reference destination...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="710"/>
+        <source>Make the selected free texts links to a folio: Ctrl-click opens it, and a PDF export keeps the link</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="722"/>
+        <source>Remove reference destination</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="723"/>
+        <source>Assign reference destination</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="732"/>
+        <source>Keep texts clear of wires...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="733"/>
+        <source>Move the texts that sit on a wire off it, in one undo step</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="751"/>
         <source>&amp;Duplicate</source>
         <translation>&amp;Dublēt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="641"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="753"/>
         <source>Copies the selection, offset by the configured spacing</source>
         <comment>status bar tip</comment>
         <translation>Kopē atlasi ar iestatīto nobīdi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="663"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="775"/>
         <source>Configure duplication...</source>
         <translation>Konfigurēt dublēšanu...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="665"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="777"/>
         <source>Choose the spacing and direction used by Duplicate</source>
         <comment>status bar tip</comment>
         <translation>Izvēlēties dublēšanas nobīdi un virzienu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="699"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
         <source>Automatic disconnection of conductor(s)</source>
         <comment>Tool tip of auto break conductor</comment>
         <translation>Automātiski atvienot vadītāju(s)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="701"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="813"/>
         <source>Automatically cut existing conductors when placing an element</source>
         <comment>Status tip of auto break conductor</comment>
         <translation>Novietojot elementu, automātiski pārraut esošos vadītājus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="715"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="829"/>
+        <source>Automatic connections (chosen when the project is created)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="830"/>
+        <source>Terminals in line connect to the next free terminal they face, and are disconnected again when moved out of line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="834"/>
+        <source>Connect aligned terminals on this folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="835"/>
+        <source>Connect every free terminal of the folio to the next free terminal it faces</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="842"/>
+        <source>Connect aligned terminals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="850"/>
         <source>Show terminal strip labels at their first terminal</source>
         <translation>Rādīt spaiļu joslu apzīmējumus pie to pirmās spailes</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="716"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="851"/>
         <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
         <translation>Katras spaiļu joslas apzīmējums tiek rādīts pie tās pirmās spailes katrā lapā un pārvietojas kopā ar to</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="860"/>
         <source>Show terminal strip bridges between their terminals</source>
         <translation>Rādīt tiltsavienojumus starp spailēm</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="726"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="861"/>
         <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
         <translation>Katrā lapā blakus esošas ar tiltu savienotas spailes tiek savienotas ar līniju</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="816"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="951"/>
         <source>Text grid</source>
         <translation>Teksta režģis</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="823"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="958"/>
         <source>Snap grid for texts moved with the mouse.
 Hold Ctrl while moving to place freely.</source>
         <translation>Režģis ar peli pārvietojamiem tekstiem.
 Lai novietotu brīvi, pārvietošanas laikā turiet nospiestu Ctrl.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="829"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="964"/>
         <source>Disabled</source>
         <translation>Atspējots</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="857"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="992"/>
         <source>Keep headers visible</source>
         <translation>Vienmēr rādīt galvenes</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="859"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="994"/>
         <source>Keeps the sheet&apos;s column numbers and row letters visible at the edge of the view</source>
         <translation>Lapas kolonnu numuri un rindu burti paliek redzami skata malā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="870"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1005"/>
         <source>Show cell boundaries</source>
         <translation>Rādīt šūnu robežas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="872"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1007"/>
         <source>Draws the boundaries of the sheet&apos;s columns and rows on the diagram, on screen only</source>
         <translation>Shēmā ekrānā attēlo lapas kolonnu un rindu robežas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="883"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1018"/>
         <source>Show</source>
         <translation>Rādīt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="885"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1020"/>
         <source>Element texts</source>
         <translation>Elementu teksti</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="886"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1021"/>
         <source>Conductor texts</source>
         <translation>Vadītāju teksti</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="887"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1022"/>
         <source>Text fields</source>
         <translation>Teksta lauki</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="888"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1023"/>
         <source>Shapes</source>
         <translation>Formas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="889"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1024"/>
         <source>Pictures</source>
         <translation>Attēli</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="890"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1025"/>
         <source>Tables</source>
         <translation>Tabulas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="891"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1026"/>
         <source>Cross-references</source>
         <translation>Savstarpējās atsauces</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="908"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1043"/>
         <source>See Display &gt; Show</source>
         <translation>Skatiet Attēlojums &gt; Rādīt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="934"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1069"/>
         <source>Zoom of the folio on screen; a click offers fixed ones</source>
         <translation>Lapas mērogs ekrānā; noklikšķinot, var izvēlēties fiksētu mērogu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="940"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1075"/>
         <source>%1 %</source>
         <translation>%1 %</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="946"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1081"/>
         <source>Whole folio</source>
         <translation>Visa lapa</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="976"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1112"/>
+        <source>Find duplicate signals and components...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1134"/>
+        <source>Project languages...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1135"/>
+        <source>Show the texts of the project in another language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1146"/>
         <source>History of saves...</source>
         <translation>Saglabāšanas vēsture...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="980"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1150"/>
         <source>Export for delivery...</source>
         <translation>Eksportēt nodošanai...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="981"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1151"/>
         <source>Write a copy of the project without the history of its saves</source>
         <translation>Izveidot projekta kopiju bez saglabāšanas vēstures</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1019"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1189"/>
         <source>Add a nomenclature</source>
         <translation>Pievienot specifikāciju</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1052"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1222"/>
         <source>Add a cable list</source>
         <translation>Pievienot kabeļu sarakstu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1060"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1230"/>
         <source>Export the cable list to CSV format</source>
         <translation>Eksportēt kabeļu sarakstu CSV formātā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1096"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1266"/>
         <source>Wiring list (database)</source>
         <translation>Vadu saraksts (datubāze)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1114"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1284"/>
         <source>Cable numbering</source>
         <translation>Kabeļu numerācija</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1116"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1286"/>
         <source>Shows the cable numbering rule of the project and renumbers its cables with it</source>
         <translation>Parāda projekta kabeļu numerācijas noteikumu un numurē kabeļus atbilstoši tam</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1121"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5035"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5051"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1291"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5464"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5480"/>
         <source>Reload element drawings</source>
         <translation>Pārlādēt elementu attēlojumus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1124"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1294"/>
         <source>Redraws each placed element from its current definition, without having to close and reopen the project (action cannot be undone)</source>
         <translation>Pārzīmē katru ievietoto elementu atbilstoši tā pašreizējai definīcijai; projekts nav jāaizver un jāatver no jauna (darbību nevar atsaukt)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1130"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1300"/>
         <source>Run a script...</source>
         <translation>Palaist skriptu...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1133"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1303"/>
         <source>Runs a JavaScript script on the current project (see qet.* in the script for the available API)</source>
         <translation>Palaiž JavaScript skriptu pašreizējā projektā (pieejamo API skatiet qet.* skriptā)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1147"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1317"/>
         <source>Record a macro</source>
         <translation>Ierakstīt makro</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1150"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1320"/>
         <source>Records what you do on the project, for an AI assistant to make a script of; click again to stop</source>
         <translation>Ieraksta darbības projektā, lai MI asistents no tām izveidotu skriptu; noklikšķiniet vēlreiz, lai apturētu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1163"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1333"/>
         <source>Manage scripts…</source>
         <translation>Pārvaldīt skriptus…</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1164"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1334"/>
         <source>Write a script and make it a button with an icon</source>
         <translation>Rakstīt skriptu un pievienot to kā pogu ar ikonu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1181"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1351"/>
         <source>Open the scripts folder</source>
         <translation>Atvērt skriptu mapi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1184"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1354"/>
         <source>Every .js file in this folder that starts with a // ==QETScript== header becomes a button</source>
         <translation>Katrs šīs mapes .js fails, kas sākas ar // ==QETScript== galveni, kļūst par pogu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1203"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1373"/>
         <source>Shows the various opened projects in tabs</source>
         <comment>status bar tip</comment>
         <translation>Rāda atvērtos projektus cilnēs</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1231"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1401"/>
         <source>Allows to select elements</source>
         <comment>status bar tip</comment>
         <translation>Ļauj atlasīt elementus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1276"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1442"/>
+        <source>New project with automatic connections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1447"/>
         <source>Save a copy for an older QElectroTech</source>
         <translation>Saglabāt kopiju vecākai QElectroTech versijai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1290"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1458"/>
+        <source>Creates a new project in which terminals in line connect by themselves; a project is of one kind or the other for good</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1464"/>
         <source>Writes a copy of the current project as a .qet file, which versions of QElectroTech that cannot open a .qetz open</source>
         <comment>status bar tip</comment>
         <translation>Saglabā pašreizējā projekta kopiju kā .qet failu, ko var atvērt QElectroTech versijās, kuras neatbalsta .qetz failus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1341"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1516"/>
         <source>Rotate the group</source>
         <translation>Pagriezt grupu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1343"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1518"/>
         <source>Horizontal mirror</source>
         <translation>Apvērst horizontāli</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1344"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1519"/>
         <source>Vertical mirror</source>
         <translation>Apvērst vertikāli</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1348"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1883"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1521"/>
+        <source>Relay contact display...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1524"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2128"/>
         <source>Group</source>
         <comment>fr: Grouper</comment>
         <translation>Grupēt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1349"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1525"/>
         <source>Ungroup</source>
         <translation>Atgrupēt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1370"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1547"/>
         <source>Insert the last element</source>
         <translation>Ievietot pēdējo elementu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1372"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1549"/>
         <source>Places the last inserted element again</source>
         <comment>status bar tip</comment>
         <translation>Atkārtoti ievieto pēdējo ievietoto elementu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1384"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1570"/>
+        <source>Use the symbol highlighted in the collection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1575"/>
+        <source>Highlight a symbol in the collection first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1582"/>
+        <source>Default symbol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1595"/>
         <source>Search for a command…</source>
         <translation>Meklēt komandu…</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1386"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1597"/>
         <source>Type part of a command name and press Enter to launch it</source>
         <comment>status bar tip</comment>
         <translation>Ierakstiet daļu no komandas nosaukuma un nospiediet Enter, lai to palaistu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1406"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1617"/>
         <source>Insert an element…</source>
         <translation>Ievietot elementu…</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1408"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1619"/>
         <source>Opens the element picker at the cursor position</source>
         <comment>status bar tip</comment>
         <translation>Atver elementu atlasītāju kursora atrašanās vietā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1421"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1632"/>
         <source>Shortcut bar</source>
         <translation>Īsceļu josla</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1423"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1634"/>
         <source>Opens, at the cursor position, the commands useful for the selection, and the element picker</source>
         <comment>status bar tip</comment>
         <translation>Kursora vietā atver atlasītajam objektam noderīgās komandas un elementu atlasītāju</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1435"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1646"/>
         <source>Repeat the last command</source>
         <translation>Atkārtot pēdējo komandu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1437"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1648"/>
         <source>Relaunches the last drawing tool or element insertion (Enter on the sheet)</source>
         <comment>status bar tip</comment>
         <translation>Atkārtoti palaiž pēdējo zīmēšanas rīku vai elementa ievietošanu (Enter lapā)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1449"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1660"/>
         <source>Rotates the selection as a group around its centre, rather than each element in place</source>
         <comment>status bar tip</comment>
         <translation>Pagriež visu atlasi kā grupu ap tās centru, nevis katru elementu atsevišķi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1451"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1662"/>
         <source>Flips the selected elements from left to right</source>
         <comment>status bar tip</comment>
         <translation>Apvērš atlasītos elementus no kreisās uz labo pusi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1452"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1663"/>
         <source>Flips the selected elements from top to bottom</source>
         <comment>status bar tip</comment>
         <translation>Apvērš atlasītos elementus no augšas uz leju</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1470"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1665"/>
+        <source>Choose how the contacts of the selected relay are shown</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1683"/>
         <source>Groups the selected elements, texts, shapes and images: they are selected, moved and copied together</source>
         <comment>status bar tip</comment>
         <translation>Grupē atlasītos elementus, tekstus, formas un attēlus, lai tos varētu atlasīt, pārvietot un kopēt kopā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1471"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1684"/>
         <source>Breaks up the selected groups</source>
         <comment>status bar tip</comment>
         <translation>Atgrupē atlasītās grupas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1478"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1691"/>
         <source>Align to grid</source>
         <translation>Līdzināt pie režģa</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1480"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1693"/>
         <source>Puts the selected elements, images and texts back on the grid</source>
         <comment>status bar tip</comment>
         <translation>Novieto atlasītos elementus, attēlus un tekstus atpakaļ pie režģa</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1489"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1702"/>
         <source>Align left</source>
         <translation>Līdzināt pa kreisi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1489"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1702"/>
         <source>Aligns the left edges of the selected items</source>
         <comment>status bar tip</comment>
         <translation>Līdzināt atlasīto vienumu kreisās malas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1490"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1703"/>
         <source>Centre horizontally</source>
         <translation>Centrēt horizontāli</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1490"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1703"/>
         <source>Aligns the selected items on one vertical line, by their origin point for elements</source>
         <comment>status bar tip</comment>
         <translation>Līdzināt atlasītos vienumus uz vienas vertikālas līnijas; elementiem izmanto to sākumpunktu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1491"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1704"/>
         <source>Align right</source>
         <translation>Līdzināt pa labi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1491"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1704"/>
         <source>Aligns the right edges of the selected items</source>
         <comment>status bar tip</comment>
         <translation>Līdzināt atlasīto vienumu labās malas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1492"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1705"/>
         <source>Align top</source>
         <translation>Līdzināt augšmalas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1492"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1705"/>
         <source>Aligns the top edges of the selected items</source>
         <comment>status bar tip</comment>
         <translation>Līdzināt atlasīto vienumu augšējās malas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1493"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1706"/>
         <source>Centre vertically</source>
         <translation>Centrēt vertikāli</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1493"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1706"/>
         <source>Aligns the selected items on one horizontal line, by their origin point for elements</source>
         <comment>status bar tip</comment>
         <translation>Līdzināt atlasītos vienumus uz vienas horizontālas līnijas; elementiem izmanto to sākumpunktu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1494"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1707"/>
         <source>Align bottom</source>
         <translation>Līdzināt apakšmalas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1494"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1707"/>
         <source>Aligns the bottom edges of the selected items</source>
         <comment>status bar tip</comment>
         <translation>Līdzināt atlasīto vienumu apakšējās malas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1509"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1722"/>
         <source>Select all conductors</source>
         <translation>Atlasīt visus vadītājus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1510"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1723"/>
         <source>Select all text fields</source>
         <translation>Atlasīt visus teksta laukus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1523"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1736"/>
         <source>Selects all conductors on the sheet, deselects the rest</source>
         <comment>status bar tip</comment>
         <translation>Atlasa visus lapas vadītājus un atceļ pārējo atlasi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1524"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1737"/>
         <source>Selects all text fields on the sheet, deselects the rest</source>
         <comment>status bar tip</comment>
         <translation>Atlasa visus lapas teksta laukus un atceļ pārējo atlasi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1540"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1753"/>
         <source>Centre on the cursor</source>
         <translation>Centrēt kursorā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1555"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1768"/>
         <source>Centres the sheet on the point under the mouse cursor, without changing the zoom</source>
         <comment>status bar tip</comment>
         <translation>Centrē lapu punktā zem peles kursora, nemainot mērogu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1583"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1796"/>
         <source>Add a PDF</source>
         <translation>Pievienot PDF</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1588"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1801"/>
         <source>Add an arc</source>
         <translation>Pievienot loku</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1590"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1803"/>
         <source>Add a curve</source>
         <translation>Pievienot līkni</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1591"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1804"/>
         <source>Add a fillet</source>
         <translation>Pievienot noapaļojumu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1592"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1805"/>
         <source>Add a terminal plan</source>
         <translation>Pievienot spaiļu plānu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1593"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1806"/>
         <source>Add a generic device…</source>
         <translation>Pievienot vispārīgu ierīci…</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1596"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1809"/>
         <source>Draw a cable</source>
         <translation>Zīmēt kabeli</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1598"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1810"/>
+        <source>Add linear dimension</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1811"/>
+        <source>Add chain dimension</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1814"/>
+        <source>Draw a bridge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1816"/>
         <source>Adds a text field to the current sheet</source>
         <translation>Pievieno teksta lauku pašreizējai lapai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1599"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1817"/>
         <source>Add an image to the current sheet</source>
         <translation>Pievieno attēlu pašreizējai lapai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1601"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1819"/>
         <source>Adds a PDF page to the current sheet</source>
         <translation>Pievieno PDF lapu pašreizējai lapai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1603"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1821"/>
         <source>Add a line to the current sheet</source>
         <translation>Pievieno līniju pašreizējai lapai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1604"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1822"/>
         <source>Adds a rectangle on the current sheet</source>
         <translation>Pievieno taisnstūri pašreizējai lapai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1605"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1823"/>
         <source>Add an ellipse to the current sheet</source>
         <translation>Pievieno elipsi pašreizējai lapai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1606"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1824"/>
         <source>Adds an arc on the current sheet</source>
         <translation>Pievieno loku pašreizējai lapai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1607"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1825"/>
         <source>Adds a polyline to the current sheet</source>
         <translation>Pievieno lauztu līniju pašreizējai lapai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1608"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1826"/>
         <source>Adds a Bézier curve to the current sheet</source>
         <translation>Pievieno Bezier līkni pašreizējai lapai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1609"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1827"/>
         <source>Rounds the corner between two lines of the current sheet</source>
         <translation>Noapaļo stūri starp divām pašreizējās lapas līnijām</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1610"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1828"/>
         <source>Adds a terminal plan to the current sheet</source>
         <translation>Pievieno spaiļu plānu pašreizējai lapai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1611"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1829"/>
         <source>Makes a box symbol with terminals on any side and places it on the current sheet</source>
         <translation>Izveido taisnstūra simbolu ar spailēm jebkurā malā un ievieto to pašreizējā lapā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1612"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1830"/>
         <source>Draws the main line of a cable: every conductor crossed becomes one of its cores</source>
         <translation>Uzzīmē kabeļa galveno līniju: katrs šķērsotais vadītājs kļūst par vienu no tā dzīslām</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1669"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1831"/>
+        <source>Adds a linear dimension to the current sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1832"/>
+        <source>Adds a chain dimension to the current sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1833"/>
+        <source>Draws a bridge over terminals: every terminal crossed becomes one of its connections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1896"/>
         <source>Navigate to an element</source>
         <translation>Pāriet uz elementu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1671"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1898"/>
         <source>Quickly search for and select an element in the sheet</source>
         <comment>status bar tip</comment>
         <translation>Ātri meklēt un atlasīt elementu lapā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1697"/>
-        <location filename="../sources/diagramtoolbarsettings.cpp" line="73"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1924"/>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="74"/>
         <source>Add</source>
         <translation>Pievienot</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1729"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1930"/>
+        <location filename="../sources/diagramtoolbarsettings.cpp" line="76"/>
+        <source>Connections</source>
+        <comment>toolbar title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1963"/>
         <source>Scripts</source>
         <comment>toolbar title</comment>
         <translation>Skripti</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1802"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2040"/>
         <source>Numbering</source>
         <translation>Numerācija</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1803"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2041"/>
         <source>Lists</source>
         <translation>Saraksti</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1864"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2105"/>
         <source>&amp;Add</source>
         <translation>&amp;Pievienot</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1872"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2108"/>
+        <source>Tape measure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2116"/>
         <source>Selection</source>
         <translation>Atlase</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1888"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2133"/>
         <source>Align</source>
         <translation>Līdzināt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1902"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2147"/>
         <source>Rows and columns</source>
         <translation>Rindas un kolonnas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1905"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2150"/>
         <source>Depth</source>
         <translation>Secība</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1936"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5165"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2185"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5594"/>
         <source>Scripts</source>
         <translation>Skripti</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2311"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2586"/>
         <source>%1 was changed</source>
         <translation>%1 ir mainīts</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2313"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2588"/>
         <source>Another program changed %1 since QElectroTech saved it.</source>
         <translation>Cita programma ir mainījusi %1 kopš QElectroTech pēdējās saglabāšanas.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2314"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2589"/>
         <source>The content of %1 is not what QElectroTech saved: another program changed it, or it is damaged.</source>
         <translation>Faila %1 saturs neatbilst QElectroTech saglabātajam: to ir mainījusi cita programma vai fails ir bojāts.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2319"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2594"/>
         <source>Go back to the saved state</source>
         <translation>Atjaunot saglabāto stāvokli</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2320"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2595"/>
         <source>Open it with its changes</source>
         <translation>Atvērt ar veiktajām izmaiņām</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2322"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2597"/>
         <source>Going back rebuilds the project as QElectroTech saved it, from the repair data the file keeps. The file is written only when you save.</source>
         <translation>Atjaunojot saglabāto stāvokli, projekts tiek izveidots no jauna, izmantojot failā glabātos labošanas datus. Fails tiek ierakstīts tikai tad, kad saglabā projektu.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2324"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2599"/>
         <source>The file is written only when you save.</source>
         <translation>Fails tiek ierakstīts tikai tad, kad saglabā projektu.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2347"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2622"/>
         <source>%1 is open with the changes another program made to it.</source>
         <translation>%1 ir atvērts ar citas programmas veiktajām izmaiņām.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2352"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2627"/>
         <source>The changes another program made to %1 were undone: it is open as QElectroTech saved it.</source>
         <translation>Citas programmas veiktās izmaiņas failā %1 ir atsauktas; tas ir atvērts tādā stāvoklī, kādu saglabāja QElectroTech.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2354"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2629"/>
         <source>%1 was damaged: QElectroTech repaired %n page(s) of it from the repair data the file keeps.</source>
         <translation>
             <numerusform>%1 bija bojāts. Izmantojot failā glabātos labošanas datus, QElectroTech atjaunoja %n lapu.</numerusform>
@@ -14126,43 +15677,43 @@ Lai novietotu brīvi, pārvietošanas laikā turiet nospiestu Ctrl.</translation
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2357"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2632"/>
         <source>%1 was damaged: QElectroTech repaired its header.</source>
         <translation>%1 bija bojāts. QElectroTech atjaunoja tā galveni.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2359"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2634"/>
         <source>The repair data %1 keeps was damaged; the project itself was not.</source>
         <translation>Failā %1 glabātie labošanas dati bija bojāti; pats projekts nebija bojāts.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2360"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2635"/>
         <source>Project repaired</source>
         <translation>Projekts ir atjaunots</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2361"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2636"/>
         <source>Save the project to keep it so.</source>
         <translation>Saglabā projektu, lai saglabātu šo stāvokli.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2536"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2811"/>
         <source>Cannot go back to the saved state</source>
         <translation>Saglabāto stāvokli nevar atjaunot</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2537"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2812"/>
         <source>The other program rewrote too much of %1 for its repair data to rebuild the state QElectroTech saved.</source>
         <translation>Cita programma failā %1 ir veikusi pārāk daudz izmaiņu, lai ar failā glabātajiem labošanas datiem varētu atjaunot QElectroTech saglabāto stāvokli.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2657"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2932"/>
         <source>Elements not loaded</source>
         <comment>message box title</comment>
         <translation>Elementi nav ielādēti</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2658"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2933"/>
         <source>%n elements could not be loaded: their definition is missing from the project and from the collections.
 
 They are not shown, but they are kept in the file as they are, with their conductors, and come back once their definition is available again.</source>
@@ -14180,7 +15731,7 @@ Elementi netiek rādīti, bet paliek failā ar saviem vadītājiem un atkal par�
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2675"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2950"/>
         <source>%n conductors could not be joined to their terminals and were not loaded. The element&apos;s definition is missing, or was replaced by another one with different terminals.
 
 They are not shown, but they are kept in the file as they are, and join their terminals again once the definition has them where they were.</source>
@@ -14198,12 +15749,46 @@ Vadītāji netiek rādīti, bet paliek failā un atkal tiks savienoti ar spailē
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5463"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3591"/>
+        <source>Change relay contact display</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5091"/>
+        <source>No symbol is chosen for this button. Highlight one in the collection, then choose &quot;Use the symbol highlighted in the collection&quot; from the arrow beside the button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5115"/>
+        <source>%1: place &quot;%2&quot;. The arrow beside it chooses the symbol.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5116"/>
+        <source>%1: no symbol chosen yet. The arrow beside it chooses one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5892"/>
+        <source>Dimension format copied</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5902"/>
         <source>Text format of &quot;%1&quot; copied</source>
         <translation>Nokopēts “%1” teksta formatējums</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5512"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5948"/>
+        <source>Dimension format applied to %n dimension(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qetdiagrameditor.cpp" line="5964"/>
         <source>Text format applied to %n element(s)</source>
         <translation>
             <numerusform>%n elementam lietots teksta formatējums</numerusform>
@@ -14212,223 +15797,223 @@ Vadītāji netiek rādīti, bet paliek failā un atkal tiks savienoti ar spailē
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5527"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5613"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5621"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5633"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5710"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5732"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5983"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6069"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6077"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6089"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6166"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6188"/>
         <source>History of saves</source>
         <translation>Saglabāšanas vēsture</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5529"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5985"/>
         <source>Keep a history of saves in this file</source>
         <translation>Glabāt šajā failā saglabāšanas vēsturi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5533"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5989"/>
         <source>all</source>
         <translation>visi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5534"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5990"/>
         <source>The oldest saves are dropped from the history at each save beyond this number</source>
         <translation>Ikreiz, kad saglabāšanas reižu skaits pārsniedz šo vērtību, no vēstures tiek dzēsti vecākie saglabājumi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5535"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5991"/>
         <source>Saves to keep:</source>
         <translation>Saglabājamo versiju skaits:</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5541"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5997"/>
         <source>No.</source>
         <translation>Nr.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5541"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5997"/>
         <source>Saved</source>
         <translation>Saglabāts</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5541"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5997"/>
         <source>By</source>
         <translation>Autors</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5541"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5997"/>
         <source>Changes</source>
         <translation>Izmaiņas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5550"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6006"/>
         <source>Open as it was</source>
         <translation>Atvērt iepriekšējā stāvoklī</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5551"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6007"/>
         <source>Open the project as it was after the selected save, read-only</source>
         <translation>Atvērt projektu tādā stāvoklī, kādā tas bija pēc atlasītās saglabāšanas reizes; tikai lasīšanai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5552"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6008"/>
         <source>Compare</source>
         <translation>Salīdzināt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5553"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6009"/>
         <source>What the selected save changed, or what changed between two selected saves</source>
         <translation>Atlasītās saglabāšanas reizes veiktās izmaiņas vai izmaiņas starp divām atlasītajām saglabāšanas reizēm</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5592"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6048"/>
         <source>A history is kept only in a project saved as .qetdb (File &gt; Save as).</source>
         <translation>Vēsture tiek glabāta tikai projektā, kas saglabāts kā .qetdb (Fails &gt; Saglabāt kā).</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5593"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6049"/>
         <source>This file keeps no history. Switched on, each save records who saved, when and what changed.</source>
         <translation>Šajā failā vēsture netiek glabāta. Ieslēdzot šo opciju, katrā saglabāšanas reizē tiek reģistrēts, kurš un kad saglabāja failu un kādas izmaiņas veica.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5595"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6051"/>
         <source>Each save records who saved, when and what changed. Copies of the file carry this history: use File &gt; Export for delivery to send a project without it.</source>
         <translation>Katrā saglabāšanas reizē tiek reģistrēts, kurš un kad saglabāja failu un kādas izmaiņas veica. Šī vēsture tiek saglabāta arī faila kopijās. Lai nosūtītu projektu bez vēstures, izmanto “Fails &gt; Eksportēt nodošanai”.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5605"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6061"/>
         <source>History started</source>
         <translation>Vēstures sākums</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5614"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6070"/>
         <source>Delete the history this file keeps? It cannot be undone.</source>
         <translation>Dzēst šajā failā saglabāto vēsturi? Šo darbību nevar atsaukt.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5622"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5634"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6078"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6090"/>
         <source>The history could not be changed: %1</source>
         <translation>Neizdevās mainīt vēsturi: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5655"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5661"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5669"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5675"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5681"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6111"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6117"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6125"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6131"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6137"/>
         <source>Export for delivery</source>
         <translation>Eksportēt nodošanai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5656"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6112"/>
         <source>Only a project saved as .qetdb keeps a history to leave out (File &gt; Save as).</source>
         <translation>Izlaižamo vēsturi glabā tikai projekti, kas saglabāti kā .qetdb (Fails &gt; Saglabāt kā).</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5662"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6118"/>
         <source>The copy is made from the saved file. Save the project first?</source>
         <translation>Kopija tiks izveidota no saglabātā faila. Vai vispirms saglabāt projektu?</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5670"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6126"/>
         <source>%1 - delivery.qetdb</source>
         <translation>%1 — nodošanai.qetdb</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5671"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6127"/>
         <source>QElectroTech project (*.qetdb)</source>
         <translation>QElectroTech projekts (*.qetdb)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5676"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6132"/>
         <source>Choose another file than the project&apos;s own.</source>
         <translation>Izvēlies citu failu, nevis pašu projekta failu.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5682"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6138"/>
         <source>The copy could not be written: %1</source>
         <translation>Neizdevās ierakstīt kopiju: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5685"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6141"/>
         <source>Copy without history written to %1</source>
         <translation>Kopija bez vēstures ir izveidota: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5699"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6155"/>
         <source>%1 - save %2.qetdb</source>
         <translation>%1 — saglabājums %2.qetdb</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5711"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6167"/>
         <source>Save %1 could not be written again: %2</source>
         <translation>Neizdevās vēlreiz ierakstīt saglabājumu %1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5733"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6189"/>
         <source>The saves could not be compared: %1</source>
         <translation>Neizdevās salīdzināt saglabājumus: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5756"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6212"/>
         <source>Changes from save %1 to save %2</source>
         <translation>Izmaiņas no saglabājuma %1 līdz saglabājumam %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5761"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6217"/>
         <source>Kind</source>
         <translation>Veids</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5761"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5772"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6217"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6228"/>
         <source>Folio</source>
         <translation>Lapa</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5761"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6217"/>
         <source>Name</source>
         <translation>Nosaukums</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5761"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6217"/>
         <source>Change</source>
         <translation>Izmaiņa</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5770"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6226"/>
         <source>Symbol</source>
         <translation>Simbols</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5771"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6227"/>
         <source>Wire</source>
         <translation>Vads</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5773"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6229"/>
         <source>Drawn item</source>
         <translation>Zīmējuma elements</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5774"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6230"/>
         <source>added</source>
         <translation>pievienots</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5775"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6231"/>
         <source>removed</source>
         <translation>noņemts</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5776"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6232"/>
         <source>changed</source>
         <translation>mainīts</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5789"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6245"/>
         <source>Not in the project now</source>
         <translation>Projektā vairs nav</translation>
     </message>
@@ -14437,36 +16022,36 @@ Vadītāji netiek rādīti, bet paliek failā un atkal tiks savienoti ar spailē
         <translation type="vanished">QElectroTech projekts (*.qet);;XML faili (*.xml);;Visi faili (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2442"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2458"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2717"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2733"/>
         <source>Unable to open file</source>
         <comment>message box title</comment>
         <translation>Neizdevās atvērt failu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2444"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2719"/>
         <source>It appears the %1 file which you are trying to open does not exist or does not exist anymore.</source>
         <translation>Šķiet, ka fails %1, kuru mēģināt atvērt, neeksistē vai vairs neeksistē.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2472"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2597"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2747"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2872"/>
         <source>Opening the file read-only</source>
         <comment>message box title</comment>
         <translation>Atver failu tikai lasīšanai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2578"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2853"/>
         <source>%1 on %2 has taken over %3. Save your changes with Save As to keep them.</source>
         <translation>%1 datorā %2 pārņēma %3. Lai saglabātu izmaiņas, izmantojiet “Saglabāt kā”.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2598"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2873"/>
         <source>This project was saved by a later version of QElectroTech. It is opened read-only, so that saving it cannot lose what this version does not know. Use Save As to keep a copy in this version&apos;s format.</source>
         <translation>Šis projekts saglabāts jaunākā QElectroTech versijā. Tas tiek atvērts tikai lasīšanai, lai, saglabājot projektu, nezaudētu šai versijai nezināmu informāciju. Lai saglabātu kopiju šīs versijas formātā, izmantojiet “Saglabāt kā”.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2619"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2894"/>
         <source>%n font descriptions written in a foreign or corrupted format have been restored. They will be rewritten in a stable format the next time the project is saved.</source>
         <comment>message box content</comment>
         <translation>
@@ -14476,7 +16061,7 @@ Vadītāji netiek rādīti, bet paliek failā un atkal tiks savienoti ar spailē
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2627"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2902"/>
         <source>%n font descriptions could not be read; the default font will be used for these texts.</source>
         <comment>message box content</comment>
         <translation>
@@ -14486,19 +16071,19 @@ Vadītāji netiek rādīti, bet paliek failā un atkal tiks savienoti ar spailē
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2634"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2909"/>
         <source>Project fonts</source>
         <comment>message box title</comment>
         <translation>Projekta fonti</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2647"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2651"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2922"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2926"/>
         <source>Sheet %1: %2</source>
         <translation>Lapa %1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2674"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2949"/>
         <source>Conductors not loaded</source>
         <comment>message box title</comment>
         <translation>Vadītāji nav ielādēti</translation>
@@ -14521,19 +16106,19 @@ Saglabājot projektu, šie vadītāji tiks izdzēsti no faila. Lai saglabātu fa
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3011"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3286"/>
         <source>Automatic numbering</source>
         <comment>window title</comment>
         <translation>Automātiskā numerācija</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3012"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3287"/>
         <source>No automatic cable numbering is defined.</source>
         <comment>shown when a project has no cable numbering rule</comment>
         <translation>Nav iestatīta kabeļu automātiskā numerācija.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3016"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3291"/>
         <source>Do you want to define one now?
 
 You can also number the cables automatically later: the rule is set at any time in the project properties, on the &quot;Auto Numbering&quot; page.</source>
@@ -14543,37 +16128,37 @@ You can also number the cables automatically later: the rule is set at any time 
 Kabeļus var numurēt automātiski arī vēlāk: noteikumu jebkurā laikā var iestatīt projekta rekvizītu lapā “Automātiskā numerācija”.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3022"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3297"/>
         <source>Yes</source>
         <comment>yes</comment>
         <translation>Jā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3023"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3298"/>
         <source>No</source>
         <comment>no</comment>
         <translation>Nē</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3024"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3299"/>
         <source>Cancel</source>
         <comment>cancel</comment>
         <translation>Atcelt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3207"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3494"/>
         <source>Unable to delete the terminal</source>
         <translation>Neizdevās dzēst spaili</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3208"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3495"/>
         <source>The deletion cannot be performed because the selection contains one or more terminals that are bridged and/or belong to a multi-level terminal.
 Unbridge and/or remove the levels from the affected terminals so that they can be deleted</source>
         <translation>Dzēšanu nevar veikt, jo atlasē ir viena vai vairākas spailes, kurām ir tiltiņš un/vai kuras pieder daudzlīmeņu spailei.
 Lai tās varētu dzēst, noņemiet tiltiņu un/vai līmeņus attiecīgajām spailēm.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3343"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3684"/>
         <source>%n items put back on the grid</source>
         <translation>
             <numerusform>%n vienums novietots atpakaļ pie režģa</numerusform>
@@ -14582,7 +16167,7 @@ Lai tās varētu dzēst, noņemiet tiltiņu un/vai līmeņus attiecīgajām spai
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3344"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3685"/>
         <source>%n items aligned</source>
         <translation>
             <numerusform>Līdzināts %n vienums</numerusform>
@@ -14591,22 +16176,22 @@ Lai tās varētu dzēst, noņemiet tiltiņu un/vai līmeņus attiecīgajām spai
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3350"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3691"/>
         <source>The selection is already on the grid</source>
         <translation>Atlase jau atrodas pie režģa</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3352"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3693"/>
         <source>Select at least two unlocked elements, images, texts, shapes or groups</source>
         <translation>Atlasiet vismaz divus atbloķētus elementus, attēlus, tekstus, formas vai grupas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3354"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3695"/>
         <source>The selection is already aligned, to the nearest grid step</source>
         <translation>Atlase jau ir līdzināta pēc tuvākā režģa soļa</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3358"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3699"/>
         <source>(%n locked objects left in place)</source>
         <translation>
             <numerusform>(atstāts sākotnējā vietā %n bloķēts objekts)</numerusform>
@@ -14615,113 +16200,113 @@ Lai tās varētu dzēst, noņemiet tiltiņu un/vai līmeņus attiecīgajām spai
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3635"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3996"/>
         <source>Edit the information of the elements</source>
         <comment>edit several elements</comment>
         <translation>Rediģēt elementu informāciju</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3645"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4006"/>
         <source>Edit the element</source>
         <comment>edit element</comment>
         <translation>Rediģēt elementu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3652"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4013"/>
         <source>Edit the text field</source>
         <comment>edit text field</comment>
         <translation>Rediģēt teksta lauku</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3659"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4020"/>
         <source>Edit the image</source>
         <comment>edit image</comment>
         <translation>Rediģēt attēlu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3666"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4027"/>
         <source>Edit the cable</source>
         <comment>edit cable</comment>
         <translation>Rediģēt kabeli</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3673"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4034"/>
         <source>Edit conductor</source>
         <comment>edit conductor</comment>
         <translation>Rediģēt vadītāju</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3681"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4042"/>
         <source>Edit the selected object</source>
         <comment>edit selected item</comment>
         <translation>Rediģēt atlasīto objektu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4012"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4059"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4377"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4424"/>
         <source>An error occurred while opening file %1.</source>
         <comment>message box content</comment>
         <translation>Atverot failu %1, radās kļūda.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4106"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4471"/>
         <source>Activates the project « %1 »</source>
         <translation>Aktivizē projektu « %1 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4330"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4695"/>
         <source>Are you sure you want to delete this sheet?</source>
         <translation>Vai tiešām vēlaties dzēst šo lapu?</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4335"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4700"/>
         <source>Delete the sheets</source>
         <translation>Dzēst lapas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4336"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4701"/>
         <source>Are you sure you want to delete the selected %1 sheets ?</source>
         <translation>Vai tiešām vēlaties dzēst atlasītās %1 lapas?</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4353"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4718"/>
         <source>Delete %1 sheets</source>
         <translation>Dzēst %1 lapas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4391"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4409"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4427"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4445"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4463"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4481"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4499"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4756"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4774"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4792"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4810"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4828"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4846"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4864"/>
         <source>Move the sheets</source>
         <translation>Pārvietot lapas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4592"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4978"/>
         <source>Error</source>
         <comment>message box title</comment>
         <translation>Kļūda</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4718"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5147"/>
         <source>Repeat: insert &quot;%1&quot;</source>
         <translation>Atkārtot: ievietot “%1”</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4719"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5148"/>
         <source>Repeat: %1</source>
         <translation>Atkārtot: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5016"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5445"/>
         <source>sheet %1</source>
         <translation>lapa %1</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5024"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5453"/>
         <source>%n elements redrawn.</source>
         <translation>
             <numerusform>Pārzīmēts %n elements.</numerusform>
@@ -14730,7 +16315,7 @@ Lai tās varētu dzēst, noņemiet tiltiņu un/vai līmeņus attiecīgajām spai
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5028"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5457"/>
         <source>%n elements for which no definition could be found or which were illegible: their current design has been retained.</source>
         <translation>
             <numerusform>%n elementam nevarēja atrast definīciju vai to nevarēja nolasīt; saglabāts pašreizējais attēlojums.</numerusform>
@@ -14739,7 +16324,7 @@ Lai tās varētu dzēst, noņemiet tiltiņu un/vai līmeņus attiecīgajām spai
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5040"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5469"/>
         <source>%n elements not redrawn: their size, grip point or terminals have changed (a terminal was added, removed or moved).</source>
         <translation>
             <numerusform>%n elements nav pārzīmēts, jo mainījies tā izmērs, satveršanas punkts vai spailes (spaile pievienota, noņemta vai pārvietota).</numerusform>
@@ -14748,18 +16333,18 @@ Lai tās varētu dzēst, noņemiet tiltiņu un/vai līmeņus attiecīgajām spai
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5044"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5473"/>
         <source>To update them, they must be deleted then reinserted. Warning: this operation removes the conductors already connected to these elements, which will need to be redrawn.</source>
         <translation>Lai tos atjauninātu, tie jādzēš un jāievieto no jauna. Brīdinājums: šādi tiks noņemti šiem elementiem jau pievienotie vadītāji, un tie būs jāpārzīmē.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5073"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5077"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5502"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5506"/>
         <source>Run a script</source>
         <translation>Palaist skriptu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5102"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5531"/>
         <source>Scripts are disabled.
 
 A script runs with your permissions: it can read and modify the open project and write files. Only run scripts whose origin you know.
@@ -14772,37 +16357,37 @@ Skripts darbojas ar jūsu atļaujām: tas var lasīt un mainīt atvērto projekt
 Vai iespējot skriptus? Šo iestatījumu var mainīt sadaļā Konfigurēt QElectroTech &gt; Vispārīgi &gt; Projekti.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5300"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5729"/>
         <source>Remembered after a restart</source>
         <translation>Tiks saglabāts pēc programmas pārstartēšanas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5079"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5508"/>
         <source>JavaScript scripts (*.js);;All files (*)</source>
         <translation>JavaScript skripti (*.js);;Visi faili (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2139"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2414"/>
         <source>XML Files (*.xml);;All files (*)</source>
         <translation>XML faili (*.xml);;Visi faili (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2195"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2470"/>
         <source>%1 is being opened by another session of QElectroTech.</source>
         <translation>%1 ir atvērts citā QElectroTech sesijā.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2198"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2473"/>
         <source>%1 is open by %2 on %3 since %4</source>
         <translation>%1 ir atvērts lietotājam %2 datorā %3 kopš %4</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2204"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2479"/>
         <source> (active just now).</source>
         <translation> (aktīvs tikko).</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2205"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2480"/>
         <source> (active %n minute(s) ago).</source>
         <translation>
             <numerusform>(aktīvs pirms %n minūtes).</numerusform>
@@ -14811,106 +16396,106 @@ Vai iespējot skriptus? Šo iestatījumu var mainīt sadaļā Konfigurēt QElect
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2211"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2486"/>
         <source>Project in use</source>
         <comment>message box title</comment>
         <translation>Projekts tiek lietots</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2212"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2487"/>
         <source>Open it read-only to look at it without changing it. Open it anyway only if you know that session is not using it any more: both of you could then save over each other.</source>
         <translation>Atveriet projektu tikai lasīšanai, lai to apskatītu, neveicot izmaiņas. Atveriet rediģēšanai tikai tad, ja zināt, ka otra sesija to vairs neizmanto; pretējā gadījumā varat pārrakstīt viens otra izmaiņas.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2215"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2490"/>
         <source>Open read-only</source>
         <translation>Atvērt tikai lasīšanai</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2216"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2491"/>
         <source>Open anyway</source>
         <translation>Tomēr atvērt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2242"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2270"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2281"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2390"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2517"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2545"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2556"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2665"/>
         <source>Cannot open %1</source>
         <translation>Nevar atvērt %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2244"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2519"/>
         <source>The file %1 cannot be read as a QElectroTech project.</source>
         <translation>Failu %1 nevar nolasīt kā QElectroTech projektu.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2245"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2520"/>
         <source>The project file is damaged:
 %1</source>
         <translation>Projekta fails ir bojāts:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2250"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2525"/>
         <source>Open the version saved %1</source>
         <translation>Atvērt versiju, kas saglabāta %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2255"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2530"/>
         <source>Recover what can be read</source>
         <translation>Atkopt nolasāmo</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2257"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2532"/>
         <source>Either opens as a new project, &quot;%1&quot;; %2 is left as it is.</source>
         <translation>Atver nolasīto kā jaunu projektu “%1”; fails %2 paliek nemainīts.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2271"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2546"/>
         <source>Nothing can be recovered from it:
 %1</source>
         <translation>No tā neko nevar atkopt:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2285"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2560"/>
         <source>Project recovered</source>
         <translation>Projekts atkopts</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2286"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2561"/>
         <source>What could be read of %1 is open as a new project. Some parts could not be read and were left out: see the details.</source>
         <translation>No faila %1 nolasītais ir atvērts kā jauns projekts. Dažas daļas nevarēja nolasīt un tika izlaistas; skatiet detalizētu informāciju.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2372"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2647"/>
         <source>%1 (recovered)</source>
         <translation>%1 (atkopts)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2375"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2650"/>
         <source>%1 (recovered %2)</source>
         <translation>%1 (atkopts %2)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5179"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5608"/>
         <source>Ignored: %1</source>
         <translation>Ignorēts: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5214"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5275"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5643"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5704"/>
         <source>Stop</source>
         <translation>Apturēt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5215"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5644"/>
         <source>Stop recording the macro</source>
         <translation>Apturēt makro ierakstīšanu</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5225"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5654"/>
         <source>● Recording: %n steps</source>
         <translation>
             <numerusform>● Ieraksta: %n darbība</numerusform>
@@ -14919,12 +16504,12 @@ Vai iespējot skriptus? Šo iestatījumu var mainīt sadaļā Konfigurēt QElect
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5240"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5669"/>
         <source>Macro recorded</source>
         <translation>Makro ierakstīts</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5241"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5670"/>
         <source>“%1”: %n steps.
 
 To make a script of it, ask your AI assistant: the button below copies the request, just paste it into its window.</source>
@@ -14941,53 +16526,53 @@ Lai izveidotu skriptu, palūdziet to savam MI asistentam: zemāk esošā poga no
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5250"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5679"/>
         <source>&amp;Copy the request for the assistant</source>
         <translation>&amp;Kopēt pieprasījumu asistentam</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5251"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5680"/>
         <source>&amp;Open the folder</source>
         <translation>&amp;Atvērt mapi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5257"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5686"/>
         <source>Request copied: paste it into the assistant&apos;s window</source>
         <translation>Pieprasījums nokopēts: ielīmējiet to asistenta logā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5276"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5705"/>
         <source>Close the assistant&apos;s connection for the rest of the session</source>
         <translation>Aizvērt asistenta savienojumu līdz sesijas beigām</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5285"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5714"/>
         <source>Live mode: assistant connected</source>
         <translation>Tiešsaistes režīms: asistents savienots</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5286"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5715"/>
         <source>Live mode: waiting for an assistant</source>
         <translation>Tiešsaistes režīms: gaida asistentu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5294"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5338"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5723"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5767"/>
         <source>Assistant</source>
         <translation>Asistents</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5298"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5727"/>
         <source>Ask before running a script the assistant wrote</source>
         <translation>Pirms asistenta rakstīta skripta palaišanas jautāt apstiprinājumu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5355"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5784"/>
         <source>Live mode: %1 %2 at %3</source>
         <translation>Tiešsaistes režīms: %1 %2 vietā %3</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5397"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5826"/>
         <source>%n kinds of items hidden</source>
         <translation>
             <numerusform>Paslēpts %n veida vienums</numerusform>
@@ -14996,47 +16581,47 @@ Lai izveidotu skriptu, palūdziet to savam MI asistentam: zemāk esošā poga no
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5433"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5438"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5862"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5867"/>
         <source>Texts %1</source>
         <translation>Teksti %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1220"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1390"/>
         <source>Arranges windows in a tile pattern</source>
         <comment>status bar tip</comment>
         <translation>Sakārto logus flīžu izkārtojumā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1225"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1395"/>
         <source>Arranges windows in a cascade pattern</source>
         <comment>status bar tip</comment>
         <translation>Sakārto logus kaskādes izkārtojumā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1260"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1430"/>
         <source>Next project</source>
         <translation>Nākamais projekts</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1265"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1435"/>
         <source>Previous project</source>
         <translation>Iepriekšējais projekts</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1262"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1432"/>
         <source>Activates the next project</source>
         <comment>status bar tip</comment>
         <translation>Aktivizē nākamo projektu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1267"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1437"/>
         <source>Activates the previous project</source>
         <comment>status bar tip</comment>
         <translation>Aktivizē iepriekšējo projektu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4563"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4949"/>
         <source>Zoom %1 %</source>
         <translation>Mērogs %1 %</translation>
     </message>
@@ -15045,47 +16630,47 @@ Lai izveidotu skriptu, palūdziet to savam MI asistentam: zemāk esošā poga no
         <translation type="vanished">Lapas mērogs ekrānā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="770"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="905"/>
         <source>Snap to the grid</source>
         <translation>Pievilkt pie režģa</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="773"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="908"/>
         <source>Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point</source>
         <translation>Pievilkt kursoru un pārvietojamos vai novietojamos objektus pie režģa; ja izslēgts, tie tiek novietoti tuvākajā punktā</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="783"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="918"/>
         <source>Grid step</source>
         <translation>Režģa solis</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="789"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="924"/>
         <source>The step of the grid that symbols, conductors and the pointer snap to</source>
         <translation>Režģa solis, pie kura tiek pievilkti simboli, vadītāji un kursors</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="792"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="927"/>
         <source>Fine (5)</source>
         <translation>Smalks (5)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="793"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="928"/>
         <source>Medium (10)</source>
         <translation>Vidējs (10)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="794"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="929"/>
         <source>Coarse (20)</source>
         <translation>Rupjš (20)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5414"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5843"/>
         <source>Grid %1</source>
         <translation>Režģis %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5415"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5844"/>
         <source>Grid %1 × %2</source>
         <translation>Režģis %1 × %2</translation>
     </message>
@@ -15299,54 +16884,54 @@ Lai izveidotu skriptu, palūdziet to savam MI asistentam: zemāk esošā poga no
         <translation>Importēt elementu mērogošanai</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1170"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1181"/>
         <source>Add a line</source>
         <translation>Pievienot līniju</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1172"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1183"/>
         <source>Add an ellipse</source>
         <translation>Pievienot elipsi</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1173"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1184"/>
         <source>Add a polygon</source>
         <translation>Pievienot daudzstūri</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1174"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1185"/>
         <source>Add text</source>
         <translation>Pievienot tekstu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1175"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1186"/>
         <source>Add an arc</source>
         <translation>Pievienot loku</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1176"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1187"/>
         <source>Add a terminal</source>
         <translation>Pievienot spaili</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1094"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1105"/>
         <source>Undo</source>
         <comment>fr: Annuler</comment>
         <translation>Atsaukt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1095"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1106"/>
         <source>Redo</source>
         <translation>Atcelt atsaukšanu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="799"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="810"/>
         <source>&lt;br&gt;Without terminal, the element can not be connected to other elements via conductors.</source>
         <comment>warning description</comment>
         <translation>&lt;br&gt;Bez spailes elementu nevar savienot ar citiem elementiem, izmantojot vadītājus.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1357"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1410"/>
         <source>No modification</source>
         <translation>Nav izmaiņu</translation>
     </message>
@@ -15390,13 +16975,13 @@ Lai izveidotu skriptu, palūdziet to savam MI asistentam: zemāk esošā poga no
         <translation>Rediģēt informāciju par autoru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1196"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1207"/>
         <source>Parts</source>
         <comment>toolbar title</comment>
         <translation>Daļas</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1133"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1144"/>
         <source>Depth</source>
         <comment>toolbar title</comment>
         <translation>Secība</translation>
@@ -15412,12 +16997,12 @@ Lai izveidotu skriptu, palūdziet to savam MI asistentam: zemāk esošā poga no
         <translation>Rediģēt elementa rekvizītus</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1177"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1188"/>
         <source>Add a dynamic text field</source>
         <translation>Pievienot dinamisku teksta lauku</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1192"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1203"/>
         <source>Double-click to finish the shape, Right click to cancel the last point</source>
         <translation>Veiciet dubultklikšķi, lai pabeigtu formu; klikšķiniet ar labo pogu, lai atceltu pēdējo punktu</translation>
     </message>
@@ -15442,26 +17027,26 @@ Lai izveidotu skriptu, palūdziet to savam MI asistentam: zemāk esošā poga no
         <translation>Ielīmēt no...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="482"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="490"/>
         <source>[Changed]</source>
         <comment>window title tag</comment>
         <translation>[Mainīts]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="486"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="494"/>
         <source> [Read only]</source>
         <comment>window title tag</comment>
         <translation> [tikai lasāms]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1396"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1449"/>
         <source>Elements Editor</source>
         <comment>status bar message</comment>
         <translation>Elementu redaktors</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="567"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="722"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="578"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="733"/>
         <source>%n selected parts.</source>
         <translation>
             <numerusform>Atlasīta %n daļa.</numerusform>
@@ -15470,29 +17055,29 @@ Lai izveidotu skriptu, palūdziet to savam MI asistentam: zemāk esošā poga no
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="529"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="537"/>
         <source>Too many primitives, list not generated: %1</source>
         <translation>Pārāk daudz primitīvu; saraksts netika izveidots: %1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="798"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="809"/>
         <source>Missing terminal</source>
         <comment>warning title</comment>
         <translation>Trūkst spailes</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="821"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="832"/>
         <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Sheet references must have a single terminal.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Check that the element has only one terminal</source>
         <translation>&lt;br&gt;&lt;b&gt;Kļūda&lt;/b&gt;:&lt;br&gt;Lapas atsaucei jābūt ar vienu spaili.&lt;br&gt;&lt;b&gt;Risinājums&lt;/b&gt;:&lt;br&gt;Pārbaudiet, vai elementam ir tikai viena spaile</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="897"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="908"/>
         <source>The verification of this element generated</source>
         <comment>message box content</comment>
         <translation>Pārbaudot šo elementu, tika konstatēts</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="900"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="911"/>
         <source> %n errors</source>
         <comment>errors</comment>
         <translation>
@@ -15502,32 +17087,32 @@ Lai izveidotu skriptu, palūdziet to savam MI asistentam: zemāk esošā poga no
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="905"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="916"/>
         <source> and</source>
         <translation> un</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="924"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="935"/>
         <source>Errors</source>
         <translation>Kļūdas</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="820"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="831"/>
         <source>Missing terminal</source>
         <translation>Trūkst spailes</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1193"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1204"/>
         <source>Add non-editable element text in diagrams</source>
         <translation>Pievienot shēmām nerediģējamu elementa tekstu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1194"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1205"/>
         <source>Add element text that can be edited in diagrams</source>
         <translation>Pievienot elementa tekstu, ko var rediģēt shēmās</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="907"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="918"/>
         <source> %n Warnings</source>
         <comment>warnings</comment>
         <translation>
@@ -15537,104 +17122,104 @@ Lai izveidotu skriptu, palūdziet to savam MI asistentam: zemāk esošā poga no
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="917"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="928"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation>&lt;b&gt;%1&lt;/b&gt;: %2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="231"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="239"/>
         <source>The file %1 does not exist.</source>
         <comment>message box content</comment>
         <translation>Fails %1 neeksistē.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="85"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="86"/>
         <source>Display</source>
         <comment>menu entry</comment>
         <translation>Attēlojums</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="237"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1704"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="245"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1757"/>
         <source>Unable to open the file %1.</source>
         <comment>message box content</comment>
         <translation>Neizdevās atvērt failu %1.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="244"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1709"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="252"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1762"/>
         <source>This file is not a valid XML document</source>
         <comment>message box content</comment>
         <translation>Šis fails nav derīgs XML dokuments</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="250"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1715"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="258"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1768"/>
         <source>Error</source>
         <comment>toolbar title</comment>
         <translation>Kļūda</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="261"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="331"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="269"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="339"/>
         <source>Read only edition</source>
         <comment>message box title</comment>
         <translation>Rediģēšana tikai lasīšanai</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="262"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="332"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="270"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="340"/>
         <source>You are not allowed to modify this element. Thus it will be edited read-only.</source>
         <comment>message box content</comment>
         <translation>Jums nav atļauts mainīt šo elementu, tāpēc tas tiks atvērts tikai lasīšanai.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="293"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="357"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="301"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="365"/>
         <source>Error</source>
         <comment>message box title</comment>
         <translation>Kļūda</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="294"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="302"/>
         <source>Unable to write to this file</source>
         <comment>message box content</comment>
         <translation>Nevar rakstīt šajā failā</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="358"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="366"/>
         <source>Unable to save the element</source>
         <comment>message box content</comment>
         <translation>Neizdevās saglabāt elementu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="840"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="851"/>
         <source>Incorrect number of terminals</source>
         <translation>Nepareizs spaiļu skaits</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="841"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="852"/>
         <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Conductor definitions can only have one terminal.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Verify that the element has only one terminal</source>
         <translation>&lt;br&gt;&lt;b&gt;Kļūda&lt;/b&gt;:&lt;br&gt;Vadītāja definīcijai var būt tikai viena spaile.&lt;br&gt;&lt;b&gt;Risinājums&lt;/b&gt;:&lt;br&gt;Pārbaudiet, vai elementam ir tikai viena spaile</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="862"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="873"/>
         <source>Duplicate terminal names</source>
         <translation>Dublēti spaiļu nosaukumi</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="863"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="874"/>
         <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Several terminals have the same name: %1.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Give each terminal a unique name, for example N.1 and N.2. The terminals concerned are selected.</source>
         <translation>&lt;br&gt;&lt;b&gt;Kļūda&lt;/b&gt;:&lt;br&gt;Vairākām spailēm ir vienāds nosaukums: %1.&lt;br&gt;&lt;b&gt;Risinājums&lt;/b&gt;:&lt;br&gt;Piešķiriet katrai spailei unikālu nosaukumu, piemēram, N.1 un N.2. Attiecīgās spailes ir atlasītas.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="884"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="895"/>
         <source>Terminals without a name</source>
         <translation>Spailes bez nosaukuma</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="885"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="896"/>
         <source>&lt;br&gt;%n terminals without a name. Without unique terminal names, the wiring list (what connects to what) cannot name each terminal, so it cannot be used to wire the cabinet in the workshop.</source>
         <translation>
             <numerusform>&lt;br&gt;%n spaile bez nosaukuma. Bez unikāliem spaiļu nosaukumiem vadu sarakstā nevar norādīt, kas ar ko savienots, tāpēc to nevar izmantot skapja montāžas darbnīcā.</numerusform>
@@ -15643,224 +17228,250 @@ Lai izveidotu skriptu, palūdziet to savam MI asistentam: zemāk esošā poga no
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1098"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1099"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1103"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1104"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1105"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1106"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1107"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1108"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1109"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1110"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1111"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1112"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1113"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1114"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1115"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1116"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1117"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1118"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1119"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1120"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1121"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1122"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1123"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1139"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1143"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1147"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1151"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1157"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1124"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1125"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1126"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1127"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1130"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1131"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1133"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1134"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1150"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1154"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1158"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1162"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1163"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1164"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1165"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1209"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1240"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1168"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1173"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1174"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1175"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1176"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1231"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1257"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1288"/>
         <source>Element editors</source>
         <translation>Elementu redaktori</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1155"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1166"/>
         <source>Scale the element...</source>
         <translation>Mainīt elementa mērogu...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1205"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1212"/>
+        <source>Tape measure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1214"/>
+        <source>Measure distance and angle between points</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1234"/>
+        <source>Clear measurements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1235"/>
+        <source>Clear all tape measurements from the editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1240"/>
+        <source>Measurements cleared</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1253"/>
         <source>Show the background frame</source>
         <translation>Rādīt fona rāmi</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1213"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1261"/>
         <source>Background frame size...</source>
         <translation>Fona rāmja izmērs...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1216"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1264"/>
         <source>Background frame size</source>
         <translation>Fona rāmja izmērs</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1221"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1227"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1269"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1275"/>
         <source> px</source>
         <translation> px</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1223"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1271"/>
         <source>Width</source>
         <translation>Platums</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1229"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1277"/>
         <source>Height</source>
         <translation>Augstums</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1391"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1444"/>
         <source>X: %1  Y: %2</source>
         <translation>X: %1  Y: %2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1598"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1651"/>
         <source>Export as SVG</source>
         <comment>dialog title</comment>
         <translation>Eksportēt kā SVG</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1600"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1653"/>
         <source>SVG image (*.svg)</source>
         <comment>filetypes allowed when exporting an element to SVG</comment>
         <translation>SVG attēls (*.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1611"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1664"/>
         <source>Export failed</source>
         <translation>Eksportēšana neizdevās</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1612"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1665"/>
         <source>Unable to write to the file « %1 ».</source>
         <translation>Nevar ierakstīt failā « %1 ».</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1796"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1849"/>
         <source>Warning</source>
         <translation>Brīdinājums</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1796"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1849"/>
         <source>Importing a large dxf can take time 
 please wait while importing...</source>
         <translation>Liela DXF faila importēšana var aizņemt laiku. 
 Lūdzu, uzgaidiet, kamēr notiek importēšana...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1837"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1890"/>
         <source>Import an element to resize</source>
         <translation>Importēt elementu mērogošanai</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1839"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1892"/>
         <source>QElectroTech elements (*.elmt)</source>
         <translation>QElectroTech elementi (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="967"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="978"/>
         <source>Unable to open file</source>
         <comment>message box title</comment>
         <translation>Neizdevās atvērt failu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="969"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="980"/>
         <source>It appears the %1 file which you are trying to open does not exist or does not exist anymore.</source>
         <translation>Šķiet, ka fails %1, kuru mēģināt atvērt, neeksistē vai vairs neeksistē.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1469"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1498"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1564"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1522"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1551"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1617"/>
         <source>Registration failed</source>
         <translation>Reģistrācija neizdevās</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1469"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1498"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1564"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1522"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1551"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1617"/>
         <source>The recording failed,
 the conditions are not valid</source>
         <translation>Ierakstīšana neizdevās,
 nosacījumi nav derīgi</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="460"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="468"/>
         <source>Open a file</source>
         <comment>dialog title</comment>
         <translation>Atvērt failu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="462"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="470"/>
         <source>QElectroTech elements (*.elmt);;XML files (*.xml);;All files (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>QElectroTech elementi (*.elmt);;XML faili (*.xml);;Visi faili (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1661"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1714"/>
         <source>Reload element</source>
         <comment>dialog title</comment>
         <translation>Pārlādēt elementu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="927"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="938"/>
         <source>Warnings</source>
         <translation>Brīdinājumi</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1662"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1715"/>
         <source>This element has been modified since last save. If you reload it, these changes will be lost. Do you really want to reload this element?</source>
         <comment>dialog content</comment>
         <translation>Šis elements ir mainīts pēc pēdējās saglabāšanas. Pārlādējot izmaiņas tiks zaudētas. Vai tiešām vēlaties pārlādēt šo elementu?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1537"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1590"/>
         <source>Save as</source>
         <comment>dialog title</comment>
         <translation>Saglabāt kā</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1539"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1592"/>
         <source>QElectroTech elements (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>QElectroTech elementi (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1013"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1024"/>
         <source>Save current element?</source>
         <comment>dialog title</comment>
         <translation>Vai saglabāt pašreizējo elementu?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1015"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1026"/>
         <source>Do you wish to save the element %1?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Vai vēlaties saglabāt elementu %1?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="308"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="314"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1730"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1736"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="316"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="322"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1783"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1789"/>
         <source>Non-existent element.</source>
         <comment>message box title</comment>
         <translation>Elements neeksistē.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="315"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1737"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="323"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1790"/>
         <source>The element does not exist.</source>
         <comment>message box content</comment>
         <translation>Elements neeksistē.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="309"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1731"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="317"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1784"/>
         <source>The chosen virtual path does not match an element.</source>
         <comment>message box content</comment>
         <translation>Izvēlētais virtuālais ceļš neatbilst nevienam elementam.</translation>
@@ -15881,7 +17492,7 @@ nosacījumi nav derīgi</translation>
         <translation>&amp;Ielīmēt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1171"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1182"/>
         <source>Add a rectangle</source>
         <translation>Pievienot taisnstūri</translation>
     </message>
@@ -16101,48 +17712,48 @@ Vai vēlaties šim projektam ieslēgt sasaistītās lapu atsauces?
 (Atsauces elementi ar vienādu marķējumu dažādās lapās tiks sasaistīti.)</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3828"/>
+        <location filename="../sources/qetproject.cpp" line="3866"/>
         <source>Warning</source>
         <comment>message box title</comment>
         <translation>Brīdinājums</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1405"/>
+        <location filename="../sources/qetproject.cpp" line="1411"/>
         <source>Project « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>Projekts « %1 : %2»</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1412"/>
+        <location filename="../sources/qetproject.cpp" line="1418"/>
         <source>Project %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Projekts %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1419"/>
+        <location filename="../sources/qetproject.cpp" line="1425"/>
         <source>Untitled project</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Projekts bez nosaukuma</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1428"/>
+        <location filename="../sources/qetproject.cpp" line="1434"/>
         <source>%1 [read-only]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [tikai lasāms]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1438"/>
+        <location filename="../sources/qetproject.cpp" line="1444"/>
         <source>%1 [modified]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [mainīts]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1796"/>
+        <location filename="../sources/qetproject.cpp" line="1802"/>
         <source>Renumber elements</source>
         <translation>Pārnumurēt elementus</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1797"/>
+        <location filename="../sources/qetproject.cpp" line="1803"/>
         <source>Renumber elements (%1)</source>
         <translation>Pārnumurēt elementus (%1)</translation>
     </message>
@@ -16151,27 +17762,27 @@ Vai vēlaties šim projektam ieslēgt sasaistītās lapu atsauces?
         <translation type="vanished">QElectroTech projekts (*.qet *.qetz)</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3216"/>
+        <location filename="../sources/qetproject.cpp" line="3254"/>
         <source>%1 was opened read-only because someone else has it open. Use Save As to keep your changes in another file.</source>
         <translation>%1 tika atvērts tikai lasīšanai, jo to ir atvēris cits lietotājs. Lai saglabātu izmaiņas citā failā, izmantojiet “Saglabāt kā”.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3221"/>
+        <location filename="../sources/qetproject.cpp" line="3259"/>
         <source>Cannot save %1: %2</source>
         <translation>Nevar saglabāt %1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3248"/>
+        <location filename="../sources/qetproject.cpp" line="3286"/>
         <source>someone else changed the file on disk at %1 since it was opened, and saving would overwrite that. Save to another name, or set QET_OVERWRITE_CHANGED=1 to overwrite it.</source>
         <translation>Kopš atvēršanas cits lietotājs ir mainījis failu diskā %1, un saglabājot šīs izmaiņas tiktu pārrakstītas. Saglabājiet failu ar citu nosaukumu vai iestatiet QET_OVERWRITE_CHANGED=1, lai to pārrakstītu.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3470"/>
+        <location filename="../sources/qetproject.cpp" line="3508"/>
         <source>Modified contact system</source>
         <translation>Mainīta kontaktu sistēma</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3471"/>
+        <location filename="../sources/qetproject.cpp" line="3509"/>
         <source>The new element defines slave contact groups.
 Existing slave elements will not be automatically assigned. You will need to link the slaves manually and assign the contact groups.
 
@@ -16182,13 +17793,13 @@ Esošie pakārtotie elementi netiks piešķirti automātiski. Tie būs manuāli 
 Vai turpināt?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3560"/>
+        <location filename="../sources/qetproject.cpp" line="3598"/>
         <source>An error occurred during the template integration.</source>
         <comment>error message</comment>
         <translation>Veidnes integrēšanas laikā radās kļūda.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3830"/>
+        <location filename="../sources/qetproject.cpp" line="3868"/>
         <source>This document appears to have been saved with version %1
  which is later than your version ! 
 You are currently using QElectroTech in version %2</source>
@@ -16196,7 +17807,7 @@ You are currently using QElectroTech in version %2</source>
 Pašlaik izmantojat QElectroTech versiju %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3834"/>
+        <location filename="../sources/qetproject.cpp" line="3872"/>
         <source>.
  It is then possible that the opening of all or part of this document fails.
 What do you wish to do ?</source>
@@ -16205,49 +17816,49 @@ Iespējams, ka visu dokumentu vai tā daļu neizdosies atvērt.
 Kā rīkoties?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3856"/>
+        <location filename="../sources/qetproject.cpp" line="3894"/>
         <source>The project you are trying to open is partially compatible with your version %1 of QElectroTech.
 </source>
         <translation>Projekts, kuru mēģināt atvērt, ir daļēji saderīgs ar jūsu QElectroTech versiju %1.
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3859"/>
+        <location filename="../sources/qetproject.cpp" line="3897"/>
         <source>In order to make it fully compatible please open this same project with version 0.8, or 0.80 of QElectroTech and save the project and open it again with this version.
 What do you wish to do ?</source>
         <translation>Lai nodrošinātu pilnu saderību, atveriet šo projektu ar QElectroTech versiju 0.8 vai 0.80, saglabājiet to un pēc tam atveriet vēlreiz šajā versijā.
 Kā rīkoties?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3855"/>
+        <location filename="../sources/qetproject.cpp" line="3893"/>
         <source>Warning </source>
         <comment>message box title</comment>
         <translation>Brīdinājums </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3013"/>
+        <location filename="../sources/qetproject.cpp" line="3051"/>
         <source>QElectroTech project (*.qet *.qetz *.qetdb)</source>
         <translation>QElectroTech projekts (*.qet *.qetz *.qetdb)</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3041"/>
-        <location filename="../sources/qetproject.cpp" line="3063"/>
+        <location filename="../sources/qetproject.cpp" line="3079"/>
+        <location filename="../sources/qetproject.cpp" line="3101"/>
         <source>a history is kept only in a project saved as .qetdb</source>
         <translation>Vēsture tiek glabāta tikai projektā, kas saglabāts kā .qetdb</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3045"/>
-        <location filename="../sources/qetproject.cpp" line="3067"/>
+        <location filename="../sources/qetproject.cpp" line="3083"/>
+        <location filename="../sources/qetproject.cpp" line="3105"/>
         <source>the file was changed on disk since it was opened or saved</source>
         <translation>Fails diskā ir mainīts kopš tā atvēršanas vai pēdējās saglabāšanas</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="4293"/>
+        <location filename="../sources/qetproject.cpp" line="4334"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creation of sheets&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Atver projektu...&lt;/b&gt;&lt;br/&gt;Izveido lapas&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="4423"/>
+        <location filename="../sources/qetproject.cpp" line="4464"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Setting up cross references&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Atver projektu...&lt;/b&gt;&lt;br/&gt;Iestata savstarpējās atsauces&lt;/p&gt;</translation>
     </message>
@@ -16639,7 +18250,7 @@ Kā rīkoties?</translation>
     </message>
     <message>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="312"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="821"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="827"/>
         <source>Warning: the element has been saved with a more recent version of QElectroTech.</source>
         <translation>Brīdinājums: elements saglabāts ar jaunāku QElectroTech versiju.</translation>
     </message>
@@ -16678,7 +18289,7 @@ Kā rīkoties?</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="463"/>
-        <location filename="../sources/undocommand/movegraphicsitemcommand.cpp" line="54"/>
+        <location filename="../sources/undocommand/movegraphicsitemcommand.cpp" line="55"/>
         <source>move %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>pārvietot %1</translation>
@@ -16982,7 +18593,7 @@ Kā rīkoties?</translation>
         <translation>Secība</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="77"/>
+        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="78"/>
         <source>Terminal</source>
         <comment>tooltip</comment>
         <translation>Spaile</translation>
@@ -17279,13 +18890,20 @@ Kā rīkoties?</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="334"/>
+        <location filename="../sources/formulabuilder.cpp" line="102"/>
+        <location filename="../sources/formulabuilder.cpp" line="103"/>
+        <location filename="../sources/formulabuilder.cpp" line="104"/>
+        <location filename="../sources/formulabuilder.cpp" line="111"/>
+        <location filename="../sources/formulabuilder.cpp" line="112"/>
+        <location filename="../sources/formulabuilder.cpp" line="113"/>
+        <location filename="../sources/formulabuilder.cpp" line="114"/>
         <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="65"/>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="187"/>
         <source>Text</source>
         <translation>Teksts</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="164"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="168"/>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="41"/>
         <source>Edit information of the element : %1</source>
         <translation>Rediģēt elementa informāciju: %1</translation>
@@ -17301,7 +18919,7 @@ Kā rīkoties?</translation>
         <translation>Mainīt elementa informāciju</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/linkelementcommand.cpp" line="92"/>
+        <location filename="../sources/undocommand/linkelementcommand.cpp" line="94"/>
         <source>Edit the cross reference</source>
         <comment>edite the cross reference</comment>
         <translation>Rediģēt savstarpējo atsauci</translation>
@@ -17402,12 +19020,22 @@ neizdevās nolasīt šīs mapes tulkoto nosaukumu, tāpēc tiek rādīts mapes n
         <translation>Kolekcija</translation>
     </message>
     <message>
-        <location filename="../sources/elementsmover.cpp" line="100"/>
+        <location filename="../sources/elementsmover.cpp" line="106"/>
         <source>This group cannot be moved: the position of one of its elements is locked.</source>
         <translation>Šo grupu nevar pārvietot: viena tās elementa novietojums ir bloķēts.</translation>
     </message>
+    <message>
+        <location filename="../sources/elementsmover.cpp" line="313"/>
+        <source>A terminal may not be dropped on a bridge which cannot take one more.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementsmover.cpp" line="487"/>
+        <source>Update automatic connections</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message numerus="yes">
-        <location filename="../sources/elementsmover.cpp" line="332"/>
+        <location filename="../sources/elementsmover.cpp" line="511"/>
         <source>Add %n conductors</source>
         <comment>add a numbers of conductor one or more</comment>
         <translation>
@@ -17478,7 +19106,7 @@ neizdevās nolasīt šīs mapes tulkoto nosaukumu, tāpēc tiek rādīts mapes n
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="111"/>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="953"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="955"/>
         <source>Rotate %1</source>
         <translation>Pagriezt %1</translation>
     </message>
@@ -17542,8 +19170,8 @@ Vai vēlaties to aizstāt?</translation>
         <translation>Pabeigts %p% (%v no %m)</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="294"/>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="986"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="309"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="1001"/>
         <source>load %p% (%v on %m)</source>
         <translation>Ielādē %p% (%v no %m)</translation>
     </message>
@@ -17666,16 +19294,16 @@ Vai vēlaties to aizstāt?</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="209"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1456"/>
-        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1735"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3372"/>
+        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1846"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3404"/>
         <source>Type</source>
         <translation>Tips</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="210"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1457"/>
-        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1736"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3373"/>
+        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1847"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3405"/>
         <source>Address</source>
         <translation>Adrese</translation>
     </message>
@@ -17683,8 +19311,8 @@ Vai vēlaties to aizstāt?</translation>
         <location filename="../sources/qetinformation.cpp" line="316"/>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="212"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1459"/>
-        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1738"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3375"/>
+        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1849"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3407"/>
         <source>Annotation</source>
         <translation>Anotācija</translation>
     </message>
@@ -17692,8 +19320,8 @@ Vai vēlaties to aizstāt?</translation>
         <location filename="../sources/qetinformation.cpp" line="377"/>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="213"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1460"/>
-        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1739"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3376"/>
+        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1850"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3408"/>
         <source>Cross-reference</source>
         <translation>Savstarpējā atsauce</translation>
     </message>
@@ -17702,8 +19330,8 @@ Vai vēlaties to aizstāt?</translation>
         <location filename="../sources/qetinformation.cpp" line="330"/>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="211"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1458"/>
-        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1737"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3374"/>
+        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1848"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3406"/>
         <source>Function</source>
         <translation>Funkcija</translation>
     </message>
@@ -18044,22 +19672,27 @@ Vai vēlaties to aizstāt?</translation>
         <translation>Vadītāju izveide</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4866"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3522"/>
+        <source>Delete</source>
+        <translation type="unfinished">Dzēst</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5295"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>Lai instalētu spraudni qet_tb_generator&lt;br&gt;Apmeklējiet: &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Nepieciešams Python 3.5 vai jaunāks.&lt;br&gt;&lt;B&gt;&lt;U&gt; Pirmā instalēšana Windows vidē&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Ja nepieciešams, instalējiet Python 3.5 vai jaunāku versiju&lt;br&gt; Skatiet: &lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Atjaunināšana Windows vidē&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;lietotājs var palaist šo skriptu terminālī no mapes&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4886"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5315"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Lai instalētu spraudni qet_tb_generator&lt;br&gt;Apmeklējiet: &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Pirmā instalēšana macOS vidē&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Ja nepieciešams, instalējiet tikai Python 3.11 pakotni: &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2. Palaidiet Profile.command skriptu&lt;br&gt;jo programma izmanto fiksētu PATH, lai atrastu spraudni qet-tb-generator&lt;br&gt; Skatiet: &lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;pamācība&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Atjaunināšana macOS vidē&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4905"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5334"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Lai instalētu spraudni qet_tb_generator&lt;br&gt;Apmeklējiet: &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Nepieciešams Python 3.5 vai jaunāks.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Pirmā instalēšana Linux vidē&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Pārbaudiet, vai ir instalēts pip3: pip3 --version&lt;br&gt;Ja nav, instalējiet ar: sudo apt-get install python3-pip&lt;br&gt;2. Instalējiet programmu: sudo pip3 install qet_tb_generator&lt;br&gt;3. Palaidiet programmu: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Atjaunināšana Linux vidē&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4925"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5354"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>Kļūda, palaižot spraudni qet_tb_generator</translation>
     </message>
@@ -18114,118 +19747,118 @@ Vai vēlaties to aizstāt?</translation>
         <translation>Mainīt spaiļu grupas rekvizītus</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="31"/>
+        <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="34"/>
         <source>Sort terminal block %1</source>
         <translation>Kārtot spaiļu bloku %1</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="913"/>
-        <location filename="../sources/properties/elementdata.cpp" line="933"/>
+        <location filename="../sources/properties/elementdata.cpp" line="967"/>
+        <location filename="../sources/properties/elementdata.cpp" line="987"/>
         <source>Generic</source>
         <comment>generic terminal element type</comment>
         <translation>Vispārīgs</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="915"/>
+        <location filename="../sources/properties/elementdata.cpp" line="969"/>
         <source>Fuse</source>
         <comment>fuse terminal element type</comment>
         <translation>Drošinātājs</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="917"/>
+        <location filename="../sources/properties/elementdata.cpp" line="971"/>
         <source>Sectionable</source>
         <comment>sectional terminal element type</comment>
         <translation>Atdalāms</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="919"/>
+        <location filename="../sources/properties/elementdata.cpp" line="973"/>
         <source>Diode</source>
         <comment>diode terminal element type</comment>
         <translation>Diode</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="921"/>
+        <location filename="../sources/properties/elementdata.cpp" line="975"/>
         <source>Ground</source>
         <comment>ground terminal element type</comment>
         <translation>Zemējums</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="923"/>
+        <location filename="../sources/properties/elementdata.cpp" line="977"/>
         <source>Anti-parallel diodes</source>
         <comment>anti-parallel diodes terminal element type</comment>
         <translation>Pretēji paralēlas diodes</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="925"/>
+        <location filename="../sources/properties/elementdata.cpp" line="979"/>
         <source>Resistor</source>
         <comment>resistor terminal element type</comment>
         <translation>Rezistors</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="927"/>
+        <location filename="../sources/properties/elementdata.cpp" line="981"/>
         <source>Varistor</source>
         <comment>varistor terminal element type</comment>
         <translation>Varistors</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="929"/>
+        <location filename="../sources/properties/elementdata.cpp" line="983"/>
         <source>Test socket</source>
         <comment>test socket terminal element type</comment>
         <translation>Pārbaudes ligzda</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="931"/>
+        <location filename="../sources/properties/elementdata.cpp" line="985"/>
         <source>Diode (reversed)</source>
         <comment>reversed diode terminal element type</comment>
         <translation>Diode (apgriezta)</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="968"/>
-        <location filename="../sources/properties/elementdata.cpp" line="972"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1022"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1026"/>
         <source>Generic</source>
         <comment>generic terminal element function</comment>
         <translation>Vispārīgs</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="969"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1023"/>
         <source>Phase</source>
         <comment>phase terminal element function</comment>
         <translation>Fāze</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="970"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1024"/>
         <source>Neutral</source>
         <comment>neutral terminal element function</comment>
         <translation>Neitrāle</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1239"/>
-        <location filename="../sources/properties/elementdata.cpp" line="1251"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1293"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1305"/>
         <source>Digital input</source>
         <translation>Digitālā ieeja</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1241"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1295"/>
         <source>Digital output</source>
         <translation>Digitālā izeja</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1243"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1297"/>
         <source>Analogue input</source>
         <translation>Analogā ieeja</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1245"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1299"/>
         <source>Analogue output</source>
         <translation>Analogā izeja</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1247"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1301"/>
         <source>Universal input</source>
         <translation>Universālā ieeja</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1249"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1303"/>
         <source>Universal output</source>
         <translation>Universālā izeja</translation>
     </message>
@@ -18255,7 +19888,7 @@ Vai vēlaties to aizstāt?</translation>
         <translation>Atvērt vienumu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1789"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1842"/>
         <source>Import a dxf file</source>
         <translation>Importēt DXF failu</translation>
     </message>
@@ -18266,8 +19899,8 @@ Vai vēlaties to aizstāt?</translation>
     </message>
     <message>
         <location filename="../sources/conductorproperties.cpp" line="1065"/>
-        <location filename="../sources/qetapp.cpp" line="3135"/>
-        <location filename="../sources/ElementsCollection/elementslocation.cpp" line="401"/>
+        <location filename="../sources/qetapp.cpp" line="3178"/>
+        <location filename="../sources/ElementsCollection/elementslocation.cpp" line="403"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="812"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="406"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="529"/>
@@ -18453,8 +20086,8 @@ Lejupielādējiet to, izmantojot saiti, un atarhivējiet instalācijas mapē</tr
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="172"/>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="882"/>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="3552"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="884"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="3554"/>
         <source>Move %1</source>
         <translation>Pārvietot %1</translation>
     </message>
@@ -18632,89 +20265,89 @@ Lejupielādējiet to, izmantojot saiti, un atarhivējiet instalācijas mapē</tr
         </translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="861"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="863"/>
         <source>insert %1</source>
         <translation>ievietot %1</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="1333"/>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="1398"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="1335"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="1400"/>
         <source>Edit the conductor properties</source>
         <translation>Rediģēt vadītāja rekvizītus</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="2174"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="2176"/>
         <source>Edit a text</source>
         <translation>Rediģēt tekstu</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="2197"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="2199"/>
         <source>Change the color of a text</source>
         <translation>Mainīt teksta krāsu</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="2215"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="2217"/>
         <source>Rotate a text</source>
         <translation>Pagriezt tekstu</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="2476"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="2478"/>
         <source>Edit line of a form</source>
         <translation>Rediģēt formas līniju</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="2488"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="2490"/>
         <source>Edit filling a form</source>
         <translation>Rediģēt formas aizpildījumu</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="2496"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="2498"/>
         <source>Rotate a shape</source>
         <translation>Pagriezt formu</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="2703"/>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="2825"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="2705"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="2827"/>
         <source>Change the shape of %1</source>
         <translation>Mainīt %1 formu</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="2853"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="2855"/>
         <source>Close/Open %1</source>
         <translation>Aizvērt/atvērt %1</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="3934"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="3964"/>
         <source>Resize an image</source>
         <translation>Mainīt attēla izmēru</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="3960"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="3990"/>
         <source>Rotate an image</source>
         <translation>Pagriezt attēlu</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="4336"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="4366"/>
         <source>Edit element text</source>
         <translation>Rediģēt elementa tekstu</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="4419"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="4512"/>
         <source>Automatically number an element</source>
         <translation>Automātiski numurēt elementu</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="4461"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="4554"/>
         <source>Renumber elements (%1)</source>
         <translation>Pārnumurēt elementus (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="5403"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="5496"/>
         <source>Search and replace</source>
         <translation>Meklēt un aizstāt</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="5694"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="5787"/>
         <location filename="../sources/scripting/qetscripting.cpp" line="156"/>
         <location filename="../sources/scripting/qetscripting.cpp" line="241"/>
         <source>Script</source>
@@ -18744,7 +20377,7 @@ Lai to iespējotu: atveriet Konfigurēt QElectroTech &gt; Vispārīgi &gt; Proje
         <translation>Skripts: %1</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/undocommand/groupitemscommand.cpp" line="55"/>
+        <location filename="../sources/undocommand/groupitemscommand.cpp" line="56"/>
         <source>Group %n items</source>
         <translation>
             <numerusform>Grupēt %n vienumu</numerusform>
@@ -18753,7 +20386,7 @@ Lai to iespējotu: atveriet Konfigurēt QElectroTech &gt; Vispārīgi &gt; Proje
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/undocommand/groupitemscommand.cpp" line="75"/>
+        <location filename="../sources/undocommand/groupitemscommand.cpp" line="76"/>
         <source>Ungroup %n items</source>
         <translation>
             <numerusform>Atgrupēt %n vienumu</numerusform>
@@ -18849,19 +20482,19 @@ Lai to iespējotu: atveriet Konfigurēt QElectroTech &gt; Vispārīgi &gt; Proje
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1239"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1747"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1755"/>
         <source>it keeps no revision %1</source>
         <translation>Tajā nav saglabāta versija %1</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1248"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1765"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1773"/>
         <source>this build of QElectroTech has no SQLite session support</source>
         <translation>Šim QElectroTech būvējumam nav SQLite sesiju atbalsta</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1255"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1755"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1763"/>
         <source>the changes of revision %1 were not recorded</source>
         <translation>Versijas %1 izmaiņas netika reģistrētas</translation>
     </message>
@@ -18881,13 +20514,13 @@ Lai to iespējotu: atveriet Konfigurēt QElectroTech &gt; Vispārīgi &gt; Proje
         <translation>Failu neizdevās ierakstīt diskā</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1426"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1537"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1429"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1545"/>
         <source>the file could not be read</source>
         <translation>Failu neizdevās nolasīt</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1454"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1457"/>
         <source>it has %n damaged page(s), more than the repair data it keeps can rebuild</source>
         <translation>
             <numerusform>Tajā ir %n bojāta lapa — vairāk, nekā var atjaunot ar tajā saglabātajiem labošanas datiem.</numerusform>
@@ -18896,31 +20529,31 @@ Lai to iespējotu: atveriet Konfigurēt QElectroTech &gt; Vispārīgi &gt; Proje
         </translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1514"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1554"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1522"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1562"/>
         <source>its content is not what QElectroTech saved: it is damaged, or another program changed it</source>
         <translation>Faila saturs neatbilst QElectroTech saglabātajam: fails ir bojāts vai arī to ir mainījusi cita programma</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1625"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1633"/>
         <source>keep at least 2 saves, or 0 for all</source>
         <translation>Saglabāt vismaz 2 versijas; 0 nozīmē saglabāt visas</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1631"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1704"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1738"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1798"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1639"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1712"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1746"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1806"/>
         <source>it keeps no history</source>
         <translation>Tajā netiek glabāta izmaiņu vēsture</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1742"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1750"/>
         <source>revision %1 does not come before revision %2</source>
         <translation>Versija %1 nav pirms versijas %2</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1773"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1781"/>
         <source>the changes of revision %1 do not follow on</source>
         <translation>Versijas %1 izmaiņas nav secīgs turpinājums</translation>
     </message>
@@ -19040,6 +20673,599 @@ Lai to iespējotu: atveriet Konfigurēt QElectroTech &gt; Vispārīgi &gt; Proje
         <source>Horizontal alignment</source>
         <translation>Horizontālais līdzinājums</translation>
     </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="82"/>
+        <source>Values</source>
+        <translation type="unfinished">Vērtības</translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="83"/>
+        <source>Comparisons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="84"/>
+        <source>Text conditions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="85"/>
+        <source>Logic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="86"/>
+        <source>Text functions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="87"/>
+        <source>Numbers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="89"/>
+        <source>A field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="89"/>
+        <source>Choose a column of this table&apos;s source.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="90"/>
+        <source>Fixed text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="90"/>
+        <source>Enter ordinary text. Quotes and other punctuation are handled for you.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="91"/>
+        <source>A number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="91"/>
+        <location filename="../sources/formulabuilder.cpp" line="213"/>
+        <source>Enter a number.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="92"/>
+        <source>Nothing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="92"/>
+        <source>No value at all. To check for missing or blank text, use Is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="93"/>
+        <location filename="../sources/formulabuilder.cpp" line="93"/>
+        <source>Equals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="93"/>
+        <source>Compare two values. If one of them is a number, they are compared as numbers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="93"/>
+        <location filename="../sources/formulabuilder.cpp" line="94"/>
+        <location filename="../sources/formulabuilder.cpp" line="100"/>
+        <location filename="../sources/formulabuilder.cpp" line="101"/>
+        <source>Value</source>
+        <translation type="unfinished">Vērtība</translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="94"/>
+        <location filename="../sources/formulabuilder.cpp" line="94"/>
+        <source>Differs from</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="94"/>
+        <source>True when the two values differ.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="95"/>
+        <location filename="../sources/formulabuilder.cpp" line="95"/>
+        <source>Greater than</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="95"/>
+        <location filename="../sources/formulabuilder.cpp" line="97"/>
+        <source>Compare numbers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="95"/>
+        <location filename="../sources/formulabuilder.cpp" line="96"/>
+        <location filename="../sources/formulabuilder.cpp" line="97"/>
+        <location filename="../sources/formulabuilder.cpp" line="98"/>
+        <location filename="../sources/formulabuilder.cpp" line="99"/>
+        <location filename="../sources/formulabuilder.cpp" line="115"/>
+        <location filename="../sources/formulabuilder.cpp" line="116"/>
+        <location filename="../sources/formulabuilder.cpp" line="117"/>
+        <location filename="../sources/formulabuilder.cpp" line="118"/>
+        <location filename="../sources/formulabuilder.cpp" line="119"/>
+        <source>Number</source>
+        <translation type="unfinished">Numurs</translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="96"/>
+        <location filename="../sources/formulabuilder.cpp" line="96"/>
+        <source>At least</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="96"/>
+        <location filename="../sources/formulabuilder.cpp" line="98"/>
+        <source>Compare numbers. Equal counts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="97"/>
+        <location filename="../sources/formulabuilder.cpp" line="97"/>
+        <source>Smaller than</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="98"/>
+        <location filename="../sources/formulabuilder.cpp" line="98"/>
+        <source>At most</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="99"/>
+        <source>Between two numbers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="99"/>
+        <source>The two limits count as inside.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="99"/>
+        <source>Lower limit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="99"/>
+        <source>Upper limit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="100"/>
+        <source>Is empty</source>
+        <translation type="unfinished">Ir tukšs</translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="100"/>
+        <source>True for nothing, empty text or text of only spaces.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="101"/>
+        <source>Is not empty</source>
+        <translation type="unfinished">Nav tukšs</translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="101"/>
+        <source>True when there is something besides spaces.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="102"/>
+        <location filename="../sources/formulabuilder.cpp" line="102"/>
+        <source>Contains</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="102"/>
+        <source>True when the text holds the other text, whatever the case.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="103"/>
+        <location filename="../sources/formulabuilder.cpp" line="103"/>
+        <source>Starts with</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="103"/>
+        <source>True when the text begins with the other text, whatever the case.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="104"/>
+        <location filename="../sources/formulabuilder.cpp" line="104"/>
+        <source>Ends with</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="104"/>
+        <source>True when the text ends with the other text, whatever the case.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="105"/>
+        <source>If... then... else</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="105"/>
+        <source>Use the second value when the condition is true, the third otherwise.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="105"/>
+        <source>If</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="105"/>
+        <source>Then use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="105"/>
+        <location filename="../sources/formulabuilder.cpp" line="109"/>
+        <source>Otherwise use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="106"/>
+        <source>All of</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="106"/>
+        <source>True when every condition is true.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="106"/>
+        <location filename="../sources/formulabuilder.cpp" line="107"/>
+        <source>Condition 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="106"/>
+        <location filename="../sources/formulabuilder.cpp" line="107"/>
+        <source>Condition 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="107"/>
+        <source>Any of</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="107"/>
+        <source>True when at least one condition is true.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="108"/>
+        <source>Not</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="108"/>
+        <source>True when the condition is false.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="108"/>
+        <source>Condition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="109"/>
+        <source>If empty, use another value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="109"/>
+        <source>Use the first value unless it is empty, then use the second.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="109"/>
+        <source>Preferred value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="110"/>
+        <source>Join values</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="110"/>
+        <source>Put the values one after the other with the separator between them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="110"/>
+        <source>Value 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="110"/>
+        <source>Value 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="111"/>
+        <source>Replace text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="111"/>
+        <source>Replace every occurrence of the text to find.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="111"/>
+        <source>Find</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="111"/>
+        <source>Replace with</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="112"/>
+        <source>UPPER CASE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="112"/>
+        <source>Turn the text into capitals.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="113"/>
+        <source>lower case</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="113"/>
+        <source>Turn the text into small letters.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="114"/>
+        <source>Remove surrounding spaces</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="114"/>
+        <source>Remove the spaces before and after the text.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="115"/>
+        <source>Add</source>
+        <translation type="unfinished">Pievienot</translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="115"/>
+        <source>Add two numbers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="115"/>
+        <source>Added to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="116"/>
+        <source>Subtract</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="116"/>
+        <source>Take the second number from the first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="116"/>
+        <source>Minus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="117"/>
+        <source>Multiply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="117"/>
+        <source>Multiply two numbers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="117"/>
+        <source>Times</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="118"/>
+        <source>Divide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="118"/>
+        <source>Divide by the second number. Dividing by zero gives nothing, not an error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="118"/>
+        <source>Divided by</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="119"/>
+        <source>Round</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="119"/>
+        <source>Round to a number of decimal places.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="119"/>
+        <source>Decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="193"/>
+        <source>The formula is nested too deeply (at most %1 levels).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="197"/>
+        <source>Choose an operation.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="200"/>
+        <source>%1 needs %2 to %3 inputs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="207"/>
+        <source>This field is not available in this table. Choose one from the list.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/formulabuilder.cpp" line="268"/>
+        <source>This operation is not supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/projectlanguages.cpp" line="277"/>
+        <source>Unexpected quote in the CSV file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/projectlanguages.cpp" line="289"/>
+        <source>Unexpected text after a quoted cell in the CSV file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/projectlanguages.cpp" line="292"/>
+        <source>Unterminated quoted cell in the CSV file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/projectlanguages.cpp" line="309"/>
+        <source>The CSV file must be UTF-8.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/projectlanguages.cpp" line="315"/>
+        <source>The CSV file is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/projectlanguages.cpp" line="320"/>
+        <source>The first column of the CSV file must be &quot;Source&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/projectlanguages.cpp" line="327"/>
+        <source>Ignored column &quot;%1&quot;: not a language code.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/projectlanguages.cpp" line="333"/>
+        <source>The CSV file has no language column.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/projectlanguages.cpp" line="341"/>
+        <source>Row %1 has the wrong number of cells and was skipped.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/projectlanguages.cpp" line="346"/>
+        <source>Row %1: &quot;%2&quot; is not a text of this project and was skipped.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/projectlanguages.cpp" line="353"/>
+        <source>Row %1 (%2): the %{...} fields differ from the source; skipped.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/dimensionitem.cpp" line="1216"/>
+        <source>Apply dimension format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/dimensionitem.cpp" line="1477"/>
+        <source>Move dimension point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/dimensionitem.cpp" line="1505"/>
+        <source>Change dimension offset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dimensionpropertiesdialog.cpp" line="39"/>
+        <source>Edit dimension properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/addbridgecommand.cpp" line="52"/>
+        <source>Drawing a bridge</source>
+        <comment>undo command text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgeundocommands.cpp" line="52"/>
+        <source>Changing a bridge</source>
+        <comment>undo command text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgeundocommands.cpp" line="112"/>
+        <source>Changing the length of a bridge</source>
+        <comment>undo command text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgeundocommands.cpp" line="179"/>
+        <source>Joining a bridge over a sheet reference</source>
+        <comment>undo command text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgeundocommands.cpp" line="295"/>
+        <source>Changing the terminals of a bridge</source>
+        <comment>undo command text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/bridge/bridgeundocommands.cpp" line="326"/>
+        <source>Deleting a line of a bridge</source>
+        <comment>undo command text</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QTextOrientationWidget</name>
@@ -19086,30 +21312,30 @@ Pievienojiet jaunu tabulu vai pielāgojiet esošo, lai parādītu visu informāc
 <context>
     <name>QetLabelsFile</name>
     <message>
-        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="180"/>
-        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="194"/>
+        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="208"/>
+        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="222"/>
         <source>syntax error at line %1, column %2:
 %3</source>
         <translation>Sintakses kļūda %1. rindā, %2. kolonnā:
 %3</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="231"/>
+        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="259"/>
         <source>No collection folder was given.</source>
         <translation>Nav norādīta kolekcijas mape.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="251"/>
+        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="279"/>
         <source>the root element &lt;%1&gt; is not &lt;labels&gt;.</source>
         <translation>Saknes elements &lt;%1&gt; nav &lt;labels&gt;.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="256"/>
+        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="284"/>
         <source>the file could not be opened: %1</source>
         <translation>Neizdevās atvērt failu: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="288"/>
+        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="316"/>
         <source>Prefix (label) file of the user collection.
 Each folder is given a prefix: the symbols of a folder take that
 folder&apos;s prefix, unless they carry a label of their own. A folder
@@ -19124,17 +21350,17 @@ QElectroTech izveido un maina šo failu (Iestatījumi:
 Konfigurēt prefiksus…), taču to var rediģēt arī manuāli.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="615"/>
+        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="643"/>
         <source>No prefix file to save.</source>
         <translation>Nav prefiksu faila, ko saglabāt.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="626"/>
+        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="654"/>
         <source>The folder %1 could not be created.</source>
         <translation>Neizdevās izveidot mapi %1.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="638"/>
+        <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="666"/>
         <source>The file %1 could not be copied beside itself before being replaced:
 nothing has been changed.</source>
         <translation>Pirms aizstāšanas failu %1 neizdevās nokopēt blakus pašam sev:
@@ -23373,7 +25599,7 @@ Pārējie lauki netiek izmantoti.</translation>
 <context>
     <name>Terminal</name>
     <message numerus="yes">
-        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="654"/>
+        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="656"/>
         <source>This terminal already has %n conductors, the project&apos;s limit. Add a terminal to connect one more conductor.</source>
         <comment>wire refused by the wires-per-terminal limit</comment>
         <translation>
@@ -23960,47 +26186,64 @@ Pārējie lauki netiek izmantoti.</translation>
         <translation>Visi ražotāji</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="226"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="87"/>
+        <source>Sort the terminals the way the drawing is laid out, and bring the bridges drawn there in with them. What the drawing brought is read-only here: it is changed in the drawing or not at all.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="233"/>
         <source>Independent terminals</source>
         <translation>Neatkarīgas spailes</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="308"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="315"/>
         <source>Modify terminal strip properties</source>
         <translation>Mainīt spaiļu bloka rekvizītus</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1260"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1076"/>
+        <source>A bridge of your own</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1077"/>
+        <source>This bridge is set here only: it is not added to the drawing, where bridges belong.
+
+Set it here anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1288"/>
         <source>Add spare terminals</source>
         <translation>Pievienot rezerves spailes</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1266"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1294"/>
         <source>Number of terminals :</source>
         <translation>Spaiļu skaits:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1268"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1296"/>
         <source>Number the terminals</source>
         <translation>Numurēt spailes</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1273"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1301"/>
         <source>Prefix :</source>
         <translation>Prefikss:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1278"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1306"/>
         <source>First number :</source>
         <translation>Pirmais numurs:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1283"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1311"/>
         <source>Same terminal as %1 (type, section, width, color, manufacturer...)</source>
         <translation>Tāda pati spaile kā %1 (tips, šķērsgriezums, platums, krāsa, ražotājs...)</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1285"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1313"/>
         <source>the selected terminal</source>
         <translation>atlasītā spaile</translation>
     </message>
@@ -24488,25 +26731,25 @@ Veiciet dubultklikšķi, lai pārietu uz elementu</translation>
 <context>
     <name>TerminalStripModelDelegate</name>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1022"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="963"/>
         <source>%1 mm</source>
         <translation>%1 mm</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1070"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1081"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1114"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1011"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1022"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1055"/>
         <source>None (default)</source>
         <translation>Nav (noklusējums)</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1073"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1220"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1014"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1161"/>
         <source>%1 mm²</source>
         <translation>%1 mm²</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1136"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1077"/>
         <source>One line per field: Installation, Location, Label (BMK).
 Ctrl+Return gives the cell back, Escape throws the text away.</source>
         <translation>Katrs lauks atsevišķā rindā: iekārta, atrašanās vieta, apzīmējums (BMK).
@@ -24537,6 +26780,123 @@ Ctrl+Return apstiprina šūnu, Escape atceļ teksta izmaiņas.</translation>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="256"/>
         <source>Independent terminals</source>
         <translation>Neatkarīgas spailes</translation>
+    </message>
+</context>
+<context>
+    <name>TextClearance</name>
+    <message>
+        <location filename="../sources/textclearance.cpp" line="167"/>
+        <source>Keep texts clear of wires</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TextClearanceDialog</name>
+    <message>
+        <location filename="../sources/ui/textclearancedialog.cpp" line="38"/>
+        <source>Keep texts clear of wires</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textclearancedialog.cpp" line="42"/>
+        <source>Texts that sit on a wire are moved the shortest way that leaves a gap. Texts of wires and texts in a group stay where they are.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textclearancedialog.cpp" line="49"/>
+        <source>Selected texts and symbols</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textclearancedialog.cpp" line="50"/>
+        <source>This folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textclearancedialog.cpp" line="55"/>
+        <source>Look at</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textclearancedialog.cpp" line="66"/>
+        <source>Gap to keep</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textclearancedialog.cpp" line="67"/>
+        <source>Move a text at most</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textclearancedialog.cpp" line="70"/>
+        <source>Shortest way</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textclearancedialog.cpp" line="71"/>
+        <source>Sideways only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textclearancedialog.cpp" line="72"/>
+        <source>Up or down only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textclearancedialog.cpp" line="73"/>
+        <source>Direction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textclearancedialog.cpp" line="80"/>
+        <source>Move texts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/textclearancedialog.cpp" line="104"/>
+        <source>%n text(s) would move.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/textclearancedialog.cpp" line="106"/>
+        <source>%n more sit on a wire with no free place in reach.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textclearancedialog.cpp" line="108"/>
+        <source>There is no text to look at.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TextDestinationDialog</name>
+    <message>
+        <location filename="../sources/ui/textdestinationdialog.cpp" line="39"/>
+        <source>Reference destination</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textdestinationdialog.cpp" line="43"/>
+        <source>Navigation only: this does not make an electrical link. Ctrl-click the text to go to the folio; in a PDF export the text becomes a link to it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textdestinationdialog.cpp" line="56"/>
+        <source>Folio</source>
+        <translation type="unfinished">Lapa</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/textdestinationdialog.cpp" line="59"/>
+        <source>Remove the link</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -25736,6 +28096,89 @@ Var izmantot šādus mainīgos:
     </message>
 </context>
 <context>
+    <name>XRefDisplayDialog</name>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="42"/>
+        <source>Relay contact display</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="46"/>
+        <source>The contact display keeps its electrical links. For a manual position, Shift-drag the display on the folio, or enter the offset of its top left corner from the symbol.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="53"/>
+        <source>Cross</source>
+        <translation type="unfinished">Krusts</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="54"/>
+        <source>Contact symbols</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="56"/>
+        <source>Appearance</source>
+        <translation type="unfinished">Izskats</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="59"/>
+        <source>Under device label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="60"/>
+        <source>Below symbol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="61"/>
+        <source>Folio footer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="62"/>
+        <source>Manual position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="64"/>
+        <source>Position</source>
+        <translation type="unfinished">Novietojums</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="74"/>
+        <source>Line thickness</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="75"/>
+        <source>Gap below symbol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="78"/>
+        <source>Manual offset X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="79"/>
+        <source>Manual offset Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="81"/>
+        <source>Show defined contacts even when not linked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefdisplaydialog.cpp" line="86"/>
+        <source>Use the project setting</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>XRefPropertiesWidget</name>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
@@ -26027,12 +28470,12 @@ Var izmantot šādus mainīgos:
         <translation>Atļauti tikai lasāmi vaicājumi (SELECT vai WITH ... SELECT).</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8139"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8144"/>
         <source>Export the internal project database</source>
         <translation>Eksportēt projekta iekšējo datubāzi</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8146"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8151"/>
         <source>untitled</source>
         <translation>bez nosaukuma</translation>
     </message>
