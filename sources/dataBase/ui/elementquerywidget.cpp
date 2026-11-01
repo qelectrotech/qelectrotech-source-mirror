@@ -22,6 +22,7 @@
 #include "../../qetinformation.h"
 #include "../legacyelementtypes.h"
 #include "../projectdatabase.h"
+#include "../../ui/formulabuilderdialog.h"
 #include "ui_elementquerywidget.h"
 
 #include <QFile>
@@ -29,6 +30,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QMessageBox>
+#include <QPushButton>
 
 #include <QRegularExpression>
 
@@ -41,6 +43,12 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 	ui(new Ui::ElementQueryWidget)
 {
 	ui->setupUi(this);
+
+	auto formula = new QPushButton(tr("Add formula column..."), this);
+	formula->setObjectName(QStringLiteral("m_formula_pb"));
+	formula->setToolTip(tr("Add a column worked out from the others, without writing SQL. The query becomes a custom SQL query."));
+	layout()->addWidget(formula);
+	connect(formula, &QPushButton::clicked, this, &ElementQueryWidget::addFormulaColumn);
 
 	m_export_info.insert("position", tr("Position"));
 	m_export_info.insert("title", tr("Sheet title"));
@@ -653,6 +661,37 @@ void ElementQueryWidget::on_m_down_pb_clicked()
 	ui->m_choosen_list->setCurrentItem(item);
 
 	updateQueryLine();
+}
+
+/**
+	@brief ElementQueryWidget::addFormulaColumn
+	Ask for a formula, and add it as a column to the query. Added to the
+	query text, which then is a custom SQL query: the formula is kept as
+	the SQL it makes, nothing else is saved for it.
+*/
+void ElementQueryWidget::addFormulaColumn()
+{
+	QList<FormulaBuilder::Field> fields;
+	for (const auto item : std::as_const(m_items_list))
+		fields << FormulaBuilder::Field{item->text(), item->data(Qt::UserRole).toString()};
+
+	FormulaBuilderDialog dialog(fields, this);
+	if (dialog.exec() != QDialog::Accepted) {
+		return;
+	}
+
+	QString query = ui->m_edit_sql_query_cb->isChecked() ? ui->m_sql_query->text() : queryStr();
+	const int from = query.lastIndexOf(QStringLiteral(" FROM element_nomenclature_view"));
+	if (from < 0) {
+		QMessageBox::warning(this, tr("Formula column"),
+							 tr("The query has no FROM clause to add a column to."));
+		return;
+	}
+	query.insert(from, QStringLiteral(", %1 AS \"%2\"").arg(dialog.expression(), dialog.title()));
+
+	ui->m_edit_sql_query_cb->setChecked(true);
+	on_m_edit_sql_query_cb_clicked();
+	ui->m_sql_query->setText(query);
 }
 
 /**
