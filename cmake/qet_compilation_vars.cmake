@@ -417,6 +417,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autobreakconductor.h
   ${QET_DIR}/sources/symboltextplacement.cpp
   ${QET_DIR}/sources/symboltextplacement.h
+  ${QET_DIR}/sources/textclearance.cpp
+  ${QET_DIR}/sources/textclearance.h
+  ${QET_DIR}/sources/ui/textclearancedialog.cpp
+  ${QET_DIR}/sources/ui/textclearancedialog.h
   ${QET_DIR}/sources/autoconnect.cpp
   ${QET_DIR}/sources/autoconnect.h
 
