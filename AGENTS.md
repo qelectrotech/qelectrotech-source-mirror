@@ -93,7 +93,8 @@ project, never a customer's or an employer's drawing.
 - Updating a language touches only `lang/qet_<code>.ts`. A new language touches
   five places: follow the table in the translation guide.
 - Run `lupdate sources -ts lang/qet_<code>.ts -source-language en_US` from the
-  current `master`.
+  current `master`. For a new language, add `-target-language <code>`, as the
+  translation guide does.
 - Keep placeholders, HTML tags, links, the `&` of Alt-key letters and a
   trailing `...` or `…`.
 - Leave every translation you write marked `type="unfinished"`. The person
