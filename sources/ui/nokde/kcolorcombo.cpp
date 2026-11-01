@@ -47,3 +47,20 @@ QColor KColorCombo::color(int index) const
 
 	return itemData(index).value<QColor>();
 }
+
+QColor KColorCombo::color() const
+{
+	return color(currentIndex());
+}
+
+void KColorCombo::setColor(const QColor &color)
+{
+	for (int i = 0; i < count(); ++i) {
+		if (itemData(i).value<QColor>() == color) {
+			setCurrentIndex(i);
+			return;
+		}
+	}
+	addItem(color.name(), color);
+	setCurrentIndex(count() - 1);
+}

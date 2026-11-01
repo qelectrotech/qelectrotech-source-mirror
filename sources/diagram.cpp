@@ -30,6 +30,7 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcontent.h"
 #include "diagramevent/diagrameventaddcable.h"
+#include "diagramevent/diagrameventadddimension.h"
 #include "diagramevent/diagrameventaddelement.h"
 #include "diagramevent/diagrameventinterface.h"
 #include "diagramposition.h"
@@ -45,6 +46,7 @@
 #include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
+#include "qetgraphicsitem/dimensionitem.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetxml.h"
 #include "undocommand/addelementtextcommand.h"
@@ -1256,6 +1258,17 @@ bool Diagram::cableToolIsRunning() const
 }
 
 /**
+	@brief Diagram::dimensionToolIsRunning
+	@return true while the CAD dimensioning tool is the running tool.
+*/
+bool Diagram::dimensionToolIsRunning() const
+{
+	return m_event_interface
+	       && m_event_interface->isRunning()
+	       && qobject_cast<DiagramEventAddDimension *>(m_event_interface);
+}
+
+/**
 	@brief Diagram::conductorsAutonumName
 	@return the name of autonum to use.
 */
@@ -1461,6 +1474,7 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	QVector<QetShapeItem *> list_shapes;
 	QVector<QetGraphicsTableItem *> table_vector;
 	QVector<TerminalStripItem *> strip_vector;
+	QVector<DimensionItem *> list_dimensions;
 
 	//Ckeck graphics item to "XMLise"
 	for(QGraphicsItem *qgi : items())
@@ -1514,6 +1528,13 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 				auto table = static_cast<QetGraphicsTableItem *>(qgi);
 				if (whole_content || table->isSelected())
 					table_vector << table;
+				break;
+			}
+			case DimensionItem::Type: {
+				auto dim = static_cast<DimensionItem *>(qgi);
+				if (whole_content || dim->isSelected()) {
+					list_dimensions << dim;
+				}
 				break;
 			}
 			case TerminalStripItem::Type: {
@@ -1608,6 +1629,7 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	appendInStackingOrder(document, dom_root, QStringLiteral("images"), list_images, stack_rank);
 	appendInStackingOrder(document, dom_root, QStringLiteral("shapes"), list_shapes, stack_rank);
 	appendInStackingOrder(document, dom_root, QStringLiteral("tables"), table_vector, stack_rank);
+	appendInStackingOrder(document, dom_root, QStringLiteral("dimensions"), list_dimensions, stack_rank);
 
 	if (!strip_vector.isEmpty()) {
 		dom_root.appendChild(TerminalStripItemXml::toXml(strip_vector, document));
@@ -2494,6 +2516,19 @@ bool Diagram::fromXml(QDomElement &document,
 		added_shapes << dii;
 	}
 
+		// Load dimensions
+	QList<DimensionItem *> added_dimensions;
+	for (auto dim_xml : QET::findInDomElement(root,
+											   QStringLiteral("dimensions"),
+											   QStringLiteral("dimension"))) {
+		DimensionItem *dim = new DimensionItem();
+		dim->fromXml(dim_xml);
+		settle_uuid(dim, dim_xml, QStringLiteral("dimension"), added_dimensions.size());
+		ItemGroups::setGroup(dim, ItemGroups::read(dim_xml));
+		addItem(dim);
+		added_dimensions << dim;
+	}
+
 		//Load tables
 	QVector<QetGraphicsTableItem *> added_tables;
 	for (const auto &dom_table : QETXML::subChild(root,
@@ -2539,6 +2574,7 @@ bool Diagram::fromXml(QDomElement &document,
 		for (auto table   : std::as_const(added_tables     )) added_items << table;
 		for (const auto &strip : std::as_const(added_strips)) added_items << strip;
 		for (const auto &cable : std::as_const(added_cables)) added_items << cable;
+		for (auto dim     : std::as_const(added_dimensions )) added_items << dim;
 		for (Bridge *bridge : std::as_const(added_bridges)) {
 			for (BridgePart *part : BridgePart::allParts()) {
 				if (part && part->bridge() == bridge) {
@@ -2707,6 +2743,9 @@ bool Diagram::fromXml(QDomElement &document,
 					added_shapes.end());
 		content_ptr->m_terminal_strip.swap(added_strips);
 		content_ptr->m_tables.swap(added_tables);
+		content_ptr -> m_dimensions	= QSet<DimensionItem *>(
+					added_dimensions.begin(),
+					added_dimensions.end());
 	}
 
 	adjustSceneRect();
@@ -2844,6 +2883,7 @@ void Diagram::addItem(QGraphicsItem *item)
 			break;
 		}
 		case QetShapeItem::Type:
+		case DimensionItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:
 		case QetGraphicsTableItem::Type:
@@ -2886,6 +2926,7 @@ void Diagram::removeItem(QGraphicsItem *item)
 			break;
 		}
 		case QetShapeItem::Type:
+		case DimensionItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:
 		case QetGraphicsTableItem::Type:

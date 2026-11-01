@@ -143,6 +143,7 @@ class QETDiagramEditor : public QETMainWindow
 		void save();
 		void saveAs();
 		bool newProject();
+		bool newAutoConnectProject();
 		bool openProject();
 		bool openRecentFile(const QString &);
 		bool closeProject(ProjectView *);
@@ -155,6 +156,7 @@ class QETDiagramEditor : public QETMainWindow
 		void rowColumnGroupTriggered (QAction *action);
 		void slot_updateActions();
 		void updateZoomLabel();
+		void updateItemInfo();
 		void slot_updateUndoStack();
 		void slot_updateModeActions();
 		void slot_updateComplexActions();
@@ -165,6 +167,7 @@ class QETDiagramEditor : public QETMainWindow
 		void slot_updateAutoNumDock();
 		void insertElementFromCollection(const ElementsLocation &location);
 		void insertLastElement();
+		void placeConnectionSymbol(int kind);
 		void rememberPlacedElement(const ElementsLocation &location);
 		void showElementPicker();
 		void showShortcutBar();
@@ -239,7 +242,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_insert_last_element = nullptr, ///< Place the last placed element again
 		*m_copy_text_format = nullptr,  ///< Copy label/text formatting template
 		*m_apply_text_format = nullptr, ///< Apply label/text formatting template
-		*m_place_texts = nullptr;	///< Place the texts of the selected symbols at one of nine points
+		*m_place_texts = nullptr,	///< Place the texts of the selected symbols at one of nine points
+		*m_text_clearance = nullptr;	///< Move texts off the wires they sit on
 		
 		QActionGroup
 		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram
@@ -262,6 +266,7 @@ class QETDiagramEditor : public QETMainWindow
 		m_file_actions_group;     ///Actions related to file (open, close, save...)
 		
 		QAction* m_find_duplicate_labels = nullptr;
+		QAction* m_project_languages = nullptr;
 
 		QAction
 		*m_tabbed_view_mode,		///< Display projects as tabs
@@ -283,7 +288,11 @@ class QETDiagramEditor : public QETMainWindow
 		*m_terminal_strip_labels = nullptr,	///< Show each strip's label at its first terminal
 		*m_terminal_strip_bridges = nullptr,	///< Draw the strips' bridges between their terminals
 		*m_crosshair,			///< Show the folio-wide crosshair
+		*m_live_auto_connect,		///< Keep automatic wires up to date (AutoConnect)
+		*m_connect_aligned,		///< Connect the aligned free terminals of the folio
 		*m_add_cable = nullptr,		///< Draw the trunk line of a cable
+		*m_add_dimension_linear = nullptr,  ///< Add linear dimension
+		*m_add_dimension_chain = nullptr,   ///< Add chain dimension
 		*m_add_bridge = nullptr,	///< Draw a bridge over terminals
 		*m_draw_grid,			///< Switch the background grid display or not
 		*m_draw_guides = nullptr,	///< Switch the custom guides display or not
@@ -351,6 +360,7 @@ class QETDiagramEditor : public QETMainWindow
 		QToolButton *m_text_grid_button = nullptr;
 		QMenu *m_shown_kinds_menu = nullptr;		///< View > Show, kinds of items (#301)
 		QLabel *m_hidden_kinds_label = nullptr;	///< Status bar: how many kinds are hidden
+		QLabel *m_item_info_label = nullptr;	///< Status bar, left: what the mouse points at, or what is selected
 		QToolButton *m_zoom_button = nullptr;	///< Status bar: the zoom of the folio on screen, fixed steps on a click
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
@@ -395,11 +405,15 @@ class QETDiagramEditor : public QETMainWindow
 		*diagram_tool_bar    = nullptr,
 		*m_add_item_tool_bar = nullptr,
 		*m_depth_tool_bar    = nullptr,
+		*m_connections_tool_bar = nullptr,	///< Symbols on the wires (ConnectionSymbols)
 		*m_scripts_tool_bar  = nullptr;	///< One button per stored script
 			/// Toolbars the user added (DiagramToolbarSettings)
 		QList<QToolBar *> m_custom_tool_bars;
 			/// The toolbar buttons that are widgets, by DiagramToolbarSettings id
 		QHash<QString, QAction *> m_toolbar_widgets;
+			/// One per ConnectionSymbols::Kind
+		QHash<int, QAction *> m_connection_actions;
+		void updateConnectionAction(int kind);
 #ifdef QET_HAS_SCRIPTING
 		QMenu *m_scripts_menu = nullptr;
 		QList<QAction *> m_script_actions;	///< One per stored script, rebuilt when the folder changes
