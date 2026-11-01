@@ -2018,6 +2018,19 @@ void Element::initLink(QETProject *prj)
 				elmt->linkToElement(this);
 				if (link_info.group_index >= 0) {
 					m_group_index_map[elmt] = link_info.group_index;
+					applyContactGroupLabels(elmt, link_info.group_index);
+				} else if (from_rows && linkType() == Slave
+						   && elmt->linkType() == Master
+						   && elmt->groupIndexForElement(this) < 0) {
+						//A slave built after its master (lazy folios):
+						//the contact group is in the master's row
+					for (const auto &row : database->linkRowsOf(elmt->uuid())) {
+						if (row.first == uuid() && row.second >= 0) {
+							elmt->setGroupIndexForElement(this, row.second);
+							elmt->applyContactGroupLabels(this, row.second);
+							break;
+						}
+					}
 				}
 				break;
 			}
@@ -2073,6 +2086,7 @@ void Element::initLink(const QList<Element *> &candidates)
 				elmt->linkToElement(this);
 				if (tmp_uuids_link[i].group_index >= 0) {
 					m_group_index_map[elmt] = tmp_uuids_link[i].group_index;
+					applyContactGroupLabels(elmt, tmp_uuids_link[i].group_index);
 				}
 				break;
 			}
@@ -2181,6 +2195,53 @@ void Element::setGroupIndexForElement(Element *elmt, int index)
 		m_group_index_map[elmt] = index;
 	} else {
 		m_group_index_map.remove(elmt);
+	}
+}
+
+/**
+	@brief Element::applyContactGroupLabels
+	Give the terminals of @p slave the names of contact group @p index of
+	this master (Terminal::name()): the terminals of the slave, sorted by
+	their own names, take the labels of the group in order (for a PLC
+	master, the terminals of its I/O number @p index).
+	Done when the link is made (LinkElementCommand) and again when the link
+	is read back (initLink()): the terminal of a placed symbol saves only
+	its position and orientation, so this is not in the file, and without
+	it the contact numbers vanish once the project is reopened (bug 346).
+	@param slave the slave linked to this master
+	@param index the contact group of this master the slave is assigned to
+*/
+void Element::applyContactGroupLabels(Element *slave, int index) const
+{
+	if (!slave || index < 0 || linkType() != Master) {
+		return;
+	}
+
+	QStringList labels;
+	if (m_data.m_master_type == ElementData::PLC) {
+		const auto &ios = m_data.plcMasterData().ios;
+		if (index >= ios.size()) {
+			return;
+		}
+		labels = ios.at(index).effectiveTerminals();
+	} else {
+		const auto &groups = m_data.m_slave_contact_groups;
+		if (index >= groups.size()) {
+			return;
+		}
+		labels = groups.at(index).labels;
+	}
+
+	QList<Terminal *> slave_terms = slave->terminals();
+	QCollator collator;
+	collator.setNumericMode(true);
+	std::sort(slave_terms.begin(), slave_terms.end(),
+			  [&collator](Terminal *a, Terminal *b) {
+		return collator.compare(a->baseName(), b->baseName()) < 0;
+	});
+	for (int i = 0; i < slave_terms.size() && i < labels.size(); ++i) {
+		slave_terms.at(i)->setUseMasterLabel(true);
+		slave_terms.at(i)->setMasterLabelIndex(i);
 	}
 }
 

@@ -495,28 +495,13 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 					elmt->setGroupIndexForElement(m_element, group_idx);
 
 					// Set master labels on slave terminals
+					elmt->applyContactGroupLabels(m_element, group_idx);
+
 					if (elmt->elementData().m_master_type == ElementData::PLC)
 					{
 						const auto &plc_data = elmt->elementData().plcMasterData();
 						if (group_idx < plc_data.ios.size())
 						{
-							const QStringList labels = plc_data.ios.at(group_idx).effectiveTerminals();
-							QList<Terminal *> slave_terms = m_element->terminals();
-							QCollator collator;
-							collator.setNumericMode(true);
-							std::sort(slave_terms.begin(), slave_terms.end(),
-								[&collator](Terminal *a, Terminal *b) {
-									return collator.compare(a->baseName(), b->baseName()) < 0;
-								});
-							for (int i = 0; i < slave_terms.size(); ++i)
-							{
-								if (i < labels.size())
-								{
-									slave_terms.at(i)->setUseMasterLabel(true);
-									slave_terms.at(i)->setMasterLabelIndex(i);
-								}
-							}
-
 							// Populate PLC variables on the slave
 							const auto &io = plc_data.ios.at(group_idx);
 							DiagramContext ctx = m_element->elementInformations();
@@ -541,29 +526,6 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 							m_element->setElementInformations(ctx);
 						}
 					}
-					else
-					{
-						const auto &groups = elmt->elementData().m_slave_contact_groups;
-						if (group_idx < groups.size())
-						{
-							const QStringList &labels = groups.at(group_idx).labels;
-							QList<Terminal *> slave_terms = m_element->terminals();
-							QCollator collator;
-							collator.setNumericMode(true);
-							std::sort(slave_terms.begin(), slave_terms.end(),
-								[&collator](Terminal *a, Terminal *b) {
-									return collator.compare(a->baseName(), b->baseName()) < 0;
-								});
-							for (int i = 0; i < slave_terms.size(); ++i)
-							{
-								if (i < labels.size())
-								{
-									slave_terms.at(i)->setUseMasterLabel(true);
-									slave_terms.at(i)->setMasterLabelIndex(i);
-								}
-							}
-						}
-					}
 
 					break;
 				}
@@ -582,52 +544,7 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 				m_element->setGroupIndexForElement(slave, group_idx);
 
 				// Set master labels on slave terminals
-				if (m_element->elementData().m_master_type == ElementData::PLC)
-				{
-					const auto &plc_data = m_element->elementData().plcMasterData();
-					if (group_idx < plc_data.ios.size())
-					{
-						const QStringList labels = plc_data.ios.at(group_idx).effectiveTerminals();
-						QList<Terminal *> slave_terms = slave->terminals();
-						QCollator collator;
-						collator.setNumericMode(true);
-						std::sort(slave_terms.begin(), slave_terms.end(),
-							[&collator](Terminal *a, Terminal *b) {
-								return collator.compare(a->baseName(), b->baseName()) < 0;
-							});
-						for (int i = 0; i < slave_terms.size(); ++i)
-						{
-							if (i < labels.size())
-							{
-								slave_terms.at(i)->setUseMasterLabel(true);
-								slave_terms.at(i)->setMasterLabelIndex(i);
-							}
-						}
-					}
-				}
-				else
-				{
-					const auto &groups = m_element->elementData().m_slave_contact_groups;
-					if (group_idx < groups.size())
-					{
-						const QStringList &labels = groups.at(group_idx).labels;
-						QList<Terminal *> slave_terms = slave->terminals();
-						QCollator collator;
-						collator.setNumericMode(true);
-						std::sort(slave_terms.begin(), slave_terms.end(),
-							[&collator](Terminal *a, Terminal *b) {
-								return collator.compare(a->baseName(), b->baseName()) < 0;
-							});
-						for (int i = 0; i < slave_terms.size(); ++i)
-						{
-							if (i < labels.size())
-							{
-								slave_terms.at(i)->setUseMasterLabel(true);
-								slave_terms.at(i)->setMasterLabelIndex(i);
-							}
-						}
-					}
-				}
+				m_element->applyContactGroupLabels(slave, group_idx);
 
 				// Populate PLC variables on the slave if master is PLC type
 				if (m_element->elementData().m_master_type == ElementData::PLC)
