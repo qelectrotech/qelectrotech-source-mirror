@@ -527,6 +527,71 @@
     <target>Direktläge</target>
 </phrase>
 <phrase>
+    <source>Dimension</source>
+    <target>Mått</target>
+    <definition>Måttsättning på ritningen</definition>
+</phrase>
+<phrase>
+    <source>Linear dimension</source>
+    <target>Linjärt mått</target>
+</phrase>
+<phrase>
+    <source>Chain dimension</source>
+    <target>Kedjemått</target>
+</phrase>
+<phrase>
+    <source>Dimension line</source>
+    <target>Måttlinje</target>
+</phrase>
+<phrase>
+    <source>Extension line</source>
+    <target>Måttgränslinje</target>
+</phrase>
+<phrase>
+    <source>Tape measure</source>
+    <target>Måttband</target>
+</phrase>
+<phrase>
+    <source>Folio report</source>
+    <target>Bladhänvisning</target>
+</phrase>
+<phrase>
+    <source>T-junction</source>
+    <target>T-förgrening</target>
+</phrase>
+<phrase>
+    <source>Interruption point</source>
+    <target>Avbrottspunkt</target>
+</phrase>
+<phrase>
+    <source>Repair data</source>
+    <target>Reparationsdata</target>
+</phrase>
+<phrase>
+    <source>History of saves</source>
+    <target>Sparhistorik</target>
+</phrase>
+<phrase>
+    <source>Project languages</source>
+    <target>Projektspråk</target>
+</phrase>
+<phrase>
+    <source>Reference destination</source>
+    <target>Referensmål</target>
+</phrase>
+<phrase>
+    <source>3D mouse</source>
+    <target>3D-mus</target>
+</phrase>
+<phrase>
+    <source>Dead zone</source>
+    <target>Dödzon</target>
+</phrase>
+<phrase>
+    <source>Formula column</source>
+    <target>Formelkolumn</target>
+</phrase>
+<phrase>
     <source>
 Hold Shift and drag to move this text on its own</source>
     <target>
