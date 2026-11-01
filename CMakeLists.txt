@@ -408,6 +408,10 @@ if(NOT BUILD_WITH_KF)
     )
 endif()
 
+# The rules below form one component, apart from the ones of the fetched KDE
+# libraries, so that a package can leave those out (see cpack/CMakeLists.txt).
+set(CMAKE_INSTALL_DEFAULT_COMPONENT_NAME qelectrotech)
+
 install(TARGETS ${PROJECT_NAME}
     BUNDLE DESTINATION .
     RUNTIME DESTINATION ${QET_BINARY_PATH}
@@ -482,3 +486,5 @@ if(UNIX AND NOT APPLE)
     install(FILES misc/qelectrotech.appdata.xml DESTINATION ${QET_APPDATA_PATH})
 endif()
 install(FILES ${QM_FILES} DESTINATION ${QET_LANG_PATH})
+
+add_subdirectory(cpack)
