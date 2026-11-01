@@ -243,6 +243,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_copy_text_format = nullptr,  ///< Copy label/text formatting template
 		*m_apply_text_format = nullptr, ///< Apply label/text formatting template
 		*m_place_texts = nullptr,	///< Place the texts of the selected symbols at one of nine points
+		*m_text_destination = nullptr,	///< Choose the folio a selected free text leads to
 		*m_text_clearance = nullptr;	///< Move texts off the wires they sit on
 		
 		QActionGroup

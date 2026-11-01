@@ -1527,6 +1527,18 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 endif()
 
+# A free text can lead to a folio: saved, in the project database, and a PDF link.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_textdestination
+    tst_textdestination.cpp)
+  add_test(NAME tst_textdestination COMMAND tst_textdestination)
+  add_dependencies(tst_textdestination qelectrotech)
+  target_link_libraries(tst_textdestination PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_textdestination PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+endif()
+
 # The texts of a placed symbol and their groups are in the project database
 # (element_text_value), from a built folio or from the document. QET-SQL-FORMAT S3l.
 if(QET_HAS_SCRIPTING)

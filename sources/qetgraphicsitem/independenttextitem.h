@@ -31,11 +31,13 @@ class IndependentTextItem : public DiagramTextItem
 	Q_OBJECT
 
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
+	Q_PROPERTY(QUuid destination READ destination WRITE setDestination NOTIFY destinationChanged)
 		
 		// constructors, destructor
 	signals:
 		void uuidChanged();
 		void textWidthChanged(qreal width);
+		void destinationChanged();
 
 	public:
 		IndependentTextItem();
@@ -60,8 +62,16 @@ class IndependentTextItem : public DiagramTextItem
 			//"textWidth" property.
 		qreal textWidth() const {return m_text_width;}
 		void setTextWidth(qreal width);
+
+			//The folio this text leads to (a reference such as /12.3):
+			//Ctrl-click follows it, and the PDF export makes it a link.
+			//Null for a text which leads nowhere. Navigation only, it does
+			//not make an electrical link.
+		QUuid destination() const {return m_destination;}
+		void setDestination(const QUuid &folio);
 		
 	protected:
+		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 		void focusOutEvent(QFocusEvent *event) override;
 		bool textResizeHandlesWanted() const override;
 		bool hasUserTextWidth() const override {return m_text_width > 0;}
@@ -71,5 +81,6 @@ class IndependentTextItem : public DiagramTextItem
 
 		QUuid m_uuid = QUuid::createUuid();
 		qreal m_text_width = -1;
+		QUuid m_destination;
 };
 #endif

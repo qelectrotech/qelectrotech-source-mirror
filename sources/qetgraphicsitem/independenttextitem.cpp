@@ -23,9 +23,11 @@
 #include "../lastusedstyle.h"
 #include "../qet.h"
 #include "../qetapp.h"
+#include "../qetproject.h"
 #include "../utils/qetutils.h"
 
 #include <QDomElement>
+#include <QGraphicsSceneMouseEvent>
 #include <QScopedPointer>
 #include <QSettings>
 #include <QtCore/qnumeric.h>
@@ -103,6 +105,7 @@ void IndependentTextItem::fromXml(const QDomElement &e) {
 		//kind older versions know (they show such a text unwrapped).
 		//Read after the text, setHtml() sets a width of its own.
 	setTextWidth(e.attribute(QStringLiteral("text_width"), QStringLiteral("-1")).toDouble());
+	setDestination(QUuid(e.attribute(QStringLiteral("destination"))));
 }
 
 /**
@@ -121,6 +124,9 @@ QDomElement IndependentTextItem::toXml(QDomDocument &document) const
 		//Only when set, so a text with the automatic width is saved as before
 	if (m_text_width > 0)
 		result.setAttribute("text_width", QString::number(m_text_width));
+		//Likewise: only a text which leads to a folio
+	if (!m_destination.isNull())
+		result.setAttribute(QStringLiteral("destination"), m_destination.toString());
 	
 	return(result);
 }
@@ -169,4 +175,42 @@ void IndependentTextItem::focusOutEvent(QFocusEvent *event)
 	if (diagram() && (m_previous_html_text != this->toHtml())) {
 		diagram()->undoStack().push(new ChangeDiagramTextCommand(this, m_previous_html_text, this->toHtml()));
 	}
+}
+
+/**
+	@brief IndependentTextItem::setDestination
+	Set the folio this text leads to (null: none).
+	@param folio uuid of the folio
+*/
+void IndependentTextItem::setDestination(const QUuid &folio)
+{
+	if (folio == m_destination)
+		return;
+	m_destination = folio;
+	emit destinationChanged();
+}
+
+/**
+	@brief IndependentTextItem::mousePressEvent
+	Ctrl-click on a text which has a destination shows that folio. Other
+	clicks, and a text without a destination, behave as before.
+	@param event
+*/
+void IndependentTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (event->button() == Qt::LeftButton
+		&& (event->modifiers() & Qt::ControlModifier)
+		&& !m_destination.isNull()
+		&& diagram() && diagram()->project())
+	{
+		const auto folios = diagram()->project()->diagrams();
+		for (Diagram *folio : folios) {
+			if (folio->uuid() == m_destination) {
+				folio->showMe();
+				event->accept();
+				return;
+			}
+		}
+	}
+	DiagramTextItem::mousePressEvent(event);
 }

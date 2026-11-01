@@ -76,6 +76,9 @@
 #include "project/projectpropertieshandler.h"
 #include "ui/multielementinfowidget.h"
 #include "ui/projectlanguagesdialog.h"
+#include "ui/textdestinationdialog.h"
+#include "qetgraphicsitem/independenttextitem.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "ui/projectpropertiesdialog.h"
 #include "projectview.h"
 #include "qetproject.h"
@@ -701,6 +704,29 @@ void QETDiagramEditor::setUpActions()
 	}
 	connect(m_place_texts, &QAction::triggered, this, [this, chosen_point]() {
 		placeSymbolTexts(chosen_point());
+	});
+
+	m_text_destination = new QAction(tr("Reference destination..."), this);
+	m_text_destination->setStatusTip(tr("Make the selected free texts links to a folio: Ctrl-click opens it, and a PDF export keeps the link", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_text_destination, "diagrameditor.text_destination", tr("Diagram editors"), QKeySequence());
+	connect(m_text_destination, &QAction::triggered, this, [this]() {
+		DiagramView *dv = currentDiagramView();
+		if (!dv || !dv->diagram() || dv->diagram()->isReadOnly() || !dv->diagram()->project()) return;
+		QList<IndependentTextItem *> texts;
+		const auto selected = dv->diagram()->selectedItems();
+		for (QGraphicsItem *item : selected)
+			if (auto *text = dynamic_cast<IndependentTextItem *>(item)) texts << text;
+		if (texts.isEmpty()) return;
+		TextDestinationDialog dialog(dv->diagram()->project(), texts.first()->destination(), this);
+		if (dialog.exec() != QDialog::Accepted) return;
+		auto *undo = new QUndoCommand(dialog.destination().isNull() ? tr("Remove reference destination")
+																	 : tr("Assign reference destination"));
+		for (IndependentTextItem *text : std::as_const(texts))
+			if (text->destination() != dialog.destination())
+				new QPropertyUndoCommand(text, "destination", QVariant::fromValue(text->destination()),
+										 QVariant::fromValue(dialog.destination()), undo);
+		if (undo->childCount()) dv->diagram()->undoStack().push(undo);
+		else delete undo;
 	});
 
 	m_text_clearance = new QAction(tr("Keep texts clear of wires..."), this);
@@ -2062,6 +2088,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_copy_text_format);
 	menu_edition -> addAction(m_apply_text_format);
 	menu_edition -> addAction(m_place_texts);
+	menu_edition -> addAction(m_text_destination);
 	menu_edition -> addAction(m_text_clearance);
 	menu_edition -> addAction(m_paste_origin);
 	menu_edition -> addAction(m_paste_element_info);
@@ -3874,6 +3901,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_apply_text_format->setEnabled(!ro && ((selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern()) ||
 	                                        (selected_dimensions_count >= 1 && DimensionFormatPattern::hasPattern())));
 	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
+	m_text_destination->setEnabled(!ro);
 	m_text_clearance->setEnabled(!ro);
 	m_mirror_horizontal->setEnabled(!ro && selected_elements_count);
 	m_mirror_vertical->setEnabled(!ro && selected_elements_count);
