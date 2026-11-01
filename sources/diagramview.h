@@ -78,6 +78,7 @@ class DiagramView : public PaletteGraphicsView
 		QPoint            m_gesture_origin;
 		DiagramGestureOverlay *m_gesture_overlay = nullptr;
 		QPoint            m_last_mouse_pos = QPoint(-1, -1);
+		QString           m_pointed_description;
 		QPointF           m_crosshair_pos;
 		bool              m_crosshair_visible = false;
 		void moveCrosshair(const QPoint &viewport_pos);
@@ -138,6 +139,9 @@ class DiagramView : public PaletteGraphicsView
 		/// cursor query (QCursor::pos()/setPos() are silently ignored by
 		/// several window managers and compositors, Wayland included).
 		QPoint lastMousePos() const { return m_last_mouse_pos; }
+			/// What the mouse points at, in a few words (ItemDescription);
+			/// nothing over the bare folio or outside the view
+		QString pointedItemDescription() const { return m_pointed_description; }
 	
 		bool startElementPlacement(const ElementsLocation &location,
 					   const QPointF &scene_pos);
@@ -181,6 +185,7 @@ class DiagramView : public PaletteGraphicsView
 		InkKind inkKind(const QGraphicsItem *item) const override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;
+		void leaveEvent(QEvent *) override;
 		void mouseReleaseEvent(QMouseEvent *) override;
 		void dragEnterEvent(QDragEnterEvent *) override;
 		void dragMoveEvent(QDragMoveEvent *) override;
@@ -192,6 +197,7 @@ class DiagramView : public PaletteGraphicsView
 		virtual bool selectedItemHasFocus();
 	
 	private:
+		void setPointedDescription(const QString &description);
 		void handleElementDrop(QDropEvent *);
 		void updateFolioReportMenu();
 			/**
@@ -245,6 +251,8 @@ class DiagramView : public PaletteGraphicsView
 		void elementPlacementStarted(const ElementsLocation &);
 			/// The view's scale changed: 1 is 100 %
 		void zoomChanged(qreal factor);
+			/// The mouse came over another item, or left it
+		void pointedItemChanged(const QString &description);
 	
 	public slots:
 		void setVisualisationMode();

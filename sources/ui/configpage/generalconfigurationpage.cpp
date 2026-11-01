@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "../../bordercelllabels.h"
 #include "generalconfigurationpage.h"
 
 #include "../../qetgraphicsitem/dynamicelementtextitem.h"
@@ -207,7 +208,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_live_assistant->setEnabled(false);
 #endif
 	ui->m_use_folio_label->setChecked(settings.value("genericpanel/folio", true).toBool());
-	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
+	ui->m_border_0->setChecked(settings.value("border-columns_0", BorderCellLabels::defaultColumnsFromZero).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
 	ui->m_project_lock->setChecked(settings.value("projectlock/enabled", true).toBool());
 	ui->m_reopen_projects->setChecked(settings.value("projects/reopen_at_start", false).toBool());

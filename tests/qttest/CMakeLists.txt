@@ -198,6 +198,25 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
   set_tests_properties(tst_textfixedsizeintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # Automatic connections kept up to date: wires removed and found again
+  # as terminals move out of and back into line, interruption points,
+  # wires drawn by hand left alone, undo as one step.
+  add_test(NAME tst_autoconnectintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_auto_connect_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/auto_connect_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/auto_connect.qet)
+  set_tests_properties(tst_autoconnectintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # Corners, T-junctions and folio reports placed along a drag, one on
+  # each line it crosses, joined automatically, in one undo step.
+  add_test(NAME tst_autoconnectdragintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_auto_connect_drag_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/auto_connect_drag_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/auto_connect_drag.qet)
+  set_tests_properties(tst_autoconnectdragintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
   add_test(NAME tst_darkimageintegration
@@ -312,6 +331,15 @@ if(QET_HAS_SCRIPTING)
   add_dependencies(tst_projectlanguagesfile qelectrotech)
   target_link_libraries(tst_projectlanguagesfile PRIVATE Qt::Test Qt::Xml)
   target_compile_definitions(tst_projectlanguagesfile PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+  add_executable(
+    tst_tabletranslation
+    tst_tabletranslation.cpp)
+  add_test(NAME tst_tabletranslation COMMAND tst_tabletranslation)
+  add_dependencies(tst_tabletranslation qelectrotech)
+  target_link_libraries(tst_tabletranslation PRIVATE Qt::Test)
+  target_compile_definitions(tst_tabletranslation PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 endif()
 
@@ -450,11 +478,11 @@ qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 # and cleared fields, restore and reset, one undo step, the selection
 # panel's editor and the Edit action.
 qet_add_app_test(tst_multielementinfo tst_multielementinfo.cpp)
+target_compile_definitions(tst_multielementinfo PRIVATE
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
 # An elements collection item set up after the application object is gone.
 qet_add_app_test(tst_collectionitemafterquit tst_collectionitemafterquit.cpp)
-target_compile_definitions(tst_multielementinfo PRIVATE
-  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
 # Accepting the settings dialog writes qet-assistant.json with the
 # collection paths just chosen, not the ones they replace.
@@ -2078,12 +2106,18 @@ target_compile_definitions(tst_qetdbrobust PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
   "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
 
+# A project is of one kind for good: File > New without automatic
+# connections, File > New project with automatic connections with them.
+qet_add_app_test(tst_newprojectkind tst_newprojectkind.cpp)
 # Upright symbol texts read from bottom to top, when the setting asks.
 qet_add_app_test(tst_uprighttexts tst_uprighttexts.cpp)
 target_compile_definitions(tst_uprighttexts PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
 
 # New tests go above this line: the blocks below apply to the tests above them.
+# What the status bar says an item of a folio is: a symbol with its label
+# and name, a text of a symbol, a free text, a wire, a shape...
+qet_add_app_test(tst_itemdescription tst_itemdescription.cpp)
 # The selection properties dock scrolls its editors in a low window rather
 # than its smallest height pushing the dock below over its last rows.
 qet_add_app_test(tst_propertiesdockscroll tst_propertiesdockscroll.cpp)
@@ -2146,3 +2180,17 @@ if(qet_test_timeout_scale GREATER 1 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
     endif()
   endforeach()
 endif()
+
+# The folio properties dialog's paper size: choosing A4, A3 and A4 again
+# must give the first A4 back (issue 1662). QETApp and the title block
+# are stubbed in the test.
+add_executable(
+  tst_borderpropertiespaper
+  tst_borderpropertiespaper.cpp
+  ${QET_DIR}/sources/ui/borderpropertieswidget.cpp
+  ${QET_DIR}/sources/ui/borderpropertieswidget.h
+  ${QET_DIR}/sources/borderproperties.cpp)
+add_test(NAME tst_borderpropertiespaper COMMAND tst_borderpropertiespaper)
+set_tests_properties(tst_borderpropertiespaper PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_borderpropertiespaper PRIVATE ${QET_DIR}/sources ${QET_DIR}/sources/ui)
+target_link_libraries(tst_borderpropertiespaper PRIVATE Qt::Test Qt::Widgets Qt::Xml Qt::Svg Qt::Sql Qt::PrintSupport Qt::Concurrent pugixml::pugixml)

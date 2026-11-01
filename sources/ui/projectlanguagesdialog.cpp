@@ -75,6 +75,9 @@ ProjectLanguagesDialog::ProjectLanguagesDialog(const ProjectLanguages &languages
 	auto *bottom = new QHBoxLayout;
 	auto *export_csv = new QPushButton(tr("Export CSV..."));
 	auto *import_csv = new QPushButton(tr("Import CSV..."));
+	auto *add_text = new QPushButton(tr("Add text..."));
+	add_text->setToolTip(tr("Add a text that is not collected, such as a column title of a table."));
+	bottom->addWidget(add_text);
 	bottom->addWidget(export_csv);
 	bottom->addWidget(import_csv);
 	bottom->addStretch();
@@ -85,6 +88,7 @@ ProjectLanguagesDialog::ProjectLanguagesDialog(const ProjectLanguages &languages
 	connect(add, &QPushButton::clicked, this, &ProjectLanguagesDialog::addLanguage);
 	connect(remove, &QPushButton::clicked, this, &ProjectLanguagesDialog::removeLanguage);
 	connect(collect, &QPushButton::clicked, this, &ProjectLanguagesDialog::collectTexts);
+	connect(add_text, &QPushButton::clicked, this, &ProjectLanguagesDialog::addText);
 	connect(export_csv, &QPushButton::clicked, this, &ProjectLanguagesDialog::exportCsv);
 	connect(import_csv, &QPushButton::clicked, this, &ProjectLanguagesDialog::importCsv);
 	connect(buttons, &QDialogButtonBox::accepted, this, &QDialog::accept);
@@ -194,6 +198,18 @@ void ProjectLanguagesDialog::collectTexts()
 	added = m_languages.phrases().size() - before;
 	fillTable();
 	QMessageBox::information(this, tr("Collect texts"), tr("%n new text(s) added.", nullptr, added));
+}
+
+void ProjectLanguagesDialog::addText()
+{
+	bool ok = false;
+	const QString text = QInputDialog::getText(this, tr("Add text"),
+			tr("Text as drawn, for example a column title of a table:"),
+			QLineEdit::Normal, QString(), &ok).trimmed();
+	if (!ok || text.isEmpty()) return;
+	readTable();
+	m_languages.addPhrase(text);
+	fillTable();
 }
 
 void ProjectLanguagesDialog::exportCsv()

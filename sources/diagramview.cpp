@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramview.h"
+#include "itemdescription.h"
+#include "shownkinds.h"
 #include "autoNum/ui/pastenumberingimport.h"
 #include "cellruler.h"
 #include "lastusedstyle.h"
@@ -1121,6 +1123,29 @@ void DiagramView::mousePressEvent(QMouseEvent *original)
 }
 
 /**
+	@brief DiagramView::leaveEvent
+	The mouse points at nothing of this view any more.
+*/
+void DiagramView::leaveEvent(QEvent *event)
+{
+	setPointedDescription(QString());
+	QGraphicsView::leaveEvent(event);
+}
+
+/**
+	@brief DiagramView::setPointedDescription
+	@param description : what the mouse points at now; told on only when
+	it changed
+*/
+void DiagramView::setPointedDescription(const QString &description)
+{
+	if (description == m_pointed_description)
+		return;
+	m_pointed_description = description;
+	emit pointedItemChanged(description);
+}
+
+/**
 	@brief DiagramView::mouseMoveEvent
 	Manage the event move mouse
 */
@@ -1130,6 +1155,21 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 	QMouseEvent *e = onCaughtHandle(original, shifted);
 	const AcceptedBack accepted_back{e, original};
 	m_last_mouse_pos = e->pos();
+		//The topmost item that is one of the folio's: the crosshair and
+		//other aids drawn over the folio say nothing, nor what View > Show
+		//hides. Not while a button is held: a drag or a rubber band is
+		//under way, and the selection is what the status bar shows then.
+	if (e->buttons() == Qt::NoButton) {
+		QString pointed;
+		for (QGraphicsItem *item : items(e->pos())) {
+			if (!item->isVisible() || ShownKinds::isHidden(item))
+				continue;
+			pointed = ItemDescription::of(item);
+			if (!pointed.isEmpty())
+				break;
+		}
+		setPointedDescription(pointed);
+	}
 	setToolTip(tr("X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
 		//A press whose release never came (it went to a menu or a
 		//dialog): a move without the button ends the drag

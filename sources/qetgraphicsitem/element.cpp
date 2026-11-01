@@ -3018,7 +3018,7 @@ void Element::freezeNewAddedElement()
 	This function is useful when label is based on formula, because label can change at any time.
 	@return
 */
-QString Element::actualLabel()
+QString Element::actualLabel() const
 {
 		//The symbol's own copy, not the store: this runs while the
 		//information is being changed, before the store has the change.

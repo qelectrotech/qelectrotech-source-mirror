@@ -16,11 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetdiagrameditor.h"
+#include "itemdescription.h"
 #include "container/qetcontainer.h"
 #include "container/qetzip.h"
 #include "utils/previousversions.h"
 #include "shownkinds.h"
 #include "symboltextplacement.h"
+#include "autoconnect.h"
 #ifdef QET_HAS_SCRIPTING
 #include "scripting/qetscripting.h"
 #include "scripting/scriptlibrary.h"
@@ -309,7 +311,13 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 
 	setWindowTitle(tr("QElectroTech", "window title"));
 	setWindowIcon(QET::Icons::QETLogo);
-	statusBar() -> showMessage(tr("QElectroTech", "status bar message"));
+		//Left, where the status tips show: hidden while one does. Added
+		//before any message: one added while a message shows is hidden
+		//for good
+	m_item_info_label = new QLabel(this);
+	m_item_info_label->setObjectName(QStringLiteral("item_info_label"));
+	m_item_info_label->setToolTip(tr("What the mouse points at, or else what is selected"));
+	statusBar()->addWidget(m_item_info_label, 1);
 
 	setUpElementsPanel();
 	setUpElementsCollectionWidget();
@@ -333,6 +341,10 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	readSettings();  // restoreGeometry before show()
 	show();
 	readSettingsState();  // restoreState() must be called after show() in Qt6
+		//For a moment only: while a message shows, the status bar hides
+		//what stands on its left -- what is visible then, so only once the
+		//window is shown
+	statusBar() -> showMessage(tr("QElectroTech", "status bar message"), 3000);
 	ToolbarSettings::applyTo(this);
 #ifdef QET_HAS_SCRIPTING
 	setUpLiveIndicator();
@@ -770,6 +782,29 @@ void QETDiagramEditor::setUpActions()
 		settings.setValue("diagrameditor/auto_break_conductor", abc);
 		if (ProjectView *pv = currentProjectView())
 			pv->project()->setAutoBreakConductor(abc);
+	});
+
+		//Live AutoConnect: automatic wires are removed and found again as
+		//symbols move, see AutoConnect. Chosen once, by File > New project
+		//with automatic connections; the entry only shows the project's kind
+	m_live_auto_connect = new QAction(QET::Icons::Autoconnect, tr("Automatic connections (chosen when the project is created)"), this);
+	m_live_auto_connect->setStatusTip(tr("Terminals in line connect to the next free terminal they face, and are disconnected again when moved out of line"));
+	m_live_auto_connect->setCheckable(true);
+	m_live_auto_connect->setEnabled(false);
+
+	m_connect_aligned = new QAction(QET::Icons::Autoconnect, tr("Connect aligned terminals on this folio"), this);
+	m_connect_aligned->setStatusTip(tr("Connect every free terminal of the folio to the next free terminal it faces"));
+	ShortcutManager::instance().registerAction(m_connect_aligned, "diagrameditor.connect_aligned", tr("Diagram editors"), QKeySequence());
+	connect(m_connect_aligned, &QAction::triggered, [this]() {
+		DiagramView *dv = currentDiagramView();
+		if (!dv || !dv->diagram())
+			return;
+		Diagram *diagram = dv->diagram();
+		auto *undo = new QUndoCommand(tr("Connect aligned terminals"));
+		if (AutoConnect::connectWholeDiagram(diagram, undo))
+			diagram->undoStack().push(undo);
+		else
+			delete undo;
 	});
 
 		//The label of each terminal strip at its first terminal, as in EPLAN
@@ -1365,6 +1400,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Files action
 	QAction *new_file  = m_file_actions_group.addAction(QET::Icons::ProjectNew,     tr("&New"));
+	QAction *new_auto_file = m_file_actions_group.addAction(QET::Icons::ProjectNew, tr("New project with automatic connections"));
 	QAction *open_file = m_file_actions_group.addAction(QET::Icons::DocumentOpen,   tr("&Open"));
 	m_save_file        = m_file_actions_group.addAction(QET::Icons::DocumentSave,   tr("&Save"));
 	m_save_file_as     = m_file_actions_group.addAction(QET::Icons::DocumentSaveAs, tr("Save as"));
@@ -1373,12 +1409,15 @@ void QETDiagramEditor::setUpActions()
 	m_close_file       = m_file_actions_group.addAction(QET::Icons::ProjectClose,   tr("&Close"));
 
 	ShortcutManager::instance().registerAction(new_file, "diagrameditor.new_file", tr("Diagram editors"), QKeySequence::New);
+	ShortcutManager::instance().registerAction(new_auto_file, "diagrameditor.new_auto_connect_file", tr("Diagram editors"), QKeySequence());
 	ShortcutManager::instance().registerAction(open_file, "diagrameditor.open_file", tr("Diagram editors"), QKeySequence::Open);
 	ShortcutManager::instance().registerAction(m_close_file, "diagrameditor.close_file", tr("Diagram editors"), QKeySequence::Close);
 	ShortcutManager::instance().registerAction(m_save_file, "diagrameditor.save_file", tr("Diagram editors"), QKeySequence::Save);
 	ShortcutManager::instance().registerAction(m_save_file_as, "diagrameditor.save_file_as", tr("Diagram editors"), Qt::CTRL | Qt::SHIFT | Qt::Key_S);
 
 	new_file     ->setStatusTip( tr("Creates a new project", "status bar tip") );
+	new_auto_file->setStatusTip( tr("Creates a new project in which terminals in line connect by themselves; "
+									"a project is of one kind or the other for good", "status bar tip") );
 	open_file    ->setStatusTip( tr("Opens an existing project", "status bar tip") );
 	m_close_file ->setStatusTip( tr("Closes the current project", "status bar tip") );
 	m_save_file    ->setStatusTip( tr("Saves the current project and all its sheets", "status bar tip") );
@@ -1400,6 +1439,7 @@ void QETDiagramEditor::setUpActions()
 	connect(m_save_file_as, &QAction::triggered, this, &QETDiagramEditor::saveAs);
 	connect(m_save_file,    &QAction::triggered, this, &QETDiagramEditor::save);
 	connect(new_file,       &QAction::triggered, this, &QETDiagramEditor::newProject);
+	connect(new_auto_file,  &QAction::triggered, this, &QETDiagramEditor::newAutoConnectProject);
 	connect(open_file,      &QAction::triggered, this, &QETDiagramEditor::openProject);
 	connect(m_close_file,   &QAction::triggered, [this]() {
 		if (ProjectView *project_view = currentProjectView()) {
@@ -2083,6 +2123,8 @@ void QETDiagramEditor::setUpMenu()
 		//Sits beside m_auto_conductor, the setting it pairs with. It was
 		//toolbar-only and so had no keyboard route at all.
 	menu_project -> addAction(m_auto_break_conductor);
+	menu_project -> addAction(m_live_auto_connect);
+	menu_project -> addAction(m_connect_aligned);
 	menu_project -> addAction(m_terminal_strip_labels);
 	menu_project -> addAction(m_terminal_strip_bridges);
 	menu_project -> addSeparator();
@@ -2282,6 +2324,21 @@ bool QETDiagramEditor::newProject()
 	auto new_project = new QETProject(this);
 
 	// add new diagram
+	new_project -> addNewDiagram();
+
+	return addProject(new_project);
+}
+
+/**
+	@brief QETDiagramEditor::newAutoConnectProject
+	Create a new project with an empty diagram, in which terminals in line
+	connect by themselves (AutoConnect). The kind is fixed for good.
+	@return
+*/
+bool QETDiagramEditor::newAutoConnectProject()
+{
+	auto new_project = new QETProject(this);
+	new_project -> setLiveAutoConnect(true);
 	new_project -> addNewDiagram();
 
 	return addProject(new_project);
@@ -3418,23 +3475,35 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 
                 diagram->clearSelection();
 
-				QList<QUndoCommand *> steps;
-				if (other_items || (cable_parts.isEmpty() && bridge_parts.isEmpty())) {
-					steps << new DeleteQGraphicsItemCommand(diagram, dc);
-				}
-				if (!cable_parts.isEmpty()) {
-					steps << new RemoveCableCommand(diagram, cable_parts);
-				}
-				if (!bridge_parts.isEmpty()) {
-					steps << new RemoveBridgeCommand(bridge_parts);
-				}
-
-					//One single step, so a selection holding both a line
-					//and ordinary drawings comes back whole.
-				if (steps.size() == 1) {
-					diagram->undoStack().push(steps.first());
+				if (cable_parts.isEmpty() && bridge_parts.isEmpty() && AutoConnect::isOn(diagram)) {
+						//The terminals the removed symbols stood between, or
+						//were wired to, look for a new partner in the same step
+					auto *undo = new QUndoCommand(QObject::tr("Delete"));
+					auto *del = new DeleteQGraphicsItemCommand(diagram, dc, undo);
+					undo->setText(del->text());
+					const QList<Element *> elements = dc.m_elements;
+					AutoConnect::update(diagram, {}, {}, undo,
+										QSet<Element *>(elements.begin(), elements.end()));
+					diagram->undoStack().push(undo);
 				} else {
-					diagram->undoStack().push(new BatchCommand(steps, tr("Delete")));
+					QList<QUndoCommand *> steps;
+					if (other_items || (cable_parts.isEmpty() && bridge_parts.isEmpty())) {
+						steps << new DeleteQGraphicsItemCommand(diagram, dc);
+					}
+					if (!cable_parts.isEmpty()) {
+						steps << new RemoveCableCommand(diagram, cable_parts);
+					}
+					if (!bridge_parts.isEmpty()) {
+						steps << new RemoveBridgeCommand(bridge_parts);
+					}
+
+						//One single step, so a selection holding both a line
+						//and ordinary drawings comes back whole.
+					if (steps.size() == 1) {
+						diagram->undoStack().push(steps.first());
+					} else {
+						diagram->undoStack().push(new BatchCommand(steps, tr("Delete")));
+					}
 				}
                 dv->adjustSceneRect();
             }
@@ -3632,6 +3701,7 @@ void QETDiagramEditor::slot_updateActions()
 	bool opened_diagram = dv;
 	bool editable_project = (pv && !pv -> project() -> isReadOnly());
 	updateZoomLabel();
+	updateItemInfo();
 
 	m_close_file->                  setEnabled(opened_project);
 	m_save_file->                   setEnabled(opened_project);
@@ -3984,6 +4054,8 @@ void QETDiagramEditor::slot_updateModeActions()
 		m_auto_conductor -> setChecked (pv -> project() -> autoConductor());
 		m_auto_break_conductor -> setEnabled (true);
 		m_auto_break_conductor -> setChecked (pv -> project() -> autoBreakConductor());
+		m_live_auto_connect -> setChecked (pv -> project() -> liveAutoConnect());
+		m_connect_aligned -> setEnabled (true);
 		m_terminal_strip_labels -> setEnabled (true);
 		m_terminal_strip_labels -> setChecked (pv -> project() -> terminalStripLabelsShown());
 		m_terminal_strip_bridges -> setEnabled (true);
@@ -3995,6 +4067,8 @@ void QETDiagramEditor::slot_updateModeActions()
 		m_terminal_strip_labels -> setDisabled(true);
 		m_terminal_strip_bridges -> setDisabled(true);
 		m_auto_break_conductor -> setDisabled(true);
+		m_live_auto_connect -> setChecked(false);
+		m_connect_aligned -> setDisabled(true);
 	}
 
 	if (m_conductor_color_button) {
@@ -4793,6 +4867,27 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 	connect(dv, &DiagramView::modeChanged, this, &QETDiagramEditor::slot_updateModeActions);
 	connect(dv, &DiagramView::elementPlacementStarted, this, &QETDiagramEditor::rememberPlacedElement);
 	connect(dv, &DiagramView::zoomChanged, this, &QETDiagramEditor::updateZoomLabel);
+	connect(dv, &DiagramView::pointedItemChanged, this, &QETDiagramEditor::updateItemInfo);
+}
+
+/**
+	@brief QETDiagramEditor::updateItemInfo
+	Say in the status bar what the mouse points at on the folio shown, or
+	else what is selected on it: a symbol, a text of a symbol, a free
+	text, a shape... which are hard to tell apart on the folio.
+*/
+void QETDiagramEditor::updateItemInfo()
+{
+	if (!m_item_info_label)
+		return;
+	DiagramView *dv = currentDiagramView();
+	QString text;
+	if (dv) {
+		text = dv->pointedItemDescription();
+		if (text.isEmpty() && dv->diagram())
+			text = ItemDescription::ofSelection(dv->diagram()->selectedItems());
+	}
+	m_item_info_label->setText(text);
 }
 
 /**
@@ -4916,6 +5011,7 @@ void QETDiagramEditor::selectionChanged()
 	DiagramView *dv = currentDiagramView();
 	if (dv && dv->diagram())
 		m_selection_properties_editor->setDiagram(dv->diagram());
+	updateItemInfo();
 }
 
 

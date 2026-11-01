@@ -50,6 +50,7 @@ class ProjectLanguagesDialog : public QDialog
 		void addLanguage();
 		void removeLanguage();
 		void collectTexts();
+		void addText();
 		void exportCsv();
 		void importCsv();
 
