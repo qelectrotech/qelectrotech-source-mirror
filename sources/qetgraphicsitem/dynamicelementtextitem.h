@@ -117,6 +117,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		static bool verticalFromBottom();
 		static void setVerticalFromBottom(bool from_bottom);
 		void updateReadingDirection();
+		QTransform readingFlip() const;
 		void setInfoName(const QString &info_name);
 		QString infoName() const;
 		Element *linkedElementShown() const;

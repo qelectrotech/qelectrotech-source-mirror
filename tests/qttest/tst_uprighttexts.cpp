@@ -136,8 +136,27 @@ class TstUprightTexts : public QObject
 			DynamicElementTextItem::setVerticalFromBottom(true);
 			m_element->setRotation(90);
 			m_text->setText(QStringLiteral("-X1:12 and more"));
+			QVERIFY(flipped());
 			const QPointF c = m_text->boundingRect().center();
 			QCOMPARE(m_text->transform().map(c), c);
+			DynamicElementTextItem::setVerticalFromBottom(false);
+		}
+
+			//A text given to a symbol already turned, as when a folio is
+			//opened: turned as well
+		void addedToATurnedSymbol()
+		{
+			DynamicElementTextItem::setVerticalFromBottom(true);
+			m_element->setRotation(90);
+			auto *text = new DynamicElementTextItem(m_element);
+			text->setText(QStringLiteral("-X2:3"));
+			text->setKeepVisualRotation(false);
+			m_element->addDynamicTextItem(text);
+			QVERIFY(!text->transform().isIdentity());
+			text->setText(QStringLiteral("-X2:3 +UV1/7"));
+			QVERIFY(!text->transform().isIdentity());
+			m_element->removeDynamicTextItem(text);
+			delete text;
 			DynamicElementTextItem::setVerticalFromBottom(false);
 		}
 

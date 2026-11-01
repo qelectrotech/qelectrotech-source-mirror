@@ -559,10 +559,16 @@ void Element::keepReadable(QGraphicsItem *child) const
 	if (!child || child->parentItem() != this)
 		return;
 
+		//A text that reads from top to bottom may be turned to read from
+		//bottom to top, see DynamicElementTextItem::readingFlip()
+	QTransform flip;
+	if (child->type() == DynamicElementTextItem::Type)
+		flip = static_cast<DynamicElementTextItem *>(child)->readingFlip();
+
 	if (!isMirrored())
 	{
-		if (!child->transform().isIdentity())
-			child->resetTransform();
+		if (child->transform() != flip)
+			child->setTransform(flip);
 		return;
 	}
 
@@ -575,7 +581,8 @@ void Element::keepReadable(QGraphicsItem *child) const
 	rotation.translate(-origin.x(), -origin.y());
 	const QPointF centre = rotation.mapRect(child->boundingRect()).center();
 
-	const QTransform mirror = QTransform::fromTranslate(-centre.x(), -centre.y())
+	const QTransform mirror = flip
+							  * QTransform::fromTranslate(-centre.x(), -centre.y())
 							  * mirrorTransform()
 							  * QTransform::fromTranslate(centre.x(), centre.y());
 	if (child->transform() != mirror)
