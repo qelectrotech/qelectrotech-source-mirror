@@ -1342,7 +1342,7 @@ Notă: aceste opțiuni NU permit și nu blochează numerotările automate, ci do
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="349"/>
-        <source>Folio size: %1 � %2 mm</source>
+        <source>Folio size: %1 × %2 mm</source>
         <translation>Dimensiunea foii: %1 × %2 mm</translation>
     </message>
     <message>

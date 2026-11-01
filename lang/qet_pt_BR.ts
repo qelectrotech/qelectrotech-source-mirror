@@ -1334,7 +1334,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="349"/>
-        <source>Folio size: %1 � %2 mm</source>
+        <source>Folio size: %1 × %2 mm</source>
         <translation>Tamanho da página: %1 × %2 mm</translation>
     </message>
     <message>

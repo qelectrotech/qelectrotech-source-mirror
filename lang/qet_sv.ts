@@ -1333,7 +1333,7 @@ Obs! Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE automatisk numrering, de st
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="349"/>
-        <source>Folio size: %1 � %2 mm</source>
+        <source>Folio size: %1 × %2 mm</source>
         <translation>Bladstorlek: %1 × %2 mm</translation>
     </message>
     <message>

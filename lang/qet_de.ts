@@ -1336,7 +1336,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="349"/>
-        <source>Folio size: %1 � %2 mm</source>
+        <source>Folio size: %1 × %2 mm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

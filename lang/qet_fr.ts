@@ -1334,7 +1334,7 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="349"/>
-        <source>Folio size: %1 � %2 mm</source>
+        <source>Folio size: %1 × %2 mm</source>
         <translation>Taille du folio : %1 × %2 mm</translation>
     </message>
     <message>
