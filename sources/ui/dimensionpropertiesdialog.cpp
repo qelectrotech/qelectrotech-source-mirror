@@ -18,8 +18,8 @@
 #include "dimensionpropertiesdialog.h"
 #include "ui_dimensionpropertiesdialog.h"
 
-#include "../diagram.h"
-#include "../qet.h"
+#include <diagram.h>
+#include <qet.h>
 
 #include <QPushButton>
 #include <QUndoCommand>

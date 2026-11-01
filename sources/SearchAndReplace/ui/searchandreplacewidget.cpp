@@ -17,20 +17,20 @@
 */
 #include "searchandreplacewidget.h"
 
-#include "../../QWidgetAnimation/qwidgetanimation.h"
-#include "../../diagram.h"
-#include "../../diagramcontent.h"
-#include "../../qetapp.h"
-#include "../../qetdiagrameditor.h"
-#include "../../qetgraphicsitem/conductor.h"
-#include "../../qetgraphicsitem/dynamicelementtextitem.h"
-#include "../../qetgraphicsitem/element.h"
-#include "../../qetgraphicsitem/elementtextitemgroup.h"
-#include "../../qetgraphicsitem/independenttextitem.h"
-#include "../../qeticons.h"
-#include "../../qetinformation.h"
-#include "../../qetproject.h"
-#include "../../ui/titleblockpropertieswidget.h"
+#include <QWidgetAnimation/qwidgetanimation.h>
+#include <diagram.h>
+#include <diagramcontent.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/dynamicelementtextitem.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/elementtextitemgroup.h>
+#include <qetgraphicsitem/independenttextitem.h>
+#include <qeticons.h>
+#include <qetinformation.h>
+#include <qetproject.h>
+#include <ui/titleblockpropertieswidget.h>
 #include "replaceadvanceddialog.h"
 #include "replaceconductordialog.h"
 #include "replaceelementdialog.h"

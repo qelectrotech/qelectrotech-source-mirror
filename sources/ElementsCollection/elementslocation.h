@@ -18,8 +18,8 @@
 #ifndef ELEMENTS_LOCATION_H
 #define ELEMENTS_LOCATION_H
 
-#include "../NameList/nameslist.h"
-#include "../diagramcontext.h"
+#include <NameList/nameslist.h>
+#include <diagramcontext.h>
 #include "pugixml.hpp"
 
 #include <QIcon>

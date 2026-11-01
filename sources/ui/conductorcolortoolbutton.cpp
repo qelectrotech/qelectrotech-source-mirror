@@ -17,16 +17,16 @@
 */
 #include "conductorcolortoolbutton.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../diagram.h"
-#include "../diagramcontent.h"
-#include "../diagramview.h"
-#include "../lastusedstyle.h"
-#include "../qetdiagrameditor.h"
-#include "../projectview.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../conductorproperties.h"
-#include "../utils/colordialogdoubleclick.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <diagram.h>
+#include <diagramcontent.h>
+#include <diagramview.h>
+#include <lastusedstyle.h>
+#include <qetdiagrameditor.h>
+#include <projectview.h>
+#include <qetgraphicsitem/conductor.h>
+#include <conductorproperties.h>
+#include <utils/colordialogdoubleclick.h>
 
 #include <QColorDialog>
 #include <QMenu>

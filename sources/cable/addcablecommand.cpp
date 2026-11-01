@@ -19,9 +19,9 @@
 
 #include "cablemanager.h"
 #include "cablepart.h"
-#include "../autoNum/numerotationcontextcommands.h"
-#include "../diagram.h"
-#include "../qetproject.h"
+#include <autoNum/numerotationcontextcommands.h>
+#include <diagram.h>
+#include <qetproject.h>
 
 #include <utility>
 

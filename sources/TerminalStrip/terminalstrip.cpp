@@ -16,12 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstrip.h"
-#include "../qetproject.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/terminalelement.h"
-#include "../elementprovider.h"
-#include "../qetxml.h"
-#include "../autoNum/assignvariables.h"
+#include <qetproject.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/terminalelement.h>
+#include <elementprovider.h>
+#include <qetxml.h>
+#include <autoNum/assignvariables.h>
 #include "physicalterminal.h"
 #include "realterminal.h"
 #include "terminalstripbridge.h"

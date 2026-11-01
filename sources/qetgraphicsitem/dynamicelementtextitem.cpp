@@ -17,20 +17,20 @@
 */
 #include "dynamicelementtextitem.h"
 
-#include "../bridge/bridgemanager.h"
+#include <bridge/bridgemanager.h>
 #include <QScopedPointer>
 #include <QTextDocument>
-#include "../QetGraphicsItemModeler/textresizehandles.h"
-#include "../shownkinds.h"
-#include "../qetproject.h"
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../diagram.h"
-#include "../qetapp.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/terminal.h"
-#include "../qetinformation.h"
-#include "../utils/qetutils.h"
-#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include <QetGraphicsItemModeler/textresizehandles.h>
+#include <shownkinds.h>
+#include <qetproject.h>
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <diagram.h>
+#include <qetapp.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/terminal.h>
+#include <qetinformation.h>
+#include <utils/qetutils.h>
+#include <QetGraphicsItemModeler/qetgraphicshandleritem.h>
 #include "crossrefitem.h"
 #include "element.h"
 #include "elementtextitemgroup.h"

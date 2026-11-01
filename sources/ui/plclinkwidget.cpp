@@ -17,13 +17,13 @@
 */
 #include "plclinkwidget.h"
 
-#include "../qetgraphicsitem/masterelement.h"
-#include "../qetgraphicsitem/element.h"
-#include "../elementprovider.h"
-#include "../undocommand/linkelementcommand.h"
-#include "../diagram.h"
-#include "../qetproject.h"
-#include "../properties/elementdata.h"
+#include <qetgraphicsitem/masterelement.h>
+#include <qetgraphicsitem/element.h>
+#include <elementprovider.h>
+#include <undocommand/linkelementcommand.h>
+#include <diagram.h>
+#include <qetproject.h>
+#include <properties/elementdata.h>
 
 #include <QTreeWidget>
 #include <QLineEdit>

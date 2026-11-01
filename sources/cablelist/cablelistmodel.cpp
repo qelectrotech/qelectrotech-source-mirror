@@ -19,12 +19,12 @@
 
 #include "cablelistrows.h"
 
-#include "../cable/cable.h"
-#include "../diagram.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetproject.h"
-#include "../qetxml.h"
-#include "../utils/qetutils.h"
+#include <cable/cable.h>
+#include <diagram.h>
+#include <qetgraphicsitem/element.h>
+#include <qetproject.h>
+#include <qetxml.h>
+#include <utils/qetutils.h>
 
 #include <QFont>
 #include <QMetaEnum>

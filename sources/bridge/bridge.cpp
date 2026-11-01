@@ -17,8 +17,8 @@
 */
 #include "bridge.h"
 
-#include "../qetproject.h"
-#include "../qetxml.h"
+#include <qetproject.h>
+#include <qetxml.h>
 #include "bridgemanager.h"
 
 #include <QDomDocument>

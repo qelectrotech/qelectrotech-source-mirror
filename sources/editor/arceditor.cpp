@@ -17,7 +17,7 @@
 */
 #include "arceditor.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
 #include "elementscene.h"
 #include "graphicspart/partarc.h"
 #include "styleeditor.h"

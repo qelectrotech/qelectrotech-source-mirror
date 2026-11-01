@@ -20,7 +20,7 @@
 
 #include "bridge.h"
 
-#include "../TerminalStrip/terminalstrip.h"
+#include <TerminalStrip/terminalstrip.h>
 
 #include <QLineF>
 #include <QList>

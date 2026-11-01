@@ -18,9 +18,9 @@
 #include "qetscripting.h"
 
 #include "qetscriptapi.h"
-#include "../qetmessagebox.h"
-#include "../qetproject.h"
-#include "../utils/qetsettings.h"
+#include <qetmessagebox.h>
+#include <qetproject.h>
+#include <utils/qetsettings.h>
 
 #include <QFile>
 #include <QFileInfo>

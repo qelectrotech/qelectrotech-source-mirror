@@ -16,8 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dxftoelmt.h"
-#include "../ui/thirdpartybinaryinstalldialog.h"
-#include "../qetapp.h"
+#include <ui/thirdpartybinaryinstalldialog.h>
+#include <qetapp.h>
 
 #include <QFile>
 #include <QProcess>

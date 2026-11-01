@@ -18,7 +18,7 @@
 #ifndef SORTTERMINALSTRIPCOMMAND_H
 #define SORTTERMINALSTRIPCOMMAND_H
 
-#include "../terminalstrip.h"
+#include <TerminalStrip/terminalstrip.h>
 
 #include <QHash>
 #include <QList>

@@ -17,12 +17,12 @@
 */
 #include "inditextpropertieswidget.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../diagram.h"
-#include "../diagramcommands.h"
-#include "../lastusedstyle.h"
-#include "../qetgraphicsitem/independenttextitem.h"
-#include "../ui_inditextpropertieswidget.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <diagram.h>
+#include <diagramcommands.h>
+#include <lastusedstyle.h>
+#include <qetgraphicsitem/independenttextitem.h>
+#include <ui_inditextpropertieswidget.h>
 
 #include <QLineEdit>
 #include <QtGlobal>

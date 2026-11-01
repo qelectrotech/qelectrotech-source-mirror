@@ -15,33 +15,33 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "../../bordercelllabels.h"
+#include <bordercelllabels.h>
 #include "generalconfigurationpage.h"
 
-#include "../../qetgraphicsitem/dynamicelementtextitem.h"
-#include "../../scripting/liveserver.h"
-#include "../../scripting/assistantinfo.h"
+#include <qetgraphicsitem/dynamicelementtextitem.h>
+#include <scripting/liveserver.h>
+#include <scripting/assistantinfo.h>
 
-#include "../../qetapp.h"
-#include "../../diagramview.h"
-#include "../dockfold.h"
-#include "../dockfit.h"
-#include "../../qeticons.h"
+#include <qetapp.h>
+#include <diagramview.h>
+#include <ui/dockfold.h>
+#include <ui/dockfit.h>
+#include <qeticons.h>
 #include "ui_generalconfigurationpage.h"
-#include "../../materiallist/materiallist.h"
-#include "../../cablelist/cabletypelist.h"
-#include "../../utils/qetsettings.h"
-#include "../../utils/qetutils.h"
-#include "../../utils/previousversions.h"
-#include "../../qetmessagebox.h"
-#include "../../foliogrid.h"
-#include "../../textgrid.h"
-#include "../../wiringrules.h"
-#include "../wiringruleswarning.h"
-#include "../../editor/terminalnamecheck.h"
-#include "../../ElementsCollection/qetlabelsfile.h"
-#include "../prefixconfigurationdialog.h"
-#include "../nokde/kcolorbutton.h"
+#include <materiallist/materiallist.h>
+#include <cablelist/cabletypelist.h>
+#include <utils/qetsettings.h>
+#include <utils/qetutils.h>
+#include <utils/previousversions.h>
+#include <qetmessagebox.h>
+#include <foliogrid.h>
+#include <textgrid.h>
+#include <wiringrules.h>
+#include <ui/wiringruleswarning.h>
+#include <editor/terminalnamecheck.h>
+#include <ElementsCollection/qetlabelsfile.h>
+#include <ui/prefixconfigurationdialog.h>
+#include <ui/nokde/kcolorbutton.h>
 #include <QCoreApplication>
 #include <QDir>
 #include <QFileDialog>
@@ -50,8 +50,8 @@
 #include <QMessageBox>
 #include <QSettings>
 
-#include "../../diagram.h"
-#include "../../qetproject.h"
+#include <diagram.h>
+#include <qetproject.h>
 
 namespace {
 	/**

@@ -18,7 +18,7 @@
 #ifndef DIMENSIONPROPERTIESWIDGET_H
 #define DIMENSIONPROPERTIESWIDGET_H
 
-#include "../PropertiesEditor/propertieseditorwidget.h"
+#include <PropertiesEditor/propertieseditorwidget.h>
 #include <QPointer>
 
 namespace Ui {

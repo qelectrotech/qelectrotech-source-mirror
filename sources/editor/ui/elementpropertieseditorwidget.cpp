@@ -17,15 +17,15 @@
 */
 #include "elementpropertieseditorwidget.h"
 
-#include "../../qet.h"
-#include "../../qetapp.h"
-#include "../../qetinformation.h"
-#include "../../TerminalStrip/terminalcatalog.h"
-#include "../../TerminalStrip/terminalcolor.h"
-#include "../../TerminalStrip/realterminal.h"
+#include <qet.h>
+#include <qetapp.h>
+#include <qetinformation.h>
+#include <TerminalStrip/terminalcatalog.h>
+#include <TerminalStrip/terminalcolor.h>
+#include <TerminalStrip/realterminal.h>
 #include "ui_elementpropertieseditorwidget.h"
 
-#include "../../qet.h"
+#include <qet.h>
 #include <QItemDelegate>
 #include <QComboBox>
 #include <QSpinBox>

@@ -17,15 +17,15 @@
 */
 #include "dynamicelementtextitemeditor.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../diagram.h"
-#include "../elementtextpattern.h"
-#include "../qetgraphicsitem/dynamicelementtextitem.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/elementtextitemgroup.h"
-#include "../ui_dynamicelementtextitemeditor.h"
-#include "../undocommand/addelementtextcommand.h"
-#include "../undocommand/deleteqgraphicsitemcommand.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <diagram.h>
+#include <elementtextpattern.h>
+#include <qetgraphicsitem/dynamicelementtextitem.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/elementtextitemgroup.h>
+#include <ui_dynamicelementtextitemeditor.h>
+#include <undocommand/addelementtextcommand.h>
+#include <undocommand/deleteqgraphicsitemcommand.h>
 #include "dynamicelementtextmodel.h"
 
 #include <QTreeView>

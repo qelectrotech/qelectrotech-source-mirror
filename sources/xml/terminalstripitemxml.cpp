@@ -17,11 +17,11 @@
 */
 #include "terminalstripitemxml.h"
 
-#include "../diagram.h"
-#include "../qetproject.h"
-#include "../qetxml.h"
-#include "../TerminalStrip/GraphicsItem/terminalstripitem.h"
-#include "../TerminalStrip/terminalstrip.h"
+#include <diagram.h>
+#include <qetproject.h>
+#include <qetxml.h>
+#include <TerminalStrip/GraphicsItem/terminalstripitem.h>
+#include <TerminalStrip/terminalstrip.h>
 
 #include <QUuid>
 

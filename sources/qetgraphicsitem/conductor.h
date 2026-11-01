@@ -17,10 +17,10 @@
 */
 #ifndef CONDUCTOR_H
 #define CONDUCTOR_H
-#include "../autoNum/assignvariables.h"
-#include "../conductorproperties.h"
-#include "../dataBase/conductorlayout.h"
-#include "../dataBase/conductorpath.h"
+#include <autoNum/assignvariables.h>
+#include <conductorproperties.h>
+#include <dataBase/conductorlayout.h>
+#include <dataBase/conductorpath.h>
 
 #include <QGraphicsPathItem>
 #include <QSet>

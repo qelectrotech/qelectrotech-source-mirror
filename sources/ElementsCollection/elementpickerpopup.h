@@ -19,7 +19,7 @@
 #define ELEMENTPICKERPOPUP_H
 
 #include "elementslocation.h"
-#include "../shortcutbarsettings.h"
+#include <shortcutbarsettings.h>
 
 #include <QFrame>
 

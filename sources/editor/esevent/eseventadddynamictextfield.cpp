@@ -17,9 +17,9 @@
 */
 #include "eseventadddynamictextfield.h"
 
-#include "../UndoCommand/addpartcommand.h"
-#include "../elementscene.h"
-#include "../graphicspart/partdynamictextfield.h"
+#include <editor/UndoCommand/addpartcommand.h>
+#include <editor/elementscene.h>
+#include <editor/graphicspart/partdynamictextfield.h>
 
 #include <QUndoStack>
 

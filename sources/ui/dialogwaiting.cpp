@@ -18,7 +18,7 @@
 
 #include "dialogwaiting.h"
 #include "ui_dialogwaiting.h"
-#include "../qet.h"
+#include <qet.h>
 #include <QIcon>
 #include <QPushButton>
 

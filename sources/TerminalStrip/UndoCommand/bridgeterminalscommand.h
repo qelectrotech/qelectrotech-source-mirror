@@ -23,7 +23,7 @@
 #include <QPointer>
 #include <QMultiMap>
 
-#include "../terminalstrip.h"
+#include <TerminalStrip/terminalstrip.h>
 
 /**
  * @brief The BridgeTerminalsCommand class

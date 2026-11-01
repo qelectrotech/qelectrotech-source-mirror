@@ -23,7 +23,7 @@
 #include <QStyledItemDelegate>
 
 #include "modelTerminalData.h"
-#include "../../qetproject.h"
+#include <qetproject.h>
 
 class RealTerminal;
 class QMimeData;

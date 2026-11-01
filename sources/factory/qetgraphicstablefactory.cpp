@@ -17,17 +17,17 @@
 */
 #include "qetgraphicstablefactory.h"
 
-#include "../cablelist/cablelistmodel.h"
-#include "../cablelist/cablequerywidget.h"
-#include "../dataBase/ui/elementquerywidget.h"
-#include "../dataBase/ui/summaryquerywidget.h"
-#include "../diagram.h"
-#include "../qetgraphicsitem/ViewItem/projectdbmodel.h"
-#include "../qetgraphicsitem/ViewItem/qetgraphicsheaderitem.h"
-#include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
-#include "../utils/qetutils.h"
+#include <cablelist/cablelistmodel.h>
+#include <cablelist/cablequerywidget.h>
+#include <dataBase/ui/elementquerywidget.h>
+#include <dataBase/ui/summaryquerywidget.h>
+#include <diagram.h>
+#include <qetgraphicsitem/ViewItem/projectdbmodel.h>
+#include <qetgraphicsitem/ViewItem/qetgraphicsheaderitem.h>
+#include <qetgraphicsitem/ViewItem/qetgraphicstableitem.h>
+#include <utils/qetutils.h>
 #include "ui/addtabledialog.h"
-#include "../qetproject.h"
+#include <qetproject.h>
 #include <QDialog>
 
 QetGraphicsTableFactory::QetGraphicsTableFactory()

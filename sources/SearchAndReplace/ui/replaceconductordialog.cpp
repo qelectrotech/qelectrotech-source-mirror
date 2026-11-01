@@ -17,10 +17,10 @@
 */
 #include "replaceconductordialog.h"
 
-#include "../searchandreplaceworker.h"
+#include <SearchAndReplace/searchandreplaceworker.h>
 #include "ui_replaceconductordialog.h"
 
-#include "../../qet.h"
+#include <qet.h>
 #include <QColorDialog>
 #include <QPainter>
 

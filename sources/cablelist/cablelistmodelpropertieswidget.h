@@ -18,7 +18,7 @@
 #ifndef CABLELISTMODELPROPERTIESWIDGET_H
 #define CABLELISTMODELPROPERTIESWIDGET_H
 
-#include "../../PropertiesEditor/propertieseditorwidget.h"
+#include <PropertiesEditor/propertieseditorwidget.h>
 
 class CableListModel;
 class QPushButton;

@@ -17,7 +17,7 @@
 */
 #include "scaleelementdialog.h"
 
-#include "../symbolscale.h"
+#include <editor/symbolscale.h>
 
 #include <QCheckBox>
 #include <QComboBox>

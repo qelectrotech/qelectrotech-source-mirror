@@ -17,7 +17,7 @@
 */
 #include "qetzwriter.h"
 
-#include "../qetversion.h"
+#include <qetversion.h>
 #include "qetcontainer.h"
 #include "qetzip.h"
 

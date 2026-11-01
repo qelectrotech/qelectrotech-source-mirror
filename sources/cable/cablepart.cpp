@@ -16,19 +16,19 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "cablepart.h"
-#include "../palettegraphicsview.h"
+#include <palettegraphicsview.h>
 
 #include "cable.h"
 #include "cablemanager.h"
 #include "cablepropertiesdialog.h"
 #include "editcablecommand.h"
-#include "../autoNum/assignvariables.h"
-#include "../diagram.h"
-#include "../properties/xrefproperties.h"
-#include "../qetapp.h"
-#include "../qetproject.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../utils/qetutils.h"
+#include <autoNum/assignvariables.h>
+#include <diagram.h>
+#include <properties/xrefproperties.h>
+#include <qetapp.h>
+#include <qetproject.h>
+#include <qetgraphicsitem/conductor.h>
+#include <utils/qetutils.h>
 
 #include <QApplication>
 #include <QCursor>

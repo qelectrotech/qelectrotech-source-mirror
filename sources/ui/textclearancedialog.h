@@ -18,7 +18,7 @@
 #ifndef TEXTCLEARANCEDIALOG_H
 #define TEXTCLEARANCEDIALOG_H
 
-#include "../textclearance.h"
+#include <textclearance.h>
 
 #include <QDialog>
 

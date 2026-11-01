@@ -17,13 +17,13 @@
 */
 #include "groupitemscommand.h"
 
-#include "../diagram.h"
-#include "../itemgroups.h"
-#include "../qetgraphicsitem/diagramimageitem.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/independenttextitem.h"
-#include "../qetgraphicsitem/qetshapeitem.h"
-#include "../qetgraphicsitem/dimensionitem.h"
+#include <diagram.h>
+#include <itemgroups.h>
+#include <qetgraphicsitem/diagramimageitem.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/independenttextitem.h>
+#include <qetgraphicsitem/qetshapeitem.h>
+#include <qetgraphicsitem/dimensionitem.h>
 
 #include <QSet>
 

@@ -17,10 +17,10 @@
 */
 #include "terminalstripcreatordialog.h"
 #include "ui_terminalstripcreatordialog.h"
-#include "../terminalstrip.h"
-#include "../../qetproject.h"
+#include <TerminalStrip/terminalstrip.h>
+#include <qetproject.h>
 
-#include "../../qet.h"
+#include <qet.h>
 /**
  * @brief TerminalStripCreatorDialog::TerminalStripCreatorDialog
  * @param project : Project to add a new terminal strip

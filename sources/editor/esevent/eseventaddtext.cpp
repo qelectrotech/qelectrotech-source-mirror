@@ -17,9 +17,9 @@
 */
 #include "eseventaddtext.h"
 
-#include "../UndoCommand/addpartcommand.h"
-#include "../elementscene.h"
-#include "../graphicspart/parttext.h"
+#include <editor/UndoCommand/addpartcommand.h>
+#include <editor/elementscene.h>
+#include <editor/graphicspart/parttext.h>
 
 #include <QObject>
 

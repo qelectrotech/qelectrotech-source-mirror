@@ -16,11 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalelement.h"
-#include "../TerminalStrip/realterminal.h"
-#include "../TerminalStrip/terminalstriplabels.h"
-#include "../diagram.h"
-#include "../qetapp.h"
-#include "../shownkinds.h"
+#include <TerminalStrip/realterminal.h>
+#include <TerminalStrip/terminalstriplabels.h>
+#include <diagram.h>
+#include <qetapp.h>
+#include <shownkinds.h>
 
 #include <QGraphicsLineItem>
 #include <QGraphicsSimpleTextItem>

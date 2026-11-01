@@ -18,7 +18,7 @@
 #ifndef PROPERTIESEDITORDIALOG_H
 #define PROPERTIESEDITORDIALOG_H
 
-#include "../qet.h"
+#include <qet.h>
 
 #include <QDialog>
 #include <QDialogButtonBox>

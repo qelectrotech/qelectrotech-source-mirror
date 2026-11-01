@@ -17,9 +17,9 @@
 */
 #include "shortcutbarconfigpage.h"
 
-#include "../../ElementsCollection/elementslocation.h"
-#include "../../qeticons.h"
-#include "../../shortcutmanager.h"
+#include <ElementsCollection/elementslocation.h>
+#include <qeticons.h>
+#include <shortcutmanager.h>
 
 #include <QAction>
 #include <QComboBox>

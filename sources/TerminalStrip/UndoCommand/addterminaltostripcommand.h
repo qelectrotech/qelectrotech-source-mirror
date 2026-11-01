@@ -22,7 +22,7 @@
 #include <QPointer>
 #include <QVector>
 #include <QSharedPointer>
-#include "../../properties/elementdata.h"
+#include <properties/elementdata.h>
 
 class TerminalElement;
 class TerminalStrip;

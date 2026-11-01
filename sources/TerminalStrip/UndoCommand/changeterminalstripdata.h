@@ -19,8 +19,8 @@
 #define CHANGETERMINALSTRIPDATA_H
 
 #include <QUndoCommand>
-#include "../terminalstripdata.h"
-#include "../terminalstrip.h"
+#include <TerminalStrip/terminalstripdata.h>
+#include <TerminalStrip/terminalstrip.h>
 
 /**
  * @brief The ChangeTerminalStripData class

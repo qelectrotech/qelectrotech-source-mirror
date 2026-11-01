@@ -21,8 +21,8 @@
 #include <QGraphicsItem>
 #include <QWidget>
 
-#include "../GraphicsItem/demoterminalstrip.h"
-#include "../GraphicsItem/terminalstripdrawer.h"
+#include <TerminalStrip/GraphicsItem/demoterminalstrip.h>
+#include <TerminalStrip/GraphicsItem/terminalstripdrawer.h>
 
 class TerminalStripLayoutPattern;
 

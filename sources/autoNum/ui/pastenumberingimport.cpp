@@ -17,10 +17,10 @@
 */
 #include "pastenumberingimport.h"
 
-#include "../../diagram.h"
-#include "../../diagramcommands.h"
-#include "../../qetmessagebox.h"
-#include "../../qetproject.h"
+#include <diagram.h>
+#include <diagramcommands.h>
+#include <qetmessagebox.h>
+#include <qetproject.h>
 
 #include <QSettings>
 

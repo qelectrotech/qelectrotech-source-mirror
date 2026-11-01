@@ -17,14 +17,14 @@
 */
 #include "diagramtextitem.h"
 
-#include "../diagram.h"
-#include "../diagramcommands.h"
-#include "../qetproject.h"
-#include "../qetapp.h"
-#include "../richtext/richtexteditor_p.h"
-#include "../textanchor.h"
-#include "../utils/qetutils.h"
-#include "../QetGraphicsItemModeler/textresizehandles.h"
+#include <diagram.h>
+#include <diagramcommands.h>
+#include <qetproject.h>
+#include <qetapp.h>
+#include <richtext/richtexteditor_p.h>
+#include <textanchor.h>
+#include <utils/qetutils.h>
+#include <QetGraphicsItemModeler/textresizehandles.h>
 
 #include <QAbstractTextDocumentLayout>
 #include <QStyleOptionGraphicsItem>

@@ -19,7 +19,7 @@
 #define TERMINALEDITOR_H
 
 #include <QWidget>
-#include "../elementitemeditor.h"
+#include <editor/elementitemeditor.h>
 
 #ifdef BUILD_WITHOUT_KF
 #include <QPushButton>

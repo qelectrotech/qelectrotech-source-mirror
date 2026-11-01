@@ -17,11 +17,11 @@
 */
 #include "elementfactory.h"
 
-#include "../qetgraphicsitem/masterelement.h"
-#include "../qetgraphicsitem/reportelement.h"
-#include "../qetgraphicsitem/simpleelement.h"
-#include "../qetgraphicsitem/slaveelement.h"
-#include "../qetgraphicsitem/terminalelement.h"
+#include <qetgraphicsitem/masterelement.h>
+#include <qetgraphicsitem/reportelement.h>
+#include <qetgraphicsitem/simpleelement.h>
+#include <qetgraphicsitem/slaveelement.h>
+#include <qetgraphicsitem/terminalelement.h>
 
 #include <QDomElement>
 

@@ -18,7 +18,7 @@
 #ifndef DEVICEINFORMATION_H
 #define DEVICEINFORMATION_H
 
-#include "../diagramcontext.h"
+#include <diagramcontext.h>
 
 #include <QString>
 

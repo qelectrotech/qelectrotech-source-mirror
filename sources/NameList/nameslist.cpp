@@ -17,7 +17,7 @@
 */
 #include "nameslist.h"
 
-#include "../qetapp.h"
+#include <qetapp.h>
 
 // make this class usable with QVariant
 int NamesList::MetaTypeId = qRegisterMetaType<NamesList>("NamesList");

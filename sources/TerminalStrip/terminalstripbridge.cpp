@@ -18,7 +18,7 @@
 #include "terminalstripbridge.h"
 #include "realterminal.h"
 #include "terminalstrip.h"
-#include "../qetxml.h"
+#include <qetxml.h>
 
 TerminalStripBridge::TerminalStripBridge(TerminalStrip *parent_strip) :
 	m_strip(parent_strip)

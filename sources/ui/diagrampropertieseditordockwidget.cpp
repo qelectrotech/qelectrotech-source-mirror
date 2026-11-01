@@ -17,9 +17,9 @@
 */
 #include "diagrampropertieseditordockwidget.h"
 
-#include "../PropertiesEditor/propertieseditorwidget.h"
-#include "../diagram.h"
-#include "../factory/propertieseditorfactory.h"
+#include <PropertiesEditor/propertieseditorwidget.h>
+#include <diagram.h>
+#include <factory/propertieseditorfactory.h>
 
 /**
 	@brief DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget

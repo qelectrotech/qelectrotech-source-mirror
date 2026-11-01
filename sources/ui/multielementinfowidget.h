@@ -18,8 +18,8 @@
 #ifndef MULTIELEMENTINFOWIDGET_H
 #define MULTIELEMENTINFOWIDGET_H
 
-#include "../PropertiesEditor/propertieseditorwidget.h"
-#include "../diagramcontext.h"
+#include <PropertiesEditor/propertieseditorwidget.h>
+#include <diagramcontext.h>
 
 #include <QHash>
 #include <QPointer>

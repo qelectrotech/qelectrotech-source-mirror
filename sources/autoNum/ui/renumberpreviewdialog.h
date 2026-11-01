@@ -18,7 +18,7 @@
 #ifndef RENUMBERPREVIEWDIALOG_H
 #define RENUMBERPREVIEWDIALOG_H
 
-#include "../renumberelementscommand.h"
+#include <autoNum/renumberelementscommand.h>
 
 #include <QCoreApplication>
 #include <QVector>

@@ -18,7 +18,7 @@
 #include "thirdpartybinaryinstalldialog.h"
 #include "ui_thirdpartybinaryinstalldialog.h"
 
-#include "../qet.h"
+#include <qet.h>
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QDesktopServices>

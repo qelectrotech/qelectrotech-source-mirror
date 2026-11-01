@@ -18,7 +18,7 @@
 #ifndef NUMPARTEDITORW_H
 #define NUMPARTEDITORW_H
 
-#include "../numerotationcontext.h"
+#include <autoNum/numerotationcontext.h>
 
 #include <QValidator>
 #include <QWidget>

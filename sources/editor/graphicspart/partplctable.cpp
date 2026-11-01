@@ -17,14 +17,14 @@
 */
 #include "partplctable.h"
 
-#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../../qetapp.h"
-#include "../../QetGraphicsItemModeler/qetgraphicshandleritem.h"
-#include "../../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
-#include "../../properties/elementdata.h"
-#include "../elementscene.h"
-#include "../editorcommands.h"
-#include "../ui/qetelementeditor.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <qetapp.h>
+#include <QetGraphicsItemModeler/qetgraphicshandleritem.h>
+#include <QetGraphicsItemModeler/qetgraphicshandlerutility.h>
+#include <properties/elementdata.h>
+#include <editor/elementscene.h>
+#include <editor/editorcommands.h>
+#include <editor/ui/qetelementeditor.h>
 
 #include <QPen>
 #include <algorithm>

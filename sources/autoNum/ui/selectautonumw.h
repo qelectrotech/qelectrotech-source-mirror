@@ -18,7 +18,7 @@
 #ifndef SELECTAUTONUMW_H
 #define SELECTAUTONUMW_H
 
-#include "../numerotationcontext.h"
+#include <autoNum/numerotationcontext.h>
 #include "formulaautonumberingw.h"
 
 #include <QWidget>

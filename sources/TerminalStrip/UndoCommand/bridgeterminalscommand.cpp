@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "bridgeterminalscommand.h"
-#include "../terminalstripbridge.h"
+#include <TerminalStrip/terminalstripbridge.h>
 
 BridgeTerminalsCommand::BridgeTerminalsCommand(TerminalStrip *strip,
 											   QVector<QSharedPointer<RealTerminal>> real_terminal,

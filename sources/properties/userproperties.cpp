@@ -16,7 +16,7 @@
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "userproperties.h"
-#include "../qetxml.h"
+#include <qetxml.h>
 
 #include <QUuid>
 #include <QDebug>

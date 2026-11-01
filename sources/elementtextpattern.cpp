@@ -278,7 +278,7 @@ void ImportElementTextPattern::apply(QString name, bool erase) const
 // ElementTextFormatPattern & ApplyElementTextFormatCommand (Format Painter)
 //=============================================================================
 
-#include "terminal.h"
+#include <qetgraphicsitem/terminal.h>
 
 ElementTextFormatPattern ElementTextFormatPattern::s_current_pattern;
 bool ElementTextFormatPattern::s_has_pattern = false;

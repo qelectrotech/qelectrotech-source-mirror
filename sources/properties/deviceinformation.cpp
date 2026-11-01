@@ -17,7 +17,7 @@
 */
 #include "deviceinformation.h"
 
-#include "../qetinformation.h"
+#include <qetinformation.h>
 
 namespace {
 struct DeviceField

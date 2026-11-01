@@ -16,11 +16,10 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "projectlanguages.h"
 #ifndef PROJECTLANGUAGESDIALOG_H
 #define PROJECTLANGUAGESDIALOG_H
 
-#include "../properties/projectlanguages.h"
+#include <properties/projectlanguages.h>
 
 #include <QDialog>
 

@@ -17,7 +17,7 @@
 */
 #include "diagrameventinterface.h"
 
-#include "../diagram.h"
+#include <diagram.h>
 
 #include <QGraphicsSceneMouseEvent>
 #include <QKeyEvent>

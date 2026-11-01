@@ -17,11 +17,11 @@
 */
 #include "partdynamictextfield.h"
 
-#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../../qetapp.h"
-#include "../../textanchor.h"
-#include "../elementscene.h"
-#include "../../utils/qetutils.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <qetapp.h>
+#include <textanchor.h>
+#include <editor/elementscene.h>
+#include <utils/qetutils.h>
 #include <QApplication>
 
 #include <QColor>

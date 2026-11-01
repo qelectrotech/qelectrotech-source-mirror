@@ -18,7 +18,7 @@
 #ifndef SETAUTONUMCONTEXTCOMMAND_H
 #define SETAUTONUMCONTEXTCOMMAND_H
 
-#include "../autoNum/numerotationcontext.h"
+#include <autoNum/numerotationcontext.h>
 
 #include <QUndoCommand>
 #include <functional>

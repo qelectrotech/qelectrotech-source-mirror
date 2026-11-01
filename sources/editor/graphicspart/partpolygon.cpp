@@ -17,12 +17,12 @@
 */
 #include "partpolygon.h"
 
-#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../../QetGraphicsItemModeler/qetgraphicshandleritem.h"
-#include "../../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
-#include "../../qeticons.h"
-#include "../elementscene.h"
-#include "../ui/qetelementeditor.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <QetGraphicsItemModeler/qetgraphicshandleritem.h>
+#include <QetGraphicsItemModeler/qetgraphicshandlerutility.h>
+#include <qeticons.h>
+#include <editor/elementscene.h>
+#include <editor/ui/qetelementeditor.h>
 
 /**
 	@brief PartPolygon::PartPolygon
