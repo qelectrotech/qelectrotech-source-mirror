@@ -531,6 +531,7 @@ qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
 # A symbol that draws beyond its frame is drawn whole, at every zoom: its
 # bounding rect covers the drawing, not only the frame.
 qet_add_app_test(tst_symboloutsideframe tst_symboloutsideframe.cpp)
+qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
 
 # A folio's pictures, decoded in parallel, each come back with its own
 # pixels and position; an <image> with no picture does not stop the others.
