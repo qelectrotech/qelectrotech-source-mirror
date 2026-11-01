@@ -745,6 +745,95 @@ private slots:
 				 "the kept XML says what the bridge holds on a folio which is not built");
 	}
 
+	//A bridge spanning a built and an unbuilt folio keeps the order it
+	//holds its Klemmen in: the first of them is where the bridge takes
+	//its information from, and a list in any other order would read as
+	//a change and be written back after any move (review of #1651)
+	void aBridgeSpanningBuiltAndUnbuiltKeepsItsOrder()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+		if (project.unloadedFolioCount() == 0) {
+			QSKIP("The project built every folio at the open");
+		}
+
+			//One folio of the pair built, one held back
+		Diagram *cold = nullptr;
+		for (Diagram *folio : project.folios()) {
+			if (folio && !folio->isLoaded()) {
+				cold = folio;
+				break;
+			}
+		}
+		Diagram *warm = project.builtFolios().value(0);
+		QVERIFY(cold && warm);
+
+			//The held side: a symbol kept in the folio's own XML
+		const auto symbols = QET::findInDomElement(
+					cold->deferredXml(), QStringLiteral("elements"),
+					QStringLiteral("element"));
+		QVERIFY(!symbols.isEmpty());
+		BridgeTerminal on_cold;
+		on_cold.element = QUuid(symbols.first().attribute(QStringLiteral("uuid")));
+		on_cold.terminal = QStringLiteral("heldOnTheFolioNotBuilt");
+
+			//The built side: a pin the drawn line sits on, named the
+			//way a line names it -- taken from a crossing so both
+			//sides of this test speak the very same identity
+			//A terminal symbol of that very folio -- only those are
+			//what a bridge may land on, and only those a line crossing
+			//them answers for
+		Element *symbol = nullptr;
+		for (const auto &real_t : stripTerminals(project)) {
+			if (real_t && real_t->element() && real_t->element()->diagram() == warm
+				&& !real_t->element()->terminals().isEmpty()) {
+				symbol = real_t->element();
+				break;
+			}
+		}
+		QVERIFY(symbol);
+		const QPointF on_pin = symbol->terminals().first()->dockConductor();
+		const QLineF warm_line(on_pin, on_pin + QPointF(120, 0));
+		const auto warm_crossings = BridgeManager::crossedTerminals(warm, warm_line);
+		QVERIFY(!warm_crossings.isEmpty());
+		BridgeTerminal on_warm;
+		on_warm.element = warm_crossings.first().element->uuid();
+		on_warm.terminal = warm_crossings.first().terminal;
+		on_warm.reference = warm_crossings.first().reference;
+
+		BridgePartData warm_data;
+		warm_data.uuid = QUuid::createUuid();
+		warm_data.diagram = warm->uuid();
+		warm_data.p1 = warm_line.p1();
+		warm_data.p2 = warm_line.p2();
+
+		BridgePartData cold_data;
+		cold_data.uuid = QUuid::createUuid();
+		cold_data.diagram = cold->uuid();
+		cold_data.p1 = QPointF(100, 100);
+		cold_data.p2 = QPointF(200, 100);
+
+			//Held by nothing: writing a landing onto a bridge makes
+			//the project build every folio -- the state under test
+		Bridge bridge;
+		bridge.addPart(warm_data);
+		bridge.addPart(cold_data);
+			//Warm held first, then cold: the first of them is where
+			//the bridge takes its information from
+		bridge.addTerminal(on_warm);
+		bridge.addTerminal(on_cold);
+
+			//What is held comes first, in the order it is held in --
+			//whatever the lines cross anew is appended behind it (the
+			//line takes more than the one pin on its way)
+		const auto seen = BridgeManager::terminalsOfBridge(&project, &bridge);
+		QVERIFY2(seen.size() >= 2, "both held ones are still answered for");
+		QVERIFY2(seen.at(0) == on_warm,
+				 "the order the bridge holds its Klemmen in is kept");
+		QVERIFY2(seen.at(1) == on_cold, "and the held back one stays where it was held");
+	}
+
 	//A terminal dropped onto a bridge which cannot take one more is
 	//refused: what that would build cannot be built in the cabinet, so
 	//the terminal stays at the mouse and is dropped somewhere else

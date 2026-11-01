@@ -379,9 +379,11 @@ RemoveBridgeCommand::RemoveBridgeCommand(const QList<BridgePart *> &parts)
 			continue;
 		}
 
-		QList<BridgeTerminal> after;
 		int lines_left = 0;
 		const auto parts_of_bridge = bridge->parts();
+			//Which sections of this bridge go with the delete and which
+			//stay
+		QList<BridgePartData> staying;
 		for (const BridgePartData &data : parts_of_bridge)
 		{
 			bool goes = false;
@@ -395,14 +397,28 @@ RemoveBridgeCommand::RemoveBridgeCommand(const QList<BridgePart *> &parts)
 				continue;
 			}
 			++lines_left;
+			staying << data;
+		}
 
-				//What this line which stays crosses: the bridge goes on
-				//landing on it
-			QETProject *proj = project();
+			//What the staying lines cross on the folios which can
+			//answer: a folio not built at the open holds no items to ask
+			//-- what the bridge holds on one comes from that folio's own
+			//kept XML instead, else deleting one section takes the
+			//Klemmen of another one's folio away on redo, the very loss
+			//this branch fixes elsewhere (review of #1651)
+		QETProject *proj = project();
+		const QSet<QUuid> cold_elements = proj
+				? BridgeManager::elementsOnUnbuiltFolios(proj, staying)
+				: QSet<QUuid>();
+		QList<BridgeTerminal> crossed_now;
+		for (const BridgePartData &data : staying)
+		{
 			Diagram *folio = proj ? proj->diagramByUuid(data.diagram) : nullptr;
-			if (!folio) {
+			if (!folio || !folio->isLoaded()) {
 				continue;
 			}
+				//What this line which stays crosses: the bridge goes on
+				//landing on it
 			const auto crossings =
 					BridgeManager::crossedTerminals(folio, QLineF(data.p1, data.p2));
 			for (const BridgeCrossing &crossing : crossings) {
@@ -410,10 +426,26 @@ RemoveBridgeCommand::RemoveBridgeCommand(const QList<BridgePart *> &parts)
 				terminal.element = crossing.element->uuid();
 				terminal.terminal = crossing.terminal;
 				terminal.reference = crossing.reference;
-				terminal.terminal = crossing.terminal;
-				if (!after.contains(terminal)) {
-					after << terminal;
+				if (!crossed_now.contains(terminal)) {
+					crossed_now << terminal;
 				}
+			}
+		}
+
+			//The bridge keeps the order it held its Klemmen in -- the
+			//first of them is where it takes its information from --
+			//and whatever the staying lines cross anew is appended
+		const QList<BridgeTerminal> held = m_terminals_before.value(bridge);
+		QList<BridgeTerminal> after;
+		for (const BridgeTerminal &terminal : held) {
+			if (cold_elements.contains(terminal.element)
+				|| crossed_now.contains(terminal)) {
+				after << terminal;
+			}
+		}
+		for (const BridgeTerminal &terminal : crossed_now) {
+			if (!held.contains(terminal)) {
+				after << terminal;
 			}
 		}
 		m_terminals_after.insert(bridge, after);

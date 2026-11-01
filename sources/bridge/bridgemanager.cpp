@@ -294,29 +294,21 @@ int BridgeManager::freeColumn(QETProject *project, const QList<BridgeTerminal> &
 	first terminal of it is the one the bridge takes its information
 	from.
 */
-QList<BridgeTerminal> BridgeManager::terminalsOfBridge(QETProject *project, Bridge *bridge)
+QSet<QUuid> BridgeManager::elementsOnUnbuiltFolios(QETProject *project,
+												   const QList<BridgePartData> &parts)
 {
-	QList<BridgeTerminal> result;
-	if (!project || !bridge) {
-		return result;
+	QSet<QUuid> elements;
+	if (!project) {
+		return elements;
 	}
-
-		//A folio not built at the open holds no items to ask: what the
-		//bridge holds on it is what it held there -- taking those
-		//Klemmen off the answer would mean the shortened list gets
-		//written back the moment any symbol anywhere is moved, and they
-		//would be off the bridge for good (review of #1651). Which
-		//symbols stand on such a folio says its own XML, kept until the
-		//folio is built.
 	QSet<QUuid> cold_folios;
-	for (const BridgePartData &data : bridge->parts()) {
+	for (const BridgePartData &data : parts) {
 		if (Diagram *folio = project->diagramByUuid(data.diagram)) {
 			if (!folio->isLoaded()) {
 				cold_folios.insert(folio->uuid());
 			}
 		}
 	}
-	QSet<QUuid> cold_elements;
 	for (const QUuid &folio_uuid : std::as_const(cold_folios)) {
 		Diagram *folio = project->diagramByUuid(folio_uuid);
 		if (!folio) {
@@ -324,31 +316,37 @@ QList<BridgeTerminal> BridgeManager::terminalsOfBridge(QETProject *project, Brid
 		}
 		const QDomElement xml = folio->deferredXml();
 		for (QDomElement element_xml :
-			 QET::findInDomElement(xml, QStringLiteral("elements"), QStringLiteral("element"))) {
+			 QET::findInDomElement(xml, QStringLiteral("elements"),
+								   QStringLiteral("element"))) {
 			const QUuid uuid(element_xml.attribute(QStringLiteral("uuid")));
 			if (!uuid.isNull()) {
-				cold_elements.insert(uuid);
+				elements.insert(uuid);
 			}
 		}
 	}
-	if (!cold_elements.isEmpty()) {
-		for (const BridgeTerminal &held : bridge->terminals()) {
-			if (cold_elements.contains(held.element) && !result.contains(held)) {
-				result << held;
-			}
-		}
+	return elements;
+}
+
+QList<BridgeTerminal> BridgeManager::terminalsOfBridge(QETProject *project, Bridge *bridge)
+{
+	if (!project || !bridge) {
+		return {};
 	}
 
+		//A folio not built at the open holds no items to ask: what the
+		//bridge holds on it is what it held there -- taking those
+		//Klemmen off the answer would mean the shortened list gets
+		//written back the moment any symbol anywhere is moved, and they
+		//would be off the bridge for good (review of #1651)
+	const QSet<QUuid> cold_elements =
+			elementsOnUnbuiltFolios(project, bridge->parts());
+
+		//What the drawn lines cross, on the folios which can answer
+	QList<BridgeTerminal> crossed_now;
 	for (const BridgePartData &data : bridge->parts())
 	{
 		Diagram *folio = project->diagramByUuid(data.diagram);
-		if (!folio) {
-			continue;
-		}
-
-			//Nothing to ask here: the symbols of such a folio are kept
-			//in its XML above, not drawn
-		if (!folio->isLoaded()) {
+		if (!folio || !folio->isLoaded()) {
 			continue;
 		}
 
@@ -371,10 +369,30 @@ QList<BridgeTerminal> BridgeManager::terminalsOfBridge(QETProject *project, Brid
 			terminal.element = crossing.element->uuid();
 			terminal.terminal = crossing.terminal;
 			terminal.reference = crossing.reference;
-			terminal.terminal = crossing.terminal;
-			if (!result.contains(terminal)) {
-				result << terminal;
+			if (!crossed_now.contains(terminal)) {
+				crossed_now << terminal;
 			}
+		}
+	}
+
+		//What the bridge already holds keeps the order it is held in:
+		//the first of them is where the bridge takes its information
+		//from, and a list in any other order would read as a change and
+		//be written back after any move. Kept where nothing can be asked
+		//(an unbuilt folio), kept where the drawing still says so,
+		//dropped where it does not -- whatever the lines cross anew is
+		//appended, never prepended (review of #1651)
+	const QList<BridgeTerminal> held = bridge->terminals();
+	QList<BridgeTerminal> result;
+	for (const BridgeTerminal &terminal : held) {
+		if (cold_elements.contains(terminal.element)
+			|| crossed_now.contains(terminal)) {
+			result << terminal;
+		}
+	}
+	for (const BridgeTerminal &terminal : crossed_now) {
+		if (!held.contains(terminal)) {
+			result << terminal;
 		}
 	}
 	return result;
