@@ -2325,6 +2325,7 @@ void QETDiagramEditor::save()
 			QString filePath = (project_view -> project() -> filePath ());
 			statusBar()-> showMessage(tr("Project %1 registered in the directory: %2.").arg(title).arg (filePath), 2000);
 			m_element_collection_widget->highlightUnusedElement();
+			showOutsideSheetAfterSave(project_view->project());
 		}
 		else {
 			showError(saved);
@@ -2348,6 +2349,7 @@ void QETDiagramEditor::saveAs()
 			QString filePath = (project_view -> project() -> filePath ());
 			statusBar()->showMessage(tr("Project %1 registered in the directory: %2.").arg(title).arg (filePath), 2000);
 			m_element_collection_widget->highlightUnusedElement();
+			showOutsideSheetAfterSave(project_view->project());
 		}
 		else {
 			showError(save_file);
@@ -6266,4 +6268,111 @@ void QETDiagramEditor::showProjectChanges(QETProject *project, qint64 from, qint
 	});
 	dialog.resize(640, 420);
 	dialog.exec();
+}
+
+/**
+	@brief QETDiagramEditor::warnsOutsideSheet
+	@return true when printing, exporting and saving warn about what lies
+	outside the sheet; on by default
+*/
+bool QETDiagramEditor::warnsOutsideSheet()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/warn_outside_sheet"), true).toBool();
+}
+
+/**
+	@brief QETDiagramEditor::setWarnsOutsideSheet
+	@param on : see warnsOutsideSheet(); kept in the settings
+*/
+void QETDiagramEditor::setWarnsOutsideSheet(bool on)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/warn_outside_sheet"), on);
+}
+
+/**
+	@brief QETDiagramEditor::outsideSheetReport
+	@return one line per folio of @a folios with something outside the
+	sheet, named as in the Projects panel: "5 - Kitchen: -K1, a text";
+	empty when there is nothing or the warning is off
+*/
+QStringList QETDiagramEditor::outsideSheetReport(const QList<Diagram *> &folios)
+{
+	QStringList lines;
+	if (!warnsOutsideSheet())
+		return lines;
+	for (Diagram *folio : folios)
+	{
+		const QStringList names = folio->itemsOutsideSheet();
+		if (names.isEmpty())
+			continue;
+		QStringList shown = names.mid(0, 5);
+		if (names.size() > 5)
+			shown << tr("%n more", "", int(names.size()) - 5);
+		QString title = folio->title();
+		if (title.isEmpty())
+			title = tr("Untitled sheet", "Fallback label when a diagram has no title");
+		const QString number = QSettings().value(QStringLiteral("genericpanel/folio"), true).toBool()
+				? folio->border_and_titleblock.finalfolio()
+				: QString::number(folio->folioIndex() + 1);
+		lines << tr("%1 - %2: %3").arg(number, title, shown.join(QStringLiteral(", ")));
+	}
+	return lines;
+}
+
+/**
+	@brief QETDiagramEditor::confirmOutsideSheet
+	Before the folios @a folios are printed or exported: when something
+	lies outside a sheet, it would be cut off or left out, so ask whether
+	to go on. The folios are built first, as printing builds them anyway.
+	@return true to go on
+*/
+bool QETDiagramEditor::confirmOutsideSheet(QWidget *parent, const QList<Diagram *> &folios)
+{
+	if (!warnsOutsideSheet() || folios.isEmpty())
+		return true;
+	folios.first()->project()->buildFolios(folios);
+	QStringList lines = outsideSheetReport(folios);
+	if (lines.isEmpty())
+		return true;
+	const int more = lines.size() - 10;
+	if (more > 0) {
+		lines = lines.mid(0, 10);
+		lines << tr("... and %n more folio(s)", "", more);
+	}
+	const auto answer = QET::QetMessageBox::question(
+				parent, tr("Outside the sheet"),
+				tr("These items lie outside the sheet and are cut off or left out:\n\n%1\n\nGo on anyway?")
+				.arg(lines.join(QLatin1Char('\n'))),
+				QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel);
+	return answer == QMessageBox::Yes;
+}
+
+/**
+	@brief QETDiagramEditor::outsideSheetSaveHint
+	@return what the status bar says after @a project is saved when some
+	of its folios have something outside the sheet, or an empty string.
+	Only folios already built are looked at, so saving does not build the
+	others (#1461). Only a hint: items may be parked beside the sheet on
+	purpose while a folio is worked on.
+*/
+QString QETDiagramEditor::outsideSheetSaveHint(QETProject *project)
+{
+	if (!project)
+		return QString();
+	const QStringList lines = outsideSheetReport(project->builtFolios());
+	if (lines.isEmpty())
+		return QString();
+	return tr("Project saved; %n folio(s) with items outside the sheet, "
+		  "named when printing or exporting", "", int(lines.size()));
+}
+
+/**
+	@brief QETDiagramEditor::showOutsideSheetAfterSave
+	Show outsideSheetSaveHint() for @a project in the status bar
+*/
+void QETDiagramEditor::showOutsideSheetAfterSave(QETProject *project)
+{
+	const QString hint = outsideSheetSaveHint(project);
+	if (!hint.isEmpty())
+		statusBar()->showMessage(hint, 5000);
 }

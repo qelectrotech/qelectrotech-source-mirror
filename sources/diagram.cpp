@@ -19,6 +19,9 @@
 #include "bridge/bridgecopy.h"
 #include "bridge/bridgemanager.h"
 #include "bridge/bridgepart.h"
+#include "shownkinds.h"
+
+#include <functional>
 #include "dataBase/projectdatabase.h"
 #include "autoNum/elementautonumschemecommand.h"
 
@@ -302,6 +305,55 @@ Diagram::~Diagram()
 		removeItem(item);
 		delete item;
 	}
+}
+
+/**
+	@brief Diagram::itemsOutsideSheet
+	@return the names of what lies wholly or partly outside the sheet (its
+	border and title block), and so is cut off or left out when the folio
+	is printed or exported: symbols by their label (or their name), and
+	free texts, shapes, pictures, tables, terminal strips and cables by
+	their kind. A symbol counts
+	with its texts: a label sticking out names the symbol. Conductors are
+	left out, as they go with the symbols they join; so is anything hidden.
+*/
+QStringList Diagram::itemsOutsideSheet() const
+{
+	const QRectF sheet = border_and_titleblock.borderAndTitleBlockRect();
+		//An item and its visible children, as they are printed
+	const std::function<QRectF(const QGraphicsItem *)> printed =
+			[&printed](const QGraphicsItem *item) {
+		QRectF rect = item->sceneBoundingRect();
+		for (const QGraphicsItem *child : item->childItems())
+			if (child->isVisible() && !ShownKinds::isHidden(child))
+				rect |= printed(child);
+		return rect;
+	};
+	QStringList names;
+	for (QGraphicsItem *item : items())
+	{
+		if (item->parentItem() || !item->isVisible() || ShownKinds::isHidden(item)
+				|| item->type() == Conductor::Type
+				|| sheet.contains(printed(item)))
+			continue;
+		switch (item->type())
+		{
+			case Element::Type: {
+				auto *element = static_cast<Element *>(item);
+				const QString label = element->actualLabel();
+				names << (label.isEmpty() ? element->name() : label);
+				break;
+			}
+			case IndependentTextItem::Type: names << tr("a text"); break;
+			case QetShapeItem::Type:        names << tr("a shape"); break;
+			case DiagramImageItem::Type:    names << tr("a picture"); break;
+			case QetGraphicsTableItem::Type: names << tr("a table"); break;
+			case TerminalStripItem::Type:   names << tr("a terminal strip"); break;
+			case CablePart::Type:           names << tr("a cable"); break;
+			default: break;
+		}
+	}
+	return names;
 }
 
 /**
