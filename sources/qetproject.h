@@ -383,6 +383,13 @@ class QETProject : public QObject
 		void setOpenedReadOnlyByLock(bool by_lock);
 		bool isEmpty() const;
 		ElementsLocation importElement(ElementsLocation &location);
+			/// An embedded element and the element of a collection it was taken from
+		struct OutdatedElement {
+			ElementsLocation embedded;
+			ElementsLocation source;
+		};
+		QList<OutdatedElement> outdatedElements() const;
+		void updateElement(const OutdatedElement &element);
 		QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
 		bool usesElement(const ElementsLocation &) const;
 		QList <ElementsLocation> unusedElements() const;

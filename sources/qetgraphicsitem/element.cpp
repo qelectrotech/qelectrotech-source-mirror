@@ -3320,11 +3320,17 @@ ElementsLocation Element::location() const
 	If the definition cannot be found or read, the current drawing is kept
 	and Unavailable is returned, so the element never goes blank.
 
+	With @p adopt_frame, only the terminals have to match: a new size or
+	hotspot is taken over with the drawing. The terminals and the element
+	position stay where they are, only the frame -- the hover outline and
+	the area that catches clicks -- follows the definition.
+
 	Purely visual: nothing is pushed on the undo stack and the project is
 	not marked as modified.
+	@param adopt_frame : take over a changed size and hotspot
 	@return what happened to this element
 */
-Element::ReloadPictureResult Element::reloadPicture()
+Element::ReloadPictureResult Element::reloadPicture(bool adopt_frame)
 {
 	if (!m_location.exist()) {
 		return ReloadPictureResult::Unavailable;
@@ -3335,7 +3341,7 @@ Element::ReloadPictureResult Element::reloadPicture()
 		return ReloadPictureResult::Unavailable;
 	}
 
-	if (!definitionGeometryMatches(definition)) {
+	if (!definitionGeometryMatches(definition, !adopt_frame)) {
 		return ReloadPictureResult::GeometryChanged;
 	}
 
@@ -3346,6 +3352,13 @@ Element::ReloadPictureResult Element::reloadPicture()
 												   low_zoom_picture);
 	if (picture.isNull()) {
 		return ReloadPictureResult::Unavailable;
+	}
+
+	if (adopt_frame) {
+		setSize(definition.attribute(QStringLiteral("width")).toInt(),
+				definition.attribute(QStringLiteral("height")).toInt());
+		setHotspot(QPoint(definition.attribute(QStringLiteral("hotspot_x")).toInt(),
+						  definition.attribute(QStringLiteral("hotspot_y")).toInt()));
 	}
 
 	m_picture = picture;
@@ -3363,10 +3376,12 @@ Element::ReloadPictureResult Element::reloadPicture()
 	and the set of terminal positions (same parsing rules as
 	TerminalData::fromXml()).
 	@param definition : the <definition> root of the element
+	@param check_frame : false to compare the terminals only
 	@return true if the new drawing can be applied without desynchronizing
 	the bounding rect or the terminals
 */
-bool Element::definitionGeometryMatches(const QDomElement &definition) const
+bool Element::definitionGeometryMatches(const QDomElement &definition,
+										bool check_frame) const
 {
 	int w = 0, h = 0, hot_x = 0, hot_y = 0;
 	if (!QET::attributeIsAnInteger(definition, QStringLiteral("width"), &w)         ||
@@ -3379,7 +3394,7 @@ bool Element::definitionGeometryMatches(const QDomElement &definition) const
 		//Same rounding as setSize()
 	while (w % 10) ++w;
 	while (h % 10) ++h;
-	if (QSize(w, h) != dimensions) {
+	if (check_frame && QSize(w, h) != dimensions) {
 		return false;
 	}
 
@@ -3387,7 +3402,7 @@ bool Element::definitionGeometryMatches(const QDomElement &definition) const
 	const QPoint new_hotspot = dimensions.isNull()
 			? QPoint(0, 0)
 			: QPoint(qMin(hot_x, w), qMin(hot_y, h));
-	if (new_hotspot != hotspot_coord) {
+	if (check_frame && new_hotspot != hotspot_coord) {
 		return false;
 	}
 
