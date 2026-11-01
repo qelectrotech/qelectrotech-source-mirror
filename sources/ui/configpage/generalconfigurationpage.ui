@@ -71,6 +71,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_terminal_conductor_color">
+         <property name="text">
+          <string>Draw a connected terminal in the color of its conductor</string>
+         </property>
+         <property name="toolTip">
+          <string>Unchecked, every terminal is drawn in red. Terminals are never printed or exported.</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_wiring_rules_cb">
          <property name="toolTip">
           <string>When unticked, no conductors-per-terminal rule applies, whatever the projects' settings.</string>
@@ -1729,6 +1739,7 @@
   <tabstop>m_use_gesture_trackpad</tabstop>
   <tabstop>m_zoom_out_beyond_folio</tabstop>
   <tabstop>m_conductor_properties_panel</tabstop>
+  <tabstop>m_terminal_conductor_color</tabstop>
   <tabstop>m_wiring_rules_cb</tabstop>
   <tabstop>m_wiring_max_wires_sb</tabstop>
   <tabstop>m_wiring_one_wire_per_report_cb</tabstop>
