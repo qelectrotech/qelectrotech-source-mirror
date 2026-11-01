@@ -17,8 +17,8 @@
 */
 /*
 	The zoom step (a setting, off by default): zooming in or out goes by
-	a fixed number of percent, so the zoom shown stays a whole multiple
-	of it; off, by a factor of 1.15 as before.
+	a number of percent of the zoom shown, rounded to whole fives, and
+	Alt with the wheel by four steps; off, by a factor of 1.15 as before.
 */
 #include "qetapptest.h"
 
@@ -38,10 +38,10 @@ class tst_zoomstep : public QObject
 			m_view->zoom(p / percent());
 		}
 
-		void wheel(int delta)
+		void wheel(int delta, Qt::KeyboardModifiers modifiers = Qt::NoModifier)
 		{
 			QWheelEvent event(QPointF(50, 50), m_view->viewport()->mapToGlobal(QPointF(50, 50)),
-							  QPoint(), QPoint(0, delta), Qt::NoButton, Qt::NoModifier,
+							  QPoint(), QPoint(0, delta), Qt::NoButton, modifiers,
 							  Qt::NoScrollPhase, false);
 			QApplication::sendEvent(m_view->viewport(), &event);
 		}
@@ -74,6 +74,23 @@ class tst_zoomstep : public QObject
 			QVERIFY2(qAbs(percent() - 90) < 1e-6, qPrintable(QString::number(percent())));
 		}
 
+			//A step is a share of the zoom shown: further at 400 %
+		void relativeToTheZoom()
+		{
+			DiagramView::setZoomStep(10);
+			setPercent(100);
+			m_view->zoomBy(1);
+			QVERIFY2(qAbs(percent() - 110) < 1e-6, qPrintable(QString::number(percent())));
+			m_view->zoomBy(1);
+			QVERIFY2(qAbs(percent() - 120) < 1e-6, qPrintable(QString::number(percent())));
+			setPercent(400);
+			m_view->zoomBy(1);
+			QVERIFY2(qAbs(percent() - 440) < 1e-6, qPrintable(QString::number(percent())));
+			m_view->zoomBy(-1);
+			QVERIFY2(qAbs(percent() - 400) < 1e-6, qPrintable(QString::number(percent())));
+			DiagramView::setZoomStep(5);
+		}
+
 			//Between two steps (after "fit", say): to the next one first
 		void betweenStepsGoesToTheNext()
 		{
@@ -96,6 +113,16 @@ class tst_zoomstep : public QObject
 			wheel(60);
 			QVERIFY2(qAbs(percent() - 110) < 1e-6, qPrintable(QString::number(percent())));
 			wheel(-240);
+			QVERIFY2(qAbs(percent() - 100) < 1e-6, qPrintable(QString::number(percent())));
+		}
+
+			//Alt with the wheel: four steps per notch
+		void altWheel()
+		{
+			setPercent(100);
+			wheel(120, Qt::AltModifier);
+			QVERIFY2(qAbs(percent() - 120) < 1e-6, qPrintable(QString::number(percent())));
+			wheel(-120, Qt::AltModifier);
 			QVERIFY2(qAbs(percent() - 100) < 1e-6, qPrintable(QString::number(percent())));
 		}
 

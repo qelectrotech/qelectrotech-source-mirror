@@ -608,9 +608,10 @@ void DiagramView::zoom(const qreal zoom_factor)
 
 /**
 	@brief DiagramView::zoomBy
-	Zoom in (@p steps > 0) or out (< 0) by @p steps steps of zoomStep().
-	A zoom between two steps, after "fit" or a pinch for instance, goes to
-	the next step first, so that the zoom shown stays a whole multiple.
+	Zoom in (@p steps > 0) or out (< 0) by @p steps steps of zoomStep():
+	each one zooms by that many percent of the zoom shown, so a step feels
+	the same at 50 % and at 400 %. The result is rounded to whole fives
+	(whole percents below 20 %), the zoom shown stays a round number.
 	@param steps
 */
 void DiagramView::zoomBy(int steps)
@@ -624,10 +625,15 @@ void DiagramView::zoomBy(int steps)
 		return;
 	}
 	const qreal percent = transform().m11() * 100;
-		//A little leeway: 100 % may be 99.9999 % after a few scalings
-	const qreal steps_now = percent / step;
-	const qreal target = steps > 0 ? (qFloor(steps_now + 1e-6) + steps) * step
-								   : (qCeil(steps_now - 1e-6) + steps) * step;
+	qreal target = percent * qPow(1 + step / 100.0, steps);
+	const qreal grid = target < 20 ? 1 : 5;
+	target = qRound(target / grid) * grid;
+		//Always a move, however small the step: a little leeway, as 100 %
+		//may be 99.9999 % after a few scalings
+	if (steps > 0 && target <= percent + 1e-6)
+		target = (qFloor(percent / grid + 1e-6) + 1) * grid;
+	else if (steps < 0 && target >= percent - 1e-6)
+		target = (qCeil(percent / grid - 1e-6) - 1) * grid;
 	if (target <= 0)
 		return;
 	zoom(target / percent);
@@ -1652,14 +1658,18 @@ void DiagramView::wheelEvent(QWheelEvent *event)
 			verticalScrollBar()->setValue(verticalScrollBar()->value() - angle.y());
 		}
 	}
-	else if (event->modifiers() == Qt::NoModifier) //Else we suppose the wheel event are made from a mouse.
+	else if (event->modifiers() == Qt::NoModifier
+			 || (zoomStep() && event->modifiers() == Qt::AltModifier)) //Else we suppose the wheel event are made from a mouse.
 	{
 		if (zoomStep()) {
-				//One step per notch (120); a smooth wheel adds up to one
-			m_wheel_rest += angle.y();
+				//One step per notch (120); a smooth wheel adds up to one.
+				//With Alt, four steps per notch: some platforms turn the
+				//wheel sideways then
+			const bool coarse = event->modifiers() == Qt::AltModifier;
+			m_wheel_rest += coarse && !angle.y() ? angle.x() : angle.y();
 			const int notches = m_wheel_rest / 120;
 			m_wheel_rest -= notches * 120;
-			zoomBy(notches);
+			zoomBy(coarse ? notches * 4 : notches);
 			return;
 		}
 		qreal value = angle.y();
@@ -2319,9 +2329,9 @@ void DiagramView::setTerminalHelpLinesShown(bool shown)
 
 /**
 	@brief DiagramView::zoomStep
-	@return how far zoomBy() goes at a time, in percent of the folio's
-	size: with 5, 100 % goes to 105 %, 110 % and so on. 0, the default:
-	by a factor of 1.15 in and 0.85 out, as always before.
+	@return how far zoomBy() goes at a time, in percent of the zoom shown:
+	with 10, 100 % goes to 110 %, 120 %, 130 % and 400 % to 440 %. 0, the
+	default: by a factor of 1.15 in and 0.85 out, as always before.
 */
 int DiagramView::zoomStep()
 {
