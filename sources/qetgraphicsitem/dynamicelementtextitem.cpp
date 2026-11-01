@@ -193,8 +193,27 @@ void DynamicElementTextItem::setVerticalFromBottom(bool from_bottom)
 	Turn the text half a turn about the middle of its box when it reads
 	from top to bottom on the folio and verticalFromBottom() is on; the
 	box, its place and what is saved stay as they are.
+	A text of a symbol leaves this to Element::keepReadable(), which also
+	keeps it readable when the symbol is mirrored.
 */
 void DynamicElementTextItem::updateReadingDirection()
+{
+	if (Element *element = dynamic_cast<Element *>(parentItem())) {
+		element->keepReadable(this);
+		return;
+	}
+	const QTransform flip = readingFlip();
+	if (transform() != flip)
+		setTransform(flip);
+}
+
+/**
+	@brief DynamicElementTextItem::readingFlip
+	@return half a turn about the middle of the text's box when it reads
+	from top to bottom on the folio and verticalFromBottom() is on, else
+	no change: see updateReadingDirection()
+*/
+QTransform DynamicElementTextItem::readingFlip() const
 {
 	QTransform flip;
 	if (verticalFromBottom() && parentItem()) {
@@ -205,8 +224,7 @@ void DynamicElementTextItem::updateReadingDirection()
 			flip.translate(c.x(), c.y()).rotate(180).translate(-c.x(), -c.y());
 		}
 	}
-	if (transform() != flip)
-		setTransform(flip);
+	return flip;
 }
 
 DynamicElementTextItem::~DynamicElementTextItem()
