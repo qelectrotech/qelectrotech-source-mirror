@@ -26,6 +26,11 @@
 /// see tests/qttest/tst_bordercelllabels.cpp.
 namespace BorderCellLabels {
 
+	/// Default of the "border-columns_0" setting (number the columns from 0),
+	/// read by the sheet, the rulers, the positions and the settings page, so
+	/// that a fresh install draws what the settings page shows.
+	inline constexpr bool defaultColumnsFromZero = false;
+
 	/// @return the label of row \a row, counted from 1: A..Z, then AA, AB...
 	/// (the sequence BorderTitleBlock::incrementLetters() walks through).
 	inline QString rowLabel(int row)

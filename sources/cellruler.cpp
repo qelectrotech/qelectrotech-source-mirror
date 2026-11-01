@@ -109,7 +109,7 @@ void CellRuler::paintEvent(QPaintEvent *event)
 	}
 
 	const bool columns_start_at_zero =
-			QSettings().value("border-columns_0", true).toBool();
+			QSettings().value("border-columns_0", BorderCellLabels::defaultColumnsFromZero).toBool();
 	auto label = [&](int index) {
 		return horizontal ? BorderCellLabels::columnLabel(index, columns_start_at_zero)
 				  : BorderCellLabels::rowLabel(index);
