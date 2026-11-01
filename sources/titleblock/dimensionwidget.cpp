@@ -78,7 +78,7 @@ TitleBlockDimension TitleBlockDimensionWidget::value() const
 	if (complete_) {
 		type = static_cast<QET::TitleBlockColumnLength>(dimension_type_ -> checkedId());
 	}
-	return(TitleBlockDimension(spinbox_ -> value(), type));
+	return(TitleBlockDimension(spinbox_ -> value(), type, align_cb_->currentData().value<Qt::Alignment>()));
 }
 
 /**
@@ -88,6 +88,11 @@ void TitleBlockDimensionWidget::setValue(const TitleBlockDimension &dim) {
 	if (complete_) {
 		if (QAbstractButton *button = dimension_type_ -> button(dim.type)) {
 			button -> setChecked(true);
+		}
+	}else{
+		int index = align_cb_->findData(QVariant::fromValue(dim.align));
+		if (index != -1){
+			align_cb_->setCurrentIndex(index);
 		}
 	}
 	updateSpinBoxSuffix();
@@ -147,6 +152,12 @@ void TitleBlockDimensionWidget::initWidgets()
 		dimension_type_ -> addButton(remaining_button_, QET::RelativeToRemainingLength);
 		absolute_button_ -> setChecked(true);
 		connect(dimension_type_, qOverload<QAbstractButton*>(&QButtonGroup::buttonClicked), this, &TitleBlockDimensionWidget::updateSpinBoxSuffix);
+	}else{
+		// basic widgets: label + combobox
+		align_label_ = new QLabel(tr("Alignment:", "default dialog label"));
+		align_cb_ = new QComboBox();
+		align_cb_->addItem(tr("Top", "default dialog label"),Qt::AlignTop);
+		align_cb_->addItem(tr("Bottom", "default dialog label"),Qt::AlignBottom);
 	}
 	
 	updateSpinBoxSuffix();
@@ -171,6 +182,11 @@ void TitleBlockDimensionWidget::initLayouts()
 		vlayout0 -> addWidget(absolute_button_);
 		vlayout0 -> addWidget(relative_button_);
 		vlayout0 -> addWidget(remaining_button_);
+	}else{
+		QHBoxLayout *hlayout1 = new QHBoxLayout();
+		hlayout1 -> addWidget(align_label_);
+		hlayout1 -> addWidget(align_cb_);
+		vlayout0 -> addLayout(hlayout1);
 	}
 	vlayout0 -> addWidget(buttons_);
 	setLayout(vlayout0);

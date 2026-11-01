@@ -234,6 +234,7 @@ TitleBlockTemplate *TitleBlockTemplate::clone() const
 	copy -> type_logos_    = type_logos_;
 	copy -> rows_heights_  = rows_heights_;
 	copy -> columns_width_ = columns_width_;
+	copy -> m_align_       = m_align_;
 
 	// copy cells basically
 	copy -> cells_ = cells_;
@@ -382,6 +383,7 @@ bool TitleBlockTemplate::loadGrid(const QDomElement &xml_element) {
 
 	parseRows(grid_element.attribute("rows"));
 	parseColumns(grid_element.attribute("cols"));
+	parseAlign(grid_element.attribute("align"));
 	initCells();
 	loadCells(grid_element);
 	applyRowColNums();
@@ -469,6 +471,23 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 			 << QString("%1 [%2]").arg(icd.value).arg(
 					QET::titleBlockColumnLengthToString(icd.type));
 	}
+#endif
+}
+/**
+	@brief TitleBlockTemplate::parseAlign
+	Parse the align
+	@param rows_string :
+	A string describing the alignment of the titleblock
+*/
+void TitleBlockTemplate::parseAlign(const QString &align) {
+
+	if (align=="bottom"){
+		m_align_=Qt::AlignBottom;
+	}else{
+		m_align_=Qt::AlignTop;
+	}
+#ifdef TITLEBLOCK_TEMPLATE_DEBUG
+	qDebug() << Q_FUNC_INFO << "align:" << m_align_;
 #endif
 }
 
@@ -592,6 +611,9 @@ void TitleBlockTemplate::saveGrid(QDomElement &xml_element) const
 		cols_attr += col_width.toShortString();
 	grid_element.setAttribute("rows", rows_attr);
 	grid_element.setAttribute("cols", cols_attr);
+	if (m_align_.testFlag(Qt::AlignBottom)){
+		grid_element.setAttribute("align", "bottom");
+	}
 
 	saveCells(grid_element);
 
@@ -1103,6 +1125,24 @@ int TitleBlockTemplate::height() const
 		height += row_height;
 	}
 	return(height);
+}
+
+/**
+	@brief TitleBlockTemplate::align
+	@return the align of this template
+*/
+Qt::Alignment TitleBlockTemplate::align() const
+{
+	return(m_align_);
+}
+
+/**
+	Set the new alignment
+	@param width new alignment
+*/
+void TitleBlockTemplate::setAlignment(Qt::Alignment align) {
+	if (m_align_ == align) return;
+	m_align_ = align;
 }
 
 /**
