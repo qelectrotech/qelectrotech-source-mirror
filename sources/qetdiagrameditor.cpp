@@ -3198,9 +3198,9 @@ void QETDiagramEditor::zoomGroupTriggered(QAction *action)
 	if (!dv || value.isEmpty()) return;
 
 	if (value == "zoom_in")
-		dv->zoom(1.15);
+		dv->zoomBy(1);
 	else if (value == "zoom_out")
-		dv->zoom(0.85);
+		dv->zoomBy(-1);
 	else if (value == "zoom_content")
 		dv->zoomContent();
 	else if (value == "zoom_fit")

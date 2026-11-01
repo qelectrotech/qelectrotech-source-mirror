@@ -528,6 +528,10 @@ qet_add_app_test(tst_bridgetool tst_bridgetool.cpp)
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
 
+# The zoom step (a setting, off by default): zooming goes by a fixed number
+# of percent, also from between two steps and from a smooth mouse wheel.
+qet_add_app_test(tst_zoomstep tst_zoomstep.cpp)
+
 # A folio's pictures, decoded in parallel, each come back with its own
 # pixels and position; an <image> with no picture does not stop the others.
 qet_add_app_test(tst_folioimageload tst_folioimageload.cpp)
