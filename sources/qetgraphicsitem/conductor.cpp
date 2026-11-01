@@ -594,6 +594,10 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation term
 */
 void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *qw)
 {
+		//Nothing to draw between two terminals on the same point: the
+		//path would be the two terminals' stubs, drawn over their symbols
+	if (endsTouch())
+		return;
 	painter -> save();
 	painter -> setRenderHint(QPainter::Antialiasing, false);
 
@@ -1049,6 +1053,10 @@ QRectF Conductor::boundingRect() const
 */
 QPainterPath Conductor::shape() const
 {
+		//Not drawn (see paint()), so not to be clicked either: a click
+		//there goes to the symbols
+	if (endsTouch())
+		return QPainterPath();
 	QPainterPathStroker pps;
 	pps.setWidth(m_mouse_over? 5 : 1);
 	pps.setJoinStyle(conductor_pen.joinStyle());
@@ -1056,6 +1064,18 @@ QPainterPath Conductor::shape() const
 	QPainterPath shape_(pps.createStroke(path()));
 
 	return shape_;
+}
+
+/**
+	@brief Conductor::endsTouch
+	@return true when the two terminals this conductor joins are on the
+	same point, as when two symbols are placed against each other: the
+	conductor connects them but is not drawn.
+*/
+bool Conductor::endsTouch() const
+{
+	return terminal1 && terminal2
+			&& terminal1->dockConductor() == terminal2->dockConductor();
 }
 
 /**

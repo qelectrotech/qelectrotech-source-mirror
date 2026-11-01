@@ -528,6 +528,10 @@ qet_add_app_test(tst_bridgetool tst_bridgetool.cpp)
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
 
+# A conductor between two terminals on the same point (symbols placed
+# against each other) connects them but is not drawn nor clicked.
+qet_add_app_test(tst_touchingconductor tst_touchingconductor.cpp)
+
 # A folio's pictures, decoded in parallel, each come back with its own
 # pixels and position; an <image> with no picture does not stop the others.
 qet_add_app_test(tst_folioimageload tst_folioimageload.cpp)
