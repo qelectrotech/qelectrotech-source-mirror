@@ -269,14 +269,18 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 	{
 		return QBrush(Qt::gray);	//"Spare" : not a reference to a folio
 	}
-	else if (role == Qt::BackgroundRole && index.column() < COLUMN_COUNT
+	else if ((role == Qt::BackgroundRole || role == Qt::ForegroundRole)
+			 && index.column() < COLUMN_COUNT
 			 && !m_modified_cell.isEmpty())
 	{
 		const auto key_ = modifiedCellKey(mrtd);
 		if (m_modified_cell.contains(key_) &&
 			m_modified_cell.value(key_).at(index.column()))
 		{
-			return QBrush(Qt::yellow);
+				//A modified cell is drawn on yellow: its text must be
+				//dark too, else it stays white with a dark theme (#1708)
+			return role == Qt::BackgroundRole ? QBrush(Qt::yellow)
+											  : QBrush(Qt::black);
 		}
 	}
 	else if (role == Qt::DecorationRole &&
