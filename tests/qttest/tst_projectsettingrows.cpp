@@ -24,7 +24,7 @@ const QString project_xml = QStringLiteral(
 	"<properties><property name=\"site\" show=\"1\">Plant 2</property></properties>"
 	"<terminal_labelling split=\"true\"/>"
 	"<chained_reports enabled=\"true\"/>"
-	"<style origin=\"bottom-right\"/>"
+	"<cell_origin corner=\"bottom-right\"/>"
 	"<newdiagrams>"
 	"<border cols=\"17\" rows=\"8\" colsize=\"60\" rowsize=\"80\" displaycols=\"true\" displayrows=\"true\"/>"
 	"<inset titleblocktemplate=\"A3_cartouche\" titleblocktemplateCollection=\"custom\" folio=\"%id/%total\">"
@@ -113,7 +113,7 @@ private slots:
 		QVERIFY(r.contains(QStringLiteral("newdiagrams/report|0|label|%f-%l%c")));
 		QVERIFY(r.contains(QStringLiteral("terminal_labelling|0|split|true")));
 		QVERIFY(r.contains(QStringLiteral("chained_reports|0|enabled|true")));
-		QVERIFY(r.contains(QStringLiteral("style|0|origin|bottom-right")));
+		QVERIFY(r.contains(QStringLiteral("cell_origin|0|corner|bottom-right")));
 		QVERIFY(r.contains(QStringLiteral("newdiagrams/guides/guide|0|color|#00ff00")));
 			// one ord per xref, whatever other kinds the defaults add
 		const QRegularExpression coil(QStringLiteral("^newdiagrams/xrefs/xref\\|(\\d+)\\|type\\|coil$"));
@@ -181,7 +181,7 @@ private slots:
 			if (holds_value(child))
 				checked << tag;
 		}
-		QVERIFY(checked.contains(QStringLiteral("style")));
+		QVERIFY(checked.contains(QStringLiteral("cell_origin")));
 		QVERIFY(checked.contains(QStringLiteral("newdiagrams/guides")));
 		for (const QString &section : std::as_const(checked))
 			QVERIFY2(has_rows(section), qPrintable(section));
