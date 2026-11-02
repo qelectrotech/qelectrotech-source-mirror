@@ -153,6 +153,7 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 
 namespace {
 	int s_vertical_from_bottom = -1;
+	int s_drag_moves_text_alone = -1;
 }
 
 /**
@@ -169,6 +170,32 @@ bool DynamicElementTextItem::verticalFromBottom()
 		s_vertical_from_bottom = settings.value(QStringLiteral("diagrameditor/vertical_texts_from_bottom"), false).toBool();
 	}
 	return s_vertical_from_bottom;
+}
+
+/**
+	@brief DynamicElementTextItem::dragMovesTextAlone
+	@return true when a plain drag of a symbol's text moves the text alone
+	and a Shift+drag moves its symbol, as before 0.100 (issue #1576). Off
+	by default: a plain drag moves the symbol, Shift+drag the text.
+*/
+bool DynamicElementTextItem::dragMovesTextAlone()
+{
+	if (s_drag_moves_text_alone < 0) {
+		QSettings settings;
+		s_drag_moves_text_alone = settings.value(QStringLiteral("diagrameditor/drag_texts_without_shift"), false).toBool();
+	}
+	return s_drag_moves_text_alone;
+}
+
+/**
+	@brief DynamicElementTextItem::setDragMovesTextAlone
+	@param text_alone : see dragMovesTextAlone(); kept in the settings.
+*/
+void DynamicElementTextItem::setDragMovesTextAlone(bool text_alone)
+{
+	s_drag_moves_text_alone = text_alone;
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/drag_texts_without_shift"), text_alone);
 }
 
 /**
@@ -818,8 +845,11 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 			m_slave_Xref_item->setDefaultTextColor(color());
 	}
 
-	// Shift or no parent initiates movement of dynamic text, otherwise movement of parent element
-	if((event->modifiers() & Qt::ShiftModifier) || !m_parent_element)
+		//Shift or no parent initiates movement of dynamic text, otherwise
+		//movement of parent element -- the other way round when
+		//dragMovesTextAlone() is on
+	const bool shift = event->modifiers() & Qt::ShiftModifier;
+	if(shift != dragMovesTextAlone() || !m_parent_element)
 	{
 		m_move_parent = false;
 		DiagramTextItem::mousePressEvent(event);

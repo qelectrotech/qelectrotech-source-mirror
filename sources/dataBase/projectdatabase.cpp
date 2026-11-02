@@ -4009,6 +4009,15 @@ bool projectDataBase::createDataBase()
 		qDebug() << " kept_item table query : " << query_.lastError();
 	}
 
+		//The blocks of XML under the project, or under a folio, that this
+		//QET does not know, each whole, in the order they came
+		//(storeForeignBlocks()). owner: "project" or the folio's uuid.
+	if (!query_.exec(QStringLiteral("CREATE TABLE foreign_block (owner VARCHAR(50) NOT NULL, "
+									"ord INTEGER NOT NULL, content TEXT NOT NULL, "
+									"PRIMARY KEY (owner, ord))"))) {
+		qDebug() << " foreign_block table query : " << query_.lastError();
+	}
+
 		//Create the project's own symbols, their categories and its
 		//title-block templates, each whole as the project saves it
 		//(flushCollections()). path is the place in the project's
@@ -6102,6 +6111,7 @@ void projectDataBase::unplaceFolio(Diagram *folio, const QUuid &uuid)
 {
 	if (m_placed_folios.value(uuid) != folio) return;
 	m_placed_folios.remove(uuid);
+	storeForeignBlocks(uuid.toString(), {});
 	if (m_kept_items.remove(uuid)) {
 		QSqlQuery remove_kept(m_data_base);
 		remove_kept.prepare(QStringLiteral("DELETE FROM kept_item WHERE diagram_uuid = :uuid"));
@@ -8190,3 +8200,111 @@ void projectDataBase::exportDb(projectDataBase *db,
 	db->beginTransaction();
 }
 #endif
+
+/**
+	@brief projectDataBase::foreignChildren
+	@return the children of @p parent, a project (or a folio when @p folio)
+	that this QET neither reads nor writes, each as the text of its XML, in
+	their order. What a newer QET, or a fork, adds is among them: no format
+	may lose it (QET-SQL-FORMAT-SCOPE.md 4.3). The children of older QETs
+	that were dropped since (a misspelt <defaultcoductor>) are not.
+*/
+QStringList projectDataBase::foreignChildren(const QDomElement &parent, bool folio)
+{
+	static const QSet<QString> project_known{
+		QStringLiteral("properties"), QStringLiteral("newdiagrams"), QStringLiteral("diagram"),
+		QStringLiteral("collection"), QStringLiteral("titleblocktemplates"), QStringLiteral("usage"),
+		QStringLiteral("wire_crossings"), QStringLiteral("symbol_texts"), QStringLiteral("languages"),
+		QStringLiteral("terminal_labelling"), QStringLiteral("wiring_rules"),
+		QStringLiteral("chained_reports"), QStringLiteral("style"),
+		QStringLiteral("terminal_strip_layout"), QStringLiteral("terminal_strips"),
+		QStringLiteral("cables"), QStringLiteral("bridges")};
+	static const QSet<QString> folio_known{
+		QStringLiteral("defaultconductor"), QStringLiteral("elements"), QStringLiteral("conductors"),
+		QStringLiteral("inputs"), QStringLiteral("images"), QStringLiteral("shapes"),
+		QStringLiteral("tables"), QStringLiteral("dimensions"), QStringLiteral("properties"),
+		QStringLiteral("terminal_strip_items"),
+		QStringLiteral("elementautonumfoliosequentials"),
+		QStringLiteral("conductorautonumfoliosequentials"),
+			//Dropped by earlier QETs, still found in old files
+		QStringLiteral("defaultcoductor"), QStringLiteral("autonum"), QStringLiteral("diagram")};
+	const QSet<QString> &known = folio ? folio_known : project_known;
+	QStringList blocks;
+	for (QDomElement child = parent.firstChildElement() ; !child.isNull() ; child = child.nextSiblingElement()) {
+		const QString tag = child.tagName();
+		if (known.contains(tag) || tag.startsWith(QLatin1String("qetz-"))) continue;
+		QString text;
+		QTextStream stream(&text);
+		child.save(stream, -1);
+		blocks << text;
+	}
+	return blocks;
+}
+
+/**
+	@brief projectDataBase::storeForeignBlocks
+	Keep @p blocks (foreignChildren()) as the unknown blocks of @p owner
+	(project_owner, or a folio's uuid), in the foreign_block table.
+*/
+void projectDataBase::storeForeignBlocks(const QString &owner, const QStringList &blocks)
+{
+	if (m_foreign_blocks.value(owner) == blocks) return;
+	if (blocks.isEmpty()) m_foreign_blocks.remove(owner);
+	else m_foreign_blocks.insert(owner, blocks);
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM foreign_block WHERE owner = :owner"));
+	remove.bindValue(QStringLiteral(":owner"), owner);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeForeignBlocks remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral("INSERT INTO foreign_block (owner, ord, content) VALUES (:owner, :ord, :content)"));
+	for (int i = 0 ; i < blocks.size() ; ++i) {
+		insert.bindValue(QStringLiteral(":owner"), owner);
+		insert.bindValue(QStringLiteral(":ord"), i);
+		insert.bindValue(QStringLiteral(":content"), blocks.at(i));
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeForeignBlocks insert error : " << insert.lastError();
+		}
+	}
+}
+
+/**
+	@return the unknown blocks of @p owner (storeForeignBlocks())
+*/
+QStringList projectDataBase::foreignBlocks(const QString &owner) const
+{
+	return m_foreign_blocks.value(owner);
+}
+
+/**
+	@return the unknown blocks of @p owner that @p db holds, read from
+	its table alone (toDocument())
+*/
+QStringList projectDataBase::foreignBlocksOf(const QSqlDatabase &db, const QString &owner)
+{
+	QStringList blocks;
+	QSqlQuery query(db);
+	query.setForwardOnly(true);
+	query.prepare(QStringLiteral("SELECT content FROM foreign_block WHERE owner = :owner ORDER BY ord"));
+	query.bindValue(QStringLiteral(":owner"), owner);
+	if (query.exec())
+		while (query.next()) blocks << query.value(0).toString();
+	return blocks;
+}
+
+/**
+	Add @p blocks to @p parent, as the children they were, unless
+	@p parent already has a child of that name (a QET that now knows the
+	block writes it itself).
+*/
+void projectDataBase::appendForeignBlocks(QDomElement &parent, const QStringList &blocks)
+{
+	for (const QString &text : blocks) {
+		QDomDocument part;
+		if (!part.setContent(text, QDomDocument::ParseOption::PreserveSpacingOnlyNodes)) continue;
+		const QDomElement block = part.documentElement();
+		if (!parent.firstChildElement(block.tagName()).isNull()) continue;
+		parent.appendChild(parent.ownerDocument().importNode(block, true));
+	}
+}

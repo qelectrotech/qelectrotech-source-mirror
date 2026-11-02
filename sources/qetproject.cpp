@@ -2981,6 +2981,8 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 
 	// Write the elements collection.
 	project_root.appendChild(m_elements_collection->root().cloneNode(true));
+	projectDataBase::appendForeignBlocks(project_root, m_data_base.foreignBlocks(
+											 QString::fromLatin1(projectDataBase::project_owner)));
 
 		//QET_CHECK_LINK_ROWS=1: say whether the project database's link rows
 		//are the links each placed symbol saves, in its order, once the
@@ -4033,6 +4035,10 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readWiringRulesXml(xml_project);
 	readChainedReportsXml(xml_project);
 	readOriginXml(xml_project);
+
+		//What this QET does not know of the project, kept for every format
+	m_data_base.storeForeignBlocks(QString::fromLatin1(projectDataBase::project_owner),
+								   projectDataBase::foreignChildren(xml_project.documentElement(), false));
 
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);

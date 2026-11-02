@@ -1686,7 +1686,8 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	if (!strip_vector.isEmpty()) {
 		dom_root.appendChild(TerminalStripItemXml::toXml(strip_vector, document));
 	}
-
+	if (m_project && m_project->dataBase())
+		projectDataBase::appendForeignBlocks(dom_root, m_project->dataBase()->foreignBlocks(m_uuid.toString()));
 
 	return(document);
 }
@@ -2308,6 +2309,9 @@ bool Diagram::fromXml(QDomElement &document,
 		// Load border and titleblock
 		border_and_titleblock.titleBlockFromXml(root);
 		border_and_titleblock.borderFromXml(root);
+			//What this QET does not know of the folio, kept for every format
+		if (m_project && m_project->dataBase())
+			m_project->dataBase()->storeForeignBlocks(m_uuid.toString(), projectDataBase::foreignChildren(root, true));
 
 			// Find the element "defaultconductor".
 			// If found, load default conductor properties.
