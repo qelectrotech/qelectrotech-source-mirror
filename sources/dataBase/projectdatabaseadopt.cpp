@@ -255,6 +255,9 @@ void projectDataBase::loadCaches()
 			}
 	if (query.exec(QStringLiteral("SELECT name, content FROM titleblock_template")))
 		while (query.next()) m_titleblock_templates.insert(query.value(0).toString(), query.value(1).toString());
+	m_foreign_blocks.clear();
+	if (query.exec(QStringLiteral("SELECT owner, content FROM foreign_block ORDER BY owner, ord")))
+		while (query.next()) m_foreign_blocks[query.value(0).toString()].append(query.value(1).toString());
 	m_project_settings.clear();
 	if (query.exec(QStringLiteral("SELECT section, ord, name, value FROM project_setting ORDER BY rowid")))
 		while (query.next())

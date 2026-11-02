@@ -1285,8 +1285,8 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="45"/>
-        <source>x</source>
-        <translation>x</translation>
+        <source>× </source>
+        <translation>× </translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="55"/>
@@ -3590,32 +3590,32 @@ Folytatja?</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="31"/>
-        <source>x 0.25</source>
-        <translation>x 0.25</translation>
+        <source>× 0.25</source>
+        <translation>× 0.25</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="36"/>
-        <source>x 0.5</source>
-        <translation>x 0.5</translation>
+        <source>× 0.5</source>
+        <translation>× 0.5</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="41"/>
-        <source>x 0.75</source>
-        <translation>x 0.75</translation>
+        <source>× 0.75</source>
+        <translation>× 0.75</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="46"/>
-        <source>x 1</source>
+        <source>× 1</source>
         <translation>× 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="51"/>
-        <source>x 2</source>
+        <source>× 2</source>
         <translation>× 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="56"/>
-        <source>x 3</source>
+        <source>× 3</source>
         <translation>× 3</translation>
     </message>
 </context>
@@ -6445,9 +6445,9 @@ Folytatja?</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="435"/>
-        <source>Dimensions : %1*%2
+        <source>Dimensions : %1 × %2
 </source>
-        <translation>Kiterjedés : %1×%2
+        <translation>Kiterjedés : %1 × %2
 </translation>
     </message>
     <message>
@@ -7302,12 +7302,12 @@ A fájl importálásával Ön megerősíti, hogy:
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
-        <source>Move this sheet up x10</source>
+        <source>Move this sheet up × 10</source>
         <translation>Tervlap mozgatása fel 10 lappal</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="79"/>
-        <source>Move this sheet up x100</source>
+        <source>Move this sheet up × 100</source>
         <translation>Tervlap mozgatása fel 100 lappal</translation>
     </message>
     <message>
@@ -7317,12 +7317,12 @@ A fájl importálásával Ön megerősíti, hogy:
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="81"/>
-        <source>Move down this sheet x10</source>
+        <source>Move down this sheet × 10</source>
         <translation>Tervlap mozgatása le 10 lappal</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="82"/>
-        <source>Move down this sheet x100</source>
+        <source>Move down this sheet × 100</source>
         <translation>Tervlap mozgatása le 100 lappal</translation>
     </message>
     <message>

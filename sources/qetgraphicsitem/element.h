@@ -398,6 +398,10 @@ class Element : public QetGraphicsItem
 	QPicture m_readable_picture;
 	QPicture m_readable_low_zoom_picture;
 	QTransform m_readable_transform;
+		/// What the drawings cover beyond the symbol's frame, if
+		/// anything: see boundingRect()
+	QRectF m_drawn_rect;
+	void updateDrawnRect();
 	ElementData m_data;
 	QList<QPointF> m_plc_table_positions;  // Positions of plc_table parts in the element definition
 

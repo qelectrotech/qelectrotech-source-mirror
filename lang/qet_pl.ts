@@ -1289,8 +1289,8 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="45"/>
-        <source>x</source>
-        <translation>x</translation>
+        <source>× </source>
+        <translation>× </translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="72"/>
@@ -3648,33 +3648,33 @@ Kontynuować?</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="31"/>
-        <source>x 0.25</source>
-        <translation>x 0,25</translation>
+        <source>× 0.25</source>
+        <translation>× 0,25</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="36"/>
-        <source>x 0.5</source>
-        <translation>x 0,5</translation>
+        <source>× 0.5</source>
+        <translation>× 0,5</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="41"/>
-        <source>x 0.75</source>
-        <translation>x 0,75</translation>
+        <source>× 0.75</source>
+        <translation>× 0,75</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="46"/>
-        <source>x 1</source>
-        <translation>x 1</translation>
+        <source>× 1</source>
+        <translation>× 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="51"/>
-        <source>x 2</source>
-        <translation>x 2</translation>
+        <source>× 2</source>
+        <translation>× 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="56"/>
-        <source>x 3</source>
-        <translation>x 3</translation>
+        <source>× 3</source>
+        <translation>× 3</translation>
     </message>
 </context>
 <context>
@@ -6540,9 +6540,9 @@ Kontynuować?</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="435"/>
-        <source>Dimensions : %1*%2
+        <source>Dimensions : %1 × %2
 </source>
-        <translation>Wymiary: %1*%2
+        <translation>Wymiary: %1 × %2
 </translation>
     </message>
     <message>
@@ -7417,12 +7417,12 @@ Importując ten plik, potwierdzasz, że:
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
-        <source>Move this sheet up x10</source>
+        <source>Move this sheet up × 10</source>
         <translation>Przenieś arkusz w górę o 10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="79"/>
-        <source>Move this sheet up x100</source>
+        <source>Move this sheet up × 100</source>
         <translation>Przenieś arkusz w górę o 100</translation>
     </message>
     <message>
@@ -7432,12 +7432,12 @@ Importując ten plik, potwierdzasz, że:
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="81"/>
-        <source>Move down this sheet x10</source>
+        <source>Move down this sheet × 10</source>
         <translation>Przenieś arkusz w dół o 10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="82"/>
-        <source>Move down this sheet x100</source>
+        <source>Move down this sheet × 100</source>
         <translation>Przenieś arkusz w dół o 100</translation>
     </message>
     <message>
