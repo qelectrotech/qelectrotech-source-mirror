@@ -91,9 +91,11 @@ int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_ite
 	if (m_status_bar)
 	{
 		const qreal divisor = QSettings().value(TextGrid::settings_key, 1).toReal();
+		const QString text_grid = DynamicElementTextItem::dragMovesTextAlone()
+			? QObject::tr("Text grid %1. Hold Ctrl to place freely.")
+			: QObject::tr("Text grid %1. Release Shift and hold Ctrl to place freely.");
 		m_status_bar->showMessage(divisor > 0
-			? QObject::tr("Text grid %1. Release Shift and hold Ctrl to place freely.")
-				  .arg(TextGrid::ratioLabel(divisor))
+			? text_grid.arg(TextGrid::ratioLabel(divisor))
 			: QObject::tr("Text grid disabled."));
 	}
 	
