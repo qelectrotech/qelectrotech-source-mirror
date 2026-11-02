@@ -79,6 +79,8 @@ class tst_printpdforientation : public QObject
 		const QString out = m_dir.filePath(QStringLiteral("out.pdf"));
 		QFile::remove(out);
 		QSettings().setValue("print/default/fitinpage", fit_in_page);
+		// Portrait folios leave items beside the sheet: no question first
+		QSettings().setValue("diagrameditor/warn_outside_sheet", false);
 
 		auto printer = new QPrinter();
 		printer->setPageSize(QPageSize(QPageSize::A3));

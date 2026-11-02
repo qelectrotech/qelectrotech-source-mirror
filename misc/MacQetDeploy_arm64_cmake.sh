@@ -23,6 +23,9 @@ IDENTITY="Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)"
 QT_MAJOR="${QT_MAJOR:-6}"
 BUILD_WITH_KF="${BUILD_WITH_KF:-ON}"
 BUILD_DIR="build-macos-arm64"
+# ccache (brew install ccache): speeds up rebuilds, since the build
+# directory is removed on every run. USE_CCACHE=OFF for a fully clean build.
+USE_CCACHE="${USE_CCACHE:-ON}"
 
 # Temp paths
 RW_DMG="/tmp/qet_rw.dmg"
@@ -107,7 +110,22 @@ if [ -d "$BUILD_DIR" ] ; then
     rm -rf "$BUILD_DIR"
 fi
 
+# An empty launcher means "no launcher" for CMake, so the same
+# command line works with or without ccache.
+CCACHE_BIN=""
+if [ "$USE_CCACHE" = "ON" ]; then
+    CCACHE_BIN=$(command -v ccache || true)
+    if [ -n "$CCACHE_BIN" ]; then
+        echo "ccache enabled: $CCACHE_BIN"
+        "$CCACHE_BIN" -z >/dev/null 2>&1 || true
+    else
+        echo "ccache not found (brew install ccache), building without it."
+    fi
+fi
+
 cmake -S . -B "$BUILD_DIR" -G Ninja \
+    -DCMAKE_C_COMPILER_LAUNCHER="$CCACHE_BIN" \
+    -DCMAKE_CXX_COMPILER_LAUNCHER="$CCACHE_BIN" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0 \
     -DQT_VERSION_MAJOR=$QT_MAJOR \
@@ -137,6 +155,9 @@ if [ $? -ne 0 ]; then
 fi
 
 ELAPSED_TIME=$(($SECONDS - $START_TIME))
+if [ -n "$CCACHE_BIN" ]; then
+    "$CCACHE_BIN" -s 2>/dev/null | grep -i -E 'hits|misses' || true
+fi
 echo
 echo "The time of compilation is $(($ELAPSED_TIME/60)) min $(($ELAPSED_TIME%60)) sec"
 

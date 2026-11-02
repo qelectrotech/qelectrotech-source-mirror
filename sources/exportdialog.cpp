@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "exportdialog.h"
+#include "qetdiagrameditor.h"
 #include "shownkinds.h"
 
 #include "conductorsegment.h"
@@ -523,6 +524,16 @@ void ExportDialog::slot_export()
 		}
 	}
 	
+		//What lies outside the sheet of the folios chosen here; nothing
+		//is cut off when the whole of their contents is exported
+	if (epw -> exportProperties().exported_area == QET::BorderArea) {
+		QList<Diagram *> folios;
+		for (ExportDiagramLine *diagram_line : std::as_const(diagrams_to_export))
+			folios << diagram_line->diagram;
+		if (!QETDiagramEditor::confirmOutsideSheet(this, folios))
+			return;
+	}
+
 	// exporte chaque schema a exporter
 	foreach(ExportDiagramLine *diagram_line, diagrams_to_export) {
 		exportDiagram(diagram_line);

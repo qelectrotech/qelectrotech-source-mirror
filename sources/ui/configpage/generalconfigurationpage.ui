@@ -114,6 +114,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_terminal_conductor_color">
+         <property name="text">
+          <string>Draw a connected terminal in the color of its conductor</string>
+         </property>
+         <property name="toolTip">
+          <string>Unchecked, every terminal is drawn in red. Terminals are never printed or exported.</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_wiring_rules_cb">
          <property name="toolTip">
           <string>When unticked, no conductors-per-terminal rule applies, whatever the projects' settings.</string>
@@ -310,6 +320,16 @@
          </widget>
         </item>
         <item>
+        <widget class="QCheckBox" name="m_drag_texts_without_shift_cb">
+         <property name="toolTip">
+          <string>Dragging a symbol's text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</string>
+         </property>
+         <property name="text">
+          <string>Drag symbol texts without holding Shift</string>
+          </property>
+         </widget>
+        </item>
+        <item>
         <widget class="QCheckBox" name="m_terminal_help_lines_cb">
          <property name="toolTip">
           <string>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</string>
@@ -346,6 +366,16 @@
          </property>
          <property name="text">
           <string>A new corner or T-junction replaces the one under it</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_warn_outside_sheet_cb">
+         <property name="toolTip">
+          <string>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</string>
+         </property>
+         <property name="text">
+          <string>Warn about items outside the sheet</string>
          </property>
         </widget>
        </item>
@@ -1762,6 +1792,7 @@
   <tabstop>m_use_gesture_trackpad</tabstop>
   <tabstop>m_zoom_out_beyond_folio</tabstop>
   <tabstop>m_conductor_properties_panel</tabstop>
+  <tabstop>m_terminal_conductor_color</tabstop>
   <tabstop>m_wiring_rules_cb</tabstop>
   <tabstop>m_wiring_max_wires_sb</tabstop>
   <tabstop>m_wiring_one_wire_per_report_cb</tabstop>

@@ -1977,6 +1977,10 @@ void Conductor::setProperties(const ConductorProperties &property)
 		if (c != this)
 			c->updateDefinitionMark();
 	update();
+	if (Terminal::takesConductorColor()) {
+		if (terminal1) terminal1->update();
+		if (terminal2) terminal2->update();
+	}
 
 	storeProperties();
 	emit propertiesChange();

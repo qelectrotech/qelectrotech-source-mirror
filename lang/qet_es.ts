@@ -1277,8 +1277,8 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="45"/>
-        <source>x</source>
-        <translation>x</translation>
+        <source>× </source>
+        <translation>× </translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="72"/>
@@ -3615,33 +3615,33 @@ Los elementos nuevos saltarán los números ya ocupados: no recibirán necesaria
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="31"/>
-        <source>x 0.25</source>
-        <translation>x 0,25</translation>
+        <source>× 0.25</source>
+        <translation>× 0,25</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="36"/>
-        <source>x 0.5</source>
-        <translation>x 0,5</translation>
+        <source>× 0.5</source>
+        <translation>× 0,5</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="41"/>
-        <source>x 0.75</source>
-        <translation>x 0,75</translation>
+        <source>× 0.75</source>
+        <translation>× 0,75</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="46"/>
-        <source>x 1</source>
-        <translation>x 1</translation>
+        <source>× 1</source>
+        <translation>× 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="51"/>
-        <source>x 2</source>
-        <translation>x 2</translation>
+        <source>× 2</source>
+        <translation>× 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="56"/>
-        <source>x 3</source>
-        <translation>x 3</translation>
+        <source>× 3</source>
+        <translation>× 3</translation>
     </message>
 </context>
 <context>
@@ -6485,9 +6485,9 @@ Si cambia su numeración, se sustituirá o se borrará.
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="435"/>
-        <source>Dimensions : %1*%2
+        <source>Dimensions : %1 × %2
 </source>
-        <translation>Tamaño : %1*%2
+        <translation>Tamaño : %1 × %2
 </translation>
     </message>
     <message>
@@ -7359,12 +7359,12 @@ Al importar este archivo, confirma que:
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
-        <source>Move this sheet up x10</source>
+        <source>Move this sheet up × 10</source>
         <translation>Avanzar el folio 10 posiciones</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="79"/>
-        <source>Move this sheet up x100</source>
+        <source>Move this sheet up × 100</source>
         <translation>Avanzar el folio 100 posiciones</translation>
     </message>
     <message>
@@ -7374,12 +7374,12 @@ Al importar este archivo, confirma que:
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="81"/>
-        <source>Move down this sheet x10</source>
+        <source>Move down this sheet × 10</source>
         <translation>Retrasar 10 posiciones el folio</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="82"/>
-        <source>Move down this sheet x100</source>
+        <source>Move down this sheet × 100</source>
         <translation>Retrasar 100 posiciones el folio</translation>
     </message>
     <message>

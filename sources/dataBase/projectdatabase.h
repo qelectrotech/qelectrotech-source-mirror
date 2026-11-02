@@ -370,6 +370,16 @@ class projectDataBase : public QObject
 			/// The attribute of a folio element whose items are still in the
 			/// database (S4x X3)
 		static constexpr const char *deferred_content = "qetdb-deferred";
+			/// The blocks of XML a project or folio holds that this QET
+			/// does not know (a newer QET's, or a fork's), kept whole so
+			/// that no format drops them. @p owner: project_owner or a
+			/// folio's uuid.
+		static constexpr const char *project_owner = "project";
+		static QStringList foreignChildren(const QDomElement &parent, bool folio);
+		void storeForeignBlocks(const QString &owner, const QStringList &blocks);
+		QStringList foreignBlocks(const QString &owner) const;
+		static QStringList foreignBlocksOf(const QSqlDatabase &db, const QString &owner);
+		static void appendForeignBlocks(QDomElement &parent, const QStringList &blocks);
 		void writeFolioContent(QDomElement &folio) const;
 		static bool writeDocument(const QString &database_file, const QString &project_file,
 								  QString *error = nullptr);
@@ -695,6 +705,7 @@ class projectDataBase : public QObject
 		QHash<QUuid, QList<ProjectSetting>> m_folio_values;
 		QHash<QUuid, QList<ProjectSetting>> m_cable_values;
 		QHash<QUuid, QStringList> m_kept_items;   ///< kept_item, by folio
+		QHash<QString, QStringList> m_foreign_blocks;   ///< foreign_block, by owner
 		bool m_folio_values_changed = false;
 		bool m_cables_changed = false;
 			//The placed symbols holding each uuid: a paste or a folio copy
