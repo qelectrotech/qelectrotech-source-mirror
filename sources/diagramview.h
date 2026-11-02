@@ -161,7 +161,7 @@ class DiagramView : public PaletteGraphicsView
 		static bool terminalHelpLinesShown();
 		static void setTerminalHelpLinesShown(bool shown);
 			/// How far zooming in or out goes at a time, in percent of
-			/// the folio's size; 0: by a factor of 1.15, as before
+			/// the zoom shown; 0: by a factor of 1.15, as before
 		static int zoomStep();
 		static void setZoomStep(int percent);
 		bool crosshairVisible() const { return m_crosshair_visible; }
