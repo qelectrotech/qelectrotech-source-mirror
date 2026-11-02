@@ -495,6 +495,9 @@ target_compile_definitions(tst_multielementinfo PRIVATE
 # An elements collection item set up after the application object is gone.
 qet_add_app_test(tst_collectionitemafterquit tst_collectionitemafterquit.cpp)
 
+# The model stops its loading threads when the application quits (#1689).
+qet_add_app_test(tst_collectionmodelquit tst_collectionmodelquit.cpp)
+
 # Accepting the settings dialog writes qet-assistant.json with the
 # collection paths just chosen, not the ones they replace.
 qet_add_app_test(tst_assistantinfopaths tst_assistantinfopaths.cpp)
