@@ -5714,7 +5714,9 @@ bool QETProject::addBridge(Bridge *bridge)
 		return true;
 
 	m_bridges.append(bridge);
+	m_data_base.queueBridges();
 	connect(bridge, &Bridge::changed, this, [this]() {
+		m_data_base.queueBridges();
 		setModified(true);
 	});
 	emit bridgeAdded(bridge);
@@ -5734,6 +5736,7 @@ bool QETProject::removeBridge(Bridge *bridge)
 		return false;
 
 	disconnect(bridge, nullptr, this, nullptr);
+	m_data_base.queueBridges();
 	setModified(true);
 	emit bridgeRemoved(bridge);
 	return true;

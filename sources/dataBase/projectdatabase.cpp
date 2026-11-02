@@ -46,6 +46,7 @@
 #include "../TerminalStrip/physicalterminal.h"
 #include "../TerminalStrip/realterminal.h"
 #include "../cable/cable.h"
+#include "../bridge/bridge.h"
 
 #include <QDir>
 #include <QLocale>
@@ -377,6 +378,7 @@ void projectDataBase::refresh()
 		flushCollections();
 		flushFolioValues();
 		flushCables();
+		flushBridges();
 		flushConductorProperties();
 		return;
 	}
@@ -455,6 +457,7 @@ void projectDataBase::refreshChangedFolios()
 	flushCollections();
 	flushFolioValues();
 	flushCables();
+	flushBridges();
 
 	const bool own_transaction = m_data_base.transaction();
 	const QSet<QUuid> waiting_symbols = waitingSymbols();
@@ -2330,6 +2333,7 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 	flushCollections();
 	flushFolioValues();
 	flushCables();
+	flushBridges();
 	flushConductorProperties();
 
 	// First gate: which kind of statement is acceptable here at all. A
@@ -3983,13 +3987,14 @@ bool projectDataBase::createDataBase()
 
 		//What a symbol, a folio or a cable saves that no other table holds,
 		//one row per value as project_setting (storeElementValues(),
-		//flushFolioValues(), flushCables()): a symbol's prefix, frozen
+		//flushFolioValues(), flushCables(), flushBridges()): a symbol's prefix, frozen
 		//label, whether it moves, a terminal's override properties and a
 		//PLC's master data; a folio's default wire and its freeze and
-		//numbering settings; each cable whole
+		//numbering settings; each cable and each bridge whole
 	for (const auto &[table, key] : {std::pair{QStringLiteral("element_value"), QStringLiteral("element_uuid")},
 									 std::pair{QStringLiteral("folio_value"), QStringLiteral("diagram_uuid")},
-									 std::pair{QStringLiteral("cable_value"), QStringLiteral("cable_uuid")}}) {
+									 std::pair{QStringLiteral("cable_value"), QStringLiteral("cable_uuid")},
+									 std::pair{QStringLiteral("bridge_value"), QStringLiteral("bridge_uuid")}}) {
 		if (!query_.exec(QStringLiteral("CREATE TABLE %1 (%2 VARCHAR(50) NOT NULL, section TEXT NOT NULL, "
 										"ord INTEGER NOT NULL, name TEXT NOT NULL, value TEXT, "
 										"PRIMARY KEY (%2, section, ord, name))").arg(table, key))) {
@@ -5889,6 +5894,34 @@ void projectDataBase::flushCables()
 	for (const QUuid &uuid : stored)
 		if (!now.contains(uuid))
 			forgetKeyedRows(QStringLiteral("cable_value"), QStringLiteral("cable_uuid"), m_cable_values, uuid);
+	if (own_transaction) {
+		m_data_base.commit();
+	}
+}
+
+/**
+	@brief projectDataBase::flushBridges
+	Write every bridge of the project whole (Bridge::toXml(), its terminals
+	and sections included), when queueBridges() said one changed, and
+	forget the rows of the bridges gone.
+*/
+void projectDataBase::flushBridges()
+{
+	if (!m_bridges_changed || !m_project) return;
+	m_bridges_changed = false;
+	const bool own_transaction = m_data_base.transaction();
+	QSet<QUuid> now;
+	for (Bridge *bridge : m_project->bridges()) {
+		QDomDocument document;
+		QList<ProjectSetting> rows;
+		xmlRows(bridge->toXml(document), Bridge::xmlTagName(), 0, rows);
+		now.insert(bridge->uuid());
+		storeKeyedRows(QStringLiteral("bridge_value"), QStringLiteral("bridge_uuid"), m_bridge_values, bridge->uuid(), rows);
+	}
+	const QList<QUuid> stored = m_bridge_values.keys();
+	for (const QUuid &uuid : stored)
+		if (!now.contains(uuid))
+			forgetKeyedRows(QStringLiteral("bridge_value"), QStringLiteral("bridge_uuid"), m_bridge_values, uuid);
 	if (own_transaction) {
 		m_data_base.commit();
 	}
@@ -8190,6 +8223,7 @@ void projectDataBase::exportDb(projectDataBase *db,
 	db->flushCollections();
 	db->flushFolioValues();
 	db->flushCables();
+	db->flushBridges();
 	db->flushConductorProperties();
 		//VACUUM INTO cannot run inside the working copy's transaction
 	db->endTransaction();
