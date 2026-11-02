@@ -67,6 +67,23 @@ To install (default prefix is `/usr/local`; adjust with
 sudo cmake --install .
 ```
 
+To make an archive of those files instead, name its format at the configure
+step (`ZIP`, `TGZ`, or both as `"ZIP;TGZ"`), then run `cpack` in the build
+folder:
+
+```sh
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCPACK_GENERATOR=TGZ
+cmake --build .
+cpack
+```
+
+On Linux the paths to the elements and the translations are compiled in from
+`CMAKE_INSTALL_PREFIX`, so unpack the archive there:
+
+```sh
+sudo tar -xzf qelectrotech-*-Linux.tar.gz -C /usr/local --strip-components=1
+```
+
 Useful configure-time options (pass as `-D<OPTION>=ON/OFF`):
 
 | Option | Default | Effect |
@@ -272,6 +289,11 @@ downloads and compiles KDE Frameworks itself, which is slow.
    Qt's DLLs are installed with it when `-DQET_DEPLOY_QT=ON` is set at the
    configure step (Qt 6.5 or newer). Without it, run Qt's `windeployqt` on
    `C:\QElectroTech\bin\qelectrotech.exe` for those.
+5. Optionally, make a ZIP of the same files: add `-DCPACK_GENERATOR=ZIP` at
+   the configure step, then in the build folder:
+   ```bat
+   cpack -C Release
+   ```
 
 ### MinGW-w64 (gcc)
 

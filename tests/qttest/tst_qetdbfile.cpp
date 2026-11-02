@@ -637,6 +637,60 @@ private slots:
 		QVERIFY(f.readAll().contains("5e1f0c3a-7d2b-4c11-9a4e-0b6c2d8e9f10"));
 	}
 
+	// A block of XML this QET does not know, under the project or under a
+	// folio (a newer QET's, or a fork's), comes back from every format and
+	// every way of saving: none drops it
+	void foreignBlocksSurviveEveryFormat()
+	{
+		QFile source(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
+		QVERIFY(source.open(QIODevice::ReadOnly));
+		QByteArray text = source.readAll();
+		const qsizetype folio_end = text.indexOf("</diagram>");
+		QVERIFY(folio_end > 0);
+		text.insert(folio_end, "<pipes><pipe uuid=\"{11111111-1111-1111-1111-111111111111}\" dn=\"50\"/></pipes>");
+		const qsizetype project_end = text.lastIndexOf("</project>");
+		QVERIFY(project_end > 0);
+		text.insert(project_end, "<pidcodes><code k=\"W\"/></pidcodes>");
+		const QString with_blocks = m_dir.filePath(QStringLiteral("foreign.qet"));
+		QFile out(with_blocks);
+		QVERIFY(out.open(QIODevice::WriteOnly));
+		out.write(text);
+		out.close();
+
+		const auto holds = [](const QString &path) {
+			QFile f(path);
+			if (!f.open(QIODevice::ReadOnly)) return false;
+			const QByteArray bytes = f.readAll();
+			return bytes.count("<pipes>") == 1 && bytes.count("<pidcodes>") == 1
+					&& bytes.contains("11111111-1111-1111-1111-111111111111");
+		};
+		const QString db = m_dir.filePath(QStringLiteral("foreign.qetdb"));
+		const QString db_again = m_dir.filePath(QStringLiteral("foreign-again.qetdb"));
+		const QString zipped = m_dir.filePath(QStringLiteral("foreign.qetz"));
+		const QString from_qet = m_dir.filePath(QStringLiteral("foreign-qet.qet"));
+		const QString from_db = m_dir.filePath(QStringLiteral("foreign-db.qet"));
+		const QString from_db_again = m_dir.filePath(QStringLiteral("foreign-db-again.qet"));
+		const QString from_zip = m_dir.filePath(QStringLiteral("foreign-zip.qet"));
+		const QString built_qet = m_dir.filePath(QStringLiteral("foreign-built.qet"));
+
+		resave(with_blocks, from_qet);
+		QVERIFY2(holds(from_qet), ".qet to .qet");
+		run({QStringLiteral("--resave"), with_blocks, built_qet}, true);
+		QVERIFY2(holds(built_qet), ".qet to .qet, every folio built");
+		resave(with_blocks, db);
+		resave(db, from_db);
+		QVERIFY2(holds(from_db), ".qet to .qetdb to .qet");
+		QCOMPARE(pragma(db, QStringLiteral("SELECT count(*) FROM foreign_block")).toInt(), 2);
+			//Opened from its tables and saved again: still there
+		resave(db, db_again);
+		QCOMPARE(pragma(db_again, QStringLiteral("SELECT count(*) FROM foreign_block")).toInt(), 2);
+		resave(db_again, from_db_again);
+		QVERIFY2(holds(from_db_again), ".qetdb to .qetdb to .qet");
+		resave(with_blocks, zipped);
+		resave(zipped, from_zip);
+		QVERIFY2(holds(from_zip), ".qet to .qetz to .qet");
+	}
+
 	// The shape and text rows a file holds stay when it is opened from its
 	// tables and saved again with its folios not built
 	void drawingRowsSurviveResave()

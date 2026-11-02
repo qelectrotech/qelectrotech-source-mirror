@@ -495,6 +495,9 @@ target_compile_definitions(tst_multielementinfo PRIVATE
 # An elements collection item set up after the application object is gone.
 qet_add_app_test(tst_collectionitemafterquit tst_collectionitemafterquit.cpp)
 
+# The model stops its loading threads when the application quits (#1689).
+qet_add_app_test(tst_collectionmodelquit tst_collectionmodelquit.cpp)
+
 # Accepting the settings dialog writes qet-assistant.json with the
 # collection paths just chosen, not the ones they replace.
 qet_add_app_test(tst_assistantinfopaths tst_assistantinfopaths.cpp)
@@ -531,6 +534,10 @@ qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
 # A conductor between two terminals on the same point (symbols placed
 # against each other) connects them but is not drawn nor clicked.
 qet_add_app_test(tst_touchingconductor tst_touchingconductor.cpp)
+# A symbol that draws beyond its frame is drawn whole, at every zoom: its
+# bounding rect covers the drawing, not only the frame.
+qet_add_app_test(tst_symboloutsideframe tst_symboloutsideframe.cpp)
+qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
 
 # A folio's pictures, decoded in parallel, each come back with its own
 # pixels and position; an <image> with no picture does not stop the others.
@@ -2161,6 +2168,9 @@ qet_add_app_test(tst_itemdescription tst_itemdescription.cpp)
 # The selection properties dock scrolls its editors in a low window rather
 # than its smallest height pushing the dock below over its last rows.
 qet_add_app_test(tst_propertiesdockscroll tst_propertiesdockscroll.cpp)
+# Dragging a symbol's text moves the symbol, Shift+drag the text, or the
+# other way round with "Drag symbol texts without holding Shift" (#1576).
+qet_add_app_test(tst_dragtextswithoutshift tst_dragtextswithoutshift.cpp)
 
 # Settings for every test. get_property(... TESTS) only sees the tests added
 # so far, so they wait for the end of this file: a test takes them wherever

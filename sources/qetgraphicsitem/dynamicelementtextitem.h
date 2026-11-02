@@ -116,6 +116,8 @@ class DynamicElementTextItem : public DiagramTextItem
 		static QString xmlTagName() {return QString("dynamic_elmt_text");}
 		static bool verticalFromBottom();
 		static void setVerticalFromBottom(bool from_bottom);
+		static bool dragMovesTextAlone();
+		static void setDragMovesTextAlone(bool text_alone);
 		void updateReadingDirection();
 		QTransform readingFlip() const;
 		void setInfoName(const QString &info_name);

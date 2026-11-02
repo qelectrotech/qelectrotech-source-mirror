@@ -503,6 +503,7 @@ void Element::updateSymbolPictures(bool force)
 			m_readable_transform = QTransform();
 			m_readable_picture = QPicture();
 			m_readable_low_zoom_picture = QPicture();
+			updateDrawnRect();
 			update();
 		}
 		return;
@@ -518,6 +519,7 @@ void Element::updateSymbolPictures(bool force)
 				transform,
 				m_readable_picture,
 				m_readable_low_zoom_picture);
+	updateDrawnRect();
 	update();
 }
 
@@ -676,10 +678,36 @@ QRectF Element::drawingRect() const
 	return drawn.isEmpty() ? boundingRect() : QRectF(drawn);
 }
 
+/**
+	@brief Element::boundingRect
+	@return the symbol's frame (its size and hotspot), widened to what its
+	drawing covers when a symbol draws beyond its frame: QGraphicsView
+	repaints only within this rect, so a part outside it was cut off at
+	some zooms and left out at others.
+*/
 QRectF Element::boundingRect() const
 {
-	return(QRectF(QPointF(-hotspot_coord.x(), -hotspot_coord.y()),
-			  dimensions));
+	const QRectF frame(QPointF(-hotspot_coord.x(), -hotspot_coord.y()),
+					   dimensions);
+	return m_drawn_rect.isNull() ? frame : frame.united(m_drawn_rect);
+}
+
+/**
+	@brief Element::updateDrawnRect
+	Keep m_drawn_rect, what boundingRect() adds to the frame, up to date
+	with the drawings, with a pixel more for the width of their lines.
+*/
+void Element::updateDrawnRect()
+{
+	QRectF drawn;
+	for (const QPicture *picture : {&m_picture, &m_readable_picture})
+		if (!picture->isNull() && picture->boundingRect().isValid())
+			drawn = drawn.united(QRectF(picture->boundingRect()).adjusted(-1, -1, 1, 1));
+	if (drawn != m_drawn_rect)
+	{
+		prepareGeometryChange();
+		m_drawn_rect = drawn;
+	}
 }
 
 /**
@@ -946,6 +974,7 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	epf->getPictures(m_location,
 			 m_picture,
 			 m_low_zoom_picture);
+	updateDrawnRect();
 
 	if(!m_picture.isNull())
 		++ parsed_elements_count;
@@ -3321,6 +3350,7 @@ Element::ReloadPictureResult Element::reloadPicture()
 
 	m_picture = picture;
 	m_low_zoom_picture = low_zoom_picture;
+	updateDrawnRect();
 	updateSymbolPictures(true);
 	update();
 	return ReloadPictureResult::Reloaded;
