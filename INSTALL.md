@@ -294,6 +294,19 @@ downloads and compiles KDE Frameworks itself, which is slow.
    ```bat
    cpack -C Release
    ```
+6. Optionally, make an installer of the same files: use
+   `-DCPACK_GENERATOR=WIX` instead, with `-DQET_DEPLOY_QT=ON` and
+   `-DSQLite3_DLL=...` so that it holds what the program needs, and run the
+   same `cpack` command. This needs CMake 3.30 or newer and
+   [WiX Toolset](https://wixtoolset.org) 4 or newer with its interface
+   extension, of the same version as WiX:
+   ```bat
+   wix extension add --global WixToolset.UI.wixext
+   ```
+   It replaces an installed QElectroTech of a lower version, official or not,
+   and refuses to install over a higher one, which official nightly builds
+   are: uninstall those first. It does not make Windows open `.qet` files with
+   QElectroTech.
 
 ### MinGW-w64 (gcc)
 
