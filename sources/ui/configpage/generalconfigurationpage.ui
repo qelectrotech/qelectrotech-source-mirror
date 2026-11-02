@@ -277,6 +277,16 @@
          </widget>
         </item>
         <item>
+        <widget class="QCheckBox" name="m_drag_texts_without_shift_cb">
+         <property name="toolTip">
+          <string>Dragging a symbol's text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</string>
+         </property>
+         <property name="text">
+          <string>Drag symbol texts without holding Shift</string>
+          </property>
+         </widget>
+        </item>
+        <item>
         <widget class="QCheckBox" name="m_terminal_help_lines_cb">
          <property name="toolTip">
           <string>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</string>
