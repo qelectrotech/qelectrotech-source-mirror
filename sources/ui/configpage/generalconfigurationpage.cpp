@@ -54,6 +54,7 @@
 
 #include "../../diagram.h"
 #include "../../qetproject.h"
+#include "../../qetgraphicsitem/terminal.h"
 
 namespace {
 	/**
@@ -131,6 +132,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_mouse_gestures_cb->setChecked(settings.value("diagrameditor/mouse_gestures", true).toBool());
 	ui->m_pointer_aids_cb->setChecked(DiagramView::pointerAids());
 	ui->m_vertical_texts_from_bottom_cb->setChecked(DynamicElementTextItem::verticalFromBottom());
+	ui->m_drag_texts_without_shift_cb->setChecked(DynamicElementTextItem::dragMovesTextAlone());
 	ui->m_junction_replaces_cb->setChecked(ConnectionSymbols::newJunctionReplacesOld());
 	ui->m_terminal_help_lines_cb->setChecked(DiagramView::terminalHelpLinesShown());
 	ui->m_dock_fold_cb->setChecked(DockFold::enabled());
@@ -167,6 +169,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_use_windows_mode_rb->setChecked(true);
 	ui->m_selection_rectangle_cb->setCurrentIndex(static_cast<int>(DiagramView::selectionRectangle()));
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
+	ui->m_terminal_conductor_color->setChecked(Terminal::takesConductorColor());
 	ui->m_conductor_properties_panel->setChecked(settings.value("diagrameditor/conductor_properties_panel", false).toBool());
 	ui->m_wiring_rules_cb->setChecked(WiringRules::masterEnabled());
 	{
@@ -434,6 +437,12 @@ void GeneralConfigurationPage::applyConf()
 		ui->m_selection_rectangle_cb->currentIndex()));
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());
+	if (ui->m_terminal_conductor_color->isChecked() != Terminal::takesConductorColor()) {
+		Terminal::setTakesConductorColor(ui->m_terminal_conductor_color->isChecked());
+		for (QETProject *project : QETApp::registeredProjects())
+			for (Diagram *diagram : project->diagrams())
+				diagram->update();
+	}
 	WiringRules::setMasterEnabled(ui->m_wiring_rules_cb->isChecked());
 	{
 		const WiringRules::Settings before = WiringRules::applicationSettings();
@@ -464,6 +473,7 @@ void GeneralConfigurationPage::applyConf()
 	ConnectionSymbols::setNewJunctionReplacesOld(ui->m_junction_replaces_cb->isChecked());
 	if (ui->m_vertical_texts_from_bottom_cb->isChecked() != DynamicElementTextItem::verticalFromBottom())
 		DynamicElementTextItem::setVerticalFromBottom(ui->m_vertical_texts_from_bottom_cb->isChecked());
+	DynamicElementTextItem::setDragMovesTextAlone(ui->m_drag_texts_without_shift_cb->isChecked());
 	DiagramView::setTerminalHelpLinesShown(ui->m_terminal_help_lines_cb->isChecked());
 	DockFold::setEnabled(ui->m_dock_fold_cb->isChecked());
 	DockFit::setEnabled(ui->m_narrow_docks_cb->isChecked());

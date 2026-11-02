@@ -105,3 +105,13 @@ if (CATCH_INCLUDE_DIR STREQUAL "")
 elseif (EXISTS ${CATCH_INCLUDE_DIR})
     include_directories(${CATCH_INCLUDE_DIR})
 endif ()
+
+# Run by ctest, with no display needed. With MSVC it needs Qt's bin folder on
+# PATH, as the tests in ../qttest do (ENVIRONMENT_MODIFICATION, CMake 3.22).
+add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+set_tests_properties(${PROJECT_NAME} PROPERTIES
+  ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+if(MSVC AND NOT CMAKE_VERSION VERSION_LESS 3.22)
+  set_property(TEST ${PROJECT_NAME} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+    "PATH=path_list_prepend:$<TARGET_FILE_DIR:Qt6::Core>")
+endif()
