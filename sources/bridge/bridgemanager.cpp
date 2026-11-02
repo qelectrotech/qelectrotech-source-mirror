@@ -488,11 +488,12 @@ QList<Bridge *> BridgeManager::bridgesOverfilledBy(QETProject *project,
 			if (!element || !element->diagram()) {
 				continue;
 			}
-			//How far an element reaches for a line beyond its own outline:
-		//close enough to land on it after the step of a gesture
-		constexpr qreal element_reach = 50.0;
-		const QRectF reach = element->sceneBoundingRect().adjusted(
-					-element_reach, -element_reach, element_reach, element_reach);
+				//How far an element reaches for a line beyond its own
+				//outline: close enough to land on it after the step of
+				//a gesture
+			constexpr qreal element_reach = 50.0;
+			const QRectF reach = element->sceneBoundingRect().adjusted(
+						-element_reach, -element_reach, element_reach, element_reach);
 			for (const BridgePartData &part : parts) {
 				if (element->diagram()->uuid() != part.diagram) {
 					continue;

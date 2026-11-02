@@ -270,11 +270,14 @@ bool ProjectView::tryClosing()
 		if (filepath.isEmpty()) return(false); // users may cancel the closing
 	}
 		//The same question the plain save asks: closing writes a
-		//.qetdb without ever asking for a path (review of #1651)
+		//.qetdb without ever asking for a path, and a save as which
+		//already asked does not ask again (review of #1706)
 	if (m_project->filePath().endsWith(QLatin1String(".qetdb"), Qt::CaseInsensitive)
-		&& !m_project->bridges().isEmpty()
-		&& !askBridgesInQetdb(this, int(m_project->bridges().size()))) {
-		return(false);
+		&& !m_project->bridges().isEmpty() && !m_bridge_qetdb_asked) {
+		if (!askBridgesInQetdb(this, int(m_project->bridges().size()))) {
+			return(false);
+		}
+		m_bridge_qetdb_asked = true;
 	}
 	bool cancelled = false;
 	QETResult result = writeProject(&cancelled);
@@ -347,26 +350,7 @@ int ProjectView::tryClosingDiagrams()
 	setFilePath(). Defaults to true.
 	@return the file path, or an empty string if none were provided
 */
-/**
-	@brief ProjectView::askBridgesInQetdb
-	@param parent
-	@param bridges how many bridges the project draws
-	@return whether the save may go on
-*/
-bool ProjectView::askBridgesInQetdb(QWidget *parent, int bridges)
-{
-	const auto answer = QMessageBox::question(
-				parent,
-				tr("Save as .qetdb?", "dialog title"),
-				tr("%n bridge(s) are drawn in this project. The .qetdb "
-				   "format does not store bridges yet -- they are kept in "
-				   "the normal .qet format only. Save it as .qetdb anyway?",
-				   "also asked when the file name says .qetdb",
-				   bridges),
-				QMessageBox::Yes | QMessageBox::No,
-				QMessageBox::No);
-	return answer == QMessageBox::Yes;
-}
+
 
 QString ProjectView::askUserForFilePath(bool assign) {
 	// ask the user for a filepath in order to save the project
@@ -426,12 +410,43 @@ QString ProjectView::askUserForFilePath(bool assign) {
 		//Not onto a file someone else has open
 	if (!refuseIfLockedByOther(filepath)) return(QString());
 
+		//A .qetdb does not store bridges yet -- asked here, before the
+		//path is taken as the project's own, so a no leaves the project
+		//on the file it was on (review of #1706)
+	if (database && !m_project->bridges().isEmpty() && !m_bridge_qetdb_asked) {
+		if (!askBridgesInQetdb(this, int(m_project->bridges().size()))) {
+			return QString();
+		}
+		m_bridge_qetdb_asked = true;
+	}
+
 	if (assign) {
 		// assign the provided filepath to the currently edited project
 		m_project -> setFilePath(filepath);
 	}
 
 	return(filepath);
+}
+
+/**
+	@brief ProjectView::askBridgesInQetdb
+	@param parent
+	@param bridges how many bridges the project draws
+	@return whether the save may go on
+*/
+bool ProjectView::askBridgesInQetdb(QWidget *parent, int bridges)
+{
+	const auto answer = QMessageBox::question(
+				parent,
+				tr("Save as .qetdb?", "dialog title"),
+				tr("%n bridge(s) are drawn in this project. The .qetdb "
+				   "format does not store bridges yet -- they are kept in "
+				   "the normal .qet format only. Save it as .qetdb anyway?",
+				   "also asked when the file name says .qetdb",
+				   bridges),
+				QMessageBox::Yes | QMessageBox::No,
+				QMessageBox::No);
+	return answer == QMessageBox::Yes;
 }
 
 /**
@@ -877,12 +892,14 @@ QETResult ProjectView::doSave()
 	}
 
 		//A plain save writes a .qetdb without ever asking for a path:
-		//the bridges are asked for here, so none of them is written out
-		//without a word (review of #1651)
+		//the bridges are asked for here, unless the save as dialog
+		//already asked about them in this save (review of #1706)
 	if (m_project->filePath().endsWith(QLatin1String(".qetdb"), Qt::CaseInsensitive)
-		&& !m_project->bridges().isEmpty()
-		&& !askBridgesInQetdb(this, int(m_project->bridges().size()))) {
-		return QETResult();
+		&& !m_project->bridges().isEmpty() && !m_bridge_qetdb_asked) {
+		if (!askBridgesInQetdb(this, int(m_project->bridges().size()))) {
+			return QETResult();
+		}
+		m_bridge_qetdb_asked = true;
 	}
 
 	// write to file

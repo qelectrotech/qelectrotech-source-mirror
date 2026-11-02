@@ -166,6 +166,9 @@ class ProjectView : public QWidget
 			///Ask whether a project which draws bridges may be written
 			///as a .qetdb -- the format does not store them yet
 		static bool askBridgesInQetdb(QWidget *parent, int bridges);
+			///Set once a save said yes to writing the bridges out as
+			///a .qetdb, so the save which follows it does not ask twice
+		bool m_bridge_qetdb_asked = false;
 		bool refuseIfLockedByOther(const QString &filepath);
 		QETResult noProjectResult() const;
 
