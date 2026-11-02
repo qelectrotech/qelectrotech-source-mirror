@@ -160,10 +160,10 @@ class DiagramView : public PaletteGraphicsView
 			/// terminals in line with them; on by default
 		static bool terminalHelpLinesShown();
 		static void setTerminalHelpLinesShown(bool shown);
-			/// What a selection rectangle selects: what it touches, as
+			/// What a selection rectangle selects: what it overlaps, as
 			/// always before; only what lies wholly within it; or by the
 			/// direction it is dragged in, wholly within to the right and
-			/// touched to the left
+			/// overlapped to the left
 		enum class SelectionRectangle { Touched = 0, Enclosed = 1, ByDirection = 2 };
 		static SelectionRectangle selectionRectangle();
 		static void setSelectionRectangle(SelectionRectangle mode);
