@@ -235,6 +235,57 @@ private slots:
 		QCOMPARE(tablesWithoutKey(industrial()), QStringList());
 	}
 
+	// The bridges drawn over terminals (the <bridges> section) are kept
+	// by a .qetdb: saved as .qetdb and read back, they are what a .qet
+	// resave keeps. They had no table, and were dropped.
+	void bridgesAreKept()
+	{
+		QFile fixture(QFINDTESTDATA("fixtures/bridge_tracks.qet"));
+		QVERIFY(fixture.open(QIODevice::ReadOnly));
+		QString xml = QString::fromUtf8(fixture.readAll());
+		const QString diagram = QStringLiteral("{5b0f5e1c-8a43-4c1e-9e57-3f0d0f0a7a01}");
+		QVERIFY(xml.contains(diagram));
+		const QString bridges = QStringLiteral(
+			"    <bridges>\n"
+			"        <bridge uuid=\"{11111111-2222-4333-8444-555555555555}\" color=\"#cc0000\""
+			" line_width=\"2\" max_connections=\"2\" name=\"Bridge A\" tension_protocol=\"24VAC\">\n"
+			"            <terminals/>\n"
+			"            <parts>\n"
+			"                <part uuid=\"{aaaaaaaa-2222-4333-8444-555555555555}\" diagram=\"%1\""
+			" x1=\"100\" y1=\"100\" x2=\"100\" y2=\"200\"/>\n"
+			"            </parts>\n"
+			"        </bridge>\n"
+			"    </bridges>\n").arg(diagram);
+		xml.replace(QStringLiteral("</project>"), bridges + QStringLiteral("</project>"));
+		const QString source = m_dir.filePath(QStringLiteral("with-bridge.qet"));
+		QFile out(source);
+		QVERIFY(out.open(QIODevice::WriteOnly));
+		out.write(xml.toUtf8());
+		out.close();
+
+		const auto bridgesOf = [](const QString &file) {
+			QFile f(file);
+			if (!f.open(QIODevice::ReadOnly)) return QString();
+			const QString text = QString::fromUtf8(f.readAll());
+			const int from = text.indexOf(QStringLiteral("<bridges>"));
+			const int to = text.indexOf(QStringLiteral("</bridges>"));
+			return from < 0 || to < 0 ? QString() : text.mid(from, to - from);
+		};
+		const QString direct = m_dir.filePath(QStringLiteral("bridge-direct.qet"));
+		const QString db = m_dir.filePath(QStringLiteral("bridge.qetdb"));
+		const QString back = m_dir.filePath(QStringLiteral("bridge-back.qet"));
+		QVERIFY(QFile::exists(source));
+		resave(source, direct);
+		resave(source, db);
+		resave(db, back);
+
+		const QString expected = bridgesOf(direct);
+		QVERIFY2(expected.contains(QStringLiteral("Bridge A")), "the .qet resave keeps the bridge");
+		QVERIFY2(expected.contains(QStringLiteral("aaaaaaaa-2222-4333-8444-555555555555")), "and its section");
+		QCOMPARE(pragma(db, QStringLiteral("SELECT count(*) FROM bridge_value")).toInt() > 0, true);
+		QCOMPARE(bridgesOf(back), expected);
+	}
+
 	// A file saved before the tables had keys opens from its tables, and
 	// saved again it has them, with every row
 	void fileWithoutKeysOpens()
@@ -244,7 +295,7 @@ private slots:
 		QFile::setPermissions(old, QFile::ReadOwner | QFile::WriteOwner);
 		static const QStringList keyed{QStringLiteral("element_text_value"), QStringLiteral("drawing_item"),
 			QStringLiteral("element_value"), QStringLiteral("folio_value"), QStringLiteral("project_setting"),
-			QStringLiteral("cable_value"), QStringLiteral("terminal_strip_value"), QStringLiteral("kept_item")};
+			QStringLiteral("cable_value"), QStringLiteral("bridge_value"), QStringLiteral("terminal_strip_value"), QStringLiteral("kept_item")};
 		for (const QString &table : keyed) {
 			QVERIFY(exec(old, QStringLiteral("CREATE TABLE old_%1 AS SELECT * FROM %1 ORDER BY rowid").arg(table)));
 			QVERIFY(exec(old, QStringLiteral("DROP TABLE %1").arg(table)));

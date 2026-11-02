@@ -235,6 +235,7 @@ void projectDataBase::loadCaches()
 	m_element_values = keyedRows(m_data_base, QStringLiteral("element_value"), QStringLiteral("element_uuid"));
 	m_folio_values = keyedRows(m_data_base, QStringLiteral("folio_value"), QStringLiteral("diagram_uuid"));
 	m_cable_values = keyedRows(m_data_base, QStringLiteral("cable_value"), QStringLiteral("cable_uuid"));
+	m_bridge_values = keyedRows(m_data_base, QStringLiteral("bridge_value"), QStringLiteral("bridge_uuid"));
 	m_terminal_strip_rows = keyedRows(m_data_base, QStringLiteral("terminal_strip_value"), QStringLiteral("strip_uuid"));
 
 	QSqlQuery query(m_data_base);
@@ -479,6 +480,7 @@ QString projectDataBase::stateDump() const
 	dumpCache(out, QStringLiteral("element_values"), m_element_values, rowsText);
 	dumpCache(out, QStringLiteral("folio_values"), m_folio_values, rowsText);
 	dumpCache(out, QStringLiteral("cable_values"), m_cable_values, rowsText);
+	dumpCache(out, QStringLiteral("bridge_values"), m_bridge_values, rowsText);
 	dumpCache(out, QStringLiteral("element_placements"), m_element_placements, [](const ElementPlacement &p) {
 		return QStringLiteral("%1 %2 %3 %4 %5 %6 %7").arg(p.type, number(p.x), number(p.y), number(p.rotation))
 				.arg(p.horizontal_mirror).arg(p.vertical_mirror).arg(number(p.z));
