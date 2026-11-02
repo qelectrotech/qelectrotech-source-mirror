@@ -691,6 +691,7 @@ QDomDocument projectDataBase::toDocument(const QSqlDatabase &db, bool deferred_f
 			folio.setAttribute(QString::fromLatin1(deferred_content), QStringLiteral("1"));
 		else
 			writeFolioItems(document, folio, db, uuid);
+		appendForeignBlocks(folio, foreignBlocksOf(db, uuid));
 		folio.setAttribute(QStringLiteral("order"), order_num++);
 		project.appendChild(folio);
 	}
@@ -711,6 +712,7 @@ QDomDocument projectDataBase::toDocument(const QSqlDatabase &db, bool deferred_f
 	if (cable_list.hasChildNodes()) project.appendChild(cable_list);
 
 	project.appendChild(collectionOf(document, db));
+	appendForeignBlocks(project, foreignBlocksOf(db, QString::fromLatin1(project_owner)));
 	return document;
 }
 
