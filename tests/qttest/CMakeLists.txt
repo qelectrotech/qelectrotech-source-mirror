@@ -470,6 +470,9 @@ qet_add_app_test(tst_labelsfilecache tst_labelsfilecache.cpp)
 # A quick second click on the same spot reaches the shape tools as a
 # double-click: it must still start the next line, rectangle or ellipse.
 qet_add_app_test(tst_shapequickclick tst_shapequickclick.cpp)
+# While a tool runs, a double-click it does not use reaches it as a click
+# and never opens the properties of the item under the cursor.
+qet_add_app_test(tst_tooldoubleclick tst_tooldoubleclick.cpp)
 # A conductor's colour and section at a slanted stroke across it.
 qet_add_app_test(tst_conductordefinitionmark tst_conductordefinitionmark.cpp)
 target_compile_definitions(tst_conductordefinitionmark PRIVATE

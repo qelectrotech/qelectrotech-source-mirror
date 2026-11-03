@@ -141,6 +141,7 @@ class Diagram : public QGraphicsScene
 
 		QString m_conductors_autonum_name;
 		DiagramEventInterface *m_event_interface;
+		bool m_press_went_to_tool = false;   ///< the last press went to a tool
 
 		bool m_freeze_new_elements;
 		bool m_freeze_new_conductors_;
@@ -324,6 +325,7 @@ class Diagram : public QGraphicsScene
 		virtual void addItem    (QGraphicsItem *item);
 		virtual void removeItem (QGraphicsItem *item);
 		bool eventInterfaceIsRunning() const;
+		bool toolTookLastPress() const;
 		bool cableToolIsRunning() const;
 		bool dimensionToolIsRunning() const;
 		DiagramEventInterface *eventInterface() const { return m_event_interface; }

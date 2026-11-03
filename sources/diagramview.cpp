@@ -3512,6 +3512,13 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e)
 {
 	if (m_event_interface && m_event_interface -> mouseDoubleClickEvent(e)) return;
 
+		//A drawing tool on the folio has this double-click (see
+		//Diagram::mouseDoubleClickEvent): no folio properties under it.
+	if (m_diagram->eventInterfaceIsRunning() || m_diagram->toolTookLastPress()) {
+		QGraphicsView::mouseDoubleClickEvent(e);
+		return;
+	}
+
 	BorderTitleBlock &bi = m_diagram -> border_and_titleblock;
 
 	//Get the click pos on the diagram
