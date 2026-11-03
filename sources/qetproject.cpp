@@ -2701,6 +2701,7 @@ void QETProject::setOrigin(ProjectOrigin::Mode mode)
 	{
 		diagram->refreshContents();
 		diagram->border_and_titleblock.setOrigin(mode);
+		diagram->update();
 	}
 	m_data_base.updateDBForce();
 }
