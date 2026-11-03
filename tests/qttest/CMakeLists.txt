@@ -499,6 +499,8 @@ qet_add_app_test(tst_collectionitemafterquit tst_collectionitemafterquit.cpp)
 
 # The model stops its loading threads when the application quits (#1689).
 qet_add_app_test(tst_collectionmodelquit tst_collectionmodelquit.cpp)
+target_compile_definitions(tst_collectionmodelquit PRIVATE
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
 
 # Accepting the settings dialog writes qet-assistant.json with the
 # collection paths just chosen, not the ones they replace.
