@@ -467,6 +467,9 @@ target_compile_definitions(tst_duplicatelabels PRIVATE
 add_dependencies(tst_duplicatelabels qelectrotech_lrelease)
 # The labels file behind a symbol's prefix is read once, and again only when it changes.
 qet_add_app_test(tst_labelsfilecache tst_labelsfilecache.cpp)
+# A quick second click on the same spot reaches the shape tools as a
+# double-click: it must still start the next line, rectangle or ellipse.
+qet_add_app_test(tst_shapequickclick tst_shapequickclick.cpp)
 # A conductor's colour and section at a slanted stroke across it.
 qet_add_app_test(tst_conductordefinitionmark tst_conductordefinitionmark.cpp)
 target_compile_definitions(tst_conductordefinitionmark PRIVATE
