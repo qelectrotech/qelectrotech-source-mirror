@@ -70,6 +70,8 @@ add_executable(tst_darkimagelayers tst_darkimagelayers.cpp
   ${QET_DIR}/sources/palettegraphicsview.cpp ${QET_DIR}/sources/palettegraphicsview.h
   ${QET_DIR}/sources/qetpalette.cpp)
 add_test(NAME tst_darkimagelayers COMMAND tst_darkimagelayers)
+set_tests_properties(tst_darkimagelayers PROPERTIES
+  ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_darkimagelayers PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_darkimagelayers PRIVATE Qt::Test Qt::Widgets)
 # MSVC's Debug libraries make QElectroTech five to eight times slower than a
@@ -960,6 +962,8 @@ add_executable(
   tst_menubarkeyboard
   tst_menubarkeyboard.cpp)
 add_test(NAME tst_menubarkeyboard COMMAND tst_menubarkeyboard)
+set_tests_properties(tst_menubarkeyboard PROPERTIES
+  ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_menubarkeyboard PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_menubarkeyboard PRIVATE Qt::Test Qt::Widgets)
 
