@@ -106,14 +106,21 @@ text_from="ElementInfo" uuid="%6" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regu
 				QUuid::createUuid().toString());
 	}
 
-	// What the label field of @p element draws on the sheet.
-	static QString shownLabel(Element* element)
+	// The label field of @p element, the one the sheet draws.
+	static DynamicElementTextItem* labelText(Element* element)
 	{
 		for (DynamicElementTextItem* text : element->dynamicTextItems())
 			if (text->textFrom() == DynamicElementTextItem::ElementInfo
 				&& text->infoName() == QLatin1String("label"))
-				return text->toPlainText();
-		return QString();
+				return text;
+		return nullptr;
+	}
+
+	// What the label field of @p element draws on the sheet.
+	static QString shownLabel(Element* element)
+	{
+		DynamicElementTextItem* text = labelText(element);
+		return text ? text->toPlainText() : QString();
 	}
 
 	static void settle()
@@ -123,15 +130,17 @@ text_from="ElementInfo" uuid="%6" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regu
 	}
 
 	// Links @p contact to @p master, gives @p master a numbering whose label
-	// carries the page number and checks both show it; then a folio added
-	// behind and moved first changes that page number, and both must show
-	// the new label.
-	void folioChangeKeepsContactOnMaster(
+	// carries the page number and checks both show it; then the page
+	// numbering moves on -- @p insert_first puts a sheet before the others,
+	// otherwise a sheet is moved to another place -- and both must show the
+	// new label.
+	void pageChangeKeepsContactOnMaster(
 		QETProject& project,
 		Diagram*	folio,
 		Element*	master,
 		Element*	contact,
-		const QString& title)
+		const QString& title,
+		bool			insert_first)
 	{
 		auto* link = new LinkElementCommand(contact);
 		link->setLink(master);
@@ -158,13 +167,24 @@ text_from="ElementInfo" uuid="%6" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regu
 		QCOMPARE(shownLabel(master), QStringLiteral("-K1"));
 		QCOMPARE(shownLabel(contact), QStringLiteral("-K1"));
 
-		Diagram* added = project.addNewDiagram();
-		QVERIFY(added);
-		QCOMPARE(project.diagrams().size(), 2);
-		QCOMPARE(project.folioIndex(folio), 0);
-		project.diagramOrderChanged(1, 0);
-		settle();
-		QCOMPARE(project.folioIndex(folio), 1);
+		if (insert_first)
+		{
+			Diagram* added = project.addNewDiagram(0);
+			QVERIFY(added);
+			settle();
+			QCOMPARE(project.diagrams().size(), 2);
+			QCOMPARE(project.folioIndex(folio), 1);
+		}
+		else
+		{
+			Diagram* added = project.addNewDiagram();
+			QVERIFY(added);
+			QCOMPARE(project.diagrams().size(), 2);
+			QCOMPARE(project.folioIndex(folio), 0);
+			project.diagramOrderChanged(1, 0);
+			settle();
+			QCOMPARE(project.folioIndex(folio), 1);
+		}
 
 		QCOMPARE(master->actualLabel(), QStringLiteral("-K2"));
 		QCOMPARE(shownLabel(master), QStringLiteral("-K2"));
@@ -199,8 +219,8 @@ text_from="ElementInfo" uuid="%6" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regu
 		QCOMPARE(contact->elementData().m_slave_type, ElementData::PLCSlave);
 		QCOMPARE(master->elementData().plcMasterData().ios.size(), 1);
 
-		folioChangeKeepsContactOnMaster(
-			project, folio, master, contact, "PLC page numbering");
+		pageChangeKeepsContactOnMaster(
+			project, folio, master, contact, "PLC page numbering", false);
 
 		// The copy the contact stores is not what it draws; it is written
 		// when the master's label is written, not by a folio renumbering
@@ -208,6 +228,24 @@ text_from="ElementInfo" uuid="%6" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regu
 			  qPrintable(contact->elementInformations()
 							 .value(QETInformation::ELMT_LABEL)
 							 .toString()));
+	}
+
+	// A sheet inserted before the others moves every sheet after it one
+	// number up: the labels carrying a page number must follow, the drawn
+	// ones as much as the calculated value behind them.
+	void sheetInsertedKeepsContactOnMaster()
+	{
+		QETProject project;
+		Diagram*	folio = project.addNewDiagram();
+		QVERIFY(folio);
+
+		Element* master  = symbol(folio, "plc_master");
+		Element* contact = symbol(folio, "plc_slave");
+		QVERIFY(master);
+		QVERIFY(contact);
+
+		pageChangeKeepsContactOnMaster(
+			project, folio, master, contact, "PLC page numbering", true);
 	}
 
 	void coilContactFollowsItsMasterOverAFolioChange()
@@ -223,8 +261,69 @@ text_from="ElementInfo" uuid="%6" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regu
 		QCOMPARE(master->elementData().m_master_type, ElementData::Coil);
 		QCOMPARE(contact->elementData().m_slave_type, ElementData::SSimple);
 
-		folioChangeKeepsContactOnMaster(
-			project, folio, master, contact, "Coil page numbering");
+		pageChangeKeepsContactOnMaster(
+			project, folio, master, contact, "Coil page numbering", false);
+	}
+
+	// A text which becomes an element info field afterwards must watch the
+	// master it draws the label from: the master's label moves on with the
+	// numbering given again, and nothing writes the copy the contact keeps
+	// then, so only that watch redraws the contact's text.
+	void contactTextSwitchedToElementInfoFollowsItsMaster()
+	{
+		QETProject project;
+		Diagram*	folio = project.addNewDiagram();
+		QVERIFY(folio);
+
+		Element* master  = symbol(folio, "plc_master");
+		Element* contact = symbol(folio, "plc_slave");
+		QVERIFY(master);
+		QVERIFY(contact);
+		DynamicElementTextItem* text = labelText(contact);
+		QVERIFY(text);
+
+			//The text is a user text while the link and the numbering
+			//happen, as a text the user switches to element info later is
+		text->setTextFrom(DynamicElementTextItem::UserText);
+		settle();
+
+		auto* link = new LinkElementCommand(contact);
+		link->setLink(master);
+		link->setGroupIndex(0);
+		project.undoStack()->push(link);
+		settle();
+		QVERIFY(contact->linkedElements().contains(master));
+
+			//A numbering with a counter, so that numbering the master again
+			//gives it another label while the page stays the one
+		NumerotationContext nc;
+		nc.addValue(QStringLiteral("string"), QStringLiteral("-K"));
+		nc.addValue(QStringLiteral("idfolio"));
+		nc.addValue(QStringLiteral("string"), QStringLiteral("-"));
+		nc.addValue(QStringLiteral("unit"));
+		auto* create = ElementAutoNumSchemeCommand::create(
+			&project, "Counter numbering", nc);
+		QVERIFY(create);
+		project.undoStack()->push(create);
+		auto* assign = ElementAutoNumSchemeCommand::assign(
+			&project, "Counter numbering", {master}, false);
+		QVERIFY(assign);
+		project.undoStack()->push(assign);
+		settle();
+		QCOMPARE(master->actualLabel(), QStringLiteral("-K1-1"));
+
+		text->setTextFrom(DynamicElementTextItem::ElementInfo);
+		settle();
+		QCOMPARE(shownLabel(contact), QStringLiteral("-K1-1"));
+
+			//The master is numbered again: its label moves on, and the copy
+			//the contact stores is left where it was
+		master->setUpFormula(true);
+		settle();
+		QCOMPARE(master->actualLabel(), QStringLiteral("-K1-2"));
+		QVERIFY2(
+			shownLabel(contact) == QStringLiteral("-K1-2"),
+			"the contact's text must follow its master directly");
 	}
 };
 

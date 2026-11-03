@@ -182,6 +182,10 @@ class DynamicElementTextItem : public DiagramTextItem
 		void removeConnectionForReportFormula(const QString &formula);
 		void setupFormulaConnection();
 		void clearFormulaConnection();
+		/// Whether this text draws a label, and not the terminal number or another information
+		bool drawsLabel() const;
+		/// Watch the element the label this text draws comes from (@sa labelSource())
+		void watchLabelSource();
 		void updateReportFormulaConnection();
 		void updateReportText();
 		void updateLabel();
