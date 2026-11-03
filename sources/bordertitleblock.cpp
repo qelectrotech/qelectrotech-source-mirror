@@ -89,47 +89,61 @@ BorderTitleBlock::~BorderTitleBlock()
 QRectF BorderTitleBlock::titleBlockRect() const
 {
 	if (m_edge == Qt::BottomEdge){
+		// we get the reference point lower left corner of the work area
+		qreal x = diagram_rect_.bottomLeft().x();
+		qreal y = diagram_rect_.bottomLeft().y();
+		qreal w = diagram_rect_.width();
+		qreal h = m_titleblock_template_renderer -> height();
 		Qt::Alignment align = titleBlockTemplateAlign();
-		if(align.testFlag(Qt::AlignTop)){
-			return QRectF(diagram_rect_.bottomLeft(),
-			      QSize(diagram_rect_.width(),
-				    m_titleblock_template_renderer -> height()
-				    ));
-		}else if(align.testFlag(Qt::AlignBottom)){
-			qreal x = diagram_rect_.bottomLeft().x();
-			qreal y = diagram_rect_.bottomLeft().y();
-			qreal w = diagram_rect_.width();
+		// if the alignment is along the bottom edge, raise the reference point to the height of the stamp and reduce it by the width of the ruler
+		if(align.testFlag(Qt::AlignBottom)){
+			y -= h;
 			if (display_rows_){
 				x += rows_header_width_;
 				w -= rows_header_width_;
 			}
-			qreal wb = m_titleblock_template_renderer -> titleBlockTemplate() -> width(qRound(w));
-			qreal dw = w-wb;
-			if (align.testFlag(Qt::AlignCenter) || align.testFlag(Qt::AlignHCenter)){
-				x += dw/2;
-				w = wb;
-			}else if (align.testFlag(Qt::AlignRight)){
-				x += dw;
-				w = wb;
-			}else if (align.testFlag(Qt::AlignLeft)){
-				w = wb;
-			}
-			y -= m_titleblock_template_renderer -> height();
-			return QRectF(QPointF(x,y),
-			      QSize(wb,
-				    m_titleblock_template_renderer -> height()
-				    ));
-		}else{
-			return QRectF(diagram_rect_.bottomLeft(),
-			      QSize(diagram_rect_.width(),
-				    m_titleblock_template_renderer -> height()
-				    ));
 		}
+		qreal wb = m_titleblock_template_renderer -> titleBlockTemplate() -> width(qRound(w));
+		qreal dw = w - wb;
+		// align with the sheet border
+		if (align.testFlag(Qt::AlignCenter) || align.testFlag(Qt::AlignHCenter)){
+			x += dw/2;
+			w = wb;
+		}else if (align.testFlag(Qt::AlignRight)){
+			x += dw;
+			w = wb;
+		}else if (align.testFlag(Qt::AlignLeft)){
+			w = wb;
+		}
+		return QRectF(QPointF(x,y), QSize(w, h));
 	}else{
-		return QRectF(diagram_rect_.topRight(),
-			      QSize(m_titleblock_template_renderer -> height(),
-				    diagram_rect_.height()
-				    ));
+		// we get the reference point lower left corner of the work area
+		qreal x = diagram_rect_.topRight().x();
+		qreal y = diagram_rect_.topRight().y();
+		qreal w = m_titleblock_template_renderer -> height();
+		qreal h = diagram_rect_.height();
+		Qt::Alignment align = titleBlockTemplateAlign();
+		// if the alignment is along the bottom edge, raise the reference point to the height of the stamp and reduce it by the width of the ruler
+		if(align.testFlag(Qt::AlignBottom)){
+			x -= w;
+			if (display_columns_){
+				y += rows_header_width_;
+				h -= rows_header_width_;
+			}
+		}
+		qreal hb = m_titleblock_template_renderer -> titleBlockTemplate() -> width(qRound(h));
+		qreal dh = h - hb;
+		// align with the sheet border
+		if (align.testFlag(Qt::AlignCenter) || align.testFlag(Qt::AlignHCenter)){
+			y += dh/2;
+			h = hb;
+		}else if (align.testFlag(Qt::AlignRight)){
+			h = hb;
+		}else if (align.testFlag(Qt::AlignLeft)){
+			y += dh;
+			h = hb;
+		}
+		return QRectF(QPointF(x,y), QSize(w, h));
 	}
 }
 
@@ -157,14 +171,12 @@ DiagramContext BorderTitleBlock::titleblockInformation() const
 QRectF BorderTitleBlock::titleBlockRectForQPainter() const
 {
 	//Rect at bottom have same position and dimension of displayed rect
+	QRectF titleblock = titleBlockRect();
 	if (m_edge == Qt::BottomEdge)
 		return titleBlockRect();
 	else
-		return QRectF (diagram_rect_.bottomRight(),
-			       QSize(diagram_rect_.height(),
-				     m_titleblock_template_renderer -> height()
-				     ));
-
+		return QRectF(titleblock.bottomLeft(),
+			       QSize(titleblock.height(), titleblock.width()));
 }
 
 /**

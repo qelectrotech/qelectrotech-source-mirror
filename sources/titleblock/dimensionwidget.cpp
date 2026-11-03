@@ -160,10 +160,14 @@ void TitleBlockDimensionWidget::initWidgets()
 		align_label_ = new QLabel(tr("Alignment:", "default dialog label"));
 		align_cb_ = new QComboBox();
 		align_cb_->addItem(tr("Top", "default dialog label"), QVariant::fromValue(static_cast<Qt::Alignment>(Qt::AlignTop)));
+		align_cb_->addItem(tr("Top Left", "default dialog label"), QVariant::fromValue(Qt::AlignTop | Qt::AlignLeft));
+		align_cb_->addItem(tr("Top Center", "default dialog label"), QVariant::fromValue(Qt::AlignTop | Qt::AlignHCenter));
+		align_cb_->addItem(tr("Top Right", "default dialog label"), QVariant::fromValue(Qt::AlignTop | Qt::AlignRight));
 		align_cb_->addItem(tr("Bottom", "default dialog label"), QVariant::fromValue(static_cast<Qt::Alignment>(Qt::AlignBottom)));
 		align_cb_->addItem(tr("Bottom Left", "default dialog label"), QVariant::fromValue(Qt::AlignBottom | Qt::AlignLeft));
 		align_cb_->addItem(tr("Bottom Center", "default dialog label"), QVariant::fromValue(Qt::AlignBottom | Qt::AlignHCenter));
 		align_cb_->addItem(tr("Bottom Right", "default dialog label"), QVariant::fromValue(Qt::AlignBottom | Qt::AlignRight));
+		align_cb_->setToolTip(tr("Indicate which side of the title border template should be aligned with the edge of the workspace", "default dialog label"));
 	}
 	
 	updateSpinBoxSuffix();
