@@ -84,6 +84,9 @@ On Linux the paths to the elements and the translations are compiled in from
 sudo tar -xzf qelectrotech-*-Linux.tar.gz -C /usr/local --strip-components=1
 ```
 
+Or add `-DQET_RELATIVE_DATA_PATHS=ON` at the configure step: QElectroTech
+then finds them from its own folder, and the archive works unpacked anywhere.
+
 The archives are tested on Linux and, with MSVC, on Windows, not on macOS. For
 MinGW see [below](#mingw-w64-gcc).
 
@@ -95,6 +98,7 @@ Useful configure-time options (pass as `-D<OPTION>=<value>`):
 | `BUILD_WITH_KF` | distro-dependent | build against KDE Frameworks; see below |
 | `QET_ENABLE_PCH` | `OFF` | precompiled headers for faster rebuilds (needs CMake ≥ 3.16) |
 | `QET_DEPLOY_QT` | `OFF` | Windows and macOS: `cmake --install` also copies the Qt libraries and plugins QElectroTech uses (windeployqt, macdeployqt), for a folder that runs without Qt installed; needs Qt ≥ 6.5 |
+| `QET_RELATIVE_DATA_PATHS` | `OFF` | Linux and other Unix systems: QElectroTech finds its elements, title blocks and translations from its own folder instead of `CMAKE_INSTALL_PREFIX`, so the installed files work wherever they are copied |
 | `SQLite3_DLL` | empty | Windows: the path of SQLite's DLL, which `cmake --install` then installs too |
 | `CPACK_GENERATOR` | empty | the packages `cpack` makes: `ZIP`, `TGZ` or both as `"ZIP;TGZ"`, and on Windows `WIX` |
 
