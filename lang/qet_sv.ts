@@ -1360,8 +1360,8 @@ Obs! Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE automatisk numrering, de st
 <context>
     <name>BridgeCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="791"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="466"/>
+        <location filename="../sources/diagramview.cpp" line="791"/>
         <source>Paste a bridge</source>
         <translation>Klistra in en bygel</translation>
     </message>
@@ -1606,8 +1606,8 @@ Obs! Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE automatisk numrering, de st
 <context>
     <name>CableCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="776"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="453"/>
+        <location filename="../sources/diagramview.cpp" line="776"/>
         <source>Paste a cable</source>
         <translation>Klistra in en kabel</translation>
     </message>
@@ -3496,32 +3496,32 @@ Fortsätta?</translation>
     <message>
         <location filename="../sources/diagram.cpp" line="347"/>
         <source>a text</source>
-        <translation type="unfinished"></translation>
+        <translation>en text</translation>
     </message>
     <message>
         <location filename="../sources/diagram.cpp" line="348"/>
         <source>a shape</source>
-        <translation type="unfinished"></translation>
+        <translation>en form</translation>
     </message>
     <message>
         <location filename="../sources/diagram.cpp" line="349"/>
         <source>a picture</source>
-        <translation type="unfinished"></translation>
+        <translation>en bild</translation>
     </message>
     <message>
         <location filename="../sources/diagram.cpp" line="350"/>
         <source>a table</source>
-        <translation type="unfinished"></translation>
+        <translation>en tabell</translation>
     </message>
     <message>
         <location filename="../sources/diagram.cpp" line="351"/>
         <source>a terminal strip</source>
-        <translation type="unfinished"></translation>
+        <translation>en plintrad</translation>
     </message>
     <message>
         <location filename="../sources/diagram.cpp" line="352"/>
         <source>a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>en kabel</translation>
     </message>
     <message>
         <location filename="../sources/diagram.cpp" line="3342"/>
@@ -4203,7 +4203,8 @@ Fortsätta?</translation>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="798"/>
         <source>
 Hold Shift and drag to move the symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Håll ned Skift och dra för att flytta symbolen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="799"/>
@@ -8212,22 +8213,22 @@ som du skapar. Text- och nummerinmatningar är
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="64"/>
         <source>Selection rectangle selects:</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeringsrektangeln markerar:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="75"/>
         <source>Everything it overlaps (as before)</source>
-        <translation type="unfinished"></translation>
+        <translation>Allt den överlappar (som tidigare)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="80"/>
         <source>What lies wholly within it</source>
-        <translation type="unfinished"></translation>
+        <translation>Det som ligger helt inuti den</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="85"/>
         <source>By direction: wholly within to the right, overlapped to the left</source>
-        <translation type="unfinished"></translation>
+        <translation>Efter riktning: helt inuti åt höger, överlappat åt vänster</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="102"/>
@@ -8237,12 +8238,12 @@ som du skapar. Text- och nummerinmatningar är
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="109"/>
         <source>Draw a connected terminal in the color of its conductor</source>
-        <translation type="unfinished"></translation>
+        <translation>Rita anslutningar som har en förbindning i förbindningens färg</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="112"/>
         <source>Unchecked, every terminal is drawn in red. Terminals are never printed or exported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Om rutan inte är markerad ritas alla anslutningar i rött. Anslutningar skrivs aldrig ut och exporteras aldrig.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="119"/>
@@ -8352,12 +8353,12 @@ som du skapar. Text- och nummerinmatningar är
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="315"/>
         <source>Dragging a symbol&apos;s text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</source>
-        <translation type="unfinished"></translation>
+        <translation>När du drar en symbols text flyttas bara texten, och Skift+dra flyttar symbolen, som före version 0.100. Inte markerad som standard: att dra en text flyttar dess symbol, och Skift+dra flyttar texten.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="318"/>
         <source>Drag symbol texts without holding Shift</source>
-        <translation type="unfinished"></translation>
+        <translation>Dra symboltexter utan att hålla ned Skift</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="325"/>
@@ -8402,12 +8403,12 @@ som du skapar. Text- och nummerinmatningar är
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="365"/>
         <source>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</source>
-        <translation type="unfinished"></translation>
+        <translation>Utskrift och export frågar först när symboler, texter, former, bilder eller tabeller ligger utanför bladet, eftersom de då beskärs eller utelämnas; vid sparning visas det i statusfältet.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="368"/>
         <source>Warn about items outside the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Varna för objekt utanför bladet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="375"/>
@@ -9747,105 +9748,135 @@ Alla värden andra än ”Ingen avrundning” kan orsaka renderingsfel i projekt
 <context>
     <name>GraphicsTablePropertiesEditor</name>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="14"/>
         <source>Table properties</source>
-        <translation type="vanished">Formulär</translation>
+        <translation>Formulär</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="24"/>
         <source>Display</source>
-        <translation type="vanished">Visning</translation>
+        <translation>Visning</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="33"/>
         <source>Table name</source>
-        <translation type="vanished">Namn på tabell</translation>
+        <translation>Namn på tabell</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="40"/>
         <source>Geometry and lines</source>
-        <translation type="vanished">Geometri och linjer</translation>
+        <translation>Geometri och linjer</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="46"/>
         <source>All</source>
-        <translation type="vanished">Allt</translation>
+        <translation>Allt</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="59"/>
         <source>Next table</source>
-        <translation type="vanished">Nästa tabell</translation>
+        <translation>Nästa tabell</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="79"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="330"/>
         <source>None</source>
         <translation>Ingen</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="100"/>
         <source>Fit table to sheet</source>
-        <translation type="vanished">Anpassa tabell till blad</translation>
+        <translation>Anpassa tabell till blad</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="126"/>
         <source>Y :</source>
-        <translation type="vanished">Y:</translation>
+        <translation>Y:</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="136"/>
         <source>X :</source>
-        <translation type="vanished">X:</translation>
+        <translation>X:</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="174"/>
         <source>Previous table</source>
-        <translation type="vanished">Föregående tabell</translation>
+        <translation>Föregående tabell</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="197"/>
         <source>Apply geometry to all tables linked to this one</source>
-        <translation type="vanished">Tillämpa geometri på alla relaterade tabeller</translation>
+        <translation>Tillämpa geometri på alla relaterade tabeller</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="210"/>
         <source>Previous table :</source>
-        <translation type="vanished">Föregående tabell:</translation>
+        <translation>Föregående tabell:</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="220"/>
         <source>Lines to display :</source>
-        <translation type="vanished">Rader att visa:</translation>
+        <translation>Rader att visa:</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="230"/>
         <source>TextLabel</source>
-        <translation type="vanished">TextEtikett</translation>
+        <translation>TextEtikett</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="246"/>
         <source>Header</source>
-        <translation type="vanished">Rubrik</translation>
+        <translation>Rubrik</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="270"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="429"/>
         <source>Margin</source>
-        <translation type="vanished">Marginaler</translation>
+        <translation>Marginaler</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="339"/>
         <source>Alignment :</source>
-        <translation type="vanished">Justering:</translation>
+        <translation>Justering:</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="346"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="489"/>
         <source>Left</source>
-        <translation type="vanished">Vänster</translation>
+        <translation>Vänster</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="353"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="496"/>
         <source>Center</source>
-        <translation type="vanished">Centrerad</translation>
+        <translation>Centrerad</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="360"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="503"/>
         <source>Right</source>
-        <translation type="vanished">Höger</translation>
+        <translation>Höger</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="383"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="526"/>
         <source>Font</source>
-        <translation type="vanished">Typsnitt</translation>
+        <translation>Typsnitt</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="396"/>
         <source>Table</source>
-        <translation type="vanished">Tabell</translation>
+        <translation>Tabell</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="482"/>
         <source>Alignment:</source>
-        <translation type="vanished">Justering:</translation>
+        <translation>Justering:</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="553"/>
         <source>Content</source>
-        <translation type="vanished">Innehåll</translation>
+        <translation>Innehåll</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="140"/>
@@ -10201,64 +10232,81 @@ Alla värden andra än ”Ingen avrundning” kan orsaka renderingsfel i projekt
 <context>
     <name>IndiTextPropertiesWidget</name>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulär</translation>
+        <translation>Formulär</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="20"/>
         <source>X :</source>
-        <translation type="vanished">X:</translation>
+        <translation>X:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="30"/>
         <source>Advanced Editor</source>
-        <translation type="vanished">Avancerad redigering</translation>
+        <translation>Avancerad redigering</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="37"/>
         <source>Size :</source>
-        <translation type="vanished">Storlek:</translation>
+        <translation>Storlek:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="47"/>
         <source>Angle:</source>
-        <translation type="vanished">Vinkel:</translation>
+        <translation>Vinkel:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="57"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="93"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="148"/>
         <source>px</source>
-        <translation type="vanished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
         <source>°</source>
-        <translation type="vanished">°</translation>
+        <translation>°</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="122"/>
         <source>Y :</source>
-        <translation type="vanished">Y:</translation>
+        <translation>Y:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
         <source>Width:</source>
-        <translation type="vanished">Bredd:</translation>
+        <translation>Bredd:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="142"/>
         <source>Text width; the text wraps at this width. Auto: no automatic line wrap</source>
-        <translation type="vanished">Textbredd; texten radbryts vid denna bredd. Auto: ingen automatisk radbrytning</translation>
+        <translation>Textbredd; texten radbryts vid denna bredd. Auto: ingen automatisk radbrytning</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="145"/>
         <source>Auto</source>
-        <translation type="vanished">Auto</translation>
+        <translation>Auto</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="164"/>
         <source>The contents, the size and the font of the text can not be modified because formatted in html.
 Please use the advanced editor for this.</source>
-        <translation type="vanished">Textens innehåll, storlek och typsnitt kan inte ändras eftersom den är formaterad i html.
+        <translation>Textens innehåll, storlek och typsnitt kan inte ändras eftersom den är formaterad i html.
 Använd den avancerade redigeraren för detta.</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="178"/>
         <source>Click here to cancel html formatting</source>
-        <translation type="vanished">Klicka här för att ta bort html-formateringen</translation>
+        <translation>Klicka här för att ta bort html-formateringen</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="185"/>
         <source>Text</source>
-        <translation type="vanished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="192"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="421"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="460"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="510"/>
@@ -12673,16 +12721,19 @@ Ge dem en annan numrering först.</numerusform>
 <context>
     <name>ProjectDBModelPropertiesWidget</name>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
         <source>Request</source>
-        <translation type="vanished">Begäran</translation>
+        <translation>Begäran</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="30"/>
         <source>Reload</source>
-        <translation type="vanished">Ladda om</translation>
+        <translation>Ladda om</translation>
     </message>
 </context>
 <context>
@@ -13327,15 +13378,15 @@ Vill du spara ändringarna?</translation>
         <location filename="../sources/projectview.cpp" line="407"/>
         <source>Save as .qetdb?</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Spara som .qetdb?</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/projectview.cpp" line="408"/>
         <source>%n bridge(s) are drawn in this project. The .qetdb format does not store bridges yet -- they are kept in the normal .qet format only. Save it as .qetdb anyway?</source>
         <comment>also asked when the file name says .qetdb</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n bygel är ritad i detta projekt. Formatet .qetdb sparar ännu inte byglar -- de finns bara kvar i det vanliga .qet-formatet. Vill du ändå spara det som .qetdb?</numerusform>
+            <numerusform>%n byglar är ritade i detta projekt. Formatet .qetdb sparar ännu inte byglar -- de finns bara kvar i det vanliga .qet-formatet. Vill du ändå spara det som .qetdb?</numerusform>
         </translation>
     </message>
     <message>
@@ -15475,8 +15526,8 @@ Håll ned Ctrl under flytten för att placera fritt.</translation>
         <translation>Söker och markerar snabbt en symbol på bladet</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1930"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="76"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1930"/>
         <source>Connections</source>
         <comment>toolbar title</comment>
         <translation>Förbindningar</translation>
@@ -16063,34 +16114,34 @@ Du kan också numrera kablarna automatiskt senare: regeln kan när som helst ang
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="6310"/>
         <source>%n more</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n till</numerusform>
+            <numerusform>%n till</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="6313"/>
         <source>Untitled sheet</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished">Namnlöst blad</translation>
+        <translation>Namnlöst blad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="6317"/>
         <source>%1 - %2: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2: %3</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="6340"/>
         <source>... and %n more folio(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>... och %n blad till</numerusform>
+            <numerusform>... och %n blad till</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="6343"/>
         <source>Outside the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Utanför bladet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="6344"/>
@@ -16099,43 +16150,47 @@ Du kan också numrera kablarna automatiskt senare: regeln kan när som helst ang
 %1
 
 Go on anyway?</source>
-        <translation type="unfinished"></translation>
+        <translation>Dessa objekt ligger utanför bladet och beskärs eller utelämnas:
+
+%1
+
+Vill du fortsätta ändå?</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="6365"/>
         <source>Project saved; %n folio(s) with items outside the sheet, named when printing or exporting</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Projektet sparat; %n blad har objekt utanför bladet, de namnges vid utskrift eller export</numerusform>
+            <numerusform>Projektet sparat; %n blad har objekt utanför bladet, de namnges vid utskrift eller export</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1915"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="68"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1915"/>
         <source>Tools</source>
         <translation>Verktyg</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1918"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="70"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1918"/>
         <source>Display</source>
         <translation>Visning</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1921"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="72"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1921"/>
         <source>Diagram</source>
         <translation>Schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1924"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="74"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1924"/>
         <source>Add</source>
         <translation>Lägg till</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1927"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="78"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1927"/>
         <source>Depth</source>
         <comment>toolbar title</comment>
         <translation>Djup</translation>
@@ -18244,9 +18299,9 @@ Vad vill du göra?</translation>
     </message>
     <message>
         <location filename="../sources/conductorproperties.cpp" line="1065"/>
-        <location filename="../sources/qetapp.cpp" line="3178"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="403"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="812"/>
+        <location filename="../sources/qetapp.cpp" line="3178"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="406"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="529"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="564"/>
@@ -18617,7 +18672,7 @@ det översatta namnet på denna mapp kunde inte läsas, så mappnamnet visas i s
         <translation>Anslutning</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="334"/>
+        <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="65"/>
         <location filename="../sources/formulabuilder.cpp" line="102"/>
         <location filename="../sources/formulabuilder.cpp" line="103"/>
         <location filename="../sources/formulabuilder.cpp" line="104"/>
@@ -18625,7 +18680,7 @@ det översatta namnet på denna mapp kunde inte läsas, så mappnamnet visas i s
         <location filename="../sources/formulabuilder.cpp" line="112"/>
         <location filename="../sources/formulabuilder.cpp" line="113"/>
         <location filename="../sources/formulabuilder.cpp" line="114"/>
-        <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="65"/>
+        <location filename="../sources/qetinformation.cpp" line="334"/>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="187"/>
         <source>Text</source>
         <translation>Text</translation>
@@ -19255,30 +19310,30 @@ Vill du ersätta den?</translation>
         <translation>Adress</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="316"/>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="212"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1459"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1849"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="3505"/>
+        <location filename="../sources/qetinformation.cpp" line="316"/>
         <source>Annotation</source>
         <translation>Kommentar</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="377"/>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="213"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1460"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1850"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="3506"/>
+        <location filename="../sources/qetinformation.cpp" line="377"/>
         <source>Cross-reference</source>
         <translation>Korsreferens</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="317"/>
-        <location filename="../sources/qetinformation.cpp" line="330"/>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="211"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1458"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1848"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="3504"/>
+        <location filename="../sources/qetinformation.cpp" line="317"/>
+        <location filename="../sources/qetinformation.cpp" line="330"/>
         <source>Function</source>
         <translation>Funktion</translation>
     </message>
@@ -19543,8 +19598,8 @@ Vill du ersätta den?</translation>
         <translation>Artikelnummer</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="320"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="135"/>
+        <location filename="../sources/qetinformation.cpp" line="320"/>
         <source>Manufacturer</source>
         <translation>Tillverkare</translation>
     </message>
@@ -19886,8 +19941,8 @@ Vill du ersätta den?</translation>
         </translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="111"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="955"/>
+        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="111"/>
         <source>Rotate %1</source>
         <translation>Rotera %1</translation>
     </message>
@@ -20049,7 +20104,7 @@ Ladda ner den genom att följa länken nedan och packa upp den i installationsma
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="95"/>
         <source>Text grid %1. Hold Ctrl to place freely.</source>
-        <translation type="unfinished"></translation>
+        <translation>Textrutnät %1. Håll ned Ctrl för att placera fritt.</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="96"/>
@@ -20604,7 +20659,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="93"/>
-        <location filename="../sources/formulabuilder.cpp" line="93"/>
         <source>Equals</source>
         <translation>Lika med</translation>
     </message>
@@ -20623,7 +20677,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="94"/>
-        <location filename="../sources/formulabuilder.cpp" line="94"/>
         <source>Differs from</source>
         <translation>Skiljer sig från</translation>
     </message>
@@ -20633,7 +20686,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
         <translation>Sant när de två värdena skiljer sig åt.</translation>
     </message>
     <message>
-        <location filename="../sources/formulabuilder.cpp" line="95"/>
         <location filename="../sources/formulabuilder.cpp" line="95"/>
         <source>Greater than</source>
         <translation>Större än</translation>
@@ -20660,7 +20712,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="96"/>
-        <location filename="../sources/formulabuilder.cpp" line="96"/>
         <source>At least</source>
         <translation>Minst</translation>
     </message>
@@ -20672,12 +20723,10 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="97"/>
-        <location filename="../sources/formulabuilder.cpp" line="97"/>
         <source>Smaller than</source>
         <translation>Mindre än</translation>
     </message>
     <message>
-        <location filename="../sources/formulabuilder.cpp" line="98"/>
         <location filename="../sources/formulabuilder.cpp" line="98"/>
         <source>At most</source>
         <translation>Högst</translation>
@@ -20724,7 +20773,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="102"/>
-        <location filename="../sources/formulabuilder.cpp" line="102"/>
         <source>Contains</source>
         <translation>Innehåller</translation>
     </message>
@@ -20735,7 +20783,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="103"/>
-        <location filename="../sources/formulabuilder.cpp" line="103"/>
         <source>Starts with</source>
         <translation>Börjar med</translation>
     </message>
@@ -20745,7 +20792,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
         <translation>Sant när texten börjar med den andra texten, oavsett skiftläge.</translation>
     </message>
     <message>
-        <location filename="../sources/formulabuilder.cpp" line="104"/>
         <location filename="../sources/formulabuilder.cpp" line="104"/>
         <source>Ends with</source>
         <translation>Slutar med</translation>
