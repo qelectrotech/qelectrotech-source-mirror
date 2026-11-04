@@ -353,6 +353,7 @@ namespace autonum
 		str.replace("%{tension_protocol}", dc.value("tension_protocol").toString());
 		str.replace("%{conductor_section}", dc.value("conductor_section").toString());
 		str.replace("%{conductor_color}", dc.value("conductor_color").toString());
+		str.replace("%{conductor_text}", dc.value("conductor_text").toString());
 
 		str.replace("%{void}", QString());
 

@@ -122,6 +122,7 @@ class Element : public QetGraphicsItem
 
 	public slots:
 		void updateConductorTexts();
+		void watchConductorText(Conductor *conductor);
 
 	public:
 		QList<Terminal *> terminals() const;
@@ -187,6 +188,8 @@ class Element : public QetGraphicsItem
 			*/
 		QString labelForDisplay();
 		QString terminalNumberForDisplay();
+		QString conductorTextForDisplay();
+		void addDisplayValues(DiagramContext &dc);
 		QString infoForDisplay(const QString &info_name);
 		bool hasTerminalNumberText() const;
 		bool labelShown() const;

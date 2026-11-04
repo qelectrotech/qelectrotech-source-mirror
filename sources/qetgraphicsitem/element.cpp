@@ -1114,7 +1114,7 @@ Terminal *Element::parseTerminal(const QDomElement &dom_element)
 	new_terminal->setPlaceRank(rank);
 	m_terminals << new_terminal;
 
-	connect(new_terminal, &Terminal::conductorWasAdded,   this, &Element::updateConductorTexts);
+	connect(new_terminal, &Terminal::conductorWasAdded,   this, &Element::watchConductorText);
 	connect(new_terminal, &Terminal::conductorWasRemoved, this, &Element::updateConductorTexts);
 
 		//Sort from top to bottom and left to right
@@ -3278,8 +3278,46 @@ QString Element::infoForDisplay(const QString &info_name)
 	if (info_name == QETInformation::ELMT_TERMINAL_NUMBER) {
 		return terminalNumberForDisplay();
 	}
+	if (info_name == QETInformation::ELMT_CONDUCTOR_TEXT) {
+		return conductorTextForDisplay();
+	}
 
 	return m_data.m_informations.value(info_name).toString();
+}
+
+/**
+	@brief Element::conductorTextForDisplay
+	@return the distinct texts of the wires on the terminals of this
+	terminal symbol, in the order of its terminals and joined with a
+	space; empty for any other symbol. Display only, nothing is stored.
+*/
+QString Element::conductorTextForDisplay()
+{
+	if (m_data.m_type != ElementData::Terminal) {
+		return QString();
+	}
+
+	QStringList texts;
+	for (Terminal *terminal : m_terminals) {
+		for (Conductor *conductor : terminal->conductors()) {
+			const QString text = conductor->properties().text;
+			if (!text.isEmpty() && !texts.contains(text)) {
+				texts << text;
+			}
+		}
+	}
+	return texts.join(QLatin1Char(' '));
+}
+
+/**
+	@brief Element::addDisplayValues
+	Add to @p dc the values a text shows differently from how they are stored.
+*/
+void Element::addDisplayValues(DiagramContext &dc)
+{
+	dc.addValue(QETInformation::ELMT_LABEL,            labelForDisplay());
+	dc.addValue(QETInformation::ELMT_TERMINAL_NUMBER, terminalNumberForDisplay());
+	dc.addValue(QETInformation::ELMT_CONDUCTOR_TEXT,  conductorTextForDisplay());
 }
 
 /**
@@ -3436,6 +3474,19 @@ bool Element::definitionGeometryMatches(const QDomElement &definition) const
 }
 
 /**
+ * @brief Element::watchConductorText
+ * Slot triggered when a wire is connected to a terminal of this symbol:
+ * the texts which show its number follow it when it changes.
+ */
+void Element::watchConductorText(Conductor *conductor)
+{
+	if (conductor) {
+		connect(conductor, &Conductor::propertiesChange, this, &Element::updateConductorTexts, Qt::UniqueConnection);
+	}
+	updateConductorTexts();
+}
+
+/**
  * @brief Element::updateConductorTexts
  * Refresh the texts of this symbol that show the properties of the wire
  * it is on: a wire label's own, and a folio report's (its function,
@@ -3444,6 +3495,18 @@ bool Element::definitionGeometryMatches(const QDomElement &definition) const
  */
 void Element::updateConductorTexts()
 {
+	if (m_data.m_type == ElementData::Terminal)
+	{
+			//Only the texts which read the wire number: the others
+			//have nothing to refresh
+		for (DynamicElementTextItem *deti : m_dynamic_text_list) {
+			if (deti && (deti->infoName() == QETInformation::ELMT_CONDUCTOR_TEXT
+						 || deti->compositeText().contains(QETInformation::ELMT_CONDUCTOR_TEXT))) {
+				deti->refreshConductorText();
+			}
+		}
+	}
+
 	if (m_link_type == Element::ConductorDefinition)
 	{
 		for (DynamicElementTextItem *deti : m_dynamic_text_list) {

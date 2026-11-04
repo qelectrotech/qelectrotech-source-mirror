@@ -631,8 +631,7 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 				//The label and the terminal number are drawn the way the
 				//settings say, every other information as it is stored
 			DiagramContext dc = elementUseForInfo()->elementInformations();
-			dc.addValue(QETInformation::ELMT_LABEL,            elementUseForInfo()->labelForDisplay());
-			dc.addValue(QETInformation::ELMT_TERMINAL_NUMBER, elementUseForInfo()->terminalNumberForDisplay());
+			elementUseForInfo()->addDisplayValues(dc);
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 		}
 		
@@ -1394,8 +1393,7 @@ void DynamicElementTextItem::elementInfoChanged()
 			//project says (@sa QETProject::terminalLabelSplit): a
 			//composite text which uses them must see the same values the
 			//fields bound to them show
-		dc.addValue(QETInformation::ELMT_LABEL,           element->labelForDisplay());
-		dc.addValue(QETInformation::ELMT_TERMINAL_NUMBER, element->terminalNumberForDisplay());
+		element->addDisplayValues(dc);
 	}
 	
 	QString final_text;
