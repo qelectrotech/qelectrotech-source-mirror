@@ -541,6 +541,10 @@ qet_add_app_test(tst_bridgetool tst_bridgetool.cpp)
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
 
+# The zoom step (a setting, off by default): zooming goes by a fixed number
+# of percent, also from between two steps and from a smooth mouse wheel.
+qet_add_app_test(tst_zoomstep tst_zoomstep.cpp)
+
 # A conductor between two terminals on the same point (symbols placed
 # against each other) connects them but is not drawn nor clicked.
 qet_add_app_test(tst_touchingconductor tst_touchingconductor.cpp)
