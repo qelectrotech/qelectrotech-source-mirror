@@ -616,6 +616,9 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 
 	//Draw conductors
 	foreach(Conductor *cond, list_conductors) {
+			//Not drawn on the folio either
+		if (cond -> endsTouch())
+			continue;
 		QPolygonF poly;
 		bool firstseg = true;
 		foreach(ConductorSegment *segment, cond -> segmentsList()) {

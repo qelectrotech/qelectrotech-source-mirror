@@ -541,6 +541,9 @@ qet_add_app_test(tst_bridgetool tst_bridgetool.cpp)
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
 
+# A conductor between two terminals on the same point (symbols placed
+# against each other) connects them but is not drawn nor clicked.
+qet_add_app_test(tst_touchingconductor tst_touchingconductor.cpp)
 # A symbol that draws beyond its frame is drawn whole, at every zoom: its
 # bounding rect covers the drawing, not only the frame.
 qet_add_app_test(tst_symboloutsideframe tst_symboloutsideframe.cpp)
