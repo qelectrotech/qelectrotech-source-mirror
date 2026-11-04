@@ -22,6 +22,7 @@
 #include "../bridge/bridgemanager.h"
 #include "../diagram.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetproject.h"
 #include "conductorpropertieswidget.h"
 #include "ui_conductorpropertiesdialog.h"
 
@@ -42,6 +43,8 @@ ConductorPropertiesDialog::ConductorPropertiesDialog(
 	m_cpw = new ConductorPropertiesWidget(conductor->properties());
 	m_cpw -> setHiddenOneTextPerFolio(true);
 	m_cpw->setHiddenAvailableAutonum(true);
+	if (conductor->diagram() && conductor->diagram()->project())
+		m_cpw->setPotentialTypes(conductor->diagram()->project()->potentialTypes());
 	if (conductor -> diagram() -> defaultConductorProperties.m_one_text_per_folio == true &&
 		conductor -> relatedPotentialConductors().size()) {
 		m_cpw->setDisabledShowText();

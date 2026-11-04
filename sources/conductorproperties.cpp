@@ -333,6 +333,10 @@ QList<QPair<QString, QString>> ConductorProperties::attributes() const
 	}
 	add("bus", m_bus);
 	add("function", m_function);
+		//Written only when set, so a conductor without a potential type
+		//is saved exactly as before
+	if (!m_potential_type.isEmpty())
+		add("potential_type", m_potential_type);
 	add("tension_protocol", m_tension_protocol);
 	add("conductor_color", m_wire_color);
 	add("conductor_section", m_wire_section);
@@ -411,6 +415,7 @@ void ConductorProperties::fromXml(QDomElement &e)
 	m_cable_slot         = e.attribute("cable_slot", QString::number(-1)).toInt();
 	m_bus                = e.attribute("bus");
 	m_function           = e.attribute("function");
+	m_potential_type     = e.attribute("potential_type");
 	m_tension_protocol   = e.attribute("tension_protocol");
 	m_wire_color         = e.attribute("conductor_color");
 	m_wire_section       = e.attribute("conductor_section");
@@ -579,6 +584,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_cable              = cp.m_cable;
 		m_bus                = cp.m_bus;
 		m_function           = cp.m_function;
+		m_potential_type     = cp.m_potential_type;
 		m_tension_protocol   = cp.m_tension_protocol;
 		m_wire_color         = cp.m_wire_color;
 		m_wire_section       = cp.m_wire_section;
@@ -742,6 +748,17 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	}
 	if (equal)
 		m_function = s_value;
+	equal = true;
+
+		//Potential type
+	s_value = clist.first().m_potential_type;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_potential_type != s_value)
+			equal = false;
+	}
+	if (equal)
+		m_potential_type = s_value;
 	equal = true;
 
 		//Tension protocol
@@ -933,6 +950,7 @@ void ConductorProperties::applyChanges(const ConductorProperties &before,
 	take(m_cable,                before.m_cable,                after.m_cable);
 	take(m_bus,                  before.m_bus,                  after.m_bus);
 	take(m_function,             before.m_function,             after.m_function);
+	take(m_potential_type,       before.m_potential_type,       after.m_potential_type);
 	take(m_tension_protocol,     before.m_tension_protocol,     after.m_tension_protocol);
 	take(m_wire_color,           before.m_wire_color,           after.m_wire_color);
 	take(m_wire_section,         before.m_wire_section,         after.m_wire_section);
@@ -1021,6 +1039,7 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 		other.m_cable_slot == m_cable_slot &&\
 		other.m_bus == m_bus &&\
 		other.m_function == m_function &&\
+		other.m_potential_type == m_potential_type &&\
 		other.m_tension_protocol == m_tension_protocol &&\
 		other.m_wire_color == m_wire_color && \
 		other.m_wire_section == m_wire_section && \

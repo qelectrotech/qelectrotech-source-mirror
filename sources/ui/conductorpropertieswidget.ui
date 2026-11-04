@@ -52,6 +52,16 @@
               <bool>true</bool>
              </property>
              <layout class="QGridLayout" name="gridLayout_3">
+              <item row="5" column="0">
+               <widget class="QLabel" name="m_potential_type_label">
+                <property name="text">
+                 <string>Potential type :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QComboBox" name="m_potential_type_cb"/>
+              </item>
               <item row="4" column="0">
                <widget class="QLabel" name="label_14">
                 <property name="text">

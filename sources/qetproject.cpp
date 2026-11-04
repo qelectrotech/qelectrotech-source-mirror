@@ -2848,6 +2848,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeWireHopsXml(project_root);
 	writeSymbolTextsXml(project_root);
 	writeLanguagesXml(project_root);
+	writePotentialTypesXml(project_root);
 	writeTerminalLabelSplitXml(project_root);
 	writeWiringRulesXml(project_root);
 	writeChainedReportsXml(project_root);
@@ -3936,6 +3937,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readWireHopsXml(xml_project);
 	readSymbolTextsXml(xml_project);
 	readLanguagesXml(xml_project);
+	readPotentialTypesXml(xml_project);
 	readTerminalLabelSplitXml(xml_project);
 	readWiringRulesXml(xml_project);
 	readChainedReportsXml(xml_project);
@@ -5034,6 +5036,53 @@ void QETProject::writeLanguagesXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::readPotentialTypesXml
+	Read the <potentialtypes> element of the project, if any. A project
+	without it keeps drawing its conductors from their own style.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readPotentialTypesXml(QDomDocument &xml_project)
+{
+	m_potential_types = PotentialTypes::fromXml(xml_project.documentElement()
+			.firstChildElement(QStringLiteral("potentialtypes")));
+}
+
+/**
+	@brief QETProject::writePotentialTypesXml
+	Write the <potentialtypes> element, only when the project has turned
+	the feature on or changed the list, so any other project saves exactly
+	as before.
+	@param xml_element : the <project> element
+*/
+void QETProject::writePotentialTypesXml(QDomElement &xml_element)
+{
+	if (m_potential_types.isDefault()) {
+		return;
+	}
+	QDomDocument document = xml_element.ownerDocument();
+	xml_element.appendChild(m_potential_types.toXml(document));
+}
+
+/**
+	@brief QETProject::setPotentialTypes
+	Set the potential types and whether conductors are drawn from them,
+	and redraw the folios built.
+	@param potential_types
+*/
+void QETProject::setPotentialTypes(const PotentialTypes &potential_types)
+{
+	if (potential_types == m_potential_types) {
+		return;
+	}
+	m_potential_types = potential_types;
+	storeSettings();
+	setModified(true);
+	for (Diagram *diagram : folios()) {
+		diagram->update();
+	}
+}
+
+/**
 	@brief QETProject::writeSymbolTextsXml
 	Export whether the texts of turned symbols stay horizontal, as a
 	<symbol_texts> child of \a xml_element. Written only when on, so a
@@ -5236,6 +5285,7 @@ void QETProject::storeSettings()
 	writeWireHopsXml(root);
 	writeSymbolTextsXml(root);
 	writeLanguagesXml(root);
+	writePotentialTypesXml(root);
 	writeTerminalLabelSplitXml(root);
 	writeWiringRulesXml(root);
 	writeChainedReportsXml(root);
