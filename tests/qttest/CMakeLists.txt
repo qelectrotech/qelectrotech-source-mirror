@@ -2188,6 +2188,9 @@ qet_add_app_test(tst_propertiesdockscroll tst_propertiesdockscroll.cpp)
 # Dragging a symbol's text moves the symbol, Shift+drag the text, or the
 # other way round with "Drag symbol texts without holding Shift" (#1576).
 qet_add_app_test(tst_dragtextswithoutshift tst_dragtextswithoutshift.cpp)
+# Potential types (#1539): a project that asks for it draws a conductor in the
+# colour, line style and width of its potential type.
+qet_add_app_test(tst_potentialtypes tst_potentialtypes.cpp)
 
 # Settings for every test. get_property(... TESTS) only sees the tests added
 # so far, so they wait for the end of this file: a test takes them wherever
