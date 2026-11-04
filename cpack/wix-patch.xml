@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2006-2026 The QElectroTech Team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
+-->
+<!--
+	Added by cpack to the MSI (CPACK_WIX_PATCH_FILE).
+
+	The shortcuts in the start menu and on the desktop, with the product icon
+	(CPACK_WIX_PRODUCT_ICON): the program has no icon of its own. The same as
+	cpack makes from CPACK_PACKAGE_EXECUTABLES, apart from the icon.
+
+	Windows opens projects, symbols and title block templates with
+	QElectroTech. The .qet type is the one of the official installer
+	(build-aux/windows/QElectroTech.wxs), so the link stays when either MSI
+	replaces the other. No data folder arguments: the program finds its data
+	from its own folder.
+-->
+<CPackWiXPatch>
+	<CPackWiXFragment Id="#PRODUCT">
+		<StandardDirectory Id="ProgramMenuFolder">
+			<Component Id="QET_StartMenuShortcut" Guid="*">
+				<Shortcut Id="QET_StartMenuShortcut" Name="QElectroTech"
+					Target="[INSTALL_ROOT]bin\qelectrotech.exe"
+					WorkingDirectory="CM_DP_bin" Icon="ProductIcon.ico" />
+				<RegistryValue Root="HKCU"
+					Key="Software\The QElectroTech Team\QElectroTech"
+					Name="installed" Type="integer" Value="1" KeyPath="yes" />
+			</Component>
+		</StandardDirectory>
+		<StandardDirectory Id="DesktopFolder">
+			<Component Id="QET_DesktopShortcut" Guid="*">
+				<Shortcut Id="QET_DesktopShortcut" Name="QElectroTech"
+					Target="[INSTALL_ROOT]bin\qelectrotech.exe"
+					WorkingDirectory="CM_DP_bin" Icon="ProductIcon.ico" />
+				<RegistryValue Root="HKCU"
+					Key="Software\The QElectroTech Team\QElectroTech"
+					Name="installed_desktop" Type="integer" Value="1"
+					KeyPath="yes" />
+			</Component>
+		</StandardDirectory>
+
+		<Component Id="QET_FileTypes" Directory="INSTALL_ROOT"
+			Guid="868EEAA2-22E7-462E-9AA9-40E52A2CA763">
+			<RegistryValue Root="HKCR" Key=".qet" Type="string"
+				Value="QElectroTech.Document" KeyPath="yes" />
+			<RegistryValue Root="HKCR" Key=".qetz" Type="string"
+				Value="QElectroTech.Document" />
+			<RegistryValue Root="HKCR" Key=".qetdb" Type="string"
+				Value="QElectroTech.Document" />
+			<RegistryValue Root="HKCR" Key="QElectroTech.Document" Type="string"
+				Value="QElectroTech Project" />
+			<RegistryValue Root="HKCR" Key="QElectroTech.Document\DefaultIcon"
+				Type="string"
+				Value="[INSTALL_ROOT]ico\application-x-qet-project.ico" />
+			<RegistryValue Root="HKCR"
+				Key="QElectroTech.Document\shell\open\command" Type="string"
+				Value="&quot;[INSTALL_ROOT]bin\qelectrotech.exe&quot; &quot;%1&quot;" />
+
+			<RegistryValue Root="HKCR" Key=".elmt" Type="string"
+				Value="QElectroTech.Symbol" />
+			<RegistryValue Root="HKCR" Key="QElectroTech.Symbol" Type="string"
+				Value="QElectroTech Symbol" />
+			<RegistryValue Root="HKCR" Key="QElectroTech.Symbol\DefaultIcon"
+				Type="string"
+				Value="[INSTALL_ROOT]ico\application-x-qet-element.ico" />
+			<RegistryValue Root="HKCR"
+				Key="QElectroTech.Symbol\shell\open\command" Type="string"
+				Value="&quot;[INSTALL_ROOT]bin\qelectrotech.exe&quot; &quot;%1&quot;" />
+
+			<RegistryValue Root="HKCR" Key=".titleblock" Type="string"
+				Value="QElectroTech.TitleBlock" />
+			<RegistryValue Root="HKCR" Key="QElectroTech.TitleBlock" Type="string"
+				Value="QElectroTech Title Block Template" />
+			<RegistryValue Root="HKCR" Key="QElectroTech.TitleBlock\DefaultIcon"
+				Type="string"
+				Value="[INSTALL_ROOT]ico\application-x-qet-titleblock.ico" />
+			<RegistryValue Root="HKCR"
+				Key="QElectroTech.TitleBlock\shell\open\command" Type="string"
+				Value="&quot;[INSTALL_ROOT]bin\qelectrotech.exe&quot; &quot;%1&quot;" />
+		</Component>
+	</CPackWiXFragment>
+	<CPackWiXFragment Id="#PRODUCTFEATURE">
+		<ComponentRef Id="QET_StartMenuShortcut" />
+		<ComponentRef Id="QET_DesktopShortcut" />
+		<ComponentRef Id="QET_FileTypes" />
+	</CPackWiXFragment>
+</CPackWiXPatch>

@@ -485,6 +485,26 @@ void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 		if (event->isAccepted()) {
 			return;
 		}
+			//The tool has no use for a double-click. Qt sends one in place
+			//of the second press of two quick clicks on the same spot, so
+			//give the tool that press (finish a dimension, click its end
+			//again to start the next one); a right or middle double-click
+			//is not replayed, its first press already did what it does.
+			//Whatever the tool makes of it, it is not passed on to the
+			//scene: the item under the cursor would open its properties in
+			//the middle of the tool's work. The tool may have finished and
+			//been deleted by now, hence the check.
+		if (m_event_interface && event->button() == Qt::LeftButton) {
+			m_event_interface->mousePressEvent(event);
+		}
+		event->setAccepted(true);
+		return;
+	}
+		//The tool ended on the first click of this double-click (a right
+		//click leaving it, a text placed): the second is still its own.
+	if (m_press_went_to_tool) {
+		event->setAccepted(true);
+		return;
 	}
 
 	QGraphicsScene::mouseDoubleClickEvent(event);
@@ -498,6 +518,7 @@ void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	event->setAccepted(false);
+	m_press_went_to_tool = m_event_interface != nullptr;
 
 	if (m_event_interface) {
 		m_event_interface->mousePressEvent(event);
@@ -1280,6 +1301,17 @@ void Diagram::clearEventInterface()
 bool Diagram::eventInterfaceIsRunning() const
 {
 	return m_event_interface && m_event_interface->isRunning();
+}
+
+/**
+	@brief Diagram::toolTookLastPress
+	@return true if the last mouse press went to a tool (an event
+	interface), even one that has finished since: the double-click that
+	may follow belongs to that tool, not to the items under the cursor.
+*/
+bool Diagram::toolTookLastPress() const
+{
+	return m_press_went_to_tool;
 }
 
 /**

@@ -1360,13 +1360,13 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>BridgeCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="793"/>
+        <location filename="../sources/diagramview.cpp" line="791"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="466"/>
         <source>Paste a bridge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="934"/>
+        <location filename="../sources/diagramview.cpp" line="932"/>
         <source>Duplicate a bridge</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1606,13 +1606,13 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>CableCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="778"/>
+        <location filename="../sources/diagramview.cpp" line="776"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="453"/>
         <source>Paste a cable</source>
         <translation>Επικόλληση καλωδίου</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="929"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Duplicate a cable</source>
         <translation>Αναπαραγωγή καλωδίου</translation>
     </message>
@@ -2708,13 +2708,13 @@ Do you want to renumber them too?</source>
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2180"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2184"/>
         <source>Edit conductor properties</source>
         <comment>undo caption</comment>
         <translation>Επεξεργασία των ιδιοτήτων ενός αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2185"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2189"/>
         <source>Edit the properties of several conductors</source>
         <comment>undo caption</comment>
         <translation>Επεξεργασία των ιδιοτήτων πολλών αγωγών</translation>
@@ -3494,7 +3494,37 @@ Continue?</source>
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="3286"/>
+        <location filename="../sources/diagram.cpp" line="347"/>
+        <source>a text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="348"/>
+        <source>a shape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="349"/>
+        <source>a picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="350"/>
+        <source>a table</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="351"/>
+        <source>a terminal strip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="352"/>
+        <source>a cable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="3342"/>
         <source>Change the depth</source>
         <translation>Μετατροπή του βάθους</translation>
     </message>
@@ -4165,12 +4195,18 @@ Continue?</source>
 <context>
     <name>DiagramTextItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="67"/>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="68"/>
         <source>Hold ctrl to free movement</source>
         <translation>Πατήστε ctrl για ελεύθερη μετακίνηση</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="796"/>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="798"/>
+        <source>
+Hold Shift and drag to move the symbol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="799"/>
         <source>
 Hold Shift and drag to move this text on its own</source>
         <translation>
@@ -4208,51 +4244,51 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="149"/>
+        <location filename="../sources/diagramview.cpp" line="147"/>
         <source>Paste Here</source>
         <comment>context menu action</comment>
         <translation>Επικόλληση εδώ</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="124"/>
+        <location filename="../sources/diagramview.cpp" line="122"/>
         <source>In this area you conceive your diagrams by adding elements and conductors between their terminals. You may also add independent texts.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>Σε αυτή την περιοχή σχεδιάζετε τα διαγράμματά σας προσθέτοντας στοιχεία και αγωγούς μεταξύ των ακροδεκτών. Μπορείτε επίσης να προσθέσετε ανεξάρτητα κείμενα.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="152"/>
+        <location filename="../sources/diagramview.cpp" line="150"/>
         <source>Multiple paste</source>
         <translation>Πολλαπλή επικόλληση</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="159"/>
+        <location filename="../sources/diagramview.cpp" line="157"/>
         <source>Create a template</source>
         <comment>context menu action</comment>
         <translation>Δημιουργία προτύπου</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="163"/>
+        <location filename="../sources/diagramview.cpp" line="161"/>
         <source>Make a cabinet thumbnail</source>
         <comment>context menu action</comment>
         <translation>Δημιουργία μικρογραφίας πίνακα</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="167"/>
+        <location filename="../sources/diagramview.cpp" line="165"/>
         <source>Sheet reference</source>
         <translation>Αναφορά σελίδας</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="499"/>
+        <location filename="../sources/diagramview.cpp" line="497"/>
         <source>%1: %2</source>
         <translation>%1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="540"/>
+        <location filename="../sources/diagramview.cpp" line="538"/>
         <source>Add an image</source>
         <translation>Προσθήκη εικόνας</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramview.cpp" line="541"/>
+        <location filename="../sources/diagramview.cpp" line="539"/>
         <source>Add %n image(s)</source>
         <translation>
             <numerusform>Προσθήκη %n εικόνας</numerusform>
@@ -4260,65 +4296,65 @@ Hold Shift and drag to move this text on its own</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="548"/>
+        <location filename="../sources/diagramview.cpp" line="546"/>
         <source>Images not added</source>
         <translation>Οι εικόνες δεν προστέθηκαν</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="549"/>
+        <location filename="../sources/diagramview.cpp" line="547"/>
         <source>These files could not be added:</source>
         <translation>Δεν ήταν δυνατή η προσθήκη αυτών των αρχείων:</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1173"/>
+        <location filename="../sources/diagramview.cpp" line="1177"/>
         <source>X: %1 Y: %2</source>
         <translation>X: %1 Y: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1497"/>
+        <location filename="../sources/diagramview.cpp" line="1501"/>
         <source>Connect the selected terminals</source>
         <translation>Σύνδεση των επιλεγμένων ακροδεκτών</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1943"/>
+        <location filename="../sources/diagramview.cpp" line="1947"/>
         <source>Untitled</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Ανώνυμο</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="2926"/>
+        <location filename="../sources/diagramview.cpp" line="2982"/>
         <source>Remove this core from the line</source>
         <translation>Αφαίρεση αυτού του κλώνου από τη γραμμή</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3211"/>
+        <location filename="../sources/diagramview.cpp" line="3267"/>
         <source>Registered template</source>
         <translation>Το πρότυπο καταχωρίστηκε</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3212"/>
+        <location filename="../sources/diagramview.cpp" line="3268"/>
         <source>The template has been successfully saved as :
 %1</source>
         <translation>Το πρότυπο αποθηκεύτηκε επιτυχώς ως:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3215"/>
+        <location filename="../sources/diagramview.cpp" line="3271"/>
         <source>Error</source>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3215"/>
+        <location filename="../sources/diagramview.cpp" line="3271"/>
         <source>The file could not be written.</source>
         <translation>Δεν ήταν δυνατή η εγγραφή του αρχείου.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="223"/>
+        <location filename="../sources/diagramview.cpp" line="221"/>
         <source>Choose the new color for this conductor</source>
         <translation>Επιλέξτε το νέο χρώμα αυτού του αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="246"/>
+        <location filename="../sources/diagramview.cpp" line="244"/>
         <source>Edit conductor properties</source>
         <comment>undo caption</comment>
         <translation>Επεξεργασία ιδιοτήτων του αγωγού</translation>
@@ -4830,7 +4866,7 @@ Hold Shift and drag to move this text on its own</source>
         <translation>Επεξεργασία κειμένου του στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1316"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1364"/>
         <source>Resize an element text</source>
         <translation>Αλλαγή μεγέθους κειμένου στοιχείου</translation>
     </message>
@@ -5411,7 +5447,7 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>Element</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="2949"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3046"/>
         <source>Automatically number an element</source>
         <comment>undo caption</comment>
         <translation>Αυτόματη αρίθμηση στοιχείου</translation>
@@ -7437,101 +7473,101 @@ By importing this file, you confirm that:
 <context>
     <name>ExportDialog</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="696"/>
+        <location filename="../sources/exportdialog.cpp" line="707"/>
         <source>Preview</source>
         <translation>Προεπισκόπηση</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="162"/>
+        <location filename="../sources/exportdialog.cpp" line="163"/>
         <source>Dimensions</source>
         <translation>Διαστάσεις</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="561"/>
+        <location filename="../sources/exportdialog.cpp" line="572"/>
         <source>Can not write to this file</source>
         <comment>message box title</comment>
         <translation>Αδυναμία εγγραφής σε αυτό το αρχείο</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="83"/>
+        <location filename="../sources/exportdialog.cpp" line="84"/>
         <source>Export</source>
         <translation>Εξαγωγή</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="161"/>
+        <location filename="../sources/exportdialog.cpp" line="162"/>
         <source>Filename</source>
         <translation>Όνομα αρχείου</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="800"/>
-        <location filename="../sources/exportdialog.cpp" line="805"/>
+        <location filename="../sources/exportdialog.cpp" line="811"/>
+        <location filename="../sources/exportdialog.cpp" line="816"/>
         <source>px</source>
         <translation>πιξελ</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="465"/>
+        <location filename="../sources/exportdialog.cpp" line="466"/>
         <source>Target files names</source>
         <comment>message box title</comment>
         <translation>Ονόματα αρχείων προορισμού</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="73"/>
+        <location filename="../sources/exportdialog.cpp" line="74"/>
         <source>Export the project sheets</source>
         <comment>window title</comment>
         <translation>Εξαγωγή σελίδων του έργου</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="88"/>
+        <location filename="../sources/exportdialog.cpp" line="89"/>
         <source>Choose the sheets you wish to export and specify their size :</source>
         <translation>Επιλέξτε τις σελίδες που θέλετε να εξαχθούν, και καθορίστε το μέγεθός τους:</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="91"/>
+        <location filename="../sources/exportdialog.cpp" line="92"/>
         <source>Check all</source>
         <translation>Επιλογή όλων</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="92"/>
+        <location filename="../sources/exportdialog.cpp" line="93"/>
         <source>Uncheck all</source>
         <translation>Αποεπιλογή όλων</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="160"/>
+        <location filename="../sources/exportdialog.cpp" line="161"/>
         <source>Sheet title</source>
         <translation>Τίτλος σελίδας</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="466"/>
+        <location filename="../sources/exportdialog.cpp" line="467"/>
         <source>You must enter a non-empty, unique filename for each sheet to export.</source>
         <comment>message box content</comment>
         <translation>Πρέπει να δώσετε ένα μοναδικό, όχι κενό, όνομα σε κάθε σελίδα που θέλετε να εξάγετε.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="481"/>
+        <location filename="../sources/exportdialog.cpp" line="482"/>
         <source>Directory missing</source>
         <comment>message box title</comment>
         <translation>Λείπει ο κατάλογος</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="482"/>
+        <location filename="../sources/exportdialog.cpp" line="483"/>
         <source>You must specify the path of the directory in which the images files will be saved.</source>
         <comment>message box content</comment>
         <translation>Πρέπει να προσδιορίσετε τη διαδρομή του φακέλου στον οποίο θα αποθηκευθούν τα αρχεία εικόνας.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="517"/>
+        <location filename="../sources/exportdialog.cpp" line="518"/>
         <source>Images not included in the DXF export</source>
         <comment>message box title</comment>
         <translation>Οι εικόνες δεν περιλαμβάνονται στην εξαγωγή DXF</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="518"/>
+        <location filename="../sources/exportdialog.cpp" line="519"/>
         <source>The DXF format used here (AC1006) cannot embed images. Images will only be represented by an outline rectangle (position, size, rotation and skew are preserved), without the image content.</source>
         <comment>message box content</comment>
         <translation>Η μορφή DXF που χρησιμοποιείται εδώ (AC1006) δεν μπορεί να ενσωματώσει εικόνες. Οι εικόνες θα αναπαρίστανται μόνο με ένα ορθογώνιο περίγραμμα (θέση, μέγεθος, περιστροφή και κλίση διατηρούνται), χωρίς το περιεχόμενο της εικόνας.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="563"/>
+        <location filename="../sources/exportdialog.cpp" line="574"/>
         <source>It appears you do not have the required permissions to write the file %1.</source>
         <comment>message box content</comment>
         <translation>Φαίνεται να μην διαθέτετε δικαιώματα εγγραφής για το αρχείο %1.</translation>
@@ -8049,49 +8085,49 @@ that you create. Text and number inputs are
         <translation>Χρήση των χρωμάτων του συστήματος</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="803"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="819"/>
         <source>User Collection Path</source>
         <translation>Διαδρομή της συλλογής χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="831"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="847"/>
         <source>User Title blocks Path</source>
         <translation>Διαδρομή των πινακίδων χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="775"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="791"/>
         <source>Path of the Common Collection</source>
         <translation>Διαδρομή της κοινής συλλογής</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="625"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="639"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="677"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="705"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="719"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="688"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="702"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="740"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="768"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="782"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="803"/>
         <source>By default</source>
         <translation>Προεπιλογή</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="630"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="644"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="682"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="710"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="724"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="707"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="745"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="782"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="823"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="773"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="787"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="808"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="845"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="886"/>
         <source>Browse...</source>
         <translation>Πλοήγηση</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="753"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="816"/>
         <source>(Reload the elements collections to apply the changes)</source>
         <translation>(Επαναφόρτωση των συλλογών στοιχείων για να ισχύσουν οι αλλαγές)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="466"/>
         <source>Projects</source>
         <translation>Έργα</translation>
     </message>
@@ -8101,40 +8137,40 @@ that you create. Text and number inputs are
         <translation>Χρήση χειρονομιών αφής</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="409"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="472"/>
         <source>Use sheet numbers instead of their position in the project</source>
         <translation>Χρήση του αριθμού σελίδας αντί της θέσης στο έργο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="654"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Αρίθμηση των στηλών από 0 (1 διαφορετικά)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="426"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="489"/>
         <source>Disabled</source>
         <translation>Απενεργοποιημένο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="432"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="495"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> λεπτά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="854"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="917"/>
         <source>Highlight freshly integrated elements in the panel</source>
         <translation>Επισήμανση των προσφάτως ενσωματωμένων στοιχείων στον πίνακα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="861"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="924"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>Κάθε στοιχείο περιέχει πληροφορίες σχετικά με τους δημιουργούς του, την άδειά του ή οποιεσδήποτε άλλες πληροφορίες που θεωρείτε χρήσιμες σε ένα ελεύθερο πεδίο.
 Μπορείτε να καθορίσετε εδώ την προεπιλεγμένη τιμή αυτού του πεδίου για τα στοιχεία που θα δημιουργήσετε:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="897"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="960"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>Εφαρμογή στην επόμενη εκκίνηση του QElectroTech)</translation>
     </message>
@@ -8144,77 +8180,77 @@ that you create. Text and number inputs are
         <translation>Φόρμα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="416"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="479"/>
         <source>Automatic backup of projects (applied at the next launch of QElectroTech)</source>
         <translation>Αυτόματη δημιουργία αντιγράφων ασφαλείας των έργων (εφαρμοζόμενη στην επόμενη εκκίνηση του QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="599"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="662"/>
         <source>Collections</source>
         <translation>Συλλογές</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="605"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="668"/>
         <source>Access the collections</source>
         <translation>Πρόσβαση σε συλλογές</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="662"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="725"/>
         <source>Common collection directory</source>
         <translation>Κατάλογος της κοινής συλλογής</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="753"/>
         <source>User collection directory</source>
         <translation>Κατάλογος της συλλογής χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="732"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="795"/>
         <source>User title blocks directory</source>
         <translation>Κατάλογος των πινακίδων χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="845"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="908"/>
         <source>Elements management</source>
         <translation>Διαχείριση των στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="937"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1000"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation>Εδώ μπορείτε να ορίσετε την προεπιλεγμένη εμφάνιση των διαφόρων κειμένων του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1112"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1175"/>
         <source>Designation, type, plant, location, length:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1145"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1208"/>
         <source>Core colors (all of them):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1178"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1241"/>
         <source>Text alignment:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1290"/>
         <source>Grid + Keyboard</source>
         <translation>Δικτύωμα + Πληκτρολόγιο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1233"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1296"/>
         <source>Grid: 1 - 30</source>
         <translation>Δικτύωμα: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1300"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1363"/>
         <source>DiagramEditor xGrid</source>
         <translation>Επεξεργαστής διαγραμμάτων xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1267"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1330"/>
         <source>DiagramEditor yGrid</source>
         <translation>Επεξεργαστής διαγραμμάτων yGrid</translation>
     </message>
@@ -8224,322 +8260,372 @@ that you create. Text and number inputs are
         <translation>Χρώμα εφαρμογής</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="64"/>
+        <source>Selection rectangle selects:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="75"/>
+        <source>Everything it overlaps (as before)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="80"/>
+        <source>What lies wholly within it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="85"/>
+        <source>By direction: wholly within to the right, overlapped to the left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="102"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Εμφάνιση των ιδιοτήτων ενός επιλεγμένου αγωγού στον πίνακα Ιδιότητες επιλογής</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="109"/>
+        <source>Draw a connected terminal in the color of its conductor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="112"/>
+        <source>Unchecked, every terminal is drawn in red. Terminals are never printed or exported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="119"/>
         <source>When unticked, no conductors-per-terminal rule applies, whatever the projects&apos; settings.</source>
         <translation>Όταν δεν είναι επιλεγμένο, δεν εφαρμόζεται κανένας κανόνας αγωγών ανά ακροδέκτη, ανεξάρτητα από τις ρυθμίσεις των έργων.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="79"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="122"/>
         <source>Apply the projects&apos; conductors-per-terminal rules</source>
         <translation>Εφαρμογή των κανόνων αγωγών ανά ακροδέκτη των έργων</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="94"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="137"/>
         <source>Maximum conductors per terminal:</source>
         <translation>Μέγιστος αριθμός αγωγών ανά ακροδέκτη:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="107"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="150"/>
         <source>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <translation>Για όλα τα έργα εκτός από όσα έχουν δικές τους ρυθμίσεις. Ένας νέος αγωγός που θα ξεπερνούσε αυτόν τον αριθμό σε έναν ακροδέκτη απορρίπτεται· οι αγωγοί που έχουν ήδη σχεδιαστεί δεν αλλάζουν. Το 4 σημαίνει δύο διπλά ακροχιτώνια, ένα σε κάθε πλευρά της βίδας.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="110"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="153"/>
         <source>No limit</source>
         <translation>Χωρίς όριο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="134"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="177"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <translation>Μια αναφορά φύλλου είναι ένα εικονικό σημείο: δέχεται μόνο έναν αγωγό, αυτόν που συνεχίζει στο άλλο φύλλο.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="137"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
         <source>Only one conductor per sheet reference</source>
         <translation>Μόνο ένας αγωγός ανά αναφορά φύλλου</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="153"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="196"/>
         <source>Show the default grid (applied the next time the programme is launched)</source>
         <translation>Εμφάνιση του προεπιλεγμένου πλέγματος (εφαρμόζεται στην επόμενη εκκίνηση του προγράμματος)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="215"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="255"/>
         <source>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</source>
         <translation>Από προεπιλογή, το διπλό κλικ εισάγει το στοιχείο στο φύλλο· η επεξεργασία παραμένει διαθέσιμη από το μενού περιβάλλοντος.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="215"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="258"/>
         <source>Double-clicking in the collection opens the element editor instead of inserting it</source>
         <translation>Το διπλό κλικ στη συλλογή ανοίγει τον επεξεργαστή στοιχείων αντί να εισάγει το στοιχείο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="222"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
         <source>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</source>
         <translation>Επιλεγμένο: μία ενιαία λίστα, με την καλύτερη αντιστοιχία πρώτη. Μη επιλεγμένο: το δέντρο της συλλογής, φιλτραρισμένο από την αναζήτηση.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="225"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="268"/>
         <source>Show search results as a sorted list</source>
         <translation>Εμφάνιση των αποτελεσμάτων αναζήτησης ως ταξινομημένη λίστα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
         <source>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</source>
         <translation>Μετά από ένα κλικ που επιλέγει ένα στοιχείο ή έναν αγωγό, οι εντολές της γραμμής συντομεύσεων εμφανίζονται κοντά στον δρομέα και σβήνουν όταν το ποντίκι απομακρύνεται.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="235"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
         <source>Show commands near the selection</source>
         <translation>Εμφάνιση εντολών κοντά στην επιλογή</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="242"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="285"/>
         <source>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</source>
         <translation>Κρατώντας πατημένο το δεξί κουμπί και σύροντας προς μια κατεύθυνση εκτελείται μια εντολή της γραμμής συντομεύσεων. Ένα απλό δεξί κλικ εξακολουθεί να ανοίγει το μενού περιβάλλοντος, όταν αφήσετε το κουμπί.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="245"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="288"/>
         <source>Right-button mouse gestures</source>
         <translation>Κινήσεις ποντικιού με το δεξί κουμπί</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="252"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="295"/>
         <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="255"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="298"/>
         <source>Four-way arrow and handle catching with the crosshair</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
         <source>A symbol&apos;s text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires&apos; texts. Unticked by default: texts turn with their symbol.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="308"/>
         <source>Upright symbol texts read from bottom to top</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="315"/>
+        <source>Dragging a symbol&apos;s text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="318"/>
+        <source>Drag symbol texts without holding Shift</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="325"/>
         <source>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="328"/>
         <source>Help lines from the terminals of a dragged symbol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="282"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="335"/>
         <source>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice&apos;s sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="285"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="338"/>
         <source>Bars beside the drawing to fold the side panels away</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="292"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="345"/>
         <source>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="295"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
         <source>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="355"/>
         <source>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="358"/>
         <source>A new corner or T-junction replaces the one under it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="312"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="365"/>
+        <source>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="368"/>
+        <source>Warn about items outside the sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="375"/>
         <source>Show default guides (applies from the next time the programme is launched)</source>
         <translation>Εμφάνιση των προεπιλεγμένων οδηγών (εφαρμόζεται από την επόμενη εκκίνηση του προγράμματος)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="326"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="389"/>
         <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
         <translation>Χρήση Παραθύρων (Εφαρμογή στην επόμενη εκκίνηση του QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="333"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="396"/>
         <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
         <translation>Χρήση Καρτελών (Εφαρμογή στην επόμενη εκκίνηση του QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="435"/>
         <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
         <translation>Μέθοδος για την κλιμάκωση σε οθόνες με υψηλή πυκνότητα εικονοστοιχείων (hdpi). (Εφαρμογή στην επόμενη εκκίνηση του Qelectrotech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="445"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="508"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
         <translation>Αυτόματη αρίθμηση των επικολλημένων ή αντιγραμμένων στοιχείων που ακολουθούν μια αρίθμηση</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="448"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="511"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
         <translation>Ένα επικολλημένο στοιχείο λαμβάνει τον επόμενο αριθμό της αρίθμησής του αντί για το όνομα του αντιγραμμένου στοιχείου, και η αρίθμηση προχωρά.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="455"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="518"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
         <translation>Ένα μικρό κρυφό αρχείο δίπλα στο έργο δείχνει ποιος το έχει ανοιχτό. Όποιος άλλος το ανοίξει ειδοποιείται και μπορεί να το ανοίξει μόνο για ανάγνωση. Απενεργοποιήστε το αν ο κοινόχρηστος δίσκος σας δεν το υποστηρίζει.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="458"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="521"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
         <translation>Ενημέρωση των άλλων για το ποιος έχει ανοιχτό ένα έργο (αρχείο κλειδώματος δίπλα στο έργο)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="472"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
         <translation>Να επιτρέπεται η εκτέλεση σεναρίων JavaScript (Έργο &gt; Εκτέλεση σεναρίου, και --run)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="475"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="538"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
         <translation>Ένα σενάριο εκτελείται με τα δικαιώματά σας: μπορεί να διαβάζει και να τροποποιεί το ανοιχτό έργο και να γράφει αρχεία. Απενεργοποιημένο από προεπιλογή· εκτελείτε μόνο σενάρια των οποίων γνωρίζετε την προέλευση.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="482"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
         <translation>Να επιτρέπεται σε βοηθό τεχνητής νοημοσύνης να ενεργεί στο ανοιχτό έργο (ζωντανή λειτουργία)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="485"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="548"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
         <translation>Ένας βοηθός συνδεδεμένος μέσω του διακομιστή MCP μπορεί τότε να εκτελεί σενάρια στο ανοιχτό έργο, ενώ εσείς παρακολουθείτε. Σε κάθε εκκίνηση εμφανίζεται προειδοποίηση όσο η ρύθμιση είναι ενεργή. Ισχύει από την επόμενη εκκίνηση· η απενεργοποίησή της κλείνει αμέσως τη σύνδεση.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="492"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="555"/>
         <source>Enable chained folio reports for report elements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="495"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="558"/>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="502"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="565"/>
         <source>Previous versions kept when saving a project</source>
         <translation>Προηγούμενες εκδόσεις που διατηρούνται κατά την αποθήκευση ενός έργου</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="505"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="512"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="568"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="575"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>Πριν από την αποθήκευση ενός έργου, το αρχείο όπως ήταν αντιγράφεται σε έναν φάκελο δίπλα του, με το όνομα του έργου και την κατάληξη «-backups». Διατηρούνται μόνο οι πιο πρόσφατες.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="578"/>
         <source>None</source>
         <translation>Καμία</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="525"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="588"/>
         <source>Reopen the projects of the last session at start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="528"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
         <source>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="598"/>
         <source>Offer to restore automatic backups at start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="538"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="601"/>
         <source>After a crash, the automatic backups (made every few minutes, see &quot;Automatic backup of projects&quot; above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="608"/>
         <source>After a crash, offer projects as they were after their last edit (experimental)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="548"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="611"/>
         <source>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="555"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
         <source>Offer saving a project as one database file, .qetdb (experimental)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="558"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="621"/>
         <source>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="617"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
         <source>Company collection directory</source>
         <translation>Κατάλογος συλλογής της εταιρείας</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="652"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="715"/>
         <source>Create or change the prefix of the user collection&apos;s folders (qet_labels.xml file)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the user collection</extracomment>
         <translation>Δημιουργία ή αλλαγή του προθέματος των φακέλων της συλλογής χρήστη (αρχείο qet_labels.xml)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="718"/>
         <source>Configure prefixes…</source>
         <extracomment>button opening the dialog where the folder prefixes of the user collection are configured</extracomment>
         <translation>Ρύθμιση προθεμάτων…</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="669"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="732"/>
         <source>Company title-block directory</source>
         <translation>Κατάλογος πινακίδων της εταιρείας</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="697"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="760"/>
         <source>User Macro Directory</source>
         <translation>Κατάλογος μακροεντολών χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="760"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="823"/>
         <source>Materials list file</source>
         <translation>Αρχείο λίστας υλικών</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="769"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="832"/>
         <source>Materials list used to fill in a symbol&apos;s items</source>
         <extracomment>tooltip of the material file path field</extracomment>
         <translation>Λίστα υλικών που χρησιμοποιείται για τη συμπλήρωση των ειδών ενός συμβόλου</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="775"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="816"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="838"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="879"/>
         <source>Not set</source>
         <extracomment>hint shown when no material file is configured yet
 ----------
@@ -8547,85 +8633,85 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Δεν έχει οριστεί</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="789"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="852"/>
         <source>Create the list file with its headers</source>
         <extracomment>tooltip of the button creating the material file with its header line</extracomment>
         <translation>Δημιουργία του αρχείου λίστας με τις κεφαλίδες του</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="792"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="833"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="855"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="896"/>
         <source>Create...</source>
         <translation>Δημιουργία...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="801"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="864"/>
         <source>Cable type list file</source>
         <translation>Αρχείο λίστας τύπων καλωδίων</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="810"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="873"/>
         <source>Directory of the cable types used to define a cable (number of cores, colors, cross-section)</source>
         <extracomment>tooltip of the cable type file path field</extracomment>
         <translation>Κατάλογος των τύπων καλωδίων που χρησιμοποιούνται για τον ορισμό ενός καλωδίου (αριθμός κλώνων, χρώματα, διατομή)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="830"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="893"/>
         <source>Create the cable type list file with its header line</source>
         <extracomment>tooltip of the button creating the cable type file with its header line</extracomment>
         <translation>Δημιουργία του αρχείου λίστας τύπων καλωδίων με τη γραμμή κεφαλίδας του</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="888"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="951"/>
         <source>Languages</source>
         <translation>Γλώσσες</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="931"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="994"/>
         <source>texts</source>
         <translation>Κείμενα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="951"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1014"/>
         <source>Elements texts</source>
         <translation>Κείμενα στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="964"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1030"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1076"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1027"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1093"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1139"/>
         <source>Font:</source>
         <translation>Γραμματοσειρά:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="974"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1037"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1100"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="984"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1047"/>
         <source>Length :</source>
         <translation>Μήκος:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="994"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1023"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1057"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1086"/>
         <source>Rotation :</source>
         <translation>Περιστροφή:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1017"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1080"/>
         <source>Independent texts</source>
         <translation>Ανεξάρτητα κείμενα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1070"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1133"/>
         <source>Other texts</source>
         <translation>Άλλα Κείμενα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1106"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1169"/>
         <source>Cable texts</source>
         <translation>Κείμενα καλωδίων</translation>
     </message>
@@ -8634,7 +8720,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Ονομασία, τύπος, εγκατάσταση, τοποθεσία, μήκος :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1135"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1198"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>Γραμματοσειρά των κειμένων που γράφονται κατά μήκος της γραμμής του καλωδίου· ένα καλώδιο που έχει δική του τη διατηρεί.</translation>
     </message>
@@ -8643,7 +8729,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Χρώματα κλώνων (όλα) :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1168"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1231"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>Γραμματοσειρά των χρωμάτων κλώνων που γράφονται κατά μήκος της γραμμής· ένα καλώδιο που έχει δική του τη διατηρεί.</translation>
     </message>
@@ -8652,53 +8738,53 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Στοίχιση κειμένου :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1188"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1251"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>Πού σταματούν τα κείμενα ενός καλωδίου σε σχέση με την αρχή της γραμμής του· ένα καλώδιο που έχει δική του ρύθμιση τη διατηρεί.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1192"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1255"/>
         <source>Right aligned</source>
         <translation>Στοίχιση δεξιά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1197"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1260"/>
         <source>Centred</source>
         <translation>Στοίχιση στο κέντρο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1202"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1265"/>
         <source>Left aligned</source>
         <translation>Στοίχιση αριστερά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1274"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1337"/>
         <source>The Grid must be active to see the changes.</source>
         <translation>Το δικτύωμα πρέπει να είναι ενεργό για να δείτε τις αλλαγές.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1320"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1383"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>Πλέγμα για κείμενα που μετακινούνται με το ποντίκι</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1386"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>Κλάσμα του πλέγματος του φύλλου. Κρατήστε πατημένο το Ctrl κατά τη μετακίνηση για ελεύθερη τοποθέτηση.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1343"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1406"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>Μετακίνηση πληκτρολογίου: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1456"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>Επεξεργαστής διαγραμμάτων (πλήκτρο: αριστερά / δεξιά) xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1400"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1463"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>Επεξεργαστής διαγραμμάτων (πλήκτρο: επάνω / κάτω) yGrid</translation>
     </message>
@@ -8707,339 +8793,339 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Μετακίνηση πληκτρολογίου με το πλήκτρο ALT: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1429"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1492"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>Επεξεργαστής διαγραμμάτων (πλήκτρο: αριστερά / δεξιά)  xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1458"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1521"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>Επεξεργαστής διαγραμμάτων (πλήκτρο: επάνω / κάτω) yGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1503"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1566"/>
         <source>View grid</source>
         <translation>Εμφάνιση πλέγματος</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1600"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1607"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1663"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1670"/>
         <source>max:</source>
         <translation>μέγ.:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1688"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1751"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>Κατά την αποθήκευση ενός συμβόλου: απόρριψη δύο ακροδεκτών με το ίδιο όνομα και αναφορά ακροδεκτών χωρίς όνομα (IEC 61666).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1691"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1754"/>
         <source>Check terminal names when saving</source>
         <translation>Έλεγχος ονομάτων ακροδεκτών κατά την αποθήκευση</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1561"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1624"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>Μέγεθος σημείου στον επεξεργαστή σχεδίων: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1423"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1486"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>Μετακίνηση με το πληκτρολόγιο με το πλήκτρο Ctrl: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1509"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1572"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1677"/>
         <source>min:</source>
         <translation>ελάχ.:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1621"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1684"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>Μέγεθος σημείου στον επεξεργαστή στοιχείων: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1645"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1708"/>
         <source>Editor</source>
         <translation>Επεξεργαστής</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1716"/>
         <source>Max. parts in Element Editor List</source>
         <translation>Μέγ. αριθμός τμημάτων στη λίστα του επεξεργαστή στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="465"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="528"/>
         <source>Do not store the labels of items in the copy paste</source>
         <translation>Μη αποθήκευση των ετικετών κατά την αντιγραφή επικόλληση</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="95"/>
         <source>Allow unzoom beyond the sheet</source>
         <translation>Δυνατότητα αποεστίασης πέρα από τη σελίδα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="69"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="71"/>
         <source>Bold italic</source>
         <translation>Έντονα πλάγια</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="71"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="73"/>
         <source>Bold</source>
         <translation>Έντονα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="73"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="75"/>
         <source>Italic</source>
         <translation>Πλάγια</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="75"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="77"/>
         <source>Normal</source>
         <translation>Κανονικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="96"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="98"/>
         <source>Rounding up for 0.5 and more</source>
         <translation>Στρογγυλοποίηση για 0,5 και περισσότερο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="97"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="99"/>
         <source>Always top rounding</source>
         <translation>Πάντα στρογγυλοποίηση προς τα επάνω</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="98"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="100"/>
         <source>Always rounded down</source>
         <translation>Πάντα στρογγυλοποίηση προς τα κάτω</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="99"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="101"/>
         <source>Rounding up for 0.75 and more</source>
         <translation>Στρογγυλοποίηση για 0,75 και περισσότερο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="100"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="102"/>
         <source>No rounding</source>
         <translation>Χωρίς στρογγυλοποίηση</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="141"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="145"/>
         <source>Disabled</source>
         <comment>fr: Désactivée</comment>
         <translation>Απενεργοποιημένο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="193"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="199"/>
         <source>Enabled by the QET_ENABLE_SCRIPTING environment variable; this setting has no effect while it is set.</source>
         <translation>Ενεργοποιήθηκε από τη μεταβλητή περιβάλλοντος QET_ENABLE_SCRIPTING· η ρύθμιση αυτή δεν έχει αποτέλεσμα όσο είναι ορισμένη.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="337"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="343"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
         <translation>Δεν έχει οριστεί (προεπιλογή: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="348"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="354"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
         <translation>Δεν έχει οριστεί (προεπιλογή: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="615"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="631"/>
         <source>General</source>
         <comment>configuration page title</comment>
         <translation>Γενικές</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="649"/>
         <source>System</source>
         <translation>Σύστημα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="637"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="653"/>
         <source>Arabic</source>
         <translation>Αραβικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="638"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="654"/>
         <source>Brazilian</source>
         <translation>Βραζιλιάνικα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="639"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="655"/>
         <source>Catalan</source>
         <translation>Καταλανικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="640"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="656"/>
         <source>Czech</source>
         <translation>Τσέχικα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="641"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="657"/>
         <source>German</source>
         <translation>Γερμανικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="642"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="658"/>
         <source>Danish</source>
         <translation>Δανικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="659"/>
         <source>Greek</source>
         <translation>Ελληνικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="644"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="660"/>
         <source>English</source>
         <translation>Αγγλικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="645"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="661"/>
         <source>Spanish</source>
         <translation>Ισπανικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="646"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="662"/>
         <source>French</source>
         <translation>Γαλλικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="647"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="663"/>
         <source>Croatian</source>
         <translation>Κροατικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="648"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="664"/>
         <source>Italian</source>
         <translation>Ιταλικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="649"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="665"/>
         <source>Japanese</source>
         <translation>Ιαπωνικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="650"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="666"/>
         <source>Korean</source>
         <translation>Κορεατικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="651"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="667"/>
         <source>Latvian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="652"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="668"/>
         <source>Polish</source>
         <translation>Πολωνικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="669"/>
         <source>Portuguese</source>
         <translation>Πορτογαλικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="654"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="670"/>
         <source>Romanian</source>
         <translation>Ρουμανικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="655"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="671"/>
         <source>Russian</source>
         <translation>Ρώσικα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="656"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="672"/>
         <source>Slovenian</source>
         <translation>Σλοβενικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="657"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="673"/>
         <source>Dutch</source>
         <translation>Ολλανδικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="658"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="674"/>
         <source>Norwegian</source>
         <translation>Νορβηγικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="659"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="675"/>
         <source>Belgium-Flemish</source>
         <translation>Φλαμανδικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="660"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="676"/>
         <source>Turkish</source>
         <translation>Τουρκικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="661"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="677"/>
         <source>Hungarian</source>
         <translation>Ουγγρικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="662"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="678"/>
         <source>Mongolian</source>
         <translation>Μογγολικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="663"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="679"/>
         <source>Ukrainian</source>
         <translation>Ουκρανικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="664"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="680"/>
         <source>Chinese</source>
         <translation>Κινεζικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="665"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="681"/>
         <source>Chinese (Traditional)</source>
         <translation>Κινεζικά (Παραδοσιακά)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="666"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="682"/>
         <source>Swedish</source>
         <translation>Σουηδικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="742"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="758"/>
         <source>Cable text font</source>
         <translation>Γραμματοσειρά κειμένων καλωδίων</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="760"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="776"/>
         <source>Core colors font</source>
         <translation>Γραμματοσειρά χρωμάτων κλώνων</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="789"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="805"/>
         <source>Company collection path</source>
         <translation>Διαδρομή συλλογής της εταιρείας</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="817"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="833"/>
         <source>Company title-blocks</source>
         <translation>Πινακίδες της εταιρείας</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="845"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="861"/>
         <source>User macro path</source>
         <translation>Διαδρομή μακροεντολών χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="887"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="903"/>
         <source>Folder not found</source>
         <translation>Ο φάκελος δεν βρέθηκε</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="888"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="904"/>
         <source>The user collection folder:
 %1
 does not exist and could not be created.</source>
@@ -9048,12 +9134,12 @@ does not exist and could not be created.</source>
 δεν υπάρχει και δεν ήταν δυνατή η δημιουργία του.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="896"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="912"/>
         <source>No subfolder</source>
         <translation>Δεν υπάρχει υποφάκελος</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="897"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="913"/>
         <source>The user collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
@@ -9062,34 +9148,34 @@ has no subfolder, so there is no prefix to configure.</source>
 δεν έχει υποφάκελο, οπότε δεν υπάρχει πρόθεμα προς ρύθμιση.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="905"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="921"/>
         <source>Prefix file cannot be read</source>
         <translation>Δεν είναι δυνατή η ανάγνωση του αρχείου προθεμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="914"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="930"/>
         <source>Prefix file damaged</source>
         <translation>Το αρχείο προθεμάτων είναι κατεστραμμένο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="915"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="931"/>
         <source>The file %1 is not a valid XML file:
 %2</source>
         <translation>Το αρχείο %1 δεν είναι έγκυρο αρχείο XML:
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="919"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="935"/>
         <source>Fix the file</source>
         <translation>Διόρθωση του αρχείου</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="920"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="936"/>
         <source>Rebuild</source>
         <translation>Αναδημιουργία</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="921"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="937"/>
         <source>Nothing has been changed yet.
 
 “Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
@@ -9102,36 +9188,36 @@ has no subfolder, so there is no prefix to configure.</source>
 «Αναδημιουργία»: το δέντρο φακέλων δημιουργείται ξανά, αλλά χάνονται όλα τα τρέχοντα προθέματα. Το τρέχον αρχείο διατηρείται ως qet_labels.xml.bak πριν αντικατασταθεί.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="930"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="946"/>
         <source>File: %1</source>
         <translation>Αρχείο: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="954"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="970"/>
         <source>Select the materials list file</source>
         <translation>Επιλέξτε το αρχείο λίστας υλικών</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="956"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="979"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1020"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1043"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="972"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="995"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1036"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1059"/>
         <source>CSV files (*.csv)</source>
         <translation>Αρχεία CSV (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="977"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="993"/>
         <source>Create the materials list file</source>
         <translation>Δημιουργία του αρχείου λίστας υλικών</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="995"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1011"/>
         <source>Cannot create</source>
         <translation>Δεν είναι δυνατή η δημιουργία</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="996"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1060"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1012"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1076"/>
         <source>Cannot create the file:
 %1
 %2</source>
@@ -9140,32 +9226,32 @@ has no subfolder, so there is no prefix to configure.</source>
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1018"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1034"/>
         <source>Select the cable types file</source>
         <translation>Επιλέξτε το αρχείο τύπων καλωδίων</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1041"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1057"/>
         <source>Create the cable types file</source>
         <translation>Δημιουργία του αρχείου τύπων καλωδίων</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1059"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1075"/>
         <source>Cannot be created</source>
         <translation>Δεν ήταν δυνατή η δημιουργία</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1090"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1106"/>
         <source>Values that are too high might cause the application to crash</source>
         <translation>Πολύ υψηλές τιμές μπορεί να προκαλέσουν κατάρρευση της εφαρμογής</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1125"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1141"/>
         <source>Experimental feature</source>
         <translation>Πειραματική λειτουργία</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1126"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1142"/>
         <source>WARNING:
 Any setting other than “No rounding” may cause rendering errors in the project, depending on:
 
@@ -9180,7 +9266,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 3 - την επεξεργασία του έργου σε άλλον υπολογιστή ή/και οθόνη που δεν έχει τις ίδιες ρυθμίσεις με τα σημεία 1 και 2.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="205"/>
         <source>Hide the grid when its dots are closer on screen than</source>
         <translation>Απόκρυψη πλέγματος όταν τα σημεία του στην οθόνη απέχουν λιγότερο από</translation>
     </message>
@@ -9189,7 +9275,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
         <translation type="vanished">Με μεγαλύτερη σμίκρυνση τα σημεία κάθε βήματος πλέγματος παραλείπονται· η μεγέθυνση στη γραμμή κατάστασης δείχνει πού</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="218"/>
         <source> px</source>
         <translation> px</translation>
     </message>
@@ -13135,44 +13221,44 @@ Give them another numbering first.</source>
         <translation>Διαμόρφωση της σελίδας</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="68"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="69"/>
         <source>Print options</source>
         <comment>window title</comment>
         <translation>Επιλογές εκτύπωσης</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="102"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="103"/>
         <source>project</source>
         <comment>string used to generate a filename</comment>
         <translation>έργο</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="133"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="134"/>
         <source>Print</source>
         <translation>Εκτύπωση</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="139"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="140"/>
         <source>Export in pdf</source>
         <translation>Εξαγωγή ως pdf</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="169"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="170"/>
         <source>Layout (not available on Windows for PDF export)</source>
         <translation>Διάταξη (μη διαθέσιμο στα windows για εξαγωγή PDF)</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="607"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="608"/>
         <source>Untitled sheet</source>
         <translation>Ανώνυμη σελίδα</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="790"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="791"/>
         <source>Export as : </source>
         <translation>Εξαγωγή ως: </translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="790"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="791"/>
         <source>File (*.pdf)</source>
         <translation>Αρχείο (*.pdf)</translation>
     </message>
@@ -13180,12 +13266,12 @@ Give them another numbering first.</source>
 <context>
     <name>ProjectView</name>
     <message>
-        <location filename="../sources/projectview.cpp" line="887"/>
+        <location filename="../sources/projectview.cpp" line="906"/>
         <source>Delete unused elements in  the project</source>
         <translation>Διαγραφή των αχρησιμοποίητων στοιχείων του έργου</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="888"/>
+        <location filename="../sources/projectview.cpp" line="907"/>
         <source>Delete empty categories</source>
         <translation>Διαγραφή των άδειων κατηγοριών</translation>
     </message>
@@ -13198,13 +13284,13 @@ Do you want to save changes?</source>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="358"/>
-        <location filename="../sources/projectview.cpp" line="777"/>
+        <location filename="../sources/projectview.cpp" line="796"/>
         <source>untitled</source>
         <translation>Ανώνυμο</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="345"/>
-        <location filename="../sources/projectview.cpp" line="785"/>
+        <location filename="../sources/projectview.cpp" line="804"/>
         <source>Project QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a project file</comment>
         <translation>Έργο QElectroTech (*.qet)</translation>
@@ -13222,84 +13308,99 @@ Do you want to save changes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="422"/>
+        <location filename="../sources/projectview.cpp" line="407"/>
+        <source>Save as .qetdb?</source>
+        <comment>dialog title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/projectview.cpp" line="408"/>
+        <source>%n bridge(s) are drawn in this project. The .qetdb format does not store bridges yet -- they are kept in the normal .qet format only. Save it as .qetdb anyway?</source>
+        <comment>also asked when the file name says .qetdb</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="441"/>
         <source>Project in use</source>
         <comment>message box title</comment>
         <translation>Έργο σε χρήση</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="423"/>
+        <location filename="../sources/projectview.cpp" line="442"/>
         <source>%1 is open by %2 on %3. Choose another file name, or save again once it has been closed there.</source>
         <translation>Το %1 είναι ανοιχτό από τον/την %2 στον υπολογιστή %3. Επιλέξτε άλλο όνομα αρχείου ή αποθηκεύστε ξανά όταν κλείσει εκεί.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="458"/>
+        <location filename="../sources/projectview.cpp" line="477"/>
         <source>Delete this sheet ?</source>
         <comment>message box title</comment>
         <translation>Διαγραφή φύλλου;</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="459"/>
+        <location filename="../sources/projectview.cpp" line="478"/>
         <source>Are you sure you want to delete this sheet from the project?</source>
         <comment>message box content</comment>
         <translation>Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το φύλλο από το έργο;</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="783"/>
+        <location filename="../sources/projectview.cpp" line="802"/>
         <source>Save a copy for an older QElectroTech</source>
         <comment>dialog title</comment>
         <translation>Αποθήκευση αντιγράφου για παλαιότερο QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="879"/>
+        <location filename="../sources/projectview.cpp" line="898"/>
         <source>Read-only project</source>
         <comment>message box title</comment>
         <translation>Έργο μόνο για ανάγνωση</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="880"/>
+        <location filename="../sources/projectview.cpp" line="899"/>
         <source>This project is read-only. Thus it can not be cleaned.</source>
         <comment>message box content</comment>
         <translation>Αυτό το έργο είναι μόνο για ανάγνωση. Κατά συνέπεια, δεν μπορεί να καθαριστεί.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="886"/>
+        <location filename="../sources/projectview.cpp" line="905"/>
         <source>delete unused templates in the project</source>
         <translation>Διαγραφή των μη χρησιμοποιούμενων προτύπων από το έργο</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="900"/>
+        <location filename="../sources/projectview.cpp" line="919"/>
         <source>Clean project</source>
         <comment>window title</comment>
         <translation>Καθαρισμός του έργου</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="934"/>
+        <location filename="../sources/projectview.cpp" line="953"/>
         <source>Add a sheet</source>
         <translation>Προσθήκη φύλλου</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="937"/>
+        <location filename="../sources/projectview.cpp" line="956"/>
         <source>Go back to the start of the project</source>
         <translation>Επιστροφή στην αρχή του έργου</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="940"/>
+        <location filename="../sources/projectview.cpp" line="959"/>
         <source>Go to the end of the project</source>
         <translation>Μετάβαση στο τέλος του έργου</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="944"/>
+        <location filename="../sources/projectview.cpp" line="963"/>
         <source>go one page left</source>
         <translation>μετάβαση μία σελίδα αριστερά</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="948"/>
+        <location filename="../sources/projectview.cpp" line="967"/>
         <source>go one page right</source>
         <translation>μετάβαση μία σελίδα δεξιά</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="963"/>
+        <location filename="../sources/projectview.cpp" line="982"/>
         <source>This project does not contain any sheet</source>
         <comment>label displayed when a project contains no diagram</comment>
         <translation>Το έργο δεν περιέχει φύλλα</translation>
@@ -13311,19 +13412,19 @@ Do you want to save changes?</source>
         <translation>Αποθήκευση ως</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="435"/>
+        <location filename="../sources/projectview.cpp" line="454"/>
         <source>no active project</source>
         <comment>error message</comment>
         <translation>Χωρίς έργο προς εμφάνιση</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="810"/>
+        <location filename="../sources/projectview.cpp" line="829"/>
         <source>File changed on disk</source>
         <comment>message box title</comment>
         <translation>Το αρχείο άλλαξε στον δίσκο</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="811"/>
+        <location filename="../sources/projectview.cpp" line="830"/>
         <source>Someone else changed %1 on disk at %2 since you opened it.
 
 Saving over it would lose their changes.</source>
@@ -13332,22 +13433,22 @@ Saving over it would lose their changes.</source>
 Η αποθήκευση από πάνω θα χάσει τις αλλαγές του.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="815"/>
+        <location filename="../sources/projectview.cpp" line="834"/>
         <source>Save as a copy</source>
         <translation>Αποθήκευση ως αντίγραφο</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="816"/>
+        <location filename="../sources/projectview.cpp" line="835"/>
         <source>Overwrite</source>
         <translation>Αντικατάσταση</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="1078"/>
+        <location filename="../sources/projectview.cpp" line="1097"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creating sheet tabs :&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Άνοιγμα του έργου ...&lt;/b&gt;&lt;br/&gt;Δημιουργία καρτελών σελίδων :&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="1119"/>
+        <location filename="../sources/projectview.cpp" line="1138"/>
         <source>Project</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Έργο</translation>
@@ -13894,7 +13995,7 @@ Available options:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1448"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5681"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5683"/>
         <source>&amp;Close</source>
         <translation>&amp;Κλείσιμο</translation>
     </message>
@@ -13945,7 +14046,7 @@ Available options:
         <translation>Άν&amp;οιγμα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2412"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2414"/>
         <source>Open a file</source>
         <translation>Άνοιγμα αρχείου</translation>
     </message>
@@ -13966,7 +14067,7 @@ Available options:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1514"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3546"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3548"/>
         <source>Delete</source>
         <translation>Διαγραφή</translation>
     </message>
@@ -14091,17 +14192,17 @@ Available options:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2326"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2349"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2350"/>
         <source>Project %1 registered in the directory: %2.</source>
         <translation>Το έργο %1 αποθηκεύτηκε στον κατάλογο: %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2734"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2736"/>
         <source>The file you try to open does not seem readable and can not be opened. Please check the file permissions.</source>
         <translation>Το αρχείο, το όποιο προσπαθείτε να ανοίξετε, δεν φαίνεται να είναι αναγνώσιμο και δεν μπορεί να ανοιχτεί. Παρακαλώ, ελέγξτε τα δικαιώματα του αρχείου.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2748"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2750"/>
         <source>The project you try to open does not seem writable. It will be opened read-only.</source>
         <translation>Το έργο, το οποίο προσπαθείτε να ανοίξετε, δεν φαίνεται να είναι εγγράψιμο. Θα ανοιχτεί μόνο για ανάγνωση.</translation>
     </message>
@@ -14131,23 +14232,23 @@ Available options:
         <translation>Καθαρισμός του έργου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2834"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4376"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4423"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2836"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4378"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4425"/>
         <source>Unable to open project</source>
         <comment>message box title</comment>
         <translation>Αδυναμία ανοίγματος του έργου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2836"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2838"/>
         <source>The file %1 does not appear to be a QElectroTech project file. Thus it cannot be opened.</source>
         <comment>message box content</comment>
         <translation>Το αρχείο %1 δεν δείχνει να είναι αρχείο έργου QElectroTech. Κατά συνέπεια, δεν μπορεί να ανοιχτεί.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5038"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5041"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5040"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5043"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
@@ -14290,7 +14391,7 @@ Available options:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="579"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4226"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4228"/>
         <source>Paste element information</source>
         <translation>Επικόλληση πληροφοριών στοιχείου</translation>
     </message>
@@ -14576,8 +14677,8 @@ Hold Ctrl while moving to place freely.</source>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1291"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5464"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5480"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5466"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5482"/>
         <source>Reload element drawings</source>
         <translation>Επαναφόρτωση σχεδίων στοιχείων</translation>
     </message>
@@ -15056,27 +15157,27 @@ Hold Ctrl while moving to place freely.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2414"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2416"/>
         <source>XML Files (*.xml);;All files (*)</source>
         <translation>Αρχεία XML (*.xml);;Όλα τα αρχεία (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2470"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2472"/>
         <source>%1 is being opened by another session of QElectroTech.</source>
         <translation>Το %1 ανοίγει από άλλη συνεδρία του QElectroTech.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2473"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2475"/>
         <source>%1 is open by %2 on %3 since %4</source>
         <translation>Το %1 είναι ανοιχτό από τον/την %2 στον υπολογιστή %3 από %4</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2479"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2481"/>
         <source> (active just now).</source>
         <translation> (ενεργός μόλις τώρα).</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2480"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2482"/>
         <source> (active %n minute(s) ago).</source>
         <translation>
             <numerusform> (ενεργός πριν από %n λεπτό).</numerusform>
@@ -15084,125 +15185,125 @@ Hold Ctrl while moving to place freely.</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2486"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2488"/>
         <source>Project in use</source>
         <comment>message box title</comment>
         <translation>Έργο σε χρήση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2487"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2489"/>
         <source>Open it read-only to look at it without changing it. Open it anyway only if you know that session is not using it any more: both of you could then save over each other.</source>
         <translation>Ανοίξτε το μόνο για ανάγνωση για να το δείτε χωρίς να το αλλάξετε. Ανοίξτε το παρ&apos; όλα αυτά μόνο αν ξέρετε ότι εκείνη η συνεδρία δεν το χρησιμοποιεί πια: αλλιώς ο καθένας μπορεί να αντικαταστήσει τις αποθηκεύσεις του άλλου.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2490"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2492"/>
         <source>Open read-only</source>
         <translation>Άνοιγμα μόνο για ανάγνωση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2491"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2493"/>
         <source>Open anyway</source>
         <translation>Άνοιγμα παρ&apos; όλα αυτά</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2517"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2545"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2556"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2665"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2519"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2547"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2558"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2667"/>
         <source>Cannot open %1</source>
         <translation>Δεν είναι δυνατό το άνοιγμα του %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2519"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2521"/>
         <source>The file %1 cannot be read as a QElectroTech project.</source>
         <translation>Το αρχείο %1 δεν μπορεί να διαβαστεί ως έργο QElectroTech.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2520"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2522"/>
         <source>The project file is damaged:
 %1</source>
         <translation>Το αρχείο του έργου είναι κατεστραμμένο:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2525"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2527"/>
         <source>Open the version saved %1</source>
         <translation>Άνοιγμα της έκδοσης που αποθηκεύτηκε %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2530"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2532"/>
         <source>Recover what can be read</source>
         <translation>Ανάκτηση όσων μπορούν να διαβαστούν</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2532"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2534"/>
         <source>Either opens as a new project, &quot;%1&quot;; %2 is left as it is.</source>
         <translation>Και στις δύο περιπτώσεις ανοίγει ως νέο έργο, «%1»· το %2 μένει ως έχει.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2546"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2548"/>
         <source>Nothing can be recovered from it:
 %1</source>
         <translation>Δεν είναι δυνατή η ανάκτηση οποιουδήποτε περιεχομένου:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2560"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2562"/>
         <source>Project recovered</source>
         <translation>Το έργο ανακτήθηκε</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2561"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2563"/>
         <source>What could be read of %1 is open as a new project. Some parts could not be read and were left out: see the details.</source>
         <translation>Όσα μπόρεσαν να διαβαστούν από το %1 άνοιξαν ως νέο έργο. Ορισμένα τμήματα δεν μπόρεσαν να διαβαστούν και παραλείφθηκαν: δείτε τις λεπτομέρειες.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2586"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2588"/>
         <source>%1 was changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2588"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2590"/>
         <source>Another program changed %1 since QElectroTech saved it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2589"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2591"/>
         <source>The content of %1 is not what QElectroTech saved: another program changed it, or it is damaged.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2594"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2596"/>
         <source>Go back to the saved state</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2595"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2597"/>
         <source>Open it with its changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2597"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2599"/>
         <source>Going back rebuilds the project as QElectroTech saved it, from the repair data the file keeps. The file is written only when you save.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2599"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2601"/>
         <source>The file is written only when you save.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2622"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2624"/>
         <source>%1 is open with the changes another program made to it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2627"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2629"/>
         <source>The changes another program made to %1 were undone: it is open as QElectroTech saved it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2629"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2631"/>
         <source>%1 was damaged: QElectroTech repaired %n page(s) of it from the repair data the file keeps.</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -15210,63 +15311,63 @@ Hold Ctrl while moving to place freely.</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2632"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2634"/>
         <source>%1 was damaged: QElectroTech repaired its header.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2634"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2636"/>
         <source>The repair data %1 keeps was damaged; the project itself was not.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2635"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2637"/>
         <source>Project repaired</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2636"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2638"/>
         <source>Save the project to keep it so.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2647"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2649"/>
         <source>%1 (recovered)</source>
         <translation>%1 (ανακτήθηκε)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2650"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2652"/>
         <source>%1 (recovered %2)</source>
         <translation>%1 (ανακτήθηκε %2)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2811"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2813"/>
         <source>Cannot go back to the saved state</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2812"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2814"/>
         <source>The other program rewrote too much of %1 for its repair data to rebuild the state QElectroTech saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2853"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2855"/>
         <source>%1 on %2 has taken over %3. Save your changes with Save As to keep them.</source>
         <translation>Το %1 στον υπολογιστή %2 ανέλαβε το %3. Αποθηκεύστε τις αλλαγές σας με «Αποθήκευση ως» για να τις διατηρήσετε.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2873"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2875"/>
         <source>This project was saved by a later version of QElectroTech. It is opened read-only, so that saving it cannot lose what this version does not know. Use Save As to keep a copy in this version&apos;s format.</source>
         <translation>Αυτό το έργο αποθηκεύτηκε από νεότερη έκδοση του QElectroTech. Ανοίγει μόνο για ανάγνωση, ώστε η αποθήκευση να μην χάσει ό,τι δεν γνωρίζει αυτή η έκδοση. Χρησιμοποιήστε την Αποθήκευση ως για να κρατήσετε ένα αντίγραφο στη μορφή αυτής της έκδοσης.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2932"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2934"/>
         <source>Elements not loaded</source>
         <comment>message box title</comment>
         <translation>Τα στοιχεία δεν φορτώθηκαν</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2933"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2935"/>
         <source>%n elements could not be loaded: their definition is missing from the project and from the collections.
 
 They are not shown, but they are kept in the file as they are, with their conductors, and come back once their definition is available again.</source>
@@ -15281,7 +15382,7 @@ They are not shown, but they are kept in the file as they are, with their conduc
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2950"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2952"/>
         <source>%n conductors could not be joined to their terminals and were not loaded. The element&apos;s definition is missing, or was replaced by another one with different terminals.
 
 They are not shown, but they are kept in the file as they are, and join their terminals again once the definition has them where they were.</source>
@@ -15296,19 +15397,19 @@ They are not shown, but they are kept in the file as they are, and join their te
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3286"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3288"/>
         <source>Automatic numbering</source>
         <comment>window title</comment>
         <translation>Αυτόματη αρίθμηση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3287"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3289"/>
         <source>No automatic cable numbering is defined.</source>
         <comment>shown when a project has no cable numbering rule</comment>
         <translation>Δεν έχει οριστεί αυτόματη αρίθμηση καλωδίων.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3291"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3293"/>
         <source>Do you want to define one now?
 
 You can also number the cables automatically later: the rule is set at any time in the project properties, on the &quot;Auto Numbering&quot; page.</source>
@@ -15318,72 +15419,72 @@ You can also number the cables automatically later: the rule is set at any time 
 Μπορείτε επίσης να αριθμήσετε τα καλώδια αυτόματα αργότερα: ο κανόνας ορίζεται οποιαδήποτε στιγμή στις ιδιότητες του έργου, στη σελίδα «Αυτόματη αρίθμηση».</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3297"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3299"/>
         <source>Yes</source>
         <comment>yes</comment>
         <translation>Ναι</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3298"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3300"/>
         <source>No</source>
         <comment>no</comment>
         <translation>Όχι</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3299"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3301"/>
         <source>Cancel</source>
         <comment>cancel</comment>
         <translation>Ακύρωση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3591"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3593"/>
         <source>Change relay contact display</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3996"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3998"/>
         <source>Edit the information of the elements</source>
         <comment>edit several elements</comment>
         <translation>Επεξεργασία των πληροφοριών των στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4027"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4029"/>
         <source>Edit the cable</source>
         <comment>edit cable</comment>
         <translation>Επεξεργασία του καλωδίου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5091"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5093"/>
         <source>No symbol is chosen for this button. Highlight one in the collection, then choose &quot;Use the symbol highlighted in the collection&quot; from the arrow beside the button.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5115"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5117"/>
         <source>%1: place &quot;%2&quot;. The arrow beside it chooses the symbol.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5116"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5118"/>
         <source>%1: no symbol chosen yet. The arrow beside it chooses one.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5729"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5731"/>
         <source>Remembered after a restart</source>
         <translation>Απομνημονεύεται μετά από επανεκκίνηση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5892"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5894"/>
         <source>Dimension format copied</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5902"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5904"/>
         <source>Text format of &quot;%1&quot; copied</source>
         <translation>Η μορφή κειμένου του «%1» αντιγράφηκε</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5948"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5950"/>
         <source>Dimension format applied to %n dimension(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -15391,7 +15492,7 @@ You can also number the cables automatically later: the rule is set at any time 
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5964"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5966"/>
         <source>Text format applied to %n element(s)</source>
         <translation>
             <numerusform>Η μορφή κειμένου εφαρμόστηκε σε %n στοιχείο</numerusform>
@@ -15399,225 +15500,274 @@ You can also number the cables automatically later: the rule is set at any time 
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5983"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6069"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6077"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6089"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6166"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6188"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5985"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6071"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6079"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6091"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6168"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6190"/>
         <source>History of saves</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5985"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5987"/>
         <source>Keep a history of saves in this file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5989"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5991"/>
         <source>all</source>
         <translation type="unfinished">Όλα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5990"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5992"/>
         <source>The oldest saves are dropped from the history at each save beyond this number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5991"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5993"/>
         <source>Saves to keep:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5997"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5999"/>
         <source>No.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5997"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5999"/>
         <source>Saved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5997"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5999"/>
         <source>By</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5997"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5999"/>
         <source>Changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6006"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6008"/>
         <source>Open as it was</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6007"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6009"/>
         <source>Open the project as it was after the selected save, read-only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6008"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6010"/>
         <source>Compare</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6009"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6011"/>
         <source>What the selected save changed, or what changed between two selected saves</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6048"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6050"/>
         <source>A history is kept only in a project saved as .qetdb (File &gt; Save as).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6049"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6051"/>
         <source>This file keeps no history. Switched on, each save records who saved, when and what changed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6051"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6053"/>
         <source>Each save records who saved, when and what changed. Copies of the file carry this history: use File &gt; Export for delivery to send a project without it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6061"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6063"/>
         <source>History started</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6070"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6072"/>
         <source>Delete the history this file keeps? It cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6078"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6090"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6080"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6092"/>
         <source>The history could not be changed: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6111"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6117"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6125"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6131"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6137"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6113"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6119"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6127"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6133"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6139"/>
         <source>Export for delivery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6112"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6114"/>
         <source>Only a project saved as .qetdb keeps a history to leave out (File &gt; Save as).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6118"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6120"/>
         <source>The copy is made from the saved file. Save the project first?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6126"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6128"/>
         <source>%1 - delivery.qetdb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6127"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6129"/>
         <source>QElectroTech project (*.qetdb)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6132"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6134"/>
         <source>Choose another file than the project&apos;s own.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6138"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6140"/>
         <source>The copy could not be written: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6141"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6143"/>
         <source>Copy without history written to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6155"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6157"/>
         <source>%1 - save %2.qetdb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6167"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6169"/>
         <source>Save %1 could not be written again: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6189"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6191"/>
         <source>The saves could not be compared: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6212"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6214"/>
         <source>Changes from save %1 to save %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6217"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6219"/>
         <source>Kind</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6217"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6228"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6219"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6230"/>
         <source>Folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6217"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6219"/>
         <source>Name</source>
         <translation type="unfinished">Όνομα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6217"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6219"/>
         <source>Change</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6226"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6228"/>
         <source>Symbol</source>
         <translation type="unfinished">Σύμβολο</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6227"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6229"/>
         <source>Wire</source>
         <translation type="unfinished">Αγωγός</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6229"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6231"/>
         <source>Drawn item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6230"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6232"/>
         <source>added</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6231"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6233"/>
         <source>removed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6232"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6234"/>
         <source>changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6245"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6247"/>
         <source>Not in the project now</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qetdiagrameditor.cpp" line="6310"/>
+        <source>%n more</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6313"/>
+        <source>Untitled sheet</source>
+        <comment>Fallback label when a diagram has no title</comment>
+        <translation type="unfinished">Ανώνυμη σελίδα</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6317"/>
+        <source>%1 - %2: %3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qetdiagrameditor.cpp" line="6340"/>
+        <source>... and %n more folio(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6343"/>
+        <source>Outside the sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6344"/>
+        <source>These items lie outside the sheet and are cut off or left out:
+
+%1
+
+Go on anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qetdiagrameditor.cpp" line="6365"/>
+        <source>Project saved; %n folio(s) with items outside the sheet, named when printing or exporting</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1924"/>
@@ -15658,12 +15808,12 @@ You can also number the cables automatically later: the rule is set at any time 
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2185"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5594"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5596"/>
         <source>Scripts</source>
         <translation>Σενάρια</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2894"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2896"/>
         <source>%n font descriptions written in a foreign or corrupted format have been restored. They will be rewritten in a stable format the next time the project is saved.</source>
         <comment>message box content</comment>
         <translation>
@@ -15672,7 +15822,7 @@ You can also number the cables automatically later: the rule is set at any time 
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2902"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2904"/>
         <source>%n font descriptions could not be read; the default font will be used for these texts.</source>
         <comment>message box content</comment>
         <translation>
@@ -15681,37 +15831,37 @@ You can also number the cables automatically later: the rule is set at any time 
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2909"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2911"/>
         <source>Project fonts</source>
         <comment>message box title</comment>
         <translation>Γραμματοσειρές έργου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2922"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2926"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2924"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2928"/>
         <source>Sheet %1: %2</source>
         <translation>Φύλλο %1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2949"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2951"/>
         <source>Conductors not loaded</source>
         <comment>message box title</comment>
         <translation>Οι αγωγοί δεν φορτώθηκαν</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3494"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3496"/>
         <source>Unable to delete the terminal</source>
         <translation>Δεν είναι δυνατή η διαγραφή του ακροδέκτη</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3495"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3497"/>
         <source>The deletion cannot be performed because the selection contains one or more terminals that are bridged and/or belong to a multi-level terminal.
 Unbridge and/or remove the levels from the affected terminals so that they can be deleted</source>
         <translation>Η διαγραφή δεν μπορεί να γίνει επειδή η επιλογή περιέχει έναν ή περισσότερους ακροδέκτες που είναι γεφυρωμένοι ή/και ανήκουν σε ακροδέκτη πολλών επιπέδων.
 Αφαιρέστε τις γέφυρες ή/και τα επίπεδα από τους σχετικούς ακροδέκτες ώστε να μπορούν να διαγραφούν</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3684"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3686"/>
         <source>%n items put back on the grid</source>
         <translation>
             <numerusform>%n αντικείμενο επανήλθε στο πλέγμα</numerusform>
@@ -15719,7 +15869,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3685"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3687"/>
         <source>%n items aligned</source>
         <translation>
             <numerusform>%n αντικείμενο στοιχίστηκε</numerusform>
@@ -15727,22 +15877,22 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3691"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3693"/>
         <source>The selection is already on the grid</source>
         <translation>Η επιλογή βρίσκεται ήδη στο πλέγμα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3693"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3695"/>
         <source>Select at least two unlocked elements, images, texts, shapes or groups</source>
         <translation>Επιλέξτε τουλάχιστον δύο ξεκλείδωτα στοιχεία, εικόνες, κείμενα, σχήματα ή ομάδες</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3695"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3697"/>
         <source>The selection is already aligned, to the nearest grid step</source>
         <translation>Η επιλογή είναι ήδη στοιχισμένη, στο πλησιέστερο βήμα πλέγματος</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3699"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3701"/>
         <source>(%n locked objects left in place)</source>
         <translation>
             <numerusform>(%n κλειδωμένο αντικείμενο έμεινε στη θέση του)</numerusform>
@@ -15750,101 +15900,101 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4006"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4008"/>
         <source>Edit the element</source>
         <comment>edit element</comment>
         <translation>Επεξεργασία του στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4013"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4015"/>
         <source>Edit the text field</source>
         <comment>edit text field</comment>
         <translation>Επεξεργασία του πεδίου κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4020"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4022"/>
         <source>Edit the image</source>
         <comment>edit image</comment>
         <translation>Επεξεργασία εικόνας</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4034"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4036"/>
         <source>Edit conductor</source>
         <comment>edit conductor</comment>
         <translation>Επεξεργασία αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4042"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4044"/>
         <source>Edit the selected object</source>
         <comment>edit selected item</comment>
         <translation>Επεξεργασία του επιλεγμένου αντικειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4377"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4424"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4379"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4426"/>
         <source>An error occurred while opening file %1.</source>
         <comment>message box content</comment>
         <translation>Παρουσιάστηκε σφάλμα κατά το άνοιγμα του αρχείου %1.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4471"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4473"/>
         <source>Activates the project « %1 »</source>
         <translation>Ενεργοποιεί το έργο « %1 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4695"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4697"/>
         <source>Are you sure you want to delete this sheet?</source>
         <translation>Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το φύλλο;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4700"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4702"/>
         <source>Delete the sheets</source>
         <translation>Διαγραφή των φύλλων</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4701"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4703"/>
         <source>Are you sure you want to delete the selected %1 sheets ?</source>
         <translation>Είστε βέβαιοι ότι θέλετε να διαγράψετε τα %1 επιλεγμένα φύλλα;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4718"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4720"/>
         <source>Delete %1 sheets</source>
         <translation>Διαγραφή %1 φύλλων</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4756"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4774"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4792"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4810"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4828"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4846"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4864"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4758"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4776"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4794"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4812"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4830"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4848"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4866"/>
         <source>Move the sheets</source>
         <translation>Μετακίνηση των φύλλων</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4978"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4980"/>
         <source>Error</source>
         <comment>message box title</comment>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5147"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5149"/>
         <source>Repeat: insert &quot;%1&quot;</source>
         <translation>Επανάληψη: εισαγωγή «%1»</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5148"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5150"/>
         <source>Repeat: %1</source>
         <translation>Επανάληψη: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5445"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5447"/>
         <source>sheet %1</source>
         <translation>φύλλο %1</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5453"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5455"/>
         <source>%n elements redrawn.</source>
         <translation>
             <numerusform>%n στοιχείο επανασχεδιάστηκε.</numerusform>
@@ -15852,7 +16002,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5457"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5459"/>
         <source>%n elements for which no definition could be found or which were illegible: their current design has been retained.</source>
         <translation>
             <numerusform>%n στοιχείο για το οποίο δεν βρέθηκε ορισμός ή που ήταν δυσανάγνωστο: διατηρήθηκε το τρέχον σχέδιό του.</numerusform>
@@ -15860,7 +16010,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5469"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5471"/>
         <source>%n elements not redrawn: their size, grip point or terminals have changed (a terminal was added, removed or moved).</source>
         <translation>
             <numerusform>%n στοιχείο δεν επανασχεδιάστηκε: άλλαξε το μέγεθος, το σημείο λαβής ή οι ακροδέκτες του (προστέθηκε, αφαιρέθηκε ή μετακινήθηκε ακροδέκτης).</numerusform>
@@ -15868,18 +16018,18 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5473"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5475"/>
         <source>To update them, they must be deleted then reinserted. Warning: this operation removes the conductors already connected to these elements, which will need to be redrawn.</source>
         <translation>Για να ενημερωθούν, πρέπει να διαγραφούν και να εισαχθούν ξανά. Προσοχή: αυτή η ενέργεια αφαιρεί τους αγωγούς που είναι ήδη συνδεδεμένοι σε αυτά τα στοιχεία, οι οποίοι θα πρέπει να σχεδιαστούν ξανά.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5502"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5506"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5504"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5508"/>
         <source>Run a script</source>
         <translation>Εκτέλεση σεναρίου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5531"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5533"/>
         <source>Scripts are disabled.
 
 A script runs with your permissions: it can read and modify the open project and write files. Only run scripts whose origin you know.
@@ -15892,28 +16042,28 @@ Enable scripts? This setting can be changed in Configure QElectroTech &gt; Gener
 Να ενεργοποιηθούν τα σενάρια; Αυτή η ρύθμιση μπορεί να αλλάξει στο Ρύθμιση QElectroTech &gt; Γενικά &gt; Έργα.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5508"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5510"/>
         <source>JavaScript scripts (*.js);;All files (*)</source>
         <translation>Σενάρια JavaScript (*.js);;Όλα τα αρχεία (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5608"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5610"/>
         <source>Ignored: %1</source>
         <translation>Αγνοήθηκε: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5643"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5704"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5645"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5706"/>
         <source>Stop</source>
         <translation>Διακοπή</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5644"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5646"/>
         <source>Stop recording the macro</source>
         <translation>Διακοπή της εγγραφής της μακροεντολής</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5654"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5656"/>
         <source>● Recording: %n steps</source>
         <translation>
             <numerusform>● Εγγραφή: %n βήμα</numerusform>
@@ -15921,12 +16071,12 @@ Enable scripts? This setting can be changed in Configure QElectroTech &gt; Gener
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5669"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5671"/>
         <source>Macro recorded</source>
         <translation>Η μακροεντολή καταγράφηκε</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5670"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5672"/>
         <source>“%1”: %n steps.
 
 To make a script of it, ask your AI assistant: the button below copies the request, just paste it into its window.</source>
@@ -15940,53 +16090,53 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5679"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5681"/>
         <source>&amp;Copy the request for the assistant</source>
         <translation>&amp;Αντιγραφή του αιτήματος για τον βοηθό</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5680"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5682"/>
         <source>&amp;Open the folder</source>
         <translation>Άνοιγμα του &amp;φακέλου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5686"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5688"/>
         <source>Request copied: paste it into the assistant&apos;s window</source>
         <translation>Το αίτημα αντιγράφηκε: επικολλήστε το στο παράθυρο του βοηθού</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5705"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5707"/>
         <source>Close the assistant&apos;s connection for the rest of the session</source>
         <translation>Κλείσιμο της σύνδεσης του βοηθού για την υπόλοιπη συνεδρία</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5714"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5716"/>
         <source>Live mode: assistant connected</source>
         <translation>Ζωντανή λειτουργία: ο βοηθός είναι συνδεδεμένος</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5715"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5717"/>
         <source>Live mode: waiting for an assistant</source>
         <translation>Ζωντανή λειτουργία: αναμονή βοηθού</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5723"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5767"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5725"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5769"/>
         <source>Assistant</source>
         <translation>Βοηθός</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5727"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5729"/>
         <source>Ask before running a script the assistant wrote</source>
         <translation>Ερώτηση πριν από την εκτέλεση σεναρίου που έγραψε ο βοηθός</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5784"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5786"/>
         <source>Live mode: %1 %2 at %3</source>
         <translation>Ζωντανή λειτουργία: %1 %2 στις %3</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5826"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5828"/>
         <source>%n kinds of items hidden</source>
         <translation>
             <numerusform>%n είδος αντικειμένων κρυφό</numerusform>
@@ -15994,8 +16144,8 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5862"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5867"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5864"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5869"/>
         <source>Texts %1</source>
         <translation>Κείμενα %1</translation>
     </message>
@@ -16199,8 +16349,8 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1165"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4694"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4717"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4696"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4719"/>
         <source>Delete this sheet</source>
         <translation>Διαγραφή σελίδας</translation>
     </message>
@@ -16408,7 +16558,7 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <translation>Βάθος</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3645"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3647"/>
         <source>Group</source>
         <translation>Ομάδα</translation>
     </message>
@@ -16447,26 +16597,26 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <translation type="vanished">Έργα QElectroTech (*.qet);;Αρχεία XML (*.xml);;Όλα τα αρχεία (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2717"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2733"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2719"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2735"/>
         <source>Unable to open file</source>
         <comment>message box title</comment>
         <translation>Αδυναμία ανοίγματος του αρχείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2719"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2721"/>
         <source>It appears the %1 file which you are trying to open does not exist or does not exist anymore.</source>
         <translation>Φαίνεται ότι το αρχείο 1% που προσπαθείτε να ανοίξετε δεν υπάρχει.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2747"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2872"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2749"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2874"/>
         <source>Opening the file read-only</source>
         <comment>message box title</comment>
         <translation>Άνοιγμα του αρχείου μόνο για ανάγνωση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4949"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4951"/>
         <source>Zoom %1 %</source>
         <translation>Μεγέθυνση %1 %</translation>
     </message>
@@ -16510,12 +16660,12 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <translation>Αδρό (20)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5843"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5845"/>
         <source>Grid %1</source>
         <translation>Πλέγμα %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5844"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5846"/>
         <source>Grid %1 × %2</source>
         <translation>Πλέγμα %1 × %2</translation>
     </message>
@@ -17542,13 +17692,13 @@ the conditions are not valid</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3598"/>
+        <location filename="../sources/qetproject.cpp" line="3600"/>
         <source>An error occurred during the template integration.</source>
         <comment>error message</comment>
         <translation>Παρουσιάστηκε σφάλμα κατά την ενσωμάτωση του προτύπου.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3866"/>
+        <location filename="../sources/qetproject.cpp" line="3868"/>
         <source>Warning</source>
         <comment>message box title</comment>
         <translation>Προειδοποίηση</translation>
@@ -17598,44 +17748,44 @@ the conditions are not valid</source>
         <translation type="vanished">Έργο QElectroTech (*.qet *.qetz)</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3051"/>
+        <location filename="../sources/qetproject.cpp" line="3053"/>
         <source>QElectroTech project (*.qet *.qetz *.qetdb)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3079"/>
-        <location filename="../sources/qetproject.cpp" line="3101"/>
+        <location filename="../sources/qetproject.cpp" line="3081"/>
+        <location filename="../sources/qetproject.cpp" line="3103"/>
         <source>a history is kept only in a project saved as .qetdb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3083"/>
-        <location filename="../sources/qetproject.cpp" line="3105"/>
+        <location filename="../sources/qetproject.cpp" line="3085"/>
+        <location filename="../sources/qetproject.cpp" line="3107"/>
         <source>the file was changed on disk since it was opened or saved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3254"/>
+        <location filename="../sources/qetproject.cpp" line="3256"/>
         <source>%1 was opened read-only because someone else has it open. Use Save As to keep your changes in another file.</source>
         <translation>Το %1 άνοιξε μόνο για ανάγνωση επειδή το έχει ανοιχτό κάποιος άλλος. Χρησιμοποιήστε «Αποθήκευση ως» για να κρατήσετε τις αλλαγές σας σε άλλο αρχείο.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3259"/>
+        <location filename="../sources/qetproject.cpp" line="3261"/>
         <source>Cannot save %1: %2</source>
         <translation>Δεν είναι δυνατή η αποθήκευση του %1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3286"/>
+        <location filename="../sources/qetproject.cpp" line="3288"/>
         <source>someone else changed the file on disk at %1 since it was opened, and saving would overwrite that. Save to another name, or set QET_OVERWRITE_CHANGED=1 to overwrite it.</source>
         <translation>από τότε που άνοιξε το αρχείο, κάποιος άλλος το άλλαξε στον δίσκο στις %1 και η αποθήκευση θα αντικαθιστούσε αυτή την αλλαγή. Αποθηκεύστε με άλλο όνομα ή ορίστε QET_OVERWRITE_CHANGED=1 για αντικατάσταση.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3508"/>
+        <location filename="../sources/qetproject.cpp" line="3510"/>
         <source>Modified contact system</source>
         <translation>Τροποποιημένο σύστημα επαφών</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3509"/>
+        <location filename="../sources/qetproject.cpp" line="3511"/>
         <source>The new element defines slave contact groups.
 Existing slave elements will not be automatically assigned. You will need to link the slaves manually and assign the contact groups.
 
@@ -17646,7 +17796,7 @@ Do you wish to continue?</source>
 Θέλετε να συνεχίσετε;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3868"/>
+        <location filename="../sources/qetproject.cpp" line="3870"/>
         <source>This document appears to have been saved with version %1
  which is later than your version ! 
 You are currently using QElectroTech in version %2</source>
@@ -17655,7 +17805,7 @@ You are currently using QElectroTech in version %2</source>
 Χρησιμοποιείτε αυτή τη στιγμή το QElectroTech στην έκδοση %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3872"/>
+        <location filename="../sources/qetproject.cpp" line="3874"/>
         <source>.
  It is then possible that the opening of all or part of this document fails.
 What do you wish to do ?</source>
@@ -17664,32 +17814,32 @@ What do you wish to do ?</source>
 Τι θέλετε να κάνετε;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3893"/>
+        <location filename="../sources/qetproject.cpp" line="3895"/>
         <source>Warning </source>
         <comment>message box title</comment>
         <translation>Προειδοποίηση</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3894"/>
+        <location filename="../sources/qetproject.cpp" line="3896"/>
         <source>The project you are trying to open is partially compatible with your version %1 of QElectroTech.
 </source>
         <translation>Το έργο που προσπαθείτε να ανοίξετε είναι εν μέρει συμβατό με την έκδοση %1 του QElectroTech.
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3897"/>
+        <location filename="../sources/qetproject.cpp" line="3899"/>
         <source>In order to make it fully compatible please open this same project with version 0.8, or 0.80 of QElectroTech and save the project and open it again with this version.
 What do you wish to do ?</source>
         <translation>Για να γίνει πλήρως συμβατό, ανοίξτε το ίδιο έργο με την έκδοση 0.8 ή 0.80 του QElectroTech, αποθηκεύστε το έργο και ανοίξτε το ξανά με αυτή την έκδοση.
 Τι θέλετε να κάνετε;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="4334"/>
+        <location filename="../sources/qetproject.cpp" line="4340"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creation of sheets&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Άνοιγμα του έργου...&lt;/b&gt;&lt;br/&gt;Δημιουργία των σελίδων&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="4464"/>
+        <location filename="../sources/qetproject.cpp" line="4470"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Setting up cross references&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Άνοιγμα του τρέχοντος έργου ...&lt;/b&gt;&lt;br/&gt;Εφαρμογή των παραπομπών&lt;/p&gt;</translation>
     </message>
@@ -18065,7 +18215,7 @@ What do you wish to do ?</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="826"/>
+        <location filename="../sources/exportdialog.cpp" line="837"/>
         <source>Export to clipboard</source>
         <translation>Εξαγωγή στο πρόχειρο</translation>
     </message>
@@ -18081,7 +18231,7 @@ What do you wish to do ?</source>
     </message>
     <message>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="312"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="827"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="862"/>
         <source>Warning: the element has been saved with a more recent version of QElectroTech.</source>
         <translation>Προσοχή: Το στοιχείο έχει αποθηκευτεί με μια νεότερη έκδοση του QElectroTech.</translation>
     </message>
@@ -18416,7 +18566,7 @@ What do you wish to do ?</source>
         <translation>Βάθος</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="78"/>
+        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="111"/>
         <source>Terminal</source>
         <comment>tooltip</comment>
         <translation>Ακροδέκτης</translation>
@@ -18434,27 +18584,27 @@ What do you wish to do ?</source>
         <translation>παραλληλόγραμμο</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="787"/>
+        <location filename="../sources/exportdialog.cpp" line="798"/>
         <source>Untitled sheet</source>
         <translation>Ανώνυμη σελίδα</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="789"/>
+        <location filename="../sources/exportdialog.cpp" line="800"/>
         <source>diagram</source>
         <translation>διάγραμμα</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="814"/>
+        <location filename="../sources/exportdialog.cpp" line="825"/>
         <source>Keep aspect ratio</source>
         <translation>Διατήρηση της αναλογίας διαστάσεων</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="818"/>
+        <location filename="../sources/exportdialog.cpp" line="829"/>
         <source>Reset size</source>
         <translation>Επαναφορά των διαστάσεων</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="822"/>
+        <location filename="../sources/exportdialog.cpp" line="833"/>
         <source>Preview</source>
         <translation>Προεπισκόπηση</translation>
     </message>
@@ -18851,12 +19001,12 @@ the translated name of this folder could not be read, so its folder name is disp
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementsmover.cpp" line="487"/>
+        <location filename="../sources/elementsmover.cpp" line="507"/>
         <source>Update automatic connections</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementsmover.cpp" line="511"/>
+        <location filename="../sources/elementsmover.cpp" line="531"/>
         <source>Add %n conductors</source>
         <comment>add a numbers of conductor one or more</comment>
         <translation>
@@ -19114,7 +19264,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="209"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1456"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1846"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3404"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3502"/>
         <source>Type</source>
         <translation>Τύπος</translation>
     </message>
@@ -19122,7 +19272,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="210"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1457"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1847"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3405"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3503"/>
         <source>Address</source>
         <translation>Διεύθυνση</translation>
     </message>
@@ -19131,7 +19281,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="212"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1459"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1849"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3407"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3505"/>
         <source>Annotation</source>
         <translation>Σχόλιο</translation>
     </message>
@@ -19140,7 +19290,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="213"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1460"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1850"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3408"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3506"/>
         <source>Cross-reference</source>
         <translation>Διασταυρούμενη αναφορά</translation>
     </message>
@@ -19150,7 +19300,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="211"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1458"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1848"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3406"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3504"/>
         <source>Function</source>
         <translation>Λειτουργία</translation>
     </message>
@@ -19491,27 +19641,27 @@ Do you want to replace it ?</source>
         <translation>Δημιουργία αγωγών</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3522"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3524"/>
         <source>Delete</source>
         <translation type="unfinished">Διαγραφή</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5295"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5297"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>Για να εγκαταστήσετε το πρόσθετο qet_tb_generator&lt;br&gt;Επισκεφθείτε το:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator&lt;/a&gt;&lt;br&gt; Απαιτεί python 3.5 ή παραπάνω  &lt;br&gt; &lt;B&gt; &lt;U&gt; Πρώτη εγκατάσταση στα Windows &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. Εγκατάσταση, εάν απαιτείται, python 3.5 ή παραπάνω &lt;br&gt; Επισκεφθείτε το: &lt;br&gt; &lt;a href=&apos;https://www.python.org/downloads/&apos;&gt; python.org &lt;/a&gt; &lt;br&gt; 2. pip install qet_tb_generator &lt;br&gt; &lt;B&gt; &lt;U&gt; Ενημέρωση στα Windows &lt;/B&gt; &lt;/U&gt; &lt;br&gt; python -m pip install  --upgrade qet_tb_generator &lt;br&gt;&gt;&gt; Ο χρήστης θα μπορούσε να ξεκινήσει σε ένα τερματικό αυτό το σενάριο σε αυτό τον κατάλογο  &lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5315"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5317"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Για να εγκαταστήσετε το πρόσθετο qet_tb_generator&lt;br&gt;Επισκεφθείτε :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Πρώτη εγκατάσταση σε macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Εγκαταστήστε, αν χρειάζεται, μόνο το πακέτο python 3.11, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Εκτελέστε το σενάριο Profile.command&lt;br&gt;επειδή το πρόγραμμα χρησιμοποιεί σταθερή διαδρομή (PATH) για τον εντοπισμό του πρόσθετου qet-tb-generator &lt;br&gt; Επισκεφθείτε :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Ενημέρωση σε macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5334"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5336"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Για να εγκαταστήσετε το πρόσθετο qet_tb_generator&lt;br&gt;Επισκεφθείτε το:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt; Απαιτεί python 3.5 ή παραπάνω  &lt;br&gt;&lt;br&gt; &lt;B&gt; &lt;U&gt; Πρώτη εγκατάσταση στο Linux &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. ελέγχτε αν έχετε εγκατεστημένο το pip3: pip3 --version&lt;br&gt;αν οχι, εγκαταστήστε το με: sudo apt-get install python3-pip&lt;br&gt;2. Εγκαταστήστε την εφαρμογή: sudo pip3 install qet_tb_generator&lt;br&gt;3. Εκκινήστε την εφαρμογή: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Αναβάθμιση σε Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5354"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5356"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>Σφάλμα εκκίνησης του προσθέτου qet_tb_generator</translation>
     </message>
@@ -19876,16 +20026,21 @@ Please download it by following the link and unzip it in the installation folder
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="95"/>
+        <source>Text grid %1. Hold Ctrl to place freely.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="96"/>
         <source>Text grid %1. Release Shift and hold Ctrl to place freely.</source>
         <translation>Πλέγμα κειμένου %1. Αφήστε το Shift και κρατήστε πατημένο το Ctrl για ελεύθερη τοποθέτηση.</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextsmover.cpp" line="97"/>
+        <location filename="../sources/elementtextsmover.cpp" line="99"/>
         <source>Text grid disabled.</source>
         <translation>Το πλέγμα κειμένου απενεργοποιήθηκε.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementtextsmover.cpp" line="165"/>
+        <location filename="../sources/elementtextsmover.cpp" line="167"/>
         <source>%n texts of element</source>
         <translation>
             <numerusform>%n κείμενο στοιχείου</numerusform>
@@ -19893,7 +20048,7 @@ Please download it by following the link and unzip it in the installation folder
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementtextsmover.cpp" line="167"/>
+        <location filename="../sources/elementtextsmover.cpp" line="169"/>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="110"/>
         <source>%n groups of texts</source>
         <translation>
@@ -19902,7 +20057,7 @@ Please download it by following the link and unzip it in the installation folder
         </translation>
     </message>
     <message>
-        <location filename="../sources/elementtextsmover.cpp" line="172"/>
+        <location filename="../sources/elementtextsmover.cpp" line="174"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="884"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="3554"/>
         <source>Move %1</source>
@@ -21061,6 +21216,12 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
         <location filename="../sources/bridge/bridgeundocommands.cpp" line="326"/>
         <source>Deleting a line of a bridge</source>
         <comment>undo command text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="49"/>
+        <source>(No action)</source>
+        <comment>spacemouse config: unbound button</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -23280,6 +23441,101 @@ The other fields are not used.</source>
     </message>
 </context>
 <context>
+    <name>SpaceMouseConfigPage</name>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="71"/>
+        <source>Link a button number on your 3D mouse (SpaceMouse, SpacePilot...) to a QElectroTech action. The button number depends on your device and its driver -- see its documentation, or try the values one by one starting from 0.</source>
+        <comment>spacemouse config page intro</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="81"/>
+        <source>Button no.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="81"/>
+        <source>Action</source>
+        <translation type="unfinished">Ενέργεια</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="90"/>
+        <source>Add a link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="98"/>
+        <source>Buttons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="134"/>
+        <source>Small movements below this threshold are ignored. Raise it if the view drifts when you are not touching the mouse.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="138"/>
+        <source>Push / pull the cap</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="140"/>
+        <source>Twist the cap</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="145"/>
+        <source>Reverse horizontal movement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="147"/>
+        <source>Reverse vertical movement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="149"/>
+        <source>Reverse zoom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="153"/>
+        <source>Pan speed:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="154"/>
+        <source>Zoom speed:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="155"/>
+        <source>Zoom by:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="156"/>
+        <source>Dead zone:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="161"/>
+        <source>Movement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="219"/>
+        <source>Remove this link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="295"/>
+        <source>3D mouse</source>
+        <comment>configuration page title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>StyleEditor</name>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="378"/>
@@ -25312,7 +25568,7 @@ The other fields are not used.</source>
 <context>
     <name>Terminal</name>
     <message numerus="yes">
-        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="656"/>
+        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="693"/>
         <source>This terminal already has %n conductors, the project&apos;s limit. Add a terminal to connect one more conductor.</source>
         <comment>wire refused by the wires-per-terminal limit</comment>
         <translation>
@@ -26349,87 +26605,87 @@ Double-click to go to the element</source>
         <translation>Εφεδρικός</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="491"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="495"/>
         <source>Position</source>
         <translation>Θέση</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="492"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="496"/>
         <source>Stage</source>
         <translation>Στάδιο</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="497"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="501"/>
         <source>Label</source>
         <translation>Ετικέτα</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="498"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="502"/>
         <source>Number wire</source>
         <translation>Αριθμός αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="499"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="503"/>
         <source>Cross-reference</source>
         <translation>Διασταυρούμενη αναφορά</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="500"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="504"/>
         <source>Cable</source>
         <translation>Καλώδιο</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="501"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="505"/>
         <source>Color / wire number of the cable</source>
         <translation>Χρώμα / αριθμός αγωγού του καλωδίου</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="502"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="506"/>
         <source>Target</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="503"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="507"/>
         <source>Type</source>
         <translation>Τύπος</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="504"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="508"/>
         <source>Function</source>
         <translation>Λειτουργία</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="505"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="509"/>
         <source>led</source>
         <translation>led</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="506"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="510"/>
         <source>Shield</source>
         <translation>Θωράκιση</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="507"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="511"/>
         <source>Color</source>
         <translation>Χρώμα</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="508"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="512"/>
         <source>Section (mm²)</source>
         <translation>Διατομή (mm²)</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="509"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="513"/>
         <source>Width (mm)</source>
         <translation>Πλάτος (mm)</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="510"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="514"/>
         <source>Separator plate after</source>
         <translation>Διαχωριστική πλάκα μετά</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="521"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="525"/>
         <source>Installation, Location and Label (BMK) of the piece the cable lands on, past this strip, one line per field</source>
         <translation type="unfinished"></translation>
     </message>
@@ -26437,25 +26693,25 @@ Double-click to go to the element</source>
 <context>
     <name>TerminalStripModelDelegate</name>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="963"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="967"/>
         <source>%1 mm</source>
         <translation>%1 mm</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1011"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1022"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1055"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1015"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1026"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1059"/>
         <source>None (default)</source>
         <translation>Κανένα (προεπιλογή)</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1014"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1161"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1018"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1165"/>
         <source>%1 mm²</source>
         <translation>%1 mm²</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1077"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1081"/>
         <source>One line per field: Installation, Location, Label (BMK).
 Ctrl+Return gives the cell back, Escape throws the text away.</source>
         <translation type="unfinished"></translation>
@@ -27094,8 +27350,8 @@ The following variables can be used:
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="445"/>
-        <source>By default, the following variables are available: &lt;ul&gt;&lt;li&gt;%{author}: author of the sheet&lt;/li&gt;&lt;li&gt;%{date}: sheet date&lt;/li&gt;&lt;li&gt;%{title}: sheet title&lt;/li&gt;&lt;li&gt;%{filename}: filename of file&lt;/li&gt; &lt;li&gt;%{plant}: name of the installation (=) in which the sheet is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) where the sheet is located&lt;/li&gt;&lt;li&gt;%{indexrev}: sheet revision index&lt;/li&gt;&lt;li&gt;%{version}: version number&lt;/li&gt;&lt;li&gt;%{folio}: sheet number&lt;/li&gt;&lt;li&gt;%{folio-id}: position of sheet in the project&lt;/li&gt;&lt;li&gt;%{folio-total }: total number of sheets in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous sheet&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the next sheet&lt; / li&gt;&lt;li&gt;%{projecttitle}: title of the project&lt;/li&gt;&lt;li&gt;%{projectpath}: path of the project&lt;/li&gt;&lt;li&gt;%{projectfilename}: filename of the projectfile&lt;/li&gt;&lt;li &gt;%{saveddate}: date of saving the file in local format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: date of saving the file in format DD-MM-YYYY&lt;/li&gt; &lt;li&gt;%{ saveddate-us}: date of saving the file in format YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: time of saving the file&lt;/li&gt;&lt;li&gt;%{savedfilename}: name of the file saved&lt;/li&gt;&lt;li&gt;%{savedfilepath}: path of the saved file&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Από προεπιλογή, είναι διαθέσιμες οι ακόλουθες μεταβλητές: &lt;ul&gt;&lt;li&gt;%{author}: συντάκτης του φύλλου&lt;/li&gt;&lt;li&gt;%{date}: ημερομηνία του φύλλου&lt;/li&gt;&lt;li&gt;%{title}: τίτλος του φύλλου&lt;/li&gt;&lt;li&gt;%{filename}: όνομα του αρχείου&lt;/li&gt; &lt;li&gt;%{plant}: όνομα της εγκατάστασης (=) στην οποία βρίσκεται το φύλλο&lt;/li&gt;&lt;li&gt;%{locmach}: όνομα της τοποθεσίας (+) όπου βρίσκεται το φύλλο&lt;/li&gt;&lt;li&gt;%{indexrev}: δείκτης αναθεώρησης του φύλλου&lt;/li&gt;&lt;li&gt;%{version}: αριθμός έκδοσης&lt;/li&gt;&lt;li&gt;%{folio}: αριθμός φύλλου&lt;/li&gt;&lt;li&gt;%{folio-id}: θέση του φύλλου στο έργο&lt;/li&gt;&lt;li&gt;%{folio-total }: συνολικός αριθμός φύλλων στο έργο&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: αριθμός του προηγούμενου φύλλου&lt;/li&gt;&lt;li&gt;%{next-folio-num}: αριθμός του επόμενου φύλλου&lt; / li&gt;&lt;li&gt;%{projecttitle}: τίτλος του έργου&lt;/li&gt;&lt;li&gt;%{projectpath}: διαδρομή του έργου&lt;/li&gt;&lt;li&gt;%{projectfilename}: όνομα του αρχείου του έργου&lt;/li&gt;&lt;li &gt;%{saveddate}: ημερομηνία αποθήκευσης του αρχείου σε τοπική μορφή&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: ημερομηνία αποθήκευσης του αρχείου σε μορφή DD-MM-YYYY&lt;/li&gt; &lt;li&gt;%{ saveddate-us}: ημερομηνία αποθήκευσης του αρχείου σε μορφή YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: ώρα αποθήκευσης του αρχείου&lt;/li&gt;&lt;li&gt;%{savedfilename}: όνομα του αποθηκευμένου αρχείου&lt;/li&gt;&lt;li&gt;%{savedfilepath}: διαδρομή του αποθηκευμένου αρχείου&lt;/li&gt;&lt;/ul&gt;</translation>
+        <source>By default, the following variables are available: &lt;ul&gt;&lt;li&gt;%{author}: author of the sheet&lt;/li&gt;&lt;li&gt;%{date}: sheet date&lt;/li&gt;&lt;li&gt;%{title}: sheet title&lt;/li&gt;&lt;li&gt;%{filename}: filename of file&lt;/li&gt;&lt;li&gt;%{plant}: name of the installation (=) in which the sheet is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) where the sheet is located&lt;/li&gt;&lt;li&gt;%{indexrev}: sheet revision index&lt;/li&gt;&lt;li&gt;%{version}: version number&lt;/li&gt;&lt;li&gt;%{folio}: sheet number&lt;/li&gt;&lt;li&gt;%{folio-id}: position of sheet in the project&lt;/li&gt;&lt;li&gt;%{folio-total}: total number of sheets in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous sheet&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the next sheet&lt;/li&gt;&lt;li&gt;%{projecttitle}: title of the project&lt;/li&gt;&lt;li&gt;%{projectpath}: path of the project&lt;/li&gt;&lt;li&gt;%{projectfilename}: filename of the projectfile&lt;/li&gt;&lt;li&gt;%{saveddate}: date of saving the file in local format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: date of saving the file in format DD-MM-YYYY&lt;/li&gt;&lt;li&gt;%{saveddate-us}: date of saving the file in format YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: time of saving the file&lt;/li&gt;&lt;li&gt;%{savedfilename}: name of the file saved&lt;/li&gt;&lt;li&gt;%{savedfilepath}: path of the saved file&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation>Από προεπιλογή, είναι διαθέσιμες οι ακόλουθες μεταβλητές: &lt;ul&gt;&lt;li&gt;%{author}: συντάκτης του φύλλου&lt;/li&gt;&lt;li&gt;%{date}: ημερομηνία του φύλλου&lt;/li&gt;&lt;li&gt;%{title}: τίτλος του φύλλου&lt;/li&gt;&lt;li&gt;%{filename}: όνομα του αρχείου&lt;/li&gt; &lt;li&gt;%{plant}: όνομα της εγκατάστασης (=) στην οποία βρίσκεται το φύλλο&lt;/li&gt;&lt;li&gt;%{locmach}: όνομα της τοποθεσίας (+) όπου βρίσκεται το φύλλο&lt;/li&gt;&lt;li&gt;%{indexrev}: δείκτης αναθεώρησης του φύλλου&lt;/li&gt;&lt;li&gt;%{version}: αριθμός έκδοσης&lt;/li&gt;&lt;li&gt;%{folio}: αριθμός φύλλου&lt;/li&gt;&lt;li&gt;%{folio-id}: θέση του φύλλου στο έργο&lt;/li&gt;&lt;li&gt;%{folio-total}: συνολικός αριθμός φύλλων στο έργο&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: αριθμός του προηγούμενου φύλλου&lt;/li&gt;&lt;li&gt;%{next-folio-num}: αριθμός του επόμενου φύλλου&lt;/li&gt;&lt;li&gt;%{projecttitle}: τίτλος του έργου&lt;/li&gt;&lt;li&gt;%{projectpath}: διαδρομή του έργου&lt;/li&gt;&lt;li&gt;%{projectfilename}: όνομα του αρχείου του έργου&lt;/li&gt;&lt;li&gt;%{saveddate}: ημερομηνία αποθήκευσης του αρχείου σε τοπική μορφή&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: ημερομηνία αποθήκευσης του αρχείου σε μορφή DD-MM-YYYY&lt;/li&gt; &lt;li&gt;%{saveddate-us}: ημερομηνία αποθήκευσης του αρχείου σε μορφή YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: ώρα αποθήκευσης του αρχείου&lt;/li&gt;&lt;li&gt;%{savedfilename}: όνομα του αποθηκευμένου αρχείου&lt;/li&gt;&lt;li&gt;%{savedfilepath}: διαδρομή του αποθηκευμένου αρχείου&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="472"/>
@@ -28156,27 +28412,27 @@ The following variables can be used:
 <context>
     <name>projectDataBase</name>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="2264"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="2267"/>
         <source>The query is empty.</source>
         <translation>Το ερώτημα είναι κενό.</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="2271"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="2274"/>
         <source>Only a single SELECT query is allowed (the &apos;;&apos; character may only appear at the very end).</source>
         <translation>Επιτρέπεται μόνο ένα ερώτημα SELECT (ο χαρακτήρας &apos;;&apos; μπορεί να εμφανίζεται μόνο στο τέλος).</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="2282"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="2285"/>
         <source>Only read-only queries (SELECT or WITH ... SELECT) are allowed.</source>
         <translation>Επιτρέπονται μόνο ερωτήματα ανάγνωσης (SELECT ή WITH ... SELECT).</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8144"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8187"/>
         <source>Export the internal project database</source>
         <translation>Εξαγωγή της εσωτερικής βάσης δεδομένων έργου</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8151"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8194"/>
         <source>untitled</source>
         <translation>ανώνυμο</translation>
     </message>

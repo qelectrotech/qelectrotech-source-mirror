@@ -711,6 +711,13 @@ QDomDocument projectDataBase::toDocument(const QSqlDatabase &db, bool deferred_f
 	keyedRowsToXml(document, cable_list, cables, QStringLiteral("cable"));
 	if (cable_list.hasChildNodes()) project.appendChild(cable_list);
 
+	QSqlQuery bridges(db);
+	bridges.setForwardOnly(true);
+	bridges.exec(QStringLiteral("SELECT bridge_uuid, section, ord, name, value FROM bridge_value ORDER BY rowid"));
+	QDomElement bridge_list = document.createElement(QStringLiteral("bridges"));
+	keyedRowsToXml(document, bridge_list, bridges, QStringLiteral("bridge"));
+	if (bridge_list.hasChildNodes()) project.appendChild(bridge_list);
+
 	project.appendChild(collectionOf(document, db));
 	appendForeignBlocks(project, foreignBlocksOf(db, QString::fromLatin1(project_owner)));
 	return document;
@@ -908,6 +915,7 @@ bool projectDataBase::copyTo(const QString &file, QString *error)
 	flushCollections();
 	flushFolioValues();
 	flushCables();
+	flushBridges();
 	flushConductorProperties();
 	const qint64 update_ms = timer.elapsed();
 

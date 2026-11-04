@@ -100,6 +100,8 @@ class Conductor : public QGraphicsObject
 		QRectF boundingRect() const override;
 		QPainterPath shape() const override;
 		virtual QPainterPath nearShape() const;
+			/// Its two ends on the same point: see endsTouch()
+		bool endsTouch() const;
 		qreal length() const;
 		ConductorSegment *middleSegment();
 		QPointF posForText(Qt::Orientations &flag);

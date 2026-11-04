@@ -972,6 +972,10 @@ void DiagramView::mousePressEvent(QMouseEvent *original)
 	QMouseEvent *e = onCaughtHandle(original, shifted);
 	const AcceptedBack accepted_back{e, original};
 	e->ignore();
+	if (e->button() == Qt::LeftButton) {
+		m_band_origin = e->pos();
+		updateRubberBandMode(e->pos());
+	}
 
 		//Ctrl+Shift panning whose key release was missed (see
 		//focusOutEvent()): a click without them ends it
@@ -1153,6 +1157,8 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 	QMouseEvent *e = onCaughtHandle(original, shifted);
 	const AcceptedBack accepted_back{e, original};
 	m_last_mouse_pos = e->pos();
+	if (e->buttons() & Qt::LeftButton)
+		updateRubberBandMode(e->pos());
 		//The topmost item that is one of the folio's: the crosshair and
 		//other aids drawn over the folio say nothing, nor what View > Show
 		//hides. Not while a button is held: a drag or a rubber band is
@@ -2195,6 +2201,7 @@ namespace {
 	int s_crosshair = -1;
 	int s_pointer_aids = -1;
 	int s_terminal_help_lines = -1;
+	int s_selection_rectangle = -1;
 }
 
 /**
@@ -2223,6 +2230,57 @@ void DiagramView::setCrosshairShown(bool shown)
 	s_crosshair = shown;
 	QSettings settings;
 	settings.setValue(QStringLiteral("diagrameditor/crosshair"), shown);
+}
+
+/**
+	@brief DiagramView::selectionRectangle
+	@return what a selection rectangle selects, see SelectionRectangle;
+	Touched by default, as always before.
+*/
+DiagramView::SelectionRectangle DiagramView::selectionRectangle()
+{
+	if (s_selection_rectangle < 0) {
+		QSettings settings;
+		s_selection_rectangle = qBound(0, settings.value(
+			QStringLiteral("diagrameditor/selection_rectangle"), 0).toInt(), 2);
+	}
+	return static_cast<SelectionRectangle>(s_selection_rectangle);
+}
+
+/**
+	@brief DiagramView::setSelectionRectangle
+	@param mode : see selectionRectangle(); kept in the settings, for every
+	view from the next selection rectangle.
+*/
+void DiagramView::setSelectionRectangle(SelectionRectangle mode)
+{
+	s_selection_rectangle = static_cast<int>(mode);
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/selection_rectangle"), s_selection_rectangle);
+}
+
+/**
+	@brief DiagramView::updateRubberBandMode
+	Set what the rubber band selects (selectionRectangle()), before
+	QGraphicsView works the selection out.
+	@param viewport_pos : the mouse; by direction, to the right of where the
+	band began selects what lies wholly within it
+*/
+void DiagramView::updateRubberBandMode(const QPoint &viewport_pos)
+{
+	switch (selectionRectangle()) {
+		case SelectionRectangle::Touched:
+			setRubberBandSelectionMode(Qt::IntersectsItemShape);
+			break;
+		case SelectionRectangle::Enclosed:
+			setRubberBandSelectionMode(Qt::ContainsItemShape);
+			break;
+		case SelectionRectangle::ByDirection:
+			setRubberBandSelectionMode(viewport_pos.x() >= m_band_origin.x()
+									   ? Qt::ContainsItemShape
+									   : Qt::IntersectsItemShape);
+			break;
+	}
 }
 
 /**
@@ -3453,6 +3511,13 @@ QETDiagramEditor *DiagramView::diagramEditor() const
 void DiagramView::mouseDoubleClickEvent(QMouseEvent *e)
 {
 	if (m_event_interface && m_event_interface -> mouseDoubleClickEvent(e)) return;
+
+		//A drawing tool on the folio has this double-click (see
+		//Diagram::mouseDoubleClickEvent): no folio properties under it.
+	if (m_diagram->eventInterfaceIsRunning() || m_diagram->toolTookLastPress()) {
+		QGraphicsView::mouseDoubleClickEvent(e);
+		return;
+	}
 
 	BorderTitleBlock &bi = m_diagram -> border_and_titleblock;
 
