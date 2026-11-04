@@ -171,6 +171,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_terminal_conductor_color->setChecked(Terminal::takesConductorColor());
 	ui->m_conductor_properties_panel->setChecked(settings.value("diagrameditor/conductor_properties_panel", false).toBool());
+	ui->m_device_navigator_cb->setChecked(settings.value("diagrameditor/device_navigator", false).toBool());
 	ui->m_wiring_rules_cb->setChecked(WiringRules::masterEnabled());
 	{
 			//The rules every project follows unless it sets its own (#1158)
@@ -437,6 +438,10 @@ void GeneralConfigurationPage::applyConf()
 		ui->m_selection_rectangle_cb->currentIndex()));
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());
+	settings.setValue("diagrameditor/device_navigator", ui->m_device_navigator_cb->isChecked());
+	for (QETDiagramEditor *editor : QETApp::diagramEditors()) {
+		editor->applyDeviceNavigatorSetting();
+	}
 	if (ui->m_terminal_conductor_color->isChecked() != Terminal::takesConductorColor()) {
 		Terminal::setTakesConductorColor(ui->m_terminal_conductor_color->isChecked());
 		for (QETProject *project : QETApp::registeredProjects())

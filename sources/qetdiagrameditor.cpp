@@ -48,6 +48,7 @@
 #include "commandsearchpopup.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
+#include "ui/devicenavigatordockwidget.h"
 #include "conductornumexport.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
@@ -328,6 +329,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	setUpUndoStack();
 	setUpSelectionPropertiesEditor();
 	setUpAutonumberingWidget();
+	setUpDeviceNavigatorDock();
 
 	setUpActions();
 	setUpToolBar();
@@ -519,6 +521,31 @@ void QETDiagramEditor::setUpAutonumberingWidget()
 	@brief QETDiagramEditor::setUpActions
 	Set up all Qaction
 */
+void QETDiagramEditor::setUpDeviceNavigatorDock()
+{
+	m_device_navigator_dock = new DeviceNavigatorDockWidget(this);
+	m_device_navigator_dock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	m_device_navigator_dock->setFeatures(
+		QDockWidget::DockWidgetClosable |
+		QDockWidget::DockWidgetMovable |
+		QDockWidget::DockWidgetFloatable);
+	addDockWidget(Qt::LeftDockWidgetArea, m_device_navigator_dock);
+	tabifyDockWidget(qdw_pa, m_device_navigator_dock);
+
+	applyDeviceNavigatorSetting();
+}
+
+void QETDiagramEditor::applyDeviceNavigatorSetting()
+{
+	if (!m_device_navigator_dock) return;
+	QSettings settings;
+	bool enabled = settings.value(QStringLiteral("diagrameditor/device_navigator"), false).toBool();
+	m_device_navigator_dock->setVisible(enabled);
+	if (enabled && currentProject()) {
+		m_device_navigator_dock->setProject(currentProject());
+	}
+}
+
 void QETDiagramEditor::setUpActions()
 {
 		//Export to another file type (jpeg, dxf etc...)
@@ -2242,6 +2269,9 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addMenu(m_shown_kinds_menu);
 	menu_affichage -> addMenu(m_background_color_button->menu());
 	menu_affichage -> addAction(m_background_color_button->darkModeAction());
+	if (m_device_navigator_dock) {
+		menu_affichage -> addAction(m_device_navigator_dock->toggleViewAction());
+	}
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
 
@@ -3008,6 +3038,9 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel)
 		pa -> elementsPanel().projectWasOpened(project);
 		if (currentDiagramView() != nullptr)
 		m_autonumbering_dock->setProject(project, project_view);
+		if (m_device_navigator_dock) {
+			m_device_navigator_dock->setProject(project);
+		}
 	}
 
 	return(true);
@@ -4994,6 +5027,9 @@ void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
 	emit syncElementsPanel();
 	updateUsageTrackersActiveState();
 	updateWindowModifiedState();
+	if (m_device_navigator_dock && m_device_navigator_dock->isVisible()) {
+		m_device_navigator_dock->setProject(currentProject());
+	}
 }
 
 /**
