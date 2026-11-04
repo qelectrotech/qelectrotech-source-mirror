@@ -340,6 +340,10 @@ QList<QPair<QString, QString>> ConductorProperties::attributes() const
 	add("tension_protocol", m_tension_protocol);
 	add("conductor_color", m_wire_color);
 	add("conductor_section", m_wire_section);
+		//Only written when set: a project which does not use it stays
+		//exactly as it was
+	if (!m_conductor_type.isEmpty())
+		add("conductor_type", m_conductor_type);
 	add("numsize", QString::number(text_size));
 	add("condsize", QString::number(cond_size));
 	add("displaytext", QString::number(m_show_text));
@@ -419,6 +423,7 @@ void ConductorProperties::fromXml(QDomElement &e)
 	m_tension_protocol   = e.attribute("tension_protocol");
 	m_wire_color         = e.attribute("conductor_color");
 	m_wire_section       = e.attribute("conductor_section");
+	m_conductor_type     = e.attribute("conductor_type");
 	text_size            = e.attribute("numsize", QString::number(9)).toInt();
 	cond_size            = e.attribute("condsize", QString::number(1)).toDouble();
 	m_show_text          = e.attribute("displaytext", QString::number(1)).toInt();
@@ -470,6 +475,8 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "function", m_function);
 	settings.setValue(prefix + "tension_protocol", m_tension_protocol);
 	settings.setValue(prefix + "conductor_color", m_wire_color);
+	if (!m_conductor_type.isEmpty())
+		settings.setValue(prefix + "conductor_type", m_conductor_type);
 	settings.setValue(prefix + "conductor_section", m_wire_section);
 	settings.setValue(prefix + "textsize", QString::number(text_size));
 	settings.setValue(prefix + "size", QString::number(cond_size));
@@ -524,6 +531,7 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	m_function           = settings.value(prefix + "function", "").toString();
 	m_tension_protocol   = settings.value(prefix + "tension_protocol", "").toString();
 	m_wire_color         = settings.value(prefix + "conductor_color", "").toString();
+	m_conductor_type     = settings.value(prefix + "conductor_type", "").toString();
 	m_wire_section       = settings.value(prefix + "conductor_section", "").toString();
 	text_size            = settings.value(prefix + "textsize", "7").toInt();
 		// Saved with QString::number(cond_size): a decimal such as 1.4,
@@ -794,6 +802,17 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_wire_section = s_value;
 	equal = true;
 
+		//Conductor type
+	s_value = clist.first().m_conductor_type;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_conductor_type != s_value)
+			equal = false;
+	}
+	if (equal)
+		m_conductor_type = s_value;
+	equal = true;
+
 
 		//text size
 	i_value = clist.first().text_size;
@@ -1043,6 +1062,7 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 		other.m_tension_protocol == m_tension_protocol &&\
 		other.m_wire_color == m_wire_color && \
 		other.m_wire_section == m_wire_section && \
+		other.m_conductor_type == m_conductor_type && \
 		other.m_show_text == m_show_text &&\
 		other.text_size == text_size &&\
 		other.cond_size == cond_size &&\
