@@ -372,10 +372,19 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 			// Function description
 			info.functionDesc = elementFunctionDescription(elmt);
 
-			// Folio & Position
-			QString folio = diag->border_and_titleblock.folio().trimmed();
-			if (folio.isEmpty()) {
-				folio = QString::number(diag->folioIndex() + 1);
+			// Folio & Position (Evaluate final folio string, resolving formulas like %id/%total)
+			QString folio = diag->border_and_titleblock.finalfolio().trimmed();
+			if (folio.isEmpty() || folio.contains(QLatin1Char('%'))) {
+				folio = diag->border_and_titleblock.folio().trimmed();
+				int idx = diag->folioIndex() + 1;
+				int total = diag->project() ? diag->project()->diagrams().size() : 1;
+				if (folio.contains(QStringLiteral("%id")) || folio.contains(QStringLiteral("%total"))) {
+					folio.replace(QStringLiteral("%id"), QString::number(idx));
+					folio.replace(QStringLiteral("%total"), QString::number(total));
+				}
+				if (folio.isEmpty() || folio.contains(QLatin1Char('%'))) {
+					folio = QString::number(idx);
+				}
 			}
 			info.folioStr = folio;
 			info.posStr = diag->convertPosition(elmt->scenePos()).toString().trimmed();

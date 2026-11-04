@@ -45,6 +45,7 @@ class tst_devicenavigator : public QObject
 		void testTableListView();
 		void testExcludesFolioReportsAndConductorDefinitions();
 		void testConfigurableFilterSchemes();
+		void testFolioFormulaEvaluation();
 };
 
 void tst_devicenavigator::initTestCase()
@@ -485,6 +486,55 @@ void tst_devicenavigator::testConfigurableFilterSchemes()
 	filterCombo->setCurrentIndex(2);
 	QVERIFY(!noStruct->child(0)->isHidden()); // FC1 visible
 	QVERIFY(noStruct->child(1)->isHidden());  // K1 hidden
+}
+
+void tst_devicenavigator::testFolioFormulaEvaluation()
+{
+	QETProject project;
+	auto *diag1 = project.addNewDiagram();
+	auto *diag2 = project.addNewDiagram();
+
+	TitleBlockProperties tbp1;
+	tbp1.folio = QStringLiteral("%id/%total");
+	diag1->border_and_titleblock.importTitleBlock(tbp1);
+
+	TitleBlockProperties tbp2;
+	tbp2.folio = QStringLiteral("%id");
+	diag2->border_and_titleblock.importTitleBlock(tbp2);
+
+	ElementsLocation loc;
+	auto *k1 = new Element(loc);
+	DiagramContext dck1 = k1->elementInformations();
+	dck1.addValue(QStringLiteral("label"), QStringLiteral("K1"));
+	k1->setElementInformations(dck1);
+	diag1->addItem(k1);
+
+	auto *k2 = new Element(loc);
+	DiagramContext dck2 = k2->elementInformations();
+	dck2.addValue(QStringLiteral("label"), QStringLiteral("K2"));
+	k2->setElementInformations(dck2);
+	diag2->addItem(k2);
+
+	DeviceNavigatorDockWidget nav;
+	nav.setProject(&project);
+	nav.reload();
+
+	auto *table = nav.findChild<QTableWidget*>(QStringLiteral("m_table_widget"));
+	QVERIFY(table != nullptr);
+	QCOMPARE(table->rowCount(), 2);
+
+	// Folio column is column 4
+	QString folio1 = table->item(0, 4)->text();
+	QString folio2 = table->item(1, 4)->text();
+
+	// Neither should contain raw formulas like "%id" or "%total"
+	QVERIFY(!folio1.contains(QStringLiteral("%id")));
+	QVERIFY(!folio1.contains(QStringLiteral("%total")));
+	QVERIFY(!folio2.contains(QStringLiteral("%id")));
+
+	// Folio 1 should be evaluated to "1/2", Folio 2 to "2"
+	QCOMPARE(folio1, QStringLiteral("1/2"));
+	QCOMPARE(folio2, QStringLiteral("2"));
 }
 
 QTEST_MAIN(tst_devicenavigator)
