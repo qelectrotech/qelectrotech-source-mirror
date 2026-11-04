@@ -293,6 +293,15 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 		for (Element *elmt : elmts) {
 			if (!elmt) continue;
 
+			const ElementData data = elmt->elementData();
+
+			// Exclude folio reports (Folienverweise) and conductor definitions (Verbindungen)
+			// fundamentally, as they are wire annotations/cross-references and not devices (Betriebsmittel).
+			if ((data.m_type & (ElementData::AllReport | ElementData::ConductorDefinition)) ||
+				(elmt->linkType() & (Element::AllReport | Element::ConductorDefinition))) {
+				continue;
+			}
+
 			ElementInfo info;
 			info.element = elmt;
 			info.diagram = diag;
@@ -300,7 +309,6 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 			info.diagramUuid = diag->uuid();
 
 			const DiagramContext dc = elmt->elementInformations();
-			const ElementData data = elmt->elementData();
 
 			info.isMaster = (data.m_type & ElementData::Master);
 			info.isSlave = (data.m_type & ElementData::Slave);
@@ -349,7 +357,7 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 				bmk.prepend(QLatin1Char('-'));
 			}
 			info.bmk = bmk;
-			info.isCable = bmk.startsWith(QStringLiteral("-W")) || (data.m_type & ElementData::ConductorDefinition);
+			info.isCable = bmk.startsWith(QStringLiteral("-W"), Qt::CaseInsensitive);
 
 			// Terminals
 			QStringList termList;

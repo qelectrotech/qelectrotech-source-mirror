@@ -42,6 +42,7 @@ class tst_devicenavigator : public QObject
 		void testWendeschuetzReversingContactor();
 		void testFilterAndSearch();
 		void testTableListView();
+		void testExcludesFolioReportsAndConductorDefinitions();
 };
 
 void tst_devicenavigator::initTestCase()
@@ -325,6 +326,84 @@ void tst_devicenavigator::testTableListView()
 	QCOMPARE(table->rowCount(), 1);
 	QCOMPARE(table->item(0, 0)->text(), QStringLiteral("-K1"));
 	QCOMPARE(table->item(0, 3)->text(), QStringLiteral("=010"));
+}
+
+void tst_devicenavigator::testExcludesFolioReportsAndConductorDefinitions()
+{
+	QETProject project;
+	auto *diag = project.addNewDiagram();
+
+	ElementsLocation loc;
+
+	// 1. Folienverweis vorwärts (NextReport) - should be excluded
+	auto *reportNext = new Element(loc);
+	ElementData edNext = reportNext->elementData();
+	edNext.m_type = ElementData::NextReport;
+	reportNext->setElementData(edNext);
+	DiagramContext dcNext = reportNext->elementInformations();
+	dcNext.addValue(QStringLiteral("label"), QStringLiteral("L1"));
+	reportNext->setElementInformations(dcNext);
+	diag->addItem(reportNext);
+
+	// 2. Folienverweis rückwärts (PreviousReport) - should be excluded
+	auto *reportPrev = new Element(loc);
+	ElementData edPrev = reportPrev->elementData();
+	edPrev.m_type = ElementData::PreviousReport;
+	reportPrev->setElementData(edPrev);
+	DiagramContext dcPrev = reportPrev->elementInformations();
+	dcPrev.addValue(QStringLiteral("label"), QStringLiteral("N"));
+	reportPrev->setElementInformations(dcPrev);
+	diag->addItem(reportPrev);
+
+	// 3. Leiterdefinition (ConductorDefinition) - should be excluded
+	auto *condDef = new Element(loc);
+	ElementData edCond = condDef->elementData();
+	edCond.m_type = ElementData::ConductorDefinition;
+	condDef->setElementData(edCond);
+	DiagramContext dcCond = condDef->elementInformations();
+	dcCond.addValue(QStringLiteral("label"), QStringLiteral("W1"));
+	condDef->setElementInformations(dcCond);
+	diag->addItem(condDef);
+
+	// 4. Real Device: Contactor Coil (-K1) - should be INCLUDED
+	auto *k1 = new MasterElement(loc);
+	ElementData edK1 = k1->elementData();
+	edK1.m_type = ElementData::Master;
+	edK1.m_master_type = ElementData::Coil;
+	k1->setElementData(edK1);
+	DiagramContext dcK1 = k1->elementInformations();
+	dcK1.addValue(QStringLiteral("label"), QStringLiteral("K1"));
+	k1->setElementInformations(dcK1);
+	diag->addItem(k1);
+
+	// 5. Real Device: Terminal (-X1) - should be INCLUDED
+	auto *x1 = new Element(loc);
+	ElementData edX1 = x1->elementData();
+	edX1.m_type = ElementData::Terminal;
+	x1->setElementData(edX1);
+	DiagramContext dcX1 = x1->elementInformations();
+	dcX1.addValue(QStringLiteral("label"), QStringLiteral("X1"));
+	x1->setElementInformations(dcX1);
+	diag->addItem(x1);
+
+	DeviceNavigatorDockWidget nav;
+	nav.setProject(&project);
+	nav.reload();
+
+	auto *tree = nav.findChild<QTreeWidget*>(QStringLiteral("m_tree_widget"));
+	QVERIFY(tree != nullptr);
+
+	QTreeWidgetItem *proj = tree->topLevelItem(0);
+	QVERIFY(proj != nullptr);
+
+	QTreeWidgetItem *structItem = proj->child(0);
+	QVERIFY(structItem != nullptr);
+
+	// Only real devices -K1 and -X1 should exist (2 devices).
+	// Folienverweise (L1, N) and Leiterdefinitionen (W1) must be filtered out!
+	QCOMPARE(structItem->childCount(), 2);
+	QCOMPARE(structItem->child(0)->text(0), QStringLiteral("-K1"));
+	QCOMPARE(structItem->child(1)->text(0), QStringLiteral("-X1"));
 }
 
 QTEST_MAIN(tst_devicenavigator)
