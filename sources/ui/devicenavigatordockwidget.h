@@ -22,6 +22,7 @@
 #include <QPointer>
 #include <QList>
 #include <QMetaObject>
+#include <QUuid>
 
 class QETProject;
 class Diagram;
@@ -57,7 +58,9 @@ class DeviceNavigatorDockWidget : public QDockWidget
 			DiagramPointerRole = Qt::UserRole + 3,
 			BmkRole = Qt::UserRole + 4,
 			StructureRole = Qt::UserRole + 5,
-			ProjectPointerRole = Qt::UserRole + 6
+			ProjectPointerRole = Qt::UserRole + 6,
+			ElementUuidRole = Qt::UserRole + 7,
+			DiagramUuidRole = Qt::UserRole + 8
 		};
 
 		explicit DeviceNavigatorDockWidget(QWidget *parent = nullptr);
@@ -84,6 +87,8 @@ class DeviceNavigatorDockWidget : public QDockWidget
 		struct ElementInfo {
 			QPointer<Element> element;
 			QPointer<Diagram> diagram;
+			QUuid elementUuid;
+			QUuid diagramUuid;
 			QString plant;
 			QString location;
 			QString structure;
@@ -108,6 +113,7 @@ class DeviceNavigatorDockWidget : public QDockWidget
 		void populateTable(const QList<ElementInfo> &items);
 		void applyFilters();
 		void jumpToElement(Element *element);
+		void jumpToUuid(const QUuid &elementUuid, const QUuid &diagramUuid);
 		QString elementFunctionDescription(Element *elmt) const;
 
 	private:

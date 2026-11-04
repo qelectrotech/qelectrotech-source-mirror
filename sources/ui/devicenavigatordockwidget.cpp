@@ -183,6 +183,11 @@ void DeviceNavigatorDockWidget::connectProject(QETProject *project)
 	m_connections.append(connect(project, &QETProject::projectTitleChanged,
 								 this, &DeviceNavigatorDockWidget::scheduleReload));
 
+	if (project->undoStack()) {
+		m_connections.append(connect(project->undoStack(), &QUndoStack::indexChanged,
+									 this, &DeviceNavigatorDockWidget::scheduleReload));
+	}
+
 	for (Diagram *diag : project->diagrams()) {
 		if (diag) {
 			m_connections.append(connect(diag, &Diagram::diagramInformationChanged,
@@ -196,8 +201,10 @@ void DeviceNavigatorDockWidget::connectProject(QETProject *project)
  */
 void DeviceNavigatorDockWidget::disconnectProject()
 {
-	for (const auto &conn : m_connections) {
-		QObject::disconnect(conn);
+	for (auto &conn : m_connections) {
+		if (conn) {
+			QObject::disconnect(conn);
+		}
 	}
 	m_connections.clear();
 }
@@ -277,6 +284,8 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 	items.clear();
 	if (!m_project) return;
 
+	m_project->buildFolios(m_project->diagrams());
+
 	const QList<Diagram *> diag_list = m_project->diagrams();
 	for (Diagram *diag : diag_list) {
 		if (!diag) continue;
@@ -287,6 +296,8 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 			ElementInfo info;
 			info.element = elmt;
 			info.diagram = diag;
+			info.elementUuid = elmt->uuid();
+			info.diagramUuid = diag->uuid();
 
 			const DiagramContext dc = elmt->elementInformations();
 			const ElementData data = elmt->elementData();
@@ -386,6 +397,11 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
  */
 void DeviceNavigatorDockWidget::reload()
 {
+	if (m_last_highlighted_element && m_last_highlighted_element->diagram()) {
+		m_last_highlighted_element->setHighlighted(false);
+	}
+	m_last_highlighted_element = nullptr;
+
 	buildData(m_cached_items);
 	populateTree(m_cached_items);
 	populateTable(m_cached_items);
@@ -480,11 +496,18 @@ void DeviceNavigatorDockWidget::populateTree(const QList<ElementInfo> &items)
 			}
 
 			// Store master / first element as jump target for double clicking the device node
-			if (deviceElements.first().element) {
-				deviceItem->setData(0, ElementPointerRole,
-									QVariant::fromValue(static_cast<void*>(deviceElements.first().element.data())));
-				deviceItem->setData(0, DiagramPointerRole,
-									QVariant::fromValue(static_cast<void*>(deviceElements.first().diagram.data())));
+			if (!deviceElements.isEmpty()) {
+				const ElementInfo &firstInfo = deviceElements.first();
+				deviceItem->setData(0, ElementUuidRole, firstInfo.elementUuid.toString());
+				deviceItem->setData(0, DiagramUuidRole, firstInfo.diagramUuid.toString());
+				if (firstInfo.element) {
+					deviceItem->setData(0, ElementPointerRole,
+										QVariant::fromValue(static_cast<void*>(firstInfo.element.data())));
+				}
+				if (firstInfo.diagram) {
+					deviceItem->setData(0, DiagramPointerRole,
+										QVariant::fromValue(static_cast<void*>(firstInfo.diagram.data())));
+				}
 			}
 
 			// Add leaf function items
@@ -494,10 +517,16 @@ void DeviceNavigatorDockWidget::populateTree(const QList<ElementInfo> &items)
 				funcItem->setData(0, NodeTypeRole, FunctionNode);
 				funcItem->setData(0, BmkRole, info.bmk);
 				funcItem->setData(0, StructureRole, info.structure);
-				funcItem->setData(0, ElementPointerRole,
-								  QVariant::fromValue(static_cast<void*>(info.element.data())));
-				funcItem->setData(0, DiagramPointerRole,
-								  QVariant::fromValue(static_cast<void*>(info.diagram.data())));
+				funcItem->setData(0, ElementUuidRole, info.elementUuid.toString());
+				funcItem->setData(0, DiagramUuidRole, info.diagramUuid.toString());
+				if (info.element) {
+					funcItem->setData(0, ElementPointerRole,
+									  QVariant::fromValue(static_cast<void*>(info.element.data())));
+				}
+				if (info.diagram) {
+					funcItem->setData(0, DiagramPointerRole,
+									  QVariant::fromValue(static_cast<void*>(info.diagram.data())));
+				}
 
 				// Function icon
 				if (info.isMaster) {
@@ -537,8 +566,14 @@ void DeviceNavigatorDockWidget::populateTable(const QList<ElementInfo> &items)
 		else if (info.isCable) itemBmk->setIcon(QET::Icons::Cable);
 		else itemBmk->setIcon(QET::Icons::GenericDevice);
 
-		itemBmk->setData(ElementPointerRole, QVariant::fromValue(static_cast<void*>(info.element.data())));
-		itemBmk->setData(DiagramPointerRole, QVariant::fromValue(static_cast<void*>(info.diagram.data())));
+		itemBmk->setData(ElementUuidRole, info.elementUuid.toString());
+		itemBmk->setData(DiagramUuidRole, info.diagramUuid.toString());
+		if (info.element) {
+			itemBmk->setData(ElementPointerRole, QVariant::fromValue(static_cast<void*>(info.element.data())));
+		}
+		if (info.diagram) {
+			itemBmk->setData(DiagramPointerRole, QVariant::fromValue(static_cast<void*>(info.diagram.data())));
+		}
 
 		auto *itemFunc = new QTableWidgetItem(info.functionDesc);
 		auto *itemTerm = new QTableWidgetItem(info.terminals);
@@ -673,28 +708,81 @@ void DeviceNavigatorDockWidget::applyFilters()
 }
 
 /**
+ * @brief DeviceNavigatorDockWidget::jumpToUuid
+ * Safely resolves the diagram and element by UUID without risking dangling pointer dereferences.
+ * @param elementUuid
+ * @param diagramUuid
+ */
+void DeviceNavigatorDockWidget::jumpToUuid(const QUuid &elementUuid, const QUuid &diagramUuid)
+{
+	if (!m_project || elementUuid.isNull()) return;
+
+	Diagram *diag = diagramUuid.isNull() ? nullptr : m_project->diagramByUuid(diagramUuid);
+	if (!diag) {
+		for (Diagram *d : m_project->diagrams()) {
+			if (d) {
+				m_project->buildFolioToShow(d);
+				for (Element *e : d->elements()) {
+					if (e && e->uuid() == elementUuid) {
+						diag = d;
+						break;
+					}
+				}
+				if (diag) break;
+			}
+		}
+	} else {
+		m_project->buildFolioToShow(diag);
+	}
+
+	if (!diag) {
+		scheduleReload();
+		return;
+	}
+
+	Element *targetElement = nullptr;
+	for (Element *e : diag->elements()) {
+		if (e && e->uuid() == elementUuid) {
+			targetElement = e;
+			break;
+		}
+	}
+
+	if (!targetElement) {
+		scheduleReload();
+		return;
+	}
+
+	if (m_last_highlighted_element && m_last_highlighted_element != targetElement) {
+		if (m_last_highlighted_element->diagram()) {
+			m_last_highlighted_element->setHighlighted(false);
+		}
+	}
+
+	diag->showMe();
+	diag->clearSelection();
+	targetElement->setSelected(true);
+	targetElement->setHighlighted(true);
+	m_last_highlighted_element = targetElement;
+
+	if (!diag->views().isEmpty()) {
+		if (auto *view = qobject_cast<DiagramView *>(diag->views().first())) {
+			const QPointF centerPos = targetElement->sceneBoundingRect().center();
+			QMetaObject::invokeMethod(view, [view, centerPos]() {
+				view->centerOn(centerPos);
+			}, Qt::QueuedConnection);
+		}
+	}
+}
+
+/**
  * @brief DeviceNavigatorDockWidget::jumpToElement
  * @param element
  */
 void DeviceNavigatorDockWidget::jumpToElement(Element *element)
 {
 	if (!element) return;
-	Diagram *diag = element->diagram();
-	if (!diag) return;
-
-	if (m_last_highlighted_element && m_last_highlighted_element != element) {
-		m_last_highlighted_element->setHighlighted(false);
-	}
-
-	diag->showMe();
-	diag->clearSelection();
-	element->setSelected(true);
-	element->setHighlighted(true);
-	m_last_highlighted_element = element;
-
-	if (!diag->views().isEmpty()) {
-		diag->views().first()->centerOn(element);
-	}
+	jumpToUuid(element->uuid(), element->diagram() ? element->diagram()->uuid() : QUuid());
 }
 
 /**
@@ -709,10 +797,10 @@ void DeviceNavigatorDockWidget::onItemDoubleClicked(QTreeWidgetItem *item, int c
 
 	int type = item->data(0, NodeTypeRole).toInt();
 	if (type == FunctionNode || type == DeviceNode) {
-		void *ptr = item->data(0, ElementPointerRole).value<void*>();
-		if (ptr) {
-			auto *elmt = static_cast<Element*>(ptr);
-			jumpToElement(elmt);
+		QString uuidStr = item->data(0, ElementUuidRole).toString();
+		QString diagUuidStr = item->data(0, DiagramUuidRole).toString();
+		if (!uuidStr.isEmpty()) {
+			jumpToUuid(QUuid(uuidStr), QUuid(diagUuidStr));
 		}
 	}
 }
@@ -728,10 +816,10 @@ void DeviceNavigatorDockWidget::onTableCellDoubleClicked(int row, int column)
 	QTableWidgetItem *item = ui->m_table_widget->item(row, 0);
 	if (!item) return;
 
-	void *ptr = item->data(ElementPointerRole).value<void*>();
-	if (ptr) {
-		auto *elmt = static_cast<Element*>(ptr);
-		jumpToElement(elmt);
+	QString uuidStr = item->data(ElementUuidRole).toString();
+	QString diagUuidStr = item->data(DiagramUuidRole).toString();
+	if (!uuidStr.isEmpty()) {
+		jumpToUuid(QUuid(uuidStr), QUuid(diagUuidStr));
 	}
 }
 
@@ -783,16 +871,28 @@ void DeviceNavigatorDockWidget::onCustomContextMenu(const QPoint &pos)
 	QTreeWidgetItem *item = ui->m_tree_widget->itemAt(pos);
 	if (!item) return;
 
-	void *ptr = item->data(0, ElementPointerRole).value<void*>();
-	auto *elmt = static_cast<Element*>(ptr);
+	QString uuidStr = item->data(0, ElementUuidRole).toString();
+	QString diagUuidStr = item->data(0, DiagramUuidRole).toString();
+	QUuid elmtUuid(uuidStr);
+	QUuid diagUuid(diagUuidStr);
 
 	QMenu menu(this);
-	if (elmt) {
-		menu.addAction(tr("Show in diagram"), this, [this, elmt]() {
-			jumpToElement(elmt);
+	if (!elmtUuid.isNull()) {
+		menu.addAction(tr("Show in diagram"), this, [this, elmtUuid, diagUuid]() {
+			jumpToUuid(elmtUuid, diagUuid);
 		});
-		menu.addAction(tr("Edit properties..."), this, [elmt]() {
-			elmt->editProperty();
+		menu.addAction(tr("Edit properties..."), this, [this, elmtUuid, diagUuid]() {
+			if (!m_project) return;
+			Diagram *diag = m_project->diagramByUuid(diagUuid);
+			if (diag) {
+				m_project->buildFolioToShow(diag);
+				for (Element *e : diag->elements()) {
+					if (e && e->uuid() == elmtUuid) {
+						e->editProperty();
+						break;
+					}
+				}
+			}
 		});
 		menu.addSeparator();
 	}
@@ -812,16 +912,28 @@ void DeviceNavigatorDockWidget::onTableContextMenu(const QPoint &pos)
 	QTableWidgetItem *bmkItem = ui->m_table_widget->item(item->row(), 0);
 	if (!bmkItem) return;
 
-	void *ptr = bmkItem->data(ElementPointerRole).value<void*>();
-	auto *elmt = static_cast<Element*>(ptr);
+	QString uuidStr = bmkItem->data(ElementUuidRole).toString();
+	QString diagUuidStr = bmkItem->data(DiagramUuidRole).toString();
+	QUuid elmtUuid(uuidStr);
+	QUuid diagUuid(diagUuidStr);
 
 	QMenu menu(this);
-	if (elmt) {
-		menu.addAction(tr("Show in diagram"), this, [this, elmt]() {
-			jumpToElement(elmt);
+	if (!elmtUuid.isNull()) {
+		menu.addAction(tr("Show in diagram"), this, [this, elmtUuid, diagUuid]() {
+			jumpToUuid(elmtUuid, diagUuid);
 		});
-		menu.addAction(tr("Edit properties..."), this, [elmt]() {
-			elmt->editProperty();
+		menu.addAction(tr("Edit properties..."), this, [this, elmtUuid, diagUuid]() {
+			if (!m_project) return;
+			Diagram *diag = m_project->diagramByUuid(diagUuid);
+			if (diag) {
+				m_project->buildFolioToShow(diag);
+				for (Element *e : diag->elements()) {
+					if (e && e->uuid() == elmtUuid) {
+						e->editProperty();
+						break;
+					}
+				}
+			}
 		});
 		menu.addSeparator();
 	}
