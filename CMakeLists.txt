@@ -485,6 +485,16 @@ if(UNIX AND NOT APPLE)
     install(FILES misc/qelectrotech.xml    DESTINATION ${QET_MIME_PACKAGE_PATH})
     install(FILES misc/qelectrotech.appdata.xml DESTINATION ${QET_APPDATA_PATH})
 endif()
+if(WIN32)
+    # The icons of the file types that the MSI links to QElectroTech
+    # (cpack/wix-patch.xml): those of the official installers, in ico/ as
+    # there.
+    install(FILES
+        build-aux/windows/nsis_base/files/ico/application-x-qet-element.ico
+        build-aux/windows/nsis_base/files/ico/application-x-qet-project.ico
+        build-aux/windows/nsis_base/files/ico/application-x-qet-titleblock.ico
+        DESTINATION ${QET_DATA_PATH}ico)
+endif()
 install(FILES ${QM_FILES} DESTINATION ${QET_LANG_PATH})
 
 add_subdirectory(cpack)

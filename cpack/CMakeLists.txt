@@ -52,12 +52,14 @@ if("WIX" IN_LIST CPACK_GENERATOR)
   set(CPACK_WIX_PROPERTY_REINSTALLMODE "amus")
   set(CPACK_PACKAGE_INSTALL_DIRECTORY "QElectroTech")
   set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/wix.cmake")
-  set(CPACK_WIX_PRODUCT_ICON
-    "${PROJECT_SOURCE_DIR}/ico/windows_icon/qelectrotech.ico")
-  # Shortcuts in the start menu itself and on the desktop
-  set(CPACK_PACKAGE_EXECUTABLES "qelectrotech" "QElectroTech")
-  set(CPACK_CREATE_DESKTOP_LINKS "qelectrotech")
-  set(CPACK_WIX_PROGRAM_MENU_FOLDER ".")
+  # The icon of the official installers, also given to the shortcuts
+  set(nsis_icons "${PROJECT_SOURCE_DIR}/build-aux/windows/nsis_base/files/ico")
+  set(CPACK_WIX_PRODUCT_ICON "${nsis_icons}/qelectrotech.ico")
+  # The shortcuts, in the start menu itself and on the desktop, and the file
+  # types Windows opens with QElectroTech. The shortcuts are there and not
+  # from CPACK_PACKAGE_EXECUTABLES, which can't give them an icon: the
+  # program has none of its own.
+  set(CPACK_WIX_PATCH_FILE "${CMAKE_CURRENT_SOURCE_DIR}/wix-patch.xml")
   # CPack wants a known extension here, and the license has none
   configure_file("${PROJECT_SOURCE_DIR}/LICENSE"
     "${CMAKE_CURRENT_BINARY_DIR}/License.txt" COPYONLY)

@@ -314,7 +314,8 @@ downloads and compiles KDE Frameworks itself, which is slow.
    ```
    It replaces an installed QElectroTech of a lower version, official or not,
    and refuses to install over a higher one, which official nightly builds
-   are: uninstall those first. It does not make Windows open `.qet` files with
+   are: uninstall those first. Windows then opens projects (`.qet`, `.qetz`,
+   `.qetdb`), symbols (`.elmt`) and title block templates (`.titleblock`) with
    QElectroTech.
 
 ### MinGW-w64 (gcc)
