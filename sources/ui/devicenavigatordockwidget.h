@@ -23,6 +23,7 @@
 #include <QList>
 #include <QMetaObject>
 #include <QUuid>
+#include "devicenavigatorfilterdialog.h"
 
 class QETProject;
 class Diagram;
@@ -60,7 +61,14 @@ class DeviceNavigatorDockWidget : public QDockWidget
 			StructureRole = Qt::UserRole + 5,
 			ProjectPointerRole = Qt::UserRole + 6,
 			ElementUuidRole = Qt::UserRole + 7,
-			DiagramUuidRole = Qt::UserRole + 8
+			DiagramUuidRole = Qt::UserRole + 8,
+			IsMasterRole = Qt::UserRole + 9,
+			IsSlaveRole = Qt::UserRole + 10,
+			IsTerminalRole = Qt::UserRole + 11,
+			IsCableRole = Qt::UserRole + 12,
+			IsReportRole = Qt::UserRole + 13,
+			IsConductorDefRole = Qt::UserRole + 14,
+			IsThumbnailRole = Qt::UserRole + 15
 		};
 
 		explicit DeviceNavigatorDockWidget(QWidget *parent = nullptr);
@@ -78,6 +86,7 @@ class DeviceNavigatorDockWidget : public QDockWidget
 		void onTableCellDoubleClicked(int row, int column);
 		void onSearchTextChanged(const QString &text);
 		void onFilterComboChanged(int index);
+		void onFilterConfigClicked();
 		void onCategoryTabChanged(int index);
 		void onViewModeTabChanged(int index);
 		void onCustomContextMenu(const QPoint &pos);
@@ -104,6 +113,8 @@ class DeviceNavigatorDockWidget : public QDockWidget
 			bool isTerminal = false;
 			bool isCable = false;
 			bool isThumbnail = false;
+			bool isReport = false;
+			bool isConductorDef = false;
 		};
 
 		void connectProject(QETProject *project);
@@ -115,6 +126,8 @@ class DeviceNavigatorDockWidget : public QDockWidget
 		void jumpToElement(Element *element);
 		void jumpToUuid(const QUuid &elementUuid, const QUuid &diagramUuid);
 		QString elementFunctionDescription(Element *elmt) const;
+		void loadFilterSchemes();
+		void updateFilterCombo();
 
 	private:
 		Ui::DeviceNavigatorDockWidget *ui = nullptr;
@@ -123,6 +136,7 @@ class DeviceNavigatorDockWidget : public QDockWidget
 		QList<QMetaObject::Connection> m_connections;
 		QList<ElementInfo> m_cached_items;
 		QPointer<Element> m_last_highlighted_element;
+		QList<DeviceNavigatorFilterScheme> m_filter_schemes;
 };
 
 #endif // DEVICENAVIGATORDOCKWIDGET_H

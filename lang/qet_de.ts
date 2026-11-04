@@ -28929,5 +28929,120 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
         <source>Refresh</source>
         <translation>Aktualisieren</translation>
     </message>
+    <message>
+        <source>Configure filters...</source>
+        <translation>Filter konfigurieren...</translation>
+    </message>
+</context>
+<context>
+    <name>DeviceNavigatorFilterDialog</name>
+    <message>
+        <source>Filter Configuration</source>
+        <translation>Filterkonfiguration</translation>
+    </message>
+    <message>
+        <source>Scheme:</source>
+        <translation>Schema:</translation>
+    </message>
+    <message>
+        <source>New...</source>
+        <translation>Neu...</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Löschen</translation>
+    </message>
+    <message>
+        <source>Reset Defaults</source>
+        <translation>Zurücksetzen</translation>
+    </message>
+    <message>
+        <source>Device tag prefixes (comma-separated, e.g. K, Q, F):</source>
+        <translation>Betriebsmittel-Kennbuchstaben (kommagetrennt, z.B. K, Q, F):</translation>
+    </message>
+    <message>
+        <source>Custom BMK wildcard pattern (e.g. *Pump*, -K[1-9]):</source>
+        <translation>BMK-Suchmuster / Wildcard (z.B. *Pumpe*, -K[1-9]):</translation>
+    </message>
+    <message>
+        <source>Element Types</source>
+        <translation>Betriebsmitteltypen</translation>
+    </message>
+    <message>
+        <source>Masters / Coils</source>
+        <translation>Hauptfunktionen / Spulen</translation>
+    </message>
+    <message>
+        <source>Slaves / Contacts</source>
+        <translation>Nebenfunktionen / Kontakte</translation>
+    </message>
+    <message>
+        <source>Terminals</source>
+        <translation>Klemmen</translation>
+    </message>
+    <message>
+        <source>Cables</source>
+        <translation>Kabel</translation>
+    </message>
+    <message>
+        <source>Cabinet Layout / Placement</source>
+        <translation>Artikelplatzierung / Schaltschrankaufbau</translation>
+    </message>
+    <message>
+        <source>Folio Reports (Cross references)</source>
+        <translation>Folienverweise (Abbruchstellen)</translation>
+    </message>
+    <message>
+        <source>Conductor Definitions</source>
+        <translation>Verbindungs- / Leiterdefinitionen</translation>
+    </message>
+    <message>
+        <source>Other Symbols</source>
+        <translation>Sonstige Symbole</translation>
+    </message>
+    <message>
+        <source>Structure Filter Mode</source>
+        <translation>Strukturkennzeichen-Filter</translation>
+    </message>
+    <message>
+        <source>All structures</source>
+        <translation>Alle Strukturen</translation>
+    </message>
+    <message>
+        <source>Only elements WITH structure (=Plant +Location)</source>
+        <translation>Nur Betriebsmittel MIT Struktur (=Anlage +Ort)</translation>
+    </message>
+    <message>
+        <source>Only elements WITHOUT structure (Ohne Strukturkennzeichen)</source>
+        <translation>Nur Betriebsmittel OHNE Strukturkennzeichen</translation>
+    </message>
+    <message>
+        <source>Structure text contains (e.g. =010 or +A1):</source>
+        <translation>Strukturtext enthält (z.B. =010 oder +A1):</translation>
+    </message>
+    <message>
+        <source>New Filter Scheme</source>
+        <translation>Neues Filterschema</translation>
+    </message>
+    <message>
+        <source>Scheme name:</source>
+        <translation>Schemaname:</translation>
+    </message>
+    <message>
+        <source>Delete Scheme</source>
+        <translation>Schema löschen</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to delete scheme '%1'?</source>
+        <translation>Möchten Sie das Schema '%1' wirklich löschen?</translation>
+    </message>
+    <message>
+        <source>Reset Schemes</source>
+        <translation>Schemata zurücksetzen</translation>
+    </message>
+    <message>
+        <source>Reset all filter schemes to defaults?</source>
+        <translation>Alle Filterschemata auf Standard zurücksetzen?</translation>
+    </message>
 </context>
 </TS>

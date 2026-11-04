@@ -23,6 +23,7 @@
 #include <QTabBar>
 
 #include "ui/devicenavigatordockwidget.h"
+#include "ui/devicenavigatorfilterdialog.h"
 #include "qetproject.h"
 #include "diagram.h"
 #include "titleblockproperties.h"
@@ -43,6 +44,7 @@ class tst_devicenavigator : public QObject
 		void testFilterAndSearch();
 		void testTableListView();
 		void testExcludesFolioReportsAndConductorDefinitions();
+		void testConfigurableFilterSchemes();
 };
 
 void tst_devicenavigator::initTestCase()
@@ -404,6 +406,85 @@ void tst_devicenavigator::testExcludesFolioReportsAndConductorDefinitions()
 	QCOMPARE(structItem->childCount(), 2);
 	QCOMPARE(structItem->child(0)->text(0), QStringLiteral("-K1"));
 	QCOMPARE(structItem->child(1)->text(0), QStringLiteral("-X1"));
+}
+
+void tst_devicenavigator::testConfigurableFilterSchemes()
+{
+	// 1. Verify default schemes
+	QList<DeviceNavigatorFilterScheme> defaults = DeviceNavigatorFilterScheme::defaultSchemes();
+	QVERIFY(defaults.size() >= 8);
+	QCOMPARE(defaults.at(0).name, QStringLiteral("- Not active -"));
+	QCOMPARE(defaults.at(1).bmkLetters, QStringLiteral("K"));
+	QCOMPARE(defaults.at(2).bmkLetters, QStringLiteral("F"));
+
+	// 2. Test Scheme Matching logic
+	DeviceNavigatorFilterScheme schemeK;
+	schemeK.bmkLetters = QStringLiteral("K");
+	// Should match -K1
+	QVERIFY(schemeK.matches(QStringLiteral("-K1"), QStringLiteral("=010"), true, false, false, false, false, false, false));
+	// Should NOT match -FC1
+	QVERIFY(!schemeK.matches(QStringLiteral("-FC1"), QStringLiteral("=010"), true, false, false, false, false, false, false));
+	// Should NOT match -X1
+	QVERIFY(!schemeK.matches(QStringLiteral("-X1"), QStringLiteral("=010"), false, false, true, false, false, false, false));
+
+	// Test Structure filter mode
+	DeviceNavigatorFilterScheme schemeNoStruct;
+	schemeNoStruct.structureMode = 2; // Without structure only
+	QVERIFY(schemeNoStruct.matches(QStringLiteral("-K1"), QStringLiteral("No structure identifier"), true, false, false, false, false, false, false));
+	QVERIFY(!schemeNoStruct.matches(QStringLiteral("-K1"), QStringLiteral("=010 +A1"), true, false, false, false, false, false, false));
+
+	// Test element types filtering
+	DeviceNavigatorFilterScheme schemeTerminalsOnly;
+	schemeTerminalsOnly.showMasters = false;
+	schemeTerminalsOnly.showSlaves = false;
+	schemeTerminalsOnly.showTerminals = true;
+	QVERIFY(!schemeTerminalsOnly.matches(QStringLiteral("-K1"), QStringLiteral("=010"), true, false, false, false, false, false, false));
+	QVERIFY(schemeTerminalsOnly.matches(QStringLiteral("-X1"), QStringLiteral("=010"), false, false, true, false, false, false, false));
+
+	// 3. Test Filter Dialog load / edit
+	DeviceNavigatorFilterDialog dlg;
+	dlg.setSchemes(defaults, 1);
+	QCOMPARE(dlg.currentSchemeIndex(), 1);
+	QCOMPARE(dlg.schemes().size(), defaults.size());
+
+	// 4. Test Scheme in DeviceNavigatorDockWidget
+	QETProject project;
+	auto *diag = project.addNewDiagram();
+	ElementsLocation loc;
+
+	auto *fc1 = new Element(loc);
+	DiagramContext dcfc = fc1->elementInformations();
+	dcfc.addValue(QStringLiteral("label"), QStringLiteral("FC1"));
+	fc1->setElementInformations(dcfc);
+	diag->addItem(fc1);
+
+	auto *k1 = new Element(loc);
+	DiagramContext dck = k1->elementInformations();
+	dck.addValue(QStringLiteral("label"), QStringLiteral("K1"));
+	k1->setElementInformations(dck);
+	diag->addItem(k1);
+
+	DeviceNavigatorDockWidget nav;
+	nav.setProject(&project);
+	nav.reload();
+
+	auto *filterCombo = nav.findChild<QComboBox*>(QStringLiteral("m_filter_combo"));
+	auto *tree = nav.findChild<QTreeWidget*>(QStringLiteral("m_tree_widget"));
+	QVERIFY(filterCombo != nullptr && tree != nullptr);
+
+	QTreeWidgetItem *proj = tree->topLevelItem(0);
+	QTreeWidgetItem *noStruct = proj->child(0);
+	QCOMPARE(noStruct->childCount(), 2);
+
+	// Select -K scheme (index 1)
+	filterCombo->setCurrentIndex(1);
+	QVERIFY(noStruct->child(0)->isHidden());  // FC1 hidden
+	QVERIFY(!noStruct->child(1)->isHidden()); // K1 visible
+
+	// Select -F scheme (index 2)
+	filterCombo->setCurrentIndex(2);
+	QVERIFY(!noStruct->child(0)->isHidden()); // FC1 visible
+	QVERIFY(noStruct->child(1)->isHidden());  // K1 hidden
 }
 
 QTEST_MAIN(tst_devicenavigator)

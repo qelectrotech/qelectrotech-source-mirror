@@ -60,17 +60,8 @@ DeviceNavigatorDockWidget::DeviceNavigatorDockWidget(QWidget *parent) :
 	ui->m_view_mode_tabs->setCurrentIndex(0);
 	ui->m_view_stack->setCurrentIndex(0);
 
-	// Filter Combobox
-	ui->m_filter_combo->addItem(tr("- Not active -"));
-	ui->m_filter_combo->addItem(tr("Contactors / Relays (-K)"));
-	ui->m_filter_combo->addItem(tr("Protection / Fuses (-F)"));
-	ui->m_filter_combo->addItem(tr("Switches (-Q)"));
-	ui->m_filter_combo->addItem(tr("Terminals (-X)"));
-	ui->m_filter_combo->addItem(tr("Cables (-W)"));
-	ui->m_filter_combo->addItem(tr("Motors (-M)"));
-	ui->m_filter_combo->addItem(tr("Sensors (-B)"));
-	ui->m_filter_combo->addItem(tr("No structure identifier"));
-	ui->m_filter_combo->setCurrentIndex(0);
+	// Filter schemes
+	loadFilterSchemes();
 
 	// Search placeholder
 	ui->m_search_field->setPlaceholderText(tr("Search device, function, folio..."));
@@ -115,6 +106,8 @@ DeviceNavigatorDockWidget::DeviceNavigatorDockWidget(QWidget *parent) :
 			this, &DeviceNavigatorDockWidget::onSearchTextChanged);
 	connect(ui->m_filter_combo, qOverload<int>(&QComboBox::currentIndexChanged),
 			this, &DeviceNavigatorDockWidget::onFilterComboChanged);
+	connect(ui->m_filter_config_btn, &QToolButton::clicked,
+			this, &DeviceNavigatorDockWidget::onFilterConfigClicked);
 	connect(ui->m_category_tabs, &QTabBar::currentChanged,
 			this, &DeviceNavigatorDockWidget::onCategoryTabChanged);
 	connect(ui->m_view_mode_tabs, &QTabBar::currentChanged,
@@ -286,6 +279,13 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 
 	m_project->buildFolios(m_project->diagrams());
 
+	bool anySchemeWantsReports = false;
+	bool anySchemeWantsConductors = false;
+	for (const auto &s : m_filter_schemes) {
+		if (s.showReports) anySchemeWantsReports = true;
+		if (s.showConductorDefs) anySchemeWantsConductors = true;
+	}
+
 	const QList<Diagram *> diag_list = m_project->diagrams();
 	for (Diagram *diag : diag_list) {
 		if (!diag) continue;
@@ -295,12 +295,10 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 
 			const ElementData data = elmt->elementData();
 
-			// Exclude folio reports (Folienverweise) and conductor definitions (Verbindungen)
-			// fundamentally, as they are wire annotations/cross-references and not devices (Betriebsmittel).
-			if ((data.m_type & (ElementData::AllReport | ElementData::ConductorDefinition)) ||
-				(elmt->linkType() & (Element::AllReport | Element::ConductorDefinition))) {
-				continue;
-			}
+			bool isReport = (data.m_type & ElementData::AllReport) || (elmt->linkType() & Element::AllReport);
+			bool isConductorDef = (data.m_type & ElementData::ConductorDefinition) || (elmt->linkType() & Element::ConductorDefinition);
+			if (isReport && !anySchemeWantsReports) continue;
+			if (isConductorDef && !anySchemeWantsConductors) continue;
 
 			ElementInfo info;
 			info.element = elmt;
@@ -314,6 +312,8 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 			info.isSlave = (data.m_type & ElementData::Slave);
 			info.isTerminal = (data.m_type & ElementData::Terminal);
 			info.isThumbnail = (data.m_type & ElementData::Thumbnail);
+			info.isReport = (data.m_type & ElementData::AllReport) || (elmt->linkType() & Element::AllReport);
+			info.isConductorDef = (data.m_type & ElementData::ConductorDefinition) || (elmt->linkType() & Element::ConductorDefinition);
 
 			// Plant & Location (Structure identifier)
 			QString plant = dc.value(QStringLiteral("plant")).toString().trimmed();
@@ -527,6 +527,13 @@ void DeviceNavigatorDockWidget::populateTree(const QList<ElementInfo> &items)
 				funcItem->setData(0, StructureRole, info.structure);
 				funcItem->setData(0, ElementUuidRole, info.elementUuid.toString());
 				funcItem->setData(0, DiagramUuidRole, info.diagramUuid.toString());
+				funcItem->setData(0, IsMasterRole, info.isMaster);
+				funcItem->setData(0, IsSlaveRole, info.isSlave);
+				funcItem->setData(0, IsTerminalRole, info.isTerminal);
+				funcItem->setData(0, IsCableRole, info.isCable);
+				funcItem->setData(0, IsReportRole, info.isReport);
+				funcItem->setData(0, IsConductorDefRole, info.isConductorDef);
+				funcItem->setData(0, IsThumbnailRole, info.isThumbnail);
 				if (info.element) {
 					funcItem->setData(0, ElementPointerRole,
 									  QVariant::fromValue(static_cast<void*>(info.element.data())));
@@ -576,6 +583,13 @@ void DeviceNavigatorDockWidget::populateTable(const QList<ElementInfo> &items)
 
 		itemBmk->setData(ElementUuidRole, info.elementUuid.toString());
 		itemBmk->setData(DiagramUuidRole, info.diagramUuid.toString());
+		itemBmk->setData(IsMasterRole, info.isMaster);
+		itemBmk->setData(IsSlaveRole, info.isSlave);
+		itemBmk->setData(IsTerminalRole, info.isTerminal);
+		itemBmk->setData(IsCableRole, info.isCable);
+		itemBmk->setData(IsReportRole, info.isReport);
+		itemBmk->setData(IsConductorDefRole, info.isConductorDef);
+		itemBmk->setData(IsThumbnailRole, info.isThumbnail);
 		if (info.element) {
 			itemBmk->setData(ElementPointerRole, QVariant::fromValue(static_cast<void*>(info.element.data())));
 		}
@@ -621,37 +635,26 @@ void DeviceNavigatorDockWidget::applyFilters()
 	const int catTab = ui->m_category_tabs->currentIndex();
 	const bool cablesOnly = (catTab == 1);
 
+	DeviceNavigatorFilterScheme activeScheme;
+	if (filterIdx >= 0 && filterIdx < m_filter_schemes.size()) {
+		activeScheme = m_filter_schemes.at(filterIdx);
+	}
+
 	// Helper lambda for element filter matching
-	auto matchesFilter = [&](const QString &bmk, const QString &fullText, const QString &structure, bool isCable) -> bool {
+	auto matchesFilter = [&](const QString &bmk,
+							 const QString &fullText,
+							 const QString &structure,
+							 bool isMaster,
+							 bool isSlave,
+							 bool isTerminal,
+							 bool isCable,
+							 bool isReport,
+							 bool isConductorDef,
+							 bool isThumbnail) -> bool {
 		if (cablesOnly && !isCable) return false;
 
-		switch (filterIdx) {
-			case 1: // -K
-				if (!bmk.startsWith(QStringLiteral("-K"), Qt::CaseInsensitive)) return false;
-				break;
-			case 2: // -F
-				if (!bmk.startsWith(QStringLiteral("-F"), Qt::CaseInsensitive)) return false;
-				break;
-			case 3: // -Q
-				if (!bmk.startsWith(QStringLiteral("-Q"), Qt::CaseInsensitive)) return false;
-				break;
-			case 4: // -X
-				if (!bmk.startsWith(QStringLiteral("-X"), Qt::CaseInsensitive)) return false;
-				break;
-			case 5: // -W
-				if (!isCable && !bmk.startsWith(QStringLiteral("-W"), Qt::CaseInsensitive)) return false;
-				break;
-			case 6: // -M
-				if (!bmk.startsWith(QStringLiteral("-M"), Qt::CaseInsensitive)) return false;
-				break;
-			case 7: // -B
-				if (!bmk.startsWith(QStringLiteral("-B"), Qt::CaseInsensitive)) return false;
-				break;
-			case 8: // No structure
-				if (structure != tr("No structure identifier")) return false;
-				break;
-			default:
-				break;
+		if (!activeScheme.matches(bmk, structure, isMaster, isSlave, isTerminal, isCable, isReport, isConductorDef, isThumbnail)) {
+			return false;
 		}
 
 		if (!searchText.isEmpty()) {
@@ -670,8 +673,15 @@ void DeviceNavigatorDockWidget::applyFilters()
 			QString bmk = item->data(0, BmkRole).toString();
 			QString full = item->text(0);
 			QString structure = item->data(0, StructureRole).toString();
-			bool cable = bmk.startsWith(QStringLiteral("-W"));
-			bool visible = matchesFilter(bmk, full, structure, cable);
+			bool isMaster = item->data(0, IsMasterRole).toBool();
+			bool isSlave = item->data(0, IsSlaveRole).toBool();
+			bool isTerminal = item->data(0, IsTerminalRole).toBool();
+			bool isCable = item->data(0, IsCableRole).toBool();
+			bool isReport = item->data(0, IsReportRole).toBool();
+			bool isConductorDef = item->data(0, IsConductorDefRole).toBool();
+			bool isThumbnail = item->data(0, IsThumbnailRole).toBool();
+
+			bool visible = matchesFilter(bmk, full, structure, isMaster, isSlave, isTerminal, isCable, isReport, isConductorDef, isThumbnail);
 			item->setHidden(!visible);
 			return visible;
 		}
@@ -709,8 +719,15 @@ void DeviceNavigatorDockWidget::applyFilters()
 		QString bmk = bmkItem->text();
 		QString full = funcItem->text();
 		QString structStr = structItem->text();
-		bool cable = bmk.startsWith(QStringLiteral("-W"));
-		bool visible = matchesFilter(bmk, full, structStr, cable);
+		bool isMaster = bmkItem->data(IsMasterRole).toBool();
+		bool isSlave = bmkItem->data(IsSlaveRole).toBool();
+		bool isTerminal = bmkItem->data(IsTerminalRole).toBool();
+		bool isCable = bmkItem->data(IsCableRole).toBool();
+		bool isReport = bmkItem->data(IsReportRole).toBool();
+		bool isConductorDef = bmkItem->data(IsConductorDefRole).toBool();
+		bool isThumbnail = bmkItem->data(IsThumbnailRole).toBool();
+
+		bool visible = matchesFilter(bmk, full, structStr, isMaster, isSlave, isTerminal, isCable, isReport, isConductorDef, isThumbnail);
 		ui->m_table_widget->setRowHidden(r, !visible);
 	}
 }
@@ -949,3 +966,51 @@ void DeviceNavigatorDockWidget::onTableContextMenu(const QPoint &pos)
 	menu.exec(ui->m_table_widget->viewport()->mapToGlobal(pos));
 }
 
+
+/**
+ * @brief DeviceNavigatorDockWidget::loadFilterSchemes
+ */
+void DeviceNavigatorDockWidget::loadFilterSchemes()
+{
+	m_filter_schemes = DeviceNavigatorFilterScheme::loadSchemes();
+	updateFilterCombo();
+}
+
+/**
+ * @brief DeviceNavigatorDockWidget::updateFilterCombo
+ */
+void DeviceNavigatorDockWidget::updateFilterCombo()
+{
+	const QString currentName = ui->m_filter_combo->currentText();
+	ui->m_filter_combo->blockSignals(true);
+	ui->m_filter_combo->clear();
+
+	int selectIndex = 0;
+	for (int i = 0; i < m_filter_schemes.size(); ++i) {
+		ui->m_filter_combo->addItem(m_filter_schemes.at(i).name);
+		if (m_filter_schemes.at(i).name == currentName) {
+			selectIndex = i;
+		}
+	}
+	ui->m_filter_combo->setCurrentIndex(selectIndex);
+	ui->m_filter_combo->blockSignals(false);
+}
+
+/**
+ * @brief DeviceNavigatorDockWidget::onFilterConfigClicked
+ */
+void DeviceNavigatorDockWidget::onFilterConfigClicked()
+{
+	DeviceNavigatorFilterDialog dlg(this);
+	dlg.setSchemes(m_filter_schemes, ui->m_filter_combo->currentIndex());
+	if (dlg.exec() == QDialog::Accepted) {
+		m_filter_schemes = dlg.schemes();
+		DeviceNavigatorFilterScheme::saveSchemes(m_filter_schemes);
+		updateFilterCombo();
+		int newIdx = dlg.currentSchemeIndex();
+		if (newIdx >= 0 && newIdx < ui->m_filter_combo->count()) {
+			ui->m_filter_combo->setCurrentIndex(newIdx);
+		}
+		applyFilters();
+	}
+}
