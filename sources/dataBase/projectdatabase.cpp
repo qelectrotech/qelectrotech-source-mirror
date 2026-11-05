@@ -5108,7 +5108,8 @@ void projectDataBase::createDrawingItemView()
 QStringList projectDataBase::publicViews()
 {
 	return {QStringLiteral("qet_folios"), QStringLiteral("qet_devices"),
-			QStringLiteral("qet_wires"), QStringLiteral("qet_links")};
+			QStringLiteral("qet_wires"), QStringLiteral("qet_links"),
+			QStringLiteral("qet_cables")};
 }
 
 /**
@@ -5127,6 +5128,14 @@ QStringList projectDataBase::publicViews()
 	end of a wire has its own (from_structure_id, to_structure_id). The
 	links are kept once each: coil to contact, going arrow to coming
 	arrow.
+
+	qet_cables is the project's cables, one row each, read from the cables
+	themselves (cable_value, what Cable::toXml() writes): designation, type,
+	the number of cores its type has, the cores drawn and the ones of them
+	wired to a conductor, its length, the folios it is drawn on and the
+	first of them. Its plant and location are its own, else the ones of
+	that first folio, and structure_id composes them with the designation
+	(=plant+location-designation) like a device's.
 
 	No view of terminals: the terminal table lists only the terminals a
 	wire ends on, so one would leave out every free terminal without
@@ -5231,7 +5240,42 @@ QStringList projectDataBase::publicViewStatements()
 			"LEFT JOIN diagram_info di1 ON di1.diagram_uuid = e1.diagram_uuid "
 			"LEFT JOIN diagram d2 ON d2.uuid = e2.diagram_uuid "
 			"LEFT JOIN diagram_info di2 ON di2.diagram_uuid = e2.diagram_uuid "
-			"WHERE e1.type IN ('master', 'next_report')")
+			"WHERE e1.type IN ('master', 'next_report')"),
+			//After qet_folios, which it reads
+		QStringLiteral(
+			"CREATE VIEW qet_cables AS "
+			"WITH cable AS (SELECT cable_uuid, "
+				"MAX(CASE WHEN name = 'designation' THEN value END) AS designation, "
+				"MAX(CASE WHEN name = 'installation' THEN value END) AS plant, "
+				"MAX(CASE WHEN name = 'location' THEN value END) AS location, "
+				"MAX(CASE WHEN name = 'type' THEN value END) AS type, "
+				"MAX(CASE WHEN name = 'cores' THEN CAST(value AS INTEGER) END) AS cores, "
+				"MAX(CASE WHEN name = 'length' THEN value END) AS length "
+				"FROM cable_value WHERE section = 'cable' GROUP BY cable_uuid), "
+			"core AS (SELECT cable_uuid, COUNT(DISTINCT ord) AS drawn_cores, "
+				"COUNT(DISTINCT CASE WHEN name = 'conductor' AND value <> '' THEN ord END) AS wired_cores "
+				"FROM cable_value WHERE section = 'cable/core' GROUP BY cable_uuid), "
+			"drawn AS (SELECT v.cable_uuid, f.folio_uuid, f.folio_number, f.folio, f.plant, f.location, "
+				"ROW_NUMBER() OVER (PARTITION BY v.cable_uuid ORDER BY f.folio_number) AS n "
+				"FROM cable_value v JOIN qet_folios f ON f.folio_uuid = v.value "
+				"WHERE v.section = 'cable/part' AND v.name = 'diagram'), "
+			"spread AS (SELECT cable_uuid, COUNT(DISTINCT folio_uuid) AS folios "
+				"FROM drawn GROUP BY cable_uuid), "
+			"placed AS (SELECT c.*, ")
+			+ effectiveStructureSql(QStringLiteral("c.plant"), QStringLiteral("d.plant"))
+			+ QStringLiteral(" AS eff_plant, ")
+			+ effectiveStructureSql(QStringLiteral("c.location"), QStringLiteral("d.location"))
+			+ QStringLiteral(" AS eff_location, COALESCE(s.folios, 0) AS folios, "
+				"d.folio_number, d.folio FROM cable c LEFT JOIN drawn d "
+				"ON d.cable_uuid = c.cable_uuid AND d.n = 1 "
+				"LEFT JOIN spread s ON s.cable_uuid = c.cable_uuid) "
+			"SELECT ")
+			+ structureIdSql(QStringLiteral("eff_plant"), QStringLiteral("eff_location"), QStringLiteral("designation"))
+			+ QStringLiteral(" AS structure_id, eff_plant AS plant, eff_location AS location, "
+			"designation, type, COALESCE(cores, 0) AS cores, COALESCE(k.drawn_cores, 0) AS drawn_cores, "
+			"COALESCE(k.wired_cores, 0) AS wired_cores, length, folios, folio_number, folio, "
+			"p.cable_uuid FROM placed p LEFT JOIN core k ON k.cable_uuid = p.cable_uuid "
+			"ORDER BY structure_id, p.cable_uuid")
 	};
 	return views;
 }

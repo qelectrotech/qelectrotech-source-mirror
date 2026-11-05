@@ -512,6 +512,8 @@ target_compile_definitions(tst_readonlyfolios PRIVATE
   QET_EXAMPLES_DIR="${QET_DIR}/examples")
 # IEC 81346 plant/location: an element takes its folio's, %{structure_id} composes them.
 qet_add_app_test(tst_structureid tst_structureid.cpp)
+# qet_cables: one row per cable, in its own place or its first folio's.
+qet_add_app_test(tst_cablelist tst_cablelist.cpp)
 # The labels file behind a symbol's prefix is read once, and again only when it changes.
 qet_add_app_test(tst_labelsfilecache tst_labelsfilecache.cpp)
 # A quick second click on the same spot reaches the shape tools as a

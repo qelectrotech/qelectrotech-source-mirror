@@ -146,6 +146,9 @@ private slots:
 		QTest::newRow("qet_links") << QStringLiteral("qet_links")
 			<< QStringLiteral("link_kind,device,folio_number,folio,position,linked_device,"
 							  "linked_folio_number,linked_folio,linked_position,device_uuid,linked_uuid");
+		QTest::newRow("qet_cables") << QStringLiteral("qet_cables")
+			<< QStringLiteral("structure_id,plant,location,designation,type,cores,drawn_cores,"
+							  "wired_cores,length,folios,folio_number,folio,cable_uuid");
 	}
 
 	void viewColumns()
@@ -245,7 +248,7 @@ private slots:
 			db.setDatabaseName(path);
 			QVERIFY(db.open());
 			QSqlQuery query(db);
-			for (const char *view : {"qet_folios", "qet_devices", "qet_wires", "qet_links"})
+			for (const char *view : {"qet_folios", "qet_devices", "qet_wires", "qet_links", "qet_cables"})
 				QVERIFY(query.exec(QStringLiteral("DROP VIEW IF EXISTS %1").arg(QLatin1String(view))));
 			db.close();
 		}
