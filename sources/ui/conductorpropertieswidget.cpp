@@ -126,6 +126,27 @@ void ConductorPropertiesWidget::setProperties(
 	setConductorType(m_properties.type);
 	updatePreview(false);
 	updateDashPatternPreview();
+
+		//A core of a cable says what its section, colour and type are:
+		//those three fields are locked here, so an edit made on one
+		//side of a terminal cannot write over what the cable says.
+		//The small sign beside each says why when the mouse rests on it
+	const bool from_cable = !m_properties.m_cable_uuid.isNull();
+	ui->m_wire_color_le->setDisabled(from_cable);
+	ui->m_wire_section_le->setDisabled(from_cable);
+	ui->m_conductor_type_le->setDisabled(from_cable);
+	ui->m_wire_color_locked_info->setVisible(from_cable);
+	ui->m_wire_section_locked_info->setVisible(from_cable);
+	ui->m_conductor_type_locked_info->setVisible(from_cable);
+	const QString why = from_cable
+			? (m_properties.m_cable.isEmpty()
+			   ? tr("This wire is a core of a cable: section, colour and type come from the cable.")
+			   : tr("This wire is core of cable %1: section, colour and type come from the cable.")
+					 .arg(m_properties.m_cable))
+			: QString();
+	ui->m_wire_color_locked_info->setToolTip(why);
+	ui->m_wire_section_locked_info->setToolTip(why);
+	ui->m_conductor_type_locked_info->setToolTip(why);
 }
 
 /**

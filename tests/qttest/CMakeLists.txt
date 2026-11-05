@@ -2212,6 +2212,10 @@ qet_add_app_test(tst_dragtextswithoutshift tst_dragtextswithoutshift.cpp)
 # colour, line style and width of its potential type.
 qet_add_app_test(tst_potentialtypes tst_potentialtypes.cpp)
 
+# A core of a cable: section, colour and type are locked in the dialog and
+# show a small sign saying why, so an edit cannot write over the cable
+qet_add_app_test(tst_cablelockedfields tst_cablelockedfields.cpp)
+
 # Settings for every test. get_property(... TESTS) only sees the tests added
 # so far, so they wait for the end of this file: a test takes them wherever
 # it is listed. cmake_language(DEFER) needs CMake 3.19, and without

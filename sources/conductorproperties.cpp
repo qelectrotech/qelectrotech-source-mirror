@@ -596,6 +596,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_tension_protocol   = cp.m_tension_protocol;
 		m_wire_color         = cp.m_wire_color;
 		m_wire_section       = cp.m_wire_section;
+		m_conductor_type     = cp.m_conductor_type;
 		text_size            = cp.text_size;
 		cond_size            = cp.cond_size;
 		m_show_text          = cp.m_show_text;
