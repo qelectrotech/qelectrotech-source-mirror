@@ -123,12 +123,12 @@ QRectF BorderTitleBlock::titleBlockRect() const
 		qreal w = m_titleblock_template_renderer -> height();
 		qreal h = diagram_rect_.height();
 		Qt::Alignment align = titleBlockTemplateAlign();
-		// if the alignment is along the bottom edge, raise the reference point to the height of the stamp and reduce it by the width of the ruler
+		// If aligning to the bottom edge, shift the reference point to the left by the height of the stamp, and lower its value by the height of the ruler.
 		if(align.testFlag(Qt::AlignBottom)){
 			x -= w;
 			if (display_columns_){
-				y += rows_header_width_;
-				h -= rows_header_width_;
+				y += columns_header_height_;
+				h -= columns_header_height_;
 			}
 		}
 		qreal hb = m_titleblock_template_renderer -> titleBlockTemplate() -> width(qRound(h));
