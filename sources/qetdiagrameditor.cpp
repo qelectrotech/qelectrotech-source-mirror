@@ -1295,6 +1295,14 @@ void QETDiagramEditor::setUpActions()
 		   "having to close and reopen the project (action cannot be undone)"));
 	connect(m_reload_element_drawings, &QAction::triggered, this, &QETDiagramEditor::slot_reloadElementDrawings);
 
+	// Replace embedded elements by their newer version from the collections
+	m_update_elements_from_collections = new QAction(QET::Icons::ViewRefresh, tr("Update elements from the collections"), this);
+	ShortcutManager::instance().registerAction(m_update_elements_from_collections, "diagrameditor.update_elements_from_collections", tr("Diagram editors"), QKeySequence());
+	m_update_elements_from_collections->setStatusTip(
+		tr("Replaces each element of the project that changed in its collection "
+		   "since it was placed, and redraws it (action cannot be undone)"));
+	connect(m_update_elements_from_collections, &QAction::triggered, this, &QETDiagramEditor::slot_updateElementsFromCollections);
+
 #ifdef QET_HAS_SCRIPTING
 	// Run a JavaScript macro against the current project (bugtracker #162).
 	m_run_script = new QAction(tr("Run a script..."), this);
@@ -2181,6 +2189,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_project_export_wiring_list);
 	menu_project -> addAction(m_project_wiring_list_view);
 	menu_project -> addAction(m_reload_element_drawings);
+	menu_project -> addAction(m_update_elements_from_collections);
 #ifdef QET_HAS_SCRIPTING
 	m_scripts_menu = menu_project -> addMenu(tr("Scripts"));
 	rebuildScriptActions();
@@ -3793,6 +3802,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_add_cable_list              -> setEnabled(editable_project);
 	m_export_cable_list           -> setEnabled(editable_project);
 	m_reload_element_drawings     -> setEnabled(opened_project);
+	m_update_elements_from_collections -> setEnabled(editable_project);
 #ifdef QET_HAS_SCRIPTING
 	m_run_script                  -> setEnabled(opened_project);
 #endif
@@ -5410,6 +5420,73 @@ void QETDiagramEditor::slot_reloadElementDrawings() {
 	QETProject *project = currentProject();
 	if (!project) return;
 
+	reloadElementDrawings(project, false, tr("Reload element drawings"), QString());
+}
+
+/**
+	@brief QETDiagramEditor::slot_updateElementsFromCollections
+	Replace each embedded element of the current project by the element it
+	was taken from, when that one changed in its collection since: placing
+	an element again from the collection reuses the embedded copy as long as
+	both carry the same uuid, so an edited symbol never reaches a project.
+
+	The changed elements are listed and replaced only once the user agrees.
+	Placed elements are then redrawn, taking over a new size or hotspot;
+	those whose terminals changed keep their old drawing and are listed.
+	Not undoable, like importing a newer element over an embedded one.
+*/
+void QETDiagramEditor::slot_updateElementsFromCollections() {
+	QETProject *project = currentProject();
+	if (!project) return;
+
+	const QString title = tr("Update elements from the collections");
+	const QList<QETProject::OutdatedElement> outdated = project->outdatedElements();
+	if (outdated.isEmpty())
+	{
+		QET::QetMessageBox::information(
+			this, title,
+			tr("Every element of the project matches the collection it was taken from."));
+		return;
+	}
+
+	QStringList names;
+	for (const QETProject::OutdatedElement &element : outdated)
+		names << element.source.toString();
+
+	QMessageBox question(QMessageBox::Question, title,
+						 tr("%n elements of the project differ from the collection "
+							"they were taken from. Replace them with the version "
+							"of the collection?", "", outdated.size())
+						 % QStringLiteral("\n\n")
+						 % tr("Placed elements are redrawn and keep their conductors, "
+							  "as long as their terminals have not moved. This "
+							  "action cannot be undone."),
+						 QMessageBox::Yes | QMessageBox::Cancel, this);
+	question.setDetailedText(names.join(QLatin1Char('\n')));
+	if (question.exec() != QMessageBox::Yes) return;
+
+	for (const QETProject::OutdatedElement &element : outdated)
+		project->updateElement(element);
+	project->setModified(true);
+
+	reloadElementDrawings(project, true, title,
+						  tr("%n elements updated.", "", outdated.size()));
+}
+
+/**
+	@brief QETDiagramEditor::reloadElementDrawings
+	Redraw every placed element of @p project from its current definition
+	and report the result.
+	@param project : the project to redraw
+	@param adopt_frame : take over a changed size and hotspot
+	(see Element::reloadPicture())
+	@param title : title of the report
+	@param intro : first line of the report, may be empty
+*/
+void QETDiagramEditor::reloadElementDrawings(QETProject *project,
+											 bool adopt_frame,
+											 const QString &title,
+											 const QString &intro) {
 	QList<Element *> elements;
 	QSet<QString> dropped_locations;
 	for (Diagram *diagram : project->diagrams())
@@ -5432,7 +5509,7 @@ void QETDiagramEditor::slot_reloadElementDrawings() {
 	QStringList geometry_changed;
 	for (Element *elmt : elements)
 	{
-		switch (elmt->reloadPicture())
+		switch (elmt->reloadPicture(adopt_frame))
 		{
 			case Element::ReloadPictureResult::Reloaded:
 				++reloaded;
@@ -5453,6 +5530,8 @@ void QETDiagramEditor::slot_reloadElementDrawings() {
 	}
 
 	QString message = tr("%n elements redrawn.", "", reloaded);
+	if (!intro.isEmpty())
+		message = intro % QStringLiteral("\n") % message;
 
 	if (unavailable) {
 		message += QStringLiteral("\n\n")
@@ -5462,15 +5541,18 @@ void QETDiagramEditor::slot_reloadElementDrawings() {
 
 	if (geometry_changed.isEmpty())
 	{
-		QET::QetMessageBox::information(
-			this, tr("Reload element drawings"), message);
+		QET::QetMessageBox::information(this, title, message);
 		return;
 	}
 
 	message += QStringLiteral("\n\n")
-			% tr("%n elements not redrawn: their size, grip point or terminals have "
-				  "changed (a terminal was added, removed or moved).",
-				  "", geometry_changed.size())
+			% (adopt_frame
+			   ? tr("%n elements not redrawn: their terminals have changed (a "
+					"terminal was added, removed or moved).",
+					"", geometry_changed.size())
+			   : tr("%n elements not redrawn: their size, grip point or terminals have "
+					"changed (a terminal was added, removed or moved).",
+					"", geometry_changed.size()))
 			% QStringLiteral("\n\n")
 			% tr("To update them, they must be deleted then reinserted. Warning: "
 				  "this operation removes the conductors already connected to these "
@@ -5479,7 +5561,7 @@ void QETDiagramEditor::slot_reloadElementDrawings() {
 		//The full list goes in the expandable, scrollable details area
 		//so the dialog stays readable on large projects.
 	QMessageBox box(QMessageBox::Warning,
-					tr("Reload element drawings"),
+					title,
 					message,
 					QMessageBox::Ok,
 					this);

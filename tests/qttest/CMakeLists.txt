@@ -551,6 +551,7 @@ qet_add_app_test(tst_touchingconductor tst_touchingconductor.cpp)
 # A symbol that draws beyond its frame is drawn whole, at every zoom: its
 # bounding rect covers the drawing, not only the frame.
 qet_add_app_test(tst_symboloutsideframe tst_symboloutsideframe.cpp)
+qet_add_app_test(tst_updateelements tst_updateelements.cpp)
 qet_add_app_test(tst_selectionrectangle tst_selectionrectangle.cpp)
 qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
 
