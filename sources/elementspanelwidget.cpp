@@ -669,9 +669,10 @@ void ElementsPanelWidget::duplicateDiagram()
 
 		// Serialize the whole diagram with is_copy_command=true.
 		// This is the same mechanism as Ctrl+C: toXml(true, true)
-		// internally calls correctTextPos/restoreText for Slave and
-		// Report elements only — producing correct text positions
-		// in the XML. No manual correctTextPos/restoreText needed.
+		// internally calls correctTextPos/restoreText for Slave,
+		// Report and ConductorDefinition elements — producing correct
+		// text positions in the XML. No manual correctTextPos/restoreText
+		// needed.
 		QDomDocument doc = source_diagram->toXml(true, true);
 		QDomElement diagram_elmt = doc.documentElement();
 
@@ -719,14 +720,15 @@ void ElementsPanelWidget::duplicateDiagram()
 				// silently vanish from nomenclature/summary tables.
 				elmt->newUuid();
 
-				// toXml(true, true) applied correctTextPos to Slave and
-				// Report elements, which shifted their text positions to
-				// match the stripped composite text.  restoreText()
-				// recalculates the position for the actual resolved text.
-				// Only Slave and Report need this — other element types
-				// were not affected by correctTextPos.
+				// toXml(true, true) applied correctTextPos to Slave,
+				// Report and ConductorDefinition elements, which shifted
+				// their text positions to match the stripped composite
+				// text.  restoreText() recalculates the position for the
+				// actual resolved text.  Only those three need this --
+				// other element types were not affected by correctTextPos.
 				if (elmt->linkType() == Element::Slave ||
-					elmt->linkType() & Element::AllReport)
+					elmt->linkType() & Element::AllReport ||
+					elmt->linkType() == Element::ConductorDefinition)
 				{
 					new_diagram->restoreText(elmt);
 				}
