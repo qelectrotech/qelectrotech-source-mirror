@@ -477,6 +477,9 @@ qet_add_app_test(tst_tooldoubleclick tst_tooldoubleclick.cpp)
 qet_add_app_test(tst_conductordefinitionmark tst_conductordefinitionmark.cpp)
 target_compile_definitions(tst_conductordefinitionmark PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
+# A copy of a conductor definition keeps the point its right-aligned texts
+# stand on, as a copy of a folio report does.
+qet_add_app_test(tst_conductordefcopy tst_conductordefcopy.cpp)
 # The projects of the last session are opened again at start, and the
 # ones open when the editor closes are kept for the next start.
 qet_add_app_test(tst_reopenprojects tst_reopenprojects.cpp)

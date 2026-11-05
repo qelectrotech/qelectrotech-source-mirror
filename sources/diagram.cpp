@@ -1569,8 +1569,13 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 				auto elmt = static_cast<Element *>(qgi);
 				if (whole_content || elmt->isSelected()){
 					//  For a copy/paste command, the text positions must be recalculated for
-					//  correct text alignment, before it is saved to the clipboard
-					if(is_copy_command && (elmt->linkType() == Element::Slave || elmt->linkType()&Element::AllReport))
+					//  correct text alignment, before it is saved to the clipboard.
+					//  A conductor definition reads its texts from the wire it
+					//  stands on, the way a report reads them from the folio it
+					//  leads to, so it belongs in this as well.
+					if(is_copy_command && (elmt->linkType() == Element::Slave
+										   || elmt->linkType()&Element::AllReport
+										   || elmt->linkType() == Element::ConductorDefinition))
 						correctTextPos(elmt);
 					list_elements << elmt;
 				}
@@ -1670,7 +1675,9 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 			ItemGroups::write(dom_element, elmt);
 			dom_elements.appendChild(dom_element);
 			// If copy is active we have to undo the changes we have made during creating(filling) 'list_elements'
-			if(is_copy_command && (elmt->linkType() == Element::Slave || elmt->linkType()&Element::AllReport))
+			if(is_copy_command && (elmt->linkType() == Element::Slave
+								   || elmt->linkType()&Element::AllReport
+								   || elmt->linkType() == Element::ConductorDefinition))
 				restoreText(elmt);
 		}
 		dom_root.appendChild(dom_elements);
@@ -4122,8 +4129,12 @@ void Diagram::correctTextPos(Element* elmt)
 						composite_text.replace(QETInformation::infoToVar(variable),"");
 				}
 			}
-				// create compositeText() without variables for report item
-			else if(elmt->linkType()&Element::AllReport){
+				// create compositeText() without variables for a report
+				// item or a conductor definition: both fill their texts
+				// from what hangs on their wire, so their variables are
+				// the same ones
+			else if(elmt->linkType()&Element::AllReport
+					|| elmt->linkType()==Element::ConductorDefinition){
 				const QStringList variables_list = QETInformation::folioReportInfoKeys();
 				for (auto &variable : variables_list){
 					if(composite_text.contains(QETInformation::infoToVar(variable)))
@@ -4161,7 +4172,8 @@ void Diagram::correctTextPos(Element* elmt)
 							composite_text.replace(QETInformation::infoToVar(variable),"");
 					}
 				}
-				else if(elmt->linkType()&Element::AllReport){
+				else if(elmt->linkType()&Element::AllReport
+						|| elmt->linkType()==Element::ConductorDefinition){
 					QStringList variables_list = QETInformation::folioReportInfoKeys();
 					for (auto variable : variables_list){
 						if(composite_text.contains(QETInformation::infoToVar(variable)))
