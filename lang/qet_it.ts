@@ -19044,7 +19044,7 @@ La si vuole sostituire ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="314"/>
         <source>Label</source>
-        <translation>Etichetta</translation>
+        <translation>Etichetta (-)</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="189"/>
@@ -19098,7 +19098,7 @@ La si vuole sostituire ?</translation>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1848"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="3504"/>
         <source>Function</source>
-        <translation>Funzione</translation>
+        <translation>Descrizione funzione</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="315"/>
