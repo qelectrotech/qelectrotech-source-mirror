@@ -671,6 +671,7 @@ void GeneralConfigurationPage::fillLang()
 	ui->m_lang_cb->addItem(QET::Icons::pt,		tr("Portuguese"), "pt");
 	ui->m_lang_cb->addItem(QET::Icons::ro,		tr("Romanian"), "ro");
 	ui->m_lang_cb->addItem(QET::Icons::ru,		tr("Russian"), "ru");
+	ui->m_lang_cb->addItem(QET::Icons::sk,		tr("Slovak"), "sk");
 	ui->m_lang_cb->addItem(QET::Icons::sl,		tr("Slovenian"), "sl");
 	ui->m_lang_cb->addItem(QET::Icons::nl,		tr("Dutch"), "nl");
 	ui->m_lang_cb->addItem(QET::Icons::no,		tr("Norwegian"), "nb");
