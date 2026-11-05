@@ -126,6 +126,7 @@ class TitleBlockTemplate : public QObject {
 	void setRowDimension(int, const TitleBlockDimension &);
 	TitleBlockDimension columnDimension(int);
 	void setColumnDimension(int, const TitleBlockDimension &);
+	void setPreviewDimension(const TitleBlockDimension &);
 	int columnsCount() const;
 	int rowsCount() const;
 	QList<int> columnsWidth(int) const;
@@ -303,7 +304,6 @@ class TitleBlockTemplate : public QObject {
 	/*
 		@brief out side or in side position title template
 	*/
-	bool inside_ = false;
 	Qt::Alignment m_align_ = Qt::AlignTop; /// position relative to the frame boundary
 };
 #endif

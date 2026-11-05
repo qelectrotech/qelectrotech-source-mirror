@@ -2458,3 +2458,12 @@ int TitleBlockTemplate::lengthRange(
 	return(length);
 }
 
+/**
+	@brief TitleBlockTemplate::setPreviewDimension
+	Set the preview width and alignment
+	@param dimension : New width and alignment
+*/
+void TitleBlockTemplate::setPreviewDimension(const TitleBlockDimension &dimension)
+{
+	m_align_ = dimension.align;
+}
