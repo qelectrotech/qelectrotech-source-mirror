@@ -1872,6 +1872,21 @@ add_test(NAME tst_conductordashpattern COMMAND tst_conductordashpattern)
 target_include_directories(tst_conductordashpattern PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductordashpattern PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# The conductor type of a wire: written only when it is set, read back
+# the way it was written, and offered in the dynamic text fields
+add_executable(
+  tst_conductortypefield
+  tst_conductortypefield.cpp
+  ${QET_DIR}/sources/conductorproperties.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
+  ${QET_DIR}/sources/qetinformation.cpp
+  ${QET_DIR}/sources/qet.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_conductortypefield COMMAND tst_conductortypefield)
+target_include_directories(tst_conductortypefield PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_conductortypefield PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
 # ConductorProperties::fromSettings() -- the default conductor width is a
 # decimal and comes back as saved (1.4 used to be read as 0).
 add_executable(

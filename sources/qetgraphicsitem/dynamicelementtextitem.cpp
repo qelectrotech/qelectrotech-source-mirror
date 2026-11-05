@@ -1930,6 +1930,8 @@ void DynamicElementTextItem::conductorPropertiesChanged()
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_wire_color : "");
 			else if (m_info_name == QETInformation::COND_SECTION)
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_wire_section : "");
+			else if (m_info_name == QETInformation::COND_TYPE)
+				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_conductor_type : "");
 		}
 		else if (m_text_from == CompositeText) {
 			setPlainText(reportReplacedCompositeText());

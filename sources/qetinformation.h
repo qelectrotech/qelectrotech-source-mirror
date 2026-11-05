@@ -115,6 +115,7 @@ namespace QETInformation
 	static QString COND_TENSION_PROTOCOL     = "tension_protocol";
 	static QString COND_COLOR                = "conductor_color";
 	static QString COND_SECTION              = "conductor_section";
+	static QString COND_TYPE                 = "conductor_type";
 	static QString COND_FORMULA              = "formula";
 	static QString COND_TEXT                 = "text";
 

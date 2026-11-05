@@ -104,6 +104,10 @@ class ConductorProperties
 			/// from the project's PotentialTypes when that is turned on.
 		m_potential_type;
 
+			/// The kind of wire this conductor is made of (H05V-K,
+			/// H07V-K ...), free text, empty when none is set
+		QString m_conductor_type;
+
 			/// The cable of the project this conductor is a core of, null
 			/// when it belongs to no cable. The text shown in m_cable is
 			/// generated from the cable and never typed in: this reference
