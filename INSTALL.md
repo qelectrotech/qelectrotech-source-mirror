@@ -274,6 +274,14 @@ downloads and compiles KDE Frameworks itself, which is slow.
    `.qetdb`'s saves then records no changes. A SQLite built from another
    source needs `SQLITE_ENABLE_SESSION` and `SQLITE_ENABLE_PREUPDATE_HOOK`
    for that too.
+
+   Optionally, for the 3D mouse, get hidapi from vcpkg too, and add
+   `-DQET_ENABLE_SPACEMOUSE=ON -DQET_SPACEMOUSE_BACKEND=hid` at the
+   configure step. `cmake --install` then installs hidapi's DLL with
+   QElectroTech.
+   ```bat
+   vcpkg install hidapi:x64-windows
+   ```
 3. Configure and build from an "x64 Native Tools Command Prompt for VS":
    ```bat
    mkdir build && cd build
