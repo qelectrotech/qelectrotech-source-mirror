@@ -43,6 +43,8 @@ namespace QETInformation
 		//shown in a text field of its own when the terminal labelling
 		//is drawn split (@sa QETProject::terminalLabelSplit)
 	static QString ELMT_TERMINAL_NUMBER              = "terminal_number";
+		//Not stored: read from the wires on a terminal symbol when drawn
+	static QString ELMT_CONDUCTOR_TEXT               = "conductor_text";
 	static QString ELMT_FORMULA                      = "formula";
 	/**
 		Uuid of the project's element numbering scheme the element's

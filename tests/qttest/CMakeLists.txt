@@ -530,6 +530,7 @@ qet_add_app_test(tst_terminalcableauto tst_terminalcableauto.cpp)
 # drawing changes; the stored label, the numbering and the exports keep
 # the whole label.
 qet_add_app_test(tst_terminallabeldisplay tst_terminallabeldisplay.cpp)
+qet_add_app_test(tst_terminalconductortext tst_terminalconductortext.cpp)
 
 # The bridge drawn over terminals: what a bridge holds (colour, how many
 # terminals it may take, its sections), which terminals a line about to be
