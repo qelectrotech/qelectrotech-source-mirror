@@ -18,6 +18,7 @@
 #include "ElementsCollection/elementslocation.h"
 #include "ElementsCollection/xmlelementcollection.h"
 #include "autoNum/assignvariables.h"
+#include "dataBase/projectdatabase.h"
 #include "diagram.h"
 #include "factory/elementfactory.h"
 #include "qetapptest.h"
@@ -26,6 +27,7 @@
 #include "titleblockproperties.h"
 
 #include <QDomDocument>
+#include <QSqlQuery>
 #include <QTemporaryDir>
 #include <QUuid>
 #include <QtTest>
@@ -88,6 +90,14 @@ class tst_structureid : public QObject
 		if (!plant.isEmpty())    dc.addValue(QStringLiteral("plant"), plant);
 		if (!location.isEmpty()) dc.addValue(QStringLiteral("location"), location);
 		return dc;
+	}
+
+	static void setInfo(Element *element, const DiagramContext &values)
+	{
+		DiagramContext info = element->elementInformations();
+		for (const QString &key : values.keys())
+			info.addValue(key, values.value(key));
+		element->setElementInformations(info);
 	}
 
 	static QString text(const QString &formula, const DiagramContext &dc,
@@ -160,6 +170,38 @@ private slots:
 				 QStringLiteral("+CP1-K1"));
 		QCOMPARE(text(QStringLiteral("%{structure_id}"), info({}), element),
 				 QStringLiteral("+CP1"));
+	}
+
+	void databaseSaysWhatTheDrawingSays()
+	{
+			//qet_devices.structure_id is the full designation,
+			//=plant+location-label; plant and location in the view fall back
+			//to the folio, where %{plant} / %{location} show the element's own.
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		Element *on_folio = symbol(diagram);
+		Element *in_field = symbol(diagram);
+		QVERIFY(on_folio && in_field);
+		setInfo(on_folio, info("X1"));
+		setInfo(in_field, info("S5", {}, QStringLiteral("FIELD")));
+
+		project.dataBase()->updateDB();
+		for (Element *element : {on_folio, in_field})
+		{
+			QString error;
+			QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+				"SELECT plant, location, structure_id FROM qet_devices WHERE device_uuid = '%1'")
+					.arg(element->uuid().toString()), &error);
+			QVERIFY2(error.isEmpty(), qPrintable(error));
+			QVERIFY2(query.next(), "the element is not in qet_devices");
+			QCOMPARE(query.value(0).toString(), QStringLiteral("FACTORY"));
+			QCOMPARE(query.value(1).toString(), element == on_folio ? QStringLiteral("CP1")
+																   : QStringLiteral("FIELD"));
+			QCOMPARE(query.value(2).toString(), element == on_folio
+					 ? QStringLiteral("=FACTORY+CP1-X1")
+					 : QStringLiteral("=FACTORY+FIELD-S5"));
+		}
 	}
 
 	void withoutAnElementOnlyItsOwnValuesCount()

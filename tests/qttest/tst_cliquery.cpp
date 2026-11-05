@@ -138,11 +138,11 @@ private slots:
 		QTest::newRow("qet_devices") << QStringLiteral("qet_devices")
 			<< QStringLiteral("folio_number,folio,position,label,plant,location,kind,sub_kind,function,"
 							  "description,designation,manufacturer,article,supplier,quantity,comment,"
-							  "symbol,device_uuid,folio_uuid");
+							  "symbol,device_uuid,folio_uuid,structure_id");
 		QTest::newRow("qet_wires") << QStringLiteral("qet_wires")
 			<< QStringLiteral("folio_number,folio,wire_number,from_device,from_terminal,to_device,"
 							  "to_terminal,colour,section,cable,bus,function,voltage,wire_uuid,"
-							  "from_device_uuid,to_device_uuid");
+							  "from_device_uuid,to_device_uuid,from_structure_id,to_structure_id");
 		QTest::newRow("qet_links") << QStringLiteral("qet_links")
 			<< QStringLiteral("link_kind,device,folio_number,folio,position,linked_device,"
 							  "linked_folio_number,linked_folio,linked_position,device_uuid,linked_uuid");

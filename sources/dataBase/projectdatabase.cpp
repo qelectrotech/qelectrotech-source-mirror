@@ -4811,6 +4811,41 @@ static QString folioGroupSql(const QString &name, const QString &folio_uuid,
 }
 
 /**
+	@brief effectiveStructureSql
+	The SQL of an element's plant (=) or location (+): its own value, else
+	its folio's title block. This is the rule of the full designation
+	(AssignVariables::replaceVariable()); %{plant} / %{location} in the
+	element's texts show the element's own value only. Written once here
+	for every view, so the parts list and the public views never
+	disagree. In SQL, not on the live elements, so that a folio not
+	built (lazy folios) answers the same.
+	@param own : the element's own column, e.g. ei.plant
+	@param folio : the folio's column, e.g. di.plant
+*/
+static QString effectiveStructureSql(const QString &own, const QString &folio)
+{
+	return QStringLiteral("COALESCE(NULLIF(%1, ''), %2)").arg(own, folio);
+}
+
+/**
+	@brief structureIdSql
+	The SQL of the full designation: =plant+location-label, every part left out
+	when it is empty, as AssignVariables::replaceVariable() composes it.
+*/
+static QString structureIdSql(const QString &plant, const QString &location,
+							  const QString &label)
+{
+	const auto part = [](const QString &sign, const QString &value) {
+		return QStringLiteral("CASE WHEN COALESCE(%2, '') <> '' THEN '%1' || %2 ELSE '' END")
+				.arg(sign, value);
+	};
+	return QStringLiteral("(%1 || %2 || %3)")
+			.arg(part(QStringLiteral("="), plant),
+				 part(QStringLiteral("+"), location),
+				 part(QStringLiteral("-"), label));
+}
+
+/**
 	@brief projectDataBase::createElementNomenclatureView
 */
 void projectDataBase::createElementNomenclatureView()
@@ -4820,10 +4855,12 @@ void projectDataBase::createElementNomenclatureView()
 		//%M / %LM of the folio), as EPLAN builds the device tag from the
 		//page structure: an element drawn on a +UV1 folio is in +UV1
 		//without the information being typed into every element.
-	QString create_view ("CREATE VIEW element_nomenclature_view AS SELECT "
-						 "ei.label AS label,"
-						 "COALESCE(NULLIF(ei.plant, ''), di.plant) AS plant,"
-						 "COALESCE(NULLIF(ei.location, ''), di.locmach) AS location,"
+	QString create_view (QStringLiteral("CREATE VIEW element_nomenclature_view AS SELECT "
+						 "ei.label AS label,")
+						 + effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("di.plant"))
+						 + QStringLiteral(" AS plant,")
+						 + effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("di.locmach"))
+						 + QStringLiteral(" AS location,"
 						 "ei.comment AS comment,"
 						 "ei.function AS function,"
 						 "ei.description AS description,"
@@ -4907,7 +4944,7 @@ void projectDataBase::createElementNomenclatureView()
 							 //own auxiliary contact, say -- is kept out by
 							 //exclude_from_bom above, not by its base type.
 							 //See discussion #847.
-						 " AND e.type IN ('simple', 'terminal', 'master', 'slave', 'thumbnail')");
+						 " AND e.type IN ('simple', 'terminal', 'master', 'slave', 'thumbnail')"));
 
 		//The spare terminals of the terminal strips (on no folio) are lines of
 		//the nomenclature too : the same columns, read in the spare_terminal
@@ -5085,8 +5122,11 @@ QStringList projectDataBase::publicViews()
 	a folio not built gives the same rows. folio_number is the folio's
 	place in the project from 1, folio its label as its title block shows
 	it. A device's plant and location are its own, or else its folio's,
-	as in the parts list. The links are kept once each: coil to contact,
-	going arrow to coming arrow.
+	as in the parts list, and structure_id composes them with its label
+	(=plant+location-label, the full designation); each
+	end of a wire has its own (from_structure_id, to_structure_id). The
+	links are kept once each: coil to contact, going arrow to coming
+	arrow.
 
 	No view of terminals: the terminal table lists only the terminals a
 	wire ends on, so one would leave out every free terminal without
@@ -5134,14 +5174,20 @@ QStringList projectDataBase::publicViewStatements()
 		QStringLiteral(
 			"CREATE VIEW qet_devices AS SELECT "
 			"d.pos AS folio_number, di.folio AS folio, e.pos AS position, "
-			"ei.label AS label, "
-			"COALESCE(NULLIF(ei.plant, ''), di.plant) AS plant, "
-			"COALESCE(NULLIF(ei.location, ''), di.locmach) AS location, "
+			"ei.label AS label, ")
+			+ effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("di.plant"))
+			+ QStringLiteral(" AS plant, ")
+			+ effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("di.locmach"))
+			+ QStringLiteral(" AS location, "
 			"e.type AS kind, e.sub_type AS sub_kind, ei.function AS function, "
 			"ei.description AS description, ei.designation AS designation, "
 			"ei.manufacturer AS manufacturer, ei.manufacturer_reference AS article, "
 			"ei.supplier AS supplier, ei.quantity AS quantity, ei.comment AS comment, "
-			"e.definition AS symbol, e.uuid AS device_uuid, e.diagram_uuid AS folio_uuid "
+			"e.definition AS symbol, e.uuid AS device_uuid, e.diagram_uuid AS folio_uuid, ")
+			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("di.plant")),
+							 effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("di.locmach")),
+							 QStringLiteral("ei.label"))
+			+ QStringLiteral(" AS structure_id "
 			"FROM element e LEFT JOIN element_info ei ON ei.element_uuid = e.uuid")
 			+ folio_of.arg(QStringLiteral("e.diagram_uuid")),
 		QStringLiteral(
@@ -5156,7 +5202,15 @@ QStringList projectDataBase::publicViewStatements()
 			+ property(QStringLiteral("function"), QStringLiteral("function")) + QStringLiteral(", ")
 			+ property(QStringLiteral("tension_protocol"), QStringLiteral("voltage")) + QStringLiteral(
 			", c.uuid AS wire_uuid, t1.element_uuid AS from_device_uuid, "
-			"t2.element_uuid AS to_device_uuid "
+			"t2.element_uuid AS to_device_uuid, ")
+			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei1.plant"), QStringLiteral("di.plant")),
+							 effectiveStructureSql(QStringLiteral("ei1.location"), QStringLiteral("di.locmach")),
+							 QStringLiteral("ei1.label"))
+			+ QStringLiteral(" AS from_structure_id, ")
+			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei2.plant"), QStringLiteral("di.plant")),
+							 effectiveStructureSql(QStringLiteral("ei2.location"), QStringLiteral("di.locmach")),
+							 QStringLiteral("ei2.label"))
+			+ QStringLiteral(" AS to_structure_id "
 			"FROM conductor c "
 			"LEFT JOIN terminal t1 ON t1.uuid = c.terminal1_uuid AND t1.element_uuid = c.terminal1_element_uuid "
 			"LEFT JOIN terminal t2 ON t2.uuid = c.terminal2_uuid AND t2.element_uuid = c.terminal2_element_uuid "
