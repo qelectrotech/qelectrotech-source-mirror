@@ -24,12 +24,12 @@ git submodule update --init --recursive
 | Component | Status | Notes |
 |---|---|---|
 | CMake ≥ 3.5 | required | CMake 4.3+ is also fine, see note below |
-| C++17 compiler | required | GCC or Clang on Unix-like platforms; MSVC or MinGW-w64 g++ on Windows — see [Choosing a compiler](#3-choosing-a-compiler-unix) / [Building on Windows](#6-building-on-windows-msvc--mingw) |
+| C++17 compiler | required | GCC or Clang on Unix-like platforms; MSVC or MinGW-w64 g++ on Windows — see [Choosing a compiler](#31-choosing-a-compiler-unix) / [Building on Windows](#6-building-on-windows-msvc--mingw) |
 | Qt6 base + widgets | required | |
 | Qt6 **GuiPrivate** headers | required | needed for clickable PDF hyperlinks; **hard build failure** at CMake generate time if missing, see below |
 | SQLite3 | required | used by the nomenclature/summary database; needs the session extension (`SQLITE_ENABLE_SESSION`, `SQLITE_ENABLE_PREUPDATE_HOOK`) for the history of a `.qetdb`'s saves |
 | Qt Linguist tools (`lrelease`) | required | compiles the tracked `.ts` files into `.qm` as part of every normal build |
-| pugixml | handled automatically | fetched and built via CMake FetchContent if not already present on the system — see [pugixml](#8-pugixml) below |
+| pugixml | handled automatically | fetched and built via CMake FetchContent if not already present on the system — see [pugixml](#5-pugixml) below |
 | Qt Test module | required if building tests | `PACKAGE_TESTS` is `ON` by default; QtTest ships as part of the base Qt6 dev packages listed below on every platform, no extra package needed |
 | KDE Frameworks (KF6) | optional | see [Building without KDE Frameworks](#9-building-without-kde-frameworks) |
 | QtPdf module | optional | see [PDF page import](#8-pdf-page-import-qtpdf) |
@@ -139,7 +139,7 @@ sudo apt install \
 
 `qt6-base-private-dev` is **not** pulled in automatically by `qt6-base-dev`
 but is mandatory for the build (see
-[Qt6 private headers](#6-qt6-private-headers-mandatory) below).
+[Qt6 private headers](#7-qt6-private-headers-mandatory) below).
 
 For Clang instead of GCC:
 
