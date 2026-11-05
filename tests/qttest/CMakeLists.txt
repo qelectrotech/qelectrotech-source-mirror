@@ -465,6 +465,10 @@ qet_add_app_test(tst_duplicatelabels tst_duplicatelabels.cpp)
 target_compile_definitions(tst_duplicatelabels PRIVATE
   QET_TEST_TRANSLATIONS_DIR="${CMAKE_BINARY_DIR}/lang")
 add_dependencies(tst_duplicatelabels qelectrotech_lrelease)
+# Copying a folio whose numbering counts per folio ("Zahlenformat 1 - Seite"):
+# the copy is numbered from its own folio, starting at 1 like the page it was
+# made from, and that folio's counter reads the numbers it has handed out.
+qet_add_app_test(tst_folioautonumcopy tst_folioautonumcopy.cpp)
 # The labels file behind a symbol's prefix is read once, and again only when it changes.
 qet_add_app_test(tst_labelsfilecache tst_labelsfilecache.cpp)
 # A quick second click on the same spot reaches the shape tools as a

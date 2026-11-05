@@ -410,6 +410,15 @@ class Diagram : public QGraphicsScene
 		void loadFolioSeqHash (QHash<QString, QStringList> *hash,
 				       const QString& title, const QString& seq,
 				       NumerotationContext *nc);
+			/// The folio's own counters of @p owner ("element" or
+			/// "conductor"), @p level ("unitfolio", "tenfolio" or
+			/// "hundredfolio") and @p title are @p values now: in the
+			/// hash this folio numbers from, and in the rows the
+			/// project saves them in.
+		void setFolioSeqValues(const QString &owner,
+				       const QString &level,
+				       const QString &title,
+				       const QStringList &values);
 		void changeZValue(QET::DepthOption option);
 		void setItemGroup(QGraphicsItem *item, const QUuid &group);
 

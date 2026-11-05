@@ -3364,6 +3364,46 @@ void Diagram::loadFolioSeqHash(QHash<QString,
 }
 
 /**
+	@brief Diagram::setFolioSeqValues
+	What this folio has handed out of the numbering @p title, at level
+	@p level for @p owner ("element" or "conductor"), is @p values from
+	now on -- the hash this folio numbers from, and the rows the project
+	saves them in, which writeFolioCounters() writes back into the file.
+
+	Writing both is what insertFolioSeqHash() and folioSequentialsFromXml()
+	do, and it is what keeps a counter the user put back, or one which
+	went down because the folio was numbered over from the start, from
+	being overwritten by the value saved for it.
+*/
+void Diagram::setFolioSeqValues(const QString &owner,
+				const QString &level,
+				const QString &title,
+				const QStringList &values)
+{
+	const bool element = owner == QLatin1String("element");
+	const bool conductor = owner == QLatin1String("conductor");
+	if (!element && !conductor) {
+		return;
+	}
+	QHash<QString, QStringList> *hash = nullptr;
+	if (level == QLatin1String("unitfolio")) {
+		hash = element ? &m_elmt_unitfolio_max : &m_cnd_unitfolio_max;
+	} else if (level == QLatin1String("tenfolio")) {
+		hash = element ? &m_elmt_tenfolio_max : &m_cnd_tenfolio_max;
+	} else if (level == QLatin1String("hundredfolio")) {
+		hash = element ? &m_elmt_hundredfolio_max : &m_cnd_hundredfolio_max;
+	}
+	if (!hash) {
+		return;
+	}
+	hash->insert(title, values);
+	if (project() && project()->dataBase()) {
+		project()->dataBase()->setFolioCounterValues(
+				uuid(), owner, level, title, values);
+	}
+}
+
+/**
 	@brief Diagram::changeZValue
 	Change the Z value of the current selected item, according to option
 	@param option
