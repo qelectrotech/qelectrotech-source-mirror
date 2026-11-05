@@ -142,8 +142,6 @@ void DynamicTextFieldEditor::updateForm()
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
 		ui->m_keep_visual_rotation_cb->setChecked(m_text_field.data()->keepVisualRotation());
 		ui->m_rotation_point_center_cb->setChecked(m_text_field.data()->rotationPointCenter());
-#ifdef BUILD_WITHOUT_KF
-#else
 			//Block signals while loading the colour into the button.
 			//KColorButton::changed fires on a programmatic setColor() as well
 			//as on user interaction, and m_color_kpb_changed() applies the new
@@ -156,7 +154,6 @@ void DynamicTextFieldEditor::updateForm()
 			const QSignalBlocker blocker(m_color_kpb);
 			m_color_kpb -> setColor(m_text_field.data() -> color());
 		}
-#endif
 			//Rounded as on_m_width_sb_editingFinished() compares it;
 			//setValue(int) would truncate 61.7 to 61
 		ui -> m_width_sb -> setValue(qRound(m_text_field.data() -> textWidth()));
@@ -184,8 +181,6 @@ void DynamicTextFieldEditor::updateForm()
 
 void DynamicTextFieldEditor::setupWidget()
 {
-#ifdef BUILD_WITHOUT_KF
-#else
 	m_color_kpb = new KColorButton(this);
 	m_color_kpb->setObjectName(QString::fromUtf8("m_color_kpb"));
 
@@ -193,7 +188,6 @@ void DynamicTextFieldEditor::setupWidget()
 			this, &DynamicTextFieldEditor::m_color_kpb_changed);
 
 	ui->m_main_grid_layout->addWidget(m_color_kpb, 6, 1, 1, 2);
-#endif
 }
 
 void DynamicTextFieldEditor::setUpConnections()
