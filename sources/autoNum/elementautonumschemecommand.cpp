@@ -267,15 +267,36 @@ QVector<RenumberElementsCommand::ElementChange> ElementAutoNumSchemeCommand::ren
 	return changes;
 }
 
+namespace {
+/**
+	@return the folio number of @p folio as a label works it out (%F), or
+	nothing when there is no number to compare: an empty field, or one
+	which still holds a formula such as %id/%total, gives every folio the
+	same text and so says nothing about which folio stands where.
+*/
+QString concreteFolioNumber(const Diagram *folio)
+{
+	const QString number = folio->border_and_titleblock.folio();
+	if (number.isEmpty() || number.contains(QLatin1Char('%'))) {
+		return QString();
+	}
+	return number;
+}
+} // namespace
+
 /**
 	@brief ElementAutoNumSchemeCommand::reservedLabels
 	@return the labels the elements following the scheme @p title keep
 	while @p changing change: numbers an operation on @p changing must not
 	give again, or two elements would carry the same label.
-	@param source_folio the folio the elements were copied from, when they
-	were: its labels are the very numbers the copies are given again, and
-	they stop being a clash as soon as the copy has a folio number of its
-	own -- the labels follow it (%F is worked out again for every display).
+
+	Two labels are left out of that: those of @p source_folio, the folio
+	the elements were copied from, and those of any folio reading the same
+	folio number as a folio being numbered. A folio copied from another
+	keeps its source's folio number until the user gives it one of its own,
+	so the labels of both are the very numbers the copies are given again,
+	and they part as soon as the copy has a number of its own -- %F is
+	worked out again for every display.
 */
 QSet<QString> ElementAutoNumSchemeCommand::reservedLabels(
 		const QETProject *project,
@@ -288,6 +309,25 @@ QSet<QString> ElementAutoNumSchemeCommand::reservedLabels(
 		return labels;
 	}
 	const QSet<const Element *> moving(changing.constBegin(), changing.constEnd());
+
+		//The folios being numbered, and the numbers they read. A folio
+		//reading one of those numbers is the same page as far as %F is
+		//concerned and holds no number back -- while a folio which stands
+		//here itself keeps every claim of its own elements on theirs.
+	QSet<const Diagram *> numbering;
+	QSet<QString> numbering_numbers;
+	for (const Element *el : changing)
+	{
+		if (!el || !el->diagram()) {
+			continue;
+		}
+		numbering << el->diagram();
+		const QString number = concreteFolioNumber(el->diagram());
+		if (!number.isEmpty()) {
+			numbering_numbers << number;
+		}
+	}
+
 	const auto followers = project->elementsUsingElementAutoNum(title);
 	for (const Element *el : followers)
 	{
@@ -295,6 +335,12 @@ QSet<QString> ElementAutoNumSchemeCommand::reservedLabels(
 				|| !el->takesSchemeNumber()
 				|| (source_folio && el->diagram() == source_folio)) {
 			continue;
+		}
+		if (el->diagram() && !numbering.contains(el->diagram())) {
+			const QString number = concreteFolioNumber(el->diagram());
+			if (!number.isEmpty() && numbering_numbers.contains(number)) {
+				continue;
+			}
 		}
 		const QString label = el->elementInformations().value(QETInformation::ELMT_LABEL).toString();
 		if (!label.isEmpty()) {

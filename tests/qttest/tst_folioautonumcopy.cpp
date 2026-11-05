@@ -174,6 +174,21 @@ class TstFolioAutonumCopy : public QObject
 			return labels;
 		}
 
+		/// The folio of @p project which was not among @p before: the one a
+		/// duplication has just made
+		static Diagram *folioNotIn(QETProject *project,
+								  const QList<Diagram *> &before)
+		{
+			Diagram *made = nullptr;
+			const QList<Diagram *> now = project->folios();
+			for (Diagram *folio : now) {
+				if (!before.contains(folio)) {
+					made = folio;
+				}
+			}
+			return made;
+		}
+
 		/// Give @p elements the numbering @p project has under @p title
 		static bool number(QETProject *project, const QString &title,
 						   const QVector<Element *> &elements, Diagram *folio)
@@ -299,20 +314,13 @@ class TstFolioAutonumCopy : public QObject
 								  QStringLiteral("-42B3")}));
 
 			// Copy the folio the way the project tree's "Copy and paste" does.
-			const QList<Diagram *> before = project->folios();
 			QTreeWidgetItem *project_item = panel.itemForProject(project);
 			QVERIFY(project_item);
 			QVERIFY2(selectFolio(panel, project_item, source),
 					 "the source folio is selected in the project tree");
+			const QList<Diagram *> before = project->folios();
 			panel_widget->duplicateDiagram();
-
-			Diagram *copy = nullptr;
-			const QList<Diagram *> after = project->folios();
-			for (Diagram *folio : after) {
-				if (!before.contains(folio)) {
-					copy = folio;
-				}
-			}
+			Diagram *copy = folioNotIn(project, before);
 			QVERIFY2(copy, "the duplication made a folio of its own");
 
 			// The copy is numbered from where a folio starts: 1, 2, 3. Its
@@ -320,6 +328,24 @@ class TstFolioAutonumCopy : public QObject
 			// of the page it was made from -- the numbers are its own, and
 			// they follow the number the copy is given later on.
 			QCOMPARE(labelsOf(copy),
+					 (QStringList{QStringLiteral("-42B1"),
+								  QStringLiteral("-42B2"),
+								  QStringLiteral("-42B3")}));
+
+			// A copy of the copy numbers 1, 2, 3 as well. It reads 42 like
+			// the copy it was made from and like the page that one was made
+			// from, and neither of them holds the numbers back: they are the
+			// same page as far as %F sees it, until one of them gets a
+			// folio number of its own.
+			project_item = panel.itemForProject(project);
+			QVERIFY(project_item);
+			QVERIFY2(selectFolio(panel, project_item, copy),
+					 "the first copy is selected in the project tree");
+			const QList<Diagram *> before_second = project->folios();
+			panel_widget->duplicateDiagram();
+			Diagram *second_copy = folioNotIn(project, before_second);
+			QVERIFY2(second_copy, "the second duplication made a folio too");
+			QCOMPARE(labelsOf(second_copy),
 					 (QStringList{QStringLiteral("-42B1"),
 								  QStringLiteral("-42B2"),
 								  QStringLiteral("-42B3")}));
@@ -346,6 +372,10 @@ class TstFolioAutonumCopy : public QObject
 								  QStringLiteral("-43B3"),
 								  QStringLiteral("-43B4")}));
 			QCOMPARE(labelsOf(source),
+					 (QStringList{QStringLiteral("-42B1"),
+								  QStringLiteral("-42B2"),
+								  QStringLiteral("-42B3")}));
+			QCOMPARE(labelsOf(second_copy),
 					 (QStringList{QStringLiteral("-42B1"),
 								  QStringLiteral("-42B2"),
 								  QStringLiteral("-42B3")}));
