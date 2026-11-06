@@ -46,6 +46,7 @@ class tst_devicenavigator : public QObject
 		void testExcludesFolioReportsAndConductorDefinitions();
 		void testConfigurableFilterSchemes();
 		void testFolioFormulaEvaluation();
+		void testTreePreservesExpansionAndSelectionOnReload();
 };
 
 void tst_devicenavigator::initTestCase()
@@ -535,6 +536,74 @@ void tst_devicenavigator::testFolioFormulaEvaluation()
 	// Folio 1 should be evaluated to "1/2", Folio 2 to "2"
 	QCOMPARE(folio1, QStringLiteral("1/2"));
 	QCOMPARE(folio2, QStringLiteral("2"));
+}
+
+void tst_devicenavigator::testTreePreservesExpansionAndSelectionOnReload()
+{
+	QETProject project;
+	auto *diag = project.addNewDiagram();
+	TitleBlockProperties tbp;
+	tbp.plant = QStringLiteral("010 (Einspeisung)");
+	diag->border_and_titleblock.importTitleBlock(tbp);
+
+	ElementsLocation loc;
+	auto *fc1 = new Element(loc);
+	DiagramContext dcfc = fc1->elementInformations();
+	dcfc.addValue(QStringLiteral("label"), QStringLiteral("FC1"));
+	fc1->setElementInformations(dcfc);
+	diag->addItem(fc1);
+
+	DeviceNavigatorDockWidget nav;
+	nav.setProject(&project);
+	nav.reload();
+
+	auto *tree = nav.findChild<QTreeWidget*>(QStringLiteral("m_tree_widget"));
+	QVERIFY(tree != nullptr);
+	QCOMPARE(tree->topLevelItemCount(), 1);
+
+	QTreeWidgetItem *projectItem = tree->topLevelItem(0);
+	QVERIFY(projectItem->isExpanded());
+	QCOMPARE(projectItem->childCount(), 1);
+
+	QTreeWidgetItem *structItem = projectItem->child(0);
+	QCOMPARE(structItem->text(0), QStringLiteral("=010 (Einspeisung)"));
+	QCOMPARE(structItem->childCount(), 1);
+
+	QTreeWidgetItem *deviceItem = structItem->child(0);
+	QCOMPARE(deviceItem->text(0), QStringLiteral("-FC1"));
+
+	// Initially structure and device are not expanded
+	QVERIFY(!structItem->isExpanded());
+	QVERIFY(!deviceItem->isExpanded());
+
+	// Expand structure and device, select device item
+	structItem->setExpanded(true);
+	deviceItem->setExpanded(true);
+	tree->setCurrentItem(deviceItem);
+
+	QVERIFY(structItem->isExpanded());
+	QVERIFY(deviceItem->isExpanded());
+	QCOMPARE(tree->currentItem(), deviceItem);
+
+	// Trigger a reload (simulating an edit or update in the schematic)
+	nav.reload();
+
+	// Verify project root, structure item, and device item are STILL expanded!
+	QCOMPARE(tree->topLevelItemCount(), 1);
+	projectItem = tree->topLevelItem(0);
+	QVERIFY(projectItem->isExpanded());
+	QCOMPARE(projectItem->childCount(), 1);
+
+	structItem = projectItem->child(0);
+	QVERIFY(structItem->isExpanded()); // Structure must not collapse!
+	QCOMPARE(structItem->childCount(), 1);
+
+	deviceItem = structItem->child(0);
+	QVERIFY(deviceItem->isExpanded()); // Device must not collapse!
+
+	// Verify selection is preserved on the device item!
+	QVERIFY(tree->currentItem() != nullptr);
+	QCOMPARE(tree->currentItem()->text(0), QStringLiteral("-FC1"));
 }
 
 QTEST_MAIN(tst_devicenavigator)

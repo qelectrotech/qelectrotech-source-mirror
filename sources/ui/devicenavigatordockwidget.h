@@ -21,6 +21,7 @@
 #include <QDockWidget>
 #include <QPointer>
 #include <QList>
+#include <QSet>
 #include <QMetaObject>
 #include <QUuid>
 #include "devicenavigatorfilterdialog.h"
@@ -34,6 +35,25 @@ class QTimer;
 namespace Ui {
 	class DeviceNavigatorDockWidget;
 }
+
+struct DeviceNavigatorTreeState {
+	QSet<QString> expandedStructures;
+	QSet<QString> expandedDevices;
+	int selectedNodeType = -1;
+	QString selectedStructure;
+	QString selectedDeviceKey;
+	QString selectedElementUuid;
+	int vScroll = 0;
+	int hScroll = 0;
+	bool hasSelection = false;
+};
+
+struct DeviceNavigatorTableState {
+	QString selectedElementUuid;
+	int vScroll = 0;
+	int hScroll = 0;
+	bool hasSelection = false;
+};
 
 /**
  * @brief The DeviceNavigatorDockWidget class
@@ -119,9 +139,16 @@ class DeviceNavigatorDockWidget : public QDockWidget
 
 		void connectProject(QETProject *project);
 		void disconnectProject();
+		using TreeState = DeviceNavigatorTreeState;
+		using TableState = DeviceNavigatorTableState;
+
+		TreeState saveTreeState() const;
+		TableState saveTableState() const;
 		void buildData(QList<ElementInfo> &items);
-		void populateTree(const QList<ElementInfo> &items);
-		void populateTable(const QList<ElementInfo> &items);
+		void populateTree(const QList<ElementInfo> &items, const TreeState &state = TreeState());
+		void populateTable(const QList<ElementInfo> &items, const TableState &state = TableState());
+		void restoreTreeState(const TreeState &state);
+		void restoreTableState(const TableState &state);
 		void applyFilters();
 		void jumpToElement(Element *element);
 		void jumpToUuid(const QUuid &elementUuid, const QUuid &diagramUuid);

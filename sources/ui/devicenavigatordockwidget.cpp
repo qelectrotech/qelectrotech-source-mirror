@@ -33,6 +33,7 @@
 #include <QBrush>
 #include <QColor>
 #include <QRegularExpression>
+#include <QScrollBar>
 
 /**
  * @brief DeviceNavigatorDockWidget::DeviceNavigatorDockWidget
@@ -410,6 +411,158 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 }
 
 /**
+ * @brief DeviceNavigatorDockWidget::saveTreeState
+ * Collects current expansion states, selection, and scroll positions.
+ */
+DeviceNavigatorDockWidget::TreeState DeviceNavigatorDockWidget::saveTreeState() const
+{
+	TreeState state;
+	state.vScroll = ui->m_tree_widget->verticalScrollBar()->value();
+	state.hScroll = ui->m_tree_widget->horizontalScrollBar()->value();
+
+	QTreeWidgetItem *curItem = ui->m_tree_widget->currentItem();
+	if (curItem) {
+		state.hasSelection = true;
+		state.selectedNodeType = curItem->data(0, NodeTypeRole).toInt();
+		state.selectedStructure = curItem->data(0, StructureRole).toString();
+		QString bmk = curItem->data(0, BmkRole).toString();
+		state.selectedDeviceKey = state.selectedStructure + QStringLiteral("///") + bmk;
+		state.selectedElementUuid = curItem->data(0, ElementUuidRole).toString();
+	}
+
+	std::function<void(QTreeWidgetItem *)> collectExpanded = [&](QTreeWidgetItem *item) {
+		if (!item) return;
+		int type = item->data(0, NodeTypeRole).toInt();
+		if (type == StructureNode) {
+			if (item->isExpanded()) {
+				state.expandedStructures.insert(item->data(0, StructureRole).toString());
+			}
+		} else if (type == DeviceNode) {
+			if (item->isExpanded()) {
+				QString structName = item->data(0, StructureRole).toString();
+				QString bmk = item->data(0, BmkRole).toString();
+				state.expandedDevices.insert(structName + QStringLiteral("///") + bmk);
+			}
+		}
+
+		for (int i = 0; i < item->childCount(); ++i) {
+			collectExpanded(item->child(i));
+		}
+	};
+
+	for (int i = 0; i < ui->m_tree_widget->topLevelItemCount(); ++i) {
+		collectExpanded(ui->m_tree_widget->topLevelItem(i));
+	}
+
+	return state;
+}
+
+/**
+ * @brief DeviceNavigatorDockWidget::saveTableState
+ * Collects current selected element and scroll positions for table view.
+ */
+DeviceNavigatorDockWidget::TableState DeviceNavigatorDockWidget::saveTableState() const
+{
+	TableState state;
+	state.vScroll = ui->m_table_widget->verticalScrollBar()->value();
+	state.hScroll = ui->m_table_widget->horizontalScrollBar()->value();
+
+	QTableWidgetItem *curItem = ui->m_table_widget->currentItem();
+	if (curItem) {
+		int row = curItem->row();
+		QTableWidgetItem *bmkItem = ui->m_table_widget->item(row, 0);
+		if (bmkItem) {
+			state.hasSelection = true;
+			state.selectedElementUuid = bmkItem->data(ElementUuidRole).toString();
+		}
+	}
+
+	return state;
+}
+
+/**
+ * @brief DeviceNavigatorDockWidget::restoreTreeState
+ * Restores selection, ensures ancestor visibility, and restores scroll offset.
+ */
+void DeviceNavigatorDockWidget::restoreTreeState(const TreeState &state)
+{
+	QTreeWidgetItem *itemToSelect = nullptr;
+
+	if (state.hasSelection) {
+		std::function<bool(QTreeWidgetItem *)> findItem = [&](QTreeWidgetItem *item) -> bool {
+			if (!item) return false;
+			int type = item->data(0, NodeTypeRole).toInt();
+
+			if (state.selectedNodeType == FunctionNode && type == FunctionNode) {
+				if (!state.selectedElementUuid.isEmpty() &&
+					item->data(0, ElementUuidRole).toString() == state.selectedElementUuid) {
+					itemToSelect = item;
+					return true;
+				}
+			} else if (state.selectedNodeType == DeviceNode && type == DeviceNode) {
+				QString structName = item->data(0, StructureRole).toString();
+				QString bmk = item->data(0, BmkRole).toString();
+				if ((structName + QStringLiteral("///") + bmk) == state.selectedDeviceKey) {
+					itemToSelect = item;
+					return true;
+				}
+			} else if (state.selectedNodeType == StructureNode && type == StructureNode) {
+				if (item->data(0, StructureRole).toString() == state.selectedStructure) {
+					itemToSelect = item;
+					return true;
+				}
+			} else if (state.selectedNodeType == ProjectNode && type == ProjectNode) {
+				itemToSelect = item;
+				return true;
+			}
+
+			for (int i = 0; i < item->childCount(); ++i) {
+				if (findItem(item->child(i))) return true;
+			}
+			return false;
+		};
+
+		for (int i = 0; i < ui->m_tree_widget->topLevelItemCount(); ++i) {
+			if (findItem(ui->m_tree_widget->topLevelItem(i))) break;
+		}
+	}
+
+	if (itemToSelect) {
+		// Ensure ancestor path is expanded so the item is visible
+		QTreeWidgetItem *p = itemToSelect->parent();
+		while (p) {
+			p->setExpanded(true);
+			p = p->parent();
+		}
+		ui->m_tree_widget->setCurrentItem(itemToSelect);
+		ui->m_tree_widget->scrollToItem(itemToSelect);
+	} else {
+		ui->m_tree_widget->verticalScrollBar()->setValue(state.vScroll);
+		ui->m_tree_widget->horizontalScrollBar()->setValue(state.hScroll);
+	}
+}
+
+/**
+ * @brief DeviceNavigatorDockWidget::restoreTableState
+ */
+void DeviceNavigatorDockWidget::restoreTableState(const TableState &state)
+{
+	if (state.hasSelection && !state.selectedElementUuid.isEmpty()) {
+		for (int r = 0; r < ui->m_table_widget->rowCount(); ++r) {
+			QTableWidgetItem *bmkItem = ui->m_table_widget->item(r, 0);
+			if (bmkItem && bmkItem->data(ElementUuidRole).toString() == state.selectedElementUuid) {
+				ui->m_table_widget->setCurrentCell(r, 0);
+				ui->m_table_widget->scrollToItem(bmkItem);
+				return;
+			}
+		}
+	}
+
+	ui->m_table_widget->verticalScrollBar()->setValue(state.vScroll);
+	ui->m_table_widget->horizontalScrollBar()->setValue(state.hScroll);
+}
+
+/**
  * @brief DeviceNavigatorDockWidget::reload
  */
 void DeviceNavigatorDockWidget::reload()
@@ -419,17 +572,34 @@ void DeviceNavigatorDockWidget::reload()
 	}
 	m_last_highlighted_element = nullptr;
 
+	TreeState treeState = saveTreeState();
+	TableState tableState = saveTableState();
+
+	ui->m_tree_widget->setUpdatesEnabled(false);
+	ui->m_table_widget->setUpdatesEnabled(false);
+	ui->m_tree_widget->blockSignals(true);
+	ui->m_table_widget->blockSignals(true);
+
 	buildData(m_cached_items);
-	populateTree(m_cached_items);
-	populateTable(m_cached_items);
+	populateTree(m_cached_items, treeState);
+	populateTable(m_cached_items, tableState);
 	applyFilters();
+
+	ui->m_tree_widget->blockSignals(false);
+	ui->m_table_widget->blockSignals(false);
+
+	restoreTreeState(treeState);
+	restoreTableState(tableState);
+
+	ui->m_tree_widget->setUpdatesEnabled(true);
+	ui->m_table_widget->setUpdatesEnabled(true);
 }
 
 /**
  * @brief DeviceNavigatorDockWidget::populateTree
  * @param items
  */
-void DeviceNavigatorDockWidget::populateTree(const QList<ElementInfo> &items)
+void DeviceNavigatorDockWidget::populateTree(const QList<ElementInfo> &items, const TreeState &state)
 {
 	ui->m_tree_widget->clear();
 	if (!m_project) return;
@@ -477,6 +647,9 @@ void DeviceNavigatorDockWidget::populateTree(const QList<ElementInfo> &items)
 		structItem->setIcon(0, QET::Icons::Folder);
 		structItem->setData(0, NodeTypeRole, StructureNode);
 		structItem->setData(0, StructureRole, structName);
+		if (state.expandedStructures.contains(structName)) {
+			structItem->setExpanded(true);
+		}
 
 		const QMap<QString, QList<ElementInfo>> &devices = structureMap[structName];
 		QStringList bmkKeys = devices.keys();
@@ -527,6 +700,11 @@ void DeviceNavigatorDockWidget::populateTree(const QList<ElementInfo> &items)
 				}
 			}
 
+			QString devKey = structName + QStringLiteral("///") + bmk;
+			if (state.expandedDevices.contains(devKey)) {
+				deviceItem->setExpanded(true);
+			}
+
 			// Add leaf function items
 			for (const ElementInfo &info : deviceElements) {
 				auto *funcItem = new QTreeWidgetItem(deviceItem);
@@ -575,8 +753,9 @@ void DeviceNavigatorDockWidget::populateTree(const QList<ElementInfo> &items)
  * @brief DeviceNavigatorDockWidget::populateTable
  * @param items
  */
-void DeviceNavigatorDockWidget::populateTable(const QList<ElementInfo> &items)
+void DeviceNavigatorDockWidget::populateTable(const QList<ElementInfo> &items, const TableState &state)
 {
+	Q_UNUSED(state);
 	ui->m_table_widget->setSortingEnabled(false);
 	ui->m_table_widget->setRowCount(items.size());
 
