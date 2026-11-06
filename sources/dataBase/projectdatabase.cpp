@@ -1970,21 +1970,20 @@ projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
 }
 
 /**
-	@brief projectDataBase::potentialTypeMismatches
+	@brief projectDataBase::refreshPotentialMembers
 	Rebuild the TEMP table potential_member (wire_uuid, potential_id,
-	is_unknown) from potentialGroups() -- never saved, so a file does not
-	carry data that could disagree with the drawing -- and read from it the
-	potentials that reach more than one potential type.
-	The type of a wire is its stored potential_type, the wire override of
-	POTENTIAL-TYPES-PLAN.md; a source-derived type will be read here too.
-	A potential whose extent is unknown (a terminal block that isolates its
-	terminals) is left out: that is not a mismatch. Run on request only,
-	never on a load, an edit or a paint.
-	@return one entry per mismatching potential, in potential order
+	is_unknown) from potentialGroups(), and make the TEMP view
+	wire_potential_view over it: one row per wire with its potential, its
+	effective potential type and where that type comes from ('wire' for the
+	wire's own stored potential_type; a source-derived type will be 'source').
+	Both are TEMP on purpose: a .qetdb that holds a view outside the fixed
+	list is refused as damaged by every QET that does not know it
+	(QetDbFile), so nothing here is ever saved, and the file carries no
+	data that could disagree with the drawing. Run on request only, never on
+	a load, an edit or a paint.
 */
-QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatches()
+void projectDataBase::refreshPotentialMembers()
 {
-	QList<PotentialMismatch> mismatches;
 		//newQuery() writes the pending wire properties first
 	flushConductorProperties();
 	const PotentialGroups groups = potentialGroups();
@@ -1994,6 +1993,15 @@ QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatch
 							  "wire_uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
 							  "potential_id INTEGER NOT NULL, "
 							  "is_unknown INTEGER NOT NULL)"));
+	query.exec(QStringLiteral(
+		"CREATE TEMP VIEW IF NOT EXISTS wire_potential_view AS SELECT "
+		"c.uuid AS wire_uuid, m.potential_id AS potential_id, "
+		"COALESCE(m.is_unknown, 0) AS is_unknown, "
+		"NULLIF(p.value, '') AS potential_type, "
+		"CASE WHEN NULLIF(p.value, '') IS NULL THEN NULL ELSE 'wire' END AS source "
+		"FROM main.conductor c "
+		"LEFT JOIN temp.potential_member m ON m.wire_uuid = c.uuid "
+		"LEFT JOIN main.conductor_properties p ON p.conductor_uuid = c.uuid AND p.name = 'potential_type'"));
 	const bool own_transaction = m_data_base.transaction();
 	query.exec(QStringLiteral("DELETE FROM temp.potential_member"));
 	query.prepare(QStringLiteral("INSERT INTO temp.potential_member (wire_uuid, potential_id, is_unknown) "
@@ -2007,17 +2015,29 @@ QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatch
 	if (own_transaction) {
 		m_data_base.commit();
 	}
+}
+
+/**
+	@brief projectDataBase::potentialTypeMismatches
+	The potentials that reach more than one potential type, read from
+	wire_potential_view after refreshPotentialMembers(). A potential whose
+	extent is unknown (a terminal block that isolates its terminals) is left
+	out: that is not a mismatch.
+	@return one entry per mismatching potential, in potential order
+*/
+QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatches()
+{
+	QList<PotentialMismatch> mismatches;
+	refreshPotentialMembers();
 
 	QSqlQuery read(m_data_base);
 	read.exec(QStringLiteral(
-		"SELECT m.potential_id, p.value, m.wire_uuid FROM temp.potential_member m "
-		"JOIN conductor_properties p ON p.conductor_uuid = m.wire_uuid AND p.name = 'potential_type' "
-		"WHERE m.is_unknown = 0 AND p.value <> '' "
-		"AND m.potential_id IN (SELECT m2.potential_id FROM temp.potential_member m2 "
-		"JOIN conductor_properties p2 ON p2.conductor_uuid = m2.wire_uuid AND p2.name = 'potential_type' "
-		"WHERE m2.is_unknown = 0 AND p2.value <> '' "
-		"GROUP BY m2.potential_id HAVING COUNT(DISTINCT p2.value) > 1) "
-		"ORDER BY m.potential_id, p.value, m.rowid"));
+		"SELECT v.potential_id, v.potential_type, v.wire_uuid FROM temp.wire_potential_view v "
+		"WHERE v.is_unknown = 0 AND v.potential_type IS NOT NULL "
+		"AND v.potential_id IN (SELECT potential_id FROM temp.wire_potential_view "
+		"WHERE is_unknown = 0 AND potential_type IS NOT NULL "
+		"GROUP BY potential_id HAVING COUNT(DISTINCT potential_type) > 1) "
+		"ORDER BY v.potential_id, v.potential_type, v.wire_uuid"));
 	while (read.next()) {
 		const int potential = read.value(0).toInt();
 		if (mismatches.isEmpty() || mismatches.last().potential != potential) {

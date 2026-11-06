@@ -484,6 +484,9 @@ class projectDataBase : public QObject
 			QList<QUuid> wires;     ///< the typed wires of the potential
 		};
 		QList<PotentialMismatch> potentialTypeMismatches();
+			/// (Re)build the TEMP table potential_member and the TEMP view
+			/// wire_potential_view; neither is ever saved
+		void refreshPotentialMembers();
 		static QVariant sequenceValue(const autonum::sequentialNumbers &sequence);
 		static autonum::sequentialNumbers sequenceFromValue(const QVariant &value);
 

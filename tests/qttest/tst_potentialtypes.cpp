@@ -330,6 +330,43 @@ class tst_potentialtypes : public QObject
 			QCOMPARE(reopened.dataBase()->potentialTypeMismatches().size(), 1);
 		}
 
+		/// wire_potential_view: every wire, its potential and its effective
+		/// type with where it comes from; TEMP, so never in the saved file
+		void wirePotentialViewListsEveryWire()
+		{
+			const QString path = m_dir.filePath(QStringLiteral("view.qet"));
+			QVERIFY(QFile::copy(QFINDTESTDATA("fixtures/every_feature.qet"), path));
+			QETProject project(path);
+			projectDataBase *db = project.dataBase();
+			Conductor *c = wire(project);
+			QVERIFY(c);
+			ConductorProperties p = c->properties();
+			p.m_potential_type = QStringLiteral("PE");
+			c->setProperties(p);
+			db->refreshPotentialMembers();
+
+			const auto count = [db](const QString &sql) {
+				QSqlQuery q = db->newQuery(sql);
+				return q.next() ? q.value(0).toInt() : -1;
+			};
+			QCOMPARE(count(QStringLiteral("SELECT COUNT(*) FROM wire_potential_view")),
+					 count(QStringLiteral("SELECT COUNT(*) FROM conductor")));
+			QCOMPARE(count(QStringLiteral("SELECT COUNT(*) FROM wire_potential_view WHERE potential_id IS NULL")), 0);
+			QCOMPARE(count(QStringLiteral("SELECT COUNT(*) FROM wire_potential_view WHERE potential_type IS NOT NULL")), 1);
+			QSqlQuery q = db->newQuery(QStringLiteral("SELECT potential_type, source FROM wire_potential_view WHERE wire_uuid = '")
+									   + c->uuid().toString() + QStringLiteral("'"));
+			QVERIFY(q.next());
+			QCOMPARE(q.value(0).toString(), QStringLiteral("PE"));
+			QCOMPARE(q.value(1).toString(), QStringLiteral("wire"));
+
+			QVERIFY(project.write().isOk());
+			QETProject reopened(path);
+			QSqlQuery stored = reopened.dataBase()->newQuery(QStringLiteral(
+				"SELECT COUNT(*) FROM sqlite_master WHERE name IN ('wire_potential_view', 'potential_member')"));
+			QVERIFY(stored.next());
+			QCOMPARE(stored.value(0).toInt(), 0);
+		}
+
 		void drawnFromTheTypeOnlyWhenOn()
 		{
 			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
