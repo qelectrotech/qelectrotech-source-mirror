@@ -24,15 +24,15 @@ git submodule update --init --recursive
 | Component | Status | Notes |
 |---|---|---|
 | CMake ≥ 3.5 | required | CMake 4.3+ is also fine, see note below |
-| C++17 compiler | required | GCC or Clang on Unix-like platforms; MSVC or MinGW-w64 g++ on Windows — see [Choosing a compiler](#3-choosing-a-compiler-unix) / [Building on Windows](#6-building-on-windows-msvc--mingw) |
+| C++17 compiler | required | GCC or Clang on Unix-like platforms; MSVC or MinGW-w64 g++ on Windows — see [Choosing a compiler](#31-choosing-a-compiler-unix) / [Building on Windows](#6-building-on-windows-msvc--mingw) |
 | Qt6 base + widgets | required | |
 | Qt6 **GuiPrivate** headers | required | needed for clickable PDF hyperlinks; **hard build failure** at CMake generate time if missing, see below |
 | SQLite3 | required | used by the nomenclature/summary database; needs the session extension (`SQLITE_ENABLE_SESSION`, `SQLITE_ENABLE_PREUPDATE_HOOK`) for the history of a `.qetdb`'s saves |
 | Qt Linguist tools (`lrelease`) | required | compiles the tracked `.ts` files into `.qm` as part of every normal build |
-| pugixml | handled automatically | fetched and built via CMake FetchContent if not already present on the system — see [pugixml](#8-pugixml) below |
+| pugixml | handled automatically | fetched and built via CMake FetchContent if not already present on the system — see [pugixml](#5-pugixml) below |
 | Qt Test module | required if building tests | `PACKAGE_TESTS` is `ON` by default; QtTest ships as part of the base Qt6 dev packages listed below on every platform, no extra package needed |
 | KDE Frameworks (KF6) | optional | see [Building without KDE Frameworks](#9-building-without-kde-frameworks) |
-| QtPdf module | optional | see [PDF page import](#7-pdf-page-import-qtpdf) |
+| QtPdf module | optional | see [PDF page import](#8-pdf-page-import-qtpdf) |
 
 A note on CMake versions: the project declares a minimum of 3.5 but is
 routinely built with much newer releases; if your CMake is older than 4.3 it
@@ -139,7 +139,7 @@ sudo apt install \
 
 `qt6-base-private-dev` is **not** pulled in automatically by `qt6-base-dev`
 but is mandatory for the build (see
-[Qt6 private headers](#6-qt6-private-headers-mandatory) below).
+[Qt6 private headers](#7-qt6-private-headers-mandatory) below).
 
 For Clang instead of GCC:
 
@@ -251,9 +251,11 @@ headers** — there's no separate "private headers" package to remember on
 Windows (see [Qt6 private headers](#7-qt6-private-headers-mandatory) below
 for why this matters).
 
-`QtPdf` is available as an optional component in the Qt Online Installer
-(look for "Qt PDF" under the Qt 6.4+ node); if you skip it, PDF page import
-is silently disabled exactly as on the other platforms. KDE Frameworks are
+`QtPdf` is an optional component in the Qt Online Installer: from Qt 6.8 on,
+under **Extensions** → **Qt PDF**, for the same Qt version and compiler as
+your Qt; for Qt 6.4 to 6.7, under the Qt version's **Additional Libraries**.
+If you skip it, PDF page import is silently disabled exactly as on the other
+platforms. KDE Frameworks are
 prebuilt for Windows only in MSYS2's UCRT64 and CLANG64 environments (the
 UCRT64 route below, which is also what the official Windows build uses).
 With MSVC or any other MinGW, use `-DBUILD_WITH_KF=OFF` (see the
@@ -264,7 +266,8 @@ downloads and compiles KDE Frameworks itself, which is slow.
 
 1. Install Visual Studio with the "Desktop development with C++" workload,
    and install Qt6 for MSVC (e.g. the `msvc2019_64` or `msvc2022_64` kit)
-   via the [Qt Online Installer](https://www.qt.io/download-qt-installer).
+   via the [Qt Online Installer](https://www.qt.io/download-qt-installer),
+   with Qt PDF for PDF page import (see above).
 2. Get SQLite3 — the simplest route is [vcpkg](https://vcpkg.io):
    ```bat
    vcpkg install sqlite3[session]:x64-windows
