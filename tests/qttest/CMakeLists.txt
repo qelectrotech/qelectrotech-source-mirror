@@ -473,6 +473,9 @@ qet_add_app_test(tst_shapequickclick tst_shapequickclick.cpp)
 # While a tool runs, a double-click it does not use reaches it as a click
 # and never opens the properties of the item under the cursor.
 qet_add_app_test(tst_tooldoubleclick tst_tooldoubleclick.cpp)
+# The symbol editor's text and dynamic text field editors have a colour
+# button, with KDE Frameworks and without them.
+qet_add_app_test(tst_textcolourbutton tst_textcolourbutton.cpp)
 # A conductor's colour and section at a slanted stroke across it.
 qet_add_app_test(tst_conductordefinitionmark tst_conductordefinitionmark.cpp)
 target_compile_definitions(tst_conductordefinitionmark PRIVATE
