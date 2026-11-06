@@ -32,6 +32,7 @@
 #include <QSaveFile>
 #include <QSettings>
 #include <QTextStream>
+#include <QUrl>
 #include <QRegularExpression>
 #include <QActionGroup>
 #include <QStringBuilder>
@@ -760,6 +761,28 @@ bool QET::compareCanonicalFilePaths(const QString &first, const QString &second)
 #endif
 
 	return(first_canonical_path == second_canonical_path);
+}
+
+/**
+	@return the local path of the project file that a crash-recovery file
+	stands for, from its KAutoSaveFile::managedFile() @p managed_file.
+	QElectroTech's own KAutoSaveFile, built without KDE Frameworks, gives a
+	file URL, which keeps the drive letter and the server of a network
+	path. KDE's gives a URL without a scheme, whose path has a slash before
+	a Windows drive letter: "/C:/folder/project.qet".
+*/
+QString QET::autosaveManagedFilePath(const QUrl &managed_file)
+{
+	if (managed_file.isLocalFile())
+		return managed_file.toLocalFile();
+
+	QString path = managed_file.path();
+#ifdef Q_OS_WIN
+	if (path.size() > 2 && path.at(0) == QLatin1Char('/')
+		&& path.at(2) == QLatin1Char(':'))
+		path.remove(0, 1);
+#endif
+	return path;
 }
 
 /**
