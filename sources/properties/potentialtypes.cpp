@@ -51,6 +51,34 @@ QList<PotentialType> PotentialTypes::defaultTypes()
 	@param found : if not null, the type is copied there when found
 	@return true if the project has a type of that name
 */
+QString PotentialTypes::modeName(Mode mode)
+{
+	switch (mode) {
+		case Mode::PerWire:  return QStringLiteral("wire");
+		case Mode::AtSource: return QStringLiteral("source");
+		case Mode::Off:      break;
+	}
+	return QStringLiteral("off");
+}
+
+/**
+	@return the mode called @p name; Off for a name this QET does not know,
+	so a file from a newer QET opens with the types not applied, never with
+	a guess. @p known tells whether the name was one.
+*/
+PotentialTypes::Mode PotentialTypes::modeFromName(const QString &name, bool *known)
+{
+	if (known)
+		*known = true;
+	if (name == QLatin1String("wire"))
+		return Mode::PerWire;
+	if (name == QLatin1String("source"))
+		return Mode::AtSource;
+	if (known)
+		*known = (name == QLatin1String("off")) || name.isEmpty();
+	return Mode::Off;
+}
+
 bool PotentialTypes::find(const QString &name, PotentialType *found) const
 {
 	if (name.isEmpty())
@@ -71,18 +99,18 @@ bool PotentialTypes::find(const QString &name, PotentialType *found) const
 */
 bool PotentialTypes::isDefault() const
 {
-	return !m_enabled && m_types == defaultTypes();
+	return m_mode == Mode::Off && m_types == defaultTypes();
 }
 
 bool PotentialTypes::operator==(const PotentialTypes &other) const
 {
-	return m_enabled == other.m_enabled && m_types == other.m_types;
+	return m_mode == other.m_mode && m_types == other.m_types;
 }
 
 QDomElement PotentialTypes::toXml(QDomDocument &document) const
 {
 	QDomElement root = document.createElement(QStringLiteral("potentialtypes"));
-	root.setAttribute(QStringLiteral("enabled"), m_enabled ? 1 : 0);
+	root.setAttribute(QStringLiteral("mode"), modeName(m_mode));
 	for (const PotentialType &type : m_types) {
 		QDomElement elmt = document.createElement(QStringLiteral("potentialtype"));
 		elmt.setAttribute(QStringLiteral("name"), type.name);
@@ -106,7 +134,7 @@ PotentialTypes PotentialTypes::fromXml(const QDomElement &element)
 	if (element.isNull())
 		return result;
 
-	result.m_enabled = element.attribute(QStringLiteral("enabled")).toInt() != 0;
+	result.m_mode = modeFromName(element.attribute(QStringLiteral("mode")));
 	result.m_types.clear();
 	for (QDomElement elmt = element.firstChildElement(QStringLiteral("potentialtype"));
 		 !elmt.isNull();

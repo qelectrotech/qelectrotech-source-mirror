@@ -23,6 +23,7 @@
 #include "qetresult.h"
 #include "qetproject.h"
 #include "ui/conductorpropertieswidget.h"
+#include "ui/potentialtypeswidget.h"
 
 #include "dataBase/projectdatabase.h"
 #include "dataBase/qetdbfile.h"
@@ -470,6 +471,77 @@ class tst_potentialtypes : public QObject
 			fprintf(stderr, "QETDBSAME compared %d projects, %d unknown wires, %d mismatching potentials\n",
 					compared, unknown_total, mismatch_total);
 			QVERIFY(compared >= 3);
+		}
+
+		/// The three modes: off by default, the name written is the one read,
+		/// an unknown name reads as off, and the database holds the mode
+		void modeIsKeptAndUnknownReadsAsOff()
+		{
+			QCOMPARE(PotentialTypes().mode(), PotentialTypes::Mode::Off);
+			for (auto mode : {PotentialTypes::Mode::Off, PotentialTypes::Mode::PerWire,
+							  PotentialTypes::Mode::AtSource}) {
+				PotentialTypes types;
+				types.setMode(mode);
+				QDomDocument doc;
+				doc.appendChild(types.toXml(doc));
+				const PotentialTypes back = PotentialTypes::fromXml(doc.documentElement());
+				QCOMPARE(back.mode(), mode);
+				QCOMPARE(back, types);
+			}
+			QDomDocument doc;
+			QDomElement root = doc.createElement(QStringLiteral("potentialtypes"));
+			root.setAttribute(QStringLiteral("mode"), QStringLiteral("from-a-newer-qet"));
+			doc.appendChild(root);
+			QCOMPARE(PotentialTypes::fromXml(doc.documentElement()).mode(), PotentialTypes::Mode::Off);
+			bool known = true;
+			PotentialTypes::modeFromName(QStringLiteral("from-a-newer-qet"), &known);
+			QVERIFY(!known);
+			PotentialTypes::modeFromName(QStringLiteral("off"), &known);
+			QVERIFY(known);
+
+			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+			PotentialTypes types;
+			types.setMode(PotentialTypes::Mode::AtSource);
+			project.setPotentialTypes(types);
+			QSqlQuery query = project.dataBase()->newQuery(
+						QStringLiteral("SELECT value FROM project_setting WHERE section = 'potentialtypes' AND name = 'mode'"));
+			QVERIFY(query.next());
+			QCOMPARE(query.value(0).toString(), QStringLiteral("source"));
+		}
+
+		/// Until #1500, the source mode has no derived types, so it draws
+		/// the wires' own types like the per-wire mode
+		void sourceModeDrawsLikePerWireForNow()
+		{
+			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+			Conductor *c = wire(project);
+			QVERIFY(c);
+			ConductorProperties p = c->properties();
+			p.color = Qt::black;
+			p.style = Qt::SolidLine;
+			p.cond_size = 1;
+			p.m_bicolor = false;
+			p.m_potential_type = QStringLiteral("N");
+			c->setProperties(p);
+			PotentialTypes types = blueTypes(true, Qt::SolidLine, 3);
+			types.setMode(PotentialTypes::Mode::AtSource);
+			project.setPotentialTypes(types);
+			QVERIFY(pixels(c, QColor(0, 0, 255)) > 0);
+			QCOMPARE(pixels(c, Qt::black), 0);
+		}
+
+		/// The settings page offers off and per wire, and keeps a mode it has
+		/// no entry for until the user picks another
+		void settingsPageKeepsAModeItDoesNotOffer()
+		{
+			PotentialTypesWidget widget;
+			for (auto mode : {PotentialTypes::Mode::Off, PotentialTypes::Mode::PerWire,
+							  PotentialTypes::Mode::AtSource}) {
+				PotentialTypes types;
+				types.setMode(mode);
+				widget.setPotentialTypes(types);
+				QCOMPARE(widget.potentialTypes().mode(), mode);
+			}
 		}
 
 		void drawnFromTheTypeOnlyWhenOn()

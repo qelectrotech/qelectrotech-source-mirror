@@ -23,7 +23,7 @@
 
 #include <QWidget>
 
-class QCheckBox;
+class QComboBox;
 class QTableWidget;
 
 /**
@@ -46,7 +46,7 @@ class PotentialTypesWidget : public QWidget
 		void chooseColor(QWidget *button);
 		void setTypes(const QList<PotentialType> &types);
 
-		QCheckBox *m_enabled_cb = nullptr;
+		QComboBox *m_mode_cb = nullptr;
 		QTableWidget *m_table = nullptr;
 };
 
