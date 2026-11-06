@@ -46,6 +46,7 @@
 #include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "qetpalette.h"
 #include <QScopeGuard>
+#include <QtMath>
 #include "titleblock/integrationmovetemplateshandler.h"
 #include "PropertiesEditor/propertieseditordialog.h"
 #include "ui/diagrampropertiesdialog.h"
@@ -603,6 +604,39 @@ void DiagramView::zoom(const qreal zoom_factor)
 	m_diagram->adjustSceneRect();
 	adjustGridToZoom();
 	adjustSceneRect();
+}
+
+/**
+	@brief DiagramView::zoomBy
+	Zoom in (@p steps > 0) or out (< 0) by @p steps steps of zoomStep():
+	each one zooms by that many percent of the zoom shown, so a step feels
+	the same at 50 % and at 400 %. The result is rounded to whole fives
+	(whole percents below 20 %), the zoom shown stays a round number.
+	@param steps
+*/
+void DiagramView::zoomBy(int steps)
+{
+	if (!steps)
+		return;
+	const int step = zoomStep();
+	if (!step) {
+		for (int i = 0; i < qAbs(steps); ++i)
+			zoom(steps > 0 ? 1.15 : 0.85);
+		return;
+	}
+	const qreal percent = transform().m11() * 100;
+	qreal target = percent * qPow(1 + step / 100.0, steps);
+	const qreal grid = target < 20 ? 1 : 5;
+	target = qRound(target / grid) * grid;
+		//Always a move, however small the step: a little leeway, as 100 %
+		//may be 99.9999 % after a few scalings
+	if (steps > 0 && target <= percent + 1e-6)
+		target = (qFloor(percent / grid + 1e-6) + 1) * grid;
+	else if (steps < 0 && target >= percent - 1e-6)
+		target = (qCeil(percent / grid - 1e-6) - 1) * grid;
+	if (target <= 0)
+		return;
+	zoom(target / percent);
 }
 
 /**
@@ -1630,8 +1664,20 @@ void DiagramView::wheelEvent(QWheelEvent *event)
 			verticalScrollBar()->setValue(verticalScrollBar()->value() - angle.y());
 		}
 	}
-	else if (event->modifiers() == Qt::NoModifier) //Else we suppose the wheel event are made from a mouse.
+	else if (event->modifiers() == Qt::NoModifier
+			 || (zoomStep() && event->modifiers() == Qt::AltModifier)) //Else we suppose the wheel event are made from a mouse.
 	{
+		if (zoomStep()) {
+				//One step per notch (120); a smooth wheel adds up to one.
+				//With Alt, four steps per notch: some platforms turn the
+				//wheel sideways then
+			const bool coarse = event->modifiers() == Qt::AltModifier;
+			m_wheel_rest += coarse && !angle.y() ? angle.x() : angle.y();
+			const int notches = m_wheel_rest / 120;
+			m_wheel_rest -= notches * 120;
+			zoomBy(coarse ? notches * 4 : notches);
+			return;
+		}
 		qreal value = angle.y();
 		zoom(1 + value/1000);
 	}
@@ -1781,43 +1827,33 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 			current_project->changeTabDown();
 			return;
 		case Qt::Key_Home:
-			if (dc.selectedTexts().isEmpty()) {
-				if (
-					qgraphicsitem_cast<IndependentTextItem *>(m_diagram->focusItem()) ||
-					qgraphicsitem_cast<ConductorTextItem *>(m_diagram->focusItem()) ||
-					qgraphicsitem_cast<DiagramTextItem *>(m_diagram->focusItem())
-					)
-					break;
-				current_project->changeFirstTab();
-				return;
-			}
-			else break;
 		case Qt::Key_End:
-			if (dc.selectedTexts().isEmpty()) {
-				if (
-					qgraphicsitem_cast<IndependentTextItem *>(m_diagram->focusItem()) ||
-					qgraphicsitem_cast<ConductorTextItem *>(m_diagram->focusItem()) ||
-					qgraphicsitem_cast<DiagramTextItem *>(m_diagram->focusItem())
-					)
-					break;
-				current_project->changeLastTab();
+				//A text being edited on the sheet -- free, wire or symbol
+				//text -- takes Home and End to move its cursor (#347).
+				//qgraphicsitem_cast matches one exact type only, so a
+				//symbol's text used to fall through to changing sheet.
+			if (dc.selectedTexts().isEmpty() && !textIsBeingEdited()) {
+				if (e->key() == Qt::Key_Home)
+					current_project->changeFirstTab();
+				else
+					current_project->changeLastTab();
 				return;
 			}
-			else break;
+			break;
 		case Qt::Key_ZoomOut:
-			zoom(0.85);
+			zoomBy(-1);
 			return;
 		case Qt::Key_ZoomIn:
-			zoom(1.15);
+			zoomBy(1);
 			return;
 		case Qt::Key_Minus: {
 			if (e->modifiers() & Qt::ControlModifier)
-				zoom(0.85);
+				zoomBy(-1);
 		}
 			break;
 		case Qt::Key_Plus: {
 			if (e->modifiers() & Qt::ControlModifier)
-				zoom(1.15);
+				zoomBy(1);
 		}
 			break;
 		case Qt::Key_Up: {
@@ -2201,6 +2237,7 @@ namespace {
 	int s_crosshair = -1;
 	int s_pointer_aids = -1;
 	int s_terminal_help_lines = -1;
+	int s_zoom_step = -1;
 	int s_selection_rectangle = -1;
 }
 
@@ -2336,6 +2373,32 @@ void DiagramView::setTerminalHelpLinesShown(bool shown)
 	s_terminal_help_lines = shown;
 	QSettings settings;
 	settings.setValue(QStringLiteral("diagrameditor/terminal_help_lines"), shown);
+}
+
+/**
+	@brief DiagramView::zoomStep
+	@return how far zoomBy() goes at a time, in percent of the zoom shown:
+	with 10, 100 % goes to 110 %, 120 %, 130 % and 400 % to 440 %. 0, the
+	default: by a factor of 1.15 in and 0.85 out, as always before.
+*/
+int DiagramView::zoomStep()
+{
+	if (s_zoom_step < 0) {
+		QSettings settings;
+		s_zoom_step = qBound(0, settings.value(QStringLiteral("diagrameditor/zoom_step"), 0).toInt(), 100);
+	}
+	return s_zoom_step;
+}
+
+/**
+	@brief DiagramView::setZoomStep
+	@param percent : see zoomStep(); kept in the settings, for the next zoom
+*/
+void DiagramView::setZoomStep(int percent)
+{
+	s_zoom_step = qBound(0, percent, 100);
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/zoom_step"), s_zoom_step);
 }
 
 /**
@@ -2812,6 +2875,16 @@ bool DiagramView::selectedItemHasFocus()
 		m_diagram -> focusItem() &&
 		m_diagram -> focusItem() -> isSelected()
 	);
+}
+
+/**
+	@return true if the item with the focus is a text being edited in
+	place, whatever kind of text it is.
+*/
+bool DiagramView::textIsBeingEdited() const
+{
+	const auto *text = dynamic_cast<QGraphicsTextItem *>(m_diagram -> focusItem());
+	return(text && (text -> textInteractionFlags() & Qt::TextEditable));
 }
 
 /**

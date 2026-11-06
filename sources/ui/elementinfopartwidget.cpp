@@ -18,9 +18,14 @@
 #include "elementinfopartwidget.h"
 
 #include "../SearchAndReplace/searchandreplaceworker.h"
+#include "../qeticons.h"
 #include "../qetinformation.h"
 #include "ui_elementinfopartwidget.h"
 #include <QCompleter>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QPlainTextEdit>
+#include <QVBoxLayout>
 #include <QRegularExpressionValidator>
 #include <QStringListModel>
 #include <QToolButton>
@@ -56,8 +61,13 @@ ElementInfoPartWidget::ElementInfoPartWidget(
 	connect(ui->m_material_btn, &QToolButton::clicked,
 			this, &ElementInfoPartWidget::materialButtonClicked);
 
+	ui->m_multiline_btn->setIcon(QET::Icons::EditText);
+	connect(ui->m_multiline_btn, &QToolButton::clicked,
+			this, &ElementInfoPartWidget::editOnSeveralLines);
+
 	if (key_ == QETInformation::ELMT_WIDTH || key_ == QETInformation::ELMT_HEIGHT || key_ == QETInformation::ELMT_DEPTH)
 	{
+		ui->m_multiline_btn->setVisible(false);
 		auto *validator = new QETInformation::NumericInfoValidator(ui->line_edit);
 		ui->line_edit->setValidator(validator);
 		ui->line_edit->setPlaceholderText(tr("e.g. 80.5"));
@@ -68,6 +78,11 @@ ElementInfoPartWidget::ElementInfoPartWidget(
 		this, &ElementInfoPartWidget::textEdited);
 	connect(ui->line_edit, &QLineEdit::textChanged,
 		this, &ElementInfoPartWidget::textChanged);
+		//The line edit shows a line break as a space: the tooltip shows
+		//the text as it is drawn.
+	connect(ui->line_edit, &QLineEdit::textChanged, this, [this](const QString &txt) {
+		ui->line_edit->setToolTip(txt.contains(QLatin1Char('\n')) ? txt : QString());
+	});
 }
 
 /**
@@ -109,6 +124,38 @@ void ElementInfoPartWidget::setText(const QString &txt)
 	} else {
 		ui->line_edit->setText(txt);
 	}
+}
+
+/**
+	@brief ElementInfoPartWidget::editOnSeveralLines
+	Edit the text in a box that takes line breaks (bugtracker #348):
+	the line edit cannot show nor type them.
+*/
+void ElementInfoPartWidget::editOnSeveralLines()
+{
+	QDialog dialog(this);
+	dialog.setWindowTitle(ui->label_->text());
+
+	auto *edit = new QPlainTextEdit(&dialog);
+	edit->setPlainText(ui->line_edit->text());
+	auto *buttons = new QDialogButtonBox(
+		QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+	connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+	auto *layout = new QVBoxLayout(&dialog);
+	layout->addWidget(edit);
+	layout->addWidget(buttons);
+	edit->setFocus();
+
+	if (dialog.exec() != QDialog::Accepted)
+		return;
+
+	const QString txt = edit->toPlainText();
+	if (txt == ui->line_edit->text())
+		return;
+	ui->line_edit->setText(txt);
+	emit textEdited(txt);
 }
 
 /**

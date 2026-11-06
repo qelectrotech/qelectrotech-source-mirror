@@ -478,10 +478,16 @@ qet_add_app_test(tst_shapequickclick tst_shapequickclick.cpp)
 # While a tool runs, a double-click it does not use reaches it as a click
 # and never opens the properties of the item under the cursor.
 qet_add_app_test(tst_tooldoubleclick tst_tooldoubleclick.cpp)
+# The symbol editor's text and dynamic text field editors have a colour
+# button, with KDE Frameworks and without them.
+qet_add_app_test(tst_textcolourbutton tst_textcolourbutton.cpp)
 # A conductor's colour and section at a slanted stroke across it.
 qet_add_app_test(tst_conductordefinitionmark tst_conductordefinitionmark.cpp)
 target_compile_definitions(tst_conductordefinitionmark PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
+# A copy of a conductor definition keeps the point its right-aligned texts
+# stand on, as a copy of a folio report does.
+qet_add_app_test(tst_conductordefcopy tst_conductordefcopy.cpp)
 # The projects of the last session are opened again at start, and the
 # ones open when the editor closes are kept for the next start.
 qet_add_app_test(tst_reopenprojects tst_reopenprojects.cpp)
@@ -535,6 +541,7 @@ qet_add_app_test(tst_terminalcableauto tst_terminalcableauto.cpp)
 # drawing changes; the stored label, the numbering and the exports keep
 # the whole label.
 qet_add_app_test(tst_terminallabeldisplay tst_terminallabeldisplay.cpp)
+qet_add_app_test(tst_terminalconductortext tst_terminalconductortext.cpp)
 
 # The bridge drawn over terminals: what a bridge holds (colour, how many
 # terminals it may take, its sections), which terminals a line about to be
@@ -546,12 +553,17 @@ qet_add_app_test(tst_bridgetool tst_bridgetool.cpp)
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
 
+# The zoom step (a setting, off by default): zooming goes by a fixed number
+# of percent, also from between two steps and from a smooth mouse wheel.
+qet_add_app_test(tst_zoomstep tst_zoomstep.cpp)
+
 # A conductor between two terminals on the same point (symbols placed
 # against each other) connects them but is not drawn nor clicked.
 qet_add_app_test(tst_touchingconductor tst_touchingconductor.cpp)
 # A symbol that draws beyond its frame is drawn whole, at every zoom: its
 # bounding rect covers the drawing, not only the frame.
 qet_add_app_test(tst_symboloutsideframe tst_symboloutsideframe.cpp)
+qet_add_app_test(tst_updateelements tst_updateelements.cpp)
 qet_add_app_test(tst_selectionrectangle tst_selectionrectangle.cpp)
 qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
 
@@ -1873,6 +1885,21 @@ add_test(NAME tst_conductordashpattern COMMAND tst_conductordashpattern)
 target_include_directories(tst_conductordashpattern PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductordashpattern PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# The conductor type of a wire: written only when it is set, read back
+# the way it was written, and offered in the dynamic text fields
+add_executable(
+  tst_conductortypefield
+  tst_conductortypefield.cpp
+  ${QET_DIR}/sources/conductorproperties.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
+  ${QET_DIR}/sources/qetinformation.cpp
+  ${QET_DIR}/sources/qet.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_conductortypefield COMMAND tst_conductortypefield)
+target_include_directories(tst_conductortypefield PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_conductortypefield PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
 # ConductorProperties::fromSettings() -- the default conductor width is a
 # decimal and comes back as saved (1.4 used to be read as 0).
 add_executable(
@@ -2189,6 +2216,13 @@ qet_add_app_test(tst_propertiesdockscroll tst_propertiesdockscroll.cpp)
 # Dragging a symbol's text moves the symbol, Shift+drag the text, or the
 # other way round with "Drag symbol texts without holding Shift" (#1576).
 qet_add_app_test(tst_dragtextswithoutshift tst_dragtextswithoutshift.cpp)
+# Potential types (#1539): a project that asks for it draws a conductor in the
+# colour, line style and width of its potential type.
+qet_add_app_test(tst_potentialtypes tst_potentialtypes.cpp)
+
+# A core of a cable: section, colour and type are locked in the dialog and
+# show a small sign saying why, so an edit cannot write over the cable
+qet_add_app_test(tst_cablelockedfields tst_cablelockedfields.cpp)
 
 # Settings for every test. get_property(... TESTS) only sees the tests added
 # so far, so they wait for the end of this file: a test takes them wherever

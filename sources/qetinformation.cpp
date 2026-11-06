@@ -89,7 +89,8 @@ QStringList QETInformation::folioReportInfoKeys()
 						 COND_FUNCTION,
 						 COND_TENSION_PROTOCOL,
 						 COND_COLOR,
-						 COND_SECTION };
+						 COND_SECTION,
+						 COND_TYPE };
 
 	return list;
 }
@@ -101,6 +102,7 @@ QHash<QString, QString> QETInformation::folioReportInfoKeyToVar()
 	H_.insert(COND_TENSION_PROTOCOL, infoToVar(COND_TENSION_PROTOCOL));
 	H_.insert(COND_COLOR,            infoToVar(COND_COLOR));
 	H_.insert(COND_SECTION,          infoToVar(COND_SECTION));
+	H_.insert(COND_TYPE,             infoToVar(COND_TYPE));
 
 	return H_;
 }
@@ -120,7 +122,8 @@ QStringList QETInformation::conductorInfoKeys()
 						  COND_FUNCTION,
 						  COND_TENSION_PROTOCOL,
 						  COND_COLOR,
-						  COND_SECTION };
+						  COND_SECTION,
+						 COND_TYPE };
 	return  list;
 }
 
@@ -331,6 +334,7 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == COND_TENSION_PROTOCOL)            return QObject::tr("Voltage / Protocol");
 	else if (info == COND_COLOR)                       return QObject::tr("Wire color");
 	else if (info == COND_SECTION)                     return QObject::tr("Wire section");
+	else if (info == COND_TYPE)                        return QObject::tr("Conductor type");
 	else if (info == COND_TEXT)                        return QObject::tr("Text");
 	else if (info == COND_FORMULA)                     return QObject::tr("Text Formula");
 	else if (info == ELMT_AUX1)                        return QObject::tr("Auxiliary block 1");

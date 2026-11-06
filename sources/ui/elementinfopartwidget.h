@@ -66,6 +66,7 @@ class ElementInfoPartWidget : public QWidget
 		//ATTRIBUTES
 	private slots:
 		void on_m_erase_text_clicked();
+		void editOnSeveralLines();
 		
 	private:
 		Ui::ElementInfoPartWidget *ui;

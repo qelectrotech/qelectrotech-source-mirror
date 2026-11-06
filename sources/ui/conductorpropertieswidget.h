@@ -20,6 +20,7 @@
 
 #include "../conductormultiedit.h"
 #include "../conductorproperties.h"
+#include "../properties/potentialtypes.h"
 
 #include <QWidget>
 class QTextOrientationSpinBoxWidget;
@@ -48,6 +49,7 @@ class ConductorPropertiesWidget : public QWidget
 
 		void addAutonumWidget (QWidget *widget);
 		void setHiddenOneTextPerFolio   (const bool &hide);
+		void setPotentialTypes(const PotentialTypes &types);
 		void setDisabledShowText        (const bool &disable = true);
 		void setHiddenAvailableAutonum (const bool &hide);
 		void setMixedTextFields(const QList<ConductorMultiEdit::TextField> &mixed);
@@ -58,6 +60,7 @@ class ConductorPropertiesWidget : public QWidget
 	private:
 		void initWidget();
 		void updateDashPatternPreview();
+		void selectPotentialType(const QString &name);
 		void setConductorType(ConductorProperties::ConductorType type);
 
 	protected:

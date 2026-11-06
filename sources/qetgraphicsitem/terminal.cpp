@@ -256,7 +256,7 @@ void Terminal::paint(
 	// draw the terminal in red
 	if (!diagram() || diagram()->drawTerminals()) {
 		t.setColor(takesConductorColor() && !m_conductors_list.isEmpty()
-				   ? m_conductors_list.first()->properties().color
+				   ? m_conductors_list.first()->drawnColor()
 				   : QColor(Qt::red));
 		painter -> setPen(t);
 		painter -> drawLine(c, e);

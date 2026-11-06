@@ -2848,6 +2848,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeWireHopsXml(project_root);
 	writeSymbolTextsXml(project_root);
 	writeLanguagesXml(project_root);
+	writePotentialTypesXml(project_root);
 	writeTerminalLabelSplitXml(project_root);
 	writeWiringRulesXml(project_root);
 	writeChainedReportsXml(project_root);
@@ -3716,6 +3717,101 @@ QList<ElementsLocation> QETProject::unbuiltFolioElements() const
 	return locations;
 }
 
+namespace {
+/**
+	@brief sameDefinition
+	@return true if @p a and @p b describe the same element: same tags,
+	attributes and texts. The uuids of the terminals are left out: an
+	embedded element gets missing ones filled in, and keeps its own when it
+	is replaced (see TerminalUuids).
+*/
+bool sameDefinition(const QDomElement &a, const QDomElement &b)
+{
+	if (a.tagName() != b.tagName()) return false;
+
+	QDomNamedNodeMap a_attributes = a.attributes();
+	QDomNamedNodeMap b_attributes = b.attributes();
+	const bool terminal = a.tagName() == QLatin1String("terminal");
+	const auto counted = [terminal](const QDomNamedNodeMap &attributes) {
+		int count = attributes.count();
+		if (terminal && attributes.contains(QStringLiteral("uuid"))) --count;
+		return count;
+	};
+	if (counted(a_attributes) != counted(b_attributes)) return false;
+	for (int i = 0 ; i < a_attributes.count() ; ++i)
+	{
+		const QDomAttr attribute = a_attributes.item(i).toAttr();
+		if (terminal && attribute.name() == QLatin1String("uuid")) continue;
+		if (!b.hasAttribute(attribute.name())
+			|| b.attribute(attribute.name()) != attribute.value()) {
+			return false;
+		}
+	}
+
+	QDomNode a_child = a.firstChild();
+	QDomNode b_child = b.firstChild();
+	for ( ; !a_child.isNull() && !b_child.isNull() ;
+		  a_child = a_child.nextSibling(), b_child = b_child.nextSibling())
+	{
+		if (a_child.nodeType() != b_child.nodeType()) return false;
+		if (a_child.isElement()) {
+			if (!sameDefinition(a_child.toElement(), b_child.toElement())) return false;
+		}
+		else if (a_child.nodeValue() != b_child.nodeValue()) {
+			return false;
+		}
+	}
+	return a_child.isNull() && b_child.isNull();
+}
+}
+
+/**
+	@brief QETProject::outdatedElements
+	An element placed from a collection is embedded in the project under
+	"import/" and its path in that collection. Placing it again reuses the
+	embedded copy as long as both carry the same uuid (importElement()), so
+	an element edited in its collection afterwards never reaches the project.
+	@return the embedded elements that differ from the element at the same
+	path in the user, company or common collection (the first that has one)
+*/
+QList<QETProject::OutdatedElement> QETProject::outdatedElements() const
+{
+	QList<OutdatedElement> outdated;
+	const QString import_dir = QStringLiteral("import/");
+	for (const ElementsLocation &embedded : m_elements_collection->elementsLocation())
+	{
+		if (!embedded.isElement()) continue;
+		const QString path = embedded.collectionPath(false);
+		if (!path.startsWith(import_dir)) continue;
+
+		const QString relative = path.mid(import_dir.size());
+		for (const QString &protocol : {QStringLiteral("custom://"),
+										QStringLiteral("company://"),
+										QStringLiteral("common://")})
+		{
+			ElementsLocation source(protocol % relative);
+			if (!source.exist()) continue;
+			if (!sameDefinition(embedded.xml(), source.xml()))
+				outdated << OutdatedElement{embedded, source};
+			break;
+		}
+	}
+	return outdated;
+}
+
+/**
+	@brief QETProject::updateElement
+	Replace the embedded element of @p element by its source, keeping the
+	uuids of the terminals that did not move. Placed elements keep their
+	old drawing until they are reloaded (Element::reloadPicture()).
+*/
+void QETProject::updateElement(const OutdatedElement &element)
+{
+	ElementsLocation source = element.source;
+	ElementsLocation parent = element.embedded.parent();
+	m_elements_collection->copy(source, parent);
+}
+
 /**
 	@brief QETProject::unusedElements
 	@return the list of unused element (exactly her location)
@@ -3936,6 +4032,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readWireHopsXml(xml_project);
 	readSymbolTextsXml(xml_project);
 	readLanguagesXml(xml_project);
+	readPotentialTypesXml(xml_project);
 	readTerminalLabelSplitXml(xml_project);
 	readWiringRulesXml(xml_project);
 	readChainedReportsXml(xml_project);
@@ -5034,6 +5131,53 @@ void QETProject::writeLanguagesXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::readPotentialTypesXml
+	Read the <potentialtypes> element of the project, if any. A project
+	without it keeps drawing its conductors from their own style.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readPotentialTypesXml(QDomDocument &xml_project)
+{
+	m_potential_types = PotentialTypes::fromXml(xml_project.documentElement()
+			.firstChildElement(QStringLiteral("potentialtypes")));
+}
+
+/**
+	@brief QETProject::writePotentialTypesXml
+	Write the <potentialtypes> element, only when the project has turned
+	the feature on or changed the list, so any other project saves exactly
+	as before.
+	@param xml_element : the <project> element
+*/
+void QETProject::writePotentialTypesXml(QDomElement &xml_element)
+{
+	if (m_potential_types.isDefault()) {
+		return;
+	}
+	QDomDocument document = xml_element.ownerDocument();
+	xml_element.appendChild(m_potential_types.toXml(document));
+}
+
+/**
+	@brief QETProject::setPotentialTypes
+	Set the potential types and whether conductors are drawn from them,
+	and redraw the folios built.
+	@param potential_types
+*/
+void QETProject::setPotentialTypes(const PotentialTypes &potential_types)
+{
+	if (potential_types == m_potential_types) {
+		return;
+	}
+	m_potential_types = potential_types;
+	storeSettings();
+	setModified(true);
+	for (Diagram *diagram : folios()) {
+		diagram->update();
+	}
+}
+
+/**
 	@brief QETProject::writeSymbolTextsXml
 	Export whether the texts of turned symbols stay horizontal, as a
 	<symbol_texts> child of \a xml_element. Written only when on, so a
@@ -5236,6 +5380,7 @@ void QETProject::storeSettings()
 	writeWireHopsXml(root);
 	writeSymbolTextsXml(root);
 	writeLanguagesXml(root);
+	writePotentialTypesXml(root);
 	writeTerminalLabelSplitXml(root);
 	writeWiringRulesXml(root);
 	writeChainedReportsXml(root);
