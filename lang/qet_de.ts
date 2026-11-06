@@ -8136,15 +8136,6 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
-        <source>Enable device navigator</source>
-        <translation>Geräte-Navigator aktivieren</translation>
-    </message>
-    <message>
-        <source>Show the hierarchical device navigator panel for components, terminals, and functions by plant structure</source>
-        <translation>Hierarchischen Geräte-Navigator nach Anlagen- und Ortsstruktur anzeigen</translation>
-    </message>
-
-    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="295"/>
         <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
         <translation>Ein Vierfachpfeil über allem, was sich ziehen lässt; mit dem Fadenkreuz springt der Zeiger mit ihm von Rasterpunkt zu Rasterpunkt, und ein Anfasser im Umkreis von 12 Pixeln fängt ihn und den Klick. Aus: der Zeiger des Systems, Anfasser nur direkt unter der Maus.</translation>
@@ -16252,6 +16243,10 @@ Go on anyway?</source>
         <location filename="../sources/qetdiagrameditor.cpp" line="2221"/>
         <source>Display or hide the undo list</source>
         <translation>Zeigt oder versteckt die Änderungsliste</translation>
+    </message>
+    <message>
+        <source>Show or hide the device navigator</source>
+        <translation>Zeigt oder versteckt den Geräte-Navigator</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2225"/>

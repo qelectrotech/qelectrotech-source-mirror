@@ -151,7 +151,6 @@ class QETDiagramEditor : public QETMainWindow
 		void syncElementsPanel();
 
 	public slots:
-		void applyDeviceNavigatorSetting();
 		void save();
 		void saveAs();
 		bool newProject();

@@ -531,19 +531,13 @@ void QETDiagramEditor::setUpDeviceNavigatorDock()
 		QDockWidget::DockWidgetFloatable);
 	addDockWidget(Qt::LeftDockWidgetArea, m_device_navigator_dock);
 	tabifyDockWidget(qdw_pa, m_device_navigator_dock);
+	m_device_navigator_dock->hide();
 
-	applyDeviceNavigatorSetting();
-}
-
-void QETDiagramEditor::applyDeviceNavigatorSetting()
-{
-	if (!m_device_navigator_dock) return;
-	QSettings settings;
-	bool enabled = settings.value(QStringLiteral("diagrameditor/device_navigator"), false).toBool();
-	m_device_navigator_dock->setVisible(enabled);
-	if (enabled && currentProject()) {
-		m_device_navigator_dock->setProject(currentProject());
-	}
+	connect(m_device_navigator_dock, &QDockWidget::visibilityChanged, this, [this](bool visible) {
+		if (visible && currentProject() && m_device_navigator_dock) {
+			m_device_navigator_dock->setProject(currentProject());
+		}
+	});
 }
 
 void QETDiagramEditor::setUpActions()
@@ -2255,6 +2249,9 @@ void QETDiagramEditor::setUpMenu()
 	diagram_tool_bar      -> toggleViewAction() -> setStatusTip(tr("Display or hide the Diagram toolbar"));
 	qdw_pa           -> toggleViewAction() -> setStatusTip(tr("Show or hide the elements panel"));
 	qdw_undo         -> toggleViewAction() -> setStatusTip(tr("Display or hide the undo list"));
+	if (m_device_navigator_dock) {
+		m_device_navigator_dock->toggleViewAction()->setStatusTip(tr("Show or hide the device navigator"));
+	}
 
 
 	// menu Affichage
