@@ -40,6 +40,7 @@ class tst_duplicatelabels : public QObject
 	Q_OBJECT
 	QTemporaryDir m_definitions;
 	int			  m_position = 0;
+	bool		  m_by_designation = true;
 
 	Element* symbol(
 		Diagram*	   diagram,
@@ -180,6 +181,10 @@ class tst_duplicatelabels : public QObject
 		QVERIFY(m_definitions.isValid());
 		QETProject::setBackupEnabled(false);
 		QET::QetMessageBox::setNonInteractive(true);
+		// The dialog cases here are about QET's links; the designation rule
+		// has its own case, which turns it on itself.
+		m_by_designation = QetSettings::duplicateLabelsByDesignation();
+		QetSettings::setDuplicateLabelsByDesignation(false);
 		// What the app does 250 ms after the project tree is first shown.
 		// Until then the tree holds no project: the editor would select
 		// items of the projects these cases open outside of it, and
@@ -215,6 +220,7 @@ class tst_duplicatelabels : public QObject
 	// when the application ends would use it after it is gone.
 	void cleanupTestCase()
 	{
+		QetSettings::setDuplicateLabelsByDesignation(m_by_designation);
 		for (ProjectView* view : QetAppTest::editor()->openedProjects())
 			QVERIFY(closeInEditor(view->project()));
 		QVERIFY(QetAppTest::editor()->openedProjects().isEmpty());
@@ -651,6 +657,71 @@ class tst_duplicatelabels : public QObject
 		QVERIFY(alone->isSelected());
 		dialog.showOccurrence(joined->child(1));
 		QVERIFY(a->isSelected() != b->isSelected());
+	}
+
+	// One designation, one device: two unlinked symbols with one label in
+	// one place agree to be one -- a socket drawn on two sheets -- and clash
+	// only when they name different part numbers. Terminal blocks still go
+	// by their potentials.
+	void sameDesignationIsOneDevice()
+	{
+		using Rule = DuplicateLabels::ComponentRule;
+		QETProject project;
+		auto*	   first  = project.addNewDiagram();
+		auto*	   second = project.addNewDiagram();
+		auto*	   a	  = symbol(first, "simple", "XS13");
+		auto*	   b	  = symbol(second, "simple", "XS13");
+		QCOMPARE(DuplicateLabels::find(&project).size(), 1);
+		QVERIFY(DuplicateLabels::find(&project, Qt::CaseSensitive,
+									  Rule::SameDesignation).isEmpty());
+		// One part number on one of them: no disagreement
+		auto info = a->elementInformations();
+		info.addValue(QStringLiteral("manufacturer_reference"), QStringLiteral("A9"));
+		a->setElementInformations(info);
+		QVERIFY(DuplicateLabels::find(&project, Qt::CaseSensitive,
+									  Rule::SameDesignation).isEmpty());
+		// Another on the other: two devices under one name
+		info = b->elementInformations();
+		info.addValue(QStringLiteral("manufacturer_reference"), QStringLiteral(" B1 "));
+		b->setElementInformations(info);
+		auto groups = DuplicateLabels::find(&project, Qt::CaseSensitive,
+											Rule::SameDesignation);
+		QCOMPARE(groups.size(), 1);
+		QCOMPARE(groups.first().parts, QStringList({"A9", "B1"}));
+		QCOMPARE(groups.first().entity_count, 2);
+		QVERIFY(DuplicateLabels::find(&project).first().parts.isEmpty());
+		// Terminal blocks of one number on two potentials still clash
+		auto* t1 = symbol(first, "terminal", "X1:2");
+		auto* t2 = symbol(second, "terminal", "X1:2");
+		wire(symbol(first), t1, "1");
+		wire(symbol(second), t2, "2");
+		groups = DuplicateLabels::find(&project, Qt::CaseSensitive,
+									   Rule::SameDesignation);
+		QCOMPARE(groups.size(), 2);
+		// The dialog follows the setting and says why
+		const bool previous = QetSettings::duplicateLabelsByDesignation();
+		const auto restore	= qScopeGuard(
+			 [previous]()
+			 { QetSettings::setDuplicateLabelsByDesignation(previous); });
+		QetSettings::setDuplicateLabelsByDesignation(true);
+		DuplicateLabelsDialog dialog(&project);
+		auto* tree = dialog.findChild<QTreeWidget*>("duplicateOccurrences");
+		auto* option = dialog.findChild<QCheckBox*>("duplicateByDesignation");
+		QVERIFY(tree && option && option->isChecked());
+		QCOMPARE(tree->topLevelItemCount(), 2);
+		QStringList titles;
+		for (int i = 0; i < tree->topLevelItemCount(); ++i)
+			titles << tree->topLevelItem(i)->text(0);
+		const QString parts = QCoreApplication::translate(
+			"DuplicateLabelsDialog", "%1 — different part numbers: %2")
+			.arg(QCoreApplication::translate("DuplicateLabelsDialog",
+											 "Duplicate component: %1")
+					 .arg("XS13"),
+				 "A9, B1");
+		QVERIFY2(titles.contains(parts), qPrintable(titles.join(" | ")));
+		option->setChecked(false);
+		QCOMPARE(tree->topLevelItemCount(), 2);
+		QVERIFY(! QetSettings::duplicateLabelsByDesignation());
 	}
 
 	void dialogCaseOption()

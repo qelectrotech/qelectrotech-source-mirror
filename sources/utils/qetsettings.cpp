@@ -262,6 +262,27 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief duplicateLabelsByDesignation
+	* @return whether symbols with one label in one place are one device
+	* when looking for duplicates, clashing only on different part numbers
+	* (DuplicateLabels::ComponentRule::SameDesignation). Off by default,
+	* so existing users see the same results until they tick the box.
+	* @sa setDuplicateLabelsByDesignation
+	*/
+	bool duplicateLabelsByDesignation()
+	{
+		QSettings settings;
+		return settings.value("duplicate_labels/by_designation", false)
+			.toBool();
+	}
+
+	void setDuplicateLabelsByDesignation(bool by_designation)
+	{
+		QSettings settings;
+		settings.setValue("duplicate_labels/by_designation", by_designation);
+	}
+
+	/**
 	* @brief duplicateLabelsCaseSensitive
 	* @return whether K1 and k1 are different labels when looking for
 	* duplicates. Off by default: schemes rarely tell two devices apart by
