@@ -26,6 +26,7 @@ class CompositeTextEditDialog : public QDialog
 		~CompositeTextEditDialog() override;
 		
 		QString plainText() const;
+		void addTerminalConductorInfo(int connection_count);
 	
 	private slots:
 		void on_m_info_cb_activated(int index);

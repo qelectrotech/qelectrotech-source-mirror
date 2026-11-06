@@ -190,6 +190,7 @@ class Element : public QetGraphicsItem
 		QString labelForDisplay();
 		QString terminalNumberForDisplay();
 		QString conductorTextForDisplay();
+		QString conductorInfoForDisplay(const QString &info_name);
 		void addDisplayValues(DiagramContext &dc);
 		QString infoForDisplay(const QString &info_name);
 		bool hasTerminalNumberText() const;
