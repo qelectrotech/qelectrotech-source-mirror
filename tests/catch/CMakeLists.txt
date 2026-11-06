@@ -84,6 +84,19 @@ if(NOT BUILD_WITH_KF)
         PRIVATE
         ${QET_DIR}/sources/ui/nokde
         )
+    # Writes a recovery file and waits for the test to kill it, as a crash
+    # ends QElectroTech: on Windows too, which has no fork()
+    add_executable(kautosavefile_writer
+        kautosavefile_writer.cpp
+        ${QET_DIR}/sources/ui/nokde/kautosavefile.cpp
+        )
+    target_link_libraries(kautosavefile_writer PRIVATE Qt::Core)
+    add_dependencies(${PROJECT_NAME} kautosavefile_writer)
+    target_compile_definitions(
+        ${PROJECT_NAME}
+        PRIVATE
+        QET_AUTOSAVE_WRITER="$<TARGET_FILE:kautosavefile_writer>"
+        )
 endif()
 
 target_link_libraries(

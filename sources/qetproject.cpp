@@ -225,7 +225,7 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 		//Failed to open from the backup, try to open the crashed
 	if (m_state != ProjectState::Ok)
 	{
-		QFile file(backup->managedFile().path());
+		QFile file(QET::autosaveManagedFilePath(backup->managedFile()));
 		m_state = openFile(&file);
 		if(m_state != ProjectState::Ok)
 		{
@@ -235,7 +235,7 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 		}
 	}
 		//Set the real path, instead of the path of the backup.
-	setFilePath(backup->managedFile().path());
+	setFilePath(QET::autosaveManagedFilePath(backup->managedFile()));
 	delete  backup;
 
 		//Set the project to read only mode if the file it.

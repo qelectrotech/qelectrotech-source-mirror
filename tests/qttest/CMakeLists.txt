@@ -281,6 +281,13 @@ add_test(NAME tst_dimensionitem COMMAND tst_dimensionitem)
 target_include_directories(tst_dimensionitem PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_dimensionitem PRIVATE qelectrotech_objects Qt::Test)
 
+# The project file of a crash-recovery file, from the URL that QElectroTech's
+# own KAutoSaveFile gives and from the one KDE's gives.
+add_executable(tst_autosavemanagedfilepath tst_autosavemanagedfilepath.cpp)
+add_test(NAME tst_autosavemanagedfilepath COMMAND tst_autosavemanagedfilepath)
+target_include_directories(tst_autosavemanagedfilepath PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_autosavemanagedfilepath PRIVATE qelectrotech_objects Qt::Test)
+
 # positionorder.h is header-only: the position comparisons behind element
 # renumbering and terminal numbering, as strict weak orderings for std::sort.
 add_executable(tst_positionorder tst_positionorder.cpp)

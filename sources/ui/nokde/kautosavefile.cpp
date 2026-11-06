@@ -61,9 +61,11 @@ QUrl normalizeManagedFile(const QUrl &url)
 
 	if (url.isLocalFile() || url.scheme().isEmpty()) {
 		const auto path = url.isLocalFile() ? url.toLocalFile() : url.path();
-		QUrl normalized;
-		normalized.setPath(QDir::cleanPath(QFileInfo(path).absoluteFilePath()));
-		return normalized;
+			//A file URL, as KDE's KAutoSaveFile is given: a path alone
+			//loses a Windows drive letter once stored ("C:" reads as a
+			//URL scheme) and cannot hold the server of a network path
+		return QUrl::fromLocalFile(
+			QDir::cleanPath(QFileInfo(path).absoluteFilePath()));
 	}
 
 	return url;
@@ -71,22 +73,17 @@ QUrl normalizeManagedFile(const QUrl &url)
 
 QString storedManagedFile(const QUrl &url)
 {
-	if (url.isLocalFile() || url.scheme().isEmpty()) {
-		return url.path();
-	}
-
 	return url.toString(QUrl::FullyEncoded);
 }
 
 QUrl managedFileFromStorage(const QString &stored_path)
 {
-	if (!stored_path.startsWith(QLatin1Char('/'))) {
-		return QUrl(stored_path);
+		//Stored as a plain path before file URLs were
+	if (QDir::isAbsolutePath(stored_path)) {
+		return QUrl::fromLocalFile(stored_path);
 	}
 
-	QUrl url;
-	url.setPath(QDir::cleanPath(stored_path));
-	return url;
+	return QUrl(stored_path, QUrl::StrictMode);
 }
 
 bool writeManagedFileMetadata(const QString &autosave_file_name, const QUrl &managed_file)

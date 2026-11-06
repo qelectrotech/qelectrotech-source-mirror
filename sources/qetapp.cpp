@@ -3280,15 +3280,8 @@ void QETApp::checkBackupFiles()
 	{
 		for (QETProject *project : registeredProjects().values())
 		{
-			/* We must adjust with the flag
-			 * QUrl::StripTrailingSlash to compare a path formatted
-			 * like the path returned by KAutoSaveFile
-			 */
-			const QString path = QUrl::fromLocalFile(
-						project->filePath()).adjusted(
-						QUrl::RemoveScheme
-						| QUrl::StripTrailingSlash).path();
-			if (kasf->managedFile() == path) {
+			if (QET::autosaveManagedFilePath(kasf->managedFile())
+				== project->filePath()) {
 				stale_files.removeOne(kasf);
 			}
 		}
