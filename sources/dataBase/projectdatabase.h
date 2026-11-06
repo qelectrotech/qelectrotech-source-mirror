@@ -74,6 +74,7 @@ class projectDataBase : public QObject
 		virtual ~projectDataBase() override;
 
 		void updateDB();
+		void updateDBForce();
 			//updateDB() without dataBaseUpdated(): the tables brought up
 			//to date for a reader that shows nothing (a commit, a save)
 		void refresh();

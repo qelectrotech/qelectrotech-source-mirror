@@ -87,6 +87,12 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
 
 		foreach (Conductor *potential_conductor, conductor->relatedPotentialConductors())
 		{
+				//A core of a cable keeps its own properties: what the
+				//cable says about it is not overwritten by an edit made
+				//on the other side of a terminal
+			if (!potential_conductor->properties().m_cable_uuid.isNull()) {
+				continue;
+			}
 			old_value.setValue(potential_conductor->properties());
 			new QPropertyUndoCommand (potential_conductor, "properties", old_value, new_value, undo);
 		}

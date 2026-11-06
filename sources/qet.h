@@ -25,6 +25,7 @@
 
 class QActionGroup;
 class QDialog;
+class QUrl;
 /**
 	This file provides useful functions and enums that may be used from
 	anywhere else within the QElectroTech application.
@@ -200,6 +201,7 @@ namespace QET {
 	qreal round(qreal, qreal);
 	qreal correctAngle(const qreal &, const bool &positive = false);
 	bool compareCanonicalFilePaths(const QString &, const QString &);
+	QString autosaveManagedFilePath(const QUrl &managed_file);
 	bool writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString * error_message= nullptr);
 	bool writeToFile (QDomDocument &xml_doc, QFile *file, QString *error_message = nullptr);
 	bool writeXmlText(const QString &text, const QString &filepath, QString *error_message = nullptr);

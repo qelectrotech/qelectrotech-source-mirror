@@ -88,16 +88,63 @@ BorderTitleBlock::~BorderTitleBlock()
 */
 QRectF BorderTitleBlock::titleBlockRect() const
 {
-	if (m_edge == Qt::BottomEdge)
-		return QRectF(diagram_rect_.bottomLeft(),
-			      QSize(diagram_rect_.width(),
-				    m_titleblock_template_renderer -> height()
-				    ));
-	else
-		return QRectF(diagram_rect_.topRight(),
-			      QSize(m_titleblock_template_renderer -> height(),
-				    diagram_rect_.height()
-				    ));
+	if (m_edge == Qt::BottomEdge){
+		// we get the reference point lower left corner of the work area
+		qreal x = diagram_rect_.bottomLeft().x();
+		qreal y = diagram_rect_.bottomLeft().y();
+		qreal w = diagram_rect_.width();
+		qreal h = m_titleblock_template_renderer -> height();
+		Qt::Alignment align = titleBlockTemplateAlign();
+		// if the alignment is along the bottom edge, raise the reference point to the height of the stamp and reduce it by the width of the ruler
+		if(align.testFlag(Qt::AlignBottom)){
+			y -= h;
+			if (display_rows_){
+				x += rows_header_width_;
+				w -= rows_header_width_;
+			}
+		}
+		qreal wb = m_titleblock_template_renderer -> titleBlockTemplate() -> width(qRound(w));
+		qreal dw = w - wb;
+		// align with the sheet border
+		if (align.testFlag(Qt::AlignCenter) || align.testFlag(Qt::AlignHCenter)){
+			x += dw/2;
+			w = wb;
+		}else if (align.testFlag(Qt::AlignRight)){
+			x += dw;
+			w = wb;
+		}else if (align.testFlag(Qt::AlignLeft)){
+			w = wb;
+		}
+		return QRectF(QPointF(x,y), QSize(w, h));
+	}else{
+		// we get the reference point lower left corner of the work area
+		qreal x = diagram_rect_.topRight().x();
+		qreal y = diagram_rect_.topRight().y();
+		qreal w = m_titleblock_template_renderer -> height();
+		qreal h = diagram_rect_.height();
+		Qt::Alignment align = titleBlockTemplateAlign();
+		// If aligning to the bottom edge, shift the reference point to the left by the height of the stamp, and lower its value by the height of the ruler.
+		if(align.testFlag(Qt::AlignBottom)){
+			x -= w;
+			if (display_columns_){
+				y += columns_header_height_;
+				h -= columns_header_height_;
+			}
+		}
+		qreal hb = m_titleblock_template_renderer -> titleBlockTemplate() -> width(qRound(h));
+		qreal dh = h - hb;
+		// align with the sheet border
+		if (align.testFlag(Qt::AlignCenter) || align.testFlag(Qt::AlignHCenter)){
+			y += dh/2;
+			h = hb;
+		}else if (align.testFlag(Qt::AlignRight)){
+			h = hb;
+		}else if (align.testFlag(Qt::AlignLeft)){
+			y += dh;
+			h = hb;
+		}
+		return QRectF(QPointF(x,y), QSize(w, h));
+	}
 }
 
 /**
@@ -124,14 +171,12 @@ DiagramContext BorderTitleBlock::titleblockInformation() const
 QRectF BorderTitleBlock::titleBlockRectForQPainter() const
 {
 	//Rect at bottom have same position and dimension of displayed rect
+	QRectF titleblock = titleBlockRect();
 	if (m_edge == Qt::BottomEdge)
 		return titleBlockRect();
 	else
-		return QRectF (diagram_rect_.bottomRight(),
-			       QSize(diagram_rect_.height(),
-				     m_titleblock_template_renderer -> height()
-				     ));
-
+		return QRectF(titleblock.bottomLeft(),
+			       QSize(titleblock.height(), titleblock.width()));
 }
 
 /**
@@ -535,6 +580,15 @@ QString BorderTitleBlock::titleBlockTemplateName() const
 }
 
 /**
+	@brief BorderTitleBlock::titleBlockTemplateAlign
+	@return Alignment of the template used for rendering the title block.
+*/
+Qt::Alignment BorderTitleBlock::titleBlockTemplateAlign() const
+{
+	return(m_titleblock_template_renderer -> titleBlockTemplate() -> align());
+}
+
+/**
 	@brief BorderTitleBlock::titleBlockTemplateChanged
 	This slot may be used to inform this class that the given title block
 	template has changed.
@@ -628,7 +682,7 @@ void BorderTitleBlock::displayBorder(bool db) {
 ProjectOrigin::Mode BorderTitleBlock::origin() const
 {
 	if (m_owner_folio && m_owner_folio->project())
-		return m_owner_folio->project()->Origin();
+		return m_owner_folio->project()->origin();
 	return m_origin;
 }
 
@@ -640,6 +694,7 @@ ProjectOrigin::Mode BorderTitleBlock::origin() const
 void BorderTitleBlock::setOrigin(ProjectOrigin::Mode mode)
 {
 	m_origin = mode;
+	emit(displayChanged());
 }
 
 /**
@@ -934,8 +989,9 @@ void BorderTitleBlock::drawDxf(
 void BorderTitleBlock::setColumnsCount(int nb_c) {
 	if (nb_c == columnsCount()) return;
 	columns_count_ = qMax(MIN_COLUMN_COUNT , nb_c);
-	updateRectangles();
+	//Store first: the getters read the store, and updateRectangles() uses them
 	storeBorder();
+	updateRectangles();
 }
 
 /**
@@ -954,8 +1010,9 @@ void BorderTitleBlock::setColumnsCount(int nb_c) {
 void BorderTitleBlock::setColumnsWidth(const qreal &new_cw) {
 	if (new_cw == columnsWidth()) return;
 	columns_width_ = qMax(MIN_COLUMN_WIDTH , new_cw);
-	updateRectangles();
+	//Store first: the getters read the store, and updateRectangles() uses them
 	storeBorder();
+	updateRectangles();
 }
 
 /**
@@ -970,8 +1027,9 @@ void BorderTitleBlock::setColumnsWidth(const qreal &new_cw) {
 */
 void BorderTitleBlock::setColumnsHeaderHeight(const qreal &new_chh) {
 	columns_header_height_ = qBound(qreal(5.0), new_chh, qreal(50.0));
-	updateRectangles();
+	//Store first: the getters read the store, and updateRectangles() uses them
 	storeBorder();
+	updateRectangles();
 }
 
 /**
@@ -990,8 +1048,9 @@ void BorderTitleBlock::setColumnsHeaderHeight(const qreal &new_chh) {
 void BorderTitleBlock::setRowsCount(int nb_r) {
 	if (nb_r == rowsCount()) return;
 	rows_count_ = qMax(MIN_ROW_COUNT, nb_r);
-	updateRectangles();
+	//Store first: the getters read the store, and updateRectangles() uses them
 	storeBorder();
+	updateRectangles();
 }
 
 /**
@@ -1010,8 +1069,9 @@ void BorderTitleBlock::setRowsCount(int nb_r) {
 void BorderTitleBlock::setRowsHeight(const qreal &new_rh) {
 	if (new_rh == rowsHeight()) return;
 	rows_height_ = qMax(MIN_ROW_HEIGHT, new_rh);
-	updateRectangles();
+	//Store first: the getters read the store, and updateRectangles() uses them
 	storeBorder();
+	updateRectangles();
 }
 
 /**
@@ -1026,8 +1086,9 @@ void BorderTitleBlock::setRowsHeight(const qreal &new_rh) {
 */
 void BorderTitleBlock::setRowsHeaderWidth(const qreal &new_rhw) {
 	rows_header_width_ = qBound(qreal(5.0), new_rhw, qreal(50.0));
-	updateRectangles();
+	//Store first: the getters read the store, and updateRectangles() uses them
 	storeBorder();
+	updateRectangles();
 }
 
 /**

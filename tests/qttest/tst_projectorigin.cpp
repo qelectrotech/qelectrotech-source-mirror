@@ -83,7 +83,7 @@ private slots:
 			// The fixture has no setting: a resave must not add one
 		const QString plain = resave(fixture);
 		QVERIFY2(!plain.isEmpty(), "--resave failed");
-		QVERIFY(!plain.contains(QLatin1String("origin=")));
+		QVERIFY(!plain.contains(QLatin1String("corner=")));
 
 			// With the setting, a resave keeps it
 		QFile source(fixture);
@@ -91,7 +91,7 @@ private slots:
 		QString text = QString::fromUtf8(source.readAll());
 		const int newdiagrams = text.indexOf(QLatin1String("<newdiagrams"));
 		QVERIFY(newdiagrams > 0);
-		text.insert(newdiagrams, QStringLiteral("<style origin=\"bottom-right\"/>\n    "));
+		text.insert(newdiagrams, QStringLiteral("<cell_origin corner=\"bottom-right\"/>\n    "));
 		const QString with_setting = m_dir.filePath(QStringLiteral("with_setting.qet"));
 		QFile out(with_setting);
 		QVERIFY(out.open(QIODevice::WriteOnly | QIODevice::Text));
@@ -100,7 +100,7 @@ private slots:
 
 		const QString saved = resave(with_setting);
 		QVERIFY2(!saved.isEmpty(), "--resave failed");
-		QVERIFY2(saved.contains(QLatin1String("<style origin=\"bottom-right\"/>")),
+		QVERIFY2(saved.contains(QLatin1String("<cell_origin corner=\"bottom-right\"/>")),
 				 "the setting was lost on save");
 	}
 };

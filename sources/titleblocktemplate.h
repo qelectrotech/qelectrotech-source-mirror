@@ -126,6 +126,7 @@ class TitleBlockTemplate : public QObject {
 	void setRowDimension(int, const TitleBlockDimension &);
 	TitleBlockDimension columnDimension(int);
 	void setColumnDimension(int, const TitleBlockDimension &);
+	void setPreviewDimension(const TitleBlockDimension &);
 	int columnsCount() const;
 	int rowsCount() const;
 	QList<int> columnsWidth(int) const;
@@ -134,8 +135,10 @@ class TitleBlockTemplate : public QObject {
 	int columnTypeTotal(QET::TitleBlockColumnLength);
 	int minimumWidth();
 	int maximumWidth();
-	int width(int);
+	int width(int) const;
 	int height() const;
+	Qt::Alignment align() const;
+	void setAlignment(Qt::Alignment);
 	
 	bool moveRow(int, int);
 	void addRow(int = -1);
@@ -209,6 +212,7 @@ class TitleBlockTemplate : public QObject {
 	private:
 	void parseRows(const QString &);
 	void parseColumns(const QString &);
+	void parseAlign(const QString &);
 	bool checkCell(const QDomElement &, TitleBlockCell ** = nullptr);
 	void flushCells();
 	void initCells();
@@ -297,5 +301,9 @@ class TitleBlockTemplate : public QObject {
 	*/
 	QList<TitleBlockCell *> registered_cells_;
 	QList< QList<TitleBlockCell *> > cells_;         ///< Cells grid
+	/*
+		@brief out side or in side position title template
+	*/
+	Qt::Alignment m_align_ = Qt::AlignTop; /// position relative to the frame boundary
 };
 #endif

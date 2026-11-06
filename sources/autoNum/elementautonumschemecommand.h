@@ -111,7 +111,8 @@ class ElementAutoNumSchemeCommand : public QUndoCommand
 				const QSet<QString> &reserved = QSet<QString>());
 		static QSet<QString> reservedLabels(const QETProject *project,
 											const QString &title,
-											const QVector<Element *> &changing);
+											const QVector<Element *> &changing,
+											const Diagram *source_folio = nullptr);
 		static RenumberElementsCommand *renumber(QETProject *project,
 												 const QString &title,
 												 QVector<Element *> *frozen,
@@ -164,7 +165,8 @@ class ElementAutoNumSchemeCommand : public QUndoCommand
 				const QVector<Element *> &elements,
 				const QString &text,
 				FreezeRule freeze = FreezeRule::Unfrozen,
-				QUndoCommand *parent = nullptr);
+				QUndoCommand *parent = nullptr,
+				const Diagram *source_folio = nullptr);
 
 		static QString schemeForFormula(const QETProject *project, const QString &formula);
 		static QString followedScheme(const QETProject *project, const DiagramContext &info);
@@ -222,7 +224,8 @@ class ElementAutoNumSchemeCommand : public QUndoCommand
 							   const QList<Element *> &elements);
 		static int numberPasted(QETProject *project,
 								const QMap<QString, QVector<Element *>> &schemes,
-								QUndoCommand *parent);
+								QUndoCommand *parent,
+								const Diagram *source_folio = nullptr);
 
 			/// Elements whose label and formula change
 		int changedElementCount() const {return m_changes.size();}

@@ -1943,6 +1943,11 @@ void Conductor::setPropertyToPotential(const ConductorProperties &property,
 
 	foreach(Conductor *other_conductor, potential_list)
 	{
+			//A core of a cable takes section, colour and type from its
+			//cable: no property of the potential is copied over it
+		if (!other_conductor->properties().m_cable_uuid.isNull()) {
+			continue;
+		}
 		if (only_text)
 		{
 			ConductorProperties other_properties = other_conductor->properties();
@@ -2173,6 +2178,14 @@ void Conductor::setCableReference(const QString &label,
 	m_properties.m_cable = label;
 	m_properties.m_cable_uuid = cable_uuid;
 	m_properties.m_cable_slot = slot;
+		//Becoming a core: what the three fields showed until now was
+		//the wire's own value -- the cable says what its cores are from
+		//now on, so the fields show nothing rather than a wrong value
+	if (!cable_uuid.isNull()) {
+		m_properties.m_wire_color.clear();
+		m_properties.m_wire_section.clear();
+		m_properties.m_conductor_type.clear();
+	}
 	storeProperties();
 	emit propertiesChange();
 }
@@ -2217,6 +2230,12 @@ void Conductor::displayedTextChanged()
 
 		foreach (Conductor *potential_conductor, relatedPotentialConductors())
 		{
+				//A core of a cable keeps what its cable says: the text
+				//entered on one side of a terminal does not run over it
+				//and write the cable's own field away
+			if (!potential_conductor->properties().m_cable_uuid.isNull()) {
+				continue;
+			}
 			old_value.setValue(potential_conductor->properties());
 			ConductorProperties new_properties = potential_conductor->properties();
 			new_properties.m_formula = m_text_item->toPlainText();

@@ -669,9 +669,10 @@ void ElementsPanelWidget::duplicateDiagram()
 
 		// Serialize the whole diagram with is_copy_command=true.
 		// This is the same mechanism as Ctrl+C: toXml(true, true)
-		// internally calls correctTextPos/restoreText for Slave and
-		// Report elements only — producing correct text positions
-		// in the XML. No manual correctTextPos/restoreText needed.
+		// internally calls correctTextPos/restoreText for Slave,
+		// Report and ConductorDefinition elements — producing correct
+		// text positions in the XML. No manual correctTextPos/restoreText
+		// needed.
 		QDomDocument doc = source_diagram->toXml(true, true);
 		QDomElement diagram_elmt = doc.documentElement();
 
@@ -719,14 +720,15 @@ void ElementsPanelWidget::duplicateDiagram()
 				// silently vanish from nomenclature/summary tables.
 				elmt->newUuid();
 
-				// toXml(true, true) applied correctTextPos to Slave and
-				// Report elements, which shifted their text positions to
-				// match the stripped composite text.  restoreText()
-				// recalculates the position for the actual resolved text.
-				// Only Slave and Report need this — other element types
-				// were not affected by correctTextPos.
+				// toXml(true, true) applied correctTextPos to Slave,
+				// Report and ConductorDefinition elements, which shifted
+				// their text positions to match the stripped composite
+				// text.  restoreText() recalculates the position for the
+				// actual resolved text.  Only those three need this --
+				// other element types were not affected by correctTextPos.
 				if (elmt->linkType() == Element::Slave ||
-					elmt->linkType() & Element::AllReport)
+					elmt->linkType() & Element::AllReport ||
+					elmt->linkType() == Element::ConductorDefinition)
 				{
 					new_diagram->restoreText(elmt);
 				}
@@ -846,14 +848,24 @@ void ElementsPanelWidget::duplicateDiagram()
 			}
 		}
 
-			// The copies follow the numberings of the project: they get the
-			// next numbers, as pasted elements do. This duplication is not
-			// undoable, so neither is the numbering: it is done at once.
+			// The copies follow the numberings of the project: a scheme which
+			// counts over the whole project gives them its next numbers, a
+			// scheme which counts per folio ("Zahlenformat 1 - Seite") starts
+			// the copy's own folio at the beginning a folio is numbered from,
+			// so a copy comes out numbered 1, 2, 3 like the page it was made
+			// from rather than where the counter had got to elsewhere. The
+			// source folio's labels are the numbers the copies are given
+			// again: they stop being a clash as soon as the copy has a folio
+			// number of its own, and its labels follow it (%F is worked out
+			// again for every display).
+			// This duplication is not undoable, so neither is the numbering:
+			// it is done at once.
 		ElementAutoNumSchemeCommand::linkPasted(project, new_elements);
 		if (!copy_schemes.isEmpty())
 		{
 			QUndoCommand numbering;
-			if (ElementAutoNumSchemeCommand::numberPasted(project, copy_schemes, &numbering)) {
+			if (ElementAutoNumSchemeCommand::numberPasted(
+					project, copy_schemes, &numbering, source_diagram)) {
 				numbering.redo();
 			}
 		}

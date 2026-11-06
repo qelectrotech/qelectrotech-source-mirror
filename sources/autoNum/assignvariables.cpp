@@ -32,6 +32,7 @@
 #include <QDomDocument>
 #include <QStringList>
 #include <QVariant>
+#include <algorithm>
 #include <utility>
 
 namespace autonum
@@ -353,6 +354,7 @@ namespace autonum
 		str.replace("%{tension_protocol}", dc.value("tension_protocol").toString());
 		str.replace("%{conductor_section}", dc.value("conductor_section").toString());
 		str.replace("%{conductor_color}", dc.value("conductor_color").toString());
+		str.replace("%{conductor_text}", dc.value("conductor_text").toString());
 
 		str.replace("%{void}", QString());
 
@@ -603,6 +605,43 @@ namespace autonum
 	}
 
 	/**
+		@brief storeFolioSequential
+		The numbers @p seq has just given on @p diagram under the name
+		@p key are what that folio's own counter reads now.
+
+		setFolioSequentialToHash() only ever raises the counter, which
+		is right while numbers only go up and wrong as soon as a folio
+		is numbered over from the start or its counter is put back by
+		hand: the old high value would be read again the next time the
+		folio is opened, and the numbering would go on from there.
+		Both the hash and the saved rows are written, the way
+		insertFolioSeqHash() writes them.
+	*/
+	void storeFolioSequential(Diagram *diagram, const QString &key,
+				  const sequentialNumbers &seq)
+	{
+		if (!diagram) {
+			return;
+		}
+		const struct {
+			const QString level;
+			const QStringList *values;
+		} levels[] = {
+			{QStringLiteral("unitfolio"),   &seq.unit_folio},
+			{QStringLiteral("tenfolio"),    &seq.ten_folio},
+			{QStringLiteral("hundredfolio"), &seq.hundred_folio},
+		};
+		for (const auto &level : levels)
+		{
+			if (level.values->isEmpty()) {
+				continue;
+			}
+			diagram->setFolioSeqValues(QStringLiteral("element"),
+						  level.level, key, *level.values);
+		}
+	}
+
+	/**
 		@brief setSequential
 		Fill seqStruct
 		@param label : label of sequential to fill
@@ -688,6 +727,73 @@ namespace autonum
 				out.replaceValue(i, has_start ? parts.at(3)
 											  : QStringLiteral("1"));
 			}
+		}
+		return out;
+	}
+
+	/**
+		@brief folioCounters
+		@param nc the rule to read, its counters as they are
+		@param diagram the folio which is being numbered
+		@param key the numbering's name in the folio's own counters
+		@return @p nc with its folio-bound counters set to where
+		@p diagram has got to under @p key -- the numbers it has handed
+		out, plus one step -- or to where the rule says a folio starts
+		when it has handed out none yet. The parts which count over the
+		whole project are left exactly as they are.
+	*/
+	NumerotationContext folioCounters(const NumerotationContext &nc,
+					  Diagram *diagram,
+					  const QString &key)
+	{
+		NumerotationContext out = nc;
+		if (!diagram) {
+			return out;
+		}
+		const QStringList unit = diagram->m_elmt_unitfolio_max.value(key);
+		const QStringList ten = diagram->m_elmt_tenfolio_max.value(key);
+		const QStringList hundred = diagram->m_elmt_hundredfolio_max.value(key);
+		int i_unit = 0;
+		int i_ten = 0;
+		int i_hundred = 0;
+
+		for (int i = 0 ; i < out.size() ; ++i)
+		{
+			const QStringList parts = out.itemAt(i);
+			if (parts.isEmpty()) {
+				continue;
+			}
+			const QString &type = parts.at(0);
+			const QStringList *given = nullptr;
+			int *index = nullptr;
+			if (type == QLatin1String("unitfolio")) {
+				given = &unit;
+				index = &i_unit;
+			} else if (type == QLatin1String("tenfolio")) {
+				given = &ten;
+				index = &i_ten;
+			} else if (type == QLatin1String("hundredfolio")) {
+				given = &hundred;
+				index = &i_hundred;
+			} else {
+				continue;
+			}
+
+				//The beginning a folio is numbered from is the one
+				//written into the rule, never a hard 1: a counter
+				//starting at 5 starts every folio at 5.
+			const bool has_start = parts.size() > 3
+					&& !parts.at(3).isEmpty();
+			const int start = has_start ? parts.at(3).toInt() : 1;
+			const int increase = parts.size() > 2
+					&& !parts.at(2).isEmpty()
+					? std::max(1, parts.at(2).toInt()) : 1;
+
+			const int value = *index < given->size()
+					? given->at(*index).toInt() + increase
+					: start;
+			++(*index);
+			out.replaceValue(i, QString::number(value));
 		}
 		return out;
 	}

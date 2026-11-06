@@ -128,6 +128,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		bool isJumpHighlighted() const {return m_jump_highlight;}
 		void setCompositeText(const QString &text);
 		QString compositeText() const;
+		void refreshConductorText() {elementInfoChanged();}
 		void setFrame(const bool frame);
 		bool frame() const;
 		QUuid uuid() const;

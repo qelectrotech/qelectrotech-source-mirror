@@ -100,6 +100,7 @@ void ConductorPropertiesWidget::setProperties(
 	ui->m_tension_protocol_le   -> setText    (m_properties.m_tension_protocol);
 	ui->m_wire_color_le         -> setText    (m_properties.m_wire_color);
 	ui->m_wire_section_le       -> setText    (m_properties.m_wire_section);
+	ui->m_conductor_type_le     -> setText    (m_properties.m_conductor_type);
 	ui->m_text_size_sb          -> setValue   (m_properties.text_size);
 	ui->m_cond_size_sb          -> setValue   (m_properties.cond_size);
 	ui->m_show_text_cb          -> setChecked (m_properties.m_show_text);
@@ -125,6 +126,27 @@ void ConductorPropertiesWidget::setProperties(
 	setConductorType(m_properties.type);
 	updatePreview(false);
 	updateDashPatternPreview();
+
+		//A core of a cable says what its section, colour and type are:
+		//those three fields are locked here, so an edit made on one
+		//side of a terminal cannot write over what the cable says.
+		//The small sign beside each says why when the mouse rests on it
+	const bool from_cable = !m_properties.m_cable_uuid.isNull();
+	ui->m_wire_color_le->setDisabled(from_cable);
+	ui->m_wire_section_le->setDisabled(from_cable);
+	ui->m_conductor_type_le->setDisabled(from_cable);
+	ui->m_wire_color_locked_info->setVisible(from_cable);
+	ui->m_wire_section_locked_info->setVisible(from_cable);
+	ui->m_conductor_type_locked_info->setVisible(from_cable);
+	const QString why = from_cable
+			? (m_properties.m_cable.isEmpty()
+			   ? tr("This wire is a core of a cable: section, colour and type come from the cable.")
+			   : tr("This wire is core of cable %1: section, colour and type come from the cable.")
+					 .arg(m_properties.m_cable))
+			: QString();
+	ui->m_wire_color_locked_info->setToolTip(why);
+	ui->m_wire_section_locked_info->setToolTip(why);
+	ui->m_conductor_type_locked_info->setToolTip(why);
 }
 
 /**
@@ -167,6 +189,7 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.m_tension_protocol      = ui -> m_tension_protocol_le->text();
 	properties_.m_wire_color            = ui -> m_wire_color_le->text();
 	properties_.m_wire_section          = ui -> m_wire_section_le->text();
+	properties_.m_conductor_type        = ui -> m_conductor_type_le->text();
 	properties_.text_size               = ui -> m_text_size_sb -> value();
 	properties_.cond_size               = ui -> m_cond_size_sb -> value();
 	properties_.m_show_text             = ui -> m_show_text_cb -> isChecked();
@@ -287,6 +310,7 @@ void ConductorPropertiesWidget::setMixedTextFields(
 		{TensionProtocol, ui->m_tension_protocol_le},
 		{WireColor,       ui->m_wire_color_le},
 		{WireSection,     ui->m_wire_section_le},
+		{WireType,        ui->m_conductor_type_le},
 		{Cable,           ui->m_cable_le},
 		{Bus,             ui->m_bus_le}};
 

@@ -104,6 +104,8 @@ class QETDiagramEditor : public QETMainWindow
 		void tellRepair(QETProject *project);
 		bool openAsRecovered(const QString &source, const QString &original);
 		static QString recoveredPath(const QString &filepath, const QString &suffix);
+		void reloadElementDrawings(QETProject *project, bool adopt_frame,
+								   const QString &title, const QString &intro);
 		// Declared first so it is initialised before any member whose
 		// constructor may dispatch a Qt event calling event() (e.g. the
 		// QActionGroup members below trigger QObject::setParent events).
@@ -199,6 +201,7 @@ class QETDiagramEditor : public QETMainWindow
 		void slot_terminalNumbering();
 		void slot_cableNumbering();
 		void slot_reloadElementDrawings();
+		void slot_updateElementsFromCollections();
 #ifdef QET_HAS_SCRIPTING
 		void slot_runScript();
 		void rebuildScriptActions();
@@ -325,6 +328,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_add_cable_list,             ///< Add a cable list graphics item
 		*m_export_cable_list,          ///< Export the cable list of the project to CSV
 		*m_reload_element_drawings,    ///< Action to redraw every placed element from its current definition
+		*m_update_elements_from_collections, ///< Action to replace embedded elements changed in their collection
 #ifdef QET_HAS_SCRIPTING
 		*m_run_script,                 ///< Action to run a JavaScript macro against the current project
 		*m_open_scripts_folder,        ///< Action to open the folder stored scripts are read from
