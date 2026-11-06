@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DeviceNavigatorFilterDialog</class>
+ <widget class="QDialog" name="DeviceNavigatorFilterDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>460</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Configure Filters</string>
+  </property>
+  <layout class="QVBoxLayout" name="dialogLayout">
+   <item>
+    <layout class="QHBoxLayout" name="schemeLayout">
+     <item>
+      <widget class="QLabel" name="m_scheme_label">
+       <property name="text">
+        <string>Scheme:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="m_scheme_combo">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_new_scheme_btn">
+       <property name="text">
+        <string>New...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_delete_scheme_btn">
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="m_criteria_tabs">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tabBmk">
+      <attribute name="title">
+       <string>Device Tag (BMK)</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="tabBmkLayout">
+       <item>
+        <widget class="QLabel" name="m_bmk_letters_label">
+         <property name="text">
+          <string>BMK prefixes (comma-separated, e.g. K, Q, F, X, W):</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="m_bmk_letters_edit">
+         <property name="clearButtonEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="m_quick_select_group">
+         <property name="title">
+          <string>Quick Selection (DIN EN 81346)</string>
+         </property>
+         <layout class="QGridLayout" name="quickSelectGrid">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="m_cb_prefix_k">
+            <property name="text">
+             <string>-K (Relays, Contactors)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="m_cb_prefix_f">
+            <property name="text">
+             <string>-F (Protection, Fuses)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="m_cb_prefix_q">
+            <property name="text">
+             <string>-Q (Power Switches)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="m_cb_prefix_x">
+            <property name="text">
+             <string>-X (Terminals)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="m_cb_prefix_w">
+            <property name="text">
+             <string>-W (Cables)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="m_cb_prefix_m">
+            <property name="text">
+             <string>-M (Motors, Drives)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QCheckBox" name="m_cb_prefix_b">
+            <property name="text">
+             <string>-B (Sensors, Transducers)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QCheckBox" name="m_cb_prefix_p">
+            <property name="text">
+             <string>-P, -H (Signaling, Indicators)</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="m_bmk_pattern_label">
+         <property name="text">
+          <string>Custom pattern / Wildcard (e.g. *Pump* or -K[1-9]):</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="m_bmk_pattern_edit">
+         <property name="clearButtonEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="bmkSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabTypes">
+      <attribute name="title">
+       <string>Element Types</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="tabTypesLayout">
+       <item>
+        <widget class="QCheckBox" name="m_cb_master">
+         <property name="text">
+          <string>Master symbols / Coils / Main functions</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_cb_slave">
+         <property name="text">
+          <string>Slave symbols / Contacts / Auxiliary functions</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_cb_terminal">
+         <property name="text">
+          <string>Terminals</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_cb_cable">
+         <property name="text">
+          <string>Cables</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_cb_report">
+         <property name="text">
+          <string>Folio reports / Cross-references (Folienverweise)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_cb_conductor_def">
+         <property name="text">
+          <string>Conductor definitions / Connections (Leitungsdefinitionen)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_cb_thumbnail">
+         <property name="text">
+          <string>Cabinet layout / Thumbnail placements</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_cb_other">
+         <property name="text">
+          <string>Other devices / Symbols</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="typesSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabStructure">
+      <attribute name="title">
+       <string>Structure</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="tabStructureLayout">
+       <item>
+        <widget class="QLabel" name="m_struct_mode_label">
+         <property name="text">
+          <string>Structure grouping:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="m_struct_mode_combo"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="m_struct_pattern_label">
+         <property name="text">
+          <string>Structure contains text (e.g. 010 or A1):</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="m_struct_pattern_edit">
+         <property name="clearButtonEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="structSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>DeviceNavigatorFilterDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>DeviceNavigatorFilterDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
+

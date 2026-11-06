@@ -16245,6 +16245,10 @@ Go on anyway?</source>
         <translation>Zeigt oder versteckt die Änderungsliste</translation>
     </message>
     <message>
+        <source>Show or hide the device navigator</source>
+        <translation>Zeigt oder versteckt den Geräte-Navigator</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2225"/>
         <source>Display projects</source>
         <translation>Projekte anzeigen</translation>
@@ -28724,6 +28728,316 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>What:</source>
         <translation>Was:</translation>
+    </message>
+</context>
+<context>
+    <name>DeviceNavigatorDockWidget</name>
+    <message>
+        <source>Device Navigator</source>
+        <translation>Geräte-Navigator</translation>
+    </message>
+    <message>
+        <source>Devices</source>
+        <translation>Geräte</translation>
+    </message>
+    <message>
+        <source>Cables</source>
+        <translation>Kabel</translation>
+    </message>
+    <message>
+        <source>Tree</source>
+        <translation>Baum</translation>
+    </message>
+    <message>
+        <source>List</source>
+        <translation>Liste</translation>
+    </message>
+    <message>
+        <source>Filter:</source>
+        <translation>Filter:</translation>
+    </message>
+    <message>
+        <source>- Not active -</source>
+        <translation>- Nicht aktiviert -</translation>
+    </message>
+    <message>
+        <source>Contactors / Relays (-K)</source>
+        <translation>Schütze / Relais (-K)</translation>
+    </message>
+    <message>
+        <source>Protection / Fuses (-F)</source>
+        <translation>Sicherungen / Schutz (-F)</translation>
+    </message>
+    <message>
+        <source>Switches (-Q)</source>
+        <translation>Schalter (-Q)</translation>
+    </message>
+    <message>
+        <source>Terminals (-X)</source>
+        <translation>Klemmen (-X)</translation>
+    </message>
+    <message>
+        <source>Cables (-W)</source>
+        <translation>Kabel (-W)</translation>
+    </message>
+    <message>
+        <source>Motors (-M)</source>
+        <translation>Motoren (-M)</translation>
+    </message>
+    <message>
+        <source>Sensors (-B)</source>
+        <translation>Sensoren (-B)</translation>
+    </message>
+    <message>
+        <source>No structure identifier</source>
+        <translation>Ohne Strukturkennzeichen</translation>
+    </message>
+    <message>
+        <source>Value:</source>
+        <translation>Wert:</translation>
+    </message>
+    <message>
+        <source>Search device, function, folio...</source>
+        <translation>Gerät, Funktion, Folie suchen...</translation>
+    </message>
+    <message>
+        <source>Devices / Plant Structure</source>
+        <translation>Geräte / Anlagenstruktur</translation>
+    </message>
+    <message>
+        <source>Device (BMK)</source>
+        <translation>Gerät (BMK)</translation>
+    </message>
+    <message>
+        <source>Function / Description</source>
+        <translation>Funktion / Beschreibung</translation>
+    </message>
+    <message>
+        <source>Terminals</source>
+        <translation>Anschlüsse</translation>
+    </message>
+    <message>
+        <source>Structure (Plant / Location)</source>
+        <translation>Struktur (Anlage / Ort)</translation>
+    </message>
+    <message>
+        <source>Folio</source>
+        <translation>Folie</translation>
+    </message>
+    <message>
+        <source>Position</source>
+        <translation>Position</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Typ</translation>
+    </message>
+    <message>
+        <source>Refresh device list</source>
+        <translation>Geräteliste aktualisieren</translation>
+    </message>
+    <message>
+        <source>Coil</source>
+        <translation>Spule</translation>
+    </message>
+    <message>
+        <source>Protection</source>
+        <translation>Schutz</translation>
+    </message>
+    <message>
+        <source>Commutator</source>
+        <translation>Umschalter</translation>
+    </message>
+    <message>
+        <source>PLC</source>
+        <translation>SPS</translation>
+    </message>
+    <message>
+        <source>Master</source>
+        <translation>Master</translation>
+    </message>
+    <message>
+        <source>Power contacts</source>
+        <translation>Hauptkontakte</translation>
+    </message>
+    <message>
+        <source>NO contact</source>
+        <translation>Schließer</translation>
+    </message>
+    <message>
+        <source>NC contact</source>
+        <translation>Öffner</translation>
+    </message>
+    <message>
+        <source>Changeover contact</source>
+        <translation>Wechsler</translation>
+    </message>
+    <message>
+        <source>Delay ON</source>
+        <translation>Ansprechverzögert</translation>
+    </message>
+    <message>
+        <source>Delay OFF</source>
+        <translation>Rückfallverzögert</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Kontakt</translation>
+    </message>
+    <message>
+        <source>Terminal</source>
+        <translation>Klemme</translation>
+    </message>
+    <message>
+        <source>Part placement, general device</source>
+        <translation>Artikelplatzierung, allgemeines Gerät</translation>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation>Gerät</translation>
+    </message>
+    <message>
+        <source>&lt;unnamed&gt;</source>
+        <translation>&lt;unbenannt&gt;</translation>
+    </message>
+    <message>
+        <source>Unnamed Project</source>
+        <translation>Unbenanntes Projekt</translation>
+    </message>
+    <message>
+        <source>Cabinet Layout</source>
+        <translation>Schaltschrankaufbau</translation>
+    </message>
+    <message>
+        <source>Symbol</source>
+        <translation>Symbol</translation>
+    </message>
+    <message>
+        <source>Show in diagram</source>
+        <translation>Im Schaltplan anzeigen</translation>
+    </message>
+    <message>
+        <source>Edit properties...</source>
+        <translation>Eigenschaften bearbeiten...</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Aktualisieren</translation>
+    </message>
+    <message>
+        <source>Configure filters...</source>
+        <translation>Filter konfigurieren...</translation>
+    </message>
+</context>
+<context>
+    <name>DeviceNavigatorFilterDialog</name>
+    <message>
+        <source>Filter Configuration</source>
+        <translation>Filterkonfiguration</translation>
+    </message>
+    <message>
+        <source>Scheme:</source>
+        <translation>Schema:</translation>
+    </message>
+    <message>
+        <source>New...</source>
+        <translation>Neu...</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Löschen</translation>
+    </message>
+    <message>
+        <source>Reset Defaults</source>
+        <translation>Zurücksetzen</translation>
+    </message>
+    <message>
+        <source>Device tag prefixes (comma-separated, e.g. K, Q, F):</source>
+        <translation>Gerätekennzeichen-Präfixe (kommagetrennt, z.B. K, Q, F):</translation>
+    </message>
+    <message>
+        <source>Custom BMK wildcard pattern (e.g. *Pump*, -K[1-9]):</source>
+        <translation>BMK-Suchmuster / Wildcard (z.B. *Pumpe*, -K[1-9]):</translation>
+    </message>
+    <message>
+        <source>Element Types</source>
+        <translation>Gerätetypen</translation>
+    </message>
+    <message>
+        <source>Masters / Coils</source>
+        <translation>Hauptfunktionen / Spulen</translation>
+    </message>
+    <message>
+        <source>Slaves / Contacts</source>
+        <translation>Nebenfunktionen / Kontakte</translation>
+    </message>
+    <message>
+        <source>Terminals</source>
+        <translation>Klemmen</translation>
+    </message>
+    <message>
+        <source>Cables</source>
+        <translation>Kabel</translation>
+    </message>
+    <message>
+        <source>Cabinet Layout / Placement</source>
+        <translation>Artikelplatzierung / Schaltschrankaufbau</translation>
+    </message>
+    <message>
+        <source>Folio Reports (Cross references)</source>
+        <translation>Folienverweise (Abbruchstellen)</translation>
+    </message>
+    <message>
+        <source>Conductor Definitions</source>
+        <translation>Verbindungs- / Leiterdefinitionen</translation>
+    </message>
+    <message>
+        <source>Other Symbols</source>
+        <translation>Sonstige Symbole</translation>
+    </message>
+    <message>
+        <source>Structure Filter Mode</source>
+        <translation>Strukturkennzeichen-Filter</translation>
+    </message>
+    <message>
+        <source>All structures</source>
+        <translation>Alle Strukturen</translation>
+    </message>
+    <message>
+        <source>Only elements WITH structure (=Plant +Location)</source>
+        <translation>Nur Geräte MIT Struktur (=Anlage +Ort)</translation>
+    </message>
+    <message>
+        <source>Only elements WITHOUT structure (Ohne Strukturkennzeichen)</source>
+        <translation>Nur Geräte OHNE Strukturkennzeichen</translation>
+    </message>
+    <message>
+        <source>Structure text contains (e.g. =010 or +A1):</source>
+        <translation>Strukturtext enthält (z.B. =010 oder +A1):</translation>
+    </message>
+    <message>
+        <source>New Filter Scheme</source>
+        <translation>Neues Filterschema</translation>
+    </message>
+    <message>
+        <source>Scheme name:</source>
+        <translation>Schemaname:</translation>
+    </message>
+    <message>
+        <source>Delete Scheme</source>
+        <translation>Schema löschen</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to delete scheme '%1'?</source>
+        <translation>Möchten Sie das Schema '%1' wirklich löschen?</translation>
+    </message>
+    <message>
+        <source>Reset Schemes</source>
+        <translation>Schemata zurücksetzen</translation>
+    </message>
+    <message>
+        <source>Reset all filter schemes to defaults?</source>
+        <translation>Alle Filterschemata auf Standard zurücksetzen?</translation>
     </message>
 </context>
 </TS>

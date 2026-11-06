@@ -92,6 +92,8 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/TerminalStrip/ui/terminalstriplayouteditor.ui
   ${QET_DIR}/sources/TerminalStrip/ui/terminalstriptreedockwidget.ui
   ${QET_DIR}/sources/ui/aboutqetdialog.ui
+  ${QET_DIR}/sources/ui/devicenavigatordockwidget.ui
+  ${QET_DIR}/sources/ui/devicenavigatorfilterdialog.ui
   ${QET_DIR}/sources/ui/alignmenttextdialog.ui
   ${QET_DIR}/sources/ui/bomexportdialog.ui
   ${QET_DIR}/sources/ui/borderpropertieswidget.ui
@@ -841,6 +843,10 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/ui/aboutqetdialog.cpp
   ${QET_DIR}/sources/ui/aboutqetdialog.h
+  ${QET_DIR}/sources/ui/devicenavigatordockwidget.cpp
+  ${QET_DIR}/sources/ui/devicenavigatordockwidget.h
+  ${QET_DIR}/sources/ui/devicenavigatorfilterdialog.cpp
+  ${QET_DIR}/sources/ui/devicenavigatorfilterdialog.h
   ${QET_DIR}/sources/ui/aiassistantdialog.cpp
   ${QET_DIR}/sources/ui/aiassistantdialog.h
   ${QET_DIR}/sources/ui/aiassistantsetup.cpp

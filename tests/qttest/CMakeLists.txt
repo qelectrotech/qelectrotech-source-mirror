@@ -276,6 +276,11 @@ add_test(NAME tst_diagramsortkeys COMMAND tst_diagramsortkeys)
 target_include_directories(tst_diagramsortkeys PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_diagramsortkeys PRIVATE Qt::Test)
 
+add_executable(tst_devicenavigator tst_devicenavigator.cpp)
+add_test(NAME tst_devicenavigator COMMAND tst_devicenavigator)
+target_include_directories(tst_devicenavigator PRIVATE ${QET_DIR}/sources ${QET_DIR}/sources/ui)
+target_link_libraries(tst_devicenavigator PRIVATE qelectrotech_objects Qt::Test)
+
 add_executable(tst_dimensionitem tst_dimensionitem.cpp)
 add_test(NAME tst_dimensionitem COMMAND tst_dimensionitem)
 target_include_directories(tst_dimensionitem PRIVATE ${QET_DIR}/sources)
