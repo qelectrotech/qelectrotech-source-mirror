@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectprintwindow.h"
+#include "printdrawing.h"
 #include "../qetdiagrameditor.h"
 
 #include "../diagram.h"
@@ -40,7 +41,6 @@
 #include <QPainter>
 #include <QPrintDialog>
 #include <QPrintPreviewWidget>
-#include <QScreen>
 #include <QFile>
 #include <QRegularExpression>
 #include <QMap>
@@ -56,7 +56,7 @@
  */
 void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputFormat format, QWidget *parent)
 {
-	auto printer_ = new QPrinter();
+	auto printer_ = new QPrinter(QPrinter::HighResolution);
 	printer_->setDocName(ProjectPrintWindow::docName(project));
 	printer_->setPageOrientation(QPageLayout::Landscape);
 
@@ -191,23 +191,9 @@ ProjectPrintWindow::~ProjectPrintWindow()
  */
 void ProjectPrintWindow::requestPaint()
 {
-		#ifdef Q_OS_WIN
-			#ifdef QT_DEBUG
-			qDebug() << "--";
-			qDebug() << "DiagramPrintDialog::print  printer_->resolution() before " << m_printer->resolution();
-			qDebug() << "DiagramPrintDialog::print  screen " << screen()->name();
-			#endif
-
-			QScreen *srn = screen();
-			qreal dotsPerInch = (qreal)srn->logicalDotsPerInch();
-			m_printer->setResolution(dotsPerInch);
-
-			#ifdef QT_DEBUG
-				qDebug() << "DiagramPrintDialog::print  dotsPerInch " << dotsPerInch;
-				qDebug() << "DiagramPrintDialog::print  printer_->resolution() after" << m_printer->resolution();
-			qDebug() << "--";
-			#endif
-		#endif
+		//The printer keeps its own resolution: QetPrint::render() keeps the
+		//texts in proportion, and a lower one made Windows round every
+		//line to a screen pixel (#1596).
 
 	if (!m_project->folios().count()) {
 		return;
@@ -331,58 +317,32 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 	auto full_page = printer->fullPage();
 	auto diagram_rect = QRectF(diagramRect(diagram, option));
 	if (fit_page) {
-		diagram->render(painter, QRectF(), diagram_rect, Qt::KeepAspectRatio);
+		QetPrint::render(diagram, painter,
+				 QRectF(0, 0, painter->device()->width(),
+					painter->device()->height()),
+				 diagram_rect);
 	} else {
-		// Print on one or several pages
+			//Print on one or several pages, tiled in folio coordinates
+			//like the page count: device pixels grow with the printer's
+			//resolution, the folio and its printed size do not.
+		const QSizeF page_size = QetPrint::pageSizeInDrawingUnits(
+					     printer->pageLayout(), full_page);
+		const int h_pages_count = horizontalPagesCount(diagram, option, full_page);
+		const int v_pages_count = verticalPagesCount(diagram, option, full_page);
+		const qreal pixels_per_unit = printer->resolution() / QetPrint::drawingDpi;
 
-	auto printed_rect = full_page ? printer->paperRect(QPrinter::Millimeter) :
-									printer->pageRect(QPrinter::Millimeter);
-
-		auto used_width  = printed_rect.width();
-		auto used_height = printed_rect.height();
-		auto h_pages_count = horizontalPagesCount(diagram, option, full_page);
-		auto v_pages_count = verticalPagesCount(diagram, option, full_page);
-
-		QVector<QVector<QRectF>> page_grid;
-		// The diagram is printed on a matrix of sheet
-		// scrolls through the rows of the matrix
-		auto y_offset = 0;
-		for (auto i = 0; i < v_pages_count; ++i)
-		{
-			page_grid << QVector<QRectF>();
-			// scrolls through the lines of sheet
-			auto x_offset = 0;
-			for (auto j=0 ; j<h_pages_count ; ++j)
-			{
-				page_grid.last() << QRectF(
-					QPoint(x_offset, y_offset),
-					QSize(
-						qMin(used_width, diagram_rect.width() - x_offset),
-						qMin(used_height, diagram_rect.height() - y_offset)));
-
-				x_offset += used_width;
-			}
-			y_offset += used_height;
-		}
-
-		// Retains only the pages to be printed
-		QVector<QRectF> page_to_print;
-		for (auto i=0 ; i < v_pages_count ; ++i) {
-			for (int j=0 ; j < h_pages_count ; ++j) {
-				page_to_print << page_grid.at(i).at(j);
-			}
-		}
-
-		// Scrolls through the page for print
 		bool first_ = true;
-		for (auto& page : page_to_print)
-		{
-			first_ ? first_ = false : m_printer->newPage();
-			diagram->render(
-				painter,
-				QRectF(QPoint(0, 0), page.size()),
-				page.translated(diagram_rect.topLeft()),
-				Qt::KeepAspectRatio);
+		for (int i = 0 ; i < v_pages_count ; ++i) {
+			for (int j = 0 ; j < h_pages_count ; ++j) {
+				first_ ? first_ = false : printer->newPage();
+				const QPointF offset(j * page_size.width(), i * page_size.height());
+				const QSizeF size(
+					qMin(page_size.width(),  diagram_rect.width()  - offset.x()),
+					qMin(page_size.height(), diagram_rect.height() - offset.y()));
+				QetPrint::render(diagram, painter,
+						 QRectF(QPointF(), size * pixels_per_unit),
+						 QRectF(diagram_rect.topLeft() + offset, size));
+			}
 		}
 	}
 
@@ -540,16 +500,13 @@ QRect ProjectPrintWindow::diagramRect(Diagram *diagram, const ExportProperties &
 int ProjectPrintWindow::horizontalPagesCount(
 		Diagram *diagram, const ExportProperties &option, bool full_page) const
 {
-	QRect printable_area;
+	const QSizeF printable_area = QetPrint::pageSizeInDrawingUnits(
+					      m_printer->pageLayout(), full_page);
+	const QRect diagram_rect = diagramRect(diagram, option);
+	if (printable_area.width() <= 0)
+		return(1);
 
-	printable_area =
-		full_page ?
-			m_printer->pageLayout().fullRectPixels(m_printer->resolution()) :
-			m_printer->pageLayout().paintRectPixels(m_printer->resolution());
-
-	QRect diagram_rect = diagramRect(diagram, option);
-
-	int h_pages_count = int(ceil(qreal(diagram_rect.width()) / qreal(printable_area.width())));
+	int h_pages_count = qMax(1, int(ceil(qreal(diagram_rect.width()) / printable_area.width())));
 	return(h_pages_count);
 }
 
@@ -564,16 +521,13 @@ int ProjectPrintWindow::horizontalPagesCount(
 int ProjectPrintWindow::verticalPagesCount(
 		Diagram *diagram, const ExportProperties &option, bool full_page) const
 {
-	QRect printable_area;
+	const QSizeF printable_area = QetPrint::pageSizeInDrawingUnits(
+					      m_printer->pageLayout(), full_page);
+	const QRect diagram_rect = diagramRect(diagram, option);
+	if (printable_area.height() <= 0)
+		return(1);
 
-	printable_area =
-		full_page ?
-			m_printer->pageLayout().fullRectPixels(m_printer->resolution()) :
-			m_printer->pageLayout().paintRectPixels(m_printer->resolution());
-
-	QRect diagram_rect = diagramRect(diagram, option);
-
-	int v_pages_count = int(ceil(qreal(diagram_rect.height()) / qreal(printable_area.height())));
+	int v_pages_count = qMax(1, int(ceil(qreal(diagram_rect.height()) / printable_area.height())));
 	return(v_pages_count);
 }
 
