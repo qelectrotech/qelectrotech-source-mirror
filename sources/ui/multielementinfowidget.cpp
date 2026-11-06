@@ -286,8 +286,6 @@ QUndoCommand *MultiElementInfoWidget::associatedUndo() const
 						continue;
 					}
 					txt = row->edit->text();
-					txt.remove(QStringLiteral("\r"));
-					txt.remove(QStringLiteral("\n"));
 					if (txt.isEmpty()) {
 						new_info.remove(row->key);
 					} else {

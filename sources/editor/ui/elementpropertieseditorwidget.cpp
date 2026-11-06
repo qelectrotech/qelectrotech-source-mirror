@@ -692,13 +692,11 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 
 	for (QTreeWidgetItem *qtwi : ui->m_tree->invisibleRootItem()->takeChildren())
 	{
-		QString txt = qtwi->text(1);
-		//remove line feed and carriage return
-		txt.remove("\r");
-		txt.remove("\n");
-
+			//Kept as it is, line breaks included: every entry is
+			//written back on OK, so taking them out here lost them
+			//even when nothing was edited (bugtracker #348).
 		m_data.m_informations.addValue(qtwi->data(0, Qt::UserRole).toString(),
-									   txt);
+									   qtwi->text(1));
 	}
 
 	if (m_data.m_type == ElementData::Terminal)
