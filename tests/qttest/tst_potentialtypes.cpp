@@ -19,12 +19,17 @@
 #include "diagram.h"
 #include "properties/potentialtypes.h"
 #include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/element.h"
 #include "qetresult.h"
 #include "qetproject.h"
 #include "ui/conductorpropertieswidget.h"
 
+#include "dataBase/projectdatabase.h"
+
+#include <QDir>
 #include <QImage>
 #include <QPainter>
+#include <QSqlQuery>
 #include <QStyleOptionGraphicsItem>
 
 /**
@@ -128,6 +133,201 @@ class tst_potentialtypes : public QObject
 			QETProject reopened(path);
 			QCOMPARE(reopened.potentialTypes(), blueTypes(true, Qt::DashLine, 2));
 			QCOMPARE(wire(reopened)->properties().m_potential_type, QStringLiteral("N"));
+		}
+
+		/// The project database is what the data direction builds on: a
+		/// typed wire must be readable from it, before and after a reopen
+		void typedWireIsInTheDatabase()
+		{
+			const QString path = m_dir.filePath(QStringLiteral("db.qet"));
+			QVERIFY(QFile::copy(QFINDTESTDATA("fixtures/every_feature.qet"), path));
+			const auto stored = [](QETProject &project, const QUuid &wire) {
+					//newQuery() runs the text as it is: no binding
+				QSqlQuery query = project.dataBase()->newQuery(
+							QStringLiteral("SELECT value FROM conductor_properties"
+										   " WHERE name = 'potential_type' AND conductor_uuid = '")
+							+ wire.toString() + QStringLiteral("'"));
+				return query.next() ? query.value(0).toString() : QString();
+			};
+			QUuid uuid;
+			{
+				QETProject project(path);
+				project.setPotentialTypes(blueTypes(true, Qt::DashLine, 2));
+				Conductor *c = wire(project);
+				QVERIFY(c);
+				uuid = c->uuid();
+				QVERIFY(stored(project, uuid).isEmpty());
+				ConductorProperties p = c->properties();
+				p.m_potential_type = QStringLiteral("N");
+				c->setProperties(p);
+				QCOMPARE(stored(project, uuid), QStringLiteral("N"));
+				QVERIFY(project.write().isOk());
+			}
+			QETProject reopened(path);
+			QCOMPARE(stored(reopened, uuid), QStringLiteral("N"));
+		}
+
+		/// The list and the switch are rows of project_setting, and the
+		/// database alone gives back the element the project writes: what a
+		/// file made from the database needs (POTENTIAL-TYPES-PLAN.md step 2)
+		void typeListIsInTheDatabase()
+		{
+			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+			PotentialTypes types;
+			types.setEnabled(true);
+			types.setTypes({{QStringLiteral("PE"), QColor(0, 128, 0), Qt::DashDotLine, 1.5},
+							{QStringLiteral("N"), QColor(0, 0, 255), Qt::DashLine, 1.0},
+							{QStringLiteral("L"), QColor(Qt::black), Qt::SolidLine, 2.0}});
+			project.setPotentialTypes(types);
+
+			QSqlQuery query = project.dataBase()->newQuery(
+						QStringLiteral("SELECT value FROM project_setting WHERE name = 'name'"
+									   " AND section = 'potentialtypes/potentialtype' ORDER BY ord"));
+			QStringList names;
+			while (query.next())
+				names << query.value(0).toString();
+			QCOMPARE(names, (QStringList{"PE", "N", "L"}));
+
+			const QDomDocument rebuilt = projectDataBase::toDocument(project.dataBase()->database());
+			const QDomElement element = rebuilt.documentElement()
+					.firstChildElement(QStringLiteral("potentialtypes"));
+			QVERIFY2(!element.isNull(), "the database gives back <potentialtypes>");
+			QCOMPARE(PotentialTypes::fromXml(element), types);
+		}
+
+		/// potentialGroups() is potentialWires() for every wire at once, and
+		/// both are what the scene finds (POTENTIAL-TYPES-PLAN.md step 5b).
+		/// QET_GROUPS_EXTRA_DIR adds the .qet files of one more directory.
+		void groupsAgreeWithTheOneWireAnswerAndTheScene()
+		{
+			QStringList files;
+			const QDir fixtures(QFileInfo(QFINDTESTDATA("fixtures/every_feature.qet")).absolutePath());
+			for (const QString &name : fixtures.entryList({QStringLiteral("*.qet")}, QDir::Files))
+				files << fixtures.filePath(name);
+			const QString extra = qEnvironmentVariable("QET_GROUPS_EXTRA_DIR");
+			if (!extra.isEmpty())
+				for (const QString &name : QDir(extra).entryList({QStringLiteral("*.qet")}, QDir::Files))
+					files << QDir(extra).filePath(name);
+
+			int wires = 0, unknown = 0, projects = 0;
+			for (const QString &file : files) {
+				QETProject project(file);
+				projectDataBase *db = project.dataBase();
+				if (!db)
+					continue;
+				++projects;
+				const projectDataBase::PotentialGroups groups = db->potentialGroups();
+				QHash<int, QSet<QUuid>> members;
+				for (auto it = groups.group_of.constBegin(); it != groups.group_of.constEnd(); ++it)
+					members[it.value()].insert(it.key());
+
+				for (Diagram *diagram : project.diagrams()) {
+					for (Conductor *c : diagram->conductors()) {
+						const QUuid id = c->uuid();
+						const QString where = file + QStringLiteral(" ") + id.toString();
+						++wires;
+						const auto one = db->potentialWires(id);
+						if (!groups.group_of.contains(id)) {
+							QVERIFY2(!one.has_value(), qPrintable(where));
+							continue;
+						}
+						if (!one.has_value()) {
+							++unknown;
+							QVERIFY2(groups.isUnknown(id), qPrintable(where));
+							continue;
+						}
+						QVERIFY2(!groups.isUnknown(id), qPrintable(where));
+						const QSet<QUuid> group = members.value(groups.group_of.value(id));
+						QVERIFY2(group == *one, qPrintable(where));
+						QSet<QUuid> scene{id};
+						for (Conductor *other : c->relatedPotentialConductors())
+							scene.insert(other->uuid());
+						QVERIFY2(group == scene, qPrintable(where));
+					}
+				}
+			}
+			fprintf(stderr, "GROUPSRESULT %d projects, %d wires, %d unknown\n", projects, wires, unknown);
+			QVERIFY(projects > 5 && wires > 50);
+		}
+
+		/// A terminal block that isolates its terminals makes the potential
+		/// unknown, in the bulk answer as in the one-wire one
+		void isolatingTerminalBlockMakesThePotentialUnknown()
+		{
+			int checked = 0;
+			const QDir examples(qEnvironmentVariable("QET_GROUPS_EXTRA_DIR"));
+			const QDir fixtures(QFileInfo(QFINDTESTDATA("fixtures/every_feature.qet")).absolutePath());
+			QStringList files;
+			for (const QDir &dir : {fixtures, examples})
+				for (const QString &name : dir.entryList({QStringLiteral("*.qet")}, QDir::Files))
+					files << dir.filePath(name);
+			for (const QString &file : files) {
+				QETProject project(file);
+				if (!project.dataBase())
+					continue;
+				Element *block = nullptr;
+				for (Diagram *diagram : project.diagrams())
+					for (Element *e : diagram->elements())
+						if (!block && (e->elementData().m_type & ElementData::Terminal)
+								&& !e->conductors().isEmpty())
+							block = e;
+				if (!block)
+					continue;
+				DiagramContext info = block->elementInformations();
+				info.addValue(QStringLiteral("potential_isolating"), true);
+				block->setElementInformations(info);
+				const Conductor *wire = block->conductors().first();
+				const auto groups = project.dataBase()->potentialGroups();
+				QVERIFY2(groups.isUnknown(wire->uuid()), qPrintable(file));
+				QVERIFY2(!project.dataBase()->potentialWires(wire->uuid()).has_value(), qPrintable(file));
+				++checked;
+			}
+			fprintf(stderr, "ISOLATING checked %d projects\n", checked);
+			if (checked == 0)
+				QSKIP("no project with a wired terminal block");
+		}
+
+		/// Two types on one potential are reported; the same type twice, one
+		/// typed wire, and untyped wires are not; the TEMP table is not saved
+		void mismatchIsReportedFromTheDatabase()
+		{
+			const QString path = m_dir.filePath(QStringLiteral("mismatch.qet"));
+			QVERIFY(QFile::copy(QFINDTESTDATA("fixtures/every_feature.qet"), path));
+			QETProject project(path);
+			projectDataBase *db = project.dataBase();
+			Conductor *c = wire(project);
+			QVERIFY(c);
+			const QSet<Conductor *> others = c->relatedPotentialConductors();
+			QVERIFY(!others.isEmpty());
+			Conductor *other = *others.constBegin();
+			const auto typeOf = [](Conductor *w, const QString &type) {
+				ConductorProperties p = w->properties();
+				p.m_potential_type = type;
+				w->setProperties(p);
+			};
+
+			QVERIFY(db->potentialTypeMismatches().isEmpty());          // untyped
+			typeOf(c, QStringLiteral("N"));
+			QVERIFY(db->potentialTypeMismatches().isEmpty());          // one typed wire
+			typeOf(other, QStringLiteral("N"));
+			QVERIFY(db->potentialTypeMismatches().isEmpty());          // same type twice
+			typeOf(other, QStringLiteral("PE"));
+			const auto found = db->potentialTypeMismatches();
+			QCOMPARE(found.size(), 1);
+			QCOMPARE(found.first().types, (QStringList{"N", "PE"}));
+			QVERIFY(found.first().wires.contains(c->uuid()));
+			QVERIFY(found.first().wires.contains(other->uuid()));
+			typeOf(other, QStringLiteral("N"));
+			QVERIFY(db->potentialTypeMismatches().isEmpty());          // fixed again
+
+			typeOf(other, QStringLiteral("PE"));
+			QVERIFY(project.write().isOk());
+			QETProject reopened(path);
+			QSqlQuery temp = reopened.dataBase()->newQuery(
+						QStringLiteral("SELECT COUNT(*) FROM sqlite_temp_master WHERE name = 'potential_member'"));
+			QVERIFY(temp.next());
+			QCOMPARE(temp.value(0).toInt(), 0);                         // not carried by the file
+			QCOMPARE(reopened.dataBase()->potentialTypeMismatches().size(), 1);
 		}
 
 		void drawnFromTheTypeOnlyWhenOn()

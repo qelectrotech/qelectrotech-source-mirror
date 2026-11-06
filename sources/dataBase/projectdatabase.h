@@ -468,6 +468,22 @@ class projectDataBase : public QObject
 		QString elementLabel(const QUuid &element) const;
 		QString terminalName(const QUuid &terminal, const QUuid &element) const;
 		std::optional<QSet<QUuid>> potentialWires(const QUuid &wire) const;
+			/// Every potential of the project at once: wire -> group
+			/// number, and the groups whose extent is not known
+		struct PotentialGroups {
+			QHash<QUuid, int> group_of;
+			QSet<int> unknown;
+			int count = 0;
+			bool isUnknown(const QUuid &wire) const {return unknown.contains(group_of.value(wire, -1));}
+		};
+		PotentialGroups potentialGroups() const;
+			/// A potential that reaches more than one potential type
+		struct PotentialMismatch {
+			int potential = 0;
+			QStringList types;      ///< the different types, sorted
+			QList<QUuid> wires;     ///< the typed wires of the potential
+		};
+		QList<PotentialMismatch> potentialTypeMismatches();
 		static QVariant sequenceValue(const autonum::sequentialNumbers &sequence);
 		static autonum::sequentialNumbers sequenceFromValue(const QVariant &value);
 
