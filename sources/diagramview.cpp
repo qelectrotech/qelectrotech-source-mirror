@@ -1827,29 +1827,19 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 			current_project->changeTabDown();
 			return;
 		case Qt::Key_Home:
-			if (dc.selectedTexts().isEmpty()) {
-				if (
-					qgraphicsitem_cast<IndependentTextItem *>(m_diagram->focusItem()) ||
-					qgraphicsitem_cast<ConductorTextItem *>(m_diagram->focusItem()) ||
-					qgraphicsitem_cast<DiagramTextItem *>(m_diagram->focusItem())
-					)
-					break;
-				current_project->changeFirstTab();
-				return;
-			}
-			else break;
 		case Qt::Key_End:
-			if (dc.selectedTexts().isEmpty()) {
-				if (
-					qgraphicsitem_cast<IndependentTextItem *>(m_diagram->focusItem()) ||
-					qgraphicsitem_cast<ConductorTextItem *>(m_diagram->focusItem()) ||
-					qgraphicsitem_cast<DiagramTextItem *>(m_diagram->focusItem())
-					)
-					break;
-				current_project->changeLastTab();
+				//A text being edited on the sheet -- free, wire or symbol
+				//text -- takes Home and End to move its cursor (#347).
+				//qgraphicsitem_cast matches one exact type only, so a
+				//symbol's text used to fall through to changing sheet.
+			if (dc.selectedTexts().isEmpty() && !textIsBeingEdited()) {
+				if (e->key() == Qt::Key_Home)
+					current_project->changeFirstTab();
+				else
+					current_project->changeLastTab();
 				return;
 			}
-			else break;
+			break;
 		case Qt::Key_ZoomOut:
 			zoomBy(-1);
 			return;
@@ -2885,6 +2875,16 @@ bool DiagramView::selectedItemHasFocus()
 		m_diagram -> focusItem() &&
 		m_diagram -> focusItem() -> isSelected()
 	);
+}
+
+/**
+	@return true if the item with the focus is a text being edited in
+	place, whatever kind of text it is.
+*/
+bool DiagramView::textIsBeingEdited() const
+{
+	const auto *text = dynamic_cast<QGraphicsTextItem *>(m_diagram -> focusItem());
+	return(text && (text -> textInteractionFlags() & Qt::TextEditable));
 }
 
 /**

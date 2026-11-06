@@ -213,6 +213,7 @@ class DiagramView : public PaletteGraphicsView
 	
 	private:
 		void setPointedDescription(const QString &description);
+		bool textIsBeingEdited() const;
 		void handleElementDrop(QDropEvent *);
 		void updateFolioReportMenu();
 			/**
