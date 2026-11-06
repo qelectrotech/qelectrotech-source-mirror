@@ -2992,11 +2992,16 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 		const QUuid scheme_id = autonum_project->elementAutoNumId(element_currentAutoNum);
 		setFormulaSchemeId(formula.isEmpty() ? QUuid() : scheme_id);
 
+			//A rule which counts per folio counts for the folio the element
+			//is placed on: its own counter, not wherever the project's counter
+			//was left by numbering some other folio.
+		NumerotationContext given = autonum::folioCounters(
+					nc, diagram(), element_currentAutoNum);
+
 			//The number given is the first whose label no other element of
 			//the project carries: a counter set back, or an element which
 			//was given a number by hand, must not make a second element
 			//with the same label. The counter then goes on from there.
-		NumerotationContext given = nc;
 		if (!formula.isEmpty())
 		{
 			const QSet<QString> held = ElementAutoNumSchemeCommand::labelsHeldBesides(
@@ -3031,6 +3036,10 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 					   diagram(),
 					   element_currentAutoNum);
 		setSequenceStruct(numbers);
+			//Where this folio's own counter has got to: the numbers it has
+			//handed out, not only the highest it ever handed out, so that a
+			//counter put back by hand stays where the user put it.
+		autonum::storeFolioSequential(diagram(), element_currentAutoNum, numbers);
 
 		NumerotationContext new_context = ncc.next();
 		QETProject *project = diagram()->project();

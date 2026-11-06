@@ -611,6 +611,7 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/print/projectprintwindow.cpp
   ${QET_DIR}/sources/print/projectprintwindow.h
+  ${QET_DIR}/sources/print/printdrawing.h
 
   ${QET_DIR}/sources/project/projectpropertieshandler.cpp
   ${QET_DIR}/sources/project/projectpropertieshandler.h

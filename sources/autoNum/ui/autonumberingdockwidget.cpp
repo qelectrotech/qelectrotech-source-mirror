@@ -620,7 +620,70 @@ void AutoNumberingDockWidget::storeContext(QComboBox *combo_box, AutoNumCategory
 		case AutoNumCategory::Element:   m_project->addElementAutoNum(key, context);   break;
 		case AutoNumCategory::Folio:     m_project->addFolioAutoNum(key, context);     break;
 	}
+		//A rule which counts per folio counts for the folio being looked
+		//at, so the counter goes there as well: opening that folio again
+		//reads its own counter and would otherwise put the old number back
+		//over what the user just set.
+	if (category == AutoNumCategory::Element) {
+		storeFolioCounters(key, context);
+	}
 	m_project->setModified(true);
+}
+
+/**
+	@brief AutoNumberingDockWidget::storeFolioCounters
+	The folio-bound parts of @p context, as the folio being looked at
+	counts them, are what that folio's own counter reads now: the number
+	the field holds is the next one to give, while a folio's counter is
+	the last one it gave (insertFolioSeqHash() stores it that way).
+*/
+void AutoNumberingDockWidget::storeFolioCounters(const QString &title,
+												 const NumerotationContext &context)
+{
+	Diagram *diagram = (m_project_view && m_project_view->currentDiagram())
+					? m_project_view->currentDiagram()->diagram() : nullptr;
+	if (!diagram) {
+		return;
+	}
+	QStringList unit, ten, hundred;
+	for (int i = 0 ; i < context.size() ; ++i)
+	{
+		const QStringList item = context.itemAt(i);
+		if (item.isEmpty()) {
+			continue;
+		}
+		const QString &type = item.at(0);
+		if (type != QLatin1String("unitfolio")
+				&& type != QLatin1String("tenfolio")
+				&& type != QLatin1String("hundredfolio")) {
+			continue;
+		}
+		const int increase = item.size() > 2 && item.at(2).toInt() > 0
+				? item.at(2).toInt() : 1;
+			//The field holds the next number to give; a folio's own counter
+			//is the last one it gave, one step below (as
+			//insertFolioSeqHash() stores it).
+		const QString value = QString::number(item.at(1).toInt() - increase);
+		if (type == QLatin1String("unitfolio")) {
+			unit << value;
+		} else if (type == QLatin1String("tenfolio")) {
+			ten << value;
+		} else {
+			hundred << value;
+		}
+	}
+	if (!unit.isEmpty()) {
+		diagram->setFolioSeqValues(QStringLiteral("element"),
+								   QStringLiteral("unitfolio"), title, unit);
+	}
+	if (!ten.isEmpty()) {
+		diagram->setFolioSeqValues(QStringLiteral("element"),
+								   QStringLiteral("tenfolio"), title, ten);
+	}
+	if (!hundred.isEmpty()) {
+		diagram->setFolioSeqValues(QStringLiteral("element"),
+								   QStringLiteral("hundredfolio"), title, hundred);
+	}
 }
 
 /**

@@ -75,10 +75,13 @@ QSpinBox *TitleBlockDimensionWidget::spinbox() const
 TitleBlockDimension TitleBlockDimensionWidget::value() const
 {
 	QET::TitleBlockColumnLength type = QET::Absolute;
+	Qt::Alignment align= Qt::AlignTop;
 	if (complete_) {
 		type = static_cast<QET::TitleBlockColumnLength>(dimension_type_ -> checkedId());
+	}else{
+		align = align_cb_->currentData().value<Qt::Alignment>();
 	}
-	return(TitleBlockDimension(spinbox_ -> value(), type));
+	return(TitleBlockDimension(spinbox_ -> value(), type, align));
 }
 
 /**
@@ -88,6 +91,11 @@ void TitleBlockDimensionWidget::setValue(const TitleBlockDimension &dim) {
 	if (complete_) {
 		if (QAbstractButton *button = dimension_type_ -> button(dim.type)) {
 			button -> setChecked(true);
+		}
+	}else{
+		int index = align_cb_->findData(QVariant::fromValue(static_cast<Qt::Alignment>(dim.align)));
+		if (index != -1){
+			align_cb_->setCurrentIndex(index);
 		}
 	}
 	updateSpinBoxSuffix();
@@ -147,6 +155,19 @@ void TitleBlockDimensionWidget::initWidgets()
 		dimension_type_ -> addButton(remaining_button_, QET::RelativeToRemainingLength);
 		absolute_button_ -> setChecked(true);
 		connect(dimension_type_, qOverload<QAbstractButton*>(&QButtonGroup::buttonClicked), this, &TitleBlockDimensionWidget::updateSpinBoxSuffix);
+	}else{
+		// basic widgets: label + combobox
+		align_label_ = new QLabel(tr("Alignment:", "default dialog label"));
+		align_cb_ = new QComboBox();
+		align_cb_->addItem(tr("Top", "default dialog label"), QVariant::fromValue(static_cast<Qt::Alignment>(Qt::AlignTop)));
+		align_cb_->addItem(tr("Top Left", "default dialog label"), QVariant::fromValue(Qt::AlignTop | Qt::AlignLeft));
+		align_cb_->addItem(tr("Top Center", "default dialog label"), QVariant::fromValue(Qt::AlignTop | Qt::AlignHCenter));
+		align_cb_->addItem(tr("Top Right", "default dialog label"), QVariant::fromValue(Qt::AlignTop | Qt::AlignRight));
+		align_cb_->addItem(tr("Bottom", "default dialog label"), QVariant::fromValue(static_cast<Qt::Alignment>(Qt::AlignBottom)));
+		align_cb_->addItem(tr("Bottom Left", "default dialog label"), QVariant::fromValue(Qt::AlignBottom | Qt::AlignLeft));
+		align_cb_->addItem(tr("Bottom Center", "default dialog label"), QVariant::fromValue(Qt::AlignBottom | Qt::AlignHCenter));
+		align_cb_->addItem(tr("Bottom Right", "default dialog label"), QVariant::fromValue(Qt::AlignBottom | Qt::AlignRight));
+		align_cb_->setToolTip(tr("Indicate which side of the title border template should be aligned with the edge of the workspace", "default dialog label"));
 	}
 	
 	updateSpinBoxSuffix();
@@ -171,6 +192,11 @@ void TitleBlockDimensionWidget::initLayouts()
 		vlayout0 -> addWidget(absolute_button_);
 		vlayout0 -> addWidget(relative_button_);
 		vlayout0 -> addWidget(remaining_button_);
+	}else{
+		QHBoxLayout *hlayout1 = new QHBoxLayout();
+		hlayout1 -> addWidget(align_label_);
+		hlayout1 -> addWidget(align_cb_);
+		vlayout0 -> addLayout(hlayout1);
 	}
 	vlayout0 -> addWidget(buttons_);
 	setLayout(vlayout0);
