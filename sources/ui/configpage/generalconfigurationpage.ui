@@ -149,7 +149,7 @@
         <item>
          <widget class="QCheckBox" name="m_device_navigator_cb">
           <property name="text">
-           <string>Enable device navigator (EPLAN-style)</string>
+           <string>Enable device navigator</string>
           </property>
           <property name="toolTip">
            <string>Show the hierarchical device navigator panel for components, terminals, and functions by plant structure</string>

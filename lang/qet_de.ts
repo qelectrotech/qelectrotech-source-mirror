@@ -8136,12 +8136,12 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
-        <source>Enable device navigator (EPLAN-style)</source>
-        <translation>Betriebsmittel-Navigator aktivieren (EPLAN-Stil)</translation>
+        <source>Enable device navigator</source>
+        <translation>Geräte-Navigator aktivieren</translation>
     </message>
     <message>
         <source>Show the hierarchical device navigator panel for components, terminals, and functions by plant structure</source>
-        <translation>Hierarchischen Betriebsmittel-Navigator nach Anlagen- und Ortsstruktur (wie in EPLAN) anzeigen</translation>
+        <translation>Hierarchischen Geräte-Navigator nach Anlagen- und Ortsstruktur anzeigen</translation>
     </message>
 
     <message>
@@ -28739,11 +28739,11 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     <name>DeviceNavigatorDockWidget</name>
     <message>
         <source>Device Navigator</source>
-        <translation>Betriebsmittel-Navigator</translation>
+        <translation>Geräte-Navigator</translation>
     </message>
     <message>
         <source>Devices</source>
-        <translation>Betriebsmittel</translation>
+        <translation>Geräte</translation>
     </message>
     <message>
         <source>Cables</source>
@@ -28803,15 +28803,15 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     </message>
     <message>
         <source>Search device, function, folio...</source>
-        <translation>Betriebsmittel, Funktion, Folie suchen...</translation>
+        <translation>Gerät, Funktion, Folie suchen...</translation>
     </message>
     <message>
         <source>Devices / Plant Structure</source>
-        <translation>Betriebsmittel / Anlagenstruktur</translation>
+        <translation>Geräte / Anlagenstruktur</translation>
     </message>
     <message>
         <source>Device (BMK)</source>
-        <translation>Betriebsmittel (BMK)</translation>
+        <translation>Gerät (BMK)</translation>
     </message>
     <message>
         <source>Function / Description</source>
@@ -28839,7 +28839,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     </message>
     <message>
         <source>Refresh device list</source>
-        <translation>Betriebsmittelliste aktualisieren</translation>
+        <translation>Geräteliste aktualisieren</translation>
     </message>
     <message>
         <source>Coil</source>
@@ -28895,11 +28895,11 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     </message>
     <message>
         <source>Part placement, general device</source>
-        <translation>Artikelplatzierung, allgemeines Betriebsmittel</translation>
+        <translation>Artikelplatzierung, allgemeines Gerät</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation>Betriebsmittel</translation>
+        <translation>Gerät</translation>
     </message>
     <message>
         <source>&lt;unnamed&gt;</source>
@@ -28958,7 +28958,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     </message>
     <message>
         <source>Device tag prefixes (comma-separated, e.g. K, Q, F):</source>
-        <translation>Betriebsmittel-Kennbuchstaben (kommagetrennt, z.B. K, Q, F):</translation>
+        <translation>Gerätekennzeichen-Präfixe (kommagetrennt, z.B. K, Q, F):</translation>
     </message>
     <message>
         <source>Custom BMK wildcard pattern (e.g. *Pump*, -K[1-9]):</source>
@@ -28966,7 +28966,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     </message>
     <message>
         <source>Element Types</source>
-        <translation>Betriebsmitteltypen</translation>
+        <translation>Gerätetypen</translation>
     </message>
     <message>
         <source>Masters / Coils</source>
@@ -29010,11 +29010,11 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     </message>
     <message>
         <source>Only elements WITH structure (=Plant +Location)</source>
-        <translation>Nur Betriebsmittel MIT Struktur (=Anlage +Ort)</translation>
+        <translation>Nur Geräte MIT Struktur (=Anlage +Ort)</translation>
     </message>
     <message>
         <source>Only elements WITHOUT structure (Ohne Strukturkennzeichen)</source>
-        <translation>Nur Betriebsmittel OHNE Strukturkennzeichen</translation>
+        <translation>Nur Geräte OHNE Strukturkennzeichen</translation>
     </message>
     <message>
         <source>Structure text contains (e.g. =010 or +A1):</source>
