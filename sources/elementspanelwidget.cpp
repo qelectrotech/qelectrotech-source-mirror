@@ -848,14 +848,24 @@ void ElementsPanelWidget::duplicateDiagram()
 			}
 		}
 
-			// The copies follow the numberings of the project: they get the
-			// next numbers, as pasted elements do. This duplication is not
-			// undoable, so neither is the numbering: it is done at once.
+			// The copies follow the numberings of the project: a scheme which
+			// counts over the whole project gives them its next numbers, a
+			// scheme which counts per folio ("Zahlenformat 1 - Seite") starts
+			// the copy's own folio at the beginning a folio is numbered from,
+			// so a copy comes out numbered 1, 2, 3 like the page it was made
+			// from rather than where the counter had got to elsewhere. The
+			// source folio's labels are the numbers the copies are given
+			// again: they stop being a clash as soon as the copy has a folio
+			// number of its own, and its labels follow it (%F is worked out
+			// again for every display).
+			// This duplication is not undoable, so neither is the numbering:
+			// it is done at once.
 		ElementAutoNumSchemeCommand::linkPasted(project, new_elements);
 		if (!copy_schemes.isEmpty())
 		{
 			QUndoCommand numbering;
-			if (ElementAutoNumSchemeCommand::numberPasted(project, copy_schemes, &numbering)) {
+			if (ElementAutoNumSchemeCommand::numberPasted(
+					project, copy_schemes, &numbering, source_diagram)) {
 				numbering.redo();
 			}
 		}

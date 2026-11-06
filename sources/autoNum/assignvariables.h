@@ -118,6 +118,14 @@ namespace autonum
 	void setSequentialToList(QStringList &list, NumerotationContext &nc, const QString& type);
 	void setFolioSequentialToHash(QStringList &list, QHash<QString, QStringList> &hash, const QString& autoNumName);
 	void setSequential(const QString& label, autonum::sequentialNumbers &seqStruct, NumerotationContext &context, Diagram *diagram, const QString& hashKey);
+	/**
+		The numbers @p seq has just given on @p diagram under the name
+		@p key: where that folio's own counter for the numbering is from
+		now on, in the hash and in the rows the project saves it in.
+		Sibling of setFolioSequentialToHash(), which only ever raises it.
+	*/
+	void storeFolioSequential(Diagram *diagram, const QString &key,
+				  const sequentialNumbers &seq);
 	QString numerotationContextToFormula(const NumerotationContext &nc);
 	/**
 		Put back every part of a numbering rule whose counter belongs to
@@ -130,6 +138,22 @@ namespace autonum
 		@return the same rule, with its folio-bound counters restarted
 	*/
 	NumerotationContext resetFolioCounters(const NumerotationContext &nc);
+	/**
+		Where @p diagram numbers the folio-bound parts of @p nc under
+		the name @p key: that folio's own counter -- the numbers it has
+		actually handed out -- or, when it has handed out none yet, where
+		the rule says a folio starts. A numbering which counts per folio
+		has to read this rather than the project's counter, which holds
+		wherever the last folio worked on got to.
+
+		@param nc the rule to read, its counters as they are
+		@param diagram the folio which is being numbered
+		@param key the numbering's name in the folio's own counters
+		@return @p nc with its folio-bound counters set for that folio
+	*/
+	NumerotationContext folioCounters(const NumerotationContext &nc,
+					  Diagram *diagram,
+					  const QString &key);
 	/**
 		Set every part of a numbering rule which counts back to its very
 		first value, so that numbering starts at the beginning again --
