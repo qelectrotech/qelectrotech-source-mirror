@@ -4,8 +4,12 @@
 
 #include <QCoreApplication>
 #include <QDateTime>
+#include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QProcess>
+#include <QScopeGuard>
+#include <QStandardPaths>
 #include <QTemporaryDir>
 #include <QUrl>
 
@@ -210,4 +214,224 @@ TEST_CASE("Multiple KAutoSaveFile generations for one managed file are all "
 			"generation n=\"" + QByteArray::number(i) + "\""));
 	}
 #endif
+}
+
+namespace {
+
+struct ManagedPath
+{
+	const char *kind;
+		//As a file dialog, the command line or Explorer gives it
+	QString path;
+		//The project file opened again from the recovery file
+	QString expected;
+};
+
+QList<ManagedPath> managedPaths()
+{
+		//A folder name of 30 characters, for a path longer than 260
+	const QString long_folders
+		= QStringLiteral("a folder name of thirty chars/").repeated(10);
+#ifdef Q_OS_WIN
+	return {
+		{"drive letter",
+		 QStringLiteral(u"C:/Users/\u00C5sa/Documents/project.qet"),
+		 QStringLiteral(u"C:/Users/\u00C5sa/Documents/project.qet")},
+		{"backslashes",
+		 QStringLiteral(u"C:\\Users\\\u00C5sa\\Documents\\project.qet"),
+		 QStringLiteral(u"C:/Users/\u00C5sa/Documents/project.qet")},
+		{"lower case drive letter",
+		 QStringLiteral(u"c:/users/\u00E5sa/project.qet"),
+		 QStringLiteral(u"c:/users/\u00E5sa/project.qet")},
+		{"root of a drive",
+		 QStringLiteral("C:/project.qet"),
+		 QStringLiteral("C:/project.qet")},
+		{"mapped network drive",
+		 QStringLiteral("Z:/Projekt/plan.qet"),
+		 QStringLiteral("Z:/Projekt/plan.qet")},
+		{"MSYS2 home folder",
+		 QStringLiteral(u"C:/msys64/home/\u00E5sa/project.qet"),
+		 QStringLiteral(u"C:/msys64/home/\u00E5sa/project.qet")},
+		{"network share",
+		 QStringLiteral("\\\\server\\share\\folder\\project.qet"),
+		 QStringLiteral("//server/share/folder/project.qet")},
+		{"network share with slashes",
+		 QStringLiteral("//server/share/folder/project.qet"),
+		 QStringLiteral("//server/share/folder/project.qet")},
+		{"WSL folder",
+		 QStringLiteral(u"\\\\wsl.localhost\\Ubuntu\\home\\\u00E5sa\\project.qet"),
+		 QStringLiteral(u"//wsl.localhost/Ubuntu/home/\u00E5sa/project.qet")},
+		{"WSL folder, older name",
+		 QStringLiteral(u"\\\\wsl$\\Ubuntu\\home\\\u00E5sa\\project.qet"),
+		 QStringLiteral(u"//wsl$/Ubuntu/home/\u00E5sa/project.qet")},
+		{"characters of URLs",
+		 QStringLiteral(u"C:/Users/\u00C5sa/OneDrive - Firma AB/"
+						u"Projekt #1/100% klar & ny;'v2'.qet"),
+		 QStringLiteral(u"C:/Users/\u00C5sa/OneDrive - Firma AB/"
+						u"Projekt #1/100% klar & ny;'v2'.qet")},
+		{"other scripts",
+		 QStringLiteral(u"C:/Users/\u0416/\u65E5\u672C/project.qet"),
+		 QStringLiteral(u"C:/Users/\u0416/\u65E5\u672C/project.qet")},
+		{"dot folders",
+		 QStringLiteral(u"C:/Users/\u00C5sa/a/../b/./project.qet"),
+		 QStringLiteral(u"C:/Users/\u00C5sa/b/project.qet")},
+		{"path longer than 260",
+		 QStringLiteral("C:/") + long_folders + QStringLiteral("project.qet"),
+		 QStringLiteral("C:/") + long_folders + QStringLiteral("project.qet")},
+		{"long path prefix",
+		 QStringLiteral(u"\\\\?\\C:\\Users\\\u00C5sa\\project.qet"),
+		 QString()},
+	};
+#else
+	return {
+		{"home folder",
+		 QStringLiteral(u"/home/\u00E5sa/Documents/project.qet"),
+		 QStringLiteral(u"/home/\u00E5sa/Documents/project.qet")},
+		{"Windows drive in WSL",
+		 QStringLiteral(u"/mnt/c/Users/\u00C5sa/OneDrive - Firma AB/project.qet"),
+		 QStringLiteral(u"/mnt/c/Users/\u00C5sa/OneDrive - Firma AB/project.qet")},
+		{"characters of URLs",
+		 QStringLiteral(u"/home/\u00E5sa/Projekt #1/100% klar & ny;'v2'.qet"),
+		 QStringLiteral(u"/home/\u00E5sa/Projekt #1/100% klar & ny;'v2'.qet")},
+		{"colon and backslash in names",
+		 QStringLiteral(u"/home/\u00E5sa/C:\\x/a:b.qet"),
+		 QStringLiteral(u"/home/\u00E5sa/C:\\x/a:b.qet")},
+		{"a folder named like a drive",
+		 QStringLiteral("/C:/Users/project.qet"),
+		 QStringLiteral("/C:/Users/project.qet")},
+		{"other scripts",
+		 QStringLiteral(u"/home/\u0416/\u65E5\u672C/project.qet"),
+		 QStringLiteral(u"/home/\u0416/\u65E5\u672C/project.qet")},
+		{"dot folders",
+		 QStringLiteral(u"/home/\u00E5sa/a/../b/./project.qet"),
+		 QStringLiteral(u"/home/\u00E5sa/b/project.qet")},
+		{"path longer than 260",
+		 QStringLiteral("/home/") + long_folders + QStringLiteral("project.qet"),
+		 QStringLiteral("/home/") + long_folders + QStringLiteral("project.qet")},
+	};
+#endif
+}
+
+bool samePath(const QString &first, const QString &second)
+{
+#ifdef Q_OS_WIN
+	return first.compare(second, Qt::CaseInsensitive) == 0;
+#else
+	return first == second;
+#endif
+}
+
+} // namespace
+
+TEST_CASE("Qt-only KAutoSaveFile recovers the project of every kind of path "
+		  "after a crash", "[nokde][autosave]")
+{
+		//The test and kautosavefile_writer share their recovery folder
+	const auto application = QStringLiteral("KAutoSaveFilePathTest%1")
+		.arg(QCoreApplication::applicationPid());
+	QStandardPaths::setTestModeEnabled(true);
+	QCoreApplication::setOrganizationName(QStringLiteral("QElectroTech"));
+	QCoreApplication::setApplicationName(application);
+	const auto data_dir = QStandardPaths::writableLocation(
+		QStandardPaths::AppDataLocation);
+	REQUIRE_FALSE(data_dir.isEmpty());
+	const auto cleanup = qScopeGuard([&] {
+		QDir(data_dir).removeRecursively();
+		QStandardPaths::setTestModeEnabled(false);
+	});
+
+	for (const auto &managed : managedPaths()) {
+		INFO(managed.kind << ": " << managed.path.toStdString());
+			//As QElectroTech names the project it opens
+		const auto project_path
+			= QDir::cleanPath(QFileInfo(managed.path).absoluteFilePath());
+
+		QProcess writer;
+		writer.start(QStringLiteral(QET_AUTOSAVE_WRITER),
+					 {application, managed.path});
+		REQUIRE(writer.waitForStarted());
+		REQUIRE(writer.waitForReadyRead(30000));
+		REQUIRE(writer.readAllStandardOutput().startsWith("ready"));
+
+			//QElectroTech still runs: its recovery file is locked
+		auto active_files = KAutoSaveFile::allStaleFiles();
+		CHECK(active_files.isEmpty());
+		qDeleteAll(active_files);
+
+		writer.kill();
+		REQUIRE(writer.waitForFinished());
+
+		auto stale_files = KAutoSaveFile::allStaleFiles();
+		REQUIRE(stale_files.size() == 1);
+		std::unique_ptr<KAutoSaveFile> stale_file(stale_files.takeFirst());
+
+		const auto recovered = stale_file->managedFile();
+		CHECK(recovered.isLocalFile());
+		CHECK(samePath(recovered.toLocalFile(), project_path));
+		if (!managed.expected.isNull()) {
+			CHECK(samePath(recovered.toLocalFile(), managed.expected));
+		}
+
+		auto matching = KAutoSaveFile::staleFiles(
+			QUrl::fromLocalFile(managed.path));
+		CHECK(matching.size() == 1);
+		qDeleteAll(matching);
+
+		REQUIRE(stale_file->open(QIODevice::ReadOnly));
+		CHECK(stale_file->readAll() == managed.path.toUtf8());
+
+			//Opened, the recovery file is deleted with its object
+		stale_file.reset();
+		auto left_files = KAutoSaveFile::allStaleFiles();
+		CHECK(left_files.isEmpty());
+		qDeleteAll(left_files);
+	}
+}
+
+TEST_CASE("Qt-only KAutoSaveFile reads the recovery files of earlier versions",
+		  "[nokde][autosave]")
+{
+		//Before file URLs, the project's path was stored as it is
+	const auto application = QStringLiteral("KAutoSaveFileEarlierTest%1")
+		.arg(QCoreApplication::applicationPid());
+	QStandardPaths::setTestModeEnabled(true);
+	QCoreApplication::setOrganizationName(QStringLiteral("QElectroTech"));
+	QCoreApplication::setApplicationName(application);
+	const auto data_dir = QStandardPaths::writableLocation(
+		QStandardPaths::AppDataLocation);
+	REQUIRE_FALSE(data_dir.isEmpty());
+	const auto cleanup = qScopeGuard([&] {
+		QDir(data_dir).removeRecursively();
+		QStandardPaths::setTestModeEnabled(false);
+	});
+
+#ifdef Q_OS_WIN
+	const auto project_path
+		= QStringLiteral(u"C:/Users/\u00C5sa/Projekt #1/project.qet");
+#else
+	const auto project_path
+		= QStringLiteral(u"/home/\u00E5sa/Projekt #1/project.qet");
+#endif
+	QDir autosave_dir(data_dir + QStringLiteral("/autosave"));
+	REQUIRE(autosave_dir.mkpath(QStringLiteral(".")));
+	const auto recovery = autosave_dir.filePath(
+		QStringLiteral("project.qet_0123456789abcdef_1.qetautosave"));
+	QFile recovery_file(recovery);
+	REQUIRE(recovery_file.open(QIODevice::WriteOnly));
+	REQUIRE(recovery_file.write("<project/>") > 0);
+	recovery_file.close();
+	QFile path_file(recovery + QStringLiteral(".path"));
+	REQUIRE(path_file.open(QIODevice::WriteOnly | QIODevice::Text));
+	REQUIRE(path_file.write(project_path.toUtf8() + '\n') > 0);
+	path_file.close();
+
+	auto stale_files = KAutoSaveFile::allStaleFiles();
+	REQUIRE(stale_files.size() == 1);
+	std::unique_ptr<KAutoSaveFile> stale_file(stale_files.takeFirst());
+	CHECK(stale_file->managedFile().toLocalFile() == project_path);
+
+	auto matching = KAutoSaveFile::staleFiles(
+		QUrl::fromLocalFile(project_path));
+	CHECK(matching.size() == 1);
+	qDeleteAll(matching);
 }
