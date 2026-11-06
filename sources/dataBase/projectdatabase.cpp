@@ -5108,7 +5108,8 @@ void projectDataBase::createDrawingItemView()
 QStringList projectDataBase::publicViews()
 {
 	return {QStringLiteral("qet_folios"), QStringLiteral("qet_devices"),
-			QStringLiteral("qet_wires"), QStringLiteral("qet_links")};
+			QStringLiteral("qet_wires"), QStringLiteral("qet_links"),
+			QStringLiteral("qet_terminals")};
 }
 
 /**
@@ -5128,9 +5129,15 @@ QStringList projectDataBase::publicViews()
 	links are kept once each: coil to contact, going arrow to coming
 	arrow.
 
-	No view of terminals: the terminal table lists only the terminals a
-	wire ends on, so one would leave out every free terminal without
-	saying so. qet_wires names the terminal at each end.
+	qet_terminals is the terminals of each terminal strip, one row per
+	terminal, read from the strips themselves (terminal_strip_value, what
+	TerminalStrip::toXml() writes): the strip (=plant+location-name, its own
+	plant and location), the position of the terminal in it and its level,
+	both counted from 0 as the terminal strip editor shows them, and the
+	symbol drawing it -- its label, its own structure_id and folio -- or
+	spare = 1 for a terminal drawn nowhere. A terminal symbol in no strip
+	is not in it: qet_devices lists every symbol, those of kind 'terminal'
+	included.
 */
 void projectDataBase::createPublicViews()
 {
@@ -5231,7 +5238,42 @@ QStringList projectDataBase::publicViewStatements()
 			"LEFT JOIN diagram_info di1 ON di1.diagram_uuid = e1.diagram_uuid "
 			"LEFT JOIN diagram d2 ON d2.uuid = e2.diagram_uuid "
 			"LEFT JOIN diagram_info di2 ON di2.diagram_uuid = e2.diagram_uuid "
-			"WHERE e1.type IN ('master', 'next_report')")
+			"WHERE e1.type IN ('master', 'next_report')"),
+			//After qet_devices, which it reads
+		QStringLiteral(
+			"CREATE VIEW qet_terminals AS "
+			"WITH info AS (SELECT n.strip_uuid, n.value AS name, t.value AS value "
+				"FROM terminal_strip_value n JOIN terminal_strip_value t "
+				"ON t.strip_uuid = n.strip_uuid AND t.section = n.section AND t.ord = n.ord "
+				"AND t.name = '#text' "
+				"WHERE n.section = 'terminal_strip/terminal_strip_data/informations/information' "
+				"AND n.name = 'name'), "
+			"strip AS (SELECT s.strip_uuid, "
+				"MAX(CASE WHEN i.name = 'installation' THEN i.value END) AS plant, "
+				"MAX(CASE WHEN i.name = 'location' THEN i.value END) AS location, "
+				"MAX(CASE WHEN i.name = 'name' THEN i.value END) AS name "
+				"FROM (SELECT DISTINCT strip_uuid FROM terminal_strip_value) s "
+				"LEFT JOIN info i ON i.strip_uuid = s.strip_uuid GROUP BY s.strip_uuid), "
+				//A strip of one physical terminal writes it without [0]
+			"terminal AS (SELECT strip_uuid, "
+				"CASE WHEN section = 'terminal_strip/layout/physical_terminal/real_terminal' THEN 0 "
+				"ELSE CAST(SUBSTR(section, INSTR(section, '[') + 1, "
+				"INSTR(section, ']') - INSTR(section, '[') - 1) AS INTEGER) END AS position, "
+				"ord AS level, "
+				"MAX(CASE WHEN name = 'element_uuid' THEN value END) AS element_uuid, "
+				"MAX(CASE WHEN name = 'spare_uuid' THEN 1 ELSE 0 END) AS spare "
+				"FROM terminal_strip_value "
+				"WHERE section LIKE 'terminal_strip/layout/physical_terminal%/real_terminal' "
+				"GROUP BY strip_uuid, section, ord) "
+			"SELECT ")
+			+ structureIdSql(QStringLiteral("s.plant"), QStringLiteral("s.location"), QStringLiteral("s.name"))
+			+ QStringLiteral(" AS strip_id, COALESCE(s.plant, '') AS plant, "
+			"COALESCE(s.location, '') AS location, s.name AS strip, t.position, t.level, "
+			"d.label, d.structure_id AS terminal_id, t.spare, d.folio_number, d.folio, "
+			"t.element_uuid, t.strip_uuid "
+			"FROM terminal t JOIN strip s ON s.strip_uuid = t.strip_uuid "
+			"LEFT JOIN qet_devices d ON d.device_uuid = t.element_uuid "
+			"ORDER BY strip_id, t.strip_uuid, t.position, t.level")
 	};
 	return views;
 }
