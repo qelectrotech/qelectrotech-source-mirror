@@ -86,6 +86,11 @@ Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="false"
 text_from="ElementInfo" uuid="%6" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular">
 <info_name>label</info_name>
 </dynamic_text>
+<dynamic_text x="0" y="-64" z="8" text_width="-1" Halignment="AlignLeft"
+Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="false"
+text_from="CompositeText" uuid="%8" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular">
+<composite_text>%{label}</composite_text>
+</dynamic_text>
 <terminal x="0" y="30" orientation="s" uuid="%7"/>
 </description>
 </definition>)")
@@ -102,6 +107,7 @@ text_from="ElementInfo" uuid="%6" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regu
 </plcIOs>
 </plcMasterData>)")
 					: QString(),
+				QUuid::createUuid().toString(),
 				QUuid::createUuid().toString(),
 				QUuid::createUuid().toString());
 	}
@@ -121,6 +127,18 @@ text_from="ElementInfo" uuid="%6" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regu
 	{
 		DynamicElementTextItem* text = labelText(element);
 		return text ? text->toPlainText() : QString();
+	}
+
+	// What the composite text of @p element draws: the one using %{label},
+	// which reads its own element's information -- and so, for a contact,
+	// has to reach the master for the label (@sa labelSource()).
+	static QString shownCompositeLabel(Element* element)
+	{
+		for (DynamicElementTextItem* text : element->dynamicTextItems())
+			if (text->textFrom() == DynamicElementTextItem::CompositeText
+				&& text->compositeText().contains(QLatin1String("%{label}")))
+				return text->toPlainText();
+		return QString();
 	}
 
 	static void settle()
@@ -166,6 +184,7 @@ text_from="ElementInfo" uuid="%6" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regu
 		QCOMPARE(master->actualLabel(), QStringLiteral("-K1"));
 		QCOMPARE(shownLabel(master), QStringLiteral("-K1"));
 		QCOMPARE(shownLabel(contact), QStringLiteral("-K1"));
+		QCOMPARE(shownCompositeLabel(contact), QStringLiteral("-K1"));
 
 		if (insert_first)
 		{
@@ -191,6 +210,9 @@ text_from="ElementInfo" uuid="%6" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regu
 		QVERIFY2(
 			shownLabel(contact) == QStringLiteral("-K2"),
 			"the contact must show its master's new label");
+		QVERIFY2(
+			shownCompositeLabel(contact) == QStringLiteral("-K2"),
+			"the composite %{label} of the contact must show its master's new label");
 	}
 
   private slots:
