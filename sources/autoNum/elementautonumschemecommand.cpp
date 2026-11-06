@@ -290,13 +290,18 @@ QString concreteFolioNumber(const Diagram *folio)
 	while @p changing change: numbers an operation on @p changing must not
 	give again, or two elements would carry the same label.
 
-	Two labels are left out of that: those of @p source_folio, the folio
-	the elements were copied from, and those of any folio reading the same
+	Two labels are left out of that, and only when the scheme's own label
+	holds the folio number: those of @p source_folio, the folio the
+	elements were copied from, and those of any folio reading the same
 	folio number as a folio being numbered. A folio copied from another
 	keeps its source's folio number until the user gives it one of its own,
 	so the labels of both are the very numbers the copies are given again,
 	and they part as soon as the copy has a number of its own -- %F is
 	worked out again for every display.
+
+	A label which does not hold %F never changes with the folio number, so
+	those two would stand side by side on both pages for good: there, every
+	folio holds every number back as before.
 */
 QSet<QString> ElementAutoNumSchemeCommand::reservedLabels(
 		const QETProject *project,
@@ -309,6 +314,12 @@ QSet<QString> ElementAutoNumSchemeCommand::reservedLabels(
 		return labels;
 	}
 	const QSet<const Element *> moving(changing.constBegin(), changing.constEnd());
+
+		//Whether the label carries the folio number the exemptions below
+		//hang on (%F, not %f: the page index is a number of its own and
+		//differs from page to page whatever the pages are called).
+	const bool carries_folio_number = project->elementAutoNumFormula(title)
+			.contains(QLatin1String("%F"));
 
 		//The folios being numbered, and the numbers they read. A folio
 		//reading one of those numbers is the same page as far as %F is
@@ -333,10 +344,12 @@ QSet<QString> ElementAutoNumSchemeCommand::reservedLabels(
 	{
 		if (moving.contains(el)
 				|| !el->takesSchemeNumber()
-				|| (source_folio && el->diagram() == source_folio)) {
+				|| (carries_folio_number && source_folio
+					&& el->diagram() == source_folio)) {
 			continue;
 		}
-		if (el->diagram() && !numbering.contains(el->diagram())) {
+		if (carries_folio_number && el->diagram()
+				&& !numbering.contains(el->diagram())) {
 			const QString number = concreteFolioNumber(el->diagram());
 			if (!number.isEmpty() && numbering_numbers.contains(number)) {
 				continue;

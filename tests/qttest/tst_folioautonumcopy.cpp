@@ -382,6 +382,71 @@ class TstFolioAutonumCopy : public QObject
 		}
 
 		/*
+			A rule which counts over the whole project and whose label holds
+			no folio number keeps every claim on its numbers: the copies of a
+			page go on where the project's counter is and do not take the
+			numbers of the page they were made from again. Nothing would tell
+			-K1 on the copy from -K1 on that page -- the label never changes
+			with the folio number.
+		*/
+		void schemeWithoutFolioNumberKeepsItsLabelsUnique()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			QVERIFY(editor);
+			auto *panel_widget = editor->findChild<ElementsPanelWidget *>();
+			QVERIFY(panel_widget);
+			ElementsPanel &panel = panel_widget->elementsPanel();
+
+			QVERIFY(editor->newProject());
+			m_open_project = editor->currentProjectView()->project();
+			QETProject *project = m_open_project;
+			QVERIFY(project);
+
+			// -K1: one counter over the whole project, no folio number in it
+			NumerotationContext rule;
+			rule.addValue(QStringLiteral("string"), QStringLiteral("-K"), 1);
+			rule.addValue(QStringLiteral("unit"), 1, 1);
+			const QString title = QStringLiteral("Contacts");
+			project->addElementAutoNum(title, rule, QUuid::createUuid());
+
+			QVERIFY(!project->folios().isEmpty());
+			Diagram *source = project->folios().first();
+
+			QVector<Element *> elements;
+			for (int i = 0 ; i < 3 ; ++i) {
+				Element *element = symbol(source, QStringLiteral("K"));
+				QVERIFY2(element, "a symbol is placed");
+				elements << element;
+			}
+			QVERIFY2(number(project, title, elements, source),
+					 "the three symbols are given the numbering");
+			QCOMPARE(labelsOf(source),
+					 (QStringList{QStringLiteral("-K1"),
+								  QStringLiteral("-K2"),
+								  QStringLiteral("-K3")}));
+
+			// The counter is put back to 1 the way a user puts it back: the
+			// numbers the page holds stay taken by it.
+			project->addElementAutoNum(title, rule);
+
+			const QList<Diagram *> before = project->folios();
+			QTreeWidgetItem *project_item = panel.itemForProject(project);
+			QVERIFY(project_item);
+			QVERIFY2(selectFolio(panel, project_item, source),
+					 "the source folio is selected in the project tree");
+			panel_widget->duplicateDiagram();
+			Diagram *copy = folioNotIn(project, before);
+			QVERIFY2(copy, "the duplication made a folio of its own");
+
+			// The copies go on at 4: nothing in -K1 says which page it is
+			// on, so -K1 twice would be two parts with the same name.
+			QCOMPARE(labelsOf(copy),
+					 (QStringList{QStringLiteral("-K4"),
+								  QStringLiteral("-K5"),
+								  QStringLiteral("-K6")}));
+		}
+
+		/*
 			A folio numbered from the start again reads 1, 2, 3 afterwards, and
 			its own counter reads 3: not 5, the highest it ever handed out,
 			which would make the next numbering on it go on from 6.
