@@ -25,6 +25,7 @@
 #include "ui/conductorpropertieswidget.h"
 
 #include "dataBase/projectdatabase.h"
+#include "dataBase/qetdbfile.h"
 
 #include <QDir>
 #include <QImage>
@@ -365,6 +366,110 @@ class tst_potentialtypes : public QObject
 				"SELECT COUNT(*) FROM sqlite_master WHERE name IN ('wire_potential_view', 'potential_member')"));
 			QVERIFY(stored.next());
 			QCOMPARE(stored.value(0).toInt(), 0);
+		}
+
+		/// A .qetdb read by itself, without opening the project, gives the
+		/// project's potentials, its unknown ones and its mismatches
+		void qetdbGivesTheSameAnswersAsTheProject()
+		{
+			QStringList files{QFINDTESTDATA("fixtures/every_feature.qet"),
+							  QFINDTESTDATA("fixtures/linked_reports.qet"),
+							  QFINDTESTDATA("fixtures/junction_dot_shared_potential.qet")};
+			const QString extra = qEnvironmentVariable("QET_GROUPS_EXTRA_DIR");
+			if (!extra.isEmpty())
+				for (const QString &name : QDir(extra).entryList({QStringLiteral("*.qet")}, QDir::Files))
+					files << QDir(extra).filePath(name);
+
+				//The partition, as sorted lines of sorted wires, and the
+				//unknown wires: comparable whatever the group numbers are
+			const auto shape = [](const projectDataBase::PotentialGroups &g) {
+				QHash<int, QStringList> members;
+				QStringList unknown;
+				for (auto it = g.group_of.constBegin(); it != g.group_of.constEnd(); ++it) {
+					members[it.value()] << it.key().toString();
+					if (g.isUnknown(it.key())) unknown << it.key().toString();
+				}
+				QStringList lines;
+				for (QStringList wires : std::as_const(members)) {
+					wires.sort();
+					lines << wires.join(QLatin1Char(' '));
+				}
+				lines.sort();
+				unknown.sort();
+				return QPair<QStringList, QStringList>(lines, unknown);
+			};
+			const auto mismatchShape = [](const QList<projectDataBase::PotentialMismatch> &list) {
+				QStringList lines;
+				for (const auto &m : list) {
+					QStringList wires;
+					for (const QUuid &w : m.wires) wires << w.toString();
+					wires.sort();
+					lines << m.types.join(QLatin1Char('+')) + QLatin1Char(':') + wires.join(QLatin1Char(' '));
+				}
+				lines.sort();
+				return lines;
+			};
+
+			int compared = 0, mismatching = 0, unknown_total = 0, mismatch_total = 0;
+			for (const QString &file : files) {
+				QETProject project(file);
+				if (!project.dataBase())
+					continue;
+					//Two different types on one potential, and an isolating
+					//terminal block somewhere, so both kinds of answer exist
+				for (Diagram *diagram : project.diagrams())
+					for (Conductor *c : diagram->conductors()) {
+						const QSet<Conductor *> related = c->relatedPotentialConductors();
+						if (related.isEmpty() || mismatching > 0)
+							continue;
+						ConductorProperties p = c->properties();
+						p.m_potential_type = QStringLiteral("N");
+						c->setProperties(p);
+						Conductor *other = *related.constBegin();
+						p = other->properties();
+						p.m_potential_type = QStringLiteral("PE");
+						other->setProperties(p);
+						++mismatching;
+					}
+				Element *block = nullptr;
+				for (Diagram *diagram : project.diagrams())
+					for (Element *e : diagram->elements())
+						if (!block && (e->elementData().m_type & ElementData::Terminal)
+								&& !e->conductors().isEmpty())
+							block = e;
+				if (block) {
+					DiagramContext info = block->elementInformations();
+					info.addValue(QStringLiteral("potential_isolating"), true);
+					block->setElementInformations(info);
+				}
+				mismatching = 0;
+
+				projectDataBase *db = project.dataBase();
+				const auto from_project = shape(db->potentialGroups());
+				const auto mismatches_project = mismatchShape(db->potentialTypeMismatches());
+
+				const QString path = m_dir.filePath(QStringLiteral("same%1.qetdb").arg(compared));
+				QString error;
+				QVERIFY2(QetDbFile::save(*db, path, &error), qPrintable(file + QStringLiteral(": ") + error));
+				const QString name = QStringLiteral("potential_qetdb_%1").arg(compared);
+				{
+					QSqlDatabase file_db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), name);
+					file_db.setDatabaseName(path);
+					file_db.setConnectOptions(QStringLiteral("QSQLITE_OPEN_READONLY"));
+					QVERIFY2(file_db.open(), qPrintable(file));
+					const auto from_file = shape(projectDataBase::potentialGroupsOf(file_db));
+					QVERIFY2(from_file == from_project, qPrintable(file));
+					QCOMPARE(mismatchShape(projectDataBase::potentialTypeMismatchesOf(file_db)), mismatches_project);
+					unknown_total += from_file.second.size();
+					mismatch_total += mismatches_project.size();
+					file_db.close();
+				}
+				QSqlDatabase::removeDatabase(name);
+				++compared;
+			}
+			fprintf(stderr, "QETDBSAME compared %d projects, %d unknown wires, %d mismatching potentials\n",
+					compared, unknown_total, mismatch_total);
+			QVERIFY(compared >= 3);
 		}
 
 		void drawnFromTheTypeOnlyWhenOn()

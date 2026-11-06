@@ -1874,7 +1874,7 @@ std::optional<QSet<QUuid>> projectDataBase::potentialWires(const QUuid &wire) co
 	Costs one read of each table, however many wires there are, where asking
 	potentialWires() for each wire reads them all again every time.
 */
-projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
+projectDataBase::PotentialGroups projectDataBase::potentialGroupsOf(const QSqlDatabase &db)
 {
 	using Node = std::pair<QString, QString>;   //element uuid, terminal uuid
 	QHash<Node, int> index;
@@ -1904,7 +1904,7 @@ projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
 	};
 
 	{
-		QSqlQuery query(m_data_base);
+		QSqlQuery query(db);
 		query.exec(QStringLiteral("SELECT uuid, terminal1_element_uuid, terminal1_uuid, "
 								  "terminal2_element_uuid, terminal2_uuid FROM conductor"));
 		while (query.next()) {
@@ -1918,7 +1918,7 @@ projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
 		//The first symbol each symbol is linked to, in one read
 	QHash<QString, QString> first_partner;
 	{
-		QSqlQuery query(m_data_base);
+		QSqlQuery query(db);
 		query.exec(QStringLiteral("SELECT element_uuid, linked_uuid FROM link ORDER BY element_uuid, ord, rowid"));
 		while (query.next()) {
 			const QString element = query.value(0).toString();
@@ -1927,9 +1927,22 @@ projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
 		}
 	}
 
+		//The terminal blocks that isolate their terminals, from the table
+		//the symbols write their information through, so a .qetdb read
+		//by itself gives the same answer as the project opened from it
+	QSet<QString> isolating;
+	{
+		QSqlQuery query(db);
+		query.exec(QStringLiteral("SELECT element_uuid, value FROM element_information "
+								  "WHERE name = 'potential_isolating'"));
+		while (query.next())
+			if (QET::infoFlagIsTrue(query.value(1).toString()))
+				isolating.insert(query.value(0).toString());
+	}
+
 	QList<int> isolated;
 	{
-		QSqlQuery query(m_data_base);
+		QSqlQuery query(db);
 		query.exec(QStringLiteral("SELECT uuid, type FROM element"));
 		while (query.next()) {
 			const QString element = query.value(0).toString();
@@ -1945,8 +1958,7 @@ projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
 			} else if (kind & ElementData::Terminal) {
 				for (int a : *own)
 					join(own->first(), a);
-				if (QET::infoFlagIsTrue(m_element_information.value(QUuid(element))
-										.value(QStringLiteral("potential_isolating")).toString()))
+				if (isolating.contains(element))
 					isolated << own->first();
 			}
 		}
@@ -1969,6 +1981,11 @@ projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
 	return groups;
 }
 
+projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
+{
+	return potentialGroupsOf(m_data_base);
+}
+
 /**
 	@brief projectDataBase::refreshPotentialMembers
 	Rebuild the TEMP table potential_member (wire_uuid, potential_id,
@@ -1982,13 +1999,11 @@ projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
 	data that could disagree with the drawing. Run on request only, never on
 	a load, an edit or a paint.
 */
-void projectDataBase::refreshPotentialMembers()
+void projectDataBase::refreshPotentialMembersOf(QSqlDatabase db)
 {
-		//newQuery() writes the pending wire properties first
-	flushConductorProperties();
-	const PotentialGroups groups = potentialGroups();
+	const PotentialGroups groups = potentialGroupsOf(db);
 
-	QSqlQuery query(m_data_base);
+	QSqlQuery query(db);
 	query.exec(QStringLiteral("CREATE TEMP TABLE IF NOT EXISTS potential_member ("
 							  "wire_uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
 							  "potential_id INTEGER NOT NULL, "
@@ -2002,7 +2017,7 @@ void projectDataBase::refreshPotentialMembers()
 		"FROM main.conductor c "
 		"LEFT JOIN temp.potential_member m ON m.wire_uuid = c.uuid "
 		"LEFT JOIN main.conductor_properties p ON p.conductor_uuid = c.uuid AND p.name = 'potential_type'"));
-	const bool own_transaction = m_data_base.transaction();
+	const bool own_transaction = db.transaction();
 	query.exec(QStringLiteral("DELETE FROM temp.potential_member"));
 	query.prepare(QStringLiteral("INSERT INTO temp.potential_member (wire_uuid, potential_id, is_unknown) "
 								 "VALUES (:wire, :potential, :unknown)"));
@@ -2013,8 +2028,15 @@ void projectDataBase::refreshPotentialMembers()
 		query.exec();
 	}
 	if (own_transaction) {
-		m_data_base.commit();
+		db.commit();
 	}
+}
+
+void projectDataBase::refreshPotentialMembers()
+{
+		//newQuery() writes the pending wire properties first
+	flushConductorProperties();
+	refreshPotentialMembersOf(m_data_base);
 }
 
 /**
@@ -2025,12 +2047,12 @@ void projectDataBase::refreshPotentialMembers()
 	out: that is not a mismatch.
 	@return one entry per mismatching potential, in potential order
 */
-QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatches()
+QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatchesOf(QSqlDatabase db)
 {
 	QList<PotentialMismatch> mismatches;
-	refreshPotentialMembers();
+	refreshPotentialMembersOf(db);
 
-	QSqlQuery read(m_data_base);
+	QSqlQuery read(db);
 	read.exec(QStringLiteral(
 		"SELECT v.potential_id, v.potential_type, v.wire_uuid FROM temp.wire_potential_view v "
 		"WHERE v.is_unknown = 0 AND v.potential_type IS NOT NULL "
@@ -2051,6 +2073,12 @@ QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatch
 		mismatches.last().wires << QUuid(read.value(2).toString());
 	}
 	return mismatches;
+}
+
+QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatches()
+{
+	flushConductorProperties();
+	return potentialTypeMismatchesOf(m_data_base);
 }
 
 /**

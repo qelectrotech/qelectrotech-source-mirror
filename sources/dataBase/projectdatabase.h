@@ -477,6 +477,9 @@ class projectDataBase : public QObject
 			bool isUnknown(const QUuid &wire) const {return unknown.contains(group_of.value(wire, -1));}
 		};
 		PotentialGroups potentialGroups() const;
+			/// The same from the tables of @p db alone, so a .qetdb read by
+			/// itself, without opening the project, gives the project's answer
+		static PotentialGroups potentialGroupsOf(const QSqlDatabase &db);
 			/// A potential that reaches more than one potential type
 		struct PotentialMismatch {
 			int potential = 0;
@@ -487,6 +490,8 @@ class projectDataBase : public QObject
 			/// (Re)build the TEMP table potential_member and the TEMP view
 			/// wire_potential_view; neither is ever saved
 		void refreshPotentialMembers();
+		static void refreshPotentialMembersOf(QSqlDatabase db);
+		static QList<PotentialMismatch> potentialTypeMismatchesOf(QSqlDatabase db);
 		static QVariant sequenceValue(const autonum::sequentialNumbers &sequence);
 		static autonum::sequentialNumbers sequenceFromValue(const QVariant &value);
 
