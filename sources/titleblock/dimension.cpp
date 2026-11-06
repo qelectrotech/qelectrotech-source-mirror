@@ -22,9 +22,10 @@
 	@param v Numeric value for this dimension
 	@param t Kind of length, determining how to interpret the numeric value
 */
-TitleBlockDimension::TitleBlockDimension(int v, QET::TitleBlockColumnLength t) :
+TitleBlockDimension::TitleBlockDimension(int v, QET::TitleBlockColumnLength t, Qt::Alignment a) :
 	type(t),
-	value(v)
+	value(v),
+	align(a)
 {
 }
 

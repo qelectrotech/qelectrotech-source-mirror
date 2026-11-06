@@ -830,9 +830,14 @@ void TitleBlockTemplateView::changePreviewWidth()
 	TitleBlockDimensionWidget dialog(false, this);
 	dialog.setWindowTitle(tr("Change the width"));
 	dialog.label() -> setText(tr("Width:"));
-	dialog.setValue(TitleBlockDimension(preview_width_));
+	TitleBlockDimension dimension_before = TitleBlockDimension(preview_width_, QET::Absolute, tbtemplate_->align());
+	dialog.setValue(dimension_before);
 	if (dialog.exec() == QDialog::Accepted) {
-		setPreviewWidth(dialog.value().value);
+		ModifyTitleBlockPreviewCommand *command = new ModifyTitleBlockPreviewCommand(tbtemplate_);
+		command -> setView(this);
+		command -> setDimensionBefore(dimension_before);
+		command -> setDimensionAfter(dialog.value());
+		requestGridModification(command);
 	}
 }
 
