@@ -333,9 +333,17 @@ QList<QPair<QString, QString>> ConductorProperties::attributes() const
 	}
 	add("bus", m_bus);
 	add("function", m_function);
+		//Written only when set, so a conductor without a potential type
+		//is saved exactly as before
+	if (!m_potential_type.isEmpty())
+		add("potential_type", m_potential_type);
 	add("tension_protocol", m_tension_protocol);
 	add("conductor_color", m_wire_color);
 	add("conductor_section", m_wire_section);
+		//Only written when set: a project which does not use it stays
+		//exactly as it was
+	if (!m_conductor_type.isEmpty())
+		add("conductor_type", m_conductor_type);
 	add("numsize", QString::number(text_size));
 	add("condsize", QString::number(cond_size));
 	add("displaytext", QString::number(m_show_text));
@@ -411,9 +419,11 @@ void ConductorProperties::fromXml(QDomElement &e)
 	m_cable_slot         = e.attribute("cable_slot", QString::number(-1)).toInt();
 	m_bus                = e.attribute("bus");
 	m_function           = e.attribute("function");
+	m_potential_type     = e.attribute("potential_type");
 	m_tension_protocol   = e.attribute("tension_protocol");
 	m_wire_color         = e.attribute("conductor_color");
 	m_wire_section       = e.attribute("conductor_section");
+	m_conductor_type     = e.attribute("conductor_type");
 	text_size            = e.attribute("numsize", QString::number(9)).toInt();
 	cond_size            = e.attribute("condsize", QString::number(1)).toDouble();
 	m_show_text          = e.attribute("displaytext", QString::number(1)).toInt();
@@ -465,6 +475,8 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "function", m_function);
 	settings.setValue(prefix + "tension_protocol", m_tension_protocol);
 	settings.setValue(prefix + "conductor_color", m_wire_color);
+	if (!m_conductor_type.isEmpty())
+		settings.setValue(prefix + "conductor_type", m_conductor_type);
 	settings.setValue(prefix + "conductor_section", m_wire_section);
 	settings.setValue(prefix + "textsize", QString::number(text_size));
 	settings.setValue(prefix + "size", QString::number(cond_size));
@@ -519,6 +531,7 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	m_function           = settings.value(prefix + "function", "").toString();
 	m_tension_protocol   = settings.value(prefix + "tension_protocol", "").toString();
 	m_wire_color         = settings.value(prefix + "conductor_color", "").toString();
+	m_conductor_type     = settings.value(prefix + "conductor_type", "").toString();
 	m_wire_section       = settings.value(prefix + "conductor_section", "").toString();
 	text_size            = settings.value(prefix + "textsize", "7").toInt();
 		// Saved with QString::number(cond_size): a decimal such as 1.4,
@@ -579,9 +592,11 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_cable              = cp.m_cable;
 		m_bus                = cp.m_bus;
 		m_function           = cp.m_function;
+		m_potential_type     = cp.m_potential_type;
 		m_tension_protocol   = cp.m_tension_protocol;
 		m_wire_color         = cp.m_wire_color;
 		m_wire_section       = cp.m_wire_section;
+		m_conductor_type     = cp.m_conductor_type;
 		text_size            = cp.text_size;
 		cond_size            = cp.cond_size;
 		m_show_text          = cp.m_show_text;
@@ -744,6 +759,17 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_function = s_value;
 	equal = true;
 
+		//Potential type
+	s_value = clist.first().m_potential_type;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_potential_type != s_value)
+			equal = false;
+	}
+	if (equal)
+		m_potential_type = s_value;
+	equal = true;
+
 		//Tension protocol
 	s_value = clist.first().m_tension_protocol;
 	for(ConductorProperties cp : clist)
@@ -775,6 +801,17 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	}
 	if (equal)
 		m_wire_section = s_value;
+	equal = true;
+
+		//Conductor type
+	s_value = clist.first().m_conductor_type;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_conductor_type != s_value)
+			equal = false;
+	}
+	if (equal)
+		m_conductor_type = s_value;
 	equal = true;
 
 
@@ -933,6 +970,7 @@ void ConductorProperties::applyChanges(const ConductorProperties &before,
 	take(m_cable,                before.m_cable,                after.m_cable);
 	take(m_bus,                  before.m_bus,                  after.m_bus);
 	take(m_function,             before.m_function,             after.m_function);
+	take(m_potential_type,       before.m_potential_type,       after.m_potential_type);
 	take(m_tension_protocol,     before.m_tension_protocol,     after.m_tension_protocol);
 	take(m_wire_color,           before.m_wire_color,           after.m_wire_color);
 	take(m_wire_section,         before.m_wire_section,         after.m_wire_section);
@@ -1021,9 +1059,11 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 		other.m_cable_slot == m_cable_slot &&\
 		other.m_bus == m_bus &&\
 		other.m_function == m_function &&\
+		other.m_potential_type == m_potential_type &&\
 		other.m_tension_protocol == m_tension_protocol &&\
 		other.m_wire_color == m_wire_color && \
 		other.m_wire_section == m_wire_section && \
+		other.m_conductor_type == m_conductor_type && \
 		other.m_show_text == m_show_text &&\
 		other.text_size == text_size &&\
 		other.cond_size == cond_size &&\

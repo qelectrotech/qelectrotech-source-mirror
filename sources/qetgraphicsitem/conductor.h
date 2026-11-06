@@ -21,6 +21,7 @@
 #include "../conductorproperties.h"
 #include "../dataBase/conductorlayout.h"
 #include "../dataBase/conductorpath.h"
+#include "../properties/potentialtypes.h"
 
 #include <QGraphicsPathItem>
 #include <QSet>
@@ -100,6 +101,8 @@ class Conductor : public QGraphicsObject
 		QRectF boundingRect() const override;
 		QPainterPath shape() const override;
 		virtual QPainterPath nearShape() const;
+			/// Its two ends on the same point: see endsTouch()
+		bool endsTouch() const;
 		qreal length() const;
 		ConductorSegment *middleSegment();
 		QPointF posForText(Qt::Orientations &flag);
@@ -181,6 +184,8 @@ class Conductor : public QGraphicsObject
 
 		QList<QPointF> junctions() const;
 		QPainterPath paintedPath() const;
+		QColor drawnColor() const;
+		bool potentialTypeFormat(PotentialType *type) const;
 
 	private:
 		void setUpConnectionForFormula(

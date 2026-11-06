@@ -197,13 +197,13 @@ namespace ConductorMultiEdit
 		/// agree on one, the panel shows it blank.
 	enum TextField {
 		Text, Formula, Function, TensionProtocol,
-		WireColor, WireSection, Cable, Bus
+		WireColor, WireSection, WireType, Cable, Bus
 	};
 
 	inline QList<TextField> textFields()
 	{
 		return {Text, Formula, Function, TensionProtocol,
-			WireColor, WireSection, Cable, Bus};
+			WireColor, WireSection, WireType, Cable, Bus};
 	}
 
 	inline QString &textField(ConductorProperties &p, TextField field)
@@ -216,6 +216,7 @@ namespace ConductorMultiEdit
 			case TensionProtocol: return p.m_tension_protocol;
 			case WireColor:       return p.m_wire_color;
 			case WireSection:     return p.m_wire_section;
+			case WireType:        return p.m_conductor_type;
 			case Cable:           return p.m_cable;
 			case Bus:             break;
 		}

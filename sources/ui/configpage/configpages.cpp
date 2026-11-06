@@ -27,6 +27,7 @@
 #include "../../qetproject.h"
 #include "../borderpropertieswidget.h"
 #include "../conductorpropertieswidget.h"
+#include "../potentialtypeswidget.h"
 #include "../reportpropertiewidget.h"
 #include "../titleblockpropertieswidget.h"
 #include "../xrefpropertieswidget.h"
@@ -180,6 +181,8 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 		ipw -> setProperties (m_project -> defaultTitleBlockProperties());
 		rpw -> setReportProperties (m_project -> defaultReportProperties());
 		xrefpw -> setProperties (m_project -> defaultXRefProperties());
+		m_ptw = new PotentialTypesWidget(this);
+		m_ptw -> setPotentialTypes(m_project -> potentialTypes());
 	}
 
 	connect(ipw, &TitleBlockPropertiesWidget::openAutoNumFolioEditor, this, &NewDiagramPage::changeToAutoFolioTab);
@@ -223,6 +226,10 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 	tab_widget -> addTab (rpw,            tr("Sheet references"));
 	tab_widget -> addTab (xrefpw,         tr("Cross-references"));
 	tab_widget -> addTab (m_gpw,          tr("Guides"));
+		//Potential types belong to a project: there is no application default
+	if (m_ptw) {
+		tab_widget -> addTab (m_ptw,      tr("Potential types"));
+	}
 
 	// add auto-numbering tab only for global settings (not per project)
 	if (!m_project) {
@@ -305,6 +312,11 @@ void NewDiagramPage::applyConf()
 		if (m_project->defaultGuides() != proj_guides) {
 			m_project->setDefaultGuides(proj_guides);
 			modified_project = true;
+		}
+
+			//setPotentialTypes() marks the project modified itself
+		if (m_ptw) {
+			m_project -> setPotentialTypes(m_ptw -> potentialTypes());
 		}
 
 		if (modified_project) {

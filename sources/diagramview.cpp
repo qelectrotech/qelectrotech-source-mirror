@@ -46,6 +46,7 @@
 #include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "qetpalette.h"
 #include <QScopeGuard>
+#include <QtMath>
 #include "titleblock/integrationmovetemplateshandler.h"
 #include "PropertiesEditor/propertieseditordialog.h"
 #include "ui/diagrampropertiesdialog.h"
@@ -606,6 +607,39 @@ void DiagramView::zoom(const qreal zoom_factor)
 }
 
 /**
+	@brief DiagramView::zoomBy
+	Zoom in (@p steps > 0) or out (< 0) by @p steps steps of zoomStep():
+	each one zooms by that many percent of the zoom shown, so a step feels
+	the same at 50 % and at 400 %. The result is rounded to whole fives
+	(whole percents below 20 %), the zoom shown stays a round number.
+	@param steps
+*/
+void DiagramView::zoomBy(int steps)
+{
+	if (!steps)
+		return;
+	const int step = zoomStep();
+	if (!step) {
+		for (int i = 0; i < qAbs(steps); ++i)
+			zoom(steps > 0 ? 1.15 : 0.85);
+		return;
+	}
+	const qreal percent = transform().m11() * 100;
+	qreal target = percent * qPow(1 + step / 100.0, steps);
+	const qreal grid = target < 20 ? 1 : 5;
+	target = qRound(target / grid) * grid;
+		//Always a move, however small the step: a little leeway, as 100 %
+		//may be 99.9999 % after a few scalings
+	if (steps > 0 && target <= percent + 1e-6)
+		target = (qFloor(percent / grid + 1e-6) + 1) * grid;
+	else if (steps < 0 && target >= percent - 1e-6)
+		target = (qCeil(percent / grid - 1e-6) - 1) * grid;
+	if (target <= 0)
+		return;
+	zoom(target / percent);
+}
+
+/**
 	Agrandit ou rectrecit le schema de facon a ce que tous les elements du
 	schema soient visibles a l'ecran. S'il n'y a aucun element sur le schema,
 	le zoom est reinitialise
@@ -972,6 +1006,10 @@ void DiagramView::mousePressEvent(QMouseEvent *original)
 	QMouseEvent *e = onCaughtHandle(original, shifted);
 	const AcceptedBack accepted_back{e, original};
 	e->ignore();
+	if (e->button() == Qt::LeftButton) {
+		m_band_origin = e->pos();
+		updateRubberBandMode(e->pos());
+	}
 
 		//Ctrl+Shift panning whose key release was missed (see
 		//focusOutEvent()): a click without them ends it
@@ -1153,6 +1191,8 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 	QMouseEvent *e = onCaughtHandle(original, shifted);
 	const AcceptedBack accepted_back{e, original};
 	m_last_mouse_pos = e->pos();
+	if (e->buttons() & Qt::LeftButton)
+		updateRubberBandMode(e->pos());
 		//The topmost item that is one of the folio's: the crosshair and
 		//other aids drawn over the folio say nothing, nor what View > Show
 		//hides. Not while a button is held: a drag or a rubber band is
@@ -1624,8 +1664,20 @@ void DiagramView::wheelEvent(QWheelEvent *event)
 			verticalScrollBar()->setValue(verticalScrollBar()->value() - angle.y());
 		}
 	}
-	else if (event->modifiers() == Qt::NoModifier) //Else we suppose the wheel event are made from a mouse.
+	else if (event->modifiers() == Qt::NoModifier
+			 || (zoomStep() && event->modifiers() == Qt::AltModifier)) //Else we suppose the wheel event are made from a mouse.
 	{
+		if (zoomStep()) {
+				//One step per notch (120); a smooth wheel adds up to one.
+				//With Alt, four steps per notch: some platforms turn the
+				//wheel sideways then
+			const bool coarse = event->modifiers() == Qt::AltModifier;
+			m_wheel_rest += coarse && !angle.y() ? angle.x() : angle.y();
+			const int notches = m_wheel_rest / 120;
+			m_wheel_rest -= notches * 120;
+			zoomBy(coarse ? notches * 4 : notches);
+			return;
+		}
 		qreal value = angle.y();
 		zoom(1 + value/1000);
 	}
@@ -1799,19 +1851,19 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 			}
 			else break;
 		case Qt::Key_ZoomOut:
-			zoom(0.85);
+			zoomBy(-1);
 			return;
 		case Qt::Key_ZoomIn:
-			zoom(1.15);
+			zoomBy(1);
 			return;
 		case Qt::Key_Minus: {
 			if (e->modifiers() & Qt::ControlModifier)
-				zoom(0.85);
+				zoomBy(-1);
 		}
 			break;
 		case Qt::Key_Plus: {
 			if (e->modifiers() & Qt::ControlModifier)
-				zoom(1.15);
+				zoomBy(1);
 		}
 			break;
 		case Qt::Key_Up: {
@@ -2195,6 +2247,8 @@ namespace {
 	int s_crosshair = -1;
 	int s_pointer_aids = -1;
 	int s_terminal_help_lines = -1;
+	int s_zoom_step = -1;
+	int s_selection_rectangle = -1;
 }
 
 /**
@@ -2223,6 +2277,57 @@ void DiagramView::setCrosshairShown(bool shown)
 	s_crosshair = shown;
 	QSettings settings;
 	settings.setValue(QStringLiteral("diagrameditor/crosshair"), shown);
+}
+
+/**
+	@brief DiagramView::selectionRectangle
+	@return what a selection rectangle selects, see SelectionRectangle;
+	Touched by default, as always before.
+*/
+DiagramView::SelectionRectangle DiagramView::selectionRectangle()
+{
+	if (s_selection_rectangle < 0) {
+		QSettings settings;
+		s_selection_rectangle = qBound(0, settings.value(
+			QStringLiteral("diagrameditor/selection_rectangle"), 0).toInt(), 2);
+	}
+	return static_cast<SelectionRectangle>(s_selection_rectangle);
+}
+
+/**
+	@brief DiagramView::setSelectionRectangle
+	@param mode : see selectionRectangle(); kept in the settings, for every
+	view from the next selection rectangle.
+*/
+void DiagramView::setSelectionRectangle(SelectionRectangle mode)
+{
+	s_selection_rectangle = static_cast<int>(mode);
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/selection_rectangle"), s_selection_rectangle);
+}
+
+/**
+	@brief DiagramView::updateRubberBandMode
+	Set what the rubber band selects (selectionRectangle()), before
+	QGraphicsView works the selection out.
+	@param viewport_pos : the mouse; by direction, to the right of where the
+	band began selects what lies wholly within it
+*/
+void DiagramView::updateRubberBandMode(const QPoint &viewport_pos)
+{
+	switch (selectionRectangle()) {
+		case SelectionRectangle::Touched:
+			setRubberBandSelectionMode(Qt::IntersectsItemShape);
+			break;
+		case SelectionRectangle::Enclosed:
+			setRubberBandSelectionMode(Qt::ContainsItemShape);
+			break;
+		case SelectionRectangle::ByDirection:
+			setRubberBandSelectionMode(viewport_pos.x() >= m_band_origin.x()
+									   ? Qt::ContainsItemShape
+									   : Qt::IntersectsItemShape);
+			break;
+	}
 }
 
 /**
@@ -2278,6 +2383,32 @@ void DiagramView::setTerminalHelpLinesShown(bool shown)
 	s_terminal_help_lines = shown;
 	QSettings settings;
 	settings.setValue(QStringLiteral("diagrameditor/terminal_help_lines"), shown);
+}
+
+/**
+	@brief DiagramView::zoomStep
+	@return how far zoomBy() goes at a time, in percent of the zoom shown:
+	with 10, 100 % goes to 110 %, 120 %, 130 % and 400 % to 440 %. 0, the
+	default: by a factor of 1.15 in and 0.85 out, as always before.
+*/
+int DiagramView::zoomStep()
+{
+	if (s_zoom_step < 0) {
+		QSettings settings;
+		s_zoom_step = qBound(0, settings.value(QStringLiteral("diagrameditor/zoom_step"), 0).toInt(), 100);
+	}
+	return s_zoom_step;
+}
+
+/**
+	@brief DiagramView::setZoomStep
+	@param percent : see zoomStep(); kept in the settings, for the next zoom
+*/
+void DiagramView::setZoomStep(int percent)
+{
+	s_zoom_step = qBound(0, percent, 100);
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/zoom_step"), s_zoom_step);
 }
 
 /**
@@ -3453,6 +3584,13 @@ QETDiagramEditor *DiagramView::diagramEditor() const
 void DiagramView::mouseDoubleClickEvent(QMouseEvent *e)
 {
 	if (m_event_interface && m_event_interface -> mouseDoubleClickEvent(e)) return;
+
+		//A drawing tool on the folio has this double-click (see
+		//Diagram::mouseDoubleClickEvent): no folio properties under it.
+	if (m_diagram->eventInterfaceIsRunning() || m_diagram->toolTookLastPress()) {
+		QGraphicsView::mouseDoubleClickEvent(e);
+		return;
+	}
 
 	BorderTitleBlock &bi = m_diagram -> border_and_titleblock;
 

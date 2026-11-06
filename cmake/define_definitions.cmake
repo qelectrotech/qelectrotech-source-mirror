@@ -18,6 +18,25 @@
 
 message(" - define_definitions")
 
+# QET_RELATIVE_DATA_PATHS (cmake/start_options.cmake): the data paths start
+# from the program's folder, so the installed files work wherever they are
+# copied, a TGZ unpacked anywhere for one. The same paths, reached from
+# bin/ instead of from the prefix.
+if(QET_RELATIVE_DATA_PATHS)
+  if(WIN32 OR APPLE)
+    message(FATAL_ERROR
+      "QET_RELATIVE_DATA_PATHS is for Linux and other Unix systems: on "
+      "Windows and macOS the data paths are relative already.")
+  endif()
+  file(RELATIVE_PATH qet_bin_to_prefix
+    "${CMAKE_INSTALL_FULL_BINDIR}" "${CMAKE_INSTALL_PREFIX}")
+  string(REGEX REPLACE "/+$" "" qet_bin_to_prefix "${qet_bin_to_prefix}")
+  set(COMPIL_PREFIX "${qet_bin_to_prefix}/")
+  set(QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH ON)
+  set(QET_COMMON_TBT_PATH_RELATIVE_TO_BINARY_PATH ON)
+  set(QET_LANG_PATH_RELATIVE_TO_BINARY_PATH ON)
+endif()
+
 message("Paths used for compilation and installation of QET")
 message("--------------------------------------------------")
 message("COMPIL_PREFIX              " ${COMPIL_PREFIX})

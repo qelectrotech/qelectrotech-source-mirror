@@ -696,8 +696,7 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 				//The label and the terminal number are drawn the way the
 				//settings say, every other information as it is stored
 			DiagramContext dc = elementUseForInfo()->elementInformations();
-			dc.addValue(QETInformation::ELMT_LABEL,            labelSource()->labelForDisplay());
-			dc.addValue(QETInformation::ELMT_TERMINAL_NUMBER, elementUseForInfo()->terminalNumberForDisplay());
+			elementUseForInfo()->addDisplayValues(dc);
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 		}
 		
@@ -1470,8 +1469,13 @@ void DynamicElementTextItem::elementInfoChanged()
 			//project says (@sa QETProject::terminalLabelSplit): a
 			//composite text which uses them must see the same values the
 			//fields bound to them show
-		dc.addValue(QETInformation::ELMT_LABEL,           label_element->labelForDisplay());
-		dc.addValue(QETInformation::ELMT_TERMINAL_NUMBER, element->terminalNumberForDisplay());
+		element->addDisplayValues(dc);
+			//A slave draws the label of its master, not the copy it keeps
+			//of it; the terminal number and the wire number above stay this
+			//element's own (@sa labelSource())
+		if (label_element != element) {
+			dc.addValue(QETInformation::ELMT_LABEL, label_element->labelForDisplay());
+		}
 	}
 	
 	QString final_text;
@@ -2027,6 +2031,8 @@ void DynamicElementTextItem::conductorPropertiesChanged()
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_wire_color : "");
 			else if (m_info_name == QETInformation::COND_SECTION)
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_wire_section : "");
+			else if (m_info_name == QETInformation::COND_TYPE)
+				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_conductor_type : "");
 		}
 		else if (m_text_from == CompositeText) {
 			setPlainText(reportReplacedCompositeText());

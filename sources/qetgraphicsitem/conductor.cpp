@@ -594,6 +594,10 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation term
 */
 void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *qw)
 {
+		//Nothing to draw between two terminals on the same point: the
+		//path would be the two terminals' stubs, drawn over their symbols
+	if (endsTouch())
+		return;
 	painter -> save();
 	painter -> setRenderHint(QPainter::Antialiasing, false);
 
@@ -601,7 +605,9 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		//In the dark mode a red pick and a blue highlight would look like
 		//the red and light blue conductors around them
 	const QET::Palette::SheetInk sheet_ink = PaletteGraphicsView::paintingInk(qw);
-	QColor final_conductor_color(m_properties.color);
+	PotentialType potential_type;
+	const bool typed = potentialTypeFormat(&potential_type);
+	QColor final_conductor_color(typed ? potential_type.color : m_properties.color);
 	if (m_preview) {
 		final_conductor_color = QColor(160, 160, 160);
 	} else if (must_highlight_ == Normal) {
@@ -619,7 +625,8 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 	}
 
 		//Draw the conductor bigger when is hovered
-	conductor_pen.setWidthF(m_mouse_over? (m_properties.cond_size) +4 : (m_properties.cond_size));
+	const qreal cond_size = typed ? potential_type.width : m_properties.cond_size;
+	conductor_pen.setWidthF(m_mouse_over? cond_size +4 : cond_size);
 
 		//Set the QPen and QBrush to the QPainter
 	painter -> setBrush(conductor_brush);
@@ -629,16 +636,19 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		//gaps too short to tell a dashed or a dash-dotted conductor from
 		//a solid one at a normal zoom, so these two get longer gaps
 	final_conductor_pen.setColor(final_conductor_color);
-	const bool custom_pattern = m_properties.m_dash_pattern.apply(
+	const Qt::PenStyle cond_style = typed ? potential_type.style : m_properties.style;
+		//The type says how the line looks, so the conductor's own pattern
+		//stays stored but is not applied
+	const bool custom_pattern = !typed && m_properties.m_dash_pattern.apply(
 				final_conductor_pen, m_properties.style);
 	if (!custom_pattern)
 	{
-		if (m_properties.style == Qt::DashLine)
+		if (cond_style == Qt::DashLine)
 			final_conductor_pen.setDashPattern({5, 4});
-		else if (m_properties.style == Qt::DashDotLine)
+		else if (cond_style == Qt::DashDotLine)
 			final_conductor_pen.setDashPattern({6, 4, 1, 4});
 		else
-			final_conductor_pen.setStyle(m_properties.style);
+			final_conductor_pen.setStyle(cond_style);
 	}
 	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // better rendering with dot
 
@@ -655,7 +665,7 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 	const QPainterPath painted_path = paintedPath();
 	painter -> drawPath(painted_path);
 		//Draw the second color
-	if(m_properties.m_bicolor)
+	if(m_properties.m_bicolor && !typed)
 	{
 		final_conductor_pen.setColor(m_properties.m_color_2);
 		final_conductor_pen.setStyle(Qt::CustomDashLine);
@@ -696,7 +706,7 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 			// the report is about are affected. m_properties.cond_size is
 			// used rather than the pen, whose width is inflated by 4 while
 			// the mouse is over the conductor.
-		const qreal junction_diameter = qMax(3.0, 3.0 * m_properties.cond_size);
+		const qreal junction_diameter = qMax(3.0, 3.0 * cond_size);
 		const qreal junction_radius = junction_diameter / 2.0;
 		foreach(QPointF point, junctions_list) {
 			painter -> drawEllipse(QRectF(point.x() - junction_radius,
@@ -1049,6 +1059,10 @@ QRectF Conductor::boundingRect() const
 */
 QPainterPath Conductor::shape() const
 {
+		//Not drawn (see paint()), so not to be clicked either: a click
+		//there goes to the symbols
+	if (endsTouch())
+		return QPainterPath();
 	QPainterPathStroker pps;
 	pps.setWidth(m_mouse_over? 5 : 1);
 	pps.setJoinStyle(conductor_pen.joinStyle());
@@ -1056,6 +1070,18 @@ QPainterPath Conductor::shape() const
 	QPainterPath shape_(pps.createStroke(path()));
 
 	return shape_;
+}
+
+/**
+	@brief Conductor::endsTouch
+	@return true when the two terminals this conductor joins are on the
+	same point, as when two symbols are placed against each other: the
+	conductor connects them but is not drawn.
+*/
+bool Conductor::endsTouch() const
+{
+	return terminal1 && terminal2
+			&& terminal1->dockConductor() == terminal2->dockConductor();
 }
 
 /**
@@ -1917,12 +1943,18 @@ void Conductor::setPropertyToPotential(const ConductorProperties &property,
 
 	foreach(Conductor *other_conductor, potential_list)
 	{
+			//A core of a cable takes section, colour and type from its
+			//cable: no property of the potential is copied over it
+		if (!other_conductor->properties().m_cable_uuid.isNull()) {
+			continue;
+		}
 		if (only_text)
 		{
 			ConductorProperties other_properties = other_conductor->properties();
 			other_properties.m_formula = m_properties.m_formula;
 			other_properties.text = m_properties.text;
 			other_properties.m_function = m_properties.m_function;
+			other_properties.m_potential_type = m_properties.m_potential_type;
 			other_properties.m_tension_protocol = m_properties.m_tension_protocol;
 			other_properties.m_wire_color = m_properties.m_wire_color;
 			other_properties.m_wire_section = m_properties.m_wire_section;
@@ -2146,6 +2178,14 @@ void Conductor::setCableReference(const QString &label,
 	m_properties.m_cable = label;
 	m_properties.m_cable_uuid = cable_uuid;
 	m_properties.m_cable_slot = slot;
+		//Becoming a core: what the three fields showed until now was
+		//the wire's own value -- the cable says what its cores are from
+		//now on, so the fields show nothing rather than a wrong value
+	if (!cable_uuid.isNull()) {
+		m_properties.m_wire_color.clear();
+		m_properties.m_wire_section.clear();
+		m_properties.m_conductor_type.clear();
+	}
 	storeProperties();
 	emit propertiesChange();
 }
@@ -2190,6 +2230,12 @@ void Conductor::displayedTextChanged()
 
 		foreach (Conductor *potential_conductor, relatedPotentialConductors())
 		{
+				//A core of a cable keeps what its cable says: the text
+				//entered on one side of a terminal does not run over it
+				//and write the cable's own field away
+			if (!potential_conductor->properties().m_cable_uuid.isNull()) {
+				continue;
+			}
 			old_value.setValue(potential_conductor->properties());
 			ConductorProperties new_properties = potential_conductor->properties();
 			new_properties.m_formula = m_text_item->toPlainText();
@@ -2394,6 +2440,36 @@ bool isContained(const QPointF &a, const QPointF &b, const QPointF &c) {
 		isBetween(a.x(), b.x(), c.x()) &&
 		isBetween(a.y(), b.y(), c.y())
 	);
+}
+
+/**
+	@brief Conductor::drawnColor
+	@return the colour the conductor is drawn in: its potential type's when
+	the project draws from them, else its own
+*/
+QColor Conductor::drawnColor() const
+{
+	PotentialType type;
+	return potentialTypeFormat(&type) ? type.color : m_properties.color;
+}
+
+/**
+	@brief Conductor::potentialTypeFormat
+	The format the project gives the potential of this conductor.
+	@param type : receives the type when there is one
+	@return true when the project draws its conductors from potential
+	types, and this conductor's type is one of them. False leaves the
+	conductor drawn from its own stored style.
+*/
+bool Conductor::potentialTypeFormat(PotentialType *type) const
+{
+	if (m_properties.m_potential_type.isEmpty())
+		return false;
+	const Diagram *parent_diagram = diagram();
+	const QETProject *project = parent_diagram ? parent_diagram->project() : nullptr;
+	if (!project || !project->potentialTypes().isEnabled())
+		return false;
+	return project->potentialTypes().find(m_properties.m_potential_type, type);
 }
 
 /**

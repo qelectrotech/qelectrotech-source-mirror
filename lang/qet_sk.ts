@@ -26,7 +26,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="216"/>
         <source>Contributors</source>
-        <translation>Priespievatelia</translation>
+        <translation>Prispievatelia</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="296"/>
@@ -321,7 +321,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="138"/>
         <source>Swedish translation (partly AI-generated)</source>
-        <translation type="unfinished"></translation>
+        <translation>Švédsky preklad (čiastočne vygenerovaný umelou inteligenciou)</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="181"/>
@@ -368,7 +368,7 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="46"/>
         <source>Add new sheet and table if necessary.</source>
-        <translation>V prípade potreby pridať nový hárok a tabuľku.</translation>
+        <translation>V prípade potreby pridať nový list a tabuľku.</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="66"/>
@@ -430,7 +430,7 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="202"/>
         <source>Configuration</source>
-        <translation>nastavenie</translation>
+        <translation>Nastavenie</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="44"/>
@@ -546,7 +546,7 @@
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="121"/>
         <source>Allow the assistant to edit diagrams</source>
-        <translation>Umožnite asistentovi upravovať schémy.</translation>
+        <translation>Umožniť asistentovi upravovať schémy.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aiassistantdialog.cpp" line="126"/>
@@ -1081,12 +1081,12 @@ Poznámka: tieto možnosti nepovoľujú ani neblokujú samotné automatické č�
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="46"/>
         <source>One line per part: identical manufacturer, part number and unit are added up, with the labels of the elements using it. Replaces the choices of the fields below.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeden riadok na každú položku: položky s rovnakým výrobcom, číslom dielu a mernou jednotkou sa sčítajú, pričom sa uvedú aj označenia prvkov, v ktorých sa daná položka používa. Nahrádza výber polí uvedených nižšie.</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="49"/>
         <source>Group identical parts and add up the quantities</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoskupiť zhodné diely a sčítať ich množstvá</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="59"/>
@@ -1150,37 +1150,37 @@ Poznámka: tieto možnosti nepovoľujú ani neblokujú samotné automatické č�
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="181"/>
         <source>No.</source>
-        <translation type="unfinished">č.</translation>
+        <translation>č.</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="182"/>
         <source>Quantity</source>
-        <translation type="unfinished">Množstvo</translation>
+        <translation>Množstvo</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="183"/>
         <source>Name</source>
-        <translation type="unfinished">Názov</translation>
+        <translation>Názov</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="184"/>
         <source>Part number</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo dielu</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="185"/>
         <source>References</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencie</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="186"/>
         <source>Manufacturer</source>
-        <translation type="unfinished">Výrobca</translation>
+        <translation>Výrobca</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="187"/>
         <source>Unit</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednotka</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="213"/>
@@ -1240,13 +1240,13 @@ Poznámka: tieto možnosti nepovoľujú ani neblokujú samotné automatické č�
         <location filename="../sources/ui/backuprestoredialog.cpp" line="84"/>
         <source>A project never saved</source>
         <comment>recovery files</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projekt nebol nikdy uložený</translation>
     </message>
     <message>
         <location filename="../sources/ui/backuprestoredialog.cpp" line="90"/>
         <source>%1 (after the last edit)</source>
         <comment>recovery generation label</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (po poslednej úprave)</translation>
     </message>
     <message>
         <location filename="../sources/ui/backuprestoredialog.cpp" line="101"/>
@@ -1262,9 +1262,9 @@ Poznámka: tieto možnosti nepovoľujú ani neblokujú samotné automatické č�
         <source>Move %n cable(s)</source>
         <comment>Un geste déplace plusieurs lignes à la fois.</comment>
         <translation>
-            <numerusform>Presunúť %n kábel(-le/-ov)</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>Presunúť %n kábel</numerusform>
+            <numerusform>Presunúť %n káble</numerusform>
+            <numerusform>Presunúť %n káblov</numerusform>
         </translation>
     </message>
     <message>
@@ -1286,8 +1286,8 @@ Poznámka: tieto možnosti nepovoľujú ani neblokujú samotné automatické č�
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="45"/>
-        <source>× </source>
-        <translation>× </translation>
+        <source>x</source>
+        <translation>x</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="72"/>
@@ -1343,41 +1343,41 @@ Poznámka: tieto možnosti nepovoľujú ani neblokujú samotné automatické č�
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="349"/>
         <source>Folio size: %1 × %2 mm</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmer listu: %1 × %2 mm</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="372"/>
         <source>. Smallest paper that holds it: %1 %2, %3 mm free across and %4 mm free down</source>
-        <translation type="unfinished"></translation>
+        <translation>. Najmenší papier, ktorý to pojme: %1 %2, %3 mm voľného priestoru na šírku a %4 mm voľného priestoru na výšku</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="374"/>
         <source>landscape</source>
-        <translation type="unfinished"></translation>
+        <translation>Na šírku</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="374"/>
         <source>portrait</source>
-        <translation type="unfinished"></translation>
+        <translation>Na výšku</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="378"/>
         <source>. It is larger than A0</source>
-        <translation type="unfinished"></translation>
+        <translation>. Je väčší než A0</translation>
     </message>
 </context>
 <context>
     <name>BridgeCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="793"/>
+        <location filename="../sources/diagramview.cpp" line="791"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="466"/>
         <source>Paste a bridge</source>
-        <translation type="unfinished"></translation>
+        <translation>Vložiť premostenie</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="934"/>
+        <location filename="../sources/diagramview.cpp" line="932"/>
         <source>Duplicate a bridge</source>
-        <translation type="unfinished"></translation>
+        <translation>Duplikovať premostenie</translation>
     </message>
 </context>
 <context>
@@ -1386,20 +1386,20 @@ Poznámka: tieto možnosti nepovoľujú ani neblokujú samotné automatické č�
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="68"/>
         <source>The bridge over %n Klemme(n)</source>
         <comment>window title</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Mostík cez %n prepojenie</numerusform>
+            <numerusform>Mostík cez %n prepojenia</numerusform>
+            <numerusform>Mostík cez %n prepojení</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="71"/>
         <source>%n Klemme(n) recognized</source>
         <comment>how many terminals the line crossed</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Rozpoznané %n prepojenie</numerusform>
+            <numerusform>Rozpoznané %n prepojenia</numerusform>
+            <numerusform>Rozpoznaných %n prepojení</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -1407,184 +1407,185 @@ Poznámka: tieto možnosti nepovoľujú ani neblokujú samotné automatické č�
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="193"/>
         <source>, %n sheet reference(s) on the way to the next sheet</source>
         <comment>the way to the next sheet</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>, %n odkaz na list na ceste k ďalšiemu listu</numerusform>
+            <numerusform>, %n odkazy na list na ceste k ďalšiemu listu</numerusform>
+            <numerusform>, %n odkazov na list na ceste k ďalšiemu listu</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="90"/>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="198"/>
         <source>Terminals this bridge may hold:</source>
-        <translation type="unfinished"></translation>
+        <translation>Svorky, ktoré môže tento mostík obsahovať:</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="95"/>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="202"/>
         <source>Unlimited</source>
-        <translation type="unfinished"></translation>
+        <translation>Neobmedzené</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="99"/>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="206"/>
         <source>Line width:</source>
-        <translation type="unfinished"></translation>
+        <translation>Šírka čiary:</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="110"/>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="216"/>
         <source>Name:</source>
-        <translation type="unfinished">Názov:</translation>
+        <translation>Názov:</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="114"/>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="219"/>
         <source>A name to tell this bridge from the next one, like 24V or B1. Empty when nobody names it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Názov, ktorým sa tento mostík odlišuje od ďalšieho, napríklad 24V alebo B1. Prázdne, keď ho nikto nepomenuje.</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="118"/>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="226"/>
         <source>Bridge colour:</source>
-        <translation type="unfinished"></translation>
+        <translation>Farba mostíka:</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="127"/>
         <source>New bridge</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový mostík</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="134"/>
         <source>Hide bridges which are full</source>
-        <translation type="unfinished"></translation>
+        <translation>Skryť plne obsadené mostíky</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="139"/>
         <source>Hide bridges with fewer free places than terminals recognized</source>
-        <translation type="unfinished"></translation>
+        <translation>Skryť mostíky s menším počtom voľných miest, ako je rozpoznaných svoriek</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="153"/>
         <source>Bridges already there</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostíky už existujú</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="187"/>
         <source>The bridge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostík</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="190"/>
         <source>%n Klemme(n) on this bridge</source>
         <comment>how many terminals the bridge lands on</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n svorka na tomto mostíku</numerusform>
+            <numerusform>%n svorky na tomto mostíku</numerusform>
+            <numerusform>%n svoriek na tomto mostíku</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="237"/>
         <source>Voltage: %1</source>
         <comment>what the bridge carries as information</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Aké informácie prenáša mostík</translatorcomment>
+        <translation>Napätie: %1</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="238"/>
         <source>—</source>
-        <translation type="unfinished"></translation>
+        <translation>—</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="301"/>
         <source>Different potentials</source>
-        <translation type="unfinished"></translation>
+        <translation>Rôzne potenciály</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="302"/>
         <source>The terminals carry different information: choose which the bridge takes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Svorky obsahujú rôzne informácie. Vyberte si, ktorými sa most bude riadiť.</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="370"/>
         <source>This bridge holds %1 terminal(s): it may not be given a limit below that.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento mostík obsahuje %1 terminál(ov): nemôže mať nižší limit.</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="380"/>
         <source>A bridge holding %1 terminal(s) at most cannot take the %2 just recognized. Give it a higher limit, no limit at all, or draw another bridge.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostík s maximálne %1 terminálom nemôže preniesť práve rozpoznaný %2. Zadajte vyšší limit, žiadny limit alebo nakreslite ďalší mostík.</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="390"/>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="396"/>
         <source>Choose a bridge which can take the %1 terminal(s) just recognized, or draw a new one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte mostík, ktorý dokáže prepojiť %1 práve rozpoznaných svoriek, alebo nakreslite nový.</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="412"/>
         <source>That bridge cannot be built</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostík sa nedá vytvoriť.</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="460"/>
         <source>unlimited places</source>
-        <translation type="unfinished"></translation>
+        <translation>neobmedzené miesta</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="461"/>
         <source>%1 of %2 places</source>
-        <translation type="unfinished"></translation>
+        <translation>1 z 2 miest</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="469"/>
         <source>without a name</source>
-        <translation type="unfinished"></translation>
+        <translation>bez mena</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="471"/>
         <source>no voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>žiadne napätie</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="473"/>
         <source>%1 Klemmen, %2</source>
         <comment>how much a bridge holds and what is left of it</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 prepojení, %2</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="489"/>
         <source>Not enough free places for the %1 terminal(s) just recognized</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Nie je dostatok voľných miest pre práve rozpoznanú svorku (%1)</numerusform>
+            <numerusform>Nie je dostatok voľných miest pre práve rozpoznané svorky (%1)</numerusform>
+            <numerusform>Nie je dostatok voľných miest pre práve rozpoznané svorky (%1)</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="508"/>
         <source>The bridge is drawn where you pulled the line and keeps the form you give it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostík je nakreslený tam, kde ste natiahli čiaru, a zachováva si tvar, ktorý ste mu dali.</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="513"/>
         <source>Choose a bridge to land on, or draw a new one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte si mostík, na ktorý chcete pristáť, alebo nakreslite nový.</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="515"/>
         <source>This bridge is full.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento mostík je plný.</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="517"/>
         <source>This bridge has %1 free place(s) left, %2 requested.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento mostík má ešte %1 voľn(-é)(-ých) miest(-o), požadovaných %2.</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgecreatedialog.cpp" line="520"/>
         <source>The %1 terminal(s) join this bridge, drawn as another line of it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Svorka(y) %1 sa pripája k tomuto mostíku a je nakreslená ako jeho ďalšia čiara.</translation>
     </message>
 </context>
 <context>
@@ -1592,41 +1593,41 @@ Poznámka: tieto možnosti nepovoľujú ani neblokujú samotné automatické č�
     <message>
         <location filename="../sources/bridge/bridgepart.cpp" line="243"/>
         <source>bridge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostík</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgepart.cpp" line="364"/>
         <location filename="../sources/bridge/bridgepart.cpp" line="377"/>
         <source>That bridge cannot be built</source>
-        <translation type="unfinished"></translation>
+        <translation>Premostenie sa nedá vytvoriť.</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgepart.cpp" line="365"/>
         <source>The line would land on %1 terminal(s) more than the bridge may hold: it keeps the length it had.</source>
-        <translation type="unfinished"></translation>
+        <translation>Línia by zasiahla o %1 svorku(-y, -iek) viac, než koľko ich most dokáže pojať; zachováva si svoju pôvodnú dĺžku.</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgepart.cpp" line="378"/>
         <source>A bridge lies across one terminal strip: the line would take terminals of %1, and keeps the length it had.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cez jednu svorkovnicu vedie prepojka: vedenie by obsadilo svorky %1 a zachovalo by si svoju pôvodnú dĺžku.</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgepart.cpp" line="414"/>
         <source>Joining a bridge over a sheet reference</source>
         <comment>undo command text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Spojenie mostíka cez referenciu listu</translation>
     </message>
 </context>
 <context>
     <name>CableCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="778"/>
+        <location filename="../sources/diagramview.cpp" line="776"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="453"/>
         <source>Paste a cable</source>
         <translation>Vložiť kábel</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="929"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Duplicate a cable</source>
         <translation>Duplikovať kábel</translation>
     </message>
@@ -2728,13 +2729,13 @@ Chcete ich tiež prečíslovať?</numerusform>
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2180"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2184"/>
         <source>Edit conductor properties</source>
         <comment>undo caption</comment>
         <translation>Upraviť vlastnosti vodiča</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2185"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2189"/>
         <source>Edit the properties of several conductors</source>
         <comment>undo caption</comment>
         <translation>Upraviť vlastnosti viacerých vodičov</translation>
@@ -2829,12 +2830,12 @@ Chcete ich tiež prečíslovať?</numerusform>
     <message>
         <location filename="../sources/qetgraphicsitem/conductordefinitionmark.cpp" line="47"/>
         <source>Drag along the conductor to move the colour and section</source>
-        <translation type="unfinished"></translation>
+        <translation>Ťahaním za vodič sa sposunie farba a sekcia.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/conductordefinitionmark.cpp" line="304"/>
         <source>Move the colour and section</source>
-        <translation type="unfinished"></translation>
+        <translation>Presunúť farbu a sekciu</translation>
     </message>
 </context>
 <context>
@@ -2892,7 +2893,7 @@ Chcete ich tiež prečíslovať?</numerusform>
         <comment>selection properties panel</comment>
         <translation>
             <numerusform>Vybraný vodič (%n): uplatnia sa naň iba zmenené polia.</numerusform>
-            <numerusform>Vybraných %n vodičov: aplikujú sa na nich len tie polia, ktoré zmeníte.</numerusform>
+            <numerusform>Vybrané %n vodiče: aplikujú sa na nich len tie polia, ktoré zmeníte.</numerusform>
             <numerusform>Vybraných %n vodičov: aplikujú sa na nich len tie polia, ktoré zmeníte.</numerusform>
         </translation>
     </message>
@@ -2992,7 +2993,7 @@ Chcete ich tiež prečíslovať?</numerusform>
         <source>Visible text
 Locked by this sheet&apos;s “Show one potential text per sheet” option, in Sheet properties.</source>
         <translation>Viditeľný text
-Uzamknuté nastavením „Zobraziť jeden potenciálny text na hárok“ vo vlastnostiach hárka.</translation>
+Uzamknuté nastavením „Zobraziť jeden potenciálny text na list“ vo vlastnostiach listu.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="314"/>
@@ -3061,42 +3062,42 @@ Uzamknuté nastavením „Zobraziť jeden potenciálny text na hárok“ vo vlas
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="168"/>
         <source>A slanted stroke across the conductor, with its colour above and its section below. Drag it along the conductor to move it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Šikmá čiara (škrt) pretínajúca vodič – s farbou v hornej časti a prierezom v dolnej časti. Ťahaním po vodiči ju môžete posúvať.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="171"/>
         <source>Stroke with colour and section</source>
-        <translation type="unfinished"></translation>
+        <translation>Šikmá čiara (škrt) s farbou a rezom</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="178"/>
         <source>From the start :</source>
-        <translation type="unfinished"></translation>
+        <translation>Od začiatku:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="185"/>
         <source>Where the stroke stands, as a share of the conductor&apos;s length from its start. &quot;Middle&quot;: the middle of its longest stretch.</source>
-        <translation type="unfinished"></translation>
+        <translation>Poloha ťahu, vyjadrená ako podiel z dĺžky vodiča od jeho začiatku. „Stred“: stred jeho najdlhšieho úseku.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="188"/>
         <source>Middle</source>
-        <translation type="unfinished"></translation>
+        <translation>Na stred</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="191"/>
         <source> %</source>
-        <translation type="unfinished"> %</translation>
+        <translation> %</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>With the stroke shown, the conductor&apos;s own text is hidden: the stroke already gives the colour and the section.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pri zobrazenej šikmej čiare (škrt) je vlastný text vodiča skrytý: šikmá čiara (škrt) už určuje farbu aj prierez.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="213"/>
         <source>The stroke replaces the conductor&apos;s text</source>
-        <translation type="unfinished"></translation>
+        <translation>Šikmá čiara nahrádza text vodiča</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="315"/>
@@ -3158,12 +3159,12 @@ Uzamknuté nastavením „Zobraziť jeden potenciálny text na hárok“ vo vlas
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="544"/>
         <source>Custom dash pattern</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastný vzor prerušovania čiary</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="559"/>
         <source>Dash length :</source>
-        <translation type="unfinished"></translation>
+        <translation>Dĺžka pomlčky:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="566"/>
@@ -3171,27 +3172,27 @@ Uzamknuté nastavením „Zobraziť jeden potenciálny text na hárok“ vo vlas
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="618"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="644"/>
         <source> du</source>
-        <translation type="unfinished"></translation>
+        <translation> z</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="585"/>
         <source>Gap after dash :</source>
-        <translation type="unfinished"></translation>
+        <translation>Medzera za pomlčkou:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="611"/>
         <source>Dot length :</source>
-        <translation type="unfinished"></translation>
+        <translation>Dĺžka bodky:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="637"/>
         <source>Gap after dot :</source>
-        <translation type="unfinished"></translation>
+        <translation>Medzera za bodkou:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="663"/>
         <source>Drawing units, independent of the line size. Scaling the page scales the pattern.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednotky výkresu, nezávislé od hrúbky čiary. Zmena mierky strany mení mierku vzoru.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="689"/>
@@ -3239,7 +3240,7 @@ Uzamknuté nastavením „Zobraziť jeden potenciálny text na hárok“ vo vlas
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="263"/>
         <source>Several conductors selected: the text is changed on one conductor at a time.</source>
-        <translation>Vybraných je viacero vodičov: text sa mení vždy len na jednom vodičovi.</translation>
+        <translation>Vybraných je viacero vodičov: text sa mení vždy len na jednom vodiči.</translation>
     </message>
 </context>
 <context>
@@ -3260,42 +3261,42 @@ Uzamknuté nastavením „Zobraziť jeden potenciálny text na hárok“ vo vlas
     <message>
         <location filename="../sources/connectionsymbols.cpp" line="48"/>
         <source>Corner</source>
-        <translation type="unfinished">Roh</translation>
+        <translation>Roh</translation>
     </message>
     <message>
         <location filename="../sources/connectionsymbols.cpp" line="50"/>
         <source>T-junction</source>
-        <translation type="unfinished"></translation>
+        <translation>T-spoj</translation>
     </message>
     <message>
         <location filename="../sources/connectionsymbols.cpp" line="52"/>
         <source>T-junction, mirrored</source>
-        <translation type="unfinished"></translation>
+        <translation>T-spoj, zrkadlovo obrátený</translation>
     </message>
     <message>
         <location filename="../sources/connectionsymbols.cpp" line="54"/>
         <source>T-junction, double wire at the branch, from the left</source>
-        <translation type="unfinished"></translation>
+        <translation>T-spoj, dvojitý vodič v mieste odbočenia, zľava</translation>
     </message>
     <message>
         <location filename="../sources/connectionsymbols.cpp" line="56"/>
         <source>T-junction, double wire at the branch, from the right</source>
-        <translation type="unfinished"></translation>
+        <translation>T-spoj, dvojitý vodič v mieste odbočenia, sprava</translation>
     </message>
     <message>
         <location filename="../sources/connectionsymbols.cpp" line="58"/>
         <source>Interruption point</source>
-        <translation type="unfinished"></translation>
+        <translation>Bod prerušenia</translation>
     </message>
     <message>
         <location filename="../sources/connectionsymbols.cpp" line="60"/>
         <source>Outgoing cross-reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Odchádzajúci krížový odkaz</translation>
     </message>
     <message>
         <location filename="../sources/connectionsymbols.cpp" line="62"/>
         <source>Incoming cross-reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Prichádzajúci krížový odkaz</translation>
     </message>
 </context>
 <context>
@@ -3516,7 +3517,37 @@ Pokračovať?</translation>
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="3286"/>
+        <location filename="../sources/diagram.cpp" line="347"/>
+        <source>a text</source>
+        <translation>text</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="348"/>
+        <source>a shape</source>
+        <translation>tvar</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="349"/>
+        <source>a picture</source>
+        <translation>obrázok</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="350"/>
+        <source>a table</source>
+        <translation>tabuľka</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="351"/>
+        <source>a terminal strip</source>
+        <translation>svorkovnica</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="352"/>
+        <source>a cable</source>
+        <translation>kábel</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="3342"/>
         <source>Change the depth</source>
         <translation>Zmeniť hĺbku</translation>
     </message>
@@ -3634,33 +3665,33 @@ Pokračovať?</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="31"/>
-        <source>× 0.25</source>
-        <translation>× 0.25</translation>
+        <source>x 0.25</source>
+        <translation>x 0.25</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="36"/>
-        <source>× 0.5</source>
-        <translation>× 0.5</translation>
+        <source>x 0.5</source>
+        <translation>x 0.5</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="41"/>
-        <source>× 0.75</source>
-        <translation>× 0.75</translation>
+        <source>x 0.75</source>
+        <translation>x 0.75</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="46"/>
-        <source>× 1</source>
-        <translation>× 1</translation>
+        <source>x 1</source>
+        <translation>x 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="51"/>
-        <source>× 2</source>
-        <translation>× 2</translation>
+        <source>x 2</source>
+        <translation>x 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="56"/>
-        <source>× 3</source>
-        <translation>× 3</translation>
+        <source>x 3</source>
+        <translation>x 3</translation>
     </message>
 </context>
 <context>
@@ -3668,14 +3699,14 @@ Pokračovať?</translation>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="148"/>
         <source>Left click: place the bridge start; drag or second click: finish; right click: cancel; Esc: quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Ľavé kliknutie: umiestnenie začiatku mostíka; ťahanie alebo druhé kliknutie: dokončenie; pravé kliknutie: zrušenie; Esc: ukončenie</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="161"/>
         <source>Left click or release: finish the line (%n Klemme(n) recognized)</source>
         <comment>how many terminals the line being drawn already crosses</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Kliknutie ľavým tlačidlom alebo uvoľnenie: dokončenie čiary (rozpoznaná svorka / rozpoznané svorky: %n)</numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
@@ -3684,46 +3715,46 @@ Pokračovať?</translation>
         <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="310"/>
         <source>%n Klemme(n)</source>
         <comment>counted while the line is pulled</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n Prepoj</numerusform>
+            <numerusform>%n Prepojenia</numerusform>
+            <numerusform>%n Prepojení</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="312"/>
         <source>, %n sheet reference(s)</source>
         <comment>the way to the next sheet</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>, %n odkaz na list</numerusform>
+            <numerusform>, %n odkazy na list</numerusform>
+            <numerusform>, %n odkazov na list</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="382"/>
         <source>No terminal crossed: the bridge lands on nothing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Žiadna svorka nebola prejdená: mostík pristál mimo.</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="454"/>
         <source>No free track</source>
-        <translation type="unfinished"></translation>
+        <translation>Žiadna voľná koľaj</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="455"/>
         <source>Four bridges already run side by side at one of these terminals: no track is left for another one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Na jednom z týchto terminálov už vedú štyri mostíky vedľa seba: pre ďalší už nie je žiadna koľaj.</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="491"/>
         <source>That bridge cannot be built</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostík sa nedá vytvoriť</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddbridge.cpp" line="492"/>
         <source>A bridge lies across one terminal strip: the line would take terminals of %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cez jednu svorkovnicu prechádza mostík: vedenie by prepojilo svorky %1.</translation>
     </message>
 </context>
 <context>
@@ -3749,27 +3780,27 @@ Pokračovať?</translation>
     <message>
         <location filename="../sources/diagramevent/diagrameventadddimension.cpp" line="364"/>
         <source>Linear Dimension: Click to set the first reference point (P1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Lineárne kótovanie: Kliknutím nastavte prvý referenčný bod (P1)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventadddimension.cpp" line="365"/>
         <source>Chain Dimension: Click to set the start reference point (P1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Reťazové kótovanie: Kliknutím nastavte prvý referenčný bod (P1)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventadddimension.cpp" line="370"/>
         <source>Dimension: Click to set the second reference point (P2) - Length: %1 mm</source>
-        <translation type="unfinished"></translation>
+        <translation>Kótovanie: Kliknutím nastavte druhý referenčný bod (P2) – Dĺžka: %1 mm</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventadddimension.cpp" line="377"/>
         <source>Dimension: Move mouse to set offset distance and side (%1 mm), click to fix</source>
-        <translation type="unfinished"></translation>
+        <translation>Kótovanie: Pohybom myši nastavte vzdialenosť odsadenia a stranu (%1 mm), kliknutím opravte</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventadddimension.cpp" line="384"/>
         <source>Chain Dimension: Click to place next segment (%1 mm) | Press Enter to finish, Esc to exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Reťazové kótovanie: Kliknutím umiestnite ďalší segment (%1 mm) | Stlačením klávesu Enter dokončíte, klávesom Esc ukončíte</translation>
     </message>
 </context>
 <context>
@@ -3782,16 +3813,16 @@ Pokračovať?</translation>
     <message numerus="yes">
         <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="494"/>
         <source>%n symbol(s) along the drag</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n symbol pozdĺž ťahania</numerusform>
+            <numerusform>%n symboly pozdĺž ťahania</numerusform>
+            <numerusform>%n symbolov pozdĺž ťahania</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="552"/>
         <source>insert %1 × %2</source>
-        <translation type="unfinished"></translation>
+        <translation>vložiť %1 × %2</translation>
     </message>
 </context>
 <context>
@@ -4192,12 +4223,18 @@ Pokračovať?</translation>
 <context>
     <name>DiagramTextItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="67"/>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="68"/>
         <source>Hold ctrl to free movement</source>
         <translation>Držať Ctrl pre voľné posunutie</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="796"/>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="798"/>
+        <source>
+Hold Shift and drag to move the symbol</source>
+        <translation>Podržte kláves Shift a ťahaním presuňte symbol</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="799"/>
         <source>
 Hold Shift and drag to move this text on its own</source>
         <translation>Podržte kláves Shift a potiahnutím presuňte tento text samostatne.</translation>
@@ -4234,51 +4271,51 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="149"/>
+        <location filename="../sources/diagramview.cpp" line="147"/>
         <source>Paste Here</source>
         <comment>context menu action</comment>
         <translation>Vložiť tu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="124"/>
+        <location filename="../sources/diagramview.cpp" line="122"/>
         <source>In this area you conceive your diagrams by adding elements and conductors between their terminals. You may also add independent texts.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>V tejto oblasti vytvárate svoje schémy pridávaním prvkov a vodičov medzi ich vývody. Môžete tiež pridávať samostatné texty.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="152"/>
+        <location filename="../sources/diagramview.cpp" line="150"/>
         <source>Multiple paste</source>
         <translation>Viacnásobné vloženie</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="159"/>
+        <location filename="../sources/diagramview.cpp" line="157"/>
         <source>Create a template</source>
         <comment>context menu action</comment>
         <translation>Vytvorte šablónu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="163"/>
+        <location filename="../sources/diagramview.cpp" line="161"/>
         <source>Make a cabinet thumbnail</source>
         <comment>context menu action</comment>
         <translation>Vytvorte miniatúru</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="167"/>
+        <location filename="../sources/diagramview.cpp" line="165"/>
         <source>Sheet reference</source>
         <translation>Odkaz na list</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="499"/>
+        <location filename="../sources/diagramview.cpp" line="497"/>
         <source>%1: %2</source>
         <translation>%1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="540"/>
+        <location filename="../sources/diagramview.cpp" line="538"/>
         <source>Add an image</source>
         <translation>Pridať obrázok</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramview.cpp" line="541"/>
+        <location filename="../sources/diagramview.cpp" line="539"/>
         <source>Add %n image(s)</source>
         <translation>
             <numerusform>Pridať %n obrázok</numerusform>
@@ -4287,65 +4324,65 @@ Hold Shift and drag to move this text on its own</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="548"/>
+        <location filename="../sources/diagramview.cpp" line="546"/>
         <source>Images not added</source>
         <translation>Obrázky neboli pridané</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="549"/>
+        <location filename="../sources/diagramview.cpp" line="547"/>
         <source>These files could not be added:</source>
         <translation>Tieto súbory nebolo možné pridať:</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1173"/>
+        <location filename="../sources/diagramview.cpp" line="1177"/>
         <source>X: %1 Y: %2</source>
         <translation>X: %1 Y: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1497"/>
+        <location filename="../sources/diagramview.cpp" line="1501"/>
         <source>Connect the selected terminals</source>
         <translation>Spojiť vybrané svorky</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1943"/>
+        <location filename="../sources/diagramview.cpp" line="1947"/>
         <source>Untitled</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Bez názvu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="2926"/>
+        <location filename="../sources/diagramview.cpp" line="2982"/>
         <source>Remove this core from the line</source>
         <translation>Odstrániť túto žilu z čiary</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3211"/>
+        <location filename="../sources/diagramview.cpp" line="3267"/>
         <source>Registered template</source>
         <translation>Registrovaná šablóna</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3212"/>
+        <location filename="../sources/diagramview.cpp" line="3268"/>
         <source>The template has been successfully saved as :
 %1</source>
         <translation>Šablóna bola úspešne uložená ako:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3215"/>
+        <location filename="../sources/diagramview.cpp" line="3271"/>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3215"/>
+        <location filename="../sources/diagramview.cpp" line="3271"/>
         <source>The file could not be written.</source>
         <translation>Súbor sa nepodarilo uložiť</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="223"/>
+        <location filename="../sources/diagramview.cpp" line="221"/>
         <source>Choose the new color for this conductor</source>
         <translation>Vybrať novú farbu pre tento vodič</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="246"/>
+        <location filename="../sources/diagramview.cpp" line="244"/>
         <source>Edit conductor properties</source>
         <comment>undo caption</comment>
         <translation>Upraviť vlastnosti vodiča</translation>
@@ -4374,220 +4411,220 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="14"/>
         <source>Dimension properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastnosti kótovania</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="45"/>
         <source>Segments:</source>
-        <translation type="unfinished"></translation>
+        <translation>Segmenty:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="57"/>
         <source>Select all</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrať všetko</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="95"/>
         <source>Dimension</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmer</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="104"/>
         <source>Display &amp; text</source>
-        <translation type="unfinished"></translation>
+        <translation>Displej a text</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="116"/>
         <source>Prefix:</source>
-        <translation type="unfinished"></translation>
+        <translation>Predpona:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="136"/>
         <source>Value:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hodnota:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="158"/>
         <source>Calculate automatically (2px = 1mm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vypočítať automaticky (2px = 1 mm)</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="170"/>
         <source>Suffix:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prípona:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="193"/>
         <source>Units &amp; precision</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednotky a presnosť</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="205"/>
         <source>Unit:</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednotka:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="222"/>
         <source>Show unit</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť jednotku</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="229"/>
         <source>Precision:</source>
-        <translation type="unfinished"></translation>
+        <translation>Presnosť:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="246"/>
         <source>Hide trailing zero</source>
-        <translation type="unfinished"></translation>
+        <translation>Skryť koncovú nulu</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="253"/>
         <source>Show second unit (inches)</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť druhú jednotku (palce)</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="263"/>
         <source>Alignment &amp; position</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarovnanie a poloha</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="275"/>
         <source>Distance from dimension line:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzdialenosť od kótovacej čiary:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="282"/>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="405"/>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="431"/>
         <source> mm</source>
-        <translation type="unfinished">mm</translation>
+        <translation>mm</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="301"/>
         <source>Center value</source>
-        <translation type="unfinished"></translation>
+        <translation>Stredná hodnota</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="311"/>
         <source>Text rotation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotácia textu:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="321"/>
         <source>Value inside the dimension line</source>
-        <translation type="unfinished"></translation>
+        <translation>Hodnota vo vnútri kótovacej čiary</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="348"/>
         <source>Lines</source>
-        <translation type="unfinished"></translation>
+        <translation>Čiary</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="357"/>
         <source>Dimension line &amp; extension lines</source>
-        <translation type="unfinished"></translation>
+        <translation>Kótovacia čiara a vynášacie čiary</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="372"/>
         <source>Line width:</source>
-        <translation type="unfinished"></translation>
+        <translation>Šírka čiary:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="379"/>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="457"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="398"/>
         <source>Extension line overshoot:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prekročenie predlžovacej čiary:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="424"/>
         <source>Gap from measured point:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzdialenosť od meraného bodu:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="450"/>
         <source>Baseline offset:</source>
-        <translation type="unfinished"></translation>
+        <translation>Odsadenie základnej čiary:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="479"/>
         <source>Line ends</source>
-        <translation type="unfinished"></translation>
+        <translation>Konce riadkov</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="494"/>
         <source>Arrow style:</source>
-        <translation type="unfinished"></translation>
+        <translation>Štýl šípky:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="511"/>
         <source>Arrow size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Veľkosť šípky:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="551"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="560"/>
         <source>Appearance</source>
-        <translation type="unfinished">Vzhľad</translation>
+        <translation>Vzhľad</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="569"/>
         <source>Draw a box around the value</source>
-        <translation type="unfinished"></translation>
+        <translation>Nakresliť rámček okolo hodnoty</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="579"/>
         <source>Use decimal comma</source>
-        <translation type="unfinished"></translation>
+        <translation>Použiť desatinnú čiarku</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="589"/>
         <source>Mask background</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozadie masky</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="604"/>
         <source>Font size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Veľkosť textu:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.ui" line="611"/>
         <source> pt</source>
-        <translation type="unfinished"> bod</translation>
+        <translation> bod</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.cpp" line="72"/>
         <source>Arrows</source>
-        <translation type="unfinished"></translation>
+        <translation>Šípky</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.cpp" line="73"/>
         <source>Architectural Slashes</source>
-        <translation type="unfinished"></translation>
+        <translation>Architektonické lomky</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.cpp" line="75"/>
         <source>Auto (parallel to line)</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaticky (paralelne s čiarou)</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.cpp" line="76"/>
         <source>Horizontal</source>
-        <translation type="unfinished">Vodorovne</translation>
+        <translation>Vodorovne</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.cpp" line="508"/>
         <source>Edit dimension properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Upraviť vlastnosti kótovania</translation>
     </message>
 </context>
 <context>
@@ -4596,59 +4633,59 @@ Hold Shift and drag to move this text on its own</source>
         <location filename="../sources/ui/dimensionpropertieswidget.ui" line="14"/>
         <location filename="../sources/ui/dimensionpropertieswidget.h" line="49"/>
         <source>Dimension properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastnosti kótovania</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertieswidget.ui" line="35"/>
         <source>Dimension</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmer</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertieswidget.ui" line="44"/>
         <source>Calculated:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vypočítané:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertieswidget.ui" line="56"/>
         <source>0.0 mm</source>
-        <translation type="unfinished"></translation>
+        <translation>0.0 mm</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertieswidget.ui" line="63"/>
         <source>Automatic calculation (2px = 1mm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatický výpočet (2px = 1 mm)</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertieswidget.ui" line="73"/>
         <source>Custom text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastný text:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertieswidget.ui" line="87"/>
         <source>Offset:</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstup:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertieswidget.ui" line="107"/>
         <source>Line ends:</source>
-        <translation type="unfinished"></translation>
+        <translation>Konce čiar:</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertieswidget.ui" line="117"/>
         <source>Dimension properties...</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastnosti kótovania...</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertieswidget.cpp" line="32"/>
         <location filename="../sources/ui/dimensionpropertieswidget.cpp" line="49"/>
         <source>Arrows</source>
-        <translation type="unfinished"></translation>
+        <translation>Šípky</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertieswidget.cpp" line="33"/>
         <location filename="../sources/ui/dimensionpropertieswidget.cpp" line="50"/>
         <source>Architectural Slashes</source>
-        <translation type="unfinished"></translation>
+        <translation>Architektonické lomky</translation>
     </message>
 </context>
 <context>
@@ -4656,32 +4693,32 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/ui/dockfold.cpp" line="264"/>
         <source>Show the side panels again</source>
-        <translation type="unfinished"></translation>
+        <translation>Znova zobraziť bočné panely</translation>
     </message>
     <message>
         <location filename="../sources/ui/dockfold.cpp" line="265"/>
         <source>Fold the side panels away</source>
-        <translation type="unfinished"></translation>
+        <translation>Odklopiť bočné panely</translation>
     </message>
     <message>
         <location filename="../sources/ui/dockfold.cpp" line="267"/>
         <source>Show the right side panels again</source>
-        <translation type="unfinished"></translation>
+        <translation>Znova zobraziť pravé bočné panely</translation>
     </message>
     <message>
         <location filename="../sources/ui/dockfold.cpp" line="267"/>
         <source>Fold the right side panels away</source>
-        <translation type="unfinished"></translation>
+        <translation>Odklopiť pravé bočné panely</translation>
     </message>
     <message>
         <location filename="../sources/ui/dockfold.cpp" line="268"/>
         <source>Show the left side panels again</source>
-        <translation type="unfinished"></translation>
+        <translation>Znova zobraziť panely na ľavej strane</translation>
     </message>
     <message>
         <location filename="../sources/ui/dockfold.cpp" line="268"/>
         <source>Fold the left side panels away</source>
-        <translation type="unfinished"></translation>
+        <translation>Odklopiť ľavé bočné panely</translation>
     </message>
 </context>
 <context>
@@ -4689,47 +4726,47 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="48"/>
         <source>Duplicate signals and components</source>
-        <translation type="unfinished"></translation>
+        <translation>Duplicitné signály a komponenty</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="55"/>
         <source>Click an occurrence to select and show it on its sheet. Refresh after editing the project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kliknutím na výskyt ho vyberiete a zobrazíte na príslušnom liste. Po úprave projektu obnovte zobrazenie.</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="61"/>
         <source>Case-sensitive comparison</source>
-        <translation type="unfinished"></translation>
+        <translation>Porovnanie s rozlišovaním malých a veľkých písmen</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="63"/>
         <source>When unchecked, labels differing only in letter case, such as K1 and k1, are duplicates.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ak táto možnosť nie je zaškrtnutá, označenia, ktoré sa líšia iba veľkosťou písmen (napríklad K1 a k1), sa považujú za duplikáty.</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="78"/>
         <source>Error / occurrence</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba / výskyt</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="78"/>
         <source>Sheet</source>
-        <translation type="unfinished">List</translation>
+        <translation>List</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="78"/>
         <source>Position</source>
-        <translation type="unfinished">Poloha</translation>
+        <translation>Poloha</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="99"/>
         <source>Refresh</source>
-        <translation type="unfinished">Obnoviť</translation>
+        <translation>Obnoviť</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="120"/>
         <source>Reading the folios...</source>
-        <translation type="unfinished"></translation>
+        <translation>Čítanie listov...</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="143"/>
@@ -4739,68 +4776,69 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="164"/>
         <source>Duplicate signal: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Duplicitný signál: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="166"/>
         <source>Duplicate component: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Duplicitný komponent: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="171"/>
         <source>Duplicate component: %1 in %2</source>
         <extracomment>%2 is the plant and location, such as &quot;=P1+UV1&quot;.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Duplicitný komponent: %1 v %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="188"/>
         <source>Group %1</source>
         <extracomment>%1 numbers one electrical signal or one linked device among those sharing a label.</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>%1 očísluje jeden elektrický signál alebo jedno pripojené zariadenie spomedzi tých, ktoré zdieľajú rovnaké označenie.</translatorcomment>
+        <translation>Skupina %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="191"/>
         <source>Occurrences in the same group belong to one signal or linked device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Výskyty v tej istej skupine patria k jednému signálu alebo prepojenému zariadeniu.</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="203"/>
         <source>%1 — %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 — %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="208"/>
         <source>x: %1, y: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>x: %1, y: %2</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="218"/>
         <source>%n occurrences</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n výskyt</numerusform>
+            <numerusform>%n výskyty</numerusform>
+            <numerusform>%n výskytov</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="224"/>
         <source>No duplicate signals or components found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenašli sa žiadne duplicitné signály ani komponenty.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="230"/>
         <source>%n duplicate labels found.</source>
         <extracomment>%n counts conflicting identifiers, not wire segments or symbols.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Našlo sa %n duplicitné označenie.</numerusform>
+            <numerusform>Našli sa %n duplicitné označenia.</numerusform>
+            <numerusform>Našlo sa %n duplicitných označení.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="242"/>
         <source>This occurrence no longer exists. Refresh the results.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento výskyt už neexistuje. Obnovte výsledky.</translation>
     </message>
 </context>
 <context>
@@ -4859,7 +4897,7 @@ Hold Shift and drag to move this text on its own</source>
         <translation>Upraviť text prvku</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1316"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1364"/>
         <source>Resize an element text</source>
         <translation>Zmeniť veľkosť textu</translation>
     </message>
@@ -5368,27 +5406,27 @@ Hold Shift and drag to move this text on its own</source>
         <location filename="../sources/editor/esevent/eseventmeasure.cpp" line="107"/>
         <location filename="../sources/editor/esevent/eseventmeasure.cpp" line="157"/>
         <source>Tape measure: Click to set the first reference point (P1), Esc to exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Meradlo: Kliknutím nastavte prvý referenčný bod (P1), klávesom Esc ukončite</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventmeasure.cpp" line="63"/>
         <source>Tape measure: %1 mm (%2 px) | ΔX: %3 mm | ΔY: %4 mm | Angle: %5°</source>
-        <translation type="unfinished"></translation>
+        <translation>Meradlo: %1 mm (%2 px) | ΔX: %3 mm | ΔY: %4 mm | Uhol: %5°</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventmeasure.cpp" line="85"/>
         <source>Tape measure: Click to set the second reference point (P2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Meradlo: Kliknutím nastavte druhý referenčný bod (P2)</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventmeasure.cpp" line="113"/>
         <source>Measurements cleared</source>
-        <translation type="unfinished"></translation>
+        <translation>Merania vymazané</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventmeasure.cpp" line="164"/>
         <source>Measurements cleared. Press Esc again to exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Merania vymazané. Pre ukončenie stlačte znova kláves Esc.</translation>
     </message>
 </context>
 <context>
@@ -5440,7 +5478,7 @@ Hold Shift and drag to move this text on its own</source>
 <context>
     <name>Element</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="2949"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3046"/>
         <source>Automatically number an element</source>
         <comment>undo caption</comment>
         <translation>Automaticky očíslovať prvok</translation>
@@ -5795,12 +5833,12 @@ Vytvoriť ho?</translation>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="893"/>
         <source>Show name</source>
-        <translation type="unfinished">Zobraziť meno</translation>
+        <translation>Zobraziť meno</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="895"/>
         <source>Untick to not draw the name of this element on the sheet: its data is kept, and a terminal keeps its number.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zrušte zaškrtnutie, ak nechcete, aby sa názov tohto prvku vykresľoval na výkrese: jeho údaje zostanú zachované a svorka si ponechá svoje číslo.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="924"/>
@@ -6369,12 +6407,12 @@ Pokračovať?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1152"/>
         <source>Show headers on the sheet</source>
-        <translation>Zobraziť hlavičky na hárku</translation>
+        <translation>Zobraziť hlavičky na liste</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1153"/>
         <source>Show or hide the column headings of the PLC table on the sheet</source>
-        <translation>Zobraziť alebo skryť záhlavia stĺpcov tabuľky PLC na hárku</translation>
+        <translation>Zobraziť alebo skryť záhlavia stĺpcov tabuľky PLC na liste</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1165"/>
@@ -6533,7 +6571,7 @@ Pokračovať?</translation>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="449"/>
         <source>Number of slave contacts used : %1
 </source>
-        <translation> Počet použitých spojení so slave zariadeniami: %1</translation>
+        <translation>Počet použitých spojení so slave zariadeniami: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="464"/>
@@ -6551,7 +6589,7 @@ Pokračovať?</translation>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="489"/>
         <source>Last changed: save %1, %2, by %3
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Naposledy zmenené: uložiť %1, %2, používateľom %3</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="501"/>
@@ -6752,12 +6790,12 @@ Pokračovať?</translation>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="47"/>
         <source>Add formula column...</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať stĺpec so vzorcom...</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="49"/>
         <source>Add a column worked out from the others, without writing SQL. The query becomes a custom SQL query.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridajte stĺpec vypočítaný na základe ostatných stĺpcov, bez nutnosti písať SQL. Dotaz sa zmení na vlastný SQL dotaz.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="53"/>
@@ -6782,12 +6820,12 @@ Pokračovať?</translation>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="686"/>
         <source>Formula column</source>
-        <translation type="unfinished"></translation>
+        <translation>Stĺpec so vzorcom</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="687"/>
         <source>The query has no FROM clause to add a column to.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dopyt neobsahuje klauzulu FROM, do ktorej by bolo možné pridať stĺpec.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="860"/>
@@ -7470,101 +7508,101 @@ Importom tohto súboru potvrdzujete, že:
 <context>
     <name>ExportDialog</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="696"/>
+        <location filename="../sources/exportdialog.cpp" line="707"/>
         <source>Preview</source>
         <translation>Náhľad</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="162"/>
+        <location filename="../sources/exportdialog.cpp" line="163"/>
         <source>Dimensions</source>
         <translation>Veľkosť</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="561"/>
+        <location filename="../sources/exportdialog.cpp" line="572"/>
         <source>Can not write to this file</source>
         <comment>message box title</comment>
         <translation>Do tohto súboru sa nedá zapisovať</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="83"/>
+        <location filename="../sources/exportdialog.cpp" line="84"/>
         <source>Export</source>
         <translation>Exportovať</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="161"/>
+        <location filename="../sources/exportdialog.cpp" line="162"/>
         <source>Filename</source>
         <translation>Názov pre súbor</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="800"/>
-        <location filename="../sources/exportdialog.cpp" line="805"/>
+        <location filename="../sources/exportdialog.cpp" line="811"/>
+        <location filename="../sources/exportdialog.cpp" line="816"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="465"/>
+        <location filename="../sources/exportdialog.cpp" line="466"/>
         <source>Target files names</source>
         <comment>message box title</comment>
         <translation>Názvy cieľových súborov</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="73"/>
+        <location filename="../sources/exportdialog.cpp" line="74"/>
         <source>Export the project sheets</source>
         <comment>window title</comment>
         <translation>Exportovať listy projektu</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="88"/>
+        <location filename="../sources/exportdialog.cpp" line="89"/>
         <source>Choose the sheets you wish to export and specify their size :</source>
         <translation>Vyberte listy, ktoré chcete exportovať a určite ich rozmery:</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="91"/>
+        <location filename="../sources/exportdialog.cpp" line="92"/>
         <source>Check all</source>
         <translation>Zahrnúť všetko</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="92"/>
+        <location filename="../sources/exportdialog.cpp" line="93"/>
         <source>Uncheck all</source>
         <translation>Zrušiť všetko</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="160"/>
+        <location filename="../sources/exportdialog.cpp" line="161"/>
         <source>Sheet title</source>
         <translation>Názov listu</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="466"/>
+        <location filename="../sources/exportdialog.cpp" line="467"/>
         <source>You must enter a non-empty, unique filename for each sheet to export.</source>
         <comment>message box content</comment>
         <translation>Musíte zadať neprázdny, jedinečný názov súboru pre každý list z exportu.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="481"/>
+        <location filename="../sources/exportdialog.cpp" line="482"/>
         <source>Directory missing</source>
         <comment>message box title</comment>
         <translation>Adresár chýba</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="482"/>
+        <location filename="../sources/exportdialog.cpp" line="483"/>
         <source>You must specify the path of the directory in which the images files will be saved.</source>
         <comment>message box content</comment>
         <translation>Musíte určiť cestu k adresáru, do ktorého budú uložené súbory obrázkov.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="517"/>
+        <location filename="../sources/exportdialog.cpp" line="518"/>
         <source>Images not included in the DXF export</source>
         <comment>message box title</comment>
         <translation>Obrázky nie sú zahrnuté v exporte DXF</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="518"/>
+        <location filename="../sources/exportdialog.cpp" line="519"/>
         <source>The DXF format used here (AC1006) cannot embed images. Images will only be represented by an outline rectangle (position, size, rotation and skew are preserved), without the image content.</source>
         <comment>message box content</comment>
         <translation>Tu použitý formát DXF (AC1006) neumožňuje vkladanie obrázkov. Obrázky budú znázornené iba obrysovým obdĺžnikom (pri zachovaní polohy, veľkosti, rotácie a sklonu), bez samotného obsahu obrázka.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="563"/>
+        <location filename="../sources/exportdialog.cpp" line="574"/>
         <source>It appears you do not have the required permissions to write the file %1.</source>
         <comment>message box content</comment>
         <translation>Zdá sa, že nemáte potrebné oprávnenia pre zápis súboru %1.</translation>
@@ -7850,32 +7888,32 @@ aj textové a číselné vstupy.</translation>
     <message>
         <location filename="../sources/ui/formulabuilderdialog.cpp" line="226"/>
         <source>Formula column</source>
-        <translation type="unfinished"></translation>
+        <translation>Stĺpec so vzorcom</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulabuilderdialog.cpp" line="230"/>
         <source>Build the value of a new column. Pick a field, a value or an operation; an operation&apos;s inputs can be operations too. Quotes and brackets are written for you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvorte hodnotu pre nový stĺpec. Vyberte pole, hodnotu alebo operáciu; vstupmi operácie môžu byť takisto operácie. Úvodzovky a zátvorky sa dopĺňajú automaticky.</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulabuilderdialog.cpp" line="237"/>
         <source>Title of the column</source>
-        <translation type="unfinished"></translation>
+        <translation>Názov stĺpca</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulabuilderdialog.cpp" line="238"/>
         <source>Column title</source>
-        <translation type="unfinished"></translation>
+        <translation>Názov stĺpca</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulabuilderdialog.cpp" line="253"/>
         <source>The SQL this makes (read only)</source>
-        <translation type="unfinished"></translation>
+        <translation>SQL, ktoré sa týmto vytvorí (iba na čítanie)</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulabuilderdialog.cpp" line="257"/>
         <source>Add the column</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať stĺpec</translation>
     </message>
 </context>
 <context>
@@ -7883,27 +7921,27 @@ aj textové a číselné vstupy.</translation>
     <message>
         <location filename="../sources/ui/formulabuilderdialog.cpp" line="101"/>
         <source>Enter the text</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadať text</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulabuilderdialog.cpp" line="106"/>
         <source>Between the values, for example a space or a dash</source>
-        <translation type="unfinished"></translation>
+        <translation>Medzi hodnotami, napríklad medzera alebo pomlčka</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulabuilderdialog.cpp" line="117"/>
         <source>Add an input</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať vstup</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulabuilderdialog.cpp" line="118"/>
         <source>Remove the last input</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť posledný vstup</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulabuilderdialog.cpp" line="150"/>
         <source>Input %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Vstup %1</translation>
     </message>
 </context>
 <context>
@@ -8081,49 +8119,49 @@ aj textové a číselné vstupy.</translation>
         <translation>Používať systémové farby</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="803"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="819"/>
         <source>User Collection Path</source>
         <translation>Cesta k vlastnej zbierke</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="831"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="847"/>
         <source>User Title blocks Path</source>
         <translation>Cesta k vlastným záhlaviam výkresov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="775"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="791"/>
         <source>Path of the Common Collection</source>
         <translation>Cesta k spoločnej zbierke</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="625"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="639"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="677"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="705"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="719"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="688"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="702"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="740"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="768"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="782"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="803"/>
         <source>By default</source>
         <translation>Východzie nastavenie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="630"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="644"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="682"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="710"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="724"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="707"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="745"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="782"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="823"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="773"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="787"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="808"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="845"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="886"/>
         <source>Browse...</source>
         <translation>Prechádzať...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="753"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="816"/>
         <source>(Reload the elements collections to apply the changes)</source>
         <translation>Aby sa zmeny použili je potrebné zbierky prvkov nahrať opäť</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="466"/>
         <source>Projects</source>
         <translation>Projekty</translation>
     </message>
@@ -8133,39 +8171,39 @@ aj textové a číselné vstupy.</translation>
         <translation>Používať posunky pre dotykovú plochu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="409"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="472"/>
         <source>Use sheet numbers instead of their position in the project</source>
         <translation>Použiť čísla listov namiesto ich polohy v projektu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="654"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Číslovať stĺpce záhlavia výkresu od 0 (inak 1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="426"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="489"/>
         <source>Disabled</source>
         <translation>Zakázané</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="432"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="495"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> min</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="854"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="917"/>
         <source>Highlight freshly integrated elements in the panel</source>
         <translation>Zvýrazniť čerstvo integrované prvky na paneli</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="861"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="924"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>Prvok môže obsahovať informácie o svojich autoroch, licencii alebo iné užitočné informácie. Nižšie zadajte predvolenú hodnotu tohto textového poľa pre nové prvky:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="897"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="960"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>Aplikované pri ďalšom spustení QElectroTech</translation>
     </message>
@@ -8175,77 +8213,77 @@ aj textové a číselné vstupy.</translation>
         <translation>Formulár</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="416"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="479"/>
         <source>Automatic backup of projects (applied at the next launch of QElectroTech)</source>
         <translation>Automatické zálohovanie projektov (aplikované pri ďalšom spustení QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="599"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="662"/>
         <source>Collections</source>
         <translation>Zbierky</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="605"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="668"/>
         <source>Access the collections</source>
         <translation>Prístup k zbierkach</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="662"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="725"/>
         <source>Common collection directory</source>
         <translation>Adresár so spoločnou zbierkou</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="753"/>
         <source>User collection directory</source>
         <translation>Adresár s vlastnou zbierkou</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="732"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="795"/>
         <source>User title blocks directory</source>
         <translation>Adresár s vlastnými záhlaviami výkresov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="845"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="908"/>
         <source>Elements management</source>
         <translation>Správa prvkov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="937"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1000"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation>Tu môžete definovať východzí vzhľad rôznych textov v QElectroTechu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1112"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1175"/>
         <source>Designation, type, plant, location, length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Označenie, typ, inštalácia, umiestnenie, dĺžka:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1145"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1208"/>
         <source>Core colors (all of them):</source>
-        <translation type="unfinished"></translation>
+        <translation>Farby žíl (všetky):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1178"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1241"/>
         <source>Text alignment:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarovnanie textu:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1290"/>
         <source>Grid + Keyboard</source>
         <translation>Mriežka a klávesnica</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1233"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1296"/>
         <source>Grid: 1 - 30</source>
         <translation>Mriežka: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1300"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1363"/>
         <source>DiagramEditor xGrid</source>
         <translation>Súradnice x mriežky editora výkresu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1267"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1330"/>
         <source>DiagramEditor yGrid</source>
         <translation>Súradnice y mriežky editora výkresu</translation>
     </message>
@@ -8255,322 +8293,372 @@ aj textové a číselné vstupy.</translation>
         <translation>Farba aplikácie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="64"/>
+        <source>Selection rectangle selects:</source>
+        <translation>Výberový obdĺžnik vyberá:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="75"/>
+        <source>Everything it overlaps (as before)</source>
+        <translation>Všetko, čo prekrýva (ako predtým)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="80"/>
+        <source>What lies wholly within it</source>
+        <translation>Čo v ňom leží úplne</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="85"/>
+        <source>By direction: wholly within to the right, overlapped to the left</source>
+        <translation>Podľa smeru: úplne vpravo, s presahom doľava</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="102"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Zobraziť vlastnosti vybraného vodiča na paneli vlastnosti výberu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="109"/>
+        <source>Draw a connected terminal in the color of its conductor</source>
+        <translation>Nakreslite pripojenú svorku vo farbe jej vodiča</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="112"/>
+        <source>Unchecked, every terminal is drawn in red. Terminals are never printed or exported.</source>
+        <translation>Ak nie sú zaškrtnuté, všetky terminály sa vykresľujú červenou farbou. Svorky sa nikdy netlačia ani neexportujú.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="119"/>
         <source>When unticked, no conductors-per-terminal rule applies, whatever the projects&apos; settings.</source>
         <translation>Ak toto políčko nie je začiarknuté, pravidlo týkajúce sa počtu vodičov na svorku sa neuplatňuje bez ohľadu na nastavenia projektu.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="79"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="122"/>
         <source>Apply the projects&apos; conductors-per-terminal rules</source>
-        <translation>Aplikujte pravidlá projektu týkajúce sa počtu vodičov na svorku.</translation>
+        <translation>Aplikovať pravidlá projektu týkajúce sa počtu vodičov na svorku</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="94"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="137"/>
         <source>Maximum conductors per terminal:</source>
         <translation>Maximálny počet vodičov na svorku:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="107"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="150"/>
         <source>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <translation>Platí pre všetky projekty okrem tých, ktoré majú vlastné nastavenia. Nový vodič, ktorý by pri pripojení na svorku prekročil tento limit, sa neprijme; už zapojené vodiče sa nemenia. Hodnota 4 znamená dve dvojité dutinky, jednu na každej strane skrutky.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="110"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="153"/>
         <source>No limit</source>
         <translation>Bez limitu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="134"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="177"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <translation>Odkaz na list je virtuálny bod: zahŕňa len jeden vodič – ten, ktorý pokračuje na druhom liste.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="137"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
         <source>Only one conductor per sheet reference</source>
         <translation>Len jeden vodič na odkaz na liste</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="153"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="196"/>
         <source>Show the default grid (applied the next time the programme is launched)</source>
         <translation>Zobraziť predvolenú mriežku (použije sa pri ďalšom spustení programu)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="172"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="215"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Pri väčšom oddialení sa body mriežky nezobrazujú; informáciu o tom, kde k tomu dochádza, nájdete na stavovom riadku. Hodnoty sú uvedené v pixeloch tak, ako ich systém škáluje, takže rovnaké údaje platia aj pre obrazovky s vysokou hustotou pixelov (HiDPI)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="255"/>
         <source>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</source>
         <translation>Štandardne sa prvok do výkresu vloží dvojitým kliknutím; úprava zostáva dostupná v kontextovej ponuke.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="215"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="258"/>
         <source>Double-clicking in the collection opens the element editor instead of inserting it</source>
-        <translation>Dvojité kliknutie v kolekcii otvorí editor prvku namiesto jeho vloženia.</translation>
+        <translation>Dvojité kliknutie v kolekcii otvorí editor prvku namiesto jeho vloženia</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="222"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
         <source>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</source>
         <translation>Zaškrtnuté: jednoduchý zoznam, najprv najlepšia zhoda. Nezaškrtnuté: strom kolekcií filtrovaný podľa vyhľadávania.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="225"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="268"/>
         <source>Show search results as a sorted list</source>
         <translation>Zobraziť výsledky vyhľadávania ako zoradený zoznam</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
         <source>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</source>
         <translation>Po kliknutí, ktorým vyberiete prvok alebo vodič, sa v blízkosti kurzora zobrazia príkazy panela skratiek, ktoré po oddialení myši zmiznú.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="235"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
         <source>Show commands near the selection</source>
         <translation>Zobraziť príkazy v blízkosti výberu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="242"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="285"/>
         <source>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</source>
         <translation>Podržanie pravého tlačidla a potiahnutie určitým smerom aktivuje príkaz z panela skratiek. Bežné kliknutie pravým tlačidlom (po jeho uvoľnení) naďalej otvára kontextovú ponuku.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="245"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="288"/>
         <source>Right-button mouse gestures</source>
         <translation>Gestá myšou s pravým tlačidlom</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="252"/>
-        <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="255"/>
-        <source>Four-way arrow and handle catching with the crosshair</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
-        <source>A symbol&apos;s text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires&apos; texts. Unticked by default: texts turn with their symbol.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
-        <source>Upright symbol texts read from bottom to top</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
-        <source>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
-        <source>Help lines from the terminals of a dragged symbol</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="282"/>
-        <source>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice&apos;s sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="285"/>
-        <source>Bars beside the drawing to fold the side panels away</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="292"/>
-        <source>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="295"/>
-        <source>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</source>
-        <translation type="unfinished"></translation>
+        <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
+        <translation>Šípka smerujúca na štyri strany označuje, čo sa pri ťahaní presúva; v režime krížika kurzor pri pohybe preskakuje z jedného bodu mriežky na druhý, pričom úchyt umiestnený v okruhu 12 pixelov tento pohyb (a kliknutie) zachytí. Ak táto možnosť nie je zaškrtnutá, systémový kurzor a úchyty reagujú iba vtedy, keď sa nad nimi nachádza ukazovateľ myši.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
-        <source>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</source>
-        <translation type="unfinished"></translation>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="298"/>
+        <source>Four-way arrow and handle catching with the crosshair</source>
+        <translation>Štvorsmerná šípka a uchopenie za rukoväť pomocou zameriavacieho kríža</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
-        <source>A new corner or T-junction replaces the one under it</source>
-        <translation type="unfinished"></translation>
+        <source>A symbol&apos;s text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires&apos; texts. Unticked by default: texts turn with their symbol.</source>
+        <translation>Text symbolu, ktorý sa po otočení symbolu číta zhora nadol, sa vykresľuje opačne – na tom istom mieste, ale tak, aby sa všetky texty v správnej polohe čítali zdola nahor (podobne ako texty pri vodičoch). V predvolenom nastavení nie je táto možnosť zaškrtnutá: texty sa otáčajú spolu so symbolom.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="312"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="308"/>
+        <source>Upright symbol texts read from bottom to top</source>
+        <translation>Texty symbolov v zvislej polohe sa čítajú zdola nahor.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="315"/>
+        <source>Dragging a symbol&apos;s text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</source>
+        <translation>Ťahanie textu symbolu presunie iba samotný text, zatiaľ čo ťahanie s podržaním klávesu Shift presunie symbol – tak, ako to bolo pred verziou 0.100. V predvolenom nastavení je táto možnosť vypnutá: ťahanie textu presunie jeho symbol, ťahanie s klávesom Shift presunie text.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="318"/>
+        <source>Drag symbol texts without holding Shift</source>
+        <translation>Presúvajte texty symbolov bez držania klávesu Shift</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="325"/>
+        <source>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</source>
+        <translation>Počas umiestňovania alebo presúvania symbolu vedie tieňovaná čiara od každého z jeho vývodov k vývodu, ktorý je s ním v jednej línii. V predvolenom nastavení je táto možnosť zaškrtnutá.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="328"/>
+        <source>Help lines from the terminals of a dragged symbol</source>
+        <translation>Pomocné čiary vychádzajúce z koncových bodov presúvaného symbolu</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="335"/>
+        <source>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice&apos;s sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</source>
+        <translation>Lišta na každej strane kresby umožňuje odsunúť panely na danej strane – podobne ako bočný panel v balíku LibreOffice – pričom po opätovnom kliknutí sa panely vrátia do pôvodného stavu. V predvolenom nastavení je táto možnosť nezaškrtnutá; ponuka Zobraziť (Display) umožňuje dosiahnuť rovnaký výsledok, a to aj bez použitia týchto líšt.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="338"/>
+        <source>Bars beside the drawing to fold the side panels away</source>
+        <translation>Šípky vedľa nákresu na odklopenie bočných panelov</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="345"/>
+        <source>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</source>
+        <translation>Ukotvené panely možno zúžiť podľa potreby: text v nich sa zalamuje, a to, čo sa zalomiť nedá, sa posúva do strán. Ak možnosť nie je zaškrtnutá, panely si zachovávajú šírku potrebnú pre svoj text a polia.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
+        <source>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</source>
+        <translation>Úzke dokovacie panely: zalamovanie textu a posúvanie (prejaví sa pri ďalšom spustení programu)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="355"/>
+        <source>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</source>
+        <translation>Roh alebo T-spojenie umiestnená tam, kde už stojí jedna, zaberie jej miesto a jej vodiče idú do novej. Predvolene nezaškrtnuté: obe zostanú.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="358"/>
+        <source>A new corner or T-junction replaces the one under it</source>
+        <translation>Nový roh alebo T-spoj nahrádza ten, ktorý sa nachádza pod ním.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="365"/>
+        <source>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</source>
+        <translation>Pri tlači a exportovaní sa zobrazí otázka v prípade, že sa symboly, texty, tvary, obrázky alebo tabuľky nachádzajú mimo plochy strany – v takom prípade by boli orezané alebo vynechané; pri ukladaní sa táto informácia zobrazuje v stavovom riadku.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="368"/>
+        <source>Warn about items outside the sheet</source>
+        <translation>Upozorniť na položky mimo listu</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="375"/>
         <source>Show default guides (applies from the next time the programme is launched)</source>
         <translation>Zobraziť predvolené vodiace čiary (platí od nasledujúceho spustenia programu)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="326"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="389"/>
         <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
         <translation>Použiť &amp;okná (použije sa pri budúcom spustení QElectroTechu)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="333"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="396"/>
         <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
         <translation>Použiť &amp;karty (použije sa pri budúcom spustení QElectroTechu)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="435"/>
         <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
         <translation>Spôsob zmeny veľkosti obrazovky s vysokou hustotou pixelov (HDPI) (použije sa pri budúcom spustení QElectroTechu):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="445"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="508"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
-        <translation>Automaticky číslujte vložené alebo duplikované prvky, ktoré nasledujú po číslovaní.</translation>
+        <translation>Automaticky číslovať vložené alebo duplikované prvky, ktoré nasledujú po číslovaní.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="448"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="511"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
         <translation>Vložený prvok preberá nasledujúce číslo zo svojho číslovania namiesto názvu skopírovaného prvku a číslovanie sa posúva ďalej.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="455"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="518"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
         <translation>Malý skrytý súbor vedľa projektu ukazuje, kto ho má otvorený. Ďalší človek, ktorý ho otvorí, dostane upozornenie a môže ho otvoriť len na čítanie. Vypnite to, ak to váš zdieľaný disk nezvláda.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="458"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="521"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
         <translation>Oznamovať ostatným, kto má projekt otvorený (súbor zámku vedľa projektu)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="472"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
         <translation>Povoliť spúšťanie skriptov JavaScript (Project &gt; Run a script a --run)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="475"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="538"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
         <translation>Skript sa spúšťa s vašimi oprávneniami: môže čítať a upravovať otvorený projekt a zapisovať súbory. Štandardne je zakázaný; spúšťajte len skripty, ktorých pôvod poznáte.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="482"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
-        <translation>Umožnite asistentovi s umelou inteligenciou pracovať na otvorenom projekte (režim naživo).</translation>
+        <translation>Umožniť asistentovi s umelou inteligenciou pracovať na otvorenom projekte (režim naživo)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="485"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="548"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
         <translation>Asistent pripojený cez server MCP potom môže v otvorenom projekte spúšťať skripty, zatiaľ čo vy to sledujete. Pri každom spustení sa zobrazí upozornenie, pokiaľ je toto nastavenie aktívne. Zmena sa prejaví pri nasledujúcom spustení; zrušenie zaškrtnutia okamžite ukončí pripojenie.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="492"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="555"/>
         <source>Enable chained folio reports for report elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Povoliť reťazené zostavy pre prvky zostavy</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="495"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="558"/>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>Po aktivácii sa prvky výkazu (krížové odkazy) naprieč listami, ktoré majú zhodné označenia, automaticky vzájomne prepoja. V novo vytvorených projektoch bude táto funkcia aktivovaná automaticky.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="502"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="565"/>
         <source>Previous versions kept when saving a project</source>
         <translation>Predchádzajúce verzie uchovávané pri ukladaní projektu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="505"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="512"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="568"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="575"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>Pred uložením projektu sa súbor v pôvodnom stave skopíruje do priečinka vedľa neho, pomenovaného podľa projektu s príponou „-backups“. Uchovávajú sa len najnovšie.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="578"/>
         <source>None</source>
         <translation>Žiadne</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="525"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="588"/>
         <source>Reopen the projects of the last session at start</source>
-        <translation type="unfinished"></translation>
+        <translation>Pri spustení znova otvoriť projekty z poslednej relácie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="528"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
         <source>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekty, ktoré boli otvorené pri poslednom ukončení programu QElectroTech, sa znova otvoria – pokiaľ však program nebol spustený s požiadavkou na otvorenie konkrétneho súboru.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="598"/>
         <source>Offer to restore automatic backups at start</source>
-        <translation type="unfinished"></translation>
+        <translation>Ponúknuť obnovenie automatických záloh pri spustení</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="538"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="601"/>
         <source>After a crash, the automatic backups (made every few minutes, see &quot;Automatic backup of projects&quot; above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</source>
-        <translation type="unfinished"></translation>
+        <translation>Po páde programu sa pri jeho ďalšom spustení ponúknu automatické zálohy (vytvárané každých pár minút; pozri časť „Automatické zálohovanie projektov“ vyššie). Ak túto možnosť nezaškrtnete, zálohy sa síce zachovajú, ale nebudú sa ponúkať; v stavovom riadku sa zobrazí informácia o ich počte a po zaškrtnutí tejto voľby sa opäť ponúknu. Nejde o to isté ako v prípade nižšie uvedenej možnosti, ktorá vytvára kópiu po každej úprave.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="608"/>
         <source>After a crash, offer projects as they were after their last edit (experimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>Po páde aplikácie ponúknuť projekty v stave, v akom boli po poslednej úprave (experimentálne)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="548"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="611"/>
         <source>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kým je projekt otvorený, QElectroTech uchováva jeho kópiu vo svojom dátovom priečinku, pričom táto kópia sa aktualizuje po každej úprave. Ak sa program QElectroTech neukončí štandardným spôsobom, pri nasledujúcom spustení sa táto kópia ponúkne v rámci súborov na obnovenie.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="555"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
         <source>Offer saving a project as one database file, .qetdb (experimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ponúknuť uloženie projektu ako jedného databázového súboru, .qetdb (experimentálne)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="558"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="621"/>
         <source>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</source>
-        <translation type="unfinished"></translation>
+        <translation>Možnosť „Uložiť ako“ následne ponúka formát .qetdb: celý projekt v jednom súbore SQLite. Tento formát sa ešte môže zmeniť; preto si pre dôležité projekty ponechajte kópiu vo formáte .qet alebo .qetz.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="617"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
         <source>Company collection directory</source>
         <translation>Adresár s podnikovou zbierkou</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="652"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="715"/>
         <source>Create or change the prefix of the user collection&apos;s folders (qet_labels.xml file)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the user collection</extracomment>
         <translation>Vytvorte alebo zmeňte predponu priečinkov používateľskej kolekcie (súbor qet_labels.xml)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="718"/>
         <source>Configure prefixes…</source>
         <extracomment>button opening the dialog where the folder prefixes of the user collection are configured</extracomment>
         <translation>Konfigurovať predpony…</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="669"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="732"/>
         <source>Company title-block directory</source>
         <translation>Adresár s podnikovými záhlaviami výkresov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="697"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="760"/>
         <source>User Macro Directory</source>
         <translation>Adresár používateľských makier</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="760"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="823"/>
         <source>Materials list file</source>
         <translation>Súbor so zoznamom materiálov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="769"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="832"/>
         <source>Materials list used to fill in a symbol&apos;s items</source>
         <extracomment>tooltip of the material file path field</extracomment>
         <translation>Zoznam materiálov použitý na vyplnenie položiek symbolu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="775"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="816"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="838"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="879"/>
         <source>Not set</source>
         <extracomment>hint shown when no material file is configured yet
 ----------
@@ -8578,85 +8666,85 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Nenastavené</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="789"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="852"/>
         <source>Create the list file with its headers</source>
         <extracomment>tooltip of the button creating the material file with its header line</extracomment>
         <translation>Vytvorte súbor zoznamu vrátane hlavičiek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="792"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="833"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="855"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="896"/>
         <source>Create...</source>
         <translation>Vytvoriť...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="801"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="864"/>
         <source>Cable type list file</source>
         <translation>Súbor so zoznamom typov káblov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="810"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="873"/>
         <source>Directory of the cable types used to define a cable (number of cores, colors, cross-section)</source>
         <extracomment>tooltip of the cable type file path field</extracomment>
         <translation>Zoznam typov káblov používaných na definovanie kábla (počet žíl, farby, prierez)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="830"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="893"/>
         <source>Create the cable type list file with its header line</source>
         <extracomment>tooltip of the button creating the cable type file with its header line</extracomment>
         <translation>Vytvorte súbor so zoznamom typov káblov vrátane riadku so záhlavím.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="888"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="951"/>
         <source>Languages</source>
         <translation>Jazyky</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="931"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="994"/>
         <source>texts</source>
         <translation>Texty</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="951"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1014"/>
         <source>Elements texts</source>
         <translation>Texty prvkov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="964"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1030"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1076"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1027"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1093"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1139"/>
         <source>Font:</source>
         <translation>Písmo:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="974"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1037"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1100"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="984"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1047"/>
         <source>Length :</source>
         <translation>Dĺžka:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="994"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1023"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1057"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1086"/>
         <source>Rotation :</source>
         <translation>Otočenie:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1017"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1080"/>
         <source>Independent texts</source>
         <translation>Nezávislé texty</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1070"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1130"/>
         <source>Other texts</source>
         <translation>Iné texty</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1106"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1169"/>
         <source>Cable texts</source>
         <translation>Texty káblov</translation>
     </message>
@@ -8665,7 +8753,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Označenie, typ, závod, lokalita, dĺžka:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1135"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1198"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>Typ písma textov vedených pozdĺž línie kábla; kábel, ktorý má svoj vlastný, si ho aj zachováva.</translation>
     </message>
@@ -8674,7 +8762,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Farby žíl (všetky):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1168"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1231"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>Označenie základných farieb je uvedené pozdĺž vedenia; kábel, ktorý má vlastné označenie, si ho zachováva.</translation>
     </message>
@@ -8683,53 +8771,53 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Zarovnanie textu:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1188"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1251"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>Kde sa texty kábla končia vzhľadom na začiatok jeho riadku; kábel, ktorý má vlastné texty, si ich ponecháva.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1192"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1255"/>
         <source>Right aligned</source>
         <translation>Zarovnané vpravo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1197"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1260"/>
         <source>Centred</source>
         <translation>Na stred</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1202"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1265"/>
         <source>Left aligned</source>
         <translation>Zarovnané vľavo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1274"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1337"/>
         <source>The Grid must be active to see the changes.</source>
         <translation>Aby boli zmeny viditeľné, mriežka musí byť zapnutá.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1320"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1383"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>Mriežka pre texty posúvané myšou</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1386"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>Časť mriežky listu. Pri presúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1343"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1406"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>Posunutie predmetu v mriežke pomocou klávesnice: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1456"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>Posun v mriežke editora výkresu, súradnica x: klávesa šípky vľavo/vpravo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1400"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1463"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>Posun v mriežke editora výkresu, súradnica y: klávesa šípky hore/dole</translation>
     </message>
@@ -8738,339 +8826,339 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Posunutie predmetu v mriežke pomocou klávesnice pri stlačení klávesy Alt: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1429"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1492"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>Posun v mriežke editora výkresu, súradnica x: klávesa šípky vľavo/vpravo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1458"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1521"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>Posun v mriežke editora výkresu, súradnica y: klávesa šípky hore/dole</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1503"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1566"/>
         <source>View grid</source>
         <translation>Zobraziť mriežku</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1600"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1607"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1663"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1670"/>
         <source>max:</source>
         <translation>max:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1688"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1751"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>Pri ukladaní symbolu: odmietnuť dva vývody s rovnakým názvom a nahlásiť vývody bez názvu (IEC 61666).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1691"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1754"/>
         <source>Check terminal names when saving</source>
-        <translation>Pri ukladaní skontrolujte názvy svoriek</translation>
+        <translation>Pri ukladaní skontrolovať názvy svoriek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1561"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1624"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>Veľkosť bodu v editore schém: 1–5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1423"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1486"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>Posun klávesnicou s klávesom Ctrl: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1509"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1572"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1677"/>
         <source>min:</source>
         <translation>min:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1621"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1684"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>Veľkosť bodu v editore prvkov: 1–5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1645"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1708"/>
         <source>Editor</source>
         <translation>Editor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1716"/>
         <source>Max. parts in Element Editor List</source>
         <translation>Max. počet dielov v zozname editora prvkov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="465"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="528"/>
         <source>Do not store the labels of items in the copy paste</source>
         <translation>Neukládať označenia položiek do schránky (pri kopírovaní a vkladaní).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="95"/>
         <source>Allow unzoom beyond the sheet</source>
         <translation>Povoliť oddialenie za hranice listu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="69"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="71"/>
         <source>Bold italic</source>
         <translation>Tučné kurzíva</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="71"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="73"/>
         <source>Bold</source>
         <translation>Tučné</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="73"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="75"/>
         <source>Italic</source>
         <translation>Kurzíva</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="75"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="77"/>
         <source>Normal</source>
         <translation>Normálne</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="96"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="98"/>
         <source>Rounding up for 0.5 and more</source>
         <translation>Zaokrúhlenie hore pre 0,5 a viac</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="97"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="99"/>
         <source>Always top rounding</source>
         <translation>Vždy zaokrúhliť hore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="98"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="100"/>
         <source>Always rounded down</source>
         <translation>Vždy zaokrúhliť dole</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="99"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="101"/>
         <source>Rounding up for 0.75 and more</source>
         <translation>Zaokrúhlenie hore pre 0,75 a viac</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="100"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="102"/>
         <source>No rounding</source>
         <translation>Bez zaokrúhlenia</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="141"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="145"/>
         <source>Disabled</source>
         <comment>fr: Désactivée</comment>
         <translation>Zakázané</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="193"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="199"/>
         <source>Enabled by the QET_ENABLE_SCRIPTING environment variable; this setting has no effect while it is set.</source>
         <translation>Aktivuje sa pomocou premennej prostredia QET_ENABLE_SCRIPTING; toto nastavenie nemá žiadny účinok, kým je nastavené.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="337"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="343"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
         <translation>Nenastavené (predvolené: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="348"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="354"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
         <translation>Nenastavené (predvolené: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="615"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="631"/>
         <source>General</source>
         <comment>configuration page title</comment>
         <translation>Obecné</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="649"/>
         <source>System</source>
         <translation>Systém</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="637"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="653"/>
         <source>Arabic</source>
         <translation>Arabčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="638"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="654"/>
         <source>Brazilian</source>
         <translation>Brazílčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="639"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="655"/>
         <source>Catalan</source>
         <translation>Katalánčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="640"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="656"/>
         <source>Czech</source>
         <translation>Čeština</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="641"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="657"/>
         <source>German</source>
         <translation>Nemčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="642"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="658"/>
         <source>Danish</source>
         <translation>Dánčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="659"/>
         <source>Greek</source>
         <translation>Grétčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="644"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="660"/>
         <source>English</source>
         <translation>Angličtina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="645"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="661"/>
         <source>Spanish</source>
         <translation>Španielčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="646"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="662"/>
         <source>French</source>
         <translation>Francúzčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="647"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="663"/>
         <source>Croatian</source>
         <translation>Chorvatčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="648"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="664"/>
         <source>Italian</source>
         <translation>Taliančina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="649"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="665"/>
         <source>Japanese</source>
         <translation>Japončina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="650"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="666"/>
         <source>Korean</source>
         <translation>Kórejčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="651"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="667"/>
         <source>Latvian</source>
-        <translation type="unfinished"></translation>
+        <translation>Lotyščina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="652"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="668"/>
         <source>Polish</source>
         <translation>Poľština</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="669"/>
         <source>Portuguese</source>
         <translation>Portugalčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="654"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="670"/>
         <source>Romanian</source>
         <translation>Rumunčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="655"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="671"/>
         <source>Russian</source>
         <translation>Ruština</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="656"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="672"/>
         <source>Slovenian</source>
         <translation>Slovinčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="657"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="673"/>
         <source>Dutch</source>
         <translation>Holandčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="658"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="674"/>
         <source>Norwegian</source>
         <translation>Nórčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="659"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="675"/>
         <source>Belgium-Flemish</source>
         <translation>Belgičtina flámčtina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="660"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="676"/>
         <source>Turkish</source>
         <translation>Turečtina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="661"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="677"/>
         <source>Hungarian</source>
         <translation>Maďarčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="662"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="678"/>
         <source>Mongolian</source>
         <translation>Mongolčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="663"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="679"/>
         <source>Ukrainian</source>
         <translation>Ukrajinčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="664"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="680"/>
         <source>Chinese</source>
         <translation>Čínština</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="665"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="681"/>
         <source>Chinese (Traditional)</source>
         <translation>Čínština (tradičná)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="666"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="682"/>
         <source>Swedish</source>
         <translation>Švédčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="742"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="758"/>
         <source>Cable text font</source>
         <translation>Písmo textu kábla</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="760"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="776"/>
         <source>Core colors font</source>
         <translation>Písmo farieb žíl</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="789"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="805"/>
         <source>Company collection path</source>
         <translation>Cesta k podnikovej zbierke</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="817"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="833"/>
         <source>Company title-blocks</source>
         <translation>Cesta k podnikovým záhlaviam výkresov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="845"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="861"/>
         <source>User macro path</source>
         <translation>Cesta k používateľským makrám</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="887"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="903"/>
         <source>Folder not found</source>
         <translation>Priečinok sa nenašiel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="888"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="904"/>
         <source>The user collection folder:
 %1
 does not exist and could not be created.</source>
@@ -9079,12 +9167,12 @@ does not exist and could not be created.</source>
 neexistuje a nepodarilo sa ho vytvoriť.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="896"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="912"/>
         <source>No subfolder</source>
         <translation>Žiadny podpriečinok</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="897"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="913"/>
         <source>The user collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
@@ -9093,34 +9181,34 @@ has no subfolder, so there is no prefix to configure.</source>
 nemá žiadny podpriečinok, takže nie je potrebné konfigurovať žiadnu predponu.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="905"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="921"/>
         <source>Prefix file cannot be read</source>
         <translation>Súbor predpony sa nedá prečítať</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="914"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="930"/>
         <source>Prefix file damaged</source>
         <translation>Súbor predpony je poškodený</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="915"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="931"/>
         <source>The file %1 is not a valid XML file:
 %2</source>
         <translation>Súbor %1 nie je platný súbor XML:
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="919"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="935"/>
         <source>Fix the file</source>
         <translation>Opravte súbor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="920"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="936"/>
         <source>Rebuild</source>
         <translation>Prestavba</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="921"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="937"/>
         <source>Nothing has been changed yet.
 
 “Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
@@ -9133,36 +9221,36 @@ nemá žiadny podpriečinok, takže nie je potrebné konfigurovať žiadnu predp
 „Znovu zostaviť“: strom priečinkov sa vytvorí nanovo, ale všetky aktuálne predpony sa stratia. Pôvodný súbor sa pred nahradením uchová pod názvom qet_labels.xml.bak.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="930"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="946"/>
         <source>File: %1</source>
         <translation>Súbor: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="954"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="970"/>
         <source>Select the materials list file</source>
         <translation>Vyberte súbor so zoznamom materiálov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="956"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="979"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1020"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1043"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="972"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="995"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1036"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1059"/>
         <source>CSV files (*.csv)</source>
         <translation>Súbory csv (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="977"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="993"/>
         <source>Create the materials list file</source>
         <translation>Vytvorte súbor so zoznamom materiálov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="995"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1011"/>
         <source>Cannot create</source>
         <translation>Nie je možné vytvoriť</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="996"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1060"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1012"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1076"/>
         <source>Cannot create the file:
 %1
 %2</source>
@@ -9171,32 +9259,32 @@ nemá žiadny podpriečinok, takže nie je potrebné konfigurovať žiadnu predp
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1018"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1034"/>
         <source>Select the cable types file</source>
         <translation>Vyberte súbor typov káblov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1041"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1057"/>
         <source>Create the cable types file</source>
         <translation>Vytvorte súbor typov káblov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1059"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1075"/>
         <source>Cannot be created</source>
         <translation>Nedá sa vytvoriť</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1090"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1106"/>
         <source>Values that are too high might cause the application to crash</source>
         <translation>Príliš vysoké hodnoty môžu spôsobiť pád aplikácie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1125"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1141"/>
         <source>Experimental feature</source>
         <translation>Experimentálna funkcia</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1126"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1142"/>
         <source>WARNING:
 Any setting other than “No rounding” may cause rendering errors in the project, depending on:
 
@@ -9211,7 +9299,7 @@ Akékoľvek nastavenie okrem „Bez zaokrúhľovania“ (No rounding) môže sp�
 3 – úpravy projektu na inom počítači a/alebo obrazovke, ktoré nemajú rovnaké nastavenia ako v bodoch 1 a 2.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="205"/>
         <source>Hide the grid when its dots are closer on screen than</source>
         <translation>Skryť mriežku, keď sú jej body na obrazovke bližšie ako</translation>
     </message>
@@ -9220,7 +9308,7 @@ Akékoľvek nastavenie okrem „Bez zaokrúhľovania“ (No rounding) môže sp�
         <translation type="vanished">Pri ďalšom oddialení sa body mriežky ľubovoľného kroku vynechajú; kde, ukazuje zväčšenie v stavovom riadku</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="218"/>
         <source> px</source>
         <translation> px</translation>
     </message>
@@ -9375,7 +9463,7 @@ Akékoľvek nastavenie okrem „Bez zaokrúhľovania“ (No rounding) môže sp�
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="194"/>
         <source>Mark gaps with a divider</source>
-        <translation>Medzery označte oddeľovačom</translation>
+        <translation>Medzery označiť oddeľovačom</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="195"/>
@@ -9748,7 +9836,7 @@ Akékoľvek nastavenie okrem „Bez zaokrúhľovania“ (No rounding) môže sp�
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="539"/>
         <source>Apply the geometry of a table to the table linked to it</source>
-        <translation>Aplikujte geometriu tabuľky na tabuľku, ktorá je s ňou prepojená.</translation>
+        <translation>Aplikovať geometriu tabuľky na tabuľku, ktorá je s ňou prepojená.</translation>
     </message>
 </context>
 <context>
@@ -10180,125 +10268,125 @@ Akékoľvek nastavenie okrem „Bez zaokrúhľovania“ (No rounding) môže sp�
     <message>
         <location filename="../sources/itemdescription.cpp" line="46"/>
         <source>Master symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Nadriadený symbol</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="47"/>
         <source>Slave symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Podriadený symbol</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="49"/>
         <source>Folio report</source>
-        <translation type="unfinished"></translation>
+        <translation>Report listu</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="50"/>
         <source>Terminal</source>
-        <translation type="unfinished">Svorka</translation>
+        <translation>Svorka</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="51"/>
         <source>Thumbnail</source>
-        <translation type="unfinished">Stručný popis</translation>
+        <translation>Stručný popis</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="52"/>
         <source>Conductor definition</source>
-        <translation type="unfinished">Definícia vodiča</translation>
+        <translation>Definícia vodiča</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="53"/>
         <source>Symbol</source>
-        <translation type="unfinished">Symbol</translation>
+        <translation>Symbol</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="70"/>
         <source>Line (shape)</source>
-        <translation type="unfinished"></translation>
+        <translation>Čiara (tvar)</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="71"/>
         <source>Rectangle (shape)</source>
-        <translation type="unfinished"></translation>
+        <translation>Obdĺžnik (tvar)</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="72"/>
         <source>Ellipse (shape)</source>
-        <translation type="unfinished"></translation>
+        <translation>Elipsa (tvar)</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="73"/>
         <source>Polygon (shape)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mnohouholník (tvar)</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="74"/>
         <source>Path (shape)</source>
-        <translation type="unfinished"></translation>
+        <translation>Cesta (tvar)</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="75"/>
         <source>Shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Tvar</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="101"/>
         <source>Symbol text: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Text symbolu: %1</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="102"/>
         <source>Symbol text of %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Text symbolu %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="105"/>
         <source>Free text: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Voľný text: %1</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="108"/>
         <source>Conductor text: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Text vodiča: %1</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="113"/>
         <source>Conductor</source>
-        <translation type="unfinished">Vodič</translation>
+        <translation>Vodič</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="113"/>
         <source>Conductor %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Vodič %1</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="120"/>
         <source>Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrázok</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="122"/>
         <source>Table</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabuľka</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="129"/>
         <source>Text group %1 of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Skupina textov %1 z %2</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="130"/>
         <source>Text group %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Skupina textov %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/itemdescription.cpp" line="147"/>
         <source>%n items selected</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Vybraná %n položka</numerusform>
+            <numerusform>Vybrané %n položky</numerusform>
+            <numerusform>Vybraných %n položiek</numerusform>
         </translation>
     </message>
 </context>
@@ -10308,7 +10396,7 @@ Akékoľvek nastavenie okrem „Bez zaokrúhľovania“ (No rounding) môže sp�
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="43"/>
         <source>Navigate to an element</source>
         <comment>window title</comment>
-        <translation>Prejdite na prvok</translation>
+        <translation>Prejsť na prvok</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="46"/>
@@ -10482,21 +10570,25 @@ Akékoľvek nastavenie okrem „Bez zaokrúhľovania“ (No rounding) môže sp�
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="208"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="234"/>
         <source>That link cannot be made</source>
-        <translation type="unfinished"></translation>
+        <translation>Toto prepojenie nemožno vytvoriť.</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="209"/>
         <source>A bridge and a wire cannot be joined through these items: what one side carries and what the other carries are two different things.
 
 Connect a bridge to a bridge, or a wire to a wire.</source>
-        <translation type="unfinished"></translation>
+        <translation>Most a vodič nemožno spojiť prostredníctvom týchto prvkov: to, čo prenáša jedna strana, a to, čo prenáša druhá strana, sú dve odlišné veci.
+
+Prepojte most s mostom alebo vodič s vodičom.</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="235"/>
         <source>A bridge lies across one terminal strip: the bridges these items carry are of two of them, and a link would join them.
 
 Bring them into one terminal strip first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cez jednu svorkovnicu vedie prepojka; tieto prvky sú vybavené prepojkami – konkrétne dvoma – a vzájomne ich spája spojovací článok.
+
+Najprv ich priveďte do jednej svorkovnice.</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="589"/>
@@ -10649,9 +10741,9 @@ Toto nastavenie nájdete v časti Konfigurácia QElectroTech &gt; Všeobecné &g
         <location filename="../sources/scripting/liveserver.cpp" line="851"/>
         <source>The assistant wants to print %n folios of “%1” on “%2”.</source>
         <translation>
-            <numerusform>Asistent chce vytlačiť %n hárkov dokumentu „%1“ na zariadení „%2“.</numerusform>
-            <numerusform>Sprievodca chce vytlačiť %n hárkov dokumentu „%1“ na zariadení „%2“.</numerusform>
-            <numerusform>Sprievodca chce vytlačiť %n hárkov dokumentu „%1“ na zariadení „%2“.</numerusform>
+            <numerusform>Asistent chce vytlačiť %n list dokumentu „%1“ na zariadení „%2“.</numerusform>
+            <numerusform>Sprievodca chce vytlačiť %n listy dokumentu „%1“ na zariadení „%2“.</numerusform>
+            <numerusform>Sprievodca chce vytlačiť %n listov dokumentu „%1“ na zariadení „%2“.</numerusform>
         </translation>
     </message>
     <message>
@@ -11069,7 +11161,7 @@ Chcete napriek tomu prepojiť tento podriadený kontakt?</translation>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="462"/>
         <source>Show name</source>
-        <translation type="unfinished">Zobraziť meno</translation>
+        <translation>Zobraziť meno</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="472"/>
@@ -11215,37 +11307,37 @@ Chcete napriek tomu prepojiť tento podriadený kontakt?</translation>
         <location filename="../sources/ui/configpage/configpages.cpp" line="146"/>
         <source>Display of the terminal labelling</source>
         <comment>group box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazenie označenia svoriek</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="148"/>
         <source>Show the label and the terminal number in one field</source>
         <comment>radio button label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť označenie a číslo svorky v jednom poli</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="149"/>
         <source>A terminal&apos;s label (X1:1) is drawn as a whole, the way it has always been.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Označenie svorky (X1:1) sa vykresľuje ako celok, tak ako to bolo vždy.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="152"/>
         <source>Split the label and the terminal number</source>
         <comment>radio button label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oddeliť označenie a číslo svorky</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="154"/>
         <source>The label (X1) is drawn in one field and the terminal number (1) in another, which a terminal symbol may place where it wants -- and hide when it must. A symbol without such a field shows the two, one under the other.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Označenie (X1) je vykreslené v jednom poli a číslo svorky (1) v inom, pričom symbol svorky ich môže umiestniť podľa potreby – a v prípade nutnosti aj skryť. Symbol, ktorý takéto pole nemá, zobrazuje oba údaje jeden pod druhým.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="159"/>
         <source>Only the drawing changes: what is written in the element, the numbering, the sorting and the exports keep the whole label.</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mení sa iba kresba: to, čo je v prvku napísané, číslovanie, triedenie a exporty zostávajú súčasťou celého označenia.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="221"/>
@@ -11275,7 +11367,7 @@ Chcete napriek tomu prepojiť tento podriadený kontakt?</translation>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="231"/>
         <source>Set the default automatic numbering rules for new projects:</source>
-        <translation>Nastavte predvolené pravidlá automatického číslovania pre nové projekty:</translation>
+        <translation>Nastaviť predvolené pravidlá automatického číslovania pre nové projekty:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="233"/>
@@ -12238,7 +12330,7 @@ Jeho kópia bola uchovaná ako:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="946"/>
         <source>This numbering has several numbers (or one number per sheet): one cannot be chosen by hand.</source>
-        <translation>Tento systém číslovania zahŕňa viacero čísel (alebo jedno číslo na hárok); nemožno ich vybrať ručne.</translation>
+        <translation>Tento systém číslovania zahŕňa viacero čísel (alebo jedno číslo na list); nemožno ich vybrať ručne.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="963"/>
@@ -12483,131 +12575,131 @@ Najprv im priraďte iné číslovanie.</numerusform>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="48"/>
         <source>Project languages</source>
-        <translation type="unfinished"></translation>
+        <translation>Jazyky projektu</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="52"/>
         <source>Add a language, collect the texts of the project, and type the words to show in each language. The folios keep their own text; only what is shown and printed changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať jazyk, zhromaždiť texty projektu a zadať slová, ktoré sa majú v jednotlivých jazykoch zobraziť. Pôvodné texty v dokumentoch zostávajú zachované; mení sa iba to, čo sa zobrazuje a tlačí.</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="59"/>
         <source>Show the folios in</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť strany v</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="63"/>
         <source>Add language...</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať jazyk...</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="64"/>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="179"/>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="183"/>
         <source>Remove language</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť jazyk</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="65"/>
         <source>Collect texts of the project</source>
-        <translation type="unfinished"></translation>
+        <translation>Zhromaždiť texty projektu</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="76"/>
         <source>Export CSV...</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovať do CSV...</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="77"/>
         <source>Import CSV...</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovať CSV...</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="78"/>
         <source>Add text...</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať text...</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="79"/>
         <source>Add a text that is not collected, such as a column title of a table.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať text, ktorý sa nezhromažďuje, napríklad názov stĺpca v tabuľke.</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="135"/>
         <source>%1 (as drawn)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (tak, ako je nakreslené)</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="147"/>
         <source>Text as drawn</source>
-        <translation type="unfinished"></translation>
+        <translation>Text ako nakreslený</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="162"/>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="167"/>
         <source>Add language</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať jazyk</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="163"/>
         <source>Language code, such as de, fr or pt-BR:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kód jazyka, ako napríklad de, fr alebo pt-BR:</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="168"/>
         <source>&quot;%1&quot; is not a usable language code, or is already there.</source>
-        <translation type="unfinished"></translation>
+        <translation>„%1“ nie je použiteľný kód jazyka alebo už existuje.</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="179"/>
         <source>Select a cell in the column of the language to remove.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte bunku v stĺpci jazyka, ktorý chcete odstrániť.</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="184"/>
         <source>Remove %1 and all its words?</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť %1 a všetky jeho slová?</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="200"/>
         <source>Collect texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Zhromažďovať texty</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="200"/>
         <source>%n new text(s) added.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Pridaný %n nový text.</numerusform>
+            <numerusform>Pridané %n nové texty.</numerusform>
+            <numerusform>Pridaných %n nových textov.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="206"/>
         <source>Add text</source>
-        <translation type="unfinished">Pridať text</translation>
+        <translation>Pridať text</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="207"/>
         <source>Text as drawn, for example a column title of a table:</source>
-        <translation type="unfinished"></translation>
+        <translation>Text v podobe, v akej je vykreslený, napríklad názov stĺpca v tabuľke:</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="218"/>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="222"/>
         <source>Export CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovať do CSV</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="218"/>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="227"/>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbory csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="222"/>
         <source>Could not write %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa zapísať %1.</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="227"/>
@@ -12615,20 +12707,20 @@ Najprv im priraďte iné číslovanie.</numerusform>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="237"/>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="245"/>
         <source>Import CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovať CSV</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="231"/>
         <source>Could not read %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa načítať %1.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/projectlanguagesdialog.cpp" line="242"/>
         <source>%n translation(s) imported.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Importovaný %n preklad.</numerusform>
+            <numerusform>Importované %n preklady.</numerusform>
+            <numerusform>Importovaných %n prekladov.</numerusform>
         </translation>
     </message>
 </context>
@@ -12722,49 +12814,49 @@ Najprv im priraďte iné číslovanie.</numerusform>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="287"/>
         <source>Enable chained folio reports for report elements</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Povoliť reťazené zostavy pre prvky zostavy</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="288"/>
         <source>Automatically chains folio report elements with the same label in a forward/backward sequence.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automaticky prepája prvky zostavy s rovnakým označením do postupnosti v smere dopredu alebo dozadu.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="293"/>
         <source>Display of the terminal labelling</source>
         <comment>group box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazenie označenia svoriek</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="295"/>
         <source>Show the label and the terminal number in one field</source>
         <comment>radio button label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť označenie a číslo svorky v jednom poli</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="296"/>
         <source>A terminal&apos;s label (X1:1) is drawn as a whole, the way it has always been.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Označenie svorky (X1:1) sa vykresľuje ako celok, tak ako to bolo vždy.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="299"/>
         <source>Split the label and the terminal number</source>
         <comment>radio button label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oddeliť označenie a číslo svorky</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="301"/>
         <source>The label (X1) is drawn in one field and the terminal number (1) in another, which a terminal symbol may place where it wants -- and hide when it must. A symbol without such a field shows the two, one under the other.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Označenie (X1) je vykreslené v jednom poli a číslo svorky (1) v inom, pričom symbol svorky ich môže umiestniť podľa potreby – a v prípade nutnosti aj skryť. Symbol, ktorý takéto pole nemá, zobrazuje oba údaje jeden pod druhým.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="306"/>
         <source>Only the drawing changes: what is written in the element, the numbering, the sorting and the exports keep the whole label.</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mení sa iba kresba: to, čo je v prvku napísané, číslovanie, triedenie a exporty zostávajú súčasťou celého označenia.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="312"/>
@@ -12823,37 +12915,37 @@ Najprv im priraďte iné číslovanie.</numerusform>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="344"/>
         <source>Origin (of a coordinate system):</source>
-        <translation type="unfinished"></translation>
+        <translation>Počiatok (súradnicovej sústavy):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="346"/>
         <source>Top-Left</source>
         <comment>project origin</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vľavo hore</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="348"/>
         <source>Top-Right</source>
         <comment>project origin</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vpravo hore</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="350"/>
         <source>Bottom-Left</source>
         <comment>project origin</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vľavo dole</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="352"/>
         <source>Bottom-Right</source>
         <comment>project origin</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vpravo hore</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="354"/>
         <source>Which corner to use as the origin (coordinate system origin) Top - Left corner(default), Top - Right, Bottom - Left, Bottom - Right.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ktorý roh použiť ako počiatok (počiatok súradnicového systému): ľavý horný roh (predvolené), pravý horný roh, ľavý dolný roh, pravý dolný roh.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="440"/>
@@ -12928,12 +13020,12 @@ Najprv im priraďte iné číslovanie.</numerusform>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="188"/>
         <source>Draw the names of the terminals</source>
-        <translation>Nakresliť názvy svoriek.</translation>
+        <translation>Nakresliť názvy svoriek</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="198"/>
         <source>Enter the component details</source>
-        <translation>Zadajte podrobnosti o komponente</translation>
+        <translation>Zobraziť podrobnosti o komponente</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="211"/>
@@ -13036,44 +13128,44 @@ Najprv im priraďte iné číslovanie.</numerusform>
         <translation>Rozvrhnutie strany</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="68"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="69"/>
         <source>Print options</source>
         <comment>window title</comment>
         <translation>Voľby pre tlač</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="102"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="103"/>
         <source>project</source>
         <comment>string used to generate a filename</comment>
         <translation>projekt</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="133"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="134"/>
         <source>Print</source>
         <translation>Tlač</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="139"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="140"/>
         <source>Export in pdf</source>
         <translation>Exportovať do PDF</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="169"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="170"/>
         <source>Layout (not available on Windows for PDF export)</source>
         <translation>Rozvrhnutie (nedostupné v OS Windows pre export do PDF)</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="607"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="608"/>
         <source>Untitled sheet</source>
         <translation>List bez názvu</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="790"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="791"/>
         <source>Export as : </source>
         <translation>Exportovať ako: </translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="790"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="791"/>
         <source>File (*.pdf)</source>
         <translation>Súbor (*.pdf)</translation>
     </message>
@@ -13081,12 +13173,12 @@ Najprv im priraďte iné číslovanie.</numerusform>
 <context>
     <name>ProjectView</name>
     <message>
-        <location filename="../sources/projectview.cpp" line="887"/>
+        <location filename="../sources/projectview.cpp" line="906"/>
         <source>Delete unused elements in  the project</source>
         <translation>Zmazať v projektu nepoužívané prvky</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="888"/>
+        <location filename="../sources/projectview.cpp" line="907"/>
         <source>Delete empty categories</source>
         <translation>Zmazať prázdné skupiny</translation>
     </message>
@@ -13099,13 +13191,13 @@ Chcete uložiť zmeny?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="358"/>
-        <location filename="../sources/projectview.cpp" line="777"/>
+        <location filename="../sources/projectview.cpp" line="796"/>
         <source>untitled</source>
         <translation>Bez názvu</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="345"/>
-        <location filename="../sources/projectview.cpp" line="785"/>
+        <location filename="../sources/projectview.cpp" line="804"/>
         <source>Project QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a project file</comment>
         <translation>Projekt QElectroTech (*.qet)</translation>
@@ -13117,30 +13209,30 @@ Chcete uložiť zmeny?</translation>
         <translation>Zabalený projekt QElectroTech (*.qetz)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="422"/>
+        <location filename="../sources/projectview.cpp" line="441"/>
         <source>Project in use</source>
         <comment>message box title</comment>
         <translation>Projekt sa používa</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="423"/>
+        <location filename="../sources/projectview.cpp" line="442"/>
         <source>%1 is open by %2 on %3. Choose another file name, or save again once it has been closed there.</source>
         <translation>%1 má otvorený %2 na %3. Zvoľte iný názov súboru alebo uložte znova, keď ho tam zatvoria.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="458"/>
+        <location filename="../sources/projectview.cpp" line="477"/>
         <source>Delete this sheet ?</source>
         <comment>message box title</comment>
         <translation>Zmazať list?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="459"/>
+        <location filename="../sources/projectview.cpp" line="478"/>
         <source>Are you sure you want to delete this sheet from the project?</source>
         <comment>message box content</comment>
         <translation>Naozaj chcete odstrániť tento list z projektu?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="783"/>
+        <location filename="../sources/projectview.cpp" line="802"/>
         <source>Save a copy for an older QElectroTech</source>
         <comment>dialog title</comment>
         <translation>Uložiť kópiu pre staršiu verziu QElectroTech</translation>
@@ -13163,55 +13255,55 @@ Ak chcete vytvoriť súbor pre verziu programu QElectroTech, ktorá nedokáže o
         <translation type="vanished">%1 already exists. Replace it?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="879"/>
+        <location filename="../sources/projectview.cpp" line="898"/>
         <source>Read-only project</source>
         <comment>message box title</comment>
         <translation>Projekt iba pre čítanie</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="880"/>
+        <location filename="../sources/projectview.cpp" line="899"/>
         <source>This project is read-only. Thus it can not be cleaned.</source>
         <comment>message box content</comment>
         <translation>Tento projekt je určený len na čítanie. Preto ho nemožno vyčistiť.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="886"/>
+        <location filename="../sources/projectview.cpp" line="905"/>
         <source>delete unused templates in the project</source>
         <translation>Zmazať v projektu nepoužívané vzory</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="900"/>
+        <location filename="../sources/projectview.cpp" line="919"/>
         <source>Clean project</source>
         <comment>window title</comment>
         <translation>Vyčistiť projekt</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="934"/>
+        <location filename="../sources/projectview.cpp" line="953"/>
         <source>Add a sheet</source>
         <translation>Pridať list</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="937"/>
+        <location filename="../sources/projectview.cpp" line="956"/>
         <source>Go back to the start of the project</source>
         <translation>Ísť späť na začiatok projektu</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="940"/>
+        <location filename="../sources/projectview.cpp" line="959"/>
         <source>Go to the end of the project</source>
         <translation>Ísť na koniec projektu</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="944"/>
+        <location filename="../sources/projectview.cpp" line="963"/>
         <source>go one page left</source>
         <translation>Prejsť o jednu stranu doľava</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="948"/>
+        <location filename="../sources/projectview.cpp" line="967"/>
         <source>go one page right</source>
         <translation>Prejsť o jednu stranu doprava</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="963"/>
+        <location filename="../sources/projectview.cpp" line="982"/>
         <source>This project does not contain any sheet</source>
         <comment>label displayed when a project contains no diagram</comment>
         <translation>Tento projekt neobsahuje žiaden list</translation>
@@ -13226,22 +13318,38 @@ Ak chcete vytvoriť súbor pre verziu programu QElectroTech, ktorá nedokáže o
         <location filename="../sources/projectview.cpp" line="348"/>
         <source>Project QElectroTech, one database file (*.qetdb)</source>
         <comment>filetypes allowed when saving a project file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projekt QElectroTech, jeden súbor databázy (*.qetdb)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="435"/>
+        <location filename="../sources/projectview.cpp" line="407"/>
+        <source>Save as .qetdb?</source>
+        <comment>dialog title</comment>
+        <translation>Uložiť ako .qetdb?</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/projectview.cpp" line="408"/>
+        <source>%n bridge(s) are drawn in this project. The .qetdb format does not store bridges yet -- they are kept in the normal .qet format only. Save it as .qetdb anyway?</source>
+        <comment>also asked when the file name says .qetdb</comment>
+        <translation>
+            <numerusform>V tomto projekte je nakreslené %n premostenie. Formát .qetdb zatiaľ premostenia neukladá – sú zachované iba v štandardnom formáte .qet. Napriek tomu uložiť súbor ako .qetdb?</numerusform>
+            <numerusform>V tomto projekte sú nakreslené %n premostenia. Formát .qetdb zatiaľ premostenia neukladá – sú zachované iba v štandardnom formáte .qet. Napriek tomu uložiť súbor ako .qetdb?</numerusform>
+            <numerusform>V tomto projekte sú nakreslené %n premostení. Formát .qetdb zatiaľ premostenia neukladá – sú zachované iba v štandardnom formáte .qet. Napriek tomu uložiť súbor ako .qetdb?</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="454"/>
         <source>no active project</source>
         <comment>error message</comment>
         <translation>Žiadny aktívny projekt</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="810"/>
+        <location filename="../sources/projectview.cpp" line="829"/>
         <source>File changed on disk</source>
         <comment>message box title</comment>
         <translation>Súbor sa na disku zmenil</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="811"/>
+        <location filename="../sources/projectview.cpp" line="830"/>
         <source>Someone else changed %1 on disk at %2 since you opened it.
 
 Saving over it would lose their changes.</source>
@@ -13250,22 +13358,22 @@ Saving over it would lose their changes.</source>
 Uloženie cez neho by stratilo jeho zmeny.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="815"/>
+        <location filename="../sources/projectview.cpp" line="834"/>
         <source>Save as a copy</source>
         <translation>Uložiť ako kópiu</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="816"/>
+        <location filename="../sources/projectview.cpp" line="835"/>
         <source>Overwrite</source>
         <translation>Prepísať</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="1078"/>
+        <location filename="../sources/projectview.cpp" line="1097"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creating sheet tabs :&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Otvára sa projekt ...&lt;/b&gt;&lt;br/&gt;Vytvárajú sa karty listov:&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="1119"/>
+        <location filename="../sources/projectview.cpp" line="1138"/>
         <source>Project</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Projekt</translation>
@@ -13370,7 +13478,7 @@ Chcete pokračovať?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="2467"/>
         <source>Defaults for new projects: folio, title block, wires, numbering</source>
-        <translation>Predvolené nastavenia pre nové projekty: hárok, popisové pole, vodiče, číslovanie</translation>
+        <translation>Predvolené nastavenia pre nové projekty: list, popisové pole, vodiče, číslovanie</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2470"/>
@@ -13511,10 +13619,10 @@ Všetky ostatné nastavenia zostanú zachované.</translation>
     <message numerus="yes">
         <location filename="../sources/qetapp.cpp" line="3309"/>
         <source>%n automatic backup(s) kept and not offered: Settings &gt; General, &quot;Offer to restore automatic backups at start&quot;</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n automatická záloha bola ponechaná, ale nebola ponúknutá: Nastavenia &gt; Všeobecné, „Ponúknuť obnovenie automatických záloh pri spustení“</numerusform>
+            <numerusform>%n automatické zálohy boli ponechané, ale neboli ponúknuté: Nastavenia &gt; Všeobecné, „Ponúknuť obnovenie automatických záloh pri spustení“</numerusform>
+            <numerusform>%n automatických záloh bolo ponechaných, ale neboli ponúknuté: Nastavenia &gt; Všeobecné, „Ponúknuť obnovenie automatických záloh pri spustení“</numerusform>
         </translation>
     </message>
     <message>
@@ -13699,7 +13807,7 @@ Dostupné možnosti:
         <location filename="../sources/qetdiagrameditor.cpp" line="662"/>
         <source>Place the label and the notes of the selected symbols as one block beside them</source>
         <comment>status bar tip</comment>
-        <translation>Umiestni označenie a poznámky vybraných symbolov ako jeden blok vedľa nich</translation>
+        <translation>Umiestniť označenie a poznámky vybraných symbolov ako jeden blok vedľa nich</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
@@ -13749,7 +13857,7 @@ Dostupné možnosti:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2042"/>
         <source>Displ&amp;ay</source>
-        <translation>Po&amp;hľad</translation>
+        <translation>Pohľ&amp;ad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2220"/>
@@ -13814,11 +13922,11 @@ Dostupné možnosti:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2045"/>
         <source>Wi&amp;ndows</source>
-        <translation>&amp;Okná</translation>
+        <translation>Ok&amp;ná</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1448"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5681"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5683"/>
         <source>&amp;Close</source>
         <translation>&amp;Zatvoriť</translation>
     </message>
@@ -13880,8 +13988,8 @@ Dostupné možnosti:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1165"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4694"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4717"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4696"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4719"/>
         <source>Delete this sheet</source>
         <translation>Zmazať list</translation>
     </message>
@@ -14021,7 +14129,7 @@ Dostupné možnosti:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="978"/>
         <source>View the guides</source>
-        <translation>Pozrite si príručky</translation>
+        <translation>Zobraziť sprievodcov</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="980"/>
@@ -14216,7 +14324,7 @@ Dostupné možnosti:
         <translation>Hĺbka</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3645"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3647"/>
         <source>Group</source>
         <translation>Skupina</translation>
     </message>
@@ -14250,7 +14358,7 @@ Dostupné možnosti:
         <translation>&amp;Otvoriť</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2412"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2414"/>
         <source>Open a file</source>
         <translation>Otvoriť súbor</translation>
     </message>
@@ -14271,7 +14379,7 @@ Dostupné možnosti:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1514"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3546"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3548"/>
         <source>Delete</source>
         <translation>Zmazať</translation>
     </message>
@@ -14391,17 +14499,17 @@ Dostupné možnosti:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2326"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2349"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2350"/>
         <source>Project %1 registered in the directory: %2.</source>
         <translation>Projekt 1% uložený v adresári: %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2734"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2736"/>
         <source>The file you try to open does not seem readable and can not be opened. Please check the file permissions.</source>
         <translation>Zdá sa, že súbor, ktorý sa pokúšate otvoriť, nie je čitateľný a nedá sa otvoriť. Skontrolujte, prosím, oprávnenia súboru.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2748"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2750"/>
         <source>The project you try to open does not seem writable. It will be opened read-only.</source>
         <translation>Zdá sa, že projekt, ktorý sa pokúšate otvoriť, nie je možné zapisovať. Otvorí sa v režime len na čítanie.</translation>
     </message>
@@ -14431,23 +14539,23 @@ Dostupné možnosti:
         <translation>Vyčistiť projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2834"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4376"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4423"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2836"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4378"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4425"/>
         <source>Unable to open project</source>
         <comment>message box title</comment>
         <translation>Projekt sa nedá otvoriť</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2836"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2838"/>
         <source>The file %1 does not appear to be a QElectroTech project file. Thus it cannot be opened.</source>
         <comment>message box content</comment>
         <translation>Zdá se, že súbor %1 nie je súborom projektu QElectroTech. Nemôže byť teda otvorený.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5038"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5041"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5040"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5043"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
@@ -14581,7 +14689,7 @@ Dostupné možnosti:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="323"/>
         <source>What the mouse points at, or else what is selected</source>
-        <translation type="unfinished"></translation>
+        <translation>To, na čo ukazuje myš, alebo to, čo je vybrané</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="578"/>
@@ -14590,7 +14698,7 @@ Dostupné možnosti:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="579"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4226"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4228"/>
         <source>Paste element information</source>
         <translation>Vložiť informácie o prvku</translation>
     </message>
@@ -14631,34 +14739,34 @@ Dostupné možnosti:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="709"/>
         <source>Reference destination...</source>
-        <translation type="unfinished"></translation>
+        <translation>Cieľ odkazu...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="710"/>
         <source>Make the selected free texts links to a folio: Ctrl-click opens it, and a PDF export keeps the link</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zmeňte vybrané voľné texty na odkazy na list: kliknutie s podržaným klávesom Ctrl ich otvorí a pri exporte do PDF zostane odkaz zachovaný</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="722"/>
         <source>Remove reference destination</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť cieľ odkazu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="723"/>
         <source>Assign reference destination</source>
-        <translation type="unfinished"></translation>
+        <translation>Priradiť cieľ odkazu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="732"/>
         <source>Keep texts clear of wires...</source>
-        <translation type="unfinished"></translation>
+        <translation>Udržovať texty mimo dosahu vodičov...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="733"/>
         <source>Move the texts that sit on a wire off it, in one undo step</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Presunúť texty umiestnené na spojnici mimo nej, a to v rámci jedného kroku späť</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="751"/>
@@ -14686,7 +14794,7 @@ Dostupné možnosti:
         <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
         <source>Automatic disconnection of conductor(s)</source>
         <comment>Tool tip of auto break conductor</comment>
-        <translation>Automatické odpojenie vodiča (vodičov)</translation>
+        <translation>Automatické odpojenie vodiča(ov)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="813"/>
@@ -14697,27 +14805,27 @@ Dostupné možnosti:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="829"/>
         <source>Automatic connections (chosen when the project is created)</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatické pripojenia (zvolené pri vytváraní projektu)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="830"/>
         <source>Terminals in line connect to the next free terminal they face, and are disconnected again when moved out of line</source>
-        <translation type="unfinished"></translation>
+        <translation>Svorky v rade sa pripájajú k ďalšej voľnej svorke, ktorá je oproti nim, a pri vysunutí z radu sa opäť odpoja.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="834"/>
         <source>Connect aligned terminals on this folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Prepojiť zarovnané svorky na tomto liste</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="835"/>
         <source>Connect every free terminal of the folio to the next free terminal it faces</source>
-        <translation type="unfinished"></translation>
+        <translation>Pripojiť každú voľnú svorku k nasledujúcej voľnej svorke, ktorá sa nachádza oproti nej</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="842"/>
         <source>Connect aligned terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Prepojiť zarovnané svorky</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="850"/>
@@ -14824,42 +14932,42 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1069"/>
         <source>Zoom of the folio on screen; a click offers fixed ones</source>
-        <translation type="unfinished"></translation>
+        <translation>Zväčšenie listu na obrazovke; kliknutie sprístupní pevné náhľady</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1075"/>
         <source>%1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 %</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1081"/>
         <source>Whole folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Celý list</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1134"/>
         <source>Project languages...</source>
-        <translation type="unfinished"></translation>
+        <translation>Jazyky projektu...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1135"/>
         <source>Show the texts of the project in another language</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť texty projektu v inom jazyku</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1146"/>
         <source>History of saves...</source>
-        <translation type="unfinished"></translation>
+        <translation>História uložení...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1150"/>
         <source>Export for delivery...</source>
-        <translation type="unfinished"></translation>
+        <translation>Export na doručenie...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1151"/>
         <source>Write a copy of the project without the history of its saves</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvorte kópiu projektu bez histórie jeho uložení</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1189"/>
@@ -14893,8 +15001,8 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1291"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5464"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5480"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5466"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5482"/>
         <source>Reload element drawings</source>
         <translation>Znova načítať výkresy prvkov</translation>
     </message>
@@ -14958,7 +15066,7 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1442"/>
         <source>New project with automatic connections</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový projekt s automatickými prepojeniami</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1447"/>
@@ -14969,7 +15077,7 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="1458"/>
         <source>Creates a new project in which terminals in line connect by themselves; a project is of one kind or the other for good</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vytvorí nový projekt, v ktorom sa radové svorky spájajú samy; projekt je už natrvalo určený pre jeden alebo druhý typ</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1464"/>
@@ -14995,7 +15103,7 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1521"/>
         <source>Relay contact display...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazenie stavu kontaktov relé...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1524"/>
@@ -15023,17 +15131,17 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1570"/>
         <source>Use the symbol highlighted in the collection</source>
-        <translation type="unfinished"></translation>
+        <translation>Použiť symbol zvýraznený v zbierke</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1575"/>
         <source>Highlight a symbol in the collection first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Najprv v kolekcii zvýraznite symbol.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1582"/>
         <source>Default symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Predvolený symbol</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1595"/>
@@ -15071,7 +15179,7 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1646"/>
         <source>Repeat the last command</source>
-        <translation>Zopakujte posledný príkaz</translation>
+        <translation>Zopakovať posledný príkaz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1648"/>
@@ -15101,7 +15209,7 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="1665"/>
         <source>Choose how the contacts of the selected relay are shown</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zvoľte spôsob zobrazenia kontaktov vybraného relé</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1683"/>
@@ -15212,7 +15320,7 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="1737"/>
         <source>Selects all text fields on the sheet, deselects the rest</source>
         <comment>status bar tip</comment>
-        <translation>Vyberie všetky textové polia na hárku, ostatné zruší z výberu</translation>
+        <translation>Vyberie všetky textové polia na liste, ostatné zruší z výberu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1753"/>
@@ -15263,17 +15371,17 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1810"/>
         <source>Add linear dimension</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať lineárne kótovanie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1811"/>
         <source>Add chain dimension</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať reťazové kótovanie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1814"/>
         <source>Draw a bridge</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvoriť mostík</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1816"/>
@@ -15343,17 +15451,17 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1831"/>
         <source>Adds a linear dimension to the current sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridá lineárne kótovanie do aktuálneho listu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1832"/>
         <source>Adds a chain dimension to the current sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridá reťazové kótovanie do aktuálneho listu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1833"/>
         <source>Draws a bridge over terminals: every terminal crossed becomes one of its connections</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvára premostenie ponad svorky: každá prekročená svorka sa stáva jedným z jeho spojení</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1896"/>
@@ -15377,7 +15485,7 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="76"/>
         <source>Connections</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Spojenia</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1963"/>
@@ -15403,7 +15511,7 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2108"/>
         <source>Tape measure</source>
-        <translation type="unfinished"></translation>
+        <translation>Kótovanie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2116"/>
@@ -15427,27 +15535,27 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2185"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5594"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5596"/>
         <source>Scripts</source>
         <translation>Skripty</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2470"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2472"/>
         <source>%1 is being opened by another session of QElectroTech.</source>
         <translation>%1 sa práve otvára v inej relácii QElectroTech.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2473"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2475"/>
         <source>%1 is open by %2 on %3 since %4</source>
         <translation>%1 má otvorený %2 na %3 od %4</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2479"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2481"/>
         <source> (active just now).</source>
         <translation> (aktívny práve teraz).</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2480"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2482"/>
         <source> (active %n minute(s) ago).</source>
         <translation>
             <numerusform> (aktívny pred %n minútou).</numerusform>
@@ -15456,203 +15564,203 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2486"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2488"/>
         <source>Project in use</source>
         <comment>message box title</comment>
         <translation>Projekt sa používa</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2487"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2489"/>
         <source>Open it read-only to look at it without changing it. Open it anyway only if you know that session is not using it any more: both of you could then save over each other.</source>
         <translation>Otvorte ho len na čítanie, aby ste si ho pozreli bez zmien. Otvorte ho aj tak len vtedy, ak viete, že ho tá relácia už nepoužíva: inak by ste si mohli navzájom prepísať uložené zmeny.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2490"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2492"/>
         <source>Open read-only</source>
         <translation>Otvoriť len na čítanie</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2491"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2493"/>
         <source>Open anyway</source>
         <translation>Aj tak otvoriť</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2517"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2545"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2556"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2665"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2519"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2547"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2558"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2667"/>
         <source>Cannot open %1</source>
         <translation>Nedá sa otvoriť %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2519"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2521"/>
         <source>The file %1 cannot be read as a QElectroTech project.</source>
         <translation>Súbor %1 sa nedá prečítať ako projekt QElectroTech.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2520"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2522"/>
         <source>The project file is damaged:
 %1</source>
         <translation>Súbor projektu je poškodený:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2525"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2527"/>
         <source>Open the version saved %1</source>
         <translation>Otvoriť verziu uloženú %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2530"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2532"/>
         <source>Recover what can be read</source>
         <translation>Obnoviť, čo sa dá prečítať</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2532"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2534"/>
         <source>Either opens as a new project, &quot;%1&quot;; %2 is left as it is.</source>
         <translation>V oboch prípadoch sa otvorí ako nový projekt „%1“; %2 zostane bez zmeny.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2546"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2548"/>
         <source>Nothing can be recovered from it:
 %1</source>
         <translation>Nedá sa z neho nič obnoviť:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2560"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2562"/>
         <source>Project recovered</source>
         <translation>Projekt obnovený</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2561"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2563"/>
         <source>What could be read of %1 is open as a new project. Some parts could not be read and were left out: see the details.</source>
         <translation>To, čo sa dalo prečítať z %1, je otvorené ako nový projekt. Niektoré časti sa nedali prečítať a boli vynechané: pozrite podrobnosti.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2586"/>
-        <source>%1 was changed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2588"/>
+        <source>%1 was changed</source>
+        <translation>%1 bolo zmenené</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2590"/>
         <source>Another program changed %1 since QElectroTech saved it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Iný program zmenil %1 odvtedy, čo ho QElectroTech uložil.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2589"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2591"/>
         <source>The content of %1 is not what QElectroTech saved: another program changed it, or it is damaged.</source>
-        <translation type="unfinished"></translation>
+        <translation>Obsah súboru %1 nie je totožný s tým, čo uložil program QElectroTech: buď ho zmenil iný program, alebo je poškodený.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2594"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2596"/>
         <source>Go back to the saved state</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2595"/>
-        <source>Open it with its changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Vráťte sa do uloženého stavu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2597"/>
-        <source>Going back rebuilds the project as QElectroTech saved it, from the repair data the file keeps. The file is written only when you save.</source>
-        <translation type="unfinished"></translation>
+        <source>Open it with its changes</source>
+        <translation>Otvorte to aj so zmenami</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2599"/>
+        <source>Going back rebuilds the project as QElectroTech saved it, from the repair data the file keeps. The file is written only when you save.</source>
+        <translation>Návrat späť obnoví projekt v takej podobe, v akej ho QElectroTech uložil, a to na základe údajov na opravu, ktoré sú v súbore uchované. Súbor sa zapisuje iba vtedy, keď ho uložíte.</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2601"/>
         <source>The file is written only when you save.</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor sa zapíše až vtedy, keď ho uložíte.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2622"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2624"/>
         <source>%1 is open with the changes another program made to it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor %1 je otvorený so zmenami, ktoré v ňom vykonal iný program.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2627"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2629"/>
         <source>The changes another program made to %1 were undone: it is open as QElectroTech saved it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmeny, ktoré v súbore %1 vykonal iný program, boli vrátené späť: súbor je otvorený v takej podobe, v akej ho uložil program QElectroTech.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2629"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2631"/>
         <source>%1 was damaged: QElectroTech repaired %n page(s) of it from the repair data the file keeps.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Súbor %1 bol poškodený: QElectroTech z neho opravil %n stranu pomocou opravných údajov, ktoré sú v súbore uložené.</numerusform>
+            <numerusform>Súbor %1 bol poškodený: QElectroTech z neho opravil %n strany pomocou opravných údajov, ktoré sú v súbore uložené.</numerusform>
+            <numerusform>Súbor %1 bol poškodený: QElectroTech z neho opravil %n strán pomocou opravných údajov, ktoré sú v súbore uložené.</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2632"/>
-        <source>%1 was damaged: QElectroTech repaired its header.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2634"/>
-        <source>The repair data %1 keeps was damaged; the project itself was not.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2635"/>
-        <source>Project repaired</source>
-        <translation type="unfinished"></translation>
+        <source>%1 was damaged: QElectroTech repaired its header.</source>
+        <translation>Súbor %1 bol poškodený: QElectroTech opravil jeho hlavičku.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2636"/>
-        <source>Save the project to keep it so.</source>
-        <translation type="unfinished"></translation>
+        <source>The repair data %1 keeps was damaged; the project itself was not.</source>
+        <translation>Údaje na opravu, ktoré %1 uchováva, boli poškodené; samotný projekt poškodený nebol.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2647"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2637"/>
+        <source>Project repaired</source>
+        <translation>Projekt opravený</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2638"/>
+        <source>Save the project to keep it so.</source>
+        <translation>Uložte projekt, aby zostal v tomto stave.</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2649"/>
         <source>%1 (recovered)</source>
         <translation>%1 (obnovený)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2650"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2652"/>
         <source>%1 (recovered %2)</source>
         <translation>%1 (obnovený %2)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2717"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2733"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2719"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2735"/>
         <source>Unable to open file</source>
         <comment>message box title</comment>
         <translation>Súbor sa nedá otvoriť</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2719"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2721"/>
         <source>It appears the %1 file which you are trying to open does not exist or does not exist anymore.</source>
         <translation>Zdá se, že súbor %1, ktorý sa pokúšate otvoriť, už neexistuje.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2747"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2872"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2749"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2874"/>
         <source>Opening the file read-only</source>
         <comment>message box title</comment>
         <translation>Otvorenie súboru iba pre čítanie</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2811"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2813"/>
         <source>Cannot go back to the saved state</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie je možné vrátiť sa do uloženého stavu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2812"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2814"/>
         <source>The other program rewrote too much of %1 for its repair data to rebuild the state QElectroTech saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>Druhý program prepísal príliš veľkú časť súboru %1 na to, aby bolo možné z jeho opravných dát obnoviť stav, ktorý uložil program QElectroTech.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2853"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2855"/>
         <source>%1 on %2 has taken over %3. Save your changes with Save As to keep them.</source>
         <translation>%1 na %2 prevzal %3. Uložte svoje zmeny cez „Uložiť ako“, aby ste o ne neprišli.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2873"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2875"/>
         <source>This project was saved by a later version of QElectroTech. It is opened read-only, so that saving it cannot lose what this version does not know. Use Save As to keep a copy in this version&apos;s format.</source>
         <translation>Tento projekt bol uložený novšou verziou programu QElectroTech. Otvára sa v režime „iba na čítanie“, aby pri ukladaní nedošlo k strate údajov, ktoré táto verzia nepozná. Použite funkciu „Uložiť ako“, ak si chcete ponechať kópiu vo formáte tejto verzie.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2894"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2896"/>
         <source>%n font descriptions written in a foreign or corrupted format have been restored. They will be rewritten in a stable format the next time the project is saved.</source>
         <comment>message box content</comment>
         <translation>
@@ -15672,25 +15780,25 @@ Pri posúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2909"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2911"/>
         <source>Project fonts</source>
         <comment>message box title</comment>
         <translation>Písma projektu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2922"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2926"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2924"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2928"/>
         <source>Sheet %1: %2</source>
         <translation>List %1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2932"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2934"/>
         <source>Elements not loaded</source>
         <comment>message box title</comment>
         <translation>Prvky sa nenačítali</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2933"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2935"/>
         <source>%n elements could not be loaded: their definition is missing from the project and from the collections.
 
 They are not shown, but they are kept in the file as they are, with their conductors, and come back once their definition is available again.</source>
@@ -15708,231 +15816,287 @@ Nezobrazujú sa, ale v súbore zostávajú tak, ako sú, aj so svojimi vodičmi,
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2949"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2951"/>
         <source>Conductors not loaded</source>
         <comment>message box title</comment>
         <translation>Vodiče nie sú zaťažené</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5983"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6069"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6077"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6089"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6166"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6188"/>
-        <source>History of saves</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5985"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6071"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6079"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6091"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6168"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6190"/>
+        <source>History of saves</source>
+        <translation>História uložení</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5987"/>
         <source>Keep a history of saves in this file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5989"/>
-        <source>all</source>
-        <translation type="unfinished">Všetko</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5990"/>
-        <source>The oldest saves are dropped from the history at each save beyond this number</source>
-        <translation type="unfinished"></translation>
+        <translation>Uchovávajte históriu uložení v tomto súbore</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5991"/>
+        <source>all</source>
+        <translation>Všetky</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5992"/>
+        <source>The oldest saves are dropped from the history at each save beyond this number</source>
+        <translation>Pri každom ďalšom uložení nad tento počet sa z histórie odstránia najstaršie uložené verzie</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5993"/>
         <source>Saves to keep:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložené položky na ponechanie:</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5997"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5999"/>
         <source>No.</source>
-        <translation type="unfinished">č.</translation>
+        <translation>č.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5997"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5999"/>
         <source>Saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložené</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5997"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5999"/>
         <source>By</source>
-        <translation type="unfinished"></translation>
+        <translation>Od</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5997"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5999"/>
         <source>Changes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6006"/>
-        <source>Open as it was</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6007"/>
-        <source>Open the project as it was after the selected save, read-only</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmeny</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="6008"/>
-        <source>Compare</source>
-        <translation type="unfinished"></translation>
+        <source>Open as it was</source>
+        <translation>Otvorené, tak ako to bolo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="6009"/>
+        <source>Open the project as it was after the selected save, read-only</source>
+        <translation>Otvoriť projekt v stave, v akom bol po zvolenom uložení – len na čítanie</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6010"/>
+        <source>Compare</source>
+        <translation>Porovnať</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6011"/>
         <source>What the selected save changed, or what changed between two selected saves</source>
-        <translation type="unfinished"></translation>
+        <translation>Čo zmenila vybraná uložená pozícia, alebo čo sa zmenilo medzi dvoma vybranými uloženými pozíciami</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6048"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6050"/>
         <source>A history is kept only in a project saved as .qetdb (File &gt; Save as).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6049"/>
-        <source>This file keeps no history. Switched on, each save records who saved, when and what changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>História sa uchováva iba v projekte uloženom vo formáte .qetdb (Súbor &gt; Uložiť ako).</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="6051"/>
+        <source>This file keeps no history. Switched on, each save records who saved, when and what changed.</source>
+        <translation>Tento súbor neuchováva žiadnu históriu. Po zapnutí funkcie každý záznam ukladá informáciu o tom, kto zmenu vykonal, kedy k nej došlo a čo sa zmenilo.</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6053"/>
         <source>Each save records who saved, when and what changed. Copies of the file carry this history: use File &gt; Export for delivery to send a project without it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Každé uloženie zaznamenáva, kto ukladal, kedy tak urobil a čo sa zmenilo. Kópie súboru túto históriu obsahujú; ak chcete odoslať projekt bez nej, použite možnosť Súbor &gt; Exportovať na odoslanie.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6061"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6063"/>
         <source>History started</source>
-        <translation type="unfinished"></translation>
+        <translation>História sa začala</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6070"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6072"/>
         <source>Delete the history this file keeps? It cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazať históriu, ktorú tento súbor uchováva? Túto akciu nebude možné vrátiť späť.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6078"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6090"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6080"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6092"/>
         <source>The history could not be changed: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Históriu nebolo možné zmeniť: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6111"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6117"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6125"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6131"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6137"/>
-        <source>Export for delivery</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6112"/>
-        <source>Only a project saved as .qetdb keeps a history to leave out (File &gt; Save as).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6118"/>
-        <source>The copy is made from the saved file. Save the project first?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6126"/>
-        <source>%1 - delivery.qetdb</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6113"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6119"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="6127"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6133"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6139"/>
+        <source>Export for delivery</source>
+        <translation>Export na doručenie</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6114"/>
+        <source>Only a project saved as .qetdb keeps a history to leave out (File &gt; Save as).</source>
+        <translation>Iba projekt uložený vo formáte .qetdb uchováva históriu (Súbor &gt; Uložiť ako).</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6120"/>
+        <source>The copy is made from the saved file. Save the project first?</source>
+        <translation>Kópia sa vytvára z uloženého súboru. Chcete projekt najprv uložiť?</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6128"/>
+        <source>%1 - delivery.qetdb</source>
+        <translation>%1 – delivery.qetdb</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6129"/>
         <source>QElectroTech project (*.qetdb)</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt QElectroTech (*.qetdb)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6132"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6134"/>
         <source>Choose another file than the project&apos;s own.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte iný súbor, než je ten, ktorý patrí k projektu.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6138"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6140"/>
         <source>The copy could not be written: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kópiu nebolo možné zapísať: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6141"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6143"/>
         <source>Copy without history written to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kópia bez histórie zapísaná do %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6155"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6157"/>
         <source>%1 - save %2.qetdb</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 – uložiť %2.qetdb</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6167"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6169"/>
         <source>Save %1 could not be written again: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Záznam %1 sa nepodarilo znova zapísať: %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6189"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6191"/>
         <source>The saves could not be compared: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložené pozície nebolo možné porovnať: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6212"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6214"/>
         <source>Changes from save %1 to save %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmeny od uloženia %1 po uloženie %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6217"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6219"/>
         <source>Kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Druh</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6217"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6228"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6219"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6230"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>List</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6217"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6219"/>
         <source>Name</source>
-        <translation type="unfinished">Názov</translation>
+        <translation>Názov</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6217"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6219"/>
         <source>Change</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmena</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6226"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6228"/>
         <source>Symbol</source>
-        <translation type="unfinished">Symbol</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6227"/>
-        <source>Wire</source>
-        <translation type="unfinished">Prepoj</translation>
+        <translation>Symbol</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="6229"/>
-        <source>Drawn item</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6230"/>
-        <source>added</source>
-        <translation type="unfinished"></translation>
+        <source>Wire</source>
+        <translation>Prepoj</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="6231"/>
-        <source>removed</source>
-        <translation type="unfinished"></translation>
+        <source>Drawn item</source>
+        <translation>Nakreslený prvok</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="6232"/>
-        <source>changed</source>
-        <translation type="unfinished"></translation>
+        <source>added</source>
+        <translation>pridané</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6245"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6233"/>
+        <source>removed</source>
+        <translation>odstránené</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6234"/>
+        <source>changed</source>
+        <translation>zmenené</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6247"/>
         <source>Not in the project now</source>
-        <translation type="unfinished"></translation>
+        <translation>Momentálne nie je v projekte</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qetdiagrameditor.cpp" line="6310"/>
+        <source>%n more</source>
+        <translation>
+            <numerusform>o %n viac</numerusform>
+            <numerusform>o %n viac</numerusform>
+            <numerusform>o %n viac</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6313"/>
+        <source>Untitled sheet</source>
+        <comment>Fallback label when a diagram has no title</comment>
+        <translation>List bez názvu</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6317"/>
+        <source>%1 - %2: %3</source>
+        <translation>%1 - %2: %3</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qetdiagrameditor.cpp" line="6340"/>
+        <source>... and %n more folio(s)</source>
+        <translation>
+            <numerusform>... a ďalší %n zväzok</numerusform>
+            <numerusform>... a ďalšie %n zväzky</numerusform>
+            <numerusform>... a ďalších %n zväzkov</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6343"/>
+        <source>Outside the sheet</source>
+        <translation>Mimo listu</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6344"/>
+        <source>These items lie outside the sheet and are cut off or left out:
+
+%1
+
+Go on anyway?</source>
+        <translation>Tieto položky sa nachádzajú mimo listu a budú odrezané alebo vynechané:
+
+%1
+
+Napriek tomu pokračovať?</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qetdiagrameditor.cpp" line="6365"/>
+        <source>Project saved; %n folio(s) with items outside the sheet, named when printing or exporting</source>
+        <translation>
+            <numerusform>Projekt uložený; %n list s prvkami mimo plochy listu – názvy budú priradené pri tlači alebo exporte</numerusform>
+            <numerusform>Projekt uložený; %n listy s prvkami mimo plochy listu – názvy budú priradené pri tlači alebo exporte</numerusform>
+            <numerusform>Projekt uložený; %n listov s prvkami mimo plochy listu – názvy budú priradené pri tlači alebo exporte</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n conductors could not be joined to their terminals and were not loaded. The element&apos;s definition in the project was probably replaced by another one with different terminals.
@@ -15952,19 +16116,19 @@ Ak projekt uložíte, tieto vodiče zo súboru zmiznú. Zatvorte ho bez uloženi
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3286"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3288"/>
         <source>Automatic numbering</source>
         <comment>window title</comment>
         <translation>Automatické číslovanie</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3287"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3289"/>
         <source>No automatic cable numbering is defined.</source>
         <comment>shown when a project has no cable numbering rule</comment>
         <translation>Nie je definované žiadne automatické číslovanie káblov.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3291"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3293"/>
         <source>Do you want to define one now?
 
 You can also number the cables automatically later: the rule is set at any time in the project properties, on the &quot;Auto Numbering&quot; page.</source>
@@ -15974,42 +16138,42 @@ You can also number the cables automatically later: the rule is set at any time 
 Káble môžete neskôr očíslovať aj automaticky: pravidlo možno kedykoľvek nastaviť vo vlastnostiach projektu, na stránke &quot;Automatické číslovanie&quot;.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3297"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3299"/>
         <source>Yes</source>
         <comment>yes</comment>
         <translation>Yes</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3298"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3300"/>
         <source>No</source>
         <comment>no</comment>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3299"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3301"/>
         <source>Cancel</source>
         <comment>cancel</comment>
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3494"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3496"/>
         <source>Unable to delete the terminal</source>
         <translation>Terminál sa nepodarilo odstrániť.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3495"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3497"/>
         <source>The deletion cannot be performed because the selection contains one or more terminals that are bridged and/or belong to a multi-level terminal.
 Unbridge and/or remove the levels from the affected terminals so that they can be deleted</source>
         <translation>Odstránenie nemožno vykonať, pretože výber obsahuje jednu alebo viac svoriek, ktoré sú premostené a/alebo patria k viacúrovňovej svorke.
 Zrušte premostenie a/alebo odstráňte úrovne z dotknutých svoriek, aby ich bolo možné odstrániť.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3591"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3593"/>
         <source>Change relay contact display</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmeniť zobrazenie kontaktu relé</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3684"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3686"/>
         <source>%n items put back on the grid</source>
         <translation>
             <numerusform>%n položka vrátená do mriežky</numerusform>
@@ -16018,7 +16182,7 @@ Zrušte premostenie a/alebo odstráňte úrovne z dotknutých svoriek, aby ich b
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3685"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3687"/>
         <source>%n items aligned</source>
         <translation>
             <numerusform>%n zarovnaná položka</numerusform>
@@ -16027,22 +16191,22 @@ Zrušte premostenie a/alebo odstráňte úrovne z dotknutých svoriek, aby ich b
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3691"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3693"/>
         <source>The selection is already on the grid</source>
         <translation>Výber je už na mriežke.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3693"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3695"/>
         <source>Select at least two unlocked elements, images, texts, shapes or groups</source>
         <translation>Vyberte aspoň dva odomknuté prvky – obrázky, texty, tvary alebo skupiny</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3695"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3697"/>
         <source>The selection is already aligned, to the nearest grid step</source>
         <translation>Výber je už zarovnaný na najbližší krok mriežky</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3699"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3701"/>
         <source>(%n locked objects left in place)</source>
         <translation>
             <numerusform>(%n uzamknutý objekt ponechaný na mieste)</numerusform>
@@ -16051,129 +16215,129 @@ Zrušte premostenie a/alebo odstráňte úrovne z dotknutých svoriek, aby ich b
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3996"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3998"/>
         <source>Edit the information of the elements</source>
         <comment>edit several elements</comment>
         <translation>Upraviť informácie prvkov</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4006"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4008"/>
         <source>Edit the element</source>
         <comment>edit element</comment>
         <translation>Upraviť prvok</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4013"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4015"/>
         <source>Edit the text field</source>
         <comment>edit text field</comment>
         <translation>Upraviť textové pole</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4020"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4022"/>
         <source>Edit the image</source>
         <comment>edit image</comment>
         <translation>Upraviť obrázok</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4027"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4029"/>
         <source>Edit the cable</source>
         <comment>edit cable</comment>
         <translation>Upraviť kábel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4034"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4036"/>
         <source>Edit conductor</source>
         <comment>edit conductor</comment>
         <translation>Upraviť vodič</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4042"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4044"/>
         <source>Edit the selected object</source>
         <comment>edit selected item</comment>
         <translation>Upraviť vybraný prvok</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4377"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4424"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4379"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4426"/>
         <source>An error occurred while opening file %1.</source>
         <comment>message box content</comment>
         <translation>Pri otváraní súboru %1 došlo k chybe.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4471"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4473"/>
         <source>Activates the project « %1 »</source>
         <translation>Spustí projekt « %1 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4695"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4697"/>
         <source>Are you sure you want to delete this sheet?</source>
         <translation>Naozaj chcete odstrániť tento list?</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4700"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4702"/>
         <source>Delete the sheets</source>
         <translation>Odstráiť listy</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4701"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4703"/>
         <source>Are you sure you want to delete the selected %1 sheets ?</source>
         <translation>Naozaj chcete odstrániť vybrané listy (%1)?</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4718"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4720"/>
         <source>Delete %1 sheets</source>
         <translation>Odstrániť %1 listov</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4756"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4774"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4792"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4810"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4828"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4846"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4864"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4758"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4776"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4794"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4812"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4830"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4848"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4866"/>
         <source>Move the sheets</source>
         <translation>Presunúť listy</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4978"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4980"/>
         <source>Error</source>
         <comment>message box title</comment>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5091"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5093"/>
         <source>No symbol is chosen for this button. Highlight one in the collection, then choose &quot;Use the symbol highlighted in the collection&quot; from the arrow beside the button.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pre toto tlačidlo nie je zvolený žiadny symbol. Vyberte jeden zo zbierky a následne v ponuke pod šípkou vedľa tlačidla zvoľte možnosť „Použiť symbol vybraný v zbierke“.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5115"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5117"/>
         <source>%1: place &quot;%2&quot;. The arrow beside it chooses the symbol.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: umiestnite „%2“. Šípka vedľa neho slúži na výber symbolu.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5116"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5118"/>
         <source>%1: no symbol chosen yet. The arrow beside it chooses one.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: zatiaľ nebol vybraný žiadny symbol. Šípka vedľa neho slúži na jeho výber.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5147"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5149"/>
         <source>Repeat: insert &quot;%1&quot;</source>
         <translation>Zopakovať: vložiť &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5148"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5150"/>
         <source>Repeat: %1</source>
         <translation>Zopakovať: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5445"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5447"/>
         <source>sheet %1</source>
         <translation>list: %1
 </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5453"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5455"/>
         <source>%n elements redrawn.</source>
         <translation>
             <numerusform>%n prvok prekreslený.</numerusform>
@@ -16182,7 +16346,7 @@ Zrušte premostenie a/alebo odstráňte úrovne z dotknutých svoriek, aby ich b
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5457"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5459"/>
         <source>%n elements for which no definition could be found or which were illegible: their current design has been retained.</source>
         <translation>
             <numerusform>Prvky, pre ktoré sa nepodarilo nájsť definíciu alebo ktoré boli nečitateľné: ich súčasný vzhľad bol zachovaný.</numerusform>
@@ -16191,7 +16355,7 @@ Zrušte premostenie a/alebo odstráňte úrovne z dotknutých svoriek, aby ich b
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5469"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5471"/>
         <source>%n elements not redrawn: their size, grip point or terminals have changed (a terminal was added, removed or moved).</source>
         <translation>
             <numerusform>%n prvkov nebolo prekreslených: zmenila sa ich veľkosť, úchopový bod alebo svorky (svorka bola pridaná, odstránená alebo presunutá).</numerusform>
@@ -16200,18 +16364,18 @@ Zrušte premostenie a/alebo odstráňte úrovne z dotknutých svoriek, aby ich b
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5473"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5475"/>
         <source>To update them, they must be deleted then reinserted. Warning: this operation removes the conductors already connected to these elements, which will need to be redrawn.</source>
         <translation>Na ich aktualizáciu je potrebné ich odstrániť a následne znova vložiť. Upozornenie: táto operácia odstráni vodiče, ktoré sú už k týmto prvkom pripojené; tieto bude potrebné nakresliť nanovo.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5502"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5506"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5504"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5508"/>
         <source>Run a script</source>
         <translation>Spustiť skript...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5531"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5533"/>
         <source>Scripts are disabled.
 
 A script runs with your permissions: it can read and modify the open project and write files. Only run scripts whose origin you know.
@@ -16224,31 +16388,31 @@ Skript sa spúšťa s vašimi oprávneniami: môže čítať a upravovať otvore
 Povoliť skripty? Toto nastavenie možno zmeniť v časti Konfigurácia QElectroTech &gt; Všeobecné &gt; Projekty.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5729"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5731"/>
         <source>Remembered after a restart</source>
         <translation>Zapamätané po reštarte</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5892"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5894"/>
         <source>Dimension format copied</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát rozmeru skopírovaný</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5902"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5904"/>
         <source>Text format of &quot;%1&quot; copied</source>
         <translation>Formát textu „%1“ skopírovaný</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5948"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5950"/>
         <source>Dimension format applied to %n dimension(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Formát dimenzie použitý na %n dimenziu/dimenzie</numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5964"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5966"/>
         <source>Text format applied to %n element(s)</source>
         <translation>
             <numerusform>Formát textu použitý na %n prvok</numerusform>
@@ -16257,12 +16421,12 @@ Povoliť skripty? Toto nastavenie možno zmeniť v časti Konfigurácia QElectro
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5508"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5510"/>
         <source>JavaScript scripts (*.js);;All files (*)</source>
         <translation>Skripty JavaScript (*.js);;Všetky súbory (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2414"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2416"/>
         <source>XML Files (*.xml);;All files (*)</source>
         <translation>Súbory XML (*.xml);;All files (*)</translation>
     </message>
@@ -16285,23 +16449,23 @@ Nezobrazujú sa, ale v súbore zostávajú tak, ako sú, a znova sa pripoja k sv
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5608"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5610"/>
         <source>Ignored: %1</source>
         <translation>Ignorované: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5643"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5704"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5645"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5706"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5644"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5646"/>
         <source>Stop recording the macro</source>
         <translation>Zastaviť nahrávanie makra</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5654"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5656"/>
         <source>● Recording: %n steps</source>
         <translation>
             <numerusform>● Nahrávanie: %n krok</numerusform>
@@ -16310,12 +16474,12 @@ Nezobrazujú sa, ale v súbore zostávajú tak, ako sú, a znova sa pripoja k sv
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5669"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5671"/>
         <source>Macro recorded</source>
         <translation>Makro zaznamenané</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5670"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5672"/>
         <source>“%1”: %n steps.
 
 To make a script of it, ask your AI assistant: the button below copies the request, just paste it into its window.</source>
@@ -16332,53 +16496,53 @@ Ak z toho chcete vytvoriť skript, požiadajte o to svojho AI asistenta – tla�
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5679"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5681"/>
         <source>&amp;Copy the request for the assistant</source>
         <translation>&amp;Kopírovať požiadavku pre asistenta</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5680"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5682"/>
         <source>&amp;Open the folder</source>
         <translation>&amp;Otvoriť priečinok</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5686"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5688"/>
         <source>Request copied: paste it into the assistant&apos;s window</source>
         <translation>Požiadavka skopírovaná: vložte ju do okna asistenta</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5705"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5707"/>
         <source>Close the assistant&apos;s connection for the rest of the session</source>
         <translation>Ukončite spojenie s asistentom na zvyšok relácie</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5714"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5716"/>
         <source>Live mode: assistant connected</source>
         <translation>Režim naživo: asistent pripojený</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5715"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5717"/>
         <source>Live mode: waiting for an assistant</source>
         <translation>Režim naživo: čaká sa na asistenta</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5723"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5767"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5725"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5769"/>
         <source>Assistant</source>
         <translation>Asistent</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5727"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5729"/>
         <source>Ask before running a script the assistant wrote</source>
         <translation>Pred spustením skriptu, ktorý napísal asistent, požiadajte o potvrdenie.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5784"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5786"/>
         <source>Live mode: %1 %2 at %3</source>
         <translation>Režim naživo: %1 %2 o %3</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5826"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5828"/>
         <source>%n kinds of items hidden</source>
         <translation>
             <numerusform>%n skrytých položiek</numerusform>
@@ -16387,8 +16551,8 @@ Ak z toho chcete vytvoriť skript, požiadajte o to svojho AI asistenta – tla�
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5862"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5867"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5864"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5869"/>
         <source>Texts %1</source>
         <translation>Texty %1</translation>
     </message>
@@ -16427,7 +16591,7 @@ Ak z toho chcete vytvoriť skript, požiadajte o to svojho AI asistenta – tla�
         <translation>Spustí predchádzajúci projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4949"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4951"/>
         <source>Zoom %1 %</source>
         <translation>Zväčšenie %1 %</translation>
     </message>
@@ -16483,7 +16647,7 @@ Ak z toho chcete vytvoriť skript, požiadajte o to svojho AI asistenta – tla�
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1112"/>
         <source>Find duplicate signals and components...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nájsť duplicitné signály a komponenty...</translation>
     </message>
 </context>
 <context>
@@ -17085,27 +17249,27 @@ Ak z toho chcete vytvoriť skript, požiadajte o to svojho AI asistenta – tla�
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1212"/>
         <source>Tape measure</source>
-        <translation type="unfinished"></translation>
+        <translation>Kótovanie</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1214"/>
         <source>Measure distance and angle between points</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmerajte vzdialenosť a uhol medzi bodmi</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1234"/>
         <source>Clear measurements</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazať merania</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1235"/>
         <source>Clear all tape measurements from the editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť z editora všetky merania</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1240"/>
         <source>Measurements cleared</source>
-        <translation type="unfinished"></translation>
+        <translation>Merania vymazané</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1253"/>
@@ -17510,7 +17674,7 @@ podmienky nie sú platné.</translation>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3866"/>
+        <location filename="../sources/qetproject.cpp" line="3868"/>
         <source>Warning</source>
         <comment>message box title</comment>
         <translation>Varovanie</translation>
@@ -17560,27 +17724,27 @@ podmienky nie sú platné.</translation>
         <translation type="vanished">QElectroTech projekt (*.qet *.qetz)</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3254"/>
+        <location filename="../sources/qetproject.cpp" line="3256"/>
         <source>%1 was opened read-only because someone else has it open. Use Save As to keep your changes in another file.</source>
         <translation>%1 bol otvorený len na čítanie, pretože ho má otvorený niekto iný. Použite „Uložiť ako“, ak chcete svoje zmeny uložiť do iného súboru.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3259"/>
+        <location filename="../sources/qetproject.cpp" line="3261"/>
         <source>Cannot save %1: %2</source>
         <translation>Nie je možné uložiť %1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3286"/>
+        <location filename="../sources/qetproject.cpp" line="3288"/>
         <source>someone else changed the file on disk at %1 since it was opened, and saving would overwrite that. Save to another name, or set QET_OVERWRITE_CHANGED=1 to overwrite it.</source>
         <translation>odkedy bol súbor otvorený, niekto iný ho zmenil na disku o %1 a uloženie by tieto zmeny prepísalo. Uložte pod iným názvom alebo nastavte QET_OVERWRITE_CHANGED=1, ak ho chcete prepísať.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3508"/>
+        <location filename="../sources/qetproject.cpp" line="3510"/>
         <source>Modified contact system</source>
         <translation>Upravený kontaktný systém</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3509"/>
+        <location filename="../sources/qetproject.cpp" line="3511"/>
         <source>The new element defines slave contact groups.
 Existing slave elements will not be automatically assigned. You will need to link the slaves manually and assign the contact groups.
 
@@ -17591,13 +17755,13 @@ Existujúce podriadené prvky nebudú priradené automaticky. Budete ich musieť
 Chcete pokračovať?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3598"/>
+        <location filename="../sources/qetproject.cpp" line="3600"/>
         <source>An error occurred during the template integration.</source>
         <comment>error message</comment>
         <translation>Počas integrácie šablóny došlo k chybe.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3868"/>
+        <location filename="../sources/qetproject.cpp" line="3870"/>
         <source>This document appears to have been saved with version %1
  which is later than your version ! 
 You are currently using QElectroTech in version %2</source>
@@ -17606,7 +17770,7 @@ ktorá je novšia než vaša verzia!
 Momentálne používate QElectroTech vo verzii %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3872"/>
+        <location filename="../sources/qetproject.cpp" line="3874"/>
         <source>.
  It is then possible that the opening of all or part of this document fails.
 What do you wish to do ?</source>
@@ -17615,49 +17779,49 @@ V takom prípade sa otvorenie celého tohto dokumentu alebo jeho časti nemusí 
 Čo si želáte urobiť?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3894"/>
+        <location filename="../sources/qetproject.cpp" line="3896"/>
         <source>The project you are trying to open is partially compatible with your version %1 of QElectroTech.
 </source>
         <translation>Projekt, ktorý sa pokúšate otvoriť, je čiastočne kompatibilný s vašou verziou %1 programu QElectroTech.
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3897"/>
+        <location filename="../sources/qetproject.cpp" line="3899"/>
         <source>In order to make it fully compatible please open this same project with version 0.8, or 0.80 of QElectroTech and save the project and open it again with this version.
 What do you wish to do ?</source>
         <translation>Aby bola zabezpečená plná kompatibilita, otvorte tento projekt vo verzii 0.8 alebo 0.80 programu QElectroTech, uložte ho a následne znova otvorte v tejto verzii.
 Čo si želáte urobiť?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3893"/>
+        <location filename="../sources/qetproject.cpp" line="3895"/>
         <source>Warning </source>
         <comment>message box title</comment>
         <translation>Varovanie </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3051"/>
+        <location filename="../sources/qetproject.cpp" line="3053"/>
         <source>QElectroTech project (*.qet *.qetz *.qetdb)</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt QElectroTech (*.qet *.qetz *.qetdb)</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3079"/>
-        <location filename="../sources/qetproject.cpp" line="3101"/>
+        <location filename="../sources/qetproject.cpp" line="3081"/>
+        <location filename="../sources/qetproject.cpp" line="3103"/>
         <source>a history is kept only in a project saved as .qetdb</source>
-        <translation type="unfinished"></translation>
+        <translation>história sa uchováva iba v projekte uloženom vo formáte .qetdb</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3083"/>
-        <location filename="../sources/qetproject.cpp" line="3105"/>
+        <location filename="../sources/qetproject.cpp" line="3085"/>
+        <location filename="../sources/qetproject.cpp" line="3107"/>
         <source>the file was changed on disk since it was opened or saved</source>
-        <translation type="unfinished"></translation>
+        <translation>súbor bol na disku zmenený od okamihu, keď bol otvorený alebo uložený</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="4334"/>
+        <location filename="../sources/qetproject.cpp" line="4340"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creation of sheets&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Otvára sa projekt ...&lt;/b&gt;&lt;br/&gt;Vytvárajú sa listy&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="4464"/>
+        <location filename="../sources/qetproject.cpp" line="4470"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Setting up cross references&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Otvára sa projekt ...&lt;/b&gt;&lt;br/&gt;Nastavujú sa krížové odkazy&lt;/p&gt;</translation>
     </message>
@@ -17848,7 +18012,7 @@ What do you wish to do ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="404"/>
         <source>&amp;Format text of cells...</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Formátovať text buniek...</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="409"/>
@@ -18032,7 +18196,7 @@ What do you wish to do ?</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="826"/>
+        <location filename="../sources/exportdialog.cpp" line="837"/>
         <source>Export to clipboard</source>
         <translation>Exportovať do schránky</translation>
     </message>
@@ -18048,7 +18212,7 @@ What do you wish to do ?</source>
     </message>
     <message>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="312"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="827"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="862"/>
         <source>Warning: the element has been saved with a more recent version of QElectroTech.</source>
         <translation>Varovanie: prvok bol uložený v staršej verzii QElectroTechu.</translation>
     </message>
@@ -18391,7 +18555,7 @@ What do you wish to do ?</source>
         <translation>Hĺbka</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="78"/>
+        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="111"/>
         <source>Terminal</source>
         <comment>tooltip</comment>
         <translation>Svorka</translation>
@@ -18409,27 +18573,27 @@ What do you wish to do ?</source>
         <translation>Obdĺžnik</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="787"/>
+        <location filename="../sources/exportdialog.cpp" line="798"/>
         <source>Untitled sheet</source>
         <translation>List bez názvu</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="789"/>
+        <location filename="../sources/exportdialog.cpp" line="800"/>
         <source>diagram</source>
         <translation>Výkres</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="814"/>
+        <location filename="../sources/exportdialog.cpp" line="825"/>
         <source>Keep aspect ratio</source>
         <translation>Zachovať pomer stran</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="818"/>
+        <location filename="../sources/exportdialog.cpp" line="829"/>
         <source>Reset size</source>
         <translation>Obnoviť východziu veľkosť</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="822"/>
+        <location filename="../sources/exportdialog.cpp" line="833"/>
         <source>Preview</source>
         <translation>Náhľad</translation>
     </message>
@@ -18583,25 +18747,25 @@ What do you wish to do ?</source>
         <location filename="../sources/titleblockcell.cpp" line="149"/>
         <source>label font</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>písmo popisu</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="151"/>
         <source>value font</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>písmo hodnoty</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="153"/>
         <source>label colour</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>farba štítku</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="155"/>
         <source>value colour</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>farba hodnoty</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="290"/>
@@ -18825,15 +18989,15 @@ preložený názov tohto priečinka sa nepodarilo načítať, preto sa namiesto 
     <message>
         <location filename="../sources/elementsmover.cpp" line="313"/>
         <source>A terminal may not be dropped on a bridge which cannot take one more.</source>
-        <translation type="unfinished"></translation>
+        <translation>Svorka sa nesmie umiestniť na mostík, ktorý už neumožňuje pripojiť ďalšiu svorku.</translation>
     </message>
     <message>
-        <location filename="../sources/elementsmover.cpp" line="487"/>
+        <location filename="../sources/elementsmover.cpp" line="507"/>
         <source>Update automatic connections</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovať automatické pripojenia</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementsmover.cpp" line="511"/>
+        <location filename="../sources/elementsmover.cpp" line="531"/>
         <source>Add %n conductors</source>
         <comment>add a numbers of conductor one or more</comment>
         <translation>
@@ -19093,7 +19257,7 @@ Chcete ho nahradiť?</translation>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="209"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1456"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1846"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3404"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3502"/>
         <source>Type</source>
         <translation>Typ</translation>
     </message>
@@ -19101,7 +19265,7 @@ Chcete ho nahradiť?</translation>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="210"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1457"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1847"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3405"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3503"/>
         <source>Address</source>
         <translation>Adresa</translation>
     </message>
@@ -19110,7 +19274,7 @@ Chcete ho nahradiť?</translation>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="212"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1459"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1849"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3407"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3505"/>
         <source>Annotation</source>
         <translation>Poznámka</translation>
     </message>
@@ -19119,7 +19283,7 @@ Chcete ho nahradiť?</translation>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="213"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1460"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1850"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3408"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3506"/>
         <source>Cross-reference</source>
         <translation>Krížový odkaz</translation>
     </message>
@@ -19129,14 +19293,14 @@ Chcete ho nahradiť?</translation>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="211"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1458"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1848"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3406"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3504"/>
         <source>Function</source>
         <translation>Funkcia</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="315"/>
         <source>Terminal number</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo svorky</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="326"/>
@@ -19470,27 +19634,27 @@ Chcete ho nahradiť?</translation>
         <translation>Vytvorenie vodičov</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3522"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3524"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazať</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5295"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5297"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>Pre nainštalovanie prídavného modulu qet_tb_generator&lt;br&gt;navštívte :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;vyžaduje python 3.5 alebo novší.&lt;br&gt;&lt;B&gt;&lt;U&gt; najprv nainštalujte v OS Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. V prípade potreby nainštalujte python 3.5 alebo novší&lt;br&gt; Navštivte:&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Aktualizace na OS Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;užívateľ tento skript môže spustiť v terminálu v tomto adresári&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5315"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5317"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Pre nainštalovanie prídavného modulu qet_tb_generator&lt;br&gt;navštívte:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; najprv nainštalujte v macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. V prípade potreby nainštalujte python 3.11 alebo novší&lt;br&gt; Navštivte:&lt;br&gt;&lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2. Spusťte skript Profile.command&lt;br&gt;&lt;B&gt;&lt;U&gt; Aktualizujte na macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5334"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5336"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Pre nainštalovanie prídavného modulu qet_tb_generator&lt;br&gt;navštívte :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;vyžaduje python 3.5 alebo novší.&lt;br&gt;&lt;B&gt;&lt;U&gt; najprv inštalácia v OS Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Overte, či máte nainštalovaný pip3: pip3 --version&lt;br&gt;Pokiaľ ne, nainštalujte pomocou: sudo apt-get install python3-pip&lt;br&gt;2. Nainstalujte program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Spusťte program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Aktualizace v OS Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5354"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5356"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>Chyba pri spustení prídavného modulu qet_tb_generator</translation>
     </message>
@@ -19859,12 +20023,12 @@ Stiahnite si ho pomocou uvedeného odkazu a rozbaľte ho do inštalačného prie
         <translation>Textová mriežka %1. Uvoľnite kláves Shift a podržte kláves Ctrl pre voľné umiestnenie.</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextsmover.cpp" line="97"/>
+        <location filename="../sources/elementtextsmover.cpp" line="99"/>
         <source>Text grid disabled.</source>
         <translation>Textová mriežka vypnutá.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementtextsmover.cpp" line="165"/>
+        <location filename="../sources/elementtextsmover.cpp" line="167"/>
         <source>%n texts of element</source>
         <translation>
             <numerusform>%n text prvku</numerusform>
@@ -19873,7 +20037,7 @@ Stiahnite si ho pomocou uvedeného odkazu a rozbaľte ho do inštalačného prie
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementtextsmover.cpp" line="167"/>
+        <location filename="../sources/elementtextsmover.cpp" line="169"/>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="110"/>
         <source>%n groups of texts</source>
         <translation>
@@ -19883,7 +20047,7 @@ Stiahnite si ho pomocou uvedeného odkazu a rozbaľte ho do inštalačného prie
         </translation>
     </message>
     <message>
-        <location filename="../sources/elementtextsmover.cpp" line="172"/>
+        <location filename="../sources/elementtextsmover.cpp" line="174"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="884"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="3554"/>
         <source>Move %1</source>
@@ -20230,107 +20394,107 @@ Ak ju chcete povoliť: prejdite na Konfigurácia QElectroTech &gt; Všeobecné &
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="332"/>
         <source>the file is damaged</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor je poškodený</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="337"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="342"/>
         <source>the file is not a QElectroTech project</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor nie je projektom QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="350"/>
         <source>it was saved by a newer QElectroTech (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>bolo uložené novšou verziou QElectroTech (%1)</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="360"/>
         <source>the file holds SQL that QElectroTech does not expect (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor obsahuje SQL, ktoré QElectroTech neočakáva (%1)</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="366"/>
         <source>the file is damaged: an item refers to one that is not there</source>
-        <translation type="unfinished"></translation>
+        <translation>súbor je poškodený: položka odkazuje na niečo, čo tam nie je</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="399"/>
         <source>the file could not be replaced (error %1)</source>
-        <translation type="unfinished"></translation>
+        <translation>súbor sa nepodarilo nahradiť (chyba %1)</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="442"/>
         <source>the file could not be opened</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor sa nepodarilo otvoriť</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="815"/>
         <source>the file could not be read back</source>
-        <translation type="unfinished"></translation>
+        <translation>súbor sa nepodarilo prečítať</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1217"/>
         <source>the file could not be written</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor sa nepodarilo zapísať</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1239"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1755"/>
         <source>it keeps no revision %1</source>
-        <translation type="unfinished"></translation>
+        <translation>neuchováva žiadnu revíziu %1</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1248"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1773"/>
         <source>this build of QElectroTech has no SQLite session support</source>
-        <translation type="unfinished"></translation>
+        <translation>Táto verzia QElectroTech nemá podporu pre relácie v SQLite</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1255"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1763"/>
         <source>the changes of revision %1 were not recorded</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmeny revízie %1 neboli zaznamenané</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1260"/>
         <source>revision %1 cannot be undone</source>
-        <translation type="unfinished"></translation>
+        <translation>revíziu %1 nemožno vrátiť späť</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1270"/>
         <source>revision %1 does not undo cleanly</source>
-        <translation type="unfinished"></translation>
+        <translation>revíziu %1 nie je možné čisto vrátiť späť</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1364"/>
         <source>the file could not be written to disk</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor sa nepodarilo zapísať na disk</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1429"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1545"/>
         <source>the file could not be read</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor sa nepodarilo prečítať</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1457"/>
         <source>it has %n damaged page(s), more than the repair data it keeps can rebuild</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>obsahuje %n poškodenú stránku – viac, než dokážu opraviť uložené údaje na opravu</numerusform>
+            <numerusform>obsahuje %n poškodené stránky – viac, než dokážu opraviť uložené údaje na opravu</numerusform>
+            <numerusform>obsahuje %n poškodených stránok – viac, než dokážu opraviť uložené údaje na opravu</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1522"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1562"/>
         <source>its content is not what QElectroTech saved: it is damaged, or another program changed it</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeho obsah nie je taký, aký ho QElectroTech uložil: je poškodený alebo ho zmenil iný program</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1633"/>
         <source>keep at least 2 saves, or 0 for all</source>
-        <translation type="unfinished"></translation>
+        <translation>ponechať aspoň 2 uložené pozície, alebo 0 pre všetky</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1639"/>
@@ -20338,99 +20502,99 @@ Ak ju chcete povoliť: prejdite na Konfigurácia QElectroTech &gt; Všeobecné &
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1746"/>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1806"/>
         <source>it keeps no history</source>
-        <translation type="unfinished"></translation>
+        <translation>neuchováva žiadnu históriu</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1750"/>
         <source>revision %1 does not come before revision %2</source>
-        <translation type="unfinished"></translation>
+        <translation>revízia %1 nepredchádza revízii %2</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/qetdbfile.cpp" line="1781"/>
         <source>the changes of revision %1 do not follow on</source>
-        <translation type="unfinished"></translation>
+        <translation>zmeny revízie %1 nenadväzujú na</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="82"/>
         <source>Values</source>
-        <translation type="unfinished">Hodnoty</translation>
+        <translation>Hodnoty</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="83"/>
         <source>Comparisons</source>
-        <translation type="unfinished"></translation>
+        <translation>Porovnania</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="84"/>
         <source>Text conditions</source>
-        <translation type="unfinished"></translation>
+        <translation>Textové podmienky</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="85"/>
         <source>Logic</source>
-        <translation type="unfinished"></translation>
+        <translation>Logický</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="86"/>
         <source>Text functions</source>
-        <translation type="unfinished"></translation>
+        <translation>Textové funkcie</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="87"/>
         <source>Numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>Čísla</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="89"/>
         <source>A field</source>
-        <translation type="unfinished"></translation>
+        <translation>Pole</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="89"/>
         <source>Choose a column of this table&apos;s source.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte stĺpec zdroja tejto tabuľky.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="90"/>
         <source>Fixed text</source>
-        <translation type="unfinished"></translation>
+        <translation>Pevný text</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="90"/>
         <source>Enter ordinary text. Quotes and other punctuation are handled for you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadajte bežný text. Úvodzovky a ďalšie interpunkčné znamienka sa vyriešia za vás.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="91"/>
         <source>A number</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="91"/>
         <location filename="../sources/formulabuilder.cpp" line="213"/>
         <source>Enter a number.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadajte číslo.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="92"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>Nič</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="92"/>
         <source>No value at all. To check for missing or blank text, use Is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vôbec žiadna hodnota. Na zistenie chýbajúceho alebo prázdneho textu použite možnosť „Je prázdne“ (Is empty).</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="93"/>
         <location filename="../sources/formulabuilder.cpp" line="93"/>
         <source>Equals</source>
-        <translation type="unfinished"></translation>
+        <translation>Rovná sa</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="93"/>
         <source>Compare two values. If one of them is a number, they are compared as numbers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Porovnajte dve hodnoty. Ak je jedna z nich číslo, porovnávajú sa ako čísla.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="93"/>
@@ -20438,30 +20602,30 @@ Ak ju chcete povoliť: prejdite na Konfigurácia QElectroTech &gt; Všeobecné &
         <location filename="../sources/formulabuilder.cpp" line="100"/>
         <location filename="../sources/formulabuilder.cpp" line="101"/>
         <source>Value</source>
-        <translation type="unfinished">Hodnota</translation>
+        <translation>Hodnota</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="94"/>
         <location filename="../sources/formulabuilder.cpp" line="94"/>
         <source>Differs from</source>
-        <translation type="unfinished"></translation>
+        <translation>Líši sa od</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="94"/>
         <source>True when the two values differ.</source>
-        <translation type="unfinished"></translation>
+        <translation>Platí, keď sa tieto dve hodnoty líšia.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="95"/>
         <location filename="../sources/formulabuilder.cpp" line="95"/>
         <source>Greater than</source>
-        <translation type="unfinished"></translation>
+        <translation>Väčšie než</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="95"/>
         <location filename="../sources/formulabuilder.cpp" line="97"/>
         <source>Compare numbers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Porovnať čísla.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="95"/>
@@ -20475,589 +20639,595 @@ Ak ju chcete povoliť: prejdite na Konfigurácia QElectroTech &gt; Všeobecné &
         <location filename="../sources/formulabuilder.cpp" line="118"/>
         <location filename="../sources/formulabuilder.cpp" line="119"/>
         <source>Number</source>
-        <translation type="unfinished">Číslo</translation>
+        <translation>Číslo</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="96"/>
         <location filename="../sources/formulabuilder.cpp" line="96"/>
         <source>At least</source>
-        <translation type="unfinished"></translation>
+        <translation>Aspoň</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="96"/>
         <location filename="../sources/formulabuilder.cpp" line="98"/>
         <source>Compare numbers. Equal counts.</source>
-        <translation type="unfinished"></translation>
+        <translation>Porovnať čísla. Rovnaké počty.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="97"/>
         <location filename="../sources/formulabuilder.cpp" line="97"/>
         <source>Smaller than</source>
-        <translation type="unfinished"></translation>
+        <translation>Menšie než</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="98"/>
         <location filename="../sources/formulabuilder.cpp" line="98"/>
         <source>At most</source>
-        <translation type="unfinished"></translation>
+        <translation>Najviac</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="99"/>
         <source>Between two numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>Medzi dvoma číslami</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="99"/>
         <source>The two limits count as inside.</source>
-        <translation type="unfinished"></translation>
+        <translation>Obe medze sa počítajú ako súčasť vnútra.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="99"/>
         <source>Lower limit</source>
-        <translation type="unfinished"></translation>
+        <translation>Dolná hranica</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="99"/>
         <source>Upper limit</source>
-        <translation type="unfinished"></translation>
+        <translation>Horná hranica</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="100"/>
         <source>Is empty</source>
-        <translation type="unfinished">Je prázdny</translation>
+        <translation>Je prázdny</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="100"/>
         <source>True for nothing, empty text or text of only spaces.</source>
-        <translation type="unfinished"></translation>
+        <translation>Platí pre „nič“ – prázdny text alebo text pozostávajúci iba z medzier.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="101"/>
         <source>Is not empty</source>
-        <translation type="unfinished">Nie je prázdny</translation>
+        <translation>Nie je prázdny</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="101"/>
         <source>True when there is something besides spaces.</source>
-        <translation type="unfinished"></translation>
+        <translation>Platí, ak je tam niečo iné než medzery.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="102"/>
         <location filename="../sources/formulabuilder.cpp" line="102"/>
         <source>Contains</source>
-        <translation type="unfinished"></translation>
+        <translation>Obsahuje</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="102"/>
         <source>True when the text holds the other text, whatever the case.</source>
-        <translation type="unfinished"></translation>
+        <translation>Platí, ak text obsahuje druhý text, bez ohľadu na veľkosť písmen.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="103"/>
         <location filename="../sources/formulabuilder.cpp" line="103"/>
         <source>Starts with</source>
-        <translation type="unfinished"></translation>
+        <translation>Začína s</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="103"/>
         <source>True when the text begins with the other text, whatever the case.</source>
-        <translation type="unfinished"></translation>
+        <translation>Platí, ak sa text začína druhým textom, bez ohľadu na veľkosť písmen.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="104"/>
         <location filename="../sources/formulabuilder.cpp" line="104"/>
         <source>Ends with</source>
-        <translation type="unfinished"></translation>
+        <translation>Končí s</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="104"/>
         <source>True when the text ends with the other text, whatever the case.</source>
-        <translation type="unfinished"></translation>
+        <translation>Platí, ak sa text končí druhým textom, bez ohľadu na veľkosť písmen.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="105"/>
         <source>If... then... else</source>
-        <translation type="unfinished"></translation>
+        <translation>Ak... potom... inak</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="105"/>
         <source>Use the second value when the condition is true, the third otherwise.</source>
-        <translation type="unfinished"></translation>
+        <translation>Použite druhú hodnotu, keď je podmienka pravdivá, v opačnom prípade tretiu.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="105"/>
         <source>If</source>
-        <translation type="unfinished"></translation>
+        <translation>Ak</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="105"/>
         <source>Then use</source>
-        <translation type="unfinished"></translation>
+        <translation>Potom použiť</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="105"/>
         <location filename="../sources/formulabuilder.cpp" line="109"/>
         <source>Otherwise use</source>
-        <translation type="unfinished"></translation>
+        <translation>V opačnom prípade použiť</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="106"/>
         <source>All of</source>
-        <translation type="unfinished"></translation>
+        <translation>Všetko z</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="106"/>
         <source>True when every condition is true.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pravda, keď je každá podmienka pravdivá.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="106"/>
         <location filename="../sources/formulabuilder.cpp" line="107"/>
         <source>Condition 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Podmienka 1</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="106"/>
         <location filename="../sources/formulabuilder.cpp" line="107"/>
         <source>Condition 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Podmienka 2</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="107"/>
         <source>Any of</source>
-        <translation type="unfinished"></translation>
+        <translation>Ktorýkoľvek z</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="107"/>
         <source>True when at least one condition is true.</source>
-        <translation type="unfinished"></translation>
+        <translation>Platí, ak je aspoň jedna podmienka pravdivá.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="108"/>
         <source>Not</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="108"/>
         <source>True when the condition is false.</source>
-        <translation type="unfinished"></translation>
+        <translation>Platí, keď je podmienka nepravdivá.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="108"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Podmienka</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="109"/>
         <source>If empty, use another value</source>
-        <translation type="unfinished"></translation>
+        <translation>Ak je prázdne, použite inú hodnotu</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="109"/>
         <source>Use the first value unless it is empty, then use the second.</source>
-        <translation type="unfinished"></translation>
+        <translation>Použite prvú hodnotu, pokiaľ nie je prázdna; v opačnom prípade použite druhú.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="109"/>
         <source>Preferred value</source>
-        <translation type="unfinished"></translation>
+        <translation>Preferovaná hodnota</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="110"/>
         <source>Join values</source>
-        <translation type="unfinished"></translation>
+        <translation>Spojiť hodnoty</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="110"/>
         <source>Put the values one after the other with the separator between them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Umiestniť hodnoty jednu za druhou a medzi ne vložiť oddeľovač.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="110"/>
         <source>Value 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Hodnota 1</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="110"/>
         <source>Value 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Hodnota 2</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="111"/>
         <source>Replace text</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahradiť text</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="111"/>
         <source>Replace every occurrence of the text to find.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahradiť každý výskyt hľadaného textu.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="111"/>
         <source>Find</source>
-        <translation type="unfinished"></translation>
+        <translation>Hľadať</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="111"/>
         <source>Replace with</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahradiť</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="112"/>
         <source>UPPER CASE</source>
-        <translation type="unfinished"></translation>
+        <translation>VEĽKÉ PÍSMENÁ</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="112"/>
         <source>Turn the text into capitals.</source>
-        <translation type="unfinished"></translation>
+        <translation>Previesť text na veľké písmená.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="113"/>
         <source>lower case</source>
-        <translation type="unfinished"></translation>
+        <translation>malé písmená</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="113"/>
         <source>Turn the text into small letters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Previesť text na malé písmená.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="114"/>
         <source>Remove surrounding spaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť okolité medzery</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="114"/>
         <source>Remove the spaces before and after the text.</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť medzery pred textom a za ním.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="115"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Sčítať</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="115"/>
         <source>Add two numbers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sčítať dve čísla.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="115"/>
         <source>Added to</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať do</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="116"/>
         <source>Subtract</source>
-        <translation type="unfinished"></translation>
+        <translation>Odčítať</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="116"/>
         <source>Take the second number from the first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Odčítať druhé číslo od prvého.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="116"/>
         <source>Minus</source>
-        <translation type="unfinished"></translation>
+        <translation>Mínus</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="117"/>
         <source>Multiply</source>
-        <translation type="unfinished"></translation>
+        <translation>Násobiť</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="117"/>
         <source>Multiply two numbers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vynásobiť dve čísla.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="117"/>
         <source>Times</source>
-        <translation type="unfinished"></translation>
+        <translation>Krát</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="118"/>
         <source>Divide</source>
-        <translation type="unfinished"></translation>
+        <translation>Deliť</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="118"/>
         <source>Divide by the second number. Dividing by zero gives nothing, not an error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vydeľte druhým číslom. Delenie nulou neprináša žiadny výsledok; nejde o chybu.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="118"/>
         <source>Divided by</source>
-        <translation type="unfinished"></translation>
+        <translation>Delené</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="119"/>
         <source>Round</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaokrúhliť</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="119"/>
         <source>Round to a number of decimal places.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaokrúhliť na určitý počet desatinných miest.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="119"/>
         <source>Decimal places</source>
-        <translation type="unfinished"></translation>
+        <translation>Desatinné miesta</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="193"/>
         <source>The formula is nested too deeply (at most %1 levels).</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzorec je vnorený príliš hlboko (najviac %1 úrovní).</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="197"/>
         <source>Choose an operation.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrať operáciu.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="200"/>
         <source>%1 needs %2 to %3 inputs.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 vyžaduje %2 až %3 vstupov.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="207"/>
         <source>This field is not available in this table. Choose one from the list.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toto pole nie je v tejto tabuľke k dispozícii. Vyberte si jedno zo zoznamu.</translation>
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="268"/>
         <source>This operation is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Táto operácia nie je podporovaná.</translation>
     </message>
     <message>
         <location filename="../sources/properties/projectlanguages.cpp" line="277"/>
         <source>Unexpected quote in the CSV file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Neočakávaný úvodzovkový znak v súbore CSV.</translation>
     </message>
     <message>
         <location filename="../sources/properties/projectlanguages.cpp" line="289"/>
         <source>Unexpected text after a quoted cell in the CSV file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Neočakávaný text za bunkou v úvodzovkách v súbore CSV.</translation>
     </message>
     <message>
         <location filename="../sources/properties/projectlanguages.cpp" line="292"/>
         <source>Unterminated quoted cell in the CSV file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Neukončená bunka v úvodzovkách v súbore CSV.</translation>
     </message>
     <message>
         <location filename="../sources/properties/projectlanguages.cpp" line="309"/>
         <source>The CSV file must be UTF-8.</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor CSV musí byť vo formáte UTF-8.</translation>
     </message>
     <message>
         <location filename="../sources/properties/projectlanguages.cpp" line="315"/>
         <source>The CSV file is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor CSV je prázdny.</translation>
     </message>
     <message>
         <location filename="../sources/properties/projectlanguages.cpp" line="320"/>
         <source>The first column of the CSV file must be &quot;Source&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prvý stĺpec súboru CSV musí byť „Source“.</translation>
     </message>
     <message>
         <location filename="../sources/properties/projectlanguages.cpp" line="327"/>
         <source>Ignored column &quot;%1&quot;: not a language code.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignorovaný stĺpec „%1“: nie je jazykovým kódom.</translation>
     </message>
     <message>
         <location filename="../sources/properties/projectlanguages.cpp" line="333"/>
         <source>The CSV file has no language column.</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor CSV neobsahuje stĺpec s jazykom.</translation>
     </message>
     <message>
         <location filename="../sources/properties/projectlanguages.cpp" line="341"/>
         <source>Row %1 has the wrong number of cells and was skipped.</source>
-        <translation type="unfinished"></translation>
+        <translation>Riadok %1 má nesprávny počet buniek a bol vynechaný.</translation>
     </message>
     <message>
         <location filename="../sources/properties/projectlanguages.cpp" line="346"/>
         <source>Row %1: &quot;%2&quot; is not a text of this project and was skipped.</source>
-        <translation type="unfinished"></translation>
+        <translation>Riadok %1: „%2“ nie je textom tohto projektu a bol vynechaný.</translation>
     </message>
     <message>
         <location filename="../sources/properties/projectlanguages.cpp" line="353"/>
         <source>Row %1 (%2): the %{...} fields differ from the source; skipped.</source>
-        <translation type="unfinished"></translation>
+        <translation>Riadok %1 (%2): polia %{...} sa líšia od zdroja; vynechané.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/dimensionitem.cpp" line="1216"/>
         <source>Apply dimension format</source>
-        <translation type="unfinished"></translation>
+        <translation>Použiť formát kótovania</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/dimensionitem.cpp" line="1477"/>
         <source>Move dimension point</source>
-        <translation type="unfinished"></translation>
+        <translation>Presunúť kótovací bod</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/dimensionitem.cpp" line="1505"/>
         <source>Change dimension offset</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmeniť odsadenie kóty</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="110"/>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="168"/>
         <source>Format title block cells</source>
-        <translation type="unfinished"></translation>
+        <translation>Formátovať bunky názvov</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="171"/>
         <source>Only the checked properties are changed. Alignment applies to the whole cell.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmenia sa iba začiarknuté vlastnosti. Zarovnanie sa vzťahuje na celú bunku.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="178"/>
         <source>Selected cells</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrané bunky</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="179"/>
         <source>All text cells</source>
-        <translation type="unfinished"></translation>
+        <translation>Všetky textové bunky</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="181"/>
         <source>Apply to</source>
-        <translation type="unfinished"></translation>
+        <translation>Použiť na</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="184"/>
         <source>Captions and values</source>
-        <translation type="unfinished"></translation>
+        <translation>Popisky a hodnoty</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="185"/>
         <source>Captions only</source>
-        <translation type="unfinished"></translation>
+        <translation>Len titulky</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="186"/>
         <source>Values only</source>
-        <translation type="unfinished"></translation>
+        <translation>Len hodnoty</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="202"/>
         <source>Unchanged</source>
-        <translation type="unfinished"></translation>
+        <translation>Nezmenené</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="203"/>
         <source>On</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapnúť</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="204"/>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Vypnúť</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="211"/>
         <source>Choose font...</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrať písmo...</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="213"/>
         <source>Font family</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodina písiem</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="214"/>
         <source>Font size</source>
-        <translation type="unfinished"></translation>
+        <translation>Veľkosť textu</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="215"/>
         <source>Bold</source>
-        <translation type="unfinished">Tučné</translation>
+        <translation>Tučné</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="216"/>
         <source>Italic</source>
-        <translation type="unfinished">Kurzíva</translation>
+        <translation>Kurzíva</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="231"/>
         <source>Choose colour...</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrať farbu...</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="233"/>
         <source>Text colour</source>
-        <translation type="unfinished"></translation>
+        <translation>Farba textu</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="246"/>
         <source>Opacity</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepriehľadnosť</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="249"/>
         <source>Left</source>
-        <translation type="unfinished">Vľavo</translation>
+        <translation>Vľavo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="250"/>
         <source>Centre</source>
-        <translation type="unfinished"></translation>
+        <translation>Na stred</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="251"/>
         <source>Right</source>
-        <translation type="unfinished">Vpravo</translation>
+        <translation>Vpravo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="252"/>
         <source>Horizontal alignment</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontálne zarovnanie</translation>
     </message>
     <message>
         <location filename="../sources/ui/dimensionpropertiesdialog.cpp" line="39"/>
         <source>Edit dimension properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Upraviť vlastnosti kóty</translation>
     </message>
     <message>
         <location filename="../sources/bridge/addbridgecommand.cpp" line="52"/>
         <source>Drawing a bridge</source>
         <comment>undo command text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vytvoriť mostík</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgeundocommands.cpp" line="52"/>
         <source>Changing a bridge</source>
         <comment>undo command text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upraviť mostík</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgeundocommands.cpp" line="112"/>
         <source>Changing the length of a bridge</source>
         <comment>undo command text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zmeniť dĺžku mostíka</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgeundocommands.cpp" line="179"/>
         <source>Joining a bridge over a sheet reference</source>
         <comment>undo command text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Spojiť mostík cez referenciu listu</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgeundocommands.cpp" line="295"/>
         <source>Changing the terminals of a bridge</source>
         <comment>undo command text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zmena svoriek mostíka</translation>
     </message>
     <message>
         <location filename="../sources/bridge/bridgeundocommands.cpp" line="326"/>
         <source>Deleting a line of a bridge</source>
         <comment>undo command text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Odstránenie línie mostíka</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="49"/>
+        <source>(No action)</source>
+        <comment>spacemouse config: unbound button</comment>
+        <translation>(Žiadna akcia)</translation>
     </message>
 </context>
 <context>
@@ -23281,6 +23451,101 @@ Ostatné polia sa nepoužívajú.</translation>
     </message>
 </context>
 <context>
+    <name>SpaceMouseConfigPage</name>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="71"/>
+        <source>Link a button number on your 3D mouse (SpaceMouse, SpacePilot...) to a QElectroTech action. The button number depends on your device and its driver -- see its documentation, or try the values one by one starting from 0.</source>
+        <comment>spacemouse config page intro</comment>
+        <translation>Priraďte číslo tlačidla na vašej 3D myši (SpaceMouse, SpacePilot...) k určitej akcii v programe QElectroTech. Číslo tlačidla závisí od konkrétneho zariadenia a jeho ovládača – pozrite si dokumentáciu k zariadeniu alebo skúšajte jednotlivé hodnoty postupne, počnúc číslom 0.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="81"/>
+        <source>Button no.</source>
+        <translation>Tlačidlo č.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="81"/>
+        <source>Action</source>
+        <translation>Akcia</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="90"/>
+        <source>Add a link</source>
+        <translation>Pridať odkaz</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="98"/>
+        <source>Buttons</source>
+        <translation>Tlačidlá</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="134"/>
+        <source>Small movements below this threshold are ignored. Raise it if the view drifts when you are not touching the mouse.</source>
+        <translation>Drobné pohyby pod touto hranicou sa ignorujú. Ak sa pohľad posúva, hoci sa myši nedotýkate, túto hranicu zvýšte.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="138"/>
+        <source>Push / pull the cap</source>
+        <translation>Zatlačte / potiahnite uzáver</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="140"/>
+        <source>Twist the cap</source>
+        <translation>Otočiť uzáver</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="145"/>
+        <source>Reverse horizontal movement</source>
+        <translation>Opačný horizontálny pohyb</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="147"/>
+        <source>Reverse vertical movement</source>
+        <translation>Opačný vertikálny pohyb</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="149"/>
+        <source>Reverse zoom</source>
+        <translation>Spätné približovanie</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="153"/>
+        <source>Pan speed:</source>
+        <translation>Rýchlosť otáčania:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="154"/>
+        <source>Zoom speed:</source>
+        <translation>Rýchlosť priblíženia:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="155"/>
+        <source>Zoom by:</source>
+        <translation>Priblížiť pomocou:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="156"/>
+        <source>Dead zone:</source>
+        <translation>Mŕtva zóna:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="161"/>
+        <source>Movement</source>
+        <translation>Pohyb</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="219"/>
+        <source>Remove this link</source>
+        <translation>Odstráňte tento odkaz</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="295"/>
+        <source>3D mouse</source>
+        <comment>configuration page title</comment>
+        <translation>3D myš</translation>
+    </message>
+</context>
+<context>
     <name>StyleEditor</name>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="378"/>
@@ -25313,7 +25578,7 @@ Ostatné polia sa nepoužívajú.</translation>
 <context>
     <name>Terminal</name>
     <message numerus="yes">
-        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="656"/>
+        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="693"/>
         <source>This terminal already has %n conductors, the project&apos;s limit. Add a terminal to connect one more conductor.</source>
         <comment>wire refused by the wires-per-terminal limit</comment>
         <translation>
@@ -25902,7 +26167,7 @@ Ostatné polia sa nepoužívajú.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="87"/>
         <source>Sort the terminals the way the drawing is laid out, and bring the bridges drawn there in with them. What the drawing brought is read-only here: it is changed in the drawing or not at all.</source>
-        <translation type="unfinished"></translation>
+        <translation>Usporiadajte svorky podľa rozloženia na výkrese a doplňte ich o prepojky, ktoré sú na ňom znázornené. Prvky prevzaté z výkresu sú tu určené len na čítanie – možno ich upraviť buď priamo vo výkrese, alebo vôbec.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="233"/>
@@ -25917,14 +26182,16 @@ Ostatné polia sa nepoužívajú.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1076"/>
         <source>A bridge of your own</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastný mostík</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1077"/>
         <source>This bridge is set here only: it is not added to the drawing, where bridges belong.
 
 Set it here anyway?</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento mostík je umiestnený iba tu: nie je pridaný do výkresu, kam mostíky patria.
+
+Napriek tomu ho umiestniť sem?</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1288"/>
@@ -26024,7 +26291,7 @@ Set it here anyway?</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="109"/>
         <source>Assign the free terminals and also move every terminal whose label prefix or plant and location no longer match its strip. Existing strips are never re-sorted. Asks for confirmation.</source>
-        <translation>Priradí voľné svorky a presunie aj každú svorku, ktorej predpona označenia alebo inštalácia a umiestnenie už nezodpovedajú jej svorkovnici. Existujúce svorkovnice sa nikdy nepreusporadúvajú. Vyžaduje potvrdenie.</translation>
+        <translation>Priradí voľné svorky a presunie aj každú svorku, ktorej predpona označenia alebo inštalácia a umiestnenie už nezodpovedajú jej svorkovnici. Existujúce svorkovnice sa nikdy nepresúvajú. Vyžaduje potvrdenie.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="55"/>
@@ -26357,87 +26624,87 @@ Dvojitým kliknutím prejdete na prvok</translation>
         <translation>Rezerva</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="491"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="495"/>
         <source>Position</source>
         <translation>Poloha</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="492"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="496"/>
         <source>Stage</source>
         <translation>Stupeň</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="497"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="501"/>
         <source>Label</source>
         <translation>Štítok</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="499"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="503"/>
         <source>Cross-reference</source>
         <translation>Krížový odkaz</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="500"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="504"/>
         <source>Cable</source>
         <translation>Kábel</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="501"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="505"/>
         <source>Color / wire number of the cable</source>
         <translation>Farba/Číslo vodiča kábla</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="502"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="506"/>
         <source>Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Cieľ</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="503"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="507"/>
         <source>Type</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="504"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="508"/>
         <source>Function</source>
         <translation>Funkcia</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="505"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="509"/>
         <source>led</source>
         <translation>Led</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="506"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="510"/>
         <source>Shield</source>
         <translation>Tienenie</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="507"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="511"/>
         <source>Color</source>
         <translation>Farba</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="508"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="512"/>
         <source>Section (mm²)</source>
         <translation>Prierez (mm²)</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="509"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="513"/>
         <source>Width (mm)</source>
         <translation>Šírka (mm)</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="510"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="514"/>
         <source>Separator plate after</source>
         <translation>Oddeľovacia doska za</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="521"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="525"/>
         <source>Installation, Location and Label (BMK) of the piece the cable lands on, past this strip, one line per field</source>
-        <translation type="unfinished"></translation>
+        <translation>Montáž, umiestnenie a označenie (BMK) prvku, na ktorý kábel za touto svorkovnicou nadväzuje – jeden riadok na pole</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="498"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="502"/>
         <source>Number wire</source>
         <translation>Číslo vodiča</translation>
     </message>
@@ -26445,28 +26712,29 @@ Dvojitým kliknutím prejdete na prvok</translation>
 <context>
     <name>TerminalStripModelDelegate</name>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="963"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="967"/>
         <source>%1 mm</source>
         <translation>%1 mm</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1011"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1022"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1055"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1015"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1026"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1059"/>
         <source>None (default)</source>
         <translation>Žiadny (predvolené)</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1014"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1161"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1018"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1165"/>
         <source>%1 mm²</source>
         <translation>%1 mm²</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1077"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="1081"/>
         <source>One line per field: Installation, Location, Label (BMK).
 Ctrl+Return gives the cell back, Escape throws the text away.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeden riadok na pole: Inštalácia, Umiestnenie, Označenie (BMK).
+Ctrl+Return vráti obsah do bunky, Escape text zahodí.</translation>
     </message>
 </context>
 <context>
@@ -26500,7 +26768,7 @@ Ctrl+Return gives the cell back, Escape throws the text away.</source>
     <message>
         <location filename="../sources/textclearance.cpp" line="167"/>
         <source>Keep texts clear of wires</source>
-        <translation type="unfinished"></translation>
+        <translation>Udržujte texty mimo dosahu káblov</translation>
     </message>
 </context>
 <context>
@@ -26508,85 +26776,85 @@ Ctrl+Return gives the cell back, Escape throws the text away.</source>
     <message>
         <location filename="../sources/ui/textclearancedialog.cpp" line="38"/>
         <source>Keep texts clear of wires</source>
-        <translation type="unfinished"></translation>
+        <translation>Udržujte texty mimo dosahu vodičov</translation>
     </message>
     <message>
         <location filename="../sources/ui/textclearancedialog.cpp" line="42"/>
         <source>Texts that sit on a wire are moved the shortest way that leaves a gap. Texts of wires and texts in a group stay where they are.</source>
-        <translation type="unfinished"></translation>
+        <translation>Texty umiestnené na spojnici sa presúvajú najkratšou možnou cestou, ktorá vytvorí medzeru. Texty na spojniciach a texty v skupine zostávajú na svojom mieste.</translation>
     </message>
     <message>
         <location filename="../sources/ui/textclearancedialog.cpp" line="49"/>
         <source>Selected texts and symbols</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrané texty a symboly</translation>
     </message>
     <message>
         <location filename="../sources/ui/textclearancedialog.cpp" line="50"/>
         <source>This folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento list</translation>
     </message>
     <message>
         <location filename="../sources/ui/textclearancedialog.cpp" line="55"/>
         <source>Look at</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozri sa na</translation>
     </message>
     <message>
         <location filename="../sources/ui/textclearancedialog.cpp" line="66"/>
         <source>Gap to keep</source>
-        <translation type="unfinished"></translation>
+        <translation>Medzera, ktorú treba zachovať</translation>
     </message>
     <message>
         <location filename="../sources/ui/textclearancedialog.cpp" line="67"/>
         <source>Move a text at most</source>
-        <translation type="unfinished"></translation>
+        <translation>Presuňte text maximálne</translation>
     </message>
     <message>
         <location filename="../sources/ui/textclearancedialog.cpp" line="70"/>
         <source>Shortest way</source>
-        <translation type="unfinished"></translation>
+        <translation>Najkratšia cesta</translation>
     </message>
     <message>
         <location filename="../sources/ui/textclearancedialog.cpp" line="71"/>
         <source>Sideways only</source>
-        <translation type="unfinished"></translation>
+        <translation>Len nabok</translation>
     </message>
     <message>
         <location filename="../sources/ui/textclearancedialog.cpp" line="72"/>
         <source>Up or down only</source>
-        <translation type="unfinished"></translation>
+        <translation>Len hore alebo dole</translation>
     </message>
     <message>
         <location filename="../sources/ui/textclearancedialog.cpp" line="73"/>
         <source>Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>Smer</translation>
     </message>
     <message>
         <location filename="../sources/ui/textclearancedialog.cpp" line="80"/>
         <source>Move texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Presunúť texty</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/textclearancedialog.cpp" line="104"/>
         <source>%n text(s) would move.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n text by sa presunul.</numerusform>
+            <numerusform>%n texty by sa presunuli.</numerusform>
+            <numerusform>%n textov by sa presunulo.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/textclearancedialog.cpp" line="106"/>
         <source>%n more sit on a wire with no free place in reach.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ďalší %n je na vedení, pričom v dosahu nie je žiadne voľné miesto.</numerusform>
+            <numerusform>Ďalšie %n sú na vedení, pričom v dosahu nie je žiadne voľné miesto.</numerusform>
+            <numerusform>Ďalších %n sú na vedení, pričom v dosahu nie je žiadne voľné miesto.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/textclearancedialog.cpp" line="108"/>
         <source>There is no text to look at.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie je tu žiadny text, na ktorý by sa dalo pozrieť.</translation>
     </message>
 </context>
 <context>
@@ -26594,22 +26862,22 @@ Ctrl+Return gives the cell back, Escape throws the text away.</source>
     <message>
         <location filename="../sources/ui/textdestinationdialog.cpp" line="39"/>
         <source>Reference destination</source>
-        <translation type="unfinished"></translation>
+        <translation>Cieľ odkazu</translation>
     </message>
     <message>
         <location filename="../sources/ui/textdestinationdialog.cpp" line="43"/>
         <source>Navigation only: this does not make an electrical link. Ctrl-click the text to go to the folio; in a PDF export the text becomes a link to it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Len navigácia: nevytvára sa tým elektrické prepojenie. Kliknite na text so stlačeným klávesom Ctrl a prejdite na daný list; pri exporte do formátu PDF sa text zmení na odkaz na tento list.</translation>
     </message>
     <message>
         <location filename="../sources/ui/textdestinationdialog.cpp" line="56"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>List</translation>
     </message>
     <message>
         <location filename="../sources/ui/textdestinationdialog.cpp" line="59"/>
         <source>Remove the link</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť odkaz</translation>
     </message>
 </context>
 <context>
@@ -27092,7 +27360,7 @@ Používajú sa nasledujúce premenné:
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="445"/>
-        <source>By default, the following variables are available: &lt;ul&gt;&lt;li&gt;%{author}: author of the sheet&lt;/li&gt;&lt;li&gt;%{date}: sheet date&lt;/li&gt;&lt;li&gt;%{title}: sheet title&lt;/li&gt;&lt;li&gt;%{filename}: filename of file&lt;/li&gt; &lt;li&gt;%{plant}: name of the installation (=) in which the sheet is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) where the sheet is located&lt;/li&gt;&lt;li&gt;%{indexrev}: sheet revision index&lt;/li&gt;&lt;li&gt;%{version}: version number&lt;/li&gt;&lt;li&gt;%{folio}: sheet number&lt;/li&gt;&lt;li&gt;%{folio-id}: position of sheet in the project&lt;/li&gt;&lt;li&gt;%{folio-total }: total number of sheets in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous sheet&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the next sheet&lt; / li&gt;&lt;li&gt;%{projecttitle}: title of the project&lt;/li&gt;&lt;li&gt;%{projectpath}: path of the project&lt;/li&gt;&lt;li&gt;%{projectfilename}: filename of the projectfile&lt;/li&gt;&lt;li &gt;%{saveddate}: date of saving the file in local format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: date of saving the file in format DD-MM-YYYY&lt;/li&gt; &lt;li&gt;%{ saveddate-us}: date of saving the file in format YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: time of saving the file&lt;/li&gt;&lt;li&gt;%{savedfilename}: name of the file saved&lt;/li&gt;&lt;li&gt;%{savedfilepath}: path of the saved file&lt;/li&gt;&lt;/ul&gt;</source>
+        <source>By default, the following variables are available: &lt;ul&gt;&lt;li&gt;%{author}: author of the sheet&lt;/li&gt;&lt;li&gt;%{date}: sheet date&lt;/li&gt;&lt;li&gt;%{title}: sheet title&lt;/li&gt;&lt;li&gt;%{filename}: filename of file&lt;/li&gt;&lt;li&gt;%{plant}: name of the installation (=) in which the sheet is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) where the sheet is located&lt;/li&gt;&lt;li&gt;%{indexrev}: sheet revision index&lt;/li&gt;&lt;li&gt;%{version}: version number&lt;/li&gt;&lt;li&gt;%{folio}: sheet number&lt;/li&gt;&lt;li&gt;%{folio-id}: position of sheet in the project&lt;/li&gt;&lt;li&gt;%{folio-total}: total number of sheets in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous sheet&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the next sheet&lt;/li&gt;&lt;li&gt;%{projecttitle}: title of the project&lt;/li&gt;&lt;li&gt;%{projectpath}: path of the project&lt;/li&gt;&lt;li&gt;%{projectfilename}: filename of the projectfile&lt;/li&gt;&lt;li&gt;%{saveddate}: date of saving the file in local format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: date of saving the file in format DD-MM-YYYY&lt;/li&gt;&lt;li&gt;%{saveddate-us}: date of saving the file in format YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: time of saving the file&lt;/li&gt;&lt;li&gt;%{savedfilename}: name of the file saved&lt;/li&gt;&lt;li&gt;%{savedfilepath}: path of the saved file&lt;/li&gt;&lt;/ul&gt;</source>
         <translation>Štandardne sú k dispozícii nasledujúce premenné:&lt;ul&gt;&lt;li&gt;%{author}: autor listu&lt;/li&gt;&lt;li&gt;%{date}: dátum listu&lt;/li&gt;&lt;li&gt;%{title}: názov listu &lt;/li&gt;&lt;li&gt;%{filename}: názov súboru&lt;/li&gt;&lt;li&gt;%{plant}: názov Inštalácia (=), vo ktoré sa list nachází&lt;/li&gt;&lt;li&gt;%{locmach}: názov Umiestnenie (+), kde sa list nachádza&lt;/li&gt;&lt;li&gt;%{indexrev}: zmenové číslo listu&lt;/li&gt;&lt;li&gt;%{version}: číslo Verzia&lt;/li&gt;&lt;li&gt;%{folio}: číslo listu&lt;/li&gt;&lt;li&gt;%{folio-id}: poloha listu v projekte&lt;/li&gt;&lt;li&gt;%{folio-total}: ​​celkový počet listov v projekte&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: číslo predošlého listu&lt;/li&gt;&lt;li&gt;%{next-folio-num}: číslo ďalšieho listu&lt;/li&gt; &lt;li&gt;%{projecttitle}: názov projektu&lt;/li&gt;&lt;li&gt;%{projectpath}: cesta k projektu&lt;/li&gt;&lt;li&gt;%{projectfilename}: názov súboru projektu &lt;/li&gt;&lt;li&gt;%{saveddate}: dátum uloženia v miestnom formáte súboru&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: Dátum uloženia súboru vo formáte DD-MM-RRRR&lt;/li&gt; &lt;li&gt;%{saveddate-us}: Dátum uloženia súboru vo formáte RRRR-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: čas uloženia súboru&lt;/li&gt;&lt;li&gt;%{savedfilename}: názov uloženého súboru&lt;/li&gt;&lt;li&gt;%{savedfilepath}: cesta k uloženému súboru&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
@@ -27601,7 +27869,7 @@ Používajú sa nasledujúce premenné:
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="56"/>
         <source>Lock the toolbars (they can no longer be moved)</source>
-        <translation>Uzamknite panely nástrojov (už ich nebude možné presúvať)</translation>
+        <translation>Uzamknúť panely nástrojov (už ich nebude možné presúvať)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="61"/>
@@ -27808,82 +28076,82 @@ Používajú sa nasledujúce premenné:
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="42"/>
         <source>Relay contact display</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazenie stavu kontaktov relé</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="46"/>
         <source>The contact display keeps its electrical links. For a manual position, Shift-drag the display on the folio, or enter the offset of its top left corner from the symbol.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazenie kontaktu si zachováva svoje elektrické prepojenia. Ak ho chcete umiestniť manuálne, presuňte ho na výkrese pomocou myši so stlačeným klávesom Shift, prípadne zadajte posun jeho ľavého horného rohu vzhľadom na symbol.</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="53"/>
         <source>Cross</source>
-        <translation type="unfinished">Kríž</translation>
+        <translation>Kríž</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="54"/>
         <source>Contact symbols</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontaktné symboly</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="56"/>
         <source>Appearance</source>
-        <translation type="unfinished">Vzhľad</translation>
+        <translation>Vzhľad</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="59"/>
         <source>Under device label</source>
-        <translation type="unfinished"></translation>
+        <translation>Pod štítkom zariadenia</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="60"/>
         <source>Below symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol nižšie</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="61"/>
         <source>Folio footer</source>
-        <translation type="unfinished"></translation>
+        <translation>Päta listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="62"/>
         <source>Manual position</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuálna poloha</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="64"/>
         <source>Position</source>
-        <translation type="unfinished">Poloha</translation>
+        <translation>Poloha</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="74"/>
         <source>Line thickness</source>
-        <translation type="unfinished"></translation>
+        <translation>Hrúbka čiary</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="75"/>
         <source>Gap below symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Medzera pod symbolom</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="78"/>
         <source>Manual offset X</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuálny posun X</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="79"/>
         <source>Manual offset Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuálny posun Y</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="81"/>
         <source>Show defined contacts even when not linked</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť definované kontakty, aj keď nie sú prepojené</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefdisplaydialog.cpp" line="86"/>
         <source>Use the project setting</source>
-        <translation type="unfinished"></translation>
+        <translation>Použiť nastavenie projektu</translation>
     </message>
 </context>
 <context>
@@ -28163,27 +28431,27 @@ Používajú sa nasledujúce premenné:
 <context>
     <name>projectDataBase</name>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="2264"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="2267"/>
         <source>The query is empty.</source>
         <translation>Dopyt je prázdny.</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="2271"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="2274"/>
         <source>Only a single SELECT query is allowed (the &apos;;&apos; character may only appear at the very end).</source>
         <translation>Je povolený iba jeden dotaz SELECT (znak „;“ sa môže objaviť len na samom konci).</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="2282"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="2285"/>
         <source>Only read-only queries (SELECT or WITH ... SELECT) are allowed.</source>
         <translation>Povolené sú iba dopyty určené len na čítanie (SELECT alebo WITH ... SELECT).</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8144"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8187"/>
         <source>Export the internal project database</source>
         <translation>Exportovať vnútornú projektovú databázu</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8151"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8194"/>
         <source>untitled</source>
         <translation>Bez názvu</translation>
     </message>

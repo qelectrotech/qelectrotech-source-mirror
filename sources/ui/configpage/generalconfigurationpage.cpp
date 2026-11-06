@@ -167,7 +167,9 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_use_tab_mode_rb->setChecked(true);
 	else
 		ui->m_use_windows_mode_rb->setChecked(true);
+	ui->m_selection_rectangle_cb->setCurrentIndex(static_cast<int>(DiagramView::selectionRectangle()));
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
+	ui->m_zoom_step_sb->setValue(DiagramView::zoomStep());
 	ui->m_terminal_conductor_color->setChecked(Terminal::takesConductorColor());
 	ui->m_conductor_properties_panel->setChecked(settings.value("diagrameditor/conductor_properties_panel", false).toBool());
 	ui->m_wiring_rules_cb->setChecked(WiringRules::masterEnabled());
@@ -432,7 +434,10 @@ void GeneralConfigurationPage::applyConf()
 	QString view_mode = ui->m_use_tab_mode_rb->isChecked() ? "tabbed" : "windowed";
 	settings.setValue("diagrameditor/viewmode", view_mode) ;
 	settings.setValue("diagrameditor/highlight-integrated-elements", ui->m_highlight_integrated_elements->isChecked());
+	DiagramView::setSelectionRectangle(static_cast<DiagramView::SelectionRectangle>(
+		ui->m_selection_rectangle_cb->currentIndex()));
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
+	DiagramView::setZoomStep(ui->m_zoom_step_sb->value());
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());
 	if (ui->m_terminal_conductor_color->isChecked() != Terminal::takesConductorColor()) {
 		Terminal::setTakesConductorColor(ui->m_terminal_conductor_color->isChecked());
@@ -666,6 +671,7 @@ void GeneralConfigurationPage::fillLang()
 	ui->m_lang_cb->addItem(QET::Icons::pt,		tr("Portuguese"), "pt");
 	ui->m_lang_cb->addItem(QET::Icons::ro,		tr("Romanian"), "ro");
 	ui->m_lang_cb->addItem(QET::Icons::ru,		tr("Russian"), "ru");
+	ui->m_lang_cb->addItem(QET::Icons::sk,		tr("Slovak"), "sk");
 	ui->m_lang_cb->addItem(QET::Icons::sl,		tr("Slovenian"), "sl");
 	ui->m_lang_cb->addItem(QET::Icons::nl,		tr("Dutch"), "nl");
 	ui->m_lang_cb->addItem(QET::Icons::no,		tr("Norwegian"), "nb");
