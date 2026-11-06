@@ -106,8 +106,9 @@ PotentialTypesWidget::PotentialTypesWidget(QWidget *parent) :
 
 void PotentialTypesWidget::setPotentialTypes(const PotentialTypes &types)
 {
-		//A mode this version offers no choice for (a file from a newer
-		//QET) stays as it is until the user picks another
+		//A mode this version offers no choice for (the source mode is
+		//stored, but nothing derives it yet) stays as it is until the
+		//user picks another
 	const int mode = static_cast<int>(types.mode());
 	int index = m_mode_cb->findData(mode);
 	if (index < 0) {

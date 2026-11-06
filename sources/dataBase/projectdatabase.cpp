@@ -1815,61 +1815,16 @@ QString projectDataBase::terminalName(const QUuid &terminal, const QUuid &elemen
 */
 std::optional<QSet<QUuid>> projectDataBase::potentialWires(const QUuid &wire) const
 {
-	using Node = std::pair<QString, QString>;   //element uuid, terminal uuid
-	QHash<QString, std::pair<Node, Node>> ends;
-	QHash<Node, QStringList> wires_at;
-	QHash<QString, QList<Node>> nodes_of;
-	{
-		QSqlQuery query(m_data_base);
-		query.exec(QStringLiteral("SELECT uuid, terminal1_element_uuid, terminal1_uuid, "
-								  "terminal2_element_uuid, terminal2_uuid FROM conductor"));
-		while (query.next()) {
-			const Node a{query.value(1).toString(), query.value(2).toString()};
-			const Node b{query.value(3).toString(), query.value(4).toString()};
-			const QString uuid = query.value(0).toString();
-			ends.insert(uuid, {a, b});
-			for (const Node &n : {a, b}) {
-				wires_at[n] << uuid;
-				if (!nodes_of.value(n.first).contains(n)) nodes_of[n.first] << n;
-			}
-		}
-	}
-	const auto start = ends.constFind(wire.toString());
-	if (start == ends.constEnd()) {
+		//One rule set for one wire and for all of them: potentialGroupsOf()
+	const PotentialGroups groups = potentialGroupsOf(m_data_base);
+	const auto group = groups.group_of.constFind(wire);
+	if (group == groups.group_of.constEnd() || groups.unknown.contains(group.value())) {
 		return std::nullopt;
 	}
-	QHash<QString, ElementData::Type> kinds;
-	{
-		QSqlQuery query(m_data_base);
-		query.exec(QStringLiteral("SELECT uuid, type FROM element"));
-		while (query.next())
-			kinds.insert(query.value(0).toString(), ElementData::typeFromString(query.value(1).toString()));
-	}
 	QSet<QUuid> wires;
-	QSet<Node> seen;
-	QList<Node> todo{start->first, start->second};
-	while (!todo.isEmpty()) {
-		const Node node = todo.takeLast();
-		if (seen.contains(node)) continue;
-		seen.insert(node);
-		for (const QString &w : wires_at.value(node)) {
-			if (wires.contains(QUuid(w))) continue;
-			wires.insert(QUuid(w));
-			const auto e = ends.value(w);
-			todo << e.first << e.second;
-		}
-		const ElementData::Type kind = kinds.value(node.first, ElementData::Simple);
-		if (kind & ElementData::AllReport) {
-			const QList<QUuid> partners = linkedSymbols(QUuid(node.first));
-			if (!partners.isEmpty())
-				todo << nodes_of.value(partners.first().toString());
-		} else if (kind & ElementData::Terminal) {
-			if (QET::infoFlagIsTrue(m_element_information.value(QUuid(node.first))
-									.value(QStringLiteral("potential_isolating")).toString()))
-				return std::nullopt;
-			todo << nodes_of.value(node.first);
-		}
-	}
+	for (auto it = groups.group_of.constBegin() ; it != groups.group_of.constEnd() ; ++it)
+		if (it.value() == group.value())
+			wires.insert(it.key());
 	return wires;
 }
 
@@ -2010,17 +1965,26 @@ projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
 	data that could disagree with the drawing. Run on request only, never on
 	a load, an edit or a paint.
 */
-void projectDataBase::refreshPotentialMembersOf(QSqlDatabase db)
+bool projectDataBase::refreshPotentialMembersOf(QSqlDatabase db)
 {
 	const PotentialGroups groups = potentialGroupsOf(db);
 
 	QSqlQuery query(db);
-	query.exec(QStringLiteral("CREATE TEMP TABLE IF NOT EXISTS potential_member ("
-							  "wire_uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
-							  "potential_id INTEGER NOT NULL, "
-							  "is_unknown INTEGER NOT NULL)"));
-	query.exec(QStringLiteral(
-		"CREATE TEMP VIEW IF NOT EXISTS wire_potential_view AS SELECT "
+	bool ok = true;
+	const auto run = [&](const QString &sql) {
+		if (!query.exec(sql)) {
+			qDebug() << "projectDataBase::refreshPotentialMembersOf" << query.lastError();
+			ok = false;
+		}
+	};
+	run(QStringLiteral("CREATE TEMP TABLE IF NOT EXISTS potential_member ("
+					   "wire_uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+					   "potential_id INTEGER NOT NULL, "
+					   "is_unknown INTEGER NOT NULL)"));
+		//Made again each time, so an old definition never outlives a change
+	run(QStringLiteral("DROP VIEW IF EXISTS temp.wire_potential_view"));
+	run(QStringLiteral(
+		"CREATE TEMP VIEW wire_potential_view AS SELECT "
 		"c.uuid AS wire_uuid, m.potential_id AS potential_id, "
 		"COALESCE(m.is_unknown, 0) AS is_unknown, "
 		"NULLIF(p.value, '') AS potential_type, "
@@ -2029,18 +1993,23 @@ void projectDataBase::refreshPotentialMembersOf(QSqlDatabase db)
 		"LEFT JOIN temp.potential_member m ON m.wire_uuid = c.uuid "
 		"LEFT JOIN main.conductor_properties p ON p.conductor_uuid = c.uuid AND p.name = 'potential_type'"));
 	const bool own_transaction = db.transaction();
-	query.exec(QStringLiteral("DELETE FROM temp.potential_member"));
+	run(QStringLiteral("DELETE FROM temp.potential_member"));
 	query.prepare(QStringLiteral("INSERT INTO temp.potential_member (wire_uuid, potential_id, is_unknown) "
 								 "VALUES (:wire, :potential, :unknown)"));
 	for (auto it = groups.group_of.constBegin() ; it != groups.group_of.constEnd() ; ++it) {
 		query.bindValue(QStringLiteral(":wire"), it.key().toString());
 		query.bindValue(QStringLiteral(":potential"), it.value());
 		query.bindValue(QStringLiteral(":unknown"), groups.unknown.contains(it.value()) ? 1 : 0);
-		query.exec();
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::refreshPotentialMembersOf insert" << query.lastError();
+			ok = false;
+		}
 	}
-	if (own_transaction) {
-		db.commit();
+	if (own_transaction && !db.commit()) {
+		qDebug() << "projectDataBase::refreshPotentialMembersOf commit" << db.lastError();
+		ok = false;
 	}
+	return ok;
 }
 
 void projectDataBase::refreshPotentialMembers()
@@ -2058,10 +2027,13 @@ void projectDataBase::refreshPotentialMembers()
 	out: that is not a mismatch.
 	@return one entry per mismatching potential, in potential order
 */
-QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatchesOf(QSqlDatabase db)
+QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatchesOf(QSqlDatabase db, bool *ok)
 {
 	QList<PotentialMismatch> mismatches;
-	refreshPotentialMembersOf(db);
+	const bool refreshed = refreshPotentialMembersOf(db);
+	if (ok) *ok = refreshed;
+	if (!refreshed)
+		return mismatches;
 
 	QSqlQuery read(db);
 	read.exec(QStringLiteral(

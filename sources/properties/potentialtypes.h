@@ -61,7 +61,8 @@ class PotentialTypes
 			/// it. A mode this QET does not know reads as Off.
 		enum class Mode {Off, PerWire, AtSource};
 		Mode mode() const {return m_mode;}
-		void setMode(Mode mode) {m_mode = mode;}
+			/// Choosing a mode drops a mode name kept from a newer QET
+		void setMode(Mode mode) {m_mode = mode; m_unknown_mode.clear();}
 		static QString modeName(Mode mode);
 		static Mode modeFromName(const QString &name, bool *known = nullptr);
 
@@ -84,6 +85,9 @@ class PotentialTypes
 
 	private:
 		Mode m_mode = Mode::Off;
+			/// The mode name of a file that names one this QET does not
+			/// know: read as Off, written back as it was
+		QString m_unknown_mode;
 		QList<PotentialType> m_types = defaultTypes();
 };
 

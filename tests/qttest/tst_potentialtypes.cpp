@@ -492,7 +492,19 @@ class tst_potentialtypes : public QObject
 			QDomElement root = doc.createElement(QStringLiteral("potentialtypes"));
 			root.setAttribute(QStringLiteral("mode"), QStringLiteral("from-a-newer-qet"));
 			doc.appendChild(root);
-			QCOMPARE(PotentialTypes::fromXml(doc.documentElement()).mode(), PotentialTypes::Mode::Off);
+			const PotentialTypes newer = PotentialTypes::fromXml(doc.documentElement());
+			QCOMPARE(newer.mode(), PotentialTypes::Mode::Off);
+				//Written back as it was, so a re-save does not lose it; a
+				//mode the user then picks replaces it
+			QDomDocument again;
+			again.appendChild(newer.toXml(again));
+			QCOMPARE(again.documentElement().attribute(QStringLiteral("mode")),
+					 QStringLiteral("from-a-newer-qet"));
+			PotentialTypes chosen = newer;
+			chosen.setMode(PotentialTypes::Mode::PerWire);
+			QDomDocument picked;
+			picked.appendChild(chosen.toXml(picked));
+			QCOMPARE(picked.documentElement().attribute(QStringLiteral("mode")), QStringLiteral("wire"));
 			bool known = true;
 			PotentialTypes::modeFromName(QStringLiteral("from-a-newer-qet"), &known);
 			QVERIFY(!known);
@@ -541,6 +553,35 @@ class tst_potentialtypes : public QObject
 				types.setMode(mode);
 				widget.setPotentialTypes(types);
 				QCOMPARE(widget.potentialTypes().mode(), mode);
+			}
+		}
+
+		/// A project saved before the modes holds only enabled="0|1": 1 is
+		/// the per-wire mode; and a file written now still carries enabled,
+		/// for a QET that does not know the modes
+		void fileBeforeTheModesStillReads()
+		{
+			for (const QString &enabled : {QStringLiteral("1"), QStringLiteral("0")}) {
+				QDomDocument doc;
+				QDomElement root = doc.createElement(QStringLiteral("potentialtypes"));
+				root.setAttribute(QStringLiteral("enabled"), enabled);
+				QDomElement type = doc.createElement(QStringLiteral("potentialtype"));
+				type.setAttribute(QStringLiteral("name"), QStringLiteral("N"));
+				root.appendChild(type);
+				doc.appendChild(root);
+				const PotentialTypes read = PotentialTypes::fromXml(doc.documentElement());
+				QCOMPARE(read.mode(), enabled == QLatin1String("1")
+						 ? PotentialTypes::Mode::PerWire : PotentialTypes::Mode::Off);
+				QCOMPARE(read.types().size(), 1);
+			}
+			for (auto mode : {PotentialTypes::Mode::Off, PotentialTypes::Mode::PerWire,
+							  PotentialTypes::Mode::AtSource}) {
+				PotentialTypes types;
+				types.setMode(mode);
+				QDomDocument doc;
+				doc.appendChild(types.toXml(doc));
+				QCOMPARE(doc.documentElement().attribute(QStringLiteral("enabled")).toInt() != 0,
+						 mode != PotentialTypes::Mode::Off);
 			}
 		}
 
