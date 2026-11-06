@@ -138,8 +138,12 @@ private slots:
 	{
 		const QString project = m_dir.filePath(QStringLiteral("moved.qet"));
 		QVERIFY(QFile::copy(m_base, project));
+			//The same symbol every run, in uuid order: elementUuids() comes
+			//in no set order, and a symbol moved past another in the order
+			//a folio is saved in, by position, renumbers the terminals of
+			//both
 		const QString js = script(QStringLiteral("moved.js"), QStringLiteral(
-			"var u = qet.elementUuids(0)[0];\n"
+			"var u = qet.elementUuids(0).sort()[0];\n"
 			"qet.log('MOVED ' + u + ' ' + qet.moveElement(0, u, 10, 0));\n"
 			"qet.save('');\n"));
 		const QString out = run({QStringLiteral("--run"), js, project});
