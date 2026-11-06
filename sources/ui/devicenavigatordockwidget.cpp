@@ -50,11 +50,6 @@ DeviceNavigatorDockWidget::DeviceNavigatorDockWidget(QWidget *parent) :
 	// Icons
 	ui->m_refresh_btn->setIcon(QET::Icons::ViewRefresh);
 
-	// Category Tabs
-	ui->m_category_tabs->addTab(tr("Devices"));
-	ui->m_category_tabs->addTab(tr("Cables"));
-	ui->m_category_tabs->setCurrentIndex(0);
-
 	// View mode Tabs
 	ui->m_view_mode_tabs->addTab(tr("Tree"));
 	ui->m_view_mode_tabs->addTab(tr("List"));
@@ -109,8 +104,6 @@ DeviceNavigatorDockWidget::DeviceNavigatorDockWidget(QWidget *parent) :
 			this, &DeviceNavigatorDockWidget::onFilterComboChanged);
 	connect(ui->m_filter_config_btn, &QToolButton::clicked,
 			this, &DeviceNavigatorDockWidget::onFilterConfigClicked);
-	connect(ui->m_category_tabs, &QTabBar::currentChanged,
-			this, &DeviceNavigatorDockWidget::onCategoryTabChanged);
 	connect(ui->m_view_mode_tabs, &QTabBar::currentChanged,
 			this, &DeviceNavigatorDockWidget::onViewModeTabChanged);
 	connect(ui->m_refresh_btn, &QToolButton::clicked,
@@ -820,8 +813,6 @@ void DeviceNavigatorDockWidget::applyFilters()
 {
 	const QString searchText = ui->m_search_field->text().trimmed();
 	const int filterIdx = ui->m_filter_combo->currentIndex();
-	const int catTab = ui->m_category_tabs->currentIndex();
-	const bool cablesOnly = (catTab == 1);
 
 	DeviceNavigatorFilterScheme activeScheme;
 	if (filterIdx >= 0 && filterIdx < m_filter_schemes.size()) {
@@ -839,8 +830,6 @@ void DeviceNavigatorDockWidget::applyFilters()
 							 bool isReport,
 							 bool isConductorDef,
 							 bool isThumbnail) -> bool {
-		if (cablesOnly && !isCable) return false;
-
 		if (!activeScheme.matches(bmk, structure, isMaster, isSlave, isTerminal, isCable, isReport, isConductorDef, isThumbnail)) {
 			return false;
 		}
@@ -1051,16 +1040,6 @@ void DeviceNavigatorDockWidget::onSearchTextChanged(const QString &text)
  * @param index
  */
 void DeviceNavigatorDockWidget::onFilterComboChanged(int index)
-{
-	Q_UNUSED(index);
-	applyFilters();
-}
-
-/**
- * @brief DeviceNavigatorDockWidget::onCategoryTabChanged
- * @param index
- */
-void DeviceNavigatorDockWidget::onCategoryTabChanged(int index)
 {
 	Q_UNUSED(index);
 	applyFilters();

@@ -107,7 +107,6 @@ class DeviceNavigatorDockWidget : public QDockWidget
 		void onSearchTextChanged(const QString &text);
 		void onFilterComboChanged(int index);
 		void onFilterConfigClicked();
-		void onCategoryTabChanged(int index);
 		void onViewModeTabChanged(int index);
 		void onCustomContextMenu(const QPoint &pos);
 		void onTableContextMenu(const QPoint &pos);
