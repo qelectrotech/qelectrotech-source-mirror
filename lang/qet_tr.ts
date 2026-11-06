@@ -762,7 +762,7 @@
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="131"/>
         <source>Element</source>
         <translatorcomment>I am not sure about this It should be checked</translatorcomment>
-        <translation>Element</translation>
+        <translation type="unfinished">Öğe</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="138"/>
@@ -942,7 +942,7 @@
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="243"/>
         <source>Element</source>
         <translatorcomment>I am not sure about this It should be checked</translatorcomment>
-        <translation>Element</translation>
+        <translation type="unfinished">Öğe</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="311"/>
@@ -6090,7 +6090,7 @@ Devam edilsin mi?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="344"/>
         <source>Master</source>
-        <translation>Master</translation>
+        <translation type="unfinished">Ana</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="345"/>
@@ -6504,7 +6504,7 @@ Devam edilsin mi?</translation>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="436"/>
         <source>Terminals : %1
 </source>
-        <translation>Sınırlar : %1
+        <translation type="unfinished">Klemensler : %1
 </translation>
     </message>
     <message>
@@ -8161,7 +8161,7 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="95"/>
         <source>Allow unzoom beyond the sheet</source>
-        <translation>#Yakınlaştırmanın sayfanın ötesine geçmesine izin ver</translation>
+        <translation type="unfinished">Sayfanın ötesine uzaklaştırmaya izin ver</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="850"/>
@@ -8488,7 +8488,7 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="432"/>
         <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
-        <translation>&amp;Windows&apos;u kullan (QElectroTech&apos;in bir sonraki başlatılmasında uygulanır)</translation>
+        <translation type="unfinished">&amp;Pencereleri kullan (QElectroTech&apos;in bir sonraki başlatılmasında uygulanır)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="439"/>
@@ -14102,7 +14102,7 @@ Mevcut seçenekler:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="443"/>
         <source>Collections</source>
-        <translation>Kolleksiyonlar</translation>
+        <translation type="unfinished">Koleksiyonlar</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="474"/>
@@ -18709,7 +18709,7 @@ bu klasörün çevrilmiş adı okunamadı, bu nedenle yerine klasör adı göste
         <location filename="../sources/editor/graphicspart/partterminal.h" line="110"/>
         <source>Terminal</source>
         <translatorcomment>I am not sure about this. It should be checked.</translatorcomment>
-        <translation>Sınır</translation>
+        <translation type="unfinished">Klemens</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="65"/>
@@ -19051,7 +19051,7 @@ Değiştirmek ister misiniz?</translation>
         <source>Terminal</source>
         <comment>tooltip</comment>
         <translatorcomment>I am not sure about this. It should be checked.</translatorcomment>
-        <translation>Sınır</translation>
+        <translation type="unfinished">Klemens</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimension.cpp" line="38"/>
@@ -21880,7 +21880,7 @@ hiçbir şey değiştirilmedi.</translation>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="103"/>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="133"/>
         <source>Round :</source>
-        <translation>Round :</translation>
+        <translation type="unfinished">Yuvarlatma :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="113"/>
@@ -28399,7 +28399,7 @@ Aşağıdaki değişkenler kullanılabilir:
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="220"/>
         <source>Master</source>
-        <translation>Master</translation>
+        <translation type="unfinished">Ana</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="230"/>
