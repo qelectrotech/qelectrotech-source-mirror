@@ -131,12 +131,14 @@ ProjectPrintWindow::ProjectPrintWindow(QETProject *project, QPrinter *printer, Q
 
 	if (m_printer->outputFormat() == QPrinter::NativeFormat) //Print to physical printer
 	{
+		setWindowTitle(tr("Print preview", "window title"));
 		auto print_button = new QPushButton(QET::Icons::DocumentPrint, tr("Print"));
 		ui->m_button_box->addButton(print_button, QDialogButtonBox::ActionRole);
 		connect(print_button, &QPushButton::clicked, this, &ProjectPrintWindow::print);
 	}
 	else	//export to pdf
 	{
+		setWindowTitle(tr("Export to PDF", "window title"));
 		auto pdf_button = new QPushButton(QET::Icons::PDF, tr("Export in pdf"));
 		ui->m_button_box->addButton(pdf_button, QDialogButtonBox::ActionRole);
 		connect(pdf_button, &QPushButton::clicked, this, &ProjectPrintWindow::exportToPDF);
