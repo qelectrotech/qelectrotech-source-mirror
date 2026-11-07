@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Export the bill of materials as CSV</string>
   </property>
   <layout class="QVBoxLayout" name="m_main_layout">
    <item>
