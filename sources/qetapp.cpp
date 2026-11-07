@@ -129,9 +129,6 @@ QString QETApp::m_user_macros_dir = QString();
 
 QETApp *QETApp::m_qetapp = nullptr;
 
-bool lang_is_set = false;
-QString system_language = QString();
-
 
 /**
 	@brief QETApp::QETApp
@@ -366,19 +363,22 @@ void QETApp::setLanguage(const QString &desired_language) {
 */
 QString QETApp::langFromSetting()
 {
-	if (!lang_is_set)
+		//Read once, as before. The elements collection asks for it from its
+		//loading threads (NamesList::name()), which may make the first call
+		//all at once: a static is filled by one thread, the others wait.
+	static const QString system_language = []()
 	{
 		QSettings settings;
-		system_language = settings.value("lang", "system").toString();
-		if ((system_language == "system") || (system_language == QString())) {
+		QString language = settings.value("lang", "system").toString();
+		if ((language == "system") || (language == QString())) {
 			// Keep the full locale (e.g. "pt_BR"), not just the base language
 			// ("pt"): QET ships regional translations (pt_BR, nl_BE, nl_NL) and
 			// truncating here loaded the wrong one. setLanguage() falls back to
 			// the base language when no regional translation exists.
-			system_language = QLocale::system().name();
+			language = QLocale::system().name();
 		}
-		lang_is_set = true;
-	}
+		return language;
+	}();
 
 	return system_language;
 }
