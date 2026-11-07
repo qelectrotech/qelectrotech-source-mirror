@@ -6110,7 +6110,7 @@ Devam edilsin mi?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="348"/>
         <source>Terminal block</source>
-        <translation>Terminal</translation>
+        <translation type="unfinished">Klemens bloğu</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="349"/>
@@ -22847,7 +22847,7 @@ qet.addText(f, &quot;Metin&quot;, 40, 40);
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="195"/>
         <source>Slave elements</source>
-        <translation>Bağımlı Öğe</translation>
+        <translation type="unfinished">Bağımlı Öğeler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="201"/>
@@ -22857,7 +22857,7 @@ qet.addText(f, &quot;Metin&quot;, 40, 40);
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="207"/>
         <source>Terminal elements</source>
-        <translation>Terminal Öğeler</translation>
+        <translation type="unfinished">Klemens Öğeleri</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="466"/>
