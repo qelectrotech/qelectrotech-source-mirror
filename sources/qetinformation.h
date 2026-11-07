@@ -43,7 +43,10 @@ namespace QETInformation
 		//shown in a text field of its own when the terminal labelling
 		//is drawn split (@sa QETProject::terminalLabelSplit)
 	static QString ELMT_TERMINAL_NUMBER              = "terminal_number";
-		//Not stored: read from the wires on a terminal symbol when drawn
+		//Not stored: read from the wires on a terminal symbol when drawn,
+		//like COND_COLOR and COND_SECTION; each of the three can also be
+		//followed by _N for the wires of the Nth connection point only
+		//(@sa terminalConductorInfoKeys)
 	static QString ELMT_CONDUCTOR_TEXT               = "conductor_text";
 	static QString ELMT_FORMULA                      = "formula";
 	/**
@@ -181,6 +184,11 @@ namespace QETInformation
 
 	QStringList elementInfoKeys();
 	QStringList elementEditorElementInfoKeys();
+	QStringList terminalConductorInfoKeys(int connection_count);
+	bool isTerminalConductorInfo(const QString &info,
+								 QString *property = nullptr,
+								 int *connection = nullptr);
+	bool usesTerminalConductorInfo(const QString &composite_text);
 	QString elementInfoToVar(const QString &info);
 
 	QRegularExpression numericInfoPattern();

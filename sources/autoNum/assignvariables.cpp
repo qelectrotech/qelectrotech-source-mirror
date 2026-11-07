@@ -355,6 +355,19 @@ namespace autonum
 		str.replace("%{conductor_section}", dc.value("conductor_section").toString());
 		str.replace("%{conductor_color}", dc.value("conductor_color").toString());
 		str.replace("%{conductor_text}", dc.value("conductor_text").toString());
+			//The wires of one connection point of a terminal symbol
+			//(@sa QETInformation::terminalConductorInfoKeys)
+		if (str.contains(QLatin1String("%{conductor_"))) {
+			static const QRegularExpression rx(
+						QStringLiteral("%\\{(conductor_(?:text|color|section)_[1-9]\\d*)\\}"));
+			QRegularExpressionMatch match;
+			int from = 0;
+			while ((match = rx.match(str, from)).hasMatch()) {
+				const QString value = dc.value(match.captured(1)).toString();
+				str.replace(match.capturedStart(), match.capturedLength(), value);
+				from = match.capturedStart() + value.size();
+			}
+		}
 
 		str.replace("%{void}", QString());
 
