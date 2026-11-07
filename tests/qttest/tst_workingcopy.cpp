@@ -322,6 +322,10 @@ private slots:
 		QDir().mkpath(QFileInfo(read_only).path());
 		QVERIFY(QFile::copy(m_source, read_only));
 		QVERIFY(QFile::setPermissions(read_only, QFile::ReadOwner | QFile::ReadGroup | QFile::ReadOther));
+		// Run as root, as in a CI container, the file can still be written
+		// whatever its permissions: there is no read-only project to test
+		if (QFileInfo(read_only).isWritable())
+			QSKIP("The read-only file is still writable: run as root");
 		const QString copies = m_dir.filePath(QStringLiteral("readonly-copies"));
 		QDir().mkpath(copies);
 		QProcess proc;
