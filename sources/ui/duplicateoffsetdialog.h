@@ -23,6 +23,7 @@
 
 class QSpinBox;
 class QComboBox;
+class QCheckBox;
 
 /**
 	@brief The DuplicateOffsetDialog class
@@ -57,9 +58,22 @@ class DuplicateOffsetDialog : public QDialog
 			/// once, i.e. whether Ctrl+D can skip the dialog.
 		static bool hasSavedStepOffset();
 
+			/// Whether a copy the last Duplicate made, once moved, has
+			/// the next Duplicate repeat that move (like the duplicate of
+			/// a drawing program) rather than use the spacing above. Off
+			/// unless switched on: Duplicate then behaves as before.
+		bool repeatsMove() const;
+		static bool savedRepeatsMove();
+		static void saveRepeatsMove(bool repeats);
+
+			/// Writes what the dialog shows: the offset and whether a move
+			/// is repeated.
+		void save() const;
+
 	private:
 		QSpinBox  *m_spacing = nullptr;
 		QComboBox *m_direction = nullptr;
+		QCheckBox *m_repeat_move = nullptr;
 };
 
 #endif // DUPLICATEOFFSETDIALOG_H

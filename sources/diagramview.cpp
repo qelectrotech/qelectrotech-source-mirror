@@ -898,15 +898,70 @@ void DiagramView::pasteHere()
 */
 void DiagramView::duplicate(const QPoint &stepOffset)
 {
+	QSettings settings;
+	const int x_grid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int y_grid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
+	duplicateBy(QPointF(stepOffset.x() * x_grid, stepOffset.y() * y_grid), stepOffset);
+}
+
+/**
+	@brief DiagramView::duplicateRepeatingMove
+	Duplicate, repeating the move given to the copy just made, as the
+	duplicate of a drawing program does: when the selection is still the
+	copy the last duplicate() made, the new copy lands as far from it as
+	that copy now lies from its own source. Not moved, the copy lies at
+	the very offset it was given, so the run goes on as it was; moved,
+	the next ones follow at the new spacing. Anything else selected, or a
+	copy put back on its source, or the spacing changed (@p stepOffset is
+	no longer the one the run started from): as duplicate().
+	Only when the setting says so (DuplicateOffsetDialog::savedRepeatsMove()).
+*/
+void DiagramView::duplicateRepeatingMove(const QPoint &stepOffset)
+{
+	QPointF offset;
+	if (repeatedMove(stepOffset, &offset))
+		duplicateBy(offset, stepOffset);
+	else
+		duplicate(stepOffset);
+}
+
+/**
+	@brief DiagramView::repeatedMove
+	@return true if the selection is still the copy the last duplicate()
+	made, from a run started with @p stepOffset, and that copy is not on
+	its source; @p offset is then how far the copy lies from its source.
+*/
+bool DiagramView::repeatedMove(const QPoint &stepOffset, QPointF *offset) const
+{
+	if (!m_last_copy_item || stepOffset != m_last_copy_steps) return false;
+
+	const QList<QGraphicsItem *> selection = m_diagram->selectedItems();
+	const QSet<QGraphicsItem *> selected(selection.cbegin(), selection.cend());
+	const QSet<QGraphicsItem *> copy(m_last_copy.cbegin(), m_last_copy.cend());
+		//The selection is live: m_last_copy_item, one of it, can be read
+	if (selected != copy || !selected.contains(m_last_copy_item)) return false;
+
+	const QPointF moved = m_last_copy_item->pos() - m_last_copy_source;
+	if (moved.isNull()) return false;
+	*offset = moved;
+	return true;
+}
+
+/**
+	@brief DiagramView::duplicateBy
+	The duplicate itself, @p offset in scene units; @p stepOffset is the
+	spacing of the run, remembered with the copy for
+	duplicateRepeatingMove().
+*/
+void DiagramView::duplicateBy(const QPointF &offset, const QPoint &stepOffset)
+{
+	m_last_copy.clear();
+	m_last_copy_item = nullptr;
+
 	if (!isInteractive() || m_diagram->isReadOnly()) return;
 
 	const QList<QGraphicsItem *> selection = m_diagram->selectedItems();
 	if (selection.isEmpty()) return;
-
-	QSettings settings;
-	const int x_grid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
-	const int y_grid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
-	const QPointF offset(stepOffset.x() * x_grid, stepOffset.y() * y_grid);
 
 	// Mirrors copy(), but does not touch the system clipboard: Ctrl+D
 	// should not clobber whatever the user last copied with Ctrl+C.
@@ -927,18 +982,27 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 					   | DiagramContent::Images | DiagramContent::Shapes
 					   | DiagramContent::Tables | DiagramContent::TerminalStrip
 					   | DiagramContent::Dimensions;
-	for (QGraphicsItem *item : pasted.items(movable))
+		//Still on its source here: where the source stands
+	QGraphicsItem *moving = nullptr;
+	QPointF source;
+	for (QGraphicsItem *item : pasted.items(movable)) {
+		if (!moving) { moving = item; source = item->pos(); }
 		item->setPos(item->pos() + offset);
+	}
 		//The new line is stamped beside the original like everything
 		//else -- and only after that, because where each colour label
 		//ends up decides which wire it is going to take
-	for (CablePart *part : std::as_const(cable_pasted))
-		if (part) part->setPos(part->pos() + offset);
+	for (CablePart *part : std::as_const(cable_pasted)) {
+		if (!part) continue;
+		if (!moving) { moving = part; source = part->pos(); }
+		part->setPos(part->pos() + offset);
+	}
 		//A bridge line goes along the same way: moving the line is
 		//moving the line, however the moving is done
 	for (Bridge *bridge : std::as_const(pasted_bridges)) {
 		for (BridgePart *part : BridgePart::allParts()) {
 			if (part && part->bridge() == bridge) {
+				if (!moving) { moving = part; source = part->pos(); }
 				part->setPos(part->pos() + offset);
 			}
 		}
@@ -983,6 +1047,15 @@ if (command) m_diagram->undoStack().push(command);
 		//and the cable fields written out once more.
 	CableCopy::repoint(wired);
 	adjustSceneRect();
+
+		//The copy, as it now stands selected, for the next
+		//duplicateRepeatingMove()
+	if (command && moving) {
+		m_last_copy = m_diagram->selectedItems();
+		m_last_copy_item = moving;
+		m_last_copy_source = source;
+		m_last_copy_steps = stepOffset;
+	}
 }
 
 namespace {

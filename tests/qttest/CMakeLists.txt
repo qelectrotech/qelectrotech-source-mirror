@@ -580,6 +580,8 @@ qet_add_app_test(tst_touchingconductor tst_touchingconductor.cpp)
 qet_add_app_test(tst_symboloutsideframe tst_symboloutsideframe.cpp)
 qet_add_app_test(tst_updateelements tst_updateelements.cpp)
 qet_add_app_test(tst_selectionrectangle tst_selectionrectangle.cpp)
+# Duplicate repeating the move of the copy (a setting), and Ctrl+Shift+D
+qet_add_app_test(tst_duplicaterepeatmove tst_duplicaterepeatmove.cpp)
 qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
 
 # A folio's pictures, decoded in parallel, each come back with its own

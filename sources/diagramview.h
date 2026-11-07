@@ -127,8 +127,20 @@ class DiagramView : public PaletteGraphicsView
 		QTransform m_rulers_transform;
 		qreal m_shown_zoom = 0;
 		bool m_cell_lines_shown = false;
+			/// What the last duplicate() selected, to tell whether the
+			/// selection is still that copy. Compared only, never followed:
+			/// the items may be gone since.
+		QList<QGraphicsItem *> m_last_copy;
+			/// One item of that copy which a move moves, and where the item
+			/// it was copied from stood
+		QGraphicsItem *m_last_copy_item = nullptr;
+		QPointF m_last_copy_source;
+			/// The spacing, in grid steps, the run of copies started from
+		QPoint m_last_copy_steps;
+		void duplicateBy(const QPointF &offset, const QPoint &stepOffset);
+		bool repeatedMove(const QPoint &stepOffset, QPointF *offset) const;
 
-		
+
 	public:
 		QString title() const;
 		void editDiagramProperties();
@@ -285,6 +297,7 @@ class DiagramView : public PaletteGraphicsView
 		void paste(const QPointF & = QPointF(), QClipboard::Mode = QClipboard::Clipboard);
 		void pasteHere();
 		void duplicate(const QPoint &stepOffset);
+		void duplicateRepeatingMove(const QPoint &stepOffset);
 		void buildFolio();
 		void adjustSceneRect();
 		void updateWindowTitle();

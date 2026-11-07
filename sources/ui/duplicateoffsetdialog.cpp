@@ -18,6 +18,7 @@
 #include "duplicateoffsetdialog.h"
 #include <qet.h>
 
+#include <QCheckBox>
 #include <QComboBox>
 #include <QDialogButtonBox>
 #include <QFormLayout>
@@ -30,6 +31,7 @@ namespace {
 	// remembered offset still makes sense if the grid size ever changes.
 	const QString kOffsetXKey = QStringLiteral("diagrameditor/duplicate_offset_x");
 	const QString kOffsetYKey = QStringLiteral("diagrameditor/duplicate_offset_y");
+	const QString kRepeatMoveKey = QStringLiteral("diagrameditor/duplicate_repeats_move");
 }
 
 DuplicateOffsetDialog::DuplicateOffsetDialog(QWidget *parent) :
@@ -68,6 +70,12 @@ DuplicateOffsetDialog::DuplicateOffsetDialog(QWidget *parent) :
 	else if (saved.y() < 0) { direction = Up;    spacing = -saved.y(); }
 	m_spacing->setValue(spacing);
 	m_direction->setCurrentIndex(static_cast<int>(direction));
+
+	m_repeat_move = new QCheckBox(tr("Repeat the move of the copy"), this);
+	m_repeat_move->setToolTip(tr("Once the copy just made is moved, the next "
+								 "Duplicate puts a copy as far from it again"));
+	m_repeat_move->setChecked(savedRepeatsMove());
+	form->addRow(m_repeat_move);
 
 	auto *buttons = new QDialogButtonBox(
 				QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
@@ -114,4 +122,31 @@ bool DuplicateOffsetDialog::hasSavedStepOffset()
 {
 	QSettings settings;
 	return settings.contains(kOffsetXKey) && settings.contains(kOffsetYKey);
+}
+
+bool DuplicateOffsetDialog::repeatsMove() const
+{
+	return m_repeat_move->isChecked();
+}
+
+bool DuplicateOffsetDialog::savedRepeatsMove()
+{
+	QSettings settings;
+	return settings.value(kRepeatMoveKey, false).toBool();
+}
+
+void DuplicateOffsetDialog::saveRepeatsMove(bool repeats)
+{
+	QSettings settings;
+		//Nothing written while it is off, as it is by default
+	if (repeats)
+		settings.setValue(kRepeatMoveKey, true);
+	else
+		settings.remove(kRepeatMoveKey);
+}
+
+void DuplicateOffsetDialog::save() const
+{
+	saveStepOffset(stepOffset());
+	saveRepeatsMove(repeatsMove());
 }
