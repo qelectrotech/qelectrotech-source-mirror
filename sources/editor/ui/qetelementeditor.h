@@ -30,6 +30,8 @@ class ElementView;
 class QListWidget;
 class QStackedWidget;
 class QLabel;
+class QDockWidget;
+class ElementsCollectionWidget;
 
 namespace Ui {
 	class QETElementEditor;
@@ -125,6 +127,8 @@ class QETElementEditor : public QMainWindow
 		void initGui();
 		QWidget *clearToolsDock();
 		void copyAndPasteXml(const QDomDocument &xml_document);
+		void setUpCollectionDock();
+		void pasteElement(const ElementsLocation &location);
 
 	private:
 		Ui::QETElementEditor *ui;
@@ -168,6 +172,11 @@ class QETElementEditor : public QMainWindow
 		QLabel *m_default_informations = nullptr;
 
 		QLabel *m_position_label = nullptr;
+
+			/// The collections, to start a new element from the parts of others
+		QDockWidget *m_collection_dock = nullptr;
+		ElementsCollectionWidget *m_collection_widget = nullptr;
+		bool m_collection_loaded = false;
 
 };
 

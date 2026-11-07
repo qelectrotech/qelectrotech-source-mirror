@@ -55,6 +55,7 @@
 #include <dxf/dxftoelmt.h>
 #include <qet_elementscaler/qet_elementscaler.h>
 #include <editor/UndoCommand/openelmtcommand.h>
+#include <ElementsCollection/elementscollectionwidget.h>
 #include "scaleelementdialog.h"
 #include <toolbarsettings.h>
 
@@ -1420,6 +1421,8 @@ void QETElementEditor::initGui()
 	tabifyDockWidget(ui->m_undo_dock, ui->m_parts_dock);
 	ui->m_parts_dock->setWidget(m_parts_list);
 
+	setUpCollectionDock();
+
 	updateInformations();
 	fillPartsList();
 
@@ -1451,6 +1454,60 @@ void QETElementEditor::initGui()
 	});
 
 	statusBar()->showMessage(tr("Elements Editor", "status bar message"));
+}
+
+/**
+	@brief QETElementEditor::setUpCollectionDock
+	A dock with the collections, hidden until the user shows it (Display
+	menu, or Edit > Paste from > The collections panel). An element
+	double-clicked in it is pasted where the user then clicks; one dragged
+	onto the drawing is pasted where it is dropped (ElementView::dropEvent()).
+	The collections are loaded the first time the dock is shown.
+*/
+void QETElementEditor::setUpCollectionDock()
+{
+	m_collection_dock = new QDockWidget(tr("Collections"), this);
+	m_collection_dock->setObjectName(QStringLiteral("element_editor_collections"));
+	m_collection_dock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	m_collection_widget = new ElementsCollectionWidget(m_collection_dock);
+	m_collection_dock->setWidget(m_collection_widget);
+	addDockWidget(Qt::RightDockWidgetArea, m_collection_dock);
+	tabifyDockWidget(ui->m_parts_dock, m_collection_dock);
+	m_collection_dock->hide();
+
+	connect(m_collection_dock, &QDockWidget::visibilityChanged, this, [this](bool visible) {
+		if (visible && !m_collection_loaded) {
+			m_collection_loaded = true;
+			m_collection_widget->reload();
+		}
+	});
+	connect(m_collection_widget, &ElementsCollectionWidget::insertElementRequested,
+			this, &QETElementEditor::pasteElement);
+
+	auto *show_dock = new QAction(tr("The collections panel"), this);
+	show_dock->setStatusTip(tr("Shows the collections: double-click an element, or drag it "
+							   "onto the drawing, to paste its parts"));
+	connect(show_dock, &QAction::triggered, this, [this]() {
+		m_collection_dock->show();
+		m_collection_dock->raise();
+	});
+	ui->m_paste_from_menu->addAction(show_dock);
+}
+
+/**
+	@brief QETElementEditor::pasteElement
+	Paste the parts of the element at @p location, where the user then
+	clicks. The clipboard is left alone.
+*/
+void QETElementEditor::pasteElement(const ElementsLocation &location)
+{
+		//isElement() also holds for a macro, which has no parts to paste
+	if (m_read_only || !location.collectionPath().endsWith(QLatin1String(".elmt")) || !location.exist()) {
+		return;
+	}
+	QDomDocument document_xml;
+	document_xml.appendChild(document_xml.importNode(location.xml(), true));
+	m_view->pasteInArea(document_xml);
 }
 
 /**
