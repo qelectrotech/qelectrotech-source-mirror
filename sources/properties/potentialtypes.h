@@ -42,6 +42,22 @@ struct PotentialType
 };
 
 /**
+	@brief The PotentialBond struct
+	Two potential types that are joined on purpose, for example 0V and PE at
+	the output of a control power supply. A potential that reaches both is
+	not a mismatch. The order of the two names does not matter.
+*/
+struct PotentialBond
+{
+	QString a;
+	QString b;
+
+	bool joins(const QString &x, const QString &y) const {return (a == x && b == y) || (a == y && b == x);}
+	bool operator==(const PotentialBond &other) const {return joins(other.a, other.b);}
+	bool operator!=(const PotentialBond &other) const {return !(*this == other);}
+};
+
+/**
 	@brief The PotentialTypes class
 	The potential types of a project, and whether the project draws its
 	conductors from them. Off by default: a project saved before this
@@ -74,6 +90,13 @@ class PotentialTypes
 
 		bool find(const QString &name, PotentialType *found = nullptr) const;
 
+			/// The pairs of types joined on purpose. None by default: a
+			/// potential that reaches two types is reported until the
+			/// project says that pair is meant.
+		const QList<PotentialBond> &bonds() const {return m_bonds;}
+		void setBonds(const QList<PotentialBond> &bonds) {m_bonds = bonds;}
+		bool isBond(const QString &x, const QString &y) const;
+
 		static QList<PotentialType> defaultTypes();
 
 		QDomElement toXml(QDomDocument &document) const;
@@ -89,6 +112,7 @@ class PotentialTypes
 			/// know: read as Off, written back as it was
 		QString m_unknown_mode;
 		QList<PotentialType> m_types = defaultTypes();
+		QList<PotentialBond> m_bonds;
 };
 
 #endif // POTENTIALTYPES_H

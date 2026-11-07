@@ -2055,7 +2055,82 @@ QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatch
 			mismatches.last().types << type;
 		mismatches.last().wires << QUuid(read.value(2).toString());
 	}
+
+		//A potential whose types are all joined on purpose, pair by pair
+		//(0V and PE at a control supply), is meant: not a mismatch
+	const QList<PotentialBond> bonds = potentialBondsOf(db);
+	if (!bonds.isEmpty()) {
+		const auto meant = [&bonds](const QStringList &types) {
+			for (int i = 0 ; i < types.size() ; ++i)
+				for (int j = i + 1 ; j < types.size() ; ++j) {
+					bool joined = false;
+					for (const PotentialBond &bond : bonds)
+						if (bond.joins(types.at(i), types.at(j))) joined = true;
+					if (!joined) return false;
+				}
+			return true;
+		};
+		for (int i = mismatches.size() - 1 ; i >= 0 ; --i)
+			if (meant(mismatches.at(i).types))
+				mismatches.removeAt(i);
+	}
+
+		//What was found, as rows a query reads: one per typed wire of each
+		//mismatching potential. TEMP, like the table and view it is made from.
+	QSqlQuery write(db);
+	write.exec(QStringLiteral("CREATE TEMP TABLE IF NOT EXISTS potential_mismatch ("
+							  "potential_id INTEGER NOT NULL, types TEXT NOT NULL, "
+							  "wire_uuid VARCHAR(50) NOT NULL, potential_type TEXT NOT NULL)"));
+	write.exec(QStringLiteral("DELETE FROM temp.potential_mismatch"));
+	if (!mismatches.isEmpty()) {
+		const bool own_transaction = db.transaction();
+		QHash<QUuid, QString> type_of;
+		QSqlQuery types(db);
+		types.exec(QStringLiteral("SELECT wire_uuid, potential_type FROM temp.wire_potential_view "
+								  "WHERE potential_type IS NOT NULL"));
+		while (types.next())
+			type_of.insert(QUuid(types.value(0).toString()), types.value(1).toString());
+		write.prepare(QStringLiteral("INSERT INTO temp.potential_mismatch "
+									 "(potential_id, types, wire_uuid, potential_type) "
+									 "VALUES (:potential, :types, :wire, :type)"));
+		for (const PotentialMismatch &mismatch : std::as_const(mismatches))
+			for (const QUuid &wire : mismatch.wires) {
+				write.bindValue(QStringLiteral(":potential"), mismatch.potential);
+				write.bindValue(QStringLiteral(":types"), mismatch.types.join(QLatin1Char('+')));
+				write.bindValue(QStringLiteral(":wire"), wire.toString());
+				write.bindValue(QStringLiteral(":type"), type_of.value(wire));
+				if (!write.exec()) {
+					qDebug() << "projectDataBase::potentialTypeMismatchesOf" << write.lastError();
+					if (ok) *ok = false;
+				}
+			}
+		if (own_transaction)
+			db.commit();
+	}
 	return mismatches;
+}
+
+/**
+	@return the pairs of potential types the project says are joined on
+	purpose, read from the project_setting rows of @p db alone
+*/
+QList<PotentialBond> projectDataBase::potentialBondsOf(const QSqlDatabase &db)
+{
+	QHash<int, PotentialBond> rows;
+	QSqlQuery query(db);
+	query.exec(QStringLiteral("SELECT ord, name, value FROM project_setting "
+							  "WHERE section = 'potentialtypes/bond' AND name IN ('a', 'b')"));
+	while (query.next()) {
+		PotentialBond &bond = rows[query.value(0).toInt()];
+		(query.value(1).toString() == QLatin1String("a") ? bond.a : bond.b) = query.value(2).toString();
+	}
+	QList<int> order = rows.keys();
+	std::sort(order.begin(), order.end());
+	QList<PotentialBond> bonds;
+	for (int ord : std::as_const(order))
+		if (!rows.value(ord).a.isEmpty() && !rows.value(ord).b.isEmpty())
+			bonds << rows.value(ord);
+	return bonds;
 }
 
 QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatches()
@@ -2537,6 +2612,15 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 	flushCables();
 	flushBridges();
 	flushConductorProperties();
+		//The potential check's TEMP table and views are made when asked for
+		//(POTENTIAL-TYPES-PLAN.md): a query that names one brings them up
+		//to date first, as for the tables above
+	static const QRegularExpression potential_objects(
+			QStringLiteral("\\b(wire_potential_view|potential_member|potential_mismatch)\\b"),
+			QRegularExpression::CaseInsensitiveOption);
+	if (potential_objects.match(query).hasMatch()) {
+		potentialTypeMismatchesOf(m_data_base);
+	}
 
 	// First gate: which kind of statement is acceptable here at all. A
 	// textual check is the right tool for that and the wrong tool for

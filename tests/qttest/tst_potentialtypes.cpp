@@ -326,7 +326,7 @@ class tst_potentialtypes : public QObject
 			QVERIFY(project.write().isOk());
 			QETProject reopened(path);
 			QSqlQuery temp = reopened.dataBase()->newQuery(
-						QStringLiteral("SELECT COUNT(*) FROM sqlite_temp_master WHERE name = 'potential_member'"));
+						QStringLiteral("SELECT COUNT(*) FROM main.sqlite_master WHERE name = 'potential_member'"));
 			QVERIFY(temp.next());
 			QCOMPARE(temp.value(0).toInt(), 0);                         // not carried by the file
 			QCOMPARE(reopened.dataBase()->potentialTypeMismatches().size(), 1);
@@ -583,6 +583,109 @@ class tst_potentialtypes : public QObject
 				QCOMPARE(doc.documentElement().attribute(QStringLiteral("enabled")).toInt() != 0,
 						 mode != PotentialTypes::Mode::Off);
 			}
+		}
+
+		/// A pair of types joined on purpose is kept in the file and the
+		/// database, and a potential whose types are all so joined is not a
+		/// mismatch; one more type not joined to them is
+		/// Saving the settings page must not drop the declared bonds
+		void widgetKeepsDeclaredBonds()
+		{
+			PotentialTypes types;
+			types.setTypes(PotentialTypes::defaultTypes());
+			types.setBonds({{"0V", "PE"}});
+			PotentialTypesWidget widget;
+			widget.setPotentialTypes(types);
+			QCOMPARE(widget.potentialTypes().bonds().size(), 1);
+			QVERIFY(widget.potentialTypes().isBond("PE", "0V"));
+		}
+
+		void declaredBondIsNotAMismatch()
+		{
+			PotentialTypes types;
+			types.setBonds({{QStringLiteral("0V"), QStringLiteral("PE")}});
+			QVERIFY(!types.isDefault());
+			QVERIFY(types.isBond(QStringLiteral("PE"), QStringLiteral("0V")));
+			QVERIFY(types.isBond(QStringLiteral("N"), QStringLiteral("N")));
+			QVERIFY(!types.isBond(QStringLiteral("N"), QStringLiteral("PE")));
+			QDomDocument doc;
+			doc.appendChild(types.toXml(doc));
+			QCOMPARE(PotentialTypes::fromXml(doc.documentElement()), types);
+			QCOMPARE(PotentialTypes::fromXml(doc.documentElement()).bonds().size(), 1);
+
+			const QString path = m_dir.filePath(QStringLiteral("bond.qet"));
+			QVERIFY(QFile::copy(QFINDTESTDATA("fixtures/every_feature.qet"), path));
+			QETProject project(path);
+			projectDataBase *db = project.dataBase();
+			Conductor *c = wire(project);
+			QVERIFY(c);
+			const QSet<Conductor *> others = c->relatedPotentialConductors();
+			QVERIFY(others.size() >= 1);
+			const auto typeOf = [](Conductor *w, const QString &type) {
+				ConductorProperties p = w->properties();
+				p.m_potential_type = type;
+				w->setProperties(p);
+			};
+			typeOf(c, QStringLiteral("0V"));
+			typeOf(*others.constBegin(), QStringLiteral("PE"));
+			QCOMPARE(db->potentialTypeMismatches().size(), 1);          // not declared yet
+
+			project.setPotentialTypes(types);
+			QCOMPARE(projectDataBase::potentialBondsOf(db->database()).size(), 1);
+			QVERIFY(db->potentialTypeMismatches().isEmpty());            // declared: meant
+
+			typeOf(*others.constBegin(), QStringLiteral("N"));           // 0V with N: not joined
+			QCOMPARE(db->potentialTypeMismatches().size(), 1);
+		}
+
+		/// A query that names the check's objects gets them, through the
+		/// project and through a .qetdb read by itself; both give the same rows
+		void mismatchRowsAreQueryable()
+		{
+			const QString path = m_dir.filePath(QStringLiteral("rows.qet"));
+			QVERIFY(QFile::copy(QFINDTESTDATA("fixtures/every_feature.qet"), path));
+			QETProject project(path);
+			projectDataBase *db = project.dataBase();
+			Conductor *c = wire(project);
+			QVERIFY(c);
+			Conductor *other = *c->relatedPotentialConductors().constBegin();
+			ConductorProperties p = c->properties();
+			p.m_potential_type = QStringLiteral("N");
+			c->setProperties(p);
+			p = other->properties();
+			p.m_potential_type = QStringLiteral("PE");
+			other->setProperties(p);
+
+			const QString sql = QStringLiteral("SELECT types, potential_type, wire_uuid FROM potential_mismatch "
+											   "ORDER BY wire_uuid");
+			const auto rows = [](QSqlQuery q) {
+				QStringList list;
+				while (q.next())
+					list << q.value(0).toString() + QLatin1Char('|') + q.value(1).toString()
+							+ QLatin1Char('|') + q.value(2).toString();
+				return list;
+			};
+			QString error;
+			const QStringList from_project = rows(db->newQuery(sql, &error));
+			QVERIFY2(error.isEmpty(), qPrintable(error));
+			QCOMPARE(from_project.size(), 2);
+			QVERIFY(from_project.first().startsWith(QStringLiteral("N+PE|")));
+
+			const QString file = m_dir.filePath(QStringLiteral("rows.qetdb"));
+			QVERIFY(QetDbFile::save(*db, file, &error));
+			const QString name = QStringLiteral("potential_rows");
+			QStringList from_file;
+			{
+				QSqlDatabase f = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), name);
+				f.setDatabaseName(file);
+				f.setConnectOptions(QStringLiteral("QSQLITE_OPEN_READONLY"));
+				QVERIFY(f.open());
+				projectDataBase::potentialTypeMismatchesOf(f);
+				from_file = rows(QSqlQuery(sql, f));
+				f.close();
+			}
+			QSqlDatabase::removeDatabase(name);
+			QCOMPARE(from_file, from_project);
 		}
 
 		void drawnFromTheTypeOnlyWhenOn()

@@ -40,6 +40,7 @@
 #include "../titleblockproperties.h"
 #include "../borderproperties.h"
 #include "../conductorproperties.h"
+#include "../properties/potentialtypes.h"
 #include "conductorlayout.h"
 #include "conductorpath.h"
 #include "elementplacement.h"
@@ -497,6 +498,7 @@ class projectDataBase : public QObject
 			/// do. @p ok, if given, tells whether the TEMP objects could be
 			/// built; false means the answer is not to be trusted.
 		static bool refreshPotentialMembersOf(QSqlDatabase db);
+		static QList<PotentialBond> potentialBondsOf(const QSqlDatabase &db);
 		static QList<PotentialMismatch> potentialTypeMismatchesOf(QSqlDatabase db, bool *ok = nullptr);
 		static QVariant sequenceValue(const autonum::sequentialNumbers &sequence);
 		static autonum::sequentialNumbers sequenceFromValue(const QVariant &value);

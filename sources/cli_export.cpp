@@ -1104,6 +1104,13 @@ int queryDatabaseFile(const QString &file, const QString &sql, Print print, QStr
 					}
 				}
 			}
+				//The potential check's TEMP table and views, made on this
+				//connection when the query names one
+			static const QRegularExpression potential_objects(
+					QStringLiteral("\\b(wire_potential_view|potential_member|potential_mismatch)\\b"),
+					QRegularExpression::CaseInsensitiveOption);
+			if (error->isEmpty() && potential_objects.match(sql).hasMatch())
+				projectDataBase::potentialTypeMismatchesOf(db);
 			if (error->isEmpty() && projectDataBase::isReadOnlySelect(sql, error)) {
 				QSqlQuery query = QETSql::execReadOnly(db, sql, error);
 				if (error->isEmpty() && query.lastError().isValid())

@@ -97,15 +97,30 @@ bool PotentialTypes::find(const QString &name, PotentialType *found) const
 	@return true when the project holds nothing different from a new one,
 	so there is nothing to write
 */
+/**
+	@return true when the project declares @p x and @p y joined on purpose.
+	A type is always joined with itself.
+*/
+bool PotentialTypes::isBond(const QString &x, const QString &y) const
+{
+	if (x == y)
+		return true;
+	for (const PotentialBond &bond : m_bonds)
+		if (bond.joins(x, y))
+			return true;
+	return false;
+}
+
 bool PotentialTypes::isDefault() const
 {
-	return m_mode == Mode::Off && m_unknown_mode.isEmpty() && m_types == defaultTypes();
+	return m_mode == Mode::Off && m_unknown_mode.isEmpty() && m_types == defaultTypes()
+			&& m_bonds.isEmpty();
 }
 
 bool PotentialTypes::operator==(const PotentialTypes &other) const
 {
 	return m_mode == other.m_mode && m_unknown_mode == other.m_unknown_mode
-			&& m_types == other.m_types;
+			&& m_types == other.m_types && m_bonds == other.m_bonds;
 }
 
 QDomElement PotentialTypes::toXml(QDomDocument &document) const
@@ -121,6 +136,12 @@ QDomElement PotentialTypes::toXml(QDomDocument &document) const
 		elmt.setAttribute(QStringLiteral("color"), type.color.name());
 		elmt.setAttribute(QStringLiteral("style"), static_cast<int>(type.style));
 		elmt.setAttribute(QStringLiteral("width"), QString::number(type.width));
+		root.appendChild(elmt);
+	}
+	for (const PotentialBond &bond : m_bonds) {
+		QDomElement elmt = document.createElement(QStringLiteral("bond"));
+		elmt.setAttribute(QStringLiteral("a"), bond.a);
+		elmt.setAttribute(QStringLiteral("b"), bond.b);
 		root.appendChild(elmt);
 	}
 	return root;
@@ -168,6 +189,14 @@ PotentialTypes PotentialTypes::fromXml(const QDomElement &element)
 		const qreal width = elmt.attribute(QStringLiteral("width")).toDouble(&ok);
 		type.width = (ok && width > 0) ? width : 1.0;
 		result.m_types << type;
+	}
+	for (QDomElement elmt = element.firstChildElement(QStringLiteral("bond"));
+		 !elmt.isNull();
+		 elmt = elmt.nextSiblingElement(QStringLiteral("bond")))
+	{
+		const PotentialBond bond{elmt.attribute(QStringLiteral("a")), elmt.attribute(QStringLiteral("b"))};
+		if (!bond.a.isEmpty() && !bond.b.isEmpty() && !result.m_bonds.contains(bond))
+			result.m_bonds << bond;
 	}
 	return result;
 }
