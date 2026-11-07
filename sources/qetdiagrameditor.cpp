@@ -1741,6 +1741,7 @@ void QETDiagramEditor::setUpActions()
 	QAction *select_invert  = m_select_actions_group.addAction( QET::Icons::EditSelectInvert,   tr("Invert selection") );
 	QAction *select_all_conductors  = m_select_actions_group.addAction( QET::Icons::Conductor,      tr("Select all conductors") );
 	QAction *select_all_text_fields = m_select_actions_group.addAction( QET::Icons::PartTextField,  tr("Select all text fields") );
+	m_select_same_symbols = m_select_actions_group.addAction( QET::Icons::Element, tr("Select the same symbols") );
 
 	ShortcutManager::instance().registerAction(select_all, "diagrameditor.select_all", tr("Diagram editors"), QKeySequence::SelectAll);
 	ShortcutManager::instance().registerAction(select_nothing, "diagrameditor.select_nothing", tr("Diagram editors"), QKeySequence::Deselect);
@@ -1749,18 +1750,21 @@ void QETDiagramEditor::setUpActions()
 		//point of registering them is so a user can bind one if they want.
 	ShortcutManager::instance().registerAction(select_all_conductors, "diagrameditor.select_all_conductors", tr("Diagram editors"), QKeySequence());
 	ShortcutManager::instance().registerAction(select_all_text_fields, "diagrameditor.select_all_text_fields", tr("Diagram editors"), QKeySequence());
+	ShortcutManager::instance().registerAction(m_select_same_symbols, "diagrameditor.select_same_symbols", tr("Diagram editors"), QKeySequence());
 
 	select_all    ->setStatusTip( tr("Selects all elements on the sheet", "status bar tip") );
 	select_nothing->setStatusTip( tr("Deselect all elements on the sheet", "status bar tip") );
 	select_invert ->setStatusTip( tr("Inverts selection of elements", "status bar tip") );
 	select_all_conductors ->setStatusTip( tr("Selects all conductors on the sheet, deselects the rest", "status bar tip") );
 	select_all_text_fields->setStatusTip( tr("Selects all text fields on the sheet, deselects the rest", "status bar tip") );
+	m_select_same_symbols ->setStatusTip( tr("Selects every symbol on the sheet of the same kind as a selected one, deselects the rest", "status bar tip") );
 
 	select_all    ->setData("select_all");
 	select_nothing->setData("deselect");
 	select_invert ->setData("invert_selection");
 	select_all_conductors ->setData("select_all_conductors");
 	select_all_text_fields->setData("select_all_text_fields");
+	m_select_same_symbols ->setData("select_same_symbols");
 
 	connect(&m_select_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::selectGroupTriggered);
 
@@ -3261,6 +3265,8 @@ void QETDiagramEditor::selectGroupTriggered(QAction *action)
 		diagram->selectAllConductors();
 	else if (value == "select_all_text_fields")
 		diagram->selectAllTextFields();
+	else if (value == "select_same_symbols")
+		diagram->selectSameSymbols();
 }
 
 /**
@@ -3901,7 +3907,8 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_edit_selection
 			    << m_group_selected_texts
 			    << m_group_selection
-			    << m_ungroup_selection;
+			    << m_ungroup_selection
+			    << m_select_same_symbols;
 		for(QAction *action : action_list)
 			action->setEnabled(false);
 		m_align_actions_group.setEnabled(false);
@@ -3927,6 +3934,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_apply_text_format->setEnabled(!ro && ((selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern()) ||
 	                                        (selected_dimensions_count >= 1 && DimensionFormatPattern::hasPattern())));
 	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
+	m_select_same_symbols->setEnabled(selected_elements_count >= 1);
 	m_text_destination->setEnabled(!ro);
 	m_text_clearance->setEnabled(!ro);
 	m_mirror_horizontal->setEnabled(!ro && selected_elements_count);
