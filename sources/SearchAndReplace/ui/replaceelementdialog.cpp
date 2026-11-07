@@ -32,6 +32,7 @@ ReplaceElementDialog::ReplaceElementDialog(DiagramContext context, QWidget *pare
 	ui(new Ui::ReplaceElementDialog)
 {
 	ui->setupUi(this);
+	setWindowTitle(tr("Replace element properties"));
 	QET::trackDialogGeometry(this);
 	buildWidget();
 	setContext(context);
