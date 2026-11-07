@@ -127,18 +127,21 @@ class DiagramView : public PaletteGraphicsView
 		QTransform m_rulers_transform;
 		qreal m_shown_zoom = 0;
 		bool m_cell_lines_shown = false;
-			/// What the last duplicate() selected, to tell whether the
-			/// selection is still that copy. Compared only, never followed:
-			/// the items may be gone since.
+			/// What the last duplicate selected, to tell when the selection
+			/// is no longer that copy. Compared only, never followed: the
+			/// items may be gone since.
 		QList<QGraphicsItem *> m_last_copy;
-			/// One item of that copy which a move moves, and where the item
-			/// it was copied from stood
-		QGraphicsItem *m_last_copy_item = nullptr;
+			/// One item of that copy which a move moves, where the item it
+			/// was copied from stood, and where the copy landed
+		QPointer<QGraphicsObject> m_last_copy_item;
 		QPointF m_last_copy_source;
-			/// The spacing, in grid steps, the run of copies started from
-		QPoint m_last_copy_steps;
-		void duplicateBy(const QPointF &offset, const QPoint &stepOffset);
-		bool repeatedMove(const QPoint &stepOffset, QPointF *offset) const;
+		QPointF m_last_copy_landed;
+			/// That copy was made by duplicateRepeatingMove(): its move
+			/// is learned
+		bool m_last_copy_learns = false;
+		void duplicateBy(const QPointF &offset, bool learns);
+		void learnCopyMove();
+		void copySelectionChanged();
 
 
 	public:
@@ -297,7 +300,7 @@ class DiagramView : public PaletteGraphicsView
 		void paste(const QPointF & = QPointF(), QClipboard::Mode = QClipboard::Clipboard);
 		void pasteHere();
 		void duplicate(const QPoint &stepOffset);
-		void duplicateRepeatingMove(const QPoint &stepOffset);
+		void duplicateRepeatingMove();
 		void buildFolio();
 		void adjustSceneRect();
 		void updateWindowTitle();

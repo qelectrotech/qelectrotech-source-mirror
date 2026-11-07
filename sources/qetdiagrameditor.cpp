@@ -765,10 +765,10 @@ void QETDiagramEditor::setUpActions()
 			if (dialog.exec() != QDialog::Accepted) return;
 			dialog.save();
 		}
-			//A setting, off by default: once the copy just made is moved,
-			//the next press repeats that move instead of the spacing
+			//A setting, off by default: the offset is then learned from
+			//the move given to the copy just made, not the spacing
 		if (DuplicateOffsetDialog::savedRepeatsMove())
-			dv->duplicateRepeatingMove(DuplicateOffsetDialog::savedStepOffset());
+			dv->duplicateRepeatingMove();
 		else
 			dv->duplicate(DuplicateOffsetDialog::savedStepOffset());
 	});
@@ -788,10 +788,8 @@ void QETDiagramEditor::setUpActions()
 		}
 	});
 
-		//The same dialog, then a duplicate at the spacing just chosen:
-		//changing the spacing in the middle of laying out copies, in one
-		//go. The new spacing starts a new run, whatever the copy was
-		//moved by.
+		//The same dialog, then a duplicate as it now says: changing the
+		//spacing in the middle of laying out copies, in one go.
 	m_duplicate_with_spacing = new QAction(tr("Duplicate with another spacing..."), this);
 	ShortcutManager::instance().registerAction(m_duplicate_with_spacing, "diagrameditor.duplicate_with_spacing", tr("Diagram editors"), Qt::CTRL | Qt::SHIFT | Qt::Key_D);
 	m_duplicate_with_spacing->setStatusTip(tr("Choose the spacing and direction, then duplicate the selection", "status bar tip"));
@@ -801,7 +799,10 @@ void QETDiagramEditor::setUpActions()
 		DuplicateOffsetDialog dialog(this);
 		if (dialog.exec() != QDialog::Accepted) return;
 		dialog.save();
-		dv->duplicate(dialog.stepOffset());
+		if (dialog.repeatsMove())
+			dv->duplicateRepeatingMove();
+		else
+			dv->duplicate(dialog.stepOffset());
 	});
 
 		//Reset conductor path

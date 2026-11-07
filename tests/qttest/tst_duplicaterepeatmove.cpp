@@ -16,10 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 /*
-	Duplicate (Ctrl+D) repeating the move of the copy, a setting off by
-	default: once the copy just made is moved, the next Duplicate puts a
-	copy as far from it again; not moved, the spacing is the one set, as
-	before. Ctrl+Shift+D asks for the spacing, then duplicates. Each press
+	Duplicate (Ctrl+D) learning its offset from the move of the copy, as a
+	drawing program does -- a setting, off by default. Switched on, the
+	spacing of the dialog is set aside: the first copy lands 4 grid steps
+	right and down, and once the copy just made is moved, that move is the
+	offset of the next copies, kept when something else is selected and
+	when QET is closed. Switching the setting on starts afresh. Off,
+	Duplicate is as before. Ctrl+Shift+D asks, then duplicates. Each press
 	is one step of the undo stack.
 */
 #include "qetapptest.h"
@@ -67,9 +70,14 @@ class tst_duplicaterepeatmove : public QObject
 				return nullptr;
 			m_diagram->addItem(element);
 			element->setPos(pos);
+			select(element);
+			return element;
+		}
+
+		void select(Element *element)
+		{
 			m_diagram->clearSelection();
 			element->setSelected(true);
-			return element;
 		}
 
 			/// The one symbol selected, which Duplicate has just made
@@ -95,7 +103,39 @@ class tst_duplicaterepeatmove : public QObject
 			return selected();
 		}
 
+			/// Press @p key on the folio
+		void key(Qt::Key key)
+		{
+			QKeyEvent press(QEvent::KeyPress, key, Qt::NoModifier);
+			QApplication::sendEvent(m_view, &press);
+			QKeyEvent release(QEvent::KeyRelease, key, Qt::NoModifier);
+			QApplication::sendEvent(m_view, &release);
+		}
+
 		QPointF grid() const { return QPointF(Diagram::xGrid, Diagram::yGrid); }
+		QPointF firstOffset() const { return 4 * grid(); }
+
+		QPointF learned()
+		{
+			QPointF offset;
+			return DuplicateOffsetDialog::learnedOffset(&offset) ? offset : QPointF();
+		}
+
+			/// Answer the dialog Ctrl+Shift+D opens
+		void answerDialog(bool *answered, int spacing, int direction, bool repeat)
+		{
+			QTimer::singleShot(0, this, [=]() {
+				auto *dialog = qobject_cast<DuplicateOffsetDialog *>(QApplication::activeModalWidget());
+				if (!dialog) return;
+				dialog->findChild<QCheckBox *>()->setChecked(repeat);
+				if (!repeat) {
+					dialog->findChild<QSpinBox *>()->setValue(spacing);
+					dialog->findChild<QComboBox *>()->setCurrentIndex(direction);
+				}
+				*answered = true;
+				dialog->accept();
+			});
+		}
 
 	private slots:
 		void initTestCase()
@@ -115,13 +155,23 @@ class tst_duplicaterepeatmove : public QObject
 			DuplicateOffsetDialog::saveStepOffset(QPoint(1, 0));
 		}
 
-			//Off by default, and nothing written while it is
+			//Off by default, and nothing written while it is; checked, the
+			//spacing is set aside, not cleared
 		void offByDefault()
 		{
 			QVERIFY(!DuplicateOffsetDialog::savedRepeatsMove());
 			DuplicateOffsetDialog dialog;
 			QVERIFY(!dialog.repeatsMove());
-			QVERIFY(!dialog.findChild<QCheckBox *>()->isChecked());
+			auto *box = dialog.findChild<QCheckBox *>();
+			auto *spacing = dialog.findChild<QSpinBox *>();
+			auto *direction = dialog.findChild<QComboBox *>();
+			QVERIFY(!box->isChecked());
+			QVERIFY(spacing->isEnabled() && direction->isEnabled());
+			box->setChecked(true);
+			QVERIFY(!spacing->isEnabled() && !direction->isEnabled());
+			QCOMPARE(dialog.stepOffset(), QPoint(1, 0));
+			box->setChecked(false);
+			QVERIFY(spacing->isEnabled() && direction->isEnabled());
 			dialog.save();
 			QVERIFY(!QSettings().contains(QStringLiteral("diagrameditor/duplicate_repeats_move")));
 		}
@@ -138,122 +188,155 @@ class tst_duplicaterepeatmove : public QObject
 			Element *next = duplicate();
 			QVERIFY(next && next != copy);
 			QCOMPARE(next->pos(), copy->pos() + QPointF(grid().x(), 0));
+			place(QPointF(200, 1500)); // another selection: still nothing learned
+			QVERIFY(learned().isNull());
 		}
 
-			//On: not moved, as before; moved, the move is repeated, and the
-			//run goes on at the new spacing
-		void onRepeatsTheMove()
+			//Switched on: what was learned before is forgotten, the first
+			//copy lands 4 grid steps right and down
+		void switchingOnStartsAfresh()
 		{
-			DuplicateOffsetDialog::saveRepeatsMove(true);
+			DuplicateOffsetDialog::saveLearnedOffset(QPointF(70, 0));
+			DuplicateOffsetDialog dialog;
+			dialog.findChild<QCheckBox *>()->setChecked(true);
+			dialog.save();
 			QVERIFY(DuplicateOffsetDialog::savedRepeatsMove());
+			QVERIFY(learned().isNull());
 
 			Element *original = place(QPointF(400, 200));
 			Element *a = duplicate();
 			QVERIFY(a);
-			QCOMPARE(a->pos(), QPointF(400 + grid().x(), 200));
-			Element *b = duplicate();
-			QVERIFY(b);
-			QCOMPARE(b->pos(), a->pos() + QPointF(grid().x(), 0));
-
-			b->setPos(b->pos() + QPointF(0, 5 * grid().y()));
-			const QPointF spacing = b->pos() - a->pos();
-			Element *c = duplicate();
-			QVERIFY(c);
-			QCOMPARE(c->pos(), b->pos() + spacing);
-			Element *d = duplicate();
-			QVERIFY(d);
-			QCOMPARE(d->pos(), c->pos() + spacing);
-
-				//One press, one undo: only the last copy goes
-			m_diagram->undoStack().undo();
-			QVERIFY(!d->scene());
-			QVERIFY(c->scene() && b->scene() && a->scene() && original->scene());
-			m_diagram->undoStack().redo();
-			QVERIFY(d->scene());
+			QCOMPARE(a->pos(), original->pos() + firstOffset());
+				//Saved again as it is: what was learned stays
+			DuplicateOffsetDialog::saveLearnedOffset(QPointF(70, 0));
+			DuplicateOffsetDialog again;
+			QVERIFY(again.repeatsMove());
+			again.save();
+			QCOMPARE(learned(), QPointF(70, 0));
 		}
 
-			//A move with the arrow keys is repeated too
+			//The move of the copy is the offset of the next ones, which
+			//go on at it unmoved; one press, one undo
+		void learnsTheMove()
+		{
+			Element *original = place(QPointF(200, 2000));
+			DuplicateOffsetDialog::forgetLearnedOffset();
+			Element *a = duplicate();
+			QVERIFY(a);
+			QCOMPARE(a->pos(), original->pos() + firstOffset());
+			a->setPos(original->pos() + QPointF(6 * grid().x(), 0));
+			Element *b = duplicate();
+			QVERIFY(b);
+			QCOMPARE(b->pos(), a->pos() + QPointF(6 * grid().x(), 0));
+			QCOMPARE(learned(), QPointF(6 * grid().x(), 0));
+			Element *c = duplicate();
+			QVERIFY(c);
+			QCOMPARE(c->pos(), b->pos() + QPointF(6 * grid().x(), 0));
+
+			m_diagram->undoStack().undo();
+			QVERIFY(!c->scene());
+			QVERIFY(b->scene() && a->scene() && original->scene());
+			m_diagram->undoStack().redo();
+			QVERIFY(c->scene());
+		}
+
+			//Learned as soon as something else is selected, and kept for
+			//that other symbol
+		void keptForAnotherSelection()
+		{
+			Element *x = place(QPointF(200, 2500));
+			DuplicateOffsetDialog::forgetLearnedOffset();
+			Element *other = place(QPointF(800, 2500));
+			select(x);
+			Element *a = duplicate();
+			QVERIFY(a);
+			a->setPos(x->pos() + QPointF(0, 8 * grid().y()));
+			QVERIFY(learned().isNull());
+			select(other);
+			QCOMPARE(learned(), QPointF(0, 8 * grid().y()));
+			Element *b = duplicate();
+			QVERIFY(b);
+			QCOMPARE(b->pos(), other->pos() + QPointF(0, 8 * grid().y()));
+		}
+
+			//Moves of anything but the copy just made teach nothing, nor
+			//does a copy put back on its source
+		void otherMovesAreNotLearned()
+		{
+			Element *x = place(QPointF(200, 3500));
+			DuplicateOffsetDialog::saveLearnedOffset(QPointF(0, 80));
+			Element *a = duplicate();
+			QVERIFY(a);
+			QCOMPARE(a->pos(), x->pos() + QPointF(0, 80));
+				//The original moved
+			select(x);
+			x->setPos(x->pos() + QPointF(30, 0));
+			Element *b = duplicate();
+			QVERIFY(b);
+			QCOMPARE(b->pos(), x->pos() + QPointF(0, 80));
+			QCOMPARE(learned(), QPointF(0, 80));
+				//The copy before the last one moved: forgotten already
+			a->setPos(a->pos() + QPointF(50, 0));
+			select(a);
+			QCOMPARE(learned(), QPointF(0, 80));
+				//The last copy put back on its source
+			Element *c = duplicate();
+			QVERIFY(c);
+			c->setPos(a->pos());
+			select(x);
+			QCOMPARE(learned(), QPointF(0, 80));
+		}
+
+			//A move with the arrow keys is learned too
 		void arrowKeys()
 		{
-			Element *original = place(QPointF(200, 500));
+			Element *original = place(QPointF(200, 4500));
+			DuplicateOffsetDialog::forgetLearnedOffset();
 			Element *a = duplicate();
 			QVERIFY(a);
 			const QPointF before = a->pos();
-			QKeyEvent press(QEvent::KeyPress, Qt::Key_Down, Qt::NoModifier);
-			QApplication::sendEvent(m_view, &press);
-			QKeyEvent release(QEvent::KeyRelease, Qt::Key_Down, Qt::NoModifier);
-			QApplication::sendEvent(m_view, &release);
+			key(Qt::Key_Down);
 			QVERIFY2(a->pos() != before, "the arrow key moved the copy");
 			const QPointF spacing = a->pos() - original->pos();
 			Element *b = duplicate();
 			QVERIFY(b);
 			QCOMPARE(b->pos(), a->pos() + spacing);
+			QCOMPARE(learned(), spacing);
 		}
 
-			//Something else selected, a copy put back on its source, or
-			//another spacing: the spacing set
-		void otherwiseTheSpacing()
-		{
-			Element *original = place(QPointF(200, 800));
-			Element *a = duplicate();
-			QVERIFY(a);
-			a->setPos(a->pos() + QPointF(0, 3 * grid().y()));
-
-				//Another selection: the original again
-			m_diagram->clearSelection();
-			original->setSelected(true);
-			Element *b = duplicate();
-			QVERIFY(b);
-			QCOMPARE(b->pos(), original->pos() + QPointF(grid().x(), 0));
-
-				//Put back on its source
-			b->setPos(original->pos());
-			Element *c = duplicate();
-			QVERIFY(c);
-			QCOMPARE(c->pos(), b->pos() + QPointF(grid().x(), 0));
-
-				//Moved, but the spacing changed since
-			c->setPos(c->pos() + QPointF(0, 4 * grid().y()));
-			DuplicateOffsetDialog::saveStepOffset(QPoint(0, 2));
-			Element *d = duplicate();
-			QVERIFY(d);
-			QCOMPARE(d->pos(), c->pos() + QPointF(0, 2 * grid().y()));
-			DuplicateOffsetDialog::saveStepOffset(QPoint(1, 0));
-		}
-
-			//Ctrl+Shift+D: the dialog, then a duplicate at the spacing
-			//chosen, whatever the copy was moved by; one undo step
+			//Ctrl+Shift+D: the dialog, then a duplicate as it says; one
+			//undo step
 		void ctrlShiftD()
 		{
 			QAction *with_spacing = actionFor(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_D));
 			QVERIFY(with_spacing);
-			Element *original = place(QPointF(700, 200));
-			Element *a = duplicate();
-			QVERIFY(a);
-			a->setPos(a->pos() + QPointF(0, 7 * grid().y()));
+			Element *original = place(QPointF(1200, 200));
 
+				//Unchecked: the spacing chosen
 			bool answered = false;
-			QTimer::singleShot(0, this, [&answered]() {
-				auto *dialog = qobject_cast<DuplicateOffsetDialog *>(QApplication::activeModalWidget());
-				if (!dialog) return;
-				dialog->findChild<QSpinBox *>()->setValue(3);
-				dialog->findChild<QComboBox *>()->setCurrentIndex(DuplicateOffsetDialog::Down);
-				answered = true;
-				dialog->accept();
-			});
-			const int steps = m_diagram->undoStack().count();
+			answerDialog(&answered, 3, DuplicateOffsetDialog::Down, false);
+			int steps = m_diagram->undoStack().count();
+			with_spacing->trigger();
+			QVERIFY(answered);
+			QCOMPARE(m_diagram->undoStack().count(), steps + 1);
+			Element *a = selected();
+			QVERIFY(a && a != original);
+			QCOMPARE(a->pos(), original->pos() + QPointF(0, 3 * grid().y()));
+			QCOMPARE(DuplicateOffsetDialog::savedStepOffset(), QPoint(0, 3));
+			QVERIFY(!DuplicateOffsetDialog::savedRepeatsMove());
+
+				//Checked there: afresh
+			DuplicateOffsetDialog::saveLearnedOffset(QPointF(70, 0));
+			answered = false;
+			answerDialog(&answered, 0, 0, true);
+			steps = m_diagram->undoStack().count();
 			with_spacing->trigger();
 			QVERIFY(answered);
 			QCOMPARE(m_diagram->undoStack().count(), steps + 1);
 			Element *b = selected();
-			QVERIFY(b && b != a && b != original);
-			QCOMPARE(b->pos(), a->pos() + QPointF(0, 3 * grid().y()));
-			QCOMPARE(DuplicateOffsetDialog::savedStepOffset(), QPoint(0, 3));
-
-				//Then Ctrl+D goes on at that spacing
-			Element *c = duplicate();
-			QVERIFY(c);
-			QCOMPARE(c->pos(), b->pos() + QPointF(0, 3 * grid().y()));
+			QVERIFY(b && b != a);
+			QCOMPARE(b->pos(), a->pos() + firstOffset());
+			QVERIFY(DuplicateOffsetDialog::savedRepeatsMove());
 			DuplicateOffsetDialog::saveStepOffset(QPoint(1, 0));
 		}
 
@@ -262,7 +345,7 @@ class tst_duplicaterepeatmove : public QObject
 		{
 			DuplicateOffsetDialog::saveRepeatsMove(false);
 			QVERIFY(!QSettings().contains(QStringLiteral("diagrameditor/duplicate_repeats_move")));
-			place(QPointF(700, 800));
+			place(QPointF(1200, 1500));
 			Element *a = duplicate();
 			QVERIFY(a);
 			a->setPos(a->pos() + QPointF(0, 2 * grid().y()));

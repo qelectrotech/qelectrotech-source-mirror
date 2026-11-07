@@ -4915,8 +4915,8 @@ Maintenir Maj et faire glisser pour déplacer ce texte seul</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="74"/>
-        <source>Once the copy just made is moved, the next Duplicate puts a copy as far from it again</source>
-        <translation>Si la copie qui vient d&apos;être faite est déplacée, la duplication suivante pose une nouvelle copie à la même distance de celle-ci</translation>
+        <source>The first copy lands 4 grid steps right and down; move it, and the next Duplicate repeats that move. The spacing above is then not used.</source>
+        <translation>La première copie est posée 4 pas de grille à droite et en bas ; déplacez-la, et la duplication suivante répète ce déplacement. L&apos;espacement ci-dessus n&apos;est alors pas utilisé.</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="50"/>
