@@ -1216,7 +1216,13 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 		m_press_places = false;
 		m_dragged_element = nullptr;
 	}
-	moveCrosshair(e->pos());
+		//Qt repeats the last mouse move when the folio changes under a
+		//still mouse: after the arrow keys that must not take the
+		//crosshair back from the moved selection to the mouse
+	if (m_crosshair_held_at && *m_crosshair_held_at != QCursor::pos())
+		m_crosshair_held_at.reset();
+	if (!m_crosshair_held_at)
+		moveCrosshair(e->pos());
 		//The symbol moves after the crosshair did: put the crosshair on
 		//its terminal again once it stands where it goes
 	const auto follow_symbol = qScopeGuard([this, e] {
@@ -2589,6 +2595,7 @@ void DiagramView::crosshairOnMovedSelection()
 	m_caught_handle = nullptr;
 	m_crosshair_pos = pos;
 	m_crosshair_visible = true;
+	m_crosshair_held_at = QCursor::pos();
 	viewport()->update(crosshairArea(m_crosshair_pos));
 }
 

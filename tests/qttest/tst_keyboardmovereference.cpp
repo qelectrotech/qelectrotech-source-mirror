@@ -30,7 +30,9 @@
 #include "foliogrid.h"
 #include "qetproject.h"
 
+#include <QCursor>
 #include <QKeyEvent>
+#include <QMouseEvent>
 
 class tst_keyboardmovereference : public QObject
 {
@@ -61,6 +63,13 @@ class tst_keyboardmovereference : public QObject
 			QApplication::sendEvent(m_view, &press);
 			QKeyEvent release(QEvent::KeyRelease, key, Qt::NoModifier);
 			QApplication::sendEvent(m_view, &release);
+		}
+
+		void move(const QPoint &at)
+		{
+			QMouseEvent event(QEvent::MouseMove, at, m_view->viewport()->mapToGlobal(at),
+					  Qt::NoButton, Qt::NoButton, Qt::NoModifier);
+			QApplication::sendEvent(m_view->viewport(), &event);
 		}
 
 	private slots:
@@ -115,6 +124,23 @@ class tst_keyboardmovereference : public QObject
 			key(Qt::Key_Down);
 			QCOMPARE(m_view->crosshairPos(), m_text->sceneBoundingRect().center());
 			key(Qt::Key_Up);
+		}
+
+			//A still mouse leaves it there; a moved mouse takes it back
+		void stillMouse()
+		{
+			m_diagram->clearSelection();
+			m_left->setSelected(true);
+			const QPoint mouse = m_view->mapFromScene(QPointF(500, 400));
+			QCursor::setPos(m_view->viewport()->mapToGlobal(mouse));
+			key(Qt::Key_Right);
+			const QPointF held = m_view->crosshairPos();
+			move(mouse);
+			QCOMPARE(m_view->crosshairPos(), held);
+			QCursor::setPos(m_view->viewport()->mapToGlobal(mouse + QPoint(30, 0)));
+			move(mouse + QPoint(30, 0));
+			QVERIFY(m_view->crosshairPos() != held);
+			key(Qt::Key_Left);
 		}
 
 			//By the grid step when set so
