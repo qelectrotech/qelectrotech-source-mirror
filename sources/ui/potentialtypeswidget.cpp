@@ -46,11 +46,14 @@ namespace {
 PotentialTypesWidget::PotentialTypesWidget(QWidget *parent) :
 	QWidget(parent)
 {
-	m_enabled_cb = new QCheckBox(tr("Draw conductors from their potential type"), this);
-	m_enabled_cb->setToolTip(tr("When on, a conductor whose potential has a type is drawn in "
-								"that type's colour, line style and width. The style stored "
-								"on the conductor is kept, and used again when this is off "
-								"or the conductor has no type."));
+	m_mode_cb = new QComboBox(this);
+	m_mode_cb->addItem(tr("Draw conductors from their own style"), static_cast<int>(PotentialTypes::Mode::Off));
+	m_mode_cb->addItem(tr("Draw conductors from their potential type, chosen on each conductor"),
+					   static_cast<int>(PotentialTypes::Mode::PerWire));
+	m_mode_cb->setToolTip(tr("When a type is used, a conductor whose potential has a type is "
+							 "drawn in that type's colour, line style and width. The style "
+							 "stored on the conductor is kept, and used again when this is "
+							 "off or the conductor has no type."));
 
 	QLabel *help = new QLabel(tr("Choose a conductor's type in its properties. The type applies "
 								 "to every conductor on the same potential."), this);
@@ -78,7 +81,7 @@ PotentialTypesWidget::PotentialTypesWidget(QWidget *parent) :
 	buttons->addWidget(reset_pb);
 
 	QVBoxLayout *layout = new QVBoxLayout(this);
-	layout->addWidget(m_enabled_cb);
+	layout->addWidget(m_mode_cb);
 	layout->addWidget(help);
 	layout->addWidget(m_table);
 	layout->addLayout(buttons);
@@ -103,7 +106,16 @@ PotentialTypesWidget::PotentialTypesWidget(QWidget *parent) :
 
 void PotentialTypesWidget::setPotentialTypes(const PotentialTypes &types)
 {
-	m_enabled_cb->setChecked(types.isEnabled());
+		//A mode this version offers no choice for (the source mode is
+		//stored, but nothing derives it yet) stays as it is until the
+		//user picks another
+	const int mode = static_cast<int>(types.mode());
+	int index = m_mode_cb->findData(mode);
+	if (index < 0) {
+		m_mode_cb->addItem(tr("Set where the potential starts (not available in this version)"), mode);
+		index = m_mode_cb->count() - 1;
+	}
+	m_mode_cb->setCurrentIndex(index);
 	setTypes(types.types());
 }
 
@@ -178,7 +190,7 @@ PotentialTypes PotentialTypesWidget::potentialTypes() const
 	}
 
 	PotentialTypes result;
-	result.setEnabled(m_enabled_cb->isChecked());
+	result.setMode(static_cast<PotentialTypes::Mode>(m_mode_cb->currentData().toInt()));
 	result.setTypes(types);
 	return result;
 }

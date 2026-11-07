@@ -53,8 +53,21 @@ struct PotentialType
 class PotentialTypes
 {
 	public:
-		bool isEnabled() const {return m_enabled;}
-		void setEnabled(bool enabled) {m_enabled = enabled;}
+			/// How a conductor gets the type it is drawn from. Off: never.
+			/// PerWire: the type chosen on the conductor, spread over its
+			/// potential. AtSource: the type set where the potential starts,
+			/// inherited through the devices; needs the internal connections
+			/// of #1500, so until then it draws as PerWire and nothing offers
+			/// it. A mode this QET does not know reads as Off.
+		enum class Mode {Off, PerWire, AtSource};
+		Mode mode() const {return m_mode;}
+			/// Choosing a mode drops a mode name kept from a newer QET
+		void setMode(Mode mode) {m_mode = mode; m_unknown_mode.clear();}
+		static QString modeName(Mode mode);
+		static Mode modeFromName(const QString &name, bool *known = nullptr);
+
+		bool isEnabled() const {return m_mode != Mode::Off;}
+		void setEnabled(bool enabled) {m_mode = enabled ? Mode::PerWire : Mode::Off;}
 
 		const QList<PotentialType> &types() const {return m_types;}
 		void setTypes(const QList<PotentialType> &types) {m_types = types;}
@@ -71,7 +84,10 @@ class PotentialTypes
 		bool operator!=(const PotentialTypes &other) const {return !(*this == other);}
 
 	private:
-		bool m_enabled = false;
+		Mode m_mode = Mode::Off;
+			/// The mode name of a file that names one this QET does not
+			/// know: read as Off, written back as it was
+		QString m_unknown_mode;
 		QList<PotentialType> m_types = defaultTypes();
 };
 

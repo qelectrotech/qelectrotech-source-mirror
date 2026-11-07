@@ -3290,6 +3290,10 @@ QString Element::infoForDisplay(const QString &info_name)
 	if (info_name == QETInformation::ELMT_CONDUCTOR_TEXT) {
 		return conductorTextForDisplay();
 	}
+	if (m_data.m_type == ElementData::Terminal
+		&& QETInformation::isTerminalConductorInfo(info_name)) {
+		return conductorInfoForDisplay(info_name);
+	}
 
 	return m_data.m_informations.value(info_name).toString();
 }
@@ -3302,20 +3306,44 @@ QString Element::infoForDisplay(const QString &info_name)
 */
 QString Element::conductorTextForDisplay()
 {
-	if (m_data.m_type != ElementData::Terminal) {
+	return conductorInfoForDisplay(QETInformation::ELMT_CONDUCTOR_TEXT);
+}
+
+/**
+	@brief Element::conductorInfoForDisplay
+	@param info_name : one of QETInformation::terminalConductorInfoKeys()
+	@return the distinct values of the wire property @p info_name reads,
+	on every terminal of this terminal symbol or only on the connection
+	point it names, in the order of its terminals and joined with a
+	space; empty for any other symbol. Display only, nothing is stored.
+*/
+QString Element::conductorInfoForDisplay(const QString &info_name)
+{
+	QString property;
+	int connection = 0;
+	if (m_data.m_type != ElementData::Terminal
+		|| !QETInformation::isTerminalConductorInfo(info_name, &property, &connection)
+		|| connection > m_terminals.size()) {
 		return QString();
 	}
 
-	QStringList texts;
-	for (Terminal *terminal : m_terminals) {
+	const QList<Terminal *> terminals = connection
+			? QList<Terminal *>{m_terminals.at(connection - 1)}
+			: m_terminals;
+
+	QStringList values;
+	for (Terminal *terminal : terminals) {
 		for (Conductor *conductor : terminal->conductors()) {
-			const QString text = conductor->properties().text;
-			if (!text.isEmpty() && !texts.contains(text)) {
-				texts << text;
+			const ConductorProperties p = conductor->properties();
+			const QString value = property == QETInformation::COND_COLOR   ? p.m_wire_color
+								: property == QETInformation::COND_SECTION ? p.m_wire_section
+																			: p.text;
+			if (!value.isEmpty() && !values.contains(value)) {
+				values << value;
 			}
 		}
 	}
-	return texts.join(QLatin1Char(' '));
+	return values.join(QLatin1Char(' '));
 }
 
 /**
@@ -3327,6 +3355,13 @@ void Element::addDisplayValues(DiagramContext &dc)
 	dc.addValue(QETInformation::ELMT_LABEL,            labelForDisplay());
 	dc.addValue(QETInformation::ELMT_TERMINAL_NUMBER, terminalNumberForDisplay());
 	dc.addValue(QETInformation::ELMT_CONDUCTOR_TEXT,  conductorTextForDisplay());
+
+	if (m_data.m_type == ElementData::Terminal) {
+		for (const QString &key
+			 : QETInformation::terminalConductorInfoKeys(m_terminals.size())) {
+			dc.addValue(key, conductorInfoForDisplay(key));
+		}
+	}
 }
 
 /**
@@ -3521,11 +3556,11 @@ void Element::updateConductorTexts()
 {
 	if (m_data.m_type == ElementData::Terminal)
 	{
-			//Only the texts which read the wire number: the others
-			//have nothing to refresh
+			//Only the texts which read the wires: the others have
+			//nothing to refresh
 		for (DynamicElementTextItem *deti : m_dynamic_text_list) {
-			if (deti && (deti->infoName() == QETInformation::ELMT_CONDUCTOR_TEXT
-						 || deti->compositeText().contains(QETInformation::ELMT_CONDUCTOR_TEXT))) {
+			if (deti && (QETInformation::isTerminalConductorInfo(deti->infoName())
+						 || QETInformation::usesTerminalConductorInfo(deti->compositeText()))) {
 				deti->refreshConductorText();
 			}
 		}

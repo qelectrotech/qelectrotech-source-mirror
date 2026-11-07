@@ -20,6 +20,7 @@
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../../editor/graphicspart/customelementpart.h"
 #include "../../editor/graphicspart/partdynamictextfield.h"
+#include "../../editor/graphicspart/partterminal.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
 #include "../../ui/alignmenttextdialog.h"
@@ -227,6 +228,21 @@ void DynamicTextFieldEditor::disconnectConnections()
 }
 
 /**
+	@brief DynamicTextFieldEditor::terminalCount
+	@return the number of connection points of the edited symbol
+*/
+int DynamicTextFieldEditor::terminalCount() const
+{
+	int count = 0;
+	for (QGraphicsItem *qgi : elementEditor()->elementScene()->items()) {
+		if (qgraphicsitem_cast<PartTerminal *>(qgi)) {
+			++count;
+		}
+	}
+	return count;
+}
+
+/**
 	@brief DynamicTextFieldEditor::fillInfoComboBox
 	Fill the combo box "element information"
 */
@@ -277,6 +293,11 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 
 		if (is_slave) {
 			strl.prepend(QETInformation::ELMT_XREF);
+		}
+
+			//Read from the wires, never stored (#1585)
+		if (type == ElementData::Terminal) {
+			strl << QETInformation::terminalConductorInfoKeys(terminalCount());
 		}
 	}
 
@@ -441,6 +462,9 @@ void DynamicTextFieldEditor::on_m_composite_text_pb_clicked()
 	}
 
 	CompositeTextEditDialog ctd(m_text_field.data() -> compositeText(), isReport, this);
+	if (type == ElementData::Terminal) {
+		ctd.addTerminalConductorInfo(terminalCount());
+	}
 	if(ctd.exec()) {
 		QString ct = ctd.plainText();
 		for (int i = 0; i < m_parts.length(); i++) {
