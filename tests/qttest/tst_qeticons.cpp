@@ -71,6 +71,8 @@ class tst_qeticons : public QObject
 		void coloredIconKeepsItsColorsOnHover();
 		void menuIconReadsOnHighlight_data();
 		void menuIconReadsOnHighlight();
+		void colourSquareKeepsItsColour_data();
+		void colourSquareKeepsItsColour();
 		void panelProjectIconStaysSmall();
 		void configPageIconsComeAtPageSize();
 };
@@ -689,6 +691,63 @@ void tst_qeticons::menuIconReadsOnHighlight()
 	const double contrast = QET::Test::inkContrast(image, icon_column);
 	QVERIFY2(contrast >= kIconRatio,
 	         qPrintable(QString("highlighted menu icon: %1").arg(contrast)));
+}
+
+void tst_qeticons::colourSquareKeepsItsColour_data()
+{
+	QTest::addColumn<QColor>("color");
+	QTest::newRow("black") << QColor(Qt::black);
+	QTest::newRow("white") << QColor(Qt::white);
+	QTest::newRow("grey") << QColor(Qt::darkGray);
+}
+
+/**
+	A colour list shows each colour as a square that fills its icon.
+	Black, white and grey have no saturated pixel, but the square is not
+	line art: hovered, or on a highlighted menu item, it keeps its colour
+	instead of taking the tint.
+*/
+void tst_qeticons::colourSquareKeepsItsColour()
+{
+	QFETCH(QColor, color);
+	QApplication::setStyle(new QETStyle(QStyleFactory::create("Fusion")));
+	const QPalette palette = QET::Palette::fusionLight();
+	QApplication::setPalette(palette);
+
+	QPixmap square(16, 16);
+	square.fill(color);
+	const QIcon icon(square);
+	QVERIFY(!QETStyle::isLineArt(square.toImage()));
+	QCOMPARE(icon.pixmap(QSize(16, 16), 1.0, QIcon::Active).toImage(),
+	         icon.pixmap(QSize(16, 16), 1.0, QIcon::Normal).toImage());
+
+	QMenu menu;
+	QStyleOptionMenuItem option;
+	option.initFrom(&menu);
+	option.state |= QStyle::State_Enabled | QStyle::State_Selected;
+	option.menuItemType = QStyleOptionMenuItem::Normal;
+	option.checkType = QStyleOptionMenuItem::NotCheckable;
+	option.icon = icon;
+	option.text = color.name();
+	option.maxIconWidth = 22;
+	option.rect = QRect(0, 0, 160, 24);
+
+	QImage image(160, 24, QImage::Format_ARGB32_Premultiplied);
+	image.fill(palette.color(QPalette::Window));
+	QPainter painter(&image);
+	menu.style()->drawControl(QStyle::CE_MenuItem, &option, &painter,
+	                          &menu);
+	painter.end();
+	QET::Test::dump(image, "menu-colour-square");
+
+		// The icon column, as in menuIconReadsOnHighlight(): the whole
+		// square; the style may draw a few more pixels of that colour
+	int shown = 0;
+	for (int y = 0; y < 24; ++y)
+		for (int x = 0; x < 30; ++x)
+			if (QColor(image.pixel(x, y)) == color)
+				++shown;
+	QVERIFY2(shown >= 16 * 16, qPrintable(QString::number(shown)));
 }
 
 /**

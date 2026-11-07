@@ -41,7 +41,11 @@ QETStyle::QETStyle(QStyle *base) :
 	@brief QETStyle::isLineArt
 	The same rule misc/make_icon_themes.py uses to pick the icons that
 	get a dark variant: an icon is line art when fewer than 20% of its
-	visible pixels are saturated.
+	visible pixels are saturated. An icon with no see-through pixel is
+	not line art either: line art always has a see-through background,
+	and an icon that fills its whole square, such as the square of a
+	colour list, would otherwise take the tint when black, white or
+	grey.
 */
 bool QETStyle::isLineArt(const QImage &image)
 {
@@ -62,6 +66,8 @@ bool QETStyle::isLineArt(const QImage &image)
 				++saturated;
 		}
 	}
+	if (visible == source.width() * source.height())
+		return false;
 	return visible > 0 && saturated < visible * 0.20;
 }
 
