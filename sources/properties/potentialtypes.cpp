@@ -45,6 +45,34 @@ QList<PotentialType> PotentialTypes::defaultTypes()
 	};
 }
 
+QString PotentialTypes::modeName(Mode mode)
+{
+	switch (mode) {
+		case Mode::PerWire:  return QStringLiteral("wire");
+		case Mode::AtSource: return QStringLiteral("source");
+		case Mode::Off:      break;
+	}
+	return QStringLiteral("off");
+}
+
+/**
+	@return the mode called @p name; Off for a name this QET does not know,
+	so a file from a newer QET opens with the types not applied, never with
+	a guess. @p known tells whether the name was one.
+*/
+PotentialTypes::Mode PotentialTypes::modeFromName(const QString &name, bool *known)
+{
+	if (known)
+		*known = true;
+	if (name == QLatin1String("wire"))
+		return Mode::PerWire;
+	if (name == QLatin1String("source"))
+		return Mode::AtSource;
+	if (known)
+		*known = (name == QLatin1String("off")) || name.isEmpty();
+	return Mode::Off;
+}
+
 /**
 	@brief PotentialTypes::find
 	@param name : the name a conductor carries
@@ -71,18 +99,22 @@ bool PotentialTypes::find(const QString &name, PotentialType *found) const
 */
 bool PotentialTypes::isDefault() const
 {
-	return !m_enabled && m_types == defaultTypes();
+	return m_mode == Mode::Off && m_unknown_mode.isEmpty() && m_types == defaultTypes();
 }
 
 bool PotentialTypes::operator==(const PotentialTypes &other) const
 {
-	return m_enabled == other.m_enabled && m_types == other.m_types;
+	return m_mode == other.m_mode && m_unknown_mode == other.m_unknown_mode
+			&& m_types == other.m_types;
 }
 
 QDomElement PotentialTypes::toXml(QDomDocument &document) const
 {
 	QDomElement root = document.createElement(QStringLiteral("potentialtypes"));
-	root.setAttribute(QStringLiteral("enabled"), m_enabled ? 1 : 0);
+		//enabled is what a QET before the modes reads: on for either mode
+	root.setAttribute(QStringLiteral("enabled"), m_mode != Mode::Off ? 1 : 0);
+	root.setAttribute(QStringLiteral("mode"),
+					  m_unknown_mode.isEmpty() ? modeName(m_mode) : m_unknown_mode);
 	for (const PotentialType &type : m_types) {
 		QDomElement elmt = document.createElement(QStringLiteral("potentialtype"));
 		elmt.setAttribute(QStringLiteral("name"), type.name);
@@ -106,7 +138,17 @@ PotentialTypes PotentialTypes::fromXml(const QDomElement &element)
 	if (element.isNull())
 		return result;
 
-	result.m_enabled = element.attribute(QStringLiteral("enabled")).toInt() != 0;
+		//A file saved before the modes has only enabled: that is the
+		//per-wire mode, the only one there was
+	if (element.hasAttribute(QStringLiteral("mode"))) {
+		bool known = true;
+		result.m_mode = modeFromName(element.attribute(QStringLiteral("mode")), &known);
+		if (!known)
+			result.m_unknown_mode = element.attribute(QStringLiteral("mode"));
+	} else {
+		result.m_mode = element.attribute(QStringLiteral("enabled")).toInt() != 0
+				? Mode::PerWire : Mode::Off;
+	}
 	result.m_types.clear();
 	for (QDomElement elmt = element.firstChildElement(QStringLiteral("potentialtype"));
 		 !elmt.isNull();
