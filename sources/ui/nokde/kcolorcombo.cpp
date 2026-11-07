@@ -17,7 +17,44 @@
 */
 #include "kcolorcombo.h"
 
+#include <QIcon>
+#include <QPainter>
+#include <QPixmap>
 #include <QVariant>
+
+namespace {
+
+	//A square of @p color, @p size large, drawn for normal and for
+	//high-resolution screens. A faint edge, dark on a light colour and
+	//light on a dark one, keeps white on white and black on black visible.
+QIcon swatchIcon(const QColor &color, const QSize &size)
+{
+	QColor edge = color.lightnessF() > 0.5
+		? QColor(Qt::black)
+		: QColor(Qt::white);
+	edge.setAlphaF(0.35);
+
+	QIcon icon;
+	for (const int scale : {1, 2}) {
+		QPixmap pixmap(size * scale);
+		pixmap.fill(color);
+		QPainter painter(&pixmap);
+		painter.setPen(QPen(edge, 1));
+		painter.drawRect(
+			QRectF(pixmap.rect()).adjusted(0.5, 0.5, -0.5, -0.5));
+		painter.end();
+		pixmap.setDevicePixelRatio(scale);
+			//The same square when the colour is pointed at or
+			//chosen: styles would tint it in the selection colour
+		for (const auto mode : {QIcon::Normal, QIcon::Active,
+				QIcon::Selected}) {
+			icon.addPixmap(pixmap, mode);
+		}
+	}
+	return icon;
+}
+
+}
 
 KColorCombo::KColorCombo(QWidget *parent) :
 	QComboBox{parent}
@@ -35,7 +72,7 @@ void KColorCombo::setColors(const QList<QColor> &colors)
 {
 	clear();
 	for (const auto &color : colors) {
-		addItem(color.name(), color);
+		addItem(swatchIcon(color, iconSize()), color.name(), color);
 	}
 }
 
@@ -61,6 +98,6 @@ void KColorCombo::setColor(const QColor &color)
 			return;
 		}
 	}
-	addItem(color.name(), color);
+	addItem(swatchIcon(color, iconSize()), color.name(), color);
 	setCurrentIndex(count() - 1);
 }

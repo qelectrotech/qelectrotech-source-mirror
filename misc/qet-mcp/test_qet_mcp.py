@@ -1350,6 +1350,58 @@ def _vjog(uuid, a, b, xa, xb, y0=120, y1=160):
                               (xb, y1 - 10), (xb, y1)])
 
 
+class ScriptApiAnswers(unittest.TestCase):
+    """qet_script_api turns the one line QElectroTech logs into its answer.
+    With _run_qet replaced by a stub, each branch is checked without
+    QElectroTech: the integration test only runs where a binary is found,
+    and only looks at the signatures branch."""
+
+    def stub(self, stdout, stderr=""):
+        return mock.patch.object(m, "_run_qet",
+                                 lambda *a, **k: {"ok": True, "stdout": stdout, "stderr": stderr})
+
+    def line(self, rec):
+        return m._MARKER + json.dumps(rec)
+
+    def test_signatures_are_the_calls(self):
+        sigs = ["addText(folio, x, y, text)", "folioCount()"]
+        out = "noise\n" + self.line({"kind": "api", "signatures": sigs, "names": ["x"]})
+        with self.stub(out):
+            r = m.tool_script_api("qet")
+        self.assertEqual(r, {"ok": True, "header_format": m.SCRIPT_HEADER_HELP,
+                             "calls": sigs, "call_count": 2})
+
+    def test_older_build_gives_sorted_names_without_signals(self):
+        """An older QElectroTech has no qet.apiSignatures(): the answer falls
+        back to the function names, sorted, without Qt's *Changed signals
+        and deleteLater, and says so in a note."""
+        names = ["save", "addText", "titleChanged", "deleteLater", "folioCount"]
+        with self.stub(self.line({"kind": "api", "signatures": None, "names": names})):
+            r = m.tool_script_api("qet")
+        self.assertTrue(r["ok"])
+        self.assertEqual(r["calls"], ["addText", "folioCount", "save"])
+        self.assertEqual(r["call_count"], 3)
+        self.assertIn("apiSignatures", r["note"])
+
+    def test_line_found_on_stderr(self):
+        out = self.line({"kind": "api", "signatures": ["folioCount()"]})
+        with self.stub("", stderr="qt warning\n" + out):
+            r = m.tool_script_api("qet")
+        self.assertTrue(r["ok"], r)
+        self.assertEqual(r["calls"], ["folioCount()"])
+
+    def test_no_answer_is_not_ok_and_keeps_a_short_tail(self):
+        """Without a readable line the answer is ok: False, never an empty
+        list of calls, and the streams are cut to their last 4000 characters."""
+        out = "x" * 10_000 + "\n" + m._MARKER + "{not json"
+        with self.stub(out, stderr="e" * 9_000):
+            r = m.tool_script_api("qet")
+        self.assertFalse(r["ok"])
+        self.assertNotIn("calls", r)
+        self.assertEqual(len(r["stdout"]), 4000)
+        self.assertEqual(len(r["stderr"]), 4000)
+
+
 class LayoutRules(unittest.TestCase):
     """qet_layout_check's scoring and fix planning, on made-up geometry: no
     QElectroTech needed, so every rule is pinned exactly."""

@@ -22,6 +22,9 @@
 #include <qetapp.h>
 #include "UndoCommand/pastepartscommand.h"
 #include "ui/qetelementeditor.h"
+#include "../ElementsCollection/elementslocation.h"
+
+#include <QMimeData>
 /**
 	Constructeur
 	@param scene ElementScene visualisee par cette ElementView
@@ -232,6 +235,45 @@ void ElementView::copy()
 }
 
 /**
+	@brief ElementView::pasteInArea
+	Paste @p xml_document, leaving the clipboard alone: the user chooses
+	where, as for the clipboard.
+	@param xml_document : the parts to paste, such as an element definition
+*/
+void ElementView::pasteInArea(const QDomDocument &xml_document)
+{
+	QRectF pasted_content_bounding_rect = m_scene -> boundingRectFromXml(xml_document);
+	if (pasted_content_bounding_rect.isEmpty()) return;
+
+	to_paste_in_area_ = xml_document.toString(4);
+	getPasteArea(pasted_content_bounding_rect);
+}
+
+/**
+	@brief ElementView::pasteCentered
+	Paste @p xml_document with the middle of its parts as near @p center
+	as whole steps of 10 allow, the grid of a folio: terminals that were
+	on it in their element stay on it, whatever grid the zoom shows here.
+	@param xml_document : the parts to paste
+	@param center : where the middle goes, in scene coordinates
+	@return the parts pasted
+*/
+ElementContent ElementView::pasteCentered(const QDomDocument &xml_document, const QPointF &center)
+{
+		//Pasted where they are drawn in their element, around its hotspot...
+	ElementContent content = paste(xml_document, QPointF());
+	if (content.isEmpty()) return(content);
+
+		//...then moved by whole steps of 10
+	QRectF rect;
+	for (QGraphicsItem *part : content) rect |= part -> sceneBoundingRect();
+	const QPointF wanted = center - rect.center();
+	const QPointF offset(qRound(wanted.x() / 10) * 10, qRound(wanted.y() / 10) * 10);
+	for (QGraphicsItem *part : content) part -> setPos(part -> pos() + offset);
+	return(content);
+}
+
+/**
 	Gere le fait de coller le contenu du presse-papier = l'importer dans
 	l'element. Cette methode examine le contenu du presse-papier. Si celui-ci
 	semble avoir ete copie depuis cet element, il est colle a cote de sa zone
@@ -298,6 +340,55 @@ ElementContent ElementView::paste(const QPointF &position) {
 
 	// objet pour recuperer le contenu ajoute au schema par le coller
 	return(paste(document_xml, position));
+}
+
+/**
+	@brief ElementView::dragEnterEvent
+	An element dragged from a collection is accepted: dropped, its parts
+	are pasted (see dropEvent()).
+*/
+void ElementView::dragEnterEvent(QDragEnterEvent *event)
+{
+	if (isInteractive() && event -> mimeData() -> hasFormat(QStringLiteral("application/x-qet-element-uri"))) {
+		event -> acceptProposedAction();
+	} else {
+		QGraphicsView::dragEnterEvent(event);
+	}
+}
+
+void ElementView::dragMoveEvent(QDragMoveEvent *event)
+{
+	if (isInteractive() && event -> mimeData() -> hasFormat(QStringLiteral("application/x-qet-element-uri"))) {
+		event -> acceptProposedAction();
+	} else {
+		QGraphicsView::dragMoveEvent(event);
+	}
+}
+
+/**
+	@brief ElementView::dropEvent
+	Paste the parts of the element dropped from a collection, their middle
+	where it is dropped: a new element can start from an existing one.
+*/
+void ElementView::dropEvent(QDropEvent *event)
+{
+	const QMimeData *mime = event -> mimeData();
+	if (!isInteractive() || !mime -> hasFormat(QStringLiteral("application/x-qet-element-uri"))) {
+		QGraphicsView::dropEvent(event);
+		return;
+	}
+
+	ElementsLocation location(QString::fromLatin1(mime -> data(QStringLiteral("application/x-qet-element-uri"))));
+		//isElement() also holds for a macro, which has no parts to paste
+	if (!location.collectionPath().endsWith(QLatin1String(".elmt")) || !location.exist()) {
+		event -> ignore();
+		return;
+	}
+
+	QDomDocument xml_document;
+	xml_document.appendChild(xml_document.importNode(location.xml(), true));
+	pasteCentered(xml_document, mapToScene(event -> position().toPoint()));
+	event -> acceptProposedAction();
 }
 
 /**
