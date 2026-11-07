@@ -1181,7 +1181,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="45"/>
-        <source>x</source>
+        <source>× </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2035,32 +2035,32 @@ Continue?</source>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="31"/>
-        <source>x 0.25</source>
+        <source>× 0.25</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="36"/>
-        <source>x 0.5</source>
+        <source>× 0.5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="41"/>
-        <source>x 0.75</source>
+        <source>× 0.75</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="46"/>
-        <source>x 1</source>
+        <source>× 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="51"/>
-        <source>x 2</source>
+        <source>× 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="56"/>
-        <source>x 3</source>
+        <source>× 3</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4151,7 +4151,7 @@ Continue?</source>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="382"/>
-        <source>Dimensions : %1*%2
+        <source>Dimensions : %1 × %2
 </source>
         <translation type="unfinished"></translation>
     </message>
@@ -4965,12 +4965,12 @@ By importing this file, you confirm that:
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
-        <source>Move this sheet up x10</source>
+        <source>Move this sheet up × 10</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="79"/>
-        <source>Move this sheet up x100</source>
+        <source>Move this sheet up × 100</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4980,12 +4980,12 @@ By importing this file, you confirm that:
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="81"/>
-        <source>Move down this sheet x10</source>
+        <source>Move down this sheet × 10</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="82"/>
-        <source>Move down this sheet x100</source>
+        <source>Move down this sheet × 100</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -20836,7 +20836,7 @@ The following variables can be used:
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="445"/>
-        <source>By default, the following variables are available: &lt;ul&gt;&lt;li&gt;%{author}: author of the sheet&lt;/li&gt;&lt;li&gt;%{date}: sheet date&lt;/li&gt;&lt;li&gt;%{title}: sheet title&lt;/li&gt;&lt;li&gt;%{filename}: filename of file&lt;/li&gt; &lt;li&gt;%{plant}: name of the installation (=) in which the sheet is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) where the sheet is located&lt;/li&gt;&lt;li&gt;%{indexrev}: sheet revision index&lt;/li&gt;&lt;li&gt;%{version}: version number&lt;/li&gt;&lt;li&gt;%{folio}: sheet number&lt;/li&gt;&lt;li&gt;%{folio-id}: position of sheet in the project&lt;/li&gt;&lt;li&gt;%{folio-total }: total number of sheets in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous sheet&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the next sheet&lt; / li&gt;&lt;li&gt;%{projecttitle}: title of the project&lt;/li&gt;&lt;li&gt;%{projectpath}: path of the project&lt;/li&gt;&lt;li&gt;%{projectfilename}: filename of the projectfile&lt;/li&gt;&lt;li &gt;%{saveddate}: date of saving the file in local format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: date of saving the file in format DD-MM-YYYY&lt;/li&gt; &lt;li&gt;%{ saveddate-us}: date of saving the file in format YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: time of saving the file&lt;/li&gt;&lt;li&gt;%{savedfilename}: name of the file saved&lt;/li&gt;&lt;li&gt;%{savedfilepath}: path of the saved file&lt;/li&gt;&lt;/ul&gt;</source>
+        <source>By default, the following variables are available: &lt;ul&gt;&lt;li&gt;%{author}: author of the sheet&lt;/li&gt;&lt;li&gt;%{date}: sheet date&lt;/li&gt;&lt;li&gt;%{title}: sheet title&lt;/li&gt;&lt;li&gt;%{filename}: filename of file&lt;/li&gt;&lt;li&gt;%{plant}: name of the installation (=) in which the sheet is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) where the sheet is located&lt;/li&gt;&lt;li&gt;%{indexrev}: sheet revision index&lt;/li&gt;&lt;li&gt;%{version}: version number&lt;/li&gt;&lt;li&gt;%{folio}: sheet number&lt;/li&gt;&lt;li&gt;%{folio-id}: position of sheet in the project&lt;/li&gt;&lt;li&gt;%{folio-total}: total number of sheets in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous sheet&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the next sheet&lt;/li&gt;&lt;li&gt;%{projecttitle}: title of the project&lt;/li&gt;&lt;li&gt;%{projectpath}: path of the project&lt;/li&gt;&lt;li&gt;%{projectfilename}: filename of the projectfile&lt;/li&gt;&lt;li&gt;%{saveddate}: date of saving the file in local format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: date of saving the file in format DD-MM-YYYY&lt;/li&gt;&lt;li&gt;%{saveddate-us}: date of saving the file in format YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: time of saving the file&lt;/li&gt;&lt;li&gt;%{savedfilename}: name of the file saved&lt;/li&gt;&lt;li&gt;%{savedfilepath}: path of the saved file&lt;/li&gt;&lt;/ul&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

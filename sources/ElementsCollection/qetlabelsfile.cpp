@@ -17,9 +17,13 @@
 */
 #include "qetlabelsfile.h"
 
+#include <QDateTime>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QHash>
+#include <QMutex>
+#include <QMutexLocker>
 #include <QSaveFile>
 
 /**
@@ -85,17 +89,41 @@ void QetLabelsFile::scanRec(const QString &path, const QStringList &relative_pat
 */
 QString QetLabelsFile::prefixForPath(const QString &filepath, const QStringList &path, int dirLevel)
 {
-	QFile file(filepath);
-	if (!file.open(QFile::ReadOnly | QFile::Text)) {
+		//Asked once for every symbol of a project that is loaded, always of
+		//the same few files: each is read and parsed again only when its
+		//size or its time of last change is not what it was.
+	struct Parsed {
+		qint64 size = -1;
+		QDateTime modified;
+		QDomDocument document;
+	};
+	static QMutex mutex;
+	static QHash<QString, Parsed> parsed;
+
+	const QFileInfo info(filepath);
+	QMutexLocker locker(&mutex);
+	if (!info.isFile()) {
+		parsed.remove(filepath);
 		return QString();
 	}
-
-	QDomDocument document;
-	if (!document.setContent(&file)) {
-		return QString();
+	Parsed &known = parsed[filepath];
+	if (known.size != info.size() || known.modified != info.lastModified()) {
+		known = Parsed();
+		QFile file(filepath);
+		if (!file.open(QFile::ReadOnly | QFile::Text)) {
+			parsed.remove(filepath);
+			return QString();
+		}
+		QDomDocument document;
+		if (!document.setContent(&file)) {
+			parsed.remove(filepath);
+			return QString();
+		}
+		known.size = info.size();
+		known.modified = info.lastModified();
+		known.document = document;
 	}
-
-	return prefixInDocument(document, path, dirLevel);
+	return prefixInDocument(known.document, path, dirLevel);
 }
 
 /**

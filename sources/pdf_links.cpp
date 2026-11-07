@@ -23,6 +23,8 @@
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
+#include "qetgraphicsitem/independenttextitem.h"
+#include "qetproject.h"
 #include "TerminalStrip/GraphicsItem/terminalstripitem.h"
 
 // Private Qt PDF engine for drawHyperlink() — not public API.
@@ -155,6 +157,19 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 		if (auto *strip_item = dynamic_cast<TerminalStripItem*>(item)) {
 			for (const TerminalStripItem::PdfRef &ref : strip_item->pdfRefs()) {
 				injectLinkTo(ref.here, ref.diagram, ref.there);
+			}
+			continue;
+		}
+
+		// --- A free text which leads to a folio (a reference such as /12.3) ---
+		if (auto *text = dynamic_cast<IndependentTextItem*>(item)) {
+			if (text->destination().isNull() || !diagram->project()) continue;
+			const auto folios = diagram->project()->diagrams();
+			for (Diagram *folio : folios) {
+				if (folio->uuid() != text->destination()) continue;
+				injectLinkTo(text->mapRectToScene(text->boundingRect()), folio,
+							 folio->border_and_titleblock.insideBorderRect());
+				break;
 			}
 			continue;
 		}

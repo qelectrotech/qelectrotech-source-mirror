@@ -42,6 +42,7 @@ class ElementPropertiesWidget : public AbstractElementPropertiesEditorWidget
 		void apply() override;
 		void reset() override;
 		bool setLiveEdit(bool live_edit) override;
+		QString title() const override {return tr("Element properties");}
 
 	public slots:
 		void findInPanel ();

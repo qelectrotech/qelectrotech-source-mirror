@@ -24,15 +24,15 @@ git submodule update --init --recursive
 | Component | Status | Notes |
 |---|---|---|
 | CMake ≥ 3.5 | required | CMake 4.3+ is also fine, see note below |
-| C++17 compiler | required | GCC or Clang on Unix-like platforms; MSVC or MinGW-w64 g++ on Windows — see [Choosing a compiler](#3-choosing-a-compiler-unix) / [Building on Windows](#6-building-on-windows-msvc--mingw) |
+| C++17 compiler | required | GCC or Clang on Unix-like platforms; MSVC or MinGW-w64 g++ on Windows — see [Choosing a compiler](#31-choosing-a-compiler-unix) / [Building on Windows](#6-building-on-windows-msvc--mingw) |
 | Qt6 base + widgets | required | |
 | Qt6 **GuiPrivate** headers | required | needed for clickable PDF hyperlinks; **hard build failure** at CMake generate time if missing, see below |
 | SQLite3 | required | used by the nomenclature/summary database; needs the session extension (`SQLITE_ENABLE_SESSION`, `SQLITE_ENABLE_PREUPDATE_HOOK`) for the history of a `.qetdb`'s saves |
 | Qt Linguist tools (`lrelease`) | required | compiles the tracked `.ts` files into `.qm` as part of every normal build |
-| pugixml | handled automatically | fetched and built via CMake FetchContent if not already present on the system — see [pugixml](#8-pugixml) below |
+| pugixml | handled automatically | fetched and built via CMake FetchContent if not already present on the system — see [pugixml](#5-pugixml) below |
 | Qt Test module | required if building tests | `PACKAGE_TESTS` is `ON` by default; QtTest ships as part of the base Qt6 dev packages listed below on every platform, no extra package needed |
 | KDE Frameworks (KF6) | optional | see [Building without KDE Frameworks](#9-building-without-kde-frameworks) |
-| QtPdf module | optional | see [PDF page import](#7-pdf-page-import-qtpdf) |
+| QtPdf module | optional | see [PDF page import](#8-pdf-page-import-qtpdf) |
 
 A note on CMake versions: the project declares a minimum of 3.5 but is
 routinely built with much newer releases; if your CMake is older than 4.3 it
@@ -67,13 +67,40 @@ To install (default prefix is `/usr/local`; adjust with
 sudo cmake --install .
 ```
 
-Useful configure-time options (pass as `-D<OPTION>=ON/OFF`):
+To make an archive of those files instead, name its format at the configure
+step (`ZIP`, `TGZ`, or both as `"ZIP;TGZ"`), then run `cpack` in the build
+folder:
+
+```sh
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCPACK_GENERATOR=TGZ
+cmake --build .
+cpack
+```
+
+On Linux the paths to the elements and the translations are compiled in from
+`CMAKE_INSTALL_PREFIX`, so unpack the archive there:
+
+```sh
+sudo tar -xzf qelectrotech-*-Linux.tar.gz -C /usr/local --strip-components=1
+```
+
+Or add `-DQET_RELATIVE_DATA_PATHS=ON` at the configure step: QElectroTech
+then finds them from its own folder, and the archive works unpacked anywhere.
+
+The archives are tested on Linux and, with MSVC, on Windows, not on macOS. For
+MinGW see [below](#mingw-w64-gcc).
+
+Useful configure-time options (pass as `-D<OPTION>=<value>`):
 
 | Option | Default | Effect |
 |---|---|---|
 | `PACKAGE_TESTS` | `ON` | build the test suite (needs the Qt Test module) |
 | `BUILD_WITH_KF` | distro-dependent | build against KDE Frameworks; see below |
 | `QET_ENABLE_PCH` | `OFF` | precompiled headers for faster rebuilds (needs CMake ≥ 3.16) |
+| `QET_DEPLOY_QT` | `OFF` | Windows and macOS: `cmake --install` also copies the Qt libraries and plugins QElectroTech uses (windeployqt, macdeployqt), for a folder that runs without Qt installed; needs Qt ≥ 6.5 |
+| `QET_RELATIVE_DATA_PATHS` | `OFF` | Linux and other Unix systems: QElectroTech finds its elements, title blocks and translations from its own folder instead of `CMAKE_INSTALL_PREFIX`, so the installed files work wherever they are copied |
+| `SQLite3_DLL` | empty | Windows: the path of SQLite's DLL, which `cmake --install` then installs too |
+| `CPACK_GENERATOR` | empty | the packages `cpack` makes: `ZIP`, `TGZ` or both as `"ZIP;TGZ"`, and on Windows `WIX` |
 
 ## 3.1 Choosing a compiler (Unix)
 
@@ -112,7 +139,7 @@ sudo apt install \
 
 `qt6-base-private-dev` is **not** pulled in automatically by `qt6-base-dev`
 but is mandatory for the build (see
-[Qt6 private headers](#6-qt6-private-headers-mandatory) below).
+[Qt6 private headers](#7-qt6-private-headers-mandatory) below).
 
 For Clang instead of GCC:
 
@@ -224,9 +251,11 @@ headers** — there's no separate "private headers" package to remember on
 Windows (see [Qt6 private headers](#7-qt6-private-headers-mandatory) below
 for why this matters).
 
-`QtPdf` is available as an optional component in the Qt Online Installer
-(look for "Qt PDF" under the Qt 6.4+ node); if you skip it, PDF page import
-is silently disabled exactly as on the other platforms. KDE Frameworks are
+`QtPdf` is an optional component in the Qt Online Installer: from Qt 6.8 on,
+under **Extensions** → **Qt PDF**, for the same Qt version and compiler as
+your Qt; for Qt 6.4 to 6.7, under the Qt version's **Additional Libraries**.
+If you skip it, PDF page import is silently disabled exactly as on the other
+platforms. KDE Frameworks are
 prebuilt for Windows only in MSYS2's UCRT64 and CLANG64 environments (the
 UCRT64 route below, which is also what the official Windows build uses).
 With MSVC or any other MinGW, use `-DBUILD_WITH_KF=OFF` (see the
@@ -237,7 +266,8 @@ downloads and compiles KDE Frameworks itself, which is slow.
 
 1. Install Visual Studio with the "Desktop development with C++" workload,
    and install Qt6 for MSVC (e.g. the `msvc2019_64` or `msvc2022_64` kit)
-   via the [Qt Online Installer](https://www.qt.io/download-qt-installer).
+   via the [Qt Online Installer](https://www.qt.io/download-qt-installer),
+   with Qt PDF for PDF page import (see above).
 2. Get SQLite3 — the simplest route is [vcpkg](https://vcpkg.io):
    ```bat
    vcpkg install sqlite3[session]:x64-windows
@@ -247,6 +277,14 @@ downloads and compiles KDE Frameworks itself, which is slow.
    `.qetdb`'s saves then records no changes. A SQLite built from another
    source needs `SQLITE_ENABLE_SESSION` and `SQLITE_ENABLE_PREUPDATE_HOOK`
    for that too.
+
+   Optionally, for the 3D mouse, get hidapi from vcpkg too, and add
+   `-DQET_ENABLE_SPACEMOUSE=ON -DQET_SPACEMOUSE_BACKEND=hid` at the
+   configure step. `cmake --install` then installs hidapi's DLL with
+   QElectroTech.
+   ```bat
+   vcpkg install hidapi:x64-windows
+   ```
 3. Configure and build from an "x64 Native Tools Command Prompt for VS":
    ```bat
    mkdir build && cd build
@@ -268,8 +306,28 @@ downloads and compiles KDE Frameworks itself, which is slow.
    SQLite's DLL is installed with it only when you tell CMake where it is,
    at the configure step:
    `-DSQLite3_DLL="C:\vcpkg\installed\x64-windows\bin\sqlite3.dll"`.
-   Qt's DLLs are not installed: run Qt's `windeployqt` on
+   Qt's DLLs are installed with it when `-DQET_DEPLOY_QT=ON` is set at the
+   configure step (Qt 6.5 or newer). Without it, run Qt's `windeployqt` on
    `C:\QElectroTech\bin\qelectrotech.exe` for those.
+5. Optionally, make a ZIP of the same files: add `-DCPACK_GENERATOR=ZIP` at
+   the configure step, then in the build folder:
+   ```bat
+   cpack -C Release
+   ```
+6. Optionally, make an installer of the same files: use
+   `-DCPACK_GENERATOR=WIX` instead, with `-DQET_DEPLOY_QT=ON` and
+   `-DSQLite3_DLL=...` so that it holds what the program needs, and run the
+   same `cpack` command. This needs CMake 3.30 or newer and
+   [WiX Toolset](https://wixtoolset.org) 4 or newer with its interface
+   extension, of the same version as WiX:
+   ```bat
+   wix extension add --global WixToolset.UI.wixext
+   ```
+   It replaces an installed QElectroTech of a lower version, official or not,
+   and refuses to install over a higher one, which official nightly builds
+   are: uninstall those first. Windows then opens projects (`.qet`, `.qetz`,
+   `.qetdb`), symbols (`.elmt`) and title block templates (`.titleblock`) with
+   QElectroTech.
 
 ### MinGW-w64 (gcc)
 
@@ -277,13 +335,13 @@ Two common ways to get a MinGW toolchain that matches a Qt6 MinGW kit: Qt's
 own bundled MinGW (installed alongside a `mingw_64` Qt kit via the Qt
 Online Installer), or [MSYS2](https://www.msys2.org).
 
-Using MSYS2, from a **UCRT64** shell (the same packages and options as
-`.github/workflows/windows-build.yml`):
+Using MSYS2, from a **UCRT64** shell:
 ```sh
 pacman -S --needed \
     mingw-w64-ucrt-x86_64-toolchain \
     mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-svg \
     mingw-w64-ucrt-x86_64-qt6-tools mingw-w64-ucrt-x86_64-qt6-translations \
+    mingw-w64-ucrt-x86_64-qt6-declarative mingw-w64-ucrt-x86_64-qt6-pdf \
     mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-ninja \
     mingw-w64-ucrt-x86_64-pkg-config mingw-w64-ucrt-x86_64-sqlite3 \
     mingw-w64-ucrt-x86_64-kcoreaddons mingw-w64-ucrt-x86_64-kwidgetsaddons \
@@ -299,7 +357,9 @@ cmake --build .
 ```
 
 `-DBUILD_KF=OFF` makes the build use the KDE Frameworks packages just
-installed instead of downloading and compiling its own.
+installed instead of downloading and compiling its own. `qt6-declarative`
+gives JavaScript scripting and `qt6-pdf` PDF page import: without them the
+build turns these off, with only a line in the configure output.
 
 If `libbacktrace` is installed in your MSYS2 environment, add the following
 cached CMake variables when configuring. They are only necessary in that
@@ -327,6 +387,13 @@ its bundled `g++.exe` comes first on `PATH`, or pass
 up a different MinGW installation. SQLite3 still has to come from elsewhere
 in this path — vcpkg with a `mingw`-flavoured triplet, or MSYS2's package as
 above.
+
+`cmake --install` works as in the MSVC steps above. With MSYS2, add
+`-DQET_DEPLOY_QT=ON -DSQLite3_DLL=/ucrt64/bin/libsqlite3-0.dll` at the configure
+step for Qt's and SQLite's DLLs. The other DLLs the program needs stay in
+`/ucrt64/bin`, such as the compiler's, KDE's and ICU's, so the result runs in a
+UCRT64 shell, but a ZIP or MSI made from it with `cpack` does not start on
+another machine yet.
 
 ## 7. Qt6 private headers (mandatory)
 

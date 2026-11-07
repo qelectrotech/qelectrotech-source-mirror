@@ -315,4 +315,39 @@ class PasteTemplateCellsCommand : public TitleBlockTemplateCommand {
 	/// Existing cells impacted by the paste operation
 	QHash<TitleBlockCell *, TitleBlockCell> erased_cells_;
 };
+
+/**
+	This class represents a set of changes applied to the preview of a 
+	title block template.
+*/
+class ModifyTitleBlockPreviewCommand : public TitleBlockTemplateCommand
+{
+	// Constructor, destructor
+  public:
+	ModifyTitleBlockPreviewCommand(TitleBlockTemplate* = nullptr, QUndoCommand* = nullptr);
+	~ModifyTitleBlockPreviewCommand() override;
+
+  private:
+	ModifyTitleBlockPreviewCommand(const ModifyTitleBlockPreviewCommand&);
+
+	// methods
+  public:
+	TitleBlockDimension dimensionBefore() const;
+	void setDimensionBefore(const TitleBlockDimension&);
+	TitleBlockDimension dimensionAfter() const;
+	void setDimensionAfter(const TitleBlockDimension&);
+	void undo() override;
+	void redo() override;
+
+  protected:
+	virtual void updateText();
+
+  private:
+	void apply(const TitleBlockDimension&);
+
+	// attributes
+  private:
+	TitleBlockDimension before_; ///< Size and alignment of the before it is changed
+	TitleBlockDimension after_; ///< Size and alignment of the after it is changed
+};
 #endif

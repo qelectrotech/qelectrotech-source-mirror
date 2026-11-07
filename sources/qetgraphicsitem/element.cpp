@@ -503,6 +503,7 @@ void Element::updateSymbolPictures(bool force)
 			m_readable_transform = QTransform();
 			m_readable_picture = QPicture();
 			m_readable_low_zoom_picture = QPicture();
+			updateDrawnRect();
 			update();
 		}
 		return;
@@ -518,6 +519,7 @@ void Element::updateSymbolPictures(bool force)
 				transform,
 				m_readable_picture,
 				m_readable_low_zoom_picture);
+	updateDrawnRect();
 	update();
 }
 
@@ -559,10 +561,16 @@ void Element::keepReadable(QGraphicsItem *child) const
 	if (!child || child->parentItem() != this)
 		return;
 
+		//A text that reads from top to bottom may be turned to read from
+		//bottom to top, see DynamicElementTextItem::readingFlip()
+	QTransform flip;
+	if (child->type() == DynamicElementTextItem::Type)
+		flip = static_cast<DynamicElementTextItem *>(child)->readingFlip();
+
 	if (!isMirrored())
 	{
-		if (!child->transform().isIdentity())
-			child->resetTransform();
+		if (child->transform() != flip)
+			child->setTransform(flip);
 		return;
 	}
 
@@ -575,7 +583,8 @@ void Element::keepReadable(QGraphicsItem *child) const
 	rotation.translate(-origin.x(), -origin.y());
 	const QPointF centre = rotation.mapRect(child->boundingRect()).center();
 
-	const QTransform mirror = QTransform::fromTranslate(-centre.x(), -centre.y())
+	const QTransform mirror = flip
+							  * QTransform::fromTranslate(-centre.x(), -centre.y())
 							  * mirrorTransform()
 							  * QTransform::fromTranslate(centre.x(), centre.y());
 	if (child->transform() != mirror)
@@ -669,10 +678,36 @@ QRectF Element::drawingRect() const
 	return drawn.isEmpty() ? boundingRect() : QRectF(drawn);
 }
 
+/**
+	@brief Element::boundingRect
+	@return the symbol's frame (its size and hotspot), widened to what its
+	drawing covers when a symbol draws beyond its frame: QGraphicsView
+	repaints only within this rect, so a part outside it was cut off at
+	some zooms and left out at others.
+*/
 QRectF Element::boundingRect() const
 {
-	return(QRectF(QPointF(-hotspot_coord.x(), -hotspot_coord.y()),
-			  dimensions));
+	const QRectF frame(QPointF(-hotspot_coord.x(), -hotspot_coord.y()),
+					   dimensions);
+	return m_drawn_rect.isNull() ? frame : frame.united(m_drawn_rect);
+}
+
+/**
+	@brief Element::updateDrawnRect
+	Keep m_drawn_rect, what boundingRect() adds to the frame, up to date
+	with the drawings, with a pixel more for the width of their lines.
+*/
+void Element::updateDrawnRect()
+{
+	QRectF drawn;
+	for (const QPicture *picture : {&m_picture, &m_readable_picture})
+		if (!picture->isNull() && picture->boundingRect().isValid())
+			drawn = drawn.united(QRectF(picture->boundingRect()).adjusted(-1, -1, 1, 1));
+	if (drawn != m_drawn_rect)
+	{
+		prepareGeometryChange();
+		m_drawn_rect = drawn;
+	}
 }
 
 /**
@@ -939,6 +974,7 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	epf->getPictures(m_location,
 			 m_picture,
 			 m_low_zoom_picture);
+	updateDrawnRect();
 
 	if(!m_picture.isNull())
 		++ parsed_elements_count;
@@ -1078,7 +1114,7 @@ Terminal *Element::parseTerminal(const QDomElement &dom_element)
 	new_terminal->setPlaceRank(rank);
 	m_terminals << new_terminal;
 
-	connect(new_terminal, &Terminal::conductorWasAdded,   this, &Element::updateConductorTexts);
+	connect(new_terminal, &Terminal::conductorWasAdded,   this, &Element::watchConductorText);
 	connect(new_terminal, &Terminal::conductorWasRemoved, this, &Element::updateConductorTexts);
 
 		//Sort from top to bottom and left to right
@@ -2018,6 +2054,19 @@ void Element::initLink(QETProject *prj)
 				elmt->linkToElement(this);
 				if (link_info.group_index >= 0) {
 					m_group_index_map[elmt] = link_info.group_index;
+					applyContactGroupLabels(elmt, link_info.group_index);
+				} else if (from_rows && linkType() == Slave
+						   && elmt->linkType() == Master
+						   && elmt->groupIndexForElement(this) < 0) {
+						//A slave built after its master (lazy folios):
+						//the contact group is in the master's row
+					for (const auto &row : database->linkRowsOf(elmt->uuid())) {
+						if (row.first == uuid() && row.second >= 0) {
+							elmt->setGroupIndexForElement(this, row.second);
+							elmt->applyContactGroupLabels(this, row.second);
+							break;
+						}
+					}
 				}
 				break;
 			}
@@ -2073,6 +2122,7 @@ void Element::initLink(const QList<Element *> &candidates)
 				elmt->linkToElement(this);
 				if (tmp_uuids_link[i].group_index >= 0) {
 					m_group_index_map[elmt] = tmp_uuids_link[i].group_index;
+					applyContactGroupLabels(elmt, tmp_uuids_link[i].group_index);
 				}
 				break;
 			}
@@ -2181,6 +2231,53 @@ void Element::setGroupIndexForElement(Element *elmt, int index)
 		m_group_index_map[elmt] = index;
 	} else {
 		m_group_index_map.remove(elmt);
+	}
+}
+
+/**
+	@brief Element::applyContactGroupLabels
+	Give the terminals of @p slave the names of contact group @p index of
+	this master (Terminal::name()): the terminals of the slave, sorted by
+	their own names, take the labels of the group in order (for a PLC
+	master, the terminals of its I/O number @p index).
+	Done when the link is made (LinkElementCommand) and again when the link
+	is read back (initLink()): the terminal of a placed symbol saves only
+	its position and orientation, so this is not in the file, and without
+	it the contact numbers vanish once the project is reopened (bug 346).
+	@param slave the slave linked to this master
+	@param index the contact group of this master the slave is assigned to
+*/
+void Element::applyContactGroupLabels(Element *slave, int index) const
+{
+	if (!slave || index < 0 || linkType() != Master) {
+		return;
+	}
+
+	QStringList labels;
+	if (m_data.m_master_type == ElementData::PLC) {
+		const auto &ios = m_data.plcMasterData().ios;
+		if (index >= ios.size()) {
+			return;
+		}
+		labels = ios.at(index).effectiveTerminals();
+	} else {
+		const auto &groups = m_data.m_slave_contact_groups;
+		if (index >= groups.size()) {
+			return;
+		}
+		labels = groups.at(index).labels;
+	}
+
+	QList<Terminal *> slave_terms = slave->terminals();
+	QCollator collator;
+	collator.setNumericMode(true);
+	std::sort(slave_terms.begin(), slave_terms.end(),
+			  [&collator](Terminal *a, Terminal *b) {
+		return collator.compare(a->baseName(), b->baseName()) < 0;
+	});
+	for (int i = 0; i < slave_terms.size() && i < labels.size(); ++i) {
+		slave_terms.at(i)->setUseMasterLabel(true);
+		slave_terms.at(i)->setMasterLabelIndex(i);
 	}
 }
 
@@ -2895,11 +2992,16 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 		const QUuid scheme_id = autonum_project->elementAutoNumId(element_currentAutoNum);
 		setFormulaSchemeId(formula.isEmpty() ? QUuid() : scheme_id);
 
+			//A rule which counts per folio counts for the folio the element
+			//is placed on: its own counter, not wherever the project's counter
+			//was left by numbering some other folio.
+		NumerotationContext given = autonum::folioCounters(
+					nc, diagram(), element_currentAutoNum);
+
 			//The number given is the first whose label no other element of
 			//the project carries: a counter set back, or an element which
 			//was given a number by hand, must not make a second element
 			//with the same label. The counter then goes on from there.
-		NumerotationContext given = nc;
 		if (!formula.isEmpty())
 		{
 			const QSet<QString> held = ElementAutoNumSchemeCommand::labelsHeldBesides(
@@ -2934,6 +3036,10 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 					   diagram(),
 					   element_currentAutoNum);
 		setSequenceStruct(numbers);
+			//Where this folio's own counter has got to: the numbers it has
+			//handed out, not only the highest it ever handed out, so that a
+			//counter put back by hand stays where the user put it.
+		autonum::storeFolioSequential(diagram(), element_currentAutoNum, numbers);
 
 		NumerotationContext new_context = ncc.next();
 		QETProject *project = diagram()->project();
@@ -3181,8 +3287,81 @@ QString Element::infoForDisplay(const QString &info_name)
 	if (info_name == QETInformation::ELMT_TERMINAL_NUMBER) {
 		return terminalNumberForDisplay();
 	}
+	if (info_name == QETInformation::ELMT_CONDUCTOR_TEXT) {
+		return conductorTextForDisplay();
+	}
+	if (m_data.m_type == ElementData::Terminal
+		&& QETInformation::isTerminalConductorInfo(info_name)) {
+		return conductorInfoForDisplay(info_name);
+	}
 
 	return m_data.m_informations.value(info_name).toString();
+}
+
+/**
+	@brief Element::conductorTextForDisplay
+	@return the distinct texts of the wires on the terminals of this
+	terminal symbol, in the order of its terminals and joined with a
+	space; empty for any other symbol. Display only, nothing is stored.
+*/
+QString Element::conductorTextForDisplay()
+{
+	return conductorInfoForDisplay(QETInformation::ELMT_CONDUCTOR_TEXT);
+}
+
+/**
+	@brief Element::conductorInfoForDisplay
+	@param info_name : one of QETInformation::terminalConductorInfoKeys()
+	@return the distinct values of the wire property @p info_name reads,
+	on every terminal of this terminal symbol or only on the connection
+	point it names, in the order of its terminals and joined with a
+	space; empty for any other symbol. Display only, nothing is stored.
+*/
+QString Element::conductorInfoForDisplay(const QString &info_name)
+{
+	QString property;
+	int connection = 0;
+	if (m_data.m_type != ElementData::Terminal
+		|| !QETInformation::isTerminalConductorInfo(info_name, &property, &connection)
+		|| connection > m_terminals.size()) {
+		return QString();
+	}
+
+	const QList<Terminal *> terminals = connection
+			? QList<Terminal *>{m_terminals.at(connection - 1)}
+			: m_terminals;
+
+	QStringList values;
+	for (Terminal *terminal : terminals) {
+		for (Conductor *conductor : terminal->conductors()) {
+			const ConductorProperties p = conductor->properties();
+			const QString value = property == QETInformation::COND_COLOR   ? p.m_wire_color
+								: property == QETInformation::COND_SECTION ? p.m_wire_section
+																			: p.text;
+			if (!value.isEmpty() && !values.contains(value)) {
+				values << value;
+			}
+		}
+	}
+	return values.join(QLatin1Char(' '));
+}
+
+/**
+	@brief Element::addDisplayValues
+	Add to @p dc the values a text shows differently from how they are stored.
+*/
+void Element::addDisplayValues(DiagramContext &dc)
+{
+	dc.addValue(QETInformation::ELMT_LABEL,            labelForDisplay());
+	dc.addValue(QETInformation::ELMT_TERMINAL_NUMBER, terminalNumberForDisplay());
+	dc.addValue(QETInformation::ELMT_CONDUCTOR_TEXT,  conductorTextForDisplay());
+
+	if (m_data.m_type == ElementData::Terminal) {
+		for (const QString &key
+			 : QETInformation::terminalConductorInfoKeys(m_terminals.size())) {
+			dc.addValue(key, conductorInfoForDisplay(key));
+		}
+	}
 }
 
 /**
@@ -3223,11 +3402,17 @@ ElementsLocation Element::location() const
 	If the definition cannot be found or read, the current drawing is kept
 	and Unavailable is returned, so the element never goes blank.
 
+	With @p adopt_frame, only the terminals have to match: a new size or
+	hotspot is taken over with the drawing. The terminals and the element
+	position stay where they are, only the frame -- the hover outline and
+	the area that catches clicks -- follows the definition.
+
 	Purely visual: nothing is pushed on the undo stack and the project is
 	not marked as modified.
+	@param adopt_frame : take over a changed size and hotspot
 	@return what happened to this element
 */
-Element::ReloadPictureResult Element::reloadPicture()
+Element::ReloadPictureResult Element::reloadPicture(bool adopt_frame)
 {
 	if (!m_location.exist()) {
 		return ReloadPictureResult::Unavailable;
@@ -3238,7 +3423,7 @@ Element::ReloadPictureResult Element::reloadPicture()
 		return ReloadPictureResult::Unavailable;
 	}
 
-	if (!definitionGeometryMatches(definition)) {
+	if (!definitionGeometryMatches(definition, !adopt_frame)) {
 		return ReloadPictureResult::GeometryChanged;
 	}
 
@@ -3251,8 +3436,16 @@ Element::ReloadPictureResult Element::reloadPicture()
 		return ReloadPictureResult::Unavailable;
 	}
 
+	if (adopt_frame) {
+		setSize(definition.attribute(QStringLiteral("width")).toInt(),
+				definition.attribute(QStringLiteral("height")).toInt());
+		setHotspot(QPoint(definition.attribute(QStringLiteral("hotspot_x")).toInt(),
+						  definition.attribute(QStringLiteral("hotspot_y")).toInt()));
+	}
+
 	m_picture = picture;
 	m_low_zoom_picture = low_zoom_picture;
+	updateDrawnRect();
 	updateSymbolPictures(true);
 	update();
 	return ReloadPictureResult::Reloaded;
@@ -3265,10 +3458,12 @@ Element::ReloadPictureResult Element::reloadPicture()
 	and the set of terminal positions (same parsing rules as
 	TerminalData::fromXml()).
 	@param definition : the <definition> root of the element
+	@param check_frame : false to compare the terminals only
 	@return true if the new drawing can be applied without desynchronizing
 	the bounding rect or the terminals
 */
-bool Element::definitionGeometryMatches(const QDomElement &definition) const
+bool Element::definitionGeometryMatches(const QDomElement &definition,
+										bool check_frame) const
 {
 	int w = 0, h = 0, hot_x = 0, hot_y = 0;
 	if (!QET::attributeIsAnInteger(definition, QStringLiteral("width"), &w)         ||
@@ -3281,7 +3476,7 @@ bool Element::definitionGeometryMatches(const QDomElement &definition) const
 		//Same rounding as setSize()
 	while (w % 10) ++w;
 	while (h % 10) ++h;
-	if (QSize(w, h) != dimensions) {
+	if (check_frame && QSize(w, h) != dimensions) {
 		return false;
 	}
 
@@ -3289,7 +3484,7 @@ bool Element::definitionGeometryMatches(const QDomElement &definition) const
 	const QPoint new_hotspot = dimensions.isNull()
 			? QPoint(0, 0)
 			: QPoint(qMin(hot_x, w), qMin(hot_y, h));
-	if (new_hotspot != hotspot_coord) {
+	if (check_frame && new_hotspot != hotspot_coord) {
 		return false;
 	}
 
@@ -3338,6 +3533,19 @@ bool Element::definitionGeometryMatches(const QDomElement &definition) const
 }
 
 /**
+ * @brief Element::watchConductorText
+ * Slot triggered when a wire is connected to a terminal of this symbol:
+ * the texts which show its number follow it when it changes.
+ */
+void Element::watchConductorText(Conductor *conductor)
+{
+	if (conductor) {
+		connect(conductor, &Conductor::propertiesChange, this, &Element::updateConductorTexts, Qt::UniqueConnection);
+	}
+	updateConductorTexts();
+}
+
+/**
  * @brief Element::updateConductorTexts
  * Refresh the texts of this symbol that show the properties of the wire
  * it is on: a wire label's own, and a folio report's (its function,
@@ -3346,6 +3554,18 @@ bool Element::definitionGeometryMatches(const QDomElement &definition) const
  */
 void Element::updateConductorTexts()
 {
+	if (m_data.m_type == ElementData::Terminal)
+	{
+			//Only the texts which read the wires: the others have
+			//nothing to refresh
+		for (DynamicElementTextItem *deti : m_dynamic_text_list) {
+			if (deti && (QETInformation::isTerminalConductorInfo(deti->infoName())
+						 || QETInformation::usesTerminalConductorInfo(deti->compositeText()))) {
+				deti->refreshConductorText();
+			}
+		}
+	}
+
 	if (m_link_type == Element::ConductorDefinition)
 	{
 		for (DynamicElementTextItem *deti : m_dynamic_text_list) {

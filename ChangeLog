@@ -19,6 +19,7 @@ Since 0.100, development has centered on a new headless command-line workflow, t
 - Wiring list and wire-number list can now be exported to CSV, both from the GUI and the CLI.
 - **Diagram duplication**
 - Diagrams/folios can now be duplicated along with all their metadata and embedded elements.
+- A page copied with a numbering that starts again on every page is numbered from its own page (1, 2, 3), not from wherever the project's counter had got to.
 - **BOM / Nomenclature**
 - Specific elements can now be excluded from the Bill of Materials (Nomenclature).
 - **Terminal & cross-reference (Xref) work**
@@ -48,6 +49,7 @@ Since 0.100, development has centered on a new headless command-line workflow, t
 - Fixed a crash when destroying a `QETProject` before its asynchronous backup had finished.
 - Fixed regional system locale sometimes loading the wrong translation.
 - Fixed dynamic element text shifting/jumping when duplicating diagrams, and a wiring-list filter/timing issue.
+- Putting an element numbering counter back in the Auto numbering dock now writes it into the page it is put back on, so that page reads the value set instead of an older high one the next time it is opened.
 - Various smaller fixes: a first-click spurious element move right after selecting a tool, an -Wreorder compiler warning, and several translation corrections (German, French, Chinese).
 
 ### macOS

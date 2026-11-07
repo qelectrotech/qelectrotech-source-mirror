@@ -18,6 +18,7 @@
 
 #include <QObject>
 #include <QHash>
+#include <QRegularExpression>
 #include "qetinformation.h"
 
 /**
@@ -89,7 +90,8 @@ QStringList QETInformation::folioReportInfoKeys()
 						 COND_FUNCTION,
 						 COND_TENSION_PROTOCOL,
 						 COND_COLOR,
-						 COND_SECTION };
+						 COND_SECTION,
+						 COND_TYPE };
 
 	return list;
 }
@@ -101,6 +103,7 @@ QHash<QString, QString> QETInformation::folioReportInfoKeyToVar()
 	H_.insert(COND_TENSION_PROTOCOL, infoToVar(COND_TENSION_PROTOCOL));
 	H_.insert(COND_COLOR,            infoToVar(COND_COLOR));
 	H_.insert(COND_SECTION,          infoToVar(COND_SECTION));
+	H_.insert(COND_TYPE,             infoToVar(COND_TYPE));
 
 	return H_;
 }
@@ -120,7 +123,8 @@ QStringList QETInformation::conductorInfoKeys()
 						  COND_FUNCTION,
 						  COND_TENSION_PROTOCOL,
 						  COND_COLOR,
-						  COND_SECTION };
+						  COND_SECTION,
+						 COND_TYPE };
 	return  list;
 }
 
@@ -207,6 +211,69 @@ QStringList QETInformation::elementInfoKeys()
 					 ELMT_XREF,
 					 "exclude_from_bom" };
 	return list;
+}
+
+/**
+	@brief QETInformation::terminalConductorInfoKeys
+	@param connection_count : number of connection points of the symbol
+	@return the information a text of a terminal symbol can read from the
+	wires on it: the wire number, colour and section of all its wires,
+	then of the wires of each connection point (conductor_text_1 ...),
+	numbered from 1 from top to bottom, then left to right.
+	Nothing of it is stored in the symbol.
+*/
+QStringList QETInformation::terminalConductorInfoKeys(int connection_count)
+{
+	const QStringList properties = { ELMT_CONDUCTOR_TEXT,
+									 COND_COLOR,
+									 COND_SECTION };
+	QStringList list = properties;
+	for (int i = 1 ; i <= connection_count ; ++i) {
+		for (const QString &property : properties) {
+			list << property + QLatin1Char('_') + QString::number(i);
+		}
+	}
+	return list;
+}
+
+/**
+	@brief QETInformation::isTerminalConductorInfo
+	@param info : an information key
+	@param property : if not null, set to the wire property @p info reads
+	(ELMT_CONDUCTOR_TEXT, COND_COLOR or COND_SECTION)
+	@param connection : if not null, set to the connection point @p info
+	reads, from 1, or 0 for every connection point
+	@return true if @p info is one of terminalConductorInfoKeys()
+*/
+bool QETInformation::isTerminalConductorInfo(const QString &info,
+											 QString *property,
+											 int *connection)
+{
+	static const QRegularExpression rx(
+				QStringLiteral("^(conductor_text|conductor_color|conductor_section)(?:_([1-9]\\d*))?$"));
+	const QRegularExpressionMatch match = rx.match(info);
+	if (!match.hasMatch()) {
+		return false;
+	}
+	if (property) {
+		*property = match.captured(1);
+	}
+	if (connection) {
+		*connection = match.captured(2).toInt();
+	}
+	return true;
+}
+
+/**
+	@brief QETInformation::usesTerminalConductorInfo
+	@return true if @p composite_text reads one of
+	terminalConductorInfoKeys(), and so changes when a wire does
+*/
+bool QETInformation::usesTerminalConductorInfo(const QString &composite_text)
+{
+	return composite_text.contains(QLatin1String("%{conductor_text"))
+			|| composite_text.contains(QLatin1String("%{conductor_color"))
+			|| composite_text.contains(QLatin1String("%{conductor_section"));
 }
 
 /**
@@ -331,6 +398,7 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == COND_TENSION_PROTOCOL)            return QObject::tr("Voltage / Protocol");
 	else if (info == COND_COLOR)                       return QObject::tr("Wire color");
 	else if (info == COND_SECTION)                     return QObject::tr("Wire section");
+	else if (info == COND_TYPE)                        return QObject::tr("Conductor type");
 	else if (info == COND_TEXT)                        return QObject::tr("Text");
 	else if (info == COND_FORMULA)                     return QObject::tr("Text Formula");
 	else if (info == ELMT_AUX1)                        return QObject::tr("Auxiliary block 1");
@@ -375,7 +443,16 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == ELMT_PLC_COMMENT)                       return QObject::tr("PLC comment");
 	else if (info == ELMT_PLC_CROSSREF)                      return QObject::tr("PLC cross-reference");
 	else if (info == ELMT_XREF)                          return QObject::tr("Cross-reference");
-	else return QString();
+	else if (info == QLatin1String("exclude_from_bom"))  return QObject::tr("Exclude from the bill of materials");
+	else if (info == ELMT_CONDUCTOR_TEXT)                return QObject::tr("Wire number");
+
+	QString property;
+	int connection = 0;
+	if (isTerminalConductorInfo(info, &property, &connection) && connection) {
+		return QObject::tr("%1, connection point %2")
+				.arg(translatedInfoKey(property)).arg(connection);
+	}
+	return QString();
 }
 
 QStringList QETInformation::elementEditorElementInfoKeys()

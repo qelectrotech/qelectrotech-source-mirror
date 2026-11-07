@@ -70,6 +70,8 @@ add_executable(tst_darkimagelayers tst_darkimagelayers.cpp
   ${QET_DIR}/sources/palettegraphicsview.cpp ${QET_DIR}/sources/palettegraphicsview.h
   ${QET_DIR}/sources/qetpalette.cpp)
 add_test(NAME tst_darkimagelayers COMMAND tst_darkimagelayers)
+set_tests_properties(tst_darkimagelayers PROPERTIES
+  ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_darkimagelayers PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_darkimagelayers PRIVATE Qt::Test Qt::Widgets)
 # MSVC's Debug libraries make QElectroTech five to eight times slower than a
@@ -206,7 +208,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/auto_connect_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/auto_connect.qet)
-  set_tests_properties(tst_autoconnectintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_autoconnectintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Corners, T-junctions and folio reports placed along a drag, one on
   # each line it crosses, joined automatically, in one undo step.
@@ -215,7 +217,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/auto_connect_drag_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/auto_connect_drag.qet)
-  set_tests_properties(tst_autoconnectdragintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+  set_tests_properties(tst_autoconnectdragintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
@@ -278,6 +280,13 @@ add_executable(tst_dimensionitem tst_dimensionitem.cpp)
 add_test(NAME tst_dimensionitem COMMAND tst_dimensionitem)
 target_include_directories(tst_dimensionitem PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_dimensionitem PRIVATE qelectrotech_objects Qt::Test)
+
+# The project file of a crash-recovery file, from the URL that QElectroTech's
+# own KAutoSaveFile gives and from the one KDE's gives.
+add_executable(tst_autosavemanagedfilepath tst_autosavemanagedfilepath.cpp)
+add_test(NAME tst_autosavemanagedfilepath COMMAND tst_autosavemanagedfilepath)
+target_include_directories(tst_autosavemanagedfilepath PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_autosavemanagedfilepath PRIVATE qelectrotech_objects Qt::Test)
 
 # positionorder.h is header-only: the position comparisons behind element
 # renumbering and terminal numbering, as strict weak orderings for std::sort.
@@ -463,10 +472,28 @@ qet_add_app_test(tst_duplicatelabels tst_duplicatelabels.cpp)
 target_compile_definitions(tst_duplicatelabels PRIVATE
   QET_TEST_TRANSLATIONS_DIR="${CMAKE_BINARY_DIR}/lang")
 add_dependencies(tst_duplicatelabels qelectrotech_lrelease)
+# Copying a folio whose numbering counts per folio ("Zahlenformat 1 - Seite"):
+# the copy is numbered from its own folio, starting at 1 like the page it was
+# made from, and that folio's counter reads the numbers it has handed out.
+qet_add_app_test(tst_folioautonumcopy tst_folioautonumcopy.cpp)
+# The labels file behind a symbol's prefix is read once, and again only when it changes.
+qet_add_app_test(tst_labelsfilecache tst_labelsfilecache.cpp)
+# A quick second click on the same spot reaches the shape tools as a
+# double-click: it must still start the next line, rectangle or ellipse.
+qet_add_app_test(tst_shapequickclick tst_shapequickclick.cpp)
+# While a tool runs, a double-click it does not use reaches it as a click
+# and never opens the properties of the item under the cursor.
+qet_add_app_test(tst_tooldoubleclick tst_tooldoubleclick.cpp)
+# The symbol editor's text and dynamic text field editors have a colour
+# button, with KDE Frameworks and without them.
+qet_add_app_test(tst_textcolourbutton tst_textcolourbutton.cpp)
 # A conductor's colour and section at a slanted stroke across it.
 qet_add_app_test(tst_conductordefinitionmark tst_conductordefinitionmark.cpp)
 target_compile_definitions(tst_conductordefinitionmark PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
+# A copy of a conductor definition keeps the point its right-aligned texts
+# stand on, as a copy of a folio report does.
+qet_add_app_test(tst_conductordefcopy tst_conductordefcopy.cpp)
 # The projects of the last session are opened again at start, and the
 # ones open when the editor closes are kept for the next start.
 qet_add_app_test(tst_reopenprojects tst_reopenprojects.cpp)
@@ -493,6 +520,11 @@ target_compile_definitions(tst_multielementinfo PRIVATE
 # An elements collection item set up after the application object is gone.
 qet_add_app_test(tst_collectionitemafterquit tst_collectionitemafterquit.cpp)
 
+# The model stops its loading threads when the application quits (#1689).
+qet_add_app_test(tst_collectionmodelquit tst_collectionmodelquit.cpp)
+target_compile_definitions(tst_collectionmodelquit PRIVATE
+  "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
 # Accepting the settings dialog writes qet-assistant.json with the
 # collection paths just chosen, not the ones they replace.
 qet_add_app_test(tst_assistantinfopaths tst_assistantinfopaths.cpp)
@@ -515,6 +547,7 @@ qet_add_app_test(tst_terminalcableauto tst_terminalcableauto.cpp)
 # drawing changes; the stored label, the numbering and the exports keep
 # the whole label.
 qet_add_app_test(tst_terminallabeldisplay tst_terminallabeldisplay.cpp)
+qet_add_app_test(tst_terminalconductortext tst_terminalconductortext.cpp)
 
 # The bridge drawn over terminals: what a bridge holds (colour, how many
 # terminals it may take, its sections), which terminals a line about to be
@@ -525,6 +558,20 @@ qet_add_app_test(tst_bridgetool tst_bridgetool.cpp)
 # Escape during a picture's resize, rotate or pivot drag puts it back, keeps
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
+
+# The zoom step (a setting, off by default): zooming goes by a fixed number
+# of percent, also from between two steps and from a smooth mouse wheel.
+qet_add_app_test(tst_zoomstep tst_zoomstep.cpp)
+
+# A conductor between two terminals on the same point (symbols placed
+# against each other) connects them but is not drawn nor clicked.
+qet_add_app_test(tst_touchingconductor tst_touchingconductor.cpp)
+# A symbol that draws beyond its frame is drawn whole, at every zoom: its
+# bounding rect covers the drawing, not only the frame.
+qet_add_app_test(tst_symboloutsideframe tst_symboloutsideframe.cpp)
+qet_add_app_test(tst_updateelements tst_updateelements.cpp)
+qet_add_app_test(tst_selectionrectangle tst_selectionrectangle.cpp)
+qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
 
 # A folio's pictures, decoded in parallel, each come back with its own
 # pixels and position; an <image> with no picture does not stop the others.
@@ -591,6 +638,10 @@ qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
 # Location and Label of the first piece its wires land on past the strip, in
 # plan order, the same three fields the cable list computes for a target.
 qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
+
+# What lies outside the sheet: named per folio, for the warning before
+# printing and exporting; off with the setting.
+qet_add_app_test(tst_outsidesheet tst_outsidesheet.cpp)
 
 # legacyelementtypes.h is header-only: the rewrite of element type names in
 # nomenclature queries saved before June 2022.
@@ -664,6 +715,16 @@ add_executable(
 add_test(NAME tst_groupedbom COMMAND tst_groupedbom)
 target_include_directories(tst_groupedbom PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_groupedbom PRIVATE Qt::Test Qt::Sql)
+
+# The formulas of a table column compile to SQLite expressions.
+add_executable(
+  tst_formulabuilder
+  tst_formulabuilder.cpp
+  ${QET_DIR}/sources/formulabuilder.cpp
+  ${QET_DIR}/sources/formulabuilder.h)
+add_test(NAME tst_formulabuilder COMMAND tst_formulabuilder)
+target_include_directories(tst_formulabuilder PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_formulabuilder PRIVATE Qt::Test Qt::Sql)
 
 # qet.cpp carries the SingleApplication argument wire format
 # (joinWithSpaces/splitWithSpaces); it pulls in qeticons and shortcutmanager,
@@ -935,6 +996,8 @@ add_executable(
   tst_menubarkeyboard
   tst_menubarkeyboard.cpp)
 add_test(NAME tst_menubarkeyboard COMMAND tst_menubarkeyboard)
+set_tests_properties(tst_menubarkeyboard PROPERTIES
+  ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_menubarkeyboard PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_menubarkeyboard PRIVATE Qt::Test Qt::Widgets)
 
@@ -1515,6 +1578,18 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 endif()
 
+# A free text can lead to a folio: saved, in the project database, and a PDF link.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_textdestination
+    tst_textdestination.cpp)
+  add_test(NAME tst_textdestination COMMAND tst_textdestination)
+  add_dependencies(tst_textdestination qelectrotech)
+  target_link_libraries(tst_textdestination PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_textdestination PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+endif()
+
 # The texts of a placed symbol and their groups are in the project database
 # (element_text_value), from a built folio or from the document. QET-SQL-FORMAT S3l.
 if(QET_HAS_SCRIPTING)
@@ -1815,6 +1890,21 @@ add_executable(
 add_test(NAME tst_conductordashpattern COMMAND tst_conductordashpattern)
 target_include_directories(tst_conductordashpattern PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductordashpattern PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
+# The conductor type of a wire: written only when it is set, read back
+# the way it was written, and offered in the dynamic text fields
+add_executable(
+  tst_conductortypefield
+  tst_conductortypefield.cpp
+  ${QET_DIR}/sources/conductorproperties.cpp
+  ${QET_DIR}/sources/conductordashpattern.cpp
+  ${QET_DIR}/sources/qetinformation.cpp
+  ${QET_DIR}/sources/qet.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_conductortypefield COMMAND tst_conductortypefield)
+target_include_directories(tst_conductortypefield PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_conductortypefield PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
 # ConductorProperties::fromSettings() -- the default conductor width is a
 # decimal and comes back as saved (1.4 used to be read as 0).
@@ -2123,71 +2213,91 @@ qet_add_app_test(tst_uprighttexts tst_uprighttexts.cpp)
 target_compile_definitions(tst_uprighttexts PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
 
-# New tests go above this line: the blocks below apply to the tests above them.
 # What the status bar says an item of a folio is: a symbol with its label
 # and name, a text of a symbol, a free text, a wire, a shape...
 qet_add_app_test(tst_itemdescription tst_itemdescription.cpp)
 # The selection properties dock scrolls its editors in a low window rather
 # than its smallest height pushing the dock below over its last rows.
 qet_add_app_test(tst_propertiesdockscroll tst_propertiesdockscroll.cpp)
+# Dragging a symbol's text moves the symbol, Shift+drag the text, or the
+# other way round with "Drag symbol texts without holding Shift" (#1576).
+qet_add_app_test(tst_dragtextswithoutshift tst_dragtextswithoutshift.cpp)
+# Potential types (#1539): a project that asks for it draws a conductor in the
+# colour, line style and width of its potential type.
+qet_add_app_test(tst_potentialtypes tst_potentialtypes.cpp)
 
-# MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
-# Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
-# PATH for every test above and keeps the ENVIRONMENT each test sets
-# (QT_QPA_PLATFORM=offscreen, ...); it needs CMake 3.22.
-if(MSVC)
-  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
-  if(CMAKE_VERSION VERSION_LESS 3.22)
-    message(WARNING
-      "CMake ${CMAKE_VERSION} cannot add Qt's bin folder to the tests' PATH "
-      "(ENVIRONMENT_MODIFICATION needs 3.22): put it on PATH before running "
-      "ctest.")
-  elseif(qet_qttests)
-    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
-      "PATH=path_list_prepend:$<TARGET_FILE_DIR:Qt6::Core>")
-  endif()
-endif()
+# A core of a cable: section, colour and type are locked in the dialog and
+# show a small sign saying why, so an edit cannot write over the cable
+qet_add_app_test(tst_cablelockedfields tst_cablelockedfields.cpp)
 
-# Windows: a program without a console sends Qt's messages, and with them
-# QtTest's report, to the debugger, so ctest --output-on-failure showed
-# nothing. QT_FORCE_STDERR_LOGGING sends them to stderr, where ctest reads
-# them. ENVIRONMENT_MODIFICATION keeps the ENVIRONMENT each test sets; it
-# needs CMake 3.22.
-if(WIN32 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
-  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
-  if(qet_qttests)
-    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
-      "QT_FORCE_STDERR_LOGGING=set:1")
-  endif()
-endif()
-
-# MSVC: its Debug libraries make QElectroTech five to eight times slower,
-# and some tests run scripts that then pass QElectroTech's 30 s script limit.
-# QET_SCRIPT_TIMEOUT_MS gives them 300 s. Needs CMake 3.22, as above.
-if(MSVC AND NOT CMAKE_VERSION VERSION_LESS 3.22)
-  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
-  if(qet_qttests)
-    set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
-      "QET_SCRIPT_TIMEOUT_MS=set:300000")
-  endif()
-endif()
-
-# The tests' own time limits, scaled as ctest's are (see
-# qet_test_timeout_scale above), and QtTest's limit for one test function,
-# 300 s by default, unless a test sets its own (scaled where it is set).
-# Needs CMake 3.22, as above.
-if(qet_test_timeout_scale GREATER 1 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
-  math(EXPR qet_test_function_timeout "300000 * ${qet_test_timeout_scale}")
-  get_property(qet_qttests DIRECTORY PROPERTY TESTS)
-  foreach(qet_qttest IN LISTS qet_qttests)
-    set_property(TEST ${qet_qttest} APPEND PROPERTY ENVIRONMENT_MODIFICATION
-      "QET_TEST_TIMEOUT_SCALE=set:${qet_test_timeout_scale}")
-    get_test_property(${qet_qttest} ENVIRONMENT qet_test_env)
-    if(NOT qet_test_env MATCHES "QTEST_FUNCTION_TIMEOUT=")
-      set_property(TEST ${qet_qttest} APPEND PROPERTY ENVIRONMENT_MODIFICATION
-        "QTEST_FUNCTION_TIMEOUT=set:${qet_test_function_timeout}")
+# Settings for every test. get_property(... TESTS) only sees the tests added
+# so far, so they wait for the end of this file: a test takes them wherever
+# it is listed. cmake_language(DEFER) needs CMake 3.19, and without
+# ENVIRONMENT_MODIFICATION (3.22) only the warning below is left.
+function(qet_apply_test_settings)
+  # MSVC: the tests need Qt's DLLs, and a Visual Studio build does not put
+  # Qt's bin folder on PATH. ENVIRONMENT_MODIFICATION puts it in front of
+  # PATH for every test and keeps the ENVIRONMENT each test sets
+  # (QT_QPA_PLATFORM=offscreen, ...); it needs CMake 3.22.
+  if(MSVC)
+    get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+    if(CMAKE_VERSION VERSION_LESS 3.22)
+      message(WARNING
+        "CMake ${CMAKE_VERSION} cannot add Qt's bin folder to the tests' PATH "
+        "(ENVIRONMENT_MODIFICATION needs 3.22): put it on PATH before running "
+        "ctest.")
+    elseif(qet_qttests)
+      set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+        "PATH=path_list_prepend:$<TARGET_FILE_DIR:Qt6::Core>")
     endif()
-  endforeach()
+  endif()
+
+  # Windows: a program without a console sends Qt's messages, and with them
+  # QtTest's report, to the debugger, so ctest --output-on-failure showed
+  # nothing. QT_FORCE_STDERR_LOGGING sends them to stderr, where ctest reads
+  # them. ENVIRONMENT_MODIFICATION keeps the ENVIRONMENT each test sets; it
+  # needs CMake 3.22.
+  if(WIN32 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
+    get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+    if(qet_qttests)
+      set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+        "QT_FORCE_STDERR_LOGGING=set:1")
+    endif()
+  endif()
+
+  # MSVC: its Debug libraries make QElectroTech five to eight times slower,
+  # and some tests run scripts that then pass QElectroTech's 30 s script limit.
+  # QET_SCRIPT_TIMEOUT_MS gives them 300 s. Needs CMake 3.22, as above.
+  if(MSVC AND NOT CMAKE_VERSION VERSION_LESS 3.22)
+    get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+    if(qet_qttests)
+      set_property(TEST ${qet_qttests} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+        "QET_SCRIPT_TIMEOUT_MS=set:300000")
+    endif()
+  endif()
+
+  # The tests' own time limits, scaled as ctest's are (see
+  # qet_test_timeout_scale above), and QtTest's limit for one test function,
+  # 300 s by default, unless a test sets its own (scaled where it is set).
+  # Needs CMake 3.22, as above.
+  if(qet_test_timeout_scale GREATER 1 AND NOT CMAKE_VERSION VERSION_LESS 3.22)
+    math(EXPR qet_test_function_timeout "300000 * ${qet_test_timeout_scale}")
+    get_property(qet_qttests DIRECTORY PROPERTY TESTS)
+    foreach(qet_qttest IN LISTS qet_qttests)
+      set_property(TEST ${qet_qttest} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+        "QET_TEST_TIMEOUT_SCALE=set:${qet_test_timeout_scale}")
+      get_test_property(${qet_qttest} ENVIRONMENT qet_test_env)
+      if(NOT qet_test_env MATCHES "QTEST_FUNCTION_TIMEOUT=")
+        set_property(TEST ${qet_qttest} APPEND PROPERTY ENVIRONMENT_MODIFICATION
+          "QTEST_FUNCTION_TIMEOUT=set:${qet_test_function_timeout}")
+      endif()
+    endforeach()
+  endif()
+endfunction()
+if(CMAKE_VERSION VERSION_LESS 3.19)
+  qet_apply_test_settings()
+else()
+  cmake_language(DEFER CALL qet_apply_test_settings)
 endif()
 
 # The folio properties dialog's paper size: choosing A4, A3 and A4 again

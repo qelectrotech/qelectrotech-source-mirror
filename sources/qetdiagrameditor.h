@@ -70,6 +70,12 @@ class QETDiagramEditor : public QETMainWindow
         friend class MacroRecorder;
 	
 	public:
+			/// Warn about what lies outside the sheet (Settings > General)
+		static bool warnsOutsideSheet();
+		static void setWarnsOutsideSheet(bool on);
+		static QStringList outsideSheetReport(const QList<Diagram *> &folios);
+		static bool confirmOutsideSheet(QWidget *parent, const QList<Diagram *> &folios);
+		static QString outsideSheetSaveHint(QETProject *project);
 		QETDiagramEditor(
 				const QStringList & = QStringList(),
 				QWidget * = nullptr);
@@ -98,6 +104,8 @@ class QETDiagramEditor : public QETMainWindow
 		void tellRepair(QETProject *project);
 		bool openAsRecovered(const QString &source, const QString &original);
 		static QString recoveredPath(const QString &filepath, const QString &suffix);
+		void reloadElementDrawings(QETProject *project, bool adopt_frame,
+								   const QString &title, const QString &intro);
 		// Declared first so it is initialised before any member whose
 		// constructor may dispatch a Qt event calling event() (e.g. the
 		// QActionGroup members below trigger QObject::setParent events).
@@ -135,6 +143,7 @@ class QETDiagramEditor : public QETMainWindow
 		QMdiSubWindow *subWindowForWidget(QWidget *) const;
 		void updateUsageTrackersActiveState();
 		void updateWindowModifiedState();
+		void showOutsideSheetAfterSave(QETProject *project);
 
 	signals:
 		void syncElementsPanel();
@@ -192,6 +201,7 @@ class QETDiagramEditor : public QETMainWindow
 		void slot_terminalNumbering();
 		void slot_cableNumbering();
 		void slot_reloadElementDrawings();
+		void slot_updateElementsFromCollections();
 #ifdef QET_HAS_SCRIPTING
 		void slot_runScript();
 		void rebuildScriptActions();
@@ -243,6 +253,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_copy_text_format = nullptr,  ///< Copy label/text formatting template
 		*m_apply_text_format = nullptr, ///< Apply label/text formatting template
 		*m_place_texts = nullptr,	///< Place the texts of the selected symbols at one of nine points
+		*m_text_destination = nullptr,	///< Choose the folio a selected free text leads to
 		*m_text_clearance = nullptr;	///< Move texts off the wires they sit on
 		
 		QActionGroup
@@ -266,6 +277,7 @@ class QETDiagramEditor : public QETMainWindow
 		m_file_actions_group;     ///Actions related to file (open, close, save...)
 		
 		QAction* m_find_duplicate_labels = nullptr;
+		QAction* m_check_potentials = nullptr;
 		QAction* m_project_languages = nullptr;
 
 		QAction
@@ -317,6 +329,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_add_cable_list,             ///< Add a cable list graphics item
 		*m_export_cable_list,          ///< Export the cable list of the project to CSV
 		*m_reload_element_drawings,    ///< Action to redraw every placed element from its current definition
+		*m_update_elements_from_collections, ///< Action to replace embedded elements changed in their collection
 #ifdef QET_HAS_SCRIPTING
 		*m_run_script,                 ///< Action to run a JavaScript macro against the current project
 		*m_open_scripts_folder,        ///< Action to open the folder stored scripts are read from

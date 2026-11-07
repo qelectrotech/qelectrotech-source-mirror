@@ -35,6 +35,7 @@ set(QET_SPACEMOUSE_ENABLED FALSE)
 set(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED FALSE)
 set(QET_SPACEMOUSE_BACKEND_HID_ENABLED FALSE)
 set(QET_SPACEMOUSE_BACKEND_CONNEXION_ENABLED FALSE)
+set(QET_HIDAPI_TARGET "")
 
 if(QET_ENABLE_SPACEMOUSE)
     find_package(PkgConfig)
@@ -64,14 +65,28 @@ if(QET_ENABLE_SPACEMOUSE)
     endif()
 
     # hidapi: hidapi-hidraw.pc on Linux (libhidapi-dev), hidapi.pc from
-    # MSYS2 (mingw-w64-ucrt-x86_64-hidapi) and Homebrew (hidapi).
-    if(NOT QET_SPACEMOUSE_ENABLED AND _qet_spacemouse_try_hid AND PkgConfig_FOUND)
-        pkg_search_module(HIDAPI IMPORTED_TARGET hidapi-hidraw hidapi)
+    # MSYS2 (mingw-w64-ucrt-x86_64-hidapi) and Homebrew (hidapi). Without
+    # pkg-config, as with MSVC, hidapi's own CMake package, which vcpkg's
+    # hidapi has. QET_HIDAPI_TARGET is what QElectroTech links.
+    if(NOT QET_SPACEMOUSE_ENABLED AND _qet_spacemouse_try_hid)
+        if(PkgConfig_FOUND)
+            pkg_search_module(HIDAPI IMPORTED_TARGET hidapi-hidraw hidapi)
+        endif()
         if(HIDAPI_FOUND)
+            set(QET_HIDAPI_TARGET PkgConfig::HIDAPI)
+            set(_qet_hidapi_version ${HIDAPI_VERSION})
+        else()
+            find_package(hidapi CONFIG QUIET)
+            if(TARGET hidapi::hidapi)
+                set(QET_HIDAPI_TARGET hidapi::hidapi)
+                set(_qet_hidapi_version ${hidapi_VERSION})
+            endif()
+        endif()
+        if(QET_HIDAPI_TARGET)
             set(QET_SPACEMOUSE_ENABLED TRUE)
             set(QET_SPACEMOUSE_BACKEND_HID_ENABLED TRUE)
             add_definitions(-DQET_SPACEMOUSE_BACKEND_HID)
-            message("QET_ENABLE_SPACEMOUSE      ON  (backend: hidapi ${HIDAPI_VERSION})")
+            message("QET_ENABLE_SPACEMOUSE      ON  (backend: hidapi ${_qet_hidapi_version})")
         endif()
     endif()
 
@@ -90,6 +105,7 @@ if(QET_ENABLE_SPACEMOUSE)
     else()
         message(WARNING "QET_ENABLE_SPACEMOUSE is ON but no library was found for the "
                          "'${QET_SPACEMOUSE_BACKEND}' backend (libspnav-dev for spnav, "
-                         "hidapi for hid, via pkg-config) -- building WITHOUT 3D mouse support.")
+                         "hidapi for hid, via pkg-config or hidapi's CMake package) -- "
+                         "building WITHOUT 3D mouse support.")
     endif()
 endif()

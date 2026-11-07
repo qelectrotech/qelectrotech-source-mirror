@@ -417,10 +417,16 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autobreakconductor.h
   ${QET_DIR}/sources/symboltextplacement.cpp
   ${QET_DIR}/sources/symboltextplacement.h
+  ${QET_DIR}/sources/formulabuilder.cpp
+  ${QET_DIR}/sources/formulabuilder.h
+  ${QET_DIR}/sources/ui/formulabuilderdialog.cpp
+  ${QET_DIR}/sources/ui/formulabuilderdialog.h
   ${QET_DIR}/sources/textclearance.cpp
   ${QET_DIR}/sources/textclearance.h
   ${QET_DIR}/sources/ui/textclearancedialog.cpp
   ${QET_DIR}/sources/ui/textclearancedialog.h
+  ${QET_DIR}/sources/ui/textdestinationdialog.cpp
+  ${QET_DIR}/sources/ui/textdestinationdialog.h
   ${QET_DIR}/sources/autoconnect.cpp
   ${QET_DIR}/sources/autoconnect.h
 
@@ -603,6 +609,7 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/print/projectprintwindow.cpp
   ${QET_DIR}/sources/print/projectprintwindow.h
+  ${QET_DIR}/sources/print/printdrawing.h
 
   ${QET_DIR}/sources/project/projectpropertieshandler.cpp
   ${QET_DIR}/sources/project/projectpropertieshandler.h
@@ -615,6 +622,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/properties/elementdata.h
   ${QET_DIR}/sources/properties/projectlanguages.cpp
   ${QET_DIR}/sources/properties/projectlanguages.h
+  ${QET_DIR}/sources/properties/potentialtypes.cpp
+  ${QET_DIR}/sources/properties/potentialtypes.h
   ${QET_DIR}/sources/properties/propertiesinterface.cpp
   ${QET_DIR}/sources/properties/propertiesinterface.h
   ${QET_DIR}/sources/properties/reportproperties.cpp
@@ -932,6 +941,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/prefixconfigurationdialog.h
   ${QET_DIR}/sources/ui/projectlanguagesdialog.cpp
   ${QET_DIR}/sources/ui/projectlanguagesdialog.h
+  ${QET_DIR}/sources/ui/potentialcheckdialog.cpp
+  ${QET_DIR}/sources/ui/potentialcheckdialog.h
+  ${QET_DIR}/sources/ui/potentialtypeswidget.cpp
+  ${QET_DIR}/sources/ui/potentialtypeswidget.h
   ${QET_DIR}/sources/ui/projectpropertiesdialog.cpp
   ${QET_DIR}/sources/ui/projectpropertiesdialog.h
   ${QET_DIR}/sources/ui/reportpropertiewidget.cpp

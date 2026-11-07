@@ -177,8 +177,33 @@ QVector<RenumberElementsCommand::ElementChange> ElementAutoNumSchemeCommand::ren
 			  [](Element *a, Element *b){ return comparPos(a, b); });
 
 	NumerotationContext nc = from_start ? resetForRenumber(context) : context;
+
+		//A numbering whose numbers belong to one folio ("Chiffre 1 -
+		//Folio" and its two longer forms) counts for the folio the
+		//element stands on, and starts that folio where the rule says a
+		//folio starts or where that folio itself has got to. Reading the
+		//project's counter instead -- as it did -- gave a copy of a folio
+		//the numbers some other folio had left the counter at.
+	const bool per_folio = formula.contains(QLatin1String("%sequf_"))
+			|| formula.contains(QLatin1String("%seqtf_"))
+			|| formula.contains(QLatin1String("%seqhf_"));
+	Diagram *counted_folio = nullptr;
+	autonum::sequentialNumbers folio_seq;
+	bool gave_numbers = false;
+
 	for (Element *el : std::as_const(elements))
 	{
+		if (per_folio && el->diagram() && el->diagram() != counted_folio) {
+				//The folio counted up to here has been given its numbers
+			if (gave_numbers && counted_folio) {
+				autonum::storeFolioSequential(counted_folio, hash_key, folio_seq);
+			}
+			counted_folio = el->diagram();
+			gave_numbers = false;
+			nc = from_start ? autonum::resetFolioCounters(nc)
+							: autonum::folioCounters(nc, counted_folio, hash_key);
+		}
+
 		RenumberElementsCommand::ElementChange ch;
 		ch.element = el;
 		ch.old_infos = el->elementInformations();
@@ -220,37 +245,115 @@ QVector<RenumberElementsCommand::ElementChange> ElementAutoNumSchemeCommand::ren
 		ch.new_seq = new_seq;
 		changes << ch;
 
+		folio_seq = new_seq;
+		gave_numbers = true;
+
 		NumerotationContextCommands ncc(nc);
 		nc = ncc.next();
 	}
+
+		//Where the last folio counted has got to: its own counter reads the
+		//numbers it was actually given, so that numbering it again from the
+		//start, or putting its counter back by hand, is what the next
+		//numbering on it reads -- setSequential() only ever raises it, which
+		//kept the old high value and made every reset short-lived.
+	if (gave_numbers && counted_folio) {
+		autonum::storeFolioSequential(counted_folio, hash_key, folio_seq);
+	}
+
 	if (final_context) {
 		*final_context = nc;
 	}
 	return changes;
 }
 
+namespace {
+/**
+	@return the folio number of @p folio as a label works it out (%F), or
+	nothing when there is no number to compare: an empty field, or one
+	which still holds a formula such as %id/%total, gives every folio the
+	same text and so says nothing about which folio stands where.
+*/
+QString concreteFolioNumber(const Diagram *folio)
+{
+	const QString number = folio->border_and_titleblock.folio();
+	if (number.isEmpty() || number.contains(QLatin1Char('%'))) {
+		return QString();
+	}
+	return number;
+}
+} // namespace
+
 /**
 	@brief ElementAutoNumSchemeCommand::reservedLabels
 	@return the labels the elements following the scheme @p title keep
 	while @p changing change: numbers an operation on @p changing must not
-	give again, or two elements would carry the same label
+	give again, or two elements would carry the same label.
+
+	Two labels are left out of that, and only when the scheme's own label
+	holds the folio number: those of @p source_folio, the folio the
+	elements were copied from, and those of any folio reading the same
+	folio number as a folio being numbered. A folio copied from another
+	keeps its source's folio number until the user gives it one of its own,
+	so the labels of both are the very numbers the copies are given again,
+	and they part as soon as the copy has a number of its own -- %F is
+	worked out again for every display.
+
+	A label which does not hold %F never changes with the folio number, so
+	those two would stand side by side on both pages for good: there, every
+	folio holds every number back as before.
 */
 QSet<QString> ElementAutoNumSchemeCommand::reservedLabels(
 		const QETProject *project,
 		const QString &title,
-		const QVector<Element *> &changing)
+		const QVector<Element *> &changing,
+		const Diagram *source_folio)
 {
 	QSet<QString> labels;
 	if (!project) {
 		return labels;
 	}
 	const QSet<const Element *> moving(changing.constBegin(), changing.constEnd());
+
+		//Whether the label carries the folio number the exemptions below
+		//hang on (%F, not %f: the page index is a number of its own and
+		//differs from page to page whatever the pages are called).
+	const bool carries_folio_number = project->elementAutoNumFormula(title)
+			.contains(QLatin1String("%F"));
+
+		//The folios being numbered, and the numbers they read. A folio
+		//reading one of those numbers is the same page as far as %F is
+		//concerned and holds no number back -- while a folio which stands
+		//here itself keeps every claim of its own elements on theirs.
+	QSet<const Diagram *> numbering;
+	QSet<QString> numbering_numbers;
+	for (const Element *el : changing)
+	{
+		if (!el || !el->diagram()) {
+			continue;
+		}
+		numbering << el->diagram();
+		const QString number = concreteFolioNumber(el->diagram());
+		if (!number.isEmpty()) {
+			numbering_numbers << number;
+		}
+	}
+
 	const auto followers = project->elementsUsingElementAutoNum(title);
 	for (const Element *el : followers)
 	{
 		if (moving.contains(el)
-				|| !el->takesSchemeNumber()) {
+				|| !el->takesSchemeNumber()
+				|| (carries_folio_number && source_folio
+					&& el->diagram() == source_folio)) {
 			continue;
+		}
+		if (carries_folio_number && el->diagram()
+				&& !numbering.contains(el->diagram())) {
+			const QString number = concreteFolioNumber(el->diagram());
+			if (!number.isEmpty() && numbering_numbers.contains(number)) {
+				continue;
+			}
 		}
 		const QString label = el->elementInformations().value(QETInformation::ELMT_LABEL).toString();
 		if (!label.isEmpty()) {
@@ -747,6 +850,9 @@ ElementAutoNumSchemeCommand::AssignPlan ElementAutoNumSchemeCommand::assignPlan(
 	labels the other elements which follow the scheme keep. One undo step.
 	@param freeze : what the frozen state of the elements becomes
 	@param parent : parent undo command, if the numbering is a part of one
+	@param source_folio : the folio @p elements were copied from, when they
+	were copied from one folio to another: its labels do not hold the
+	numbers back (see reservedLabels())
 	@return the command, nullptr if there is nothing to number
 */
 RenumberElementsCommand *ElementAutoNumSchemeCommand::numberElements(
@@ -755,7 +861,8 @@ RenumberElementsCommand *ElementAutoNumSchemeCommand::numberElements(
 		const QVector<Element *> &elements,
 		const QString &text,
 		FreezeRule freeze,
-		QUndoCommand *parent)
+		QUndoCommand *parent,
+		const Diagram *source_folio)
 {
 	if (!project || !project->elementAutoNum().contains(title)) {
 		return nullptr;
@@ -776,7 +883,7 @@ RenumberElementsCommand *ElementAutoNumSchemeCommand::numberElements(
 				title, context, todo,
 				autonum::numerotationContextToFormula(context),
 				&final_context, false, project->elementAutoNumId(title),
-				reservedLabels(project, title, todo));
+				reservedLabels(project, title, todo, source_folio));
 	for (auto &change : changes) {
 		change.new_frozen = freeze == FreezeRule::NewElementPolicy
 				&& change.element && change.element->diagram()
@@ -1071,19 +1178,25 @@ void ElementAutoNumSchemeCommand::linkPasted(const QETProject *project,
 	numbers, in folio and position order, and its counter moves on. One
 	numbering command per scheme, children of @p parent, which runs them
 	with its own redo(), so that undoing the paste gives the numbers back.
+	@param source_folio the folio the elements were copied from, when a
+	folio was copied as a whole: its labels are the copies' own numbers
+	(see reservedLabels()), and a scheme which counts per folio starts the
+	copy's folio at the beginning a folio is numbered from
 	@return how many elements are numbered
 */
 int ElementAutoNumSchemeCommand::numberPasted(
 		QETProject *project,
 		const QMap<QString, QVector<Element *>> &schemes,
-		QUndoCommand *parent)
+		QUndoCommand *parent,
+		const Diagram *source_folio)
 {
 	int count = 0;
 	for (auto it = schemes.constBegin() ; it != schemes.constEnd() ; ++it)
 	{
 		if (numberElements(project, it.key(), it.value(),
 						   tr("Number pasted elements (%1)").arg(it.key()),
-						   FreezeRule::NewElementPolicy, parent)) {
+						   FreezeRule::NewElementPolicy, parent,
+						   source_folio)) {
 			count += it.value().size();
 		}
 	}

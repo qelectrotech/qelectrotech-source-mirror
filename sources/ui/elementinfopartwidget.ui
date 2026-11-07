@@ -65,6 +65,16 @@
      </property>
     </widget>
    </item>
+   <item row="2" column="3">
+    <widget class="QToolButton" name="m_multiline_btn">
+     <property name="toolTip">
+      <string>Edit on several lines</string>
+     </property>
+     <property name="autoRaise">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
    <item row="2" column="2">
     <widget class="QToolButton" name="m_material_btn">
      <property name="toolTip">

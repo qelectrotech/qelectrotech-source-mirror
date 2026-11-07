@@ -62,7 +62,10 @@ CableFilterProxy::CableFilterProxy(QObject *parent) :
 void CableFilterProxy::setTokens(const QStringList &tokens)
 {
 	if (m_tokens == tokens) return;
-#if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
+	//beginFilterChange() exists from Qt 6.9, but endFilterChange() and the
+	//Direction enum it takes only from Qt 6.10: the check names the later
+	//of the two, so a Qt 6.9 build takes the invalidateFilter() branch
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
 	beginFilterChange();
 	m_tokens = tokens;
 	endFilterChange(QSortFilterProxyModel::Direction::Rows);
@@ -82,7 +85,9 @@ void CableFilterProxy::setTokens(const QStringList &tokens)
 void CableFilterProxy::setHideUnsuitable(bool hide)
 {
 	if (m_hide_unsuitable == hide) return;
-#if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
+	//Same versions as in setTokens(): endFilterChange() and Direction are
+	//Qt 6.10, so the check names 6.10 and not 6.9
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
 	beginFilterChange();
 	m_hide_unsuitable = hide;
 	endFilterChange(QSortFilterProxyModel::Direction::Rows);

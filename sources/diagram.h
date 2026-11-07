@@ -141,6 +141,7 @@ class Diagram : public QGraphicsScene
 
 		QString m_conductors_autonum_name;
 		DiagramEventInterface *m_event_interface;
+		bool m_press_went_to_tool = false;   ///< the last press went to a tool
 
 		bool m_freeze_new_elements;
 		bool m_freeze_new_conductors_;
@@ -220,6 +221,7 @@ class Diagram : public QGraphicsScene
 		void restoreText(Element* elmt);
 		QUuid uuid();
 		QStringList wiresNotReconnected() const;
+		QStringList itemsOutsideSheet() const;
 		QStringList symbolsNotLoaded() const;
 		QSet<QUuid> keptSymbolUuids() const;
 		void setEventInterface (DiagramEventInterface *event_interface);
@@ -323,6 +325,7 @@ class Diagram : public QGraphicsScene
 		virtual void addItem    (QGraphicsItem *item);
 		virtual void removeItem (QGraphicsItem *item);
 		bool eventInterfaceIsRunning() const;
+		bool toolTookLastPress() const;
 		bool cableToolIsRunning() const;
 		bool dimensionToolIsRunning() const;
 		DiagramEventInterface *eventInterface() const { return m_event_interface; }
@@ -407,6 +410,15 @@ class Diagram : public QGraphicsScene
 		void loadFolioSeqHash (QHash<QString, QStringList> *hash,
 				       const QString& title, const QString& seq,
 				       NumerotationContext *nc);
+			/// The folio's own counters of @p owner ("element" or
+			/// "conductor"), @p level ("unitfolio", "tenfolio" or
+			/// "hundredfolio") and @p title are @p values now: in the
+			/// hash this folio numbers from, and in the rows the
+			/// project saves them in.
+		void setFolioSeqValues(const QString &owner,
+				       const QString &level,
+				       const QString &title,
+				       const QStringList &values);
 		void changeZValue(QET::DepthOption option);
 		void setItemGroup(QGraphicsItem *item, const QUuid &group);
 

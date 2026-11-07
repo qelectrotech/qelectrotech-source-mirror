@@ -19,6 +19,7 @@
 
 #include <diagram.h>
 #include <diagramcommands.h>
+#include "dynamicelementtextitem.h"
 #include <qetproject.h>
 #include <qetapp.h>
 #include <richtext/richtexteditor_p.h>
@@ -793,7 +794,9 @@ void DiagramTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 	
 	// Add movement instruction for DynamicElementTextItem
 	if (inherits("DynamicElementTextItem")) {
-		str_ToolTip += tr("\nHold Shift and drag to move this text on its own");
+		str_ToolTip += DynamicElementTextItem::dragMovesTextAlone()
+				? tr("\nHold Shift and drag to move the symbol")
+				: tr("\nHold Shift and drag to move this text on its own");
 	}
 	
 	setToolTip(str_ToolTip);

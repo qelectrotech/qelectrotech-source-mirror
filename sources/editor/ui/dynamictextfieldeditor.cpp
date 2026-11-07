@@ -20,11 +20,12 @@
 #include <QPropertyUndoCommand/qpropertyundocommand.h>
 #include <editor/graphicspart/customelementpart.h>
 #include <editor/graphicspart/partdynamictextfield.h>
+#include <editor/graphicspart/partterminal.h>
 #include <qetapp.h>
 #include <qetinformation.h>
 #include <ui/alignmenttextdialog.h>
 #include <ui/compositetexteditdialog.h>
-#include <editor/ui/qetelementeditor.h>
+#include "qetelementeditor.h"
 #include <editor/elementscene.h>
 #include "ui_dynamictextfieldeditor.h"
 
@@ -142,8 +143,6 @@ void DynamicTextFieldEditor::updateForm()
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
 		ui->m_keep_visual_rotation_cb->setChecked(m_text_field.data()->keepVisualRotation());
 		ui->m_rotation_point_center_cb->setChecked(m_text_field.data()->rotationPointCenter());
-#ifdef BUILD_WITHOUT_KF
-#else
 			//Block signals while loading the colour into the button.
 			//KColorButton::changed fires on a programmatic setColor() as well
 			//as on user interaction, and m_color_kpb_changed() applies the new
@@ -156,7 +155,6 @@ void DynamicTextFieldEditor::updateForm()
 			const QSignalBlocker blocker(m_color_kpb);
 			m_color_kpb -> setColor(m_text_field.data() -> color());
 		}
-#endif
 			//Rounded as on_m_width_sb_editingFinished() compares it;
 			//setValue(int) would truncate 61.7 to 61
 		ui -> m_width_sb -> setValue(qRound(m_text_field.data() -> textWidth()));
@@ -184,8 +182,6 @@ void DynamicTextFieldEditor::updateForm()
 
 void DynamicTextFieldEditor::setupWidget()
 {
-#ifdef BUILD_WITHOUT_KF
-#else
 	m_color_kpb = new KColorButton(this);
 	m_color_kpb->setObjectName(QString::fromUtf8("m_color_kpb"));
 
@@ -193,7 +189,6 @@ void DynamicTextFieldEditor::setupWidget()
 			this, &DynamicTextFieldEditor::m_color_kpb_changed);
 
 	ui->m_main_grid_layout->addWidget(m_color_kpb, 6, 1, 1, 2);
-#endif
 }
 
 void DynamicTextFieldEditor::setUpConnections()
@@ -230,6 +225,21 @@ void DynamicTextFieldEditor::disconnectConnections()
 			disconnect(connection);
 		}
 	m_connection_list.clear();
+}
+
+/**
+	@brief DynamicTextFieldEditor::terminalCount
+	@return the number of connection points of the edited symbol
+*/
+int DynamicTextFieldEditor::terminalCount() const
+{
+	int count = 0;
+	for (QGraphicsItem *qgi : elementEditor()->elementScene()->items()) {
+		if (qgraphicsitem_cast<PartTerminal *>(qgi)) {
+			++count;
+		}
+	}
+	return count;
 }
 
 /**
@@ -283,6 +293,11 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 
 		if (is_slave) {
 			strl.prepend(QETInformation::ELMT_XREF);
+		}
+
+			//Read from the wires, never stored (#1585)
+		if (type == ElementData::Terminal) {
+			strl << QETInformation::terminalConductorInfoKeys(terminalCount());
 		}
 	}
 
@@ -447,6 +462,9 @@ void DynamicTextFieldEditor::on_m_composite_text_pb_clicked()
 	}
 
 	CompositeTextEditDialog ctd(m_text_field.data() -> compositeText(), isReport, this);
+	if (type == ElementData::Terminal) {
+		ctd.addTerminalConductorInfo(terminalCount());
+	}
 	if(ctd.exec()) {
 		QString ct = ctd.plainText();
 		for (int i = 0; i < m_parts.length(); i++) {

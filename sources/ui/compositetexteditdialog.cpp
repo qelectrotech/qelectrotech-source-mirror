@@ -26,6 +26,9 @@ CompositeTextEditDialog::CompositeTextEditDialog(DynamicElementTextItem *text, Q
 		report = true;
 	}
 	setUpComboBox(report);
+	if (m_text && m_text->parentElement()->elementData().m_type == ElementData::Terminal) {
+		addTerminalConductorInfo(m_text->parentElement()->terminals().size());
+	}
 }
 
 CompositeTextEditDialog::CompositeTextEditDialog(QString text, bool report, QWidget *parent) :
@@ -75,6 +78,20 @@ void CompositeTextEditDialog::setUpComboBox(bool is_report)
 	for (int i=0; i<qstrl.size();++i) {
 		ui -> m_info_cb -> addItem(QETInformation::translatedInfoKey(qstrl[i]),
 								   is_report ? QETInformation::folioReportInfoToVar(qstrl[i]) : QETInformation::elementInfoToVar(qstrl[i]));
+	}
+}
+
+/**
+	@brief CompositeTextEditDialog::addTerminalConductorInfo
+	Add to the combo box the information a terminal symbol with
+	@p connection_count connection points reads from its wires
+	(@sa QETInformation::terminalConductorInfoKeys)
+*/
+void CompositeTextEditDialog::addTerminalConductorInfo(int connection_count)
+{
+	for (const QString &key : QETInformation::terminalConductorInfoKeys(connection_count)) {
+		ui->m_info_cb->addItem(QETInformation::translatedInfoKey(key),
+							   QETInformation::infoToVar(key));
 	}
 }
 

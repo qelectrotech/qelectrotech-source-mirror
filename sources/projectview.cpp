@@ -398,6 +398,25 @@ QString ProjectView::askUserForFilePath(bool assign) {
 		//Not onto a file someone else has open
 	if (!refuseIfLockedByOther(filepath)) return(QString());
 
+		//A .qetdb does not store bridges yet -- the hand is asked
+		//rather than the bridges vanish without a word on the next
+		//open of the file (review of #1651)
+	if (database && !m_project->bridges().isEmpty()) {
+		const auto answer = QMessageBox::question(
+					this,
+					tr("Save as .qetdb?", "dialog title"),
+					tr("%n bridge(s) are drawn in this project. The .qetdb "
+					   "format does not store bridges yet -- they are kept in "
+					   "the normal .qet format only. Save it as .qetdb anyway?",
+					   "also asked when the file name says .qetdb",
+					   int(m_project->bridges().size())),
+					QMessageBox::Yes | QMessageBox::No,
+					QMessageBox::No);
+		if (answer != QMessageBox::Yes) {
+			return QString();
+		}
+	}
+
 	if (assign) {
 		// assign the provided filepath to the currently edited project
 		m_project -> setFilePath(filepath);

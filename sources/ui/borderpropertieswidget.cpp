@@ -346,7 +346,7 @@ void BorderPropertiesWidget::showFolioSize()
 		width += m_titleblock_height;
 	const auto mm = [](int px) { return qRound(px * 25.4 / 96.0); };
 
-	QString text = tr("Folio size: %1 × %2 mm").arg(mm(width)).arg(mm(height));
+	QString text = tr("Folio size: %1 Ã— %2 mm").arg(mm(width)).arg(mm(height));
 	if (ui->m_paper_cb->currentIndex() == 0)
 	{
 		const PaperSize *best = nullptr;

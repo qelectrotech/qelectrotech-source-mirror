@@ -25,12 +25,13 @@
 */
 struct TitleBlockDimension {
 	// constructor
-	TitleBlockDimension(int, QET::TitleBlockColumnLength = QET::Absolute);
+	TitleBlockDimension(int, QET::TitleBlockColumnLength = QET::Absolute, Qt::Alignment = Qt::AlignTop);
 	// methods
 	QString toString() const;
 	QString toShortString() const;
 	// attribute
 	QET::TitleBlockColumnLength type; ///< Kind of length
 	int value;                        ///< Numeric value
+	Qt::Alignment align;              ///< Alignment value
 };
 #endif

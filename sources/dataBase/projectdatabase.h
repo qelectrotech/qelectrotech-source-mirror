@@ -40,6 +40,7 @@
 #include <titleblockproperties.h>
 #include <borderproperties.h>
 #include <conductorproperties.h>
+#include <properties/potentialtypes.h>
 #include "conductorlayout.h"
 #include "conductorpath.h"
 #include "elementplacement.h"
@@ -74,6 +75,7 @@ class projectDataBase : public QObject
 		virtual ~projectDataBase() override;
 
 		void updateDB();
+		void updateDBForce();
 			//updateDB() without dataBaseUpdated(): the tables brought up
 			//to date for a reader that shows nothing (a commit, a save)
 		void refresh();
@@ -282,6 +284,8 @@ class projectDataBase : public QObject
 			/// have changed: written at the next read
 		void queueFolioValues() {m_folio_values_changed = true;}
 		void queueCables() {m_cables_changed = true;}
+			/// A bridge was added, changed or removed: written at the next read
+		void queueBridges() {m_bridges_changed = true;}
 			//@p element's texts changed: written when the database is next
 			//read (flushElementTexts())
 		void queueElementTexts(Element *element);
@@ -370,6 +374,16 @@ class projectDataBase : public QObject
 			/// The attribute of a folio element whose items are still in the
 			/// database (S4x X3)
 		static constexpr const char *deferred_content = "qetdb-deferred";
+			/// The blocks of XML a project or folio holds that this QET
+			/// does not know (a newer QET's, or a fork's), kept whole so
+			/// that no format drops them. @p owner: project_owner or a
+			/// folio's uuid.
+		static constexpr const char *project_owner = "project";
+		static QStringList foreignChildren(const QDomElement &parent, bool folio);
+		void storeForeignBlocks(const QString &owner, const QStringList &blocks);
+		QStringList foreignBlocks(const QString &owner) const;
+		static QStringList foreignBlocksOf(const QSqlDatabase &db, const QString &owner);
+		static void appendForeignBlocks(QDomElement &parent, const QStringList &blocks);
 		void writeFolioContent(QDomElement &folio) const;
 		static bool writeDocument(const QString &database_file, const QString &project_file,
 								  QString *error = nullptr);
@@ -456,6 +470,36 @@ class projectDataBase : public QObject
 		QString elementLabel(const QUuid &element) const;
 		QString terminalName(const QUuid &terminal, const QUuid &element) const;
 		std::optional<QSet<QUuid>> potentialWires(const QUuid &wire) const;
+			/// Every potential of the project at once: wire -> group
+			/// number, and the groups whose extent is not known
+		struct PotentialGroups {
+			QHash<QUuid, int> group_of;
+			QSet<int> unknown;
+			int count = 0;
+			bool isUnknown(const QUuid &wire) const {return unknown.contains(group_of.value(wire, -1));}
+		};
+		PotentialGroups potentialGroups() const;
+			/// The same from the tables of @p db alone, so a .qetdb read by
+			/// itself, without opening the project, gives the project's answer
+		static PotentialGroups potentialGroupsOf(const QSqlDatabase &db);
+			/// A potential that reaches more than one potential type
+		struct PotentialMismatch {
+			int potential = 0;
+			QStringList types;      ///< the different types, sorted
+			QList<QUuid> wires;     ///< the typed wires of the potential
+		};
+		QList<PotentialMismatch> potentialTypeMismatches();
+			/// (Re)build the TEMP table potential_member and the TEMP view
+			/// wire_potential_view; neither is ever saved
+		void refreshPotentialMembers();
+			/// The same on the tables of @p db alone. They do not write what
+			/// the project still holds back (a wire's edited properties):
+			/// on the project's own connection use the members above, which
+			/// do. @p ok, if given, tells whether the TEMP objects could be
+			/// built; false means the answer is not to be trusted.
+		static bool refreshPotentialMembersOf(QSqlDatabase db);
+		static QList<PotentialBond> potentialBondsOf(const QSqlDatabase &db);
+		static QList<PotentialMismatch> potentialTypeMismatchesOf(QSqlDatabase db, bool *ok = nullptr);
 		static QVariant sequenceValue(const autonum::sequentialNumbers &sequence);
 		static autonum::sequentialNumbers sequenceFromValue(const QVariant &value);
 
@@ -529,6 +573,7 @@ class projectDataBase : public QObject
 		void flushElementTexts();
 		void flushFolioValues();
 		void flushCables();
+		void flushBridges();
 		bool storeKeyedRows(const QString &table, const QString &column,
 							QHash<QUuid, QList<ProjectSetting>> &cache,
 							const QUuid &key, const QList<ProjectSetting> &rows);
@@ -694,9 +739,12 @@ class projectDataBase : public QObject
 		QHash<QUuid, QList<ProjectSetting>> m_element_values;
 		QHash<QUuid, QList<ProjectSetting>> m_folio_values;
 		QHash<QUuid, QList<ProjectSetting>> m_cable_values;
+		QHash<QUuid, QList<ProjectSetting>> m_bridge_values;
 		QHash<QUuid, QStringList> m_kept_items;   ///< kept_item, by folio
+		QHash<QString, QStringList> m_foreign_blocks;   ///< foreign_block, by owner
 		bool m_folio_values_changed = false;
 		bool m_cables_changed = false;
+		bool m_bridges_changed = false;
 			//The placed symbols holding each uuid: a paste or a folio copy
 			//briefly gives a copy its original's uuid, so one uuid can have
 			//two symbols until the copy's is renewed.

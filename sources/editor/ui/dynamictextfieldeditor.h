@@ -22,6 +22,7 @@
 #include <editor/graphicspart/partdynamictextfield.h>
 
 #ifdef BUILD_WITHOUT_KF
+#	include <ui/nokde/kcolorbutton.h>
 #else
 #	include <KColorButton>
 #endif
@@ -50,6 +51,7 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 	private:
 		void setupWidget();
 		void fillInfoComboBox();
+		int terminalCount() const;
 		void setUpConnections();
 		void disconnectConnections();
 			void updateTextFromWidgetsEnabled(int index);
@@ -79,10 +81,7 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 		QList<PartDynamicTextField*> m_parts;
 		QList<QMetaObject::Connection> m_connection_list;
 
-	#ifdef BUILD_WITHOUT_KF
-	#else
 		KColorButton* m_color_kpb = nullptr;
-	#endif
 };
 
 #endif // DYNAMICTEXTFIELDEDITOR_H

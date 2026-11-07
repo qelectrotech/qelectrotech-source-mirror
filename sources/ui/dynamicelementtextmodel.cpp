@@ -2080,6 +2080,10 @@ QStringList DynamicTextItemDelegate::availableInfo(
 			if(dc.contains(info))
 				qstrl << info;
 		}
+
+			//Read from the wires, never stored (#1585)
+		if (elmt->elementData().m_type == ElementData::Terminal)
+			qstrl << QETInformation::terminalConductorInfoKeys(elmt->terminals().size());
 	}
 	return qstrl;
 }

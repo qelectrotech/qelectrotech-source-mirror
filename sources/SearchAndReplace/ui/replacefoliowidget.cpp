@@ -119,6 +119,7 @@ void ReplaceFolioWidget::setTitleBlockProperties(
 ReplaceFolioDialog::ReplaceFolioDialog(QWidget *parent) : 
 	QDialog(parent)
 {
+	setWindowTitle(tr("Replace sheet properties"));
 	QVBoxLayout *layout = new QVBoxLayout(this);
 	layout->addWidget(m_widget = new ReplaceFolioWidget(this));
 	layout->addWidget(m_button_box = new QDialogButtonBox(

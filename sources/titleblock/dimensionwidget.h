@@ -61,6 +61,8 @@ class TitleBlockDimensionWidget : public QDialog {
 	QRadioButton *remaining_button_;   ///< Radio button to indicate the length is relative to the remaining length
 	QButtonGroup *dimension_type_;     ///< QButtonGroup for the three radio buttons
 	QDialogButtonBox *buttons_;        ///< Buttons to validate the dialog
+	QComboBox *align_cb_;              ///< ComboBox for specifying which border of the frame should be aligned with the edge of the sheet
+	QLabel *align_label_;              ///< Label shown right before the combobox
 	bool read_only_;                   ///< Whether or not this widget allow edition of the displayed dimension
 };
 #endif

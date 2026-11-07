@@ -153,6 +153,7 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 
 namespace {
 	int s_vertical_from_bottom = -1;
+	int s_drag_moves_text_alone = -1;
 }
 
 /**
@@ -169,6 +170,32 @@ bool DynamicElementTextItem::verticalFromBottom()
 		s_vertical_from_bottom = settings.value(QStringLiteral("diagrameditor/vertical_texts_from_bottom"), false).toBool();
 	}
 	return s_vertical_from_bottom;
+}
+
+/**
+	@brief DynamicElementTextItem::dragMovesTextAlone
+	@return true when a plain drag of a symbol's text moves the text alone
+	and a Shift+drag moves its symbol, as before 0.100 (issue #1576). Off
+	by default: a plain drag moves the symbol, Shift+drag the text.
+*/
+bool DynamicElementTextItem::dragMovesTextAlone()
+{
+	if (s_drag_moves_text_alone < 0) {
+		QSettings settings;
+		s_drag_moves_text_alone = settings.value(QStringLiteral("diagrameditor/drag_texts_without_shift"), false).toBool();
+	}
+	return s_drag_moves_text_alone;
+}
+
+/**
+	@brief DynamicElementTextItem::setDragMovesTextAlone
+	@param text_alone : see dragMovesTextAlone(); kept in the settings.
+*/
+void DynamicElementTextItem::setDragMovesTextAlone(bool text_alone)
+{
+	s_drag_moves_text_alone = text_alone;
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/drag_texts_without_shift"), text_alone);
 }
 
 /**
@@ -193,8 +220,27 @@ void DynamicElementTextItem::setVerticalFromBottom(bool from_bottom)
 	Turn the text half a turn about the middle of its box when it reads
 	from top to bottom on the folio and verticalFromBottom() is on; the
 	box, its place and what is saved stay as they are.
+	A text of a symbol leaves this to Element::keepReadable(), which also
+	keeps it readable when the symbol is mirrored.
 */
 void DynamicElementTextItem::updateReadingDirection()
+{
+	if (Element *element = dynamic_cast<Element *>(parentItem())) {
+		element->keepReadable(this);
+		return;
+	}
+	const QTransform flip = readingFlip();
+	if (transform() != flip)
+		setTransform(flip);
+}
+
+/**
+	@brief DynamicElementTextItem::readingFlip
+	@return half a turn about the middle of the text's box when it reads
+	from top to bottom on the folio and verticalFromBottom() is on, else
+	no change: see updateReadingDirection()
+*/
+QTransform DynamicElementTextItem::readingFlip() const
 {
 	QTransform flip;
 	if (verticalFromBottom() && parentItem()) {
@@ -205,8 +251,7 @@ void DynamicElementTextItem::updateReadingDirection()
 			flip.translate(c.x(), c.y()).rotate(180).translate(-c.x(), -c.y());
 		}
 	}
-	if (transform() != flip)
-		setTransform(flip);
+	return flip;
 }
 
 DynamicElementTextItem::~DynamicElementTextItem()
@@ -586,8 +631,7 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 				//The label and the terminal number are drawn the way the
 				//settings say, every other information as it is stored
 			DiagramContext dc = elementUseForInfo()->elementInformations();
-			dc.addValue(QETInformation::ELMT_LABEL,            elementUseForInfo()->labelForDisplay());
-			dc.addValue(QETInformation::ELMT_TERMINAL_NUMBER, elementUseForInfo()->terminalNumberForDisplay());
+			elementUseForInfo()->addDisplayValues(dc);
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 		}
 		
@@ -800,8 +844,11 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 			m_slave_Xref_item->setDefaultTextColor(color());
 	}
 
-	// Shift or no parent initiates movement of dynamic text, otherwise movement of parent element
-	if((event->modifiers() & Qt::ShiftModifier) || !m_parent_element)
+		//Shift or no parent initiates movement of dynamic text, otherwise
+		//movement of parent element -- the other way round when
+		//dragMovesTextAlone() is on
+	const bool shift = event->modifiers() & Qt::ShiftModifier;
+	if(shift != dragMovesTextAlone() || !m_parent_element)
 	{
 		m_move_parent = false;
 		DiagramTextItem::mousePressEvent(event);
@@ -1346,8 +1393,7 @@ void DynamicElementTextItem::elementInfoChanged()
 			//project says (@sa QETProject::terminalLabelSplit): a
 			//composite text which uses them must see the same values the
 			//fields bound to them show
-		dc.addValue(QETInformation::ELMT_LABEL,           element->labelForDisplay());
-		dc.addValue(QETInformation::ELMT_TERMINAL_NUMBER, element->terminalNumberForDisplay());
+		element->addDisplayValues(dc);
 	}
 	
 	QString final_text;
@@ -1882,6 +1928,8 @@ void DynamicElementTextItem::conductorPropertiesChanged()
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_wire_color : "");
 			else if (m_info_name == QETInformation::COND_SECTION)
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_wire_section : "");
+			else if (m_info_name == QETInformation::COND_TYPE)
+				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_conductor_type : "");
 		}
 		else if (m_text_from == CompositeText) {
 			setPlainText(reportReplacedCompositeText());

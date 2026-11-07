@@ -860,8 +860,13 @@ void paint(QPainter *painter,
 					continue;
 				}
 				const qreal channel_h_{length_ * (channels_bottom - channels_top) / 4};
-				const qreal y_{length_ * channels_top
-							   + (qBound(1, bridge_->track(), 4) - 0.5) * channel_h_};
+					//A bar which was never worked out a track sits in
+					//the middle of the rail, where it stood before the
+					//tracks were drawn apart
+				const int track{bridge_->track()};
+				const qreal y_{track > 0
+							   ? length_ * channels_top + (qBound(1, track, 4) - 0.5) * channel_h_
+							   : length_ * (channels_top + channels_bottom) / 2};
 				bridges_[bridge_->uuid()].append(BridgePoint{QPointF{x_ + w_ / 2, y_}, w_});
 			}
 		}

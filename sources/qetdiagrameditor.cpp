@@ -76,6 +76,9 @@
 #include "project/projectpropertieshandler.h"
 #include "ui/multielementinfowidget.h"
 #include "ui/projectlanguagesdialog.h"
+#include "ui/textdestinationdialog.h"
+#include "qetgraphicsitem/independenttextitem.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "ui/projectpropertiesdialog.h"
 #include "projectview.h"
 #include "qetproject.h"
@@ -94,6 +97,7 @@
 #include "ui/conductorcolortoolbutton.h"
 #include "ui/diagrambgcolorbutton.h"
 #include "ui/duplicatelabelsdialog.h"
+#include "ui/potentialcheckdialog.h"
 #include "ui/duplicateoffsetdialog.h"
 #include "ui/jumptoelementdialog.h"
 #include "ui/diagrampropertieseditordockwidget.h"
@@ -703,6 +707,29 @@ void QETDiagramEditor::setUpActions()
 		placeSymbolTexts(chosen_point());
 	});
 
+	m_text_destination = new QAction(tr("Reference destination..."), this);
+	m_text_destination->setStatusTip(tr("Make the selected free texts links to a folio: Ctrl-click opens it, and a PDF export keeps the link", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_text_destination, "diagrameditor.text_destination", tr("Diagram editors"), QKeySequence());
+	connect(m_text_destination, &QAction::triggered, this, [this]() {
+		DiagramView *dv = currentDiagramView();
+		if (!dv || !dv->diagram() || dv->diagram()->isReadOnly() || !dv->diagram()->project()) return;
+		QList<IndependentTextItem *> texts;
+		const auto selected = dv->diagram()->selectedItems();
+		for (QGraphicsItem *item : selected)
+			if (auto *text = dynamic_cast<IndependentTextItem *>(item)) texts << text;
+		if (texts.isEmpty()) return;
+		TextDestinationDialog dialog(dv->diagram()->project(), texts.first()->destination(), this);
+		if (dialog.exec() != QDialog::Accepted) return;
+		auto *undo = new QUndoCommand(dialog.destination().isNull() ? tr("Remove reference destination")
+																	 : tr("Assign reference destination"));
+		for (IndependentTextItem *text : std::as_const(texts))
+			if (text->destination() != dialog.destination())
+				new QPropertyUndoCommand(text, "destination", QVariant::fromValue(text->destination()),
+										 QVariant::fromValue(dialog.destination()), undo);
+		if (undo->childCount()) dv->diagram()->undoStack().push(undo);
+		else delete undo;
+	});
+
 	m_text_clearance = new QAction(tr("Keep texts clear of wires..."), this);
 	m_text_clearance->setStatusTip(tr("Move the texts that sit on a wire off it, in one undo step", "status bar tip"));
 	ShortcutManager::instance().registerAction(m_text_clearance, "diagrameditor.text_clearance", tr("Diagram editors"), QKeySequence());
@@ -1104,6 +1131,17 @@ void QETDiagramEditor::setUpActions()
 				dialog->show();
 			}
 		});
+	// Mixed potential types on one potential
+	m_check_potentials = new QAction(tr("Check potential types..."), this);
+	m_check_potentials->setObjectName(QStringLiteral("checkPotentialTypes"));
+	ShortcutManager::instance().registerAction(m_check_potentials, "diagrameditor.check_potential_types", tr("Diagram editors"), QKeySequence());
+	connect(m_check_potentials, &QAction::triggered, this, [this]() {
+		if (ProjectView *view = currentProjectView()) {
+			auto *dialog = new PotentialCheckDialog(view->project(), this);
+			dialog->setAttribute(Qt::WA_DeleteOnClose);
+			dialog->show();
+		}
+	});
 		//The texts of the project in other languages
 	m_project_languages = new QAction(tr("Project languages..."), this);
 	m_project_languages->setStatusTip(tr("Show the texts of the project in another language"));
@@ -1268,6 +1306,14 @@ void QETDiagramEditor::setUpActions()
 		tr("Redraws each placed element from its current definition, without "
 		   "having to close and reopen the project (action cannot be undone)"));
 	connect(m_reload_element_drawings, &QAction::triggered, this, &QETDiagramEditor::slot_reloadElementDrawings);
+
+	// Replace embedded elements by their newer version from the collections
+	m_update_elements_from_collections = new QAction(QET::Icons::ViewRefresh, tr("Update elements from the collections"), this);
+	ShortcutManager::instance().registerAction(m_update_elements_from_collections, "diagrameditor.update_elements_from_collections", tr("Diagram editors"), QKeySequence());
+	m_update_elements_from_collections->setStatusTip(
+		tr("Replaces each element of the project that changed in its collection "
+		   "since it was placed, and redraws it (action cannot be undone)"));
+	connect(m_update_elements_from_collections, &QAction::triggered, this, &QETDiagramEditor::slot_updateElementsFromCollections);
 
 #ifdef QET_HAS_SCRIPTING
 	// Run a JavaScript macro against the current project (bugtracker #162).
@@ -2062,6 +2108,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_copy_text_format);
 	menu_edition -> addAction(m_apply_text_format);
 	menu_edition -> addAction(m_place_texts);
+	menu_edition -> addAction(m_text_destination);
 	menu_edition -> addAction(m_text_clearance);
 	menu_edition -> addAction(m_paste_origin);
 	menu_edition -> addAction(m_paste_element_info);
@@ -2146,6 +2193,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_remove_diagram_from_project);
 	menu_project -> addAction(m_clean_project);
 	menu_project->addAction(m_find_duplicate_labels);
+	menu_project->addAction(m_check_potentials);
 	menu_project->addAction(m_project_languages);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_csv_export);
@@ -2154,6 +2202,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_project_export_wiring_list);
 	menu_project -> addAction(m_project_wiring_list_view);
 	menu_project -> addAction(m_reload_element_drawings);
+	menu_project -> addAction(m_update_elements_from_collections);
 #ifdef QET_HAS_SCRIPTING
 	m_scripts_menu = menu_project -> addMenu(tr("Scripts"));
 	rebuildScriptActions();
@@ -2298,6 +2347,7 @@ void QETDiagramEditor::save()
 			QString filePath = (project_view -> project() -> filePath ());
 			statusBar()-> showMessage(tr("Project %1 registered in the directory: %2.").arg(title).arg (filePath), 2000);
 			m_element_collection_widget->highlightUnusedElement();
+			showOutsideSheetAfterSave(project_view->project());
 		}
 		else {
 			showError(saved);
@@ -2321,6 +2371,7 @@ void QETDiagramEditor::saveAs()
 			QString filePath = (project_view -> project() -> filePath ());
 			statusBar()->showMessage(tr("Project %1 registered in the directory: %2.").arg(title).arg (filePath), 2000);
 			m_element_collection_widget->highlightUnusedElement();
+			showOutsideSheetAfterSave(project_view->project());
 		}
 		else {
 			showError(save_file);
@@ -3171,9 +3222,9 @@ void QETDiagramEditor::zoomGroupTriggered(QAction *action)
 	if (!dv || value.isEmpty()) return;
 
 	if (value == "zoom_in")
-		dv->zoom(1.15);
+		dv->zoomBy(1);
 	else if (value == "zoom_out")
-		dv->zoom(0.85);
+		dv->zoomBy(-1);
 	else if (value == "zoom_content")
 		dv->zoomContent();
 	else if (value == "zoom_fit")
@@ -3746,6 +3797,7 @@ void QETDiagramEditor::slot_updateActions()
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
 	m_find_duplicate_labels->setEnabled(opened_project);
+	m_check_potentials->setEnabled(opened_project);
 	m_project_languages->setEnabled(opened_project);
 	m_project_history             -> setEnabled(opened_project);
 	m_export_delivery             -> setEnabled(opened_project);
@@ -3764,6 +3816,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_add_cable_list              -> setEnabled(editable_project);
 	m_export_cable_list           -> setEnabled(editable_project);
 	m_reload_element_drawings     -> setEnabled(opened_project);
+	m_update_elements_from_collections -> setEnabled(editable_project);
 #ifdef QET_HAS_SCRIPTING
 	m_run_script                  -> setEnabled(opened_project);
 #endif
@@ -3874,6 +3927,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_apply_text_format->setEnabled(!ro && ((selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern()) ||
 	                                        (selected_dimensions_count >= 1 && DimensionFormatPattern::hasPattern())));
 	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
+	m_text_destination->setEnabled(!ro);
 	m_text_clearance->setEnabled(!ro);
 	m_mirror_horizontal->setEnabled(!ro && selected_elements_count);
 	m_mirror_vertical->setEnabled(!ro && selected_elements_count);
@@ -5380,6 +5434,73 @@ void QETDiagramEditor::slot_reloadElementDrawings() {
 	QETProject *project = currentProject();
 	if (!project) return;
 
+	reloadElementDrawings(project, false, tr("Reload element drawings"), QString());
+}
+
+/**
+	@brief QETDiagramEditor::slot_updateElementsFromCollections
+	Replace each embedded element of the current project by the element it
+	was taken from, when that one changed in its collection since: placing
+	an element again from the collection reuses the embedded copy as long as
+	both carry the same uuid, so an edited symbol never reaches a project.
+
+	The changed elements are listed and replaced only once the user agrees.
+	Placed elements are then redrawn, taking over a new size or hotspot;
+	those whose terminals changed keep their old drawing and are listed.
+	Not undoable, like importing a newer element over an embedded one.
+*/
+void QETDiagramEditor::slot_updateElementsFromCollections() {
+	QETProject *project = currentProject();
+	if (!project) return;
+
+	const QString title = tr("Update elements from the collections");
+	const QList<QETProject::OutdatedElement> outdated = project->outdatedElements();
+	if (outdated.isEmpty())
+	{
+		QET::QetMessageBox::information(
+			this, title,
+			tr("Every element of the project matches the collection it was taken from."));
+		return;
+	}
+
+	QStringList names;
+	for (const QETProject::OutdatedElement &element : outdated)
+		names << element.source.toString();
+
+	QMessageBox question(QMessageBox::Question, title,
+						 tr("%n elements of the project differ from the collection "
+							"they were taken from. Replace them with the version "
+							"of the collection?", "", outdated.size())
+						 % QStringLiteral("\n\n")
+						 % tr("Placed elements are redrawn and keep their conductors, "
+							  "as long as their terminals have not moved. This "
+							  "action cannot be undone."),
+						 QMessageBox::Yes | QMessageBox::Cancel, this);
+	question.setDetailedText(names.join(QLatin1Char('\n')));
+	if (question.exec() != QMessageBox::Yes) return;
+
+	for (const QETProject::OutdatedElement &element : outdated)
+		project->updateElement(element);
+	project->setModified(true);
+
+	reloadElementDrawings(project, true, title,
+						  tr("%n elements updated.", "", outdated.size()));
+}
+
+/**
+	@brief QETDiagramEditor::reloadElementDrawings
+	Redraw every placed element of @p project from its current definition
+	and report the result.
+	@param project : the project to redraw
+	@param adopt_frame : take over a changed size and hotspot
+	(see Element::reloadPicture())
+	@param title : title of the report
+	@param intro : first line of the report, may be empty
+*/
+void QETDiagramEditor::reloadElementDrawings(QETProject *project,
+											 bool adopt_frame,
+											 const QString &title,
+											 const QString &intro) {
 	QList<Element *> elements;
 	QSet<QString> dropped_locations;
 	for (Diagram *diagram : project->diagrams())
@@ -5402,7 +5523,7 @@ void QETDiagramEditor::slot_reloadElementDrawings() {
 	QStringList geometry_changed;
 	for (Element *elmt : elements)
 	{
-		switch (elmt->reloadPicture())
+		switch (elmt->reloadPicture(adopt_frame))
 		{
 			case Element::ReloadPictureResult::Reloaded:
 				++reloaded;
@@ -5423,6 +5544,8 @@ void QETDiagramEditor::slot_reloadElementDrawings() {
 	}
 
 	QString message = tr("%n elements redrawn.", "", reloaded);
+	if (!intro.isEmpty())
+		message = intro % QStringLiteral("\n") % message;
 
 	if (unavailable) {
 		message += QStringLiteral("\n\n")
@@ -5432,15 +5555,18 @@ void QETDiagramEditor::slot_reloadElementDrawings() {
 
 	if (geometry_changed.isEmpty())
 	{
-		QET::QetMessageBox::information(
-			this, tr("Reload element drawings"), message);
+		QET::QetMessageBox::information(this, title, message);
 		return;
 	}
 
 	message += QStringLiteral("\n\n")
-			% tr("%n elements not redrawn: their size, grip point or terminals have "
-				  "changed (a terminal was added, removed or moved).",
-				  "", geometry_changed.size())
+			% (adopt_frame
+			   ? tr("%n elements not redrawn: their terminals have changed (a "
+					"terminal was added, removed or moved).",
+					"", geometry_changed.size())
+			   : tr("%n elements not redrawn: their size, grip point or terminals have "
+					"changed (a terminal was added, removed or moved).",
+					"", geometry_changed.size()))
 			% QStringLiteral("\n\n")
 			% tr("To update them, they must be deleted then reinserted. Warning: "
 				  "this operation removes the conductors already connected to these "
@@ -5449,7 +5575,7 @@ void QETDiagramEditor::slot_reloadElementDrawings() {
 		//The full list goes in the expandable, scrollable details area
 		//so the dialog stays readable on large projects.
 	QMessageBox box(QMessageBox::Warning,
-					tr("Reload element drawings"),
+					title,
 					message,
 					QMessageBox::Ok,
 					this);
@@ -6238,4 +6364,111 @@ void QETDiagramEditor::showProjectChanges(QETProject *project, qint64 from, qint
 	});
 	dialog.resize(640, 420);
 	dialog.exec();
+}
+
+/**
+	@brief QETDiagramEditor::warnsOutsideSheet
+	@return true when printing, exporting and saving warn about what lies
+	outside the sheet; on by default
+*/
+bool QETDiagramEditor::warnsOutsideSheet()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/warn_outside_sheet"), true).toBool();
+}
+
+/**
+	@brief QETDiagramEditor::setWarnsOutsideSheet
+	@param on : see warnsOutsideSheet(); kept in the settings
+*/
+void QETDiagramEditor::setWarnsOutsideSheet(bool on)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/warn_outside_sheet"), on);
+}
+
+/**
+	@brief QETDiagramEditor::outsideSheetReport
+	@return one line per folio of @a folios with something outside the
+	sheet, named as in the Projects panel: "5 - Kitchen: -K1, a text";
+	empty when there is nothing or the warning is off
+*/
+QStringList QETDiagramEditor::outsideSheetReport(const QList<Diagram *> &folios)
+{
+	QStringList lines;
+	if (!warnsOutsideSheet())
+		return lines;
+	for (Diagram *folio : folios)
+	{
+		const QStringList names = folio->itemsOutsideSheet();
+		if (names.isEmpty())
+			continue;
+		QStringList shown = names.mid(0, 5);
+		if (names.size() > 5)
+			shown << tr("%n more", "", int(names.size()) - 5);
+		QString title = folio->title();
+		if (title.isEmpty())
+			title = tr("Untitled sheet", "Fallback label when a diagram has no title");
+		const QString number = QSettings().value(QStringLiteral("genericpanel/folio"), true).toBool()
+				? folio->border_and_titleblock.finalfolio()
+				: QString::number(folio->folioIndex() + 1);
+		lines << tr("%1 - %2: %3").arg(number, title, shown.join(QStringLiteral(", ")));
+	}
+	return lines;
+}
+
+/**
+	@brief QETDiagramEditor::confirmOutsideSheet
+	Before the folios @a folios are printed or exported: when something
+	lies outside a sheet, it would be cut off or left out, so ask whether
+	to go on. The folios are built first, as printing builds them anyway.
+	@return true to go on
+*/
+bool QETDiagramEditor::confirmOutsideSheet(QWidget *parent, const QList<Diagram *> &folios)
+{
+	if (!warnsOutsideSheet() || folios.isEmpty())
+		return true;
+	folios.first()->project()->buildFolios(folios);
+	QStringList lines = outsideSheetReport(folios);
+	if (lines.isEmpty())
+		return true;
+	const int more = lines.size() - 10;
+	if (more > 0) {
+		lines = lines.mid(0, 10);
+		lines << tr("... and %n more folio(s)", "", more);
+	}
+	const auto answer = QET::QetMessageBox::question(
+				parent, tr("Outside the sheet"),
+				tr("These items lie outside the sheet and are cut off or left out:\n\n%1\n\nGo on anyway?")
+				.arg(lines.join(QLatin1Char('\n'))),
+				QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel);
+	return answer == QMessageBox::Yes;
+}
+
+/**
+	@brief QETDiagramEditor::outsideSheetSaveHint
+	@return what the status bar says after @a project is saved when some
+	of its folios have something outside the sheet, or an empty string.
+	Only folios already built are looked at, so saving does not build the
+	others (#1461). Only a hint: items may be parked beside the sheet on
+	purpose while a folio is worked on.
+*/
+QString QETDiagramEditor::outsideSheetSaveHint(QETProject *project)
+{
+	if (!project)
+		return QString();
+	const QStringList lines = outsideSheetReport(project->builtFolios());
+	if (lines.isEmpty())
+		return QString();
+	return tr("Project saved; %n folio(s) with items outside the sheet, "
+		  "named when printing or exporting", "", int(lines.size()));
+}
+
+/**
+	@brief QETDiagramEditor::showOutsideSheetAfterSave
+	Show outsideSheetSaveHint() for @a project in the status bar
+*/
+void QETDiagramEditor::showOutsideSheetAfterSave(QETProject *project)
+{
+	const QString hint = outsideSheetSaveHint(project);
+	if (!hint.isEmpty())
+		statusBar()->showMessage(hint, 5000);
 }

@@ -77,6 +77,10 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 	ui(new Ui::QETElementEditor)
 {
 	ui->setupUi(this);
+		// The form's title is the start of every title updateTitle() builds
+		// ("QElectroTech - Element Editor - <name>"); without it the window
+		// was titled " - <name>"
+	m_min_title = windowTitle();
 	initGui();
 	setupActions();
 	setupConnection();

@@ -127,6 +127,9 @@ class Terminal : public QGraphicsObject
 		/// color for forbidden actions
 		static QColor forbiddenColor;
 
+		static bool takesConductorColor();
+		static void setTakesConductorColor(bool takes);
+
 	private:
 		bool               m_draw_help_line{false};
 		QGraphicsLineItem *m_help_line{nullptr};

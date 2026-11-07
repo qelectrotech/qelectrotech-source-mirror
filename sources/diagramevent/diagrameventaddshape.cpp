@@ -454,6 +454,20 @@ void DiagramEventAddShape::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event
 		updateCreationHint();
 		event->setAccepted(true);
 	}
+	else if (m_shape_type != QetShapeItem::Polygon && event->button() == Qt::LeftButton)
+	{
+			//Line, rectangle, ellipse and arc take one point per click. Qt
+			//delivers a second click on the same spot within the double-click
+			//interval as this event instead of a press. With no shape in
+			//progress, that click starts the next one (finish a line, click
+			//its end again to start the next); with one in progress it is
+			//on the first point and adds nothing. Either way the event stays
+			//here: passed on, it opens the properties of the item under the
+			//cursor.
+		if (!m_shape_item)
+			mousePressEvent(event);
+		event->setAccepted(true);
+	}
 }
 
 void DiagramEventAddShape::init()

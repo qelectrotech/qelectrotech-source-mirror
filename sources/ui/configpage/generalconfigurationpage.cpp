@@ -19,6 +19,7 @@
 #include "generalconfigurationpage.h"
 
 #include <qetgraphicsitem/dynamicelementtextitem.h>
+#include <connectionsymbols.h>
 #include <scripting/liveserver.h>
 #include <scripting/assistantinfo.h>
 
@@ -26,6 +27,7 @@
 #include <diagramview.h>
 #include <ui/dockfold.h>
 #include <ui/dockfit.h>
+#include <qetdiagrameditor.h>
 #include <qeticons.h>
 #include "ui_generalconfigurationpage.h"
 #include <materiallist/materiallist.h>
@@ -52,6 +54,7 @@
 
 #include <diagram.h>
 #include <qetproject.h>
+#include <qetgraphicsitem/terminal.h>
 
 namespace {
 	/**
@@ -129,9 +132,12 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_mouse_gestures_cb->setChecked(settings.value("diagrameditor/mouse_gestures", true).toBool());
 	ui->m_pointer_aids_cb->setChecked(DiagramView::pointerAids());
 	ui->m_vertical_texts_from_bottom_cb->setChecked(DynamicElementTextItem::verticalFromBottom());
+	ui->m_drag_texts_without_shift_cb->setChecked(DynamicElementTextItem::dragMovesTextAlone());
+	ui->m_junction_replaces_cb->setChecked(ConnectionSymbols::newJunctionReplacesOld());
 	ui->m_terminal_help_lines_cb->setChecked(DiagramView::terminalHelpLinesShown());
 	ui->m_dock_fold_cb->setChecked(DockFold::enabled());
 	ui->m_narrow_docks_cb->setChecked(DockFit::enabled());
+	ui->m_warn_outside_sheet_cb->setChecked(QETDiagramEditor::warnsOutsideSheet());
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
 	for (const qreal divisor : TextGrid::divisors)
@@ -161,7 +167,10 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_use_tab_mode_rb->setChecked(true);
 	else
 		ui->m_use_windows_mode_rb->setChecked(true);
+	ui->m_selection_rectangle_cb->setCurrentIndex(static_cast<int>(DiagramView::selectionRectangle()));
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
+	ui->m_zoom_step_sb->setValue(DiagramView::zoomStep());
+	ui->m_terminal_conductor_color->setChecked(Terminal::takesConductorColor());
 	ui->m_conductor_properties_panel->setChecked(settings.value("diagrameditor/conductor_properties_panel", false).toBool());
 	ui->m_wiring_rules_cb->setChecked(WiringRules::masterEnabled());
 	{
@@ -425,8 +434,17 @@ void GeneralConfigurationPage::applyConf()
 	QString view_mode = ui->m_use_tab_mode_rb->isChecked() ? "tabbed" : "windowed";
 	settings.setValue("diagrameditor/viewmode", view_mode) ;
 	settings.setValue("diagrameditor/highlight-integrated-elements", ui->m_highlight_integrated_elements->isChecked());
+	DiagramView::setSelectionRectangle(static_cast<DiagramView::SelectionRectangle>(
+		ui->m_selection_rectangle_cb->currentIndex()));
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
+	DiagramView::setZoomStep(ui->m_zoom_step_sb->value());
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());
+	if (ui->m_terminal_conductor_color->isChecked() != Terminal::takesConductorColor()) {
+		Terminal::setTakesConductorColor(ui->m_terminal_conductor_color->isChecked());
+		for (QETProject *project : QETApp::registeredProjects())
+			for (Diagram *diagram : project->diagrams())
+				diagram->update();
+	}
 	WiringRules::setMasterEnabled(ui->m_wiring_rules_cb->isChecked());
 	{
 		const WiringRules::Settings before = WiringRules::applicationSettings();
@@ -454,11 +472,14 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/context_toolbar", ui->m_context_toolbar_cb->isChecked());
 	settings.setValue("diagrameditor/mouse_gestures", ui->m_mouse_gestures_cb->isChecked());
 	DiagramView::setPointerAids(ui->m_pointer_aids_cb->isChecked());
+	ConnectionSymbols::setNewJunctionReplacesOld(ui->m_junction_replaces_cb->isChecked());
 	if (ui->m_vertical_texts_from_bottom_cb->isChecked() != DynamicElementTextItem::verticalFromBottom())
 		DynamicElementTextItem::setVerticalFromBottom(ui->m_vertical_texts_from_bottom_cb->isChecked());
+	DynamicElementTextItem::setDragMovesTextAlone(ui->m_drag_texts_without_shift_cb->isChecked());
 	DiagramView::setTerminalHelpLinesShown(ui->m_terminal_help_lines_cb->isChecked());
 	DockFold::setEnabled(ui->m_dock_fold_cb->isChecked());
 	DockFit::setEnabled(ui->m_narrow_docks_cb->isChecked());
+	QETDiagramEditor::setWarnsOutsideSheet(ui->m_warn_outside_sheet_cb->isChecked());
 		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());
@@ -650,6 +671,7 @@ void GeneralConfigurationPage::fillLang()
 	ui->m_lang_cb->addItem(QET::Icons::pt,		tr("Portuguese"), "pt");
 	ui->m_lang_cb->addItem(QET::Icons::ro,		tr("Romanian"), "ro");
 	ui->m_lang_cb->addItem(QET::Icons::ru,		tr("Russian"), "ru");
+	ui->m_lang_cb->addItem(QET::Icons::sk,		tr("Slovak"), "sk");
 	ui->m_lang_cb->addItem(QET::Icons::sl,		tr("Slovenian"), "sl");
 	ui->m_lang_cb->addItem(QET::Icons::nl,		tr("Dutch"), "nl");
 	ui->m_lang_cb->addItem(QET::Icons::no,		tr("Norwegian"), "nb");

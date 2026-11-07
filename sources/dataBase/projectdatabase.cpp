@@ -46,6 +46,7 @@
 #include <TerminalStrip/physicalterminal.h>
 #include <TerminalStrip/realterminal.h>
 #include <cable/cable.h>
+#include <bridge/bridge.h>
 
 #include <QDir>
 #include <QLocale>
@@ -339,6 +340,17 @@ void projectDataBase::updateDB()
 }
 
 /**
+	@brief projectDataBase::updateForceDB
+	Force an update of all database content.
+*/
+void projectDataBase::updateDBForce()
+{
+	m_content_changed = true;
+	m_rebuild_all	  = true;
+	updateDB();
+}
+
+/**
 	@brief projectDataBase::refresh
 	Bring the tables up to date: write the queued rows, and rebuild the
 	rows of the folios that changed (refreshChangedFolios()), or of every
@@ -377,6 +389,7 @@ void projectDataBase::refresh()
 		flushCollections();
 		flushFolioValues();
 		flushCables();
+		flushBridges();
 		flushConductorProperties();
 		return;
 	}
@@ -455,6 +468,7 @@ void projectDataBase::refreshChangedFolios()
 	flushCollections();
 	flushFolioValues();
 	flushCables();
+	flushBridges();
 
 	const bool own_transaction = m_data_base.transaction();
 	const QSet<QUuid> waiting_symbols = waitingSymbols();
@@ -1238,8 +1252,8 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		//(the project's own may not be read yet): the cells it names must
 		//be the ones the built folios name.
 	reader.setOrigin(ProjectOrigin::fromString(
-		document.documentElement().firstChildElement(QStringLiteral("style"))
-			.attribute(QStringLiteral("origin"))));
+		document.documentElement().firstChildElement(QStringLiteral("cell_origin"))
+			.attribute(QStringLiteral("corner"))));
 	QList<DiagramContext> diagram_infos;
 	QList<QDate> diagram_dates;
 	QList<QUuid> diagram_uuids;
@@ -1801,62 +1815,328 @@ QString projectDataBase::terminalName(const QUuid &terminal, const QUuid &elemen
 */
 std::optional<QSet<QUuid>> projectDataBase::potentialWires(const QUuid &wire) const
 {
+		//One rule set for one wire and for all of them: potentialGroupsOf()
+	const PotentialGroups groups = potentialGroupsOf(m_data_base);
+	const auto group = groups.group_of.constFind(wire);
+	if (group == groups.group_of.constEnd() || groups.unknown.contains(group.value())) {
+		return std::nullopt;
+	}
+	QSet<QUuid> wires;
+	for (auto it = groups.group_of.constBegin() ; it != groups.group_of.constEnd() ; ++it)
+		if (it.value() == group.value())
+			wires.insert(it.key());
+	return wires;
+}
+
+/**
+	@brief projectDataBase::potentialGroups
+	@return the potentials of the whole project, found in one pass over the
+	conductor, element and link tables, by the rules potentialWires() follows
+	for one wire: through a wire's ends, from a folio report to the terminals
+	of the first symbol it is linked to, and from a terminal block's terminal
+	to its others. A group is unknown when a terminal block in it isolates its
+	terminals (their groups are in its definition, not in the database): a
+	check must not call that a mismatch. Wires without a row are not listed.
+	Costs one read of each table, however many wires there are, where asking
+	potentialWires() for each wire reads them all again every time.
+*/
+projectDataBase::PotentialGroups projectDataBase::potentialGroupsOf(const QSqlDatabase &db)
+{
 	using Node = std::pair<QString, QString>;   //element uuid, terminal uuid
-	QHash<QString, std::pair<Node, Node>> ends;
-	QHash<Node, QStringList> wires_at;
-	QHash<QString, QList<Node>> nodes_of;
+	QHash<Node, int> index;
+	QList<int> parent;
+	QHash<QString, QList<int>> nodes_of;
+	QList<std::pair<QString, int>> wires;
+	const auto node_id = [&](const Node &n) {
+		const auto known = index.constFind(n);
+		if (known != index.constEnd()) return known.value();
+		const int id = static_cast<int>(parent.size());
+		index.insert(n, id);
+		parent << id;
+		nodes_of[n.first] << id;
+		return id;
+	};
+	const auto find = [&](int x) {
+		while (parent[x] != x) {
+			parent[x] = parent[parent[x]];
+			x = parent[x];
+		}
+		return x;
+	};
+	const auto join = [&](int a, int b) {
+		a = find(a);
+		b = find(b);
+		if (a != b) parent[b] = a;
+	};
+
 	{
-		QSqlQuery query(m_data_base);
+		QSqlQuery query(db);
 		query.exec(QStringLiteral("SELECT uuid, terminal1_element_uuid, terminal1_uuid, "
 								  "terminal2_element_uuid, terminal2_uuid FROM conductor"));
 		while (query.next()) {
-			const Node a{query.value(1).toString(), query.value(2).toString()};
-			const Node b{query.value(3).toString(), query.value(4).toString()};
-			const QString uuid = query.value(0).toString();
-			ends.insert(uuid, {a, b});
-			for (const Node &n : {a, b}) {
-				wires_at[n] << uuid;
-				if (!nodes_of.value(n.first).contains(n)) nodes_of[n.first] << n;
+			const int a = node_id({query.value(1).toString(), query.value(2).toString()});
+			const int b = node_id({query.value(3).toString(), query.value(4).toString()});
+			join(a, b);
+			wires.append({query.value(0).toString(), a});
+		}
+	}
+
+		//The first symbol each symbol is linked to, in one read
+	QHash<QString, QString> first_partner;
+	{
+		QSqlQuery query(db);
+		query.exec(QStringLiteral("SELECT element_uuid, linked_uuid FROM link ORDER BY element_uuid, ord, rowid"));
+		while (query.next()) {
+			const QString element = query.value(0).toString();
+			if (!first_partner.contains(element))
+				first_partner.insert(element, query.value(1).toString());
+		}
+	}
+
+		//The terminal blocks that isolate their terminals, from the table
+		//the symbols write their information through, so a .qetdb read
+		//by itself gives the same answer as the project opened from it
+	QSet<QString> isolating;
+	{
+		QSqlQuery query(db);
+		query.exec(QStringLiteral("SELECT element_uuid, value FROM element_information "
+								  "WHERE name = 'potential_isolating'"));
+		while (query.next())
+			if (QET::infoFlagIsTrue(query.value(1).toString()))
+				isolating.insert(query.value(0).toString());
+	}
+
+	QList<int> isolated;
+	{
+		QSqlQuery query(db);
+		query.exec(QStringLiteral("SELECT uuid, type FROM element"));
+		while (query.next()) {
+			const QString element = query.value(0).toString();
+			const auto own = nodes_of.constFind(element);
+			if (own == nodes_of.constEnd()) continue;
+			const ElementData::Type kind = ElementData::typeFromString(query.value(1).toString());
+			if (kind & ElementData::AllReport) {
+				const auto partner = nodes_of.constFind(first_partner.value(element));
+				if (partner == nodes_of.constEnd()) continue;
+				for (int a : *own)
+					for (int b : *partner)
+						join(a, b);
+			} else if (kind & ElementData::Terminal) {
+				for (int a : *own)
+					join(own->first(), a);
+				if (isolating.contains(element))
+					isolated << own->first();
 			}
 		}
 	}
-	const auto start = ends.constFind(wire.toString());
-	if (start == ends.constEnd()) {
-		return std::nullopt;
+
+	PotentialGroups groups;
+	QHash<int, int> number_of;
+	for (const auto &wire : std::as_const(wires)) {
+		const int root = find(wire.second);
+		auto number = number_of.find(root);
+		if (number == number_of.end())
+			number = number_of.insert(root, groups.count++);
+		groups.group_of.insert(QUuid(wire.first), number.value());
 	}
-	QHash<QString, ElementData::Type> kinds;
-	{
-		QSqlQuery query(m_data_base);
-		query.exec(QStringLiteral("SELECT uuid, type FROM element"));
-		while (query.next())
-			kinds.insert(query.value(0).toString(), ElementData::typeFromString(query.value(1).toString()));
+	for (int node : std::as_const(isolated)) {
+		const auto number = number_of.constFind(find(node));
+		if (number != number_of.constEnd())
+			groups.unknown.insert(number.value());
 	}
-	QSet<QUuid> wires;
-	QSet<Node> seen;
-	QList<Node> todo{start->first, start->second};
-	while (!todo.isEmpty()) {
-		const Node node = todo.takeLast();
-		if (seen.contains(node)) continue;
-		seen.insert(node);
-		for (const QString &w : wires_at.value(node)) {
-			if (wires.contains(QUuid(w))) continue;
-			wires.insert(QUuid(w));
-			const auto e = ends.value(w);
-			todo << e.first << e.second;
+	return groups;
+}
+
+projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
+{
+	return potentialGroupsOf(m_data_base);
+}
+
+/**
+	@brief projectDataBase::refreshPotentialMembers
+	Rebuild the TEMP table potential_member (wire_uuid, potential_id,
+	is_unknown) from potentialGroups(), and make the TEMP view
+	wire_potential_view over it: one row per wire with its potential, its
+	effective potential type and where that type comes from ('wire' for the
+	wire's own stored potential_type; a source-derived type will be 'source').
+	Both are TEMP on purpose: a .qetdb that holds a view outside the fixed
+	list is refused as damaged by every QET that does not know it
+	(QetDbFile), so nothing here is ever saved, and the file carries no
+	data that could disagree with the drawing. Run on request only, never on
+	a load, an edit or a paint.
+*/
+bool projectDataBase::refreshPotentialMembersOf(QSqlDatabase db)
+{
+	const PotentialGroups groups = potentialGroupsOf(db);
+
+	QSqlQuery query(db);
+	bool ok = true;
+	const auto run = [&](const QString &sql) {
+		if (!query.exec(sql)) {
+			qDebug() << "projectDataBase::refreshPotentialMembersOf" << query.lastError();
+			ok = false;
 		}
-		const ElementData::Type kind = kinds.value(node.first, ElementData::Simple);
-		if (kind & ElementData::AllReport) {
-			const QList<QUuid> partners = linkedSymbols(QUuid(node.first));
-			if (!partners.isEmpty())
-				todo << nodes_of.value(partners.first().toString());
-		} else if (kind & ElementData::Terminal) {
-			if (QET::infoFlagIsTrue(m_element_information.value(QUuid(node.first))
-									.value(QStringLiteral("potential_isolating")).toString()))
-				return std::nullopt;
-			todo << nodes_of.value(node.first);
+	};
+	run(QStringLiteral("CREATE TEMP TABLE IF NOT EXISTS potential_member ("
+					   "wire_uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+					   "potential_id INTEGER NOT NULL, "
+					   "is_unknown INTEGER NOT NULL)"));
+		//Made again each time, so an old definition never outlives a change
+	run(QStringLiteral("DROP VIEW IF EXISTS temp.wire_potential_view"));
+	run(QStringLiteral(
+		"CREATE TEMP VIEW wire_potential_view AS SELECT "
+		"c.uuid AS wire_uuid, m.potential_id AS potential_id, "
+		"COALESCE(m.is_unknown, 0) AS is_unknown, "
+		"NULLIF(p.value, '') AS potential_type, "
+		"CASE WHEN NULLIF(p.value, '') IS NULL THEN NULL ELSE 'wire' END AS source "
+		"FROM main.conductor c "
+		"LEFT JOIN temp.potential_member m ON m.wire_uuid = c.uuid "
+		"LEFT JOIN main.conductor_properties p ON p.conductor_uuid = c.uuid AND p.name = 'potential_type'"));
+	const bool own_transaction = db.transaction();
+	run(QStringLiteral("DELETE FROM temp.potential_member"));
+	query.prepare(QStringLiteral("INSERT INTO temp.potential_member (wire_uuid, potential_id, is_unknown) "
+								 "VALUES (:wire, :potential, :unknown)"));
+	for (auto it = groups.group_of.constBegin() ; it != groups.group_of.constEnd() ; ++it) {
+		query.bindValue(QStringLiteral(":wire"), it.key().toString());
+		query.bindValue(QStringLiteral(":potential"), it.value());
+		query.bindValue(QStringLiteral(":unknown"), groups.unknown.contains(it.value()) ? 1 : 0);
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::refreshPotentialMembersOf insert" << query.lastError();
+			ok = false;
 		}
 	}
-	return wires;
+	if (own_transaction && !db.commit()) {
+		qDebug() << "projectDataBase::refreshPotentialMembersOf commit" << db.lastError();
+		ok = false;
+	}
+	return ok;
+}
+
+void projectDataBase::refreshPotentialMembers()
+{
+		//newQuery() writes the pending wire properties first
+	flushConductorProperties();
+	refreshPotentialMembersOf(m_data_base);
+}
+
+/**
+	@brief projectDataBase::potentialTypeMismatches
+	The potentials that reach more than one potential type, read from
+	wire_potential_view after refreshPotentialMembers(). A potential whose
+	extent is unknown (a terminal block that isolates its terminals) is left
+	out: that is not a mismatch.
+	@return one entry per mismatching potential, in potential order
+*/
+QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatchesOf(QSqlDatabase db, bool *ok)
+{
+	QList<PotentialMismatch> mismatches;
+	const bool refreshed = refreshPotentialMembersOf(db);
+	if (ok) *ok = refreshed;
+	if (!refreshed)
+		return mismatches;
+
+	QSqlQuery read(db);
+	read.exec(QStringLiteral(
+		"SELECT v.potential_id, v.potential_type, v.wire_uuid FROM temp.wire_potential_view v "
+		"WHERE v.is_unknown = 0 AND v.potential_type IS NOT NULL "
+		"AND v.potential_id IN (SELECT potential_id FROM temp.wire_potential_view "
+		"WHERE is_unknown = 0 AND potential_type IS NOT NULL "
+		"GROUP BY potential_id HAVING COUNT(DISTINCT potential_type) > 1) "
+		"ORDER BY v.potential_id, v.potential_type, v.wire_uuid"));
+	while (read.next()) {
+		const int potential = read.value(0).toInt();
+		if (mismatches.isEmpty() || mismatches.last().potential != potential) {
+			PotentialMismatch mismatch;
+			mismatch.potential = potential;
+			mismatches << mismatch;
+		}
+		const QString type = read.value(1).toString();
+		if (!mismatches.last().types.contains(type))
+			mismatches.last().types << type;
+		mismatches.last().wires << QUuid(read.value(2).toString());
+	}
+
+		//A potential whose types are all joined on purpose, pair by pair
+		//(0V and PE at a control supply), is meant: not a mismatch
+	const QList<PotentialBond> bonds = potentialBondsOf(db);
+	if (!bonds.isEmpty()) {
+		const auto meant = [&bonds](const QStringList &types) {
+			for (int i = 0 ; i < types.size() ; ++i)
+				for (int j = i + 1 ; j < types.size() ; ++j) {
+					bool joined = false;
+					for (const PotentialBond &bond : bonds)
+						if (bond.joins(types.at(i), types.at(j))) joined = true;
+					if (!joined) return false;
+				}
+			return true;
+		};
+		for (int i = mismatches.size() - 1 ; i >= 0 ; --i)
+			if (meant(mismatches.at(i).types))
+				mismatches.removeAt(i);
+	}
+
+		//What was found, as rows a query reads: one per typed wire of each
+		//mismatching potential. TEMP, like the table and view it is made from.
+	QSqlQuery write(db);
+	write.exec(QStringLiteral("CREATE TEMP TABLE IF NOT EXISTS potential_mismatch ("
+							  "potential_id INTEGER NOT NULL, types TEXT NOT NULL, "
+							  "wire_uuid VARCHAR(50) NOT NULL, potential_type TEXT NOT NULL)"));
+	write.exec(QStringLiteral("DELETE FROM temp.potential_mismatch"));
+	if (!mismatches.isEmpty()) {
+		const bool own_transaction = db.transaction();
+		QHash<QUuid, QString> type_of;
+		QSqlQuery types(db);
+		types.exec(QStringLiteral("SELECT wire_uuid, potential_type FROM temp.wire_potential_view "
+								  "WHERE potential_type IS NOT NULL"));
+		while (types.next())
+			type_of.insert(QUuid(types.value(0).toString()), types.value(1).toString());
+		write.prepare(QStringLiteral("INSERT INTO temp.potential_mismatch "
+									 "(potential_id, types, wire_uuid, potential_type) "
+									 "VALUES (:potential, :types, :wire, :type)"));
+		for (const PotentialMismatch &mismatch : std::as_const(mismatches))
+			for (const QUuid &wire : mismatch.wires) {
+				write.bindValue(QStringLiteral(":potential"), mismatch.potential);
+				write.bindValue(QStringLiteral(":types"), mismatch.types.join(QLatin1Char('+')));
+				write.bindValue(QStringLiteral(":wire"), wire.toString());
+				write.bindValue(QStringLiteral(":type"), type_of.value(wire));
+				if (!write.exec()) {
+					qDebug() << "projectDataBase::potentialTypeMismatchesOf" << write.lastError();
+					if (ok) *ok = false;
+				}
+			}
+		if (own_transaction)
+			db.commit();
+	}
+	return mismatches;
+}
+
+/**
+	@return the pairs of potential types the project says are joined on
+	purpose, read from the project_setting rows of @p db alone
+*/
+QList<PotentialBond> projectDataBase::potentialBondsOf(const QSqlDatabase &db)
+{
+	QHash<int, PotentialBond> rows;
+	QSqlQuery query(db);
+	query.exec(QStringLiteral("SELECT ord, name, value FROM project_setting "
+							  "WHERE section = 'potentialtypes/bond' AND name IN ('a', 'b')"));
+	while (query.next()) {
+		PotentialBond &bond = rows[query.value(0).toInt()];
+		(query.value(1).toString() == QLatin1String("a") ? bond.a : bond.b) = query.value(2).toString();
+	}
+	QList<int> order = rows.keys();
+	std::sort(order.begin(), order.end());
+	QList<PotentialBond> bonds;
+	for (int ord : std::as_const(order))
+		if (!rows.value(ord).a.isEmpty() && !rows.value(ord).b.isEmpty())
+			bonds << rows.value(ord);
+	return bonds;
+}
+
+QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatches()
+{
+	flushConductorProperties();
+	return potentialTypeMismatchesOf(m_data_base);
 }
 
 /**
@@ -2330,7 +2610,17 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 	flushCollections();
 	flushFolioValues();
 	flushCables();
+	flushBridges();
 	flushConductorProperties();
+		//The potential check's TEMP table and views are made when asked for
+		//(POTENTIAL-TYPES-PLAN.md): a query that names one brings them up
+		//to date first, as for the tables above
+	static const QRegularExpression potential_objects(
+			QStringLiteral("\\b(wire_potential_view|potential_member|potential_mismatch)\\b"),
+			QRegularExpression::CaseInsensitiveOption);
+	if (potential_objects.match(query).hasMatch()) {
+		potentialTypeMismatchesOf(m_data_base);
+	}
 
 	// First gate: which kind of statement is acceptable here at all. A
 	// textual check is the right tool for that and the wrong tool for
@@ -3381,6 +3671,8 @@ void projectDataBase::addDrawingItem(QGraphicsItem *item)
 	}
 	else if (auto text = qobject_cast<IndependentTextItem *>(object)) {
 		connect(text, &IndependentTextItem::uuidChanged, this, &projectDataBase::drawingItemChanged, unique);
+			//Held in the row's saved form (destination attribute)
+		connect(text, &IndependentTextItem::destinationChanged, this, &projectDataBase::drawingItemChanged, unique);
 			//Also changes the height of the text, kept in the row
 		connect(text, &IndependentTextItem::textWidthChanged, this, &projectDataBase::drawingItemChanged, unique);
 			//Sent by the document, not the item: drawingItemChanged() walks
@@ -3981,13 +4273,14 @@ bool projectDataBase::createDataBase()
 
 		//What a symbol, a folio or a cable saves that no other table holds,
 		//one row per value as project_setting (storeElementValues(),
-		//flushFolioValues(), flushCables()): a symbol's prefix, frozen
+		//flushFolioValues(), flushCables(), flushBridges()): a symbol's prefix, frozen
 		//label, whether it moves, a terminal's override properties and a
 		//PLC's master data; a folio's default wire and its freeze and
-		//numbering settings; each cable whole
+		//numbering settings; each cable and each bridge whole
 	for (const auto &[table, key] : {std::pair{QStringLiteral("element_value"), QStringLiteral("element_uuid")},
 									 std::pair{QStringLiteral("folio_value"), QStringLiteral("diagram_uuid")},
-									 std::pair{QStringLiteral("cable_value"), QStringLiteral("cable_uuid")}}) {
+									 std::pair{QStringLiteral("cable_value"), QStringLiteral("cable_uuid")},
+									 std::pair{QStringLiteral("bridge_value"), QStringLiteral("bridge_uuid")}}) {
 		if (!query_.exec(QStringLiteral("CREATE TABLE %1 (%2 VARCHAR(50) NOT NULL, section TEXT NOT NULL, "
 										"ord INTEGER NOT NULL, name TEXT NOT NULL, value TEXT, "
 										"PRIMARY KEY (%2, section, ord, name))").arg(table, key))) {
@@ -4005,6 +4298,15 @@ bool projectDataBase::createDataBase()
 									"ord INTEGER NOT NULL, content TEXT NOT NULL, "
 									"PRIMARY KEY (diagram_uuid, ord))"))) {
 		qDebug() << " kept_item table query : " << query_.lastError();
+	}
+
+		//The blocks of XML under the project, or under a folio, that this
+		//QET does not know, each whole, in the order they came
+		//(storeForeignBlocks()). owner: "project" or the folio's uuid.
+	if (!query_.exec(QStringLiteral("CREATE TABLE foreign_block (owner VARCHAR(50) NOT NULL, "
+									"ord INTEGER NOT NULL, content TEXT NOT NULL, "
+									"PRIMARY KEY (owner, ord))"))) {
+		qDebug() << " foreign_block table query : " << query_.lastError();
 	}
 
 		//Create the project's own symbols, their categories and its
@@ -5884,6 +6186,34 @@ void projectDataBase::flushCables()
 }
 
 /**
+	@brief projectDataBase::flushBridges
+	Write every bridge of the project whole (Bridge::toXml(), its terminals
+	and sections included), when queueBridges() said one changed, and
+	forget the rows of the bridges gone.
+*/
+void projectDataBase::flushBridges()
+{
+	if (!m_bridges_changed || !m_project) return;
+	m_bridges_changed = false;
+	const bool own_transaction = m_data_base.transaction();
+	QSet<QUuid> now;
+	for (Bridge *bridge : m_project->bridges()) {
+		QDomDocument document;
+		QList<ProjectSetting> rows;
+		xmlRows(bridge->toXml(document), Bridge::xmlTagName(), 0, rows);
+		now.insert(bridge->uuid());
+		storeKeyedRows(QStringLiteral("bridge_value"), QStringLiteral("bridge_uuid"), m_bridge_values, bridge->uuid(), rows);
+	}
+	const QList<QUuid> stored = m_bridge_values.keys();
+	for (const QUuid &uuid : stored)
+		if (!now.contains(uuid))
+			forgetKeyedRows(QStringLiteral("bridge_value"), QStringLiteral("bridge_uuid"), m_bridge_values, uuid);
+	if (own_transaction) {
+		m_data_base.commit();
+	}
+}
+
+/**
 	@brief projectDataBase::forgetTerminalStrip
 	Drop the rows of the strip @p strip (it left the project).
 */
@@ -6100,6 +6430,7 @@ void projectDataBase::unplaceFolio(Diagram *folio, const QUuid &uuid)
 {
 	if (m_placed_folios.value(uuid) != folio) return;
 	m_placed_folios.remove(uuid);
+	storeForeignBlocks(uuid.toString(), {});
 	if (m_kept_items.remove(uuid)) {
 		QSqlQuery remove_kept(m_data_base);
 		remove_kept.prepare(QStringLiteral("DELETE FROM kept_item WHERE diagram_uuid = :uuid"));
@@ -8178,6 +8509,7 @@ void projectDataBase::exportDb(projectDataBase *db,
 	db->flushCollections();
 	db->flushFolioValues();
 	db->flushCables();
+	db->flushBridges();
 	db->flushConductorProperties();
 		//VACUUM INTO cannot run inside the working copy's transaction
 	db->endTransaction();
@@ -8188,3 +8520,111 @@ void projectDataBase::exportDb(projectDataBase *db,
 	db->beginTransaction();
 }
 #endif
+
+/**
+	@brief projectDataBase::foreignChildren
+	@return the children of @p parent, a project (or a folio when @p folio)
+	that this QET neither reads nor writes, each as the text of its XML, in
+	their order. What a newer QET, or a fork, adds is among them: no format
+	may lose it (QET-SQL-FORMAT-SCOPE.md 4.3). The children of older QETs
+	that were dropped since (a misspelt <defaultcoductor>) are not.
+*/
+QStringList projectDataBase::foreignChildren(const QDomElement &parent, bool folio)
+{
+	static const QSet<QString> project_known{
+		QStringLiteral("properties"), QStringLiteral("newdiagrams"), QStringLiteral("diagram"),
+		QStringLiteral("collection"), QStringLiteral("titleblocktemplates"), QStringLiteral("usage"),
+		QStringLiteral("wire_crossings"), QStringLiteral("symbol_texts"), QStringLiteral("languages"),
+		QStringLiteral("terminal_labelling"), QStringLiteral("wiring_rules"),
+		QStringLiteral("chained_reports"), QStringLiteral("style"),
+		QStringLiteral("terminal_strip_layout"), QStringLiteral("terminal_strips"),
+		QStringLiteral("cables"), QStringLiteral("bridges")};
+	static const QSet<QString> folio_known{
+		QStringLiteral("defaultconductor"), QStringLiteral("elements"), QStringLiteral("conductors"),
+		QStringLiteral("inputs"), QStringLiteral("images"), QStringLiteral("shapes"),
+		QStringLiteral("tables"), QStringLiteral("dimensions"), QStringLiteral("properties"),
+		QStringLiteral("terminal_strip_items"),
+		QStringLiteral("elementautonumfoliosequentials"),
+		QStringLiteral("conductorautonumfoliosequentials"),
+			//Dropped by earlier QETs, still found in old files
+		QStringLiteral("defaultcoductor"), QStringLiteral("autonum"), QStringLiteral("diagram")};
+	const QSet<QString> &known = folio ? folio_known : project_known;
+	QStringList blocks;
+	for (QDomElement child = parent.firstChildElement() ; !child.isNull() ; child = child.nextSiblingElement()) {
+		const QString tag = child.tagName();
+		if (known.contains(tag) || tag.startsWith(QLatin1String("qetz-"))) continue;
+		QString text;
+		QTextStream stream(&text);
+		child.save(stream, -1);
+		blocks << text;
+	}
+	return blocks;
+}
+
+/**
+	@brief projectDataBase::storeForeignBlocks
+	Keep @p blocks (foreignChildren()) as the unknown blocks of @p owner
+	(project_owner, or a folio's uuid), in the foreign_block table.
+*/
+void projectDataBase::storeForeignBlocks(const QString &owner, const QStringList &blocks)
+{
+	if (m_foreign_blocks.value(owner) == blocks) return;
+	if (blocks.isEmpty()) m_foreign_blocks.remove(owner);
+	else m_foreign_blocks.insert(owner, blocks);
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM foreign_block WHERE owner = :owner"));
+	remove.bindValue(QStringLiteral(":owner"), owner);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeForeignBlocks remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral("INSERT INTO foreign_block (owner, ord, content) VALUES (:owner, :ord, :content)"));
+	for (int i = 0 ; i < blocks.size() ; ++i) {
+		insert.bindValue(QStringLiteral(":owner"), owner);
+		insert.bindValue(QStringLiteral(":ord"), i);
+		insert.bindValue(QStringLiteral(":content"), blocks.at(i));
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeForeignBlocks insert error : " << insert.lastError();
+		}
+	}
+}
+
+/**
+	@return the unknown blocks of @p owner (storeForeignBlocks())
+*/
+QStringList projectDataBase::foreignBlocks(const QString &owner) const
+{
+	return m_foreign_blocks.value(owner);
+}
+
+/**
+	@return the unknown blocks of @p owner that @p db holds, read from
+	its table alone (toDocument())
+*/
+QStringList projectDataBase::foreignBlocksOf(const QSqlDatabase &db, const QString &owner)
+{
+	QStringList blocks;
+	QSqlQuery query(db);
+	query.setForwardOnly(true);
+	query.prepare(QStringLiteral("SELECT content FROM foreign_block WHERE owner = :owner ORDER BY ord"));
+	query.bindValue(QStringLiteral(":owner"), owner);
+	if (query.exec())
+		while (query.next()) blocks << query.value(0).toString();
+	return blocks;
+}
+
+/**
+	Add @p blocks to @p parent, as the children they were, unless
+	@p parent already has a child of that name (a QET that now knows the
+	block writes it itself).
+*/
+void projectDataBase::appendForeignBlocks(QDomElement &parent, const QStringList &blocks)
+{
+	for (const QString &text : blocks) {
+		QDomDocument part;
+		if (!part.setContent(text, QDomDocument::ParseOption::PreserveSpacingOnlyNodes)) continue;
+		const QDomElement block = part.documentElement();
+		if (!parent.firstChildElement(block.tagName()).isNull()) continue;
+		parent.appendChild(parent.ownerDocument().importNode(block, true));
+	}
+}

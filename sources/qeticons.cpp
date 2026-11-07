@@ -226,6 +226,7 @@ namespace QET {
 		QIcon pt;
 		QIcon ro;
 		QIcon ru;
+        QIcon sk;
 		QIcon sl;
 		QIcon nl;
 		QIcon no;
@@ -650,6 +651,7 @@ void QET::Icons::initIcons()
 	pt.addFile(":/ico/flags/pt.png");
 	ro.addFile(":/ico/flags/ro.png");
 	ru.addFile(":/ico/flags/ru.png");
+	sk.addFile(":/ico/flags/sk.png");
 	sl.addFile(":/ico/flags/sl.png");
 	nl.addFile(":/ico/flags/nl.png");
 	no.addFile(":/ico/flags/no.png");

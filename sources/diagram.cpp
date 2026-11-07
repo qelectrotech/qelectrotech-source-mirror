@@ -19,6 +19,9 @@
 #include "bridge/bridgecopy.h"
 #include "bridge/bridgemanager.h"
 #include "bridge/bridgepart.h"
+#include "shownkinds.h"
+
+#include <functional>
 #include "dataBase/projectdatabase.h"
 #include "autoNum/elementautonumschemecommand.h"
 
@@ -305,6 +308,55 @@ Diagram::~Diagram()
 }
 
 /**
+	@brief Diagram::itemsOutsideSheet
+	@return the names of what lies wholly or partly outside the sheet (its
+	border and title block), and so is cut off or left out when the folio
+	is printed or exported: symbols by their label (or their name), and
+	free texts, shapes, pictures, tables, terminal strips and cables by
+	their kind. A symbol counts
+	with its texts: a label sticking out names the symbol. Conductors are
+	left out, as they go with the symbols they join; so is anything hidden.
+*/
+QStringList Diagram::itemsOutsideSheet() const
+{
+	const QRectF sheet = border_and_titleblock.borderAndTitleBlockRect();
+		//An item and its visible children, as they are printed
+	const std::function<QRectF(const QGraphicsItem *)> printed =
+			[&printed](const QGraphicsItem *item) {
+		QRectF rect = item->sceneBoundingRect();
+		for (const QGraphicsItem *child : item->childItems())
+			if (child->isVisible() && !ShownKinds::isHidden(child))
+				rect |= printed(child);
+		return rect;
+	};
+	QStringList names;
+	for (QGraphicsItem *item : items())
+	{
+		if (item->parentItem() || !item->isVisible() || ShownKinds::isHidden(item)
+				|| item->type() == Conductor::Type
+				|| sheet.contains(printed(item)))
+			continue;
+		switch (item->type())
+		{
+			case Element::Type: {
+				auto *element = static_cast<Element *>(item);
+				const QString label = element->actualLabel();
+				names << (label.isEmpty() ? element->name() : label);
+				break;
+			}
+			case IndependentTextItem::Type: names << tr("a text"); break;
+			case QetShapeItem::Type:        names << tr("a shape"); break;
+			case DiagramImageItem::Type:    names << tr("a picture"); break;
+			case QetGraphicsTableItem::Type: names << tr("a table"); break;
+			case TerminalStripItem::Type:   names << tr("a terminal strip"); break;
+			case CablePart::Type:           names << tr("a cable"); break;
+			default: break;
+		}
+	}
+	return names;
+}
+
+/**
 	@brief Diagram::drawBackground
 	Draw the background of the diagram, ie the grid.
 	\~French Dessine l'arriere-plan du schema, cad la grille.
@@ -433,6 +485,26 @@ void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 		if (event->isAccepted()) {
 			return;
 		}
+			//The tool has no use for a double-click. Qt sends one in place
+			//of the second press of two quick clicks on the same spot, so
+			//give the tool that press (finish a dimension, click its end
+			//again to start the next one); a right or middle double-click
+			//is not replayed, its first press already did what it does.
+			//Whatever the tool makes of it, it is not passed on to the
+			//scene: the item under the cursor would open its properties in
+			//the middle of the tool's work. The tool may have finished and
+			//been deleted by now, hence the check.
+		if (m_event_interface && event->button() == Qt::LeftButton) {
+			m_event_interface->mousePressEvent(event);
+		}
+		event->setAccepted(true);
+		return;
+	}
+		//The tool ended on the first click of this double-click (a right
+		//click leaving it, a text placed): the second is still its own.
+	if (m_press_went_to_tool) {
+		event->setAccepted(true);
+		return;
 	}
 
 	QGraphicsScene::mouseDoubleClickEvent(event);
@@ -446,6 +518,7 @@ void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	event->setAccepted(false);
+	m_press_went_to_tool = m_event_interface != nullptr;
 
 	if (m_event_interface) {
 		m_event_interface->mousePressEvent(event);
@@ -1231,6 +1304,17 @@ bool Diagram::eventInterfaceIsRunning() const
 }
 
 /**
+	@brief Diagram::toolTookLastPress
+	@return true if the last mouse press went to a tool (an event
+	interface), even one that has finished since: the double-click that
+	may follow belongs to that tool, not to the items under the cursor.
+*/
+bool Diagram::toolTookLastPress() const
+{
+	return m_press_went_to_tool;
+}
+
+/**
 	@brief Diagram::pendingElement
 	@return the symbol that follows the mouse while one is placed, else nullptr
 */
@@ -1485,8 +1569,13 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 				auto elmt = static_cast<Element *>(qgi);
 				if (whole_content || elmt->isSelected()){
 					//  For a copy/paste command, the text positions must be recalculated for
-					//  correct text alignment, before it is saved to the clipboard
-					if(is_copy_command && (elmt->linkType() == Element::Slave || elmt->linkType()&Element::AllReport))
+					//  correct text alignment, before it is saved to the clipboard.
+					//  A conductor definition reads its texts from the wire it
+					//  stands on, the way a report reads them from the folio it
+					//  leads to, so it belongs in this as well.
+					if(is_copy_command && (elmt->linkType() == Element::Slave
+										   || elmt->linkType()&Element::AllReport
+										   || elmt->linkType() == Element::ConductorDefinition))
 						correctTextPos(elmt);
 					list_elements << elmt;
 				}
@@ -1586,7 +1675,9 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 			ItemGroups::write(dom_element, elmt);
 			dom_elements.appendChild(dom_element);
 			// If copy is active we have to undo the changes we have made during creating(filling) 'list_elements'
-			if(is_copy_command && (elmt->linkType() == Element::Slave || elmt->linkType()&Element::AllReport))
+			if(is_copy_command && (elmt->linkType() == Element::Slave
+								   || elmt->linkType()&Element::AllReport
+								   || elmt->linkType() == Element::ConductorDefinition))
 				restoreText(elmt);
 		}
 		dom_root.appendChild(dom_elements);
@@ -1634,7 +1725,8 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	if (!strip_vector.isEmpty()) {
 		dom_root.appendChild(TerminalStripItemXml::toXml(strip_vector, document));
 	}
-
+	if (m_project && m_project->dataBase())
+		projectDataBase::appendForeignBlocks(dom_root, m_project->dataBase()->foreignBlocks(m_uuid.toString()));
 
 	return(document);
 }
@@ -2256,6 +2348,9 @@ bool Diagram::fromXml(QDomElement &document,
 		// Load border and titleblock
 		border_and_titleblock.titleBlockFromXml(root);
 		border_and_titleblock.borderFromXml(root);
+			//What this QET does not know of the folio, kept for every format
+		if (m_project && m_project->dataBase())
+			m_project->dataBase()->storeForeignBlocks(m_uuid.toString(), projectDataBase::foreignChildren(root, true));
 
 			// Find the element "defaultconductor".
 			// If found, load default conductor properties.
@@ -3276,6 +3371,46 @@ void Diagram::loadFolioSeqHash(QHash<QString,
 }
 
 /**
+	@brief Diagram::setFolioSeqValues
+	What this folio has handed out of the numbering @p title, at level
+	@p level for @p owner ("element" or "conductor"), is @p values from
+	now on -- the hash this folio numbers from, and the rows the project
+	saves them in, which writeFolioCounters() writes back into the file.
+
+	Writing both is what insertFolioSeqHash() and folioSequentialsFromXml()
+	do, and it is what keeps a counter the user put back, or one which
+	went down because the folio was numbered over from the start, from
+	being overwritten by the value saved for it.
+*/
+void Diagram::setFolioSeqValues(const QString &owner,
+				const QString &level,
+				const QString &title,
+				const QStringList &values)
+{
+	const bool element = owner == QLatin1String("element");
+	const bool conductor = owner == QLatin1String("conductor");
+	if (!element && !conductor) {
+		return;
+	}
+	QHash<QString, QStringList> *hash = nullptr;
+	if (level == QLatin1String("unitfolio")) {
+		hash = element ? &m_elmt_unitfolio_max : &m_cnd_unitfolio_max;
+	} else if (level == QLatin1String("tenfolio")) {
+		hash = element ? &m_elmt_tenfolio_max : &m_cnd_tenfolio_max;
+	} else if (level == QLatin1String("hundredfolio")) {
+		hash = element ? &m_elmt_hundredfolio_max : &m_cnd_hundredfolio_max;
+	}
+	if (!hash) {
+		return;
+	}
+	hash->insert(title, values);
+	if (project() && project()->dataBase()) {
+		project()->dataBase()->setFolioCounterValues(
+				uuid(), owner, level, title, values);
+	}
+}
+
+/**
 	@brief Diagram::changeZValue
 	Change the Z value of the current selected item, according to option
 	@param option
@@ -4034,8 +4169,12 @@ void Diagram::correctTextPos(Element* elmt)
 						composite_text.replace(QETInformation::infoToVar(variable),"");
 				}
 			}
-				// create compositeText() without variables for report item
-			else if(elmt->linkType()&Element::AllReport){
+				// create compositeText() without variables for a report
+				// item or a conductor definition: both fill their texts
+				// from what hangs on their wire, so their variables are
+				// the same ones
+			else if(elmt->linkType()&Element::AllReport
+					|| elmt->linkType()==Element::ConductorDefinition){
 				const QStringList variables_list = QETInformation::folioReportInfoKeys();
 				for (auto &variable : variables_list){
 					if(composite_text.contains(QETInformation::infoToVar(variable)))
@@ -4073,7 +4212,8 @@ void Diagram::correctTextPos(Element* elmt)
 							composite_text.replace(QETInformation::infoToVar(variable),"");
 					}
 				}
-				else if(elmt->linkType()&Element::AllReport){
+				else if(elmt->linkType()&Element::AllReport
+						|| elmt->linkType()==Element::ConductorDefinition){
 					QStringList variables_list = QETInformation::folioReportInfoKeys();
 					for (auto variable : variables_list){
 						if(composite_text.contains(QETInformation::infoToVar(variable)))

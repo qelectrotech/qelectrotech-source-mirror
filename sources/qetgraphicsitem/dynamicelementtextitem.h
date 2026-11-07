@@ -116,7 +116,10 @@ class DynamicElementTextItem : public DiagramTextItem
 		static QString xmlTagName() {return QString("dynamic_elmt_text");}
 		static bool verticalFromBottom();
 		static void setVerticalFromBottom(bool from_bottom);
+		static bool dragMovesTextAlone();
+		static void setDragMovesTextAlone(bool text_alone);
 		void updateReadingDirection();
+		QTransform readingFlip() const;
 		void setInfoName(const QString &info_name);
 		QString infoName() const;
 		Element *linkedElementShown() const;
@@ -125,6 +128,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		bool isJumpHighlighted() const {return m_jump_highlight;}
 		void setCompositeText(const QString &text);
 		QString compositeText() const;
+		void refreshConductorText() {elementInfoChanged();}
 		void setFrame(const bool frame);
 		bool frame() const;
 		QUuid uuid() const;

@@ -240,7 +240,7 @@ if(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED)
     list(APPEND QET_SPACEMOUSE_LIBRARIES PkgConfig::SPNAV)
 endif()
 if(QET_SPACEMOUSE_BACKEND_HID_ENABLED)
-    list(APPEND QET_SPACEMOUSE_LIBRARIES PkgConfig::HIDAPI)
+    list(APPEND QET_SPACEMOUSE_LIBRARIES ${QET_HIDAPI_TARGET})
 endif()
 
 if(APPLE)
@@ -376,6 +376,10 @@ if(NOT BUILD_WITH_KF)
     )
 endif()
 
+# The rules below form one component, apart from the ones of the fetched KDE
+# libraries, so that a package can leave those out (see cpack/CMakeLists.txt).
+set(CMAKE_INSTALL_DEFAULT_COMPONENT_NAME qelectrotech)
+
 install(TARGETS ${PROJECT_NAME}
     BUNDLE DESTINATION .
     RUNTIME DESTINATION ${QET_BINARY_PATH}
@@ -390,6 +394,51 @@ if(WIN32)
     if(SQLite3_DLL)
         install(FILES ${SQLite3_DLL} DESTINATION ${QET_BINARY_PATH})
     endif()
+    # hidapi's DLL, for the 3D mouse, when hidapi's CMake package found it
+    # (cmake/find_spacemouse.cmake): Qt's deploy script copies only Qt.
+    if(QET_HIDAPI_TARGET STREQUAL "hidapi::hidapi" AND TARGET hidapi::winapi)
+        get_target_property(qet_hidapi_type hidapi::winapi TYPE)
+        if(qet_hidapi_type STREQUAL "SHARED_LIBRARY")
+            install(FILES $<TARGET_FILE:hidapi::winapi>
+                DESTINATION ${QET_BINARY_PATH})
+        endif()
+    endif()
+endif()
+
+# QET_DEPLOY_QT (cmake/start_options.cmake): at install time, Qt's deploy
+# script copies the Qt libraries and plugins QElectroTech uses beside it:
+# windeployqt on Windows, macdeployqt into the bundle on macOS. Qt's
+# translations are left out: QElectroTech reads them from its own lang
+# folder (QETApp::setLanguage()). Linux packages bring Qt their own way, and
+# Qt's deploy there needs a Qt built with an RPATH, which the distributions'
+# Qt is not.
+if(QET_DEPLOY_QT)
+    if(NOT WIN32 AND NOT APPLE)
+        message(FATAL_ERROR
+            "QET_DEPLOY_QT is for Windows and macOS. On Linux, packages bring "
+            "Qt their own way (distributions, snap, Flatpak, the AppImage "
+            "scripts in build-aux/linux/appimage).")
+    endif()
+    if(Qt6_VERSION VERSION_LESS 6.5)
+        message(FATAL_ERROR
+            "QET_DEPLOY_QT needs Qt 6.5 or newer (found ${Qt6_VERSION}).")
+    endif()
+    set(qet_deploy_tool_options)
+    if(WIN32 AND NOT Qt6_VERSION VERSION_LESS 6.7)
+        # Qml is linked for QJSEngine only (see QET_HAS_SCRIPTING): without
+        # these, windeployqt adds Qt Quick, its QML imports and the QML
+        # debugging plugins, which nothing uses. DEPLOY_TOOL_OPTIONS needs
+        # Qt 6.7; before it, those are deployed too.
+        set(qet_deploy_tool_options DEPLOY_TOOL_OPTIONS
+            --no-quick-import --skip-plugin-types qmltooling)
+    endif()
+    qt_generate_deploy_app_script(
+        TARGET ${PROJECT_NAME}
+        OUTPUT_SCRIPT qet_deploy_script
+        NO_TRANSLATIONS
+        ${qet_deploy_tool_options}
+    )
+    install(SCRIPT ${qet_deploy_script})
 endif()
 
 install(DIRECTORY ico/breeze-icons/16x16   DESTINATION ${QET_ICONS_PATH})
@@ -413,4 +462,16 @@ if(UNIX AND NOT APPLE)
     install(FILES misc/qelectrotech.xml    DESTINATION ${QET_MIME_PACKAGE_PATH})
     install(FILES misc/qelectrotech.appdata.xml DESTINATION ${QET_APPDATA_PATH})
 endif()
+if(WIN32)
+    # The icons of the file types that the MSI links to QElectroTech
+    # (cpack/wix-patch.xml): those of the official installers, in ico/ as
+    # there.
+    install(FILES
+        build-aux/windows/nsis_base/files/ico/application-x-qet-element.ico
+        build-aux/windows/nsis_base/files/ico/application-x-qet-project.ico
+        build-aux/windows/nsis_base/files/ico/application-x-qet-titleblock.ico
+        DESTINATION ${QET_DATA_PATH}ico)
+endif()
 install(FILES ${QM_FILES} DESTINATION ${QET_LANG_PATH})
+
+add_subdirectory(cpack)

@@ -26,6 +26,7 @@
 #include "xmlprojectelementcollectionitem.h"
 
 
+#include <QCoreApplication>
 #include <QtConcurrentMap>
 
 /**
@@ -36,6 +37,18 @@
 ElementsCollectionModel::ElementsCollectionModel(QObject *parent) :
 	QStandardItemModel(parent)
 {
+		//The loading threads of loadCollections() must not outlive the
+		//application object: onGuiThread() (elementcollectionitem.cpp)
+		//reads it from a worker. Stop and wait here, as the destructor
+		//does, while the application still exists (#1689). The context
+		//object ends the connection with the model.
+	if (QCoreApplication::instance())
+		connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit,
+				this, [this]()
+		{
+			m_future.cancel();
+			m_future.waitForFinished();
+		});
 }
 
 /**

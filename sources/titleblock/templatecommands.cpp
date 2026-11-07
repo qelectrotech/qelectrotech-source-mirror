@@ -1108,3 +1108,90 @@ void PasteTemplateCellsCommand::addCell(TitleBlockCell *cell, const TitleBlockCe
 	addPastedCell(cell, after);
 	addErasedCell(cell, before);
 }
+
+/**
+	Constructor
+	@param tbtemplate Modified title block template
+	@param parent Parent QUndoCommand
+*/
+ModifyTitleBlockPreviewCommand::ModifyTitleBlockPreviewCommand(TitleBlockTemplate *tbtemplate, QUndoCommand *parent) :
+	TitleBlockTemplateCommand(tbtemplate, parent),
+	before_(TitleBlockDimension(-1)),
+	after_(TitleBlockDimension(-1))
+{
+	updateText();
+}
+
+/**
+	Destructor
+*/
+ModifyTitleBlockPreviewCommand::~ModifyTitleBlockPreviewCommand() {}
+
+/**
+	@return width and alignment before modification
+*/
+TitleBlockDimension ModifyTitleBlockPreviewCommand::dimensionBefore() const
+{
+	return (before_);
+}
+
+/**
+	@param width and alignment before modification
+*/
+void ModifyTitleBlockPreviewCommand::setDimensionBefore(const TitleBlockDimension& dimension)
+{
+	before_ = dimension;
+}
+
+/**
+	@return width and alignment after modification
+*/
+TitleBlockDimension ModifyTitleBlockPreviewCommand::dimensionAfter() const
+{
+	return (after_);
+}
+
+/**
+	@param width and alignment after modification
+*/
+void ModifyTitleBlockPreviewCommand::setDimensionAfter(const TitleBlockDimension& dimension)
+{
+	after_ = dimension;
+}
+
+/**
+	Restore the original width and alignment.
+*/
+void ModifyTitleBlockPreviewCommand::undo() 
+{ 
+	apply(before_); 
+}
+
+/**
+	set the width and alignment.
+*/
+void ModifyTitleBlockPreviewCommand::redo() 
+{ 
+	apply(after_); 
+}
+
+/**
+	Applies a given size to the row/column
+	@param dimension Size to apply
+*/
+void ModifyTitleBlockPreviewCommand::apply(const TitleBlockDimension& dimension)
+{
+	if (! tbtemplate_) return;
+	tbtemplate_->setPreviewDimension(dimension);
+	if (view_){ 
+		view_->setPreviewWidth(dimension.value);
+	}
+}
+
+/**
+	Update the text describing what the command does.
+*/
+void ModifyTitleBlockPreviewCommand::updateText()
+{
+	setText(QObject::tr("Edit Preview", "undo preview"));
+}
