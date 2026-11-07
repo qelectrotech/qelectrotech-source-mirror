@@ -113,6 +113,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 	private:
 		Qt::Alignment m_alignment = Qt::AlignJustify;
 		QString m_name;
+		bool m_move_parent = false;
 		bool m_first_move = true,
 		m_hold_to_bottom_of_page = false,
 		m_block_alignment_update = false,
