@@ -60,7 +60,8 @@ class QETStyle : public QProxyStyle
 		                 QPainter *painter,
 		                 const QWidget *widget = nullptr) const override;
 
-		/// True when fewer than a fifth of the visible pixels are saturated.
+		/// True when fewer than a fifth of the visible pixels are saturated
+		/// and some pixels are see-through.
 		static bool isLineArt(const QImage &image);
 		/// The highlight color, lightened until it reads at 3:1 on a button.
 		static QColor hoverColor(const QPalette &palette);

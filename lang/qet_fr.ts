@@ -4909,6 +4909,16 @@ Maintenir Maj et faire glisser pour déplacer ce texte seul</translation>
         <translation>Espacement :</translation>
     </message>
     <message>
+        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="73"/>
+        <source>Repeat the move of the copy</source>
+        <translation>Répéter le déplacement de la copie</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="74"/>
+        <source>The first copy lands 4 grid steps right and down; move it, and the next Duplicate repeats that move. The spacing above is then not used.</source>
+        <translation>La première copie est posée 4 pas de grille à droite et en bas ; déplacez-la, et la duplication suivante répète ce déplacement. L&apos;espacement ci-dessus n&apos;est alors pas utilisé.</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="50"/>
         <source>Top</source>
         <translation>Haut</translation>
@@ -14761,6 +14771,17 @@ Options disponibles :
         <source>Choose the spacing and direction used by Duplicate</source>
         <comment>status bar tip</comment>
         <translation>Choisir l&apos;espacement et la direction utilisés par Dupliquer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="793"/>
+        <source>Duplicate with another spacing...</source>
+        <translation>Dupliquer avec un autre espacement...</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="795"/>
+        <source>Choose the spacing and direction, then duplicate the selection</source>
+        <comment>status bar tip</comment>
+        <translation>Choisir l&apos;espacement et la direction, puis dupliquer la sélection</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="812"/>
