@@ -2327,3 +2327,17 @@ add_test(NAME tst_borderpropertiespaper COMMAND tst_borderpropertiespaper)
 set_tests_properties(tst_borderpropertiespaper PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_borderpropertiespaper PRIVATE ${QET_DIR}/sources ${QET_DIR}/sources/ui)
 target_link_libraries(tst_borderpropertiespaper PRIVATE Qt::Test Qt::Widgets Qt::Xml Qt::Svg Qt::Sql Qt::PrintSupport Qt::Concurrent pugixml::pugixml)
+
+# Built without KDE Frameworks, the colour lists are QElectroTech's own:
+# each colour shows a square of the colour beside its name.
+if(NOT BUILD_WITH_KF)
+  add_executable(tst_nokdecolorcombo tst_nokdecolorcombo.cpp
+    ${QET_DIR}/sources/ui/nokde/kcolorcombo.cpp
+    ${QET_DIR}/sources/ui/nokde/kcolorcombo.h)
+  add_test(NAME tst_nokdecolorcombo COMMAND tst_nokdecolorcombo)
+  set_tests_properties(tst_nokdecolorcombo PROPERTIES
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  target_include_directories(tst_nokdecolorcombo PRIVATE
+    ${QET_DIR}/sources/ui/nokde)
+  target_link_libraries(tst_nokdecolorcombo PRIVATE Qt::Test Qt::Widgets)
+endif()
