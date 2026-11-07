@@ -38,6 +38,7 @@ ReplaceConductorDialog::ReplaceConductorDialog(
 	ui(new Ui::ReplaceConductorDialog)
 {
 	ui->setupUi(this);
+	setWindowTitle(tr("Replace conductor properties"));
 	QET::trackDialogGeometry(this);
 	initWidget();
 	setProperties(properties);
