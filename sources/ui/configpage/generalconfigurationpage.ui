@@ -1507,6 +1507,13 @@
             </property>
            </widget>
           </item>
+          <item row="2" column="0" colspan="3">
+           <widget class="QCheckBox" name="m_key_follows_grid_cb">
+            <property name="text">
+             <string>Move by the grid step instead (Display &gt; Grid step)</string>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="1">
            <spacer name="horizontalSpacer_5">
             <property name="orientation">
@@ -1858,6 +1865,7 @@
   <tabstop>DiagramEditor_yGrid_sb</tabstop>
   <tabstop>DiagramEditor_xKeyGrid_sb</tabstop>
   <tabstop>DiagramEditor_yKeyGrid_sb</tabstop>
+  <tabstop>m_key_follows_grid_cb</tabstop>
   <tabstop>DiagramEditor_xKeyGridFine_sb</tabstop>
   <tabstop>DiagramEditor_yKeyGridFine_sb</tabstop>
  </tabstops>

@@ -580,6 +580,9 @@ qet_add_app_test(tst_touchingconductor tst_touchingconductor.cpp)
 qet_add_app_test(tst_symboloutsideframe tst_symboloutsideframe.cpp)
 qet_add_app_test(tst_updateelements tst_updateelements.cpp)
 qet_add_app_test(tst_selectionrectangle tst_selectionrectangle.cpp)
+# The arrow keys: the crosshair on the leftmost selected symbol's terminal
+# or a text's middle; the folio's grid step when set so.
+qet_add_app_test(tst_keyboardmovereference tst_keyboardmovereference.cpp)
 qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
 
 # A folio's pictures, decoded in parallel, each come back with its own
