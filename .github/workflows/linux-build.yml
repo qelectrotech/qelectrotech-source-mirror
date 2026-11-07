@@ -39,6 +39,11 @@ jobs:
           DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
             extra-cmake-modules libkf6coreaddons-dev libkf6widgetsaddons-dev \
             qt6-svg-plugins
+          # Qt QML gives QJSEngine, which the scripting tests (--run) need:
+          # without it CMake leaves them out. Python runs the probe tests; it
+          # came only as a dependency of other packages, so it is named here.
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            qt6-declarative-dev python3
 
       - uses: actions/checkout@v4
         with:
@@ -61,7 +66,9 @@ jobs:
         run: cmake --build build --parallel $(nproc)
 
       - name: Unit tests
-        run: xvfb-run -a ctest --test-dir build --output-on-failure
+        # One job per processor: the tests that must run alone say so in
+        # tests/qttest/CMakeLists.txt.
+        run: xvfb-run -a ctest --test-dir build --output-on-failure -j $(nproc)
 
       - name: IPC open-forwarding regression (#868)
         # Fails the job only on an actual crash. An inconclusive run means the
