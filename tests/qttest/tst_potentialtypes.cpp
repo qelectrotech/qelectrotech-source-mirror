@@ -588,6 +588,18 @@ class tst_potentialtypes : public QObject
 		/// A pair of types joined on purpose is kept in the file and the
 		/// database, and a potential whose types are all so joined is not a
 		/// mismatch; one more type not joined to them is
+		/// Saving the settings page must not drop the declared bonds
+		void widgetKeepsDeclaredBonds()
+		{
+			PotentialTypes types;
+			types.setTypes(PotentialTypes::defaultTypes());
+			types.setBonds({{"0V", "PE"}});
+			PotentialTypesWidget widget;
+			widget.setPotentialTypes(types);
+			QCOMPARE(widget.potentialTypes().bonds().size(), 1);
+			QVERIFY(widget.potentialTypes().isBond("PE", "0V"));
+		}
+
 		void declaredBondIsNotAMismatch()
 		{
 			PotentialTypes types;

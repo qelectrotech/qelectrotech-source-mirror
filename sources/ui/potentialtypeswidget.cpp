@@ -25,6 +25,7 @@
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QLabel>
+#include <QListWidget>
 #include <QPixmap>
 #include <QPushButton>
 #include <QTableWidget>
@@ -80,11 +81,34 @@ PotentialTypesWidget::PotentialTypesWidget(QWidget *parent) :
 	buttons->addStretch();
 	buttons->addWidget(reset_pb);
 
+		//Pairs of types joined on purpose (0V and PE at a power supply):
+		//a potential holding only such a pair is not reported by the check
+	QLabel *bond_help = new QLabel(tr("Types joined on purpose, for example 0V and PE at a "
+									  "power supply. A potential with only these types is "
+									  "not reported as mixed."), this);
+	bond_help->setWordWrap(true);
+	m_bond_a_cb = new QComboBox(this);
+	m_bond_b_cb = new QComboBox(this);
+	QPushButton *bond_add_pb = new QPushButton(tr("Join"), this);
+	QPushButton *bond_remove_pb = new QPushButton(tr("Remove"), this);
+	QHBoxLayout *bond_row = new QHBoxLayout;
+	bond_row->addWidget(m_bond_a_cb);
+	bond_row->addWidget(new QLabel(tr("and"), this));
+	bond_row->addWidget(m_bond_b_cb);
+	bond_row->addWidget(bond_add_pb);
+	bond_row->addStretch();
+	bond_row->addWidget(bond_remove_pb);
+	m_bond_list = new QListWidget(this);
+	m_bond_list->setMaximumHeight(80);
+
 	QVBoxLayout *layout = new QVBoxLayout(this);
 	layout->addWidget(m_mode_cb);
 	layout->addWidget(help);
 	layout->addWidget(m_table);
 	layout->addLayout(buttons);
+	layout->addWidget(bond_help);
+	layout->addLayout(bond_row);
+	layout->addWidget(m_bond_list);
 	layout->addStretch(1);
 
 	connect(add_pb, &QPushButton::clicked, this, [this]() {
@@ -102,6 +126,23 @@ PotentialTypesWidget::PotentialTypesWidget(QWidget *parent) :
 	connect(reset_pb, &QPushButton::clicked, this, [this]() {
 		setTypes(PotentialTypes::defaultTypes());
 	});
+	connect(m_table->model(), &QAbstractItemModel::rowsInserted, this, &PotentialTypesWidget::refreshBondChoices);
+	connect(m_table->model(), &QAbstractItemModel::rowsRemoved, this, &PotentialTypesWidget::refreshBondChoices);
+	connect(m_table->model(), &QAbstractItemModel::dataChanged, this, &PotentialTypesWidget::refreshBondChoices);
+	connect(bond_add_pb, &QPushButton::clicked, this, [this]() {
+		const PotentialBond bond{m_bond_a_cb->currentText(), m_bond_b_cb->currentText()};
+		if (bond.a.isEmpty() || bond.b.isEmpty() || bond.a == bond.b)
+			return;
+		for (int i = 0; i < m_bond_list->count(); ++i) {
+			const QStringList pair = m_bond_list->item(i)->data(Qt::UserRole).toStringList();
+			if (bond == PotentialBond{pair.value(0), pair.value(1)})
+				return;
+		}
+		addBondItem(bond);
+	});
+	connect(bond_remove_pb, &QPushButton::clicked, this, [this]() {
+		delete m_bond_list->takeItem(m_bond_list->currentRow());
+	});
 }
 
 void PotentialTypesWidget::setPotentialTypes(const PotentialTypes &types)
@@ -117,6 +158,39 @@ void PotentialTypesWidget::setPotentialTypes(const PotentialTypes &types)
 	}
 	m_mode_cb->setCurrentIndex(index);
 	setTypes(types.types());
+	setBonds(types.bonds());
+}
+
+void PotentialTypesWidget::setBonds(const QList<PotentialBond> &bonds)
+{
+	m_bond_list->clear();
+	for (const PotentialBond &bond : bonds)
+		addBondItem(bond);
+}
+
+void PotentialTypesWidget::addBondItem(const PotentialBond &bond)
+{
+	QListWidgetItem *item = new QListWidgetItem(tr("%1 and %2").arg(bond.a, bond.b), m_bond_list);
+	item->setData(Qt::UserRole, QStringList{bond.a, bond.b});
+}
+
+	//The two lists offer the names in the table as they stand now
+void PotentialTypesWidget::refreshBondChoices()
+{
+	QStringList names;
+	for (int row = 0; row < m_table->rowCount(); ++row) {
+		const QTableWidgetItem *item = m_table->item(row, NameColumn);
+		if (item && !item->text().trimmed().isEmpty())
+			names << item->text().trimmed();
+	}
+	for (QComboBox *cb : {m_bond_a_cb, m_bond_b_cb}) {
+		const QString current = cb->currentText();
+		cb->clear();
+		cb->addItems(names);
+		cb->setCurrentText(current);
+	}
+	if (m_bond_b_cb->count() > 1 && m_bond_a_cb->currentText() == m_bond_b_cb->currentText())
+		m_bond_b_cb->setCurrentIndex((m_bond_b_cb->currentIndex() + 1) % m_bond_b_cb->count());
 }
 
 void PotentialTypesWidget::setTypes(const QList<PotentialType> &types)
@@ -192,5 +266,11 @@ PotentialTypes PotentialTypesWidget::potentialTypes() const
 	PotentialTypes result;
 	result.setMode(static_cast<PotentialTypes::Mode>(m_mode_cb->currentData().toInt()));
 	result.setTypes(types);
+	QList<PotentialBond> bonds;
+	for (int i = 0; i < m_bond_list->count(); ++i) {
+		const QStringList pair = m_bond_list->item(i)->data(Qt::UserRole).toStringList();
+		bonds << PotentialBond{pair.value(0), pair.value(1)};
+	}
+	result.setBonds(bonds);
 	return result;
 }
