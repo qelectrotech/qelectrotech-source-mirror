@@ -50,6 +50,9 @@ class ElementView : public QGraphicsView {
 	bool gestureEvent(QGestureEvent *event);
 	bool event(QEvent *event) override;
 	void wheelEvent(QWheelEvent *) override;
+	void dragEnterEvent(QDragEnterEvent *) override;
+	void dragMoveEvent(QDragMoveEvent *) override;
+	void dropEvent(QDropEvent *) override;
 	void drawBackground(QPainter *, const QRectF &) override;
 	
 	private:
@@ -77,6 +80,8 @@ class ElementView : public QGraphicsView {
 	void copy();
 	void paste();
 	void pasteInArea();
+	void pasteInArea(const QDomDocument &xml_document);
+	ElementContent pasteCentered(const QDomDocument &xml_document, const QPointF &center);
 	
 	signals:
 	/// Signal emitted after the mode changed

@@ -50,6 +50,7 @@
 #include "titleblock/integrationmovetemplateshandler.h"
 #include "PropertiesEditor/propertieseditordialog.h"
 #include "ui/diagrampropertiesdialog.h"
+#include "ui/duplicateoffsetdialog.h"
 #include "ui/multielementinfowidget.h"
 #include "ui/multipastedialog.h"
 #include "undocommand/changetitleblockcommand.h"
@@ -179,6 +180,8 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 			m_context_toolbar->hide();
 		}
 	});
+	connect(m_diagram, &QGraphicsScene::selectionChanged,
+			this, &DiagramView::copySelectionChanged);
 
 	connect(m_diagram, &Diagram::showDiagram, this, &DiagramView::showDiagram);
 		//The diagram leaves group completion alone while a rubber band is
@@ -898,15 +901,86 @@ void DiagramView::pasteHere()
 */
 void DiagramView::duplicate(const QPoint &stepOffset)
 {
+	QSettings settings;
+	const int x_grid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int y_grid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
+	duplicateBy(QPointF(stepOffset.x() * x_grid, stepOffset.y() * y_grid), false);
+}
+
+/**
+	@brief DiagramView::duplicateRepeatingMove
+	Duplicate with the offset learned from the moves of the copies, as the
+	duplicate of a drawing program does (the setting
+	DuplicateOffsetDialog::savedRepeatsMove(); the spacing set in the
+	dialog is then not used). The first copy lands 4 grid steps right and
+	down; once the copy just made is moved, with the mouse or the arrow
+	keys, how far it then lies from its source is the offset of every
+	next copy, until another copy is moved. Not moved, the copies go on
+	at the same offset.
+*/
+void DiagramView::duplicateRepeatingMove()
+{
+	learnCopyMove();
+	QPointF offset;
+	if (!DuplicateOffsetDialog::learnedOffset(&offset)) {
+		QSettings settings;
+		offset = QPointF(4 * FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid),
+						 4 * FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid));
+	}
+	duplicateBy(offset, true);
+}
+
+/**
+	@brief DiagramView::learnCopyMove
+	If the copy the last duplicate made has been moved since it landed,
+	and does not stand on its source, keep how far it lies from its
+	source as the offset of the next copies.
+*/
+void DiagramView::learnCopyMove()
+{
+	if (!m_last_copy_learns || !m_last_copy_item
+		|| m_last_copy_item->scene() != m_diagram) return;
+	const QPointF pos = m_last_copy_item->pos();
+	if (pos == m_last_copy_landed) return;
+	const QPointF moved = pos - m_last_copy_source;
+	if (moved.isNull()) return;
+	DuplicateOffsetDialog::saveLearnedOffset(moved);
+	m_last_copy_landed = pos;
+}
+
+/**
+	@brief DiagramView::copySelectionChanged
+	Once the selection is no longer the copy the last duplicate made, the
+	move it was given is learned (learnCopyMove()) and the copy forgotten:
+	moving it later, or anything else, teaches nothing.
+*/
+void DiagramView::copySelectionChanged()
+{
+	if (!m_last_copy_item) return;
+	const QList<QGraphicsItem *> selection = m_diagram->selectedItems();
+	const QSet<QGraphicsItem *> selected(selection.cbegin(), selection.cend());
+	const QSet<QGraphicsItem *> copy(m_last_copy.cbegin(), m_last_copy.cend());
+	if (selected == copy) return;
+	learnCopyMove();
+	m_last_copy.clear();
+	m_last_copy_item.clear();
+}
+
+/**
+	@brief DiagramView::duplicateBy
+	The duplicate itself, @p offset in scene units. The copy, as it stands
+	selected afterwards, is remembered for duplicateRepeatingMove(); if
+	@p learns, the move it is given is learned.
+*/
+void DiagramView::duplicateBy(const QPointF &offset, bool learns)
+{
+	m_last_copy.clear();
+	m_last_copy_item.clear();
+
 	if (!isInteractive() || m_diagram->isReadOnly()) return;
 
 	const QList<QGraphicsItem *> selection = m_diagram->selectedItems();
 	if (selection.isEmpty()) return;
-
-	QSettings settings;
-	const int x_grid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
-	const int y_grid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
-	const QPointF offset(stepOffset.x() * x_grid, stepOffset.y() * y_grid);
 
 	// Mirrors copy(), but does not touch the system clipboard: Ctrl+D
 	// should not clobber whatever the user last copied with Ctrl+C.
@@ -927,18 +1001,33 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 					   | DiagramContent::Images | DiagramContent::Shapes
 					   | DiagramContent::Tables | DiagramContent::TerminalStrip
 					   | DiagramContent::Dimensions;
-	for (QGraphicsItem *item : pasted.items(movable))
+		//Still on its source here: where the source stands
+	QGraphicsObject *moving = nullptr;
+	QPointF source;
+	const auto follow = [&moving, &source](QGraphicsItem *item) {
+		if (!moving && item->toGraphicsObject()) {
+			moving = item->toGraphicsObject();
+			source = moving->pos();
+		}
+	};
+	for (QGraphicsItem *item : pasted.items(movable)) {
+		follow(item);
 		item->setPos(item->pos() + offset);
+	}
 		//The new line is stamped beside the original like everything
 		//else -- and only after that, because where each colour label
 		//ends up decides which wire it is going to take
-	for (CablePart *part : std::as_const(cable_pasted))
-		if (part) part->setPos(part->pos() + offset);
+	for (CablePart *part : std::as_const(cable_pasted)) {
+		if (!part) continue;
+		follow(part);
+		part->setPos(part->pos() + offset);
+	}
 		//A bridge line goes along the same way: moving the line is
 		//moving the line, however the moving is done
 	for (Bridge *bridge : std::as_const(pasted_bridges)) {
 		for (BridgePart *part : BridgePart::allParts()) {
 			if (part && part->bridge() == bridge) {
+				follow(part);
 				part->setPos(part->pos() + offset);
 			}
 		}
@@ -983,6 +1072,17 @@ if (command) m_diagram->undoStack().push(command);
 		//and the cable fields written out once more.
 	CableCopy::repoint(wired);
 	adjustSceneRect();
+
+		//The copy, as it now stands selected, for the next
+		//duplicateRepeatingMove(): set last, so that the selection
+		//changes above do not take it for a new selection
+	if (command && moving) {
+		m_last_copy = m_diagram->selectedItems();
+		m_last_copy_item = moving;
+		m_last_copy_source = source;
+		m_last_copy_landed = moving->pos();
+		m_last_copy_learns = learns;
+	}
 }
 
 namespace {

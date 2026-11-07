@@ -18,6 +18,7 @@
 #include "duplicateoffsetdialog.h"
 #include <qet.h>
 
+#include <QCheckBox>
 #include <QComboBox>
 #include <QDialogButtonBox>
 #include <QFormLayout>
@@ -30,6 +31,10 @@ namespace {
 	// remembered offset still makes sense if the grid size ever changes.
 	const QString kOffsetXKey = QStringLiteral("diagrameditor/duplicate_offset_x");
 	const QString kOffsetYKey = QStringLiteral("diagrameditor/duplicate_offset_y");
+	const QString kRepeatMoveKey = QStringLiteral("diagrameditor/duplicate_repeats_move");
+		// In scene units, not grid steps: a copy may be moved off the grid
+	const QString kLearnedXKey = QStringLiteral("diagrameditor/duplicate_learned_x");
+	const QString kLearnedYKey = QStringLiteral("diagrameditor/duplicate_learned_y");
 }
 
 DuplicateOffsetDialog::DuplicateOffsetDialog(QWidget *parent) :
@@ -68,6 +73,21 @@ DuplicateOffsetDialog::DuplicateOffsetDialog(QWidget *parent) :
 	else if (saved.y() < 0) { direction = Up;    spacing = -saved.y(); }
 	m_spacing->setValue(spacing);
 	m_direction->setCurrentIndex(static_cast<int>(direction));
+
+	m_repeat_move = new QCheckBox(tr("Repeat the move of the copy"), this);
+	m_repeat_move->setToolTip(tr("The first copy lands 4 grid steps right and "
+								 "down; move it, and the next Duplicate "
+								 "repeats that move. The spacing above is "
+								 "then not used."));
+	m_repeat_move->setChecked(savedRepeatsMove());
+	form->addRow(m_repeat_move);
+		//Set aside, not cleared: unchecking the box gives it back
+	const auto setAside = [this](bool repeats) {
+		m_spacing->setEnabled(!repeats);
+		m_direction->setEnabled(!repeats);
+	};
+	setAside(m_repeat_move->isChecked());
+	connect(m_repeat_move, &QCheckBox::toggled, this, setAside);
 
 	auto *buttons = new QDialogButtonBox(
 				QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
@@ -114,4 +134,58 @@ bool DuplicateOffsetDialog::hasSavedStepOffset()
 {
 	QSettings settings;
 	return settings.contains(kOffsetXKey) && settings.contains(kOffsetYKey);
+}
+
+bool DuplicateOffsetDialog::repeatsMove() const
+{
+	return m_repeat_move->isChecked();
+}
+
+bool DuplicateOffsetDialog::savedRepeatsMove()
+{
+	QSettings settings;
+	return settings.value(kRepeatMoveKey, false).toBool();
+}
+
+void DuplicateOffsetDialog::saveRepeatsMove(bool repeats)
+{
+	QSettings settings;
+		//Nothing written while it is off, as it is by default
+	if (repeats)
+		settings.setValue(kRepeatMoveKey, true);
+	else
+		settings.remove(kRepeatMoveKey);
+}
+
+bool DuplicateOffsetDialog::learnedOffset(QPointF *offset)
+{
+	QSettings settings;
+	if (!settings.contains(kLearnedXKey) || !settings.contains(kLearnedYKey))
+		return false;
+	*offset = QPointF(settings.value(kLearnedXKey).toDouble(),
+					  settings.value(kLearnedYKey).toDouble());
+	return !offset->isNull();
+}
+
+void DuplicateOffsetDialog::saveLearnedOffset(const QPointF &offset)
+{
+	QSettings settings;
+	settings.setValue(kLearnedXKey, offset.x());
+	settings.setValue(kLearnedYKey, offset.y());
+}
+
+void DuplicateOffsetDialog::forgetLearnedOffset()
+{
+	QSettings settings;
+	settings.remove(kLearnedXKey);
+	settings.remove(kLearnedYKey);
+}
+
+void DuplicateOffsetDialog::save() const
+{
+	const bool switched_on = repeatsMove() && !savedRepeatsMove();
+	saveStepOffset(stepOffset());
+	saveRepeatsMove(repeatsMove());
+	if (switched_on)
+		forgetLearnedOffset();
 }
