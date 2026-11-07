@@ -20,6 +20,7 @@
 #include "properties/potentialtypes.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/terminal.h"
 #include "qetresult.h"
 #include "qetproject.h"
 #include "ui/conductorpropertieswidget.h"
@@ -84,6 +85,43 @@ class tst_potentialtypes : public QObject
 				if (QColor(image.pixel(x, y)) == color)
 					++count;
 		return count;
+	}
+
+	/// A wire with no type of its own whose potential is known and
+	/// holds other wires, and the terminal it starts from
+	Conductor *sourcedWire(QETProject &project, Terminal **source)
+	{
+		const auto groups = project.dataBase()->potentialGroups();
+		for (Diagram *diagram : project.diagrams())
+			for (Conductor *c : diagram->conductors()) {
+				if (!c->properties().m_potential_type.isEmpty() || groups.isUnknown(c->uuid())
+						|| !groups.group_of.contains(c->uuid()) || c->relatedPotentialConductors().isEmpty()
+						|| !c->terminal1 || !c->terminal1->parentElement())
+					continue;
+				*source = c->terminal1;
+				return c;
+			}
+		return nullptr;
+	}
+
+	static PotentialTypes sourceTypes(PotentialTypes::Mode mode)
+	{
+		PotentialTypes types;
+		types.setMode(mode);
+		types.setTypes({{QStringLiteral("N"), QColor(0, 0, 255), Qt::SolidLine, 3},
+						{QStringLiteral("PE"), QColor(0, 160, 0), Qt::SolidLine, 3}});
+		return types;
+	}
+
+	static void setOwnType(Conductor *c, const QString &type)
+	{
+		ConductorProperties p = c->properties();
+		p.color = Qt::black;
+		p.style = Qt::SolidLine;
+		p.cond_size = 1;
+		p.m_bicolor = false;
+		p.m_potential_type = type;
+		c->setProperties(p);
 	}
 
 	private slots:
@@ -521,9 +559,9 @@ class tst_potentialtypes : public QObject
 			QCOMPARE(query.value(0).toString(), QStringLiteral("source"));
 		}
 
-		/// Until #1500, the source mode has no derived types, so it draws
-		/// the wires' own types like the per-wire mode
-		void sourceModeDrawsLikePerWireForNow()
+		/// A wire's own type is drawn in the source mode as in the
+		/// per-wire mode
+		void sourceModeDrawsAWiresOwnType()
 		{
 			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
 			Conductor *c = wire(project);
@@ -542,9 +580,9 @@ class tst_potentialtypes : public QObject
 			QCOMPARE(pixels(c, Qt::black), 0);
 		}
 
-		/// The settings page offers off and per wire, and keeps a mode it has
-		/// no entry for until the user picks another
-		void settingsPageKeepsAModeItDoesNotOffer()
+		/// The settings page offers the three modes and gives back the one
+		/// it was shown
+		void settingsPageOffersEveryMode()
 		{
 			PotentialTypesWidget widget;
 			for (auto mode : {PotentialTypes::Mode::Off, PotentialTypes::Mode::PerWire,
@@ -771,6 +809,181 @@ class tst_potentialtypes : public QObject
 			mixed.applyForEqualAttributes({a, b});
 			QVERIFY(mixed.m_potential_type.isEmpty());
 		}
+		/// A type set on a terminal of a placed symbol reaches every wire
+		/// of its potential that has no type of its own, as the scene's
+		/// own walk finds that potential, and only in the source mode
+		void sourceTerminalTypesItsPotential()
+		{
+			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+			Terminal *source = nullptr;
+			Conductor *c = sourcedWire(project, &source);
+			QVERIFY(c);
+			QSet<Conductor *> potential = c->relatedPotentialConductors();
+			potential << c;
+			for (Conductor *w : std::as_const(potential))
+				setOwnType(w, QString());
+
+			project.setPotentialTypes(sourceTypes(PotentialTypes::Mode::AtSource));
+			QVERIFY(project.derivedPotentialType(c->uuid()).isEmpty());
+			source->parentElement()->setPotentialSources({{source->stableUuid(), QStringLiteral("N")}});
+			for (Conductor *w : std::as_const(potential))
+				QCOMPARE(project.derivedPotentialType(w->uuid()), QStringLiteral("N"));
+			int outside = 0;
+			for (Diagram *diagram : project.diagrams())
+				for (Conductor *w : diagram->conductors())
+					if (!potential.contains(w)) {
+						QVERIFY(project.derivedPotentialType(w->uuid()).isEmpty());
+						++outside;
+					}
+			QVERIFY(outside > 0);
+			QVERIFY(pixels(c, QColor(0, 0, 255)) > 0);
+			QCOMPARE(pixels(c, Qt::black), 0);
+
+				//The check's view says where the type comes from
+			projectDataBase *db = project.dataBase();
+			db->refreshPotentialMembers();
+			QSqlQuery q = db->newQuery(QStringLiteral("SELECT potential_type, source FROM wire_potential_view WHERE wire_uuid = '")
+									   + c->uuid().toString() + QStringLiteral("'"));
+			QVERIFY(q.next());
+			QCOMPARE(q.value(0).toString(), QStringLiteral("N"));
+			QCOMPARE(q.value(1).toString(), QStringLiteral("source"));
+
+				//A wire's own type wins, and is then a mismatch on that potential
+			setOwnType(c, QStringLiteral("PE"));
+			QVERIFY(pixels(c, QColor(0, 160, 0)) > 0);
+			QCOMPARE(pixels(c, QColor(0, 0, 255)), 0);
+			const auto mismatches = db->potentialTypeMismatches();
+			QCOMPARE(mismatches.size(), 1);
+			QCOMPARE(mismatches.first().types, QStringList({QStringLiteral("N"), QStringLiteral("PE")}));
+			setOwnType(c, QString());
+			QVERIFY(db->potentialTypeMismatches().isEmpty());
+
+				//The other modes keep the source and do not apply it
+			for (auto mode : {PotentialTypes::Mode::PerWire, PotentialTypes::Mode::Off}) {
+				project.setPotentialTypes(sourceTypes(mode));
+				QVERIFY(project.derivedPotentialType(c->uuid()).isEmpty());
+				QCOMPARE(pixels(c, QColor(0, 0, 255)), 0);
+				QVERIFY(db->potentialTypeMismatches().isEmpty());
+				QCOMPARE(source->parentElement()->potentialSources().size(), 1);
+			}
+			project.setPotentialTypes(sourceTypes(PotentialTypes::Mode::AtSource));
+			QCOMPARE(project.derivedPotentialType(c->uuid()), QStringLiteral("N"));
+
+				//Removing it removes the type
+			source->parentElement()->setPotentialSources({});
+			QVERIFY(project.derivedPotentialType(c->uuid()).isEmpty());
+		}
+
+		/// Two sources of different types on one potential: no type is
+		/// drawn and the check reports the potential, with every wire on it;
+		/// a declared bond between the two makes it meant
+		void conflictingSourcesAreReported()
+		{
+			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+			Terminal *source = nullptr;
+			Conductor *c = sourcedWire(project, &source);
+			QVERIFY(c);
+			QSet<Conductor *> potential = c->relatedPotentialConductors();
+			potential << c;
+			for (Conductor *w : std::as_const(potential))
+				setOwnType(w, QString());
+			Terminal *other = c->terminal2;
+			QVERIFY(other && other->parentElement());
+			project.setPotentialTypes(sourceTypes(PotentialTypes::Mode::AtSource));
+			source->parentElement()->setPotentialSources({{source->stableUuid(), QStringLiteral("N")}});
+			if (other->parentElement() == source->parentElement())
+				source->parentElement()->setPotentialSources({{source->stableUuid(), QStringLiteral("N")},
+															   {other->stableUuid(), QStringLiteral("PE")}});
+			else
+				other->parentElement()->setPotentialSources({{other->stableUuid(), QStringLiteral("PE")}});
+
+			QVERIFY(project.derivedPotentialType(c->uuid()).isEmpty());
+			const auto mismatches = project.dataBase()->potentialTypeMismatches();
+			QCOMPARE(mismatches.size(), 1);
+			QCOMPARE(mismatches.first().types, QStringList({QStringLiteral("N"), QStringLiteral("PE")}));
+			QCOMPARE(mismatches.first().wires.size(), potential.size());
+			QVERIFY(mismatches.first().wires.contains(c->uuid()));
+
+			PotentialTypes bonded = sourceTypes(PotentialTypes::Mode::AtSource);
+			bonded.setBonds({{QStringLiteral("N"), QStringLiteral("PE")}});
+			project.setPotentialTypes(bonded);
+			QVERIFY(project.dataBase()->potentialTypeMismatches().isEmpty());
+		}
+
+		/// The source is saved with the placed symbol, comes back when the
+		/// project is opened again, and a .qetdb read by itself gives the
+		/// same derived types and writes it back in the document
+		void sourceIsKeptInTheProjectAndTheQetdb()
+		{
+			const QString path = m_dir.filePath(QStringLiteral("source.qet"));
+			QVERIFY(QFile::copy(QFINDTESTDATA("fixtures/every_feature.qet"), path));
+			QUuid element_uuid, terminal_uuid, wire_uuid;
+			QHash<QUuid, QString> derived;
+			{
+				QETProject project(path);
+				Terminal *source = nullptr;
+				Conductor *c = sourcedWire(project, &source);
+				QVERIFY(c);
+				setOwnType(c, QString());
+				for (Conductor *w : c->relatedPotentialConductors())
+					setOwnType(w, QString());
+				project.setPotentialTypes(sourceTypes(PotentialTypes::Mode::AtSource));
+				source->parentElement()->setPotentialSources({{source->stableUuid(), QStringLiteral("N")}});
+				element_uuid = source->parentElement()->uuid();
+				terminal_uuid = source->stableUuid();
+				wire_uuid = c->uuid();
+				derived = project.dataBase()->derivedPotentialTypes().type_of;
+				QVERIFY(derived.size() >= 2);
+				QCOMPARE(derived.value(wire_uuid), QStringLiteral("N"));
+				QVERIFY(project.write().isOk());
+
+				const QString file = m_dir.filePath(QStringLiteral("source.qetdb"));
+				QString error;
+				QVERIFY2(QetDbFile::save(*project.dataBase(), file, &error), qPrintable(error));
+				const QString name = QStringLiteral("potential_source_qetdb");
+				{
+					QSqlDatabase file_db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), name);
+					file_db.setDatabaseName(file);
+					file_db.setConnectOptions(QStringLiteral("QSQLITE_OPEN_READONLY"));
+					QVERIFY(file_db.open());
+					QCOMPARE(projectDataBase::potentialModeOf(file_db), PotentialTypes::Mode::AtSource);
+					QCOMPARE(projectDataBase::derivedPotentialTypesOf(
+								 file_db, projectDataBase::potentialGroupsOf(file_db)).type_of, derived);
+					const QDomDocument rebuilt = projectDataBase::toDocument(file_db);
+					bool found = false;
+					const QDomNodeList sources = rebuilt.elementsByTagName(QStringLiteral("potentialSources"));
+					for (int i = 0 ; i < sources.size() ; ++i) {
+						const QDomElement s = sources.at(i).toElement().firstChildElement(QStringLiteral("source"));
+						if (QUuid(s.parentNode().parentNode().toElement().attribute(QStringLiteral("uuid"))) == element_uuid
+								&& QUuid(s.attribute(QStringLiteral("terminal"))) == terminal_uuid
+								&& s.attribute(QStringLiteral("type")) == QLatin1String("N"))
+							found = true;
+					}
+					QVERIFY(found);
+					file_db.close();
+				}
+				QSqlDatabase::removeDatabase(name);
+			}
+			QETProject reopened(path);
+			QCOMPARE(reopened.potentialTypes().mode(), PotentialTypes::Mode::AtSource);
+			Element *element = nullptr;
+			for (Diagram *diagram : reopened.diagrams())
+				for (Element *e : diagram->elements())
+					if (e->uuid() == element_uuid) element = e;
+			QVERIFY(element);
+			QCOMPARE(element->potentialSources().value(terminal_uuid), QStringLiteral("N"));
+			QCOMPARE(reopened.dataBase()->derivedPotentialTypes().type_of, derived);
+			QCOMPARE(reopened.derivedPotentialType(wire_uuid), QStringLiteral("N"));
+		}
+
+		/// A symbol without a source saves exactly as before
+		void symbolWithoutSourceWritesNothing()
+		{
+			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+			QVERIFY(project.toXml().documentElement()
+					.elementsByTagName(QStringLiteral("potentialSources")).isEmpty());
+		}
+
 };
 
 QET_APP_TEST_MAIN(tst_potentialtypes)

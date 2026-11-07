@@ -486,9 +486,24 @@ class projectDataBase : public QObject
 		struct PotentialMismatch {
 			int potential = 0;
 			QStringList types;      ///< the different types, sorted
-			QList<QUuid> wires;     ///< the typed wires of the potential
+			QList<QUuid> wires;     ///< the typed wires of the potential; all its wires when two sources disagree
 		};
 		QList<PotentialMismatch> potentialTypeMismatches();
+			/// The types wires take from the source terminals of placed
+			/// symbols (PotentialTypes::Mode::AtSource): wire -> type, for
+			/// each potential whose sources all name one type, and the
+			/// potentials whose sources name more than one. Nothing for a
+			/// potential whose extent is unknown. Worked out from the
+			/// tables on each call, never stored.
+		struct DerivedPotentialTypes {
+			QHash<QUuid, QString> type_of;
+			QHash<int, QStringList> conflicts;   ///< potential -> the types, sorted
+		};
+		DerivedPotentialTypes derivedPotentialTypes();
+		static DerivedPotentialTypes derivedPotentialTypesOf(const QSqlDatabase &db,
+															   const PotentialGroups &groups);
+			/// The mode the project_setting rows of @p db name
+		static PotentialTypes::Mode potentialModeOf(const QSqlDatabase &db);
 			/// (Re)build the TEMP table potential_member and the TEMP view
 			/// wire_potential_view; neither is ever saved
 		void refreshPotentialMembers();
@@ -497,7 +512,9 @@ class projectDataBase : public QObject
 			/// on the project's own connection use the members above, which
 			/// do. @p ok, if given, tells whether the TEMP objects could be
 			/// built; false means the answer is not to be trusted.
-		static bool refreshPotentialMembersOf(QSqlDatabase db);
+			/// @p conflicts, if given, gets the potentials whose sources
+			/// disagree (DerivedPotentialTypes::conflicts)
+		static bool refreshPotentialMembersOf(QSqlDatabase db, QHash<int, QStringList> *conflicts = nullptr);
 		static QList<PotentialBond> potentialBondsOf(const QSqlDatabase &db);
 		static QList<PotentialMismatch> potentialTypeMismatchesOf(QSqlDatabase db, bool *ok = nullptr);
 		static QVariant sequenceValue(const autonum::sequentialNumbers &sequence);
