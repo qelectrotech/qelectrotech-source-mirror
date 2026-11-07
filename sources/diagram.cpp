@@ -696,6 +696,11 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 									  Diagram::xKeyGrid).toInt();
 		int yKeyGrid = settings.value(QStringLiteral("diagrameditor/key_Ygrid"),
 									  Diagram::yKeyGrid).toInt();
+			//Or by the folio's grid step (Display > Grid step), when set so
+		if (settings.value(QStringLiteral("diagrameditor/key_follows_grid"), false).toBool()) {
+			xKeyGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+			yKeyGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
+		}
 		switch(event->key())
 		{
 			case Qt::Key_Left:

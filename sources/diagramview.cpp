@@ -42,6 +42,7 @@
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qeticons.h"
 #include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "qetpalette.h"
@@ -2522,11 +2523,16 @@ QMouseEvent *DiagramView::onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseE
 
 /**
 	@brief DiagramView::crosshairOnMovedSelection
-	After the arrow keys moved the selection, the crosshair stands on the
-	point that moved: of the selected items, the one nearest where the
-	crosshair was -- a symbol's terminal, or else the item's own origin --
-	so that a symbol can be brought in line with another one by eye, with
-	the mouse left where it is. The next mouse move takes it back.
+	After the arrow keys moved the selection, the crosshair stands on a
+	point that moved, so that it can be brought in line with another item
+	by eye, with the mouse left where it is. The next mouse move takes it
+	back.
+	The point is on one item, the same from one key press to the next:
+	the leftmost selected symbol, or the leftmost of the other items when
+	no symbol is selected. On a symbol it is the terminal nearest where
+	the crosshair was; on a text, its middle, which is seen also on a text
+	that is not selected and so shows no frame; on anything else, its
+	origin.
 */
 void DiagramView::crosshairOnMovedSelection()
 {
@@ -2535,20 +2541,38 @@ void DiagramView::crosshairOnMovedSelection()
 	DiagramContent dc(m_diagram);
 	if (dc.hasTextEditing())
 		return;
-	QList<QPointF> points;
+	QGraphicsItem *reference = nullptr;
+	bool reference_is_symbol = false;
 	for (QGraphicsItem *item : m_diagram->selectedItems()) {
-		if (item->type() == Element::Type) {
-			const auto terminals = static_cast<Element *>(item)->terminals();
-			for (const Terminal *t : terminals)
-				points << t->dockConductor();
-			if (!terminals.isEmpty())
-				continue;
+		if (item->type() == Conductor::Type)
+			continue;
+		const bool symbol = item->type() == Element::Type;
+		if (reference && reference_is_symbol && !symbol)
+			continue;
+		const QRectF rect = item->sceneBoundingRect();
+		const QRectF reference_rect = reference ? reference->sceneBoundingRect() : QRectF();
+		if (!reference || (symbol && !reference_is_symbol)
+		    || rect.left() < reference_rect.left()
+		    || (rect.left() == reference_rect.left() && rect.top() < reference_rect.top())) {
+			reference = item;
+			reference_is_symbol = symbol;
 		}
-		if (item->type() != Conductor::Type)
-			points << item->scenePos();
 	}
-	if (points.isEmpty())
+	if (!reference)
 		return;
+	QList<QPointF> points;
+	if (reference_is_symbol) {
+		const auto terminals = static_cast<Element *>(reference)->terminals();
+		for (const Terminal *t : terminals)
+			points << t->dockConductor();
+	}
+	if (points.isEmpty()) {
+		if (dynamic_cast<DiagramTextItem *>(reference)
+		    || reference->type() == ElementTextItemGroup::Type)
+			points << reference->sceneBoundingRect().center();
+		else
+			points << reference->scenePos();
+	}
 	const QPointF from = m_crosshair_visible ? m_crosshair_pos
 			: mapToScene(viewport()->rect().center());
 	QPointF pos = points.first();
