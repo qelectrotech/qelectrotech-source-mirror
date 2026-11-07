@@ -3194,6 +3194,31 @@ void Diagram::selectAllTextFields()
 }
 
 /**
+	@brief Diagram::selectSameSymbols
+	Select every element on this diagram drawn from the same definition
+	as a selected element, deselecting anything else. Nothing changes
+	when no element is selected.
+*/
+void Diagram::selectSameSymbols()
+{
+	QSet<QString> locations;
+	for (QGraphicsItem *item : selectedItems()) {
+		if (auto *element = qgraphicsitem_cast<Element *>(item)) {
+			locations << element -> location().toString();
+		}
+	}
+	if (locations.isEmpty()) return;
+
+	blockSignals(true);
+	for (auto item : items()) {
+		auto *element = qgraphicsitem_cast<Element *>(item);
+		item -> setSelected(element && locations.contains(element -> location().toString()));
+	}
+	blockSignals(false);
+	emit selectionChanged();
+}
+
+/**
 	@brief Diagram::setItemGroup
 	Put @a item in @a group, or take it out of its group if @a group is
 	null, and keep its row in the project database in step.
