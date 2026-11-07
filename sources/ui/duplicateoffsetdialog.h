@@ -20,9 +20,11 @@
 
 #include <QDialog>
 #include <QPoint>
+#include <QPointF>
 
 class QSpinBox;
 class QComboBox;
+class QCheckBox;
 
 /**
 	@brief The DuplicateOffsetDialog class
@@ -57,9 +59,31 @@ class DuplicateOffsetDialog : public QDialog
 			/// once, i.e. whether Ctrl+D can skip the dialog.
 		static bool hasSavedStepOffset();
 
+			/// Whether Duplicate learns its offset from the move given to
+			/// the copy it has just made (like the duplicate of a drawing
+			/// program) instead of using the spacing above, which is then
+			/// set aside. Off unless switched on: Duplicate then behaves as
+			/// before.
+		bool repeatsMove() const;
+		static bool savedRepeatsMove();
+		static void saveRepeatsMove(bool repeats);
+
+			/// The offset learned that way, in scene units: how far the
+			/// last moved copy lay from its source. @return false while
+			/// none was learned since the setting was switched on.
+		static bool learnedOffset(QPointF *offset);
+		static void saveLearnedOffset(const QPointF &offset);
+		static void forgetLearnedOffset();
+
+			/// Writes what the dialog shows: the offset and whether a move
+			/// is repeated. Switching the latter on starts afresh: the
+			/// offset learned before is forgotten.
+		void save() const;
+
 	private:
 		QSpinBox  *m_spacing = nullptr;
 		QComboBox *m_direction = nullptr;
+		QCheckBox *m_repeat_move = nullptr;
 };
 
 #endif // DUPLICATEOFFSETDIALOG_H
