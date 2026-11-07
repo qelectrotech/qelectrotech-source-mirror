@@ -48,6 +48,7 @@ class Element : public QetGraphicsItem
 {
 	friend class DiagramEventAddElement;
 	friend class DynamicElementTextItem;
+	friend class ElementTextItemGroup;
 
 	Q_OBJECT
 	Q_PROPERTY(bool horizontalMirror READ hasHorizontalMirror WRITE setHorizontalMirror NOTIFY mirrorChanged)
