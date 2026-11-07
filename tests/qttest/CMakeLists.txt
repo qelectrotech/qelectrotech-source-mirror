@@ -582,6 +582,11 @@ qet_add_app_test(tst_updateelements tst_updateelements.cpp)
 qet_add_app_test(tst_selectionrectangle tst_selectionrectangle.cpp)
 qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
 
+# The element editor's collections dock: an element dropped on the drawing
+# pastes its parts, centred on the drop and on the grid; double-clicked, the
+# user chooses where; a read-only element refuses the drag.
+qet_add_app_test(tst_elementeditorcollection tst_elementeditorcollection.cpp)
+
 # A folio's pictures, decoded in parallel, each come back with its own
 # pixels and position; an <image> with no picture does not stop the others.
 qet_add_app_test(tst_folioimageload tst_folioimageload.cpp)
