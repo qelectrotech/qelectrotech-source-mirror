@@ -36,6 +36,9 @@ class KColorButton : public QPushButton
 	signals:
 		void changed(const QColor &color);
 
+	protected:
+		void paintEvent(QPaintEvent *event) override;
+
 	private slots:
 		void chooseColor();
 

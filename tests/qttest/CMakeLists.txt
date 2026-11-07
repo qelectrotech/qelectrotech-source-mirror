@@ -2300,6 +2300,20 @@ else()
   cmake_language(DEFER CALL qet_apply_test_settings)
 endif()
 
+# Built without KDE Frameworks, the colour buttons are QElectroTech's own:
+# in every style they show their colour as it is, with its name readable.
+if(NOT BUILD_WITH_KF)
+  add_executable(tst_nokdecolorbutton tst_nokdecolorbutton.cpp
+    ${QET_DIR}/sources/ui/nokde/kcolorbutton.cpp
+    ${QET_DIR}/sources/ui/nokde/kcolorbutton.h)
+  add_test(NAME tst_nokdecolorbutton COMMAND tst_nokdecolorbutton)
+  set_tests_properties(tst_nokdecolorbutton PROPERTIES
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  target_include_directories(tst_nokdecolorbutton PRIVATE
+    ${QET_DIR}/sources/ui/nokde)
+  target_link_libraries(tst_nokdecolorbutton PRIVATE Qt::Test Qt::Widgets)
+endif()
+
 # The folio properties dialog's paper size: choosing A4, A3 and A4 again
 # must give the first A4 back (issue 1662). QETApp and the title block
 # are stubbed in the test.
