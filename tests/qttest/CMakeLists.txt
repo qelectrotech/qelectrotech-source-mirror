@@ -552,6 +552,12 @@ qet_add_app_test(tst_terminalcableauto tst_terminalcableauto.cpp)
 qet_add_app_test(tst_terminallabeldisplay tst_terminallabeldisplay.cpp)
 qet_add_app_test(tst_terminalconductortext tst_terminalconductortext.cpp)
 
+# A PLC contact draws its master's BMK: the master's label comes from its
+# numbering formula, which holds the page number, so a folio moved to
+# another place changes it -- the contact shows the new label at once, the
+# way a contact of a coil shows the coil's.
+qet_add_app_test(tst_plcslavelabel tst_plcslavelabel.cpp)
+
 # The bridge drawn over terminals: what a bridge holds (colour, how many
 # terminals it may take, its sections), which terminals a line about to be
 # drawn crosses, and which parallel track a new bridge takes at them --

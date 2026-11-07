@@ -525,6 +525,71 @@ Element *DynamicElementTextItem::elementUseForInfo() const
 }
 
 /**
+	@brief DynamicElementTextItem::labelSource
+	@return the element whose label this text draws: the element itself,
+	except for a slave, whose label is the one of the element it is linked
+	to (a contact draws the coil's BMK), the same read elementUseForInfo()
+	gives for a contact which is not a PLC one.
+
+	A PLC slave keeps its own copy of the master's label for its %{plc_*}
+	information, but that copy is written when the master's label is
+	written, not when only the sheet numbering under it changes: the label
+	drawn has to come from the master itself to stay right (see
+	masterChanged(), which watches the master for this text).
+*/
+Element *DynamicElementTextItem::labelSource() const
+{
+	Element *elmt = parentElement();
+	if (elmt && elmt->linkType() == Element::Slave
+			&& !elmt->linkedElements().isEmpty()) {
+		return elmt->linkedElements().first();
+	}
+	return elementUseForInfo();
+}
+
+/**
+	@brief DynamicElementTextItem::drawsLabel
+	@return whether this text draws a label: a field bound to the label of
+	its element, or a composite text using %{label}. The terminal number is
+	not one: it stays the element's own, the way %{terminal_number} reads it
+	in a composite text.
+*/
+bool DynamicElementTextItem::drawsLabel() const
+{
+	return (m_text_from == ElementInfo
+			&& m_info_name == QLatin1String("label"))
+		|| (m_text_from == CompositeText && usesLabelVariables(m_composite_text));
+}
+
+/**
+	@brief DynamicElementTextItem::watchLabelSource
+	Watch the element this text draws the label from, so that a change of
+	that label redraws this text: for a PLC slave its master, whose copy of
+	the label in the slave is written when the master's label is written,
+	not when only the sheet numbering under it changes (@sa labelSource()).
+
+	The element is already watched by masterChanged() or setTextFrom() when
+	it is the one elementUseForInfo() gives, so it is connected here only
+	when the label comes from another element -- otherwise the update would
+	simply run twice.
+*/
+void DynamicElementTextItem::watchLabelSource()
+{
+	if (m_label_source_con) {
+		disconnect(m_label_source_con);
+		m_label_source_con = QMetaObject::Connection();
+	}
+	if (!drawsLabel()) {
+		return;
+	}
+	Element *label_element = labelSource();
+	if (label_element && label_element != elementUseForInfo()) {
+		m_label_source_con = connect(label_element, &Element::elementInfoChange,
+									 this, &DynamicElementTextItem::elementInfoChanged);
+	}
+}
+
+/**
 	@brief DynamicElementTextItem::refreshLabelConnection
 	Refresh the connection of this text when the source of text is label,
 	or composite text, with a variable %{label}
@@ -638,7 +703,11 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 		if(old_text_from == UserText)
 			connect(elementUseForInfo(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 	}
-		
+		//The label this text draws may come from another element than this
+		//one -- a slave's master -- and must be followed there as well,
+		//whichever kind of text this became (@sa labelSource())
+	watchLabelSource();
+
 	if(m_parent_element.data()->linkType() == Element::Master ||
 	   m_parent_element.data()->linkType() == Element::Slave)
 		updateXref();
@@ -1387,6 +1456,13 @@ void DynamicElementTextItem::elementInfoChanged()
 
 	DiagramContext dc;
 	Element *element = elementUseForInfo();
+	//The label a slave draws is its master's, read from there; the
+	//terminal number and every other information this text shows stay the
+	//element's own (@sa labelSource())
+	Element *label_element = drawsLabel() ? labelSource() : element;
+	if (!label_element) {
+		label_element = element;
+	}
 	if(element) {
 		dc = element->elementInformations();
 			//The label and the terminal number are drawn the way the
@@ -1394,6 +1470,12 @@ void DynamicElementTextItem::elementInfoChanged()
 			//composite text which uses them must see the same values the
 			//fields bound to them show
 		element->addDisplayValues(dc);
+			//A slave draws the label of its master, not the copy it keeps
+			//of it; the terminal number and the wire number above stay this
+			//element's own (@sa labelSource())
+		if (label_element != element) {
+			dc.addValue(QETInformation::ELMT_LABEL, label_element->labelForDisplay());
+		}
 	}
 	
 	QString final_text;
@@ -1409,7 +1491,7 @@ void DynamicElementTextItem::elementInfoChanged()
 			setupFormulaConnection();
 
 			if (element) {
-				final_text = element->infoForDisplay(m_info_name);
+				final_text = label_element->infoForDisplay(m_info_name);
 			}
 		}
 		else {
@@ -1460,6 +1542,11 @@ void DynamicElementTextItem::masterChanged()
 		
 		updateXref();
 	}
+
+		//The label this text draws may come from the master while this
+		//element keeps a copy of it: that element must be watched too, so
+		//a change of its label redraws this text (@sa labelSource())
+	watchLabelSource();
 		
 		//Because master changed we update this text
 	elementInfoChanged();
@@ -1595,7 +1682,11 @@ void DynamicElementTextItem::setupFormulaConnection()
 	{
 		clearFormulaConnection();
 		
-		Element *element = elementUseForInfo();
+		//A field which draws a label takes it from the element it belongs
+		//to -- the master for a slave -- so the formula to watch and the
+		//sheet that number comes from are that element's too. The terminal
+		//number stays this element's own (@sa labelSource())
+		Element *element = drawsLabel() ? labelSource() : elementUseForInfo();
 		if (!element)
 			return;
 		
@@ -1617,6 +1708,10 @@ void DynamicElementTextItem::setupFormulaConnection()
 		{
 			m_formula_connection << connect(diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateLabel);
 			m_formula_connection << connect(diagram->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::updateLabel);
+				//A sheet inserted before the others moves every sheet after
+				//it one number up; the order signal is not sent for an
+				//insertion, only the addition is (QETProject::addDiagram())
+			m_formula_connection << connect(diagram->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::updateLabel);
 		}
 		if (formula.contains("%l"))
 			m_formula_connection << connect(element, &Element::yChanged, this, &DynamicElementTextItem::updateLabel);
@@ -1740,13 +1835,21 @@ void DynamicElementTextItem::updateLabel()
 	{
 		DiagramContext dc;
 		Element *element = elementUseForInfo();
+		//The label a slave draws is its master's, read from there, so that
+		//a page number change reaches this text although nothing writes the
+		//copy the slave stores; the terminal number stays this element's
+		//own (@sa labelSource())
+		Element *label_element = drawsLabel() ? labelSource() : element;
+		if (!label_element) {
+			label_element = element;
+		}
 		if(element) {
 			dc = element->elementInformations();
 		}
 		
 
 		if(m_text_from == ElementInfo && element) {
-			QString new_label = element->infoForDisplay(m_info_name);
+			QString new_label = label_element->infoForDisplay(m_info_name);
 			if (toPlainText() != new_label) {
 				setPlainText(new_label);
 			}
@@ -1759,7 +1862,7 @@ void DynamicElementTextItem::updateLabel()
 			// (bugtracker #345): %{label} then shows empty, as it did
 			// before actualLabel() was used here.
 			if (element) {
-				dc.addValue(QETInformation::ELMT_LABEL,           element->labelForDisplay());
+				dc.addValue(QETInformation::ELMT_LABEL,           label_element->labelForDisplay());
 				dc.addValue(QETInformation::ELMT_TERMINAL_NUMBER, element->terminalNumberForDisplay());
 			}
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
