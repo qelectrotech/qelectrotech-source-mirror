@@ -443,6 +443,7 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == ELMT_PLC_COMMENT)                       return QObject::tr("PLC comment");
 	else if (info == ELMT_PLC_CROSSREF)                      return QObject::tr("PLC cross-reference");
 	else if (info == ELMT_XREF)                          return QObject::tr("Cross-reference");
+	else if (info == QLatin1String("exclude_from_bom"))  return QObject::tr("Exclude from the bill of materials");
 	else if (info == ELMT_CONDUCTOR_TEXT)                return QObject::tr("Wire number");
 
 	QString property;
