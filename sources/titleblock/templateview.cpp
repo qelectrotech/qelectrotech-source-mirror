@@ -17,7 +17,7 @@
 */
 #include "templateview.h"
 
-#include "../qeticons.h"
+#include <qeticons.h>
 #include "dimensionwidget.h"
 #include "gridlayoutanimation.h"
 #include "helpercell.h"

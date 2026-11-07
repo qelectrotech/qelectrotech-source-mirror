@@ -22,7 +22,7 @@
 #include <QList>
 #include <QMap>
 #include <QPointer>
-#include "../qetgraphicsitem/dimensionitem.h"
+#include <qetgraphicsitem/dimensionitem.h>
 
 namespace Ui {
 	class DimensionPropertiesDialog;

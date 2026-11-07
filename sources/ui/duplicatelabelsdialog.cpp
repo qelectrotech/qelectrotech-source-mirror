@@ -18,12 +18,12 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "duplicatelabelsdialog.h"
 
-#include "../diagram.h"
-#include "../diagramview.h"
-#include "../qet.h"
-#include "../qetdiagrameditor.h"
-#include "../qetproject.h"
-#include "../utils/qetsettings.h"
+#include <diagram.h>
+#include <diagramview.h>
+#include <qet.h>
+#include <qetdiagrameditor.h>
+#include <qetproject.h>
+#include <utils/qetsettings.h>
 
 #include <QApplication>
 #include <QCheckBox>

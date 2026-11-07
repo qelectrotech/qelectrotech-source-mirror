@@ -21,8 +21,8 @@
 #include "cablepart.h"
 #include "cablepropertieswidget.h"
 #include "editcablecommand.h"
-#include "../diagram.h"
-#include "../qeticons.h"
+#include <diagram.h>
+#include <qeticons.h>
 
 #include <QAbstractItemView>
 #include <QDialogButtonBox>

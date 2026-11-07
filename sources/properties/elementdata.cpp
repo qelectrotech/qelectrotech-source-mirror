@@ -16,7 +16,7 @@
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementdata.h"
-#include "../qetxml.h"
+#include <qetxml.h>
 #include <QDebug>
 
 void ElementData::toSettings(QSettings &settings, const QString prefix) const {

@@ -17,7 +17,7 @@
 */
 #include "freezeelementlabelcommand.h"
 
-#include "../qetgraphicsitem/element.h"
+#include <qetgraphicsitem/element.h>
 
 FreezeElementLabelCommand::FreezeElementLabelCommand(Element *element,
 													 bool old_frozen,

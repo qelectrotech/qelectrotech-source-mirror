@@ -17,8 +17,8 @@
 */
 #ifndef TERMINAL_H
 #define TERMINAL_H
-#include "../qet.h"
-#include "../properties/terminaldata.h"
+#include <qet.h>
+#include <properties/terminaldata.h>
 
 #include <QtWidgets>
 #include <QtXml>

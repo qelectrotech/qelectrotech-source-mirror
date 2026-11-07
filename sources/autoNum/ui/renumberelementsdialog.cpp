@@ -17,7 +17,7 @@
 */
 
 #include "renumberelementsdialog.h"
-#include "../../qet.h"
+#include <qet.h>
 
 #include <QComboBox>
 #include <QDialogButtonBox>

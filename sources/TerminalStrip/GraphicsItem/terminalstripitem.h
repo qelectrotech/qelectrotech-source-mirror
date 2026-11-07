@@ -24,7 +24,7 @@
 #include <QUuid>
 
 #include "terminalstripdrawer.h"
-#include "../../qetgraphicsitem/qetgraphicsitem.h"
+#include <qetgraphicsitem/qetgraphicsitem.h>
 
 class Diagram;
 class TerminalStrip;

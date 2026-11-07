@@ -23,7 +23,7 @@
 #include <QColor>
 
 #include "terminalstripdata.h"
-#include "../properties/elementdata.h"
+#include <properties/elementdata.h>
 
 class Element;
 class RealTerminal;

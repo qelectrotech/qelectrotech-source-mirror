@@ -18,7 +18,7 @@
 #ifndef DIAGRAMEVENTADDDIMENSION_H
 #define DIAGRAMEVENTADDDIMENSION_H
 
-#include "../qetgraphicsitem/dimensionitem.h"
+#include <qetgraphicsitem/dimensionitem.h>
 #include "diagrameventinterface.h"
 
 class QGraphicsLineItem;

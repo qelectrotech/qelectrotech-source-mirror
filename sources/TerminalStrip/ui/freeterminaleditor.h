@@ -19,7 +19,7 @@
 #define FREETERMINALEDITOR_H
 
 #include <QWidget>
-#include "../../qetproject.h"
+#include <qetproject.h>
 
 class RealTerminal;
 class FreeTerminalModel;

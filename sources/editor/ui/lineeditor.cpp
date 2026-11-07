@@ -17,12 +17,12 @@
 */
 #include "lineeditor.h"
 
-#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../../qeticons.h"
-#include "../elementitemeditor.h"
-#include "../elementscene.h"
-#include "../graphicspart/partline.h"
-#include "../styleeditor.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <qeticons.h>
+#include <editor/elementitemeditor.h>
+#include <editor/elementscene.h>
+#include <editor/graphicspart/partline.h>
+#include <editor/styleeditor.h>
 #include "ui_lineeditor.h"
 
 /**

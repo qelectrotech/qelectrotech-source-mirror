@@ -20,7 +20,7 @@
 #include "configpage.h"
 #include <QPointer>
 #include <QVector>
-#include "../../autoNum/autonumschemecommand.h"
+#include <autoNum/autonumschemecommand.h>
 
 class QLabel;
 class QComboBox;

@@ -173,7 +173,7 @@
   <customwidget>
    <class>ConfigSaveLoaderWidget</class>
    <extends>QGroupBox</extends>
-   <header>configsaveloaderwidget.h</header>
+   <header>ui/configsaveloaderwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

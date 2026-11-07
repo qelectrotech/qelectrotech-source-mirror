@@ -20,8 +20,8 @@
 
 #include "projectdatabase.h"
 #include "qetparity.h"
-#include "../qetversion.h"
-#include "../utils/syncfolder.h"
+#include <qetversion.h>
+#include <utils/syncfolder.h>
 
 #include <QCryptographicHash>
 #include <QDateTime>

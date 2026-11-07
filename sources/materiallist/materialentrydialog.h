@@ -18,7 +18,7 @@
 #ifndef MATERIALENTRYDIALOG_H
 #define MATERIALENTRYDIALOG_H
 
-#include "../materiallist/materiallist.h"
+#include <materiallist/materiallist.h>
 
 #include <QDialog>
 #include <QList>

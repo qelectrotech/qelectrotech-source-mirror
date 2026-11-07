@@ -17,20 +17,20 @@
 */
 #include "realterminal.h"
 #include "terminalstrip.h"
-#include "../qetgraphicsitem/terminalelement.h"
+#include <qetgraphicsitem/terminalelement.h>
 #include "physicalterminal.h"
 #include "terminalstriplabels.h"
-#include "../diagram.h"
+#include <diagram.h>
 #include "terminalcolor.h"
 #include "terminalcatalog.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/terminal.h"
-#include "../qetinformation.h"
-#include "../diagram.h"
-#include "../cable/cable.h"
-#include "../cable/cablemanager.h"
-#include "../qetproject.h"
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/terminal.h>
+#include <qetinformation.h>
+#include <diagram.h>
+#include <cable/cable.h>
+#include <cable/cablemanager.h>
+#include <qetproject.h>
 
 #include <QHash>
 #include <QSet>

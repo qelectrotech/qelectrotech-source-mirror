@@ -19,13 +19,13 @@
 
 #include <algorithm>
 
-#include "../../dataBase/legacyelementtypes.h"
-#include "../../dataBase/projectdatabase.h"
-#include "../../qetapp.h"
-#include "../../qetinformation.h"
-#include "../../qetproject.h"
-#include "../../qetxml.h"
-#include "../../utils/qetutils.h"
+#include <dataBase/legacyelementtypes.h>
+#include <dataBase/projectdatabase.h>
+#include <qetapp.h>
+#include <qetinformation.h>
+#include <qetproject.h>
+#include <qetxml.h>
+#include <utils/qetutils.h>
 
 #include <QSqlError>
 #include <QSqlRecord>

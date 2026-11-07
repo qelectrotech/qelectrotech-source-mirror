@@ -17,7 +17,7 @@
 */
 #ifndef TITLEBLOCK_SLASH_TEMPLATE_CELL_WIDGET_H
 #define TITLEBLOCK_SLASH_TEMPLATE_CELL_WIDGET_H
-#include "../qet.h"
+#include <qet.h>
 
 #include <QtWidgets>
 class ModifyTitleBlockCellCommand;

@@ -17,16 +17,16 @@
 */
 #include "conductorcreator.h"
 
-#include "../conductorautonumerotation.h"
-#include "../dataBase/projectdatabase.h"
-#include "../diagram.h"
-#include "../qetproject.h"
-#include "../undocommand/addgraphicsobjectcommand.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/terminal.h"
-#include "../ui/potentialselectordialog.h"
-#include "../wiringrules.h"
+#include <conductorautonumerotation.h>
+#include <dataBase/projectdatabase.h>
+#include <diagram.h>
+#include <qetproject.h>
+#include <undocommand/addgraphicsobjectcommand.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/terminal.h>
+#include <ui/potentialselectordialog.h>
+#include <wiringrules.h>
 #include "qgraphicsitem.h"
 
 #include <QPolygonF>

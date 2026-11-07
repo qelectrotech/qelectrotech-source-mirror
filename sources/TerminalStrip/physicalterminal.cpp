@@ -17,7 +17,7 @@
 */
 #include "physicalterminal.h"
 #include "terminalstriplabels.h"
-#include "../qetgraphicsitem/element.h"
+#include <qetgraphicsitem/element.h>
 #include "realterminal.h"
 #include "terminalstrip.h"
 

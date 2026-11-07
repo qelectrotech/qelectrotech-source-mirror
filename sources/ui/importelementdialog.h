@@ -18,7 +18,7 @@
 #ifndef IMPORTELEMENTDIALOG_H
 #define IMPORTELEMENTDIALOG_H
 
-#include "../qet.h"
+#include <qet.h>
 
 #include <QDialog>
 

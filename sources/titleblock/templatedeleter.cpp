@@ -17,8 +17,8 @@
 */
 #include "templatedeleter.h"
 
-#include "../qetmessagebox.h"
-#include "../qetproject.h"
+#include <qetmessagebox.h>
+#include <qetproject.h>
 /**
 	Constructor
 	@param tbt_location Location of the title block template to be deleted

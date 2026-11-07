@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "deletepartscommand.h"
-#include "../elementscene.h"
+#include <editor/elementscene.h>
 
 /**
  * @brief DeletePartsCommand::DeletePartsCommand

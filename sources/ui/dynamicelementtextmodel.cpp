@@ -17,17 +17,17 @@
 */
 #include "dynamicelementtextmodel.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../diagram.h"
-#include "../qetapp.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/dynamicelementtextitem.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/elementtextitemgroup.h"
-#include "../qetgraphicsitem/terminal.h"
-#include "../qeticons.h"
-#include "../qetinformation.h"
-#include "../undocommand/addelementtextcommand.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <diagram.h>
+#include <qetapp.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/dynamicelementtextitem.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/elementtextitemgroup.h>
+#include <qetgraphicsitem/terminal.h>
+#include <qeticons.h>
+#include <qetinformation.h>
+#include <undocommand/addelementtextcommand.h>
 #include "alignmenttextdialog.h"
 #include "compositetexteditdialog.h"
 

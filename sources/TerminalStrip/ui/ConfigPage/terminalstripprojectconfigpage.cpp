@@ -16,9 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstripprojectconfigpage.h"
-#include "../../../qeticons.h"
-#include "../terminalstriplayouteditor.h"
-#include "../../../qetproject.h"
+#include <qeticons.h>
+#include <TerminalStrip/ui/terminalstriplayouteditor.h>
+#include <qetproject.h>
 
 #include <QVBoxLayout>
 

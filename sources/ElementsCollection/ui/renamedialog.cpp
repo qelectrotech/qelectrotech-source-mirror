@@ -20,7 +20,7 @@
 #include <QDate>
 #include "ui_renamedialog.h"
 
-#include "../../qet.h"
+#include <qet.h>
 RenameDialog::RenameDialog(QString path, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::RenameDialog),

@@ -17,8 +17,8 @@
 */
 #include "templatelocationchooser.h"
 
-#include "../qetapp.h"
-#include "../qetproject.h"
+#include <qetapp.h>
+#include <qetproject.h>
 #include "templatescollection.h"
 
 /**

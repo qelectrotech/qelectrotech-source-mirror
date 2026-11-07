@@ -25,8 +25,8 @@
 #include "xrefpropertieswidget.h"
 #include "ui_xrefpropertieswidget.h"
 #include "qdebug.h"
-#include "../qetapp.h"
-#include "../utils/qetutils.h"
+#include <qetapp.h>
+#include <utils/qetutils.h>
 
 /**
 	@brief XRefPropertiesWidget::XRefPropertiesWidget

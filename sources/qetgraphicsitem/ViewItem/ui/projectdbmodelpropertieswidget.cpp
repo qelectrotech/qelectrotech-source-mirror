@@ -17,10 +17,10 @@
 */
 #include "projectdbmodelpropertieswidget.h"
 
-#include "../../../dataBase/ui/elementquerywidget.h"
-#include "../../../dataBase/ui/summaryquerywidget.h"
-#include "../../../qetproject.h"
-#include "../projectdbmodel.h"
+#include <dataBase/ui/elementquerywidget.h>
+#include <dataBase/ui/summaryquerywidget.h>
+#include <qetproject.h>
+#include <qetgraphicsitem/ViewItem/projectdbmodel.h>
 #include "ui_projectdbmodelpropertieswidget.h"
 
 #include <QDialogButtonBox>

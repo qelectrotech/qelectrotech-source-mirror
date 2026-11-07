@@ -20,7 +20,7 @@
 
 #include "cable.h"
 
-#include "../autoNum/numerotationcontext.h"
+#include <autoNum/numerotationcontext.h>
 
 #include <QList>
 #include <QPointer>

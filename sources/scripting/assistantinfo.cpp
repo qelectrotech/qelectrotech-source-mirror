@@ -20,9 +20,9 @@
 #include "qetscriptapi.h"
 #include "scriptlibrary.h"
 #include "macrorecorder.h"
-#include "../qetapp.h"
-#include "../qetversion.h"
-#include "../utils/qetsettings.h"
+#include <qetapp.h>
+#include <qetversion.h>
+#include <utils/qetsettings.h>
 
 #include <QCoreApplication>
 #include <QDateTime>

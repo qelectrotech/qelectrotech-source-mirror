@@ -18,9 +18,9 @@
 #ifndef CONDUCTORPROPERTIESWIDGET_H
 #define CONDUCTORPROPERTIESWIDGET_H
 
-#include "../conductormultiedit.h"
-#include "../conductorproperties.h"
-#include "../properties/potentialtypes.h"
+#include <conductormultiedit.h>
+#include <conductorproperties.h>
+#include <properties/potentialtypes.h>
 
 #include <QWidget>
 class QTextOrientationSpinBoxWidget;

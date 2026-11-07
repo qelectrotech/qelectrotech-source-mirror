@@ -17,7 +17,7 @@
 */
 #include "importelementdialog.h"
 #include "ui_importelementdialog.h"
-#include "../qet.h"
+#include <qet.h>
 #include <QButtonGroup>
 
 ImportElementDialog::ImportElementDialog(QWidget *parent) :

@@ -18,7 +18,7 @@
 #ifndef DIAGRAMEVENTADDCABLE_H
 #define DIAGRAMEVENTADDCABLE_H
 
-#include "../cable/cablemanager.h"
+#include <cable/cablemanager.h>
 #include "diagrameventinterface.h"
 
 class QLineF;

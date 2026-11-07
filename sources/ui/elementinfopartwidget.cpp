@@ -17,9 +17,9 @@
 */
 #include "elementinfopartwidget.h"
 
-#include "../SearchAndReplace/searchandreplaceworker.h"
-#include "../qeticons.h"
-#include "../qetinformation.h"
+#include <SearchAndReplace/searchandreplaceworker.h>
+#include <qeticons.h>
+#include <qetinformation.h>
 #include "ui_elementinfopartwidget.h"
 #include <QCompleter>
 #include <QDialog>

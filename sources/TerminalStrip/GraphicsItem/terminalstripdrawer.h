@@ -23,7 +23,7 @@
 #include <QUuid>
 
 #include "properties/terminalstriplayoutpattern.h"
-#include "../../properties/elementdata.h"
+#include <properties/elementdata.h>
 
 class QPainter;
 class TerminalStrip;

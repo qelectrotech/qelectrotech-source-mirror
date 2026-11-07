@@ -18,7 +18,7 @@
 #ifndef FOLIOAUTONUMBERING_H
 #define FOLIOAUTONUMBERING_H
 
-#include "../numerotationcontext.h"
+#include <autoNum/numerotationcontext.h>
 
 #include <QWidget>
 

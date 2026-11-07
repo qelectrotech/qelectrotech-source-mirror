@@ -17,7 +17,7 @@
 */
 #include "templatecommands.h"
 
-#include "../titleblockcell.h"
+#include <titleblockcell.h>
 #include "dimension.h"
 #include "templateview.h"
 #include "templatevisualcell.h"

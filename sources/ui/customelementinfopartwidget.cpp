@@ -17,8 +17,8 @@
 */
 #include "customelementinfopartwidget.h"
 
-#include "../diagramcontext.h"
-#include "../qeticons.h"
+#include <diagramcontext.h>
+#include <qeticons.h>
 
 #include <QGridLayout>
 #include <QLineEdit>

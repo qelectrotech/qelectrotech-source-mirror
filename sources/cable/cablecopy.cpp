@@ -20,11 +20,11 @@
 #include "cablemanager.h"
 #include "cablepart.h"
 
-#include "../autoNum/assignvariables.h"
-#include "../autoNum/numerotationcontext.h"
-#include "../diagram.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetproject.h"
+#include <autoNum/assignvariables.h>
+#include <autoNum/numerotationcontext.h>
+#include <diagram.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetproject.h>
 
 #include <QDomDocument>
 #include <QSet>

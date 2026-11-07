@@ -18,8 +18,8 @@
 */
 #include "textdestinationdialog.h"
 
-#include "../diagram.h"
-#include "../qetproject.h"
+#include <diagram.h>
+#include <qetproject.h>
 
 #include <QComboBox>
 #include <QDialogButtonBox>

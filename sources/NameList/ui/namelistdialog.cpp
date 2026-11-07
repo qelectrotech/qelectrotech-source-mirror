@@ -19,7 +19,7 @@
 #include "ui_namelistdialog.h"
 #include "namelistwidget.h"
 
-#include "../../qet.h"
+#include <qet.h>
 #include <QPushButton>
 #include <QMessageBox>
 

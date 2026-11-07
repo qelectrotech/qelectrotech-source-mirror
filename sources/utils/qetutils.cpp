@@ -19,8 +19,8 @@
 #include <QString>
 #include <QStringList>
 #include <QGraphicsView>
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
 
 /**
 	@brief QETUtils::marginsToString

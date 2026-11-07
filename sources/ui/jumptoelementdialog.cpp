@@ -16,13 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "jumptoelementdialog.h"
-#include "../qetinformation.h"
+#include <qetinformation.h>
 
-#include "../diagram.h"
-#include "../diagramview.h"
-#include "../qetproject.h"
-#include "../qet.h"
-#include "../qetgraphicsitem/element.h"
+#include <diagram.h>
+#include <diagramview.h>
+#include <qetproject.h>
+#include <qet.h>
+#include <qetgraphicsitem/element.h>
 
 #include <QEvent>
 #include <QKeyEvent>

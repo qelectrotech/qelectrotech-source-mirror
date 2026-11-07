@@ -17,9 +17,9 @@
 */
 #include "eseventaddpolygon.h"
 
-#include "../UndoCommand/addpartcommand.h"
-#include "../elementscene.h"
-#include "../graphicspart/partpolygon.h"
+#include <editor/UndoCommand/addpartcommand.h>
+#include <editor/elementscene.h>
+#include <editor/graphicspart/partpolygon.h>
 
 #include <QObject>
 

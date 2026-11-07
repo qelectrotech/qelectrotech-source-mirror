@@ -17,11 +17,11 @@
 */
 #include "terminalstripautoimport.h"
 
-#include "../elementprovider.h"
-#include "../qetgraphicsitem/terminalelement.h"
-#include "../qetinformation.h"
-#include "../qetproject.h"
-#include "../utils/qetutils.h"
+#include <elementprovider.h>
+#include <qetgraphicsitem/terminalelement.h>
+#include <qetinformation.h>
+#include <qetproject.h>
+#include <utils/qetutils.h>
 #include "UndoCommand/addterminalstripcommand.h"
 #include "UndoCommand/addterminaltostripcommand.h"
 #include "UndoCommand/sortterminalstripcommand.h"

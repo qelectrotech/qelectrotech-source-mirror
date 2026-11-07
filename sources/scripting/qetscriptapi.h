@@ -26,7 +26,7 @@
 
 #include <optional>
 
-#include "../diagramcontext.h"
+#include <diagramcontext.h>
 
 class QETProject;
 class Diagram;

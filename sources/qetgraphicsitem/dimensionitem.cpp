@@ -16,8 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dimensionitem.h"
-#include "../diagram.h"
-#include "../ui/dimensionpropertiesdialog.h"
+#include <diagram.h>
+#include <ui/dimensionpropertiesdialog.h>
 
 #include <algorithm>
 #include <cmath>

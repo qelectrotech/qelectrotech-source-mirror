@@ -17,9 +17,9 @@
 */
 #include "xmlelementcollection.h"
 
-#include "../NameList/nameslist.h"
-#include "../qetproject.h"
-#include "../qetxml.h"
+#include <NameList/nameslist.h>
+#include <qetproject.h>
+#include <qetxml.h>
 #include "elementslocation.h"
 #include "terminaluuids.h"
 

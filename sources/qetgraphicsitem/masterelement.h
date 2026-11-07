@@ -19,7 +19,7 @@
 #define MASTERELEMENT_H
 
 #include "element.h"
-#include "../contactusage.h"
+#include <contactusage.h>
 #include <QHash>
 #include <QMetaObject>
 

@@ -1,11 +1,11 @@
 #include "compositetexteditdialog.h"
 
-#include "../qetapp.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/dynamicelementtextitem.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetinformation.h"
-#include "../qet.h"
+#include <qetapp.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/dynamicelementtextitem.h>
+#include <qetgraphicsitem/element.h>
+#include <qetinformation.h>
+#include <qet.h>
 #include "ui_compositetexteditdialog.h"
 
 #include <utility>

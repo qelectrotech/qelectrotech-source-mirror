@@ -19,11 +19,11 @@
 #include <QMimeData>
 
 #include "freeterminalmodel.h"
-#include "../../elementprovider.h"
-#include "../../utils/qetutils.h"
-#include "../../qetgraphicsitem/terminalelement.h"
-#include "../realterminal.h"
-#include "../../qetinformation.h"
+#include <elementprovider.h>
+#include <utils/qetutils.h>
+#include <qetgraphicsitem/terminalelement.h>
+#include <TerminalStrip/realterminal.h>
+#include <qetinformation.h>
 
 const int LABEL_CELL = 0;
 const int XREF_CELL = 1;

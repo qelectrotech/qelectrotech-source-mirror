@@ -16,22 +16,22 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetshapeitem.h"
-#include "../shownkinds.h"
+#include <shownkinds.h>
 
-#include "../PropertiesEditor/propertieseditordialog.h"
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
-#include "../createdxf.h"
-#include "../diagram.h"
-#include "../diagramview.h"
-#include "../qet.h"
-#include "../qeticons.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../qetxml.h"
-#include "../ui/shapegraphicsitempropertieswidget.h"
-#include "../utils/qetutils.h"
-#include "../undocommand/promoteshapecommand.h"
+#include <PropertiesEditor/propertieseditordialog.h>
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <QetGraphicsItemModeler/qetgraphicshandlerutility.h>
+#include <createdxf.h>
+#include <diagram.h>
+#include <diagramview.h>
+#include <qet.h>
+#include <qeticons.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qetxml.h>
+#include <ui/shapegraphicsitempropertieswidget.h>
+#include <utils/qetutils.h>
+#include <undocommand/promoteshapecommand.h>
 
 #include <QActionGroup>
 #include <algorithm>

@@ -22,7 +22,7 @@
 #include <QParallelAnimationGroup>
 #include <QPointer>
 
-#include "../diagramcontent.h"
+#include <diagramcontent.h>
 
 class Diagram;
 

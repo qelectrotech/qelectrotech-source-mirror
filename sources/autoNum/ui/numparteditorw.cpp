@@ -18,7 +18,7 @@
 #include "numparteditorw.h"
 #include "ui_numparteditorw.h"
 
-#include "../numerotationcontext.h"
+#include <autoNum/numerotationcontext.h>
 
 #include <QRegularExpressionValidator>
 

@@ -19,7 +19,7 @@
 #ifndef XREFDISPLAYDIALOG_H
 #define XREFDISPLAYDIALOG_H
 
-#include "../properties/elementdata.h"
+#include <properties/elementdata.h>
 
 #include <QDialog>
 

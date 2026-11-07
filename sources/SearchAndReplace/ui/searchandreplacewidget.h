@@ -18,10 +18,10 @@
 #ifndef SEARCHANDREPLACEWIDGET_H
 #define SEARCHANDREPLACEWIDGET_H
 
-#include "../../QWidgetAnimation/qwidgetanimation.h"
-#include "../../qetgraphicsitem/element.h"
-#include "../../qetgraphicsitem/independenttextitem.h"
-#include "../searchandreplaceworker.h"
+#include <QWidgetAnimation/qwidgetanimation.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/independenttextitem.h>
+#include <SearchAndReplace/searchandreplaceworker.h>
 
 #include <QTreeWidgetItemIterator>
 #include <QWidget>

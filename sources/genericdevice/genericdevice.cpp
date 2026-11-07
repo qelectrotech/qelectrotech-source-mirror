@@ -18,7 +18,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "genericdevice.h"
 
-#include "../editor/terminalnamecheck.h"
+#include <editor/terminalnamecheck.h>
 
 #include <QCoreApplication>
 #include <QFontMetricsF>

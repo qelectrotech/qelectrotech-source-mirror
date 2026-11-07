@@ -16,8 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "openelmtcommand.h"
-#include "../elementscene.h"
-#include "../graphicspart/partterminal.h"
+#include <editor/elementscene.h>
+#include <editor/graphicspart/partterminal.h>
 
 #include <QDomDocument>
 #include <QObject>

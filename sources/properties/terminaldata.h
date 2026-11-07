@@ -18,7 +18,7 @@
 #ifndef TERMINALDATA_H
 #define TERMINALDATA_H
 
-#include "../qet.h"
+#include <qet.h>
 #include "propertiesinterface.h"
 
 #include <QColor>

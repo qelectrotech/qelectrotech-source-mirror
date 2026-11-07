@@ -18,7 +18,7 @@
 #ifndef QETELEMENTEDITOR_H
 #define QETELEMENTEDITOR_H
 
-#include "../../ElementsCollection/elementslocation.h"
+#include <ElementsCollection/elementslocation.h>
 
 #include <QCloseEvent>
 #include <QMainWindow>

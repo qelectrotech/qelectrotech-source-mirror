@@ -21,7 +21,7 @@
 #include <QUndoCommand>
 #include <QPointer>
 #include <QVector>
-#include "../terminalstrip.h"
+#include <TerminalStrip/terminalstrip.h>
 
 /**
  * @brief The GroupTerminalsCommand class

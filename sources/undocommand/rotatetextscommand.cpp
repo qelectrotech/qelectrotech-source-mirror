@@ -17,13 +17,13 @@
 */
 #include "rotatetextscommand.h"
 
-#include "../diagram.h"
-#include "../diagramcontent.h"
-#include "../qetapp.h"
-#include "../qetgraphicsitem/conductortextitem.h"
-#include "../qetgraphicsitem/diagramtextitem.h"
-#include "../qetgraphicsitem/elementtextitemgroup.h"
-#include "../qtextorientationspinboxwidget.h"
+#include <diagram.h>
+#include <diagramcontent.h>
+#include <qetapp.h>
+#include <qetgraphicsitem/conductortextitem.h>
+#include <qetgraphicsitem/diagramtextitem.h>
+#include <qetgraphicsitem/elementtextitemgroup.h>
+#include <qtextorientationspinboxwidget.h>
 
 #include <cmath>
 

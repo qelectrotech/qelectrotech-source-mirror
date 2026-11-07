@@ -18,15 +18,15 @@
 
 #include "potentialselectordialog.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../qet.h"
-#include "../autoNum/assignvariables.h"
-#include "../diagram.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/reportelement.h"
-#include "../qetgraphicsitem/terminal.h"
-#include "../ui_potentialselectordialog.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <qet.h>
+#include <autoNum/assignvariables.h>
+#include <diagram.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/reportelement.h>
+#include <qetgraphicsitem/terminal.h>
+#include <ui_potentialselectordialog.h>
 #include "formulaassistantdialog.h"
 
 #include <QHash>

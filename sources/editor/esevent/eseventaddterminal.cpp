@@ -17,9 +17,9 @@
 */
 #include "eseventaddterminal.h"
 
-#include "../UndoCommand/addpartcommand.h"
-#include "../elementscene.h"
-#include "../graphicspart/partterminal.h"
+#include <editor/UndoCommand/addpartcommand.h>
+#include <editor/elementscene.h>
+#include <editor/graphicspart/partterminal.h>
 
 #include <QObject>
 

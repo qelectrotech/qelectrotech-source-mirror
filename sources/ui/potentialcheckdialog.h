@@ -19,7 +19,7 @@
 #ifndef POTENTIALCHECKDIALOG_H
 #define POTENTIALCHECKDIALOG_H
 
-#include "../dataBase/projectdatabase.h"
+#include <dataBase/projectdatabase.h>
 
 #include <QDialog>
 #include <QPointer>

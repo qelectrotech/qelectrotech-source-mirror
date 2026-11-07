@@ -18,7 +18,7 @@
 #ifndef DIAGRAMEVENTADDSHAPE_H
 #define DIAGRAMEVENTADDSHAPE_H
 
-#include "../qetgraphicsitem/qetshapeitem.h"
+#include <qetgraphicsitem/qetshapeitem.h>
 #include "diagrameventinterface.h"
 
 class QGraphicsEllipseItem;

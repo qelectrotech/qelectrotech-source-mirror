@@ -17,10 +17,10 @@
 */
 #include "spacemouseconfigpage.h"
 
-#include "../../qeticons.h"
-#include "../../shortcutmanager.h"
-#include "../../spacemouse/spacemousebuttonmap.h"
-#include "../../spacemouse/spacemousemotion.h"
+#include <qeticons.h>
+#include <shortcutmanager.h>
+#include <spacemouse/spacemousebuttonmap.h>
+#include <spacemouse/spacemousemotion.h>
 
 #include <QCheckBox>
 #include <QComboBox>

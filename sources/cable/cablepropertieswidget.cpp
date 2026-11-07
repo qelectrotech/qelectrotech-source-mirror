@@ -18,9 +18,9 @@
 #include "cablepropertieswidget.h"
 
 #include "cabletextformatdialog.h"
-#include "../qetapp.h"
-#include "../qeticons.h"
-#include "../utils/qetutils.h"
+#include <qetapp.h>
+#include <qeticons.h>
+#include <utils/qetutils.h>
 
 #include <QApplication>
 #include <QCheckBox>

@@ -17,8 +17,8 @@
 */
 #include "toolbarsconfigpage.h"
 
-#include "../../qeticons.h"
-#include "../../toolbarsettings.h"
+#include <qeticons.h>
+#include <toolbarsettings.h>
 
 #include <QCheckBox>
 #include <QComboBox>

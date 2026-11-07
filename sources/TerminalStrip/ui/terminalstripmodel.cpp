@@ -16,13 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstripmodel.h"
-#include "../terminalcatalog.h"
-#include "../terminalstrip.h"
-#include "../../qetgraphicsitem/element.h"
-#include "../physicalterminal.h"
-#include "../realterminal.h"
-#include "../terminalcolor.h"
-#include "../terminalstripbridge.h"
+#include <TerminalStrip/terminalcatalog.h>
+#include <TerminalStrip/terminalstrip.h>
+#include <qetgraphicsitem/element.h>
+#include <TerminalStrip/physicalterminal.h>
+#include <TerminalStrip/realterminal.h>
+#include <TerminalStrip/terminalcolor.h>
+#include <TerminalStrip/terminalstripbridge.h>
 #include <QColor>
 #include <QCoreApplication>
 #include <QDebug>

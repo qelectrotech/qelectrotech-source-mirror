@@ -17,32 +17,32 @@
 */
 #include "element.h"
 
-#include "../bridge/bridgemanager.h"
-#include "../qetapp.h"
-#include "../qetproject.h"
-#include "../dataBase/projectdatabase.h"
-#include "../ElementsCollection/terminaluuids.h"
-#include "../PropertiesEditor/propertieseditordialog.h"
-#include "../autoNum/assignvariables.h"
-#include "../autoNum/elementautonumschemecommand.h"
-#include "../autoNum/numerotationcontextcommands.h"
-#include "../diagram.h"
-#include "../diagramcommands.h"
-#include "../diagramcontext.h"
-#include "../diagramposition.h"
-#include "../elementprovider.h"
-#include "../factory/elementpicturefactory.h"
-#include "../properties/terminaldata.h"
-#include "../properties/xrefproperties.h"
-#include "../qetinformation.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/terminal.h"
-#include "../ui/elementpropertieswidget.h"
-#include "../undocommand/changeelementinformationcommand.h"
-#include "../undocommand/setautonumcontextcommand.h"
+#include <bridge/bridgemanager.h>
+#include <qetapp.h>
+#include <qetproject.h>
+#include <dataBase/projectdatabase.h>
+#include <ElementsCollection/terminaluuids.h>
+#include <PropertiesEditor/propertieseditordialog.h>
+#include <autoNum/assignvariables.h>
+#include <autoNum/elementautonumschemecommand.h>
+#include <autoNum/numerotationcontextcommands.h>
+#include <diagram.h>
+#include <diagramcommands.h>
+#include <diagramcontext.h>
+#include <diagramposition.h>
+#include <elementprovider.h>
+#include <factory/elementpicturefactory.h>
+#include <properties/terminaldata.h>
+#include <properties/xrefproperties.h>
+#include <qetinformation.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/terminal.h>
+#include <ui/elementpropertieswidget.h>
+#include <undocommand/changeelementinformationcommand.h>
+#include <undocommand/setautonumcontextcommand.h>
 #include "crossrefitem.h"
 #include "terminalelement.h"
-#include "../TerminalStrip/terminalstrip.h"
+#include <TerminalStrip/terminalstrip.h>
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "iostream"
@@ -56,7 +56,7 @@
 #include <QTextDocument>
 #include <QTimer>
 #include <QPointer>
-#include "../diagramview.h"
+#include <diagramview.h>
 
 static const QString plcTerminalKeys[] = {
 	QETInformation::ELMT_PLC_T1,
@@ -64,9 +64,9 @@ static const QString plcTerminalKeys[] = {
 	QETInformation::ELMT_PLC_T3,
 	QETInformation::ELMT_PLC_T4
 };
-#include "../qetxml.h"
-#include "../positionorder.h"
-#include "../qetversion.h"
+#include <qetxml.h>
+#include <positionorder.h>
+#include <qetversion.h>
 #include "qgraphicsitemutility.h"
 #include <QDebug>
 

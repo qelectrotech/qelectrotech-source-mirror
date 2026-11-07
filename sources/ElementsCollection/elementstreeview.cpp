@@ -17,17 +17,17 @@
 */
 #include "elementstreeview.h"
 #include "elementpreviewdelegate.h"
-#include "../qetpalette.h"
+#include <qetpalette.h>
 
-#include "../factory/elementfactory.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qeticons.h"
+#include <factory/elementfactory.h>
+#include <qetgraphicsitem/element.h>
+#include <qeticons.h>
 #include "elementcollectionitem.h"
 #include "elementslocation.h"
-#include "../qetproject.h"
-#include "../diagram.h"
+#include <qetproject.h>
+#include <diagram.h>
 #include "xmlelementcollection.h"
-#include "../NameList/nameslist.h"
+#include <NameList/nameslist.h>
 #include <QPainter>
 #include <QScopedPointer>
 #include <QDrag>

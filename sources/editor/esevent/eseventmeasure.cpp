@@ -17,8 +17,8 @@
 */
 #include "eseventmeasure.h"
 #include "elementmeasureitem.h"
-#include "../elementscene.h"
-#include "../ui/qetelementeditor.h"
+#include <editor/elementscene.h>
+#include <editor/ui/qetelementeditor.h>
 
 #include <QGraphicsSceneMouseEvent>
 #include <QKeyEvent>

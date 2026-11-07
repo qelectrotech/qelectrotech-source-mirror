@@ -17,9 +17,9 @@
 */
 #include "eseventaddrect.h"
 
-#include "../UndoCommand/addpartcommand.h"
-#include "../elementscene.h"
-#include "../graphicspart/partrectangle.h"
+#include <editor/UndoCommand/addpartcommand.h>
+#include <editor/elementscene.h>
+#include <editor/graphicspart/partrectangle.h>
 
 #include <QObject>
 

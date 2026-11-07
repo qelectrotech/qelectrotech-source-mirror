@@ -18,12 +18,12 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "potentialcheckdialog.h"
 
-#include "../diagram.h"
-#include "../diagramcontent.h"
-#include "../diagramview.h"
-#include "../qet.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetproject.h"
+#include <diagram.h>
+#include <diagramcontent.h>
+#include <diagramview.h>
+#include <qet.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetproject.h>
 
 #include <QApplication>
 #include <QDialogButtonBox>

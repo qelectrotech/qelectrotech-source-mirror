@@ -21,10 +21,10 @@
 #include "cablelistrows.h"
 #include "cablequerywidget.h"
 
-#include "../bomexport.h"
-#include "../qet.h"
-#include "../qetapp.h"
-#include "../qetproject.h"
+#include <bomexport.h>
+#include <qet.h>
+#include <qetapp.h>
+#include <qetproject.h>
 
 #include <QAbstractItemView>
 #include <QCheckBox>

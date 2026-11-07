@@ -18,7 +18,7 @@
 #ifndef TERMINALSTRIPDATA_H
 #define TERMINALSTRIPDATA_H
 
-#include "../properties/propertiesinterface.h"
+#include <properties/propertiesinterface.h>
 
 #include <QUuid>
 

@@ -18,9 +18,9 @@
 #include "dimensionpropertieswidget.h"
 #include "ui_dimensionpropertieswidget.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../diagram.h"
-#include "../qetgraphicsitem/dimensionitem.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <diagram.h>
+#include <qetgraphicsitem/dimensionitem.h>
 
 DimensionPropertiesWidget::DimensionPropertiesWidget(DimensionItem *item, QWidget *parent) :
 	PropertiesEditorWidget(parent),

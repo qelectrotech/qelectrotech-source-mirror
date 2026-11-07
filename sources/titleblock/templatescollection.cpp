@@ -17,9 +17,9 @@
 */
 #include "templatescollection.h"
 
-#include "../qetapp.h"
-#include "../qetproject.h"
-#include "../titleblocktemplate.h"
+#include <qetapp.h>
+#include <qetproject.h>
+#include <titleblocktemplate.h>
 
 #include <QRegularExpression>
 

@@ -17,7 +17,7 @@
 */
 #include "dimensionwidget.h"
 
-#include "../qet.h"
+#include <qet.h>
 
 /**
 	Constructor

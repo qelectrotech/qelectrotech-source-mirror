@@ -17,14 +17,14 @@
 */
 #include "graphicstablepropertieseditor.h"
 
-#include "../../../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../../../diagram.h"
-#include "../../../elementprovider.h"
-#include "../../../factory/propertieseditorfactory.h"
-#include "../../../undocommand/itemmodelcommand.h"
-#include "../../../utils/qetutils.h"
-#include "../qetgraphicsheaderitem.h"
-#include "../qetgraphicstableitem.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <diagram.h>
+#include <elementprovider.h>
+#include <factory/propertieseditorfactory.h>
+#include <undocommand/itemmodelcommand.h>
+#include <utils/qetutils.h>
+#include <qetgraphicsitem/ViewItem/qetgraphicsheaderitem.h>
+#include <qetgraphicsitem/ViewItem/qetgraphicstableitem.h>
 #include "ui_graphicstablepropertieseditor.h"
 
 #include <QAbstractItemModel>

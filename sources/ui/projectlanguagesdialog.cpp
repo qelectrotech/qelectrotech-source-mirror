@@ -16,7 +16,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "projectlanguages.h"
+#include <properties/projectlanguages.h>
 #include "projectlanguagesdialog.h"
 
 #include <QComboBox>

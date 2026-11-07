@@ -22,7 +22,7 @@
 #include <QString>
 #include <QStringList>
 
-#include "../autoNum/numerotationcontext.h"
+#include <autoNum/numerotationcontext.h>
 
 class Cable;
 class QETProject;

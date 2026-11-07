@@ -18,7 +18,7 @@
 #ifndef PART_TERMINAL_H
 #define PART_TERMINAL_H
 
-#include "../../properties/terminaldata.h"
+#include <properties/terminaldata.h>
 #include "customelementgraphicpart.h"
 
 #include <QUuid>

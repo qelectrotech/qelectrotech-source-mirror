@@ -18,8 +18,8 @@
 #ifndef PROJECTPRINTWINDOW_H
 #define PROJECTPRINTWINDOW_H
 
-#include "../exportproperties.h"
-#include "../pdf_links.h"
+#include <exportproperties.h>
+#include <pdf_links.h>
 
 #include <QMainWindow>
 #include <QMap>

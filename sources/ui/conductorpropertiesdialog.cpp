@@ -18,15 +18,15 @@
 
 #include "conductorpropertiesdialog.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../bridge/bridgemanager.h"
-#include "../diagram.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetproject.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <bridge/bridgemanager.h>
+#include <diagram.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetproject.h>
 #include "conductorpropertieswidget.h"
 #include "ui_conductorpropertiesdialog.h"
 
-#include "../qet.h"
+#include <qet.h>
 /**
 	@brief ConductorPropertiesDialog::ConductorPropertiesDialog
 	Constructor

@@ -18,9 +18,9 @@
 
 #include "diagrameventaddtext.h"
 
-#include "../diagram.h"
-#include "../undocommand/addgraphicsobjectcommand.h"
-#include "../qetgraphicsitem/independenttextitem.h"
+#include <diagram.h>
+#include <undocommand/addgraphicsobjectcommand.h>
+#include <qetgraphicsitem/independenttextitem.h>
 
 /**
 	@brief DiagramEventAddText::DiagramEventAddText

@@ -17,11 +17,11 @@
 */
 #include "terminalstriplabels.h"
 
-#include "../diagram.h"
-#include "../qetproject.h"
-#include "../qetgraphicsitem/terminalelement.h"
+#include <diagram.h>
+#include <qetproject.h>
+#include <qetgraphicsitem/terminalelement.h>
 #include "terminalstrip.h"
-#include "../qetgraphicsitem/terminal.h"
+#include <qetgraphicsitem/terminal.h>
 
 #include <QHash>
 #include <QPointer>

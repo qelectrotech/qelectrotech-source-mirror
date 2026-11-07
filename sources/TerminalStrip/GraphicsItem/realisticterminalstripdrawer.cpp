@@ -17,7 +17,7 @@
 */
 #include "realisticterminalstripdrawer.h"
 #include "terminalstripdrawerhelpers.h"
-#include "../terminalcatalog.h"
+#include <TerminalStrip/terminalcatalog.h>
 
 #include <QFontMetricsF>
 #include <QHash>

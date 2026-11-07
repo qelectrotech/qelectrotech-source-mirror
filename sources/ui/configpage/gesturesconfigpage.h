@@ -19,7 +19,7 @@
 #define GESTURESCONFIGPAGE_H
 
 #include "configpage.h"
-#include "../../shortcutbarsettings.h"
+#include <shortcutbarsettings.h>
 
 #include <QHash>
 #include <QStringList>

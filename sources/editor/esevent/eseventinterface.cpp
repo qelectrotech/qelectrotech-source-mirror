@@ -17,9 +17,9 @@
 */
 #include "eseventinterface.h"
 
-#include "../elementscene.h"
-#include "../ui/qetelementeditor.h"
-#include "../elementview.h"
+#include <editor/elementscene.h>
+#include <editor/ui/qetelementeditor.h>
+#include <editor/elementview.h>
 
 #include <QGraphicsSceneMouseEvent>
 

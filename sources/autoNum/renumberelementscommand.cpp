@@ -18,8 +18,8 @@
 
 #include "renumberelementscommand.h"
 
-#include "../qetproject.h"
-#include "../qetgraphicsitem/element.h"
+#include <qetproject.h>
+#include <qetgraphicsitem/element.h>
 
 RenumberElementsCommand::RenumberElementsCommand(
         QETProject *project,

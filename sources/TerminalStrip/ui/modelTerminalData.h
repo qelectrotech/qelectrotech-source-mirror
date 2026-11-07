@@ -21,8 +21,8 @@
 #include <QColor>
 #include <QString>
 #include <QStringList>
-#include "../../qetgraphicsitem/element.h"
-#include "../realterminal.h"
+#include <qetgraphicsitem/element.h>
+#include <TerminalStrip/realterminal.h>
 
 struct modelRealTerminalData
 {

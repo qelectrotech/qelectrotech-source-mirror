@@ -17,14 +17,14 @@
 */
 #include "replaceelementdialog.h"
 
-#include "../../qetapp.h"
-#include "../../qetinformation.h"
-#include "../../ui/elementinfopartwidget.h"
-#include "../searchandreplaceworker.h"
+#include <qetapp.h>
+#include <qetinformation.h>
+#include <ui/elementinfopartwidget.h>
+#include <SearchAndReplace/searchandreplaceworker.h>
 #include "replaceelementdialog.h"
 #include "ui_replaceelementdialog.h"
 
-#include "../../qet.h"
+#include <qet.h>
 #include <QAbstractButton>
 
 ReplaceElementDialog::ReplaceElementDialog(DiagramContext context, QWidget *parent) :

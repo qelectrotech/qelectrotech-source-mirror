@@ -17,9 +17,9 @@
 */
 #include "terminalstriplayoutpatternxml.h"
 
-#include "../TerminalStrip/GraphicsItem/properties/terminalstriplayoutpattern.h"
-#include "../qetxml.h"
-#include "../svg/qetsvg.h"
+#include <TerminalStrip/GraphicsItem/properties/terminalstriplayoutpattern.h>
+#include <qetxml.h>
+#include <svg/qetsvg.h>
 
 const QString LAYOUT_PATTERN_TAG_NAME { QStringLiteral("terminal_strip_layout_pattern") };
 const QString LAYOUTS_PATTERN_TAG_NAME { QStringLiteral("terminal_strip_layouts_pattern") };

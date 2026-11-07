@@ -20,7 +20,7 @@
 
 #include <QDomDocument>
 #include <QRect>
-#include <../qet.h>
+#include <qet.h>
 
 /**
  * @brief QETSVG::rectToElmt

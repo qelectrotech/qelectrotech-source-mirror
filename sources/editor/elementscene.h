@@ -17,11 +17,11 @@
 */
 #ifndef ELEMENT_SCENE_H
 #define ELEMENT_SCENE_H
-#include "../NameList/nameslist.h"
-#include "../diagramcontext.h"
-#include "../qgimanager.h"
+#include <NameList/nameslist.h>
+#include <diagramcontext.h>
+#include <qgimanager.h>
 #include "elementcontent.h"
-#include "../properties/elementdata.h"
+#include <properties/elementdata.h>
 
 #include <QtWidgets>
 #include <QtXml>

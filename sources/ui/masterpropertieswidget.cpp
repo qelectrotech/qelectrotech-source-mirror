@@ -17,14 +17,14 @@
  */
 #include "masterpropertieswidget.h"
 #include "contactgroupselectiondialog.h"
-#include "../qetproject.h"
-#include "../diagram.h"
-#include "../diagramposition.h"
-#include "../elementprovider.h"
-#include "../qetgraphicsitem/element.h"
-#include "../undocommand/linkelementcommand.h"
+#include <qetproject.h>
+#include <diagram.h>
+#include <diagramposition.h>
+#include <elementprovider.h>
+#include <qetgraphicsitem/element.h>
+#include <undocommand/linkelementcommand.h>
 #include "ui_masterpropertieswidget.h"
-#include "../properties/elementdata.h"
+#include <properties/elementdata.h>
 
 #include <QListWidgetItem>
 #include <QMessageBox>

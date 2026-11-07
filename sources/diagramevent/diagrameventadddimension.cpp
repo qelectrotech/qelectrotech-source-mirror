@@ -17,10 +17,10 @@
 */
 #include "diagrameventadddimension.h"
 
-#include "../diagram.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../undocommand/addgraphicsobjectcommand.h"
+#include <diagram.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <undocommand/addgraphicsobjectcommand.h>
 
 #include <cmath>
 #include <QCursor>

@@ -18,7 +18,7 @@
 #ifndef TEXTEDITOR_H
 #define TEXTEDITOR_H
 
-#include "../elementitemeditor.h"
+#include <editor/elementitemeditor.h>
 
 #include <QPointer>
 #include <QWidget>
@@ -26,7 +26,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #ifdef BUILD_WITHOUT_KF
-#include "../../ui/nokde/kcolorbutton.h"
+#include <ui/nokde/kcolorbutton.h>
 #else
 #include <KColorButton>
 #endif

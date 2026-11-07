@@ -16,16 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstripitem.h"
-#include "../../qetproject.h"
+#include <qetproject.h>
 
-#include "../diagram.h"
-#include "../../project/projectpropertieshandler.h"
-#include "../../qetgraphicsitem/qgraphicsitemutility.h"
-#include "../terminalstrip.h"
-#include "../terminalstripbridge.h"
-#include "../physicalterminal.h"
-#include "../realterminal.h"
-#include "../ui/terminalstripeditorwindow.h"
+#include <diagram.h>
+#include <project/projectpropertieshandler.h>
+#include <qetgraphicsitem/qgraphicsitemutility.h>
+#include <TerminalStrip/terminalstrip.h>
+#include <TerminalStrip/terminalstripbridge.h>
+#include <TerminalStrip/physicalterminal.h>
+#include <TerminalStrip/realterminal.h>
+#include <TerminalStrip/ui/terminalstripeditorwindow.h>
 #include "trueterminalstrip.h"
 
 TerminalStripItem::TerminalStripItem(QPointer<TerminalStrip> strip,

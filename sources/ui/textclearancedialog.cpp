@@ -17,7 +17,7 @@
 */
 #include "textclearancedialog.h"
 
-#include "../diagram.h"
+#include <diagram.h>
 
 #include <QComboBox>
 #include <QDialogButtonBox>

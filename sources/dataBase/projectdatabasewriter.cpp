@@ -18,14 +18,14 @@
 */
 #include "projectdatabase.h"
 
-#include "../autoNum/assignvariables.h"
-#include "../borderproperties.h"
-#include "../itemgroups.h"
-#include "../qetproject.h"
-#include "../qetversion.h"
-#include "../titleblockproperties.h"
+#include <autoNum/assignvariables.h>
+#include <borderproperties.h>
+#include <itemgroups.h>
+#include <qetproject.h>
+#include <qetversion.h>
+#include <titleblockproperties.h>
 
-#include "../qet.h"
+#include <qet.h>
 
 #include <QSqlError>
 #include <QElapsedTimer>

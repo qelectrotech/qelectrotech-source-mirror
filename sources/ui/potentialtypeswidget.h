@@ -19,7 +19,7 @@
 #ifndef POTENTIALTYPESWIDGET_H
 #define POTENTIALTYPESWIDGET_H
 
-#include "../properties/potentialtypes.h"
+#include <properties/potentialtypes.h>
 
 #include <QWidget>
 

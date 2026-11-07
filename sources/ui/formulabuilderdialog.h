@@ -19,7 +19,7 @@
 #ifndef FORMULABUILDERDIALOG_H
 #define FORMULABUILDERDIALOG_H
 
-#include "../formulabuilder.h"
+#include <formulabuilder.h>
 
 #include <QDialog>
 

@@ -16,15 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "independenttextitem.h"
-#include "../shownkinds.h"
+#include <shownkinds.h>
 
-#include "../diagram.h"
-#include "../diagramcommands.h"
-#include "../lastusedstyle.h"
-#include "../qet.h"
-#include "../qetapp.h"
-#include "../qetproject.h"
-#include "../utils/qetutils.h"
+#include <diagram.h>
+#include <diagramcommands.h>
+#include <lastusedstyle.h>
+#include <qet.h>
+#include <qetapp.h>
+#include <qetproject.h>
+#include <utils/qetutils.h>
 
 #include <QDomElement>
 #include <QGraphicsSceneMouseEvent>

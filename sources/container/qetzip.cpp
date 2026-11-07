@@ -18,7 +18,7 @@
 #include "qetzip.h"
 
 #include "miniz/miniz.h"
-#include "../utils/syncfolder.h"
+#include <utils/syncfolder.h>
 
 #include <QFile>
 #include <QSaveFile>

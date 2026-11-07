@@ -17,9 +17,9 @@
 */
 #include "eseventaddarc.h"
 
-#include "../UndoCommand/addpartcommand.h"
-#include "../elementscene.h"
-#include "../graphicspart/partarc.h"
+#include <editor/UndoCommand/addpartcommand.h>
+#include <editor/elementscene.h>
+#include <editor/graphicspart/partarc.h>
 
 #include <QObject>
 

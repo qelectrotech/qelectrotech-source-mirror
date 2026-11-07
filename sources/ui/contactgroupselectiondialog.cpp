@@ -17,7 +17,7 @@
 */
 #include "contactgroupselectiondialog.h"
 
-#include "../qet.h"
+#include <qet.h>
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>

@@ -18,16 +18,16 @@
 #include "terminalstriptreedockwidget.h"
 #include "ui_terminalstriptreedockwidget.h"
 
-#include "../UndoCommand/addterminaltostripcommand.h"
-#include "../../elementprovider.h"
-#include "../physicalterminal.h"
-#include "../../qeticons.h"
-#include "../../qetproject.h"
-#include "../realterminal.h"
-#include "../../qetgraphicsitem/terminalelement.h"
-#include "../terminalstrip.h"
-#include "../../qetinformation.h"
-#include "../../utils/qetutils.h"
+#include <TerminalStrip/UndoCommand/addterminaltostripcommand.h>
+#include <elementprovider.h>
+#include <TerminalStrip/physicalterminal.h>
+#include <qeticons.h>
+#include <qetproject.h>
+#include <TerminalStrip/realterminal.h>
+#include <qetgraphicsitem/terminalelement.h>
+#include <TerminalStrip/terminalstrip.h>
+#include <qetinformation.h>
+#include <utils/qetutils.h>
 #include "freeterminalmodel.h"
 
 #include <QApplication>

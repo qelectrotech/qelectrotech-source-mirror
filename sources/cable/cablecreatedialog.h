@@ -18,7 +18,7 @@
 #ifndef CABLECREATEDIALOG_H
 #define CABLECREATEDIALOG_H
 
-#include "../cablelist/cabletypelist.h"
+#include <cablelist/cabletypelist.h>
 #include "cable.h"
 #include "cablemanager.h"
 

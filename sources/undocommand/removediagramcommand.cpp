@@ -17,8 +17,8 @@
 */
 #include "removediagramcommand.h"
 
-#include "../qetproject.h"
-#include "../diagram.h"
+#include <qetproject.h>
+#include <diagram.h>
 
 /**
 	@brief RemoveDiagramCommand::RemoveDiagramCommand

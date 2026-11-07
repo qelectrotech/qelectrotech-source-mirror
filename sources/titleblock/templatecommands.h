@@ -18,7 +18,7 @@
 #ifndef TITLEBLOCK_SLASH_TEMPLATE_COMMANDS_H
 #define TITLEBLOCK_SLASH_TEMPLATE_COMMANDS_H
 #define MODIFY_TITLE_BLOCK_CELL_COMMAND_ID 6378
-#include "../titleblockcell.h"
+#include <titleblockcell.h>
 #include "dimension.h"
 #include "templatecellsset.h"
 

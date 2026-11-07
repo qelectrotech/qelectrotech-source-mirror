@@ -18,11 +18,11 @@
 #ifndef DYNAMICTEXTFIELDEDITOR_H
 #define DYNAMICTEXTFIELDEDITOR_H
 
-#include "../elementitemeditor.h"
-#include "../graphicspart/partdynamictextfield.h"
+#include <editor/elementitemeditor.h>
+#include <editor/graphicspart/partdynamictextfield.h>
 
 #ifdef BUILD_WITHOUT_KF
-#	include "../../ui/nokde/kcolorbutton.h"
+#	include <ui/nokde/kcolorbutton.h>
 #else
 #	include <KColorButton>
 #endif

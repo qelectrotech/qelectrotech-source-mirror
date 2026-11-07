@@ -17,8 +17,8 @@
 */
 #include "elementscollectionmodel.h"
 
-#include "../qetapp.h"
-#include "../qetproject.h"
+#include <qetapp.h>
+#include <qetproject.h>
 #include "elementcollectionhandler.h"
 #include "elementcollectionitem.h"
 #include "fileelementcollectionitem.h"

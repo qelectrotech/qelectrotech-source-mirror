@@ -17,8 +17,8 @@
 */
 #include "folioautonumbering.h"
 
-#include "../../diagram.h"
-#include "../../qetproject.h"
+#include <diagram.h>
+#include <qetproject.h>
 #include "ui_folioautonumbering.h"
 
 #include <QMessageBox>

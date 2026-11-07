@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QList>
-#include "../../diagram.h"
+#include <diagram.h>
 
 class QTableWidget;
 class QPushButton;

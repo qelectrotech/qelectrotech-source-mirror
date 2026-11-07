@@ -19,8 +19,8 @@
 
 #include "cablelistrows.h"
 
-#include "../qetapp.h"
-#include "../ui/configsaveloaderwidget.h"
+#include <qetapp.h>
+#include <ui/configsaveloaderwidget.h>
 
 #include <QFile>
 #include <QHBoxLayout>

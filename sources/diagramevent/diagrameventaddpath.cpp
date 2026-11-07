@@ -17,11 +17,11 @@
 */
 #include "diagrameventaddpath.h"
 
-#include "../diagram.h"
-#include "../lastusedstyle.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../undocommand/addgraphicsobjectcommand.h"
+#include <diagram.h>
+#include <lastusedstyle.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <undocommand/addgraphicsobjectcommand.h>
 
 #include <QGraphicsLineItem>
 #include <QGraphicsSceneMouseEvent>

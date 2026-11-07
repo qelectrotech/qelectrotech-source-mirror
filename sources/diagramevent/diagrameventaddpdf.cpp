@@ -20,11 +20,11 @@
 // Whole file is a no-op unless QtPdf is available (see diagrameventaddpdf.h).
 #ifdef QET_HAS_QTPDF
 
-#include "../qetapp.h"
-#include "../diagram.h"
-#include "../undocommand/addgraphicsobjectcommand.h"
-#include "../qetgraphicsitem/diagramimageitem.h"
-#include "../ui/pdfpagesdialog.h"
+#include <qetapp.h>
+#include <diagram.h>
+#include <undocommand/addgraphicsobjectcommand.h>
+#include <qetgraphicsitem/diagramimageitem.h>
+#include <ui/pdfpagesdialog.h>
 
 #include <QPdfDocument>
 #include <QFileDialog>

@@ -18,7 +18,7 @@
 #ifndef PARTDYNAMICTEXTFIELD_H
 #define PARTDYNAMICTEXTFIELD_H
 
-#include "../../qetgraphicsitem/dynamicelementtextitem.h"
+#include <qetgraphicsitem/dynamicelementtextitem.h>
 #include "QGraphicsTextItem"
 #include "customelementpart.h"
 

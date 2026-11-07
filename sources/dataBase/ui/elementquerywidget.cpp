@@ -17,12 +17,12 @@
 */
 #include "elementquerywidget.h"
 
-#include "../../properties/elementdata.h"
-#include "../../qetapp.h"
-#include "../../qetinformation.h"
-#include "../legacyelementtypes.h"
-#include "../projectdatabase.h"
-#include "../../ui/formulabuilderdialog.h"
+#include <properties/elementdata.h>
+#include <qetapp.h>
+#include <qetinformation.h>
+#include <dataBase/legacyelementtypes.h>
+#include <dataBase/projectdatabase.h>
+#include <ui/formulabuilderdialog.h>
 #include "ui_elementquerywidget.h"
 
 #include <QFile>

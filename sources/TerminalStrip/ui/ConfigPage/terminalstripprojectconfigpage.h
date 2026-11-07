@@ -18,7 +18,7 @@
 #ifndef TERMINALSTRIPPROJECTCONFIGPAGE_H
 #define TERMINALSTRIPPROJECTCONFIGPAGE_H
 
-#include "../../../ui/configpage/projectconfigpages.h"
+#include <ui/configpage/projectconfigpages.h>
 
 class TerminalStripLayoutEditor;
 

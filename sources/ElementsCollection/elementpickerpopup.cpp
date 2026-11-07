@@ -44,9 +44,9 @@
 
 #include <limits>
 
-#include "../qetapp.h"
-#include "../qetpalette.h"
-#include "../shortcutmanager.h"
+#include <qetapp.h>
+#include <qetpalette.h>
+#include <shortcutmanager.h>
 #include "elementpreviewdelegate.h"
 #include "elementslocation.h"
 

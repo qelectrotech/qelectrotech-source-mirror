@@ -18,8 +18,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "genericdevicewizard.h"
 
-#include "../editor/terminalnamecheck.h"
-#include "../factory/elementpicturefactory.h"
+#include <editor/terminalnamecheck.h>
+#include <factory/elementpicturefactory.h>
 
 #include <QApplication>
 #include <QCheckBox>

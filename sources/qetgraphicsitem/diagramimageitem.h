@@ -20,7 +20,7 @@
 
 #include "qetgraphicsitem.h"
 #include "shapetransform.h"
-#include "../ui/imagetransparentcolordialog.h"
+#include <ui/imagetransparentcolordialog.h>
 
 #include <QColor>
 #include <QFont>

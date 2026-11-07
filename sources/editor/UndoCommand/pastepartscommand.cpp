@@ -17,10 +17,10 @@
 */
 #include "pastepartscommand.h"
 
-#include "../elementview.h"
-#include "../graphicspart/partdynamictextfield.h"
-#include "../graphicspart/partterminal.h"
-#include "../graphicspart/parttext.h"
+#include <editor/elementview.h>
+#include <editor/graphicspart/partdynamictextfield.h>
+#include <editor/graphicspart/partterminal.h>
+#include <editor/graphicspart/parttext.h>
 
 /**
 	@brief PastePartsCommand::PastePartsCommand

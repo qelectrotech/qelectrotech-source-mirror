@@ -17,7 +17,7 @@
 */
 #include "templatelocation.h"
 
-#include "../qetapp.h"
+#include <qetapp.h>
 #include "templatescollection.h"
 
 #include <QRegularExpression>

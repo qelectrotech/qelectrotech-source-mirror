@@ -17,8 +17,8 @@
 */
 #include "counterwarning.h"
 
-#include "../elementautonumschemecommand.h"
-#include "../../qetmessagebox.h"
+#include <autoNum/elementautonumschemecommand.h>
+#include <qetmessagebox.h>
 
 /**
 	@brief CounterWarning::confirm

@@ -18,8 +18,8 @@
 */
 #include "projectdatabase.h"
 
-#include "../properties/xrefproperties.h"
-#include "../titleblockproperties.h"
+#include <properties/xrefproperties.h>
+#include <titleblockproperties.h>
 
 #include <QDomDocument>
 #include <QSqlError>
