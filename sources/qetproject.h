@@ -342,6 +342,13 @@ class QETProject : public QObject
 		void setLanguages(const ProjectLanguages &languages);
 		const PotentialTypes &potentialTypes() const {return m_potential_types;}
 		void setPotentialTypes(const PotentialTypes &potential_types);
+			/// The type @p wire takes from the source terminals of its
+			/// potential, in the mode that draws from them; empty otherwise
+		QString derivedPotentialType(const QUuid &wire);
+			/// Work the types from the sources out again once control
+			/// returns, or at the next derivedPotentialType(): after an
+			/// edit, a new list or mode, or opening. Nothing in other modes.
+		void scheduleDerivedPotentialTypes();
 		QStringList translatableTexts();
 		bool chainedReports() const;
 		void setChainedReports(bool enable);
@@ -655,6 +662,10 @@ class QETProject : public QObject
 		ProjectLanguages m_languages;
 			/// The potential types and whether conductors are drawn from them
 		PotentialTypes m_potential_types;
+			/// The types wires take from the sources, see derivedPotentialType()
+		QHash<QUuid, QString> m_derived_potential_types;
+		bool m_derived_potential_types_due = false;
+		void refreshDerivedPotentialTypes();
 		bool m_chained_reports = false;
 		bool m_has_chained_reports_attribute = false;
 		bool m_pending_auto_link = false;

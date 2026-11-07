@@ -51,13 +51,20 @@ PotentialTypesWidget::PotentialTypesWidget(QWidget *parent) :
 	m_mode_cb->addItem(tr("Draw conductors from their own style"), static_cast<int>(PotentialTypes::Mode::Off));
 	m_mode_cb->addItem(tr("Draw conductors from their potential type, chosen on each conductor"),
 					   static_cast<int>(PotentialTypes::Mode::PerWire));
+	m_mode_cb->addItem(tr("Draw conductors from their potential type, set on the source terminal"),
+					   static_cast<int>(PotentialTypes::Mode::AtSource));
 	m_mode_cb->setToolTip(tr("When a type is used, a conductor whose potential has a type is "
 							 "drawn in that type's colour, line style and width. The style "
 							 "stored on the conductor is kept, and used again when this is "
 							 "off or the conductor has no type."));
 
 	QLabel *help = new QLabel(tr("Choose a conductor's type in its properties. The type applies "
-								 "to every conductor on the same potential."), this);
+								 "to every conductor on the same potential. With the source "
+								 "terminal, set the type on a terminal of a symbol (the output of "
+								 "a power supply, for example) in the symbol's "
+								 "properties: it reaches the conductors through terminal blocks "
+								 "and folio reports, not through other devices. A type chosen "
+								 "on a conductor still wins."), this);
 	help->setWordWrap(true);
 
 	m_table = new QTableWidget(0, 4, this);
@@ -147,16 +154,8 @@ PotentialTypesWidget::PotentialTypesWidget(QWidget *parent) :
 
 void PotentialTypesWidget::setPotentialTypes(const PotentialTypes &types)
 {
-		//A mode this version offers no choice for (the source mode is
-		//stored, but nothing derives it yet) stays as it is until the
-		//user picks another
-	const int mode = static_cast<int>(types.mode());
-	int index = m_mode_cb->findData(mode);
-	if (index < 0) {
-		m_mode_cb->addItem(tr("Set where the potential starts (not available in this version)"), mode);
-		index = m_mode_cb->count() - 1;
-	}
-	m_mode_cb->setCurrentIndex(index);
+		//Every mode is offered (one this QET does not know reads as Off)
+	m_mode_cb->setCurrentIndex(qMax(0, m_mode_cb->findData(static_cast<int>(types.mode()))));
 	setTypes(types.types());
 	setBonds(types.bonds());
 }

@@ -455,6 +455,8 @@ void QETProject::init()
 		//An edit may give a folio shown partners not built
 	connect(m_undo_stack, &QUndoStack::indexChanged, this, [this]() {m_folios_shown.clear();});
 	connect(m_undo_stack, &QUndoStack::cleanChanged, this, &QETProject::undoStackChanged);
+		//An edit can change which wires a source reaches
+	connect(m_undo_stack, &QUndoStack::indexChanged, this, &QETProject::scheduleDerivedPotentialTypes);
 
 		//What counts as a change for writeBackup(): the undo stack moving,
 		//setModified(true), and the embedded collections, which can change
@@ -4134,6 +4136,10 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	m_data_base.setUpdateBlocked(false);
 	m_data_base.updateDB(xml_project);
 	m_data_base.endPrefill(unloadedFolioCount() > 0);
+		//The types wires take from the sources, once the database holds
+		//the whole project: worked out earlier, during the load's event
+		//processing, they would come from half-filled tables
+	scheduleDerivedPotentialTypes();
 		//The link rows now hold the partners on folios not built: a
 		//symbol keeps no list of its own (QETZ-DB-FIRST stage 2a-3)
 	for (Diagram *diagram : builtFolios())
@@ -5181,6 +5187,57 @@ void QETProject::setPotentialTypes(const PotentialTypes &potential_types)
 	for (Diagram *diagram : folios()) {
 		diagram->update();
 	}
+	scheduleDerivedPotentialTypes();
+}
+
+QString QETProject::derivedPotentialType(const QUuid &wire)
+{
+	if (m_potential_types.mode() != PotentialTypes::Mode::AtSource)
+		return QString();
+	if (m_derived_potential_types_due)
+		refreshDerivedPotentialTypes();
+	return m_derived_potential_types.value(wire);
+}
+
+void QETProject::scheduleDerivedPotentialTypes()
+{
+	if (m_potential_types.mode() != PotentialTypes::Mode::AtSource) {
+		if (!m_derived_potential_types.isEmpty()) {
+			m_derived_potential_types.clear();
+			for (Diagram *diagram : folios())
+				diagram->update();
+		}
+		m_derived_potential_types_due = false;
+		return;
+	}
+	if (m_derived_potential_types_due)
+		return;
+	m_derived_potential_types_due = true;
+		//Several edits in a row (a paste, a script) are worked out once
+	QTimer::singleShot(0, this, [this]() {
+		if (m_derived_potential_types_due)
+			refreshDerivedPotentialTypes();
+	});
+}
+
+/**
+	@brief QETProject::refreshDerivedPotentialTypes
+	One pass over the project database (projectDataBase::derivedPotentialTypes()),
+	never over the folios; the folios built are drawn again only when a
+	wire's derived type changed.
+*/
+void QETProject::refreshDerivedPotentialTypes()
+{
+	m_derived_potential_types_due = false;
+	if (m_potential_types.mode() != PotentialTypes::Mode::AtSource)
+		return;
+	QHash<QUuid, QString> derived = m_data_base.derivedPotentialTypes().type_of;
+	if (derived == m_derived_potential_types)
+		return;
+	m_derived_potential_types.swap(derived);
+	for (Diagram *diagram : folios())
+		if (diagram->isLoaded())
+			diagram->update();
 }
 
 /**

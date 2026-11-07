@@ -52,6 +52,7 @@ class Element : public QetGraphicsItem
 	Q_OBJECT
 	Q_PROPERTY(bool horizontalMirror READ hasHorizontalMirror WRITE setHorizontalMirror NOTIFY mirrorChanged)
 	Q_PROPERTY(bool verticalMirror READ hasVerticalMirror WRITE setVerticalMirror NOTIFY mirrorChanged)
+	Q_PROPERTY(QVariantMap potentialSources READ potentialSourcesMap WRITE setPotentialSourcesMap)
 
 	public:
 			/**
@@ -163,6 +164,15 @@ class Element : public QetGraphicsItem
 			/// What this symbol saves that no other table holds, in an
 			/// <element> made in @p document, from its own members
 		QDomElement ownValuesXml(QDomDocument &document) const;
+			/// The potential types set on terminals of this placed symbol,
+			/// for a project that takes them from where the potential
+			/// starts (PotentialTypes::Mode::AtSource): Terminal::stableUuid()
+			/// to type name. Saved in the project, never in the definition.
+		QHash<QUuid, QString> potentialSources() const {return m_potential_sources;}
+		void setPotentialSources(const QHash<QUuid, QString> &sources);
+			/// The same, keyed by the uuid as text, for QPropertyUndoCommand
+		QVariantMap potentialSourcesMap() const;
+		void setPotentialSourcesMap(const QVariantMap &sources);
 		void setMovable(bool movable) override;
 		//@kind_information_ is used to store more information
 		//about the herited class like contactelement for know
@@ -392,6 +402,7 @@ class Element : public QetGraphicsItem
 		DiagramContext m_kind_informations;
 		autonum::sequentialNumbers m_autoNum_seq;
 		bool m_freeze_label = false;
+		QHash<QUuid, QString> m_potential_sources;
 		QString m_F_str;
 
 	ElementsLocation m_location;

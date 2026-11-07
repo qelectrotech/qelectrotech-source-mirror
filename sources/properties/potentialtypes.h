@@ -71,10 +71,12 @@ class PotentialTypes
 	public:
 			/// How a conductor gets the type it is drawn from. Off: never.
 			/// PerWire: the type chosen on the conductor, spread over its
-			/// potential. AtSource: the type set where the potential starts,
-			/// inherited through the devices; needs the internal connections
-			/// of #1500, so until then it draws as PerWire and nothing offers
-			/// it. A mode this QET does not know reads as Off.
+			/// potential. AtSource: also the type set on a source terminal
+			/// of a placed symbol (Element::potentialSources()), spread over
+			/// its potential, a conductor's own type winning. It crosses
+			/// terminal blocks and folio reports; crossing other devices
+			/// needs their internal connections (#1500). A mode this QET
+			/// does not know reads as Off.
 		enum class Mode {Off, PerWire, AtSource};
 		Mode mode() const {return m_mode;}
 			/// Choosing a mode drops a mode name kept from a newer QET

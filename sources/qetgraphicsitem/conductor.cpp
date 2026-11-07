@@ -2458,18 +2458,22 @@ QColor Conductor::drawnColor() const
 	The format the project gives the potential of this conductor.
 	@param type : receives the type when there is one
 	@return true when the project draws its conductors from potential
-	types, and this conductor's type is one of them. False leaves the
-	conductor drawn from its own stored style.
+	types, and this conductor's type is one of them: its own, or, in the
+	mode that takes types from where the potential starts and when it has
+	none of its own, the one its potential takes from a source terminal.
+	False leaves the conductor drawn from its own stored style.
 */
 bool Conductor::potentialTypeFormat(PotentialType *type) const
 {
-	if (m_properties.m_potential_type.isEmpty())
-		return false;
 	const Diagram *parent_diagram = diagram();
-	const QETProject *project = parent_diagram ? parent_diagram->project() : nullptr;
+	QETProject *project = parent_diagram ? parent_diagram->project() : nullptr;
 	if (!project || !project->potentialTypes().isEnabled())
 		return false;
-	return project->potentialTypes().find(m_properties.m_potential_type, type);
+	if (!m_properties.m_potential_type.isEmpty())
+		return project->potentialTypes().find(m_properties.m_potential_type, type);
+	if (project->potentialTypes().mode() != PotentialTypes::Mode::AtSource)
+		return false;
+	return project->potentialTypes().find(project->derivedPotentialType(uuid()), type);
 }
 
 /**

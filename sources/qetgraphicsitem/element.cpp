@@ -1526,6 +1526,15 @@ bool Element::fromXml(QDomElement &e,
 		}
 	}
 
+		//The potential types set on its terminals (PotentialTypes::Mode::AtSource)
+	m_potential_sources.clear();
+	for (const QDomElement &source : QETXML::subChild(e, QStringLiteral("potentialSources"), QStringLiteral("source"))) {
+		const QUuid terminal(source.attribute(QStringLiteral("terminal")));
+		const QString type = source.attribute(QStringLiteral("type"));
+		if (!terminal.isNull() && !type.isEmpty())
+			m_potential_sources.insert(terminal, type);
+	}
+
 		//Load PLC master data override from diagram XML
 	if (m_data.m_type == ElementData::Master &&
 		m_data.m_master_type == ElementData::PLC)
@@ -2559,6 +2568,33 @@ void Element::appendDataXml(QDomDocument &document, QDomElement &element) const
 		element.appendChild(properties);
 	}
 
+		//The potential types set on its terminals, in terminal order, then
+		//any whose terminal the definition no longer has, kept as read.
+		//Written only when there is one, so a symbol without saves as before
+	if (!m_potential_sources.isEmpty())
+	{
+		QDomElement sources = document.createElement(QStringLiteral("potentialSources"));
+		QHash<QUuid, QString> left = m_potential_sources;
+		const auto write = [&](const QUuid &terminal, const QString &type) {
+			QDomElement source = document.createElement(QStringLiteral("source"));
+			source.setAttribute(QStringLiteral("terminal"), terminal.toString());
+			source.setAttribute(QStringLiteral("type"), type);
+			sources.appendChild(source);
+		};
+		for (const Terminal *terminal : terminals()) {
+			const QUuid uuid = terminal->stableUuid();
+			const auto found = left.constFind(uuid);
+			if (found == left.constEnd()) continue;
+			write(uuid, found.value());
+			left.remove(uuid);
+		}
+		QList<QUuid> rest = left.keys();
+		std::sort(rest.begin(), rest.end(), [](const QUuid &a, const QUuid &b) {return a.toString() < b.toString();});
+		for (const QUuid &uuid : std::as_const(rest))
+			write(uuid, left.value(uuid));
+		element.appendChild(sources);
+	}
+
 		//Save PLC master data override for elements on diagram
 	if (m_data.m_type == ElementData::Master &&
 		m_data.m_master_type == ElementData::PLC)
@@ -2593,6 +2629,43 @@ QDomElement Element::ownValuesXml(QDomDocument &document) const
 	element.setAttribute(QStringLiteral("is_movable"), bool(is_movable_));
 	appendDataXml(document, element);
 	return element;
+}
+
+/**
+	@brief Element::setPotentialSources
+	Set the potential types of this symbol's terminals, keyed by
+	Terminal::stableUuid(); an empty type name is no type. The project
+	database learns it with the symbol's other values, and a project that
+	takes its types from the sources works them out again.
+*/
+void Element::setPotentialSources(const QHash<QUuid, QString> &sources)
+{
+	QHash<QUuid, QString> clean;
+	for (auto it = sources.constBegin() ; it != sources.constEnd() ; ++it)
+		if (!it.key().isNull() && !it.value().isEmpty())
+			clean.insert(it.key(), it.value());
+	if (clean == m_potential_sources)
+		return;
+	m_potential_sources = clean;
+	scheduleTextsStore();
+	if (diagram() && diagram()->project())
+		diagram()->project()->scheduleDerivedPotentialTypes();
+}
+
+QVariantMap Element::potentialSourcesMap() const
+{
+	QVariantMap map;
+	for (auto it = m_potential_sources.constBegin() ; it != m_potential_sources.constEnd() ; ++it)
+		map.insert(it.key().toString(), it.value());
+	return map;
+}
+
+void Element::setPotentialSourcesMap(const QVariantMap &sources)
+{
+	QHash<QUuid, QString> hash;
+	for (auto it = sources.constBegin() ; it != sources.constEnd() ; ++it)
+		hash.insert(QUuid(it.key()), it.value().toString());
+	setPotentialSources(hash);
 }
 
 /**

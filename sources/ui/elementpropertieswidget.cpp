@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementpropertieswidget.h"
+#include "potentialsourceswidget.h"
 
 #include <diagram.h>
 #include <diagramposition.h>
@@ -373,6 +374,9 @@ void ElementPropertiesWidget::updateUi()
 		default:
 			break;
 	}
+		//The types its terminals give, in a project that takes them there
+	if (PotentialSourcesWidget::isWanted(m_element))
+		m_list_editor << new PotentialSourcesWidget(m_element, this);
 	m_list_editor << new DynamicElementTextItemEditor(m_element, this);
 
 		//Add each editors in tab widget

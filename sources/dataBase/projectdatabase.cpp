@@ -1965,9 +1965,16 @@ projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
 	data that could disagree with the drawing. Run on request only, never on
 	a load, an edit or a paint.
 */
-bool projectDataBase::refreshPotentialMembersOf(QSqlDatabase db)
+bool projectDataBase::refreshPotentialMembersOf(QSqlDatabase db, QHash<int, QStringList> *conflicts)
 {
 	const PotentialGroups groups = potentialGroupsOf(db);
+		//Types from the source terminals count only in the mode that
+		//draws from them: in the others they are kept, never applied
+	DerivedPotentialTypes derived;
+	if (potentialModeOf(db) == PotentialTypes::Mode::AtSource)
+		derived = derivedPotentialTypesOf(db, groups);
+	if (conflicts)
+		*conflicts = derived.conflicts;
 
 	QSqlQuery query(db);
 	bool ok = true;
@@ -1980,26 +1987,32 @@ bool projectDataBase::refreshPotentialMembersOf(QSqlDatabase db)
 	run(QStringLiteral("CREATE TEMP TABLE IF NOT EXISTS potential_member ("
 					   "wire_uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
 					   "potential_id INTEGER NOT NULL, "
-					   "is_unknown INTEGER NOT NULL)"));
+					   "is_unknown INTEGER NOT NULL, "
+					   "derived_type TEXT)"));
 		//Made again each time, so an old definition never outlives a change
 	run(QStringLiteral("DROP VIEW IF EXISTS temp.wire_potential_view"));
 	run(QStringLiteral(
 		"CREATE TEMP VIEW wire_potential_view AS SELECT "
 		"c.uuid AS wire_uuid, m.potential_id AS potential_id, "
 		"COALESCE(m.is_unknown, 0) AS is_unknown, "
-		"NULLIF(p.value, '') AS potential_type, "
-		"CASE WHEN NULLIF(p.value, '') IS NULL THEN NULL ELSE 'wire' END AS source "
+			//A wire's own type wins over the one it takes from a source
+		"COALESCE(NULLIF(p.value, ''), m.derived_type) AS potential_type, "
+		"CASE WHEN NULLIF(p.value, '') IS NOT NULL THEN 'wire' "
+		"WHEN m.derived_type IS NOT NULL THEN 'source' END AS source "
 		"FROM main.conductor c "
 		"LEFT JOIN temp.potential_member m ON m.wire_uuid = c.uuid "
 		"LEFT JOIN main.conductor_properties p ON p.conductor_uuid = c.uuid AND p.name = 'potential_type'"));
 	const bool own_transaction = db.transaction();
 	run(QStringLiteral("DELETE FROM temp.potential_member"));
-	query.prepare(QStringLiteral("INSERT INTO temp.potential_member (wire_uuid, potential_id, is_unknown) "
-								 "VALUES (:wire, :potential, :unknown)"));
+	query.prepare(QStringLiteral("INSERT INTO temp.potential_member (wire_uuid, potential_id, is_unknown, derived_type) "
+								 "VALUES (:wire, :potential, :unknown, :derived)"));
 	for (auto it = groups.group_of.constBegin() ; it != groups.group_of.constEnd() ; ++it) {
 		query.bindValue(QStringLiteral(":wire"), it.key().toString());
 		query.bindValue(QStringLiteral(":potential"), it.value());
 		query.bindValue(QStringLiteral(":unknown"), groups.unknown.contains(it.value()) ? 1 : 0);
+		const auto type = derived.type_of.constFind(it.key());
+		query.bindValue(QStringLiteral(":derived"), type == derived.type_of.constEnd()
+						? QVariant(QMetaType(QMetaType::QString)) : QVariant(type.value()));
 		if (!query.exec()) {
 			qDebug() << "projectDataBase::refreshPotentialMembersOf insert" << query.lastError();
 			ok = false;
@@ -2020,6 +2033,113 @@ void projectDataBase::refreshPotentialMembers()
 }
 
 /**
+	@brief projectDataBase::potentialModeOf
+	@return the mode of the project whose project_setting rows @p db holds:
+	the <potentialtypes> element's mode, or, for a file saved before the
+	modes, its enabled flag (the per-wire mode). Off when there is none.
+*/
+PotentialTypes::Mode projectDataBase::potentialModeOf(const QSqlDatabase &db)
+{
+	QSqlQuery query(db);
+	query.exec(QStringLiteral("SELECT name, value FROM project_setting "
+							  "WHERE section = 'potentialtypes' AND name IN ('mode', 'enabled')"));
+	QString mode, enabled;
+	while (query.next())
+		(query.value(0).toString() == QLatin1String("mode") ? mode : enabled) = query.value(1).toString();
+	if (!mode.isNull())
+		return PotentialTypes::modeFromName(mode);
+	return enabled.toInt() != 0 ? PotentialTypes::Mode::PerWire : PotentialTypes::Mode::Off;
+}
+
+/**
+	@brief projectDataBase::derivedPotentialTypesOf
+	The types wires take from the source terminals declared on placed
+	symbols (the element_value rows of section potentialSources/source, as
+	Element::appendDataXml() writes them), spread over each potential of
+	@p groups. A potential whose sources all name one type gives it to each
+	of its wires; one whose sources name more is a conflict and gives none.
+	A potential whose extent is unknown gives none either: a terminal block
+	that isolates its terminals may split it, so a type there would be a
+	guess. Reads @p db only, so a .qetdb gives the project's answer.
+*/
+projectDataBase::DerivedPotentialTypes projectDataBase::derivedPotentialTypesOf(
+		const QSqlDatabase &db, const PotentialGroups &groups)
+{
+	DerivedPotentialTypes derived;
+
+		//element uuid, ord -> terminal, type
+	QHash<std::pair<QUuid, int>, std::pair<QUuid, QString>> sources;
+	{
+		QSqlQuery query(db);
+		query.setForwardOnly(true);
+		query.exec(QStringLiteral("SELECT element_uuid, ord, name, value FROM element_value "
+								  "WHERE section = 'potentialSources/source'"));
+		while (query.next()) {
+			auto &source = sources[{QUuid(query.value(0).toString()), query.value(1).toInt()}];
+			if (query.value(2).toString() == QLatin1String("terminal"))
+				source.first = QUuid(query.value(3).toString());
+			else if (query.value(2).toString() == QLatin1String("type"))
+				source.second = query.value(3).toString();
+		}
+	}
+	if (sources.isEmpty())
+		return derived;
+
+		//The potential at each declared terminal: that of a wire ending there
+	QHash<std::pair<QUuid, QUuid>, int> potential_at;
+	for (auto it = sources.constBegin() ; it != sources.constEnd() ; ++it)
+		potential_at.insert({it.key().first, it.value().first}, -1);
+	{
+		QSqlQuery query(db);
+		query.setForwardOnly(true);
+		query.exec(QStringLiteral("SELECT uuid, terminal1_element_uuid, terminal1_uuid, "
+								  "terminal2_element_uuid, terminal2_uuid FROM conductor"));
+		while (query.next()) {
+			const int potential = groups.group_of.value(QUuid(query.value(0).toString()), -1);
+			if (potential < 0) continue;
+			for (int end : {1, 3}) {
+				const auto at = potential_at.find({QUuid(query.value(end).toString()),
+												   QUuid(query.value(end + 1).toString())});
+				if (at != potential_at.end()) at.value() = potential;
+			}
+		}
+	}
+
+	QHash<int, QStringList> types_of;
+	for (auto it = sources.constBegin() ; it != sources.constEnd() ; ++it) {
+		if (it.value().first.isNull() || it.value().second.isEmpty()) continue;
+		const int potential = potential_at.value({it.key().first, it.value().first}, -1);
+		if (potential < 0 || groups.unknown.contains(potential)) continue;
+		QStringList &types = types_of[potential];
+		if (!types.contains(it.value().second)) types << it.value().second;
+	}
+	for (auto it = types_of.begin() ; it != types_of.end() ; ++it)
+		if (it.value().size() > 1) {
+			std::sort(it.value().begin(), it.value().end());
+			derived.conflicts.insert(it.key(), it.value());
+		}
+	for (auto it = groups.group_of.constBegin() ; it != groups.group_of.constEnd() ; ++it) {
+		const auto types = types_of.constFind(it.value());
+		if (types != types_of.constEnd() && types.value().size() == 1)
+			derived.type_of.insert(it.key(), types.value().first());
+	}
+	return derived;
+}
+
+/**
+	@brief projectDataBase::derivedPotentialTypes
+	derivedPotentialTypesOf() on this project's tables, with what the
+	project still holds back written first. Whatever the mode: the caller
+	decides whether the types apply.
+*/
+projectDataBase::DerivedPotentialTypes projectDataBase::derivedPotentialTypes()
+{
+	flushLinks();
+	flushElementTexts();
+	return derivedPotentialTypesOf(m_data_base, potentialGroupsOf(m_data_base));
+}
+
+/**
 	@brief projectDataBase::potentialTypeMismatches
 	The potentials that reach more than one potential type, read from
 	wire_potential_view after refreshPotentialMembers(). A potential whose
@@ -2030,7 +2150,8 @@ void projectDataBase::refreshPotentialMembers()
 QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatchesOf(QSqlDatabase db, bool *ok)
 {
 	QList<PotentialMismatch> mismatches;
-	const bool refreshed = refreshPotentialMembersOf(db);
+	QHash<int, QStringList> conflicts;
+	const bool refreshed = refreshPotentialMembersOf(db, &conflicts);
 	if (ok) *ok = refreshed;
 	if (!refreshed)
 		return mismatches;
@@ -2054,6 +2175,33 @@ QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatch
 		if (!mismatches.last().types.contains(type))
 			mismatches.last().types << type;
 		mismatches.last().wires << QUuid(read.value(2).toString());
+	}
+
+		//Sources of different types on one potential: none of them is
+		//drawn, so the potential is reported with all of its wires
+	if (!conflicts.isEmpty()) {
+		QHash<int, QList<QUuid>> wires_of;
+		QSqlQuery members(db);
+		members.exec(QStringLiteral("SELECT potential_id, wire_uuid FROM temp.potential_member "
+									"ORDER BY potential_id, wire_uuid"));
+		while (members.next())
+			if (conflicts.contains(members.value(0).toInt()))
+				wires_of[members.value(0).toInt()] << QUuid(members.value(1).toString());
+		for (auto it = conflicts.constBegin() ; it != conflicts.constEnd() ; ++it) {
+			auto found = std::find_if(mismatches.begin(), mismatches.end(),
+									  [&it](const PotentialMismatch &m) {return m.potential == it.key();});
+			if (found == mismatches.end()) {
+				PotentialMismatch mismatch;
+				mismatch.potential = it.key();
+				found = mismatches.insert(mismatches.end(), mismatch);
+			}
+			for (const QString &type : it.value())
+				if (!found->types.contains(type)) found->types << type;
+			std::sort(found->types.begin(), found->types.end());
+			found->wires = wires_of.value(it.key());
+		}
+		std::sort(mismatches.begin(), mismatches.end(),
+				  [](const PotentialMismatch &a, const PotentialMismatch &b) {return a.potential < b.potential;});
 	}
 
 		//A potential whose types are all joined on purpose, pair by pair
@@ -2135,6 +2283,8 @@ QList<PotentialBond> projectDataBase::potentialBondsOf(const QSqlDatabase &db)
 
 QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatches()
 {
+	flushLinks();
+	flushElementTexts();
 	flushConductorProperties();
 	return potentialTypeMismatchesOf(m_data_base);
 }
@@ -6009,7 +6159,8 @@ void projectDataBase::forgetElementTexts(const QUuid &element)
 	@return the rows of what the saved symbol @p element holds that no
 	other table does: its frozen label, whether it moves and its prefix, as
 	Element::fromXml() reads them (a file that leaves one out gives the
-	value it is read as), then its <properties> and <plcMasterData>
+	value it is read as), then its <properties>, <plcMasterData>,
+	<xrefDisplay> and <potentialSources>
 */
 QList<projectDataBase::ProjectSetting> projectDataBase::elementValueRowsOf(const QDomElement &element)
 {
@@ -6023,7 +6174,7 @@ QList<projectDataBase::ProjectSetting> projectDataBase::elementValueRowsOf(const
 				 QString::number(int(bool(element.attribute(QStringLiteral("is_movable"), QStringLiteral("1")).toInt())))});
 	rows.append({section, 0, QStringLiteral("prefix"), element.attribute(QStringLiteral("prefix"))});
 	for (const QString &tag : {QStringLiteral("properties"), QStringLiteral("plcMasterData"),
-							   QStringLiteral("xrefDisplay")}) {
+							   QStringLiteral("xrefDisplay"), QStringLiteral("potentialSources")}) {
 		const QDomElement child = element.firstChildElement(tag);
 		if (!child.isNull())
 			xmlRows(child, tag, 0, rows);
