@@ -371,6 +371,8 @@ TitleBlockProperties BorderTitleBlock::localTitleBlock() const
 	ip.filename = btb_filename_;
 	ip.plant = btb_plant_;
 	ip.locmach = btb_locmach_;
+	ip.folio_group = btb_folio_group_;
+	ip.folio_subgroup = btb_folio_subgroup_;
 	ip.indexrev = btb_indexrev_;
 	ip.version = btb_version_;
 	ip.folio = btb_folio_;
@@ -505,6 +507,8 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip)
 	btb_filename_ = ip.filename;
 	btb_plant_ = ip.plant;
 	btb_locmach_ = ip.locmach;
+	btb_folio_group_ = ip.folio_group;
+	btb_folio_subgroup_ = ip.folio_subgroup;
 	btb_indexrev_ = ip.indexrev;
 	btb_version_ = QetVersion::displayedVersion();
 	btb_auto_page_num_ = ip.auto_page_num;
@@ -1213,6 +1217,9 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 	context.addValue("filename",    tb.filename);
 	context.addValue("plant",     tb.plant);
 	context.addValue("locmach",     tb.locmach);
+		//The group a folio is in: its own, else its plant / location
+	context.addValue("folio_group",    tb.resolvedFolioGroup());
+	context.addValue("folio_subgroup", tb.resolvedFolioSubgroup());
 	context.addValue("indexrev",    tb.indexrev);
 	context.addValue("version",     tb.version);
 	context.addValue("folio",       btb_final_folio_);

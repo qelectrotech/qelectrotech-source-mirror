@@ -33,6 +33,8 @@ QStringList QETInformation::titleblockInfoKeys()
 							  DIA_FILENAME,
 							  DIA_PLANT,
 							  DIA_LOCMACH,
+							  DIA_FOLIO_GROUP,
+							  DIA_FOLIO_SUBGROUP,
 							  DIA_INDEX_REV,
 							  QET_VERSION,
 							  DIA_FOLIO,
@@ -360,6 +362,8 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == DIA_FILENAME)                     return QObject::tr("File");
 	else if (info == DIA_PLANT)                        return QObject::tr("Plant (=)");
 	else if (info == DIA_LOCMACH)                      return QObject::tr("Location (+)");
+	else if (info == DIA_FOLIO_GROUP)                  return QObject::tr("Folio group");
+	else if (info == DIA_FOLIO_SUBGROUP)               return QObject::tr("Folio sub-group");
 	else if (info == DIA_INDEX_REV)                    return QObject::tr("Revision index");
 	else if (info == DIA_POS)                          return QObject::tr("Position");
 	else if (info == QET_VERSION)                      return QObject::tr("Version of QElectroTech");
