@@ -198,6 +198,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/duplicatelabels.cpp
   ${QET_DIR}/sources/ui/duplicatelabelsdialog.h
   ${QET_DIR}/sources/ui/duplicatelabelsdialog.cpp
+  ${QET_DIR}/sources/ui/reportsdialog.h
+  ${QET_DIR}/sources/ui/reportsdialog.cpp
+  ${QET_DIR}/sources/reports/projectreports.h
+  ${QET_DIR}/sources/reports/projectreports.cpp
   ${QET_DIR}/sources/ui/devicetypecheckdialog.h
   ${QET_DIR}/sources/ui/devicetypeeditor.h
   ${QET_DIR}/sources/ui/devicetypeeditor.cpp
