@@ -3729,7 +3729,7 @@ namespace {
 /**
 	@brief sameDefinition
 	@return true if @p a and @p b describe the same element: same tags,
-	attributes and texts. The uuids of the terminals are left out: an
+	attributes and texts, whatever the indentation and comments. The uuids of the terminals are left out: an
 	embedded element gets missing ones filled in, and keeps its own when it
 	is replaced (see TerminalUuids).
 */
@@ -3756,10 +3756,20 @@ bool sameDefinition(const QDomElement &a, const QDomElement &b)
 		}
 	}
 
-	QDomNode a_child = a.firstChild();
-	QDomNode b_child = b.firstChild();
+		//The indentation between tags is no part of the element: a copy
+		//embedded in a project keeps it as text, the file it came from
+		//may not, or be indented otherwise
+	const auto significant = [](QDomNode node) {
+		while (!node.isNull()
+			   && (node.isComment()
+				   || (node.isText() && node.nodeValue().trimmed().isEmpty())))
+			node = node.nextSibling();
+		return node;
+	};
+	QDomNode a_child = significant(a.firstChild());
+	QDomNode b_child = significant(b.firstChild());
 	for ( ; !a_child.isNull() && !b_child.isNull() ;
-		  a_child = a_child.nextSibling(), b_child = b_child.nextSibling())
+		  a_child = significant(a_child.nextSibling()), b_child = significant(b_child.nextSibling()))
 	{
 		if (a_child.nodeType() != b_child.nodeType()) return false;
 		if (a_child.isElement()) {
