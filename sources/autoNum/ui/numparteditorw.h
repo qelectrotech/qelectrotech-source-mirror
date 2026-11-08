@@ -51,6 +51,7 @@ class NumPartEditorW : public QWidget
 				   string,idfolio,folio,plant,locmach,
 				   elementline,elementcolumn,elementprefix,
 				   wrap,
+				   unitplant,
 				  };
 		NumerotationContext toNumContext();
 		bool isValid ();

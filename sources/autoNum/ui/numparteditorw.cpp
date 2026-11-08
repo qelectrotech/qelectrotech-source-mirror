@@ -70,6 +70,8 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 		QStringList strl = context.itemAt(i);
 		if (strl.at(0)=="unit")
 			setType(NumPartEditorW::unit, true);
+		else if (strl.at(0)=="unitplant")
+			setType(NumPartEditorW::unitplant, true);
 		else if (strl.at(0)=="unitfolio")
 			setType(NumPartEditorW::unitfolio, true);
 		else if (strl.at(0)=="ten")
@@ -110,6 +112,7 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 			//writing that back as the start would make every folio
 			//begin at the last number the previous numbering gave out
 		if ((strl.at(0)==QLatin1String("unitfolio")
+			 || strl.at(0)==QLatin1String("unitplant")
 			 || strl.at(0)==QLatin1String("tenfolio")
 			 || strl.at(0)==QLatin1String("hundredfolio"))
 			 && strl.size() > 3 && !strl.at(3).isEmpty()) {
@@ -148,7 +151,12 @@ void NumPartEditorW::setVisibleItems()
 			//none of the ones an element has and a cable has not (its
 			//line, its column, its prefix).
 		items	<< tr("number format 1")
-			<< tr("number format 1 - Sheet")
+			<< tr("number format 1 - Sheet");
+			//A wire number counted per plant (=), as projects numbered
+			//per installation do: conductors only
+		if (m_edited_type == 1)
+			items << tr("number format 1 - Plant");
+		items
 			<< tr("number format 01")
 			<< tr("number format 01 - Sheet")
 			<< tr("number format 001")
@@ -196,6 +204,9 @@ NumerotationContext NumPartEditorW::toNumContext()
 		case unitfolio:
 			type_str = "unitfolio";
 			break;
+		case unitplant:
+			type_str = "unitplant";
+			break;
 		case ten:
 			type_str = "ten";
 			break;
@@ -241,6 +252,7 @@ NumerotationContext NumPartEditorW::toNumContext()
 	}
 	const QString number_format = ui -> format_le -> text();
 	if (type_str == "unitfolio"
+			|| type_str == "unitplant"
 			|| type_str == "tenfolio"
 			|| type_str == "hundredfolio")
 		nc.addValue(type_str,
@@ -293,6 +305,8 @@ void NumPartEditorW::on_type_cb_activated(int) {
 		setType(unit);
 	else if (ui->type_cb->currentText() == tr("number format 1 - Sheet"))
 		setType(unitfolio);
+	else if (ui->type_cb->currentText() == tr("number format 1 - Plant"))
+		setType(unitplant);
 	else if (ui->type_cb->currentText() ==  tr("number format 01"))
 		setType(ten);
 	else if (ui->type_cb->currentText() == tr("number format 01 - Sheet"))
@@ -376,6 +390,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 			(
 				(t==unit
 				 || t==unitfolio
+				 || t==unitplant
 				 || t==ten
 				 || t==tenfolio
 				 || t==hundred
@@ -464,7 +479,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 		ui -> modulus_spinBox -> setValue(8);
 	ui -> modulus_spinBox -> setEnabled(t == wrap);
 		//A padding mask only means anything for a part rendered as a number.
-	const bool numeric = (t == unit || t == unitfolio || t == ten
+	const bool numeric = (t == unit || t == unitfolio || t == unitplant || t == ten
 			      || t == tenfolio || t == hundred || t == hundredfolio
 			      || t == wrap);
 	ui -> format_le -> setEnabled(numeric);
@@ -484,6 +499,8 @@ void NumPartEditorW::setCurrentIndex(NumPartEditorW::type t) {
 		i = ui->type_cb->findText(tr("number format 1"));
 	else if (t == unitfolio)
 		i = ui->type_cb->findText(tr("number format 1 - Sheet"));
+	else if (t == unitplant)
+		i = ui->type_cb->findText(tr("number format 1 - Plant"));
 	else if (t == ten)
 		i = ui->type_cb->findText(tr("number format 01"));
 	else if (t == tenfolio)

@@ -553,7 +553,11 @@ namespace autonum
 	{
 		for (int i = 0; i < context.size(); i++)
 		{
-			if (context.itemAt(i).at(0) == type)
+				//A plant counter is numbered like a unit, under the
+				//same %sequ_ placeholders, in the order of the parts
+			if (context.itemAt(i).at(0) == type
+					|| (type == QLatin1String("unit")
+						&& context.itemAt(i).at(0) == QLatin1String("unitplant")))
 			{
 				const QStringList item = context.itemAt(i);
 					//A zero-padding mask, spreadsheet style: its length is the
@@ -812,6 +816,77 @@ namespace autonum
 	}
 
 	/**
+		@brief plantCounters
+		@param nc the conductor numbering rule, its counters as they are
+		@param project the project which keeps the plant counters
+		@param plant the plant (=) of the folio being numbered
+		@param scheme the numbering's name
+		@return @p nc with its plant counters ("unitplant" parts) set to
+		where @p plant has got to under @p scheme -- the numbers it has
+		been given, plus one step -- or to where the rule starts when it
+		has been given none yet. Other parts are left as they are: a plant
+		counter numbers each plant on its own, as projects numbered per
+		installation do, while a unit counts over the whole project.
+	*/
+	NumerotationContext plantCounters(const NumerotationContext &nc,
+					  QETProject *project,
+					  const QString &plant,
+					  const QString &scheme)
+	{
+		NumerotationContext out = nc;
+		if (!project) {
+			return out;
+		}
+		const QStringList given = project->conductorPlantCounter(scheme, plant);
+		int index = 0;
+		for (int i = 0 ; i < out.size() ; ++i)
+		{
+			const QStringList parts = out.itemAt(i);
+			if (parts.isEmpty() || parts.at(0) != QLatin1String("unitplant")) {
+				continue;
+			}
+			const bool has_start = parts.size() > 3
+					&& !parts.at(3).isEmpty();
+			const int start = has_start ? parts.at(3).toInt() : 1;
+			const int increase = parts.size() > 2
+					&& !parts.at(2).isEmpty()
+					? std::max(1, parts.at(2).toInt()) : 1;
+			const int value = index < given.size()
+					? given.at(index).toInt() + increase
+					: start;
+			++index;
+			out.replaceValue(i, QString::number(value));
+		}
+		return out;
+	}
+
+	/**
+		@brief storePlantCounters
+		Keep the values the plant counters of @p given (the rule a conductor
+		was just numbered with) gave in @p plant, for the next conductor
+		there. Nothing is kept for a rule without plant counters.
+	*/
+	void storePlantCounters(QETProject *project, const QString &plant,
+				const QString &scheme,
+				const NumerotationContext &given)
+	{
+		if (!project) {
+			return;
+		}
+		QStringList values;
+		for (int i = 0 ; i < given.size() ; ++i)
+		{
+			const QStringList parts = given.itemAt(i);
+			if (!parts.isEmpty() && parts.at(0) == QLatin1String("unitplant")) {
+				values << parts.at(1);
+			}
+		}
+		if (!values.isEmpty()) {
+			project->setConductorPlantCounter(scheme, plant, values);
+		}
+	}
+
+	/**
 		@brief resetContextCounters
 		@param nc the rule to read
 		@return the same rule, with every part which counts set back to
@@ -896,7 +971,7 @@ namespace autonum
 			else if (type == "string") {
 				formula.append(value);
 			}
-			else if (type == "unit") {
+			else if (type == "unit" || type == "unitplant") {
 				count_unit++;
 				formula.append("%sequ_" + QString::number(count_unit));
 			}
