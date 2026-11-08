@@ -66,6 +66,7 @@ namespace QETInformation
 	static QString ELMT_SUPPLIER                     = "supplier";
 	static QString ELMT_QUANTITY                     = "quantity";
 	static QString ELMT_MODEL                        = "model";
+	static QString ELMT_DEVICE_TYPE                  = "device_type";
 	static QString ELMT_CATEGORY                     = "category";
 	static QString ELMT_VOLTAGE_RATING               = "voltage_rating";
 	static QString ELMT_CURRENT_RATING               = "current_rating";
