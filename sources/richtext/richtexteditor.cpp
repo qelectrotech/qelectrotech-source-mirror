@@ -205,7 +205,8 @@ namespace qdesigner_internal {
 					const QStringView name = reader.name();
 					QXmlStreamAttributes attributes = reader.attributes();
 					filterAttributes(name, &attributes, &paragraphAlignmentFound);
-					writer.writeStartElement(name.toString());
+					const bool isHeading = (name.size() == 2 && name.at(0).toLower() == QLatin1Char('h') && name.at(1).isDigit());
+					writer.writeStartElement(isHeading ? QStringLiteral("p") : name.toString());
 					if (!attributes.isEmpty())
 						writer.writeAttributes(attributes);
 				} else {
@@ -892,6 +893,11 @@ void RichTextEditorToolBar::applyDefaultProjectFont()
 		blockFormat.setBackground(QBrush(Qt::NoBrush));
 		blockCursor.setBlockFormat(blockFormat);
 
+		QTextCharFormat bCharFormat = block.charFormat();
+		bCharFormat.clearProperty(QTextFormat::FontSizeAdjustment);
+		bCharFormat.clearProperty(QTextFormat::FontPixelSize);
+		blockCursor.setBlockCharFormat(bCharFormat);
+
 		for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
 			QTextFragment fragment = it.fragment();
 			if (fragment.isValid()) {
@@ -909,6 +915,8 @@ void RichTextEditorToolBar::applyDefaultProjectFont()
 
 				QTextCharFormat charFormat = fragment.charFormat();
 				charFormat.setFontFamilies({defaultFont.family()});
+				charFormat.clearProperty(QTextFormat::FontSizeAdjustment);
+				charFormat.clearProperty(QTextFormat::FontPixelSize);
 				charFormat.clearProperty(QTextFormat::BackgroundBrush);
 				charFormat.setBackground(QBrush(Qt::NoBrush));
 
@@ -1058,7 +1066,69 @@ void RichTextEditor::setFontBold(bool b)
 
 void RichTextEditor::setFontPointSize(double d)
 {
-	QTextEdit::setFontPointSize(qreal(d));
+	if (d <= 0)
+		return;
+
+	const qreal pointSize = qreal(d);
+	QTextCursor cursor = textCursor();
+	cursor.beginEditBlock();
+
+	if (cursor.hasSelection()) {
+		int selStart = cursor.selectionStart();
+		int selEnd = cursor.selectionEnd();
+		QTextBlock startBlock = document()->findBlock(selStart);
+		QTextBlock endBlock = document()->findBlock(selEnd);
+
+		for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+			QTextCursor blockCursor(block);
+			if (block.blockFormat().headingLevel() > 0) {
+				QTextBlockFormat blockFormat = block.blockFormat();
+				blockFormat.setHeadingLevel(0);
+				blockCursor.setBlockFormat(blockFormat);
+			}
+
+			QTextCharFormat bCharFormat = block.charFormat();
+			bCharFormat.clearProperty(QTextFormat::FontSizeAdjustment);
+			bCharFormat.clearProperty(QTextFormat::FontPixelSize);
+			bCharFormat.setFontPointSize(pointSize);
+			blockCursor.setBlockCharFormat(bCharFormat);
+
+			for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+				QTextFragment fragment = it.fragment();
+				if (fragment.isValid()) {
+					int fragStart = fragment.position();
+					int fragEnd = fragStart + fragment.length();
+					if (fragEnd <= selStart || fragStart >= selEnd) {
+						continue;
+					}
+
+					QTextCursor fragCursor(document());
+					int applyStart = qMax(fragStart, selStart);
+					int applyEnd = qMin(fragEnd, selEnd);
+					fragCursor.setPosition(applyStart);
+					fragCursor.setPosition(applyEnd, QTextCursor::KeepAnchor);
+
+					QTextCharFormat charFormat = fragment.charFormat();
+					charFormat.clearProperty(QTextFormat::FontSizeAdjustment);
+					charFormat.clearProperty(QTextFormat::FontPixelSize);
+					charFormat.setFontPointSize(pointSize);
+					fragCursor.setCharFormat(charFormat);
+				}
+			}
+
+			if (block == endBlock)
+				break;
+		}
+	} else {
+		QTextCharFormat format = currentCharFormat();
+		format.clearProperty(QTextFormat::FontSizeAdjustment);
+		format.clearProperty(QTextFormat::FontPixelSize);
+		format.setFontPointSize(pointSize);
+		setCurrentCharFormat(format);
+	}
+
+	cursor.endEditBlock();
+	QTextEdit::setFontPointSize(pointSize);
 }
 
 void RichTextEditor::setText(const QString &text)

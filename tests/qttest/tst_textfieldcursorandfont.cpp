@@ -43,6 +43,7 @@ private slots:
 	void testRichTextEditorFontControls();
 	void testDefaultProjectFontUnification();
 	void testPastedHtmlDarkModeCleaning();
+	void testSelectAllChangeFontSize();
 };
 
 void tst_TextFieldCursorAndFont::initTestCase()
@@ -255,6 +256,71 @@ void tst_TextFieldCursorAndFont::testPastedHtmlDarkModeCleaning()
 			if (frag.isValid()) {
 				QCOMPARE(frag.charFormat().background().style(), Qt::NoBrush);
 				QVERIFY(frag.charFormat().foreground().color() != Qt::white);
+			}
+		}
+	}
+}
+
+void tst_TextFieldCursorAndFont::testSelectAllChangeFontSize()
+{
+	qdesigner_internal::RichTextEditorDialog dialog;
+
+	const QString darkWebSnippet = QStringLiteral(
+		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+		"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+		"p, li { white-space: pre-wrap; }\n"
+		"hr { height: 1px; border-width: 0; }\n"
+		"li.unchecked::marker { content: \"\\2610\"; }\n"
+		"li.checked::marker { content: \"\\2612\"; }\n"
+		"</style></head><body style=\" font-family:'Liberation Sans'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+		"<h1 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:135%; background-color:#333333;\"><span style=\" font-family:'Open Sans','Verdana','Arial','sans-serif'; font-size:xx-large; font-weight:700; color:#ffffff; background-color:#333333;\">E-Rechnung ansehen</span></h1>\n"
+		"<h2 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:135%; background-color:#333333;\"><a name=\"eRechnung-E-Rechnungauswählen\"></a><span style=\" font-family:'Open Sans','Verdana','Arial','sans-serif'; font-size:x-large; font-weight:700; color:#ffffff; background-color:#333333;\">E</span><span style=\" font-family:'Open Sans','Verdana','Arial','sans-serif'; font-size:x-large; font-weight:700; color:#ffffff; background-color:#333333;\">-Rechnung auswählen</span></h2>\n"
+		"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Open Sans','Verdana','Arial','sans-serif'; font-size:16px; color:#ffffff; background-color:#333333;\">Sie können hier Ihre E-Rechnung ansehen. Nutzen Sie dazu das Auswahlfeld.</span></p>\n"
+		"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Open Sans','Verdana','Arial','sans-serif'; font-size:16px; color:#ffffff; background-color:#333333;\">Dies ist ein unverbindlicher Service der Steuer</span></p></body></html>"
+	);
+
+	dialog.setText(darkWebSnippet);
+
+	const auto textEdits = dialog.findChildren<QTextEdit *>();
+	QTextEdit *editor = nullptr;
+	for (auto *te : textEdits) {
+		if (te->acceptRichText()) {
+			editor = te;
+			break;
+		}
+	}
+	QVERIFY(editor != nullptr);
+
+	editor->selectAll();
+
+	auto *toolbar = dialog.findChild<QToolBar *>();
+	QVERIFY(toolbar != nullptr);
+
+	auto *sizeCombo = toolbar->findChild<QComboBox *>("fontSizeCombo");
+	if (!sizeCombo) {
+		for (auto *cb : toolbar->findChildren<QComboBox *>()) {
+			if (cb->findText("36") != -1) {
+				sizeCombo = cb;
+				break;
+			}
+		}
+	}
+	QVERIFY(sizeCombo != nullptr);
+
+	int idx36 = sizeCombo->findText("36");
+	QVERIFY(idx36 != -1);
+	sizeCombo->setCurrentIndex(idx36);
+	QMetaObject::invokeMethod(toolbar, "sizeInputActivated", Q_ARG(QString, QStringLiteral("36")));
+
+	for (QTextBlock block = editor->document()->begin(); block.isValid(); block = block.next()) {
+		QCOMPARE(block.blockFormat().headingLevel(), 0);
+		for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+			QTextFragment frag = it.fragment();
+			if (frag.isValid()) {
+				QCOMPARE(frag.charFormat().fontPointSize(), 36.0);
+				QCOMPARE(frag.charFormat().font().pointSize(), 36);
+				QVERIFY(!frag.charFormat().hasProperty(QTextFormat::FontSizeAdjustment));
+				QVERIFY(!frag.charFormat().hasProperty(QTextFormat::FontPixelSize));
 			}
 		}
 	}
