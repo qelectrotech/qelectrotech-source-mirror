@@ -22,8 +22,9 @@
 	right and down, and once the copy just made is moved, that move is the
 	offset of the next copies, kept when something else is selected and
 	when QET is closed. Switching the setting on starts afresh. Off,
-	Duplicate is as before. Ctrl+Shift+D asks, then duplicates. Each press
-	is one step of the undo stack.
+	Duplicate is as before. Ctrl+Shift+D opens the dialog (Configure
+	duplication...), without duplicating. Each press of Ctrl+D is one step
+	of the undo stack.
 */
 #include "qetapptest.h"
 #include "ElementsCollection/xmlelementcollection.h"
@@ -121,7 +122,8 @@ class tst_duplicaterepeatmove : public QObject
 			return DuplicateOffsetDialog::learnedOffset(&offset) ? offset : QPointF();
 		}
 
-			/// Answer the dialog Ctrl+Shift+D opens
+			/// Answer the dialog Ctrl+Shift+D opens: @p repeat checks the
+			/// box, else @p spacing and @p direction are set
 		void answerDialog(bool *answered, int spacing, int direction, bool repeat)
 		{
 			QTimer::singleShot(0, this, [=]() {
@@ -304,40 +306,58 @@ class tst_duplicaterepeatmove : public QObject
 			QCOMPARE(learned(), spacing);
 		}
 
-			//Ctrl+Shift+D: the dialog, then a duplicate as it says; one
-			//undo step
+			//Ctrl+Shift+D is Configure duplication...: the dialog, saved,
+			//and no copy; usable with nothing selected
 		void ctrlShiftD()
 		{
-			QAction *with_spacing = actionFor(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_D));
-			QVERIFY(with_spacing);
+			QAction *configure = actionFor(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_D));
+			QVERIFY(configure);
+			m_diagram->clearSelection();
+			QVERIFY(configure->isEnabled());
 			Element *original = place(QPointF(1200, 200));
 
-				//Unchecked: the spacing chosen
+				//Unchecked: the spacing chosen is saved, nothing is copied
 			bool answered = false;
 			answerDialog(&answered, 3, DuplicateOffsetDialog::Down, false);
 			int steps = m_diagram->undoStack().count();
-			with_spacing->trigger();
+			configure->trigger();
 			QVERIFY(answered);
-			QCOMPARE(m_diagram->undoStack().count(), steps + 1);
-			Element *a = selected();
-			QVERIFY(a && a != original);
-			QCOMPARE(a->pos(), original->pos() + QPointF(0, 3 * grid().y()));
+			QCOMPARE(m_diagram->undoStack().count(), steps);
+			QCOMPARE(selected(), original);
 			QCOMPARE(DuplicateOffsetDialog::savedStepOffset(), QPoint(0, 3));
 			QVERIFY(!DuplicateOffsetDialog::savedRepeatsMove());
+				//Then Ctrl+D at that spacing
+			Element *a = duplicate();
+			QVERIFY(a && a != original);
+			QCOMPARE(a->pos(), original->pos() + QPointF(0, 3 * grid().y()));
 
-				//Checked there: afresh
+				//Checked there: afresh, still nothing copied
 			DuplicateOffsetDialog::saveLearnedOffset(QPointF(70, 0));
 			answered = false;
 			answerDialog(&answered, 0, 0, true);
 			steps = m_diagram->undoStack().count();
-			with_spacing->trigger();
+			configure->trigger();
 			QVERIFY(answered);
-			QCOMPARE(m_diagram->undoStack().count(), steps + 1);
-			Element *b = selected();
+			QCOMPARE(m_diagram->undoStack().count(), steps);
+			QVERIFY(DuplicateOffsetDialog::savedRepeatsMove());
+			QVERIFY(learned().isNull());
+			Element *b = duplicate();
 			QVERIFY(b && b != a);
 			QCOMPARE(b->pos(), a->pos() + firstOffset());
-			QVERIFY(DuplicateOffsetDialog::savedRepeatsMove());
 			DuplicateOffsetDialog::saveStepOffset(QPoint(1, 0));
+		}
+
+			//The command that duplicated after the dialog is gone: one
+			//command per key, nothing else on Ctrl+Shift+D
+		void noDuplicateWithSpacing()
+		{
+			int on_ctrl_shift_d = 0;
+			for (QAction *a : QetAppTest::editor()->findChildren<QAction *>()) {
+				QVERIFY(!a->text().contains(QStringLiteral("another spacing")));
+				if (a->shortcut() == QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_D))
+					++on_ctrl_shift_d;
+			}
+			QCOMPARE(on_ctrl_shift_d, 1);
 		}
 
 			//Switched off again: as before
