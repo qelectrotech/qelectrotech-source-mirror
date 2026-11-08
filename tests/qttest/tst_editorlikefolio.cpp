@@ -147,6 +147,69 @@ class tst_editorlikefolio : public QObject
 			QVERIFY(!ESEventSetOrigin::moveOriginTo(scene, QPointF()));
 		}
 
+			//Drawing only: terminals and texts are left out
+		void selectionFilter()
+		{
+			ElementScene *scene = m_editor->elementScene();
+			ElementScene::setSelectionFilter(ElementScene::SelectionFilter::Drawing);
+			scene->slot_selectAll();
+			bool terminal_selected = false, line_selected = false;
+			for (QGraphicsItem *item : scene->selectedItems()) {
+				terminal_selected |= item->type() == PartTerminal::Type;
+				line_selected |= item->type() != PartTerminal::Type;
+			}
+			QVERIFY(!terminal_selected);
+			QVERIFY(line_selected);
+			ElementScene::setSelectionFilter(ElementScene::SelectionFilter::Terminals);
+			scene->applySelectionFilter();
+			scene->slot_selectAll();
+			QCOMPARE(scene->selectedItems().size(), 2);
+			ElementScene::setSelectionFilter(ElementScene::SelectionFilter::All);
+			scene->applySelectionFilter();
+			scene->slot_deselectAll();
+		}
+
+			//A frame set by hand is written as it is, read back as set by
+			//hand, and goes with the drawing when the insertion point moves
+		void fixedFrame()
+		{
+			ElementScene *scene = m_editor->elementScene();
+			scene->setFixedFrame(QRect(-20, -20, 100, 60));
+			QDomDocument written = scene->toXml();
+			QDomElement d = written.documentElement();
+			QCOMPARE(d.attribute(QStringLiteral("width")), QStringLiteral("100"));
+			QCOMPARE(d.attribute(QStringLiteral("hotspot_x")), QStringLiteral("20"));
+
+			scene->reset();
+			scene->fromXml(written);
+			QCOMPARE(scene->fixedFrame(), QRect(-20, -20, 100, 60));
+
+			QVERIFY(ESEventSetOrigin::moveOriginTo(scene, QPointF(0, -10)));
+			QCOMPARE(scene->fixedFrame(), QRect(-20, -10, 100, 60));
+			scene->undoStack().undo();
+			QCOMPARE(scene->fixedFrame(), QRect(-20, -20, 100, 60));
+			scene->setFixedFrame(QRect());
+		}
+
+			//Kind informations the editor does not know survive a save
+		void otherKindInformations()
+		{
+			QFile file(m_dir.filePath(QStringLiteral("k.elmt")));
+			QVERIFY(file.open(QIODevice::WriteOnly | QIODevice::Truncate));
+			file.write(R"(<definition type="element" link_type="terminal" width="20" height="30" hotspot_x="10" hotspot_y="10">
+<uuid uuid="{6f1d3c2a-5b4e-4a9c-8d7f-1e2a3b4c5d62}"/>
+<names><name lang="en">k</name></names>
+<kindInformations><kindInformation name="row_y">10</kindInformation><kindInformation name="type">generic</kindInformation><kindInformation name="function">generic</kindInformation></kindInformations>
+<description><line x1="0" y1="0" x2="0" y2="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+<terminal x="0" y="0" orientation="n"/></description></definition>)");
+			file.close();
+			m_editor->elementScene()->reset();
+			m_editor->fromFile(file.fileName());
+			const QString xml = m_editor->elementScene()->toXml().toString();
+			QVERIFY(xml.contains(QStringLiteral("name=\"row_y\">10<")));
+			QVERIFY(xml.contains(QStringLiteral("name=\"function\"")));
+		}
+
 			//Away from any terminal: the nearest folio grid point
 		void setOriginOnGrid()
 		{

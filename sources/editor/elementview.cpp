@@ -23,11 +23,13 @@
 #include <diagram.h>
 #include <editor/graphicspart/partterminal.h>
 #include <editor/elementprimitivedecorator.h>
+#include <diagramview.h>
 #include "UndoCommand/pastepartscommand.h"
 #include "ui/qetelementeditor.h"
 #include "../ElementsCollection/elementslocation.h"
 
 #include <QMimeData>
+#include <QSettings>
 /**
 	Constructeur
 	@param scene ElementScene visualisee par cette ElementView
@@ -502,8 +504,11 @@ void ElementView::mousePressEvent(QMouseEvent* e)
 		setCursor( (Qt::ClosedHandCursor));
 		reference_view_ = e->pos();
 	}
-	else
+	else {
+		if (e->button() == Qt::LeftButton)
+			m_band_origin = e->pos();
 		QGraphicsView::mousePressEvent(e);
+	}
 }
 
 /**
@@ -521,8 +526,23 @@ void ElementView::mouseMoveEvent(QMouseEvent* e)
 		h -> setValue(h -> value() + pos.x());
 		v -> setValue(v -> value() + pos.y());
 	}
-	else
+	else {
+			//The selection rectangle as on the folio (Settings > General):
+			//touched, enclosed, or by the direction it is drawn in
+		if ((e->buttons() & Qt::LeftButton) && dragMode() == QGraphicsView::RubberBandDrag) {
+			switch (DiagramView::selectionRectangle()) {
+				case DiagramView::SelectionRectangle::Touched:
+					setRubberBandSelectionMode(Qt::IntersectsItemShape); break;
+				case DiagramView::SelectionRectangle::Enclosed:
+					setRubberBandSelectionMode(Qt::ContainsItemShape); break;
+				case DiagramView::SelectionRectangle::ByDirection:
+					setRubberBandSelectionMode(e->pos().x() >= m_band_origin.x()
+								   ? Qt::ContainsItemShape : Qt::IntersectsItemShape);
+					break;
+			}
+		}
 		QGraphicsView::mouseMoveEvent(e);
+	}
 }
 
 /**
@@ -672,10 +692,22 @@ void ElementView::drawBackground(QPainter *painter, const QRectF &r) {
 
 	// choisit la granularite de la grille en fonction du zoom en cours
 	// selects the grid granularity according to the current zoom level
-	const ElementViewGrid grid = ElementViewGrid::forZoom(zoom_factor);
+	ElementViewGrid grid = ElementViewGrid::forZoom(zoom_factor);
+		//A step of its own at every zoom: dots while they are 4 pixels
+		//apart at least, the 10 grid marked by crosses when finer
+	if (const int fixed = gridStep()) {
+		grid.step = fixed;
+		grid.draw_grid = fixed * zoom_factor >= 4.0;
+		grid.draw_cross = fixed < 10;
+	}
 	const int grid_step = grid.step;
 	const bool draw_grid = grid.draw_grid;
 	const bool draw_cross = grid.draw_cross;
+	if (grid_step != m_current_step || !qFuzzyCompare(zoom_factor, m_current_zoom)) {
+		m_current_step = grid_step;
+		m_current_zoom = zoom_factor;
+		QMetaObject::invokeMethod(this, &ElementView::viewStateChanged, Qt::QueuedConnection);
+	}
 
 	m_scene->setGrid(grid_step, grid_step);
 
@@ -761,4 +793,15 @@ QRectF ElementView::applyMovement(const QRectF &start, const QPointF &offset) {
 	// applies the calculated offset
 	// applique le decalage ainsi calcule
 	return(start.translated(final_offset));
+}
+
+int ElementView::gridStep()
+{
+	const int step = QSettings().value(QStringLiteral("elementeditor/grid_step"), 0).toInt();
+	return (step == 1 || step == 2 || step == 5 || step == 10) ? step : 0;
+}
+
+void ElementView::setGridStep(int step)
+{
+	QSettings().setValue(QStringLiteral("elementeditor/grid_step"), step);
 }

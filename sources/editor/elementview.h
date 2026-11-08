@@ -69,6 +69,23 @@ class ElementView : public PaletteGraphicsView {
 	static constexpr qreal m_min_zoom = 0.1;
 	static constexpr qreal m_max_zoom = 200.0;
 	
+	public:
+		/// The grid step: 0 follows the zoom (finer when zoomed in),
+		/// else this step at every zoom
+	static int gridStep();
+	static void setGridStep(int step);
+		/// The step parts snap to at the current zoom
+	int currentGridStep() const { return m_current_step; }
+
+	signals:
+		/// The zoom or the grid step on screen changed
+	void viewStateChanged();
+
+	private:
+	int m_current_step = 0;
+	qreal m_current_zoom = 0;
+	QPoint m_band_origin;
+
 	public slots:
 	void setVisualisationMode();
 	void setSelectionMode();

@@ -96,6 +96,7 @@ class ElementScene : public QGraphicsScene
 
 		bool m_hotspot_visible = true;
 		bool m_background_frame_visible = false;
+		QRect m_fixed_frame;
 		QSizeF m_background_frame_size;
 	
 		// methods
@@ -137,10 +138,24 @@ class ElementScene : public QGraphicsScene
 			/// The frame written to the definition when likeFolio(): the
 			/// drawing and the origin, out to the next grid lines
 		static QRect gridFrame(const QRectF &drawing);
+			/// What a click, a selection rectangle and Select All pick
+		enum class SelectionFilter { All = 0, Drawing = 1, Texts = 2, Terminals = 3 };
+		static SelectionFilter selectionFilter();
+		static void setSelectionFilter(SelectionFilter filter);
+			/// Make the parts the filter leaves out unselectable, and
+			/// deselect them
+		void applySelectionFilter();
 			/// What the frame takes in: the parts, a terminal only by its
 			/// connection point (its marker would push the frame a grid
 			/// step past the terminal row)
 		QRectF frameDrawingRect() const;
+			/// A frame set by hand, written as it is; a null rectangle
+			/// lets the editor work it out
+		QRect fixedFrame() const { return m_fixed_frame; }
+		void setFixedFrame(const QRect &frame);
+			/// The frame the definition gets: the fixed one, else worked
+			/// out (on the grid when likeFolio())
+		QRect definitionFrame() const;
 		bool containsTerminals() const;
 		void clearMeasureItems();
 		bool hasMeasureItems() const;

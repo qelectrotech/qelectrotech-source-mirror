@@ -70,8 +70,12 @@ bool ESEventSetOrigin::moveOriginTo(ElementScene *scene, const QPointF &point)
 	const QPointF movement = -point;
 	for (QGraphicsItem *item : parts)
 		item->moveBy(movement.x(), movement.y());
-	auto *command = new MovePartsCommand(movement, scene, parts);
-	command->setText(QObject::tr("set the insertion point", "undo caption"));
+	auto *command = new QUndoCommand(QObject::tr("set the insertion point", "undo caption"));
+	new MovePartsCommand(movement, scene, parts, command);
+		//A frame set by hand goes with the drawing
+	const QRect frame = scene->fixedFrame();
+	if (!frame.isNull())
+		new FixedFrameCommand(scene, frame, frame.translated(movement.toPoint()), command);
 	scene->undoStack().push(command);
 	scene->update();
 	return true;
