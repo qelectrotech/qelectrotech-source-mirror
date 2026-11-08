@@ -1958,8 +1958,10 @@ projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
 	is_unknown) from potentialGroups(), and make the TEMP view
 	wire_potential_view over it: one row per wire with its potential, its
 	effective potential type and where that type comes from ('wire' for the
-	wire's own stored potential_type; a source-derived type will be 'source').
-	Both are TEMP on purpose: a .qetdb that holds a view outside the fixed
+	wire's own stored potential_type; a source-derived type will be 'source'),
+	and the TEMP view potential_view: one row per potential, with its wires,
+	terminals, folios, wire numbers and whether it carries several.
+	All are TEMP on purpose: a .qetdb that holds a view outside the fixed
 	list is refused as damaged by every QET that does not know it
 	(QetDbFile), so nothing here is ever saved, and the file carries no
 	data that could disagree with the drawing. Run on request only, never on
@@ -2002,6 +2004,40 @@ bool projectDataBase::refreshPotentialMembersOf(QSqlDatabase db, QHash<int, QStr
 		"FROM main.conductor c "
 		"LEFT JOIN temp.potential_member m ON m.wire_uuid = c.uuid "
 		"LEFT JOIN main.conductor_properties p ON p.conductor_uuid = c.uuid AND p.name = 'potential_type'"));
+		//One row per potential, over the same members: its wires, the
+		//terminals they end on, its folios, and its wire numbers. A
+		//potential is one number in QElectroTech's own numbering;
+		//several_numbers marks one that carries more (RSWire draws a
+		//busbar's stubs with a number each). potential_key, the potential's
+		//smallest wire uuid, names it from one refresh to the next while that
+		//wire is there; potential_id is only this refresh's number.
+	run(QStringLiteral("DROP VIEW IF EXISTS temp.potential_view"));
+	run(QStringLiteral(
+		"CREATE TEMP VIEW potential_view AS SELECT "
+		"MIN(c.uuid) AS potential_key, m.potential_id AS potential_id, "
+		"COUNT(*) AS wires, "
+		"(SELECT COUNT(*) FROM ("
+			"SELECT c2.terminal1_element_uuid, c2.terminal1_uuid FROM main.conductor c2 "
+			"JOIN temp.potential_member m2 ON m2.wire_uuid = c2.uuid WHERE m2.potential_id = m.potential_id "
+			"UNION SELECT c2.terminal2_element_uuid, c2.terminal2_uuid FROM main.conductor c2 "
+			"JOIN temp.potential_member m2 ON m2.wire_uuid = c2.uuid WHERE m2.potential_id = m.potential_id"
+		")) AS terminals, "
+		"COUNT(DISTINCT c.diagram_uuid) AS folios, MIN(d.pos) AS first_folio_number, "
+		"(SELECT group_concat(n, ', ') FROM ("
+			"SELECT DISTINCT NULLIF(c3.text, '') AS n FROM main.conductor c3 "
+			"JOIN temp.potential_member m3 ON m3.wire_uuid = c3.uuid "
+			"WHERE m3.potential_id = m.potential_id AND NULLIF(c3.text, '') IS NOT NULL ORDER BY n"
+		")) AS wire_numbers, "
+		"CASE WHEN COUNT(DISTINCT NULLIF(c.text, '')) > 1 THEN 1 ELSE 0 END AS several_numbers, "
+			//Its type when its wires agree on one; none when they do not
+			//(potential_mismatch lists those)
+		"CASE WHEN COUNT(DISTINCT v.potential_type) = 1 THEN MIN(v.potential_type) END AS potential_type, "
+		"MAX(m.is_unknown) AS is_unknown "
+		"FROM main.conductor c "
+		"JOIN temp.potential_member m ON m.wire_uuid = c.uuid "
+		"LEFT JOIN main.diagram d ON d.uuid = c.diagram_uuid "
+		"LEFT JOIN temp.wire_potential_view v ON v.wire_uuid = c.uuid "
+		"GROUP BY m.potential_id"));
 	const bool own_transaction = db.transaction();
 	run(QStringLiteral("DELETE FROM temp.potential_member"));
 	query.prepare(QStringLiteral("INSERT INTO temp.potential_member (wire_uuid, potential_id, is_unknown, derived_type) "
@@ -2766,7 +2802,7 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		//(POTENTIAL-TYPES-PLAN.md): a query that names one brings them up
 		//to date first, as for the tables above
 	static const QRegularExpression potential_objects(
-			QStringLiteral("\\b(wire_potential_view|potential_member|potential_mismatch)\\b"),
+			QStringLiteral("\\b(wire_potential_view|potential_view|potential_member|potential_mismatch)\\b"),
 			QRegularExpression::CaseInsensitiveOption);
 	if (potential_objects.match(query).hasMatch()) {
 		potentialTypeMismatchesOf(m_data_base);
