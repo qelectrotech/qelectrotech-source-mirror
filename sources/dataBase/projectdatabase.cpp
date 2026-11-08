@@ -6159,8 +6159,8 @@ void projectDataBase::forgetElementTexts(const QUuid &element)
 	@return the rows of what the saved symbol @p element holds that no
 	other table does: its frozen label, whether it moves and its prefix, as
 	Element::fromXml() reads them (a file that leaves one out gives the
-	value it is read as), then its <properties>, <plcMasterData>,
-	<xrefDisplay> and <potentialSources>
+	value it is read as), whether a T-junction is shown as a dot, then its
+	<properties>, <plcMasterData>, <xrefDisplay> and <potentialSources>
 */
 QList<projectDataBase::ProjectSetting> projectDataBase::elementValueRowsOf(const QDomElement &element)
 {
@@ -6173,6 +6173,9 @@ QList<projectDataBase::ProjectSetting> projectDataBase::elementValueRowsOf(const
 	rows.append({section, 0, QStringLiteral("is_movable"),
 				 QString::number(int(bool(element.attribute(QStringLiteral("is_movable"), QStringLiteral("1")).toInt())))});
 	rows.append({section, 0, QStringLiteral("prefix"), element.attribute(QStringLiteral("prefix"))});
+		//Only a T-junction shown as a dot has the row
+	if (element.attribute(QStringLiteral("shownAsDot")) == QLatin1String("true"))
+		rows.append({section, 0, QStringLiteral("shownAsDot"), QStringLiteral("true")});
 	for (const QString &tag : {QStringLiteral("properties"), QStringLiteral("plcMasterData"),
 							   QStringLiteral("xrefDisplay"), QStringLiteral("potentialSources")}) {
 		const QDomElement child = element.firstChildElement(tag);

@@ -505,6 +505,8 @@ target_compile_definitions(tst_conductordefinitionmark PRIVATE
 qet_add_app_test(tst_conductordefcopy tst_conductordefcopy.cpp)
 # The projects of the last session are opened again at start, and the
 # ones open when the editor closes are kept for the next start.
+# A T-junction shown as a dot: drawn, saved and undone.
+qet_add_app_test(tst_junctiondot tst_junctiondot.cpp)
 qet_add_app_test(tst_reopenprojects tst_reopenprojects.cpp)
 target_compile_definitions(tst_reopenprojects PRIVATE
   QET_FIXTURE="${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet")
