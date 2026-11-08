@@ -17,9 +17,11 @@
 */
 #include "autonumberingmanagementw.h"
 #include <autoNum/elementautonumschemecommand.h>
+#include <autoNum/renumberconductorscommand.h>
 #include "renumberpreviewdialog.h"
 
 #include <diagram.h>
+#include <qetgraphicsitem/conductor.h>
 #include <qetgraphicsitem/element.h>
 #include <qetproject.h>
 #include <autoNum/numerotationcontextcommands.h>
@@ -30,6 +32,10 @@
 #include "ui_autonumberingmanagementw.h"
 #include "ui_formulaautonumberingw.h"
 
+#include <QComboBox>
+#include <QDialogButtonBox>
+#include <QFormLayout>
+#include <QListWidget>
 #include <QMessageBox>
 
 /**
@@ -54,6 +60,7 @@ AutoNumberingManagementW::AutoNumberingManagementW(QETProject *project,
 	ui->m_apply_project_rb->setChecked(true);
 	// Enabled only when project is in "Under Development" status and not read-only.
 	ui->m_renumber_elements_pb->setEnabled(ui->m_status_cb->currentIndex() == 0 && project_ && !project_->isReadOnly());
+	ui->m_renumber_conductors_pb->setEnabled(ui->m_renumber_elements_pb->isEnabled());
 	setProjectContext();
 }
 
@@ -94,6 +101,7 @@ void AutoNumberingManagementW::on_m_status_cb_currentIndexChanged(int index)
 		ui->m_both_element_rb->setChecked(true);
 		ui->m_both_folio_rb->setChecked(true);
 		ui->m_renumber_elements_pb->setEnabled(true);
+		ui->m_renumber_conductors_pb->setEnabled(true);
 	}
 	//Installing
 	else if (index == 1) {
@@ -104,6 +112,7 @@ void AutoNumberingManagementW::on_m_status_cb_currentIndexChanged(int index)
 		ui->m_new_element_rb->setChecked(true);
 		ui->m_new_folio_rb->setChecked(true);
 		ui->m_renumber_elements_pb->setEnabled(true);
+		ui->m_renumber_conductors_pb->setEnabled(true);
 	}
 	//Built
 	else if (index == 2) {
@@ -111,6 +120,7 @@ void AutoNumberingManagementW::on_m_status_cb_currentIndexChanged(int index)
 		ui->m_disable_element_rb->setChecked(true);
 		ui->m_disable_folio_rb->setChecked(true);
         	ui->m_renumber_elements_pb->setEnabled(false);
+		ui->m_renumber_conductors_pb->setEnabled(false);
 	}
 }
 
@@ -161,6 +171,93 @@ void AutoNumberingManagementW::on_m_renumber_elements_pb_clicked()
 										 "and their numbers were not given out again.", "", frozen.size());
 	}
 	QMessageBox::information(this, tr("Renumber elements"), summary);
+}
+
+/**
+	@brief AutoNumberingManagementW::on_m_renumber_conductors_pb_clicked
+	Renumber the conductors of the chosen sheets with a conductor numbering,
+	after showing what it will do: one undoable step.
+*/
+void AutoNumberingManagementW::on_m_renumber_conductors_pb_clicked()
+{
+	if (!project_ || project_->isReadOnly()) return;
+	QStringList titles = project_->conductorAutoNum().keys();
+	titles.sort(Qt::CaseInsensitive);
+	if (titles.isEmpty()) {
+		QMessageBox::information(this, tr("Renumber conductors"),
+								 tr("The project has no conductor numbering."));
+		return;
+	}
+
+		//The numbering, and the sheets: all of them unless unticked
+	QDialog choose(this);
+	choose.setWindowTitle(tr("Renumber conductors"));
+	auto *form = new QFormLayout(&choose);
+	auto *numbering = new QComboBox(&choose);
+	numbering->addItems(titles);
+	const int current = titles.indexOf(project_->conductorCurrentAutoNum());
+	if (current >= 0) numbering->setCurrentIndex(current);
+	form->addRow(tr("Numbering:"), numbering);
+	auto *sheets = new QListWidget(&choose);
+	const QList<Diagram *> diagrams = project_->diagrams();
+	for (Diagram *d : diagrams) {
+		auto *item = new QListWidgetItem(
+				tr("%1 - %2").arg(d->folioIndex() + 1).arg(d->title()), sheets);
+		item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+		item->setCheckState(Qt::Checked);
+	}
+	form->addRow(tr("Sheets:"), sheets);
+	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &choose);
+	connect(buttons, &QDialogButtonBox::accepted, &choose, &QDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, &choose, &QDialog::reject);
+	form->addRow(buttons);
+	if (choose.exec() != QDialog::Accepted) return;
+
+	QList<Diagram *> chosen;
+	for (int i = 0 ; i < sheets->count() ; ++i)
+		if (sheets->item(i)->checkState() == Qt::Checked)
+			chosen << diagrams.at(i);
+	const QString title = numbering->currentText();
+	RenumberConductorsCommand::Plan plan =
+			RenumberConductorsCommand::plan(project_, title, chosen);
+	if (plan.changes.isEmpty()) {
+		QMessageBox::information(this, tr("Renumber conductors"),
+								 tr("No conductor of the chosen sheets can be renumbered."));
+		return;
+	}
+
+		//What it will do: one line per potential, then what it leaves
+	QStringList lines;
+	int potentials = 0;
+	QString last;
+	for (const auto &change : std::as_const(plan.changes)) {
+		const QString line = tr("Sheet %1: %2 → %3")
+				.arg(change.wire->diagram()->folioIndex() + 1)
+				.arg(change.old_properties.text.isEmpty() ? tr("(none)") : change.old_properties.text,
+					 change.new_properties.text);
+		if (change.new_properties.text != last) {
+			++potentials;
+			lines << line;
+			last = change.new_properties.text;
+		}
+	}
+	for (const auto &kept : std::as_const(plan.kept))
+		if (kept.wire)
+			lines << tr("Sheet %1: %2 kept (%3)")
+					 .arg(kept.wire->diagram()->folioIndex() + 1)
+					 .arg(kept.text.isEmpty() ? tr("(none)") : kept.text, kept.reason);
+	QMessageBox preview(QMessageBox::Question, tr("Renumber conductors"),
+						tr("%n potentials will be numbered again with \"%1\", "
+						   "in sheet and position order.", "", potentials).arg(title)
+						+ QLatin1Char('\n')
+						+ tr("%n potentials are kept as they are.", "", plan.kept.size()),
+						QMessageBox::Ok | QMessageBox::Cancel, this);
+	preview.setDetailedText(lines.join(QLatin1Char('\n')));
+	if (preview.exec() != QMessageBox::Ok) return;
+
+	project_->undoStack()->push(new RenumberConductorsCommand(
+			project_, title, std::move(plan),
+			tr("Renumber conductors (%1)").arg(title)));
 }
 
 /**
