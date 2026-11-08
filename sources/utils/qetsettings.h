@@ -60,6 +60,16 @@ namespace QetSettings
 	void setDuplicateLabelsCaseSensitive(bool sensitive);
 
 	/**
+		Whether a terminal strip draws the wires which end at it: one
+		stub per terminal which has a wire of its own, going up from the
+		strip like its cables go down, naming where the wire lands and
+		saying what it is made of. Off by default, so that the projects
+		drawn before it existed look the same.
+	*/
+	bool stripWiresShown();
+	void setStripWiresShown(bool shown);
+
+	/**
 		@brief Free-text drawing conventions for this installation (grid,
 		flow direction, routing, tagging, grouping, ...), written once by
 		the user and read by every AI assistant that connects -- live or

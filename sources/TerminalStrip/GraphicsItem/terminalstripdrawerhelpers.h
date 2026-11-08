@@ -65,6 +65,32 @@ namespace TerminalStripDrawer
 			//same cells, so the two can never disagree.
 		qreal cableBoxesExtraDepth(const QVector<CableCell> &cells,
 								   const TerminalStripLayoutPattern &pattern);
+			//What is needed to draw the wire of a terminal above the strip
+		struct WireCell
+		{
+			qreal x{0};             ///< x of the middle of the terminal, in the strip coordinates
+			qreal top{0};           ///< y of the top edge of the strip
+			QString target;         ///< what the other end of the wire is called ("12K1:A1")
+			QStringList definition; ///< what the wire is made of, type, colour, section
+		};
+			//Draw the wires above the terminals, whichever style draws them:
+			//one stub per terminal which has a wire of its own, going up from
+			//the strip, naming where it lands at its top and saying what it
+			//is made of in a gap in the middle -- the gap grows with every
+			//value which has something to say (see drawWires() in
+			//terminalstripdrawer.cpp for the whole drawing)
+		void drawWires(QPainter *painter, const QVector<WireCell> &cells,
+					   const TerminalStripLayoutPattern &pattern);
+			//The y of the highest point those wires reach, in the strip's own
+			//coordinates: the drawing has to reserve the room above its top
+			//for it or the top of a wire is cut off. The same rule the drawing
+			//uses, worked out of the same cells, so the two can never disagree.
+		qreal wiresTop(const QVector<WireCell> &cells,
+					   const TerminalStripLayoutPattern &pattern);
+			//Whether the wires are drawn at all, off by default so that the
+			//projects drawn before it existed look the same
+		bool wiresShown();
+		void setWiresShown(bool shown);
 	}
 }
 

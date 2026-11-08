@@ -302,6 +302,29 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief stripWiresShown
+	* @return whether a terminal strip draws the wires which end at it
+	* (@sa setStripWiresShown), off unless the user turned it on
+	*/
+	bool stripWiresShown()
+	{
+		QSettings settings;
+		return settings.value("terminalstrip/wires_shown", false).toBool();
+	}
+
+	/**
+	* @brief setStripWiresShown
+	* Store whether a terminal strip draws the wires which end at it.
+	* @sa stripWiresShown
+	* @param shown
+	*/
+	void setStripWiresShown(bool shown)
+	{
+		QSettings settings;
+		settings.setValue("terminalstrip/wires_shown", shown);
+	}
+
+	/**
 	* @brief houseStyle
 	* @return this installation's drawing conventions, in the user's own
 	* words -- empty when nobody has set any.

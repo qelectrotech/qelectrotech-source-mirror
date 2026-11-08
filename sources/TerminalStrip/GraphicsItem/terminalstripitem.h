@@ -73,6 +73,13 @@ class TerminalStripItem : public QetGraphicsItem
 		};
 		QList<PdfRef> pdfRefs() const;
 
+	public:
+			///The size of the drawing may have changed -- the strip got
+			///another terminal, or what is drawn above it changed with
+			///the wires -- so the item reports its size again and draws
+			///itself anew.
+		void refreshGeometry();
+
 	private:
 		void setDefaultLayout();
 		QString xrefToolTip(const TerminalStripDrawer::hoverTerminal &terminal) const;

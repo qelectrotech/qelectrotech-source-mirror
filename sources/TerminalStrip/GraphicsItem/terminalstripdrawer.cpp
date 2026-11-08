@@ -18,6 +18,7 @@
 #include "terminalstripdrawer.h"
 #include "terminalstripdrawerhelpers.h"
 #include "realisticterminalstripdrawer.h"
+#include "utils/qetsettings.h"
 
 #include <QPainter>
 #include <QPolygonF>
@@ -248,15 +249,19 @@ void drawTypeSymbol(QPainter *painter, const QRectF &box, ElementData::TerminalT
  * @param painter
  * @param terminal_rect
  * @param length : the total length of a connection
+ * @param draw_top : false when the wire of the terminal is drawn as a stub
+ * of its own above the terminal, which takes the place of the connection
  * @param draw_bottom : false if the cable is drawn under the terminal
  */
-void drawConnections(QPainter *painter, const QRectF &terminal_rect, qreal length, bool draw_bottom)
+void drawConnections(QPainter *painter, const QRectF &terminal_rect, qreal length, bool draw_top, bool draw_bottom)
 {
 	const qreal x{terminal_rect.width() / 2};
 	const qreal top{terminal_rect.top()};
 	const qreal bottom{terminal_rect.top() + terminal_rect.height()};
 
-	painter->drawLine(QPointF{x, top}, QPointF{x, top - length});
+	if (draw_top) {
+		painter->drawLine(QPointF{x, top}, QPointF{x, top - length});
+	}
 
 	if (draw_bottom) {
 		painter->drawLine(QPointF{x, bottom}, QPointF{x, bottom + length});
@@ -637,6 +642,244 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 }
 
 /*
+ * The wires which end at the strip, drawn above it.
+ */
+
+	///Room between the strip and what stands at the foot of its stub,
+	///and between one line of writing and the next
+constexpr qreal wire_text_gap{3.0};
+
+	///What a line of writing takes along the stub: its length, plus the
+	///two units the rectangle it is written in sticks out on each end
+qreal textRoom(const QString &text, const QFont &font)
+{
+	if (text.isEmpty()) {
+		return 0;
+	}
+	return QFontMetricsF(font).horizontalAdvance(text) + 2;
+}
+
+	///The room @p index has across its stub: the distance to the closest
+	///other stub of the strip, or nothing when it stands alone. The
+	///writing is turned along the stub, so its height reaches across it
+	///and must not run into the writing of the stub next to it -- the
+	///terminals of a strip stand close together, and a twin sleeve puts
+	///two stubs in one of them.
+qreal roomAcross(const QVector<Helpers::WireCell> &cells, int index)
+{
+	qreal room{0};
+	for (int i = 0 ; i < cells.size() ; ++i)
+	{
+		if (i == index) {
+			continue;
+		}
+		const qreal distance{qAbs(cells.at(i).x - cells.at(index).x)};
+		room = room > 0 ? qMin(room, distance) : distance;
+	}
+	return room;
+}
+
+	///The font the stub @p index writes with: the font of the drawing,
+	///shrunk until a line of it is not taller than the room across the
+	///stub -- the same rule the strip fits its own terminal text into
+	///the width of a terminal (fitTextToCell()), so that the writing of
+	///one stub never runs into the writing of the next.
+QFont fittedFont(const QFont &font, qreal room)
+{
+	QFont fitted{font};
+	if (room <= 0) {
+		return fitted;
+	}
+	if (fitted.pixelSize() <= 0 && fitted.pointSizeF() > 0) {
+		fitted.setPixelSize(qMax(4, qRound(fitted.pointSizeF() * 96.0 / 72.0)));
+	}
+	const qreal max_height{qMax<qreal>(4, room - 2)};
+	while (QFontMetricsF{fitted}.height() > max_height
+		   && fitted.pixelSize() > 4) {
+		fitted.setPixelSize(fitted.pixelSize() - 1);
+	}
+	return fitted;
+}
+
+	///The font of every stub of the strip, in the order of @p cells
+QVector<QFont> fittedFonts(const QVector<Helpers::WireCell> &cells,
+						   const QFont &font)
+{
+	QVector<QFont> fonts;
+	fonts.reserve(cells.size());
+	for (int i = 0 ; i < cells.size() ; ++i) {
+		fonts << fittedFont(font, roomAcross(cells, i));
+	}
+	return fonts;
+}
+
+	///The longest writing of its kind among the wires of the strip, each
+	///measured in the font its own stub fits: what decides how long the
+	///stubs are, so that all the targets end up at the same height
+struct WireRooms
+{
+	qreal definition{0};
+	qreal target{0};
+};
+
+WireRooms commonRooms(const QVector<Helpers::WireCell> &cells,
+					  const QVector<QFont> &fonts)
+{
+	WireRooms rooms;
+	for (int i = 0 ; i < cells.size() ; ++i)
+	{
+		rooms.definition = qMax(rooms.definition, textRoom(
+			cells.at(i).definition.join(QLatin1Char(' ')), fonts.at(i)));
+		rooms.target = qMax(rooms.target, textRoom(cells.at(i).target,
+							    fonts.at(i)));
+	}
+	return rooms;
+}
+
+	///The stub every wire of the strip gets: as long as the stub of a
+	///cable, plus the room the longest writing among them needs. One
+	///size for the whole strip, so that all the targets stand at the
+	///same height. The writing is added to the length of the stub, it
+	///never eats into it: the stroke keeps the length a cable gets and
+	///is only broken where something is written on it.
+qreal commonWireStub(const QVector<Helpers::WireCell> &cells,
+					 const TerminalStripLayoutPattern &pattern,
+					 const WireRooms &rooms)
+{
+	const qreal base{pattern.m_cable_wire_length};
+	if (base <= 0 || cells.isEmpty()) {
+		return 0;
+	}
+	qreal extra{0};
+	if (rooms.definition > 0) {
+		extra += 2 * wire_text_gap + rooms.definition;
+	}
+	if (rooms.target > 0) {
+		extra += wire_text_gap + rooms.target;
+	}
+	return base + extra;
+}
+
+/**
+ * @brief drawWires
+ * One stub per wire which ends at the strip, going up from it the way
+ * its cables go down: what the wire is made of at the foot of the stub,
+ * where it lands at its top, both written along the stub and leaving it
+ * drawn in the pieces the writing leaves. The text reads from the strip
+ * up, the way the cable's own writing does.
+ * @param painter
+ * @param cells : the wires which end at the strip, worked out by the
+ * style which draws them
+ * @param pattern : the layout of the strip
+ */
+void drawWires(QPainter *painter, const QVector<Helpers::WireCell> &cells,
+			   const TerminalStripLayoutPattern &pattern)
+{
+	const QVector<QFont> fonts{fittedFonts(cells, pattern.font())};
+	const WireRooms rooms{commonRooms(cells, fonts)};
+	const qreal stub{commonWireStub(cells, pattern, rooms)};
+	if (stub <= 0) {
+		return;
+	}
+		//Half of a cable's stub stands on the strip before anything is
+		//written on it: the beginning of the stroke is a stroke too
+	const qreal foot{pattern.m_cable_wire_length / 2};
+
+		//Every target stands at the same height above the highest of		//the terminals the wires end at
+	qreal top_edge{0};
+	for (const Helpers::WireCell &cell : cells) {
+		top_edge = qMax(top_edge, cell.top);
+	}
+	const qreal y_top{top_edge - stub};
+
+	painter->save();
+	for (int i = 0 ; i < cells.size() ; ++i)
+	{
+		const Helpers::WireCell &cell{cells.at(i)};
+		const QFont font{fonts.at(i)};
+		painter->setFont(font);
+		const qreal text_height{QFontMetricsF(font).height()};
+
+		const QString definition{cell.definition.join(QLatin1Char(' '))};
+		const qreal def_room{textRoom(definition, font)};
+		const qreal def_zone{definition.isEmpty() ? 0
+			: 2 * wire_text_gap + def_room};
+			//One line for every stroke of the strip to stop at, taken
+			//from the longest target among them: the strokes all come
+			//out the same length, whatever their own target says
+		const qreal tgt_zone{rooms.target > 0
+			? wire_text_gap + rooms.target : 0};
+
+			//The stroke itself: the foot of it stands on the strip, the
+			//rest runs up to where the writing at the top begins. What
+			//is written in between is what breaks it.
+		if (def_zone > 0)
+		{
+			painter->drawLine(QPointF{cell.x, cell.top},
+							  QPointF{cell.x, cell.top - foot});
+			painter->drawLine(QPointF{cell.x, cell.top - foot - def_zone},
+							  QPointF{cell.x, y_top + tgt_zone});
+		}
+		else
+		{
+			painter->drawLine(QPointF{cell.x, cell.top},
+							  QPointF{cell.x, y_top + tgt_zone});
+		}
+
+			//Written along the stub, centred on it, reading from the
+			//strip up like the cable's own writing does
+		const auto write = [&](const QString &text, qreal bottom) {
+			if (text.isEmpty()) {
+				return;
+			}
+			painter->save();
+			painter->translate(cell.x, bottom);
+			painter->rotate(270);
+			painter->drawText(QRectF{0, -text_height / 2,
+									 textRoom(text, font),
+									 text_height},
+							  Qt::AlignLeft | Qt::AlignVCenter,
+							  text);
+			painter->restore();
+		};
+			//What the wire is made of, with air on both sides so that
+			//neither the foot of the stroke nor the rest of it runs
+			//into it
+		write(definition, cell.top - foot - wire_text_gap);
+			//Where it lands, its foot on the line every target of the
+			//strip stands on: the targets are as long as they are, but
+			//they all begin at the same height and the strokes under
+			//them are all the same length
+		write(cell.target, y_top + rooms.target);
+	}
+	painter->restore();
+}
+
+/**
+ * @brief wiresTop
+ * @param cells : the wires which end at the strip
+ * @param pattern : the layout of the strip
+ * @return the y of the highest point those wires reach, in the strip's
+ * own coordinates -- negative when they stand above the top of the
+ * drawing, which is the room the drawing has to reserve for them
+ */
+qreal wiresTop(const QVector<Helpers::WireCell> &cells,
+			   const TerminalStripLayoutPattern &pattern)
+{
+	const QVector<QFont> fonts{fittedFonts(cells, pattern.font())};
+	const WireRooms rooms{commonRooms(cells, fonts)};
+	const qreal stub{commonWireStub(cells, pattern, rooms)};
+	if (stub <= 0) {
+		return 0;
+	}
+	qreal top_edge{0};
+	for (const Helpers::WireCell &cell : cells) {
+		top_edge = qMax(top_edge, cell.top);
+	}
+	return top_edge - stub;
+}
+
+/*
  * Width and color of a terminal.
  */
 
@@ -707,6 +950,59 @@ QVector<CableCell> cableCells(const AbstractTerminalStripInterface &strip,
 				cell.terminal = real_terminal_vector[i];
 			}
 			cells.append(cell);
+			x_offset += terminal_rect.width();
+		}
+	}
+	return cells;
+}
+
+/**
+ * @brief wireCells
+ * The cells the wires are drawn from : one per terminal of the strip which
+ * has a wire of its own, spread over the width of its body, all of them
+ * leaving the strip at its top edge. The paint and the room the strip
+ * reserves above it both work on this list, so a wire set longer than
+ * another is never cut off by the drawing area.
+ */
+QVector<Helpers::WireCell> wireCells(const AbstractTerminalStripInterface &strip,
+									 const TerminalStripLayoutPattern &pattern)
+{
+	QVector<Helpers::WireCell> cells;
+	qreal x_offset{pattern.m_header_rect.width() + pattern.m_spacer_rect.width()};
+	for (const auto &physical_t : strip.physicalTerminal())
+	{
+		const QVector<QSharedPointer<AbstractRealTerminalInterface>> real_terminal_vector{physical_t->realTerminals()};
+		const auto real_t_count{real_terminal_vector.size()};
+		const auto offset_{4 - real_t_count};
+
+		for (auto i=0 ; i<real_t_count ; ++i)
+		{
+			const auto index_ = offset_ + i;
+			if (index_ >= 4) {
+				break;
+			}
+			const auto real_t{real_terminal_vector[i]};
+			const auto terminal_rect{terminalRect(pattern, index_, real_t)};
+				//Every terminal takes its room in the row, whether it
+				//has a wire to draw or not, or the ones after it would
+				//be drawn over
+			if (real_t)
+			{
+				const auto wires{real_t->wires()};
+					//One stub by wire: a terminal with a twin sleeve
+					//carries two, spread over its width the way the
+					//levels of a terminal are spread over the body
+				for (auto w = 0 ; w < wires.size() ; ++w)
+				{
+					Helpers::WireCell cell;
+					cell.x = x_offset + terminal_rect.width()
+						* (w + 0.5) / wires.size();
+					cell.top = terminal_rect.y();
+					cell.target = wires.at(w).target;
+					cell.definition = wires.at(w).definition;
+					cells.append(cell);
+				}
+			}
 			x_offset += terminal_rect.width();
 		}
 	}
@@ -1144,6 +1440,17 @@ void Helpers::drawCables(QPainter *painter, const QVector<CableCell> &cells,
 	::TerminalStripDrawer::drawCables(painter, cells, pattern);
 }
 
+void Helpers::drawWires(QPainter *painter, const QVector<WireCell> &cells,
+						const TerminalStripLayoutPattern &pattern) {
+	::TerminalStripDrawer::drawWires(painter, cells, pattern);
+}
+
+qreal Helpers::wiresTop(const QVector<WireCell> &cells,
+						const TerminalStripLayoutPattern &pattern)
+{
+	return ::TerminalStripDrawer::wiresTop(cells, pattern);
+}
+
 qreal Helpers::cableBoxesExtraDepth(const QVector<CableCell> &cells,
 									const TerminalStripLayoutPattern &pattern)
 {
@@ -1270,6 +1577,8 @@ void TerminalStripDrawer::paint(QPainter *painter)
 			//is built on the same list (boundingRect()), so a box set lower
 			//than the others is never cut off
 		QVector<CableCell> cable_cells{cableCells(*m_strip, *m_pattern)};
+			//The wires above the strip, worked out of the same terminals
+		QVector<Helpers::WireCell> wire_cells{wireCells(*m_strip, *m_pattern)};
 		auto cell_index{0};
 
 		m_hovered_xref = hoverTerminal{};
@@ -1404,8 +1713,19 @@ void TerminalStripDrawer::paint(QPainter *painter)
 
 					//Draw the connections, above and under the terminal
 				if (m_pattern->m_connection_length > 0) {
-					//The cable replace the connection under the terminal
-					drawConnections(painter, terminal_rect, m_pattern->m_connection_length, !have_cable);
+						//The stub of the wire of this terminal is
+						//drawn above it and stands where the
+						//connection would, so the connection is left
+						//out -- with two wires on one terminal the
+						//connection would otherwise stick out between
+						//their two stubs
+					const bool own_stub{QetSettings::stripWiresShown()
+						&& real_terminal_vector[i]
+						&& real_terminal_vector[i]->hasWire()};
+						//The cable replace the connection under the terminal
+					drawConnections(painter, terminal_rect,
+									m_pattern->m_connection_length,
+									!own_stub, !have_cable);
 				}
                     //Draw a stronger line if the current terminal have level
                     //and the current level is the first
@@ -1599,6 +1919,9 @@ void TerminalStripDrawer::paint(QPainter *painter)
 		painter->setFont(m_pattern->font());
 		painter->setBrush(Qt::NoBrush);
 		Helpers::drawCables(painter, cable_cells, *m_pattern);
+			//The wires which end at the strip are drawn above it, in
+			//the same pen the cables are drawn with below it
+		Helpers::drawWires(painter, wire_cells, *m_pattern);
 		painter->restore();
 	}
 }
@@ -1660,6 +1983,15 @@ QRectF TerminalStripDrawer::boundingRect() const
 											cableCells(*m_strip, *m_pattern),
 											*m_pattern));
 			}
+		}
+
+			//The wires are drawn above the terminals : the room they
+			//need is reserved above the drawing or their top is cut off
+		if (m_strip && m_pattern->m_cable_wire_length > 0)
+		{
+			rect_.setTop(qMin(rect_.top(),
+							  Helpers::wiresTop(wireCells(*m_strip, *m_pattern),
+												*m_pattern)));
 		}
 
 		rect_.setBottom(rect_.bottom() + extra_bottom);
