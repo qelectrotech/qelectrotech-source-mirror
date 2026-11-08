@@ -298,7 +298,6 @@ class QETDiagramEditor : public QETMainWindow
 		*m_paste_origin,		///< Same, at the copied position, cursor warped to the origin (Ctrl+Shift+V)
 		*m_duplicate,			///< Copy selection, offset by the configured step (#991)
 		*m_configure_duplicate,		///< Reopen the duplicate offset/direction dialog (#991)
-		*m_duplicate_with_spacing,	///< That dialog, then a duplicate at the spacing chosen
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
 		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
 		*m_terminal_strip_labels = nullptr,	///< Show each strip's label at its first terminal

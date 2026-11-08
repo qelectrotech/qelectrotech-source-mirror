@@ -14773,17 +14773,6 @@ Options disponibles :
         <translation>Choisir l&apos;espacement et la direction utilisés par Dupliquer</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="793"/>
-        <source>Duplicate with another spacing...</source>
-        <translation>Dupliquer avec un autre espacement...</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="795"/>
-        <source>Choose the spacing and direction, then duplicate the selection</source>
-        <comment>status bar tip</comment>
-        <translation>Choisir l&apos;espacement et la direction, puis dupliquer la sélection</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="812"/>
         <source>Automatic disconnection of conductor(s)</source>
         <comment>Tool tip of auto break conductor</comment>
