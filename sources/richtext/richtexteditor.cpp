@@ -80,6 +80,8 @@
 #include <QDialogButtonBox>
 #include <QActionGroup>
 #include <QSignalBlocker>
+#include <QRegularExpression>
+#include <QMimeData>
 
 #include <qetapp.h>
 #include <qeticons.h>
@@ -116,9 +118,11 @@ namespace qdesigner_internal {
 			return;
 		}
 
-		// Clean out everything except text alignment for 'p'
+		// Clean out everything except text alignment for 'p' and headings 'h1'..'h6'
 		// Qt6 encodes alignment as style="text-align:center" instead of align="center"
-		if (name == QLatin1String("p")) {
+		const bool isBlock = (name == QLatin1String("p") ||
+		                      (name.size() == 2 && name.at(0).toLower() == QLatin1Char('h') && name.at(1).isDigit()));
+		if (isBlock) {
 			QString alignment;
 			for (const auto &att : *atts) {
 				if (att.name() == QLatin1String("align")) {
@@ -142,6 +146,31 @@ namespace qdesigner_internal {
 				*paragraphAlignmentFound = true;
 			}
 			return;
+		}
+
+		// For spans, anchors, divs, and other inline/block elements: strip background-color and white text colors
+		for (int i = 0; i < atts->size(); ++i) {
+			if (atts->at(i).name() == QLatin1String("bgcolor")) {
+				atts->remove(i);
+				--i;
+				continue;
+			}
+			if (atts->at(i).name() == QLatin1String("style")) {
+				QString style = atts->at(i).value().toString();
+				// Remove background-color: ...; from style
+				static const QRegularExpression bgRegex(QStringLiteral("background-color:[^;]+;?"), QRegularExpression::CaseInsensitiveOption);
+				style.remove(bgRegex);
+				// If text color is white or near-white, remove it so text isn't invisible on white/transparent canvas
+				static const QRegularExpression whiteColorRegex(QStringLiteral("color:\\s*(#ffffff|#fff|white|rgb\\(255,\\s*255,\\s*255\\));?"), QRegularExpression::CaseInsensitiveOption);
+				style.remove(whiteColorRegex);
+				style = style.trimmed();
+				if (style.isEmpty()) {
+					atts->remove(i);
+					--i;
+				} else {
+					(*atts)[i] = QXmlStreamAttribute(QLatin1String("style"), style);
+				}
+			}
 		}
 	}
 
@@ -220,6 +249,9 @@ class RichTextEditor : public QTextEdit
 	signals:
 	void stateChanged();
 	void simplifyRichTextChanged(bool);
+
+	protected:
+	void insertFromMimeData(const QMimeData *source) override;
 
 	private:
 	bool m_simplifyRichText;
@@ -819,32 +851,32 @@ void RichTextEditorToolBar::applyDefaultProjectFont()
 	if (!m_editor)
 		return;
 
-	QFont defaultFont = QETApp::indiTextsItemFont();
-	m_editor->document()->setDefaultFont(defaultFont);
+	QFont defaultFont = m_editor->document()->defaultFont();
+	if (defaultFont.family().isEmpty()) {
+		defaultFont = QETApp::indiTextsItemFont();
+	}
 
 	QTextCursor cursor = m_editor->textCursor();
 	cursor.beginEditBlock();
-	QTextCharFormat format;
-	format.setFontFamilies({defaultFont.family()});
-	format.setBackground(QBrush(Qt::NoBrush));
 
 	QTextBlock startBlock;
 	QTextBlock endBlock;
+	int selStart = 0;
+	int selEnd = 0;
 
 	if (cursor.hasSelection()) {
-		cursor.mergeCharFormat(format);
-		startBlock = m_editor->document()->findBlock(cursor.selectionStart());
-		endBlock = m_editor->document()->findBlock(cursor.selectionEnd());
+		selStart = cursor.selectionStart();
+		selEnd = cursor.selectionEnd();
+		startBlock = m_editor->document()->findBlock(selStart);
+		endBlock = m_editor->document()->findBlock(selEnd);
 	} else {
-		// When no text is selected, unify font family and reset spacing for the entire document
-		QTextCursor fullCursor(m_editor->document());
-		fullCursor.select(QTextCursor::Document);
-		fullCursor.mergeCharFormat(format);
+		selStart = 0;
+		selEnd = m_editor->document()->characterCount();
 		startBlock = m_editor->document()->begin();
 		endBlock = m_editor->document()->lastBlock();
 	}
 
-	// Clear custom margins, indents, and line heights to standardize text spacing
+	// Clear custom margins, indents, line heights, heading levels, and backgrounds
 	for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
 		QTextCursor blockCursor(block);
 		QTextBlockFormat blockFormat = block.blockFormat();
@@ -856,7 +888,40 @@ void RichTextEditorToolBar::applyDefaultProjectFont()
 		blockFormat.setTextIndent(0);
 		blockFormat.setLineHeight(0, QTextBlockFormat::SingleHeight);
 		blockFormat.setHeadingLevel(0);
+		blockFormat.clearProperty(QTextFormat::BackgroundBrush);
+		blockFormat.setBackground(QBrush(Qt::NoBrush));
 		blockCursor.setBlockFormat(blockFormat);
+
+		for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+			QTextFragment fragment = it.fragment();
+			if (fragment.isValid()) {
+				int fragStart = fragment.position();
+				int fragEnd = fragStart + fragment.length();
+				if (cursor.hasSelection() && (fragEnd <= selStart || fragStart >= selEnd)) {
+					continue;
+				}
+
+				QTextCursor fragCursor(m_editor->document());
+				int applyStart = qMax(fragStart, selStart);
+				int applyEnd = cursor.hasSelection() ? qMin(fragEnd, selEnd) : fragEnd;
+				fragCursor.setPosition(applyStart);
+				fragCursor.setPosition(applyEnd, QTextCursor::KeepAnchor);
+
+				QTextCharFormat charFormat = fragment.charFormat();
+				charFormat.setFontFamilies({defaultFont.family()});
+				charFormat.clearProperty(QTextFormat::BackgroundBrush);
+				charFormat.setBackground(QBrush(Qt::NoBrush));
+
+				// If text color is white or near-white (e.g. copied from dark theme), reset to black
+				QColor fg = charFormat.foreground().color();
+				if (fg.isValid() && fg.lightness() > 200) {
+					charFormat.setForeground(QBrush(Qt::black));
+				}
+
+				fragCursor.setCharFormat(charFormat);
+			}
+		}
+
 		if (block == endBlock)
 			break;
 	}
@@ -864,11 +929,13 @@ void RichTextEditorToolBar::applyDefaultProjectFont()
 	cursor.endEditBlock();
 
 	m_editor->setFontFamily(defaultFont.family());
+	m_editor->setTextColor(Qt::black);
 	m_editor->setTextBackgroundColor(Qt::transparent);
 	{
 		const QSignalBlocker blocker(m_font_family_input);
 		m_font_family_input->setCurrentFont(defaultFont);
 	}
+	m_color_action->setColor(Qt::black);
 	m_bg_color_action->setColor(Qt::transparent);
 	m_editor->setFocus();
 }
@@ -1006,8 +1073,27 @@ void RichTextEditor::setSimplifyRichText(bool v)
 {
 	if (v != m_simplifyRichText) {
 		m_simplifyRichText = v;
+		if (v) {
+			setHtml(simplifyRichTextFilter(toHtml()));
+		}
 		emit simplifyRichTextChanged(v);
 	}
+}
+
+void RichTextEditor::insertFromMimeData(const QMimeData *source)
+{
+	if (m_simplifyRichText && source && source->hasHtml()) {
+		QString html = source->html();
+		QString simplified = simplifyRichTextFilter(html);
+		QMimeData simplifiedData;
+		simplifiedData.setHtml(simplified);
+		if (source->hasText()) {
+			simplifiedData.setText(source->text());
+		}
+		QTextEdit::insertFromMimeData(&simplifiedData);
+		return;
+	}
+	QTextEdit::insertFromMimeData(source);
 }
 
 void RichTextEditor::setDefaultFont(QFont font)

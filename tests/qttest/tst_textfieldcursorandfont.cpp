@@ -42,6 +42,7 @@ private slots:
 	void testAddTextEventCursorAndEscape();
 	void testRichTextEditorFontControls();
 	void testDefaultProjectFontUnification();
+	void testPastedHtmlDarkModeCleaning();
 };
 
 void tst_TextFieldCursorAndFont::initTestCase()
@@ -187,6 +188,75 @@ void tst_TextFieldCursorAndFont::testDefaultProjectFontUnification()
 		QString chosenFamily = fontCombo->currentFont().family();
 		QString textWithChosenFont = dialog.text(Qt::RichText);
 		QVERIFY(textWithChosenFont.contains(chosenFamily));
+	}
+}
+
+void tst_TextFieldCursorAndFont::testPastedHtmlDarkModeCleaning()
+{
+	qdesigner_internal::RichTextEditorDialog dialog;
+
+	const QString darkWebSnippet = QStringLiteral(
+		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+		"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+		"p, li { white-space: pre-wrap; }\n"
+		"hr { height: 1px; border-width: 0; }\n"
+		"li.unchecked::marker { content: \"\\2610\"; }\n"
+		"li.checked::marker { content: \"\\2612\"; }\n"
+		"</style></head><body style=\" font-family:'Liberation Sans'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+		"<h1 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:135%; background-color:#333333;\"><span style=\" font-family:'Open Sans','Verdana','Arial','sans-serif'; font-size:xx-large; font-weight:700; color:#ffffff; background-color:#333333;\">E-Rechnung ansehen</span></h1>\n"
+		"<h2 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:135%; background-color:#333333;\"><a name=\"eRechnung-E-Rechnungauswählen\"></a><span style=\" font-family:'Open Sans','Verdana','Arial','sans-serif'; font-size:x-large; font-weight:700; color:#ffffff; background-color:#333333;\">E</span><span style=\" font-family:'Open Sans','Verdana','Arial','sans-serif'; font-size:x-large; font-weight:700; color:#ffffff; background-color:#333333;\">-Rechnung auswählen</span></h2>\n"
+		"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Open Sans','Verdana','Arial','sans-serif'; font-size:16px; color:#ffffff; background-color:#333333;\">Sie können hier Ihre E-Rechnung ansehen. Nutzen Sie dazu das Auswahlfeld.</span></p>\n"
+		"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Open Sans','Verdana','Arial','sans-serif'; font-size:16px; color:#ffffff; background-color:#333333;\">Dies ist ein unverbindlicher Service der Steuer</span></p></body></html>"
+	);
+
+	dialog.setText(darkWebSnippet);
+
+	auto *toolbar = dialog.findChild<QToolBar *>();
+	QVERIFY(toolbar != nullptr);
+
+	QAction *defaultFontAction = nullptr;
+	for (QAction *action : toolbar->actions()) {
+		if (action->text() == tr("Default project font") ||
+			action->toolTip() == tr("Default project font")) {
+			defaultFontAction = action;
+			break;
+		}
+	}
+	QVERIFY(defaultFontAction != nullptr);
+
+	// Triggering default font action must clean dark background, reset spacing and font color
+	defaultFontAction->trigger();
+
+	QString updatedHtml = dialog.text(Qt::RichText);
+	QVERIFY(!updatedHtml.contains("#333333"));
+	QVERIFY(!updatedHtml.contains("background-color"));
+	QVERIFY(!updatedHtml.contains("color:#ffffff"));
+
+	const auto textEdits = dialog.findChildren<QTextEdit *>();
+	QTextEdit *editor = nullptr;
+	for (auto *te : textEdits) {
+		if (te->acceptRichText()) {
+			editor = te;
+			break;
+		}
+	}
+	QVERIFY(editor != nullptr);
+
+	// All blocks should have margins reset to 0
+	for (QTextBlock block = editor->document()->begin(); block.isValid(); block = block.next()) {
+		QCOMPARE(block.blockFormat().topMargin(), 0.0);
+		QCOMPARE(block.blockFormat().bottomMargin(), 0.0);
+		QCOMPARE(block.blockFormat().headingLevel(), 0);
+		QCOMPARE(block.blockFormat().background().style(), Qt::NoBrush);
+
+		// All character fragments must have transparent background and non-white foreground
+		for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+			QTextFragment frag = it.fragment();
+			if (frag.isValid()) {
+				QCOMPARE(frag.charFormat().background().style(), Qt::NoBrush);
+				QVERIFY(frag.charFormat().foreground().color() != Qt::white);
+			}
+		}
 	}
 }
 
