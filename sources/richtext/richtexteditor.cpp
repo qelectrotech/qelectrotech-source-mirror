@@ -710,14 +710,39 @@ void RichTextEditorToolBar::applyDefaultProjectFont()
 	QTextCharFormat format;
 	format.setFontFamilies({defaultFont.family()});
 
+	QTextBlock startBlock;
+	QTextBlock endBlock;
+
 	if (cursor.hasSelection()) {
 		cursor.mergeCharFormat(format);
+		startBlock = m_editor->document()->findBlock(cursor.selectionStart());
+		endBlock = m_editor->document()->findBlock(cursor.selectionEnd());
 	} else {
-		// When no text is selected, unify font family for the entire document
+		// When no text is selected, unify font family and reset spacing for the entire document
 		QTextCursor fullCursor(m_editor->document());
 		fullCursor.select(QTextCursor::Document);
 		fullCursor.mergeCharFormat(format);
+		startBlock = m_editor->document()->begin();
+		endBlock = m_editor->document()->lastBlock();
 	}
+
+	// Clear custom margins, indents, and line heights to standardize text spacing
+	for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+		QTextCursor blockCursor(block);
+		QTextBlockFormat blockFormat = block.blockFormat();
+		blockFormat.setTopMargin(0);
+		blockFormat.setBottomMargin(0);
+		blockFormat.setLeftMargin(0);
+		blockFormat.setRightMargin(0);
+		blockFormat.setIndent(0);
+		blockFormat.setTextIndent(0);
+		blockFormat.setLineHeight(0, QTextBlockFormat::SingleHeight);
+		blockFormat.setHeadingLevel(0);
+		blockCursor.setBlockFormat(blockFormat);
+		if (block == endBlock)
+			break;
+	}
+
 	cursor.endEditBlock();
 
 	m_editor->setFontFamily(defaultFont.family());

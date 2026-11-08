@@ -143,6 +143,10 @@ void tst_TextFieldCursorAndFont::testDefaultProjectFontUnification()
 	QVERIFY(updatedText.contains("font-size:18pt"));
 	QVERIFY(updatedText.contains("font-size:10pt"));
 
+	// Disparate margins from heading/paragraphs are cleared to standard spacing
+	QVERIFY(!updatedText.contains("margin-top:18px"));
+	QVERIFY(!updatedText.contains("margin-bottom:12px"));
+
 	// Now select text and set a specific font family via fontCombo
 	const auto textEdits = dialog.findChildren<QTextEdit *>();
 	QTextEdit *editor = nullptr;
@@ -153,6 +157,16 @@ void tst_TextFieldCursorAndFont::testDefaultProjectFontUnification()
 		}
 	}
 	QVERIFY(editor != nullptr);
+
+	// Verify all blocks now have 0 margins
+	for (QTextBlock block = editor->document()->begin(); block.isValid(); block = block.next()) {
+		QCOMPARE(block.blockFormat().topMargin(), 0.0);
+		QCOMPARE(block.blockFormat().bottomMargin(), 0.0);
+		QCOMPARE(block.blockFormat().leftMargin(), 0.0);
+		QCOMPARE(block.blockFormat().rightMargin(), 0.0);
+		QCOMPARE(block.blockFormat().indent(), 0);
+	}
+
 	QTextCursor cursor = editor->textCursor();
 	cursor.select(QTextCursor::Document);
 	editor->setTextCursor(cursor);
