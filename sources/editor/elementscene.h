@@ -129,6 +129,18 @@ class ElementScene : public QGraphicsScene
 		virtual ElementContent selectedContent() const;
 		virtual void getPasteArea(const QRectF &);
 		QRectF elementSceneGeometricRect () const;
+			/// The symbol editor draws like the folio: its sheet colour,
+			/// grid and ink, the frame shown, on the grid around the
+			/// insertion point. Off by default.
+		static bool likeFolio();
+		static void setLikeFolio(bool like);
+			/// The frame written to the definition when likeFolio(): the
+			/// drawing and the origin, out to the next grid lines
+		static QRect gridFrame(const QRectF &drawing);
+			/// What the frame takes in: the parts, a terminal only by its
+			/// connection point (its marker would push the frame a grid
+			/// step past the terminal row)
+		QRectF frameDrawingRect() const;
 		bool containsTerminals() const;
 		void clearMeasureItems();
 		bool hasMeasureItems() const;

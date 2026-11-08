@@ -20,6 +20,9 @@
 #include "elementviewgrid.h"
 
 #include <qetapp.h>
+#include <diagram.h>
+#include <editor/graphicspart/partterminal.h>
+#include <editor/elementprimitivedecorator.h>
 #include "UndoCommand/pastepartscommand.h"
 #include "ui/qetelementeditor.h"
 #include "../ElementsCollection/elementslocation.h"
@@ -31,7 +34,7 @@
 	@param parent QWidget parent de cette ElementView
 */
 ElementView::ElementView(ElementScene *scene, QWidget *parent) :
-	QGraphicsView(scene, parent),
+	PaletteGraphicsView(scene, parent),
 	m_scene(scene),
 	offset_paste_count_(0)
 {
@@ -608,7 +611,48 @@ bool ElementView::gestureEvent(QGestureEvent *event){
 	@param p Le QPainter a utiliser pour dessiner
 	@param r Le rectangle de la zone a dessiner
 */
-void ElementView::drawBackground(QPainter *p, const QRectF &r) {
+/**
+	@brief ElementView::paintEvent
+	Like the folio (ElementScene::likeFolio()), through PaletteGraphicsView:
+	inverted on a dark palette, tinted on a dark sheet. Otherwise black on
+	white, as the symbol editor always drew.
+*/
+void ElementView::paintEvent(QPaintEvent *event)
+{
+	if (ElementScene::likeFolio())
+		PaletteGraphicsView::paintEvent(event);
+	else
+		QGraphicsView::paintEvent(event);
+}
+
+/**
+	@brief ElementView::sheetInk
+	The folio's ink on a custom sheet colour, when drawing like the folio
+*/
+QET::Palette::SheetInk ElementView::sheetInk() const
+{
+	if (!ElementScene::likeFolio() || !customBackgroundColor())
+		return {};
+	return QET::Palette::sheetInk(Diagram::background_color, coloredInk());
+}
+
+/**
+	@brief ElementView::inkKind
+	The parts take the symbols' ink, as the placed symbol does; terminals
+	and the selection handles keep their own colours.
+*/
+PaletteGraphicsView::InkKind ElementView::inkKind(const QGraphicsItem *item) const
+{
+	const QGraphicsItem *top = item->topLevelItem();
+	if (top->type() == PartTerminal::Type || top->type() == ElementPrimitiveDecorator::Type)
+		return InkKind::Untouched;
+	return InkKind::Symbols;
+}
+
+void ElementView::drawBackground(QPainter *painter, const QRectF &r) {
+		//Into the off-screen image while painting like the folio
+	QPainter *p = scenePainter(painter);
+	const bool like_folio = ElementScene::likeFolio();
 	p -> save();
 
 	// desactive tout antialiasing, sauf pour le texte
@@ -619,7 +663,7 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 	// dessine un fond blanc
 	// draw a white background
 	p -> setPen(Qt::NoPen);
-	p -> setBrush(Qt::white);
+	p -> setBrush(like_folio ? Diagram::background_color : QColor(Qt::white));
 	p -> drawRect(r);
 
 	// determine le zoom en cours
@@ -637,7 +681,8 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 
 	if (draw_grid) {
 		// draw the dots of the grid
-		QPen pen(Qt::black);
+		QPen pen(like_folio ? QET::Palette::gridDotColor(Diagram::background_color, invertsLightness())
+				    : QColor(Qt::black));
 		pen.setCosmetic(true);
 		QSettings settings;
 		int minWidthPen = settings.value(QStringLiteral("elementeditor/grid_pointsize_min"), 1).toInt();

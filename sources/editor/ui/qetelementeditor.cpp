@@ -37,6 +37,7 @@
 #include <editor/esevent/eseventaddarc.h>
 #include <editor/esevent/eseventaddtext.h>
 #include <editor/esevent/eseventaddterminal.h>
+#include <editor/esevent/eseventsetorigin.h>
 #include <editor/esevent/eseventadddynamictextfield.h>
 #include <editor/esevent/eseventmeasure.h>
 #include <elementdialog.h>
@@ -1204,6 +1205,13 @@ void QETElementEditor::setupActions()
 	connect(add_arc,       &QAction::triggered, [this]() {m_elmt_scene->setEventInterface(new ESEventAddArc(m_elmt_scene));});
 	connect(add_terminal,  &QAction::triggered, [this]() {m_elmt_scene->setEventInterface(new ESEventAddTerminal(m_elmt_scene));});
 	connect(add_dynamic_text_field, &QAction::triggered, [this]() {m_elmt_scene->setEventInterface(new ESEventAddDynamicTextField(m_elmt_scene));});
+
+		//Draw first, then say where the symbol is inserted
+	auto *set_origin = new QAction(QET::Icons::HotSpot, tr("Set the insertion point"), m_add_part_action_grp);
+	set_origin->setCheckable(true);
+	set_origin->setStatusTip(tr("Click a terminal or a corner: it becomes the point the symbol is placed by"));
+	connect(set_origin, &QAction::triggered, [this]() {m_elmt_scene->setEventInterface(new ESEventSetOrigin(m_elmt_scene));});
+	ShortcutManager::instance().registerAction(set_origin, "elementeditor.set_origin", tr("Element editors"), QKeySequence());
 
 	add_polygon -> setStatusTip(tr("Double-click to finish the shape, Right click to cancel the last point"));
 	add_text    -> setStatusTip(tr("Add non-editable element text in diagrams"));

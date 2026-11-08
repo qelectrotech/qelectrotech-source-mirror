@@ -44,6 +44,7 @@
 #include <ElementsCollection/qetlabelsfile.h>
 #include <ui/prefixconfigurationdialog.h>
 #include <ui/nokde/kcolorbutton.h>
+#include <editor/elementscene.h>
 #include <QCoreApplication>
 #include <QDir>
 #include <QFileDialog>
@@ -172,6 +173,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	else
 		ui->m_use_windows_mode_rb->setChecked(true);
 	ui->m_selection_rectangle_cb->setCurrentIndex(static_cast<int>(DiagramView::selectionRectangle()));
+	ui->m_editor_like_folio_cb->setChecked(ElementScene::likeFolio());
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_zoom_step_sb->setValue(DiagramView::zoomStep());
 	ui->m_terminal_conductor_color->setChecked(Terminal::takesConductorColor());
@@ -440,6 +442,7 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/highlight-integrated-elements", ui->m_highlight_integrated_elements->isChecked());
 	DiagramView::setSelectionRectangle(static_cast<DiagramView::SelectionRectangle>(
 		ui->m_selection_rectangle_cb->currentIndex()));
+	ElementScene::setLikeFolio(ui->m_editor_like_folio_cb->isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	DiagramView::setZoomStep(ui->m_zoom_step_sb->value());
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());

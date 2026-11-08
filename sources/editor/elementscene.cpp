@@ -45,6 +45,8 @@
 #include <QKeyEvent>
 #include <algorithm>
 #include <cmath>
+#include <QSettings>
+#include <QtMath>
 
 /**
 	@brief ElementScene::ElementScene
@@ -372,6 +374,20 @@ void ElementScene::drawForeground(QPainter *p, const QRectF &)
 
 	p -> save();
 
+		//Drawing like the folio, the frame the definition gets is shown:
+		//it is what a click on the placed symbol hits
+	if (likeFolio()) {
+		const QRectF drawing = frameDrawingRect();
+		if (!drawing.isNull() || !primitives().isEmpty()) {
+			QPen frame_pen(QColor(128, 128, 128));
+			frame_pen.setCosmetic(true);
+			frame_pen.setStyle(Qt::DashLine);
+			p -> setPen(frame_pen);
+			p -> setBrush(Qt::NoBrush);
+			p -> drawRect(gridFrame(drawing));
+		}
+	}
+
 	// desactive tout antialiasing, sauf pour le texte
 	p -> setRenderHint(QPainter::Antialiasing, false);
 	p -> setRenderHint(QPainter::TextAntialiasing, true);
@@ -481,8 +497,10 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	QRectF size= elementSceneGeometricRect();
 
 	// if the element doesn't contain the origin point of the scene
-	// we move the element to the origin to solve this default before saving
-	if (!size.contains(0,0) && all_parts)
+	// we move the element to the origin to solve this default before saving.
+	// Not when drawing like the folio: the origin is the insertion point
+	// chosen with "Set the insertion point", and the frame takes it in.
+	if (!likeFolio() && !size.contains(0,0) && all_parts)
 	{
 		centerElementToOrigin();
 		//recalculate the size after movement
@@ -501,6 +519,15 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	// the margin between the real size of the element and the rectangle that delimits
 	int xmargin = qRound(upwidth - size.width());
 	int ymargin = qRound(upheight - size.height());
+	int hotspot_x = -(qRound(size.x() - (xmargin/2)));
+	int hotspot_y = -(qRound(size.y() - (ymargin/2)));
+	if (likeFolio()) {
+		const QRect frame = gridFrame(frameDrawingRect());
+		upwidth = frame.width();
+		upheight = frame.height();
+		hotspot_x = -frame.left();
+		hotspot_y = -frame.top();
+	}
 
 	// document XML
 	QDomDocument xml_document;
@@ -510,10 +537,8 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	root.setAttribute("type",        "element");
 	root.setAttribute("width",       QString("%1").arg(upwidth));
 	root.setAttribute("height",      QString("%1").arg(upheight));
-	root.setAttribute("hotspot_x",   QString("%1").arg(
-				  -(qRound(size.x() - (xmargin/2)))));
-	root.setAttribute("hotspot_y",   QString("%1").arg(
-				  -(qRound(size.y() - (ymargin/2)))));
+	root.setAttribute("hotspot_x",   QString("%1").arg(hotspot_x));
+	root.setAttribute("hotspot_y",   QString("%1").arg(hotspot_y));
 
 	QetVersion::toXmlAttribute(root);
 	root.setAttribute("link_type", m_element_data.typeToString(m_element_data.m_type));
@@ -1614,4 +1639,65 @@ QList<ElementMeasureItem *> ElementScene::measureItems() const
 		}
 	}
 	return list;
+}
+
+/**
+	@brief ElementScene::likeFolio
+	@return true when the symbol editor draws like the folio: the sheet
+	colour, grid dots and ink of the folio, the frame of the definition
+	shown, on the grid around the insertion point. Off by default.
+*/
+bool ElementScene::likeFolio()
+{
+	return QSettings().value(QStringLiteral("elementeditor/like_folio"), false).toBool();
+}
+
+void ElementScene::setLikeFolio(bool like)
+{
+	QSettings().setValue(QStringLiteral("elementeditor/like_folio"), like);
+}
+
+/**
+	@brief ElementScene::gridFrame
+	@param drawing : the drawing, in element coordinates
+	@return the drawing and the origin, out to the next lines of the
+	folio grid: placed with its origin on the grid, the frame of the
+	symbol lies on the grid too
+*/
+QRect ElementScene::gridFrame(const QRectF &drawing)
+{
+		//The origin counts in, even outside the drawing (QRectF::united()
+		//would leave an empty rectangle out)
+	const qreal l = qMin(drawing.left(), 0.0),  t = qMin(drawing.top(), 0.0);
+	const qreal r = qMax(drawing.right(), 0.0), b = qMax(drawing.bottom(), 0.0);
+	const int step = 10;
+	const int left   = qFloor(l / step + 1e-9) * step;
+	const int top    = qFloor(t / step + 1e-9) * step;
+	const int right  = qCeil (r / step - 1e-9) * step;
+	const int bottom = qCeil (b / step - 1e-9) * step;
+	return QRect(QPoint(left, top), QSize(qMax(right - left, step), qMax(bottom - top, step)));
+}
+
+QRectF ElementScene::frameDrawingRect() const
+{
+	bool any = false;
+	qreal l = 0, t = 0, r = 0, b = 0;
+	const auto take = [&](const QRectF &rect) {
+		if (!any) { l = rect.left(); t = rect.top(); r = rect.right(); b = rect.bottom(); any = true; return; }
+		l = qMin(l, rect.left()); t = qMin(t, rect.top());
+		r = qMax(r, rect.right()); b = qMax(b, rect.bottom());
+	};
+	for (QGraphicsItem *qgi : items()) {
+		if (qgi->type() == ElementPrimitiveDecorator::Type) continue;
+		if (qgi->type() == QGraphicsRectItem::Type) continue;
+		if (qgi->type() == PartText::Type) continue;
+		if (qgi->type() == PartDynamicTextField::Type) continue;
+		if (qgi->type() == PartTerminal::Type) {
+			take(QRectF(qgi->scenePos(), QSizeF(0, 0)));
+			continue;
+		}
+		if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi))
+			take(cep->sceneGeometricRect());
+	}
+	return any ? QRectF(QPointF(l, t), QPointF(r, b)) : QRectF();
 }
