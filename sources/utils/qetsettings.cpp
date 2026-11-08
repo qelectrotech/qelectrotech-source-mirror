@@ -302,6 +302,26 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief duplicateLabelsSignalsByPlant
+	* @return whether the duplicate check takes a wire number to be unique
+	* per plant (=) of the wire's folio rather than in the whole project
+	* (DuplicateLabels::SignalScope::Plant), as in projects numbered per
+	* installation. Off by default: one number, one potential, project-wide.
+	* @sa setDuplicateLabelsSignalsByPlant
+	*/
+	bool duplicateLabelsSignalsByPlant()
+	{
+		QSettings settings;
+		return settings.value("duplicate_labels/signals_by_plant", false).toBool();
+	}
+
+	void setDuplicateLabelsSignalsByPlant(bool by_plant)
+	{
+		QSettings settings;
+		settings.setValue("duplicate_labels/signals_by_plant", by_plant);
+	}
+
+	/**
 	* @brief houseStyle
 	* @return this installation's drawing conventions, in the user's own
 	* words -- empty when nobody has set any.

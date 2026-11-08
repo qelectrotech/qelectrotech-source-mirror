@@ -58,6 +58,10 @@ namespace QetSettings
 		// for the duplicate check.
 	bool duplicateLabelsCaseSensitive();
 	void setDuplicateLabelsCaseSensitive(bool sensitive);
+		// Whether a wire number need only be unique within its folio's
+		// plant (=) for the duplicate check. Off by default.
+	bool duplicateLabelsSignalsByPlant();
+	void setDuplicateLabelsSignalsByPlant(bool by_plant);
 
 	/**
 		@brief Free-text drawing conventions for this installation (grid,
