@@ -54,6 +54,7 @@ class ElementsCollectionWidget;
 class ElementPickerPopup;
 class CommandSearchPopup;
 class AutoNumberingDockWidget;
+class DeviceNavigatorDockWidget;
 class TerminalNumberingDialog;
 
 class KAutoSaveFile;
@@ -117,6 +118,7 @@ class QETDiagramEditor : public QETMainWindow
 		void setUpUndoStack     ();
 		void setUpSelectionPropertiesEditor();
 		void setUpAutonumberingWidget();
+		void setUpDeviceNavigatorDock();
 		void setUpActions       ();
 		void setUpToolBar       ();
 		void setUpMenu          ();
@@ -254,7 +256,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_apply_text_format = nullptr, ///< Apply label/text formatting template
 		*m_place_texts = nullptr,	///< Place the texts of the selected symbols at one of nine points
 		*m_text_destination = nullptr,	///< Choose the folio a selected free text leads to
-		*m_text_clearance = nullptr;	///< Move texts off the wires they sit on
+		*m_text_clearance = nullptr,	///< Move texts off the wires they sit on
+		*m_select_same_symbols = nullptr;	///< Select the symbols of the same kind as a selected one
 		
 		QActionGroup
 		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram
@@ -295,7 +298,6 @@ class QETDiagramEditor : public QETMainWindow
 		*m_paste_origin,		///< Same, at the copied position, cursor warped to the origin (Ctrl+Shift+V)
 		*m_duplicate,			///< Copy selection, offset by the configured step (#991)
 		*m_configure_duplicate,		///< Reopen the duplicate offset/direction dialog (#991)
-		*m_duplicate_with_spacing,	///< That dialog, then a duplicate at the spacing chosen
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
 		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
 		*m_terminal_strip_labels = nullptr,	///< Show each strip's label at its first terminal
@@ -437,6 +439,7 @@ class QETDiagramEditor : public QETMainWindow
 		
 		QUndoGroup undo_group;
 		AutoNumberingDockWidget *m_autonumbering_dock;
+		DeviceNavigatorDockWidget *m_device_navigator_dock = nullptr;
 		int activeSubWindowIndex;
 		SearchAndReplaceWidget m_search_and_replace_widget;
 };

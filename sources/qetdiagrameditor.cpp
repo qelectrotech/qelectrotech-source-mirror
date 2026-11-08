@@ -48,6 +48,7 @@
 #include "commandsearchpopup.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
+#include "ui/devicenavigatordockwidget.h"
 #include "conductornumexport.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
@@ -329,6 +330,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	setUpUndoStack();
 	setUpSelectionPropertiesEditor();
 	setUpAutonumberingWidget();
+	setUpDeviceNavigatorDock();
 
 	setUpActions();
 	setUpToolBar();
@@ -514,6 +516,29 @@ void QETDiagramEditor::setUpAutonumberingWidget()
 				|QDockWidget::DockWidgetMovable
 				|QDockWidget::DockWidgetFloatable);
 	addDockWidget(Qt::RightDockWidgetArea, m_autonumbering_dock);
+}
+
+/**
+	@brief QETDiagramEditor::setUpDeviceNavigatorDock
+	Set up the device navigator dock widget
+*/
+void QETDiagramEditor::setUpDeviceNavigatorDock()
+{
+	m_device_navigator_dock = new DeviceNavigatorDockWidget(this);
+	m_device_navigator_dock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	m_device_navigator_dock->setFeatures(
+		QDockWidget::DockWidgetClosable |
+		QDockWidget::DockWidgetMovable |
+		QDockWidget::DockWidgetFloatable);
+	addDockWidget(Qt::LeftDockWidgetArea, m_device_navigator_dock);
+	tabifyDockWidget(qdw_pa, m_device_navigator_dock);
+	m_device_navigator_dock->hide();
+
+	connect(m_device_navigator_dock, &QDockWidget::visibilityChanged, this, [this](bool visible) {
+		if (visible && currentProject() && m_device_navigator_dock) {
+			m_device_navigator_dock->setProject(currentProject());
+		}
+	});
 }
 
 /**
@@ -777,32 +802,16 @@ void QETDiagramEditor::setUpActions()
 		//direction a later Ctrl+D should use. Enabled unconditionally
 		//(see slot_updateComplexActions()): it only ever writes a
 		//setting, so it does not need a diagram open or anything
-		//selected the way m_duplicate itself does.
+		//selected the way m_duplicate itself does. Ctrl+Shift+D, beside
+		//Ctrl+D: it only opens the dialog, it does not duplicate.
 	m_configure_duplicate = new QAction(tr("Configure duplication..."), this);
-	ShortcutManager::instance().registerAction(m_configure_duplicate, "diagrameditor.configure_duplicate", tr("Diagram editors"), QKeySequence());
+	ShortcutManager::instance().registerAction(m_configure_duplicate, "diagrameditor.configure_duplicate", tr("Diagram editors"), Qt::CTRL | Qt::SHIFT | Qt::Key_D);
 	m_configure_duplicate->setStatusTip(tr("Choose the spacing and direction used by Duplicate", "status bar tip"));
 	connect(m_configure_duplicate, &QAction::triggered, [this]() {
 		DuplicateOffsetDialog dialog(this);
 		if (dialog.exec() == QDialog::Accepted) {
 			dialog.save();
 		}
-	});
-
-		//The same dialog, then a duplicate as it now says: changing the
-		//spacing in the middle of laying out copies, in one go.
-	m_duplicate_with_spacing = new QAction(tr("Duplicate with another spacing..."), this);
-	ShortcutManager::instance().registerAction(m_duplicate_with_spacing, "diagrameditor.duplicate_with_spacing", tr("Diagram editors"), Qt::CTRL | Qt::SHIFT | Qt::Key_D);
-	m_duplicate_with_spacing->setStatusTip(tr("Choose the spacing and direction, then duplicate the selection", "status bar tip"));
-	connect(m_duplicate_with_spacing, &QAction::triggered, [this]() {
-		auto *dv = currentDiagramView();
-		if (!dv || !dv->diagram()) return;
-		DuplicateOffsetDialog dialog(this);
-		if (dialog.exec() != QDialog::Accepted) return;
-		dialog.save();
-		if (dialog.repeatsMove())
-			dv->duplicateRepeatingMove();
-		else
-			dv->duplicate(dialog.stepOffset());
 	});
 
 		//Reset conductor path
@@ -1763,6 +1772,7 @@ void QETDiagramEditor::setUpActions()
 	QAction *select_invert  = m_select_actions_group.addAction( QET::Icons::EditSelectInvert,   tr("Invert selection") );
 	QAction *select_all_conductors  = m_select_actions_group.addAction( QET::Icons::Conductor,      tr("Select all conductors") );
 	QAction *select_all_text_fields = m_select_actions_group.addAction( QET::Icons::PartTextField,  tr("Select all text fields") );
+	m_select_same_symbols = m_select_actions_group.addAction( QET::Icons::Element, tr("Select the same symbols") );
 
 	ShortcutManager::instance().registerAction(select_all, "diagrameditor.select_all", tr("Diagram editors"), QKeySequence::SelectAll);
 	ShortcutManager::instance().registerAction(select_nothing, "diagrameditor.select_nothing", tr("Diagram editors"), QKeySequence::Deselect);
@@ -1771,18 +1781,21 @@ void QETDiagramEditor::setUpActions()
 		//point of registering them is so a user can bind one if they want.
 	ShortcutManager::instance().registerAction(select_all_conductors, "diagrameditor.select_all_conductors", tr("Diagram editors"), QKeySequence());
 	ShortcutManager::instance().registerAction(select_all_text_fields, "diagrameditor.select_all_text_fields", tr("Diagram editors"), QKeySequence());
+	ShortcutManager::instance().registerAction(m_select_same_symbols, "diagrameditor.select_same_symbols", tr("Diagram editors"), QKeySequence());
 
 	select_all    ->setStatusTip( tr("Selects all elements on the sheet", "status bar tip") );
 	select_nothing->setStatusTip( tr("Deselect all elements on the sheet", "status bar tip") );
 	select_invert ->setStatusTip( tr("Inverts selection of elements", "status bar tip") );
 	select_all_conductors ->setStatusTip( tr("Selects all conductors on the sheet, deselects the rest", "status bar tip") );
 	select_all_text_fields->setStatusTip( tr("Selects all text fields on the sheet, deselects the rest", "status bar tip") );
+	m_select_same_symbols ->setStatusTip( tr("Selects every symbol on the sheet of the same kind as a selected one, deselects the rest", "status bar tip") );
 
 	select_all    ->setData("select_all");
 	select_nothing->setData("deselect");
 	select_invert ->setData("invert_selection");
 	select_all_conductors ->setData("select_all_conductors");
 	select_all_text_fields->setData("select_all_text_fields");
+	m_select_same_symbols ->setData("select_same_symbols");
 
 	connect(&m_select_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::selectGroupTriggered);
 
@@ -2135,7 +2148,6 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_paste_origin);
 	menu_edition -> addAction(m_paste_element_info);
 	menu_edition -> addAction(m_duplicate);
-	menu_edition -> addAction(m_duplicate_with_spacing);
 	menu_edition -> addAction(m_configure_duplicate);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(m_insert_last_element);
@@ -2264,6 +2276,9 @@ void QETDiagramEditor::setUpMenu()
 	diagram_tool_bar      -> toggleViewAction() -> setStatusTip(tr("Display or hide the Diagram toolbar"));
 	qdw_pa           -> toggleViewAction() -> setStatusTip(tr("Show or hide the elements panel"));
 	qdw_undo         -> toggleViewAction() -> setStatusTip(tr("Display or hide the undo list"));
+	if (m_device_navigator_dock) {
+		m_device_navigator_dock->toggleViewAction()->setStatusTip(tr("Show or hide the device navigator"));
+	}
 
 
 	// menu Affichage
@@ -2287,6 +2302,9 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addMenu(m_shown_kinds_menu);
 	menu_affichage -> addMenu(m_background_color_button->menu());
 	menu_affichage -> addAction(m_background_color_button->darkModeAction());
+	if (m_device_navigator_dock) {
+		menu_affichage -> addAction(m_device_navigator_dock->toggleViewAction());
+	}
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
 
@@ -3053,6 +3071,9 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel)
 		pa -> elementsPanel().projectWasOpened(project);
 		if (currentDiagramView() != nullptr)
 		m_autonumbering_dock->setProject(project, project_view);
+		if (m_device_navigator_dock && m_device_navigator_dock->isVisible()) {
+			m_device_navigator_dock->setProject(project);
+		}
 	}
 
 	return(true);
@@ -3284,6 +3305,8 @@ void QETDiagramEditor::selectGroupTriggered(QAction *action)
 		diagram->selectAllConductors();
 	else if (value == "select_all_text_fields")
 		diagram->selectAllTextFields();
+	else if (value == "select_same_symbols")
+		diagram->selectSameSymbols();
 }
 
 /**
@@ -3916,7 +3939,6 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_copy
 			    << m_paste_element_info
 			    << m_duplicate
-			    << m_duplicate_with_spacing
 			    << m_delete_selection
 			    << m_rotate_selection
 			    << m_rotate_group_selection
@@ -3925,7 +3947,8 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_edit_selection
 			    << m_group_selected_texts
 			    << m_group_selection
-			    << m_ungroup_selection;
+			    << m_ungroup_selection
+			    << m_select_same_symbols;
 		for(QAction *action : action_list)
 			action->setEnabled(false);
 		m_align_actions_group.setEnabled(false);
@@ -3951,6 +3974,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_apply_text_format->setEnabled(!ro && ((selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern()) ||
 	                                        (selected_dimensions_count >= 1 && DimensionFormatPattern::hasPattern())));
 	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
+	m_select_same_symbols->setEnabled(selected_elements_count >= 1);
 	m_text_destination->setEnabled(!ro);
 	m_text_clearance->setEnabled(!ro);
 	m_mirror_horizontal->setEnabled(!ro && selected_elements_count);
@@ -3983,7 +4007,6 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_cut              -> setEnabled(!ro && copiable_items);
 	m_copy             -> setEnabled(copiable_items);
 	m_duplicate        -> setEnabled(!ro && copiable_items);
-	m_duplicate_with_spacing->setEnabled(!ro && copiable_items);
 	updatePasteElementInfoAction();
 	m_delete_selection -> setEnabled(!ro && deletable_items);
 	m_rotate_selection -> setEnabled(!ro && diagram_->canRotateSelection());
@@ -5043,6 +5066,9 @@ void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
 	emit syncElementsPanel();
 	updateUsageTrackersActiveState();
 	updateWindowModifiedState();
+	if (m_device_navigator_dock && m_device_navigator_dock->isVisible()) {
+		m_device_navigator_dock->setProject(currentProject());
+	}
 }
 
 /**

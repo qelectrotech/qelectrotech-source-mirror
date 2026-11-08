@@ -438,6 +438,7 @@ class Diagram : public QGraphicsScene
 		void invertSelection();
 		void selectAllConductors();
 		void selectAllTextFields();
+		void selectSameSymbols();
 		void completeGroupSelection();
 
 	signals:
