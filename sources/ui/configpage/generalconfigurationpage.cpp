@@ -151,6 +151,10 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->DiagramEditor_textGrid_cb->setCurrentIndex(text_grid_index);
 	ui->DiagramEditor_xKeyGrid_sb->setValue(settings.value("diagrameditor/key_Xgrid", 10).toInt());
 	ui->DiagramEditor_yKeyGrid_sb->setValue(settings.value("diagrameditor/key_Ygrid", 10).toInt());
+		//The arrow keys by the folio's grid step: the fixed steps are then unused
+	connect(ui->m_key_follows_grid_cb, &QCheckBox::toggled, ui->DiagramEditor_xKeyGrid_sb, &QWidget::setDisabled);
+	connect(ui->m_key_follows_grid_cb, &QCheckBox::toggled, ui->DiagramEditor_yKeyGrid_sb, &QWidget::setDisabled);
+	ui->m_key_follows_grid_cb->setChecked(settings.value("diagrameditor/key_follows_grid", false).toBool());
 	ui->DiagramEditor_xKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Xgrid", 1).toInt());
 	ui->DiagramEditor_yKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Ygrid", 1).toInt());
 	ui->DiagramEditor_Grid_PointSize_min_sb->setValue(settings.value("diagrameditor/grid_pointsize_min", 1).toInt());
@@ -486,6 +490,7 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue(TextGrid::settings_key, ui->DiagramEditor_textGrid_cb->currentData());
 	settings.setValue("diagrameditor/key_Xgrid", ui->DiagramEditor_xKeyGrid_sb->value());
 	settings.setValue("diagrameditor/key_Ygrid", ui->DiagramEditor_yKeyGrid_sb->value());
+	settings.setValue("diagrameditor/key_follows_grid", ui->m_key_follows_grid_cb->isChecked());
 	settings.setValue("diagrameditor/key_fine_Xgrid", ui->DiagramEditor_xKeyGridFine_sb->value());
 	settings.setValue("diagrameditor/key_fine_Ygrid", ui->DiagramEditor_yKeyGridFine_sb->value());
 	settings.setValue("diagrameditor/grid_pointsize_min", ui->DiagramEditor_Grid_PointSize_min_sb->value());
