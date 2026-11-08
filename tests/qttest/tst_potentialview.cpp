@@ -44,6 +44,7 @@ class tst_potentialview : public QObject
 		int folios = 0;
 		QString numbers;
 		bool several = false;
+		QString names;
 	};
 
 	static QHash<int, Row> rows(QETProject &project, QString *error)
@@ -51,7 +52,7 @@ class tst_potentialview : public QObject
 		project.dataBase()->updateDB();
 		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
 			"SELECT potential_id, potential_key, wires, terminals, folios, "
-			"wire_numbers, several_numbers FROM potential_view"), error);
+			"wire_numbers, several_numbers, names FROM potential_view"), error);
 		QHash<int, Row> result;
 		while (query.next()) {
 			Row row;
@@ -61,6 +62,7 @@ class tst_potentialview : public QObject
 			row.folios = query.value(4).toInt();
 			row.numbers = query.value(5).toString();
 			row.several = query.value(6).toBool();
+			row.names = query.value(7).toString();
 			result.insert(query.value(0).toInt(), row);
 		}
 		return result;
@@ -91,11 +93,18 @@ class tst_potentialview : public QObject
 			Row row;
 			QSet<QPair<QUuid, QUuid>> ends;
 			QSet<Diagram *> folios;
-			QStringList numbers, keys;
+			QStringList numbers, keys, names;
 			for (Conductor *c : it.value()) {
 				keys << c->uuid().toString();
-				for (Terminal *t : {c->terminal1, c->terminal2})
+				for (Terminal *t : {c->terminal1, c->terminal2}) {
 					ends.insert({t->parentElement()->uuid(), t->uuid()});
+					Element *e = t->parentElement();
+					const QString name = e->elementInformations()
+							.value(QStringLiteral("label")).toString();
+					if ((e->linkType() & Element::AllReport) && !name.isEmpty()
+							&& !names.contains(name))
+						names << name;
+				}
 				folios.insert(c->diagram());
 				const QString text = c->properties().text;
 				if (!text.isEmpty() && !numbers.contains(text))
@@ -103,6 +112,8 @@ class tst_potentialview : public QObject
 			}
 			keys.sort();
 			numbers.sort();
+			names.sort();
+			row.names = names.join(QStringLiteral(", "));
 			row.key = keys.first();
 			row.wires = it.value().size();
 			row.terminals = ends.size();
@@ -116,9 +127,9 @@ class tst_potentialview : public QObject
 
 	static QString describe(const Row &r)
 	{
-		return QStringLiteral("%1 wires=%2 terminals=%3 folios=%4 numbers=[%5] several=%6")
+		return QStringLiteral("%1 wires=%2 terminals=%3 folios=%4 numbers=[%5] several=%6 names=[%7]")
 				.arg(r.key).arg(r.wires).arg(r.terminals).arg(r.folios)
-				.arg(r.numbers).arg(r.several);
+				.arg(r.numbers).arg(r.several).arg(r.names);
 	}
 
 	static void compare(const QHash<int, Row> &actual, const QHash<int, Row> &want)
@@ -184,6 +195,32 @@ private slots:
 		actual = rows(project, &error);
 		QVERIFY(actual.value(potential).several);
 		QVERIFY(actual.value(potential).numbers.contains(QStringLiteral("101, 102")));
+		compare(actual, expected(project));
+	}
+
+	void namesAreTheReportLabels()
+	{
+			//RSWire's signal names (R_1, LOADMIXER) arrive as the labels of
+			//the folio reports a potential crosses the folios with
+		QETProject project(QFINDTESTDATA("fixtures/wiring_list_arrows.qet"));
+		QList<Element *> reports;
+		for (Diagram *diagram : project.diagrams())
+			for (Element *e : diagram->elements())
+				if (e->linkType() & Element::AllReport)
+					reports << e;
+		QVERIFY2(reports.size() >= 2, "the fixture has no folio reports");
+		for (Element *e : reports) {
+			DiagramContext info = e->elementInformations();
+			info.addValue(QStringLiteral("label"), QStringLiteral("LOADMIXER"));
+			e->setElementInformations(info);
+		}
+		QString error;
+		const QHash<int, Row> actual = rows(project, &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		int named = 0;
+		for (const Row &row : actual)
+			if (row.names == QLatin1String("LOADMIXER")) ++named;
+		QVERIFY(named >= 1);
 		compare(actual, expected(project));
 	}
 

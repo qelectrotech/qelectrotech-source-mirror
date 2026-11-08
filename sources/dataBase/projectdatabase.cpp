@@ -1960,7 +1960,8 @@ projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
 	effective potential type and where that type comes from ('wire' for the
 	wire's own stored potential_type; a source-derived type will be 'source'),
 	and the TEMP view potential_view: one row per potential, with its wires,
-	terminals, folios, wire numbers and whether it carries several.
+	terminals, folios, wire numbers, whether it carries several, and its
+	names (the labels of its folio reports).
 	All are TEMP on purpose: a .qetdb that holds a view outside the fixed
 	list is refused as damaged by every QET that does not know it
 	(QetDbFile), so nothing here is ever saved, and the file carries no
@@ -2008,7 +2009,8 @@ bool projectDataBase::refreshPotentialMembersOf(QSqlDatabase db, QHash<int, QStr
 		//terminals they end on, its folios, and its wire numbers. A
 		//potential is one number in QElectroTech's own numbering;
 		//several_numbers marks one that carries more (RSWire draws a
-		//busbar's stubs with a number each). potential_key, the potential's
+		//busbar's stubs with a number each). names are the labels of the
+		//folio reports on it. potential_key, the potential's
 		//smallest wire uuid, names it from one refresh to the next while that
 		//wire is there; potential_id is only this refresh's number.
 	run(QStringLiteral("DROP VIEW IF EXISTS temp.potential_view"));
@@ -2029,6 +2031,18 @@ bool projectDataBase::refreshPotentialMembersOf(QSqlDatabase db, QHash<int, QStr
 			"WHERE m3.potential_id = m.potential_id AND NULLIF(c3.text, '') IS NOT NULL ORDER BY n"
 		")) AS wire_numbers, "
 		"CASE WHEN COUNT(DISTINCT NULLIF(c.text, '')) > 1 THEN 1 ELSE 0 END AS several_numbers, "
+			//The names of the potential: the labels of the folio reports on
+			//it, which name the signal across the folios (and which chained
+			//reports link by)
+		"(SELECT group_concat(n, ', ') FROM ("
+			"SELECT DISTINCT NULLIF(ei.label, '') AS n FROM main.conductor c4 "
+			"JOIN temp.potential_member m4 ON m4.wire_uuid = c4.uuid "
+			"JOIN main.element e ON e.uuid IN (c4.terminal1_element_uuid, c4.terminal2_element_uuid) "
+			"JOIN main.element_info ei ON ei.element_uuid = e.uuid "
+			"WHERE m4.potential_id = m.potential_id "
+			"AND e.type IN ('next_report', 'previous_report') "
+			"AND NULLIF(ei.label, '') IS NOT NULL ORDER BY n"
+		")) AS names, "
 			//Its type when its wires agree on one; none when they do not
 			//(potential_mismatch lists those)
 		"CASE WHEN COUNT(DISTINCT v.potential_type) = 1 THEN MIN(v.potential_type) END AS potential_type, "
