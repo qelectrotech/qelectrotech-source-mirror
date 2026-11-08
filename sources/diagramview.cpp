@@ -1326,7 +1326,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 		//The symbol moves after the crosshair did: put the crosshair on
 		//its terminal again once it stands where it goes
 	const auto follow_symbol = qScopeGuard([this, e] {
-		if (m_dragged_element)
+		if (m_dragged_element || (m_diagram && m_diagram->pendingElement()))
 			moveCrosshair(e->pos());
 	});
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) {
@@ -2547,10 +2547,14 @@ void DiagramView::moveCrosshair(const QPoint &viewport_pos)
 		//Dragging a symbol: on its terminal nearest the mouse, where that
 		//terminal lands, not on the mouse, which holds the symbol
 		//somewhere beside it
-	if (m_dragged_element && m_press_places && !handle) {
+		//Placing a new one, the same: on the terminal of the symbol
+		//hanging on the mouse, where its terminal help lines would be
+	Element *moving = m_dragged_element && m_press_places ? m_dragged_element.data()
+			: m_diagram ? m_diagram->pendingElement() : nullptr;
+	if (moving && !handle) {
 		const QPointF mouse = mapToScene(viewport_pos);
 		qreal nearest = -1;
-		for (const Terminal *t : m_dragged_element->terminals()) {
+		for (const Terminal *t : moving->terminals()) {
 			const qreal d = QLineF(mouse, t->dockConductor()).length();
 			if (nearest < 0 || d < nearest) {
 				nearest = d;
