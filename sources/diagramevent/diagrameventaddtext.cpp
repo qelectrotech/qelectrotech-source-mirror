@@ -21,6 +21,15 @@
 #include <diagram.h>
 #include <undocommand/addgraphicsobjectcommand.h>
 #include <qetgraphicsitem/independenttextitem.h>
+#include <qeticons.h>
+
+#include <QGraphicsSceneMouseEvent>
+#include <QGraphicsView>
+#include <QPainter>
+#include <QPainterPath>
+#include <QPen>
+#include <QBrush>
+#include <QPixmap>
 
 /**
 	@brief DiagramEventAddText::DiagramEventAddText
@@ -36,13 +45,69 @@ DiagramEventAddText::DiagramEventAddText(Diagram *diagram) :
 		//m_running -- before letting Escape through to the tool, so without
 		//this the view swallows Escape and the tool cannot be cancelled.
 	m_running = true;
+	init();
 }
 
 /**
 	@brief DiagramEventAddText::~DiagramEventAddText
 */
 DiagramEventAddText::~DiagramEventAddText()
-{}
+{
+	if (m_diagram) {
+		for (auto *view : m_diagram->views()) {
+			view->viewport()->unsetCursor();
+			view->viewport()->update();
+		}
+	}
+}
+
+/**
+	@brief DiagramEventAddText::init
+*/
+void DiagramEventAddText::init()
+{
+	m_running = true;
+	if (m_diagram) {
+		for (auto *view : m_diagram->views()) {
+			view->viewport()->setCursor(textCursor());
+			view->viewport()->update();
+		}
+	}
+}
+
+/**
+	@brief DiagramEventAddText::textCursor
+	@return Custom cursor showing an arrow pointer with the text field icon badge
+*/
+QCursor DiagramEventAddText::textCursor()
+{
+	static QCursor cursor;
+	static bool initialized = false;
+	if (!initialized) {
+		QPixmap pixmap(32, 32);
+		pixmap.fill(Qt::transparent);
+
+		QPainter painter(&pixmap);
+		painter.setRenderHint(QPainter::Antialiasing, true);
+
+		// Arrow pointer at (0, 0)
+		QPainterPath path;
+		path.addPolygon(QPolygonF({{0, 0}, {0, 16}, {4, 12}, {7, 18}, {9.5, 17}, {6.5, 11}, {11.5, 11}, {0, 0}}));
+		painter.setPen(QPen(Qt::white, 1));
+		painter.setBrush(Qt::black);
+		painter.drawPath(path);
+
+		// Text field icon badge beside the arrow
+		QPixmap badge = QET::Icons::PartTextField.pixmap(16, 16);
+		if (!badge.isNull()) {
+			painter.drawPixmap(13, 8, badge);
+		}
+
+		cursor = QCursor(pixmap, 0, 0);
+		initialized = !badge.isNull();
+	}
+	return cursor;
+}
 
 /**
 	@brief DiagramEventAddText::mousePressEvent

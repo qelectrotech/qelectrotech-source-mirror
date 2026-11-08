@@ -671,6 +671,9 @@ qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
 # printing and exporting; off with the setting.
 qet_add_app_test(tst_outsidesheet tst_outsidesheet.cpp)
 
+# Text field cursor badge and rich text editor font controls
+qet_add_app_test(tst_textfieldcursorandfont tst_textfieldcursorandfont.cpp)
+
 # legacyelementtypes.h is header-only: the rewrite of element type names in
 # nomenclature queries saved before June 2022.
 add_executable(tst_legacyelementtypes tst_legacyelementtypes.cpp)

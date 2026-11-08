@@ -62,6 +62,7 @@
 #include <QAction>
 #include <QColorDialog>
 #include <QComboBox>
+#include <QFontComboBox>
 #include <QtGui/QFontDatabase>
 #include <QtGui/QTextCursor>
 #include <QtGui/QPainter>
@@ -78,6 +79,10 @@
 #include <QPushButton>
 #include <QDialogButtonBox>
 #include <QActionGroup>
+#include <QSignalBlocker>
+
+#include <qetapp.h>
+#include <qeticons.h>
 
 #include <QStringView>
 
@@ -408,6 +413,8 @@ class RichTextEditorToolBar : public QToolBar
 	private slots:
 	void alignmentActionTriggered(QAction *action);
 	void sizeInputActivated(const QString &size);
+	void fontSelected(const QFont &font);
+	void applyDefaultProjectFont();
 	void colorChanged(const QColor &color);
 	void setVAlignSuper(bool super);
 	void setVAlignSub(bool sub);
@@ -416,6 +423,9 @@ class RichTextEditorToolBar : public QToolBar
 
 
 	private:
+	QFontComboBox *m_font_family_input;
+	QComboBox *m_font_size_input;
+	QAction *m_default_font_action;
 	QAction *m_bold_action;
 	QAction *m_italic_action;
 	QAction *m_underline_action;
@@ -429,7 +439,6 @@ class RichTextEditorToolBar : public QToolBar
 	QAction *m_image_action;
 	QAction *m_simplify_richtext_action;
 	ColorAction *m_color_action;
-	QComboBox *m_font_size_input;
 
 	QPointer<RichTextEditor> m_editor;
 };
@@ -496,15 +505,22 @@ static QAction *createCheckableAction(const QIcon &icon, const QString &text,
 RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 											 QWidget *parent) :
 	QToolBar(parent),
+	m_font_family_input(new QFontComboBox(this)),
+	m_font_size_input(new QComboBox(this)),
 	m_link_action(new QAction(this)),
 	m_image_action(new QAction(this)),
 	m_color_action(new ColorAction(this)),
-	m_font_size_input(new QComboBox),
 	m_editor(editor)
 {
+	// Font family combo box
+	m_font_family_input->setToolTip(tr("Font family"));
+	connect(m_font_family_input, &QFontComboBox::currentFontChanged,
+			this, &RichTextEditorToolBar::fontSelected);
+	addWidget(m_font_family_input);
 
 	// Font size combo box
 	m_font_size_input->setEditable(false);
+	m_font_size_input->setToolTip(tr("Font size"));
 	const QList<int> font_sizes = QFontDatabase::standardSizes();
 	foreach (int font_size, font_sizes)
 		m_font_size_input->addItem(QString::number(font_size));
@@ -512,6 +528,17 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 	connect(m_font_size_input, &QComboBox::textActivated,
 			this, &RichTextEditorToolBar::sizeInputActivated);
 	addWidget(m_font_size_input);
+
+	// Default project font button
+	m_default_font_action = new QAction(
+				QIcon::fromTheme("insert-text", QET::Icons::PartTextField),
+				tr("Default project font"), this);
+	m_default_font_action->setToolTip(tr("Default project font"));
+	connect(m_default_font_action, &QAction::triggered,
+			this, &RichTextEditorToolBar::applyDefaultProjectFont);
+	addAction(m_default_font_action);
+
+	addSeparator();
 
 
 	// Bold, italic and underline buttons
@@ -652,6 +679,55 @@ void RichTextEditorToolBar::sizeInputActivated(const QString &size)
 	m_editor->setFocus();
 }
 
+void RichTextEditorToolBar::fontSelected(const QFont &font)
+{
+	if (!m_editor)
+		return;
+
+	QTextCursor cursor = m_editor->textCursor();
+	if (cursor.hasSelection()) {
+		cursor.beginEditBlock();
+		QTextCharFormat format;
+		format.setFontFamilies({font.family()});
+		cursor.mergeCharFormat(format);
+		cursor.endEditBlock();
+	} else {
+		m_editor->setFontFamily(font.family());
+	}
+	m_editor->setFocus();
+}
+
+void RichTextEditorToolBar::applyDefaultProjectFont()
+{
+	if (!m_editor)
+		return;
+
+	QFont defaultFont = QETApp::indiTextsItemFont();
+	m_editor->document()->setDefaultFont(defaultFont);
+
+	QTextCursor cursor = m_editor->textCursor();
+	cursor.beginEditBlock();
+	QTextCharFormat format;
+	format.setFontFamilies({defaultFont.family()});
+
+	if (cursor.hasSelection()) {
+		cursor.mergeCharFormat(format);
+	} else {
+		// When no text is selected, unify font family for the entire document
+		QTextCursor fullCursor(m_editor->document());
+		fullCursor.select(QTextCursor::Document);
+		fullCursor.mergeCharFormat(format);
+	}
+	cursor.endEditBlock();
+
+	m_editor->setFontFamily(defaultFont.family());
+	{
+		const QSignalBlocker blocker(m_font_family_input);
+		m_font_family_input->setCurrentFont(defaultFont);
+	}
+	m_editor->setFocus();
+}
+
 void RichTextEditorToolBar::setVAlignSuper(bool super)
 {
 	const QTextCharFormat::VerticalAlignment align = super ?
@@ -724,10 +800,17 @@ void RichTextEditorToolBar::updateActions()
 	m_valign_sup_action->setChecked(superScript);
 	m_valign_sub_action->setChecked(subScript);
 
+	{
+		const QSignalBlocker blocker(m_font_family_input);
+		m_font_family_input->setCurrentFont(font);
+	}
+
 	const int size = font.pointSize();
 	const int idx = m_font_size_input->findText(QString::number(size));
-	if (idx != -1)
+	if (idx != -1) {
+		const QSignalBlocker blocker(m_font_size_input);
 		m_font_size_input->setCurrentIndex(idx);
+	}
 
 	m_color_action->setColor(m_editor->textColor());
 }
