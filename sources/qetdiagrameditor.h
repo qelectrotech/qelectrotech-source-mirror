@@ -54,6 +54,7 @@ class ElementsCollectionWidget;
 class ElementPickerPopup;
 class CommandSearchPopup;
 class AutoNumberingDockWidget;
+class DeviceNavigatorDockWidget;
 class TerminalNumberingDialog;
 
 class KAutoSaveFile;
@@ -117,6 +118,7 @@ class QETDiagramEditor : public QETMainWindow
 		void setUpUndoStack     ();
 		void setUpSelectionPropertiesEditor();
 		void setUpAutonumberingWidget();
+		void setUpDeviceNavigatorDock();
 		void setUpActions       ();
 		void setUpToolBar       ();
 		void setUpMenu          ();
@@ -438,6 +440,7 @@ class QETDiagramEditor : public QETMainWindow
 		
 		QUndoGroup undo_group;
 		AutoNumberingDockWidget *m_autonumbering_dock;
+		DeviceNavigatorDockWidget *m_device_navigator_dock = nullptr;
 		int activeSubWindowIndex;
 		SearchAndReplaceWidget m_search_and_replace_widget;
 };
