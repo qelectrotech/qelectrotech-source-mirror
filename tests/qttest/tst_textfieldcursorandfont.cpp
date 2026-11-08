@@ -99,6 +99,7 @@ void tst_TextFieldCursorAndFont::testRichTextEditorFontControls()
 
 	QAction *defaultFontAction = nullptr;
 	QAction *bgColorAction = nullptr;
+	QAction *textColorAction = nullptr;
 	for (QAction *action : toolbar->actions()) {
 		if (action->text() == tr("Default project font") ||
 			action->toolTip() == tr("Default project font")) {
@@ -108,9 +109,16 @@ void tst_TextFieldCursorAndFont::testRichTextEditorFontControls()
 			action->toolTip() == tr("Text Background Color")) {
 			bgColorAction = action;
 		}
+		if (action->text() == tr("Text Color") ||
+			action->toolTip() == tr("Text Color")) {
+			textColorAction = action;
+		}
 	}
 	QVERIFY(defaultFontAction != nullptr);
 	QVERIFY(bgColorAction != nullptr);
+	QVERIFY(textColorAction != nullptr);
+	QVERIFY(!bgColorAction->icon().isNull());
+	QVERIFY(!textColorAction->icon().isNull());
 }
 
 void tst_TextFieldCursorAndFont::testDefaultProjectFontUnification()

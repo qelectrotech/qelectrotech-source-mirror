@@ -406,8 +406,7 @@ class ColorAction : public QAction
 
 ColorAction::ColorAction(Mode mode, QObject *parent):
 	QAction(parent),
-	m_mode(mode),
-	m_color(mode == TextColorMode ? Qt::black : Qt::transparent)
+	m_mode(mode)
 {
 	if (m_mode == TextColorMode) {
 		setText(tr("Text Color"));
@@ -457,49 +456,30 @@ ColorAction::ColorAction(Mode mode, QObject *parent):
 
 void ColorAction::setColor(const QColor &color)
 {
-	if (color == m_color)
+	if (color == m_color && !icon().isNull())
 		return;
 	m_color = color;
 	QPixmap pix(24, 24);
-	pix.fill(Qt::transparent);
 	QPainter painter(&pix);
-	painter.setRenderHint(QPainter::Antialiasing, true);
+	painter.setRenderHint(QPainter::Antialiasing, false);
 
 	if (m_mode == TextColorMode) {
-		QFont f = painter.font();
-		f.setBold(true);
-		f.setPixelSize(14);
-		painter.setFont(f);
-		painter.setPen(Qt::black);
-		painter.drawText(QRect(0, 0, 24, 16), Qt::AlignCenter, "A");
-
-		painter.fillRect(2, 18, 20, 4, m_color);
-		painter.setPen(m_color.darker());
-		painter.drawRect(2, 18, 19, 3);
+		painter.fillRect(pix.rect(), m_color.isValid() ? m_color : Qt::black);
+		painter.setPen((m_color.isValid() ? m_color : Qt::black).darker());
+		painter.drawRect(pix.rect().adjusted(0, 0, -1, -1));
 	} else {
 		// Background Color Mode
-		if (m_color == Qt::transparent || !m_color.isValid() || m_color.alpha() == 0) {
-			painter.setPen(QPen(Qt::gray, 1));
-			painter.drawRect(2, 3, 19, 17);
+		if (!m_color.isValid() || m_color == Qt::transparent || m_color.alpha() == 0) {
+			pix.fill(Qt::white);
+			painter.setPen(Qt::gray);
+			painter.drawRect(pix.rect().adjusted(0, 0, -1, -1));
+			painter.setRenderHint(QPainter::Antialiasing, true);
 			painter.setPen(QPen(Qt::red, 2));
-			painter.drawLine(3, 20, 21, 3);
-
-			QFont f = painter.font();
-			f.setPixelSize(11);
-			painter.setFont(f);
-			painter.setPen(Qt::darkGray);
-			painter.drawText(QRect(0, 0, 24, 24), Qt::AlignCenter, "ab");
+			painter.drawLine(2, 22, 22, 2);
 		} else {
-			painter.fillRect(2, 3, 20, 18, m_color);
+			painter.fillRect(pix.rect(), m_color);
 			painter.setPen(m_color.darker());
-			painter.drawRect(2, 3, 19, 17);
-
-			QFont f = painter.font();
-			f.setBold(true);
-			f.setPixelSize(11);
-			painter.setFont(f);
-			painter.setPen(m_color.lightness() < 128 ? Qt::white : Qt::black);
-			painter.drawText(QRect(0, 0, 24, 24), Qt::AlignCenter, "ab");
+			painter.drawRect(pix.rect().adjusted(0, 0, -1, -1));
 		}
 	}
 	setIcon(pix);
