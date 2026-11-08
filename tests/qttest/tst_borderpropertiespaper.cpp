@@ -41,7 +41,7 @@ class tst_borderpropertiespaper : public QObject
 	{
 		BorderProperties bp;
 		BorderPropertiesWidget w(bp);
-		w.setTitleBlockSize(50, Qt::BottomEdge);
+		w.setTitleBlockSize(50, Qt::BottomEdge, Qt::AlignTop);
 		auto *paper = w.findChild<QComboBox *>("m_paper_cb");
 		auto *orient = w.findChild<QComboBox *>("m_orientation_cb");
 		auto *cw = w.findChild<QSpinBox *>("m_columns_width_sp");
@@ -77,7 +77,7 @@ class tst_borderpropertiespaper : public QObject
 	{
 		BorderProperties bp;
 		BorderPropertiesWidget w(bp);
-		w.setTitleBlockSize(50, Qt::BottomEdge);
+		w.setTitleBlockSize(50, Qt::BottomEdge, Qt::AlignTop);
 		auto *label = w.findChildren<QLabel *>().last();
 		auto *cw = w.findChild<QSpinBox *>("m_columns_width_sp");
 		auto *rh = w.findChild<QSpinBox *>("m_rows_height_sp");
