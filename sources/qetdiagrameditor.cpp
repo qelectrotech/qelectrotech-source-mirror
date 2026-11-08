@@ -2323,9 +2323,16 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce)
 		//nothing, and File > Quit records those of every window itself
 		//(QETApp::closeEveryEditor())
 	QStringList open_here;
-	for (ProjectView *project_view : openedProjects())
-		if (!project_view->project()->filePath().isEmpty())
-			open_here << project_view->project()->filePath();
+		//and the folio each one shows, to show it again
+	QVariantMap folio_at_quit = QSettings().value(QStringLiteral("projects/folio_at_quit")).toMap();
+	for (ProjectView *project_view : openedProjects()) {
+		const QString file = project_view->project()->filePath();
+		if (file.isEmpty())
+			continue;
+		open_here << file;
+		if (DiagramView *view = project_view->currentDiagram())
+			folio_at_quit.insert(file, project_view->project()->folioIndex(view->diagram()));
+	}
 
 	// quitte directement s'il n'y a aucun projet ouvert
 	bool can_quit = true;
@@ -2347,6 +2354,7 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce)
 	if (can_quit) {
 		if (QETApp::diagramEditors().size() <= 1)
 			QSettings().setValue(QStringLiteral("projects/open_at_quit"), open_here);
+		QSettings().setValue(QStringLiteral("projects/folio_at_quit"), folio_at_quit);
 		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
 		qce -> accept();
