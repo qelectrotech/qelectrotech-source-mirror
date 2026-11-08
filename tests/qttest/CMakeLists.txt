@@ -593,6 +593,9 @@ qet_add_app_test(tst_touchingconductor tst_touchingconductor.cpp)
 # bounding rect covers the drawing, not only the frame.
 qet_add_app_test(tst_symboloutsideframe tst_symboloutsideframe.cpp)
 qet_add_app_test(tst_updateelements tst_updateelements.cpp)
+# Editing a placed element: redrawn on save; optionally found and edited
+# in the collection it was taken from, which updates the open projects.
+qet_add_app_test(tst_editcollectionsource tst_editcollectionsource.cpp)
 qet_add_app_test(tst_selectionrectangle tst_selectionrectangle.cpp)
 # The arrow keys: the crosshair on the leftmost selected symbol's terminal
 # or a text's middle; the folio's grid step when set so.

@@ -274,7 +274,7 @@ void ElementPropertiesWidget::findInPanel()
 {
 	if (m_element && m_diagram)
 	{
-		m_diagram->findElementRequired(m_element.data()->location());
+		m_diagram->findElementRequired(m_element.data()->location().forFindAndEdit());
 		emit findEditClicked();
 	}
 }
@@ -287,8 +287,9 @@ void ElementPropertiesWidget::editElement()
 {
 	if (m_element && m_diagram)
 	{
-		m_diagram->findElementRequired(m_element.data()->location());
-		QETApp::instance()->openElementLocations(QList<ElementsLocation>() << m_element.data()->location());
+		const ElementsLocation location = m_element.data()->location().forFindAndEdit();
+		m_diagram->findElementRequired(location);
+		QETApp::instance()->openElementLocations(QList<ElementsLocation>() << location);
 		emit findEditClicked();
 	}
 }

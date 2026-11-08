@@ -5503,15 +5503,16 @@ void QETDiagramEditor::slot_cableNumbering() {
 
 	Purely visual and not undoable, the way pressing a "refresh" button
 	would be: nothing is pushed on the undo stack and the project is not
-	marked as modified. Elements whose size, hotspot or terminals changed
-	are skipped and listed: they must be removed and re-inserted, which
-	deletes the conductors already connected to them.
+	marked as modified. A new size or hotspot is taken over -- the element
+	editor recomputes both on every save -- but elements whose terminals
+	changed are skipped and listed: they must be removed and re-inserted,
+	which deletes the conductors already connected to them.
 */
 void QETDiagramEditor::slot_reloadElementDrawings() {
 	QETProject *project = currentProject();
 	if (!project) return;
 
-	reloadElementDrawings(project, false, tr("Reload element drawings"), QString());
+	reloadElementDrawings(project, true, tr("Reload element drawings"), QString());
 }
 
 /**
