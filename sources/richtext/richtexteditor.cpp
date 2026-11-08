@@ -353,7 +353,9 @@ class ColorAction : public QAction
 	Q_OBJECT
 
 	public:
-	ColorAction(QObject *parent);
+	enum Mode { TextColorMode, BackgroundColorMode };
+
+	ColorAction(Mode mode, QObject *parent);
 
 	const QColor& color() const { return m_color; }
 	void setColor(const QColor &color);
@@ -365,15 +367,59 @@ class ColorAction : public QAction
 	void chooseColor();
 
 	private:
+	Mode m_mode;
 	QColor m_color;
 };
 
-ColorAction::ColorAction(QObject *parent):
-	QAction(parent)
+ColorAction::ColorAction(Mode mode, QObject *parent):
+	QAction(parent),
+	m_mode(mode),
+	m_color(mode == TextColorMode ? Qt::black : Qt::transparent)
 {
-	setText(tr("Text Color"));
-	setColor(Qt::black);
-	connect(this, &ColorAction::triggered, this, &ColorAction::chooseColor);
+	if (m_mode == TextColorMode) {
+		setText(tr("Text Color"));
+		setToolTip(tr("Text Color"));
+		setColor(Qt::black);
+		connect(this, &ColorAction::triggered, this, &ColorAction::chooseColor);
+	} else {
+		setText(tr("Text Background Color"));
+		setToolTip(tr("Text Background Color"));
+		setColor(Qt::transparent);
+
+		auto *menu = new QMenu();
+		menu->addAction(tr("No background color"), this, [this]() {
+			setColor(Qt::transparent);
+			emit colorChanged(Qt::transparent);
+		});
+		menu->addSeparator();
+
+		const struct { const char *name; QColor color; } swatches[] = {
+			{ "Yellow",      QColor(255, 255,   0) },
+			{ "Light Green", QColor(144, 238, 144) },
+			{ "Light Cyan",  QColor(224, 255, 255) },
+			{ "Light Pink",  QColor(255, 182, 193) },
+			{ "Orange",      QColor(255, 165,   0) },
+			{ "Light Gray",  QColor(211, 211, 211) }
+		};
+		for (const auto &swatch : swatches) {
+			QPixmap swatchPix(16, 16);
+			swatchPix.fill(swatch.color);
+			QPainter p(&swatchPix);
+			p.setPen(Qt::darkGray);
+			p.drawRect(0, 0, 15, 15);
+			QAction *swatchAct = menu->addAction(QIcon(swatchPix), tr(swatch.name));
+			QColor c = swatch.color;
+			connect(swatchAct, &QAction::triggered, this, [this, c]() {
+				setColor(c);
+				emit colorChanged(c);
+			});
+		}
+		menu->addSeparator();
+		menu->addAction(tr("More colors..."), this, &ColorAction::chooseColor);
+
+		setMenu(menu);
+		connect(this, &ColorAction::triggered, this, &ColorAction::chooseColor);
+	}
 }
 
 void ColorAction::setColor(const QColor &color)
@@ -382,18 +428,57 @@ void ColorAction::setColor(const QColor &color)
 		return;
 	m_color = color;
 	QPixmap pix(24, 24);
+	pix.fill(Qt::transparent);
 	QPainter painter(&pix);
-	painter.setRenderHint(QPainter::Antialiasing, false);
-	painter.fillRect(pix.rect(), m_color);
-	painter.setPen(m_color.darker());
-	painter.drawRect(pix.rect().adjusted(0, 0, -1, -1));
+	painter.setRenderHint(QPainter::Antialiasing, true);
+
+	if (m_mode == TextColorMode) {
+		QFont f = painter.font();
+		f.setBold(true);
+		f.setPixelSize(14);
+		painter.setFont(f);
+		painter.setPen(Qt::black);
+		painter.drawText(QRect(0, 0, 24, 16), Qt::AlignCenter, "A");
+
+		painter.fillRect(2, 18, 20, 4, m_color);
+		painter.setPen(m_color.darker());
+		painter.drawRect(2, 18, 19, 3);
+	} else {
+		// Background Color Mode
+		if (m_color == Qt::transparent || !m_color.isValid() || m_color.alpha() == 0) {
+			painter.setPen(QPen(Qt::gray, 1));
+			painter.drawRect(2, 3, 19, 17);
+			painter.setPen(QPen(Qt::red, 2));
+			painter.drawLine(3, 20, 21, 3);
+
+			QFont f = painter.font();
+			f.setPixelSize(11);
+			painter.setFont(f);
+			painter.setPen(Qt::darkGray);
+			painter.drawText(QRect(0, 0, 24, 24), Qt::AlignCenter, "ab");
+		} else {
+			painter.fillRect(2, 3, 20, 18, m_color);
+			painter.setPen(m_color.darker());
+			painter.drawRect(2, 3, 19, 17);
+
+			QFont f = painter.font();
+			f.setBold(true);
+			f.setPixelSize(11);
+			painter.setFont(f);
+			painter.setPen(m_color.lightness() < 128 ? Qt::white : Qt::black);
+			painter.drawText(QRect(0, 0, 24, 24), Qt::AlignCenter, "ab");
+		}
+	}
 	setIcon(pix);
 }
 
 void ColorAction::chooseColor()
 {
-	const QColor col = QColorDialog::getColor(m_color, nullptr, QString(),
-											 QColorDialog::DontUseNativeDialog);
+	QColor initialColor = m_color.isValid() && m_color.alpha() > 0 ? m_color : (m_mode == TextColorMode ? Qt::black : Qt::yellow);
+	const QColor col = QColorDialog::getColor(
+		initialColor, nullptr,
+		m_mode == TextColorMode ? tr("Text Color") : tr("Text Background Color"),
+		QColorDialog::DontUseNativeDialog | QColorDialog::ShowAlphaChannel);
 	if (col.isValid() && col != m_color) {
 		setColor(col);
 		emit colorChanged(m_color);
@@ -416,6 +501,7 @@ class RichTextEditorToolBar : public QToolBar
 	void fontSelected(const QFont &font);
 	void applyDefaultProjectFont();
 	void colorChanged(const QColor &color);
+	void bgColorChanged(const QColor &color);
 	void setVAlignSuper(bool super);
 	void setVAlignSub(bool sub);
 	void insertLink();
@@ -439,6 +525,7 @@ class RichTextEditorToolBar : public QToolBar
 	QAction *m_image_action;
 	QAction *m_simplify_richtext_action;
 	ColorAction *m_color_action;
+	ColorAction *m_bg_color_action;
 
 	QPointer<RichTextEditor> m_editor;
 };
@@ -509,7 +596,8 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 	m_font_size_input(new QComboBox(this)),
 	m_link_action(new QAction(this)),
 	m_image_action(new QAction(this)),
-	m_color_action(new ColorAction(this)),
+	m_color_action(new ColorAction(ColorAction::TextColorMode, this)),
+	m_bg_color_action(new ColorAction(ColorAction::BackgroundColorMode, this)),
 	m_editor(editor)
 {
 	// Font family combo box
@@ -628,6 +716,10 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 	connect(m_color_action, &ColorAction::colorChanged, this, &RichTextEditorToolBar::colorChanged);
 	addAction(m_color_action);
 
+	// Text background color button
+	connect(m_bg_color_action, &ColorAction::colorChanged, this, &RichTextEditorToolBar::bgColorChanged);
+	addAction(m_bg_color_action);
+
 
 	// Simplify rich text
 	m_simplify_richtext_action = createCheckableAction(
@@ -665,6 +757,31 @@ void RichTextEditorToolBar::alignmentActionTriggered(QAction *action)
 void RichTextEditorToolBar::colorChanged(const QColor &color)
 {
 	m_editor->setTextColor(color);
+	m_editor->setFocus();
+}
+
+void RichTextEditorToolBar::bgColorChanged(const QColor &color)
+{
+	if (!m_editor)
+		return;
+
+	QTextCursor cursor = m_editor->textCursor();
+	cursor.beginEditBlock();
+	QTextCharFormat format;
+	if (color == Qt::transparent || !color.isValid() || color.alpha() == 0) {
+		format.setBackground(QBrush(Qt::NoBrush));
+	} else {
+		format.setBackground(color);
+	}
+
+	if (cursor.hasSelection()) {
+		cursor.mergeCharFormat(format);
+	} else {
+		m_editor->setCurrentCharFormat(format);
+	}
+	cursor.endEditBlock();
+
+	m_bg_color_action->setColor(color);
 	m_editor->setFocus();
 }
 
@@ -709,6 +826,7 @@ void RichTextEditorToolBar::applyDefaultProjectFont()
 	cursor.beginEditBlock();
 	QTextCharFormat format;
 	format.setFontFamilies({defaultFont.family()});
+	format.setBackground(QBrush(Qt::NoBrush));
 
 	QTextBlock startBlock;
 	QTextBlock endBlock;
@@ -746,10 +864,12 @@ void RichTextEditorToolBar::applyDefaultProjectFont()
 	cursor.endEditBlock();
 
 	m_editor->setFontFamily(defaultFont.family());
+	m_editor->setTextBackgroundColor(Qt::transparent);
 	{
 		const QSignalBlocker blocker(m_font_family_input);
 		m_font_family_input->setCurrentFont(defaultFont);
 	}
+	m_bg_color_action->setColor(Qt::transparent);
 	m_editor->setFocus();
 }
 
@@ -838,6 +958,13 @@ void RichTextEditorToolBar::updateActions()
 	}
 
 	m_color_action->setColor(m_editor->textColor());
+
+	const QBrush bgBrush = charFormat.background();
+	if (bgBrush.style() == Qt::NoBrush) {
+		m_bg_color_action->setColor(Qt::transparent);
+	} else {
+		m_bg_color_action->setColor(bgBrush.color());
+	}
 }
 
 RichTextEditor::RichTextEditor(QWidget *parent)

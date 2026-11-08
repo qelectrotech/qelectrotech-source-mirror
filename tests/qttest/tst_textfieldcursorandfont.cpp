@@ -96,14 +96,19 @@ void tst_TextFieldCursorAndFont::testRichTextEditorFontControls()
 	QVERIFY(toolbar != nullptr);
 
 	QAction *defaultFontAction = nullptr;
+	QAction *bgColorAction = nullptr;
 	for (QAction *action : toolbar->actions()) {
 		if (action->text() == tr("Default project font") ||
 			action->toolTip() == tr("Default project font")) {
 			defaultFontAction = action;
-			break;
+		}
+		if (action->text() == tr("Text Background Color") ||
+			action->toolTip() == tr("Text Background Color")) {
+			bgColorAction = action;
 		}
 	}
 	QVERIFY(defaultFontAction != nullptr);
+	QVERIFY(bgColorAction != nullptr);
 }
 
 void tst_TextFieldCursorAndFont::testDefaultProjectFontUnification()
@@ -112,10 +117,10 @@ void tst_TextFieldCursorAndFont::testDefaultProjectFontUnification()
 
 	QFont defaultFont = QETApp::indiTextsItemFont();
 
-	// Set initial rich text with disparate fonts (e.g. copied from external document)
+	// Set initial rich text with disparate fonts, heading margins, and background highlight
 	QString initialHtml = QString(
 		"<h1><span style=\"font-family:'Courier New'; font-size:18pt;\">Heading</span></h1>"
-		"<p><span style=\"font-family:'Times New Roman'; font-size:10pt;\">Body text</span></p>");
+		"<p><span style=\"background-color:#ffff00; font-family:'Times New Roman'; font-size:10pt;\">Body text</span></p>");
 	dialog.setText(initialHtml);
 
 	auto *toolbar = dialog.findChild<QToolBar *>();
@@ -146,6 +151,9 @@ void tst_TextFieldCursorAndFont::testDefaultProjectFontUnification()
 	// Disparate margins from heading/paragraphs are cleared to standard spacing
 	QVERIFY(!updatedText.contains("margin-top:18px"));
 	QVERIFY(!updatedText.contains("margin-bottom:12px"));
+
+	// Background color highlight is cleared
+	QVERIFY(!updatedText.contains("background-color"));
 
 	// Now select text and set a specific font family via fontCombo
 	const auto textEdits = dialog.findChildren<QTextEdit *>();
