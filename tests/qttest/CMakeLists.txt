@@ -507,7 +507,7 @@ qet_add_app_test(tst_conductordefcopy tst_conductordefcopy.cpp)
 # ones open when the editor closes are kept for the next start.
 qet_add_app_test(tst_reopenprojects tst_reopenprojects.cpp)
 target_compile_definitions(tst_reopenprojects PRIVATE
-  QET_FIXTURE="${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet")
+  QET_FIXTURE="${CMAKE_CURRENT_SOURCE_DIR}/fixtures/folio_freeze_flags.qet")
 
 # Space on a picture turns its own transform, which the file saves (#1413),
 # alone and with a group.
