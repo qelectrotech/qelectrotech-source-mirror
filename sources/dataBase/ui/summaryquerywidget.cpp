@@ -158,6 +158,15 @@ void SummaryQueryWidget::setUpItems()
 		item->setData(Qt::UserRole, key);
 		m_items_list << item;
 	}
+		//Columns of project_summary_view that are not stored folio
+		//information: the folio's group, else its plant and location
+	for (const QString &key : {QETInformation::DIA_FOLIO_GROUP,
+							   QETInformation::DIA_FOLIO_SUBGROUP})
+	{
+		auto item = new QListWidgetItem(QETInformation::translatedInfoKey(key), ui->m_available_list);
+		item->setData(Qt::UserRole, key);
+		m_items_list << item;
+	}
 	auto item = new QListWidgetItem(tr("Position"), ui->m_available_list);
 	item->setData(Qt::UserRole, "pos");
 	m_items_list << item;

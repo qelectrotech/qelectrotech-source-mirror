@@ -15,14 +15,18 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "dataBase/projectdatabase.h"
 #include "diagram.h"
 #include "qetapptest.h"
 #include "qetproject.h"
 #include "qetresult.h"
 #include "titleblockproperties.h"
+#include "undocommand/changetitleblockcommand.h"
 
 #include <QDomDocument>
 #include <QSettings>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 #include <QTemporaryDir>
 #include <QtTest>
 
@@ -30,7 +34,8 @@
 	A folio's group and sub-group: named by the user, or left empty to be
 	the folio's plant (=) and location (+). Title blocks show them as
 	%{folio_group} and %{folio_subgroup}; a project keeps them when saved
-	as .qet or .qetdb, and a project without them saves as before.
+	as .qet or .qetdb, and a project without them saves as before. The
+	summary (project_summary_view) and qet_folios give the same values.
 */
 class tst_foliogroup : public QObject
 {
@@ -77,6 +82,33 @@ class tst_foliogroup : public QObject
 		const TitleBlockProperties tb =
 				again.diagrams().first()->border_and_titleblock.exportTitleBlock();
 		return {tb.folio_group, tb.folio_subgroup};
+	}
+
+		//"group|sub-group" of every folio of @p project, in folio order,
+		//as @p view gives them
+	static QStringList groupsIn(QETProject &project, const QString &view)
+	{
+		project.dataBase()->updateDB();
+		QString error;
+		const QString order = view == QLatin1String("qet_folios")
+				? QStringLiteral("folio_number") : QStringLiteral("pos");
+		QSqlQuery query = project.dataBase()->newQuery(
+			QStringLiteral("SELECT folio_group, folio_subgroup FROM %1 ORDER BY %2")
+				.arg(view, order), &error);
+		if (!error.isEmpty()) return {error};
+		QStringList rows;
+		while (query.next())
+			rows << query.value(0).toString() + QLatin1Char('|') + query.value(1).toString();
+		return rows;
+	}
+
+		//Two folios: FACTORY +CP1 taking its plant and location, and
+		//SILO +CP2 in its own group "Lists" > "Material list"
+	static void twoFolios(QETProject &project)
+	{
+		setFolio(project.addNewDiagram(), QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		setFolio(project.addNewDiagram(), QStringLiteral("SILO"), QStringLiteral("CP2"),
+				 QStringLiteral("Lists"), QStringLiteral("Material list"));
 	}
 
 private slots:
@@ -211,6 +243,80 @@ private slots:
 		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
 		QCOMPARE(reopened(project, QStringLiteral("none_") + file),
 				 QStringList({QString(), QString()}));
+	}
+
+	void viewsGiveTheGroup_data()
+	{
+		QTest::addColumn<QString>("view");
+		QTest::newRow("summary") << QStringLiteral("project_summary_view");
+		QTest::newRow("qet_folios") << QStringLiteral("qet_folios");
+	}
+
+	void viewsGiveTheGroup()
+	{
+		QFETCH(QString, view);
+		QETProject project;
+		twoFolios(project);
+		QCOMPARE(groupsIn(project, view), QStringList({
+			QStringLiteral("FACTORY|CP1"),
+			QStringLiteral("Lists|Material list")}));
+	}
+
+	void viewsSayWhatTheTitleBlockShows()
+	{
+		QETProject project;
+		twoFolios(project);
+		QStringList shown_rows;
+		for (Diagram *diagram : project.diagrams())
+			shown_rows << shown(diagram, QStringLiteral("folio_group")) + QLatin1Char('|')
+					+ shown(diagram, QStringLiteral("folio_subgroup"));
+		QCOMPARE(groupsIn(project, QStringLiteral("qet_folios")), shown_rows);
+	}
+
+	void viewsFollowAChangeAndItsUndo()
+	{
+		QETProject project;
+		twoFolios(project);
+		Diagram *first = project.diagrams().first();
+		const TitleBlockProperties before = first->border_and_titleblock.exportTitleBlock();
+		TitleBlockProperties after = before;
+		after.folio_group = QStringLiteral("Power");
+		first->undoStack().push(new ChangeTitleBlockCommand(first, before, after));
+		QCOMPARE(groupsIn(project, QStringLiteral("project_summary_view")).first(),
+				 QStringLiteral("Power|CP1"));
+
+		first->undoStack().undo();
+		QCOMPARE(groupsIn(project, QStringLiteral("project_summary_view")).first(),
+				 QStringLiteral("FACTORY|CP1"));
+	}
+
+	void qetdbFileGivesTheGroup()
+	{
+			//Another tool reading the saved file, without QElectroTech
+		QETProject project;
+		twoFolios(project);
+		const QString file = m_dir.filePath(QStringLiteral("views.qetdb"));
+		project.setFilePath(file);
+		QVERIFY(project.write().isOk());
+
+		QStringList rows;
+		const QString name = QStringLiteral("foliogroup_file");
+		{
+			QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), name);
+			db.setDatabaseName(file);
+			db.setConnectOptions(QStringLiteral("QSQLITE_OPEN_READONLY"));
+			QVERIFY(db.open());
+			QSqlQuery query(db);
+			QVERIFY(query.exec(QStringLiteral(
+				"SELECT folio_group, folio_subgroup FROM qet_folios ORDER BY folio_number")));
+			while (query.next())
+				rows << query.value(0).toString() + QLatin1Char('|') + query.value(1).toString();
+			db.close();
+		}
+		QSqlDatabase::removeDatabase(name);
+		QCOMPARE(rows, QStringList({
+			QStringLiteral("FACTORY|CP1"),
+			QStringLiteral("Lists|Material list")}));
 	}
 };
 
