@@ -48,7 +48,9 @@ namespace ProjectReports
 			/// A device and its pin: =P+L-K1:13
 		QString pin(const QString &device, const QString &terminal)
 		{
-			return QStringLiteral("%1 || CASE WHEN COALESCE(%2, '') <> '' THEN ':' || %2 ELSE '' END")
+				//A strip terminal's designation already ends with its number
+			return QStringLiteral("%1 || CASE WHEN COALESCE(%2, '') = '' "
+								  "OR substr(%1, -length(%2) - 1) = ':' || %2 THEN '' ELSE ':' || %2 END")
 					.arg(device, terminal);
 		}
 

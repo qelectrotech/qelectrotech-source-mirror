@@ -149,6 +149,15 @@ class tst_projectreports : public QObject
 		QCOMPARE(table.rows.first(), QStringList({QStringLiteral("101"), QStringLiteral("2.5mm"),
 												  QStringLiteral("Y/GN"), QStringLiteral("=FACTORY+CP1-K1:2"),
 												  QStringLiteral("=FACTORY+CP1-K2:1"), QString(), QStringLiteral("1")}));
+			//A terminal X5:1 with the pin 1 is X5:1, not X5:1:1
+		Diagram *folio = project.folios().first();
+		Element *x = symbol(folio, QStringLiteral("X5:1"));
+		Element *k = symbol(folio, QStringLiteral("K3"));
+		QVERIFY(x && k);
+		auto *conductor = new Conductor(k->terminals().at(1), x->terminals().at(0));
+		folio->addItem(conductor);
+		const auto again = ProjectReports::read(&project, ProjectReports::report(QStringLiteral("wires")));
+		QVERIFY(column(again, 4).contains(QStringLiteral("=FACTORY+CP1-X5:1")));
 	}
 
 	void limitedToAPlace()
