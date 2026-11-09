@@ -117,6 +117,35 @@ class tst_keyboardmovereference : public QObject
 			QCOMPARE(m_left->terminals().first()->dockConductor(), before);
 		}
 
+			//Pressed near its terminal: the arrow keys keep the crosshair
+			//on that terminal; pressed on the body, on the insertion point
+		void pressedTerminalIsReference()
+		{
+			m_diagram->clearSelection();
+			const QPoint near_terminal = m_view->mapFromScene(m_left->terminals().first()->dockConductor() + QPointF(5, 3));
+			const auto click = [this](const QPoint &at) {
+				QMouseEvent press(QEvent::MouseButtonPress, at, m_view->viewport()->mapToGlobal(at),
+						  Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+				QApplication::sendEvent(m_view->viewport(), &press);
+				QMouseEvent release(QEvent::MouseButtonRelease, at, m_view->viewport()->mapToGlobal(at),
+						    Qt::LeftButton, Qt::NoButton, Qt::NoModifier);
+				QApplication::sendEvent(m_view->viewport(), &release);
+			};
+			click(near_terminal);
+			QVERIFY(m_left->isSelected());
+			key(Qt::Key_Right);
+			QCOMPARE(m_view->crosshairPos(), m_left->terminals().first()->dockConductor());
+			key(Qt::Key_Left);
+
+			m_diagram->clearSelection();
+			click(m_view->mapFromScene(m_left->scenePos() + QPointF(5, 8)));
+			QVERIFY(m_left->isSelected());
+			key(Qt::Key_Right);
+			QCOMPARE(m_view->crosshairPos(), m_left->scenePos());
+			key(Qt::Key_Left);
+			m_diagram->clearSelection();
+		}
+
 			//A text: its middle, not its top left corner
 		void middleOfText()
 		{

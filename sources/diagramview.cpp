@@ -1132,6 +1132,27 @@ void DiagramView::mousePressEvent(QMouseEvent *original)
 		m_press_places = true;
 		QGraphicsItem *pressed = itemAt(e->pos());
 		m_dragged_element = pressed->type() == Element::Type ? static_cast<Element *>(pressed) : nullptr;
+			//Pressed near one of its terminals: that one is the reference
+		m_reference_terminal = nullptr;
+		Element *symbol = m_dragged_element;
+		if (!symbol && pressed->type() == Terminal::Type)
+			symbol = static_cast<Terminal *>(pressed)->parentElement();
+		if (symbol) {
+				//Close to it (beside its own area, where a press draws a
+				//wire), whatever the zoom
+			constexpr qreal reach = 8;
+			const QPointF at = mapToScene(e->pos());
+			qreal best = reach + 1;
+			for (Terminal *t : symbol->terminals()) {
+				const qreal d = QLineF(t->dockConductor(), at).length();
+				if (d <= reach && d < best) {
+					best = d;
+					m_reference_terminal = t;
+				}
+			}
+			if (m_reference_terminal)
+				viewport()->update();
+		}
 		moveCrosshair(e->pos());
 	}
 
@@ -2549,8 +2570,11 @@ void DiagramView::moveCrosshair(const QPoint &viewport_pos)
 		//wherever the symbol was grabbed
 	Element *moving = m_dragged_element && m_press_places ? m_dragged_element.data()
 			: m_diagram ? m_diagram->pendingElement() : nullptr;
-	if (moving && !handle)
-		pos = moving->scenePos();
+	if (moving && !handle) {
+		Terminal *reference = referenceTerminal();
+		pos = reference && reference->parentElement() == moving ? reference->dockConductor()
+									  : moving->scenePos();
+	}
 	if (m_crosshair_visible && pos == m_crosshair_pos)
 		return;
 	if (m_crosshair_visible)
@@ -2660,8 +2684,14 @@ void DiagramView::crosshairOnMovedSelection()
 	if (!reference)
 		return;
 	QList<QPointF> points;
-	if (reference_is_symbol)
-		points << reference->scenePos();	//its insertion point
+	if (reference_is_symbol) {
+			//The terminal pressed on, else its insertion point
+		Terminal *terminal = referenceTerminal();
+		if (terminal && terminal->parentElement() == reference)
+			points << terminal->dockConductor();
+		else
+			points << reference->scenePos();
+	}
 	if (points.isEmpty()) {
 		if (dynamic_cast<DiagramTextItem *>(reference)
 		    || reference->type() == ElementTextItemGroup::Type)
@@ -2712,6 +2742,18 @@ void DiagramView::hideCrosshair()
 void DiagramView::drawForeground(QPainter *painter, const QRectF &rect)
 {
 	PaletteGraphicsView::drawForeground(painter, rect);
+		//The reference terminal of the selected symbol: a ring around it
+	if (Terminal *terminal = referenceTerminal()) {
+		QPainter *rp = scenePainter(painter);
+		rp->save();
+		QPen pen(QApplication::palette().color(QPalette::Highlight), 2);
+		pen.setCosmetic(true);
+		rp->setPen(pen);
+		rp->setBrush(Qt::NoBrush);
+		rp->setRenderHint(QPainter::Antialiasing, true);
+		rp->drawEllipse(terminal->dockConductor(), 4.0, 4.0);
+		rp->restore();
+	}
 	if (!m_crosshair_visible || !crosshairShown() || !m_diagram)
 		return;
 
@@ -3726,4 +3768,19 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e)
 		return;
 	}
 	QGraphicsView::mouseDoubleClickEvent(e);
+}
+
+/**
+	@brief DiagramView::referenceTerminal
+	@return the terminal pressed on of a symbol that is still selected,
+	the point the crosshair stands on while it is moved; else nullptr
+*/
+Terminal *DiagramView::referenceTerminal() const
+{
+	if (!m_reference_terminal || !m_diagram)
+		return nullptr;
+	Element *symbol = m_reference_terminal->parentElement();
+	if (!symbol || !symbol->isSelected() || symbol->scene() != m_diagram)
+		return nullptr;
+	return m_reference_terminal;
 }
