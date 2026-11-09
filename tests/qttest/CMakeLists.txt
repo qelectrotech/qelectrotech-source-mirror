@@ -500,6 +500,9 @@ qet_add_app_test(tst_textcolourbutton tst_textcolourbutton.cpp)
 qet_add_app_test(tst_conductordefinitionmark tst_conductordefinitionmark.cpp)
 target_compile_definitions(tst_conductordefinitionmark PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
+# Two different symbols carrying the same uuid (one copied from the other and
+# redrawn) each keep their own drawing (#1789).
+qet_add_app_test(tst_symbolpicturecache tst_symbolpicturecache.cpp)
 # A copy of a conductor definition keeps the point its right-aligned texts
 # stand on, as a copy of a folio report does.
 qet_add_app_test(tst_conductordefcopy tst_conductordefcopy.cpp)
