@@ -90,6 +90,13 @@
         </layout>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_editor_like_folio_cb">
+         <property name="text">
+          <string>Symbol editor: draw like the folio, frame on the grid around the insertion point</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_zoom_out_beyond_folio">
          <property name="text">
           <string>Allow unzoom beyond the sheet</string>
@@ -1831,6 +1838,7 @@
   <tabstop>m_use_system_color_cb</tabstop>
   <tabstop>m_use_gesture_trackpad</tabstop>
   <tabstop>m_selection_rectangle_cb</tabstop>
+  <tabstop>m_editor_like_folio_cb</tabstop>
   <tabstop>m_zoom_out_beyond_folio</tabstop>
   <tabstop>m_conductor_properties_panel</tabstop>
   <tabstop>m_terminal_conductor_color</tabstop>

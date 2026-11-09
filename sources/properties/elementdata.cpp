@@ -264,6 +264,13 @@ QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 		returned_elmt.appendChild(xml_func);
 	}
 
+	for (const auto &other : std::as_const(m_other_kind_informations)) {
+		auto xml_other = document.createElement(QStringLiteral("kindInformation"));
+		xml_other.setAttribute(QStringLiteral("name"), other.first);
+		xml_other.appendChild(document.createTextNode(other.second));
+		returned_elmt.appendChild(xml_other);
+	}
+
 	return returned_elmt;
 }
 
@@ -619,6 +626,9 @@ bool ElementData::terminalPropertiesIsOverrided() const
 bool ElementData::operator==(const ElementData &data) const
 {
 	if (data.m_type != m_type) {
+		return false;
+	}
+	if (data.m_other_kind_informations != m_other_kind_informations) {
 		return false;
 	}
 
@@ -1028,6 +1038,26 @@ QString ElementData::translatedTerminalFunction(ElementData::TerminalFunction fu
 
 void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 {
+	m_other_kind_informations.clear();
+	{
+		auto xml_kind = xml_element.firstChildElement(QStringLiteral("kindInformations"));
+		for (const auto &dom_elmt : QETXML::findInDomElement(xml_kind, QStringLiteral("kindInformation")))
+		{
+			const QString name = dom_elmt.attribute(QStringLiteral("name"));
+			if (name.isEmpty())
+				continue;
+			bool known = false;
+			if (m_type == ElementData::Master)
+				known = name == QLatin1String("type") || name == QLatin1String("max_slaves");
+			else if (m_type == ElementData::Slave)
+				known = name == QLatin1String("type") || name == QLatin1String("state")
+					|| name == QLatin1String("number");
+			else if (m_type == ElementData::Terminal)
+				known = name == QLatin1String("type") || name == QLatin1String("function");
+			if (!known)
+				m_other_kind_informations << qMakePair(name, dom_elmt.text());
+		}
+	}
 	if (m_type == ElementData::Master ||
 		m_type == ElementData::Slave  ||
 		m_type == ElementData::Terminal)

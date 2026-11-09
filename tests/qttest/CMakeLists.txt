@@ -608,6 +608,9 @@ qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
 # pastes its parts, centred on the drop and on the grid; double-clicked, the
 # user chooses where; a read-only element refuses the drag.
 qet_add_app_test(tst_elementeditorcollection tst_elementeditorcollection.cpp)
+# The symbol editor like the folio: frame on the grid around the origin,
+# "Set the insertion point".
+qet_add_app_test(tst_editorlikefolio tst_editorlikefolio.cpp)
 
 # A folio's pictures, decoded in parallel, each come back with its own
 # pixels and position; an <image> with no picture does not stop the others.
