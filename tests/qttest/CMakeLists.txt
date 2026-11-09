@@ -562,6 +562,8 @@ qet_add_app_test(tst_partdata tst_partdata.cpp)
 qet_add_app_test(tst_pasteaxislock tst_pasteaxislock.cpp)
 # Split-view materials list dialog with inline editing and creation.
 qet_add_app_test(tst_materiallistedit tst_materiallistedit.cpp)
+# Saying once the device type of a part of the material list.
+qet_add_app_test(tst_parttypes tst_parttypes.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
