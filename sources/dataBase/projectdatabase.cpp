@@ -2836,9 +2836,11 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		//laid-out size, a picture's pixels): with folios not built yet
 		//(lazy folios) a read of them builds those first, and so does a
 		//read of the view made of them. Every other table was filled from
-		//the document.
+		//the document. A word in quotes is a value, not a table: the
+		//structure boxes' subquery (structurePlacesSql()) reads
+		//drawing_item rows of section 'shape', filled from the document.
 	static const QRegularExpression drawing_tables(
-			QStringLiteral("\\b(shape|independent_text|image|drawing_item_view)\\b"),
+			QStringLiteral("(?<!')\\b(shape|independent_text|image|drawing_item_view)\\b(?!')"),
 			QRegularExpression::CaseInsensitiveOption);
 	if (m_project && m_project->unloadedFolioCount() && drawing_tables.match(query).hasMatch()) {
 		m_project->loadFolios();

@@ -33,6 +33,13 @@
 #include "qetgraphicsitem/slaveelement.h"
 #include "cable/cable.h"
 #include "ElementsCollection/elementslocation.h"
+#include "ElementsCollection/xmlelementcollection.h"
+#include "factory/elementfactory.h"
+#include "qetgraphicsitem/structureboxitem.h"
+#include "qetresult.h"
+
+#include <QDomDocument>
+#include <QTemporaryDir>
 
 class tst_devicenavigator : public QObject
 {
@@ -56,6 +63,13 @@ class tst_devicenavigator : public QObject
 		void testFilterDialogOkPersistsEdits();
 		void testFilterDialogDeleteDoesNotOverwriteNext();
 		void testLazyLoadingOpensProjectWithoutBuildingFolios();
+		void testStructureBoxGivesThePlace();
+		void testStructureBoxOfAnUnbuiltFolio();
+
+	private:
+		Element *symbol(Diagram *diagram);
+		void structureBoxFolio(Diagram *diagram);
+		void checkStructureBoxTree(DeviceNavigatorDockWidget &nav);
 };
 
 void tst_devicenavigator::initTestCase()
@@ -831,6 +845,118 @@ void tst_devicenavigator::testLazyLoadingOpensProjectWithoutBuildingFolios()
 	auto *table = nav.findChild<QTableWidget*>(QStringLiteral("m_table_widget"));
 	QVERIFY(table != nullptr);
 	QVERIFY(table->rowCount() > 0);
+}
+
+Element *tst_devicenavigator::symbol(Diagram *diagram)
+{
+	auto *collection = diagram->project()->embeddedElementCollection();
+	if (!collection->exist(QStringLiteral("import/simple.elmt"))) {
+		QDomDocument definition;
+		definition.setContent(
+			QString(R"(<definition type="element" link_type="simple" uuid="%1" width="20" height="40" hotspot_x="10" hotspot_y="20">
+<names><name lang="en">Test symbol</name></names>
+<description><line x1="0" y1="-10" x2="0" y2="10"/>
+<terminal x="0" y="-20" orientation="n" uuid="%2"/><terminal x="0" y="20" orientation="s" uuid="%3"/>
+</description></definition>)")
+				.arg(QUuid::createUuid().toString(),
+					 QUuid::createUuid().toString(),
+					 QUuid::createUuid().toString()));
+		if (!collection->addElementDefinition(
+				QStringLiteral("import"), QStringLiteral("simple"),
+				definition.documentElement()))
+			return nullptr;
+	}
+	int state = 0;
+	Element *element = ElementFactory::Instance()->createElement(
+		ElementsLocation(QStringLiteral("embed://import/simple.elmt"),
+						 diagram->project()),
+		nullptr, &state);
+	if (state || !element) return nullptr;
+	diagram->addItem(element);
+	return element;
+}
+
+// A folio =FACTORY +CP1 holding a box +FIELD: K1 in the box, K2 outside it,
+// K3 in the box with its own location
+void tst_devicenavigator::structureBoxFolio(Diagram *diagram)
+{
+	TitleBlockProperties folio;
+	folio.plant = QStringLiteral("FACTORY");
+	folio.locmach = QStringLiteral("CP1");
+	diagram->border_and_titleblock.importTitleBlock(folio);
+
+	auto *box = new StructureBoxItem(QPointF(100, 100), QPointF(500, 500));
+	box->setLocation(QStringLiteral("FIELD"));
+	diagram->addItem(box);
+
+	const auto place = [this, diagram](const QString &label, QPointF pos,
+									   const QString &location) {
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		element->setPos(pos);
+		DiagramContext dc = element->elementInformations();
+		dc.addValue(QStringLiteral("label"), label);
+		if (!location.isEmpty())
+			dc.addValue(QStringLiteral("location"), location);
+		element->setElementInformations(dc);
+	};
+	place(QStringLiteral("K1"), QPointF(200, 200), QString());
+	place(QStringLiteral("K2"), QPointF(800, 800), QString());
+	place(QStringLiteral("K3"), QPointF(300, 300), QStringLiteral("DB50"));
+}
+
+void tst_devicenavigator::checkStructureBoxTree(DeviceNavigatorDockWidget &nav)
+{
+	auto *tree = nav.findChild<QTreeWidget*>(QStringLiteral("m_tree_widget"));
+	QVERIFY(tree);
+	QCOMPARE(tree->topLevelItemCount(), 1);
+	QMap<QString, QStringList> shown;
+	QTreeWidgetItem *root = tree->topLevelItem(0);
+	for (int s = 0 ; s < root->childCount() ; ++s)
+		for (int d = 0 ; d < root->child(s)->childCount() ; ++d)
+			shown[root->child(s)->text(0)] << root->child(s)->child(d)->text(0);
+	QMap<QString, QStringList> expected;
+	expected[QStringLiteral("=FACTORY +FIELD")] = {QStringLiteral("K1")};
+	expected[QStringLiteral("=FACTORY +CP1")] = {QStringLiteral("K2")};
+	expected[QStringLiteral("=FACTORY +DB50")] = {QStringLiteral("K3")};
+	QCOMPARE(shown, expected);
+}
+
+void tst_devicenavigator::testStructureBoxGivesThePlace()
+{
+	QETProject project;
+	structureBoxFolio(project.addNewDiagram());
+	if (QTest::currentTestFailed()) return;
+
+	DeviceNavigatorDockWidget nav;
+	nav.setProject(&project);
+	nav.reload();
+	checkStructureBoxTree(nav);
+}
+
+void tst_devicenavigator::testStructureBoxOfAnUnbuiltFolio()
+{
+	QTemporaryDir dir;
+	QVERIFY(dir.isValid());
+	const QString path = dir.filePath(QStringLiteral("boxes.qet"));
+	{
+		QETProject project;
+		structureBoxFolio(project.addNewDiagram());
+		if (QTest::currentTestFailed()) return;
+		project.setFilePath(path);
+		const QETResult saved = project.write();
+		QVERIFY2(saved.isOk(), qPrintable(saved.errorMessage()));
+	}
+
+	QETProject project(path);
+	QCOMPARE(project.unloadedFolioCount(), 1);
+
+	DeviceNavigatorDockWidget nav;
+	nav.show();
+	nav.setProject(&project);
+	nav.reload();
+	QCOMPARE(project.unloadedFolioCount(), 1);
+	checkStructureBoxTree(nav);
 }
 
 QTEST_MAIN(tst_devicenavigator)
