@@ -75,7 +75,7 @@ class ElementView : public PaletteGraphicsView {
 	static int gridStep();
 	static void setGridStep(int step);
 		/// The step parts snap to at the current zoom
-	int currentGridStep() const { return m_current_step; }
+	int currentGridStep() const;
 
 	signals:
 		/// The zoom or the grid step on screen changed

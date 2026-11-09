@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementscene.h"
+#include "elementview.h"
 
 #include <ElementsCollection/terminaluuids.h>
 #include <borderproperties.h>
@@ -287,55 +288,44 @@ void ElementScene::keyPressEvent(QKeyEvent *event)
 		}
 	}
 
-	if(selectedItems().size() == 1)
+		//A text being typed in takes the keys
+	if(selectedItems().size() == 1 && selectedItems().first()->type() == PartText::Type)
 	{
-		if(selectedItems().first()->type() == PartText::Type)
+		PartText *t = static_cast<PartText *>(selectedItems().first());
+		if(t->textInteractionFlags() & Qt::TextEditorInteraction)
 		{
-			PartText *t = static_cast<PartText *>(selectedItems().first());
-			if(t->textInteractionFlags() & Qt::TextEditorInteraction)
-			{
-				QGraphicsScene::keyPressEvent(event);
-				return;
-			}
+			QGraphicsScene::keyPressEvent(event);
+			return;
 		}
+	}
 
-		QGraphicsObject *qgo = selectedItems().first()->toGraphicsObject();
-		if(qgo)
+		//The arrow keys move the selected parts, all of them: by 0.1 with
+		//Ctrl, else by 1, or by the grid step when drawing like the folio
+	const int k = event->key();
+	if ((k == Qt::Key_Right || k == Qt::Key_Left || k == Qt::Key_Up || k == Qt::Key_Down)
+		&& !(event->modifiers() & (Qt::AltModifier | Qt::ShiftModifier | Qt::MetaModifier)))
+	{
+		QList<QGraphicsItem *> parts;
+		for (QGraphicsItem *item : selectedItems())
+			if (dynamic_cast<CustomElementPart *>(item))
+				parts << item;
+		if (!parts.isEmpty())
 		{
-		QPointF original_pos = qgo->pos();
-		QPointF p = qgo->pos();
+			qreal step = 1;
+			if (event->modifiers() & Qt::ControlModifier)
+				step = 0.1;
+			else if (likeFolio() && m_element_editor && m_element_editor->elementView())
+				step = qMax(1, m_element_editor->elementView()->currentGridStep());
+			QPointF movement;
+			if (k == Qt::Key_Right) movement.rx() = step;
+			else if (k == Qt::Key_Left) movement.rx() = -step;
+			else if (k == Qt::Key_Up) movement.ry() = -step;
+			else movement.ry() = step;
 
-		if (event->modifiers() & Qt::ControlModifier) {
-
-			int k = event->key();
-			if(k == Qt::Key_Right)
-				p.rx() += 0.1;
-			else if (k == Qt::Key_Left)
-				p.rx() -= 0.1;
-			else if (k == Qt::Key_Up)
-				p.ry() -= 0.1;
-			else if (k == Qt::Key_Down)
-				p.ry() += 0.1;
-				}
-			else {
-
-			int k = event->key();
-			if(k == Qt::Key_Right)
-				p.rx() += 1;
-			else if (k == Qt::Key_Left)
-				p.rx() -= 1;
-			else if (k == Qt::Key_Up)
-				p.ry() -= 1;
-			else if (k == Qt::Key_Down)
-				p.ry() += 1;
-			}
-
-			qgo->setPos(p);
-			QPropertyUndoCommand *undo =
-					new QPropertyUndoCommand(
-						qgo,"pos",QVariant(original_pos),QVariant(p));
-			undo->setText(tr("Move a primitive"));
-			undo->enableAnimation();
+			for (QGraphicsItem *item : parts)
+				item->moveBy(movement.x(), movement.y());
+			auto *undo = new MovePartsCommand(movement, this, parts);
+			undo->setText(parts.size() == 1 ? tr("Move a primitive") : tr("move", "undo caption"));
 			undoStack().push(undo);
 			event->accept();
 			return;

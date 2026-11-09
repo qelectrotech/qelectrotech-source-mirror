@@ -805,3 +805,10 @@ void ElementView::setGridStep(int step)
 {
 	QSettings().setValue(QStringLiteral("elementeditor/grid_step"), step);
 }
+
+int ElementView::currentGridStep() const
+{
+	if (const int fixed = gridStep())
+		return fixed;
+	return ElementViewGrid::forZoom(transform().m11()).step;
+}

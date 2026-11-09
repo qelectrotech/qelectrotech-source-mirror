@@ -23,10 +23,12 @@
 */
 #include "qetapptest.h"
 #include "editor/elementscene.h"
+#include "editor/elementview.h"
 #include "editor/esevent/eseventsetorigin.h"
 #include "editor/graphicspart/partterminal.h"
 #include "editor/ui/qetelementeditor.h"
 
+#include <QKeyEvent>
 #include <QTemporaryDir>
 
 class tst_editorlikefolio : public QObject
@@ -208,6 +210,31 @@ class tst_editorlikefolio : public QObject
 			const QString xml = m_editor->elementScene()->toXml().toString();
 			QVERIFY(xml.contains(QStringLiteral("name=\"row_y\">10<")));
 			QVERIFY(xml.contains(QStringLiteral("name=\"function\"")));
+		}
+
+			//The arrow keys move every selected part, by the grid step
+			//when drawing like the folio
+		void arrowKeysMoveSelection()
+		{
+			ElementScene::setLikeFolio(true);
+			ElementView::setGridStep(10);
+			ElementScene *scene = m_editor->elementScene();
+			for (PartTerminal *t : terminals())
+				t->setSelected(true);
+			QKeyEvent right(QEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
+			QApplication::sendEvent(scene, &right);
+			QList<QPointF> positions;
+			for (PartTerminal *t : terminals())
+				positions << t->scenePos();
+			QVERIFY(positions.contains(QPointF(10, -10)));
+			QVERIFY(positions.contains(QPointF(50, -10)));
+			scene->undoStack().undo();
+			positions.clear();
+			for (PartTerminal *t : terminals())
+				positions << t->scenePos();
+			QVERIFY(positions.contains(QPointF(0, -10)));
+			ElementView::setGridStep(0);
+			scene->slot_deselectAll();
 		}
 
 			//Away from any terminal: the nearest folio grid point
