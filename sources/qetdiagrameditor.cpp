@@ -1080,6 +1080,35 @@ void QETDiagramEditor::setUpActions()
 	m_hidden_kinds_label = new QLabel(this);
 	m_hidden_kinds_label->setToolTip(tr("See Display > Show"));
 	statusBar()->addPermanentWidget(m_hidden_kinds_label);
+		//The selection filter: what a click, a selection rectangle and
+		//Select All pick, e.g. symbols without their texts
+	m_selection_filter_menu = new QMenu(tr("Selection filter"), this);
+	auto selection_filter_group = new QActionGroup(m_selection_filter_menu);
+	const QList<QPair<Diagram::SelectionFilter, QString>> selection_filters {
+		{Diagram::SelectionFilter::All,         tr("Everything")},
+		{Diagram::SelectionFilter::Automatic,   tr("Automatic: symbols with their texts")},
+		{Diagram::SelectionFilter::Symbols,     tr("Symbols")},
+		{Diagram::SelectionFilter::Conductors,  tr("Conductors")},
+		{Diagram::SelectionFilter::FreeTexts,   tr("Free texts")},
+		{Diagram::SelectionFilter::SymbolTexts, tr("Symbol texts")}};
+	for (const auto &selection_filter : selection_filters) {
+		QAction *action = m_selection_filter_menu->addAction(selection_filter.second);
+		action->setCheckable(true);
+		action->setData(int(selection_filter.first));
+		selection_filter_group->addAction(action);
+		connect(action, &QAction::triggered, this, [this, selection_filter] {
+			Diagram::setSelectionFilter(selection_filter.first);
+			updateSelectionFilterButton();
+		});
+	}
+	m_selection_filter_button = new QToolButton(this);
+	m_selection_filter_button->setMenu(m_selection_filter_menu);
+	m_selection_filter_button->setPopupMode(QToolButton::InstantPopup);
+	m_selection_filter_button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	m_selection_filter_button->setAutoRaise(true);
+	m_selection_filter_button->setToolTip(tr("What a click, a selection rectangle and Select All pick"));
+	statusBar()->addPermanentWidget(m_selection_filter_button);
+	updateSelectionFilterButton();
 		//The grid step beside the zoom, always in sight; a click on it
 		//picks another, as on the toolbar
 	m_grid_status_button = new QToolButton(this);
@@ -2176,6 +2205,8 @@ void QETDiagramEditor::setUpMenu()
 		//is unchanged.
 	QMenu *select_menu = menu_edition -> addMenu(QET::Icons::EditSelectAll, tr("Selection"));
 	select_menu -> addActions(m_select_actions_group.actions());
+	select_menu -> addSeparator();
+	select_menu -> addMenu(m_selection_filter_menu);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(m_delete_selection);
 	menu_edition -> addAction(m_rotate_selection);
@@ -6020,6 +6051,24 @@ void QETDiagramEditor::updateGridStepButton()
 	m_grid_step_button->setText(text);
 	if (m_grid_status_button)
 		m_grid_status_button->setText(text);
+}
+
+/**
+	@brief QETDiagramEditor::updateSelectionFilterButton
+	Check the selection filter in use in its menu, and name it on the
+	status bar button.
+*/
+void QETDiagramEditor::updateSelectionFilterButton()
+{
+	const int filter = int(Diagram::selectionFilter());
+	QString name;
+	for (QAction *action : m_selection_filter_menu->actions()) {
+		action->setChecked(action->data().toInt() == filter);
+		if (action->isChecked()) {
+			name = action->text().section(QLatin1Char(':'), 0, 0);
+		}
+	}
+	m_selection_filter_button->setText(tr("Select: %1").arg(name));
 }
 
 /**

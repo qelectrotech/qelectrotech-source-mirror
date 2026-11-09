@@ -189,7 +189,16 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 		//dragged; finish it when the band is released (null rect).
 	connect(this, &QGraphicsView::rubberBandChanged, this, [this](QRect rect) {
 		if (rect.isNull()) {
+			m_diagram->filterSelection();
 			m_diagram->completeGroupSelection();
+		}
+	});
+		//What a selection rectangle catches goes through the selection
+		//filter as the rectangle grows, so what is left out never shows
+		//selected
+	connect(m_diagram, &QGraphicsScene::selectionChanged, this, [this] {
+		if (!rubberBandRect().isNull()) {
+			m_diagram->filterSelection();
 		}
 	});
 	connect(m_diagram, &QGraphicsScene::sceneRectChanged, this, &DiagramView::adjustSceneRect);
@@ -1408,6 +1417,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 		QPainterPath selection_area;
 		selection_area.addPolygon(m_free_rubberband);
 		m_diagram->setSelectionArea(selection_area);
+		m_diagram->filterSelection();
 	}
 
 	else QGraphicsView::mouseMoveEvent(e);
@@ -3274,7 +3284,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 		if(e->isAccepted())
 		return;
 
-		if (auto qgi = m_diagram->itemAt(mapToScene(menu_pos), transform()))
+		if (auto qgi = m_diagram->pickAt(mapToScene(menu_pos), transform()))
 		{
 			if (!qgi->isSelected()) {
 				m_diagram->clearSelection();
@@ -3285,7 +3295,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 				// is deselected and so delete all handlers, in this case,
 				// qgi become a dangling pointer.
 				// we need to call again itemAt.
-			if (auto item_ = m_diagram->itemAt(mapToScene(menu_pos), transform())) {
+			if (auto item_ = m_diagram->pickAt(mapToScene(menu_pos), transform())) {
 				item_->setSelected(true);
 			}
 		}
