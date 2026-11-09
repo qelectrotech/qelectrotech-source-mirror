@@ -20,6 +20,7 @@
 
 #include "../PropertiesEditor/propertieseditorwidget.h"
 
+class QDoubleSpinBox;
 class QLineEdit;
 class StructureBoxItem;
 
@@ -47,6 +48,7 @@ class StructureBoxPropertiesWidget : public PropertiesEditorWidget
 		QLineEdit *m_location_edit;
 		QLineEdit *m_prefix_edit;
 		QList<QMetaObject::Connection> m_edit_connections;
+		QDoubleSpinBox *m_label_size = nullptr;
 };
 
 #endif // STRUCTUREBOXPROPERTIESWIDGET_H

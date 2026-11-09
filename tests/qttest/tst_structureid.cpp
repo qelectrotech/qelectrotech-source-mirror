@@ -704,6 +704,37 @@ private slots:
 		QCOMPARE(text->toPlainText(), QStringLiteral("+CP1-K1"));
 	}
 
+	void theNameIsAMovableTextOfItsOwn()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		QVERIFY(b->label());
+		QCOMPARE(b->label()->toPlainText(), QStringLiteral("=SILO+J3"));
+		QCOMPARE(b->labelOffset(), QPointF(2, 2));           //inside the corner, as before
+		QVERIFY(b->label()->flags() & QGraphicsItem::ItemIsMovable);
+		QVERIFY(b->label()->flags() & QGraphicsItem::ItemIsSelectable);
+
+		QDomDocument document;
+		QDomElement plain = b->toXml(document);
+		QVERIFY(!plain.hasAttribute(QStringLiteral("label_x")));  //a box left alone saves as ever
+		QVERIFY(!plain.hasAttribute(QStringLiteral("label_size")));
+
+		b->setLabelOffset(QPointF(-5, -14));
+		b->setLabelSize(5);
+		const QDomElement moved = b->toXml(document);
+		QCOMPARE(moved.attribute(QStringLiteral("label_x")), QStringLiteral("-5.0"));
+		QCOMPARE(moved.attribute(QStringLiteral("label_y")), QStringLiteral("-14.0"));
+		QCOMPARE(moved.attribute(QStringLiteral("label_size")), QStringLiteral("5"));
+
+		StructureBoxItem *read = box(diagram, QRectF(0, 0, 50, 50), {}, {});
+		QVERIFY(read->fromXml(moved));
+		QCOMPARE(read->labelOffset(), QPointF(-5, -14));
+		QCOMPARE(read->labelSize(), 5.0);
+		QCOMPARE(read->label()->toPlainText(), QStringLiteral("=SILO+J3"));
+		QCOMPARE(read->label()->font().pointSizeF(), 5.0);
+	}
+
 	void withoutAnElementOnlyItsOwnValuesCount()
 	{
 			//Callers with no element (e.g. a symbol in the element editor)
