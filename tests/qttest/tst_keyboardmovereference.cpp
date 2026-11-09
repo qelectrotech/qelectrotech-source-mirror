@@ -131,7 +131,16 @@ class tst_keyboardmovereference : public QObject
 						    Qt::LeftButton, Qt::NoButton, Qt::NoModifier);
 				QApplication::sendEvent(m_view->viewport(), &release);
 			};
-			click(near_terminal);
+				//At the press already, before the symbol is selected
+			{
+				QMouseEvent press(QEvent::MouseButtonPress, near_terminal, m_view->viewport()->mapToGlobal(near_terminal),
+						  Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+				QApplication::sendEvent(m_view->viewport(), &press);
+				QCOMPARE(m_view->crosshairPos(), m_left->terminals().first()->dockConductor());
+				QMouseEvent release(QEvent::MouseButtonRelease, near_terminal, m_view->viewport()->mapToGlobal(near_terminal),
+						    Qt::LeftButton, Qt::NoButton, Qt::NoModifier);
+				QApplication::sendEvent(m_view->viewport(), &release);
+			}
 			QVERIFY(m_left->isSelected());
 			key(Qt::Key_Right);
 			QCOMPARE(m_view->crosshairPos(), m_left->terminals().first()->dockConductor());

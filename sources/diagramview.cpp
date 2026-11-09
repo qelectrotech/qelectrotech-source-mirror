@@ -1125,7 +1125,7 @@ void DiagramView::mousePressEvent(QMouseEvent *original)
 	}
 
 		//A press on a symbol drags it from here on: the crosshair goes to
-		//the terminal of it nearest the mouse. Not a press on one of its
+		//its insertion point, or to the terminal pressed by. Not a press on one of its
 		//terminals, which draws a wire, nor on one of its texts, which
 		//drags the text: the symbol stays where it is then
 	if (e->button() == Qt::LeftButton && !m_press_places && itemAt(e->pos())) {
@@ -1140,7 +1140,7 @@ void DiagramView::mousePressEvent(QMouseEvent *original)
 		if (symbol) {
 				//Close to it (beside its own area, where a press draws a
 				//wire), whatever the zoom
-			constexpr qreal reach = 8;
+			constexpr qreal reach = 12;
 			const QPointF at = mapToScene(e->pos());
 			qreal best = reach + 1;
 			for (Terminal *t : symbol->terminals()) {
@@ -1597,6 +1597,15 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *original)
 			m_press_places = false;
 			m_dragged_element = nullptr;
 			moveCrosshair(e->pos());
+				//Clicked by one of its terminals: the crosshair stays on
+				//it, ready for the arrow keys, until the mouse moves on
+			if (Terminal *reference = referenceTerminal(); reference && crosshairShown()) {
+				viewport()->update(crosshairArea(m_crosshair_pos));
+				m_crosshair_pos = reference->dockConductor();
+				m_crosshair_visible = true;
+				m_crosshair_held_at = QCursor::pos();
+				viewport()->update(crosshairArea(m_crosshair_pos));
+			}
 		}
 	});
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
@@ -2571,7 +2580,9 @@ void DiagramView::moveCrosshair(const QPoint &viewport_pos)
 	Element *moving = m_dragged_element && m_press_places ? m_dragged_element.data()
 			: m_diagram ? m_diagram->pendingElement() : nullptr;
 	if (moving && !handle) {
-		Terminal *reference = referenceTerminal();
+			//The press selects the symbol only after this: the terminal
+			//pressed on counts whether or not it is selected yet
+		Terminal *reference = m_reference_terminal;
 		pos = reference && reference->parentElement() == moving ? reference->dockConductor()
 									  : moving->scenePos();
 	}
