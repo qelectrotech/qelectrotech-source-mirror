@@ -392,7 +392,8 @@ void tst_TextFieldCursorAndFont::testTextColorApplyToAllFragments()
 	QString snippet = QStringLiteral(
 		"<p>Symbol-Editor: Zeichnung wie im Folio</p>\n"
 		"<p><a href=\"https://github.com/DaTweety\">DaTweety</a></p>\n"
-		"<p><span style=\"color:#1a7f37;\">+ 963</span><span style=\"color:#cf222e;\">- 59</span></p>"
+		"<p><span style=\"color:#1a7f37;\">+ 963</span><span style=\"color:#cf222e;\">- 59</span></p>\n"
+		"<ul><li><a href=\"https://github.com/qelectrotech/qelectrotech-source-mirror/pull/1796\">Überblick</a></li></ul>"
 	);
 
 	dialog.setText(snippet);
@@ -428,6 +429,7 @@ void tst_TextFieldCursorAndFont::testTextColorApplyToAllFragments()
 			QTextFragment frag = it.fragment();
 			if (frag.isValid()) {
 				QCOMPARE(frag.charFormat().foreground().color(), QColor(Qt::black));
+				QVERIFY(!frag.charFormat().isAnchor());
 			}
 		}
 	}

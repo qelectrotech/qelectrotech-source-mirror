@@ -203,6 +203,10 @@ namespace qdesigner_internal {
 				elementCount++;
 				if (filterElement(reader.name())) {
 					const QStringView name = reader.name();
+					if (name == QLatin1String("a")) {
+						// Unwrap anchor tags in simplified rich text so pasted web links become plain text
+						break;
+					}
 					QXmlStreamAttributes attributes = reader.attributes();
 					filterAttributes(name, &attributes, &paragraphAlignmentFound);
 					const bool isHeading = (name.size() == 2 && name.at(0).toLower() == QLatin1Char('h') && name.at(1).isDigit());
@@ -218,6 +222,9 @@ namespace qdesigner_internal {
 					writer.writeCharacters(reader.text().toString());
 				break;
 			case QXmlStreamReader::EndElement:
+				if (reader.name() == QLatin1String("a")) {
+					break;
+				}
 				writer.writeEndElement();
 				break;
 			default:
@@ -806,6 +813,13 @@ void RichTextEditorToolBar::colorChanged(const QColor &color)
 					}
 
 					QTextCharFormat charFormat = fragment.charFormat();
+					if (charFormat.isAnchor()) {
+						charFormat.setAnchor(false);
+						charFormat.clearProperty(QTextFormat::IsAnchor);
+						charFormat.clearProperty(QTextFormat::AnchorHref);
+						charFormat.clearProperty(QTextFormat::AnchorName);
+						charFormat.setUnderlineStyle(QTextCharFormat::NoUnderline);
+					}
 					charFormat.setForeground(QBrush(color));
 					changes.append({applyStart, applyEnd - applyStart, charFormat});
 				}
@@ -821,6 +835,18 @@ void RichTextEditorToolBar::colorChanged(const QColor &color)
 			fragCursor.setPosition(change.start);
 			fragCursor.setPosition(change.start + change.length, QTextCursor::KeepAnchor);
 			fragCursor.setCharFormat(change.format);
+		}
+
+		// Pass 3: ensure block charFormat does not mask child span color in list items
+		for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+			QTextCursor blockCursor(block);
+			QTextCharFormat bCharFormat = block.charFormat();
+			if (bCharFormat.hasProperty(QTextFormat::ForegroundBrush)) {
+				bCharFormat.clearProperty(QTextFormat::ForegroundBrush);
+				blockCursor.setBlockCharFormat(bCharFormat);
+			}
+			if (block == endBlock)
+				break;
 		}
 	} else {
 		QTextCharFormat format = m_editor->currentCharFormat();
@@ -895,6 +921,18 @@ void RichTextEditorToolBar::bgColorChanged(const QColor &color)
 			fragCursor.setPosition(change.start);
 			fragCursor.setPosition(change.start + change.length, QTextCursor::KeepAnchor);
 			fragCursor.setCharFormat(change.format);
+		}
+
+		// Pass 3: ensure block charFormat does not mask child span color in list items
+		for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+			QTextCursor blockCursor(block);
+			QTextCharFormat bCharFormat = block.charFormat();
+			if (bCharFormat.hasProperty(QTextFormat::ForegroundBrush)) {
+				bCharFormat.clearProperty(QTextFormat::ForegroundBrush);
+				blockCursor.setBlockCharFormat(bCharFormat);
+			}
+			if (block == endBlock)
+				break;
 		}
 	} else {
 		QTextCharFormat format = m_editor->currentCharFormat();
@@ -1003,6 +1041,13 @@ void RichTextEditorToolBar::applyDefaultProjectFont()
 				charFormat.clearProperty(QTextFormat::FontPixelSize);
 				charFormat.clearProperty(QTextFormat::BackgroundBrush);
 				charFormat.setBackground(QBrush(Qt::NoBrush));
+				if (charFormat.isAnchor()) {
+					charFormat.setAnchor(false);
+					charFormat.clearProperty(QTextFormat::IsAnchor);
+					charFormat.clearProperty(QTextFormat::AnchorHref);
+					charFormat.clearProperty(QTextFormat::AnchorName);
+					charFormat.setUnderlineStyle(QTextCharFormat::NoUnderline);
+				}
 
 				charFormat.setForeground(QBrush(Qt::black));
 
