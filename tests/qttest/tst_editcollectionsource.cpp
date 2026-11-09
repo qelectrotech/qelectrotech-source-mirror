@@ -29,6 +29,8 @@
 #include "qetapp.h"
 #include "qetgraphicsitem/element.h"
 #include "qetproject.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "undocommand/resetsymboltextscommand.h"
 
 #include <QSettings>
 #include <QTemporaryDir>
@@ -163,6 +165,32 @@ class tst_editcollectionsource : public QObject
 			QCOMPARE(embedded().xml().attribute(QStringLiteral("width")), QStringLiteral("30"));
 			QCOMPARE(element->size(), QSize(30, 40));
 			QCOMPARE(element->hotspot(), QPoint(15, 20));
+			delete element;
+		}
+
+			//A placed symbol keeps its own copy of the symbol's texts; the
+			//command lays it out again as the symbol does, and undo puts
+			//it back
+		void resetSymbolTexts()
+		{
+			const QString xml = definition(frame(20, 20, 5, 10), m_uuid, -4).replace(
+				QStringLiteral("<terminal "),
+				QStringLiteral(R"(<dynamic_text x="-40" y="8" text_from="ElementInfo" Halignment="AlignRight" Valignment="AlignTop" text_width="30" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular" uuid="{5ef9ecf5-8bdb-5177-b974-84399b5c28e4}"><text/><info_name>label</info_name></dynamic_text><terminal )"));
+			Element *element = place(xml);
+			QVERIFY(element);
+			QCOMPARE(element->dynamicTextItems().size(), 1);
+			DynamicElementTextItem *text = element->dynamicTextItems().first();
+			text->setPos(-40, -2);
+
+			ResetSymbolTextsCommand command({element});
+			QCOMPARE(command.count(), 1);
+			command.redo();
+			QCOMPARE(text->pos(), QPointF(-40, 8));
+			command.undo();
+			QCOMPARE(text->pos(), QPointF(-40, -2));
+				//Already where the symbol places it: nothing to do
+			command.redo();
+			QCOMPARE(ResetSymbolTextsCommand({element}).count(), 0);
 			delete element;
 		}
 };
