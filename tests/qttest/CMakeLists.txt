@@ -501,6 +501,9 @@ qet_add_app_test(tst_foliogroup tst_foliogroup.cpp)
 # "number format 1 - Plant": a conductor numbering part counting each plant
 # (=) on its own; counts kept by .qet and .qetdb.
 qet_add_app_test(tst_plantcounter tst_plantcounter.cpp)
+
+# Placing a macro: its labels and question-mark texts.
+qet_add_app_test(tst_macrolabels tst_macrolabels.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE

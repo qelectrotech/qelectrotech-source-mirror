@@ -199,6 +199,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_macro_ask_labels_cb">
+         <property name="text">
+          <string>Ask for the device labels when placing a macro</string>
+         </property>
+         <property name="toolTip">
+          <string>Proposes the next free labels, which Accept All takes. Unchecked, a macro keeps its saved labels.</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_wiring_rules_cb">
          <property name="toolTip">
           <string>When unticked, no conductors-per-terminal rule applies, whatever the projects' settings.</string>
@@ -1879,6 +1889,7 @@
   <tabstop>m_zoom_out_beyond_folio</tabstop>
   <tabstop>m_conductor_properties_panel</tabstop>
   <tabstop>m_terminal_conductor_color</tabstop>
+  <tabstop>m_macro_ask_labels_cb</tabstop>
   <tabstop>m_wiring_rules_cb</tabstop>
   <tabstop>m_wiring_max_wires_sb</tabstop>
   <tabstop>m_wiring_one_wire_per_report_cb</tabstop>
