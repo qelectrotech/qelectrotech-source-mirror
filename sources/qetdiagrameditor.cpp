@@ -755,6 +755,12 @@ void QETDiagramEditor::setUpActions()
 		else delete undo;
 	});
 
+	m_show_as_dot = new QAction(tr("Show as a dot"), this);
+	m_show_as_dot->setCheckable(true);
+	m_show_as_dot->setStatusTip(tr("Draws the selected T-junctions as their lines and a dot where they meet", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_show_as_dot, "diagrameditor.show_as_dot", tr("Diagram editors"), QKeySequence());
+	connect(m_show_as_dot, &QAction::triggered, this, &QETDiagramEditor::showSelectedAsDot);
+
 	m_text_clearance = new QAction(tr("Keep texts clear of wires..."), this);
 	m_text_clearance->setStatusTip(tr("Move the texts that sit on a wire off it, in one undo step", "status bar tip"));
 	ShortcutManager::instance().registerAction(m_text_clearance, "diagrameditor.text_clearance", tr("Diagram editors"), QKeySequence());
@@ -2177,6 +2183,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_rotate_texts);
 	menu_edition -> addAction(m_mirror_horizontal);
 	menu_edition -> addAction(m_mirror_vertical);
+	menu_edition -> addAction(m_show_as_dot);
 	menu_edition -> addAction(m_find_element);
 	menu_edition -> addAction(m_contact_display);
 	menu_edition -> addAction(m_edit_selection);
@@ -2323,9 +2330,16 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce)
 		//nothing, and File > Quit records those of every window itself
 		//(QETApp::closeEveryEditor())
 	QStringList open_here;
-	for (ProjectView *project_view : openedProjects())
-		if (!project_view->project()->filePath().isEmpty())
-			open_here << project_view->project()->filePath();
+		//and the folio each one shows, to show it again
+	QVariantMap folio_at_quit = QSettings().value(QStringLiteral("projects/folio_at_quit")).toMap();
+	for (ProjectView *project_view : openedProjects()) {
+		const QString file = project_view->project()->filePath();
+		if (file.isEmpty())
+			continue;
+		open_here << file;
+		if (DiagramView *view = project_view->currentDiagram())
+			folio_at_quit.insert(file, project_view->project()->folioIndex(view->diagram()));
+	}
 
 	// quitte directement s'il n'y a aucun projet ouvert
 	bool can_quit = true;
@@ -2347,6 +2361,7 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce)
 	if (can_quit) {
 		if (QETApp::diagramEditors().size() <= 1)
 			QSettings().setValue(QStringLiteral("projects/open_at_quit"), open_here);
+		QSettings().setValue(QStringLiteral("projects/folio_at_quit"), folio_at_quit);
 		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
 		qce -> accept();
@@ -3948,7 +3963,8 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_group_selected_texts
 			    << m_group_selection
 			    << m_ungroup_selection
-			    << m_select_same_symbols;
+			    << m_select_same_symbols
+			    << m_show_as_dot;
 		for(QAction *action : action_list)
 			action->setEnabled(false);
 		m_align_actions_group.setEnabled(false);
@@ -3975,6 +3991,16 @@ void QETDiagramEditor::slot_updateComplexActions()
 	                                        (selected_dimensions_count >= 1 && DimensionFormatPattern::hasPattern())));
 	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
 	m_select_same_symbols->setEnabled(selected_elements_count >= 1);
+	{
+		bool any = false, all = true;
+		for (Element *element : dc.m_elements)
+			if (element->dotPoint()) {
+				any = true;
+				all &= element->isShownAsDot();
+			}
+		m_show_as_dot->setEnabled(!ro && any);
+		m_show_as_dot->setChecked(any && all);
+	}
 	m_text_destination->setEnabled(!ro);
 	m_text_clearance->setEnabled(!ro);
 	m_mirror_horizontal->setEnabled(!ro && selected_elements_count);
@@ -6050,6 +6076,26 @@ void QETDiagramEditor::copyTextFormat()
 		slot_updateComplexActions();
 		statusBar()->showMessage(tr("Text format of \"%1\" copied").arg(sourceElmt->name()), 3000);
 	}
+}
+
+/**
+	@brief QETDiagramEditor::showSelectedAsDot
+	Draw the selected T-junctions as a dot, or as their own drawing
+	again, in one undo step.
+*/
+void QETDiagramEditor::showSelectedAsDot(bool dot)
+{
+	DiagramView *dv = currentDiagramView();
+	if (!dv || dv->diagram()->isReadOnly())
+		return;
+	auto *command = new QUndoCommand(dot ? tr("Show as a dot") : tr("Show the T-junction symbol"));
+	for (Element *element : DiagramContent(dv->diagram()).m_elements)
+		if (element->dotPoint() && element->isShownAsDot() != dot)
+			new QPropertyUndoCommand(element, "shownAsDot", element->isShownAsDot(), dot, command);
+	if (command->childCount())
+		dv->diagram()->undoStack().push(command);
+	else
+		delete command;
 }
 
 /**

@@ -187,7 +187,8 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 
 	connect(ipw, &TitleBlockPropertiesWidget::openAutoNumFolioEditor, this, &NewDiagramPage::changeToAutoFolioTab);
 	bpw -> setTitleBlockSize(ipw -> currentTitleBlockHeight(),
-							 ipw -> currentTitleBlockEdge());
+							 ipw -> currentTitleBlockEdge(),
+							 ipw -> currentTitleBlockAlign());
 	connect(ipw, &TitleBlockPropertiesWidget::titleBlockSizeChanged,
 			bpw, &BorderPropertiesWidget::setTitleBlockSize);
 

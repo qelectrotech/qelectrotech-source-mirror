@@ -496,6 +496,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/editor/esevent/eseventaddrect.h
   ${QET_DIR}/sources/editor/esevent/eseventaddterminal.cpp
   ${QET_DIR}/sources/editor/esevent/eseventaddterminal.h
+  ${QET_DIR}/sources/editor/esevent/eseventsetorigin.cpp
+  ${QET_DIR}/sources/editor/esevent/eseventsetorigin.h
   ${QET_DIR}/sources/editor/esevent/eseventaddtext.cpp
   ${QET_DIR}/sources/editor/esevent/eseventaddtext.h
   ${QET_DIR}/sources/editor/esevent/eseventinterface.cpp

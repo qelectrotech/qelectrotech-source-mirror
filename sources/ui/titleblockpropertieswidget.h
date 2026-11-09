@@ -72,6 +72,7 @@ class TitleBlockPropertiesWidget : public QWidget
 		void setReadOnly (const bool &ro);
 		int currentTitleBlockHeight() const;
 		Qt::Edge currentTitleBlockEdge() const;
+		Qt::Alignment currentTitleBlockAlign() const;
 
 		static void addTemplateVariables(
 				DiagramContext &context,
@@ -98,7 +99,7 @@ class TitleBlockPropertiesWidget : public QWidget
 	signals:
 		void set_auto_page_num() const;
 		void openAutoNumFolioEditor (QString);
-		void titleBlockSizeChanged(int height, Qt::Edge edge);
+		void titleBlockSizeChanged(int height, Qt::Edge edge, Qt::Alignment align);
 
 	private:
 		Ui::TitleBlockPropertiesWidget *ui;

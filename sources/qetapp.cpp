@@ -24,6 +24,7 @@
 #include "elementscollectioncache.h"
 #include "factory/elementfactory.h"
 #include "factory/elementpicturefactory.h"
+#include "diagramview.h"
 #include "projectview.h"
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
@@ -215,9 +216,10 @@ QETApp::QETApp() :
 /**
 	@brief QETApp::reopenLastProjects
 	When the setting is on, open again the projects that were open when
-	QElectroTech was last left (@see QETDiagramEditor::closeEvent). A
-	project already open, from a recovery file for instance, is not
-	opened twice; one that no longer exists is skipped without a word.
+	QElectroTech was last left (@see QETDiagramEditor::closeEvent), each
+	on the folio it showed then. A project already open, from a recovery
+	file for instance, is not opened twice; one that no longer exists is
+	skipped without a word.
 */
 void QETApp::reopenLastProjects()
 {
@@ -232,8 +234,22 @@ void QETApp::reopenLastProjects()
 		return;
 	QETDiagramEditor *editor = diagramEditors().isEmpty() ? new QETDiagramEditor()
 							      : diagramEditors().first();
-	for (const QString &file : std::as_const(files))
-		editor->openAndAddProject(file, false);
+	const QVariantMap folio_at_quit = settings.value(QStringLiteral("projects/folio_at_quit")).toMap();
+	for (const QString &file : std::as_const(files)) {
+		if (!editor->openAndAddProject(file, false))
+			continue;
+			//Show again the folio it showed when it was left
+		ProjectView *project_view = nullptr;
+		for (ProjectView *view : editor->openedProjects())
+			if (view->project()->filePath() == file)
+				project_view = view;
+		if (!project_view || !folio_at_quit.contains(file))
+			continue;
+		const QList<Diagram *> folios = project_view->project()->folios();
+		const int index = folio_at_quit.value(file).toInt();
+		if (index >= 0 && index < folios.size())
+			project_view->showDiagram(folios.at(index));
+	}
 }
 
 /**
@@ -1445,13 +1461,19 @@ QString QETApp::languagesPath()
 bool QETApp::closeEveryEditor()
 {
 		//The projects open in every window, for the next start
-		//(reopenLastProjects()), written once they all closed
+		//(reopenLastProjects()), written once they all closed, and the
+		//folio each one shows
 	QStringList open_at_quit;
+	QVariantMap folio_at_quit = QSettings().value(QStringLiteral("projects/folio_at_quit")).toMap();
 	for (QETDiagramEditor *editor : diagramEditors())
-		for (ProjectView *project_view : editor->openedProjects())
-			if (!project_view->project()->filePath().isEmpty()
-			    && !open_at_quit.contains(project_view->project()->filePath()))
-				open_at_quit << project_view->project()->filePath();
+		for (ProjectView *project_view : editor->openedProjects()) {
+			const QString file = project_view->project()->filePath();
+			if (file.isEmpty() || open_at_quit.contains(file))
+				continue;
+			open_at_quit << file;
+			if (DiagramView *view = project_view->currentDiagram())
+				folio_at_quit.insert(file, project_view->project()->folioIndex(view->diagram()));
+		}
 	// make sure all windows are visible before leaving
 	// s'assure que toutes les fenetres soient visibles avant de quitter
 	restoreEveryEditor();
@@ -1465,8 +1487,11 @@ bool QETApp::closeEveryEditor()
 	foreach(QETElementEditor *e, elementEditors()) {
 		every_window_closed = every_window_closed && e -> close();
 	}
-	if (every_window_closed)
-		QSettings().setValue(QStringLiteral("projects/open_at_quit"), open_at_quit);
+	if (every_window_closed) {
+		QSettings settings;
+		settings.setValue(QStringLiteral("projects/open_at_quit"), open_at_quit);
+		settings.setValue(QStringLiteral("projects/folio_at_quit"), folio_at_quit);
+	}
 	return(every_window_closed);
 }
 

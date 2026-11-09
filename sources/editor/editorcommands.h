@@ -348,4 +348,20 @@ class ScaleElementCommand : public ElementEditionCommand
 		QList<PropertyChange> m_changes;
 };
 
+/**
+	This command sets the frame of the definition by hand, or gives it
+	back to the editor (a null rectangle).
+*/
+class FixedFrameCommand : public ElementEditionCommand
+{
+	public:
+		FixedFrameCommand(ElementScene *scene, const QRect &before, const QRect &after,
+				  QUndoCommand *parent = nullptr);
+		void undo() override;
+		void redo() override;
+
+	private:
+		QRect m_before, m_after;
+};
+
 #endif
