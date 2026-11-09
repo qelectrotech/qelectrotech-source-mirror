@@ -28,6 +28,7 @@
 #include <QRectF>
 class QPainter;
 class DiagramPosition;
+class ProjectLanguages;
 class TitleBlockTemplate;
 class TitleBlockTemplateRenderer;
 class Diagram;
@@ -101,6 +102,8 @@ class BorderTitleBlock : public QObject
 		QRectF titleBlockRect () const;
 
 		DiagramContext titleblockInformation() const;
+		DiagramContext shownTitleblockInformation() const;
+		void setLanguages(const ProjectLanguages *languages);
 	private:
 		QRectF titleBlockRectForQPainter () const;
 

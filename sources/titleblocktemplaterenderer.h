@@ -21,6 +21,7 @@
 #include <QTransform>
 #include "diagramcontext.h"
 
+class ProjectLanguages;
 class TitleBlockTemplate;
 /**
 	@brief The TitleBlockTemplateRenderer class
@@ -38,6 +39,8 @@ class TitleBlockTemplateRenderer : public QObject
 		
 		void setContext(const DiagramContext &context);
 		DiagramContext context()const;
+		void setLanguages(const ProjectLanguages *languages);
+		DiagramContext shownContext() const;
 		
 		int height() const;
 		void render(QPainter *, int);
@@ -47,5 +50,6 @@ class TitleBlockTemplateRenderer : public QObject
 	private:
 		const TitleBlockTemplate *m_titleblock_template;
 		DiagramContext m_context;
+		const ProjectLanguages *m_languages = nullptr;
 };
 #endif

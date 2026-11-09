@@ -63,6 +63,7 @@ class DiagramTextItem : public QGraphicsTextItem
 		int type() const override { return Type; }
 
 		Diagram *diagram() const;
+		const QTextDocument *shownDocument() const;
 		virtual void fromXml(const QDomElement &) = 0;
 		virtual QDomElement toXml(QDomDocument &) const;
 		void edit();
