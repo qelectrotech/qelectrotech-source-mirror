@@ -45,6 +45,7 @@ private slots:
 	void testPastedHtmlDarkModeCleaning();
 	void testSelectAllChangeFontSize();
 	void testMultiLineDefaultProjectFontNoFreeze();
+	void testTextColorApplyToAllFragments();
 };
 
 void tst_TextFieldCursorAndFont::initTestCase()
@@ -381,6 +382,54 @@ void tst_TextFieldCursorAndFont::testMultiLineDefaultProjectFontNoFreeze()
 		QCOMPARE(block.blockFormat().headingLevel(), 0);
 		QCOMPARE(block.blockFormat().topMargin(), 0.0);
 		QCOMPARE(block.blockFormat().bottomMargin(), 0.0);
+	}
+}
+
+void tst_TextFieldCursorAndFont::testTextColorApplyToAllFragments()
+{
+	qdesigner_internal::RichTextEditorDialog dialog;
+
+	QString snippet = QStringLiteral(
+		"<p>Symbol-Editor: Zeichnung wie im Folio</p>\n"
+		"<p><a href=\"https://github.com/DaTweety\">DaTweety</a></p>\n"
+		"<p><span style=\"color:#1a7f37;\">+ 963</span><span style=\"color:#cf222e;\">- 59</span></p>"
+	);
+
+	dialog.setText(snippet);
+
+	const auto textEdits = dialog.findChildren<QTextEdit *>();
+	QTextEdit *editor = nullptr;
+	for (auto *te : textEdits) {
+		if (te->acceptRichText()) {
+			editor = te;
+			break;
+		}
+	}
+	QVERIFY(editor != nullptr);
+
+	editor->selectAll();
+
+	auto *toolbar = dialog.findChild<QToolBar *>();
+	QVERIFY(toolbar != nullptr);
+
+	QAction *textColorAction = nullptr;
+	for (QAction *action : toolbar->actions()) {
+		if (action->text() == tr("Text Color") || action->toolTip() == tr("Text Color")) {
+			textColorAction = action;
+			break;
+		}
+	}
+	QVERIFY(textColorAction != nullptr);
+
+	QMetaObject::invokeMethod(toolbar, "colorChanged", Q_ARG(QColor, QColor(Qt::black)));
+
+	for (QTextBlock block = editor->document()->begin(); block.isValid(); block = block.next()) {
+		for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+			QTextFragment frag = it.fragment();
+			if (frag.isValid()) {
+				QCOMPARE(frag.charFormat().foreground().color(), QColor(Qt::black));
+			}
+		}
 	}
 }
 

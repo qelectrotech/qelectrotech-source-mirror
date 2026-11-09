@@ -492,9 +492,9 @@ void ColorAction::chooseColor()
 		initialColor, nullptr,
 		m_mode == TextColorMode ? tr("Text Color") : tr("Text Background Color"),
 		QColorDialog::DontUseNativeDialog | QColorDialog::ShowAlphaChannel);
-	if (col.isValid() && col != m_color) {
+	if (col.isValid()) {
 		setColor(col);
-		emit colorChanged(m_color);
+		emit colorChanged(col);
 	}
 }
 
@@ -769,7 +769,68 @@ void RichTextEditorToolBar::alignmentActionTriggered(QAction *action)
 
 void RichTextEditorToolBar::colorChanged(const QColor &color)
 {
+	if (!m_editor)
+		return;
+
+	QTextCursor cursor = m_editor->textCursor();
+	cursor.beginEditBlock();
+
+	if (cursor.hasSelection()) {
+		int selStart = cursor.selectionStart();
+		int selEnd = cursor.selectionEnd();
+		QTextBlock startBlock = m_editor->document()->findBlock(selStart);
+		QTextBlock endBlock = m_editor->document()->findBlock(selEnd);
+
+		struct FormatChange {
+			int start;
+			int length;
+			QTextCharFormat format;
+		};
+		QList<FormatChange> changes;
+
+		// Pass 1: collect format changes
+		for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+			for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+				QTextFragment fragment = it.fragment();
+				if (fragment.isValid()) {
+					int fragStart = fragment.position();
+					int fragEnd = fragStart + fragment.length();
+					if (fragEnd <= selStart || fragStart >= selEnd) {
+						continue;
+					}
+
+					int applyStart = qMax(fragStart, selStart);
+					int applyEnd = qMin(fragEnd, selEnd);
+					if (applyEnd <= applyStart) {
+						continue;
+					}
+
+					QTextCharFormat charFormat = fragment.charFormat();
+					charFormat.setForeground(QBrush(color));
+					changes.append({applyStart, applyEnd - applyStart, charFormat});
+				}
+			}
+
+			if (block == endBlock)
+				break;
+		}
+
+		// Pass 2: apply formatting
+		for (const auto &change : changes) {
+			QTextCursor fragCursor(m_editor->document());
+			fragCursor.setPosition(change.start);
+			fragCursor.setPosition(change.start + change.length, QTextCursor::KeepAnchor);
+			fragCursor.setCharFormat(change.format);
+		}
+	} else {
+		QTextCharFormat format = m_editor->currentCharFormat();
+		format.setForeground(QBrush(color));
+		m_editor->setCurrentCharFormat(format);
+	}
+
+	cursor.endEditBlock();
 	m_editor->setTextColor(color);
+	m_color_action->setColor(color);
 	m_editor->setFocus();
 }
 
@@ -780,20 +841,75 @@ void RichTextEditorToolBar::bgColorChanged(const QColor &color)
 
 	QTextCursor cursor = m_editor->textCursor();
 	cursor.beginEditBlock();
-	QTextCharFormat format;
-	if (color == Qt::transparent || !color.isValid() || color.alpha() == 0) {
-		format.setBackground(QBrush(Qt::NoBrush));
-	} else {
-		format.setBackground(color);
-	}
+
+	const bool isTransparent = (color == Qt::transparent || !color.isValid() || color.alpha() == 0);
 
 	if (cursor.hasSelection()) {
-		cursor.mergeCharFormat(format);
+		int selStart = cursor.selectionStart();
+		int selEnd = cursor.selectionEnd();
+		QTextBlock startBlock = m_editor->document()->findBlock(selStart);
+		QTextBlock endBlock = m_editor->document()->findBlock(selEnd);
+
+		struct FormatChange {
+			int start;
+			int length;
+			QTextCharFormat format;
+		};
+		QList<FormatChange> changes;
+
+		// Pass 1: collect format changes
+		for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+			for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+				QTextFragment fragment = it.fragment();
+				if (fragment.isValid()) {
+					int fragStart = fragment.position();
+					int fragEnd = fragStart + fragment.length();
+					if (fragEnd <= selStart || fragStart >= selEnd) {
+						continue;
+					}
+
+					int applyStart = qMax(fragStart, selStart);
+					int applyEnd = qMin(fragEnd, selEnd);
+					if (applyEnd <= applyStart) {
+						continue;
+					}
+
+					QTextCharFormat charFormat = fragment.charFormat();
+					if (isTransparent) {
+						charFormat.clearProperty(QTextFormat::BackgroundBrush);
+						charFormat.setBackground(QBrush(Qt::NoBrush));
+					} else {
+						charFormat.setBackground(color);
+					}
+					changes.append({applyStart, applyEnd - applyStart, charFormat});
+				}
+			}
+
+			if (block == endBlock)
+				break;
+		}
+
+		// Pass 2: apply formatting
+		for (const auto &change : changes) {
+			QTextCursor fragCursor(m_editor->document());
+			fragCursor.setPosition(change.start);
+			fragCursor.setPosition(change.start + change.length, QTextCursor::KeepAnchor);
+			fragCursor.setCharFormat(change.format);
+		}
 	} else {
+		QTextCharFormat format = m_editor->currentCharFormat();
+		if (isTransparent) {
+			format.clearProperty(QTextFormat::BackgroundBrush);
+			format.setBackground(QBrush(Qt::NoBrush));
+		} else {
+			format.setBackground(color);
+		}
 		m_editor->setCurrentCharFormat(format);
 	}
+
 	cursor.endEditBlock();
 
+	m_editor->setTextBackgroundColor(isTransparent ? Qt::transparent : color);
 	m_bg_color_action->setColor(color);
 	m_editor->setFocus();
 }
@@ -888,11 +1004,7 @@ void RichTextEditorToolBar::applyDefaultProjectFont()
 				charFormat.clearProperty(QTextFormat::BackgroundBrush);
 				charFormat.setBackground(QBrush(Qt::NoBrush));
 
-				// If text color is white or near-white (e.g. copied from dark theme), reset to black
-				QColor fg = charFormat.foreground().color();
-				if (fg.isValid() && fg.lightness() > 200) {
-					charFormat.setForeground(QBrush(Qt::black));
-				}
+				charFormat.setForeground(QBrush(Qt::black));
 
 				changes.append({applyStart, applyEnd - applyStart, charFormat});
 			}
