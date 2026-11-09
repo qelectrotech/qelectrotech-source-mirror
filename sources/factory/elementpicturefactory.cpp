@@ -42,25 +42,22 @@ ElementPictureFactory* ElementPictureFactory::m_factory = nullptr;
 	@return the key under which the drawing of the element at location is
 	cached.
 
-	An element definition normally carries its own uuid, and that is used
-	directly. Definitions saved before uuids were written do not have one --
-	a good share of the shipped example projects are still in that state --
-	and they all presented the same null uuid as a key. The drawing of such
-	an element was therefore either rebuilt for every instance placed, or
-	stored under a key it shared with every other element lacking a uuid.
-	Derive a stable key from the location for those instead:
+	The key is derived from both the definition's uuid and its location.
+	The uuid alone is not enough: a symbol made by copying another one and
+	redrawing it keeps the original's uuid, so the two shared one cache
+	entry and whichever was drawn first in the session was shown for both
+	(#1789). The uuid stays in the key so that a definition replaced at the
+	same location by one with another uuid still gets a fresh drawing, as
+	it did when the uuid was the whole key.
 	ElementsLocation::toString() qualifies an embedded path with the id of
 	the project that owns it, and project ids come from an ever-increasing
-	counter and are never reused, so the derived key cannot collide with an
-	element of another project.
+	counter and are never reused, so the key cannot collide with an element
+	of another project. A definition with no uuid gets the same key as it
+	did before.
 */
 QUuid ElementPictureFactory::cacheKey(const ElementsLocation &location)
 {
-	const QUuid uuid = location.uuid();
-	if (!uuid.isNull()) {
-		return uuid;
-	}
-	return QUuid::createUuidV5(QUuid(), location.toString().toUtf8());
+	return QUuid::createUuidV5(location.uuid(), location.toString().toUtf8());
 }
 
 /**

@@ -171,6 +171,7 @@ class QETDiagramEditor : public QETMainWindow
 		void slot_updateUndoStack();
 		void slot_updateModeActions();
 		void slot_updateComplexActions();
+		void showSelectedAsDot(bool dot);
 		void slot_updatePasteAction();
 		void pasteElementInformations();
 		void updatePasteElementInfoAction();
@@ -258,6 +259,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_place_texts = nullptr,	///< Place the texts of the selected symbols at one of nine points
 		*m_text_destination = nullptr,	///< Choose the folio a selected free text leads to
 		*m_text_clearance = nullptr,	///< Move texts off the wires they sit on
+		*m_show_as_dot = nullptr,	///< Draw the selected T-junctions as a dot
 		*m_select_same_symbols = nullptr;	///< Select the symbols of the same kind as a selected one
 		
 		QActionGroup

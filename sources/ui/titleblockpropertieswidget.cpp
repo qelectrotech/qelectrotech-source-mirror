@@ -361,6 +361,20 @@ Qt::Edge TitleBlockPropertiesWidget::currentTitleBlockEdge() const
 }
 
 /**
+	@brief TitleBlockPropertiesWidget::currentTitleBlockAlign
+	@return alignment of the current title block template
+*/
+Qt::Alignment TitleBlockPropertiesWidget::currentTitleBlockAlign() const
+{
+	const TitleBlockTemplate *tbt = nullptr;
+	if (!currentTitleBlockTemplateName().isEmpty())
+		tbt = templateForIndex(ui -> m_tbt_cb -> currentIndex());
+	if (!tbt)
+		tbt = QETApp::defaultTitleBlockTemplate();
+	return tbt ? tbt -> align() : Qt::AlignTop;
+}
+
+/**
 	@brief TitleBlockPropertiesWidget::addCollection
 	add a collection of title block available in the combo box
 	@param tbt_collection
@@ -414,7 +428,8 @@ void TitleBlockPropertiesWidget::initDialog(
 
 	auto size_changed = [this]() {
 		emit titleBlockSizeChanged(currentTitleBlockHeight(),
-								   currentTitleBlockEdge());
+								   currentTitleBlockEdge(),
+								   currentTitleBlockAlign());
 	};
 	connect(ui->m_tbt_cb, qOverload<int>(&QComboBox::currentIndexChanged),
 			this, size_changed);

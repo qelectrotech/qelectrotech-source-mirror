@@ -18,13 +18,14 @@
 #ifndef ELEMENT_VIEW_H
 #define ELEMENT_VIEW_H
 #include <QGraphicsView>
+#include "../palettegraphicsview.h"
 #include "elementscene.h"
 
 /**
 	This class provides a widget to render an ElementScene instance, i.e. the
 	edition class for electrical elements.
 */
-class ElementView : public QGraphicsView {
+class ElementView : public PaletteGraphicsView {
 	Q_OBJECT
 	friend class PastePartsCommand;
 	
@@ -54,6 +55,9 @@ class ElementView : public QGraphicsView {
 	void dragMoveEvent(QDragMoveEvent *) override;
 	void dropEvent(QDropEvent *) override;
 	void drawBackground(QPainter *, const QRectF &) override;
+	void paintEvent(QPaintEvent *) override;
+	QET::Palette::SheetInk sheetInk() const override;
+	InkKind inkKind(const QGraphicsItem *item) const override;
 	
 	private:
 	QRectF applyMovement(const QRectF &, const QPointF &);
@@ -65,6 +69,23 @@ class ElementView : public QGraphicsView {
 	static constexpr qreal m_min_zoom = 0.1;
 	static constexpr qreal m_max_zoom = 200.0;
 	
+	public:
+		/// The grid step: 0 follows the zoom (finer when zoomed in),
+		/// else this step at every zoom
+	static int gridStep();
+	static void setGridStep(int step);
+		/// The step parts snap to at the current zoom
+	int currentGridStep() const;
+
+	signals:
+		/// The zoom or the grid step on screen changed
+	void viewStateChanged();
+
+	private:
+	int m_current_step = 0;
+	qreal m_current_zoom = 0;
+	QPoint m_band_origin;
+
 	public slots:
 	void setVisualisationMode();
 	void setSelectionMode();

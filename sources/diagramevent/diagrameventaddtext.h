@@ -20,6 +20,8 @@
 
 #include "diagrameventinterface.h"
 
+#include <QCursor>
+
 class Diagram;
 
 /**
@@ -34,7 +36,10 @@ class DiagramEventAddText : public DiagramEventInterface
 		DiagramEventAddText(Diagram *diagram);
 		~DiagramEventAddText() override;
 
+		void init() override;
 		void mousePressEvent (QGraphicsSceneMouseEvent *event) override;
+
+		static QCursor textCursor();
 };
 
 #endif // DIAGRAMEVENTADDTEXT_H

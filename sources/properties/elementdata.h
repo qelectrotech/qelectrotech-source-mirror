@@ -329,6 +329,10 @@ class ElementData : public PropertiesInterface
 		ElementData::SlaveState m_slave_state = ElementData::NO;
 
 		ElementData::TerminalType     m_terminal_type     = ElementData::TTGeneric;
+			/// Kind informations this class does not know (a corner, a
+			/// drawing aid, the row of a terminal...): read and written
+			/// back as they were, so saving in the editor keeps them
+		QList<QPair<QString, QString>> m_other_kind_informations;
 		ElementData::TerminalFunction m_terminal_function = ElementData::TFGeneric;
 
 		int m_contact_count{1};
