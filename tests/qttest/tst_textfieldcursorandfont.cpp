@@ -44,6 +44,7 @@ private slots:
 	void testDefaultProjectFontUnification();
 	void testPastedHtmlDarkModeCleaning();
 	void testSelectAllChangeFontSize();
+	void testMultiLineDefaultProjectFontNoFreeze();
 };
 
 void tst_TextFieldCursorAndFont::initTestCase()
@@ -331,6 +332,55 @@ void tst_TextFieldCursorAndFont::testSelectAllChangeFontSize()
 				QVERIFY(!frag.charFormat().hasProperty(QTextFormat::FontPixelSize));
 			}
 		}
+	}
+}
+
+void tst_TextFieldCursorAndFont::testMultiLineDefaultProjectFontNoFreeze()
+{
+	qdesigner_internal::RichTextEditorDialog dialog;
+
+	const QString multiLineText = QStringLiteral(
+		"<p><span style=\"font-size:36pt;\">TEST – Schrift</span></p>\n"
+		"<p><span style=\"font-size:24pt;\">TEST – Schrift</span></p>\n"
+		"<p><span style=\"font-size:18pt;\">TEST – Schrift</span></p>\n"
+		"<p><span style=\"font-size:12pt;\">TEST – Schrift</span></p>\n"
+		"<p><span style=\"font-size:9pt;\">TEST – Schrift</span></p>"
+	);
+
+	dialog.setText(multiLineText);
+
+	const auto textEdits = dialog.findChildren<QTextEdit *>();
+	QTextEdit *editor = nullptr;
+	for (auto *te : textEdits) {
+		if (te->acceptRichText()) {
+			editor = te;
+			break;
+		}
+	}
+	QVERIFY(editor != nullptr);
+
+	editor->selectAll();
+
+	auto *toolbar = dialog.findChild<QToolBar *>();
+	QVERIFY(toolbar != nullptr);
+
+	QAction *defaultFontAction = nullptr;
+	for (QAction *action : toolbar->actions()) {
+		if (action->text() == tr("Default project font") ||
+			action->toolTip() == tr("Default project font")) {
+			defaultFontAction = action;
+			break;
+		}
+	}
+	QVERIFY(defaultFontAction != nullptr);
+
+	// Triggering default font action must complete immediately without hanging or freezing
+	defaultFontAction->trigger();
+
+	for (QTextBlock block = editor->document()->begin(); block.isValid(); block = block.next()) {
+		QCOMPARE(block.blockFormat().headingLevel(), 0);
+		QCOMPARE(block.blockFormat().topMargin(), 0.0);
+		QCOMPARE(block.blockFormat().bottomMargin(), 0.0);
 	}
 }
 

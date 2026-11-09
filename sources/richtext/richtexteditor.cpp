@@ -857,7 +857,60 @@ void RichTextEditorToolBar::applyDefaultProjectFont()
 		endBlock = m_editor->document()->lastBlock();
 	}
 
-	// Clear custom margins, indents, line heights, heading levels, and backgrounds
+	struct FormatChange {
+		int start;
+		int length;
+		QTextCharFormat format;
+	};
+	QList<FormatChange> changes;
+
+	// Pass 1 (read-only): collect all format changes without modifying the document
+	for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+		for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+			QTextFragment fragment = it.fragment();
+			if (fragment.isValid()) {
+				int fragStart = fragment.position();
+				int fragEnd = fragStart + fragment.length();
+				if (cursor.hasSelection() && (fragEnd <= selStart || fragStart >= selEnd)) {
+					continue;
+				}
+
+				int applyStart = qMax(fragStart, selStart);
+				int applyEnd = cursor.hasSelection() ? qMin(fragEnd, selEnd) : fragEnd;
+				if (applyEnd <= applyStart) {
+					continue;
+				}
+
+				QTextCharFormat charFormat = fragment.charFormat();
+				charFormat.setFontFamilies({defaultFont.family()});
+				charFormat.clearProperty(QTextFormat::FontSizeAdjustment);
+				charFormat.clearProperty(QTextFormat::FontPixelSize);
+				charFormat.clearProperty(QTextFormat::BackgroundBrush);
+				charFormat.setBackground(QBrush(Qt::NoBrush));
+
+				// If text color is white or near-white (e.g. copied from dark theme), reset to black
+				QColor fg = charFormat.foreground().color();
+				if (fg.isValid() && fg.lightness() > 200) {
+					charFormat.setForeground(QBrush(Qt::black));
+				}
+
+				changes.append({applyStart, applyEnd - applyStart, charFormat});
+			}
+		}
+
+		if (block == endBlock)
+			break;
+	}
+
+	// Pass 2: apply character formatting changes
+	for (const auto &change : changes) {
+		QTextCursor fragCursor(m_editor->document());
+		fragCursor.setPosition(change.start);
+		fragCursor.setPosition(change.start + change.length, QTextCursor::KeepAnchor);
+		fragCursor.setCharFormat(change.format);
+	}
+
+	// Pass 3: update block formatting
 	for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
 		QTextCursor blockCursor(block);
 		QTextBlockFormat blockFormat = block.blockFormat();
@@ -876,39 +929,9 @@ void RichTextEditorToolBar::applyDefaultProjectFont()
 		QTextCharFormat bCharFormat = block.charFormat();
 		bCharFormat.clearProperty(QTextFormat::FontSizeAdjustment);
 		bCharFormat.clearProperty(QTextFormat::FontPixelSize);
+		bCharFormat.clearProperty(QTextFormat::BackgroundBrush);
+		bCharFormat.setBackground(QBrush(Qt::NoBrush));
 		blockCursor.setBlockCharFormat(bCharFormat);
-
-		for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
-			QTextFragment fragment = it.fragment();
-			if (fragment.isValid()) {
-				int fragStart = fragment.position();
-				int fragEnd = fragStart + fragment.length();
-				if (cursor.hasSelection() && (fragEnd <= selStart || fragStart >= selEnd)) {
-					continue;
-				}
-
-				QTextCursor fragCursor(m_editor->document());
-				int applyStart = qMax(fragStart, selStart);
-				int applyEnd = cursor.hasSelection() ? qMin(fragEnd, selEnd) : fragEnd;
-				fragCursor.setPosition(applyStart);
-				fragCursor.setPosition(applyEnd, QTextCursor::KeepAnchor);
-
-				QTextCharFormat charFormat = fragment.charFormat();
-				charFormat.setFontFamilies({defaultFont.family()});
-				charFormat.clearProperty(QTextFormat::FontSizeAdjustment);
-				charFormat.clearProperty(QTextFormat::FontPixelSize);
-				charFormat.clearProperty(QTextFormat::BackgroundBrush);
-				charFormat.setBackground(QBrush(Qt::NoBrush));
-
-				// If text color is white or near-white (e.g. copied from dark theme), reset to black
-				QColor fg = charFormat.foreground().color();
-				if (fg.isValid() && fg.lightness() > 200) {
-					charFormat.setForeground(QBrush(Qt::black));
-				}
-
-				fragCursor.setCharFormat(charFormat);
-			}
-		}
 
 		if (block == endBlock)
 			break;
@@ -1059,6 +1082,51 @@ void RichTextEditor::setFontPointSize(double d)
 		QTextBlock startBlock = document()->findBlock(selStart);
 		QTextBlock endBlock = document()->findBlock(selEnd);
 
+		struct FormatChange {
+			int start;
+			int length;
+			QTextCharFormat format;
+		};
+		QList<FormatChange> changes;
+
+		// Pass 1 (read-only): collect format changes without modifying document
+		for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+			for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+				QTextFragment fragment = it.fragment();
+				if (fragment.isValid()) {
+					int fragStart = fragment.position();
+					int fragEnd = fragStart + fragment.length();
+					if (fragEnd <= selStart || fragStart >= selEnd) {
+						continue;
+					}
+
+					int applyStart = qMax(fragStart, selStart);
+					int applyEnd = qMin(fragEnd, selEnd);
+					if (applyEnd <= applyStart) {
+						continue;
+					}
+
+					QTextCharFormat charFormat = fragment.charFormat();
+					charFormat.clearProperty(QTextFormat::FontSizeAdjustment);
+					charFormat.clearProperty(QTextFormat::FontPixelSize);
+					charFormat.setFontPointSize(pointSize);
+					changes.append({applyStart, applyEnd - applyStart, charFormat});
+				}
+			}
+
+			if (block == endBlock)
+				break;
+		}
+
+		// Pass 2: apply character formatting
+		for (const auto &change : changes) {
+			QTextCursor fragCursor(document());
+			fragCursor.setPosition(change.start);
+			fragCursor.setPosition(change.start + change.length, QTextCursor::KeepAnchor);
+			fragCursor.setCharFormat(change.format);
+		}
+
+		// Pass 3: update block formatting
 		for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
 			QTextCursor blockCursor(block);
 			if (block.blockFormat().headingLevel() > 0) {
@@ -1072,29 +1140,6 @@ void RichTextEditor::setFontPointSize(double d)
 			bCharFormat.clearProperty(QTextFormat::FontPixelSize);
 			bCharFormat.setFontPointSize(pointSize);
 			blockCursor.setBlockCharFormat(bCharFormat);
-
-			for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
-				QTextFragment fragment = it.fragment();
-				if (fragment.isValid()) {
-					int fragStart = fragment.position();
-					int fragEnd = fragStart + fragment.length();
-					if (fragEnd <= selStart || fragStart >= selEnd) {
-						continue;
-					}
-
-					QTextCursor fragCursor(document());
-					int applyStart = qMax(fragStart, selStart);
-					int applyEnd = qMin(fragEnd, selEnd);
-					fragCursor.setPosition(applyStart);
-					fragCursor.setPosition(applyEnd, QTextCursor::KeepAnchor);
-
-					QTextCharFormat charFormat = fragment.charFormat();
-					charFormat.clearProperty(QTextFormat::FontSizeAdjustment);
-					charFormat.clearProperty(QTextFormat::FontPixelSize);
-					charFormat.setFontPointSize(pointSize);
-					fragCursor.setCharFormat(charFormat);
-				}
-			}
 
 			if (block == endBlock)
 				break;
