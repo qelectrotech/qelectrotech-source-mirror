@@ -17,7 +17,7 @@
 */
 /*
 	Moving the selection with the arrow keys: the crosshair stands on the
-	leftmost selected symbol's terminal, the same from one key press to
+	leftmost selected symbol's insertion point, the same from one key press to
 	the next, or on the middle of a text; and the keys move by the folio's
 	grid step when set so (off by default: the fixed step, as before).
 */
@@ -101,7 +101,7 @@ class tst_keyboardmovereference : public QObject
 			DiagramView::setCrosshairShown(false);
 		}
 
-			//Two symbols: on the left one's terminal, whatever was nearer
+			//Two symbols: on the left one's insertion point, whatever was nearer
 		void leftmostSymbol()
 		{
 			m_diagram->clearSelection();
@@ -111,9 +111,10 @@ class tst_keyboardmovereference : public QObject
 			key(Qt::Key_Right);
 			QCOMPARE(m_left->terminals().first()->dockConductor(), before + QPointF(10, 0));
 			QVERIFY(m_view->crosshairVisible());
-			QCOMPARE(m_view->crosshairPos(), m_left->terminals().first()->dockConductor());
+			QCOMPARE(m_view->crosshairPos(), m_left->scenePos());
 			key(Qt::Key_Left);
-			QCOMPARE(m_view->crosshairPos(), before);
+			QCOMPARE(m_view->crosshairPos(), m_left->scenePos());
+			QCOMPARE(m_left->terminals().first()->dockConductor(), before);
 		}
 
 			//A text: its middle, not its top left corner

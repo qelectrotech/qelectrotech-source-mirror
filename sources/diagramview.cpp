@@ -2544,24 +2544,13 @@ void DiagramView::moveCrosshair(const QPoint &viewport_pos)
 	m_caught_handle = handle;
 	QPointF pos = handle ? handle->scenePos()
 			     : Diagram::snapToGrid(mapToScene(viewport_pos));
-		//Dragging a symbol: on its terminal nearest the mouse, where that
-		//terminal lands, not on the mouse, which holds the symbol
-		//somewhere beside it
-		//Placing a new one, the same: on the terminal of the symbol
-		//hanging on the mouse, where its terminal help lines would be
+		//Dragging a symbol, or placing a new one: on its insertion point
+		//(its origin), the one point that lands on the grid, the same
+		//wherever the symbol was grabbed
 	Element *moving = m_dragged_element && m_press_places ? m_dragged_element.data()
 			: m_diagram ? m_diagram->pendingElement() : nullptr;
-	if (moving && !handle) {
-		const QPointF mouse = mapToScene(viewport_pos);
-		qreal nearest = -1;
-		for (const Terminal *t : moving->terminals()) {
-			const qreal d = QLineF(mouse, t->dockConductor()).length();
-			if (nearest < 0 || d < nearest) {
-				nearest = d;
-				pos = t->dockConductor();
-			}
-		}
-	}
+	if (moving && !handle)
+		pos = moving->scenePos();
 	if (m_crosshair_visible && pos == m_crosshair_pos)
 		return;
 	if (m_crosshair_visible)
@@ -2671,11 +2660,8 @@ void DiagramView::crosshairOnMovedSelection()
 	if (!reference)
 		return;
 	QList<QPointF> points;
-	if (reference_is_symbol) {
-		const auto terminals = static_cast<Element *>(reference)->terminals();
-		for (const Terminal *t : terminals)
-			points << t->dockConductor();
-	}
+	if (reference_is_symbol)
+		points << reference->scenePos();	//its insertion point
 	if (points.isEmpty()) {
 		if (dynamic_cast<DiagramTextItem *>(reference)
 		    || reference->type() == ElementTextItemGroup::Type)
