@@ -229,6 +229,8 @@ Diagram::Diagram(QETProject *project) :
 		}
 	});
 
+	border_and_titleblock.setLanguages(&m_project->languages());
+
 	connect(&border_and_titleblock,
 		&BorderTitleBlock::needTitleBlockTemplate,
 		this, &Diagram::setTitleBlockTemplate);

@@ -5114,12 +5114,27 @@ QStringList QETProject::translatableTexts()
 			"UNION SELECT value FROM element_information "
 			"WHERE name IN ('comment', 'function', 'description', 'designation')");
 	QSet<QString> found;
-	QSqlQuery query = m_data_base.newQuery(sql);
-	while (query.next()) {
-		const QString text = query.value(0).toString();
+	const auto collect = [&found](const QString &text) {
 		if (ProjectLanguages::isTranslatable(text)) {
 			found.insert(text);
 		}
+	};
+	QSqlQuery query = m_data_base.newQuery(sql);
+	while (query.next()) {
+		collect(query.value(0).toString());
+	}
+		//The title block of each folio: its title and additional fields
+	for (Diagram *diagram : folios()) {
+		const TitleBlockProperties title_block = diagram->border_and_titleblock.exportTitleBlock();
+		collect(title_block.title);
+		for (const QString &key : title_block.context.keys()) {
+			collect(title_block.context[key].toString());
+		}
+	}
+		//The fields of the project, which the title blocks can show
+	const DiagramContext properties = projectProperties();
+	for (const QString &key : properties.keys()) {
+		collect(properties[key].toString());
 	}
 	QStringList result(found.cbegin(), found.cend());
 	result.sort();

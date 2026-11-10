@@ -361,6 +361,16 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
   add_executable(
+    tst_titleblocklanguage
+    tst_titleblocklanguage.cpp)
+  add_test(NAME tst_titleblocklanguage COMMAND tst_titleblocklanguage)
+  add_dependencies(tst_titleblocklanguage qelectrotech)
+  target_include_directories(tst_titleblocklanguage PRIVATE ${QET_DIR}/sources)
+  target_link_libraries(tst_titleblocklanguage PRIVATE qelectrotech_objects Qt::Test)
+  target_compile_definitions(tst_titleblocklanguage PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+  add_executable(
     tst_textclearance
     tst_textclearance.cpp)
   add_test(NAME tst_textclearance COMMAND tst_textclearance)

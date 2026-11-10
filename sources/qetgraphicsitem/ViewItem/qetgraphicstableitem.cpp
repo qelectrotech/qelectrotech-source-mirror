@@ -820,7 +820,9 @@ bool QetGraphicsTableItem::toDXF(const QString &filepath)
 
 			Createdxf::drawTextAligned(
 						filepath,
-						m_model->index(index_row, j).data().toString(),
+						ProjectDBModel::shownText(
+							m_model,
+							m_model->index(index_row, j).data().toString()),
 						x,y,h1,0,0,0,valign,x,0,0);
 		}
 	}
