@@ -322,6 +322,26 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief newFolioTakesPreviousGroup
+	* @return whether a new folio starts with the group and sub-group of the
+	* folio it comes after (QETProject::addNewDiagram()), so a run of folios
+	* of one group is drawn without typing the group on each. Off by
+	* default: a new folio then has none, as before.
+	* @sa setNewFolioTakesPreviousGroup
+	*/
+	bool newFolioTakesPreviousGroup()
+	{
+		QSettings settings;
+		return settings.value("diagrameditor/new_folio_takes_previous_group", false).toBool();
+	}
+
+	void setNewFolioTakesPreviousGroup(bool takes)
+	{
+		QSettings settings;
+		settings.setValue("diagrameditor/new_folio_takes_previous_group", takes);
+	}
+
+	/**
 	* @brief houseStyle
 	* @return this installation's drawing conventions, in the user's own
 	* words -- empty when nobody has set any.

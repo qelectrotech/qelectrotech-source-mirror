@@ -63,6 +63,11 @@ namespace QetSettings
 	bool duplicateLabelsSignalsByPlant();
 	void setDuplicateLabelsSignalsByPlant(bool by_plant);
 
+		// Whether a new folio takes the group and sub-group of the folio
+		// before it. Off by default.
+	bool newFolioTakesPreviousGroup();
+	void setNewFolioTakesPreviousGroup(bool takes);
+
 	/**
 		@brief Free-text drawing conventions for this installation (grid,
 		flow direction, routing, tagging, grouping, ...), written once by

@@ -56,6 +56,7 @@
 #include "qetversion.h"
 #include "undocommand/adddiagramcommand.h"
 #include "utils/previousversions.h"
+#include "utils/qetsettings.h"
 
 #include <QCryptographicHash>
 #include <QElapsedTimer>
@@ -3899,7 +3900,23 @@ Diagram *QETProject::addNewDiagram(int pos)
 	Diagram *diagram = new Diagram(this);
 
 	diagram->border_and_titleblock.importBorder(defaultBorderProperties());
-	diagram->border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
+	TitleBlockProperties titleblock = defaultTitleBlockProperties();
+	if (QetSettings::newFolioTakesPreviousGroup())
+	{
+			//The folio the new one comes after: at @p pos - 1, or the last
+			//one when it is added at the end. Its own group only: one that
+			//is just its plant leaves the new folio its own plant's.
+		const int count = m_diagrams_list.count();
+		const int before = (pos < 0 || pos > count) ? count - 1 : pos - 1;
+		if (before >= 0)
+		{
+			const BorderTitleBlock &previous =
+					m_diagrams_list.at(before)->border_and_titleblock;
+			titleblock.folio_group = previous.folioGroup();
+			titleblock.folio_subgroup = previous.folioSubgroup();
+		}
+	}
+	diagram->border_and_titleblock.importTitleBlock(titleblock);
 	diagram->defaultConductorProperties = defaultConductorProperties();
 	diagram->queueValuesStore();
 

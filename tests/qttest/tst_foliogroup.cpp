@@ -22,6 +22,7 @@
 #include "qetresult.h"
 #include "titleblockproperties.h"
 #include "undocommand/changetitleblockcommand.h"
+#include "utils/qetsettings.h"
 
 #include <QDomDocument>
 #include <QSettings>
@@ -36,6 +37,7 @@
 	%{folio_group} and %{folio_subgroup}; a project keeps them when saved
 	as .qet or .qetdb, and a project without them saves as before. The
 	summary (project_summary_view) and qet_folios give the same values.
+	With the setting on, a new folio takes the group of the folio before it.
 */
 class tst_foliogroup : public QObject
 {
@@ -243,6 +245,63 @@ private slots:
 		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
 		QCOMPARE(reopened(project, QStringLiteral("none_") + file),
 				 QStringList({QString(), QString()}));
+	}
+
+		//"group|sub-group" of each folio of @p project, as stored on it
+	static QStringList ownGroups(QETProject &project)
+	{
+		QStringList rows;
+		for (Diagram *diagram : project.diagrams())
+			rows << diagram->border_and_titleblock.folioGroup() + QLatin1Char('|')
+					+ diagram->border_and_titleblock.folioSubgroup();
+		return rows;
+	}
+
+	void newFolioHasNoGroupByDefault()
+	{
+		QVERIFY(!QetSettings::newFolioTakesPreviousGroup());
+		QETProject project;
+		twoFolios(project);
+		project.addNewDiagram();
+		QCOMPARE(ownGroups(project).last(), QStringLiteral("|"));
+	}
+
+	void newFolioTakesTheGroupBeforeIt()
+	{
+		QetSettings::setNewFolioTakesPreviousGroup(true);
+		QETProject project;
+		twoFolios(project);
+
+			//At the end: after the "Lists" folio
+		project.addNewDiagram();
+			//Inserted second: after the FACTORY folio, which has no group
+			//of its own, only its plant
+		project.addNewDiagram(1);
+			//First: no folio before it
+		project.addNewDiagram(0);
+		QetSettings::setNewFolioTakesPreviousGroup(false);
+
+		QCOMPARE(ownGroups(project), QStringList({
+			QStringLiteral("|"),
+			QStringLiteral("|"),
+			QStringLiteral("|"),
+			QStringLiteral("Lists|Material list"),
+			QStringLiteral("Lists|Material list")}));
+	}
+
+	void takingTheGroupIsUndoneWithTheFolio()
+	{
+		QetSettings::setNewFolioTakesPreviousGroup(true);
+		QETProject project;
+		twoFolios(project);
+		Diagram *added = project.addNewDiagram();
+		QetSettings::setNewFolioTakesPreviousGroup(false);
+		QVERIFY(added);
+		QCOMPARE(project.diagrams().count(), 3);
+		project.undoStack()->undo();
+		QCOMPARE(project.diagrams().count(), 2);
+		project.undoStack()->redo();
+		QCOMPARE(ownGroups(project).last(), QStringLiteral("Lists|Material list"));
 	}
 
 	void viewsGiveTheGroup_data()
