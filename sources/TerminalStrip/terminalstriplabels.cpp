@@ -75,7 +75,8 @@ Updater *updaterOf(Diagram *diagram)
 	/// @return true when @a a comes before @a b in reading order
 bool before(const TerminalElement *a, const TerminalElement *b)
 {
-	const QPointF pa = a->scenePos(), pb = b->scenePos();
+	const QPointF pa = a->mapToScene(QPointF(0, a->rowY())),
+				  pb = b->mapToScene(QPointF(0, b->rowY()));
 	if (!qFuzzyCompare(pa.x() + 1, pb.x() + 1))
 		return pa.x() < pb.x();
 	return pa.y() < pb.y();
@@ -97,8 +98,8 @@ QLineF bridgeLine(TerminalElement *a, TerminalStrip *strip, const QList<Terminal
 		if (b == a || qAbs(b->sceneTransform().map(QLineF(0, 0, 1, 0)).angleTo(
 						   a->sceneTransform().map(QLineF(0, 0, 1, 0)))) > 0.5)
 			continue;
-		const QPointF p = a->mapFromScene(b->scenePos());
-		if (qAbs(p.y()) > 0.5 || p.x() <= 0.5)
+		const QPointF p = a->mapFromScene(b->mapToScene(QPointF(0, b->rowY())));
+		if (qAbs(p.y() - a->rowY()) > 0.5 || p.x() <= 0.5)
 			continue;
 		if (!next || p.x() < next_x) {
 			next = b;
@@ -118,7 +119,7 @@ QLineF bridgeLine(TerminalElement *a, TerminalStrip *strip, const QList<Terminal
 	for (Terminal *t : next->terminals())
 		to = first ? (first = false, a->mapFromScene(t->dockConductor()).x())
 				   : qMin(to, a->mapFromScene(t->dockConductor()).x());
-	return to > from ? QLineF(from, 0, to, 0) : QLineF();
+	return to > from ? QLineF(from, a->rowY(), to, a->rowY()) : QLineF();
 }
 
 } // namespace
