@@ -589,6 +589,11 @@ qet_add_app_test(tst_terminalconductortext tst_terminalconductortext.cpp)
 # typed as %{key} in a composite text, and both follow its value.
 qet_add_app_test(tst_custominfotext tst_custominfotext.cpp)
 
+# A symbol can define its own custom properties (discussion #561): every
+# placed copy has them, filled in or not, an empty one adds nothing to
+# the saved project, and a typed name becomes a key every version opens.
+qet_add_app_test(tst_symbolcustominfo tst_symbolcustominfo.cpp)
+
 # A PLC contact draws its master's BMK: the master's label comes from its
 # numbering formula, which holds the page number, so a folio moved to
 # another place changes it -- the contact shows the new label at once, the

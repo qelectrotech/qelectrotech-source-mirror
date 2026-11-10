@@ -54,6 +54,9 @@
 #include <QShortcut>
 #include <QMenu>
 #include <QRegularExpressionValidator>
+#include <QInputDialog>
+#include <QMessageBox>
+#include <QTreeWidgetItem>
 
 QWidget* EditorDelegate::createEditor(QWidget *parent,
 		      const QStyleOptionViewItem &option,
@@ -428,7 +431,95 @@ void ElementPropertiesEditorWidget::setUpInterface()
 		}
 	});
 
+	setUpCustomInfo();
 	populateTree();
+}
+
+/**
+	@brief ElementPropertiesEditorWidget::setUpCustomInfo
+	The buttons under the information tree that add and remove the
+	custom properties of this symbol (discussion #561): every placed
+	copy shows them, filled in or not.
+*/
+void ElementPropertiesEditorWidget::setUpCustomInfo()
+{
+	m_custom_info_w = new QWidget(this);
+	auto *layout = new QHBoxLayout(m_custom_info_w);
+	layout->setContentsMargins(0, 0, 0, 0);
+	auto *add_pb = new QPushButton(tr("Add a custom property"), m_custom_info_w);
+	auto *remove_pb = new QPushButton(tr("Remove the custom property"), m_custom_info_w);
+	remove_pb->setEnabled(false);
+	layout->addWidget(add_pb);
+	layout->addWidget(remove_pb);
+	layout->addStretch();
+	ui->verticalLayout_4->addWidget(m_custom_info_w);
+
+	connect(add_pb, &QPushButton::clicked,
+			this, &ElementPropertiesEditorWidget::addCustomInfo);
+	connect(ui->m_tree, &QTreeWidget::currentItemChanged,
+			remove_pb, [remove_pb](QTreeWidgetItem *item) {
+		remove_pb->setEnabled(item && item->data(0, Qt::UserRole + 1).toBool());
+	});
+	connect(remove_pb, &QPushButton::clicked, this, [this]() {
+		QTreeWidgetItem *item = ui->m_tree->currentItem();
+		if (item && item->data(0, Qt::UserRole + 1).toBool())
+			delete item;
+	});
+}
+
+/**
+	@brief ElementPropertiesEditorWidget::addCustomInfoRow
+	@return a new row of the information tree for the custom property
+	@p key, its default value @p value editable
+*/
+QTreeWidgetItem *ElementPropertiesEditorWidget::addCustomInfoRow(
+		const QString &key, const QString &value)
+{
+	auto *qtwi = new QTreeWidgetItem(ui->m_tree);
+	qtwi->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable);
+	qtwi->setData(0, Qt::DisplayRole, key);
+	qtwi->setData(0, Qt::UserRole, key);
+	qtwi->setData(0, Qt::UserRole + 1, true);
+	qtwi->setToolTip(0, tr("Custom property: every placed copy of this symbol has it"));
+	qtwi->setText(1, value);
+	return qtwi;
+}
+
+/**
+	@brief ElementPropertiesEditorWidget::addCustomInfo
+	Ask for the name of a new custom property and add its row. The name
+	is turned into a key every version can open: "Address A" is
+	"address_a" (@sa QETInformation::toInfoKey)
+*/
+void ElementPropertiesEditorWidget::addCustomInfo()
+{
+	bool ok = false;
+	const QString name = QInputDialog::getText(
+				this, tr("Add a custom property"),
+				tr("Name of the property:"), QLineEdit::Normal, QString(), &ok);
+	if (!ok) {
+		return;
+	}
+	const QString key = QETInformation::toInfoKey(name);
+	if (key.isEmpty()) {
+		QMessageBox::warning(this, tr("Add a custom property"),
+							 tr("Use letters, numbers, \"-\" or \"_\" in the name."));
+		return;
+	}
+
+	bool taken = QETInformation::elementCustomInfoKeys({key}).isEmpty();
+	for (int i = 0; !taken && i < ui->m_tree->topLevelItemCount(); ++i) {
+		taken = ui->m_tree->topLevelItem(i)->data(0, Qt::UserRole).toString() == key;
+	}
+	if (taken) {
+		QMessageBox::warning(this, tr("Add a custom property"),
+							 tr("This symbol already has a property \"%1\".").arg(key));
+		return;
+	}
+
+	QTreeWidgetItem *qtwi = addCustomInfoRow(key, QString());
+	ui->m_tree->setCurrentItem(qtwi);
+	ui->m_tree->editItem(qtwi, 1);
 }
 
 void ElementPropertiesEditorWidget::updateTree()
@@ -463,6 +554,9 @@ void ElementPropertiesEditorWidget::updateTree()
 		default:
 			ui->m_tree->setDisabled(true);
 			break;
+	}
+	if (m_custom_info_w) {
+		m_custom_info_w->setEnabled(ui->m_tree->isEnabled());
 	}
 }
 
@@ -507,6 +601,10 @@ void ElementPropertiesEditorWidget::populateTree()
 		qtwi->setText(1, m_data.m_informations.value(key).toString());
 		// Adjust column width
 		ui->m_tree->resizeColumnToContents(0);
+	}
+
+	for (const QString &key : std::as_const(m_data.m_custom_info_keys)) {
+		addCustomInfoRow(key, m_data.m_informations.value(key).toString());
 	}
 }
 
@@ -690,13 +788,24 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		m_data.m_terminal_function = ui->m_terminal_func_cb->currentData().value<ElementData::TerminalFunction>();
 	}
 
+	const QStringList old_custom_keys = m_data.m_custom_info_keys;
+	m_data.m_custom_info_keys.clear();
 	for (QTreeWidgetItem *qtwi : ui->m_tree->invisibleRootItem()->takeChildren())
 	{
+		if (qtwi->data(0, Qt::UserRole + 1).toBool()) {
+			m_data.m_custom_info_keys << qtwi->data(0, Qt::UserRole).toString();
+		}
 			//Kept as it is, line breaks included: every entry is
 			//written back on OK, so taking them out here lost them
 			//even when nothing was edited (bugtracker #348).
 		m_data.m_informations.addValue(qtwi->data(0, Qt::UserRole).toString(),
 									   qtwi->text(1));
+	}
+		//A custom property removed from the symbol takes its default with it
+	for (const QString &key : old_custom_keys) {
+		if (!m_data.m_custom_info_keys.contains(key)) {
+			m_data.m_informations.remove(key);
+		}
 	}
 
 	if (m_data.m_type == ElementData::Terminal)

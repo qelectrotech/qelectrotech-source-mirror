@@ -379,6 +379,9 @@ void ElementInfoWidget::buildInterface()
 void ElementInfoWidget::addCustomProperty(const QString &key, const QString &value)
 {
 	auto *widget = new CustomElementInfoPartWidget(key, value, this);
+	if (m_element && m_element->elementData().m_custom_info_keys.contains(key)) {
+		widget->setDefinedBySymbol(true);
+	}
 
 	const int insert_index = ui->scroll_vlayout->indexOf(m_add_custom_property_btn);
 	ui->scroll_vlayout->insertWidget(insert_index >= 0 ? insert_index : ui->scroll_vlayout->count(), widget);
@@ -733,9 +736,13 @@ DiagramContext ElementInfoWidget::currentInfo() const
 		}
 	}
 
+	const QStringList declared = m_element->elementData().m_custom_info_keys;
 	for (const auto &custom : std::as_const(m_custom_eipw_list))
 	{
-		if (custom->hasValidKey() && !custom->value().isEmpty())
+			//A property the symbol defines is kept empty: the element
+			//shows it empty too, so an untouched row is no change
+		if (custom->hasValidKey()
+			&& (!custom->value().isEmpty() || declared.contains(custom->key())))
 		{
 			info_.addValue(custom->key(), custom->value());
 		}
