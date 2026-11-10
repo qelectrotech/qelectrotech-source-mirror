@@ -1200,7 +1200,7 @@ bool Conductor::fromXml(QDomElement &dom_element)
 		m_autoNum_seq.fromXml(dom_element.firstChildElement("sequentialNumbers"));
 
 	m_freeze_label = dom_element.attribute("freezeLabel") == "true" ? true : false;
-	m_automatic = dom_element.attribute(QStringLiteral("automatic")) == QLatin1String("true");
+	setAutomatic(dom_element.attribute(QStringLiteral("automatic")) == QLatin1String("true"));
 
 		//Changed through the project database while its folio was not
 		//built (lazy folios): the change, not what the file says
@@ -2926,4 +2926,21 @@ void Conductor::setFreezeLabel(bool freeze)
 		QString f = m_properties.m_formula;
 		setUpConnectionForFormula(f,f);
 	}
+}
+
+/**
+	@brief Conductor::setAutomatic
+	An automatic wire is laid by AutoConnect, not placed: it cannot be
+	selected, so a click or a selection rectangle catches only what the
+	user placed.
+	@param automatic
+*/
+void Conductor::setAutomatic(bool automatic)
+{
+	m_automatic = automatic;
+	setFlag(QGraphicsItem::ItemIsSelectable, !automatic);
+	if (automatic) {
+		setSelected(false);
+	}
+	updateTextVisibility();
 }

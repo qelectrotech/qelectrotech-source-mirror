@@ -246,7 +246,7 @@ namespace {
 				- ydir * fontSize * 1.8
 				- xdir * fontSize * 0.9;
 			//As drawn: a text with a width is wrapped
-		QStringList lines = TextLines::layoutLines(dti -> document());
+		QStringList lines = TextLines::layoutLines(dti -> shownDocument());
 		qreal offset = fontSize * 1.6;
 		QList<TextLine> result;
 		foreach (QString line, lines) {
@@ -653,7 +653,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			qreal y = (cond->pos().y() + textItem -> pos().y())
 					- ydir * fontSize * 1.8
 					- xdir * fontSize * 0.9;
-			QStringList lines = textItem->toPlainText().split('\n');
+			QStringList lines = textItem->shownDocument()->toPlainText().split('\n');
 			qreal offset = fontSize * 1.6;
 			foreach (QString line, lines) {
 				if (line.size() > 0 && line != "_" )

@@ -107,6 +107,31 @@
         </widget>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="m_selection_frame_radius_layout">
+         <item>
+          <widget class="QLabel" name="m_selection_frame_radius_label">
+           <property name="text">
+            <string>Corner radius of the selection frame (0: square)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="m_selection_frame_radius_sb">
+           <property name="maximum">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="m_selection_frame_radius_spacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_zoom_out_beyond_folio">
          <property name="text">
           <string>Allow unzoom beyond the sheet</string>
@@ -1850,6 +1875,7 @@
   <tabstop>m_selection_rectangle_cb</tabstop>
   <tabstop>m_editor_like_folio_cb</tabstop>
   <tabstop>m_edit_collection_source_cb</tabstop>
+  <tabstop>m_selection_frame_radius_sb</tabstop>
   <tabstop>m_zoom_out_beyond_folio</tabstop>
   <tabstop>m_conductor_properties_panel</tabstop>
   <tabstop>m_terminal_conductor_color</tabstop>

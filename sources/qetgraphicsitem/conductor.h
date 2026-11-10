@@ -195,7 +195,7 @@ class Conductor : public QGraphicsObject
 	public:
 		void setFreezeLabel(bool freeze);
 		bool isAutomatic() const { return m_automatic; }
-		void setAutomatic(bool automatic) { m_automatic = automatic; updateTextVisibility(); }
+		void setAutomatic(bool automatic);
 			/// Drawn grey while its symbol is dragged: an automatic wire
 			/// is worked out anew once the symbol is put down
 		bool isPreview() const { return m_preview; }

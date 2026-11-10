@@ -17,7 +17,7 @@
 */
 /*
 	Moving the selection with the arrow keys: the crosshair stands on the
-	leftmost selected symbol's terminal, the same from one key press to
+	leftmost selected symbol's insertion point, the same from one key press to
 	the next, or on the middle of a text; and the keys move by the folio's
 	grid step when set so (off by default: the fixed step, as before).
 */
@@ -101,7 +101,7 @@ class tst_keyboardmovereference : public QObject
 			DiagramView::setCrosshairShown(false);
 		}
 
-			//Two symbols: on the left one's terminal, whatever was nearer
+			//Two symbols: on the left one's insertion point, whatever was nearer
 		void leftmostSymbol()
 		{
 			m_diagram->clearSelection();
@@ -111,9 +111,48 @@ class tst_keyboardmovereference : public QObject
 			key(Qt::Key_Right);
 			QCOMPARE(m_left->terminals().first()->dockConductor(), before + QPointF(10, 0));
 			QVERIFY(m_view->crosshairVisible());
+			QCOMPARE(m_view->crosshairPos(), m_left->scenePos());
+			key(Qt::Key_Left);
+			QCOMPARE(m_view->crosshairPos(), m_left->scenePos());
+			QCOMPARE(m_left->terminals().first()->dockConductor(), before);
+		}
+
+			//Pressed near its terminal: the arrow keys keep the crosshair
+			//on that terminal; pressed on the body, on the insertion point
+		void pressedTerminalIsReference()
+		{
+			m_diagram->clearSelection();
+			const QPoint near_terminal = m_view->mapFromScene(m_left->terminals().first()->dockConductor() + QPointF(5, 3));
+			const auto click = [this](const QPoint &at) {
+				QMouseEvent press(QEvent::MouseButtonPress, at, m_view->viewport()->mapToGlobal(at),
+						  Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+				QApplication::sendEvent(m_view->viewport(), &press);
+				QMouseEvent release(QEvent::MouseButtonRelease, at, m_view->viewport()->mapToGlobal(at),
+						    Qt::LeftButton, Qt::NoButton, Qt::NoModifier);
+				QApplication::sendEvent(m_view->viewport(), &release);
+			};
+				//At the press already, before the symbol is selected
+			{
+				QMouseEvent press(QEvent::MouseButtonPress, near_terminal, m_view->viewport()->mapToGlobal(near_terminal),
+						  Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+				QApplication::sendEvent(m_view->viewport(), &press);
+				QCOMPARE(m_view->crosshairPos(), m_left->terminals().first()->dockConductor());
+				QMouseEvent release(QEvent::MouseButtonRelease, near_terminal, m_view->viewport()->mapToGlobal(near_terminal),
+						    Qt::LeftButton, Qt::NoButton, Qt::NoModifier);
+				QApplication::sendEvent(m_view->viewport(), &release);
+			}
+			QVERIFY(m_left->isSelected());
+			key(Qt::Key_Right);
 			QCOMPARE(m_view->crosshairPos(), m_left->terminals().first()->dockConductor());
 			key(Qt::Key_Left);
-			QCOMPARE(m_view->crosshairPos(), before);
+
+			m_diagram->clearSelection();
+			click(m_view->mapFromScene(m_left->scenePos() + QPointF(5, 8)));
+			QVERIFY(m_left->isSelected());
+			key(Qt::Key_Right);
+			QCOMPARE(m_view->crosshairPos(), m_left->scenePos());
+			key(Qt::Key_Left);
+			m_diagram->clearSelection();
 		}
 
 			//A text: its middle, not its top left corner

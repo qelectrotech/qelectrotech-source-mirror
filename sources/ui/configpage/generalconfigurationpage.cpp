@@ -36,6 +36,7 @@
 #include <utils/qetutils.h>
 #include <utils/previousversions.h>
 #include <qetmessagebox.h>
+#include <qetgraphicsitem/qgraphicsitemutility.h>
 #include <foliogrid.h>
 #include <textgrid.h>
 #include <wiringrules.h>
@@ -176,6 +177,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_selection_rectangle_cb->setCurrentIndex(static_cast<int>(DiagramView::selectionRectangle()));
 	ui->m_editor_like_folio_cb->setChecked(ElementScene::likeFolio());
 	ui->m_edit_collection_source_cb->setChecked(ElementsLocation::findsAndEditsCollectionSource());
+	ui->m_selection_frame_radius_sb->setValue(QGIUtility::selectionFrameRadius());
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_zoom_step_sb->setValue(DiagramView::zoomStep());
 	ui->m_terminal_conductor_color->setChecked(Terminal::takesConductorColor());
@@ -446,6 +448,7 @@ void GeneralConfigurationPage::applyConf()
 		ui->m_selection_rectangle_cb->currentIndex()));
 	ElementScene::setLikeFolio(ui->m_editor_like_folio_cb->isChecked());
 	ElementsLocation::setFindsAndEditsCollectionSource(ui->m_edit_collection_source_cb->isChecked());
+	QGIUtility::setSelectionFrameRadius(ui->m_selection_frame_radius_sb->value());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	DiagramView::setZoomStep(ui->m_zoom_step_sb->value());
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());

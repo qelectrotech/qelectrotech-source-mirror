@@ -392,6 +392,18 @@ const QTextDocument *DiagramTextItem::translatedDocument() const
 }
 
 /**
+	@brief DiagramTextItem::shownDocument
+	@return the text as it is drawn: in the project's active language when
+	it has words for it, else the source text. For the exports which write
+	the words themselves.
+*/
+const QTextDocument *DiagramTextItem::shownDocument() const
+{
+	const QTextDocument *translated = translatedDocument();
+	return translated ? translated : document();
+}
+
+/**
 	@brief DiagramTextItem::paintText
 	Draw the text: in the project's active language when it has words for
 	it, else as QGraphicsTextItem draws it.

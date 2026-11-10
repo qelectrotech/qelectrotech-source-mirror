@@ -44,7 +44,8 @@ class tst_tabletranslation : public QObject
 	int m_run = 0;
 
 	// The SVG of the folio after a table of the folio titles is placed
-	QString svgWith(const QString &languages)
+	// (and in @p dxf, if given, the words of its DXF, a line each)
+	QString svgWith(const QString &languages, QStringList *dxf = nullptr)
 	{
 		const QString run = QString::number(m_run++);
 		const QString home = m_dir.filePath(QStringLiteral("home") + run);
@@ -74,6 +75,18 @@ class tst_tabletranslation : public QObject
 		proc.setProcessEnvironment(env);
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), js, in});
 		if (!proc.waitForFinished(QetTest::timeout(120000))) return {};
+		if (dxf) {
+			QProcess export_dxf;
+			export_dxf.setProcessEnvironment(env);
+			export_dxf.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--export-dxf"), in, out});
+			if (!export_dxf.waitForFinished(QetTest::timeout(120000))) return {};
+			const QStringList files = QDir(out).entryList({QStringLiteral("*.dxf")});
+			for (const QString &name : files) {
+				QFile dxf_file(QDir(out).filePath(name));
+				if (dxf_file.open(QIODevice::ReadOnly | QIODevice::Text))
+					*dxf << QString::fromUtf8(dxf_file.readAll()).split(QLatin1Char('\n'));
+			}
+		}
 		QString svg;
 		const QStringList files = QDir(out).entryList({QStringLiteral("*.svg")});
 		for (const QString &name : files) {
@@ -106,6 +119,16 @@ private slots:
 		QVERIFY(!svg.isEmpty());
 		QVERIFY(svg.contains(QStringLiteral("Motorschutz")));
 		QVERIFY(svg.contains(QStringLiteral("Titelspalte")));
+	}
+
+	// A DXF writes the words themselves: the same ones the folio shows
+	void dxfFollowsTheActiveLanguage()
+	{
+		QStringList dxf;
+		QVERIFY(!svgWith(languages(QStringLiteral("de")), &dxf).isEmpty());
+		QVERIFY(dxf.contains(QStringLiteral("Titelspalte")));
+		QVERIFY(dxf.contains(QStringLiteral("Motorschutz")));
+		QVERIFY(!dxf.contains(QStringLiteral("Motor protection")));
 	}
 
 	// Translations that are not in use change nothing

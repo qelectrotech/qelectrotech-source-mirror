@@ -157,6 +157,26 @@ DiagramContext BorderTitleBlock::titleblockInformation() const
 }
 
 /**
+	@brief BorderTitleBlock::shownTitleblockInformation
+	@return the title block's fields as drawn: in the project's active
+	language, where titleblockInformation() keeps the words as written
+*/
+DiagramContext BorderTitleBlock::shownTitleblockInformation() const
+{
+	return m_titleblock_template_renderer->shownContext();
+}
+
+/**
+	@brief BorderTitleBlock::setLanguages
+	@param languages : the project's texts in other languages, which must
+	outlive this title block
+*/
+void BorderTitleBlock::setLanguages(const ProjectLanguages *languages)
+{
+	m_titleblock_template_renderer->setLanguages(languages);
+}
+
+/**
 	@brief BorderTitleBlock::titleBlockRectForQPainter
 	@return The title block rect to use with the QPainter in the draw method.
 	The returned rect is always horizontal

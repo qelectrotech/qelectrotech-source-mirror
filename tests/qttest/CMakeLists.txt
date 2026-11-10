@@ -361,6 +361,16 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
   add_executable(
+    tst_titleblocklanguage
+    tst_titleblocklanguage.cpp)
+  add_test(NAME tst_titleblocklanguage COMMAND tst_titleblocklanguage)
+  add_dependencies(tst_titleblocklanguage qelectrotech)
+  target_include_directories(tst_titleblocklanguage PRIVATE ${QET_DIR}/sources)
+  target_link_libraries(tst_titleblocklanguage PRIVATE qelectrotech_objects Qt::Test)
+  target_compile_definitions(tst_titleblocklanguage PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+  add_executable(
     tst_textclearance
     tst_textclearance.cpp)
   add_test(NAME tst_textclearance COMMAND tst_textclearance)
@@ -485,6 +495,10 @@ add_dependencies(tst_duplicatelabels qelectrotech_lrelease)
 # the copy is numbered from its own folio, starting at 1 like the page it was
 # made from, and that folio's counter reads the numbers it has handed out.
 qet_add_app_test(tst_folioautonumcopy tst_folioautonumcopy.cpp)
+# A read-only project builds its lazy folios whole: shown, exported, written out.
+qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
+target_compile_definitions(tst_readonlyfolios PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples")
 # The labels file behind a symbol's prefix is read once, and again only when it changes.
 qet_add_app_test(tst_labelsfilecache tst_labelsfilecache.cpp)
 # A quick second click on the same spot reaches the shape tools as a
@@ -508,6 +522,7 @@ qet_add_app_test(tst_symbolpicturecache tst_symbolpicturecache.cpp)
 qet_add_app_test(tst_conductordefcopy tst_conductordefcopy.cpp)
 # The projects of the last session are opened again at start, and the
 # ones open when the editor closes are kept for the next start.
+qet_add_app_test(tst_autoconnecthand tst_autoconnecthand.cpp)
 # A T-junction shown as a dot: drawn, saved and undone.
 qet_add_app_test(tst_junctiondot tst_junctiondot.cpp)
 qet_add_app_test(tst_reopenprojects tst_reopenprojects.cpp)
@@ -597,6 +612,9 @@ qet_add_app_test(tst_updateelements tst_updateelements.cpp)
 # in the collection it was taken from, which updates the open projects.
 qet_add_app_test(tst_editcollectionsource tst_editcollectionsource.cpp)
 qet_add_app_test(tst_selectionrectangle tst_selectionrectangle.cpp)
+# The selection filter (status bar): what a click, a selection rectangle
+# and Select All pick; a click goes through what is left out.
+qet_add_app_test(tst_selectionfilter tst_selectionfilter.cpp)
 # The arrow keys: the crosshair on the leftmost selected symbol's terminal
 # or a text's middle; the folio's grid step when set so.
 qet_add_app_test(tst_keyboardmovereference tst_keyboardmovereference.cpp)
@@ -606,6 +624,9 @@ qet_add_app_test(tst_selectsamesymbols tst_selectsamesymbols.cpp)
 # Duplicate repeating the move of the copy (a setting), and Ctrl+Shift+D
 qet_add_app_test(tst_duplicaterepeatmove tst_duplicaterepeatmove.cpp)
 qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
+# The corner radius of the frame around a selected symbol: 10 as before,
+# 0 square.
+qet_add_app_test(tst_selectionframeradius tst_selectionframeradius.cpp)
 
 # The element editor's collections dock: an element dropped on the drawing
 # pastes its parts, centred on the drop and on the grid; double-clicked, the
@@ -2270,6 +2291,9 @@ qet_add_app_test(tst_dragtextswithoutshift tst_dragtextswithoutshift.cpp)
 # Potential types (#1539): a project that asks for it draws a conductor in the
 # colour, line style and width of its potential type.
 qet_add_app_test(tst_potentialtypes tst_potentialtypes.cpp)
+# potential_view: one row per potential (wires, terminals, folios, wire
+# numbers, more than one number), as QElectroTech groups the wires.
+qet_add_app_test(tst_potentialview tst_potentialview.cpp)
 
 # A core of a cable: section, colour and type are locked in the dialog and
 # show a small sign saying why, so an edit cannot write over the cable
