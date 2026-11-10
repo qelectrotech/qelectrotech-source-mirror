@@ -45,6 +45,7 @@ class QMenu;
 	interactive way.
 */
 class Element;
+class Terminal;
 class DiagramView : public PaletteGraphicsView
 {
 	Q_OBJECT
@@ -100,6 +101,11 @@ class DiagramView : public PaletteGraphicsView
 			/// The symbol a press grabbed: while it is dragged, the
 			/// crosshair stands on its terminal nearest the mouse
 		QPointer<Element> m_dragged_element;
+			/// A press near one of a symbol's terminals makes it the point
+			/// the crosshair stands on while the symbol is moved (arrow
+			/// keys or mouse); a press elsewhere on it, the insertion point
+		QPointer<Terminal> m_reference_terminal;
+		Terminal *referenceTerminal() const;
 		QGraphicsObject *handleNear(const QPoint &viewport_pos) const;
 		QMouseEvent *onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseEvent> &shifted);
 		void hideCrosshair();

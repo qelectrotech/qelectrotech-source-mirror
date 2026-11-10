@@ -303,7 +303,17 @@ void Terminal::paint(
 			m_help_line -> setLine(line);
 		}
 
-		//Draw the help line perpendicular to the terminal
+		//Draw the help line perpendicular to the terminal. Not with the
+		//crosshair: it already crosses the folio through the terminal
+		//nearest the mouse, and lines through the other terminals beside
+		//it only blur where the symbol lands
+		if (DiagramView::crosshairShown())
+		{
+			delete m_help_line_a;
+			m_help_line_a = nullptr;
+		}
+		else
+		{
 		if (!m_help_line_a)
 		{
 			m_help_line_a = new QGraphicsLineItem(this);
@@ -330,6 +340,7 @@ void Terminal::paint(
 		line.setP1(m_help_line_a -> mapFromScene(line.p1()));
 		line.setP2(m_help_line_a -> mapFromScene(line.p2()));
 		m_help_line_a -> setLine(line);
+		}
 	}
 
 	// Draw label if show_name is enabled and terminal names are allowed
