@@ -4790,6 +4790,27 @@ bool projectDataBase::createDataBase()
 }
 
 /**
+	@brief folioGroupSql
+	The SQL of a folio's group or sub-group: its own, from the title block
+	properties the folio stores (folio_titleblock, written only when set),
+	else its plant or location. The same rule as %{folio_group} /
+	%{folio_subgroup} in its title block
+	(TitleBlockProperties::resolvedFolioGroup()), so the summary and the
+	public views say what the folio shows, built or not.
+	@param name : folio_group or folio_subgroup
+	@param folio_uuid : the folio's uuid column, e.g. d.uuid
+	@param fallback : the folio's plant or location column, e.g. di.plant
+*/
+static QString folioGroupSql(const QString &name, const QString &folio_uuid,
+							 const QString &fallback)
+{
+	return QStringLiteral(
+		"COALESCE(NULLIF((SELECT ft.value FROM folio_titleblock ft "
+		"WHERE ft.diagram_uuid = %2 AND ft.name = '%1'), ''), %3)")
+			.arg(name, folio_uuid, fallback);
+}
+
+/**
 	@brief projectDataBase::createElementNomenclatureView
 */
 void projectDataBase::createElementNomenclatureView()
@@ -4932,12 +4953,17 @@ void projectDataBase::createElementNomenclatureView()
 */
 void projectDataBase::createSummaryView()
 {
-	QString create_view ("CREATE VIEW project_summary_view AS SELECT "
+	QString create_view = QStringLiteral(
+						 "CREATE VIEW project_summary_view AS SELECT "
 						 "di.title AS title,"
 						 "di.author AS author,"
 						 "di.folio AS folio,"
 						 "di.plant AS plant,"
-						 "di.locmach AS locmach,"
+						 "di.locmach AS locmach,")
+			+ folioGroupSql(QStringLiteral("folio_group"), QStringLiteral("d.uuid"), QStringLiteral("di.plant"))
+			+ QStringLiteral(" AS folio_group,")
+			+ folioGroupSql(QStringLiteral("folio_subgroup"), QStringLiteral("d.uuid"), QStringLiteral("di.locmach"))
+			+ QStringLiteral(" AS folio_subgroup,"
 						 "di.indexrev AS indexrev,"
 						 "di.date AS date,"
 						 "d.pos AS pos"
@@ -5099,7 +5125,11 @@ QStringList projectDataBase::publicViewStatements()
 			"d.pos AS folio_number, di.folio AS folio, di.title AS title, "
 			"di.author AS author, di.plant AS plant, di.locmach AS location, "
 			"di.indexrev AS revision, di.date AS date, di.filename AS filename, "
-			"d.uuid AS folio_uuid "
+			"d.uuid AS folio_uuid, ")
+			+ folioGroupSql(QStringLiteral("folio_group"), QStringLiteral("d.uuid"), QStringLiteral("di.plant"))
+			+ QStringLiteral(" AS folio_group, ")
+			+ folioGroupSql(QStringLiteral("folio_subgroup"), QStringLiteral("d.uuid"), QStringLiteral("di.locmach"))
+			+ QStringLiteral(" AS folio_subgroup "
 			"FROM diagram d LEFT JOIN diagram_info di ON di.diagram_uuid = d.uuid"),
 		QStringLiteral(
 			"CREATE VIEW qet_devices AS SELECT "
