@@ -23,6 +23,7 @@
 #include <diagram.h>
 #include <diagramposition.h>
 #include <qetapp.h>
+#include <qetinformation.h>
 #include <qetgraphicsitem/conductor.h>
 #include <qetgraphicsitem/element.h>
 #include <qetxml.h>
@@ -381,6 +382,13 @@ namespace autonum
 		str.replace("%{plc_t2}", dc.value("plc_t2").toString());
 		str.replace("%{plc_t3}", dc.value("plc_t3").toString());
 		str.replace("%{plc_t4}", dc.value("plc_t4").toString());
+
+			//A user-defined custom property, %{address_a}
+		if (str.contains(QLatin1String("%{"))) {
+			for (const QString &key : QETInformation::elementCustomInfoKeys(dc.keys())) {
+				str.replace("%{" + key + "}", dc.value(key).toString());
+			}
+		}
 
 		return str;
 	}

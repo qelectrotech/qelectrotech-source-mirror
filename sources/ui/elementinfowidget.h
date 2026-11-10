@@ -72,7 +72,6 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 		void materialFromFile(int block);
 		void applyMaterialRecord(const MaterialRecord &record, int block);
 		ElementInfoPartWidget *infoPartWidgetForKey(const QString &key) const;
-		QStringList predefinedKeys() const;
 		void updateSuggestions();
 		void setupSchemeRow();
 		void setupFreezeRow();
