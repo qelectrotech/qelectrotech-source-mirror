@@ -3005,7 +3005,14 @@ void Diagram::refreshContents()
 */
 void Diagram::addItem(QGraphicsItem *item)
 {
-	if (!item || isReadOnly() || item->scene() == this) return;
+	if (!item || item->scene() == this) return;
+		//A read-only project still builds its folios when they are first
+		//needed (lazy folios: shown, exported, saved elsewhere): what they
+		//hold is read in, not an edit. Refused, a folio not built when the
+		//project was opened came out empty, and so did every copy of it.
+	const projectDataBase *db = m_project ? m_project->dataBase() : nullptr;
+	const bool reading = m_loading_deferred || (db && db->isBuildingFolio());
+	if (isReadOnly() && !reading) return;
 	QGraphicsScene::addItem(item);
 
 	switch (item->type())
