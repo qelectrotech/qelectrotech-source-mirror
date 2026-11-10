@@ -94,6 +94,10 @@ class ElementsLocation
 		QString name() const;
 		QString fileName() const;
 		DiagramContext elementInformations() const;
+		ElementsLocation collectionSource() const;
+		ElementsLocation forFindAndEdit() const;
+		static bool findsAndEditsCollectionSource();
+		static void setFindsAndEditsCollectionSource(bool source);
 	
 	private:
 		QString m_collection_path;

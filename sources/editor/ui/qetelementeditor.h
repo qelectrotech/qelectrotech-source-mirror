@@ -64,6 +64,7 @@ class QETElementEditor : public QMainWindow
 		ElementScene *elementScene() const;
 		ElementView *elementView() const;
 		static QPointF pasteOffset();
+		static void redrawPlacedElements(const ElementsLocation &saved);
 		static QString getOpenElementFileName(QWidget *parent = nullptr, const QString &dir = QString());
 		void updateTitle();
 		void fillPartsList();

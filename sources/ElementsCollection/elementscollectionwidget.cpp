@@ -172,9 +172,17 @@ void ElementsCollectionWidget::setCurrentLocation(
 	if (!location.exist())
 		return;
 
-	if (m_model)
-		m_tree_view->setCurrentIndex(
-					m_model->indexFromLocation(location));
+	if (!m_model)
+		return;
+	const QModelIndex index = m_model->indexFromLocation(location);
+	if (!index.isValid())
+		return;
+		//A current item inside a folded folder shows nothing: unfold
+		//the way to it and bring it into view
+	for (QModelIndex parent = index.parent() ; parent.isValid() ; parent = parent.parent())
+		m_tree_view->expand(parent);
+	m_tree_view->setCurrentIndex(index);
+	m_tree_view->scrollTo(index, QAbstractItemView::PositionAtCenter);
 }
 
 /**

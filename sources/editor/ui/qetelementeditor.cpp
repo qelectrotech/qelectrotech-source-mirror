@@ -59,6 +59,9 @@
 #include <ElementsCollection/elementscollectionwidget.h>
 #include "scaleelementdialog.h"
 #include <toolbarsettings.h>
+#include <diagram.h>
+#include <qetproject.h>
+#include <qetgraphicsitem/element.h>
 
 #include <QSettings>
 #include <QActionGroup>
@@ -394,7 +397,51 @@ bool QETElementEditor::toLocation(const ElementsLocation &location)
 		}
 	}
 
+	redrawPlacedElements(location);
 	return(true);
+}
+
+/**
+	@brief QETElementEditor::redrawPlacedElements
+	Show a saved element on the folios at once. Saved into a project's own
+	copy, the placed elements of that copy are redrawn. Saved into a
+	collection, with ElementsLocation::findsAndEditsCollectionSource(),
+	every open project that took the element from there gets the new
+	version (as "Update elements from the collections" does for it alone)
+	and its placed elements are redrawn. A new size or hotspot is taken
+	over; an element whose terminals moved keeps its old drawing.
+	@param saved : the location just written
+*/
+void QETElementEditor::redrawPlacedElements(const ElementsLocation &saved)
+{
+	const auto redraw = [](QETProject *project, const ElementsLocation &copy) {
+		ElementPictureFactory::instance()->dropCache(copy);
+		for (Diagram *diagram : project->builtFolios())
+			for (Element *element : diagram->elements())
+				if (element->location() == copy)
+					element->reloadPicture(true);
+	};
+
+	if (saved.isProject()) {
+		if (QETProject *project = saved.project())
+			redraw(project, saved);
+		return;
+	}
+	if (!saved.isFileSystem() || !ElementsLocation::findsAndEditsCollectionSource())
+		return;
+
+	const QString saved_path = saved.fileSystemPath();
+	for (QETProject *project : QETApp::registeredProjects()) {
+		if (!project || project->isReadOnly())
+			continue;
+		for (const QETProject::OutdatedElement &outdated : project->outdatedElements()) {
+			if (outdated.source.fileSystemPath() != saved_path)
+				continue;
+			project->updateElement(outdated);
+			project->setModified(true);
+			redraw(project, outdated.embedded);
+		}
+	}
 }
 
 /**
