@@ -284,17 +284,59 @@ namespace autonum
 	/**
 		@brief AssignVariables::replaceVariable
 		Replace the variables in formula in form %{my-var}
-		to the corresponding value stored in dc
+		to the corresponding value stored in dc.
+		%{plant} and %{location} are replaced by the element's own
+		value only; they never fall back to the folio, so existing
+		projects look as they always did.
+		%{structure_id} composes =plant+location-label (IEC 81346);
+		there an empty plant or location is taken from the containing
+		diagram's title block installation (=) / location (+) fields,
+		and an empty part is left out.
 		@param formula
 		@param dc
+		@param elmt the element the formula belongs to, if any;
+		used for the folio fallback of %{structure_id} and for the
+		%{prefix} token. May be null.
 		@return
 	*/
 	QString AssignVariables::replaceVariable(const QString &formula,
-						 const DiagramContext &dc)
+						 const DiagramContext &dc,
+						 const Element *elmt)
 	{
 		QString str = formula;
-		str.replace("%{label}", dc.value("label").toString());
-		str.replace("%{plant}", dc.value("plant").toString());
+
+		Diagram *diagram = elmt ? elmt->diagram() : nullptr;
+
+		const QString own_plant = dc.value("plant").toString();
+		const QString own_location = dc.value("location").toString();
+
+			//Only %{structure_id} falls back to the folio
+		QString plant_value = own_plant;
+		if (plant_value.isEmpty() && diagram)
+			plant_value = diagram->border_and_titleblock.plant();
+
+		QString location_value = own_location;
+		if (location_value.isEmpty() && diagram)
+			location_value = diagram->border_and_titleblock.locmach();
+
+		QString prefix_value = elmt ? elmt->getPrefix() : QString();
+		QString label_value = dc.value("label").toString();
+
+			//Composite IEC 81346 reference designation (=plant+location-label),
+			//each segment omitted when its underlying value is empty.
+		QString structure_id;
+		if (!plant_value.isEmpty())
+			structure_id += "=" + plant_value;
+		if (!location_value.isEmpty())
+			structure_id += "+" + location_value;
+		if (!label_value.isEmpty())
+			structure_id += "-" + label_value;
+
+		str.replace("%{label}", label_value);
+		str.replace("%{plant}", own_plant);
+		str.replace("%{location}", own_location);
+		str.replace("%{prefix}", prefix_value);
+		str.replace("%{structure_id}", structure_id);
 		str.replace("%{comment}", dc.value("comment").toString());
 		str.replace("%{description}", dc.value("description").toString());
 		str.replace("%{designation}", dc.value("designation").toString());
@@ -350,7 +392,6 @@ namespace autonum
 		
 		str.replace("%{machine_manufacturer_reference}", dc.value("machine_manufacturer_reference").toString());
 
-		str.replace("%{location}", dc.value("location").toString());
 		str.replace("%{function}", dc.value("function").toString());
 		str.replace("%{tension_protocol}", dc.value("tension_protocol").toString());
 		str.replace("%{conductor_section}", dc.value("conductor_section").toString());
