@@ -508,6 +508,7 @@ qet_add_app_test(tst_symbolpicturecache tst_symbolpicturecache.cpp)
 qet_add_app_test(tst_conductordefcopy tst_conductordefcopy.cpp)
 # The projects of the last session are opened again at start, and the
 # ones open when the editor closes are kept for the next start.
+qet_add_app_test(tst_autoconnecthand tst_autoconnecthand.cpp)
 # A T-junction shown as a dot: drawn, saved and undone.
 qet_add_app_test(tst_junctiondot tst_junctiondot.cpp)
 qet_add_app_test(tst_reopenprojects tst_reopenprojects.cpp)

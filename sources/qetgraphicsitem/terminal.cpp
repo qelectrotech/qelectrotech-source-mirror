@@ -29,6 +29,7 @@
 #include <qetgraphicsitem/element.h>
 #include "conductortextitem.h"
 #include <wiringrules.h>
+#include <autoconnect.h>
 
 #include <QSettings>
 #include <QToolTip>
@@ -593,6 +594,16 @@ void Terminal::hoverLeaveEvent(QGraphicsSceneHoverEvent *)
 	update();
 }
 
+namespace {
+		//With live automatic connections, AutoConnect lays the wires: the
+		//user steers them with the symbols, a corner, a T-junction or an
+		//interruption point, and draws none of their own
+	bool wiredAutomatically(const Terminal *terminal)
+	{
+		return AutoConnect::isOn(terminal->diagram());
+	}
+}
+
 /**
 	@brief Terminal::mousePressEvent
 	Gere le fait qu'on enfonce un bouton de la souris sur la Borne.
@@ -600,6 +611,10 @@ void Terminal::hoverLeaveEvent(QGraphicsSceneHoverEvent *)
 */
 void Terminal::mousePressEvent(QGraphicsSceneMouseEvent *e)
 {
+	if (wiredAutomatically(this)) {
+		e->ignore();
+		return;
+	}
 	if (Diagram *diag = diagram()) {
 		diag -> setConductorStart(mapToScene(QPointF(d->m_pos)));
 		diag -> setConductorStop(e -> scenePos());
@@ -653,7 +668,7 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 	m_previous_terminal = other_terminal;
 
 	// s'il s'agit d'une borne, on lui applique l'effet hover approprie
-	if (!canBeLinkedTo(other_terminal)) {
+	if (!canBeLinkedTo(other_terminal) || wiredAutomatically(other_terminal)) {
 		other_terminal -> m_hovered_color = forbiddenColor;
 	} else if (other_terminal -> conductorsCount()) {
 		other_terminal -> m_hovered_color = warningColor;
@@ -690,6 +705,9 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 
 	other_terminal -> m_hovered_color = neutralColor;
 	other_terminal -> m_hovered       = false;
+
+	if (wiredAutomatically(other_terminal))
+		return;
 
 	//We stop her if we can't link this terminal with other terminal
 	if (!canBeLinkedTo(other_terminal))
