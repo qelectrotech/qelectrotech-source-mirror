@@ -495,6 +495,9 @@ add_dependencies(tst_duplicatelabels qelectrotech_lrelease)
 # the copy is numbered from its own folio, starting at 1 like the page it was
 # made from, and that folio's counter reads the numbers it has handed out.
 qet_add_app_test(tst_folioautonumcopy tst_folioautonumcopy.cpp)
+# A folio's group and sub-group: named, or its plant and location; title
+# block variables, kept by .qet and .qetdb, absent from older files.
+qet_add_app_test(tst_foliogroup tst_foliogroup.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE

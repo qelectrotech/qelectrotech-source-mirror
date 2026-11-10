@@ -131,6 +131,10 @@ class BorderTitleBlock : public QObject
 		QString plant() const { const TitleBlockProperties *s = stored(); return(s ? s->plant : btb_plant_); }
 		/// @return the value of the title block "Locmach" field
 		QString locmach() const { const TitleBlockProperties *s = stored(); return(s ? s->locmach : btb_locmach_); }
+		/// @return the folio's own group, empty when it takes its plant's
+		QString folioGroup() const { const TitleBlockProperties *s = stored(); return(s ? s->folio_group : btb_folio_group_); }
+		/// @return the folio's own sub-group, empty when it takes its location's
+		QString folioSubgroup() const { const TitleBlockProperties *s = stored(); return(s ? s->folio_subgroup : btb_folio_subgroup_); }
 		/// @return the value of the revision index block "Folio" field
 		QString indexrev() const { const TitleBlockProperties *s = stored(); return(s ? s->indexrev : btb_indexrev_); }
 		/// @return the value of the title block "File" field
@@ -272,6 +276,8 @@ class BorderTitleBlock : public QObject
 		QString btb_folio_;         ///< titleblock folio
 		QString btb_plant_;         ///< titleblock plant
 		QString btb_locmach_;       ///< titleblock locmach
+		QString btb_folio_group_;   ///< titleblock folio group
+		QString btb_folio_subgroup_; ///< titleblock folio sub-group
 		QString btb_indexrev_;      ///< titleblock index rev
 		QString btb_final_folio_;   ///< titleblock final folio
 		QString btb_auto_page_num_; ///< titleblock auto page num

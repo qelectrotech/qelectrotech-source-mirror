@@ -133,6 +133,8 @@ namespace QETInformation
 	static QString DIA_INDEX_REV          = "indexrev";
 	static QString DIA_LOCMACH            = "locmach";
 	static QString DIA_PLANT              = "plant";
+	static QString DIA_FOLIO_GROUP        = "folio_group";
+	static QString DIA_FOLIO_SUBGROUP     = "folio_subgroup";
 	static QString DIA_POS                = "pos";
 	static QString DIA_TITLE              = "title";
 	static QString DIA_FOLIO_ID           = "folio-id";

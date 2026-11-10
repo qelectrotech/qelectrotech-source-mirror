@@ -50,6 +50,8 @@ bool TitleBlockProperties::operator==(const TitleBlockProperties &ip) {
 		ip.filename == filename &&\
 		ip.plant == plant &&\
 		ip.locmach == locmach &&\
+		ip.folio_group == folio_group &&\
+		ip.folio_subgroup == folio_subgroup &&\
 		ip.indexrev == indexrev &&\
 		ip.version == version &&\
 		ip.folio == folio &&\
@@ -81,6 +83,12 @@ void TitleBlockProperties::toXml(QDomElement &e) const
 	e.setAttribute("filename", filename);
 	e.setAttribute("plant", plant);
 	e.setAttribute("locmach", locmach);
+		//Written only when set, so a project without folio groups is saved
+		//exactly as before
+	if (!folio_group.isEmpty())
+		e.setAttribute("folio_group", folio_group);
+	if (!folio_subgroup.isEmpty())
+		e.setAttribute("folio_subgroup", folio_subgroup);
 	e.setAttribute("indexrev",indexrev);
 	e.setAttribute("version", version);
 	e.setAttribute("folio",    folio);
@@ -111,6 +119,8 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("filename"))    filename = e.attribute("filename");
 	if (e.hasAttribute("plant"))       plant   = e.attribute("plant");
 	if (e.hasAttribute("locmach"))     locmach  = e.attribute("locmach");
+	if (e.hasAttribute("folio_group"))    folio_group    = e.attribute("folio_group");
+	if (e.hasAttribute("folio_subgroup")) folio_subgroup = e.attribute("folio_subgroup");
 	if (e.hasAttribute("indexrev"))    indexrev  = e.attribute("indexrev");
 	if (e.hasAttribute("version"))     version   = e.attribute("version");
 	if (e.hasAttribute("folio"))       folio    = e.attribute("folio");
@@ -145,6 +155,8 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	settings.setValue(prefix % "filename", filename);
 	settings.setValue(prefix % "plant", plant);
 	settings.setValue(prefix % "locmach", locmach);
+	settings.setValue(prefix % "folio_group", folio_group);
+	settings.setValue(prefix % "folio_subgroup", folio_subgroup);
 	settings.setValue(prefix % "indexrev", indexrev);
 	settings.setValue(prefix % "version", version);
 	settings.setValue(prefix % "folio",    folio);
@@ -167,6 +179,8 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 	filename = settings.value(prefix % "filename").toString();
 	plant    = settings.value(prefix % "plant").toString();
 	locmach  = settings.value(prefix % "locmach").toString();
+	folio_group    = settings.value(prefix % "folio_group").toString();
+	folio_subgroup = settings.value(prefix % "folio_subgroup").toString();
 	indexrev = settings.value(prefix % "indexrev").toString();
 	version  = settings.value(prefix % "version").toString();
 	folio    = settings.value(prefix % "folio", "%id/%total").toString();
@@ -202,6 +216,26 @@ QDate TitleBlockProperties::finalDate() const
 	} else {
 		return(QDate::currentDate());
 	}
+}
+
+/**
+	@brief TitleBlockProperties::resolvedFolioGroup
+	@return the group of the folio: its own when set, else its plant (=),
+	so folios are grouped by plant until the user names their groups.
+*/
+QString TitleBlockProperties::resolvedFolioGroup() const
+{
+	return folio_group.isEmpty() ? plant : folio_group;
+}
+
+/**
+	@brief TitleBlockProperties::resolvedFolioSubgroup
+	@return the sub-group of the folio: its own when set, else its
+	location (+).
+*/
+QString TitleBlockProperties::resolvedFolioSubgroup() const
+{
+	return folio_subgroup.isEmpty() ? locmach : folio_subgroup;
 }
 
 /**

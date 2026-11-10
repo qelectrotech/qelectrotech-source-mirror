@@ -5874,6 +5874,12 @@ void projectDataBase::storeFolioTitleBlock(const QUuid &folio, const TitleBlockP
 	row(QStringLiteral("filename"), properties.filename, true);
 	row(QStringLiteral("plant"), properties.plant, true);
 	row(QStringLiteral("locmach"), properties.locmach, true);
+		//Only when set, so a project without folio groups stores the same
+		//rows as before
+	if (!properties.folio_group.isEmpty())
+		row(QStringLiteral("folio_group"), properties.folio_group, true);
+	if (!properties.folio_subgroup.isEmpty())
+		row(QStringLiteral("folio_subgroup"), properties.folio_subgroup, true);
 	row(QStringLiteral("indexrev"), properties.indexrev, true);
 	row(QStringLiteral("version"), properties.version, true);
 	row(QStringLiteral("folio"), properties.folio, true);
@@ -7363,6 +7369,8 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 		if (built.filename != p.filename) differing << QStringLiteral("filename");
 		if (built.plant != p.plant) differing << QStringLiteral("plant");
 		if (built.locmach != p.locmach) differing << QStringLiteral("locmach");
+		if (built.folio_group != p.folio_group) differing << QStringLiteral("folio_group");
+		if (built.folio_subgroup != p.folio_subgroup) differing << QStringLiteral("folio_subgroup");
 		if (built.indexrev != p.indexrev) differing << QStringLiteral("indexrev");
 		if (built.version != p.version) differing << QStringLiteral("version");
 		if (built.folio != p.folio) differing << QStringLiteral("folio");

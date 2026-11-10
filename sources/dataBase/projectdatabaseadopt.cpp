@@ -312,6 +312,8 @@ void projectDataBase::loadCaches()
 			else if (name == QLatin1String("filename")) properties.filename = value;
 			else if (name == QLatin1String("plant")) properties.plant = value;
 			else if (name == QLatin1String("locmach")) properties.locmach = value;
+			else if (name == QLatin1String("folio_group")) properties.folio_group = value;
+			else if (name == QLatin1String("folio_subgroup")) properties.folio_subgroup = value;
 			else if (name == QLatin1String("indexrev")) properties.indexrev = value;
 			else if (name == QLatin1String("version")) properties.version = value;
 			else if (name == QLatin1String("folio")) properties.folio = value;
