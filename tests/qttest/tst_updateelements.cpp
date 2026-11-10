@@ -60,13 +60,18 @@ class tst_updateelements : public QObject
 			file.write(xml.toUtf8());
 		}
 
-			/// Embed @p xml as "import/t.elmt" and place it
-		Element *place(const QString &xml)
+			/// Embed @p xml as "import/t.elmt" and place it; @p spacing
+			/// keeps the indentation between the tags as text, as a
+			/// project file read back may hold it
+		Element *place(const QString &xml, bool spacing = false)
 		{
 			auto *collection = m_diagram->project()->embeddedElementCollection();
 			collection->removeElement(QStringLiteral("import/t.elmt"));
 			QDomDocument document;
-			document.setContent(xml);
+			if (spacing)
+				document.setContent(xml, QDomDocument::ParseOption::PreserveSpacingOnlyNodes);
+			else
+				document.setContent(xml);
 			if (!collection->addElementDefinition(QStringLiteral("import"), QStringLiteral("t"), document.documentElement()))
 				return nullptr;
 			int state = 0;
@@ -96,6 +101,21 @@ class tst_updateelements : public QObject
 			const QString frame = QStringLiteral(R"(width="20" height="20" hotspot_x="5" hotspot_y="10")");
 			writeCollection(definition(frame, QStringLiteral("{0e7c5a43-8d2e-4d0f-a6a1-3c3f6b0b7a01}")));
 			Element *element = place(definition(frame, QStringLiteral("{0e7c5a43-8d2e-4d0f-a6a1-3c3f6b0b7a02}")));
+			QVERIFY(element);
+			QVERIFY(m_diagram->project()->outdatedElements().isEmpty());
+			delete element;
+		}
+
+			//Indented otherwise, with a comment: still the same element
+		void indentationOnly()
+		{
+			const QString frame = QStringLiteral(R"(width="20" height="20" hotspot_x="5" hotspot_y="10")");
+			const QString uuid = QStringLiteral("{0e7c5a43-8d2e-4d0f-a6a1-3c3f6b0b7a01}");
+			QString indented = definition(frame, uuid);
+			indented.replace(QStringLiteral("><"), QStringLiteral(">\n    <"));
+			writeCollection(definition(frame, uuid).replace(QStringLiteral("<names>"),
+															QStringLiteral("<!-- made by hand --><names>")));
+			Element *element = place(indented, true);
 			QVERIFY(element);
 			QVERIFY(m_diagram->project()->outdatedElements().isEmpty());
 			delete element;

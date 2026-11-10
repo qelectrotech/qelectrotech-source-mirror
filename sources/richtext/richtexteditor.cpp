@@ -62,6 +62,7 @@
 #include <QAction>
 #include <QColorDialog>
 #include <QComboBox>
+#include <QFontComboBox>
 #include <QtGui/QFontDatabase>
 #include <QtGui/QTextCursor>
 #include <QtGui/QPainter>
@@ -78,6 +79,12 @@
 #include <QPushButton>
 #include <QDialogButtonBox>
 #include <QActionGroup>
+#include <QSignalBlocker>
+#include <QRegularExpression>
+#include <QMimeData>
+
+#include <qetapp.h>
+#include <qeticons.h>
 
 #include <QStringView>
 
@@ -111,9 +118,11 @@ namespace qdesigner_internal {
 			return;
 		}
 
-		// Clean out everything except text alignment for 'p'
+		// Clean out everything except text alignment for 'p' and headings 'h1'..'h6'
 		// Qt6 encodes alignment as style="text-align:center" instead of align="center"
-		if (name == QLatin1String("p")) {
+		const bool isBlock = (name == QLatin1String("p") ||
+		                      (name.size() == 2 && name.at(0).toLower() == QLatin1Char('h') && name.at(1).isDigit()));
+		if (isBlock) {
 			QString alignment;
 			for (const auto &att : *atts) {
 				if (att.name() == QLatin1String("align")) {
@@ -137,6 +146,31 @@ namespace qdesigner_internal {
 				*paragraphAlignmentFound = true;
 			}
 			return;
+		}
+
+		// For spans, anchors, divs, and other inline/block elements: strip background-color and white text colors
+		for (int i = 0; i < atts->size(); ++i) {
+			if (atts->at(i).name() == QLatin1String("bgcolor")) {
+				atts->remove(i);
+				--i;
+				continue;
+			}
+			if (atts->at(i).name() == QLatin1String("style")) {
+				QString style = atts->at(i).value().toString();
+				// Remove background-color: ...; from style
+				static const QRegularExpression bgRegex(QStringLiteral("background-color:[^;]+;?"), QRegularExpression::CaseInsensitiveOption);
+				style.remove(bgRegex);
+				// If text color is white or near-white, remove it so text isn't invisible on white/transparent canvas
+				static const QRegularExpression whiteColorRegex(QStringLiteral("color:\\s*(#ffffff|#fff|white|rgb\\(255,\\s*255,\\s*255\\));?"), QRegularExpression::CaseInsensitiveOption);
+				style.remove(whiteColorRegex);
+				style = style.trimmed();
+				if (style.isEmpty()) {
+					atts->remove(i);
+					--i;
+				} else {
+					(*atts)[i] = QXmlStreamAttribute(QLatin1String("style"), style);
+				}
+			}
 		}
 	}
 
@@ -169,9 +203,14 @@ namespace qdesigner_internal {
 				elementCount++;
 				if (filterElement(reader.name())) {
 					const QStringView name = reader.name();
+					if (name == QLatin1String("a")) {
+						// Unwrap anchor tags in simplified rich text so pasted web links become plain text
+						break;
+					}
 					QXmlStreamAttributes attributes = reader.attributes();
 					filterAttributes(name, &attributes, &paragraphAlignmentFound);
-					writer.writeStartElement(name.toString());
+					const bool isHeading = (name.size() == 2 && name.at(0).toLower() == QLatin1Char('h') && name.at(1).isDigit());
+					writer.writeStartElement(isHeading ? QStringLiteral("p") : name.toString());
 					if (!attributes.isEmpty())
 						writer.writeAttributes(attributes);
 				} else {
@@ -183,6 +222,9 @@ namespace qdesigner_internal {
 					writer.writeCharacters(reader.text().toString());
 				break;
 			case QXmlStreamReader::EndElement:
+				if (reader.name() == QLatin1String("a")) {
+					break;
+				}
 				writer.writeEndElement();
 				break;
 			default:
@@ -215,6 +257,9 @@ class RichTextEditor : public QTextEdit
 	signals:
 	void stateChanged();
 	void simplifyRichTextChanged(bool);
+
+	protected:
+	void insertFromMimeData(const QMimeData *source) override;
 
 	private:
 	bool m_simplifyRichText;
@@ -348,7 +393,9 @@ class ColorAction : public QAction
 	Q_OBJECT
 
 	public:
-	ColorAction(QObject *parent);
+	enum Mode { TextColorMode, BackgroundColorMode };
+
+	ColorAction(Mode mode, QObject *parent);
 
 	const QColor& color() const { return m_color; }
 	void setColor(const QColor &color);
@@ -360,38 +407,101 @@ class ColorAction : public QAction
 	void chooseColor();
 
 	private:
+	Mode m_mode;
 	QColor m_color;
 };
 
-ColorAction::ColorAction(QObject *parent):
-	QAction(parent)
+ColorAction::ColorAction(Mode mode, QObject *parent):
+	QAction(parent),
+	m_mode(mode)
 {
-	setText(tr("Text Color"));
-	setColor(Qt::black);
-	connect(this, &ColorAction::triggered, this, &ColorAction::chooseColor);
+	if (m_mode == TextColorMode) {
+		setText(tr("Text Color"));
+		setToolTip(tr("Text Color"));
+		setColor(Qt::black);
+		connect(this, &ColorAction::triggered, this, &ColorAction::chooseColor);
+	} else {
+		setText(tr("Text Background Color"));
+		setToolTip(tr("Text Background Color"));
+		setColor(Qt::transparent);
+
+		auto *menu = new QMenu();
+		menu->addAction(tr("No background color"), this, [this]() {
+			setColor(Qt::transparent);
+			emit colorChanged(Qt::transparent);
+		});
+		menu->addSeparator();
+
+		const struct { const char *name; QColor color; } swatches[] = {
+			{ "Yellow",      QColor(255, 255,   0) },
+			{ "Light Green", QColor(144, 238, 144) },
+			{ "Light Cyan",  QColor(224, 255, 255) },
+			{ "Light Pink",  QColor(255, 182, 193) },
+			{ "Orange",      QColor(255, 165,   0) },
+			{ "Light Gray",  QColor(211, 211, 211) }
+		};
+		for (const auto &swatch : swatches) {
+			QPixmap swatchPix(16, 16);
+			swatchPix.fill(swatch.color);
+			QPainter p(&swatchPix);
+			p.setPen(Qt::darkGray);
+			p.drawRect(0, 0, 15, 15);
+			QAction *swatchAct = menu->addAction(QIcon(swatchPix), tr(swatch.name));
+			QColor c = swatch.color;
+			connect(swatchAct, &QAction::triggered, this, [this, c]() {
+				setColor(c);
+				emit colorChanged(c);
+			});
+		}
+		menu->addSeparator();
+		menu->addAction(tr("More colors..."), this, &ColorAction::chooseColor);
+
+		setMenu(menu);
+		connect(this, &ColorAction::triggered, this, &ColorAction::chooseColor);
+	}
 }
 
 void ColorAction::setColor(const QColor &color)
 {
-	if (color == m_color)
+	if (color == m_color && !icon().isNull())
 		return;
 	m_color = color;
 	QPixmap pix(24, 24);
 	QPainter painter(&pix);
 	painter.setRenderHint(QPainter::Antialiasing, false);
-	painter.fillRect(pix.rect(), m_color);
-	painter.setPen(m_color.darker());
-	painter.drawRect(pix.rect().adjusted(0, 0, -1, -1));
+
+	if (m_mode == TextColorMode) {
+		painter.fillRect(pix.rect(), m_color.isValid() ? m_color : Qt::black);
+		painter.setPen((m_color.isValid() ? m_color : Qt::black).darker());
+		painter.drawRect(pix.rect().adjusted(0, 0, -1, -1));
+	} else {
+		// Background Color Mode
+		if (!m_color.isValid() || m_color == Qt::transparent || m_color.alpha() == 0) {
+			pix.fill(Qt::white);
+			painter.setPen(Qt::gray);
+			painter.drawRect(pix.rect().adjusted(0, 0, -1, -1));
+			painter.setRenderHint(QPainter::Antialiasing, true);
+			painter.setPen(QPen(Qt::red, 2));
+			painter.drawLine(2, 22, 22, 2);
+		} else {
+			painter.fillRect(pix.rect(), m_color);
+			painter.setPen(m_color.darker());
+			painter.drawRect(pix.rect().adjusted(0, 0, -1, -1));
+		}
+	}
 	setIcon(pix);
 }
 
 void ColorAction::chooseColor()
 {
-	const QColor col = QColorDialog::getColor(m_color, nullptr, QString(),
-											 QColorDialog::DontUseNativeDialog);
-	if (col.isValid() && col != m_color) {
+	QColor initialColor = m_color.isValid() && m_color.alpha() > 0 ? m_color : (m_mode == TextColorMode ? Qt::black : Qt::yellow);
+	const QColor col = QColorDialog::getColor(
+		initialColor, nullptr,
+		m_mode == TextColorMode ? tr("Text Color") : tr("Text Background Color"),
+		QColorDialog::DontUseNativeDialog | QColorDialog::ShowAlphaChannel);
+	if (col.isValid()) {
 		setColor(col);
-		emit colorChanged(m_color);
+		emit colorChanged(col);
 	}
 }
 
@@ -408,7 +518,10 @@ class RichTextEditorToolBar : public QToolBar
 	private slots:
 	void alignmentActionTriggered(QAction *action);
 	void sizeInputActivated(const QString &size);
+	void fontSelected(const QFont &font);
+	void applyDefaultProjectFont();
 	void colorChanged(const QColor &color);
+	void bgColorChanged(const QColor &color);
 	void setVAlignSuper(bool super);
 	void setVAlignSub(bool sub);
 	void insertLink();
@@ -416,6 +529,9 @@ class RichTextEditorToolBar : public QToolBar
 
 
 	private:
+	QFontComboBox *m_font_family_input;
+	QComboBox *m_font_size_input;
+	QAction *m_default_font_action;
 	QAction *m_bold_action;
 	QAction *m_italic_action;
 	QAction *m_underline_action;
@@ -429,7 +545,7 @@ class RichTextEditorToolBar : public QToolBar
 	QAction *m_image_action;
 	QAction *m_simplify_richtext_action;
 	ColorAction *m_color_action;
-	QComboBox *m_font_size_input;
+	ColorAction *m_bg_color_action;
 
 	QPointer<RichTextEditor> m_editor;
 };
@@ -496,15 +612,23 @@ static QAction *createCheckableAction(const QIcon &icon, const QString &text,
 RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 											 QWidget *parent) :
 	QToolBar(parent),
+	m_font_family_input(new QFontComboBox(this)),
+	m_font_size_input(new QComboBox(this)),
 	m_link_action(new QAction(this)),
 	m_image_action(new QAction(this)),
-	m_color_action(new ColorAction(this)),
-	m_font_size_input(new QComboBox),
+	m_color_action(new ColorAction(ColorAction::TextColorMode, this)),
+	m_bg_color_action(new ColorAction(ColorAction::BackgroundColorMode, this)),
 	m_editor(editor)
 {
+	// Font family combo box
+	m_font_family_input->setToolTip(tr("Font family"));
+	connect(m_font_family_input, &QFontComboBox::currentFontChanged,
+			this, &RichTextEditorToolBar::fontSelected);
+	addWidget(m_font_family_input);
 
 	// Font size combo box
 	m_font_size_input->setEditable(false);
+	m_font_size_input->setToolTip(tr("Font size"));
 	const QList<int> font_sizes = QFontDatabase::standardSizes();
 	foreach (int font_size, font_sizes)
 		m_font_size_input->addItem(QString::number(font_size));
@@ -512,6 +636,17 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 	connect(m_font_size_input, &QComboBox::textActivated,
 			this, &RichTextEditorToolBar::sizeInputActivated);
 	addWidget(m_font_size_input);
+
+	// Default project font button
+	m_default_font_action = new QAction(
+				QIcon::fromTheme("insert-text", QET::Icons::PartTextField),
+				tr("Default project font"), this);
+	m_default_font_action->setToolTip(tr("Default project font"));
+	connect(m_default_font_action, &QAction::triggered,
+			this, &RichTextEditorToolBar::applyDefaultProjectFont);
+	addAction(m_default_font_action);
+
+	addSeparator();
 
 
 	// Bold, italic and underline buttons
@@ -601,6 +736,10 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 	connect(m_color_action, &ColorAction::colorChanged, this, &RichTextEditorToolBar::colorChanged);
 	addAction(m_color_action);
 
+	// Text background color button
+	connect(m_bg_color_action, &ColorAction::colorChanged, this, &RichTextEditorToolBar::bgColorChanged);
+	addAction(m_bg_color_action);
+
 
 	// Simplify rich text
 	m_simplify_richtext_action = createCheckableAction(
@@ -637,7 +776,179 @@ void RichTextEditorToolBar::alignmentActionTriggered(QAction *action)
 
 void RichTextEditorToolBar::colorChanged(const QColor &color)
 {
+	if (!m_editor)
+		return;
+
+	QTextCursor cursor = m_editor->textCursor();
+	cursor.beginEditBlock();
+
+	if (cursor.hasSelection()) {
+		int selStart = cursor.selectionStart();
+		int selEnd = cursor.selectionEnd();
+		QTextBlock startBlock = m_editor->document()->findBlock(selStart);
+		QTextBlock endBlock = m_editor->document()->findBlock(selEnd);
+
+		struct FormatChange {
+			int start;
+			int length;
+			QTextCharFormat format;
+		};
+		QList<FormatChange> changes;
+
+		// Pass 1: collect format changes
+		for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+			for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+				QTextFragment fragment = it.fragment();
+				if (fragment.isValid()) {
+					int fragStart = fragment.position();
+					int fragEnd = fragStart + fragment.length();
+					if (fragEnd <= selStart || fragStart >= selEnd) {
+						continue;
+					}
+
+					int applyStart = qMax(fragStart, selStart);
+					int applyEnd = qMin(fragEnd, selEnd);
+					if (applyEnd <= applyStart) {
+						continue;
+					}
+
+					QTextCharFormat charFormat = fragment.charFormat();
+					if (charFormat.isAnchor()) {
+						charFormat.setAnchor(false);
+						charFormat.clearProperty(QTextFormat::IsAnchor);
+						charFormat.clearProperty(QTextFormat::AnchorHref);
+						charFormat.clearProperty(QTextFormat::AnchorName);
+						charFormat.setUnderlineStyle(QTextCharFormat::NoUnderline);
+					}
+					charFormat.setForeground(QBrush(color));
+					changes.append({applyStart, applyEnd - applyStart, charFormat});
+				}
+			}
+
+			if (block == endBlock)
+				break;
+		}
+
+		// Pass 2: apply formatting
+		for (const auto &change : changes) {
+			QTextCursor fragCursor(m_editor->document());
+			fragCursor.setPosition(change.start);
+			fragCursor.setPosition(change.start + change.length, QTextCursor::KeepAnchor);
+			fragCursor.setCharFormat(change.format);
+		}
+
+		// Pass 3: ensure block charFormat does not mask child span color in list items
+		for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+			QTextCursor blockCursor(block);
+			QTextCharFormat bCharFormat = block.charFormat();
+			if (bCharFormat.hasProperty(QTextFormat::ForegroundBrush)) {
+				bCharFormat.clearProperty(QTextFormat::ForegroundBrush);
+				blockCursor.setBlockCharFormat(bCharFormat);
+			}
+			if (block == endBlock)
+				break;
+		}
+	} else {
+		QTextCharFormat format = m_editor->currentCharFormat();
+		format.setForeground(QBrush(color));
+		m_editor->setCurrentCharFormat(format);
+	}
+
+	cursor.endEditBlock();
 	m_editor->setTextColor(color);
+	m_color_action->setColor(color);
+	m_editor->setFocus();
+}
+
+void RichTextEditorToolBar::bgColorChanged(const QColor &color)
+{
+	if (!m_editor)
+		return;
+
+	QTextCursor cursor = m_editor->textCursor();
+	cursor.beginEditBlock();
+
+	const bool isTransparent = (color == Qt::transparent || !color.isValid() || color.alpha() == 0);
+
+	if (cursor.hasSelection()) {
+		int selStart = cursor.selectionStart();
+		int selEnd = cursor.selectionEnd();
+		QTextBlock startBlock = m_editor->document()->findBlock(selStart);
+		QTextBlock endBlock = m_editor->document()->findBlock(selEnd);
+
+		struct FormatChange {
+			int start;
+			int length;
+			QTextCharFormat format;
+		};
+		QList<FormatChange> changes;
+
+		// Pass 1: collect format changes
+		for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+			for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+				QTextFragment fragment = it.fragment();
+				if (fragment.isValid()) {
+					int fragStart = fragment.position();
+					int fragEnd = fragStart + fragment.length();
+					if (fragEnd <= selStart || fragStart >= selEnd) {
+						continue;
+					}
+
+					int applyStart = qMax(fragStart, selStart);
+					int applyEnd = qMin(fragEnd, selEnd);
+					if (applyEnd <= applyStart) {
+						continue;
+					}
+
+					QTextCharFormat charFormat = fragment.charFormat();
+					if (isTransparent) {
+						charFormat.clearProperty(QTextFormat::BackgroundBrush);
+						charFormat.setBackground(QBrush(Qt::NoBrush));
+					} else {
+						charFormat.setBackground(color);
+					}
+					changes.append({applyStart, applyEnd - applyStart, charFormat});
+				}
+			}
+
+			if (block == endBlock)
+				break;
+		}
+
+		// Pass 2: apply formatting
+		for (const auto &change : changes) {
+			QTextCursor fragCursor(m_editor->document());
+			fragCursor.setPosition(change.start);
+			fragCursor.setPosition(change.start + change.length, QTextCursor::KeepAnchor);
+			fragCursor.setCharFormat(change.format);
+		}
+
+		// Pass 3: ensure block charFormat does not mask child span color in list items
+		for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+			QTextCursor blockCursor(block);
+			QTextCharFormat bCharFormat = block.charFormat();
+			if (bCharFormat.hasProperty(QTextFormat::ForegroundBrush)) {
+				bCharFormat.clearProperty(QTextFormat::ForegroundBrush);
+				blockCursor.setBlockCharFormat(bCharFormat);
+			}
+			if (block == endBlock)
+				break;
+		}
+	} else {
+		QTextCharFormat format = m_editor->currentCharFormat();
+		if (isTransparent) {
+			format.clearProperty(QTextFormat::BackgroundBrush);
+			format.setBackground(QBrush(Qt::NoBrush));
+		} else {
+			format.setBackground(color);
+		}
+		m_editor->setCurrentCharFormat(format);
+	}
+
+	cursor.endEditBlock();
+
+	m_editor->setTextBackgroundColor(isTransparent ? Qt::transparent : color);
+	m_bg_color_action->setColor(color);
 	m_editor->setFocus();
 }
 
@@ -649,6 +960,151 @@ void RichTextEditorToolBar::sizeInputActivated(const QString &size)
 		return;
 
 	m_editor->setFontPointSize(i);
+	m_editor->setFocus();
+}
+
+void RichTextEditorToolBar::fontSelected(const QFont &font)
+{
+	if (!m_editor)
+		return;
+
+	QTextCursor cursor = m_editor->textCursor();
+	if (cursor.hasSelection()) {
+		cursor.beginEditBlock();
+		QTextCharFormat format;
+		format.setFontFamilies({font.family()});
+		cursor.mergeCharFormat(format);
+		cursor.endEditBlock();
+	} else {
+		m_editor->setFontFamily(font.family());
+	}
+	m_editor->setFocus();
+}
+
+void RichTextEditorToolBar::applyDefaultProjectFont()
+{
+	if (!m_editor)
+		return;
+
+	QFont defaultFont = m_editor->document()->defaultFont();
+	if (defaultFont.family().isEmpty()) {
+		defaultFont = QETApp::indiTextsItemFont();
+	}
+
+	QTextCursor cursor = m_editor->textCursor();
+	cursor.beginEditBlock();
+
+	QTextBlock startBlock;
+	QTextBlock endBlock;
+	int selStart = 0;
+	int selEnd = 0;
+
+	if (cursor.hasSelection()) {
+		selStart = cursor.selectionStart();
+		selEnd = cursor.selectionEnd();
+		startBlock = m_editor->document()->findBlock(selStart);
+		endBlock = m_editor->document()->findBlock(selEnd);
+	} else {
+		selStart = 0;
+		selEnd = m_editor->document()->characterCount();
+		startBlock = m_editor->document()->begin();
+		endBlock = m_editor->document()->lastBlock();
+	}
+
+	struct FormatChange {
+		int start;
+		int length;
+		QTextCharFormat format;
+	};
+	QList<FormatChange> changes;
+
+	// Pass 1 (read-only): collect all format changes without modifying the document
+	for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+		for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+			QTextFragment fragment = it.fragment();
+			if (fragment.isValid()) {
+				int fragStart = fragment.position();
+				int fragEnd = fragStart + fragment.length();
+				if (cursor.hasSelection() && (fragEnd <= selStart || fragStart >= selEnd)) {
+					continue;
+				}
+
+				int applyStart = qMax(fragStart, selStart);
+				int applyEnd = cursor.hasSelection() ? qMin(fragEnd, selEnd) : fragEnd;
+				if (applyEnd <= applyStart) {
+					continue;
+				}
+
+				QTextCharFormat charFormat = fragment.charFormat();
+				charFormat.setFontFamilies({defaultFont.family()});
+				charFormat.clearProperty(QTextFormat::FontSizeAdjustment);
+				charFormat.clearProperty(QTextFormat::FontPixelSize);
+				charFormat.clearProperty(QTextFormat::BackgroundBrush);
+				charFormat.setBackground(QBrush(Qt::NoBrush));
+				if (charFormat.isAnchor()) {
+					charFormat.setAnchor(false);
+					charFormat.clearProperty(QTextFormat::IsAnchor);
+					charFormat.clearProperty(QTextFormat::AnchorHref);
+					charFormat.clearProperty(QTextFormat::AnchorName);
+					charFormat.setUnderlineStyle(QTextCharFormat::NoUnderline);
+				}
+
+				charFormat.setForeground(QBrush(Qt::black));
+
+				changes.append({applyStart, applyEnd - applyStart, charFormat});
+			}
+		}
+
+		if (block == endBlock)
+			break;
+	}
+
+	// Pass 2: apply character formatting changes
+	for (const auto &change : changes) {
+		QTextCursor fragCursor(m_editor->document());
+		fragCursor.setPosition(change.start);
+		fragCursor.setPosition(change.start + change.length, QTextCursor::KeepAnchor);
+		fragCursor.setCharFormat(change.format);
+	}
+
+	// Pass 3: update block formatting
+	for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+		QTextCursor blockCursor(block);
+		QTextBlockFormat blockFormat = block.blockFormat();
+		blockFormat.setTopMargin(0);
+		blockFormat.setBottomMargin(0);
+		blockFormat.setLeftMargin(0);
+		blockFormat.setRightMargin(0);
+		blockFormat.setIndent(0);
+		blockFormat.setTextIndent(0);
+		blockFormat.setLineHeight(0, QTextBlockFormat::SingleHeight);
+		blockFormat.setHeadingLevel(0);
+		blockFormat.clearProperty(QTextFormat::BackgroundBrush);
+		blockFormat.setBackground(QBrush(Qt::NoBrush));
+		blockCursor.setBlockFormat(blockFormat);
+
+		QTextCharFormat bCharFormat = block.charFormat();
+		bCharFormat.clearProperty(QTextFormat::FontSizeAdjustment);
+		bCharFormat.clearProperty(QTextFormat::FontPixelSize);
+		bCharFormat.clearProperty(QTextFormat::BackgroundBrush);
+		bCharFormat.setBackground(QBrush(Qt::NoBrush));
+		blockCursor.setBlockCharFormat(bCharFormat);
+
+		if (block == endBlock)
+			break;
+	}
+
+	cursor.endEditBlock();
+
+	m_editor->setFontFamily(defaultFont.family());
+	m_editor->setTextColor(Qt::black);
+	m_editor->setTextBackgroundColor(Qt::transparent);
+	{
+		const QSignalBlocker blocker(m_font_family_input);
+		m_font_family_input->setCurrentFont(defaultFont);
+	}
+	m_color_action->setColor(Qt::black);
+	m_bg_color_action->setColor(Qt::transparent);
 	m_editor->setFocus();
 }
 
@@ -724,12 +1180,26 @@ void RichTextEditorToolBar::updateActions()
 	m_valign_sup_action->setChecked(superScript);
 	m_valign_sub_action->setChecked(subScript);
 
+	{
+		const QSignalBlocker blocker(m_font_family_input);
+		m_font_family_input->setCurrentFont(font);
+	}
+
 	const int size = font.pointSize();
 	const int idx = m_font_size_input->findText(QString::number(size));
-	if (idx != -1)
+	if (idx != -1) {
+		const QSignalBlocker blocker(m_font_size_input);
 		m_font_size_input->setCurrentIndex(idx);
+	}
 
 	m_color_action->setColor(m_editor->textColor());
+
+	const QBrush bgBrush = charFormat.background();
+	if (bgBrush.style() == Qt::NoBrush) {
+		m_bg_color_action->setColor(Qt::transparent);
+	} else {
+		m_bg_color_action->setColor(bgBrush.color());
+	}
 }
 
 RichTextEditor::RichTextEditor(QWidget *parent)
@@ -756,7 +1226,91 @@ void RichTextEditor::setFontBold(bool b)
 
 void RichTextEditor::setFontPointSize(double d)
 {
-	QTextEdit::setFontPointSize(qreal(d));
+	if (d <= 0)
+		return;
+
+	const qreal pointSize = qreal(d);
+	QTextCursor cursor = textCursor();
+	cursor.beginEditBlock();
+
+	if (cursor.hasSelection()) {
+		int selStart = cursor.selectionStart();
+		int selEnd = cursor.selectionEnd();
+		QTextBlock startBlock = document()->findBlock(selStart);
+		QTextBlock endBlock = document()->findBlock(selEnd);
+
+		struct FormatChange {
+			int start;
+			int length;
+			QTextCharFormat format;
+		};
+		QList<FormatChange> changes;
+
+		// Pass 1 (read-only): collect format changes without modifying document
+		for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+			for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+				QTextFragment fragment = it.fragment();
+				if (fragment.isValid()) {
+					int fragStart = fragment.position();
+					int fragEnd = fragStart + fragment.length();
+					if (fragEnd <= selStart || fragStart >= selEnd) {
+						continue;
+					}
+
+					int applyStart = qMax(fragStart, selStart);
+					int applyEnd = qMin(fragEnd, selEnd);
+					if (applyEnd <= applyStart) {
+						continue;
+					}
+
+					QTextCharFormat charFormat = fragment.charFormat();
+					charFormat.clearProperty(QTextFormat::FontSizeAdjustment);
+					charFormat.clearProperty(QTextFormat::FontPixelSize);
+					charFormat.setFontPointSize(pointSize);
+					changes.append({applyStart, applyEnd - applyStart, charFormat});
+				}
+			}
+
+			if (block == endBlock)
+				break;
+		}
+
+		// Pass 2: apply character formatting
+		for (const auto &change : changes) {
+			QTextCursor fragCursor(document());
+			fragCursor.setPosition(change.start);
+			fragCursor.setPosition(change.start + change.length, QTextCursor::KeepAnchor);
+			fragCursor.setCharFormat(change.format);
+		}
+
+		// Pass 3: update block formatting
+		for (QTextBlock block = startBlock; block.isValid(); block = block.next()) {
+			QTextCursor blockCursor(block);
+			if (block.blockFormat().headingLevel() > 0) {
+				QTextBlockFormat blockFormat = block.blockFormat();
+				blockFormat.setHeadingLevel(0);
+				blockCursor.setBlockFormat(blockFormat);
+			}
+
+			QTextCharFormat bCharFormat = block.charFormat();
+			bCharFormat.clearProperty(QTextFormat::FontSizeAdjustment);
+			bCharFormat.clearProperty(QTextFormat::FontPixelSize);
+			bCharFormat.setFontPointSize(pointSize);
+			blockCursor.setBlockCharFormat(bCharFormat);
+
+			if (block == endBlock)
+				break;
+		}
+	} else {
+		QTextCharFormat format = currentCharFormat();
+		format.clearProperty(QTextFormat::FontSizeAdjustment);
+		format.clearProperty(QTextFormat::FontPixelSize);
+		format.setFontPointSize(pointSize);
+		setCurrentCharFormat(format);
+	}
+
+	cursor.endEditBlock();
+	QTextEdit::setFontPointSize(pointSize);
 }
 
 void RichTextEditor::setText(const QString &text)
@@ -771,8 +1325,27 @@ void RichTextEditor::setSimplifyRichText(bool v)
 {
 	if (v != m_simplifyRichText) {
 		m_simplifyRichText = v;
+		if (v) {
+			setHtml(simplifyRichTextFilter(toHtml()));
+		}
 		emit simplifyRichTextChanged(v);
 	}
+}
+
+void RichTextEditor::insertFromMimeData(const QMimeData *source)
+{
+	if (m_simplifyRichText && source && source->hasHtml()) {
+		QString html = source->html();
+		QString simplified = simplifyRichTextFilter(html);
+		QMimeData simplifiedData;
+		simplifiedData.setHtml(simplified);
+		if (source->hasText()) {
+			simplifiedData.setText(source->text());
+		}
+		QTextEdit::insertFromMimeData(&simplifiedData);
+		return;
+	}
+	QTextEdit::insertFromMimeData(source);
 }
 
 void RichTextEditor::setDefaultFont(QFont font)

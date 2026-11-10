@@ -41,6 +41,20 @@ namespace DuplicateLabels
 		Component
 	};
 
+	// When symbols with one label in one place are one component.
+	enum class ComponentRule
+	{
+		// Only when QET links them (coil and contacts) or, for terminal
+		// blocks, when they are on one potential: every other drawing is a
+		// device of its own, and a second one with the label clashes.
+		LinkedOnly,
+		// Also when nothing links them: one designation (=plant+location
+		// -label, IEC 81346) names one device however often it is drawn.
+		// They clash only when they disagree -- two different part
+		// numbers.
+		SameDesignation
+	};
+
 	struct Occurrence
 	{
 		QPointer<QGraphicsObject> item;
@@ -51,6 +65,9 @@ namespace DuplicateLabels
 		int entity = 0;
 		// A component's place(); empty for signals.
 		QString place;
+		// A component's part number (manufacturer_reference); empty when it
+		// has none, which agrees with any.
+		QString part;
 	};
 
 	struct Group
@@ -60,6 +77,9 @@ namespace DuplicateLabels
 		QString				place;
 		QVector<Occurrence> occurrences;
 		int					entity_count = 0;
+		// ComponentRule::SameDesignation: the part numbers which disagree,
+		// sorted; empty for every other group.
+		QStringList			parts;
 	};
 
 	// Labels ignoring surrounding whitespace. Empty labels and QET's
@@ -98,9 +118,13 @@ namespace DuplicateLabels
 	// linked folio reports; terminal-type symbols (terminal blocks, splices,
 	// earth symbols) drawn on one potential are one component. Components
 	// only clash within one place; a linked device is at its master's.
+	// With ComponentRule::SameDesignation, symbols of one label in one place
+	// which nothing links are one component unless their part numbers
+	// differ; terminal blocks still follow their potentials.
 	QVector<Group> find(
 		QETProject*			project,
-		Qt::CaseSensitivity sensitivity = Qt::CaseSensitive);
+		Qt::CaseSensitivity sensitivity = Qt::CaseSensitive,
+		ComponentRule		rule		= ComponentRule::LinkedOnly);
 
 } // namespace DuplicateLabels
 

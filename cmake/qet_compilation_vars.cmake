@@ -92,6 +92,8 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/TerminalStrip/ui/terminalstriplayouteditor.ui
   ${QET_DIR}/sources/TerminalStrip/ui/terminalstriptreedockwidget.ui
   ${QET_DIR}/sources/ui/aboutqetdialog.ui
+  ${QET_DIR}/sources/ui/devicenavigatordockwidget.ui
+  ${QET_DIR}/sources/ui/devicenavigatorfilterdialog.ui
   ${QET_DIR}/sources/ui/alignmenttextdialog.ui
   ${QET_DIR}/sources/ui/bomexportdialog.ui
   ${QET_DIR}/sources/ui/borderpropertieswidget.ui
@@ -494,6 +496,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/editor/esevent/eseventaddrect.h
   ${QET_DIR}/sources/editor/esevent/eseventaddterminal.cpp
   ${QET_DIR}/sources/editor/esevent/eseventaddterminal.h
+  ${QET_DIR}/sources/editor/esevent/eseventsetorigin.cpp
+  ${QET_DIR}/sources/editor/esevent/eseventsetorigin.h
   ${QET_DIR}/sources/editor/esevent/eseventaddtext.cpp
   ${QET_DIR}/sources/editor/esevent/eseventaddtext.h
   ${QET_DIR}/sources/editor/esevent/eseventinterface.cpp
@@ -841,6 +845,10 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/ui/aboutqetdialog.cpp
   ${QET_DIR}/sources/ui/aboutqetdialog.h
+  ${QET_DIR}/sources/ui/devicenavigatordockwidget.cpp
+  ${QET_DIR}/sources/ui/devicenavigatordockwidget.h
+  ${QET_DIR}/sources/ui/devicenavigatorfilterdialog.cpp
+  ${QET_DIR}/sources/ui/devicenavigatorfilterdialog.h
   ${QET_DIR}/sources/ui/aiassistantdialog.cpp
   ${QET_DIR}/sources/ui/aiassistantdialog.h
   ${QET_DIR}/sources/ui/aiassistantsetup.cpp
@@ -1017,6 +1025,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/undocommand/alignselectioncommand.h
   ${QET_DIR}/sources/undocommand/mirrorselectioncommand.cpp
   ${QET_DIR}/sources/undocommand/mirrorselectioncommand.h
+  ${QET_DIR}/sources/undocommand/resetsymboltextscommand.cpp
+  ${QET_DIR}/sources/undocommand/resetsymboltextscommand.h
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.cpp
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.h
   ${QET_DIR}/sources/undocommand/promoteshapecommand.cpp

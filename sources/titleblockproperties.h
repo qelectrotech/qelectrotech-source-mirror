@@ -49,7 +49,9 @@ class TitleBlockProperties {
 	static TitleBlockProperties defaultProperties();
 	
 	QDate finalDate() const ;
-	
+	QString resolvedFolioGroup() const;
+	QString resolvedFolioSubgroup() const;
+
 	// attributes
 	QString title;            ///< Folio title (displayed by the default template)
 	QString author;           ///< Author of the diagram/folio (displayed by the default template)
@@ -57,6 +59,8 @@ class TitleBlockProperties {
 	QString filename;         ///< Filename (displayed by the default template)
 	QString plant;          ///< Plant (displayed by the default template)
 	QString locmach;              ///< Location(displayed by the default template)
+	QString folio_group;      ///< Group the folio belongs to; empty = its plant (@see resolvedFolioGroup())
+	QString folio_subgroup;   ///< Sub-group within the group; empty = its location (@see resolvedFolioSubgroup())
 	QString indexrev;         ///< Revision Index (displayed by the default template)
 	QString version;          ///< Version (displayed by the default template)
 	QString folio;            ///< Folio information (displayed by the default template)

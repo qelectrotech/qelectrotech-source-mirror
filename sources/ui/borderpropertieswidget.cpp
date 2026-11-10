@@ -212,11 +212,13 @@ void BorderPropertiesWidget::setReadOnly(const bool &ro)
 	otherwise they are left alone.
 	@param height : height of the title block template
 	@param edge : edge of the folio the title block sits on
+	@param align : align of the folio the title block sits on
 */
-void BorderPropertiesWidget::setTitleBlockSize(int height, Qt::Edge edge)
+void BorderPropertiesWidget::setTitleBlockSize(int height, Qt::Edge edge, Qt::Alignment align)
 {
 	m_titleblock_height = height;
 	m_titleblock_edge = edge;
+	m_titleblock_align = align;
 	if (m_paper_picked)
 		applyPaperSize();
 	else
@@ -271,9 +273,9 @@ bool BorderPropertiesWidget::fitPaperSize(int index, bool landscape,
 		//The page is one pixel larger than the border, for its line
 	int width  = page_width  - 1 - qRound(m_properties.rows_header_width);
 	int height = page_height - 1 - qRound(m_properties.columns_header_height);
-	if (m_titleblock_edge == Qt::BottomEdge)
+	if (m_titleblock_edge == Qt::BottomEdge && m_titleblock_align.testFlag(Qt::AlignTop))
 		height -= m_titleblock_height;
-	else
+	else if (m_titleblock_edge == Qt::RightEdge && m_titleblock_align.testFlag(Qt::AlignTop))
 		width -= m_titleblock_height;
 	if (width < min_cell * min_count || height < min_cell * min_count)
 		return false;

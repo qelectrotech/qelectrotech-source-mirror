@@ -767,6 +767,16 @@ void ElementTextItemGroup::setPos(qreal x, qreal y)
 */
 void ElementTextItemGroup::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {	
+		//Belonging to its symbol (the selection filter): the symbol is
+		//picked and moved, unless Shift is held, as for a text of a symbol
+	m_move_parent = parentElement()
+					&& Diagram::filterPick(this) == Diagram::FilterPick::Owner
+					&& !(event->modifiers() & Qt::ShiftModifier);
+	if (m_move_parent) {
+		parentElement()->mousePressEvent(event);
+		return;
+	}
+
 	if(event->button() == Qt::LeftButton)
 	{
 		m_first_move = true;
@@ -783,6 +793,10 @@ void ElementTextItemGroup::mousePressEvent(QGraphicsSceneMouseEvent *event)
 */
 void ElementTextItemGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
+	if (m_move_parent) {
+		parentElement()->mouseMoveEvent(event);
+		return;
+	}
 	if((event->buttons() & Qt::LeftButton) && (flags() & ItemIsMovable))
 	{
 		if(diagram() && m_first_move)
@@ -820,6 +834,10 @@ void ElementTextItemGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 */
 void ElementTextItemGroup::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+	if (m_move_parent) {
+		parentElement()->mouseReleaseEvent(event);
+		return;
+	}
 	if(diagram())
 	{
 		diagram()->elementTextsMover().endMovement();
@@ -834,6 +852,10 @@ void ElementTextItemGroup::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 void ElementTextItemGroup::mouseDoubleClickEvent(
 		QGraphicsSceneMouseEvent *event)
 {
+	if (parentElement() && Diagram::filterPick(this) == Diagram::FilterPick::Owner) {
+		parentElement()->mouseDoubleClickEvent(event);
+		return;
+	}
 	if(m_slave_Xref_item)
 	{
 		if(m_slave_Xref_item->boundingRect().contains(mapToItem(m_slave_Xref_item, event->pos())))

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementscene.h"
+#include "elementview.h"
 
 #include <ElementsCollection/terminaluuids.h>
 #include <borderproperties.h>
@@ -45,6 +46,8 @@
 #include <QKeyEvent>
 #include <algorithm>
 #include <cmath>
+#include <QSettings>
+#include <QtMath>
 
 /**
 	@brief ElementScene::ElementScene
@@ -215,6 +218,7 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e)
 		}
 	}
 
+	applySelectionFilter();
 	QGraphicsScene::mousePressEvent(e);
 }
 
@@ -284,55 +288,44 @@ void ElementScene::keyPressEvent(QKeyEvent *event)
 		}
 	}
 
-	if(selectedItems().size() == 1)
+		//A text being typed in takes the keys
+	if(selectedItems().size() == 1 && selectedItems().first()->type() == PartText::Type)
 	{
-		if(selectedItems().first()->type() == PartText::Type)
+		PartText *t = static_cast<PartText *>(selectedItems().first());
+		if(t->textInteractionFlags() & Qt::TextEditorInteraction)
 		{
-			PartText *t = static_cast<PartText *>(selectedItems().first());
-			if(t->textInteractionFlags() & Qt::TextEditorInteraction)
-			{
-				QGraphicsScene::keyPressEvent(event);
-				return;
-			}
+			QGraphicsScene::keyPressEvent(event);
+			return;
 		}
+	}
 
-		QGraphicsObject *qgo = selectedItems().first()->toGraphicsObject();
-		if(qgo)
+		//The arrow keys move the selected parts, all of them: by 0.1 with
+		//Ctrl, else by 1, or by the grid step when drawing like the folio
+	const int k = event->key();
+	if ((k == Qt::Key_Right || k == Qt::Key_Left || k == Qt::Key_Up || k == Qt::Key_Down)
+		&& !(event->modifiers() & (Qt::AltModifier | Qt::ShiftModifier | Qt::MetaModifier)))
+	{
+		QList<QGraphicsItem *> parts;
+		for (QGraphicsItem *item : selectedItems())
+			if (dynamic_cast<CustomElementPart *>(item))
+				parts << item;
+		if (!parts.isEmpty())
 		{
-		QPointF original_pos = qgo->pos();
-		QPointF p = qgo->pos();
+			qreal step = 1;
+			if (event->modifiers() & Qt::ControlModifier)
+				step = 0.1;
+			else if (likeFolio() && m_element_editor && m_element_editor->elementView())
+				step = qMax(1, m_element_editor->elementView()->currentGridStep());
+			QPointF movement;
+			if (k == Qt::Key_Right) movement.rx() = step;
+			else if (k == Qt::Key_Left) movement.rx() = -step;
+			else if (k == Qt::Key_Up) movement.ry() = -step;
+			else movement.ry() = step;
 
-		if (event->modifiers() & Qt::ControlModifier) {
-
-			int k = event->key();
-			if(k == Qt::Key_Right)
-				p.rx() += 0.1;
-			else if (k == Qt::Key_Left)
-				p.rx() -= 0.1;
-			else if (k == Qt::Key_Up)
-				p.ry() -= 0.1;
-			else if (k == Qt::Key_Down)
-				p.ry() += 0.1;
-				}
-			else {
-
-			int k = event->key();
-			if(k == Qt::Key_Right)
-				p.rx() += 1;
-			else if (k == Qt::Key_Left)
-				p.rx() -= 1;
-			else if (k == Qt::Key_Up)
-				p.ry() -= 1;
-			else if (k == Qt::Key_Down)
-				p.ry() += 1;
-			}
-
-			qgo->setPos(p);
-			QPropertyUndoCommand *undo =
-					new QPropertyUndoCommand(
-						qgo,"pos",QVariant(original_pos),QVariant(p));
-			undo->setText(tr("Move a primitive"));
-			undo->enableAnimation();
+			for (QGraphicsItem *item : parts)
+				item->moveBy(movement.x(), movement.y());
+			auto *undo = new MovePartsCommand(movement, this, parts);
+			undo->setText(parts.size() == 1 ? tr("Move a primitive") : tr("move", "undo caption"));
 			undoStack().push(undo);
 			event->accept();
 			return;
@@ -371,6 +364,20 @@ void ElementScene::drawForeground(QPainter *p, const QRectF &)
 	}
 
 	p -> save();
+
+		//Drawing like the folio, the frame the definition gets is shown:
+		//it is what a click on the placed symbol hits
+	if (likeFolio() || !m_fixed_frame.isNull()) {
+		const QRectF drawing = frameDrawingRect();
+		if (!m_fixed_frame.isNull() || !drawing.isNull() || !primitives().isEmpty()) {
+			QPen frame_pen(QColor(128, 128, 128));
+			frame_pen.setCosmetic(true);
+			frame_pen.setStyle(Qt::DashLine);
+			p -> setPen(frame_pen);
+			p -> setBrush(Qt::NoBrush);
+			p -> drawRect(definitionFrame());
+		}
+	}
 
 	// desactive tout antialiasing, sauf pour le texte
 	p -> setRenderHint(QPainter::Antialiasing, false);
@@ -481,8 +488,10 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	QRectF size= elementSceneGeometricRect();
 
 	// if the element doesn't contain the origin point of the scene
-	// we move the element to the origin to solve this default before saving
-	if (!size.contains(0,0) && all_parts)
+	// we move the element to the origin to solve this default before saving.
+	// Not when drawing like the folio: the origin is the insertion point
+	// chosen with "Set the insertion point", and the frame takes it in.
+	if (!likeFolio() && m_fixed_frame.isNull() && !size.contains(0,0) && all_parts)
 	{
 		centerElementToOrigin();
 		//recalculate the size after movement
@@ -501,6 +510,15 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	// the margin between the real size of the element and the rectangle that delimits
 	int xmargin = qRound(upwidth - size.width());
 	int ymargin = qRound(upheight - size.height());
+	int hotspot_x = -(qRound(size.x() - (xmargin/2)));
+	int hotspot_y = -(qRound(size.y() - (ymargin/2)));
+	if (likeFolio() || !m_fixed_frame.isNull()) {
+		const QRect frame = definitionFrame();
+		upwidth = frame.width();
+		upheight = frame.height();
+		hotspot_x = -frame.left();
+		hotspot_y = -frame.top();
+	}
 
 	// document XML
 	QDomDocument xml_document;
@@ -510,10 +528,8 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	root.setAttribute("type",        "element");
 	root.setAttribute("width",       QString("%1").arg(upwidth));
 	root.setAttribute("height",      QString("%1").arg(upheight));
-	root.setAttribute("hotspot_x",   QString("%1").arg(
-				  -(qRound(size.x() - (xmargin/2)))));
-	root.setAttribute("hotspot_y",   QString("%1").arg(
-				  -(qRound(size.y() - (ymargin/2)))));
+	root.setAttribute("hotspot_x",   QString("%1").arg(hotspot_x));
+	root.setAttribute("hotspot_y",   QString("%1").arg(hotspot_y));
 
 	QetVersion::toXmlAttribute(root);
 	root.setAttribute("link_type", m_element_data.typeToString(m_element_data.m_type));
@@ -526,10 +542,17 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	//names of element
 	root.appendChild(m_element_data.m_names_list.toXml(xml_document));
 
+		//A frame set by hand is marked, so it is read back as such
+	m_element_data.m_other_kind_informations.removeIf([](const QPair<QString, QString> &other) {
+		return other.first == QLatin1String("fixed_frame"); });
+	if (!m_fixed_frame.isNull())
+		m_element_data.m_other_kind_informations << qMakePair(QStringLiteral("fixed_frame"), QStringLiteral("true"));
+
 	auto type_ = m_element_data.m_type;
 	if (type_ == ElementData::Slave  ||
 		type_ == ElementData::Master ||
-		type_ == ElementData::Terminal)
+		type_ == ElementData::Terminal ||
+		!m_element_data.m_other_kind_informations.isEmpty())
 	{
 		root.appendChild(m_element_data.kindInfoToXml(xml_document));
 	}
@@ -641,6 +664,14 @@ void ElementScene::fromXml(
 		if (root.tagName() == "definition" &&
 			root.attribute("type") == "element") {
 			m_element_data.fromXml(root);
+				//A frame set by hand stays as it was written
+			m_fixed_frame = QRect();
+			for (const auto &other : std::as_const(m_element_data.m_other_kind_informations))
+				if (other.first == QLatin1String("fixed_frame") && other.second == QLatin1String("true"))
+					m_fixed_frame = QRect(-root.attribute("hotspot_x").toInt(),
+							      -root.attribute("hotspot_y").toInt(),
+							      root.attribute("width").toInt(),
+							      root.attribute("height").toInt());
 		}
 	}
 
@@ -874,6 +905,7 @@ void ElementScene::slot_select(const ElementContent &content)
 */
 void ElementScene::slot_selectAll()
 {
+	applySelectionFilter();
 	slot_select(items());
 }
 
@@ -1614,4 +1646,111 @@ QList<ElementMeasureItem *> ElementScene::measureItems() const
 		}
 	}
 	return list;
+}
+
+/**
+	@brief ElementScene::likeFolio
+	@return true when the symbol editor draws like the folio: the sheet
+	colour, grid dots and ink of the folio, the frame of the definition
+	shown, on the grid around the insertion point. Off by default.
+*/
+bool ElementScene::likeFolio()
+{
+	return QSettings().value(QStringLiteral("elementeditor/like_folio"), false).toBool();
+}
+
+void ElementScene::setLikeFolio(bool like)
+{
+	QSettings().setValue(QStringLiteral("elementeditor/like_folio"), like);
+}
+
+/**
+	@brief ElementScene::gridFrame
+	@param drawing : the drawing, in element coordinates
+	@return the drawing and the origin, out to the next lines of the
+	folio grid: placed with its origin on the grid, the frame of the
+	symbol lies on the grid too
+*/
+QRect ElementScene::gridFrame(const QRectF &drawing)
+{
+		//The origin counts in, even outside the drawing (QRectF::united()
+		//would leave an empty rectangle out)
+	const qreal l = qMin(drawing.left(), 0.0),  t = qMin(drawing.top(), 0.0);
+	const qreal r = qMax(drawing.right(), 0.0), b = qMax(drawing.bottom(), 0.0);
+	const int step = 10;
+	const int left   = qFloor(l / step + 1e-9) * step;
+	const int top    = qFloor(t / step + 1e-9) * step;
+	const int right  = qCeil (r / step - 1e-9) * step;
+	const int bottom = qCeil (b / step - 1e-9) * step;
+	return QRect(QPoint(left, top), QSize(qMax(right - left, step), qMax(bottom - top, step)));
+}
+
+QRectF ElementScene::frameDrawingRect() const
+{
+	bool any = false;
+	qreal l = 0, t = 0, r = 0, b = 0;
+	const auto take = [&](const QRectF &rect) {
+		if (!any) { l = rect.left(); t = rect.top(); r = rect.right(); b = rect.bottom(); any = true; return; }
+		l = qMin(l, rect.left()); t = qMin(t, rect.top());
+		r = qMax(r, rect.right()); b = qMax(b, rect.bottom());
+	};
+	for (QGraphicsItem *qgi : items()) {
+		if (qgi->type() == ElementPrimitiveDecorator::Type) continue;
+		if (qgi->type() == QGraphicsRectItem::Type) continue;
+		if (qgi->type() == PartText::Type) continue;
+		if (qgi->type() == PartDynamicTextField::Type) continue;
+		if (qgi->type() == PartTerminal::Type) {
+			take(QRectF(qgi->scenePos(), QSizeF(0, 0)));
+			continue;
+		}
+		if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi))
+			take(cep->sceneGeometricRect());
+	}
+	return any ? QRectF(QPointF(l, t), QPointF(r, b)) : QRectF();
+}
+
+ElementScene::SelectionFilter ElementScene::selectionFilter()
+{
+	const int value = QSettings().value(QStringLiteral("elementeditor/selection_filter"), 0).toInt();
+	return value >= 0 && value <= 3 ? SelectionFilter(value) : SelectionFilter::All;
+}
+
+void ElementScene::setSelectionFilter(SelectionFilter filter)
+{
+	QSettings().setValue(QStringLiteral("elementeditor/selection_filter"), int(filter));
+}
+
+void ElementScene::applySelectionFilter()
+{
+	const SelectionFilter filter = selectionFilter();
+	for (CustomElementPart *part : primitives()) {
+		QGraphicsItem *item = part->toItem();
+		if (!item)
+			continue;
+		bool selectable = true;
+		const bool terminal = item->type() == PartTerminal::Type;
+		const bool text = item->type() == PartText::Type || item->type() == PartDynamicTextField::Type;
+		switch (filter) {
+			case SelectionFilter::All:       selectable = true; break;
+			case SelectionFilter::Drawing:   selectable = !terminal && !text; break;
+			case SelectionFilter::Texts:     selectable = text; break;
+			case SelectionFilter::Terminals: selectable = terminal; break;
+		}
+		if (!selectable && item->isSelected())
+			item->setSelected(false);
+		item->setFlag(QGraphicsItem::ItemIsSelectable, selectable);
+	}
+}
+
+void ElementScene::setFixedFrame(const QRect &frame)
+{
+	m_fixed_frame = frame.normalized();
+	update();
+}
+
+QRect ElementScene::definitionFrame() const
+{
+	if (!m_fixed_frame.isNull())
+		return m_fixed_frame;
+	return gridFrame(frameDrawingRect());
 }

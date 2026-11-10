@@ -226,10 +226,12 @@ bool QetGraphicsHeaderItem::toDXF(const QString &filepath)
 
 		Createdxf::drawTextAligned(
 					filepath,
-					m_model->headerData(
-						i,
-						Qt::Horizontal,
-						Qt::DisplayRole).toString(),
+					ProjectDBModel::shownText(
+						m_model,
+						m_model->headerData(
+							i,
+							Qt::Horizontal,
+							Qt::DisplayRole).toString()),
 					x,y,h1,0,0,0,valign,x,0,0);
 
 		top_left.setX(top_left.x() + m_current_sections_width.at(i));

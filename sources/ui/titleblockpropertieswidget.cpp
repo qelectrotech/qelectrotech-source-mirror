@@ -119,6 +119,8 @@ void TitleBlockPropertiesWidget::setProperties(
 	ui -> m_file_le       -> setText (properties.filename);
 	ui -> m_plant         -> setText (properties.plant);
 	ui -> m_loc           -> setText (properties.locmach);
+	ui -> m_folio_group_le    -> setText (properties.folio_group);
+	ui -> m_folio_subgroup_le -> setText (properties.folio_subgroup);
 	ui -> m_indice        -> setText (properties.indexrev);
 	ui -> m_folio_le      -> setText (properties.folio);
 	ui -> m_display_at_cb -> setCurrentIndex(properties.display_at == Qt::BottomEdge ? 0 : 1);
@@ -185,6 +187,8 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const
 	prop.filename   = ui -> m_file_le       -> text();
 	prop.plant      = ui -> m_plant         -> text();
 	prop.locmach    = ui -> m_loc           -> text();
+	prop.folio_group    = ui -> m_folio_group_le    -> text();
+	prop.folio_subgroup = ui -> m_folio_subgroup_le -> text();
 	prop.indexrev   = ui -> m_indice        -> text();
 	prop.folio      = ui -> m_folio_le      -> text();
 	prop.display_at = ui -> m_display_at_cb -> currentIndex() == 0 ? Qt::BottomEdge : Qt::RightEdge;
@@ -251,6 +255,8 @@ TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(
 	prop.filename = ui -> m_file_le   -> text();
 	prop.plant    = ui -> m_plant     -> text();
 	prop.locmach  = ui -> m_loc       -> text();
+	prop.folio_group    = ui -> m_folio_group_le    -> text();
+	prop.folio_subgroup = ui -> m_folio_subgroup_le -> text();
 	prop.indexrev = ui -> m_indice    -> text();
 	prop.folio    = "%autonum";
 	prop.display_at = ui -> m_display_at_cb -> currentIndex() == 0 ? Qt::BottomEdge : Qt::RightEdge;
@@ -361,6 +367,20 @@ Qt::Edge TitleBlockPropertiesWidget::currentTitleBlockEdge() const
 }
 
 /**
+	@brief TitleBlockPropertiesWidget::currentTitleBlockAlign
+	@return alignment of the current title block template
+*/
+Qt::Alignment TitleBlockPropertiesWidget::currentTitleBlockAlign() const
+{
+	const TitleBlockTemplate *tbt = nullptr;
+	if (!currentTitleBlockTemplateName().isEmpty())
+		tbt = templateForIndex(ui -> m_tbt_cb -> currentIndex());
+	if (!tbt)
+		tbt = QETApp::defaultTitleBlockTemplate();
+	return tbt ? tbt -> align() : Qt::AlignTop;
+}
+
+/**
 	@brief TitleBlockPropertiesWidget::addCollection
 	add a collection of title block available in the combo box
 	@param tbt_collection
@@ -414,12 +434,20 @@ void TitleBlockPropertiesWidget::initDialog(
 
 	auto size_changed = [this]() {
 		emit titleBlockSizeChanged(currentTitleBlockHeight(),
-								   currentTitleBlockEdge());
+								   currentTitleBlockEdge(),
+								   currentTitleBlockAlign());
 	};
 	connect(ui->m_tbt_cb, qOverload<int>(&QComboBox::currentIndexChanged),
 			this, size_changed);
 	connect(ui->m_display_at_cb, qOverload<int>(&QComboBox::currentIndexChanged),
 			this, size_changed);
+
+		//An empty group is the plant, an empty sub-group the location: show
+		//which, greyed, while the field is empty
+	connect(ui->m_plant, &QLineEdit::textChanged,
+			ui->m_folio_group_le, &QLineEdit::setPlaceholderText);
+	connect(ui->m_loc, &QLineEdit::textChanged,
+			ui->m_folio_subgroup_le, &QLineEdit::setPlaceholderText);
 
 	if (project!= nullptr){
 		keys_2 = project -> folioAutoNum().keys();
@@ -561,6 +589,7 @@ void TitleBlockPropertiesWidget::addTemplateVariables(
 		QStringLiteral("author"), QStringLiteral("date"),
 		QStringLiteral("title"), QStringLiteral("filename"),
 		QStringLiteral("plant"), QStringLiteral("locmach"),
+		QStringLiteral("folio_group"), QStringLiteral("folio_subgroup"),
 		QStringLiteral("indexrev"), QStringLiteral("version"),
 		QStringLiteral("folio"), QStringLiteral("folio-id"),
 		QStringLiteral("folio-total"), QStringLiteral("auto_page_num"),

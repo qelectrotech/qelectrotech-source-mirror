@@ -28,6 +28,7 @@
 #include <properties/elementdata.h>
 
 #include <QHash>
+#include <optional>
 #include <QSet>
 #include <QPicture>
 #include <algorithm>
@@ -48,11 +49,13 @@ class Element : public QetGraphicsItem
 {
 	friend class DiagramEventAddElement;
 	friend class DynamicElementTextItem;
+	friend class ElementTextItemGroup;
 
 	Q_OBJECT
 	Q_PROPERTY(bool horizontalMirror READ hasHorizontalMirror WRITE setHorizontalMirror NOTIFY mirrorChanged)
 	Q_PROPERTY(bool verticalMirror READ hasVerticalMirror WRITE setVerticalMirror NOTIFY mirrorChanged)
 	Q_PROPERTY(QVariantMap potentialSources READ potentialSourcesMap WRITE setPotentialSourcesMap)
+	Q_PROPERTY(bool shownAsDot READ isShownAsDot WRITE setShownAsDot)
 
 	public:
 			/**
@@ -323,6 +326,11 @@ class Element : public QetGraphicsItem
 			/// symbol, or any symbol whose definition says so with the
 			/// kind information "corner" set to "true"
 		bool isCorner() const {return m_corner;}
+			/// A T-junction drawn as its lines and a dot where they meet,
+			/// instead of its own drawing
+		bool isShownAsDot() const {return m_shown_as_dot;}
+		void setShownAsDot(bool dot);
+		std::optional<QPointF> dotPoint() const;
 		/**
 		 * @brief takesSchemeNumber
 		 * Whether this element is given a number by an element numbering
@@ -402,6 +410,8 @@ class Element : public QetGraphicsItem
 		DiagramContext m_kind_informations;
 		autonum::sequentialNumbers m_autoNum_seq;
 		bool m_freeze_label = false;
+		bool m_shown_as_dot = false;
+		void drawAsDot(QPainter *painter, const QPointF &meet) const;
 		QHash<QUuid, QString> m_potential_sources;
 		QString m_F_str;
 

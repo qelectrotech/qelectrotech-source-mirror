@@ -54,6 +54,7 @@ class ElementsCollectionWidget;
 class ElementPickerPopup;
 class CommandSearchPopup;
 class AutoNumberingDockWidget;
+class DeviceNavigatorDockWidget;
 class TerminalNumberingDialog;
 
 class KAutoSaveFile;
@@ -117,6 +118,7 @@ class QETDiagramEditor : public QETMainWindow
 		void setUpUndoStack     ();
 		void setUpSelectionPropertiesEditor();
 		void setUpAutonumberingWidget();
+		void setUpDeviceNavigatorDock();
 		void setUpActions       ();
 		void setUpToolBar       ();
 		void setUpMenu          ();
@@ -169,6 +171,7 @@ class QETDiagramEditor : public QETMainWindow
 		void slot_updateUndoStack();
 		void slot_updateModeActions();
 		void slot_updateComplexActions();
+		void showSelectedAsDot(bool dot);
 		void slot_updatePasteAction();
 		void pasteElementInformations();
 		void updatePasteElementInfoAction();
@@ -202,6 +205,7 @@ class QETDiagramEditor : public QETMainWindow
 		void slot_cableNumbering();
 		void slot_reloadElementDrawings();
 		void slot_updateElementsFromCollections();
+		void slot_resetSymbolTexts();
 #ifdef QET_HAS_SCRIPTING
 		void slot_runScript();
 		void rebuildScriptActions();
@@ -239,6 +243,7 @@ class QETDiagramEditor : public QETMainWindow
 	private slots:
 		void updateTextGridButton();
 		void updateGridStepButton();
+		void updateSelectionFilterButton();
 		void updateShownKinds();
 		void selectionChanged();
 
@@ -254,7 +259,9 @@ class QETDiagramEditor : public QETMainWindow
 		*m_apply_text_format = nullptr, ///< Apply label/text formatting template
 		*m_place_texts = nullptr,	///< Place the texts of the selected symbols at one of nine points
 		*m_text_destination = nullptr,	///< Choose the folio a selected free text leads to
-		*m_text_clearance = nullptr;	///< Move texts off the wires they sit on
+		*m_text_clearance = nullptr,	///< Move texts off the wires they sit on
+		*m_show_as_dot = nullptr,	///< Draw the selected T-junctions as a dot
+		*m_select_same_symbols = nullptr;	///< Select the symbols of the same kind as a selected one
 		
 		QActionGroup
 		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram
@@ -295,7 +302,6 @@ class QETDiagramEditor : public QETMainWindow
 		*m_paste_origin,		///< Same, at the copied position, cursor warped to the origin (Ctrl+Shift+V)
 		*m_duplicate,			///< Copy selection, offset by the configured step (#991)
 		*m_configure_duplicate,		///< Reopen the duplicate offset/direction dialog (#991)
-		*m_duplicate_with_spacing,	///< That dialog, then a duplicate at the spacing chosen
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
 		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
 		*m_terminal_strip_labels = nullptr,	///< Show each strip's label at its first terminal
@@ -331,6 +337,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_export_cable_list,          ///< Export the cable list of the project to CSV
 		*m_reload_element_drawings,    ///< Action to redraw every placed element from its current definition
 		*m_update_elements_from_collections, ///< Action to replace embedded elements changed in their collection
+		*m_reset_symbol_texts, ///< Action to lay the symbol texts out as their symbol does
 #ifdef QET_HAS_SCRIPTING
 		*m_run_script,                 ///< Action to run a JavaScript macro against the current project
 		*m_open_scripts_folder,        ///< Action to open the folder stored scripts are read from
@@ -369,6 +376,8 @@ class QETDiagramEditor : public QETMainWindow
 		QAction *m_grid_snap = nullptr;			///< Snap to the grid, on or off
 		QMenu *m_grid_step_menu = nullptr;		///< Fine, medium or coarse grid
 		QToolButton *m_grid_step_button = nullptr;
+		QMenu *m_selection_filter_menu = nullptr;	///< What a click, a selection rectangle and Select All pick
+		QToolButton *m_selection_filter_button = nullptr;	///< Status bar: the selection filter, with the same menu
 		QToolButton *m_grid_status_button = nullptr;	///< Status bar: the grid step, with the same menu
 		QToolButton *m_snap_status_button = nullptr;	///< Status bar: snapping on or off, a magnet
 		QToolButton *m_text_grid_button = nullptr;
@@ -437,6 +446,7 @@ class QETDiagramEditor : public QETMainWindow
 		
 		QUndoGroup undo_group;
 		AutoNumberingDockWidget *m_autonumbering_dock;
+		DeviceNavigatorDockWidget *m_device_navigator_dock = nullptr;
 		int activeSubWindowIndex;
 		SearchAndReplaceWidget m_search_and_replace_widget;
 };

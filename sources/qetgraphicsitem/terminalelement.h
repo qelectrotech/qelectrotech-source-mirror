@@ -54,6 +54,9 @@ class TerminalElement : public Element
 			/// behind it (TerminalStripLabels); a null line takes it away
 		void setBridgeLine(const QLineF &line);
 		QLineF bridgeLine() const;
+			/// The row of a terminal strip runs through this height of the
+			/// symbol: its kind information "row_y", else its origin
+		qreal rowY() const;
 
 	protected:
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;

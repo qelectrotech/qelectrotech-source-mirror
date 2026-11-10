@@ -177,7 +177,7 @@
               </property>
              </widget>
             </item>
-            <item row="10" column="3">
+            <item row="12" column="3">
              <layout class="QGridLayout" name="gridLayout">
               <item row="0" column="0">
                <widget class="QComboBox" name="auto_page_cb">
@@ -220,7 +220,7 @@
               </property>
              </widget>
             </item>
-            <item row="9" column="1">
+            <item row="11" column="1">
              <widget class="QLabel" name="label_12">
               <property name="text">
                <string>Rev index:</string>
@@ -231,6 +231,34 @@
              <widget class="QLineEdit" name="m_loc">
               <property name="toolTip">
                <string>Available as variable %locmach for title blocks</string>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="1">
+             <widget class="QLabel" name="m_folio_group_label">
+              <property name="text">
+               <string>Folio group:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="3">
+             <widget class="QLineEdit" name="m_folio_group_le">
+              <property name="toolTip">
+               <string>The group this folio belongs to. Left empty, it is the plant. Available as variable %{folio_group} for title blocks</string>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="1">
+             <widget class="QLabel" name="m_folio_subgroup_label">
+              <property name="text">
+               <string>Folio sub-group:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="3">
+             <widget class="QLineEdit" name="m_folio_subgroup_le">
+              <property name="toolTip">
+               <string>The sub-group of this folio within its group. Left empty, it is the location. Available as variable %{folio_subgroup} for title blocks</string>
               </property>
              </widget>
             </item>
@@ -345,7 +373,7 @@ The following variables can be used:
               </property>
              </widget>
             </item>
-            <item row="10" column="1">
+            <item row="12" column="1">
              <widget class="QLabel" name="label_9">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
@@ -358,7 +386,7 @@ The following variables can be used:
               </property>
              </widget>
             </item>
-            <item row="9" column="3">
+            <item row="11" column="3">
              <widget class="QLineEdit" name="m_indice">
               <property name="toolTip">
                <string>Available as variable %indexrev for title blocks</string>
@@ -436,6 +464,8 @@ The following variables can be used:
   <tabstop>m_folio_le</tabstop>
   <tabstop>m_plant</tabstop>
   <tabstop>m_loc</tabstop>
+  <tabstop>m_folio_group_le</tabstop>
+  <tabstop>m_folio_subgroup_le</tabstop>
   <tabstop>m_indice</tabstop>
   <tabstop>auto_page_cb</tabstop>
   <tabstop>m_edit_autofolionum_pb</tabstop>

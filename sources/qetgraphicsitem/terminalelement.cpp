@@ -159,6 +159,19 @@ QLineF TerminalElement::bridgeLine() const
 }
 
 /**
+	@brief TerminalElement::rowY
+	@return the height, in the symbol's coordinates, the row of its
+	terminal strip runs through: the strip label stands beside it and a
+	bridge runs along it. A symbol whose origin lies on one of its
+	connection points rather than on the row says where the row is with
+	the kind information "row_y"; otherwise the row runs through the origin.
+*/
+qreal TerminalElement::rowY() const
+{
+	return kindInformations().value(QStringLiteral("row_y")).toDouble();
+}
+
+/**
 	@brief TerminalElement::placeStripLabel
 	Before the terminal, 3 away from its frame, upright whichever way the
 	terminal is turned: on the left of a terminal in a row, its middle on
@@ -174,7 +187,7 @@ void TerminalElement::placeStripLabel()
 				QTransform(turn.m11(), turn.m12(), turn.m21(), turn.m22(), 0, 0).inverted());
 
 		//The point before the terminal, and which way "before" is on the folio
-	const QPointF anchor = mapToScene(QPointF(boundingRect().left() - 3, 0));
+	const QPointF anchor = mapToScene(QPointF(boundingRect().left() - 3, rowY()));
 	const QPointF way = mapToScene(QPointF(-1, 0)) - mapToScene(QPointF(0, 0));
 	const QSizeF size = m_strip_label->boundingRect().size();
 	QPointF top_left;

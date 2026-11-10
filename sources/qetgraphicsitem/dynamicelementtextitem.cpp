@@ -915,9 +915,17 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 		//Shift or no parent initiates movement of dynamic text, otherwise
 		//movement of parent element -- the other way round when
-		//dragMovesTextAlone() is on
+		//dragMovesTextAlone() is on. The selection filter decides first:
+		//where the text belongs to its symbol only Shift moves it alone,
+		//where only texts of symbols are picked it always does.
 	const bool shift = event->modifiers() & Qt::ShiftModifier;
-	if(shift != dragMovesTextAlone() || !m_parent_element)
+	bool text_alone = shift != dragMovesTextAlone();
+	if (Diagram::filterPick(this) == Diagram::FilterPick::Owner) {
+		text_alone = shift;
+	} else if (Diagram::selectionFilter() == Diagram::SelectionFilter::SymbolTexts) {
+		text_alone = true;
+	}
+	if(text_alone || !m_parent_element)
 	{
 		m_move_parent = false;
 		DiagramTextItem::mousePressEvent(event);
@@ -1006,6 +1014,12 @@ void DynamicElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 */
 void DynamicElementTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
+		//Belonging to its symbol (the selection filter): the symbol's
+		//properties, as a double-click on the symbol
+	if (m_parent_element && Diagram::filterPick(this) == Diagram::FilterPick::Owner) {
+		m_parent_element->mouseDoubleClickEvent(event);
+		return;
+	}
 	DiagramTextItem::mouseDoubleClickEvent(event);
 	zoomToLinkedElement();
 }

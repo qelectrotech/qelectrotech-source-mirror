@@ -3729,7 +3729,7 @@ namespace {
 /**
 	@brief sameDefinition
 	@return true if @p a and @p b describe the same element: same tags,
-	attributes and texts. The uuids of the terminals are left out: an
+	attributes and texts, whatever the indentation and comments. The uuids of the terminals are left out: an
 	embedded element gets missing ones filled in, and keeps its own when it
 	is replaced (see TerminalUuids).
 */
@@ -3756,10 +3756,20 @@ bool sameDefinition(const QDomElement &a, const QDomElement &b)
 		}
 	}
 
-	QDomNode a_child = a.firstChild();
-	QDomNode b_child = b.firstChild();
+		//The indentation between tags is no part of the element: a copy
+		//embedded in a project keeps it as text, the file it came from
+		//may not, or be indented otherwise
+	const auto significant = [](QDomNode node) {
+		while (!node.isNull()
+			   && (node.isComment()
+				   || (node.isText() && node.nodeValue().trimmed().isEmpty())))
+			node = node.nextSibling();
+		return node;
+	};
+	QDomNode a_child = significant(a.firstChild());
+	QDomNode b_child = significant(b.firstChild());
 	for ( ; !a_child.isNull() && !b_child.isNull() ;
-		  a_child = a_child.nextSibling(), b_child = b_child.nextSibling())
+		  a_child = significant(a_child.nextSibling()), b_child = significant(b_child.nextSibling()))
 	{
 		if (a_child.nodeType() != b_child.nodeType()) return false;
 		if (a_child.isElement()) {
@@ -5104,12 +5114,27 @@ QStringList QETProject::translatableTexts()
 			"UNION SELECT value FROM element_information "
 			"WHERE name IN ('comment', 'function', 'description', 'designation')");
 	QSet<QString> found;
-	QSqlQuery query = m_data_base.newQuery(sql);
-	while (query.next()) {
-		const QString text = query.value(0).toString();
+	const auto collect = [&found](const QString &text) {
 		if (ProjectLanguages::isTranslatable(text)) {
 			found.insert(text);
 		}
+	};
+	QSqlQuery query = m_data_base.newQuery(sql);
+	while (query.next()) {
+		collect(query.value(0).toString());
+	}
+		//The title block of each folio: its title and additional fields
+	for (Diagram *diagram : folios()) {
+		const TitleBlockProperties title_block = diagram->border_and_titleblock.exportTitleBlock();
+		collect(title_block.title);
+		for (const QString &key : title_block.context.keys()) {
+			collect(title_block.context[key].toString());
+		}
+	}
+		//The fields of the project, which the title blocks can show
+	const DiagramContext properties = projectProperties();
+	for (const QString &key : properties.keys()) {
+		collect(properties[key].toString());
 	}
 	QStringList result(found.cbegin(), found.cend());
 	result.sort();

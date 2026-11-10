@@ -1,4 +1,5 @@
 #include "titleblocktemplaterenderer.h"
+#include "properties/projectlanguages.h"
 #include "titleblocktemplate.h"
 
 /**
@@ -58,6 +59,36 @@ DiagramContext TitleBlockTemplateRenderer::context() const
 }
 
 /**
+	@brief TitleBlockTemplateRenderer::setLanguages
+	@param languages : the project's texts in other languages, which must
+	outlive this renderer; nullptr to show the context as it is
+*/
+void TitleBlockTemplateRenderer::setLanguages(const ProjectLanguages *languages)
+{
+	m_languages = languages;
+}
+
+/**
+	@brief TitleBlockTemplateRenderer::shownContext
+	@return the context to draw: its texts in the project's active language.
+	context() keeps the words as written, for the project database.
+*/
+DiagramContext TitleBlockTemplateRenderer::shownContext() const
+{
+	if (!m_languages || m_languages->isEmpty()) return m_context;
+	DiagramContext shown;
+	for (const QString &key : m_context.keys()) {
+		const QVariant value = m_context[key];
+		shown.addValue(key,
+					   value.typeId() == QMetaType::QString
+						   ? QVariant(m_languages->translate(value.toString()))
+						   : value,
+					   m_context.keyMustShow(key));
+	}
+	return shown;
+}
+
+/**
 	@brief TitleBlockTemplateRenderer::height
 	@return the height of the rendered template,
 	or -1 if no template has been
@@ -81,7 +112,7 @@ void TitleBlockTemplateRenderer::render(QPainter *provided_painter,
 	if (!m_titleblock_template) return;
 	
 	m_titleblock_template -> render(*provided_painter,
-					m_context,
+					shownContext(),
 					titleblock_width);
 }
 
@@ -100,7 +131,7 @@ void TitleBlockTemplateRenderer::renderDxf(QRectF &title_block_rect,
 					   const QTransform &dxf_transform) {
 	if (!m_titleblock_template) return;
 	m_titleblock_template -> renderDxf(title_block_rect,
-					   m_context,
+					   shownContext(),
 					   titleblock_width,
 					   file_path, color,
 					   dxf_transform);

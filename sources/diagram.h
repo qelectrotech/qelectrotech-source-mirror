@@ -351,6 +351,28 @@ class Diagram : public QGraphicsScene
 		static bool gridSnap();
 		static void setGridSnap(bool snap);
 		static QPointF snapToTextGrid(const QPointF &p);
+			/// What a click, a selection rectangle and Select All pick
+			/// (the status bar's selection filter); All: everything, as
+			/// always before
+		enum class SelectionFilter {
+			All = 0,
+			Automatic,	///< all but the texts of symbols, which belong to their symbol
+			Symbols,
+			Conductors,
+			FreeTexts,
+			SymbolTexts
+		};
+		static SelectionFilter selectionFilter();
+		static void setSelectionFilter(SelectionFilter filter);
+			/// How the selection filter treats an item
+		enum class FilterPick {
+			Item,	///< picked
+			Owner,	///< a text of a symbol, which stands for its symbol
+			None	///< left out: a click goes to what lies under it
+		};
+		static FilterPick filterPick(const QGraphicsItem *item);
+		void filterSelection();
+		QGraphicsItem *pickAt(const QPointF &pos, const QTransform &view_transform) const;
 	
 		bool drawTerminals() const;
 		void setDrawTerminals(bool);
@@ -438,6 +460,7 @@ class Diagram : public QGraphicsScene
 		void invertSelection();
 		void selectAllConductors();
 		void selectAllTextFields();
+		void selectSameSymbols();
 		void completeGroupSelection();
 
 	signals:

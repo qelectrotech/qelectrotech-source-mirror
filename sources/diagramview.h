@@ -24,6 +24,8 @@
 #include <QClipboard>
 #include <QGraphicsObject>
 #include <QPointer>
+
+#include <optional>
 #include <memory>
 #include "palettegraphicsview.h"
 
@@ -43,6 +45,7 @@ class QMenu;
 	interactive way.
 */
 class Element;
+class Terminal;
 class DiagramView : public PaletteGraphicsView
 {
 	Q_OBJECT
@@ -83,6 +86,9 @@ class DiagramView : public PaletteGraphicsView
 		QString           m_pointed_description;
 		QPointF           m_crosshair_pos;
 		bool              m_crosshair_visible = false;
+			/// After the arrow keys, the crosshair stays on the moved
+			/// selection until the mouse itself moves away from here
+		std::optional<QPoint> m_crosshair_held_at;
 		void moveCrosshair(const QPoint &viewport_pos);
 			/// A handle near the mouse catches the crosshair and the
 			/// pointer, as a grid point does; a press then grabs it as if
@@ -95,6 +101,11 @@ class DiagramView : public PaletteGraphicsView
 			/// The symbol a press grabbed: while it is dragged, the
 			/// crosshair stands on its terminal nearest the mouse
 		QPointer<Element> m_dragged_element;
+			/// A press near one of a symbol's terminals makes it the point
+			/// the crosshair stands on while the symbol is moved (arrow
+			/// keys or mouse); a press elsewhere on it, the insertion point
+		QPointer<Terminal> m_reference_terminal;
+		Terminal *referenceTerminal() const;
 		QGraphicsObject *handleNear(const QPoint &viewport_pos) const;
 		QMouseEvent *onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseEvent> &shifted);
 		void hideCrosshair();

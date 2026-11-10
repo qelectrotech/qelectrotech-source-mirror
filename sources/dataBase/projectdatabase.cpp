@@ -1958,8 +1958,11 @@ projectDataBase::PotentialGroups projectDataBase::potentialGroups() const
 	is_unknown) from potentialGroups(), and make the TEMP view
 	wire_potential_view over it: one row per wire with its potential, its
 	effective potential type and where that type comes from ('wire' for the
-	wire's own stored potential_type; a source-derived type will be 'source').
-	Both are TEMP on purpose: a .qetdb that holds a view outside the fixed
+	wire's own stored potential_type; a source-derived type will be 'source'),
+	and the TEMP view potential_view: one row per potential, with its wires,
+	terminals, folios, wire numbers, whether it carries several, and its
+	names (the labels of its folio reports).
+	All are TEMP on purpose: a .qetdb that holds a view outside the fixed
 	list is refused as damaged by every QET that does not know it
 	(QetDbFile), so nothing here is ever saved, and the file carries no
 	data that could disagree with the drawing. Run on request only, never on
@@ -2002,6 +2005,53 @@ bool projectDataBase::refreshPotentialMembersOf(QSqlDatabase db, QHash<int, QStr
 		"FROM main.conductor c "
 		"LEFT JOIN temp.potential_member m ON m.wire_uuid = c.uuid "
 		"LEFT JOIN main.conductor_properties p ON p.conductor_uuid = c.uuid AND p.name = 'potential_type'"));
+		//One row per potential, over the same members: its wires, the
+		//terminals they end on, its folios, and its wire numbers. A
+		//potential is one number in QElectroTech's own numbering;
+		//several_numbers marks one that carries more (RSWire draws a
+		//busbar's stubs with a number each). names are the labels of the
+		//folio reports on it. potential_key, the potential's
+		//smallest wire uuid, names it from one refresh to the next while that
+		//wire is there; potential_id is only this refresh's number.
+	run(QStringLiteral("DROP VIEW IF EXISTS temp.potential_view"));
+	run(QStringLiteral(
+		"CREATE TEMP VIEW potential_view AS SELECT "
+		"MIN(c.uuid) AS potential_key, m.potential_id AS potential_id, "
+		"COUNT(*) AS wires, "
+		"(SELECT COUNT(*) FROM ("
+			"SELECT c2.terminal1_element_uuid, c2.terminal1_uuid FROM main.conductor c2 "
+			"JOIN temp.potential_member m2 ON m2.wire_uuid = c2.uuid WHERE m2.potential_id = m.potential_id "
+			"UNION SELECT c2.terminal2_element_uuid, c2.terminal2_uuid FROM main.conductor c2 "
+			"JOIN temp.potential_member m2 ON m2.wire_uuid = c2.uuid WHERE m2.potential_id = m.potential_id"
+		")) AS terminals, "
+		"COUNT(DISTINCT c.diagram_uuid) AS folios, MIN(d.pos) AS first_folio_number, "
+		"(SELECT group_concat(n, ', ') FROM ("
+			"SELECT DISTINCT NULLIF(c3.text, '') AS n FROM main.conductor c3 "
+			"JOIN temp.potential_member m3 ON m3.wire_uuid = c3.uuid "
+			"WHERE m3.potential_id = m.potential_id AND NULLIF(c3.text, '') IS NOT NULL ORDER BY n"
+		")) AS wire_numbers, "
+		"CASE WHEN COUNT(DISTINCT NULLIF(c.text, '')) > 1 THEN 1 ELSE 0 END AS several_numbers, "
+			//The names of the potential: the labels of the folio reports on
+			//it, which name the signal across the folios (and which chained
+			//reports link by)
+		"(SELECT group_concat(n, ', ') FROM ("
+			"SELECT DISTINCT NULLIF(ei.label, '') AS n FROM main.conductor c4 "
+			"JOIN temp.potential_member m4 ON m4.wire_uuid = c4.uuid "
+			"JOIN main.element e ON e.uuid IN (c4.terminal1_element_uuid, c4.terminal2_element_uuid) "
+			"JOIN main.element_info ei ON ei.element_uuid = e.uuid "
+			"WHERE m4.potential_id = m.potential_id "
+			"AND e.type IN ('next_report', 'previous_report') "
+			"AND NULLIF(ei.label, '') IS NOT NULL ORDER BY n"
+		")) AS names, "
+			//Its type when its wires agree on one; none when they do not
+			//(potential_mismatch lists those)
+		"CASE WHEN COUNT(DISTINCT v.potential_type) = 1 THEN MIN(v.potential_type) END AS potential_type, "
+		"MAX(m.is_unknown) AS is_unknown "
+		"FROM main.conductor c "
+		"JOIN temp.potential_member m ON m.wire_uuid = c.uuid "
+		"LEFT JOIN main.diagram d ON d.uuid = c.diagram_uuid "
+		"LEFT JOIN temp.wire_potential_view v ON v.wire_uuid = c.uuid "
+		"GROUP BY m.potential_id"));
 	const bool own_transaction = db.transaction();
 	run(QStringLiteral("DELETE FROM temp.potential_member"));
 	query.prepare(QStringLiteral("INSERT INTO temp.potential_member (wire_uuid, potential_id, is_unknown, derived_type) "
@@ -2766,7 +2816,7 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		//(POTENTIAL-TYPES-PLAN.md): a query that names one brings them up
 		//to date first, as for the tables above
 	static const QRegularExpression potential_objects(
-			QStringLiteral("\\b(wire_potential_view|potential_member|potential_mismatch)\\b"),
+			QStringLiteral("\\b(wire_potential_view|potential_view|potential_member|potential_mismatch)\\b"),
 			QRegularExpression::CaseInsensitiveOption);
 	if (potential_objects.match(query).hasMatch()) {
 		potentialTypeMismatchesOf(m_data_base);
@@ -5824,6 +5874,12 @@ void projectDataBase::storeFolioTitleBlock(const QUuid &folio, const TitleBlockP
 	row(QStringLiteral("filename"), properties.filename, true);
 	row(QStringLiteral("plant"), properties.plant, true);
 	row(QStringLiteral("locmach"), properties.locmach, true);
+		//Only when set, so a project without folio groups stores the same
+		//rows as before
+	if (!properties.folio_group.isEmpty())
+		row(QStringLiteral("folio_group"), properties.folio_group, true);
+	if (!properties.folio_subgroup.isEmpty())
+		row(QStringLiteral("folio_subgroup"), properties.folio_subgroup, true);
 	row(QStringLiteral("indexrev"), properties.indexrev, true);
 	row(QStringLiteral("version"), properties.version, true);
 	row(QStringLiteral("folio"), properties.folio, true);
@@ -6159,8 +6215,8 @@ void projectDataBase::forgetElementTexts(const QUuid &element)
 	@return the rows of what the saved symbol @p element holds that no
 	other table does: its frozen label, whether it moves and its prefix, as
 	Element::fromXml() reads them (a file that leaves one out gives the
-	value it is read as), then its <properties>, <plcMasterData>,
-	<xrefDisplay> and <potentialSources>
+	value it is read as), whether a T-junction is shown as a dot, then its
+	<properties>, <plcMasterData>, <xrefDisplay> and <potentialSources>
 */
 QList<projectDataBase::ProjectSetting> projectDataBase::elementValueRowsOf(const QDomElement &element)
 {
@@ -6173,6 +6229,9 @@ QList<projectDataBase::ProjectSetting> projectDataBase::elementValueRowsOf(const
 	rows.append({section, 0, QStringLiteral("is_movable"),
 				 QString::number(int(bool(element.attribute(QStringLiteral("is_movable"), QStringLiteral("1")).toInt())))});
 	rows.append({section, 0, QStringLiteral("prefix"), element.attribute(QStringLiteral("prefix"))});
+		//Only a T-junction shown as a dot has the row
+	if (element.attribute(QStringLiteral("shownAsDot")) == QLatin1String("true"))
+		rows.append({section, 0, QStringLiteral("shownAsDot"), QStringLiteral("true")});
 	for (const QString &tag : {QStringLiteral("properties"), QStringLiteral("plcMasterData"),
 							   QStringLiteral("xrefDisplay"), QStringLiteral("potentialSources")}) {
 		const QDomElement child = element.firstChildElement(tag);
@@ -7310,6 +7369,8 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 		if (built.filename != p.filename) differing << QStringLiteral("filename");
 		if (built.plant != p.plant) differing << QStringLiteral("plant");
 		if (built.locmach != p.locmach) differing << QStringLiteral("locmach");
+		if (built.folio_group != p.folio_group) differing << QStringLiteral("folio_group");
+		if (built.folio_subgroup != p.folio_subgroup) differing << QStringLiteral("folio_subgroup");
 		if (built.indexrev != p.indexrev) differing << QStringLiteral("indexrev");
 		if (built.version != p.version) differing << QStringLiteral("version");
 		if (built.folio != p.folio) differing << QStringLiteral("folio");

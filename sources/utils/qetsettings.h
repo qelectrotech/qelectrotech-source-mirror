@@ -49,6 +49,11 @@ namespace QetSettings
 	bool liveAskFirst();
 	void setLiveAskFirst(bool ask);
 
+		// Whether symbols with one label in one place are one device for the
+		// duplicate check (off by default).
+	bool duplicateLabelsByDesignation();
+	void setDuplicateLabelsByDesignation(bool by_designation);
+
 		// Whether labels differing only in letter case (K1, k1) are distinct
 		// for the duplicate check.
 	bool duplicateLabelsCaseSensitive();

@@ -880,3 +880,20 @@ void ScaleElementCommand::redo()
 		change.object->setProperty(change.name.constData(), change.after);
 	}
 }
+
+FixedFrameCommand::FixedFrameCommand(ElementScene *scene, const QRect &before,
+				     const QRect &after, QUndoCommand *parent) :
+	ElementEditionCommand(QObject::tr("frame", "undo caption"), scene, nullptr, parent),
+	m_before(before),
+	m_after(after)
+{}
+
+void FixedFrameCommand::undo()
+{
+	m_scene->setFixedFrame(m_before);
+}
+
+void FixedFrameCommand::redo()
+{
+	m_scene->setFixedFrame(m_after);
+}

@@ -26,6 +26,8 @@
 #include "xmlelementcollection.h"
 
 #include <QPicture>
+#include <QSettings>
+#include <QStringBuilder>
 
 // make this class usable with QVariant
 int ElementsLocation::MetaTypeId = qRegisterMetaType<ElementsLocation>("ElementsLocation");
@@ -943,4 +945,65 @@ bool ElementsLocation::isMacrosCollection() const
 	QString macrosPath = QETApp::userMacrosDir();
 	if (macrosPath.endsWith("/")) macrosPath.remove(macrosPath.length() - 1, 1);
 	return fileSystemPath().startsWith(macrosPath);
+}
+
+/**
+	@brief ElementsLocation::collectionSource
+	@return the element of a collection (user, company, then QET) this
+	embedded copy was imported from -- the one "Update elements from the
+	collections" compares it with -- or a null location when this is not
+	an imported copy or its source no longer exists
+*/
+ElementsLocation ElementsLocation::collectionSource() const
+{
+	if (!isProject() || !isElement())
+		return ElementsLocation();
+	const QString import_dir = QStringLiteral("import/");
+	const QString path = collectionPath(false);
+	if (!path.startsWith(import_dir))
+		return ElementsLocation();
+	const QString relative = path.mid(import_dir.size());
+	for (const QString &protocol : {QStringLiteral("custom://"),
+					QStringLiteral("company://"),
+					QStringLiteral("common://")})
+	{
+		ElementsLocation source(protocol % relative);
+		if (source.exist())
+			return source;
+	}
+	return ElementsLocation();
+}
+
+/**
+	@brief ElementsLocation::forFindAndEdit
+	@return what "Find in the collection" and "Edit the element" of a
+	placed element go to: its collection source when
+	findsAndEditsCollectionSource() is on and the source exists, this
+	location otherwise
+*/
+ElementsLocation ElementsLocation::forFindAndEdit() const
+{
+	if (findsAndEditsCollectionSource()) {
+		const ElementsLocation source = collectionSource();
+		if (!source.isNull())
+			return source;
+	}
+	return *this;
+}
+
+/**
+	@brief ElementsLocation::findsAndEditsCollectionSource
+	@return true when finding and editing a placed element go to the
+	collection element it was taken from, not to the project's copy.
+	Off by default.
+*/
+bool ElementsLocation::findsAndEditsCollectionSource()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/edit_collection_source"),
+				 false).toBool();
+}
+
+void ElementsLocation::setFindsAndEditsCollectionSource(bool source)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/edit_collection_source"), source);
 }

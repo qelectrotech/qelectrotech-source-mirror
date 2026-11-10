@@ -632,6 +632,13 @@ void Element::paint(
 	QBrush brush;
 	painter->setPen(pen);
 	painter->setBrush(brush);
+	if (const std::optional<QPointF> dot = m_shown_as_dot ? dotPoint() : std::nullopt) {
+		drawAsDot(painter, *dot);
+		painter->restore();
+		if (isSelected() || m_mouse_over)
+			QGIUtility::drawBoundingRectSelection(this, painter);
+		return;
+	}
 	const bool readable = !m_readable_transform.isIdentity();
 	const QPicture &picture = readable ? m_readable_picture : m_picture;
 	const QPicture &low_zoom_picture = readable ? m_readable_low_zoom_picture
@@ -666,6 +673,76 @@ void Element::paint(
 /**
 	@return Le rectangle delimitant le contour de l'element
 */
+/**
+	@brief Element::dotPoint
+	@return where the lines of a T-junction meet, in the element's
+	coordinates: a symbol with three terminals, one of them facing the
+	line between the other two. Nothing for any other symbol.
+*/
+std::optional<QPointF> Element::dotPoint() const
+{
+	if (m_terminals.size() != 3)
+		return std::nullopt;
+	QList<QPointF> points;
+	for (const Terminal *terminal : m_terminals)
+		points << mapFromScene(terminal->dockConductor());
+		//The line runs between the two terminals facing away from each
+		//other, the branch from the third one meets it in between
+	int a = -1, b = -1, c = -1;
+	for (int i = 0; i < 3 && a < 0; ++i) {
+		const int j = (i + 1) % 3;
+		if (Qet::isOpposed(m_terminals.at(i)->orientation(), m_terminals.at(j)->orientation())) {
+			a = i; b = j; c = (i + 2) % 3;
+		}
+	}
+	if (a < 0)
+		return std::nullopt;
+	const QPointF along = points.at(b) - points.at(a);
+	const qreal length2 = QPointF::dotProduct(along, along);
+	if (length2 <= 0)
+		return std::nullopt;
+	const qreal t = QPointF::dotProduct(points.at(c) - points.at(a), along) / length2;
+	if (t <= 0.01 || t >= 0.99)
+		return std::nullopt;
+	const QPointF meet = points.at(a) + t * along;
+	if (QLineF(meet, points.at(c)).length() < 1)
+		return std::nullopt;
+	return meet;
+}
+
+/**
+	@brief Element::setShownAsDot
+	Draw this T-junction as its three lines and a dot where they meet, or
+	again as its own drawing. Kept with the project.
+*/
+void Element::setShownAsDot(bool dot)
+{
+	if (m_shown_as_dot == dot)
+		return;
+	m_shown_as_dot = dot;
+	scheduleTextsStore();
+	update();
+}
+
+/**
+	@brief Element::drawAsDot
+	The lines from each terminal to @a meet and a filled dot there, the
+	size of the dot a wire junction gets.
+*/
+void Element::drawAsDot(QPainter *painter, const QPointF &meet) const
+{
+	QPen pen(Qt::black);
+	pen.setWidthF(1);
+	painter->setPen(pen);
+	painter->setRenderHint(QPainter::Antialiasing, false);
+	for (const Terminal *terminal : m_terminals)
+		painter->drawLine(mapFromScene(terminal->dockConductor()), meet);
+	painter->setRenderHint(QPainter::Antialiasing, true);
+	painter->setBrush(Qt::black);
+	painter->setPen(Qt::NoPen);
+	painter->drawEllipse(meet, 2.0, 2.0);
+}
+
 /**
 	@brief Element::drawingRect
 	@return the area its drawing covers, in this symbol's coordinates:
@@ -821,9 +898,10 @@ void Element::drawHighlight(
 	painter -> setPen(Qt::NoPen);
 	painter -> setBrush(brush);
 	// Le dessin se fait a partir du rectangle delimitant
+	const int radius = QGIUtility::selectionFrameRadius();
 	painter -> drawRoundedRect(boundingRect().adjusted(1, 1, -1, -1),
-				   10,
-				   10);
+				   radius,
+				   radius);
 	painter -> restore();
 }
 
@@ -1435,6 +1513,7 @@ bool Element::fromXml(QDomElement &e,
 
 	QString fl = e.attribute(QStringLiteral("freezeLabel"), QStringLiteral("false"));
 	m_freeze_label = fl == QLatin1String("false") ? false : true;
+	m_shown_as_dot = e.attribute(QStringLiteral("shownAsDot")) == QLatin1String("true");
 
 		//Load Sequential Values
 	if (e.hasAttribute(QStringLiteral("sequ_1"))
@@ -1600,6 +1679,9 @@ QDomElement Element::toXml(
 
 		//frozen label
 	element.setAttribute(QStringLiteral("freezeLabel"), m_freeze_label? QStringLiteral("true") : QStringLiteral("false"));
+		//a T-junction drawn as a dot; left out otherwise
+	if (m_shown_as_dot)
+		element.setAttribute(QStringLiteral("shownAsDot"), QStringLiteral("true"));
 
 		// sequential num
 	QDomElement seq = m_autoNum_seq.toXml(document);
@@ -2619,7 +2701,8 @@ void Element::appendDataXml(QDomDocument &document, QDomElement &element) const
 	@brief Element::ownValuesXml
 	@return an <element> made in @p document holding what toXml() writes
 	of this symbol that no other table of the project database holds: its
-	prefix, frozen label, whether it can be moved, and appendDataXml()
+	prefix, frozen label, whether it can be moved, whether it is shown as a
+	dot, and appendDataXml()
 */
 QDomElement Element::ownValuesXml(QDomDocument &document) const
 {
@@ -2627,6 +2710,8 @@ QDomElement Element::ownValuesXml(QDomDocument &document) const
 	element.setAttribute(QStringLiteral("prefix"), m_prefix);
 	element.setAttribute(QStringLiteral("freezeLabel"), m_freeze_label? QStringLiteral("true") : QStringLiteral("false"));
 	element.setAttribute(QStringLiteral("is_movable"), bool(is_movable_));
+	if (m_shown_as_dot)
+		element.setAttribute(QStringLiteral("shownAsDot"), QStringLiteral("true"));
 	appendDataXml(document, element);
 	return element;
 }

@@ -29,6 +29,10 @@ namespace QGIUtility
 	bool centerToParentBottom  (QGraphicsItem *item);
 	bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_follow, qreal offset = 0 );
 	void drawBoundingRectSelection(QGraphicsItem *item, QPainter *painter);
+		/// Corner radius of the frame around a selected or highlighted
+		/// symbol: 10, as always, by default; 0 draws it square
+	int selectionFrameRadius();
+	void setSelectionFrameRadius(int radius);
 }
 
 #endif // QGRAPHICSITEMUTILITY_H

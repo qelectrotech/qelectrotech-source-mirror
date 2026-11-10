@@ -17,12 +17,13 @@
 */
 /*
 	The projects of the last session are opened again at start when the
-	setting is on, and the ones open when the editor closes are kept for
-	the next start. Unlike the other app tests, the settings are written
+	setting is on, each on the folio it showed, and the ones open when the
+	editor closes are kept for the next start. Unlike the other app tests, the settings are written
 	before QETApp starts, since that is when it reads them.
 */
 #include "qetapptest.h"
 #include "qetdiagrameditor.h"
+#include "diagramview.h"
 #include "projectview.h"
 #include "qetproject.h"
 
@@ -45,6 +46,13 @@ class TstReopenProjects : public QObject
 			QCOMPARE(editor->openedProjects().first()->project()->filePath(), s_project);
 		}
 
+		void lastFolioShown()
+		{
+			ProjectView *view = QetAppTest::editor()->openedProjects().first();
+			QVERIFY(view->currentDiagram());
+			QCOMPARE(view->project()->folioIndex(view->currentDiagram()->diagram()), 2);
+		}
+
 			//Closing one of two windows mid-session keeps nothing: the
 			//projects of the last session are those open at the end
 		void closingOneOfTwoWindowsKeepsNothing()
@@ -63,9 +71,13 @@ class TstReopenProjects : public QObject
 		{
 			QSettings().setValue(QStringLiteral("projects/open_at_quit"), QStringList());
 			QETDiagramEditor *editor = QetAppTest::editor();
+			ProjectView *view = editor->openedProjects().first();
+			view->showDiagram(view->project()->folios().at(1));
 			QVERIFY(editor->close());
 			QCOMPARE(QSettings().value(QStringLiteral("projects/open_at_quit")).toStringList(),
 				 QStringList{s_project});
+			QCOMPARE(QSettings().value(QStringLiteral("projects/folio_at_quit")).toMap()
+				 .value(s_project).toInt(), 1);
 		}
 };
 
@@ -95,6 +107,8 @@ int main(int argc, char **argv)
 			//One that no longer exists is skipped
 		settings.setValue(QStringLiteral("projects/open_at_quit"),
 				  QStringList{home.filePath("gone.qet"), s_project});
+		settings.setValue(QStringLiteral("projects/folio_at_quit"),
+				  QVariantMap{{s_project, 2}});
 	}
 
 	QETApp qetapp;
