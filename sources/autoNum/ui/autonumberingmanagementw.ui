@@ -312,6 +312,16 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QPushButton" name="m_renumber_conductors_pb">
+          <property name="text">
+           <string>Renumber conductors…</string>
+          </property>
+          <property name="toolTip">
+           <string>Give the conductors of the chosen sheets new numbers with a conductor numbering, one number per potential, in sheet and position order. Frozen conductors keep theirs.</string>
+          </property>
+         </widget>
+        </item>
          <item>
           <spacer name="horizontalSpacer_2">
            <property name="orientation">

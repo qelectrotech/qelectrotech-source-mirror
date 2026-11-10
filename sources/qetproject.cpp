@@ -5367,7 +5367,14 @@ void QETProject::setConductorPlantCounter(const QString &scheme, const QString &
 {
 	if (m_conductor_plant_counters.value(scheme).value(plant) == values)
 		return;
-	m_conductor_plant_counters[scheme].insert(plant, values);
+		//None: the plant has not been counted (undoing a renumbering)
+	if (values.isEmpty()) {
+		m_conductor_plant_counters[scheme].remove(plant);
+		if (m_conductor_plant_counters.value(scheme).isEmpty())
+			m_conductor_plant_counters.remove(scheme);
+	} else {
+		m_conductor_plant_counters[scheme].insert(plant, values);
+	}
 	storeSettings();
 	setModified(true);
 }

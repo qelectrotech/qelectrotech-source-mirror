@@ -159,6 +159,10 @@ namespace autonum
 					  QETProject *project,
 					  const QString &plant,
 					  const QString &scheme);
+	NumerotationContext plantCounters(const NumerotationContext &nc,
+					  const QStringList &given);
+	QStringList plantCounterValues(const NumerotationContext &nc);
+	sequentialNumbers sequenceOf(const NumerotationContext &nc);
 	void storePlantCounters(QETProject *project, const QString &plant,
 				const QString &scheme,
 				const NumerotationContext &given);

@@ -501,6 +501,9 @@ qet_add_app_test(tst_foliogroup tst_foliogroup.cpp)
 # "number format 1 - Plant": a conductor numbering part counting each plant
 # (=) on its own; counts kept by .qet and .qetdb.
 qet_add_app_test(tst_plantcounter tst_plantcounter.cpp)
+# Renumber conductors: one number per potential, folio then top-left order,
+# frozen and unchosen kept, plant counters, one undo step.
+qet_add_app_test(tst_renumberwires tst_renumberwires.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
