@@ -2506,12 +2506,11 @@ void Element::setElementInformations(DiagramContext dc)
  */
 ElementData Element::elementData() const
 {
-	if (projectDataBase *store = placedStore()) {
-		ElementData data = m_data;
+	ElementData data = m_data;
+	if (projectDataBase *store = placedStore())
 		data.m_informations = store->elementInformation(m_uuid);
-		return data;
-	}
-	return m_data;
+	data.m_informations = data.withCustomInfo(data.m_informations);
+	return data;
 }
 
 /**
@@ -2523,8 +2522,8 @@ ElementData Element::elementData() const
 DiagramContext Element::elementInformations() const
 {
 	if (projectDataBase *store = placedStore())
-		return store->elementInformation(m_uuid);
-	return m_data.m_informations;
+		return m_data.withCustomInfo(store->elementInformation(m_uuid));
+	return m_data.withCustomInfo(m_data.m_informations);
 }
 
 /**
