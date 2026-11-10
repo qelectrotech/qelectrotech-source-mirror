@@ -186,6 +186,7 @@ namespace QETInformation
 
 	QStringList elementInfoKeys();
 	QStringList elementEditorElementInfoKeys();
+	QStringList elementCustomInfoKeys(const QStringList &keys);
 	QStringList terminalConductorInfoKeys(int connection_count);
 	bool isTerminalConductorInfo(const QString &info,
 								 QString *property = nullptr,

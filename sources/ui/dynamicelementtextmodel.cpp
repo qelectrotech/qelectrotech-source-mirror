@@ -39,6 +39,19 @@
 #include <QTimer>
 #include <QUndoCommand>
 
+namespace {
+	/**
+		@return the name an information is shown with: its translation,
+		or the key itself for a user-defined custom property, which
+		has none.
+	*/
+	QString infoDisplayName(const QString &key)
+	{
+		const QString name = QETInformation::translatedInfoKey(key);
+		return name.isEmpty() ? key : name;
+	}
+}
+
 static int src_txt_row   = 0;
 static int usr_txt_row   = 1;
 static int info_txt_row  = 2;
@@ -216,7 +229,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 
 	QStandardItem *infoa =
 			new QStandardItem(
-				QETInformation::translatedInfoKey(
+				infoDisplayName(
 					deti->infoName()));
 	infoa->setFlags(Qt::ItemIsSelectable
 			| Qt::ItemIsEnabled
@@ -1560,7 +1573,7 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti,
 			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
 			QString info_name = deti->infoName();
 			qsi->child(info_txt_row,1)->setData(info_name, Qt::UserRole+2);
-			qsi->child(info_txt_row,1)->setData(QETInformation::translatedInfoKey(info_name), Qt::DisplayRole);
+			qsi->child(info_txt_row,1)->setData(infoDisplayName(info_name), Qt::DisplayRole);
 			break;
 		}
 		case compositeText:
@@ -1732,7 +1745,7 @@ QWidget *DynamicTextItemDelegate::createEditor(
 
 			QStringList strl = availableInfo(deti);
 			for (int i=0; i<strl.size();++i) {
-				qcb -> addItem(QETInformation::translatedInfoKey(strl[i]), strl[i]);
+				qcb -> addItem(infoDisplayName(strl[i]), strl[i]);
 			}
 			return qcb;
 		}
@@ -2080,6 +2093,7 @@ QStringList DynamicTextItemDelegate::availableInfo(
 			if(dc.contains(info))
 				qstrl << info;
 		}
+		qstrl << QETInformation::elementCustomInfoKeys(dc.keys());
 
 			//Read from the wires, never stored (#1585)
 		if (elmt->elementData().m_type == ElementData::Terminal)

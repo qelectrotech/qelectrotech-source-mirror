@@ -587,6 +587,11 @@ qet_add_app_test(tst_terminalcableauto tst_terminalcableauto.cpp)
 qet_add_app_test(tst_terminallabeldisplay tst_terminallabeldisplay.cpp)
 qet_add_app_test(tst_terminalconductortext tst_terminalconductortext.cpp)
 
+# A symbol's user-defined custom property (#642) can be shown on the
+# drawing (discussion #561): picked as the information of a text, or
+# typed as %{key} in a composite text, and both follow its value.
+qet_add_app_test(tst_custominfotext tst_custominfotext.cpp)
+
 # A PLC contact draws its master's BMK: the master's label comes from its
 # numbering formula, which holds the page number, so a folio moved to
 # another place changes it -- the contact shows the new label at once, the

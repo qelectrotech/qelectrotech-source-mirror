@@ -459,6 +459,31 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	return QString();
 }
 
+/**
+ * @brief QETInformation::elementCustomInfoKeys
+ * @param keys the keys of an element's information
+ * @return, sorted, the keys of @p keys that are user-defined custom
+ * properties (added with "Add a custom property"): every key that is
+ * neither in elementInfoKeys() nor one the program stores for itself.
+ */
+QStringList QETInformation::elementCustomInfoKeys(const QStringList &keys)
+{
+	const QStringList known = elementInfoKeys()
+			<< ELMT_FORMULA_ID
+			<< QStringLiteral("auto_num_locked")
+			<< QStringLiteral("potential_isolating")
+			<< QStringLiteral("label_shown");
+
+	QStringList custom;
+	for (const QString &key : keys) {
+		if (!known.contains(key)) {
+			custom << key;
+		}
+	}
+	custom.sort();
+	return custom;
+}
+
 QStringList QETInformation::elementEditorElementInfoKeys()
 {
 	QStringList list = { ELMT_LABEL,

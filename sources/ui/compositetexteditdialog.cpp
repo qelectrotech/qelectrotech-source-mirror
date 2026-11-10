@@ -4,6 +4,7 @@
 #include <qetgraphicsitem/conductor.h>
 #include <qetgraphicsitem/dynamicelementtextitem.h>
 #include <qetgraphicsitem/element.h>
+#include <diagramcontext.h>
 #include <qetinformation.h>
 #include <qet.h>
 #include "ui_compositetexteditdialog.h"
@@ -28,6 +29,9 @@ CompositeTextEditDialog::CompositeTextEditDialog(DynamicElementTextItem *text, Q
 	setUpComboBox(report);
 	if (m_text && m_text->parentElement()->elementData().m_type == ElementData::Terminal) {
 		addTerminalConductorInfo(m_text->parentElement()->terminals().size());
+	}
+	if (m_text && !report && m_text->elementUseForInfo()) {
+		addCustomInfo(m_text->elementUseForInfo()->elementInformations());
 	}
 }
 
@@ -110,4 +114,16 @@ void CompositeTextEditDialog::focusInEvent(QFocusEvent *event)
 {
 	ui->m_plain_text_edit->setFocus();
 	QDialog::focusInEvent(event);
+}
+
+/**
+	@brief CompositeTextEditDialog::addCustomInfo
+	Add to the combo box the user-defined custom properties of
+	@p informations (@sa QETInformation::elementCustomInfoKeys)
+*/
+void CompositeTextEditDialog::addCustomInfo(const DiagramContext &informations)
+{
+	for (const QString &key : QETInformation::elementCustomInfoKeys(informations.keys())) {
+		ui->m_info_cb->addItem(key, QETInformation::infoToVar(key));
+	}
 }
