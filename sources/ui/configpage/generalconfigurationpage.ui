@@ -209,6 +209,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_new_folio_group_cb">
+         <property name="text">
+          <string>A new folio takes the group and sub-group of the folio before it</string>
+         </property>
+         <property name="toolTip">
+          <string>Only a group or sub-group typed on that folio is taken. Unchecked, a new folio has none and is in its plant and location.</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_wiring_rules_cb">
          <property name="toolTip">
           <string>When unticked, no conductors-per-terminal rule applies, whatever the projects' settings.</string>
@@ -1890,6 +1900,7 @@
   <tabstop>m_conductor_properties_panel</tabstop>
   <tabstop>m_terminal_conductor_color</tabstop>
   <tabstop>m_strip_wires</tabstop>
+  <tabstop>m_new_folio_group_cb</tabstop>
   <tabstop>m_wiring_rules_cb</tabstop>
   <tabstop>m_wiring_max_wires_sb</tabstop>
   <tabstop>m_wiring_one_wire_per_report_cb</tabstop>

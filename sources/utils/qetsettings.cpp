@@ -325,6 +325,46 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief duplicateLabelsSignalsByPlant
+	* @return whether the duplicate check takes a wire number to be unique
+	* per plant (=) of the wire's folio rather than in the whole project
+	* (DuplicateLabels::SignalScope::Plant), as in projects numbered per
+	* installation. Off by default: one number, one potential, project-wide.
+	* @sa setDuplicateLabelsSignalsByPlant
+	*/
+	bool duplicateLabelsSignalsByPlant()
+	{
+		QSettings settings;
+		return settings.value("duplicate_labels/signals_by_plant", false).toBool();
+	}
+
+	void setDuplicateLabelsSignalsByPlant(bool by_plant)
+	{
+		QSettings settings;
+		settings.setValue("duplicate_labels/signals_by_plant", by_plant);
+	}
+
+	/**
+	* @brief newFolioTakesPreviousGroup
+	* @return whether a new folio starts with the group and sub-group of the
+	* folio it comes after (QETProject::addNewDiagram()), so a run of folios
+	* of one group is drawn without typing the group on each. Off by
+	* default: a new folio then has none, as before.
+	* @sa setNewFolioTakesPreviousGroup
+	*/
+	bool newFolioTakesPreviousGroup()
+	{
+		QSettings settings;
+		return settings.value("diagrameditor/new_folio_takes_previous_group", false).toBool();
+	}
+
+	void setNewFolioTakesPreviousGroup(bool takes)
+	{
+		QSettings settings;
+		settings.setValue("diagrameditor/new_folio_takes_previous_group", takes);
+	}
+
+	/**
 	* @brief houseStyle
 	* @return this installation's drawing conventions, in the user's own
 	* words -- empty when nobody has set any.

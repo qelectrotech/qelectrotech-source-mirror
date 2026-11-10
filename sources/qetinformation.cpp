@@ -459,6 +459,54 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	return QString();
 }
 
+/**
+ * @brief QETInformation::elementCustomInfoKeys
+ * @param keys the keys of an element's information
+ * @return, sorted, the keys of @p keys that are user-defined custom
+ * properties (added with "Add a custom property"): every key that is
+ * neither in elementInfoKeys() nor one the program stores for itself.
+ */
+QStringList QETInformation::elementCustomInfoKeys(const QStringList &keys)
+{
+	const QStringList known = elementInfoKeys()
+			<< ELMT_FORMULA_ID
+			<< QStringLiteral("auto_num_locked")
+			<< QStringLiteral("potential_isolating")
+			<< QStringLiteral("label_shown");
+
+	QStringList custom;
+	for (const QString &key : keys) {
+		if (!known.contains(key)) {
+			custom << key;
+		}
+	}
+	custom.sort();
+	return custom;
+}
+
+/**
+ * @brief QETInformation::toInfoKey
+ * @param name a property name as the user types it, "Address A"
+ * @return @p name as an information key, "address_a": lower case,
+ * accents dropped, a space becomes "_", and anything else a key cannot
+ * hold (DiagramContext::isKeyAcceptable()) is left out. Every released
+ * QElectroTech drops a key that does not match when it opens a project.
+ */
+QString QETInformation::toInfoKey(const QString &name)
+{
+	QString key;
+	for (const QChar c : name.normalized(QString::NormalizationForm_KD).toLower())
+	{
+		if ((c >= QLatin1Char('a') && c <= QLatin1Char('z'))
+			|| (c >= QLatin1Char('0') && c <= QLatin1Char('9'))
+			|| c == QLatin1Char('-') || c == QLatin1Char('_'))
+			key += c;
+		else if (c.isSpace())
+			key += QLatin1Char('_');
+	}
+	return key;
+}
+
 QStringList QETInformation::elementEditorElementInfoKeys()
 {
 	QStringList list = { ELMT_LABEL,

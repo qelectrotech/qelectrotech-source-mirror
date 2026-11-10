@@ -29,6 +29,7 @@ class Conductor;
 class Diagram;
 class Element;
 class ElementsLocation;
+class QETProject;
 
 namespace autonum
 {
@@ -154,6 +155,17 @@ namespace autonum
 	NumerotationContext folioCounters(const NumerotationContext &nc,
 					  Diagram *diagram,
 					  const QString &key);
+	NumerotationContext plantCounters(const NumerotationContext &nc,
+					  QETProject *project,
+					  const QString &plant,
+					  const QString &scheme);
+	NumerotationContext plantCounters(const NumerotationContext &nc,
+					  const QStringList &given);
+	QStringList plantCounterValues(const NumerotationContext &nc);
+	sequentialNumbers sequenceOf(const NumerotationContext &nc);
+	void storePlantCounters(QETProject *project, const QString &plant,
+				const QString &scheme,
+				const NumerotationContext &given);
 	/**
 		Set every part of a numbering rule which counts back to its very
 		first value, so that numbering starts at the beginning again --

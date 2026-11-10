@@ -58,6 +58,15 @@ namespace QetSettings
 		// for the duplicate check.
 	bool duplicateLabelsCaseSensitive();
 	void setDuplicateLabelsCaseSensitive(bool sensitive);
+		// Whether a wire number need only be unique within its folio's
+		// plant (=) for the duplicate check. Off by default.
+	bool duplicateLabelsSignalsByPlant();
+	void setDuplicateLabelsSignalsByPlant(bool by_plant);
+
+		// Whether a new folio takes the group and sub-group of the folio
+		// before it. Off by default.
+	bool newFolioTakesPreviousGroup();
+	void setNewFolioTakesPreviousGroup(bool takes);
 
 	/**
 		Whether a terminal strip draws the wires which end at it: one

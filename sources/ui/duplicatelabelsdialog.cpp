@@ -44,6 +44,7 @@ DuplicateLabelsDialog::DuplicateLabelsDialog(
 	m_tree(new QTreeWidget(this)),
 	m_case_sensitive(new QCheckBox(this)),
 	m_by_designation(new QCheckBox(this)),
+	m_signals_by_plant(new QCheckBox(this)),
 	m_summary(new QLabel(this))
 {
 	setWindowTitle(tr("Duplicate signals and components"));
@@ -93,6 +94,25 @@ DuplicateLabelsDialog::DuplicateLabelsDialog(
 			refresh();
 		});
 	layout->addWidget(m_by_designation);
+	m_signals_by_plant->setObjectName(QStringLiteral("duplicateSignalsByPlant"));
+	m_signals_by_plant->setText(
+		tr("A wire number is unique within its plant (=)"));
+	m_signals_by_plant->setToolTip(
+		tr("When checked, the same wire number in two plants, such as 101 on "
+		   "a =FACTORY sheet and 101 on a =SILO sheet, is not a duplicate: a "
+		   "wire takes the plant of its sheet. When unchecked, a wire number "
+		   "names one potential in the whole project."));
+	m_signals_by_plant->setChecked(QetSettings::duplicateLabelsSignalsByPlant());
+	connect(
+		m_signals_by_plant,
+		&QCheckBox::toggled,
+		this,
+		[this](bool checked)
+		{
+			QetSettings::setDuplicateLabelsSignalsByPlant(checked);
+			refresh();
+		});
+	layout->addWidget(m_signals_by_plant);
 	m_tree->setObjectName(QStringLiteral("duplicateOccurrences"));
 	m_tree->setHeaderLabels(
 		{tr("Error / occurrence"), tr("Sheet"), tr("Position")});
@@ -178,13 +198,21 @@ void DuplicateLabelsDialog::refresh()
 										Qt::CaseInsensitive,
 		m_by_designation->isChecked()
 			? DuplicateLabels::ComponentRule::SameDesignation
-			: DuplicateLabels::ComponentRule::LinkedOnly);
+			: DuplicateLabels::ComponentRule::LinkedOnly,
+		m_signals_by_plant->isChecked()
+			? DuplicateLabels::SignalScope::Plant
+			: DuplicateLabels::SignalScope::Project);
 	for (const auto& group : groups)
 	{
 		auto* root = new QTreeWidgetItem(m_tree);
 		root->setIcon(0, style()->standardIcon(QStyle::SP_MessageBoxCritical));
-		if (group.kind == DuplicateLabels::Kind::Signal)
+		if (group.kind == DuplicateLabels::Kind::Signal && group.place.isEmpty())
 			root->setText(0, tr("Duplicate signal: %1").arg(group.label));
+		else if (group.kind == DuplicateLabels::Kind::Signal)
+			root->setText(
+				0,
+				//: %2 is the plant, such as "=SILO".
+				tr("Duplicate signal: %1 in %2").arg(group.label, group.place));
 		else if (group.place.isEmpty())
 			root->setText(0, tr("Duplicate component: %1").arg(group.label));
 		else

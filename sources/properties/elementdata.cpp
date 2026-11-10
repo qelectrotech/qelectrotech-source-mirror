@@ -56,12 +56,56 @@ bool ElementData::fromXml(const QDomElement &xml_element)
 						   QStringLiteral("elementInformation"));
 	m_names_list.fromXml(xml_element);
 
+	m_custom_info_keys.clear();
+	const auto xml_custom = xml_element.firstChildElement(QStringLiteral("customInformations"));
+	for (auto xml_key = xml_custom.firstChildElement(QStringLiteral("customInformation"));
+		 !xml_key.isNull();
+		 xml_key = xml_key.nextSiblingElement(QStringLiteral("customInformation")))
+	{
+		const QString key = xml_key.attribute(QStringLiteral("name"));
+		if (DiagramContext::isKeyAcceptable(key) && !m_custom_info_keys.contains(key))
+			m_custom_info_keys << key;
+	}
+
 	auto xml_draw_info = xml_element.firstChildElement(QStringLiteral("informations"));
 	if(xml_draw_info.tagName() == QLatin1String("informations")) {
 		m_drawing_information = xml_draw_info.text();
 	}
 
 	return true;
+}
+
+/**
+	@brief ElementData::customInfoToXml
+	@return the custom properties this symbol defines, as
+	<customInformations><customInformation name="address_a"/>...
+	A version that does not know them ignores them.
+*/
+QDomElement ElementData::customInfoToXml(QDomDocument &document) const
+{
+	auto xml_custom = document.createElement(QStringLiteral("customInformations"));
+	for (const QString &key : m_custom_info_keys)
+	{
+		auto xml_key = document.createElement(QStringLiteral("customInformation"));
+		xml_key.setAttribute(QStringLiteral("name"), key);
+		xml_custom.appendChild(xml_key);
+	}
+	return xml_custom;
+}
+
+/**
+	@brief ElementData::withCustomInfo
+	@return @p informations with every custom property this symbol
+	defines and @p informations does not hold added, empty: a placed
+	copy shows them before they are filled in. An empty value is never
+	saved, so nothing reaches the file.
+*/
+DiagramContext ElementData::withCustomInfo(DiagramContext informations) const
+{
+	for (const QString &key : m_custom_info_keys)
+		if (!informations.contains(key))
+			informations.addValue(key, QString());
+	return informations;
 }
 
 QDomElement ElementData::kindInfoToXml(QDomDocument &document)
@@ -629,6 +673,9 @@ bool ElementData::operator==(const ElementData &data) const
 		return false;
 	}
 	if (data.m_other_kind_informations != m_other_kind_informations) {
+		return false;
+	}
+	if (data.m_custom_info_keys != m_custom_info_keys) {
 		return false;
 	}
 

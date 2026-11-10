@@ -299,10 +299,14 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 		if (type == ElementData::Terminal) {
 			strl << QETInformation::terminalConductorInfoKeys(terminalCount());
 		}
+
+			//The custom properties this symbol defines (discussion #561)
+		strl << ed.m_custom_info_keys;
 	}
 
 	for (int i=0; i<strl.size();++i) {
-		ui -> m_elmt_info_cb -> addItem(QETInformation::translatedInfoKey(strl[i]), strl[i]);
+		const QString name = QETInformation::translatedInfoKey(strl[i]);
+		ui -> m_elmt_info_cb -> addItem(name.isEmpty() ? strl[i] : name, strl[i]);
 	}
 }
 
@@ -464,6 +468,10 @@ void DynamicTextFieldEditor::on_m_composite_text_pb_clicked()
 	CompositeTextEditDialog ctd(m_text_field.data() -> compositeText(), isReport, this);
 	if (type == ElementData::Terminal) {
 		ctd.addTerminalConductorInfo(terminalCount());
+	}
+	if (!isReport) {
+		const auto ed = elementEditor()->elementScene()->elementData();
+		ctd.addCustomInfo(ed.withCustomInfo(ed.m_informations));
 	}
 	if(ctd.exec()) {
 		QString ct = ctd.plainText();
