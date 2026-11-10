@@ -205,10 +205,11 @@ namespace DuplicateLabels
 		}
 
 		void appendGroups(
-			QVector<Group>& result,
-			Kind			kind,
-			const Labels&	labels,
-			QETProject*		project)
+			QVector<Group>&						result,
+			Kind								kind,
+			const Labels&						labels,
+			QETProject*							project,
+			const QHash<QString, QStringList>* parts = nullptr)
 		{
 			for (auto it = labels.cbegin(); it != labels.cend(); ++it)
 			{
@@ -230,7 +231,8 @@ namespace DuplicateLabels
 					spellings.join(QStringLiteral(", ")),
 					places.join(QStringLiteral(", ")),
 					it.value(),
-					int(entities.size())};
+					int(entities.size()),
+					parts ? parts->value(it.key()) : QStringList()};
 				std::sort(
 					group.occurrences.begin(),
 					group.occurrences.end(),
@@ -251,7 +253,10 @@ namespace DuplicateLabels
 
 	} // namespace
 
-	QVector<Group> find(QETProject* project, Qt::CaseSensitivity sensitivity)
+	QVector<Group> find(
+		QETProject*			project,
+		Qt::CaseSensitivity sensitivity,
+		ComponentRule		rule)
 	{
 		QVector<Group> result;
 		if (! project) return result;
@@ -351,7 +356,14 @@ namespace DuplicateLabels
 							continue;
 						}
 					}
-					parts.append({part, label, device});
+					parts.append(
+						{part,
+						 label,
+						 device,
+						 QString(),
+						 info.value(QStringLiteral("manufacturer_reference"))
+							 .toString()
+							 .trimmed()});
 				}
 				for (Occurrence& occurrence : parts)
 				{
@@ -387,8 +399,36 @@ namespace DuplicateLabels
 				components[it.key()].append(symbol.occurrence);
 			}
 		}
+		// One designation, one device: the drawings nothing links agree to
+		// be one, unless two of them name different part numbers. Terminal
+		// blocks (negative entities) keep their potentials.
+		QHash<QString, QStringList> disagreeing;
+		if (rule == ComponentRule::SameDesignation)
+		{
+			for (auto it = components.begin(); it != components.end(); ++it)
+			{
+				QStringList parts;
+				int			first = 0;
+				for (const Occurrence& occurrence : it.value())
+				{
+					if (occurrence.entity < 0) continue;
+					if (! first) first = occurrence.entity;
+					if (! occurrence.part.isEmpty()
+						&& ! parts.contains(occurrence.part))
+						parts.append(occurrence.part);
+				}
+				if (parts.size() > 1)
+				{
+					std::sort(parts.begin(), parts.end());
+					disagreeing.insert(it.key(), parts);
+					continue;
+				}
+				for (Occurrence& occurrence : it.value())
+					if (occurrence.entity >= 0) occurrence.entity = first;
+			}
+		}
 		appendGroups(result, Kind::Signal, signal_labels, project);
-		appendGroups(result, Kind::Component, components, project);
+		appendGroups(result, Kind::Component, components, project, &disagreeing);
 		return result;
 	}
 
