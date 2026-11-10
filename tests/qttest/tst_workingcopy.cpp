@@ -322,6 +322,13 @@ private slots:
 		QDir().mkpath(QFileInfo(read_only).path());
 		QVERIFY(QFile::copy(m_source, read_only));
 		QVERIFY(QFile::setPermissions(read_only, QFile::ReadOwner | QFile::ReadGroup | QFile::ReadOther));
+			//Root (or a file system ignoring permissions) writes it anyway: the
+			//project is then not read-only, and its copy rightly ready
+		{
+			QFile probe(read_only);
+			if (probe.open(QIODevice::ReadWrite))
+				QSKIP("this user can write a read-only file (root?): nothing read-only to test");
+		}
 		const QString copies = m_dir.filePath(QStringLiteral("readonly-copies"));
 		QDir().mkpath(copies);
 		QProcess proc;
