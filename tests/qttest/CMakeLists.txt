@@ -498,6 +498,9 @@ qet_add_app_test(tst_folioautonumcopy tst_folioautonumcopy.cpp)
 # A folio's group and sub-group: named, or its plant and location; title
 # block variables, kept by .qet and .qetdb, absent from older files.
 qet_add_app_test(tst_foliogroup tst_foliogroup.cpp)
+# "number format 1 - Plant": a conductor numbering part counting each plant
+# (=) on its own; counts kept by .qet and .qetdb.
+qet_add_app_test(tst_plantcounter tst_plantcounter.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE

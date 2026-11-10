@@ -172,7 +172,9 @@ QString NumerotationContextCommands::toRepresentedString()
 */
 void NumerotationContextCommands::setNumStrategy(const QString &str) {
 	if (strategy_) delete strategy_;
-	if (str == "unit") {
+		//A plant counter steps like a unit: which plant's count it
+		//continues is set before numbering (autonum::plantCounters())
+	if (str == "unit" || str == "unitplant") {
 		strategy_ = new UnitNum(diagram_);
 		return;
 	}
