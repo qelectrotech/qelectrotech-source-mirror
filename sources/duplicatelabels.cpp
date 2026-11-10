@@ -256,7 +256,8 @@ namespace DuplicateLabels
 	QVector<Group> find(
 		QETProject*			project,
 		Qt::CaseSensitivity sensitivity,
-		ComponentRule		rule)
+		ComponentRule		rule,
+		SignalScope			scope)
 	{
 		QVector<Group> result;
 		if (! project) return result;
@@ -303,9 +304,17 @@ namespace DuplicateLabels
 						part,
 						properties,
 						folio_variables.value(folio)));
-					if (! label.isEmpty())
-						signal_labels[key(label, sensitivity)].append(
-							{part, label, potential});
+					if (label.isEmpty()) continue;
+						// Per plant: the number is the folio's plant's, as a
+						// symbol's place is its plant and location
+					QString plant;
+					if (scope == SignalScope::Plant) {
+						plant = folio_variables.value(folio).plant.trimmed();
+						if (! plant.isEmpty() && ! plant.startsWith(QLatin1Char('=')))
+							plant.prepend(QLatin1Char('='));
+					}
+					signal_labels[plant + QLatin1Char('\x1f') + key(label, sensitivity)]
+						.append({part, label, potential, plant});
 				}
 			}
 			for (Element* element : diagram->elements())

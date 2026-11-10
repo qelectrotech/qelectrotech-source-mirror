@@ -243,6 +243,49 @@ class tst_duplicatelabels : public QObject
 		QCOMPARE(groups.first().occurrences.last().item.data(), b);
 	}
 
+	void signalsPerPlant()
+	{
+			//Numbered per installation: 101 in =FACTORY
+			//and 101 in =SILO are two wires, two 101 in =SILO a duplicate
+		QETProject project;
+		auto*	   factory = project.addNewDiagram();
+		auto*	   silo	   = project.addNewDiagram();
+		auto*	   silo2   = project.addNewDiagram();
+		setPlace(factory, "FACTORY", {});
+		setPlace(silo, "SILO", {});
+		setPlace(silo2, "SILO", "CP2");
+		isolated(factory, "101");
+		auto* a = isolated(silo, "101");
+		isolated(factory, "102");
+		auto* b = isolated(silo2, "102");
+		isolated(silo, "103");
+
+			//Project-wide, as before: 101 and 102 clash, and no group has a place
+		auto groups = DuplicateLabels::find(&project);
+		QCOMPARE(groups.size(), 2);
+		for (const auto& group : groups)
+			QVERIFY(group.place.isEmpty());
+
+			//Per plant: 101 and 102 are fine across plants
+		groups = DuplicateLabels::find(
+			&project, Qt::CaseSensitive,
+			DuplicateLabels::ComponentRule::LinkedOnly,
+			DuplicateLabels::SignalScope::Plant);
+		QVERIFY(groups.isEmpty());
+
+			//...and clash within one, whatever the location
+		isolated(silo2, "101");
+		groups = DuplicateLabels::find(
+			&project, Qt::CaseSensitive,
+			DuplicateLabels::ComponentRule::LinkedOnly,
+			DuplicateLabels::SignalScope::Plant);
+		QCOMPARE(groups.size(), 1);
+		QCOMPARE(groups.first().label, QString("101"));
+		QCOMPARE(groups.first().place, QString("=SILO"));
+		QCOMPARE(groups.first().occurrences.first().item.data(), a);
+		Q_UNUSED(b)
+	}
+
 	void reportLinksAreOneSignal()
 	{
 		QETProject project;
