@@ -606,6 +606,9 @@ qet_add_app_test(tst_selectsamesymbols tst_selectsamesymbols.cpp)
 # Duplicate repeating the move of the copy (a setting), and Ctrl+Shift+D
 qet_add_app_test(tst_duplicaterepeatmove tst_duplicaterepeatmove.cpp)
 qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
+# The corner radius of the frame around a selected symbol: 10 as before,
+# 0 square.
+qet_add_app_test(tst_selectionframeradius tst_selectionframeradius.cpp)
 
 # The element editor's collections dock: an element dropped on the drawing
 # pastes its parts, centred on the drop and on the grid; double-clicked, the

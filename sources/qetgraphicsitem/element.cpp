@@ -898,9 +898,10 @@ void Element::drawHighlight(
 	painter -> setPen(Qt::NoPen);
 	painter -> setBrush(brush);
 	// Le dessin se fait a partir du rectangle delimitant
+	const int radius = QGIUtility::selectionFrameRadius();
 	painter -> drawRoundedRect(boundingRect().adjusted(1, 1, -1, -1),
-				   10,
-				   10);
+				   radius,
+				   radius);
 	painter -> restore();
 }
 

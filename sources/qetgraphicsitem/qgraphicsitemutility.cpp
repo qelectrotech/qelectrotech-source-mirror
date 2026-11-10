@@ -22,6 +22,7 @@
 
 #include <QDebug>
 #include <QGraphicsItem>
+#include <QSettings>
 
 namespace QGIUtility
 {
@@ -120,8 +121,32 @@ void drawBoundingRectSelection(QGraphicsItem *item, QPainter *painter)
 	t.setCosmetic(true);
 
 	painter->setPen(t);
-	painter->drawRoundedRect(item->boundingRect(),10,10);
+	const int radius = selectionFrameRadius();
+	painter->drawRoundedRect(item->boundingRect(), radius, radius);
 	painter->restore();
+}
+
+namespace {
+int s_frame_radius = -1;
+}
+
+/**
+	@brief selectionFrameRadius
+	@return the corner radius of the frame drawn around a selected or
+	highlighted symbol, 0 to 10; the setting
+	"diagrameditor/selection_frame_radius", 10 when it is not set
+*/
+int selectionFrameRadius()
+{
+	if (s_frame_radius < 0)
+		s_frame_radius = qBound(0, QSettings().value(QStringLiteral("diagrameditor/selection_frame_radius"), 10).toInt(), 10);
+	return s_frame_radius;
+}
+
+void setSelectionFrameRadius(int radius)
+{
+	s_frame_radius = qBound(0, radius, 10);
+	QSettings().setValue(QStringLiteral("diagrameditor/selection_frame_radius"), s_frame_radius);
 }
 
 }
