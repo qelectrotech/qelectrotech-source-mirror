@@ -501,7 +501,9 @@ qet_add_app_test(tst_foliogroup tst_foliogroup.cpp)
 # "number format 1 - Plant": a conductor numbering part counting each plant
 # (=) on its own; counts kept by .qet and .qetdb.
 qet_add_app_test(tst_plantcounter tst_plantcounter.cpp)
-
+# Renumber conductors: one number per potential, folio then top-left order,
+# frozen and unchosen kept, plant counters, one undo step.
+qet_add_app_test(tst_renumberwires tst_renumberwires.cpp)
 # Placing a macro: its labels and question-mark texts.
 qet_add_app_test(tst_macrolabels tst_macrolabels.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
@@ -589,6 +591,16 @@ qet_add_app_test(tst_terminalcableauto tst_terminalcableauto.cpp)
 # the whole label.
 qet_add_app_test(tst_terminallabeldisplay tst_terminallabeldisplay.cpp)
 qet_add_app_test(tst_terminalconductortext tst_terminalconductortext.cpp)
+
+# A symbol's user-defined custom property (#642) can be shown on the
+# drawing (discussion #561): picked as the information of a text, or
+# typed as %{key} in a composite text, and both follow its value.
+qet_add_app_test(tst_custominfotext tst_custominfotext.cpp)
+
+# A symbol can define its own custom properties (discussion #561): every
+# placed copy has them, filled in or not, an empty one adds nothing to
+# the saved project, and a typed name becomes a key every version opens.
+qet_add_app_test(tst_symbolcustominfo tst_symbolcustominfo.cpp)
 
 # A PLC contact draws its master's BMK: the master's label comes from its
 # numbering formula, which holds the page number, so a folio moved to

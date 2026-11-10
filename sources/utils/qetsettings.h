@@ -63,6 +63,10 @@ namespace QetSettings
 	bool duplicateLabelsSignalsByPlant();
 	void setDuplicateLabelsSignalsByPlant(bool by_plant);
 
+		// Whether a new folio takes the group and sub-group of the folio
+		// before it. Off by default.
+	bool newFolioTakesPreviousGroup();
+	void setNewFolioTakesPreviousGroup(bool takes);
 		// Whether placing a macro asks for its device labels, proposing the
 		// next free ones. Off by default. A macro with a '?' always asks.
 	bool askLabelsPlacingMacro();

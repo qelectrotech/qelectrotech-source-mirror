@@ -572,6 +572,10 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 		root.appendChild(element_info);
 	}
 
+	if (!m_element_data.m_custom_info_keys.isEmpty()) {
+		root.appendChild(m_element_data.customInfoToXml(xml_document));
+	}
+
 	//complementary information about the element, when available
 	if (!(m_element_data.m_drawing_information.trimmed().isEmpty())) {
 		QDomElement informations_element = xml_document.createElement("informations");

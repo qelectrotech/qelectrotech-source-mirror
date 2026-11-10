@@ -44,6 +44,7 @@ class CustomElementInfoPartWidget : public QWidget
 		QString key() const;
 		QString value() const;
 		bool hasValidKey() const;
+		void setDefinedBySymbol(bool defined);
 
 	signals:
 		void changed();
@@ -51,6 +52,7 @@ class CustomElementInfoPartWidget : public QWidget
 
 	private slots:
 		void validateKey();
+		void convertKey(const QString &typed);
 
 	private:
 		QLineEdit   *m_key_edit;

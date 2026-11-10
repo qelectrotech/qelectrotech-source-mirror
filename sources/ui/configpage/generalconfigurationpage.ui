@@ -199,6 +199,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_new_folio_group_cb">
+         <property name="text">
+          <string>A new folio takes the group and sub-group of the folio before it</string>
+         </property>
+         <property name="toolTip">
+          <string>Only a group or sub-group typed on that folio is taken. Unchecked, a new folio has none and is in its plant and location.</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_macro_ask_labels_cb">
          <property name="text">
           <string>Ask for the device labels when placing a macro</string>
@@ -1889,6 +1899,7 @@
   <tabstop>m_zoom_out_beyond_folio</tabstop>
   <tabstop>m_conductor_properties_panel</tabstop>
   <tabstop>m_terminal_conductor_color</tabstop>
+  <tabstop>m_new_folio_group_cb</tabstop>
   <tabstop>m_macro_ask_labels_cb</tabstop>
   <tabstop>m_wiring_rules_cb</tabstop>
   <tabstop>m_wiring_max_wires_sb</tabstop>

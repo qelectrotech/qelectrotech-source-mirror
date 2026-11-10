@@ -23,6 +23,7 @@
 #include <diagram.h>
 #include <diagramposition.h>
 #include <qetapp.h>
+#include <qetinformation.h>
 #include <qetgraphicsitem/conductor.h>
 #include <qetgraphicsitem/element.h>
 #include <qetxml.h>
@@ -381,6 +382,13 @@ namespace autonum
 		str.replace("%{plc_t2}", dc.value("plc_t2").toString());
 		str.replace("%{plc_t3}", dc.value("plc_t3").toString());
 		str.replace("%{plc_t4}", dc.value("plc_t4").toString());
+
+			//A user-defined custom property, %{address_a}
+		if (str.contains(QLatin1String("%{"))) {
+			for (const QString &key : QETInformation::elementCustomInfoKeys(dc.keys())) {
+				str.replace("%{" + key + "}", dc.value(key).toString());
+			}
+		}
 
 		return str;
 	}
@@ -833,11 +841,21 @@ namespace autonum
 					  const QString &plant,
 					  const QString &scheme)
 	{
-		NumerotationContext out = nc;
 		if (!project) {
-			return out;
+			return nc;
 		}
-		const QStringList given = project->conductorPlantCounter(scheme, plant);
+		return plantCounters(nc, project->conductorPlantCounter(scheme, plant));
+	}
+
+	/**
+		@brief plantCounters
+		@return @p nc with its plant counters set to follow @p given, the
+		values they last gave (none: the rule's start)
+	*/
+	NumerotationContext plantCounters(const NumerotationContext &nc,
+					  const QStringList &given)
+	{
+		NumerotationContext out = nc;
 		int index = 0;
 		for (int i = 0 ; i < out.size() ; ++i)
 		{
@@ -873,17 +891,48 @@ namespace autonum
 		if (!project) {
 			return;
 		}
+		const QStringList values = plantCounterValues(given);
+		if (!values.isEmpty()) {
+			project->setConductorPlantCounter(scheme, plant, values);
+		}
+	}
+
+	/**
+		@brief plantCounterValues
+		@return the values of the plant counters of @p nc, in order
+	*/
+	QStringList plantCounterValues(const NumerotationContext &nc)
+	{
 		QStringList values;
-		for (int i = 0 ; i < given.size() ; ++i)
+		for (int i = 0 ; i < nc.size() ; ++i)
 		{
-			const QStringList parts = given.itemAt(i);
+			const QStringList parts = nc.itemAt(i);
 			if (!parts.isEmpty() && parts.at(0) == QLatin1String("unitplant")) {
 				values << parts.at(1);
 			}
 		}
-		if (!values.isEmpty()) {
-			project->setConductorPlantCounter(scheme, plant, values);
-		}
+		return values;
+	}
+
+	/**
+		@brief sequenceOf
+		@return the sequential numbers a label numbered with @p nc carries,
+		every kind of counter, as setSequential() fills them -- without
+		touching any folio's counters
+	*/
+	sequentialNumbers sequenceOf(const NumerotationContext &nc)
+	{
+		sequentialNumbers seq;
+		NumerotationContext context = nc;
+		setSequentialToList(seq.unit, context, QStringLiteral("unit"));
+		setSequentialToList(seq.wrap, context, QStringLiteral("wrap"));
+		setSequentialToList(seq.unit_folio, context, QStringLiteral("unitfolio"));
+		setSequentialToList(seq.ten, context, QStringLiteral("ten"));
+		setSequentialToList(seq.ten_folio, context, QStringLiteral("tenfolio"));
+		setSequentialToList(seq.hundred, context, QStringLiteral("hundred"));
+		setSequentialToList(seq.hundred_folio, context, QStringLiteral("hundredfolio"));
+		setSequentialToList(seq.alpha, context, QStringLiteral("alpha"));
+		return seq;
 	}
 
 	/**
