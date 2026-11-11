@@ -15,6 +15,8 @@
 #include <QFile>
 #include <QDebug>
 #include <QGraphicsSceneMouseEvent>
+#include <ui/macrolabelsdialog.h>
+#include <utils/qetsettings.h>
 #include <QStatusBar>
 #include <QPainter>
 #include <QSettings>
@@ -251,6 +253,29 @@ bool DiagramEventAddMacro::loadMacro()
 	return true;
 }
 
+/**
+	@brief DiagramEventAddMacro::askLabels
+	Asks for the macro's device labels and question-mark texts, when the
+	setting says so, and writes the answers in @p diagram.
+	@return false to place nothing
+*/
+bool DiagramEventAddMacro::askLabels(QDomElement &diagram)
+{
+	QList<MacroLabels::Field> fields = MacroLabels::fields(m_macro_doc.documentElement());
+	if (fields.isEmpty() || !QetSettings::askLabelsPlacingMacro())
+		return true;
+	MacroLabels::propose(fields, m_diagram);
+	if (m_asker) {
+		if (!m_asker(fields)) return false;
+	} else {
+		MacroLabelsDialog dialog(fields, m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first());
+		if (dialog.exec() != QDialog::Accepted) return false;
+		fields = dialog.fields();
+	}
+	MacroLabels::apply(diagram, fields);
+	return true;
+}
+
 void DiagramEventAddMacro::addMacro(QPointF final_pos)
 {
 	QDomElement root = m_macro_doc.documentElement();
@@ -258,6 +283,7 @@ void DiagramEventAddMacro::addMacro(QPointF final_pos)
 
 	if (!diagram_node.isNull()) {
 		QDomElement cloned_node = diagram_node.cloneNode(true).toElement();
+		if (!askLabels(cloned_node)) return;
 		DiagramContent pasted_content;
 
 			// fromXml() puts the template's top-left corner on final_pos,

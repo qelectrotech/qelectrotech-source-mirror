@@ -301,6 +301,18 @@ namespace QetSettings
 		settings.setValue("duplicate_labels/case_sensitive", sensitive);
 	}
 
+	bool askLabelsPlacingMacro()
+	{
+		QSettings settings;
+		return settings.value("diagrameditor/ask_labels_placing_macro", false).toBool();
+	}
+
+	void setAskLabelsPlacingMacro(bool ask)
+	{
+		QSettings settings;
+		settings.setValue("diagrameditor/ask_labels_placing_macro", ask);
+	}
+
 	/**
 	* @brief duplicateLabelsSignalsByPlant
 	* @return whether the duplicate check takes a wire number to be unique

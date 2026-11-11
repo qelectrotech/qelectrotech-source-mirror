@@ -7,6 +7,9 @@
 
 #include <ElementsCollection/elementslocation.h>
 #include "diagrameventinterface.h"
+#include "macrolabels.h"
+
+#include <functional>
 
 #include <QDomDocument>
 #include <QGraphicsPixmapItem>
@@ -30,9 +33,13 @@ public:
 	void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
 	void keyPressEvent         (QKeyEvent *event) override;
 	void init() override;
+		/// Who is asked for the labels and texts; a dialog by default.
+		/// False places nothing.
+	void setAsker(std::function<bool(QList<MacroLabels::Field> &)> asker) {m_asker = std::move(asker);}
 
 private:
 	bool loadMacro();
+	bool askLabels(QDomElement &diagram);
 	void addMacro(QPointF final_pos);
 
 private:
@@ -40,6 +47,7 @@ private:
 	QDomDocument m_macro_doc;
 	QGraphicsPixmapItem *m_preview_item;
 	QPointer<QStatusBar> m_status_bar;
+	std::function<bool(QList<MacroLabels::Field> &)> m_asker;
 	QPointF m_items_top_left;	// top-left of bounding rect of top-level items in the macro (for correct placement offset)
 };
 

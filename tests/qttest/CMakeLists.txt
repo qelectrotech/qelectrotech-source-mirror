@@ -504,6 +504,8 @@ qet_add_app_test(tst_plantcounter tst_plantcounter.cpp)
 # Renumber conductors: one number per potential, folio then top-left order,
 # frozen and unchosen kept, plant counters, one undo step.
 qet_add_app_test(tst_renumberwires tst_renumberwires.cpp)
+# Placing a macro: its labels and question-mark texts.
+qet_add_app_test(tst_macrolabels tst_macrolabels.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
