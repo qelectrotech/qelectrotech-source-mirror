@@ -134,7 +134,14 @@ namespace {
 		auto *row_layout = new QHBoxLayout(row);
 		row_layout->setContentsMargins(0, 0, 0, 0);
 		auto *text = new ButtonText(button, row);
-		delete layout->replaceWidget(button, row);
+			//The layout may be measuring the button right now, from the
+			//item it is replaced with: a button not yet polished is
+			//polished from its sizeHint(). That item is deleted once the
+			//measure is over, unless the button goes first: deleting the
+			//item would then read the deleted button
+		QLayoutItem *item = layout->replaceWidget(button, row);
+		QMetaObject::invokeMethod(button, [item] { delete item; },
+					  Qt::QueuedConnection);
 		button->setText(QString());
 		button->setParent(row);
 		row_layout->addWidget(button, 0, Qt::AlignTop);
