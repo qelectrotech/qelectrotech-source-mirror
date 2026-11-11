@@ -29,6 +29,11 @@ namespace Ui {
 class QETProject;
 class Cable;
 class TerminalStrip;
+class QCheckBox;
+class QComboBox;
+class QLabel;
+class QLineEdit;
+class QRegularExpression;
 
 /**
  * @brief The TerminalStripEditor class
@@ -62,6 +67,13 @@ class TerminalStripEditor : public QWidget
 		void watchCableChanges();
 		void watchCable(Cable *cable);
 		void reloadOnCableChange();
+		void setUpFilterBar();
+		void fillFilterColumns();
+		QRegularExpression filterExpression() const;
+		bool rowMatchesFilter(int row, const QRegularExpression &expression) const;
+		void applyRowFilter();
+		void selectFilteredRows();
+		void dropHiddenRowsFromSelection();
 		TerminalStripModel::Column isSingleColumnSelected() const;
 		QPair<TerminalStripModel::Column, QVector<modelRealTerminalData>> singleColumnData() const;
 
@@ -88,6 +100,15 @@ class TerminalStripEditor : public QWidget
 		QPointer<QETProject> m_watched_project;
         QPointer<TerminalStrip> m_current_strip;
         TerminalStripModel *m_model {nullptr};
+
+			//Filter bar above the table: find the terminals whose text
+			//matches, show only them and select them in one go
+		QLineEdit *m_filter_le {nullptr};
+		QComboBox *m_filter_column_cb {nullptr};
+		QComboBox *m_filter_target_cb {nullptr};
+		QCheckBox *m_filter_hide_cb {nullptr};
+		QLabel *m_filter_count_label {nullptr};
+		bool m_dropping_hidden_rows {false};
 };
 
 #endif // TERMINALSTRIPEDITOR_H
