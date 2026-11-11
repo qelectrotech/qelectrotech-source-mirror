@@ -23,6 +23,7 @@
 #include <dataBase/conductorpath.h>
 #include <properties/potentialtypes.h>
 
+#include <QElapsedTimer>
 #include <QGraphicsPathItem>
 #include <QSet>
 #include <QUuid>
@@ -238,6 +239,10 @@ class Conductor : public QGraphicsObject
 		
 		QVector<QetGraphicsHandlerItem *> m_handler_vector;
 		int m_vector_index = -1;
+			/// When and where the wire itself was last pressed: a press on
+			/// a handle right after it is the second click of a double-click
+		QElapsedTimer m_last_press;
+		QPointF m_last_press_pos;
 		bool m_mouse_over;
 			///Hop path cache for paintedPath(), valid while no conductor geometry changed
 		mutable QPainterPath m_hops_path;

@@ -745,6 +745,9 @@ qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
 qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
 qet_add_app_test(tst_cablelist tst_cablelist.cpp)
 
+# A double-click on the middle of a wire opens its properties.
+qet_add_app_test(tst_wiredoubleclick tst_wiredoubleclick.cpp)
+
 # Copying a cable leaves the cable it was copied from whole.
 qet_add_app_test(tst_cablecopy tst_cablecopy.cpp)
 
