@@ -44,7 +44,11 @@
 #include <editor/terminalnamecheck.h>
 #include <ElementsCollection/qetlabelsfile.h>
 #include <ui/prefixconfigurationdialog.h>
-#include <ui/nokde/kcolorbutton.h>
+#ifdef BUILD_WITHOUT_KF
+#	include <ui/nokde/kcolorbutton.h>
+#else
+#	include <KColorButton>
+#endif
 #include <editor/elementscene.h>
 #include <ElementsCollection/elementslocation.h>
 #include <QCoreApplication>
