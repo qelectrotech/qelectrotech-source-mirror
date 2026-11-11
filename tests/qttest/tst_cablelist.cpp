@@ -17,11 +17,21 @@
 */
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "cable/cable.h"
+#include "cablelist/cablelistrows.h"
+#include "ElementsCollection/elementslocation.h"
+#include "ElementsCollection/xmlelementcollection.h"
+#include "conductorproperties.h"
+#include "factory/elementfactory.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/terminal.h"
+#include "qetinformation.h"
 #include "dataBase/projectdatabase.h"
 #include "diagram.h"
 #include "qetapptest.h"
 #include "qetproject.h"
 
+#include <QDomDocument>
 #include <QSqlQuery>
 #include <QtTest>
 
@@ -29,7 +39,8 @@
 	qet_cables: the project's cables, one row each, read from the cables
 	themselves. A cable's plant and location are its own, else those of
 	the first folio it is drawn on; structure_id composes them with its
-	designation like a device's.
+	designation like a device's. Also the rows of the cable list
+	(Lists > cable list): where each cable starts and ends.
 */
 class tst_cablelist : public QObject
 {
@@ -52,6 +63,50 @@ class tst_cablelist : public QObject
 		part.p2 = QPointF(100, 200);
 		cable->addPart(part);
 		return part.uuid;
+	}
+
+	/// A symbol with two terminals, top and bottom, of the given link type
+	static Element *symbol(Diagram *diagram, const QString &link_type, const QString &label,
+						   const QPointF &pos)
+	{
+		auto *collection = diagram->project()->embeddedElementCollection();
+		const QString name = QStringLiteral("test_") + link_type;
+		if (!collection->exist(QStringLiteral("import/%1.elmt").arg(name))) {
+			QDomDocument definition;
+			definition.setContent(
+				QString(R"(<definition type="element" link_type="%1" uuid="%2" width="20" height="40" hotspot_x="10" hotspot_y="20">
+<names><name lang="en">Test</name></names>
+<description><line x1="0" y1="-10" x2="0" y2="10"/>
+<terminal x="0" y="-20" orientation="n" uuid="%3"/><terminal x="0" y="20" orientation="s" uuid="%4"/>
+</description></definition>)")
+					.arg(link_type, QUuid::createUuid().toString(),
+						 QUuid::createUuid().toString(), QUuid::createUuid().toString()));
+			if (!collection->addElementDefinition(QStringLiteral("import"), name,
+												  definition.documentElement()))
+				return nullptr;
+		}
+		int state = 0;
+		Element *element = ElementFactory::Instance()->createElement(
+			ElementsLocation(QStringLiteral("embed://import/%1.elmt").arg(name),
+							 diagram->project()),
+			nullptr, &state);
+		if (state || !element) return nullptr;
+		diagram->addItem(element);
+		element->setPos(pos);
+		DiagramContext info = element->elementInformations();
+		info.addValue(QETInformation::ELMT_LABEL, label);
+		element->setElementInformations(info);
+		return element;
+	}
+
+	static Terminal *terminalAt(Element *element, bool bottom)
+	{
+		const QList<Terminal *> terminals = element->terminals();
+		Terminal *found = terminals.value(0);
+		for (Terminal *t : terminals)
+			if ((t->scenePos().y() > found->scenePos().y()) == bottom && t != found)
+				found = t;
+		return found;
 	}
 
 	static Cable *cable(QETProject &project, const QString &designation)
@@ -117,6 +172,31 @@ class tst_cablelist : public QObject
 			QStringLiteral("=FACTORY+CP2-W3|W3||0|0|0|1|2"),
 			QStringLiteral("=SILO+P1-W2|W2||3|0|0|0|")}));
 		QCOMPARE(w1_uuid, w1->uuid().toString());
+	}
+
+		//A cable whose cores land on the terminals of one strip ends at the
+		//strip, not at its first two terminals
+	void coresOnOneStripAreOneEnd()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		Cable *w1 = cable(project, QStringLiteral("-W1"));
+		w1->setCoreCount(2);
+		Element *x1_1 = symbol(folio, QStringLiteral("terminal"), QStringLiteral("-X1:1"), {100, 100});
+		Element *x1_2 = symbol(folio, QStringLiteral("terminal"), QStringLiteral("-X1:2"), {140, 100});
+		Element *motor = symbol(folio, QStringLiteral("simple"), QStringLiteral("-M1"), {120, 300});
+		QVERIFY(x1_1 && x1_2 && motor);
+		for (Element *terminal : {x1_1, x1_2}) {
+			auto *core = new Conductor(terminalAt(terminal, true), terminalAt(motor, false));
+			folio->addItem(core);
+			ConductorProperties properties = core->properties();
+			properties.m_cable_uuid = w1->uuid();
+			core->setProperties(properties);
+		}
+		const auto rows = CableList::rows(&project);
+		QCOMPARE(rows.size(), 1);
+		QCOMPARE(rows.first().value(QStringLiteral("bmk_start")), QStringLiteral("-X1"));
+		QCOMPARE(rows.first().value(QStringLiteral("bmk_end")), QStringLiteral("-M1"));
 	}
 };
 

@@ -36,6 +36,20 @@
 #include <algorithm>
 #include <utility>
 
+namespace {
+	/**
+		@return @p value with the IEC 81346 sign @p sign in front of it,
+		unless it already starts with that sign: a label typed as "-K1"
+		stays "-K1", not "--K1".
+	*/
+	QString withSign(QChar sign, const QString &value)
+	{
+		if (value.startsWith(sign))
+			return value;
+		return sign + value;
+	}
+}
+
 namespace autonum
 {
 	/**
@@ -332,11 +346,11 @@ namespace autonum
 			//each segment omitted when its underlying value is empty.
 		QString structure_id_full;
 		if (!plant_value.isEmpty())
-			structure_id_full += "=" + plant_value;
+			structure_id_full += withSign(QLatin1Char('='), plant_value);
 		if (!location_value.isEmpty())
-			structure_id_full += "+" + location_value;
+			structure_id_full += withSign(QLatin1Char('+'), location_value);
 		if (!label_value.isEmpty())
-			structure_id_full += "-" + label_value;
+			structure_id_full += withSign(QLatin1Char('-'), label_value);
 
 			//Reduced form relative to the page (IEC 81346's own allowance for
 			//dropping higher-level parts already implied by context): the =/+
@@ -344,11 +358,11 @@ namespace autonum
 			//block, since an empty value already resolves to that value.
 		QString structure_id;
 		if (!plant_value.isEmpty() && plant_value != diagram_plant)
-			structure_id += "=" + plant_value;
+			structure_id += withSign(QLatin1Char('='), plant_value);
 		if (!location_value.isEmpty() && location_value != diagram_location)
-			structure_id += "+" + location_value;
+			structure_id += withSign(QLatin1Char('+'), location_value);
 		if (!label_value.isEmpty())
-			structure_id += "-" + label_value;
+			structure_id += withSign(QLatin1Char('-'), label_value);
 
 		str.replace("%{label}", label_value);
 		str.replace("%{plant}", own_plant);
