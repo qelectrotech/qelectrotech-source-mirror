@@ -272,3 +272,33 @@ QVector<TerminalElement *> ElementProvider::freeTerminal() const
 
 	return vector_;
 }
+
+/**
+ * @brief ElementProvider::joinsWiresOnly
+ * @return true for a corner or a T-junction: a symbol of
+ * the terminal kind that only joins wires on the folio and is no terminal
+ * block. A T-junction is told by its three terminals (see
+ * Element::dotPoint()); one with a label counts as a terminal block.
+ */
+bool ElementProvider::joinsWiresOnly(const Element *element)
+{
+	if (!element)
+		return false;
+	if (element->isCorner())
+		return true;
+	return element->dotPoint().has_value()
+			&& const_cast<Element *>(element)->actualLabel().isEmpty();
+}
+
+/**
+ * @brief ElementProvider::freeTerminalBlocks
+ * @return the free terminals of freeTerminal() that are terminal blocks
+ */
+QVector<TerminalElement *> ElementProvider::freeTerminalBlocks() const
+{
+	QVector<TerminalElement *> vector_;
+	for (TerminalElement *te : freeTerminal())
+		if (!joinsWiresOnly(te))
+			vector_.append(te);
+	return vector_;
+}
