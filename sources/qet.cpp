@@ -26,6 +26,7 @@
 #include <QBuffer>
 #include <QColorDialog>
 #include <QGraphicsSceneContextMenuEvent>
+#include <QGraphicsItem>
 #include <QAction>
 #include <QDialog>
 #include <QFileInfo>
@@ -1022,4 +1023,12 @@ void QET::loadCustomColors()
 
 	for (int i = 0; i < 16; i++)
 		QColorDialog::setCustomColor(i, colors[i]);
+}
+
+QPointF QET::sceneStepInParent(const QGraphicsItem *item, const QPointF &step)
+{
+	const QGraphicsItem *parent = item ? item->parentItem() : nullptr;
+	if (!parent)
+		return step;
+	return parent->mapFromScene(step) - parent->mapFromScene(QPointF(0, 0));
 }

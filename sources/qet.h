@@ -24,6 +24,7 @@
 #include <QObject>
 
 class QActionGroup;
+class QGraphicsItem;
 class QDialog;
 class QUrl;
 /**
@@ -222,6 +223,14 @@ namespace QET {
 			its own remembered size instead of fighting over one entry.
 		*/
 	void trackDialogGeometry(QDialog *dialog, const QString &key = QString());
+
+		/**
+			@return the change of pos() that moves @a item by @a step on
+			the folio: @a step itself without a parent, else @a step in
+			the coordinates of the parent, which may be turned (the text
+			of a turned symbol moves along the folio, not along the symbol)
+		*/
+	QPointF sceneStepInParent(const QGraphicsItem *item, const QPointF &step);
 }
 
 Q_DECLARE_METATYPE(QET::DepthOption)
