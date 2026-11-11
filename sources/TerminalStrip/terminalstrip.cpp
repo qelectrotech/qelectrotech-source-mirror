@@ -278,6 +278,9 @@ bool TerminalStrip::addTerminal(Element *terminal)
 		//Create a new single level physical terminal
 	auto raw_phy_ptr = new PhysicalTerminal(this, QVector<QSharedPointer<RealTerminal>>{casted_->realTerminal()});
 	m_physical_terminals.append(raw_phy_ptr->sharedRef());
+		//Like every other way of adding a terminal: what watches the
+		//strip (the project database) hears of it
+	emit orderChanged();
 
 	return true;
 }
