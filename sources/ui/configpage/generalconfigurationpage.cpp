@@ -182,6 +182,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_zoom_step_sb->setValue(DiagramView::zoomStep());
 	ui->m_terminal_conductor_color->setChecked(Terminal::takesConductorColor());
 	ui->m_strip_wires->setChecked(QetSettings::stripWiresShown());
+	ui->m_strip_sort_by_label->setChecked(QetSettings::stripSortedByLabel());
 	ui->m_new_folio_group_cb->setChecked(QetSettings::newFolioTakesPreviousGroup());
 	ui->m_macro_ask_labels_cb->setChecked(QetSettings::askLabelsPlacingMacro());
 	ui->m_conductor_properties_panel->setChecked(settings.value("diagrameditor/conductor_properties_panel", false).toBool());
@@ -476,6 +477,7 @@ void GeneralConfigurationPage::applyConf()
 				diagram->update();
 			}
 	}
+	QetSettings::setStripSortedByLabel(ui->m_strip_sort_by_label->isChecked());
 	WiringRules::setMasterEnabled(ui->m_wiring_rules_cb->isChecked());
 	{
 		const WiringRules::Settings before = WiringRules::applicationSettings();

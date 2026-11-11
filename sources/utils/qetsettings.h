@@ -83,6 +83,17 @@ namespace QetSettings
 	void setStripWiresShown(bool shown);
 
 	/**
+		Whether a terminal strip is sorted by the label of its terminals
+		("X1:2" before "X1:10") instead of the way the plan is drawn
+		(folio by folio, then left to right). Used when a strip is made
+		by the automatic assignment and by "Automatic position". Off by
+		default: the plan order, which keeps N and PE where they are
+		drawn.
+	*/
+	bool stripSortedByLabel();
+	void setStripSortedByLabel(bool by_label);
+
+	/**
 		@brief Free-text drawing conventions for this installation (grid,
 		flow direction, routing, tagging, grouping, ...), written once by
 		the user and read by every AI assistant that connects -- live or
