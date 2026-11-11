@@ -18,6 +18,8 @@
 	//Automatic connections lay the wires: they cannot be selected, and
 	//while they are on, the user draws no wires of their own
 #include "qetapptest.h"
+#include "autoconnect.h"
+#include "elementsmover.h"
 #include "ElementsCollection/xmlelementcollection.h"
 #include "factory/elementfactory.h"
 #include "qetgraphicsitem/conductor.h"
@@ -178,6 +180,36 @@ class tst_autoconnecthand : public QObject
 			Conductor *wire = from->conductors().first();
 			QCOMPARE(wire->terminal1 == from ? wire->terminal2 : wire->terminal1, named(middle, "s"));
 			QVERIFY(named(top, "s")->conductors().isEmpty());
+			m_diagram->project()->setLiveAutoConnect(false);
+		}
+
+			//Dragging a symbol: its automatic wire is shown while its ends
+			//still face each other in line, and hidden, not bent round, as
+			//soon as they do not; the drop removes it
+		void wireHiddenOutOfLine()
+		{
+			m_diagram->project()->setLiveAutoConnect(true);
+			Element *rise = place(QStringLiteral("rise"), QPointF(300, 1000));
+			Element *top = place(QStringLiteral("drop"), QPointF(300, 900));
+			QVERIFY(rise && top);
+			auto *placing = new QUndoCommand();
+			AutoConnect::update(m_diagram, {rise, top}, {}, placing);
+			m_diagram->undoStack().push(placing);
+			QCOMPARE(named(rise, "n")->conductors().size(), 1);
+			QPointer<Conductor> wire = named(rise, "n")->conductors().first();
+
+			m_diagram->clearSelection();
+			top->setSelected(true);
+			ElementsMover &mover = m_diagram->elementsMover();
+			mover.beginMovement(m_diagram);
+			mover.continueMovement(QPointF(0, -20));
+			QVERIFY2(wire->isVisible(), "still in line: shown");
+			mover.continueMovement(QPointF(30, 0));
+			QVERIFY2(!wire->isVisible(), "out of line: hidden");
+			mover.endMovement();
+			m_diagram->clearSelection();
+			QVERIFY2(!wire || !wire->scene(), "the drop removes it");
+			QVERIFY(named(rise, "n")->conductors().isEmpty());
 			m_diagram->project()->setLiveAutoConnect(false);
 		}
 };

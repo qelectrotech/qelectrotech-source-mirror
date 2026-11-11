@@ -248,6 +248,11 @@ void ElementsMover::applyMovement(const QPointF &movement)
 		conductor->updatePath();
 	}
 
+		//An automatic wire whose ends no longer face each other in line
+		//goes at the drop: it is not shown bent round meanwhile
+	for (const QPointer<Conductor> &c : std::as_const(m_preview_wires))
+		if (c) c->setVisible(AutoConnect::endsInLine(c));
+
 		//The cable lines he marked together with the elements come along
 		//by the very same step: one gesture moves the whole selection
 		//instead of the lines standing still while the elements go, or
@@ -695,6 +700,9 @@ void ElementsMover::cancelMovement()
 void ElementsMover::endPreview()
 {
 	for (const QPointer<Conductor> &c : std::as_const(m_preview_wires))
-		if (c) c->setPreview(false);
+		if (c) {
+			c->setPreview(false);
+			c->setVisible(true);
+		}
 	m_preview_wires.clear();
 }

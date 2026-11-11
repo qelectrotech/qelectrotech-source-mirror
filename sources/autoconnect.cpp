@@ -268,6 +268,16 @@ void connectAll(State &s, const QSet<Terminal *> &candidates, QUndoCommand *pare
 
 } // namespace
 
+bool AutoConnect::endsInLine(const Conductor *conductor)
+{
+	if (!conductor || !conductor->terminal1 || !conductor->terminal2)
+		return false;
+	const Terminal *a = conductor->terminal1;
+	const Terminal *b = conductor->terminal2;
+	return Qet::isOpposed(a->orientation(), b->orientation())
+			&& ahead(a, b->dockConductor()) >= 0;
+}
+
 bool AutoConnect::isOn(const Diagram *diagram)
 {
 	return diagram && diagram->project() && diagram->project()->liveAutoConnect();
