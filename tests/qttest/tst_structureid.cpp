@@ -33,10 +33,12 @@
 #include <QtTest>
 
 /**
-	%{structure_id} composes =plant+location-label (IEC 81346). An element
-	that has no plant or location of its own takes the one of its folio's
-	title block, and every part that is empty is left out. %{plant} and
-	%{location} are not affected: they show the element's own value only.
+	%{structure_id_full} composes =plant+location-label (IEC 81346). An
+	element that has no plant or location of its own takes the one of its
+	folio's title block, and every part that is empty is left out.
+	%{structure_id} is the same, without the =plant or +location part that
+	equals the folio's own. %{plant} and %{location} are not affected: they
+	show the element's own value only.
 */
 class tst_structureid : public QObject
 {
@@ -115,8 +117,53 @@ private slots:
 		Element *element = symbol(diagram);
 		QVERIFY(element);
 
-		QCOMPARE(text(QStringLiteral("%{structure_id}"), info("X1"), element),
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("X1"), element),
 				 QStringLiteral("=FACTORY+CP1-X1"));
+	}
+
+	void sameAsTheFolioIsLeftOut()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("E1"), QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+
+			//No own value, or the same value as the folio: just the label
+		QCOMPARE(text(QStringLiteral("%{structure_id}"), info("K1"), element),
+				 QStringLiteral("-K1"));
+		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+					  info("K1", QStringLiteral("E1"), QStringLiteral("CP1")), element),
+				 QStringLiteral("-K1"));
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"),
+					  info("K1", QStringLiteral("E1"), QStringLiteral("CP1")), element),
+				 QStringLiteral("=E1+CP1-K1"));
+	}
+
+	void differentFromTheFolioIsKept()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("E1"), QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+
+			//Own plant differs: =OTHER kept, +CP1 (the folio's) left out
+		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+					  info("K1", QStringLiteral("OTHER")), element),
+				 QStringLiteral("=OTHER-K1"));
+			//Own location differs: +FIELD kept, =E1 left out
+		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+					  info("K1", {}, QStringLiteral("FIELD")), element),
+				 QStringLiteral("+FIELD-K1"));
+			//Both differ
+		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+					  info("K1", QStringLiteral("OTHER"), QStringLiteral("FIELD")), element),
+				 QStringLiteral("=OTHER+FIELD-K1"));
+			//The full form never leaves a part out
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"),
+					  info("K1", QStringLiteral("OTHER")), element),
+				 QStringLiteral("=OTHER+CP1-K1"));
 	}
 
 	void plantAndLocationTokensAreUnchanged()
@@ -134,7 +181,7 @@ private slots:
 					  info("X1", QStringLiteral("P"), QStringLiteral("L")), element),
 				 QStringLiteral("P|L"));
 		QCOMPARE(text(QStringLiteral("%{plant}"), info("X1"), element), QString());
-		QCOMPARE(text(QStringLiteral("%{structure_id}"), info("X1"), element),
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("X1"), element),
 				 QStringLiteral("=E1+CP1-X1"));
 	}
 
@@ -147,7 +194,7 @@ private slots:
 		QVERIFY(element);
 
 			//A device drawn on the CP1 folio that is mounted in the field
-		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"),
 					  info("S5", {}, QStringLiteral("FIELD")), element),
 				 QStringLiteral("=FACTORY+FIELD-S5"));
 		QCOMPARE(text(QStringLiteral("%{plant}|%{location}"),
@@ -166,10 +213,12 @@ private slots:
 		Element *element = symbol(diagram);
 		QVERIFY(element);
 
-		QCOMPARE(text(QStringLiteral("%{structure_id}"), info("K1"), element),
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("K1"), element),
 				 QStringLiteral("+CP1-K1"));
-		QCOMPARE(text(QStringLiteral("%{structure_id}"), info({}), element),
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info({}), element),
 				 QStringLiteral("+CP1"));
+		QCOMPARE(text(QStringLiteral("%{structure_id}"), info({}), element),
+				 QString());
 	}
 
 	void databaseSaysWhatTheDrawingSays()
@@ -208,9 +257,13 @@ private slots:
 	{
 			//Callers with no element (e.g. a symbol in the element editor)
 			//keep the old behaviour: no folio to fall back to.
-		QCOMPARE(text(QStringLiteral("%{plant}|%{location}|%{structure_id}"),
+		QCOMPARE(text(QStringLiteral("%{plant}|%{location}|%{structure_id}"
+									 "|%{structure_id_full}"),
 					  info("Q1"), nullptr),
-				 QStringLiteral("||-Q1"));
+				 QStringLiteral("||-Q1|-Q1"));
+		QCOMPARE(text(QStringLiteral("%{structure_id}|%{structure_id_full}"),
+					  info("Q1", QStringLiteral("P"), QStringLiteral("L")), nullptr),
+				 QStringLiteral("=P+L-Q1|=P+L-Q1"));
 	}
 };
 

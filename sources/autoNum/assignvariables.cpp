@@ -288,15 +288,18 @@ namespace autonum
 		%{plant} and %{location} are replaced by the element's own
 		value only; they never fall back to the folio, so existing
 		projects look as they always did.
-		%{structure_id} composes =plant+location-label (IEC 81346);
+		%{structure_id_full} composes =plant+location-label (IEC 81346);
 		there an empty plant or location is taken from the containing
 		diagram's title block installation (=) / location (+) fields,
 		and an empty part is left out.
+		%{structure_id} is the same, reduced by dropping the =plant
+		or +location part that equals the diagram's own title block
+		(IEC 81346's allowance for a designation implied by context).
 		@param formula
 		@param dc
 		@param elmt the element the formula belongs to, if any;
-		used for the folio fallback of %{structure_id} and for the
-		%{prefix} token. May be null.
+		used for the folio fallback of %{structure_id} and
+		%{structure_id_full} and for the %{prefix} token. May be null.
 		@return
 	*/
 	QString AssignVariables::replaceVariable(const QString &formula,
@@ -310,7 +313,7 @@ namespace autonum
 		const QString own_plant = dc.value("plant").toString();
 		const QString own_location = dc.value("location").toString();
 
-			//Only %{structure_id} falls back to the folio
+			//Only the structure_id tokens fall back to the folio
 		QString plant_value = own_plant;
 		if (plant_value.isEmpty() && diagram)
 			plant_value = diagram->border_and_titleblock.plant();
@@ -322,12 +325,27 @@ namespace autonum
 		QString prefix_value = elmt ? elmt->getPrefix() : QString();
 		QString label_value = dc.value("label").toString();
 
-			//Composite IEC 81346 reference designation (=plant+location-label),
+		QString diagram_plant = diagram ? diagram->border_and_titleblock.plant() : QString();
+		QString diagram_location = diagram ? diagram->border_and_titleblock.locmach() : QString();
+
+			//Full IEC 81346 reference designation (=plant+location-label),
 			//each segment omitted when its underlying value is empty.
-		QString structure_id;
+		QString structure_id_full;
 		if (!plant_value.isEmpty())
-			structure_id += "=" + plant_value;
+			structure_id_full += "=" + plant_value;
 		if (!location_value.isEmpty())
+			structure_id_full += "+" + location_value;
+		if (!label_value.isEmpty())
+			structure_id_full += "-" + label_value;
+
+			//Reduced form relative to the page (IEC 81346's own allowance for
+			//dropping higher-level parts already implied by context): the =/+
+			//segments are also omitted when they match the diagram's own title
+			//block, since an empty value already resolves to that value.
+		QString structure_id;
+		if (!plant_value.isEmpty() && plant_value != diagram_plant)
+			structure_id += "=" + plant_value;
+		if (!location_value.isEmpty() && location_value != diagram_location)
 			structure_id += "+" + location_value;
 		if (!label_value.isEmpty())
 			structure_id += "-" + label_value;
@@ -337,6 +355,7 @@ namespace autonum
 		str.replace("%{location}", own_location);
 		str.replace("%{prefix}", prefix_value);
 		str.replace("%{structure_id}", structure_id);
+		str.replace("%{structure_id_full}", structure_id_full);
 		str.replace("%{comment}", dc.value("comment").toString());
 		str.replace("%{description}", dc.value("description").toString());
 		str.replace("%{designation}", dc.value("designation").toString());
