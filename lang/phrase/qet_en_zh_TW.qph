@@ -1,0 +1,158 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="en" language="zh_TW">
+<phrase>
+    <source>Sheet</source>
+    <target>圖頁</target>
+    <definition>a page of a project (folio)</definition>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>圖頁</target>
+    <definition>same as Sheet: a page of a project</definition>
+</phrase>
+<phrase>
+    <source>Conductor</source>
+    <target>導線</target>
+    <definition>a drawn connection between two terminals on a folio</definition>
+</phrase>
+<phrase>
+    <source>Wire</source>
+    <target>導線</target>
+    <definition>a single physical wire, as opposed to a cable</definition>
+</phrase>
+<phrase>
+    <source>Terminal</source>
+    <target>端子</target>
+    <definition>connection point of a symbol (or a terminal of a terminal strip)</definition>
+</phrase>
+<phrase>
+    <source>Terminal strip</source>
+    <target>端子排</target>
+    <definition>row of terminals in a cabinet (X1, X2…)</definition>
+</phrase>
+<phrase>
+    <source>Element</source>
+    <target>元件</target>
+    <definition>a symbol placed on a folio or stored in a collection</definition>
+</phrase>
+<phrase>
+    <source>Symbol</source>
+    <target>符號</target>
+    <definition>graphic symbol of a device</definition>
+</phrase>
+<phrase>
+    <source>Macro</source>
+    <target>宏</target>
+    <definition>a saved group of symbols and conductors placed in one go</definition>
+</phrase>
+<phrase>
+    <source>Cable</source>
+    <target>線纜</target>
+    <definition>multi-core cable</definition>
+</phrase>
+<phrase>
+    <source>Core</source>
+    <target>芯線</target>
+    <definition>one conductor inside a cable</definition>
+</phrase>
+<phrase>
+    <source>Folio report</source>
+    <target>圖頁引用</target>
+    <definition>symbol that continues a conductor on another folio</definition>
+</phrase>
+<phrase>
+    <source>Cross-reference</source>
+    <target>交叉引用</target>
+    <definition>reference between master and slave symbols (coil and its contacts)</definition>
+</phrase>
+<phrase>
+    <source>Title block</source>
+    <target>標題欄</target>
+    <definition>the frame box with project, folio and author data</definition>
+</phrase>
+<phrase>
+    <source>Bill of materials</source>
+    <target>物料清單</target>
+    <definition>list of the devices and parts of a project</definition>
+</phrase>
+<phrase>
+    <source>Grid</source>
+    <target>網格</target>
+    <definition>the dot grid of the drawing area</definition>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>參考線</target>
+    <definition>alignment guide lines of the drawing area</definition>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>標籤</target>
+    <definition>device designation, e.g. -K1</definition>
+</phrase>
+<phrase>
+    <source>Potential</source>
+    <target>電勢</target>
+    <definition>electric potential shared by connected conductors</definition>
+</phrase>
+<phrase>
+    <source>Bridge</source>
+    <target>跨接</target>
+    <definition>jumper linking terminals of a terminal strip</definition>
+</phrase>
+<phrase>
+    <source>Plant</source>
+    <target>裝置</target>
+    <definition>IEC 81346 plant designation (=)</definition>
+</phrase>
+<phrase>
+    <source>Location</source>
+    <target>位置</target>
+    <definition>IEC 81346 location designation (+)</definition>
+</phrase>
+<phrase>
+    <source>Function</source>
+    <target>功能</target>
+    <definition>function of a device or of a part of the plant</definition>
+</phrase>
+<phrase>
+    <source>Device</source>
+    <target>裝置</target>
+    <definition>physical piece of equipment, e.g. a contactor</definition>
+</phrase>
+<phrase>
+    <source>Master</source>
+    <target>主</target>
+    <definition>master symbol of a cross-reference (e.g. a coil)</definition>
+</phrase>
+<phrase>
+    <source>Slave</source>
+    <target>從</target>
+    <definition>slave symbol of a cross-reference (e.g. a contact)</definition>
+</phrase>
+<phrase>
+    <source>Auto numbering</source>
+    <target>自動編號</target>
+    <definition>automatic numbering of labels, conductors or folios</definition>
+</phrase>
+<phrase>
+    <source>Coil</source>
+    <target>線圈</target>
+    <definition>relay or contactor coil</definition>
+</phrase>
+<phrase>
+    <source>Contact</source>
+    <target>觸點</target>
+    <definition>relay or contactor contact</definition>
+</phrase>
+<phrase>
+    <source>Shield</source>
+    <target>遮蔽</target>
+    <definition>cable shield (screen)</definition>
+</phrase>
+<phrase>
+    <source>Wire number</source>
+    <target>導線編號</target>
+    <definition>number marked on a wire</definition>
+</phrase>
+</QPH>

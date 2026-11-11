@@ -2618,4 +2618,44 @@ Här är de senaste meddelandena som loggades före avslutningen – du kan spar
     <source>Are you sure you want to delete the selected %1 sheets ?</source>
     <target>Är du säker på att du vill ta bort de %1 markerade bladen?</target>
 </phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Blad</target>
+    <definition>same as Sheet: a page of a project</definition>
+</phrase>
+<phrase>
+    <source>Symbol</source>
+    <target>Symbol</target>
+    <definition>graphic symbol of a device</definition>
+</phrase>
+<phrase>
+    <source>Macro</source>
+    <target>Makro</target>
+    <definition>a saved group of symbols and conductors placed in one go</definition>
+</phrase>
+<phrase>
+    <source>Grid</source>
+    <target>Rutnät</target>
+    <definition>the dot grid of the drawing area</definition>
+</phrase>
+<phrase>
+    <source>Device</source>
+    <target>Apparat</target>
+    <definition>physical piece of equipment, e.g. a contactor</definition>
+</phrase>
+<phrase>
+    <source>Coil</source>
+    <target>Spole</target>
+    <definition>relay or contactor coil</definition>
+</phrase>
+<phrase>
+    <source>Shield</source>
+    <target>Skärm</target>
+    <definition>cable shield (screen)</definition>
+</phrase>
+<phrase>
+    <source>Wire number</source>
+    <target>Förbindningsnummer</target>
+    <definition>number marked on a wire</definition>
+</phrase>
 </QPH>

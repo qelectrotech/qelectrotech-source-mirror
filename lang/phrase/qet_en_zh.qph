@@ -914,4 +914,89 @@ Do you still want to link this slave contact?</source>
     <target>变压器</target>
     <definition>transformer</definition>
 </phrase>
+<phrase>
+    <source>Folio</source>
+    <target>图页</target>
+    <definition>same as Sheet: a page of a project</definition>
+</phrase>
+<phrase>
+    <source>Symbol</source>
+    <target>符号</target>
+    <definition>graphic symbol of a device</definition>
+</phrase>
+<phrase>
+    <source>Macro</source>
+    <target>宏</target>
+    <definition>a saved group of symbols and conductors placed in one go</definition>
+</phrase>
+<phrase>
+    <source>Core</source>
+    <target>芯线</target>
+    <definition>one conductor inside a cable</definition>
+</phrase>
+<phrase>
+    <source>Folio report</source>
+    <target>图页引用</target>
+    <definition>symbol that continues a conductor on another folio</definition>
+</phrase>
+<phrase>
+    <source>Cross-reference</source>
+    <target>交叉引用</target>
+    <definition>reference between master and slave symbols (coil and its contacts)</definition>
+</phrase>
+<phrase>
+    <source>Bill of materials</source>
+    <target>物料清单</target>
+    <definition>list of the devices and parts of a project</definition>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>参考线</target>
+    <definition>alignment guide lines of the drawing area</definition>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>标签</target>
+    <definition>device designation, e.g. -K1</definition>
+</phrase>
+<phrase>
+    <source>Bridge</source>
+    <target>跨接</target>
+    <definition>jumper linking terminals of a terminal strip</definition>
+</phrase>
+<phrase>
+    <source>Plant</source>
+    <target>装置</target>
+    <definition>IEC 81346 plant designation (=)</definition>
+</phrase>
+<phrase>
+    <source>Location</source>
+    <target>位置</target>
+    <definition>IEC 81346 location designation (+)</definition>
+</phrase>
+<phrase>
+    <source>Function</source>
+    <target>功能</target>
+    <definition>function of a device or of a part of the plant</definition>
+</phrase>
+<phrase>
+    <source>Device</source>
+    <target>设备</target>
+    <definition>physical piece of equipment, e.g. a contactor</definition>
+</phrase>
+<phrase>
+    <source>Auto numbering</source>
+    <target>自动编号</target>
+    <definition>automatic numbering of labels, conductors or folios</definition>
+</phrase>
+<phrase>
+    <source>Shield</source>
+    <target>屏蔽</target>
+    <definition>cable shield (screen)</definition>
+</phrase>
+<phrase>
+    <source>Wire number</source>
+    <target>导线编号</target>
+    <definition>number marked on a wire</definition>
+</phrase>
 </QPH>

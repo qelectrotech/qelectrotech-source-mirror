@@ -8148,4 +8148,64 @@ Todos os elementos e pastas contidos nesta pasta serão eliminados.</target>
     <target>transformador</target>
     <definition>transformer</definition>
 </phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Folha</target>
+    <definition>same as Sheet: a page of a project</definition>
+</phrase>
+<phrase>
+    <source>Terminal strip</source>
+    <target>Régua de terminais</target>
+    <definition>row of terminals in a cabinet (X1, X2…)</definition>
+</phrase>
+<phrase>
+    <source>Symbol</source>
+    <target>Símbolo</target>
+    <definition>graphic symbol of a device</definition>
+</phrase>
+<phrase>
+    <source>Macro</source>
+    <target>Macro</target>
+    <definition>a saved group of symbols and conductors placed in one go</definition>
+</phrase>
+<phrase>
+    <source>Core</source>
+    <target>Fio</target>
+    <definition>one conductor inside a cable</definition>
+</phrase>
+<phrase>
+    <source>Folio report</source>
+    <target>Referência de folha</target>
+    <definition>symbol that continues a conductor on another folio</definition>
+</phrase>
+<phrase>
+    <source>Bill of materials</source>
+    <target>Lista de materiais</target>
+    <definition>list of the devices and parts of a project</definition>
+</phrase>
+<phrase>
+    <source>Bridge</source>
+    <target>Ponte</target>
+    <definition>jumper linking terminals of a terminal strip</definition>
+</phrase>
+<phrase>
+    <source>Device</source>
+    <target>Aparelho</target>
+    <definition>physical piece of equipment, e.g. a contactor</definition>
+</phrase>
+<phrase>
+    <source>Coil</source>
+    <target>Bobina</target>
+    <definition>relay or contactor coil</definition>
+</phrase>
+<phrase>
+    <source>Shield</source>
+    <target>Blindagem</target>
+    <definition>cable shield (screen)</definition>
+</phrase>
+<phrase>
+    <source>Wire number</source>
+    <target>Número do fio</target>
+    <definition>number marked on a wire</definition>
+</phrase>
 </QPH>
