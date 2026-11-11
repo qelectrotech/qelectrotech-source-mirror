@@ -1152,7 +1152,7 @@ Obs! Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE automatisk numrering, de st
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="36"/>
         <source>Format as a part list</source>
-        <translation>Formatera som materialförteckning</translation>
+        <translation>Formatera som stycklista</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="46"/>
@@ -1182,7 +1182,7 @@ Obs! Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE automatisk numrering, de st
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="78"/>
         <source>parts list_</source>
-        <translation>förteckning_</translation>
+        <translation>stycklista_</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="79"/>
@@ -1204,7 +1204,7 @@ Obs! Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE automatisk numrering, de st
         <location filename="../sources/ui/bomexportdialog.cpp" line="87"/>
         <source>Unable to save the parts list to %1.
 %2</source>
-        <translation>Det gick inte att spara förteckningen i %1.
+        <translation>Det gick inte att spara stycklistan i %1.
 %2</translation>
     </message>
     <message>
@@ -6329,7 +6329,7 @@ Symbolens visningsnamn ändras separat i symbolens egenskaper.</translation>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="81"/>
         <source>Choose an item from the materials list</source>
         <extracomment>tooltip of the button opening the material file; it fills the fields of this block from a catalogue entry</extracomment>
-        <translation>Välj en artikel ur materiallistan</translation>
+        <translation>Välj en artikel ur artikellistan</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.cpp" line="73"/>
@@ -6377,7 +6377,7 @@ Symbolens visningsnamn ändras separat i symbolens egenskaper.</translation>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="500"/>
         <source>No materials list</source>
-        <translation>Materiallista saknas</translation>
+        <translation>Artikellista saknas</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="501"/>
@@ -6386,7 +6386,7 @@ Symbolens visningsnamn ändras separat i symbolens egenskaper.</translation>
 
 Create it?</source>
         <comment>message asking to create the material file</comment>
-        <translation>Det finns ingen materiallista på denna plats:
+        <translation>Det finns ingen artikellista på denna plats:
 %1
 
 Vill du skapa den?</translation>
@@ -9354,13 +9354,13 @@ som du skapar. Text- och nummerinmatningar är
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="948"/>
         <source>Materials list file</source>
-        <translation>Fil med materiallista</translation>
+        <translation>Fil med artikellista</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="957"/>
         <source>Materials list used to fill in a symbol&apos;s items</source>
         <extracomment>tooltip of the material file path field</extracomment>
-        <translation>Materiallista som används för att fylla i en symbols artiklar</translation>
+        <translation>Artikellista som används för att fylla i en symbols artiklar</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="963"/>
@@ -10015,7 +10015,7 @@ har inga undermappar, så det finns inget prefix att konfigurera.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1007"/>
         <source>Select the materials list file</source>
-        <translation>Välj filen med materiallistan</translation>
+        <translation>Välj filen med artikellistan</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1009"/>
@@ -10028,7 +10028,7 @@ har inga undermappar, så det finns inget prefix att konfigurera.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1030"/>
         <source>Create the materials list file</source>
-        <translation>Skapa filen med materiallistan</translation>
+        <translation>Skapa filen med artikellistan</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1048"/>
@@ -12052,7 +12052,7 @@ Vill du ändå länka denna slavkontakt?</translation>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="623"/>
         <source>Nothing to receive the materials list.</source>
-        <translation>Inget mål för materiallistan.</translation>
+        <translation>Inget mål för artikellistan.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="794"/>
@@ -12070,7 +12070,7 @@ Vill du ändå länka denna slavkontakt?</translation>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="20"/>
         <source>Materials list</source>
-        <translation>Materiallista</translation>
+        <translation>Artikellista</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="31"/>
@@ -15800,7 +15800,7 @@ Håll ned Ctrl under flytten för att placera fritt.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1268"/>
         <source>Add a nomenclature</source>
-        <translation>Lägg till en förteckning</translation>
+        <translation>Lägg till en stycklista</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1277"/>
@@ -20241,7 +20241,7 @@ Vill du ersätta den?</translation>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="50"/>
         <source>Add a nomenclature</source>
-        <translation>Lägg till en förteckning</translation>
+        <translation>Lägg till en stycklista</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="69"/>
