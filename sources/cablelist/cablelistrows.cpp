@@ -24,6 +24,8 @@
 #include <qetgraphicsitem/conductor.h>
 #include <qetgraphicsitem/element.h>
 #include <qetgraphicsitem/terminal.h>
+#include <qetgraphicsitem/terminalelement.h>
+#include <TerminalStrip/terminalstrip.h>
 #include <qetinformation.h>
 #include <qetproject.h>
 
@@ -50,6 +52,11 @@ struct CableEnd
 	QPointF scene;
 	Element *element = nullptr;
 	QUuid element_uuid;
+		/// What the end lands on: the symbol, or the whole terminal strip
+		/// when the symbol is one of its terminals
+	QString piece;
+		/// The label of that piece: the symbol's, or the strip's name
+	QString piece_label;
 	QString tie;
 
 	bool isLanding() const {return !element_uuid.isNull();}
@@ -133,11 +140,31 @@ QString locmachOf(const CableEnd &end)
 */
 QString labelOfEnd(const CableEnd &end)
 {
-	if (!end.element) {
-		return QString();
-	}
-	return end.element->elementInformations()
+	return end.element ? end.piece_label : QString();
+}
+
+/**
+	@brief setPiece
+	The cores of a cable that land on the terminals of one strip land on
+	one piece, the strip: a cable from -X1 to a motor ends at -X1 and at
+	the motor, not at -X1:1 and -X1:2. A terminal not yet in a strip
+	belongs to the strip its label names ("X1:2" is in "X1").
+*/
+void setPiece(CableEnd &end)
+{
+	const QString label = end.element->elementInformations()
 			.value(QETInformation::ELMT_LABEL).toString();
+	end.piece = end.element_uuid.toString();
+	end.piece_label = label;
+	if (auto *terminal = qobject_cast<TerminalElement *>(end.element)) {
+		if (TerminalStrip *strip = terminal->parentTerminalStrip()) {
+			end.piece = strip->uuid().toString();
+			end.piece_label = strip->name();
+		} else if (label.contains(QLatin1Char(':'))) {
+			end.piece_label = label.section(QLatin1Char(':'), 0, 0);
+			end.piece = QStringLiteral("strip:") + end.piece_label;
+		}
+	}
 }
 
 } // namespace
@@ -252,6 +279,7 @@ QVector<QMap<QString, QString>> CableList::rows(QETProject *project)
 				end.element = element;
 				end.element_uuid = element->uuid();
 				end.tie = conductor->uuid().toString();
+				setPiece(end);
 				arrivals[properties.m_cable_uuid].append(end);
 			}
 		}
@@ -275,12 +303,12 @@ QVector<QMap<QString, QString>> CableList::rows(QETProject *project)
 	{
 			//Several cores landing on one piece are one end: the highest
 			//of their landings speaks for it.
-		QHash<QUuid, CableEnd> grouped;
+		QHash<QString, CableEnd> grouped;
 		for (const CableEnd &end : arrivals.value(cable->uuid()))
 		{
-			auto it = grouped.find(end.element_uuid);
+			auto it = grouped.find(end.piece);
 			if (it == grouped.end() || byPlan(end, it.value())) {
-				grouped.insert(end.element_uuid, end);
+				grouped.insert(end.piece, end);
 			}
 		}
 		QList<CableEnd> landings = grouped.values();
