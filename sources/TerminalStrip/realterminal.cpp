@@ -73,6 +73,120 @@ namespace
 		}
 		return cores;
 	}
+
+		/**
+		 * What the far end of a wire standing at @p terminal is called:
+		 * a terminal of a strip by its strip and its position on it
+		 * ("X1:7"), anything else by its element and its terminal
+		 * ("K1:A1").
+		 */
+	QString endDesignation(Terminal *terminal)
+	{
+		if (!terminal) {
+			return QString();
+		}
+		Element *element = terminal->parentElement();
+		if (!element) {
+			return QString();
+		}
+
+		auto *terminal_element = qobject_cast<TerminalElement *>(element);
+		if (terminal_element)
+		{
+				//A terminal says it in its own label -- the very number
+				//the strip draws on it ("X3:29"). The position it stands
+				//at is a different numbering, which runs out of step with
+				//the labels as soon as one of them is reordered, so it is
+				//only used for a terminal which has no label at all.
+				//Taken as it stands: it is the very thing the strip
+				//writes in the box of this terminal, so the two can
+				//never disagree about which terminal is meant
+			const QString own = element->actualLabel();
+			if (!own.isEmpty()) {
+				return own;
+			}
+
+			if (TerminalStrip *strip = terminal_element->parentTerminalStrip())
+			{
+				const auto real = terminal_element->realTerminal();
+				const auto physical = real ? real->physicalTerminal() : nullptr;
+				const QString number = physical
+					? QString::number(physical->pos() + 1) : QString();
+				if (!strip->name().isEmpty() && !number.isEmpty()) {
+					return strip->name() + QLatin1Char(':') + number;
+				}
+				if (!number.isEmpty()) {
+					return number;
+				}
+			}
+		}
+
+		const QString name = terminal->name();
+		QString label = element->actualLabel();
+		if (label.isEmpty()) {
+			return name;
+		}
+		if (name.isEmpty()) {
+			return label;
+		}
+		return label + QLatin1Char(':') + name;
+	}
+
+		/**
+		 * Whether @p properties says the conductor is a core of a cable:
+		 * the reference the cable gave it, or -- in the projects saved
+		 * before that reference existed -- the text of the cable field,
+		 * which is generated from the cable and never typed in.
+		 */
+	bool isCableCore(const ConductorProperties &properties)
+	{
+		return !properties.m_cable_uuid.isNull()
+			|| !properties.m_cable.isEmpty();
+	}
+
+		/**
+		 * The wires of @p element which are no core of a cable: a cable
+		 * says where its cores go and what they are made of itself, and
+		 * is drawn under the strip with the rest of the cable. Every
+		 * terminal of the element may carry one, so a terminal with a
+		 * twin sleeve comes back with two of them.
+		 */
+	QList<Conductor *> ownWiresOf(Element *element)
+	{
+		QList<Conductor *> wires;
+		if (!element) {
+			return wires;
+		}
+		for (const auto terminal : element->terminals())
+		{
+			for (const auto conductor : terminal->conductors())
+			{
+				if (!isCableCore(conductor->ownProperties())) {
+					wires << conductor;
+				}
+			}
+		}
+		return wires;
+	}
+
+		/**
+		 * What @p conductor is made of, in the order type, colour and
+		 * section, the empty ones left out.
+		 */
+	QStringList definitionOf(const Conductor *conductor)
+	{
+		const ConductorProperties properties = conductor->ownProperties();
+		QStringList definition;
+		for (const QString &value : {properties.m_conductor_type,
+					     properties.m_wire_color,
+					     properties.m_wire_section})
+		{
+			if (!value.isEmpty()) {
+				definition << value;
+			}
+		}
+		return definition;
+	}
 }
 
 /**
@@ -453,6 +567,45 @@ QVector<QString> RealTerminal::cableTarget() const
 		}
 	}
 	return QVector<QString>();
+}
+
+/**
+ * @brief RealTerminal::wires
+ * @return one entry per wire of this terminal which is no core of a
+ * cable: (what the other end is called, what the wire is made of).
+ * A terminal with a twin sleeve carries two wires and comes back with
+ * two entries; empty when there is none.
+ */
+QVector<QPair<QString, QStringList>> RealTerminal::wires() const
+{
+	QVector<QPair<QString, QStringList>> result;
+	if (m_spare || m_element.isNull()) {
+		return result;
+	}
+	for (const Conductor *conductor : ownWiresOf(m_element.data()))
+	{
+		if (!conductor->terminal1 || !conductor->terminal2) {
+			continue;
+		}
+			//The end which does not hang on this element is the
+			//far end the wire is named by
+		Terminal *attached = conductor->terminal1->parentElement() == m_element
+			? conductor->terminal1 : conductor->terminal2;
+		Terminal *far_end = attached == conductor->terminal1
+			? conductor->terminal2 : conductor->terminal1;
+		result.append({endDesignation(far_end), definitionOf(conductor)});
+	}
+	return result;
+}
+
+/**
+ * @brief RealTerminal::hasWire
+ * @return true when this terminal has a wire of its own which is no core
+ * of a cable -- a cable is drawn under the strip with the rest of itself
+ */
+bool RealTerminal::hasWire() const
+{
+	return !ownWiresOf(m_element.data()).isEmpty();
 }
 
 /**

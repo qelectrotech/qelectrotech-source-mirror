@@ -528,6 +528,9 @@ target_compile_definitions(tst_conductordefinitionmark PRIVATE
 # Two different symbols carrying the same uuid (one copied from the other and
 # redrawn) each keep their own drawing (#1789).
 qet_add_app_test(tst_symbolpicturecache tst_symbolpicturecache.cpp)
+# What a terminal strip says about the wires which end at it, and how
+# long the stub it draws above itself has to be for it.
+qet_add_app_test(tst_stripwires tst_stripwires.cpp)
 # A copy of a conductor definition keeps the point its right-aligned texts
 # stand on, as a copy of a folio report does.
 qet_add_app_test(tst_conductordefcopy tst_conductordefcopy.cpp)

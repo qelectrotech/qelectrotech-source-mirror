@@ -181,6 +181,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_zoom_step_sb->setValue(DiagramView::zoomStep());
 	ui->m_terminal_conductor_color->setChecked(Terminal::takesConductorColor());
+	ui->m_strip_wires->setChecked(QetSettings::stripWiresShown());
 	ui->m_new_folio_group_cb->setChecked(QetSettings::newFolioTakesPreviousGroup());
 	ui->m_macro_ask_labels_cb->setChecked(QetSettings::askLabelsPlacingMacro());
 	ui->m_conductor_properties_panel->setChecked(settings.value("diagrameditor/conductor_properties_panel", false).toBool());
@@ -461,6 +462,19 @@ void GeneralConfigurationPage::applyConf()
 		for (QETProject *project : QETApp::registeredProjects())
 			for (Diagram *diagram : project->diagrams())
 				diagram->update();
+	}
+	if (ui->m_strip_wires->isChecked() != QetSettings::stripWiresShown()) {
+			//The wires are drawn by the strip itself, so every folio
+			//open has to be drawn again
+		QetSettings::setStripWiresShown(ui->m_strip_wires->isChecked());
+		for (QETProject *project : QETApp::registeredProjects())
+			for (Diagram *diagram : project->diagrams())
+			{
+					//The strips report their size again: with the
+					//setting on they reach further up than before
+				diagram->refreshTerminalStrips();
+				diagram->update();
+			}
 	}
 	WiringRules::setMasterEnabled(ui->m_wiring_rules_cb->isChecked());
 	{

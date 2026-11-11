@@ -593,6 +593,62 @@ bool haveCable(const AbstractTerminalStripInterface *strip)
 		return cells;
 	}
 
+	/**
+	 * @brief wireCells
+	 * The cells the wires are drawn from : one per terminal of the strip
+	 * which has a wire of its own, spread over the width of its body, all
+	 * of them leaving the strip at its top edge. The paint and the room the
+	 * strip reserves above it both work on this list, so a wire set longer
+	 * than another is never cut off by the drawing area.
+	 */
+	QVector<Helpers::WireCell> wireCells(const AbstractTerminalStripInterface &strip,
+										 const TerminalStripLayoutPattern &pattern)
+	{
+		const qreal s_{pattern.m_realistic_px_per_mm};
+
+			//Left end stop and strip name : the terminals start after them
+		qreal x_{endStopWidthMm(pattern) * s_};
+		if (pattern.m_realistic_group_marker) {
+			x_ += group_marker_width_mm * s_;
+		}
+
+		QVector<Helpers::WireCell> cells;
+		for (const auto &g_ : geometry(&strip))
+		{
+			const qreal w_{g_.width_mm * s_};
+			const int levels_{static_cast<int>(g_.reals.size())};
+
+				//One wire exit by level, spread over the width of the body
+			for (int k = 0 ; k < levels_ ; ++k)
+			{
+				const auto &real_t{g_.reals.at(k)};
+				if (!real_t) {
+					continue;
+				}
+				const auto wires{real_t->wires()};
+					//One stub by wire: a terminal with a twin sleeve
+					//carries two, spread over the width of its level
+				const qreal level_x{x_ + w_ * k / levels_};
+				const qreal level_w{w_ / levels_};
+				for (auto i = 0 ; i < wires.size() ; ++i)
+				{
+					Helpers::WireCell cell_;
+					cell_.x = level_x + level_w * (i + 0.5) / wires.size();
+					cell_.top = 0;
+					cell_.target = wires.at(i).target;
+					cell_.definition = wires.at(i).definition;
+					cells.append(cell_);
+				}
+			}
+
+			x_ += w_;
+			if (g_.separator_after) {
+				x_ += separator_width_mm * s_;
+			}
+		}
+		return cells;
+	}
+
 } //End anonymous namespace
 
 QRectF boundingRect(const AbstractTerminalStripInterface *strip,
@@ -624,7 +680,14 @@ QRectF boundingRect(const AbstractTerminalStripInterface *strip,
 						+ Helpers::cableBoxesExtraDepth(cableCells(*strip, pattern),
 														pattern);
 	}
-	return QRectF{0, 0, width_mm_ * s_, length_ + extra_bottom_};
+		//The wires are drawn above the strip : the room they need is
+		//reserved above it or their top is cut off
+	const qreal extra_top_{strip
+		? qMax<qreal>(0, -Helpers::wiresTop(wireCells(*strip, pattern),
+								pattern))
+		: 0};
+	return QRectF{0, -extra_top_, width_mm_ * s_,
+				  length_ + extra_bottom_ + extra_top_};
 }
 
 void paint(QPainter *painter,
@@ -689,6 +752,8 @@ void paint(QPainter *painter,
 		//list (boundingRect()), so a box set lower than another one is
 		//never cut off
 	QVector<Helpers::CableCell> cable_cells_{cableCells(strip, pattern)};
+		//The wires above the strip, worked out of the same terminals
+	QVector<Helpers::WireCell> wire_cells_{wireCells(strip, pattern)};
 
 	for (const auto &g_ : geometry(&strip))
 	{
@@ -912,6 +977,17 @@ void paint(QPainter *painter,
 		painter->setFont(pattern.font());
 		painter->setPen(QPen(Qt::black, 0.5));
 		Helpers::drawCables(painter, cable_cells_, pattern);
+		painter->restore();
+	}
+
+		//The wires above the strip : one stub per terminal which has a
+		//wire of its own, drawn the way the cables are drawn below it
+	if (!wire_cells_.isEmpty())
+	{
+		painter->save();
+		painter->setFont(pattern.font());
+		painter->setPen(QPen(Qt::black, 0.5));
+		Helpers::drawWires(painter, wire_cells_, pattern);
 		painter->restore();
 	}
 

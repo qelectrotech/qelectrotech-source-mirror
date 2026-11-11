@@ -21,6 +21,9 @@
 #include <QSharedPointer>
 #include <QColor>
 #include <QDomElement>
+#include <QPair>
+#include <QStringList>
+#include <QVector>
 #include <QUuid>
 #include <properties/elementdata.h>
 
@@ -84,6 +87,14 @@ class RealTerminal
 			///True when cableTarget() is worked out from the project (read only),
 			///false when it is the text typed in by hand (which may be edited)
 		bool cableTargetIsAutomatic() const;
+			///One entry per wire of this terminal which is no core of a
+			///cable: (what the other end is called -- "12K1:A1" --, what
+			///the wire is made of in the order type, colour and section
+			///with the empty ones left out). A terminal with a twin
+			///sleeve carries two wires and gets two entries.
+		QVector<QPair<QString, QStringList>> wires() const;
+			///Whether this terminal has a wire of its own at all
+		bool hasWire() const;
 		QColor color() const;
 		QColor stripeColor() const;
 		qreal section() const;

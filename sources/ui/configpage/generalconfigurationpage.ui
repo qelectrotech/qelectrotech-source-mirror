@@ -199,6 +199,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_strip_wires">
+         <property name="toolTip">
+          <string>One stub per terminal which has a wire of its own, going up from the strip: what the wire is made of at its foot, where it lands at its top (12K1:A1). Cores of a cable are left out -- the cable is drawn below the strip.</string>
+         </property>
+         <property name="text">
+          <string>Draw the wires of a terminal strip above it, like its cables below it</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_new_folio_group_cb">
          <property name="text">
           <string>A new folio takes the group and sub-group of the folio before it</string>
@@ -1899,6 +1909,7 @@
   <tabstop>m_zoom_out_beyond_folio</tabstop>
   <tabstop>m_conductor_properties_panel</tabstop>
   <tabstop>m_terminal_conductor_color</tabstop>
+  <tabstop>m_strip_wires</tabstop>
   <tabstop>m_new_folio_group_cb</tabstop>
   <tabstop>m_macro_ask_labels_cb</tabstop>
   <tabstop>m_wiring_rules_cb</tabstop>
