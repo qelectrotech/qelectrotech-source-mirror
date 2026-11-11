@@ -22,6 +22,7 @@
 #include <qetinformation.h>
 #include <qetproject.h>
 #include <utils/qetutils.h>
+#include <utils/qetsettings.h>
 #include "UndoCommand/addterminalstripcommand.h"
 #include "UndoCommand/addterminaltostripcommand.h"
 #include "UndoCommand/sortterminalstripcommand.h"
@@ -130,7 +131,9 @@ namespace
  * In both cases the order the user gave to a strip is never changed,
  * only a strip created by the run itself is sorted -- the way the plan
  * is drawn : folio by folio, then left to right (see
- * SortTerminalStripCommand::planOrderLessThan).
+ * SortTerminalStripCommand::planOrderLessThan), or by label when
+ * QetSettings::stripSortedByLabel() is on (see
+ * SortTerminalStripCommand::labelOrderLessThan).
  */
 TerminalStripAutoImport::ImportResult TerminalStripAutoImport::importFreeTerminals(
 	QETProject *project, bool move_placed)
@@ -189,14 +192,17 @@ TerminalStripAutoImport::ImportResult TerminalStripAutoImport::importFreeTermina
 
 	for (auto it_ = groups_.begin(); it_ != groups_.end(); ++it_)
 	{
-			//The plan order : folio by folio, then left to right, so the
-			//strip comes out the way the plan is drawn instead of label
-			//by label ("N" and "PE" stay where they are on the sheet).
-			//SortTerminalStripCommand, pushed below for a strip this run
-			//creates, sorts with the same rule and cannot undo it.
-		auto by_plan_ = [](const QSharedPointer<RealTerminal> &a_,
-						   const QSharedPointer<RealTerminal> &b_) {
-			return SortTerminalStripCommand::planOrderLessThan(a_, b_);
+			//The order chosen in the settings : by default the plan
+			//order, folio by folio then left to right, so the strip comes
+			//out the way the plan is drawn ("N" and "PE" stay where they
+			//are on the sheet), or label by label when the user asked
+			//for it. SortTerminalStripCommand, pushed below for a strip
+			//this run creates, sorts with the same rule and cannot undo it.
+		const bool by_label_ = QetSettings::stripSortedByLabel();
+		auto by_plan_ = [by_label_](const QSharedPointer<RealTerminal> &a_,
+									const QSharedPointer<RealTerminal> &b_) {
+			return by_label_ ? SortTerminalStripCommand::labelOrderLessThan(a_, b_)
+							 : SortTerminalStripCommand::planOrderLessThan(a_, b_);
 		};
 		std::sort(it_.value().free_terminals.begin(),
 				  it_.value().free_terminals.end(), by_plan_);

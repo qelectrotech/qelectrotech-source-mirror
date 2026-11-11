@@ -209,6 +209,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_strip_sort_by_label">
+         <property name="toolTip">
+          <string>Used when the automatic assignment makes a terminal strip and by "Automatic position" in the terminal manager. Unchecked: the way the plan is drawn, folio by folio then left to right, which keeps N and PE where they are drawn. Checked: by label, X1:2 before X1:10. A strip already made keeps its order until it is sorted again.</string>
+         </property>
+         <property name="text">
+          <string>Sort the terminal strips by label instead of the plan order</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_new_folio_group_cb">
          <property name="text">
           <string>A new folio takes the group and sub-group of the folio before it</string>
@@ -1910,6 +1920,7 @@
   <tabstop>m_conductor_properties_panel</tabstop>
   <tabstop>m_terminal_conductor_color</tabstop>
   <tabstop>m_strip_wires</tabstop>
+  <tabstop>m_strip_sort_by_label</tabstop>
   <tabstop>m_new_folio_group_cb</tabstop>
   <tabstop>m_macro_ask_labels_cb</tabstop>
   <tabstop>m_wiring_rules_cb</tabstop>

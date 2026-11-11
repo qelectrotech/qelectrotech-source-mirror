@@ -337,6 +337,31 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief stripSortedByLabel
+	* @return whether a terminal strip is sorted by the label of its
+	* terminals rather than by the plan order (@sa setStripSortedByLabel),
+	* off unless the user turned it on
+	*/
+	bool stripSortedByLabel()
+	{
+		QSettings settings;
+		return settings.value("terminalstrip/sort_by_label", false).toBool();
+	}
+
+	/**
+	* @brief setStripSortedByLabel
+	* Store whether a terminal strip is sorted by the label of its
+	* terminals rather than by the plan order.
+	* @sa stripSortedByLabel
+	* @param by_label
+	*/
+	void setStripSortedByLabel(bool by_label)
+	{
+		QSettings settings;
+		settings.setValue("terminalstrip/sort_by_label", by_label);
+	}
+
+	/**
 	* @brief duplicateLabelsSignalsByPlant
 	* @return whether the duplicate check takes a wire number to be unique
 	* per plant (=) of the wire's folio rather than in the whole project
