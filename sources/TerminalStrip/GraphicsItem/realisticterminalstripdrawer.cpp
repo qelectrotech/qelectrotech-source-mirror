@@ -169,6 +169,39 @@ QPair<qreal, qreal> levelInsets(const TerminalStripLayoutPattern &pattern, int l
 	return {top_, bottom_};
 }
 
+	//Depth of the rail added for each level after the first one
+constexpr qreal level_rail_depth{0.04};
+
+/**
+ * @brief bandTop
+ * @return the top of the middle band, in fraction of the length. A strip
+ * with terminals of several levels has a deeper band, reaching further up
+ * by level_rail_depth for each level after the first, to make room for
+ * one bridge rail by level.
+ * @param level_count : the most levels a terminal of the strip has
+ */
+qreal bandTop(int level_count) {
+	return band_top - (std::max(1, level_count) - 1) * level_rail_depth;
+}
+
+/**
+ * @brief levelRow
+ * The bridge rail of the middle band is shared out between the levels:
+ * one row by level, the first level at the top, so that the bars of two
+ * levels lying across the same terminals never cover each other (as the
+ * schematic style draws the bridges of each level at its own height).
+ * @param level : level of the terminal
+ * @param level_count : the most levels a terminal of the strip has
+ * @return the top and the height of the row, in fraction of the length
+ */
+QPair<qreal, qreal> levelRow(int level, int level_count)
+{
+	const int count_{std::max(1, level_count)};
+	const qreal top_{bandTop(count_) + (channels_top - band_top)};
+	const qreal h_{(channels_bottom - top_) / count_};
+	return {top_ + qBound(0, level, count_ - 1) * h_, h_};
+}
+
 qreal endStopWidthMm(const TerminalStripLayoutPattern &pattern) {
 	if (!pattern.m_realistic_end_stops) {
 		return 0;
@@ -800,7 +833,14 @@ void paint(QPainter *painter,
 		//The wires above the strip, worked out of the same terminals
 	QVector<Helpers::WireCell> wire_cells_{wireCells(strip, pattern)};
 
-	for (const auto &g_ : geometry(&strip))
+		//The bridge rail is shared out between the levels of the strip
+	const auto columns_{geometry(&strip)};
+	int max_levels_{1};
+	for (const auto &g_ : columns_) {
+		max_levels_ = std::max(max_levels_, g_.level_count);
+	}
+
+	for (const auto &g_ : columns_)
 	{
 		const qreal w_{g_.width_mm * s_};
 			//A level after the first one is shorter, at its top and at
@@ -840,7 +880,7 @@ void paint(QPainter *painter,
 
 			//Wire entries : one row by level, at the top and at the bottom
 		const qreal max_r_{max_entry_radius_mm * s_};
-		drawEntriesHalf(painter, body_, body_.top() + length_ * entries_top, length_ * band_top, levels_, max_r_, fill_, screw_);
+		drawEntriesHalf(painter, body_, body_.top() + length_ * entries_top, length_ * bandTop(max_levels_), levels_, max_r_, fill_, screw_);
 		drawEntriesHalf(painter, body_, body_.bottom() - length_ * entries_top, length_ * band_bottom, levels_, max_r_, fill_, screw_);
 
 			//The levels of one terminal are one part : a stronger line at
@@ -862,13 +902,11 @@ void paint(QPainter *painter,
 		painter->save();
 		painter->setPen(Qt::NoPen);
 		painter->setBrush(band_color);
-		painter->drawRect(QRectF{x_, length_ * band_top, w_, length_ * (band_bottom - band_top)});
+		painter->drawRect(QRectF{x_, length_ * bandTop(max_levels_), w_, length_ * (band_bottom - bandTop(max_levels_))});
 		painter->setBrush(channel_color);
-		const qreal channel_h_{length_ * (channels_bottom - channels_top) / levels_};
-		for (int k = 0 ; k < levels_ ; ++k) {
-			painter->drawRect(QRectF{x_ + w_ * 0.15, length_ * channels_top + (k + 0.2) * channel_h_,
-									 w_ * 0.7, channel_h_ * 0.6});
-		}
+		const auto row_{levelRow(g_.level, max_levels_)};
+		painter->drawRect(QRectF{x_ + w_ * 0.15, length_ * (row_.first + 0.1 * row_.second),
+								 w_ * 0.7, length_ * row_.second * 0.8});
 		painter->restore();
 
 			//Specific parts of some types of terminal
@@ -988,14 +1026,16 @@ void paint(QPainter *painter,
 				if (!bridge_) {
 					continue;
 				}
-				const qreal channel_h_{length_ * (channels_bottom - channels_top) / 4};
+					//The row of the level of this terminal in the rail
+				const auto row_{levelRow(g_.level, max_levels_)};
+				const qreal channel_h_{length_ * row_.second / 4};
 					//A bar which was never worked out a track sits in
-					//the middle of the rail, where it stood before the
+					//the middle of the row, where it stood before the
 					//tracks were drawn apart
 				const int track{bridge_->track()};
 				const qreal y_{track > 0
-							   ? length_ * channels_top + (qBound(1, track, 4) - 0.5) * channel_h_
-							   : length_ * (channels_top + channels_bottom) / 2};
+							   ? length_ * row_.first + (qBound(1, track, 4) - 0.5) * channel_h_
+							   : length_ * (row_.first + row_.second / 2)};
 				bridges_[bridge_->uuid()].append(BridgePoint{QPointF{x_ + w_ / 2, y_}, w_});
 			}
 		}
@@ -1018,7 +1058,10 @@ void paint(QPainter *painter,
 			continue;
 		}
 		painter->save();
-		const qreal thickness_{std::max<qreal>(1.0, 0.9 * s_)};
+			//Thinner bars when the rail is shared out between levels,
+			//so that the bars of two levels stay apart
+		const qreal thickness_{std::max<qreal>(1.0, std::min(0.9 * s_,
+				0.7 * length_ * levelRow(0, max_levels_).second))};
 		painter->setPen(QPen(bridge_color, thickness_, Qt::SolidLine, Qt::FlatCap));
 		painter->drawLine(points_.first().point, points_.last().point);
 		painter->setPen(Qt::NoPen);
